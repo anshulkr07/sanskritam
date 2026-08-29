@@ -550,7 +550,19 @@ dev = [
 
 ---
 
-## Top 5 Integration Actions
+## Top 5 integration actions
+
+<!-- VERIFIED-ORCHESTRATOR 2026-08-29: I independently validated #1 on this machine (venv, win_amd64 wheel, data zip auto-download ~few MB). -->
+<!-- Confirmed working API (differs from docs/readthedocs which are stale): -->
+<!--   pip install vidyut  (0.4.0); from vidyut import download_data; download_data(<dir>) -->
+<!--   import vidyut.lipi as li, vidyut.cheda as ch -->
+<!--   c = ch.Chedaka(<data_root_dir>)   # root dir, contains cheda/model.msgpack + kosha/padas.fst -->
+<!--   slp = li.transliterate('ग्रामं गच्छामि', li.Scheme.Devanagari, li.Scheme.Slp1) -->
+<!--   for t in c.run(slp): t.text, t.lemma, t.data  # PadaEntry.Subanta(vibhakti=Dvitiya, vacana=Eka, linga=Pum) / PadaEntry.Tinanta(lakara=Lat, purusha=Uttama, vacana=Eka) -->
+<!--   Enum mapping: Vibhakti.Prathama=NOM, Dvitiya=ACC, ...; Vacana.Eka/Dvi/Bahu=SG/DUAL/PL; Lakara.Lat=PRES; Purusha.Uttama/Madhyama/Prathama=1st/2nd/3rd -->
+<!--   NOTE: Chedaka(path) takes the DATA ROOT (not Kosha object; kosha subdir path fails with sandhi Io error). -->
+<!-- VERIFIED-END -->
+
 
 1. **Validate Vidyut on this Windows machine.** Run `pip install vidyut`, download linguistic data, run the Kosha lookup sample above on 3-5 Sanskrit words. If wheels install cleanly (they should), Vidyut is cleared for the critical path. **This is the gating dependency for the entire NLP layer.**
 
