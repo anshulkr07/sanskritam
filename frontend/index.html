@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shabd Test Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-header">
+  <div>
+    <h1>शब्द Test Console</h1>
+    <div class="subtitle">Sanskrit Learning Backend — API Tester</div>
+  </div>
+  <a href="#" onclick="document.querySelector('[data-tab=docs-tab]').click()" style="font-size:.85rem;color:var(--primary);text-decoration:none;">📖 API Docs</a>
+</div>
+
+<div class="app-container">
+
+  <!-- ═══ Config Bar ═══ -->
+  <div class="config-bar">
+    <label for="url-input">Base URL</label>
+    <input type="url" id="url-input" value="http://localhost:8000" placeholder="http://localhost:8000">
+    <button class="btn btn-primary" onclick="checkHealth()">
+      Health Check <span id="health-status" class="status-dot"></span>
+    </button>
+    <span id="health-version" style="font-size:.8rem;color:var(--text-secondary);"></span>
+  </div>
+
+  <!-- ═══ Tabs ═══ -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="auth-tab">🔑 Auth</button>
+    <button class="tab-btn" data-tab="practice-tab">✍️ Practice</button>
+    <button class="tab-btn" data-tab="shloka-tab">🕉️ Shloka</button>
+    <button class="tab-btn" data-tab="varnamala-tab">🔤 Varnamala</button>
+    <button class="tab-btn" data-tab="features-tab">📋 Features</button>
+    <button class="tab-btn" data-tab="docs-tab">📖 Docs</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Auth Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="auth-tab" class="tab-panel active">
+    <div class="card">
+      <div class="card-title">Dev Login</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="login-name">Display Name</label>
+          <input type="text" id="login-name" placeholder="e.g. test_user">
+        </div>
+        <div class="form-group">
+          <label for="login-langs">Bridge Languages (comma separated)</label>
+          <input type="text" id="login-langs" value="en,hi" placeholder="en,hi">
+        </div>
+        <button class="btn btn-primary" onclick="devLogin()">Login</button>
+        <button class="btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Learner Panel -->
+    <div id="learner-panel" style="display:none;">
+      <div class="card">
+        <div class="card-title">Learner Model</div>
+        <div class="learner-info">
+          <div>
+            <div class="stat-label">Sanskrit Ratio</div>
+            <div class="stat-value" id="sanskrit-ratio-text">0%</div>
+            <div class="progress-bar"><div class="progress-fill" id="sanskrit-ratio-fill" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="stat-label">Script Ratio</div>
+            <div class="stat-value" id="script-ratio-text">0%</div>
+            <div class="progress-bar"><div class="progress-fill green" id="script-ratio-fill" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="stat-label">Streak</div>
+            <div class="stat-value" id="streak-value">0</div>
+          </div>
+          <div>
+            <div class="stat-label">Bridge Languages</div>
+            <div class="stat-value" id="bridge-langs" style="font-size:.9rem;font-weight:400;">—</div>
+          </div>
+        </div>
+        <div id="mastery-container" style="margin-top:14px;">
+          <div class="card-title">Feature Mastery</div>
+          <div class="mastery-grid" id="mastery-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Practice Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="practice-tab" class="tab-panel">
+    <div class="card">
+      <div class="card-title">Next Challenge</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="challenge-register">Register</label>
+          <select id="challenge-register">
+            <option value="laukika">Laukika</option>
+            <option value="classical">Classical</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="challenge-mode">Mode</label>
+          <select id="challenge-mode">
+            <option value="text">Text</option>
+            <option value="audio">Audio</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="loadChallenge()">Get Challenge</button>
+      </div>
+
+      <div id="challenge-prompt" style="font-size:1.1rem;font-weight:500;margin-bottom:4px;">—</div>
+      <div style="display:flex;gap:12px;font-size:.8rem;color:var(--text-secondary);margin-bottom:8px;">
+        <span id="challenge-prompt-lang">(—)</span>
+        <span>Register: <strong id="challenge-register-label">—</strong></span>
+        <span>Features: <strong id="challenge-features">—</strong></span>
+      </div>
+      <div id="challenge-audio" style="margin-bottom:8px;display:none;"></div>
+    </div>
+
+    <!-- Attempt -->
+    <div id="attempt-panel" style="display:none;">
+      <div class="card">
+        <div class="card-title">Your Attempt</div>
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label for="attempt-response">Response (Devanagari or IAST)</label>
+            <textarea id="attempt-response" placeholder="Type your Sanskrit here…"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="submitAttempt()" style="align-self:end;">Submit</button>
+        </div>
+      </div>
+
+      <!-- Peek -->
+      <div class="card peek-area" style="background:var(--muted);">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;">
+          <input type="checkbox" id="peek-toggle"> 👀 Peek — reveal target Sanskrit
+        </label>
+        <div id="peek-content" class="peek-content" style="display:none;margin-top:8px;"></div>
+      </div>
+
+      <!-- Verdict -->
+      <div id="verdict-area" style="display:none;"></div>
+
+      <!-- Updated Ratios after attempt -->
+      <div class="card">
+        <div class="card-title">Current Ratios</div>
+        <div class="learner-info">
+          <div>
+            <div class="stat-label">Sanskrit Ratio</div>
+            <div class="stat-value" id="attempt-sanskrit-text">0%</div>
+            <div class="progress-bar"><div class="progress-fill" id="attempt-sanskrit-fill" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="stat-label">Script Ratio</div>
+            <div class="stat-value" id="attempt-script-text">0%</div>
+            <div class="progress-bar"><div class="progress-fill green" id="attempt-script-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Shloka Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="shloka-tab" class="tab-panel">
+    <button class="btn btn-primary" onclick="loadShloka()" style="margin-bottom:16px;">📿 Fetch Today's Shloka</button>
+    <div class="card" id="shloka-card">
+      <div class="shloka-devanagari" id="shloka-devanagari">—</div>
+      <div class="shloka-iast" id="shloka-iast">—</div>
+      <div class="shloka-meta">
+        <span>Source: <strong id="shloka-source">—</strong></span>
+        <span>Metre: <strong id="shloka-metre">—</strong></span>
+      </div>
+      <div id="shloka-audio" style="margin-top:10px;display:none;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Word Breakdown <span style="font-weight:400;text-transform:none;font-size:.78rem;">(tap a word to see meaning)</span></div>
+      <table class="word-table">
+        <thead>
+          <tr>
+            <th>Word</th>
+            <th>Transliteration</th>
+            <th>Meaning</th>
+            <th>Gloss</th>
+            <th>POS</th>
+            <th>Root</th>
+          </tr>
+        </thead>
+        <tbody id="shloka-breakdown-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Varnamala Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="varnamala-tab" class="tab-panel">
+    <button class="btn btn-primary" onclick="loadVarnamala()" style="margin-bottom:16px;">🔤 Load Varnamala Grid</button>
+    <div class="card">
+      <div class="card-title">Varnamala — Sanskrit Phoneme Grid</div>
+      <table class="varnamala-table">
+        <thead>
+          <tr>
+            <th>Place ↓ \ Type →</th>
+            <th>Unvoiced<br>Unaspirated</th>
+            <th>Unvoiced<br>Aspirated</th>
+            <th>Voiced<br>Unaspirated</th>
+            <th>Voiced<br>Aspirated</th>
+            <th>Nasal</th>
+          </tr>
+        </thead>
+        <tbody id="varnamala-body">
+          <tr><td colspan="6" style="text-align:center;color:var(--text-secondary);">Click "Load Varnamala Grid"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Features Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="features-tab" class="tab-panel">
+    <button class="btn btn-primary" onclick="loadFeatures()" style="margin-bottom:16px;">📋 Load Feature Taxonomy</button>
+    <div class="card">
+      <div class="card-title">Grammar Feature Taxonomy</div>
+      <table class="features-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody id="features-body">
+          <tr><td colspan="3" style="text-align:center;color:var(--text-secondary);">Click "Load Feature Taxonomy"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Docs Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="docs-tab" class="tab-panel">
+    <div class="card" style="text-align:center;padding:40px;">
+      <div style="font-size:2rem;margin-bottom:8px;">📖</div>
+      <div class="card-title" style="font-size:1rem;">Swagger / OpenAPI Documentation</div>
+      <p style="margin:8px 0 16px;color:var(--text-secondary);">
+        The backend serves interactive API docs at the <code>/docs</code> endpoint.
+      </p>
+      <a href="#" id="docs-link" target="_blank" class="btn btn-primary" style="text-decoration:none;">
+        Open API Docs →
+      </a>
+      <p style="margin-top:12px;font-size:.8rem;color:var(--text-secondary);">
+        (Link updates automatically when you change the Base URL)
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ Log Area ═══ -->
+  <div style="margin-top:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+      <span style="font-size:.8rem;font-weight:600;color:var(--text-secondary);">📡 Request Log</span>
+      <button class="btn btn-sm" onclick="document.getElementById('log-area').innerHTML = ''">Clear</button>
+    </div>
+    <div class="log-area" id="log-area">
+      <div class="log-entry" style="color:var(--text-secondary);">Ready — configure the base URL and hit Health Check to verify connectivity.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+  // Update docs link when base URL changes
+  document.getElementById('url-input').addEventListener('change', updateDocsLink);
+  document.getElementById('url-input').addEventListener('input', updateDocsLink);
+  function updateDocsLink() {
+    const base = document.getElementById('url-input').value.replace(/\/+$/, '');
+    document.getElementById('docs-link').href = base + '/docs';
+  }
+  updateDocsLink();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
