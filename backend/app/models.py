@@ -1,7 +1,7 @@
 """SQLAlchemy 2.0 ORM models for the Shabd backend."""
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Column, Float, ForeignKey, Integer, String, Text, Boolean, JSON, DateTime
 from sqlalchemy.orm import relationship
@@ -11,6 +11,11 @@ from app.db import Base
 
 def _uuid() -> str:
     return uuid.uuid4().hex[:16]
+
+
+def _utcnow() -> datetime:
+    """Timezone-aware UTC timestamp (datetime.utcnow is deprecated + naive)."""
+    return datetime.now(timezone.utc)
 
 
 class Feature(Base):
@@ -35,7 +40,7 @@ class Token(Base):
 
     id = Column(String(64), primary_key=True, default=_uuid)
     learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=_utcnow)
     learner = relationship("Learner", back_populates="tokens")
 
 
@@ -47,13 +52,16 @@ class Learner(Base):
     id = Column(String(64), primary_key=True, default=_uuid)
     display_name = Column(String(128), nullable=False)
     bridge_langs = Column(JSON, default=list)  # ["en", "hi"]
+    # Effective ratio the system uses (drifts within the user's ceiling)
     sanskrit_ratio = Column(Float, default=0.3)
+    # The USER's setting — ceiling for system drift. Owned exclusively by PATCH /me.
+    sanskrit_ratio_setting = Column(Float, nullable=True)
     script_ratio = Column(Float, default=0.3)
     feature_mastery = Column(JSON, default=dict)  # {feature_id: score 0..1}
     streak = Column(Integer, default=0)
     voice_minutes_used = Column(Float, default=0.0)
     recent_challenge_ids = Column(JSON, default=list)  # last N served — no-repeat window
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=_utcnow)
 
     tokens = relationship("Token", back_populates="learner", cascade="all, delete-orphan")
     attempts = relationship("Attempt", back_populates="learner", cascade="all, delete-orphan")
@@ -73,7 +81,7 @@ class Challenge(Base):
     accepted_parses = Column(JSON, default=list)  # list of {word_role -> feature} dicts
     audio_url = Column(String(512), default="")
     register = Column(String(16), default="laukika", index=True)  # laukika | classical
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=_utcnow)
 
     def to_dict(self):
         return {
@@ -87,18 +95,6 @@ class Challenge(Base):
             "audio_url": self.audio_url,
             "register": self.register,
         }
-
-
-class AcceptedParse(Base):
-    """Individual accepted feature-set for a challenge (normalized)."""
-
-    __tablename__ = "accepted_parses"
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    challenge_id = Column(String(64), ForeignKey("challenges.id"), nullable=False)
-    features = Column(JSON, nullable=False)  # {word_role -> feature}
-
-    challenge = relationship("Challenge", backref="parse_records")
 
 
 class Shloka(Base):
@@ -128,23 +124,12 @@ class Attempt(Base):
     challenge_id = Column(String(64), ForeignKey("challenges.id"), nullable=False)
     raw_text = Column(Text, default="")
     parsed_features = Column(JSON, default=dict)
-    verdict = Column(String(16), nullable=False)  # correct | off_by_one | incorrect
+    verdict = Column(String(16), nullable=False)  # correct | off_by_one | incorrect | unsure
     diff = Column(JSON, default=list)
     diagnosis = Column(Text, default="")
     grammar_note = Column(JSON, nullable=True)
     abstained = Column(Boolean, default=False)
-    ts = Column(DateTime, default=datetime.utcnow)
+    ts = Column(DateTime, default=_utcnow)
 
     learner = relationship("Learner", back_populates="attempts")
     challenge = relationship("Challenge")
-
-
-class Session(Base):
-    """Optional session grouping for attempts."""
-
-    __tablename__ = "sessions"
-
-    id = Column(String(64), primary_key=True, default=_uuid)
-    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False)
-    started_at = Column(DateTime, default=datetime.utcnow)
-    ended_at = Column(DateTime, nullable=True)

@@ -2,17 +2,22 @@
 Grading engine: compare morphological feature sets, not strings.
 
 Free word order: ग्रामं गच्छामि == गच्छामि ग्रामम्.
-Abstention principle: never mark incorrect if the analyzer is uncertain.
+Abstention principle (spec §6.3): when the analyzer is not confident, the
+verdict is "unsure" — never "incorrect". "unsure" carries no adaptive penalty
+(no streak reset, no mastery decay, no ratio change); a false accusation is
+worse than a missing verdict.
 
-Sandhi handling: we grade against both the raw text and a naively-split variant.
-The splitter attempts common vowel sandhi splits (a + a -> ā, etc.).
-We take the BEST verdict across all variants.
+Verdicts: "correct" | "off_by_one" | "incorrect" | "unsure".
+Morphological ambiguity (au/e/oḥ/ām endings...) is handled upstream by the
+analyzer's alternatives; here every valid reading is tried against the
+accepted parses, so ambiguity never falsely accuses.
 """
 
 from typing import Any, Optional
 
 from app.grading.analyzer import (
     analyze_sentence,
+    detect_script,
     feature_set_from_results,
     feature_set_variants,
     is_confident,
@@ -22,6 +27,49 @@ from app.grading.analyzer import (
 def _feature_set_key(fs: dict[str, str]) -> frozenset[tuple[str, str]]:
     """Normalized key for feature-set comparison (order-independent)."""
     return frozenset((k, v) for k, v in sorted(fs.items()))
+
+
+# ─── Feature → English glosses (diagnosis is the product — spec §7.2) ───
+
+_CASE_EN = {
+    "NOM": "nominative (subject)", "ACC": "accusative (object)",
+    "INSTR": "instrumental ('with/by')", "DAT": "dative ('to/for')",
+    "ABL": "ablative ('from')", "GEN": "genitive ('of')",
+    "LOC": "locative ('in/on')", "VOC": "vocative (addressing)",
+}
+_NUMBER_EN = {"SG": "singular", "DU": "dual", "PL": "plural"}
+_TENSE_EN = {
+    "PRES": "present", "IMPF": "imperfect", "FUT": "future", "IMP": "imperative",
+    "OPT": "optative", "AOR": "aorist", "PERF": "perfect",
+}
+_PERSON_EN = {"1": "1st person", "2": "2nd person", "3": "3rd person"}
+
+
+def _format_feature(feat: Optional[str]) -> str:
+    """'ACC.SG' -> 'the accusative (object) singular (ACC.SG)'.
+    'PRES.1SG' -> 'the present 1st person singular (PRES.1SG)'.
+    Unknown keys fall back to the raw value."""
+    if not feat:
+        return "(none)"
+    parts = feat.split(".")
+    head = parts[0]
+    if head in _TENSE_EN:
+        rest = parts[1] if len(parts) > 1 else ""
+        person = _PERSON_EN.get(rest[:1], "")
+        number = _NUMBER_EN.get(rest[1:], "") if len(rest) > 1 else ""
+        bits = " ".join(b for b in (_TENSE_EN[head], person, number) if b)
+        return f"the {bits} ({feat})"
+    if head in _CASE_EN:
+        number = _NUMBER_EN.get(parts[1], "") if len(parts) > 1 else ""
+        return f"the {_CASE_EN[head]} {number} ({feat})".strip()
+    return f"'{feat}'"
+
+
+def _role_noun(feature_key: str) -> str:
+    """Human word for the diff key: roots ('√khād') are verbs, others are words."""
+    if feature_key.startswith("√"):
+        return f"the verb '{feature_key}'"
+    return f"the word '{feature_key}'"
 
 
 def grade_attempt(
@@ -34,18 +82,19 @@ def grade_attempt(
     Grade a learner's attempt.
 
     Args:
-        response_text: The learner's Sanskrit text (Devanagari or IAST).
+        response_text: The learner's Sanskrit text (Devanagari, IAST, or a mix).
         accepted_parses: List of accepted feature-set dicts.
-        expected_features: List of feature IDs the challenge exercises.
+        expected_features: Feature IDs this challenge exercises. Used to pick
+            which feature the grammar note explains when several differ.
         is_iast: Whether input is IAST (auto-detected if not specified).
 
     Returns:
-        dict with verdict, parsed_features, diff, diagnosis, abstained, grammar_note
+        dict with verdict, parsed_features, diff, diagnosis, abstained,
+        grammar_note, accepted_parses (the accepted feature-sets).
     """
-    # Auto-detect IAST (if contains only ASCII + diacritics)
+    # Auto-detect script; mixed-script text is handled per-word by the analyzer.
     if not is_iast:
-        has_devanagari = any(ord(c) >= 0x0900 and ord(c) <= 0x097F for c in response_text)
-        is_iast = not has_devanagari
+        is_iast = detect_script(response_text) != "dev"
 
     # Analyze
     results = analyze_sentence(response_text, is_iast=is_iast)
@@ -77,7 +126,7 @@ def grade_attempt(
                 return {
                     "verdict": "correct",
                     "parsed_features": parsed,
-                    "expected_features": accepted_parses,
+                    "accepted_parses": accepted_parses,
                     "diff": [],
                     "diagnosis": "Correct!",
                     "grammar_note": None,
@@ -104,19 +153,22 @@ def grade_attempt(
         best_diagnosis = best_diagnosis or "Incorrect — several features don't match."
 
     if abstained:
-        best_verdict = "incorrect"
-        best_diagnosis = ("Could not parse confidently — "
-                          "some words were unrecognized. Never mark incorrect on uncertainty.")
+        # Abstention principle: uncertainty is NOT incorrectness. The learner
+        # did nothing provably wrong, so the verdict carries no penalty.
+        best_verdict = "unsure"
+        best_diagnosis = ("Some words couldn't be read confidently, so this isn't "
+                          "graded as right or wrong. Check spelling (Devanagari or "
+                          "IAST) and try again.")
 
     # Build grammar note
     grammar_note = None
     if best_verdict == "off_by_one" and matched_expected:
-        grammar_note = _build_grammar_note(best_diff, matched_expected)
+        grammar_note = _build_grammar_note(best_diff, matched_expected, expected_features)
 
     return {
         "verdict": best_verdict,
         "parsed_features": best_parsed,
-        "expected_features": accepted_parses,
+        "accepted_parses": accepted_parses,
         "diff": best_diff,
         "diagnosis": best_diagnosis,
         "grammar_note": grammar_note,
@@ -168,31 +220,44 @@ def _generate_diagnosis(diff_item: dict) -> str:
     """Generate a human-readable diagnosis for a single feature difference."""
     ftype = diff_item.get("type", "")
     feature = diff_item.get("feature", "")
-    expected = diff_item.get("expected", "")
-    actual = diff_item.get("actual", "")
+    expected = diff_item.get("expected")
+    actual = diff_item.get("actual")
 
     if ftype == "missing":
-        return f"The word '{feature}' should take the case form '{expected}'"
+        return (f"{_role_noun(feature)} should take "
+                f"{_format_feature(expected)}.")
     elif ftype == "extra":
-        return f"Unexpected word '{feature}' with form '{actual}'"
+        return f"Unexpected form: {_role_noun(feature)} reads as {_format_feature(actual)}."
     elif ftype == "mismatch":
-        return (f"The word '{feature}' should be in '{expected}' "
-                f"(not '{actual}')")
+        return (f"{_role_noun(feature)} should be in "
+                f"{_format_feature(expected)} — you used {_format_feature(actual)}.")
     return "A feature doesn't match."
 
 
 def _build_grammar_note(
     diff: list[dict],
     matched: dict[str, str],
+    expected_features: Optional[list[str]] = None,
 ) -> Optional[dict[str, Any]]:
-    """Build a grammar explanation for the learner."""
+    """Build a grammar explanation for the learner.
+
+    When several features differ, prefer the one this challenge actually
+    teaches (a member of expected_features) — the note should explain the
+    exercise, not an incidental difference.
+    """
     if not diff:
         return None
     item = diff[0]
+    taught = set(expected_features or [])
+    for d in diff:
+        if (d.get("expected") or "") in taught or (d.get("actual") or "") in taught:
+            item = d
+            break
     return {
         "feature": item.get("feature", ""),
         "expected": item.get("expected", ""),
         "actual": item.get("actual", ""),
-        "note": f"'{item.get('feature', '')}' takes {item.get('expected', '')} form. "
-                f"You used {item.get('actual', '(none)')}."
+        "note": f"{_role_noun(item.get('feature', ''))} takes "
+                f"{_format_feature(item.get('expected'))}. "
+                f"You used {_format_feature(item.get('actual'))}."
     }

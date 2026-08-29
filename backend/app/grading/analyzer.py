@@ -301,21 +301,26 @@ class RuleBasedAnalyzer(AnalyzerProtocol):
     """Word-level analyzer with vidyut.lipi transliteration + correct stem extraction."""
 
     def analyze(self, text: str, is_iast: bool = False) -> list[AnalyzerResult]:
+        # `is_iast` is accepted for protocol compatibility; script is
+        # auto-detected per word (see _analyze_word), so mixed-script
+        # sentences (e.g. "रामः phalam khādati") are handled word by word.
         words = text.strip().split()
         results = []
         for word in words:
-            result = self._analyze_word(word, is_iast)
-            results.append(result)
+            results.append(self._analyze_word(word))
         return results
 
-    def _analyze_word(self, word: str, is_iast: bool) -> AnalyzerResult:
+    def _analyze_word(self, word: str, is_iast: bool = False) -> AnalyzerResult:
         clean = word.strip("।॥,.!?")
         if not clean:
             return AnalyzerResult(word, confidence=0.0, error="empty")
-        if is_iast:
-            return self._analyze_word_iast(clean)
-        else:
+        # Per-word script detection: mixed-script input (code-switching) must
+        # not force IAST words through the Devanagari path or vice versa.
+        # The `is_iast` flag is only a hint and never overrides the word's
+        # actual script.
+        if detect_script(clean) == "dev":
             return self._analyze_word_dev(clean)
+        return self._analyze_word_iast(clean)
 
     def _analyze_word_dev(self, word: str) -> AnalyzerResult:
         iast = devanagari_to_iast(word)
@@ -481,6 +486,8 @@ class VidyutAnalyzer(AnalyzerProtocol):
 
         script = detect_script(clean)
         return self._rule.analyze(clean, is_iast=(script == "iast"))
+        # Note: RuleBasedAnalyzer.analyze re-detects per word, so mixed-script
+        # sentences (e.g. "रामः phalam khādati") are handled word by word.
 
     def _hybrid_analyze(self, text: str) -> list[AnalyzerResult]:
         """Per-word analysis: rule engine primary, Chedaka as a cross-check.

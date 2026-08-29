@@ -24,21 +24,15 @@ async def submit_attempt(
     if challenge is None:
         raise HTTPException(status_code=404, detail="Challenge not found")
 
-    # Auto-detect if input is IAST
-    has_devanagari = any(
-        ord(c) >= 0x0900 and ord(c) <= 0x097F for c in req.response_text
-    )
-    is_iast = not has_devanagari
-
-    # Grade the attempt
+    # Grade the attempt (script detection happens inside grade_attempt;
+    # the analyzer handles mixed-script input per word).
     result = grade_attempt(
         response_text=req.response_text,
         accepted_parses=challenge.accepted_parses or [],
         expected_features=challenge.features or [],
-        is_iast=is_iast,
     )
 
-    # Update adaptive model
+    # Update adaptive model ("unsure" is a no-op in both)
     updated_mastery = update_mastery(
         learner=learner,
         challenge_features=challenge.features or [],
@@ -66,13 +60,14 @@ async def submit_attempt(
     return AttemptResponse(
         verdict=result["verdict"],
         parsed_features=result["parsed_features"],
-        expected_features=result["expected_features"],
+        accepted_parses=result["accepted_parses"],
         diff=result["diff"],
         diagnosis=result["diagnosis"],
         grammar_note=result["grammar_note"],
         abstained=result["abstained"],
         updated_model={
             "sanskrit_ratio": learner.sanskrit_ratio or 0.3,
+            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
             "script_ratio": learner.script_ratio or 0.3,
             "feature_mastery": updated_mastery,
             "streak": learner.streak or 0,

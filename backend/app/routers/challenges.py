@@ -33,10 +33,10 @@ async def get_next_challenge(
 
     challenge = select_next_challenge(
         learner=learner,
+        db=db,
         register=register,
         mode=mode,
         recent_challenge_ids=recent_ids,
-        db=db,
     )
 
     if challenge is None:

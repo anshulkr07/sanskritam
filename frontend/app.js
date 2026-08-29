@@ -250,11 +250,13 @@ async function submitAttempt() {
 function renderVerdict(data) {
   $('verdict-area').style.display = 'block';
   const area = $('verdict-area');
-  const colors = { correct: 'correct', off_by_one: 'off_by_one', incorrect: 'incorrect' };
-  const verdictClass = colors[data.verdict] || (data.abstained ? 'abstained' : '');
+  // 'unsure' (analyzer abstention) is neutral grey — never red. A learner is
+  // only shown 'incorrect' when their answer is provably wrong.
+  const colors = { correct: 'correct', off_by_one: 'off_by_one', incorrect: 'incorrect', unsure: 'abstained' };
+  const verdictClass = colors[data.verdict] || '';
 
   let html = `<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">`;
-  html += `<span class="verdict-badge ${verdictClass}">${data.verdict}${data.abstained ? ' (abstained)' : ''}</span>`;
+  html += `<span class="verdict-badge ${verdictClass}">${data.verdict}</span>`;
   if (data.abstained) html += `<span class="verdict-badge abstained">ABSTAINED</span>`;
   html += `</div>`;
 
@@ -281,7 +283,7 @@ function renderVerdict(data) {
   if (data.grammar_note) {
     const gn = data.grammar_note;
     html += `<div class="card"><div class="card-title">Grammar Note</div>`;
-    html += `<p>${gn.text || JSON.stringify(gn)}</p>`;
+    html += `<p>${gn.note || JSON.stringify(gn)}</p>`;
     if (gn.rule_ref) html += `<p style="font-size:.8rem;color:var(--text-secondary);margin-top:4px;">Rule: ${gn.rule_ref}</p>`;
     html += `</div>`;
   }

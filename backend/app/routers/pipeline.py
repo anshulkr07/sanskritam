@@ -37,9 +37,9 @@ async def run_pipeline(
             "register": ch.register,
         }
 
-        # Analyze the target text
-        has_dev = any(ord(c) >= 0x0900 and ord(c) <= 0x097F for c in ch.target_sanskrit)
-        results = analyze_sentence(ch.target_sanskrit, is_iast=not has_dev)
+        # Analyze the target text (shared script detection from the analyzer)
+        from app.grading.analyzer import detect_script
+        results = analyze_sentence(ch.target_sanskrit, is_iast=(detect_script(ch.target_sanskrit) != "dev"))
         derived = feature_set_from_results(results)
         confident = is_confident(results)
 

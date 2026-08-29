@@ -48,14 +48,25 @@ def test_multiple_errors_incorrect():
 
 
 def test_garbage_abstains_never_falsely_accuses():
+    """Spec §6.3: uncertainty yields 'unsure' — NEVER 'incorrect'."""
     r = grade_attempt("asdfgh jkl", ACCEPTED, FEATURES)
-    assert r["verdict"] == "incorrect"
+    assert r["verdict"] == "unsure"
     assert r["abstained"] is True
+
+
+def test_unsure_is_not_incorrect():
+    """The abstention principle: 'unsure' must be its own verdict, not 'incorrect'."""
+    for text in ("asdfgh jkl", "", "xyzzy plugh"):
+        r = grade_attempt(text, ACCEPTED, FEATURES)
+        assert r["verdict"] != "incorrect", f"{text!r}: {r}"
+        if text:
+            assert r["verdict"] == "unsure", f"{text!r}: {r}"
 
 
 def test_empty_input_abstains():
     r = grade_attempt("", ACCEPTED, FEATURES)
     assert r["abstained"] is True
+    assert r["verdict"] == "unsure"
 
 
 def test_missing_verb_is_one_feature_off():

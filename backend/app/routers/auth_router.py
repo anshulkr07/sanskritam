@@ -34,6 +34,7 @@ async def dev_login(req: DevLoginRequest, db: Session = Depends(get_db)):
             "display_name": learner.display_name,
             "bridge_langs": learner.bridge_langs,
             "sanskrit_ratio": learner.sanskrit_ratio,
+            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
             "script_ratio": learner.script_ratio,
             "feature_mastery": learner.feature_mastery or {},
             "streak": learner.streak or 0,

@@ -6,8 +6,8 @@ Audio-first Sanskrit learning API. FastAPI + SQLAlchemy + SQLite. Runs on Window
 
 1. Answers are graded by **morphological feature set** (NOM.SG, PRES.3SG...), never by string — so free word order works: `ग्रामं गच्छामि` == `गच्छामि ग्रामम्`.
 2. Ambiguous forms (`au`, `e`, `oḥ`, neut NOM/ACC) produce **all valid readings**; the attempt is accepted if any reading matches.
-3. **Abstention**: if a word can't be parsed confidently, the attempt is marked `abstained` and never "incorrect" — a false accusation destroys trust (spec §6.3).
-4. One-feature-off answers get `off_by_one` with a diagnosis **naming the exact feature** ("the object takes the accusative") — that specificity is the product.
+3. **Abstention**: if a word can't be parsed confidently, the verdict is `unsure` with `abstained: true` — never "incorrect". `unsure` changes nothing: no streak reset, no mastery decay, no ratio drift (spec §6.3).
+4. One-feature-off answers get `off_by_one` with a diagnosis **naming the exact feature in plain English** ("the word 'rāma' should be in the nominative (subject) singular (NOM.SG)") — that specificity is the product.
 5. Morphology comes from the rule engine (curated tables) cross-checked per-word by **Vidyut/Chedaka** (real Pāṇinian parser, Apache-2.0 via vidyut-prakriya lineage).
 
 ## Setup
@@ -62,10 +62,10 @@ app/
   main.py            app factory, CORS, timing middleware
   config.py          pydantic-settings (env)
   db.py              SQLAlchemy engine/session
-  models.py          Learner, Challenge, AcceptedParse, Feature, Shloka, Attempt, Token, Session
+  models.py          Learner, Challenge, Feature, Shloka, Attempt, Token
   schemas.py         pydantic v2 request/response
   auth.py            token auth + admin guard
-  adaptive.py        mastery updates (SM-2-inspired), edge-of-mastery selection, no-repeat window
+  adaptive.py        mastery updates (SM-2-inspired), edge-of-mastery selection, no-repeat window, user-owned sanskrit_ratio ceiling
   grading/
     analyzer.py      rule engine + Vidyut cross-check + transliteration
     engine.py        feature-set comparison, variants, abstention, diagnosis

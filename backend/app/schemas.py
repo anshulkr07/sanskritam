@@ -64,9 +64,9 @@ class AttemptRequest(BaseModel):
 
 
 class AttemptResponse(BaseModel):
-    verdict: str  # correct | off_by_one | incorrect
+    verdict: str  # correct | off_by_one | incorrect | unsure
     parsed_features: dict[str, str]
-    expected_features: list[dict[str, str]]
+    accepted_parses: list[dict[str, str]]
     diff: list[dict[str, Any]]
     diagnosis: str
     grammar_note: Optional[dict[str, Any]] = None
@@ -144,3 +144,22 @@ class PipelineReport(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     version: str
+
+
+# ─── Speech ───
+
+class TTSRequest(BaseModel):
+    text: str = Field(..., min_length=1, max_length=2500)
+    language_code: str = "hi-IN"
+    speaker: str = "meera"
+    pace: float = Field(1.0, ge=0.5, le=2.0)
+
+
+class TTSResponse(BaseModel):
+    audio_base64: str
+    duration_hint: Optional[float] = None
+
+
+class STTResponse(BaseModel):
+    transcript: str
+    language_code: str
