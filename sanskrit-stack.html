@@ -1,0 +1,723 @@
+<title>Shabd Sanskrit Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --ground:      #F7F7FB;
+    --surface:     #FFFFFF;
+    --surface-alt: #F1F1F7;
+    --ink:         #191926;
+    --ink-soft:    #3A3A4E;
+    --muted:       #5F5F76;
+    --faint:       #8A8AA0;
+    --rule:        #DEDEE9;
+    --rule-strong: #C4C4D6;
+    --accent:      #4A3F9E;
+    --accent-tint: #ECEAF8;
+    --yes:         #1C6B50;
+    --yes-tint:    #DFF0E8;
+    --no:          #A3352A;
+    --no-tint:     #F8E4E1;
+    --warn:        #8A5A11;
+    --warn-tint:   #F9EEDC;
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --f-deva:    "Noto Serif Devanagari", "Nirmala UI", serif;
+
+    --measure: 68ch;
+    --wide: 1000px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #101017;
+      --surface:     #191922;
+      --surface-alt: #20202C;
+      --ink:         #E9E9F2;
+      --ink-soft:    #C6C6D6;
+      --muted:       #9A9AB2;
+      --faint:       #74748C;
+      --rule:        #2C2C3A;
+      --rule-strong: #3E3E52;
+      --accent:      #A79BF0;
+      --accent-tint: #23203A;
+      --yes:         #56C79B;
+      --yes-tint:    #16302A;
+      --no:          #EC8375;
+      --no-tint:     #331F1D;
+      --warn:        #DDA94F;
+      --warn-tint:   #302713;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #101017;
+    --surface:     #191922;
+    --surface-alt: #20202C;
+    --ink:         #E9E9F2;
+    --ink-soft:    #C6C6D6;
+    --muted:       #9A9AB2;
+    --faint:       #74748C;
+    --rule:        #2C2C3A;
+    --rule-strong: #3E3E52;
+    --accent:      #A79BF0;
+    --accent-tint: #23203A;
+    --yes:         #56C79B;
+    --yes-tint:    #16302A;
+    --no:          #EC8375;
+    --no-tint:     #331F1D;
+    --warn:        #DDA94F;
+    --warn-tint:   #302713;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0 24px 96px;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col  { max-width: var(--measure); }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    padding: 72px 0 36px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .eyebrow .deva {
+    font-family: var(--f-deva);
+    font-size: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+  }
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(2.3rem, 5.5vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+    max-width: 20ch;
+  }
+  .standfirst {
+    font-family: var(--f-display);
+    font-size: 1.16rem;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 0;
+  }
+  .meta {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 6px;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { padding-top: 60px; }
+
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 1.95rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 6px;
+  }
+  h2 .num {
+    font-family: var(--f-mono);
+    font-size: 0.62em;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-right: 0.7em;
+    vertical-align: 0.12em;
+  }
+  h3 {
+    font-family: var(--f-body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    margin: 32px 0 8px;
+  }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, .toc a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  strong { font-weight: 600; }
+  code, .mono {
+    font-family: var(--f-mono);
+    font-size: 0.86em;
+    background: var(--surface-alt);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- table of contents ---------- */
+
+  .toc {
+    margin-top: 36px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+  .toc-label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 10px;
+  }
+  .toc ol {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; gap: 7px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    counter-reset: toc;
+  }
+  .toc li { counter-increment: toc; font-size: 14.5px; }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--faint);
+    margin-right: 10px;
+  }
+  .toc a { color: var(--ink-soft); text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* ---------- verdict callout ---------- */
+
+  .verdict {
+    margin: 28px 0 8px;
+    padding: 22px 26px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .tag {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .caution {
+    margin: 24px 0;
+    padding: 18px 22px;
+    background: var(--warn-tint);
+    border: 1px solid color-mix(in srgb, var(--warn) 34%, transparent);
+    border-radius: 3px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .caution p:last-child { margin-bottom: 0; }
+  .caution .tag {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--warn);
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  /* ---------- tables ---------- */
+
+  .tablewrap {
+    overflow-x: auto;
+    margin: 22px 0 10px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    min-width: 460px;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 13px 18px 11px;
+    border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+  }
+  td {
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.name { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .code { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); }
+  tr.hero td { background: var(--accent-tint); }
+  tr.hero td.name { color: var(--accent); font-weight: 600; }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .chip.yes { background: var(--yes-tint); color: var(--yes); }
+  .chip.no  { background: var(--no-tint);  color: var(--no); }
+
+  .score {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .score.top { color: var(--yes); }
+
+  /* ---------- resource cards ---------- */
+
+  .cards {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+    margin: 22px 0 10px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .card .kicker {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .card .name { font-weight: 600; font-size: 15.5px; line-height: 1.3; }
+  .card .name a { text-decoration: none; }
+  .card .name a:hover { text-decoration: underline; }
+  .card .body { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .card .stat {
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+    border-top: 1px solid var(--rule);
+    margin-top: auto;
+    padding-top: 9px;
+  }
+
+  /* ---------- steps (a real sequence) ---------- */
+
+  .steps { margin: 22px 0 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 2px; }
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .steps li:first-child { border-top: 1px solid var(--rule); }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .steps .what { font-weight: 600; font-size: 15.5px; display: block; margin-bottom: 3px; }
+  .steps .why { font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    margin-top: 72px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--faint);
+  }
+  footer p { max-width: none; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 620px) {
+    body { padding: 0 18px 64px; font-size: 16px; }
+    .masthead { padding-top: 48px; }
+    .steps li { grid-template-columns: 34px 1fr; gap: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>Shabd · Build Reference</span>
+      <span class="deva">संस्कृतम् · sa-IN</span>
+    </div>
+    <h1>What actually exists for Sanskrit</h1>
+    <p class="standfirst">Every model, corpus and audio archive available for building an audio-first Sanskrit tutor — what is supported today, what is missing, and what the gaps cost.</p>
+    <div class="meta">
+      <span>Verified 28 Aug 2026</span>
+      <span>Sources: Sarvam docs · HuggingFace · AI4Bharat</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#finding">The one finding that matters</a></li>
+      <li><a href="#sarvam">Sarvam's Sanskrit coverage</a></li>
+      <li><a href="#voice">Solving the voice gap</a></li>
+      <li><a href="#corpora">Text, grammar and audio</a></li>
+      <li><a href="#economics">What it costs now</a></li>
+      <li><a href="#next">Open questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="finding">
+    <h2><span class="num">01</span>The one finding that matters</h2>
+    <div class="col">
+      <p class="lede">Sanskrit speech recognition is solved and free to you. Sanskrit speech <em>synthesis</em> is absent from your funded vendor — but fully available, at higher quality than any other Indic language, from an open-source model under Apache 2.0.</p>
+      <p>That combination removes the two constraints that looked fatal: the missing voice, and the need to hire a pandit to record one.</p>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">Verdict</span>
+      <p><strong>The flagship language is buildable.</strong> Sarvam's Saaras v3 handles Sanskrit input — including native code-mixed speech, which is exactly the input your product receives. Indic Parler-TTS handles Sanskrit output, and rates it the strongest of its 21 languages. Nothing in the pipeline is blocked.</p>
+    </div>
+  </section>
+
+  <section id="sarvam">
+    <h2><span class="num">02</span>Sarvam's Sanskrit coverage</h2>
+    <div class="col">
+      <p class="lede">The greyed-out Sanskrit tile on Sarvam's speech-to-text page is a missing demo clip, not missing support. The model docs confirm it.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Sarvam products against Sanskrit</caption>
+        <thead>
+          <tr><th scope="col">Product</th><th scope="col">Sanskrit</th><th scope="col">Coverage</th><th scope="col">Consequence for Shabd</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">Saaras v3 <span class="code">ASR</span></td>
+            <td><span class="chip yes">✓ sa-IN</span></td>
+            <td class="num">23 langs</td>
+            <td>Has a <code>codemix</code> output mode — built for exactly your mixed-language input</td>
+          </tr>
+          <tr>
+            <td class="name">Sarvam Translate</td>
+            <td><span class="chip yes">✓ sa-IN</span></td>
+            <td class="num">23 langs</td>
+            <td>Usable for gloss generation and bridge-language explanation</td>
+          </tr>
+          <tr>
+            <td class="name">Sarvam Vision <span class="code">OCR</span></td>
+            <td><span class="chip yes">✓ sa-IN</span></td>
+            <td class="num">23 langs</td>
+            <td>Digitise printed Sanskrit textbooks — an underrated content shortcut</td>
+          </tr>
+          <tr>
+            <td class="name">Bulbul v3 <span class="code">TTS</span></td>
+            <td><span class="chip no">✕ absent</span></td>
+            <td class="num">11 langs</td>
+            <td>No public roadmap. Source the voice elsewhere</td>
+          </tr>
+          <tr>
+            <td class="name">Sarvam-105B <span class="code">LLM</span></td>
+            <td><span class="chip no">✕ absent</span></td>
+            <td class="num">11 langs</td>
+            <td>The tutor's reasoning must run on a frontier model instead</td>
+          </tr>
+          <tr>
+            <td class="name">Saarika v2.5 <span class="code">legacy</span></td>
+            <td><span class="chip no">✕ absent</span></td>
+            <td class="num">11 langs</td>
+            <td>Superseded — do not build against it</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="col" style="font-size:14.5px;color:var(--muted)">Saaras v3 also covers the rest of the target list — Konkani, Maithili, Sindhi and Odia — so recognition is never the blocker for any planned language.</p>
+
+    <div class="caution">
+      <span class="tag">Verify before building</span>
+      <p>Sarvam's docs list Odia as <code>od-IN</code>; the website tile says <code>or-IN</code>. Confirm which the API accepts. And since the startup programme gives you a human contact, ask them directly for the Bulbul roadmap on Sanskrit, Konkani, Maithili and Sindhi — that answer is not public anywhere.</p>
+    </div>
+  </section>
+
+  <section id="voice">
+    <h2><span class="num">03</span>Solving the voice gap</h2>
+    <div class="col">
+      <p class="lede"><a href="https://huggingface.co/ai4bharat/indic-parler-tts">Indic Parler-TTS</a> — from AI4Bharat and HuggingFace, Apache 2.0, self-hostable — officially supports 21 languages, including all four that Sarvam omits.</p>
+      <p>Its Sanskrit voice does not merely work. Measured by native-speaker score, it is the <strong>best-performing language in the entire model</strong> — ahead of Tamil, ahead of Hindi.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Indic Parler-TTS — native-speaker score by language</caption>
+        <thead>
+          <tr><th scope="col">Language</th><th scope="col">Score</th><th scope="col">Voice</th><th scope="col">Assessment</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hero">
+            <td class="name">Sanskrit</td>
+            <td class="num"><span class="score top">99.79%</span></td>
+            <td class="code">Aryan</td>
+            <td>Highest of any language in the model</td>
+          </tr>
+          <tr>
+            <td class="name">Maithili</td>
+            <td class="num"><span class="score">95.36%</span></td>
+            <td class="code">1 voice</td>
+            <td>Near-perfect</td>
+          </tr>
+          <tr>
+            <td class="name">Konkani</td>
+            <td class="num"><span class="score">76.60%</span></td>
+            <td class="code">1 voice</td>
+            <td>Clear, usable</td>
+          </tr>
+          <tr>
+            <td class="name">Sindhi</td>
+            <td class="num"><span class="score">76.46%</span></td>
+            <td class="code">1 voice</td>
+            <td>Clear, natural</td>
+          </tr>
+          <tr>
+            <td class="name">Tamil <span class="code">reference</span></td>
+            <td class="num"><span class="score">75.48%</span></td>
+            <td class="code">multiple</td>
+            <td>A well-resourced language, scoring lower than all of the above</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <h3>The one real tradeoff</h3>
+      <p>Parler-TTS is autoregressive, so it is slower than a commercial API. That is a genuine risk for <em>live</em> conversation and a non-issue everywhere else — because the fix is architectural rather than technical.</p>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">Architecture</span>
+      <p><strong>Pre-generate the entire challenge corpus offline and serve it as static files from a CDN.</strong> No GPU in the request path, no latency, no marginal cost — the habit loop that drives retention becomes free to serve at any scale. Reserve live synthesis for the premium conversation tier, where it can pay for itself, and keep a Hindi voice as fallback for the bridge-language portions of an utterance.</p>
+    </div>
+  </section>
+
+  <section id="corpora">
+    <h2><span class="num">04</span>Text, grammar and audio</h2>
+    <div class="col">
+      <p class="lede">Sanskrit is poorly served commercially and unusually well served academically. The corpora below are the direct consequence of two centuries of philology, and they are better than anything available for most living Indian languages.</p>
+    </div>
+
+    <h3>Text and grammar</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="kicker">Annotated corpus</div>
+        <div class="name"><a href="http://www.sanskrit-linguistics.org/dcs/">Digital Corpus of Sanskrit</a></div>
+        <div class="body">Sandhi-split, with full morphological and lexical analysis across all layers and genres of Sanskrit literature. The strongest grammar backbone available for any Indic language.</div>
+        <div class="stat">4,800,000 tagged words · 650,000 lines</div>
+      </div>
+      <div class="card">
+        <div class="kicker">Text repository</div>
+        <div class="name">GRETIL</div>
+        <div class="body">The Göttingen Register of Electronic Texts in Indian Languages — the standard public-domain repository of machine-readable foundational texts.</div>
+        <div class="stat">Public domain</div>
+      </div>
+      <div class="card">
+        <div class="kicker">Validation tooling</div>
+        <div class="name">Sanskrit Heritage tools</div>
+        <div class="body">Huet's analysers, used in published work to validate and normalise DCS into a tagged gold corpus. Useful for checking generated Sanskrit programmatically.</div>
+        <div class="stat">Academic, openly available</div>
+      </div>
+    </div>
+
+    <h3>Speech and audio</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="kicker">TTS training data</div>
+        <div class="name">IndicVoices-R</div>
+        <div class="body">The first open-source TTS dataset covering Sanskrit. Comfortably enough to fine-tune if the base Parler voice falls short.</div>
+        <div class="stat">35.75 hrs · 14,604 utterances · 161 speakers</div>
+      </div>
+      <div class="card">
+        <div class="kicker">Spoken Sanskrit archive</div>
+        <div class="name">Samskrita Bharati on Internet Archive</div>
+        <div class="body">Graded readers, Balamodini children's stories, recorded lectures and Bhagavad Gita classes — read by volunteers, much of it marked public domain.</div>
+        <div class="stat">Free · verify licence per item</div>
+      </div>
+      <div class="card">
+        <div class="kicker">Daily spoken source</div>
+        <div class="name">AIR Sanskrit news</div>
+        <div class="body">Prasar Bharati broadcasts daily Sanskrit bulletins via newsonair.gov.in — a renewing source of contemporary spoken Sanskrit.</div>
+        <div class="stat">Reuse licence unclear</div>
+      </div>
+      <div class="card">
+        <div class="kicker">ASR benchmark</div>
+        <div class="name">Vedavani</div>
+        <div class="body">A Sanskrit ASR benchmark corpus. Note the domain: Vedic poetry, not conversational speech — useful for evaluation, misleading as training data for a tutor.</div>
+        <div class="stat">Vedic register only</div>
+      </div>
+    </div>
+
+    <div class="caution">
+      <span class="tag">Two licensing cautions</span>
+      <p>An uploader named "Samskrita Bharati" does not make every file under it public domain — check the licence on each item you use. Separately, do not voice-clone identifiable speakers from these recordings even where the audio itself is public domain: the recording's copyright status and a person's rights in their own voice are different questions. Use the archives as listening content and ASR training data, not as a source for a synthetic voice.</p>
+    </div>
+  </section>
+
+  <section id="economics">
+    <h2><span class="num">05</span>What it costs now</h2>
+    <div class="col">
+      <p class="lede">Text-to-speech was 75–90% of the variable cost per session. Self-hosting converts it from per-character billing into a fixed GPU line item — which changes which markets are viable.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Cost per 10-minute voice session</caption>
+        <thead>
+          <tr><th scope="col">Component</th><th scope="col">Sarvam Bulbul</th><th scope="col">Self-hosted Parler</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Speech synthesis</td><td class="num">₹15–18</td><td class="num">~₹2.5 amortised</td></tr>
+          <tr><td class="name">Speech recognition</td><td class="num">₹2</td><td class="num">₹2</td></tr>
+          <tr><td class="name">Tutor reasoning</td><td class="num">₹1</td><td class="num">₹1–3</td></tr>
+          <tr class="hero"><td class="name">Per session</td><td class="num">₹20</td><td class="num">₹6–8</td></tr>
+          <tr><td class="name">Engaged user, 20 sessions/mo</td><td class="num">₹400</td><td class="num">₹120–160</td></tr>
+          <tr>
+            <td class="name">Against ₹399/mo India</td>
+            <td><span class="chip no">✕ underwater</span></td>
+            <td><span class="chip yes">✓ ~60% margin</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p>The domestic Indian market moves from structurally unprofitable to genuinely viable — and the diaspora tier becomes comfortable rather than merely survivable. Pre-generated challenge audio drops the free tier's marginal cost to approximately zero.</p>
+      <p><strong>Spend the ₹25,000 Sarvam grant on recognition only.</strong> At ₹30 per hour that buys roughly <span class="mono">830 hours</span> of user speech — a large beta. Spending any of it on synthesis now buys something you can self-host for less.</p>
+    </div>
+  </section>
+
+  <section id="next">
+    <h2><span class="num">06</span>Open questions</h2>
+    <div class="col">
+      <p class="lede">In dependency order — each answer determines whether the next question is worth asking.</p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <div>
+          <span class="what">Generate 20 Sanskrit sentences with the "Aryan" voice</span>
+          <span class="why">A weekend of work that closes the largest remaining unknown. Send the clips to three Sanskrit speakers and ask whether the vowel length and sandhi are right. Their answer decides whether the flagship ships.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="what">Benchmark Parler-TTS latency on a real GPU</span>
+          <span class="why">Determines whether live conversation is viable at launch or has to wait behind the pre-generated challenge bank. Either outcome is workable; the timing of the premium tier depends on it.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="what">Test Saaras v3 codemix mode on genuinely mixed speech</span>
+          <span class="why">Record yourself saying a Hindi–English–Sanskrit sentence of the kind the product is built to receive. Monolingual ASR accuracy tells you nothing about how it handles the real input.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="what">Ask Sarvam for the Bulbul language roadmap</span>
+          <span class="why">One email through the startup programme. If Sanskrit TTS is months away, the self-hosting work becomes a bridge rather than permanent infrastructure — which changes how much to invest in it.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="what">Recruit one Sanskrit expert for content validation</span>
+          <span class="why">No longer needed for recording, still needed for correctness. Reachable remotely through Samskrita Bharati chapters, Central Sanskrit University campuses, Vyoma Labs, the sanskrit-programmers group, or the ashtadhyayi.com community.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>Compiled 28 August 2026 from Sarvam AI model documentation, the AI4Bharat Indic Parler-TTS model card, IndicVoices-R, and the Digital Corpus of Sanskrit. Figures for cost per session are modelled from published list pricing and are estimates, not quotes. Native-speaker scores are as reported on the Indic Parler-TTS model card.</p>
+  </footer>
+
+</div>

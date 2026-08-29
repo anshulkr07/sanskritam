@@ -1,0 +1,583 @@
+<title>Shabd Product Shape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --ground:      #F7F7FB;
+    --surface:     #FFFFFF;
+    --surface-alt: #F1F1F7;
+    --ink:         #191926;
+    --ink-soft:    #3A3A4E;
+    --muted:       #5F5F76;
+    --faint:       #8A8AA0;
+    --rule:        #DEDEE9;
+    --rule-strong: #C4C4D6;
+    --accent:      #4A3F9E;
+    --accent-tint: #ECEAF8;
+    --rubric:      #A3352A;
+    --rubric-tint: #F8E4E1;
+    --pos:         #1C6B50;
+    --pos-tint:    #DFF0E8;
+    --warn:        #8A5A11;
+    --warn-tint:   #F9EEDC;
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --f-deva:    "Noto Serif Devanagari", "Nirmala UI", serif;
+
+    --measure: 68ch;
+    --wide: 1000px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #101017;
+      --surface:     #191922;
+      --surface-alt: #20202C;
+      --ink:         #E9E9F2;
+      --ink-soft:    #C6C6D6;
+      --muted:       #9A9AB2;
+      --faint:       #74748C;
+      --rule:        #2C2C3A;
+      --rule-strong: #3E3E52;
+      --accent:      #A79BF0;
+      --accent-tint: #23203A;
+      --rubric:      #EC8375;
+      --rubric-tint: #331F1D;
+      --pos:         #56C79B;
+      --pos-tint:    #16302A;
+      --warn:        #DDA94F;
+      --warn-tint:   #302713;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #101017;
+    --surface:     #191922;
+    --surface-alt: #20202C;
+    --ink:         #E9E9F2;
+    --ink-soft:    #C6C6D6;
+    --muted:       #9A9AB2;
+    --faint:       #74748C;
+    --rule:        #2C2C3A;
+    --rule-strong: #3E3E52;
+    --accent:      #A79BF0;
+    --accent-tint: #23203A;
+    --rubric:      #EC8375;
+    --rubric-tint: #331F1D;
+    --pos:         #56C79B;
+    --pos-tint:    #16302A;
+    --warn:        #DDA94F;
+    --warn-tint:   #302713;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--f-body); font-size: 16.5px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; margin: 0; padding: 0 24px 96px;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col  { max-width: var(--measure); }
+
+  .masthead {
+    padding: 72px 0 36px; border-bottom: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(2.3rem, 5.5vw, 3.5rem); line-height: 1.08;
+    letter-spacing: -0.02em; text-wrap: balance; margin: 0; max-width: 20ch;
+  }
+  .standfirst {
+    font-family: var(--f-display); font-size: 1.16rem; font-style: italic;
+    color: var(--muted); max-width: 60ch; margin: 0;
+  }
+  .meta {
+    font-family: var(--f-mono); font-size: 12px; color: var(--faint);
+    display: flex; flex-wrap: wrap; gap: 20px; padding-top: 6px;
+  }
+
+  section { padding-top: 60px; }
+
+  h2 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.2;
+    letter-spacing: -0.015em; text-wrap: balance; margin: 0 0 6px;
+  }
+  h3 { font-family: var(--f-body); font-weight: 600; font-size: 1rem; margin: 34px 0 8px; }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  strong { font-weight: 600; }
+  code {
+    font-family: var(--f-mono); font-size: 0.86em;
+    background: var(--surface-alt); padding: 1px 5px; border-radius: 3px; color: var(--ink-soft);
+  }
+  .dv { font-family: var(--f-deva); }
+
+  figure { margin: 28px 0 10px; }
+  figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+  .figframe {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 24px 22px 16px; overflow-x: auto;
+  }
+  figcaption {
+    font-size: 14px; color: var(--muted); margin-top: 12px;
+    max-width: 72ch; line-height: 1.55;
+  }
+
+  .tablewrap {
+    overflow-x: auto; margin: 22px 0 10px;
+    border: 1px solid var(--rule); border-radius: 4px; background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 480px; }
+  caption {
+    caption-side: top; text-align: left; font-family: var(--f-mono);
+    font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--faint); padding: 13px 18px 11px; border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted); padding: 11px 18px;
+    border-bottom: 1px solid var(--rule-strong); white-space: nowrap;
+  }
+  td { padding: 11px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.name { color: var(--ink); font-weight: 500; }
+  td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.cut td { opacity: 0.72; }
+  tr.cut td.name { color: var(--rubric); }
+
+  .verdict {
+    margin: 26px 0 8px; padding: 22px 26px; background: var(--surface);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 3px;
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;
+  }
+  .verdict.warnb { border-left-color: var(--warn); background: var(--warn-tint); }
+  .verdict.warnb .tag { color: var(--warn); }
+
+  /* feature ranking */
+  .feats { display: grid; gap: 12px; margin: 22px 0 8px; }
+  .feat {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 18px 20px; display: grid; grid-template-columns: 34px 1fr; gap: 16px; align-items: start;
+  }
+  .feat .rank {
+    font-family: var(--f-mono); font-size: 13px; font-weight: 600;
+    color: var(--rubric); padding-top: 2px;
+  }
+  .feat .name { font-weight: 600; font-size: 15.5px; margin-bottom: 4px; }
+  .feat .body { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+  .feat .tagline {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--faint); margin-top: 8px; display: block;
+  }
+
+  /* palette swatches */
+  .palette { display: flex; flex-wrap: wrap; gap: 0; margin: 22px 0 8px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+  .sw { flex: 1 1 120px; padding: 20px 14px 14px; display: flex; flex-direction: column; gap: 3px; min-width: 120px; }
+  .sw .hex { font-family: var(--f-mono); font-size: 11.5px; }
+  .sw .role { font-size: 12px; opacity: 0.75; }
+
+  footer {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--faint);
+  }
+  footer p { max-width: none; }
+
+  @media (max-width: 620px) {
+    body { padding: 0 18px 64px; font-size: 16px; }
+    .masthead { padding-top: 48px; }
+    .figframe { padding: 16px 14px 12px; }
+    .feat { grid-template-columns: 26px 1fr; gap: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Shabd · Product Shape</div>
+    <h1>What the app actually is</h1>
+    <p class="standfirst">Information architecture, session anatomy, and the visual direction — organised around what a learner opens the app to do, not around what kinds of content exist.</p>
+    <div class="meta">
+      <span>29 August 2026</span>
+      <span>3 tabs · 1 primary action</span>
+    </div>
+  </header>
+
+  <section id="fix">
+    <h2>The reorganisation</h2>
+    <div class="col">
+      <p class="lede">A feature list organised by content type produces a six-tab nav where the user faces a menu and picks nothing. Two of the six proposed surfaces are not destinations at all — they are layers that belong inside the moment of learning.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Proposed surface → where it actually lives</caption>
+        <thead><tr><th scope="col">Proposed</th><th scope="col">Becomes</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Daily challenges</td><td class="num">Practice tab</td><td>The primary action. One obvious thing to do on open.</td></tr>
+          <tr><td class="name">Audio challenges</td><td class="num">Item type inside a session</td><td>Not a separate surface — audio vs text is a mode toggle, and the silent mode is what wins the commute</td></tr>
+          <tr><td class="name">Daily milestone / checkpoints</td><td class="num">The mālā on Practice</td><td>Progress is the shape of the home screen, not a separate page</td></tr>
+          <tr><td class="name">Pronunciation page</td><td class="num">Varṇamālā in Explore <em>and</em> inline feedback</td><td>Two distinct things. The alphabet — every sound, every stroke — is a real destination and the first thing a Devanagari-illiterate learner needs. Corrective feedback is separate and stays inline.</td></tr>
+          <tr><td class="name">Grammar page</td><td class="num">Grammar engine in Explore <em>and</em> inline notes</td><td>Inline notes teach at the error; the explorable engine is where curiosity goes. The note links into it.</td></tr>
+          <tr><td class="name">Audio conversation</td><td class="num">Speak tab</td><td>A deliberate, longer, premium session — genuinely its own destination</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure>
+      <div class="figframe">
+        <svg viewBox="0 0 900 400" role="img" aria-label="Information architecture: three tabs. Practice is the default and holds the mala progress path and the daily session, with grammar notes and pronunciation feedback appearing inline inside session items and linking through to Explore. Speak holds guided conversation and a no-correction free-talk mode. Explore holds the varnamala phonetic grid, the grammar engine, dictionary lookup and the shloka archive. A profile screen sits outside the tabs and holds coverage, streak, the two ratio dials and the family view.">
+          <defs>
+            <marker id="ia" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- tab bar -->
+          <rect x="4" y="20" width="892" height="52" rx="5" fill="none" stroke="currentColor" stroke-opacity="0.28"/>
+          <text x="20" y="16" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.5" letter-spacing="1.3">TAB BAR</text>
+
+          <rect x="14" y="28" width="286" height="36" rx="4" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="157" y="51" text-anchor="middle" font-size="13.5" font-weight="600" fill="var(--accent)">Practice — default</text>
+
+          <rect x="308" y="28" width="286" height="36" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.5"/>
+          <text x="451" y="51" text-anchor="middle" font-size="13.5" font-weight="600" fill="currentColor">Speak</text>
+
+          <rect x="602" y="28" width="286" height="36" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.5"/>
+          <text x="745" y="51" text-anchor="middle" font-size="13.5" font-weight="600" fill="currentColor">Explore</text>
+
+          <line x1="157" y1="72" x2="157" y2="100" stroke="currentColor" stroke-opacity="0.4" marker-end="url(#ia)"/>
+          <line x1="451" y1="72" x2="451" y2="100" stroke="currentColor" stroke-opacity="0.4" marker-end="url(#ia)"/>
+          <line x1="745" y1="72" x2="745" y2="100" stroke="currentColor" stroke-opacity="0.4" marker-end="url(#ia)"/>
+
+          <!-- practice column -->
+          <rect x="14" y="106" width="286" height="132" rx="4" fill="none" stroke="var(--accent)" stroke-opacity="0.55"/>
+          <text x="30" y="130" font-size="12" font-weight="600" fill="currentColor">Mālā — 108 beads</text>
+          <text x="30" y="148" font-size="11" fill="currentColor" opacity="0.62">progress is the home screen</text>
+          <line x1="30" y1="162" x2="284" y2="162" stroke="currentColor" stroke-opacity="0.18"/>
+          <text x="30" y="182" font-size="12" font-weight="600" fill="currentColor">Today's session</text>
+          <text x="30" y="200" font-size="11" fill="currentColor" opacity="0.62">one button · ~5 min</text>
+          <text x="30" y="222" font-size="11" fill="currentColor" opacity="0.62">audio ⇄ text toggle</text>
+
+          <!-- inline layers -->
+          <rect x="14" y="256" width="286" height="118" rx="4" fill="none" stroke="var(--rubric)" stroke-dasharray="5 4" stroke-opacity="0.75"/>
+          <text x="30" y="280" font-size="11" font-family="IBM Plex Mono, monospace" fill="var(--rubric)" letter-spacing="1.1">INLINE — NOT TABS</text>
+          <text x="30" y="304" font-size="12" fill="currentColor" opacity="0.82">Grammar note on the error</text>
+          <text x="30" y="326" font-size="12" fill="currentColor" opacity="0.82">Pronunciation feedback</text>
+          <text x="30" y="348" font-size="12" fill="currentColor" opacity="0.82">Tap any word → breakdown</text>
+          <line x1="157" y1="238" x2="157" y2="250" stroke="var(--rubric)" stroke-opacity="0.6" marker-end="url(#ia)"/>
+
+          <!-- speak column -->
+          <rect x="308" y="106" width="286" height="132" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.4"/>
+          <text x="324" y="130" font-size="12" font-weight="600" fill="currentColor">Guided conversation</text>
+          <text x="324" y="148" font-size="11" fill="currentColor" opacity="0.62">avatar · correction budget</text>
+          <line x1="324" y1="162" x2="578" y2="162" stroke="currentColor" stroke-opacity="0.18"/>
+          <text x="324" y="182" font-size="12" font-weight="600" fill="currentColor">Free talk</text>
+          <text x="324" y="200" font-size="11" fill="currentColor" opacity="0.62">corrections off — confidence</text>
+          <text x="324" y="222" font-size="11" fill="var(--rubric)" opacity="0.9">metered · premium</text>
+
+          <!-- explore column -->
+          <rect x="602" y="106" width="286" height="132" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.4"/>
+          <text x="618" y="128" font-size="12" font-weight="600" fill="currentColor">Varṇamālā — 5×5 grid</text>
+          <text x="618" y="145" font-size="11" fill="currentColor" opacity="0.62">sound · mouth · stroke order</text>
+          <text x="618" y="168" font-size="12" font-weight="600" fill="currentColor">Grammar engine</text>
+          <text x="618" y="185" font-size="11" fill="currentColor" opacity="0.62">prakriyā · sandhi · kāraka</text>
+          <text x="618" y="207" font-size="12" font-weight="600" fill="currentColor">Dictionary · Śloka archive</text>
+          <text x="618" y="224" font-size="11" fill="currentColor" opacity="0.62">Vidyut + DCS lookup</text>
+
+          <!-- profile, outside tabs -->
+          <rect x="602" y="256" width="286" height="118" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.4"/>
+          <text x="618" y="280" font-size="11" font-family="IBM Plex Mono, monospace" fill="currentColor" opacity="0.5" letter-spacing="1.1">PROFILE — NOT A TAB</text>
+          <text x="618" y="304" font-size="12" fill="currentColor" opacity="0.82">Grammatical coverage map</text>
+          <text x="618" y="326" font-size="12" fill="currentColor" opacity="0.82">Two ratio dials</text>
+          <text x="618" y="348" font-size="12" fill="currentColor" opacity="0.82">Family view — parents pay</text>
+        </svg>
+      </div>
+      <figcaption>Three destinations, one clearly primary. The dashed block matters: corrective grammar and pronunciation reach the learner <em>inside</em> a session item, attached to something they just got wrong — and each note links through to the matching explorer, so curiosity has somewhere to go.</figcaption>
+    </figure>
+  </section>
+
+  <section id="varna">
+    <h2>The varṇamālā is a grid, not an alphabet</h2>
+    <div class="col">
+      <p class="lede">Devanagari's order is not arbitrary like A-B-C. The consonants form a 5×5 matrix organised by articulation — row is where the tongue goes, column is voicing and aspiration. Position in the grid <em>is</em> the pronunciation instruction.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Sparśa — the stop consonants</caption>
+        <thead>
+          <tr>
+            <th scope="col">Place</th>
+            <th scope="col">unvoiced</th><th scope="col">unvoiced asp.</th>
+            <th scope="col">voiced</th><th scope="col">voiced asp.</th><th scope="col">nasal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Velar · <span class="dv">कण्ठ्य</span></td><td class="dv">क</td><td class="dv">ख</td><td class="dv">ग</td><td class="dv">घ</td><td class="dv">ङ</td></tr>
+          <tr><td class="name">Palatal · <span class="dv">तालव्य</span></td><td class="dv">च</td><td class="dv">छ</td><td class="dv">ज</td><td class="dv">झ</td><td class="dv">ञ</td></tr>
+          <tr><td class="name">Retroflex · <span class="dv">मूर्धन्य</span></td><td class="dv">ट</td><td class="dv">ठ</td><td class="dv">ड</td><td class="dv">ढ</td><td class="dv">ण</td></tr>
+          <tr><td class="name">Dental · <span class="dv">दन्त्य</span></td><td class="dv">त</td><td class="dv">थ</td><td class="dv">द</td><td class="dv">ध</td><td class="dv">न</td></tr>
+          <tr><td class="name">Labial · <span class="dv">ओष्ठ्य</span></td><td class="dv">प</td><td class="dv">फ</td><td class="dv">ब</td><td class="dv">भ</td><td class="dv">म</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p>So the page is <strong>not</strong> a scrolling list of 33 shapes to memorise. Tap a cell and get three things at once: the sound, a mouth-position diagram, and a stroke-order animation. Move down a column and hear the place of articulation shift; move across a row and hear voicing switch on. The learner discovers a <em>system</em> rather than memorising glyphs — which is both faster and the first moment of awe.</p>
+      <p>It also gives the minimal-pair drill a natural home. The confusions that matter — <span class="dv">श/ष/स</span> for Hindi speakers, <span class="dv">ट</span> vs <span class="dv">त</span> for English speakers — are <strong>adjacent cells</strong>. The grid explains why they are confusable, which is most of the fix.</p>
+      <p>Stroke animation is cheap: an SVG path animated with <code>stroke-dasharray</code>. No video, no library, works offline, scales to any size.</p>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">Progressive disclosure</span>
+      <p>Pin the varṇamālā to the top of Explore until the learner has covered the alphabet, then let it recede. It is used heavily for about two weeks and rarely afterwards — but in those two weeks it is the most important screen in the product, particularly for diaspora learners who arrive unable to read the script at all.</p>
+    </div>
+  </section>
+
+  <section id="engine">
+    <h2>Grammar as a live rule engine</h2>
+    <div class="col">
+      <p class="lede">Sanskrit grammar is deterministic, formally specified, and genuinely startling to anyone with a technical background — Pāṇini's Aṣṭādhyāyī is a generative rule system with meta-rules governing rule application, written some two and a half millennia before anything comparable in computer science.</p>
+      <p><strong>And you already have the engine.</strong> <code>vidyut-prakriyā</code> derives forms from Pāṇinian rules and can expose the derivation steps. It is in the architecture for validation; pointing it at the interface costs almost nothing and produces something no mobile app currently offers.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Four explorable surfaces</caption>
+        <thead><tr><th scope="col">Surface</th><th scope="col">What the learner does</th><th scope="col">Why it lands</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">Prakriyā viewer</td>
+            <td>Pick any form, watch it built step by step, each step labelled with the sūtra that fired</td>
+            <td>Not a textbook table — Pāṇini's system executing, live and verifiable</td>
+          </tr>
+          <tr>
+            <td class="name">Sandhi playground</td>
+            <td>Drop two words together, watch the transformation, see the governing rule</td>
+            <td>Sandhi is a deterministic function. Show it as one.</td>
+          </tr>
+          <tr>
+            <td class="name">Word-order shuffler</td>
+            <td>One sentence, every valid arrangement, all correct</td>
+            <td>Makes free word order visceral — the case ending carries the role, not the position</td>
+          </tr>
+          <tr>
+            <td class="name">Kāraka map</td>
+            <td>Semantic roles mapped onto case endings</td>
+            <td>Effectively a type system. Framing it that way lands hard with technical users.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">This is also the marketing engine</span>
+      <p>Every one of these surfaces is a short video. <em>"Sanskrit had formal generative grammar two and a half thousand years before Backus–Naur form."</em> The content channel that acquisition depends on gets produced by the product itself, at no extra cost — and unlike most app marketing, the claim is true and checkable.</p>
+    </div>
+  </section>
+
+  <section id="session">
+    <h2>The five-minute session</h2>
+    <div class="col">
+      <p class="lede">The session is the product. It should open on a win, work at the edge of what the learner knows, and end on a completion — without ever asking them to choose a mode.</p>
+    </div>
+
+    <figure>
+      <div class="figframe">
+        <svg viewBox="0 0 900 250" role="img" aria-label="Session anatomy across roughly five minutes: a thirty-second recognition warm-up using words the learner already knows from Hindi, three minutes of core practice at the edge of feature mastery mixing audio and text items, ninety seconds on the daily chanted shloka with tap-to-expand word breakdown, and a twenty-second close where a mala bead fills.">
+          <defs>
+            <marker id="sa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- timeline -->
+          <line x1="10" y1="196" x2="880" y2="196" stroke="currentColor" stroke-opacity="0.25"/>
+
+          <!-- beat 1 -->
+          <rect x="10" y="46" width="150" height="120" rx="4" fill="var(--pos-tint)" stroke="var(--pos)" stroke-width="1.3"/>
+          <text x="85" y="72" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--pos)">Recognition</text>
+          <text x="85" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">2–3 words you</text>
+          <text x="85" y="110" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">already know</text>
+          <text x="85" y="132" text-anchor="middle" font-size="17" font-family="Noto Serif Devanagari, serif" fill="currentColor">जल · नाम</text>
+          <text x="85" y="152" text-anchor="middle" font-size="10" fill="var(--pos)">opens on a win</text>
+          <text x="85" y="216" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.6">0:30</text>
+
+          <!-- beat 2 -->
+          <rect x="188" y="30" width="300" height="136" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="338" y="56" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--accent)">Core practice</text>
+          <text x="338" y="78" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">4–6 items at the edge of</text>
+          <text x="338" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">feature mastery</text>
+          <line x1="212" y1="108" x2="464" y2="108" stroke="currentColor" stroke-opacity="0.18"/>
+          <text x="338" y="128" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">audio ⇄ text, learner's choice</text>
+          <text x="338" y="150" text-anchor="middle" font-size="10.5" fill="var(--rubric)">wrong answer → grammar note inline</text>
+          <text x="338" y="216" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.6">3:00</text>
+
+          <!-- beat 3 -->
+          <rect x="516" y="46" width="200" height="120" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.5"/>
+          <text x="616" y="72" text-anchor="middle" font-size="12.5" font-weight="600" fill="currentColor">Daily śloka</text>
+          <text x="616" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">chanted · Vāgdhenu</text>
+          <text x="616" y="114" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">syllables highlight</text>
+          <text x="616" y="136" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">tap word → breakdown</text>
+          <text x="616" y="154" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">classical register</text>
+          <text x="616" y="216" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.6">1:30</text>
+
+          <!-- beat 4 -->
+          <rect x="744" y="60" width="146" height="92" rx="4" fill="none" stroke="var(--rubric)" stroke-width="1.3"/>
+          <text x="817" y="86" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--rubric)">Close</text>
+          <text x="817" y="108" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">a bead fills</text>
+          <text x="817" y="126" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">ratio nudge</text>
+          <text x="817" y="144" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">occasionally</text>
+          <text x="817" y="216" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.6">0:20</text>
+
+          <line x1="164" y1="106" x2="182" y2="106" stroke="currentColor" stroke-opacity="0.45" marker-end="url(#sa)"/>
+          <line x1="492" y1="106" x2="510" y2="106" stroke="currentColor" stroke-opacity="0.45" marker-end="url(#sa)"/>
+          <line x1="720" y1="106" x2="738" y2="106" stroke="currentColor" stroke-opacity="0.45" marker-end="url(#sa)"/>
+
+          <text x="445" y="240" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.5" letter-spacing="1.2">≈ 5 MINUTES · ALL THREE REGISTERS · NO MODE CHOICE ASKED OF THE USER</text>
+        </svg>
+      </div>
+      <figcaption>Opening with words the learner already recognises from Hindi does double duty: it guarantees an early success, and it re-proves the tatsama bridge every single day — which is the emotional core of the whole product.</figcaption>
+    </figure>
+  </section>
+
+  <section id="missing">
+    <h2>Six features worth adding</h2>
+
+    <div class="feats">
+      <div class="feat">
+        <span class="rank">01</span>
+        <div>
+          <div class="name">Tap any word, anywhere</div>
+          <div class="body">Full morphological breakdown on tap — in a challenge, in the śloka, in a conversation transcript. Vidyut and DCS already give you this, so it costs almost nothing, and it is the most-used feature in every serious language app. Nobody serves it well for Sanskrit on mobile.</div>
+          <span class="tagline">Near-free · highest daily use</span>
+        </div>
+      </div>
+
+      <div class="feat">
+        <span class="rank">02</span>
+        <div>
+          <div class="name">Grammatical coverage as the progress model</div>
+          <div class="body">Duolingo shows XP, which means nothing. Show "6 of 8 cases · 2 of 3 numbers · 4 of 10 verb classes" — a real map of what has been mastered. More motivating, more honest, and it falls straight out of <code>feature_mastery</code>. Competitors cannot copy this without a morphological analyser.</div>
+          <span class="tagline">Differentiator · free from existing data</span>
+        </div>
+      </div>
+
+      <div class="feat">
+        <span class="rank">03</span>
+        <div>
+          <div class="name">Chant-along with syllable highlighting</div>
+          <div class="body">Vāgdhenu renders the verse, forced alignment scores the learner chanting it back, and each akṣara lights as it passes. Karaoke for śloka. Architecturally almost free given what is already planned — and the most shareable thing in the app.</div>
+          <span class="tagline">Shareable · already in the stack</span>
+        </div>
+      </div>
+
+      <div class="feat">
+        <span class="rank">04</span>
+        <div>
+          <div class="name">Minimal-pair pronunciation drill</div>
+          <div class="body">Target the sounds the learner's bridge language specifically breaks: retroflex vs dental (<span class="dv">ट/त</span>), aspirated vs unaspirated (<span class="dv">क/ख</span>), the three sibilants (<span class="dv">श/ष/स</span>) that Hindi speakers systematically collapse. Drills chosen by <em>which language you already speak</em> — and each pair is a pair of neighbouring cells in the varṇa grid, so the drill and the explanation are the same object.</div>
+          <span class="tagline">Novel · keyed to bridge language</span>
+        </div>
+      </div>
+
+      <div class="feat">
+        <span class="rank">05</span>
+        <div>
+          <div class="name">Parent / family view</div>
+          <div class="body">The family tier sells to diaspora parents. They pay, the child uses it, and they need to see progress to keep paying. Without this the tier does not convert — which makes it monetisation-critical rather than a nice-to-have.</div>
+          <span class="tagline">Monetisation-critical</span>
+        </div>
+      </div>
+
+      <div class="feat">
+        <span class="rank">06</span>
+        <div>
+          <div class="name">Free talk, corrections off</div>
+          <div class="body">A place to speak badly with nobody marking it. Correction fatigue is real, and confidence is most of what stops adult learners from opening their mouths. Cheap to build — it is the conversation engine with the correction budget set to zero.</div>
+          <span class="tagline">Confidence · trivial to build</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="col">One cheap extra: a <strong>daily śloka home-screen widget</strong>. It shows up every day without the app being opened, costs almost nothing to serve from the CDN, and is the highest-retention-per-effort item on this page.</p>
+  </section>
+
+  <section id="visual">
+    <h2>Visual direction</h2>
+
+    <div class="verdict warnb">
+      <span class="tag">The trap</span>
+      <p>The default "Indian cultural app" look — saffron and marigold, temple silhouettes, a Devanagari-flavoured Latin display font, lotus motifs — reads as cheap and is what every generated design produces. Avoid it completely. This is a scholarly product, not a devotional one.</p>
+    </div>
+
+    <h3>Borrow rubrication, not temples</h3>
+    <div class="col">
+      <p>Sanskrit manuscripts were written in black ink with <strong>red reserved for structure</strong> — section markers, verse numbers, <span class="dv">daṇḍa</span> punctuation. That is a real, specific, non-kitsch visual inheritance: a restrained ground, ink-dark text, and one red used <em>structurally</em> rather than decoratively.</p>
+    </div>
+
+    <div class="palette">
+      <div class="sw" style="background:#FBFAF7;color:#1A1A22"><span class="hex">#FBFAF7</span><span class="role">ground — warm paper, not cream</span></div>
+      <div class="sw" style="background:#1A1A22;color:#F2F2F6"><span class="hex">#1A1A22</span><span class="role">ink</span></div>
+      <div class="sw" style="background:#A3352A;color:#FFFFFF"><span class="hex">#A3352A</span><span class="role">rubric — structure only</span></div>
+      <div class="sw" style="background:#1C6B50;color:#FFFFFF"><span class="hex">#1C6B50</span><span class="role">correct</span></div>
+      <div class="sw" style="background:#8A8A9C;color:#FFFFFF"><span class="hex">#8A8A9C</span><span class="role">uncertain — never red</span></div>
+    </div>
+
+    <h3>Devanagari is the hero, not an afterthought</h3>
+    <div class="col">
+      <p>Most Indian apps render <span class="dv">देवनागरी</span> in the system fallback at body size and it looks cheap. Set it large, in a real face, with generous line-height — the script is beautiful and it can carry the whole design. Pair it with a quiet Latin face rather than competing with it.</p>
+    </div>
+
+    <h3>Make the dials visible</h3>
+    <div class="col">
+      <p>The ratio dial is the differentiator; do not bury it in settings. Show <strong>two sliders</strong> — how much Sanskrit, how much Devanagari — and let the learner move them. They are independent because the markets are opposite: a diaspora beginner wants high Sanskrit and low Devanagari, a Hindi speaker wants exactly the reverse.</p>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">One rule from the architecture</span>
+      <p>Uncertain pronunciation feedback must render <strong>neutral grey, never red</strong>. The abstention principle needs a visual state: "not sure" has to look different from "wrong", or the system quietly becomes the false accuser it was designed not to be.</p>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>Six rules to hold the line</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Rule</th><th scope="col">Why it matters here</th></tr></thead>
+        <tbody>
+          <tr><td class="name">One obvious action on open</td><td>A menu of six surfaces gets none of them chosen. Practice is the default tab and today's session is the biggest thing on it.</td></tr>
+          <tr><td class="name">Teach at the point of error</td><td>Grammar and pronunciation reach the learner attached to a mistake, never as a room they must decide to enter.</td></tr>
+          <tr><td class="name">Never block on audio</td><td>Every spoken item needs a typed fallback. The commute is where the daily habit lives, and it is silent.</td></tr>
+          <tr><td class="name">Abstain rather than accuse</td><td>A missed error costs far less than telling a learner they were wrong when they were right.</td></tr>
+          <tr><td class="name">Be honest about latency</td><td>Conversation will be slow. Show the avatar thinking; never fake instant and never leave dead air unexplained.</td></tr>
+          <tr><td class="name">Open on a win</td><td>Every session starts with something already known. Confidence is the scarce resource in adult language learning.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>Product shape as of 29 August 2026, derived from the architecture in <code>architecture.md</code>. The three-tab structure is the decision most expensive to reverse — navigation shapes what users believe the product is. Note the split that matters: corrective feedback is inline, while the varṇamālā and the grammar engine are real destinations in Explore, and the inline notes link into them. Feature rankings assume the diaspora family tier is a live monetisation path; if that changes, item 05 drops sharply in priority.</p>
+  </footer>
+
+</div>

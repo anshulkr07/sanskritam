@@ -7,7 +7,8 @@ class Settings(BaseSettings):
     port: int = 8000
     db_path: str = "app.db"
     admin_token: str = "dev-admin"
-    analyzer: str = "rule"  # "rule" | "vidyut"
+    analyzer: str = "vidyut"  # "rule" | "vidyut" — vidyut default, graceful fallback to rule if unavailable
+    vidyut_data_dir: str = ""  # empty -> backend/vidyut-data (auto-downloaded on first use)
     log_level: str = "INFO"
     cors_origins: str = "*"
 

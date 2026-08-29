@@ -1,0 +1,564 @@
+<title>Who Pays for Sanskrit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --ground:      #F7F7FB;
+    --surface:     #FFFFFF;
+    --surface-alt: #F1F1F7;
+    --ink:         #191926;
+    --ink-soft:    #3A3A4E;
+    --muted:       #5F5F76;
+    --faint:       #8A8AA0;
+    --rule:        #DEDEE9;
+    --rule-strong: #C4C4D6;
+    --accent:      #4A3F9E;
+    --accent-tint: #ECEAF8;
+    --pos:         #1C6B50;
+    --pos-tint:    #DFF0E8;
+    --neg:         #A3352A;
+    --neg-tint:    #F8E4E1;
+    --warn:        #8A5A11;
+    --warn-tint:   #F9EEDC;
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+    --measure: 68ch;
+    --wide: 1000px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #101017;
+      --surface:     #191922;
+      --surface-alt: #20202C;
+      --ink:         #E9E9F2;
+      --ink-soft:    #C6C6D6;
+      --muted:       #9A9AB2;
+      --faint:       #74748C;
+      --rule:        #2C2C3A;
+      --rule-strong: #3E3E52;
+      --accent:      #A79BF0;
+      --accent-tint: #23203A;
+      --pos:         #56C79B;
+      --pos-tint:    #16302A;
+      --neg:         #EC8375;
+      --neg-tint:    #331F1D;
+      --warn:        #DDA94F;
+      --warn-tint:   #302713;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #101017;
+    --surface:     #191922;
+    --surface-alt: #20202C;
+    --ink:         #E9E9F2;
+    --ink-soft:    #C6C6D6;
+    --muted:       #9A9AB2;
+    --faint:       #74748C;
+    --rule:        #2C2C3A;
+    --rule-strong: #3E3E52;
+    --accent:      #A79BF0;
+    --accent-tint: #23203A;
+    --pos:         #56C79B;
+    --pos-tint:    #16302A;
+    --neg:         #EC8375;
+    --neg-tint:    #331F1D;
+    --warn:        #DDA94F;
+    --warn-tint:   #302713;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0 24px 96px;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col  { max-width: var(--measure); }
+
+  .masthead {
+    padding: 72px 0 36px;
+    border-bottom: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(2.3rem, 5.5vw, 3.5rem);
+    line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
+    margin: 0; max-width: 18ch;
+  }
+  .standfirst {
+    font-family: var(--f-display); font-size: 1.16rem; font-style: italic;
+    color: var(--muted); max-width: 60ch; margin: 0;
+  }
+  .meta {
+    font-family: var(--f-mono); font-size: 12px; color: var(--faint);
+    display: flex; flex-wrap: wrap; gap: 20px; padding-top: 6px;
+  }
+
+  section { padding-top: 60px; }
+
+  h2 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 1.95rem);
+    line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance;
+    margin: 0 0 6px;
+  }
+  h3 {
+    font-family: var(--f-body); font-weight: 600; font-size: 1rem;
+    margin: 32px 0 8px;
+  }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  strong { font-weight: 600; }
+  code {
+    font-family: var(--f-mono); font-size: 0.86em;
+    background: var(--surface-alt); padding: 1px 5px; border-radius: 3px;
+  }
+
+  /* method note */
+  .method {
+    margin: 34px 0 0;
+    padding: 18px 22px;
+    background: var(--warn-tint);
+    border: 1px solid color-mix(in srgb, var(--warn) 34%, transparent);
+    border-radius: 3px;
+    font-size: 14.5px; color: var(--ink-soft);
+  }
+  .method p:last-child { margin-bottom: 0; }
+  .method .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--warn); display: block; margin-bottom: 7px;
+  }
+
+  /* the contrast device */
+  .contrast {
+    display: grid; gap: 1px; margin: 28px 0 8px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+  }
+  .contrast > div { background: var(--surface); padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .contrast .label {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .contrast .figure {
+    font-family: var(--f-mono); font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  }
+  .contrast .figure.lo { color: var(--neg); }
+  .contrast .figure.hi { color: var(--pos); }
+  .contrast .what { font-weight: 600; font-size: 15px; }
+  .contrast .note { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  .tablewrap {
+    overflow-x: auto; margin: 22px 0 10px;
+    border: 1px solid var(--rule); border-radius: 4px; background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 440px; }
+  caption {
+    caption-side: top; text-align: left;
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--faint);
+    padding: 13px 18px 11px; border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px;
+    letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
+    padding: 11px 18px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap;
+  }
+  td { padding: 11px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.name { color: var(--ink); font-weight: 500; }
+  td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.total td { background: var(--accent-tint); font-weight: 600; }
+  tr.total td.name { color: var(--accent); }
+  .src { font-family: var(--f-mono); font-size: 11.5px; color: var(--faint); }
+
+  .verdict {
+    margin: 28px 0 8px; padding: 22px 26px;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent); border-radius: 3px;
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;
+  }
+  .verdict.go { border-left-color: var(--pos); }
+  .verdict.go .tag { color: var(--pos); }
+  .verdict.stop { border-left-color: var(--neg); }
+  .verdict.stop .tag { color: var(--neg); }
+
+  /* outcome bands */
+  .bands { display: grid; gap: 10px; margin: 22px 0 10px; }
+  .band {
+    display: grid; grid-template-columns: 120px 150px 1fr; gap: 18px;
+    align-items: baseline; padding: 14px 18px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+  }
+  .band .tier {
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .band .amt {
+    font-family: var(--f-mono); font-weight: 600; font-size: 17px;
+    font-variant-numeric: tabular-nums;
+  }
+  .band .desc { font-size: 14.5px; color: var(--muted); }
+  .band.base { border-color: var(--pos); background: var(--pos-tint); }
+  .band.base .tier, .band.base .amt { color: var(--pos); }
+  .band.base .desc { color: var(--ink-soft); }
+
+  .channels { margin: 22px 0 0; padding: 0; list-style: none; counter-reset: ch; display: grid; gap: 2px; }
+  .channels li {
+    counter-increment: ch; display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+    padding: 15px 0; border-bottom: 1px solid var(--rule); align-items: start;
+  }
+  .channels li:first-child { border-top: 1px solid var(--rule); }
+  .channels li::before {
+    content: counter(ch, decimal-leading-zero);
+    font-family: var(--f-mono); font-size: 12px; color: var(--accent); padding-top: 3px;
+  }
+  .channels .what { font-weight: 600; font-size: 15.5px; display: block; margin-bottom: 3px; }
+  .channels .why { font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+
+  footer {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--faint);
+  }
+  footer p { max-width: none; }
+
+  @media (max-width: 620px) {
+    body { padding: 0 18px 64px; font-size: 16px; }
+    .masthead { padding-top: 48px; }
+    .band { grid-template-columns: 1fr; gap: 4px; }
+    .channels li { grid-template-columns: 32px 1fr; gap: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Shabd · Market Analysis</div>
+    <h1>Who pays for Sanskrit</h1>
+    <p class="standfirst">Install counts, filed revenues and published ARPU for the Sanskrit and devotional app markets — what the demand actually is, who spends money, and how large a business is reachable.</p>
+    <div class="meta">
+      <span>28 August 2026</span>
+      <span>App stores · YouTube · funding disclosures</span>
+    </div>
+  </header>
+
+  <div class="method">
+    <span class="tag">On method — read this first</span>
+    <p>Quantitative sentiment analysis of Reddit and Twitter was <strong>not possible</strong>: reddit.com blocks this crawler outright, and direct Twitter access was unavailable. Nothing below is sentiment-derived. It rests on public install counts, YouTube channel metrics, filed company revenues and published sector ARPU — harder evidence than sentiment, but not the method that was requested. Revenue figures marked <span class="src">est.</span> are third-party estimates, not filings.</p>
+  </div>
+
+  <section id="lesson">
+    <h2>The experiment someone already ran for you</h2>
+    <div class="col">
+      <p class="lede">Vedapath ships 30+ sacred texts in 33 languages with word-by-word meanings, IAST, and AI chat — a broader feature set than most of its million-download rivals.</p>
+    </div>
+
+    <div class="contrast">
+      <div>
+        <span class="label">Comprehensive library</span>
+        <span class="figure lo">5K</span>
+        <span class="what">Vedapath downloads</span>
+        <span class="note">30+ texts · 33 languages · word-by-word meanings · AI chat</span>
+      </div>
+      <div>
+        <span class="label">Single beloved text</span>
+        <span class="figure hi">1M+</span>
+        <span class="what">Bhagavad Gītā app downloads</span>
+        <span class="note">Several separate apps, each above a million, with one text</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <p>A 200× gap, with the better product on the losing side. This is not a marketing deficit that execution fixes — it is the market stating a preference plainly: <strong>people do not want a scripture library. They want the one text they already love, done well.</strong></p>
+    </div>
+
+    <div class="verdict stop">
+      <span class="tag">Do not build</span>
+      <p>A second app in the scripture-library category means competing against million-download incumbents on content volume — the single axis where a solo founder reliably loses — for a user who has already demonstrated they do not want breadth. The daily shloka inside the learning app captures the valuable part at no additional cost.</p>
+    </div>
+  </section>
+
+  <section id="manyapps">
+    <h2>And the many-apps workaround is blocked</h2>
+    <div class="col">
+      <p class="lede">Shipping one app per text — a Shiva Purāṇa app, a Garuḍa Purāṇa app, built from a shared template — runs into a specific named rule on both stores.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Store policy</caption>
+        <thead><tr><th scope="col">Store</th><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">Apple</td>
+            <td class="num">Guideline 4.3</td>
+            <td>Names <em>"multiple similar apps using a repackaged app template"</em> as a spam factor. Directs developers to submit <strong>a single app with in-app purchases</strong> instead. Warns that spamming <strong>may lead to removal from the Developer Program</strong>.</td>
+          </tr>
+          <tr>
+            <td class="name">Google</td>
+            <td class="num">Repetitive Content</td>
+            <td>Prohibits <em>"apps that merely provide the same experience as other apps already on Google Play"</em> and <em>"multiple apps with highly similar functionality, content, and user experience"</em> under one account.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict stop">
+      <span class="tag">The asymmetric risk</span>
+      <p>Publishing the learning app and a fleet of scripture apps from <strong>the same developer account</strong> means a spam action against the fleet takes the learning app down with it. The side bet would be staking the validated business on the unvalidated one.</p>
+    </div>
+
+    <h3>The economics, ignoring policy entirely</h3>
+    <div class="tablewrap">
+      <table>
+        <caption>One ad-supported scripture app, modelled generously</caption>
+        <thead><tr><th scope="col">Stage</th><th scope="col">Figure</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Downloads</td><td class="num">50,000</td></tr>
+          <tr><td class="name">Monthly actives at 20%</td><td class="num">10,000</td></tr>
+          <tr><td class="name">Ad impressions per user per month</td><td class="num">15</td></tr>
+          <tr><td class="name">Monthly impressions</td><td class="num">150,000</td></tr>
+          <tr><td class="name">India eCPM <span class="src">$0.50–2.00 vs $11.80 US</span></td><td class="num">~$1</td></tr>
+          <tr class="total"><td class="name">Revenue per app</td><td class="num">≈ ₹13,000 / month</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="contrast">
+      <div>
+        <span class="label">Ten scripture apps, all successful</span>
+        <span class="figure lo">₹15.6L</span>
+        <span class="what">per year</span>
+        <span class="note">Requires 500K downloads across a niche where seven Garuḍa Purāṇa apps already ship — and violates both stores' policies</span>
+      </div>
+      <div>
+        <span class="label">One Sanskrit learning app</span>
+        <span class="figure hi">₹1–3 Cr</span>
+        <span class="what">per year, base case</span>
+        <span class="note">Subscription revenue, diaspora-weighted, no policy exposure</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <p>Roughly <strong>20× less money for more work</strong>. The developer IDs already occupying that niche — <code>com.informationonapps.garudpuran</code>, <code>com.learningstudio.garudpuran</code> — are content farms running this exact playbook. Competing there means winning a race to ₹13,000 a month.</p>
+    </div>
+
+    <h3>All three structures, for completeness</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Structure</th><th scope="col">Outcome</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Many single-text apps</td><td>Violates Apple 4.3 and Google Repetitive Content. Risks the main account.</td></tr>
+          <tr><td class="name">One app, many texts via IAP</td><td>The compliant form — and it is Vedapath. 5,000 downloads.</td></tr>
+          <tr><td class="name">One app, one text, done superbly</td><td>Competes with 1M+ download Gītā incumbents and 7+ apps per Purāṇa.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="col">Every path fails. That is unusual enough to be a strong signal in itself — most ideas have some viable shape.</p>
+  </section>
+
+  <section id="demand">
+    <h2>Demand is real. Payment is rare.</h2>
+    <div class="col">
+      <p class="lede">Every signal in this market splits the same way: attention is abundant and cheap, money is scarce and concentrated.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Attention — the demand side</caption>
+        <thead><tr><th scope="col">Signal</th><th scope="col">Scale</th><th scope="col">Reading</th></tr></thead>
+        <tbody>
+          <tr><td class="name">The Sanskrit Channel <span class="src">YouTube</span></td><td class="num">1.3M subs · 95M views</td><td>Remarkable for a language with ~1% active speakers</td></tr>
+          <tr><td class="name">Sri Mandir</td><td class="num">40M downloads · 3.5M MAU</td><td>Category-defining devotional app</td></tr>
+          <tr><td class="name">Bhagavad Gītā apps</td><td class="num">1M+ each</td><td>Multiple apps clear a million</td></tr>
+          <tr><td class="name">Samskrita Bharati</td><td class="num">10M+ trained</td><td>Free, offline, over four decades</td></tr>
+          <tr><td class="name">Duolingo Sanskrit</td><td class="num">Refused</td><td>Petition active — demand proof and an open lane</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Revenue — the money side</caption>
+        <thead><tr><th scope="col">Company</th><th scope="col">Scale</th><th scope="col">Revenue</th><th scope="col">Implied</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">AppsForBharat <span class="src">Sri Mandir</span></td>
+            <td class="num">40M downloads</td>
+            <td class="num">₹18.53 Cr <span class="src">FY24</span></td>
+            <td class="num">≈₹46 / download</td>
+          </tr>
+          <tr>
+            <td class="name">Language Curry</td>
+            <td class="num">800K downloads</td>
+            <td class="num">~₹5.5 Cr <span class="src">est.</span></td>
+            <td class="num">12 languages, 9 years</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p>Sri Mandir raised over <strong>$50M</strong>, including a ₹175 Cr Series C led by Susquehanna with Peak XV and Elevation participating — and turned 40 million downloads into ₹18.5 crore. That is the ceiling-setter for the category, not a cautionary outlier.</p>
+      <p><strong>Any plan that assumes downloads convert at Western SaaS rates fails here.</strong> At ₹46 of lifetime revenue per download, paid acquisition is arithmetically fatal.</p>
+    </div>
+  </section>
+
+  <section id="arpu">
+    <h2>The 10× that decides the market</h2>
+
+    <div class="contrast">
+      <div>
+        <span class="label">ARPU — India</span>
+        <span class="figure lo">₹600–800</span>
+        <span class="what">≈ $7–9</span>
+        <span class="note">Your audience</span>
+      </div>
+      <div>
+        <span class="label">ARPU — abroad</span>
+        <span class="figure hi">₹7,000</span>
+        <span class="what">≈ $81</span>
+        <span class="note">Your business</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <p>Published across the Indian devotional-tech sector. Sri Mandir draws roughly <strong>20% of usage from diaspora</strong> in the US, UK, UAE, Canada, Australia and New Zealand.</p>
+      <p><strong>One caveat, stated precisely:</strong> that ₹7,000 is driven largely by <em>transactions</em> — e-puja bookings and chadhava offerings — not content subscriptions. Devotional users pay for ritual acts performed on their behalf, not for reading. The figure does not transfer directly to a language app. What it does prove is that diaspora households spend real money on cultural connection, which is the same emotional purchase a heritage-language product sells.</p>
+    </div>
+  </section>
+
+  <section id="model">
+    <h2>How large a business is reachable</h2>
+    <div class="col">
+      <p class="lede">Modelled over roughly three years, anchored to Language Curry's actual trajectory as the closest comparable.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Funnel</caption>
+        <thead><tr><th scope="col">Stage</th><th scope="col">Figure</th><th scope="col">Anchored to</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Reachable Sanskrit-curious population</td><td class="num">1–3M</td><td>1.3M YouTube subs + Samskrita Bharati network</td></tr>
+          <tr><td class="name">Installs achievable</td><td class="num">150–300K</td><td>Language Curry reached 800K across 12 languages</td></tr>
+          <tr><td class="name">Paid conversion</td><td class="num">3–5%</td><td>Consumer app norms</td></tr>
+          <tr class="total"><td class="name">Paying subscribers</td><td class="num">5,000–12,000</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Revenue at 6,000 subscribers · 30% diaspora mix</caption>
+        <thead><tr><th scope="col">Segment</th><th scope="col">Subscribers</th><th scope="col">Price</th><th scope="col">Monthly</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Diaspora</td><td class="num">1,800</td><td class="num">₹880 <span class="src">$9.99</span></td><td class="num">₹15.8L</td></tr>
+          <tr><td class="name">India</td><td class="num">4,200</td><td class="num">₹399</td><td class="num">₹16.8L</td></tr>
+          <tr class="total"><td class="name">Gross</td><td class="num">6,000</td><td class="num">—</td><td class="num">₹32.6L/mo · ₹3.9 Cr/yr</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p>Less app store commission (15–30%) and inference at self-hosted TTS rates (~₹1.1 Cr/yr) → <strong>roughly ₹1.5–2 Cr net.</strong> Note that 30% of subscribers generate 48% of revenue.</p>
+    </div>
+
+    <div class="bands">
+      <div class="band">
+        <span class="tier">Downside</span><span class="amt">₹20–50L/yr</span>
+        <span class="desc">A side business. Reached if diaspora acquisition never works.</span>
+      </div>
+      <div class="band base">
+        <span class="tier">Base case</span><span class="amt">₹1–3 Cr/yr</span>
+        <span class="desc">A real solo-founder business, owned outright. The realistic target.</span>
+      </div>
+      <div class="band">
+        <span class="tier">Upside</span><span class="amt">₹5–15 Cr/yr</span>
+        <span class="desc">If institutional licensing to temple schools and cultural associations lands.</span>
+      </div>
+      <div class="band">
+        <span class="tier">Venture</span><span class="amt">₹50 Cr+</span>
+        <span class="desc">Not reachable on Sanskrit alone. Requires the multi-language expansion.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="marketing">
+    <h2>Where the users actually are</h2>
+    <div class="col">
+      <p class="lede">The audience demonstrably consumes Sanskrit content on video, for free, at scale. That is the channel — not advertising, which the ₹46-per-download economics rule out entirely.</p>
+    </div>
+
+    <ol class="channels">
+      <li><div>
+        <span class="what">Sponsor existing Sanskrit YouTube channels</span>
+        <span class="why">1.3M subscribers already assembled on the largest channel alone, pre-qualified and demonstrably engaged. Cost per acquired user will be a fraction of paid social.</span>
+      </div></li>
+      <li><div>
+        <span class="what">Publish etymology content yourself</span>
+        <span class="why">"You already know 300 Sanskrit words" is true, shareable, and doubles as the app's onboarding. Costs time rather than money.</span>
+      </div></li>
+      <li><div>
+        <span class="what">Make Duolingo's refusal the headline</span>
+        <span class="why">They have publicly declined to build Sanskrit, citing low demand, while a petition runs against them. A clear antagonist, a demand proof point, and free press in one line.</span>
+      </div></li>
+      <li><div>
+        <span class="what">Temple weekend schools and cultural associations abroad</span>
+        <span class="why">Highest-intent, lowest-cost channel available, and the route to institutional licensing — the only path to the upside band.</span>
+      </div></li>
+      <li><div>
+        <span class="what">Partner with Samskrita Bharati rather than compete</span>
+        <span class="why">10M+ people already trained and no strong digital product. A distribution channel, not a rival.</span>
+      </div></li>
+    </ol>
+  </section>
+
+  <section id="verdict">
+    <h2>Verdict</h2>
+    <div class="verdict go">
+      <span class="tag">Build — Sanskrit learning app</span>
+      <p>Demand is proven at 1.3M engaged subscribers. The lane is open — nobody teaches Sanskrit <em>production</em>, only reading. The tooling arrived this year. Diaspora ARPU makes it payable. Base case is a ₹1–3 Cr business owned outright.</p>
+    </div>
+    <div class="verdict stop">
+      <span class="tag">Do not build — scripture library</span>
+      <p>Vedapath ran the experiment and returned 5,000 downloads against 1M+ for single-text apps, with a better feature set. Competition there is high, not low. The category monetises through ritual transactions you are not positioned to offer.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Compiled 28 August 2026. Install counts from Google Play and the App Store; revenue for AppsForBharat from reported FY24 filings; Language Curry revenue is a third-party estimate and should be treated as indicative only; ARPU figures as published across Indian devotional-tech coverage. Funnel and revenue projections are models built on these anchors, not forecasts — the conversion and install assumptions are the load-bearing uncertainties and should be revised against your own first thousand users.</p>
+  </footer>
+
+</div>

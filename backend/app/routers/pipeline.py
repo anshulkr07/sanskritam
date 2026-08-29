@@ -55,7 +55,12 @@ async def run_pipeline(
             details.append(result)
             continue
 
-        # Check that derived features are compatible with stored accepted_parses
+        # Verify each stored parse is achievable.
+        # Use the SAME logic as live grading: feature_set_variants over the
+        # analyzer's readings (ambiguous endings produce alternatives), and a
+        # stored parse is valid if ANY variant's feature VALUES cover it.
+        # (Roles are seed vocabulary labels; features are the linguistics.)
+        from app.grading.analyzer import feature_set_variants
         stored_parses = ch.accepted_parses or []
         if not stored_parses:
             anomaly = {
@@ -69,19 +74,22 @@ async def run_pipeline(
             details.append(result)
             continue
 
-        # Verify each stored parse is achievable
+        variants = feature_set_variants(results)
+        if not variants:
+            variants = [derived]
+        derived_values = [set(v.values()) for v in variants]
+
         mismatch_details = []
         for i, parse in enumerate(stored_parses):
-            for role, feature_val in parse.items():
-                derived_val = derived.get(role)
-                if derived_val is None:
-                    mismatch_details.append(
-                        f"Word '{role}' with feature '{feature_val}' not found in derived parses"
-                    )
-                elif derived_val != feature_val:
-                    mismatch_details.append(
-                        f"Word '{role}': stored '{feature_val}' != derived '{derived_val}'"
-                    )
+            expected_values = set(parse.values())
+            if not any(expected_values <= dv for dv in derived_values):
+                # Report what's missing for this parse
+                best = max(derived_values, key=lambda dv: len(expected_values & dv))
+                missing = expected_values - best
+                mismatch_details.append(
+                    f"Parse {i}: features {sorted(missing)} not derivable "
+                    f"(closest reading: {sorted(best)})"
+                )
 
         if mismatch_details:
             anomaly = {

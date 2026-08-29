@@ -20,7 +20,7 @@ async def get_next_challenge(
     db: Session = Depends(get_db),
 ):
     """Select the next challenge at the edge of feature mastery."""
-    # Get recent 5 challenge ids for this learner
+    # Get recent 5 attempt challenge ids for this learner (grader history)
     from app.models import Attempt
     recent_attempts = (
         db.query(Attempt)
@@ -41,6 +41,12 @@ async def get_next_challenge(
 
     if challenge is None:
         raise HTTPException(status_code=404, detail="No challenges found for this register")
+
+    # Record this serve in the no-repeat window (covers skip-without-attempt)
+    window = list(learner.recent_challenge_ids or [])
+    window.append(challenge.id)
+    learner.recent_challenge_ids = window[-5:]
+    db.commit()
 
     return ChallengeResponse(
         id=challenge.id,

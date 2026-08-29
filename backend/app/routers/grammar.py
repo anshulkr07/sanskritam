@@ -10,11 +10,37 @@ from app.seeds.varnamala import VARNAMALA_DATA
 
 router = APIRouter()
 
+# IAST labels for the five places of articulation (frontend display)
+IAST_PLACE = {
+    "kanthya": "kaṇṭhya",
+    "talavya": "tālavya",
+    "murdhanya": "mūrdhanya",
+    "dantya": "dantya",
+    "oshthya": "oṣṭhya",
+    "oshthya_kanthya": "oṣṭha-kaṇṭhya",
+    "kanthya_talavya": "kaṇṭha-tālavya",
+    "kanthya_oshthya": "kaṇṭha-oṣṭhya",
+    "oshthya_dantya": "oṣṭha-dantya",
+}
+
+
+def _with_iast_place(cells: list[dict]) -> list[dict]:
+    out = []
+    for c in cells:
+        d = dict(c)
+        if d.get("place"):
+            d["iast_place"] = IAST_PLACE.get(d["place"], d["place"])
+        out.append(d)
+    return out
+
 
 @router.get("/grammar/varnamala", response_model=VarnamalaResponse)
 async def get_varnamala():
     """Get the varnamala grid."""
-    return VARNAMALA_DATA
+    data = dict(VARNAMALA_DATA)
+    for key in ("vowels", "consonants", "nasals", "others"):
+        data[key] = _with_iast_place(data[key])
+    return data
 
 
 @router.get("/grammar/features", response_model=list[FeatureResponse])

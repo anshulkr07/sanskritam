@@ -14,6 +14,7 @@ from typing import Any, Optional
 from app.grading.analyzer import (
     analyze_sentence,
     feature_set_from_results,
+    feature_set_variants,
     is_confident,
 )
 
@@ -52,40 +53,52 @@ def grade_attempt(
     # Check abstention
     abstained = not is_confident(results)
 
-    parsed = feature_set_from_results(results)
-    parsed_key = _feature_set_key(parsed)
+    # All valid readings (ambiguous endings produce alternatives).
+    # Grade against EVERY variant; accept if any matches an accepted parse.
+    variants = feature_set_variants(results)
+    if not variants and not abstained:
+        variants = [{}]
+    primary = feature_set_from_results(results)
 
-    # Compare against all accepted parses
+    # Compare every (variant, accepted) pair
     best_verdict = "incorrect"
     best_diff: list[dict] = []
     best_diagnosis = ""
+    best_parsed = primary
     matched_expected = None
 
     for accepted in accepted_parses:
         accepted_key = _feature_set_key(accepted)
 
-        if parsed_key == accepted_key:
-            best_verdict = "correct"
-            best_diff = []
-            best_diagnosis = "Correct!"
-            matched_expected = accepted
-            break
+        for parsed in variants:
+            parsed_key = _feature_set_key(parsed)
 
-        # Compute symmetric diff
-        diff = _compute_diff(parsed, accepted)
-        if len(diff) == 1 and not abstained:
-            # Exactly one feature off
-            one_off = diff[0]
-            feature_name = one_off.get("expected", one_off.get("actual", ""))
-            diagnosis = _generate_diagnosis(one_off)
-            if len(best_diff) == 0 or len(diff) < len(best_diff):
-                best_verdict = "off_by_one"
+            if parsed_key == accepted_key:
+                return {
+                    "verdict": "correct",
+                    "parsed_features": parsed,
+                    "expected_features": accepted_parses,
+                    "diff": [],
+                    "diagnosis": "Correct!",
+                    "grammar_note": None,
+                    "abstained": False,
+                    "matched_reading": parsed,
+                }
+
+            diff = _compute_diff(parsed, accepted)
+            if len(diff) == 1 and not abstained:
+                one_off = diff[0]
+                diagnosis = _generate_diagnosis(one_off)
+                if best_verdict != "off_by_one" or len(diff) < len(best_diff):
+                    best_verdict = "off_by_one"
+                    best_diff = diff
+                    best_diagnosis = diagnosis
+                    best_parsed = parsed
+                    matched_expected = accepted
+            elif len(diff) < len(best_diff) or not best_diff:
                 best_diff = diff
-                best_diagnosis = diagnosis
+                best_parsed = parsed
                 matched_expected = accepted
-        elif len(diff) < len(best_diff) or not best_diff:
-            best_diff = diff
-            matched_expected = accepted
 
     if best_verdict == "incorrect" and not abstained:
         best_diagnosis = best_diagnosis or "Incorrect — several features don't match."
@@ -102,7 +115,7 @@ def grade_attempt(
 
     return {
         "verdict": best_verdict,
-        "parsed_features": parsed,
+        "parsed_features": best_parsed,
         "expected_features": accepted_parses,
         "diff": best_diff,
         "diagnosis": best_diagnosis,

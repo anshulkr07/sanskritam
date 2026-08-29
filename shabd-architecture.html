@@ -1,0 +1,696 @@
+<title>Shabd Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --ground:      #F7F7FB;
+    --surface:     #FFFFFF;
+    --surface-alt: #F1F1F7;
+    --ink:         #191926;
+    --ink-soft:    #3A3A4E;
+    --muted:       #5F5F76;
+    --faint:       #8A8AA0;
+    --rule:        #DEDEE9;
+    --rule-strong: #C4C4D6;
+    --accent:      #4A3F9E;
+    --accent-tint: #ECEAF8;
+    --free:        #1C6B50;
+    --free-tint:   #DFF0E8;
+    --costly:      #A3352A;
+    --costly-tint: #F8E4E1;
+    --warn:        #8A5A11;
+    --warn-tint:   #F9EEDC;
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --f-deva:    "Noto Serif Devanagari", "Nirmala UI", serif;
+
+    --measure: 68ch;
+    --wide: 1000px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #101017;
+      --surface:     #191922;
+      --surface-alt: #20202C;
+      --ink:         #E9E9F2;
+      --ink-soft:    #C6C6D6;
+      --muted:       #9A9AB2;
+      --faint:       #74748C;
+      --rule:        #2C2C3A;
+      --rule-strong: #3E3E52;
+      --accent:      #A79BF0;
+      --accent-tint: #23203A;
+      --free:        #56C79B;
+      --free-tint:   #16302A;
+      --costly:      #EC8375;
+      --costly-tint: #331F1D;
+      --warn:        #DDA94F;
+      --warn-tint:   #302713;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #101017;
+    --surface:     #191922;
+    --surface-alt: #20202C;
+    --ink:         #E9E9F2;
+    --ink-soft:    #C6C6D6;
+    --muted:       #9A9AB2;
+    --faint:       #74748C;
+    --rule:        #2C2C3A;
+    --rule-strong: #3E3E52;
+    --accent:      #A79BF0;
+    --accent-tint: #23203A;
+    --free:        #56C79B;
+    --free-tint:   #16302A;
+    --costly:      #EC8375;
+    --costly-tint: #331F1D;
+    --warn:        #DDA94F;
+    --warn-tint:   #302713;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--f-body); font-size: 16.5px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; margin: 0; padding: 0 24px 96px;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col  { max-width: var(--measure); }
+
+  .masthead {
+    padding: 72px 0 36px; border-bottom: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(2.3rem, 5.5vw, 3.5rem); line-height: 1.08;
+    letter-spacing: -0.02em; text-wrap: balance; margin: 0; max-width: 20ch;
+  }
+  .standfirst {
+    font-family: var(--f-display); font-size: 1.16rem; font-style: italic;
+    color: var(--muted); max-width: 60ch; margin: 0;
+  }
+  .meta {
+    font-family: var(--f-mono); font-size: 12px; color: var(--faint);
+    display: flex; flex-wrap: wrap; gap: 20px; padding-top: 6px;
+  }
+
+  section { padding-top: 60px; }
+
+  h2 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.2;
+    letter-spacing: -0.015em; text-wrap: balance; margin: 0 0 6px;
+  }
+  h3 { font-family: var(--f-body); font-weight: 600; font-size: 1rem; margin: 34px 0 8px; }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  strong { font-weight: 600; }
+  code {
+    font-family: var(--f-mono); font-size: 0.86em;
+    background: var(--surface-alt); padding: 1px 5px; border-radius: 3px; color: var(--ink-soft);
+  }
+  pre {
+    font-family: var(--f-mono); font-size: 13px; line-height: 1.6;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 18px 20px; overflow-x: auto; margin: 18px 0; color: var(--ink-soft);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  figure { margin: 28px 0 10px; }
+  figure svg { display: block; width: 100%; max-width: 100%; height: auto; }
+  .figframe {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 24px 22px 16px; overflow-x: auto;
+  }
+  figcaption {
+    font-size: 14px; color: var(--muted); margin-top: 12px;
+    max-width: 72ch; line-height: 1.55;
+  }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 20px; margin-top: 16px;
+    padding-top: 14px; border-top: 1px solid var(--rule);
+    font-family: var(--f-mono); font-size: 11.5px; color: var(--muted);
+  }
+  .legend span { display: flex; align-items: center; gap: 7px; }
+  .swatch { width: 22px; height: 3px; border-radius: 2px; flex: none; }
+
+  .tablewrap {
+    overflow-x: auto; margin: 22px 0 10px;
+    border: 1px solid var(--rule); border-radius: 4px; background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 480px; }
+  caption {
+    caption-side: top; text-align: left; font-family: var(--f-mono);
+    font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--faint); padding: 13px 18px 11px; border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted); padding: 11px 18px;
+    border-bottom: 1px solid var(--rule-strong); white-space: nowrap;
+  }
+  td { padding: 11px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.name { color: var(--ink); font-weight: 500; }
+  td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.pick td { background: var(--free-tint); }
+  tr.pick td.name { color: var(--free); font-weight: 600; }
+  tr.block td { background: var(--costly-tint); }
+  tr.block td.name { color: var(--costly); font-weight: 600; }
+  .tick { font-family: var(--f-mono); font-size: 11px; color: var(--free); font-weight: 600; }
+  .chip {
+    display: inline-block; font-family: var(--f-mono); font-size: 11px; font-weight: 500;
+    padding: 2px 8px; border-radius: 100px; white-space: nowrap;
+  }
+  .chip.ok { background: var(--free-tint); color: var(--free); }
+  .chip.no { background: var(--costly-tint); color: var(--costly); }
+
+  .verdict {
+    margin: 26px 0 8px; padding: 22px 26px; background: var(--surface);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 3px;
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;
+  }
+  .verdict.risk { border-left-color: var(--warn); background: var(--warn-tint); }
+  .verdict.risk .tag { color: var(--warn); }
+  .verdict.block { border-left-color: var(--costly); background: var(--costly-tint); }
+  .verdict.block .tag { color: var(--costly); }
+
+  .steps { margin: 22px 0 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 2px; }
+  .steps li {
+    counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+    padding: 15px 0; border-bottom: 1px solid var(--rule); align-items: start;
+  }
+  .steps li:first-child { border-top: 1px solid var(--rule); }
+  .steps li::before {
+    content: counter(s, decimal-leading-zero); font-family: var(--f-mono);
+    font-size: 12px; color: var(--accent); padding-top: 3px;
+  }
+  .steps .what { font-weight: 600; font-size: 15.5px; display: block; margin-bottom: 3px; }
+  .steps .why { font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+
+  footer {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--faint);
+  }
+  footer p { max-width: none; }
+
+  @media (max-width: 620px) {
+    body { padding: 0 18px 64px; font-size: 16px; }
+    .masthead { padding-top: 48px; }
+    .steps li { grid-template-columns: 32px 1fr; gap: 10px; }
+    .figframe { padding: 16px 14px 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Shabd · System Design</div>
+    <h1>Architecture</h1>
+    <p class="standfirst">How the pieces fit — organised around cost and register rather than features, because the marginal cost of each surface differs by two orders of magnitude and the two registers of Sanskrit need different voices entirely.</p>
+    <div class="meta">
+      <span>Updated 29 August 2026</span>
+      <span>React Native · Expo</span>
+      <span>Sanskrit first</span>
+    </div>
+  </header>
+
+  <section id="principle">
+    <h2>The organising principle</h2>
+    <div class="col">
+      <p class="lede">Feature lists make bad architectures here. Two facts should decide where code lives: surfaces differ enormously in what they cost to serve, and the two registers of Sanskrit require different models end to end.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Cost tiers</caption>
+        <thead><tr><th scope="col">Tier</th><th scope="col">Marginal cost</th><th scope="col">Surfaces</th><th scope="col">Strategy</th></tr></thead>
+        <tbody>
+          <tr class="pick">
+            <td class="name">Pre-computed</td><td class="num">~₹0</td>
+            <td>Audio challenges, daily śloka, grammar</td>
+            <td>Render once offline, serve to everyone from CDN</td>
+          </tr>
+          <tr>
+            <td class="name">Cheap live</td><td class="num">₹0.5–2</td>
+            <td>Recognition, tutor reasoning, diagnosis</td>
+            <td>Call per request; no metering needed</td>
+          </tr>
+          <tr>
+            <td class="name">Expensive live</td><td class="num">₹2.5–18</td>
+            <td>Streaming speech for open conversation</td>
+            <td>Meter it, gate it behind the paid tier</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="col">Everything that follows is an attempt to push as much as possible into the first row.</p>
+  </section>
+
+  <section id="system">
+    <h2>The system</h2>
+
+    <figure>
+      <div class="figframe">
+        <svg viewBox="0 0 900 620" role="img" aria-label="Runtime path: the client fetches pre-rendered audio packs from a CDN at no marginal cost, and posts learner turns to an API server which calls Sarvam speech recognition, a forced aligner for grading, the language model with two retrieval indexes, and Vidyut morphology. Only open conversation reaches the costly live speech synthesis. Below, an offline batch pipeline turns corpora into validated audio rendered by two different models chosen by register — Vagdhenu for chant, Indic Parler for conversational Sanskrit — and publishes them to that same CDN.">
+          <defs>
+            <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="currentColor"/>
+            </marker>
+            <marker id="a2-free" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="var(--free)"/>
+            </marker>
+            <marker id="a2-cost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="var(--costly)"/>
+            </marker>
+          </defs>
+
+          <text x="0" y="16" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.5" letter-spacing="1.4">RUNTIME — PER REQUEST</text>
+          <line x1="0" y1="24" x2="900" y2="24" stroke="currentColor" stroke-opacity="0.18"/>
+
+          <!-- client -->
+          <rect x="4" y="130" width="150" height="86" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.55"/>
+          <text x="79" y="162" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">Client</text>
+          <text x="79" y="181" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.62">React Native · Expo</text>
+          <text x="79" y="198" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.62">SQLite · audio cache</text>
+
+          <!-- API -->
+          <rect x="292" y="100" width="168" height="96" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.55"/>
+          <text x="376" y="126" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">API server</text>
+          <text x="376" y="146" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.62">auth · entitlements</text>
+          <text x="376" y="163" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.62">learner model</text>
+          <text x="376" y="180" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.62">register routing · metering</text>
+
+          <!-- CDN -->
+          <rect x="292" y="252" width="168" height="62" rx="4" fill="none" stroke="var(--free)" stroke-width="1.5"/>
+          <text x="376" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="var(--free)">CDN</text>
+          <text x="376" y="296" text-anchor="middle" font-size="11" fill="var(--free)" opacity="0.85">pre-rendered audio</text>
+
+          <!-- services -->
+          <rect x="596" y="30" width="200" height="44" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="696" y="50" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Saaras v3 · ASR</text>
+          <text x="696" y="65" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">codemix — conversation</text>
+
+          <rect x="596" y="86" width="200" height="44" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="696" y="106" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Forced aligner</text>
+          <text x="696" y="121" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">akṣara grading</text>
+
+          <rect x="596" y="142" width="200" height="44" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="696" y="162" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Gemini Flash + RAG</text>
+          <text x="696" y="177" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">two indexes, routed</text>
+
+          <rect x="596" y="198" width="200" height="44" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="696" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">Vidyut</text>
+          <text x="696" y="233" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">morphology</text>
+
+          <rect x="596" y="254" width="200" height="44" rx="4" fill="none" stroke="var(--costly)" stroke-width="1.5"/>
+          <text x="696" y="274" text-anchor="middle" font-size="12" font-weight="600" fill="var(--costly)">Parler-TTS · live</text>
+          <text x="696" y="289" text-anchor="middle" font-size="10.5" fill="var(--costly)" opacity="0.85">conversation only</text>
+
+          <!-- client arrows -->
+          <line x1="154" y1="150" x2="286" y2="136" stroke="currentColor" stroke-opacity="0.6" marker-end="url(#a2)"/>
+          <text x="218" y="130" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.7">turn / attempt</text>
+
+          <path d="M154 196 C 220 196, 236 272, 286 278" fill="none" stroke="var(--free)" stroke-width="1.5" marker-end="url(#a2-free)"/>
+          <text x="212" y="244" text-anchor="middle" font-size="10.5" fill="var(--free)">fetch audio pack</text>
+          <text x="212" y="258" text-anchor="middle" font-size="10.5" fill="var(--free)" opacity="0.75">works offline</text>
+
+          <!-- api to services -->
+          <line x1="460" y1="130" x2="590" y2="54" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="460" y1="140" x2="590" y2="110" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="460" y1="152" x2="590" y2="164" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="460" y1="166" x2="590" y2="218" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <path d="M460 184 C 520 214, 542 268, 590 276" fill="none" stroke="var(--costly)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#a2-cost)"/>
+          <text x="528" y="252" text-anchor="middle" font-size="10" fill="var(--costly)">metered</text>
+
+          <!-- pipeline band -->
+          <line x1="0" y1="386" x2="900" y2="386" stroke="currentColor" stroke-opacity="0.18"/>
+          <text x="0" y="378" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.5" letter-spacing="1.4">OFFLINE PIPELINE — NIGHTLY BATCH, NEVER IN THE REQUEST PATH</text>
+
+          <rect x="4" y="486" width="118" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="63" y="510" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">Corpora</text>
+          <text x="63" y="526" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.6">two indexes</text>
+
+          <rect x="160" y="486" width="118" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="219" y="510" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">LLM drafts</text>
+          <text x="219" y="526" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.6">candidates</text>
+
+          <rect x="316" y="486" width="118" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.7"/>
+          <text x="375" y="510" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">Vidyut</text>
+          <text x="375" y="526" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.6">reject invalid</text>
+
+          <rect x="472" y="486" width="118" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="531" y="510" text-anchor="middle" font-size="11.5" font-weight="600" fill="currentColor">Spot-check</text>
+          <text x="531" y="526" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.6">human expert</text>
+
+          <!-- TTS render, forked by register -->
+          <rect x="628" y="468" width="200" height="92" rx="4" fill="none" stroke="var(--free)" stroke-width="1.5"/>
+          <text x="728" y="490" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--free)">Render — by register</text>
+          <line x1="644" y1="500" x2="812" y2="500" stroke="var(--free)" stroke-opacity="0.4"/>
+          <text x="644" y="518" font-size="10.5" fill="currentColor" opacity="0.78">Vāgdhenu</text>
+          <text x="812" y="518" text-anchor="end" font-size="10" fill="currentColor" opacity="0.55">classical · chant</text>
+          <text x="644" y="540" font-size="10.5" fill="currentColor" opacity="0.78">Parler-TTS</text>
+          <text x="812" y="540" text-anchor="end" font-size="10" fill="currentColor" opacity="0.55">laukika</text>
+
+          <line x1="122" y1="514" x2="154" y2="514" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="278" y1="514" x2="310" y2="514" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="434" y1="514" x2="466" y2="514" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+          <line x1="590" y1="514" x2="622" y2="514" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#a2)"/>
+
+          <path d="M375 486 C 375 446, 219 446, 219 480" fill="none" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="4 4" marker-end="url(#a2)"/>
+          <text x="297" y="440" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.65">regenerate on failure</text>
+
+          <path d="M728 468 L 728 420 L 376 420 L 376 320" fill="none" stroke="var(--free)" stroke-width="1.5" marker-end="url(#a2-free)"/>
+          <text x="552" y="412" text-anchor="middle" font-size="10.5" fill="var(--free)">publishes — one render serves every user</text>
+        </svg>
+
+        <div class="legend">
+          <span><span class="swatch" style="background:var(--free)"></span> free at the margin</span>
+          <span><span class="swatch" style="background:var(--costly)"></span> costly, metered</span>
+          <span><span class="swatch" style="background:currentColor;opacity:.5"></span> cheap per call</span>
+        </div>
+      </div>
+      <figcaption>Exactly one runtime path touches the GPU, and it belongs to the single surface users pay for. Everything habit-forming is served from the CDN by a pipeline that ran hours earlier — and that pipeline forks by register, sending chanted verse to Vāgdhenu and conversational Sanskrit to Parler-TTS, because no single model does both well.</figcaption>
+    </figure>
+
+    <div class="verdict">
+      <span class="tag">The piece most people leave out</span>
+      <p>The offline pipeline is where quality comes from. Nothing in it is latency-sensitive, so it can afford slow, validated generation with a human in the loop — and every artifact it produces is free to serve forever. Build it before the app, not after.</p>
+    </div>
+  </section>
+
+  <section id="register">
+    <h2>Register is a routing key</h2>
+    <div class="col">
+      <p class="lede">Sanskrit is not one language for our purposes. Classical and Vedic verse is chanted; laukika is spoken. They need different corpora, different voices, and different difficulty orderings — so register selects all three, explicitly, at the routing layer.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Surface → register → stack</caption>
+        <thead><tr><th scope="col">Surface</th><th scope="col">Register</th><th scope="col">Corpus index</th><th scope="col">Voice</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Daily śloka</td><td>Classical / Vedic</td><td>DCS · GRETIL · Mitrasaṃgraha</td><td class="num">Vāgdhenu</td></tr>
+          <tr><td class="name">Audio challenges</td><td>Laukika</td><td>Samskrita Bharati readers</td><td class="num">Parler-TTS</td></tr>
+          <tr><td class="name">Conversation</td><td>Laukika</td><td>Samskrita Bharati readers</td><td class="num">Parler-TTS</td></tr>
+          <tr><td class="name">Grammar</td><td>Pāṇinian</td><td>DCS · GRETIL</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="col">Enforce the corpus split at the <strong>retrieval layer, not by prompt instruction</strong>. A shared index makes the tutor answer "what did you eat?" in Purāṇic register — which is not a subtle degradation, it is the product sounding absurd.</p>
+  </section>
+
+  <section id="stack">
+    <h2>Third-party stack and licences</h2>
+    <div class="col">
+      <p class="lede">Every external component, what it is for, and whether it can actually be shipped.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Speech synthesis</caption>
+        <thead><tr><th scope="col">Model</th><th scope="col">Use</th><th scope="col">Licence</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          <tr class="pick">
+            <td class="name">Vāgdhenu</td><td>Daily śloka, any chanted verse</td>
+            <td><span class="chip ok">Apache-2.0</span></td>
+            <td>Metre-aware śloka-to-chant. IndicF5/F5-TTS DiT ~337M + BigVGAN-v2. Expert MOS ~4.6. Retroflex series, three sibilants, aspiration, visarga sandhi and homorganic anusvāra all kept distinct. Single speaker, <strong>chant only</strong>.</td>
+          </tr>
+          <tr class="pick">
+            <td class="name">Indic Parler-TTS</td><td>Conversation, laukika challenges</td>
+            <td><span class="chip ok">Apache-2.0</span></td>
+            <td>Sanskrit voice "Aryan" at 99.79% native-speaker score — highest of its 21 languages. Also covers Konkani, Maithili, Sindhi for later expansion. Autoregressive, so slower.</td>
+          </tr>
+          <tr>
+            <td class="name">Sarvam Bulbul v3</td><td>Hindi / English bridge audio</td>
+            <td class="num">Commercial</td>
+            <td>₹30 per 10K chars. <strong>No Sanskrit.</strong> Bridge-language speech only.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Recognition</caption>
+        <thead><tr><th scope="col">Path</th><th scope="col">Use</th><th scope="col">Licence</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          <tr class="pick">
+            <td class="name">Sarvam Saaras v3</td><td>Conversation — mixed-language input</td>
+            <td class="num">Commercial</td>
+            <td>₹30/hr. Supports <code>sa-IN</code> with a <code>codemix</code> output mode, built for exactly our input shape. ₹25K credits ≈ 830 hrs.</td>
+          </tr>
+          <tr class="block">
+            <td class="name">Su-śrotā</td><td>Reference implementation for recitation grading</td>
+            <td><span class="chip no">none stated</span></td>
+            <td>IndicConformer-CTC ~129M. In-the-wild 4.4% CER / 30.4% WER. <strong>Blocked until licensed</strong> — see below.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict block">
+      <span class="tag">Licence blocker</span>
+      <p>Su-śrotā publishes <strong>no licence file</strong>. Under default copyright that means all rights reserved, not free use — open-sourced in spirit is not licensed in law. Vāgdhenu is explicitly Apache-2.0 and safe to ship. Before building on Su-śrotā weights, get written permission from Prof. Prathosh A P (IISc Bengaluru), or ask him to add a licence. Until then: the <em>approach</em> is adoptable, the <em>weights</em> are not.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Reasoning and validation</caption>
+        <thead><tr><th scope="col">Component</th><th scope="col">Role</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Vidyut</td><td><code>vidyut-cheda</code> segments and annotates morphology; <code>vidyut-prakriya</code> derives forms. Rust with Python bindings, fast enough for real-time.</td></tr>
+          <tr><td class="name">sanskrit_parser</td><td>Pure-Python fallback for lexical and morphological analysis</td></tr>
+          <tr><td class="name">Gemini Flash</td><td>Default tutor brain — best measured zero-shot on Sanskrit (GEMBA 87.04) and the cheapest tier</td></tr>
+          <tr><td class="name">Frontier model</td><td>Reserved for hard error diagnosis, where reasoning actually pays</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="col">Do <strong>not</strong> reach for Indic-specialist translation models. IndicTrans2 scored 12.23 GEMBA and NLLB 8.08 against Gemma3-27B at 64.55, and Sarvam-105B does not support Sanskrit at all.</p>
+  </section>
+
+  <section id="grading">
+    <h2>Grading</h2>
+
+    <h3>Compare parses, never strings</h3>
+    <div class="col">
+      <p>Sanskrit has free word order. The same sentence is correct in several arrangements, so string comparison marks right answers wrong — and a learner told they are wrong when they are right will quit.</p>
+    </div>
+
+    <figure>
+      <div class="figframe">
+        <svg viewBox="0 0 900 340" role="img" aria-label="Three learner attempts are parsed by Vidyut into morphological feature sets. Two different word orders yield an identical feature set and are both accepted. A third attempt uses the nominative case instead of the accusative, producing a different feature set, which yields a specific diagnosis about the object case rather than a generic wrong answer.">
+          <defs>
+            <marker id="g2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <text x="0" y="14" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.5" letter-spacing="1.3">LEARNER SAYS</text>
+          <text x="392" y="14" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.5" letter-spacing="1.3">VIDYUT PARSE</text>
+          <text x="700" y="14" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.5" letter-spacing="1.3">VERDICT</text>
+
+          <rect x="0" y="34" width="250" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="125" y="60" text-anchor="middle" font-size="17" font-family="Noto Serif Devanagari, serif" fill="currentColor">ग्रामं गच्छामि</text>
+          <text x="125" y="79" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">grāmaṃ gacchāmi</text>
+
+          <rect x="392" y="34" width="248" height="56" rx="4" fill="none" stroke="var(--free)" stroke-width="1.4"/>
+          <text x="516" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--free)">grāma · ACC.SG</text>
+          <text x="516" y="75" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--free)">√gam · PRES.1SG</text>
+
+          <text x="700" y="60" font-size="13" font-weight="600" fill="var(--free)">✓ accepted</text>
+          <text x="700" y="78" font-size="10.5" fill="currentColor" opacity="0.6">canonical order</text>
+
+          <line x1="256" y1="62" x2="386" y2="62" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+          <line x1="646" y1="62" x2="690" y2="62" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+
+          <rect x="0" y="140" width="250" height="56" rx="4" fill="none" stroke="currentColor" stroke-opacity="0.45"/>
+          <text x="125" y="166" text-anchor="middle" font-size="17" font-family="Noto Serif Devanagari, serif" fill="currentColor">गच्छामि ग्रामम्</text>
+          <text x="125" y="185" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.6">gacchāmi grāmam</text>
+
+          <rect x="392" y="140" width="248" height="56" rx="4" fill="none" stroke="var(--free)" stroke-width="1.4"/>
+          <text x="516" y="163" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--free)">grāma · ACC.SG</text>
+          <text x="516" y="181" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--free)">√gam · PRES.1SG</text>
+
+          <text x="700" y="166" font-size="13" font-weight="600" fill="var(--free)">✓ accepted</text>
+          <text x="700" y="184" font-size="10.5" fill="currentColor" opacity="0.6">reordered — identical</text>
+
+          <line x1="256" y1="168" x2="386" y2="168" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+          <line x1="646" y1="168" x2="690" y2="168" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+
+          <path d="M660 84 C 676 84, 676 124, 676 124 C 676 124, 676 146, 660 146" fill="none" stroke="currentColor" stroke-opacity="0.28"/>
+
+          <rect x="0" y="246" width="250" height="56" rx="4" fill="none" stroke="var(--costly)" stroke-width="1.4"/>
+          <text x="125" y="272" text-anchor="middle" font-size="17" font-family="Noto Serif Devanagari, serif" fill="var(--costly)">ग्रामः गच्छामि</text>
+          <text x="125" y="291" text-anchor="middle" font-size="10.5" fill="var(--costly)" opacity="0.8">grāmaḥ gacchāmi</text>
+
+          <rect x="392" y="246" width="248" height="56" rx="4" fill="none" stroke="var(--costly)" stroke-width="1.4"/>
+          <text x="516" y="269" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--costly)">grāma · NOM.SG</text>
+          <text x="516" y="287" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.55">√gam · PRES.1SG</text>
+
+          <text x="700" y="266" font-size="13" font-weight="600" fill="var(--costly)">✕ one feature off</text>
+          <text x="700" y="284" font-size="10.5" fill="currentColor" opacity="0.72">"the object takes</text>
+          <text x="700" y="298" font-size="10.5" fill="currentColor" opacity="0.72">the accusative"</text>
+
+          <line x1="256" y1="274" x2="386" y2="274" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+          <line x1="646" y1="274" x2="690" y2="274" stroke="currentColor" stroke-opacity="0.5" marker-end="url(#g2)"/>
+        </svg>
+      </div>
+      <figcaption>Comparing parsed feature sets rather than strings does two jobs at once: it accepts every valid word order, and when something is wrong it identifies <em>which grammatical feature</em> is wrong — so the tutor can say "the object takes the accusative" instead of "incorrect". That specificity is the product.</figcaption>
+    </figure>
+
+    <h3>Align against the target, don't transcribe freely</h3>
+    <div class="col">
+      <p>Saaras is trained on correct Sanskrit. A learner's mangled attempt can transcribe as the <em>valid</em> form, silently erasing the very error the app exists to catch.</p>
+      <p>For challenges and śloka recitation we always know the target text — so verify akṣara by akṣara against it rather than transcribing open-vocabulary. The failure mode disappears entirely. This is the Vāgbodhinī approach, and it is correct regardless of whose code ends up implementing it.</p>
+    </div>
+
+    <div class="verdict">
+      <span class="tag">Product principle · abstain rather than accuse</span>
+      <p>Flag a syllable only when multiple decodes agree; stay silent when uncertain. <strong>A missed error costs far less than a false accusation.</strong> A learner wrongly told they mispronounced something loses trust immediately and permanently — and in Sanskrit, where pronunciation carries real weight, that trust does not come back.</p>
+    </div>
+  </section>
+
+  <section id="model">
+    <h2>Data model</h2>
+    <div class="col">
+      <p class="lede">The grammatical feature taxonomy is the spine. Challenge selection, the ratio dial, and the diagnosis text all hang off it.</p>
+    </div>
+
+<pre><code>Feature            id, kind (case|number|tense|voice|sandhi), rank
+                   e.g. ACC.SG · DUAL · PRES.1SG · vowel-sandhi
+
+Challenge          id, prompt_l1, prompt_lang, target_sanskrit,
+                   features[]        → what it exercises
+                   accepted_parses[] → feature sets, NOT strings
+                   audio_url         → pre-rendered, CDN
+                   register          → laukika | classical
+
+Shloka             id, date, source_ref, devanagari, iast, metre,
+                   word_breakdown[], features[], audio_url
+
+Learner            id, bridge_langs[], sanskrit_ratio, script_ratio,
+                   feature_mastery{feature_id → score},
+                   streak, voice_minutes_used
+
+Attempt            learner_id, challenge_id, raw_audio, alignment[],
+                   parsed_features[], diff[], verdict, abstained[], ts
+</code></pre>
+
+    <div class="col">
+      <p><strong>Two independent ratios.</strong> <code>sanskrit_ratio</code> governs how much target language appears; <code>script_ratio</code> governs how much Devanagari replaces IAST. They move separately because the two markets need opposite settings — a diaspora beginner may handle Sanskrit words but cannot read the script; a Hindi speaker reads Devanagari natively and needs the language faded in slowly.</p>
+      <p><strong>Feature mastery is what the dial reads.</strong> Raise the Sanskrit ratio as mastery broadens, and select the next challenge at the edge of what is known rather than by a global difficulty number. Vidyut can detect which features a sentence requires, so the whole corpus auto-tags.</p>
+      <p>One ordering note: the <strong>dual number</strong> (<span style="font-family:var(--f-deva)">द्विवचन</span>) is alien to English and Hindi speakers and appears constantly. Give it its own slot in the progression rather than folding it into plural.</p>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <h2>Decisions and alternatives</h2>
+
+    <div class="tablewrap">
+      <table>
+        <caption>The calls, and what was rejected</caption>
+        <thead><tr><th scope="col">Decision</th><th scope="col">Chosen</th><th scope="col">Rejected</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Correctness</td><td class="num">LLM proposes, Vidyut validates</td><td>Trust the model · rule-based only</td><td>Turns a probabilistic system into a checkable one. No other language allows this.</td></tr>
+          <tr><td class="name">Speech delivery</td><td class="num">Hybrid pre-render + live</td><td>All live · all pre-generated</td><td>Cuts cost ~6× and removes latency from the habit loop</td></tr>
+          <tr><td class="name">Conversation transport</td><td class="num">Turn-based</td><td>Streaming WebSocket · Pipecat</td><td>Survives poor mobile networks, trivially debuggable. Sarvam ships a Pipecat integration for v2.</td></tr>
+          <tr><td class="name">Learner model</td><td class="num">Server-side</td><td>Client-side</td><td>The adaptive algorithm gets retuned constantly in year one; server-side means no app release</td></tr>
+          <tr><td class="name">Model routing</td><td class="num">Flash by default</td><td>Frontier everywhere</td><td>Best measured on Sanskrit and cheapest; reserve frontier for hard diagnosis</td></tr>
+          <tr><td class="name">GPU hosting</td><td class="num">Serverless first</td><td>Dedicated</td><td>Pipeline work is bursty. Move to dedicated when live conversation justifies it.</td></tr>
+          <tr><td class="name">Secrets</td><td class="num">Server only</td><td>Client-side keys</td><td>Prompts and corpus are the asset</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="prathosh">
+    <h2>Relationship to the IISc Sanskrit stack</h2>
+    <div class="col">
+      <p class="lede">Prof. Prathosh A P's work covers chanting and śāstric recitation. This product covers conversational production. They are complements, not substitutes — which is why two of his components slot in cleanly and none of them compete for the same job.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Overlap</caption>
+        <thead><tr><th scope="col">His</th><th scope="col">Ours</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Vāgdhenu — chant TTS</td><td>Adopted directly for śloka audio</td></tr>
+          <tr><td class="name">Su-śrotā — recitation ASR</td><td>Saaras codemix for conversation; Su-śrotā blocked on licence</td></tr>
+          <tr><td class="name">Vāgbodhinī — chant practice against a known verse</td><td>Adaptive code-switching tutor, laukika production</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p><strong>Vāgbodhinī partially overlaps the daily-śloka feature</strong> and proves that syllable-level pronunciation feedback works. It does not do conversation, code-switching, an adaptive ratio, or laukika Sanskrit — so the lane stays open.</p>
+      <p>Worth approaching him directly regardless of the licence question: he open-sources actively, and he is a strong candidate for the expert content validation this product needs anyway.</p>
+      <p>One caution on sourcing — claims circulating on social media about an "automated Śikṣā and Chandas verification engine" and a large contributor count overstate what is documented. What exists is metre-aware <em>rendering</em> and akṣara-level verification <em>against a known target</em>. Build against the repos, not the commentary.</p>
+    </div>
+  </section>
+
+  <section id="risks">
+    <h2>Risks</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Risk</th><th scope="col">Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Recognition silently repairs learner errors</td><td>Forced alignment against the known target, not open transcription</td></tr>
+          <tr><td class="name">Register bleed — tutor answers in Purāṇic Sanskrit</td><td>Two RAG indexes, enforced at the retrieval layer</td></tr>
+          <tr><td class="name">False accusation destroys trust</td><td>Decode-consensus with abstention</td></tr>
+          <tr><td class="name">Su-śrotā licence unresolved</td><td>Do not ship on it until written permission is obtained</td></tr>
+          <tr><td class="name">Parler-TTS latency in live conversation</td><td>Pre-render everything possible; benchmark before building conversation</td></tr>
+          <tr><td class="name">Cost per session at scale</td><td>Self-host synthesis, meter voice minutes, keep the free tier CDN-only</td></tr>
+          <tr><td class="name">Register mismatch in the corpus</td><td>Laukika content from graded readers, never from the epics</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="order">
+    <h2>Build order</h2>
+    <div class="col">
+      <p class="lede">Each step de-risks the next. Nothing here is thrown away.</p>
+    </div>
+
+    <ol class="steps">
+      <li><div><span class="what">Voice spike — both registers at once</span><span class="why">Vāgdhenu renders 20 śloka, Indic Parler-TTS renders 20 laukika sentences, Vidyut validates both. Send the audio to three Sanskrit speakers. Closes the largest unknown and validates the register split in a single pass.</span></div></li>
+      <li><div><span class="what">Recognition spike</span><span class="why">Record genuinely code-mixed Hindi–English–Sanskrit speech and run it through Saaras <code>codemix</code>. Confirm it neither collapses nor silently repairs learner errors.</span></div></li>
+      <li><div><span class="what">Content pipeline</span><span class="why">Corpora in, validated pre-rendered challenges out, forked by register. Everything downstream depends on it, and it produces the asset that makes the free tier cost nothing.</span></div></li>
+      <li><div><span class="what">API and learner model</span><span class="why">Auth, entitlements, feature taxonomy, selection engine, register routing. Server-side so the algorithm can be tuned without shipping releases.</span></div></li>
+      <li><div><span class="what">Expo client — challenges only</span><span class="why">The habit loop, offline-capable, served entirely from the CDN. Ship this and get real users before building conversation.</span></div></li>
+      <li><div><span class="what">Daily śloka</span><span class="why">Same pipeline, one item a day, Vāgdhenu voice. Acquisition and retention, and it accretes into a permanent archive over time.</span></div></li>
+      <li><div><span class="what">Conversation, metered</span><span class="why">The premium tier, added once people are paying for the free loop and the voice quality is proven.</span></div></li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>Architecture as of 29 August 2026, for React Native + Expo with Sanskrit as the first language. Canonical source is <code>architecture.md</code> in the repository; this page mirrors it. Cost tiers derive from Sarvam list pricing and self-hosted GPU estimates and should be re-measured against real traffic. The two-index corpus split, the register-forked voice routing, and parse-based grading are the decisions most expensive to reverse later — everything else here can change after launch.</p>
+  </footer>
+
+</div>

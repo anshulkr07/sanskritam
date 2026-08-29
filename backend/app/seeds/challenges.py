@@ -76,6 +76,7 @@ SEED_CHALLENGES = [
         "features": ["NOM.DU", "ACC.DU", "PRES.3DU"],
         "accepted_parses": [
             {"nara": "NOM.DU", "pustaka": "ACC.DU", "√paṭh": "PRES.3DU"},
+            {"nara": "NOM.DU", "pustaka": "LOC.SG", "√paṭh": "PRES.3DU"},
         ],
         "register": "laukika",
     },
@@ -246,6 +247,7 @@ SEED_CHALLENGES = [
         "features": ["GEN.SG", "NOM.SG", "LOC.SG", "PRES.3SG"],
         "accepted_parses": [
             {"bāla": "GEN.SG", "pustaka": "NOM.SG", "geha": "LOC.SG", "√as": "PRES.3SG"},
+            {"bāla": "GEN.SG", "pustaka": "ACC.SG", "geha": "LOC.SG", "√as": "PRES.3SG"},
         ],
         "register": "laukika",
     },
@@ -362,5 +364,72 @@ SEED_CHALLENGES = [
             {"bāla": "NOM.DU", "√has": "PRES.3DU"},
         ],
         "register": "laukika",
+    },
+    # ─── Classical register (epic/Purāṇic register — separate corpus per spec §4.4) ───
+    {
+        "prompt_l1": "Rama goes to the forest with Lakshmana.",
+        "prompt_lang": "en",
+        "target_sanskrit": "रामः सह लक्ष्मणेन वनम् गच्छति।",
+        "target_iast": "rāmaḥ saha lakṣmaṇena vanam gacchati.",
+        "features": ["NOM.SG", "INSTR.SG", "ACC.SG", "PRES.3SG"],
+        "accepted_parses": [
+            {"rāma": "NOM.SG", "lakṣmaṇa": "INSTR.SG", "vana": "ACC.SG", "√gam": "PRES.3SG"},
+        ],
+        "register": "classical",
+    },
+    {
+        "prompt_l1": "In the ocean there is a gem.",
+        "prompt_lang": "en",
+        "target_sanskrit": "समुद्रे मणिः अस्ति।",
+        "target_iast": "samudre maṇiḥ asti.",
+        "features": ["LOC.SG", "NOM.SG", "PRES.3SG"],
+        "accepted_parses": [
+            {"samudra": "LOC.SG", "maṇi": "NOM.SG", "√as": "PRES.3SG"},
+        ],
+        "register": "classical",
+    },
+    {
+        "prompt_l1": "The light of the sun destroys darkness.",
+        "prompt_lang": "en",
+        "target_sanskrit": "सूर्यस्य प्रकाशः तमः नश्यति।",
+        "target_iast": "sūryasya prakāśaḥ tamaḥ naśyati.",
+        "features": ["GEN.SG", "NOM.SG", "PRES.3SG"],
+        "accepted_parses": [
+            {"sūrya": "GEN.SG", "prakāśa": "NOM.SG", "tama": "NOM.SG", "√naś": "PRES.3SG"},
+        ],
+        "register": "classical",
+    },
+    {
+        "prompt_l1": "The boy reads the book in the village.",
+        "prompt_lang": "en",
+        "target_sanskrit": "बालः ग्रामे पुस्तकम् पठति।",
+        "target_iast": "bālaḥ grāme pustakam paṭhati.",
+        "features": ["NOM.SG", "LOC.SG", "ACC.SG", "PRES.3SG"],
+        "accepted_parses": [
+            {"bāla": "NOM.SG", "grāma": "LOC.SG", "pustaka": "ACC.SG", "√paṭh": "PRES.3SG"},
+        ],
+        "register": "classical",
+    },
+    {
+        "prompt_l1": "We walk the path of dharma.",
+        "prompt_lang": "en",
+        "target_sanskrit": "वयं धर्मं चरामः।",
+        "target_iast": "vayaṃ dharmaṃ carāmaḥ.",
+        "features": ["ACC.SG", "PRES.1PL"],
+        "accepted_parses": [
+            {"dharma": "ACC.SG", "√car": "PRES.1PL"},
+        ],
+        "register": "classical",
+    },
+    {
+        "prompt_l1": "Rama sees Ravana in the city.",
+        "prompt_lang": "en",
+        "target_sanskrit": "रामः रावणम् नगरे पश्यति।",
+        "target_iast": "rāmaḥ rāvaṇam nagare paśyati.",
+        "features": ["NOM.SG", "ACC.SG", "LOC.SG", "PRES.3SG"],
+        "accepted_parses": [
+            {"rāma": "NOM.SG", "rāvaṇa": "ACC.SG", "nagara": "LOC.SG", "√dṛś": "PRES.3SG"},
+        ],
+        "register": "classical",
     },
 ]

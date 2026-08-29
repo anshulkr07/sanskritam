@@ -52,6 +52,7 @@ class Learner(Base):
     feature_mastery = Column(JSON, default=dict)  # {feature_id: score 0..1}
     streak = Column(Integer, default=0)
     voice_minutes_used = Column(Float, default=0.0)
+    recent_challenge_ids = Column(JSON, default=list)  # last N served — no-repeat window
     created_at = Column(DateTime, default=datetime.utcnow)
 
     tokens = relationship("Token", back_populates="learner", cascade="all, delete-orphan")

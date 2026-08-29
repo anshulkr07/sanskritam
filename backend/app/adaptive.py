@@ -87,8 +87,7 @@ def select_next_challenge(
     recent_challenge_ids: Optional[list[str]] = None,
     db: Optional[Session] = None,
 ) -> Optional[Challenge]:
-    """
-    Select the next challenge at the edge of feature mastery.
+    """Select the next challenge at the edge of feature mastery.
 
     Picks challenges whose required features have average mastery nearest
     0.6 (the sweet spot between too easy and too hard). Avoids the last
@@ -101,14 +100,27 @@ def select_next_challenge(
     query = Challenge.query if db is None else db.query(Challenge)
     query = query.filter(Challenge.register == register)
 
-    # Exclude recently seen challenges
-    recent = recent_challenge_ids or []
-    if recent:
-        query = query.filter(~Challenge.id.in_(recent))
+    # Exclude recently served challenges (no-repeat window; also covers
+    # attempts, since a served challenge that is attempted lands here too)
+    recent = list(recent_challenge_ids or [])
+    try:
+        served = learner.recent_challenge_ids or []
+    except Exception:
+        served = []
+    window = list(dict.fromkeys(served + recent))[-5:]
+    if window:
+        query = query.filter(~Challenge.id.in_(window))
 
     challenges = query.all()
     if not challenges:
-        return None
+        # Window exhaustion fallback: relax to attempts-only exclusion so the
+        # learner always gets a challenge even if the register is small.
+        if recent:
+            query = db.query(Challenge).filter(Challenge.register == register)
+            query = query.filter(~Challenge.id.in_(recent[-2:]))
+            challenges = query.all()
+        if not challenges:
+            return None
 
     best_challenge = None
     best_score = float("inf")

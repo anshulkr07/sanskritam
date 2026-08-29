@@ -99,16 +99,17 @@ class ShlokaResponse(BaseModel):
 class VarnamalaChar(BaseModel):
     devanagari: str
     iast: str
-    place: str  # kanthya|talavya|murdhanya|dantya|oshthya
-    voicing: str  # voiceless|voiced|nasal|etc
-    kind: str  # vowel|consonant|sibilant|other
+    place: Optional[str] = None  # kanthya|talavya|murdhanya|dantya|oshthya (None for anusvara/visarga)
+    voicing: Optional[str] = None  # voiceless|voiced|nasal|etc
+    kind: str  # vowel|consonant|nasal|sibilant|aspirate|semivowel|anusvara|visarga
+    iast_place: Optional[str] = None  # IAST display label, e.g. "kaṇṭhya"
 
 
 class VarnamalaResponse(BaseModel):
-    vowels: list[dict[str, Any]]
-    consonants: list[list[dict[str, Any]]]  # 5 rows x ~5 columns
-    nasals: list[dict[str, Any]]
-    others: list[dict[str, Any]]
+    vowels: list[VarnamalaChar]
+    consonants: list[VarnamalaChar]  # flat cells; group by `place` to rebuild the 5x5 matrix
+    nasals: list[VarnamalaChar]
+    others: list[VarnamalaChar]
 
 
 class FeatureResponse(BaseModel):
