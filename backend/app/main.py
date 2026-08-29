@@ -3,12 +3,26 @@
 import logging
 import time
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 
 logger = logging.getLogger("shabd")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize database and seed data on startup."""
+    from app.db import init_db
+    from app.seeds.seed import run_seed
+
+    init_db()
+    run_seed()
+    logger.info("Shabd backend started successfully")
+    yield
 
 
 def create_app() -> FastAPI:
@@ -18,6 +32,7 @@ def create_app() -> FastAPI:
         description="Sanskrit learning backend",
         version="0.1.0",
         docs_url="/docs",
+        lifespan=lifespan,
     )
 
     # CORS — wide open for dev
@@ -56,6 +71,7 @@ def create_app() -> FastAPI:
     from app.routers.grammar import router as grammar_router
     from app.routers.admin import router as admin_router
     from app.routers.pipeline import router as pipeline_router
+    from app.routers.speech import router as speech_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -66,6 +82,7 @@ def create_app() -> FastAPI:
     app.include_router(grammar_router, tags=["Grammar"])
     app.include_router(admin_router, tags=["Admin"])
     app.include_router(pipeline_router, tags=["Pipeline"])
+    app.include_router(speech_router, tags=["Speech"])
 
     return app
 
@@ -82,17 +99,6 @@ def get_app() -> FastAPI:
 
 
 app = get_app()
-
-
-@app.on_event("startup")
-async def startup():
-    """Initialize database and seed data."""
-    from app.db import init_db
-    from app.seeds.seed import run_seed
-
-    init_db()
-    run_seed()
-    logger.info("Shabd backend started successfully")
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     vidyut_data_dir: str = ""  # empty -> backend/vidyut-data (auto-downloaded on first use)
     log_level: str = "INFO"
     cors_origins: str = "*"
+    sarvam_api_key: str = ""  # Sarvam AI API subscription key (TTS/STT)
 
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 
