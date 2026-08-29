@@ -1,0 +1,69 @@
+"""Admin endpoints: create/list challenges."""
+
+import uuid
+
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+
+from app.auth import require_admin
+from app.db import get_db
+from app.models import Challenge
+from app.schemas import ChallengeResponse, CreateChallengeRequest
+
+router = APIRouter()
+
+
+@router.post("/admin/challenges", response_model=ChallengeResponse)
+async def create_challenge(
+    req: CreateChallengeRequest,
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Create a new challenge (admin only)."""
+    challenge = Challenge(
+        id=uuid.uuid4().hex[:16],
+        prompt_l1=req.prompt_l1,
+        prompt_lang=req.prompt_lang,
+        target_sanskrit=req.target_sanskrit,
+        target_iast=req.target_iast,
+        features=req.features,
+        accepted_parses=req.accepted_parses if req.accepted_parses else [],
+        register=req.register,
+        audio_url=req.audio_url,
+    )
+    db.add(challenge)
+    db.commit()
+    db.refresh(challenge)
+
+    return ChallengeResponse(
+        id=challenge.id,
+        prompt_l1=challenge.prompt_l1,
+        prompt_lang=challenge.prompt_lang,
+        target_sanskrit=challenge.target_sanskrit,
+        target_iast=challenge.target_iast,
+        features=challenge.features or [],
+        audio_url=challenge.audio_url or "",
+        register=challenge.register,
+    )
+
+
+@router.get("/admin/challenges", response_model=list[ChallengeResponse])
+async def list_admin_challenges(
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """List all challenges (admin view)."""
+    challenges = db.query(Challenge).all()
+    return [
+        ChallengeResponse(
+            id=c.id,
+            prompt_l1=c.prompt_l1,
+            prompt_lang=c.prompt_lang,
+            target_sanskrit=c.target_sanskrit,
+            target_iast=c.target_iast,
+            features=c.features or [],
+            audio_url=c.audio_url or "",
+            register=c.register,
+        )
+        for c in challenges
+    ]
