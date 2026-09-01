@@ -19,6 +19,14 @@ export type MainTabParamList = {
 export type RootStackParamList = {
   MainTabs: undefined;
   Challenge: { challengeId?: string };
+  SessionComplete: {
+    correctCount: number;
+    totalCount: number;
+    streakDays?: number;
+    freezeUsed?: boolean;
+    xpEarned?: number;
+    isPersonalBest?: boolean;
+  };
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

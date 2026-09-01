@@ -7,6 +7,12 @@ import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { Platform } from "react-native";
+import Animated, {
+  Easing,
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 
 import ConversationScreen from "../screens/Conversation";
 import HomeScreen from "../screens/Home";
