@@ -1,4 +1,4 @@
-"""Learner profile endpoints: GET /me, PATCH /me."""
+"""Learner profile endpoints: GET /me, PATCH /me, DELETE /me."""
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -69,3 +69,37 @@ async def update_me(
     db.refresh(learner)
 
     return MeResponse(learner=_profile(learner), model=_model(learner))
+
+
+@router.delete("/me", status_code=204)
+async def delete_me(
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """Hard-delete the current learner and their owned data.
+
+    - Tokens, attempts, usage_events, conversation_sessions are deleted.
+    - EscapeLog.learner_id is set to NULL (aggregate metrics survive).
+    - The learner row itself is hard-deleted.
+    """
+    # Nullify escape log references first (aggregate metrics are about content)
+    import sqlalchemy as sa
+    db.execute(
+        sa.text("UPDATE escape_logs SET learner_id = NULL WHERE learner_id = :lid"),
+        {"lid": learner.id},
+    )
+
+    # Delete owned rows (tokens and attempts cascade via ORM, but we do it
+    # explicitly for clarity and to handle usage_events and conversation_sessions)
+    from app.models import Attempt, ConversationSession, EscapeLog, Token, UsageEvent
+
+    db.query(UsageEvent).filter(UsageEvent.learner_id == learner.id).delete()
+    db.query(ConversationSession).filter(ConversationSession.learner_id == learner.id).delete()
+    db.query(Token).filter(Token.learner_id == learner.id).delete()
+    db.query(Attempt).filter(Attempt.learner_id == learner.id).delete()
+
+    # Finally delete the learner itself
+    db.delete(learner)
+    db.commit()
+
+    return None

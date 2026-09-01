@@ -77,3 +77,45 @@ def test_anon_login_token_works(client):
 
     r2 = client.get("/me", headers={"Authorization": f"Bearer {token}"})
     assert r2.status_code == 200, "Token from anon login should work"
+
+
+# ─── P1-3: Account deletion ────────────────────────────
+
+def _dev_login(client, name="p1-delete-tester"):
+    r = client.post("/auth/dev-login", json={"display_name": name, "bridge_langs": ["en", "hi"]})
+    assert r.status_code == 200, r.text
+    data = r.json()
+    return {"Authorization": f"Bearer {data['token']}"}, data["learner"]["id"]
+
+
+def test_delete_me_removes_learner(client):
+    """DELETE /me removes the learner."""
+    headers, learner_id = _dev_login(client, "delete-me")
+    r = client.delete("/me", headers=headers)
+    assert r.status_code == 204, f"Expected 204, got {r.status_code}: {r.text}"
+
+
+def test_delete_me_invalidates_token(client):
+    """After DELETE /me, the token no longer works."""
+    headers, learner_id = _dev_login(client, "delete-token-test")
+    r = client.delete("/me", headers=headers)
+    assert r.status_code == 204
+
+    r2 = client.get("/me", headers=headers)
+    assert r2.status_code == 401, "Token should be invalid after deletion"
+
+
+def test_delete_me_removes_tokens(client):
+    """Token rows are removed on deletion."""
+    headers, learner_id = _dev_login(client, "delete-tokens-test")
+    from app.db import SessionLocal
+    from app.models import Token
+    db = SessionLocal()
+    try:
+        before = db.query(Token).filter(Token.learner_id == learner_id).count()
+        assert before > 0, "Should have tokens before deletion"
+    finally:
+        db.close()
+
+    r = client.delete("/me", headers=headers)
+    assert r.status_code == 204
