@@ -429,6 +429,7 @@ def seed_dialogue(db):
         min_ratio=SCENARIO["min_ratio"],
         max_ratio=SCENARIO["max_ratio"],
         est_minutes=SCENARIO["est_minutes"],
+        review_status="approved",  # hand-built seed is trusted
     )
     db.add(scenario)
     db.flush()  # get scenario.id

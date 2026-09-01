@@ -150,8 +150,10 @@ async def list_scenarios(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """List all available dialogue scenarios with node counts."""
-    scenarios = db.query(DialogueScenario).order_by(DialogueScenario.created_at).all()
+    """List all available dialogue scenarios with node counts (approved only)."""
+    scenarios = db.query(DialogueScenario).filter(
+        DialogueScenario.review_status == "approved"
+    ).order_by(DialogueScenario.created_at).all()
     result = []
     for s in scenarios:
         node_count = db.query(DialogueNode).filter(DialogueNode.scenario_id == s.id).count()

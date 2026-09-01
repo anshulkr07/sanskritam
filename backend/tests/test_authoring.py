@@ -447,3 +447,118 @@ class TestAuthoringEndpoints:
             "/authoring/render", json={"scenario_id": "nope"}, headers=ADMIN
         )
         assert r.status_code == 404
+
+
+# ─── Review endpoints (P2-3) ─────────────────────────────────────────
+
+class TestReview:
+
+    REVIEW_ADMIN = {"X-Admin-Token": "test-admin", "Content-Type": "application/json"}
+
+    def test_review_requires_admin(self, authoring_client):
+        """GET /authoring/review returns 401 without admin token."""
+        r = authoring_client.get("/authoring/review")
+        assert r.status_code == 401
+
+    def test_pending_scenario_invisible_to_learners(self, authoring_client, client, monkeypatch):
+        """A pending scenario is invisible to /conversation/scenarios."""
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        monkeypatch.setattr("app.services.authoring.draft_turns", AsyncMock(return_value=[CLEAN_DRAFT]))
+
+        # Author a scenario (created as "pending" by default)
+        r = authoring_client.post(
+            "/authoring/scenario",
+            json={"brief": dict(BRIEF, title="pending-review-scenario"), "n_turns": 2},
+            headers=ADMIN,
+        )
+        assert r.status_code == 200, r.text
+
+        # Login as learner and check scenarios list
+        learner_headers = {"Authorization": "Bearer " + client.post(
+            "/auth/dev-login", json={"display_name": "review-learner", "bridge_langs": ["en", "hi"]}
+        ).json()["token"]}
+        r = client.get("/conversation/scenarios", headers=learner_headers)
+        assert r.status_code == 200
+        titles = [s["title"] for s in r.json()["scenarios"]]
+        assert "pending-review-scenario" not in titles, "pending scenario should be invisible"
+
+    def test_approve_reveals_scenario(self, authoring_client, client, monkeypatch):
+        """Approving a pending scenario reveals it to learners."""
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        monkeypatch.setattr("app.services.authoring.draft_turns", AsyncMock(return_value=[CLEAN_DRAFT]))
+
+        r = authoring_client.post(
+            "/authoring/scenario",
+            json={"brief": dict(BRIEF, title="approve-me-scenario"), "n_turns": 2},
+            headers=ADMIN,
+        )
+        assert r.status_code == 200
+        sid = r.json()["scenario_id"]
+
+        # Approve
+        r = authoring_client.post(f"/authoring/review/{sid}",
+                                  json={"status": "approved"}, headers=ADMIN)
+        assert r.status_code == 200
+        assert r.json()["review_status"] == "approved"
+
+        # Check visible to learner
+        learner_headers = {"Authorization": "Bearer " + client.post(
+            "/auth/dev-login", json={"display_name": "approve-learner", "bridge_langs": ["en", "hi"]}
+        ).json()["token"]}
+        r = client.get("/conversation/scenarios", headers=learner_headers)
+        titles = [s["title"] for s in r.json()["scenarios"]]
+        assert "approve-me-scenario" in titles, "approved scenario should be visible"
+
+    def test_reject_keeps_hidden(self, authoring_client, client, monkeypatch):
+        """Rejecting hides scenario from learners."""
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        monkeypatch.setattr("app.services.authoring.draft_turns", AsyncMock(return_value=[CLEAN_DRAFT]))
+
+        r = authoring_client.post(
+            "/authoring/scenario",
+            json={"brief": dict(BRIEF, title="reject-me-scenario"), "n_turns": 2},
+            headers=ADMIN,
+        )
+        assert r.status_code == 200
+        sid = r.json()["scenario_id"]
+
+        # Reject
+        r = authoring_client.post(f"/authoring/review/{sid}",
+                                  json={"status": "rejected", "note": "bad content"}, headers=ADMIN)
+        assert r.status_code == 200
+        assert r.json()["review_status"] == "rejected"
+
+        learner_headers = {"Authorization": "Bearer " + client.post(
+            "/auth/dev-login", json={"display_name": "reject-learner", "bridge_langs": ["en", "hi"]}
+        ).json()["token"]}
+        r = client.get("/conversation/scenarios", headers=learner_headers)
+        titles = [s["title"] for s in r.json()["scenarios"]]
+        assert "reject-me-scenario" not in titles, "rejected scenario should be hidden"
+
+    def test_review_list_ordered(self, authoring_client, monkeypatch):
+        """Review list is ordered by created_at ascending."""
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        monkeypatch.setattr("app.services.authoring.draft_turns", AsyncMock(return_value=[CLEAN_DRAFT]))
+
+        # Create two scenarios with different titles (both pending by default)
+        r1 = authoring_client.post(
+            "/authoring/scenario",
+            json={"brief": dict(BRIEF, title="review-list-a"), "n_turns": 2},
+            headers=ADMIN,
+        )
+        assert r1.status_code == 200
+
+        r2 = authoring_client.post(
+            "/authoring/scenario",
+            json={"brief": dict(BRIEF, title="review-list-b"), "n_turns": 2},
+            headers=ADMIN,
+        )
+        assert r2.status_code == 200
+
+        # List pending
+        r = authoring_client.get("/authoring/review?status=pending", headers=ADMIN)
+        assert r.status_code == 200
+        items = r.json()
+        pending_titles = [i["title"] for i in items if i["review_status"] == "pending"]
+        assert "review-list-a" in pending_titles
+        assert "review-list-b" in pending_titles

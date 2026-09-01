@@ -147,6 +147,9 @@ class DialogueScenario(Base):
     title = Column(String(256), nullable=False)
     description = Column(Text, default="")
     register = Column(String(16), default="laukika", index=True)
+    review_status = Column(String(16), default="pending", index=True)  # pending|approved|rejected
+    review_note = Column(Text, default="")
+    reviewed_at = Column(DateTime, nullable=True)
     entry_node_id = Column(String(64), nullable=True)
     min_ratio = Column(Float, default=0.0)
     max_ratio = Column(Float, default=1.0)

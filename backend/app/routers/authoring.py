@@ -19,7 +19,7 @@ from __future__ import annotations
 import logging
 from typing import Any, Optional
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 from sqlalchemy import func
 from sqlalchemy.orm import Session
@@ -201,3 +201,79 @@ async def authoring_scenarios(
             }
         )
     return out
+
+
+# ─── Review endpoints ─────────────────────────────────────────────────█
+
+from datetime import datetime, timezone as dt_timezone
+
+class ReviewRequest(BaseModel):
+    status: Optional[str] = Field(default="approved", pattern="^(approved|rejected)$")
+    note: str = ""
+
+
+@router.get("/review")
+async def authoring_review_list(
+    status: Optional[str] = Query(default="pending", pattern="^(pending|approved|rejected)$"),
+    _admin: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+) -> list[dict[str, Any]]:
+    """List scenarios by review status, oldest first (the review queue)."""
+    q = db.query(DialogueScenario)
+    if status:
+        q = q.filter(DialogueScenario.review_status == status)
+    scenarios = q.order_by(DialogueScenario.created_at.asc()).all()
+    out: list[dict[str, Any]] = []
+    for s in scenarios:
+        n_nodes = (
+            db.query(func.count(DialogueNode.id))
+            .filter(DialogueNode.scenario_id == s.id)
+            .scalar()
+            or 0
+        )
+        n_edges = (
+            db.query(func.count(DialogueEdge.id))
+            .filter(DialogueEdge.scenario_id == s.id)
+            .scalar()
+            or 0
+        )
+        out.append({
+            "id": s.id,
+            "title": s.title,
+            "description": s.description,
+            "register": s.register,
+            "review_status": s.review_status,
+            "review_note": s.review_note or "",
+            "reviewed_at": s.reviewed_at.isoformat() if s.reviewed_at else None,
+            "n_nodes": n_nodes,
+            "n_edges": n_edges,
+            "created_at": s.created_at.isoformat() if s.created_at else None,
+        })
+    return out
+
+
+@router.post("/review/{scenario_id}")
+async def authoring_review_submit(
+    scenario_id: str,
+    req: ReviewRequest,
+    _admin: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+) -> dict[str, Any]:
+    """Approve or reject a scenario."""
+    scenario = db.query(DialogueScenario).filter(DialogueScenario.id == scenario_id).first()
+    if scenario is None:
+        raise HTTPException(status_code=404, detail="Scenario not found")
+
+    scenario.review_status = req.status
+    scenario.review_note = req.note or ""
+    scenario.reviewed_at = datetime.now(dt_timezone.utc)
+    db.commit()
+    db.refresh(scenario)
+
+    return {
+        "id": scenario.id,
+        "title": scenario.title,
+        "review_status": scenario.review_status,
+        "review_note": scenario.review_note,
+        "reviewed_at": scenario.reviewed_at.isoformat() if scenario.reviewed_at else None,
+    }
