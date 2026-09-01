@@ -17,17 +17,25 @@ export const color = {
   saffronLight: "#FFE3D3", // selected/active tint
   ink: "#3B2E25", // near-black warm text
   inkSoft: "#7A6A5C", // secondary text
-  inkFaint: "#B4A28E", // disabled text
+  inkFaint: "#846F57", // disabled text — darkened from #B4A28E for WCAG AA
 
-  // Semantic
-  ok: "#2FA84F", // correct (green)
+  // Semantic (fill values — for backgrounds, large display, icons)
+  ok: "#2FA84F",
   okBg: "#E3F6E8",
-  warn: "#F0A01F", // off-by-one / near
+  warn: "#F0A01F",
   warnBg: "#FDF0D7",
-  bad: "#E0453A", // incorrect (red)
+  bad: "#E0453A",
   badBg: "#FDE7E5",
-  unsure: "#8E7DF0", // abstain (violet) — never shows as wrong
+  unsure: "#8E7DF0",
   unsureBg: "#EEEBFE",
+
+  // Semantic text variants — body-size text on paper/bg must use these
+  okText: "#25833E",
+  warnText: "#9D650B",
+  badText: "#D92E22",
+  unsureText: "#6F59EC",
+  saffronText: "#CA4715",
+  goldText: "#99680A",
 
   // Conversation / accent
   tutor: "#5A7D9A", // tutor bubble (muted blue — human, calm)

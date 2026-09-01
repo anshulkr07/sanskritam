@@ -5,7 +5,6 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
-  Animated,
   Platform,
   Pressable,
   ScrollView,
@@ -15,6 +14,15 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withSequence,
+  withTiming,
+  Easing,
+  cancelAnimation,
+} from "react-native-reanimated";
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
@@ -60,21 +68,27 @@ export default function ConversationScreen() {
   // Always call the hook (React rules). On web it'll just be unused.
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
 
-  // Pulse animation for mic button
-  const pulseAnim = useRef(new Animated.Value(1)).current;
+  // Pulse animation for mic button (Reanimated, U0-4)
+  const pulseAnim = useSharedValue(1);
   useEffect(() => {
     if (recActive) {
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(pulseAnim, { toValue: 1.25, duration: 500, useNativeDriver: true }),
-          Animated.timing(pulseAnim, { toValue: 1, duration: 500, useNativeDriver: true }),
-        ]),
-      ).start();
+      pulseAnim.value = withRepeat(
+        withSequence(
+          withTiming(1.25, { duration: 500, easing: Easing.inOut(Easing.ease) }),
+          withTiming(1, { duration: 500, easing: Easing.inOut(Easing.ease) }),
+        ),
+        -1,
+        true,
+      );
     } else {
-      pulseAnim.stopAnimation();
-      pulseAnim.setValue(1);
+      cancelAnimation(pulseAnim);
+      pulseAnim.value = withTiming(1, { duration: 100 });
     }
   }, [recActive, pulseAnim]);
+
+  const micPulseStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pulseAnim.value }],
+  }));
 
   // Start a fresh session on mount.
   useEffect(() => {
@@ -291,7 +305,11 @@ export default function ConversationScreen() {
       <View style={styles.header}>
         <TutorAvatar state={avatarState} size={100} />
       </View>
-      <ScrollView ref={scrollRef} contentContainerStyle={styles.body}>
+      <ScrollView
+        ref={scrollRef}
+        contentContainerStyle={styles.body}
+        accessibilityLabel="Conversation messages"
+      >
         {msgs.map((m, i) => {
           // An explainer aside: visually distinct from an authored tutor line,
           // because only the tutor's Sanskrit has been through the Vidyut gate.
@@ -356,13 +374,16 @@ export default function ConversationScreen() {
           }}
           style={styles.replay}
           disabled={!node || isSpeaking}
+          accessibilityRole="button"
+          accessibilityLabel="Replay tutor's last message"
+          accessibilityState={{ disabled: !node || isSpeaking }}
         >
           <Ionicons name="volume-high" size={20} color={color.inkSoft} />
         </Pressable>
 
         {/* Mic button — only on native */}
         {IS_NATIVE && (
-          <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
+          <Animated.View style={micPulseStyle}>
             <Pressable
               onPress={onMicPress}
               disabled={busy && !recActive}
@@ -371,6 +392,9 @@ export default function ConversationScreen() {
                 recActive && styles.micActive,
                 (busy && !recActive) && styles.micDisabled,
               ]}
+              accessibilityRole="button"
+              accessibilityLabel={recActive ? "Stop recording" : "Start recording"}
+              accessibilityState={{ disabled: busy && !recActive }}
             >
               <Ionicons name={recActive ? "stop-circle" : "mic"} size={22} color={recActive ? color.bad : color.inkSoft} />
             </Pressable>
@@ -387,6 +411,8 @@ export default function ConversationScreen() {
           returnKeyType="send"
           editable={!busy && !done}
           multiline
+          accessibilityRole="text"
+          accessibilityLabel="Type your reply"
         />
         <Pressable
           onPress={() => {
@@ -395,6 +421,9 @@ export default function ConversationScreen() {
           }}
           disabled={!input.trim() || busy || done}
           style={[styles.send, (!input.trim() || busy || done) && styles.sendDisabled]}
+          accessibilityRole="button"
+          accessibilityLabel="Send reply"
+          accessibilityState={{ disabled: !input.trim() || busy || done }}
         >
           <Ionicons name="send" size={18} color={color.white} />
         </Pressable>

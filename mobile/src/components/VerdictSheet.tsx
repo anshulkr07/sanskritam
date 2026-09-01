@@ -3,14 +3,24 @@
 // directly under the thumb (no scrolling to find out what happened).
 // Render inside a `position: relative` full-screen container; this overlays
 // via `position: absolute`.
+//
+// U0-4: migrated from legacy react-native Animated to Reanimated.
+// Uses motion tokens from motion.ts.
 
-import React, { useEffect, useRef } from "react";
-import { Animated, Easing, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSpring,
+} from "react-native-reanimated";
 
 import { haptics } from "../services/haptics";
 import { sfx } from "../services/sfx";
 import { color, font, radius, script, shadow, space } from "../theme";
+import { duration, easing, spring as springCfg } from "../motion";
 import type { Verdict } from "../api/client";
 import { Button } from "./ui";
 
@@ -26,10 +36,10 @@ interface VerdictSheetProps {
 }
 
 const TONE = {
-  correct: { bg: color.okBg, fg: color.ok, title: "✓ Correct!" },
-  off_by_one: { bg: color.warnBg, fg: color.warn, title: "≈ So close" },
-  unsure: { bg: color.unsureBg, fg: color.unsure, title: "Hmm, uncertain" },
-  incorrect: { bg: color.badBg, fg: color.bad, title: "✗ Not quite" },
+  correct:    { bg: color.okBg, fg: color.okText, title: "✓ Correct!" },
+  off_by_one: { bg: color.warnBg, fg: color.warnText, title: "≈ So close" },
+  unsure:     { bg: color.unsureBg, fg: color.unsureText, title: "Hmm, uncertain" },
+  incorrect:  { bg: color.badBg, fg: color.badText, title: "✗ Not quite" },
 } as const;
 
 export default function VerdictSheet({
@@ -42,7 +52,7 @@ export default function VerdictSheet({
   continueLabel,
   onContinue,
 }: VerdictSheetProps) {
-  const translateY = useRef(new Animated.Value(220)).current;
+  const translateY = useSharedValue(220);
 
   useEffect(() => {
     if (visible && verdict) {
@@ -57,17 +67,19 @@ export default function VerdictSheet({
         haptics.incorrect();
         sfx.incorrect();
       }
-      Animated.timing(translateY, {
-        toValue: 0,
-        duration: 260,
-        easing: Easing.out(Easing.back(1.1)),
-        useNativeDriver: true,
-      }).start();
+      // Use the motion tokens — overshoot preserves the existing Easing.back feel
+      translateY.value = withTiming(0, {
+        duration: duration.base,
+        easing: easing.overshoot,
+      });
     } else {
-      translateY.setValue(220);
+      translateY.value = 220;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, verdict]);
+  }, [visible, verdict, abstained, translateY]);
+
+  const sheetStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+  }));
 
   if (!visible || !verdict) return null;
 
@@ -77,12 +89,15 @@ export default function VerdictSheet({
 
   return (
     <Animated.View
-      style={[styles.wrap, { backgroundColor: tone.bg, transform: [{ translateY }] }]}
+      style={[styles.wrap, { backgroundColor: tone.bg }, sheetStyle]}
       pointerEvents="box-none"
+      accessibilityRole="alert"
+      accessibilityLabel={`Verdict: ${verdict === "correct" ? "correct" : verdict === "off_by_one" ? "close" : verdict === "unsure" ? "uncertain" : "incorrect"}`}
+      accessibilityLiveRegion="polite"
     >
       <SafeAreaView edges={["bottom"]}>
         <View style={styles.body}>
-          <Text style={[styles.title, { color: tone.fg }]}>{tone.title}</Text>
+          <Text style={[styles.title, { color: tone.fg }]} accessibilityRole="header">{tone.title}</Text>
           <Text style={styles.diagnosis}>
             {isUnsure
               ? "I couldn't tell confidently — no penalty. Try listening again and repeating."

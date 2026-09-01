@@ -5,8 +5,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import {
-  Animated,
-  Easing,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -15,6 +13,15 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import Animated, {
+  Easing,
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withSequence,
+  withTiming,
+  cancelAnimation,
+} from "react-native-reanimated";
 
 import type { LearnerProfile } from "../api/client";
 import { Card, ProgressBar } from "../components/ui";
@@ -83,25 +90,30 @@ export default function HomeScreen({ navigation }: Props) {
 // ─── Practice CTA: the one thing Home actually launches ────────────────────
 
 function PracticeNode({ onPress }: { onPress: () => void }) {
-  const pulse = useRef(new Animated.Value(1)).current;
+  const pulse = useSharedValue(1);
 
   useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulse, { toValue: 1.06, duration: 900, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-        Animated.timing(pulse, { toValue: 1, duration: 900, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-      ]),
+    pulse.value = withRepeat(
+      withSequence(
+        withTiming(1.06, { duration: 900, easing: Easing.inOut(Easing.ease) }),
+        withTiming(1, { duration: 900, easing: Easing.inOut(Easing.ease) }),
+      ),
+      -1,
+      true,
     );
-    loop.start();
-    return () => loop.stop();
+    return () => cancelAnimation(pulse);
   }, [pulse]);
+
+  const pulseStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pulse.value }],
+  }));
 
   return (
     <Pressable
       onPress={() => { haptics.tap(); onPress(); }}
       style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
     >
-      <Animated.View style={[styles.practiceIcon, { transform: [{ scale: pulse }] }]}>
+      <Animated.View style={[styles.practiceIcon, pulseStyle]}>
         <Ionicons name="create" size={30} color={color.white} />
       </Animated.View>
       <View style={styles.practiceText}>
