@@ -1,3 +1,9 @@
+> **Read as a record, not a plan (banner added 2026-08-30).** Shabd is **API-only: no local models,
+> anywhere** (architecture.md §1) — the app ships to phones and we run no inference servers, no GPU
+> box and no local batch. Any self-hosted model evaluated below (Parler-TTS, Vāgdhenu, Su-śrotā, and
+> anything requiring torch or CUDA) is **out of scope regardless of its verdict here.** Rule-based
+> libraries such as Vidyut are unaffected: they carry no weights and no GPU, and run server-side.
+
 # Shabd — Tech Research: Sanskrit Learning Backend
 
 **Date:** 2026-08-29

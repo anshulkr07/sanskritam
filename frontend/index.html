@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shabd Test Console</title>
+  <title>Shabd — Sanskrit Learning Console</title>
+  <meta name="description" content="Audio-first Sanskrit learning app with adaptive code-switching. Test console for the Shabd API.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -13,8 +14,8 @@
 
 <div class="app-header">
   <div>
-    <h1>शब्द Test Console</h1>
-    <div class="subtitle">Sanskrit Learning Backend — API Tester</div>
+    <h1>शब्द Console</h1>
+    <div class="subtitle">Audio-first Sanskrit Learning — API Test Console</div>
   </div>
   <a href="#" onclick="document.querySelector('[data-tab=docs-tab]').click()" style="font-size:.85rem;color:var(--primary);text-decoration:none;">📖 API Docs</a>
 </div>
@@ -35,6 +36,7 @@
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="auth-tab">🔑 Auth</button>
     <button class="tab-btn" data-tab="practice-tab">✍️ Practice</button>
+    <button class="tab-btn" data-tab="speech-tab">🎙️ Speech</button>
     <button class="tab-btn" data-tab="shloka-tab">🕉️ Shloka</button>
     <button class="tab-btn" data-tab="varnamala-tab">🔤 Varnamala</button>
     <button class="tab-btn" data-tab="features-tab">📋 Features</button>
@@ -166,6 +168,125 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Speech Tab -->
+  <!-- ════════════════════════════════════════════════ -->
+  <div id="speech-tab" class="tab-panel">
+    <div class="speech-section">
+
+      <!-- TTS Card -->
+      <div class="card">
+        <div class="card-title">🔊 Text-to-Speech — Sarvam Bulbul v3</div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label for="tts-text">Text (max 2500 chars)</label>
+          <textarea id="tts-text" placeholder="नमस्ते, यह एक परीक्षण है…" maxlength="2500" style="min-height:90px;"></textarea>
+          <div class="char-count" id="tts-char-count">0 / 2500</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tts-language">Language</label>
+            <select id="tts-language">
+              <option value="hi-IN">Hindi (hi-IN)</option>
+              <option value="en-IN">English (en-IN)</option>
+              <option value="bn-IN">Bengali (bn-IN)</option>
+              <option value="te-IN">Telugu (te-IN)</option>
+              <option value="ta-IN">Tamil (ta-IN)</option>
+              <option value="mr-IN">Marathi (mr-IN)</option>
+              <option value="gu-IN">Gujarati (gu-IN)</option>
+              <option value="kn-IN">Kannada (kn-IN)</option>
+              <option value="ml-IN">Malayalam (ml-IN)</option>
+              <option value="pa-IN">Punjabi (pa-IN)</option>
+              <option value="od-IN">Odia (od-IN)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tts-speaker">Speaker</label>
+            <select id="tts-speaker">
+              <option value="meera">Meera (Female)</option>
+              <option value="shubh">Shubh (Male)</option>
+              <option value="arvind">Arvind (Male)</option>
+              <option value="amol">Amol (Male)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tts-pace">Pace</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="range" id="tts-pace" min="0.5" max="2.0" step="0.1" value="1.0" style="width:100px;">
+              <span class="pace-display" id="tts-pace-display">1.0×</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="generateTTS()" id="tts-generate-btn" style="margin-top:8px;">
+          🔊 Generate Audio
+        </button>
+        <div id="tts-output" style="display:none;">
+          <div class="audio-player-wrap">
+            <audio id="tts-audio" controls></audio>
+          </div>
+        </div>
+      </div>
+
+      <!-- STT Card -->
+      <div class="card">
+        <div class="card-title">🎤 Speech-to-Text — Sarvam Saaras v3</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="stt-language">Language</label>
+            <select id="stt-language">
+              <option value="sa-IN">Sanskrit (sa-IN)</option>
+              <option value="hi-IN">Hindi (hi-IN)</option>
+              <option value="en-IN">English (en-IN)</option>
+              <option value="bn-IN">Bengali (bn-IN)</option>
+              <option value="te-IN">Telugu (te-IN)</option>
+              <option value="ta-IN">Tamil (ta-IN)</option>
+              <option value="mr-IN">Marathi (mr-IN)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stt-mode">Mode</label>
+            <select id="stt-mode">
+              <option value="transcribe">Transcribe</option>
+              <option value="codemix">Codemix</option>
+              <option value="translate">Translate → English</option>
+              <option value="verbatim">Verbatim</option>
+              <option value="translit">Transliterate (Latin)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="file-upload-area" id="stt-upload-area" onclick="document.getElementById('stt-file').click()">
+          <input type="file" id="stt-file" accept="audio/*">
+          <div class="upload-label">📁 Click to upload audio file</div>
+          <div class="file-name" id="stt-file-name"></div>
+        </div>
+
+        <!-- Record -->
+        <div class="record-controls">
+          <button class="btn-record" id="record-btn" onclick="toggleRecording()">
+            <span class="recording-dot" id="recording-dot"></span>
+            <span id="record-btn-text">Record</span>
+          </button>
+          <span class="recording-timer" id="recording-timer"></span>
+          <span style="font-size:.78rem;color:var(--text-secondary);">or upload a file above</span>
+        </div>
+
+        <button class="btn btn-primary" onclick="transcribeAudio()" id="stt-transcribe-btn" style="margin-top:14px;">
+          🎤 Transcribe
+        </button>
+
+        <div id="stt-output" style="display:none;">
+          <div class="card-title" style="margin-top:14px;">Transcript</div>
+          <div class="transcript-output" id="stt-transcript"></div>
+          <div style="font-size:.78rem;color:var(--text-secondary);margin-top:6px;">
+            Language: <strong id="stt-detected-lang">—</strong>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

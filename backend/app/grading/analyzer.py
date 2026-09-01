@@ -107,6 +107,44 @@ def strip_svara(text: str) -> str:
     return text.replace("́", "").replace("̀", "")
 
 
+# ─── Visarga sandhi ───
+#
+# Across a word boundary a final visarga assimilates to what follows:
+#   -aḥ + voiced consonant or `a`  ->  -o     (bālaḥ grāmam  -> bālo grāmam)
+#   -āḥ + voiced consonant or `a`  ->  -ā     (bālāḥ gacchanti -> bālā gacchanti)
+#   -aḥ + other vowel              ->  -a     (rāmaḥ āgacchati -> rāma āgacchati)
+# The third case already analyzes, because a bare known stem parses as NOM.SG.
+# The first two do not, and are what a well-formed sentence actually looks like.
+
+def desandhi_candidates(word: str) -> list[str]:
+    """Underlying forms a sandhi'd surface form could have come from.
+
+    Word-level and deliberately context-free: the following word decides whether
+    sandhi *applied*, but not what it applied to, and offering a reading costs
+    nothing when the caller only ever adds it as an alternative.
+    """
+    out: list[str] = []
+    if len(word) > 1:
+        if word.endswith("o"):
+            out.append(word[:-1] + "aḥ")     # bālo  <- bālaḥ
+        elif word.endswith("ā"):
+            out.append(word + "ḥ")           # bālā  <- bālāḥ
+    return out
+
+
+def _uses_known_lemma(parsed: dict) -> bool:
+    """True when every lemma in a reading is one we actually know.
+
+    The ending tables reconstruct a stem for any input whatsoever, so a reading
+    over an invented stem is not evidence of anything.
+    """
+    if not parsed:
+        return False
+    return all(
+        role.startswith("√") or role in _KNOWN_LEMMAS for role in parsed
+    )
+
+
 # ─── Known stems ───
 
 # Other-stem noun table (u-stem masc like guru, bhrātṛ-type handled ad hoc)
@@ -178,6 +216,11 @@ KNOWN_ROOTS: dict[str, str] = {
     "car": "√car", "cara": "√car",
     "rakṣ": "√rakṣ", "rakṣa": "√rakṣ",
 }
+
+# Lemmas the analyzer actually attests, as opposed to stems the ending tables
+# can reconstruct for arbitrary input. Used to gate inferred sandhi readings.
+_KNOWN_LEMMAS: set[str] = set(KNOWN_NOUNS.values()) | set(KNOWN_ROOTS.values())
+
 
 # IAST endings for a-stem masculine nouns
 A_STEM_MASC: list[tuple[str, str, str]] = [
@@ -312,6 +355,10 @@ class RuleBasedAnalyzer(AnalyzerProtocol):
 
     def _analyze_word(self, word: str, is_iast: bool = False) -> AnalyzerResult:
         clean = word.strip("।॥,.!?")
+        # Avagraha marks the `a` elided after -o sandhi (rāmaḥ api -> rāmo 'pi).
+        # Restore it so the word analyzes as itself rather than as a fragment.
+        if clean[:1] in ("ऽ", "'"):
+            clean = "a" + clean[1:]
         if not clean:
             return AnalyzerResult(word, confidence=0.0, error="empty")
         # Per-word script detection: mixed-script input (code-switching) must
@@ -340,7 +387,49 @@ class RuleBasedAnalyzer(AnalyzerProtocol):
         return stripped + append_vowel
 
     def _analyze_word_iast(self, word: str) -> AnalyzerResult:
-        """Analyze an IAST word."""
+        """Analyze an IAST word, resolving visarga sandhi where needed.
+
+        Correct Sanskrit applies visarga sandhi across word boundaries, so a
+        learner (or a model) writing well produces `bālo grāmam gacchati`, not the
+        textbook `bālaḥ grāmam gacchati`. Analyzing the surface form alone reports
+        `bālo` as unrecognized, which costs a correct answer its verdict — the
+        exact false-negative this engine is built to avoid.
+
+        Underlying forms are therefore tried too. A sandhi reading is only ever
+        ADDED: it becomes primary just when the surface form has no confident
+        reading of its own, and is otherwise appended as an alternative so
+        genuinely ambiguous forms (`bālā` = fem NOM.SG or masc NOM.PL `bālāḥ`)
+        keep both readings and the engine can accept either.
+        """
+        direct = self._analyze_word_iast_direct(word)
+
+        for candidate in desandhi_candidates(word):
+            resolved = self._analyze_word_iast_direct(candidate)
+            if not resolved.is_confident:
+                continue
+            if direct.is_confident:
+                if resolved.parsed and resolved.parsed != direct.parsed:
+                    direct.alternatives.append(resolved.parsed)
+                continue
+            # Promote a sandhi reading to primary only when it lands on a lemma we
+            # actually know. The ending tables will happily invent a stem for any
+            # input, so without this `guro` (VOC.SG of guru) would be "resolved"
+            # into a confident NOM.SG of a nonexistent stem *gura — trading an
+            # honest "unrecognized" for a wrong answer stated with confidence.
+            if not _uses_known_lemma(resolved.parsed):
+                continue
+            # Slightly below a directly-attested reading: the underlying form is
+            # inferred from context-free sandhi, not observed.
+            resolved.word = word
+            resolved.confidence = min(resolved.confidence, 0.75)
+            resolved.alternatives.extend(
+                a for a in direct.alternatives if a not in resolved.alternatives
+            )
+            return resolved
+        return direct
+
+    def _analyze_word_iast_direct(self, word: str) -> AnalyzerResult:
+        """Analyze an IAST word exactly as written, without resolving sandhi."""
         # 0) Indeclinables and pronouns FIRST — they must never be caught by
         #    ending analysis (e.g. `vayam` would match `-am` ACC.SG otherwise)
         if word in INDECLINABLES:
@@ -628,6 +717,10 @@ def analyze_sentence(text: str, is_iast: bool = False) -> list[AnalyzerResult]:
     return analyzer.analyze(text, is_iast=is_iast)
 
 
+# Cap on the reading cross-product. Sentences here are short; the cap only
+# guards against a pathological word with many ambiguous readings.
+_MAX_VARIANTS = 64
+
 NON_CONTENT_FEATURES = {"INDECL", "PRON"}  # transparent to grading
 
 
@@ -650,33 +743,43 @@ def feature_set_variants(results: list[AnalyzerResult]) -> list[dict[str, str]]:
     Cross-product can explode, so cap it: primary reading plus one swap per
     ambiguous word at a time is sufficient for our challenge lengths.
     """
-    base: dict[str, str] = {}
-    ambiguous: list[list[tuple[str, str]]] = []  # per word: [(role, feat), ...] beyond primary
+    # Word-centric: each confident word contributes its candidate readings, and a
+    # variant picks one reading per word. Keying alternatives by role instead
+    # would drop any whose lemma differs from the primary — which is exactly what
+    # a resolved sandhi reading looks like (`bālā` fem NOM.SG vs `bāla` masc
+    # NOM.PL from `bālāḥ`), so those corrections never reached grading.
+    per_word: list[list[dict[str, str]]] = []
     for r in results:
         if not r.is_confident:
             continue
-        for role, feat in r.parsed.items():
-            if feat not in NON_CONTENT_FEATURES:
-                base[role] = feat
-        opts = []
-        for alt in r.alternatives:
-            for role, feat in alt.items():
-                if role in base or role in dict(opts):
-                    opts.append((role, feat))
-        if opts:
-            ambiguous.append(opts)
+        readings: list[dict[str, str]] = []
+        for cand in (r.parsed, *r.alternatives):
+            filtered = {
+                role: feat for role, feat in cand.items()
+                if feat not in NON_CONTENT_FEATURES
+            }
+            # Keep the primary reading even when it filters to nothing. A pronoun
+            # or indeclinable contributes no features by design, and dropping that
+            # empty reading would force any stray content-bearing alternative on
+            # the same word into every variant — which turned `vayam geham
+            # gacchāmaḥ` from correct into off_by_one.
+            if filtered not in readings:
+                readings.append(filtered)
+        per_word.append(readings)
 
-    variants = [base]
-    for opts in ambiguous:
-        new_variants = []
+    # The primary reading of every word is readings[0] throughout, so the
+    # all-primary interpretation is always variants[0] and survives the cap.
+    variants: list[dict[str, str]] = [{}]
+    for readings in per_word:
+        expanded: list[dict[str, str]] = []
         for v in variants:
-            for role, feat in opts:
+            for reading in readings:
                 w = dict(v)
-                w[role] = feat
-                new_variants.append(w)
-        variants.extend(new_variants)
-        if len(variants) > 32:
-            variants = variants[:32]
+                w.update(reading)
+                expanded.append(w)
+        variants = expanded
+        if len(variants) > _MAX_VARIANTS:
+            variants = variants[:_MAX_VARIANTS]
     # Deduplicate by feature-set key
     seen = set()
     out = []

@@ -1,5 +1,6 @@
 """Tests for Sarvam TTS/STT integration (mocked — no real API calls)."""
 
+import asyncio
 import base64
 import io
 import json
@@ -97,6 +98,70 @@ def test_tts_sarvam_error_returns_502(client):
 
     assert r.status_code == 502
     assert "rate limit" in r.json()["detail"].lower()
+
+
+# ─── client-level contract tests (real response shapes) ──────────────────────
+
+
+def _client_with_transport(handler) -> "SarvamClient":
+    """SarvamClient bound to an httpx.MockTransport (no real network)."""
+    from app.services.sarvam import SarvamClient
+
+    c = SarvamClient(api_key="test-key")
+    c._http = httpx.AsyncClient(
+        base_url="https://api.sarvam.ai",
+        transport=httpx.MockTransport(handler),
+    )
+    return c
+
+
+def test_tts_client_parses_audios_list():
+    """Bulbul v3 returns {audios: [b64]} — client must return audios[0].
+
+    Regression: the client read data['audio']/data['audio_base64'], which no
+    longer exist in the real response — every live call raised
+    'No audio in Sarvam TTS response' after a 200.
+    """
+    async def run():
+        def handler(request: httpx.Request) -> httpx.Response:
+            return httpx.Response(
+                200,
+                json={"request_id": "r1", "audios": [FAKE_AUDIO_B64]},
+                request=request,
+            )
+
+        c = _client_with_transport(handler)
+        try:
+            return await c.text_to_speech(text="नमस्ते", language_code="hi-IN")
+        finally:
+            await c.close()
+
+    assert asyncio.run(run()) == FAKE_AUDIO_B64
+
+
+def test_tts_client_default_speaker_is_valid():
+    """Default speaker must be one Bulbul:v3 actually accepts (aditya).
+
+    Regression: default 'meera' is not in the current speaker list — every
+    default call 400s with 'Speaker meera is not recognized'.
+    """
+    captured: dict = {}
+
+    async def run():
+        def handler(request: httpx.Request) -> httpx.Response:
+            captured["payload"] = json.loads(request.content.decode())
+            return httpx.Response(
+                200, json={"audios": [FAKE_AUDIO_B64]}, request=request
+            )
+
+        c = _client_with_transport(handler)
+        try:
+            await c.text_to_speech(text="नमस्ते", language_code="hi-IN")
+        finally:
+            await c.close()
+
+    asyncio.run(run())
+    assert captured["payload"]["speaker"] == "aditya"
 
 
 # ─── STT tests ────────────────────────────────

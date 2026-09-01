@@ -8,6 +8,7 @@ from app.models import Challenge, Feature, Shloka
 from app.seeds.features import SEED_FEATURES
 from app.seeds.challenges import SEED_CHALLENGES
 from app.seeds.shlokas import SEED_SLOKAS
+from app.seeds.dialogue import seed_dialogue
 
 logger = logging.getLogger("shabd.seed")
 
@@ -22,6 +23,10 @@ def run_seed():
         existing_features = db.query(Feature).count()
         if existing_features > 10:
             logger.info("Database already seeded (%d features found)", existing_features)
+            # Content added after the first seed still needs a pass: each of
+            # these is self-idempotent, so run them on every startup.
+            seed_dialogue(db)
+            db.commit()
             return
 
         # Seed features
@@ -32,6 +37,9 @@ def run_seed():
 
         # Seed shlokas
         _seed_shlokas(db)
+
+        # Seed dialogue scenario
+        seed_dialogue(db)
 
         db.commit()
         logger.info("Database seeded successfully")

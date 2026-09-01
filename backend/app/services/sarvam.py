@@ -64,16 +64,25 @@ class SarvamClient:
         self,
         text: str,
         language_code: str = "hi-IN",
-        speaker: str = "meera",
+        speaker: str = "aditya",
         model: str = "bulbul:v3",
         pace: float = 1.0,
         sample_rate: int = 24000,
     ) -> str:
         """Convert text to speech via Bulbul v3.
 
-        Returns the audio as a **base64-encoded string** (the raw format
-        returned by the Sarvam API).  Callers can decode with
-        ``base64.b64decode()`` if raw bytes are needed.
+        Returns the audio as a **base64-encoded string** — the first entry of
+        the response's ``audios`` list (Bulbul v3 returns ``{"audios": [b64]}``;
+        the legacy ``audio``/``audio_base64`` keys are accepted as fallback).
+        Callers can decode with ``base64.b64decode()`` for WAV bytes.
+
+        Note: ``sample_rate`` is currently **ignored** by bulbul:v3 — it
+        returns 22050 Hz mono regardless (probed 2026-08-29).  The param is
+        kept for forward compatibility.
+
+        Note: Bulbul has no ``sa-IN`` outside beta — Devanagari Sanskrit text
+        renders via ``hi-IN`` (Hindi-flavored pronunciation) until the sa-IN
+        beta is enabled on the account.
         """
         client = await self._client()
         payload = {
@@ -89,6 +98,9 @@ class SarvamClient:
             raise SarvamError(resp.status_code, resp.text)
 
         data = resp.json()
+        audios = data.get("audios")
+        if isinstance(audios, list) and audios:
+            return str(audios[0])
         audio_b64: str = data.get("audio") or data.get("audio_base64", "")
         if not audio_b64:
             raise SarvamError(500, "No audio in Sarvam TTS response")
@@ -100,7 +112,7 @@ class SarvamClient:
         self,
         audio_data: bytes,
         language_code: str = "sa-IN",
-        model: str = "saaras:v3",
+        model: str = "saaras:v4",
         mode: str = "transcribe",
         filename: str = "audio.wav",
     ) -> dict:

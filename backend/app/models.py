@@ -3,6 +3,7 @@
 import uuid
 from datetime import datetime, timezone
 
+import sqlalchemy as sa
 from sqlalchemy import Column, Float, ForeignKey, Integer, String, Text, Boolean, JSON, DateTime
 from sqlalchemy.orm import relationship
 
@@ -133,3 +134,124 @@ class Attempt(Base):
 
     learner = relationship("Learner", back_populates="attempts")
     challenge = relationship("Challenge")
+
+
+class DialogueScenario(Base):
+    """A pre-rendered dialogue-graph scenario (conversation)."""
+
+    __tablename__ = "dialogue_scenarios"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    title = Column(String(256), nullable=False)
+    description = Column(Text, default="")
+    register = Column(String(16), default="laukika", index=True)
+    entry_node_id = Column(String(64), nullable=True)
+    min_ratio = Column(Float, default=0.0)
+    max_ratio = Column(Float, default=1.0)
+    est_minutes = Column(Integer, default=5)
+    created_at = Column(DateTime, default=_utcnow)
+
+    nodes = relationship("DialogueNode", back_populates="scenario", cascade="all, delete-orphan")
+    edges = relationship("DialogueEdge", back_populates="scenario", cascade="all, delete-orphan")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "register": self.register,
+            "entry_node_id": self.entry_node_id,
+            "min_ratio": self.min_ratio,
+            "max_ratio": self.max_ratio,
+            "est_minutes": self.est_minutes,
+        }
+
+
+class DialogueNode(Base):
+    """A single tutor turn in a dialogue graph."""
+
+    __tablename__ = "dialogue_nodes"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    scenario_id = Column(String(64), ForeignKey("dialogue_scenarios.id"), nullable=False, index=True)
+    kind = Column(String(16), nullable=False)  # "tutor" | "repair"
+    repair_type = Column(String(16), nullable=True)  # "ask_again" | "narrow" | "bridge"
+    lang = Column(String(8), nullable=False)  # "sa" | "hi" | "en"
+    devanagari = Column(Text, nullable=False)
+    iast = Column(Text, default="")
+    gloss = Column(Text, default="")
+    audio_url = Column(String(512), default="")
+    ratio_band_min = Column(Float, default=0.0)
+    ratio_band_max = Column(Float, default=1.0)
+    sort = Column(Integer, default=0)
+
+    scenario = relationship("DialogueScenario", back_populates="nodes")
+    outgoing_edges = relationship(
+        "DialogueEdge",
+        back_populates="from_node",
+        foreign_keys="DialogueEdge.from_node_id",
+        cascade="all, delete-orphan",
+    )
+
+
+class DialogueEdge(Base):
+    """An expected learner response transitioning between dialogue nodes."""
+
+    __tablename__ = "dialogue_edges"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    scenario_id = Column(String(64), ForeignKey("dialogue_scenarios.id"), nullable=False)
+    from_node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=False, index=True)
+    to_node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=True)
+    lang = Column(String(8), nullable=False)  # "sa" | "bridge"
+    expected_text = Column(Text, default="")
+    accepted_parses = Column(JSON, default=list)
+    expected_phrases = Column(JSON, default=list)
+    features = Column(JSON, default=list)
+    rank = Column(Integer, default=0)
+
+    scenario = relationship("DialogueScenario", back_populates="edges")
+    from_node = relationship(
+        "DialogueNode",
+        back_populates="outgoing_edges",
+        foreign_keys=[from_node_id],
+    )
+
+
+class EscapeLog(Base):
+    """Record of a learner's attempted utterance that triggered an escape to bridge language."""
+
+    __tablename__ = "escape_logs"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=True)
+    scenario_id = Column(String(64), ForeignKey("dialogue_scenarios.id"), nullable=False)
+    node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=False)
+    transcript = Column(Text, default="")
+    parsed_features = Column(JSON, default=dict)
+    verdict = Column(String(16), nullable=False)
+    ts = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        sa.Index("ix_escape_logs_scenario_node", "scenario_id", "node_id"),
+    )
+
+
+class ConversationSession(Base):
+    """Active conversation session tracking turn state."""
+
+    __tablename__ = "conversation_sessions"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    scenario_id = Column(String(64), ForeignKey("dialogue_scenarios.id"), nullable=False)
+    current_node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=False)
+    turn_count = Column(Integer, default=0)
+    consecutive_escapes = Column(Integer, default=0)
+    ratio_hint = Column(Float, default=0.3)
+    started_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    learner = relationship("Learner")
+    scenario = relationship("DialogueScenario")
+    current_node = relationship("DialogueNode")

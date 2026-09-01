@@ -72,6 +72,8 @@ def create_app() -> FastAPI:
     from app.routers.admin import router as admin_router
     from app.routers.pipeline import router as pipeline_router
     from app.routers.speech import router as speech_router
+    from app.routers.conversation import router as conversation_router
+    from app.routers.authoring import router as authoring_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -83,6 +85,8 @@ def create_app() -> FastAPI:
     app.include_router(admin_router, tags=["Admin"])
     app.include_router(pipeline_router, tags=["Pipeline"])
     app.include_router(speech_router, tags=["Speech"])
+    app.include_router(conversation_router, tags=["Conversation"])
+    app.include_router(authoring_router, tags=["Authoring"])
 
     return app
 

@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Shabd",
+    "slug": "shabd",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "shabd",
+    "splash": {
+      "backgroundColor": "#FFFCF2",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shabd.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFCF2",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.shabd.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-audio",
+      "expo-file-system",
+      "expo-status-bar",
+      "@react-native-vector-icons/ionicons"
+    ]
+  }
+}

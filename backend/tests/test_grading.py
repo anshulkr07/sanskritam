@@ -84,3 +84,65 @@ def test_optional_subject_pronoun_transparent():
     """Pro-drop: अहम् + verb must grade same as verb alone."""
     r1 = grade_attempt("गच्छामि", [{"√gam": "PRES.1SG"}], ["PRES.1SG"])
     assert r1["verdict"] == "correct"
+
+
+# ─── Visarga sandhi (spec §6.3: correct Sanskrit must never be marked wrong) ───
+#
+# Correct Sanskrit applies visarga sandhi across word boundaries, so a learner
+# writing well produces `bālo grāmaṃ gacchati`, not the textbook `bālaḥ grāmam
+# gacchati`. Before this was handled, every such answer came back `unsure`.
+
+from app.grading.analyzer import analyze_sentence, desandhi_candidates  # noqa: E402
+
+BALA_ACCEPTED = [{"bāla": "NOM.SG", "grāma": "ACC.SG", "√gam": "PRES.3SG"}]
+BALA_FEATURES = ["NOM.SG", "ACC.SG", "PRES.3SG"]
+
+
+def test_sandhi_form_grades_correct():
+    """बालो ग्रामं गच्छति is the well-formed spelling of बालः ग्रामम् गच्छति."""
+    r = grade_attempt("बालो ग्रामं गच्छति", BALA_ACCEPTED, BALA_FEATURES)
+    assert r["verdict"] == "correct", r
+
+
+def test_textbook_form_still_grades_correct():
+    r = grade_attempt("बालः ग्रामम् गच्छति", BALA_ACCEPTED, BALA_FEATURES)
+    assert r["verdict"] == "correct", r
+
+
+def test_sandhi_plural_with_different_lemma_grades_correct():
+    """bālāḥ -> bālā collides with the fem stem bālā, so the correct reading
+    carries a DIFFERENT lemma than the surface form's primary. Variant expansion
+    has to follow that, not just swap features within one lemma."""
+    accepted = [{"bāla": "NOM.PL", "grāma": "ACC.SG", "√gam": "PRES.3PL"}]
+    r = grade_attempt("बाला ग्रामम् गच्छन्ति", accepted, ["NOM.PL", "ACC.SG", "PRES.3PL"])
+    assert r["verdict"] == "correct", r
+
+
+def test_avagraha_word_is_read_as_itself():
+    """रामो ऽपि — avagraha marks the `a` elided after -o sandhi."""
+    results = analyze_sentence("रामो ऽपि गच्छति")
+    assert all(r.is_confident for r in results), [(r.word, r.error) for r in results]
+
+
+def test_sandhi_reading_needs_a_known_lemma():
+    """गुरो is the vocative of guru, not a NOM.SG of a nonexistent stem *gura.
+    Resolving sandhi must not invent lemmas the ending tables merely permit."""
+    result = analyze_sentence("गुरो")[0]
+    lemmas = set(result.parsed) | {k for a in result.alternatives for k in a}
+    assert "gura" not in lemmas, result
+
+
+def test_desandhi_candidates_are_conservative():
+    assert desandhi_candidates("bālo") == ["bālaḥ"]
+    assert desandhi_candidates("bālā") == ["bālāḥ"]
+    assert desandhi_candidates("gacchati") == []   # no visarga context
+    assert desandhi_candidates("o") == []          # too short to be a word
+
+
+def test_pronoun_stays_transparent_to_grading():
+    """A pronoun contributes no features by design. Variant expansion must keep
+    that empty reading available, or a stray alternative on the pronoun gets
+    forced into every variant and a correct answer becomes off_by_one."""
+    accepted = [{"geha": "ACC.SG", "√gam": "PRES.1PL"}]
+    r = grade_attempt("वयम् गेहम् गच्छामः", accepted, ["ACC.SG", "PRES.1PL"])
+    assert r["verdict"] == "correct", r

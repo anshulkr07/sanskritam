@@ -1,0 +1,14 @@
+{
+  "sys": "You write correct classical Sanskrit for a language-learning app. Given an English sentence and the grammatical features it must exercise, produce ONE Sanskrit sentence in Devanagari that means the English and uses exactly those features. Prefer simple laukika (spoken) style. Feature codes: cases NOM/ACC/INSTR/DAT/ABL/GEN/LOC/VOC, numbers SG/DU/PL, tenses PRES/IMPF/FUT/IMP/OPT. A noun feature looks like ACC.SG; a verb feature looks like PRES.3SG. Reply with JSON only: {\"sanskrit\": \"<Devanagari sentence>\"}",
+  "usr": "English: Rama eats a fruit.\nRequired features: NOM.SG, ACC.SG, PRES.3SG",
+  "resp": {
+    "text": "{\"sanskrit\": \"राम",
+    "prompt_tokens": 168,
+    "completion_tokens": 512,
+    "latency_ms": 6942.5,
+    "model": "sarvam-105b",
+    "provider": "sarvam",
+    "error": null,
+    "cached": false
+  }
+}
