@@ -18,6 +18,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { color } from "./src/theme";
@@ -88,12 +89,14 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <AuthProvider>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-        <StatusBar style="dark" />
-      </AuthProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <AuthProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+          <StatusBar style="dark" />
+        </AuthProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }
