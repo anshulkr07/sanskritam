@@ -69,8 +69,10 @@ def check_and_consume(
         limit = settings.quota_tts_chars_per_day
     elif kind == "stt_seconds":
         limit = settings.quota_stt_seconds_per_day
+    elif kind == "llm_calls":
+        limit = settings.quota_llm_calls_per_day
     else:
-        limit = 0
+        raise ValueError(f"Unknown quota kind: {kind!r}. Known kinds: tts_chars, stt_seconds, llm_calls")
 
     window_hours = settings.quota_window_hours
     used = usage_since(db, learner.id, kind, window_hours)
@@ -97,4 +99,40 @@ def check_and_consume(
     if kind == "stt_seconds":
         learner.voice_minutes_used = (learner.voice_minutes_used or 0.0) + (amount / 60.0)
 
+    db.commit()
+
+
+def refund_quota(
+    db: Session,
+    learner: Learner,
+    kind: str,
+    amount: float,
+    surface: str = "",
+    reason: str = "downstream_failure",
+) -> None:
+    """Record a compensating negative UsageEvent when a downstream service
+    fails after quota was consumed.
+
+    This prevents an outage from silently eating the learner's quota.
+    Nets to zero: a consumed+refunded pair shows as 0.0 in the rolling sum.
+    No-op when ``settings.quota_enabled`` is False.
+
+    Does NOT modify ``learner.voice_minutes_used`` — the refund is purely a
+    UsageEvent adjustment that offsets the positive event. The debited call
+    did not actually complete, so the counter should not have been debited
+    either, but to keep the code simple we leave the existing positive event
+    in place and add the negative here.
+    """
+    if not settings.quota_enabled:
+        return
+
+    event = UsageEvent(
+        learner_id=learner.id,
+        kind=kind,
+        amount=-abs(amount),
+        surface=surface,
+        source=reason,
+        ts=datetime.now(timezone.utc),
+    )
+    db.add(event)
     db.commit()

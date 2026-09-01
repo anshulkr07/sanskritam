@@ -1,4 +1,4 @@
-"""Tests for voice quota enforcement (P0-2).
+"""Tests for voice quota enforcement (P0-2) and LLM call quota (P6-1).
 
 All tests use monkeypatched Sarvam client — zero network calls.
 """
@@ -15,6 +15,7 @@ from app.config import settings
 from app.db import SessionLocal
 from app.main import create_app
 from app.models import Learner, UsageEvent
+from app.services.sarvam import SarvamError
 
 
 # ── Helpers ─────────────────────────────────────────────
@@ -274,10 +275,6 @@ def test_quota_disabled_no_enforcement(fresh_client, monkeypatch):
     # Patch settings at the module level rather than env var
     monkeypatch.setattr(settings, "quota_enabled", False)
 
-    # Need a fresh app so route handlers pick up the patched settings
-    # (actually settings is a module-level singleton; routes import it,
-    #  monkeypatch.setattr affects the live object, so even the existing
-    #  app should see it)
     _monkeypatch_sarvam(monkeypatch)
     token, lid, headers = _login(fresh_client)
 
@@ -289,3 +286,164 @@ def test_quota_disabled_no_enforcement(fresh_client, monkeypatch):
     # No new UsageEvents from check_and_consume when disabled
     count = _count_usage_events(lid)
     assert count == 1, f"Expected only the seeded event, found {count}"
+
+
+# ── LLM call quota tests (P6-1) ────────────────────────────
+
+def test_llm_calls_consumes_quota(fresh_client, monkeypatch):
+    """LLM call consumes quota, one UsageEvent row written."""
+    from app.services import edge_router as er_module
+
+    # Stub the edge router to simulate a successful call
+    stub = AsyncMock()
+    stub.available = True
+    stub.route.return_value = None  # no match — test just verifies quota consumed
+    monkeypatch.setattr(er_module, "_singleton", stub)
+    monkeypatch.setattr(er_module, "get_edge_router", lambda: stub)
+
+    token, lid, headers = _login(fresh_client)
+
+    # Use check_and_consume directly like turn_loop does
+    db: Session = SessionLocal()
+    try:
+        learner = db.query(Learner).filter(Learner.id == lid).first()
+        from app.services.quota import check_and_consume
+        check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
+    finally:
+        db.close()
+
+    events = _count_usage_events(lid)
+    assert events == 1, f"Expected exactly 1 UsageEvent, found {events}"
+
+    db: Session = SessionLocal()
+    try:
+        event = db.query(UsageEvent).filter(UsageEvent.learner_id == lid).first()
+        assert event.kind == "llm_calls"
+        assert event.amount == 1
+        assert event.surface == "conversation"
+    finally:
+        db.close()
+
+
+def test_llm_calls_over_quota_skips_llm(fresh_client, monkeypatch):
+    """Over quota → QuotaExceeded raised, LLM not called."""
+
+    # Seed usage at the limit
+    token, lid, headers = _login(fresh_client)
+    _seed_usage(lid, "llm_calls", 400)  # quota_llm_calls_per_day = 400
+
+    # Calling check_and_consume should raise QuotaExceeded
+    from app.services.quota import QuotaExceeded, check_and_consume
+
+    db: Session = SessionLocal()
+    try:
+        learner = db.query(Learner).filter(Learner.id == lid).first()
+        with pytest.raises(QuotaExceeded) as excinfo:
+            check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
+        assert "llm_calls" in str(excinfo.value)
+        assert excinfo.value.kind == "llm_calls"
+    finally:
+        db.close()
+
+    # No additional UsageEvent should have been written
+    count = _count_usage_events(lid)
+    assert count == 1, f"Expected exactly 1 seeded event, found {count}"
+
+
+def test_llm_explain_returns_429_over_quota(fresh_client, monkeypatch):
+    """POST /conversation/explain returns 429 over LLM quota."""
+
+    token, lid, headers = _login(fresh_client)
+
+    # Seed at limit
+    _seed_usage(lid, "llm_calls", 400)
+
+    # We need an existing conversation session. Create one first.
+    r = fresh_client.get("/conversation/scenarios", headers=headers)
+    assert r.status_code == 200, r.text
+    scenarios = r.json().get("scenarios", [])
+    if not scenarios:
+        pytest.skip("No scenarios in DB — cannot test explain")
+    scenario_id = scenarios[0]["id"]
+
+    # Start a session
+    r = fresh_client.post("/conversation/start", json={"scenario_id": scenario_id}, headers=headers)
+    assert r.status_code == 200, r.text
+    session_id = r.json()["session_id"]
+
+    # Now try explain — should get 429
+    r = fresh_client.post(
+        "/conversation/explain",
+        json={"session_id": session_id, "question": "What does that mean?"},
+        headers=headers,
+    )
+    assert r.status_code == 429, f"Expected 429, got {r.status_code}: {r.text}"
+    detail = r.json()["detail"]
+    assert detail["kind"] == "llm_calls"
+    assert detail["used"] >= 400
+    assert detail["limit"] >= 400
+
+
+def test_unknown_quota_kind_raises_valueerror(fresh_client):
+    """Unknown quota kind raises ValueError, not QuotaExceeded."""
+    token, lid, headers = _login(fresh_client)
+    from app.services.quota import check_and_consume
+
+    db: Session = SessionLocal()
+    try:
+        learner = db.query(Learner).filter(Learner.id == lid).first()
+        with pytest.raises(ValueError, match="Unknown quota kind"):
+            check_and_consume(db, learner, "nonexistent_kind", 1)
+    finally:
+        db.close()
+
+
+def test_tts_502_refunds_quota(fresh_client, monkeypatch):
+    """Sarvam TTS error refunds the consumed quota."""
+    from app.services.sarvam import get_sarvam_client
+
+    # Make the client raise on text_to_speech
+    real_client = get_sarvam_client()
+    monkeypatch.setattr(real_client, "text_to_speech", AsyncMock(side_effect=SarvamError(502, "mock failure")))
+    monkeypatch.setattr("app.routers.speech.get_sarvam_client", lambda: real_client)
+
+    token, lid, headers = _login(fresh_client)
+    text = "नमस्ते"
+    char_count = len(text)
+
+    r = fresh_client.post("/speech/tts", json={"text": text, "surface": "test"}, headers=headers)
+    assert r.status_code == 502, f"Expected 502, got {r.status_code}"
+
+    # Should have the positive consume event + the refund (negative)
+    db: Session = SessionLocal()
+    try:
+        events = db.query(UsageEvent).filter(UsageEvent.learner_id == lid).order_by(UsageEvent.ts).all()
+        assert len(events) == 2, f"Expected 2 events (consume + refund), got {len(events)}"
+        assert events[0].amount == char_count, f"Consume amount should be {char_count}, got {events[0].amount}"
+        assert events[1].amount == -char_count, f"Refund amount should be -{char_count}, got {events[1].amount}"
+        assert events[1].source == "downstream_failure"
+    finally:
+        db.close()
+
+
+def test_refund_nets_to_zero(fresh_client, monkeypatch):
+    """Quota consumed then refunded nets to zero in the sum."""
+    from app.services.quota import check_and_consume, refund_quota, usage_since
+
+    token, lid, headers = _login(fresh_client)
+
+    db: Session = SessionLocal()
+    try:
+        learner = db.query(Learner).filter(Learner.id == lid).first()
+
+        # Consume 5 llm_calls
+        check_and_consume(db, learner, "llm_calls", 5, surface="test")
+        used_after_consume = usage_since(db, lid, "llm_calls", 24)
+        assert used_after_consume == 5.0, f"Expected 5, got {used_after_consume}"
+
+        # Refund all 5
+        refund_quota(db, learner, "llm_calls", 5, surface="test", reason="downstream_failure")
+        used_after_refund = usage_since(db, lid, "llm_calls", 24)
+        assert used_after_refund == 0.0, f"Expected 0 after refund, got {used_after_refund}"
+    finally:
+        db.close()

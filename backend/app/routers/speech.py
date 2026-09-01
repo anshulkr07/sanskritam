@@ -10,7 +10,7 @@ from app.db import get_db
 from app.models import Learner
 from app.schemas import TTSRequest, TTSResponse, STTResponse
 from app.services.sarvam import SarvamError, get_sarvam_client
-from app.services.quota import QuotaExceeded, check_and_consume
+from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 
 logger = logging.getLogger("shabd.speech")
 
@@ -57,6 +57,7 @@ async def text_to_speech(
         )
     except SarvamError as exc:
         logger.error("Sarvam TTS failed: %s", exc)
+        refund_quota(db, learner, "tts_chars", len(req.text), surface=req.surface, reason="downstream_failure")
         raise HTTPException(status_code=502, detail=f"TTS service error: {exc.detail}")
 
     return TTSResponse(audio_base64=audio_b64)
@@ -120,6 +121,7 @@ async def speech_to_text(
         )
     except SarvamError as exc:
         logger.error("Sarvam STT failed: %s", exc)
+        refund_quota(db, learner, "stt_seconds", estimated_seconds, surface=surface, reason="downstream_failure")
         raise HTTPException(status_code=502, detail=f"STT service error: {exc.detail}")
 
     return STTResponse(**result)

@@ -22,6 +22,7 @@ from app.models import (
     Learner,
 )
 from app.services.explainer import get_explainer, reply_language
+from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.session_store import create_session, get_session
 from app.services.turn_loop import process_turn
 
@@ -296,6 +297,24 @@ async def explain_line(
     # Sarvam will not infer the answer's language reliably, so it is
     # decided here from the learner's own script and passed as an order.
     language = reply_language(req.question, learner.bridge_langs)
+
+    # Meter LLM quota — 429 is appropriate here because the learner asked for
+    # an extra (off-turn-path) explanation.
+    try:
+        check_and_consume(db, learner, "llm_calls", 1, surface="explain")
+    except QuotaExceeded as exc:
+        raise HTTPException(
+            status_code=429,
+            detail={
+                "detail": f"LLM quota exceeded: {exc.used:.0f}/{exc.limit:.0f} calls in rolling window. Retry after {exc.retry_after_s}s.",
+                "kind": exc.kind,
+                "used": exc.used,
+                "limit": exc.limit,
+                "retry_after_s": exc.retry_after_s,
+            },
+            headers={"Retry-After": str(exc.retry_after_s)},
+        )
+
     text = await explainer.explain(
         line,
         iast=iast,
@@ -311,6 +330,10 @@ async def explain_line(
         except Exception:  # label is diagnostic only — never fail the response
             pass
         return ExplainResponse(explanation=text, source="llm", provider=provider, line=line)
+
+    # Explain call returned nothing — refund the quota since the LLM did not
+    # actually produce a useful response
+    refund_quota(db, learner, "llm_calls", 1, surface="explain", reason="downstream_failure")
 
     if gloss:
         return ExplainResponse(explanation=gloss, source="gloss", line=line)

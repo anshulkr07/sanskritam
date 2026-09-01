@@ -27,6 +27,7 @@ from app.models import (
 )
 from app.services.edge_router import get_edge_router
 from app.services.meta_intent import detect_meta_intent, normalize as _meta_norm
+from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.session_store import advance
 
 logger = logging.getLogger("shabd.conversation")
@@ -230,13 +231,26 @@ async def process_turn(
             e for e in outgoing_edges if e.lang == "bridge" and e.to_node_id
         ]
         if bridge_edges and router.available and transcript.strip():
-            chosen = await router.route(
-                transcript=transcript,
-                tutor_text=current_node.devanagari or current_node.gloss or "",
-                edges=bridge_edges,
-            )
-            if chosen is not None:
-                matched_edge = chosen
+            # Consume quota before the LLM call
+            try:
+                check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
+            except QuotaExceeded:
+                logger.info("LLM quota exceeded for learner %s — skipping edge-router", learner.id)
+                # Fall through — the phrase matcher already ran; no match is escape
+            else:
+                try:
+                    chosen = await router.route(
+                        transcript=transcript,
+                        tutor_text=current_node.devanagari or current_node.gloss or "",
+                        edges=bridge_edges,
+                    )
+                    if chosen is not None:
+                        matched_edge = chosen
+                except Exception:
+                    # Refund quota on downstream failure — the call didn't complete
+                    logger.warning("edge-route call failed for learner %s — refunding quota", learner.id)
+                    refund_quota(db, learner, "llm_calls", 1, surface="conversation", reason="downstream_failure")
+                    # Fall through to escape path
 
     # Determine if this is empty/whitespace
     is_empty = not (transcript or "").strip()

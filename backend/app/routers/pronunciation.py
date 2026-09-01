@@ -14,7 +14,7 @@ from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner, PronunciationAttempt
 from app.services.pronunciation import score_pronunciation
-from app.services.quota import QuotaExceeded, check_and_consume
+from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.sarvam import SarvamError, get_sarvam_client
 
 logger = logging.getLogger("shabd.pronunciation")
@@ -78,6 +78,7 @@ async def pronunciation_attempt(
         )
     except SarvamError as exc:
         logger.error("Sarvam STT failed: %s", exc)
+        refund_quota(db, learner, "stt_seconds", estimated_seconds, surface="varnamala", reason="downstream_failure")
         raise HTTPException(status_code=502, detail=f"STT service error: {exc.detail}")
 
     transcript = stt_result.get("transcript", "")

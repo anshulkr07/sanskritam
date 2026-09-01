@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     quota_enabled: bool = True
     quota_tts_chars_per_day: int = 20_000     # ~₹20/day/learner at Bulbul rates
     quota_stt_seconds_per_day: int = 900      # 15 minutes of speech
+    quota_llm_calls_per_day: int = 400       # LLM edge-router + explain calls
     quota_window_hours: int = 24
 
     # Dev-login guard — disable in production
