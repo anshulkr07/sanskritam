@@ -277,3 +277,61 @@ async def authoring_review_submit(
         "review_note": scenario.review_note,
         "reviewed_at": scenario.reviewed_at.isoformat() if scenario.reviewed_at else None,
     }
+
+
+@router.get("/priorities")
+async def authoring_priorities(
+    _admin: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+) -> list[dict]:
+    """Ranked worklist: nodes with high escape rates need authoring attention.
+
+    Joins top_escape_nodes to scenario and node text, returning a
+    suggested_action: 'more_edges' (few outgoing edges, high escape rate)
+    or 'repair_node' (many edges, high escape rate — needs easier path).
+    """
+    from app.services.metrics import top_escape_nodes
+    from app.models import DialogueNode, DialogueScenario
+
+    top = top_escape_nodes(db, limit=50)
+    if not top:
+        return []
+
+    node_ids = [r["node_id"] for r in top]
+    nodes = {n.id: n for n in db.query(DialogueNode).filter(DialogueNode.id.in_(node_ids)).all()}
+    scenarios = {s.id: s for s in db.query(DialogueScenario).all()}
+
+    result = []
+    for entry in top:
+        node = nodes.get(entry["node_id"])
+        scenario = scenarios.get(entry["scenario_id"])
+        if not node:
+            continue
+
+        # Count outgoing edges
+        from app.models import DialogueEdge
+        n_edges = (
+            db.query(DialogueEdge)
+            .filter(DialogueEdge.from_node_id == node.id)
+            .count()
+        )
+
+        if entry["escapes"] >= 5 and n_edges <= 2:
+            suggested = "more_edges"
+        elif entry["escapes"] >= 5 and n_edges >= 4:
+            suggested = "repair_node"
+        else:
+            suggested = "ok"
+
+        result.append({
+            "node_id": node.id,
+            "scenario_id": entry["scenario_id"],
+            "scenario_title": scenario.title if scenario else "",
+            "devanagari": node.devanagari,
+            "gloss": node.gloss or "",
+            "escape_count": entry["escapes"],
+            "outgoing_edges": n_edges,
+            "suggested_action": suggested,
+        })
+
+    return result

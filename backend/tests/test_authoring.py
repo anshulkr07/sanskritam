@@ -562,3 +562,38 @@ class TestReview:
         pending_titles = [i["title"] for i in items if i["review_status"] == "pending"]
         assert "review-list-a" in pending_titles
         assert "review-list-b" in pending_titles
+
+
+class TestPriorities:
+    """P2-5: GET /authoring/priorities"""
+
+    def test_priorities_requires_admin(self, client):
+        r = client.get("/authoring/priorities")
+        assert r.status_code == 401
+
+    def test_priorities_returns_empty_list(self, authoring_client, monkeypatch):
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        from app.auth import require_admin
+        from app.routers.authoring import router
+        r = authoring_client.get("/authoring/priorities", headers=ADMIN)
+        assert r.status_code == 200
+        assert isinstance(r.json(), list)
+
+    def test_priorities_shape(self, authoring_client, monkeypatch):
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        r = authoring_client.get("/authoring/priorities", headers=ADMIN)
+        assert r.status_code == 200
+        items = r.json()
+        assert isinstance(items, list)
+        if items:
+            assert "node_id" in items[0]
+            assert "suggested_action" in items[0]
+            assert "escape_count" in items[0]
+            assert items[0]["suggested_action"] in ("ok", "more_edges", "repair_node")
+
+    def test_priorities_returns_empty_without_escapes(self, authoring_client, client, monkeypatch):
+        """Priorities endpoint returns empty list when no escapes exist."""
+        monkeypatch.setenv("SHABD_AUTHORING_LIVE", "1")
+        r = authoring_client.get("/authoring/priorities", headers=ADMIN)
+        assert r.status_code == 200
+        assert r.json() == []
