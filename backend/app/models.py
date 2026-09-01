@@ -237,6 +237,20 @@ class EscapeLog(Base):
     )
 
 
+class UsageEvent(Base):
+    """Append-only ledger of metered third-party usage, per learner."""
+
+    __tablename__ = "usage_events"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    kind = Column(String(16), nullable=False)   # "tts_chars" | "stt_seconds"
+    amount = Column(Float, nullable=False)
+    surface = Column(String(32), default="")    # "conversation" | "varnamala" | ...
+    source = Column(String(16), default="live") # "live" | "prerendered"
+    ts = Column(DateTime, default=_utcnow, index=True)
+
+
 class ConversationSession(Base):
     """Active conversation session tracking turn state."""
 

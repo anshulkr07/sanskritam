@@ -29,6 +29,12 @@ class Settings(BaseSettings):
     explain_enabled: bool = True
     explain_max_tokens: int = 220
 
+    # Voice quotas — rolling window per learner
+    quota_enabled: bool = True
+    quota_tts_chars_per_day: int = 20_000     # ~₹20/day/learner at Bulbul rates
+    quota_stt_seconds_per_day: int = 900      # 15 minutes of speech
+    quota_window_hours: int = 24
+
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 
 

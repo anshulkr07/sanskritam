@@ -153,6 +153,7 @@ class TTSRequest(BaseModel):
     language_code: str = "hi-IN"
     speaker: str = "aditya"  # valid bulbul:v3 speaker (old 'meera' 400s)
     pace: float = Field(1.0, ge=0.5, le=2.0)
+    surface: str = ""
 
 
 class TTSResponse(BaseModel):
