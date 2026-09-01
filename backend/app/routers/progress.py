@@ -1,0 +1,52 @@
+"""Progress endpoints: daily activity, XP, streaks."""
+
+import logging
+from datetime import datetime, timezone
+
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
+
+from app.auth import require_learner
+from app.db import get_db
+from app.models import DailyActivity, Learner
+
+logger = logging.getLogger("shabd.progress")
+
+router = APIRouter(prefix="/progress")
+
+
+@router.get("/daily")
+async def get_daily_progress(
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """Get the learner's daily activity for today (learner-local date)."""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    activity = db.query(DailyActivity).filter(
+        DailyActivity.learner_id == learner.id,
+        DailyActivity.date == today,
+    ).first()
+
+    return {
+        "date": today,
+        "xp": activity.xp if activity else 0,
+        "attempts": activity.attempts if activity else 0,
+        "conversation_turns": activity.conversation_turns if activity else 0,
+        "pronunciation_attempts": activity.pronunciation_attempts if activity else 0,
+        "goal_met": activity.goal_met if activity else False,
+        "goal_xp": learner.daily_goal_xp or 50,
+    }
+
+
+@router.get("/streak")
+async def get_streak(
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """Get the learner's current streak and freeze info."""
+    return {
+        "streak": learner.streak or 0,
+        "freezes": getattr(learner, "streak_freezes", 0),
+        "max_freezes": 2,
+    }

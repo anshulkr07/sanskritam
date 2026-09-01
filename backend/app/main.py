@@ -79,6 +79,7 @@ def create_app() -> FastAPI:
     from app.routers.conversation import router as conversation_router
     from app.routers.authoring import router as authoring_router
     from app.routers.pronunciation import router as pronunciation_router
+    from app.routers.progress import router as progress_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -93,6 +94,7 @@ def create_app() -> FastAPI:
     app.include_router(conversation_router, tags=["Conversation"])
     app.include_router(authoring_router, tags=["Authoring"])
     app.include_router(pronunciation_router, tags=["Pronunciation"])
+    app.include_router(progress_router, tags=["Progress"])
 
     return app
 

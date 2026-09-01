@@ -63,6 +63,8 @@ class Learner(Base):
     feature_mastery = Column(JSON, default=dict)  # {feature_id: score 0..1}
     streak = Column(Integer, default=0)
     voice_minutes_used = Column(Float, default=0.0)
+    daily_goal_xp = Column(Integer, default=50)  # learner's daily XP target
+    last_active_date = Column(String(10), default="")  # "2026-09-01", learner-local
     recent_challenge_ids = Column(JSON, default=list)  # last N served — no-repeat window
     created_at = Column(DateTime, default=_utcnow)
 
@@ -291,3 +293,18 @@ class ConversationSession(Base):
     learner = relationship("Learner")
     scenario = relationship("DialogueScenario")
     current_node = relationship("DialogueNode")
+
+
+class DailyActivity(Base):
+    """Daily activity tracking for XP, streak, and goals."""
+
+    __tablename__ = "daily_activity"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    date = Column(String(10), nullable=False, index=True)  # "2026-09-01", learner-local
+    xp = Column(Integer, default=0)
+    attempts = Column(Integer, default=0)
+    conversation_turns = Column(Integer, default=0)
+    pronunciation_attempts = Column(Integer, default=0)
+    goal_met = Column(Boolean, default=False)
