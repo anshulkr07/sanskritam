@@ -1,5 +1,18 @@
-import { Nunito_400Regular, Nunito_500Medium, Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold, useFonts } from "@expo-google-fonts/nunito";
-import { Baloo2_400Regular, Baloo2_500Medium, Baloo2_600SemiBold, Baloo2_700Bold, Baloo2_800ExtraBold } from "@expo-google-fonts/baloo-2";
+import {
+  useFonts,
+  Nunito_400Regular,
+  Nunito_500Medium,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+} from "@expo-google-fonts/nunito";
+import {
+  Baloo2_400Regular,
+  Baloo2_500Medium,
+  Baloo2_600SemiBold,
+  Baloo2_700Bold,
+  Baloo2_800ExtraBold,
+} from "@expo-google-fonts/baloo-2";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
@@ -13,9 +26,7 @@ import { AuthProvider, useAuth } from "./src/store/auth";
 
 import MainTabs from "./src/navigation/MainTabs";
 import ChallengeScreen from "./src/screens/Challenge";
-
-// NOTE: Login screen (src/screens/Login.tsx) is intentionally NOT mounted yet.
-// Auth is silent dev-login for now; onboarding ships later.
+import LoginScreen from "./src/screens/Login";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,7 +40,7 @@ const HEADER_OPTS = {
 };
 
 function RootNavigator() {
-  const { loading } = useAuth();
+  const { loading, onboarded } = useAuth();
   if (loading) {
     return (
       <View style={styles.boot}>
@@ -37,12 +48,13 @@ function RootNavigator() {
       </View>
     );
   }
+  // If not onboarded, show the login/onboarding screen instead of the app
+  if (!onboarded) {
+    return <LoginScreen />;
+  }
   return (
     <Stack.Navigator screenOptions={HEADER_OPTS}>
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-      {/* Pushed OVER the tab bar — a practice session is a flow you step
-          into and return from, not a place you live (same reason Duolingo
-          has no "Lesson" tab). The tab bar is hidden while this is active. */}
       <Stack.Screen
         name="Challenge"
         component={ChallengeScreen}

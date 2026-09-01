@@ -17,6 +17,7 @@ import { api, setAuthToken, type LearnerProfile } from "../api/client";
 const TOKEN_KEY = "shabd.token";
 const NAME_KEY = "shabd.displayName";
 const INSTALL_ID_KEY = "shabd.installId";
+const ONBOARDED_KEY = "shabd.onboarded";
 const BRIDGE_KEY = "shabd.bridgeLangs";
 
 /** Generate a UUIDv4 — used for install ID. */
@@ -47,8 +48,10 @@ interface AuthState {
   token: string | null;
   learner: LearnerProfile | null;
   loading: boolean;
+  onboarded: boolean;
   displayName: string;
   login: (displayName: string) => Promise<LearnerProfile>;
+  finishOnboarding: () => Promise<void>;
   logout: () => Promise<void>;
   refresh: () => Promise<LearnerProfile | null>;
   updateName: (name: string) => Promise<void>;
@@ -60,12 +63,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [learner, setLearner] = useState<LearnerProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [onboarded, setOnboarded] = useState(false);
   const [displayName, setDisplayName] = useState("");
 
   const login = useCallback(async (name: string): Promise<LearnerProfile> => {
     await AsyncStorage.setItem(NAME_KEY, name);
     setDisplayName(name);
-    // Use anonymous auth with device install ID
     const installId = await getInstallId();
     const res = await api.anonLogin(installId, ["en", "hi"]);
     setAuthToken(res.token);
@@ -85,7 +88,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return profile;
   }, []);
 
-  // Restore session on mount; if none, auto-login silently with device identity.
+  const finishOnboarding = useCallback(async () => {
+    await AsyncStorage.setItem(ONBOARDED_KEY, "true");
+    setOnboarded(true);
+  }, []);
+
+  // Restore session on mount.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     (async () => {
@@ -98,12 +106,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const me = await api.me();
             setLearner(me.learner);
           } catch {
-            // Token invalid/stale — fall through to silent login.
             await AsyncStorage.multiRemove([TOKEN_KEY]);
             setAuthToken(null);
             setToken(null);
           }
         }
+        // Check onboarding status
+        const onboardedVal = await AsyncStorage.getItem(ONBOARDED_KEY);
+        if (onboardedVal === "true") {
+          setOnboarded(true);
+        }
+
         // No usable token → silently log in with device install ID.
         const currentTok = await AsyncStorage.getItem(TOKEN_KEY);
         if (!currentTok) {
@@ -116,10 +129,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const logout = useCallback(async () => {
-    await AsyncStorage.multiRemove([TOKEN_KEY]);
+    await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY]);
     setAuthToken(null);
     setToken(null);
     setLearner(null);
+    setOnboarded(false);
   }, []);
 
   const refresh = useCallback(async (): Promise<LearnerProfile | null> => {
@@ -139,8 +153,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo<AuthState>(
-    () => ({ token, learner, loading, displayName, login, logout, refresh, updateName }),
-    [token, learner, loading, displayName, login, logout, refresh, updateName],
+    () => ({
+      token,
+      learner,
+      loading,
+      onboarded,
+      displayName,
+      login,
+      finishOnboarding,
+      logout,
+      refresh,
+      updateName,
+    }),
+    [token, learner, loading, onboarded, displayName, login, finishOnboarding, logout, refresh, updateName],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

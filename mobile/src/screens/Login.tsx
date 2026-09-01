@@ -1,5 +1,6 @@
-// Onboarding / login. Dev-login via display name (backend has no password
-// auth yet). The "one tap" reuse of a saved name keeps re-entry frictionless.
+// Onboarding / login. Three light steps: display name, bridge language(s),
+// starting Sanskrit ratio. Skippable — "Skip for now" creates an anonymous
+// learner with defaults and lands on Home.
 
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
@@ -17,29 +18,62 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth } from "../store/auth";
 import { color, font, radius, shadow, space } from "../theme";
 
+type Step = "name" | "langs" | "ratio";
+
 export default function LoginScreen() {
-  const { login, displayName, loading } = useAuth();
+  const { login, finishOnboarding, displayName, loading } = useAuth();
+  const [step, setStep] = useState<Step>("name");
   const [name, setName] = useState("");
+  const [langs, setLangs] = useState<string[]>(["en", "hi"]);
+  const [ratio, setRatio] = useState(0.3);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Prefill with the remembered name (if any) so re-login is one tap.
+  // Prefill remembered name
   useEffect(() => {
     if (displayName) setName(displayName);
   }, [displayName]);
 
   const submit = async () => {
-    const trimmed = name.trim();
-    if (!trimmed || loading) return;
+    if (step === "name") {
+      const trimmed = name.trim();
+      if (!trimmed) return;
+      setStep("langs");
+      return;
+    }
+    if (step === "langs") {
+      setStep("ratio");
+      return;
+    }
+    // Final step: login and finish onboarding
+    const trimmed = name.trim() || "Learner";
     setBusy(true);
     setError(null);
     try {
       await login(trimmed);
+      await finishOnboarding();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not connect. Is the backend running?");
     } finally {
       setBusy(false);
     }
+  };
+
+  const skip = async () => {
+    try {
+      const trimmed = name.trim() || "Learner";
+      await login(trimmed);
+      await finishOnboarding();
+    } catch {
+      // Even if login fails, mark onboarded so the user sees the app
+      await finishOnboarding();
+    }
+  };
+
+  const toggleLang = (lang: string) => {
+    setLangs((prev) =>
+      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang]
+    );
   };
 
   const canSubmit = name.trim().length > 0 && !busy;
@@ -63,21 +97,88 @@ export default function LoginScreen() {
 
             {/* Card */}
             <View style={styles.card}>
-              <Text style={styles.heading}>नमस्ते 🙏</Text>
-              <Text style={styles.subheading}>What should we call you?</Text>
+              {step === "name" && (
+                <>
+                  <Text style={styles.heading}>नमस्ते 🙏</Text>
+                  <Text style={styles.subheading}>What should we call you?</Text>
+                  <TextInput
+                    value={name}
+                    onChangeText={setName}
+                    placeholder="Your name"
+                    placeholderTextColor={color.inkFaint}
+                    style={styles.input}
+                    autoCorrect={false}
+                    autoCapitalize="words"
+                    returnKeyType="go"
+                    onSubmitEditing={submit}
+                    editable={!busy}
+                  />
+                </>
+              )}
 
-              <TextInput
-                value={name}
-                onChangeText={setName}
-                placeholder="Your name"
-                placeholderTextColor={color.inkFaint}
-                style={styles.input}
-                autoCorrect={false}
-                autoCapitalize="words"
-                returnKeyType="go"
-                onSubmitEditing={submit}
-                editable={!busy}
-              />
+              {step === "langs" && (
+                <>
+                  <Text style={styles.heading}>भाषा</Text>
+                  <Text style={styles.subheading}>
+                    Which languages do you speak? I'll use them to help you learn.
+                  </Text>
+                  <View style={styles.langRow}>
+                    {["en", "hi"].map((l) => (
+                      <Pressable
+                        key={l}
+                        onPress={() => toggleLang(l)}
+                        style={[
+                          styles.langChip,
+                          langs.includes(l) && styles.langChipActive,
+                        ]}
+                      >
+                        <Text
+                          style={[
+                            styles.langChipText,
+                            langs.includes(l) && styles.langChipTextActive,
+                          ]}
+                        >
+                          {l === "en" ? "English" : "हिन्दी"}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
+                </>
+              )}
+
+              {step === "ratio" && (
+                <>
+                  <Text style={styles.heading}>Sanskrit share</Text>
+                  <Text style={styles.subheading}>
+                    How much Sanskrit do you want to hear?{'\n'}
+                    I start mostly in your language and add more Sanskrit as you grow.
+                  </Text>
+                  <View style={styles.ratioDisplay}>
+                    <Text style={styles.ratioLabel}>
+                      {ratio <= 0.2 ? "Mostly English" :
+                       ratio <= 0.4 ? "Mostly Hindi" :
+                       ratio <= 0.6 ? "Balanced" :
+                       ratio <= 0.8 ? "Mostly Sanskrit" :
+                       "Almost all Sanskrit"}
+                    </Text>
+                    <Text style={styles.ratioValue}>{Math.round(ratio * 100)}%</Text>
+                    <Text style={styles.ratioHint}>Sanskrit</Text>
+                  </View>
+                  {/* Simple slider approximation using text-based controls */}
+                  <View style={styles.sliderRow}>
+                    {[0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8].map((v) => (
+                      <Pressable
+                        key={v}
+                        onPress={() => setRatio(v)}
+                        style={[
+                          styles.sliderDot,
+                          Math.abs(ratio - v) < 0.05 && styles.sliderDotActive,
+                        ]}
+                      />
+                    ))}
+                  </View>
+                </>
+              )}
 
               {!!error && <Text style={styles.error}>{error}</Text>}
 
@@ -90,12 +191,21 @@ export default function LoginScreen() {
                   pressed && styles.signupBtnPressed,
                 ]}
               >
-                <Text style={styles.signupText}>{busy ? "Starting…" : "Start learning"}</Text>
+                <Text style={styles.signupText}>
+                  {busy ? "Starting…" : step === "ratio" ? "Start learning" : "Next"}
+                </Text>
               </Pressable>
+
+              {/* Skip for now */}
+              {step === "name" && (
+                <Pressable onPress={skip} style={styles.skipBtn}>
+                  <Text style={styles.skipText}>Skip for now</Text>
+                </Pressable>
+              )}
             </View>
 
             <Text style={styles.footnote}>
-              Your tutor speaks a little Sanskrit and a lot of your language,{`\n`}and raises the
+              Your tutor speaks a little Sanskrit and a lot of your language,{'\n'}and raises the
               Sanskrit share as you grow.
             </Text>
           </View>
@@ -170,6 +280,73 @@ const styles = StyleSheet.create({
     color: color.ink,
     backgroundColor: color.surface,
   },
+  langRow: {
+    flexDirection: "row",
+    gap: space.sm,
+  },
+  langChip: {
+    flex: 1,
+    paddingVertical: space.md,
+    borderRadius: radius.md,
+    borderWidth: 2,
+    borderColor: color.border,
+    alignItems: "center",
+  },
+  langChipActive: {
+    borderColor: color.saffron,
+    backgroundColor: color.saffronBg,
+  },
+  langChipText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.base,
+    color: color.ink,
+  },
+  langChipTextActive: {
+    color: color.saffron,
+  },
+  ratioDisplay: {
+    alignItems: "center",
+    marginVertical: space.md,
+  },
+  ratioLabel: {
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.md,
+    color: color.inkSoft,
+  },
+  ratioValue: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.xxl,
+    color: color.saffron,
+    marginTop: space.xs,
+  },
+  ratioHint: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
+  },
+  sliderRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: space.xs,
+    marginBottom: space.md,
+    marginTop: space.xs,
+  },
+  sliderDot: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: color.border,
+  },
+  sliderDotActive: {
+    backgroundColor: color.saffron,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+  },
   error: {
     color: color.bad,
     fontFamily: "Nunito_600SemiBold",
@@ -192,6 +369,17 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
     fontSize: font.sizes.base,
+  },
+  skipBtn: {
+    marginTop: space.sm,
+    alignItems: "center",
+    paddingVertical: space.sm,
+  },
+  skipText: {
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.sm,
+    color: color.inkFaint,
   },
   footnote: {
     marginTop: space.lg,
