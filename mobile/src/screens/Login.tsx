@@ -112,6 +112,8 @@ export default function LoginScreen() {
                     returnKeyType="go"
                     onSubmitEditing={submit}
                     editable={!busy}
+                    accessibilityRole="text"
+                    accessibilityLabel="Enter your name"
                   />
                 </>
               )}
@@ -294,7 +296,7 @@ const styles = StyleSheet.create({
   },
   langChipActive: {
     borderColor: color.saffron,
-    backgroundColor: color.saffronBg,
+    backgroundColor: color.saffronLight,
   },
   langChipText: {
     fontFamily: "Nunito_700Bold",

@@ -219,11 +219,20 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
 
 // ─── EmptyState ────────────────────────────────────────────────────────────
 
-export function EmptyState({ title, hint }: { title: string; hint?: string }) {
+interface EmptyStateProps {
+  title: string;
+  hint?: string;
+  illustration?: React.ReactNode;
+  action?: React.ReactNode;
+}
+
+export function EmptyState({ title, hint, illustration, action }: EmptyStateProps) {
   return (
     <View style={styles.empty}>
+      {illustration && <View style={styles.emptyIllus}>{illustration}</View>}
       <Text style={styles.emptyTitle}>{title}</Text>
       {!!hint && <Text style={styles.emptyHint}>{hint}</Text>}
+      {action && <View style={{ marginTop: space.md }}>{action}</View>}
     </View>
   );
 }
@@ -276,6 +285,7 @@ const styles = StyleSheet.create({
     marginBottom: space.xs,
   },
   empty: { alignItems: "center", paddingVertical: space.xxl },
+  emptyIllus: { marginBottom: space.md },
   emptyTitle: {
     fontFamily: "Nunito_700Bold",
     fontWeight: "700",

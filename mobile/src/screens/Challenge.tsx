@@ -22,6 +22,7 @@ import { api, type AttemptResponse, type Challenge } from "../api/client";
 import TutorFull from "../components/TutorFull";
 import VerdictSheet from "../components/VerdictSheet";
 import WordBank from "../components/WordBank";
+import SessionComplete from "../screens/SessionComplete";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { Button, Card, ProgressBar } from "../components/ui";
@@ -128,35 +129,21 @@ export default function ChallengeScreen({ navigation }: Props) {
   // ── Session complete ──────────────────────────────────────────────────
   if (sessionDone) {
     const xp = correctCount * 10 + SESSION_LENGTH * 2;
+    // Navigate to SessionComplete screen
     return (
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.completeWrap}>
-          <TutorFull height={190} celebrate />
-          <Text style={styles.completeTitle}>Session complete!</Text>
-          <Text style={styles.completeSub}>
-            {correctCount} of {SESSION_LENGTH} correct
-          </Text>
-          <View style={styles.completeStatRow}>
-            <View style={styles.completeStat}>
-              <Text style={[styles.completeStatValue, { color: color.gold }]}>+{xp}</Text>
-              <Text style={styles.completeStatLabel}>XP this session</Text>
-            </View>
-            <View style={styles.completeStat}>
-              <Text style={[styles.completeStatValue, { color: color.ok }]}>
-                {Math.round((correctCount / SESSION_LENGTH) * 100)}%
-              </Text>
-              <Text style={styles.completeStatLabel}>Accuracy</Text>
-            </View>
-          </View>
-          <Button
-            label="Done"
-            tone="ok"
-            block
-            onPress={() => navigation.goBack()}
-            style={{ marginTop: space.xl, alignSelf: "stretch" }}
-          />
-        </View>
-      </SafeAreaView>
+      <SessionComplete
+        correctCount={correctCount}
+        totalCount={SESSION_LENGTH}
+        xpEarned={xp}
+        streakDays={0}
+        onOneMore={() => {
+          setCompleted(0);
+          setCorrectCount(0);
+          setSessionDone(false);
+          loadNext();
+        }}
+        onDone={() => navigation.goBack()}
+      />
     );
   }
 
@@ -190,7 +177,7 @@ export default function ChallengeScreen({ navigation }: Props) {
         {/* Session progress */}
         <View style={styles.progressRow}>
           <ProgressBar progress={completed / SESSION_LENGTH} style={{ flex: 1 }} />
-          <Text style={styles.progressLabel}>{completed + 1}/{SESSION_LENGTH}</Text>
+          <Text style={styles.progressLabel} accessibilityLabel={`Exercise ${completed + 1} of ${SESSION_LENGTH}`}>{completed + 1}/{SESSION_LENGTH}</Text>
         </View>
 
         {/* Prompt */}
