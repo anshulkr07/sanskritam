@@ -66,6 +66,9 @@ class Learner(Base):
     daily_goal_xp = Column(Integer, default=50)  # learner's daily XP target
     last_active_date = Column(String(10), default="")  # "2026-09-01", learner-local
     streak_freezes = Column(Integer, default=2)  # max 2 freezes
+    # IANA key ("Asia/Kolkata"). The learner's day boundary is resolved
+    # against this, never against server UTC — see services/localtime.py.
+    timezone = Column(String(64), default="UTC")
     recent_challenge_ids = Column(JSON, default=list)  # last N served — no-repeat window
     created_at = Column(DateTime, default=_utcnow)
 

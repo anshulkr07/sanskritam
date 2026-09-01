@@ -21,6 +21,7 @@ def _profile(learner: Learner) -> LearnerProfile:
         feature_mastery=learner.feature_mastery or {},
         streak=learner.streak or 0,
         voice_minutes_used=learner.voice_minutes_used or 0.0,
+        timezone=learner.timezone or "UTC",
     )
 
 
@@ -65,6 +66,11 @@ async def update_me(
         learner.bridge_langs = req.bridge_langs
     if req.display_name is not None:
         learner.display_name = req.display_name
+    if req.timezone is not None:
+        # Store whatever the client sends; localtime.resolve_tz degrades an
+        # unknown key to UTC at read time rather than rejecting it here, so a
+        # device with an exotic tz database can still sync its profile.
+        learner.timezone = req.timezone.strip() or "UTC"
     db.commit()
     db.refresh(learner)
 

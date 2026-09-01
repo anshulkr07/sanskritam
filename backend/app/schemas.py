@@ -22,6 +22,9 @@ class AnonLoginRequest(BaseModel):
     install_id: str = Field(..., min_length=16, max_length=64)
     bridge_langs: list[str] = Field(default=["en", "hi"])
     display_name: Optional[str] = None
+    # IANA key from the device ("Asia/Kolkata"). Sets the learner's day
+    # boundary; an unknown key degrades to UTC rather than failing the login.
+    timezone: Optional[str] = Field(None, max_length=64)
 
 
 # ─── Learner ───
@@ -35,6 +38,7 @@ class LearnerProfile(BaseModel):
     feature_mastery: dict[str, float]
     streak: int
     voice_minutes_used: float
+    timezone: str = "UTC"
 
 
 class UpdateMeRequest(BaseModel):
@@ -42,6 +46,7 @@ class UpdateMeRequest(BaseModel):
     sanskrit_ratio: Optional[float] = Field(None, ge=0.0, le=1.0)
     bridge_langs: Optional[list[str]] = None
     display_name: Optional[str] = None
+    timezone: Optional[str] = Field(None, max_length=64)
 
 
 class MeResponse(BaseModel):

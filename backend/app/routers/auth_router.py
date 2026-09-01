@@ -68,10 +68,16 @@ async def anon_login(req: AnonLoginRequest, db: Session = Depends(get_db)):
             display_name=req.display_name or f"Learner_{req.install_id[:8]}",
             bridge_langs=req.bridge_langs,
             install_id=req.install_id,
+            timezone=(req.timezone or "UTC").strip() or "UTC",
         )
         db.add(learner)
         db.commit()
         db.refresh(learner)
+    # A returning device may have travelled or fixed its clock; keep the
+    # learner's day boundary in step with the device on every login.
+    if req.timezone and req.timezone.strip() and learner.timezone != req.timezone.strip():
+        learner.timezone = req.timezone.strip()
+        db.commit()
 
     token = create_token(learner.id, db)
     return DevLoginResponse(
@@ -86,5 +92,6 @@ async def anon_login(req: AnonLoginRequest, db: Session = Depends(get_db)):
             "feature_mastery": learner.feature_mastery or {},
             "streak": learner.streak or 0,
             "voice_minutes_used": learner.voice_minutes_used or 0.0,
+            "timezone": learner.timezone or "UTC",
         },
     )
