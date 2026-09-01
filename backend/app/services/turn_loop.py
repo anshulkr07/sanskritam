@@ -400,6 +400,14 @@ def _handle_no_match(
     db.add(esc)
     db.commit()
 
+    # Emit escape metric
+    from app.services.metrics import emit as _emit
+    _emit("escape",
+          scenario_id=session.scenario_id,
+          node_id=current_node.id,
+          learner_id=learner.id,
+          verdict=best_verdict)
+
     # ── Escalation ladder (§12: a stuck learner is a lost learner) ──
     # Track consecutive escapes on the session; escalate instead of asking
     # again forever:

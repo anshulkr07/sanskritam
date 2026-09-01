@@ -1,14 +1,15 @@
-"""Admin endpoints: create/list challenges."""
+"""Admin endpoints: create/list challenges, metrics."""
 
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.auth import require_admin
 from app.db import get_db
 from app.models import Challenge
 from app.schemas import ChallengeResponse, CreateChallengeRequest
+from app.services.metrics import escape_rate, tts_share, top_escape_nodes
 
 router = APIRouter()
 
@@ -67,3 +68,20 @@ async def list_admin_challenges(
         )
         for c in challenges
     ]
+
+
+@router.get("/admin/metrics")
+async def get_metrics(
+    hours: int = Query(24, ge=1, le=168),
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Return aggregate metrics: escape rate, TTS source share, top escape nodes.
+
+    Requires admin token.  Default window is 24 hours.
+    """
+    return {
+        "escape_rate": escape_rate(db, hours=hours),
+        "tts_share": tts_share(db, hours=hours),
+        "top_escape_nodes": top_escape_nodes(db),
+    }
