@@ -21,6 +21,10 @@ async def lifespan(app: FastAPI):
 
     init_db()
     run_seed()
+
+    if settings.dev_login_enabled:
+        logger.warning("DEV_LOGIN_ENABLED=True — unauthenticated login path is OPEN. Set DEV_LOGIN_ENABLED=false in production.")
+
     logger.info("Shabd backend started successfully")
     yield
 

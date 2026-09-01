@@ -38,3 +38,23 @@ def test_me_roundtrip(client, auth_headers):
 def test_bad_token_rejected(client):
     r = client.get("/me", headers={"Authorization": "Bearer bogus-token"})
     assert r.status_code == 401
+
+
+def test_dev_login_disabled_returns_404(client, monkeypatch):
+    """When DEV_LOGIN_ENABLED=false, dev-login returns 404."""
+    from app.config import settings
+    monkeypatch.setattr(settings, "dev_login_enabled", False)
+
+    r = client.post("/auth/dev-login", json={"display_name": "should-not-work", "bridge_langs": ["en"]})
+    assert r.status_code == 404, f"Expected 404 when dev login disabled, got {r.status_code}"
+
+
+def test_dev_login_enabled_returns_200(client, monkeypatch):
+    """Confirm dev-login still works normally."""
+    from app.config import settings
+    monkeypatch.setattr(settings, "dev_login_enabled", True)
+
+    r = client.post("/auth/dev-login", json={"display_name": "p0-4-tester", "bridge_langs": ["en", "hi"]})
+    assert r.status_code == 200, f"Expected 200, got {r.status_code}"
+    body = r.json()
+    assert "token" in body

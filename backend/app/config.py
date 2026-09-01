@@ -35,6 +35,9 @@ class Settings(BaseSettings):
     quota_stt_seconds_per_day: int = 900      # 15 minutes of speech
     quota_window_hours: int = 24
 
+    # Dev-login guard — disable in production
+    dev_login_enabled: bool = True
+
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 
 

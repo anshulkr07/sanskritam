@@ -13,7 +13,15 @@ router = APIRouter()
 
 @router.post("/auth/dev-login", response_model=DevLoginResponse)
 async def dev_login(req: DevLoginRequest, db: Session = Depends(get_db)):
-    """Simple dev login: create or return existing learner by display_name."""
+    """Simple dev login: create or return existing learner by display_name.
+
+    Returns 404 when ``DEV_LOGIN_ENABLED=false`` (production guard).
+    """
+    from app.config import settings
+    if not settings.dev_login_enabled:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Not found")
+
     existing = db.query(Learner).filter(Learner.display_name == req.display_name).first()
     if existing:
         learner = existing
