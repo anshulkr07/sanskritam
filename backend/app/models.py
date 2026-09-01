@@ -256,6 +256,23 @@ class UsageEvent(Base):
     ts = Column(DateTime, default=_utcnow, index=True)
 
 
+class PronunciationAttempt(Base):
+    """Record of a learner's pronunciation attempt on an akṣara."""
+
+    __tablename__ = "pronunciation_attempts"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    target = Column(String(32), nullable=False)       # the akṣara, Devanagari
+    target_iast = Column(String(32), default="")
+    transcript = Column(Text, default="")             # what Saaras heard
+    verdict = Column(String(16), nullable=False)      # correct|near|incorrect|unsure
+    contrast = Column(String(32), default="")         # e.g. "retroflex_vs_dental"
+    confidence = Column(Float, default=0.0)
+    abstained = Column(Boolean, default=False)
+    ts = Column(DateTime, default=_utcnow)
+
+
 class ConversationSession(Base):
     """Active conversation session tracking turn state."""
 

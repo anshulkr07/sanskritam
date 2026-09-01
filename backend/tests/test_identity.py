@@ -79,6 +79,25 @@ def test_anon_login_token_works(client):
     assert r2.status_code == 200, "Token from anon login should work"
 
 
+# ─── P3-1: Pronunciation attempt model ──────────────────
+
+def test_pronunciation_attempt_model_imports():
+    """PronunciationAttempt model is importable and has expected columns."""
+    from app.models import PronunciationAttempt
+    assert PronunciationAttempt.__tablename__ == "pronunciation_attempts"
+    cols = {c.name for c in PronunciationAttempt.__table__.columns}
+    expected = {"id", "learner_id", "target", "target_iast", "transcript",
+                "verdict", "contrast", "confidence", "abstained", "ts"}
+    assert cols >= expected, f"Missing columns: {expected - cols}"
+
+
+def test_pronunciation_attempt_no_audio_column():
+    """PronunciationAttempt has no audio column per P1-4."""
+    from app.models import PronunciationAttempt
+    cols = {c.name for c in PronunciationAttempt.__table__.columns}
+    assert "audio" not in cols, "Audio column must not exist on PronunciationAttempt"
+
+
 # ─── P1-3: Account deletion ────────────────────────────
 
 def _dev_login(client, name="p1-delete-tester"):
