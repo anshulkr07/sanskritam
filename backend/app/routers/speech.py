@@ -76,6 +76,11 @@ async def speech_to_text(
     Quota is checked and consumed BEFORE the Sarvam call.
     STT seconds estimated from byte length assuming 16-bit 16kHz mono WAV
     (len(audio_data) / (16000 * 2)).
+
+    Privacy: audio_data is read into memory and passed to Sarvam for STT, then
+    discarded.  It is NEVER written to disk or stored in the DB.  The derived
+    transcript and verdict are kept; the raw recording is not retained.
+    See retain_raw_audio in config.py for the opt-in override (default: False).
     """
     audio_data = await file.read()
     if not audio_data:

@@ -38,6 +38,9 @@ class Settings(BaseSettings):
     # Dev-login guard — disable in production
     dev_login_enabled: bool = True
 
+    # Privacy: raw audio retention opt-in
+    retain_raw_audio: bool = False
+
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 
 

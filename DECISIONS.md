@@ -13,6 +13,12 @@ Log of decisions made during the build. The spec lives in architecture.md; this 
 - **Test console frontend**: static vanilla JS, light theme, no build step. It is a testing tool, not the product (product is Expo per spec §1).
 - Workers used: 1 research (tech findings), 1 build (backend), 1 build (frontend). Test worker follows build completion; findings from research get integrated in iteration 2.
 
+## 2026-09-01 — Raw audio retention
+
+- **Raw audio is NOT retained.** Audio uploaded to `/speech/stt` is read into memory, passed to Sarvam Saaras for transcription, and discarded. It is never written to disk or stored in the DB. Only the derived transcript, verdict, and pronunciation metadata are persisted.
+- Config option `retain_raw_audio: bool = False` declared in `config.py` for future opt-in.
+- This satisfies GDPR Article 5(1)(c) (data minimisation) and DPDP 2023 §4(2) (purpose limitation) for the diaspora user base. A retained-audio feature, if ever built, must be opt-in with explicit consent and a retention schedule.
+
 ## 2026-08-29 — Model routing, measured
 
 - **Built an eval harness** (`backend/app/evals`) rather than choosing a model from published benchmarks. It scores candidate models on our own 37 seed challenges using the same Vidyut analyzer that grades learners, so a model that fails here fails in production. Three tasks: `generate` (author Sanskrit from an English prompt), `diagnose` (catch a learner's error, with control cases that measure false accusation), `translate`. Responses are cached on disk so re-scoring costs nothing.
