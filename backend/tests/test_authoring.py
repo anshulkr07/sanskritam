@@ -15,11 +15,13 @@ import pytest
 
 from app.config import settings
 from app.db import SessionLocal
+from app.evals.providers import LLMResponse
 from app.grading.engine import grade_attempt
 from app.models import DialogueEdge, DialogueNode, DialogueScenario
 from app.services.authoring import (
     AuthoringConflictError,
     AuthoringNotFoundError,
+    draft_turns,
     gate_drafts,
     render_scenario,
     run_authoring,
@@ -148,6 +150,123 @@ class TestGateDrafts:
         gated = _run(gate_drafts([empty]))
         assert gated[0]["gate"] == "fail"
         assert "empty" in gated[0]["reason"]
+
+
+# ─── P6-3: closed-set prompt, label-vs-grammar classification, short-draft retry ──
+
+class _FakeProvider:
+    """Minimal provider stand-in whose ``complete`` returns responses in order."""
+
+    def __init__(self, responses, captured=None):
+        self.responses = list(responses)
+        self.calls = 0
+        self.label = "fake:test"
+        self.configured = True
+        self._captured = captured if captured is not None else []
+
+    async def complete(self, system, user, **kwargs):
+        self.calls += 1
+        self._captured.append((system, user))
+        return self.responses[min(self.calls - 1, len(self.responses) - 1)]
+
+
+def _draft_obj(sanskrit: str, features: list[str]) -> dict:
+    return {
+        "devanagari": "किं करोषि?",
+        "iast": "kiṃ karoṣi?",
+        "gloss_en": "What are you doing?",
+        "expected_learner_sanskrit": sanskrit,
+        "features": features,
+    }
+
+
+class TestP63:
+    def test_gate_reports_invented_label_not_grammar(self, monkeypatch):
+        """A non-derivable claim absent from the closed set is a label error,
+        not a grammar failure."""
+        # भवति is PRES.3SG — claiming a made-up ACT.3SG label should be reported
+        # as outside the allowed set, not as ungrammatical Sanskrit.
+        draft = _draft_obj("सः गच्छति", ["PRES.3SG.ACT"])
+        gated = _run(gate_drafts([draft], target_features=["PRES.1SG", "PRES.3SG"]))
+        assert gated[0]["gate"] == "fail"
+        assert "outside the allowed set" in gated[0]["reason"]
+        assert "PRES.3SG.ACT" in gated[0]["reason"]
+
+    def test_gate_off_band_but_derived_passes(self):
+        """The closed set classifies failures, it never creates them: a feature
+        that IS derivable passes even if absent from the band."""
+        # कौ? singular counterexample of a derivable-feature claim: गच्छति
+        # genuinely is PRES.3SG so it must pass regardless of the closed set.
+        draft = _draft_obj("सः गच्छति", ["PRES.3SG", "PRES.3SG"])
+        gated = _run(gate_drafts([draft], target_features=["NOM.SG"]))
+        assert gated[0]["gate"] == "pass", gated[0].get("reason")
+
+    def test_gate_real_grammar_error_unaffected(self):
+        """A genuinely non-derivable claim still fails as a grammar error when
+        it is inside the closed set."""
+        draft = _draft_obj("सः गच्छति", ["PRES.2SG"])  # falsely claimed 2SG
+        gated = _run(gate_drafts([draft], target_features=["PRES.1SG", "PRES.2SG"]))
+        assert gated[0]["gate"] == "fail"
+        assert "not derivable" in gated[0]["reason"]
+
+    def test_prompt_contains_closed_set(self, monkeypatch):
+        """The brief's target_features reach the drafting prompt as a closed set."""
+        captured = []
+        fake = _FakeProvider(
+            [LLMResponse(text=json.dumps([CLEAN_DRAFT]))], captured=captured
+        )
+        monkeypatch.setattr("app.services.authoring.build_provider", lambda _ref: fake)
+
+        brief = dict(BRIEF, target_features=["NOM.SG", "ACC.SG", "PRES.1SG"])
+        drafts = _run(draft_turns(brief, n_turns=1, cache=False))
+        assert len(drafts) == 1
+        system, _user = captured[-1]
+        assert "Allowed feature ids (CLOSED SET): NOM.SG, ACC.SG, PRES.1SG" in system
+
+    def test_draft_retries_when_short(self, monkeypatch):
+        """A draft returning fewer turns than requested is retried once."""
+        short = json.dumps([CLEAN_DRAFT])
+        full = json.dumps([CLEAN_DRAFT, MADEUP_DRAFT, dict(DUAL_DRAFT)])
+        fake = _FakeProvider([LLMResponse(text=short), LLMResponse(text=full)])
+        monkeypatch.setattr("app.services.authoring.build_provider", lambda _ref: fake)
+
+        drafts = _run(draft_turns(dict(BRIEF), n_turns=3, cache=False))
+
+        assert fake.calls == 2, "short draft should trigger one retry"
+        assert len(drafts) == 3, "retry's fuller reply should be kept"
+
+    def test_draft_no_retry_when_full(self, monkeypatch):
+        """A draft meeting the requested count is not retried."""
+        full = json.dumps([CLEAN_DRAFT, MADEUP_DRAFT, dict(DUAL_DRAFT)])
+        fake = _FakeProvider([LLMResponse(text=full)])
+        monkeypatch.setattr("app.services.authoring.build_provider", lambda _ref: fake)
+
+        drafts = _run(draft_turns(dict(BRIEF), n_turns=3, cache=False))
+
+        assert fake.calls == 1
+        assert len(drafts) == 3
+
+    def test_extract_unwraps_array_wrapper(self):
+        """The model sometimes wraps the array: {\"turns\":[...]} — the extractor
+        must unwrap it (a failure mode the live re-run surfaced, 2026-09-01)."""
+        from app.services.authoring import _extract_json_array
+        wrapped = json.dumps({"turns": [CLEAN_DRAFT, MADEUP_DRAFT]})
+        out = _extract_json_array(wrapped)
+        assert len(out) == 2
+        assert out[0]["expected_learner_sanskrit"] == CLEAN_DRAFT["expected_learner_sanskrit"]
+
+    def test_draft_retries_when_first_call_raises(self, monkeypatch):
+        """A first call that raises on an unusable reply still gets a retry."""
+        from app.evals.providers import LLMResponse
+        bad = '{"devanagari":"x","iast":"x","gloss_en":"x","expected_learner_sanskrit":"","features":[]}'
+        full = json.dumps([CLEAN_DRAFT, MADEUP_DRAFT, dict(DUAL_DRAFT)])
+        fake = _FakeProvider([LLMResponse(text=bad), LLMResponse(text=full)])
+        monkeypatch.setattr("app.services.authoring.build_provider", lambda _ref: fake)
+
+        drafts = _run(draft_turns(dict(BRIEF), n_turns=3, cache=False))
+
+        assert fake.calls == 2, "unusable first reply must trigger a retry"
+        assert len(drafts) == 3
 
 
 # ─── run_authoring ────────────────────────────────────────────────────────

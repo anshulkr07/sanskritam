@@ -20,6 +20,11 @@ from pathlib import Path
 # Ensure backend is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+# Windows consoles default to cp1252, which cannot encode ₹ (U+20B9): the
+# estimate tracebacks halfway through printing. Force UTF-8 on stdout.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 from app.config import settings
 from app.db import init_db, SessionLocal
 from app.models import DialogueScenario
@@ -27,20 +32,33 @@ from app.seeds.briefs import SCENARIO_BRIEFS
 
 logger = logging.getLogger("shabd.author_batch")
 
-# ── Cost estimates (₹ at Bulbul rates) ─────────────────
-COST_PER_LLM_CALL = 0.0055  # ₹/draft turn (sarvam-105b-conversations)
-COST_PER_TTS_CHAR = 0.0001  # ₹/character (Bulbul v3 estimate)
+# ── Cost estimates (₹) ─────────────────────────────────
+# Rates per architecture.md §4.1: Bulbul v3 bills ₹30/10K characters.
+COST_PER_LLM_CALL = 0.0055  # ₹/draft call (sarvam-105b-conversations)
+COST_PER_TTS_CHAR = 0.003   # ₹/character
+# Measured, not guessed: the 30 speakable nodes of the seeded scenario average
+# 37 chars (median 40, max 75). Only the `devanagari` line is sent to TTS —
+# the gloss is display-only (scripts/build_render_items.py:38).
+CHARS_PER_TURN = 37
 
 
 def _load_estimates(briefs: list[dict]) -> dict:
-    """Compute dry-run estimates: LLM calls, TTS chars, ₹."""
+    """Compute dry-run estimates: LLM calls, TTS chars, ₹.
+
+    LLM and TTS are reported separately because conflating them overstates
+    what ``--live`` actually spends:
+
+    * **LLM** — one ``draft_turns`` call per brief, and that is this script's
+      entire spend. ``gate_drafts`` is pure Vidyut and costs nothing.
+    * **TTS** — this script renders no audio (``--render`` is a stub); that is
+      a downstream ``scripts.render_sarvam`` step. The figure is carried here
+      so the cost of a *usable* scenario set is visible in one place.
+    """
     n_briefs = len(briefs)
     n_turns_total = sum(b.get("n_turns", 8) for b in briefs)
-    # Each brief is drafted twice (with_dual=False and with_dual=True for dual-capable)
     n_dual_briefs = sum(1 for b in briefs if "DU" in " ".join(b.get("target_features", [])))
-    n_llm_calls = n_briefs * 2  # one draft pass, one gate pass
-    # Rough TTS estimate: ~50 chars per turn (Sanskrit + gloss)
-    est_tts_chars = n_turns_total * 50
+    n_llm_calls = n_briefs  # one draft call each; dual routes to Gemini, still one call
+    est_tts_chars = n_turns_total * CHARS_PER_TURN
     return {
         "n_briefs": n_briefs,
         "n_turns_total": n_turns_total,
@@ -60,19 +78,25 @@ def _print_estimate(estimates: dict) -> None:
     print("=" * 60)
     print(f"  Briefs:            {estimates['n_briefs']}")
     print(f"  Total turns:       {estimates['n_turns_total']}")
-    print(f"  Dual briefs:       {estimates['n_dual_briefs']}")
-    print(f"  Estimated LLM calls: {estimates['n_llm_calls']}")
-    print(f"  Estimated TTS chars: {estimates['est_tts_chars']}")
-    print(f"  Estimated LLM cost:  ₹{estimates['est_cost_llm_rs']}")
-    print(f"  Estimated TTS cost:  ₹{estimates['est_cost_tts_rs']}")
-    print(f"  Estimated TOTAL:     ₹{estimates['est_total_rs']}")
+    print(f"  Dual briefs:       {estimates['n_dual_briefs']}  (routed to Gemini)")
+    print("-" * 60)
+    print("  THIS SCRIPT SPENDS:")
+    print(f"    LLM calls:       {estimates['n_llm_calls']}  (1 draft/brief; the Vidyut gate is free)")
+    print(f"    LLM cost:        ₹{estimates['est_cost_llm_rs']}")
+    print("-" * 60)
+    print("  DOWNSTREAM RENDER (scripts.render_sarvam — NOT run by this script):")
+    print(f"    TTS chars:       ~{estimates['est_tts_chars']}  (~{CHARS_PER_TURN}/turn, estimated)")
+    print(f"    TTS cost:        ~₹{estimates['est_cost_tts_rs']}  (₹30/10K chars)")
+    print("-" * 60)
+    print(f"  FULL COST OF A PLAYABLE SCENARIO SET: ~₹{estimates['est_total_rs']}")
     print("=" * 60)
     print("  This is a DRY RUN — no network calls, no changes.")
-    print("  Pass --live to execute, --render to also pre-render audio.")
+    print("  Pass --live to author. NOTE: --render is a stub and renders")
+    print("  nothing; use scripts.render_sarvam for audio.")
     print("=" * 60)
 
 
-async def _run_brief(brief: dict, render: bool = False) -> dict:
+async def _run_brief(brief: dict, render: bool = False, replace: bool = False) -> dict:
     """Author a single brief and return the result."""
     from app.services.authoring import run_authoring
 
@@ -88,7 +112,7 @@ async def _run_brief(brief: dict, render: bool = False) -> dict:
             n_turns=n_turns,
             with_dual=has_dual,
             dry_run=False,
-            replace=False,
+            replace=replace,
             db=db,
         )
     except Exception as e:
@@ -107,6 +131,7 @@ async def _run_batch(
     briefs: list[dict],
     render: bool = False,
     limit: int = 0,
+    replace: bool = False,
 ) -> list[dict]:
     """Run a batch of briefs sequentially (API calls, not parallel)."""
     if limit > 0:
@@ -114,7 +139,7 @@ async def _run_batch(
     results = []
     for brief in briefs:
         logger.info("Authoring: %s (%s)", brief.get("slug", "?"), brief.get("title", "?"))
-        result = await _run_brief(brief, render=render)
+        result = await _run_brief(brief, render=render, replace=replace)
         result["slug"] = brief.get("slug", "?")
         results.append(result)
 
@@ -234,7 +259,9 @@ def main():
         sys.exit(1)
 
     init_db()
-    results = asyncio.run(_run_batch(briefs, render=args.render, limit=args.limit))
+    results = asyncio.run(_run_batch(
+        briefs, render=args.render, limit=args.limit, replace=args.replace
+    ))
     _print_summary(results)
 
     return results

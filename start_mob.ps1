@@ -96,9 +96,13 @@ try {
 }
 catch { }
 
+# Run FROM backend/, not from $root with --app-dir. Settings resolve relative
+# paths against the CWD, so launching at the repo root pointed db_path="app.db"
+# at a second, stale D:\Projects\Shabdpp.db that then drifted 7 migrations
+# behind while holding a file lock. CWD is the schema you get.
 $backendProcess = Start-Process -FilePath $pythonExe `
-    -ArgumentList "-m", "uvicorn", "app.main:app", "--app-dir", "backend", "--port", "$Port", "--host", "0.0.0.0", "--reload" `
-    -WindowStyle Hidden -PassThru -WorkingDirectory $root
+    -ArgumentList "-m", "uvicorn", "app.main:app", "--port", "$Port", "--host", "0.0.0.0", "--reload" `
+    -WindowStyle Hidden -PassThru -WorkingDirectory (Join-Path $root "backend")
 
 Write-Host " [OK] Backend is running in the background." -ForegroundColor Green
 Start-Sleep -Seconds 2

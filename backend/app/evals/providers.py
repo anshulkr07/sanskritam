@@ -167,6 +167,27 @@ REGISTRY: dict[str, ProviderSpec] = {
 
 # ─── Base provider ───
 
+def _key_from_settings(env_key: str) -> str:
+    """Fall back to pydantic-settings for a provider API key.
+
+    ``.env`` is read by pydantic-settings into the settings object and is
+    never exported to ``os.environ``, so an env-only lookup finds nothing in
+    normal operation: every provider reports ``configured=False``. Callers
+    that fail closed by design — ``explainer`` degrading to the authored
+    gloss, ``edge_router`` falling through to the escape path — then degrade
+    permanently and invisibly, and an authoring batch reports a 0% gate pass
+    rate that is really "no key".
+
+    pydantic-settings runs with ``env_prefix=""``, so the lowercased env var
+    name is the settings field name.
+    """
+    try:
+        from app.config import settings  # local import: no cycle at module load
+    except Exception:
+        return ""
+    return str(getattr(settings, env_key.lower(), "") or "")
+
+
 class Provider:
     """OpenAI-chat-completions-shaped provider."""
 
@@ -175,7 +196,8 @@ class Provider:
         self.name = name
         self.spec = spec
         self.model = model or spec.default_model
-        self._api_key = api_key or os.environ.get(spec.env_key, "")
+        self._api_key = (api_key or os.environ.get(spec.env_key, "")
+                         or _key_from_settings(spec.env_key))
         self._timeout = timeout
         self._http: Optional[httpx.AsyncClient] = None
 

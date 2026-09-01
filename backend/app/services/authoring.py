@@ -59,7 +59,12 @@ logger = logging.getLogger("shabd.authoring")
 CONVERSATIONS_MODEL = "sarvam-105b-conversations"
 """The drafting model (§4.3). Never the reasoning variant `sarvam-105b`."""
 
-DUAL_MODEL = "gemini"
+# Gemini, reached through OpenRouter (owner decision 2026-09-01 — one key we
+# already hold instead of a second vendor account). Pinned to 2.5-flash: that
+# is the model the §4.3 evals actually measured for dual-number accuracy.
+# OpenRouter also serves 3.x flash; upgrading is a one-line change and wants
+# a re-run of the dual eval, not an assumption.
+DUAL_MODEL = "openrouter:google/gemini-2.5-flash"
 """Router for dual-bearing content: Sarvam false-accuses ~50% of duals."""
 
 _DEFAULT_RATIO_BAND = {"min": 0.2, "max": 0.5}
@@ -153,7 +158,10 @@ Return ONLY a JSON array of exactly {n} turn objects. No prose, no markdown fenc
 - "iast": str — IAST transliteration of the tutor turn
 - "gloss_en": str — English gloss of the tutor turn
 - "expected_learner_sanskrit": str — the LEARNER's expected reply in correct, natural Sanskrit, in Devanagari script
-- "features": list[str] — feature ids that actually occur in expected_learner_sanskrit (e.g. "ACC.SG", "PRES.1SG", "NOM.DU"). Never list a feature that is not morphologically present in that sentence.
+- "features": list[str] — feature ids that actually occur in expected_learner_sanskrit. Use ONLY the allowed ids listed below; never invent or alter one.
+
+Allowed feature ids (CLOSED SET): {target_features}
+Never introduce a feature id that is not in this closed set — even if it looks like a valid Sanskrit label. Every id in "features" must be present in the closed set AND morphologically present in expected_learner_sanskrit.
 
 Rules:
 - Register: {register}. Topic: {topic}. Sentence length: short (3-7 words).
@@ -170,17 +178,44 @@ _NO_DUAL_RULE = "Do NOT use dual-number forms — singular/plural only.\n"
 
 
 def _extract_json_array(text: str) -> list[dict]:
-    """Pry a JSON array out of a model response (fences, prose, trailing junk)."""
+    """Pry a JSON array of turns out of a model response.
+
+    The model is asked for an array but intermittently returns a single bare
+    turn object — measured at 3 of 5 briefs against sarvam-105b-conversations
+    on 2026-09-01. The previous bracket-scan then found the *inner* "features"
+    array, normalized zero dicts out of its strings, and returned ``[]``. That
+    read downstream as "this brief produced nothing" with no error to act on,
+    so a malformed draft was indistinguishable from an empty one.
+
+    Two rules follow: parse the whole body first (``json_mode=True`` means it
+    should be valid JSON), and never return an empty list from a non-empty
+    parse — raise, so the caller can retry or report.
+    """
     t = text.strip()
     t = re.sub(r"^```[a-zA-Z]*\s*", "", t)
     t = re.sub(r"\s*```$", "", t)
-    start, end = t.find("["), t.rfind("]")
-    if start == -1 or end <= start:
-        raise AuthoringProviderError("draft response contained no JSON array")
+
     try:
-        data = json.loads(t[start : end + 1])
-    except ValueError as e:
-        raise AuthoringProviderError(f"draft response was not valid JSON: {e}") from e
+        data = json.loads(t)
+    except ValueError:
+        # Prose or trailing junk around the JSON — fall back to a bracket scan.
+        start, end = t.find("["), t.rfind("]")
+        if start == -1 or end <= start:
+            raise AuthoringProviderError("draft response contained no JSON array")
+        try:
+            data = json.loads(t[start : end + 1])
+        except ValueError as e:
+            raise AuthoringProviderError(f"draft response was not valid JSON: {e}") from e
+
+    if isinstance(data, dict):
+        # The model intermittently wraps the array: {"turns": [ ... ]}. Unwrap
+        # any single list-valued wrapper key first; otherwise treat the dict as
+        # one bare turn object (the other measured failure mode).
+        list_vals = [v for v in data.values() if isinstance(v, list)]
+        if len(list_vals) == 1 and list_vals[0]:
+            data = list_vals[0]
+        else:
+            data = [data]
     if not isinstance(data, list):
         raise AuthoringProviderError("draft response JSON was not an array")
     normalized: list[dict] = []
@@ -198,7 +233,12 @@ def _extract_json_array(text: str) -> list[dict]:
                 "features": [str(f) for f in (item.get("features") or [])],
             }
         )
-    return [d for d in normalized if d["expected_learner_sanskrit"]]
+    usable = [d for d in normalized if d["expected_learner_sanskrit"]]
+    if data and not usable:
+        raise AuthoringProviderError(
+            f"draft response parsed to {len(data)} item(s), none of them usable turns"
+        )
+    return usable
 
 
 async def draft_turns(
@@ -230,8 +270,19 @@ async def draft_turns(
         provider = build_provider(f"sarvam:{CONVERSATIONS_MODEL}")
 
     band = _normalize_ratio_band(scenario_brief.get("ratio_band"))
+    # P6-3: every brief carries target_features (the band's closed set) but the
+    # prompt was never given them — so the model guessed at the feature
+    # vocabulary from two examples and invented labels (PRES.1SG.ACT, ADJ.SG,
+    # COP.PRES.1SG…). Feed the closed set in explicitly. Fall back to the test
+    # brief's sample_features so the unit brief stays self-contained.
+    target_features = (
+        scenario_brief.get("target_features")
+        or scenario_brief.get("sample_features")
+        or []
+    )
     system = _DRAFT_SYSTEM_PROMPT.format(
         n=max(1, int(n_turns)),
+        target_features=", ".join(str(f) for f in target_features) or "(none — derive freely)",
         register=scenario_brief.get("register", "laukika"),
         topic=scenario_brief.get("topic", "everyday conversation"),
         ratio_min=band["min"],
@@ -242,17 +293,47 @@ async def draft_turns(
     user = (
         "Draft a short laukika dialogue for a beginner. "
         f"Title: {scenario_brief.get('title', 'untitled')}. "
-        f"Sample features to exercise: {scenario_brief.get('sample_features', [])}.\n"
+        f"Sample features to exercise: {scenario_brief.get('sample_features', target_features)}.\n"
         f'Return {max(1, int(n_turns))} turns as a JSON array.'
     )
 
-    resp: LLMResponse = await provider.complete(system, user, json_mode=True, max_tokens=2048)
-    if not resp.ok:
-        raise AuthoringProviderError(
-            f"draft failed on {provider.label}: {resp.error or 'empty response'}"
+    async def _call_once() -> list[dict]:
+        resp: LLMResponse = await provider.complete(
+            system, user, json_mode=True, max_tokens=2048
         )
+        if not resp.ok:
+            raise AuthoringProviderError(
+                f"draft failed on {provider.label}: {resp.error or 'empty response'}"
+            )
+        return _extract_json_array(resp.text)
 
-    drafts = _extract_json_array(resp.text)
+    # P6-3: the model intermittently returns 1 turn instead of the requested n
+    # (~60%, measured 2026-09-01 — that sample came from the *same* conversation
+    # model over a 5-brief run), and on the live re-run also wrapped the array in
+    # {"turns":[...]} or emitted an unusable single object. Make up to two
+    # attempts and keep the fullest usable result. A second draft call (₹0.0055)
+    # is cheap against wasting a whole brief; the partial reply is rarely better
+    # than a fresh attempt. Only if both attempts yield nothing do we surface an
+    # error, so a too-short result is still usable rather than silently dropped.
+    target = max(1, int(n_turns))
+    drafts: list[dict] = []
+    attempts = 0
+    while attempts < 2 and len(drafts) < target:
+        attempts += 1
+        try:
+            candidate = await _call_once()
+        except AuthoringProviderError:
+            # A malformed/unusable reply (e.g. an empty learner sentence) is as
+            # much a "not enough turns" signal as a short one — retry.
+            if attempts >= 2:
+                break
+            continue
+        if len(candidate) > len(drafts):
+            drafts = candidate
+    if not drafts:
+        raise AuthoringProviderError(
+            f"draft produced no usable turns after {attempts} attempt(s)"
+        )
     if cache:
         _cache_store(scenario_brief, n_turns, with_dual, drafts)
     return drafts
@@ -296,16 +377,31 @@ def _missing_claimed_features(claimed: list[str], parses: list[dict]) -> list[st
     return missing
 
 
-async def gate_drafts(drafts: list[dict]) -> list[dict]:
+async def gate_drafts(
+    drafts: list[dict],
+    target_features: Optional[list[str]] = None,
+) -> list[dict]:
     """Gate every draft through the Vidyut-backed analyzer.
 
     For each turn: analyze ``expected_learner_sanskrit``; it must be fully
     confident; build accepted parses from the derived readings; cross-check
     that the draft's claimed features are a subset of the derived values.
 
+    ``target_features`` is the brief's closed feature set (P6-3). When given,
+    a *non-derivable* claimed feature that is also absent from the closed set
+    is reported as a **label error** (``claimed features outside the allowed
+    set``) rather than as a grammar failure (``claimed features not
+    derivable``). The distinction matters: the first means the model mis-named
+    a feature (``PRES.1SG.ACT``, ``ADJ.SG``…), the second means the Sanskrit
+    itself is wrong. The two demand different responses and were previously
+    conflated. A claimed feature is never rejected for being off-band on its
+    own — if the sentence derives it, it passes the gate; the closed set only
+    classifies failures, it does not create them.
+
     Returns ``[{**draft, gate: "pass"|"fail", accepted_parses, derived_parses,
     reason}]`` — ``derived_parses`` is non-empty exactly on pass.
     """
+    closed = {str(f).strip() for f in (target_features or []) if str(f).strip()}
     gated: list[dict] = []
     for draft in drafts:
         text = str(draft.get("expected_learner_sanskrit", "")).strip()
@@ -332,6 +428,18 @@ async def gate_drafts(drafts: list[dict]) -> list[dict]:
         derived_parses = feature_set_variants(results) or [feature_set_from_results(results)]
         missing = _missing_claimed_features(draft.get("features"), derived_parses)
         if missing:
+            # Classify: a claimed feature that is not derivable AND not in the
+            # brief's closed set is a label error (the model invented a feature
+            # id); one that IS in the closed set but still failed to derive is a
+            # genuine grammar failure in the Sanskrit itself. (P6-3)
+            if closed:
+                outside = sorted(m for m in missing if m not in closed)
+                if outside:
+                    gated.append({
+                        **draft, "gate": "fail", "accepted_parses": [], "derived_parses": [],
+                        "reason": f"claimed features outside the allowed set: {outside}",
+                    })
+                    continue
             gated.append({
                 **draft, "gate": "fail", "accepted_parses": [], "derived_parses": [],
                 "reason": f"claimed features not derivable: {sorted(missing)}",
@@ -498,7 +606,10 @@ async def run_authoring(
     session = db or SessionLocal()
     try:
         drafts = await draft_turns(brief, n_turns, with_dual=with_dual)
-        gated = await gate_drafts(drafts)
+        gated = await gate_drafts(
+            drafts,
+            target_features=brief.get("target_features"),
+        )
 
         failures = [
             {"index": i, "devanagari": g.get("devanagari", ""),

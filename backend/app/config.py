@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: str = "*"
     sarvam_api_key: str = ""  # Sarvam AI API subscription key (TTS/STT)
+    # OpenRouter — carries the Gemini route for dual-number content (§2.6:
+    # Sarvam false-accuses ~50% of dual-bearing sentences, so duals must not
+    # go to Sarvam). Owner chose OpenRouter over a direct Gemini key,
+    # 2026-09-01.
+    openrouter_api_key: str = ""
     # LLM edge-router for conversation bridge turns. Classifies each learner
     # utterance at a bridge node to one of the node's outgoing edges (or none).
     # Strictly Sarvam conversational (the reasoning variant is banned from

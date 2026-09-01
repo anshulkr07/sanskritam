@@ -15,6 +15,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+# Windows consoles default to cp1252, which cannot encode ₹ (U+20B9): the
+# estimate tracebacks halfway through printing. Force UTF-8 on stdout.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 from app.config import settings
 from app.db import init_db, SessionLocal
 from app.models import Challenge, Feature
