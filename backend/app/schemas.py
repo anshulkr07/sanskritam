@@ -18,6 +18,12 @@ class DevLoginResponse(BaseModel):
     learner: dict[str, Any]
 
 
+class AnonLoginRequest(BaseModel):
+    install_id: str = Field(..., min_length=16, max_length=64)
+    bridge_langs: list[str] = Field(default=["en", "hi"])
+    display_name: Optional[str] = None
+
+
 # ─── Learner ───
 
 class LearnerProfile(BaseModel):

@@ -344,6 +344,12 @@ export const api = {
       body: JSON.stringify({ display_name: displayName, bridge_langs: bridgeLangs }),
     }),
 
+  anonLogin: (installId: string, bridgeLangs: BridgeLangs = ["en", "hi"]) =>
+    request<DevLoginResponse>("/auth/anonymous", {
+      method: "POST",
+      body: JSON.stringify({ install_id: installId, bridge_langs: bridgeLangs }),
+    }),
+
   me: () => request<MeResponse>("/me", {}, true),
 
   updateRatio: (body: { sanskrit_ratio?: number; script_ratio?: number }) =>

@@ -1,4 +1,6 @@
-"""Auth router: dev-login endpoint."""
+"""Auth router: dev-login and anonymous login endpoints."""
+
+from typing import Optional
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -6,7 +8,7 @@ from sqlalchemy.orm import Session
 from app.auth import create_token
 from app.db import get_db
 from app.models import Learner
-from app.schemas import DevLoginRequest, DevLoginResponse
+from app.schemas import AnonLoginRequest, DevLoginRequest, DevLoginResponse
 
 router = APIRouter()
 
@@ -29,6 +31,43 @@ async def dev_login(req: DevLoginRequest, db: Session = Depends(get_db)):
         learner = Learner(
             display_name=req.display_name,
             bridge_langs=req.bridge_langs,
+        )
+        db.add(learner)
+        db.commit()
+        db.refresh(learner)
+
+    token = create_token(learner.id, db)
+    return DevLoginResponse(
+        token=token.id,
+        learner={
+            "id": learner.id,
+            "display_name": learner.display_name,
+            "bridge_langs": learner.bridge_langs,
+            "sanskrit_ratio": learner.sanskrit_ratio,
+            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
+            "script_ratio": learner.script_ratio,
+            "feature_mastery": learner.feature_mastery or {},
+            "streak": learner.streak or 0,
+            "voice_minutes_used": learner.voice_minutes_used or 0.0,
+        },
+    )
+
+
+@router.post("/auth/anonymous", response_model=DevLoginResponse)
+async def anon_login(req: AnonLoginRequest, db: Session = Depends(get_db)):
+    """Anonymous login by device install_id — idempotent.
+
+    Same ``install_id`` returns the same learner with a fresh token.
+    Different ``install_id`` always creates a new learner.
+    """
+    existing = db.query(Learner).filter(Learner.install_id == req.install_id).first()
+    if existing:
+        learner = existing
+    else:
+        learner = Learner(
+            display_name=req.display_name or f"Learner_{req.install_id[:8]}",
+            bridge_langs=req.bridge_langs,
+            install_id=req.install_id,
         )
         db.add(learner)
         db.commit()

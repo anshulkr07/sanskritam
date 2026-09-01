@@ -16,7 +16,32 @@ import { api, setAuthToken, type LearnerProfile } from "../api/client";
 
 const TOKEN_KEY = "shabd.token";
 const NAME_KEY = "shabd.displayName";
+const INSTALL_ID_KEY = "shabd.installId";
 const BRIDGE_KEY = "shabd.bridgeLangs";
+
+/** Generate a UUIDv4 — used for install ID. */
+function uuidv4(): string {
+  // @ts-ignore: crypto is available in React Native
+  const crypto = globalThis.crypto;
+  if (crypto?.randomUUID) {
+    return crypto.randomUUID();
+  }
+  // Fallback for environments without crypto.randomUUID
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+  });
+}
+
+/** Get or create the device install ID. */
+async function getInstallId(): Promise<string> {
+  let id = await AsyncStorage.getItem(INSTALL_ID_KEY);
+  if (!id) {
+    id = uuidv4();
+    await AsyncStorage.setItem(INSTALL_ID_KEY, id);
+  }
+  return id;
+}
 
 interface AuthState {
   token: string | null;
@@ -38,10 +63,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [displayName, setDisplayName] = useState("");
 
   const login = useCallback(async (name: string): Promise<LearnerProfile> => {
-    // Persist the chosen name so a re-login is one tap.
     await AsyncStorage.setItem(NAME_KEY, name);
     setDisplayName(name);
-    const res = await api.devLogin(name, ["en", "hi"]);
+    // Use anonymous auth with device install ID
+    const installId = await getInstallId();
+    const res = await api.anonLogin(installId, ["en", "hi"]);
     setAuthToken(res.token);
     setToken(res.token);
     const profile: LearnerProfile = {
@@ -59,8 +85,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return profile;
   }, []);
 
-  // Restore session on mount; if none, auto-login silently (no onboarding yet).
-  // Effect intentionally runs once on mount (login is stable via useCallback([])).
+  // Restore session on mount; if none, auto-login silently with device identity.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     (async () => {
@@ -79,8 +104,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setToken(null);
           }
         }
-        // No usable token → silently log in as the default learner so the app
-        // is immediately usable. A future onboarding screen replaces this.
+        // No usable token → silently log in with device install ID.
         const currentTok = await AsyncStorage.getItem(TOKEN_KEY);
         if (!currentTok) {
           await login(DEFAULT_LEARNER_NAME);

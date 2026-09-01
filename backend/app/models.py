@@ -53,6 +53,8 @@ class Learner(Base):
     id = Column(String(64), primary_key=True, default=_uuid)
     display_name = Column(String(128), nullable=False)
     bridge_langs = Column(JSON, default=list)  # ["en", "hi"]
+    install_id = Column(String(64), unique=True, nullable=True, index=True)  # device fingerprint for anonymous auth
+    deleted_at = Column(DateTime, nullable=True)  # soft-delete marker (replaced by hard-delete in P1-3, kept for migration compat)
     # Effective ratio the system uses (drifts within the user's ceiling)
     sanskrit_ratio = Column(Float, default=0.3)
     # The USER's setting — ceiling for system drift. Owned exclusively by PATCH /me.
