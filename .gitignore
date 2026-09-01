@@ -33,3 +33,12 @@ backend/evals-out/
 # Speech bench artifacts (specs/speech-bench.md — offline tools write here)
 results/
 backend/.authoring-cache/
+
+# debug + scratch output
+backend/*.txt
+!backend/requirements*.txt
+backend/*.json
+backend/fix.py
+backend/test_sarvam*.py
+backend/test_eval_sarvam.py
+backend/debug_empty.py
