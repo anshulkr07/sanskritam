@@ -13,8 +13,8 @@ from app.config import settings
 _MIGRATIONS_DIR = Path(__file__).resolve().parent.parent / "migrations"
 
 engine = create_engine(
-    f"sqlite:///{settings.db_path}",
-    connect_args={"check_same_thread": False},
+    settings.database_url if settings.database_url else f"sqlite:///{settings.db_path}",
+    connect_args={"check_same_thread": False} if not settings.database_url else {},
     echo=False,
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -97,7 +97,7 @@ def init_db() -> None:
 
     cfg = alembic_config.Config()
     cfg.set_main_option("script_location", str(_MIGRATIONS_DIR))
-    cfg.set_main_option("sqlalchemy.url", f"sqlite:///{settings.db_path}")
+    cfg.set_main_option("sqlalchemy.url", settings.database_url if settings.database_url else f"sqlite:///{settings.db_path}")
     alembic_command.upgrade(cfg, "head")
 
     drift = _schema_drift()

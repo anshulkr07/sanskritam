@@ -6,6 +6,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     port: int = 8000
     db_path: str = "app.db"
+    database_url: str = ""  # e.g. "postgresql://user:pass@host/db" — empty = use db_path (SQLite)
     admin_token: str = "dev-admin"
     analyzer: str = "vidyut"  # "rule" | "vidyut" — vidyut default, graceful fallback to rule if unavailable
     vidyut_data_dir: str = ""  # empty -> backend/vidyut-data (auto-downloaded on first use)

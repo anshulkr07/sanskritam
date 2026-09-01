@@ -142,3 +142,23 @@ def test_streak_default_is_zero_for_new_learner(client):
     headers, lid = _login(client, "streak-zero")
     r = client.get("/progress/streak", headers=headers)
     assert r.json()["streak"] == 0
+
+
+# ─── P5: Storage abstraction ──────────────────────────
+
+def test_storage_store_and_exists(tmp_path):
+    from app.services.storage import LocalStorage, content_hash
+    s = LocalStorage(base_dir=str(tmp_path / "audio"))
+    data = b"fake-wav-data"
+    path = "test/recording.wav"
+    url = s.store(data, path)
+    assert s.exists(path)
+    assert data == (tmp_path / "audio" / path).read_bytes()
+
+
+def test_content_hash_produces_deterministic_output():
+    from app.services.storage import content_hash
+    h1 = content_hash(b"same-data")
+    h2 = content_hash(b"same-data")
+    assert h1 == h2
+    assert len(h1) == 32

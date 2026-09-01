@@ -7,3 +7,5 @@ vidyut==0.4.0
 httpx>=0.27
 python-multipart>=0.0.9
 pytest>=8.0
+# Postgres driver (optional — used when database_url is configured)
+psycopg[binary]>=3.1
