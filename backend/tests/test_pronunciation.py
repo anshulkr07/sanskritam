@@ -118,3 +118,80 @@ def test_near_miss_returns_incorrect_verdict():
     assert result["verdict"] == "incorrect"
     result = score_pronunciation("श", "ष")
     assert result["verdict"] == "incorrect"
+
+
+# ─── P3-3: Endpoint tests ─────────────────────────────
+
+def test_pronunciation_attempt_requires_auth(client):
+    """POST /pronunciation/attempt returns 401 without auth."""
+    r = client.post("/pronunciation/attempt")
+    assert r.status_code == 401
+
+
+def test_pronunciation_attempt_requires_audio(client):
+    """POST /pronunciation/attempt without audio returns 422."""
+    h = {"Authorization": "Bearer " + client.post(
+        "/auth/dev-login", json={"display_name": "pron-test", "bridge_langs": ["en"]}
+    ).json()["token"]}
+    r = client.post("/pronunciation/attempt", data={"target": "क"}, headers=h)
+    assert r.status_code == 422
+
+
+def test_pronunciation_attempt_empty_audio_returns_400(client, monkeypatch):
+    """POST /pronunciation/attempt with empty audio returns 400."""
+    from unittest.mock import AsyncMock
+    monkeypatch.setattr("app.routers.pronunciation.get_sarvam_client", lambda: AsyncMock())
+    h = {"Authorization": "Bearer " + client.post(
+        "/auth/dev-login", json={"display_name": "pron-test2", "bridge_langs": ["en"]}
+    ).json()["token"]}
+    r = client.post(
+        "/pronunciation/attempt",
+        data={"target": "क", "target_iast": "ka"},
+        files={"file": ("empty.wav", b"", "audio/wav")},
+        headers=h,
+    )
+    assert r.status_code == 400
+
+
+def test_pronunciation_attempt_unsure_does_not_change_streak(client, monkeypatch):
+    """unsure verdict returns streak_changed=False."""
+    from unittest.mock import AsyncMock
+    mock_client = AsyncMock()
+    mock_client.speech_to_text.return_value = {"transcript": "", "language_code": "sa-IN"}
+    monkeypatch.setattr("app.routers.pronunciation.get_sarvam_client", lambda: mock_client)
+
+    h = {"Authorization": "Bearer " + client.post(
+        "/auth/dev-login", json={"display_name": "pron-test3", "bridge_langs": ["en"]}
+    ).json()["token"]}
+    r = client.post(
+        "/pronunciation/attempt",
+        data={"target": "क", "target_iast": "ka"},
+        files={"file": ("test.wav", b"\x00\x00" * 8000, "audio/wav")},
+        headers=h,
+    )
+    assert r.status_code == 200, f"Expected 200, got {r.status_code}: {r.text}"
+    body = r.json()
+    assert body["streak_changed"] is False, "unsure should not change streak"
+    assert body["abstained"] is True
+
+
+def test_pronunciation_attempt_correct_returns_streak_changed(client, monkeypatch):
+    """correct verdict returns streak_changed=True."""
+    from unittest.mock import AsyncMock
+    mock_client = AsyncMock()
+    mock_client.speech_to_text.return_value = {"transcript": "क", "language_code": "sa-IN"}
+    monkeypatch.setattr("app.routers.pronunciation.get_sarvam_client", lambda: mock_client)
+
+    h = {"Authorization": "Bearer " + client.post(
+        "/auth/dev-login", json={"display_name": "pron-test4", "bridge_langs": ["en"]}
+    ).json()["token"]}
+    r = client.post(
+        "/pronunciation/attempt",
+        data={"target": "क", "target_iast": "ka"},
+        files={"file": ("test.wav", b"\x00\x00" * 8000, "audio/wav")},
+        headers=h,
+    )
+    assert r.status_code == 200, f"Expected 200, got {r.status_code}: {r.text}"
+    body = r.json()
+    assert body["streak_changed"] is True
+    assert body["verdict"] == "correct"
