@@ -6,11 +6,36 @@
 This doc covers the client. They are independent — UI tasks below do not block
 on P2–P5, and vice versa.
 
-**Decisions locked by the owner before this doc was written:**
+**Decisions locked by the owner:**
 
 1. **React Native, not Flutter.** The 3,824 LOC of working screens stay.
 2. **Custom dev build, not Expo Go.** Native modules are now permitted.
-3. **The guru mascot gets rebuilt as a rigged vector character.**
+3. **The guru mascot gets rebuilt as a rigged character — in Rive**, using
+   mesh-on-raster so the painted art survives (§6.4).
+4. **The Rive MCP server is used to author the rig**, so this does not block on
+   hiring an animator. Owner sets it up in U1-0.
+
+---
+
+## Ownership — read this first
+
+Work on this document is **split between two agents.** Stay inside your lane.
+
+| Phase | Owner |
+|---|---|
+| **U1 — the mascot (the Rive file)** | **Claude**, via the Rive MCP |
+| U0, U2, U3, U4, U5, U6 | **DeepSeek / Hermes** |
+
+**If you are DeepSeek: do not touch the Rive file, and do not build a mascot
+renderer.** U1-3 (`mobile/src/components/guru/rig.ts`) and U1-4 (the
+integration) are the seam. Claude delivers `mobile/assets/avatar/guru.riv` plus
+a `GuruRive.tsx` that already conforms to the `GuruRig` contract in U1-3.
+`TutorAvatar` and `TutorFull` keep their current props throughout, so every
+screen you build against them works before and after the mascot lands.
+**Nothing in U0 or U2–U6 blocks on U1.**
+
+Everything else in this document is yours, including all of §3's invariants —
+they apply to every phase, not just the ones you own.
 
 ---
 
@@ -211,12 +236,16 @@ npm install @rive-app/react-native
 
 | Library | Used for | Introduced in |
 |---|---|---|
-| `react-native-svg` | Vector mascot (stage 1), icons, articulation diagrams, stroke-order paths | U0-2 |
+| `react-native-svg` | The path curve, articulation diagrams, stroke-order paths, icons | U0-2 |
 | `react-native-gesture-handler` | Draggable word tiles, swipe, pull-to-refresh | U0-2 |
 | `@shopify/react-native-skia` | Confetti, particles, waveform, progress rings | U0-2 |
-| `lottie-react-native` | Designer-authored one-shots: badges, streak flame, empty states | U3 |
-| `@rive-app/react-native` | The rigged mascot (stage 2) | U1-4 |
+| `lottie-react-native` | One-shot decorative animation: badge reveals, streak flame, empty states | U3 |
+| `@rive-app/react-native` | **The rigged mascot** | U1-4 |
 | `expo-blur` | Modal scrims, frosted session header | U0-2 |
+
+Note `react-native-svg` is **not** the mascot renderer — Rive is (§6.4). SVG
+earns its place on the path curve and the articulation diagrams, and is the
+mascot's fallback only if U1-4 measures badly (U1-5).
 
 `react-native-reanimated@4.5.1` and `react-native-worklets@0.10.4` are already
 installed and correct. Do not change their versions.
@@ -263,7 +292,7 @@ gap — replace with `ReturnType<typeof setTimeout>`.
 | Phase | Theme | Tasks | Depends on |
 |---|---|---|---|
 | **U0** | Foundation — deps, dev build, motion tokens, kill legacy Animated | U0-1 … U0-5 | nothing |
-| **U1** | The mascot | U1-1 … U1-5 | U0 |
+| **U1** | The mascot — Rive rig | U1-0 … U1-7 | U0-2, U1-0 (owner) |
 | **U2** | Core loop feel — session shell, verdict, complete | U2-1 … U2-5 | U0 |
 | **U3** | Navigation & progress — the path, streak, leagues | U3-1 … U3-5 | U2 |
 | **U4** | The uniquely-Sanskrit surfaces | U4-1 … U4-5 | U1, U2 |
@@ -480,73 +509,347 @@ target network — this is the difference between a fast app and a broken one.
 
 # PHASE U1 — The mascot
 
-> This is the highest-impact phase in the document. Read §6 in full before
-> starting.
+> Highest-impact phase in the document. Read §6 in full before starting.
+>
+> **Revised 2026-09-01 after the owner corrected me: Rive has an official MCP
+> server.** An agent can drive the Rive desktop editor directly — creating
+> artboards, shapes, meshes, bones, animations, state machines, states,
+> transitions, and keyframes. This phase is therefore Rive-first, not
+> SVG-first, and U1-4 is no longer blocked on hiring an animator. See §6.4 for
+> the tool evaluation.
 
-## U1-1 · Extract the guru as layered SVG
+## U1-0 · Connect the Rive MCP server
 
-**Why:** A rigged character needs separately transformable parts. The current
-PNG is one flat layer. **This task is what makes every later mascot task
-possible**, and it is fully agent-buildable — no animator required.
+**Why:** Gate on everything in this phase.
 
-**Blocked by:** U0-2. **Effort:** L
+**Blocked by:** nothing. **Effort:** S. ⚠ **Owner action required — an agent
+cannot do this step.**
 
-**Touch:** create `mobile/src/components/guru/` (new directory)
+**Steps (owner)**
 
-**Steps**
-
-1. Trace the existing art at `mobile/assets/avatar/tutor-full.png` and
-   `tutor-portrait.png` into SVG paths, as **separate named layers**:
-
+1. Install the **Rive desktop editor** (Early Access build) — Windows and macOS
+   only. The MCP server is bundled inside it; there is no separate install.
+2. Enable the MCP server from within the editor. It listens on
+   `http://127.0.0.1:9791/mcp`.
+3. Connect Claude Code:
+   ```bash
+   claude mcp add --transport http rive http://127.0.0.1:9791/mcp
    ```
-   jata        — hair bun + locks (back layer)
-   halo        — optional glow ring (celebration only)
-   torso       — body + shoulders
-   drape       — saffron uttarīya
-   dhoti       — white lower garment (full-body only)
-   mala        — rudrākṣa beads
-   neck
-   head        — face base, ears
-   tilaka      — tripuṇḍra + bindu
-   brows       — L and R as separate paths
-   eyeWhiteL/R
-   irisL/R     — separately translatable for gaze
-   lidL/R      — for blinking
-   nose
-   beard       — moustache + beard as one path
-   mouth       — the only shape that changes for speech
-   armR        — raised hand / abhaya mudrā
-   armL        — holding the book
-   book        — संस्कृतम्
-   ```
+4. **The Rive editor must stay open** for the whole of U1-2/U1-3. The MCP
+   server dies with the app.
 
-2. Each layer is its own React component in `guru/layers/`, taking a `fill`
-   prop where the colour should come from `theme.ts`.
-3. **Colours come from `theme.ts` tokens**, not from the PNG's literal hex
-   values. Saffron drape uses `color.saffron`; skin, hair, and beard get new
-   named tokens added to `theme.ts` (`guruSkin`, `guruHair`, `guruDrape`,
-   `guruDhoti`, `guruMala`).
-4. Assemble in `guru/GuruVector.tsx` accepting `{ width, rig }` where `rig` is
-   the shared-value bundle from U1-2.
-5. Two compositions: `GuruPortrait` (head + shoulders, for the circular badge)
-   and `GuruFull` (whole figure).
+**Acceptance:** `mcp__rive__session_info` returns successfully.
 
-**Acceptance:** `<GuruFull width={220} />` renders and is visually recognisable
-as the source art side-by-side. `npx tsc --noEmit` clean.
+**Verified working 2026-09-01** — connected via
+`npx -y mcp-remote http://127.0.0.1:9791/mcp`, editor BETA 0.8.5673. The tool
+surface includes `mesh_rigging_tool` (generateMesh / bindBones / autoWeight),
+`animation_editor` (state machines, transitions, conditions, keyframes,
+`simulateStateMachine`), `upload_asset`, and `export_file`. Everything U1-2
+needs is exposed.
 
-**Do not:** trace at excessive path detail — every node costs render time on a
-low-end device. Simplify curves aggressively; this is a stylised character, not
-a photograph. Target under ~400 path nodes total.
+⚠ **`export_file` IS plan-gated on this workspace** — confirmed by test, not
+assumed. See the box at the top of U1-2: build free, upgrade only to export.
 
 ---
 
-## U1-2 · The rig: a shared-value bundle
+## U1-1 · Split the source art into layers
 
-**Why:** The rig is the *interface* between "what the app feels" and "how the
-character moves". Getting this contract right is what makes the later Rive swap
-(U1-4) a drop-in rather than a rewrite.
+**Why:** A rig needs separately transformable parts. The source art is one flat
+painted illustration. **This is the only step in the entire phase that an agent
+cannot do well**, because separating a limb means inpainting whatever was
+behind it.
 
-**Blocked by:** U1-1. **Effort:** M
+**Blocked by:** nothing (can run parallel with U0). **Effort:** M.
+**Owner installs Krita + krita-mcp (free); Claude then does the separation.**
+
+### The separation is smaller than it looks — two rules
+
+**1. Eyes and mouth are ADDED, not CUT.** A blink is not "cut the eye out and
+reconstruct the socket behind it" — it is "draw a lid shape over the eye and
+scale it down." The mouth is an overlay that covers the painted one. Additive
+layers need **zero inpainting**, and they cover most of the expression system.
+
+**2. Inpainting is only needed where a layer moves off what it covers**, and
+the area scales with motion range. `armR` rotating ~15° reveals a thin wedge of
+torso, not the whole arm's footprint. `armRaise` is one input of twelve — **v1
+may skip arm motion entirely** and lose very little.
+
+So the genuinely hard sub-problem (reconstructing occluded paint) reduces to
+two small wedges, and is deferrable.
+
+### Tooling — the free path (owner's choice, 2026-09-01)
+
+**Krita 5.2+** and **[SanSaSane/krita-mcp](https://github.com/SanSaSane/krita-mcp)**,
+31 tools. The two that make it viable:
+
+- `run_python` — arbitrary Python with full **libkis** access. A complete
+  escape hatch, so a missing tool never blocks the work.
+- `get_image` — renders the canvas back as a PNG, so the separation is done
+  with visual feedback rather than blind coordinate guessing.
+
+⚠ **Community project, not in Anthropic's MCP registry — unvetted, and
+`run_python` is arbitrary code execution against local files.** Review before
+installing.
+
+⚠ **No generative inpainting.** Krita has no Generative Fill. The two arm
+wedges get clone/smudge, which will read as adequate rather than invisible.
+The paid alternative is Photoshop + `photoshop-mcp`'s
+`photoshop_generative_fill`; not chosen, and not needed unless the arms
+disappoint.
+
+**Deliverable:** `icons/layers/` — **one transparent PNG per layer**, named
+exactly as below.
+
+⚠ **Not a PSD.** Verified against the live MCP on 2026-09-01: `upload_asset`
+accepts one png/jpeg/webp/svg/font/audio at a time and has **no PSD import**.
+It does accept an absolute local path on localhost, so files under
+`D:\Projects\Shabd\icons\layers\` upload directly with no base64 step.
+
+Layer files:
+
+```
+jata          hair bun + locks           (behind head)
+halo          empty layer, glow drawn in Rive
+torso         body + shoulders + neck
+drape         saffron uttarīya
+dhoti         white lower garment        (full-body only)
+mala          rudrākṣa beads
+armL          left arm + hand + book     (separate from torso)
+book          संस्कृतम् volume
+armR          right arm + abhaya hand    (separate from torso)
+head          face base + ears           (no features)
+beard         moustache + beard
+tilaka        tripuṇḍra + bindu
+brows         both brows
+eyeL / eyeR   white + iris, iris on its own sub-layer
+lidL / lidR   closed-lid shape for blinking
+nose
+mouth         neutral closed mouth
+```
+
+**Steps**
+
+1. Start from `icons/Adobe Express - file.png` (full body) and
+   `icons/b3dd0e00-...png` (portrait) — the higher-resolution originals, not
+   the downscaled copies in `mobile/assets/avatar/`.
+2. Behind each moving part, inpaint what it occludes: torso behind both arms,
+   face behind the beard, eye sockets behind the lids. Motion range is limited
+   by how much you inpaint — a few degrees of arm rotation needs only a small
+   patch.
+3. Keep layers at source resolution; Rive downsamples on export.
+
+**Do not:** flatten, crop, or recolour. Rive imports PSDs with layers
+preserved, which is the entire point of this step.
+
+**If no image editor is available:** ship a reduced rig — head, eyes, lids,
+brows, mouth, and torso only, with the arms baked into the torso. That still
+gets blinking, gaze, head turn, and speech, which is ~80% of the perceived
+life. Add arms later.
+
+---
+
+## U1-2 · Build the Rive rig
+
+**Why:** This is the character. Everything else in the phase is plumbing.
+
+**Blocked by:** U1-0, U1-1, **and two owner actions** (bone creation, step 3;
+plan upgrade at export, step 8). **Effort:** L. **Driven by the Rive MCP.**
+
+### What the MCP can and cannot do — tested live, 2026-09-01
+
+| Step | Tool | Status |
+|---|---|---|
+| Upload layer PNGs | `upload_asset` | ✅ works, plain local path |
+| Place on artboard | `assets_tool addImageInstance` | ✅ works |
+| Auto-trace a mesh | `mesh_rigging_tool generateMesh` | ✅ works — mind the density (step 2) |
+| **Create bones** | — | ❌ **no tool exists; owner does this by hand** |
+| Bind + auto-weight | `mesh_rigging_tool bindBones` / `autoWeight` | ✅ available once bones exist |
+| State machine, states, transitions, conditions, keyframes | `animation_editor` | ✅ full surface |
+| Headless verification | `animation_editor simulateStateMachine` | ✅ available |
+| **Export `.riv`** | `export_file` | ❌ **plan-gated — see box above** |
+
+Everything between "bones exist" and "ready to export" is fully automatable.
+The two gaps are both short owner actions, not blockers.
+
+**Steps**
+
+### ⚠ Export is plan-gated on this workspace — tested 2026-09-01
+
+`export_file` with `format: "riv"` was refused:
+
+> `exportRiv is not available on this workspace's plan. Tell the user exporting
+> (.riv and .rev) requires a plan upgrade in Rive. Do not retry, and do not try
+> the other export format — both are gated on this workspace.`
+
+**This does not block U1-2.** Rive's plans (2026): Free $0, **Cadet $9/mo
+annual or $17/mo month-to-month** with unlimited `.riv` export, Voyager $32,
+Enterprise $120. Critically, Rive states there is **no runtime fee — exported
+files do not phone home and keep working forever, with or without an active
+subscription.**
+
+**So the sequence is: build the whole rig on the free plan, verify it with
+`simulateStateMachine`, and upgrade only at the moment of export.** One
+month-to-month cycle (~$17 / ~₹1,500) covers the export; the `.riv` is yours
+permanently afterwards. Budget a second month if U1-6 (festival skins) needs a
+re-export.
+
+**Do not** spend anything until the rig is built and simulating correctly. If
+the owner declines the upgrade, fall back to **U1-5 (SVG)** — every hour spent
+on U1-1 and U1-3 still counts, because the layer separation and the rig
+contract are renderer-agnostic.
+
+1. `upload_asset` each PNG from `icons/layers/`, then `assets_tool
+   addImageInstance` to place them on the artboard. Z-order per the layer list.
+   ✅ **Verified working** — `upload_asset` accepts a plain Windows absolute
+   path (`D:\...\tutor-portrait.png`); no data-URI or base64 step needed.
+2. **Mesh the deformable layers.** `mesh_rigging_tool generateMesh` with
+   `trace: true` (this is Auto Trace) on `head`, `drape`, `armR`, `armL`,
+   `jata`. Non-deforming layers (`book`, `tilaka`, `mala`, `nose`) do not need
+   a mesh — parent them to bones instead.
+
+   ✅ **Verified working, and the density parameters matter enormously.**
+   Measured on the real portrait art:
+
+   | `detail` | `subdivisions` | vertices | verdict |
+   |---|---|---|---|
+   | 0.5 | 3 | **1,919** | far too heavy — one layer alone blew a 187KB hierarchy dump |
+   | 0.3 | 1 | **121** | ✅ **use this as the starting point** |
+   | 0.12 | 0 | 31 | too coarse to deform smoothly |
+
+   **Budget: ~120 vertices per deformable layer, ~600 for the whole character.**
+   Default parameters will silently produce 15× that and tank frame rate on the
+   low-end Android devices this product targets.
+3. **Rig with nested groups and transforms — not bones.**
+
+   Each layer goes in a `group_editor` group, and expression is keyframed on
+   group transforms (`x` 13, `y` 14, `r` 15, `sx` 16, `sy` 17, `opacity` 18).
+   **This is fully automatable and requires nothing from the owner:**
+
+   | Expression | Mechanism | Bones? |
+   |---|---|---|
+   | blink | `sy` on `lid` group | no |
+   | mouthOpen | `sy` on `mouth` group | no |
+   | gazeX / gazeY | `x`/`y` on `iris` groups | no |
+   | browRaise | `y` on `brows` group | no |
+   | smile | `mouth` swap or `y` offset | no |
+   | armRaise | `r` on `armR` group about its pivot | no |
+   | headTurn | `x` + slight `sx` on `head` group | no |
+   | glow | `opacity` on `halo` | no |
+   | breathe / sway / hop | already on `guru_root` | no |
+
+   ⚠ **Bones cannot be created through the MCP.** Verified: `bindBones`
+   against a non-existent bone returns `"No bones found to bind"`, and nothing
+   in the 39-tool surface creates one — `component_editor` makes reusable
+   Components, `group_editor` makes Nodes, neither is a Bone. Rive's Luau
+   scripting is a *runtime* drawing API (`init`/`advance`/`draw`), not editor
+   automation, so it is not a way round this either. **Both checked, not
+   assumed.**
+
+   This does not block anything, because **bones buy polish, not
+   expression** — smooth cloth on the drape and a pseudo-3D head turn. See
+   **U1-7**, which is optional and owner-gated.
+
+   ⚠ **The gotcha that will cost you a day:** when several overlapping layers
+   bind to the *same* bones — an arm split into upper arm and forearm — they
+   must be auto-weighted in **one** `autoWeight` call using `targetIds`, so
+   they solve as a single surface. Weighting them in separate calls produces
+   mismatched weights at the overlap and **the artwork tears apart when the
+   joint bends.**
+4. Build **two artboards** sharing one state machine: `GuruPortrait` (head and
+   shoulders, for the circular conversation badge) and `GuruFull`.
+5. State machine `TutorSM` with exactly the inputs in §6.3. **Reuse the
+   defaults** — a new artboard already ships one timeline named `Timeline` and
+   one default state machine with Entry already wired. Rename that timeline to
+   your first state; only create additional ones after that. Never leave a
+   stale `Timeline` beside your named animations.
+6. Author the seven states in §6.2 as timelines with blended transitions —
+   `idle → speaking` must not pop.
+7. Verify with `animation_editor simulateStateMachine`, driving `state` 0→6 and
+   sweeping `mouthOpen`. This runs headless, so it catches a broken transition
+   before the app ever loads the file.
+8. Export to `mobile/assets/avatar/guru.riv`. **Budget: under 300KB.**
+
+**Acceptance:** `simulateStateMachine` shows all seven states reachable with no
+popping, every input visibly does something, and the exported `.riv` is on
+disk under 300KB.
+
+### Build state — what already exists in the Rive file
+
+Built and verified 2026-09-01 by Claude via MCP. **Rive file: `Try`,
+`fileId 2548203`, <https://editor.rive.app/file/try/2548203>.** Rename it to
+`Shabd Guru` in the editor — the MCP has no rename-file command.
+
+| Thing | Id | Status |
+|---|---|---|
+| Artboard `GuruPortrait` | `0-2` | ✅ 600×600, VM bound |
+| Artboard `GuruFull` | `0-2118` | ⬜ 600×900, empty — needs art + VM bind |
+| ViewModel `GuruInputs` | `0-14` | ✅ all 12 properties |
+| VM instance `GuruInputsDefault` | `0-2130` | ✅ bound to `GuruPortrait` |
+| State machine `TutorSM` | `0-7` | ✅ default SM, layer `0-8` |
+| Group `guru_root` | `0-2199` | ✅ ambient keyframes live here |
+| Image `guru_art` | `0-2198` | ⬜ placeholder flat PNG at 45% — replaced by layers in U1-1 |
+
+**ViewModel property ids** — the app binds to these by *name*, but the ids are
+needed for `createConditions`:
+
+```
+state 0-2094   mouthOpen 0-2096  headTurn 0-2098  gazeX 0-2100
+gazeY 0-2102   browRaise 0-2104  smile 0-2106     armRaise 0-2108
+glow  0-2110   intensity 0-2112  blink 0-2114 (trigger)
+celebrate 0-2116 (trigger)
+```
+
+**States and their `state` value**, all reached from Any State by an
+`equal` condition on `state`:
+
+| value | state | animation id | state id | transition id |
+|---|---|---|---|---|
+| 0 | `idle` | `0-6` | `0-12` | `0-2155` |
+| 1 | `speaking` | `0-2143` | `0-2149` | `0-2156` |
+| 2 | `thinking` | `0-2144` | `0-2150` | `0-2157` |
+| 3 | `listening` | `0-2145` | `0-2151` | `0-2158` |
+| 4 | `celebrating` | `0-2146` | `0-2152` | `0-2159` |
+| 5 | `encouraging` | `0-2147` | `0-2153` | `0-2160` |
+| 6 | `patient` | `0-2148` | `0-2154` | `0-2161` |
+
+**Architecture note — why Any State.** All seven transitions originate from Any
+State rather than being wired state-to-state. One `equal` condition each on
+`state` makes every state reachable from every other with 7 transitions
+instead of 42, and adding an eighth state later costs one transition.
+
+**Verified by simulation:** driving `state` 0→6 produced
+`transitionsObserved: 7` with every state entered in order; a
+`idle → celebrating → idle` round-trip also passes.
+
+**Keyframes so far** (all on `guru_root`, so they survive the U1-1 layer swap):
+- `idle` — breathe (`sy` 100→101.6→100) + sway (`r` −1.1→1.1→−1.1), 60f cubic loop
+- `celebrating` — hop (`y` 0→−22→0→−9→0) with a squash/stretch settle on `sx`/`sy`
+
+**Still empty:** `speaking`, `thinking`, `listening`, `encouraging`, `patient`
+have states and transitions but no keyframes — they need the separated layers
+from U1-1 before they can do anything beyond whole-figure transforms.
+
+### Property keys (Rive integer keys, for `modifyKeyFrames`)
+
+```
+x 13   y 14   r 15 (degrees)   sx 16   sy 17   opacity 18   (0-100 scale)
+```
+
+**Do not:** vector-trace the artwork into flat shapes. The art is *painted*;
+tracing it flat destroys the shading that makes it good. Rive's docs note
+vector gives more deformation control — that matters for a Duo-style flat
+character, and it is the wrong trade here. Mesh-on-raster is the correct
+technique for this art (§6.4).
+
+---
+
+## U1-3 · The app-side rig contract
+
+**Why:** The interface between "what the app feels" and "how the character
+moves". Defined independently of the renderer so U1-4 and U1-5 are
+interchangeable.
+
+**Blocked by:** U0-3. **Effort:** M
 
 **Touch:** create `mobile/src/components/guru/rig.ts`
 
@@ -570,7 +873,7 @@ export interface GuruRig {
 
 export function useGuruRig(): GuruRig;
 
-/** Drives the rig from a semantic state. This is the ONLY public entry point. */
+/** Drives the rig from a semantic state. The ONLY public entry point. */
 export function useGuruState(state: AvatarState, opts?: {
   speaking?: boolean;
   amplitude?: SharedValue<number>;  // live TTS level, when available
@@ -579,100 +882,123 @@ export function useGuruState(state: AvatarState, opts?: {
 
 **Steps**
 
-1. Ambient loops that run in every state: `breathe` (2600ms in/out, matches the
-   existing feel), `sway` (3400ms), and a **stochastic blink** — every
-   3–7 seconds, randomised, occasionally a double-blink. Random blink timing is
-   the single cheapest thing that makes a character feel alive.
-2. Per-state overrides — see the table in §6.2.
-3. `mouthOpen` when speaking: if a live amplitude signal exists, follow it;
-   otherwise drive a pseudo-random flutter at 6–9 Hz with varied aperture.
-   **Never a regular sine wave** — regular = puppet, irregular = speech.
-4. All ambient motion is gated on `useReducedMotion()`.
+1. Ambient loops in every state: `breathe` (2600ms, matching the existing
+   feel), `sway` (3400ms), and a **stochastic blink** — every 3–7 seconds,
+   randomised, occasionally a double-blink. Irregular blink timing is the
+   cheapest thing that makes a character feel alive.
+2. Per-state overrides per §6.2.
+3. `mouthOpen` while speaking: follow a live amplitude signal if one exists,
+   otherwise a pseudo-random flutter at 6–9 Hz with varied aperture.
+   **Never a regular sine wave** — regular reads as a puppet, irregular reads
+   as speech.
+4. All ambient motion gated on `useReducedMotion()`.
 
-**Acceptance:** a dev-only screen cycling all six states shows visibly distinct,
-smooth behaviour on a physical Android device.
-
-**Do not:** put any `setState` or JS-thread work in the animation path.
+**Do not:** put `setState` or any JS-thread work in the animation path.
 
 ---
 
-## U1-3 · Wire the rig into the app
+## U1-4 · Integrate Rive into the app
 
-**Blocked by:** U1-2. **Effort:** M
+**Blocked by:** U1-2, U1-3. **Effort:** M
 
-**Touch:** `mobile/src/components/TutorAvatar.tsx`,
-`mobile/src/components/TutorFull.tsx`
+**Touch:** `mobile/package.json`, `mobile/app.json`, create
+`mobile/src/components/guru/GuruRive.tsx`, edit `TutorAvatar.tsx`,
+`TutorFull.tsx`
 
 **Steps**
 
-1. Rewrite both components to render the vector guru driven by `useGuruState`,
-   **keeping their existing public props exactly** (`state`, `size`,
-   `height`, `celebrate`). No calling screen changes in this task.
-2. Keep the existing `SpeakingRings` and sparkle burst — they read well and are
-   already Reanimated.
-3. Delete the PNG `<Image>` usage. Keep the asset files (U1-4 may need
-   reference).
+1. `npm install @rive-app/react-native`, add its config plugin to `app.json`
+   (it uses `withPodfileProperties`/`withGradleProperties` to pin runtime
+   versions), then `npx expo prebuild --clean`.
+2. `GuruRive.tsx` maps each `GuruRig` shared value onto its state-machine
+   input by name. Drive inputs from a Reanimated reaction, not from React
+   state.
+3. Rewrite `TutorAvatar` and `TutorFull` to render it — **keeping their
+   existing public props exactly** (`state`, `size`, `height`, `celebrate`).
+   No calling screen changes in this task.
+4. Keep `SpeakingRings` and the sparkle burst; they read well and are already
+   Reanimated.
 
-**Acceptance:** Conversation, Home, and Challenge render the vector guru with no
-changes to those screens. `npx tsc --noEmit` clean.
+**Acceptance:** Conversation, Home, and Challenge render the rigged guru with
+zero changes to those screens. `npx tsc --noEmit` clean. **Frame rate measured
+on a physical low-end Android device and recorded in the commit message.**
 
-**Do not:** change the prop signatures. Downstream screens must not care that
-the implementation changed.
-
----
-
-## U1-4 · Rive swap (blocked on an external asset)
-
-**Why:** SVG-plus-Reanimated gets roughly 70% of the way. Rive's state machine,
-mesh deformation, and designer-authored timing get the rest — and it is what
-Duolingo actually runs for Duo.
-
-**Blocked by:** U1-3, **and delivery of a `.riv` file from a Rive animator.**
-
-⚠ **This task cannot be started by an agent.** A rigged `.riv` is a binary
-authored in the Rive editor. Neither this agent nor DeepSeek can produce one.
-**Escalate to the owner when U1-3 lands** — §6.3 is the animator's brief;
-hand it over as-is.
-
-**Steps once the file exists**
-
-1. `npm install @rive-app/react-native`, add the config plugin, `prebuild`.
-2. Create `guru/GuruRive.tsx` exposing **the identical props** as
-   `GuruVector.tsx`, mapping `GuruRig` values onto the Rive state-machine
-   inputs in §6.3.
-3. Swap behind a single flag in `guru/index.ts`, keeping the SVG version as the
-   fallback. It costs one file to keep and it is your escape hatch if Rive
-   misbehaves on a low-end device.
-
-**Acceptance:** identical prop surface; both implementations selectable; frame
-rate measured on a physical low-end Android device and recorded in the commit
-message.
+**Do not:** change the prop signatures. Nothing downstream may know which
+renderer is active.
 
 ---
 
-## U1-5 · Expression variants and festival skins
+## U1-5 · SVG fallback (only if Rive underperforms)
 
-**Why:** A character the learner sees hundreds of times needs variety or it
-becomes wallpaper. This is also where the product earns affection.
+**Why:** Escape hatch. Rive benchmarks at ~60fps in React Native on Android —
+far better than Lottie's ~17fps in the same test — so this will probably not be
+needed. Build it only if U1-4's measured frame rate on real low-end hardware
+disappoints.
 
-**Blocked by:** U1-3. **Effort:** M
+**Blocked by:** U1-4 measurement. **Effort:** L. **Skip by default.**
 
-**Touch:** `mobile/src/components/guru/variants.ts`
+Layered `react-native-svg` paths driven by the same `GuruRig`, selected behind
+one flag in `guru/index.ts`. Because U1-3 defined the contract renderer-
+agnostically, this is an additive file, not a rewrite.
+
+**Do not** build this pre-emptively. It is real work that Rive probably makes
+unnecessary.
+
+---
+
+## U1-6 · Expression variants and festival skins
+
+**Why:** A character seen hundreds of times needs variety or it becomes
+wallpaper. This is where the product earns affection.
+
+**Blocked by:** U1-4. **Effort:** M
 
 **Steps**
 
-1. **Expression presets** as named rig poses: `neutral`, `warm`, `curious`,
-   `proud`, `patient`, `sleepy` (long absence), `blessing` (session complete).
-2. **Festival skins** — a `skin` prop swapping accent colours and adding one
-   small prop layer: Diwali (a diyā beside him, warm glow), Holi (colour dust
-   motes), Guru Pūrṇimā (fuller halo), Makara Saṅkrānti (a kite). Date-driven,
+1. **Expression presets** as named state-machine poses: `neutral`, `warm`,
+   `curious`, `proud`, `patient`, `sleepy` (long absence), `blessing` (session
+   complete).
+2. **Festival skins** — a `skin` input swapping accent colours and revealing
+   one small prop layer: Diwali (a diyā, warm glow), Holi (colour dust motes),
+   Guru Pūrṇimā (fuller halo), Makara Saṅkrānti (a kite). Date-driven,
    automatic, never announced with a modal.
-3. **Register variants**: in `classical` register the halo is subtly stronger
-   and the palette cooler; in `laukika` he is warmer and more casual. This makes
-   the register distinction *felt* rather than labelled.
+3. **Register variants**: in `classical` the halo is subtly stronger and the
+   palette cooler; in `laukika` he is warmer and more casual. This makes the
+   register distinction *felt* rather than labelled.
 
 **Do not:** add any variant that changes his identity — no different person, no
 cartoon animal, no gender swap. Variants are wardrobe, not casting.
+
+---
+
+## U1-7 · Bone deformation (optional polish)
+
+**Why:** The U1-2 rig moves layers as rigid pieces. Bones with mesh weighting
+add what rigid transforms cannot: **cloth that flows** on the saffron drape and
+jaṭā, and a **head turn with real dimension** instead of a flat slide.
+
+**Blocked by:** U1-4 shipping and looking flat enough to bother.
+**Effort:** M. ⚠ **Owner action required — bones cannot be created via MCP.**
+
+**Skip this by default.** It changes no behaviour, adds no state, and touches
+no app code. Do it only if the rigid cutout reads as stiff in the real app on a
+real device.
+
+**Steps**
+
+1. **Owner** draws the bone chain by hand in the Rive editor: `head`, `jaw`,
+   `armR`, `armL`, `torso`, `drape`, `jata`. A few minutes of manual work.
+2. Agent meshes the deformable layers (`generateMesh`, `trace: true`, density
+   per the table in U1-2 step 2 — **~120 vertices per layer**).
+3. `bindBones` → `autoWeight`. `maxInfluences` caps at **4**; `blend` 0..1,
+   0 rigid, 1 widest falloff.
+4. ⚠ **Overlapping layers on shared bones must be auto-weighted in ONE
+   `autoWeight` call** via `targetIds` — see the tear-apart warning in U1-2.
+5. Re-export. **This costs another export cycle**, so batch it with U1-6
+   rather than paying twice.
+
+**Do not:** mesh layers that do not deform (`book`, `tilaka`, `mala`, `nose`).
+Parent them to a bone instead — a mesh you never bend is pure cost.
 
 ---
 
@@ -1163,29 +1489,57 @@ Sanskrit teacher rather than generic fantasy-monk stock art.
 
 **There is deliberately no disappointed, sad, or angry state.** §3.8.
 
-### 6.3 Rive animator brief (hand this to the animator verbatim)
+### 6.3 Rive state machine brief
 
-> **Deliverable:** one `.riv` file, artboard `Guru`, state machine `TutorSM`.
+Build this in U1-2 via the Rive MCP. It doubles as the spec to hand a human
+animator if that route is ever preferred.
+
+> **Deliverable:** `mobile/assets/avatar/guru.riv`. Two artboards — `GuruPortrait`
+> (head + shoulders crop) and `GuruFull` — sharing one state machine `TutorSM`.
 >
 > **Inputs:**
 > - `state` — Number 0–6: 0 idle, 1 speaking, 2 thinking, 3 listening,
 >   4 celebrating, 5 encouraging, 6 patient
 > - `mouthOpen` — Number 0–1, driven per frame by the app
 > - `headTurn`, `gazeX`, `gazeY` — Number −1..1
+> - `browRaise`, `smile`, `armRaise`, `glow` — Number 0–1
 > - `blink` — Trigger
 > - `celebrate` — Trigger
 > - `intensity` — Number 0–1, scales reaction size
 >
-> **Bones/groups required:** `head`, `jaw`, `eyeL`, `eyeR`, `lidL`, `lidR`,
-> `brows`, `armR`, `armL`, `torso`, `drape`, `mala`, `jata`.
+> **Bones required:** `head`, `jaw`, `armR`, `armL`, `torso`, `drape`, `jata`.
+> **Meshed layers:** `head`, `drape`, `armR`, `armL`, `jata`.
 >
-> **Source art:** `icons/Adobe Express - file.png` (full body, abhaya mudrā,
-> holding book) and `icons/b3dd0e00-...png` (portrait).
+> **Source art:** `icons/guru-layered.psd` (from U1-1), traced back to
+> `icons/Adobe Express - file.png` and `icons/b3dd0e00-...png`.
 >
-> **Constraints:** two artboards (portrait crop + full body) sharing one state
-> machine. Target under 300KB. Must hold 60fps on a 4-year-old mid-range
-> Android. Warm, dignified, never comic — he is a teacher, not a pet.
-> No sad, angry, or disappointed expressions in any state.
+> **Constraints:** under 300KB. 60fps on a 4-year-old mid-range Android.
+> Warm and dignified, never comic — he is a teacher, not a pet. **No sad,
+> angry, or disappointed expression exists in any state.**
+
+### 6.4 Tools evaluated, and why Rive
+
+| Tool | Verdict | Reasoning |
+|---|---|---|
+| **Rive** | ✅ **chosen** | What Duolingo actually runs for Duo. Official React Native runtime. State-machine driven, which maps onto the existing `AvatarState` union. Benchmarks ~60fps in RN on Android vs Lottie's ~17fps, and files are 10–15× smaller. Imports layered PSDs, meshes raster images, supports bones with vertex weighting — so the *painted* art survives. And it has an official MCP server, so an agent can author the rig. |
+| **Lottie** | ⚠ **partial** | Keep for one-shot decorative animation — badge reveals, empty states, the streak flame (U3). Cannot do interactive state-driven characters, and measurably slower. Wrong tool for the mascot, right tool for U3-4. |
+| **Spline** | ❌ rejected | 3D, and web-first. A 3D guru carries real GPU cost on the ₹8,000 Android phones in the target audience, and the art is 2D painted — rebuilding it in 3D means discarding it and losing the illustration's character. Where it *would* have fit is the U4-1 mouth model, but a 2D sagittal cross-section teaches articulation more clearly than a rotatable 3D head, so it loses there too. |
+| **Live2D Cubism** | ❌ rejected | Genuinely the best-looking option for exactly this art style — it exists to turn painted 2D illustrations into characters with pseudo-3D head turns. **But there is no official React Native runtime.** Only a Web SDK with React wrappers, which on mobile means a WebView: bad performance, bad integration, another rendering surface to fight. Ruled out on integration, not on quality. |
+| **Skia / hand-coded** | ⚠ fallback | Maximum control, maximum work, and every expression change becomes an engineering ticket rather than an art change. This is U1-5, and only if Rive disappoints on measurement. |
+| **Static PNG + effects** | ❌ status quo | What exists today. Caps at roughly 30% of Duolingo. |
+
+**The load-bearing insight:** this guru is *painted*, not flat-vector. Duo is
+flat because Duo was designed flat. Vector-tracing this art to make it riggable
+would throw away the shading and warmth that make it good. Rive's
+mesh-on-raster with bone weighting keeps the painting and adds the deformation —
+that is why U1-2 forbids tracing.
+
+### 6.5 Outsourcing instead of using the MCP
+
+If the Rive MCP route stalls, §6.3 is already a complete animator brief — hand
+it over verbatim along with `icons/guru-layered.psd`. Nothing else changes: the
+app-side contract (U1-3) and the integration (U1-4) are identical whether the
+`.riv` came from an agent or a human.
 
 ---
 
@@ -1257,8 +1611,13 @@ cd backend && ./.venv/Scripts/python.exe -m pytest -q
 
 ## 11. When to stop and escalate
 
-- **U1-4 (Rive swap)** — needs a `.riv` from a human animator. Cannot be
-  agent-produced. Stop at U1-3 and hand §6.3 to the owner.
+- **U1-0 (Rive MCP setup)** — owner installs the Rive desktop editor, enables
+  its MCP server, and runs `claude mcp add`. An agent cannot do this. The
+  editor must stay open for U1-2.
+- **U1-1 (layer separation)** — needs an image editor and inpainting. If no
+  tool is available, ship the reduced rig described in the task and say so.
+- **U1-5 (SVG fallback)** — do not build unless U1-4's measured frame rate on
+  real low-end hardware is bad. Report the number and ask.
 - **U3-5 (Leagues)** — product-identity decision about competition versus a
   guru-śiṣya framing. Do not build unasked.
 - **U4-2 (Stroke order)** — needs a stroke-order data source that does not
