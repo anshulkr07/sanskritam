@@ -47,7 +47,7 @@ export async function speak(
   // Expo Audio (SDK 57) doesn't have a simple onEnded promise out of the box
   // without attaching listeners. For v1, we use the duration_hint from the API
   // to fire the onComplete callback.
-  let timeoutId: NodeJS.Timeout | null = null;
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
   if (onComplete) {
     timeoutId = setTimeout(() => {
       onComplete();

@@ -25,6 +25,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
+import type { SharedValue } from "react-native-reanimated";
 
 import { color } from "../theme";
 
@@ -87,7 +88,7 @@ function SpeakingRings({ size, active }: { size: number; active: boolean }) {
     }
   }, [active, ring1, ring2, ring3]);
 
-  const makeRingStyle = (val: Animated.SharedValue<number>) =>
+  const makeRingStyle = (val: SharedValue<number>) =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useAnimatedStyle(() => ({
       position: "absolute" as const,
@@ -149,7 +150,7 @@ function ThinkingDots({ active }: { active: boolean }) {
     }
   }, [active, dot1, dot2, dot3]);
 
-  const dotStyle = (val: Animated.SharedValue<number>) =>
+  const dotStyle = (val: SharedValue<number>) =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useAnimatedStyle(() => ({
       width: 8,
@@ -466,10 +467,14 @@ export default function TutorAvatar({ state, size = 120 }: TutorAvatarProps) {
       <ListeningPulse active={state === "listening"} size={size} />
 
       {/* Sound rings (speaking) */}
-      <SpeakingRings size={size} active={state === "speaking"} />
+      <View accessibilityElementsHidden={true}>
+        <SpeakingRings size={size} active={state === "speaking"} />
+      </View>
 
       {/* Celebration sparkles */}
-      <CelebrationSparkles active={state === "celebrating"} size={size} />
+      <View accessibilityElementsHidden={true}>
+        <CelebrationSparkles active={state === "celebrating"} size={size} />
+      </View>
 
       {/* Character image */}
       <Animated.View
