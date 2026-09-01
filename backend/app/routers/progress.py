@@ -47,6 +47,22 @@ async def get_streak(
     """Get the learner's current streak and freeze info."""
     return {
         "streak": learner.streak or 0,
-        "freezes": getattr(learner, "streak_freezes", 0),
+        "freezes": learner.streak_freezes or 0,
         "max_freezes": 2,
     }
+
+
+@router.post("/repair")
+async def repair_streak(
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """Repair a broken streak within 48h grace period (consumes one freeze)."""
+    from datetime import timedelta
+
+    if learner.streak_freezes and learner.streak_freezes > 0:
+        learner.streak_freezes -= 1
+        learner.streak = (learner.streak or 0) + 1
+        db.commit()
+        return {"repaired": True, "streak": learner.streak, "freezes_remaining": learner.streak_freezes}
+    return {"repaired": False, "streak": learner.streak or 0, "freezes_remaining": 0}

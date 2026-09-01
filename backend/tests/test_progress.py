@@ -83,3 +83,62 @@ def test_daily_activity_model_has_expected_columns():
     expected = {"id", "learner_id", "date", "xp", "attempts",
                 "conversation_turns", "pronunciation_attempts", "goal_met"}
     assert cols >= expected
+
+
+# ─── P4-2: Streak, freeze, repair ─────────────────────
+
+def test_repair_streak_requires_auth(client):
+    r = client.post("/progress/repair")
+    assert r.status_code == 401
+
+
+def test_repair_streak_consumes_freeze(client):
+    headers, lid = _login(client, "repair-test")
+    r = client.post("/progress/repair", headers=headers)
+    assert r.status_code == 200
+    body = r.json()
+    assert body["repaired"] is True
+    assert body["streak"] >= 1
+    assert body["freezes_remaining"] == 1
+
+
+def test_repair_streak_exhausts_freezes(client):
+    headers, lid = _login(client, "repair-exhaust")
+    r1 = client.post("/progress/repair", headers=headers)
+    assert r1.json()["repaired"] is True
+    r2 = client.post("/progress/repair", headers=headers)
+    assert r2.json()["repaired"] is True
+    r3 = client.post("/progress/repair", headers=headers)
+    assert r3.json()["repaired"] is False, "Third repair should fail — no freezes left"
+
+
+def test_streak_freezes_initial_value(client):
+    headers, lid = _login(client, "freeze-init")
+    r = client.get("/progress/streak", headers=headers)
+    assert r.json()["freezes"] == 2
+
+
+def test_repair_outside_window_graceful(client):
+    """Repair with no freezes returns repaired=False."""
+    headers, lid = _login(client, "repair-outside")
+    # Exhaust all freezes first
+    for _ in range(2):
+        client.post("/progress/repair", headers=headers)
+    r = client.post("/progress/repair", headers=headers)
+    assert r.status_code == 200
+    assert r.json()["repaired"] is False
+
+
+def test_streak_has_learner_column():
+    from app.models import Learner
+    cols = {c.name for c in Learner.__table__.columns}
+    assert "streak_freezes" in cols
+    assert "daily_goal_xp" in cols
+    assert "last_active_date" in cols
+
+
+def test_streak_default_is_zero_for_new_learner(client):
+    """New learner starts with streak=0."""
+    headers, lid = _login(client, "streak-zero")
+    r = client.get("/progress/streak", headers=headers)
+    assert r.json()["streak"] == 0
