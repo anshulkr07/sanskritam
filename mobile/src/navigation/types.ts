@@ -27,6 +27,9 @@ export type RootStackParamList = {
     xpEarned?: number;
     isPersonalBest?: boolean;
   };
+  // U7 proof surfaces
+  WordOrder: { sentence?: string };
+  Paradigm: { word?: string; kind: "verb" | "noun" };
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

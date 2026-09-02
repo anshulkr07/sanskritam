@@ -64,6 +64,29 @@ export interface Challenge {
 
 export type Verdict = "correct" | "off_by_one" | "incorrect" | "unsure";
 
+/**
+ * Conversation turns carry verdicts the challenge grader never emits. An
+ * escape is not an error (§6.3): "no_match" means the graph had no edge, not
+ * that the learner was wrong. "revealed" is the escalation ladder giving up
+ * on asking and telling — its `diagnosis` carries the answer and must be
+ * shown rather than replaced with the generic escape copy.
+ */
+export type TurnVerdict =
+  | Verdict
+  | "no_match"
+  | "empty"
+  | "meta"
+  | "revealed"
+  /** LLM mode: the learner answered in their own language, not Sanskrit. */
+  | "bridge";
+
+/**
+ * "llm" — the free-form tutor: any grammatical answer is accepted, Vidyut
+ * gates the Sanskrit, and there are no edges to choose from. "graph" — the
+ * authored dialogue graph, kept as the fallback when the model is unreachable.
+ */
+export type ConversationMode = "llm" | "graph";
+
 export interface AttemptResponse {
   verdict: Verdict;
   parsed_features: Record<string, string>;
@@ -166,13 +189,14 @@ export interface StartResponse {
   };
   node: ConversationNode;
   edges: ConversationEdge[];
+  mode: ConversationMode;
 }
 
 /** A learner move ABOUT the conversation rather than in it. */
 export type MetaIntent = "explain" | "repeat" | "translate";
 
 export interface TurnResponse {
-  verdict: Verdict;
+  verdict: TurnVerdict;
   diagnosis: string;
   matched: boolean;
   node: ConversationNode | null;
@@ -187,6 +211,15 @@ export interface TurnResponse {
    * a second call by design so the turn itself stays model-free.
    */
   meta_intent: MetaIntent | null;
+  mode: ConversationMode;
+  /**
+   * LLM mode: at most one short grammar note about the learner's line, raised
+   * only when Vidyut found a real error. A word Vidyut cannot read — a name,
+   * a place — is never a correction.
+   */
+  correction: string;
+  /** LLM mode: the model was unreachable and this turn is a stand-in. */
+  degraded: boolean;
 }
 
 export interface ExplainResponse {
@@ -209,6 +242,59 @@ export interface STTResponse {
   language_code: string;
 }
 
+// ─── Grammar proof surfaces (U7) ──────────────────────────────────────────
+
+/** A single step of a Pāṇinian derivation (from GET /grammar/derive). */
+export interface DerivationStep {
+  code: string;
+  sutra_text: string;
+  sutra_devanagari: string;
+  result: string;
+}
+
+export interface Derivation {
+  result: string;
+  step_count: number;
+  steps: DerivationStep[];
+}
+
+export interface ScanSyllable {
+  syllable_devanagari: string;
+  weight: string; // 'G' | 'L'
+}
+
+export interface Scansion {
+  lines: { syllables: ScanSyllable[] }[];
+  metre: string | null;
+}
+
+export interface WordOrder {
+  words: string[];
+  equivalent_orders: string[][];
+  per_word: { word: string; role: string; ending: string }[];
+  wrong_endings: { word: string; wrong_ending: string; effect: string }[];
+  refused: string | null;
+}
+
+export interface VarnaDistance {
+  a: string;
+  b: string;
+  distance: number;
+  axis: string | null;
+}
+
+export interface ParadigmCell {
+  vibhakti: string;
+  vacana: string;
+  form: string | null;
+  derivation: Derivation | null;
+}
+
+export interface Paradigm {
+  rows: ParadigmCell[][];
+  kind: string;
+}
+
 // ─── Client ───────────────────────────────────────────────────────────────
 
 export class ApiError extends Error {
@@ -229,6 +315,14 @@ export function setAuthToken(token: string | null): void {
 
 export function getAuthToken(): string | null {
   return authToken;
+}
+
+/** Serialize an object into a URL query string, skipping undefined values. */
+function toQuery(params: Record<string, unknown>): string {
+  const parts = Object.entries(params)
+    .filter(([, v]) => v !== undefined && v !== null && v !== "")
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`);
+  return parts.join("&");
 }
 
 async function request<T>(path: string, init: RequestInit = {}, withAuth = false): Promise<T> {
@@ -428,6 +522,30 @@ export const api = {
 
   stt: (audio: string | Blob | Uint8Array, filename = "recording.wav", mime = "audio/wav", languageCode = "sa-IN") =>
     uploadSpeech(audio, filename, mime, languageCode, "transcribe"),
+
+  // Grammar proof surfaces (U7) — local computation, no quota.
+  deriveWord: (params: {
+    dhatu?: string; lakara?: string; purusha?: string; vacana?: string;
+    pratipadika?: string; linga?: string; vibhakti?: string;
+  }) =>
+    request<Derivation>("/grammar/derive?" + toQuery(params)),
+
+  scansion: (text: string) =>
+    request<Scansion>("/grammar/scansion?text=" + encodeURIComponent(text)),
+
+  sandhiSplit: (joined: string) =>
+    request<{ candidates: { first: string; second: string; first_valid: boolean; second_valid: boolean }[] }>(
+      "/grammar/sandhi?joined=" + encodeURIComponent(joined),
+    ),
+
+  wordOrder: (sentence: string) =>
+    request<WordOrder>("/grammar/word-order?sentence=" + encodeURIComponent(sentence)),
+
+  varnaDistance: (a: string, b: string) =>
+    request<VarnaDistance>("/grammar/varna-distance?a=" + encodeURIComponent(a) + "&b=" + encodeURIComponent(b)),
+
+  paradigm: (params: { pratipadika?: string; linga?: string; dhatu?: string; lakara?: string }) =>
+    request<Paradigm>("/grammar/paradigm?" + toQuery(params)),
 };
 
 export default api;

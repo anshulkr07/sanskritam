@@ -28,6 +28,8 @@ import { AuthProvider, useAuth } from "./src/store/auth";
 import MainTabs from "./src/navigation/MainTabs";
 import ChallengeScreen from "./src/screens/Challenge";
 import LoginScreen from "./src/screens/Login";
+import WordOrderScreen from "./src/screens/WordOrder";
+import ParadigmScreen from "./src/screens/Paradigm";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -60,6 +62,16 @@ function RootNavigator() {
         name="Challenge"
         component={ChallengeScreen}
         options={{ title: "Challenges", presentation: "card" }}
+      />
+      <Stack.Screen
+        name="WordOrder"
+        component={WordOrderScreen}
+        options={{ title: "Word Order" }}
+      />
+      <Stack.Screen
+        name="Paradigm"
+        component={ParadigmScreen}
+        options={{ title: "Paradigm" }}
       />
     </Stack.Navigator>
   );
