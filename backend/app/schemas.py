@@ -83,6 +83,10 @@ class AttemptResponse(BaseModel):
     grammar_note: Optional[dict[str, Any]] = None
     abstained: bool
     updated_model: dict[str, Any]
+    # P9-3: the correct form's derivation, attached on a grammatical mismatch.
+    # Never present on an `unsure` verdict. The LLM gloss (grammar_note) and
+    # this derivation are independent — either may be absent.
+    derivation: Optional["DerivationResponse"] = None
 
 
 # ─── Shlokas ───
