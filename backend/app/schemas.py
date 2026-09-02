@@ -131,6 +131,70 @@ class FeatureResponse(BaseModel):
     label_hi: str
 
 
+# ─── Derivation (P9) ───
+
+class DerivationStep(BaseModel):
+    code: str
+    sutra_text: str = ""
+    sutra_devanagari: str = ""
+    result: str
+
+
+class DerivationResponse(BaseModel):
+    result: str
+    step_count: int
+    steps: list[DerivationStep]
+
+
+# ─── Scansion (P11-1) ───
+
+class ScanSyllable(BaseModel):
+    syllable_devanagari: str
+    weight: str  # G (guru/long) | L (laghu/short)
+
+
+class ScanLine(BaseModel):
+    syllables: list[ScanSyllable]
+
+
+class ScansionResponse(BaseModel):
+    lines: list[ScanLine]
+    metre: Optional[str] = None  # often None — anuṣṭubh & friends are variable
+
+
+# ─── Word order (P11-3) ───
+
+class WordOrderResponse(BaseModel):
+    words: list[str]
+    equivalent_orders: list[list[str]]
+    per_word: list[dict[str, Any]]  # [{word, role, ending}] — ending carries the role
+    wrong_endings: list[dict[str, Any]]  # [{word, wrong_ending, effect}]
+    refused: Optional[str] = None  # set when the sentence is beyond the length cap
+
+
+# ─── Varna distance (P11-4) ───
+
+class VarnaDistanceResponse(BaseModel):
+    a: str
+    b: str
+    distance: int
+    axis: Optional[str] = None  # place | voicing | aspiration | nasality
+
+
+# ─── Paradigm (P11-5) ───
+
+class ParadigmCell(BaseModel):
+    vibhakti: str
+    vacana: str
+    form: Optional[str] = None
+    derivation: Optional[DerivationResponse] = None
+
+
+class ParadigmResponse(BaseModel):
+    rows: list[list[ParadigmCell]]  # 8 vibhakti × 3 vacana (nouns), or lakāra grid (verbs)
+    kind: str  # subanta | tinanta
+
+
 # ─── Admin ───
 
 class CreateChallengeRequest(BaseModel):
