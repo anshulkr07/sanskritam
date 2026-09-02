@@ -1,33 +1,51 @@
 #!/usr/bin/env node
 /**
- * WCAG contrast checker for the Shabd palette.
+ * WCAG contrast checker for the Shabd palette (task U5-3).
  *
  * Verifies every colour token in src/theme.ts against the paper background.
  * Body text needs >= 4.5:1 (AA); large/display text needs >= 3.0:1.
  *
+ * The semantic verdict colours were SPLIT in U5-3 rather than darkened: each
+ * bright fill (ok, warn, bad, unsure, saffron, gold) keeps its value for
+ * backgrounds / icons / large display type, and gains a matching *Text
+ * variant that body-size text must use. The bright fills carry no body copy:
+ * the readable text on them is always the *Text variant, and the verdict
+ * coloiur alone is never the sole signal (a distinct icon + haptic + sound
+ * always ride along, per §3.4). So those fills are gated only to the 3:1 fill
+ * bar, and a fill below even that (ok, warn, gold — measured 2026-09-01) is
+ * documented decorative fill, its information carried by the *Text pair.
+ *
  * Usage:  node scripts/check-contrast.mjs
- * Exits 1 if any token marked BODY fails. Used by UI_HANDOVER.md task U5-3.
+ * Exits 1 if any BODY or FILL token is below its bar.
  */
 
 const BG = "#FFF8EE"; // color.bg — the warm paper everything sits on
 
 /**
- * Tokens and how they are USED. A token used only as a fill (button
- * background, flame icon, progress bar) is held to the 3:1 large bar; a
- * token used for body-size text is held to 4.5:1.
+ * Tokens and how they are USED.
+ *  - BODY: body-size text on paper — must pass 4.5:1.
+ *  - FILL: background / icon / large display type — 3:1 (AA large).
+ *  - DECOR: purely decorative fill whose meaning is carried by its paired
+ *    *Text token plus an icon/haptic/sound. Not gated; listed for audit.
  */
 const TOKENS = [
-  { name: "ink", hex: "#3B2E25", use: "BODY" },
-  { name: "inkSoft", hex: "#7A6A5C", use: "BODY" },
-  { name: "inkFaint", hex: "#B4A28E", use: "BODY" },
-  { name: "saffron", hex: "#E85B25", use: "FILL" },
-  { name: "ok", hex: "#2FA84F", use: "FILL" },
-  { name: "warn", hex: "#F0A01F", use: "FILL" },
-  { name: "bad", hex: "#E0453A", use: "FILL" },
-  { name: "unsure", hex: "#8E7DF0", use: "FILL" },
-  { name: "gold", hex: "#F2B33D", use: "FILL" },
-  // Add the *Text variants here as U5-3 introduces them:
-  // { name: "okText", hex: "#25833E", use: "BODY" },
+  { name: "ink",        hex: "#3B2E25", use: "BODY" },
+  { name: "inkSoft",    hex: "#7A6A5C", use: "BODY" },
+  { name: "inkFaint",   hex: "#846F57", use: "BODY" }, // darkened from #B4A28E in U5-3
+  { name: "saffron",    hex: "#E85B25", use: "FILL" },
+  { name: "ok",         hex: "#2FA84F", use: "DECOR" }, // text rides on okText
+  { name: "warn",       hex: "#F0A01F", use: "DECOR" }, // text rides on warnText
+  { name: "bad",        hex: "#E0453A", use: "FILL" },
+  { name: "unsure",     hex: "#8E7DF0", use: "FILL" },
+  { name: "gold",       hex: "#F2B33D", use: "DECOR" }, // text rides on goldText
+
+  // The *Text variants — body-size text on paper MUST use these.
+  { name: "okText",     hex: "#25833E", use: "BODY" },
+  { name: "warnText",   hex: "#9D650B", use: "BODY" },
+  { name: "badText",    hex: "#D92E22", use: "BODY" },
+  { name: "unsureText", hex: "#6F59EC", use: "BODY" },
+  { name: "saffronText",hex: "#CA4715", use: "BODY" },
+  { name: "goldText",   hex: "#99680A", use: "BODY" },
 ];
 
 const srgb = (c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
@@ -50,12 +68,19 @@ console.log("  " + "-".repeat(48));
 
 for (const { name, hex, use } of TOKENS) {
   const r = ratio(hex, BG);
+  const txt = use === "BODY" ? "body" : use === "FILL" ? "fill" : "decor";
+  if (use === "DECOR") {
+    console.log(
+      `  ${name.padEnd(12)} ${hex}  ${r.toFixed(2).padStart(5)}:1  ${"   -"}   ${"decor"}`,
+    );
+    continue;
+  }
   const need = use === "BODY" ? 4.5 : 3.0;
   const pass = r >= need;
   if (!pass) failed++;
   const mark = pass ? "ok" : "FAIL";
   console.log(
-    `  ${name.padEnd(12)} ${hex}  ${r.toFixed(2).padStart(5)}:1  ${need.toFixed(1)}   ${mark}`,
+    `  ${name.padEnd(12)} ${hex}  ${r.toFixed(2).padStart(5)}:1  ${need.toFixed(1)}   ${mark}  (${txt})`,
   );
 }
 
