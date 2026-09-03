@@ -54,7 +54,11 @@ userinfo, _, hostport = rest.rpartition("@")
 user, _, pw = userinfo.partition(":")
 # UNQUOTE to true characters, then QUOTE exactly once: idempotent by
 # construction — safe to run on raw or already-encoded URLs.
-print(f"{scheme}://{quote(unquote(user), safe=\"\")}:{quote(unquote(pw), safe=\"\")}@{hostport}")
+# (Quoted components are built as plain variables — no quotes inside the
+# f-string expression, which Python < 3.12 forbids.)
+q_user = quote(unquote(user), safe="")
+q_pw = quote(unquote(pw), safe="")
+print(scheme + "://" + q_user + ":" + q_pw + "@" + hostport)
 ' "$DATABASE_URL")
   export DATABASE_URL
 fi
