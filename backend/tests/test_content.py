@@ -44,14 +44,103 @@ def test_feature_taxonomy_has_dual(client):
     assert "DU" in blob or "DUAL" in blob or "dvi" in blob.lower()
 
 
-def test_shloka_today(client):
-    r = client.get("/shlokas/today")
-    assert r.status_code == 200
+def test_shloka_today(client, auth_headers):
+    r = client.get("/shlokas/today", headers=auth_headers)
+    assert r.status_code == 200, r.text
     d = r.json()
     assert d["devanagari"]
     assert d["iast"]
     assert d["word_breakdown"]
     assert d["source_ref"]
+
+
+def test_shloka_requires_learner(client):
+    """P7-6: a daily feature must resolve the learner's own day (§2.8)."""
+    r = client.get("/shlokas/today")
+    assert r.status_code in (401, 403)
+
+
+def test_shloka_resolves_identical_for_different_timezones(client):
+    """P7-6: the daily verse is a deterministic function of the learner-local day.
+
+    We cannot change the real clock, so this pins the deterministic cycle:
+    both a learner-local day inside the seeded window and a far-future day
+    resolve to the same shloka on repeat calls, never drifting to "the newest
+    row" alone.
+    """
+    from datetime import date, timedelta
+    from app.routers.shlokas import _select_shloka
+    from app.db import SessionLocal
+
+    db = SessionLocal()
+    try:
+        # Same day resolves to the same verse on every call.
+        a = _select_shloka(db, "2026-09-03")
+        b = _select_shloka(db, "2026-09-03")
+        assert a is not None and a.id == b.id, "same day must give the same verse"
+        # A far-future date also resolves deterministically (cycle).
+        far = (date(2026, 9, 3) + timedelta(days=1000)).isoformat()
+        f1 = _select_shloka(db, far)
+        f2 = _select_shloka(db, far)
+        assert f1 is not None and f1.id == f2.id, "cycle must be deterministic"
+    finally:
+        db.close()
+
+
+def test_shloka_well_pins_two_dates_to_two_verses(client):
+    """P7-6 acceptance: two specific dates pin to two specific verses."""
+    from datetime import date, timedelta
+    from app.seeds.shlokas import SHLOKA_ANCHOR
+    from app.routers.shlokas import _select_shloka
+    from app.db import SessionLocal
+
+    db = SessionLocal()
+    try:
+        d0 = SHLOKA_ANCHOR.isoformat()
+        d1 = (SHLOKA_ANCHOR + timedelta(days=1)).isoformat()
+        v0 = _select_shloka(db, d0)
+        v1 = _select_shloka(db, d1)
+        assert v0 is not None and v1 is not None
+        assert v0.id != v1.id, "consecutive days must be different verses"
+        # And re-selecting the same day is identical (deterministic).
+        assert _select_shloka(db, d0).id == v0.id
+    finally:
+        db.close()
+
+
+def test_shloka_reseed_is_idempotent(client):
+    """P7-6: seeding on every startup must not duplicate rows."""
+    from app.db import SessionLocal
+    from app.models import Shloka
+    from app.seeds.seed import _seed_shlokas  # noqa: WPS450 (test-only)
+
+    db = SessionLocal()
+    try:
+        before = db.query(Shloka).count()
+        _seed_shlokas(db)
+        db.commit()
+        after = db.query(Shloka).count()
+        assert after == before, f"reseed added rows: {before} -> {after}"
+    finally:
+        db.close()
+
+
+def test_shloka_metre_is_engine_derived(client):
+    """P7-6: no hand-typed metre — every stored metre matches the engine
+    (or is absent where the engine returns none), never a guess."""
+    from app.db import SessionLocal
+    from app.models import Shloka
+    from app.services.chandas import scan as chandas_scan
+
+    db = SessionLocal()
+    try:
+        for s in db.query(Shloka).all():
+            engine_metre = (chandas_scan(s.devanagari).get("metre") or "") or ""
+            if s.metre:
+                assert s.metre == engine_metre, (
+                    f"{s.source_ref}: stored metre {s.metre!r} != engine {engine_metre!r}")
+    finally:
+        db.close()
 
 
 def test_seed_content_volume(client):

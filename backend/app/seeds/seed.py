@@ -2,14 +2,16 @@
 
 import uuid
 import logging
+from datetime import timedelta
 
 from app.db import SessionLocal
 from app.models import Challenge, Feature, Shloka
 from app.seeds.features import SEED_FEATURES
 from app.seeds.challenges import SEED_CHALLENGES
-from app.seeds.shlokas import SEED_SLOKAS
+from app.seeds.shlokas import SEED_SLOKAS, SHLOKA_ANCHOR
 from app.seeds.dialogue import seed_dialogue
 from app.seeds.daily_words import seed_daily_words
+from app.services.chandas import scan as chandas_scan
 
 logger = logging.getLogger("shabd.seed")
 
@@ -17,7 +19,7 @@ _SEEDED_KEY = "_seeded_v1"
 
 
 def run_seed():
-    """Idempotent seed: run once per database."""
+    """Idempotent seed: run once per database, refill content every boot."""
     db = SessionLocal()
     try:
         # Check if already seeded using a simple sentinel
@@ -25,9 +27,12 @@ def run_seed():
         if existing_features > 10:
             logger.info("Database already seeded (%d features found)", existing_features)
             # Content added after the first seed still needs a pass: each of
-            # these is self-idempotent, so run them on every startup.
+            # these is self-idempotent, so run them on every startup. The
+            # śloka well is seeded unconditionally too (P7-6) — a daily
+            # surface must be able to refill, never just on the first seed.
             seed_dialogue(db)
             seed_daily_words(db)
+            _seed_shlokas(db)
             db.commit()
             return
 
@@ -87,25 +92,41 @@ def _seed_challenges(db):
 
 
 def _seed_shlokas(db):
-    """Insert shloka data."""
+    """Insert shloka data — self-idempotent, runs on every startup (P7-6).
+
+    Dates derive from a FIXED anchor (SHLOKA_ANCHOR + day_offset), never
+    date.today(), so a re-seed or a fresh boot cannot drift the schedule.
+    ``metre`` is computed from the chandas engine rather than hand-typed;
+    anuṣṭubh (variable) returns empty, which is correct (§6).
+    """
+    inserted = 0
     for sdata in SEED_SLOKAS:
+        date_iso = (SHLOKA_ANCHOR + timedelta(days=sdata["day_offset"])).isoformat()
         existing = db.query(Shloka).filter(
             Shloka.source_ref == sdata["source_ref"],
-            Shloka.date == sdata["date"],
+            Shloka.date == date_iso,
         ).first()
         if existing:
             continue
+        # Metre from the engine, never hand-typed (§6 / P7-6).
+        metre = ""
+        try:
+            metre = (chandas_scan(sdata["devanagari"]).get("metre") or "") or ""
+        except Exception:  # chandas data missing/unsupported — metre stays absent
+            metre = ""
         shloka = Shloka(
             id=uuid.uuid4().hex[:16],
-            date=sdata["date"],
+            date=date_iso,
             source_ref=sdata["source_ref"],
             devanagari=sdata["devanagari"],
             iast=sdata.get("iast", ""),
-            metre=sdata.get("metre", ""),
+            metre=metre,
             word_breakdown=sdata.get("word_breakdown", []),
             features=sdata.get("features", []),
             register=sdata.get("register", "classical"),
             audio_url=sdata.get("audio_url", ""),
         )
         db.add(shloka)
-    logger.info("Seeded %d shlokas", len(SEED_SLOKAS))
+        inserted += 1
+    if inserted:
+        logger.info("Seeded %d new shlokas", inserted)
