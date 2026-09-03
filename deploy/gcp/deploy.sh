@@ -35,6 +35,23 @@ if [ -f "$ENV_FILE" ]; then
   set +a
 fi
 
+# ── 0b. Normalize DATABASE_URL: percent-encode the password component.
+#       Supabase console URLs carry raw special chars (e.g. '@') in the
+#       password; SQLAlchemy splits user:pass@host on the FIRST '@', which
+#       corrupts the host and crashes the app at first connect.  urlsplit
+#       splits on the LAST '@' so it decodes correctly, and requoting makes
+#       this idempotent (already-encoded URLs pass through unchanged).
+if [ -n "${DATABASE_URL:-}" ]; then
+  DATABASE_URL=$(python3 -c '
+import sys
+from urllib.parse import urlsplit, quote
+u = urlsplit(sys.argv[1])
+pw = u.password or ""
+print(f"postgresql://{quote(u.username or "", safe="")}:{quote(pw, safe="")}@{u.hostname}:{u.port or 5432}{u.path}")
+' "$DATABASE_URL")
+  export DATABASE_URL
+fi
+
 # ── 1. Upload secrets (idempotent: overwrite existing versions) ──────────
 declare -A SECRETS=(
   [sarvam-api-key]=SARVAM_API_KEY
