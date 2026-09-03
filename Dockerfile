@@ -35,6 +35,7 @@ RUN cd backend \
     && python -c "from app.grading.analyzer import ensure_vidyut_data; ensure_vidyut_data()" \
     && rm -rf /root/.cache
 
-# Cloud Run injects PORT; uvicorn binds it.  4 workers is plenty at this
-# traffic level; threads cover the sync SQLAlchemy calls.
-CMD exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1 --threads 8
+# Cloud Run injects PORT; uvicorn binds it.  Single worker: uvicorn is async
+# and this traffic level needs no more.  (No --threads: that's a gunicorn
+# option, not uvicorn's — it made the container exit at boot, r3/r4.)
+CMD exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1
