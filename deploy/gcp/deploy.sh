@@ -53,6 +53,16 @@ for name in "${!SECRETS[@]}"; do
   fi
 done
 
+# ── 1b. Let Cloud Run's default runtime SA read the secrets (idempotent).
+#       Without roles/secretmanager.secretAccessor the revision is rejected
+#       with "Permission denied on secret".  Tolerated to fail silently:
+#       if the caller lacks IAM rights AND secrets are unreadable, the
+#       deploy itself fails loudly at revision creation.
+PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format='value(projectNumber)')
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor" >/dev/null 2>&1 || true
+
 # ── 2. Deploy (buildpacks via --source; Dockerfile in repo root is used
 #       automatically when present) ────────────────────────────────────────
 gcloud run deploy "$SERVICE" \
