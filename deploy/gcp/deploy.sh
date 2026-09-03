@@ -44,10 +44,17 @@ fi
 if [ -n "${DATABASE_URL:-}" ]; then
   DATABASE_URL=$(python3 -c '
 import sys
-from urllib.parse import urlsplit, quote
-u = urlsplit(sys.argv[1])
-pw = u.password or ""
-print(f"postgresql://{quote(u.username or "", safe="")}:{quote(pw, safe="")}@{u.hostname}:{u.port or 5432}{u.path}")
+from urllib.parse import quote, unquote
+url = sys.argv[1]
+if "://" in url:
+    scheme, rest = url.split("://", 1)
+else:
+    scheme, rest = "postgresql", url
+userinfo, _, hostport = rest.rpartition("@")
+user, _, pw = userinfo.partition(":")
+# UNQUOTE to true characters, then QUOTE exactly once: idempotent by
+# construction — safe to run on raw or already-encoded URLs.
+print(f"{scheme}://{quote(unquote(user), safe=\"\")}:{quote(unquote(pw), safe=\"\")}@{hostport}")
 ' "$DATABASE_URL")
   export DATABASE_URL
 fi
