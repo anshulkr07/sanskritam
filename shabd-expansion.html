@@ -1,0 +1,710 @@
+<title>What Only Sanskrit Can Do</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;1,400&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap">
+<style>
+  /* ---------------------------------------------------------------
+     House style, inherited from sanskrit-market.html / sanskrit-stack.html.
+     Two additions specific to this document:
+       --make  : the product's own saffron, used ONLY for things to build.
+                 Indigo says what is true; saffron says what you ship.
+       --f-dev : Tiro Devanagari Sanskrit, a face cut for Sanskrit setting.
+     --------------------------------------------------------------- */
+  :root {
+    --ground: #F7F7FB;
+    --surface: #FFFFFF;
+    --surface-alt: #F1F1F7;
+    --ink: #191926;
+    --ink-soft: #3A3A4E;
+    --muted: #5F5F76;
+    --faint: #8A8AA0;
+    --rule: #DEDEE9;
+    --rule-strong: #C4C4D6;
+    --accent: #4A3F9E;
+    --accent-tint: #ECEAF8;
+    --make: #B8481B;
+    --make-tint: #FBEDE6;
+    --pos: #1C6B50;
+    --pos-tint: #DFF0E8;
+    --neg: #A3352A;
+    --neg-tint: #F8E4E1;
+    --warn: #8A5A11;
+    --warn-tint: #F9EEDC;
+
+    --f-display: "Spectral", Georgia, "Times New Roman", serif;
+    --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --f-dev: "Tiro Devanagari Sanskrit", "Noto Serif Devanagari", "Nirmala UI", serif;
+
+    --measure: 68ch;
+    --wide: 1000px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101017;
+      --surface: #191922;
+      --surface-alt: #20202C;
+      --ink: #E9E9F2;
+      --ink-soft: #C6C6D6;
+      --muted: #9A9AB2;
+      --faint: #74748C;
+      --rule: #2C2C3A;
+      --rule-strong: #3E3E52;
+      --accent: #A79BF0;
+      --accent-tint: #23203A;
+      --make: #F0885C;
+      --make-tint: #33201A;
+      --pos: #56C79B;
+      --pos-tint: #16302A;
+      --neg: #EC8375;
+      --neg-tint: #331F1D;
+      --warn: #DDA94F;
+      --warn-tint: #302713;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101017;
+    --surface: #191922;
+    --surface-alt: #20202C;
+    --ink: #E9E9F2;
+    --ink-soft: #C6C6D6;
+    --muted: #9A9AB2;
+    --faint: #74748C;
+    --rule: #2C2C3A;
+    --rule-strong: #3E3E52;
+    --accent: #A79BF0;
+    --accent-tint: #23203A;
+    --make: #F0885C;
+    --make-tint: #33201A;
+    --pos: #56C79B;
+    --pos-tint: #16302A;
+    --neg: #EC8375;
+    --neg-tint: #331F1D;
+    --warn: #DDA94F;
+    --warn-tint: #302713;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0 24px 96px;
+  }
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+
+  .masthead {
+    padding: 72px 0 36px;
+    border-bottom: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(2.3rem, 5.5vw, 3.5rem);
+    line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
+    margin: 0; max-width: 18ch;
+  }
+  .standfirst {
+    font-family: var(--f-display); font-size: 1.16rem; font-style: italic;
+    color: var(--muted); max-width: 60ch; margin: 0;
+  }
+  .meta {
+    font-family: var(--f-mono); font-size: 12px; color: var(--faint);
+    display: flex; flex-wrap: wrap; gap: 20px; padding-top: 6px;
+  }
+
+  section { padding-top: 60px; }
+  .sectnum {
+    font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--f-display); font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 1.95rem);
+    line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance;
+    margin: 0 0 6px; max-width: 24ch;
+  }
+  h3 {
+    font-family: var(--f-body); font-weight: 600; font-size: 1rem;
+    margin: 32px 0 8px; max-width: var(--measure);
+  }
+  p { margin: 0 0 14px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  ul { max-width: var(--measure); padding-left: 20px; margin: 0 0 14px; }
+  li { margin-bottom: 7px; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  strong { font-weight: 600; color: var(--ink); }
+  code {
+    font-family: var(--f-mono); font-size: 0.86em;
+    background: var(--surface-alt); padding: 1px 5px; border-radius: 3px;
+  }
+  .dev { font-family: var(--f-dev); }
+
+  .method {
+    margin: 34px 0 0; padding: 18px 22px;
+    background: var(--warn-tint);
+    border: 1px solid color-mix(in srgb, var(--warn) 34%, transparent);
+    border-radius: 3px; font-size: 14.5px; color: var(--ink-soft);
+  }
+  .method p:last-child { margin-bottom: 0; }
+  .method .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--warn); display: block; margin-bottom: 7px;
+  }
+
+  .contrast {
+    display: grid; gap: 1px; margin: 28px 0 8px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    background: var(--rule); border: 1px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+  }
+  .contrast > div { background: var(--surface); padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .contrast .label {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .contrast .figure {
+    font-family: var(--f-mono); font-weight: 600;
+    font-size: clamp(1.9rem, 4.6vw, 2.7rem); line-height: 1;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  }
+  .contrast .figure.lo { color: var(--neg); }
+  .contrast .figure.hi { color: var(--pos); }
+  .contrast .what { font-weight: 600; font-size: 15px; }
+  .contrast .note { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  .tablewrap {
+    overflow-x: auto; margin: 22px 0 10px;
+    border: 1px solid var(--rule); border-radius: 4px; background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 560px; }
+  caption {
+    caption-side: top; text-align: left;
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--faint);
+    padding: 13px 18px 11px; border-bottom: 1px solid var(--rule);
+  }
+  th {
+    text-align: left; font-weight: 600; font-size: 12px;
+    letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
+    padding: 11px 18px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap;
+  }
+  td { padding: 11px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.name { color: var(--ink); font-weight: 500; }
+  td.mono { font-family: var(--f-mono); font-size: 13px; white-space: nowrap; }
+  .yes { color: var(--pos); font-weight: 600; }
+  .no  { color: var(--neg); font-weight: 600; }
+
+  .verdict {
+    margin: 28px 0 8px; padding: 22px 26px;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent); border-radius: 3px;
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .tag {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;
+  }
+  .verdict.go { border-left-color: var(--pos); }
+  .verdict.go .tag { color: var(--pos); }
+  .verdict.stop { border-left-color: var(--neg); }
+  .verdict.stop .tag { color: var(--neg); }
+  .verdict.make { border-left-color: var(--make); }
+  .verdict.make .tag { color: var(--make); }
+
+  /* --- specimen: the derivation ladder (real prakriya output) --- */
+  .ladder {
+    margin: 24px 0 10px; border: 1px solid var(--rule); border-radius: 4px;
+    background: var(--surface); overflow: hidden;
+  }
+  .ladder-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+    padding: 16px 20px; border-bottom: 1px solid var(--rule); background: var(--surface-alt);
+  }
+  .ladder-head .in, .ladder-head .out { font-family: var(--f-dev); font-size: 1.5rem; color: var(--ink); }
+  .ladder-head .arrow { color: var(--faint); font-family: var(--f-mono); }
+  .ladder-head .count {
+    margin-left: auto; font-family: var(--f-mono); font-size: 11.5px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
+  }
+  .ladder ol { list-style: none; margin: 0; padding: 0; max-width: none; }
+  .ladder li {
+    display: grid; grid-template-columns: 62px 1fr auto; gap: 16px;
+    align-items: baseline; padding: 10px 20px; border-bottom: 1px solid var(--rule);
+    margin: 0;
+  }
+  .ladder li:last-child { border-bottom: none; }
+  .ladder .code { font-family: var(--f-mono); font-size: 12.5px; color: var(--accent); }
+  .ladder .sutra { font-family: var(--f-dev); font-size: 1.02rem; color: var(--ink-soft); }
+  .ladder .res { font-family: var(--f-dev); font-size: 1.02rem; color: var(--ink); text-align: right; }
+  .ladder .elide { color: var(--faint); font-family: var(--f-mono); font-size: 12px; grid-column: 1 / -1; text-align: center; padding: 4px 0; }
+
+  /* --- specimen: the scansion strip (real chandas output) --- */
+  .scan {
+    margin: 24px 0 10px; padding: 22px 20px 18px;
+    border: 1px solid var(--rule); border-radius: 4px; background: var(--surface);
+    overflow-x: auto;
+  }
+  .scan-line { display: flex; gap: 7px; align-items: flex-end; margin-bottom: 20px; min-width: max-content; }
+  .scan-line:last-of-type { margin-bottom: 6px; }
+  .syl { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .syl .g { font-family: var(--f-dev); font-size: 1.28rem; color: var(--ink); line-height: 1.1; }
+  .syl .w { width: 100%; border-radius: 2px; }
+  .syl.guru .w { height: 15px; background: var(--accent); }
+  .syl.laghu .w { height: 6px; background: color-mix(in srgb, var(--accent) 36%, transparent); }
+  .scan .key {
+    font-family: var(--f-mono); font-size: 11.5px; color: var(--faint);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* --- the game cards --- */
+  .games { display: grid; gap: 14px; margin: 26px 0 10px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .game {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-top: 2px solid var(--make); border-radius: 4px;
+    padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .game .sk { font-family: var(--f-dev); font-size: 1.35rem; color: var(--make); line-height: 1.2; }
+  .game .en { font-family: var(--f-body); font-weight: 600; font-size: 15.5px; color: var(--ink); margin-top: -4px; }
+  .game p { font-size: 14.5px; color: var(--muted); margin: 0; max-width: none; }
+  .game p strong { color: var(--ink-soft); }
+  .game .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .chip {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 3px;
+    border: 1px solid var(--rule-strong); color: var(--muted);
+  }
+  .chip.own { background: var(--pos-tint); border-color: color-mix(in srgb, var(--pos) 34%, transparent); color: var(--pos); }
+  .chip.new { background: var(--warn-tint); border-color: color-mix(in srgb, var(--warn) 34%, transparent); color: var(--warn); }
+
+  /* --- numbered channel list (sequence is real: funnel order) --- */
+  .channels { margin: 24px 0 0; padding: 0; list-style: none; counter-reset: ch; display: grid; gap: 2px; max-width: none; }
+  .channels li {
+    counter-increment: ch; display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+    padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: start; margin: 0;
+  }
+  .channels li:first-child { border-top: 1px solid var(--rule); }
+  .channels li::before {
+    content: counter(ch, decimal-leading-zero);
+    font-family: var(--f-mono); font-size: 12px; color: var(--accent); padding-top: 3px;
+  }
+  .channels .what { font-weight: 600; font-size: 15.5px; display: block; margin-bottom: 3px; color: var(--ink); }
+  .channels .why { font-size: 14.5px; color: var(--muted); max-width: 64ch; }
+
+  .queue { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; max-width: none; counter-reset: q; }
+  .queue li {
+    counter-increment: q; display: grid; grid-template-columns: 34px 1fr 90px; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: baseline; margin: 0;
+  }
+  .queue li:first-child { border-top: 1px solid var(--rule); }
+  .queue li::before {
+    content: counter(q); font-family: var(--f-mono); font-size: 13px; font-weight: 600;
+    color: var(--make);
+  }
+  .queue .t { font-size: 15px; color: var(--ink-soft); }
+  .queue .t b { color: var(--ink); font-weight: 600; }
+  .queue .cost {
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--faint); text-align: right;
+  }
+
+  footer {
+    margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--faint);
+  }
+  footer p { max-width: none; margin-bottom: 10px; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 620px) {
+    body { padding: 0 18px 64px; font-size: 16px; }
+    .masthead { padding-top: 48px; }
+    .channels li { grid-template-columns: 32px 1fr; gap: 10px; }
+    .queue li { grid-template-columns: 26px 1fr; gap: 10px; }
+    .queue .cost { text-align: left; grid-column: 2; }
+    .ladder li { grid-template-columns: 56px 1fr; }
+    .ladder .res { text-align: left; grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Shabd · Product Expansion</span>
+    <h1>What only Sanskrit can do</h1>
+    <p class="standfirst">Nine games, four idle engines and one honest correction — the surfaces worth building next, and the ones that would make Shabd a Duolingo reskin with a Devanagari coat of paint.</p>
+    <div class="meta">
+      <span>2 September 2026</span>
+      <span>Companion to sanskrit-market.html (28 Aug)</span>
+      <span>Engine claims verified live in backend/</span>
+    </div>
+  </header>
+
+  <div class="method">
+    <span class="tag">On method</span>
+    <p>Everything in <em>Four engines you have never switched on</em> was run on this machine today against <code>backend/.venv</code> and <code>backend/vidyut-data/</code>; the derivation and the scansion below are real program output, pasted, not illustrative. Market figures marked as reported are third-party and carry their source. The two channel recommendations that survive from 28 August are marked as such rather than restated as new.</p>
+  </div>
+
+  <section>
+    <span class="sectnum">01 — What changed since August</span>
+    <h2>Two facts arrived after the market doc was written</h2>
+    <p class="lede">Both of them move the plan. Neither is in <code>sanskrit-market.html</code>, which was compiled on 28 August.</p>
+
+    <h3>Sanskrit stopped being optional for a large cohort of Indian schoolchildren</h3>
+    <p>CBSE issued a directive on <strong>10 April 2026</strong>, with a one-week compliance window, making a third language and two Indian languages compulsory from Class 6 through Class 10, rolling out with Class 6 in 2026. Because English-medium schools classify English as the foreign language, <strong>Sanskrit becomes the default third option</strong> — and French, German and Spanish are being discontinued to make room. NCF-aligned textbooks are not ready; schools were told to use locally available material. A Supreme Court challenge is live.</p>
+    <p>Three things follow. First, this is <strong>involuntary demand with a deadline</strong>, and it converts differently from cultural enthusiasm: the parent buys, the child uses, and the decision is made under exam pressure. That is the segment that actually pays in India. Second, the curriculum gap is your gap — no textbook, and teachers themselves largely untrained in Sanskrit. Third, and worth naming plainly: <em>Sanskrit was, for a generation, the single most-hated subject in school.</em> You are not entering a market of enthusiasts. You are entering a market of resentment, which is a better market, because the incumbent experience is rote memorisation and nobody has tried to fix it.</p>
+    <p><strong>Do not bet the company on the policy.</strong> It is in flux and in litigation. But the feature it implies — declension and conjugation mastery with a derivation behind every cell — is one you get nearly free from P9. Build it because the engine hands it to you, not because the rule holds.</p>
+
+    <h3>The category leader made "AI-generated" a liability</h3>
+    <p>Duolingo went AI-first in April 2025. Users called the content slop, cancelled publicly, and broke long streaks in protest; the stock is reported down roughly <strong>80% from its May 2025 peak</strong> as of April 2026. Duolingo also shipped an Energy system that meters free users per exercise regardless of whether they answer correctly — friction its own learners resent. Airlearn, the nimble challenger, leans heavily on AI-generated assets too.</p>
+
+    <div class="contrast">
+      <div>
+        <span class="label">Every competitor's "why was I wrong?"</span>
+        <span class="figure lo">a guess</span>
+        <span class="what">A language model explaining grammar</span>
+        <span class="note">Plausible, fluent, unfalsifiable, and wrong often enough that your own DECISIONS log records ~50% false accusations on dual-bearing content.</span>
+      </div>
+      <div>
+        <span class="label">What Shabd can return instead</span>
+        <span class="figure hi">a proof</span>
+        <span class="what">A Pāṇinian derivation with rule numbers</span>
+        <span class="note">Deterministic, offline, ₹0 per call, and checkable by anyone holding a copy of the Aṣṭādhyāyī.</span>
+      </div>
+    </div>
+
+    <div class="verdict go">
+      <span class="tag">The position that just opened</span>
+      <p><strong>Verified, not generated.</strong> Sanskrit is the one major language where a machine can check grammar deterministically, and you already run that check — the P6-3 gate measures an 83.3% pass rate. Make it visible: a mark on content that passed the gate, and a drawer that shows the derivation. This is not garnish. It is the single claim your architecture earns and your competitors' cannot, and the market has just made it valuable.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sectnum">02 — The asset you are not using</span>
+    <h2>Four engines you already downloaded and never switched on</h2>
+    <p class="lede">Measured today. <code>backend/vidyut-data/</code> is 78&nbsp;MB on disk and holds five datasets. One of the five is wired into the app.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>vidyut 0.4.0 — installed, data present, usage measured 2 Sep 2026</caption>
+        <thead>
+          <tr><th>Module</th><th>Data on disk</th><th>What it gives you</th><th>Used in app</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name mono">lipi</td><td>—</td><td>Transliteration between schemes</td><td class="yes">yes — grading/analyzer.py</td></tr>
+          <tr><td class="name mono">kosha</td><td>✓</td><td>Inflected-form dictionary, morphological lookup</td><td class="yes">yes — analyzer</td></tr>
+          <tr><td class="name mono">prakriya</td><td>✓</td><td>Pāṇinian derivation · <strong>5,056 sūtras indexed</strong></td><td class="no">no</td></tr>
+          <tr><td class="name mono">chandas</td><td>✓ 145 vṛttas, 7 jātis</td><td>Per-syllable weight, metre identification</td><td class="no">no</td></tr>
+          <tr><td class="name mono">sandhi</td><td>✓</td><td>Rule-based splitting of joined forms</td><td class="no">no</td></tr>
+          <tr><td class="name mono">cheda</td><td>✓</td><td>Word segmentation</td><td class="no">diagnostic script only</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Almost every surface proposed below runs on those four idle modules — offline, deterministic, at zero marginal cost. <strong>The differentiator is not a thing to build. It is a thing to switch on.</strong> Two specimens, both real output from this afternoon:</p>
+
+    <h3>Specimen one — the derivation, which is a game board as well as a proof</h3>
+    <div class="ladder">
+      <div class="ladder-head">
+        <span class="in dev">भू</span>
+        <span class="arrow">→</span>
+        <span class="out dev">भवति</span>
+        <span class="count">20 steps · 0 network calls · ₹0</span>
+      </div>
+      <ol>
+        <li><span class="code">1.3.1</span><span class="sutra dev">भूवादयो धातवः</span><span class="res dev">भू</span></li>
+        <li><span class="code">3.2.123</span><span class="sutra dev">वर्तमाने लट्</span><span class="res dev">भू लँट्</span></li>
+        <li><span class="code">1.3.2</span><span class="sutra dev">उपदेशेऽजनुनासिक इत्</span><span class="res dev">भू लँट्</span></li>
+        <li><span class="code">1.3.3</span><span class="sutra dev">हलन्त्यम्</span><span class="res dev">भू लँट्</span></li>
+        <li><span class="code">1.3.9</span><span class="sutra dev">तस्य लोपः</span><span class="res dev">भू ल्</span></li>
+        <li class="elide">— 14 further steps —</li>
+        <li><span class="code">6.1.78</span><span class="sutra dev">एचोऽयवायावः</span><span class="res dev">भवति</span></li>
+      </ol>
+    </div>
+    <p>Every row is a rule with a number, a text, and a result. That is a teaching aid, an anti-hallucination guarantee, and — read the other way, as a rack of rules to apply in the right order — a puzzle game. See <span class="dev">पाणिनि-यन्त्रम्</span> below.</p>
+
+    <h3>Specimen two — the metre, which is a note chart</h3>
+    <p>Gītā 1.1, scanned by <code>vidyut.chandas</code>. Tall bar = <em>guru</em> (heavy), short bar = <em>laghu</em> (light). The engine derives this from the text alone:</p>
+    <div class="scan">
+      <div class="scan-line">
+        <span class="syl guru"><span class="g dev">ध</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">र्म</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">क्षे</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">त्रे</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">कु</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">रु</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">क्षे</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">त्रे</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">स</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">म</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">वे</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">ता</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">यु</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">यु</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">त्स</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">वः</span><span class="w"></span></span>
+      </div>
+      <div class="scan-line">
+        <span class="syl guru"><span class="g dev">मा</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">म</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">काः</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">पा</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">ण्ड</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">वा</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">श्चै</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">व</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">कि</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">म</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">कु</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">र्व</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">त</span><span class="w"></span></span>
+        <span class="syl guru"><span class="g dev">स</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">ञ्ज</span><span class="w"></span></span>
+        <span class="syl laghu"><span class="g dev">य</span><span class="w"></span></span>
+      </div>
+      <span class="key">Real output · vidyut.chandas · classify() on Gītā 1.1</span>
+    </div>
+    <p>A rhythm game needs a note chart for every level. Here the note chart is <em>computed from the verse</em>, which means every verse in Sanskrit literature is already a playable level and you author none of them. One honest caveat from the same test: metre <em>naming</em> returned no match for this verse — anuṣṭubh is variable and the 145-vṛtta table did not claim it. Scansion is solid; treat the metre's name as a bonus, not a promise.</p>
+  </section>
+
+  <section>
+    <span class="sectnum">03 — The inventory</span>
+    <h2>What the language itself makes possible</h2>
+    <p class="lede">Read this as the honest answer to "what else can we include": not features in general, but the ones that stop being copyable the moment a competitor tries. Each row is a property of Sanskrit, not a product idea — the product idea is downstream of it.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Property → surface → engine → state</caption>
+        <thead>
+          <tr><th>Property of Sanskrit</th><th>What it makes possible</th><th>Engine</th><th>State</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Word order is free; endings carry the roles</td><td>Scramble a sentence and it still means the same thing — the clearest demonstration of Sanskrit that exists</td><td class="mono">analyzer</td><td class="yes">shipped</td></tr>
+          <tr><td class="name">Sandhi is exhaustive and deterministic</td><td>Junction puzzles a machine can mark without judgement</td><td class="mono">sandhi + prakriya</td><td class="no">idle</td></tr>
+          <tr><td class="name">Grammar is an executable rule set</td><td>Derivations as proofs; a sūtra-ordering puzzle game</td><td class="mono">prakriya</td><td class="no">idle</td></tr>
+          <tr><td class="name">Syllable weight is computable</td><td>A rhythm game whose levels write themselves</td><td class="mono">chandas</td><td class="no">idle</td></tr>
+          <tr><td class="name">The alphabet is a 5×5 phonetic matrix</td><td>An articulation map; "nearly right" with a principled definition</td><td class="mono">place data</td><td class="yes">U4-1 shipped</td></tr>
+          <tr><td class="name">~2,000 roots generate the lexicon</td><td>Word-building as a crafting system, not a vocabulary list</td><td class="mono">kosha + prakriya</td><td class="no">idle</td></tr>
+          <tr><td class="name">Numbers can be written as words (kaṭapayādi)</td><td>A cipher, and ciphers travel</td><td class="mono">content</td><td class="no">P10-2</td></tr>
+          <tr><td class="name">Prosody encodes binary (Piṅgala)</td><td>Maths that arrives through the rhythm game, not beside it</td><td class="mono">chandas + content</td><td class="no">new</td></tr>
+          <tr><td class="name">Riddles are a formal genre (prahelikā)</td><td>A daily puzzle with 2,000 years of level design behind it</td><td class="mono">content</td><td class="no">new</td></tr>
+          <tr><td class="name">Constrained verse is a genre (citrakāvya)</td><td>Write a line with no nasals, or one consonant — machine-checkable</td><td class="mono">prakriya gate</td><td class="no">new</td></tr>
+          <tr><td class="name">Multi-tasking recitation is a living sport (avadhāna)</td><td>A boss mode with real, contested titles attached</td><td class="mono">all of the above</td><td class="no">new</td></tr>
+          <tr><td class="name">Synonyms are organised in verse (Amarakośa)</td><td>Vocabulary as a chain game rather than a flashcard</td><td class="mono">open corpus</td><td class="no">new</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <span class="sectnum">04 — Games</span>
+    <h2>Nine modes, ranked by what they return</h2>
+    <p class="lede">Each of these is a game a Sanskrit app can have and a French app structurally cannot. Chips mark whether the engine is already on disk and roughly what the build costs.</p>
+
+    <div class="games">
+
+      <div class="game">
+        <span class="sk dev">वाक्य-क्रीडा</span>
+        <span class="en">The sentence that will not break</span>
+        <p>Four word-tiles. Drag them into <strong>any</strong> order — the sentence keeps its meaning, every time. Then change one ending, and it breaks. That single interaction teaches vibhakti better than a term of explanation, because the learner discovers that meaning lives in the endings by trying to destroy it and failing.</p>
+        <p><strong>Also your best advertisement.</strong> It is a fifteen-second video that explains why Sanskrit is not English, and nobody has made it.</p>
+        <div class="chips"><span class="chip own">engine: shipped</span><span class="chip">build: S</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">सन्धि-भेदः</span>
+        <span class="en">The collision</span>
+        <p>Two words slide toward each other; the learner predicts the junction <em>before</em> it lands. Reversed: a joined form arrives and must be split. Marked deterministically, with the rule named underneath.</p>
+        <p>U4-5 already specifies the animation. Making it a game costs little more — and sandhi is the concept learners actually quit over, so the highest-value place to spend interaction design is here.</p>
+        <div class="chips"><span class="chip own">engine: idle, on disk</span><span class="chip">build: M</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">पाणिनि-यन्त्रम्</span>
+        <span class="en">Pāṇini's machine</span>
+        <p>You are given <span class="dev">भू</span> + लट् + prathama + eka and a rack of sūtras. Apply them in the right order to reach <span class="dev">भवति</span>. A wrong rule doesn't buzz — it shows you the form it <em>would</em> have produced, which is the entire lesson.</p>
+        <p>This is a Zachtronics-style optimisation puzzle that happens to be a 2,500-year-old grammar. <strong>It is also the single most postable thing in the project</strong> — see the programmer wedge in §6.</p>
+        <div class="chips"><span class="chip own">engine: idle, on disk</span><span class="chip">build: M</span><span class="chip">₹0 / play</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">छन्दः-क्रीडा</span>
+        <span class="en">The rhythm game</span>
+        <p>The verse recites; you tap light and heavy in time. Miss a weight and the metre stumbles audibly. It uses the Bulbul audio you are already paying for, and the note chart is computed, so <strong>every verse in Sanskrit literature is a level you did not author.</strong></p>
+        <p>It also converts śloka memorisation into a music game — which is close to how memorisation actually worked for three millennia.</p>
+        <div class="chips"><span class="chip own">engine: idle, on disk</span><span class="chip">build: M</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">शब्दरूप-द्वन्द्वः</span>
+        <span class="en">The table, defused</span>
+        <p>The declension grid as a timed board, spaced repetition on the cells you miss, and a <em>why</em> on every cell that opens the derivation. Students are told to memorise these because their teachers have no way to show the pattern. You can show the pattern.</p>
+        <p>This is the most-hated, most-examined object in school Sanskrit, and it aims straight at the cohort described in §1.</p>
+        <div class="chips"><span class="chip own">engine: idle, on disk</span><span class="chip">build: M</span><span class="chip new">segment: CBSE</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">वर्ण-बन्धः</span>
+        <span class="en">The daily word</span>
+        <p>Wordle, but scored on the <strong>varṇamālā grid</strong>: क against ग is one step — same place of articulation, different voicing — and gets its own colour, while क against प is far. "Nearly right" finally has a principled meaning, which a Latin-alphabet Wordle can never have, because English letter order is arbitrary and Sanskrit's is a map of the mouth.</p>
+        <p>Hindi has Shabdle. Sanskrit has nobody. One puzzle a day, no account, web-first — <strong>the best organic acquisition loop available to you.</strong></p>
+        <div class="chips"><span class="chip own">engine: shipped</span><span class="chip">build: S</span><span class="chip new">growth loop</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">श्लोक-अन्त्याक्षरी</span>
+        <span class="en">The chain</span>
+        <p>Antākṣarī, played with verses: the next player must begin on the syllable the last one ended on. Asynchronous, playable over WhatsApp, family against family.</p>
+        <p>The rules need no teaching — every Indian family already knows them. It is also the only multiplayer mode a grandparent in Pune and a grandchild in New Jersey will both actually open.</p>
+        <div class="chips"><span class="chip own">engine: idle + open corpus</span><span class="chip">build: M</span><span class="chip new">diaspora</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">अवधानम्</span>
+        <span class="en">The boss mode</span>
+        <p>The real art form, made playable: hold a line of verse, count the bell, restore a scrambled stanza, and ignore the heckler — the traditional <em>apraṣṭuta-prasaṅgī</em>, whose actual historical job is to break your concentration. Score is how many streams you held.</p>
+        <p>You are not inventing a leaderboard. Aṣṭāvadhānī (eight streams) and śatāvadhānī (a hundred) are <strong>contested titles that living performers hold.</strong> This is the mode that gets written about.</p>
+        <div class="chips"><span class="chip">build: L</span><span class="chip new">brand-defining</span></div>
+      </div>
+
+      <div class="game">
+        <span class="sk dev">कटपयादि</span>
+        <span class="en">The cipher</span>
+        <p>Numbers written as words and words read as numbers. Decode a verse into a date; encode your own phone number into a word that means something.</p>
+        <p>Already scoped as P10-2. Worth pulling forward only because ciphers are inherently shareable, and this one is a thousand years old.</p>
+        <div class="chips"><span class="chip">build: S</span><span class="chip">content-bound</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <span class="sectnum">05 — Maths</span>
+    <h2>The best maths hook is not Līlāvatī</h2>
+    <p class="lede">P10 already exists and its discipline is right: audit numeral coverage before authoring a single problem, and stop the phase if confident mis-parses are common. Two amendments.</p>
+
+    <p><strong>Lead with Piṅgala, not Bhāskara.</strong> The <em>Chandaḥśāstra</em> (c. 3rd–2nd century BCE) describes prosody in a system that is genuinely binary — light and heavy are two states, enumerated exhaustively — and contains the <em>meru-prastāra</em>, the triangle Europe would later name for Pascal, made explicit in Halāyudha's 10th-century commentary. Its <em>mātrāmeru</em> sequence is the Fibonacci sequence, centuries before Fibonacci.</p>
+    <p>Why that beats Līlāvatī as the opening: a learner who has played the rhythm game <strong>has already been doing binary arithmetic for a week without being told.</strong> Revealing it is an earned discovery rather than a claim on a marketing page — and it costs nothing extra, because it rides on a game you were building anyway. Līlāvatī's bees and peacocks are lovely and public domain; keep them as the second beat, not the first.</p>
+
+    <div class="verdict stop">
+      <span class="tag">Do not ship</span>
+      <p><strong>"Vedic Mathematics" is not ancient.</strong> The sixteen-sūtra system is Bharati Krishna Tirtha's, published in 1965, and its claimed Vedic provenance has never been substantiated. The tricks are fine; the label is false. Using it would trade your one durable asset — being the app that does not make things up — for a marketing sentence you do not need, in a category where fact-checkers are already active.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sectnum">06 — Acquisition</span>
+    <h2>How to actually fetch people</h2>
+    <p class="lede">The 28 August analysis settled the strategy: paid acquisition is arithmetically fatal at roughly ₹46 of lifetime revenue per download, and the channels are creators, temple schools and Samskrita Bharati. That still holds. What follows is the <em>mechanics</em> — what makes each channel compound instead of spend.</p>
+
+    <ol class="channels">
+      <li>
+        <span class="what">Ship the toys before the app</span>
+        <span class="why">Three free web pages, no account, no install: the derivation viewer ("type any word, watch Pāṇini derive it"), the metre scanner ("paste a verse, see its rhythm"), and the daily word. All three run on engines already on disk, offline, at ₹0 marginal cost — so they can be uncapped and free forever, which is exactly what makes them spread. One weekend each.</span>
+      </li>
+      <li>
+        <span class="what">The programmer wedge, which nobody has taken</span>
+        <span class="why">Pāṇini's grammar is a formal system that predates Backus–Naur form by some 2,500 years — Ingerman proposed in 1967 that BNF be renamed Pāṇini–Backus Form, and the Pāṇinian formalism is strictly more expressive than context-free grammars. A working derivation viewer is a front-page post on Hacker News and r/programming, and that audience contains precisely the people who install a Sanskrit app for reasons other than devotion. It has never been shipped as a usable web tool.</span>
+      </li>
+      <li>
+        <span class="what">Supply the creators; don't sponsor them</span>
+        <span class="why">The ecosystem is real: The Sanskrit Channel (~1.3M subscribers), Vyoma, Sanskritshree, the sanskritsparrow walking groups in Cubbon Park and the ~1,000-member Kimbho WhatsApp group, Yash Salunke's Gen Z Sanskrit comedy. They share one problem — explaining grammar on camera is hard and they have no visuals. Give them the derivation ladder and the scansion strip as free embeddable widgets carrying a small mark. Sponsorship buys one video; being the tool inside every video compounds.</span>
+      </li>
+      <li>
+        <span class="what">Go where the deadline is</span>
+        <span class="why">The CBSE cohort in §1 has a date, no textbook, and untrained teachers. A free teacher pack — the śabdarūpa and dhāturūpa the syllabus actually tests, each with its derivation, printable — costs a weekend of content work and is the only realistic route into the institutional licensing band that the August model needs for its upside case.</span>
+      </li>
+      <li>
+        <span class="what">Build every share surface WhatsApp-shaped</span>
+        <span class="why">India's sharing layer is not email and not a link preview. It is an image, one line of text, and a URL, forwarded into a family group. Design the daily-word result card, the antākṣarī challenge and the family streak as that object from the start, rather than retrofitting sharing later.</span>
+      </li>
+      <li>
+        <span class="what">"You already know 300 Sanskrit words"</span>
+        <span class="why">Carried over from August, and still the best cold open available: it is true, it is shareable, and it doubles as onboarding — start the learner from words they already own instead of from the alphabet. Most Sanskrit courses begin by making the learner feel illiterate. This one begins by telling them they are already halfway in.</span>
+      </li>
+      <li>
+        <span class="what">Duolingo's refusal now has a second act</span>
+        <span class="why">They declined to build Sanskrit citing low demand, with a petition still running. They then shipped AI content their own users publicly called slop. "The app Duolingo wouldn't build, built the way Duolingo stopped building" is a headline, an antagonist and a demand proof in one line — and unlike most positioning, you can substantiate it with the gate's pass rate.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="sectnum">07 — Interface</span>
+    <h2>Where to spend the motion budget</h2>
+    <p class="lede"><code>UI_HANDOVER.md</code> already covers the mascot, the path, the verdict moment and the articulation map, and its ranking is sound. Five additions that are specific to this language rather than to this category.</p>
+
+    <h3>Animate the śirorekhā — the signature motion nobody else can have</h3>
+    <p>Devanagari hangs from a headline. So a word can be <em>built</em> the way it is written: the horizontal rule draws left to right, and the glyphs descend from it into place. Latin type has no equivalent gesture — there is nothing to hang from. Used once, on the word-reveal moment, it becomes the app's visual signature; used everywhere it becomes noise. Spend it in one place.</p>
+
+    <h3>Order the sound design the way the alphabet is ordered</h3>
+    <p>The varṇamālā runs from the throat to the lips. The interface sounds can run the same way: back-of-mouth rows get darker, lower feedback tones; labial rows get brighter, forward ones. A learner who never reads the explanation still absorbs the axis through their ears over a few hundred sessions. This is free — it is a choice about five sound files, not a feature.</p>
+
+    <h3>Make the proof drawer the anti-slop moment, visibly</h3>
+    <p>Duolingo's "Explain My Answer" is a model talking, and that is all it is. Yours says what the sentence <em>means</em> in plain language — that part is still the model, and still the right tool for it — and then opens a drawer with numbered rules underneath, where the grammatical claim gets proved rather than asserted. Give the drawer a physical metaphor with restraint — an unrolling, not a temple — and put the rule count in the header, because <em>20 steps</em> is itself the claim. This is the one screen worth showing in every piece of marketing you ever make.</p>
+
+    <h3>Keep abstention as a character trait, and say so out loud</h3>
+    <p>The <code>unsure</code> violet is defined in <code>theme.ts</code> and still unused. A tutor that says <em>"I couldn't hear that clearly — no penalty"</em> instead of guessing is doing something no competitor does, and it is the emotional counterpart to the verified-not-generated position. It belongs in the store listing, not just the code.</p>
+
+    <h3>Do not add hearts, energy, or any meter that stops a willing learner</h3>
+    <p>Duolingo is actively losing goodwill over exactly this, right now. A Sanskrit learner who wants a sixth lesson is the rarest thing you have. Never charge them friction for it; find the money in the diaspora subscription and the institutional pack instead.</p>
+  </section>
+
+  <section>
+    <span class="sectnum">08 — Correction</span>
+    <h2>Two claims to drop, one to make louder</h2>
+    <p class="lede">You framed this as "the most ancient language, and very scientific." One of those is weaker than it sounds, one is a documented myth, and one is far stronger than the version usually told. This is a product decision, not a pedantic one: the whole differentiator is being the app that does not make things up, and you cannot sell verified content on debunked marketing.</p>
+
+    <h3>"The oldest language" — don't claim it</h3>
+    <p>Sumerian and Egyptian have written records older by well over a millennium. The true claim is more interesting anyway: Sanskrit is among the oldest <strong>continuously used</strong> literary languages on earth, preserved through an oral transmission of such fidelity that the preservation techniques are themselves worth teaching — and would make a genuinely good lesson.</p>
+
+    <h3>"NASA said Sanskrit is the best language for computers" — this is a myth</h3>
+    <p>It traces to Rick Briggs' 1985 paper in <em>AI Magazine</em>, written at RIACS, NASA Ames. What the paper actually argued is better than the myth: that Sanskrit grammarians had already built, for a natural language, the unambiguous agent–action–object representations that 1980s AI was calling semantic networks — that the field had reinvented a wheel. There is no supercomputer programme, no sixth-generation plan, and no claim that Sanskrit is a programming language. Indian fact-checkers have run at this claim repeatedly. Cite the real paper; it is a better story and it survives scrutiny.</p>
+
+    <h3>"Scientific" — say the precise version, which is extraordinary</h3>
+    <p>Pāṇini's <em>Aṣṭādhyāyī</em> (c. 5th–4th century BCE) is the earliest known formal generative grammar: roughly 4,000 sūtras with metarules, ordered application and recursion, sufficient to derive the language's forms. Ingerman's 1967 proposal to rename BNF "Pāṇini–Backus Form" is real. The Pāṇinian formalism is strictly more powerful than the context-free grammars BNF describes.</p>
+    <div class="verdict make">
+      <span class="tag">The point</span>
+      <p>You do not need the myth, because <strong>you are running the actual thing.</strong> The twenty-step derivation in §2 is not an argument that Sanskrit is scientific. It is the science, executing, on your machine, offline, for nothing. Everything in this document is downstream of that one fact.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sectnum">09 — Sequence</span>
+    <h2>What I would actually do next</h2>
+    <p class="lede">Constraint first: you are one person, and <code>HANDOVER.md</code> is right that content at volume (P7) is the bottleneck. <strong>Nothing here should displace it.</strong> But the first five items cost days rather than weeks, because the engine is already on disk and the marginal cost of running it is zero.</p>
+
+    <ol class="queue">
+      <li><span class="t"><b>Switch on prakriya</b> — P9-1 and P9-2, already planned, blocked by nothing. Unlocks items 2, 3, 6 and 7.</span><span class="cost">days</span></li>
+      <li><span class="t"><b>The proof drawer.</b> Stop asking the LLM to adjudicate <em>grammar</em> — DECISIONS records it false-accusing about half the time on dual-bearing content — and answer that from the derivation instead. <strong>The LLM stays</strong>, doing the job it is good at: meaning, register and why you would say this at all, none of which a rule engine can supply. Both answers ship together. See <code>HANDOVER.md</code> P9-3.</span><span class="cost">days</span></li>
+      <li><span class="t"><b>The derivation viewer, as a free web page.</b> The acquisition move, one weekend, ₹0 to run, and the one thing that reaches programmers.</span><span class="cost">weekend</span></li>
+      <li><span class="t"><b><span class="dev">वाक्य-क्रीडा</span></b> — the word-order game. Nearly free; the best explanation of Sanskrit anyone has shipped.</span><span class="cost">days</span></li>
+      <li><span class="t"><b><span class="dev">वर्ण-बन्धः</span></b> — the daily word, web-first, no account. The loop that compounds while you sleep.</span><span class="cost">week</span></li>
+      <li><span class="t"><b><span class="dev">छन्दः-क्रीडा</span></b> — the rhythm game. Uses TTS you already buy; turns the daily śloka from a page into a habit.</span><span class="cost">weeks</span></li>
+      <li><span class="t"><b>Śabdarūpa drill + the free teacher pack.</b> The CBSE wedge. Do it once P7 has content to sit beside it.</span><span class="cost">weeks</span></li>
+      <li><span class="t"><b><span class="dev">अवधानम्</span></b> — architect for it, don't build it yet. It is the mode that defines the brand, and the worst possible thing to ship half-finished.</span><span class="cost">later</span></li>
+    </ol>
+
+    <div class="verdict stop">
+      <span class="tag">Still deferred</span>
+      <p>Multi-language expansion; RAG (settled 1 September — <code>vidyut.prakriya</code> answers the question retrieval was for); anything needing local models (hard constraint); the scripture library (settled 28 August — Vedapath ran that experiment and returned 5,000 downloads against a million-plus for single-text apps).</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Compiled 2 September 2026 as a companion to <code>sanskrit-market.html</code> (28 August). Engine claims in §2 — module availability, sūtra count, derivation length, scansion output, and the 78&nbsp;MB data directory — were produced by running <code>backend/.venv</code> against <code>backend/vidyut-data/</code> on 2 September 2026 and are pasted verbatim. Product-state claims are drawn from <code>HANDOVER.md</code>, <code>UI_HANDOVER.md</code> and <code>DECISIONS.md</code> at commit <code>6053753</code>.</p>
+    <p>External sources: CBSE third-language rollout — <a href="https://news.careers360.com/cbse-mandatory-third-language-2026-r3-rule-class-6-sanskrit-only-option-delhi-noida-pvt-english-medium-schools-no-french-spanish">Careers360</a>, <a href="https://theprint.in/india/education/cbses-3-language-rollout-has-stumped-students-parents-teachers-hopes-pinned-on-supreme-court/2963364/">ThePrint</a>. Duolingo AI-first backlash and stock decline — <a href="https://businessjournalism.org/2026/05/duolingo/">Reynolds Center</a>, <a href="https://www.customerexperiencedive.com/news/duolingo-ai-first-consumer-backlash-lessons/757133/">CX Dive</a>; energy system — <a href="https://duoplanet.com/duolingo-energy-system/">Duoplanet</a>. Sanskrit revival, creators and the most-hated-subject observation — <a href="https://openthemagazine.com/india/the-second-life-of-sanskrit">Open Magazine</a>. Avadhāna — <a href="https://en.wikipedia.org/wiki/Avadhanam">Avadhanam</a>. Citrakāvya and prahelikā — <a href="https://en.wikipedia.org/wiki/Chitra-kavya">Chitra-kavya</a>. Pāṇini and BNF — <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus–Naur form</a>. Briggs 1985 — <a href="https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466">AI Magazine</a>, myth traced by <a href="https://factly.in/nasa-scientist-did-not-state-that-america-is-planning-to-create-supercomputers-based-on-sanskrit/">FACTLY</a> and <a href="https://scroll.in/article/750526/how-sanskrit-came-to-be-considered-the-most-suitable-language-for-computer-software">Scroll</a>. Piṅgala — <a href="https://en.wikipedia.org/wiki/Pingala">Piṅgala</a>. Open corpora — <a href="https://github.com/ambuda-org/dcs">DCS</a>, subhāṣita database (<code>sanskrit-coders/subhAShita-db-sanskrit</code>).</p>
+  </footer>
+
+</div>

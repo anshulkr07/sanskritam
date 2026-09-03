@@ -1,7 +1,8 @@
-// Profile — the learner's stats: streak, the two ratios, and feature mastery.
-// Reads /me (already cached in auth). Lets the user bump the script ratio.
-// U3-3: Added Skia-inspired radial rings for per-category mastery visualisation.
-// U4-3: Code-switch dial made visible with animated language bar.
+// Progress — the learner's stats: streak, the two ratios, and feature mastery.
+// (U8-6: renamed from Profile. The Sanskrit ratio dial stays HERE, never in the
+// drawer — it is the product's most distinctive idea, U4-3, and hiding a
+// differentiator in a settings list is how it stops being one.) Reads /me.
+// U3-3: radial rings per category. U4-3: code-switch dial made visible.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
@@ -17,6 +18,7 @@ import Animated, {
 import { api } from "../api/client";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
+import type { TabScreenProps } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { spring as springCfg } from "../motion";
 
@@ -140,7 +142,7 @@ function CodeSwitchDial({
 
 // ── Main screen ───────────────────────────────────────────────────────
 
-export default function ProfileScreen() {
+export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
   const { learner, refresh } = useAuth();
   const [bumping, setBumping] = useState(false);
 
@@ -179,7 +181,7 @@ export default function ProfileScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body}>
         {/* Header */}
         <View style={styles.header}>

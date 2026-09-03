@@ -1,9 +1,13 @@
 # Shabd — Backend Handover
 
 **Audience:** an implementing coding agent (DeepSeek-V4-Flash / Hermes).
-**Revised:** 2026-09-01 (night) — **P0–P5 complete, P6-0/P6-1 complete,
-P6-2 complete, P6-3 complete, P7-2 running.**
+**Revised:** 2026-09-02 — **P0–P5 complete, P6-0/P6-1 complete,
+P6-2 complete, P6-3 complete, P7-2 running. P11 added; P9/P10 amended.**
 **Companion doc:** [`UI_HANDOVER.md`](UI_HANDOVER.md) — client, motion, mascot.
+**Research doc:** [`shabd-expansion.html`](shabd-expansion.html) — the market
+and product research P9/P10/P11 below are derived from. Read it once before
+starting P11; it explains *why* these surfaces and not others. It does not
+contain tasks — this file does.
 
 ---
 
@@ -11,7 +15,7 @@ P6-2 complete, P6-3 complete, P7-2 running.**
 
 | | |
 |---|---|
-| Backend tests | **308 passing** |
+| Backend tests | **310 collected** (was recorded as 308 / 300 in two places — both stale, corrected 2026-09-02) |
 | Mobile typecheck | 0 errors |
 | Alembic head | `a1b2c3d4e5f6` |
 | Phases done | P0–P5, P6-0, P6-1, P6-2, P6-3 |
@@ -135,7 +139,11 @@ D:\Projects\Shabd\
 │   │   └── seeds/           challenges(37) dialogue(1) shlokas(3)
 │   │                        varnamala features briefs(50)
 │   ├── vidyut-data/         78 MB, gitignored, auto-downloaded.
-│   │   └── prakriya/        219 KB — 5,152 sūtras. See P9. UNUSED TODAY.
+│   │   ├── prakriya/        219 KB — 5,152 sūtra entries. See P9. UNUSED.
+│   │   ├── chandas/         meters.tsv — 145 vṛttas, 7 jātis. UNUSED. P11-1.
+│   │   ├── sandhi/          rules.csv. UNUSED. P11-2.
+│   │   ├── kosha/           used by analyzer.py
+│   │   └── cheda/           UNUSED except scripts/diag_chedaka_seeds.py
 │   ├── migrations/versions/ head: a1b2c3d4e5f6
 │   ├── results/authoring/   per-brief authoring stats (P7)
 │   ├── app/.authoring-cache/  draft cache keyed by brief hash
@@ -264,7 +272,7 @@ self-configure; ad-hoc scripts do not.
 cd backend
 $env:PYTHONIOENCODING='utf-8'
 
-# Backend — baseline 300
+# Backend — baseline 310 (measured 2026-09-02 via --collect-only)
 ./.venv/Scripts/python.exe -m pytest -q
 
 # Server. Note the working directory (§2.10) and port 8001, not 8000.
@@ -299,8 +307,66 @@ smoke call costs a fraction of a paisa and would have caught all of this.
 | **P6-2, P6-3** | Commit the client work; fix the authoring prompt | none — do these first |
 | **P7** | **Content at volume** — the biggest lever in the project | P6-3 |
 | **P9** | **Pāṇini derivation** — the differentiator you already own | none, but do P7 first |
+| **P11** | **The other three idle engines** — chandas, sandhi, and the surfaces they unlock | P9-1 |
 | **P8** | First real users | P7 |
-| **P10** | Maths in Sanskrit | P7, P9 |
+| **P12** | The daily word service — the growth loop's backend | P11-4 |
+| **P10** | Maths in Sanskrit | P7, P9, P11-1 |
+| **P13** | The return loop — notifications. Nothing exists today. | P8 |
+| **P14** | Entitlements and subscription — ⚠ owner-gated throughout | P8 + pricing decision |
+| **P15** | Async social — the verse chain | P7, P13, P14 |
+| **P16** | `अवधानम्` — the boss mode | P11, P15 |
+
+### ⚠ Before any of this: the client cannot reach what it already has
+
+Audited 2026-09-02. **653 lines of finished screens are unreachable** —
+`Path.tsx` (339, the journey map, not even imported), `WordOrder.tsx` (161) and
+`Paradigm.tsx` (153) — and the whole mobile app contains **one**
+`navigate()` call. The owner has also decided the navigation shape: **six
+bottom tabs plus a left drawer**, with Śloka and Varṇamālā demoted from tabs to
+Home cards.
+
+All of that is client work and lives in **`UI_HANDOVER.md` phase U8**
+(U8-0 … U8-6). **U8-0 is one hour and roughly triples the reachable app; it
+should be picked up before anything else in either document.** It is listed
+here because a backend agent reading only this file would otherwise build P12
+against a client that cannot show it.
+
+### What changed on 2026-09-02, and why P11 exists
+
+Two findings from `shabd-expansion.html`. Both are recorded here because they
+change task priority, not because you need to act on the market analysis.
+
+**1. The audit found three more idle engines, not one.** P9 was written as
+though `vidyut.prakriya` were the only unused capability. It is not. Measured
+on this machine 2026-09-02, `vidyut` 0.4.0 with all data present:
+
+```
+lipi      used (grading/analyzer.py)     prakriya  IDLE  5,152 entries / 5,056 unique codes
+kosha     used (analyzer)                chandas   IDLE  145 vṛttas, 7 jātis
+                                         sandhi    IDLE
+                                         cheda     IDLE (one diagnostic script)
+```
+
+Everything in P11 is **switch-on work at ₹0 marginal cost** — local
+computation, no vendor call, no quota. That is a different class of task from
+P7 and should not compete with it for the content budget.
+
+**2. "Verified, not generated" became a market position, and you can back it.**
+Duolingo's AI-first turn drew a public quality backlash through 2025–26;
+Airlearn leans heavily on generated assets too. Sanskrit is the one major
+language where grammar is machine-checkable, and the P6-3 gate already
+measures 83.3%. This is a **product** claim with an engineering consequence:
+anywhere the app asserts a grammatical fact, it should be able to show the
+derivation that proves it. See P9-3 and U7-1 — **and note that this does not
+mean removing the LLM. It means giving the LLM a job it is good at.**
+
+**A third finding is recorded but is not a task.** CBSE made a third language
+compulsory from Class 6 in 2026, and Sanskrit is the default option in most
+English-medium schools, with textbooks not yet published. That creates a
+school-exam segment whose single hardest object — śabdarūpa / dhāturūpa tables
+— is exactly what `prakriya` generates deterministically (P11-5). **The policy
+is in litigation; do not let it drive architecture.** Build P11-5 because P9
+hands it to you anyway.
 
 ### Explicitly NOT next: RAG
 
@@ -540,6 +606,22 @@ file, already a dependency. §2.7 bans *inference*, not linguistics.
    sutra_devanagari, result}]}`.
 2. Load the sūtra corpus once at module level via `Data(...).load_sutras()`
    and index by code. 5,152 entries is nothing; do not query it per step.
+   ⚠ **`load_sutras()` returns 5,152 entries but only 5,056 unique codes**
+   (measured 2026-09-02). A plain `{s.code: s.text for s in ...}` silently
+   drops 96 of them and the loss is invisible — the lookup just returns the
+   last writer's text. Build `dict[str, list[Sutra]]`, or assert the count and
+   log the collisions. Do not discover this later from a wrong sūtra text in a
+   learner-facing drawer.
+
+   **Live API shapes, verified 2026-09-02** — the obvious guesses are wrong:
+   - `Vyakarana().derive()` takes **one positional args object**, not keyword
+     arguments: `derive(Pada.Tinanta(dhatu=..., prayoga=..., lakara=...,
+     purusha=..., vacana=...))`. `derive(dhatu=..., lakara=...)` raises.
+   - It returns a **list** of prakriyās; take `[0]` and handle the empty list.
+   - Each step exposes `.code` and `.result` (a list of strings), not a
+     single string.
+   - Confirmed end-to-end: `भू` → `भवति`, **20 steps**, first step `1.3.1
+     भूवादयो धातवः`, last `6.1.78 एचोऽयवायावः`. Pin exactly this in tests.
 3. Transliterate SLP1 → Devanagari with `analyzer.py`'s existing helpers.
    **Do not add a second transliteration path.**
 4. Degrade like `localtime` does: an underivable form returns an empty step
@@ -563,11 +645,42 @@ this is local computation, not a vendor call. Say so in a comment so nobody
 **Blocked by:** P9-2. **Effort:** M
 
 When `grade_attempt` returns a case/number/person mismatch, the correct form's
-derivation is computable. Show it. Keep the LLM explanation for *meaning*;
-grammar comes from the derivation.
+derivation is computable. Show it.
+
+### ⚠ The LLM stays. This is an addition, not a replacement.
+
+Owner instruction, 2026-09-02, and the most likely thing to get wrong here:
+**do not delete, bypass, or deprecate `services/explainer.py`.** If any
+research or summary you have been given says the derivation "replaces" the LLM
+explanation, that phrasing is wrong and this paragraph overrides it.
+
+The two answer different questions and the learner needs both:
+
+| Question | Answered by | Why |
+|---|---|---|
+| *What form should this be, and why that ending?* | **`prakriya`** | Deterministic, offline, ₹0, checkable. Never guesses. |
+| *What does this sentence mean? Why is this the natural thing to say? What is the nuance?* | **the LLM** (`explainer.py`) | Meaning, register and context are not derivable from grammar rules. `prakriya` has nothing to say about them. |
+
+So the wrong-answer response carries **both fields**. Neither is optional, and
+neither may be silently dropped when the other is unavailable:
+
+- Derivation missing (underivable form) → still return the LLM gloss.
+- LLM unavailable (no key, quota, timeout) → still return the derivation, and
+  fall back to the authored gloss exactly as `explainer.py` already does.
+- Both missing → the existing authored-gloss path. Unchanged.
+
+What *does* change: the LLM is **no longer asked to adjudicate grammar.**
+`DECISIONS.md` records it false-accusing on dual-bearing content roughly half
+the time — that is the behaviour being retired, not the model. Move the
+grammatical claim into the derivation and keep the model doing meaning, where
+it is good and where nothing else can substitute for it.
 
 §2.2 still binds: a derivation is an explanation, never an accusation, and it
-must never appear on an `unsure` verdict.
+must never appear on an `unsure` verdict. The same is true of the gloss.
+
+**Tests:** both fields present on a case-mismatch verdict; derivation absent +
+gloss present when the form is underivable; gloss absent + derivation present
+when the provider is unconfigured; **neither present on `unsure`.**
 
 ## P9-4 · The sūtra path (content model)
 
@@ -580,17 +693,33 @@ order might be.
 
 ## P9-5 · Client surfaces → `UI_HANDOVER.md` U7
 
-The derivation viewer and sūtra path belong in the UI doc as **phase U7**, and
-are DeepSeek's lane. The seam is the `GET /grammar/derive` response shape from
-P9-2 — build the client against that contract, not against `vidyut` directly.
-**The mobile app must never import a Sanskrit library**; the backend derives,
-the client renders.
+**U7 now exists and is written.** The derivation viewer, the *animated*
+derivation (owner request, 2026-09-02), the sandhi collision, the scansion
+strip and the sūtra path are specified there as U7-1 … U7-5, and are
+DeepSeek's lane.
+
+The seam is the `GET /grammar/derive` response shape from P9-2 — build the
+client against that contract, not against `vidyut` directly. **The mobile app
+must never import a Sanskrit library**; the backend derives, the client
+renders.
+
+Two consequences for *this* file, because they constrain the response shape:
+
+1. **The animation needs the steps to be individually meaningful.** U7-1 plays
+   the derivation one sūtra at a time, highlighting the segment that changed.
+   So every step must carry `code`, `sutra_devanagari`, and `result` **as its
+   own complete form** — not a diff, and not only the final output. The shape
+   in P9-1 already does this; do not "optimise" it into a compressed diff.
+2. **Send the step count in the envelope.** `{result, step_count, steps[]}`.
+   The client shows *20 steps* in the header before the animation runs, and
+   should not have to count an array to render a header.
 
 ---
 
 # PHASE P10 — Maths in Sanskrit
 
-**Blocked by:** P7 and P9. **Do not start before the first course has content.**
+**Blocked by:** P7, P9, and now **P11-1**. **Do not start before the first
+course has content.**
 
 Shipping a second course while the first has twenty minutes of material is how
 you end up with two half-products. This phase is written down now so it is
@@ -602,6 +731,34 @@ Līlāvatī (Bhāskara II, 1150 CE) and the Āryabhaṭīya are **public domain,
 finite, and famous** — content acquisition rather than authoring, at ₹0
 marginal cost. Sanskrit number words are nouns: they decline, so the existing
 grading stack grades them with no new code.
+
+### Amendment 2026-09-02 — lead with Piṅgala, not Bhāskara
+
+Piṅgala's *Chandaḥśāstra* (c. 3rd–2nd c. BCE) describes prosody as an
+exhaustive enumeration of two states, light and heavy — a binary encoding —
+and contains the *meru-prastāra* (the triangle later named for Pascal, made
+explicit in Halāyudha's 10th-century commentary). Its *mātrāmeru* sequence is
+the Fibonacci sequence.
+
+**Why this reorders the phase:** it rides on P11-1, which you will already
+have built. A learner who has played the scansion surface has been
+manipulating binary strings for a week without being told so. Revealing that
+costs one screen and no new content pipeline, whereas Līlāvatī costs a
+numeral-coverage audit and an authoring pass. Piṅgala first, Līlāvatī second.
+
+This is why P10 now lists **P11-1** as a gate.
+
+### ⛔ Do not ship "Vedic Mathematics"
+
+The sixteen-sūtra system is Bharati Krishna Tirtha's, **published in 1965**,
+and its claimed Vedic provenance is not substantiated. The arithmetic tricks
+are fine; the label is false.
+
+This is not a style note. The entire P9/P11 thesis is that Shabd asserts only
+what it can prove, and the app is about to start showing sūtra numbers to back
+its grammatical claims. Shipping an unsupported provenance claim in the maths
+course discredits the derivation drawer three screens away. **If a content
+brief or seed asks for "Vedic maths", reject it and escalate (§6).**
 
 ## P10-1 · Numeral coverage audit — do this first
 
@@ -640,6 +797,398 @@ the grammar is graded by the stack you already have.
 
 ---
 
+# PHASE P11 — The other three idle engines
+
+> Added 2026-09-02. P9 treats `vidyut.prakriya` as *the* unused capability.
+> The audit found **three more**: `chandas`, `sandhi`, and `cheda`. All have
+> their data on disk in `backend/vidyut-data/` already.
+
+**Blocked by:** P9-1 for the tasks that need derivations; P11-1 and P11-2 are
+blocked by nothing.
+
+**Every task in this phase is local computation.** No vendor call, no network,
+no quota, **₹0 marginal cost.** That is the whole reason this phase can run
+alongside P7 instead of competing with it for the Sarvam grant.
+
+Follow P9-2's precedent: put a comment in each router saying *no quota by
+design*, so nobody "fixes" it later by adding metering.
+
+## P11-0 · Pin the engines with a test
+
+**Blocked by:** nothing. **Effort:** S
+
+**Touch:** create `tests/test_vidyut_engines.py`
+
+One test that imports `prakriya`, `chandas`, `sandhi`, `kosha`, `lipi` and
+asserts each loads its data. It exists so that a vidyut upgrade or a missing
+`vidyut-data/` fails loudly here instead of silently degrading four features.
+
+⚠ `vidyut-data/` is gitignored and auto-downloaded. **Skip, do not fail**, when
+the directory is absent (`pytest.mark.skipif`) — a fresh clone must still go
+green. No network.
+
+**Tests:** the five imports; `Data('vidyut-data/prakriya').load_sutras()`
+returns 5,152 entries with 5,056 unique codes; `chandas` loads 145 vṛttas and
+7 jātis. Pin these numbers — a change in them changes the product.
+
+## P11-1 · The scansion service
+
+**Blocked by:** nothing. **Effort:** M
+
+**Touch:** create `app/services/chandas.py`, `tests/test_chandas.py`; add to
+`routers/grammar.py`
+
+Every verse in Sanskrit is a rhythm the engine derives from the text alone.
+This is the note chart for U7-3 and for the śloka surface, and it makes P10's
+Piṅgala amendment nearly free.
+
+1. `Chandas.from_text(open('vidyut-data/chandas/meters.tsv').read())` —
+   ⚠ **not `Chandas.from_here()`**, which does not exist on 0.4.0. Load once
+   at module level, like the sūtra corpus.
+2. Input is Devanagari; transliterate to SLP1 with `analyzer.py`'s helpers
+   before calling `classify()`. **Do not add a second transliteration path**
+   (§P9-1.3).
+3. `classify()` returns a `Match` exposing **`aksharas` and `padya` only** —
+   no `.name`, no `.vrtta`, no `.padas`. `aksharas` is a list of lines, each a
+   list of `Akshara(text, weight)` with `weight` in `{'G','L'}`.
+4. Return `{lines: [[{syllable_devanagari, weight}]], metre: str | None}`.
+   Transliterate each `akshara.text` back to Devanagari — the client renders,
+   it does not convert.
+5. Degrade like P9-1.4: unscannable input returns empty lines, never raises.
+
+⚠ **`padya` is often `None` and that is not a bug.** Verified 2026-09-02: Gītā
+1.1 scans correctly into 16 + 16 syllables but returns **no metre name**,
+because anuṣṭubh is variable and is not a fixed entry in the 145-vṛtta table.
+
+**So: scansion is a promise, metre naming is not.** Type the field optional,
+and tell U7-3 to render the rhythm strip with no name rather than hiding the
+strip when the name is missing. Never show a guessed metre name — that is
+exactly the failure mode P9 exists to end.
+
+**Tests:** Gītā 1.1 pins the 32 weights and `metre is None`; a known fixed
+vṛtta pins its name; empty and non-Devanagari input return empty, not raise;
+**no network.**
+
+## P11-2 · The sandhi service
+
+**Blocked by:** nothing (splitting). **Effort:** M
+
+**Touch:** create `app/services/sandhi.py`, `tests/test_sandhi.py`; add to
+`routers/grammar.py`
+
+1. `Splitter.from_csv('vidyut-data/sandhi/rules.csv')`, loaded once at module
+   level. `split_at(text, index)` returns `Split(first, second, is_valid)`.
+2. Expose split candidates for a joined form, filtered to `is_valid`, ranked
+   by whether both halves resolve in `kosha`. **`is_valid` is a phonetic
+   check, not a lexical one** — it will happily return real-sounding
+   non-words, so the kosha filter is what makes the output usable.
+3. For the *join* direction and the rule name (`6.1.87 आद्गुणः`), use
+   `prakriya`, not this module. That is why U4-5's rule-naming is listed under
+   P9's unlocks and not here.
+4. Degrade: no valid split returns an empty list.
+
+**Tests:** a known junction splits correctly and the correct split ranks
+first; a form with no valid split returns `[]`; **no network.**
+
+## P11-3 · The word-order endpoint
+
+**Blocked by:** P9-1. **Effort:** M
+
+**Touch:** create `app/services/word_order.py`, `tests/test_word_order.py`;
+add to `routers/grammar.py`
+
+The surface behind U7-4. Free word order is the most distinctive fact about
+Sanskrit and the app currently never demonstrates it.
+
+1. Given a graded-correct sentence, return its words plus **the set of
+   permutations that remain grammatically equivalent**, and for each word the
+   ending that carries its role.
+2. Equivalence is decided by `analyze_sentence` + `feature_set_variants` —
+   the same path P7-4 uses for `accepted_parses`. **Do not hand-write
+   permutation rules and do not modify `analyzer.py`** (§2.1).
+3. Also return, per word, one *wrong* ending and what it would change the
+   sentence to mean. That is the half of the interaction that teaches.
+
+⚠ Do not enumerate all `n!` orders for long sentences. Cap the sentence length
+you accept, and say so in the response rather than truncating silently (§2.11).
+
+**Tests:** a 3-word sentence returns its equivalent orders and no
+non-equivalent one; a wrong ending is rejected by the same call; the length
+cap returns an explicit refusal, not `[]`.
+
+## P11-4 · Phonetic distance on the varṇamālā grid
+
+**Blocked by:** nothing. **Effort:** M
+
+**Touch:** create `app/services/varna_distance.py`, tests; add to
+`routers/grammar.py`
+
+The 5×5 sparśa matrix is a map of the mouth, and the backend already returns
+`place` on every character (see `UI_HANDOVER.md` U4-1). That makes "nearly
+right" definable: क → ग is one step (same place, different voicing), क → प is
+far.
+
+Return a distance and the axis that differs (`place` | `voicing` |
+`aspiration` | `nasality`). This is what lets a guessing game score a near-miss
+honestly instead of showing a binary right/wrong, and it is reusable by the
+pronunciation feedback path.
+
+**Do not invent articulation data.** Use the `place` values the API already
+returns (U4-1's "Do not" applies here too).
+
+**Tests:** the four axes each pin an example pair; identical characters are
+distance 0; a character outside the sparśa grid returns a defined result
+rather than raising.
+
+## P11-5 · Śabdarūpa and dhāturūpa tables
+
+**Blocked by:** P9-2. **Effort:** M
+
+**Touch:** `app/services/prakriya.py`, `routers/grammar.py`, tests
+
+A full paradigm is a loop over P9-2's single-form derivation: 24 cells for a
+noun (8 vibhakti × 3 vacana), the lakāra grid for a verb. Each cell carries its
+own derivation, so the "why is it this?" answer is already attached.
+
+1. `GET /grammar/paradigm` by prātipadika + liṅga, or dhātu + lakāra.
+2. **Cache per paradigm.** 24 derivations per request is wasteful and the
+   result never changes; an in-process dict keyed by the query is enough.
+   Still ₹0, but do not make the phone wait on it.
+3. A cell that fails to derive returns `null` and the rest of the table still
+   renders. **Never fail a whole table on one cell** (§P9-1.4).
+
+This is the surface that serves the school-exam segment noted in §4. It needs
+no new content pipeline — the engine generates it.
+
+**Tests:** a known noun's 24 cells pin exactly; a known verb's lakāra pins;
+one deliberately underivable input yields `null` in that cell and a complete
+table around it.
+
+## P11-6 · The public derivation viewer — ⚠ OWNER-GATED
+
+**Blocked by:** P9-2. **Effort:** M
+
+A public, no-account web page that derives any Sanskrit word and shows the
+sūtras. `shabd-expansion.html` argues it is the cheapest acquisition surface
+available, and it runs at ₹0 because the computation is local.
+
+**Escalate before building** (§6). It is a *public deployment* — hosting,
+domain, abuse limits and privacy are all owner calls left open in P8-4, and
+shipping a public endpoint ahead of those decisions creates an unowned
+service. Build P9-2 and P11-5 first; those make this a rendering job later.
+
+---
+
+# PHASE P12 — The daily word service
+
+> The backend behind `UI_HANDOVER.md` **U8-4**. One puzzle a day, shareable,
+> no account required to play. `shabd-expansion.html` argues this is the
+> cheapest organic acquisition surface the project has.
+
+**Blocked by:** P11-4 (phonetic distance). **Gate for:** U8-4.
+
+## Why it is not "just Wordle"
+
+Scoring runs on the **varṇamālā grid**, not on letter identity: क against ग is
+one step (same place, different voicing), क against प is far. That is what
+P11-4 computes. A Latin-alphabet Wordle cannot do this because Latin letter
+order is arbitrary; Sanskrit's is a map of the mouth. **The phonetic scoring is
+the product.** If it degrades to exact/present/absent, do not ship it — you
+have built a worse Wordle in a language nobody plays it in.
+
+## P12-1 · The puzzle model and daily selection
+
+**Effort:** M · **Touch:** `app/models.py`, a new migration, create
+`app/services/daily_word.py`, tests
+
+1. A `DailyWord` row: the answer, its date, and its difficulty band. Curate
+   from `kosha`; do not generate at request time.
+2. **Selection is deterministic per learner-local day.** §2.8 binds — the
+   learner's day boundary, never the server's. A learner in Auckland and one
+   in Toronto get the same *puzzle number*, not the same wall-clock rollover.
+   `services/localtime.py` already owns this logic; use it, do not re-derive.
+3. Answers must be **words a learner could plausibly know** at their band. A
+   puzzle nobody solves is churn, not challenge.
+4. Migration hand-written, `upgrade`/`downgrade` both (§2.5). Never
+   `create_all`.
+
+**Tests:** two timezones on the same UTC instant resolve to the correct local
+puzzle; the same learner asking twice in one local day gets the same word;
+**no network.**
+
+## P12-2 · Guess scoring
+
+**Effort:** M · **Touch:** `app/services/daily_word.py`,
+`routers/` (new or existing), tests
+
+1. Score each position against the answer with P11-4, returning the state
+   **and the axis that differs** — the client needs the axis to render four
+   distinguishable states (U8-4.1).
+2. Cap guesses. A solved day stays solved; **do not allow replay** — the share
+   card's credibility depends on it.
+3. **Never return the answer before the game ends.** Trivial to get wrong: a
+   scoring response that includes the target for convenience makes the puzzle
+   solvable from the network tab in one request.
+
+**Tests:** each of the four states pins an example; the answer never appears
+in an unsolved response; a replay attempt is refused, not silently re-scored.
+
+## P12-3 · The share card
+
+**Effort:** M · **Escalate first (§6) if this renders server-side.**
+
+The share object is an **image**, not a grid of emoji squares — emoji cannot
+carry the phonetic distinction that makes this puzzle different, so the
+default Wordle share destroys the one thing worth sharing.
+
+Rendering it on the client (U8-4.4) needs no backend and no hosting decision.
+**Prefer that.** A server-rendered card is an image endpoint, which is a public
+surface and therefore a P8-4 platform question — same gate as P11-6.
+
+---
+
+# PHASE P13 — The return loop
+
+> A habit product with **no way to ask anyone to come back.** Nothing in the
+> repo sends a notification; `expo-notifications` is not installed.
+
+**Blocked by:** P8 (do not send notifications to a product with no users).
+
+## P13-1 · Push tokens and delivery
+
+**Effort:** M · **Touch:** `app/models.py`, migration, create
+`app/services/notify.py`, `routers/me.py`, tests
+
+1. Store a push token per device per learner. A learner has several devices;
+   model it as a collection, not a column on `Learner`.
+2. **Learner-local scheduling only** (§2.8). A reminder that arrives at 3am
+   uninstalls the app.
+3. Send at most one reminder a day, and **stop sending after a few ignored
+   ones.** A product that keeps nagging a lapsed learner is training them to
+   turn notifications off for good.
+
+**Tests:** token registration and replacement; local-time scheduling across
+two timezones; the ignore-decay rule; **no network** (mock the transport).
+
+## P13-2 · What the notifications actually say
+
+**Effort:** S · **Touch:** copy only
+
+§7 of `UI_HANDOVER.md` governs the voice, and it already bans guilt. Applied
+here that means: **no streak-loss shaming, no "you've been gone 12 days", no
+manufactured urgency.** "It's good to see you" is the register.
+
+⚠ The one genuinely good notification this product can send that competitors
+cannot: **today's śloka, or today's word.** A reminder that carries content is
+a gift; a reminder that carries a guilt-trip is a tax. Prefer the former
+always.
+
+## P13-3 · Streak freeze, surfaced
+
+**Effort:** S
+
+`DailyActivity` exists and `SessionComplete` already accepts a `freezeUsed`
+flag, but nothing explains the mechanic to the learner. Make the rule visible
+before it is needed, not after it fires.
+
+---
+
+# PHASE P14 — Entitlements and subscription
+
+> ⚠ **Owner-gated in every particular.** Prices, tiers, free limits, trial
+> length and store accounts are all owner decisions (§6). **Escalate before
+> writing any of them into code.** What follows is the plumbing that is safe
+> to specify, not the business model.
+
+**Blocked by:** P8, and an explicit owner decision on pricing.
+
+`sanskrit-market.html` sets the frame: ~₹46 of lifetime revenue per download
+makes paid acquisition arithmetically fatal, and roughly 30% of subscribers
+(the diaspora band) generate about 48% of revenue. That is a *pricing* input,
+not an engineering one.
+
+## P14-1 · The entitlement model
+
+**Effort:** M · **Touch:** `app/models.py`, migration, create
+`app/services/entitlement.py`, `auth.py`, tests
+
+1. One `Entitlement` per learner: tier, source (store / promo / institution),
+   validity window. **Never derive entitlement from a client claim** — the
+   client asserts a receipt, the server verifies it.
+2. A single `has_entitlement(learner, feature)` seam that every gated path
+   calls. Do not scatter tier checks through routers; that is how a paywall
+   ends up with holes.
+3. **Fail closed on vendor errors, but fail *open* on your own outages.** A
+   store-verification timeout must not lock a paying learner out mid-session.
+
+## P14-2 · What is never gated
+
+**Effort:** S — but this is a product invariant, so write it down and test it.
+
+Standing owner ruling, restated from `DECISIONS.md` and `UI_HANDOVER.md`:
+**no hearts, no energy, no meter that stops a willing learner.** Duolingo is
+losing goodwill over exactly this. Whatever the tier structure turns out to
+be, the free tier must never make a motivated learner *wait*.
+
+Also never gated: the daily word (it is the acquisition loop — gating it
+breaks the thing that brings people in), and the abstention behaviour (§2.2 is
+a safety rule, not a feature).
+
+## P14-3 · Institutional licensing — escalate, do not build
+
+Named here so it is not forgotten: `sanskrit-market.html` identifies temple
+weekend schools and cultural associations as the only route to the upside
+revenue band, and the school segment in §4 is the domestic version of it. A
+seat-based institutional tier is a **different product** with rosters, teacher
+accounts and reporting. **Do not start it as a variation on P14-1.**
+
+---
+
+# PHASE P15 — Async social: the chain
+
+> `श्लोक-अन्त्याक्षरी` — antākṣarī with verses. The rules need no teaching:
+> every Indian family already knows them. It is also the only multiplayer mode
+> a grandparent in Pune and a grandchild in New Jersey will both open.
+
+**Blocked by:** P7 (needs a verse corpus), P13 (a turn-based game with no
+notifications is a dead game), P14 (decide what is free first).
+
+- **P15-1** — the chain model: a room, an ordered turn list, one verse per
+  turn, validated to begin on the syllable the previous verse ended on. The
+  validation is `kosha` + the open subhāṣita corpus; it is not an LLM call.
+- **P15-2** — invite by link. **WhatsApp-shaped** (§`shabd-expansion.html`):
+  an image, one line, a URL. Not an email flow, not an in-app friend graph.
+- **P15-3** — family streak: a shared streak that survives one member missing
+  a day. The point is to make the grandparent's participation matter to the
+  grandchild, not to punish either.
+
+⚠ **A public invite link is a public surface** — P8-4 again. Escalate.
+
+---
+
+# PHASE P16 — `अवधानम्`
+
+> The boss mode, and the thing that gets written about. **Last on purpose.**
+
+**Blocked by:** P11, P15. **Do not start before there is a product to be a
+boss mode of.**
+
+The real art form, made playable: hold a line of verse, count the bell, restore
+a scrambled stanza, and ignore the heckler — the traditional
+*apraṣṭuta-prasaṅgī*, whose actual historical job is to break the performer's
+concentration. Score is how many streams the learner held.
+
+You are not inventing a leaderboard: **aṣṭāvadhānī** (eight streams) and
+**śatāvadhānī** (a hundred) are contested titles that living performers hold.
+
+**What to do about it now: nothing, except not precluding it.** Specifically,
+keep session state able to hold more than one concurrent task (`session_store`
+assumes one), and keep the scansion and derivation services stateless so four
+of them can run at once. Both are free if you know now; both are rewrites if
+you find out later.
+
+---
+
 ## 5. Definition of done
 
 1. The task's stated **Acceptance** passes.
@@ -664,10 +1213,33 @@ the grammar is graded by the stack you already have.
 - **RAG or retrieval work** — see §4. Smaller than it was; still not yours.
 - **P9-4, the sūtra curriculum** — a pedagogy decision, not an engineering one.
 - **Platform choices** — hosting, object storage, payments, privacy.
+- **P11-6, the public derivation viewer** — a public deployment, and therefore
+  a platform choice (P8-4). Same for **P12-3** if the share card renders
+  server-side, and **P15-2**'s public invite link.
+- **Anything in P14** — prices, tiers, free limits, trial length, store
+  accounts. The plumbing is specifiable; the business model is not yours.
+- **P14-3, institutional licensing** — a different product (rosters, teacher
+  accounts, reporting), not a tier variant.
+- **Adding a hearts, energy, lives or any meter that stops a willing
+  learner** (P14-2). Standing owner ruling; there is no version of this to
+  negotiate.
+- **A seventh bottom tab** (`UI_HANDOVER.md` U8-1). Six is the decided
+  maximum and it is already at the width limit.
 - **Store submission and Apple/Google sign-in.**
 - **Anything that would make an `unsure` verdict penalize a learner** (§2.2).
 - **A test you cannot make pass without weakening it.** Report it instead.
 - **Loosening the Vidyut gate to raise a pass rate** (P6-3).
+- **Removing, bypassing or deprecating the LLM explainer** to "replace it"
+  with derivations (P9-3). The owner has ruled on this; the derivation is an
+  addition. If a task appears to require deleting the LLM path, you have
+  misread the task — stop.
+- **Any content claiming provenance the project cannot support** — "Vedic
+  Mathematics" as ancient (P10), Sanskrit as the world's oldest language, or
+  the "NASA declared Sanskrit best for computers" claim, which is a documented
+  misreading of Briggs (1985). The app is about to start showing sūtra numbers
+  as proof; unprovable claims elsewhere discredit that. Reject the brief.
+- **Showing a metre name the engine did not return** (P11-1). Absent is
+  absent; do not fill it with a guess or an LLM call.
 
 ---
 
@@ -677,7 +1249,7 @@ the grammar is graded by the stack you already have.
 All backend commands run from backend/ (§2.10), with UTF-8 (§3).
 PowerShell 5.1 has no &&.
 
-Backend tests (baseline 300):
+Backend tests (baseline 310):
   cd backend
   ./.venv/Scripts/python.exe -m pytest -q
 
@@ -691,6 +1263,27 @@ Author a batch (SPENDS — owner-approved to ~₹47 total):
   ./.venv/Scripts/python.exe -m scripts.author_batch --live --limit 5
 
 Alembic head:  a1b2c3d4e5f6
-Order:         P6-2, P6-3 → P7 → P9 → P8 → P10
-Not yet:       RAG
+Order:         UI_HANDOVER U8-0 (1 hr, do it first — 653 dead LOC)
+               → P6-2, P6-3 → P7 → P9 → P11 → P8 → P12 → P10
+               → P13 → P14 → P15 → P16
+Not yet:       RAG · P9-4 · P11-6 · P12-3 server-side · P14 (all) · P15-2
+               — every one of these is owner-gated, see §6
+
+Client navigation is UI_HANDOVER U8: six tabs
+  Home · Path · Talk · Play · Grammar · Progress
+  + left drawer (hamburger) for settings and account.
+  Śloka and Varṇamālā are Home cards now, not tabs. Both screens survive.
+  @react-navigation/drawer is NOT installed; its peers already are.
+
+P9 and P11 are LOCAL computation — no vendor call, no quota, ₹0.
+They may run alongside P7; they do not compete for the grant.
+
+Pinned engine facts (measured 2026-09-02, vidyut 0.4.0):
+  load_sutras()  5,152 entries / 5,056 unique codes  <- index carefully
+  chandas        145 vṛttas, 7 jātis; Chandas.from_text(), NOT from_here()
+  derive()       takes ONE Pada.Tinanta/Subanta args object, returns a LIST
+  भू → भवति      20 steps, 1.3.1 first, 6.1.78 last
+  Match          exposes .aksharas and .padya only; .padya is often None
+
+The LLM stays (P9-3). Derivation answers grammar; the LLM answers meaning.
 ```

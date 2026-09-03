@@ -97,7 +97,7 @@ def test_list_scenarios(client, auth_headers):
 
 def test_start_returns_entry_node_and_edges(client, auth_headers):
     """POST /conversation/start returns session, entry node, edges."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200, r.text
     data = r.json()
     assert "session_id" in data
@@ -128,7 +128,7 @@ def _resolve_expected_text(transcript: str) -> str:
 def test_full_happy_path(client, auth_headers):
     """Complete the dialogue graph by answering each sa question correctly."""
     # Start session
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     data = r.json()
     session_id = data["session_id"]
@@ -220,7 +220,7 @@ def test_full_happy_path(client, auth_headers):
 
 def test_free_word_order(client, auth_headers):
     """Free word order: different word order should pass at first sa question."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -247,7 +247,7 @@ def test_free_word_order(client, auth_headers):
 
 def test_off_by_one_triggers_escape(client, auth_headers):
     """One-feature-off answer triggers escape to repair node."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -275,7 +275,7 @@ def test_off_by_one_triggers_escape(client, auth_headers):
 
 def test_unsure_path(client, auth_headers):
     """Gibberish Devanagari should produce 'unsure', never 'incorrect'."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -304,7 +304,7 @@ def test_unsure_path(client, auth_headers):
 
 def test_bridge_fallback(client, auth_headers):
     """Bridge fallback: respond with 'हाँ' at entry — matched, no escape."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -322,7 +322,7 @@ def test_bridge_fallback(client, auth_headers):
 
 def test_escape_log_endpoint(client, auth_headers):
     """Escape-log endpoint returns grouped counts."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
     scenario_id = r.json()["scenario"]["id"]
@@ -369,7 +369,7 @@ def test_escape_log_endpoint(client, auth_headers):
 def test_session_ownership(client, auth_headers):
     """Learner B cannot post a turn to Learner A's session (404)."""
     # Create learner A's session
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -395,7 +395,7 @@ def test_session_ownership(client, auth_headers):
 
 def test_empty_transcript_escape(client, auth_headers):
     """Empty/whitespace transcript triggers escape with 'empty' verdict."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -416,7 +416,7 @@ def test_escape_at_entry_node_never_incorrect(client, auth_headers):
     The escape path must grade the utterance independently (§12) — unsure stays
     unsure; a valid-but-unexpected utterance is 'no_match', never 'incorrect'.
     """
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -449,7 +449,7 @@ def test_valid_but_unexpected_at_sa_node_no_match(client, auth_headers):
     """Regression: at a node WITH sa-edges, a confidently-parsed utterance that
     matches no edge escapes as 'no_match' — never 'incorrect' (§6.3: an escape
     never accuses; off_by_one still names the near miss)."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
 
     # Bridge past entry to the first sa question.
@@ -479,7 +479,7 @@ def test_negation_preempts_affirmative_on_dual_match(client, auth_headers):
     edge). Scoring must consider every bridge edge — and a negation must
     pre-empt a longer affirmative phrase, regardless of rank order.
     """
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -498,7 +498,7 @@ def test_negation_preempts_affirmative_on_dual_match(client, auth_headers):
     assert d2["node"]["lang"] == "hi", f"Negation must route to hi node: {d2}"
 
     # Control: pure negative still routes negative.
-    r_a = client.post("/conversation/start", json={}, headers=auth_headers)
+    r_a = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     sid_a = r_a.json()["session_id"]
     r3 = client.post(
         "/conversation/turn",
@@ -510,7 +510,7 @@ def test_negation_preempts_affirmative_on_dual_match(client, auth_headers):
     assert d3["matched"] is True and d3["node"]["kind"] == "repair", d3
 
     # Control: affirmative without negation still advances to the sa question.
-    r_b = client.post("/conversation/start", json={}, headers=auth_headers)
+    r_b = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     sid_b = r_b.json()["session_id"]
     r4 = client.post(
         "/conversation/turn",
@@ -530,7 +530,7 @@ def test_bridge_matching_is_whole_word(client, auth_headers):
     'readiness' must not match the affirmative edge. Escape verdicts stay
     non-accusing either way.
     """
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
@@ -556,16 +556,19 @@ def test_bridge_matching_is_whole_word(client, auth_headers):
     assert d3["matched"] is True, f"'हाँ' must still match: {d3}"
 
 
-def test_consecutive_escapes_escalate_and_terminate(client, auth_headers):
-    """Regression: 4 consecutive escapes terminate the session instead of
-    looping forever; a successful turn resets the streak."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+def test_consecutive_escapes_escalate_and_reveal(client, auth_headers):
+    """Regression: a learner who cannot answer is moved on, not asked forever.
+
+    Escape 4 reveals the authored answer and steps the graph FORWARD. v1 ended
+    the session here, which only traded the loop for a dead end at question 1.
+    """
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200
     session_id = r.json()["session_id"]
 
     gibberish = "फ़लदफ़दफ़"
-    seen_done = False
-    for i in range(1, 7):
+    verdicts, nodes = [], []
+    for _ in range(12):
         r2 = client.post(
             "/conversation/turn",
             json={"session_id": session_id, "transcript": gibberish},
@@ -574,11 +577,97 @@ def test_consecutive_escapes_escalate_and_terminate(client, auth_headers):
         assert r2.status_code == 200, r2.text
         d2 = r2.json()
         assert d2["verdict"] != "incorrect"
+        verdicts.append(d2["verdict"])
+        nodes.append(d2["node"]["id"])
         if d2["session_done"]:
-            seen_done = True
-            assert d2["edges"] == [], "terminated session must offer no exits"
             break
-    assert seen_done, "4 consecutive escapes must terminate the session"
+
+    assert "revealed" in verdicts, (
+        f"escape ladder never revealed an answer: {verdicts}"
+    )
+    # The reveal must carry the line the learner failed to produce.
+    idx = verdicts.index("revealed")
+    r3 = client.post(
+        "/conversation/turn",
+        json={"session_id": session_id, "transcript": gibberish},
+        headers=auth_headers,
+    )
+    assert r3.status_code == 200
+    # …and it must not park the learner back where they already were.
+    assert nodes[idx] not in nodes[:idx], (
+        f"reveal moved the learner to an already-visited node: {nodes}"
+    )
+
+
+def test_router_never_offered_fallback_routing_edges(client, auth_headers):
+    """Regression (owner report, reproduced in the running app): a wrong
+    Sanskrit answer came back matched=True / verdict "correct".
+
+    A question node's only bridge edge is the FALLBACK ROUTING edge to its
+    repair — no expected_phrases, no expected_text, not a thing a learner can
+    say. Handing it to the edge-router left exactly one candidate, so the
+    router picked it and laundered every failed answer into a bridge match:
+    no escape logged, no streak, ladder never fires, question ↔ repair
+    forever. The router must not see those edges at all.
+    """
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
+    assert r.status_code == 200
+    session_id = r.json()["session_id"]
+
+    r = client.post(
+        "/conversation/turn",
+        json={"session_id": session_id, "transcript": "हाँ"},
+        headers=auth_headers,
+    )
+    assert r.json()["matched"] is True   # now at the first sa question
+
+    d = client.post(
+        "/conversation/turn",
+        # Valid-ish Sanskrit that no edge on this node accepts.
+        json={"session_id": session_id, "transcript": "aham brahmāsmi"},
+        headers=auth_headers,
+    ).json()
+    assert d["matched"] is False, f"a wrong answer must not match a bridge edge: {d}"
+    assert d["verdict"] != "correct", f"a wrong answer must never grade correct: {d}"
+    assert d["escape"] is True, f"a wrong answer must take the escape path: {d}"
+
+
+def test_repair_acknowledgement_does_not_reset_escape_streak(client, auth_headers):
+    """Regression (owner report): the conversation repeated two lines forever.
+
+    Miss the question → narrow repair → "हाँ" back to the question → miss it
+    again. Every acknowledgement cleared `consecutive_escapes`, so the
+    escalation ladder never reached 3 and the pair ping-ponged with no exit.
+    The streak must survive a repair node's own acknowledgement.
+    """
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
+    assert r.status_code == 200
+    session_id = r.json()["session_id"]
+
+    def turn(text):
+        r2 = client.post(
+            "/conversation/turn",
+            json={"session_id": session_id, "transcript": text},
+            headers=auth_headers,
+        )
+        assert r2.status_code == 200, r2.text
+        return r2.json()
+
+    assert turn("हाँ")["matched"] is True  # entry bridge → first sa question
+    stuck_node = None
+    escaped = []
+    for _ in range(6):
+        d = turn("aham rāmam asmi")   # off_by_one: wrong case, drives the narrow repair
+        escaped.append(d["node"]["id"])
+        if d["verdict"] == "revealed" or d["session_done"]:
+            stuck_node = d["node"]["id"]
+            break
+        turn("हाँ")                    # acknowledge the repair, back to the question
+
+    assert stuck_node is not None, (
+        f"never escalated out of the repair loop — visited {escaped}"
+    )
+    assert len(set(escaped)) > 1, "the learner never left the repair node"
 
 
 # ─── LLM edge-router (bridge turns) ─────────────────────────────────────────
@@ -590,7 +679,7 @@ def test_romanized_hinglish_reply_matches_via_router(client, auth_headers, stub_
     matcher only knew 'haan'. The LLM router routes them to the affirmative
     edge — matched=true, verdict=correct, no escape row."""
     for reply in ("Haa", "Ji", "haan ji", "Ok sure"):
-        r = client.post("/conversation/start", json={}, headers=auth_headers)
+        r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
         assert r.status_code == 200
         session_id = r.json()["session_id"]
 
@@ -612,7 +701,7 @@ def test_romanized_hinglish_reply_matches_via_router(client, auth_headers, stub_
 
 def test_router_not_consulted_when_phrase_matcher_resolves(client, auth_headers, stub_edge_router):
     """A seeded phrase ('हाँ') resolves deterministically — zero LLM calls."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
 
     r2 = client.post(
@@ -629,7 +718,7 @@ def test_router_failure_falls_back_to_escape(client, auth_headers, stub_edge_rou
     """Fail-closed: when the router is unavailable/erroring, an unmatched
     utterance takes the escape path exactly as before the router existed."""
     stub_edge_router.unavailable = True
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
 
     r2 = client.post(
@@ -646,7 +735,7 @@ def test_router_failure_falls_back_to_escape(client, auth_headers, stub_edge_rou
 
 def test_router_null_is_escape_not_advance(client, auth_headers, stub_edge_router):
     """Router returning None (genuine no-match) → escape path, session intact."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
 
     # Gibberish: the stub finds no phrase overlap → None, like the real router.
@@ -664,7 +753,7 @@ def test_router_never_sees_sa_edges(client, auth_headers, stub_edge_router):
     """Contract: the router only receives bridge edges. At the first sa
     question (bridge fallback + sa edges present), the router's candidate
     list must contain bridge edges only — sa grading stays deterministic."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
     # Advance to the first sa question.
     r2 = client.post(
@@ -705,7 +794,7 @@ def test_pinned_edge_bypasses_router(client, auth_headers, stub_edge_router):
     and never consults the router — both when the transcript matches the
     pinned edge and when it doesn't (historical pin semantics: pin narrows
     the candidate set; it does not force a match)."""
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     data = r.json()
     session_id = data["session_id"]
     affirmative_edge_id = data["edges"][0]["id"]  # rank 0 = हाँ/yes edge
@@ -723,7 +812,7 @@ def test_pinned_edge_bypasses_router(client, auth_headers, stub_edge_router):
     assert stub_edge_router.calls == [], "pinned turns must not consult the router"
 
     # Pinned + non-matching transcript → escape, still no router call.
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     session_id = r.json()["session_id"]
     r3 = client.post(
         "/conversation/turn",
@@ -776,7 +865,7 @@ def stub_explainer(monkeypatch):
 
 
 def _start(client, auth_headers):
-    r = client.post("/conversation/start", json={}, headers=auth_headers)
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
     assert r.status_code == 200, r.text
     return r.json()
 

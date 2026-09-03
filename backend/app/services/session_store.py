@@ -23,13 +23,21 @@ def create_session(
     db: DBSession,
     learner: Learner,
     scenario: DialogueScenario,
+    mode: str = "llm",
 ) -> ConversationSession:
-    """Create a new conversation session for a learner at the scenario entry node."""
+    """Create a conversation session.
+
+    In "graph" mode the session starts at the scenario's entry node and walks
+    authored edges. In "llm" mode there is no node — the scenario supplies the
+    situation and the target features, and `services/tutor.py` drives the
+    conversation. The scenario is recorded either way.
+    """
     session = ConversationSession(
         id=uuid.uuid4().hex[:16],
         learner_id=learner.id,
         scenario_id=scenario.id,
-        current_node_id=scenario.entry_node_id,
+        current_node_id=scenario.entry_node_id if mode == "graph" else None,
+        mode=mode,
         turn_count=0,
         ratio_hint=getattr(learner, "sanskrit_ratio", 0.3) or 0.3,
     )

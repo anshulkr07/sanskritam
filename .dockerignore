@@ -1,0 +1,34 @@
+# Keep the build context small — Cloud Run --source builds bill per minute.
+.git
+.venv
+venv
+__pycache__
+**/__pycache__
+*.pyc
+.pytest_cache
+
+# Not needed in the image
+backend/.venv
+backend/evals-out
+backend/results
+backend/*.db
+backend/tests
+backend/scripts
+backend/app/evals/.cache
+backend/app/.authoring-cache
+research
+specs
+mobile
+icons
+*.md
+.github
+.vscode
+.claude
+.claude/
+
+# vidyut-data is downloaded fresh at build time (baked into image)
+backend/vidyut-data
+
+# Never bake secrets
+.env
+.env.local

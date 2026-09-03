@@ -1,24 +1,31 @@
-// The bottom tab bar — the app's real "pages," Duolingo/Airlearn-style.
-// Each tab is a standalone destination now; nothing here also lives stacked
-// on the Home screen (see Home.tsx's header comment for the split).
+// The bottom tab bar — the app's "pages" (U8-1). Six tabs:
+// Home · Path · Talk · Play · Grammar · Progress.
+// Shloka and Varṇamālā are NOT tabs anymore — they are stack screens reached
+// from Home cards (U8-2). This file is wrapped in a left drawer (AppDrawer).
+//
+// Six-tab width rule: below 360dp OR at font scale ≥1.5 we render icons only
+// (with an accessibilityLabel on every tab) so a label never truncates to an
+// ellipsis — a bar reading "Progr…" is worse than an icon.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { Platform } from "react-native";
+import { PixelRatio, Platform, useWindowDimensions } from "react-native";
 import Animated, {
   Easing,
   useSharedValue,
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import ConversationScreen from "../screens/Conversation";
+import GrammarScreen from "../screens/Grammar";
 import HomeScreen from "../screens/Home";
-import ProfileScreen from "../screens/Profile";
-import ShlokaScreen from "../screens/Shloka";
-import VarnamalaScreen from "../screens/Varnamala";
+import PathScreen from "../screens/Path";
+import PlayScreen from "../screens/Play";
+import ProgressScreen from "../screens/Progress";
 import { haptics } from "../services/haptics";
 import { color, font } from "../theme";
 import type { MainTabParamList } from "./types";
@@ -27,21 +34,35 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const ICONS: Record<keyof MainTabParamList, { on: IoniconsIconName; off: IoniconsIconName }> = {
   Home: { on: "home", off: "home-outline" },
+  Path: { on: "map", off: "map-outline" },
   Conversation: { on: "chatbubbles", off: "chatbubbles-outline" },
-  Shloka: { on: "book", off: "book-outline" },
-  Varnamala: { on: "language", off: "language-outline" },
-  Profile: { on: "person-circle", off: "person-circle-outline" },
+  Play: { on: "game-controller", off: "game-controller-outline" },
+  Grammar: { on: "school", off: "school-outline" },
+  Progress: { on: "bar-chart", off: "bar-chart-outline" },
 };
 
 const LABEL: Record<keyof MainTabParamList, string> = {
   Home: "Home",
+  Path: "Path",
   Conversation: "Talk",
-  Shloka: "Śloka",
-  Varnamala: "Varṇa",
-  Profile: "Profile",
+  Play: "Play",
+  Grammar: "Grammar",
+  Progress: "Progress",
 };
 
 export default function MainTabs() {
+  const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+
+  // Six tabs at 360dp is ~60dp each — too tight for icon+label at larger fonts.
+  // Icons only below 360dp or at font scale ≥1.5; labels always have an
+  // accessibilityLabel so nothing is lost to VoiceOver (§U5-1).
+  const fontScale = PixelRatio.getFontScale();
+  const iconsOnly = width < 360 || fontScale >= 1.5;
+
+  const bottomPad = Platform.OS === "ios" ? 28 : Math.max(insets.bottom, 8);
+  const barHeight = Platform.OS === "ios" ? 84 : 56 + bottomPad;
+
   return (
     <Tab.Navigator
       screenListeners={{ tabPress: () => haptics.tap() }}
@@ -53,26 +74,29 @@ export default function MainTabs() {
           backgroundColor: color.surface,
           borderTopColor: color.border,
           borderTopWidth: 1,
-          height: Platform.OS === "ios" ? 84 : 64,
+          height: barHeight,
           paddingTop: 6,
-          paddingBottom: Platform.OS === "ios" ? 28 : 8,
+          paddingBottom: bottomPad,
         },
         tabBarLabelStyle: {
           fontFamily: "Nunito_700Bold",
           fontWeight: "700",
           fontSize: font.sizes.xs,
         },
+        tabBarShowLabel: !iconsOnly,
         tabBarIcon: ({ focused, color: c, size }) => {
           const name = focused ? ICONS[route.name].on : ICONS[route.name].off;
-          return <Ionicons name={name} size={size} color={c} />;
+          return <Ionicons name={name} size={focused && iconsOnly ? size + 4 : size} color={c} />;
         },
+        tabBarAccessibilityLabel: LABEL[route.name],
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: LABEL.Home }} />
+      <Tab.Screen name="Path" component={PathScreen} options={{ tabBarLabel: LABEL.Path }} />
       <Tab.Screen name="Conversation" component={ConversationScreen} options={{ tabBarLabel: LABEL.Conversation }} />
-      <Tab.Screen name="Shloka" component={ShlokaScreen} options={{ tabBarLabel: LABEL.Shloka }} />
-      <Tab.Screen name="Varnamala" component={VarnamalaScreen} options={{ tabBarLabel: LABEL.Varnamala }} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: LABEL.Profile }} />
+      <Tab.Screen name="Play" component={PlayScreen} options={{ tabBarLabel: LABEL.Play }} />
+      <Tab.Screen name="Grammar" component={GrammarScreen} options={{ tabBarLabel: LABEL.Grammar }} />
+      <Tab.Screen name="Progress" component={ProgressScreen} options={{ tabBarLabel: LABEL.Progress }} />
     </Tab.Navigator>
   );
 }

@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.auth import require_learner
+from app.config import settings
 from app.db import get_db
 from app.models import (
     DialogueEdge,
@@ -22,9 +23,17 @@ from app.models import (
     Learner,
 )
 from app.services.explainer import get_explainer, reply_language
+from app.services.meta_intent import detect_meta_intent
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.session_store import create_session, get_session
 from app.services.turn_loop import process_turn
+from app.services.tutor import (
+    get_tutor,
+    history_for_prompt,
+    record_turn,
+    situation as tutor_situation,
+    target_features,
+)
 
 logger = logging.getLogger("shabd.conversation")
 
@@ -36,6 +45,16 @@ router = APIRouter()
 
 class StartRequest(BaseModel):
     scenario_id: Optional[str] = Field(default=None, description="Scenario ID, or None for first by created_at")
+    mode: Optional[str] = Field(
+        default=None,
+        description=(
+            "'llm' (default) for the free-form tutor — any grammatical answer "
+            "is accepted and Vidyut gates the Sanskrit; 'graph' for the "
+            "authored dialogue graph, kept as the fallback when the model is "
+            "unavailable. Falls back to 'graph' automatically if the tutor is "
+            "disabled or unconfigured."
+        ),
+    )
 
 
 class NodeOut(BaseModel):
@@ -81,6 +100,7 @@ class StartResponse(BaseModel):
     scenario: ScenarioDetail
     node: NodeOut
     edges: list[EdgeOut]
+    mode: str = "graph"
 
 
 class TurnRequest(BaseModel):
@@ -98,6 +118,19 @@ class TurnResponse(BaseModel):
     session_done: bool = False
     escape: bool = False
     ratio_hint: float = 0.3
+    mode: str = "graph"
+    correction: str = Field(
+        default="",
+        description=(
+            "LLM mode only: at most one short grammar note about the "
+            "learner's line, raised only when Vidyut found a real error. An "
+            "unknown word (a name) is never a correction."
+        ),
+    )
+    degraded: bool = Field(
+        default=False,
+        description="LLM mode only: the model was unreachable and this turn is a stand-in.",
+    )
     meta_intent: Optional[str] = Field(
         default=None,
         description=(
@@ -185,11 +218,20 @@ async def start_conversation(
     if scenario is None:
         raise HTTPException(status_code=404, detail="No scenario found")
 
+    # ── LLM mode: no entry node, no edges — the tutor opens the conversation.
+    mode = (req.mode or ("llm" if settings.tutor_enabled else "graph")).lower()
+    if mode == "llm" and not get_tutor().available:
+        logger.info("tutor unconfigured — starting in graph mode instead")
+        mode = "graph"
+
+    if mode == "llm":
+        return await _start_llm(db, learner, scenario)
+
     if not scenario.entry_node_id:
         raise HTTPException(status_code=500, detail="Scenario has no entry node")
 
     # Create session
-    session = create_session(db, learner, scenario)
+    session = create_session(db, learner, scenario, mode="graph")
 
     # Load entry node + its edges
     entry_node = db.query(DialogueNode).filter(DialogueNode.id == scenario.entry_node_id).first()
@@ -225,7 +267,84 @@ async def start_conversation(
             repair_type=entry_node.repair_type,
         ),
         edges=[EdgeOut(id=e.id, lang=e.lang, expected_text=e.expected_text or "", features=e.features or []) for e in entry_edges],
+        mode="graph",
     )
+
+
+async def _start_llm(
+    db: Session,
+    learner: Learner,
+    scenario: DialogueScenario,
+) -> StartResponse:
+    """Open a free-form session: the tutor writes its own greeting.
+
+    There is no entry node and no edge list. `node` is still populated so the
+    client renders a tutor line the same way in both modes; `edges` is empty
+    because in this mode there is nothing to choose from — any grammatical
+    reply is a valid move.
+    """
+    session = create_session(db, learner, scenario, mode="llm")
+
+    tutor = get_tutor()
+    reply = None
+    try:
+        check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
+    except QuotaExceeded as exc:
+        logger.info("LLM quota exceeded on start for learner %s", learner.id)
+        raise HTTPException(
+            status_code=429,
+            detail={
+                "detail": f"LLM quota exceeded: {exc.used:.0f}/{exc.limit:.0f} calls.",
+                "kind": exc.kind,
+                "retry_after_s": exc.retry_after_s,
+            },
+            headers={"Retry-After": str(exc.retry_after_s)},
+        )
+
+    reply = await tutor.reply(
+        transcript="",
+        history=[],
+        situation=tutor_situation(scenario),
+        target_features=target_features(db, scenario.id),
+        bridge_langs=learner.bridge_langs or ["en"],
+        ratio=session.ratio_hint or 0.3,
+        opening=True,
+    )
+    if reply.source == "degraded":
+        refund_quota(db, learner, "llm_calls", 1, surface="conversation",
+                     reason="downstream_failure")
+
+    record_turn(
+        db, session,
+        role="tutor",
+        devanagari=reply.sanskrit,
+        gloss=reply.bridge,
+    )
+    db.commit()
+
+    return StartResponse(
+        session_id=session.id,
+        scenario=ScenarioDetail(
+            id=scenario.id,
+            title=scenario.title,
+            description=scenario.description or "",
+            est_minutes=scenario.est_minutes or 5,
+        ),
+        node=NodeOut(
+            id=f"llm:{session.id}:0",
+            kind="tutor",
+            lang="sa" if reply.sanskrit else _bridge_lang(learner),
+            devanagari=reply.sanskrit or reply.bridge,
+            iast="",
+            gloss=reply.bridge if reply.sanskrit else "",
+        ),
+        edges=[],
+        mode="llm",
+    )
+
+
+def _bridge_lang(learner: Learner) -> str:
+    return "hi" if "hi" in (learner.bridge_langs or []) else "en"
 
 
 @router.post("/conversation/turn", response_model=TurnResponse)
@@ -239,6 +358,9 @@ async def submit_turn(
     if session is None:
         raise HTTPException(status_code=404, detail="Session not found or not owned by learner")
 
+    if session.mode == "llm":
+        return await _turn_llm(db, learner, session, req.transcript)
+
     try:
         result = await process_turn(
             db=db,
@@ -251,6 +373,135 @@ async def submit_turn(
         raise HTTPException(status_code=400, detail=str(exc))
 
     return TurnResponse(**result)
+
+
+async def _turn_llm(
+    db: Session,
+    learner: Learner,
+    session,
+    transcript: str,
+) -> TurnResponse:
+    """A free-form turn: Vidyut reads the learner, Sarvam writes the tutor.
+
+    There is no matching and no escape. The learner cannot be "wrong" about
+    which sentence they picked, because no sentence was ever required —
+    `verdict` reports what Vidyut found in their Sanskrit and nothing more.
+    """
+    scenario = (
+        db.query(DialogueScenario)
+        .filter(DialogueScenario.id == session.scenario_id)
+        .first()
+    )
+    tutor = get_tutor()
+
+    # Meta moves still resolve before anything else — asking what a line means
+    # is not a turn in the conversation. Unlike graph mode this costs a model
+    # call either way, but the client still needs to know to route it to
+    # /conversation/explain rather than render it as the tutor's next line.
+    intent = detect_meta_intent(transcript)
+    if intent is not None:
+        last = history_for_prompt(db, session.id, limit=1)
+        return TurnResponse(
+            verdict="meta",
+            diagnosis="",
+            matched=False,
+            node=NodeOut(
+                id=f"llm:{session.id}:{session.turn_count or 0}",
+                kind="tutor",
+                lang="sa",
+                devanagari=last[0]["text"].split(" / ")[0] if last else "",
+            ),
+            edges=[],
+            ratio_hint=session.ratio_hint or 0.3,
+            meta_intent=intent,
+            mode="llm",
+        )
+
+    try:
+        check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
+    except QuotaExceeded as exc:
+        raise HTTPException(
+            status_code=429,
+            detail={
+                "detail": f"LLM quota exceeded: {exc.used:.0f}/{exc.limit:.0f} calls.",
+                "kind": exc.kind,
+                "retry_after_s": exc.retry_after_s,
+            },
+            headers={"Retry-After": str(exc.retry_after_s)},
+        )
+
+    reply = await tutor.reply(
+        transcript=transcript,
+        history=history_for_prompt(db, session.id),
+        situation=tutor_situation(scenario),
+        target_features=target_features(db, session.scenario_id),
+        bridge_langs=learner.bridge_langs or ["en"],
+        ratio=session.ratio_hint or 0.3,
+    )
+    if reply.source == "degraded":
+        refund_quota(db, learner, "llm_calls", 1, surface="conversation",
+                     reason="downstream_failure")
+
+    health = reply.learner
+    # §6.3 holds: this verdict describes the learner's Sanskrit, it does not
+    # judge their answer. "unsure" is the abstention, never an accusation, and
+    # a line carrying only a name lands on "correct" rather than failing.
+    if not (transcript or "").strip():
+        verdict = "empty"
+    elif not health.looks_sanskrit:
+        # No verb root and no pronoun. Either they answered in their own
+        # language — a legitimate move, but not one that earns a higher
+        # Sanskrit ratio — or the line read as nothing at all.
+        verdict = "unsure" if health.ratio < 0.34 else "bridge"
+    elif health.ok:
+        verdict = "correct"
+    elif health.ratio < 0.34:
+        verdict = "unsure"
+    else:
+        verdict = "off_by_one"
+
+    record_turn(
+        db, session,
+        role="learner",
+        devanagari=transcript,
+        parsed_features=health.features,
+        verdict=verdict,
+    )
+    record_turn(
+        db, session,
+        role="tutor",
+        devanagari=reply.sanskrit,
+        gloss=reply.bridge,
+        correction=reply.correction,
+    )
+
+    # Ratio drifts up on clean Sanskrit, down when they fall back to the
+    # bridge — the same signal the graph used, from a freer source.
+    delta = 0.02 if verdict == "correct" else (-0.02 if verdict == "bridge" else 0.0)
+    session.turn_count = (session.turn_count or 0) + 1
+    session.ratio_hint = max(0.0, min(1.0, (session.ratio_hint or 0.3) + delta))
+    db.commit()
+
+    return TurnResponse(
+        verdict=verdict,
+        diagnosis=reply.bridge if not reply.sanskrit else "",
+        matched=True,          # no matching happens; nothing was rejected
+        node=NodeOut(
+            id=f"llm:{session.id}:{session.turn_count}",
+            kind="tutor",
+            lang="sa" if reply.sanskrit else _bridge_lang(learner),
+            devanagari=reply.sanskrit or reply.bridge,
+            iast=reply.iast,
+            gloss=reply.bridge if reply.sanskrit else "",
+        ),
+        edges=[],
+        session_done=reply.done,
+        escape=False,
+        ratio_hint=session.ratio_hint,
+        mode="llm",
+        correction=reply.correction,
+        degraded=reply.source == "degraded",
+    )
 
 
 @router.post("/conversation/explain", response_model=ExplainResponse)

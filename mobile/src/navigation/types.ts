@@ -3,6 +3,11 @@
 // a stack on top of it for flows you step into and return from (a practice
 // session isn't a place you live, so it isn't a tab — same as Duolingo never
 // puts "Lesson" in its tab bar).
+//
+// U8-1 (info architecture): six tabs plus a left drawer. Shloka and Varnamala
+// stop being tabs and become stack screens reached from Home cards (U8-2);
+// Play, Grammar and Progress are new tabs; the drawer (Settings) hangs off a
+// hamburger on Home.
 
 import type { CompositeScreenProps } from "@react-navigation/native";
 import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
@@ -10,15 +15,18 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type MainTabParamList = {
   Home: undefined;
+  Path: undefined;
   Conversation: undefined;
-  Shloka: undefined;
-  Varnamala: undefined;
-  Profile: undefined;
+  Play: undefined;
+  Grammar: undefined;
+  Progress: undefined;
 };
 
 export type RootStackParamList = {
   MainTabs: undefined;
-  Challenge: { challengeId?: string };
+  // U8-0: a session launched from a Path node carries the unit's feature
+  // filter. This is a deliberate shape (NOT smuggled through challengeId).
+  Challenge: { challengeId?: string; features?: string[] };
   SessionComplete: {
     correctCount: number;
     totalCount: number;
@@ -30,6 +38,11 @@ export type RootStackParamList = {
   // U7 proof surfaces
   WordOrder: { sentence?: string };
   Paradigm: { word?: string; kind: "verb" | "noun" };
+  // U8-1: Shloka and Varnamala are reached from Home cards, not tabs.
+  Shloka: undefined;
+  Varnamala: undefined;
+  // U8-4: the daily word (वर्ण-बन्धः)
+  DailyWord: undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

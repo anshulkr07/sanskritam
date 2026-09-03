@@ -40,7 +40,6 @@ export default function WordBank({ target, corpus, disabled = false, onSubmit }:
   const slotCount = useMemo(() => tokenize(target).length, [target]);
   const [pool, setPool] = useState<Tile[]>(() => buildWordBank(target, corpus));
   const [placed, setPlaced] = useState<Tile[]>([]);
-  const [draggedTile, setDraggedTile] = useState<Tile | null>(null);
 
   // ── Tap interactions (kept, never removed) ──
 
@@ -58,55 +57,6 @@ export default function WordBank({ target, corpus, disabled = false, onSubmit }:
     setPlaced((p) => p.filter((t) => t.id !== tile.id));
     setPool((p) => [...p, tile]);
   };
-
-  // ── Drag state (per tile) ──
-  const dragX = useSharedValue(0);
-  const dragY = useSharedValue(0);
-  const isDragging = useSharedValue(false);
-  const dragScale = useSharedValue(1);
-
-  const onDragStart = (tile: Tile) => {
-    "worklet";
-    runOnJS(setDraggedTile)(tile);
-    runOnJS(haptics.tap)();
-  };
-
-  const onDragEnd = () => {
-    "worklet";
-    runOnJS(setDraggedTile)(null);
-    // If the tile was dragged over the answer strip, place it
-    // For simplicity: threshold-based drop at -80px (above the tile row)
-    if (dragY.value < -80 && !disabled) {
-      runOnJS(place)(draggedTile!);
-    }
-    dragX.value = withSpring(0, springCfg.snappy);
-    dragY.value = withSpring(0, springCfg.snappy);
-    isDragging.value = false;
-    dragScale.value = withSpring(1, springCfg.snappy);
-  };
-
-  const createPanGesture = (tile: Tile) =>
-    Gesture.Pan()
-      .onStart(() => {
-        isDragging.value = true;
-        dragScale.value = withSpring(1.06, springCfg.snappy);
-        runOnJS(onDragStart)(tile);
-      })
-      .onUpdate((e) => {
-        dragX.value = e.translationX;
-        dragY.value = e.translationY;
-      })
-      .onEnd(() => {
-        onDragEnd();
-      })
-      .onFinalize(() => {
-        if (!isDragging.value) return;
-        dragX.value = withSpring(0, springCfg.snappy);
-        dragY.value = withSpring(0, springCfg.snappy);
-        isDragging.value = false;
-        dragScale.value = withSpring(1, springCfg.snappy);
-        runOnJS(setDraggedTile)(null);
-      });
 
   // ── Submit ──
   const submit = () => {
@@ -140,40 +90,14 @@ export default function WordBank({ target, corpus, disabled = false, onSubmit }:
 
       {/* Tile bank */}
       <View style={styles.bank}>
-        {pool.map((tile) => {
-          const pan = createPanGesture(tile);
-          const isThisDragged = draggedTile?.id === tile.id;
-          const animStyle = useAnimatedStyle(() => ({
-            transform: [
-              { translateX: isThisDragged ? dragX.value : 0 },
-              { translateY: isThisDragged ? dragY.value : 0 },
-              { scale: isThisDragged ? dragScale.value : 1 },
-            ],
-            zIndex: isThisDragged ? 10 : 1,
-            shadowOpacity: isThisDragged ? 0.3 : 0.06,
-            elevation: isThisDragged ? 8 : 2,
-          }));
-
-          return (
-            <GestureDetector key={tile.id} gesture={pan}>
-              <Animated.View
-                style={[
-                  styles.tile,
-                  disabled && styles.tileDisabled,
-                  animStyle,
-                ]}
-              >
-                <Text
-                  onPress={() => place(tile)}
-                  style={[styles.tileText, script("semibold")]}
-                  suppressHighlighting
-                >
-                  {tile.text}
-                </Text>
-              </Animated.View>
-            </GestureDetector>
-          );
-        })}
+        {pool.map((tile) => (
+          <DraggableTile
+            key={tile.id}
+            tile={tile}
+            disabled={disabled}
+            onPlace={place}
+          />
+        ))}
       </View>
 
       <Button
@@ -183,6 +107,80 @@ export default function WordBank({ target, corpus, disabled = false, onSubmit }:
         style={{ marginTop: space.lg }}
       />
     </GestureHandlerRootView>
+  );
+}
+
+// ── DraggableTile ─────────────────────────────────────────────────────────────
+// Extracted so useAnimatedStyle is called at component level (once per tile),
+// not inside a .map() loop which violates the Rules of Hooks.
+
+function DraggableTile({
+  tile,
+  disabled,
+  onPlace,
+}: {
+  tile: Tile;
+  disabled: boolean;
+  onPlace: (t: Tile) => void;
+}) {
+  const dragX = useSharedValue(0);
+  const dragY = useSharedValue(0);
+  const dragScale = useSharedValue(1);
+
+  const pan = useMemo(
+    () =>
+      Gesture.Pan()
+        .onStart(() => {
+          dragScale.value = withSpring(1.06, springCfg.snappy);
+          runOnJS(haptics.tap)();
+        })
+        .onUpdate((e) => {
+          dragX.value = e.translationX;
+          dragY.value = e.translationY;
+        })
+        .onEnd(() => {
+          // Threshold-based drop: if dragged upward past 80px, place the tile
+          if (dragY.value < -80) {
+            runOnJS(onPlace)(tile);
+          }
+          dragX.value = withSpring(0, springCfg.snappy);
+          dragY.value = withSpring(0, springCfg.snappy);
+          dragScale.value = withSpring(1, springCfg.snappy);
+        })
+        .onFinalize(() => {
+          dragX.value = withSpring(0, springCfg.snappy);
+          dragY.value = withSpring(0, springCfg.snappy);
+          dragScale.value = withSpring(1, springCfg.snappy);
+        }),
+    [tile, onPlace, dragX, dragY, dragScale],
+  );
+
+  const animStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: dragX.value },
+      { translateY: dragY.value },
+      { scale: dragScale.value },
+    ],
+  }));
+
+  return (
+    <GestureDetector gesture={pan}>
+      <Animated.View
+        style={[
+          styles.tile,
+          disabled && styles.tileDisabled,
+          animStyle,
+        ]}
+      >
+        <Text
+          onPress={() => onPlace(tile)}
+          style={[styles.tileText, script("semibold")]}
+          suppressHighlighting
+        >
+          {tile.text}
+        </Text>
+      </Animated.View>
+    </GestureDetector>
   );
 }
 

@@ -35,6 +35,18 @@ class Settings(BaseSettings):
     explain_enabled: bool = True
     explain_max_tokens: int = 220
 
+    # Free-form conversation tutor (services/tutor.py). This one IS on the
+    # turn path — the 2026-09-02 decision traded §12's model-free sub-second
+    # turn for a conversation that accepts more than one sentence per
+    # question. Same provider ban: -conversations, never the reasoning
+    # variant. `tutor_enabled=False` falls the runtime back to the dialogue
+    # graph, which is kept working for exactly that reason.
+    tutor_provider: str = "sarvam:sarvam-105b-conversations"
+    tutor_enabled: bool = True
+    tutor_max_tokens: int = 400
+    # Non-zero: a tutor repeating itself verbatim is the failure this replaced.
+    tutor_temperature: float = 0.6
+
     # Voice quotas — rolling window per learner
     quota_enabled: bool = True
     quota_tts_chars_per_day: int = 20_000     # ~₹20/day/learner at Bulbul rates

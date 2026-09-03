@@ -12,7 +12,13 @@ param(
     # port 8000 kept winning connections ahead of every newly started server,
     # so the phone talked to stale code no matter how often this script was
     # rerun. Pass -Port 8000 to go back once that socket is gone (reboot clears it).
-    [int]$Port = 8001
+    [int]$Port = 8001,
+
+    # Pass -Build to run `npx expo run:android --no-bundler` before starting
+    # Metro. This compiles native code and installs the APK on a connected
+    # device/emulator. Only needed when native dependencies or Android config
+    # change; day-to-day JS-only changes don't require it.
+    [switch]$Build
 )
 
 $ErrorActionPreference = "Continue"
@@ -113,6 +119,29 @@ if (-not (Test-Path (Join-Path $mobileDir "node_modules"))) {
     Write-Host ""
     Write-Host "First time mobile setup: Running 'npm install'..." -ForegroundColor Yellow
     npm install --prefix mobile
+}
+
+# ---- Native Android Build (optional) ----
+if ($Build) {
+    Write-Host ""
+    Write-Host "--------------------------------------------------" -ForegroundColor Magenta
+    Write-Host "     BUILDING & INSTALLING NATIVE ANDROID APP     " -ForegroundColor Magenta
+    Write-Host "--------------------------------------------------" -ForegroundColor Magenta
+    Write-Host " -> This compiles native code and installs the APK." -ForegroundColor White
+    Write-Host " -> Using --no-bundler so Metro isn't started twice." -ForegroundColor White
+    Write-Host ""
+
+    Push-Location $mobileDir
+    try {
+        npx expo run:android --no-bundler
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host " [WARN] Native build exited with code $LASTEXITCODE. Continuing anyway..." -ForegroundColor Yellow
+        } else {
+            Write-Host " [OK] Native build and install complete." -ForegroundColor Green
+        }
+    } finally {
+        Pop-Location
+    }
 }
 
 # ---- Launch Expo in Foreground ----

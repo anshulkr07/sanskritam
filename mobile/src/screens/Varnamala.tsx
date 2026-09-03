@@ -1,6 +1,7 @@
 // Varnamala — the alphabet, grouped by place of articulation.
-// U4-1: Now renders the true 5×5 sparśa matrix (rows=place, columns=voicing/aspiration)
-// with an animated sagittal mouth cross-section in SVG.
+// U4-1: Renders the true 5×5 sparśa matrix (rows=place, columns=voicing/aspiration).
+// Selecting a varṇa plays it and runs the articulation gesture that makes it in
+// an animated sagittal cross-section of the mouth and throat (see VocalTract).
 // Colour-codes the five rows by place, matching the same colours wherever
 // place is referenced in the app.
 
@@ -13,27 +14,10 @@ import { api, type VarnamalaChar, type VarnamalaResponse } from "../api/client";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
-import MouthDiagram from "../components/MouthDiagram";
+import VocalTract from "../components/VocalTract";
+import { PLACE_COLORS, PLACE_LABEL, PLACE_ORDER, articulationFor } from "../phonetics";
 
-// ── Place colours (used everywhere place is referenced) ────────────────
-
-export const PLACE_COLORS: Record<string, string> = {
-  kanthya:     "#CA4715", // throat · saffron
-  talavya:     "#25833E", // palate · green
-  murdhanya:   "#5A7D9A", // retroflex · blue
-  dantya:      "#6F59EC", // teeth · violet
-  oshthya:     "#99680A", // lips · gold
-};
-
-const PLACE_LABEL: Record<string, { sa: string; en: string }> = {
-  kanthya:   { sa: "कण्ठ्य", en: "Throat" },
-  talavya:   { sa: "तालव्य", en: "Palate" },
-  murdhanya: { sa: "मूर्धन्य", en: "Retroflex" },
-  dantya:    { sa: "दन्त्य", en: "Teeth" },
-  oshthya:   { sa: "ओष्ठ्य", en: "Lips" },
-};
-
-const PLACE_ORDER = ["kanthya", "talavya", "murdhanya", "dantya", "oshthya"];
+export { PLACE_COLORS };
 
 // ── Sparśa matrix — the 5×5 grid ─────────────────────────────────────
 
@@ -46,8 +30,13 @@ function SparsaMatrix({
   onCharPress: (c: VarnamalaChar) => void;
   speaking: string | null;
 }) {
-  // Filter only sparśa consonants (those with a place value)
-  const sparsa = useMemo(() => chars.filter((c) => c.place && c.kind === "consonant"), [chars]);
+  // The nasal completes each row of the traditional 5×5, so it belongs in the
+  // matrix under the "Nasal" header — it arrives from the API as kind "nasal",
+  // in its own list, which is why it used to leave that column empty.
+  const sparsa = useMemo(
+    () => chars.filter((c) => c.place && (c.kind === "consonant" || c.kind === "nasal")),
+    [chars],
+  );
 
   return (
     <View style={styles.matrix}>
@@ -63,7 +52,11 @@ function SparsaMatrix({
 
       {/* Rows: place of articulation */}
       {PLACE_ORDER.map((place) => {
-        const row = sparsa.filter((c) => c.place === place).slice(0, 5);
+        const inPlace = sparsa.filter((c) => c.place === place);
+        const row = [
+          ...inPlace.filter((c) => c.kind === "consonant").slice(0, 4),
+          ...inPlace.filter((c) => c.kind === "nasal").slice(0, 1),
+        ];
         if (row.length === 0) return null;
         return (
           <View key={place} style={styles.matrixRow}>
@@ -94,6 +87,8 @@ export default function VarnamalaScreen() {
   const [grid, setGrid] = useState<VarnamalaResponse | null>(null);
   const [speaking, setSpeaking] = useState<string | null>(null);
   const [selectedChar, setSelectedChar] = useState<VarnamalaChar | null>(null);
+  // Bumped when playback starts; VocalTract replays its gesture on every change.
+  const [playToken, setPlayToken] = useState(0);
 
   useEffect(() => {
     api.varnamala().then(setGrid).catch(() => setGrid(null));
@@ -102,8 +97,16 @@ export default function VarnamalaScreen() {
   const playChar = useCallback(async (c: VarnamalaChar) => {
     haptics.tap();
     setSpeaking(c.devanagari);
+    // Start the gesture on the tap, not when the audio arrives. A TTS round
+    // trip sits in front of playback (measured ~900ms here, and it still costs
+    // that when the call fails), and holding a silent, still diagram for that
+    // long reads as a broken tap. The gesture also has to work at all when
+    // there is no audio — offline, or once the TTS quota is spent.
+    setPlayToken((n) => n + 1);
     try {
       await speak(c.devanagari, "sa");
+    } catch {
+      /* no audio — the diagram still teaches the shape */
     } finally {
       setSpeaking(null);
     }
@@ -124,13 +127,12 @@ export default function VarnamalaScreen() {
     return [...(grid.vowels ?? []), ...(grid.consonants ?? []), ...(grid.nasals ?? []), ...(grid.others ?? [])];
   }, [grid]);
 
-  if (!grid) {
-    return (
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.center}><Text style={styles.muted}>Loading the alphabet…</Text></View>
-      </SafeAreaView>
-    );
-  }
+  // The articulation drives the cross-section. Null for anusvāra/visarga,
+  // which have no place and nothing honest to draw.
+  const articulation = useMemo(
+    () => (selectedChar ? articulationFor(selectedChar) : null),
+    [selectedChar],
+  );
 
   // Find minimal pair for the selected character
   const minimalPair = useMemo(() => {
@@ -140,8 +142,16 @@ export default function VarnamalaScreen() {
     );
   }, [selectedChar, allChars]);
 
+  if (!grid) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <View style={styles.center}><Text style={styles.muted}>Loading the alphabet…</Text></View>
+      </SafeAreaView>
+    );
+  }
+
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.intro}>
           Sanskrit orders its alphabet by where your tongue goes in your mouth.
@@ -151,34 +161,37 @@ export default function VarnamalaScreen() {
         {/* 5×5 Sparśa matrix */}
         <Text style={styles.sectionTitle}>स्पर्श · The 5×5 stops</Text>
         <SparsaMatrix
-          chars={grid.consonants ?? []}
+          chars={[...(grid.consonants ?? []), ...(grid.nasals ?? [])]}
           onCharPress={onCharPress}
           speaking={speaking}
         />
 
-        {/* Mouth diagram for selected character */}
-        {selectedChar && selectedChar.place && (
-          <MouthDiagram
-            place={selectedChar.place}
+        {/* Animated cross-section of the mouth making the selected sound */}
+        {selectedChar && articulation && (
+          <VocalTract
+            articulation={articulation}
             char={selectedChar.devanagari}
             iast={selectedChar.iast}
+            playToken={playToken}
           />
         )}
 
         {/* Minimal pair comparison */}
-        {selectedChar && minimalPair && (
+        {minimalPair && articulation && (
           <View style={styles.minimalPair}>
             <View style={styles.minimalPairRow}>
               <Text style={styles.minimalPairTitle}>Compare with</Text>
               <Pressable
                 onPress={() => onCharPress(minimalPair)}
-                style={[styles.minimalPairChip, { backgroundColor: PLACE_COLORS[selectedChar.place!] || color.surfaceMuted }]}
+                accessibilityRole="button"
+                accessibilityLabel={`Compare with ${minimalPair.iast}`}
+                style={[styles.minimalPairChip, { backgroundColor: PLACE_COLORS[articulation.place] || color.surfaceMuted }]}
               >
                 <Text style={styles.minimalPairChipText}>{minimalPair.devanagari}</Text>
               </Pressable>
             </View>
             <Text style={styles.minimalPairHint}>
-              Same place ({PLACE_LABEL[selectedChar.place!]?.en}), different sound.
+              Same place ({PLACE_LABEL[articulation.place]?.en}), different sound.
               This contrast is what English speakers find hardest.
             </Text>
           </View>
@@ -186,7 +199,7 @@ export default function VarnamalaScreen() {
 
         {/* Other groups */}
         {renderGroup(grid.vowels, "vowels", allChars, onCharPress, speaking)}
-        {renderGroup(grid.nasals, "nasals", allChars, onCharPress, speaking)}
+        {/* Nasals are not listed again here: they now complete the 5×5 rows above. */}
         {renderGroup(grid.others, "others", allChars, onCharPress, speaking)}
       </ScrollView>
     </SafeAreaView>

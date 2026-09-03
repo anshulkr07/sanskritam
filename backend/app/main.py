@@ -4,9 +4,11 @@ import logging
 import time
 
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 
@@ -80,6 +82,7 @@ def create_app() -> FastAPI:
     from app.routers.authoring import router as authoring_router
     from app.routers.pronunciation import router as pronunciation_router
     from app.routers.progress import router as progress_router
+    from app.routers.daily_word import router as daily_word_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -95,6 +98,16 @@ def create_app() -> FastAPI:
     app.include_router(authoring_router, tags=["Authoring"])
     app.include_router(pronunciation_router, tags=["Pronunciation"])
     app.include_router(progress_router, tags=["Progress"])
+    app.include_router(daily_word_router, tags=["Daily Word"])
+
+    # Serve the web console (frontend/) from the API's own origin when the
+    # directory is present.  Kill CORS entirely for the console and give the
+    # deployed API a browsable UI.  Mounted LAST so /api, /docs, /health
+    # keep priority; app.js defaults to http://localhost:8000 which is this
+    # origin in production, so the console works with zero configuration.
+    _frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
+    if _frontend_dir.is_dir():
+        app.mount("/", StaticFiles(directory=_frontend_dir, html=True), name="frontend")
 
     return app
 

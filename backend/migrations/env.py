@@ -19,7 +19,12 @@ import app.models  # noqa: F401 — registers all models on Base.metadata
 config = context.config
 
 # Point Alembic at the app's real DB URL (overrides alembic.ini).
-config.set_main_option("sqlalchemy.url", f"sqlite:///{settings.db_path}")
+# Respect settings.database_url so the same migrations run against Postgres
+# in production; fall back to the local SQLite file for dev.  (Previously
+# this hardcoded sqlite:///{settings.db_path}, silently redirecting the
+# runtime init_db() upgrade to SQLite even when DATABASE_URL was set.)
+_db_url = settings.database_url or f"sqlite:///{settings.db_path}"
+config.set_main_option("sqlalchemy.url", _db_url)
 
 # Interpret the config file for Python logging.
 if config.config_file_name is not None:
@@ -49,14 +54,17 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
-    """Run migrations in 'online' mode: create an Engine, associate a connection."""
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    """Run migrations in 'online' mode: use the app's own engine.
 
-    with connectable.connect() as connection:
+    Reusing app.db.engine guarantees Alembic runs against the identical
+    driver/URL/connect-args the app uses (e.g. the postgresql:// →
+    postgresql+psycopg:// rewrite in _norm_db_url, prepare_threshold=0 for
+    poolers) — parsing the URL here independently would bypass that
+    normalization and try to load psycopg2.
+    """
+    from app.db import engine
+
+    with engine.connect() as connection:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,

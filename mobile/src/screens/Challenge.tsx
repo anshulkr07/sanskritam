@@ -38,13 +38,19 @@ function modeForIndex(i: number): ExerciseMode {
   return i % 2 === 0 ? "wordbank" : "typed";
 }
 
-export default function ChallengeScreen({ navigation }: Props) {
+export default function ChallengeScreen({ navigation, route }: Props) {
   const [completed, setCompleted] = useState(0); // resolved exercises (excludes off_by_one retries)
   const [correctCount, setCorrectCount] = useState(0);
   const [sessionDone, setSessionDone] = useState(false);
 
+  // U8-0: a Path launch narrows the session to the unit's feature bands.
+  // When set, serve only challenges carrying at least one of those features
+  // (the adaptive /challenges/next path otherwise ignores the filter).
+  const filterFeatures = route.params?.features ?? [];
+
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [corpus, setCorpus] = useState<string[]>([]);
+  const [filteredPool, setFilteredPool] = useState<Challenge[] | null>(filterFeatures.length ? [] : null);
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<AttemptResponse | null>(null);
@@ -57,7 +63,14 @@ export default function ChallengeScreen({ navigation }: Props) {
   useEffect(() => {
     api
       .listChallenges("laukika")
-      .then((list) => setCorpus(list.map((c) => c.target_sanskrit)))
+      .then((list) => {
+        setCorpus(list.map((c) => c.target_sanskrit));
+        if (filterFeatures.length) {
+          setFilteredPool(
+            list.filter((c) => (c.features ?? []).some((f) => filterFeatures.includes(f))),
+          );
+        }
+      })
       .catch(() => setCorpus([]));
   }, []);
 
@@ -67,14 +80,22 @@ export default function ChallengeScreen({ navigation }: Props) {
     setAnswer("");
     setExerciseKey((k) => k + 1);
     try {
-      const c = await api.nextChallenge("laukika", "text");
-      setChallenge(c);
+      // U8-0: when a feature filter is active, serve from the narrowed pool
+      // rather than the global adaptive pick, so a Path unit actually teaches
+      // its band. Fall back to the adaptive pick if the pool is empty.
+      if (filteredPool && filteredPool.length > 0) {
+        const idx = (completed % filteredPool.length + filterFeatures.length) % filteredPool.length;
+        setChallenge(filteredPool[idx]);
+      } else {
+        const c = await api.nextChallenge("laukika", "text");
+        setChallenge(c);
+      }
     } catch {
       setChallenge(null);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [filteredPool, completed, filterFeatures.length]);
 
   useEffect(() => {
     loadNext();

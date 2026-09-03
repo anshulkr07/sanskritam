@@ -14,6 +14,7 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { useAuth } from "../store/auth";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { Button, Card } from "../components/ui";
+import type { TabScreenProps } from "../navigation/types";
 
 // ── Feature band taxonomy ─────────────────────────────────────────────
 // These correspond to the feature bands from HANDOVER.md P2-1.
@@ -133,7 +134,7 @@ function PathNode({
 
 // ── Path screen ────────────────────────────────────────────────────────
 
-export default function PathScreen() {
+export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
   const { learner, refresh } = useAuth();
   const [selectedNode, setSelectedNode] = useState<PathNodeData | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -153,10 +154,13 @@ export default function PathScreen() {
   }, []);
 
   const onStartUnit = useCallback(() => {
+    if (!selectedNode) return;
+    // Close the sheet FIRST so the learner never sees it over the pushed
+    // screen (U8-0), then launch a practice session scoped to this unit's
+    // feature bands.
     setSheetOpen(false);
-    // Navigate to Challenge with the unit's features as filter
-    // For now, just close the sheet — navigation integration is later
-  }, []);
+    navigation.navigate("Challenge", { features: selectedNode.features });
+  }, [selectedNode, navigation]);
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>

@@ -12,11 +12,44 @@ from app.config import settings
 
 _MIGRATIONS_DIR = Path(__file__).resolve().parent.parent / "migrations"
 
+def _norm_db_url(url: str) -> str:
+    """Normalize a database URL for SQLAlchemy.
+
+    Accepts plain postgresql:// (as Supabase hands out) and rewrites it to
+    the psycopg3 driver form; SQLite URLs pass through unchanged.
+    """
+    if url.startswith("postgresql://"):
+        return "postgresql+psycopg://" + url[len("postgresql://"):]
+    if url.startswith("postgres://"):
+        return "postgresql+psycopg://" + url[len("postgres://"):]
+    return url
+
+
+_is_sqlite = not settings.database_url
+
 engine = create_engine(
-    settings.database_url if settings.database_url else f"sqlite:///{settings.db_path}",
-    connect_args={"check_same_thread": False} if not settings.database_url else {},
+    _norm_db_url(settings.database_url) if settings.database_url else f"sqlite:///{settings.db_path}",
+    connect_args={"check_same_thread": False} if _is_sqlite else {},
+    # pool_pre_ping: Supabase/poolers drop idle connections; the ping
+    # transparently reconnects instead of raising on the first request.
+    pool_pre_ping=not _is_sqlite,
     echo=False,
 )
+
+if not _is_sqlite:
+    from sqlalchemy import event
+
+    @event.listens_for(engine, "connect")
+    def _disable_client_prepare(dbapi_connection, connection_record):
+        """psycopg3 only: disable client-side prepared statements.
+
+        Required against transaction-mode poolers (PgBouncer), which don't
+        support named prepared statements.  Set post-connect as a writable
+        attribute — not via connect_args, which psycopg rejects.
+        """
+        if hasattr(dbapi_connection, "prepare_threshold"):
+            dbapi_connection.prepare_threshold = 0
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
@@ -36,31 +69,23 @@ def get_db() -> Session:
 def _schema_drift() -> list[str]:
     """Compare DB columns against model metadata; return drift descriptions.
 
-    Catches the failure mode where Base.metadata.create_all / Alembic was
-    skipped or a migration was forgotten: missing tables and missing columns
-    on existing tables.  Returns an empty list when the DB matches the models.
-    """
-    import sqlite3
+    Catches the failure mode where the Alembic upgrade was skipped or a
+    migration was forgotten: missing tables and missing columns on existing
+    tables.  Returns an empty list when the DB matches the models.
 
-    from app import models  # noqa: F401 — registers all models on Base
+    Dialect-neutral (sqlalchemy.inspect) so the same guard works on SQLite
+    in dev and Postgres in production.
+    """
+    import app.models  # noqa: F401 — registers all models on Base
 
     drift: list[str] = []
-    with engine.connect() as conn:
-        db_tables = {
-            row[0]
-            for row in conn.execute(sqlalchemy.text(
-                "SELECT name FROM sqlite_master WHERE type='table'"
-            ))
-        }
+    inspector = sqlalchemy.inspect(engine)
+    db_tables = set(inspector.get_table_names())
     for table_name, table in Base.metadata.tables.items():
         if table_name not in db_tables:
             drift.append(f"missing table: {table_name}")
             continue
-        conn = sqlite3.connect(settings.db_path)
-        try:
-            db_cols = {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
-        finally:
-            conn.close()
+        db_cols = {col["name"] for col in inspector.get_columns(table_name)}
         model_cols = set(table.columns.keys())
         for col in sorted(model_cols - db_cols):
             drift.append(f"missing column: {table_name}.{col}")
@@ -81,12 +106,7 @@ def init_db() -> None:
     # A pre-Alembic DB (app tables present, no alembic_version) can't be
     # upgraded — the baseline would fail with "table already exists".  Fail
     # loudly with the actionable fix instead of a raw Alembic error.
-    with engine.connect() as conn:
-        tables = {
-            row[0] for row in conn.execute(sqlalchemy.text(
-                "SELECT name FROM sqlite_master WHERE type='table'"
-            ))
-        }
+    tables = set(sqlalchemy.inspect(engine).get_table_names())
     if tables and "alembic_version" not in tables:
         raise RuntimeError(
             f"Database at '{settings.db_path}' predates Alembic migrations "

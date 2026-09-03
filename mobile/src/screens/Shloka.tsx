@@ -155,7 +155,7 @@ export default function ShlokaScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body}>
         {/* Top: source + play */}
         <View style={styles.topRow}>

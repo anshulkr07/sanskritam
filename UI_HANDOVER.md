@@ -24,7 +24,7 @@ Work on this document is **split between two agents.** Stay inside your lane.
 | Phase | Owner |
 |---|---|
 | **U1 — the mascot (the Rive file)** | **Claude**, via the Rive MCP |
-| U0, U2, U3, U4, U5, U6 | **DeepSeek / Hermes** |
+| U0, U2, U3, U4, U5, U6, **U7, U8** | **DeepSeek / Hermes** |
 
 **If you are DeepSeek: do not touch the Rive file, and do not build a mascot
 renderer.** U1-3 (`mobile/src/components/guru/rig.ts`) and U1-4 (the
@@ -107,6 +107,12 @@ layout and a VoiceOver user gets an unusable app.
 map, no sense of progress through a body of knowledge. Duolingo's path is the
 most-copied element in the category for a reason: it answers "where am I?"
 before the learner has to ask.
+
+⚠ **Re-audited 2026-09-02 and it is worse than this says.** The journey map
+*was built* (U3-1, `screens/Path.tsx`, 339 lines) and is **wired to nothing** —
+not imported, not registered, unreachable. So are `WordOrder.tsx` (161) and
+`Paradigm.tsx` (153). The whole app contains **one** `navigate()` call. The fix
+is **U8-0**, and it comes before everything else.
 
 ### What is already good — do not rebuild it
 
@@ -298,6 +304,13 @@ gap — replace with `ReturnType<typeof setTimeout>`.
 | **U4** | The uniquely-Sanskrit surfaces | U4-1 … U4-5 | U1, U2 |
 | **U5** | Accessibility — the child→pandit mandate | U5-1 … U5-4 | U2 |
 | **U6** | Polish & performance | U6-1 … U6-3 | everything |
+| **U7** | **The proof surfaces** — derivation animated, scansion, word order | U7-1 … U7-5 | U0-2, and `HANDOVER.md` P9-2 / P11 |
+| **U8** | **Information architecture** — six tabs, drawer, Home hub, Play, daily word | U8-0 … U8-6 | nothing (**U8-0 first, before U7**) |
+
+⚠ **U8-0 is the first task in this document that anyone should pick up.** It
+wires 653 lines of already-finished screens that are currently unreachable —
+an hour of work for roughly triple the reachable app. Everything else in U7
+and U8 assumes it is done.
 
 U5 is listed fifth and is **not** optional or deferrable. It is placed after
 U2 only because retrofitting accessibility onto three screens is cheaper than
@@ -1315,6 +1328,10 @@ metre visualised as a rhythm strip of long/short syllables that pulses in time
 with the recitation audio. Palette and paper texture evoke a manuscript
 without becoming a skeuomorphic gimmick.
 
+⚠ **Amended 2026-09-02:** do not hand-author the long/short pattern. The rhythm
+strip is now **U7-3**, fed by `HANDOVER.md` P11-1, which computes weights from
+the verse text. Build the manuscript here; consume the strip from there.
+
 ---
 
 ## U4-5 · Sandhi visualisation
@@ -1325,6 +1342,13 @@ When two words join, animate the junction: the two words slide together, the
 final and initial sounds highlight, and the combined form morphs into place with
 the rule named beneath. Sandhi is the concept that makes learners quit; seeing
 it happen is worth more than any amount of explanation.
+
+⚠ **Amended 2026-09-02, two changes.** The rule name is no longer
+hand-authored — `HANDOVER.md` P9 derives it (`6.1.87 आद्गुणः`) and P11-2
+supplies the split. And the animation is **U7-1's** `SutraCard` plus its
+diffed-span cross-fade, reused: build those there, consume them here. Do not
+write a second morph implementation, and heed U7-1.3 — Devanagari conjuncts
+cannot be path-tweened.
 
 ---
 
@@ -1463,6 +1487,559 @@ The current icon is a 393KB PNG. Produce a proper icon set from the guru
 portrait, an animated splash that transitions into the app rather than cutting,
 and store screenshots. ⚠ Store submission itself is owner-gated — prepare
 assets, do not submit.
+
+---
+
+# PHASE U7 — The proof surfaces
+
+> Added 2026-09-02. U4 is the phase that makes Shabd better than Duolingo.
+> **U7 is the phase that makes it un-copyable**, because every screen here
+> renders the output of a grammar engine no competitor is running.
+
+**Blocked by:** U0-2 (the graphics stack), and on the backend side
+`HANDOVER.md` **P9-2** for derivations and **P11** for scansion, word order
+and paradigms. Build against those response shapes, never against a Sanskrit
+library — **the mobile app must never import one** (P9-5).
+
+### The rule that governs this whole phase
+
+Every other app's grammar explanation is a language model talking. Yours shows
+numbered rules. That only holds if **the UI never renders a claim the backend
+did not return.** Three specific bans, all of which will feel like polish:
+
+- Never fill a missing metre name with a guess (`padya` is often `null` — see
+  P11-1). Render the rhythm with no name.
+- Never render a step the response did not contain, and never re-order steps
+  to look tidier. The order *is* the proof.
+- Never show a derivation on an `unsure` verdict (§3.3, §2.2).
+
+---
+
+## U7-1 · The derivation, animated
+
+**Why:** The single request that generated this phase. A derivation printed as
+a list is a reference; a derivation *played* is a lesson — the learner watches
+भू become भवति and sees which rule moved which syllable. This is the screen
+that will appear in every piece of marketing the product ever makes, and it is
+the visible form of the promise that the app proves rather than asserts.
+
+**Blocked by:** U0-2, `HANDOVER.md` P9-2. **Effort:** L
+
+**Touch:** create `mobile/src/components/derivation/DerivationPlayer.tsx`,
+`SutraCard.tsx`, `mobile/src/hooks/useDerivation.ts`
+
+**Contract** — from `GET /grammar/derive` (P9-2 / P9-5):
+
+```ts
+type Step = { code: string; sutra_devanagari: string; result: string };
+type Derivation = { result: string; step_count: number; steps: Step[] };
+```
+
+**Steps**
+
+1. **The stage.** The current form sits large and centred in Devanagari via
+   `script()`. It is the only thing that moves. Everything else is chrome.
+2. **The sūtra card** enters from the trailing edge at `duration.base` with
+   `easing.entrance`: rule code in mono, sūtra text in Devanagari beneath.
+   One card visible at a time; the previous card exits at `duration.quick`
+   (§8 — exits are faster than entrances).
+3. **The change is the animation.** Diff the previous `result` against the
+   next one and animate **only the segment that differs**: the changed span
+   scales up briefly and cross-fades, while the unchanged text holds still.
+   ⚠ **Do not attempt true glyph morphing.** Devanagari conjuncts cannot be
+   tweened as paths, and faking it produces garbage at every intermediate
+   frame. A held cross-fade on the diffed span reads as transformation and is
+   honest about what actually changed.
+4. **Bookkeeping steps must look like bookkeeping.** Verified in the real
+   output: steps 3 and 4 of भू→भवति (`1.3.2`, `1.3.3`) both yield `भू लँट्` —
+   the form does not change. When `result` is unchanged, **do not invent a
+   visual change.** Mark the step quietly (a dimmed card, no stage animation)
+   and let it pass faster. Compressing a run of them behind "3 marker rules"
+   is allowed; deleting them is not.
+5. **The śirorekhā is the signature move.** Devanagari hangs from a headline,
+   and no Latin-script app has an equivalent gesture. When a form *grows*, draw
+   the headline rule outward first and let the new glyphs settle beneath it.
+   Use this **once**, on the final step that produces the finished word — a
+   motion used everywhere is a motion that means nothing.
+6. **The learner drives.** Autoplay is not the default: 20 steps is too long to
+   sit through and §3.7 forbids blocking. Ship a scrubber and next/previous,
+   with play as an option. Land on the final form immediately if the sheet is
+   opened from a wrong-answer moment — the answer first, the proof on demand.
+7. **Header carries `step_count`** ("20 steps") before playback begins. That
+   number is the claim; show it without making the user count.
+8. **Sentence mode.** For a sentence rather than a word, the animated unit is
+   the *junction*, not the whole line: reuse `SutraCard` to name the sandhi
+   rule and reuse the diffed-span animation on the joining syllables. U4-5
+   owns that interaction — **build the card and the diff animation as shared
+   components here so U4-5 consumes them**, rather than writing a second
+   animation for the same idea.
+
+**Acceptance**
+
+- A wrong-answer sheet plays भू → भवति end to end at 60fps on the physical
+  low-end Android device (§3.5, §3.6).
+- With **Reduce Motion on**, the full ladder renders statically — every step
+  visible at once, no morph, no autoplay, nothing spinning (§3.4).
+- At **200% font**, the stage form and the sūtra text both wrap without
+  clipping (§9.6).
+- A response with `steps: []` renders the result alone with no empty player
+  and no error (backend degrades this way by design — P9-1.4).
+
+**Do not:** animate `width`/`height` (§8) · loop anything here forever (§8) ·
+show this on an `unsure` verdict (§3.3) · re-order or drop steps · block the
+learner behind playback (§3.7).
+
+---
+
+## U7-2 · The proof drawer in the wrong-answer moment
+
+**Why:** The highest-frequency place a learner asks *why?*. Today that answer
+is a language model's paragraph. It becomes a paragraph **and** a proof.
+
+**Blocked by:** U7-1, U2-2, `HANDOVER.md` P9-3. **Effort:** M
+
+**Touch:** `mobile/src/components/VerdictSheet.tsx`,
+create `mobile/src/components/derivation/ProofDrawer.tsx`
+
+**Steps**
+
+1. On an incorrect verdict with a grammatical mismatch, the sheet gains a
+   quiet secondary affordance — *"Why भवति?"*. It is never the primary action;
+   the primary action is always to try again.
+2. Opening it expands the drawer with U7-1's player inside.
+3. **Render both fields the backend sends, and neither is optional.** P9-3
+   returns a derivation *and* an LLM gloss, because they answer different
+   questions: the derivation says why the *form* is what it is, the gloss says
+   what the sentence *means*. Show the gloss first in plain language, the
+   derivation beneath it as the proof.
+   ⚠ **Do not build this as a toggle between the two, and do not treat the
+   derivation as a replacement for the gloss.** Handle each being absent
+   independently — derivation missing → gloss alone; gloss missing →
+   derivation alone; both missing → the existing authored gloss.
+4. Voice (§7): *"Not yet. Here it is —"*, then the form, then the proof. The
+   drawer never says the learner was wrong twice.
+
+**Acceptance:** all four presence combinations render without a layout hole;
+the drawer never appears on `unsure`; VerdictSheet stays on Reanimated (U2-2)
+and does not regress to legacy `Animated`.
+
+**Do not:** make the proof modal or unskippable · colour it as an error ·
+put the sūtra codes in red.
+
+---
+
+## U7-3 · The scansion strip
+
+**Why:** `UI_HANDOVER.md` U4-4 already asks for "the metre visualised as a
+rhythm strip." Until P11-1 that data did not exist. Now it does, computed from
+the verse itself, which means **every śloka is a rhythm without anyone
+authoring one.**
+
+**Blocked by:** U4-4, `HANDOVER.md` P11-1. **Effort:** M
+
+**Touch:** create `mobile/src/components/ScansionStrip.tsx`; consume in
+`mobile/src/screens/Shloka.tsx`
+
+**Steps**
+
+1. Render each syllable in Devanagari with a weight bar beneath it — tall for
+   *guru*, short for *laghu*. The bar is the information; keep it one colour
+   and vary only height (§U5-3: never encode meaning in colour alone).
+2. Sync the highlight to the recitation audio as it plays, one syllable at a
+   time. This is the piece that turns the daily śloka from a page into a habit.
+3. **Metre name is optional and often absent.** Verified: Gītā 1.1 scans
+   correctly and returns **no name**, because anuṣṭubh is variable. Render the
+   strip regardless and simply omit the label — never substitute a guess.
+4. Horizontal overflow scrolls inside the strip; the screen never scrolls
+   sideways.
+
+**Acceptance:** a 16-syllable line renders on a 360dp-wide screen without the
+page scrolling horizontally; with the name absent, no empty label box remains;
+Reduce Motion drops the audio-synced highlight and keeps the static strip.
+
+**Do not:** invent weights · animate bar `height` (scale a fixed bar instead,
+§8) · hide the strip when the metre name is null.
+
+---
+
+## U7-4 · The sentence that will not break
+
+**Why:** Free word order is the most distinctive fact about Sanskrit and the
+app never demonstrates it. A learner who drags four words into every possible
+order and watches the meaning survive has learned what vibhakti *is* — by
+trying to break the sentence and failing.
+
+**Blocked by:** U2-4 (the draggable word bank already exists), `HANDOVER.md`
+P11-3. **Effort:** M
+
+**Touch:** `mobile/src/components/WordBank.tsx`,
+create `mobile/src/screens/WordOrder.tsx`
+
+**Steps**
+
+1. Reuse the U2-4 drag mechanics; do not write a second drag implementation.
+2. Any order the backend marks equivalent settles with the calm confirmation
+   tone, not the celebration one — *nothing happened*, and that is the point.
+3. Then the second half, which is where the teaching is: change one **ending**
+   and the sentence either breaks or means something else. Show the new meaning
+   the backend returned. The ending is what carries the role, and the learner
+   should discover that by watching it fail.
+4. Tint each word by its kāraka role so the roles stay visible as the words
+   move. Pair every tint with a text label (§U5-3).
+
+**Acceptance:** a 3-word sentence accepts every equivalent permutation without
+a false negative; a wrong ending produces an explanation, never a red buzz; the
+length cap the backend enforces surfaces as a message, not an empty screen.
+
+**Do not:** reimplement drag · celebrate a re-order · treat a valid permutation
+as a "correct answer" event (it inflates mastery — this is exploration, not
+assessment).
+
+---
+
+## U7-5 · The paradigm table
+
+**Why:** Śabdarūpa and dhāturūpa tables are the most-memorised and most-hated
+object in school Sanskrit, taught by rote because teachers have no way to show
+the pattern. Every cell here can open its own derivation.
+
+**Blocked by:** U7-1, `HANDOVER.md` P11-5. **Effort:** M
+
+**Touch:** create `mobile/src/screens/Paradigm.tsx`
+
+**Steps**
+
+1. The 24-cell grid (8 vibhakti × 3 vacana), scrollable, tabular alignment.
+2. Tapping a cell opens U7-1's player for that form. The table is an index
+   into proofs.
+3. `null` cells render as a dash and stay tappable-disabled. **One
+   underivable cell must never blank the table** (P11-5.3).
+4. Colour the rows by the ending pattern they share — the pattern is the thing
+   rote learning hides, and making it visible is the entire value of the
+   screen.
+
+**Acceptance:** the grid holds at 200% font by scrolling, not clipping; a
+table containing a `null` renders completely; screen-reader order reads across
+rows with vibhakti and vacana announced per cell (§U5-1).
+
+**Do not:** paginate the table · animate cell entry (24 staggered cells
+violates the 6-item stagger cap, §8) · hide `null` cells.
+
+---
+
+# PHASE U8 — The information architecture
+
+> Added 2026-09-02, on an owner decision about navigation. **Do U8-0 first and
+> do it before anything else in U7** — it is an hour of work and it roughly
+> triples the reachable surface of the app.
+
+## The finding that produced this phase
+
+Audited 2026-09-02. **653 lines of finished screens are unreachable**, and the
+entire app contains exactly one `navigation.navigate()` call (Home → Challenge):
+
+| File | LOC | State |
+|---|---|---|
+| `screens/Path.tsx` | 339 | Not imported in `App.tsx`, not in `MainTabs`, nothing navigates to it. **Dead.** |
+| `screens/WordOrder.tsx` | 161 | Registered in the root stack; **nothing navigates to it.** |
+| `screens/Paradigm.tsx` | 153 | Registered in the root stack; **nothing navigates to it.** |
+
+`Path.tsx`'s `onStartUnit` is also a stub — it closes the sheet and comments
+*"navigation integration is later."* Later is now.
+
+## The target architecture — owner decision, 2026-09-02
+
+**Six bottom tabs, and a left drawer behind a hamburger.**
+
+| # | Tab | Contains |
+|---|---|---|
+| 1 | **Home** | The daily hub: greeting, streak, **daily śloka card**, **varṇamālā card**, daily word card, continue-session |
+| 2 | **Path** | The journey. A node launches a practice session. |
+| 3 | **Talk** | Conversation. Unchanged. |
+| 4 | **Play** | The games hub. |
+| 5 | **Grammar** | Derivation viewer + paradigm tables — U7's surfaces, given a home. |
+| 6 | **Progress** | Today's `Profile.tsx`, essentially unchanged: streak, ratios, mastery rings. |
+
+**Left drawer (hamburger):** account, sign out, sound and haptics toggles,
+reduced-motion override, text size, about, licences. ⚠ **None of this exists
+today** — `Profile.tsx` is 303 lines of pure stats with no settings in it at
+all. The drawer's contents are new work, not a move.
+
+**Śloka and Varṇamālā stop being tabs.** Both screens survive unchanged and
+keep their routes; they are reached from Home cards (U8-2) and from Path nodes.
+A once-a-day ritual and an alphabet reference are not destinations.
+
+⚠ **Six tabs is at the limit and will break before five would.** On a 360dp
+screen that is 60dp per tab. `MainTabs.tsx` currently renders icon + label
+always. **This is the acceptance risk of U8-1, not a detail** — see its steps.
+
+**If the owner later wants five:** collapse **Progress** into the drawer. It is
+the only tab here that is a *report* rather than a place. Build U8-6 so that is
+a one-line change, not a refactor.
+
+---
+
+## U8-0 · Wire what already exists
+
+**Why:** Three finished screens have no way in. This is the highest
+value-per-hour task in the entire document.
+
+**Blocked by:** nothing. **Effort:** S
+
+**Touch:** `mobile/App.tsx`, `mobile/src/navigation/MainTabs.tsx`,
+`mobile/src/navigation/types.ts`, `mobile/src/screens/Path.tsx`
+
+**Steps**
+
+1. Import `PathScreen` in `App.tsx` and add `Path` to `MainTabParamList` and
+   to `MainTabs` (final tab order lands in U8-1; getting it *reachable* is
+   this task).
+2. **Fix `Path.tsx`'s `onStartUnit` stub.** It must
+   `navigation.navigate("Challenge", { … })` carrying the unit's feature
+   filter, and the sheet must close first so the learner never sees the sheet
+   over the pushed screen.
+   ⚠ `Challenge`'s route param is `{ challengeId?: string }` today. A feature
+   filter is a different shape — **extend `RootStackParamList` deliberately**
+   and update `Challenge.tsx` to honour it, rather than smuggling a filter
+   through `challengeId`.
+3. Give `WordOrder` and `Paradigm` a temporary entry point so they can be
+   tested at all — a debug row on Home is acceptable **for this task only**.
+   U8-3 and U8-5 give them permanent homes and that row is deleted then. Leave
+   a `// U8-0 temporary` comment on it so it is not orphaned a second time.
+
+**Acceptance:** every screen file under `mobile/src/screens/` is reachable
+from a cold start by tapping only; `npx tsc --noEmit` → 0 errors.
+
+**Do not:** delete any of the three screens · rewrite `Path.tsx`'s visuals
+(U3-1 is done and accepted) · widen `challengeId` to mean two things.
+
+---
+
+## U8-1 · Six tabs and the drawer
+
+**Why:** The tab bar is the app's table of contents. Today it advertises two
+reference surfaces as destinations and hides the journey entirely.
+
+**Blocked by:** U8-0. **Effort:** L
+
+**Touch:** `mobile/App.tsx`, `mobile/src/navigation/MainTabs.tsx`,
+`mobile/src/navigation/types.ts`, create
+`mobile/src/navigation/AppDrawer.tsx`, create
+`mobile/src/screens/Settings.tsx`
+
+**Dependency:** `@react-navigation/drawer` is **not installed.** Its peers
+`react-native-gesture-handler` (~2.32.0) and `react-native-reanimated` (4.5.1)
+already are, so this is one package. Install it in the same commit and note
+the version in the message.
+
+**Steps**
+
+1. `MainTabParamList` becomes `Home · Path · Conversation · Play · Grammar ·
+   Progress`. Remove `Shloka` and `Varnamala` **from the tab list only** —
+   both stay in `RootStackParamList` and both screen files are untouched.
+2. Wrap the tab navigator in a drawer: `Drawer > Stack > Tabs`. The hamburger
+   lives in the header on Home only; a swipe from the left edge opens it
+   anywhere. ⚠ Verify the swipe does not fight `WordBank`'s drag gestures
+   (U2-4) or the Path's horizontal content — if it does, restrict
+   `swipeEnabled` to Home rather than disabling drag.
+3. **Solve the six-tab width problem, and prove it.** Icon + label at six tabs
+   on a 360dp screen leaves ~60dp each, and §9.6 requires 200% font to work.
+   Adopt this rule: below 360dp **or** at font scale ≥ 1.5, render
+   **icons only** and keep `accessibilityLabel` on every tab. Never let a
+   label truncate to an ellipsis — a tab bar reading "Progr…" is worse than
+   an icon.
+4. Build `Settings.tsx` as the drawer's content: account and sign out, sound
+   and haptics toggles (`services/sfx.ts` and `haptics.ts` already exist and
+   have **no user-facing toggle** — U6-2 requires one), a reduced-motion
+   override, text size, about, licences.
+5. The drawer is chrome: no mascot, no streak, no gamification. It is where
+   things go to be configured, not celebrated.
+
+**Acceptance:** six tabs render without truncation on a 360dp device at 100%
+and at 200% font (icons-only at the larger size); the drawer opens by
+hamburger and by edge swipe; `WordBank` drag still works; VoiceOver announces
+every tab and every drawer row (§U5-1); `npx tsc --noEmit` → 0 errors.
+
+**Do not:** delete `Shloka.tsx` or `Varnamala.tsx` · put the streak or the
+mascot in the drawer · add a seventh tab.
+
+---
+
+## U8-2 · Home becomes the daily hub
+
+**Why:** Śloka and Varṇamālā lose their tabs in U8-1 and must land somewhere
+better. A daily ritual belongs on the screen the learner opens first.
+
+**Blocked by:** U8-1. **Effort:** M
+
+**Touch:** `mobile/src/screens/Home.tsx`
+
+Home is 164 lines today: mascot greeting, a practice node, a level card. It
+gains three cards, in this order below the greeting:
+
+1. **Continue** — the existing practice entry point stays primary.
+2. **Today's śloka** — the verse's first line in Devanagari via `script()`,
+   with its state (unread / read / recited). Taps → `Shloka`. Once U7-3 lands,
+   show the scansion strip as the card's own artwork rather than a generic
+   icon — the rhythm *is* the illustration.
+3. **The daily word** — U8-4's puzzle. Shows solved/unsolved and the streak of
+   solved days. Taps → `DailyWord`.
+4. **Varṇamālā** — a reference card, deliberately the quietest of the four.
+   Taps → `Varnamala`.
+
+**Steps**
+
+1. Cards stagger in at 45ms, capped at 6 (§8). Four cards is inside the cap.
+2. Every card states its status in **text**, not colour alone (§U5-3).
+3. A card whose data has not loaded shows a skeleton (U0-5), never a spinner
+   and never a collapsed row that shifts layout when it arrives.
+4. Delete the U8-0 temporary debug row.
+
+**Acceptance:** Home renders all four cards at 200% font without clipping;
+each navigates correctly; nothing shifts position when data arrives.
+
+**Do not:** put more than four cards here · animate the cards on every focus
+(entrance is once per mount) · make the śloka card auto-play audio.
+
+---
+
+## U8-3 · The Play hub
+
+**Why:** The games need a container before they need each other. This is a
+grid, not a feature — build it thin and let it fill up.
+
+**Blocked by:** U8-1. **Effort:** S
+
+**Touch:** create `mobile/src/screens/Play.tsx`
+
+**Steps**
+
+1. A grid of mode cards, each with its Sanskrit name, an English subtitle, and
+   a one-line rule. Ship with the **three that already exist**: Word Order
+   (`वाक्य-क्रीडा`), Paradigm drill (`शब्दरूप-द्वन्द्वः`), and Challenges.
+2. Modes not yet built render as locked cards naming what they are. **Do not
+   hide them** — the hub's job is partly to promise. Locked cards must not be
+   tappable-with-no-feedback; they say "soon".
+3. ⚠ **Play is exploration, not assessment.** Nothing launched from here may
+   write mastery (U7-4's "Do not" — a valid permutation is not a correct
+   answer). Challenges launched from Play must run the same graded path they
+   run from Path; that one is assessment and does count. Keep the distinction
+   in the card copy so the learner knows which is which.
+
+**Acceptance:** the three built modes launch; locked cards are announced as
+unavailable by VoiceOver; the grid reflows to one column at 200% font.
+
+**Do not:** build a leaderboard here (U3-5 / P15) · gate modes behind currency.
+
+---
+
+## U8-4 · The daily word — `वर्ण-बन्धः`
+
+**Why:** The growth loop. One puzzle a day, one shareable result, no account
+needed. `shabd-expansion.html` argues this is the cheapest organic acquisition
+surface available, and it is **the one new screen worth real design effort.**
+
+**Blocked by:** U8-2, `HANDOVER.md` **P12** (the service) and **P11-4**
+(phonetic distance). **Effort:** L
+
+**Touch:** create `mobile/src/screens/DailyWord.tsx`,
+`mobile/src/components/VarnaGrid.tsx`
+
+**The mechanic, and why it is not a Wordle clone**
+
+Scoring runs on the **varṇamālā grid**, not on letter identity. क against ग is
+*one step* — same place of articulation, different voicing — and gets its own
+state; क against प is far. English Wordle cannot do this because Latin letter
+order is arbitrary. Sanskrit's is a map of the mouth, so "nearly right" has a
+principled definition. P11-4 returns the distance **and the axis that differs**
+(`place` | `voicing` | `aspiration` | `nasality`).
+
+**Steps**
+
+1. Four states per tile: exact · right place, wrong axis · present elsewhere ·
+   absent. **Four states cannot be colour alone** (§U5-3) — pair each with a
+   glyph or border treatment, and name the axis in text on tap.
+2. The reveal animation is per-tile with a 45ms stagger, and the tile flip is
+   `transform` only (§8).
+3. On solve, show the varṇamālā row that the answer's sounds occupy — the
+   puzzle teaches the grid, which is the point.
+4. **The share card is a first-class deliverable, not an afterthought.** It is
+   a WhatsApp-shaped object: an image, one line of text, a link. Render it
+   off-screen and share the image — do not share a text grid of emoji squares,
+   which loses the phonetic distinction that makes this puzzle different.
+5. One puzzle per learner-local day (§`HANDOVER.md` 2.8 — learner-local time,
+   never server time). A solved day is solved; no replay, no second guess.
+
+**Acceptance:** the four tile states are distinguishable in greyscale; the
+share image renders correctly at 1080×1080; the puzzle does not roll over at
+server midnight for a learner in another timezone; Reduce Motion drops the
+flip and shows final states immediately.
+
+**Do not:** add a timer · add a hearts/energy cost (§U8 note and the owner's
+standing ruling — no meter stops a willing learner) · let the answer be
+brute-forceable by rapid guessing.
+
+---
+
+## U8-5 · The Grammar tab
+
+**Why:** U7 builds the derivation player and the paradigm table, and neither
+has anywhere to live. This is the differentiator's front door.
+
+**Blocked by:** U7-1, U7-5, U8-1. **Effort:** M
+
+**Touch:** create `mobile/src/screens/Grammar.tsx`
+
+**Steps**
+
+1. A search field: type a word, get its derivation (U7-1's player) or its
+   paradigm (U7-5's table). This is the in-app form of the public viewer that
+   `HANDOVER.md` P11-6 keeps owner-gated — same components, no deployment
+   question.
+2. Beneath it, the sūtra reference: browsable, with the count stated. ⚠ Show
+   only what `GET /grammar/derive` returns. **Never render a rule the backend
+   did not send**, and never explain a sūtra with an LLM call — the whole
+   point of this screen is that it does not guess (§U7 phase rule).
+3. Recent lookups persist locally. This screen is used as a reference, and a
+   reference with no history is hostile.
+
+**Acceptance:** an underivable input returns an honest "no derivation for
+this" rather than an empty screen or a spinner; the paradigm table opens from
+a noun and the player from a verb.
+
+**Do not:** put the sūtra *curriculum* here — P9-4 is owner-gated and is a
+different thing from a reference.
+
+---
+
+## U8-6 · Progress, and the settings split
+
+**Why:** `Profile.tsx` is 303 lines of pure stats and contains **no settings
+at all**. Renaming it is most of this task; the drawer's settings are new.
+
+**Blocked by:** U8-1. **Effort:** S
+
+**Touch:** `mobile/src/screens/Profile.tsx` (rename to `Progress.tsx`),
+`mobile/src/navigation/types.ts`
+
+**Steps**
+
+1. Rename the screen and its route to `Progress`. The content — streak, the
+   two ratios, mastery rings — is correct and stays.
+2. Add the streak calendar (U3-2) and achievements (U3-4) here when built.
+   They are progress, not settings.
+3. **The Sanskrit ratio dial stays on Progress, not in the drawer.** It is the
+   product's most distinctive idea (U4-3) and burying a differentiator in a
+   settings list is how it stops being one. ⚠ The two-writer rule still binds
+   (`HANDOVER.md` §2.3): the slider writes `sanskrit_ratio_setting` via
+   `PATCH /me` only; the system's effective ratio is display-only.
+4. **Keep this screen self-contained**, so that collapsing it into the drawer
+   later is a navigation change and not a refactor.
+
+**Acceptance:** no route named `Profile` remains; the ratio dial still writes
+only the setting; `npx tsc --noEmit` → 0 errors.
+
+**Do not:** move stats into the drawer · move settings onto this screen.
 
 ---
 

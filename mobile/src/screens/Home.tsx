@@ -1,9 +1,15 @@
-// Home — one tab among several now (see MainTabs.tsx). Conversation, Daily
-// Śloka, and Varṇamālā used to be buried here as path nodes; they're each
-// their own tab now, so Home only owns what's actually Home's: the mascot
-// greeting, today's stats, and the entry point into a practice session.
+// Home — the daily hub (U8-2). The screen the learner opens first: the mascot
+// greeting, then four cards — Continue (primary), Today's śloka, The daily
+// word, and a deliberately-quiet Varṇamālā reference. Śloka and Varṇamālā are
+// reached from here (they are cards, not tabs, since U8-1).
+//
+// Rules: cards stagger in once per mount, capped at 6 (§8); every card states
+// its status in text, not colour alone (§U5-3); a data-less card shows a
+// skeleton, never a spinner or a collapsed row that shifts layout on arrival.
 
-import React, { useEffect, useRef, useState } from "react";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -12,22 +18,21 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@react-native-vector-icons/ionicons";
 import Animated, {
-  Easing,
-  useSharedValue,
   useAnimatedStyle,
-  withRepeat,
-  withSequence,
+  useSharedValue,
   withTiming,
-  cancelAnimation,
+  withDelay,
 } from "react-native-reanimated";
 
-import type { LearnerProfile } from "../api/client";
+import { api, type DailyWordPuzzle, type LearnerProfile, type Shloka } from "../api/client";
 import { Card, ProgressBar } from "../components/ui";
+import { Skeleton } from "../components/Skeleton";
 import TutorFull from "../components/TutorFull";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
+import { DrawerToggle } from "../navigation/AppDrawer";
+import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
 
@@ -35,11 +40,27 @@ type Props = TabScreenProps<"Home">;
 
 export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
+  const rootNav = useNavigation();
   const [profile, setProfile] = useState<LearnerProfile | null>(learner);
+  const [shloka, setShloka] = useState<Shloka | null>(null);
+  const [shlokaLoading, setShlokaLoading] = useState(true);
+  const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
+  const [dailyLoading, setDailyLoading] = useState(true);
 
   useEffect(() => {
     refresh().then(setProfile);
   }, [refresh]);
+
+  useEffect(() => {
+    api.todayShloka().then(setShloka).catch(() => setShloka(null)).finally(() => setShlokaLoading(false));
+    api.dailyWord().then(setDailyWord).catch(() => setDailyWord(null)).finally(() => setDailyLoading(false));
+  }, []);
+
+  const openDrawer = useCallback(() => {
+    haptics.tap();
+    // The drawer wraps the tab navigator, so its parent is the drawer.
+    rootNav.dispatch(DrawerActions.openDrawer());
+  }, [rootNav]);
 
   const streak = profile?.streak ?? 0;
   const ratio = profile?.sanskrit_ratio ?? 0.3;
@@ -47,8 +68,10 @@ export default function HomeScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      {/* Top bar */}
+      {/* Top bar with hamburger */}
       <View style={styles.topbar}>
+        <DrawerToggle onPress={openDrawer} />
+        <View style={{ flex: 1 }} />
         <View style={styles.pill}>
           <Ionicons name="flame" size={16} color={color.saffron} />
           <Text style={styles.pillNum}>{streak}</Text>
@@ -69,53 +92,58 @@ export default function HomeScreen({ navigation }: Props) {
           </View>
         </View>
 
-        {/* Practice entry point */}
-        <PracticeNode onPress={() => navigation.navigate("Challenge", {})} />
+        {/* Cards — stagger in once per mount, capped at 6 (§8) */}
+        <Entrance index={0}>
+          <PracticeNode onPress={() => navigation.navigate("Challenge", {})} />
+        </Entrance>
 
-        {/* Level progress */}
-        <Card style={styles.levelCard}>
-          <View style={styles.levelRow}>
-            <Text style={styles.levelTitle}>Level 1 · First words</Text>
-          </View>
-          <ProgressBar progress={Math.min(1, ratio + 0.2)} />
-          <Text style={styles.levelCaption}>
-            {ratioPct}% Sanskrit in your tutor's speech — it grows as you do.
-          </Text>
-        </Card>
+        <Entrance index={1}>
+          <ShlokaCard shloka={shloka} loading={shlokaLoading} onPress={() => navigation.navigate("Shloka")} />
+        </Entrance>
+
+        <Entrance index={2}>
+          <DailyWordCard word={dailyWord} loading={dailyLoading} onPress={() => navigation.navigate("DailyWord")} />
+        </Entrance>
+
+        <Entrance index={3}>
+          <VarnamalaCard onPress={() => navigation.navigate("Varnamala")} />
+        </Entrance>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-// ─── Practice CTA: the one thing Home actually launches ────────────────────
+// ─── Entrance stagger ─────────────────────────────────────────────────
+
+function Entrance({ index, children }: { index: number; children: React.ReactNode }) {
+  const opacity = useSharedValue(0);
+  const translateY = useSharedValue(12);
+  useEffect(() => {
+    const delay = stagger(index, 45, 6);
+    opacity.value = withDelay(delay, withTiming(1, { duration: duration.base }));
+    translateY.value = withDelay(delay, withTiming(0, { duration: duration.base }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const style = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    transform: [{ translateY: translateY.value }],
+  }));
+  return <Animated.View style={style}>{children}</Animated.View>;
+}
+
+// ─── Practice CTA ─────────────────────────────────────────────────────
 
 function PracticeNode({ onPress }: { onPress: () => void }) {
-  const pulse = useSharedValue(1);
-
-  useEffect(() => {
-    pulse.value = withRepeat(
-      withSequence(
-        withTiming(1.06, { duration: 900, easing: Easing.inOut(Easing.ease) }),
-        withTiming(1, { duration: 900, easing: Easing.inOut(Easing.ease) }),
-      ),
-      -1,
-      true,
-    );
-    return () => cancelAnimation(pulse);
-  }, [pulse]);
-
-  const pulseStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: pulse.value }],
-  }));
-
   return (
     <Pressable
       onPress={() => { haptics.tap(); onPress(); }}
       style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
+      accessibilityRole="button"
+      accessibilityLabel="Start practice"
     >
-      <Animated.View style={[styles.practiceIcon, pulseStyle]}>
+      <View style={styles.practiceIcon}>
         <Ionicons name="create" size={30} color={color.white} />
-      </Animated.View>
+      </View>
       <View style={styles.practiceText}>
         <Text style={styles.practiceLabel}>Start practice</Text>
         <Text style={styles.practiceHint}>8 adaptive exercises · word bank + typing</Text>
@@ -125,12 +153,149 @@ function PracticeNode({ onPress }: { onPress: () => void }) {
   );
 }
 
+// ─── Today's śloka card ───────────────────────────────────────────────
+
+function ShlokaCard({
+  shloka,
+  loading,
+  onPress,
+}: {
+  shloka: Shloka | null;
+  loading: boolean;
+  onPress: () => void;
+}) {
+  const firstLine = shloka?.devanagari?.split(/।|\n/)[0] ?? "";
+  return (
+    <HomeCard
+      title="Today's śloka"
+      status={loading ? "loading" : shloka ? "read" : "unavailable"}
+      statusText={loading ? "…" : shloka ? "daily verse" : "none yet"}
+      onPress={onPress}
+      icon="book"
+    >
+      {loading ? (
+        <Skeleton style={{ height: 28, marginTop: 4 }} />
+      ) : shloka ? (
+        <Text style={[styles.cardBody, script("semibold")]} numberOfLines={1}>
+          {firstLine}।
+        </Text>
+      ) : (
+        <Text style={styles.cardMuted}>A verse will appear here daily.</Text>
+      )}
+    </HomeCard>
+  );
+}
+
+// ─── Daily word card ──────────────────────────────────────────────────
+
+function DailyWordCard({
+  word,
+  loading,
+  onPress,
+}: {
+  word: DailyWordPuzzle | null;
+  loading: boolean;
+  onPress: () => void;
+}) {
+  const statusText = loading
+    ? "…"
+    : word?.solved
+      ? `solved · ${word.streak} day streak`
+      : word?.status === "finished"
+        ? "finished"
+        : word
+          ? "open"
+          : "unavailable";
+  return (
+    <HomeCard
+      title="Daily word"
+      status={loading ? "loading" : word ? (word.solved ? "solved" : "open") : "unavailable"}
+      statusText={statusText}
+      onPress={onPress}
+      icon="extension-puzzle"
+    >
+      <View style={styles.dailyRow}>
+        {loading ? (
+          <Skeleton style={{ height: 24, width: 120 }} />
+        ) : word ? (
+          <>
+            {word.solved ? (
+              <Text style={[styles.cardBody, script("semibold")]}>{word.revealed?.answer ?? "Solved"}</Text>
+            ) : (
+              <Text style={styles.cardMuted}>
+                {word.status === "finished" ? "See how it went." : `A ${word.word_length}-sound word.`}
+              </Text>
+            )}
+            <View style={styles.unlockBadge}>
+              <Ionicons name="flame" size={13} color={color.saffron} />
+              <Text style={styles.unlockBadgeText}>{word.streak}</Text>
+            </View>
+          </>
+        ) : (
+          <Text style={styles.cardMuted}>One word a day, scored on the mouth-map.</Text>
+        )}
+      </View>
+    </HomeCard>
+  );
+}
+
+// ─── Varṇamālā card (deliberately the quietest) ─────────────────────
+
+function VarnamalaCard({ onPress }: { onPress: () => void }) {
+  return (
+    <HomeCard
+      title="Varṇamālā"
+      status="reference"
+      statusText="alphabet"
+      onPress={onPress}
+      icon="language"
+    >
+      <Text style={styles.cardMuted}>The mouth-map of Sanskrit.</Text>
+    </HomeCard>
+  );
+}
+
+// ─── Shared card shell ───────────────────────────────────────────────
+
+function HomeCard({
+  title,
+  status,
+  statusText,
+  icon,
+  onPress,
+  children,
+}: {
+  title: string;
+  status: string;
+  statusText: string;
+  icon: React.ComponentProps<typeof Ionicons>["name"];
+  onPress: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Pressable
+      onPress={() => { haptics.tap(); onPress(); }}
+      style={({ pressed }) => [styles.card, pressed && styles.practicePressed]}
+      accessibilityRole="button"
+      accessibilityLabel={`${title}. ${statusText}`}
+    >
+      <View style={styles.cardHeader}>
+        <Ionicons name={icon} size={18} color={color.saffron} />
+        <Text style={styles.cardTitle}>{title}</Text>
+        <View style={[styles.statusDot, status === "solved" && styles.statusSolved]} />
+        <Text style={styles.cardStatus}>{statusText}</Text>
+      </View>
+      {children}
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  topbar: { flexDirection: "row", justifyContent: "flex-end", paddingHorizontal: space.lg, paddingVertical: space.sm, gap: space.sm },
+  topbar: { flexDirection: "row", alignItems: "center", paddingHorizontal: space.lg, paddingVertical: space.sm, gap: space.sm },
   pill: { flexDirection: "row", alignItems: "center", backgroundColor: color.surface, borderRadius: 999, paddingHorizontal: space.md, paddingVertical: space.xs, gap: 4, ...shadow.card },
   pillNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  body: { padding: space.lg },
+  body: { padding: space.lg, paddingBottom: space.xxl },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.lg },
   greetBubble: { flex: 1, backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
   greeting: { fontSize: font.sizes.md, color: color.ink },
@@ -147,18 +312,28 @@ const styles = StyleSheet.create({
   },
   practicePressed: { transform: [{ translateY: 2 }] },
   practiceIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: 56, height: 56, borderRadius: 28,
     backgroundColor: "rgba(255,255,255,0.22)",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "center", justifyContent: "center",
   },
   practiceText: { flex: 1 },
   practiceLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
   practiceHint: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: "rgba(255,255,255,0.9)", marginTop: 2 },
-  levelCard: { marginTop: space.sm },
-  levelRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.sm },
-  levelTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  levelCaption: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.sm },
+  card: {
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
+    marginBottom: space.md,
+    ...shadow.card,
+  },
+  cardHeader: { flexDirection: "row", alignItems: "center", gap: 6, marginBottom: 4 },
+  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink, flex: 1 },
+  statusDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: color.border },
+  statusSolved: { backgroundColor: color.ok },
+  cardStatus: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
+  cardBody: { fontSize: font.sizes.md, color: color.ink, marginTop: 4 },
+  cardMuted: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 4 },
+  dailyRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  unlockBadge: { flexDirection: "row", alignItems: "center", gap: 3, backgroundColor: color.surfaceMuted, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 2 },
+  unlockBadgeText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.saffron },
 });

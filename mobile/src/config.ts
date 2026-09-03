@@ -6,7 +6,7 @@
 // When running the web build, __DEV__ is true and localhost:8000 is the
 // backend. For a physical device via Expo Go, replace with your machine's
 // LAN IP (e.g. http://192.168.1.50:8000).
-const DEVICE_HOST = "localhost";
+const DEVICE_HOST = "192.168.1.8";
 
 // Port the backend listens on. Moved off 8000 on 2026-08-30: a phantom socket
 // there kept winning connections ahead of every freshly started server, so the
@@ -32,6 +32,8 @@ export const TTS_PACE = 1.0;
 export const TTS_SPEAKER = "aditya"; // valid bulbul:v3 persona speaker
 
 export default { BASE_URL, DEVICE_HOST, DEVICE_PORT, TTS_SPEAKER };
+
+
 
 
 

@@ -26,7 +26,13 @@ import Animated, {
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
-import { api, type ConversationNode, type MetaIntent, type TurnResponse } from "../api/client";
+import {
+  api,
+  type ConversationEdge,
+  type ConversationNode,
+  type MetaIntent,
+  type TurnResponse,
+} from "../api/client";
 import TutorAvatar, { type AvatarState } from "../components/TutorAvatar";
 import { haptics } from "../services/haptics";
 import { bulbulLangCode, speak } from "../services/speech";
@@ -46,6 +52,12 @@ interface Msg {
   role: "tutor" | "learner" | "aside";
   text: string;
   iast?: string;
+  // The bridge-language half of one tutor turn. Not a translation of the
+  // Sanskrit — it carries what the Sanskrit alone would not land.
+  bridge?: string;
+  // A grammar note about the learner's PREVIOUS line. Only ever raised when
+  // Vidyut found a real error; a name it cannot read is never a correction.
+  correction?: string;
   diagnosis?: string;
   meta?: string;
 }
@@ -56,6 +68,11 @@ const IS_NATIVE = Platform.OS !== "web";
 export default function ConversationScreen() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [node, setNode] = useState<ConversationNode | null>(null);
+  // The node's exits, kept so the learner can ask what a good reply looks
+  // like. The server has always sent these; nothing rendered them, which left
+  // "भवान् कः?" answerable only by guessing the one sentence the graph wants.
+  const [edges, setEdges] = useState<ConversationEdge[]>([]);
+  const [showHint, setShowHint] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [busy, setBusy] = useState(false);
   const [input, setInput] = useState("");
@@ -97,8 +114,14 @@ export default function ConversationScreen() {
         const s = await api.conversationStart();
         setSessionId(s.session_id);
         setNode(s.node);
+        setEdges(s.edges ?? []);
         const tutorText = s.node.devanagari || s.node.gloss || "";
-        setMsgs([{ role: "tutor", text: tutorText, iast: s.node.iast || undefined }]);
+        setMsgs([{
+          role: "tutor",
+          text: tutorText,
+          iast: s.node.iast || undefined,
+          bridge: s.node.gloss || undefined,
+        }]);
         // Auto-play the tutor's opening line.
         setIsSpeaking(true);
         speak(tutorText, nodeLang(s.node), 1.0, () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
@@ -189,6 +212,8 @@ export default function ConversationScreen() {
         const next = t.node;
         if (next) {
           setNode(next);
+          setEdges(t.edges ?? []);
+          setShowHint(false);   // a new question deserves a fresh guess
           const tm = next.devanagari || next.gloss || "";
           setMsgs((m) => [
             ...m,
@@ -196,8 +221,19 @@ export default function ConversationScreen() {
               role: "tutor",
               text: tm,
               iast: next.iast || undefined,
+              bridge: next.gloss || undefined,
+              correction: t.correction || undefined,
               diagnosis: t.diagnosis || undefined,
-              meta: t.escape ? "escape" : t.matched ? undefined : t.verdict,
+              // "revealed" is an escape, but its diagnosis IS the answer the
+              // ladder gave up and told the learner — it must outrank the
+              // generic escape copy below, which would otherwise swallow it.
+              meta: t.verdict === "revealed"
+                ? "revealed"
+                : t.escape
+                  ? "escape"
+                  : t.matched
+                    ? undefined
+                    : t.verdict,
             },
           ]);
           setIsSpeaking(true);
@@ -257,12 +293,14 @@ export default function ConversationScreen() {
 
         if (!transcript) {
           setMsgs((m) => [...m, { role: "tutor", text: "I couldn't hear that clearly. Try again?", meta: "error" }]);
-          setBusy(false);
           return;
         }
 
-        // Submit the transcribed text as a turn
-        setBusy(false);
+        // Submit the transcribed text as a turn.
+        // submit() manages its own setBusy(true/false) cycle internally,
+        // so we must NOT call setBusy(false) here — doing so causes a
+        // rapid false→true state flip and an intermediate re-render that
+        // triggers React's "Rendered fewer hooks than expected" error.
         await submit(transcript);
       } catch (err: any) {
         console.error("[STT] Error:", err);
@@ -271,6 +309,7 @@ export default function ConversationScreen() {
         // Show the actual error for debugging
         const detail = err?.message || String(err);
         setMsgs((m) => [...m, { role: "tutor", text: `STT error: ${detail}`, meta: "error" }]);
+      } finally {
         setBusy(false);
       }
     } else {
@@ -292,6 +331,11 @@ export default function ConversationScreen() {
     }
   }, [busy, done, recActive, recorder, submit, node]);
 
+  // The reply the graph is waiting for. sa-edges carry the authored sentence;
+  // bridge nodes ("तैयार हैं?") need no hint — any yes/no already routes.
+  const hint =
+    edges.find((e) => e.lang === "sa" && e.expected_text.trim())?.expected_text ?? "";
+
   // Derive current avatar state
   let avatarState: AvatarState = "idle";
   if (verdictStatus === "correct") avatarState = "celebrating";
@@ -301,7 +345,7 @@ export default function ConversationScreen() {
   else if (busy) avatarState = "thinking";
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.header}>
         <TutorAvatar state={avatarState} size={100} />
       </View>
@@ -325,8 +369,28 @@ export default function ConversationScreen() {
               {m.role === "tutor" && <Text style={styles.who}>Tutor</Text>}
               <Text style={[styles.text, m.role === "learner" && styles.learnerText]}>{m.text}</Text>
               {!!m.iast && <Text style={styles.iast}>{m.iast}</Text>}
+              {/* The bridge half of the turn — the tutor still talking, in the
+                  learner's language, so it sits inside the same bubble. */}
+              {!!m.bridge && <Text style={styles.bridge}>{m.bridge}</Text>}
+              {/* A grammar note about what the learner just said. Kept visually
+                  separate from the tutor's line so it never reads as part of
+                  the conversation. */}
+              {!!m.correction && (
+                <View style={styles.correction}>
+                  <Ionicons name="school-outline" size={13} color={color.tutor} />
+                  <Text style={styles.correctionText}>{m.correction}</Text>
+                </View>
+              )}
               {!!m.diagnosis && m.meta !== "escape" && (
-                <Text style={[styles.diag, m.meta === "error" && { color: color.bad }]}>{m.diagnosis}</Text>
+                <Text
+                  style={[
+                    styles.diag,
+                    m.meta === "error" && { color: color.bad },
+                    m.meta === "revealed" && styles.reveal,
+                  ]}
+                >
+                  {m.diagnosis}
+                </Text>
               )}
               {m.meta === "escape" && (
                 <Text style={styles.diag}>I didn't quite catch that — no penalty. Let's try again.</Text>
@@ -361,6 +425,32 @@ export default function ConversationScreen() {
           </View>
         )}
       </ScrollView>
+
+      {/* Hint — learner-initiated, costs no turn and never touches the graph.
+          The dialogue graph accepts one authored sentence per question, so
+          without this the only way to find it is to fail into the repair
+          ladder. Collapsed by default: shown on ask, not on arrival. */}
+      {!done && !!hint && (
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            setShowHint((s) => !s);
+          }}
+          style={styles.hintBar}
+          accessibilityRole="button"
+          accessibilityLabel={showHint ? "Hide the suggested reply" : "Show me what to say"}
+          accessibilityState={{ expanded: showHint }}
+        >
+          <Ionicons
+            name={showHint ? "bulb" : "bulb-outline"}
+            size={14}
+            color={showHint ? color.saffron : color.inkSoft}
+          />
+          <Text style={showHint ? styles.hintAnswer : styles.hintPrompt}>
+            {showHint ? hint : "Show me what to say"}
+          </Text>
+        </Pressable>
+      )}
 
       {/* Input bar */}
       <View style={styles.inputBar}>
@@ -457,6 +547,13 @@ const styles = StyleSheet.create({
   doneCard: { backgroundColor: color.okBg, borderRadius: radius.lg, padding: space.lg, alignItems: "center", ...shadow.card },
   doneTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ok },
   doneSub: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 4 },
+  bridge: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 6, lineHeight: 20 },
+  correction: { flexDirection: "row", alignItems: "flex-start", gap: space.xs, marginTop: space.sm, paddingTop: space.sm, borderTopWidth: 1, borderTopColor: color.border },
+  correctionText: { flex: 1, fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.tutor, lineHeight: 18 },
+  hintBar: { flexDirection: "row", alignItems: "center", gap: space.xs, paddingHorizontal: space.lg, paddingVertical: space.sm, backgroundColor: color.surfaceMuted, borderTopWidth: 1, borderTopColor: color.border },
+  hintPrompt: { flex: 1, fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkSoft },
+  hintAnswer: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
+  reveal: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   inputBar: { flexDirection: "row", alignItems: "center", padding: space.md, backgroundColor: color.surface, borderTopWidth: 1, borderTopColor: color.border, gap: space.sm },
   replay: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },
   mic: { width: 48, height: 48, borderRadius: 24, backgroundColor: color.surfaceMuted, alignItems: "center" as const, justifyContent: "center" as const, borderWidth: 2, borderColor: "transparent" },

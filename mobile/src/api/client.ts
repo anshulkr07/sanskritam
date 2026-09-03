@@ -295,6 +295,44 @@ export interface Paradigm {
   kind: string;
 }
 
+// ─── Daily word (U8-4 / P12) — वर्ण-बन्धः ────────────────────────────
+// Tile states: exact · near (right place, wrong axis) · present (elsewhere) ·
+// absent. `axis` carries the phonetic reason so the four states never collapse
+// to colour alone (U5-3).
+
+export type DailyWordTileState = "exact" | "near" | "present" | "absent";
+
+export interface DailyWordTile {
+  character: string;
+  state: DailyWordTileState;
+  axis: string | null;
+}
+
+export interface DailyWordPuzzle {
+  date: string;
+  available: boolean;
+  solved: boolean;
+  finished: boolean;
+  guesses_used: number;
+  max_guesses: number;
+  word_length: number;
+  clue: string;
+  streak: number;
+  status: string; // open | solved | finished | no_word
+  revealed?: { answer: string; answer_iast: string } | null;
+}
+
+export interface DailyWordGuessResponse {
+  status: string; // open | solved | finished | completed | refused | no_word
+  solved: boolean;
+  finished: boolean;
+  tiles: DailyWordTile[];
+  guesses_used: number;
+  max_guesses: number;
+  revealed?: { answer: string; answer_iast: string } | null;
+  reason?: string;
+}
+
 // ─── Client ───────────────────────────────────────────────────────────────
 
 export class ApiError extends Error {
@@ -546,6 +584,16 @@ export const api = {
 
   paradigm: (params: { pratipadika?: string; linga?: string; dhatu?: string; lakara?: string }) =>
     request<Paradigm>("/grammar/paradigm?" + toQuery(params)),
+
+  // Daily word (U8-4 / P12) — वर्ण-बन्धः
+  dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),
+
+  dailyWordGuess: (guess: string) =>
+    request<DailyWordGuessResponse>(
+      "/daily-word/guess",
+      { method: "POST", body: JSON.stringify({ guess }) },
+      true,
+    ),
 };
 
 export default api;

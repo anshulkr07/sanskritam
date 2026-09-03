@@ -227,8 +227,23 @@ async def process_turn(
     # resolved to the NEGATIVE edge, the router is not consulted.
     if matched_edge is None and pinned_edge is None:
         router = get_edge_router()
+        # Only edges that describe a real learner reply are candidates. The
+        # seeded graph also carries FALLBACK ROUTING edges — bridge edges with
+        # no expected_phrases and no expected_text, wired from a question to
+        # its repair purely so `_pick_repair_node` can find one. They are not
+        # things a learner can say, and offering them to the router laundered
+        # every failed Sanskrit answer into a bridge match: at a question whose
+        # only bridge edge is its fallback, the router had exactly one
+        # candidate and picked it, so a wrong answer returned matched=True,
+        # verdict "correct", and walked to the repair node — no escape logged,
+        # no streak, and the escalation ladder never fired. That is the loop
+        # the owner hit. The deterministic matcher already ignores these (an
+        # empty phrase list cannot hit); this aligns the router with it, and
+        # keeps the router off any verdict it was never allowed to assign.
         bridge_edges = [
-            e for e in outgoing_edges if e.lang == "bridge" and e.to_node_id
+            e
+            for e in outgoing_edges
+            if e.lang == "bridge" and e.to_node_id and (e.expected_phrases or [])
         ]
         if bridge_edges and router.available and transcript.strip():
             # Consume quota before the LLM call
@@ -294,8 +309,16 @@ def _handle_match(
     verdict = "correct"
     diagnosis = "Correct!"
 
-    # A successful turn ends any escape streak.
-    session.consecutive_escapes = 0
+    # A successful turn ends any escape streak — but leaving a REPAIR node is
+    # not that kind of success. A repair's only exit is a bridge acknowledgement
+    # ("हाँ") back to the question just missed, so clearing the streak there let
+    # escape → acknowledge → escape ping-pong between a question and its repair
+    # forever: the counter was reset on every other turn and the ladder below
+    # never reached 3. That is the exact loop `consecutive_escapes` was added to
+    # stop (DECISIONS.md, human-review finding 2) — it only ever closed the
+    # repair→repair case, not question↔repair.
+    if current_node.kind != "repair":
+        session.consecutive_escapes = 0
 
     if edge.lang == "sa" and grade_result is not None:
         # Apply adaptive update (mirror attempts.py pattern)
@@ -429,9 +452,20 @@ def _handle_no_match(
     #   escape 3:   bridge drop — move to a bridge-language node if the graph
     #               offers one reachable via bridge edges (repair with
     #               repair_type="bridge" preferred)
-    #   escape 4:   reveal — session ends (done); the authoring backlog (the
-    #               escape log) owns this dead end.
+    #   escape 4:   reveal — say the line and move the conversation PAST the
+    #               question. The escape rows are still written, so the
+    #               authoring backlog keeps its signal either way.
     session.consecutive_escapes = (session.consecutive_escapes or 0) + 1
+
+    # Escape 4 stops asking and starts telling. v1 ended the session here,
+    # which traded a loop for a dead end: a learner who missed question 1 of 12
+    # lost the whole scenario and met the same wall on every restart. Asking a
+    # fifth time is not an option either — that is the loop. So the tutor does
+    # what a human tutor does: gives the answer and carries on.
+    if session.consecutive_escapes >= 4:
+        revealed = _reveal_and_advance(db, session, current_node)
+        if revealed is not None:
+            return revealed
 
     # Pick repair node
     repair_node = _pick_repair_node(
@@ -446,7 +480,8 @@ def _handle_no_match(
     advance(db, session, repair_node.id, ratio_hint_delta=-0.05)
 
     if session.consecutive_escapes >= 4:
-        # Give up gracefully: end the session, log already recorded above.
+        # No answer in reach to reveal (a node with no forward sa-edge). Stop
+        # gracefully rather than ask again forever; the log records the dead end.
         db.commit()
         return _build_turn_response(
             verdict=best_verdict,
@@ -479,6 +514,123 @@ def _handle_no_match(
         node=repair_node,
         edges=repair_edges,
         session_done=False,
+        escape=True,
+    )
+
+
+def _answer_edge(
+    db: DBSession,
+    node: DialogueNode,
+    scenario_id: str,
+) -> Optional[DialogueEdge]:
+    """The edge carrying the authored answer the learner is failing to produce.
+
+    Prefers a sa-edge with authored ``expected_text`` on ``node`` itself. A
+    repair node has none — its exits are bridge acknowledgements that teach
+    nothing — so one hop is followed back to the question it was repairing.
+    Returns None when no answer is in reach.
+    """
+    def _pick(n: DialogueNode) -> Optional[DialogueEdge]:
+        edges = (
+            db.query(DialogueEdge)
+            .filter(
+                DialogueEdge.from_node_id == n.id,
+                DialogueEdge.scenario_id == scenario_id,
+                DialogueEdge.to_node_id.isnot(None),
+            )
+            .order_by(DialogueEdge.rank)
+            .all()
+        )
+        for e in edges:
+            if e.lang == "sa" and (e.expected_text or "").strip():
+                return e
+        return None
+
+    edge = _pick(node)
+    if edge is not None:
+        return edge
+
+    if node.kind != "repair":
+        return None
+
+    hops = (
+        db.query(DialogueEdge)
+        .filter(
+            DialogueEdge.from_node_id == node.id,
+            DialogueEdge.scenario_id == scenario_id,
+            DialogueEdge.lang == "bridge",
+            DialogueEdge.to_node_id.isnot(None),
+        )
+        .order_by(DialogueEdge.rank)
+        .all()
+    )
+    for h in hops:
+        target = (
+            db.query(DialogueNode).filter(DialogueNode.id == h.to_node_id).first()
+        )
+        # Only hop to a real question; repair→repair would teach nothing.
+        if target is None or target.kind == "repair":
+            continue
+        edge = _pick(target)
+        if edge is not None:
+            return edge
+    return None
+
+
+def _reveal_and_advance(
+    db: DBSession,
+    session: ConversationSession,
+    current_node: DialogueNode,
+) -> Optional[dict[str, Any]]:
+    """Escape-ladder terminus: say the answer out loud and move on.
+
+    Always steps FORWARD along a sa-edge of the question the learner is stuck
+    on, so the conversation cannot re-enter the repair it just escaped. The
+    escape row for this turn is already written by the caller; this only
+    decides where the learner goes next.
+
+    Returns None when the graph offers no answer to reveal from here, leaving
+    the caller's repair path in charge.
+    """
+    edge = _answer_edge(db, current_node, session.scenario_id)
+    if edge is None or edge.to_node_id is None:
+        return None
+
+    next_node = (
+        db.query(DialogueNode).filter(DialogueNode.id == edge.to_node_id).first()
+    )
+    if next_node is None:
+        return None
+
+    # The reveal unsticks the learner, so the streak restarts at the node they
+    # are moved to — otherwise the very next miss would fire the ladder again.
+    session.consecutive_escapes = 0
+    advance(db, session, next_node.id, ratio_hint_delta=-0.05)
+
+    next_edges: list[DialogueEdge] = (
+        db.query(DialogueEdge)
+        .filter(
+            DialogueEdge.from_node_id == next_node.id,
+            DialogueEdge.scenario_id == session.scenario_id,
+        )
+        .order_by(DialogueEdge.rank)
+        .all()
+    )
+
+    return _build_turn_response(
+        # A verdict of its own: the turn was neither graded nor matched, and
+        # the client must show this diagnosis rather than the generic
+        # "didn't catch that" copy every other escape gets.
+        verdict="revealed",
+        diagnosis=(
+            f"Let's not stay stuck — the answer here was: {edge.expected_text} "
+            "We'll come back to it. Moving on."
+        ),
+        matched=False,
+        session=session,
+        node=next_node,
+        edges=next_edges,
+        session_done=not next_edges,
         escape=True,
     )
 
@@ -542,22 +694,16 @@ def _pick_repair_node(
         if non_narrow:
             return non_narrow[0]
 
-    # No bridge fallback wired from this node: fall back to ANY repair node in
-    # the scenario so the conversation can continue (a session stranded on a
-    # node with no escape exit is worse than a generic repair prompt).
-    any_repair = (
-        db.query(DialogueNode)
-        .filter(
-            DialogueNode.scenario_id == scenario_id,
-            DialogueNode.kind == "repair",
-        )
-        .order_by(DialogueNode.sort)
-        .first()
-    )
-    if any_repair is not None:
-        return any_repair
-
-    # Ultimate fallback: stay on current node
+    # No repair wired from this node: hold the learner ON the question.
+    #
+    # This used to jump to the scenario's first repair node by `sort`, which
+    # was added to stop sessions stranding on nodes without a repair exit. But
+    # a repair node's exits rejoin the graph wherever ITS author put them —
+    # the seeded first repair leads back to question 1 — so escaping at a late
+    # node silently rewound the learner to the beginning, and the rewind cycle
+    # replaced the loop it was meant to fix. Holding the node cannot strand a
+    # session any more: the escalation ladder reveals the answer and moves on
+    # at escape 4.
     return current_node
 
 

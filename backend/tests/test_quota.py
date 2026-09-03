@@ -367,7 +367,14 @@ def test_llm_explain_returns_429_over_quota(fresh_client, monkeypatch):
     scenario_id = scenarios[0]["id"]
 
     # Start a session
-    r = fresh_client.post("/conversation/start", json={"scenario_id": scenario_id}, headers=headers)
+    # Graph mode on purpose: this test is about /conversation/explain, and
+    # starting an LLM session is itself a metered model call, so it would 429
+    # here before the subject of the test is ever reached.
+    r = fresh_client.post(
+        "/conversation/start",
+        json={"scenario_id": scenario_id, "mode": "graph"},
+        headers=headers,
+    )
     assert r.status_code == 200, r.text
     session_id = r.json()["session_id"]
 

@@ -9,6 +9,7 @@ from app.seeds.features import SEED_FEATURES
 from app.seeds.challenges import SEED_CHALLENGES
 from app.seeds.shlokas import SEED_SLOKAS
 from app.seeds.dialogue import seed_dialogue
+from app.seeds.daily_words import seed_daily_words
 
 logger = logging.getLogger("shabd.seed")
 
@@ -26,6 +27,7 @@ def run_seed():
             # Content added after the first seed still needs a pass: each of
             # these is self-idempotent, so run them on every startup.
             seed_dialogue(db)
+            seed_daily_words(db)
             db.commit()
             return
 

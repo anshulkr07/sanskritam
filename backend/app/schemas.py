@@ -243,3 +243,41 @@ class TTSResponse(BaseModel):
 class STTResponse(BaseModel):
     transcript: str
     language_code: str
+
+
+# ─── Daily word (P12) ───
+
+class DailyWordTile(BaseModel):
+    character: str
+    state: str  # exact | near | present | absent
+    axis: Optional[str] = None  # place | voicing | aspiration | nasality
+
+
+class DailyWordPuzzle(BaseModel):
+    date: str
+    available: bool
+    solved: bool
+    finished: bool
+    guesses_used: int
+    max_guesses: int
+    word_length: int
+    clue: str = ""
+    streak: int = 0
+    status: str = "open"  # open | solved | finished | no_word
+    # Never set until the game has ended (P12-2.3).
+    revealed: Optional[dict[str, Any]] = None
+
+
+class DailyWordGuessRequest(BaseModel):
+    guess: str = Field(..., min_length=1, max_length=64)
+
+
+class DailyWordGuessResponse(BaseModel):
+    status: str  # open | solved | finished | completed | refused | no_word
+    solved: bool
+    finished: bool
+    tiles: list[DailyWordTile] = []
+    guesses_used: int
+    max_guesses: int
+    revealed: Optional[dict[str, Any]] = None
+    reason: Optional[str] = None

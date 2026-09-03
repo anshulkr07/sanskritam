@@ -287,7 +287,11 @@ class ConversationSession(Base):
     id = Column(String(64), primary_key=True, default=_uuid)
     learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
     scenario_id = Column(String(64), ForeignKey("dialogue_scenarios.id"), nullable=False)
-    current_node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=False)
+    # NULL in "llm" mode: a free-form conversation has no position in the
+    # dialogue graph. The scenario is still set — it supplies the situation and
+    # the target features (the curriculum), just not a script.
+    current_node_id = Column(String(64), ForeignKey("dialogue_nodes.id"), nullable=True)
+    mode = Column(String(8), default="llm", nullable=False)  # "llm" | "graph"
     turn_count = Column(Integer, default=0)
     consecutive_escapes = Column(Integer, default=0)
     ratio_hint = Column(Float, default=0.3)
@@ -297,6 +301,39 @@ class ConversationSession(Base):
     learner = relationship("Learner")
     scenario = relationship("DialogueScenario")
     current_node = relationship("DialogueNode")
+    turns = relationship(
+        "ConversationTurn",
+        back_populates="session",
+        order_by="ConversationTurn.idx",
+        cascade="all, delete-orphan",
+    )
+
+
+class ConversationTurn(Base):
+    """One line of a free-form conversation — the LLM tutor's memory.
+
+    The graph runtime never needed this: its history WAS the node pointer.
+    A model-driven turn has to be told what was already said, and the learner
+    has to be able to reopen a session and still see it.
+    """
+
+    __tablename__ = "conversation_turns"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    session_id = Column(
+        String(64), ForeignKey("conversation_sessions.id"), nullable=False, index=True
+    )
+    idx = Column(Integer, nullable=False, default=0)   # order within the session
+    role = Column(String(16), nullable=False)          # "tutor" | "learner"
+    devanagari = Column(Text, default="")              # Sanskrit, if any
+    iast = Column(Text, default="")
+    gloss = Column(Text, default="")                   # bridge-language line
+    correction = Column(Text, default="")              # grammar note on a learner turn
+    parsed_features = Column(JSON, default=dict)       # Vidyut's read of a learner turn
+    verdict = Column(String(24), default="")
+    ts = Column(DateTime, default=_utcnow)
+
+    session = relationship("ConversationSession", back_populates="turns")
 
 
 class DailyActivity(Base):
@@ -312,3 +349,43 @@ class DailyActivity(Base):
     conversation_turns = Column(Integer, default=0)
     pronunciation_attempts = Column(Integer, default=0)
     goal_met = Column(Boolean, default=False)
+
+
+class DailyWord(Base):
+    """A curated daily word for the varṇamālā guessing game (P12).
+
+    Words are curated from the common noun layer of the lexicon — never
+    generated at request time. Each row carries the writer string date it is
+    active, its answer, and a difficulty band, so the same local date always
+    yields the same puzzle (handover §2.8 / P12-1).
+    """
+
+    __tablename__ = "daily_words"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    date = Column(String(10), nullable=False, unique=True, index=True)  # "YYYY-MM-DD"
+    answer = Column(String(32), nullable=False)        # Devanagari
+    answer_iast = Column(String(64), default="")
+    clue = Column(String(256), default="")             # bridge-language gloss/legend
+    difficulty = Column(String(16), default="easy")    # easy | medium | hard
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class DailyWordPlay(Base):
+    """Per-learner state for one daily-word day: whether it is solved and how
+    many guesses were spent. A solved (or exhausted) day refuses further
+    guesses — the share card's credibility depends on no replay (P12-2)."""
+
+    __tablename__ = "daily_word_plays"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    date = Column(String(10), nullable=False, index=True)  # learner-local
+    guess_count = Column(Integer, default=0)
+    solved = Column(Boolean, default=False)
+    finished = Column(Boolean, default=False)  # solved OR guesses exhausted
+    ts = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        sa.UniqueConstraint("learner_id", "date", name="uq_daily_word_learner_date"),
+    )

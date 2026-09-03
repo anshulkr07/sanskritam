@@ -208,14 +208,19 @@ def _extract_json_array(text: str) -> list[dict]:
             raise AuthoringProviderError(f"draft response was not valid JSON: {e}") from e
 
     if isinstance(data, dict):
-        # The model intermittently wraps the array: {"turns": [ ... ]}. Unwrap
-        # any single list-valued wrapper key first; otherwise treat the dict as
-        # one bare turn object (the other measured failure mode).
-        list_vals = [v for v in data.values() if isinstance(v, list)]
-        if len(list_vals) == 1 and list_vals[0]:
-            data = list_vals[0]
-        else:
+        # A bare single turn object also carries a list-valued "features" key,
+        # so "single list-valued key => wrapper" is too greedy: unwrapping a
+        # real single turn's features array is exactly the failure this fallback
+        # exists to avoid. Only treat the dict as a wrapper when it is NOT
+        # itself a usable turn (no top-level expected_learner_sanskrit).
+        if str(data.get("expected_learner_sanskrit", "")).strip():
             data = [data]
+        else:
+            list_vals = [v for v in data.values() if isinstance(v, list)]
+            if len(list_vals) == 1 and list_vals[0]:
+                data = list_vals[0]
+            else:
+                data = [data]
     if not isinstance(data, list):
         raise AuthoringProviderError("draft response JSON was not an array")
     normalized: list[dict] = []

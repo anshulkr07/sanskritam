@@ -247,7 +247,7 @@ class TestP63:
         assert len(drafts) == 3
 
     def test_extract_unwraps_array_wrapper(self):
-        """The model sometimes wraps the array: {\"turns\":[...]} — the extractor
+        """The model sometimes wraps the array: {"turns":[...]} — the extractor
         must unwrap it (a failure mode the live re-run surfaced, 2026-09-01)."""
         from app.services.authoring import _extract_json_array
         wrapped = json.dumps({"turns": [CLEAN_DRAFT, MADEUP_DRAFT]})
@@ -255,6 +255,23 @@ class TestP63:
         assert len(out) == 2
         assert out[0]["expected_learner_sanskrit"] == CLEAN_DRAFT["expected_learner_sanskrit"]
 
+    def test_extract_bare_single_turn_with_features(self):
+        """A bare single turn object ALSO has a list-valued "features" key, so
+        the wrapper-unwrap must not swallow it — the fallback for the 3-of-5
+        single-object failure mode has to actually work."""
+        from app.services.authoring import _extract_json_array
+        bare = json.dumps(CLEAN_DRAFT)
+        out = _extract_json_array(bare)
+        assert len(out) == 1
+        assert out[0]["expected_learner_sanskrit"] == CLEAN_DRAFT["expected_learner_sanskrit"]
+
+    def test_extract_wrapper_with_empty_turn_still_unwraps(self):
+        """An empty expected_learner_sanskrit on the dict is not a usable turn,
+        so a dict with one list-valued key should still unwrap as a wrapper."""
+        from app.services.authoring import _extract_json_array
+        wrapped = json.dumps({"turns": [CLEAN_DRAFT]})
+        out = _extract_json_array(wrapped)
+        assert len(out) == 1
     def test_draft_retries_when_first_call_raises(self, monkeypatch):
         """A first call that raises on an unusable reply still gets a retry."""
         from app.evals.providers import LLMResponse
