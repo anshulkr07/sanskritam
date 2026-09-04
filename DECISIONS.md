@@ -192,3 +192,25 @@ Owner ruling after the loop fix landed and the app *still* rejected a correct an
   Nītiśataka, Pañcatantra), ordered by difficulty. Metre stays engine-derived
   (`services/chandas.py`), dates stay anchored off `SHLOKA_ANCHOR`; 96 distinct
   `day_offset` values. No network in tests.
+
+## 2026-09-04 — P7-4 challenges at volume (live, 410 inserted)
+
+Built and ran the live challenge pipeline (`scripts/challenge_batch.py` +
+`app/services/challenge_authoring.py`). 500 drafted (one LLM call each, ~₹2.75),
+**410 passed the Vidyut gate (82%)** and were inserted, 90 flagged to the
+backlog. Register split 252 laukika / 200 classical across the five feature
+bands; band 'e' (dual-bearing) scored the HIGHEST pass rate (100%/94%) —
+confirming the §4.3 Gemini-over-OpenRouter routing for duals. Every stored
+`accepted_parses` is derived from analyzing the target (never hand-written);
+a validation mirror of POST /pipeline/run confirms **all 452 challenges**
+(410 new + 42 prior) pass Vidyut re-derivation with zero anomalies.
+
+Two pipeline fixes surfaced by live smoke-tests: (1) the drafting prompt was
+telling the model to 'claim the whole band', so it over-claimed features (e.g.
+NOM.SG on a subjectless sentence) and the gate rightly rejected them — the
+prompt now demands HONEST feature-claiming (omit rather than invent); (2)
+Sarvam's conversational model returns ~one object per call even asked for an
+array, so drafting switched to one challenge per call (matches the ₹0.0055/call
+cost model) with a bounded retry. Challenge cache key includes the prompt hash,
+so a prompt change invalidates stale drafts — a replay of an identical brief
+stays ₹0.
