@@ -112,6 +112,9 @@ def select_next_challenge(
     # Build query
     query = db.query(Challenge)
     query = query.filter(Challenge.register == register)
+    # P7-11: only approved challenges are served. One filter, in the selector,
+    # so a pending/rejected challenge is unreachable however it is asked for.
+    query = query.filter(Challenge.review_status == "approved")
 
     # Exclude recently served challenges (no-repeat window; also covers
     # attempts, since a served challenge that is attempted lands here too)
@@ -130,6 +133,7 @@ def select_next_challenge(
         # learner always gets a challenge even if the register is small.
         if recent:
             query = db.query(Challenge).filter(Challenge.register == register)
+            query = query.filter(Challenge.review_status == "approved")
             query = query.filter(~Challenge.id.in_(recent[-2:]))
             challenges = query.all()
         if not challenges:

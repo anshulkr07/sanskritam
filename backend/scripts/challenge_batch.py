@@ -78,6 +78,8 @@ def main():
 
     print(f"Generating {per_group} challenges x {len(groups)} groups = ~{total} targets (live)\n")
     total_inserted = 0
+    total_distinct_new = 0
+    total_skipped_dup = 0
     total_drafted = 0
     total_passed = 0
     total_failed = 0
@@ -87,10 +89,13 @@ def main():
         total_passed += res["n_passed"]
         total_failed += res["n_failed"]
         total_inserted += res["n_inserted"]
+        total_distinct_new += res["n_distinct_new"]
+        total_skipped_dup += res["n_skipped_dup"]
         pass_rate = round(res["n_passed"] / max(1, res["n_gated"]) * 100)
         print(f"  [{idx}/{len(groups)}] band={band_name} register={register:9s} "
               f"target={per_group:3d} gated={res['n_gated']:3d} "
-              f"passed={res['n_passed']:3d} ({pass_rate}%) inserted={res['n_inserted']}")
+              f"passed={res['n_passed']:3d} ({pass_rate}%) "
+              f"NEW distinct={res['n_distinct_new']} dup skipped={res['n_skipped_dup']}")
 
     print("\n" + "=" * 60)
     print("  BATCH CHALLENGE — SUMMARY")
@@ -99,7 +104,13 @@ def main():
     print(f"  Gated:             {total_drafted}")
     print(f"  Passed:            {total_passed}")
     print(f"  Inserted:          {total_inserted}")
+    print(f"  NEW DISTINCT:      {total_distinct_new}  <- the number that matters (§2.14)")
+    print(f"  Duplicates skipped:{total_skipped_dup}")
     print(f"  Failed (backlog):  {total_failed}")
+    if total_distinct_new == 0:
+        print("  ⚠ ZERO new distinct sentences. The pool is exhausted or the cache is"
+              "\n    replaying this band. Raising the target or re-running will NOT add"
+              "\n    content until the band catalogue (P7-12) is extended or slots shift.")
     rate = round(total_passed / max(1, total_drafted) * 100)
     print(f"  Overall pass rate: {rate}%")
     print("=" * 60)

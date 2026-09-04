@@ -9,6 +9,7 @@
 from types import SimpleNamespace
 
 from app.adaptive import update_mastery, update_streak
+from app.models import Challenge, Learner
 
 
 def _learner(streak=3, mastery=None, ratio=0.3, setting=None):
@@ -88,3 +89,73 @@ def test_correct_still_increases_mastery():
     ln = _learner(mastery={"NOM.SG": 0.5})
     update_mastery(ln, ["NOM.SG"], "correct", abstained=False)
     assert ln.feature_mastery["NOM.SG"] > 0.5
+
+
+# ─── P7-11 review gate: the selector serves approved only ──────────────────
+
+def _mk_learner(db, learner_id):
+    from app.models import Learner
+    lr = Learner(
+        id=learner_id, display_name="gate-test", bridge_langs=["en"],
+        feature_mastery={}, sanskrit_ratio=0.3, sanskrit_ratio_setting=0.8,
+    )
+    db.add(lr)
+    db.commit()
+    return lr
+
+
+def _mk_challenge(db, target, status, register="laukika"):
+    from app.models import Challenge
+    ch = Challenge(
+        id=target + "-id", prompt_l1="Say it.", target_sanskrit=target,
+        features=["NOM.SG", "ACC.SG", "PRES.3SG"], register=register,
+        review_status=status, accepted_parses=[{"bāla": "NOM.SG", "vana": "ACC.SG", "√gam": "PRES.3SG"}],
+    )
+    db.add(ch)
+    db.commit()
+    return ch
+
+
+def _cleanup_challenges(db, *targets):
+    """Remove the test challenges so they never leak into the shared session DB
+    and trip the full-suite pipeline validation (which checks ALL rows)."""
+    ids = [t + "-id" for t in targets]
+    db.query(Challenge).filter(Challenge.id.in_(ids)).delete(synchronize_session=False)
+    db.commit()
+
+
+def test_select_serves_only_approved(client):
+    """P7-11: a pending/rejected challenge is never selected; only approved are."""
+    from app.db import SessionLocal
+    from app.adaptive import select_next_challenge
+    db = SessionLocal()
+    try:
+        lr = _mk_learner(db, "gate-learner-1")
+        pending = _mk_challenge(db, "बालः वनं गच्छति", "pending")
+        rejected = _mk_challenge(db, "नरः जलं पिबति", "rejected")
+
+        # Walk the pool broadly: every returned challenge must be approved,
+        # never the pending or rejected row we just inserted.
+        seen = set()
+        recent = []
+        for _ in range(8):
+            chosen = select_next_challenge(lr, db, register="laukika", recent_challenge_ids=recent[:5])
+            assert chosen is not None
+            assert chosen.review_status == "approved", chosen.target_sanskrit
+            assert chosen.id not in (pending.id, rejected.id)
+            if chosen.id in seen:
+                break
+            seen.add(chosen.id)
+            recent = recent + [chosen.id]
+        assert seen, "selector served at least one approved challenge"
+
+        # Approving the pending row makes it selectable.
+        from scripts.review_scenarios import set_challenge_review_status
+        set_challenge_review_status(db, pending.id, "approved")
+        chosen2 = select_next_challenge(db.get(Learner, "gate-learner-1"), db, register="laukika")
+        assert chosen2.review_status == "approved"
+    finally:
+        _cleanup_challenges(db, "बालः वनं गच्छति", "नरः जलं पिबति")
+        db.query(Learner).filter(Learner.id.in_(["gate-learner-1"])).delete(synchronize_session=False)
+        db.commit()
+        db.close()

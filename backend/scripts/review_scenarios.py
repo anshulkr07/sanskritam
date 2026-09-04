@@ -36,7 +36,7 @@ if __package__ in (None, ""):  # allow `python scripts/review_scenarios.py`
 from sqlalchemy.orm import Session  # noqa: E402
 
 from app.db import SessionLocal  # noqa: E402
-from app.models import DialogueEdge, DialogueNode, DialogueScenario  # noqa: E402
+from app.models import Challenge, DialogueEdge, DialogueNode, DialogueScenario  # noqa: E402
 
 VALID_STATUS = ("pending", "approved", "rejected")
 
@@ -184,26 +184,136 @@ def render_packet(db: Session, path: str, out: Optional[TextIO] = None) -> int:
     return n
 
 
+# ─── challenge review helpers (P7-11) ───────────────────────────────────────
+
+def load_challenges(db: Session, status: Optional[str] = None,
+                    register: Optional[str] = None) -> list[dict]:
+    """Challenge rows (optionally by review status + register), oldest first.
+
+    Includes derived feature coverage so the reviewer can see, at a glance,
+    which of the 37 features this pool exercises without a second query."""
+    q = db.query(Challenge)
+    if status:
+        q = q.filter(Challenge.review_status == status)
+    if register:
+        q = q.filter(Challenge.register == register)
+    out = []
+    for c in q.order_by(Challenge.created_at.asc()).all():
+        out.append({
+            "id": c.id,
+            "prompt_l1": c.prompt_l1,
+            "target_sanskrit": c.target_sanskrit,
+            "target_iast": c.target_iast,
+            "features": list(c.features or []),
+            "register": c.register,
+            "review_status": c.review_status,
+            "review_note": c.review_note or "",
+            "reviewed_at": c.reviewed_at.isoformat() if c.reviewed_at else None,
+            "audio_url": c.audio_url or "",
+            "created_at": c.created_at.isoformat() if c.created_at else None,
+        })
+    return out
+
+
+def set_challenge_review_status(db: Session, challenge_id: str, status: str,
+                                note: str = "") -> tuple[dict, bool]:
+    """Set a challenge's review status; idempotent (same semantics as
+    ``set_review_status`` for scenarios)."""
+    ch = db.query(Challenge).filter(Challenge.id == challenge_id).first()
+    if ch is None:
+        raise FileNotFoundError(f"no challenge with id {challenge_id}")
+    changed = bool(ch.review_status != status or (note and ch.review_note != note))
+    if changed:
+        ch.review_status = status
+        if note:
+            ch.review_note = note
+        ch.reviewed_at = datetime.now(timezone.utc)
+        db.commit()
+        db.refresh(ch)
+    return {
+        "id": ch.id,
+        "target_sanskrit": ch.target_sanskrit,
+        "review_status": ch.review_status,
+        "review_note": ch.review_note or "",
+        "reviewed_at": ch.reviewed_at.isoformat() if ch.reviewed_at else None,
+    }, changed
+
+
+def set_challenges_by_band(db: Session, features: list[str], status: str,
+                           note: str = "") -> int:
+    """Bulk-set review_status for every challenge exercising ANY listed feature.
+
+    P7-11: reviewing 96 sentences one HTTP call at a time is how the review
+    stalls again. Bands come straight from ``seeds/briefs.FEATURE_BANDS``.
+    Returns the number of rows changed."""
+    n = 0
+    for ch in db.query(Challenge).filter(
+        Challenge.review_status != status
+    ).all():
+        chf = list(ch.features or [])
+        if any(f in chf for f in features):
+            ch.review_status = status
+            if note:
+                ch.review_note = note
+            ch.reviewed_at = datetime.now(timezone.utc)
+            n += 1
+    if n:
+        db.commit()
+    return n
+
+
+def render_challenge_packet(db: Session, path: str, out: Optional[TextIO] = None) -> int:
+    """Write every pending challenge's sentence + prompt + features to ``path``."""
+    pending = load_challenges(db, status="pending")
+    n = 0
+    stream = out if out is not None else open(path, "w", encoding="utf-8")
+    try:
+        for r in pending:
+            stream.write(
+                f"[{r['register']}] {r['target_sanskrit']}\n"
+                f"    IAST   {r['target_iast']}\n"
+                f"    prompt {r['prompt_l1']}\n"
+                f"    feats  {', '.join(r['features'])}\n\n"
+            )
+            n += 1
+    finally:
+        if out is None:
+            stream.close()
+    return n
+
+
 # ─── CLI ────────────────────────────────────────────────────────────────────
 
 def main(argv: Optional[list[str]] = None) -> int:
-    p = argparse.ArgumentParser(prog="review_scenarios",
-                                description="Offline review of authored dialogue scenarios (P7-3).")
-    p.add_argument("--list", action="store_true", help="list every scenario with node/edge counts")
+    p = argparse.ArgumentParser(
+        prog="review_scenarios",
+        description="Offline review of authored dialogue scenarios (P7-3) and challenges (P7-11).",
+    )
+    p.add_argument("--challenges", action="store_true",
+                   help="operate on challenges instead of dialogue scenarios")
+    p.add_argument("--list", action="store_true", help="list every item with review status")
     p.add_argument("--show", metavar="ID", help="render one scenario's graph as prose")
-    p.add_argument("--packet", metavar="PATH", help="write all pending scenarios' prose to a file")
-    p.add_argument("--approve", metavar="ID", help="approve a scenario (idempotent)")
-    p.add_argument("--reject", metavar="ID", help="reject a scenario (idempotent)")
-    p.add_argument("--note", default="", help="review note for --approve/--reject")
+    p.add_argument("--packet", metavar="PATH", help="write all pending items' prose to a file")
+    p.add_argument("--approve", metavar="ID", help="approve one item (idempotent)")
+    p.add_argument("--reject", metavar="ID", help="reject one item (idempotent)")
+    p.add_argument("--approve-band", metavar="FEATURES",
+                   help="approve every challenge exercising ANY listed feature (comma-sep)")
+    p.add_argument("--register", default=None, help="filter challenges by register (laukika|classical)")
+    p.add_argument("--note", default="", help="review note for approve/reject")
     args = p.parse_args(argv)
 
-    actions = sum(bool(x) for x in (args.list, args.show, args.packet, args.approve, args.reject))
+    actions = sum(bool(x) for x in (
+        args.list, args.show, args.packet, args.approve, args.reject, args.approve_band
+    ))
     if actions != 1:
-        p.error("exactly one of --list / --show / --packet / --approve / --reject required")
+        p.error("exactly one of --list / --show / --packet / --approve / --reject / --approve-band required")
 
     db = SessionLocal()
     count = 0
     try:
+        if args.challenges:
+            return _challenges_cli(db, args)
+
         if args.list:
             rows = load_scenarios(db)
             print(f"{'id':<40} {'status':<9} {'nodes':>6} {'edges':>6}  title/register")
@@ -238,6 +348,44 @@ def main(argv: Optional[list[str]] = None) -> int:
     finally:
         db.close()
     return count if count else 0
+
+
+def _challenges_cli(db, args) -> int:
+    """Handle the --challenges review surface (P7-11)."""
+    if args.list:
+        rows = load_challenges(db, register=args.register)
+        print(f"{'id':<16} {'status':<9} {'register':<10}  target")
+        for r in rows:
+            print(f"{r['id']:<16} {r['review_status']:<9} {r['register']:<10} "
+                  f"{r['target_sanskrit']}")
+        # Feature coverage: how many distinct features does each status exercise?
+        feats = {"pending": set(), "approved": set(), "rejected": set()}
+        for r in rows:
+            feats[r["review_status"]].update(r["features"])
+        print(f"\n{len(rows)} challenge(s): "
+              f"{sum(1 for r in rows if r['review_status']=='approved')} approved, "
+              f"{sum(1 for r in rows if r['review_status']=='pending')} pending, "
+              f"{sum(1 for r in rows if r['review_status']=='rejected')} rejected")
+        print(f"features exercised: approved={len(feats['approved'])} "
+              f"pending={len(feats['pending'])} rejected={len(feats['rejected'])}")
+        return 0
+    elif args.packet:
+        n = render_challenge_packet(db, args.packet)
+        print(f"wrote {n} pending challenge(s) to {args.packet}")
+    elif args.approve or args.reject:
+        target = args.approve or args.reject
+        status = "approved" if args.approve else "rejected"
+        summary, changed = set_challenge_review_status(db, target, status, args.note)
+        if changed:
+            print(f"{target}: {summary['review_status']} — review_note={summary['review_note']!r}")
+        else:
+            print(f"{target}: already {status} — no change (idempotent no-op)")
+    elif args.approve_band:
+        features = [f.strip() for f in args.approve_band.split(",") if f.strip()]
+        n = set_challenges_by_band(db, features, "approved", args.note)
+        print(f"approved {n} challenge(s) exercising [{', '.join(features)}]")
+    db.commit()
+    return 0
 
 
 if __name__ == "__main__":

@@ -51,13 +51,19 @@ _CACHE_DIR = os.environ.get(
 )
 
 
-def _brief_key(band_features, register, n) -> str:
+def _brief_key(band_features, register, n, item_index) -> str:
     h = hashlib.sha256()
     h.update(json.dumps(sorted(band_features), ensure_ascii=False).encode("utf-8"))
     h.update(b"\0")
     h.update(register.encode("utf-8"))
     h.update(b"\0")
     h.update(str(n).encode("utf-8"))
+    # Per-item index within the group — without it the same (band, register, n)
+    # key returns the same draft every time it is asked, which is correct for
+    # cost and catastrophic for variety (P7-10, §2.14). A distinct slot must
+    # produce a distinct, separately-cached draft.
+    h.update(b"\0")
+    h.update(str(item_index).encode("utf-8"))
     # Include a hash of the drafting prompt so a prompt change invalidates
     # otherwise-identical cached drafts (a prompt edit must not silently replay
     # old, differently-prompted output — the authoring-cache has the same rule).
@@ -66,13 +72,13 @@ def _brief_key(band_features, register, n) -> str:
     return h.hexdigest()[:16]
 
 
-def _cache_path(band_features, register, n, provider) -> Path:
+def _cache_path(band_features, register, n, provider, item_index) -> Path:
     safe = re.sub(r"[^A-Za-z0-9._-]", "_", provider)
-    return Path(_CACHE_DIR) / f"challenges-{safe}-{_brief_key(band_features, register, n)}.json"
+    return Path(_CACHE_DIR) / f"challenges-{safe}-{_brief_key(band_features, register, n, item_index)}.json"
 
 
-def _cache_load(band_features, register, n, provider) -> Optional[list[dict]]:
-    path = _cache_path(band_features, register, n, provider)
+def _cache_load(band_features, register, n, provider, item_index) -> Optional[list[dict]]:
+    path = _cache_path(band_features, register, n, provider, item_index)
     if not path.is_file():
         return None
     try:
@@ -85,11 +91,11 @@ def _cache_load(band_features, register, n, provider) -> Optional[list[dict]]:
     return None
 
 
-def _cache_store(band_features, register, n, provider, drafts) -> None:
+def _cache_store(band_features, register, n, provider, item_index, drafts) -> None:
     if not drafts:
         return
     try:
-        path = _cache_path(band_features, register, n, provider)
+        path = _cache_path(band_features, register, n, provider, item_index)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(drafts, ensure_ascii=False, indent=2), encoding="utf-8")
     except OSError as e:
@@ -165,6 +171,7 @@ async def draft_challenges(
     n,
     *,
     cache: bool = True,
+    item_index: int = 0,
 ) -> list[dict]:
     """Draft ``n`` single-sentence challenges, one LLM call each.
 
@@ -175,13 +182,17 @@ async def draft_challenges(
     call asks for a *new* sentence, so the batch accumulates distinct targets.
     Dual-bearing bands route to Gemini via OpenRouter.
 
-    Drafts are cached on disk keyed by band + register + count + prompt hash,
-    so re-running is deterministic and a replay costs ₹0."""
+    Drafts are cached on disk keyed by band + register + count + **per-item
+    index** + prompt hash (P7-10). ``item_index`` is the first slot of this
+    batch within the group, so a re-run that asks for a fresh slot drafts
+    *different* sentences rather than replaying the identical cached ones —
+    correct for cost (cache hit = ₹0), non-catastrophic for variety (each slot
+    is its own cache entry)."""
     has_dual = any("DU" in f for f in band_features)
     provider_cfg = DUAL_MODEL if has_dual else f"sarvam:{CONVERSATIONS_MODEL}"
 
     if cache:
-        hit = _cache_load(band_features, register, n, provider_cfg)
+        hit = _cache_load(band_features, register, n, provider_cfg, item_index)
         if hit is not None:
             return hit
 
@@ -223,7 +234,7 @@ async def draft_challenges(
     if not drafts:
         raise ValueError("draft produced no usable challenges")
     if cache:
-        _cache_store(band_features, register, n, provider_cfg, drafts)
+        _cache_store(band_features, register, n, provider_cfg, item_index, drafts)
     return drafts
 
 
@@ -267,7 +278,25 @@ def gate_challenge(draft: dict) -> dict:
     return {**draft, "gate": "pass", "accepted_parses": parses, "reason": ""}
 
 
-def insert_pass(db: Session, draft: dict) -> str:
+def insert_pass(db: Session, draft: dict) -> tuple[str, bool]:
+    """Insert a gated challenge pass, skipping (and counting) a duplicate.
+
+    P7-10: ``(target_sanskrit, register)`` is schema-unique, and a seed draft
+    and a generated draft can legitimately collide on the same target — that
+    is a *skip*, not an error. Returns ``(challenge_id_or_None, inserted)``.
+    ``inserted`` is False when the row already exists, so callers can report
+    distinct-inserted separately from pass count (§2.14)."""
+    key = (draft.get("target_sanskrit", ""), draft.get("register", "laukika"))
+    exists = (
+        db.query(Challenge)
+        .filter(
+            Challenge.target_sanskrit == key[0],
+            Challenge.register == key[1],
+        )
+        .first()
+    )
+    if exists is not None:
+        return exists.id, False
     challenge = Challenge(
         id=uuid.uuid4().hex[:16],
         prompt_l1=draft.get("prompt_l1", ""),
@@ -280,7 +309,7 @@ def insert_pass(db: Session, draft: dict) -> str:
     )
     db.add(challenge)
     db.commit()
-    return challenge.id
+    return challenge.id, True
 
 
 def author_challenge_batch(
@@ -291,6 +320,7 @@ def author_challenge_batch(
     cache: bool = True,
     dry_run: bool = False,
     db: Optional[Session] = None,
+    item_index: int = 0,
 ) -> dict:
     """Draft, gate, and persist ``n`` challenges for one band + register.
 
@@ -298,22 +328,34 @@ def author_challenge_batch(
     target count is returned (no network, no DB writes). Otherwise drafts are
     gated via Vidyut and only passes are inserted. ``register`` is stamped onto
     each pass so persisted rows carry it.
+
+    ``item_index`` is the first slot of this batch within its group and so
+    seeds the cache key (P7-10): a re-run of an exhausted band hits its own
+    cached drafts, which are all already present, so **0 distinct rows are
+    inserted** — reported loudly via ``n_distinct_new`` and ``n_skipped_dup``.
     """
     if dry_run:
         return {"n_target": n, "n_gated": 0, "n_passed": 0, "n_inserted": 0,
+                "n_distinct_new": 0, "n_skipped_dup": 0,
                 "n_failed": 0, "gate": "dry-run"}
     import asyncio
-    drafts = asyncio.run(draft_challenges(band_features, register, n, cache=cache))
+    drafts = asyncio.run(draft_challenges(band_features, register, n, cache=cache, item_index=item_index))
     gated = [gate_challenge(d) for d in drafts]
     passed = [g for g in gated if g["gate"] == "pass"]
     n_inserted = 0
+    n_distinct_new = 0
+    n_skipped_dup = 0
     own_session = db is None
     engine = SessionLocal() if own_session else db
     try:
         for g in passed:
             g["register"] = register
-            insert_pass(engine, g)
-            n_inserted += 1
+            cid, inserted = insert_pass(engine, g)
+            if inserted:
+                n_inserted += 1
+                n_distinct_new += 1
+            else:
+                n_skipped_dup += 1
     finally:
         if own_session:
             engine.close()
@@ -322,5 +364,7 @@ def author_challenge_batch(
         "n_gated": len(gated),
         "n_passed": len(passed),
         "n_inserted": n_inserted,
+        "n_distinct_new": n_distinct_new,
+        "n_skipped_dup": n_skipped_dup,
         "n_failed": len(gated) - len(passed),
     }

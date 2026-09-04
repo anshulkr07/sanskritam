@@ -66,8 +66,15 @@ async def list_challenges(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """List all challenges for a register."""
-    challenges = db.query(Challenge).filter(Challenge.register == register).all()
+    """List all challenges for a register (approved only, P7-11).
+
+    Pending/rejected challenges are authoring backlog — invisible to learners,
+    matching how `/conversation/scenarios` serves approved scenarios only."""
+    challenges = (
+        db.query(Challenge)
+        .filter(Challenge.register == register, Challenge.review_status == "approved")
+        .all()
+    )
     return [
         ChallengeResponse(
             id=c.id,

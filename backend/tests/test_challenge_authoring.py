@@ -92,8 +92,10 @@ def test_gate_rejects_nonderived_claim():
 
 def test_draft_and_batch_insert_only_passes(client, monkeypatch, tmp_path):
     # client fixture runs init_db() so the `challenges` table exists.
+    # Use a unique target so a shared session DB never sees this sentence before.
+    good = dict(GOOD, target_sanskrit="अश्वः ग्रामं गच्छति", target_iast="aśvaḥ grāmaṃ gacchati")
     monkeypatch.setenv("CHALLENGE_CACHE_DIR", str(tmp_path / "cache"))
-    _mock(monkeypatch, [[GOOD, BAD]])
+    _mock(monkeypatch, [[good, BAD]])
 
     report = svc.author_challenge_batch(
         ["NOM.SG", "ACC.SG", "PRES.3SG"], "laukika", 2,
@@ -103,6 +105,7 @@ def test_draft_and_batch_insert_only_passes(client, monkeypatch, tmp_path):
     assert report["n_gated"] == 2
     assert report["n_passed"] == 1
     assert report["n_inserted"] == 1
+    assert report["n_distinct_new"] == 1
     assert report["n_failed"] == 1
 
 
@@ -115,15 +118,80 @@ def test_dry_run_inserts_nothing():
 def test_insert_pass_stores_feature_derived_parses(client):
     db = SessionLocal()
     try:
-        gated = svc.gate_challenge(dict(GOOD))
+        good = dict(GOOD, target_sanskrit="बालः पुस्तकं पठति", target_iast="bālaḥ pustakaṃ paṭhati")
+        gated = svc.gate_challenge(good)
         assert gated["gate"] == "pass"
-        cid = svc.insert_pass(db, dict(GOOD, **gated))
+        cid, inserted = svc.insert_pass(db, {**good, "accepted_parses": gated["accepted_parses"]})
+        assert inserted is True
         row = db.query(Challenge).filter(Challenge.id == cid).one()
         assert row.accepted_parses, "persisted accepted_parses must be non-empty"
         # verify the parses actually grade the target "correct"
         from app.grading.engine import grade_attempt
-        verdict = grade_attempt(GOOD["target_sanskrit"], row.accepted_parses, row.features or [])
+        verdict = grade_attempt(good["target_sanskrit"], row.accepted_parses, row.features or [])
         assert verdict["verdict"] == "correct"
         assert row.register == "laukika"
+        assert row.review_status == "pending", "generated challenges start pending (P7-11)"
     finally:
         db.close()
+
+
+def test_insert_pass_skips_duplicate_target_register(client):
+    """P7-10: a second insert of the same (target_sanskrit, register) is a
+    skip (returns the existing id, inserted=False), not an error — a seed and
+    a generated draft may legitimately collide."""
+    db = SessionLocal()
+    try:
+        good = dict(GOOD, target_sanskrit="सीता फलं खादति", target_iast="sītā phalaṃ khādati")
+        gated = svc.gate_challenge(good)
+        assert gated["gate"] == "pass"
+        cid, first = svc.insert_pass(db, {**good, "accepted_parses": gated["accepted_parses"]})
+        assert first is True
+        # Same target + register, different prompt/id claim → conflict-skip.
+        gated2 = dict(good, prompt_l1="different prompt")
+        cid2, second = svc.insert_pass(db, gated2)
+        assert second is False
+        assert cid2 == cid, "a duplicate skip must report the existing row's id"
+        n_rows = db.query(Challenge).filter(
+            Challenge.target_sanskrit == good["target_sanskrit"],
+            Challenge.register == "laukika",
+        ).count()
+        assert n_rows == 1, "conflict-skip must not create a duplicate row"
+    finally:
+        db.close()
+
+
+def test_author_batch_reports_distinct_new_and_skipped_dup(client, monkeypatch, tmp_path):
+    """P7-10/§2.14: the batch report separates NEW distinct inserted from
+    duplicates skipped, and an exhausted band reports 0 distinct loudly."""
+    monkeypatch.setenv("CHALLENGE_CACHE_DIR", str(tmp_path / "cache"))
+    # Unique target so this test is independent of other shared-DB tests.
+    good = dict(GOOD, target_sanskrit="बालः नगरं गच्छति", target_iast="bālaḥ nagaraṃ gacchati")
+    _mock(monkeypatch, [[good, BAD]])
+
+    # First run: 1 pass inserted as a NEW distinct row.
+    r1 = svc.author_challenge_batch(
+        ["NOM.SG", "ACC.SG", "PRES.3SG"], "laukika", 2,
+        cache=False, dry_run=False, db=None,
+    )
+    assert r1["n_passed"] == 1
+    assert r1["n_distinct_new"] == 1
+    assert r1["n_skipped_dup"] == 0
+
+    # Second run over the same band: the cached draft is a duplicate → skipped.
+    r2 = svc.author_challenge_batch(
+        ["NOM.SG", "ACC.SG", "PRES.3SG"], "laukika", 2,
+        cache=False, dry_run=False, db=None,
+    )
+    assert r2["n_passed"] == 1
+    assert r2["n_distinct_new"] == 0, "re-running an exhausted band adds 0 distinct rows"
+    assert r2["n_skipped_dup"] == 1
+
+
+def test_cache_key_varies_by_item_index():
+    """P7-10: the cache key carries the per-item index, so two slots in the same
+    group resolve to different cache files rather than one cached draft."""
+    k0 = svc._brief_key(["NOM.SG"], "laukika", 5, 0)
+    k1 = svc._brief_key(["NOM.SG"], "laukika", 5, 1)
+    assert k0 != k1, "per-item index must change the cache key"
+    assert svc._cache_path(["NOM.SG"], "laukika", 5, "sarvam:x", 0) != \
+           svc._cache_path(["NOM.SG"], "laukika", 5, "sarvam:x", 1)

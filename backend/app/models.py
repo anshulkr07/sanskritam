@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime, timezone
 
 import sqlalchemy as sa
-from sqlalchemy import Column, Float, ForeignKey, Integer, String, Text, Boolean, JSON, DateTime
+from sqlalchemy import Column, Float, ForeignKey, Integer, String, Text, Boolean, JSON, DateTime, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from app.db import Base
@@ -90,7 +90,18 @@ class Challenge(Base):
     accepted_parses = Column(JSON, default=list)  # list of {word_role -> feature} dicts
     audio_url = Column(String(512), default="")
     register = Column(String(16), default="laukika", index=True)  # laukika | classical
+    # P7-11 review gate. Same vocabulary as DialogueScenario: generated
+    # challenges land "pending"; only "approved" are served (selector filter).
+    review_status = Column(String(16), default="pending", index=True)  # pending|approved|rejected
+    review_note = Column(Text, default="")
+    reviewed_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint(
+            "target_sanskrit", "register", name="uq_challenges_target_register"
+        ),
+    )
 
     def to_dict(self):
         return {
@@ -103,9 +114,8 @@ class Challenge(Base):
             "accepted_parses": self.accepted_parses,
             "audio_url": self.audio_url,
             "register": self.register,
+            "review_status": self.review_status,
         }
-
-
 class Shloka(Base):
     """Daily shloka with word breakdown."""
 

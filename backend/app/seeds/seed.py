@@ -67,7 +67,15 @@ def _seed_features(db):
 
 
 def _seed_challenges(db):
-    """Insert challenge data."""
+    """Insert challenge data.
+
+    Idempotent per ``(target_sanskrit, register)``. English and Hindi prompt
+    variants can share the same Sanskrit target — under the P7-10 unique
+    constraint that is one row, so the existence check must see an added row
+    before the next candidate (flush per add). Seed challenges are
+    hand-authored and shipped content, so they carry ``review_status``
+    "approved" (P7-11 grandfathering); generated ones start "pending".
+    """
     for cdata in SEED_CHALLENGES:
         existing = db.query(Challenge).filter(
             Challenge.target_sanskrit == cdata["target_sanskrit"],
@@ -84,8 +92,10 @@ def _seed_challenges(db):
             features=cdata.get("features", []),
             accepted_parses=cdata.get("accepted_parses", []),
             register=cdata.get("register", "laukika"),
+            review_status="approved",
         )
         db.add(challenge)
+        db.flush()
     logger.info("Seeded %d challenges", len(SEED_CHALLENGES))
 
 
