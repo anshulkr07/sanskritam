@@ -59,11 +59,12 @@ def test_live_without_key_fails():
 
 
 def test_estimate_printed():
-    """Dry run lists briefs and estimates."""
-    from scripts.challenge_batch import _print_estimate
-    briefs = [{"band": "a", "features": ["NOM.SG"], "register": "laukika"}]
-    _print_estimate(briefs)  # Should not raise
-    assert True
+    """Dry run lists groups and estimates."""
+    from scripts.challenge_batch import build_groups
+    groups = build_groups(limit=2)
+    assert len(groups) == 2
+    # Each group is (band_name, features, register).
+    assert all(len(g) == 3 for g in groups)
 
 
 def test_limit_respected():
