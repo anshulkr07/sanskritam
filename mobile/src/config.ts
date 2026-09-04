@@ -1,7 +1,12 @@
 ﻿// Global app configuration.
-// The backend is only reachable here in dev. On a device, point this at the
-// LAN IP of the machine running the FastAPI server. Override at build time
-// with .env or a metadata injection if you need env-specific base URLs.
+//
+// U9-3 (P18-3): the backend is reachable two ways —
+//   • DEV (dev build / Expo / LAN): the machine's LAN address, rewritten by
+//     start_mob.ps1 on every run. This stays the dev default.
+//   • RELEASE (a shipped build): the deployed Cloud Run service. Set at build
+//     time with EXPO_PUBLIC_SHBAD_RELEASE_URL. A release build with an unset
+//     URL FAILS LOUDLY at startup (§2.11 / U9-3) instead of silently falling
+//     back to localhost — that silence is how a "working" build talks to nothing.
 
 // When running the web build, __DEV__ is true and localhost:8000 is the
 // backend. For a physical device via Expo Go, replace with your machine's
@@ -14,8 +19,34 @@ const DEVICE_HOST = "192.168.1.8";
 // this and DEVICE_HOST are rewritten by start_mob.ps1 on each run.
 const DEVICE_PORT = 8001;
 
+// The deployed backend. Injected at build time (Expo inlines EXPO_PUBLIC_*
+// env vars read through process.env). In a release build this must be the
+// Cloud Run URL; empty => startup throws.
+const RELEASE_BASE_URL_ENV = (
+  process.env.EXPO_PUBLIC_SHBAD_RELEASE_URL as string | undefined
+)?.trim() ?? "";
+
+// Optional shipped default — paste the Cloud Run URL here once it is known
+// (https://shabd-api-<deployment-hash>-as.a.run.app, the deploy script prints
+// it). Keeping this as the fallback lets a release build resolve the deployed
+// backend without a build-time env, while an entirely-unset URL still fails
+// loudly below instead of falling back to localhost (U9-3).
+const CLOUD_RUN_FALLBACK_URL = "";
+
+const RELEASE_BASE_URL = RELEASE_BASE_URL_ENV || CLOUD_RUN_FALLBACK_URL;
+
 // A helper to build a full URL joined to the API base.
-export const BASE_URL = `http://${DEVICE_HOST}:${DEVICE_PORT}`;
+export const BASE_URL = __DEV__
+  ? `http://${DEVICE_HOST}:${DEVICE_PORT}`
+  : RELEASE_BASE_URL;
+
+if (!__DEV__ && !RELEASE_BASE_URL) {
+  throw new Error(
+    "[U9-3] Release build has no backend URL. Set EXPO_PUBLIC_SHBAD_RELEASE_URL " +
+      "to the Cloud Run URL at build time; a shipped app must not silently fall " +
+      "back to localhost (HANDOVER §2.11)."
+  );
+}
 
 // Dev-login identity columns shown on the onboarding screen.
 export const DEFAULT_BRIDGE_LANGS = ["en", "hi"];
@@ -32,26 +63,3 @@ export const TTS_PACE = 1.0;
 export const TTS_SPEAKER = "aditya"; // valid bulbul:v3 persona speaker
 
 export default { BASE_URL, DEVICE_HOST, DEVICE_PORT, TTS_SPEAKER };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
