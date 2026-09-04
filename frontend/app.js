@@ -438,7 +438,65 @@ async function loadFeatures() {
   }
 }
 
-/* ─── 8. TTS — Text-to-Speech ─── */
+/* ─── 8. Metrics (admin) — escape rate + TTS share ─── */
+async function loadMetrics() {
+  const adminToken = $('admin-token').value.trim();
+  if (!adminToken) { toast('Enter the admin token', 'error'); return; }
+  const hours = parseInt($('metrics-hours').value, 10) || 24;
+
+  const path = `/admin/metrics?hours=${hours}`;
+  const url = STATE.baseUrl + path;
+  const start = performance.now();
+  let res;
+  try {
+    res = await fetch(url, { headers: { 'X-Admin-Token': adminToken } });
+  } catch (err) {
+    logRequest('GET', path, 0, `Network error: ${err.message}`, start);
+    toast(`Metrics failed: ${err.message}`, 'error');
+    return;
+  }
+  let data;
+  try {
+    data = await res.json();
+  } catch {
+    data = { raw: await res.text().catch(() => '(empty)') };
+  }
+  logRequest('GET', path, res.status, JSON.stringify(data).slice(0, 500), start);
+
+  if (!res.ok) {
+    toast(`Metrics error: ${data.detail || data.message || `HTTP ${res.status}`}`, 'error');
+    return;
+  }
+
+  const at = new Date().toLocaleTimeString();
+  const er = data.escape_rate || {};
+  const ts = data.tts_share || {};
+  const top = data.top_escape_nodes || [];
+  const liveShare = (ts.live_share ?? 0) * 100;
+
+  let html = '';
+  html += `<div style="font-size:.78rem;color:var(--text-secondary);margin-bottom:10px;">Fetched ${at} · window ${hours}h</div>`;
+  html += `<div class="learner-info" style="margin-bottom:14px;">`;
+  html += `<div><div class="stat-label">Escape rate</div><div class="stat-value">${Math.round(er.rate * 100)}% <span style="font-size:.75rem;color:var(--text-secondary);">(${er.escapes} of ${er.turns} turns)</span></div></div>`;
+  html += `<div><div class="stat-label">Live-vs-prerendered TTS</div><div class="stat-value">${Math.round(liveShare)}% live <span style="font-size:.75rem;color:var(--text-secondary);">(${ts.live_chars} live / ${ts.prerendered_chars} pre-rendered chars)</span></div></div>`;
+  html += `</div>`;
+  html += `<div class="card"><div class="card-title">Top escape nodes <span style="font-weight:400;font-size:.78rem;">— authoring priority queue</span></div>`;
+  if (top.length) {
+    html += '<table class="features-table"><thead><tr><th>Node</th><th>Scenario</th><th>Escapes</th></tr></thead><tbody>';
+    top.forEach(n => {
+      html += `<tr><td><code>${n.node_id}</code></td><td><code>${n.scenario_id}</code></td><td>${n.escapes}</td></tr>`;
+    });
+    html += '</tbody></table>';
+  } else {
+    html += '<div style="color:var(--text-secondary);font-size:.85rem;">No escapes recorded — nothing to repair yet.</div>';
+  }
+  html += '</div>';
+
+  $('metrics-result').innerHTML = html;
+  toast('Metrics loaded', 'success');
+}
+
+/* ─── 9. TTS — Text-to-Speech ─── */
 async function generateTTS() {
   if (!STATE.token) { toast('Log in first', 'error'); return; }
   const text = $('tts-text').value.trim();
@@ -591,6 +649,7 @@ window.submitAttempt = submitAttempt;
 window.loadShloka = loadShloka;
 window.loadVarnamala = loadVarnamala;
 window.loadFeatures = loadFeatures;
+window.loadMetrics = loadMetrics;
 window.generateTTS = generateTTS;
 window.toggleRecording = toggleRecording;
 window.transcribeAudio = transcribeAudio;
