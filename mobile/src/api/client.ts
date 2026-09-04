@@ -300,6 +300,53 @@ export interface Paradigm {
 // absent. `axis` carries the phonetic reason so the four states never collapse
 // to colour alone (U5-3).
 
+// ─── Pronunciation (P3 / U9-1) ─────────────────────────────────────────
+// Verdicts follow the abstention principle (§2.2 / §3.3): `unsure` /
+// `abstained` means the system failed to hear, never that the learner failed.
+
+export interface PronunciationResult {
+  verdict: "correct" | "near" | "incorrect" | "unsure";
+  transcript: string;
+  /** Contrast class name, e.g. "retroflex_vs_dental" — the teachable result. */
+  contrast: string;
+  confidence: number;
+  abstained: boolean;
+  diagnosis: string;
+  streak_changed: boolean;
+}
+
+// ─── Progress (P4 / U9-2) ──────────────────────────────────────────────
+
+export interface ProgressDaily {
+  date: string;
+  xp: number;
+  attempts: number;
+  conversation_turns: number;
+  pronunciation_attempts: number;
+  goal_met: boolean;
+  goal_xp: number;
+}
+
+export interface ProgressStreak {
+  streak: number;
+  freezes: number;
+  max_freezes: number;
+}
+
+export interface ProgressRepair {
+  repaired: boolean;
+  streak: number;
+  freezes_remaining: number;
+}
+
+/** One learner-local activity day, for the streak calendar (U9-2). */
+export interface ProgressDay {
+  date: string;
+  xp: number;
+  attempts: number;
+  goal_met: boolean;
+}
+
 export type DailyWordTileState = "exact" | "near" | "present" | "absent";
 
 export interface DailyWordTile {
@@ -465,7 +512,68 @@ export async function uploadSpeech(
   return (await res.json()) as STTResponse;
 }
 
-// ─── Endpoint helpers ─────────────────────────────────────────────────────
+// ─── Endpoint helpers ─────────────────────────────────────────────────
+
+/**
+ * Multipart upload for a pronunciation attempt (U9-1). Mirrors uploadSpeech's
+ * shape — recorder URI on native, FormData on web — but posts to
+ * /pronunciation/attempt with { file, target, target_iast }. The verdict obeys
+ * the abstention principle: `unsure`/`abstained` is the system failing to hear,
+ * not the learner failing (§2.2 / §3.3).
+ */
+export async function uploadPronunciation(
+  audio: string | Blob | Uint8Array,
+  filename: string,
+  mime: string,
+  target: string,
+  targetIast = "",
+): Promise<PronunciationResult> {
+  const uploadUrl = `${BASE_URL}/pronunciation/attempt`;
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (authToken) headers.Authorization = `Bearer ${authToken}`;
+
+  // React Native environment with a file URI
+  if (typeof audio === "string") {
+    const FileSystem = require("expo-file-system/legacy");
+    const uploadType = FileSystem.FileSystemUploadType ? FileSystem.FileSystemUploadType.MULTIPART : 1;
+    const res = await FileSystem.uploadAsync(uploadUrl, audio, {
+      httpMethod: "POST",
+      uploadType,
+      fieldName: "file",
+      mimeType: mime,
+      parameters: { target, target_iast: targetIast },
+      headers,
+    });
+    if (res.status >= 200 && res.status < 300) {
+      return JSON.parse(res.body) as PronunciationResult;
+    }
+    let detail = `Upload failed with status ${res.status}`;
+    try {
+      const body = JSON.parse(res.body);
+      detail = (body as { detail?: string }).detail ?? detail;
+    } catch { /* keep status fallback */ }
+    throw new ApiError(res.status, detail);
+  }
+
+  // Web environment using FormData
+  const form = new FormData();
+  const file =
+    audio instanceof Blob ? audio : new Blob([audio as unknown as BlobPart], { type: mime });
+  form.append("file", file, filename);
+  form.append("target", target);
+  form.append("target_iast", targetIast);
+
+  const res = await fetch(uploadUrl, { method: "POST", headers, body: form });
+  if (!res.ok) {
+    let detail = res.statusText;
+    try {
+      const body = await res.json();
+      detail = (body as { detail?: string }).detail ?? detail;
+    } catch { /* keep statusText */ }
+    throw new ApiError(res.status, detail);
+  }
+  return (await res.json()) as PronunciationResult;
+}
 
 export const api = {
   health: () => request<{ status: string; version: string }>("/health"),
@@ -594,6 +702,23 @@ export const api = {
       { method: "POST", body: JSON.stringify({ guess }) },
       true,
     ),
+
+  // Pronunciation (P3 / U9-1)
+  pronunciationAttempt: (
+    audio: string | Blob | Uint8Array,
+    filename: string,
+    mime: string,
+    target: string,
+    targetIast = "",
+  ) => uploadPronunciation(audio, filename, mime, target, targetIast),
+
+  // Progress (P4 / U9-2)
+  progressDaily: () => request<ProgressDaily>("/progress/daily", {}, true),
+  progressStreak: () => request<ProgressStreak>("/progress/streak", {}, true),
+  progressRepair: () =>
+    request<ProgressRepair>("/progress/repair", { method: "POST" }, true),
+  progressHistory: (days = 35) =>
+    request<ProgressDay[]>(`/progress/history?days=${days}`, {}, true),
 };
 
 export default api;

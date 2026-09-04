@@ -10,12 +10,18 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { api, type VarnamalaChar, type VarnamalaResponse } from "../api/client";
+import { api, type VarnamalaChar, type VarnamalaResponse, type PronunciationResult } from "../api/client";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
 import VocalTract from "../components/VocalTract";
 import { PLACE_COLORS, PLACE_LABEL, PLACE_ORDER, articulationFor } from "../phonetics";
+// expo-audio — import unconditionally; hooks must always be called.
+import {
+  useAudioRecorder,
+  RecordingPresets,
+  requestRecordingPermissionsAsync,
+} from "expo-audio";
 
 export { PLACE_COLORS };
 
@@ -89,10 +95,72 @@ export default function VarnamalaScreen() {
   const [selectedChar, setSelectedChar] = useState<VarnamalaChar | null>(null);
   // Bumped when playback starts; VocalTract replays its gesture on every change.
   const [playToken, setPlayToken] = useState(0);
+  // ── Pronunciation attempt (U9-1) ──
+  const [recActive, setRecActive] = useState(false);
+  const [attempting, setAttempting] = useState(false);
+  const [pron, setPron] = useState<PronunciationResult | null>(null);
+  const [micError, setMicError] = useState<string | null>(null);
+
+  // Always call the hook (React rules). On web it is unused.
+  const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
 
   useEffect(() => {
     api.varnamala().then(setGrid).catch(() => setGrid(null));
   }, []);
+
+  const toggleMic = useCallback(async () => {
+    if (!selectedChar || attempting) return;
+
+    if (recActive) {
+      // Stop, upload, and score — static state change only, no pulsing ring
+      // (Reduce Motion, §9.4).
+      setRecActive(false);
+      setAttempting(true);
+      setMicError(null);
+      try {
+        await recorder.stop();
+        // Small delay to let the native side finalize the file.
+        await new Promise((r) => setTimeout(r, 300));
+        const uri = recorder.uri;
+        if (!uri) throw new Error("No recording URI — recorder.uri is null after stop()");
+        const res = await api.pronunciationAttempt(
+          uri,
+          "recording.m4a",
+          "audio/m4a",
+          selectedChar.devanagari,
+          selectedChar.iast,
+        );
+        setPron(res);
+        // §3.3: unsure is `near`, never `incorrect`; it must never read as failure.
+        if (res.verdict === "correct") haptics.correct();
+        else if (res.verdict === "unsure") haptics.near();
+        else if (res.verdict === "near") haptics.near();
+        else haptics.incorrect();
+      } catch (err) {
+        const e = err as { message?: string };
+        setMicError(e?.message ? `Pronunciation failed: ${e.message}` : "Pronunciation failed. Try again.");
+      } finally {
+        setAttempting(false);
+      }
+    } else {
+      haptics.tap();
+      try {
+        // Ask permission BEFORE the first record, never at mount (U9-1 §2).
+        const perm = await requestRecordingPermissionsAsync();
+        if (!perm.granted) {
+          setMicError("Microphone access denied. Please allow it in settings and try again.");
+          return;
+        }
+        await recorder.prepareToRecordAsync();
+        recorder.record();
+        setRecActive(true);
+        setMicError(null);
+      } catch (err) {
+        const e = err as { message?: string };
+        setMicError(e?.message ? `Mic error: ${e.message}` : "Could not start the microphone. Try again.");
+      }
+    }
+  }, [recActive, attempting, selectedChar, recorder]);
 
   const playChar = useCallback(async (c: VarnamalaChar) => {
     haptics.tap();
@@ -118,6 +186,9 @@ export default function VarnamalaScreen() {
     } else {
       setSelectedChar(c);
     }
+    // A new target means the previous verdict no longer applies.
+    setPron(null);
+    setMicError(null);
     playChar(c);
   }, [selectedChar, playChar]);
 
@@ -176,6 +247,18 @@ export default function VarnamalaScreen() {
           />
         )}
 
+        {/* Pronunciation attempt (U9-1) — the mic lives beside the articulation */}
+        {selectedChar && (
+          <PronunciationPanel
+            char={selectedChar}
+            recActive={recActive}
+            attempting={attempting}
+            pron={pron}
+            micError={micError}
+            onToggleMic={toggleMic}
+          />
+        )}
+
         {/* Minimal pair comparison */}
         {minimalPair && articulation && (
           <View style={styles.minimalPair}>
@@ -203,6 +286,115 @@ export default function VarnamalaScreen() {
         {renderGroup(grid.others, "others", allChars, onCharPress, speaking)}
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+// ── Pronunciation attempt panel (U9-1) ───────────────────────────────
+// The verdict obeys §3.3 absolutely: `unsure`/`abstained` is violet
+// (color.unsure / color.unsureBg), never red, never a failure, and costs the
+// learner nothing. `incorrect` is a genuine miss, so red is appropriate there.
+
+const CONTRAST_LABEL: Record<string, string> = {
+  retroflex_vs_dental: "retroflex vs dental",
+  aspirated_vs_plain: "aspirated vs plain",
+  sibilants: "a different sibilant (श / ष / स)",
+  vowel_length: "vowel length",
+};
+
+function PronunciationPanel({
+  char,
+  recActive,
+  attempting,
+  pron,
+  micError,
+  onToggleMic,
+}: {
+  char: VarnamalaChar;
+  recActive: boolean;
+  attempting: boolean;
+  pron: PronunciationResult | null;
+  micError: string | null;
+  onToggleMic: () => void;
+}) {
+  const micLabel = recActive
+    ? "Tap to stop & check"
+    : attempting
+      ? "Checking…"
+      : `Pronounce ${char.devanagari} (${char.iast})`;
+
+  return (
+    <View style={styles.pronCard}>
+      <View style={styles.pronRow}>
+        <Text style={styles.pronTitle}>
+          Pronounce{" "}
+          <Text style={[styles.pronTarget, script("bold")]}>{char.devanagari}</Text>
+        </Text>
+        <Pressable
+          onPress={onToggleMic}
+          disabled={attempting}
+          accessibilityRole="button"
+          accessibilityLabel={micLabel}
+          accessibilityState={{ busy: attempting, selected: recActive }}
+          style={[
+            styles.micBtn,
+            recActive ? styles.micBtnActive : styles.micBtnIdle,
+            attempting && styles.micBtnBusy,
+          ]}
+        >
+          <Ionicons
+            name={attempting ? "hourglass-outline" : recActive ? "stop" : "mic"}
+            size={22}
+            color={color.white}
+          />
+        </Pressable>
+      </View>
+      <Text style={styles.pronMicHint}>{micLabel}</Text>
+
+      {micError && <Text style={styles.pronError}>{micError}</Text>}
+
+      {pron && <VerdictBlock pron={pron} />}
+    </View>
+  );
+}
+
+function VerdictBlock({ pron }: { pron: PronunciationResult }) {
+  const unsure = pron.verdict === "unsure" || pron.abstained;
+
+  let bg = color.surfaceMuted;
+  let fg = color.ink;
+  let heading = "";
+  let body = pron.diagnosis || "";
+  if (pron.verdict === "correct") {
+    bg = color.okBg;
+    fg = color.okText;
+    heading = "साधु! Well done.";
+  } else if (pron.verdict === "near") {
+    bg = color.warnBg;
+    fg = color.warnText;
+    heading = "So close.";
+  } else if (pron.verdict === "incorrect") {
+    bg = color.badBg;
+    fg = color.badText;
+    heading = "Not yet. Here it is —";
+  } else {
+    // unsure / abstained — violet, never red, no penalty (§3.3).
+    bg = color.unsureBg;
+    fg = color.unsureText;
+    heading = "I couldn't hear that clearly — no penalty.";
+    body = pron.diagnosis || "The microphone was unclear. Nothing counts against you.";
+  }
+
+  // Show the contrast class — "a teachable result", not a bare score (U9-1 §4).
+  const contrastLine =
+    pron.contrast && !unsure
+      ? `Closer to the ${CONTRAST_LABEL[pron.contrast] ?? pron.contrast} class than ${pron.transcript || "the target"}.`
+      : null;
+
+  return (
+    <View style={[styles.verdict, { backgroundColor: bg }]}>
+      <Text style={[styles.verdictHeading, { color: fg }]}>{heading}</Text>
+      {!!contrastLine && <Text style={[styles.verdictBody, { color: fg }]}>{contrastLine}</Text>}
+    </View>
   );
 }
 
@@ -301,4 +493,30 @@ const styles = StyleSheet.create({
   },
   charDev: { fontSize: 24, color: color.ink },
   charIast: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 2 },
+  // ── Pronunciation attempt (U9-1) ──
+  pronCard: {
+    marginBottom: space.lg,
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
+    ...shadow.card,
+  },
+  pronRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: space.sm },
+  pronTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink, flexShrink: 1 },
+  pronTarget: { fontSize: font.sizes.lg, color: color.ink },
+  micBtn: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  micBtnIdle: { backgroundColor: color.saffron, ...shadow.button },
+  micBtnActive: { backgroundColor: color.ink, ...shadow.button },
+  micBtnBusy: { backgroundColor: color.inkFaint },
+  pronMicHint: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: space.sm },
+  pronError: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, marginTop: space.sm },
+  verdict: { marginTop: space.md, borderRadius: radius.md, padding: space.md },
+  verdictHeading: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base },
+  verdictBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, marginTop: space.xs, lineHeight: 18 },
 });
