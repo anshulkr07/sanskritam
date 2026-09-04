@@ -58,6 +58,11 @@ def _brief_key(band_features, register, n) -> str:
     h.update(register.encode("utf-8"))
     h.update(b"\0")
     h.update(str(n).encode("utf-8"))
+    # Include a hash of the drafting prompt so a prompt change invalidates
+    # otherwise-identical cached drafts (a prompt edit must not silently replay
+    # old, differently-prompted output — the authoring-cache has the same rule).
+    h.update(b"\0")
+    h.update(hashlib.sha256(_SYSTEM_PROMPT.encode("utf-8")).hexdigest().encode("utf-8"))
     return h.hexdigest()[:16]
 
 
@@ -96,16 +101,23 @@ def _cache_store(band_features, register, n, provider, drafts) -> None:
 _SYSTEM_PROMPT = (
     "You are the challenge author for Shabd, a Sanskrit-as-a-second-language app. "
     "You write single-sentence practice challenges.\n\n"
-    "Return ONLY a JSON array of exactly {n} objects, no prose, no markdown "
-    "fences. Each object has exactly these keys:\n"
+    "Return ONLY a JSON object, no prose, no markdown fences, with exactly these keys:\n"
     '- "prompt_l1": str - an English prompt telling the learner what to say in Sanskrit\n'
     '- "target_sanskrit": str - the correct sentence in Devanagari, 3-7 words\n'
     '- "target_iast": str - IAST transliteration of the target sentence\n'
     '- "features": list[str] - feature ids actually present in target_sanskrit\n\n'
-    "Allowed feature ids (CLOSED SET, never invent or alter one): {allowed}\n"
-    "Register: {register}. Every target MUST exercise the listed features, in "
-    "natural grammatical Sanskrit with correct sandhi. Spell accurately. The "
-    "features list must be genuinely derivable from target_sanskrit."
+    "Allowed feature ids (CLOSED SET, never invent, alter, or abbreviate one): {allowed}\n"
+    "Register: {register}. Write natural grammatical Sanskrit with correct sandhi. "
+    "Aim to exercise SEVERAL of the allowed features in the sentence, and use "
+    "familiar everyday words; make this specific sentence DIFFERENT from the ones "
+    "you have already drafted today.\n\n"
+    "CRITICAL - claim features HONESTLY: list in 'features' ONLY the feature ids "
+    "that are genuinely and unambiguously present in the exact sentence you "
+    "wrote. Do NOT claim a feature just because it is in the allowed set or "
+    "because the genre 'always has' it. A sentence with a stated subject "
+    "genuinely has its case and number; a copula usually has NOM; a transitive "
+    "verb has ACC on the object and the verb's person/number. If you cannot "
+    "honestly attribute a feature to the sentence, omit it rather than invent it."
 )
 
 
@@ -154,11 +166,17 @@ async def draft_challenges(
     *,
     cache: bool = True,
 ) -> list[dict]:
-    """Draft ``n`` single-sentence challenges for a feature band + register.
+    """Draft ``n`` single-sentence challenges, one LLM call each.
 
-    Dual-bearing (any ``DU`` feature) routes to Gemini via OpenRouter; else
-    Sarvam conversational model. Drafts are cached on disk keyed by band +
-    register + count, so re-running is deterministic (and a replay costs 0)."""
+    One call per challenge (matching the ₹0.0055/call cost model — 500 targets
+    is ~₹2.75) instead of asking for a whole array at once: Sarvam's
+    conversational model reliably returns exactly one object even when asked
+    for many, and a single-object call has no partial-fill failure mode. Each
+    call asks for a *new* sentence, so the batch accumulates distinct targets.
+    Dual-bearing bands route to Gemini via OpenRouter.
+
+    Drafts are cached on disk keyed by band + register + count + prompt hash,
+    so re-running is deterministic and a replay costs ₹0."""
     has_dual = any("DU" in f for f in band_features)
     provider_cfg = DUAL_MODEL if has_dual else f"sarvam:{CONVERSATIONS_MODEL}"
 
@@ -169,34 +187,41 @@ async def draft_challenges(
 
     provider = build_provider(provider_cfg)
     system = _SYSTEM_PROMPT.format(
-        n=max(1, int(n)),
         allowed=", ".join(band_features) or "(derive freely)",
         register=register,
     )
     user = (
-        f"Write {max(1, int(n))} distinct single-sentence challenges for the "
-        f"{register} register. Exercise: {', '.join(band_features)}. "
-        f"Return a JSON array of exactly {max(1, int(n))} objects."
+        f"Write ONE single-sentence challenge for the {register} register. "
+        f"Exercise: {', '.join(band_features)}. "
+        f'Return ONE JSON object with keys prompt_l1, target_sanskrit, target_iast, features.'
     )
 
     async def _call_once() -> list[dict]:
-        resp = await provider.complete(system, user, json_mode=True, max_tokens=1024)
+        resp = await provider.complete(system, user, json_mode=True, max_tokens=512)
         if not resp.ok:
             raise ValueError(f"challenge draft failed: {resp.error or 'empty response'}")
         return _extract_json_array(resp.text)
 
     drafts: list[dict] = []
-    attempts = 0
-    while attempts < 2:
-        attempts += 1
+    target = max(1, int(n))
+    # Bound the total effort: at most ~3 retries per wanted slot, then keep
+    # whatever genuinely-drafted distinct sentences we have (a partial set is
+    # far better than an infinite loop against a flaky provider).
+    max_calls = target * 3 + 3
+    calls = 0
+    while len(drafts) < target and calls < max_calls:
+        calls += 1
         try:
-            drafts = await _call_once()
+            candidate = await _call_once()
         except ValueError:
-            drafts = []
-        if drafts:
-            break
+            candidate = []
+        if not candidate:
+            if len(drafts) == 0:
+                break
+            continue
+        drafts.extend(candidate)
     if not drafts:
-        raise ValueError(f"draft produced no challenges after {attempts} attempts")
+        raise ValueError("draft produced no usable challenges")
     if cache:
         _cache_store(band_features, register, n, provider_cfg, drafts)
     return drafts
