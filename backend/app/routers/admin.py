@@ -10,6 +10,7 @@ from app.db import get_db
 from app.models import Challenge
 from app.schemas import ChallengeResponse, CreateChallengeRequest
 from app.services.metrics import escape_rate, tts_share, top_escape_nodes
+from app.services.content_well import content_well_report
 
 router = APIRouter()
 
@@ -85,3 +86,18 @@ async def get_metrics(
         "tts_share": tts_share(db, hours=hours),
         "top_escape_nodes": top_escape_nodes(db),
     }
+
+
+@router.get("/admin/content-wells")
+async def get_content_wells(
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Return daily-content-well health (P7-7).
+
+    Per daily surface: rows total, rows remaining, and days of runway before
+    the deterministic cycle repeats; plus approved/pending/rejected scenario
+    counts. ``healthy`` is False when a floor is breached, naming the well —
+    a red test is the mechanism, not an alerting dependency.
+    """
+    return content_well_report(db)
