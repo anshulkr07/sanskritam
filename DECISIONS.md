@@ -177,3 +177,18 @@ Owner ruling after the loop fix landed and the app *still* rejected a correct an
 - **`@react-navigation/drawer` is not installed**; `react-native-gesture-handler` (~2.32.0) and `react-native-reanimated` (4.5.1) already are, so the drawer costs one package. `expo-notifications` is also absent, which is why P13 exists.
 - **Five phases added to close the roadmap to launch, all of which were simply missing.** **P12** the daily-word service (the growth loop's backend, gated on P11-4 — and if the phonetic scoring degrades to exact/present/absent it must not ship, because then it is only a worse Wordle in a language nobody plays it in); **P13** the return loop (a habit product with no notification path at all); **P14** entitlements and subscription (⚠ owner-gated in every particular — and P14-2 writes down the standing ruling that **no hearts, no energy, no meter may ever stop a willing learner**, plus that the daily word is never gated because gating the acquisition loop breaks acquisition); **P15** the verse chain (`श्लोक-अन्त्याक्षरी`, WhatsApp-shaped invites, family streak); **P16** `अवधानम्`, deliberately last.
 - **P16 costs nothing today but constrains two things now:** `session_store` currently assumes one concurrent task, and the scansion and derivation services must stay stateless so several can run at once. Both are free if known now and rewrites if discovered later.
+
+## 2026-09-04 — P7-8 restore + P7-6b corpus (grant spend ₹0)
+
+- **P7-8 — five authored scenarios restored from the authoring cache, at ₹0.**
+  Ran `author_batch --live --limit 5 --replace`; all five briefs hit the on-disk
+  cache (`authoring cache hit` ×5), so no Sarvam grant was spent. DB now holds
+  6 scenarios: the approved seed + five `pending` (अभिवादनम्/परिवारः/भोजनम्/बाजारः/यात्रा),
+  totalling 70 nodes / 100 edges — exactly the authored content lost in the
+  2026-09-03 rebuild. Review packet: `backend/review-p7-8.txt`. `app.db.bak-20260904`
+  taken beforehand. The seven gate failures (market-a ×3, travel-a ×4) flag
+  specific nodes for the human review gate; judgements stay with the owner.
+- **P7-6b — śloka corpus expanded 6 → 96 verses** (Gītā, Hitopadeśa, subhāṣita,
+  Nītiśataka, Pañcatantra), ordered by difficulty. Metre stays engine-derived
+  (`services/chandas.py`), dates stay anchored off `SHLOKA_ANCHOR`; 96 distinct
+  `day_offset` values. No network in tests.
