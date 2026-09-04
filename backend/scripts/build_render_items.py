@@ -35,7 +35,7 @@ if __package__ in (None, ""):  # allow `python scripts/build_render_items.py`
 from sqlalchemy.orm import Session  # noqa: E402
 
 from app.db import SessionLocal  # noqa: E402
-from app.models import DialogueNode, DialogueScenario  # noqa: E402
+from app.models import Challenge, DialogueNode, DialogueScenario  # noqa: E402
 
 
 def build_items(db: Session) -> dict:
@@ -79,6 +79,35 @@ def build_items(db: Session) -> dict:
 
     return {"items": items, "skipped_placeholder": skipped_placeholder,
             "skipped_rendered": skipped_rendered}
+
+
+def build_challenge_items(db: Session, register: str | None = None) -> dict:
+    """Build render items from APPROVED, unrendered challenges (P17-4).
+
+    Reuses the same skip discipline as ``build_items`` (§2.11): already-
+    rendered challenges (non-empty ``audio_url``) are skipped and reported, so
+    a re-run renders nothing new and costs ₹0. Only ``review_status ==
+    "approved"`` challenges are eligible — P7-11's review gate means a pending
+    or rejected sentence is never rendered (a duplicate or a bad sentence is
+    duplicate spend). Emits ``{id, text: target_sanskrit, lang: "sa"}`` so the
+    render pass can write a WAV URL straight back to the Challenge row.
+    """
+    q = db.query(Challenge).filter(Challenge.review_status == "approved")
+    if register:
+        q = q.filter(Challenge.register == register)
+    rows = q.order_by(Challenge.created_at.asc()).all()
+
+    items: list[dict] = []
+    skipped_rendered: list[str] = []
+    for c in rows:
+        text = (c.target_sanskrit or "").strip()
+        if not text:
+            continue
+        if (c.audio_url or "").strip():
+            skipped_rendered.append(c.id)  # re-rendering spends money for nothing
+            continue
+        items.append({"id": c.id, "text": text, "lang": "sa"})
+    return {"items": items, "skipped_rendered": skipped_rendered}
 
 
 def main(argv: list[str] | None = None) -> int:

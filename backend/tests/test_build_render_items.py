@@ -12,9 +12,9 @@ import uuid
 import pytest
 
 from app.db import SessionLocal
-from app.models import DialogueEdge, DialogueNode, DialogueScenario
+from app.models import Challenge, DialogueEdge, DialogueNode, DialogueScenario
 
-from scripts.build_render_items import build_items, main
+from scripts.build_render_items import build_challenge_items, build_items, main
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -122,3 +122,70 @@ def test_emitted_ids_are_db_node_ids(tmp_path):
     items = json.loads(out.read_text(encoding="utf-8"))
     assert any(it["id"] == node_id for it in items), \
         "item id must be the DB node id for the render pass to write back"
+
+
+# ─── P17-4: challenge render items ──────────────────────────────────────────
+
+def _challenge(db, target, status="approved", register="laukika", audio_url=""):
+    c = Challenge(
+        id=uuid.uuid4().hex[:16], prompt_l1="Say it.", target_sanskrit=target,
+        features=["NOM.SG"], register=register, review_status=status,
+        accepted_parses=[{"bāla": "NOM.SG"}], audio_url=audio_url,
+    )
+    db.add(c)
+    db.flush()
+    return c
+
+
+def _cleanup(db, ids):
+    if ids:
+        db.query(Challenge).filter(Challenge.id.in_(ids)).delete(synchronize_session=False)
+        db.commit()
+
+
+def test_challenge_builder_emits_approved_unrendered_only():
+    """P17-4: only approved, unrendered challenges are emitted; pending /
+    rendered / rejected are excluded. Second run emits nothing new (₹0)."""
+    db = SessionLocal()
+    ids = []
+    try:
+        ok = _challenge(db, "बालः वनं गच्छति", "approved")
+        ids.append(ok.id)
+        _challenge(db, "सीता फलं खादति", "pending")
+        _challenge(db, "नरः जलं पिबति", "rejected")
+        rendered = _challenge(db, "अश्वः ग्रामं गच्छति", "approved",
+                              audio_url="https://cd/x.wav")
+        ids.append(rendered.id)
+        db.commit()
+
+        plan = build_challenge_items(db)
+        texts = {it["text"] for it in plan["items"]}
+        assert ok.target_sanskrit in texts, "approved unrendered challenge emitted"
+        assert "सीता फलं खादति" not in texts, "pending challenge excluded"
+        assert "नरः जलं पिबति" not in texts, "rejected challenge excluded"
+        assert rendered.target_sanskrit not in texts, \
+            "already-rendered challenge excluded (no duplicate spend)"
+        assert rendered.id in plan["skipped_rendered"]
+        assert all(set(it) == {"id", "text", "lang"} for it in plan["items"])
+        assert all(it["lang"] == "sa" for it in plan["items"])
+    finally:
+        _cleanup(db, ids)
+        db.close()
+
+
+def test_challenge_builder_second_run_emits_zero():
+    """A rendered challenge is never re-emitted: putting it in a second pass
+    costs ₹0 (P17-4's no-duplicate-spend rule)."""
+    db = SessionLocal()
+    ids = []
+    try:
+        c = _challenge(db, "बालः पुस्तकं पठति", "approved", audio_url="/audio/c.wav")
+        ids.append(c.id)
+        db.commit()
+        plan = build_challenge_items(db)
+        assert all(it["id"] != c.id for it in plan["items"]), \
+            "an already-rendered challenge must not be re-emitted"
+        assert c.id in plan["skipped_rendered"]
+    finally:
+        _cleanup(db, ids)
+        db.close()
