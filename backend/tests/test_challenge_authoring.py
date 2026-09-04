@@ -141,7 +141,7 @@ def test_insert_pass_skips_duplicate_target_register(client):
     a generated draft may legitimately collide."""
     db = SessionLocal()
     try:
-        good = dict(GOOD, target_sanskrit="सीता फलं खादति", target_iast="sītā phalaṃ khādati")
+        good = dict(GOOD, target_sanskrit="नरः पुस्तकं पठति", target_iast="naraḥ pustakaṃ paṭhati")
         gated = svc.gate_challenge(good)
         assert gated["gate"] == "pass"
         cid, first = svc.insert_pass(db, {**good, "accepted_parses": gated["accepted_parses"]})
