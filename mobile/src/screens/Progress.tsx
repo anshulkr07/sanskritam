@@ -6,7 +6,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, {
@@ -15,7 +15,7 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
-import { api } from "../api/client";
+import { api, type ProgressDaily, type ProgressDay, type ProgressStreak } from "../api/client";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
 import type { TabScreenProps } from "../navigation/types";
@@ -140,11 +140,86 @@ function CodeSwitchDial({
   );
 }
 
+// ── Streak calendar (U3-2 / U9-2) ────────────────────────────────────
+// A wrap grid of the last 35 learner-local days from /progress/history.
+// Colour is never the only signal: every cell shows its day number and reads
+// its state aloud for the screen reader (§U5-3).
+
+function StreakCalendar({ days }: { days: ProgressDay[] }) {
+  const byDate = new Map(days.map((d) => [d.date, d]));
+  const cells: { date: string; day: string; active: boolean; goal: boolean; isToday: boolean }[] = [];
+  const today = new Date();
+  for (let i = 34; i >= 0; i--) {
+    const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const rec = byDate.get(key);
+    cells.push({
+      date: key,
+      day: String(d.getDate()),
+      active: !!rec && rec.xp > 0,
+      goal: !!rec && rec.goal_met,
+      isToday: i === 0,
+    });
+  }
+
+  return (
+    <View style={styles.calGrid}>
+      {cells.map((c) => (
+        <View
+          key={c.date}
+          accessibilityLabel={`${c.date}, ${c.active ? (c.goal ? "goal met" : "practice done") : "no practice"}`}
+          style={[
+            styles.calCell,
+            c.active && styles.calCellActive,
+            c.goal && styles.calCellGoal,
+            c.isToday && styles.calCellToday,
+          ]}
+        >
+          <Text style={[styles.calDay, c.active && styles.calDayActive]}>{c.day}</Text>
+        </View>
+      ))}
+    </View>
+  );
+}
+
 // ── Main screen ───────────────────────────────────────────────────────
 
 export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
   const { learner, refresh } = useAuth();
   const [bumping, setBumping] = useState(false);
+  // ── U9-2: real progress data (was /me-only) ──
+  const [daily, setDaily] = useState<ProgressDaily | null>(null);
+  const [streak, setStreak] = useState<ProgressStreak | null>(null);
+  const [history, setHistory] = useState<ProgressDay[]>([]);
+  const [repairing, setRepairing] = useState(false);
+  const [repairMsg, setRepairMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    api.progressDaily().then(setDaily).catch(() => {});
+    api.progressStreak().then(setStreak).catch(() => {});
+    api.progressHistory(35).then(setHistory).catch(() => {});
+  }, []);
+
+  const repair = useCallback(async () => {
+    if (repairing || (streak?.freezes ?? 0) <= 0) return;
+    haptics.press();
+    setRepairing(true);
+    setRepairMsg(null);
+    try {
+      const res = await api.progressRepair();
+      setRepairMsg(
+        res.repaired
+          ? `Streak saved — now ${res.streak}. ${res.freezes_remaining} freeze ${res.freezes_remaining === 1 ? "left" : "s left"}.`
+          : "No freezes left to use.",
+      );
+      setStreak((s) => (s ? { ...s, streak: res.streak, freezes: res.freezes_remaining } : s));
+      await refresh();
+    } catch {
+      setRepairMsg("Repair failed. Try again.");
+    } finally {
+      setRepairing(false);
+    }
+  }, [repairing, streak, refresh]);
 
   if (!learner) {
     return (
@@ -206,6 +281,54 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           sanskritRatio={learner.sanskrit_ratio || 0}
           sanskritRatioSetting={learner.sanskrit_ratio || 0}
         />
+
+        {/* Daily goal — real progress, not a bare number (U9-2) */}
+        {daily && (
+          <View style={styles.dialCard}>
+            <Text style={styles.dialTitle}>Today's goal</Text>
+            <View style={styles.dialTrack}>
+              <View
+                style={{
+                  height: 12,
+                  borderRadius: 6,
+                  backgroundColor: color.saffron,
+                  width: `${Math.min(100, daily.goal_xp ? (daily.xp / daily.goal_xp) * 100 : 0)}%`,
+                }}
+              />
+            </View>
+            <Text style={styles.dialHint}>
+              {daily.xp} / {daily.goal_xp} XP {daily.goal_met ? "· goal met ✓" : ""}
+            </Text>
+          </View>
+        )}
+
+        {/* Streak calendar — real activity history (U3-2 / U9-2) */}
+        <Text style={styles.sectionTitle}>Last 35 days</Text>
+        <StreakCalendar days={history} />
+
+        {/* Freeze / repair — explained BEFORE it fires (U3-2 / P13-3) */}
+        <View style={styles.dialCard}>
+          <View style={styles.dialRow}>
+            <Ionicons name="shield-outline" size={18} color={color.saffron} />
+            <Text style={styles.dialTitle}>Streak freezes</Text>
+            <Text style={styles.freezeCount}>{streak?.freezes ?? 0} / {streak?.max_freezes ?? 2}</Text>
+          </View>
+          <Text style={styles.dialHint}>
+            A missed day can be repaired within 48 hours using one freeze. You have these before you ever
+            need them — a streak that breaks silently is the one thing this app won't do.
+          </Text>
+          <Pressable
+            onPress={repair}
+            disabled={repairing || (streak?.freezes ?? 0) <= 0}
+            style={[styles.repairBtn, (streak?.freezes ?? 0) <= 0 && styles.repairBtnDisabled]}
+            accessibilityRole="button"
+            accessibilityLabel="Use a streak freeze"
+            accessibilityState={{ disabled: (streak?.freezes ?? 0) <= 0, busy: repairing }}
+          >
+            <Text style={styles.repairBtnText}>{repairing ? "Repairing…" : "Use a freeze"}</Text>
+          </Pressable>
+          {repairMsg && <Text style={styles.dialHint}>{repairMsg}</Text>}
+        </View>
 
         {/* Script ratio dial */}
         <View style={styles.dialCard}>
@@ -289,6 +412,18 @@ const styles = StyleSheet.create({
   dialBtnText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.white },
   dialTrack: { height: 10, borderRadius: 5, backgroundColor: color.border, overflow: "hidden" },
   dialHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.sm },
+  // ── U9-2: freezes + calendar ──
+  freezeCount: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
+  repairBtn: { alignSelf: "flex-start", backgroundColor: color.saffron, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: 10, marginTop: space.sm, ...shadow.button },
+  repairBtnDisabled: { backgroundColor: color.inkFaint },
+  repairBtnText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.white },
+  calGrid: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: space.xs },
+  calCell: { width: "13.2%", aspectRatio: 1, alignItems: "center", justifyContent: "center", backgroundColor: color.surfaceMuted, borderRadius: 6 },
+  calCellActive: { backgroundColor: color.okBg, borderWidth: 1, borderColor: color.ok },
+  calCellGoal: { borderWidth: 2, borderColor: color.saffron },
+  calCellToday: { borderWidth: 1, borderColor: color.ink },
+  calDay: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
+  calDayActive: { color: color.okText },
   langBar: { height: 16, borderRadius: 8, backgroundColor: color.border, overflow: "visible", position: "relative", marginBottom: space.xs },
   langBarFill: { height: 16, borderRadius: 8, position: "absolute", left: 0, top: 0 },
   langBarMarker: { position: "absolute", top: -4, width: 3, height: 24, backgroundColor: color.ink, borderRadius: 1.5 },
