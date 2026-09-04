@@ -6,7 +6,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useState } from "react";
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, {
   Easing,
@@ -23,6 +23,7 @@ import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState } from "../components/ui";
+import { Skeleton, SkeletonGroup } from "../components/Skeleton";
 
 // ── Metre rhythm visualization ────────────────────────────────────────
 
@@ -107,14 +108,39 @@ function AnimatedWord({
 
 // ── Main screen ───────────────────────────────────────────────────────
 
+// Skeleton preview of the manuscript: source line, verse card, and the word
+// breakdown list — holds screen shape while the daily verse loads (U9-4).
+function ShlokaSkeleton() {
+  return (
+    <>
+      <Skeleton width={140} height={14} radius={radius.sm} style={{ marginBottom: space.md }} />
+      <View style={styles.verseCard}>
+        <Skeleton height={26} width="92%" />
+        <Skeleton height={26} width="72%" style={{ marginTop: 8 }} />
+        <Skeleton height={26} width="82%" style={{ marginTop: 8 }} />
+        <Skeleton height={16} width="45%" style={{ marginTop: space.sm }} />
+      </View>
+      <View style={{ marginTop: space.lg }}>
+        <SkeletonGroup count={5} height={52} radius={radius.md} />
+      </View>
+    </>
+  );
+}
+
 export default function ShlokaScreen() {
   const [shloka, setShloka] = useState<Shloka | null>(null);
+  const [loading, setLoading] = useState(true);
   const [speaking, setSpeaking] = useState(false);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    api.todayShloka().then(setShloka).catch(() => setShloka(null));
+    setLoading(true);
+    api
+      .todayShloka()
+      .then(setShloka)
+      .catch(() => setShloka(null))
+      .finally(() => setLoading(false));
   }, []);
 
   const play = useCallback(async () => {
@@ -141,6 +167,16 @@ export default function ShlokaScreen() {
   // Animate verse lines unfurling (splitting on newlines or sentence boundaries)
   const lines = shloka?.devanagari?.split(/\n|।\s*/).filter(Boolean) ?? [];
 
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <ScrollView contentContainerStyle={styles.body}>
+          <ShlokaSkeleton />
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
   if (!shloka) {
     return (
       <SafeAreaView style={styles.safe}>
@@ -162,7 +198,7 @@ export default function ShlokaScreen() {
           <Text style={styles.source}>{shloka.source_ref}</Text>
           <Pressable onPress={play} style={styles.playBtn} disabled={speaking}>
             {speaking ? (
-              <ActivityIndicator color={color.white} size="small" />
+              <Ionicons name="hourglass-outline" size={22} color={color.white} />
             ) : (
               <Ionicons name="volume-high" size={22} color={color.white} />
             )}

@@ -11,7 +11,6 @@
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
-  ActivityIndicator,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -23,6 +22,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type DailyWordTile } from "../api/client";
 import VarnaGrid from "../components/VarnaGrid";
+import { Skeleton } from "../components/Skeleton";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
@@ -129,7 +129,7 @@ export default function DailyWordScreen({ navigation }: Props) {
         <Text style={styles.subtitle}>Daily word · scored on the mouth-map grid</Text>
 
         {status === "loading" ? (
-          <ActivityIndicator color={color.saffron} size="large" style={{ marginTop: space.xxl }} />
+          <DailyWordSkeleton />
         ) : status === "no_word" ? (
           <Text style={styles.muted}>No word available today. Check back soon.</Text>
         ) : (
@@ -183,7 +183,7 @@ export default function DailyWordScreen({ navigation }: Props) {
                   accessibilityLabel="Submit guess"
                 >
                   {busy ? (
-                    <ActivityIndicator color={color.white} size="small" />
+                    <Ionicons name="hourglass-outline" size={22} color={color.white} />
                   ) : (
                     <Ionicons name="arrow-forward" size={22} color={color.white} />
                   )}
@@ -210,6 +210,24 @@ function LegendItem({ color: c, label }: { color: string; label: string }) {
     <View style={styles.legendItem}>
       <View style={[styles.legendSwatch, { backgroundColor: c }]} />
       <Text style={styles.legendLabel}>{label}</Text>
+    </View>
+  );
+}
+
+// Skeleton preview of the puzzle: a guess grid + a clue bar, so the screen
+// holds its shape (no layout shift) while the daily word loads (U9-4).
+function DailyWordSkeleton() {
+  const tile = { width: 36, height: 44, radius: radius.sm };
+  return (
+    <View style={{ marginTop: space.xl, gap: space.sm }}>
+      {[0, 1, 2, 3].map((r) => (
+        <View key={r} style={{ flexDirection: "row", gap: 6 }}>
+          {[0, 1, 2, 3, 4].map((c) => (
+            <Skeleton key={c} {...tile} />
+          ))}
+        </View>
+      ))}
+      <Skeleton height={18} width="60%" style={{ marginTop: space.sm }} />
     </View>
   );
 }
