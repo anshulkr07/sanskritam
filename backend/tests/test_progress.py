@@ -144,6 +144,53 @@ def test_streak_default_is_zero_for_new_learner(client):
     assert r.json()["streak"] == 0
 
 
+# ─── U9-2: History endpoint for the streak calendar ─────
+
+def test_history_requires_auth(client):
+    r = client.get("/progress/history")
+    assert r.status_code == 401
+
+
+def test_history_empty_for_new_learner(client):
+    headers, lid = _login(client, "history-new")
+    r = client.get("/progress/history", headers=headers)
+    assert r.status_code == 200
+    assert r.json() == []
+
+
+def test_history_reflects_recorded_activity(client):
+    """A seeded DailyActivity row shows up in the calendar feed."""
+    headers, lid = _login(client, "history-seeded")
+    from app.db import SessionLocal
+    from app.models import DailyActivity
+    db = SessionLocal()
+    try:
+        day = "2026-09-01"
+        db.add(DailyActivity(learner_id=lid, date=day, xp=35, attempts=2, goal_met=True))
+        db.commit()
+    finally:
+        db.close()
+    r = client.get("/progress/history?days=35", headers=headers)
+    assert r.status_code == 200
+    body = r.json()
+    assert any(d["date"] == day and d["xp"] == 35 and d["goal_met"] for d in body)
+
+
+def test_history_window_bounds_activity(client):
+    """Rows outside the requested window are not returned."""
+    headers, lid = _login(client, "history-window")
+    from app.db import SessionLocal
+    from app.models import DailyActivity
+    db = SessionLocal()
+    try:
+        db.add(DailyActivity(learner_id=lid, date="2020-01-01", xp=1))
+        db.commit()
+    finally:
+        db.close()
+    r = client.get("/progress/history?days=35", headers=headers)
+    assert r.json() == [], "pre-window rows must be excluded"
+
+
 # ─── P5: Storage abstraction ──────────────────────────
 
 def test_storage_store_and_exists(tmp_path):

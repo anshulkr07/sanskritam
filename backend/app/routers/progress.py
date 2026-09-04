@@ -1,8 +1,9 @@
 """Progress endpoints: daily activity, XP, streaks."""
 
 import logging
+from datetime import date, timedelta
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -14,6 +15,40 @@ from app.services.localtime import learner_today
 logger = logging.getLogger("shabd.progress")
 
 router = APIRouter(prefix="/progress")
+
+
+@router.get("/history")
+async def get_progress_history(
+    days: int = Query(35, ge=1, le=90),
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """Recent per-day activity rows, for the streak calendar (UI U9-2 / U3-2).
+
+    Days are learner-local (§2.8 — never server UTC) and returned oldest-first.
+    Only days with any recorded activity appear as rows; the calendar fills the
+    gaps itself so an empty day is never confused with a missing one.
+    """
+    today = date.fromisoformat(learner_today(learner))
+    cutoff = (today - timedelta(days=days - 1)).isoformat()
+    rows = (
+        db.query(DailyActivity)
+        .filter(
+            DailyActivity.learner_id == learner.id,
+            DailyActivity.date >= cutoff,
+        )
+        .order_by(DailyActivity.date.asc())
+        .all()
+    )
+    return [
+        {
+            "date": r.date,
+            "xp": r.xp,
+            "attempts": r.attempts,
+            "goal_met": r.goal_met,
+        }
+        for r in rows
+    ]
 
 
 @router.get("/daily")
