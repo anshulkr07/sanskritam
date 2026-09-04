@@ -143,6 +143,37 @@ def test_shloka_metre_is_engine_derived(client):
         db.close()
 
 
+def test_first_boot_seeds_daily_words(client):
+    """P7-9: a fresh database seeds all daily words on the FIRST boot.
+
+    Regression: run_seed's first-seed branch skipped ``seed_daily_words``, so
+    a newly created DB started with zero daily words until its second boot —
+    the exact state the 2026-09-03 rebuild produced. The conftest DB is a
+    genuine first boot here (init_db + run_seed on an empty temp file), so if
+    the daily-word well is empty the seed path is broken again.
+    """
+    from app.db import SessionLocal
+    from app.models import DailyWord
+    from app.seeds.daily_words import _CURATED
+    from app.seeds.seed import run_seed
+
+    expected = len(_CURATED)
+    db = SessionLocal()
+    try:
+        first_boot = db.query(DailyWord).count()
+        assert first_boot == expected, (
+            f"first boot seeded {first_boot} daily words, expected {expected}"
+        )
+        # A second boot adds none (the seed is idempotent).
+        run_seed()
+        second_boot = db.query(DailyWord).count()
+        assert second_boot == expected, (
+            f"second boot changed daily-word count: {first_boot} -> {second_boot}"
+        )
+    finally:
+        db.close()
+
+
 def test_seed_content_volume(client):
     r = client.get("/admin/challenges", headers={"X-Admin-Token": "test-admin"})
     assert r.status_code == 200

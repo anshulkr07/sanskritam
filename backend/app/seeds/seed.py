@@ -19,23 +19,18 @@ _SEEDED_KEY = "_seeded_v1"
 
 
 def run_seed():
-    """Idempotent seed: run once per database, refill content every boot."""
+    """Idempotent seed: run once per database, refill content every boot.
+
+    Every content seed below is self-idempotent — each checks for existing
+    rows and skips — so they all run unconditionally on every startup. There
+    is deliberately a single code path and no first-run-only branch: a
+    surface that must keep filling (daily word, śloka, dialogue, challenges)
+    can never be skipped because the seeder took a different path. This is
+    P7-9 — daily words were once only seeded on the already-seeded branch,
+    so a fresh database started with zero daily words until its second boot.
+    """
     db = SessionLocal()
     try:
-        # Check if already seeded using a simple sentinel
-        existing_features = db.query(Feature).count()
-        if existing_features > 10:
-            logger.info("Database already seeded (%d features found)", existing_features)
-            # Content added after the first seed still needs a pass: each of
-            # these is self-idempotent, so run them on every startup. The
-            # śloka well is seeded unconditionally too (P7-6) — a daily
-            # surface must be able to refill, never just on the first seed.
-            seed_dialogue(db)
-            seed_daily_words(db)
-            _seed_shlokas(db)
-            db.commit()
-            return
-
         # Seed features
         _seed_features(db)
 
@@ -47,6 +42,9 @@ def run_seed():
 
         # Seed dialogue scenario
         seed_dialogue(db)
+
+        # Seed daily words
+        seed_daily_words(db)
 
         db.commit()
         logger.info("Database seeded successfully")
