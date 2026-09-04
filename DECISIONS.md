@@ -214,3 +214,24 @@ array, so drafting switched to one challenge per call (matches the ₹0.0055/cal
 cost model) with a bounded retry. Challenge cache key includes the prompt hash,
 so a prompt change invalidates stale drafts — a replay of an identical brief
 stays ₹0.
+
+## 2026-09-05 — P7-12 dual pass rate measured live, per provider
+
+Ran the focused challenge-band catalogue (`CHALLENGE_BANDS`, 20 bands × Sarvam
+laukika/classical + dual-to-Gemini) at --per-group 6 (smoke, ~₹0.66). Result:
+
+- **Dual→Gemini pass rate: 100% (30/30)**. The §2.6 dual-over-OpenRouter/Gemini
+  path — which P7-4 §4.3 noted had NEVER produced a challenge — now produces and
+  passes at 100%. The routing rule is confirmed in practice, not assumed.
+- **Sarvam pass rate: 74% (67/90)** on the same gate. The rule holds: duals to
+  Gemini, everything else to Sarvam.
+- 56 NEW distinct challenges inserted; 41 duplicate-skips (idempotent by
+  (target,register)); 23 to backlog.
+- `cl-gen-pl` (classical GEN.PL) passed 0/6 — a Sarvam clause-generation miss,
+  noted for a future band or provider routing.
+
+Coal-mine conclusion: the case+tense+person features the analyzer derives
+(GEN.PL, LOC.PL, PRES.2PL, IMP.2SG, INSTR/DAT/ABL.SG, the DU forms) are all
+reachable. Gender (MASC/FEM/NEUT), voice, bare number, and the four sandhi tags
+are NOT derivable by Vidyut (frozen, §2.1) — they stay out of the gate and are
+a coverage ceiling, not a generation defect.

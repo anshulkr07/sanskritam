@@ -84,3 +84,45 @@ for band in FEATURE_BANDS:
         if band.get("prefer_provider"):
             brief["prefer_provider"] = band["prefer_provider"]
         SCENARIO_BRIEFS.append(brief)
+
+
+# ── P7-12: focused challenge bands ─────────────────────────────────────────
+#
+# The scenario bands above are cumulative supersets, so a generator drifts to
+# the easiest readings (NOM/ACC/PRES.3SG) and the lopsided coverage of §4
+# results. The challenge pool needs NARROW bands that force one under-covered
+# feature per sentence, so adaptive.py has something to select at each feature's
+# mastery edge.
+#
+# Only features the Vidyut analyzer can actually DERIVE belong here — the gate
+# rejects a claim it cannot verify. The analyzer's vocabulary is case+number and
+# tense+person+number strings (NOM.PL, GEN.PL, PRES.2PL, IMP.2SG, ...). It emits
+# nothing for gender (MASC/FEM/NEUT), voice (ATMANEPADA/PARASMAIPADA), bare
+# number (SG/DU/PL), or the sandhi type tags; those are a frozen-analyzer
+# coverage gap (§2.1) and are escalated, not forced here.
+#
+# Dual-bearing bands route to Gemini per §2.6 (Sarvam false-accuses ~50% of
+# duals) and their pass rate is reported separately.
+CHALLENGE_BANDS: list[dict] = [
+    {"name": "gen-pl",  "features": ["GEN.PL", "NOM.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "loc-pl",  "features": ["LOC.PL", "NOM.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "pres-2pl","features": ["PRES.2PL", "ACC.SG"], "register": "laukika", "prefer_provider": ""},
+    {"name": "imp-2sg", "features": ["IMP.2SG", "VOC.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "pres-1pl", "features": ["PRES.1PL", "ACC.SG"], "register": "laukika", "prefer_provider": ""},
+    {"name": "instr-sg", "features": ["INSTR.SG", "NOM.SG"], "register": "laukika", "prefer_provider": ""},
+    {"name": "dat-sg",  "features": ["DAT.SG", "ACC.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "abl-sg",  "features": ["ABL.SG", "NOM.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "gen-sg",  "features": ["GEN.SG", "NOM.SG"], "register": "laukika",  "prefer_provider": ""},
+    {"name": "nom-pl",  "features": ["NOM.PL", "PRES.3PL"], "register": "laukika", "prefer_provider": ""},
+    {"name": "acc-pl",  "features": ["ACC.PL", "PRES.1SG"], "register": "laukika", "prefer_provider": ""},
+    {"name": "pres-1du", "features": ["PRES.1DU", "ACC.SG"], "register": "laukika", "prefer_provider": "gemini"},
+    {"name": "pres-2du", "features": ["PRES.2DU", "ACC.SG"], "register": "laukika", "prefer_provider": "gemini"},
+    {"name": "acc-du",  "features": ["ACC.DU", "NOM.SG"], "register": "laukika",  "prefer_provider": "gemini"},
+    # classical-register companions so both vocabularies advance
+    {"name": "cl-gen-pl", "features": ["GEN.PL", "NOM.SG"], "register": "classical", "prefer_provider": ""},
+    {"name": "cl-loc-pl", "features": ["LOC.PL", "NOM.SG"], "register": "classical", "prefer_provider": ""},
+    {"name": "cl-pres-2pl", "features": ["PRES.2PL", "ACC.SG"], "register": "classical", "prefer_provider": ""},
+    {"name": "cl-imp-2sg", "features": ["IMP.2SG", "VOC.SG"], "register": "classical", "prefer_provider": ""},
+    {"name": "cl-pres-1du", "features": ["PRES.1DU", "ACC.SG"], "register": "classical", "prefer_provider": "gemini"},
+    {"name": "cl-acc-du", "features": ["ACC.DU", "NOM.SG"], "register": "classical", "prefer_provider": "gemini"},
+]

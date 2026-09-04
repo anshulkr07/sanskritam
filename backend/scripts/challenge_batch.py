@@ -24,7 +24,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from app.config import settings
-from app.seeds.briefs import FEATURE_BANDS
+from app.seeds.briefs import CHALLENGE_BANDS
 from app.services.challenge_authoring import author_challenge_batch
 
 logger = logging.getLogger("shabd.challenge_batch")
@@ -33,10 +33,13 @@ COST_PER_LLM_CALL = 0.0055
 
 
 def build_groups(limit: int = 0):
-    groups = []
-    for band in FEATURE_BANDS:
-        for register in ("laukika", "classical"):
-            groups.append((band["name"], band["features"], register))
+    """The P7-12 focused band catalogue — each band already carries its register,
+    so no cross-product with the scenario FEATURE_BANDS is needed. Each is a
+    NARROW band forcing one under-covered feature (dual routes to Gemini)."""
+    groups = [
+        (band["name"], band["features"], band["register"], band.get("prefer_provider", ""))
+        for band in CHALLENGE_BANDS
+    ]
     if limit > 0:
         groups = groups[:limit]
     return groups
@@ -83,7 +86,11 @@ def main():
     total_drafted = 0
     total_passed = 0
     total_failed = 0
-    for idx, (band_name, features, register) in enumerate(groups, 1):
+    # Per-provider pass-rate split (§2.6 / P7-12 step 2): report the dual→Gemini
+    # band pass rate separately so the routing rule is on record, not assumed.
+    gemini = {"gated": 0, "passed": 0}
+    sarvam = {"gated": 0, "passed": 0}
+    for idx, (band_name, features, register, provider) in enumerate(groups, 1):
         res = author_challenge_batch(features, register, per_group, dry_run=False)
         total_drafted += res["n_gated"]
         total_passed += res["n_passed"]
@@ -91,10 +98,13 @@ def main():
         total_inserted += res["n_inserted"]
         total_distinct_new += res["n_distinct_new"]
         total_skipped_dup += res["n_skipped_dup"]
+        bucket = gemini if provider == "gemini" else sarvam
+        bucket["gated"] += res["n_gated"]
+        bucket["passed"] += res["n_passed"]
         pass_rate = round(res["n_passed"] / max(1, res["n_gated"]) * 100)
         print(f"  [{idx}/{len(groups)}] band={band_name} register={register:9s} "
-              f"target={per_group:3d} gated={res['n_gated']:3d} "
-              f"passed={res['n_passed']:3d} ({pass_rate}%) "
+              f"provider={provider or 'sarvam':9s} target={per_group:3d} "
+              f"gated={res['n_gated']:3d} passed={res['n_passed']:3d} ({pass_rate}%) "
               f"NEW distinct={res['n_distinct_new']} dup skipped={res['n_skipped_dup']}")
 
     print("\n" + "=" * 60)
@@ -113,6 +123,10 @@ def main():
               "\n    content until the band catalogue (P7-12) is extended or slots shift.")
     rate = round(total_passed / max(1, total_drafted) * 100)
     print(f"  Overall pass rate: {rate}%")
+    gem_rate = round(gemini["passed"] / max(1, gemini["gated"]) * 100)
+    srv_rate = round(sarvam["passed"] / max(1, sarvam["gated"]) * 100)
+    print(f"  Dual→Gemini pass rate: {gem_rate}% ({gemini['passed']}/{gemini['gated']})")
+    print(f"  Sarvam     pass rate: {srv_rate}% ({sarvam['passed']}/{sarvam['gated']})")
     print("=" * 60)
 
 

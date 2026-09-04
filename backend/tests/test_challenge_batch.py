@@ -63,12 +63,20 @@ def test_estimate_printed():
     from scripts.challenge_batch import build_groups
     groups = build_groups(limit=2)
     assert len(groups) == 2
-    # Each group is (band_name, features, register).
-    assert all(len(g) == 3 for g in groups)
+    # Each group is (band_name, features, register, provider).
+    assert all(len(g) == 4 for g in groups)
 
 
 def test_limit_respected():
     """--limit reduces the number of briefs processed."""
-    from scripts.challenge_batch import FEATURE_BANDS
-    # FEATURE_BANDS has 5 entries, times 2 registers = 10
-    assert len(FEATURE_BANDS) == 5
+    from scripts.challenge_batch import CHALLENGE_BANDS
+    assert len(CHALLENGE_BANDS) == 20
+
+
+def test_dual_bands_carry_gemini_provider():
+    """Every dual-bearing band is routed to Gemini (§2.6)."""
+    from scripts.challenge_batch import CHALLENGE_BANDS
+    for band in CHALLENGE_BANDS:
+        has_dual = any("DU" in f for f in band["features"])
+        if has_dual:
+            assert band.get("prefer_provider") == "gemini", band["name"]
