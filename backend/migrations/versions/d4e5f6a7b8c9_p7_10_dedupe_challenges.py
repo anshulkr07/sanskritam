@@ -34,20 +34,24 @@ def _dedupe_keep_oldest(conn) -> int:
     """Delete duplicate challenges, keeping the oldest row per (text, register).
 
     ``min(rowid)`` under a GROUP BY selects the earliest inserted row for each
-    target — ties resolved by insertion order. Rows already referenced by a
-    learner attempt are never deleted (an attempt pins its challenge).
+    target — ties resolved by insertion order. We delete by ROWID (SQLite's
+    integer insertion key), never by the text ``id`` column: comparing the text
+    UUID ``id`` against an integer ``rowid`` would never match and delete
+    EVERY row. Rows a learner attempt references are pinned (``NOT EXISTS``),
+    so a duplicated sentence a learner already met survives the dedupe.
     """
     before = conn.execute(sa.text("SELECT count(*) FROM challenges")).scalar()
     conn.execute(
         sa.text(
             """
             DELETE FROM challenges
-            WHERE id NOT IN (
-                SELECT id FROM (
-                    SELECT MIN(rowid) AS id
-                    FROM challenges
-                    GROUP BY target_sanskrit, register
-                )
+            WHERE rowid NOT IN (
+                SELECT MIN(rowid)
+                FROM challenges
+                GROUP BY target_sanskrit, register
+            )
+            AND id NOT IN (
+                SELECT challenge_id FROM attempts WHERE challenge_id IS NOT NULL
             )
             """
         )
