@@ -35,7 +35,7 @@ import {
 } from "../api/client";
 import TutorAvatar, { type AvatarState } from "../components/TutorAvatar";
 import { haptics } from "../services/haptics";
-import { bulbulLangCode, speak } from "../services/speech";
+import { bulbulLangCode, playTutorAudio } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
 
 // expo-audio — import unconditionally; hooks must always be called.
@@ -122,9 +122,9 @@ export default function ConversationScreen() {
           iast: s.node.iast || undefined,
           bridge: s.node.gloss || undefined,
         }]);
-        // Auto-play the tutor's opening line.
+        // Auto-play the tutor's opening line (pre-rendered if this node has one).
         setIsSpeaking(true);
-        speak(tutorText, nodeLang(s.node), 1.0, () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+        playTutorAudio(s.node.audio_url || "", tutorText, nodeLang(s.node), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
       } catch {
         setMsgs([{ role: "tutor", text: "I couldn't reach the tutor. Is the backend running?", meta: "error" }]);
       }
@@ -200,7 +200,8 @@ export default function ConversationScreen() {
             // Free: the client already holds the line. No model, no request.
             if (line) {
               setIsSpeaking(true);
-              speak(line, nodeLang(t.node ?? node!), 1.0, () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+              const n = t.node ?? node;
+              playTutorAudio(n?.audio_url || "", line, nodeLang(n!), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
             }
             setMsgs((m) => [...m, { role: "aside", text: "Once more…", meta: "aside" }]);
           } else {
@@ -237,7 +238,7 @@ export default function ConversationScreen() {
             },
           ]);
           setIsSpeaking(true);
-          speak(tm, nodeLang(next), 1.0, () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+          playTutorAudio(next.audio_url || "", tm, nodeLang(next), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
 
           // Flash avatar reaction based on verdict
           if (t.verdict && !t.escape) {
@@ -459,7 +460,7 @@ export default function ConversationScreen() {
             haptics.tap();
             if (node) {
                setIsSpeaking(true);
-               speak(node.devanagari || node.gloss, nodeLang(node), 1.0, () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+               playTutorAudio(node.audio_url || "", node.devanagari || node.gloss, nodeLang(node), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
             }
           }}
           style={styles.replay}

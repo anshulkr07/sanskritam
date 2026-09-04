@@ -21,6 +21,7 @@ from app.models import (
     DialogueNode,
     EscapeLog,
     Learner,
+    UsageEvent,
 )
 from app.services.explainer import get_explainer, reply_language
 from app.services.meta_intent import detect_meta_intent
@@ -248,6 +249,20 @@ async def start_conversation(
         .all()
     )
 
+    _record_prerendered_audio(
+        db, learner,
+        NodeOut(
+            id=entry_node.id,
+            kind=entry_node.kind,
+            lang=entry_node.lang,
+            devanagari=entry_node.devanagari,
+            iast=entry_node.iast or "",
+            gloss=entry_node.gloss or "",
+            audio_url=entry_node.audio_url or "",
+            repair_type=entry_node.repair_type,
+        ),
+    )
+
     return StartResponse(
         session_id=session.id,
         scenario=ScenarioDetail(
@@ -347,6 +362,40 @@ def _bridge_lang(learner: Learner) -> str:
     return "hi" if "hi" in (learner.bridge_langs or []) else "en"
 
 
+def _record_prerendered_audio(db: Session, learner: Learner, node: Any | None) -> None:
+    """P17-3: record a pre-rendered-audio serve on the UsageEvent ledger.
+
+    When a turn returns a node that carries a pre-rendered ``audio_url``, the
+    client plays a static file — there is NO vendor call, so there is NO quota
+    — but the metric ``tts_share`` needs to know it happened, otherwise it
+    reports 100% live forever (it only ever saw ``source="live"``). We record
+    ``source="prerendered"`` with the node text length as the *would-be* TTS
+    char count. This is accounting, not metering: it never consumes quota and
+    never touches the learner's stored counter.
+    """
+    if node is None:
+        return
+
+    def _get(model, key: str) -> str:
+        if isinstance(model, dict):
+            return str(model.get(key) or "")
+        return str(getattr(model, key, "") or "")
+
+    if not _get(node, "audio_url").strip():
+        return
+    text = (_get(node, "devanagari") or _get(node, "iast") or "").strip()
+    if not text:
+        return
+    db.add(UsageEvent(
+        learner_id=learner.id,
+        kind="tts_chars",
+        amount=len(text),
+        surface="conversation",
+        source="prerendered",
+    ))
+    db.commit()
+
+
 @router.post("/conversation/turn", response_model=TurnResponse)
 async def submit_turn(
     req: TurnRequest,
@@ -371,6 +420,9 @@ async def submit_turn(
         )
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
+
+    # P17-3: if the next node carries pre-rendered audio, account it (no quota).
+    _record_prerendered_audio(db, learner, result.get("node"))
 
     return TurnResponse(**result)
 

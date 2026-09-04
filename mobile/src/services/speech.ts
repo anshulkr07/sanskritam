@@ -67,4 +67,48 @@ export async function speak(
   };
 }
 
-export default { speak, setPlaybackMode, bulbulLangCode };
+/**
+ * P17-3: play a tutor node's line, preferring the PRE-RENDERED audio_url when
+ * present (zero Sarvam calls, zero quota — it is a static file) and only
+ * falling back to live Bulbul TTS for authored-but-unrendered nodes.
+ *
+ * `url` is the backend's /audio/<path>; the app serves it from the same origin
+ * as BASE_URL. The backend's NodeOut carries audio_url already, so callers pass
+ * it straight through.
+ */
+export async function playTutorAudio(
+  url: string,
+  text: string,
+  lang: "sa" | "hi" | "en" = "sa",
+  onComplete?: () => void,
+): Promise<SpeakHandle> {
+  await setPlaybackMode();
+  if (url && url.trim()) {
+    const { BASE_URL } = await import("../config");
+    // URL may be absolute (production CDN) or relative (/audio/...) — join.
+    const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
+    const player = createAudioPlayer(src);
+    player.play();
+    // Rough duration: ~0.08s per char is close enough for the skip-on-complete
+    // choreography; no TTS round-trip and no explicit duration are available
+    // for a static file.
+    const durationHint = Math.max(1, text.length * 0.08);
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    if (onComplete) {
+      timeoutId = setTimeout(() => onComplete(), durationHint * 1000);
+    }
+    return {
+      stop: async () => {
+        try {
+          if (timeoutId) clearTimeout(timeoutId);
+          player.pause();
+        } catch { /* already ended */ }
+      },
+      durationHint,
+    };
+  }
+  // No pre-rendered audio — live TTS (the P17-2 fallback; still metered).
+  return speak(text, lang, 1.0, onComplete);
+}
+
+export default { speak, playTutorAudio, setPlaybackMode, bulbulLangCode };

@@ -100,6 +100,15 @@ def create_app() -> FastAPI:
     app.include_router(progress_router, tags=["Progress"])
     app.include_router(daily_word_router, tags=["Daily Word"])
 
+    # Serve pre-rendered audio (/audio/<path>) BEFORE the frontend catch-all
+    # mount below so the static WAVs resolve even though the console is mounted
+    # at "/". LocalStorage stores under storage/audio and its url() returns
+    # /audio/<path>, so the client fetches the audio from this origin (§12 /
+    # P17-3). Mount only when the directory exists.
+    _audio_dir = Path("storage/audio")
+    if _audio_dir.is_dir():
+        app.mount("/audio", StaticFiles(directory=str(_audio_dir)), name="audio")
+
     # Serve the web console (frontend/) from the API's own origin when the
     # directory is present.  Kill CORS entirely for the console and give the
     # deployed API a browsable UI.  Mounted LAST so /api, /docs, /health

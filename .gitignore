@@ -44,3 +44,13 @@ backend/fix.py
 backend/test_sarvam*.py
 backend/test_eval_sarvam.py
 backend/debug_empty.py
+
+# Pre-rendered audio assets (P17-2) — generated WAVs cost grant money to make
+# but are large binary build/runtime artifacts; production serves them from
+# object storage (P8-2, owner-gated). Keep the DB + render script in git, not
+# the audio blobs. The render pass is idempotent and re-runs for free on a
+# cache-hit, so nothing is lost by ignoring them.
+backend/storage/
+
+# DB backups taken before seed/migrate/rebuild work (§2.13)
+backend/app.db.bak-*

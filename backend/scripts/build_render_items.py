@@ -64,7 +64,11 @@ def build_items(db: Session) -> dict:
             continue
         seen.add(n.id)
         text = (n.devanagari or "").strip()
-        is_placeholder = (not text) or n.id.endswith("nterm")
+        is_placeholder = (
+            (not text)
+            or n.id.endswith("nterm")
+            or text in ("...", "।।")   # terminal marker nodes
+        )
         if is_placeholder:
             skipped_placeholder.append(n.id)
             continue

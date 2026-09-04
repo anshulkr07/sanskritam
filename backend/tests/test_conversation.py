@@ -472,6 +472,74 @@ def test_valid_but_unexpected_at_sa_node_no_match(client, auth_headers):
     assert d2["verdict"] != "incorrect"
 
 
+def test_prerendered_audio_records_prerendered_and_no_vendor_call(client, auth_headers):
+    """P17-3: a turn/start on a node with audio_url records source='prerendered'
+    on the UsageEvent ledger and issues ZERO vendor calls.
+
+    The edge-router is module-stubbed to fail-if-called (its `route` returns
+    None when `unavailable`, but here we assert it is never consulted at all by
+    checking the stub recorded no calls). Nodes in the test DB carry an
+    audio_url the moment a prerendered scenario is introduced — set one on the
+    entry node and confirm the accounting.
+    """
+    from app.db import SessionLocal
+    from app.models import DialogueNode, DialogueScenario, UsageEvent
+    from app.services.metrics import tts_share
+
+    db = SessionLocal()
+    try:
+        scenario = db.query(DialogueScenario).filter(
+            DialogueScenario.review_status == "approved"
+        ).first()
+        assert scenario is not None
+        entry = db.query(DialogueNode).filter(
+            DialogueNode.id == scenario.entry_node_id
+        ).first()
+        assert entry is not None
+        entry.audio_url = "/audio/dialogue/entry-node.wav"
+        db.commit()
+    finally:
+        db.close()
+
+    # Start the conversation graph — this returns the entry node WITH audio_url.
+    r = client.post("/conversation/start", json={"mode": "graph"}, headers=auth_headers)
+    assert r.status_code == 200, r.text
+    node = r.json()["node"]
+    assert node["audio_url"], "entry node should expose its pre-rendered audio_url"
+    session_id = r.json()["session_id"]
+
+    # The prerendered serve must be recorded, and must NOT consume quota / hit a vendor.
+    db = SessionLocal()
+    try:
+        learner_id = auth_headers["Authorization"].split(" ")[1]
+        # Resolve the learner from the token via the DB.
+        from app.models import Token
+        tok = db.query(Token).filter(Token.id == learner_id).first()
+        assert tok is not None, "test token must resolve"
+        lr = tok.learner
+        ev = db.query(UsageEvent).filter(
+            UsageEvent.learner_id == lr.id,
+            UsageEvent.source == "prerendered",
+        ).count()
+        assert ev >= 1, "start on a prerendered node must record a prerendered event"
+    finally:
+        db.close()
+
+    # And tts_share no longer reports 100% live once prerendered audio is served.
+    db = SessionLocal()
+    try:
+        share = tts_share(db, hours=24)
+    finally:
+        db.close()
+    assert share["prerendered_chars"] > 0, "prerendered chars must be visible to tts_share"
+    assert share["live_share"] < 1.0, "tts_share must move off 100% live after a prerendered serve"
+
+    # Zero vendor calls: a start on a prerendered node never consults the router.
+    assert edge_router_module._singleton.calls == [], (
+        "prerendered audio must not trigger any vendor (router) call"
+    )
+
+
 def test_negation_preempts_affirmative_on_dual_match(client, auth_headers):
     """Regression: an utterance hitting BOTH edge sets routes by negation.
 
