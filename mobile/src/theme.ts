@@ -1,4 +1,4 @@
-// Shabd design system tokens.
+// Sanskritam design system tokens.
 // Light theme only (the product is light — see DECISIONS; user explicitly
 // rejected dark "AI" aesthetics). Duolingo-inspired: warm paper background,
 // a single saturated action color, chunky rounded buttons with solid shadow,

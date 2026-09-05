@@ -2,7 +2,7 @@
 
 ## Context
 
-Shabd (`D:\Projects\Shabd`) backend, FastAPI + SQLAlchemy, Python 3.11, Windows/git-bash, venv `backend/.venv`.
+Sanskritam (`D:\Projects\Shabd`) backend, FastAPI + SQLAlchemy, Python 3.11, Windows/git-bash, venv `backend/.venv`.
 
 Implements **architecture.md §13**. This is the entry surface and it is currently missing entirely: a learner who cannot pronounce त versus ट cannot be graded fairly on anything else, and a diaspora learner who cannot read Devanagari has no way into the app at all.
 

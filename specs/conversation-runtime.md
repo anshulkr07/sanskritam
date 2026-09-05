@@ -2,7 +2,7 @@
 
 ## Context
 
-Shabd (D:\Projects\Shabd) backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv/Scripts/python`. Tests: `cd backend && .venv/Scripts/python -m pytest tests/ -q`.
+Sanskritam (D:\Projects\Shabd) backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv/Scripts/python`. Tests: `cd backend && .venv/Scripts/python -m pytest tests/ -q`.
 
 Conversation = pre-rendered dialogue graph (architecture.md §12). **The live turn is ASR → grade → pick next → cached audio. No LLM in the request path.** Edge matching MUST reuse `backend/app/grading/engine.py::grade_attempt` unchanged — import it, never fork it. Free word order, ambiguity variants, and the abstention rule come for free from that function.
 

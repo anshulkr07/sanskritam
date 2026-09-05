@@ -33,7 +33,9 @@ import {
   type MetaIntent,
   type TurnResponse,
 } from "../api/client";
-import TutorAvatar, { type AvatarState } from "../components/TutorAvatar";
+import { GuruNative, type AvatarStateName as AvatarState } from "../components/guru/GuruNative";
+import { startTimeline, type Timeline } from "../utils/perf";
+import { settledRecordingUri } from "../utils/recording";
 import { haptics } from "../services/haptics";
 import { bulbulLangCode, playTutorAudio } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
@@ -79,8 +81,39 @@ export default function ConversationScreen() {
   const [done, setDone] = useState(false);
   const [recActive, setRecActive] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  // What he is saying right now. viseme.ts reads the mouth shapes straight off
+  // the Devanagari; the duration is the same ~0.08 s/char hint playTutorAudio
+  // uses to time its own completion callback.
+  const [speech, setSpeech] = useState<{ text?: string; durationMs?: number } | null>(null);
   const [verdictStatus, setVerdictStatus] = useState<"correct" | "off_by_one" | "unsure" | null>(null);
   const scrollRef = useRef<ScrollView>(null);
+
+  const speakLine = useCallback((
+    url: string,
+    text: string,
+    lang: "sa" | "hi" | "en",
+    audioBase64?: string,
+    tl?: Timeline,
+  ) => {
+    const done = () => {
+      setIsSpeaking(false);
+      setSpeech(null);
+      // Backstop for the timing report: if the clip never became audible,
+      // onStart never fired and this is the only place left to close the
+      // books. report() is idempotent, so the normal path is unaffected.
+      tl?.report("(never audible)");
+    };
+    // The mouth starts on the audio's first audible sample, not on this call —
+    // loading a remote clip takes a few hundred ms and the lip sync ran that
+    // far ahead of the voice. onStart also hands back the file's real duration,
+    // so the viseme schedule stops drifting on long lines.
+    return playTutorAudio(url || "", text, lang, done, (durationMs) => {
+      setSpeech({ text, durationMs });
+      // The learner's clock stops here: this is the moment they hear a reply.
+      tl?.mark(audioBase64 ? "speak(inline)" : url ? "speak(file)" : "speak(tts)");
+      tl?.report();
+    }, audioBase64).catch(() => { tl?.report("(audio failed)"); done(); });
+  }, []);
 
   // Always call the hook (React rules). On web it'll just be unused.
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
@@ -124,7 +157,7 @@ export default function ConversationScreen() {
         }]);
         // Auto-play the tutor's opening line (pre-rendered if this node has one).
         setIsSpeaking(true);
-        playTutorAudio(s.node.audio_url || "", tutorText, nodeLang(s.node), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+        speakLine(s.node.audio_url || "", tutorText, nodeLang(s.node), s.node.audio_base64);
       } catch {
         setMsgs([{ role: "tutor", text: "I couldn't reach the tutor. Is the backend running?", meta: "error" }]);
       }
@@ -181,7 +214,7 @@ export default function ConversationScreen() {
   );
 
   const submit = useCallback(
-    async (text: string) => {
+    async (text: string, tl?: Timeline) => {
       if (!text.trim() || !sessionId || busy) return;
       setBusy(true);
       setInput("");
@@ -189,6 +222,8 @@ export default function ConversationScreen() {
       scrollBottom();
       try {
         const t: TurnResponse = await api.conversationTurn(sessionId, text.trim());
+        // LLM reply + inline TTS, in one hop.
+        tl?.mark("turn");
 
         // A meta move — the learner asked about the line rather than
         // answering it. The graph did not move and nothing was graded, so the
@@ -201,7 +236,7 @@ export default function ConversationScreen() {
             if (line) {
               setIsSpeaking(true);
               const n = t.node ?? node;
-              playTutorAudio(n?.audio_url || "", line, nodeLang(n!), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+              speakLine(n?.audio_url || "", line, nodeLang(n!), n?.audio_base64, tl);
             }
             setMsgs((m) => [...m, { role: "aside", text: "Once more…", meta: "aside" }]);
           } else {
@@ -238,7 +273,7 @@ export default function ConversationScreen() {
             },
           ]);
           setIsSpeaking(true);
-          playTutorAudio(next.audio_url || "", tm, nodeLang(next), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+          speakLine(next.audio_url || "", tm, nodeLang(next), next.audio_base64, tl);
 
           // Flash avatar reaction based on verdict
           if (t.verdict && !t.escape) {
@@ -253,6 +288,7 @@ export default function ConversationScreen() {
         }
         if (t.session_done) setDone(true);
       } catch {
+        tl?.report("(turn failed)");
         setMsgs((m) => [...m, { role: "tutor", text: "The turn didn't land — try again.", meta: "error" }]);
       } finally {
         setBusy(false);
@@ -274,11 +310,17 @@ export default function ConversationScreen() {
       setMsgs((m) => [...m, { role: "learner", text: "Transcribing…", meta: "transcribing" }]);
       scrollBottom();
 
+      // Four serial network hops sit between this press and the tutor's
+      // voice. The clock starts here so the console says which one is slow.
+      const tl = startTimeline("turn");
+
       try {
         await recorder.stop();
-        // Small delay to let the native side finalize the file
-        await new Promise((r) => setTimeout(r, 300));
-        const uri = recorder.uri;
+        tl.mark("stop");
+        // Wait for the encoder to actually finish writing, rather than the
+        // 300 ms guess that used to stand in for it.
+        const uri = await settledRecordingUri(recorder);
+        tl.mark("flush");
         console.log("[STT] recorder.uri =", uri);
         if (!uri) throw new Error("No recording URI — recorder.uri is null after stop()");
 
@@ -286,6 +328,7 @@ export default function ConversationScreen() {
         const lang = node?.lang === "en" ? "en-IN" : node?.lang === "hi" ? "hi-IN" : "sa-IN";
         console.log("[STT] Uploading to /speech/stt, lang =", lang);
         const result = await api.stt(uri, "recording.m4a", "audio/m4a", lang);
+        tl.mark("stt");
         console.log("[STT] Result:", JSON.stringify(result));
         const transcript = result.transcript?.trim();
 
@@ -293,6 +336,7 @@ export default function ConversationScreen() {
         setMsgs((m) => m.filter((msg) => msg.meta !== "transcribing"));
 
         if (!transcript) {
+          tl.report("(no transcript)");
           setMsgs((m) => [...m, { role: "tutor", text: "I couldn't hear that clearly. Try again?", meta: "error" }]);
           return;
         }
@@ -302,14 +346,21 @@ export default function ConversationScreen() {
         // so we must NOT call setBusy(false) here — doing so causes a
         // rapid false→true state flip and an intermediate re-render that
         // triggers React's "Rendered fewer hooks than expected" error.
-        await submit(transcript);
+        await submit(transcript, tl);
       } catch (err: any) {
+        tl.report("(stt failed)");
         console.error("[STT] Error:", err);
         // Remove placeholder
         setMsgs((m) => m.filter((msg) => msg.meta !== "transcribing"));
-        // Show the actual error for debugging
-        const detail = err?.message || String(err);
-        setMsgs((m) => [...m, { role: "tutor", text: `STT error: ${detail}`, meta: "error" }]);
+        // U10-3: a network failure is a SYSTEM failure, never a wrong answer —
+        // copy must say the connection failed, and haptics must not read as
+        // "incorrect" (§3.3 / §2.2). Raw error details stay in the console.
+        haptics.near();
+        setMsgs((m) => [...m, {
+          role: "tutor",
+          text: "The network failed on the way up — that's not a mistake. Say it again?",
+          meta: "error",
+        }]);
       } finally {
         setBusy(false);
       }
@@ -348,7 +399,7 @@ export default function ConversationScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.header}>
-        <TutorAvatar state={avatarState} size={100} />
+        <GuruNative state={avatarState} size={160} speech={speech} />
       </View>
       <ScrollView
         ref={scrollRef}
@@ -460,7 +511,8 @@ export default function ConversationScreen() {
             haptics.tap();
             if (node) {
                setIsSpeaking(true);
-               playTutorAudio(node.audio_url || "", node.devanagari || node.gloss, nodeLang(node), () => setIsSpeaking(false)).catch(() => setIsSpeaking(false));
+               // Replay is free: the clip came down with the turn.
+               speakLine(node.audio_url || "", node.devanagari || node.gloss, nodeLang(node), node.audio_base64);
             }
           }}
           style={styles.replay}

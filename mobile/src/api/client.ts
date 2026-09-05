@@ -197,6 +197,15 @@ export interface ConversationNode {
   iast: string;
   gloss: string;
   audio_url: string;
+  /**
+   * Base64 WAV synthesised server-side and returned WITH the turn.
+   *
+   * Empty when the node has a pre-rendered `audio_url` (no synthesis needed)
+   * or when TTS was unavailable — in both cases the client falls back. Its
+   * whole point is removing a fourth serial round trip from a turn that
+   * already costs three.
+   */
+  audio_base64?: string;
   repair_type: string | null;
 }
 
@@ -712,7 +721,7 @@ export const api = {
       true,
     ),
 
-  todayShloka: () => request<Shloka>("/shlokas/today"),
+  todayShloka: () => request<Shloka>("/shlokas/today", {}, true),
 
   varnamala: () => request<VarnamalaResponse>("/grammar/varnamala"),
 

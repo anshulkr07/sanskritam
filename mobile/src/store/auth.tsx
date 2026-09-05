@@ -11,14 +11,23 @@ import React, {
   useState,
 } from "react";
 
+import { api, setAuthToken, type DevLoginResponse, type LearnerProfile } from "../api/client";
 import { DEFAULT_LEARNER_NAME } from "../config";
-import { api, setAuthToken, type LearnerProfile } from "../api/client";
 
 const TOKEN_KEY = "shabd.token";
 const NAME_KEY = "shabd.displayName";
 const INSTALL_ID_KEY = "shabd.installId";
 const ONBOARDED_KEY = "shabd.onboarded";
 const BRIDGE_KEY = "shabd.bridgeLangs";
+
+/**
+ * U10-1: the dev-login auto-login path must be UNREACHABLE in a release
+ * build. A named auto-login that silently works is how ten testers end up
+ * sharing one learner row and one mastery map. __DEV__ is true only in dev
+ * builds; in a release bundle this flag is constant-false and the fallback
+ * below never fires.
+ */
+const DEV_LOGIN_ALLOWED = __DEV__;
 
 /** Generate a UUIDv4 — used for install ID. */
 function uuidv4(): string {
@@ -51,6 +60,8 @@ interface AuthState {
   onboarded: boolean;
   displayName: string;
   login: (displayName: string) => Promise<LearnerProfile>;
+  googleLogin: (idToken: string) => Promise<LearnerProfile>;
+  guestLogin: () => Promise<LearnerProfile>;
   finishOnboarding: () => Promise<void>;
   logout: () => Promise<void>;
   refresh: () => Promise<LearnerProfile | null>;
@@ -66,11 +77,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [onboarded, setOnboarded] = useState(false);
   const [displayName, setDisplayName] = useState("");
 
-  const login = useCallback(async (name: string): Promise<LearnerProfile> => {
-    await AsyncStorage.setItem(NAME_KEY, name);
-    setDisplayName(name);
-    const installId = await getInstallId();
-    const res = await api.anonLogin(installId, ["en", "hi"]);
+  /** Persist the install ID + resolve the server response into local state. */
+  const applySession = useCallback(async (res: DevLoginResponse): Promise<LearnerProfile> => {
     setAuthToken(res.token);
     setToken(res.token);
     const profile: LearnerProfile = {
@@ -87,6 +95,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await AsyncStorage.setItem(TOKEN_KEY, res.token);
     return profile;
   }, []);
+
+  const login = useCallback(
+    async (name: string): Promise<LearnerProfile> => {
+      await AsyncStorage.setItem(NAME_KEY, name);
+      setDisplayName(name);
+      const installId = await getInstallId();
+      const res = await api.anonLogin(installId, ["en", "hi"]);
+      return applySession(res);
+    },
+    [applySession],
+  );
+
+  // A guest is an anonymous local install — one tap, no account, no typing.
+  // Mirrors U10-1: anonymous first; an account is offered later, never gated.
+  const guestLogin = useCallback(async (): Promise<LearnerProfile> => {
+    const installId = await getInstallId();
+    const res = await api.anonLogin(installId, ["en", "hi"]);
+    setDisplayName(res.learner.display_name);
+    await AsyncStorage.setItem(NAME_KEY, res.learner.display_name);
+    return applySession(res);
+  }, [applySession]);
+
+  const googleLogin = useCallback(
+    async (idToken: string): Promise<LearnerProfile> => {
+      const res = await api.googleLogin(idToken, ["en", "hi"], undefined);
+      setDisplayName(res.learner.display_name);
+      await AsyncStorage.setItem(NAME_KEY, res.learner.display_name);
+      return applySession(res);
+    },
+    [applySession],
+  );
 
   const finishOnboarding = useCallback(async () => {
     await AsyncStorage.setItem(ONBOARDED_KEY, "true");
@@ -117,9 +156,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setOnboarded(true);
         }
 
-        // No usable token → silently log in with device install ID.
+        // No usable token → dev auto-login ONLY in dev builds (U10-1). A
+        // release build must reach the Login screen like any stranger.
         const currentTok = await AsyncStorage.getItem(TOKEN_KEY);
-        if (!currentTok) {
+        if (!currentTok && DEV_LOGIN_ALLOWED) {
           await login(DEFAULT_LEARNER_NAME);
         }
       } finally {
@@ -160,12 +200,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       onboarded,
       displayName,
       login,
+      googleLogin,
+      guestLogin,
       finishOnboarding,
       logout,
       refresh,
       updateName,
     }),
-    [token, learner, loading, onboarded, displayName, login, finishOnboarding, logout, refresh, updateName],
+    [
+      token,
+      learner,
+      loading,
+      onboarded,
+      displayName,
+      login,
+      googleLogin,
+      guestLogin,
+      finishOnboarding,
+      logout,
+      refresh,
+      updateName,
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -75,6 +75,16 @@ class Settings(BaseSettings):
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False
 
+    # Synthesise the tutor's line inside /conversation/turn and return it as
+    # base64, instead of letting the client make a separate /speech/tts call.
+    #
+    # This is a trade, not a free win: it removes one client round trip from
+    # the wait for the VOICE, but the text bubble now waits for TTS too,
+    # where before it landed as soon as the model had written the line. Which
+    # reads as faster is a question about how it feels, not about the total —
+    # flip this off and compare the `[perf] turn` lines the client logs.
+    conversation_inline_audio: bool = True
+
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 
 

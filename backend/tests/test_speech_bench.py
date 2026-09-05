@@ -5,7 +5,7 @@ Everything is mocked/offline: no Sarvam network calls.  Scripts under
 must stay importable regardless of pytest's cwd).
 
 The former Parler (§2) and Vāgdhenu (§3) sections were struck from the spec
-2026-08-30 (Shabd is API-only — no local models) and their tests deleted
+2026-08-30 (Sanskritam is API-only — no local models) and their tests deleted
 along with ``app/services/parler.py``, ``app/services/vagdhenu.py`` and
 ``scripts/render_parler.py``.
 """

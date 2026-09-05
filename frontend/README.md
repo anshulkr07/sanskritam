@@ -1,6 +1,6 @@
-# Shabd Test Console
+# Sanskritam Test Console
 
-A lightweight static web frontend (test console) for the Shabd Sanskrit-learning backend API.
+A lightweight static web frontend (test console) for the Sanskritam Sanskrit-learning backend API.
 
 ## Quick Start
 

@@ -27,88 +27,122 @@ export async function setPlaybackMode(): Promise<void> {
   }
 }
 
-export async function speak(
-  text: string,
-  lang: "sa" | "hi" | "en" = "sa",
-  pace = 1.0,
+/**
+ * One player, one set of listeners, for every source we can hand expo-audio.
+ *
+ * The url path and the live-TTS path used to be separate implementations and
+ * only the url one grew the `onStart` hook, so the lip sync still ran ahead of
+ * the voice on any line without pre-rendered audio — which in LLM mode is
+ * every line. Both now go through here.
+ */
+function playSource(
+  src: string,
+  durationHint: number,
   onComplete?: () => void,
-): Promise<SpeakHandle> {
-  await setPlaybackMode();
-  const { api } = await import("../api/client");
-  const res = await api.tts(text, bulbulLangCode(lang), "aditya", pace);
-  const src = `data:audio/wav;base64,${res.audio_base64}`;
+  onStart?: (durationMs: number) => void,
+): SpeakHandle {
   const player = createAudioPlayer(src);
-  
-  // Fallback duration if the API doesn't provide one (approximate based on char count)
-  const durationHint = res.duration_hint || Math.max(1, text.length * 0.08);
-  
-  player.play();
 
-  // Expo Audio (SDK 57) doesn't have a simple onEnded promise out of the box
-  // without attaching listeners. For v1, we use the duration_hint from the API
-  // to fire the onComplete callback.
+  let started = false;
+  let finished = false;
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
-  if (onComplete) {
-    timeoutId = setTimeout(() => {
-      onComplete();
-    }, durationHint * 1000);
-  }
+
+  const cleanup = () => {
+    if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+    try { sub.remove(); } catch { /* already gone */ }
+  };
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    onComplete?.();
+  };
+
+  const sub = player.addListener("playbackStatusUpdate", (st) => {
+    // "Audible", not "asked to play": loading a clip takes a few hundred ms
+    // and a mouth started at call time runs that far ahead of the voice.
+    if (!started && st.isLoaded && st.playing && st.currentTime > 0) {
+      started = true;
+      onStart?.((st.duration > 0 ? st.duration : durationHint) * 1000);
+    }
+    if (st.didJustFinish) finish();
+  });
+
+  player.play();
+  // Backstop, in case the status listener never lands.
+  timeoutId = setTimeout(finish, (durationHint + 3) * 1000);
 
   return {
     stop: async () => {
-      try {
-        if (timeoutId) clearTimeout(timeoutId);
-        player.pause();
-      } catch {
-        /* already ended */
-      }
+      finished = true;
+      cleanup();
+      try { player.pause(); } catch { /* already ended */ }
     },
     durationHint,
   };
 }
 
+/** ~0.08 s per character — only ever a fallback; the player reports the truth. */
+const hintFor = (text: string) => Math.max(1, text.length * 0.08);
+
+export async function speak(
+  text: string,
+  lang: "sa" | "hi" | "en" = "sa",
+  pace = 1.0,
+  onComplete?: () => void,
+  onStart?: (durationMs: number) => void,
+): Promise<SpeakHandle> {
+  await setPlaybackMode();
+  const { api } = await import("../api/client");
+  const res = await api.tts(text, bulbulLangCode(lang), "aditya", pace);
+  return playSource(
+    `data:audio/wav;base64,${res.audio_base64}`,
+    res.duration_hint || hintFor(text),
+    onComplete,
+    onStart,
+  );
+}
+
 /**
- * P17-3: play a tutor node's line, preferring the PRE-RENDERED audio_url when
- * present (zero Sarvam calls, zero quota — it is a static file) and only
- * falling back to live Bulbul TTS for authored-but-unrendered nodes.
+ * P17-3: play a tutor node's line.
  *
- * `url` is the backend's /audio/<path>; the app serves it from the same origin
- * as BASE_URL. The backend's NodeOut carries audio_url already, so callers pass
- * it straight through.
+ * Source preference, cheapest first:
+ *   1. `audioBase64` — the turn response carried the audio with it. No extra
+ *      request at all; this is why the backend synthesises inline.
+ *   2. `url` — a pre-rendered static file (zero Sarvam calls, zero quota).
+ *   3. Live Bulbul TTS, one more round trip, still metered.
  */
 export async function playTutorAudio(
   url: string,
   text: string,
   lang: "sa" | "hi" | "en" = "sa",
   onComplete?: () => void,
+  /**
+   * Fired when audio is ACTUALLY audible, with the file's real duration.
+   * Drive the mouth from here, not from the call site.
+   */
+  onStart?: (durationMs: number) => void,
+  audioBase64?: string,
 ): Promise<SpeakHandle> {
   await setPlaybackMode();
+
+  if (audioBase64 && audioBase64.trim()) {
+    return playSource(
+      `data:audio/wav;base64,${audioBase64}`,
+      hintFor(text),
+      onComplete,
+      onStart,
+    );
+  }
+
   if (url && url.trim()) {
     const { BASE_URL } = await import("../config");
     // URL may be absolute (production CDN) or relative (/audio/...) — join.
     const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
-    const player = createAudioPlayer(src);
-    player.play();
-    // Rough duration: ~0.08s per char is close enough for the skip-on-complete
-    // choreography; no TTS round-trip and no explicit duration are available
-    // for a static file.
-    const durationHint = Math.max(1, text.length * 0.08);
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    if (onComplete) {
-      timeoutId = setTimeout(() => onComplete(), durationHint * 1000);
-    }
-    return {
-      stop: async () => {
-        try {
-          if (timeoutId) clearTimeout(timeoutId);
-          player.pause();
-        } catch { /* already ended */ }
-      },
-      durationHint,
-    };
+    return playSource(src, hintFor(text), onComplete, onStart);
   }
-  // No pre-rendered audio — live TTS (the P17-2 fallback; still metered).
-  return speak(text, lang, 1.0, onComplete);
+
+  return speak(text, lang, 1.0, onComplete, onStart);
 }
 
 export default { speak, playTutorAudio, setPlaybackMode, bulbulLangCode };

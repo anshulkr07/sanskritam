@@ -27,6 +27,15 @@ class AnonLoginRequest(BaseModel):
     timezone: Optional[str] = Field(None, max_length=64)
 
 
+class GoogleAuthRequest(BaseModel):
+    # The Google ID token (JWT) minted for the app by Google Sign-in. The
+    # backend verifies its signature + audience and binds the learner to its
+    # `sub`.
+    id_token: str = Field(..., min_length=20)
+    bridge_langs: list[str] = Field(default=["en", "hi"])
+    timezone: Optional[str] = Field(None, max_length=64)
+
+
 # ─── Learner ───
 
 class LearnerProfile(BaseModel):
@@ -133,6 +142,26 @@ class FeatureResponse(BaseModel):
     rank: int
     label_en: str
     label_hi: str
+
+
+# ─── Path spine (P7-5) ───
+
+class PathNodeResponse(BaseModel):
+    id: str                    # stable node id = the feature id ("NOM.SG")
+    feature: str               # the feature this unit teaches
+    kind: str                  # case | number | tense | voice | gender | sandhi | other
+    rank: int                  # teaching order (features.rank)
+    label_en: str
+    label_hi: str
+    approved_count: int        # approved challenges exercising this feature
+    pending_count: int         # backlog awaiting review (P8-0)
+    mastery: Optional[float] = None  # the CALLER's mastery, filled for the learner
+
+
+class PathSpineResponse(BaseModel):
+    nodes: list[PathNodeResponse]
+    features_covered: int      # distinct features with >=1 approved challenge
+    features_total: int
 
 
 # ─── Derivation (P9) ───

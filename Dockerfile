@@ -1,4 +1,4 @@
-# Shabd API — FastAPI + vidyut on Cloud Run (asia-south1).
+# Sanskritam API — FastAPI + vidyut on Cloud Run (asia-south1).
 # Build context is the repo root (frontend/ is mounted by app.main, so the
 # context must include it).  vidyut-data is baked at build time: the
 # gitignored ~200MB corpus would otherwise re-download onto Cloud Run's
@@ -38,4 +38,7 @@ RUN cd backend \
 # Cloud Run injects PORT; uvicorn binds it.  Single worker: uvicorn is async
 # and this traffic level needs no more.  (A threads flag was removed: it is
 # a gunicorn option, not uvicorn's — it made the container exit at boot, r3/r4.)
+# The app package lives at /srv/shabd/backend/app, so uvicorn must launch from
+# backend/ (or use --app-dir) or `app.main:app` cannot be imported.
+WORKDIR /srv/shabd/backend
 CMD exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1

@@ -7,7 +7,7 @@ became an escape, and the learner got a repair prompt for a question they had
 not asked.
 
 Detection is deterministic and free: a phrase table over the three registers a
-Shabd learner actually types (Devanagari Hindi, romanized Hinglish, English).
+Sanskritam learner actually types (Devanagari Hindi, romanized Hinglish, English).
 **No LLM runs here** — §12 forbids a model in the guided turn path, and the
 sub-second turn is the whole point. The model comes in afterwards, off the
 turn path, via services/explainer.py, and only for `explain`/`translate`.

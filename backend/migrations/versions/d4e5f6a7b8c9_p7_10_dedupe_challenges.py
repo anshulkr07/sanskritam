@@ -31,24 +31,32 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def _dedupe_keep_oldest(conn) -> int:
-    """Delete duplicate challenges, keeping the oldest row per (text, register).
+    """Delete duplicate challenges, keeping the oldest row per (target, register).
 
-    ``min(rowid)`` under a GROUP BY selects the earliest inserted row for each
-    target — ties resolved by insertion order. We delete by ROWID (SQLite's
-    integer insertion key), never by the text ``id`` column: comparing the text
-    UUID ``id`` against an integer ``rowid`` would never match and delete
-    EVERY row. Rows a learner attempt references are pinned (``NOT EXISTS``),
-    so a duplicated sentence a learner already met survives the dedupe.
+    Portable across SQLite and Postgres: ``ROW_NUMBER() OVER (PARTITION BY
+    target_sanskrit, register ORDER BY created_at ASC, id ASC)`` picks the
+    earliest-inserted row for each target as ``rn=1``; any ``rn>1`` row is a
+    duplicate and is deleted.  (A SQLite-only ``MIN(rowid)`` approach was the
+    original — it works on SQLite but Postgres has no ``rowid`` column, which
+    made this migration fail on Cloud Run.)  Rows a learner attempt references
+    are pinned (``NOT EXISTS``), so a duplicated sentence a learner already met
+    survives the dedupe.
     """
     before = conn.execute(sa.text("SELECT count(*) FROM challenges")).scalar()
     conn.execute(
         sa.text(
             """
             DELETE FROM challenges
-            WHERE rowid NOT IN (
-                SELECT MIN(rowid)
-                FROM challenges
-                GROUP BY target_sanskrit, register
+            WHERE id IN (
+                SELECT id FROM (
+                    SELECT id,
+                           ROW_NUMBER() OVER (
+                               PARTITION BY target_sanskrit, register
+                               ORDER BY created_at ASC, id ASC
+                           ) AS rn
+                    FROM challenges
+                ) ranked
+                WHERE rn > 1
             )
             AND id NOT IN (
                 SELECT challenge_id FROM attempts WHERE challenge_id IS NOT NULL

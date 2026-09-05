@@ -2,7 +2,7 @@
 
 ## Context
 
-Shabd (D:\Projects\Shabd) backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv/Scripts/python`. Tests: `cd backend && .venv/Scripts/python -m pytest tests/ -q`.
+Sanskritam (D:\Projects\Shabd) backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv/Scripts/python`. Tests: `cd backend && .venv/Scripts/python -m pytest tests/ -q`.
 
 Architecture §12: "Authoring: Sarvam drafts → Vidyut gates → human spot-checks → Bulbul renders → CDN. The pipeline is the product; the first scenario is the proof." Model routing (§4.3): `sarvam-105b-conversations` for drafting (₹0.0055/sentence, 100% Vidyut gate), **Gemini for any dual-bearing content** (Sarvam false-accuses 50% of duals). Never `sarvam-105b` (reasoning variant) — dead ends.
 

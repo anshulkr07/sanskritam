@@ -1,4 +1,4 @@
-// TutorAvatar — the visual face of the Shabd tutor (architecture §12 extension).
+// TutorAvatar — the visual face of the Sanskritam tutor (architecture §12 extension).
 //
 // A stylized 2D character illustration animated with react-native-reanimated.
 // Six states: idle, speaking, thinking, listening, celebrating, encouraging.

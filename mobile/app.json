@@ -1,19 +1,19 @@
 {
   "expo": {
-    "name": "Shabd",
-    "slug": "shabd",
+    "name": "Sanskritam",
+    "slug": "sanskritam",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "shabd",
+    "scheme": "sanskritam",
     "splash": {
       "backgroundColor": "#FFFCF2",
       "resizeMode": "contain"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.shabd.app"
+      "bundleIdentifier": "com.sanskritam.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +23,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.shabd.app"
+      "package": "com.sanskritam.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,7 +33,12 @@
       "expo-audio",
       "expo-file-system",
       "expo-status-bar",
-      "@react-native-vector-icons/ionicons"
+      "@react-native-vector-icons/ionicons",
+      "expo-web-browser",
+      [
+        "@react-native-google-signin/google-signin",
+        { "iosUrlScheme": "com.googleusercontent.apps.829757572630-4671983larm19abnu5qtopbbs6ehnbqp" }
+      ]
     ]
   }
 }

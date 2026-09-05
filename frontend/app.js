@@ -1,4 +1,4 @@
-/* ─── Shabd Test Console — App Logic ─── */
+/* ─── Sanskritam Test Console — App Logic ─── */
 
 const STATE = {
   baseUrl: localStorage.getItem('shabd_base_url') || 'http://localhost:8000',

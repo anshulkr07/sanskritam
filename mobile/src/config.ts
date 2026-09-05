@@ -33,6 +33,32 @@ const RELEASE_BASE_URL_ENV = (
 // loudly below instead of falling back to localhost (U9-3).
 const CLOUD_RUN_FALLBACK_URL = "";
 
+// Google Sign-in client IDs (Android, iOS, Web/backend). Injected at build
+// time via EXPO_PUBLIC_* env vars (expo-auth-session). The Android client ID's
+// ID token has `aud` == that same Android client ID, which is what the backend
+// verifies (POST /auth/google), so production must set
+// EXPO_PUBLIC_GOOGLE_CLIENT_ID_ANDROID to the value configured on the backend.
+const GOOGLE_CLIENT_ID_ANDROID =
+  (process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_ANDROID as string | undefined)?.trim() ?? "";
+const GOOGLE_CLIENT_ID_IOS =
+  (process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_IOS as string | undefined)?.trim() ?? "";
+const GOOGLE_CLIENT_ID_WEB =
+  (process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_WEB as string | undefined)?.trim() ?? "";
+const GOOGLE_CLIENT_ID_EXPO =
+  (process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_EXPO as string | undefined)?.trim() ?? "";
+
+// True when at least one Google client ID is configured, so the Login screen
+// can enable the "Continue with Google" button.
+export const GOOGLE_LOGIN_ENABLED =
+  !!GOOGLE_CLIENT_ID_ANDROID || !!GOOGLE_CLIENT_ID_IOS || !!GOOGLE_CLIENT_ID_WEB;
+
+export const GOOGLE_CLIENT_IDS = {
+  androidClientId: GOOGLE_CLIENT_ID_ANDROID,
+  iosClientId: GOOGLE_CLIENT_ID_IOS,
+  webClientId: GOOGLE_CLIENT_ID_WEB,
+  expoClientId: GOOGLE_CLIENT_ID_EXPO,
+}
+
 const RELEASE_BASE_URL = RELEASE_BASE_URL_ENV || CLOUD_RUN_FALLBACK_URL;
 
 // A helper to build a full URL joined to the API base.

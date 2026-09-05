@@ -56,3 +56,6 @@ backend/storage/
 
 # DB backups taken before seed/migrate/rebuild work (§2.13)
 backend/app.db.bak-*
+
+# Google OAuth client secret JSONs — never commit
+Client IDs/

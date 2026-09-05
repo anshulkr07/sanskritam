@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "shabd-backend",
+      "name": "sanskritam-backend",
       "runtimeExecutable": "powershell",
       "runtimeArgs": [
         "-NoProfile",
@@ -12,7 +12,7 @@
       "port": 8001
     },
     {
-      "name": "shabd-mobile-web",
+      "name": "sanskritam-mobile-web",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "web", "--prefix", "mobile"],
       "port": 8081

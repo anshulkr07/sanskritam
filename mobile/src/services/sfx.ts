@@ -8,8 +8,28 @@
 
 import { createAudioPlayer, type AudioPlayer } from "expo-audio";
 import { Platform } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const IS_WEB = Platform.OS === "web";
+
+// U6-2: every sound respects the user-facing sound toggle (Settings →
+// "Sound effects"). Cached after the first read; toggling updates the cache
+// through setSoundEnabled so the change is immediate.
+const SOUND_PREF_KEY = "shabd.pref.sound";
+let soundEnabled = true;
+let soundPrefLoaded = false;
+
+AsyncStorage.getItem(SOUND_PREF_KEY)
+  .then((v) => {
+    soundEnabled = v !== "false";
+  })
+  .catch(() => {});
+
+/** Called by Settings when the toggle flips, so the change is immediate. */
+export function setSoundEffectsEnabled(v: boolean): void {
+  soundEnabled = v;
+  AsyncStorage.setItem(SOUND_PREF_KEY, v ? "true" : "false").catch(() => {});
+}
 
 const SOURCES = {
   correct: require("../../assets/sfx/correct.wav"),
@@ -40,7 +60,7 @@ function getPlayer(name: SfxName): AudioPlayer {
 }
 
 async function playSfx(name: SfxName): Promise<void> {
-  if (IS_WEB) return;
+  if (IS_WEB || !soundEnabled) return;
   try {
     const p = getPlayer(name);
     await p.seekTo(0);

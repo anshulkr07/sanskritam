@@ -1,4 +1,4 @@
-# Shabd Backend
+# Sanskritam Backend
 
 Audio-first Sanskrit learning API. FastAPI + SQLAlchemy + SQLite. Runs on Windows/Python 3.11. **API-only — no local models, no GPU, no model weights** (architecture.md §1).
 

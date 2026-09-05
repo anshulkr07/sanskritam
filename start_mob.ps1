@@ -1,5 +1,5 @@
 # ==============================================================================
-# Shabd - Automated Mobile & Backend Startup Script
+# Sanskritam - Automated Mobile & Backend Startup Script
 # ==============================================================================
 # Automatically detects the active local IP address.
 # Updates the mobile app's config.ts with the correct IP.
@@ -27,7 +27,7 @@ if (-not $root) { $root = (Get-Location).Path }
 
 Write-Host ""
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "      SHABD - MOBILE SETUP & STARTUP SCRIPT       " -ForegroundColor Cyan
+Write-Host "   SANSKRITAM - MOBILE SETUP & STARTUP SCRIPT    " -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host ""
 

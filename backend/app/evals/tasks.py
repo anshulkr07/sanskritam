@@ -1,6 +1,6 @@
 """Eval cases, derived from the seed challenges so ground truth is never invented.
 
-Three tasks, each mapping onto a capability Shabd actually needs:
+Three tasks, each mapping onto a capability Sanskritam actually needs:
 
 generate   English prompt + required features -> Sanskrit sentence.
            "Can this model author content at all?"

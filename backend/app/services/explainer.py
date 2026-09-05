@@ -57,7 +57,7 @@ for _spec_env in ("SARVAM_API_KEY", "GEMINI_API_KEY", "OPENAI_API_KEY",
             os.environ[_spec_env] = _from_settings
 
 
-_SYSTEM_PROMPT = """You are a patient Sanskrit tutor's assistant in Shabd, a \
+_SYSTEM_PROMPT = """You are a patient Sanskrit tutor's assistant in Sanskritam, a \
 learning app. A beginner has asked what a line means. Explain it.
 
 Rules:

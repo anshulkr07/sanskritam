@@ -1,217 +1,176 @@
-// Onboarding / login. Three light steps: display name, bridge language(s),
-// starting Sanskrit ratio. Skippable — "Skip for now" creates an anonymous
-// learner with defaults and lands on Home.
+// Login / entry screen. Stranger-first (U10-1): a fresh install reaches a
+// usable session with no typing. Two ways in:
+//   • Continue with Google  — an account, for syncing progress across devices
+//     (only if a Google client ID is configured; else the button is disabled).
+//   • Continue as Guest     — anonymous local install, one tap, no account.
+// This screen is shown by App.tsx whenever the user is not onboarded.
+//
+// Google Sign-In uses the NATIVE SDK (@react-native-google-signin/google-signin),
+// not expo-auth-session: the deprecated browser flow uses a custom redirect URI
+// that Google rejects for Android OAuth clients ("Custom URI is not enabled").
+// The native flow verifies package name + signing-cert SHA-1 via Play Services
+// and returns an id_token whose aud is the configured webClientId — which the
+// backend (POST /auth/google) verifies.
 
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  KeyboardAvoidingView,
-  Platform,
+  ActivityIndicator,
   Pressable,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  GoogleSignin,
+  isSuccessResponse,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 
 import { useAuth } from "../store/auth";
 import { color, font, radius, shadow, space } from "../theme";
+import { GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED } from "../config";
 
-type Step = "name" | "langs" | "ratio";
+// Configure the native Google Sign-In once at module load. `webClientId` is
+// the audience of the id_token the SDK returns and what the backend verifies,
+// so we pass the Web client ID (which is in the backend's accepted set).
+if (GOOGLE_CLIENT_IDS.webClientId) {
+  GoogleSignin.configure({ webClientId: GOOGLE_CLIENT_IDS.webClientId });
+}
 
 export default function LoginScreen() {
-  const { login, finishOnboarding, displayName, loading } = useAuth();
-  const [step, setStep] = useState<Step>("name");
-  const [name, setName] = useState("");
-  const [langs, setLangs] = useState<string[]>(["en", "hi"]);
-  const [ratio, setRatio] = useState(0.3);
-  const [busy, setBusy] = useState(false);
+  const { googleLogin, guestLogin, finishOnboarding } = useAuth();
+  const [busy, setBusy] = useState<"none" | "google" | "guest">("none");
   const [error, setError] = useState<string | null>(null);
 
-  // Prefill remembered name
-  useEffect(() => {
-    if (displayName) setName(displayName);
-  }, [displayName]);
-
-  const submit = async () => {
-    if (step === "name") {
-      const trimmed = name.trim();
-      if (!trimmed) return;
-      setStep("langs");
-      return;
-    }
-    if (step === "langs") {
-      setStep("ratio");
-      return;
-    }
-    // Final step: login and finish onboarding
-    const trimmed = name.trim() || "Learner";
-    setBusy(true);
+  const onGoogle = async () => {
     setError(null);
+    if (!GOOGLE_LOGIN_ENABLED) {
+      setError(
+        "Google sign-in isn't configured yet (GOOGLE client ID missing). " +
+          "Use Continue as Guest for now.",
+      );
+      return;
+    }
+    setBusy("google");
     try {
-      await login(trimmed);
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        const idToken = response.data.idToken;
+        if (!idToken) {
+          setError("Google didn't return an identity token. Please try again.");
+          return;
+        }
+        await googleLogin(idToken);
+        await finishOnboarding();
+      }
+      // isSuccessResponse === false means the user cancelled; nothing to do.
+    } catch (e) {
+      if ((e as { code?: string }).code === statusCodes.SIGN_IN_CANCELLED) {
+        // User backed out; just re-enable the button.
+      } else if ((e as { code?: string }).code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setError("Google Play Services isn't available on this device.");
+      } else {
+        setError(
+          e instanceof Error ? e.message : "Google sign-in failed. Please try again.",
+        );
+      }
+    } finally {
+      setBusy("none");
+    }
+  };
+
+  const onGuest = async () => {
+    setError(null);
+    setBusy("guest");
+    try {
+      await guestLogin();
       await finishOnboarding();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not connect. Is the backend running?");
-    } finally {
-      setBusy(false);
+      setBusy("none");
     }
   };
 
-  const skip = async () => {
-    try {
-      const trimmed = name.trim() || "Learner";
-      await login(trimmed);
-      await finishOnboarding();
-    } catch {
-      // Even if login fails, mark onboarded so the user sees the app
-      await finishOnboarding();
-    }
-  };
-
-  const toggleLang = (lang: string) => {
-    setLangs((prev) =>
-      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang]
-    );
-  };
-
-  const canSubmit = name.trim().length > 0 && !busy;
+  const gDisabled = busy !== "none" || !GOOGLE_LOGIN_ENABLED;
 
   return (
     <LinearGradient colors={[color.bg, "#FFF1DD"]} style={styles.gradient}>
       <SafeAreaView style={styles.safe}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={styles.keyboard}
-        >
-          <View style={styles.content}>
-            {/* Lockup */}
-            <View style={styles.logoRow}>
-              <View style={styles.logoBadge}>
-                <Text style={styles.logoGlyph}>श्</Text>
-              </View>
-              <Text style={styles.logoWord}>Shabd</Text>
+        <View style={styles.content}>
+          {/* Lockup */}
+          <View style={styles.logoRow}>
+            <View style={styles.logoBadge}>
+              <Text style={styles.logoGlyph}>श्</Text>
             </View>
-            <Text style={styles.tagline}>Speak Sanskrit. A word at a time.</Text>
-
-            {/* Card */}
-            <View style={styles.card}>
-              {step === "name" && (
-                <>
-                  <Text style={styles.heading}>नमस्ते 🙏</Text>
-                  <Text style={styles.subheading}>What should we call you?</Text>
-                  <TextInput
-                    value={name}
-                    onChangeText={setName}
-                    placeholder="Your name"
-                    placeholderTextColor={color.inkFaint}
-                    style={styles.input}
-                    autoCorrect={false}
-                    autoCapitalize="words"
-                    returnKeyType="go"
-                    onSubmitEditing={submit}
-                    editable={!busy}
-                    accessibilityRole="text"
-                    accessibilityLabel="Enter your name"
-                  />
-                </>
-              )}
-
-              {step === "langs" && (
-                <>
-                  <Text style={styles.heading}>भाषा</Text>
-                  <Text style={styles.subheading}>
-                    Which languages do you speak? I'll use them to help you learn.
-                  </Text>
-                  <View style={styles.langRow}>
-                    {["en", "hi"].map((l) => (
-                      <Pressable
-                        key={l}
-                        onPress={() => toggleLang(l)}
-                        style={[
-                          styles.langChip,
-                          langs.includes(l) && styles.langChipActive,
-                        ]}
-                      >
-                        <Text
-                          style={[
-                            styles.langChipText,
-                            langs.includes(l) && styles.langChipTextActive,
-                          ]}
-                        >
-                          {l === "en" ? "English" : "हिन्दी"}
-                        </Text>
-                      </Pressable>
-                    ))}
-                  </View>
-                </>
-              )}
-
-              {step === "ratio" && (
-                <>
-                  <Text style={styles.heading}>Sanskrit share</Text>
-                  <Text style={styles.subheading}>
-                    How much Sanskrit do you want to hear?{'\n'}
-                    I start mostly in your language and add more Sanskrit as you grow.
-                  </Text>
-                  <View style={styles.ratioDisplay}>
-                    <Text style={styles.ratioLabel}>
-                      {ratio <= 0.2 ? "Mostly English" :
-                       ratio <= 0.4 ? "Mostly Hindi" :
-                       ratio <= 0.6 ? "Balanced" :
-                       ratio <= 0.8 ? "Mostly Sanskrit" :
-                       "Almost all Sanskrit"}
-                    </Text>
-                    <Text style={styles.ratioValue}>{Math.round(ratio * 100)}%</Text>
-                    <Text style={styles.ratioHint}>Sanskrit</Text>
-                  </View>
-                  {/* Simple slider approximation using text-based controls */}
-                  <View style={styles.sliderRow}>
-                    {[0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8].map((v) => (
-                      <Pressable
-                        key={v}
-                        onPress={() => setRatio(v)}
-                        style={[
-                          styles.sliderDot,
-                          Math.abs(ratio - v) < 0.05 && styles.sliderDotActive,
-                        ]}
-                      />
-                    ))}
-                  </View>
-                </>
-              )}
-
-              {!!error && <Text style={styles.error}>{error}</Text>}
-
-              <Pressable
-                disabled={!canSubmit}
-                onPress={submit}
-                style={({ pressed }) => [
-                  styles.signupBtn,
-                  !canSubmit && styles.signupBtnDisabled,
-                  pressed && styles.signupBtnPressed,
-                ]}
-              >
-                <Text style={styles.signupText}>
-                  {busy ? "Starting…" : step === "ratio" ? "Start learning" : "Next"}
-                </Text>
-              </Pressable>
-
-              {/* Skip for now */}
-              {step === "name" && (
-                <Pressable onPress={skip} style={styles.skipBtn}>
-                  <Text style={styles.skipText}>Skip for now</Text>
-                </Pressable>
-              )}
-            </View>
-
-            <Text style={styles.footnote}>
-              Your tutor speaks a little Sanskrit and a lot of your language,{'\n'}and raises the
-              Sanskrit share as you grow.
-            </Text>
+            <Text style={styles.logoWord}>Sanskritam</Text>
           </View>
-        </KeyboardAvoidingView>
+          <Text style={styles.tagline}>Speak Sanskrit. A word at a time.</Text>
+
+          {/* Card */}
+          <View style={styles.card}>
+            <Text style={styles.heading}>नमस्ते 🙏</Text>
+            <Text style={styles.subheading}>
+              Sign in to save your progress across devices — or just jump in as a guest.
+            </Text>
+
+            {/* Continue with Google */}
+            <Pressable
+              disabled={busy !== "none"}
+              onPress={onGoogle}
+              style={({ pressed }) => [
+                styles.googleBtn,
+                pressed && styles.googleBtnPressed,
+                (busy !== "none" || !GOOGLE_LOGIN_ENABLED) && styles.btnDisabled,
+              ]}
+              accessibilityRole="button"
+              accessibilityLabel="Continue with Google"
+            >
+              <View style={styles.googleIcon}>
+                <Text style={styles.googleIconText}>G</Text>
+              </View>
+              <Text style={styles.googleBtnText}>
+                {busy === "google" ? "Connecting…" : "Continue with Google"}
+              </Text>
+            </Pressable>
+
+            {/* Divider */}
+            <View style={styles.dividerRow}>
+              <View style={styles.dividerLine} />
+              <Text style={styles.dividerText}>or</Text>
+              <View style={styles.dividerLine} />
+            </View>
+
+            {/* Continue as Guest */}
+            <Pressable
+              disabled={busy !== "none"}
+              onPress={onGuest}
+              style={({ pressed }) => [
+                styles.guestBtn,
+                pressed && styles.guestBtnPressed,
+                busy !== "none" && styles.btnDisabledSaffron,
+              ]}
+              accessibilityRole="button"
+              accessibilityLabel="Continue as Guest"
+            >
+              {busy === "guest" ? (
+                <ActivityIndicator color={color.white} />
+              ) : (
+                <Text style={styles.guestBtnText}>Continue as Guest</Text>
+              )}
+            </Pressable>
+            <Text style={styles.guestHint}>No account needed — start learning in seconds.</Text>
+
+            {!!error && <Text style={styles.error}>{error}</Text>}
+          </View>
+
+          <Text style={styles.footnote}>
+            Your tutor speaks a little Sanskrit and a lot of your language,{'\n'}and raises the
+            Sanskrit share as you grow.
+          </Text>
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -220,7 +179,6 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   gradient: { flex: 1 },
   safe: { flex: 1 },
-  keyboard: { flex: 1 },
   content: {
     flex: 1,
     paddingHorizontal: space.lg,
@@ -268,120 +226,90 @@ const styles = StyleSheet.create({
     fontSize: font.sizes.sm,
     color: color.inkSoft,
     marginTop: space.xs,
-    marginBottom: space.md,
+    marginBottom: space.lg,
+    lineHeight: 20,
   },
-  input: {
-    borderWidth: 2,
-    borderColor: color.border,
-    borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.md - 2,
-    fontSize: font.sizes.base,
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    color: color.ink,
-    backgroundColor: color.surface,
-  },
-  langRow: {
+  // Google button — white with border and the recognisable G.
+  googleBtn: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     gap: space.sm,
-  },
-  langChip: {
-    flex: 1,
-    paddingVertical: space.md,
-    borderRadius: radius.md,
+    backgroundColor: color.surface,
     borderWidth: 2,
     borderColor: color.border,
+    borderRadius: radius.md,
+    paddingVertical: space.md,
+    ...shadow.button,
+  },
+  googleBtnPressed: { transform: [{ translateY: 1 }] },
+  googleIcon: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: "#4285F4",
     alignItems: "center",
+    justifyContent: "center",
   },
-  langChipActive: {
-    borderColor: color.saffron,
-    backgroundColor: color.saffronLight,
-  },
-  langChipText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.base,
-    color: color.ink,
-  },
-  langChipTextActive: {
-    color: color.saffron,
-  },
-  ratioDisplay: {
-    alignItems: "center",
-    marginVertical: space.md,
-  },
-  ratioLabel: {
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.md,
-    color: color.inkSoft,
-  },
-  ratioValue: {
+  googleIconText: {
+    color: color.white,
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
-    fontSize: font.sizes.xxl,
-    color: color.saffron,
-    marginTop: space.xs,
+    fontSize: 14,
   },
-  ratioHint: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
+  googleBtnText: {
+    color: color.ink,
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.base,
   },
-  sliderRow: {
+  dividerRow: {
     flexDirection: "row",
-    justifyContent: "center",
-    gap: space.xs,
-    marginBottom: space.md,
-    marginTop: space.xs,
+    alignItems: "center",
+    gap: space.sm,
+    marginVertical: space.md,
   },
-  sliderDot: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: color.border,
-  },
-  sliderDotActive: {
-    backgroundColor: color.saffron,
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-  },
-  error: {
-    color: color.bad,
+  dividerLine: { flex: 1, height: 1, backgroundColor: color.border },
+  dividerText: {
+    color: color.inkFaint,
     fontFamily: "Nunito_600SemiBold",
     fontWeight: "600",
     fontSize: font.sizes.sm,
-    marginTop: space.sm,
   },
-  signupBtn: {
-    marginTop: space.md,
+  // Guest button — saffron filled.
+  guestBtn: {
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 52,
     backgroundColor: color.saffron,
     borderRadius: radius.md,
-    paddingVertical: space.md + 2,
-    alignItems: "center",
+    paddingVertical: space.md,
     ...shadow.button,
   },
-  signupBtnPressed: { transform: [{ translateY: 1 }] },
-  signupBtnDisabled: { opacity: 0.5 },
-  signupText: {
+  guestBtnPressed: { transform: [{ translateY: 1 }] },
+  guestBtnText: {
     color: color.white,
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
     fontSize: font.sizes.base,
   },
-  skipBtn: {
+  guestHint: {
     marginTop: space.sm,
-    alignItems: "center",
-    paddingVertical: space.sm,
+    textAlign: "center",
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
   },
-  skipText: {
+  btnDisabled: { opacity: 0.5 },
+  btnDisabledSaffron: { opacity: 0.7 },
+  error: {
+    marginTop: space.md,
+    color: color.badText,
     fontFamily: "Nunito_600SemiBold",
     fontWeight: "600",
     fontSize: font.sizes.sm,
-    color: color.inkFaint,
+    textAlign: "center",
   },
   footnote: {
     marginTop: space.lg,

@@ -25,6 +25,8 @@ import datetime
 from sqlalchemy.orm import Session
 
 from app.models import DailyWord, DialogueScenario, Shloka
+from app.seeds.daily_words import _CURATED as _SEED_DAILY_WORDS
+from app.seeds.shlokas import SEED_SLOKAS as _SEED_SLOKAS
 
 # Floors the guard test asserts. Days of distinct content before a daily
 # surface repeats; and approved (human-reviewed) scenarios on offer.
@@ -56,6 +58,7 @@ def content_well_report(db: Session) -> dict:
             "rows_total": _well_rows(db, DailyWord),
             "rows_remaining": _future_rows(db, DailyWord),
             "runway_days": _well_rows(db, DailyWord),
+            "seed_rows": len(_SEED_DAILY_WORDS),
             "dates_from": None,
             "dates_to": None,
         },
@@ -63,6 +66,7 @@ def content_well_report(db: Session) -> dict:
             "rows_total": _well_rows(db, Shloka),
             "rows_remaining": _future_rows(db, Shloka),
             "runway_days": _well_rows(db, Shloka),
+            "seed_rows": len(_SEED_SLOKAS),
             "dates_from": None,
             "dates_to": None,
         },
@@ -88,6 +92,15 @@ def content_well_report(db: Session) -> dict:
     ]
     low_approved = scenario_counts["approved"] < MIN_APPROVED_SCENARIOS
 
+    # P8-1: the seed is ahead of the database. run_seed() refills every boot,
+    # so a well whose DB count is below its seed count means the app has not
+    # been started since the seed grew — exactly the stale-DB state that left
+    # 6 ślokas and 0 daily words serving for days. Name the well; a red test
+    # is the mechanism, not a human noticing five days later.
+    seed_behind = [
+        name for name, w in wells.items() if w["rows_total"] < w["seed_rows"]
+    ]
+
     return {
         "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "today": today,
@@ -100,6 +113,7 @@ def content_well_report(db: Session) -> dict:
         "issues": {
             "low_runway_wells": low_runway,
             "low_approved": low_approved,
+            "seed_behind_wells": seed_behind,
         },
-        "healthy": not low_runway and not low_approved,
+        "healthy": not low_runway and not low_approved and not seed_behind,
     }

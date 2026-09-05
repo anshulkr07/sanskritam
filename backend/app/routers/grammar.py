@@ -10,11 +10,14 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.models import Feature
+from app.auth import require_learner
+from app.models import Feature, Learner
 from app.schemas import (
     DerivationResponse,
     FeatureResponse,
     ParadigmResponse,
+    PathNodeResponse,
+    PathSpineResponse,
     ScansionResponse,
     VarnamalaResponse,
     VarnaDistanceResponse,
@@ -75,6 +78,53 @@ async def get_features(db: Session = Depends(get_db)):
         )
         for f in features
     ]
+
+
+@router.get("/grammar/path", response_model=PathSpineResponse)
+async def get_path_spine(
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """The approved-content spine the journey path renders (P7-5).
+
+    Nodes are the feature taxonomy in teaching order (``features.rank``), each
+    carrying its **approved** challenge count — the path reflects what is
+    actually servable, not the brief catalogue. ``mastery`` is filled from the
+    caller's ``feature_mastery`` map (0 when absent); ``pending_count`` shows
+    the P8-0 backlog per feature so an author can see coverage gaps too.
+    LOCAL computation — no quota (§2.9)."""
+    import json as _json
+
+    from app.models import Challenge
+
+    features = db.query(Feature).order_by(Feature.rank).all()
+    counts: dict[tuple[str, str], int] = {}
+    for ch in db.query(Challenge.review_status, Challenge.features).all():
+        status = ch[0]
+        feats = ch[1] or []
+        if isinstance(feats, str):  # SQLite may hand back the raw JSON text
+            feats = _json.loads(feats)
+        for f in feats:
+            counts[(f, status)] = counts.get((f, status), 0) + 1
+
+    mastery_map = learner.feature_mastery if isinstance(learner.feature_mastery, dict) else {}
+
+    nodes = []
+    for f in features:
+        nodes.append(PathNodeResponse(
+            id=f.id,
+            feature=f.id,
+            kind=f.kind,
+            rank=f.rank or 0,
+            label_en=f.label_en or "",
+            label_hi=f.label_hi or "",
+            approved_count=counts.get((f.id, "approved"), 0),
+            pending_count=counts.get((f.id, "pending"), 0),
+            mastery=float(mastery_map.get(f.id, 0.0)),
+        ))
+
+    covered = sum(1 for n in nodes if n.approved_count > 0)
+    return PathSpineResponse(nodes=nodes, features_covered=covered, features_total=len(nodes))
 
 
 @router.get("/grammar/derive", response_model=DerivationResponse)

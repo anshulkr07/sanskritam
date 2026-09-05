@@ -24,7 +24,10 @@ config = context.config
 # this hardcoded sqlite:///{settings.db_path}, silently redirecting the
 # runtime init_db() upgrade to SQLite even when DATABASE_URL was set.)
 _db_url = settings.database_url or f"sqlite:///{settings.db_path}"
-config.set_main_option("sqlalchemy.url", _db_url)
+# Escape '%' -> '%%' so configparser (BasicInterpolation) doesn't reject a
+# password containing '%' (e.g. percent-encoded). On get() interpolation turns
+# %% back into %, so the engine still receives the real URL.
+config.set_main_option("sqlalchemy.url", _db_url.replace("%", "%%"))
 
 # Interpret the config file for Python logging.
 if config.config_file_name is not None:

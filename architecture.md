@@ -1,4 +1,4 @@
-# Shabd — Architecture
+# Sanskritam — Architecture
 
 Audio-first Sanskrit learning app built on adaptive code-switching.
 Last updated: 2026-08-30
@@ -24,7 +24,7 @@ A voice tutor that speaks in a blend of every language the learner already knows
 ### Decisions locked
 
 - **Platform**: React Native + Expo
-- **No local models. Anywhere.** Every model Shabd uses is a hosted API. We do not run inference servers, we do not ship weights, and nothing in this document should be read as self-hosting a model — not in the request path, not in a nightly batch, not on a build box. The app ships to phones, and phones cannot hold models. This constraint is **load-bearing and costs us two things** — metre-aware chant and true forced alignment — both accounted for below (§4.1, §6.2) rather than wished away.
+- **No local models. Anywhere.** Every model Sanskritam uses is a hosted API. We do not run inference servers, we do not ship weights, and nothing in this document should be read as self-hosting a model — not in the request path, not in a nightly batch, not on a build box. The app ships to phones, and phones cannot hold models. This constraint is **load-bearing and costs us two things** — metre-aware chant and true forced alignment — both accounted for below (§4.1, §6.2) rather than wished away.
 - **Sanskrit TTS**: **Sarvam Bulbul v3 `sa-IN`** — granted through the startup programme, requested 2026-08-29, ETA 2–3 days. This is the single biggest change to this document since it was written (§4.1, §12).
 - **Registers**: both classical/Vedic and laukika, assigned to different surfaces (see §5)
 - **Bridge languages**: English + Hindi at launch, plus Hinglish as a distinct third mode. Telugu next.
@@ -101,7 +101,7 @@ Do not solve this by quietly self-hosting Vāgdhenu. The constraint is the const
 
 #### One voice across the code-switch boundary
 
-This is the part worth reading twice. Shabd's thesis is code-switching *within a single turn* — "तव नाम किम्? What's your name?" is one sentence from one person. The previous design synthesised the Sanskrit half with Parler and the bridge half with Bulbul, which meant two timbres in one breath. §12 called this a casting problem and solved it by pre-rendering both. It was never actually solved; it was deferred.
+This is the part worth reading twice. Sanskritam's thesis is code-switching *within a single turn* — "तव नाम किम्? What's your name?" is one sentence from one person. The previous design synthesised the Sanskrit half with Parler and the bridge half with Bulbul, which meant two timbres in one breath. §12 called this a casting problem and solved it by pre-rendering both. It was never actually solved; it was deferred.
 
 With one engine speaking both halves it stops being a problem at all. Same speaker id, same prosody model, same sample rate — the seam disappears. **The unlock is not "Sanskrit audio exists"; it is "the persona is one person."** That is worth more to the product than the latency gain.
 
@@ -318,7 +318,7 @@ His stack (IISc Bengaluru) covers **chanting and śāstric recitation**. Ours co
 
 1. **Adopt the patterns, which carry no licence question and no weights.** Verification against a *known target* rather than open transcription (§6.2), and **abstention over accusation** (§6.3). These are the two best ideas in his stack and they are design, not code. Both are already load-bearing here.
 2. **Do not adopt the models.** Vāgdhenu is Apache-2.0 and would otherwise be usable; Su-śrotā publishes no licence at all, which means all rights reserved. Neither matters now — the constraint excludes both before the licences do.
-3. **Contact him anyway.** He open-sources actively, and the valuable thing is not code: Sanskrit content validation is a real bottleneck for us, and there are very few people who can grade Sanskrit pronunciation output properly. A collaboration or an advisory relationship is worth more to Shabd than either model would have been.
+3. **Contact him anyway.** He open-sources actively, and the valuable thing is not code: Sanskrit content validation is a real bottleneck for us, and there are very few people who can grade Sanskrit pronunciation output properly. A collaboration or an advisory relationship is worth more to Sanskritam than either model would have been.
 4. Do not repeat unverified claims from social media about this work — the "1,500 contributors" and "automated Śikṣā/Chandas verification engine" framing came from a third-party post whose author flagged it as their own interpretation. What is documented is metre-aware rendering and akṣara-level verification against a known target.
 
 **Vāgbodhinī partially overlaps our daily-śloka feature** and validates that syllable-level pronunciation feedback works — useful evidence that §13 is buildable at all. It does not do conversation, code-switching, adaptive ratio, or laukika Sanskrit, so our lane stays open.
@@ -453,7 +453,7 @@ Escape rate remains the health metric for the whole feature. Falling escape rate
 
 ### Code-switching is the pressure valve
 
-Shabd's core dial is `sanskrit_ratio`, and it doubles as the coverage valve. Bridge-language turns are cheap to author and unbounded in a way Sanskrit turns are not, so when the graph has no Sanskrit edge it can always fall back to Hindi or English without breaking character. As `sanskrit_ratio` rises the graph carries more of the load — which is exactly the product's own progression curve.
+Sanskritam's core dial is `sanskrit_ratio`, and it doubles as the coverage valve. Bridge-language turns are cheap to author and unbounded in a way Sanskrit turns are not, so when the graph has no Sanskrit edge it can always fall back to Hindi or English without breaking character. As `sanskrit_ratio` rises the graph carries more of the load — which is exactly the product's own progression curve.
 
 The old note here said v1 pre-renders both languages to avoid two timbres for one persona. **That constraint is gone** (§4.1): one engine speaks every surface, so mixing pre-rendered Sanskrit with live bridge audio — or the reverse — no longer changes who the learner hears. Pre-render both anyway, for cost, and because owned audio is the only hedge against losing the vendor (§10). But it is now a cost decision rather than an identity one, which means it can be relaxed per surface without the persona fracturing.
 
@@ -513,7 +513,7 @@ Ship the drill and the feedback loop; hold phoneme-level scoring until the align
 
 ## 14. Platform and operations
 
-Everything above is the part of Shabd that is hard because it is Sanskrit. This section is the part that is hard because it is an app, and until now the document has been almost silent on it. Treat the items marked **unresolved** as real gaps, not as details.
+Everything above is the part of Sanskritam that is hard because it is Sanskrit. This section is the part that is hard because it is an app, and until now the document has been almost silent on it. Treat the items marked **unresolved** as real gaps, not as details.
 
 ### 14.1 Backend hosting — **unresolved**
 
@@ -539,7 +539,7 @@ The backend has a token table and no real identity. Before shipping:
 
 Nothing in this document has mentioned billing, and the pricing thesis depends on it. Voice minutes are metered (§12) and open conversation is a paid tier, so this is core, not peripheral.
 
-**Store commission is a real line item.** Apple and Google take 30%, reduced to 15% under their small-business programmes (below ~$1M/year), which is where Shabd will sit for a long time. At $9.99/month that is roughly ₹880 gross → **~₹750 net**. Against ~₹400/month of inference for an engaged learner, the margin is ~47% rather than the ~55% modelled — and if the app ever crosses into the 30% tier without prices changing, ~35%.
+**Store commission is a real line item.** Apple and Google take 30%, reduced to 15% under their small-business programmes (below ~$1M/year), which is where Sanskritam will sit for a long time. At $9.99/month that is roughly ₹880 gross → **~₹750 net**. Against ~₹400/month of inference for an engaged learner, the margin is ~47% rather than the ~55% modelled — and if the app ever crosses into the 30% tier without prices changing, ~35%.
 
 Consequence worth planning around: **the live-synthesis build order (§11) roughly quadruples per-session cost until the pre-render pipeline lands.** That is affordable for a small beta and it is not affordable alongside a store commission at scale. Two reasons to build the pipeline, not one.
 

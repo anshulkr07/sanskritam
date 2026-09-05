@@ -46,7 +46,7 @@ for _spec_env in ("SARVAM_API_KEY", "GEMINI_API_KEY", "OPENAI_API_KEY",
         if _from_settings:
             os.environ[_spec_env] = _from_settings
 
-_SYSTEM_PROMPT = """You are the intent router for Shabd, a Sanskrit learning app. \
+_SYSTEM_PROMPT = """You are the intent router for Sanskritam, a Sanskrit learning app. \
 A learner is in a guided dialogue. The tutor just said a line, and the learner \
 replied — in ANY language or script (Sanskrit, Hindi, English, romanized \
 Hinglish like "haan", "haa", "ji", "nahi", "ok").

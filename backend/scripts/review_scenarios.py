@@ -262,20 +262,72 @@ def set_challenges_by_band(db: Session, features: list[str], status: str,
     return n
 
 
+def _normalise_for_dupe(sanskrit: str) -> str:
+    """Reduce a sentence to a comparison key that ignores sandhi spelling.
+
+    ``बालकः चन्द्रं पश्यति।`` and ``बालकश्चन्द्रं पश्यति।`` are one sentence
+    sandhied and un-sandhied. Strip punctuation + visarga/halanta variation at
+    word boundaries so both collapse to the same key and the reviewer sees
+    them adjacent instead of 40 rows apart (P8-0)."""
+    import unicodedata
+
+    t = unicodedata.normalize("NFC", sanskrit)
+    for ch in ("।", "॥", ".", ",", "?", "!", ";", ":", "-", " "):
+        t = t.replace(ch, "")
+    # visarga/h before a boundary and anusvara are the common alternates
+    t = t.replace("ः", "").replace("ं", "्")
+    # drop trailing virama (word-final halanta)
+    while t.endswith("्"):
+        t = t[:-1]
+    return t
+
+
+def _band_of(row: dict) -> str:
+    """Human-readable band name for sorting the packet."""
+    return ", ".join(row["features"]) or "(no features)"
+
+
 def render_challenge_packet(db: Session, path: str, out: Optional[TextIO] = None) -> int:
-    """Write every pending challenge's sentence + prompt + features to ``path``."""
+    """Write every pending challenge's sentence + prompt + features to ``path``.
+
+    P8-0: rows are grouped BY BAND (a reviewer judges twenty DAT.SG sentences
+    in one pass instead of context-switching per row) and near-duplicates —
+    sentences sharing a sandhi-insensitive key — are written ADJACENT under a
+    marker so a reviewer picks one rather than meeting the twin far away."""
     pending = load_challenges(db, status="pending")
+
+    # Group by band, then within a band cluster near-duplicates together.
+    by_band: dict[str, list[dict]] = defaultdict(list)
+    for r in pending:
+        by_band[_band_of(r)].append(r)
+
     n = 0
     stream = out if out is not None else open(path, "w", encoding="utf-8")
     try:
-        for r in pending:
-            stream.write(
-                f"[{r['register']}] {r['target_sanskrit']}\n"
-                f"    IAST   {r['target_iast']}\n"
-                f"    prompt {r['prompt_l1']}\n"
-                f"    feats  {', '.join(r['features'])}\n\n"
-            )
-            n += 1
+        for band in sorted(by_band):
+            rows = by_band[band]
+            # Cluster rows whose sandhi-normalised forms collide.
+            seen: dict[str, int] = {}
+            clusters: list[list[dict]] = []
+            for r in rows:
+                key = (r["register"], _normalise_for_dupe(r["target_sanskrit"]))
+                if key in seen:
+                    clusters[seen[key]].append(r)
+                else:
+                    seen[key] = len(clusters)
+                    clusters.append([r])
+            stream.write(f"═══ BAND {band} — {len(rows)} row(s) ═══\n\n")
+            for cluster in clusters:
+                if len(cluster) > 1:
+                    stream.write(f"  ⚠ {len(cluster)} near-duplicates — pick one:\n")
+                for r in cluster:
+                    stream.write(
+                        f"  [{r['register']}] {r['target_sanskrit']}   (id {r['id']})\n"
+                        f"      IAST   {r['target_iast']}\n"
+                        f"      prompt {r['prompt_l1']}\n"
+                        f"      feats  {', '.join(r['features'])}\n\n"
+                    )
+                    n += 1
     finally:
         if out is None:
             stream.close()

@@ -117,7 +117,12 @@ def init_db() -> None:
 
     cfg = alembic_config.Config()
     cfg.set_main_option("script_location", str(_MIGRATIONS_DIR))
-    cfg.set_main_option("sqlalchemy.url", settings.database_url if settings.database_url else f"sqlite:///{settings.db_path}")
+    # Alembic's Config wraps configparser (BasicInterpolation), so a literal '%'
+    # in the URL (e.g. a percent-encoded password) triggers "invalid interpolation
+    # syntax".  Escape '%' -> '%%' for the alembic option only; the engine created
+    # in db.py keeps the raw URL, so this doubler must not touch that.
+    _alembic_url = (settings.database_url if settings.database_url else f"sqlite:///{settings.db_path}").replace("%", "%%")
+    cfg.set_main_option("sqlalchemy.url", _alembic_url)
     alembic_command.upgrade(cfg, "head")
 
     drift = _schema_drift()

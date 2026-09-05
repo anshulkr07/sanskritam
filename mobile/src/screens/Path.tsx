@@ -1,42 +1,25 @@
-// Path — the winding journey through Shabd's content taxonomy.
-// A vertically scrolling path of nodes mapped to feature bands from the
-// content taxonomy. Node states: locked, available, current, complete, mastered.
-// The path is drawn with react-native-svg as a single curved path.
-// Progress derives from Learner.feature_mastery.
+// Path — the winding journey through Sanskritam's content taxonomy.
+// P7-5: nodes now come from GET /grammar/path — the APPROVED-CONTENT SPINE —
+// so the path reflects what is actually servable, not the brief catalogue.
+// Node states: locked, available, current, complete, mastered. Progress
+// derives from Learner.feature_mastery (server-merged into each node).
 //
-// U3-1: Created per UI_HANDOVER.md spec.
+// Resilience (U10-3): a failed fetch shows a retryable error state, never a
+// silent empty path, and falls back to the local taxonomy so the screen stays
+// usable offline.
 
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
+import { api, type PathNode, type PathSpine } from "../api/client";
 import { useAuth } from "../store/auth";
 import { color, font, radius, script, shadow, space } from "../theme";
-import { Button, Card } from "../components/ui";
+import { Button } from "../components/ui";
 import type { TabScreenProps } from "../navigation/types";
 
-// ── Feature band taxonomy ─────────────────────────────────────────────
-// These correspond to the feature bands from HANDOVER.md P2-1.
-// The path visualises these bands; each node = one unit.
-
-interface PathNodeData {
-  id: string;
-  label: string;
-  labelSa: string;
-  mastery: number;     // 0..1 from Learner.feature_mastery
-  features: string[];
-}
-
 type NodeStatus = "locked" | "available" | "current" | "complete" | "mastered";
-
-function getStatus(mastery: number, isCurrent: boolean, prevCompleted: boolean): NodeStatus {
-  if (mastery >= 1) return "mastered";
-  if (mastery >= 0.8) return "complete";
-  if (isCurrent) return "current";
-  if (prevCompleted) return "available";
-  return "locked";
-}
 
 const STATUS_COLORS: Record<NodeStatus, string> = {
   locked:    color.inkFaint,
@@ -46,38 +29,62 @@ const STATUS_COLORS: Record<NodeStatus, string> = {
   mastered:  color.gold,
 };
 
-const BANDS: PathNodeData[] = [
-  { id: "greetings",        label: "Greetings",         labelSa: "नमस्ते",               mastery: 0, features: ["greeting"] },
-  { id: "nominals",         label: "Noun basics",       labelSa: "नामानि",               mastery: 0, features: ["noun", "gender"] },
-  { id: "verbs-present",    label: "Present tense",     labelSa: "वर्तमानकालः",          mastery: 0, features: ["verb_present"] },
-  { id: "accusative",       label: "Accusative case",   labelSa: "द्वितीया विभक्तिः",    mastery: 0, features: ["case_accusative"] },
-  { id: "adjectives",       label: "Adjectives",        labelSa: "विशेषणानि",            mastery: 0, features: ["adjective"] },
-  { id: "sandhi-basic",     label: "Sound joining",     labelSa: "सन्धिः",               mastery: 0, features: ["sandhi"] },
-  { id: "past-tense",       label: "Past tense",        labelSa: "भूतकालः",              mastery: 0, features: ["verb_past"] },
-  { id: "instrumental",     label: "Instrumental case", labelSa: "तृतीया विभक्तिः",      mastery: 0, features: ["case_instrumental"] },
-  { id: "dative",           label: "Dative case",       labelSa: "चतुर्थी विभक्तिः",     mastery: 0, features: ["case_dative"] },
-  { id: "genitive",         label: "Genitive case",     labelSa: "षष्ठी विभक्तिः",       mastery: 0, features: ["case_genitive"] },
-  { id: "locative",         label: "Locative case",     labelSa: "सप्तमी विभक्तिः",      mastery: 0, features: ["case_locative"] },
-  { id: "dual",             label: "The dual number",   labelSa: "द्विवचनम्",            mastery: 0, features: ["dual"] },
-  { id: "compounds",        label: "Word compounds",    labelSa: "समासाः",               mastery: 0, features: ["compound"] },
-  { id: "voice",            label: "Active & middle",   labelSa: "परस्मैपदम्",           mastery: 0, features: ["voice"] },
-  { id: "conversation",     label: "Free conversation", labelSa: "संभाषणम्",             mastery: 0, features: ["conversation"] },
+function nodeStatus(
+  mastery: number,
+  approvedCount: number,
+  prevUnlocked: boolean,
+): NodeStatus {
+  if (mastery >= 1) return "mastered";
+  if (mastery >= 0.8) return "complete";
+  if (approvedCount > 0 && prevUnlocked) return "current";
+  if (prevUnlocked) return "available";
+  return "locked";
+}
+
+// Offline fallback: a few taxonomy nodes the client knows even with no
+// network. The live endpoint carries the same ids plus approved counts.
+const FALLBACK_NODES: PathNode[] = [
+  { id: "NOM.SG", feature: "NOM.SG", kind: "case", rank: 10, label_en: "Nominative Singular", label_hi: "प्रथमा विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0 },
+  { id: "ACC.SG", feature: "ACC.SG", kind: "case", rank: 11, label_en: "Accusative Singular", label_hi: "द्वितीया विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0 },
+  { id: "SG", feature: "SG", kind: "number", rank: 20, label_en: "Singular", label_hi: "एकवचनम्", approved_count: 0, pending_count: 0, mastery: 0 },
+  { id: "PRES.3SG", feature: "PRES.3SG", kind: "tense", rank: 32, label_en: "Present 3rd Person", label_hi: "वर्तमान प्रथमपुरुषः", approved_count: 0, pending_count: 0, mastery: 0 },
 ];
 
-// ── PathNode component ─────────────────────────────────────────────────
+interface PathNodeData {
+  id: string;
+  label: string;
+  labelSa: string;
+  mastery: number;
+  approvedCount: number;
+  features: string[];
+}
 
-function PathNode({
+function toNodeData(n: PathNode): PathNodeData {
+  return {
+    id: n.id,
+    label: n.label_en || n.id,
+    labelSa: n.label_hi || n.id,
+    mastery: n.mastery ?? 0,
+    approvedCount: n.approved_count ?? 0,
+    features: [n.id],
+  };
+}
+
+// ── PathNodeView component ─────────────────────────────────────────────
+
+function PathNodeView({
   data,
   index,
+  prevUnlocked,
   onTap,
 }: {
   data: PathNodeData;
   index: number;
+  prevUnlocked: boolean;
   onTap: (data: PathNodeData) => void;
 }) {
-  // Determine status based on mastery
-  const isFirstCompleted = index === 0 || BANDS.slice(0, index).some((b) => b.mastery >= 0.8);
-  const status = getStatus(data.mastery, data.id === "greetings", isFirstCompleted);
+  const status = nodeStatus(data.mastery, data.approvedCount, index === 0 || prevUnlocked);
+  const hasContent = data.approvedCount > 0;
   const colorFill = STATUS_COLORS[status];
 
   return (
@@ -85,7 +92,7 @@ function PathNode({
       onPress={() => onTap(data)}
       style={[styles.node, status === "locked" && styles.nodeLocked]}
       accessibilityRole="button"
-      accessibilityLabel={`${data.labelSa} — ${data.label}, ${status}`}
+      accessibilityLabel={`${data.labelSa} — ${data.label}, ${status}, ${data.approvedCount} exercises`}
     >
       {/* Node circle */}
       <View
@@ -126,7 +133,7 @@ function PathNode({
         {data.labelSa}
       </Text>
       <Text style={[styles.nodeGloss, status === "locked" && { color: color.inkFaint }]}>
-        {data.label}
+        {hasContent ? `${data.approvedCount}` : "—"}
       </Text>
     </Pressable>
   );
@@ -135,18 +142,36 @@ function PathNode({
 // ── Path screen ────────────────────────────────────────────────────────
 
 export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
-  const { learner, refresh } = useAuth();
+  const { learner } = useAuth();
+  const [spine, setSpine] = useState<PathSpine | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [selectedNode, setSelectedNode] = useState<PathNodeData | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  // Merge backend mastery data into bands
-  const bands = useMemo(() => {
-    const mastery = learner?.feature_mastery ?? {};
-    return BANDS.map((b) => ({
-      ...b,
-      mastery: mastery[b.id] ?? 0,
-    }));
-  }, [learner]);
+  const load = useCallback(() => {
+    setLoading(true);
+    api
+      .pathSpine()
+      .then((s) => {
+        setSpine(s);
+        setLoadFailed(false);
+      })
+      .catch(() => setLoadFailed(true))
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const bands: PathNodeData[] = useMemo(
+    () =>
+      spine && spine.nodes.length > 0
+        ? spine.nodes.map(toNodeData)
+        : FALLBACK_NODES.map(toNodeData),
+    [spine],
+  );
 
   const onNodeTap = useCallback((data: PathNodeData) => {
     setSelectedNode(data);
@@ -157,7 +182,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
     if (!selectedNode) return;
     // Close the sheet FIRST so the learner never sees it over the pushed
     // screen (U8-0), then launch a practice session scoped to this unit's
-    // feature bands.
+    // feature.
     setSheetOpen(false);
     navigation.navigate("Challenge", { features: selectedNode.features });
   }, [selectedNode, navigation]);
@@ -168,21 +193,46 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
         <Text style={styles.title}>Your Path</Text>
         <Text style={styles.subtitle}>A journey through Sanskrit, step by step.</Text>
 
-        <View style={styles.path}>
-          {bands.map((band, i) => (
-            <React.Fragment key={band.id}>
-              {/* Connector line (except after last) */}
-              {i > 0 && <View style={styles.connector} />}
-              <PathNode data={band} index={i} onTap={onNodeTap} />
-            </React.Fragment>
-          ))}
-        </View>
+        {loading && !spine ? (
+          <Text style={styles.statusText}>Loading your path…</Text>
+        ) : loadFailed ? (
+          <View style={[styles.errorCard, shadow.card]}>
+            <Text style={styles.errorTitle}>Couldn't load the path.</Text>
+            <Text style={styles.errorSub}>
+              Check your connection — your progress is safe.
+            </Text>
+            <Button label="Retry" onPress={load} style={{ marginTop: space.md }} />
+          </View>
+        ) : null}
+
+        {!loading && (
+          <View style={styles.path}>
+            {bands.map((band, i) => (
+              <React.Fragment key={band.id}>
+                {i > 0 && <View style={styles.connector} />}
+                <PathNodeView
+                  data={band}
+                  index={i}
+                  prevUnlocked={
+                    i === 0 ||
+                    bands.slice(0, i).some((b) => b.mastery >= 0.8 || b.approvedCount > 0)
+                  }
+                  onTap={onNodeTap}
+                />
+              </React.Fragment>
+            ))}
+          </View>
+        )}
       </ScrollView>
 
       {/* Unit detail sheet */}
       {sheetOpen && selectedNode && (
         <View style={styles.sheetOverlay}>
-          <Pressable style={styles.sheetBackdrop} onPress={() => setSheetOpen(false)} />
+          <Pressable
+            style={styles.sheetBackdrop}
+            onPress={() => setSheetOpen(false)}
+            accessibilityLabel="Close details"
+          />
           <View style={styles.sheet}>
             <Text style={[styles.sheetTitle, script("bold")]}>{selectedNode.labelSa}</Text>
             <Text style={styles.sheetSub}>{selectedNode.label}</Text>
@@ -199,18 +249,14 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
                 {Math.round(selectedNode.mastery * 100)}% mastered
               </Text>
             </View>
-            {selectedNode.features.length > 0 && (
-              <View style={styles.sheetFeatures}>
-                <Text style={styles.sheetFeaturesTitle}>Teaches:</Text>
-                {selectedNode.features.map((f) => (
-                  <Text key={f} style={styles.sheetFeature}>
-                    · {f.replace(/_/g, " ")}
-                  </Text>
-                ))}
-              </View>
-            )}
+            {selectedNode.approvedCount === 0 ? (
+              <Text style={styles.sheetEmptyNote}>
+                No exercises ready here yet — you're ahead of us today. Try an
+                earlier unit.
+              </Text>
+            ) : null}
             <Button
-              label="Start unit"
+              label={selectedNode.approvedCount > 0 ? "Start unit" : "Practice anyway"}
               onPress={onStartUnit}
               block
               style={{ marginTop: space.md }}
@@ -238,6 +284,32 @@ const styles = StyleSheet.create({
     color: color.inkSoft,
     marginBottom: space.lg,
     lineHeight: 20,
+  },
+  statusText: {
+    fontFamily: "Nunito_500Medium",
+    fontWeight: "500",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+    marginTop: space.md,
+  },
+  errorCard: {
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.lg,
+    marginBottom: space.lg,
+  },
+  errorTitle: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.base,
+    color: color.ink,
+  },
+  errorSub: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+    marginTop: 4,
   },
   path: { alignItems: "center" },
   connector: {
@@ -280,8 +352,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: font.sizes.sm,
     color: color.inkSoft,
-    position: "absolute",
-    right: space.md,
   },
   nodeLabelLocked: {},
   sheetOverlay: {
@@ -326,19 +396,12 @@ const styles = StyleSheet.create({
     minWidth: 50,
     textAlign: "right",
   },
-  sheetFeatures: { marginTop: space.md },
-  sheetFeaturesTitle: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    marginBottom: 4,
-  },
-  sheetFeature: {
+  sheetEmptyNote: {
     fontFamily: "Nunito_400Regular",
     fontWeight: "400",
     fontSize: font.sizes.sm,
-    color: color.ink,
+    color: color.inkSoft,
+    marginTop: space.md,
     lineHeight: 20,
   },
 });

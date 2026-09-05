@@ -14,7 +14,9 @@ import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 
 import { useAuth } from "../store/auth";
+import { setSoundEffectsEnabled } from "../services/sfx";
 import { color, font, radius, script, shadow, space } from "../theme";
+import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
 
 const KEYS = {
   sound: "shabd.pref.sound",
@@ -32,18 +34,15 @@ function setPref(key: string, v: boolean): Promise<void> {
 
 export default function SettingsPanel() {
   const { learner, logout, displayName } = useAuth();
+  const { textSize, setTextSize } = useTypeScale();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
   const [reduced, setReduced] = useState(false);
-  const [textSize, setTextSize] = useState<"S" | "M" | "L">("M");
 
   useEffect(() => {
     pref(KEYS.sound).then(setSound);
     pref(KEYS.haptics).then(setHapticsOn);
     pref(KEYS.reducedMotion).then(setReduced);
-    AsyncStorage.getItem(KEYS.textSize).then((v) => {
-      if (v === "S" || v === "L") setTextSize(v);
-    });
   }, []);
 
   return (
@@ -77,7 +76,15 @@ export default function SettingsPanel() {
       {/* Experience */}
       <View style={styles.card}>
         <Text style={styles.sectionTitle}>Sound & feel</Text>
-        <ToggleRow label="Sound effects" value={sound} onChange={setSound} icon="volume-high" />
+        <ToggleRow
+          label="Sound effects"
+          value={sound}
+          onChange={(v) => {
+            setSound(v);
+            setSoundEffectsEnabled(v); // U6-2: immediate, respects the toggle
+          }}
+          icon="volume-high"
+        />
         <ToggleRow label="Haptics" value={hapticsOn} onChange={setHapticsOn} icon="phone-portrait" />
         <ToggleRow
           label="Reduce motion"
@@ -88,28 +95,33 @@ export default function SettingsPanel() {
         />
       </View>
 
-      {/* Text size */}
+      {/* Text size — U5-2: "Larger text" scales the app's own type ramp
+          independently of the OS; XL targets elder mode. */}
       <View style={styles.card}>
         <Text style={styles.sectionTitle}>Text size</Text>
         <View style={styles.sizerRow}>
-          {(["S", "M", "L"] as const).map((s) => (
+          {(["S", "M", "L", "XL"] as const).map((s) => (
             <Pressable
               key={s}
-              onPress={() => setTextSize(s)}
+              onPress={() => setTextSize(s as TextSize)}
               style={[styles.sizer, textSize === s && styles.sizerActive]}
               accessibilityRole="button"
+              accessibilityLabel={`Text size ${s}`}
               accessibilityState={{ selected: textSize === s }}
             >
               <Text style={[styles.sizerText, textSize === s && styles.sizerTextActive]}>{s}</Text>
             </Pressable>
           ))}
         </View>
+        <Text style={styles.sizerHint}>
+          XL is elder mode — Sanskrit body text never drops below 18pt.
+        </Text>
       </View>
 
       {/* About */}
       <View style={styles.card}>
         <Text style={styles.sectionTitle}>About</Text>
-        <Text style={styles.aboutText}>Shabd — learn Sanskrit by evidence, not guesswork.</Text>
+        <Text style={styles.aboutText}>Sanskritam — learn Sanskrit by evidence, not guesswork.</Text>
         <Pressable
           onPress={() => {}}
           style={styles.linkRow}
@@ -181,6 +193,14 @@ const styles = StyleSheet.create({
   sizerActive: { backgroundColor: color.saffron },
   sizerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.inkSoft },
   sizerTextActive: { color: color.white },
+  sizerHint: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
+    marginTop: space.sm,
+    lineHeight: 16,
+  },
   aboutText: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm, lineHeight: 19 },
   linkRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: space.xs },
   link: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },

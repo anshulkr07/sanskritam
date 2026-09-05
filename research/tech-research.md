@@ -1,10 +1,10 @@
-> **Read as a record, not a plan (banner added 2026-08-30).** Shabd is **API-only: no local models,
+> **Read as a record, not a plan (banner added 2026-08-30).** Sanskritam is **API-only: no local models,
 > anywhere** (architecture.md §1) — the app ships to phones and we run no inference servers, no GPU
 > box and no local batch. Any self-hosted model evaluated below (Parler-TTS, Vāgdhenu, Su-śrotā, and
 > anything requiring torch or CUDA) is **out of scope regardless of its verdict here.** Rule-based
 > libraries such as Vidyut are unaffected: they carry no weights and no GPU, and run server-side.
 
-# Shabd — Tech Research: Sanskrit Learning Backend
+# Sanskritam — Tech Research: Sanskrit Learning Backend
 
 **Date:** 2026-08-29
 **Scope:** NLP, forced alignment, TTS, adaptive learning, FastAPI infrastructure
@@ -140,7 +140,7 @@ pip install indic-transliteration lxml networkx tinydb six
 
 ### indic-transliteration (pip install indic-transliteration)
 
-**Verdict: USE — best transliteration lib for Shabd**
+**Verdict: USE — best transliteration lib for Sanskritam**
 
 | Attribute | Detail |
 |-----------|--------|
@@ -404,8 +404,8 @@ Full formula reference: [FSRS paper](https://github.com/open-spaced-repetition/f
 
 ### Caveats
 
-- FSRS expects **explicit recall attempts** (user saw the card and tried to recall). Shabd's audio challenges are exactly this — play prompt, user speaks, system grades. Good fit.
-- The 21 default parameters are trained on Anki data (flashcard reviews). For language feature mastery they may not be optimal. Plan to collect enough Shabd data to **optimize** the params (defaults work but won't be optimal for pronunciation-heavy features).
+- FSRS expects **explicit recall attempts** (user saw the card and tried to recall). Sanskritam's audio challenges are exactly this — play prompt, user speaks, system grades. Good fit.
+- The 21 default parameters are trained on Anki data (flashcard reviews). For language feature mastery they may not be optimal. Plan to collect enough Sanskritam data to **optimize** the params (defaults work but won't be optimal for pronunciation-heavy features).
 - The `fsrs` package includes an `Optimizer` class — run it against production data quarterly.
 - `desired_retention=0.9` = 90% probability of recall at review time. This is aggressive for pronunciation features where 75-80% retention may be more motivating. Tune per feature type.
 

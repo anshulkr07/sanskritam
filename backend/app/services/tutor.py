@@ -205,7 +205,7 @@ class TutorReply:
     learner: SanskritHealth = field(default_factory=SanskritHealth)
 
 
-_SYSTEM_PROMPT = """You are a warm, patient Sanskrit conversation tutor in Shabd. \
+_SYSTEM_PROMPT = """You are a warm, patient Sanskrit conversation tutor in Sanskritam. \
 You are having a real conversation with ONE learner, not running a quiz.
 
 HOW YOU TEACH

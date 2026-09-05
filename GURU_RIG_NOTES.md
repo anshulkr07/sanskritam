@@ -1,0 +1,717 @@
+# Guru rig — integration notes
+
+Companion to `rive_ui.md`. Written from the built file, not from plan. Every
+claim below was checked against the file itself (keyframe queries, state
+machine simulation, or a render harness), not from memory of building it.
+
+## The file
+
+Two artboards in `guru.riv`, sharing one ViewModel `GuruInputs`:
+
+| Artboard | State machine | What it is |
+|---|---|---|
+| `GuruPortrait` | `TutorSM` | The character. Expressive, 7 states, works at any size. |
+| `GuruMeditate` | `MeditateSM` | An ambient full-screen scene. Seated, breathing, still. |
+
+`GuruPortrait` is the one you reach for by default. `GuruMeditate` is for the
+screens where nothing is being said — a session timer, a mantra player, the
+pause between lessons.
+
+---
+
+# 1. GuruPortrait / TutorSM
+
+## Hierarchy as built
+
+```
+guru_root                       ambient breathe / sway / weight shift
+├── head_group      pivot (300, 377.85)   ← headTurn rotates this
+│   ├── head_core                          face, beard, bun
+│   ├── jataL_group pivot (214.05, 194.25) ← side lock, lags the head
+│   ├── jataR_group pivot (388.43, 194.25) ← lags 3 frames further, 85% amp
+│   ├── mouth_interior                     revealed as the jaw drops
+│   ├── jaw_group   pivot (300, 272.55)   ← mouthOpen rotates this (5° max)
+│   ├── face_patch                         brows/irises/lashes erased
+│   ├── irisL / irisR                      gazeX/gazeY
+│   ├── lashL / lashR
+│   ├── lidL / lidR                        blink (vector, sy 0=open 100=shut)
+│   └── browL / browR                      browRaise
+├── mala_group      pivot (300, 373.35)   ← swings, lags the torso
+├── guru_art                               body plate, no head, no mālā
+└── glow                                   radial gradient
+```
+
+All image pieces sit at 45% scale (cut from the 1254px source).
+
+`guru_root` sits at local (282.15, 282.15), not (300, 300). That 17.85 offset
+is real and every keyframe is calibrated to it — it came from the artboard
+being accidentally converted to a Layout mid-build, and the cheapest correct
+answer was to re-key against it rather than unwind it. `GuruMeditate` has no
+such offset, which is how we know it was the accident and not the design.
+**Do not "fix" the offset without re-keying all 35 affected keyframes.**
+
+## Input ranges (wire format)
+
+| Property | Range | Maps to |
+|---|---|---|
+| `state` | 0–6 | idle, speaking, thinking, listening, celebrating, encouraging, patient |
+| `headTurn` | −100…100 | head_group rotation, ±12° |
+| `gazeX` | −100…100 | iris x, ±3.5u |
+| `gazeY` | −100…100 | iris y, ±2u |
+| `browRaise` | 0–100 | brow y; right brow travels 15% further (asymmetry) |
+| `mouthOpen` | 0–100 | jaw rotation, 0–5° — **currently gated off, see The mouth** |
+| `smile` | 0–100 | jaw lift + mouth interior width/flatten |
+| `glow` | 0–100 | halo opacity 0–70, scale 90–108% |
+| `blink` | trigger | Blink layer — routes to a slow blink in thinking/patient |
+| `celebrate` | trigger | **unbound and unused — drive `state = 4` instead** |
+| `intensity` | 0–100 | master amplitude, **50 = neutral** (see below) |
+| `armRaise` | 0–100 | unbound. No arms on the portrait; setting it does nothing. |
+
+`rig.ts` exposes these normalised to −1…1 / 0…1. Screens use that, not these.
+
+## Who owns what — the single most important thing here
+
+Checked by querying every keyframe in every timeline. The split is clean:
+
+| Owner | Object properties it writes |
+|---|---|
+| **Timelines** (TutorSM layer 1) | `guru_root` x/y/sx/sy/r, `head_group` **y**, `jataL/R_group` r, `mala_group` r |
+| **Data binding** (the app) | `head_group` **r**, `iris` x/y, `brow` y, `jaw_group` r, `mouth_interior` sx/sy, `glow` |
+| **Blink layer** (TutorSM layer 2) | `lidL` / `lidR` sy |
+
+**No timeline anywhere keys head rotation, gaze, brows or the jaw.** Three
+consequences, all of which matter:
+
+1. The app can drive the face at any time, in any state, and nothing
+   overwrites it. There is no "the timeline is fighting me" case to design
+   around.
+2. **Nothing was blocking lip sync at the binding level.** An earlier version
+   of this file claimed the `speaking` timeline keyed `mouthOpen`. It does not
+   — it keys only the mālā and a body bob. But the mouth still cannot work,
+   for a different and more basic reason. See **The mouth**, below.
+3. **The idle timeline contains no head turning at all.** Out of the box he
+   breathes and sways but never looks around. Everything that makes him feel
+   present comes from `director.ts`. If he looks dead, the director is not
+   running.
+
+## The mouth — viseme plates
+
+The lips in the source art are painted **shut**. `mouthOpen` rotates
+`jaw_group`, which slides a sealed line around and, past about `mouthOpen` 20,
+tears open a grey wedge across his right cheek where the jaw plate separates
+from the head plate. It can never read as speech. The mouth comes from plate
+swapping instead — the standard way 2D lip sync is done.
+
+### The plates
+
+Six generated by inpainting the mouth region of
+`icons/b3dd0e00-9ff6-4064-859c-8b9ef5d8f240.png` (source plates in `icons/`,
+extraction spec in `icons/visemes/`). All six validated: exactly 1254 × 1254,
+sub-pixel registered (worst 0.51 px), no rescale.
+
+| index | plate | source | Sanskrit | shape |
+|---|---|---|---|---|
+| 0 | *(none — base art)* | — | — | lips together |
+| 1 | `v_ee`  | `icons/ee.png` | इ ई | wide, thin gap |
+| 2 | `v_aa`  | `icons/a.png`  | अ ए | medium open |
+| 3 | `v_aah` | `icons/aa.png` | आ ऐ | wide open, tongue visible |
+| 4 | `v_oh`  | `icons/o.png`  | ओ औ | rounded, medium |
+| 5 | `v_oo`  | `icons/oo.png` | उ ऊ व | pursed tight |
+| 6 | `v_fv`  | `icons/v.png`  | फ़ व | teeth on lower lip |
+
+Each is the mask box `x 495–775, y 515–705` lifted out at full source
+resolution (280 × 190) with a 14 px feathered alpha rim, so it dissolves into
+the face beneath rather than showing a border. `icons/rig/v_*.png`.
+
+Ordered by aperture, so a **fractional** `viseme` value cross-fades between two
+adjacent plates. Integers hard-swap, which is what cartoon lip sync does and
+what the driver sends.
+
+### Placement
+
+Patch centre is source (635, 610) → artboard (303.60, 292.35) →
+**head_group-local (3.60, −85.50)**, scale 45%, same as every other piece.
+(Derived from `head_core` at local (4.5, −195.98) rendering at artboard
+(304.5, 181.87), which puts head_group's origin at (300, 377.85) — matching the
+documented pivot.)
+
+### They read at every size
+
+Changed pixels versus rest, same measure as the motion table further down:
+
+| plate | 110px | 132px | 220px | 420px | 600px |
+|---|---|---|---|---|---|
+| `aah` | 141 | 202 | 534 | 1906 | 3816 |
+| `oh`  | 121 | 164 | 435 | 1558 | 3181 |
+| `oo`  | 119 | 153 | 431 | 1544 | 3163 |
+| `fv`  |  81 | 113 | 249 |  814 | 1626 |
+| `ee`  |  77 |  97 | 261 |  852 | 1659 |
+| `aa`  |  65 |  91 | 256 |  921 | 1845 |
+
+For scale, `gazeX` at full is 17 changed pixels at 110 px — invisible. Every
+plate clears the threshold comfortably, so the mouth needs no compact-mode
+amplitude help. What it does get is a longer minimum hold when small
+(`visemeMinMs`: 90 / 70 / 55 ms), because rapid changes in the two subtlest
+plates read as noise rather than speech at chat-avatar size.
+
+### Built — the mouth is live
+
+In the .riv:
+
+- `GuruInputs.viseme` — number property `0-3921`; instance values `0-3922`
+  (GuruInputsDefault) and `0-3923` (Instance).
+- Six assets `v_ee 0-4032`, `v_aa 0-4033`, `v_aah 0-4034`, `v_oh 0-4035`,
+  `v_oo 0-4036`, `v_fv 0-4037`.
+- Six images under `head_group` (`0-2731`): `vis_ee 0-4038`, `vis_aa 0-4039`,
+  `vis_aah 0-4040`, `vis_oh 0-4041`, `vis_oo 0-4042`, `vis_fv 0-4043`. All at
+  local (3.60, −85.50), sx = sy = 45, opacity 0, sent to front.
+  **Verified**: each reports computed world (303.60, 292.35), the exact target,
+  and being children of `head_group` they rotate with `headTurn`.
+- Six converters, one per plate:
+  `vis_ee 0-3924`, `vis_aa 0-3942`, `vis_aah 0-3960`, `vis_oh 0-3978`,
+  `vis_oo 0-3996`, `vis_fv 0-4014`, each
+  `max(0, 1 - max({Input}-n, n-{Input})) * 100`. The formula language has no
+  `abs`, so `max(x, -x)` stands in for it.
+- Each image's `opacity` (key 18) bound to `viseme` through its converter.
+
+In the app: `viseme.ts` (Devanagari → shapes → schedule → driver), `rig.viseme()`,
+`<Guru speech={{ text, durationMs }} />`, per-size hold times, and
+`MOUTH_RIG_READY = true`.
+
+The jaw rotation binding is deliberately left in place but unused. The plates
+carry the mouth; `mouthOpen` stays at 0 because any rotation would slide the
+face beneath a static patch and re-open the seam.
+
+### Usage
+
+```tsx
+<Guru
+  state={AvatarState.Speaking}
+  speech={{ text: 'ॐ नमः शिवाय', durationMs: clipMs }}
+  amplitude={() => player.level}   // optional; gates shapes, does not drive them
+/>
+```
+
+Without `speech` the mouth falls back to an irregular 6-9 Hz shape walk — not
+lip sync, but not a closed mouth either. Without `amplitude` the text timing
+stands on its own.
+
+## Hands — gesture plates
+
+He had no arms in frame, so he could not gesture. Four plates fix that, built
+the same way as the visemes: inpainted into the portrait, then extracted.
+
+| index | image | asset | gesture | use |
+|---|---|---|---|---|
+| 0 | *(none)* | — | hands down | default |
+| 1 | `hand_anjali 0-4054` | `h_anjali 0-4050` | añjali / namaste | greeting, session start |
+| 2 | `hand_abhaya 0-4055` | `h_abhaya 0-4051` | abhaya, palm forward | reassurance, a correct answer |
+| 3 | `hand_offer 0-4056` | `h_offer 0-4052` | upturned palm | presenting, explaining |
+| 4 | `hand_point 0-4057` | `h_point 0-4053` | index finger | emphasis, "first…" |
+
+### Extraction: two attempts, and why the second one matters
+
+**First attempt — diff the plate against the original and keep what changed.**
+It fragmented. Where new skin lands on his bare shoulder the difference is near
+zero, so the hand holed out and the wrist bracelet detached into its own island.
+
+**Second attempt — a rectangular patch, like the viseme plates.** Clean, but it
+carries the robe and mālā behind the hands, so it could only move about 12 px
+before the baked background visibly dragged. That is what made the first
+gesture animation read as materialising rather than lifting.
+
+**What ships — a hand-shaped cutout.** Threshold the diff, dilate 31 px to
+bridge the skin-on-skin gaps, fill holes, erode 17 px back, keep components
+over 7000 px, then intersect with the plate's own matte. Coverage lands at
+41–68% instead of a solid rectangle, and the generous margin composites
+invisibly because the plate and the base are near-identical outside the hand.
+Tested to ±130 px of travel with no visible artefact.
+
+Two traps worth remembering:
+
+- **Matte the plate's black background first.** Without it, a raised palm that
+  extends past his silhouette carries a black rectangle. This was visible and
+  obvious once composited.
+- **Every plate has a bright full-width artefact strip in the bottom ~10 rows.**
+  It wrecks any bounding box measured from the diff, so it is zeroed before
+  measuring and healed from the original afterwards. The forearm is also
+  extended down through those rows so it is cut off by the frame edge rather
+  than floating above it.
+
+### Placement
+
+Children of `guru_root` (`0-2199`) — under the body's breathing and sway but
+not the head's rotation, which is right, since hands do not follow the head.
+Scale 45%. Rest positions (local, and world at `gestureRise` = 100):
+
+| image | asset | local (x, y) | world at rest |
+|---|---|---|---|
+| `hand_anjali 0-4054` | `h2_anjali 0-4184` | (−0.67, 155.70) | (299.33, 455.70) |
+| `hand_abhaya 0-4055` | `h2_abhaya 0-4185` | (−159.30, 136.35) | (140.70, 436.35) |
+| `hand_offer 0-4056` | `h2_offer 0-4186` | (176.40, 194.40) | (476.40, 494.40) |
+| `hand_point 0-4057` | `h2_point 0-4187` | (−160.88, 124.20) | (139.12, 424.20) |
+
+Draw order in `guru_root` is `head_group` → the four hands → `mala_group` →
+`guru_art` → `glow`. Hands pass **in front of the mālā** and **behind the
+head**, so añjali's fingertips tuck under his beard rather than over it.
+
+### Inputs
+
+- `gesture` (`0-4058`, instances `0-4059` / `0-4060`) — 0–4, and **fractional
+  values fade**. Opacity per plate is
+  `max(0, 1 - max({Input}-n, n-{Input})) * 100` (`g_op_* 0-4064 / 0-4082 /
+  0-4100 / 0-4118`), so ramping 0 → 1 fades plate 1 in. The soft entrance
+  needed nothing extra in the .riv.
+- `gestureRise` (`0-4061`, instances `0-4062` / `0-4063`) — 0–100, default 100.
+  - `y` = `rest + (100 − {Input}) × 1.0` → **100 px of travel**
+    (`g_y2_* 0-4188 / 0-4198 / 0-4208 / 0-4218`)
+  - `x` = `rest ∓ (100 − {Input}) × 0.22` → a **22 px sideways arc** on the
+    three one-handed gestures, so the hand swings in rather than sliding
+    straight up (`g_x2_* 0-4228 / 0-4238 / 0-4248`). Añjali has no x bind —
+    both hands come straight up to the centre.
+
+> The earlier `g_y_*` converters (`0-4136` … `0-4166`, 11.7 px travel) and the
+> `h_*` assets (`0-4050` … `0-4053`, rectangular patches) are superseded and
+> unbound. Safe to delete.
+
+### Timing — and why there is no overshoot
+
+`useGestureDriver` in `director.ts`. It routes every change through 0 —
+ramping straight from 1 to 4 would sweep through 2 and 3 and flash two poses
+nobody asked for — and springs `gestureRise` to 100.
+
+`GESTURE_W = 7`, **`GESTURE_Z = 1.0`**. Critically damped: no overshoot.
+The first version used 0.5, which overshoots 16% — the hand shot past the pose
+and bounced back, and it read as springy and wrong. Snappy overshoot suits a
+light, quick mascot; a guru settling into a mudrā should decelerate and stop.
+At w = 7 the hand is 90% of the way there in 0.55 s. `GESTURE_FADE = 0.10` is
+slow enough that the hand is already moving when it becomes visible, rather
+than popping in and then travelling.
+
+These are three constants at the top of the gesture section — retune freely.
+
+```tsx
+<Guru state={AvatarState.Speaking} gesture={Gesture.Anjali} />
+```
+
+### Caveat
+
+A gesture plate bakes in the strip of mālā and robe behind the hands, so while
+one is showing, that patch of necklace stops swinging with `mala_group`. The
+swing is ±0.5°, sub-pixel at that radius, so it does not read — but it is why
+the hands sit in front of the mālā rather than behind it.
+
+## Timeline lengths and loop modes
+
+| Animation | Frames @60fps | Loop |
+|---|---|---|
+| `idle` | 480 (8.0 s) | loop |
+| `speaking` | 60 (1.0 s) | loop |
+| `thinking` | 120 (2.0 s) | loop |
+| `listening` | 120 (2.0 s) | loop |
+| `celebrating` | 72 (1.2 s) | **one-shot** |
+| `encouraging` | 90 (1.5 s) | **one-shot** |
+| `patient` | 120 (2.0 s) | loop |
+
+The two one-shots hold their last frame when they finish — the machine has no
+transition out except a change to `state`, so **left alone he freezes
+mid-cheer.** `<Guru>` handles this with its `revertTo` prop (default
+`AvatarState.Idle`); `ONE_SHOT_MS` in `rig.ts` carries the durations.
+
+> If you simulate this in the Rive editor, note that the simulator stops
+> applying inputs once the machine "settles", which happens as soon as a
+> one-shot ends. It looks exactly like being stuck in `celebrating` and is
+> not: change `state` before frame 89 and it transitions out cleanly.
+
+## `intensity` scales response, not performance
+
+**Default 50. Send 50 if you don't care** — 0 is not neutral, it is subdued.
+
+`browRaise`, `gazeX`, `gazeY`, `headTurn` and `mouthOpen` all pass through
+formula converters carrying a shared term:
+
+```
+value = base + {Input} * k * (0.6 + {{GuruInputs/intensity}} * 0.008)
+```
+
+So 0 → 60% amplitude, 50 → 100%, 100 → 140%.
+
+`rive_ui.md` §5 asks for a 1D blend state. **Blend states cannot be created
+through the Rive MCP** — `createStates` only makes animation states. This is
+the closest achievable equivalent: it scales the rig's *response*, which is
+not the thing §5 forbids (multiplying values inside a timeline). The honest
+difference is that real blend states could vary timing and shape between
+subtle and strong, not just amplitude.
+
+## Blink routing
+
+The Blink layer has two blink animations, chosen automatically by `state`:
+
+| State | Animation | Close / hold / open | Exit |
+|---|---|---|---|
+| `state` 2 (thinking), 6 (patient) | `blinkSlow` | 6 / 3 / 9 frames | 350 ms |
+| everything else | `blink` | 4 / 2 / 7 frames | 250 ms |
+
+The three transitions are mutually exclusive **by condition**, not by ordering
+(`transitionorder` is a fractional-index type and cannot be set over MCP), so
+evaluation order does not matter. `blink` carries `state != 2 AND state != 6`.
+
+In both animations `lidR` trails `lidL` by 2 frames — the eyes never blink in
+lockstep (§2.5 / §10.4). Close is fast-out, open is slow-in.
+
+Fire the trigger on a randomised 3–7 s interval from the app; the rig does not
+self-blink. `useStochasticBlink` in `director.ts` does this.
+
+## Artboard background, and the plate that was hiding everything
+
+`GuruPortrait`'s artboard fill is **transparent** (`#00282828`) so he composites
+onto whatever the chat bubble or card is sitting on. `clip` is off, which is
+deliberate: the glow is allowed to spill past the artboard bounds.
+
+That transparency immediately exposed a bug that had been invisible while the
+artboard was dark grey: **`body_clean.png` was fully opaque** — alpha 255 across
+all 1254 × 1254, a black background baked in. Dropped on the artboard it painted
+a black square over everything behind it, which meant (a) he could never sit on
+a light chat bubble, and (b) the `glow` halo, which draws *behind* the body, was
+completely hidden — the input worked, you simply could not see it.
+
+`icons/rig/body_cut.png` is the matted version, uploaded as the asset
+`body_cut`; `guru_art` now points at it. `meditate.png` had the identical
+problem (see the GuruMeditate section). **Check any new plate for this before
+it goes in** — `alpha.min() == 255` is the tell.
+
+---
+
+# 2. GuruMeditate / MeditateSM
+
+600 × 600. `med_root` sits at local (300, 300) → world (300, 300): **no layout
+offset here**, unlike the portrait.
+
+```
+med_root                        breath (sy 100→100.9, sx →99.1, period 240)
+│                               sway (r ±0.4°, period 160), settle (y →299.2)
+├── med_mote1..4                incense motes, periods 480 / 240 / 160 / 480
+├── med_lidL  (−30.15, −156.15) blink
+├── med_lidR  ( 22.50, −156.15) blink, +2 frame offset
+├── med_art                     the seated plate, 45%  (asset meditate_cut)
+├── med_glow  620×620           reactive aura, bound to `glow`
+└── med_halo  700×700           always-on warm halo, swells with the breath
+```
+
+| Animation | Frames | Loop |
+|---|---|---|
+| `meditating` | 480 (8.0 s) | loop |
+| `medEyesOpen` | 6 | one-shot (holds sy = 0) |
+| `medBlink` | 24 (0.4 s) | one-shot |
+
+`MeditateSM` has two layers: `Layer 1` (Entry → `meditating`) and `Blink`
+(`medEyesOpen` ⇄ `medBlinking`, driven by the same `blink` trigger).
+Simulated: Entry → meditating, blink at f30 → medBlinking f31 → medEyesOpen
+f56. Only `glow` and `blink` do anything on this artboard; `state`, `headTurn`
+and the rest are inert here.
+
+## The plate had to be re-cut
+
+The `meditate.png` the artist supplied was **opaque RGB on pure black** — no
+alpha. Dropped into the artboard it rendered as a black square that hid the
+glow and the halo completely and left a visible edge against the background.
+`icons/rig/med_cut.png` is the matted version (border-connected dark region
+removed, 2 px transition band un-premultiplied against black so the edges keep
+their hue), uploaded as the asset `meditate_cut`. If the pose is ever
+regenerated, it needs the same treatment — **ask for a transparent PNG.**
+
+## Why the motes loop cleanly
+
+Each mote rises, fades in, fades out, and resets. The reset is a hard jump, so
+it is placed on the frame *before* the cycle boundary with a `hold`
+interpolator and opacity already at 0 — the jump is real but invisible.
+Periods divide 480 exactly (480 / 240 / 160), so the whole 8-second loop is
+seamless while the four motes never line up with each other.
+
+## Background: split between the .riv and the app
+
+The artboard carries its own vertical gradient
+(`#130f24 → #231a2e 38% → #3a2418 78% → #4a2c14`), so the .riv looks right on
+its own. But the artboard is square and a phone is roughly 9:19.5 — `Fit.Cover`
+would crop most of his width away, so the scene has to be `Fit.Contain`, which
+letterboxes. `GuruScene.tsx` continues *that exact gradient* into the letterbox
+by measuring the view and placing the same stops over the artboard's real
+on-screen band. Change the gradient in one place and you must change it in the
+other; the constants are named `BACKDROP` / `BACKDROP_AT`.
+
+---
+
+# 3. The app side
+
+```
+mobile/src/components/guru/
+  index.ts          public exports
+  rig.ts            the wire contract: normalised setters over GuruInputs
+  presentation.ts   size profiles + the legibility measurements behind them
+  director.ts       ambient behaviour, blink, speech aperture
+  Guru.tsx          the character, size-adaptive, both placements
+  GuruScene.tsx     the full-screen meditate scene
+```
+
+```tsx
+// chat bubble
+<Guru state={avatarState} size={120} onPress={onTapGuru} />
+
+// lesson card
+<Guru state={avatarState} size={260} lookAt={{ x: 0.3, y: 0.4 }} />
+
+// full screen
+<View style={{ flex: 1 }}><Guru state={avatarState} /></View>
+
+// ambient meditation screen
+<GuruScene glow={sessionComplete ? 0.8 : 0} />
+```
+
+## What reads at what size
+
+Measured by rendering the rig at each size and counting pixels that change by
+more than 24 levels when one input is driven to full:
+
+| input | 110px | 160px | 220px | 320px | 420px | 600px |
+|---|---|---|---|---|---|---|
+| `headTurn` 100 | 1449 | 3087 | 5825 | 12165 | 20702 | 41658 |
+| `mouthOpen` 100 | 112 | 248 | 481 | 1052 | 1836 | 3706 |
+| mālā 3° | 249 | 534 | 1036 | 2121 | 3667 | 7495 |
+| `browRaise` 100 | 59 | 110 | 167 | 308 | 489 | 918 |
+| jaṭā 4° | 46 | 120 | 282 | 619 | 1017 | 1879 |
+| `gazeX` 100 | 17 | 27 | 51 | 97 | 159 | 315 |
+| `gazeY` 100 | 6 | 22 | 39 | 84 | 140 | 254 |
+
+Below roughly 15 changed pixels a motion is invisible once it is moving. So at
+chat-avatar size **the eyes are decorative and the head is the only thing the
+user can read.** That is the whole reason `presentation.ts` exists: in
+`compact` a look-at target is spent 62% on the neck (a full look turns the head
+≈10°), in `stage` only 42% (≈5.5°) because the irises are doing the work.
+
+Head-angle ranges the director actually produces, measured over 30 s:
+
+| profile / state | head | gazeX |
+|---|---|---|
+| compact / idle | −8.2° … +10.3° | −0.63 … +0.99 |
+| stage / idle | −4.0° … +6.3° | −0.63 … +0.99 |
+| compact / listening | −3.8° … +3.4° | −0.22 … +0.28 |
+| stage / speaking | −2.9° … +2.5° | −0.41 … +0.52 |
+
+## Director notes worth keeping
+
+- **The springs are exact, not Euler.** A saccade has to land in ~150 ms, and a
+  spring that fast has `c·dt > 1` at the director's 24–30 Hz tick — the naive
+  `v += (target-x)*k*dt - v*c*dt` flips the velocity sign every step and rings
+  or diverges. `spring()` in `director.ts` is the closed-form damped-oscillator
+  step, stable at any dt and identical at 24 Hz and 120 Hz (verified: head
+  range differs by 1%).
+- **Eyes lead the head by 50 ms** and the head takes ~1 s to arrive on a
+  slightly underdamped spring (ζ = 0.62, ~9% overshoot) — §2.8 and §2.4.
+- **Nothing is periodic.** The drift is three sines at 7.3 / 4.1 / 2.6 s.
+- **`returnBias`** makes roughly half of all saccades return to the resting
+  direction rather than strike out somewhere new. Without it he stares off
+  into the middle distance for seconds at a time and reads as vacant.
+- Writes are dropped below 0.4 (in 0–100 units) and `playIfNeeded()` is only
+  called on a tick that actually changed something.
+- Reduce Motion: the director adopts the state's static pose and stops
+  ticking; blinking stops too.
+
+## Runtime
+
+`@rive-app/react-native` 0.4.20 (Nitro) + `react-native-nitro-modules` 0.35.10,
+Expo SDK 57. Both are in `package.json`. Needs a dev client, which the project
+already has (`expo-dev-client`).
+
+Hook signatures are `useRiveNumber(path, instance)` and
+`useRiveTrigger(path, instance)` — **path first**, and they return
+`{ value, setValue, error }` / `{ trigger, error }`, not tuples. `RiveView`
+takes `file`, not `riveFile`, and a Nitro ref via `hybridRef={setHybridRef}`
+from `useRive()`.
+
+## Export
+
+One file, `mobile/assets/guru.riv`, two artboards: `GuruPortrait` / `TutorSM`
+and `GuruMeditate` / `MeditateSM`. The empty `GuruFull` artboard has been
+deleted.
+
+### Where each is used
+
+| Screen | Was | Is |
+|---|---|---|
+| `Conversation.tsx` | `<TutorAvatar state size={100}>` | `<Guru state size={110} speech={{text, durationMs}} />` |
+| `Home.tsx` | `<TutorFull height={110}>` | `<Guru size={120} gesture={Gesture.Anjali} />` |
+| `SessionComplete.tsx` | `<TutorFull height={190} celebrate>` | `<Guru size={260} state={Celebrating} gesture={Gesture.Abhaya} />` |
+| *(no screen yet)* | — | `<GuruScene />` |
+
+`GuruScene` is finished and unplaced. Natural homes: a breathing/pause screen
+between lessons, the śloka recitation screen, or Home's hero when nothing is due.
+
+`TutorAvatar.tsx` and `TutorFull.tsx` (687 lines of Reanimated over static PNGs)
+are superseded once the swap is done. **Keep `assets/avatar/tutor-full.png`** —
+the standing figure with the संस्कृतम् book is the better brand image for the
+app icon, splash, onboarding, store listing and empty states. It is not worth
+rigging: at the sizes it was used (110–190 px for a whole body) the head is
+20–35 px, where none of this rig would read.
+
+### Asset cleanup
+
+Eleven superseded, unreferenced image assets were deleted:
+`guru_portrait_base`, `body_no_head`, `body_clean`, `meditate`, `head`,
+`head_upper`, `guru-portrait-test`, and the four rectangular `h_*` hand
+patches. That is roughly 7 MB — the file goes from about 13 MB to about 6 MB.
+24 live assets remain; every image object was re-checked afterwards and all
+still resolve, and both state machines still simulate clean.
+
+The superseded converters (`g_y_* 0-4136`–`0-4166`, 11.7 px travel, and
+`i_jawOpen_DISABLED_seam 0-3917`, created but never bound) are unreferenced but
+left in place — they are a few bytes each.
+
+### Do NOT downscale the big plates
+
+An earlier note here suggested shrinking `body_cut` and `meditate_cut` from
+1254² because they render at 564 artboard units. **That was wrong.** The plate
+occupies 564 of 600 artboard units, so it carries 2.22 source px per artboard
+unit, and:
+
+| render | source px per device px |
+|---|---|
+| chat avatar, 120 pt @3x | 3.70 |
+| card, 260 pt @3x | 1.71 |
+| phone full-screen @3x | 1.11 |
+| tablet @2x | 0.83 — already slightly soft |
+
+There is no headroom at full screen. Downscaling would visibly soften the
+stage presentation. Leave the source resolution alone.
+
+### All assets are lossless WebP
+
+Same pixels, no downscale, roughly half the bytes. All 24 were converted and
+verified pixel-identical before upload — max RGB difference 0 across every
+visible pixel, max alpha difference 0 — then re-uploaded, repointed, and the
+PNG originals deleted.
+
+**5002 KB → 2387 KB, 52% smaller.** With the dead-asset deletion, the file
+goes from roughly 13 MB to roughly 2.4 MB of image data.
+
+Lossy WebP was measured and rejected: q95 reaches 324 KB on the four largest
+plates, but shifts 1.5–8.8% of visible pixels by more than 12 levels. On flat
+vector art with large uniform fields that risks banding along the outlines,
+and the whole look depends on those staying clean.
+
+Assets are named `*_w`. Sources live beside them as `icons/rig/*.webp`,
+alongside the `.png` originals — keep both; the PNGs are what any future plate
+work should start from.
+
+> Rive accepts WebP and records `format: webp`, and both artboards render
+> correctly from them in the editor. Whether the encoding survives *export*
+> into the `.riv` is untested — only the export itself will show that. If the
+> exported file lands near 2.5 MB the encoding survived; much smaller and Rive
+> is recompressing on its own, in which case this pass changed nothing but
+> also cost nothing.
+
+## The native renderer (what actually ships)
+
+Export is gated behind Rive's paid plan, so the chat avatar renders the rig
+**natively** instead: layered `<Image>`s with Reanimated transforms, no Rive
+runtime and no `.riv`. The Rive file remains the source of truth for geometry
+and the place to author changes.
+
+```
+mobile/assets/guru/*.png              26 plates, 1041 KB
+mobile/src/components/guru/
+  guruLayers.ts    the geometry table, lifted from the .riv
+  GuruNative.tsx   the renderer
+  viseme.ts        reused unchanged
+  presentation.ts  reused unchanged
+```
+
+**Verified pixel-equivalent.** Compositing from `guruLayers.ts` and diffing
+against the Rive render: mean difference 0.40, p99 of 3, and **zero** pixels
+differing by more than 24 levels. The residual is resampling from the
+0.6x-scale bundled plates.
+
+### Why it isn't a 30 Hz JS loop
+
+The Rive build ran a `requestAnimationFrame` loop writing six properties per
+tick. Porting that shape would make every motion hostage to the JS thread — in
+a chat screen that scrolls, he would stutter exactly when the user is doing
+something.
+
+The split is **JS picks targets, the UI thread interpolates**. A saccade timer
+fires every 1.6–4 s and hands Reanimated a gaze target; the spring runs on the
+UI thread. Breathing, sway and idle drift are `withRepeat` loops JS never
+touches after mount. Blinks are a fired sequence. The only per-frame JS is the
+mouth during speech, and that is a plate swap at 8–12 Hz, not a transform.
+
+Spring constants are the same ones tuned on the Rive build, converted from
+(ω, ζ) to Reanimated's `stiffness = ω²`, `damping = 2ζω`:
+
+| | ω | ζ | stiffness | damping |
+|---|---|---|---|---|
+| eyes | 17.3 | 0.95 | 300 | 33 |
+| head | 6.4 | 0.62 | 41 | 8 |
+| brows | 9.5 | 0.84 | 90 | 16 |
+| gesture rise | 7.0 | **1.0** | 49 | 14 |
+
+The gesture rise stays critically damped — see the note above on why overshoot
+reads wrong on this character.
+
+### Pivots, and the one trick that makes them work
+
+RN rotates a view about its own centre. So every pivoted group is drawn as a
+full 600×600 box positioned so its **centre lands on the pivot** (`groupBox`),
+with children placed by offset inside it (`place`). Rotating the box then
+rotates about the pivot, exactly as Rive's nodes do.
+
+**A nested group must subtract its parent's pivot.** `left`/`top` in RN are
+relative to the parent view, not the artboard. The first version of `groupBox`
+ignored that, so `jaw_group` and both `jata_group`s — the only groups nested
+inside `head_group` — rendered 77.85 units low. On a 100 px avatar that is 13 px:
+the jaw and beard slid off the face and exposed the hole in `body_cut` behind
+them, which read as a pale band across the mouth.
+
+It survived the first diff test because that test computed each layer's absolute
+position directly instead of accumulating it through the nesting — so it was
+checking the layer table, not the composition. The check in
+`GURU_RIG_NOTES` terms: walk the parent chain, sum the offsets, and confirm the
+result equals `(cx − w/2, cy − h/2)` for every layer. All 11 pass now.
+
+### Eyelids are drawn, not cut
+
+The lids were vector shapes in Rive with no image to export. They are generated
+procedurally — a skin dome (`#fb9734` → `#e87f28`, sampled off the face) with a
+dark lash arc along the lower edge — and revealed by animating **height**, so
+the plate squashes from the top rather than sliding. Height rather than
+`scaleY` + `transformOrigin` because it needs no version-dependent support.
+
+First attempt cropped the lid from `face_patch`; that failed because the patch
+keeps the **eye whites** baked in, so the lids came out pale.
+
+### Plate resolution
+
+Bundled at 0.6× source = 1.33× artboard, which covers a ~220 pt bubble on a 3×
+screen. Rendering larger means re-exporting the plates at a higher scale —
+nothing else changes. Full source resolution would be a crash risk: 20 layers
+at 1254² RGBA is ~126 MB decoded.
+
+### Wired into Conversation
+
+`<GuruNative state={avatarState} size={100} speech={speech} />`. It accepts the
+screen's existing lowercase state strings directly, so `avatarState` needed no
+conversion. A `speakLine` helper replaced the four `playTutorAudio` call sites
+so the spoken text and its duration reach the viseme scheduler — without that
+the mouth falls back to the 6–9 Hz flutter, which is not lip sync.
+
+`TutorAvatar.tsx` is now unreferenced by `Conversation`. `TutorFull.tsx` is
+still used by `Home` and `SessionComplete`.
+
+## Still open
+
+- **Export is plan-gated.** `.riv` export needs a paid Rive plan. Nothing above
+  reaches the app until `mobile/assets/guru.riv` exists.
+- Live lip sync: pass an `amplitude` callback to `<Guru>` once TTS is wired.
+  The flutter fallback runs until then; no .riv change is needed.
+- `GuruMeditate` has no separated head, so it cannot turn or speak. If that is
+  ever wanted it needs the same plate-splitting the portrait got.
+- The empty `GuruFull` artboard is still in the file. Harmless, but it is dead
+  weight in the export — delete it before shipping if size matters.

@@ -1,5 +1,5 @@
 # ==============================================================================
-# Shabd - Automated UI & Backend Startup Script
+# Sanskritam - Automated UI & Backend Startup Script
 # ==============================================================================
 # Automatically detects free ports for backend and frontend.
 # Automatically checks and installs Python dependencies.
@@ -13,7 +13,7 @@ if (-not $root) { $root = (Get-Location).Path }
 
 Write-Host ""
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "        SHABD - AUTOMATED STARTUP SCRIPT          " -ForegroundColor Cyan
+Write-Host "     SANSKRITAM - AUTOMATED STARTUP SCRIPT        " -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host ""
 

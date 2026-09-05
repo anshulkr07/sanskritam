@@ -44,17 +44,47 @@ export default function HomeScreen({ navigation }: Props) {
   const [profile, setProfile] = useState<LearnerProfile | null>(learner);
   const [shloka, setShloka] = useState<Shloka | null>(null);
   const [shlokaLoading, setShlokaLoading] = useState(true);
+  const [shlokaError, setShlokaError] = useState(false);
   const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
   const [dailyLoading, setDailyLoading] = useState(true);
+  const [dailyError, setDailyError] = useState(false);
 
   useEffect(() => {
     refresh().then(setProfile);
   }, [refresh]);
 
-  useEffect(() => {
-    api.todayShloka().then(setShloka).catch(() => setShloka(null)).finally(() => setShlokaLoading(false));
-    api.dailyWord().then(setDailyWord).catch(() => setDailyWord(null)).finally(() => setDailyLoading(false));
+  // U10-3: a failed fetch says so and offers retry — a catch that silently
+  // leaves an empty card is indistinguishable from a card with no content.
+  const loadShloka = useCallback(() => {
+    setShlokaLoading(true);
+    setShlokaError(false);
+    api
+      .todayShloka()
+      .then(setShloka)
+      .catch(() => {
+        setShloka(null);
+        setShlokaError(true);
+      })
+      .finally(() => setShlokaLoading(false));
   }, []);
+
+  const loadDaily = useCallback(() => {
+    setDailyLoading(true);
+    setDailyError(false);
+    api
+      .dailyWord()
+      .then(setDailyWord)
+      .catch(() => {
+        setDailyWord(null);
+        setDailyError(true);
+      })
+      .finally(() => setDailyLoading(false));
+  }, []);
+
+  useEffect(() => {
+    loadShloka();
+    loadDaily();
+  }, [loadShloka, loadDaily]);
 
   const openDrawer = useCallback(() => {
     haptics.tap();
@@ -98,11 +128,23 @@ export default function HomeScreen({ navigation }: Props) {
         </Entrance>
 
         <Entrance index={1}>
-          <ShlokaCard shloka={shloka} loading={shlokaLoading} onPress={() => navigation.navigate("Shloka")} />
+          <ShlokaCard
+            shloka={shloka}
+            loading={shlokaLoading}
+            error={shlokaError}
+            onRetry={loadShloka}
+            onPress={() => navigation.navigate("Shloka")}
+          />
         </Entrance>
 
         <Entrance index={2}>
-          <DailyWordCard word={dailyWord} loading={dailyLoading} onPress={() => navigation.navigate("DailyWord")} />
+          <DailyWordCard
+            word={dailyWord}
+            loading={dailyLoading}
+            error={dailyError}
+            onRetry={loadDaily}
+            onPress={() => navigation.navigate("DailyWord")}
+          />
         </Entrance>
 
         <Entrance index={3}>
@@ -158,18 +200,22 @@ function PracticeNode({ onPress }: { onPress: () => void }) {
 function ShlokaCard({
   shloka,
   loading,
+  error,
+  onRetry,
   onPress,
 }: {
   shloka: Shloka | null;
   loading: boolean;
+  error: boolean;
+  onRetry: () => void;
   onPress: () => void;
 }) {
   const firstLine = shloka?.devanagari?.split(/।|\n/)[0] ?? "";
   return (
     <HomeCard
       title="Today's śloka"
-      status={loading ? "loading" : shloka ? "read" : "unavailable"}
-      statusText={loading ? "…" : shloka ? "daily verse" : "none yet"}
+      status={loading ? "loading" : error ? "error" : shloka ? "read" : "unavailable"}
+      statusText={loading ? "…" : error ? "couldn't load" : shloka ? "daily verse" : "none yet"}
       onPress={onPress}
       icon="book"
     >
@@ -179,6 +225,8 @@ function ShlokaCard({
         <Text style={[styles.cardBody, script("semibold")]} numberOfLines={1}>
           {firstLine}।
         </Text>
+      ) : error ? (
+        <RetryInline onRetry={onRetry} label="Couldn't reach the verse." />
       ) : (
         <Text style={styles.cardMuted}>A verse will appear here daily.</Text>
       )}
@@ -191,25 +239,31 @@ function ShlokaCard({
 function DailyWordCard({
   word,
   loading,
+  error,
+  onRetry,
   onPress,
 }: {
   word: DailyWordPuzzle | null;
   loading: boolean;
+  error: boolean;
+  onRetry: () => void;
   onPress: () => void;
 }) {
   const statusText = loading
     ? "…"
-    : word?.solved
-      ? `solved · ${word.streak} day streak`
-      : word?.status === "finished"
-        ? "finished"
-        : word
-          ? "open"
-          : "unavailable";
+    : error
+      ? "couldn't load"
+      : word?.solved
+        ? `solved · ${word.streak} day streak`
+        : word?.status === "finished"
+          ? "finished"
+          : word
+            ? "open"
+            : "unavailable";
   return (
     <HomeCard
       title="Daily word"
-      status={loading ? "loading" : word ? (word.solved ? "solved" : "open") : "unavailable"}
+      status={loading ? "loading" : error ? "error" : word ? (word.solved ? "solved" : "open") : "unavailable"}
       statusText={statusText}
       onPress={onPress}
       icon="extension-puzzle"
@@ -231,11 +285,33 @@ function DailyWordCard({
               <Text style={styles.unlockBadgeText}>{word.streak}</Text>
             </View>
           </>
+        ) : error ? (
+          <RetryInline onRetry={onRetry} label="Couldn't reach the word." />
         ) : (
           <Text style={styles.cardMuted}>One word a day, scored on the mouth-map.</Text>
         )}
       </View>
     </HomeCard>
+  );
+}
+
+// U10-3: shared inline retry row — states the failure in text, offers retry,
+// never reads as a verdict or a punishment.
+function RetryInline({ onRetry, label }: { onRetry: () => void; label: string }) {
+  return (
+    <View style={styles.retryRow}>
+      <Text style={styles.retryLabel}>{label}</Text>
+      <Pressable
+        onPress={onRetry}
+        accessibilityRole="button"
+        accessibilityLabel={`Retry: ${label}`}
+        style={styles.retryBtn}
+        hitSlop={8}
+      >
+        <Ionicons name="refresh" size={13} color={color.saffron} />
+        <Text style={styles.retryBtnText}>Retry</Text>
+      </Pressable>
+    </View>
   );
 }
 
@@ -334,6 +410,29 @@ const styles = StyleSheet.create({
   cardBody: { fontSize: font.sizes.md, color: color.ink, marginTop: 4 },
   cardMuted: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 4 },
   dailyRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  retryRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", flex: 1, gap: space.sm },
+  retryLabel: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+    flex: 1,
+  },
+  retryBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    minHeight: 44,
+    paddingHorizontal: space.sm,
+    borderRadius: radius.md,
+    backgroundColor: color.surfaceMuted,
+  },
+  retryBtnText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.sm,
+    color: color.saffron,
+  },
   unlockBadge: { flexDirection: "row", alignItems: "center", gap: 3, backgroundColor: color.surfaceMuted, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 2 },
   unlockBadgeText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.saffron },
 });

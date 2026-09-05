@@ -151,7 +151,7 @@ def _cache_store(brief: dict, n_turns: int, with_dual: bool, drafts: list[dict])
 
 # ─── drafting ─────────────────────────────────────────────────────────────
 
-_DRAFT_SYSTEM_PROMPT = """You are the authoring model for Shabd, a Sanskrit-as-a-second-language app. You write short, everyday (laukika) dialogue turns for adult beginner learners.
+_DRAFT_SYSTEM_PROMPT = """You are the authoring model for Sanskritam, a Sanskrit-as-a-second-language app. You write short, everyday (laukika) dialogue turns for adult beginner learners.
 
 Return ONLY a JSON array of exactly {n} turn objects. No prose, no markdown fences. Each object has exactly these keys:
 - "devanagari": str — the TUTOR's turn, in Devanagari script

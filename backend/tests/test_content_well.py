@@ -50,3 +50,25 @@ def test_no_daily_surface_runs_out_silently(client):
         f"approved scenarios below {MIN_APPROVED_SCENARIOS}: "
         f"{report['scenarios']['approved']}"
     )
+
+
+def test_seed_is_never_behind_the_database(client):
+    """P8-1 guard: every daily well's DB row count is at or above its seed
+    count. run_seed() refills all wells on every boot, so a deficit means the
+    app has not been started since the seed grew — the exact stale-DB state
+    that served 6 ślokas and 0 daily words for days. FAILS NAMING the well."""
+    from app.db import SessionLocal
+    from app.services.content_well import content_well_report
+
+    db = SessionLocal()
+    try:
+        report = content_well_report(db)
+    finally:
+        db.close()
+
+    for name in report["issues"]["seed_behind_wells"]:
+        w = report["wells"][name]
+        assert False, (
+            f"daily well '{name}' has {w['rows_total']} DB row(s) but its seed "
+            f"holds {w['seed_rows']} — boot the app once so run_seed() refills it"
+        )

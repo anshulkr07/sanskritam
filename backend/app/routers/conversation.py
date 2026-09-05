@@ -26,6 +26,7 @@ from app.models import (
 from app.services.explainer import get_explainer, reply_language
 from app.services.meta_intent import detect_meta_intent
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
+from app.services.sarvam import SarvamError, get_sarvam_client
 from app.services.session_store import create_session, get_session
 from app.services.turn_loop import process_turn
 from app.services.tutor import (
@@ -66,6 +67,16 @@ class NodeOut(BaseModel):
     iast: str = ""
     gloss: str = ""
     audio_url: str = ""
+    audio_base64: str = Field(
+        default="",
+        description=(
+            "Base64 WAV of this line, synthesised while answering the turn. "
+            "Empty when `audio_url` already points at a pre-rendered file, or "
+            "when TTS was unavailable — the client falls back to /speech/tts "
+            "in both cases. It exists to remove a fourth serial round trip "
+            "from a turn that already costs three."
+        ),
+    )
     repair_type: Optional[str] = None
 
 
@@ -249,19 +260,17 @@ async def start_conversation(
         .all()
     )
 
-    _record_prerendered_audio(
-        db, learner,
-        NodeOut(
-            id=entry_node.id,
-            kind=entry_node.kind,
-            lang=entry_node.lang,
-            devanagari=entry_node.devanagari,
-            iast=entry_node.iast or "",
-            gloss=entry_node.gloss or "",
-            audio_url=entry_node.audio_url or "",
-            repair_type=entry_node.repair_type,
-        ),
+    entry_out = NodeOut(
+        id=entry_node.id,
+        kind=entry_node.kind,
+        lang=entry_node.lang,
+        devanagari=entry_node.devanagari,
+        iast=entry_node.iast or "",
+        gloss=entry_node.gloss or "",
+        audio_url=entry_node.audio_url or "",
+        repair_type=entry_node.repair_type,
     )
+    _record_prerendered_audio(db, learner, entry_out)
 
     return StartResponse(
         session_id=session.id,
@@ -271,16 +280,7 @@ async def start_conversation(
             description=scenario.description or "",
             est_minutes=scenario.est_minutes or 5,
         ),
-        node=NodeOut(
-            id=entry_node.id,
-            kind=entry_node.kind,
-            lang=entry_node.lang,
-            devanagari=entry_node.devanagari,
-            iast=entry_node.iast or "",
-            gloss=entry_node.gloss or "",
-            audio_url=entry_node.audio_url or "",
-            repair_type=entry_node.repair_type,
-        ),
+        node=entry_out,
         edges=[EdgeOut(id=e.id, lang=e.lang, expected_text=e.expected_text or "", features=e.features or []) for e in entry_edges],
         mode="graph",
     )
@@ -337,6 +337,10 @@ async def _start_llm(
     )
     db.commit()
 
+    opening = reply.sanskrit or reply.bridge
+    opening_lang = "sa" if reply.sanskrit else _bridge_lang(learner)
+    opening_audio = await _inline_tts(db, learner, opening, opening_lang)
+
     return StartResponse(
         session_id=session.id,
         scenario=ScenarioDetail(
@@ -348,10 +352,11 @@ async def _start_llm(
         node=NodeOut(
             id=f"llm:{session.id}:0",
             kind="tutor",
-            lang="sa" if reply.sanskrit else _bridge_lang(learner),
-            devanagari=reply.sanskrit or reply.bridge,
+            lang=opening_lang,
+            devanagari=opening,
             iast="",
             gloss=reply.bridge if reply.sanskrit else "",
+            audio_base64=opening_audio,
         ),
         edges=[],
         mode="llm",
@@ -360,6 +365,65 @@ async def _start_llm(
 
 def _bridge_lang(learner: Learner) -> str:
     return "hi" if "hi" in (learner.bridge_langs or []) else "en"
+
+
+# Sanskrit renders through the Hindi voice until the sa-IN beta flag lands
+# (architecture §4.1) — the same mapping the client used to apply itself.
+def _bulbul_code(lang: str) -> str:
+    return "en-IN" if lang == "en" else "hi-IN"
+
+
+async def _inline_tts(db: Session, learner: Learner, text: str, lang: str) -> str:
+    """Synthesise a tutor line here rather than making the client ask for it.
+
+    The client used to fire /speech/tts immediately after every turn, so the
+    learner paid an extra client→server→Sarvam round trip before hearing
+    anything. The same call from here costs one hop instead of two and starts
+    the moment the words exist.
+
+    This is best-effort by design: quota exhaustion or a Sarvam failure
+    returns "" and the turn is answered anyway. The client still has its own
+    TTS path and will use it — a silent tutor is a much worse failure than a
+    slow one, and a failed turn is worse than both.
+    """
+    if not settings.conversation_inline_audio:
+        return ""
+    text = (text or "").strip()
+    if not text:
+        return ""
+
+    # Resolve the vendor BEFORE touching quota. With no API key configured
+    # this is the common case (tests, local runs without secrets), and
+    # spending then refunding a quota grant for a call that was never going
+    # to happen would show up on the ledger as noise.
+    try:
+        client = get_sarvam_client()
+    except RuntimeError:
+        return ""
+
+    try:
+        check_and_consume(db, learner, "tts_chars", len(text), surface="conversation")
+    except QuotaExceeded:
+        logger.info("TTS quota exhausted; turn answers without inline audio")
+        return ""
+
+    try:
+        return await client.text_to_speech(
+            text=text,
+            language_code=_bulbul_code(lang),
+            speaker="aditya",
+            pace=1.0,
+        )
+    except Exception as exc:  # noqa: BLE001 — see below
+        # Deliberately broad. SarvamError covers what the vendor client
+        # chooses to raise; a proxy, DNS or timeout error from httpx comes
+        # through untranslated, and letting one of those escape turns a
+        # missing voice clip into a failed turn. Silence is a bad outcome;
+        # losing the learner's sentence is a much worse one.
+        logger.warning("Inline TTS failed, client will fall back: %s", exc)
+        refund_quota(db, learner, "tts_chars", len(text), surface="conversation",
+                     reason="downstream_failure")
+        return ""
 
 
 def _record_prerendered_audio(db: Session, learner: Learner, node: Any | None) -> None:
@@ -424,6 +488,11 @@ async def submit_turn(
     # P17-3: if the next node carries pre-rendered audio, account it (no quota).
     _record_prerendered_audio(db, learner, result.get("node"))
 
+    # Graph nodes are authored content: an unrendered one is a gap in the
+    # pre-render pipeline, not something to paper over by synthesising the
+    # same fixed line on every turn — and a vendor call here would put the
+    # graph path back on the network it was designed to stay off. The
+    # client's own TTS fallback still covers it.
     return TurnResponse(**result)
 
 
@@ -534,6 +603,10 @@ async def _turn_llm(
     session.ratio_hint = max(0.0, min(1.0, (session.ratio_hint or 0.3) + delta))
     db.commit()
 
+    line = reply.sanskrit or reply.bridge
+    line_lang = "sa" if reply.sanskrit else _bridge_lang(learner)
+    line_audio = await _inline_tts(db, learner, line, line_lang)
+
     return TurnResponse(
         verdict=verdict,
         diagnosis=reply.bridge if not reply.sanskrit else "",
@@ -541,10 +614,11 @@ async def _turn_llm(
         node=NodeOut(
             id=f"llm:{session.id}:{session.turn_count}",
             kind="tutor",
-            lang="sa" if reply.sanskrit else _bridge_lang(learner),
-            devanagari=reply.sanskrit or reply.bridge,
+            lang=line_lang,
+            devanagari=line,
             iast=reply.iast,
             gloss=reply.bridge if reply.sanskrit else "",
+            audio_base64=line_audio,
         ),
         edges=[],
         session_done=reply.done,

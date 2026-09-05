@@ -158,8 +158,8 @@ REGISTRY: dict[str, ProviderSpec] = {
         env_key="OPENROUTER_API_KEY",
         default_model="google/gemini-3.7-flash",
         extra_headers={
-            "HTTP-Referer": "https://shabd.dev",
-            "X-Title": "Shabd",
+            "HTTP-Referer": "https://sanskritam.io",
+            "X-Title": "Sanskritam",
         },
     ),
 }

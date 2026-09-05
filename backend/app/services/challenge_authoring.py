@@ -111,7 +111,7 @@ def _cache_store(band_features, register, n, provider, item_index, drafts) -> No
 # --- drafting -------------------------------------------------------------
 
 _SYSTEM_PROMPT = (
-    "You are the challenge author for Shabd, a Sanskrit-as-a-second-language app. "
+    "You are the challenge author for Sanskritam, a Sanskrit-as-a-second-language app. "
     "You write single-sentence practice challenges.\n\n"
     "Return ONLY a JSON object, no prose, no markdown fences, with exactly these keys:\n"
     '- "prompt_l1": str - an English prompt telling the learner what to say in Sanskrit\n'

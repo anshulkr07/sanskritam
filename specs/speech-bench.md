@@ -1,6 +1,6 @@
 > **SUPERSEDED 2026-08-30 — do not implement §2 or §3 of this spec.**
 >
-> Shabd is **API-only: no local models, anywhere** (architecture.md §1). The app ships to phones and
+> Sanskritam is **API-only: no local models, anywhere** (architecture.md §1). The app ships to phones and
 > we run no inference servers, no GPU box and no local batch. That removes the Parler batch renderer
 > (§2) and the Vāgdhenu wrapper (§3) from the design entirely.
 >
@@ -19,7 +19,7 @@
 
 ## Context
 
-Shabd (D:\Projects\Shabd) backend, FastAPI + SQLAlchemy, Python 3.11, Windows/git-bash, venv `backend/.venv`. Sarvam key exists in `backend/.env` as `SARVAM_API_KEY`. Existing client: `backend/app/services/sarvam.py` (async httpx wrapper, `SarvamClient.text_to_speech` / `speech_to_text`, config via `app.config.settings`).
+Sanskritam (D:\Projects\Shabd) backend, FastAPI + SQLAlchemy, Python 3.11, Windows/git-bash, venv `backend/.venv`. Sarvam key exists in `backend/.env` as `SARVAM_API_KEY`. Existing client: `backend/app/services/sarvam.py` (async httpx wrapper, `SarvamClient.text_to_speech` / `speech_to_text`, config via `app.config.settings`).
 
 Architecture doc (architecture.md): build-order step 2 = **Saaras ASR latency bench** (p50/p95 on code-mixed audio; "the entire live budget" for conversation per §12: target 600–900 ms/turn, so ASR must be ≲500-800 ms). The former step 1 (a local batch-TTS throughput spike) is cancelled — synthesis is Bulbul `sa-IN`, a hosted API.
 
@@ -40,7 +40,7 @@ CLI: `python scripts/bench_asr.py [--n 10] [--seconds 4] [--out results/bench_as
 
 ### 2. ~~Parler batch renderer~~ — **CANCELLED 2026-08-30**
 
-Shabd is API-only: **no local models, anywhere** (architecture.md §1). Sanskrit synthesis is Bulbul
+Sanskritam is API-only: **no local models, anywhere** (architecture.md §1). Sanskrit synthesis is Bulbul
 `sa-IN`, and the equivalent renderer already exists as `backend/scripts/render_sarvam.py`.
 
 **Action for whoever picks this up: delete, do not build.** `backend/app/services/parler.py`,

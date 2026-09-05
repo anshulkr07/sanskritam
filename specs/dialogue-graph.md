@@ -2,7 +2,7 @@
 
 ## Context
 
-Shabd (D:\Projects\Shabd) is an audio-first Sanskrit learning backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv` (run as `backend/.venv/Scripts/python`). Alembic migrations in `backend/migrations/versions/` — current head is `1861932777ab`. On startup `app.db.init_db()` runs `alembic upgrade head` then a **schema drift guard** that fails startup if models and DB disagree — so your migration must exactly match your models.
+Sanskritam (D:\Projects\Shabd) is an audio-first Sanskrit learning backend. FastAPI + SQLAlchemy 2.0 + SQLite, Python 3.11, Windows/git-bash. Venv: `backend/.venv` (run as `backend/.venv/Scripts/python`). Alembic migrations in `backend/migrations/versions/` — current head is `1861932777ab`. On startup `app.db.init_db()` runs `alembic upgrade head` then a **schema drift guard** that fails startup if models and DB disagree — so your migration must exactly match your models.
 
 Architecture (architecture.md §12): conversation is a **pre-rendered dialogue graph**. Node = one tutor turn (audio_url pre-rendered, Devanagari, IAST, gloss, lang, sanskrit_ratio band). Edge = an expected learner response keyed by **morphological feature set, not string**. Register is `laukika` for conversation. No Sanskrit is synthesised in the request path (not your concern here — audio_url may be empty until the render pass fills it).
 

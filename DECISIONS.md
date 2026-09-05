@@ -280,3 +280,48 @@ a coverage ceiling, not a generation defect.
   absent; never a guess).
 - Each stroke carries `dir` (pen travel) so U12-1 animates the true direction
   and U12-3 can check order/direction, which ML Kit does not provide.
+
+
+## 2026-09-05 — the conversation turn is measured before it is optimised
+
+- **The complaint was "a bit slow"; the measurement was 4.0 s** from mic-stop
+  to the reply appearing (read off a screen recording: recording 3.0→10.5 s,
+  reply at 14.5 s). That number is the sum of four serial hops and says
+  nothing about which one to attack, so `mobile/src/utils/perf.ts` now marks
+  each — `stop → flush → stt → turn → speak(...)` — and logs one line per
+  turn with the dominant stage named. Dev-only; a release build pays a
+  `Date.now()` per mark and nothing else.
+- **The 300 ms sleep after `recorder.stop()` is gone.** It was a number
+  picked to be comfortably larger than the real encoder flush, which made it
+  wrong twice: it spent 300 ms of every turn, and it would still have raced
+  on a slow device. `utils/recording.ts` polls for the file to exist and stop
+  growing instead — two 20 ms ticks in practice, and it actually answers the
+  question being asked.
+- **Live TTS never got the lip-sync fix.** `playTutorAudio` had two separate
+  implementations and only the pre-rendered-url one grew the `onStart`
+  listener, so on every line WITHOUT a static file — which in LLM mode is
+  every line — the mouth still started at call time and ran ahead of the
+  voice. Both paths now share one `playSource`.
+- **LLM turns return their audio inline** (`NodeOut.audio_base64`), removing
+  the client's separate /speech/tts call. This is a trade, not a free win:
+  the voice arrives one round trip sooner, but the text bubble now waits for
+  TTS where before it landed as soon as the model had written the line.
+  Which reads as faster is a question about feel, so `settings.
+  conversation_inline_audio` turns it off for an A/B against the `[perf]`
+  lines rather than settling it by assertion.
+- **Graph mode deliberately does NOT do this.** Synthesising an unrendered
+  graph node on the turn path would put a vendor call on a path designed to
+  stay off the network, and would re-synthesise the same authored line every
+  time it is reached — an unrendered node is a gap in the pre-render
+  pipeline, not something to paper over per-turn. The test suite caught this
+  the honest way: 24 conversation tests started hitting Sarvam for real.
+- **`_inline_tts` catches `Exception`, on purpose.** `SarvamError` covers
+  only what the vendor client chooses to raise; a proxy/DNS/timeout error
+  arrives untranslated from httpx, and letting one escape turned a missing
+  voice clip into a failed turn. Silence is a bad outcome; losing the
+  learner's sentence is a much worse one.
+- **Still unmeasured:** how the 4.0 s actually splits. STT, the LLM and TTS
+  are all plausible dominators and the next recording's `[perf]` line
+  decides. Streaming the first sentence to TTS while the model is still
+  generating is the obvious next lever, and is not worth building until the
+  numbers say TTS is the problem.

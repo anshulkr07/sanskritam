@@ -1,4 +1,4 @@
-// Shared UI primitives — the "Shabd look": warm paper, chunky buttons with a
+// Shared UI primitives — the "Sanskritam look": warm paper, chunky buttons with a
 // solid bottom shadow, pill chips, and calm type. Light theme only.
 
 import React from "react";

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shabd — one-shot Cloud Run deploy, meant to run in Cloud Shell.
+# Sanskritam — one-shot Cloud Run deploy, meant to run in Cloud Shell.
 #
 # Prereqs (all interactive, done once in Cloud Shell):
 #   gcloud auth login && gcloud config set project <PROJECT_ID>
@@ -11,6 +11,9 @@
 #   OPENROUTER_API_KEY=...
 #   ADMIN_TOKEN=...
 #   DATABASE_URL=postgresql://...   (Supabase session-pooler string, port 5432)
+#   GOOGLE_CLIENT_ID=...            optional — comma-separated Google OAuth
+#                                   client IDs (Android,iOS,Web) for /auth/google.
+#                                   Omit to disable Google login in prod.
 #
 # (No HuggingFace token needed: vidyut's data downloads from GitHub releases,
 #  not HF, and nothing else in the codebase reads one — verified 2026-09-02.)
@@ -69,6 +72,7 @@ declare -A SECRETS=(
   [openrouter-api-key]=OPENROUTER_API_KEY
   [admin-token]=ADMIN_TOKEN
   [shabd-database-url]=DATABASE_URL
+  [google-client-id]=GOOGLE_CLIENT_ID
 )
 for name in "${!SECRETS[@]}"; do
   var="${SECRETS[$name]}"
@@ -105,7 +109,7 @@ gcloud run deploy "$SERVICE" \
   --timeout=120s \
   --allow-unauthenticated \
   --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false" \
-  --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest"
+  --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest,GOOGLE_CLIENT_ID=google-client-id:latest"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────
 URL=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --format='value(status.url)')
