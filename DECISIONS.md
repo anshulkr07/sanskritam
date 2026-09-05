@@ -325,3 +325,39 @@ a coverage ceiling, not a generation defect.
   decides. Streaming the first sentence to TTS while the model is still
   generating is the obvious next lever, and is not worth building until the
   numbers say TTS is the problem.
+
+## 2026-09-06 — P21-1 + P21-2, the canon reader (backend) + U13 (client)
+
+- **Built a reader, not a shelf.** `GET /shlokas` returns the whole verse
+  corpus (`shlokas`, 96 rows) in date order, auth-bound, with the
+  already-populated `word_breakdown` on every row. The reader's
+  instrumentation — word, meaning, features — was already in the schema and
+  populated; the task was exposing it, not authoring it (P21-1).
+- **The tap-a-word engine path reuses P19's routing table, not a second one**
+  (P21-2, UI_HANDOVER U13-2): tapping a word opens U11's `AskSheet` with the
+  word as `subject` (`surface:"shloka"`). The `parse`/`split`/`scansion`
+  engine blocks and the model explanation are both one tap away, and the
+  learner never types context. A ₹0 inline gloss card (word + meaning +
+  feature chips from `word_breakdown`) answers the instant case before any
+  model is involved.
+- **Words are tokenised from `word_breakdown`, never split from the verse
+  text.** Sandhi fuses boundaries, so the breakdown is the trustworthy
+  tokeniser; splitting the string would fragment compound words.
+- **The reader never grades and never reads aloud** (U13-3, P21): no verdict,
+  no streak, no meter. No TTS in the list — audio goes only on what is
+  actually studied, and a corpus of 10M chars is ₹30,000+ at Bulbul rates.
+- **Siting:** the reader is a stack screen reached from a "Read" card on the
+  Grammar tab — not a seventh tab (the six is a hard max). Reading is a
+  reference posture, so it lives with the other reference surfaces.
+- **No new dependency.** The verse list uses RN primitives + Reanimated
+  (already installed); the reading page-turn is `components/PageFlip.tsx` — a
+  perspective-based `rotateY` fold with the content swap driven from the UI
+  thread via `runOnJS`. Nothing was added to package.json.
+- **Reading is a page, the list is an index.** Tapping a card enters a
+  full-page reading posture with a 3D page-turn to adjacent verses; the
+  collapsed list stays a vertical scroll (not a horizontal pager, U13-1). The
+  turn is skippable (§3.7) and swapped instantly under Reduce Motion (§3.4).
+- Tests: `backend/tests/test_shloka_reader.py` (4) — auth-gated list,
+  ascending-date order, word_breakdown instrumentation present, deterministic
+  across calls. Suite 495 → 499.
+

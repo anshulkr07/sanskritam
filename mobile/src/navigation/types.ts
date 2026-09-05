@@ -46,6 +46,9 @@ export type RootStackParamList = {
   Writing: undefined;
   // U8-4: the daily word (वर्ण-बन्धः)
   DailyWord: undefined;
+  // U13/P21: the canon reader — a scroll of tappable verses (a stack screen,
+  // not a seventh tab). Reached from Grammar.
+  Reader: undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

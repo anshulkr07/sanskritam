@@ -1,10 +1,10 @@
 # Sanskritam — UI, UX & Motion Handover
 
 **Audience:** an implementing coding agent (DeepSeek-V4-Flash / Hermes).
-**Written:** 2026-09-01. **Revised:** 2026-09-05 (third pass) — completed phases (U0, U2,
-U7, U8, U9) collapsed to one-line records; §1 re-measured; **U4-2 unblocked and
-moved to U12; phases U11 (ask anywhere), U12 (learning to write) and U13 (the
-reader) added** on owner direction.
+**Written:** 2026-09-01. **Revised:** 2026-09-06 (fourth pass) — completed phases (U0, U2,
+U7, U8, U9, **U11**) collapsed to one-line records; §1 re-measured; **U4-2 unblocked and
+moved to U12 (U12-4 open — needs the ML Kit dev build); U13 (the reader) done
+(2026-09-06)** on owner direction.
 **Companion doc:** [`HANDOVER.md`](HANDOVER.md) — backend and content.
 The two docs are mostly independent, but U9 connects surfaces specified there
 as P18, and U9-2's calendar depends on endpoints that already exist.
@@ -332,18 +332,17 @@ gap — replace with `ReturnType<typeof setTimeout>`.
 | **U8** | Information architecture — six tabs, drawer, Home hub, Play | **done** |
 | **U9** | Connect what the backend already has | **done** |
 | **U10** | What first users need from the client | **open** — pairs with `HANDOVER.md` P8 |
-| **U11** | Ask anywhere — help on any screen | **open** — pairs with P19; the backend mostly exists |
-| **U12** | Learning to write Devanagari — ML Kit ink + OCR | **open** — pairs with P20; **was U4-2** |
-| **U13** | The reader — tap a word, the engines answer | **open** — pairs with P21; build U11-2 first |
+| **U11** | Ask anywhere — help on any screen | **done 2026-09-06** — pairs with P19 |
+| **U12** | Learning to write Devanagari — ML Kit ink + OCR | U12-1/2/3/5 done **· U12-4 open** (needs ML Kit dev build) |
+| **U13** | The reader — tap a word, the engines answer | **U13-1/2/3 done 2026-09-06** — pairs with P21-1/2 |
 
 ⚠ **U5 is still the first thing anyone should pick up.** U9 closed the last
 gap between a finished backend surface and a learner reaching it, so most of
 what is left in this document is quality, not connection.
 
-**U11, U12 and U13 are the exception** — added 2026-09-05, they are new
-surfaces rather than polish. Take them in that order: U11 is cheap because
-`HANDOVER.md` P19 shows most of its backend already exists; U12 is the largest
-new audience; U13 reuses U11-2's sheet and should not be started before it.
+**U11, U12 and U13 were the exception** — added 2026-09-05 as new surfaces
+rather than polish. **U11 and U13 are done (2026-09-06)**; U12-4 alone still
+waits on the ML Kit dev build. U13 reused U11-2's sheet exactly as planned.
 
 **U5** — it is **not** optional or deferrable. It was placed after U2 only
 because retrofitting accessibility onto three screens is cheaper than onto
@@ -1428,44 +1427,48 @@ Coordinate with U10-1 rather than bolting an onboarding branch on afterwards.
 
 ---
 
-# PHASE U13 — The reader
+# PHASE U13 — The reader — DONE 2026-09-06
 
 > **The catalogue is not the product.** archive.org has had these texts for
 > twenty years. What nothing else has is *tap any word and four engines
 > answer*.
 
-**Backend:** `HANDOVER.md` **P21**. **Blocked by:** P8, P21-1, and U11 — the
-tap-a-word answer is U11-2's sheet pointed at a verse instead of a screen.
-**Build that sheet once.**
+`mobile/src/screens/Reader.tsx` (a stack screen, not a seventh tab) ships
+U13-1/2/3. Backend companion `HANDOVER.md` P21-1/2 (`GET /shlokas`). Entry
+point: a "Read" card at the top of the Grammar tab.
 
-## U13-1 · The verse list
+## U13-1 · The verse index + page-turn reading
 
-**Effort:** M
-
-A vertical scroll of verse cards, each expanding in place. Not a horizontal
-pager: **the pager is right for the one daily verse and wrong for study**, and
-`Shloka.tsx` (U4-4) already does the daily one well.
-
-⚠ **Do not build a toggle between the two layouts.** It doubles the surface to
-maintain and hands the learner a decision that is the designer's to make.
+`Reader.tsx` has TWO postures, one screen:
+- **Index** — a vertical scroll of collapsed verse cards (the contents page,
+  *not* a pager; U13-1). Uses U9-4's pattern — content-shaped skeleton, a
+  U10-3 retryable error state, and an honest empty state. Corpus comes from the
+  new `GET /shlokas` endpoint (date-ordered, auth-bound).
+- **Reading** — tapping a card opens that verse as a full page. A **3D book
+  page-turn** (`components/PageFlip.tsx`) folds to the adjacent verse as you
+  tap Previous/Next: the current face rotates about its vertical axis
+  (perspective-based `rotateY`), swaps at the edge via `runOnJS`, and unfolds
+  the incoming face flat. Pure cosmetic — skippable (§3.7) and absent under
+  Reduce Motion (§3.4), where it swaps instantly. No horizontal pager: the
+  index stays a scroll; the turn is a reading posture, not the primary browse.
 
 ## U13-2 · Tap a word
 
-**Effort:** M
+Words render from `word_breakdown` (NOT split from the verse text — sandhi
+fuses boundaries and the breakdown is the trustworthy tokeniser). A tap:
+- expands an inline gloss card — word, meaning, feature chips (₹0, instant);
+- and opens U11's `AskSheet` with `{surface:"shloka", subject:word}` context,
+  so the engine path (`parse`/`split`/`scansion` via P19) and the model
+  explanation are one tap away. The learner never types context.
 
-`word_breakdown` is already on every śloka row — word, meaning, features. A tap
-opens U11-2's sheet: gloss, features, and the derivation when there is one.
-This is the whole differentiator, and it should feel instant, because it is
-local.
+Tapped word is highlighted (saffron tint) so the reading position is visible.
 
 ## U13-3 · Reading, not drilling
 
-**Effort:** S
-
-A reader is a different posture from a challenge screen: no verdict, no streak,
-no score. Someone reading the Gītā at night is not in a session. **Do not put a
-meter on this surface** — the standing ruling on hearts and meters (§11) applies
-with more force here, not less.
+No verdict, no streak, no score, no meter — the reader is a reference posture.
+A "Ask about this verse" affordance routes to the same AskSheet at verse
+granularity. Per P21 the list never triggers TTS (audio goes only on what is
+studied).
 
 ---
 

@@ -723,6 +723,9 @@ export const api = {
 
   todayShloka: () => request<Shloka>("/shlokas/today", {}, true),
 
+  // U13/P21: the reader corpus — full list in date order, instrumentation included.
+  listShlokas: () => request<Shloka[]>("/shlokas", {}, true),
+
   varnamala: () => request<VarnamalaResponse>("/grammar/varnamala"),
 
   features: () => request<Feature[]>("/grammar/features", {}, true),

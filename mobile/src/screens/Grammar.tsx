@@ -78,9 +78,26 @@ export default function GrammarScreen({ navigation }: Props) {
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         <Text style={styles.title}>Grammar</Text>
-        <Text style={styles.subtitle}>Derivations and paradigms — every claim proven.</Text>
+                <Text style={styles.subtitle}>Derivations and paradigms — every claim proven.</Text>
 
-        {/* Search field */}
+                {/* U13/P21: enter the canon reader. Reading is never graded (U13-3). */}
+                <Pressable
+                  onPress={() => { haptics.tap(); navigation.navigate("Reader"); }}
+                  style={({ pressed }) => [styles.readerCard, pressed && styles.readerCardPressed]}
+                  accessibilityRole="button"
+                  accessibilityLabel="Open the reader — a scroll of verses you can tap word by word"
+                >
+                  <View style={styles.readerIcon}>
+                    <Ionicons name="library-outline" size={22} color={color.saffron} />
+                  </View>
+                  <View style={styles.readerText}>
+                    <Text style={styles.readerTitle}>Read</Text>
+                    <Text style={styles.readerSub}>Open a verse and tap any word.</Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
+                </Pressable>
+
+                {/* Search field */}
         <View style={styles.searchRow}>
           <TextInput
             value={query}
@@ -182,7 +199,22 @@ const styles = StyleSheet.create({
   body: { padding: space.lg, paddingBottom: space.xxl },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink },
   subtitle: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2, marginBottom: space.lg, lineHeight: 20 },
-  searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.md },
+    readerCard: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: space.sm,
+      backgroundColor: color.surface,
+      borderRadius: radius.lg,
+      padding: space.md,
+      marginBottom: space.md,
+      ...shadow.card,
+    },
+    readerCardPressed: { transform: [{ translateY: 2 }] },
+    readerIcon: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronLight, alignItems: "center", justifyContent: "center" },
+    readerText: { flex: 1 },
+    readerTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+    readerSub: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2 },
+    searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.md },
   input: {
     flex: 1,
     borderWidth: 2,

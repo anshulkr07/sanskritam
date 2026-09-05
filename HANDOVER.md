@@ -15,6 +15,11 @@ the backend contract; visual detail stays in `UI_HANDOVER.md`.
 review tooling (band-sorted packet, near-duplicates clustered, bulk approve by
 band). Suite 434 → **465**.
 
+**Landed 2026-09-06:** **P21-1 + P21-2** — `GET /shlokas` (the reader corpus,
+auth-bound, `word_breakdown` instrumented, tested) and the tap-a-word surface
+that consumes P19's routing. Client half is `UI_HANDOVER.md` U13. Suite 465 →
+**499**. See §4 and PHASE P21.
+
 ⚠ **And the app was dead.** `models.py` declared `learners.google_sub`, the
 migration existed, and it had **never been applied** — every learner query
 threw `no such column`. Login, Home and profile all 500ed while the suite
@@ -32,15 +37,15 @@ to write the script, **P21** the readable canon. See §4.
 
 ---
 
-## Status — measured 2026-09-05, not estimated
+## Status — measured 2026-09-06, not estimated
 
 | | |
 |---|---|
-| Backend tests | **465 pass** |
+| Backend tests | **499 pass** (495 + 4 reader) |
 | Mobile typecheck | **0 errors** |
-| Alembic head | `aabbccddeeff` — **applied**; verify with `alembic current` |
+| Alembic head | `b7c8d9e0f1a2` — **applied**; verify with `alembic current` |
 | Engines live | all four — prakriya, chandas, sandhi, cheda (+ kosha, lipi) |
-| Client | six tabs + drawer; pronunciation, progress and metrics all wired |
+| Client | six tabs + drawer; pronunciation, progress, metrics, **reader** wired |
 | Deploy | Cloud Run (`shabd-api`, asia-south1); the app points at it |
 
 ### Content in the DB
@@ -476,7 +481,7 @@ Added 2026-09-05 on owner direction.
 | **P20** | Learning to write the script | P7-13 |
 | **P10** | Maths in Sanskrit | P7 |
 | **P14** | Entitlements — ⚠ owner-gated throughout | P8 + pricing decision |
-| **P21** | The canon, made readable | P8, P7-13 |
+| **P21** | The canon, made readable | P21-1/2 done 2026-09-06; only P21-3/4 remain |
 | **P15** | Async social — the verse chain | P13, P14 |
 | **P16** | `अवधानम्` — the boss mode | P15 |
 
@@ -1355,7 +1360,7 @@ source · the flow works with no network at all.
 
 ---
 
-# PHASE P21 — The canon, made readable
+# PHASE P21 — The canon, made readable — P21-1 + P21-2 DONE 2026-09-06
 
 > Upaniṣads, Purāṇas, the Mahābhārata, the Āyurvedic saṃhitās. **The catalogue
 > is not the product** — archive.org has had these texts for twenty years. What
@@ -1383,26 +1388,27 @@ manually tagged words, sandhi-split, morphologically analysed). Both are
 machine-readable and openly licensed. Record the per-text licence at import; it
 varies by item, and "it was on the internet" is not a licence.
 
-## P21-1 · One text, fully instrumented — not a shelf
+## P21-1 · One text, fully instrumented — not a shelf — DONE 2026-09-06
 
-**Effort:** L
+`GET /shlokas` (`routers/shlokas.py`) returns the whole corpus in date order,
+auth-bound, with the already-populated `word_breakdown` on every row — word,
+meaning and features per word. That is the reader's instrumentation. Tested in
+`tests/test_shloka_reader.py` (auth, date-order determinism, breakdown present).
+Client surface is `UI_HANDOVER.md` U13 (`mobile/src/screens/Reader.tsx`;
+the reading page-turn is `mobile/src/components/PageFlip.tsx`).
 
-**Use the 96 verses already in `shlokas`.** `word_breakdown` is already in the
-schema and already populated — word, meaning and features per word. That is the
-reader's instrumentation, built and paid for.
-
-Prove the surface against a corpus you own before importing anything. When it
-is good, a second text is an import script, not a feature — and if it is not
+Prove the surface against a corpus you own **before** importing anything. It is
+proven now; a second text is an import script, not a feature — and if it is not
 good, twelve texts will not fix it.
 
-## P21-2 · Tap a word, the engines answer
+## P21-2 · Tap a word, the engines answer — DONE 2026-09-06
 
-**Effort:** M
-
-`cheda` segments · `kosha` glosses · `prakriya` derives in sūtra-numbered steps
-· `chandas` scans. All local, all ₹0 (§2.7, §2.9). This is P19-2's routing
-table pointed at a verse instead of a screen — **build it once, in P19, and
-consume it here.**
+The reader taps a word and opens U11's `AskSheet` with the word as subject
+(`surface:"shloka"`). The engine path (`parse`/`split`/`scansion`) runs P19-2's
+single routing table — built once in P19, consumed here exactly as written. A
+tap also shows the inline gloss + feature chips straight from `word_breakdown`
+(₹0, instant). Nothing synthesised on this surface; all local engines before
+any model.
 
 ⚠ `chandas` scansion is reliable; **metre naming is not.** It returns `None`
 for anuṣṭubh, which is variable and absent from the 145-vṛtta table. Show the
