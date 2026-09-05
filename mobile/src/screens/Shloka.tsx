@@ -96,7 +96,13 @@ function AnimatedWord({
 
   return (
     <Animated.View style={animStyle}>
-      <Pressable style={styles.wordRow} onPress={onPlay}>
+      <Pressable
+        style={styles.wordRow}
+        onPress={onPlay}
+        accessibilityRole="button"
+        accessibilityLabel={`Play the word ${word}. Meaning: ${meaning ?? "not given"}`}
+        accessibilityState={{ selected: played }}
+      >
         <View style={styles.wordMain}>
           <Text style={[styles.wordDev, script("bold")]}>{word}</Text>
           {!!meaning && <Text style={styles.wordMeaning}>{meaning}</Text>}
@@ -203,7 +209,14 @@ export default function ShlokaScreen() {
         {/* Top: source + play */}
         <View style={styles.topRow}>
           <Text style={styles.source}>{shloka.source_ref}</Text>
-          <Pressable onPress={play} style={styles.playBtn} disabled={speaking}>
+          <Pressable
+            onPress={play}
+            style={styles.playBtn}
+            disabled={speaking}
+            accessibilityRole="button"
+            accessibilityLabel={speaking ? "Playing the verse" : "Play the verse aloud"}
+            accessibilityState={{ busy: speaking, disabled: speaking }}
+          >
             {speaking ? (
               <Ionicons name="hourglass-outline" size={22} color={color.white} />
             ) : (
@@ -282,7 +295,12 @@ function AnimatedLine({
 
   return (
     <Animated.View style={animStyle}>
-      <Pressable onPress={onPress}>
+      <Pressable
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={`Play verse line. ${text}।`}
+        style={styles.lineHit}
+      >
         <Text style={[styles.verse, script("bold")]}>{text}।</Text>
       </Pressable>
     </Animated.View>
@@ -293,6 +311,7 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  lineHit: { minHeight: 44, justifyContent: "center" },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
   source: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron, textTransform: "uppercase", letterSpacing: 0.5 },
   playBtn: { width: 48, height: 48, borderRadius: 24, backgroundColor: color.saffron, alignItems: "center", justifyContent: "center", ...shadow.button },

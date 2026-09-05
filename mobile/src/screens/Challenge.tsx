@@ -212,10 +212,19 @@ export default function ChallengeScreen({ navigation, route }: Props) {
   }
 
   if (!challenge) {
+    // U10-2: an exhausted pool renders a real empty state — "you're ahead of
+    // us today", never an error, never an infinite spinner (33 approved
+    // challenges run out; P8-0's review queue refills them).
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <Text style={styles.loading}>No challenges right now.</Text>
+          <Text style={styles.emptyEmoji}>🌱</Text>
+          <Text style={[styles.emptyTitle, { fontSize: sized(font.sizes.md) }]}>
+            You're ahead of us today!
+          </Text>
+          <Text style={[styles.emptyHint, { fontSize: sized(font.sizes.sm) }]}>
+            That was everything we have for now. New exercises are on the way.
+          </Text>
           <Button label="Try again" onPress={loadNext} style={{ alignSelf: "center", marginTop: space.md }} />
         </View>
       </SafeAreaView>
@@ -355,6 +364,10 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
   loading: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.md, color: color.inkSoft },
+  // U10-2: the exhausted-pool empty state
+  emptyEmoji: { fontSize: 44, marginBottom: space.xs },
+  emptyTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink, textAlign: "center" },
+  emptyHint: { color: color.inkSoft, textAlign: "center", marginTop: space.xs, maxWidth: 260, lineHeight: 20 },
   body: { padding: space.lg, paddingBottom: space.xxl * 2 },
   progressRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.lg },
   progressLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft, minWidth: 36, textAlign: "right" },
