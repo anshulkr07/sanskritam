@@ -35,6 +35,7 @@ import ParadigmScreen from "./src/screens/Paradigm";
 import ShlokaScreen from "./src/screens/Shloka";
 import VarnamalaScreen from "./src/screens/Varnamala";
 import DailyWordScreen from "./src/screens/DailyWord";
+import WritingScreen from "./src/screens/Writing";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -81,6 +82,8 @@ function RootNavigator() {
       {/* U8-1: Shloka and Varṇamālā are stack screens reached from Home cards. */}
       <Stack.Screen name="Shloka" component={ShlokaScreen} options={{ title: "Daily Śloka" }} />
       <Stack.Screen name="Varnamala" component={VarnamalaScreen} options={{ title: "Varṇamālā" }} />
+      {/* U12-5: Varṇamālā's practice mode — write the letters. */}
+      <Stack.Screen name="Writing" component={WritingScreen} options={{ title: "Write it" }} />
       {/* U8-4: the daily word */}
       <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

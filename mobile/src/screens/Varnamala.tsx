@@ -11,6 +11,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type VarnamalaChar, type VarnamalaResponse, type PronunciationResult } from "../api/client";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
@@ -89,7 +91,9 @@ function SparsaMatrix({
 
 // ── Main screen ───────────────────────────────────────────────────────
 
-export default function VarnamalaScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, "Varnamala">;
+
+export default function VarnamalaScreen({ navigation }: Props) {
   const [grid, setGrid] = useState<VarnamalaResponse | null>(null);
   const [speaking, setSpeaking] = useState<string | null>(null);
   const [selectedChar, setSelectedChar] = useState<VarnamalaChar | null>(null);
@@ -228,6 +232,18 @@ export default function VarnamalaScreen() {
           Sanskrit orders its alphabet by where your tongue goes in your mouth.
           The five rows below are five places of articulation — throat to lips.
         </Text>
+
+        {/* U12-5: writing is this screen's practice mode — same relationship
+            the mic has to the articulation map. Always reachable. */}
+        <Pressable
+          onPress={() => navigation.navigate("Writing")}
+          accessibilityRole="button"
+          accessibilityLabel="Practice writing the letters"
+          style={styles.writeCta}
+        >
+          <Ionicons name="create" size={20} color={color.saffronText} />
+          <Text style={styles.writeCtaText}>Write these letters →</Text>
+        </Pressable>
 
         {/* 5×5 Sparśa matrix */}
         <Text style={styles.sectionTitle}>स्पर्श · The 5×5 stops</Text>
@@ -519,4 +535,18 @@ const styles = StyleSheet.create({
   verdict: { marginTop: space.md, borderRadius: radius.md, padding: space.md },
   verdictHeading: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base },
   verdictBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, marginTop: space.xs, lineHeight: 18 },
+  // ── Writing practice CTA (U12-5) ──
+  writeCta: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: space.xs,
+    minHeight: 48,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: color.saffron,
+    backgroundColor: color.surface,
+    marginBottom: space.md,
+  },
+  writeCtaText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
 });

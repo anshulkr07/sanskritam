@@ -41,6 +41,9 @@ export type RootStackParamList = {
   // U8-1: Shloka and Varnamala are reached from Home cards, not tabs.
   Shloka: undefined;
   Varnamala: undefined;
+  // U12-5: writing is Varṇamālā's practice mode — a stack screen, never a
+  // seventh tab (U8-1). Reached from the Varṇamālā screen and Home.
+  Writing: undefined;
   // U8-4: the daily word (वर्ण-बन्धः)
   DailyWord: undefined;
 };
