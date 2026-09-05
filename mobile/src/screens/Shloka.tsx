@@ -17,6 +17,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { api, type Shloka, type WordBreakdown } from "../api/client";
+import { useAsk } from "../ask/AskProvider";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { color, font, radius, script, shadow, space } from "../theme";
@@ -133,6 +134,12 @@ export default function ShlokaScreen() {
   const [speaking, setSpeaking] = useState(false);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
   const reduced = useReducedMotion();
+  const { setContext } = useAsk();
+
+  // U11: the ask button asks about the verse on screen.
+  React.useEffect(() => {
+    setContext({ surface: "shloka", subject: shloka?.devanagari ?? "" });
+  }, [shloka?.devanagari, setContext]);
 
   useEffect(() => {
     setLoading(true);

@@ -1,4 +1,4 @@
-// Typed API client against the Shabd FastAPI backend.
+// Typed API client against the Sanskritam FastAPI backend.
 // Contract mirrors backend/app/schemas.py + routers/ exactly (mapped 2026-08-30).
 
 import { BASE_URL } from "../config";
@@ -95,6 +95,13 @@ export interface AttemptResponse {
   diagnosis: string;
   grammar_note: Record<string, unknown> | null;
   abstained: boolean;
+  /**
+   * P9-3 / U10-2: the correct form's derivation — present ONLY on a
+   * grammatical miss, never on `unsure` (§2.2). Consumed by the Challenge
+   * screen via DerivationPlayer; answers grammar, while the LLM gloss
+   * (grammar_note) answers meaning — either may be absent.
+   */
+  derivation: Derivation | null;
   updated_model: {
     sanskrit_ratio: number;
     sanskrit_ratio_setting: number;
@@ -148,6 +155,27 @@ export interface Feature {
   rank: number;
   label_en: string;
   label_hi: string;
+}
+
+// ─── Path spine (P7-5) ────────────────────────────────────────────────────
+
+/** One node of the approved-content journey (GET /grammar/path). */
+export interface PathNode {
+  id: string;
+  feature: string;
+  kind: string;
+  rank: number;
+  label_en: string;
+  label_hi: string;
+  approved_count: number;
+  pending_count: number;
+  mastery: number;
+}
+
+export interface PathSpine {
+  nodes: PathNode[];
+  features_covered: number;
+  features_total: number;
 }
 
 // ─── Conversation ─────────────────────────────────────────────────────────
@@ -293,6 +321,72 @@ export interface ParadigmCell {
 export interface Paradigm {
   rows: ParadigmCell[][];
   kind: string;
+}
+
+// ─── Ask anywhere (U11 / P19) ─────────────────────────────────────────────
+// A session-free explain endpoint with engine-first routing. `routed_to`
+// tells the learner which shape of answer they are reading (U11-2: an engine
+// answer is a derivation and is authoritative; a model answer is prose and
+// is help — they must not look alike).
+
+export interface AskEngineStep {
+  code: string;
+  sutra: string;
+  result: string;
+}
+
+export interface AskEngineBlock {
+  kind: "parse" | "split" | "scansion" | "info";
+  // parse
+  word?: string;
+  iast?: string;
+  stem?: string;
+  feature?: string;
+  derivation?: { result: string; step_count: number; steps: AskEngineStep[] };
+  // split
+  joined?: string;
+  splits?: { first: string; second: string; first_iast: string; second_iast: string }[];
+  // scansion
+  lines?: { syllables: ScanSyllable[] }[];
+  metre?: string;
+  // info
+  text?: string;
+}
+
+export interface AskResponse {
+  routed_to: "engine" | "llm" | "cache" | "engine_fallback";
+  explanation: string;
+  engine: { routed_to?: string; title?: string; blocks?: AskEngineBlock[]; subject?: string };
+  source: "engine" | "llm" | "engine_fallback" | "";
+  provider: string;
+  cached: boolean;
+}
+
+// ─── Writing practice (U12 / P20) ──────────────────────────────────────────
+
+export interface StrokePath {
+  d: string;
+  dir: "ltr" | "rtl" | "ttb" | "btt";
+}
+
+export interface WritingItem {
+  id: string;
+  tier: number; // 1 letter | 2 mātrā | 3 word
+  sort_order: number;
+  devanagari: string;
+  iast: string;
+  gloss: string;
+  stroke_paths: StrokePath[];
+  challenge_id: string | null;
+}
+
+export interface WritingAttemptResponse {
+  verdict: "correct" | "wrong" | "unsure";
+  abstained: boolean;
+  item_id: string;
+  item_devanagari: string;
+  item_iast: string;
+  attempt_id: number | null;
 }
 
 // ─── Daily word (U8-4 / P12) — वर्ण-बन्धः ────────────────────────────
@@ -590,6 +684,16 @@ export const api = {
       body: JSON.stringify({ install_id: installId, bridge_langs: bridgeLangs }),
     }),
 
+  googleLogin: (idToken: string, bridgeLangs: BridgeLangs = ["en", "hi"], timezone?: string) =>
+    request<DevLoginResponse>("/auth/google", {
+      method: "POST",
+      body: JSON.stringify({
+        id_token: idToken,
+        bridge_langs: bridgeLangs,
+        timezone,
+      }),
+    }),
+
   me: () => request<MeResponse>("/me", {}, true),
 
   updateRatio: (body: { sanskrit_ratio?: number; script_ratio?: number }) =>
@@ -669,6 +773,40 @@ export const api = {
   stt: (audio: string | Blob | Uint8Array, filename = "recording.wav", mime = "audio/wav", languageCode = "sa-IN") =>
     uploadSpeech(audio, filename, mime, languageCode, "transcribe"),
 
+  // Ask anywhere (U11 / P19) — session-free, engine-first.
+  ask: (surface: string, subject: string, question = "") =>
+    request<AskResponse>(
+      "/explain",
+      {
+        method: "POST",
+        body: JSON.stringify({ surface, subject, question }),
+      },
+      true,
+    ),
+
+  // Writing practice (U12 / P20) — recognition runs ON-DEVICE (§2.16); the
+  // server sees only the recognised string + confidence, never strokes.
+  writingItems: (tier?: number) =>
+    request<WritingItem[]>(
+      "/writing/items" + (tier ? `?tier=${tier}` : ""),
+      {},
+      true,
+    ),
+  writingAttempt: (itemId: string, recognisedText: string, confidence: number, source: "ink" | "photo") =>
+    request<WritingAttemptResponse>(
+      "/writing/attempt",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          item_id: itemId,
+          recognised_text: recognisedText,
+          confidence,
+          source,
+        }),
+      },
+      true,
+    ),
+
   // Grammar proof surfaces (U7) — local computation, no quota.
   deriveWord: (params: {
     dhatu?: string; lakara?: string; purusha?: string; vacana?: string;
@@ -692,6 +830,9 @@ export const api = {
 
   paradigm: (params: { pratipadika?: string; linga?: string; dhatu?: string; lakara?: string }) =>
     request<Paradigm>("/grammar/paradigm?" + toQuery(params)),
+
+  // Approved-content spine for the journey path (P7-5)
+  pathSpine: () => request<PathSpine>("/grammar/path", {}, true),
 
   // Daily word (U8-4 / P12) — वर्ण-बन्धः
   dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),

@@ -17,6 +17,8 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import DerivationPlayer from "../components/derivation/DerivationPlayer";
+import SandhiVisual from "../components/derivation/SandhiVisual";
+import { useAsk } from "../ask/AskProvider";
 import ParadigmScreen from "./Paradigm";
 import type { TabScreenProps } from "../navigation/types";
 import { haptics } from "../services/haptics";
@@ -37,6 +39,12 @@ export default function GrammarScreen({ navigation }: Props) {
   const [submitted, setSubmitted] = useState<string | null>(null);
   const [showParadigm, setShowParadigm] = useState(false);
   const [recent, setRecent] = useState<string[]>([]);
+  const { setContext } = useAsk();
+
+  // U11: the ask button asks about the word on screen, not "this screen".
+  React.useEffect(() => {
+    setContext({ surface: "grammar", subject: submitted ?? "" });
+  }, [submitted, setContext]);
 
   useEffect(() => {
     AsyncStorage.getItem(RECENT_KEY).then((v) => {
@@ -129,6 +137,12 @@ export default function GrammarScreen({ navigation }: Props) {
               dhatu={kind === "verb" ? submitted : undefined}
               title={`${submitted} — full paradigm`}
             />
+          </View>
+        ) : submitted && /\s/.test(submitted) ? (
+          // U4-5: a multi-word query visualises the junction — the surface
+          // only Sanskrit can teach, backed by GET /grammar/sandhi.
+          <View style={styles.derivWrap}>
+            <SandhiVisual joined={submitted} autoPlay />
           </View>
         ) : submitted ? (
           <View style={styles.derivWrap}>

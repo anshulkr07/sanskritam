@@ -24,6 +24,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { color } from "./src/theme";
 import type { RootStackParamList } from "./src/navigation/types";
 import { AuthProvider, useAuth } from "./src/store/auth";
+import { TypeScaleProvider } from "./src/hooks/useTypeScale";
+import { AskProvider } from "./src/ask/AskProvider";
 
 import MainTabs from "./src/navigation/AppDrawer";
 import ChallengeScreen from "./src/screens/Challenge";
@@ -110,12 +112,16 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <AuthProvider>
-          <NavigationContainer>
-            <RootNavigator />
-          </NavigationContainer>
-          <StatusBar style="dark" />
-        </AuthProvider>
+        <TypeScaleProvider>
+          <AuthProvider>
+            <NavigationContainer>
+              <AskProvider>
+                <RootNavigator />
+              </AskProvider>
+            </NavigationContainer>
+            <StatusBar style="dark" />
+          </AuthProvider>
+        </TypeScaleProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );
