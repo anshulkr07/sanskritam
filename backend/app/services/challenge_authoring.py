@@ -8,11 +8,16 @@ Vidyut-backed gate that builds ``accepted_parses`` by *analyzing the target*
 break otherwise).
 
 Each challenge is drafted as one LLM call returning a JSON object
-``{prompt_l1, target_sanskrit, target_iast, features}``. It is then gated:
+``{prompt_l1, target_sanskrit, features}``. It is then gated:
 ``accepted_parses`` comes from the Vidyut reading (plus variants), and the
 draft survives only when the analyzer is confident and every claimed feature
 is derivable. Passes are inserted into ``challenges``; failures feed the
 authoring backlog.
+
+P7-13: ``target_iast`` is NEVER asked of the model — it is derived at insert
+time by ``services/iast.to_iast`` (vidyut.lipi, ₹0). A model-supplied IAST on
+a draft is ignored, so the cache cannot replay a wrong transliteration into
+the table.
 
 No network in tests: providers are mocked, cache dir is overridable.
 """
@@ -39,6 +44,7 @@ from app.grading.analyzer import (
     is_confident,
 )
 from app.models import Challenge
+from app.services import iast
 
 logger = logging.getLogger("shabd.challenge_authoring")
 
@@ -110,8 +116,7 @@ _SYSTEM_PROMPT = (
     "Return ONLY a JSON object, no prose, no markdown fences, with exactly these keys:\n"
     '- "prompt_l1": str - an English prompt telling the learner what to say in Sanskrit\n'
     '- "target_sanskrit": str - the correct sentence in Devanagari, 3-7 words\n'
-    '- "target_iast": str - IAST transliteration of the target sentence\n'
-    '- "features": list[str] - feature ids actually present in target_sanskrit\n\n'
+    '- "features": list[str] - feature ids actually present in target_sanskrit\n'
     "Allowed feature ids (CLOSED SET, never invent, alter, or abbreviate one): {allowed}\n"
     "Register: {register}. Write natural grammatical Sanskrit with correct sandhi. "
     "Aim to exercise SEVERAL of the allowed features in the sentence, and use "
@@ -156,7 +161,9 @@ def _extract_json_array(text: str) -> list[dict]:
             {
                 "prompt_l1": str(item.get("prompt_l1", "")).strip(),
                 "target_sanskrit": target,
-                "target_iast": str(item.get("target_iast", "")).strip(),
+                # P7-13: a model-supplied IAST is dropped here — the stored
+                # value is derived from lipi at insert time (insert_pass).
+                "target_iast": "",
                 "features": [str(f) for f in (item.get("features") or [])],
             }
         )
@@ -204,7 +211,7 @@ async def draft_challenges(
     user = (
         f"Write ONE single-sentence challenge for the {register} register. "
         f"Exercise: {', '.join(band_features)}. "
-        f'Return ONE JSON object with keys prompt_l1, target_sanskrit, target_iast, features.'
+        f'Return ONE JSON object with keys prompt_l1, target_sanskrit, features.'
     )
 
     async def _call_once() -> list[dict]:
@@ -302,7 +309,10 @@ def insert_pass(db: Session, draft: dict) -> tuple[str, bool]:
         prompt_l1=draft.get("prompt_l1", ""),
         prompt_lang="en",
         target_sanskrit=draft.get("target_sanskrit", ""),
-        target_iast=draft.get("target_iast", ""),
+        # P7-13: IAST is a deterministic function of the Devanagari — derived
+        # from lipi here, never trusted from the draft (the model is not asked
+        # for it any more; a stale cached draft's value is discarded).
+        target_iast=iast.to_iast(draft.get("target_sanskrit", "")),
         features=draft.get("features", []),
         accepted_parses=draft.get("accepted_parses", []),
         register=draft.get("register", "laukika"),

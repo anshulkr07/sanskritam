@@ -196,7 +196,9 @@ def test_pipeline_catches_corrupted_challenge(client):
         "prompt_l1": "The boy goes to the forest.",
         "prompt_lang": "en",
         "target_sanskrit": "बालः वनम् गच्छति।",
-        "target_iast": "bālas vanam gacchati.",
+        # P7-13: the IAST is lipi-correct — the corruption under test is the
+        # accepted_parses claim below, not the transliteration.
+        "target_iast": "bālaḥ vanam gacchati.",
         "features": ["NOM.SG", "ACC.SG", "PRES.3SG"],
         # DELIBERATELY WRONG: claims LOC.SG for the object
         "accepted_parses": [{"bāla": "NOM.SG", "vana": "LOC.SG", "√gam": "PRES.3SG"}],

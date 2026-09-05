@@ -63,13 +63,16 @@ def seed_daily_words(db) -> None:
     if existing > 0:
         return
 
+    from app.services.iast import to_iast as _lipi_iast
+
     for i, (dev, iast, clue, diff) in enumerate(_CURATED):
         d = ANCHOR + timedelta(days=i)
         db.add(
             DailyWord(
                 date=d.isoformat(),
                 answer=dev,
-                answer_iast=iast,
+                # P7-13: derived from lipi, never hand-typed.
+                answer_iast=_lipi_iast(dev),
                 clue=clue,
                 difficulty=diff,
             )

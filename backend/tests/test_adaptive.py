@@ -106,9 +106,13 @@ def _mk_learner(db, learner_id):
 
 def _mk_challenge(db, target, status, register="laukika"):
     from app.models import Challenge
+    from app.services.iast import to_iast
+
     ch = Challenge(
         id=target + "-id", prompt_l1="Say it.", target_sanskrit=target,
         features=["NOM.SG", "ACC.SG", "PRES.3SG"], register=register,
+        # P7-13: lipi-derived IAST so leaked rows never trip the invariant test.
+        target_iast=to_iast(target),
         review_status=status, accepted_parses=[{"bāla": "NOM.SG", "vana": "ACC.SG", "√gam": "PRES.3SG"}],
     )
     db.add(ch)

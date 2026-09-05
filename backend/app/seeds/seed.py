@@ -11,6 +11,7 @@ from app.seeds.challenges import SEED_CHALLENGES
 from app.seeds.shlokas import SEED_SLOKAS, SHLOKA_ANCHOR
 from app.seeds.dialogue import seed_dialogue
 from app.seeds.daily_words import seed_daily_words
+from app.services import iast
 from app.services.chandas import scan as chandas_scan
 
 logger = logging.getLogger("shabd.seed")
@@ -88,7 +89,9 @@ def _seed_challenges(db):
             prompt_l1=cdata["prompt_l1"],
             prompt_lang=cdata.get("prompt_lang", "en"),
             target_sanskrit=cdata["target_sanskrit"],
-            target_iast=cdata.get("target_iast", ""),
+            # P7-13: IAST is derived from lipi, never hand-typed — the seed
+            # file's values are ignored so the table-wide invariant holds.
+            target_iast=iast.to_iast(cdata["target_sanskrit"]),
             features=cdata.get("features", []),
             accepted_parses=cdata.get("accepted_parses", []),
             register=cdata.get("register", "laukika"),
@@ -127,7 +130,9 @@ def _seed_shlokas(db):
             date=date_iso,
             source_ref=sdata["source_ref"],
             devanagari=sdata["devanagari"],
-            iast=sdata.get("iast", ""),
+            # P7-13: derived from lipi, never hand-typed — the seed file's
+            # value is ignored so the table-wide invariant holds.
+            iast=iast.to_iast(sdata["devanagari"]),
             metre=metre,
             word_breakdown=sdata.get("word_breakdown", []),
             features=sdata.get("features", []),

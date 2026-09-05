@@ -9,6 +9,7 @@ from app.auth import require_admin
 from app.db import get_db
 from app.models import Challenge
 from app.schemas import ChallengeResponse, CreateChallengeRequest
+from app.services import iast
 from app.services.metrics import escape_rate, tts_share, top_escape_nodes
 from app.services.content_well import content_well_report
 
@@ -21,13 +22,18 @@ async def create_challenge(
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
-    """Create a new challenge (admin only)."""
+    """Create a new challenge (admin only).
+
+    P7-13: an omitted/empty target_iast is derived from lipi rather than
+    stored empty; an explicitly supplied value is still honoured for a human
+    admin who hand-corrects one row.
+    """
     challenge = Challenge(
         id=uuid.uuid4().hex[:16],
         prompt_l1=req.prompt_l1,
         prompt_lang=req.prompt_lang,
         target_sanskrit=req.target_sanskrit,
-        target_iast=req.target_iast,
+        target_iast=req.target_iast or iast.to_iast(req.target_sanskrit),
         features=req.features,
         accepted_parses=req.accepted_parses if req.accepted_parses else [],
         register=req.register,
@@ -101,3 +107,31 @@ async def get_content_wells(
     a red test is the mechanism, not an alerting dependency.
     """
     return content_well_report(db)
+
+
+@router.get("/admin/errors")
+async def get_recent_errors(
+    limit: int = Query(50, ge=1, le=200),
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Recent server crashes (P8-2) — route, type, traceback; no learner
+    content is ever written to this table. Newest first."""
+    from app.models import ErrorLog
+
+    rows = db.query(ErrorLog).order_by(ErrorLog.ts.desc(), ErrorLog.id.desc()).limit(limit).all()
+    return {
+        "count": len(rows),
+        "errors": [
+            {
+                "id": r.id,
+                "ts": r.ts.isoformat() if r.ts else None,
+                "route": r.route,
+                "error_type": r.error_type,
+                "detail": r.detail,
+                "traceback": r.traceback,
+                "request_id": r.request_id,
+            }
+            for r in rows
+        ],
+    }

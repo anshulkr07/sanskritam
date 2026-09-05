@@ -13,6 +13,7 @@ import pytest
 
 from app.db import SessionLocal
 from app.models import Challenge, DialogueEdge, DialogueNode, DialogueScenario
+from app.services import iast
 
 from scripts.build_render_items import build_challenge_items, build_items, main
 
@@ -130,6 +131,9 @@ def _challenge(db, target, status="approved", register="laukika", audio_url=""):
     c = Challenge(
         id=uuid.uuid4().hex[:16], prompt_l1="Say it.", target_sanskrit=target,
         features=["NOM.SG"], register=register, review_status=status,
+        # P7-13: IAST is lipi-derived even in fixtures, so leaked rows cannot
+        # trip the table-wide IAST invariant test.
+        target_iast=iast.to_iast(target),
         accepted_parses=[{"bāla": "NOM.SG"}], audio_url=audio_url,
     )
     db.add(c)
