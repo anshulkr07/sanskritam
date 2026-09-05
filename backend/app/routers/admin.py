@@ -3,6 +3,7 @@
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.auth import require_admin
@@ -93,7 +94,38 @@ async def get_metrics(
         "tts_share": tts_share(db, hours=hours),
         "top_escape_nodes": top_escape_nodes(db),
         "explain": explain_metrics(),
+        "writing": writing_abstention(db),
     }
+
+
+def writing_abstention(db: Session) -> dict:
+    """P20-4: writing-attempt abstention rate, split by source.
+
+    If the photo path abstains on most attempts it is not helping, and that
+    should be a number the owner can see, not a suspicion.
+    """
+    from app.models import WritingAttempt
+
+    rows = (
+        db.query(WritingAttempt.source, WritingAttempt.verdict, func.count(WritingAttempt.id))
+        .group_by(WritingAttempt.source, WritingAttempt.verdict)
+        .all()
+    )
+    by_source: dict[str, dict[str, int]] = {}
+    for source, verdict, n in rows:
+        s = source or "ink"
+        by_source.setdefault(s, {"attempts": 0, "unsure": 0, "correct": 0, "wrong": 0})
+        by_source[s]["attempts"] += n
+        if verdict in ("unsure", "correct", "wrong"):
+            by_source[s][verdict] += n
+    out = {}
+    for s, v in by_source.items():
+        total = v["attempts"]
+        out[s] = {
+            **v,
+            "abstention_rate": round(v["unsure"] / total, 4) if total else 0.0,
+        }
+    return out
 
 
 @router.get("/admin/content-wells")

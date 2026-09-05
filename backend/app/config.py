@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     port: int = 8000
     db_path: str = "app.db"
-    database_url: str = ""  # e.g. "postgresql://user:pass@host/db" — empty = use db_path (SQLite)
+    database_url: str = ""  # e.g. "postgresql://user:***@host/db" — empty = use db_path (SQLite)
     admin_token: str = "dev-admin"
     analyzer: str = "vidyut"  # "rule" | "vidyut" — vidyut default, graceful fallback to rule if unavailable
     vidyut_data_dir: str = ""  # empty -> backend/vidyut-data (auto-downloaded on first use)
@@ -54,8 +54,23 @@ class Settings(BaseSettings):
     quota_llm_calls_per_day: int = 400       # LLM edge-router + explain calls
     quota_window_hours: int = 24
 
+    # Writing recognition (P20-3) — thresholds live in config, never in a
+    # literal. The photo path biases HARD toward unsure (P20-4): OCR on a
+    # beginner's handwriting is materially less reliable than stroke ink, so
+    # its floors are higher and its ceiling for `wrong` is lower. When the
+    # recogniser and the learner disagree, the recogniser is the one that
+    # abstains (§2.2).
+    writing_correct_confidence: float = 0.80      # ink: >= this => correct
+    writing_photo_correct_confidence: float = 0.92  # photo: much higher floor
+    writing_wrong_confidence: float = 0.60        # ink: a confident DIFFERENT letter
+    writing_photo_wrong_confidence: float = 0.85  # photo: rarely confident enough to be wrong
+
     # Dev-login guard — disable in production
     dev_login_enabled: bool = True
+
+    # Google OAuth (Sign in with Google). Comma-separated list of client IDs —
+    # one per platform (Android, iOS, Web). Empty => Google login disabled.
+    google_client_id: str = ""
 
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False

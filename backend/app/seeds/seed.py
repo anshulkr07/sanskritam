@@ -47,6 +47,10 @@ def run_seed():
         # Seed daily words
         seed_daily_words(db)
 
+        # Seed writing items (P20-1)
+        from app.seeds.writing_items import seed_writing_items
+        seed_writing_items(db)
+
         db.commit()
         logger.info("Database seeded successfully")
     except Exception:

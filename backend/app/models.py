@@ -1,4 +1,4 @@
-"""SQLAlchemy 2.0 ORM models for the Shabd backend."""
+"""SQLAlchemy 2.0 ORM models for the Sanskritam backend."""
 
 import uuid
 from datetime import datetime, timezone
@@ -54,6 +54,10 @@ class Learner(Base):
     display_name = Column(String(128), nullable=False)
     bridge_langs = Column(JSON, default=list)  # ["en", "hi"]
     install_id = Column(String(64), unique=True, nullable=True, index=True)  # device fingerprint for anonymous auth
+    # Google identity when the learner signed in with "Continue with Google".
+    # Unique — one Google account maps to one learner. Present only for
+    # Google-authenticated learners; anonymous/dev learners leave it NULL.
+    google_sub = Column(String(64), unique=True, nullable=True, index=True)
     deleted_at = Column(DateTime, nullable=True)  # soft-delete marker (replaced by hard-delete in P1-3, kept for migration compat)
     # Effective ratio the system uses (drifts within the user's ceiling)
     sanskrit_ratio = Column(Float, default=0.3)
@@ -289,6 +293,53 @@ class PronunciationAttempt(Base):
     ts = Column(DateTime, default=_utcnow)
 
 
+class WritingItem(Base):
+    """A drillable writing target (P20-1): the script taught in articulation
+    order, then mātrā forms, then whole words drawn from the challenge pool.
+
+    Tier 1 rows mirror U4-1's phonetics (varṇamālā); tier 3 REFERENCES existing
+    challenge rows (`challenge_id`) rather than duplicating their content. The
+    IAST is derived from lipi at seed time (P7-13) — never hand-typed.
+    """
+
+    __tablename__ = "writing_items"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    tier = Column(Integer, nullable=False, index=True)   # 1 letter | 2 mātrā | 3 word
+    sort_order = Column(Integer, nullable=False, default=0)
+    devanagari = Column(String(64), nullable=False)      # the akṣara / word to write
+    iast = Column(String(128), default="")               # lipi-derived (P7-13)
+    gloss = Column(String(256), default="")              # bridge-language meaning
+    stroke_paths = Column(JSON, default=list)            # P20-2: ordered stroke paths
+    challenge_id = Column(String(64), ForeignKey("challenges.id"), nullable=True)
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("tier", "devanagari", name="uq_writing_item_tier_dev"),
+    )
+
+
+class WritingAttempt(Base):
+    """One handwriting attempt (P20-3). What crosses the wire is a recognised
+    string and a confidence — NEVER the strokes, NEVER the image (§2.16).
+
+    The verdict is three-valued and the recogniser is the one that abstains:
+    an `unsure` provably cannot lower mastery or break a streak (§2.2).
+    """
+
+    __tablename__ = "writing_attempts"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    item_id = Column(String(64), ForeignKey("writing_items.id"), nullable=False, index=True)
+    recognised_text = Column(String(128), default="")  # on-device ML Kit output
+    confidence = Column(Float, default=0.0)
+    source = Column(String(8), default="ink")          # 'ink' | 'photo'
+    verdict = Column(String(16), nullable=False)       # correct|wrong|unsure
+    abstained = Column(Boolean, default=False)
+    ts = Column(DateTime, default=_utcnow)
+
+
 class ConversationSession(Base):
     """Active conversation session tracking turn state."""
 
@@ -399,3 +450,23 @@ class DailyWordPlay(Base):
     __table_args__ = (
         sa.UniqueConstraint("learner_id", "date", name="uq_daily_word_learner_date"),
     )
+
+
+class ErrorLog(Base):
+    """Server-side crash log (P8-2) — stack traces and route names ONLY.
+
+    Never learner audio, transcripts, or Devanagari answers: that is learner
+    speech and P1-4's retention rule governs it. A 500 for a stranger currently
+    produces silence; with 10 users a silent failure is the whole signal lost.
+    Written by the exception middleware in ``app/main.py``; read by
+    ``GET /admin/errors``."""
+
+    __tablename__ = "error_logs"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    ts = Column(DateTime, default=_utcnow, index=True)
+    route = Column(String(128), default="")     # method + path pattern
+    error_type = Column(String(128), default="")  # exception class name
+    detail = Column(String(256), default="")    # str(e), truncated
+    traceback = Column(Text, default="")        # stack trace — code only
+    request_id = Column(String(32), default="")
