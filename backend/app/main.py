@@ -2,6 +2,7 @@
 
 import logging
 import time
+import traceback
 
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -13,6 +14,41 @@ from fastapi.staticfiles import StaticFiles
 from app.config import settings
 
 logger = logging.getLogger("shabd")
+
+# Per-process counter distinguishing otherwise-identical request ids within
+# the same millisecond (P8-2).
+_request_seq = 0
+
+
+async def _log_exception(request: Request, exc: Exception) -> None:
+    """Persist a crash row: route + stack trace only (P8-2).
+
+    NO learner content: no request body, no transcript, no Devanagari answer —
+    those are learner speech and P1-4's retention rule governs them. The write
+    must never mask the original error: any failure here is logged and
+    swallowed."""
+    global _request_seq
+    _request_seq += 1
+    rid = f"{int(time.time() * 1000):x}-{_request_seq % 0xFFFF:04x}"
+    tb = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    try:
+        from app.db import SessionLocal
+        from app.models import ErrorLog
+
+        db = SessionLocal()
+        try:
+            db.add(ErrorLog(
+                route=f"{request.method} {request.url.path}"[:128],
+                error_type=type(exc).__name__[:128],
+                detail=str(exc)[:256],
+                traceback=tb[-2000:],
+                request_id=rid,
+            ))
+            db.commit()
+        finally:
+            db.close()
+    except Exception:  # noqa: BLE001 — never mask the original error
+        logger.exception("error-log write failed (original error: %s)", exc)
 
 
 @asynccontextmanager
@@ -27,14 +63,14 @@ async def lifespan(app: FastAPI):
     if settings.dev_login_enabled:
         logger.warning("DEV_LOGIN_ENABLED=True — unauthenticated login path is OPEN. Set DEV_LOGIN_ENABLED=false in production.")
 
-    logger.info("Shabd backend started successfully")
+    logger.info("Sanskritam backend started successfully")
     yield
 
 
 def create_app() -> FastAPI:
     """Application factory."""
     app = FastAPI(
-        title="Shabd API",
+        title="Sanskritam API",
         description="Sanskrit learning backend",
         version="0.1.0",
         docs_url="/docs",
@@ -51,11 +87,15 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Request timing middleware
+    # Request timing middleware + crash log (P8-2)
     @app.middleware("http")
     async def timing_middleware(request: Request, call_next):
         start = time.time()
-        response = await call_next(request)
+        try:
+            response = await call_next(request)
+        except Exception as e:  # noqa: BLE001 — the crash log IS the point (P8-2)
+            await _log_exception(request, e)
+            raise
         elapsed = time.time() - start
         response.headers["X-Request-Time"] = f"{elapsed:.3f}"
         logger.info(
@@ -83,6 +123,7 @@ def create_app() -> FastAPI:
     from app.routers.pronunciation import router as pronunciation_router
     from app.routers.progress import router as progress_router
     from app.routers.daily_word import router as daily_word_router
+    from app.routers.explain import router as explain_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -99,6 +140,7 @@ def create_app() -> FastAPI:
     app.include_router(pronunciation_router, tags=["Pronunciation"])
     app.include_router(progress_router, tags=["Progress"])
     app.include_router(daily_word_router, tags=["Daily Word"])
+    app.include_router(explain_router, tags=["Explain"])
 
     # Serve pre-rendered audio (/audio/<path>) BEFORE the frontend catch-all
     # mount below so the static WAVs resolve even though the console is mounted

@@ -10,6 +10,7 @@ from app.db import get_db
 from app.models import Challenge
 from app.schemas import ChallengeResponse, CreateChallengeRequest
 from app.services import iast
+from app.routers.explain import explain_metrics
 from app.services.metrics import escape_rate, tts_share, top_escape_nodes
 from app.services.content_well import content_well_report
 
@@ -91,6 +92,7 @@ async def get_metrics(
         "escape_rate": escape_rate(db, hours=hours),
         "tts_share": tts_share(db, hours=hours),
         "top_escape_nodes": top_escape_nodes(db),
+        "explain": explain_metrics(),
     }
 
 
