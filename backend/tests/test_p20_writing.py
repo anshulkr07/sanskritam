@@ -59,6 +59,36 @@ def test_writing_items_tier3_links_pool(client):
         db.close()
 
 
+def test_stroke_paths_attached_and_well_formed(client):
+    """P20-2: authored stroke paths ride on the seed rows; every path parses
+    and every stroke starts with M (absolute moveto)."""
+    from app.db import SessionLocal
+
+    db = SessionLocal()
+    try:
+        rows = db.query(WritingItem).filter(WritingItem.tier == 1).all()
+        with_strokes = [r for r in rows if r.stroke_paths]
+        assert with_strokes, "tier-1 letters carry authored strokes"
+        for r in with_strokes:
+            for s in r.stroke_paths:
+                assert s["d"].strip().startswith("M"), f"{r.devanagari}: stroke must start with M"
+                assert s.get("dir") in ("ltr", "rtl", "ttb", "btt"), f"{r.devanagari}: dir required"
+    finally:
+        db.close()
+
+
+def test_stroke_data_provenance_recorded():
+    """Every authored letter has ordered strokes; the catalogue is
+    non-trivial (the 25 sparśa letters + vowels)."""
+    from app.seeds.stroke_data import stroke_catalogue
+
+    cat = stroke_catalogue()
+    assert len(cat) >= 45, f"catalogue too small: {len(cat)}"
+    for letter, strokes in cat.items():
+        assert strokes, f"{letter} has no strokes"
+        assert all("d" in s and "dir" in s for s in strokes), letter
+
+
 def auth_h(client):
     r = client.post("/auth/dev-login", json={"display_name": "tester", "bridge_langs": ["en"]})
     assert r.status_code == 200

@@ -26,6 +26,7 @@ import logging
 from sqlalchemy.orm import Session
 
 from app.models import Challenge, DailyWord, WritingItem
+from app.seeds.stroke_data import letter_strokes
 from app.seeds.varnamala import VARNAMALA_DATA
 from app.services import iast
 
@@ -138,6 +139,9 @@ def _tier3_rows(db: Session) -> list[dict]:
 def seed_writing_items(db: Session) -> None:
     """Additive, idempotent (§2.13): insert what is missing, touch nothing else."""
     candidates = _tier1_rows() + _tier2_rows() + _tier3_rows(db)
+    # P20-2: attach the authored stroke paths where the letter has them.
+    for row in candidates:
+        row["stroke_paths"] = letter_strokes(row["devanagari"]) or []
     inserted = 0
     for row in candidates:
         exists = (

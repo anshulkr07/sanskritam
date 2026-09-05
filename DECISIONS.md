@@ -1,4 +1,4 @@
-# Shabd — Orchestrator Decisions
+# Sanskritam — Orchestrator Decisions
 
 Log of decisions made during the build. The spec lives in architecture.md; this file records what the orchestrator and workers decided while implementing.
 
@@ -235,3 +235,48 @@ Coal-mine conclusion: the case+tense+person features the analyzer derives
 reachable. Gender (MASC/FEM/NEUT), voice, bare number, and the four sandhi tags
 are NOT derivable by Vidyut (frozen, §2.1) — they stay out of the gate and are
 a coverage ceiling, not a generation defect.
+
+## 2026-09-06 — P8-0 agent half + P8-1 + P7-12 free half landed
+
+- **P8-0 (agent half):** `review_scenarios.py --challenges --packet` now writes
+  a BAND-SORTED packet (ABL.SG rows together, DAT.SG rows together, …) with
+  sandhi-variant near-duplicates written ADJACENT under a ⚠ marker. Bulk
+  approve by band (`--approve-band`) already existed; no auto-approval anywhere.
+  216 pending challenges packeted to `challenge_packet_p8_0.txt` for the owner.
+- **P8-1:** the app was booted once; `run_seed()` refilled both wells (96
+  ślokas, 30 daily words — verified by row count). New guard test
+  `test_seed_is_never_behind_the_database` fails NAMING any well whose DB
+  count is below its seed count, so "the seed is ahead of the database" is a
+  red test rather than something a human notices five days later.
+- **P7-12 (free half):** 8 of the 13 never-exercised features turn out to be a
+  *claiming* gap, not a generation gap: `feature_derivation.py` re-derives
+  bare number (SG/PL/DU) and pada (PARASMAIPADA/ATMANEPADA via the
+  1.3.12-in-log rule) from engine output and enriches existing challenges —
+  260 rows gained 569 feature claims at ₹0, coverage 23 → 24 of 37. The 15
+  new sandhi challenges are generated FROM `services/sandhi.py` + chedaka
+  round-trip verification, never an LLM draft. Gender stays unclaimed: the
+  kosha's surface liṅga data is not unanimous (kanyā → 3 liṅgas) and wrong on
+  some words (mātṛ → napuṃsaka) — escalated as an analyzer gap, per §2.1.
+- **DB backup:** `app.db.bak-20260906` taken before the enrich/sandhi writes
+  (§2.13); challenge rows 249 → 264 (15 new distinct sandhi challenges).
+
+
+## 2026-09-06 — P20-2 stroke-order data is authored from scratch
+
+- **Provenance:** every stroke path in `backend/app/seeds/stroke_data.py` was
+  authored for this project. No stroke-order chart was copied, traced, or
+  scraped from any textbook, chart, or website — those are frequently
+  copyrighted and the handover (P20-2) forbids it. The paths were written
+  against the geometric structure of each akṣara in a 0–100 guide box
+  (y-down, śirorekhā at y=10) and verified by rendering every letter
+  (`backend/scripts/verify_strokes.py` → `results/stroke_sheets/strokes.png`)
+  and comparing by eye against Nirmala-UI-rendered letterforms.
+- **Licence:** original work, ships as part of Shabd, no external licence.
+- **Coverage:** 49 akṣaras (14 vowels, 33 consonants incl. nasals, anusvara,
+  visarga). Mātrā-modified forms are NOT separately authored — the canvas
+  composes base + mātrā, and mātrā strokes are the small hooks shown in the
+  base letter's later strokes. Missing letters return `None` and the
+  demonstration degrades to the reference render without animation (absent is
+  absent; never a guess).
+- Each stroke carries `dir` (pen travel) so U12-1 animates the true direction
+  and U12-3 can check order/direction, which ML Kit does not provide.
