@@ -45,6 +45,50 @@ PROMPTS = {
     "CONSONANT-SANDHI": "Join with consonant sandhi: {first} + {second}",
 }
 
+# P22-2 — taxonomy-only features: present in the seeded taxonomy as
+# explanation vocabulary (samāsa for the Reader, kāraka for "why was I
+# wrong?") but with NO challenge band referencing them, because the frozen
+# analyzer cannot derive samāsa/kāraka. The coverage report marks these
+# "unclaimed by design" — they are not a generation gap and must never be
+# "fixed" by prompting an LLM for them. See HANDOVER P22-2.
+TAXONOMY_ONLY_FEATURES = frozenset({
+    "SAMASA-DVANDVA", "SAMASA-TATPURUSA", "SAMASA-BAHUVRIHI",
+    "SAMASA-AVYAYIBHAVA",
+    "KARAKA-KARTR", "KARAKA-KARMA", "KARAKA-KARANA",
+    "KARAKA-SAMPRADANA", "KARAKA-APADANA", "KARAKA-ADHIKARANA",
+})
+
+
+def run_coverage() -> int:
+    """Report per-feature approved counts; taxonomy-only rows are named as
+    unclaimed BY DESIGN (§2.14 judges runs by distinct rows, and this report
+    is what keeps a 0-count taxonomy feature from reading as a gap)."""
+    from app.models import Feature
+
+    db = SessionLocal()
+    try:
+        feats = db.query(Feature).order_by(Feature.rank).all()
+        rows = db.query(Challenge.review_status, Challenge.features).all()
+    finally:
+        db.close()
+    import json as _json
+    approved: Counter = Counter()
+    for status, fjson in rows:
+        if status != "approved":
+            continue
+        flist = fjson or []
+        if isinstance(flist, str):
+            flist = _json.loads(flist)
+        approved.update(flist)
+    print(f"[coverage] {len(feats)} features in the taxonomy:")
+    for f in feats:
+        n = approved.get(f.id, 0)
+        if f.id in TAXONOMY_ONLY_FEATURES:
+            print(f"    {f.id:20} approved={n}  (taxonomy-only by design — no band)")
+        else:
+            print(f"    {f.id:20} approved={n}")
+    return 0
+
 
 def enrich_challenge(ch: Challenge) -> list[str]:
     """Return the NEW feature ids derivable for ``ch`` from engine output."""
@@ -264,11 +308,15 @@ def main(argv=None) -> int:
                    help="re-derive features on the existing pool (SG/PL/DU/pada)")
     p.add_argument("--sandhi", action="store_true",
                    help="generate sandhi challenges from services/sandhi.py + chedaka")
+    p.add_argument("--coverage", action="store_true",
+                   help="report per-feature approved counts (taxonomy-only named by design)")
     p.add_argument("--live", action="store_true", help="write changes (default dry-run)")
     args = p.parse_args(argv)
-    if not args.enrich and not args.sandhi:
-        p.error("nothing to do: pass --enrich and/or --sandhi")
+    if not args.enrich and not args.sandhi and not args.coverage:
+        p.error("nothing to do: pass --enrich and/or --sandhi and/or --coverage")
     rc = 0
+    if args.coverage:
+        rc = run_coverage() or rc
     if args.enrich:
         rc = run_enrich(args.live) or rc
     if args.sandhi:

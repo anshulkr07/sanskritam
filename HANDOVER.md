@@ -482,6 +482,7 @@ Added 2026-09-05 on owner direction.
 | **P10** | Maths in Sanskrit | P7 |
 | **P14** | Entitlements — ⚠ owner-gated throughout | P8 + pricing decision |
 | **P21** | The canon, made readable | P21-1/2 done 2026-09-06; only P21-3/4 remain |
+| **P22** | Curriculum — the layer between engine and learner | P22-1/2/4 unblocked; P22-3/5 need a licence call |
 | **P15** | Async social — the verse chain | P13, P14 |
 | **P16** | `अवधानम्` — the boss mode | P15 |
 
@@ -1429,6 +1430,149 @@ Which texts, in what order, at what depth, and whether any of it is gated
 
 ---
 
+# PHASE P22 — Curriculum: the layer between the engine and the learner
+
+> The engine derives every form, sūtra-by-sūtra, for ₹0. Clicking a Path node
+> still drops straight into a challenge — there is no explanation of what a
+> vibhakti IS, why sandhi happens, or how a verb is conjugated. The gap is
+> pedagogical content, not computation. Full strategy: [`CURRICULUM.md`](CURRICULUM.md).
+
+**Blocked by:** nothing hard. P22-1/2/4 are backend-only and unblocked. P22-3
+and P22-5 need a licence call (§6 — do not copy text without one). P22-6
+depends on P22-1. The UI half is `UI_HANDOVER.md` U14.
+
+**What exists already (read before scoping):** the derivation player
+(`prakriya.derive` with sūtra-numbered steps), the paradigm grids
+(`prakriya.paradigm`), the sandhi visual (`services/sandhi.py`), and the
+`AskProvider`/`AskSheet` ask-anywhere path (P19/U11). The feature taxonomy is
+`app/seeds/features.py` (~40 features). A Lesson is the *missing* content type
+that sits in front of all of it.
+
+## P22-1 · The Lesson content type
+
+**Effort:** M · **Touch:** `app/models.py`, migration, create
+`app/services/lessons.py` + `app/routers/lessons.py`, `app/seeds/lessons.py`,
+tests
+
+Add a `Lesson` model and a `GET /lessons/{feature_id}` endpoint. One lesson per
+feature, ordered by `rank`, scoped to the Path spine. Fields per `CURRICULUM.md`
+§6.3: `feature_id`, `unit_id`, `rank`, `title_en`, `title_hi`, `body`
+(markdown), `examples` (JSON — 2–3 sentences with Vidyut parse), `visual_type`
+(`grid` | `tree` | `state_machine` | `none`), `visual_data` (JSON the client
+renders without further derivation), `audio_url`, `register`.
+
+**Every example in a lesson must be derivable by the engine.** Run each
+`examples[*]` through `prakriya.derive` / `sandhi.split_candidates` at seed
+time and drop any that come back empty. A lesson cannot claim a form the engine
+cannot produce — this is the §6 provenance rule applied to content. Store the
+derivation steps, do not recompute them client-side.
+
+**Acceptance:** `GET /lessons/{feature_id}` returns the lesson with Vidyut-verified
+examples · a feature with no lesson returns an honest `404` (never a blank) ·
+seed is additive and idempotent (§2.13) · tests hit no network.
+
+## P22-2 · Samāsa and kāraka features
+
+**Effort:** S · **Touch:** `app/seeds/features.py`, tests
+
+Two grammar domains are absent from the taxonomy entirely, and both are
+blockers (see `CURRICULUM.md` §3.2):
+
+- **Samāsa** — the 4 compound types (`dvandva`, `tatpuruṣa`, `bahuvrīhi`,
+  `avyayībhāva`). Blocks the Reader surface: classical text is dense with
+  compounds.
+- **Kāraka** — the 6 thematic relations (`kartṛ`, `karma`, `karaṇa`,
+  `sampradāna`, `apādāna`, `adhikaraṇa`). Blocks the "why was I wrong?"
+  explanation: the engine can name the vibhakti but not the semantic role.
+
+Add feature IDs to the seed, ranked after the existing sandhi block (samāsa
+~rank 80, kāraka ~rank 90). **Do not force these into challenge bands yet** —
+the Vidyut analyzer cannot derive samāsa/kāraka (the frozen-analyzer coverage
+gap noted in `briefs.py`), so a band would generate nothing approvable. These
+are *taxonomy* features first; challenge coverage is a later analyzer question
+(§2.1 escalation, do not fix the analyzer yourself).
+
+**Acceptance:** new feature IDs seed cleanly · `p712_feature_coverage.py`
+reports them as *unclaimed by design* (not as a generation gap) · no band in
+`briefs.py` references them.
+
+## P22-3 · Lesson text for Units 1–3
+
+**Effort:** L · **Touch:** `app/seeds/lessons.py` (or a JSON payload it reads)
+
+**⚠ Licence first (§6).** The lesson text is adapted from learnsanskrit.org
+(open source). Confirm the exact licence on the source *before* copying any
+prose; paraphrase where the licence requires it, attribute where it demands
+it. Do not paste text verbatim on the assumption that "it's a free website".
+
+Author 200–500-word lessons for the first three units of the
+`CURRICULUM.md` §6.2 spine — Sounds (the 5×5 varṇa grid), First Words
+(NOM.SG/ACC.SG/PRES.3SG — "what is a case? what is a verb?"), More Cases (the
+remaining vibhaktis). Each lesson: the explanation, 2–3 Vidyut-verified
+examples, and the `visual_type` the client renders (grid for declension, grid
+for the varṇa matrix, `none` for the prose intro).
+
+This is content acquisition, not engineering — the slow part is writing
+correct, non-hallucinated Sanskrit that the engine confirms. Quality bar: a
+pandit reading a lesson must find zero errors. Escalate any form you cannot
+prove rather than shipping it.
+
+**Acceptance:** Units 1–3 lessons present and `examples[*]` all Vidyut-verified ·
+lessons read correctly in the Grammar tab · provenance recorded per lesson
+(which source, which licence).
+
+## P22-4 · Path → Lesson → Challenge
+
+**Effort:** S · **Touch:** `app/routers/grammar.py` (or wherever the path
+spine is served), tests
+
+The Path node currently launches a Challenge directly (`mobile/src/screens/
+Path.tsx` `onStartUnit`). Re-point the spine so a node offers **Lesson first,
+then Challenge** — the flow is `Lesson → Practice → Challenge`. Backend side is
+a contract change: the path node response already carries `approved_count`;
+add `has_lesson` so the client can route. Do not change the grading path.
+
+**Acceptance:** path node response exposes `has_lesson` · a node with a lesson
+routes to it before the challenge · no change to the grading/adaptive path.
+
+## P22-5 · Vocabulary curriculum
+
+**Effort:** M · **Touch:** new `app/services/vocab.py` + `app/routers/vocab.py`,
+migration, seeds, tests
+
+**⚠ Licence.** Sanskrit WordNet (IIT Bombay) is CC BY-SA 4.0. Confirm the
+licence on the exported data before ingesting; record it in the seed.
+
+Cross-reference WordNet lemmas (66,930 words, 46,440 synsets) against DCS
+frequency to produce the top ~500 words, grouped by the 10 topic slugs already
+in `app/seeds/briefs.py` (`SITUATIONS`). Each entry: Devanagari, IAST, gloss,
+gender, stem, 2–3 example sentences. Ship the vocabulary as additive seed rows,
+not a live external call — this is static content (§2.7 does not apply, but
+no network in the seed either).
+
+**Acceptance:** `GET /vocab/{topic}` returns frequency-ordered word lists ·
+every word carries gender + stem + examples · seeded idempotently · licence
+recorded.
+
+## P22-6 · Graded reading
+
+**Effort:** M · **Touch:** new `app/services/reader.py` or extend
+`app/routers/shlokas.py`, migration, tests
+
+**Blocked by:** P22-1 (reuses the Lesson/examples parse contract).
+
+Extract simple sentences from the DCS corpus (650K+ parsed lines, openly
+licensed — record the licence) graded by sentence length, features present, and
+compound presence. Three tiers: 50 simple (Units 2–3) → 50 with sandhi (Unit 6)
+→ 50 with compounds (Unit 10). Each sentence carries Devanagari, IAST,
+word-by-word breakdown, and the Vidyut parse. This is the Reader's graded
+material, distinct from P21's śloka corpus.
+
+**Acceptance:** `GET /reader/{tier}` returns graded sentences · every sentence
+parses through the engine · licence recorded per source · additive seed.
+
+---
+
 ---
 
 ## 5. Definition of done
@@ -1510,6 +1654,11 @@ Which texts, in what order, at what depth, and whether any of it is gated
   this product to be confidently wrong at someone.
 - **Copying stroke-order charts from a textbook** (P20-2). Frequently
   copyrighted. Author them or use a freely-licensed source, and record which.
+- **Pasting lesson or vocabulary text from a website without confirming its
+  licence** (P22-3, P22-5). learnsanskrit.org and Sanskrit WordNet are
+  open-source; neither is a free pass. Confirm the exact licence, record it
+  in the seed, and paraphrase where the licence requires it. "It was on a
+  free website" is not a licence — same rule as corpus import (P21).
 
 ---
 
@@ -1566,7 +1715,7 @@ Alembic head:  aabbccddeeff   (applied 2026-09-05)
 
 Order:  P8-0  review the queue — 5 scenarios + 231 challenges  ⚠ OWNER
         P7-13 IAST from lipi — 130 wrong rows, ₹0, lands before P20
-        then  P7-5 → P8-4/P8-5 → P19 → P13 → P20 → P10 → P14 → P21 → P15 → P16
+        then  P7-5 → P8-4/P8-5 → P19 → P13 → P20 → P10 → P14 → P21 → P22 → P15 → P16
 
 Owner-gated:  the review queue (P8-0) · RAG · the sūtra curriculum · any
               public surface · all of P14 · institutional licensing · P8-5

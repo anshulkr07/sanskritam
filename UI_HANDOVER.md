@@ -1472,6 +1472,123 @@ studied).
 
 ---
 
+# PHASE U14 — Curriculum: the learning surface
+
+> The backend phase is `HANDOVER.md` P22. The app has a world-class engine with
+> no lesson content. The Path goes straight to a challenge. U14 builds the
+> surface that sits between the two — a Lesson screen, visual renderers, a
+> progressive vocabulary screen, and a graded reading path. Full strategy:
+> [`CURRICULUM.md`](CURRICULUM.md).
+
+**Blocked by:** P22-1 (the Lesson content type and endpoint). U14-1/2/3 are
+the client half of P22-1/4. U14-4/5 depend on P22-5/6.
+
+**What already exists:** the `SandhiVisual` (U4-5), the `DerivationPlayer`
+(U7-1) with `SutraCard`, the `ParadigmScreen` (U7-5), the `ScansionStrip`
+(U4-4), and the `AskProvider`/`AskSheet` (U11). These are the *explanation*
+components — U14 wraps them in a lesson structure.
+
+## U14-1 · The Lesson screen
+
+**Effort:** M · **Touch:** create `mobile/src/screens/Lesson.tsx`, extend
+`navigation/types.ts`, `api/client.ts`, tests
+
+A new screen reached from a Path node when `has_lesson` is true. Shows the
+lesson `body` (markdown → formatted text), the `examples` (2–3 sentences,
+each tapable — opens the ask-anywhere sheet with the word as subject), and
+the `visual_type` area (U14-2). A "Practice" button at the bottom routes to the
+Challenge screen.
+
+Use `script()` for Devanagari text, `color`/`space`/`radius`/`font` tokens
+from `theme.ts`, and `motion.ts` for entrance animations. Stick to the
+existing component vocabulary — `SessionShell`, `Button`, `Skeleton` for
+loading, and the U10-3 retryable error pattern for failures.
+
+**Acceptance:** a node with a lesson opens the Lesson screen before the
+Challenge · empty lesson body gracefully degrades to the examples · 404
+from the backend shows the honest "no lesson yet" state · `tsc --noEmit` clean.
+
+## U14-2 · The visual renderers
+
+**Effort:** M · **Touch:** create `mobile/src/components/lesson/VisualGrid.tsx`,
+`lesson/VisualTree.tsx`, `lesson/VisualStateMachine.tsx`, tests
+
+Three renderers, one per `visual_type`:
+
+- **`grid`** — a declension table or varṇa matrix. Reuses the `ParadigmScreen`
+  cell pattern (vibhakti × vacana grid). The varṇa 5×5 grid shows place of
+  articulation as column headers and effort as a row label.
+- **`tree`** — a sandhi or derivation tree. Reuses `SandhiVisual`'s
+  layout (already built for junction display) and `DerivationPlayer`'s
+  `SutraCard` for step-by-step derivation.
+- **`state_machine`** — verb conjugation as a state diagram. Shows the 10
+  lakāras as states and the transformations as transitions. Do not build a
+  custom SVG renderer; use the existing `DerivationPlayer` step list with
+  lakāra labels as a first pass, and revisit when the pedagogy demands it.
+
+**Do not render a visual from scratch client-side.** The `visual_data` JSON
+comes pre-computed from the backend (P22-1). The client is a presentational
+wrapper. This keeps the expensive computation server-side and makes the
+visuals consistent across devices.
+
+**Acceptance:** each visual type renders from the JSON the backend sends · grid
+cells are tapable (tap a cell → ask-anywhere) · tree steps are numbered · the
+derivation engine is never called client-side · `tsc --noEmit` clean.
+
+## U14-3 · Path → Lesson → Challenge flow
+
+**Effort:** S · **Touch:** `mobile/src/screens/Path.tsx`, `navigation/types.ts`,
+`api/client.ts`
+
+Modify `Path.tsx` `onStartUnit` and the sheet to check `has_lesson` before
+routing. The flow: tap a node → sheet opens → "Start unit" becomes "Learn"
+(if `has_lesson`) + "Practice" (always). "Learn" → `Lesson` screen. "Practice"
+→ existing `Challenge` screen. The Lesson screen's "Practice" button also
+navigates to Challenge.
+
+**Acceptance:** nodes with a lesson show the split button · nodes without
+show the existing single button · back-navigation from Lesson returns to Path ·
+`tsc --noEmit` clean.
+
+## U14-4 · The Vocabulary screen
+
+**Effort:** M · **Touch:** create `mobile/src/screens/Vocab.tsx`, extend
+`navigation/types.ts`, `api/client.ts`, tests
+
+**Blocked by:** P22-5 (the `/vocab/{topic}` endpoint).
+
+A screen reachable from the Play tab (add a card to `Play.tsx`'s grid) or from
+Home. Topic selector — the 10 situation slugs from `briefs.py` (greeting,
+family, food, market, travel, routine, weather, school, health, festivals) —
+with a frequency-ordered word list below. Each word card: Devanagari + IAST
+(large), gloss, gender, stem, tap-to-hear (pre-rendered audio URL). Tap a word
+opens the ask-anywhere sheet.
+
+Not a seventh tab (U8-1). Use the existing Play card pattern.
+
+**Acceptance:** topic selector loads the word list · frequency ordering is
+preserved · audio plays from the pre-rendered URL · empty state for a topic
+with no words yet · `tsc --noEmit` clean.
+
+## U14-5 · The Graded Reading surface
+
+**Effort:** M · **Touch:** create or extend `mobile/src/screens/Reader.tsx`,
+`api/client.ts`, tests
+
+**Blocked by:** P22-6 (the `/reader/{tier}` endpoint).
+
+Extend the Reader screen (U13) with a graded tier selector: three levels —
+Simple (Units 2–3), Sandhi (Unit 6), Compounds (Unit 10). Each level loads
+from `/reader/{tier}`. Uses the same tap-a-word pattern as U13-2 — the word
+breakdown + ask-anywhere sheet. Reading, not drilling (U13-3): no verdict, no
+streak, no score.
+
+**Acceptance:** tier selector loads the correct tier · word tap works (same
+pattern as U13-2) · empty tier returns the honest empty state · `tsc --noEmit`
+clean.
+
+---
+
 ## 6. The mascot, specified
 
 ### 6.1 Identity — non-negotiable elements
@@ -1663,11 +1780,15 @@ Done:         U0 · U2 · U7 · U8 · U9 · U3-1 · U3-2 · U3-3 · U4-1 · U4-3
 In progress:  U1 (the Rive rig) — OWNER'S LANE, do not touch
 Start here:   U10-1 (a stranger's first 90 seconds — P8 needs it)
               then U5 (accessibility — 15 screens now, and it only gets dearer)
-Then:         U10-3 → U11 → U3-4 → U4-5 → U12 → U6 → U13
+Then:         U10-3 → U11 → U3-4 → U4-5 → U12 → U6 → U13 → U14
 Never cut:    U5 (accessibility)
 Cut first:    U6, U3-5
 Ask first:    U3-5 (leagues)
 Unblocked:    U4-2 → now U12 (ML Kit Digital Ink, owner decision 2026-09-05)
+
+New surfaces, 2026-09-07 — P22's client half, the learning layer:
+  U14  curriculum        the Lesson screen, visuals, vocab, graded reading
+  U14-1/2/3 unblocked once P22-1 ships; U14-4/5 gated on P22-5/6
 
 New surfaces, 2026-09-05 — the rest of this doc is polish, these are not:
   U11  ask anywhere      backend mostly exists (P19) — cheapest

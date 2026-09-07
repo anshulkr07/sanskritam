@@ -71,6 +71,17 @@ Log of decisions made during the build. The spec lives in architecture.md; this 
   2. **True forced alignment.** §6.2 assumed akṣara-level alignment against a known target. No hosted API returns phone-level alignments — Saaras returns a transcript. So the buildable version is **constrained comparison**: transcribe, compare akṣara-by-akṣara against the known target, treat divergence as a *candidate* error. It cannot separate "said it wrong" from "recogniser misheard", which makes abstention (§6.3) the design rather than a refinement. Where pedagogy allows, drill contrasts inside a word (`पटः`) rather than on a bare letter — the recogniser gets context and the contrast still gets tested.
 - **Single-vendor risk is now the top risk in the document, and it has no cheap mitigation.** Voice, ASR and offline authoring all sit on Sarvam, `sa-IN` is a beta flag on our account rather than a contract, and there is no longer a local fallback to fall back to. Partial hedges: keep the renderer engine-agnostic behind one interface so a swap is config not rewrite; **own the audio** — every pre-rendered clip survives losing the API, which is one more argument for pre-rendering aggressively; keep the Sarvam relationship warm. Accept that a withdrawal degrades us to text-only, and know it in advance.
 
+## 2026-09-07 — Curriculum data plan
+
+- **The app has a world-class engine and zero lesson content.** Clicking a Path node goes straight to a challenge — there is no explanation of what a vibhakti IS, why sandhi happens, or how a verb is conjugated. The Vidyut engine can derive any form sūtra-by-sūtra; it cannot teach a learner what any of it means. The gap is pedagogical content, not computational — see [`CURRICULUM.md`](CURRICULUM.md).
+- **Register coverage is weighted, not uniform.** All three registers (Vedic, classical, laukika) are grammatically covered by Pāṇini's system, but the pedagogy is: laukika deep (the core loop — conversation, challenges), classical medium (reading, śloka, grammar reference), Vedic thin (a sliver inside daily śloka). Sanskritam is a spoken-Sanskrit tutor, not a scripture library — this is a locked product scope decision (§1).
+- **Two grammar domains are missing entirely from the feature taxonomy** — samāsa (compounds: 4 types) and kāraka (thematic relations: 6 roles). Both are blockers: samāsa for the Reader surface (classical texts are dense with compounds), kāraka for the "why was I wrong?" explanation system (can name the vibhakti, cannot explain the semantic role). New feature IDs and seed challenges needed for both.
+- **Open-source data sources identified for curriculum extraction.** learnsanskrit.org (open source — lesson text, curriculum structure), Sanskrit WordNet / IIT Bombay (CC BY-SA 4.0 — 66,930 words, 46,440 synsets — vocabulary curriculum), DCS / Heidelberg (open access, on GitHub — 650K+ parsed lines — graded reading), GRETIL / Göttingen (open access — classical corpus for RAG). Every source needs licence verification before ingestion.
+- **Storage architecture: four kinds of data, four homes.** (1) Engine fuel (~200MB) — server memory, loaded once. (2) Curriculum content (lessons, units, challenges, dialogue) — structured DB → API, because the curriculum changes constantly and server-side retuning must not need an app release. (3) Audio (GBs) — object storage + CDN, pre-rendered, content-hashed; the varṇamālā audio bank (~60–120 clips, a few MB) is the only audio that ships in the APK. (4) Corpus (for future RAG) — flat file of embeddings in RAM now, pgvector when the corpus outgrows RAM. Two indexes, never merged (classical + laukika).
+- **11-unit curriculum spine designed.** Three conceptual layers: alphabet as a mathematical set (Unit 1), word formation as functions — sandhi = f(a,b)→c, declension as a tensor, conjugation as a state machine (Units 2–9), sentence construction as relations — samāsa, kāraka (Units 10–11). New Lesson content type spec: markdown body, Vidyut-verified examples, visual data (grid/tree/state_machine), pre-rendered audio.
+- **The grounded-guru (RAG on epics) is deferred, not forgotten.** The curriculum (lessons, units, vocabulary, reading) is the prerequisite. The RAG path is already architecturally designed: verse-by-verse chunking via Vidyut, Gemini embeddings, two-index split. Two open items block it: Sanskrit embedding quality is unmeasured (§4.6 — does a classical query ever retrieve laukika?), and licence clearance on epic source texts.
+- **What not to build:** no scripture library, no local models, no PDF-based content delivery, no curriculum in the APK (except varṇamālā audio), no vector database in v1.
+
 ## 2026-08-30 — Retrieval sized down; the platform layer written down for the first time
 
 - **RAG is smaller than §4.4 implied, because the LLM left the hot path.** Retrieval serves only three callers — offline authoring, "why was I wrong?" explanations, and open (premium) conversation. None is the free product's turn loop (§12), the corpus is thousands of sentences rather than millions of documents, and it changes only when we author. **So there is no production vector database in v1**: a flat file of embeddings in memory answers all three in single-digit ms. pgvector when the corpus outgrows RAM, not before. Recorded as architecture.md §4.6.
@@ -360,4 +371,55 @@ a coverage ceiling, not a generation defect.
 - Tests: `backend/tests/test_shloka_reader.py` (4) — auth-gated list,
   ascending-date order, word_breakdown instrumentation present, deterministic
   across calls. Suite 495 → 499.
+
+## 2026-09-07 — P22 curriculum layer + P21-3 second text (implementation)
+
+- **P22-1/3/4 shipped: the Lesson content type, Units 1–3, `has_lesson`.**
+  `lessons` table (migration `c9d0e1f2a3b4`, applied) + `GET
+  /lessons/{feature_id}` (honest 404, no quota — examples were verified at
+  seed time). 10 lessons seeded (u1 Sounds → u3 all six remaining vibhaktis);
+  bodies are ORIGINAL Sanskritam prose, so P22-3's learnsanskrit.org licence
+  question never arises — if a future pass adapts external prose, the exact
+  licence lands in the row's `provenance` first (§6). The Path spine exposes
+  `has_lesson`; Path routes Learn → Practice → Challenge (U14-1/2/3:
+  `Lesson.tsx` + `VisualGrid/Tree/StateMachine`, all presentational over
+  pre-computed `visual_data` — the derivation engine is never called
+  client-side).
+- **Example verification is equality, not non-emptiness.** The seed stores an
+  example only when `prakriya.derive` reproduces its surface form EXACTLY.
+  Measured drops that justify the strictness: वद् → वन्दते, गम् →
+  unresolvable, feminine ā-stems (कन्या/सीता → -ाः), and my own wrong enum
+  name (`Pancami`, not `Pancami` — `_enum_member` silently falls back to
+  Prathama, which the equality check caught). A confident-wrong derivation
+  in a lesson is worse than no example; the check keeps all three out.
+- **P22-2 shipped: 10 samāsa/kāraka features, taxonomy-only by design.**
+  Ranks 81–84 / 91–96; no band references them (test asserts it) and
+  `p712_feature_coverage.py --coverage` names them "unclaimed by design".
+  The analyzer stays frozen (§2.1); challenge coverage is a later analyzer
+  question, not an LLM prompt.
+- **P22-5/6 shipped small and licence-clean.** `vocab_words` (60 rows, 10
+  topics, original glosses, example sentences drawn from Vidyut-gated
+  approved challenges — only 7/60 words have pool sentences yet, the rest
+  ship `examples: []`) and `reader_passages` (3 tiers from already-servable
+  content). WordNet cross-reference and the DCS import are deferred pending
+  the §6 licence confirmations; each row's `provenance` says so. Client:
+  `Vocab.tsx` from a Play card, graded tiers inside `Reader.tsx` (same
+  tap-a-word page, no new screen, no verdict/score anywhere).
+- **P21-3 shipped: the importer, plus Gītā 2.1–6 as the second text.**
+  `scripts/import_text.py` (dry-run default, idempotent by `source_ref`,
+  licence REQUIRED in the payload, no TTS — test asserts `audio_url ==
+  ""`, engine floor of ≥2 confident breakdown words, dates continue past
+  max). 6/6 verses passed with 0 skips; re-run adds 0; corpus 96 → 102 with
+  zero UI work (same `GET /shlokas`). Backup `app.db.bak-20260907` (§2.13);
+  licence + counts in `results/imports/gita-ch2-opening.src.json`.
+- **Explicitly NOT built this pass (gated, per §6):** P13 (blocked by P8 —
+  no users to notify), P14 (pricing), P15/P16 (gated), P10-2/3 (P10-1's stop
+  condition holds — पञ्च still confident-misparses, so this is an analyzer
+  question, not content), P8-0/4/5 (owner), U1 (owner's lane), U3-5 (ask
+  first), U12-4 (needs the ML Kit dev build + on-device verification).
+- Suite 499 → **521** (`test_p22_lessons` 8, `test_p22_vocab_reader` 10,
+  `test_p21_import` 4); mobile `tsc` clean; `alembic current == heads` (`c9d0e1f2a3b4`). One pre-existing
+  env-dependent failure noted: `test_tts_502_refunds_quota` needs
+  `SARVAM_API_KEY` set (passes with a dummy key) — untouched area, not a
+  regression.
 
