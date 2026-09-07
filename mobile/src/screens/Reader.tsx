@@ -38,6 +38,18 @@ import { Skeleton, SkeletonGroup } from "../components/Skeleton";
 import PageFlip from "../components/PageFlip";
 import { color, font, radius, script, shadow, space } from "../theme";
 
+// U14-5: the graded-reading surface (P22-6) lives here, not on a new screen.
+// "Verses" is the canon (GET /shlokas); "Graded" loads /reader/{tier} —
+// Simple (Units 2–3) · Sandhi (Unit 6) · Compounds (Unit 10) — mapped onto
+// the same verse shape so the tap-a-word page pattern is identical.
+type ReaderMode = "verses" | "graded";
+
+const TIERS = [
+  { tier: 1, label: "Simple" },
+  { tier: 2, label: "Sandhi" },
+  { tier: 3, label: "Compounds" },
+] as const;
+
 function ReaderSkeleton() {
   return (
     <>
@@ -51,6 +63,8 @@ export default function ReaderScreen() {
   const [verses, setVerses] = useState<Shloka[] | null>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [mode, setMode] = useState<ReaderMode>("verses");
+  const [tier, setTier] = useState<number>(1);
   // null = index posture; set = reading posture at that verse index.
   const [pageIndex, setPageIndex] = useState<number | null>(null);
   const [flipDir, setFlipDir] = useState<"forward" | "back">("forward");
@@ -61,17 +75,46 @@ export default function ReaderScreen() {
   const load = useCallback(() => {
     setLoading(true);
     setError(false);
-    api
-      .listShlokas()
+    const req =
+      mode === "verses"
+        ? api.listShlokas()
+        : api.readerTier(tier).then((rows) =>
+            rows.map(
+              (p, i): Shloka => ({
+                id: `tier${p.tier}-${i}`,
+                date: "",
+                source_ref: `Tier ${p.tier} · ${i + 1}`,
+                devanagari: p.devanagari,
+                iast: p.iast,
+                metre: "",
+                word_breakdown: p.word_breakdown,
+                features: p.features,
+                audio_url: "",
+              }),
+            ),
+          );
+    req
       .then(setVerses)
       .catch(() => {
         setError(true);
         setVerses(null);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [mode, tier]);
 
   useEffect(load, [load]);
+
+  const switchMode = useCallback((m: ReaderMode) => {
+    setPageIndex(null);
+    setSelected(null);
+    setMode(m);
+  }, []);
+
+  const switchTier = useCallback((t: number) => {
+    setPageIndex(null);
+    setSelected(null);
+    setTier(t);
+  }, []);
 
   if (loading) {
     return (
@@ -182,6 +225,46 @@ export default function ReaderScreen() {
         <Text style={styles.subtitle}>
           Tap a verse to read it; in the page, tap any word or flip to the next.
         </Text>
+
+        {/* U14-5: canon vs graded — one screen, two corpora. */}
+        <View style={styles.modeRow}>
+          {(["verses", "graded"] as const).map((m) => {
+            const active = mode === m;
+            return (
+              <Pressable
+                key={m}
+                onPress={() => switchMode(m)}
+                style={[styles.modeChip, active && styles.modeChipActive]}
+                accessibilityRole="button"
+                accessibilityLabel={m === "verses" ? "Canon verses" : "Graded reading"}
+                accessibilityState={{ selected: active }}
+              >
+                <Text style={[styles.modeText, active && styles.modeTextActive]}>
+                  {m === "verses" ? "Verses" : "Graded"}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+        {mode === "graded" && (
+          <View style={styles.modeRow}>
+            {TIERS.map((t) => {
+              const active = tier === t.tier;
+              return (
+                <Pressable
+                  key={t.tier}
+                  onPress={() => switchTier(t.tier)}
+                  style={[styles.modeChip, active && styles.modeChipActive]}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Tier ${t.tier}: ${t.label}`}
+                  accessibilityState={{ selected: active }}
+                >
+                  <Text style={[styles.modeText, active && styles.modeTextActive]}>{t.label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
 
         {verses.map((v, i) => {
           const firstLine = v.devanagari.split(/।\s*/)[0] || "";
@@ -414,7 +497,26 @@ const styles = StyleSheet.create({
     paddingVertical: space.md,
     gap: space.md,
   },
-  turnBtn: {
+  // U14-5: corpus + tier selector chips.
+  modeRow: { flexDirection: "row", gap: space.sm, marginBottom: space.sm },
+  modeChip: {
+    backgroundColor: color.surface,
+    borderRadius: radius.pill,
+    borderWidth: 1,
+    borderColor: color.border,
+    paddingHorizontal: space.md,
+    paddingVertical: space.sm,
+    minHeight: 44,
+    justifyContent: "center",
+  },
+  modeChipActive: { backgroundColor: color.saffron, borderColor: color.saffron },
+  modeText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.sm,
+    color: color.ink,
+  },
+  modeTextActive: { color: color.white },  turnBtn: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,

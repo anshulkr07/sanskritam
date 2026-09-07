@@ -170,12 +170,67 @@ export interface PathNode {
   approved_count: number;
   pending_count: number;
   mastery: number;
+  /** P22-4: a Lesson exists — Path routes Learn first, then Practice. */
+  has_lesson?: boolean;
 }
 
 export interface PathSpine {
   nodes: PathNode[];
   features_covered: number;
   features_total: number;
+}
+
+// ─── Curriculum (U14 / P22) ────────────────────────────────────────────
+// Lesson → Practice → Challenge. Lessons carry Vidyut-verified examples and
+// pre-computed visual_data the client renders without further derivation.
+
+export interface LessonExample {
+  devanagari: string;
+  iast: string;
+  gloss: string;
+  derivation: { result: string; step_count: number; steps: AskEngineStep[] } | { splits: unknown[] } | null;
+}
+
+export interface Lesson {
+  feature_id: string;
+  unit_id: string;
+  rank: number;
+  title_en: string;
+  title_hi: string;
+  body: string;
+  examples: LessonExample[];
+  visual_type: "grid" | "tree" | "state_machine" | "none";
+  visual_data: Record<string, unknown>;
+  audio_url: string;
+  register: string;
+}
+
+export interface VocabTopic {
+  slug: string;
+  title: string;
+  description: string;
+}
+
+export interface VocabWord {
+  topic: string;
+  rank: number;
+  devanagari: string;
+  iast: string;
+  gloss: string;
+  gender: string;
+  stem: string;
+  examples: { devanagari: string; iast: string; gloss: string }[];
+}
+
+export interface ReaderPassage {
+  tier: number;
+  sort_order: number;
+  devanagari: string;
+  iast: string;
+  word_breakdown: WordBreakdown[];
+  parse: { word: string; lemma: string; features: string[]; confident: boolean }[];
+  features: string[];
+  register: string;
 }
 
 // ─── Conversation ─────────────────────────────────────────────────────────
@@ -845,6 +900,19 @@ export const api = {
 
   // Approved-content spine for the journey path (P7-5)
   pathSpine: () => request<PathSpine>("/grammar/path", {}, true),
+
+  // Curriculum (U14 / P22) — Lesson → Practice → Challenge; vocab; graded
+  // reading. Static content: no quota, but still auth-bound like /shlokas.
+  lesson: (featureId: string) =>
+    request<Lesson>(`/lessons/${encodeURIComponent(featureId)}`, {}, true),
+
+  vocabTopics: () => request<{ topics: VocabTopic[] }>("/vocab/topics", {}, true),
+
+  vocab: (topic: string) =>
+    request<VocabWord[]>(`/vocab/${encodeURIComponent(topic)}`, {}, true),
+
+  readerTier: (tier: number) =>
+    request<ReaderPassage[]>(`/reader/${tier}`, {}, true),
 
   // Daily word (U8-4 / P12) — वर्ण-बन्धः
   dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),

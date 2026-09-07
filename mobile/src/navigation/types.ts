@@ -49,6 +49,10 @@ export type RootStackParamList = {
   // U13/P21: the canon reader — a scroll of tappable verses (a stack screen,
   // not a seventh tab). Reached from Grammar.
   Reader: undefined;
+  // U14/P22: the learning layer — Lesson → Practice → Challenge. A Lesson is
+  // reached from a Path node when has_lesson is true; Vocab from Play.
+  Lesson: { featureId: string };
+  Vocab: { topic?: string } | undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

@@ -37,6 +37,8 @@ import VarnamalaScreen from "./src/screens/Varnamala";
 import DailyWordScreen from "./src/screens/DailyWord";
 import WritingScreen from "./src/screens/Writing";
 import ReaderScreen from "./src/screens/Reader";
+import LessonScreen from "./src/screens/Lesson";
+import VocabScreen from "./src/screens/Vocab";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -87,6 +89,9 @@ function RootNavigator() {
             <Stack.Screen name="Writing" component={WritingScreen} options={{ title: "Write it" }} />
             {/* U13/P21: the canon reader — from Grammar. */}
             <Stack.Screen name="Reader" component={ReaderScreen} options={{ title: "Read" }} />
+            {/* U14/P22: the learning layer — Lesson → Practice → Challenge. */}
+            <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
+            <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

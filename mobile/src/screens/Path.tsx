@@ -44,10 +44,10 @@ function nodeStatus(
 // Offline fallback: a few taxonomy nodes the client knows even with no
 // network. The live endpoint carries the same ids plus approved counts.
 const FALLBACK_NODES: PathNode[] = [
-  { id: "NOM.SG", feature: "NOM.SG", kind: "case", rank: 10, label_en: "Nominative Singular", label_hi: "प्रथमा विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0 },
-  { id: "ACC.SG", feature: "ACC.SG", kind: "case", rank: 11, label_en: "Accusative Singular", label_hi: "द्वितीया विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0 },
-  { id: "SG", feature: "SG", kind: "number", rank: 20, label_en: "Singular", label_hi: "एकवचनम्", approved_count: 0, pending_count: 0, mastery: 0 },
-  { id: "PRES.3SG", feature: "PRES.3SG", kind: "tense", rank: 32, label_en: "Present 3rd Person", label_hi: "वर्तमान प्रथमपुरुषः", approved_count: 0, pending_count: 0, mastery: 0 },
+  { id: "NOM.SG", feature: "NOM.SG", kind: "case", rank: 10, label_en: "Nominative Singular", label_hi: "प्रथमा विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
+  { id: "ACC.SG", feature: "ACC.SG", kind: "case", rank: 11, label_en: "Accusative Singular", label_hi: "द्वितीया विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
+  { id: "SG", feature: "SG", kind: "number", rank: 20, label_en: "Singular", label_hi: "एकवचनम्", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
+  { id: "PRES.3SG", feature: "PRES.3SG", kind: "tense", rank: 32, label_en: "Present 3rd Person", label_hi: "वर्तमान प्रथमपुरुषः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
 ];
 
 interface PathNodeData {
@@ -57,6 +57,7 @@ interface PathNodeData {
   mastery: number;
   approvedCount: number;
   features: string[];
+  hasLesson: boolean;
 }
 
 function toNodeData(n: PathNode): PathNodeData {
@@ -67,6 +68,7 @@ function toNodeData(n: PathNode): PathNodeData {
     mastery: n.mastery ?? 0,
     approvedCount: n.approved_count ?? 0,
     features: [n.id],
+    hasLesson: n.has_lesson ?? false,
   };
 }
 
@@ -187,6 +189,14 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
     navigation.navigate("Challenge", { features: selectedNode.features });
   }, [selectedNode, navigation]);
 
+  // U14-3: a node with a lesson routes Learn first — Lesson → Practice →
+  // Challenge. Back-navigation from Lesson returns here (stack pop).
+  const onLearnUnit = useCallback(() => {
+    if (!selectedNode) return;
+    setSheetOpen(false);
+    navigation.navigate("Lesson", { featureId: selectedNode.features[0] });
+  }, [selectedNode, navigation]);
+
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body}>
@@ -255,12 +265,29 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
                 earlier unit.
               </Text>
             ) : null}
-            <Button
-              label={selectedNode.approvedCount > 0 ? "Start unit" : "Practice anyway"}
-              onPress={onStartUnit}
-              block
-              style={{ marginTop: space.md }}
-            />
+            {selectedNode.hasLesson ? (
+              <>
+                <Button
+                  label="Learn"
+                  onPress={onLearnUnit}
+                  block
+                  style={{ marginTop: space.md }}
+                />
+                <Button
+                  label="Practice"
+                  onPress={onStartUnit}
+                  block
+                  style={{ marginTop: space.sm }}
+                />
+              </>
+            ) : (
+              <Button
+                label={selectedNode.approvedCount > 0 ? "Start unit" : "Practice anyway"}
+                onPress={onStartUnit}
+                block
+                style={{ marginTop: space.md }}
+              />
+            )}
           </View>
         </View>
       )}

@@ -28,7 +28,7 @@ interface ModeCard {
   icon: IoniconsIconName;
   built: boolean;
   assessment: boolean;
-  target: "wordOrder" | "paradigm" | "challenge" | null;
+  target: "wordOrder" | "paradigm" | "challenge" | "vocab" | null;
 }
 
 const MODES: ModeCard[] = [
@@ -62,6 +62,17 @@ const MODES: ModeCard[] = [
     assessment: true,
     target: "challenge",
   },
+  // U14-4: the vocabulary curriculum — frequency-ordered words by topic.
+  {
+    key: "vocab",
+    sa: "शब्द-संग्रहः",
+    en: "Words",
+    rule: "The most-used words first, grouped by topic.",
+    icon: "book",
+    built: true,
+    assessment: false,
+    target: "vocab",
+  },
   // Not yet built — promised, never hidden.
   {
     key: "varnabandha",
@@ -93,6 +104,8 @@ export default function PlayScreen({ navigation }: Props) {
       navigation.navigate("WordOrder", {});
     } else if (mode.target === "paradigm") {
       navigation.navigate("Paradigm", { word: "देव", kind: "noun" });
+    } else if (mode.target === "vocab") {
+      navigation.navigate("Vocab", {});
     } else {
       navigation.navigate("Challenge", {});
     }
