@@ -55,4 +55,25 @@ SEED_FEATURES = [
 
     # ── Indeclinables ──
     {"id": "INDECL", "kind": "other", "rank": 80, "label_en": "Indeclinable (avyaya)", "label_hi": "अव्यय"},
+
+    # ── Samāsa (compounds) — P22-2. TAXONOMY ONLY by design: the Vidyut
+    # analyzer cannot derive samāsa (frozen-analyzer gap, see briefs.py), so
+    # no challenge band references these and p712 reports them as unclaimed
+    # by design, not as a generation gap. They unblock the Reader (classical
+    # text is dense with compounds) and future lessons.
+    {"id": "SAMASA-DVANDVA", "kind": "samasa", "rank": 81, "label_en": "Dvandva compound", "label_hi": "द्वन्द्वसमास"},
+    {"id": "SAMASA-TATPURUSA", "kind": "samasa", "rank": 82, "label_en": "Tatpuruṣa compound", "label_hi": "तत्पुरुषसमास"},
+    {"id": "SAMASA-BAHUVRIHI", "kind": "samasa", "rank": 83, "label_en": "Bahuvrīhi compound", "label_hi": "बहुव्रीहिसमास"},
+    {"id": "SAMASA-AVYAYIBHAVA", "kind": "samasa", "rank": 84, "label_en": "Avyayībhāva compound", "label_hi": "अव्ययीभावसमास"},
+
+    # ── Kāraka (thematic relations) — P22-2. TAXONOMY ONLY by design, same
+    # reason: the engine names the vibhakti but not the semantic role, so
+    # these are explanation vocabulary first; challenge coverage is a later
+    # analyzer question (§2.1 escalation — do not fix the analyzer here).
+    {"id": "KARAKA-KARTR", "kind": "karaka", "rank": 91, "label_en": "Kartṛ (agent)", "label_hi": "कर्तृकारक"},
+    {"id": "KARAKA-KARMA", "kind": "karaka", "rank": 92, "label_en": "Karma (object)", "label_hi": "कर्मकारक"},
+    {"id": "KARAKA-KARANA", "kind": "karaka", "rank": 93, "label_en": "Karaṇa (instrument)", "label_hi": "करणकारक"},
+    {"id": "KARAKA-SAMPRADANA", "kind": "karaka", "rank": 94, "label_en": "Sampradāna (recipient)", "label_hi": "सम्प्रदानकारक"},
+    {"id": "KARAKA-APADANA", "kind": "karaka", "rank": 95, "label_en": "Apādāna (source)", "label_hi": "अपादानकारक"},
+    {"id": "KARAKA-ADHIKARANA", "kind": "karaka", "rank": 96, "label_en": "Adhikaraṇa (locus)", "label_hi": "अधिकरणकारक"},
 ]

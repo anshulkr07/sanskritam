@@ -470,3 +470,92 @@ class ErrorLog(Base):
     detail = Column(String(256), default="")    # str(e), truncated
     traceback = Column(Text, default="")        # stack trace — code only
     request_id = Column(String(32), default="")
+
+
+class Lesson(Base):
+    """A teaching lesson in front of a Path node (P22-1): Lesson → Practice
+    → Challenge. One lesson per feature, ordered by rank, scoped to the Path
+    spine (``unit_id`` follows CURRICULUM.md §6.2: u1..u11).
+
+    Every example was verified against the engine at seed time: the stored
+    derivation reproduces the example's surface form, or the example was
+    dropped. A lesson cannot claim a form the engine cannot produce (§6
+    provenance rule applied to content).
+    """
+
+    __tablename__ = "lessons"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    feature_id = Column(String(64), ForeignKey("features.id"), nullable=False, unique=True, index=True)
+    unit_id = Column(String(16), nullable=False, index=True)  # "u1".."u11"
+    rank = Column(Integer, default=0)  # order within the unit
+    title_en = Column(String(256), default="")
+    title_hi = Column(String(256), default="")
+    body = Column(Text, default="")  # markdown, 200–500 words
+    # [{devanagari, iast, gloss, derivation: {result, step_count, steps}}]
+    examples = Column(JSON, default=list)
+    visual_type = Column(String(16), default="none")  # grid|tree|state_machine|none
+    visual_data = Column(JSON, default=dict)  # pre-computed; the client renders it
+    audio_url = Column(String(512), default="")  # pre-rendered spoken lesson
+    register = Column(String(16), default="laukika", index=True)
+    provenance = Column(String(256), default="")  # which source, which licence
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class VocabWord(Base):
+    """One vocabulary entry (P22-5), grouped by topic slug (the 10 SITUATIONS
+    slugs in seeds/briefs.py). Frequency-ordered within a topic (``rank``).
+
+    Seed curation is original (glosses authored here, example sentences drawn
+    from Vidyut-gated challenge rows containing the word). WordNet
+    cross-referencing is deferred pending the licence confirmation P22-5 §6
+    requires — recorded per row in ``provenance``.
+    """
+
+    __tablename__ = "vocab_words"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    topic = Column(String(32), nullable=False, index=True)  # SITUATIONS slug
+    rank = Column(Integer, default=0)  # frequency order within the topic
+    devanagari = Column(String(64), nullable=False)
+    iast = Column(String(128), default="")  # lipi-derived (P7-13)
+    gloss = Column(String(256), default="")
+    gender = Column(String(16), default="")  # MASC|FEM|NEUT|""
+    stem = Column(String(64), default="")
+    examples = Column(JSON, default=list)  # [{devanagari, iast, gloss}]
+    provenance = Column(String(256), default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("topic", "devanagari", name="uq_vocab_topic_dev"),
+    )
+
+
+class ReaderPassage(Base):
+    """One graded-reading sentence (P22-6): 50 simple → 50 with sandhi → 50
+    with compounds. Tiers: 1 (Units 2–3) · 2 (Unit 6, sandhi) · 3 (Unit 10,
+    compounds/classical).
+
+    Seeded from already-servable content (approved challenges, served
+    ślokas) — every row carries the Vidyut parse produced at seed time, and
+    ``provenance`` records which pool it came from. A DCS import is the later
+    volume step, gated on the per-source licence record P21/P22-6 require.
+    """
+
+    __tablename__ = "reader_passages"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    tier = Column(Integer, nullable=False, index=True)  # 1|2|3
+    sort_order = Column(Integer, default=0)
+    devanagari = Column(Text, nullable=False)
+    iast = Column(Text, default="")  # lipi-derived (P7-13)
+    word_breakdown = Column(JSON, default=list)  # [{word, meaning, features}]
+    parse = Column(JSON, default=list)  # Vidyut read at seed time
+    features = Column(JSON, default=list)
+    register = Column(String(16), default="laukika")
+    provenance = Column(String(256), default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("tier", "devanagari", name="uq_reader_tier_dev"),
+    )

@@ -96,6 +96,7 @@ async def get_path_spine(
     import json as _json
 
     from app.models import Challenge
+    from app.services.lessons import lesson_feature_ids
 
     features = db.query(Feature).order_by(Feature.rank).all()
     counts: dict[tuple[str, str], int] = {}
@@ -108,6 +109,7 @@ async def get_path_spine(
             counts[(f, status)] = counts.get((f, status), 0) + 1
 
     mastery_map = learner.feature_mastery if isinstance(learner.feature_mastery, dict) else {}
+    with_lessons = lesson_feature_ids(db)
 
     nodes = []
     for f in features:
@@ -121,6 +123,7 @@ async def get_path_spine(
             approved_count=counts.get((f.id, "approved"), 0),
             pending_count=counts.get((f.id, "pending"), 0),
             mastery=float(mastery_map.get(f.id, 0.0)),
+            has_lesson=f.id in with_lessons,
         ))
 
     covered = sum(1 for n in nodes if n.approved_count > 0)

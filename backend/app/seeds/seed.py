@@ -51,6 +51,15 @@ def run_seed():
         from app.seeds.writing_items import seed_writing_items
         seed_writing_items(db)
 
+        # Seed curriculum: lessons (P22-1/P22-3), vocabulary (P22-5),
+        # graded reading (P22-6) — all additive and idempotent (§2.13)
+        from app.seeds.lessons import seed_lessons
+        from app.seeds.reader_passages import seed_reader_passages
+        from app.seeds.vocab import seed_vocab
+        seed_lessons(db)
+        seed_vocab(db)
+        seed_reader_passages(db)
+
         db.commit()
         logger.info("Database seeded successfully")
     except Exception:

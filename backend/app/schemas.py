@@ -156,6 +156,7 @@ class PathNodeResponse(BaseModel):
     approved_count: int        # approved challenges exercising this feature
     pending_count: int         # backlog awaiting review (P8-0)
     mastery: Optional[float] = None  # the CALLER's mastery, filled for the learner
+    has_lesson: bool = False   # P22-4: a Lesson row exists → Path routes Learn first
 
 
 class PathSpineResponse(BaseModel):
@@ -226,6 +227,57 @@ class ParadigmCell(BaseModel):
 class ParadigmResponse(BaseModel):
     rows: list[list[ParadigmCell]]  # 8 vibhakti × 3 vacana (nouns), or lakāra grid (verbs)
     kind: str  # subanta | tinanta
+
+
+# ─── Curriculum (P22) ───
+
+class LessonExample(BaseModel):
+    devanagari: str
+    iast: str = ""
+    gloss: str = ""
+    derivation: Optional[dict[str, Any]] = None  # stored prakriya steps
+
+
+class LessonResponse(BaseModel):
+    feature_id: str
+    unit_id: str
+    rank: int
+    title_en: str
+    title_hi: str
+    body: str
+    examples: list[LessonExample]
+    visual_type: str  # grid | tree | state_machine | none
+    visual_data: dict[str, Any]
+    audio_url: str = ""
+    register: str
+
+
+class VocabExample(BaseModel):
+    devanagari: str
+    iast: str = ""
+    gloss: str = ""
+
+
+class VocabWordResponse(BaseModel):
+    topic: str
+    rank: int
+    devanagari: str
+    iast: str
+    gloss: str
+    gender: str = ""
+    stem: str = ""
+    examples: list[VocabExample] = []
+
+
+class ReaderPassageResponse(BaseModel):
+    tier: int
+    sort_order: int
+    devanagari: str
+    iast: str
+    word_breakdown: list[dict[str, Any]]
+    parse: list[dict[str, Any]]
+    features: list[str]
+    register: str
 
 
 # ─── Admin ───
