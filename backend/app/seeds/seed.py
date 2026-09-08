@@ -51,12 +51,22 @@ def run_seed():
         from app.seeds.writing_items import seed_writing_items
         seed_writing_items(db)
 
-        # Seed curriculum: lessons (P22-1/P22-3), vocabulary (P22-5),
-        # graded reading (P22-6) — all additive and idempotent (§2.13)
+        # Seed curriculum: the unit spine (P23-1) FIRST — lessons carry a
+        # foreign key to it, so nothing below can land until it exists.
+        # Then lessons + their steps (P22-1/P22-3/P23-2), vocabulary
+        # (P22-5), graded reading (P22-6) — all additive and idempotent
+        # (§2.13).
+        from app.seeds.units import seed_units
+        from app.seeds.licences import seed_content_sources
         from app.seeds.lessons import seed_lessons
+        from app.seeds.lesson_steps import seed_lesson_steps
         from app.seeds.reader_passages import seed_reader_passages
         from app.seeds.vocab import seed_vocab
+        seed_units(db)
+        # P23-4a: the registry FIRST — every content row below points at it.
+        seed_content_sources(db)
         seed_lessons(db)
+        seed_lesson_steps(db)
         seed_vocab(db)
         seed_reader_passages(db)
 

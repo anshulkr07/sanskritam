@@ -20,7 +20,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type AttemptResponse, type Challenge } from "../api/client";
-import TutorFull from "../components/TutorFull";
 import VerdictSheet from "../components/VerdictSheet";
 import AchievementReveal from "../components/AchievementReveal";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
@@ -120,7 +119,9 @@ export default function ChallengeScreen({ navigation, route }: Props) {
       // rather than the global adaptive pick, so a Path unit actually teaches
       // its band. Fall back to the adaptive pick if the pool is empty.
       if (filteredPool && filteredPool.length > 0) {
-        const idx = (completed % filteredPool.length + filterFeatures.length) % filteredPool.length;
+        // LESSON_OVERHAUL §11: the old index added the feature count to a
+        // rotation index — almost certainly a bug. Rotation is rotation.
+        const idx = completed % filteredPool.length;
         setChallenge(filteredPool[idx]);
       } else {
         const c = await api.nextChallenge("laukika", "text");

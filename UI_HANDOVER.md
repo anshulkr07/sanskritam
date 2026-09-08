@@ -1,12 +1,16 @@
 # Sanskritam — UI, UX & Motion Handover
 
 **Audience:** an implementing coding agent (DeepSeek-V4-Flash / Hermes).
-**Written:** 2026-09-01. **Revised:** 2026-09-08 (eighth pass) — P8-5 (Cloud
-Run kept; GCS audio; backup policy) and P21-4 (12-text canon, Īśā 18/18,
-`GET /canon`, Reader text filter) landed; backend 557, head `e2f3a4b5c6d7`.
-Still open: P8-0 review (owner), device passes (hardware), U10-2 (gated on
-P8-0), P14 pricing, U1 (owner), U3-5 (ask first).
-**Companion doc:** [`HANDOVER.md`](HANDOVER.md) — backend and content.
+**Written:** 2026-09-01. **Revised:** 2026-09-08 (ninth pass) — **U15, the
+step player, landed** (Lesson rewrite, 7 renderers, Path units, Play-rule
+reversal, Home "continue Unit N + due", Piṅgala, Licences, prefs that work);
+backend 589, head `c1d2e3f4a5b6`. Still open: P8-0 review (owner), device
+passes (hardware), U10-2 (gated on P8-0), P14 pricing, U1 (owner), U3-5 (ask
+first).
+**Companion docs:** [`HANDOVER.md`](HANDOVER.md) — backend and content.
+[`LESSON_OVERHAUL.md`](LESSON_OVERHAUL.md) — **U15, the step player.** Read it
+before touching `Lesson.tsx`, `Path.tsx` or `Play.tsx`: U15 rewrites the first,
+reorganises the second, and reverses a rule stated at the top of the third.
 The two docs are mostly independent, but U9 connects surfaces specified there
 as P18, and U9-2's calendar depends on endpoints that already exist.
 
@@ -32,11 +36,12 @@ Work on this document is **split between two agents.** Stay inside your lane.
 | Phase | Owner |
 |---|---|
 | **U1 — the mascot (the Rive file)** | **Claude**, via the Rive MCP |
-| U0, U2, U3, U4, U5, U6, **U7, U8** | **DeepSeek / Hermes** |
+| U0, U2, U3, U4, U5, U6, **U7, U8**, U11–U14, **U15** | **DeepSeek / Hermes** |
 
 **If you are DeepSeek: do not touch the Rive file, and do not build a mascot
 renderer.** U1-3 (`mobile/src/components/guru/rig.ts`) and U1-4 (the
-integration) are the seam. Claude delivers `mobile/assets/avatar/guru.riv` plus
+integration) are the seam. Claude delivers `mobile/assets/guru.riv` (canonical
+path per `GURU_RIG_NOTES.md` Export) plus
 a `GuruRive.tsx` that already conforms to the `GuruRig` contract in U1-3.
 `TutorAvatar` and `TutorFull` keep their current props throughout, so every
 screen you build against them works before and after the mascot lands.
@@ -70,21 +75,22 @@ motion answers, delete it.
 
 ## 1. Where the UI actually is today
 
-Measured 2026-09-04, not estimated. **This section replaces the 2026-09-01
-inventory, which described an app that no longer exists.**
+Measured 2026-09-04, re-audited 2026-09-08 (counts below are the audit).
+**This section replaces the 2026-09-01 inventory, which described an app
+that no longer exists.**
 
 ### Inventory
 
-| | 2026-09-01 | now |
+| | 2026-09-01 | now (audited 2026-09-08) |
 |---|---|---|
-| Screens | 7 | **15** |
-| Shared components | 5 | **13** (+ 2 in `derivation/`) |
-| Total | 3,824 LOC | **9,110 LOC** TypeScript |
+| Screens | 7 | **21** files in `src/screens/` (incl. Pingala, Licences, Writing, Vocab, Reader) |
+| Shared components | 5 | **13+** (`derivation/` 3, `steps/` 9 incl. switch+types, `lesson/` 3, `writing/` 3, `guru/` 9) |
+| Total | 3,824 LOC | **9,110 LOC** TypeScript (pre-U15 count — re-measure before quoting) |
 | Typecheck | 3 errors | **0** |
-| Accessibility props in the whole app | **1** | **90** |
-| Files using Reanimated | 2 | **19** |
+| Accessibility props in the whole app | **1** | **100+** (`grep accessibility*` already exceeds the old 90) |
+| Files using Reanimated | 2 | **27** distinct files (audit `grep reanimated`) |
 | Files using legacy RN `Animated` | 3 | **0** |
-| Skeleton loaders | 0 | 1 component, **every loading screen uses it** |
+| Skeleton loaders | 0 | 1 component, **nearly every loading screen uses it** (`Path.tsx` loading text is still a raw `<Text>`, not `Skeleton`) |
 | Navigation | 5 flat tabs, 1 `navigate()` call | **6 tabs + drawer**, fully wired |
 | Screen transitions | default push | customised |
 
@@ -93,6 +99,9 @@ inventory, which described an app that no longer exists.**
 **U0 (foundation) — done.** Graphics stack installed (`react-native-svg`,
 Skia, Lottie, gesture-handler, `expo-blur`), dev build in place, `motion.ts`
 tokens, `useReducedMotion`, and **every legacy `Animated` import is gone.**
+Caveat (audited 2026-09-08): Skia/Lottie/`expo-blur` ship in the bundle with
+zero runtime imports (`Confetti` notes "since full Skia Canvas",
+`AchievementReveal` notes "No Lottie art yet") — bundle cost, no use yet.
 
 **U2 (core loop feel) — done.** `SessionShell`, the rebuilt verdict moment,
 `Confetti`, `SessionComplete`, the draggable `WordBank`.
@@ -108,6 +117,22 @@ on Progress, the śloka-as-manuscript treatment, and the contrast checker.
 Grammar · Progress) plus the left drawer; Home is the daily hub; Play is the
 lab; Śloka and Varṇamālā are Home cards. **No screen in the app is unreachable.**
 
+**U15 (the step player) — done 2026-09-08, practice kinds completed same day.**
+`Lesson.tsx` is a sequence now
+(one step, progress, check, verdict, next — Challenge's vocabulary, no second
+one); `components/steps/` holds 10 renderers (grid_fill writable via
+engine-drawn choice chips; derive_next with the five dials shown; sandhi both
+ways with a join-tree; scan_metre tappable L/G; reorder tap-to-place with the
+visible feedback WordOrder was missing; contrast A/B; build/articulate/read
+as ungraded practice over WordBank/VocalTract/passage — backend `PRACTICE_
+KINDS` no-op); Path renders eleven
+units with locked nodes DISABLED; Play rule reversed (sandbox here, graded in
+lessons) with Daily-word `built` fixed and Sandhi + Pingala cards; Home shows
+"continue Unit N" + honest due count; Piṅgala-as-binary screen (its "try it on
+a real verse" is static navigation, no live scan call); Licences
+screen rendering `GET /licences`; haptics + reduce-motion prefs drive real
+behaviour (`services/prefs`). Pairs with `HANDOVER.md` P23.
+
 ### The three real problems now
 
 **U9 closed the connection gap.** Pronunciation has a mic and a violet
@@ -119,19 +144,19 @@ are skeletons. **Nothing finished in the backend is unreachable any more.**
 and renders one flat image for all six. **This is the owner's lane** (U1,
 `rive_ui.md`, `src/components/guru/`) — do not pick it up.
 
-**2. Accessibility is started, not done — and the app tripled.** 90
-accessibility props across **15 screens** is real progress from 1, but only
+**2. Accessibility is started, not done — and the app tripled.** 100+
+accessibility props (audited 2026-09-08, was 90 across 15 screens) is real progress from 1, but only
 `MainTabs.tsx` handles font scale, U5-1/U5-2/U5-4 are open, and the stated
 audience is children through elderly paṇḍits. Every screen added since
 2026-09-01 was written against §3's rules but **verified against none of them
 on a real device.** This is U5, and it gets dearer every week.
 
-**3. The content behind the screens is waiting on a review queue.** 264
-challenges, **33 approved**; 6 scenarios, **1 approved** — the queue *grew*
-this week. So Talk has one dialogue and a challenge session can run the pool
-dry (`HANDOVER.md` P8-0). **No UI work fixes this** — but do not read a short
-session as a client bug, and make sure an exhausted pool renders as an empty
-state rather than a spinner (U10-2).
+**3. The content behind the screens is no longer waiting on a review queue.**
+264 challenges, **264 approved**; 6 scenarios, **6 approved** (P8-0 cleared
+2026-09-08 — was 33/1 and the queue grew weekly). Talk has six dialogues
+(P17-2 audio re-render pending for 70 nodes). **No UI work fixes audio
+coverage** — but do not read a short session as a client bug, and make sure
+an exhausted pool renders as an empty state rather than a spinner (U10-2).
 
 **4. The app is unusable by someone who cannot read Devanagari.** Every screen
 assumes the script, and the IAST that would carry a beginner is **wrong on 49%
@@ -332,11 +357,12 @@ gap — replace with `ReturnType<typeof setTimeout>`.
 | **U7** | The proof surfaces — derivation, scansion, word order | **done** |
 | **U8** | Information architecture — six tabs, drawer, Home hub, Play | **done** |
 | **U9** | Connect what the backend already has | **done** |
-| **U10** | What first users need from the client | **U10-1 gated + U10-3 done** — pairs with `HANDOVER.md` P8 · **U10-2 open (gated on P8-0)** |
+| **U10** | What first users need from the client | **U10-1 client done 2026-09-08 (Google + Apple-iOS + Guest; device-verify pending) + U10-3 done** — pairs with `HANDOVER.md` P8 · **U10-2 open (gated on P8-0)** |
 | **U11** | Ask anywhere — help on any screen | **done 2026-09-06** — pairs with P19 |
-| **U12** | Learning to write Devanagari — ML Kit ink + OCR | U12-1/2/3/4/5 done in code **· U12-4 needs ML Kit dev build to RUN** |
+| **U12** | Learning to write Devanagari — ML Kit ink + OCR | U12-1/2/3/4/5 done in code · `expo-camera` installed 2026-09-08 **· ML Kit packages deliberately not installed (seam names 404; real: `react-native-digital-ink` + `@infinitered/react-native-mlkit-text-recognition`) — install+rewire+prebuild+device proof is one later hardware step** |
 | **U13** | The reader — tap a word, the engines answer | **U13-1/2/3 done; P21-4 canon filter done 2026-09-08** — pairs with P21 |
 | **U14** | Curriculum — Lesson screen, visuals, vocab, graded reading | **U14-1/2/3 + minimal U14-4/5 done 2026-09-07** — pairs with P22 |
+| **U15** | The step player — Lesson rewrite, renderers, units, maths, licences | **done 2026-09-08** — pairs with P23 |
 
 ⚠ **U5 is still the first thing anyone should pick up.** U9 closed the last
 gap between a finished backend surface and a learner reaching it, so most of
@@ -680,7 +706,7 @@ contract are renderer-agnostic.
 7. Verify with `animation_editor simulateStateMachine`, driving `state` 0→6 and
    sweeping `mouthOpen`. This runs headless, so it catches a broken transition
    before the app ever loads the file.
-8. Export to `mobile/assets/avatar/guru.riv`. **Budget: under 300KB.**
+8. Export to `mobile/assets/guru.riv` (canonical path). **Budget: under 300KB.**
 
 **Acceptance:** `simulateStateMachine` shows all seven states reachable with no
 popping, every input visibly does something, and the exported `.riv` is on
@@ -758,7 +784,16 @@ technique for this art (§6.4).
 
 ## U1-3 · The app-side rig contract
 
-**Why:** The interface between "what the app feels" and "how the character
+> **Superseded in implementation (audited 2026-09-08).** The `SharedValue` /
+> `useGuruState` contract below was the spec. What shipped is the evolved
+> contract in `GURU_RIG_NOTES.md`: `rig.ts` exposes Rive-binding setters
+> (`setState/headTurn/gazeX/…/viseme/gesture`), `Guru.tsx`/`GuruScene.tsx`
+> are marked RIVE-PATH-DORMANT, and `guru/index.ts` exports only `GuruNative`
+> (layered `<Image>`s + Reanimated, no Rive runtime). Screens use `<Guru>` /
+> `<GuruNative>`, not this interface. Keep the spec text for history; do not
+> build to it.
+
+**Why (original):** The interface between "what the app feels" and "how the character
 moves". Defined independently of the renderer so U1-4 and U1-5 are
 interchangeable.
 
@@ -812,7 +847,15 @@ export function useGuruState(state: AvatarState, opts?: {
 
 ## U1-4 · Integrate Rive into the app
 
-**Blocked by:** U1-2, U1-3. **Effort:** M
+> **Superseded in implementation (audited 2026-09-08).** Export is plan-gated,
+> so the app ships `GuruNative.tsx` (layered `mobile/assets/guru/*.png` +
+> Reanimated, pixel-equivalent to the .riv per `GURU_RIG_NOTES.md`) instead of
+> a Rive runtime. Swap status: Conversation uses `<GuruNative>`; Home and
+> SessionComplete still use `<TutorFull>`; `GuruScene` is finished and
+> unplaced; `TutorAvatar` has no callers. Single deliverable path is
+> `mobile/assets/guru.riv` (see `GURU_RIG_NOTES.md` Export).
+
+**Blocked by (original):** U1-2, U1-3. **Effort:** M
 
 **Touch:** `mobile/package.json`, `mobile/app.json`, create
 `mobile/src/components/guru/GuruRive.tsx`, edit `TutorAvatar.tsx`,
@@ -1629,6 +1672,69 @@ clean.
 
 ---
 
+# PHASE U15 — The step player — DONE 2026-09-08
+
+> The lesson stops being a page and becomes a sequence. `Lesson.tsx` was 207
+> lines of prose with one interaction (open the Ask sheet); it is now a step
+> player with seven gradable renderers, and `Path.tsx` renders eleven units
+> instead of a flat tag list. Backend phase: `HANDOVER.md` P23. Full audit:
+> [`LESSON_OVERHAUL.md`](LESSON_OVERHAUL.md).
+
+## U15-1 · `Lesson.tsx` becomes a step player — DONE
+
+One step at a time, `ProgressBar` + "n/N", `VerdictSheet`, `haptics.*`,
+`announceForAccessibility` on every verdict (inside the sheet) — Challenge's
+loop vocabulary, no second one. Entry by `lessonId` (new) or `featureId`
+(legacy). The `body` survives as a collapsible summary. Completion routes to
+Practice. A network failure on submit keeps the step with inputs intact —
+never a verdict.
+
+## U15-2 · One renderer per step kind — DONE
+
+`mobile/src/components/steps/`: `ExplainStep`, `GridFillStep` (blanks as
+engine-drawn choice chips — no Devanagari keyboard needed),
+`DeriveNextStep` (hidden step + sūtra options + the five dials shown),
+`SandhiStep` (split/join choices + a join-tree), `ScanMetreStep` (tappable L/G
+with text labels, never colour alone), `ReorderStep` (tap-to-place),
+`ContrastStep` (A/B). Every Pressable carries role + label (audit 0 issues).
+
+## U15-3 · Path becomes units — DONE
+
+`GET /units` → eleven expandable units with per-unit progress. Locked nodes
+are `disabled`, announced as locked, and never navigate (were opacity-0.5 and
+still pressable). Lesson sheet: Learn (step player, by id) + Practice.
+
+## U15-4 · Reverse the Play rule — DONE
+
+Same components grade inside lessons; Play keeps every card as an ungraded
+sandbox door. Header copy says so honestly. Daily-word `built: false` fixed
+(the screen exists); Sandhi + Pingala cards added.
+
+## U15-5 · Home routes into the lesson — DONE
+
+Primary CTA is "continue Unit N" with the honest `GET /review/due` count
+("· N due today") once reviews exist; falls back to Practice with no units.
+
+## U15-6 · The mathematics layer — DONE (first slice)
+
+5×5 coordinate caption on Varṇamālā (row = where, column = how); five dials
+shown on every derive step; sandhi join-tree; **Piṅgala screen** (binary
+enumeration 2^n + mātrāmeru → Fibonacci, one screen, no reviewer, engine
+check behind "try it on a real verse"). Compounds-as-trees waits on the
+analyzer (no samāsa exercises — owner decision stands).
+
+## U15-7 · Licences and credits — DONE
+
+`Settings.tsx`'s dead row navigates (via the drawer parent) to the new
+`Licences` screen, which renders `GET /licences` and nothing else — name,
+taken, exact licence, verbatim credit. Gated on P23-4a only; the release
+gate (attributed content ships only with this screen in the build) is a
+checklist line, not a task edge. Bonus in the same touch: `services/prefs`
+makes the haptics + reduce-motion toggles drive real behaviour
+(`useReducedMotion` ORs the override; `loadPrefs` runs at boot).
+
+---
+
 ## 6. The mascot, specified
 
 ### 6.1 Identity — non-negotiable elements
@@ -1657,7 +1763,7 @@ Sanskrit teacher rather than generic fantasy-monk stock art.
 Build this in U1-2 via the Rive MCP. It doubles as the spec to hand a human
 animator if that route is ever preferred.
 
-> **Deliverable:** `mobile/assets/avatar/guru.riv`. Two artboards — `GuruPortrait`
+> **Deliverable:** `mobile/assets/guru.riv` (canonical path). Two artboards — `GuruPortrait`
 > (head + shoulders crop) and `GuruFull` — sharing one state machine `TutorSM`.
 >
 > **Inputs:**
@@ -1746,7 +1852,7 @@ A UI task is done when **all** hold:
 1. Its **Acceptance** command/check passes.
 2. `cd mobile && npx tsc --noEmit` → **zero errors** (new baseline after U0-1).
 3. `cd backend && ./.venv/Scripts/python.exe -m pytest -q` → at or above
-   **557** (`HANDOVER.md` §3). A UI task should not move it at all.
+   **650** (`HANDOVER.md` §3, 2026-09-08 build). A UI task should not move it at all.
 4. Verified on a **physical low-end Android device**, not just a simulator.
 5. Verified with **Reduce Motion on** — nothing breaks, nothing spins forever.
 6. Verified at **200% system font** — no clipping, no overlap.
@@ -1829,6 +1935,24 @@ Never cut:    U5 (accessibility)
 Cut first:    U6-1 profiling depth, U3-5
 Ask first:    U3-5 (leagues)
 Unblocked:    U4-2 → now U12 (ML Kit Digital Ink, owner decision 2026-09-05)
+
+New surfaces, 2026-09-08 — P23's client half, the LIVE phase:
+  U15  the step player   Lesson.tsx stops being an article and becomes a
+                         sequence of gradable steps. Full spec, contracts and
+                         invariants: LESSON_OVERHAUL.md §7.
+  U15-1 step player · U15-2 one renderer per step kind (mostly wiring —
+  Paradigm, DerivationPlayer, SandhiVisual, WordBank, VocalTract,
+  ScansionStrip already exist) · U15-3 Path becomes units · U15-4 reverse the
+  Play rule · U15-5 Home routes into the lesson · U15-6 the mathematics layer
+  · U15-7 Licences and credits — renders GET /licences (P23-4a).
+  U15-1/2 gated on P23-2/3; U15-7 on P23-4a. U15-7 does NOT block any backend
+  task — it gates the RELEASE of attributed content, not the import that
+  produces it (LESSON_OVERHAUL.md §6, P23-4a). Ship it early anyway: it is the
+  cheapest item here and it is owed for content we already ship today.
+
+  ⚠ U14's premise is superseded. Its Lesson screen was built to spec and the
+  spec was the problem: prose + a static visual + one Ask sheet, nothing
+  answered. U14-4/5 (vocab, graded reading) stand.
 
 New surfaces, 2026-09-07 — P22's client half, the learning layer:
   U14  curriculum        the Lesson screen, visuals, vocab, graded reading

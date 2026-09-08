@@ -76,6 +76,9 @@ def _ensure(db: Session, tier: int, sort_order: int, devanagari: str,
         ReaderPassage.devanagari == devanagari,
     ).first()
     if existing:
+        # P23-4a: repoint pre-registry free text at the key.
+        if existing.provenance != provenance:
+            existing.provenance = provenance
         return False
     db.add(ReaderPassage(
         tier=tier,
@@ -88,6 +91,12 @@ def _ensure(db: Session, tier: int, sort_order: int, devanagari: str,
         register=register,
         provenance=provenance,
     ))
+    # Flush per add (same discipline as _seed_challenges): the pool now holds
+    # laukika+classical variants of one sentence, so the existence check above
+    # must see this row before the next candidate — otherwise the second
+    # variant double-inserts against the UNIQUE(tier, devanagari) constraint.
+    # Found 2026-09-08 when P8-0 grew the approved pool 33→264.
+    db.flush()
     return True
 
 
@@ -113,7 +122,7 @@ def seed_reader_passages(db: Session) -> dict[str, int]:
         if _ensure(db, 1, i, dev, breakdown, parse,
                    sorted(set((c.features or []) + feats)),
                    c.register or "laukika",
-                   f"approved-challenge:{c.id}"):
+                   "original"):
             added["tier1"] += 1
 
     # ── Tiers 2+3: served ślokas, shorter half then longer half ────────
@@ -132,7 +141,7 @@ def seed_reader_passages(db: Session) -> dict[str, int]:
                          "features": w.get("features", []), "confident": True}
                         for w in breakdown if w["word"]],
                        list(s.features or []), s.register or "classical",
-                       f"shloka:{s.source_ref or s.id}"):
+                       "public-domain"):
                 added[f"tier{tier}"] += 1
 
     logger.info("Reader passages added: %s", added)

@@ -110,8 +110,14 @@ def test_deploy_script_provisions_audio_bucket():
     # P8-5: the deploy path must create the audio bucket + wire the env, or
     # production silently falls back to ephemeral local disk (§2.11 — a silent
     # empty result is a bug, one layer out).
-    text = io.open("C:/Users/AnshulKumar/PycharmProjects/sanskrit/deploy/gcp/deploy.sh",
-                   encoding="utf-8").read()
+    # Resolved repo-relatively: the old hardcoded absolute path from another
+    # machine (C:/Users/AnshulKumar/...) failed everywhere else.
+    from pathlib import Path
+    text = (Path(__file__).resolve().parents[2]
+            / "deploy" / "gcp" / "deploy.sh").read_text(encoding="utf-8")
     assert "GCS_AUDIO_BUCKET" in text
     assert "AUDIO_STORAGE" in text
     assert "CDN_BASE_URL" in text
+    # Apple sign-in secret must ship wherever Google's does (Guideline 4.8).
+    assert "APPLE_CLIENT_ID" in text
+    assert "apple-client-id" in text

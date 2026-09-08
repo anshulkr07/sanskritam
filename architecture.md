@@ -112,7 +112,12 @@ With one engine speaking both halves it stops being a problem at all. Same speak
 | **Sarvam Saaras v4** | Conversation. Mixed Hindi/English/Sanskrit input | Commercial API, ₹30/hr. Supports `sa-IN` and a `codemix` output mode — built for exactly our input shape. ₹25K credits ≈ 830 hrs. |
 | **Saaras against a known target** | Varṇamālā, challenge and śloka grading | See §6.2. Constrained comparison, not true forced alignment — no hosted API returns phone-level alignments. |
 
-**Move to `saaras:v4`.** v4 is live and ungated on our key today (§4.5). Early signal worth confirming with `scripts/bench_asr.py` before switching: on one second of digital silence, `saaras:v3` returned `अस्तु अस्तु` and `saaras:v4` returned empty. One sample is not a benchmark, but a hallucinated transcript in a grading loop is a false accusation against a learner who said nothing — precisely the failure §6.3 exists to prevent. Bench it, then switch.
+**On `saaras:v4` (switched; audited 2026-09-08).** v4 is live and ungated on
+our key (§4.5) and the code defaults to it. The pre-switch signal worth
+keeping: on one second of digital silence, `saaras:v3` returned `अस्तु अस्तु`
+and `saaras:v4` returned empty. One sample is not a benchmark — the
+p50/p95 bench on real code-mixed audio (`scripts/bench_asr.py`, still
+synthetic-only) is still open (§12 open items).
 
 Saaras is the only recogniser. There is no second ASR path and no local aligner — see §6.2 for what that does to pronunciation grading, and §10 for the vendor risk it concentrates.
 
@@ -464,8 +469,11 @@ The old note here said v1 pre-renders both languages to avoid two timbres for on
 | **Offline, authoring the graph** | `sarvam-105b-conversations` | 100% Vidyut gate pass at ₹0.0055/sentence. ₹25K of credits ≈ 400K sentences. Latency is irrelevant here, which is the whole point |
 | **Offline, any dual-bearing content** | Gemini | Sarvam false-accuses 50% of dual sentences and argues the dual should be plural (§4.3). Vidyut catches malformed morphology, **not a valid form in the wrong number** |
 | **Live, off the turn path** | `sarvam-105b-conversations` | "Why was I wrong?" / "what does that mean?" — `POST /conversation/explain`. Tolerates 2 s because nobody is waiting mid-conversation. **Was Gemini; changed 2026-08-30** to keep the live path on one vendor. Measured 1.3–3.0 s. The dual caveat below is the known cost |
-| **Live, guided turn path** | **none** | There is no model in the loop. That is what buys the sub-second turn |
+| **Live, guided turn path** | **LLM by default (`mode='llm'`), graph as fallback** | Owner decision 2026-09-08 (docs audit): the sub-second graph path is kept as fallback, but the default turn spends the LLM. Track cost/latency accordingly |
 | **Live, open turn path** | Gemini Flash + Vidyut gate | The premium tier is paying for exactly this. Never ungated |
+
+> The original "no model in the guided turn path" rule bought the sub-second
+> turn and still describes the fallback. It no longer describes the default.
 
 ### Open items specific to §12
 
@@ -509,33 +517,49 @@ So **abstention (§6.3) is not a refinement here, it is the design.** These cont
 
 Ship the drill and the feedback loop; hold phoneme-level scoring until the aligner is measured on real learner audio. A varṇamālā that plays reference audio, records an attempt, plays both back for self-comparison, and tracks coverage is **already useful** and carries no false-accusation risk at all. Add automated scoring per contrast only as each one clears a measured confidence bar — one contrast at a time, hardest last.
 
+> Implementation status (audited 2026-09-08): the display grid
+> (`GET /grammar/varnamala`) + client articulation map + pronunciation mic are
+> live; `specs/varnamala.md` §2–4 data extensions (ids, example words, minimal
+> pairs, contrast groups, progress endpoints) are still unbuilt.
+
 ---
 
 ## 14. Platform and operations
 
-Everything above is the part of Sanskritam that is hard because it is Sanskrit. This section is the part that is hard because it is an app, and until now the document has been almost silent on it. Treat the items marked **unresolved** as real gaps, not as details.
+Everything above is the part of Sanskritam that is hard because it is Sanskrit. This section is the part that is hard because it is an app. Status audited 2026-09-08: plumbing has landed for most items (see each subsection); what remains open are product decisions (host, bucket, prices, Apple sign-in), not missing mechanisms.
 
-### 14.1 Backend hosting — **unresolved**
+### 14.1 Backend hosting — **plumbing landed, decision open**
 
 SQLite on a local file (`backend/app.db`) is right for building and wrong for production: most managed hosts give you an ephemeral disk, so the database disappears on every deploy. **Move to managed Postgres before the first real user.** SQLAlchemy keeps this a config change, which is why it was chosen (DECISIONS.md).
 
 Pick a boring host. The API is a single stateless FastAPI process calling third-party APIs — there is no GPU, no queue, and no local model (§1), so nothing here justifies Kubernetes. Requirements: managed Postgres, persistent object storage for audio, a scheduled-job runner for the authoring batch, and a region close to the users. India for domestic, and note §14.6 before defaulting to a US region.
 
-### 14.2 Audio storage and CDN — **unresolved**
+### 14.2 Audio storage and CDN — **plumbing landed, decision open**
+
+`services/storage.py` (`GCSStorage`, content-hashed `audio/{hash}`, immutable
+cache headers, `CDN_BASE_URL` switch) + `/audio/` mount + `scripts/backup_db.py`
+(SQLite copy / `pg_dump --custom`, keep-30, optional GCS upload) implement this.
+What remains open is the bucket/region choice and the backup schedule — not the
+mechanism.
 
 "Serve from CDN" appears throughout this document and has never been specified. It carries the entire cost model (§2), so it needs a real answer: object storage plus a CDN in front, immutable content-hashed filenames, long cache headers, and pre-signed URLs if the audio is ever entitlement-gated.
 
 **Pre-rendered audio is an owned asset, not a cache.** §10 lists single-vendor dependency as the top risk, and every clip already rendered is a clip that survives losing the API. Back it up accordingly and never treat it as regenerable-on-demand.
 
-### 14.3 Identity — **unresolved**
+### 14.3 Identity — **partial: Google + anon + deletion landed, Apple open**
 
-The backend has a token table and no real identity. Before shipping:
+Google sign-in (JWKS), anonymous `install_id`, and `DELETE /me` (hard-delete,
+escape-logs nulled) are live. Before shipping:
 
 - **Sign in with Apple is mandatory** if any third-party sign-in is offered (App Store Guideline 4.8). Adding Google sign-in without it fails review.
 - **In-app account deletion is mandatory** for any app with account creation (Guideline 5.1.1(v)) — not an email link, a path inside the app.
 - Anonymous-first is worth considering: the varṇamālā (§13) is genuinely useful before login, and forcing signup at the door costs installs on a free surface that has near-zero marginal cost.
 
-### 14.4 Payments — **unresolved, and it changes the unit economics**
+### 14.4 Payments — **plumbing landed, pricing open (owner)**
+
+`Entitlement` + `has_entitlement()` seam is live (free surfaces always true;
+`conversation_open` premium-gated; fail-closed vendor / fail-open own outage).
+No store, no prices — that is the open owner decision, and it changes the unit economics below.
 
 Nothing in this document has mentioned billing, and the pricing thesis depends on it. Voice minutes are metered (§12) and open conversation is a paid tier, so this is core, not peripheral.
 
@@ -554,7 +578,11 @@ Yes, one codebase covers iOS and Android. The parts that will actually cost time
 - **Offline audio pack** is referenced throughout (§2, §13) and unspecified: what is bundled at install versus fetched, how it updates, and how much disk it may use.
 - **Expo Go until something needs more.** Moving to a dev build is a reversible decision; make it when a library forces it, not in advance.
 
-### 14.6 Privacy and compliance — **unresolved**
+### 14.6 Privacy and compliance — **plumbing landed (cheapest answer implemented)**
+
+Audio is never written to disk/DB (`retain_raw_audio=False`), error logs carry
+route + trace only, `DELETE /me` covers erasure. Minors/age handling and privacy
+labels remain a deliberate decision, not a mechanism gap.
 
 The `Attempt` model stores `raw_audio` (§7). **Recordings of a person's voice are personal data**, and India's DPDP Act 2023 applies to Indian learners while GDPR applies to any in the EU — which the diaspora thesis guarantees.
 
@@ -562,13 +590,22 @@ Decide and write down: how long raw audio is retained, whether it is retained at
 
 The cheapest good answer to most of this: **do not keep raw audio.** Grade it, keep the derived features and the verdict (§7 already models those separately), discard the recording. Keep it only with explicit opt-in, for learners who agree to help improve the tutor.
 
-### 14.7 Abuse and rate limiting — **unresolved**
+### 14.7 Abuse and rate limiting — **plumbing landed**
+
+Rolling-window domain quota (`tts_chars`/`stt_seconds`/`llm_calls`, 429 +
+`Retry-After`, refund on failure) is enforced on speech/conversation/explain;
+`voice_minutes_used` is mirrored. `slowapi` was deliberately not added
+(domain quota replaces it by design).
 
 **Voice minutes are money.** Every ASR call and every live synthesis costs real rupees on a prepaid grant, and there is currently no rate limiting anywhere in the API. A leaked token or a trivial script could burn the ₹25K credit grant in a day.
 
 Per-learner quotas on ASR seconds and synthesised characters, enforced server-side, before any public build. `voice_minutes_used` exists on `Learner` (§7) and is not yet enforced against anything.
 
-### 14.8 Observability — **unresolved**
+### 14.8 Observability — **plumbing landed**
+
+`services/metrics.py` (`escape_rate`, `tts_share`/`live_share`,
+`top_escape_nodes`) + `services/retention.py` (thresholds, day-2, p8 report),
+surfaced in `GET /admin/metrics` (`explain`/`writing`/`retention`/`p8`).
 
 §10 and §12 name two metrics as the health of the product — **escape rate** and **pre-rendered vs live character share** — and no system collects either. Neither is optional: escape rate is the authoring backlog, and live share is the early warning that the cost model is drifting. Add structured logging and a place to look at these before the features that generate them ship.
 
@@ -586,20 +623,21 @@ Also worth capturing from day one: per-vendor API latency and error rate (Sarvam
 - ~~**Voice casting across languages.**~~ **CLOSED** — one engine speaks every surface, so this is a single speaker-id choice (§4.1).
 - **Chant.** Daily śloka ships as spoken recitation because no hosted API chants (§4.1). Decide between licensed human recordings, asking Sarvam for a chant voice, or shipping prose reading and saying so plainly. This is the largest open product question created by the no-local-models rule.
 - **How accurate can pronunciation grading get on hosted ASR alone?** Unmeasured, and it caps how much of §13 can ever be automated. Measure per contrast on real learner audio before promising any of it.
-- **Saaras v4 versus v3.** Bench before switching (§4.2). The silence-hallucination signal needs confirming on more than one sample.
+- **Saaras v4 versus v3.** Switched (code defaults to v4; audited 2026-09-08). The silence-hallucination signal still needs confirming beyond one sample, and the p50/p95 bench is still synthetic-only.
 - **Transliteration library.** Vidyut versus `indic-transliteration` for Devanagari↔IAST. Server-side rule engines either way (§4.5); pick on round-trip fidelity for the conjuncts.
 - **Retrieval quality on Sanskrit is unmeasured** (§4.6). Specifically: does a classical query ever retrieve laukika? That crossover is the one thing the two-index split exists to prevent, and nothing tests it yet.
 
-### Open — platform (§14)
+### Open — platform (§14, audited 2026-09-08)
 
-These are gaps, not details. Every one of them is unresolved and each blocks a real ship:
+Plumbing has landed; what remains are decisions. Only Apple sign-in is still a
+missing mechanism:
 
 | # | Question | Blocks |
 | --- | --- | --- |
-| 14.1 | Which host, and when does SQLite become Postgres? | First real user |
-| 14.2 | Which object store + CDN, and what is the backup policy for owned audio? | Any pre-rendered content at volume |
-| 14.3 | Identity: anonymous-first? Sign in with Apple + in-app deletion are mandatory | App Store review |
-| 14.4 | Billing, and pricing that survives a 15–30% store commission | Revenue |
-| 14.6 | Do we retain `raw_audio` at all? DPDP + GDPR apply, and minors will show up | Any public build |
-| 14.7 | Per-learner quotas on ASR seconds and synthesised characters | Any public build — a leaked token burns the grant |
-| 14.8 | Where do escape rate and live-character share actually get recorded? | Knowing whether the product works |
+| 14.1 | Which host, and when does SQLite become Postgres? (Postgres path + pooler config landed; defaults to SQLite) | First real user |
+| 14.2 | Which bucket/region + backup schedule? (GCS backend + `backup_db.py` policy landed) | Any pre-rendered content at volume |
+| 14.3 | Sign in with Apple (mandatory with Google per 4.8) + anonymous-first default + kill dev-login in release | App Store review |
+| 14.4 | Pricing that survives a 15–30% store commission (entitlement seam landed) | Revenue |
+| 14.6 | Minors/age handling + privacy labels (no-retention plumbing landed) | Any public build |
+| 14.7 | — landed (domain quota enforced) — | — |
+| 14.8 | — landed (`GET /admin/metrics`: escape rate, live share, retention/p8) — | — |

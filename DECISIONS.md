@@ -528,3 +528,529 @@ a coverage ceiling, not a generation defect.
   Caught and fixed a real footgun: the report path <stem>.json OVERWROTE the isha.payload.json input - reports are now <stem>.report.json with a same-file refusal (payload regenerated from DB rows, re-dry-run proves 18/18 dups).
 - P14 pricing is the only remaining owner-gated platform item; P10 stays stopped (analyzer escalation); RAG still needs an explicit decision.
 - Suite 543 -> 557 (test_p85_platform 8, test_p21_canon 6); mobile tsc clean; a11y audit 0; alembic current == heads (e2f3a4b5c6d7). Same pre-existing env failure - untouched, not a regression.
+
+## 2026-09-08 — The lesson layer is rebuilt: a lesson becomes a sequence, and the engine becomes the author
+
+Full spec: [`LESSON_OVERHAUL.md`](LESSON_OVERHAUL.md) (P23 backend, U15 client).
+
+- **The audit finding.** `Lesson.tsx` is 207 lines that render prose, one static
+  table, three example rows and a Practice button, and **every tappable thing on
+  it opens the Ask sheet.** Ten lessons exist, covering Units 1–3 of eleven. The
+  whole app has exactly two graded exercise types (`"wordbank" | "typed"`). The
+  teaching layer was specified as a page and built as a page — faithfully. The
+  spec was the problem, not the implementation.
+
+- **Root cause, and why it was structural.** `Lesson.feature_id` was a UNIQUE FK
+  to `features.id`: one lesson per grammatical tag, forever. There was no `units`
+  table — CURRICULUM.md §6.2's eleven-unit spine lived in prose and nowhere else.
+  So "sandhi is f(a,b)→c" **could not be a lesson**, because sandhi is four tags.
+  The curriculum's atom was the engine's taxonomy, not a learner's progression.
+
+- **DECIDED: a lesson is Units → Lessons → typed, gradable Steps.** Not an
+  enrichment of the prose page. `feature_id` loses its UNIQUE and is joined by
+  `features`; a new `lesson_steps` table carries `kind` + `payload` + `grading`.
+  Landed as P23-1, migration `f1a2b3c4d5e6`, verified up→down→up.
+
+- **DECIDED: the engine generates exercises, and that is how the content
+  bottleneck breaks.** 231 of 264 challenges sit pending and *"the pipeline is
+  two weeks ahead of the reviewer"* — nine features have rows and zero
+  approvals, **all four sandhi types among them**. An engine-generated exercise
+  needs no reviewer, because the engine that poses the question is the engine
+  that marks it. `sandhi.split_candidates`, `prakriya.paradigm`,
+  `prakriya.derive`, `chandas.scan` and `word_order.equivalent_orders` all
+  already exist and are already tested. An exercise is `(kind, params, seed)`,
+  regenerated on demand — **no exercise table, no stored answer.** P23 partly
+  relieves P8-0 for drill content; authored prose still needs the queue.
+
+- **DECIDED: adopt learnsanskrit.org under CC BY 4.0, with attribution.**
+  CURRICULUM.md open question #1 is **answered**: the guide states *"This page
+  is available under a CC BY 4.0 International license"*; the code is public
+  domain; the source is SML under `content/`; ~100 pages covering Units 4–11
+  plus samāsa and kāraka. This reverses the P22-3 workaround (ten original
+  lessons written *"so no third-party licence applies"*) now that the licence is
+  known rather than unknown.
+
+- **DECIDED: attribution is a licence REGISTRY plus a RELEASE gate, not a task
+  dependency.** The first draft of `LESSON_OVERHAUL.md` said the licences screen
+  (U15-7) must ship before the importer (P23-4) ran, and marked U15-7 as
+  blocking it. That is circular: the screen renders which sources, licences and
+  credit lines we use, which is exactly what the importer writes. It was also a
+  client task blocking a backend task, serialising the phase for nothing.
+  Resolved by splitting three ways — **P23-4a** an authored `content_sources`
+  registry + `GET /licences`, gated on nothing; **U15-7** the screen, gated on
+  that endpoint; **P23-4** the import, gated on the registry because it must
+  write a registry key, and not on the screen. **Importing is not publishing:**
+  the obligation attaches when a learner sees the content, so the gate is a
+  release gate — a test that every attribution key resolves in the registry,
+  plus a checklist line that no build ships attributed content without the
+  screen. Note the obligation is not new: we already ship MIT `vidyut-data` and
+  a CC BY-SA 3.0 sa.wikisource transcription, and `CanonText.licence` holds
+  twelve per-text strings that no screen renders. `Settings.tsx`'s row is
+  `onPress={() => {}}` today — a licence you cannot display is a licence you
+  have not honoured.
+
+- **DECIDED: reverse the Play rule.** `Play.tsx` states *"Play is exploration,
+  not assessment. Nothing launched from here writes mastery EXCEPT
+  Challenges."* That rule excluded the paradigm tensor and word-order — the two
+  best pattern surfaces in the product — from progress by design. Pattern work
+  now counts; Play keeps the same components as an ungraded sandbox door.
+
+- **DECIDED: learner is both, adult-first.** Calm and precise; playful but not
+  cartoonish. Streaks, mastery crowns, timed pattern drills. No mascot-driven
+  narrative — UI_HANDOVER §3's "the mascot is a teacher, not a pet" is unchanged.
+
+- **DECIDED: `adaptive.py` is unfrozen and gets FSRS.** It is "SM-2-inspired" in
+  name only — one 0..1 score per feature, fixed ±deltas, selection at 0.6, and
+  **no due dates, no intervals, no time decay, no item-level memory**. A learner
+  returning after a month sees the state they left.
+  `research/tech-research.md:326-409` recommended FSRS months ago and it was
+  never picked up. New `ReviewItem` table; an item is a step instance or a vocab
+  word, not a feature tag.
+
+- **Found, unfixed:** `backend/app.db` was **three migrations behind head with
+  no `lessons` table at all** — the entire P22 curriculum had never been
+  materialised locally, so the lesson screen would have 404'd on every feature.
+  Fixed by running `alembic upgrade head` under P23-1. This is what HANDOVER's
+  *"a green test suite does not mean a working app"* looks like in practice: the
+  tests build their own DB with `create_all` and never touch alembic.
+
+- **Found, unfixed:** `routers/writing.py:131` writes a dict
+  (`{"attempts", "correct", "ef": 2.5}`) into `learner.feature_mastery` under a
+  `write:<iast>` key, making that column a heterogeneous dict — floats for
+  grammar features, dicts for writing. `adaptive.update_mastery` and
+  `grammar.get_path_spine`'s `float(mastery_map.get(...))` would both mishandle
+  it. The `ef` is written and never read. To be fixed as part of P23-5.
+
+- **Reaffirmed, unchanged:** no "Vedic Mathematics" (unsubstantiated
+  provenance); P10 numerals stay stopped (8 of 30 misparse confidently); no
+  samāsa/kāraka exercises until the analyzer can derive them; no leaderboards
+  without an owner decision; no hearts/energy/lives; no curriculum in the APK.
+
+## 2026-09-08 (P23 + U15) — the lesson rebuild, implemented
+
+- **P23-2 generator: no table, no stored answer, no review queue.** An
+  exercise is `(kind, params, seed)` regenerated on demand;
+  `random.Random(seed)` everywhere; the served payload carries options but a
+  test asserts `"answer"` is absent from the JSON. 7 kinds, each behind an
+  engine call that already existed. Phone constraint drove one design point:
+  grid_fill blanks ship engine-drawn choice chips (no Devanagari keyboard,
+  no typing), and sandhi_join ships true-join vs raw-concat vs reversed
+  options — graded EXACT, because with options on the table "splits back to
+  the pair" is too lenient a marker (free-text answers keep the lenient
+  engine check).
+- **FSRS contract without the `fsrs` package.** `services/review.py`
+  implements the researched recommendation's contract (per-item
+  stability/difficulty/lapses, due dates, recall grows the interval, lapse
+  collapses to ~10 warm minutes) as local deterministic computation with no
+  new dependency — keeps the bundle offline-friendly; callers would not
+  change if the package were adopted later. `adaptive.py` untouched (FROZEN).
+- **Writing progress moved to `learners.writing_mastery`** (migration
+  `c1d2e3f4a5b6`, applied, up→down→up green). Legacy `write:` keys are moved
+  lazily by the writing router (the only writer); the never-read `ef` field
+  is dropped. P20 test updated to pin the FIXED contract (separation), not
+  the buggy one.
+- **Attribution is a registry key.** `content_sources` (5 rows) + backfill of
+  every pre-registry free-text provenance to keys; `CanonText.source_key`
+  joins the canon rather than starting a second registry. The test that
+  replaces remembering: every distinct key in lessons/vocab/reader/canon
+  resolves, or the suite is red.
+- **Importer stages, owner adapts.** `scripts/import_learnsanskrit.py` writes
+  rank-900 `[staged]` rows with the registry key from the first row —
+  importing distributes nothing; the release gate (licences screen in the
+  build) is where the obligation attaches. Not run against the real
+  learnsanskrit.org checkout yet — that is owner curation with this tooling.
+- **Client: step player, not a second verdict vocabulary.** Lesson.tsx reuses
+  Challenge's loop (ProgressBar + n/N, VerdictSheet, haptics, announce).
+  Path renders units with locked nodes DISABLED (were opacity-0.5 + still
+  pressable). Play rule reversed (sandbox here, graded in lessons).
+  `Challenge.tsx:123` rotation-index bug fixed (`completed % len`). The two
+  dead Settings toggles now drive `services/prefs` (haptics gates the
+  service; reduce-motion override ORs into `useReducedMotion`).
+- **Measured:** backend 557 → **589** (33 P23 tests); `tsc` 0 errors; a11y
+  audit 0 issues across 89 files; dev-DB smoke (units → steps → correct
+  attempt → mastery 0.3→0.405, due +2.2d) green. One pre-existing failure
+  unrelated to P23: `test_deploy_script_provisions_audio_bucket` hardcodes a
+  `C:/Users/AnshulKumar/...` path from another machine.
+
+## 2026-09-08 (docs audit) — docs brought back in line with code
+
+- **Scope:** full drift fix (owner-approved). Read-only audit across
+  `HANDOVER.md`, `UI_HANDOVER.md`, `LESSON_OVERHAUL.md`, `CURRICULUM.md`,
+  `architecture.md`, `GURU_RIG_NOTES.md`, `specs/`, `research/tech-research.md`
+  vs backend (migrations head `c1d2e3f4a5b6`, 51 test modules / 589
+  collected, all P23 tables/routers/services/seeds present) and mobile
+  (21 screens, `steps/` 7 renderers + switch, `GuruNative` shipping).
+- **Counts fixed:** `HANDOVER.md` 36 → 51 test modules, "589 pass" →
+  "589 collected (1 fail + 1 env-gated)", Definition of done 557 → 589
+  (both handovers); `UI_HANDOVER.md` inventory → 21 screens / 27 Reanimated /
+  100+ a11y props, LOC flagged pre-U15; `LESSON_OVERHAUL.md` P23-1 head
+  `f1a2b3c4d5e6` → intermediate (head `c1d2e3f4a5b6`).
+- **Descriptions fixed:** suite builds via `init_db()` (Alembic + drift check),
+  not `create_all`; `CURRICULUM.md` §5.2 table names → `lessons`/`units`/
+  `challenges`/`vocab_words`/`reader_passages`; U1-3/U1-4 marked superseded
+  (evolved `GuruNative` contract in `GURU_RIG_NOTES.md`); canonical `.riv`
+  path `mobile/assets/guru.riv` in all three docs.
+- **Caveats recorded (code truth):** `build`/`articulate`/`read` step kinds
+  fall back to `ExplainStep`; Pingala "try it" is static navigation;
+  `Path.tsx` loading text is not `Skeleton`; Home/SessionComplete still
+  `<TutorFull>`, `GuruScene` unplaced; Skia/Lottie/blur zero runtime imports;
+  Spec E §2–4 unbuilt (`_PLACES` bug still in tree); conversation-runtime is
+  async + in-router schemas.
+- **Decisions recorded in `architecture.md`:** §14 plumbing landed (only Apple
+  sign-in still a missing mechanism; host/bucket/prices remain owner
+  decisions); §4.2 on v4; §12 default turn is LLM (`mode='llm'`, graph as
+  fallback — owner decision); §13 Spec E status.
+- **`review-queue.md` moved** to `results/review-queue-20260908.md`
+  (owner-approved); `HANDOVER.md` §7 points at the generator. DB-row counts
+  flagged "verify against live DB" — seeds prove shapes, not approvals.
+
+## 2026-09-08 (Spec E backend) — varnamala drill data + endpoints
+
+- **Rewrote `seeds/varnamala.py`** per `specs/varnamala.md` §1–2: 49 stable
+  ids, example words + glosses, `CONTRAST_GROUPS` (5, hardest-first) with
+  derived symmetric `minimal_pairs`, `mark` on `am`/`ah`; deleted the
+  `_PLACES` bug (`ca` where `च` belongs). List structure and
+  place/voicing/kind keys kept — `varna_distance` and `writing_items` compat.
+- **49, not 48.** The spec's tables enumerate 49 rows (the traditional 48
+  plus ḹ, tabled with an empty example). Fixed the two "48" counts in the
+  spec rather than dropping a tabled row.
+- **New `routers/varnamala.py`:** `GET /varnamala` (full grid + groups,
+  serve-time `/audio/varnamala/{id}[_example].wav` URLs), `GET
+  /varnamala/progress`, `POST /varnamala/practice` (reps only, NO verdict —
+  §5). Coverage in its own `learners.varna_progress` column (migration
+  `a3f7c9e1b2d4`, applied, down→up round-trip green; backup
+  `app.db.bak-20260908-specE`). `GET /grammar/varnamala` untouched.
+- **`scripts/build_varnamala_items.py`:** 95 render items (49 + 46; rii/li/lii
+  aksara-only by design), dry-run green. Audio rendering itself is spend +
+  listening QA (hardest-5-first rule) — owner, with `SARVAM_API_KEY`.
+- **Tests:** `tests/test_varnamala.py` (11). Suite 589 → **600**
+  (1 pre-existing unrelated fail unchanged). Client wiring to the new
+  endpoints is Track C work.
+
+## 2026-09-08 (Apple sign-in) — Guideline 4.8 unblocked
+
+- **`POST /auth/apple`** mirroring `/auth/google`: ES256 identityToken
+  verified against `appleid.apple.com/auth/keys` (`iss` pinned, `aud`
+  against comma-separated `apple_client_id`), learner bound to `sub`
+  (`learners.apple_sub`, unique/indexed, migration `b4c6d8e0f1a2`,
+  applied). 501 when unconfigured, 401 on bad token or missing sub.
+- **Apple only sends name/email on first authorization** — the client
+  forwards `display_name` when it has one (`AppleAuthRequest.display_name`),
+  else email-local-part, else a label. `cryptography` already present, so
+  ES256 verifies live; `requirements.txt` comment updated (RS256 + ES256).
+- **Tests:** `tests/test_apple_auth.py` (5, verifier monkeypatched — no
+  network). Live JWKS verification still wants one smoke call with a real
+  token per §5 rule 5 once the Apple Services ID exists (owner: key).
+
+## 2026-09-08 (practice step kinds) — build/articulate/read stop degrading
+
+- **The fallback was a lie.** `StepRenderer` rendered `build`/`articulate`/
+  `read` as `ExplainStep` prose. The backend never emitted those kinds
+  (`exercise_gen` has 7 builders; unknown kinds raise), and inventing
+  graders for them would violate §2.2/§6.2 (no forced alignment, no
+  comprehension grader; graded assembly already exists as `reorder`).
+- **Practice, not assessment.** New `PRACTICE_KINDS =
+  {explain, build, articulate, read}` in `services/lessons.py`: serve the
+  payload as-is, attempt as no-op (correct, graded False, mastery/schedule
+  untouched). `LessonStep` docstring's kind families updated (was "two",
+  now authored/generated/practice).
+- **Three client renderers** reusing sandbox components per the U15-2 table:
+  `BuildStep` (WordBank), `ArticulateStep` (VocalTract via
+  `articulationFor`, mic stays off, placeless sounds render char-only),
+  `ReadStep` (passage card, `sized()` Sanskrit floor). All carry
+  "not graded" copy, role+label, 44pt targets. `stepHint` covers all kinds.
+- **Tests:** `tests/test_lesson_practice_kinds.py` (3 — no-op attempt incl.
+  mastery-untouched, serve-as-is, registry pin). `tsc` 0, a11y 0 issues
+  across 91 files.
+
+## 2026-09-08 (Track C4) — first data layer + FlatList where volume lives
+
+- **`services/apiCache.ts`** (60s in-memory GET cache + in-flight dedupe +
+  `invalidateCache`) + **`hooks/useQuery.ts`** (`{data, loading, failed,
+  retry}`, unmount-guarded, opt-in `refetchOnFocus` via `useFocusEffect`).
+  No new dependencies. Honest scope: no request cancellation —
+  `api/client.ts` takes no `AbortSignal`, so safety is "never setState
+  after unmount", not an aborted fetch. Threading signals through is the
+  follow-up.
+- **Path / Vocab / Reader migrated.** Units, words and the verse index are
+  `FlatList` (`ListHeaderComponent` keeps titles/chips/mode rows put);
+  topics/canon stay best-effort cached. Same states (skeleton / retryable
+  error / honest empty), same a11y labels, `sized()` on touched text with
+  the Sanskrit 18pt floor on Devanagari. Reader's reading posture untouched.
+- **`tsc` 0, a11y 0 issues across 93 files.** Remaining fan-out (Home/Lesson/
+  Challenge fetch migration, `sized()` on ~16 screens) rides the U5 device
+  pass per screen — the pattern is established.
+
+## 2026-09-08 (build day) — three tracks in parallel, verified
+
+- **Suite 590 → 610 collected (609 pass).** The one fail is the pre-existing
+  `test_deploy_script_provisions_audio_bucket` hardcoded-path failure,
+  unchanged since baseline. Head `b4c6d8e0f1a2`; `tsc` 0; a11y 0/93.
+- **Track A:** fresh P8-0 packets (`results/review-queue-challenges-20260908.md`
+  231 pending, `results/review-queue-scenarios-20260908.md` 5 pending — the
+  review itself is owner work); Spec E backend (above); vocab seed refills
+  `examples: []` from the approved pool on reseed (dev DB still 7/60 — the
+  pool has no more sentences to draw from until P8-0 approves more).
+- **Track B:** Apple sign-in (above). Live JWKS smoke + Services ID = owner.
+- **Track C:** mascot swap (Home/SessionComplete → `GuruNative`,
+  `TutorAvatar.tsx` deleted, `TutorFull` kept for brand) + S fixes (Path
+  skeleton, Lesson feature span, SessionComplete static XP, Pingala live
+  scan); practice renderers + `PRACTICE_KINDS` (above); data layer +
+  FlatList (above).
+- **Still owner-gated:** P8-0 review, learnsanskrit curation (Units 4–11
+  still 0 lessons), WordNet/DCS licences, varnamala audio render + listen,
+  Apple Services ID + live smoke, store/pricing, Postgres/GCS cutover, push
+  transport keys, ML Kit dev build, `.riv` export, device passes, submission.
+
+## 2026-09-08 (P8-0 cleared) — 0 pending anywhere + a midnight-boundary fix
+
+- **Owner bulk-approved the whole queue**, including 6 rows flagged
+  likely-wrong (57 नेत्रा नेत्रेण, 58 पुस्तकया, 61 बालं-as-girl, 80 NOM+1SG
+  mismatch, 97 IAST mismatch, 98 छात्रम् typo) — recorded as approved with
+  note `P8-0 owner bulk approve`, backup `app.db.bak-20260908-p80`. Rounds
+  1–3 reviewed band-by-band first (72 rows); rounds 4–8 + 5 scenarios
+  approved literally per explicit owner confirmation. Result: challenges
+  33→**264** approved, scenarios 1→**6**, learner-reachable features
+  24→**33 of 37** (only ATMANEPADA + MASC/FEM/NEUT still zero; INDECL
+  cleared with 12, all four sandhi cleared).
+- **Packet id typo found while approving:** `review-queue-challenges` printed
+  `e0a49261440ab48b8` (17 chars) for DB id `e0a49261440b48b8` — approvals
+  matched by guarded exactly-1-prefix lookup, so nothing wrong was
+  approved; the generator's id rendering wants a look before the next
+  packet.
+- **Midnight-boundary flakes fixed (real §2.8 violation + 2 test-only).**
+  Past midnight IST (= previous day UTC) two tests failed: `test_job_stops_
+  after_ignored` and `test_first_session_today_excluded`. Cause: prod
+  `day2_return()` drew its cohort boundary with server-local
+  `date.today()` while activity dates are learner-local — now per-learner
+  (`learner_today`, UTC cutoff for the window). Tests anchored on UTC /
+  learner day instead of server date. Not a regression from any feature
+  work — a clean tree fails the same way at that hour.
+- **Next:** P17-2/17-4 re-render (spend pre-approved in the ~₹47 envelope;
+  needs `SARVAM_API_KEY` + owner go). Suite 609 pass + 1 pre-existing fail.
+
+## 2026-09-08 (learnsanskrit import) — 11 → 116 lessons
+
+- **Fetched the real guide** (shallow sparse checkout of
+  `sanskrit/learnsanskrit.org`, `content/` only — 192 files; SML lives
+  under `.txt` with `{macro}` markup, not `.sml`). Fixed the stager to
+  match reality: `.txt` scan, `{title}` macro titles, inline-macro unwrap
+  for readable drafts, `vyakarana/` + `lists/` skipped (sūtra track is
+  §6-gated; lists are not prose lessons), UNIT_MAP reordered so
+  distinctive units (voices/genders/compounds/kāraka) win over generic
+  `verb-1`/`present`/`dat` stubs.
+- **Dry-run → 105 sections** (u1=22, u2=52, u3=1, u4=1, u5=4, u6=3, u8=13,
+  u9=1, u10=6, u11=2; **u7=0 — the guide has no gender content**).
+  `guide/verbs/atmanepada.txt` and the transliteration note are empty
+  upstream (verified — genuinely 0 bytes, not a parse failure).
+- **Owner approved `--live`: 105 `[staged]` lessons written** (rank 900,  `provenance=learnsanskrit:<section>`, registry key from row one, no TTS,
+  idempotent). Lessons 11→116; every unit except U7 now has content.
+  Staged rows carry `examples: []` — engine verification runs when the
+  adaptation lands, not before. Suite green (609 + 1 pre-existing).
+- **Remaining curation (owner):** adapt-don't-copy rewrite of staged prose,
+  unit re-mapping (u2=52 is a bucket), U7 genders as original prose, then
+  re-rank off 900. Staged JSON at `results/imports/learnsanskrit.stage.json`.
+
+## 2026-09-08 (licence answers) — WordNet STOP, DCS GO
+
+- **Q2 ANSWERED — WordNet is unusable without written permission.** Verified
+  against the sources (not the doc's memory): the Sanskrit WordNet site
+  states **GPL 3.0 + GFDL, research-purposes-only**, commercial use by
+  written request; the IWN-En GitHub export (with Sanskrit synsets) is
+  **CC BY-NC-SA 4.0**. The doc's "CC BY-SA 4.0" was wrong in the
+  load-bearing direction (it omitted NonCommercial). Every variant is
+  NC/research-only + copyleft — cannot ship in a commercial app as-is.
+  Options for the owner: (a) write CFILT for commercial permission, or
+  (b) drop WordNet and build vocab-500 from DCS frequency + approved pool.
+  `CURRICULUM.md` Q2 corrected; P22-5 stays deferred regardless.
+- **Q3 ANSWERED — the GitHub DCS export suffices.** `cltk/sanskrit_text_dcs`
+  holds hundreds of verse-numbered texts; DCS is **CC BY 3.0 Unported**
+  (attribution only — verified on the impressum page). Caveats: the export
+  is IAST (convert via `lipi`, then Vidyut parses — both ₹0), and it is
+  classical-register, so laukika graded reading still needs Bharati readers
+  (per-item licence). No raw dump needed. `CURRICULUM.md` Q3 corrected.
+
+## 2026-09-08 (varnamala audio) � hardest-5 rendered, sa-IN still gated
+
+- **sa-IN beta has NOT landed on this key.** A 5-item probe with
+  `--sa-language sa-IN` 400s ("request beta access"); same 5 render fine
+  via hi-IN (aditya, ~0.5s/item, 26�34KB WAVs at
+  `results/sarvam-varnamala/hardest5/`). Re-run with sa-IN when the flag
+  lands � one flag, no code change. Spend was cent-fractions, inside the
+  pre-approved P17 envelope.
+- **Windows filename trap fixed.** Item ids were `varnamala:ri` and
+  `render_sarvam.py` writes `{item_id}.wav` � the colon put bytes in an
+  unreachable ADS behind a 0-byte `varnamala` file. Ids are now bare
+  (`tta`, `tta_example`); serve URLs derive back as
+  `/audio/varnamala/{id}.wav`. Full 95-item file regenerated at
+  `results/imports/varnamala-items.json`.
+- **Owner listening QA pending** on `ri/nga/nya/ssa/ah` (identical 0.597s
+  durations deserve suspicion � confirm they are distinct sounds, not
+  template hum). Full 90-clip batch waits on that verdict per the
+  listen-first rule.
+
+## 2026-09-08 (owner-gate sweep) � test green, Apple client, push/camera pkgs
+
+- **Suite fully green: 610 passed, 0 failed.** Fixed the pre-existing
+  `test_deploy_script_provisions_audio_bucket` failure (hardcoded
+  `C:/Users/AnshulKumar/...` path from another machine ? repo-relative
+  `Path(__file__).parents[2]/deploy/gcp/deploy.sh`). Strengthened, not
+  weakened: it now also asserts `APPLE_CLIENT_ID` + `apple-client-id` in
+  the deploy script, locking the secret wiring. Same-file change
+  (deploy.sh) is covered, not coincidental.
+- **Apple client wired end-to-end (code-complete, keys pending).**
+  `expo-apple-authentication@57.0.1` installed + plugin in app.json
+  (`expo config` resolves); `api.appleLogin()`, `store.appleLogin()`,
+  iOS-only Login button (availability-checked, cancel-safe, name
+  forwarded on first auth). Backend `/auth/apple` + deploy secret from
+  earlier. Remaining: Apple Services ID/bundle (owner) + live token
+  smoke + iOS device test. `tsc` 0, a11y 0/93.
+- **Push + camera packages installed, no behavior change.**
+  `expo-notifications@57.0.17` (push.ts already dynamic-requires it �
+  token flow activates in dev builds; EAS projectId still owner-side) and
+  `expo-camera@57.0.4` (PhotoCapture gates on `recogniser.ready` first,
+  so installing changes nothing visible until ML Kit lands).
+- **ML Kit: real package names found, deliberately NOT installed.**
+  The adapters reference `@react-native-ml-kit/digital-ink` and
+  `@react-native-mlkit/text-recognition` � both 404 on npm, i.e. the
+  seam names are aspirational. Verified real: `react-native-digital-ink`
+  1.1.2 (ink) and `@infinitered/react-native-mlkit-text-recognition`
+  5.0.1 (OCR). Installing either now would flip `ready:true` with no
+  native module linked (no prebuild yet) � a �2.11 silent degradation
+  (every recognise() throws ? eternal `unsure`). So: install + rewire +
+  prebuild + device proof happen as one later step with hardware, not
+  as a package.json-only change today.
+- **Still owner-gated:** Services ID + live Apple smoke, store/pricing,
+  Postgres/GCS cutover values, push projectId + transport keys, ML Kit
+  install+prebuild+device proof, `.riv` export, learnsanskrit curation,
+  WordNet permission (or DCS-vocab path), full audio batches, device
+  passes, submission.
+
+## 2026-09-08 (mitra gloss induction) — 61/500 auto, rest candidates
+
+- **Licence verified from the repo, and the doc was wrong.** CURRICULUM's
+  "largely CC0" describes the Sanskrit SOURCES; the English translations
+  live under `cc-by-sa/` (CC BY-SA) and `cc-by-nc-nd/` (NC+ND) trees, with
+  per-text licences in `final_catalog.tsv`. Used: 47 files with catalogue
+  licence exactly `cc0`, NC-ND tree excluded unconditionally (Agni-Purāṇa,
+  Tantrāloka), `cc0?` Vrindavana excluded. CURRICULUM row corrected.
+- **Rule: gloss induction only, never sentences.** ≤3-word English glosses
+  (short phrases, not copyrightable subject matter); no translation
+  sentence ever ships (that would be an SA adaptation). Victorian
+  translators are a gloss signal, never an authority (§4.4 again).
+- **New `scripts/mitra_gloss_stage.py`** (licence gate → single pass →
+  staged JSON, no DB writes) + 13 tests. Method fixes from the probe run,
+  which caught confident-wrong output the rule was designed to catch:
+  diacritic folding (Brahmā→brahma, else 'brahm' wins), sub-3-letter +
+  apostrophe drop (ch./v./K./o'er → 'k'/'r' garbage), plural merge with
+  capped ratio, and a two-tier rule with background flags (df>8):
+  auto-accept needs ≥5 pairs + ≥70% support (+≥90% for background
+  tokens, keeping uvāca→said while rejecting kṛtaṃ→said); the rest ship
+  as candidates with supports for human pick. `gloss` stays "" below bar.
+- **Result: 61 auto-accepted, ~90% spot-checked correct** (rājā→king,
+  jalaṃ→water, viṣaṃ→poison, śṛṇu→hear…), 439 with candidates/empty.
+  Known-wrong auto-accepts that curation must fix: vijayāya→heard,
+  gṛhītvā→kamsa, sūtaḥ→sauti (narrator-name dominance), lekhyaṃ→case,
+  brūhi→please. Auto-accept ≠ approved — curation reviews all 500.
+- Staged: `results/imports/dcs-vocab.glossed.json` (+ report). DCS stage
+  file untouched (audit trail). Next: curation maps gloss→row, topic→row,
+  gender/stem→row, then import.
+
+## 2026-09-08 (U8 curation) — first unit curated, whole-batch approved
+
+- **Packet first, DB second.** `results/u8-curation-packet.md` (4 taxonomy
+  rows + 3 lessons + re-map + parked scope + 4 reviewer flags) approved
+  whole-unit, then applied. Engine work preceded prose: measured 70
+  (dhatu, lakara) derivations to find the honest root set.
+- **Engine ground rules (derive_u8.txt).** SAFE: paṭh/bhū/pā/likh/khād/
+  smṛ/pat/cal. DROP with reasons: gam/han/dṛś/sthā/nī/sev/labh (empty),
+  vad (wrong root vandate), as (wrong pada), jñā (non-standard bhvādi
+  output for a class-9 root), dhāv (ātmanepada-only output — reserved
+  for U9), kṛ (gaṇa ambiguity). loṭ singulars derive -tāt, not classroom
+  paṭha → lessons drill the 2nd plural (standard everywhere).
+- **4 taxonomy features** (ranks 41–44: IMP.2PL/IMPF.3SG/FUT.1SG/FUT.3SG),
+  graded by derive_next proofs only — no analyzer involvement, no
+  frozen-analyzer conflict; no challenge bands reference them yet
+  (later content task). `STEP_EXERCISED_FEATURES` in p712 keeps their
+  0-challenge count from reading as a gap.
+- **3 lessons graduated in place** (105→102 staged, 11→14 curated):
+  imperative 2pl (paṭhata/likhata/calata), imperfect (apaṭhat/abhavat/
+  apibat), future (paṭhiṣyati/bhaviṣyati/paṭhiṣyāmi) — 9/9 examples
+  derive-exact, 6/6 steps round-trip correct, IAST lipi-derived.
+  Re-map: overview row u8→u2. Blessing/conditional/potential/distant
+  rows stay staged for future lakāra units (scope: first 4 lakāras).
+- **Two live bugs fixed along the way** (both from the bigger post-P8-0
+  pool, both with tests): graduate_u8 missing Lesson import (raised
+  before commit — two-phase discipline held, nothing half-written);
+  reader_passages._ensure double-insert on laukika+classical variants
+  (flush per add, like _seed_challenges). P23 importer test cleanup
+  scoped to its own provenances (§2.13 in test form — it was deleting
+  seed rows other tests need).
+- **Tests:** `tests/test_u8_graduation.py` (5) + reader flush test.
+  Next graduations must delete/replace stale steps when reusing rows
+  (rank collision skips new steps — U8 dodged it only because the seed
+  ran after graduation).
+
+## 2026-09-08 (U4 curation) — numbers without new taxonomy
+
+- **Packet first again** (`results/u4-curation-packet.md`, approved
+  whole-unit): dual / plural / plural-oblique, 3 lessons, zero taxonomy
+  changes (DU/NOM.PL/GEN.PL et al all pre-existed — U4 is the first unit
+  that needed nothing new).
+- **Engine ground rules (derive_u4.txt).** All 8 dual/plural nominal
+  forms derive-exact on a-stems; verbs agree on safe roots (paṭhataḥ/
+  paṭhanti, bhavataḥ/bhavanti); grid_fill + contrast round-trip correct.
+  One CUT: neuter dual — engine masculines it (phala→phalau for correct
+  phale), same kosha unanimity gap as the U7-note; gajau fallback used.
+  L3 grid (bālakasya/bālakayoḥ/bālakānām) verified before writing.
+- **Shape decision worth recording:** U4 steps are grid_fill+contrast,
+  not derive_next — the paradigm grid IS the number lesson, and blanks
+  are deliberately untargeted (targeting needs generator changes;
+  seed-fixed blanks round-trip regardless). U8's derive_next pattern
+  does not generalize to nominals; each unit picks the kind that teaches.
+- **Staged number-words row stays staged** (numeral vocab + P10
+  quarantine — confident numeral misparses make it ungradable content).
+- **Tests:** `tests/test_u4_lessons.py` (4, incl. grid-highlight pins).
+  GENERATED closed-world pin extended with DU/NOM.PL/GEN.PL. Lessons 119
+  (17 curated + 102 staged), steps 50. (The neuter-dual CUT pin from this
+  entry was superseded same day: Napumsaka works — see next entry.)
+
+## 2026-09-08 (complete-all: U5/U7/U9 + vocab import + QA forensics)
+
+- **Napumsaka catch (the day's best find).** Vidyut liṅga codes are
+  Pum/Stri/Napumsaka — "Neut" is NOT a member and `_enum_member` silently
+  defaulted to Pum, masculining every "neuter" probe (phala→phalau). The
+  U4 neuter-dual CUT was based on my own bad probe code; with the right
+  code, neuter works fully (phalam/phale/phalāni, 24-cell paradigm).
+  Fixed: U4-L1 gained phale + L3 fixed to Napumsaka (delete-reseed, §2.13
+  backup), `_enum_member` now warns loudly on unknown codes + test pins
+  it. Lesson: probe the interface contract (enum members), not just the
+  outputs. Feminine ā-stems are TRULY broken (Stri resolves, output is
+  masculine pattern) — no feminine surface forms anywhere, FEM is the
+  last zero-coverage feature.
+- **U7 genders (2 lessons, original prose):** NEUT (phala paradigm drills)
+  + MASC (labels, agreement rule, a-stem review). Feminine concept folded
+  into bodies; zero feminine forms shown (P22 precedent); test pins the
+  absence and FEM-unclaimed.
+- **U5 persons (2 lessons):** 18/18 9-cell exact on paṭh/bhū; 1st/2nd
+  singular + dual persons (3rd persons already in U2/U4). Gaṇa rows stay
+  staged (verb classes = future unit).
+- **U9 voices (1 lesson):** dhāv ātmanepada + paṭh parasmaipada —
+  ATMANEPADA's first coverage anywhere (P7-12's prescription: derive, do
+  not prompt). Staged endings row stays staged.
+- **Vocab import (27 rows, seeds are source of truth):** TOPIC_MAP (clean
+  fits only — verbs/numerals/names/epithets/weak-fits stay staged with
+  reasons) + GLOSS_FIXES (gods, unit-of-weight/hardware glosses) +
+  registry keys dcs (CC BY 3.0) + mitrasamgraha (BY-SA gloss signal).
+  Rank-after-curated, pool examples by the same gated rule, idempotent.
+  Two flush bugs found (autoflush-off sessions: seed + script assigned
+  duplicate ranks; _iast unbound when all curated rows exist) + tests.
+  Vocab 60→87.
+- **QA forensics:** 95 wavs, 95 distinct MD5s — template-hum ruled out at
+  byte level; equal durations are just short clips. `results/varnamala-
+  qa.md` carries the listening checklist (hardest-first, stop-on-FAIL).
+- **Release checklist:** `results/release-checklist.md` — every remaining
+  owner click with exact env/secret/command + verification.
+- **Stale-test discipline:** 2 failures were outdated expectations
+  invalidated by progress (PRES.1SG lesson exists now) — updated to
+  PRES.2SG, not weakened. Suite 650 green, 60 files.

@@ -4,9 +4,10 @@ sqlalchemy>=2.0
 alembic>=1.13
 pydantic>=2.6
 pydantic-settings>=2.2
-# Google Sign-in ID-token verification (accounts.google.com JWKS) — required by
-# POST /auth/google. PyJWT verifies the RS256 signature via Google's public
-# keys; cryptography is the JOSE RS256 backend.
+# Google + Apple Sign-in ID-token verification (accounts.google.com JWKS,
+# appleid.apple.com JWKS) — required by POST /auth/google and /auth/apple.
+# PyJWT verifies the RS256 (Google) / ES256 (Apple) signatures via the
+# vendors' public keys; cryptography is the JOSE backend for both.
 PyJWT>=2.8
 cryptography>=42.0
 vidyut==0.4.0

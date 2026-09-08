@@ -19,6 +19,9 @@
 #   GOOGLE_CLIENT_ID=...            optional — comma-separated Google OAuth
 #                                   client IDs (Android,iOS,Web) for /auth/google.
 #                                   Omit to disable Google login in prod.
+#   APPLE_CLIENT_ID=...             optional — bundle ID and/or Services ID for
+#                                   /auth/apple (Guideline 4.8: mandatory if
+#                                   Google login is offered). Omit to disable.
 #
 # (No HuggingFace token needed: vidyut's data downloads from GitHub releases,
 #  not HF, and nothing else in the codebase reads one — verified 2026-09-02.)
@@ -78,6 +81,7 @@ declare -A SECRETS=(
   [admin-token]=ADMIN_TOKEN
   [shabd-database-url]=DATABASE_URL
   [google-client-id]=GOOGLE_CLIENT_ID
+  [apple-client-id]=APPLE_CLIENT_ID
 )
 for name in "${!SECRETS[@]}"; do
   var="${SECRETS[$name]}"
@@ -137,7 +141,7 @@ gcloud run deploy "$SERVICE" \
   --timeout=120s \
   --allow-unauthenticated \
   --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}" \
-  --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest,GOOGLE_CLIENT_ID=google-client-id:latest"
+  --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest,GOOGLE_CLIENT_ID=google-client-id:latest,APPLE_CLIENT_ID=apple-client-id:latest"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────
 URL=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --format='value(status.url)')

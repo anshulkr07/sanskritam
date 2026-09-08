@@ -1,7 +1,9 @@
 # Sanskritam — Curriculum Plan
 
 **Date:** 2026-09-07
-**Status:** data strategy (no code). Documents what content exists, what is missing, where it comes from, and how it is stored.
+**Status:** data strategy. Documents what content exists, what is missing, where it comes from, and how it is stored.
+**Updated 2026-09-08:** open question #1 is ANSWERED (§10) and the 11-unit spine is now DATA, not prose — see
+[`LESSON_OVERHAUL.md`](LESSON_OVERHAUL.md) P23-1 (`units` table, migration `f1a2b3c4d5e6`).
 **Companion docs:** [`architecture.md`](architecture.md) (the spec), [`DECISIONS.md`](DECISIONS.md) (decisions), [`research/tech-research.md`](research/tech-research.md) (tech findings).
 
 ---
@@ -99,7 +101,7 @@ See §3.1 above. This is the computational engine and it is complete.
 
 | Source | License | What it has | What to extract |
 |---|---|---|---|
-| **learnsanskrit.org** (GitHub: sanskrit/learnsanskrit.org) | Open source | Complete beginner-to-advanced lessons, grammar explanations, exercises | Lesson text for each feature, curriculum structure, exercise patterns |
+| **learnsanskrit.org** (GitHub: sanskrit/learnsanskrit.org) | **CC BY 4.0** (guide); code public domain — verified 2026-09-08 | Complete beginner-to-advanced lessons, grammar explanations, exercises | Lesson text for each feature, curriculum structure, exercise patterns |
 | **Sanskrit WordNet** (IIT Bombay, CFILT) | CC BY-SA 4.0 | 66,930 words, 46,440 synsets, semantic relations | Vocabulary curriculum grouped by topic, word families, synonyms/antonyms |
 | **Digital Corpus of Sanskrit** (DCS, Heidelberg) | Open access, on GitHub (cltk/sanskrit_text_dcs) | 650,000+ lines of sandhi-split, morphologically analyzed text from 2,500+ years | Graded reading material, example sentences with full parse, frequency data |
 | **GRETIL** (Göttingen) | Open access | Machine-readable Sanskrit texts from all periods | Raw text corpus for the classical index (RAG) |
@@ -112,7 +114,7 @@ See §3.1 above. This is the computational engine and it is complete.
 |---|---|---|---|
 | **DCS** | Open access | 4.8M tagged words, full parse | Classical index (grammar, śloka) |
 | **GRETIL** | Open access | Full texts | Classical index (epics, śāstra) |
-| **Mitrasaṃgraha** | Largely CC0 | 391K Sanskrit-English pairs | Translation reference |
+| **Mitrasaṃgraha** | Sanskrit sources mostly CC0; English translations CC BY-SA (2 files BY-NC-ND — excluded) | ~390K pairs, per-text licences in `final_catalog.tsv` | Gloss induction ONLY (≤3-word glosses; never ship translation sentences) |
 | **Samskrita Bharati readers** | Internet Archive (verify per item) | Graded laukika stories | Laukika index (conversation, challenges) |
 | **Balamodini stories** | Internet Archive (verify per item) | Simple stories | Laukika index (beginner reading) |
 
@@ -134,12 +136,12 @@ This is the "where does it live" answer. It is derived from architecture.md §2 
 
 | What | Size | Where | Why |
 |---|---|---|---|
-| Lessons (text, examples, metadata) | KBs—MBs | SQLite → Postgres, `lesson` table | Queryable, versionable, retunable without app release |
-| Unit structure (spine ordering) | KBs | DB, `unit` / `unit_lesson` tables | The curriculum is retuned constantly in year one |
-| Challenges (seed + generated) | KBs | DB, `challenge` table | Already exists; will grow with samāsa/kāraka content |
+| Lessons (text, examples, metadata) | KBs—MBs | SQLite → Postgres, `lessons` table | Queryable, versionable, retunable without app release |
+| Unit structure (spine ordering) | KBs | DB, `units` table (`lessons.unit_id` FK; audited 2026-09-08 — no `unit_lesson` join) | The curriculum is retuned constantly in year one |
+| Challenges (seed + generated) | KBs | DB, `challenges` table | Already exists; will grow with samāsa/kāraka content |
 | Dialogue graph (conversation nodes) | KBs | DB, `dialogue_*` tables | Already exists |
-| Vocabulary (word lists) | KBs—MBs | DB, `word` / `word_list` tables | Frequency-sorted, topic-grouped |
-| Graded reading (sentences with parse) | KBs—MBs | DB, `reader_passage` table | Indexed by difficulty, register, features exercised |
+| Vocabulary (word lists) | KBs—MBs | DB, `vocab_words` table | Frequency-sorted, topic-grouped |
+| Graded reading (sentences with parse) | KBs—MBs | DB, `reader_passages` table | Indexed by difficulty, register, features exercised |
 
 **Why not in the APK:** The curriculum changes constantly in year one. The architecture already locks the learner model server-side (§8) specifically so retuning doesn't need an app release. The same logic applies to lesson content.
 
@@ -311,9 +313,9 @@ These are locked decisions from architecture.md, carried forward here:
 
 | # | Question | Blocks |
 |---|---|---|
-| 1 | Can we use learnsanskrit.org content directly (what exact license, what format is the source in)? | Lesson text extraction |
-| 2 | Sanskrit WordNet: is the CC BY-SA 4.0 compatible with our use? The data is exported from IIT Bombay's instance; verify the exact license on the exported data. | Vocabulary curriculum |
-| 3 | DCS corpus: is the GitHub export (cltk/sanskrit_text_dcs) complete enough for graded reading extraction, or do we need to process the raw DCS dump? | Graded reading |
+| ~~1~~ | **ANSWERED 2026-09-08.** The guide states *"This page is available under a CC BY 4.0 International license"*; the site code is public domain. Source format is **SML**, a custom lightweight markup, under `content/`. ~100 pages: 17 core lessons + ~77 topic sections + appendices. **Usable with attribution** — and the attribution surface must ship first (`Settings.tsx`'s "Licences and credits" row is a no-op today). See `LESSON_OVERHAUL.md` §3 and P23-4. | ~~Lesson text extraction~~ — unblocked |
+| 2 | **ANSWERED 2026-09-08 — do NOT ingest without written permission.** The doc's "CC BY-SA 4.0" was wrong. The Sanskrit WordNet site states the WordNet under **GNU GPL 3.0**, the lexicon under **GNU FDL**, "freely available for **research purposes only**", commercial use by written request; the IWN-En GitHub export (with Sanskrit synsets) is **CC BY-NC-SA 4.0**. Every variant is NonCommercial/research-only + copyleft/share-alike — unusable in a commercial app as-is. Options: (a) write CFILT (pb@cse.iitb.ac.in) for commercial permission, or (b) drop WordNet and build vocab-500 from DCS frequency (CC BY 3.0, Q3) + the approved pool. Owner decision. | Vocabulary curriculum |
+| 3 | **ANSWERED 2026-09-08 — yes, the GitHub export suffices.** `cltk/sanskrit_text_dcs` holds hundreds of verse-numbered texts; DCS itself is **CC BY 3.0 Unported** (attribution only, commercial OK — impressum, Hellwig). Two caveats: the export is **IAST transliteration**, so convert IAST→Devanāgarī via `lipi` (deterministic, ₹0) before Vidyut parses; and it is **classical register** — laukika graded reading still needs Samskrita Bharati readers (verify licence per item). No raw dump needed. | Graded reading |
 | 4 | Samāsa: does Vidyut's cheda module segment compounds reliably enough for auto-grading samāsa challenges? The cheda is "experimental" per tech-research.md. | Samāsa unit |
 | 5 | Kāraka: does the kosha tag kāraka roles, or only vibhakti? If not, kāraka grading requires a new Vidyut feature or a heuristic. | Kāraka unit |
 | 6 | Lesson internationalization: bridge languages are English + Hindi at launch (§1). Do lessons need Hindi versions from day one, or is English-first acceptable? | Lesson authoring |
@@ -327,9 +329,12 @@ These are locked decisions from architecture.md, carried forward here:
 |---|---|---|
 | Engine (Vidyut) | Done | Nothing — it's already best-in-class |
 | Feature taxonomy | Good skeleton, 2 gaps | Add samāsa and kāraka features |
-| Lesson content | Missing | Extract from learnsanskrit.org, structure per unit |
-| Unit structure | Designed here | Implement the 11-unit spine |
-| Vocabulary | Missing | Extract from Sanskrit WordNet + DCS frequency |
-| Graded reading | Missing | Extract from DCS, grade by complexity |
+| Lesson content | **22 lessons (Units 1–5 + U7–U9 + U6 sandhi, owner-curated 2026-09-08) in 65 gradable steps** | A lesson is a sequence of steps, not prose — `LESSON_OVERHAUL.md` (P23/U15, landed 2026-09-08); packets: `results/u4/u5/u7/u8/u9-curation-packet.md` |
+| Unit structure | **Landed 2026-09-08** | `units` table + `seeds/units.py`; `Unit.layer` carries §6.1's three layers; Path renders units |
+| Exercise generation | **Landed 2026-09-08** | `services/exercise_gen.py`: 7 engine-backed kinds, no table, no review queue — the engine that poses marks |
+| Review schedule | **Landed 2026-09-08** | `review_items` (item-level due dates, stability, lapses); Home shows the honest due count |
+| Licence registry | **Landed 2026-09-08** | `content_sources` (5 rows); every content row points at a key; `GET /licences` + screen |
+| Vocabulary | Shipped (87 words: 60 original + 27 DCS, all with glosses) + 439 staged candidates | Curation continues per-word (WordNet STOP — Q2; Mitrasaṃgraha gloss-only) |
+| Graded reading | Seeded (3 tiers from servable content) | Extract from DCS, grade by complexity |
 | Audio | Pipeline exists | Pre-render lessons as they are authored |
 | Corpus (RAG) | Deferred | Flat file in memory now; pgvector + epic ingestion later |

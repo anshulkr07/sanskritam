@@ -14,7 +14,8 @@ is a tripwire for "look closer", not a launch gate.
 
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
+from types import SimpleNamespace
 
 from sqlalchemy.orm import Session
 
@@ -55,11 +56,26 @@ def day2_return(db: Session, cohort_days: int = 30) -> dict:
     the denominator — they have not had their day 2 yet. Only learners whose
     first date is within the last ``cohort_days`` are counted, so the number
     describes the current product, not history.
+
+    "Today" is per-learner (§2.8): a global server date mis-includes a
+    learner whose own timezone is still yesterday (and vice versa) whenever
+    the server sits across midnight from them. The window cutoff stays on
+    UTC — it is approximate by design.
     """
-    today = date.today().isoformat()
-    cutoff = (date.today() - timedelta(days=cohort_days)).isoformat()
+    utc_today = datetime.now(timezone.utc).date()
+    cutoff = (utc_today - timedelta(days=cohort_days)).isoformat()
     first = first_session_dates(db)
-    eligible = {lid: d for lid, d in first.items() if cutoff <= d < today}
+    timezones = dict(
+        db.query(Learner.id, Learner.timezone)
+        .filter(Learner.id.in_(list(first))).all()
+    ) if first else {}
+
+    def _today_of(learner_id: str) -> str:
+        return learner_today(SimpleNamespace(
+            timezone=timezones.get(learner_id) or "UTC"))
+
+    eligible = {lid: d for lid, d in first.items()
+                if cutoff <= d < _today_of(lid)}
     if not eligible:
         return {"cohort": 0, "returned": 0, "day2_return": 0.0}
     active_days: dict[str, set[str]] = {}

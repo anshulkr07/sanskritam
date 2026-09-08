@@ -25,12 +25,14 @@
 //     (§3.4). The content swap is what matters, never blocked by the flip.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
+import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
+import { useQuery } from "../hooks/useQuery";
+import { useTypeScale } from "../hooks/useTypeScale";
 import { useAsk } from "../ask/AskProvider";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState, Button } from "../components/ui";
@@ -60,15 +62,12 @@ function ReaderSkeleton() {
 }
 
 export default function ReaderScreen() {
-  const [verses, setVerses] = useState<Shloka[] | null>(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { sized } = useTypeScale();
   const [mode, setMode] = useState<ReaderMode>("verses");
   const [tier, setTier] = useState<number>(1);
   // P21-4: canon filter — null = whole corpus; a slug narrows the index to
   // that text's verses (matched by ref_prefixes). The reading posture flips
   // through the FILTERED list, so Prev/Next stay contiguous.
-  const [canon, setCanon] = useState<CanonText[]>([]);
   const [canonFilter, setCanonFilter] = useState<string | null>(null);
   // null = index posture; set = reading posture at that verse index.
   const [pageIndex, setPageIndex] = useState<number | null>(null);
@@ -77,10 +76,10 @@ export default function ReaderScreen() {
   const reduced = useReducedMotion();
   const { open } = useAsk();
 
-  const load = useCallback(() => {
-    setLoading(true);
-    setError(false);
-    const req =
+  // Data (Track C4): cached 60s, deduped, never setState after unmount.
+  const versesQ = useQuery<Shloka[]>(
+    `reader-${mode}-${tier}`,
+    () =>
       mode === "verses"
         ? api.listShlokas()
         : api.readerTier(tier).then((rows) =>
@@ -97,26 +96,17 @@ export default function ReaderScreen() {
                 audio_url: "",
               }),
             ),
-          );
-    req
-      .then(setVerses)
-      .catch(() => {
-        setError(true);
-        setVerses(null);
-      })
-      .finally(() => setLoading(false));
-  }, [mode, tier]);
-
-  useEffect(load, [load]);
+          ),
+  );
+  const verses = versesQ.data;
+  const loading = versesQ.loading;
+  const error = versesQ.failed;
+  const load = versesQ.retry;
 
   // The canon catalogue loads once, best-effort: a failure here never blocks
   // reading (the full index still shows; the filter row just stays hidden).
-  useEffect(() => {
-    api
-      .canon()
-      .then((d) => setCanon(d.texts ?? []))
-      .catch(() => setCanon([]));
-  }, []);
+  const canonQ = useQuery<{ texts: CanonText[] }>("canon", api.canon);
+  const canon = canonQ.data?.texts ?? [];
 
   const switchMode = useCallback((m: ReaderMode) => {
     setPageIndex(null);
@@ -245,116 +235,130 @@ export default function ReaderScreen() {
     );
   }
 
-  // INDEX posture — the list of collapsed cards.
+  // INDEX posture — the list of collapsed cards (FlatList: the corpus
+  // grows with every canon import; the reading posture below is untouched).
+  const renderVerse = useCallback(
+    ({ item: v, index: i }: { item: Shloka; index: number }) => {
+      const firstLine = v.devanagari.split(/।\s*/)[0] || "";
+      return (
+        <Pressable
+          key={v.id}
+          onPress={() => {
+            setPageIndex(i);
+            setSelected(null);
+            setFlipDir("forward");
+          }}
+          style={({ pressed }) => [styles.verseCard, pressed && styles.verseCardPressed]}
+          accessibilityRole="button"
+          accessibilityHint="Opens the verse as a page"
+          accessibilityLabel={`${v.source_ref}. ${firstLine}।`}
+        >
+          <View style={styles.cardText}>
+            <Text style={styles.cardSource}>{v.source_ref}</Text>
+            <Text style={[styles.cardPreview, script("bold")]} numberOfLines={1}>
+              {firstLine}।
+            </Text>
+          </View>
+          <View style={styles.cardIcon}>
+            <Ionicons name="book" size={16} color={color.saffron} />
+          </View>
+        </Pressable>
+      );
+    },
+    [],
+  );
+
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.title}>Read</Text>
-        <Text style={styles.subtitle}>
-          Tap a verse to read it; in the page, tap any word or flip to the next.
-        </Text>
+      <FlatList
+        data={shown ?? []}
+        keyExtractor={(v) => v.id}
+        renderItem={renderVerse}
+        contentContainerStyle={styles.body}
+        initialNumToRender={12}
+        ListHeaderComponent={
+          <View>
+            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
+            <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
+              Tap a verse to read it; in the page, tap any word or flip to the next.
+            </Text>
 
-        {/* U14-5: canon vs graded — one screen, two corpora. */}
-        <View style={styles.modeRow}>
-          {(["verses", "graded"] as const).map((m) => {
-            const active = mode === m;
-            return (
-              <Pressable
-                key={m}
-                onPress={() => switchMode(m)}
-                style={[styles.modeChip, active && styles.modeChipActive]}
-                accessibilityRole="button"
-                accessibilityLabel={m === "verses" ? "Canon verses" : "Graded reading"}
-                accessibilityState={{ selected: active }}
-              >
-                <Text style={[styles.modeText, active && styles.modeTextActive]}>
-                  {m === "verses" ? "Verses" : "Graded"}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
-        {mode === "graded" && (
-          <View style={styles.modeRow}>
-            {TIERS.map((t) => {
-              const active = tier === t.tier;
-              return (
-                <Pressable
-                  key={t.tier}
-                  onPress={() => switchTier(t.tier)}
-                  style={[styles.modeChip, active && styles.modeChipActive]}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Tier ${t.tier}: ${t.label}`}
-                  accessibilityState={{ selected: active }}
-                >
-                  <Text style={[styles.modeText, active && styles.modeTextActive]}>{t.label}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        )}
-
-        {mode === "verses" && canon.some((t) => t.verses_imported > 0) && (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.canonRow}>
-            <Pressable
-              onPress={() => switchCanon(null)}
-              style={[styles.modeChip, !canonFilter && styles.modeChipActive]}
-              accessibilityRole="button"
-              accessibilityLabel="All texts"
-              accessibilityState={{ selected: !canonFilter }}
-            >
-              <Text style={[styles.modeText, !canonFilter && styles.modeTextActive]}>All</Text>
-            </Pressable>
-            {canon
-              .filter((t) => t.verses_imported > 0)
-              .map((t) => {
-                const active = canonFilter === t.slug;
+            {/* U14-5: canon vs graded — one screen, two corpora. */}
+            <View style={styles.modeRow}>
+              {(["verses", "graded"] as const).map((m) => {
+                const active = mode === m;
                 return (
                   <Pressable
-                    key={t.slug}
-                    onPress={() => switchCanon(active ? null : t.slug)}
+                    key={m}
+                    onPress={() => switchMode(m)}
                     style={[styles.modeChip, active && styles.modeChipActive]}
                     accessibilityRole="button"
-                    accessibilityLabel={`${t.title_en}, ${t.verses_imported} verses`}
+                    accessibilityLabel={m === "verses" ? "Canon verses" : "Graded reading"}
                     accessibilityState={{ selected: active }}
                   >
-                    <Text style={[styles.modeText, active && styles.modeTextActive, script("semibold")]}>
-                      {t.title_sa} · {t.verses_imported}
+                    <Text style={[styles.modeText, active && styles.modeTextActive]}>
+                      {m === "verses" ? "Verses" : "Graded"}
                     </Text>
                   </Pressable>
                 );
               })}
-          </ScrollView>
-        )}
+            </View>
+            {mode === "graded" && (
+              <View style={styles.modeRow}>
+                {TIERS.map((t) => {
+                  const active = tier === t.tier;
+                  return (
+                    <Pressable
+                      key={t.tier}
+                      onPress={() => switchTier(t.tier)}
+                      style={[styles.modeChip, active && styles.modeChipActive]}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Tier ${t.tier}: ${t.label}`}
+                      accessibilityState={{ selected: active }}
+                    >
+                      <Text style={[styles.modeText, active && styles.modeTextActive]}>{t.label}</Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            )}
 
-        {shown!.map((v, i) => {
-          const firstLine = v.devanagari.split(/।\s*/)[0] || "";
-          return (
-            <Pressable
-              key={v.id}
-              onPress={() => {
-                setPageIndex(i);
-                setSelected(null);
-                setFlipDir("forward");
-              }}
-              style={({ pressed }) => [styles.verseCard, pressed && styles.verseCardPressed]}
-              accessibilityRole="button"
-              accessibilityHint="Opens the verse as a page"
-              accessibilityLabel={`${v.source_ref}. ${firstLine}।`}
-            >
-              <View style={styles.cardText}>
-                <Text style={styles.cardSource}>{v.source_ref}</Text>
-                <Text style={[styles.cardPreview, script("bold")]} numberOfLines={1}>
-                  {firstLine}।
-                </Text>
-              </View>
-              <View style={styles.cardIcon}>
-                <Ionicons name="book" size={16} color={color.saffron} />
-              </View>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
+            {mode === "verses" && canon.some((t) => t.verses_imported > 0) && (
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.canonRow}>
+                <Pressable
+                  onPress={() => switchCanon(null)}
+                  style={[styles.modeChip, !canonFilter && styles.modeChipActive]}
+                  accessibilityRole="button"
+                  accessibilityLabel="All texts"
+                  accessibilityState={{ selected: !canonFilter }}
+                >
+                  <Text style={[styles.modeText, !canonFilter && styles.modeTextActive]}>All</Text>
+                </Pressable>
+                {canon
+                  .filter((t) => t.verses_imported > 0)
+                  .map((t) => {
+                    const active = canonFilter === t.slug;
+                    return (
+                      <Pressable
+                        key={t.slug}
+                        onPress={() => switchCanon(active ? null : t.slug)}
+                        style={[styles.modeChip, active && styles.modeChipActive]}
+                        accessibilityRole="button"
+                        accessibilityLabel={`${t.title_en}, ${t.verses_imported} verses`}
+                        accessibilityState={{ selected: active }}
+                      >
+                        <Text style={[styles.modeText, active && styles.modeTextActive, script("semibold")]}>
+                          {t.title_sa} · {t.verses_imported}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+              </ScrollView>
+            )}
+          </View>
+        }
+        accessibilityLabel="Verses"
+      />
     </SafeAreaView>
   );
 }

@@ -43,8 +43,14 @@ SQLite-backed, simple:
 
 ### 3. Turn loop — `backend/app/services/turn_loop.py`
 
+> **Implemented with deltas (audited 2026-09-08):** code is `async
+> process_turn(...)`, schemas live in-router (not `schemas.py`), plus
+> `edge_router` (LLM), `meta_intent`, and quota extensions not in this spec.
+> Default turn is now LLM (`mode='llm'`, owner decision 2026-09-08) with the
+> graph path as fallback — see `architecture.md` §12.
+
 ```python
-def process_turn(db, learner, session, transcript, edge_id=None) -> dict
+async def process_turn(db, learner, session, transcript, edge_id=None) -> dict
 ```
 
 Logic, in order:

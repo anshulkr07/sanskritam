@@ -103,10 +103,21 @@ def _find_dhatu(devanagari: str):
 
 
 def _enum_member(enum_cls, name: str, default):
-    """Resolve an enum member by name, defaulting when absent/invalid."""
+    """Resolve an enum member by name, defaulting when absent/invalid.
+
+    The fallback LOUDLY warns: a misspelled code (e.g. linga="Neut" —
+    vidyut's member is "Napumsaka") otherwise silently derives the wrong
+    gender/pada/lakāra, and content built on it teaches wrong Sanskrit.
+    Found 2026-09-08 via phala→phalau (correct: phale)."""
+    import logging
+
     if not name or enum_cls is None:
         return default
     member = getattr(enum_cls, name, None)
+    if member is None:
+        logging.getLogger("shabd.prakriya").warning(
+            "unknown %s %r — defaulting (check vidyut member names)",
+            getattr(enum_cls, "__name__", enum_cls), name)
     return member if member is not None else default
 
 

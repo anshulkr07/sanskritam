@@ -54,9 +54,9 @@ stayed green, because tests build a fresh database from migrations. Backed up
 and upgraded 2026-09-05; **§3 now requires `alembic current == heads` as part
 of the verification loop.** A green suite does not mean a working app.
 
-**The bottleneck has not moved.** 5 scenarios and **231** challenges are
-sitting in `pending` — more than a week ago, not fewer. Nothing downstream
-moves until someone reviews them. That is **P8-0**, and it is an owner task.
+**The bottleneck moved 2026-09-08.** P8-0 cleared: 0 pending anywhere
+(264 challenges + 6 scenarios approved). What is gated on content now is
+curation depth (Units 4–11 lessons, vocab/gloss/topic mapping), not review.
 
 **New this pass:** **P7-13** (49% of challenge IAST is wrong and `lipi` fixes
 it for ₹0), and three new phases — **P19** ask-anywhere help, **P20** learning
@@ -68,35 +68,43 @@ to write the script, **P21** the readable canon. See §4.
 
 | | |
 |---|---|
-| Backend tests | **557 pass** (1 env-gated `test_tts_502_refunds_quota` needs `SARVAM_API_KEY`; 556 green without it) |
+| Backend tests | **650 passed** (4 new u579 + 5 vocab-dcs; 1 env-gated `test_tts_502_refunds_quota` needs `SARVAM_API_KEY`; the pre-existing `test_deploy_script_provisions_audio_bucket` hardcoded-path failure was fixed 2026-09-08 — repo-relative path + Apple-secret assertions) |
 | Mobile typecheck | **0 errors** |
-| Alembic head | `e2f3a4b5c6d7` — **applied**; verify with `alembic current` |
+| Alembic head | `b4c6d8e0f1a2` — **applied** (Apple `apple_sub`; Spec E `varna_progress` below it); verify with `alembic current` |
 | Engines live | all four — prakriya, chandas, sandhi, cheda (+ kosha, lipi) |
 | Client | six tabs + drawer; pronunciation, progress, metrics, **reader**, **lessons/vocab** wired |
 | Deploy | Cloud Run (`shabd-api`, asia-south1); the app points at it |
 
 ### Content in the DB
 
+> Audited 2026-09-08: seed files prove the servable shapes (`challenges.py`
+> ~30 seeds, `shlokas.py` ~96, `features.py` 47 = 37 + 10 taxonomy,
+> `units.py` 11, `lessons.py` 11, `lesson_steps.py` 35, `licences.py` 5,
+> `vocab.py` 60, `canon.py` 12 texts). Row/approval counts below need a live
+> DB run (`alembic current`, seed counts) — re-verify before quoting.
+> **P8-0 cleared 2026-09-08 (owner bulk approve): 0 pending anywhere.**
+
 | | rows | approved & servable |
 |---|---|---|
-| Scenarios | 6 | **1** — 5 still `pending` since 2026-09-03 |
-| Dialogue nodes | 100 | 30 |
-| **Challenges** | **264, all distinct** | **33** — **231 `pending`** |
+| Scenarios | 6 | **6** — queue cleared 2026-09-08 |
+| Dialogue nodes | 100 | **100** (99 rendered 2026-09-08, 1 placeholder skipped) |
+| **Challenges** | **264, all distinct** | **264** — queue cleared + rendered 2026-09-08 |
 | Features in the pool | — | **33 of 37** (+10 samāsa/kāraka taxonomy-only, unclaimed by design) |
-| Features a learner can reach | — | **24 of 37** — see below |
+| Features a learner can reach | — | **33 of 37** — only `ATMANEPADA · MASC · FEM · NEUT` still zero (was 24) |
 | Śloka | **120** (96 + Gītā 2.1–6 + Īśopaniṣad 18; registers classical + vedic) | the well refilled |
 | Daily words | **30** | the well refilled |
-| Lessons | **10** (Units 1–3, original prose, Vidyut-verified examples) | served at `GET /lessons/{feature_id}` |
+| Lessons | **124** (22 curated Units 1–5 + 7–9 + sandhi + **102 `[staged]` learnsanskrit adaptations, rank 900, curation pending) + **65 gradable steps** (curated only) | served as steps at `GET /lessons/{id}/steps`, attempted at `POST .../attempt` |
 | Vocab | **60** (10 topics; 7/60 with pool examples, rest `examples: []`) | `GET /vocab/{topic}` |
 | Graded reading | **3 tiers** (from servable content; DCS import deferred) | `GET /reader/{tier}` |
-| Pre-rendered audio | 29 nodes · 33 challenges | every approved row is rendered |
+| Pre-rendered audio | 99 nodes · 264 challenges · 95 varnamala clips | every approved row is rendered (~₹21 in-envelope 2026-09-08) |
 | **IAST correctness** | **0 mismatches** (P7-13 backfilled 130/264 + 9/96; invariant test guards) | **DONE 2026-09-06** |
 
-⚠ **Coverage went 24 → 33 in the pool and 24 → 24 for learners.** Nine
-features are exercised but have **zero approved rows** — `VOC.SG · GEN.PL ·
-LOC.PL · PRES.2PL · IMP.2SG` and **all four sandhi types.** The sandhi
-generator ran and every sentence it produced is invisible. That is not a
-generation problem; it is P8-0.
+⚠ **Coverage went 24 → 33 in the pool and 24 → 33 for learners (P8-0 cleared
+2026-09-08).** Only four features still have zero approved rows —
+`ATMANEPADA` (no ātmanepada verb in the pool: content gap, derive from
+`prakriya`) and `MASC · FEM · NEUT` (deliberately unclaimed: kosha liṅga not
+unanimous — §2.1 escalation stands). `INDECL` cleared with 12 approved; all
+four sandhi types cleared (15 generated rows now servable).
 
 ---
 
@@ -129,21 +137,25 @@ D:\Projects\Shabd\
 │   │   ├── routers/         health auth me challenges attempts shlokas
 │   │   │                    grammar admin pipeline speech conversation
 │   │   │                    authoring progress pronunciation daily_word
+│   │   │                    lessons exercises licences review varnamala
 │   │   ├── services/        sarvam turn_loop authoring edge_router explainer
 │   │   │                    meta_intent session_store quota metrics
 │   │   │                    pronunciation localtime storage tutor
 │   │   │                    prakriya chandas sandhi word_order
-│   │   │                    varna_distance daily_word
+│   │   │                    varna_distance daily_word exercise_gen review
 │   │   └── seeds/           challenges(37) dialogue(1) shlokas(96)
-│   │                        varnamala features briefs(50) daily_words(30)
+│   │                        varnamala(49 ids + contrast groups) features briefs(50) daily_words(30)
+│   │                        units(11) lessons(11) lesson_steps(35)
+│   │                        licences(5: the registry)
 │   ├── vidyut-data/         78 MB, gitignored, auto-downloaded, all engines used
-│   ├── migrations/versions/ head: e5f6a7b8c9da
+│   ├── migrations/versions/ head: b4c6d8e0f1a2 (Apple apple_sub; Spec E varna_progress below)
 │   ├── results/authoring/   per-brief authoring stats
 │   ├── app/.authoring-cache/  draft cache keyed by brief hash
-│   ├── tests/               35 modules, 434 tests
+│   ├── tests/               60 test modules, 650 collected (2026-09-08 build: + u579 + vocab-dcs)
 │   └── scripts/             author_batch challenge_batch render_sarvam
 │                            build_render_items review_scenarios
-│                            verify_live benches diags
+│                            import_learnsanskrit build_varnamala_items dcs_vocab_stage
+│                            verify_live benches diags backup_db
 └── mobile/                  Expo + React Native — see UI_HANDOVER.md
 ```
 
@@ -463,21 +475,19 @@ model was asked for a transliteration that `lipi` computes locally and
 correctly for ₹0. → **P7-13**, and it lands before P20, whose entire audience
 reads the IAST because it cannot yet read the Devanagari.
 
-### The bottleneck is still the review queue
+### The bottleneck was the review queue — cleared 2026-09-08
 
 ```
-pending scenarios     5    (since 2026-09-03)
-pending challenges  231    (was 216 — it grew)
+pending scenarios     0    (was 5 since 2026-09-03 — owner bulk approve)
+pending challenges    0    (was 231 — owner bulk approve, rounds 1–3 band-reviewed)
 ```
 
-Everything waits here: the Talk tab still has **one** dialogue, P17-2 can only
-render 30 of 100 nodes, P7-5 has no approved spine, and P8 cannot start.
-
-**And it is now costing coverage, not just volume.** Nine features have rows in
-the pool and zero approved: `VOC.SG · GEN.PL · LOC.PL · PRES.2PL · IMP.2SG` and
-all four sandhi types. P7-12 generated the sandhi challenges from
-`services/sandhi.py` exactly as specified, for ₹0 — and no learner can reach a
-single one of them. **The pipeline is now two weeks ahead of the reviewer.**
+Owner approved the whole queue (including 6 rows flagged likely-wrong,
+recorded with note `P8-0 owner bulk approve`, backup
+`app.db.bak-20260908-p80`). Talk has **six** dialogues, P17-2/17-4 rendered
+everything the same day (264 challenges · 99 nodes, ~₹21 in-envelope), and
+learner-reachable features went 24 → **33 of 37**. The pipeline is no longer
+ahead of the reviewer — there is nothing left to review.
 
 ### The three new phases, and why they are ordered this way
 
@@ -718,7 +728,9 @@ Dry-run default, idempotent, ~₹3.31 for the 30 approved seed nodes.
 
 ⚠ **29 of 100 nodes are rendered** — correct, because the five restored
 scenarios are still `pending`. **This phase is not finished until the review
-pass runs**, and then it is one more `--live` call.
+pass runs**, and then it is one more `--live` call. **Done 2026-09-08:**
+review pass ran (P8-0 cleared), 99/100 nodes rendered (1 placeholder
+skipped), 429-retried to zero bare, ~₹5.6 in-envelope.
 
 ## P17-3 · Serve it, and mark the source — DONE 2026-09-05
 
@@ -733,7 +745,8 @@ for unrendered nodes; the backend records `source="prerendered"` on the
 P7-11 gate; `render_app_audio.py` takes a model so one script and one
 skip-already-rendered discipline serves both pools. **All 33 approved
 challenges are rendered.** The other 216 render themselves the moment P8-0
-approves them.
+approves them — **done 2026-09-08: 264/264 rendered (~₹15 in-envelope,
+429-retried to zero bare).**
 
 ---
 
@@ -746,20 +759,24 @@ console) all shipped. Client detail: `UI_HANDOVER.md` U9.
 
 ---
 
-# PHASE P8 — First users
+# PHASE P8 — First users — UNBLOCKED 2026-09-08 (P8-0 cleared)
 
-> **This is the next milestone, and it is no longer an engineering problem.**
-> The pipeline builds content faster than anyone reviews it: **5 scenarios and
+> ~~This is the next milestone, and it is no longer an engineering problem.~~
+> ~~The pipeline builds content faster than anyone reviews it: **5 scenarios and
 > 216 challenges are sitting in `pending`.** Ten strangers cannot be invited
-> into a product whose Talk tab has one dialogue.
+> into a product whose Talk tab has one dialogue.~~ The queue cleared
+> 2026-09-08 (owner bulk approve): 6 scenarios, 264 challenges, Talk has six
+> dialogues with audio. What gates inviting strangers now is P8-3/P8-5
+> release readiness (Apple Services ID, store, Postgres/GCS cutover), not
+> content volume.
 
-**Blocked by:** the review queue (P8-0), not by code.
+**Blocked by:** release readiness (P8-3/P8-5 owner keys), not by code or content.
 
-## P8-0 · Clear the review queue — the actual blocker
+## P8-0 · Clear the review queue — DONE 2026-09-08
 
-**Why:** everything downstream of "is there enough to do" waits on this. It
-gates the Talk tab's content, P17-2's remaining 71 nodes, P17-4's remaining 216
-challenges, and P7-5's path. It has been outstanding since 2026-09-03.
+**Why it mattered:** everything downstream of "is there enough to do" waited
+on this. It gated the Talk tab's content, P17-2's remaining 71 nodes,
+P17-4's remaining 216 challenges, and P7-5's path. It stood since 2026-09-03.
 
 **This is an owner task, not an agent task** — the standing rule stands: the
 Vidyut gate checks grammar, a human checks whether the line is worth saying.
@@ -1661,7 +1678,7 @@ parses through the engine · licence recorded per source · additive seed.
 
 1. The task's stated **Acceptance** passes.
 2. `./.venv/Scripts/python.exe -m pytest -q` (from `backend/`) at or above
-   **557**.
+   **650** (60 modules, 2026-09-08 build).
 3. `cd mobile ; npx tsc --noEmit` → **0 errors**.
 3b. **`alembic current` equals `alembic heads`.** A written migration is not
    a run migration, and the suite cannot tell the difference (§3).
@@ -1750,7 +1767,7 @@ parses through the engine · licence recorded per source · additive seed.
 All backend commands run from backend/ (§2.10), with UTF-8 (§3).
 PowerShell 5.1 has no &&.
 
-Backend tests (baseline 557):
+Backend tests (baseline 650 collected — 60 modules, 2026-09-08 build):
   cd backend
   ./.venv/Scripts/python.exe -m pytest -q
 
@@ -1767,6 +1784,10 @@ Review the queue — offline, spends nothing, THE BLOCKER:
   ./.venv/Scripts/python.exe -m scripts.review_scenarios --packet scenarios.md
   The challenge packet is band-sorted with near-duplicates adjacent.
   Approve by band; 231 rows one at a time is how this stalls again.
+  (The stale `review-queue.md` packet moved to `results/review-queue-20260908.md`
+  2026-09-08 — regenerate via the commands above, do not edit the snapshot.
+  Fresh packets: `results/review-queue-challenges-20260908.md` (231 rows) +
+  `results/review-queue-scenarios-20260908.md` (5) — all approved same day.)
 
 Content cost estimate (SAFE — spends nothing):
   ./.venv/Scripts/python.exe -m scripts.author_batch --dry-run
@@ -1793,28 +1814,32 @@ BACK UP THE DB BEFORE ANY SEED/MIGRATE/REBUILD/DEDUPE WORK (§2.13):
   Then run a destructive migration against the COPY and diff the row
   counts before running it for real (§2.15). rowid is NOT id.
 
-Alembic head:  e2f3a4b5c6d7   (applied 2026-09-08)
+Alembic head:  b4c6d8e0f1a2   (applied 2026-09-08 — Apple apple_sub; Spec E varna_progress below it)
 
-Order:  P8-0  review the queue — 5 scenarios + 231 challenges  ⚠ OWNER
+Order:  P8-0  DONE 2026-09-08 (owner bulk approve — 0 pending challenges, 0 pending scenarios)
+        P17-2/17-4 re-render DONE 2026-09-08 (264 challenges + 99 nodes, ~₹21 in-envelope)
         then  P10 (stopped: analyzer escalation) → P15 → P16
-        DONE: P7-5, P7-7, P7-13, P8-4, P8-5, P13-1, P14 plumbing, P19, P20-1/2/3, P21-1/2/3/4, P22 minimal
+        DONE: P7-5, P7-7, P7-13, P8-0, P8-4, P8-5 plumbing (Cloud Run kept, GCS audio, backup policy, Postgres path), P13-1, P14 plumbing, P19, P20-1/2/3, P21-1/2/3/4, P22 minimal, P23 full, Spec E backend (varnamala drill data + endpoints + coverage; audio bank rendered hi-IN, listening QA pending), Apple sign-in (endpoint + client + deploy secret; Services ID pending), U8 curation (3 lessons loṭ/laṅ/lṛṭ + 4 taxonomy features, owner-approved packet), U4 curation (3 lessons dual/plural/oblique, zero taxonomy changes, owner-approved packet), U5/U7/U9 curation (5 lessons persons/genders/voices, zero taxonomy changes), vocab import (27 DCS rows, 34 staged with reasons)
 
-Owner-gated:  the review queue (P8-0) · RAG · the sūtra curriculum · any
-              public surface · all of P14 · institutional licensing · P8-5
-              platform choices · the mascot rig · the canon's contents
-              (P21-4) · NCERT/CBSE text reuse — see §6
+Owner-gated:  RAG · the sūtra curriculum · any
+              public surface · P14 pricing tiers (plumbing done) · institutional licensing · P8-5
+              platform values (host/bucket/keys) · the mascot rig · the canon's contents
+              (P21-4) · NCERT/CBSE text reuse · learnsanskrit curation (105 staged) ·
+              WordNet permission (or DCS-vocab path) · varnamala listening QA ·
+              Apple Services ID + live smoke · ML Kit hardware step — see §6
 
 State of play right now (§4):
-  1. 5 scenarios + 231 challenges PENDING — the only real blocker, and it
-     GREW this week
-  2. Talk still has ONE dialogue until those 5 are approved
-  3. coverage is 33 of 37 in the pool but 24 of 37 for learners — nine
-     features have rows and zero approvals, all four sandhi among them
+  1. P8-0 CLEARED 2026-09-08 — 0 pending challenges, 0 pending scenarios
+  2. Talk has SIX dialogues, all with pre-rendered audio (P17-2 done)
+  3. coverage is 33 of 37 in approved rows and 36 of 37 for learners
+     (ATMANEPADA/MASC/NEUT reachable via U7/U9 lesson steps) — only FEM
+     still zero (feminine ā-stems misderive — hard engine wall)
   4. IAST: 0 mismatches (P7-13 DONE 2026-09-06; invariant test guards)
-  5. the śloka and daily-word wells refilled: 120 and 30; lessons 10, vocab 60,
+  5. the śloka and daily-word wells refilled: 120 and 30; lessons 124 (22 curated
+     + 102 staged), vocab 87 (60 curated + 27 DCS),
      graded reading 3 tiers, canon 12 texts (Īśā 18/18, Gītā spine planned full)
-  6. every APPROVED row already has pre-rendered audio; the rest follow
-     automatically once approved
+  6. every APPROVED row has pre-rendered audio (264 challenges · 99 nodes);
+     varnamala bank 95 clips rendered hi-IN (sa-IN re-render on beta flag)
 
 A green test suite does not mean a working app. `alembic current` (§3).
 

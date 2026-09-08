@@ -79,17 +79,77 @@ SEED_VOCAB: list[tuple[str, int, str, str, str, str]] = [
     ("festivals", 5, "प्रकाशः", "light", "MASC", "प्रकाश"),
 ]
 
-PROVENANCE = (
-    "curated 2026-09-07 from the Vidyut-gated challenge pool with original "
-    "glosses; WordNet cross-reference deferred pending licence confirmation "
-    "(P22-5 §6)"
-)
+# P23-4a: a registry KEY, not free text. The row owns the pointer; the
+# registry (seeds/licences.py) owns the wording. These words were curated
+# from the Vidyut-gated challenge pool with original glosses 2026-09-07;
+# WordNet cross-reference stays deferred pending its licence confirmation.
+PROVENANCE = "original"
+
+
+def _pool_examples(dev: str, approved: list[tuple[str, str]]) -> list[dict]:
+    """Up to 2 example sentences from APPROVED challenge rows containing the
+    word (substring match). Every example therefore already passed the Vidyut
+    gate — the seed never authors sentences."""
+    from app.services import iast as _iast
+
+    examples = []
+    for target, prompt in approved:
+        if dev and dev in target:
+            examples.append({
+                "devanagari": target,
+                "iast": _iast.to_iast(target),
+                "gloss": prompt,
+            })
+            if len(examples) == 2:
+                break
+    return examples
+
+
+# DCS frequency expansion (2026-09-08, P22-5 WordNet alternative).
+# (topic, devanagari, gloss): hand-mapped from Mitrasaṃgraha-induced
+# glosses — see scripts/import_vocab_dcs.py for TOPIC_MAP, GLOSS_FIXES
+# and every staged-but-unshipped row with its reason. Gender/stem stay ""
+# (allowed): kosha liṅga is not unanimous and stems ship for regular
+# a-stems only — neither is asserted from frequency data. Examples come
+# from the approved pool by the same gated rule as curated rows (usually
+# []: the pool rarely contains these words — absent is absent).
+DCS_VOCAB: list[tuple[str, str, str]] = [
+    ("food", "जलं", "water"),
+    ("food", "लवणं", "salt"),
+    ("food", "तैलं", "oil"),
+    ("food", "कटुः", "pungent"),
+    ("health", "विषं", "poison"),
+    ("health", "शरीरं", "body"),
+    ("health", "हृदयं", "heart"),
+    ("health", "पित्तं", "bile"),
+    ("health", "त्रिफला", "triphala (three-fruit remedy)"),
+    ("health", "हरीतकी", "haritaki (medicinal fruit)"),
+    ("health", "कटुका", "katuka (bitter herb)"),
+    ("family", "मात्रा", "mother"),
+    ("school", "ज्ञानं", "knowledge"),
+    ("school", "वचनं", "words"),
+    ("school", "सूक्ष्मं", "subtle"),
+    ("school", "संशयः", "doubt"),
+    ("routine", "दिनं", "day"),
+    ("routine", "मासि", "month"),
+    ("routine", "कालं", "time"),
+    ("festivals", "नमः", "obeisance"),
+    ("festivals", "नमोनमः", "obeisance"),
+    ("festivals", "देवा", "gods"),
+    ("festivals", "दानं", "charity"),
+    ("market", "काञ्चनं", "gold"),
+    ("market", "ताम्रं", "copper"),
+    ("market", "ऋणं", "debt"),
+    ("market", "पलं", "pala (unit of weight)"),
+]
+
+DCS_PROVENANCE = "dcs"
 
 
 def seed_vocab(db) -> dict[str, int]:
     """Idempotent vocab seed (P22-5): insert by (topic, devanagari), IAST from
     lipi, example sentences from APPROVED challenge rows containing the word.
-    Returns {"words": N added}."""
+    Returns {"words": N added, "examples_filled": N backfilled}."""
     from app.models import Challenge, VocabWord
     from app.services import iast as _iast
 
@@ -99,26 +159,60 @@ def seed_vocab(db) -> dict[str, int]:
         .filter(Challenge.review_status == "approved").all()
     ]
     added = 0
+    backfilled = 0
+    filled = 0
     for topic, rank, dev, gloss, gender, stem in SEED_VOCAB:
         existing = db.query(VocabWord).filter(
             VocabWord.topic == topic, VocabWord.devanagari == dev).first()
         if existing:
+            # P23-4a: rows seeded before the registry carry free text —
+            # repoint them at the key without touching taught content.
+            if existing.provenance != PROVENANCE:
+                existing.provenance = PROVENANCE
+                backfilled += 1
+            # A3: rows seeded when the pool was thin carry examples == [].
+            # Refill from today's approved pool — same gated rule, no dupes.
+            if not (existing.examples or []):
+                examples = _pool_examples(dev, approved)
+                if examples:
+                    existing.examples = examples
+                    filled += 1
             continue
-        examples = []
-        for target, prompt in approved:
-            if dev and dev in target:
-                examples.append({
-                    "devanagari": target,
-                    "iast": _iast.to_iast(target),
-                    "gloss": prompt,
-                })
-                if len(examples) == 2:
-                    break
         db.add(VocabWord(
             topic=topic, rank=rank, devanagari=dev,
             iast=_iast.to_iast(dev), gloss=gloss,
-            gender=gender, stem=stem, examples=examples,
+            gender=gender, stem=stem,
+            examples=_pool_examples(dev, approved),
             provenance=PROVENANCE,
         ))
         added += 1
-    return {"words": added}
+    # Flush: this session runs with autoflush off, so the DCS loop's
+    # per-topic max-rank query must see the curated rows above — otherwise
+    # every topic restarts at 0. Same discipline as _seed_challenges.
+    db.flush()
+    dcs_added = 0
+    for topic, dev, gloss in DCS_VOCAB:
+        existing = db.query(VocabWord).filter(
+            VocabWord.topic == topic, VocabWord.devanagari == dev).first()
+        if existing:
+            if existing.provenance != DCS_PROVENANCE:
+                existing.provenance = DCS_PROVENANCE
+                backfilled += 1
+            continue
+        top_rank = db.query(VocabWord.rank).filter(
+            VocabWord.topic == topic).order_by(
+            VocabWord.rank.desc()).first()
+        rank = (top_rank[0] + 1) if top_rank else 0
+        db.add(VocabWord(
+            topic=topic, rank=rank, devanagari=dev,
+            iast=_iast.to_iast(dev), gloss=gloss,
+            gender="", stem="",
+            examples=_pool_examples(dev, approved),
+            provenance=DCS_PROVENANCE,
+        ))
+        # Flush per add (autoflush off): same-topic later rows must see
+        # this rank — the identical bug the script had (all-6 ranks).
+        db.flush()
+        dcs_added += 1
+    return {"words": added + dcs_added, "dcs_words": dcs_added,
+            "examples_filled": filled}

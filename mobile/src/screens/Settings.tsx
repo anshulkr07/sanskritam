@@ -10,11 +10,21 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 
 import { useAuth } from "../store/auth";
+import type { RootStackParamList } from "../navigation/types";
 import { setSoundEffectsEnabled } from "../services/sfx";
+import {
+  isHapticsEnabled,
+  isReducedMotionOverride,
+  loadPrefs,
+  setHapticsEnabled,
+  setReducedMotionOverride,
+} from "../services/prefs";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
 
@@ -34,6 +44,7 @@ function setPref(key: string, v: boolean): Promise<void> {
 
 export default function SettingsPanel() {
   const { learner, logout, displayName } = useAuth();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { textSize, setTextSize } = useTypeScale();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
@@ -41,8 +52,12 @@ export default function SettingsPanel() {
 
   useEffect(() => {
     pref(KEYS.sound).then(setSound);
-    pref(KEYS.haptics).then(setHapticsOn);
-    pref(KEYS.reducedMotion).then(setReduced);
+    // U15-7: both flags are real now — haptics gates services/haptics, the
+    // reduce-motion override gates useReducedMotion. Load persisted values.
+    loadPrefs().then(() => {
+      setHapticsOn(isHapticsEnabled());
+      setReduced(isReducedMotionOverride());
+    });
   }, []);
 
   return (
@@ -85,11 +100,11 @@ export default function SettingsPanel() {
           }}
           icon="volume-high"
         />
-        <ToggleRow label="Haptics" value={hapticsOn} onChange={setHapticsOn} icon="phone-portrait" />
+        <ToggleRow label="Haptics" value={hapticsOn} onChange={(v) => { setHapticsOn(v); setHapticsEnabled(v); }} icon="phone-portrait" />
         <ToggleRow
           label="Reduce motion"
           value={reduced}
-          onChange={setReduced}
+          onChange={(v) => { setReduced(v); setReducedMotionOverride(v); }}
           icon="accessibility"
           hint="Cut decorative animation"
         />
@@ -123,7 +138,13 @@ export default function SettingsPanel() {
         <Text style={styles.sectionTitle}>About</Text>
         <Text style={styles.aboutText}>Sanskritam — learn Sanskrit by evidence, not guesswork.</Text>
         <Pressable
-          onPress={() => {}}
+          onPress={() => {
+            // Settings lives in the drawer; Licences lives on the root
+            // stack — route through the parent navigator.
+            const parent = navigation.getParent<NativeStackNavigationProp<RootStackParamList>>();
+            if (parent) parent.navigate("Licences");
+            else navigation.navigate("Licences" as never);
+          }}
           style={styles.linkRow}
           accessibilityRole="button"
           accessibilityLabel="Licences and credits"

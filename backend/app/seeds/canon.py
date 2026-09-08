@@ -172,15 +172,25 @@ CANON_TEXTS = [
 
 
 def seed_canon(db) -> dict:
-    """Additive + idempotent (§2.13): insert missing slugs, never update rows."""
+    """Additive + idempotent (§2.13): insert missing slugs; backfill the
+    P23-4a registry pointer (one registry, not two) without touching the
+    per-text verbatim licence strings."""
     from app.models import CanonText
 
-    existing = {r[0] for r in db.query(CanonText.slug).all()}
+    rows = {r.slug: r for r in db.query(CanonText).all()}
     added = 0
+    backfilled = 0
     for t in CANON_TEXTS:
-        if t["slug"] in existing:
+        # The Īśā transcription came from sa.wikisource (CC BY-SA 3.0);
+        # every other catalogue text is public-domain ancient text.
+        key = "sa-wikisource" if t["slug"] == "isha" else "public-domain"
+        row = rows.get(t["slug"])
+        if row is None:
+            db.add(CanonText(**t, source_key=key))
+            added += 1
             continue
-        db.add(CanonText(**t))
-        added += 1
+        if not row.source_key:
+            row.source_key = key
+            backfilled += 1
     db.commit()
-    return {"added": added, "total": len(CANON_TEXTS)}
+    return {"added": added, "total": len(CANON_TEXTS), "backfilled": backfilled}

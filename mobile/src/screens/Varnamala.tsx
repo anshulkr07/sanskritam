@@ -276,6 +276,14 @@ export default function VarnamalaScreen({ navigation }: Props) {
 
         {/* 5×5 Sparśa matrix */}
         <Text style={styles.sectionTitle}>स्पर्श · The 5×5 stops</Text>
+        {/* U15-6: the grid as a coordinate system — every sound is (place,
+            effort). Sandhi rules are moves on this grid; the U6 lesson runs
+            the machine both ways. */}
+        <Text style={styles.coordNote} accessibilityRole="text">
+          Read it as coordinates: row = where (throat → lips), column = how
+          (breath, voice, hum). क is (throat, breath-only); every neighbour
+          differs by one coordinate.
+        </Text>
         <SparsaMatrix
           chars={[...(grid.consonants ?? []), ...(grid.nasals ?? [])]}
           onCharPress={onCharPress}
@@ -489,6 +497,7 @@ const styles = StyleSheet.create({
     color: color.ink,
     marginBottom: space.sm,
   },
+  coordNote: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm, lineHeight: 20 },
   // ── Matrix ──
   matrix: { marginBottom: space.lg, overflow: "hidden" },
   matrixRow: { flexDirection: "row", marginBottom: 2 },

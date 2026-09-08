@@ -72,6 +72,11 @@ class Settings(BaseSettings):
     # one per platform (Android, iOS, Web). Empty => Google login disabled.
     google_client_id: str = ""
 
+    # Sign in with Apple (App Store Guideline 4.8: mandatory if any
+    # third-party sign-in is offered). Comma-separated list of client IDs —
+    # the app's bundle ID and/or Services ID. Empty => Apple login disabled.
+    apple_client_id: str = ""
+
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False
 

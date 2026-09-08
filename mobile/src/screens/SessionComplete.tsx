@@ -22,7 +22,7 @@ import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing, spring as springCfg } from "../motion";
 import { Button, Card } from "../components/ui";
 import Confetti from "../components/Confetti";
-import TutorFull from "../components/TutorFull";
+import { Gesture, GuruNative } from "../components/guru";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
 interface SessionCompleteProps {
@@ -108,8 +108,6 @@ export default function SessionComplete({
     opacity: actionOpacity.value,
   }));
 
-  const xpDisplay = Math.round(xpCount.value);
-
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <Confetti active={isGood && !reduced} />
@@ -117,7 +115,7 @@ export default function SessionComplete({
       <View style={styles.body}>
         {/* Guru blessing */}
         <Animated.View style={[styles.guruWrap, guruStyle]}>
-          <TutorFull height={190} celebrate={isGood} />
+          <GuruNative size={190} state={isGood ? "celebrating" : "encouraging"} gesture={Gesture.Abhaya} />
         </Animated.View>
 
         {/* Headline */}

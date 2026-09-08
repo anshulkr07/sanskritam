@@ -36,6 +36,18 @@ class GoogleAuthRequest(BaseModel):
     timezone: Optional[str] = Field(None, max_length=64)
 
 
+class AppleAuthRequest(BaseModel):
+    # The Apple identityToken (JWT, ES256) minted for the app by Sign in with
+    # Apple. The backend verifies its signature + audience and binds the
+    # learner to its `sub`. Apple sends the user's name/email only on the
+    # FIRST authorization, so the client forwards `display_name` when it has
+    # one; otherwise we fall back to the email local part, then a label.
+    id_token: str = Field(..., min_length=20)
+    bridge_langs: list[str] = Field(default=["en", "hi"])
+    timezone: Optional[str] = Field(None, max_length=64)
+    display_name: Optional[str] = Field(None, max_length=128)
+
+
 # ─── Learner ───
 
 class LearnerProfile(BaseModel):
@@ -239,7 +251,9 @@ class LessonExample(BaseModel):
 
 
 class LessonResponse(BaseModel):
+    id: str = ""
     feature_id: str
+    features: list[str] = []
     unit_id: str
     rank: int
     title_en: str
@@ -250,6 +264,7 @@ class LessonResponse(BaseModel):
     visual_data: dict[str, Any]
     audio_url: str = ""
     register: str
+    attribution: str = ""  # P23-4a registry key — the join, not free text
 
 
 class VocabExample(BaseModel):
@@ -278,6 +293,75 @@ class ReaderPassageResponse(BaseModel):
     parse: list[dict[str, Any]]
     features: list[str]
     register: str
+
+
+# ─── Curriculum spine as data (P23) ───
+
+class LessonSummary(BaseModel):
+    id: str
+    feature_id: str
+    features: list[str] = []
+    unit_id: str
+    rank: int
+    title_en: str
+    title_hi: str
+    register: str = "laukika"
+    step_count: int = 0
+    attribution: str = ""
+
+
+class UnitResponse(BaseModel):
+    id: str
+    rank: int
+    layer: int
+    title_en: str
+    title_hi: str
+    blurb: str = ""
+    lessons: list[LessonSummary] = []
+    progress: float = 0.0  # mean mastery over the unit's lesson features
+
+
+class StepResponse(BaseModel):
+    rank: int
+    kind: str
+    # Renderable and answer-free: explain text, or the generate()d item.
+    payload: dict[str, Any] = {}
+    abstained: bool = False
+
+
+class StepAttemptRequest(BaseModel):
+    answer: dict[str, Any] = {}
+
+
+class StepAttemptResponse(BaseModel):
+    verdict: str  # correct | off_by_one | incorrect | unsure
+    abstained: bool = False
+    mastery: dict[str, float] = {}
+    due_at: Optional[str] = None
+    item_key: str = ""
+
+
+# ─── Licence registry (P23-4a) ───
+
+class LicenceResponse(BaseModel):
+    key: str
+    name: str = ""
+    url: str = ""
+    licence: str = ""
+    credit: str = ""
+    taken: str = ""
+
+
+# ─── Review schedule (P23-5) ───
+
+class ReviewItemResponse(BaseModel):
+    item_key: str
+    kind: str = "step"
+    due_at: str
+    stability: float = 1.0
+    difficulty: float = 0.3
+    lapses: int = 0
+    last_verdict: str = ""
 
 
 # ─── Admin ───

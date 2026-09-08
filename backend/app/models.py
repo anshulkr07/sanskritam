@@ -58,6 +58,10 @@ class Learner(Base):
     # Unique — one Google account maps to one learner. Present only for
     # Google-authenticated learners; anonymous/dev learners leave it NULL.
     google_sub = Column(String(64), unique=True, nullable=True, index=True)
+    # Apple identity when the learner signed in with "Sign in with Apple".
+    # Unique — one Apple account maps to one learner (App Store Guideline 4.8
+    # requires Apple sign-in wherever Google sign-in is offered).
+    apple_sub = Column(String(64), unique=True, nullable=True, index=True)
     deleted_at = Column(DateTime, nullable=True)  # soft-delete marker (replaced by hard-delete in P1-3, kept for migration compat)
     # Effective ratio the system uses (drifts within the user's ceiling)
     sanskrit_ratio = Column(Float, default=0.3)
@@ -74,6 +78,15 @@ class Learner(Base):
     # against this, never against server UTC — see services/localtime.py.
     timezone = Column(String(64), default="UTC")
     recent_challenge_ids = Column(JSON, default=list)  # last N served — no-repeat window
+    # P23-5: handwriting progress lives here, NOT in feature_mastery.
+    # feature_mastery maps feature_id -> float; writing progress maps
+    # item-iast -> {attempts, correct}. Mixing them made feature_mastery
+    # heterogeneous and broke every float() reader (§2.2-adjacent live bug).
+    writing_mastery = Column(JSON, default=dict)  # {item_key: {attempts, correct}}
+    # Spec E: varnamala drill coverage lives here, NOT in feature_mastery.
+    # {varna_id: {reps, last_ts}} — coverage only, no verdict (ship the
+    # drill, ship no scoring). Same homogeneous-dict rule as writing_mastery.
+    varna_progress = Column(JSON, default=dict)
     created_at = Column(DateTime, default=_utcnow)
 
     tokens = relationship("Token", back_populates="learner", cascade="all, delete-orphan")
@@ -472,26 +485,64 @@ class ErrorLog(Base):
     request_id = Column(String(32), default="")
 
 
+class Unit(Base):
+    """One unit of the curriculum spine (CURRICULUM.md §6.2: u1..u11).
+
+    The spine used to live only in prose: ``Lesson.unit_id`` was a bare
+    string and nothing enumerated the eleven units, their order, or where
+    each sits in the three-layer model. This table makes the spine data —
+    Path renders it, the seed asserts against it, and retuning the order is
+    a row update rather than a release.
+
+    ``layer`` is CURRICULUM.md §6.1's conceptual layer: 0 = the alphabet as
+    a mathematical set, 1 = word formation as functions, 2 = sentence
+    construction as relations.
+    """
+
+    __tablename__ = "units"
+
+    id = Column(String(16), primary_key=True)            # "u1".."u11"
+    rank = Column(Integer, nullable=False, default=0)    # order in the spine
+    layer = Column(Integer, nullable=False, default=1)   # 0 | 1 | 2
+    title_en = Column(String(128), default="")
+    title_hi = Column(String(128), default="")
+    blurb = Column(Text, default="")   # one line: what this unit buys you
+    created_at = Column(DateTime, default=_utcnow)
+
+    lessons = relationship("Lesson", back_populates="unit",
+                           order_by="Lesson.rank")
+
+
 class Lesson(Base):
-    """A teaching lesson in front of a Path node (P22-1): Lesson → Practice
-    → Challenge. One lesson per feature, ordered by rank, scoped to the Path
-    spine (``unit_id`` follows CURRICULUM.md §6.2: u1..u11).
+    """A teaching lesson: an ordered sequence of gradable steps (see
+    ``LessonStep``), belonging to a unit of the curriculum spine.
+
+    Two things changed from P22-1. ``feature_id`` is no longer UNIQUE and is
+    joined by ``features``: a lesson teaches a concept, not a tag, and a
+    concept can span several — "sandhi is f(a,b)→c" is one lesson and four
+    features. And ``body`` is no longer the teaching surface; it survives as
+    the lesson's summary, while the teaching lives in ``steps``.
 
     Every example was verified against the engine at seed time: the stored
     derivation reproduces the example's surface form, or the example was
     dropped. A lesson cannot claim a form the engine cannot produce (§6
-    provenance rule applied to content).
+    provenance rule applied to content). ``provenance`` records which source
+    and which licence; ``attribution`` carries the credit line a licence
+    requires (CC BY 4.0 for learnsanskrit.org-derived prose).
     """
 
     __tablename__ = "lessons"
 
     id = Column(String(64), primary_key=True, default=_uuid)
-    feature_id = Column(String(64), ForeignKey("features.id"), nullable=False, unique=True, index=True)
-    unit_id = Column(String(16), nullable=False, index=True)  # "u1".."u11"
+    # NOT unique since the step rebuild: the feature a lesson leads with.
+    # ``features`` carries the full set the lesson exercises.
+    feature_id = Column(String(64), ForeignKey("features.id"), nullable=False, index=True)
+    features = Column(JSON, default=list)
+    unit_id = Column(String(16), ForeignKey("units.id"), nullable=False, index=True)
     rank = Column(Integer, default=0)  # order within the unit
     title_en = Column(String(256), default="")
     title_hi = Column(String(256), default="")
-    body = Column(Text, default="")  # markdown, 200–500 words
+    body = Column(Text, default="")  # summary — the steps do the teaching
     # [{devanagari, iast, gloss, derivation: {result, step_count, steps}}]
     examples = Column(JSON, default=list)
     visual_type = Column(String(16), default="none")  # grid|tree|state_machine|none
@@ -499,7 +550,59 @@ class Lesson(Base):
     audio_url = Column(String(512), default="")  # pre-rendered spoken lesson
     register = Column(String(16), default="laukika", index=True)
     provenance = Column(String(256), default="")  # which source, which licence
+    attribution = Column(String(256), default="")  # credit line the licence requires
     created_at = Column(DateTime, default=_utcnow)
+
+    unit = relationship("Unit", back_populates="lessons")
+    steps = relationship("LessonStep", back_populates="lesson",
+                         order_by="LessonStep.rank",
+                         cascade="all, delete-orphan")
+
+
+class LessonStep(Base):
+    """One step of a lesson — the unit of teaching AND of grading.
+
+    A lesson used to be a body of prose with a Practice button at the end:
+    nothing between opening it and leaving it was answered, so nothing in it
+    could be graded. The step is the fix. ``kind`` selects the renderer on
+    the client and the grader on the server, ``payload`` is everything that
+    renderer needs, and ``grading`` is the contract an answer is checked
+    against.
+
+    Kinds fall in three families:
+
+    - **authored** — ``explain`` (prose, ≤120 words). ``payload`` holds the
+      text; ``grading`` is empty, because there is nothing to answer.
+    - **generated** — ``grid_fill``, ``derive_next``, ``sandhi_split``,
+      ``sandhi_join``, ``scan_metre``, ``reorder``, ``contrast``.
+      ``payload`` carries generator arguments under ``gen``; the exercise
+      itself is produced at serve time by ``services/exercise_gen.py``.
+      Generated steps need no review queue: the engine that poses the
+      question is the engine that marks it, so a wrong item cannot be
+      authored into existence.
+    - **practice** — ``build``, ``articulate``, ``read``. The client renders
+      the sandbox component (WordBank / VocalTract / passage) and the
+      attempt is a no-op: correct, graded False, mastery and schedule
+      untouched — the Play-rule reversal (sandbox practice, not assessment).
+      They stay practice until a grader the engine can honestly support
+      exists (§2.2, §6.2: no forced alignment, no invented grading).
+    """
+
+    __tablename__ = "lesson_steps"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    lesson_id = Column(String(64), ForeignKey("lessons.id"), nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=0)  # order within the lesson
+    kind = Column(String(24), nullable=False, index=True)
+    payload = Column(JSON, default=dict)
+    grading = Column(JSON, default=dict)
+    created_at = Column(DateTime, default=_utcnow)
+
+    lesson = relationship("Lesson", back_populates="steps")
+
+    __table_args__ = (
+        UniqueConstraint("lesson_id", "rank", name="uq_step_lesson_rank"),
+    )
 
 
 class VocabWord(Base):
@@ -585,6 +688,10 @@ class CanonText(Base):
     title_sa = Column(String(256), default="")
     source = Column(String(256), default="")  # where the text comes from
     licence = Column(String(512), default="")  # per-text licence (§6)
+    # P23-4a: pointer into the licence registry — one registry, not two.
+    # The per-text ``licence`` string stays (it is the verbatim record); this
+    # key is the join that proves it is attributed.
+    source_key = Column(String(64), nullable=True, index=True)
     study_order = Column(Integer, nullable=False, default=0)  # reading order
     depth = Column(String(16), nullable=False, default="index")  # full|studied|index
     tier = Column(String(16), nullable=False, default="free")  # free|plus
@@ -662,3 +769,53 @@ class Entitlement(Base):
     valid_until = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=_utcnow)
     updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+
+class ContentSource(Base):
+    """One row per source we take anything from (P23-4a).
+
+    The licence registry. Content rows stop carrying free text:
+    ``Lesson.attribution``, ``VocabWord.provenance`` and
+    ``ReaderPassage.provenance`` hold a registry KEY, so "is everything
+    attributed?" becomes a join rather than a reading exercise. The registry
+    owns the wording (the credit line is rendered VERBATIM — a paraphrased
+    credit is not a credit); the row owns the pointer.
+    """
+
+    __tablename__ = "content_sources"
+
+    key = Column(String(64), primary_key=True)  # learnsanskrit|vidyut-data|sa-wikisource|public-domain|original
+    name = Column(String(256), default="")
+    url = Column(String(512), default="")
+    licence = Column(String(64), default="")  # named exactly: CC BY 4.0|MIT|CC BY-SA 3.0|public domain
+    credit = Column(Text, default="")  # rendered verbatim wherever attribution is shown
+    taken = Column(Text, default="")  # one line on what we actually used
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class ReviewItem(Base):
+    """One schedulable memory per learner (P23-5).
+
+    An item is a step instance or a vocab word — NOT just a feature tag.
+    That is the whole point: the old adaptive.py kept one 0..1 score per
+    feature with no due dates, no intervals, no time decay and no item-level
+    memory, so a learner returning after a month saw exactly the state they
+    left. ``due_at`` is UTC; ``stability`` is days; ``difficulty`` is 0..1.
+    """
+
+    __tablename__ = "review_items"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    item_key = Column(String(128), nullable=False, index=True)  # step:<lesson_id>:<rank> | vocab:<word_id>
+    kind = Column(String(16), default="step")  # step | vocab
+    due_at = Column(DateTime, nullable=False, index=True)
+    stability = Column(Float, default=1.0)  # days until next review at last grade
+    difficulty = Column(Float, default=0.3)  # 0..1, rises on lapses
+    lapses = Column(Integer, default=0)
+    last_verdict = Column(String(16), default="")
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "item_key", name="uq_review_learner_item"),
+    )

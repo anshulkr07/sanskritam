@@ -39,22 +39,14 @@ const UNAVAILABLE: PhotoRecogniser = {
 export function getPhotoRecogniser(): PhotoRecogniser {
   try {
     // require (not import) so the app runs where the native module does not
-    // exist yet. Candidate module names live here — not in package.json —
-    // until the ML Kit dev build ships (U12-4).
-    const candidates = [
-      "@react-native-mlkit/text-recognition",
-      "react-native-mlkit-ocr",
-    ];
-    for (const name of candidates) {
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const mod = require(name);
-        const adapter = ocrAdapter(mod);
-        if (adapter) return adapter;
-      } catch {
-        /* try the next candidate */
-      }
-    }
+    // exist yet. Must be a STATIC literal require — Metro/Expo's bundler
+    // statically resolves require() and rejects a dynamic require(name) at
+    // build time (same seam pattern as inkRecogniser.ts). The module lives in
+    // a device that ships it; until then the catch below returns UNAVAILABLE.
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const mod = require("@react-native-mlkit/text-recognition");
+    const adapter = ocrAdapter(mod);
+    if (adapter) return adapter;
   } catch {
     // module not present — honest unavailable adapter below
   }

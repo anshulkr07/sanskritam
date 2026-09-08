@@ -1,4 +1,4 @@
-"""Varnamala grid data.
+"""Varnamala grid data (Spec E — build order step 5).
 
 Consonants are the traditional 5x5 sparśa matrix (row = place of articulation,
 column = voicing/aspiration) flattened to a single list, plus the 5 nasal
@@ -9,68 +9,202 @@ Vowel 'place' values follow the traditional articulation description used in
 Siddhānta-Kaumudī style tables: a/ā kanthya, i/ī talavya, u/ū oṣṭha-kanṭha
 (labio-velar, rendered oshthya+kanthya), ṛ/ṝ murdhanya, ḷ/ḹ dantya, e/ai
 kanthya-talavya (ai diphthong), o/au kanthya-oṣṭhya.
+
+Spec E additions: every cell carries a stable ASCII ``id`` (audio filenames
+and learner-progress keys — never rename), ``example_devanagari`` /
+``example_iast`` / ``example_gloss``, and ``minimal_pairs`` derived by
+inverting ``CONTRAST_GROUPS`` (symmetric, order-preserving). ``rii`` / ``li``
+/ ``lii`` occur so rarely that no honest example word exists — their example
+fields stay empty and clients must render a blank example gracefully.
+``am`` / ``ah`` carry the अ-carrier display form in ``devanagari`` plus the
+bare combining ``mark`` for clients that render it.
 """
 
-VARNAMALA_DATA = {
-    "vowels": [
-        {"devanagari": "अ", "iast": "a", "place": "kanthya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "आ", "iast": "ā", "place": "kanthya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "इ", "iast": "i", "place": "talavya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ई", "iast": "ī", "place": "talavya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "उ", "iast": "u", "place": "oshthya_kanthya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ऊ", "iast": "ū", "place": "oshthya_kanthya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ऋ", "iast": "ṛ", "place": "murdhanya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ॠ", "iast": "ṝ", "place": "murdhanya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ऌ", "iast": "ḷ", "place": "dantya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ॡ", "iast": "ḹ", "place": "dantya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ए", "iast": "e", "place": "kanthya_talavya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ऐ", "iast": "ai", "place": "kanthya_talavya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "ओ", "iast": "o", "place": "kanthya_oshthya", "voicing": "voiced", "kind": "vowel"},
-        {"devanagari": "औ", "iast": "au", "place": "kanthya_oshthya", "voicing": "voiced", "kind": "vowel"},
-    ],
-    "consonants": [],
-    "nasals": [],
-    "others": [
-        {"devanagari": "य", "iast": "ya", "place": "talavya", "voicing": "approximant", "kind": "semivowel"},
-        {"devanagari": "र", "iast": "ra", "place": "murdhanya", "voicing": "approximant", "kind": "semivowel"},
-        {"devanagari": "ल", "iast": "la", "place": "dantya", "voicing": "approximant", "kind": "semivowel"},
-        {"devanagari": "व", "iast": "va", "place": "oshthya_dantya", "voicing": "approximant", "kind": "semivowel"},
-        {"devanagari": "श", "iast": "śa", "place": "talavya", "voicing": "voiceless", "kind": "sibilant"},
-        {"devanagari": "ष", "iast": "ṣa", "place": "murdhanya", "voicing": "voiceless", "kind": "sibilant"},
-        {"devanagari": "स", "iast": "sa", "place": "dantya", "voicing": "voiceless", "kind": "sibilant"},
-        {"devanagari": "ह", "iast": "ha", "place": "kanthya", "voicing": "voiced_aspirate", "kind": "aspirate"},
-        {"devanagari": "ं", "iast": "ṃ", "place": None, "voicing": None, "kind": "anusvara"},
-        {"devanagari": "ः", "iast": "ḥ", "place": None, "voicing": None, "kind": "visarga"},
-    ],
+CONTRAST_GROUPS = [
+    {
+        "id": "dental_retroflex",
+        "label": "Dental vs retroflex",
+        "pairs": [["ta", "tta"], ["tha", "ttha"], ["da", "dda"],
+                  ["dha", "ddha"], ["na", "nna"]],
+        "note_en": "English has no retroflex series — curl the tongue tip back to the roof of the mouth.",
+    },
+    {
+        "id": "sibilants",
+        "label": "The three sibilants",
+        "pairs": [["sha", "ssa"], ["ssa", "sa"], ["sha", "sa"]],
+        "note_en": "Most learners collapse these to two or one — the tongue position is what differs, not voicing.",
+    },
+    {
+        "id": "aspiration",
+        "label": "Aspirated vs unaspirated",
+        "pairs": [["ka", "kha"], ["ga", "gha"], ["ca", "cha"], ["ja", "jha"],
+                  ["tta", "ttha"], ["dda", "ddha"], ["ta", "tha"],
+                  ["da", "dha"], ["pa", "pha"], ["ba", "bha"]],
+        "note_en": "Aspiration is phonemic in Sanskrit but allophonic in English — hold a hand before the mouth and feel the puff.",
+    },
+    {
+        "id": "vowel_length",
+        "label": "Short vs long",
+        "pairs": [["a", "aa"], ["i", "ii"], ["u", "uu"], ["ri", "rii"]],
+        "note_en": "Vowel length changes meaning — hold the long vowel for two beats.",
+    },
+    {
+        "id": "labial",
+        "label": "व vs ब",
+        "pairs": [["va", "ba"]],
+        "note_en": "Merged across much of eastern India — व touches the teeth to the lip, ब closes both lips.",
+    },
+]
+
+
+def _with_minimal_pairs(cells: list[dict]) -> list[dict]:
+    """Derive each cell's ``minimal_pairs`` by inverting CONTRAST_GROUPS.
+
+    Symmetric (if ta lists tta, tta lists ta) and order-preserving:
+    pairs are visited hardest-group-first, so each list is ordered by
+    pedagogical priority.
+    """
+    pairs_of: dict[str, list[str]] = {}
+    for group in CONTRAST_GROUPS:
+        for x, y in group["pairs"]:
+            pairs_of.setdefault(x, [])
+            pairs_of.setdefault(y, [])
+            if y not in pairs_of[x]:
+                pairs_of[x].append(y)
+            if x not in pairs_of[y]:
+                pairs_of[y].append(x)
+    for cell in cells:
+        cell["minimal_pairs"] = pairs_of.get(cell["id"], [])
+    return cells
+
+
+_VOWELS = [
+    ("a", "अ", "a", "kanthya", "अग्निः", "agniḥ", "fire"),
+    ("aa", "आ", "ā", "kanthya", "आकाशः", "ākāśaḥ", "sky"),
+    ("i", "इ", "i", "talavya", "इन्द्रः", "indraḥ", "Indra"),
+    ("ii", "ई", "ī", "talavya", "ईश्वरः", "īśvaraḥ", "lord"),
+    ("u", "उ", "u", "oshthya_kanthya", "उदकम्", "udakam", "water"),
+    ("uu", "ऊ", "ū", "oshthya_kanthya", "ऊर्मिः", "ūrmiḥ", "wave"),
+    ("ri", "ऋ", "ṛ", "murdhanya", "ऋषिः", "ṛṣiḥ", "seer"),
+    ("rii", "ॠ", "ṝ", "murdhanya", "", "", ""),
+    ("li", "ऌ", "ḷ", "dantya", "", "", ""),
+    ("lii", "ॡ", "ḹ", "dantya", "", "", ""),
+    ("e", "ए", "e", "kanthya_talavya", "एकम्", "ekam", "one"),
+    ("ai", "ऐ", "ai", "kanthya_talavya", "ऐरावतः", "airāvataḥ", "Indra's elephant"),
+    ("o", "ओ", "o", "kanthya_oshthya", "ओष्ठः", "oṣṭhaḥ", "lip"),
+    ("au", "औ", "au", "kanthya_oshthya", "औषधम्", "auṣadham", "medicine"),
+]
+
+# (id, dev, iast, example_dev, example_iast, example_gloss)
+_STOPS = [
+    ("ka", "क", "ka", "कमलम्", "kamalam", "lotus"),
+    ("kha", "ख", "kha", "खगः", "khagaḥ", "bird"),
+    ("ga", "ग", "ga", "गजः", "gajaḥ", "elephant"),
+    ("gha", "घ", "gha", "घटः", "ghaṭaḥ", "pot"),
+    ("nga", "ङ", "ṅa", "अङ्गम्", "aṅgam", "limb"),
+    ("ca", "च", "ca", "चन्द्रः", "candraḥ", "moon"),
+    ("cha", "छ", "cha", "छत्रम्", "chatram", "umbrella"),
+    ("ja", "ज", "ja", "जलम्", "jalam", "water"),
+    ("jha", "झ", "jha", "झषः", "jhaṣaḥ", "fish"),
+    ("nya", "ञ", "ña", "पञ्च", "pañca", "five"),
+    ("tta", "ट", "ṭa", "पटः", "paṭaḥ", "cloth"),
+    ("ttha", "ठ", "ṭha", "कण्ठः", "kaṇṭhaḥ", "throat"),
+    ("dda", "ड", "ḍa", "डमरुः", "ḍamaruḥ", "drum"),
+    ("ddha", "ढ", "ḍha", "मूढः", "mūḍhaḥ", "foolish"),
+    ("nna", "ण", "ṇa", "गणः", "gaṇaḥ", "group"),
+    ("ta", "त", "ta", "तरुः", "taruḥ", "tree"),
+    ("tha", "थ", "tha", "रथः", "rathaḥ", "chariot"),
+    ("da", "द", "da", "दन्तः", "dantaḥ", "tooth"),
+    ("dha", "ध", "dha", "धनम्", "dhanam", "wealth"),
+    ("na", "न", "na", "नदी", "nadī", "river"),
+    ("pa", "प", "pa", "पत्रम्", "patram", "leaf"),
+    ("pha", "फ", "pha", "फलम्", "phalam", "fruit"),
+    ("ba", "ब", "ba", "बलम्", "balam", "strength"),
+    ("bha", "भ", "bha", "भानुः", "bhānuḥ", "sun"),
+    ("ma", "म", "ma", "मित्रम्", "mitram", "friend"),
+]
+
+_STOP_PLACE = {
+    "ka": "kanthya", "kha": "kanthya", "ga": "kanthya", "gha": "kanthya",
+    "nga": "kanthya",
+    "ca": "talavya", "cha": "talavya", "ja": "talavya", "jha": "talavya",
+    "nya": "talavya",
+    "tta": "murdhanya", "ttha": "murdhanya", "dda": "murdhanya",
+    "ddha": "murdhanya", "nna": "murdhanya",
+    "ta": "dantya", "tha": "dantya", "da": "dantya", "dha": "dantya",
+    "na": "dantya",
+    "pa": "oshthya", "pha": "oshthya", "ba": "oshthya", "bha": "oshthya",
+    "ma": "oshthya",
 }
 
-# The 4 stops columns: unvoiced, unvoiced+aspirated, voiced, voiced+aspirated
-# plus the nasal completes the traditional 5-place row (nasals also listed
-# separately in "nasals" for the grid row).
-_PLACES = [
-    ("kanthya", "क", "ka", "kha", "ga", "gha", "ṅa", "ङ"),
-    ("talavya", "ca", "ca", "cha", "ja", "jha", "ña", "ञ"),
-    ("murdhanya", "ट", "ṭa", "ṭha", "ḍa", "ḍha", "ṇa", "ण"),
-    ("dantya", "त", "ta", "tha", "da", "dha", "na", "न"),
-    ("oshthya", "प", "pa", "pha", "ba", "bha", "ma", "म"),
-]
-# (place, dev_row_letters, iast_row)
-_ROWS = [
-    ("kanthya", ["क", "ख", "ग", "घ"], ["ka", "kha", "ga", "gha"], "ङ", "ṅa"),
-    ("talavya", ["च", "छ", "ज", "झ"], ["ca", "cha", "ja", "jha"], "ञ", "ña"),
-    ("murdhanya", ["ट", "ठ", "ड", "ढ"], ["ṭa", "ṭha", "ḍa", "ḍha"], "ण", "ṇa"),
-    ("dantya", ["त", "थ", "द", "ध"], ["ta", "tha", "da", "dha"], "न", "na"),
-    ("oshthya", ["प", "फ", "ब", "भ"], ["pa", "pha", "ba", "bha"], "म", "ma"),
-]
-_VOICING = ["voiceless", "voiceless_aspirated", "voiced", "voiced_aspirated"]
+_STOP_VOICING = {
+    "ka": "voiceless", "kha": "voiceless_aspirated", "ga": "voiced",
+    "gha": "voiced_aspirated", "nga": "nasal",
+    "ca": "voiceless", "cha": "voiceless_aspirated", "ja": "voiced",
+    "jha": "voiced_aspirated", "nya": "nasal",
+    "tta": "voiceless", "ttha": "voiceless_aspirated", "dda": "voiced",
+    "ddha": "voiced_aspirated", "nna": "nasal",
+    "ta": "voiceless", "tha": "voiceless_aspirated", "da": "voiced",
+    "dha": "voiced_aspirated", "na": "nasal",
+    "pa": "voiceless", "pha": "voiceless_aspirated", "ba": "voiced",
+    "bha": "voiced_aspirated", "ma": "nasal",
+}
 
-for place, dev4, iast4, nasal_dev, nasal_iast in _ROWS:
-    for dev, iast, voicing in zip(dev4, iast4, _VOICING):
-        VARNAMALA_DATA["consonants"].append({
-            "devanagari": dev, "iast": iast, "place": place,
-            "voicing": voicing, "kind": "consonant",
-        })
-    VARNAMALA_DATA["nasals"].append({
-        "devanagari": nasal_dev, "iast": nasal_iast, "place": place,
-        "voicing": "nasal", "kind": "nasal",
-    })
+_NASAL_IDS = {"nga", "nya", "nna", "na", "ma"}
+
+# (id, dev, iast, place, voicing, kind, example_dev, example_iast, gloss, mark)
+_OTHERS = [
+    ("ya", "य", "ya", "talavya", "approximant", "semivowel", "यज्ञः", "yajñaḥ", "sacrifice", ""),
+    ("ra", "र", "ra", "murdhanya", "approximant", "semivowel", "रविः", "raviḥ", "sun", ""),
+    ("la", "ल", "la", "dantya", "approximant", "semivowel", "लता", "latā", "creeper", ""),
+    ("va", "व", "va", "oshthya_dantya", "approximant", "semivowel", "वनम्", "vanam", "forest", ""),
+    ("sha", "श", "śa", "talavya", "voiceless", "sibilant", "शिवः", "śivaḥ", "Śiva", ""),
+    ("ssa", "ष", "ṣa", "murdhanya", "voiceless", "sibilant", "षट्", "ṣaṭ", "six", ""),
+    ("sa", "स", "sa", "dantya", "voiceless", "sibilant", "सूर्यः", "sūryaḥ", "sun", ""),
+    ("ha", "ह", "ha", "kanthya", "voiced_aspirate", "aspirate", "हस्तः", "hastaḥ", "hand", ""),
+    ("am", "अं", "aṃ", None, None, "anusvara", "संस्कृतम्", "saṃskṛtam", "Sanskrit", "ं"),
+    ("ah", "अः", "aḥ", None, None, "visarga", "रामः", "rāmaḥ", "Rāma", "ः"),
+]
+
+
+def _build() -> dict:
+    vowels = [
+        {"id": vid, "devanagari": dev, "iast": iast, "place": place,
+         "voicing": "voiced", "kind": "vowel",
+         "example_devanagari": exd, "example_iast": exi, "example_gloss": exg}
+        for vid, dev, iast, place, exd, exi, exg in _VOWELS
+    ]
+    consonants = [
+        {"id": vid, "devanagari": dev, "iast": iast,
+         "place": _STOP_PLACE[vid], "voicing": _STOP_VOICING[vid],
+         "kind": "consonant",
+         "example_devanagari": exd, "example_iast": exi, "example_gloss": exg}
+        for vid, dev, iast, exd, exi, exg in _STOPS
+        if vid not in _NASAL_IDS
+    ]
+    nasals = [
+        {"id": vid, "devanagari": dev, "iast": iast,
+         "place": _STOP_PLACE[vid], "voicing": "nasal",
+         "kind": "nasal",
+         "example_devanagari": exd, "example_iast": exi, "example_gloss": exg}
+        for vid, dev, iast, exd, exi, exg in _STOPS
+        if vid in _NASAL_IDS
+    ]
+    others = [
+        {"id": vid, "devanagari": dev, "iast": iast, "place": place,
+         "voicing": voicing, "kind": kind,
+         "example_devanagari": exd, "example_iast": exi, "example_gloss": exg,
+         "mark": mark}
+        for vid, dev, iast, place, voicing, kind, exd, exi, exg, mark in _OTHERS
+    ]
+    all_cells = vowels + consonants + nasals + others
+    _with_minimal_pairs(all_cells)
+    return {
+        "vowels": vowels,
+        "consonants": consonants,
+        "nasals": nasals,
+        "others": others,
+    }
+
+
+VARNAMALA_DATA = _build()

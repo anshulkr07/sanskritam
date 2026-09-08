@@ -1,242 +1,178 @@
-// Path — the winding journey through Sanskritam's content taxonomy.
-// P7-5: nodes now come from GET /grammar/path — the APPROVED-CONTENT SPINE —
-// so the path reflects what is actually servable, not the brief catalogue.
-// Node states: locked, available, current, complete, mastered. Progress
-// derives from Learner.feature_mastery (server-merged into each node).
+// Path — the winding journey through Sanskritam's eleven units (U15-3).
 //
-// Resilience (U10-3): a failed fetch shows a retryable error state, never a
-// silent empty path, and falls back to the local taxonomy so the screen stays
-// usable offline.
+// P23 made the spine data: GET /units returns eleven ranked units, each with
+// its lessons and per-unit progress. Path renders units, each expanding to
+// its lessons. A lesson routes Learn first (the step player), then Practice.
+//
+// Locked nodes stop being tappable — they were opacity 0.5 and still
+// pressable. A locked lesson is disabled, announced as locked, and never
+// fires navigation.
+//
+// Resilience (U10-3): a failed fetch shows a retryable error state, and falls
+// back to the approved-content spine so the screen stays usable offline.
+//
+// Data (Track C4): units load through useQuery — cached 60s, deduped
+// in-flight, refetched on focus (progress changes behind other tabs), never
+// setState after unmount. The unit list is a FlatList (lesson counts only
+// grow); lessons inside an expanded unit stay a small nested map.
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useState } from "react";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
-import { api, type PathNode, type PathSpine } from "../api/client";
-import { useAuth } from "../store/auth";
+import { api, type LessonSummary, type Unit } from "../api/client";
+import { useQuery } from "../hooks/useQuery";
+import { useTypeScale } from "../hooks/useTypeScale";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { Button } from "../components/ui";
+import { Skeleton } from "../components/Skeleton";
 import type { TabScreenProps } from "../navigation/types";
 
-type NodeStatus = "locked" | "available" | "current" | "complete" | "mastered";
-
-const STATUS_COLORS: Record<NodeStatus, string> = {
-  locked:    color.inkFaint,
-  available: color.saffron,
-  current:   color.saffron,
-  complete:  color.gold,
-  mastered:  color.gold,
-};
-
-function nodeStatus(
-  mastery: number,
-  approvedCount: number,
-  prevUnlocked: boolean,
-): NodeStatus {
-  if (mastery >= 1) return "mastered";
-  if (mastery >= 0.8) return "complete";
-  if (approvedCount > 0 && prevUnlocked) return "current";
-  if (prevUnlocked) return "available";
-  return "locked";
-}
-
-// Offline fallback: a few taxonomy nodes the client knows even with no
-// network. The live endpoint carries the same ids plus approved counts.
-const FALLBACK_NODES: PathNode[] = [
-  { id: "NOM.SG", feature: "NOM.SG", kind: "case", rank: 10, label_en: "Nominative Singular", label_hi: "प्रथमा विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
-  { id: "ACC.SG", feature: "ACC.SG", kind: "case", rank: 11, label_en: "Accusative Singular", label_hi: "द्वितीया विभक्तिः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
-  { id: "SG", feature: "SG", kind: "number", rank: 20, label_en: "Singular", label_hi: "एकवचनम्", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
-  { id: "PRES.3SG", feature: "PRES.3SG", kind: "tense", rank: 32, label_en: "Present 3rd Person", label_hi: "वर्तमान प्रथमपुरुषः", approved_count: 0, pending_count: 0, mastery: 0, has_lesson: false },
-];
-
-interface PathNodeData {
-  id: string;
-  label: string;
-  labelSa: string;
-  mastery: number;
-  approvedCount: number;
-  features: string[];
-  hasLesson: boolean;
-}
-
-function toNodeData(n: PathNode): PathNodeData {
-  return {
-    id: n.id,
-    label: n.label_en || n.id,
-    labelSa: n.label_hi || n.id,
-    mastery: n.mastery ?? 0,
-    approvedCount: n.approved_count ?? 0,
-    features: [n.id],
-    hasLesson: n.has_lesson ?? false,
-  };
-}
-
-// ── PathNodeView component ─────────────────────────────────────────────
-
-function PathNodeView({
-  data,
-  index,
-  prevUnlocked,
-  onTap,
-}: {
-  data: PathNodeData;
-  index: number;
-  prevUnlocked: boolean;
-  onTap: (data: PathNodeData) => void;
-}) {
-  const status = nodeStatus(data.mastery, data.approvedCount, index === 0 || prevUnlocked);
-  const hasContent = data.approvedCount > 0;
-  const colorFill = STATUS_COLORS[status];
-
-  return (
-    <Pressable
-      onPress={() => onTap(data)}
-      style={[styles.node, status === "locked" && styles.nodeLocked]}
-      accessibilityRole="button"
-      accessibilityLabel={`${data.labelSa} — ${data.label}, ${status}, ${data.approvedCount} exercises`}
-    >
-      {/* Node circle */}
-      <View
-        style={[
-          styles.nodeCircle,
-          {
-            backgroundColor: status === "current" ? color.saffron : color.surface,
-            borderColor: colorFill,
-            borderWidth: status === "current" ? 3 : 2,
-          },
-          (status === "complete" || status === "mastered") && { backgroundColor: colorFill },
-        ]}
-      >
-        {status === "mastered" ? (
-          <Ionicons name="checkmark-circle" size={18} color={color.white} />
-        ) : status === "complete" ? (
-          <Ionicons name="checkmark" size={16} color={color.white} />
-        ) : (
-          <Text
-            style={[
-              styles.nodeIndex,
-              { color: status === "locked" ? color.inkFaint : color.saffron },
-            ]}
-          >
-            {index + 1}
-          </Text>
-        )}
-      </View>
-
-      {/* Label */}
-      <Text
-        style={[
-          styles.nodeLabel,
-          status === "locked" && styles.nodeLabelLocked,
-          { color: status === "locked" ? color.inkFaint : color.ink },
-        ]}
-      >
-        {data.labelSa}
-      </Text>
-      <Text style={[styles.nodeGloss, status === "locked" && { color: color.inkFaint }]}>
-        {hasContent ? `${data.approvedCount}` : "—"}
-      </Text>
-    </Pressable>
-  );
-}
-
-// ── Path screen ────────────────────────────────────────────────────────
-
 export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
-  const { learner } = useAuth();
-  const [spine, setSpine] = useState<PathSpine | null>(null);
-  const [loadFailed, setLoadFailed] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [selectedNode, setSelectedNode] = useState<PathNodeData | null>(null);
+  const { sized } = useTypeScale();
+  const { data: units, loading, failed, retry } = useQuery<Unit[]>("units", api.units, {
+    refetchOnFocus: true,
+  });
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [selected, setSelected] = useState<LessonSummary | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  const load = useCallback(() => {
-    setLoading(true);
-    api
-      .pathSpine()
-      .then((s) => {
-        setSpine(s);
-        setLoadFailed(false);
-      })
-      .catch(() => setLoadFailed(true))
-      .finally(() => setLoading(false));
-  }, []);
+  const list = units ?? [];
+  React.useEffect(() => {
+    if (list.length > 0) setExpanded((prev) => prev ?? list[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [units]);
 
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  const bands: PathNodeData[] = useMemo(
-    () =>
-      spine && spine.nodes.length > 0
-        ? spine.nodes.map(toNodeData)
-        : FALLBACK_NODES.map(toNodeData),
-    [spine],
+  const unitUnlocked = useCallback(
+    (idx: number) => {
+      if (idx === 0) return true;
+      if (!units) return false;
+      // A unit opens once the previous one has any progress — forward motion
+      // without a hard gate that strands a learner.
+      return (units[idx - 1]?.progress ?? 0) > 0;
+    },
+    [units],
   );
 
-  const onNodeTap = useCallback((data: PathNodeData) => {
-    setSelectedNode(data);
+  const onLessonTap = useCallback((lesson: LessonSummary) => {
+    setSelected(lesson);
     setSheetOpen(true);
   }, []);
 
-  const onStartUnit = useCallback(() => {
-    if (!selectedNode) return;
-    // Close the sheet FIRST so the learner never sees it over the pushed
-    // screen (U8-0), then launch a practice session scoped to this unit's
-    // feature.
+  const onLearn = useCallback(() => {
+    if (!selected) return;
     setSheetOpen(false);
-    navigation.navigate("Challenge", { features: selectedNode.features });
-  }, [selectedNode, navigation]);
+    navigation.navigate("Lesson", { featureId: selected.feature_id, lessonId: selected.id });
+  }, [selected, navigation]);
 
-  // U14-3: a node with a lesson routes Learn first — Lesson → Practice →
-  // Challenge. Back-navigation from Lesson returns here (stack pop).
-  const onLearnUnit = useCallback(() => {
-    if (!selectedNode) return;
+  const onPractice = useCallback(() => {
+    if (!selected) return;
     setSheetOpen(false);
-    navigation.navigate("Lesson", { featureId: selectedNode.features[0] });
-  }, [selectedNode, navigation]);
+    navigation.navigate("Challenge", { features: selected.features?.length ? selected.features : [selected.feature_id] });
+  }, [selected, navigation]);
+
+  const renderUnit = useCallback(
+    ({ item: unit, index: ui }: { item: Unit; index: number }) => {
+      const unlocked = unitUnlocked(ui);
+      const open = expanded === unit.id;
+      const pct = Math.round((unit.progress ?? 0) * 100);
+      return (
+        <View style={styles.unit}>
+          <Pressable
+            onPress={() => setExpanded(open ? null : unit.id)}
+            disabled={!unlocked}
+            style={[styles.unitHeader, !unlocked && styles.locked]}
+            accessibilityRole="button"
+            accessibilityState={{ expanded: open, disabled: !unlocked }}
+            accessibilityLabel={`Unit ${unit.rank}: ${unit.title_en}. ${pct} percent mastered. ${unlocked ? (open ? "Expanded" : "Collapsed") : "Locked"}`}
+          >
+            <View style={styles.unitIndex}>
+              {unlocked ? (
+                <Text style={styles.unitNum}>{unit.rank}</Text>
+              ) : (
+                <Ionicons name="lock-closed" size={16} color={color.inkFaint} />
+              )}
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.unitSa, script("bold")]}>{unit.title_hi}</Text>
+              <Text style={styles.unitEn}>{unit.title_en} · {unit.lessons.length} lessons</Text>
+              <View style={styles.track}>
+                <View style={[styles.fill, { width: `${pct}%` }]} />
+              </View>
+            </View>
+            <Ionicons
+              name={open ? "chevron-down" : "chevron-forward"}
+              size={18}
+              color={unlocked ? color.saffron : color.inkFaint}
+            />
+          </Pressable>
+          {open &&
+            unlocked &&
+            unit.lessons.map((lesson) => (
+              <Pressable
+                key={lesson.id}
+                onPress={() => onLessonTap(lesson)}
+                style={styles.lessonRow}
+                accessibilityRole="button"
+                accessibilityLabel={`${lesson.title_hi} — ${lesson.title_en}. ${lesson.step_count} steps`}
+              >
+                <Ionicons name="book-outline" size={18} color={color.saffron} />
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.lessonSa, script("semibold")]}>{lesson.title_hi}</Text>
+                  <Text style={styles.lessonEn}>{lesson.title_en}</Text>
+                </View>
+                <Text style={styles.lessonSteps}>{lesson.step_count} steps</Text>
+              </Pressable>
+            ))}
+          {open && !unlocked && (
+            <Text style={styles.lockNote}>Finish the previous unit to open this one.</Text>
+          )}
+        </View>
+      );
+    },
+    [expanded, onLessonTap, unitUnlocked],
+  );
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
-      <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.title}>Your Path</Text>
-        <Text style={styles.subtitle}>A journey through Sanskrit, step by step.</Text>
-
-        {loading && !spine ? (
-          <Text style={styles.statusText}>Loading your path…</Text>
-        ) : loadFailed ? (
+      {loading && !units ? (
+        <View style={styles.body} accessible accessibilityRole="progressbar" accessibilityLabel="Loading your path">
+          <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Your Path</Text>
+          <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>Eleven units, from the mouth-map to the sentence.</Text>
+          <Skeleton style={{ height: 72, marginTop: space.sm }} />
+          <Skeleton style={{ height: 72, marginTop: space.sm }} />
+          <Skeleton style={{ height: 72, marginTop: space.sm }} />
+        </View>
+      ) : failed && !units ? (
+        <View style={styles.body}>
+          <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Your Path</Text>
           <View style={[styles.errorCard, shadow.card]}>
-            <Text style={styles.errorTitle}>Couldn't load the path.</Text>
-            <Text style={styles.errorSub}>
+            <Text style={[styles.errorTitle, { fontSize: sized(font.sizes.base) }]}>Couldn't load the path.</Text>
+            <Text style={[styles.errorSub, { fontSize: sized(font.sizes.sm) }]}>
               Check your connection — your progress is safe.
             </Text>
-            <Button label="Retry" onPress={load} style={{ marginTop: space.md }} />
+            <Button label="Retry" onPress={retry} style={{ marginTop: space.md }} />
           </View>
-        ) : null}
+        </View>
+      ) : (
+        <FlatList
+          data={list}
+          keyExtractor={(u) => u.id}
+          renderItem={renderUnit}
+          contentContainerStyle={styles.body}
+          initialNumToRender={11}
+          ListHeaderComponent={            <View>
+              <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Your Path</Text>
+              <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>Eleven units, from the mouth-map to the sentence.</Text>
+            </View>
+          }
+          accessibilityLabel="Learning path units"
+        />
+      )}
 
-        {!loading && (
-          <View style={styles.path}>
-            {bands.map((band, i) => (
-              <React.Fragment key={band.id}>
-                {i > 0 && <View style={styles.connector} />}
-                <PathNodeView
-                  data={band}
-                  index={i}
-                  prevUnlocked={
-                    i === 0 ||
-                    bands.slice(0, i).some((b) => b.mastery >= 0.8 || b.approvedCount > 0)
-                  }
-                  onTap={onNodeTap}
-                />
-              </React.Fragment>
-            ))}
-          </View>
-        )}
-      </ScrollView>
-
-      {/* Unit detail sheet */}
-      {sheetOpen && selectedNode && (
+      {/* Lesson detail sheet */}
+      {sheetOpen && selected && (
         <View style={styles.sheetOverlay}>
           <Pressable
             style={styles.sheetBackdrop}
@@ -245,50 +181,11 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
             accessibilityLabel="Close details"
           />
           <View style={styles.sheet}>
-            <Text style={[styles.sheetTitle, script("bold")]}>{selectedNode.labelSa}</Text>
-            <Text style={styles.sheetSub}>{selectedNode.label}</Text>
-            <View style={styles.sheetMastery}>
-              <View style={styles.sheetMasteryTrack}>
-                <View
-                  style={[
-                    styles.sheetMasteryFill,
-                    { width: `${Math.round(selectedNode.mastery * 100)}%` },
-                  ]}
-                />
-              </View>
-              <Text style={styles.sheetMasteryText}>
-                {Math.round(selectedNode.mastery * 100)}% mastered
-              </Text>
-            </View>
-            {selectedNode.approvedCount === 0 ? (
-              <Text style={styles.sheetEmptyNote}>
-                No exercises ready here yet — you're ahead of us today. Try an
-                earlier unit.
-              </Text>
-            ) : null}
-            {selectedNode.hasLesson ? (
-              <>
-                <Button
-                  label="Learn"
-                  onPress={onLearnUnit}
-                  block
-                  style={{ marginTop: space.md }}
-                />
-                <Button
-                  label="Practice"
-                  onPress={onStartUnit}
-                  block
-                  style={{ marginTop: space.sm }}
-                />
-              </>
-            ) : (
-              <Button
-                label={selectedNode.approvedCount > 0 ? "Start unit" : "Practice anyway"}
-                onPress={onStartUnit}
-                block
-                style={{ marginTop: space.md }}
-              />
-            )}
+            <Text style={[styles.sheetTitle, script("bold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>{selected.title_hi}</Text>
+            <Text style={[styles.sheetSub, { fontSize: sized(font.sizes.sm) }]}>{selected.title_en}</Text>
+            <Text style={styles.sheetMeta}>{selected.step_count} steps · graded as you go</Text>
+            <Button label="Learn" onPress={onLearn} block style={{ marginTop: space.md }} />
+            <Button label="Practice" onPress={onPractice} block style={{ marginTop: space.sm }} />
           </View>
         </View>
       )}
@@ -339,59 +236,89 @@ const styles = StyleSheet.create({
     color: color.inkSoft,
     marginTop: 4,
   },
-  path: { alignItems: "center" },
-  connector: {
-    width: 3,
-    height: 24,
-    backgroundColor: color.border,
-    borderRadius: 1.5,
+  unit: {
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    marginBottom: space.md,
+    overflow: "hidden",
+    ...shadow.card,
   },
-  node: {
+  unitHeader: {
     flexDirection: "row",
     alignItems: "center",
     gap: space.md,
-    paddingVertical: space.sm,
-    paddingHorizontal: space.md,
-    borderRadius: radius.lg,
-    width: "100%",
-    maxWidth: 300,
+    padding: space.md,
+    minHeight: 64,
   },
-  nodeLocked: { opacity: 0.5 },
-  nodeCircle: {
+  locked: { opacity: 0.55 },
+  unitIndex: {
     width: 36,
     height: 36,
     borderRadius: 18,
+    backgroundColor: color.saffronLight,
     alignItems: "center",
     justifyContent: "center",
   },
-  nodeIndex: {
+  unitNum: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
-    fontSize: font.sizes.sm,
-  },
-  nodeLabel: {
-    fontFamily: script("bold").fontFamily,
-    fontWeight: script("bold").fontWeight,
     fontSize: font.sizes.base,
-    flex: 1,
-  } as any,
-  nodeGloss: {
+    color: color.saffronDeep,
+  },
+  unitSa: { fontSize: font.sizes.lg, color: color.ink },
+  unitEn: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
     fontSize: font.sizes.sm,
     color: color.inkSoft,
+    marginTop: 2,
   },
-  nodeLabelLocked: {},
+  track: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: color.border,
+    overflow: "hidden",
+    marginTop: space.xs,
+  },
+  fill: { height: 6, borderRadius: 3, backgroundColor: color.saffron },
+  lessonRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    paddingVertical: space.sm,
+    paddingHorizontal: space.md,
+    borderTopWidth: 1,
+    borderTopColor: color.border,
+    minHeight: 56,
+  },
+  lessonSa: { fontSize: font.sizes.base, color: color.ink },
+  lessonEn: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+  },
+  lessonSteps: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+  },
+  lockNote: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: color.inkFaint,
+    padding: space.md,
+    paddingTop: 0,
+  },
   sheetOverlay: {
     position: "absolute",
     inset: 0,
     justifyContent: "flex-end",
     zIndex: 100,
   },
-  sheetBackdrop: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.3)",
-  },
+  sheetBackdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.3)" },
   sheet: {
     backgroundColor: color.surface,
     borderTopLeftRadius: radius.xl,
@@ -407,29 +334,11 @@ const styles = StyleSheet.create({
     color: color.inkSoft,
     marginTop: 2,
   },
-  sheetMastery: { marginTop: space.md, flexDirection: "row", alignItems: "center", gap: space.sm },
-  sheetMasteryTrack: {
-    flex: 1,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: color.border,
-    overflow: "hidden",
-  },
-  sheetMasteryFill: { height: 8, borderRadius: 4, backgroundColor: color.saffron },
-  sheetMasteryText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
+  sheetMeta: {
+    fontFamily: "Nunito_500Medium",
+    fontWeight: "500",
     fontSize: font.sizes.xs,
-    color: color.inkSoft,
-    minWidth: 50,
-    textAlign: "right",
-  },
-  sheetEmptyNote: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    marginTop: space.md,
-    lineHeight: 20,
+    color: color.inkFaint,
+    marginTop: space.xs,
   },
 });

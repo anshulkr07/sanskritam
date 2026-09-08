@@ -1,6 +1,6 @@
 """P8-4 — the question 10 people answer, with thresholds written first."""
 
-from datetime import date, timedelta
+from datetime import datetime, timedelta, timezone
 
 from app.db import SessionLocal
 from app.models import DailyActivity, Learner
@@ -41,7 +41,9 @@ def test_thresholds_are_sane_and_written_first():
 def test_day2_counts_only_eligible_cohort():
     db = SessionLocal()
     try:
-        today = date.today()
+        # Test learners default to UTC, so "today" is the UTC date — never
+        # server-local date.today(), which straddles midnight in IST (§2.8).
+        today = datetime.now(timezone.utc).date()
         yday = (today - timedelta(days=1)).isoformat()
         today_s = today.isoformat()
         old = (today - timedelta(days=5)).isoformat()

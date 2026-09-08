@@ -16,7 +16,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -28,6 +28,7 @@ import { TypeScaleProvider } from "./src/hooks/useTypeScale";
 import { AskProvider } from "./src/ask/AskProvider";
 
 import MainTabs from "./src/navigation/AppDrawer";
+import { loadPrefs } from "./src/services/prefs";
 import ChallengeScreen from "./src/screens/Challenge";
 import LoginScreen from "./src/screens/Login";
 import WordOrderScreen from "./src/screens/WordOrder";
@@ -39,6 +40,8 @@ import WritingScreen from "./src/screens/Writing";
 import ReaderScreen from "./src/screens/Reader";
 import LessonScreen from "./src/screens/Lesson";
 import VocabScreen from "./src/screens/Vocab";
+import LicencesScreen from "./src/screens/Licences";
+import PingalaScreen from "./src/screens/Pingala";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -50,6 +53,15 @@ const HEADER_OPTS = {
     fontWeight: "800" as const,
   },
 };
+
+// Loads persisted preference flags once, so the haptics and reduce-motion
+// toggles drive real behaviour from the first run (U15-7).
+function PrefsLoader() {
+  useEffect(() => {
+    loadPrefs();
+  }, []);
+  return null;
+}
 
 function RootNavigator() {
   const { loading, onboarded } = useAuth();
@@ -92,6 +104,10 @@ function RootNavigator() {
             {/* U14/P22: the learning layer — Lesson → Practice → Challenge. */}
             <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
             <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
+            {/* U15-7: licences and credits — renders GET /licences. */}
+            <Stack.Screen name="Licences" component={LicencesScreen} options={{ title: "Licences and credits" }} />
+            {/* U15-6: Piṅgala as binary. */}
+            <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
@@ -99,8 +115,7 @@ function RootNavigator() {
 }
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    Nunito_400Regular,
+  const [fontsLoaded] = useFonts({    Nunito_400Regular,
     Nunito_500Medium,
     Nunito_600SemiBold,
     Nunito_700Bold,
@@ -123,6 +138,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
+        <PrefsLoader />
         <TypeScaleProvider>
           <AuthProvider>
             <NavigationContainer>

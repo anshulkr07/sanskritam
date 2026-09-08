@@ -197,6 +197,71 @@ export interface PathSpine {
   features_total: number;
 }
 
+// ─── Curriculum spine as data (P23 / U15) ───────────────────────────────
+// Units → Lessons → typed, gradable Steps. Lesson → Practice → Challenge.
+
+export interface LessonSummary {
+  id: string;
+  feature_id: string;
+  features: string[];
+  unit_id: string;
+  rank: number;
+  title_en: string;
+  title_hi: string;
+  register: string;
+  step_count: number;
+  attribution: string;
+}
+
+export interface Unit {
+  id: string;
+  rank: number;
+  layer: number;
+  title_en: string;
+  title_hi: string;
+  blurb: string;
+  lessons: LessonSummary[];
+  progress: number;
+}
+
+export interface LessonStep {
+  rank: number;
+  kind: string;
+  payload: Record<string, unknown>;
+  abstained: boolean;
+}
+
+export interface StepAttempt {
+  verdict: Verdict;
+  abstained: boolean;
+  mastery: Record<string, number>;
+  due_at: string | null;
+  item_key: string;
+}
+
+// ─── Licence registry (P23-4a / U15-7) ──────────────────────────────────
+
+export interface Licence {
+  key: string;
+  name: string;
+  url: string;
+  licence: string;
+  credit: string;
+  taken: string;
+}
+
+// ─── Review schedule (P23-5) ────────────────────────────────────────────
+
+export interface ReviewItem {
+  item_key: string;
+  kind: string;
+  due_at: string;
+  stability: number;
+  difficulty: number;
+  lapses: number;
+  last_verdict: string;
+}
+
 // ─── Curriculum (U14 / P22) ────────────────────────────────────────────
 // Lesson → Practice → Challenge. Lessons carry Vidyut-verified examples and
 // pre-computed visual_data the client renders without further derivation.
@@ -774,6 +839,25 @@ export const api = {
       }),
     }),
 
+  // Sign in with Apple (Guideline 4.8 companion to Google). The identityToken
+  // comes from the platform flow; displayName is forwarded only when Apple
+  // supplies it (first authorization) — the backend falls back otherwise.
+  appleLogin: (
+    idToken: string,
+    displayName?: string,
+    bridgeLangs: BridgeLangs = ["en", "hi"],
+    timezone?: string,
+  ) =>
+    request<DevLoginResponse>("/auth/apple", {
+      method: "POST",
+      body: JSON.stringify({
+        id_token: idToken,
+        display_name: displayName ?? null,
+        bridge_langs: bridgeLangs,
+        timezone,
+      }),
+    }),
+
   me: () => request<MeResponse>("/me", {}, true),
 
   updateRatio: (body: { sanskrit_ratio?: number; script_ratio?: number }) =>
@@ -799,6 +883,40 @@ export const api = {
 
   // P21-4: the canon catalogue — study order, depth, live imported counts.
   canon: () => request<{ texts: CanonText[] }>("/canon", {}, true),
+
+  // P23-4a / U15-7: the licence registry — name, wording, credit verbatim.
+  licences: () => request<Licence[]>("/licences", {}, true),
+
+  // P23-5: the review schedule — the honest "N due today".
+  reviewDue: (limit = 20) =>
+    request<{ due_count: number; items: ReviewItem[] }>(
+      `/review/due?limit=${limit}`,
+      {},
+      true,
+    ),
+
+  // P23-2: generated exercises — no table, no review queue. The answer is
+  // never in a generate() payload; grade() rebuilds from the same seed.
+  exerciseKinds: () => request<{ kinds: string[] }>("/exercises/kinds", {}, true),
+
+  generateExercise: (kind: string, params: Record<string, unknown>, seed: number) =>
+    request<Record<string, unknown>>(
+      "/exercises/generate",
+      { method: "POST", body: JSON.stringify({ kind, params, seed }) },
+      true,
+    ),
+
+  gradeExercise: (
+    kind: string,
+    params: Record<string, unknown>,
+    seed: number,
+    answer: Record<string, unknown>,
+  ) =>
+    request<{ verdict: Verdict; abstained: boolean }>(
+      "/exercises/grade",
+      { method: "POST", body: JSON.stringify({ kind, params, seed, answer }) },
+      true,
+    ),
 
   varnamala: () => request<VarnamalaResponse>("/grammar/varnamala"),
 
@@ -922,6 +1040,26 @@ export const api = {
 
   // Curriculum (U14 / P22) — Lesson → Practice → Challenge; vocab; graded
   // reading. Static content: no quota, but still auth-bound like /shlokas.
+  // P23: lessons are addressable by id (steps) as well as by feature.
+  units: () => request<Unit[]>("/units", {}, true),
+
+  lessons: (unitId?: string) =>
+    request<LessonSummary[]>(
+      "/lessons" + (unitId ? `?unit_id=${encodeURIComponent(unitId)}` : ""),
+      {},
+      true,
+    ),
+
+  lessonSteps: (lessonId: string) =>
+    request<LessonStep[]>(`/lessons/${encodeURIComponent(lessonId)}/steps`, {}, true),
+
+  attemptStep: (lessonId: string, rank: number, answer: Record<string, unknown>) =>
+    request<StepAttempt>(
+      `/lessons/${encodeURIComponent(lessonId)}/steps/${rank}/attempt`,
+      { method: "POST", body: JSON.stringify({ answer }) },
+      true,
+    ),
+
   lesson: (featureId: string) =>
     request<Lesson>(`/lessons/${encodeURIComponent(featureId)}`, {}, true),
 

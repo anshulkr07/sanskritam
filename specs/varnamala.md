@@ -1,5 +1,10 @@
 # Spec E — Varṇamālā + pronunciation surface (build order step 5)
 
+> **Status (audited 2026-09-08): §2–4 unbuilt.** The display grid
+> (`GET /grammar/varnamala`) + client articulation map + pronunciation mic are
+> live; the data extensions below (ids, example words, minimal pairs, contrast
+> groups, progress endpoints) are not. `_PLACES` `ca`/`च` bug still in tree.
+
 ## Context
 
 Sanskritam (`D:\Projects\Shabd`) backend, FastAPI + SQLAlchemy, Python 3.11, Windows/git-bash, venv `backend/.venv`.
@@ -77,7 +82,9 @@ Example words: `ka` कमलम् kamalam lotus · `kha` खगः khagaḥ bi
 
 For `am`/`ah` carry both forms: `devanagari` as the अ-carrier display form above, plus `mark` (`ं`, `ः`) for clients that render the bare combining mark. The existing file stores only the bare mark — that displays badly on its own.
 
-**Total: 48 varṇas.**
+**Total: 49 varṇas** (14 vowels + 25 stops + 10 semivowels/sibilants/
+ayogavāha — the traditional 48 plus ḹ, which is purely theoretical but
+tabled with an empty example like ṝ/ḷ).
 
 ## 2. Contrast groups — the drill sets
 
@@ -102,7 +109,7 @@ Give each group a `note_en` explaining the difficulty in one sentence — it is 
 /audio/varnamala/{id}_example.wav   the example word
 ```
 
-48 varṇas × 2 ≈ 96 clips — the bank §13 sizes, small enough to ship in the app bundle and work offline at zero marginal cost.
+49 varṇas × 2 ≈ 98 clips (minus 3 empty examples = 95) — the bank §13 sizes, small enough to ship in the app bundle and work offline at zero marginal cost.
 
 Render with the existing `scripts/render_sarvam.py` (Bulbul). Add `scripts/build_varnamala_items.py` emitting the `{id, text, lang}` item file it consumes. Render `hi-IN` today and re-run with `--sa-language sa-IN` once the Sarvam beta flag lands — flag change, no code change.
 

@@ -241,6 +241,10 @@ def test_unsure_cannot_lower_mastery_or_break_streak(client):
 
 
 def test_correct_attempt_can_feed_mastery(client):
+    """P23-5: a correct attempt feeds WRITING mastery — the dedicated
+    ``writing_mastery`` column, never ``feature_mastery`` (which maps
+    feature_id -> float and broke every float() reader while heterogeneous).
+    """
     from app.db import SessionLocal
     db = SessionLocal()
     try:
@@ -251,8 +255,12 @@ def test_correct_attempt_can_feed_mastery(client):
         assert r.json()["verdict"] == "correct"
         db.expire_all()
         lr = db.query(Learner).filter(Learner.display_name == "tester").first()
-        writes = {k: v for k, v in (lr.feature_mastery or {}).items() if k.startswith("write:")}
-        assert writes, "a correct attempt feeds mastery"
+        writes = {k: v for k, v in (lr.writing_mastery or {}).items()}
+        assert writes, "a correct attempt feeds writing mastery"
+        cell = next(iter(writes.values()))
+        assert cell["attempts"] >= 1 and cell["correct"] >= 1
+        leaked = [k for k in (lr.feature_mastery or {}) if str(k).startswith("write:")]
+        assert not leaked, f"writing progress leaked into feature_mastery: {leaked}"
     finally:
         _cleanup_item(db, it.id, created)
         db.close()

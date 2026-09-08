@@ -57,7 +57,7 @@ def test_lesson_iast_matches_lipi(client):
 
 def test_missing_lesson_is_honest_404(client):
     """A feature with no lesson returns 404 — never a blank (§2.11)."""
-    r = client.get("/lessons/PRES.1SG", headers=_auth_h(client))
+    r = client.get("/lessons/PRES.2SG", headers=_auth_h(client))
     assert r.status_code == 404
 
 
@@ -82,7 +82,7 @@ def test_path_nodes_carry_has_lesson(client):
     d = client.get("/grammar/path", headers=_auth_h(client)).json()
     by_id = {n["id"]: n for n in d["nodes"]}
     assert by_id["NOM.SG"]["has_lesson"] is True
-    assert by_id["PRES.1SG"]["has_lesson"] is False
+    assert by_id["PRES.2SG"]["has_lesson"] is False
     for n in d["nodes"]:
         assert "has_lesson" in n
 

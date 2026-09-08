@@ -119,20 +119,33 @@ async def writing_attempt(
     db.commit()
     db.refresh(attempt)
 
-    # Correct attempts may feed mastery the way pronunciation does. Unsure
-    # contributes NOTHING (§2.2) — and nothing here writes it.
+    # Correct attempts feed handwriting progress — which lives in its OWN
+    # column (P23-5). feature_mastery maps feature_id -> float; writing
+    # progress maps item-iast -> {attempts, correct}. Mixing them made
+    # feature_mastery heterogeneous and broke every float() reader.
     if scoring["verdict"] == "correct":
-        # Copy before mutating: assigning the loaded JSON dict back to the
-        # column after in-place mutation records NO attribute change, and the
-        # UPDATE is silently skipped (it passes in isolation, where the
-        # column starts empty, and drops the write on a populated row).
+        writing = dict(learner.writing_mastery or {})
+        # Lazy migration: rows written before P23-5 carry "write:" dicts in
+        # feature_mastery. Move them once, here — this router owns the only
+        # writer, so one move point covers every learner.
         mastery = dict(learner.feature_mastery or {})
-        key = f"write:{item.iast or item.devanagari}"
-        cell = dict(mastery.get(key) or {"attempts": 0, "correct": 0, "ef": 2.5})
-        cell["attempts"] += 1
-        cell["correct"] += 1
-        mastery[key] = cell
-        learner.feature_mastery = mastery
+        legacy = {k: v for k, v in mastery.items()
+                  if isinstance(k, str) and k.startswith("write:") and isinstance(v, dict)}
+        for k, v in legacy.items():
+            short = k[len("write:"):]
+            cell = dict(writing.get(short) or {"attempts": 0, "correct": 0})
+            cell["attempts"] = int(cell.get("attempts", 0)) + int(v.get("attempts", 0))
+            cell["correct"] = int(cell.get("correct", 0)) + int(v.get("correct", 0))
+            writing[short] = cell
+            del mastery[k]
+        if legacy:
+            learner.feature_mastery = mastery
+        key = item.iast or item.devanagari
+        cell = dict(writing.get(key) or {"attempts": 0, "correct": 0})
+        cell["attempts"] = int(cell.get("attempts", 0)) + 1
+        cell["correct"] = int(cell.get("correct", 0)) + 1
+        writing[key] = cell
+        learner.writing_mastery = writing
         db.commit()
 
     return WritingAttemptResponse(

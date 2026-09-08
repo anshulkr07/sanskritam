@@ -3,27 +3,49 @@
 // Decorative animations (parallax, confetti, sparkles, breath) should
 // gate on this — functional motion (sheet position, progress fill) should
 // cut durations to ~40% but still run.
+//
+// U15-7: OR-ed with the in-app "Reduce motion" override (Settings →
+// services/prefs). Many older users never discover the OS setting; the
+// app's own toggle must drive the same hook every animation reads.
 
 import { useEffect, useState } from "react";
 import { AccessibilityInfo } from "react-native";
 
+import { isReducedMotionOverride, subscribePrefs } from "../services/prefs";
+
 /**
- * Returns true when the user has enabled Reduce Motion in their OS settings.
+ * Returns true when the user has enabled Reduce Motion in their OS settings
+ * or in the app's own Settings toggle.
  */
 export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
+  const [reduced, setReduced] = useState(
+    () => isReducedMotionOverride(),
+  );
 
   useEffect(() => {
-    // Read the current setting
-    AccessibilityInfo.isReduceMotionEnabled().then(setReduced);
+    let alive = true;
+    // Read the current OS setting, OR-ed with the app override.
+    AccessibilityInfo.isReduceMotionEnabled().then((os) => {
+      if (alive) setReduced(os || isReducedMotionOverride());
+    });
 
-    // Subscribe to changes
+    // Subscribe to OS changes.
     const sub = AccessibilityInfo.addEventListener(
       "reduceMotionChanged",
-      setReduced,
+      (os) => setReduced(os || isReducedMotionOverride()),
     );
+    // ...and to the in-app toggle.
+    const unsub = subscribePrefs(() => {
+      AccessibilityInfo.isReduceMotionEnabled().then((os) => {
+        if (alive) setReduced(os || isReducedMotionOverride());
+      });
+    });
 
-    return () => sub.remove();
+    return () => {
+      alive = false;
+      sub.remove();
+      unsub();
+    };
   }, []);
 
   return reduced;

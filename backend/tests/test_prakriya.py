@@ -88,3 +88,20 @@ def test_paradigm_missing_is_empty_not_error():
     # dhatu="" is falsy so it also degrades, returning an empty grid
     r = prakriya.paradigm(dhatu="")
     assert r["rows"] == []
+
+
+def test_unknown_enum_member_warns_and_defaults(caplog):
+    """A misspelled vidyut code (linga="Neut" — the member is "Napumsaka")
+    must LOUDLY fall back, never silently derive the wrong gender. Found
+    2026-09-08 via phala→phalau (correct: phale)."""
+    import logging
+
+    from app.services.prakriya import _enum_member
+    from vidyut.prakriya import Linga
+
+    with caplog.at_level(logging.WARNING, logger="shabd.prakriya"):
+        assert _enum_member(Linga, "Neut", Linga.Pum) is Linga.Pum
+    assert any("Neut" in m for m in caplog.messages)
+    # Valid members resolve silently.
+    assert _enum_member(Linga, "Napumsaka", Linga.Pum) is Linga.Napumsaka
+    assert _enum_member(Linga, "Stri", Linga.Pum) is Linga.Stri

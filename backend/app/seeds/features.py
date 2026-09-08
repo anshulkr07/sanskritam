@@ -38,6 +38,15 @@ SEED_FEATURES = [
     # ── Imperative ──
     {"id": "IMP.2SG", "kind": "tense", "rank": 40, "label_en": "Imperative 2nd Singular", "label_hi": "आज्ञा मध्यमपुरुष एकवचन"},
 
+    # ── U8 More Tenses (2026-09-08 curation). Imperative plural + imperfect
+    # + future, all derive-exact in prakriya (measured in derive_u8.txt).
+    # Graded only by derive_next proofs — no analyzer involvement, so no
+    # frozen-analyzer conflict. No challenge bands reference these yet.
+    {"id": "IMP.2PL", "kind": "tense", "rank": 41, "label_en": "Imperative 2nd Person Plural", "label_hi": "आज्ञा मध्यमपुरुष बहुवचन"},
+    {"id": "IMPF.3SG", "kind": "tense", "rank": 42, "label_en": "Imperfect 3rd Person Singular", "label_hi": "अनद्यतनभूत प्रथमपुरुष एकवचन"},
+    {"id": "FUT.1SG", "kind": "tense", "rank": 43, "label_en": "Future 1st Person Singular", "label_hi": "भविष्यत् उत्तमपुरुष एकवचन"},
+    {"id": "FUT.3SG", "kind": "tense", "rank": 44, "label_en": "Future 3rd Person Singular", "label_hi": "भविष्यत् प्रथमपुरुष एकवचन"},
+
     # ── Voices (2) ──
     {"id": "PARASMAIPADA", "kind": "voice", "rank": 50, "label_en": "Parasmaipada (active)", "label_hi": "परस्मैपद"},
     {"id": "ATMANEPADA", "kind": "voice", "rank": 51, "label_en": "Ātmanepada (middle)", "label_hi": "आत्मनेपद"},

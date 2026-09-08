@@ -45,7 +45,16 @@ PROMPTS = {
     "CONSONANT-SANDHI": "Join with consonant sandhi: {first} + {second}",
 }
 
-# P22-2 — taxonomy-only features: present in the seeded taxonomy as
+# U8 (2026-09-08 curation) — step-exercised features: present in the
+# taxonomy AND drilled by lesson steps (derive_next proofs), but with NO
+# challenge band referencing them yet (bands are a later content task).
+# The coverage report marks these "step-exercised" — a 0 in the approved
+# column is a missing band, not a missing feature, and must never be
+# "fixed" by prompting an LLM for challenges. Distinct from
+# TAXONOMY_ONLY_FEATURES (never exercised anywhere).
+STEP_EXERCISED_FEATURES = frozenset({
+    "IMP.2PL", "IMPF.3SG", "FUT.1SG", "FUT.3SG",
+})
 # explanation vocabulary (samāsa for the Reader, kāraka for "why was I
 # wrong?") but with NO challenge band referencing them, because the frozen
 # analyzer cannot derive samāsa/kāraka. The coverage report marks these
@@ -85,6 +94,8 @@ def run_coverage() -> int:
         n = approved.get(f.id, 0)
         if f.id in TAXONOMY_ONLY_FEATURES:
             print(f"    {f.id:20} approved={n}  (taxonomy-only by design — no band)")
+        elif f.id in STEP_EXERCISED_FEATURES:
+            print(f"    {f.id:20} approved={n}  (step-exercised by design — no band yet)")
         else:
             print(f"    {f.id:20} approved={n}")
     return 0

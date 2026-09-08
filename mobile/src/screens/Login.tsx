@@ -1,7 +1,9 @@
 // Login / entry screen. Stranger-first (U10-1): a fresh install reaches a
-// usable session with no typing. Two ways in:
+// usable session with no typing. Three ways in:
 //   • Continue with Google  — an account, for syncing progress across devices
 //     (only if a Google client ID is configured; else the button is disabled).
+//   • Continue with Apple   — iOS only, required by Guideline 4.8 wherever
+//     Google sign-in is offered (only when the native module is available).
 //   • Continue as Guest     — anonymous local install, one tap, no account.
 // This screen is shown by App.tsx whenever the user is not onboarded.
 //
@@ -10,11 +12,13 @@
 // that Google rejects for Android OAuth clients ("Custom URI is not enabled").
 // The native flow verifies package name + signing-cert SHA-1 via Play Services
 // and returns an id_token whose aud is the configured webClientId — which the
-// backend (POST /auth/google) verifies.
+// backend (POST /auth/google) verifies. Apple works the same way against
+// POST /auth/apple (ES256 identityToken, aud = bundle/Services ID).
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -22,6 +26,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as AppleAuthentication from "expo-apple-authentication";
 import {
   GoogleSignin,
   isSuccessResponse,
@@ -40,9 +45,18 @@ if (GOOGLE_CLIENT_IDS.webClientId) {
 }
 
 export default function LoginScreen() {
-  const { googleLogin, guestLogin, finishOnboarding } = useAuth();
-  const [busy, setBusy] = useState<"none" | "google" | "guest">("none");
+  const { googleLogin, appleLogin, guestLogin, finishOnboarding } = useAuth();
+  const [busy, setBusy] = useState<"none" | "google" | "apple" | "guest">("none");
   const [error, setError] = useState<string | null>(null);
+  // Sign in with Apple exists only on iOS with the native module (dev
+  // build). Never rendered elsewhere — Guideline 4.8 is an iOS rule.
+  const [appleAvailable, setAppleAvailable] = useState(Platform.OS === "ios");
+  useEffect(() => {
+    if (Platform.OS !== "ios") return;
+    AppleAuthentication.isAvailableAsync()
+      .then(setAppleAvailable)
+      .catch(() => setAppleAvailable(false));
+  }, []);
 
   const onGoogle = async () => {
     setError(null);
@@ -82,8 +96,40 @@ export default function LoginScreen() {
     }
   };
 
-  const onGuest = async () => {
+  const onApple = async () => {
     setError(null);
+    setBusy("apple");
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+      });
+      if (!credential.identityToken) {
+        setError("Apple didn't return an identity token. Please try again.");
+        return;
+      }
+      // Apple sends the name only on first authorization — forward it when
+      // present; the backend falls back to the relay-email local part.
+      const given = credential.fullName?.givenName?.trim() ?? "";
+      const family = credential.fullName?.familyName?.trim() ?? "";
+      const name = `${given} ${family}`.trim() || undefined;
+      await appleLogin(credential.identityToken, name);
+      await finishOnboarding();
+    } catch (e) {
+      if ((e as { code?: string }).code !== "ERR_REQUEST_CANCELED") {
+        setError(
+          e instanceof Error ? e.message : "Apple sign-in failed. Please try again.",
+        );
+      }
+      // Cancelled: user backed out; just re-enable the button.
+    } finally {
+      setBusy("none");
+    }
+  };
+
+  const onGuest = async () => {    setError(null);
     setBusy("guest");
     try {
       await guestLogin();
@@ -135,6 +181,26 @@ export default function LoginScreen() {
                 {busy === "google" ? "Connecting…" : "Continue with Google"}
               </Text>
             </Pressable>
+
+            {/* Continue with Apple — iOS only (Guideline 4.8). */}
+            {appleAvailable && (
+              <Pressable
+                disabled={busy !== "none"}
+                onPress={onApple}
+                style={({ pressed }) => [
+                  styles.appleBtn,
+                  pressed && styles.googleBtnPressed,
+                  busy !== "none" && styles.btnDisabled,
+                ]}
+                accessibilityRole="button"
+                accessibilityLabel="Continue with Apple"
+              >
+                <Text style={styles.appleIconText}></Text>
+                <Text style={styles.appleBtnText}>
+                  {busy === "apple" ? "Connecting…" : "Continue with Apple"}
+                </Text>
+              </Pressable>
+            )}
 
             {/* Divider */}
             <View style={styles.dividerRow}>
@@ -259,6 +325,31 @@ const styles = StyleSheet.create({
   },
   googleBtnText: {
     color: color.ink,
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.base,
+  },
+  // Apple button — black filled,  icon.
+  appleBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: space.sm,
+    backgroundColor: color.ink,
+    borderRadius: radius.md,
+    paddingVertical: space.md,
+    marginTop: space.sm,
+    minHeight: 52,
+    ...shadow.button,
+  },
+  appleIconText: {
+    color: color.white,
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 16,
+  },
+  appleBtnText: {
+    color: color.white,
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
     fontSize: font.sizes.base,

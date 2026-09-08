@@ -25,10 +25,10 @@ import Animated, {
   withDelay,
 } from "react-native-reanimated";
 
-import { api, type DailyWordPuzzle, type LearnerProfile, type Shloka } from "../api/client";
+import { api, type DailyWordPuzzle, type LearnerProfile, type LessonSummary, type Shloka, type Unit } from "../api/client";
 import { Card, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
-import TutorFull from "../components/TutorFull";
+import { Gesture, GuruNative } from "../components/guru";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/AppDrawer";
@@ -48,6 +48,10 @@ export default function HomeScreen({ navigation }: Props) {
   const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
   const [dailyLoading, setDailyLoading] = useState(true);
   const [dailyError, setDailyError] = useState(false);
+  // U15-5: Home routes into the lesson — "continue Unit N" plus, once P23-5
+  // landed, an honest "N due today" from the review schedule.
+  const [units, setUnits] = useState<Unit[] | null>(null);
+  const [dueCount, setDueCount] = useState(0);
 
   useEffect(() => {
     refresh().then(setProfile);
@@ -84,6 +88,8 @@ export default function HomeScreen({ navigation }: Props) {
   useEffect(() => {
     loadShloka();
     loadDaily();
+    api.units().then(setUnits).catch(() => setUnits(null));
+    api.reviewDue(1).then((d) => setDueCount(d.due_count ?? 0)).catch(() => setDueCount(0));
   }, [loadShloka, loadDaily]);
 
   const openDrawer = useCallback(() => {
@@ -95,6 +101,19 @@ export default function HomeScreen({ navigation }: Props) {
   const streak = profile?.streak ?? 0;
   const ratio = profile?.sanskrit_ratio ?? 0.3;
   const ratioPct = Math.round(ratio * 100);
+
+  // U15-5: continue where the learner is — first unfinished unit, else review.
+  const continueTarget: { unit: Unit; lesson: LessonSummary } | null = (() => {
+    if (!units || units.length === 0) return null;
+    for (const u of units) {
+      if ((u.progress ?? 0) < 1 && u.lessons.length > 0) {
+        return { unit: u, lesson: u.lessons[0] };
+      }
+    }
+    const last = units[units.length - 1];
+    if (last.lessons.length > 0) return { unit: last, lesson: last.lessons[0] };
+    return null;
+  })();
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -115,7 +134,7 @@ export default function HomeScreen({ navigation }: Props) {
       <ScrollView contentContainerStyle={styles.body}>
         {/* Mascot greeting */}
         <View style={styles.greetRow}>
-          <TutorFull height={110} />
+          <GuruNative state="idle" size={110} gesture={Gesture.Anjali} />
           <View style={styles.greetBubble}>
             <Text style={[styles.greeting, script("extrabold")]}>नमस्ते, {profile?.display_name ?? "learner"}!</Text>
             <Text style={styles.subline}>Ready for today's practice?</Text>
@@ -124,7 +143,14 @@ export default function HomeScreen({ navigation }: Props) {
 
         {/* Cards — stagger in once per mount, capped at 6 (§8) */}
         <Entrance index={0}>
-          <PracticeNode onPress={() => navigation.navigate("Challenge", {})} />
+          <ContinueUnit
+            target={continueTarget}
+            dueCount={dueCount}
+            onLesson={(lesson) =>
+              navigation.navigate("Lesson", { featureId: lesson.feature_id, lessonId: lesson.id })
+            }
+            onPractice={() => navigation.navigate("Challenge", {})}
+          />
         </Entrance>
 
         <Entrance index={1}>
@@ -171,6 +197,52 @@ function Entrance({ index, children }: { index: number; children: React.ReactNod
     transform: [{ translateY: translateY.value }],
   }));
   return <Animated.View style={style}>{children}</Animated.View>;
+}
+
+// ─── Continue CTA (U15-5) ─────────────────────────────────────────────────
+// Home's primary CTA goes to the LESSON, not straight to Challenge: continue
+// Unit N, with the honest due count beside it once reviews exist.
+
+function ContinueUnit({
+  target,
+  dueCount,
+  onLesson,
+  onPractice,
+}: {
+  target: { unit: Unit; lesson: LessonSummary } | null;
+  dueCount: number;
+  onLesson: (lesson: LessonSummary) => void;
+  onPractice: () => void;
+}) {
+  if (!target) {
+    return <PracticeNode onPress={onPractice} />;
+  }
+  const dueText = dueCount > 0 ? ` · ${dueCount} due today` : "";
+  return (
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onLesson(target.lesson);
+      }}
+      style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
+      accessibilityRole="button"
+      accessibilityLabel={`Continue Unit ${target.unit.rank}, ${target.unit.title_en}${dueCount > 0 ? `, ${dueCount} reviews due` : ""}`}
+    >
+      <View style={styles.practiceIcon}>
+        <Ionicons name="book" size={30} color={color.white} />
+      </View>
+      <View style={styles.practiceText}>
+        <Text style={styles.practiceLabel}>
+          Continue Unit {target.unit.rank} — {target.unit.title_en}
+        </Text>
+        <Text style={styles.practiceHint}>
+          {target.lesson.title_en}
+          {dueText}
+        </Text>
+      </View>
+      <Ionicons name="chevron-forward" size={22} color={color.white} />
+    </Pressable>
+  );
 }
 
 // ─── Practice CTA ─────────────────────────────────────────────────────

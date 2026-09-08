@@ -126,13 +126,18 @@ def test_job_one_a_day_across_kinds(client):
 
 def test_job_stops_after_ignored(client):
     from datetime import date, timedelta
+    from app.services.localtime import learner_today
     db = SessionLocal()
     try:
         learner = _learner(db, "p13-ignored")
         register_token(db, learner, "d1", "tok-ignored-11", "android")
         # MAX_IGNORED past sends, no activity at all → streak == sends.
+        # Anchored on the LEARNER's today (§2.8): server-local date.today()
+        # straddles midnight in IST while the learner (UTC) is still
+        # yesterday, which misroutes the latest send into "already sent".
+        base = date.fromisoformat(learner_today(learner))
         for i in range(1, MAX_IGNORED + 1):
-            day = (date.today() - timedelta(days=i)).isoformat()
+            day = (base - timedelta(days=i)).isoformat()
             db.add(NotificationSend(learner_id=learner.id, local_date=day, kind="reminder"))
         db.commit()
         assert ignored_streak(db, learner.id) >= MAX_IGNORED

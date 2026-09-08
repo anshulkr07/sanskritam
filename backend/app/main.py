@@ -130,6 +130,10 @@ def create_app() -> FastAPI:
     from app.routers.reader import router as reader_router
     from app.routers.notify import router as notify_router
     from app.routers.canon import router as canon_router
+    from app.routers.exercises import router as exercises_router
+    from app.routers.licences import router as licences_router
+    from app.routers.review import router as review_router
+    from app.routers.varnamala import router as varnamala_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -153,6 +157,10 @@ def create_app() -> FastAPI:
     app.include_router(reader_router, tags=["Reader"])
     app.include_router(notify_router, tags=["Notify"])
     app.include_router(canon_router, tags=["Canon"])
+    app.include_router(exercises_router, tags=["Exercises"])
+    app.include_router(licences_router, tags=["Licences"])
+    app.include_router(review_router, tags=["Review"])
+    app.include_router(varnamala_router, tags=["Varnamala"])
 
     # Serve pre-rendered audio (/audio/<path>) BEFORE the frontend catch-all
     # mount below so the static WAVs resolve even though the console is mounted

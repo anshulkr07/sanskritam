@@ -530,18 +530,24 @@ from `useRive()`.
 
 ## Export
 
-One file, `mobile/assets/guru.riv`, two artboards: `GuruPortrait` / `TutorSM`
+Single deliverable path: `mobile/assets/guru.riv` (not
+`mobile/assets/avatar/guru.riv` — `UI_HANDOVER.md` §6.3 named the old path;
+this is the canonical one). Two artboards: `GuruPortrait` / `TutorSM`
 and `GuruMeditate` / `MeditateSM`. The empty `GuruFull` artboard has been
-deleted.
+deleted. No `.riv` is on disk yet (export is plan-gated) — the app ships the
+native renderer (`mobile/assets/guru/*.png` + `GuruNative.tsx`) until then.
 
-### Where each is used
+### Where each is used (audited 2026-09-08)
 
-| Screen | Was | Is |
+| Screen | Was | Is (actual) |
 |---|---|---|
-| `Conversation.tsx` | `<TutorAvatar state size={100}>` | `<Guru state size={110} speech={{text, durationMs}} />` |
-| `Home.tsx` | `<TutorFull height={110}>` | `<Guru size={120} gesture={Gesture.Anjali} />` |
-| `SessionComplete.tsx` | `<TutorFull height={190} celebrate>` | `<Guru size={260} state={Celebrating} gesture={Gesture.Abhaya} />` |
-| *(no screen yet)* | — | `<GuruScene />` |
+| `Conversation.tsx` | `<TutorAvatar state size={100}>` | `<GuruNative state size={100} speech={speech} />` — swapped |
+| `Home.tsx` | `<TutorFull height={110}>` | `<TutorFull height={110}>` — still old, swap pending |
+| `SessionComplete.tsx` | `<TutorFull height={190} celebrate>` | `<TutorFull>` — still old, swap pending |
+| *(no screen yet)* | — | `<GuruScene />` — finished and unplaced |
+
+`TutorAvatar.tsx` has no callers left. `TutorFull.tsx` is still used by Home
+and SessionComplete.
 
 `GuruScene` is finished and unplaced. Natural homes: a breathing/pause screen
 between lessons, the śloka recitation screen, or Home's hero when nothing is due.

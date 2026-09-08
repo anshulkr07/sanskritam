@@ -80,3 +80,58 @@ def test_reader_never_grades(client):
     blob = str(rows)
     for key in ("verdict", "score", "streak", "mastery"):
         assert key not in blob
+
+
+def test_vocab_backfills_examples_from_approved_pool(client):
+    """A3: rows seeded when the pool was thin carry examples == []; a reseed
+    refills them from today's approved pool without duplicating rows."""
+    from app.db import SessionLocal
+    from app.models import VocabWord
+    from app.seeds.vocab import seed_vocab
+
+    db = SessionLocal()
+    try:
+        before = db.query(VocabWord).count()
+        # Pick a word that has at least one pool sentence, empty it, reseed.
+        candidate = None
+        for w in db.query(VocabWord).all():
+            if (w.examples or []):
+                candidate = w
+                break
+        assert candidate is not None, "no word with pool examples to test refill"
+        dev = candidate.devanagari
+        candidate.examples = []
+        db.commit()
+        result = seed_vocab(db)
+        db.commit()
+        after = db.query(VocabWord).count()
+        assert after == before, f"reseed duplicated rows: {before} -> {after}"
+        refilled = db.query(VocabWord).filter(
+            VocabWord.topic == candidate.topic,
+            VocabWord.devanagari == dev).first()
+        assert (refilled.examples or []), f"{dev} was not refilled"
+        assert result.get("examples_filled", 0) >= 1
+        for ex in refilled.examples:
+            assert ex["devanagari"] and ex["iast"] and dev in ex["devanagari"]
+    finally:
+        db.close()
+
+
+def test_reader_ensure_sees_own_insert(client):
+    """P8-0 aftermath: the approved pool holds laukika+classical variants of
+    one sentence, so one seed run meets the same (tier, devanagari) twice.
+    _ensure must see its own insert (flush per add, like _seed_challenges)
+    instead of double-inserting against UNIQUE(tier, devanagari)."""
+    from app.db import SessionLocal
+    from app.seeds.reader_passages import _ensure
+
+    db = SessionLocal()
+    try:
+        first = _ensure(db, 9, 0, "परीक्षा वाक्यम्", [], [], [], "laukika",
+                        "original")
+        second = _ensure(db, 9, 1, "परीक्षा वाक्यम्", [], [], [], "classical",
+                         "original")
+        assert (first, second) == (True, False)
+    finally:
+        db.rollback()
+        db.close()

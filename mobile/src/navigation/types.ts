@@ -51,8 +51,14 @@ export type RootStackParamList = {
   Reader: undefined;
   // U14/P22: the learning layer — Lesson → Practice → Challenge. A Lesson is
   // reached from a Path node when has_lesson is true; Vocab from Play.
-  Lesson: { featureId: string };
+  // U15-1: the lesson is now a step player addressed by id; featureId stays
+  // as the legacy entry (Path nodes that only know their feature).
+  Lesson: { featureId: string; lessonId?: string };
   Vocab: { topic?: string } | undefined;
+  // U15-7: licences and credits — renders GET /licences, nothing else.
+  Licences: undefined;
+  // U15-6: Piṅgala as binary — light/heavy enumeration, mātrāmeru.
+  Pingala: undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

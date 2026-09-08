@@ -62,6 +62,7 @@ interface AuthState {
   displayName: string;
   login: (displayName: string) => Promise<LearnerProfile>;
   googleLogin: (idToken: string) => Promise<LearnerProfile>;
+  appleLogin: (idToken: string, displayName?: string) => Promise<LearnerProfile>;
   guestLogin: () => Promise<LearnerProfile>;
   finishOnboarding: () => Promise<void>;
   logout: () => Promise<void>;
@@ -124,6 +125,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const googleLogin = useCallback(
     async (idToken: string): Promise<LearnerProfile> => {
       const res = await api.googleLogin(idToken, ["en", "hi"], undefined);
+      setDisplayName(res.learner.display_name);
+      await AsyncStorage.setItem(NAME_KEY, res.learner.display_name);
+      return applySession(res);
+    },
+    [applySession],
+  );
+
+  // Sign in with Apple — same shape as Google. displayName is forwarded only
+  // when Apple supplies it (first authorization); the backend falls back to
+  // the relay-email local part, then a label.
+  const appleLogin = useCallback(
+    async (idToken: string, name?: string): Promise<LearnerProfile> => {
+      const res = await api.appleLogin(idToken, name, ["en", "hi"], undefined);
       setDisplayName(res.learner.display_name);
       await AsyncStorage.setItem(NAME_KEY, res.learner.display_name);
       return applySession(res);
@@ -205,6 +219,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       displayName,
       login,
       googleLogin,
+      appleLogin,
       guestLogin,
       finishOnboarding,
       logout,
@@ -219,6 +234,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       displayName,
       login,
       googleLogin,
+      appleLogin,
       guestLogin,
       finishOnboarding,
       logout,
