@@ -20,6 +20,9 @@ import { api, type Shloka, type WordBreakdown } from "../api/client";
 import { useAsk } from "../ask/AskProvider";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
+import { useAchievementReveal } from "../hooks/useAchievementReveal";
+import AchievementReveal from "../components/AchievementReveal";
+import FetchError from "../components/FetchError";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -137,24 +140,38 @@ function ShlokaSkeleton() {
 export default function ShlokaScreen() {
   const [shloka, setShloka] = useState<Shloka | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
   const reduced = useReducedMotion();
   const { setContext } = useAsk();
+  const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
   // U11: the ask button asks about the verse on screen.
   React.useEffect(() => {
     setContext({ surface: "shloka", subject: shloka?.devanagari ?? "" });
   }, [shloka?.devanagari, setContext]);
 
-  useEffect(() => {
+  const load = useCallback(() => {
     setLoading(true);
+    setLoadFailed(false);
     api
       .todayShloka()
-      .then(setShloka)
-      .catch(() => setShloka(null))
+      .then((s) => {
+        setShloka(s);
+        // U3-4: opening the daily verse earns prathama-sloka (once).
+        recordAch({ type: "sloka_studied" });
+      })
+      .catch(() => {
+        setShloka(null);
+        setLoadFailed(true);
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [recordAch]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
 
   const play = useCallback(async () => {
     if (!shloka || speaking) return;
@@ -191,14 +208,21 @@ export default function ShlokaScreen() {
   }
 
   if (!shloka) {
+    // U10-3: failure and emptiness are different states and render
+    // differently — a failed fetch offers retry, never a dead end.
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <EmptyState
-            title="No śloka available yet."
-            hint="A daily verse will appear here."
-          />
+          {loadFailed ? (
+            <FetchError label="Couldn't reach the verse." onRetry={load} />
+          ) : (
+            <EmptyState
+              title="No śloka available yet."
+              hint="A daily verse will appear here."
+            />
+          )}
         </View>
+        <AchievementReveal queue={achQueue} onDone={dismissAch} />
       </SafeAreaView>
     );
   }
@@ -257,6 +281,7 @@ export default function ShlokaScreen() {
           </View>
         )}
       </ScrollView>
+      <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }

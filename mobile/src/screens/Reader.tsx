@@ -25,12 +25,12 @@
 //     (§3.4). The content swap is what matters, never blocked by the flip.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
-import { api, type Shloka, type WordBreakdown } from "../api/client";
+import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
 import { useAsk } from "../ask/AskProvider";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState, Button } from "../components/ui";
@@ -65,6 +65,11 @@ export default function ReaderScreen() {
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState<ReaderMode>("verses");
   const [tier, setTier] = useState<number>(1);
+  // P21-4: canon filter — null = whole corpus; a slug narrows the index to
+  // that text's verses (matched by ref_prefixes). The reading posture flips
+  // through the FILTERED list, so Prev/Next stay contiguous.
+  const [canon, setCanon] = useState<CanonText[]>([]);
+  const [canonFilter, setCanonFilter] = useState<string | null>(null);
   // null = index posture; set = reading posture at that verse index.
   const [pageIndex, setPageIndex] = useState<number | null>(null);
   const [flipDir, setFlipDir] = useState<"forward" | "back">("forward");
@@ -104,6 +109,15 @@ export default function ReaderScreen() {
 
   useEffect(load, [load]);
 
+  // The canon catalogue loads once, best-effort: a failure here never blocks
+  // reading (the full index still shows; the filter row just stays hidden).
+  useEffect(() => {
+    api
+      .canon()
+      .then((d) => setCanon(d.texts ?? []))
+      .catch(() => setCanon([]));
+  }, []);
+
   const switchMode = useCallback((m: ReaderMode) => {
     setPageIndex(null);
     setSelected(null);
@@ -114,6 +128,20 @@ export default function ReaderScreen() {
     setPageIndex(null);
     setSelected(null);
     setTier(t);
+  }, []);
+
+  // P21-4: the visible index — whole corpus, or one canon text's verses.
+  const shown = useMemo(() => {
+    if (!verses || mode !== "verses" || !canonFilter) return verses;
+    const prefs = canon.find((t) => t.slug === canonFilter)?.ref_prefixes ?? [];
+    if (!prefs.length) return verses;
+    return verses.filter((v) => prefs.some((p) => !!p && v.source_ref.includes(p)));
+  }, [verses, mode, canonFilter, canon]);
+
+  const switchCanon = useCallback((slug: string | null) => {
+    setPageIndex(null);
+    setSelected(null);
+    setCanonFilter(slug);
   }, []);
 
   if (loading) {
@@ -142,9 +170,9 @@ export default function ReaderScreen() {
 
   // READING posture — the verse as a page you flip through.
   if (pageIndex !== null) {
-    const verse = verses[pageIndex];
+    const verse = shown![pageIndex];
     const hasPrev = pageIndex > 0;
-    const hasNext = pageIndex < verses.length - 1;
+    const hasNext = pageIndex < shown!.length - 1;
 
     const go = (dir: "forward" | "back") => {
       const next = dir === "forward" ? pageIndex + 1 : pageIndex - 1;
@@ -266,7 +294,40 @@ export default function ReaderScreen() {
           </View>
         )}
 
-        {verses.map((v, i) => {
+        {mode === "verses" && canon.some((t) => t.verses_imported > 0) && (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.canonRow}>
+            <Pressable
+              onPress={() => switchCanon(null)}
+              style={[styles.modeChip, !canonFilter && styles.modeChipActive]}
+              accessibilityRole="button"
+              accessibilityLabel="All texts"
+              accessibilityState={{ selected: !canonFilter }}
+            >
+              <Text style={[styles.modeText, !canonFilter && styles.modeTextActive]}>All</Text>
+            </Pressable>
+            {canon
+              .filter((t) => t.verses_imported > 0)
+              .map((t) => {
+                const active = canonFilter === t.slug;
+                return (
+                  <Pressable
+                    key={t.slug}
+                    onPress={() => switchCanon(active ? null : t.slug)}
+                    style={[styles.modeChip, active && styles.modeChipActive]}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${t.title_en}, ${t.verses_imported} verses`}
+                    accessibilityState={{ selected: active }}
+                  >
+                    <Text style={[styles.modeText, active && styles.modeTextActive, script("semibold")]}>
+                      {t.title_sa} · {t.verses_imported}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+          </ScrollView>
+        )}
+
+        {shown!.map((v, i) => {
           const firstLine = v.devanagari.split(/।\s*/)[0] || "";
           return (
             <Pressable
@@ -499,6 +560,7 @@ const styles = StyleSheet.create({
   },
   // U14-5: corpus + tier selector chips.
   modeRow: { flexDirection: "row", gap: space.sm, marginBottom: space.sm },
+  canonRow: { marginBottom: space.sm },
   modeChip: {
     backgroundColor: color.surface,
     borderRadius: radius.pill,

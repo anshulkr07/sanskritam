@@ -14,6 +14,7 @@ from app.services import iast
 from app.routers.explain import explain_metrics
 from app.services.metrics import escape_rate, tts_share, top_escape_nodes
 from app.services.content_well import content_well_report
+from app.services.retention import day2_return, p8_report
 
 router = APIRouter()
 
@@ -95,6 +96,8 @@ async def get_metrics(
         "top_escape_nodes": top_escape_nodes(db),
         "explain": explain_metrics(),
         "writing": writing_abstention(db),
+        "retention": day2_return(db),
+        "p8": p8_report(db, hours=max(hours, 168)),
     }
 
 

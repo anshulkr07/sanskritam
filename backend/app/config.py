@@ -75,6 +75,16 @@ class Settings(BaseSettings):
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False
 
+    # Audio object store (P8-5 — Cloud Run kept, owner decision 2026-09-08).
+    # Cloud Run's disk is ephemeral per revision, so pre-rendered WAVs must
+    # live in a bucket, not on local disk. "local" = storage/audio (dev);
+    # "gcs" = Google Cloud Storage bucket below (production). The client is
+    # unaffected: LocalStorage.url() returns /audio/<path> while GCS returns
+    # the CDN URL — both are opaque strings to the app.
+    audio_storage: str = "local"
+    gcs_audio_bucket: str = ""  # e.g. "sanskritam-audio"; empty = local
+    cdn_base_url: str = ""  # e.g. "https://cdn.sanskritam.app"; empty = bucket URL
+
     # Synthesise the tutor's line inside /conversation/turn and return it as
     # base64, instead of letting the client make a separate /speech/tts call.
     #

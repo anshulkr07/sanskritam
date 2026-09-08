@@ -131,6 +131,23 @@ export interface Shloka {
   audio_url: string;
 }
 
+// P21-4: one row of the canon catalogue — study order, depth, live counts.
+export interface CanonText {
+  slug: string;
+  title_en: string;
+  title_sa: string;
+  source: string;
+  licence: string;
+  study_order: number;
+  depth: "full" | "studied" | "index";
+  tier: string;
+  verses_planned: number;
+  verses_imported: number;
+  coverage: number;
+  notes: string;
+  ref_prefixes?: string[];
+}
+
 // ─── Varnamala ────────────────────────────────────────────────────────────
 
 export interface VarnamalaChar {
@@ -222,8 +239,7 @@ export interface VocabWord {
   examples: { devanagari: string; iast: string; gloss: string }[];
 }
 
-export interface ReaderPassage {
-  tier: number;
+export interface ReaderPassage {  tier: number;
   sort_order: number;
   devanagari: string;
   iast: string;
@@ -781,6 +797,9 @@ export const api = {
   // U13/P21: the reader corpus — full list in date order, instrumentation included.
   listShlokas: () => request<Shloka[]>("/shlokas", {}, true),
 
+  // P21-4: the canon catalogue — study order, depth, live imported counts.
+  canon: () => request<{ texts: CanonText[] }>("/canon", {}, true),
+
   varnamala: () => request<VarnamalaResponse>("/grammar/varnamala"),
 
   features: () => request<Feature[]>("/grammar/features", {}, true),
@@ -940,6 +959,17 @@ export const api = {
     request<ProgressRepair>("/progress/repair", { method: "POST" }, true),
   progressHistory: (days = 35) =>
     request<ProgressDay[]>(`/progress/history?days=${days}`, {}, true),
+
+  // Notify (P13) — token collection. Registration is best-effort: a failure
+  // here must never block the learner (the daily job simply has no token).
+  registerPushToken: (deviceId: string, token: string, platform = "") =>
+    request<{ device_id: string; platform: string; dead: boolean }>(
+      "/me/push-tokens",
+      { method: "POST", body: JSON.stringify({ device_id: deviceId, token, platform }) },
+      true,
+    ),
+  removePushToken: (deviceId: string) =>
+    request<{ removed: boolean }>(`/me/push-tokens?device_id=${encodeURIComponent(deviceId)}`, { method: "DELETE" }, true),
 };
 
 export default api;

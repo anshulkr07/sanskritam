@@ -1,10 +1,11 @@
 # Sanskritam — UI, UX & Motion Handover
 
 **Audience:** an implementing coding agent (DeepSeek-V4-Flash / Hermes).
-**Written:** 2026-09-01. **Revised:** 2026-09-06 (fourth pass) — completed phases (U0, U2,
-U7, U8, U9, **U11**) collapsed to one-line records; §1 re-measured; **U4-2 unblocked and
-moved to U12 (U12-4 open — needs the ML Kit dev build); U13 (the reader) done
-(2026-09-06)** on owner direction.
+**Written:** 2026-09-01. **Revised:** 2026-09-08 (eighth pass) — P8-5 (Cloud
+Run kept; GCS audio; backup policy) and P21-4 (12-text canon, Īśā 18/18,
+`GET /canon`, Reader text filter) landed; backend 557, head `e2f3a4b5c6d7`.
+Still open: P8-0 review (owner), device passes (hardware), U10-2 (gated on
+P8-0), P14 pricing, U1 (owner), U3-5 (ask first).
 **Companion doc:** [`HANDOVER.md`](HANDOVER.md) — backend and content.
 The two docs are mostly independent, but U9 connects surfaces specified there
 as P18, and U9-2's calendar depends on endpoints that already exist.
@@ -324,17 +325,18 @@ gap — replace with `ReturnType<typeof setTimeout>`.
 | **U0** | Foundation — deps, dev build, motion tokens, kill legacy Animated | **done** |
 | **U1** | The mascot — Rive rig | **owner's lane, in progress** — do not touch |
 | **U2** | Core loop feel — session shell, verdict, complete | **done** |
-| **U3** | Navigation & progress — the path, streak, leagues | U3-1, U3-3 done · **U3-2, U3-4 open** · U3-5 ask first |
-| **U4** | The uniquely-Sanskrit surfaces | U4-1, U4-3, U4-4 done · **U4-5 open** · U4-2 → **U12** |
-| **U5** | Accessibility — the child→pandit mandate | U5-3 done · **U5-1, U5-2, U5-4 open** |
-| **U6** | Polish & performance | **open** |
+| **U3** | Navigation & progress — the path, streak, leagues | U3-1, U3-2, U3-3, U3-4 done · U3-5 ask first |
+| **U4** | The uniquely-Sanskrit surfaces | U4-1, U4-3, U4-4, U4-5 done · U4-2 → **U12** |
+| **U5** | Accessibility — the child→pandit mandate | U5-1 announcements + U5-2 ramp/floor + U5-3 + U5-4 44pt done · static audit 0 issues · **device TalkBack/VoiceOver pass open (needs hardware)** |
+| **U6** | Polish & performance | U6-2 sound family + U6-3 asset prep done · **U6-1 device profiling open (needs hardware; submission owner-gated)** |
 | **U7** | The proof surfaces — derivation, scansion, word order | **done** |
 | **U8** | Information architecture — six tabs, drawer, Home hub, Play | **done** |
 | **U9** | Connect what the backend already has | **done** |
-| **U10** | What first users need from the client | **open** — pairs with `HANDOVER.md` P8 |
+| **U10** | What first users need from the client | **U10-1 gated + U10-3 done** — pairs with `HANDOVER.md` P8 · **U10-2 open (gated on P8-0)** |
 | **U11** | Ask anywhere — help on any screen | **done 2026-09-06** — pairs with P19 |
-| **U12** | Learning to write Devanagari — ML Kit ink + OCR | U12-1/2/3/5 done **· U12-4 open** (needs ML Kit dev build) |
-| **U13** | The reader — tap a word, the engines answer | **U13-1/2/3 done 2026-09-06** — pairs with P21-1/2 |
+| **U12** | Learning to write Devanagari — ML Kit ink + OCR | U12-1/2/3/4/5 done in code **· U12-4 needs ML Kit dev build to RUN** |
+| **U13** | The reader — tap a word, the engines answer | **U13-1/2/3 done; P21-4 canon filter done 2026-09-08** — pairs with P21 |
+| **U14** | Curriculum — Lesson screen, visuals, vocab, graded reading | **U14-1/2/3 + minimal U14-4/5 done 2026-09-07** — pairs with P22 |
 
 ⚠ **U5 is still the first thing anyone should pick up.** U9 closed the last
 gap between a finished backend surface and a learner reaching it, so most of
@@ -939,7 +941,16 @@ explained before it fires.
 Radial mastery rings per feature group in `screens/Progress.tsx`.
 **Still reads `/me` only — the three progress endpoints land in U9-2.**
 
-## U3-4 · Achievements and badge reveals
+## U3-4 · Achievements and badge reveals — DONE 2026-09-08
+
+`services/achievements.ts` (5 milestones: prathama-samvada, prathama-sloka,
+sparsha-pancaka, sapta-dina, dvivacana-prathama — Sanskrit motifs kamalam /
+kalasha / shankha / deepa / yugma, local AsyncStorage bookkeeping, idempotent)
++ `components/AchievementReveal.tsx` (skippable Reanimated sheet, Reduce
+Motion instant, sfx.badgeUnlock + haptics) + Progress shelf + events wired in
+Conversation / Challenge (dual) / Shloka / Varnamala (sparsha) / Progress
+(streak). Lottie lotus/kalasha/conch ART is owner-supplied — the motif renders
+as a word-mark until it lands. Original spec below for reference.
 
 **Blocked by:** U3-2. **Effort:** M
 
@@ -998,7 +1009,12 @@ list stops being one. Writes `sanskrit_ratio_setting` only (`HANDOVER.md`
 The corpus behind it is 96 verses since `HANDOVER.md` P7-6b.
 Its loading state became a content-shaped skeleton in U9-4.
 
-## U4-5 · Sandhi visualisation
+## U4-5 · Sandhi visualisation — DONE (in code; doc synced 2026-09-07)
+
+`components/derivation/SandhiVisual.tsx` (junction slide + highlight +
+cross-fade, rule via reused `SutraCard`, no conjunct path-tweening), consumed
+in `screens/Grammar.tsx` from `GET /grammar/sandhi` (P11-2). Original spec
+below for reference.
 
 **Blocked by:** U4-4. **Effort:** M
 
@@ -1084,7 +1100,13 @@ UI blips — a sā-pa drone under the session-complete moment would be
 distinctive and appropriate. **Every sound respects the silent switch and a
 user-facing sound toggle.**
 
-## U6-3 · App icon, splash, and store assets
+## U6-3 · App icon, splash, and store assets — PREP DONE 2026-09-08 (submission owner-gated)
+
+Asset inventory, all wired in `app.json` (validated with `expo config`):
+`icon.png`, Android adaptive set (foreground/background/monochrome),
+`favicon.png`, and `splash-icon.png` — the splash `image` key was missing and
+is now wired to the existing asset. Store submission itself stays owner-gated:
+prepare assets, do not submit. Original spec below for reference.
 
 **Blocked by:** U1-5. **Effort:** M
 
@@ -1395,7 +1417,17 @@ P20-2's stroke data answers. A learner who drew a correct-looking आ in four
 backwards strokes has done one thing right and one wrong, and telling them so
 is the entire value of the feature.
 
-## U12-4 · The paper path — ⚠ privacy
+## U12-4 · The paper path — DONE in code 2026-09-08 (dev build still required to RUN)
+
+`services/photoRecogniser.ts` (on-device OCR seam, dynamic-require, honest
+unavailable adapter — mirrors `inkRecogniser.ts`, no cloud fallback) +
+`components/writing/PhotoCapture.tsx` (single-letter viewfinder + framing
+guide, denied-state copy, photo discarded immediately after recognition —
+nothing retained, nothing uploaded) + `Writing.tsx` ink/photo mode switch
+(same `POST /writing/attempt` pipeline with `source: "photo"`, biased
+thresholds server-side per P20-4). Without the ML Kit Text Recognition dev
+build both layers render the honest unavailable card. Original spec below for
+reference.
 
 **Effort:** M. Owner decision: **included** (`HANDOVER.md` P20-4).
 
@@ -1472,7 +1504,15 @@ studied).
 
 ---
 
-# PHASE U14 — Curriculum: the learning surface
+# PHASE U14 — Curriculum: the learning surface — DONE minimal 2026-09-07
+
+> Backend phase `HANDOVER.md` P22 is DONE minimal. `Lesson.tsx` (U14-1),
+> `VisualGrid/Tree/StateMachine` (U14-2, presentational over pre-computed
+> `visual_data`), Path `has_lesson` split button (U14-3), `Vocab.tsx` from a
+> Play card (U14-4 minimal), graded tiers inside `Reader.tsx` (U14-5 minimal,
+> same tap-a-word page, no new screen, no verdict/score). Full spec below for
+> reference; what remains is content depth (Units 4–11, full 500-word vocab,
+> full DCS graded reading — all licence/content work, not client work).
 
 > The backend phase is `HANDOVER.md` P22. The app has a world-class engine with
 > no lesson content. The Path goes straight to a challenge. U14 builds the
@@ -1706,7 +1746,7 @@ A UI task is done when **all** hold:
 1. Its **Acceptance** command/check passes.
 2. `cd mobile && npx tsc --noEmit` → **zero errors** (new baseline after U0-1).
 3. `cd backend && ./.venv/Scripts/python.exe -m pytest -q` → at or above
-   **434** (`HANDOVER.md` §3). A UI task should not move it at all.
+   **557** (`HANDOVER.md` §3). A UI task should not move it at all.
 4. Verified on a **physical low-end Android device**, not just a simulator.
 5. Verified with **Reduce Motion on** — nothing breaks, nothing spins forever.
 6. Verified at **200% system font** — no clipping, no overlap.
@@ -1775,14 +1815,18 @@ Install (U0-2):
   npx expo install @shopify/react-native-skia lottie-react-native
   npx expo prebuild --clean && npx expo run:android
 
-Done:         U0 · U2 · U7 · U8 · U9 · U3-1 · U3-2 · U3-3 · U4-1 · U4-3
-              · U4-4 · U5-3
+Done:         U0 · U2 · U3-1 · U3-2 · U3-3 · U3-4 · U4-1 · U4-3 · U4-4 · U4-5
+              · U5-1-announce · U5-2-ramp · U5-3 · U5-4-44pt · U5-audit-0 · U6-2-sounds
+              · U6-3-prep · U7 · U8 · U9 · U10-1-gated · U10-3 · U11 · U12-1/2/3/4/5-code
+              · U13 · U14-minimal
 In progress:  U1 (the Rive rig) — OWNER'S LANE, do not touch
-Start here:   U10-1 (a stranger's first 90 seconds — P8 needs it)
-              then U5 (accessibility — 15 screens now, and it only gets dearer)
-Then:         U10-3 → U11 → U3-4 → U4-5 → U12 → U6 → U13 → U14
+Start here:   U10-2 once P8-0 clears (derivation on miss + empty-pool state)
+              then device passes: TalkBack/VoiceOver (§U5-1) + U6-1 profiling
+Then:         U6-3 submission (owner-gated) → U3-5 only if owner approves
+Static audit: node scripts/a11y-audit.js → 0 issues (report-only; the device
+              pass is still required)
 Never cut:    U5 (accessibility)
-Cut first:    U6, U3-5
+Cut first:    U6-1 profiling depth, U3-5
 Ask first:    U3-5 (leagues)
 Unblocked:    U4-2 → now U12 (ML Kit Digital Ink, owner decision 2026-09-05)
 

@@ -241,6 +241,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
           <Pressable
             style={styles.sheetBackdrop}
             onPress={() => setSheetOpen(false)}
+            accessibilityRole="button"
             accessibilityLabel="Close details"
           />
           <View style={styles.sheet}>

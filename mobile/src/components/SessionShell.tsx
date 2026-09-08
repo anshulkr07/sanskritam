@@ -94,10 +94,10 @@ export default function SessionShell({
               Your progress so far will be saved, but you'll need to start a new session.
             </Text>
             <View style={styles.confirmRow}>
-              <Pressable onPress={cancelQuit} style={styles.cancelBtn}>
+              <Pressable onPress={cancelQuit} style={styles.cancelBtn} accessibilityRole="button" accessibilityLabel="Stay in session">
                 <Text style={styles.cancelBtnText}>Stay</Text>
               </Pressable>
-              <Pressable onPress={confirmQuit} style={styles.quitBtn}>
+              <Pressable onPress={confirmQuit} style={styles.quitBtn} accessibilityRole="button" accessibilityLabel="Leave session">
                 <Text style={styles.quitBtnText}>Leave</Text>
               </Pressable>
             </View>

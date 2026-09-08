@@ -15,6 +15,10 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
+import { announceVerdict } from "../utils/announce";
+import FetchError from "../components/FetchError";
+import { useAchievementReveal } from "../hooks/useAchievementReveal";
+import AchievementReveal from "../components/AchievementReveal";
 import { color, font, radius, script, shadow, space } from "../theme";
 import VocalTract from "../components/VocalTract";
 import { PLACE_COLORS, PLACE_LABEL, PLACE_ORDER, articulationFor } from "../phonetics";
@@ -76,6 +80,8 @@ function SparsaMatrix({
               <Pressable
                 key={c.iast}
                 onPress={() => onCharPress(c)}
+                accessibilityRole="button"
+                accessibilityLabel={`${c.devanagari}, ${c.iast}. Play this sound.`}
                 style={[styles.matrixCell, speaking === c.devanagari && { backgroundColor: color.saffronLight }]}
               >
                 <Text style={[styles.matrixCellDev, script("bold")]}>{c.devanagari}</Text>
@@ -104,13 +110,20 @@ export default function VarnamalaScreen({ navigation }: Props) {
   const [attempting, setAttempting] = useState(false);
   const [pron, setPron] = useState<PronunciationResult | null>(null);
   const [micError, setMicError] = useState<string | null>(null);
+  const [gridFailed, setGridFailed] = useState(false);
+  const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
   // Always call the hook (React rules). On web it is unused.
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
 
-  useEffect(() => {
-    api.varnamala().then(setGrid).catch(() => setGrid(null));
+  const loadGrid = useCallback(() => {
+    setGridFailed(false);
+    api.varnamala().then(setGrid).catch(() => setGridFailed(true));
   }, []);
+
+  useEffect(() => {
+    loadGrid();
+  }, [loadGrid]);
 
   const toggleMic = useCallback(async () => {
     if (!selectedChar || attempting) return;
@@ -140,6 +153,10 @@ export default function VarnamalaScreen({ navigation }: Props) {
         else if (res.verdict === "unsure") haptics.near();
         else if (res.verdict === "near") haptics.near();
         else haptics.incorrect();
+        // U5-1: explicit announcement for VoiceOver.
+        announceVerdict(res.verdict === "near" ? "near" : res.verdict);
+        // U3-4: every sparśa attempt counts toward sparsha-pancaka.
+        if (selectedChar) recordAch({ type: "pronunciation_attempt", target: selectedChar.devanagari });
       } catch (err) {
         const e = err as { message?: string };
         setMicError(e?.message ? `Pronunciation failed: ${e.message}` : "Pronunciation failed. Try again.");
@@ -218,6 +235,18 @@ export default function VarnamalaScreen({ navigation }: Props) {
   }, [selectedChar, allChars]);
 
   if (!grid) {
+    // U10-3: a failed grid fetch says so and offers retry — never a permanent
+    // skeleton, and never confused with an empty alphabet.
+    if (gridFailed) {
+      return (
+        <SafeAreaView style={styles.safe} edges={["top"]}>
+          <View style={styles.center}>
+            <FetchError label="Couldn't reach the alphabet." onRetry={loadGrid} />
+          </View>
+          <AchievementReveal queue={achQueue} onDone={dismissAch} />
+        </SafeAreaView>
+      );
+    }
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}><Text style={styles.muted}>Loading the alphabet…</Text></View>
@@ -301,6 +330,7 @@ export default function VarnamalaScreen({ navigation }: Props) {
         {/* Nasals are not listed again here: they now complete the 5×5 rows above. */}
         {renderGroup(grid.others, "others", allChars, onCharPress, speaking)}
       </ScrollView>
+      <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }
@@ -435,7 +465,7 @@ function renderGroup(
       <Text style={styles.groupLabel}>{GROUP_LABEL[key] ?? key}</Text>
       <View style={styles.flex}>
         {items.map((c, i) => (
-          <Pressable key={i} style={styles.char} onPress={() => c.devanagari && onCharPress(c)}>
+          <Pressable key={i} style={styles.char} onPress={() => c.devanagari && onCharPress(c)} accessibilityRole="button" accessibilityLabel={`${c.devanagari}, ${c.iast}. Play this sound.`}>
             <Text style={[styles.charDev, script("bold")]}>{c.devanagari}</Text>
             <Text style={styles.charIast}>{c.iast}</Text>
             {speaking === c.devanagari && <Ionicons name="volume-high" size={10} color={color.saffron} style={{ marginTop: 2 }} />}

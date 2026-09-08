@@ -15,6 +15,9 @@ python-multipart>=0.0.9
 pytest>=8.0
 # Postgres driver (optional — used when database_url is configured)
 psycopg[binary]>=3.1
+# Object store for pre-rendered audio in production (P8-5 — GCS backend in
+# app/services/storage.py, imported lazily so dev installs work regardless).
+google-cloud-storage>=2.0
 # IANA timezone database — Windows ships none, and minimal Linux images
 # often omit it. Required by app/services/localtime.py (zoneinfo).
 tzdata>=2024.1

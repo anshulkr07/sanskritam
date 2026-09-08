@@ -60,6 +60,10 @@ def run_seed():
         seed_vocab(db)
         seed_reader_passages(db)
 
+        # Seed the canon catalogue (P21-4) — additive, idempotent
+        from app.seeds.canon import seed_canon
+        seed_canon(db)
+
         db.commit()
         logger.info("Database seeded successfully")
     except Exception:

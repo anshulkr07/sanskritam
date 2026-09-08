@@ -13,6 +13,7 @@ import React, {
 
 import { api, setAuthToken, type DevLoginResponse, type LearnerProfile } from "../api/client";
 import { DEFAULT_LEARNER_NAME } from "../config";
+import { registerPushToken } from "../services/push";
 
 const TOKEN_KEY = "shabd.token";
 const NAME_KEY = "shabd.displayName";
@@ -93,6 +94,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     setLearner(profile);
     await AsyncStorage.setItem(TOKEN_KEY, res.token);
+    // P13: best-effort push registration — never blocks the session. No-ops
+    // until expo-notifications is installed (P13 sits behind P8).
+    registerPushToken().catch(() => {});
     return profile;
   }, []);
 

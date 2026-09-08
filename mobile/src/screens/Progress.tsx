@@ -17,6 +17,14 @@ import Animated, {
 
 import { api, type ProgressDaily, type ProgressDay, type ProgressStreak } from "../api/client";
 import { haptics } from "../services/haptics";
+import {
+  ACHIEVEMENTS,
+  getSparshaCoverage,
+  getUnlocked,
+} from "../services/achievements";
+import { useAchievementReveal } from "../hooks/useAchievementReveal";
+import AchievementReveal from "../components/AchievementReveal";
+import FetchError from "../components/FetchError";
 import { useAuth } from "../store/auth";
 import type { TabScreenProps } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
@@ -193,12 +201,36 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
   const [history, setHistory] = useState<ProgressDay[]>([]);
   const [repairing, setRepairing] = useState(false);
   const [repairMsg, setRepairMsg] = useState<string | null>(null);
+  // U10-3: three silent catches used to leave permanent skeletons. Count the
+  // failures: when ALL THREE fail the screen says so and offers retry.
+  const [loadsFailed, setLoadsFailed] = useState(0);
+  // U3-4: achievements live here — the trophy shelf, not a tab.
+  const [unlocked, setUnlocked] = useState<Record<string, string>>({});
+  const [sparshaCount, setSparshaCount] = useState(0);
+  const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
+
+  const loadProgress = useCallback(() => {
+    setLoadsFailed(0);
+    api.progressDaily().then(setDaily).catch(() => setLoadsFailed((n) => n + 1));
+    api.progressStreak().then(setStreak).catch(() => setLoadsFailed((n) => n + 1));
+    api.progressHistory(35).then(setHistory).catch(() => setLoadsFailed((n) => n + 1));
+    getUnlocked().then(setUnlocked).catch(() => {});
+    getSparshaCoverage().then((s) => setSparshaCount(s.length)).catch(() => {});
+  }, []);
 
   useEffect(() => {
-    api.progressDaily().then(setDaily).catch(() => {});
-    api.progressStreak().then(setStreak).catch(() => {});
-    api.progressHistory(35).then(setHistory).catch(() => {});
-  }, []);
+    loadProgress();
+  }, [loadProgress]);
+
+  // U3-4: a 7-day streak unlocks sapta-dina the moment Progress sees it.
+  useEffect(() => {
+    if ((streak?.streak ?? 0) >= 7) {
+      recordAch({ type: "streak", days: streak?.streak ?? 0 }).then((fresh) => {
+        if (fresh.length) getUnlocked().then(setUnlocked).catch(() => {});
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [streak?.streak]);
 
   const repair = useCallback(async () => {
     if (repairing || (streak?.freezes ?? 0) <= 0) return;
@@ -330,11 +362,42 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           {repairMsg && <Text style={styles.dialHint}>{repairMsg}</Text>}
         </View>
 
+        {/* U10-3: all three progress fetches failed — say so, offer retry. */}
+        {loadsFailed >= 3 && (
+          <View style={styles.dialCard}>
+            <FetchError label="Couldn't reach your progress." onRetry={loadProgress} />
+          </View>
+        )}
+
+        {/* Achievements (U3-4) — Sanskrit motifs, never generic trophies. */}
+        <Text style={styles.sectionTitle}>Achievements</Text>
+        <View style={styles.achGrid}>
+          {ACHIEVEMENTS.map((a) => {
+            const isOut = !!unlocked[a.id];
+            const sub =
+              a.id === "sparsha-pancaka" && !isOut ? `${sparshaCount} / 25 sounds tried` : a.hint;
+            return (
+              <View
+                key={a.id}
+                style={[styles.achTile, !isOut && styles.achTileLocked]}
+                accessible
+                accessibilityRole="text"
+                accessibilityLabel={`${a.sa}. ${a.en}. ${isOut ? "Earned" : `Locked. ${sub}`}`}
+              >
+                <Text style={[styles.achMotif, script("bold"), !isOut && styles.achDim]}>{a.motif}</Text>
+                <Text style={[styles.achSa, script("bold"), !isOut && styles.achDim]}>{a.sa}</Text>
+                <Text style={styles.achEn}>{a.en}</Text>
+                {!isOut && <Text style={styles.achHint}>{sub}</Text>}
+              </View>
+            );
+          })}
+        </View>
+
         {/* Script ratio dial */}
         <View style={styles.dialCard}>
           <View style={styles.dialRow}>
             <Text style={styles.dialTitle}>Roman → Devanagari</Text>
-            <Pressable onPress={bumpScript} disabled={bumping} style={styles.dialBtn}>
+            <Pressable onPress={bumpScript} disabled={bumping} style={styles.dialBtn} accessibilityRole="button" accessibilityLabel="Show 10 percent more Devanagari" accessibilityState={{ disabled: bumping, busy: bumping }}>
               <Text style={styles.dialBtnText}>{bumping ? "…" : "+ 10%"}</Text>
             </Pressable>
           </View>
@@ -386,6 +449,7 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           ))
         )}
       </ScrollView>
+      <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }
@@ -408,13 +472,13 @@ const styles = StyleSheet.create({
   dialCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, marginBottom: space.lg, ...shadow.card },
   dialRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.sm },
   dialTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  dialBtn: { backgroundColor: color.ok, borderRadius: radius.sm, paddingHorizontal: space.md, paddingVertical: 6 },
+  dialBtn: { backgroundColor: color.ok, borderRadius: radius.sm, paddingHorizontal: space.md, paddingVertical: 6, minHeight: 44, justifyContent: "center" },
   dialBtnText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.white },
   dialTrack: { height: 10, borderRadius: 5, backgroundColor: color.border, overflow: "hidden" },
   dialHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.sm },
   // ── U9-2: freezes + calendar ──
   freezeCount: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  repairBtn: { alignSelf: "flex-start", backgroundColor: color.saffron, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: 10, marginTop: space.sm, ...shadow.button },
+  repairBtn: { alignSelf: "flex-start", backgroundColor: color.saffron, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: 10, marginTop: space.sm, minHeight: 44, justifyContent: "center", ...shadow.button },
   repairBtnDisabled: { backgroundColor: color.inkFaint },
   repairBtnText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.white },
   calGrid: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: space.xs },
@@ -438,4 +502,20 @@ const styles = StyleSheet.create({
   masteryId: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink, width: 90 },
   masteryTrack: { flex: 1, height: 8, borderRadius: 4, backgroundColor: color.border, overflow: "hidden", marginHorizontal: space.sm },
   masteryScore: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft, width: 26, textAlign: "right" },
+  // ── U3-4: achievement tiles — Sanskrit word-marks, locked tiles dimmed ──
+  achGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
+  achTile: {
+    width: "48%",
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
+    alignItems: "center",
+    ...shadow.card,
+  },
+  achTileLocked: { opacity: 0.75 },
+  achMotif: { fontSize: font.sizes.xl, color: color.saffronText },
+  achSa: { fontSize: font.sizes.base, color: color.ink, marginTop: 4, textAlign: "center" },
+  achEn: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 2, textAlign: "center" },
+  achHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.xs, color: color.inkFaint, marginTop: 4, textAlign: "center" },
+  achDim: { color: color.inkFaint },
 });

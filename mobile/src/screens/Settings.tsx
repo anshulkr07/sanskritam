@@ -126,6 +126,7 @@ export default function SettingsPanel() {
           onPress={() => {}}
           style={styles.linkRow}
           accessibilityRole="button"
+          accessibilityLabel="Licences and credits"
         >
           <Text style={styles.link}>Licences and credits</Text>
           <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
   dangerBtn: { marginTop: space.xs, alignSelf: "flex-start", backgroundColor: color.badBg, borderRadius: radius.sm, paddingHorizontal: space.md, paddingVertical: space.xs },
   dangerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.badText },
   sizerRow: { flexDirection: "row", gap: space.sm },
-  sizer: { flex: 1, alignItems: "center", paddingVertical: space.sm, borderRadius: radius.sm, backgroundColor: color.surfaceMuted },
+  sizer: { flex: 1, alignItems: "center", justifyContent: "center", minHeight: 44, paddingVertical: space.sm, borderRadius: radius.sm, backgroundColor: color.surfaceMuted },
   sizerActive: { backgroundColor: color.saffron },
   sizerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.inkSoft },
   sizerTextActive: { color: color.white },

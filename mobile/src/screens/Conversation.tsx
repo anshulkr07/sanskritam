@@ -38,6 +38,8 @@ import { startTimeline, type Timeline } from "../utils/perf";
 import { settledRecordingUri } from "../utils/recording";
 import { haptics } from "../services/haptics";
 import { bulbulLangCode, playTutorAudio } from "../services/speech";
+import { useAchievementReveal } from "../hooks/useAchievementReveal";
+import AchievementReveal from "../components/AchievementReveal";
 import { color, font, radius, script, shadow, space } from "../theme";
 
 // expo-audio — import unconditionally; hooks must always be called.
@@ -87,6 +89,13 @@ export default function ConversationScreen() {
   const [speech, setSpeech] = useState<{ text?: string; durationMs?: number } | null>(null);
   const [verdictStatus, setVerdictStatus] = useState<"correct" | "off_by_one" | "unsure" | null>(null);
   const scrollRef = useRef<ScrollView>(null);
+  // U3-4: finishing a conversation earns prathama-samvada (once, ever).
+  const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
+
+  useEffect(() => {
+    if (done) recordAch({ type: "conversation_complete" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done]);
 
   const speakLine = useCallback((
     url: string,
@@ -455,7 +464,7 @@ export default function ConversationScreen() {
           // Tap any tutor line for the same explanation typing "what does that
           // mean?" produces — the tap costs no turn and never touches the graph.
           return m.role === "tutor" && m.meta !== "error" ? (
-            <Pressable key={i} onPress={() => explainLine(m.text)} disabled={!sessionId}>
+            <Pressable key={i} onPress={() => explainLine(m.text)} disabled={!sessionId} accessibilityRole="button" accessibilityLabel={`Explain: ${m.text.slice(0, 60)}`}>
               {bubble}
             </Pressable>
           ) : (
@@ -571,6 +580,7 @@ export default function ConversationScreen() {
           <Ionicons name="send" size={18} color={color.white} />
         </Pressable>
       </View>
+      <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }

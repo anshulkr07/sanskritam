@@ -123,6 +123,7 @@ function Tile({ tile, index }: { tile: DailyWordTile; index: number }) {
   return (
     <Pressable
       accessible={true}
+      accessibilityRole="button"
       accessibilityLabel={
         axis
           ? `${tile.character} — nearly right, same ${axis}`

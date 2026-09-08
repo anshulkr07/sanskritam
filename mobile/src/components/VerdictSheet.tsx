@@ -19,6 +19,7 @@ import Animated, {
 
 import { haptics } from "../services/haptics";
 import { sfx } from "../services/sfx";
+import { announceVerdict } from "../utils/announce";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing, spring as springCfg } from "../motion";
 import type { Verdict } from "../api/client";
@@ -67,6 +68,9 @@ export default function VerdictSheet({
         haptics.incorrect();
         sfx.incorrect();
       }
+      // U5-1: VoiceOver needs an explicit announcement (the alert role +
+      // live region cover TalkBack). Unsure announces the SYSTEM's failure.
+      announceVerdict(isUnsure ? "unsure" : verdict);
       // Use the motion tokens — overshoot preserves the existing Easing.back feel
       translateY.value = withTiming(0, {
         duration: duration.base,

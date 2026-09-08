@@ -90,7 +90,7 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
 
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
-      <Pressable style={styles.backdrop} onPress={onClose} accessibilityLabel="Close help">
+      <Pressable style={styles.backdrop} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close help">
         <Animated.View entering={FadeIn.duration(140)} exiting={FadeOut.duration(120)} style={StyleSheet.absoluteFill} />
       </Pressable>
       <Animated.View
@@ -120,6 +120,7 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
               placeholder="e.g. why does it end like this?"
               placeholderTextColor={color.inkFaint}
               multiline
+              accessibilityLabel="Ask your question"
               onSubmitEditing={() => ask(question)}
             />
             <Pressable

@@ -22,6 +22,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { api, type AttemptResponse, type Challenge } from "../api/client";
 import TutorFull from "../components/TutorFull";
 import VerdictSheet from "../components/VerdictSheet";
+import AchievementReveal from "../components/AchievementReveal";
+import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import WordBank from "../components/WordBank";
 import DerivationPlayer from "../components/derivation/DerivationPlayer";
 import { useAsk } from "../ask/AskProvider";
@@ -86,6 +88,8 @@ export default function ChallengeScreen({ navigation, route }: Props) {
   const [showDerivation, setShowDerivation] = useState(false);
   // U10-3: a failed attempt submission is a network failure, not a verdict.
   const [submitError, setSubmitError] = useState(false);
+  // U3-4: dual_correct fires dvivacana-prathama (once, ever).
+  const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
   // Distractor pool for the word bank — every other target sentence in this
   // register, fetched once. A retry/failure just leaves the pool empty and
@@ -141,7 +145,13 @@ export default function ChallengeScreen({ navigation, route }: Props) {
       try {
         const res = await api.submitAttempt(challenge.id, text.trim());
         setResult(res);
-        if (res.verdict === "correct") setCorrectCount((c) => c + 1);
+        if (res.verdict === "correct") {
+          setCorrectCount((c) => c + 1);
+          // U3-4: a correct answer on a dual-bearing challenge earns
+          // dvivacana-prathama (once, ever — the service dedupes).
+          const feats = challenge.features ?? [];
+          if (feats.some((f) => f.includes("DU"))) recordAch({ type: "dual_correct" });
+        }
       } catch {
         // U10-3: a network failure must never read as a wrong answer. Surface
         // it as a retryable system failure, keep the learner's answer intact.
@@ -278,6 +288,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
                 editable={!answered && !busy}
                 placeholder="e.g. रामः फलम् खादति"
                 placeholderTextColor={color.inkFaint}
+                accessibilityLabel="Your answer in Sanskrit"
                 style={[styles.input, script("semibold")]}
                 autoCorrect={false}
                 multiline
@@ -356,6 +367,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
         continueLabel={continueLabel}
         onContinue={advance}
       />
+      <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }

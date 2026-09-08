@@ -128,6 +128,7 @@ export default function GrammarScreen({ navigation }: Props) {
               onPress={() => { haptics.tap(); setShowParadigm(false); }}
               style={[styles.toggle, !showParadigm && styles.toggleActive]}
               accessibilityRole="button"
+              accessibilityLabel={kind === "verb" ? "Show conjugation" : "Show derivation"}
               accessibilityState={{ selected: !showParadigm }}
             >
               <Text style={[styles.toggleText, !showParadigm && styles.toggleTextActive]}>
@@ -138,6 +139,7 @@ export default function GrammarScreen({ navigation }: Props) {
               onPress={() => { haptics.tap(); setShowParadigm(true); }}
               style={[styles.toggle, showParadigm && styles.toggleActive]}
               accessibilityRole="button"
+              accessibilityLabel={kind === "verb" ? "Show lakara grid" : "Show paradigm table"}
               accessibilityState={{ selected: showParadigm }}
             >
               <Text style={[styles.toggleText, showParadigm && styles.toggleTextActive]}>
@@ -182,6 +184,7 @@ export default function GrammarScreen({ navigation }: Props) {
                   onPress={() => { setQuery(w); search(w); }}
                   style={styles.recentChip}
                   accessibilityRole="button"
+                  accessibilityLabel={`Look up ${w} again`}
                 >
                   <Text style={[styles.recentText, script("semibold")]}>{w}</Text>
                 </Pressable>

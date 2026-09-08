@@ -11,6 +11,11 @@
 #   OPENROUTER_API_KEY=...
 #   ADMIN_TOKEN=...
 #   DATABASE_URL=postgresql://...   (Supabase session-pooler string, port 5432)
+#   GCS_AUDIO_BUCKET=sanskritam-audio   pre-rendered WAVs live here, not on
+#                                   Cloud Run's ephemeral disk (P8-5). Omit to
+#                                   stay on local disk (dev only).
+#   CDN_BASE_URL=https://cdn.example.com  served in audio URLs; omit to use
+#                                   raw storage.googleapis.com URLs.
 #   GOOGLE_CLIENT_ID=...            optional — comma-separated Google OAuth
 #                                   client IDs (Android,iOS,Web) for /auth/google.
 #                                   Omit to disable Google login in prod.
@@ -95,6 +100,29 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor" >/dev/null 2>&1 || true
 
+# ── 1c. Audio object store (P8-5 — Cloud Run kept, owner decision
+#       2026-09-08). Pre-rendered audio is an owned asset (§14.2) and Cloud
+#       Run's disk is ephemeral per revision, so production audio lives in
+#       GCS. All idempotent; skipped entirely when GCS_AUDIO_BUCKET is unset
+#       (dev stays on local disk). Audio content is public (P14-2 gates
+#       nothing the reader/listener touches), so the bucket is public-read
+#       behind the CDN; the runtime SA gets objectAdmin for uploads.
+if [ -n "${GCS_AUDIO_BUCKET:-}" ]; then
+  gcloud storage buckets create "gs://${GCS_AUDIO_BUCKET}" \
+    --project="$PROJECT_ID" --location="$REGION" \
+    --uniform-bucket-level-access >/dev/null 2>&1 || true
+  gcloud storage buckets add-iam-policy-binding "gs://${GCS_AUDIO_BUCKET}" \
+    --project="$PROJECT_ID" \
+    --member=allUsers --role=roles/storage.objectViewer >/dev/null 2>&1 || true
+  gcloud storage buckets add-iam-policy-binding "gs://${GCS_AUDIO_BUCKET}" \
+    --project="$PROJECT_ID" \
+    --member="serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com" \
+    --role=roles/storage.objectAdmin >/dev/null 2>&1 || true
+  AUDIO_ENV=",AUDIO_STORAGE=gcs,GCS_AUDIO_BUCKET=${GCS_AUDIO_BUCKET},CDN_BASE_URL=${CDN_BASE_URL:-}"
+else
+  AUDIO_ENV=""
+fi
+
 # ── 2. Deploy (buildpacks via --source; Dockerfile in repo root is used
 #       automatically when present) ────────────────────────────────────────
 gcloud run deploy "$SERVICE" \
@@ -108,7 +136,7 @@ gcloud run deploy "$SERVICE" \
   --max-instances=2 \
   --timeout=120s \
   --allow-unauthenticated \
-  --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false" \
+  --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}" \
   --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest,GOOGLE_CLIENT_ID=google-client-id:latest"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────

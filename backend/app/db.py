@@ -48,7 +48,7 @@ if not _is_sqlite:
         attribute — not via connect_args, which psycopg rejects.
         """
         if hasattr(dbapi_connection, "prepare_threshold"):
-            dbapi_connection.prepare_threshold = 0
+            dbapi_connection.prepare_threshold = None
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

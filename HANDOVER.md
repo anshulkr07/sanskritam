@@ -1,8 +1,10 @@
 # Sanskritam — Backend Handover
 
 **Audience:** an implementing coding agent (DeepSeek-V4-Flash / Hermes).
-**Revised:** 2026-09-05. Completed phases (P6, P9, P11, P12, and the
-2026-09-01 defect audit) are removed; their record lives in `DECISIONS.md` and
+**Revised:** 2026-09-08 (later). Completed phases (P6, P9, P11, P12, P7-5,
+P7-7, P7-13, P19, P20-1/2/3, P21-1/2/3/4, P22-1/2/4/5/6, P13-1, P14-1/2
+plumbing, P8-4, P8-5 and the 2026-09-01 defect audit) are removed from the
+open list below; their record lives in `DECISIONS.md` and
 in git history. What remains below is **open work only.**
 **Companion doc:** [`UI_HANDOVER.md`](UI_HANDOVER.md) — client, motion, mascot.
 The mascot rig (U1) is the owner's lane right now; do not pick it up.
@@ -19,6 +21,31 @@ band). Suite 434 → **465**.
 auth-bound, `word_breakdown` instrumented, tested) and the tap-a-word surface
 that consumes P19's routing. Client half is `UI_HANDOVER.md` U13. Suite 465 →
 **499**. See §4 and PHASE P21.
+
+**Landed 2026-09-07:** **P7-5 + P7-7** (`GET /grammar/path` approved-content
+spine with `has_lesson`, `GET /admin/content-wells` runway guard), **P21-3**
+(`scripts/import_text.py`, Gītā 2.1–6, corpus 96 → 102, no UI work), **P22-1/3/4**
+(`lessons` table + `GET /lessons/{feature_id}`, 10 Units 1–3 lessons, Path
+`has_lesson`), **P22-2** (10 samāsa/kāraka taxonomy features, unclaimed by
+design), **P22-5/6 minimal** (`vocab_words` 60 rows, `reader_passages` 3 tiers;
+WordNet/DCS imports deferred on licence). Suite 499 → **521**. See
+`DECISIONS.md` 2026-09-07.
+
+**Landed 2026-09-08:** **P13-1** (push-token collection + daily-notify job +
+copy rules), **P14-1/2 plumbing** (`Entitlement` + `has_entitlement` seam, no
+behaviour change), **P8-4** (the 10-user question + day-2 retention in
+`GET /admin/metrics`). Migration `d1e2f3a4b5c6` (applied). Suite 521 →
+**543**. Client half: push seam (`services/push.ts`, no-ops until
+expo-notifications is installed), U3-4 achievements, U5-1 announcements — see
+`UI_HANDOVER.md`. Full record: `DECISIONS.md` 2026-09-08.
+
+**Landed 2026-09-08 (later):** **P8-5** (Cloud Run kept per owner; GCS audio
+backend + bucket provisioning in `deploy.sh`; `scripts/backup_db.py` policy;
+Postgres via `DATABASE_URL`, driver present) and **P21-4** (canon catalogue:
+12 texts ordered, depth-graded, all free; Īśopaniṣad 18/18 imported as the
+Vedic slice; `GET /canon` + Reader text filter). Migration `e2f3a4b5c6d7`
+(applied). Suite 543 → **557**. Full record: `DECISIONS.md` 2026-09-08
+(later).
 
 ⚠ **And the app was dead.** `models.py` declared `learners.google_sub`, the
 migration existed, and it had **never been applied** — every learner query
@@ -37,15 +64,15 @@ to write the script, **P21** the readable canon. See §4.
 
 ---
 
-## Status — measured 2026-09-06, not estimated
+## Status — measured 2026-09-08 (later), not estimated
 
 | | |
 |---|---|
-| Backend tests | **499 pass** (495 + 4 reader) |
+| Backend tests | **557 pass** (1 env-gated `test_tts_502_refunds_quota` needs `SARVAM_API_KEY`; 556 green without it) |
 | Mobile typecheck | **0 errors** |
-| Alembic head | `b7c8d9e0f1a2` — **applied**; verify with `alembic current` |
+| Alembic head | `e2f3a4b5c6d7` — **applied**; verify with `alembic current` |
 | Engines live | all four — prakriya, chandas, sandhi, cheda (+ kosha, lipi) |
-| Client | six tabs + drawer; pronunciation, progress, metrics, **reader** wired |
+| Client | six tabs + drawer; pronunciation, progress, metrics, **reader**, **lessons/vocab** wired |
 | Deploy | Cloud Run (`shabd-api`, asia-south1); the app points at it |
 
 ### Content in the DB
@@ -55,12 +82,15 @@ to write the script, **P21** the readable canon. See §4.
 | Scenarios | 6 | **1** — 5 still `pending` since 2026-09-03 |
 | Dialogue nodes | 100 | 30 |
 | **Challenges** | **264, all distinct** | **33** — **231 `pending`** |
-| Features in the pool | — | **33 of 37** |
+| Features in the pool | — | **33 of 37** (+10 samāsa/kāraka taxonomy-only, unclaimed by design) |
 | Features a learner can reach | — | **24 of 37** — see below |
-| Śloka | **96** | the well refilled |
+| Śloka | **120** (96 + Gītā 2.1–6 + Īśopaniṣad 18; registers classical + vedic) | the well refilled |
 | Daily words | **30** | the well refilled |
+| Lessons | **10** (Units 1–3, original prose, Vidyut-verified examples) | served at `GET /lessons/{feature_id}` |
+| Vocab | **60** (10 topics; 7/60 with pool examples, rest `examples: []`) | `GET /vocab/{topic}` |
+| Graded reading | **3 tiers** (from servable content; DCS import deferred) | `GET /reader/{tier}` |
 | Pre-rendered audio | 29 nodes · 33 challenges | every approved row is rendered |
-| **IAST correctness** | **130 of 264 wrong (49%)** | → **P7-13** |
+| **IAST correctness** | **0 mismatches** (P7-13 backfilled 130/264 + 9/96; invariant test guards) | **DONE 2026-09-06** |
 
 ⚠ **Coverage went 24 → 33 in the pool and 24 → 24 for learners.** Nine
 features are exercised but have **zero approved rows** — `VOC.SG · GEN.PL ·
@@ -473,16 +503,17 @@ Added 2026-09-05 on owner direction.
 | Phase | Theme | Gate |
 |---|---|---|
 | **P8-0** | Clear the review queue — ⚠ **owner** | none — **the blocker** |
-| **P7-13** | IAST from `lipi` — 130 wrong rows, ₹0 to fix | none |
-| **P7-5** | Re-point the path at approved content | P8-0 |
-| **P8-4…P8-5** | The question 10 people answer; platform | P8-0 |
-| **P19** | Ask anywhere — engine first, model second | none |
-| **P13** | The return loop — notifications | P8 |
-| **P20** | Learning to write the script | P7-13 |
+| **P7-5** | Re-point the path at approved content — **DONE 2026-09-07** | — |
+| **P7-7** | Content-well guard — **DONE 2026-09-07** | — |
+| **P8-4** | The question 10 people answer — **DONE 2026-09-08** (`p8` in metrics) | — |
+| **P8-5** | Platform — **DONE 2026-09-08** (Cloud Run kept; GCS audio; backup policy; Postgres path) | — |
+| **P19** | Ask anywhere — engine first, model second — **DONE 2026-09-06** | — |
+| **P13** | The return loop — notifications — **DONE 2026-09-08** (job + tokens; expo package + scheduling behind P8) | — |
+| **P20** | Learning to write the script — P20-1/2/3 done; P20-4 server done, photo client pending | — |
 | **P10** | Maths in Sanskrit | P7 |
-| **P14** | Entitlements — ⚠ owner-gated throughout | P8 + pricing decision |
-| **P21** | The canon, made readable | P21-1/2 done 2026-09-06; only P21-3/4 remain |
-| **P22** | Curriculum — the layer between engine and learner | P22-1/2/4 unblocked; P22-3/5 need a licence call |
+| **P14** | Entitlements plumbing — **DONE 2026-09-08** (prices/tiers/store — ⚠ owner) | — |
+| **P21** | The canon, made readable | P21-1/2/3 done 2026-09-07; P21-4 DONE 2026-09-08 (canon decided, Īśā imported, `GET /canon`) |
+| **P22** | Curriculum — DONE minimal 2026-09-07 (P22-1/2/4/5/6); WordNet/DCS imports deferred on licence | — |
 | **P15** | Async social — the verse chain | P13, P14 |
 | **P16** | `अवधानम्` — the boss mode | P15 |
 
@@ -590,31 +621,20 @@ distinct sentences, 20 of 37 features and no review gate. P7-10 and P7-11
 fixed the mechanism (uniqueness, idempotent inserts, a review gate); P7-12
 narrowed the bands. **Judge any future run by distinct rows added (§2.14).**
 
-## P7-5 · Re-point the path at real content
+## P7-5 · Re-point the path at real content — DONE 2026-09-07
 
-**Blocked by:** P7-4. **Effort:** M
+`GET /grammar/path` (`routers/grammar.py`) returns the feature taxonomy in
+teaching order with per-feature `approved_count` / `pending_count` / `mastery`
+/ `has_lesson` (P22-4). `Path.tsx` consumes it. Tests:
+`tests/test_path_spine.py`.
 
-`UI_HANDOVER.md` U3-1 built the journey map against the feature bands in
-`seeds/briefs.py`. Once real scenarios exist and are approved, path nodes
-should reflect **what is actually authored and approved**, not the brief
-catalogue. Needs a backend endpoint that returns the approved-content spine;
-`Path.tsx` consumes it. **[client]** for the consuming half.
+## P7-7 · A content well that cannot run out silently — DONE 2026-09-07
 
-## P7-7 · A content well that cannot run out silently
-
-**Why:** P7-6 was found by a human reading a SQLite table two days late. That
-is the actual defect — not the empty well, but that nothing said so.
-
-**Blocked by:** P7-6. **Effort:** S
-
-**Touch:** `app/routers/health.py` or `routers/admin.py`, `tests/`
-
-Report, per daily surface: rows remaining, days of runway, and the count of
-**approved** scenarios. A test fails when any runway drops below **14 days** or
-approved scenarios fall below 2. Make the failure name the well.
-
-**Do not** page on it or add an alerting dependency — a red test is the
-mechanism.
+`services/content_well.py` + `GET /admin/content-wells` report per-well
+`rows_total` / `rows_remaining` / `runway_days` plus approved/pending/rejected
+scenario counts. `tests/test_content_well.py` fails naming the well when
+runway < 14 days, approved scenarios < 1, or the seed is ahead of the DB
+(P8-1 guard). No paging, no alerting dependency — a red test is the mechanism.
 
 ## P7-13 · IAST from `lipi`, not from the model — DONE 2026-09-06
 
@@ -794,7 +814,14 @@ on one `install_id`.
 dev-login path is unreachable in a release build · deletion works and preserves
 the escaped-log rows P1-3 requires.
 
-## P8-4 · Decide what 10 people are being asked
+## P8-4 · Decide what 10 people are being asked — DONE 2026-09-08
+
+`services/retention.py`: the question (`P8_QUESTION`) + tripwire thresholds
+(`P8_THRESHOLDS`: escape ≤0.35, live-share ≤0.50, day-2 ≥0.30, n=10) written
+before anyone is invited, `day2_return` (today-first learners excluded from
+the denominator), `p8_report` — all surfaced in `GET /admin/metrics` as
+`retention` + `p8`. Tests: `tests/test_p84_retention.py` (4). Original spec
+below for reference.
 
 **Effort:** S — but do it before inviting anyone, not after.
 
@@ -807,12 +834,24 @@ result is not decided after the fact.
 ⚠ **Do not invite anyone before the review queue is clear and the wells are
 full.** A first impression is spent once.
 
-## P8-5 · Platform decisions — ⚠ OWNER-GATED
+## P8-5 · Platform — DONE 2026-09-08 (Cloud Run kept, owner decision)
 
-Host, object store, backup policy, and whether the Cloud Run service stays.
-All owner calls (§6). The audio store is the one with a deadline: pre-rendered
-WAVs are served off local disk today (`/audio/`), which does not survive a
-Cloud Run revision. **Ten users is fine; the eleventh is a hosting decision.**
+Host: **Cloud Run stays** (`shabd-api`, asia-south1, `deploy/gcp/deploy.sh`).
+Object store: **`GCSStorage`** (`services/storage.py`, selected by
+`AUDIO_STORAGE=gcs` + `GCS_AUDIO_BUCKET`; CDN via `CDN_BASE_URL`, immutable
+cache headers, path-traversal neutralised; unknown/unconfigured values fall
+back to local rather than crashing the boot). `deploy.sh` §1c provisions the
+public-read bucket + SA `objectAdmin` idempotently and wires the env (skipped
+when the bucket var is unset — dev stays local). Database: **Postgres via
+`DATABASE_URL`** (Supabase pooler string already in `deploy.sh`; `psycopg`
+in requirements; SQLite remains the dev path). Backup policy:
+**`scripts/backup_db.py`** — timestamped `backups/` copy (SQLite) or
+`pg_dump --custom` (production, from Cloud Shell — never inside the container),
+keep newest 30, verify-then-prune, optional `--upload` to `GCS_BACKUP_BUCKET`.
+Schedule: daily Cloud Scheduler hit (documented, owner-click); the script
+refuses loudly (missing DB, missing pg_dump, 0-byte copy) instead of writing
+silence. Tests: `tests/test_p85_platform.py` (8) incl. a guard that the deploy
+script provisions the bucket vars. Original spec below for reference.
 
 ---
 
@@ -825,7 +864,17 @@ Cloud Run revision. **Ten users is fine; the eleventh is a hosting decision.**
 
 **Blocked by:** P8. Do not send notifications to a product with no users.
 
-## P13-1 · Push tokens and delivery
+## P13-1 · Push tokens and delivery — DONE 2026-09-08
+
+`push_tokens` + `notification_sends` tables (migration `d1e2f3a4b5c6`,
+applied) + `services/notify.py` (collection-not-column, 2-strike dead rule,
+learner-local dates, 1/day max, ignore-decay at 3, ledger-write idempotency,
+transport-injected job) + `routers/notify.py` (`POST /me/push-tokens`,
+`DELETE /me/push-tokens`, `POST /admin/notify/run`, `GET
+/admin/notify/ignored/{learner_id}`). No push vendor is called: without a
+transport the admin run is a dry-run ledger pass. expo-notifications install +
+OS scheduling stay behind P8. Tests: `tests/test_p13_notify.py` (9). Original
+spec below for reference.
 
 **Effort:** M · **Touch:** `app/models.py`, migration, create
 `app/services/notify.py`, `routers/me.py`, tests
@@ -911,7 +960,19 @@ grammatical claims. An unsupported provenance claim in the maths course
 discredits the derivation drawer three screens away. **Reject the brief and
 escalate (§6).**
 
-## P10-1 · Numeral coverage audit — do this first
+## P10-1 · Numeral coverage audit — DONE (audit) 2026-09-08; P10-2/3 STOPPED
+
+Ran `python -m scripts.p10_numeral_audit` (no network, no spend) 2026-09-08:
+**30 numerals: 20 ok · 2 unresolved (एकादश, त्रयोदश) · 8 CONFIDENT MISPARSE**
+(पञ्च, सप्त, अष्ट, नव, द्वादश, चतुर्दश, षोडश, नवदश — all confident `VOC.SG`
+collisions, the dangerous mode §2.2 cannot catch); **12/12 Līlāvatī vocab ok**,
+0 misparse. Per this phase's own stop condition, **P10-2/3 STOP here**: this is
+a frozen-analyzer question (§2.1 escalation — the analyzer is FROZEN, do not
+fix it yourself), not a content task. The Piṅgala-first sequencing (one screen
+on P11-1) is unaffected — it needs no numeral grading. Tests:
+`tests/test_p10_numeral_audit.py` (3) pin the stop condition (पञ्च must keep
+flagging `misparse` while the analyzer stays frozen). Original spec below for
+reference.
 
 **Effort:** S
 
@@ -959,7 +1020,15 @@ makes paid acquisition arithmetically fatal, and roughly 30% of subscribers
 (the diaspora band) generate about 48% of revenue. That is a *pricing* input,
 not an engineering one.
 
-## P14-1 · The entitlement model
+## P14-1 · The entitlement model — DONE plumbing 2026-09-08 (pricing ⚠ owner)
+
+`entitlements` table (migration `d1e2f3a4b5c6`) + `services/entitlement.py`
+(`has_entitlement` is the ONLY reader; free surfaces always True so NO current
+behaviour changes; `conversation_open` premium-gated for free tier; vendor
+errors fail closed, own outages fail open; expiry degrades to free). No router
+accepts a tier from the client (test asserts it). Tests:
+`tests/test_p14_entitlement.py` (8) incl. the P14-2 no-hearts/energy schema
+guard. Original spec below for reference.
 
 **Effort:** M · **Touch:** `app/models.py`, migration, create
 `app/services/entitlement.py`, `auth.py`, tests
@@ -1415,31 +1484,47 @@ any model.
 for anuṣṭubh, which is variable and absent from the 145-vṛtta table. Show the
 G/L pattern; never fill the name with a guess or an LLM call (§6).
 
-## P21-3 · Import a second text
+## P21-3 · Import a second text — DONE 2026-09-07
 
-**Effort:** M. The acceptance test for P21-1: a GRETIL text becomes readable
-with **no new UI work**. If it does not, P21-1 is not finished.
+`scripts/import_text.py` (dry-run default, idempotent by `source_ref`,
+licence REQUIRED, no TTS — test asserts `audio_url == ""`, engine floor ≥2
+confident breakdown words, dates continue past max). First import: Gītā 2.1–6,
+6/6 verses, 0 skips, corpus 96 → 102 with zero UI work (same `GET /shlokas`).
+Backup `app.db.bak-20260907`. Tests: `tests/test_p21_import.py` (4).
 
-Per-text licence recorded · no TTS in the import path · idempotent, judged by
-distinct rows added (§2.14) · backed up first (§2.13).
+## P21-4 · Everything about the shelf — DONE 2026-09-08 (decided: most depth, all free)
 
-## P21-4 · Everything about the shelf — ⚠ OWNER
-
-Which texts, in what order, at what depth, and whether any of it is gated
-(P14). A canon is an editorial position, not an engineering one.
+Editorial position (owner delegated): **Gītā full spine (700) → Hitopadeśa →
+Nītiśataka → Īśā whole → Kaṭha → Rāmāyaṇa → Mahābhārata (indexed) →
+Pañcatantra → Subhāṣita → Muṇḍaka → Āyurveda (indexed) → Siṃhāsana** — 12
+texts in `canon_texts` (migration `e2f3a4b5c6d7`, `seeds/canon.py`, additive).
+Depth: `full` = every verse instrumented, `studied` = curated passages,
+`index` = catalogue only (epics/Āyurveda wait for curated selections; NEVER
+bulk-import — ~10M chars is ₹30,000+ of TTS and §6 forbids TTS on import).
+**All reading FREE** — the reader is reference/acquisition; gating any of it
+is a pricing decision (§6), not a default. First depth delivered: **Īśopaniṣad
+18/18** (Vedic register slice; wikisource CC BY-SA transcription recorded;
+backup `app.db.bak-20260908`; corpus 102 → 120). `GET /canon` serves order +
+live imported counts + coverage; Reader shows a text filter over the same
+flat flip list. Tests: `tests/test_p21_canon.py` (6). Original spec below for
+reference.
 
 ---
 
-# PHASE P22 — Curriculum: the layer between the engine and the learner
+# PHASE P22 — Curriculum — DONE minimal 2026-09-07 (WordNet/DCS imports deferred on licence)
 
-> The engine derives every form, sūtra-by-sūtra, for ₹0. Clicking a Path node
-> still drops straight into a challenge — there is no explanation of what a
-> vibhakti IS, why sandhi happens, or how a verb is conjugated. The gap is
-> pedagogical content, not computation. Full strategy: [`CURRICULUM.md`](CURRICULUM.md).
-
-**Blocked by:** nothing hard. P22-1/2/4 are backend-only and unblocked. P22-3
-and P22-5 need a licence call (§6 — do not copy text without one). P22-6
-depends on P22-1. The UI half is `UI_HANDOVER.md` U14.
+> The engine derives every form, sūtra-by-sūtra, for ₹0. The Path now offers
+> Lesson → Practice → Challenge via `has_lesson`. Full strategy:
+> [`CURRICULUM.md`](CURRICULUM.md).
+>
+> What shipped: P22-1/3/4 (`lessons` table, migration `c9d0e1f2a3b4`,
+> `GET /lessons/{feature_id}` honest 404, 10 Units 1–3 lessons in original
+> prose with equality-checked Vidyut examples), P22-2 (10 samāsa/kāraka
+> taxonomy features, unclaimed by design, no band references them), P22-5/6
+> minimal (`vocab_words` 60 rows original glosses, `reader_passages` 3 tiers
+> from servable content). WordNet cross-reference and the DCS import are
+> deferred pending the §6 licence confirmations. The UI half is
+> `UI_HANDOVER.md` U14 (U14-1/2/3 + minimal U14-4/5 shipped).
 
 **What exists already (read before scoping):** the derivation player
 (`prakriya.derive` with sūtra-numbered steps), the paradigm grids
@@ -1448,32 +1533,20 @@ depends on P22-1. The UI half is `UI_HANDOVER.md` U14.
 `app/seeds/features.py` (~40 features). A Lesson is the *missing* content type
 that sits in front of all of it.
 
-## P22-1 · The Lesson content type
+## P22-1 · The Lesson content type — DONE 2026-09-07
 
-**Effort:** M · **Touch:** `app/models.py`, migration, create
-`app/services/lessons.py` + `app/routers/lessons.py`, `app/seeds/lessons.py`,
-tests
+`app/models.py` `Lesson` + migration `c9d0e1f2a3b4` + `services/lessons.py` +
+`routers/lessons.py` + `seeds/lessons.py` + `tests/test_p22_lessons.py` (8).
+Example verification is equality (seed stores an example only when
+`prakriya.derive` reproduces its surface form EXACTLY). See the phase header
+for the rest.
 
-Add a `Lesson` model and a `GET /lessons/{feature_id}` endpoint. One lesson per
-feature, ordered by `rank`, scoped to the Path spine. Fields per `CURRICULUM.md`
-§6.3: `feature_id`, `unit_id`, `rank`, `title_en`, `title_hi`, `body`
-(markdown), `examples` (JSON — 2–3 sentences with Vidyut parse), `visual_type`
-(`grid` | `tree` | `state_machine` | `none`), `visual_data` (JSON the client
-renders without further derivation), `audio_url`, `register`.
+## P22-2 · Samāsa and kāraka features — DONE 2026-09-07 (taxonomy-only by design)
 
-**Every example in a lesson must be derivable by the engine.** Run each
-`examples[*]` through `prakriya.derive` / `sandhi.split_candidates` at seed
-time and drop any that come back empty. A lesson cannot claim a form the engine
-cannot produce — this is the §6 provenance rule applied to content. Store the
-derivation steps, do not recompute them client-side.
-
-**Acceptance:** `GET /lessons/{feature_id}` returns the lesson with Vidyut-verified
-examples · a feature with no lesson returns an honest `404` (never a blank) ·
-seed is additive and idempotent (§2.13) · tests hit no network.
-
-## P22-2 · Samāsa and kāraka features
-
-**Effort:** S · **Touch:** `app/seeds/features.py`, tests
+10 features (samāsa ranks 81–84, kāraka 91–96). No band references them (test
+asserts it); `p712_feature_coverage.py --coverage` names them "unclaimed by
+design". Challenge coverage is a later analyzer question (§2.1, do not fix the
+analyzer yourself). Original spec below for reference.
 
 Two grammar domains are absent from the taxonomy entirely, and both are
 blockers (see `CURRICULUM.md` §3.2):
@@ -1496,9 +1569,12 @@ are *taxonomy* features first; challenge coverage is a later analyzer question
 reports them as *unclaimed by design* (not as a generation gap) · no band in
 `briefs.py` references them.
 
-## P22-3 · Lesson text for Units 1–3
+## P22-3 · Lesson text for Units 1–3 — DONE 2026-09-07 (original prose, licence-clean)
 
-**Effort:** L · **Touch:** `app/seeds/lessons.py` (or a JSON payload it reads)
+10 lessons shipped; bodies are ORIGINAL Sanskritam prose so the
+learnsanskrit.org licence question never arises. If a future pass adapts
+external prose, the exact licence lands in the row's `provenance` first (§6).
+Original spec below for reference.
 
 **⚠ Licence first (§6).** The lesson text is adapted from learnsanskrit.org
 (open source). Confirm the exact licence on the source *before* copying any
@@ -1521,10 +1597,12 @@ prove rather than shipping it.
 lessons read correctly in the Grammar tab · provenance recorded per lesson
 (which source, which licence).
 
-## P22-4 · Path → Lesson → Challenge
+## P22-4 · Path → Lesson → Challenge — DONE 2026-09-07
 
-**Effort:** S · **Touch:** `app/routers/grammar.py` (or wherever the path
-spine is served), tests
+Path node response exposes `has_lesson` (`routers/grammar.py`,
+`services/lessons.py::lesson_feature_ids`); `Path.tsx` routes Learn →
+Practice → Challenge. No change to the grading/adaptive path. Original spec
+below for reference.
 
 The Path node currently launches a Challenge directly (`mobile/src/screens/
 Path.tsx` `onStartUnit`). Re-point the spine so a node offers **Lesson first,
@@ -1535,10 +1613,14 @@ add `has_lesson` so the client can route. Do not change the grading path.
 **Acceptance:** path node response exposes `has_lesson` · a node with a lesson
 routes to it before the challenge · no change to the grading/adaptive path.
 
-## P22-5 · Vocabulary curriculum
+## P22-5 · Vocabulary curriculum — DONE minimal 2026-09-07 (WordNet deferred on licence)
 
-**Effort:** M · **Touch:** new `app/services/vocab.py` + `app/routers/vocab.py`,
-migration, seeds, tests
+`vocab_words` 60 rows / 10 topics, original glosses, examples drawn from
+Vidyut-gated approved challenges (only 7/60 have pool sentences yet, rest
+`examples: []`). `GET /vocab/{topic}` frequency-ordered. WordNet
+cross-reference deferred pending the §6 licence confirmation; each row's
+`provenance` says so. Tests: `tests/test_p22_vocab_reader.py` (10). Original
+spec below for reference.
 
 **⚠ Licence.** Sanskrit WordNet (IIT Bombay) is CC BY-SA 4.0. Confirm the
 licence on the exported data before ingesting; record it in the seed.
@@ -1554,12 +1636,12 @@ no network in the seed either).
 every word carries gender + stem + examples · seeded idempotently · licence
 recorded.
 
-## P22-6 · Graded reading
+## P22-6 · Graded reading — DONE minimal 2026-09-07 (DCS import deferred on licence)
 
-**Effort:** M · **Touch:** new `app/services/reader.py` or extend
-`app/routers/shlokas.py`, migration, tests
-
-**Blocked by:** P22-1 (reuses the Lesson/examples parse contract).
+`reader_passages` 3 tiers from already-servable content (`GET /reader/{tier}`).
+The DCS extraction (50/50/50) is deferred pending licence + analyzer coverage
+for compounds. Tests: `tests/test_p22_vocab_reader.py` (10). Original spec
+below for reference.
 
 Extract simple sentences from the DCS corpus (650K+ parsed lines, openly
 licensed — record the licence) graded by sentence length, features present, and
@@ -1579,7 +1661,7 @@ parses through the engine · licence recorded per source · additive seed.
 
 1. The task's stated **Acceptance** passes.
 2. `./.venv/Scripts/python.exe -m pytest -q` (from `backend/`) at or above
-   **465**.
+   **557**.
 3. `cd mobile ; npx tsc --noEmit` → **0 errors**.
 3b. **`alembic current` equals `alembic heads`.** A written migration is not
    a run migration, and the suite cannot tell the difference (§3).
@@ -1668,7 +1750,7 @@ parses through the engine · licence recorded per source · additive seed.
 All backend commands run from backend/ (§2.10), with UTF-8 (§3).
 PowerShell 5.1 has no &&.
 
-Backend tests (baseline 465):
+Backend tests (baseline 557):
   cd backend
   ./.venv/Scripts/python.exe -m pytest -q
 
@@ -1711,11 +1793,11 @@ BACK UP THE DB BEFORE ANY SEED/MIGRATE/REBUILD/DEDUPE WORK (§2.13):
   Then run a destructive migration against the COPY and diff the row
   counts before running it for real (§2.15). rowid is NOT id.
 
-Alembic head:  aabbccddeeff   (applied 2026-09-05)
+Alembic head:  e2f3a4b5c6d7   (applied 2026-09-08)
 
 Order:  P8-0  review the queue — 5 scenarios + 231 challenges  ⚠ OWNER
-        P7-13 IAST from lipi — 130 wrong rows, ₹0, lands before P20
-        then  P7-5 → P8-4/P8-5 → P19 → P13 → P20 → P10 → P14 → P21 → P22 → P15 → P16
+        then  P10 (stopped: analyzer escalation) → P15 → P16
+        DONE: P7-5, P7-7, P7-13, P8-4, P8-5, P13-1, P14 plumbing, P19, P20-1/2/3, P21-1/2/3/4, P22 minimal
 
 Owner-gated:  the review queue (P8-0) · RAG · the sūtra curriculum · any
               public surface · all of P14 · institutional licensing · P8-5
@@ -1728,8 +1810,9 @@ State of play right now (§4):
   2. Talk still has ONE dialogue until those 5 are approved
   3. coverage is 33 of 37 in the pool but 24 of 37 for learners — nine
      features have rows and zero approvals, all four sandhi among them
-  4. 130 of 264 challenge rows carry wrong IAST (P7-13)
-  5. the śloka and daily-word wells refilled: 96 and 30
+  4. IAST: 0 mismatches (P7-13 DONE 2026-09-06; invariant test guards)
+  5. the śloka and daily-word wells refilled: 120 and 30; lessons 10, vocab 60,
+     graded reading 3 tiers, canon 12 texts (Īśā 18/18, Gītā spine planned full)
   6. every APPROVED row already has pre-rendered audio; the rest follow
      automatically once approved
 

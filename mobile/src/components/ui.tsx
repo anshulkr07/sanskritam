@@ -81,6 +81,7 @@ export function Button({
     <View style={[style, block && styles.block]}>
       <Pressable
         accessibilityRole="button"
+        accessibilityLabel={rest.accessibilityLabel ?? label}
         disabled={disabled || loading}
         onPress={(e) => {
           haptics.tap();
@@ -205,7 +206,7 @@ export function Chip({
             ? color.unsure
             : color.inkSoft;
   return (
-    <Pressable onPress={onPress} style={[styles.chip, { backgroundColor: selected ? fg : bg }]}>
+    <Pressable onPress={onPress} style={[styles.chip, { backgroundColor: selected ? fg : bg }]} accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ selected }}>
       <Text style={[styles.chipText, { color: selected ? color.white : fg }]}>{label}</Text>
     </Pressable>
   );

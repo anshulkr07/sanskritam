@@ -362,3 +362,17 @@ class DailyWordGuessResponse(BaseModel):
     max_guesses: int
     revealed: Optional[dict[str, Any]] = None
     reason: Optional[str] = None
+
+
+# ─── Notify (P13) ───
+
+class PushTokenRequest(BaseModel):
+    device_id: str = Field("", max_length=128)
+    token: str = Field(..., min_length=8, max_length=512)
+    platform: str = Field("", max_length=16)
+
+
+class PushTokenResponse(BaseModel):
+    device_id: str
+    platform: str
+    dead: bool

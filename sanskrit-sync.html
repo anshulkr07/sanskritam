@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanskritam — Synced Build Status · 2026-09-07</title>
+<style>
+  :root{
+    --paper:#FFF8EE; --card:#FFFFFF; --ink:#2B2118; --muted:#8A7A68;
+    --saffron:#E85B25; --saffron-d:#C74A1B; --gold:#F5B301;
+    --green:#1E7E34; --green-bg:#E6F4EA; --amber:#9A6700; --amber-bg:#FEF3C7;
+    --red:#B3261E; --red-bg:#FCE8E6; --violet:#6A3FB5; --violet-bg:#EDE7F6;
+    --grey:#5F6368; --grey-bg:#F1F3F4; --line:#EBDCC8; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Nirmala UI","Mangal",sans-serif;line-height:1.55}
+  header.hero{background:linear-gradient(135deg,#2B2118 0%,#5A2E14 55%,#E85B25 130%);color:#fff;padding:44px 28px 34px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .kicker{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:4px 12px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  h1{margin:14px 0 6px;font-size:clamp(28px,4vw,44px);line-height:1.1}
+  h1 .sa{font-weight:800}
+  .sub{opacity:.92;max-width:760px;font-size:16px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:22px}
+  .stat{background:rgba(255,255,255,.97);color:var(--ink);border-radius:12px;padding:12px 14px}
+  .stat b{font-size:22px;display:block}
+  .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .stat.alert b{color:var(--red)}
+  nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  nav.toc .wrap{display:flex;gap:8px;flex-wrap:wrap;padding:10px 20px}
+  nav.toc a{font-size:13px;text-decoration:none;color:var(--ink);background:var(--grey-bg);padding:6px 12px;border-radius:999px;border:1px solid var(--line)}
+  nav.toc a:hover{background:#fff;border-color:var(--saffron);color:var(--saffron-d)}
+  main .wrap{padding:26px 20px 80px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:18px 0;box-shadow:0 2px 10px rgba(90,46,20,.06)}
+  h2{margin:0 0 4px;font-size:22px}
+  h3{margin:18px 0 8px;font-size:16px}
+  p.lead{color:#5b4c3e;margin:4px 0 12px}
+  .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid transparent;vertical-align:middle;white-space:nowrap}
+  .done{background:var(--green-bg);color:var(--green);border-color:#B7DFC0}
+  .prog{background:var(--amber-bg);color:var(--amber);border-color:#F0D489}
+  .todo{background:var(--grey-bg);color:var(--grey);border-color:#DADCE0}
+  .blocked{background:var(--red-bg);color:var(--red);border-color:#F2B8B5}
+  .owner{background:var(--violet-bg);color:var(--violet);border-color:#CDB9EA}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  code{background:#F7EFE3;padding:1px 6px;border-radius:6px;font-size:12.5px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+  .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .phase{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:#FFFEFA}
+  .phase h4{margin:0 0 4px;font-size:15px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .phase p{margin:6px 0;font-size:14px;color:#4d4136}
+  .phase ul{margin:6px 0 2px 18px;font-size:13.5px;color:#4d4136}
+  .timeline{border-left:3px solid var(--line);margin:12px 0 0 6px;padding-left:18px}
+  .timeline div{margin:0 0 14px;position:relative}
+  .timeline div::before{content:"";position:absolute;left:-25px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--saffron);border:2px solid #fff;box-shadow:0 0 0 2px var(--saffron)}
+  .timeline time{font-size:12px;color:var(--muted);font-weight:700}
+  footer{color:var(--muted);font-size:13px;text-align:center;padding:30px}
+  .blocker{border:2px solid var(--red);background:#FFF7F6}
+  details{margin-top:8px} summary{cursor:pointer;font-weight:600;font-size:14px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="kicker">HANDOVER · UI_HANDOVER · DECISIONS — synced 2026-09-07</span>
+  <h1><span class="sa">संस्कृतम्</span> Sanskritam — One Status Doc</h1>
+  <p class="sub">Backend + client + decision log merged. Every row carries a status: done, in progress, blocked/owner, or to-do. The bottleneck has not moved: the <b>review queue (P8-0)</b>.</p>
+  <div class="stats">
+    <div class="stat"><b>499</b><span>backend tests passing</span></div>
+    <div class="stat"><b>0</b><span>mobile typecheck errors</span></div>
+    <div class="stat"><b>33 / 264</b><span>challenges approved</span></div>
+    <div class="stat"><b>1 / 6</b><span>scenarios approved</span></div>
+    <div class="stat"><b>33 / 37</b><span>features in pool · 24 reachable</span></div>
+    <div class="stat alert"><b>231 pending</b><span>challenges + 5 scenarios</span></div>
+  </div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#now">Where we are</a><a href="#backend">Backend phases</a><a href="#client">Client phases</a>
+  <a href="#bridge">Backend ↔ client map</a><a href="#decisions">Decision timeline</a><a href="#invariants">Invariants</a><a href="#next">What to do next</a>
+</div></nav>
+
+<main><div class="wrap">
+
+<div class="filters" id="filters">
+  <button data-f="all" class="active">Show all</button>
+  <button data-f="done">Done only</button>
+  <button data-f="prog">In-progress only</button>
+  <button data-f="blocked">Blocked / owner only</button>
+  <button data-f="todo">To-do only</button>
+</div>
+
+<section class="card blocker" id="now">
+  <h2>⚠ Where we actually are <span class="badge blocked">blocker: P8-0 review queue</span></h2>
+  <p class="lead">Engines are live (prakriya · chandas · sandhi · cheda + kosha · lipi), audio is pre-rendered for every approved row, ask-anywhere (P19/U11) and the reader (P21/U13) shipped 2026-09-06. Nothing downstream moves until a human reviews content.</p>
+  <table>
+    <tr><th>Fact</th><th>Status</th></tr>
+    <tr><td>Talk tab has <b>one</b> dialogue; session can run the pool dry — render an empty state, not a spinner</td><td><span class="badge prog">in progress — waits on P8-0</span></td></tr>
+    <tr><td>9 features have rows but <b>zero approved</b>: VOC.SG · GEN.PL · LOC.PL · PRES.2PL · IMP.2SG + all 4 sandhi</td><td><span class="badge blocked">blocked on owner review</span></td></tr>
+    <tr><td>IAST fixed via <code>lipi</code> (P7-13): 130 challenge + 9 śloka rows backfilled; invariant test guards it</td><td><span class="badge done">done 2026-09-06</span></td></tr>
+    <tr><td>Śloka well 96 · daily words 30 · pre-rendered audio on all approved rows</td><td><span class="badge done">done</span></td></tr>
+    <tr><td>Mascot still static PNG; Rive rig is owner's lane (U1)</td><td><span class="badge owner">owner in progress</span></td></tr>
+    <tr><td>App unusable without Devanagari literacy; IAST gate (P7-13) cleared, writing path U12-4 still needs ML Kit dev build</td><td><span class="badge prog">in progress</span></td></tr>
+  </table>
+</section>
+
+<section class="card" id="backend">
+  <h2>Backend phases (HANDOVER.md)</h2>
+  <p class="lead">Alembic head <code>b7c8d9e0f1a2</code> applied. All commands run from <code>backend/</code>. Green suite ≠ working app — verify <code>alembic current == heads</code> + one live smoke on vendor paths.</p>
+
+  <div class="phase" data-s="done"><h4>P7 — Content at volume <span class="badge done">mostly done</span></h4>
+    <ul>
+      <li>P7-10 dedupe (unique target+register) — <b>done</b></li>
+      <li>P7-11 review gate (<code>review_status</code>, approved-only serving) — <b>done</b></li>
+      <li>P7-12 coverage 24 → <b>33/37</b> in pool (feature_derivation + sandhi-from-engine, 15 rows, ₹0) — <b>done</b>; 5 left: ATMANEPADA, MASC/FEM/NEUT, INDECL — <b>to-do, needs P8-0</b></li>
+      <li>P7-4 challenge pipeline (honest feature-claiming, duals→Gemini 100% vs Sarvam 74%) — <b>done</b></li>
+      <li>P7-13 IAST from <code>lipi</code> — <b>done 2026-09-06</b></li>
+      <li>P7-5 re-point Path at approved spine (<code>has_lesson</code>) — <b>to-do, blocked P8-0</b></li>
+      <li>P7-7 runway report (fail &lt;14 days / &lt;2 scenarios) — <b>to-do</b></li>
+    </ul></div>
+
+  <div class="phase" data-s="done"><h4>P17 — Pre-rendered audio <span class="badge done">done</span></h4>
+    <p>Renders approved scenarios + challenges, serves <code>/audio/&lt;path&gt;</code>, records <code>source="prerendered"</code>. Remaining 71 nodes / 216 challenges render automatically once P8-0 approves.</p></div>
+
+  <div class="phase" data-s="done"><h4>P18 — Connect what is built <span class="badge done">done</span></h4>
+    <p>Pronunciation, progress (+ new <code>GET /progress/history</code>), deployed URL, metrics tab. Client: U9.</p></div>
+
+  <div class="phase" data-s="blocked"><h4>P8 — First users <span class="badge blocked">blocked on P8-0</span></h4>
+    <ul>
+      <li><b>P8-0 review queue — owner task.</b> Agent half done: band-sorted packet, sandhi near-duplicates adjacent, bulk <code>--approve-band</code>, no auto-approval. The <b>reviewing itself</b> is outstanding since 2026-09-03.</li>
+      <li>P8-1 wells refilled + <code>test_seed_is_never_behind_the_database</code> — <b>done</b></li>
+      <li>P8-2 crash log + <code>GET /admin/errors</code> — <b>done</b></li>
+      <li>P8-3 Google sign-in (<code>google_sub</code>) — <b>done</b> (migration had never applied; fixed, §3 now requires alembic check)</li>
+      <li>P8-4 what 10 people are asked (escape rate · TTS share · day-2 return) — <b>to-do</b></li>
+      <li>P8-5 platform (host/store/backup; WAVs on local disk die on Cloud Run revision) — <b>owner-gated to-do</b></li>
+    </ul></div>
+
+  <div class="phase" data-s="done"><h4>P19 — Ask anywhere <span class="badge done">done 2026-09-06</span></h4>
+    <p><code>POST /explain</code> session-free · engine-first routing (sandhi→<code>sandhi.py</code>, form→<code>prakriya</code>, verse→<code>chandas</code>) · LRU cache + honest quota-exhausted fallback. Client: U11.</p></div>
+
+  <div class="phase" data-s="prog"><h4>P20 — Learning to write <span class="badge prog">backend done · photo client pending</span></h4>
+    <ul><li>P20-1 syllabary/word corpus — <b>done</b></li><li>P20-2 stroke data (49 akṣaras, authored from scratch, original licence) — <b>done</b></li>
+    <li>P20-3 grading contract (correct/unsure/wrong; unsure provably can't harm mastery; no image/strokes cross wire) — <b>done</b></li>
+    <li>P20-4 paper path: server ready, per-source abstention in <code>/admin/metrics</code>; camera flow waits on ML Kit dev build — <b>in progress</b></li></ul></div>
+
+  <div class="phase" data-s="prog"><h4>P21 — The canon reader <span class="badge prog">P21-1/2 done · P21-3/4 to-do</span></h4>
+    <p><code>GET /shlokas</code> + tap-a-word via P19 routing + instant gloss card — <b>done 2026-09-06</b>. P21-3 second-text import (GRETIL, licence recorded, no TTS, idempotent) — to-do. P21-4 shelf curation — owner.</p></div>
+
+  <div class="phase" data-s="todo"><h4>P22 — Curriculum layer <span class="badge todo">to-do (P22-1/2/4 unblocked)</span></h4>
+    <p>Lesson type (<code>GET /lessons/{feature_id}</code>, Vidyut-verified examples) · samāsa+kāraka taxonomy (unclaimed-by-design, no bands yet) · Units 1–3 text (licence first: learnsanskrit.org) · <code>has_lesson</code> Path wiring · vocab (WordNet CC BY-SA, licence first) · graded reader (DCS, licence first). Client: U14.</p></div>
+
+  <div class="phase" data-s="todo"><h4>P10 · P13 · P14 · P15 · P16 <span class="badge todo">to-do, ordered</span></h4>
+    <ul><li>P10 maths (audit numerals 1–100 first; stop on confident mis-parses; lead with Piṅgala; never "Vedic Mathematics") — after P7</li>
+    <li>P13 return loop (push tokens, learner-local, 1/day max, śloka/word payload) — after P8</li>
+    <li>P14 entitlements — <b>owner-gated</b>; never hearts/energy, never gate daily word or abstention</li>
+    <li>P15 verse-chain social · P16 <code>अवधानम्</code> boss mode — last; keep <code>session_store</code> multi-task-capable + services stateless</li></ul>
+    <p>RAG: <b>explicitly not next</b> — no owner decision, no users, no signal.</p></div>
+</section>
+
+<section class="card" id="client">
+  <h2>Client phases (UI_HANDOVER.md) — 15 screens · 9,110 LOC · 0 type errors</h2>
+  <div class="grid2">
+  <div>
+    <div class="phase" data-s="done"><h4>U0 foundation · U2 core loop · U7 proof · U8 IA · U9 connect <span class="badge done">done</span></h4>
+    <p>Tokens, dev build, SessionShell/verdict/confetti/WordBank, DerivationPlayer/SutraCard/ScansionStrip/WordOrder/Paradigm (live endpoints), 6 tabs + drawer, mic + violet unsure + streak calendar + skeletons.</p></div>
+    <div class="phase" data-s="done"><h4>U3 navigation <span class="badge done">done except U3-4</span></h4>
+    <p>Path (U3-1), streak (U3-2 via U9-2), mastery rings (U3-3) done. U3-4 badges — <b>to-do</b>. U3-5 leagues — <b>ask first, likely no</b>.</p></div>
+    <div class="phase" data-s="prog"><h4>U4 Sanskrit-only surfaces <span class="badge prog">4/5 done</span></h4>
+    <p>Articulation map, code-switch dial, manuscript śloka done. U4-5 sandhi visual (reuse SutraCard, no path-tween of conjuncts) — <b>to-do</b>. U4-2 moved to U12.</p></div>
+    <div class="phase" data-s="todo"><h4>U5 accessibility <span class="badge todo">start now — 90 props, 15 screens</span></h4>
+    <p>U5-3 contrast done. U5-1 screen reader (IAST+gloss labels), U5-2 200% type + elder mode (18pt Sanskrit floor), U5-4 44pt targets / no timers — <b>open, never cut</b>.</p></div>
+  </div>
+  <div>
+    <div class="phase" data-s="prog"><h4>U1 mascot (Rive) <span class="badge owner">owner's lane — do not touch</span></h4>
+    <p>States 0–6 reachable in simulation; export plan-gated (~$17 one month). DeepSeek: honour <code>GuruRig</code> contract only.</p></div>
+    <div class="phase" data-s="todo"><h4>U6 polish · U10 first users <span class="badge todo">to-do</span></h4>
+    <p>U6 perf/sound/icon open. U10-1 anonymous first-90s (kill dev-login in release), U10-2 challenge+derivation + empty-state (blocked P8-0), U10-3 retryable errors / never lose an attempt to network — open.</p></div>
+    <div class="phase" data-s="done"><h4>U11 ask · U13 reader <span class="badge done">done 2026-09-06</span></h4>
+    <p>AskProvider + AskSheet (engine=SutraCard "authoritative", model="Explanation"); Reader with page-turn + tap-a-word gloss.</p></div>
+    <div class="phase" data-s="prog"><h4>U12 writing · U14 curriculum <span class="badge prog">U12-4 open · U14 waits on P22</span></h4>
+    <p>StrokePlayer, canvas, 3-valued verdict, Varṇamālā practice mode done. U12-4 paper path needs ML Kit dev build. U14 Lesson/visuals/vocab/graded-reading gated on P22-1/5/6.</p></div>
+  </div>
+  </div>
+</section>
+
+<section class="card" id="bridge">
+  <h2>Backend ↔ client map</h2>
+  <table>
+    <tr><th>Capability</th><th>Backend</th><th>Client</th><th>Status</th></tr>
+    <tr><td>Ask anywhere</td><td>P19</td><td>U11</td><td><span class="badge done">done both</span></td></tr>
+    <tr><td>Writing the script</td><td>P20</td><td>U12</td><td><span class="badge prog">server done · U12-4 open</span></td></tr>
+    <tr><td>Reader</td><td>P21-1/2</td><td>U13</td><td><span class="badge done">done both</span></td></tr>
+    <tr><td>Curriculum lessons</td><td>P22</td><td>U14</td><td><span class="badge todo">to-do both</span></td></tr>
+    <tr><td>First-users (auth, errors, empty states)</td><td>P8</td><td>U10</td><td><span class="badge blocked">blocked on P8-0 review</span></td></tr>
+    <tr><td>Path spine</td><td>P7-5 <code>has_lesson</code></td><td>U3-1 / U14-3</td><td><span class="badge todo">to-do</span></td></tr>
+    <tr><td>Pronunciation · progress · URL</td><td>P18</td><td>U9</td><td><span class="badge done">done both</span></td></tr>
+  </table>
+</section>
+
+<section class="card" id="decisions">
+  <h2>Decision log (DECISIONS.md) — all landed</h2>
+  <div class="timeline">
+    <div><time>2026-08-29</time> — Backend v0.1 (FastAPI+SQLite, rule analyzer, feature-set grading, register routing, SM-2 adaptive). <span class="badge done">done</span></div>
+    <div><time>2026-08-29</time> — Model routing measured: Sarvam authors, Gemini owns duals; reasoning variant banned; visarga-sandhi fix. <span class="badge done">done</span></div>
+    <div><time>2026-08-29</time> — Conversation front-loaded; pre-rendered graph; LLM off hot path. <span class="badge done">done</span></div>
+    <div><time>2026-08-29</time> — Graph + escape ladder + Parler tooling + authoring behind flag. <span class="badge done">done</span></div>
+    <div><time>2026-08-29</time> — API-only voice; Bulbul renders 29 nodes; negation pre-empts affirmative. <span class="badge done">done</span></div>
+    <div><time>2026-08-30</time> — <code>sa-IN</code> granted; guided (free) vs open (metered) split; varṇamālā §13; no-local-models tightened. <span class="badge done">done</span></div>
+    <div><time>2026-08-30</time> — RAG sized to flat-file; platform §14 written; voice quotas; iOS mute trap. <span class="badge done">done</span></div>
+    <div><time>2026-08-30</time> — Meta-intent + Sarvam explain path (fails closed to gloss). <span class="badge done">done</span></div>
+    <div><time>2026-09-01</time> — Raw audio never retained (GDPR/DPDP). <span class="badge done">done</span></div>
+    <div><time>2026-09-01 eve</time> — Live-keys fix, CWD DB fix, gate prompt fix (~₹47 approved); "green suite hid 4 defects" rule. <span class="badge done">done</span></div>
+    <div><time>2026-09-01</time> — <code>vidyut.prakriya</code> found (5,152 sūtras, 219KB) → P9 derivations; chant + alignment gaps recorded. <span class="badge done">done</span></div>
+    <div><time>2026-09-01 night</time> — P6-3 gate fix: 2/5 → 5/5 scenarios, 83.3% pass. <span class="badge done">done</span></div>
+    <div><time>2026-09-02</time> — P11 idle engines (chandas/sandhi/cheda) → animated proof (U7); dual stays LLM+derivation. <span class="badge done">done</span></div>
+    <div><time>2026-09-02</time> — Loop fix: fallback-edge filter + streak survives repair + reveal-and-advance + "show me what to say". <span class="badge done">done</span></div>
+    <div><time>2026-09-02</time> — Tutor split (Vidyut decides, Sarvam speaks; graph→curriculum; <code>sanskrit_health</code>). <span class="badge done">done</span></div>
+    <div><time>2026-09-02</time> — Six tabs + drawer; P12–P16 roadmap; no-hearts rule. <span class="badge done">done</span></div>
+    <div><time>2026-09-04/05</time> — P7-8 restore (₹0) + śloka 6→96; P7-4 410 challenges; duals Gemini 100% vs Sarvam 74%. <span class="badge done">done</span></div>
+    <div><time>2026-09-05</time> — Turn measured 4.0s + perf marks; inline LLM audio; stroke provenance (original work). <span class="badge done">done</span></div>
+    <div><time>2026-09-06</time> — P8-0 tooling + P8-1 + P7-12 free half (569 claims, ₹0); curriculum plan (CURRICULUM.md). <span class="badge done">done</span></div>
+    <div><time>2026-09-06</time> — P21/U13 reader + P19/U11 ask shipped; suite 499. <span class="badge done">done</span></div>
+  </div>
+</section>
+
+<section class="card" id="invariants">
+  <h2>Invariants — never violate</h2>
+  <div class="grid2">
+  <div><h3>Backend (§2)</h3><ul>
+    <li>Frozen: <code>analyzer.py · engine.py · adaptive.py</code></li>
+    <li>Abstention: unsure never penalises (mastery/streak/ratio/XP)</li>
+    <li>Ratios: user owns ceiling, system owns value</li>
+    <li>SQLAlchemy 2.0 · migrations only · CWD is <code>backend/</code></li>
+    <li>Sarvam-conversations only; duals → Gemini 2.5-flash; no local models (Vidyut ≠ model)</li>
+    <li>Learner-local time · quota before spend · silent-empty = bug</li>
+    <li>DB holds irreplaceable content: back up, additive seeds, test destructive migrations on copy, distinct-rows judging</li>
+    <li>Handwriting/speech pixels never leave device; opt-in retention only</li>
+  </ul></div>
+  <div><h3>Client (§3)</h3><ul>
+    <li>Light theme only · Devanagari always via <code>script()</code> · colours from <code>theme.ts</code></li>
+    <li>unsure = violet + "system failed to hear" + encouraging guru; never red, never streak-break</li>
+    <li>Reduce Motion, 60fps Reanimated, real-device test, skippable delight</li>
+    <li>Guru is a teacher: never sarcastic/guilty/sad</li>
+    <li>6 tabs max · no hearts · sounds respect silent switch</li>
+  </ul>
+  <details><summary>Escalation triggers (§6/§11)</summary>
+  <p style="font-size:13.5px">Grant overspend · bulk deletes · analyzer edits · RAG · hearts · 7th tab · mascot file · store submit · loosening Vidyut gate · deleting LLM explainer · unprovable provenance ("Vedic Maths", "oldest language", "NASA") · metre-name guessing · NCERT copying · unlicensed corpus · TTS in imports · handwriting off-device · wrong-instead-of-unsure · copied stroke charts · unlicensed lesson text.</p>
+  </details></div>
+  </div>
+</section>
+
+<section class="card" id="next">
+  <h2>What to do next (in order)</h2>
+  <table>
+    <tr><th>#</th><th>Task</th><th>Owner</th><th>Status</th></tr>
+    <tr><td>1</td><td><b>P8-0 — review 5 scenarios + 231 challenges</b> (band packets, approve by band)</td><td>owner</td><td><span class="badge blocked">blocker</span></td></tr>
+    <tr><td>2</td><td>U5-1/2/4 accessibility + U10-1 first-90s + U10-3 errors</td><td>DeepSeek</td><td><span class="badge todo">to-do — start now</span></td></tr>
+    <tr><td>3</td><td>P7-5 Path spine + P8-4 question + P17 re-render after approvals</td><td>agent</td><td><span class="badge todo">after #1</span></td></tr>
+    <tr><td>4</td><td>U12-4 paper path (ML Kit dev build) + P20-4 metrics watch</td><td>DeepSeek</td><td><span class="badge prog">waits on build</span></td></tr>
+    <tr><td>5</td><td>P22-1/2/4 + U14-1/2/3 lessons; P22-3/5 after licence calls</td><td>agent</td><td><span class="badge todo">unblocked</span></td></tr>
+    <tr><td>6</td><td>P21-3 second text · P13 · P10 · P14 (owner) · P15 · P16</td><td>mixed</td><td><span class="badge todo">later</span></td></tr>
+  </table>
+  <p class="lead">Cut first: U6, U3-5. Never cut: U5. Verify every task: <code>pytest -q</code> ≥499 · <code>tsc --noEmit</code> 0 · <code>alembic current == heads</code> · live smoke on vendor paths · one commit per task (<code>feat(P..)/feat(U..)</code>) + DECISIONS entry on rule change.</p>
+</section>
+
+</div></main>
+<footer>Sanskritam · synced from DECISIONS.md + HANDOVER.md + UI_HANDOVER.md · 2026-09-07 · statuses: <span class="badge done">done</span> <span class="badge prog">in progress</span> <span class="badge blocked">blocked</span> <span class="badge owner">owner</span> <span class="badge todo">to-do</span></footer>
+<script>
+document.querySelectorAll('#filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const f=b.dataset.f;
+  document.querySelectorAll('.phase').forEach(p=>{
+    p.style.display=(f==='all'||p.dataset.s===f)?'':'none';
+  });
+}));
+</script>
+</body>
+</html>

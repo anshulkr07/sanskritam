@@ -89,6 +89,11 @@ def run_import(payload: dict, live: bool) -> dict:
     source = (payload.get("source") or "").strip()
     if not licence:
         raise SystemExit("import refused: no per-text licence in the payload (§6)")
+    # P21-4: register rides in the payload (Vedic thin slice lives here);
+    # allowlist only — a typo must not mint a fourth register silently.
+    register = (payload.get("register") or "classical").strip().lower()
+    if register not in ("classical", "vedic", "laukika"):
+        raise SystemExit(f"import refused: unknown register {register!r} (§5)")
     verses = payload.get("verses") or []
     db = SessionLocal()
     try:
@@ -114,7 +119,7 @@ def run_import(payload: dict, live: bool) -> dict:
                     id=uuid.uuid4().hex[:16],
                     date=(next_date + datetime.timedelta(days=added)).isoformat(),
                     audio_url="",  # §6: never TTS a corpus import
-                    register="classical",
+                    register=register,
                     **row,
                 ))
                 db.flush()
@@ -145,7 +150,9 @@ def main(argv=None) -> int:
               + ", ".join(report["skipped_thin"]))
     print(f"[import] licence: {report['licence']}")
     if args.live:
-        out = Path("results/imports") / (Path(args.file).stem + ".json")
+        out = Path("results/imports") / (Path(args.file).stem + ".report.json")
+        if out.resolve() == Path(args.file).resolve():
+            raise SystemExit("import refused: report would overwrite the input payload")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"[import] report written to {out}")

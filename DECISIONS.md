@@ -423,3 +423,108 @@ a coverage ceiling, not a generation defect.
   `SARVAM_API_KEY` set (passes with a dummy key) — untouched area, not a
   regression.
 
+## 2026-09-08 — P13 + P14 plumbing + P8-4 + U3-4/U5-1/U10-3 (all tracks)
+
+- **P13-1 shipped (backend; expo package + scheduling stay behind P8).**
+  `push_tokens` (unique per learner/device, 2-strike dead rule, re-register
+  revives) + `notification_sends` (write-is-idempotency per
+  learner/local-date/kind) + `services/notify.py` (learner-local dates via
+  `localtime`, 1/day max across kinds, ignore-decay stops at 3 trailing
+  unopened sends, transport injected so tests run with NO network) +
+  `routers/notify.py` (register/replace, delete, admin run, ignored-streak
+  inspect). Copy (`build_message`) carries content or a warm default and was
+  asserted against a banned-word list (streak/gone/days/lost/shame/urgent/
+  hurry/missed/lazy) — P13-2's no-guilt rule as a test, not a comment.
+  Client seam: `api.registerPushToken/removePushToken` +
+  `services/push.ts` (dynamic-require expo-notifications, no-ops without it —
+  no package.json change) + fire-and-forget registration on session apply.
+- **P14-1/2 shipped as plumbing ONLY (pricing/tiers/store stay owner-gated).**
+  `entitlements` (one per learner) + `has_entitlement` as the ONLY reader:
+  everything currently free answers True on every tier (12 ALWAYS_FREE
+  surfaces + unknown-future defaults open), so behaviour is unchanged;
+  `conversation_open` is the sole premium surface (free → False,
+  live plus/institutional → True, expired → free, unknown tier → free).
+  Vendor errors fail closed, own outages fail open. Two invariant tests carry
+  P14-2: all 13 never-gated surfaces True on a paid tier, and a schema guard
+  (`hearts`/`energy`/`lives` must never appear unnoticed) plus a
+  no-client-provisioning route assertion.
+- **P8-4 shipped: the question + thresholds BEFORE any invite.**
+  `services/retention.py` records `P8_QUESTION` verbatim and tripwire
+  thresholds (escape ≤0.35, live-share ≤0.50, day-2 ≥0.30, n=10 — lenient by
+  design at n=10). `day2_return` excludes today-first learners from the
+  denominator; `p8_report` bundles question/numbers/thresholds/checks and is
+  surfaced in `GET /admin/metrics` as `retention` + `p8`.
+- **U3-4 shipped (Lottie ART still owner-supplied).** `services/achievements`
+  (5 milestones with Sanskrit motifs, AsyncStorage bookkeeping, idempotent
+  grants) + `AchievementReveal` (skippable spring sheet, instant under Reduce
+  Motion, badgeUnlock sfx + haptics) + Progress shelf (locked tiles dimmed
+  with hints, sparsha 25-counter) + events in Conversation (complete),
+  Challenge (dual correct), Shloka (studied), Varnamala (sparsha attempt),
+  Progress (streak ≥7). No leaderboard — U3-5 stays ask-first.
+- **U5-1/U5-4/U10-3 deltas (device TalkBack/VoiceOver pass still open).**
+  `utils/announce.ts` + calls in VerdictSheet/Writing/Varnamala (unsure
+  announces the system's failure, §3.3); 44pt floors on Settings sizer,
+  Progress dial/repair, FetchError/AchievementReveal buttons (Home already
+  had it); shared `FetchError` + retryable states where silent catches left
+  permanent skeletons (Progress all-three-fail, Shloka fail-vs-empty split,
+  Varnamala grid fail). U5-2 ramp + 18pt floor already existed
+  (`useTypeScale`); U10-1 dev-gate + U6-2 sound family were already in code
+  (docs were stale — synced).
+- **Explicitly NOT built (gated, per §6):** P8-0 review itself, P8-5
+  platform, P14 pricing/tiers/store, P21-4 canon contents, P15/P16, P10-2/3
+  (P10-1 stop holds), RAG, NCERT copy, U1 (owner's lane), U3-5 (ask first),
+  U6-1 device profiling, U6-3 submission, U12-4 (ML Kit dev build).
+- Suite 521 → **543** (`test_p13_notify` 9, `test_p14_entitlement` 8,
+  `test_p84_retention` 4); mobile `tsc` clean; `alembic current == heads`
+  (`d1e2f3a4b5c6`). Same pre-existing env failure (`test_tts_502_refunds_quota`
+  needs `SARVAM_API_KEY`) — untouched area, not a regression.
+
+## 2026-09-08 (later) — blocked items, worked one by one
+
+- **P10-1 resolved: P10-2/3 STOP.** Ran the audit live (no network, no spend):
+  30 numerals → 20 ok · 2 unresolved (एकादश, त्रयोदश) · **8 confident
+  misparses** (पञ्च, सप्त, अष्ट, नव, द्वादश, चतुर्दश, षोडश, नवदश — all
+  confident VOC.SG, the dangerous mode §2.2 cannot catch); 12/12 Līlāvatī
+  vocab ok. The phase's own stop condition tripped, so P10-2/3 become a
+  frozen-analyzer escalation (§2.1 — do NOT fix the analyzer). The
+  Piṅgala-first screen needs no numeral grading and is unaffected. Recorded in
+  HANDOVER P10-1; `test_p10_numeral_audit` pins the stop condition.
+- **U12-4 done in code; dev build to run.** `photoRecogniser.ts` (same
+  dynamic-require + honest-unavailable shape as `inkRecogniser.ts`, several
+  export shapes accepted, no cloud fallback) + `PhotoCapture.tsx`
+  (single-letter framing guide, denied-state copy, uri never retained) +
+  Writing ink/photo mode switch posting `source: "photo"` through the same
+  attempt pipeline (server thresholds already biased, P20-4). `tsc` clean.
+  What remains is hardware/build work an agent cannot do: install the Text
+  Recognition module, config plugin, dev build, on-device verification.
+- **Static a11y audit: 0 issues.** New `mobile/scripts/a11y-audit.js`
+  (report-only: Pressable label+role, TextInput label, banned touchables —
+  with a generics guard so `useRef<TextInput>` is not flagged). First run
+  found 25 real gaps (SessionShell confirm buttons, ui Button/Chip
+  primitives, VarnaGrid tile, Challenge/Conversation inputs, Grammar
+  toggles/recents, Path backdrop, Progress dial, Settings link, Varnamala
+  cells); all fixed, re-run is 0. The TalkBack/VoiceOver device pass still
+  needs hardware (§U5-1) — the script is a flashlight, not a gate.
+- **U6-3 prep done; submission owner-gated.** `app.json` splash `image` was
+  unwired while `splash-icon.png` sat in assets — wired it; full set (icon,
+  adaptive foreground/background/monochrome, favicon, splash) verified via
+  `expo config`. `tsc` clean.
+- **Left for owner/hardware (checklist, not code):** P8-0 review itself (5
+  scenarios + 231 challenges — packets: `review_scenarios --packet`); U3-5
+  leagues (product-identity call); RAG (explicit owner decision per §4); U1
+  mascot (owner's lane); device passes (TalkBack/VoiceOver, U6-1 profiling,
+  ML Kit dev-build verification). P8-5 and P21-4 are DONE (see below); P14
+  pricing/tiers/store wiring is the remaining owner-gated platform item.
+
+## 2026-09-08 (later still) — P8-5 (Cloud Run kept) + P21-4 (canon, most depth)
+
+- **P8-5: Cloud Run stays (owner decision).** Object store: new GCSStorage (services/storage.py - immutable cache headers, traversal-safe, CDN URL when CDN_BASE_URL set) selected by AUDIO_STORAGE=gcs + bucket; anything unconfigured falls back to local, never crashes the boot.
+  deploy.sh step 1c provisions the public-read bucket + SA objectAdmin idempotently and wires the env (dev stays local when the var is unset). DB: Postgres via DATABASE_URL was already the deploy path and psycopg was already a dependency - verified, nothing to change.
+  Backup policy: scripts/backup_db.py (SQLite copy / pg_dump --custom from Cloud Shell, keep-30 with verify-then-prune, --upload to GCS_BACKUP_BUCKET); loud refusals instead of silent empties. google-cloud-storage added to requirements (lazy import; venv has 3.13.1).
+  Fixed a CRLF regression the editor put into deploy.sh (bash -n clean) and a same-second stamp collision in the backup test (stubbed stamps).
+- **P21-4 decided (owner delegated - most depth, reorder later):** 12 texts, Gita-full-spine first, Isa-whole next, epics/Ayurveda indexed; depth full/studied/index; ALL free (gating any reading is a pricing decision, section 6).
+  canon_texts (migration e2f3a4b5c6d7) + seeds/canon.py (additive) + GET /canon (auth-bound, live imported counts by ref_prefixes, coverage) + Reader text-filter chips over the same flat flip list (Prev/Next stay contiguous; catalogue failure never blocks reading).
+  First depth: Isa 18/18 - payload from sa.wikisource plain text, dry-run 18/18 over the floor, backup app.db.bak-20260908, live 18 added 0 skipped, licence (public-domain text + CC BY-SA transcription) recorded; corpus 102 -> 120, registers now classical + vedic (import_text honours a payload register off an allowlist).
+  Caught and fixed a real footgun: the report path <stem>.json OVERWROTE the isha.payload.json input - reports are now <stem>.report.json with a same-file refusal (payload regenerated from DB rows, re-dry-run proves 18/18 dups).
+- P14 pricing is the only remaining owner-gated platform item; P10 stays stopped (analyzer escalation); RAG still needs an explicit decision.
+- Suite 543 -> 557 (test_p85_platform 8, test_p21_canon 6); mobile tsc clean; a11y audit 0; alembic current == heads (e2f3a4b5c6d7). Same pre-existing env failure - untouched, not a regression.

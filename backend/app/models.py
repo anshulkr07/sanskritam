@@ -559,3 +559,106 @@ class ReaderPassage(Base):
     __table_args__ = (
         UniqueConstraint("tier", "devanagari", name="uq_reader_tier_dev"),
     )
+
+
+class CanonText(Base):
+    """One text of the readable canon (P21-4): the editorial position.
+
+    The catalogue is not the product — but WHICH texts, in WHAT order, at
+    WHAT depth, and whether any of it is gated, is an editorial position, and
+    this table records it instead of scattering it across seeds and docs.
+
+    Depth: ``full`` = every verse imported with word_breakdown (the reader's
+    instrumentation); ``studied`` = curated passages imported; ``index`` =
+    catalogue entry only, import planned. ``verses_imported`` is recomputed
+    live by the /canon endpoint from ``ref_prefixes`` — the column is the
+    plan, the endpoint is the truth. Everything reads FREE: the reader is a
+    reference posture and the acquisition loop (P14-2 spirit); if a text is
+    ever gated, that is a pricing decision (§6), not a default.
+    """
+
+    __tablename__ = "canon_texts"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    slug = Column(String(64), nullable=False, unique=True, index=True)
+    title_en = Column(String(256), default="")
+    title_sa = Column(String(256), default="")
+    source = Column(String(256), default="")  # where the text comes from
+    licence = Column(String(512), default="")  # per-text licence (§6)
+    study_order = Column(Integer, nullable=False, default=0)  # reading order
+    depth = Column(String(16), nullable=False, default="index")  # full|studied|index
+    tier = Column(String(16), nullable=False, default="free")  # free|plus
+    verses_planned = Column(Integer, default=0)
+    ref_prefixes = Column(JSON, default=list)  # source_ref substrings identifying its rows
+    notes = Column(Text, default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class PushToken(Base):
+    """One device's push token (P13-1): a collection, not a column.
+
+    One learner has several devices; one row per (learner, device) with a
+    ``last_seen`` timestamp. A token that fails delivery twice is dead —
+    marked, never sent to again, but NOT deleted (the same device often comes
+    back with the same token). No learner content ever lives here.
+    """
+
+    __tablename__ = "push_tokens"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    device_id = Column(String(128), nullable=False, default="")  # client install/device id
+    token = Column(String(512), nullable=False)  # Expo push token / FCM token
+    platform = Column(String(16), default="")  # "android" | "ios" | ""
+    last_seen = Column(DateTime, default=_utcnow)
+    fail_count = Column(Integer, default=0)
+    dead = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "device_id", name="uq_push_learner_device"),
+    )
+
+
+class NotificationSend(Base):
+    """Idempotency ledger for the daily-notify job (P13-1).
+
+    One row per (learner, local_date, kind): the write IS the idempotency
+    check, so running the same job twice sends once. The job survives a
+    restart because the ledger is in the DB, not in memory.
+    """
+
+    __tablename__ = "notification_sends"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    local_date = Column(String(10), nullable=False, index=True)  # learner-local YYYY-MM-DD
+    kind = Column(String(32), nullable=False, default="reminder")  # reminder|sloka|word
+    ignored_streak = Column(Integer, default=0)  # consecutive unopened sends at write time
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "local_date", "kind", name="uq_notify_learner_date_kind"),
+    )
+
+
+class Entitlement(Base):
+    """One entitlement per learner (P14-1): tier, source, validity window.
+
+    NEVER derived from a client claim — the client asserts a receipt, the
+    server verifies it (verification itself is owner-gated; until a store is
+    wired every row is tier "free"). ``has_entitlement`` in
+    ``services/entitlement.py`` is the ONLY reader; routers never scatter
+    tier checks. See P14-2 for what is never gated.
+    """
+
+    __tablename__ = "entitlements"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, unique=True, index=True)
+    tier = Column(String(32), nullable=False, default="free")  # free|plus|institutional
+    source = Column(String(32), nullable=False, default="none")  # none|store|promo|institution
+    valid_from = Column(DateTime, nullable=True)
+    valid_until = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
