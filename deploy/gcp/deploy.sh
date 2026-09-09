@@ -75,6 +75,12 @@ print(scheme + "://" + q_user + ":" + q_pw + "@" + hostport)
 fi
 
 # ── 1. Upload secrets (idempotent: overwrite existing versions) ──────────
+#       Only secrets with a value are uploaded AND mounted. Mounting a
+#       referenced-but-nonexistent secret (e.g. apple-client-id when
+#       APPLE_CLIENT_ID is omitted, which the header documents as "omit to
+#       disable") fails the revision with SecretsAccessCheckFailed while
+#       traffic silently stays on the previous revision (2026-09-09: Path,
+#       Words and Reader 404ing on stale code with a green deploy log).
 declare -A SECRETS=(
   [sarvam-api-key]=SARVAM_API_KEY
   [openrouter-api-key]=OPENROUTER_API_KEY
@@ -83,6 +89,7 @@ declare -A SECRETS=(
   [google-client-id]=GOOGLE_CLIENT_ID
   [apple-client-id]=APPLE_CLIENT_ID
 )
+SECRET_MOUNTS=()
 for name in "${!SECRETS[@]}"; do
   var="${SECRETS[$name]}"
   val="${!var:-}"
@@ -92,7 +99,15 @@ for name in "${!SECRETS[@]}"; do
   else
     printf '%s' "$val" | gcloud secrets create "$name" --project="$PROJECT_ID" --data-file=-
   fi
+  SECRET_MOUNTS+=("${var}=${name}:latest")
 done
+# --set-secrets is passed only when at least one secret is set (SARVAM_API_KEY
+# and DATABASE_URL are required in practice, so this is never empty on a real
+# deploy — the guard is against `set -u` on an empty expansion, not a config).
+SECRET_FLAGS=()
+if [ "${#SECRET_MOUNTS[@]}" -gt 0 ]; then
+  SECRET_FLAGS=(--set-secrets="$(IFS=,; echo "${SECRET_MOUNTS[*]}")")
+fi
 
 # ── 1b. Let Cloud Run's default runtime SA read the secrets (idempotent).
 #       Without roles/secretmanager.secretAccessor the revision is rejected
@@ -141,7 +156,7 @@ gcloud run deploy "$SERVICE" \
   --timeout=120s \
   --allow-unauthenticated \
   --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}" \
-  --set-secrets="SARVAM_API_KEY=sarvam-api-key:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,ADMIN_TOKEN=admin-token:latest,DATABASE_URL=shabd-database-url:latest,GOOGLE_CLIENT_ID=google-client-id:latest,APPLE_CLIENT_ID=apple-client-id:latest"
+  "${SECRET_FLAGS[@]}"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────
 URL=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --format='value(status.url)')
