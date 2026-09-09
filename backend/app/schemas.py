@@ -352,6 +352,22 @@ class LicenceResponse(BaseModel):
     taken: str = ""
 
 
+# ─── Lesson videos (P24) ───
+
+class VideoItemResponse(BaseModel):
+    id: str
+    unit_id: str
+    rank: int = 0
+    title: str = ""
+    channel: str = ""
+    youtube_id: str | None = None
+    url: str = ""
+    lang: str = "en"
+    duration_s: int = 0
+    playback: str = "embed"  # embed | link
+    source_key: str = ""
+
+
 # ─── Review schedule (P23-5) ───
 
 class ReviewItemResponse(BaseModel):

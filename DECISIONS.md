@@ -1054,3 +1054,92 @@ Full spec: [`LESSON_OVERHAUL.md`](LESSON_OVERHAUL.md) (P23 backend, U15 client).
 - **Stale-test discipline:** 2 failures were outdated expectations
   invalidated by progress (PRES.1SG lesson exists now) — updated to
   PRES.2SG, not weakened. Suite 650 green, 60 files.
+
+## 2026-09-09 — Video: embedded, never owned; and the first content class that can vanish
+
+Full research: `CURRICULUM.md` §4.4 (sources), §5.5 (why it has no home),
+§10 Q8 (the licence answer), `HANDOVER.md` §2.17 (the invariant).
+
+- **The premise did not survive contact.** The ask was "find open-source
+  Sanskrit videos that teach almost everything." Tested against YouTube's
+  Creative Commons filter directly rather than inferred: `learn sanskrit`
+  returns **3** results, `sanskrit grammar lesson` returns **2**. That is the
+  whole CC BY corpus — scattered one-offs by unrelated creators, no course,
+  no consistent notation. **There is no openly licensed Sanskrit video
+  course.** Every systematic course that exists is standard-licence YouTube.
+
+- **So video inverts the learnsanskrit.org model.** P23-4a's pattern is
+  *adopt under a licence, adapt, own, ship offline*. Video cannot be adopted
+  at all: III.E.1.a of YouTube's Developer Policies forbids us to *"download,
+  import, backup, cache, or store copies of YouTube audiovisual content."*
+  **DECIDED: embed by reference, store zero bytes.** `provider` +
+  `provider_video_id`, nothing more.
+
+- **DECIDED: the video section is free and carries no ads of ours.**
+  III.F.3.a: *"API Clients must not charge users to watch content in an
+  embedded YouTube player."* There is **no subscription exception and no
+  approval process** — a paywalled video spine was simply not available. The
+  login wall is fine (III.F.3.b exempts *"login or age verification"*).
+  III.G.1.c separately bars ads *"placed on or within"* the content, so ads
+  live on Home and elsewhere, never on a screen rendering the player. And
+  YouTube's own ads are **not** blocked — creator ad revenue is the entire
+  basis of the embed bargain, and blocking it is what would actually get API
+  access terminated.
+
+- **The second gate is Apple, and it is a reviewer risk, not a legal one.**
+  Embedding needs no permission: YouTube's ToS grants the embed right, and
+  under the server test (*Perfect 10 v. Amazon*, 9th Cir. 2007) an embedder
+  makes no copy. But App Store 5.2.3 has rejected apps — including one using
+  `react-native-youtube-iframe` — demanding *"documentary evidence… that you
+  have all necessary rights."* Those were **catalogue** apps (one aggregated
+  Disney/Pixar films; its whole value *was* others' content). Shabd is an
+  owned lesson with one video at its head. **DECIDED: readiness, not a
+  permission campaign** — keep a one-page evidence file, escalate only on an
+  actual rejection, and keep video *inside* lessons so the app never reads as
+  a discovery service (III.I also bars "mass aggregat[ing] embedded videos").
+
+- **DECIDED: source by rights-holder, not by licence.** The useful question
+  is not "is it CC?" but **"did this uploader make it?"** A standard-licence
+  lecture on IIT Kharagpur's own channel is a stronger citation than a CC BY
+  video on a channel that mislabelled footage it does not own — and research
+  confirmed YouTube's CC filter *"sometimes renders incorrect results."*
+  This extends §4.3's existing rule (*an uploader name is not a licence*)
+  rather than replacing it.
+
+- **NPTEL: embed yes, re-host no — and the common belief is wrong.** Its
+  Terms of Use say *"All rights in the Site and its content, if not
+  expressly granted, are reserved by NPTEL"*; SWAYAM's restrict materials to
+  *"personal use… only"*; the footer says CC BY-NC-SA. The widely repeated
+  "NPTEL is CC BY-SA" claim traces to a single **Creative Commons wiki page
+  last edited 2019-12-20**, contradicted by all three live sources. Anything
+  built on that claim would have been built on nothing.
+
+- **Coverage is complete, which was not the first answer.** An earlier draft
+  recorded Units 1 and 11 as having no video. That was wrong — it came from a
+  summary listing the IIT Bombay course only as "Introduction (12 weeks)".
+  The official syllabus (`109101189`) gives **Wk 10: kāraka, vibhakti,
+  apādāna, sampradāna, adhikaraṇa, karaṇa, karma, kartā** — near-exact for
+  Unit 11 — and **Wk 2: the technique of Pratyāhāra** for Unit 1. Note Wk 10
+  does **not** answer §10 Q5, which is about whether the kosha tags kāraka
+  roles for *grading*; that stays open.
+
+- **Pratyāhāra is the Layer-0 framing, but not the Layer-0 lesson.** *"The
+  alphabet as a mathematical set"* (§6.1) is precisely what a pratyāhāra is,
+  so Wk 2 is an unusually exact conceptual fit. But that course states
+  *"INTENDED AUDIENCE: Linguists, Indologists"* — a learner opening Unit 1
+  needs to hear अ. **DECIDED: Samskrita Bharati Pravesha's varṇamāla for
+  pronunciation, NPTEL Wk 2 later as the payoff.** Unit 1 takes two videos at
+  different ranks, so the schema is a ranked join, not a column on `lessons`.
+
+- **DECIDED: build the missing case with the happy case.** Embedded video is
+  the first content class that can disappear without warning — a creator
+  deletes it, or disables embedding while it stays public (IFrame errors
+  101/150; research hit Error 153 loading an embed directly). Every lesson
+  must render correctly with no video, and the link-out fallback
+  (`expo-web-browser`, already a dependency and imported nowhere) ships with
+  the player rather than after it.
+
+- **Open, and only mattering if offline video is ever wanted:**
+  Vidya-mitra / INFLIBNET is described by secondary sources as CC BY-SA but
+  its host did not resolve. It is the sole remaining route to *ownable*
+  Sanskrit video.

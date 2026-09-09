@@ -819,3 +819,40 @@ class ReviewItem(Base):
     __table_args__ = (
         UniqueConstraint("learner_id", "item_key", name="uq_review_learner_item"),
     )
+
+
+class VideoItem(Base):
+    """One lesson video (P24): metadata ONLY — bytes stay on YouTube.
+
+    The app never downloads, caches, or re-hosts video. ``embed`` rows play
+    through YouTube's own player (all views and ads accrue to the creator);
+    ``link`` rows open the source page (course sites, playlists, NC-licensed
+    material that must never be embedded in a commercial app). Watching a
+    video writes nothing: no mastery, no XP, no review item — the steps
+    below the video are the only graded surface (YouTube Playback Integrity
+    forbids incentivised viewing).
+
+    Keyed to ``units`` (stable ``u1``..``u11`` ids), not to lessons — lesson
+    ids are seed-generated uuids, so ``GET /videos?lesson_id=`` resolves the
+    lesson's unit server-side. ``source_key`` points at the ``content_sources``
+    registry: attribution stays a join, never free text (P23-4a rule).
+    """
+
+    __tablename__ = "video_items"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    unit_id = Column(String(16), ForeignKey("units.id"), nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=0)  # order within the unit
+    title = Column(String(256), default="")
+    channel = Column(String(128), default="")
+    youtube_id = Column(String(32), nullable=True)  # None for link-out rows
+    url = Column(String(512), default="")  # watch / playlist / course URL
+    lang = Column(String(8), default="en")  # teaching medium: en | hi
+    duration_s = Column(Integer, default=0)  # 0 = unknown; the client hides it
+    playback = Column(String(8), default="embed")  # embed | link
+    source_key = Column(String(64), nullable=True, index=True)
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("unit_id", "youtube_id", name="uq_video_unit_youtube"),
+    )

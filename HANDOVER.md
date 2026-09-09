@@ -370,6 +370,43 @@ This is not only a privacy position. An on-device recogniser that abstains is
 free; a cloud recogniser that is confident and wrong costs money **and**
 violates §2.2.
 
+### 2.17 Third-party video is referenced, never stored — new, 2026-09-09
+
+Store a `provider` + `provider_video_id` and nothing else. **Never** download,
+proxy, cache, re-host, clip, or bundle third-party video, and never add a
+transcoding step for it. YouTube's Developer Policies III.E.1.a forbid it
+outright: *"download, import, backup, cache, or store copies of YouTube
+audiovisual content without YouTube's prior written approval."*
+
+`backend/.venv` happens to carry `ffmpy` and `audiotools`. Nothing in
+`backend/app/` imports them, and video is **not** the reason to start.
+
+This is the deliberate exception to §2.13 (*the database holds content you
+cannot regenerate*) and to CURRICULUM.md §5.3's *"owned asset, not a cache."*
+Pre-rendered TTS survives losing the vendor; embedded video does not survive
+the creator deleting it. So:
+
+- **Every lesson renders correctly with its video missing.** A dead embed is
+  not an acceptable state. Handle IFrame errors **101/150** (embedding
+  disabled by the uploader — a video can be public and still unembeddable)
+  and fall back to link-out via `expo-web-browser`.
+- **The video section is free and never carries our ads.** III.F.3.a bars
+  charging to watch in an embedded player; III.G.1.c bars ads *"placed on or
+  within"* the content. A login wall is fine — III.F.3.b exempts *"login or
+  age verification."*
+- **Never block or circumvent YouTube's own ads.** Creator ad revenue is the
+  basis of the embed right; blocking it is the thing that gets API access
+  terminated.
+- **Video stays inside lessons.** No browsable video library screen — III.I
+  bars using the API to *"mass aggregate embedded videos."* It is also what
+  keeps App Store 5.2.3 away, since that guideline targets *"catalogs and
+  discovery services."*
+
+Source only first-party uploads on official channels (NPTEL/IIT, Samskrita
+Bharati). The test is **"did this uploader make it?"**, not "is it CC?" —
+YouTube's CC filter is unreliable and channels mislabel content they do not
+own. See CURRICULUM.md §4.4 and DECISIONS.md 2026-09-09.
+
 ---
 
 ---

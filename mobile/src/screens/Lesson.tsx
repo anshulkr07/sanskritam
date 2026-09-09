@@ -18,12 +18,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { api, type Lesson, type LessonStep, type StepAttempt } from "../api/client";
+import { api, type Lesson, type LessonStep, type StepAttempt, type VideoItem } from "../api/client";
 import { useAsk } from "../ask/AskProvider";
 import { Button, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
 import StepRenderer from "../components/steps/StepRenderer";
 import VerdictSheet from "../components/VerdictSheet";
+import VideoSection from "../components/VideoSection";
 import type { RootStackParamList } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
 
@@ -35,6 +36,10 @@ export default function LessonScreen({ navigation, route }: Props) {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [lessonId, setLessonId] = useState<string | null>(lessonIdParam ?? null);
   const [steps, setSteps] = useState<LessonStep[]>([]);
+  // P24: the lesson's watch-first videos. Enhancement only — a failed fetch
+  // hides the section, never the lesson (§5.5: render correctly with video
+  // missing). Watching writes nothing (no attempt endpoint by design).
+  const [videos, setVideos] = useState<VideoItem[]>([]);
   const [index, setIndex] = useState(0);
   const [missing, setMissing] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -94,6 +99,13 @@ export default function LessonScreen({ navigation, route }: Props) {
         const fetched = await api.lessonSteps(lid);
         if (!fetched.length) setMissing(true);
         else setSteps(fetched);
+        // Videos resolve through the lesson's unit; failure hides the
+        // section rather than failing the lesson.
+        try {
+          setVideos(await api.lessonVideos(lid));
+        } catch {
+          setVideos([]);
+        }
       } catch {
         setFailed(true);
       } finally {
@@ -199,6 +211,9 @@ export default function LessonScreen({ navigation, route }: Props) {
                 {index + 1}/{steps.length}
               </Text>
             </View>
+
+            {/* P24: watch-first videos sit above the summary. */}
+            {videos.length > 0 && <VideoSection videos={videos} />}
 
             {/* The body survives as the summary — not the teaching. */}
             {!!lesson?.body && (

@@ -11,7 +11,7 @@
 // When running the web build, __DEV__ is true and localhost:8000 is the
 // backend. For a physical device via Expo Go, replace with your machine's
 // LAN IP (e.g. http://192.168.1.50:8000).
-const DEVICE_HOST = "192.168.1.7";
+const DEVICE_HOST = "172.20.10.5";
 
 // Port the backend listens on. Moved off 8000 on 2026-08-30: a phantom socket
 // there kept winning connections ahead of every freshly started server, so the
@@ -31,7 +31,7 @@ const RELEASE_BASE_URL_ENV = (
 // it). Keeping this as the fallback lets a release build resolve the deployed
 // backend without a build-time env, while an entirely-unset URL still fails
 // loudly below instead of falling back to localhost (U9-3).
-const CLOUD_RUN_FALLBACK_URL = "";
+const CLOUD_RUN_FALLBACK_URL = "https://shabd-api-829757572630.asia-south1.run.app";
 
 // Google Sign-in client IDs (Android, iOS, Web/backend). Injected at build
 // time via EXPO_PUBLIC_* env vars (expo-auth-session). The Android client ID's

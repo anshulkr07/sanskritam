@@ -250,6 +250,24 @@ export interface Licence {
   taken: string;
 }
 
+// ─── Lesson videos (P24) ────────────────────────────────────────────────
+// Metadata only — the app never downloads or re-hosts video. `embed` rows
+// play through YouTube's own player; `link` rows open the source page.
+
+export interface VideoItem {
+  id: string;
+  unit_id: string;
+  rank: number;
+  title: string;
+  channel: string;
+  youtube_id: string | null;
+  url: string;
+  lang: string; // teaching medium: en | hi
+  duration_s: number; // 0 = unknown, hidden by the client
+  playback: "embed" | "link";
+  source_key: string;
+}
+
 // ─── Review schedule (P23-5) ────────────────────────────────────────────
 
 export interface ReviewItem {
@@ -886,6 +904,15 @@ export const api = {
 
   // P23-4a / U15-7: the licence registry — name, wording, credit verbatim.
   licences: () => request<Licence[]>("/licences", {}, true),
+
+  // P24: lesson videos — ranked metadata for a unit (or a lesson in it).
+  videos: (opts: { unitId?: string; lang?: string; playback?: string } = {}) => {
+    const q = toQuery({ unit_id: opts.unitId, lang: opts.lang, playback: opts.playback });
+    return request<VideoItem[]>(`/videos${q ? `?${q}` : ""}`, {}, true);
+  },
+
+  lessonVideos: (lessonId: string) =>
+    request<VideoItem[]>(`/videos?lesson_id=${encodeURIComponent(lessonId)}`, {}, true),
 
   // P23-5: the review schedule — the honest "N due today".
   reviewDue: (limit = 20) =>

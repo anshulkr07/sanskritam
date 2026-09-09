@@ -25,7 +25,7 @@
 //     (§3.4). The content swap is what matters, never blocked by the flip.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
@@ -134,112 +134,23 @@ export default function ReaderScreen() {
     setCanonFilter(slug);
   }, []);
 
-  if (loading) {
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        <ScrollView contentContainerStyle={styles.body}>
-          <ReaderSkeleton />
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-
-  if (error || !verses || verses.length === 0) {
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        <View style={styles.center}>
-          <EmptyState
-            title={error ? "Couldn't load the reader." : "Nothing to read yet."}
-            hint={error ? "Check your connection and try again." : "Verses will appear here."}
-          />
-          {error && <Button label="Try again" tone="primary" onPress={load} style={{ marginTop: space.md }} />}
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  // READING posture — the verse as a page you flip through.
-  if (pageIndex !== null) {
-    const verse = shown![pageIndex];
-    const hasPrev = pageIndex > 0;
-    const hasNext = pageIndex < shown!.length - 1;
-
-    const go = (dir: "forward" | "back") => {
-      const next = dir === "forward" ? pageIndex + 1 : pageIndex - 1;
-      if (next < 0 || next >= verses.length) return;
+  // Clamp a stale pageIndex when the visible list shrinks (e.g. canon filter
+  // emptied it). Runs as an effect — never setState during render.
+  const shownLen = shown?.length ?? 0;
+  useEffect(() => {
+    if (pageIndex !== null && pageIndex >= shownLen) {
+      setPageIndex(null);
       setSelected(null);
-      setFlipDir(dir);
-      setPageIndex(next);
-    };
+    }
+  }, [pageIndex, shownLen]);
 
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        {/* Reading header — back to the index, and the source/position. */}
-        <View style={styles.readHeader}>
-          <Pressable
-            onPress={() => setPageIndex(null)}
-            style={styles.headerBtn}
-            accessibilityRole="button"
-            accessibilityLabel="Back to the list of verses"
-          >
-            <Ionicons name="arrow-back" size={20} color={color.saffron} />
-            <Text style={styles.headerBtnText}>List</Text>
-          </Pressable>
-          <Text style={styles.readPos}>
-            {pageIndex + 1} / {verses.length}
-          </Text>
-          <View style={styles.headerBtnSpacer} />
-        </View>
-
-        {/* The page — folds and turns as pageIndex changes. */}
-        <View style={styles.pageArea}>
-          <PageFlip pageKey={verse.id} direction={flipDir} reducedMotion={reduced}>
-            <ReaderPage
-              verse={verse}
-              selected={selected}
-              onWordTap={(w) => {
-                setSelected(w);
-                open({ surface: "shloka", subject: w.word });
-              }}
-              onAskVerse={() => open({ surface: "shloka", subject: verse.devanagari })}
-            />
-          </PageFlip>
-        </View>
-
-        {/* Turn controls — tap the edges, or the buttons. ≥44pt (U5-4). */}
-        <View style={styles.turnRow}>
-          <Pressable
-            onPress={() => go("back")}
-            disabled={!hasPrev}
-            style={[styles.turnBtn, !hasPrev && styles.turnBtnDisabled]}
-            accessibilityRole="button"
-            accessibilityLabel="Previous verse"
-            accessibilityState={{ disabled: !hasPrev }}
-          >
-            <Ionicons name="chevron-back" size={22} color={hasPrev ? color.saffron : color.inkFaint} />
-            <Text style={[styles.turnText, !hasPrev && styles.turnTextDisabled]}>Previous</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => go("forward")}
-            disabled={!hasNext}
-            style={[styles.turnBtn, !hasNext && styles.turnBtnDisabled]}
-            accessibilityRole="button"
-            accessibilityLabel="Next verse"
-            accessibilityState={{ disabled: !hasNext }}
-          >
-            <Text style={[styles.turnText, !hasNext && styles.turnTextDisabled]}>Next</Text>
-            <Ionicons name="chevron-forward" size={22} color={hasNext ? color.saffron : color.inkFaint} />
-          </Pressable>
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  // INDEX posture — the list of collapsed cards (FlatList: the corpus
-  // grows with every canon import; the reading posture below is untouched).
+  // INDEX rows — defined before any early return: hooks must run in the same
+  // order on every render. (A useCallback after the loading/error/reading
+  // returns crashed the screen as soon as the fetch resolved — "Rendered more
+  // hooks than during the previous render".)
   const renderVerse = useCallback(
     ({ item: v, index: i }: { item: Shloka; index: number }) => {
-      const firstLine = v.devanagari.split(/।\s*/)[0] || "";
+      const firstLine = (v.devanagari ?? "").split(/।\s*/)[0] || "";
       return (
         <Pressable
           key={v.id}
@@ -267,6 +178,116 @@ export default function ReaderScreen() {
     },
     [],
   );
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <ScrollView contentContainerStyle={styles.body}>
+          <ReaderSkeleton />
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
+  if (error || !verses || verses.length === 0) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <View style={styles.center}>
+          <EmptyState
+            title={error ? "Couldn't load the reader." : "Nothing to read yet."}
+            hint={error ? "Check your connection and try again." : "Verses will appear here."}
+          />
+          {error && <Button label="Try again" tone="primary" onPress={load} style={{ marginTop: space.md }} />}
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // READING posture — the verse as a page you flip through. The page flips
+  // through the FILTERED list (shown), so bounds, position and pageKey all
+  // read from shown. A stale pageIndex falls through to the index below (the
+  // effect above resets it) instead of crashing on verse.id of undefined.
+  if (pageIndex !== null) {
+    const list = shown ?? [];
+    const verse = list[pageIndex];
+    if (verse) {
+      const hasPrev = pageIndex > 0;
+      const hasNext = pageIndex < list.length - 1;
+
+      const go = (dir: "forward" | "back") => {
+        const next = dir === "forward" ? pageIndex + 1 : pageIndex - 1;
+        if (next < 0 || next >= list.length) return;
+        setSelected(null);
+        setFlipDir(dir);
+        setPageIndex(next);
+      };
+
+      return (
+        <SafeAreaView style={styles.safe} edges={["top"]}>
+          {/* Reading header — back to the index, and the source/position. */}
+          <View style={styles.readHeader}>
+            <Pressable
+              onPress={() => setPageIndex(null)}
+              style={styles.headerBtn}
+              accessibilityRole="button"
+              accessibilityLabel="Back to the list of verses"
+            >
+              <Ionicons name="arrow-back" size={20} color={color.saffron} />
+              <Text style={styles.headerBtnText}>List</Text>
+            </Pressable>
+            <Text style={styles.readPos}>
+              {pageIndex + 1} / {list.length}
+            </Text>
+            <View style={styles.headerBtnSpacer} />
+          </View>
+
+          {/* The page — folds and turns as pageIndex changes. */}
+          <View style={styles.pageArea}>
+            <PageFlip pageKey={verse.id} direction={flipDir} reducedMotion={reduced}>
+              <ReaderPage
+                verse={verse}
+                selected={selected}
+                onWordTap={(w) => {
+                  setSelected(w);
+                  open({ surface: "shloka", subject: w.word });
+                }}
+                onAskVerse={() => open({ surface: "shloka", subject: verse.devanagari })}
+              />
+            </PageFlip>
+          </View>
+
+          {/* Turn controls — tap the edges, or the buttons. ≥44pt (U5-4). */}
+          <View style={styles.turnRow}>
+            <Pressable
+              onPress={() => go("back")}
+              disabled={!hasPrev}
+              style={[styles.turnBtn, !hasPrev && styles.turnBtnDisabled]}
+              accessibilityRole="button"
+              accessibilityLabel="Previous verse"
+              accessibilityState={{ disabled: !hasPrev }}
+            >
+              <Ionicons name="chevron-back" size={22} color={hasPrev ? color.saffron : color.inkFaint} />
+              <Text style={[styles.turnText, !hasPrev && styles.turnTextDisabled]}>Previous</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => go("forward")}
+              disabled={!hasNext}
+              style={[styles.turnBtn, !hasNext && styles.turnBtnDisabled]}
+              accessibilityRole="button"
+              accessibilityLabel="Next verse"
+              accessibilityState={{ disabled: !hasNext }}
+            >
+              <Text style={[styles.turnText, !hasNext && styles.turnTextDisabled]}>Next</Text>
+              <Ionicons name="chevron-forward" size={22} color={hasNext ? color.saffron : color.inkFaint} />
+            </Pressable>
+          </View>
+        </SafeAreaView>
+      );
+    }
+  }
+
+  // INDEX posture — the list of collapsed cards (FlatList: the corpus
+  // grows with every canon import; the reading posture above is untouched).
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>

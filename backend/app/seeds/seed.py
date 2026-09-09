@@ -62,6 +62,7 @@ def run_seed():
         from app.seeds.lesson_steps import seed_lesson_steps
         from app.seeds.reader_passages import seed_reader_passages
         from app.seeds.vocab import seed_vocab
+        from app.seeds.video_items import seed_video_items
         seed_units(db)
         # P23-4a: the registry FIRST — every content row below points at it.
         seed_content_sources(db)
@@ -69,6 +70,9 @@ def run_seed():
         seed_lesson_steps(db)
         seed_vocab(db)
         seed_reader_passages(db)
+        # P24: the video catalogue — metadata only, after the registry it
+        # points at (source_key must resolve like every other attribution).
+        seed_video_items(db)
 
         # Seed the canon catalogue (P21-4) — additive, idempotent
         from app.seeds.canon import seed_canon

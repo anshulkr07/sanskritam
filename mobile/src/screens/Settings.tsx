@@ -13,7 +13,8 @@ import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 
 import { useAuth } from "../store/auth";
 import type { RootStackParamList } from "../navigation/types";
@@ -150,9 +151,34 @@ export default function SettingsPanel() {
           accessibilityLabel="Licences and credits"
         >
           <Text style={styles.link}>Licences and credits</Text>
-          <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-        </Pressable>
-      </View>
+            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+          </Pressable>
+          {/* P24: YouTube API Services Developer Policies III.A.1 — clients
+              must display a link to YouTube's Terms and bind their users to
+              them. Lesson videos play in YouTube's own player. */}
+          <Pressable
+            onPress={async () => {
+              try {
+                await WebBrowser.openBrowserAsync("https://www.youtube.com/t/terms");
+              } catch {
+                try {
+                  await Linking.openURL("https://www.youtube.com/t/terms");
+                } catch {
+                  /* no browser available — the row stays, the link waits */
+                }
+              }
+            }}
+            style={styles.linkRow}
+            accessibilityRole="button"
+            accessibilityLabel="YouTube Terms of Service"
+          >
+            <Text style={styles.link}>YouTube Terms of Service</Text>
+            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+          </Pressable>
+          <Text style={styles.aboutNote}>
+            Lesson videos play on YouTube. By watching them you agree to be bound by the YouTube Terms of Service.
+          </Text>
+        </View>
     </ScrollView>
   );
 }
@@ -224,6 +250,14 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   aboutText: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm, lineHeight: 19 },
+  aboutNote: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
+    marginTop: space.xs,
+    lineHeight: 16,
+  },
   linkRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: space.xs },
   link: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
 });

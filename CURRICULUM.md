@@ -120,6 +120,34 @@ See §3.1 above. This is the computational engine and it is complete.
 
 **Licence care (per architecture.md §4.4):** verify per item on Internet Archive — an uploader name is not a licence. CC0 translations (Griffith 1896, Ganguly, Bühler) are Victorian and often inaccurate; use as source text, not as authoritative meaning.
 
+### 4.4 Video — embedded, never hosted (researched 2026-09-09)
+
+**There is no openly licensed Sanskrit video course.** Tested directly against YouTube's Creative Commons filter (`&sp=EgIwAQ%3D%3D`): "learn sanskrit" returns **3** results, "sanskrit grammar lesson" returns **2**. That is the entire CC BY corpus — scattered one-offs, no course. Video is therefore the one content class we **embed and never own**, which inverts §4.2's extract-and-adapt model.
+
+The usable sources are first-party uploads on official institutional channels. The embed right comes from YouTube's ToS, not from the uploader's site terms — which is why Vyoma qualifies here despite its site forbidding non-personal download.
+
+| Source | Licence | Covers | Units |
+|---|---|---|---|
+| **Spoken Sanskrit** Basic/Intermediate/Advanced (Choudry, IIT Kharagpur) | Standard YouTube, official NPTEL IIT-KGP channel | vibhakti, tenses, 10 lakāras, sandhi, passive voice; ~20 lectures each | 3, 4, 5, 6, 8, 9 |
+| **Introduction to Pāṇinian grammar** (Kulkarni, IIT Bombay) — `noc22_hs35` / `109101189` | Standard YouTube, official NPTEL | Wk 2 pratyāhāra; Wk 5–7 sound properties; Wk 9 dhātu/prātipadika; **Wk 10 kāraka, vibhakti, apādāna, sampradāna, adhikaraṇa, karaṇa, karma, kartā** | 1, 11 |
+| **समास samāsa in Pāṇinian grammar I & II** — `noc23_hs65` / `noc23_hs79` | Standard YouTube, official NPTEL | two dedicated courses on compounds | 10 |
+| **Samskrita Bharati Pravesha** | Standard YouTube, own channel | varṇamāla *with pronunciation*; graded beginner course | 1 |
+| The Sanskrit Channel / Vyoma | Standard YouTube, own channels | 1000+ videos, published syllabus | broad |
+
+**All eleven units are covered.** Wk 2's pratyāhāra is an unusually exact fit for §6.1's Layer 0 — *"alphabet as a mathematical set"* is what a pratyāhāra **is**. But that course states *"INTENDED AUDIENCE: Linguists, Indologists"*, so it is a meta-level treatment, not a beginner lesson: **Samskrita Bharati for the Unit 1 pronunciation lesson, NPTEL Wk 2 later as the conceptual payoff.** Unit 1 therefore wants two videos at different ranks.
+
+**Excluded, and why:**
+
+| Source | Why not |
+|---|---|
+| **NPTEL for re-hosting** | Its Terms of Use say *"All rights in the Site and its content, if not expressly granted, are reserved by NPTEL"*; SWAYAM's say materials are *"for your personal use… only"*; the footer says CC BY-NC-SA. The widespread "NPTEL is CC BY-SA" belief traces to a **Creative Commons wiki page last edited 2019-12-20** and is contradicted by all three live sources. Embed only. |
+| IA `sanskrit_teaching` (120-lecture "Central Sanskrit University" course) | Raw metadata has **no `licenseurl` and no `rights` field**; uploaded by a private individual, not by CSU. Exactly the §4.3 trap. |
+| e-PG Pathshala, NCERT/DIKSHA, IGNCA on IA | CC BY-NC / BY-NC-ND — NonCommercial, same bar as Q2. |
+| GODL-India | Genuinely permits commercial use, but covers NDSAP datasets on the OGD platform, not educational video. No Sanskrit video is published under it. |
+| Coursera / edX / MIT / Harvard | **No Sanskrit MOOC exists.** Leiden's is Indo-European linguistics with one Sanskrit week, and it is paid. |
+
+**Unverified:** Vidya-mitra / INFLIBNET is described by secondary sources as CC BY-SA; the host did not resolve during research. It is the only remaining lead that would yield *ownable, offline-capable* video, and matters only if offline video is ever wanted.
+
 ---
 
 ## 5. Storage architecture: four kinds of data, four homes
@@ -158,6 +186,16 @@ This is the "where does it live" answer. It is derived from architecture.md §2 
 | What | Size | Where | Why |
 |---|---|---|---|
 | Embeddings of corpus sentences | Depends on corpus size | Flat file in memory (v1) → pgvector (v2) | Architecture.md §4.6: **no production vector database in v1.** The corpus is thousands of sentences, not millions of documents. A flat file of embeddings in RAM answers all three callers (authoring, explanations, open conversation) in single-digit ms. Reach for pgvector when the corpus outgrows RAM. |
+
+### 5.5 Video — the fifth kind, and the one with no home (2026-09-09)
+
+| What | Size | Where | Why |
+|---|---|---|---|
+| Third-party lesson video | 0 bytes | **Nowhere.** A `provider` + `provider_video_id` reference only | YouTube's Developer Policies III.E.1.a forbid us to *"download, import, backup, cache, or store copies of YouTube audiovisual content without YouTube's prior written approval."* Storing it is the violation. |
+
+This is the exception to §5.3's rule that pre-rendered media is *"an owned asset, not a cache — it survives losing the vendor."* Embedded video is the opposite: **rented, and it does not survive.** A creator can delete, privatise or region-lock a video at any moment, and embedding can be disabled independently of the video staying public.
+
+That asymmetry is a design constraint, not a footnote: **every lesson must render correctly with its video missing**, and the fallback path (link-out via `expo-web-browser`, already a dependency) is built at the same time as the player, not after.
 | Raw corpus text | MBs—GBs | Server filesystem | Chunked verse-by-verse via Vidyut, never by characters. |
 
 **Two indexes, never merged** (§4.4):
@@ -320,6 +358,7 @@ These are locked decisions from architecture.md, carried forward here:
 | 5 | Kāraka: does the kosha tag kāraka roles, or only vibhakti? If not, kāraka grading requires a new Vidyut feature or a heuristic. | Kāraka unit |
 | 6 | Lesson internationalization: bridge languages are English + Hindi at launch (§1). Do lessons need Hindi versions from day one, or is English-first acceptable? | Lesson authoring |
 | 7 | When does the corpus cross the RAM threshold that triggers pgvector? Depends on how many epic texts are ingested. | RAG infrastructure |
+| 8 | **ANSWERED 2026-09-09 — embed, never host; free section, no ads on it.** No openly licensed Sanskrit video course exists (§4.4), so video is embedded from official institutional channels under YouTube's ToS rather than adopted like learnsanskrit.org. Two independent gates: YouTube's Developer Policies III.F.3.a (*"API Clients must not charge users to watch content in an embedded YouTube player"* — hence the video section is free and unpaywalled) and App Store review 5.2.3, which is a *reviewer* risk rather than a legal one and is low for video-inside-an-owned-lesson. **Permission is not required to embed**; keep an evidence file and escalate only on an actual rejection. See `DECISIONS.md` 2026-09-09 and `HANDOVER.md` §2.17. | ~~Video content~~ — unblocked |
 
 ---
 
