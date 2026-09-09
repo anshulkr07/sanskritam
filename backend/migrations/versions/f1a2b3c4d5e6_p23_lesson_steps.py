@@ -59,12 +59,13 @@ UNITS = [
     ("u10", 10, 2, "Compounds",   "समासाः",        "Words compose: A+B, B-of-A, one-who-has-A-B."),
     ("u11", 11, 2, "Kāraka",      "कारकाणि",       "The six roles that explain why a vibhakti is there."),
 ]
-
-
 def _lessons_before() -> sa.Table:
     """The ``lessons`` table as c9d0e1f2a3b4 created it, minus the UNIQUE on
-    ``feature_id``. Batch mode builds the replacement from this, so omitting
-    the constraint here is what drops it — on SQLite and Postgres alike."""
+    ``feature_id``. The SQLite batch recreate builds its replacement from
+    this, so omitting the constraint here is what drops it there. Postgres
+    takes plain ALTERs instead (see upgrade) and never uses this shape."""
+
+
     meta = sa.MetaData()
     return sa.Table(
         "lessons",
@@ -87,6 +88,28 @@ def _lessons_before() -> sa.Table:
         sa.Index("ix_lessons_unit_id", "unit_id"),
         sa.Index("ix_lessons_register", "register"),
     )
+
+
+def _drop_lessons_feature_id_unique() -> None:
+    """Drop the one-lesson-per-feature UNIQUE that c9d0e1f2a3b4 created
+    inline (``unique=True``). Resolved by column from information_schema
+    rather than hardcoded, so an auto-renamed constraint still resolves;
+    a no-op when already gone (idempotent re-runs). Postgres-only: SQLite
+    cannot drop constraints except through the batch recreate below."""
+    conn = op.get_bind()
+    row = conn.execute(
+        sa.text(
+            "SELECT tc.constraint_name "
+            "FROM information_schema.table_constraints tc "
+            "JOIN information_schema.key_column_usage kcu "
+            "USING (constraint_schema, constraint_name) "
+            "WHERE tc.table_name = 'lessons' "
+            "AND tc.constraint_type = 'UNIQUE' "
+            "AND kcu.column_name = 'feature_id'"
+        )
+    ).fetchone()
+    if row:
+        op.drop_constraint(row[0], "lessons", type_="unique")
 
 
 def upgrade() -> None:
@@ -120,17 +143,37 @@ def upgrade() -> None:
     op.create_index("ix_lesson_steps_lesson_id", "lesson_steps", ["lesson_id"])
     op.create_index("ix_lesson_steps_kind", "lesson_steps", ["kind"])
 
-    with op.batch_alter_table(
-        "lessons", copy_from=_lessons_before(), recreate="always"
-    ) as batch_op:
-        batch_op.add_column(sa.Column("features", sa.JSON(), nullable=True))
-        batch_op.add_column(sa.Column("attribution", sa.String(256), nullable=True))
-        batch_op.create_foreign_key(
-            "fk_lessons_unit_id", "units", ["unit_id"], ["id"]
+    if op.get_bind().dialect.name == "sqlite":
+        # SQLite cannot ALTER constraints, so the UNIQUE goes via a batch
+        # recreate (pySQLite leaves FKs unenforced, so the drop inside the
+        # recreate succeeds there).
+        with op.batch_alter_table(
+            "lessons", copy_from=_lessons_before(), recreate="always"
+        ) as batch_op:
+            batch_op.add_column(sa.Column("features", sa.JSON(), nullable=True))
+            batch_op.add_column(sa.Column("attribution", sa.String(256), nullable=True))
+            batch_op.create_foreign_key(
+                "fk_lessons_unit_id", "units", ["unit_id"], ["id"]
+            )
+    else:
+        # Postgres: plain ALTERs, no table drop. A batch recreate issues
+        # DROP TABLE lessons, which Postgres refuses while the lesson_steps
+        # FK created above references it — that killed the 2026-09-09 Cloud
+        # Run boot (container never listened, traffic stayed on stale code).
+        op.add_column("lessons", sa.Column("features", sa.JSON(), nullable=True))
+        op.add_column("lessons", sa.Column("attribution", sa.String(256), nullable=True))
+        op.create_foreign_key(
+            "fk_lessons_unit_id", "lessons", "units", ["unit_id"], ["id"]
         )
+        _drop_lessons_feature_id_unique()
 
 
 def downgrade() -> None:
+    # lesson_steps references lessons: drop the dependent first so the batch
+    # recreate below never meets the FK that blocked the Postgres upgrade.
+    op.drop_index("ix_lesson_steps_kind", table_name="lesson_steps")
+    op.drop_index("ix_lesson_steps_lesson_id", table_name="lesson_steps")
+    op.drop_table("lesson_steps")
     # Restores the UNIQUE by naming it in the target shape; the two added
     # columns and the FK go with the recreate.
     with op.batch_alter_table("lessons", recreate="always") as batch_op:
@@ -139,7 +182,4 @@ def downgrade() -> None:
         batch_op.drop_column("features")
         batch_op.create_unique_constraint("uq_lessons_feature_id", ["feature_id"])
 
-    op.drop_index("ix_lesson_steps_kind", table_name="lesson_steps")
-    op.drop_index("ix_lesson_steps_lesson_id", table_name="lesson_steps")
-    op.drop_table("lesson_steps")
     op.drop_table("units")
