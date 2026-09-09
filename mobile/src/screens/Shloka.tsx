@@ -265,7 +265,7 @@ export default function ShlokaScreen() {
         </View>
 
         {/* Word breakdown */}
-        {shloka.word_breakdown.length > 0 && (
+        {(shloka.word_breakdown ?? []).length > 0 && (
           <View style={styles.words}>
             <Text style={styles.sectionTitle}>Word by word</Text>
             {shloka.word_breakdown.map((w, i) => (
