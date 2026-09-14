@@ -69,6 +69,8 @@ class SarvamClient:
         pace: float = 1.0,
         sample_rate: int = 24000,
     ) -> str:
+        import time as _time
+        _t0 = _time.perf_counter()
         """Convert text to speech via Bulbul v3.
 
         Returns the audio as a **base64-encoded string** — the first entry of
@@ -100,10 +102,19 @@ class SarvamClient:
         data = resp.json()
         audios = data.get("audios")
         if isinstance(audios, list) and audios:
-            return str(audios[0])
+            out = str(audios[0])
+            logger.info(
+                "[talk] tts chars=%d lang=%s ms=%.0f",
+                len(text), language_code, (_time.perf_counter() - _t0) * 1000,
+            )
+            return out
         audio_b64: str = data.get("audio") or data.get("audio_base64", "")
         if not audio_b64:
             raise SarvamError(500, "No audio in Sarvam TTS response")
+        logger.info(
+            "[talk] tts chars=%d lang=%s ms=%.0f",
+            len(text), language_code, (_time.perf_counter() - _t0) * 1000,
+        )
         return audio_b64
 
     # ── STT ───────────────────────────────────
@@ -120,6 +131,8 @@ class SarvamClient:
 
         Returns ``{"transcript": str, "language_code": str}``.
         """
+        import time as _time2
+        _t0 = _time2.perf_counter()
         client = await self._client()
         files = {"file": (filename, audio_data, "audio/wav")}
         data = {
@@ -132,6 +145,10 @@ class SarvamClient:
             raise SarvamError(resp.status_code, resp.text)
 
         body = resp.json()
+        logger.info(
+            "[talk] stt bytes=%d lang=%s ms=%.0f",
+            len(audio_data), language_code, (_time2.perf_counter() - _t0) * 1000,
+        )
         return {
             "transcript": body.get("transcript", ""),
             "language_code": body.get("language_code", language_code),

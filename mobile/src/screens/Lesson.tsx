@@ -197,8 +197,8 @@ export default function LessonScreen({ navigation, route }: Props) {
           </View>
         ) : (
           <>
-            <Text style={styles.kicker}>{lesson?.unit_id.toUpperCase() ?? ""} · LEARN</Text>
-            <Text style={[styles.titleSa, script("extrabold")]}>{lesson?.title_hi ?? ""}</Text>
+            <Text style={styles.kicker}>{lesson?.unit_id ? `${lesson.unit_id.toUpperCase()} · LEARN` : "LEARN"}</Text>
+            <Text style={[styles.titleSa, script("extrabold")]}>{lesson?.title_hi || lesson?.title_en || "Lesson"}</Text>
             {!!lesson?.title_en && <Text style={styles.titleEn}>{lesson.title_en}</Text>}
 
             {/* Session progress — Challenge's vocabulary. */}

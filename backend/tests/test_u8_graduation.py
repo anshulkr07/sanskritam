@@ -94,6 +94,13 @@ def test_generated_keys_are_closed_world(client):
         "IMP.2PL", "IMPF.3SG", "FUT.1SG",
         "DU", "NOM.PL", "GEN.PL",
         "NEUT", "MASC", "PRES.1SG", "PRES.1DU", "ATMANEPADA",
+        # Grammar-guide expansion (2026-09-14, engine-exact measured):
+        # plural/dual cases, plural/dual persons, singular imperative,
+        # third future, outward voice, split sandhi types.
+        "PL", "NOM.DU", "ACC.DU", "ACC.PL", "LOC.PL",
+        "PRES.1PL", "PRES.2PL", "PRES.3PL", "PRES.3DU",
+        "IMP.2SG", "FUT.3SG", "PARASMAIPADA",
+        "VISARGA-SANDHI", "ANUSVARA-SANDHI", "CONSONANT-SANDHI",
     }
 
 

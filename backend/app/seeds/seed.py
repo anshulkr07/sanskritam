@@ -78,6 +78,11 @@ def run_seed():
         from app.seeds.canon import seed_canon
         seed_canon(db)
 
+        # Seed the story deck (Discover Sanskrit) — additive, idempotent.
+        # After the registry it points at (attribution must resolve).
+        from app.seeds.story_cards import seed_story
+        seed_story(db)
+
         db.commit()
         logger.info("Database seeded successfully")
     except Exception:

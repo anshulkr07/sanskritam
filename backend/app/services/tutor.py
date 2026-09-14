@@ -33,6 +33,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
@@ -306,7 +307,9 @@ class ConversationTutor:
         Returns a TutorReply whose Sanskrit has already passed the gate, or
         which carries none at all. Never raises.
         """
+        t0 = time.perf_counter()
         health = sanskrit_health(transcript) if not opening else SanskritHealth()
+        health_ms = (time.perf_counter() - t0) * 1000
 
         user = self._build_user_prompt(
             transcript=transcript,
@@ -319,7 +322,14 @@ class ConversationTutor:
             opening=opening,
         )
 
+        t1 = time.perf_counter()
         reply = await self._call_and_gate(user, health)
+        gate_ms = (time.perf_counter() - t1) * 1000
+        logger.info(
+            "[talk] tutor health=%.0fms llm+gate=%.0fms total=%.0fms source=%s",
+            health_ms, gate_ms, (time.perf_counter() - t0) * 1000,
+            reply.source,
+        )
         reply.learner = health
         return reply
 

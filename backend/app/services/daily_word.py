@@ -224,6 +224,10 @@ def guess(learner, db: Session, submitted: str) -> dict:
             "answer_iast": word.answer_iast or "",
         }
 
+    # Real practice for the goal bar + calendar: a solved word is worth a
+    # challenge-correct; any other valid guess is small engagement XP.
+    from app.services.activity import record_activity
+    record_activity(db, learner, xp=10 if is_correct else 2, attempts=1)
     db.commit()
     return {
         "status": "solved" if play.solved else ("finished" if game_over else "open"),

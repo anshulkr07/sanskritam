@@ -9,6 +9,7 @@ from app.db import get_db
 from app.grading.engine import grade_attempt
 from app.models import Attempt, Challenge, Learner
 from app.schemas import AttemptRequest, AttemptResponse
+from app.services.activity import record_activity, xp_for_challenge_verdict
 from app.services.prakriya import derive as derive_form
 
 router = APIRouter()
@@ -66,6 +67,14 @@ async def submit_attempt(
         abstained=result["abstained"],
     )
     update_streak(learner, result["verdict"])
+    # The Progress screen's goal bar + calendar read DailyActivity — record
+    # every attempt so they show real practice, not permanent zeroes.
+    record_activity(
+        db,
+        learner,
+        xp=xp_for_challenge_verdict(result["verdict"], result["abstained"]),
+        attempts=1,
+    )
     db.commit()
 
     # Record attempt

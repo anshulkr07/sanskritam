@@ -7,7 +7,7 @@
 // its status in text, not colour alone (§U5-3); a data-less card shows a
 // skeleton, never a spinner or a collapsed row that shifts layout on arrival.
 
-import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { DrawerActions, useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useState } from "react";
 import {
@@ -30,6 +30,7 @@ import { Card, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
 import { haptics } from "../services/haptics";
+import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/AppDrawer";
 import { duration, stagger } from "../motion";
@@ -51,10 +52,30 @@ export default function HomeScreen({ navigation }: Props) {
   // U15-5: Home routes into the lesson — "continue Unit N" plus, once P23-5
   // landed, an honest "N due today" from the review schedule.
   const [units, setUnits] = useState<Unit[] | null>(null);
-  const [dueCount, setDueCount] = useState(0);
+  const [unitsFailed, setUnitsFailed] = useState(false);
+  // null = still loading (never render a fake 0); a failed fetch stays null
+  // so the due text hides instead of pretending nothing is due.
+  const [dueCount, setDueCount] = useState<number | null>(null);
+  const [profileLoading, setProfileLoading] = useState(!learner);
+  // Story deck (Discover Sanskrit) — total cards for the hero status line.
+  // null = loading/failed; the hero then shows no fake count.
+  const [storyTotal, setStoryTotal] = useState<number | null>(null);
+  const [storyAt, setStoryAt] = useState(0);
 
   useEffect(() => {
-    refresh().then(setProfile);
+    let alive = true;
+    setProfileLoading(true);
+    refresh().then((p) => {
+      if (alive) {
+        setProfile(p);
+        setProfileLoading(false);
+      }
+    }).catch(() => {
+      if (alive) setProfileLoading(false);
+    });
+    return () => {
+      alive = false;
+    };
   }, [refresh]);
 
   // U10-3: a failed fetch says so and offers retry — a catch that silently
@@ -88,9 +109,26 @@ export default function HomeScreen({ navigation }: Props) {
   useEffect(() => {
     loadShloka();
     loadDaily();
-    api.units().then(setUnits).catch(() => setUnits(null));
-    api.reviewDue(1).then((d) => setDueCount(d.due_count ?? 0)).catch(() => setDueCount(0));
+    api.units().then((u) => { setUnits(u); setUnitsFailed(false); }).catch(() => { setUnits(null); setUnitsFailed(true); });
+    api.reviewDue(1).then((d) => setDueCount(d.due_count ?? null)).catch(() => setDueCount(null));
+    api.storyChapters()
+      .then((chs) => setStoryTotal(chs.reduce((n, c) => n + c.cards.length, 0)))
+      .catch(() => setStoryTotal(null));
   }, [loadShloka, loadDaily]);
+
+  // The story bookmark advances while Home sits mounted behind other tabs —
+  // re-read it every time Home regains focus so Resume never goes stale.
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      getStoryIndex().then((i) => {
+        if (alive) setStoryAt(i);
+      });
+      return () => {
+        alive = false;
+      };
+    }, []),
+  );
 
   const openDrawer = useCallback(() => {
     haptics.tap();
@@ -98,9 +136,12 @@ export default function HomeScreen({ navigation }: Props) {
     rootNav.dispatch(DrawerActions.openDrawer());
   }, [rootNav]);
 
-  const streak = profile?.streak ?? 0;
-  const ratio = profile?.sanskrit_ratio ?? 0.3;
-  const ratioPct = Math.round(ratio * 100);
+  // Pills show nothing fake: while the profile is loading (or failed and
+  // absent) they render a skeleton-width placeholder, never 0 or 30%.
+  const streak: number | null = profile?.streak ?? null;
+  const ratio: number | null = profile?.sanskrit_ratio ?? null;
+  const ratioPct = ratio == null ? null : Math.round(ratio * 100);
+  const profilePending = profileLoading && profile == null;
 
   // U15-5: continue where the learner is — first unfinished unit, else review.
   const continueTarget: { unit: Unit; lesson: LessonSummary } | null = (() => {
@@ -121,14 +162,23 @@ export default function HomeScreen({ navigation }: Props) {
       <View style={styles.topbar}>
         <DrawerToggle onPress={openDrawer} />
         <View style={{ flex: 1 }} />
-        <View style={styles.pill}>
-          <Ionicons name="flame" size={16} color={color.saffron} />
-          <Text style={styles.pillNum}>{streak}</Text>
-        </View>
-        <View style={styles.pill}>
-          <Ionicons name="language" size={14} color={color.inkSoft} />
-          <Text style={styles.pillNum}>{ratioPct}%</Text>
-        </View>
+        {profilePending ? (
+          <>
+            <View style={styles.pill}><Skeleton style={{ height: 14, width: 28 }} /></View>
+            <View style={styles.pill}><Skeleton style={{ height: 14, width: 40 }} /></View>
+          </>
+        ) : (
+          <>
+            <View style={styles.pill}>
+              <Ionicons name="flame" size={16} color={color.saffron} />
+              <Text style={styles.pillNum}>{streak ?? "—"}</Text>
+            </View>
+            <View style={styles.pill}>
+              <Ionicons name="language" size={14} color={color.inkSoft} />
+              <Text style={styles.pillNum}>{ratioPct == null ? "—" : `${ratioPct}%`}</Text>
+            </View>
+          </>
+        )}
       </View>
 
       <ScrollView contentContainerStyle={styles.body}>
@@ -136,21 +186,34 @@ export default function HomeScreen({ navigation }: Props) {
         <View style={styles.greetRow}>
           <GuruNative state="idle" size={110} gesture={Gesture.Anjali} />
           <View style={styles.greetBubble}>
-            <Text style={[styles.greeting, script("extrabold")]}>नमस्ते, {profile?.display_name ?? "learner"}!</Text>
+            {profilePending ? (
+              <Skeleton style={{ height: 20, width: 140 }} />
+            ) : (
+              <Text style={[styles.greeting, script("extrabold")]}>नमस्ते, {profile?.display_name || "learner"}!</Text>
+            )}
             <Text style={styles.subline}>Ready for today's practice?</Text>
           </View>
         </View>
 
         {/* Cards — stagger in once per mount, capped at 6 (§8) */}
+        {/* Hero — the story deck. The old Continue-Unit CTA lived here;
+            the deck takes the slot; continuing the Path survives as the slim
+            secondary row inside the hero so no route is lost. */}
         <Entrance index={0}>
-          <ContinueUnit
-            target={continueTarget}
-            dueCount={dueCount}
-            onLesson={(lesson) =>
-              navigation.navigate("Lesson", { featureId: lesson.feature_id, lessonId: lesson.id })
-            }
-            onPractice={() => navigation.navigate("Challenge", {})}
-          />
+          {units === null && !unitsFailed && storyTotal === null ? (
+            <Skeleton style={{ height: 88, marginBottom: space.lg }} />
+          ) : (
+            <StoryHero
+              total={storyTotal}
+              at={storyAt}
+              target={continueTarget}
+              dueCount={dueCount}
+              onOpen={() => navigation.navigate("Story")}
+              onLesson={(lesson) =>
+                navigation.navigate("Lesson", { featureId: lesson.feature_id, lessonId: lesson.id })
+              }
+            />
+          )}
         </Entrance>
 
         <Entrance index={1}>
@@ -199,71 +262,70 @@ function Entrance({ index, children }: { index: number; children: React.ReactNod
   return <Animated.View style={style}>{children}</Animated.View>;
 }
 
-// ─── Continue CTA (U15-5) ─────────────────────────────────────────────────
-// Home's primary CTA goes to the LESSON, not straight to Challenge: continue
-// Unit N, with the honest due count beside it once reviews exist.
+// ─── Story hero (Discover Sanskrit) ─────────────────────────────────────
+// Home's primary CTA is the swipeable story, not a unit: total cards with a
+// Resume position from the device-local bookmark. The Path's continue target
+// survives as a slim secondary row — the route is kept, the hero slot is
+// the story's.
 
-function ContinueUnit({
+function StoryHero({
+  total,
+  at,
   target,
   dueCount,
+  onOpen,
   onLesson,
-  onPractice,
 }: {
+  total: number | null;
+  at: number;
   target: { unit: Unit; lesson: LessonSummary } | null;
-  dueCount: number;
+  dueCount: number | null;
+  onOpen: () => void;
   onLesson: (lesson: LessonSummary) => void;
-  onPractice: () => void;
 }) {
-  if (!target) {
-    return <PracticeNode onPress={onPractice} />;
-  }
-  const dueText = dueCount > 0 ? ` · ${dueCount} due today` : "";
+  const started = at > 0;
+  const status =
+    total == null ? "the story, zero to grammar" : started ? `${at + 1}/${total} · Resume` : `${total} cards · Start`;
+  const dueText = dueCount != null && dueCount > 0 ? ` · ${dueCount} due today` : "";
   return (
-    <Pressable
-      onPress={() => {
-        haptics.tap();
-        onLesson(target.lesson);
-      }}
-      style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
-      accessibilityRole="button"
-      accessibilityLabel={`Continue Unit ${target.unit.rank}, ${target.unit.title_en}${dueCount > 0 ? `, ${dueCount} reviews due` : ""}`}
-    >
-      <View style={styles.practiceIcon}>
-        <Ionicons name="book" size={30} color={color.white} />
-      </View>
-      <View style={styles.practiceText}>
-        <Text style={styles.practiceLabel}>
-          Continue Unit {target.unit.rank} — {target.unit.title_en}
-        </Text>
-        <Text style={styles.practiceHint}>
-          {target.lesson.title_en}
-          {dueText}
-        </Text>
-      </View>
-      <Ionicons name="chevron-forward" size={22} color={color.white} />
-    </Pressable>
-  );
-}
-
-// ─── Practice CTA ─────────────────────────────────────────────────────
-
-function PracticeNode({ onPress }: { onPress: () => void }) {
-  return (
-    <Pressable
-      onPress={() => { haptics.tap(); onPress(); }}
-      style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
-      accessibilityRole="button"
-      accessibilityLabel="Start practice"
-    >
-      <View style={styles.practiceIcon}>
-        <Ionicons name="create" size={30} color={color.white} />
-      </View>
-      <View style={styles.practiceText}>
-        <Text style={styles.practiceLabel}>Start practice</Text>
-        <Text style={styles.practiceHint}>8 adaptive exercises · word bank + typing</Text>
-      </View>
-      <Ionicons name="chevron-forward" size={22} color={color.white} />
-    </Pressable>
+    <View style={{ marginBottom: space.lg }}>
+      <Pressable
+        onPress={() => {
+          haptics.tap();
+          onOpen();
+        }}
+        style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
+        accessibilityRole="button"
+        accessibilityLabel={`Discover Sanskrit. ${status}`}
+      >
+        <View style={styles.practiceIcon}>
+          <Ionicons name="compass" size={30} color={color.white} />
+        </View>
+        <View style={styles.practiceText}>
+          <Text style={styles.practiceLabel}>Discover Sanskrit</Text>
+          <Text style={styles.practiceHint}>From zero to grammar · {status}</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={22} color={color.white} />
+      </Pressable>
+      {target && (
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            onLesson(target.lesson);
+          }}
+          style={({ pressed }) => [styles.resumeRow, pressed && styles.practicePressed]}
+          accessibilityRole="button"
+          accessibilityLabel={`Continue Unit ${target.unit.rank}, ${target.unit.title_en}${dueCount != null && dueCount > 0 ? `, ${dueCount} reviews due` : ""}`}
+        >
+          <Ionicons name="book-outline" size={16} color={color.saffron} />
+          <Text style={styles.resumeText} numberOfLines={1}>
+            Continue Unit {target.unit.rank} — {target.lesson.title_en}
+            {dueText}
+          </Text>
+          <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+        </Pressable>
+      )}
+    </View>
   );
 }
 
@@ -282,7 +344,9 @@ function ShlokaCard({
   onRetry: () => void;
   onPress: () => void;
 }) {
-  const firstLine = shloka?.devanagari?.split(/।|\n/)[0] ?? "";
+  const rawFirst = shloka?.devanagari?.split(/।|\n/)[0]?.trim() ?? "";
+  const firstLine = rawFirst;
+  const showVerse = rawFirst.length > 0;
   return (
     <HomeCard
       title="Today's śloka"
@@ -293,9 +357,9 @@ function ShlokaCard({
     >
       {loading ? (
         <Skeleton style={{ height: 28, marginTop: 4 }} />
-      ) : shloka ? (
+      ) : shloka && showVerse ? (
         <Text style={[styles.cardBody, script("semibold")]} numberOfLines={1}>
-          {firstLine}।
+          {firstLine}{firstLine.endsWith("।") || firstLine.endsWith("॥") ? "" : "।"}
         </Text>
       ) : error ? (
         <RetryInline onRetry={onRetry} label="Couldn't reach the verse." />
@@ -321,12 +385,13 @@ function DailyWordCard({
   onRetry: () => void;
   onPress: () => void;
 }) {
+  const solvedStreak = word?.streak ?? 0;
   const statusText = loading
     ? "…"
     : error
       ? "couldn't load"
       : word?.solved
-        ? `solved · ${word.streak} day streak`
+        ? (solvedStreak > 0 ? `solved · ${solvedStreak} day streak` : "solved")
         : word?.status === "finished"
           ? "finished"
           : word
@@ -349,13 +414,19 @@ function DailyWordCard({
               <Text style={[styles.cardBody, script("semibold")]}>{word.revealed?.answer ?? "Solved"}</Text>
             ) : (
               <Text style={styles.cardMuted}>
-                {word.status === "finished" ? "See how it went." : `A ${word.word_length}-sound word.`}
+                {word.status === "finished"
+                  ? "See how it went."
+                  : word.word_length > 0
+                    ? `A ${word.word_length}-sound word.`
+                    : "A daily word."}
               </Text>
             )}
-            <View style={styles.unlockBadge}>
-              <Ionicons name="flame" size={13} color={color.saffron} />
-              <Text style={styles.unlockBadgeText}>{word.streak}</Text>
-            </View>
+            {solvedStreak > 0 && (
+              <View style={styles.unlockBadge}>
+                <Ionicons name="flame" size={13} color={color.saffron} />
+                <Text style={styles.unlockBadgeText}>{solvedStreak}</Text>
+              </View>
+            )}
           </>
         ) : error ? (
           <RetryInline onRetry={onRetry} label="Couldn't reach the word." />
@@ -467,6 +538,25 @@ const styles = StyleSheet.create({
   practiceText: { flex: 1 },
   practiceLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
   practiceHint: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: "rgba(255,255,255,0.9)", marginTop: 2 },
+  resumeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    paddingVertical: space.sm,
+    paddingHorizontal: space.md,
+    marginTop: space.sm,
+    minHeight: 48,
+    ...shadow.card,
+  },
+  resumeText: {
+    flex: 1,
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+  },
   card: {
     backgroundColor: color.surface,
     borderRadius: radius.lg,

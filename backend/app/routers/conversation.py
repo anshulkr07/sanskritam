@@ -6,6 +6,7 @@ Schemas are defined here (NOT in app/schemas.py per build deltas).
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -298,10 +299,12 @@ async def _start_llm(
     because in this mode there is nothing to choose from — any grammatical
     reply is a valid move.
     """
+    t_start = time.perf_counter()
     session = create_session(db, learner, scenario, mode="llm")
 
     tutor = get_tutor()
     reply = None
+    t_quota = time.perf_counter()
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
     except QuotaExceeded as exc:
@@ -315,7 +318,9 @@ async def _start_llm(
             },
             headers={"Retry-After": str(exc.retry_after_s)},
         )
+    quota_ms = (time.perf_counter() - t_quota) * 1000
 
+    t_tutor = time.perf_counter()
     reply = await tutor.reply(
         transcript="",
         history=[],
@@ -325,10 +330,12 @@ async def _start_llm(
         ratio=session.ratio_hint or 0.3,
         opening=True,
     )
+    tutor_ms = (time.perf_counter() - t_tutor) * 1000
     if reply.source == "degraded":
         refund_quota(db, learner, "llm_calls", 1, surface="conversation",
                      reason="downstream_failure")
 
+    t_db = time.perf_counter()
     record_turn(
         db, session,
         role="tutor",
@@ -336,10 +343,19 @@ async def _start_llm(
         gloss=reply.bridge,
     )
     db.commit()
+    db_ms = (time.perf_counter() - t_db) * 1000
 
     opening = reply.sanskrit or reply.bridge
     opening_lang = "sa" if reply.sanskrit else _bridge_lang(learner)
+    t_tts = time.perf_counter()
     opening_audio = await _inline_tts(db, learner, opening, opening_lang)
+    tts_ms = (time.perf_counter() - t_tts) * 1000
+    total_ms = (time.perf_counter() - t_start) * 1000
+    logger.info(
+        "[talk] start quota=%.0fms tutor=%.0fms db=%.0fms tts=%.0fms total=%.0fms inline=%s",
+        quota_ms, tutor_ms, db_ms, tts_ms, total_ms,
+        bool(opening_audio),
+    )
 
     return StartResponse(
         session_id=session.id,
@@ -485,6 +501,20 @@ async def submit_turn(
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
 
+    # Graph turns are real practice for the goal bar + calendar. Meta/empty
+    # turns ask ABOUT the line rather than answering it — no turn counted, no
+    # XP (they must not be gameable by spamming blanks).
+    from app.services.activity import CONVERSATION_XP, record_activity
+    _verdict = str(result.get("verdict") or "")
+    if _verdict not in ("meta", "empty"):
+        record_activity(
+            db,
+            learner,
+            xp=CONVERSATION_XP.get(_verdict, 0),
+            conversation_turns=1,
+        )
+        db.commit()
+
     # P17-3: if the next node carries pre-rendered audio, account it (no quota).
     _record_prerendered_audio(db, learner, result.get("node"))
 
@@ -508,6 +538,7 @@ async def _turn_llm(
     which sentence they picked, because no sentence was ever required —
     `verdict` reports what Vidyut found in their Sanskrit and nothing more.
     """
+    t_start = time.perf_counter()
     scenario = (
         db.query(DialogueScenario)
         .filter(DialogueScenario.id == session.scenario_id)
@@ -538,6 +569,26 @@ async def _turn_llm(
             mode="llm",
         )
 
+    # Empty submits cost nothing: no quota, no LLM, no TTS, no commit. The
+    # client guards these, but STT blanks used to burn a full LLM+TTS cycle.
+    if not (transcript or "").strip():
+        logger.info(
+            "[talk] turn empty learner=%s session=%s total=%.0fms (skipped llm+tts)",
+            learner.id, session.id, (time.perf_counter() - t_start) * 1000,
+        )
+        return TurnResponse(
+            verdict="empty",
+            diagnosis="",
+            matched=False,
+            node=None,
+            edges=[],
+            session_done=False,
+            escape=False,
+            ratio_hint=session.ratio_hint or 0.3,
+            mode="llm",
+        )
+
+    t_quota = time.perf_counter()
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="conversation")
     except QuotaExceeded as exc:
@@ -550,15 +601,24 @@ async def _turn_llm(
             },
             headers={"Retry-After": str(exc.retry_after_s)},
         )
+    quota_ms = (time.perf_counter() - t_quota) * 1000
 
+    t_prep = time.perf_counter()
+    history = history_for_prompt(db, session.id)
+    situation = tutor_situation(scenario)
+    features = target_features(db, session.scenario_id)
+    prep_ms = (time.perf_counter() - t_prep) * 1000
+
+    t_tutor = time.perf_counter()
     reply = await tutor.reply(
         transcript=transcript,
-        history=history_for_prompt(db, session.id),
-        situation=tutor_situation(scenario),
-        target_features=target_features(db, session.scenario_id),
+        history=history,
+        situation=situation,
+        target_features=features,
         bridge_langs=learner.bridge_langs or ["en"],
         ratio=session.ratio_hint or 0.3,
     )
+    tutor_ms = (time.perf_counter() - t_tutor) * 1000
     if reply.source == "degraded":
         refund_quota(db, learner, "llm_calls", 1, surface="conversation",
                      reason="downstream_failure")
@@ -567,6 +627,7 @@ async def _turn_llm(
     # §6.3 holds: this verdict describes the learner's Sanskrit, it does not
     # judge their answer. "unsure" is the abstention, never an accusation, and
     # a line carrying only a name lands on "correct" rather than failing.
+    # (Empty was returned early above — unreachable here, kept as guard.)
     if not (transcript or "").strip():
         verdict = "empty"
     elif not health.looks_sanskrit:
@@ -601,11 +662,31 @@ async def _turn_llm(
     delta = 0.02 if verdict == "correct" else (-0.02 if verdict == "bridge" else 0.0)
     session.turn_count = (session.turn_count or 0) + 1
     session.ratio_hint = max(0.0, min(1.0, (session.ratio_hint or 0.3) + delta))
+    # LLM turns are real practice for the goal bar + calendar (empty earns
+    # nothing and counts no turn — same anti-gaming rule as the graph path).
+    if verdict != "empty":
+        from app.services.activity import CONVERSATION_XP, record_activity
+        record_activity(
+            db,
+            learner,
+            xp=CONVERSATION_XP.get(verdict, 0),
+            conversation_turns=1,
+        )
+    t_db = time.perf_counter()
     db.commit()
+    db_ms = (time.perf_counter() - t_db) * 1000
 
     line = reply.sanskrit or reply.bridge
     line_lang = "sa" if reply.sanskrit else _bridge_lang(learner)
+    t_tts = time.perf_counter()
     line_audio = await _inline_tts(db, learner, line, line_lang)
+    tts_ms = (time.perf_counter() - t_tts) * 1000
+    total_ms = (time.perf_counter() - t_start) * 1000
+    logger.info(
+        "[talk] turn quota=%.0fms prep=%.0fms tutor=%.0fms db=%.0fms tts=%.0fms total=%.0fms inline=%s verdict=%s",
+        quota_ms, prep_ms, tutor_ms, db_ms, tts_ms, total_ms,
+        bool(line_audio), verdict,
+    )
 
     return TurnResponse(
         verdict=verdict,

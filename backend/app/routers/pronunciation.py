@@ -98,6 +98,15 @@ async def pronunciation_attempt(
         abstained=scoring.get("abstained", False),
     )
     db.add(attempt)
+    db.flush()
+    # Real practice for the goal bar + calendar (unsure earns nothing).
+    from app.services.activity import PRONUNCIATION_XP, record_activity
+    record_activity(
+        db,
+        learner,
+        xp=0 if scoring.get("abstained") else PRONUNCIATION_XP.get(scoring["verdict"], 0),
+        pronunciation_attempts=1,
+    )
     db.commit()
     db.refresh(attempt)
 

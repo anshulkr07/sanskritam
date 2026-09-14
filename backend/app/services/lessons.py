@@ -186,6 +186,16 @@ def attempt_step(db: Session, learner, lesson_id: str, rank: int,
     mastery = adaptive.update_mastery(
         learner, list(features),
         verdict.get("verdict", "unsure"), bool(verdict.get("abstained")))
+    # Graded steps are real practice: feed the daily goal bar + calendar.
+    # Practice kinds return early above and never reach here by design.
+    from app.services.activity import record_activity, xp_for_challenge_verdict
+    record_activity(
+        db,
+        learner,
+        xp=xp_for_challenge_verdict(
+            verdict.get("verdict", "unsure"), bool(verdict.get("abstained"))),
+        attempts=1,
+    )
     db.flush()
     row = schedule_review(db, learner.id, item_key, "step",
                           verdict.get("verdict", "unsure"),

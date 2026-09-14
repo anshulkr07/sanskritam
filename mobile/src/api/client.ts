@@ -12,6 +12,7 @@ export interface LearnerProfile {
   display_name: string;
   bridge_langs: BridgeLangs;
   sanskrit_ratio: number;
+  sanskrit_ratio_setting?: number;
   script_ratio: number;
   feature_mastery: Record<string, number>;
   streak: number;
@@ -601,6 +602,8 @@ export interface ProgressDay {
   date: string;
   xp: number;
   attempts: number;
+  conversation_turns?: number;
+  pronunciation_attempts?: number;
   goal_met: boolean;
 }
 
@@ -635,6 +638,67 @@ export interface DailyWordGuessResponse {
   max_guesses: number;
   revealed?: { answer: string; answer_iast: string } | null;
   reason?: string;
+}
+
+// ─── Grammar guide (Learn map for the Grammar tab) ────────────────────
+// Static basics→advanced sections from GET /grammar/guide. Lesson existence
+// resolves client-side from units()/pathSpine() so the guide never stales.
+
+export interface GuideExample {
+  devanagari: string;
+  gloss: string;
+}
+
+export interface GuideProof {
+  type: string; // derive | paradigm | sandhi | word-order
+  params: Record<string, unknown>;
+}
+
+export interface GuideSection {
+  id: string;
+  rank: number;
+  title_en: string;
+  title_hi: string;
+  unit_ids: string[];
+  feature_ids: string[];
+  body_beginner: string;
+  body_intermediate: string;
+  body_advanced: string;
+  examples: GuideExample[];
+  proof: GuideProof | null;
+}
+
+export interface GuideResponse {
+  version: string;
+  sections: GuideSection[];
+}
+
+// ─── Story deck (Discover Sanskrit) ───────────────────────────────────
+// Backend-driven, read-only: chapters with ranked cards. Reading writes
+// nothing — progress (last index) stays in AsyncStorage on the device.
+
+export interface StoryCard {
+  id: string;
+  chapter_id: string;
+  rank: number;
+  title_en: string;
+  title_hi: string;
+  body: string;
+  example_dev: string;
+  example_iast: string;
+  example_gloss: string;
+  deep_link: string;
+  deep_link_label: string;
+  attribution: string;
+}
+
+export interface StoryChapter {
+  id: string;
+  rank: number;
+  title_en: string;
+  title_hi: string;
+  blurb: string;
+  cards: StoryCard[];
 }
 
 // ─── Client ───────────────────────────────────────────────────────────────
@@ -1065,6 +1129,9 @@ export const api = {
   // Approved-content spine for the journey path (P7-5)
   pathSpine: () => request<PathSpine>("/grammar/path", {}, true),
 
+  // Grammar guide — static Learn map (basics → advanced), no quota.
+  guide: () => request<GuideResponse>("/grammar/guide", {}, true),
+
   // Curriculum (U14 / P22) — Lesson → Practice → Challenge; vocab; graded
   // reading. Static content: no quota, but still auth-bound like /shlokas.
   // P23: lessons are addressable by id (steps) as well as by feature.
@@ -1097,6 +1164,16 @@ export const api = {
 
   readerTier: (tier: number) =>
     request<ReaderPassage[]>(`/reader/${tier}`, {}, true),
+
+  // Story deck (Discover Sanskrit) — read-only, no quota.
+  storyChapters: () => request<StoryChapter[]>("/story/chapters", {}, true),
+
+  storyCards: (chapterId?: string) =>
+    request<StoryCard[]>(
+      "/story/cards" + (chapterId ? `?chapter_id=${encodeURIComponent(chapterId)}` : ""),
+      {},
+      true,
+    ),
 
   // Daily word (U8-4 / P12) — वर्ण-बन्धः
   dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),

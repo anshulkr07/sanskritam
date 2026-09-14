@@ -192,7 +192,7 @@ class Provider:
     """OpenAI-chat-completions-shaped provider."""
 
     def __init__(self, name: str, spec: ProviderSpec, model: Optional[str] = None,
-                 api_key: Optional[str] = None, timeout: float = 90.0) -> None:
+                 api_key: Optional[str] = None, timeout: float = 30.0) -> None:
         self.name = name
         self.spec = spec
         self.model = model or spec.default_model

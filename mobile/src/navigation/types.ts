@@ -4,9 +4,10 @@
 // session isn't a place you live, so it isn't a tab — same as Duolingo never
 // puts "Lesson" in its tab bar).
 //
-// U8-1 (info architecture): six tabs plus a left drawer. Shloka and Varnamala
+// U8-1 (info architecture): tabs plus a left drawer. Shloka and Varnamala
 // stop being tabs and become stack screens reached from Home cards (U8-2);
-// Play, Grammar and Progress are new tabs; the drawer (Settings) hangs off a
+// Play, Grammar and Read are tabs; Progress lives in the drawer (hamburger)
+// next to Settings — it is consulted, not lived in. The drawer hangs off a
 // hamburger on Home.
 
 import type { CompositeScreenProps } from "@react-navigation/native";
@@ -19,7 +20,7 @@ export type MainTabParamList = {
   Conversation: undefined;
   Play: undefined;
   Grammar: undefined;
-  Progress: undefined;
+  Read: undefined;
 };
 
 export type RootStackParamList = {
@@ -46,9 +47,9 @@ export type RootStackParamList = {
   Writing: undefined;
   // U8-4: the daily word (वर्ण-बन्धः)
   DailyWord: undefined;
-  // U13/P21: the canon reader — a scroll of tappable verses (a stack screen,
-  // not a seventh tab). Reached from Grammar.
-  Reader: undefined;
+  // The canon reader is a TAB (Read), not a stack screen — books live where
+  // the learner lives. ReaderScreen takes no params; the book + page it opens
+  // to are restored from persisted reading progress, not navigation params.
   // U14/P22: the learning layer — Lesson → Practice → Challenge. A Lesson is
   // reached from a Path node when has_lesson is true; Vocab from Play.
   // U15-1: the lesson is now a step player addressed by id; featureId stays
@@ -59,6 +60,9 @@ export type RootStackParamList = {
   Licences: undefined;
   // U15-6: Piṅgala as binary — light/heavy enumeration, mātrāmeru.
   Pingala: undefined;
+  // Story deck (Discover Sanskrit) — the swipeable basics→advanced cards,
+  // reached from the Home hero. Read-only; progress lives on the device.
+  Story: undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

@@ -124,8 +124,29 @@ export default function ConversationScreen() {
     }, audioBase64).catch(() => { tl?.report("(audio failed)"); done(); });
   }, []);
 
-  // Always call the hook (React rules). On web it'll just be unused.
-  const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
+  // STT preset: 16kHz mono 32kbps AAC in the same .m4a container — ~4x
+  // smaller than HIGH_QUALITY stereo 44.1kHz, same codec Saaras already
+  // accepts. STT needs words, not fidelity (Varnamala keeps HIGH_QUALITY
+  // because retroflex-vs-dental scoring does need it).
+  const recorder = useAudioRecorder({
+    ...RecordingPresets.HIGH_QUALITY,
+    sampleRate: 16000,
+    numberOfChannels: 1,
+    bitRate: 32000,
+    ios: {
+      ...RecordingPresets.HIGH_QUALITY.ios,
+      audioQuality: 32,
+    },
+    android: {
+      ...RecordingPresets.HIGH_QUALITY.android,
+      outputFormat: "mpeg4",
+      audioEncoder: "aac",
+    },
+    web: {
+      ...RecordingPresets.HIGH_QUALITY.web,
+      bitsPerSecond: 32000,
+    },
+  });
 
   // Pulse animation for mic button (Reanimated, U0-4)
   const pulseAnim = useSharedValue(1);
@@ -231,7 +252,10 @@ export default function ConversationScreen() {
       scrollBottom();
       try {
         const t: TurnResponse = await api.conversationTurn(sessionId, text.trim());
-        // LLM reply + inline TTS, in one hop.
+        // Text-fast path: the turn returns as soon as the words exist
+        // (inline audio off by default). Mark network return, render text
+        // below, then fetch voice in the background — tl "turn" vs "speak"
+        // proves the split.
         tl?.mark("turn");
 
         // A meta move — the learner asked about the line rather than
@@ -281,7 +305,11 @@ export default function ConversationScreen() {
                     : t.verdict,
             },
           ]);
+          // Text is on screen from the setMsgs above — mark it before the
+          // voice fetch starts so [perf] shows text latency vs voice latency.
+          tl?.mark("text");
           setIsSpeaking(true);
+          // Not awaited by design: voice plays when ready, mic stays usable.
           speakLine(next.audio_url || "", tm, nodeLang(next), next.audio_base64, tl);
 
           // Flash avatar reaction based on verdict

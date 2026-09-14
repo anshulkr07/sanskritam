@@ -874,6 +874,765 @@ SEED_LESSONS: list[dict] = [
         "visual_data": {},
         "register": "laukika",
     },
+    # ── Grammar-guide expansion: basics → advanced, full taxonomy ──────
+    # Original Sanskritam prose (2026-09-14). Every derivable example uses
+    # only engine-exact forms measured on 2026-09-14 (path/bhu/likh + balaka/
+    # rama/gaja/phala/grha; lot-2sg teaches the engine form -tat, noting the
+    # classroom short form). Concept-only lessons (FEM/INDECL/SAMASA/KARAKA
+    # + sandhi splits) carry prose illustrations with no derivation claim,
+    # so verify_example stores them with derivation None and the steps seed
+    # gives them an explain step only — never a graded item the engine
+    # cannot mark (P23-2 rule).
+    {
+        "feature_id": "PL",
+        "features": ["PL"],
+        "unit_id": "u4",
+        "rank": 3,
+        "title_en": "Many as an idea: what plural means",
+        "title_hi": "बहुत्वम् — बहुवचनस्य भावः",
+        "body": (
+            "Before the plural endings, meet the plural idea. Sanskrit number "
+            "is not a word like 'many' — it is a shape inside every noun and "
+            "verb. बालकः (one), बालकौ (two), बालकाः (many): same stem, three "
+            "counts. The verb mirrors it: पठति, पठतः, पठन्ति.\n\n"
+            "Plural is the unmarked many: three or more, mixed groups, and "
+            "respectful address. Its endings are the longest and loudest — "
+            "-ाः, -ान्, -ानाम्, -ेषु — so your ear learns them first and your "
+            "mouth trusts them.\n\n"
+            "This lesson owns the idea; the next four own the plural cases "
+            "one by one. Say the triple aloud until -ाः feels like many the "
+            "way -s does in English."
+        ),
+        "examples": [
+            {"devanagari": "बालकाः", "gloss": "boys (acting)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Prathama", "vacana": "Bahu"}},
+            {"devanagari": "बालकान्", "gloss": "boys (acted upon)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Dvitiya", "vacana": "Bahu"}},
+            {"devanagari": "पठन्ति", "gloss": "they read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Bahu"}},
+        ],
+        "visual_type": "grid",
+        "visual_data": {
+            "kind": "declension", "stem": "बालक",
+            "columns": ["eka (one)", "dvi (two)", "bahu (many)"],
+            "rows": [["बालकः", "बालकौ", "बालकाः"]],
+            "highlight": "बालकाः",
+        },
+        "register": "laukika",
+    },
+    {
+        "feature_id": "NOM.DU",
+        "features": ["NOM.DU"],
+        "unit_id": "u4",
+        "rank": 4,
+        "title_en": "Two who act: nominative dual",
+        "title_hi": "द्वौ कर्तारौ — प्रथमा द्विवचनम्",
+        "body": (
+            "बालकौ पठतः — TWO boys read. The -ौ ending marks the doers when "
+            "they are exactly two: nominative dual, prathamā dvi-vacana. No "
+            "word for 'two' is needed; the ending counts.\n\n"
+            "Neuters join with -े: फले — two fruits (doing). Masculines take "
+            "-ौ, neuters -े, and the verb takes -तः. Three words, one count, "
+            "locked by agreement.\n\n"
+            "Contrast with the plural doers (बालकाः, -ाः) and the singular "
+            "doer (बालकः, -ः). Two has its own vowel, and after this lesson "
+            "your ear will never lend it to many."
+        ),
+        "examples": [
+            {"devanagari": "बालकौ", "gloss": "two boys (acting)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Prathama", "vacana": "Dvi"}},
+            {"devanagari": "गजौ", "gloss": "two elephants (acting)",
+             "derivation_params": {"pratipadika": "गज", "linga": "Pum", "vibhakti": "Prathama", "vacana": "Dvi"}},
+            {"devanagari": "फले", "gloss": "two fruits (subject)",
+             "derivation_params": {"pratipadika": "फल", "linga": "Napumsaka", "vibhakti": "Prathama", "vacana": "Dvi"}},
+        ],
+        "visual_type": "grid",
+        "visual_data": {
+            "kind": "declension", "stem": "बालक",
+            "columns": ["eka (one)", "dvi (two)", "bahu (many)"],
+            "rows": [["बालकः", "बालकौ", "बालकाः"]],
+            "highlight": "बालकौ",
+        },
+        "register": "laukika",
+    },
+    {
+        "feature_id": "ACC.DU",
+        "features": ["ACC.DU"],
+        "unit_id": "u4",
+        "rank": 5,
+        "title_en": "Two undergone: accusative dual",
+        "title_hi": "द्वौ कर्मणी — द्वितीया द्विवचनम्",
+        "body": (
+            "बालकौ पश्यति — (someone) sees TWO boys. Same -ौ as the doers: "
+            "accusative dual, dvitīyā dvi-vacana, is identical to the "
+            "nominative dual for every stem. One form, two jobs — the dual's "
+            "famous syncretism.\n\n"
+            "The verb tells you who acts; the sentence tells you who is "
+            "acted upon. बालकौ पठतः (two boys read) vs बालकौ पश्यति "
+            "((he) sees two boys): same noun, different verb, different role.\n\n"
+            "Neuters agree: फले पश्यति — (he) sees two fruits. Learn the "
+            "merger cold; exams love to test whether you panic at it."
+        ),
+        "examples": [
+            {"devanagari": "बालकौ", "gloss": "two boys (acted upon)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Dvitiya", "vacana": "Dvi"}},
+            {"devanagari": "फले", "gloss": "two fruits (object)",
+             "derivation_params": {"pratipadika": "फल", "linga": "Napumsaka", "vibhakti": "Dvitiya", "vacana": "Dvi"}},
+        ],
+        "visual_type": "grid",
+        "visual_data": {
+            "kind": "declension", "stem": "बालक",
+            "columns": ["kartṛ dvi (two do)", "karma dvi (two done-to)"],
+            "rows": [["बालकौ", "बालकौ"]],
+            "highlight": "बालकौ",
+        },
+        "register": "laukika",
+    },
+    {
+        "feature_id": "ACC.PL",
+        "features": ["ACC.PL"],
+        "unit_id": "u4",
+        "rank": 6,
+        "title_en": "Many undergone: accusative plural",
+        "title_hi": "बहून् — द्वितीया बहुवचनम्",
+        "body": (
+            "बालकान् पश्यति — (he) sees MANY boys. The -ान् ending marks many "
+            "undergoers: accusative plural, dvitīyā bahu-vacana. Against the "
+            "doers' -ाः it is unmistakable: -ाः acts, -ान् is acted upon.\n\n"
+            "Neuters merge again: फलानि — many fruits, subject or object. "
+            "Masculines split cleanly, neuters do not — the same transfer you "
+            "learned in the neuter lesson, now in the plural.\n\n"
+            "Drill the pair until it is reflex: बालकाः पठन्ति (boys read) vs "
+            "बालकान् पश्यति ((he) sees boys). The verb agrees with the doer; "
+            "the ending tells you who is not."
+        ),
+        "examples": [
+            {"devanagari": "बालकान्", "gloss": "boys (acted upon)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Dvitiya", "vacana": "Bahu"}},
+            {"devanagari": "फलानि", "gloss": "many fruits (subject or object)",
+             "derivation_params": {"pratipadika": "फल", "linga": "Napumsaka", "vibhakti": "Dvitiya", "vacana": "Bahu"}},
+        ],
+        "visual_type": "grid",
+        "visual_data": {
+            "kind": "declension", "stem": "बालक",
+            "columns": ["kartṛ bahu (many do)", "karma bahu (many done-to)"],
+            "rows": [["बालकाः", "बालकान्"]],
+            "highlight": "बालकान्",
+        },
+        "register": "laukika",
+    },
+    {
+        "feature_id": "LOC.PL",
+        "features": ["LOC.PL"],
+        "unit_id": "u4",
+        "rank": 7,
+        "title_en": "Among many: locative plural",
+        "title_hi": "बहुषु — सप्तमी बहुवचनम्",
+        "body": (
+            "बालकेषु — among / in the boys. The -ेषु ending marks where among "
+            "many: locative plural, saptamī bahu-vacana. गृहेषु — in the "
+            "houses. One ending, every plural ground.\n\n"
+            "Against the singular's -े (बालके) it is longer, heavier, and "
+            "impossible to confuse once heard: -े rests in one, -ेषु rests "
+            "among many.\n\n"
+            "Pair with the genitive plural you know (बालकानाम्, of the boys): "
+            "-ानाम् owns, -ेषु locates. The oblique plural is now complete."
+        ),
+        "examples": [
+            {"devanagari": "बालकेषु", "gloss": "among / in the boys",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Saptami", "vacana": "Bahu"}},
+            {"devanagari": "गृहेषु", "gloss": "in the houses",
+             "derivation_params": {"pratipadika": "गृह", "linga": "Napumsaka", "vibhakti": "Saptami", "vacana": "Bahu"}},
+        ],
+        "visual_type": "grid",
+        "visual_data": {
+            "kind": "declension", "stem": "बालक",
+            "columns": ["eka (in one)", "bahu (among many)"],
+            "rows": [["बालके", "बालकेषु"]],
+            "highlight": "बालकेषु",
+        },
+        "register": "laukika",
+    },
+    {
+        "feature_id": "PRES.1PL",
+        "features": ["PRES.1PL"],
+        "unit_id": "u5",
+        "rank": 2,
+        "title_en": "We (many) speak: first plural",
+        "title_hi": "वयं वदामः — उत्तम बहुवचनम्",
+        "body": (
+            "पठामः — WE read (many of us). The -ामः ending says first person "
+            "plural: present, uttama-puruṣa, bahu-vacana. Against -ामि (I) and "
+            "-ावः (we two) it completes the we-row: one, two, many.\n\n"
+            "भवामः — we are, we become. Same row, same endings, new root. The "
+            "person-number grid is root-independent: learn the endings once, "
+            "carry them everywhere.\n\n"
+            "Agreement locks it: वयं पठामः — we read. Drop the pronoun (Sanskrit "
+            "usually does) and the verb still says we: पठामः alone is a full "
+            "sentence."
+        ),
+        "examples": [
+            {"devanagari": "पठामः", "gloss": "we read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Uttama", "vacana": "Bahu"}},
+            {"devanagari": "भवामः", "gloss": "we are, become",
+             "derivation_params": {"dhatu": "भू", "lakara": "Lat", "purusha": "Uttama", "vacana": "Bahu"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "PRES.2PL",
+        "features": ["PRES.2PL"],
+        "unit_id": "u5",
+        "rank": 3,
+        "title_en": "You (many) speak: second plural",
+        "title_hi": "यूयं वदथ — मध्यम बहुवचनम्",
+        "body": (
+            "पठथ — YOU read (all of you). The -थ ending says second person "
+            "plural: present, madhyama-puruṣa, bahu-vacana. Teachers live in "
+            "this ending: पठत (read! many) orders it, पठथ states it.\n\n"
+            "भवथ — you are. यूयं भवथ — you (many) are. The classroom's "
+            "commonest verb, now in its commonest address.\n\n"
+            "Finish the you-row aloud: पठसि (you one), पठथः (you two), पठथ "
+            "(you many). Three counts, one listener-role, zero pronouns needed."
+        ),
+        "examples": [
+            {"devanagari": "पठथ", "gloss": "you (many) read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Madhyama", "vacana": "Bahu"}},
+            {"devanagari": "भवथ", "gloss": "you (many) are",
+             "derivation_params": {"dhatu": "भू", "lakara": "Lat", "purusha": "Madhyama", "vacana": "Bahu"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "PRES.3PL",
+        "features": ["PRES.3PL"],
+        "unit_id": "u5",
+        "rank": 4,
+        "title_en": "They speak: third plural",
+        "title_hi": "ते वदन्ति — प्रथम बहुवचनम्",
+        "body": (
+            "पठन्ति — THEY read. The -न्ति ending says third person plural: "
+            "present, prathama-puruṣa, bahu-vacana. बालकाः पठन्ति — the boys "
+            "read: plural noun, plural verb, audible agreement.\n\n"
+            "This is the dictionary row's far end: पठति (he), पठतः (those "
+            "two), पठन्ति (they). One root, three counts, the whole story of "
+            "number in miniature.\n\n"
+            "With this lesson the nine-cell present grid is full: every person "
+            "you met in Units 2–5 now stands in all three numbers."
+        ),
+        "examples": [
+            {"devanagari": "पठन्ति", "gloss": "they read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Bahu"}},
+            {"devanagari": "लिखन्ति", "gloss": "they write",
+             "derivation_params": {"dhatu": "लिख्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Bahu"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "PRES.3DU",
+        "features": ["PRES.3DU"],
+        "unit_id": "u5",
+        "rank": 5,
+        "title_en": "Those two speak: third dual",
+        "title_hi": "तौ वदतः — प्रथम द्विवचनम्",
+        "body": (
+            "पठतः — THOSE TWO read. The -तः ending says third person dual: "
+            "present, prathama-puruṣa, dvi-vacana. बालकौ पठतः — two boys read: "
+            "dual noun, dual verb, the click of agreement.\n\n"
+            "Against -ति (he) and -न्ति (they) it is the middle child: longer "
+            "than one, shorter than many, exactly two.\n\n"
+            "This completes the third-person row and the dual persons begun "
+            "in Unit 4. From here, every new lakāra reuses this nine-cell map."
+        ),
+        "examples": [
+            {"devanagari": "पठतः", "gloss": "those two read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Dvi"}},
+            {"devanagari": "भवतः", "gloss": "those two are",
+             "derivation_params": {"dhatu": "भू", "lakara": "Lat", "purusha": "Prathama", "vacana": "Dvi"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "IMP.2SG",
+        "features": ["IMP.2SG"],
+        "unit_id": "u8",
+        "rank": 3,
+        "title_en": "Order one: the singular imperative",
+        "title_hi": "आज्ञा — त्वं पठ",
+        "body": (
+            "Orders to one person wear -तात् in the engine's proof: पठतात् — "
+            "read! (to one). The classroom short form पठ (read!) is what you "
+            "will hear in speech; the -तात् form is what the derivation below "
+            "proves step by step. Same command, two faces: short for the mouth, "
+            "long for the proof.\n\n"
+            "Plural orders you know (पठत, read! many) share the stem and the "
+            "command-force; only the ending narrows from many to one.\n\n"
+            "Practice move: give every verb you know a singular order, then "
+            "check the long form below. When -तात् is familiar, the short "
+            "forms will feel like abbreviations — which historically they are."
+        ),
+        "examples": [
+            {"devanagari": "पठतात्", "gloss": "read! (to one, full form; short: पठ)",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lot", "purusha": "Madhyama", "vacana": "Eka"}},
+            {"devanagari": "लिखतात्", "gloss": "write! (to one, full form; short: लिख)",
+             "derivation_params": {"dhatu": "लिख्", "lakara": "Lot", "purusha": "Madhyama", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "FUT.3SG",
+        "features": ["FUT.3SG"],
+        "unit_id": "u8",
+        "rank": 4,
+        "title_en": "He will: third future",
+        "title_hi": "सः करिष्यति — भविष्यत् प्रथमः",
+        "body": (
+            "पठिष्यति — he WILL read. The -िष्य- infix plus -ति says future, "
+            "third person, singular: lṛṭ, prathama, eka. भविष्यति — he will be. "
+            "Same infix, same endings as the present you know.\n\n"
+            "Against पठति (reads) and अपठत् (read) it is the third time-state: "
+            "present, past, future — three prefixes and infixes, one stem.\n\n"
+            "This closes the tense quartet that carries most speech: present, "
+            "imperative, past, future. The remaining lakāras refine; these four "
+            "suffice."
+        ),
+        "examples": [
+            {"devanagari": "पठिष्यति", "gloss": "he will read",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lrt", "purusha": "Prathama", "vacana": "Eka"}},
+            {"devanagari": "भविष्यति", "gloss": "he will be",
+             "derivation_params": {"dhatu": "भू", "lakara": "Lrt", "purusha": "Prathama", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "PARASMAIPADA",
+        "features": ["PARASMAIPADA"],
+        "unit_id": "u9",
+        "rank": 1,
+        "title_en": "Outward voice: parasmaipada",
+        "title_hi": "परस्मैपदम् — परार्था क्रिया",
+        "body": (
+            "पठति — he reads (for another). The -ति family is parasmaipada, "
+            "the outward voice: the action goes to the book, the world, the "
+            "other. Most verbs you met first live here.\n\n"
+            "Against धावते (he runs, for self) the pair is minimal: -ति "
+            "outward, -ते selfward. Same sentence shape, opposite direction.\n\n"
+            "Dictionaries mark every root परस्मैपदी, आत्मनेपदी, or उभयपदी "
+            "(both). Check the label before you conjugate — voice, like gender, "
+            "is a property of the root, not a choice of the moment."
+        ),
+        "examples": [
+            {"devanagari": "पठति", "gloss": "he reads (outward)",
+             "derivation_params": {"dhatu": "पठ्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Eka"}},
+            {"devanagari": "लिखति", "gloss": "he writes (outward)",
+             "derivation_params": {"dhatu": "लिख्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "FEM",
+        "features": ["FEM"],
+        "unit_id": "u7",
+        "rank": 2,
+        "title_en": "Feminine: the pattern, honestly held",
+        "title_hi": "स्त्रीलिङ्गम् — सूत्रं, न तु सिद्धरूपम्",
+        "body": (
+            "Feminine (stri-linga) is real grammar with a missing machine. The "
+            "pattern exists — long-a stems, i-stems, and agreement just like "
+            "the masculine and neuter rows — but our derivation engine "
+            "misderives its flagship forms today, so this app does not drill "
+            "what it cannot grade.\n\n"
+            "What to carry forward: gender is a dictionary label (pum, stri, "
+            "napumsaka), agreement copies gender-number-case together, and the "
+            "eight-cases-times-three-numbers logic never changes — only the "
+            "endings do.\n\n"
+            "This lesson is read-only by design: no graded steps, no mastery "
+            "claims. When the engine lands, feminine drills slot in here "
+            "without moving any other lesson."
+        ),
+        "examples": [],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "INDECL",
+        "features": ["INDECL"],
+        "unit_id": "u3",
+        "rank": 6,
+        "title_en": "Words that never change: avyaya",
+        "title_hi": "अव्ययम् — विकारहीनं पदम्",
+        "body": (
+            "Some words never inflect: च (and), एव (only), अत्र (here), तत्र "
+            "(there), सह (with). No case, no number, no tense — avyaya, the "
+            "indeclinable. The analyzer tags them INDECL and grading ignores "
+            "them, because there is nothing to get wrong.\n\n"
+            "Two traps: सह governs the instrumental (रामेण सह, with Rama — "
+            "the noun still declines), and तत्र/अत्र locate without a case "
+            "ending at all.\n\n"
+            "This lesson is read-only: recognise the small words so the big "
+            "endings stand out. No graded steps — recognition, not production."
+        ),
+        "examples": [
+            {"devanagari": "च", "gloss": "and (never changes)"},
+            {"devanagari": "अत्र", "gloss": "here (never changes)"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "VISARGA-SANDHI",
+        "features": ["VISARGA-SANDHI"],
+        "unit_id": "u6",
+        "rank": 1,
+        "title_en": "The breathing that changes: visarga",
+        "title_hi": "विसर्गसन्धिः",
+        "body": (
+            "Final -ः is a breath, and the next sound reshapes it. Before a "
+            "hard consonant it hardens (रामः + च → रामश्च); before a voiced "
+            "sound or अ it softens to -ो (बालः + गच्छति → बालो गच्छति); before "
+            "other vowels it vanishes into the stem.\n\n"
+            "Same f(a,b)→c as vowel sandhi, different wiring: the left input "
+            "is always the breath. Run the steps below both ways — split the "
+            "join, join the split.\n\n"
+            "Advanced note: the -ो form is why nominatives look different in "
+            "connected text than in dictionaries. Dictionaries cite the pause "
+            "form (-ः); sentences show the computed form (-ो/-श्/-). Read the "
+            "computation, not the citation."
+        ),
+        "examples": [
+            {"devanagari": "रामश्च", "gloss": "रामः + च — Rama and",
+             "sandhi_join": "रामश्च"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "ANUSVARA-SANDHI",
+        "features": ["ANUSVARA-SANDHI"],
+        "unit_id": "u6",
+        "rank": 2,
+        "title_en": "The nose takes over: anusvara",
+        "title_hi": "अनुस्वारसन्धिः",
+        "body": (
+            "Final -म् before a consonant becomes the dot: गङ्गम् + उदकम् "
+            "computes toward गङ्गोदकम्, and many prints write the nasal as "
+            "ं before stops. The nose anticipates the next mouth-shape.\n\n"
+            "Same machine as ever: two inputs, one output, reversible in the "
+            "steps below. Split first (what were the two words?), then join "
+            "(what does the meeting make?).\n\n"
+            "Advanced note: manuscripts vary between -म् and -ं in exactly "
+            "this position. Both spell the same computation; the splitter "
+            "below accepts the joined form either way."
+        ),
+        "examples": [
+            {"devanagari": "गङ्गोदकम्", "gloss": "गङ्गा + उदकम् — Ganga water",
+             "sandhi_join": "गङ्गोदकम्"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "CONSONANT-SANDHI",
+        "features": ["CONSONANT-SANDHI"],
+        "unit_id": "u6",
+        "rank": 3,
+        "title_en": "Stops meet stops: consonant sandhi",
+        "title_hi": "व्यञ्जनसन्धिः",
+        "body": (
+            "When two stops meet, voicing and aspiration assimilate: the first "
+            "consonant takes the character of the second. The rule is phonetic, "
+            "not memorised per word — feel the throat: voiced before voiced, "
+            "unvoiced before unvoiced.\n\n"
+            "The steps below drill the same two directions as every sandhi "
+            "lesson: split the surface, join the parts. The engine grades both, "
+            "so no false rule can be authored in.\n\n"
+            "Advanced note: internal sandhi (inside one word, e.g. labh + sya) "
+            "waits for a later unit. Here only word-junction consonants are "
+            "drilled — the boundary with a space on each side."
+        ),
+        "examples": [
+            {"devanagari": "तथेति", "gloss": "तथा + इति — worked example of junction",
+             "sandhi_join": "तथेति"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "SAMASA-DVANDVA",
+        "features": ["SAMASA-DVANDVA"],
+        "unit_id": "u10",
+        "rank": 0,
+        "title_en": "Both-and: dvandva compounds",
+        "title_hi": "द्वन्द्वः — रामलक्ष्मणौ",
+        "body": (
+            "Dvandva joins equals with and: राम-लक्ष्मणौ — Rama and Lakshmana "
+            "(two). Neither word governs; the compound is plural or dual of "
+            "the pair. Gender follows the last member; number counts members.\n\n"
+            "Recognition move: two stems, one ending, and-meaning. If you can "
+            "split it into X and Y with nothing left over, it is dvandva.\n\n"
+            "Read-only by design: the analyzer names endings, not compound "
+            "types, so this lesson explains without grading. Splitter practice "
+            "in the reader will make it instinct."
+        ),
+        "examples": [
+            {"devanagari": "रामलक्ष्मणौ", "gloss": "Rama and Lakshmana (two)"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "SAMASA-TATPURUSA",
+        "features": ["SAMASA-TATPURUSA"],
+        "unit_id": "u10",
+        "rank": 1,
+        "title_en": "Of-him: tatpurusha compounds",
+        "title_hi": "तत्पुरुषः — राजपुत्रः",
+        "body": (
+            "Tatpurusha is a case-relation packed into one word: राज-पुत्रः — "
+            "the king's son (son OF the king, genitive inside). The first "
+            "member would wear a case ending if freed; inside, the ending "
+            "drops and the relation stays implied.\n\n"
+            "Recognition move: paraphrase with a case — of, to, in, by. If the "
+            "paraphrase needs one, and the last member carries the sentence's "
+            "ending, it is tatpurusha.\n\n"
+            "Read-only: no graded steps until the analyzer types compounds. "
+            "The reader marks every tatpurusha you meet from here on."
+        ),
+        "examples": [
+            {"devanagari": "राजपुत्रः", "gloss": "the king's son (of-the-king son)"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "SAMASA-BAHUVRIHI",
+        "features": ["SAMASA-BAHUVRIHI"],
+        "unit_id": "u10",
+        "rank": 2,
+        "title_en": "One-who-has: bahuvrihi compounds",
+        "title_hi": "बहुव्रीहिः — पीताम्बरः",
+        "body": (
+            "Bahuvrihi points outward: पीत-अम्बरः — yellow-garmented (one WHO "
+            "HAS yellow garments). The compound does not mean its parts; it "
+            "means the possessor of its parts. Adjective outside, noun inside.\n\n"
+            "Recognition move: ask who. If the answer is a third thing that "
+            "has A-B (not A-B itself), it is bahuvrihi. Agreement follows the "
+            "possessor, not the parts.\n\n"
+            "Read-only: the classic exam trap (tatpurusha vs bahuvrihi on the "
+            "same surface) is explained here and drilled later, when grading "
+            "can be honest."
+        ),
+        "examples": [
+            {"devanagari": "पीताम्बरः", "gloss": "yellow-garmented one (who has yellow cloth)"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "SAMASA-AVYAYIBHAVA",
+        "features": ["SAMASA-AVYAYIBHAVA"],
+        "unit_id": "u10",
+        "rank": 3,
+        "title_en": "Never-declined: avyayibhava compounds",
+        "title_hi": "अव्ययीभावः — उपगङ्गम्",
+        "body": (
+            "Avyayibhava begins with a particle and never declines: उप-गङ्गम् — "
+            "near the Ganga. First member an avyaya (upa, prati, anu), whole "
+            "compound an avyaya: no case, no number, fixed -म्.\n\n"
+            "Recognition move: particle first, frozen ending, adverb-meaning "
+            "(where/when/how). If it cannot be a subject or object, suspect "
+            "avyayibhava.\n\n"
+            "Read-only: one page, one idea, zero grading. Spot them in the "
+            "reader; they never hide."
+        ),
+        "examples": [
+            {"devanagari": "उपगङ्गम्", "gloss": "near the Ganga (indeclinable)"},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-KARTR",
+        "features": ["KARAKA-KARTR"],
+        "unit_id": "u11",
+        "rank": 0,
+        "title_en": "Who does: kartr, the agent",
+        "title_hi": "कर्तृकारकम् — यः करोति",
+        "body": (
+            "Kartr is the doer — the one the action belongs to. रामः पठति: "
+            "Rama reads; Rama is kartr, and the nominative (-ः) carries him. "
+            "Form is the ending; meaning is the role; karaka names the meaning.\n\n"
+            "Every sentence has one (even passive ones, re-dressed). Find the "
+            "verb, ask who, and the -ः word answers.\n\n"
+            "Read-only: thenoun below is engine-derived (the FORM is proved); "
+            "the ROLE label is the teaching. Grading of roles waits on the "
+            "analyzer; recognition starts now."
+        ),
+        "examples": [
+            {"devanagari": "रामः", "gloss": "Rama (as doer, kartr)",
+             "derivation_params": {"pratipadika": "राम", "linga": "Pum", "vibhakti": "Prathama", "vacana": "Eka"}},
+            {"devanagari": "बालकः", "gloss": "the boy (as doer, kartr)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Prathama", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-KARMA",
+        "features": ["KARAKA-KARMA"],
+        "unit_id": "u11",
+        "rank": 1,
+        "title_en": "What is reached: karma, the object",
+        "title_hi": "कर्मकारकम् — यत् क्रियते",
+        "body": (
+            "Karma is what the action reaches: फलम् in बालकः फलम् खादति (the "
+            "boy eats the FRUIT). Accusative (-म्) carries it. Swap endings and "
+            "you swap fate: the fruit eats the boy — same words, good Sanskrit, "
+            "bad lunch.\n\n"
+            "Ask what after the verb; the -म् word answers. Neuters show -म् "
+            "for subject and object alike — the verb, not the ending, decides.\n\n"
+            "Read-only: forms below are engine-proved; the karma label is the "
+            "lesson. Production drills live in the accusative lessons."
+        ),
+        "examples": [
+            {"devanagari": "फलम्", "gloss": "the fruit (as object, karma)",
+             "derivation_params": {"pratipadika": "फल", "linga": "Napumsaka", "vibhakti": "Dvitiya", "vacana": "Eka"}},
+            {"devanagari": "बालकम्", "gloss": "the boy (as object, karma)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Dvitiya", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-KARANA",
+        "features": ["KARAKA-KARANA"],
+        "unit_id": "u11",
+        "rank": 2,
+        "title_en": "With what: karana, the instrument",
+        "title_hi": "करणकारकम् — येन क्रियते",
+        "body": (
+            "Karana is the instrument — what the doer uses. बाणेन in रामः "
+            "बाणेन विध्यति (Rama pierces WITH AN ARROW): instrumental (-ेन) "
+            "carries it. Pen, arrow, hand, word — tools are karana.\n\n"
+            "Ask with-what / by-whom after the verb; the -ेन word answers. "
+            "सह (with) governs it: रामेण सह — together WITH Rama.\n\n"
+            "Read-only: the -ेन forms below are engine-proved. Production "
+            "lives in the instrumental lesson; here the role is the point."
+        ),
+        "examples": [
+            {"devanagari": "बालकेन", "gloss": "with/by the boy (karana)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Trtiya", "vacana": "Eka"}},
+            {"devanagari": "रामेण", "gloss": "with/by Rama (karana)",
+             "derivation_params": {"pratipadika": "राम", "linga": "Pum", "vibhakti": "Trtiya", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-SAMPRADANA",
+        "features": ["KARAKA-SAMPRADANA"],
+        "unit_id": "u11",
+        "rank": 3,
+        "title_en": "For whom: sampradana, the recipient",
+        "title_hi": "सम्प्रदानकारकम् — यस्मै दीयते",
+        "body": (
+            "Sampradana is the recipient — whom the action is for. बालकाय in "
+            "बालकाय फलम् ददाति ((he) gives fruit TO THE BOY): dative (-ाय) "
+            "carries him. Giving, telling, sending end here.\n\n"
+            "The triple in miniature: giver (nominative), gift (accusative), "
+            "recipient (dative). Three endings, zero prepositions.\n\n"
+            "Read-only: -ाय forms below are engine-proved. Production lives in "
+            "the dative lesson."
+        ),
+        "examples": [
+            {"devanagari": "बालकाय", "gloss": "for/to the boy (sampradana)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Caturthi", "vacana": "Eka"}},
+            {"devanagari": "रामाय", "gloss": "for/to Rama (sampradana)",
+             "derivation_params": {"pratipadika": "राम", "linga": "Pum", "vibhakti": "Caturthi", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-APADANA",
+        "features": ["KARAKA-APADANA"],
+        "unit_id": "u11",
+        "rank": 4,
+        "title_en": "From where: apadana, the source",
+        "title_hi": "अपादानकारकम् — यस्मात् अपैति",
+        "body": (
+            "Apadana is the fixed point something leaves: गृहात् in गृहात् "
+            "गच्छति ((he) goes FROM THE HOUSE). Ablative (-ात्) carries it. "
+            "Motion away, fear, protection — all depart from here.\n\n"
+            "Against karana (with) and adhikarana (in): from, with, in — three "
+            "endings, three physics. English leans on one preposition; Sanskrit "
+            "splits three ways.\n\n"
+            "Read-only: -ात् forms below are engine-proved. Production lives in "
+            "the ablative lesson."
+        ),
+        "examples": [
+            {"devanagari": "बालकात्", "gloss": "from the boy (apadana)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Panchami", "vacana": "Eka"}},
+            {"devanagari": "रामात्", "gloss": "from Rama (apadana)",
+             "derivation_params": {"pratipadika": "राम", "linga": "Pum", "vibhakti": "Panchami", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
+    {
+        "feature_id": "KARAKA-ADHIKARANA",
+        "features": ["KARAKA-ADHIKARANA"],
+        "unit_id": "u11",
+        "rank": 5,
+        "title_en": "Where: adhikarana, the locus",
+        "title_hi": "अधिकरणकारकम् — यत्र क्रिया",
+        "body": (
+            "Adhikarana is the ground the action sits on: गृहे in गृहे पठति "
+            "((he) reads IN THE HOUSE). Locative (-े) carries it. Rest-in, as "
+            "against motion-from (apadana) and motion-to (karma).\n\n"
+            "गृहात् गृहं गच्छति (from the house to the house) vs गृहे तिष्ठति "
+            "(stays in it): three endings, three physics, one root.\n\n"
+            "Read-only: -े forms below are engine-proved. This closes the "
+            "karaka six and the Layer-2 sentence model: roles explain endings."
+        ),
+        "examples": [
+            {"devanagari": "बालके", "gloss": "in the boy's place (adhikarana)",
+             "derivation_params": {"pratipadika": "बालक", "linga": "Pum", "vibhakti": "Saptami", "vacana": "Eka"}},
+            {"devanagari": "रामे", "gloss": "in Rama (adhikarana)",
+             "derivation_params": {"pratipadika": "राम", "linga": "Pum", "vibhakti": "Saptami", "vacana": "Eka"}},
+        ],
+        "visual_type": "none",
+        "visual_data": {},
+        "register": "laukika",
+    },
 ]
 
 PROVENANCE = (

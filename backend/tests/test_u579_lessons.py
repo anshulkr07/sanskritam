@@ -77,17 +77,18 @@ def test_new_lesson_steps_round_trip(client):
 
 def test_no_feminine_surface_forms_in_u7(client):
     """The engine masculines feminine ā-stems (kanyā→kanyāḥ), so U7 shows
-    none — not in examples, not in bodies, not in grids. If the engine is
-    ever fixed, this test names exactly where feminine content goes."""
+    no derivable feminine surface forms — not in examples, not in grids.
+    The FEM concept lesson (rank 2, explain-only) names the gap in IAST
+    without claiming engine-wrong Devanagari forms. If the engine is
+    ever fixed, this test names exactly where feminine drills go."""
     from app.db import SessionLocal
     from app.models import Lesson
 
     db = SessionLocal()
     try:
         rows = db.query(Lesson).filter(Lesson.unit_id == "u7").all()
-        assert len(rows) == 2
-        blob = " ".join((r.title_en or "") + (r.body or "")
-                        + str(r.examples or "") + str(r.visual_data or "")
+        assert len(rows) == 3
+        blob = " ".join(str(r.examples or "") + str(r.visual_data or "")
                         for r in rows)
     finally:
         db.close()
@@ -97,16 +98,22 @@ def test_no_feminine_surface_forms_in_u7(client):
 
 
 def test_fem_still_unclaimed_everywhere_else(client):
-    """FEM is the last zero-coverage feature: no lesson, step band or
-    challenge may claim it until the engine derives feminine forms."""
+    """FEM has exactly one concept-only lesson (explain-only, no graded steps,
+    no derivable examples) until the engine derives feminine forms. No step
+    band or challenge may claim it."""
     from app.db import SessionLocal
-    from app.models import Lesson
+    from app.models import Lesson, LessonStep
 
     db = SessionLocal()
     try:
         rows = db.query(Lesson).all()
-        claimed = {f for r in rows for f in (r.features or [])
-                   if f == "FEM"}
+        claimed = [r for r in rows if "FEM" in (r.features or [])]
+        assert len(claimed) == 1, [r.feature_id for r in claimed]
+        fem = claimed[0]
+        assert fem.feature_id == "FEM" and fem.unit_id == "u7"
+        assert (fem.examples or []) == []
+        steps = db.query(LessonStep).filter(
+            LessonStep.lesson_id == fem.id).all()
+        assert len(steps) == 1 and steps[0].kind == "explain"
     finally:
         db.close()
-    assert claimed == set()

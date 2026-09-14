@@ -88,6 +88,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       display_name: res.learner.display_name,
       bridge_langs: res.learner.bridge_langs,
       sanskrit_ratio: res.learner.sanskrit_ratio,
+      sanskrit_ratio_setting:
+        res.learner.sanskrit_ratio_setting ?? res.learner.sanskrit_ratio,
       script_ratio: res.learner.script_ratio,
       feature_mastery: res.learner.feature_mastery ?? {},
       streak: res.learner.streak ?? 0,
@@ -150,6 +152,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setOnboarded(true);
   }, []);
 
+  const mergeMe = useCallback((me: { learner: LearnerProfile; model: { sanskrit_ratio_setting?: number } }) => {
+    // /me splits profile + adaptive model; the ceiling lives in model on
+    // older backends, in learner on newer ones — prefer whichever is set.
+    const setting =
+      me.learner.sanskrit_ratio_setting ?? me.model?.sanskrit_ratio_setting ?? me.learner.sanskrit_ratio;
+    const merged: LearnerProfile = { ...me.learner, sanskrit_ratio_setting: setting };
+    setLearner(merged);
+    return merged;
+  }, []);
+
   // Restore session on mount.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -161,7 +173,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setToken(tok);
           try {
             const me = await api.me();
-            setLearner(me.learner);
+            mergeMe(me);
           } catch {
             await AsyncStorage.multiRemove([TOKEN_KEY]);
             setAuthToken(null);
@@ -198,12 +210,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!token) return null;
     try {
       const me = await api.me();
-      setLearner(me.learner);
-      return me.learner;
+      return mergeMe(me);
     } catch {
       return null;
     }
-  }, [token]);
+  }, [token, mergeMe]);
 
   const updateName = useCallback(async (name: string) => {
     await AsyncStorage.setItem(NAME_KEY, name);

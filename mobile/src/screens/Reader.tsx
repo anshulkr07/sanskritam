@@ -1,185 +1,279 @@
-// Reader — the canon, made readable (U13 / HANDOVER P21-1).
+// Read — the canon as a shelf of books (the Read tab).
 //
-// Two postures, one screen:
-//   • INDEX — a vertical scroll of collapsed verse cards (the list is the
-//     contents page, not a pager; U13-1). Tap a card to read it.
-//   • READING — one verse as a full page, with a 3D page-turn to the
-//     adjacent verse (PageFlip, U13). Reading is a book: fold, turn, unfold.
-//
-// Tap a word inside a page for its gloss + features straight from the
-// word_breakdown the backend already ships, and use the Ask sheet for a
-// deeper engine/model answer — both local/₹0 paths before any LLM.
+// Three postures, one screen:
+//   • SHELF — book covers first: every canon text in study order plus an
+//     "All verses" book, each with live counts and a coverage bar. Empty
+//     books stay visible as "coming soon" — a book disappearing until its
+//     import lands is how the reader looked incomplete.
+//   • BOOK — one book's index: chapters in canonical chapter-verse order
+//     (never seed-date order), each row opening its page. Start/Continue
+//     resumes the persisted position.
+//   • PAGE — one verse as a leaf of a real book: grab and drag to fold it
+//     over (BookFlip), scrub the Kindle slider to jump, tap a word chip for
+//     its gloss. The Ask sheet opens ONLY from the explicit Ask button —
+//     never hijacked by a word tap.
 //
 // Reading, not drilling (U13-3): no verdict, no streak, no score, no meter of
 // any kind. Someone reading the Gītā at night is not in a session.
 //
 // Rules this screen honours:
-//   - The corpus comes from GET /shlokas (date-ordered, instrumented).
-//   - Words are rendered from word_breakdown, NOT split from the verse text —
-//     sandhi fuses boundaries, and the breakdown is the trustworthy tokeniser.
-//   - A failed fetch says so and offers retry (U10-3) — never a silent empty
+//   - The corpus comes from GET /shlokas; the catalogue from GET /canon.
+//     A failed fetch says so and offers retry (U10-3) — never a silent empty
 //     list and never an infinite skeleton.
+//   - Verses are matched to books by ref_prefixes exactly like /canon's
+//     counts, so shelf numbers and contents always agree.
+//   - Words render from word_breakdown, NOT split from the verse text.
 //   - Every text that may hold Sanskrit uses script() (§3.2).
-//   - No TTS in the list (P21: audio goes only on what is studied).
-//   - Page-turns are cosmetic: skippable (§3.7) and absent under Reduce Motion
-//     (§3.4). The content swap is what matters, never blocked by the flip.
+//   - No TTS here (P21: audio goes only on what is studied).
+//   - Turns are cosmetic and fully bypassed under Reduce Motion (§3.4).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
-import { useAsk } from "../ask/AskProvider";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { EmptyState, Button } from "../components/ui";
+import { useAsk } from "../ask/AskProvider";
+import { EmptyState, Button, ProgressBar } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
-import PageFlip from "../components/PageFlip";
+import BookFlip from "../components/BookFlip";
+import ReaderSlider from "../components/ReaderSlider";
+import { haptics } from "../services/haptics";
+import {
+  getReadingPosition,
+  getReadingPositions,
+  setReadingPosition,
+} from "../services/readingProgress";
+import {
+  firstLine,
+  groupByBook,
+  groupByChapter,
+  makeBookOf,
+  parseRef,
+  sortVerses,
+} from "../utils/verses";
 import { color, font, radius, script, shadow, space } from "../theme";
 
-// U14-5: the graded-reading surface (P22-6) lives here, not on a new screen.
-// "Verses" is the canon (GET /shlokas); "Graded" loads /reader/{tier} —
-// Simple (Units 2–3) · Sandhi (Unit 6) · Compounds (Unit 10) — mapped onto
-// the same verse shape so the tap-a-word page pattern is identical.
-type ReaderMode = "verses" | "graded";
-
+// The graded shelf (U14-5 / P22-6): Simple (Units 2–3) · Sandhi (Unit 6) ·
+// Compounds (Unit 10). Same page pattern, tier passages mapped onto verses.
 const TIERS = [
-  { tier: 1, label: "Simple" },
-  { tier: 2, label: "Sandhi" },
-  { tier: 3, label: "Compounds" },
+  { tier: 1, label: "Simple", hint: "Units 2–3" },
+  { tier: 2, label: "Sandhi", hint: "Unit 6" },
+  { tier: 3, label: "Compounds", hint: "Unit 10" },
 ] as const;
+
+const ALL_KEY = "all";
+const OTHER_KEY = "other";
+const gradedKey = (tier: number) => `graded-${tier}`;
+
+interface OpenBook {
+  key: string;
+  titleEn: string;
+  titleSa: string;
+  verses: Shloka[];
+  /** Planned total for the coverage bar; null hides it (All, Graded). */
+  planned: number | null;
+  depth: string | null;
+}
 
 function ReaderSkeleton() {
   return (
     <>
-      <Skeleton width={160} height={14} radius={radius.sm} style={{ marginBottom: space.md }} />
-      <SkeletonGroup count={4} height={70} radius={radius.lg} />
+      <Skeleton width={120} height={26} radius={radius.sm} style={{ marginBottom: space.xs }} />
+      <Skeleton width={220} height={14} radius={radius.sm} style={{ marginBottom: space.lg }} />
+      <View style={styles.shelfGrid}>
+        {[0, 1, 2, 3].map((i) => (
+          <Skeleton key={i} height={150} radius={radius.lg} style={{ flex: 1, minWidth: "46%" }} />
+        ))}
+      </View>
+      <SkeletonGroup count={2} height={56} radius={radius.lg} />
     </>
   );
 }
 
 export default function ReaderScreen() {
   const { sized } = useTypeScale();
-  const [mode, setMode] = useState<ReaderMode>("verses");
-  const [tier, setTier] = useState<number>(1);
-  // P21-4: canon filter — null = whole corpus; a slug narrows the index to
-  // that text's verses (matched by ref_prefixes). The reading posture flips
-  // through the FILTERED list, so Prev/Next stay contiguous.
-  const [canonFilter, setCanonFilter] = useState<string | null>(null);
-  // null = index posture; set = reading posture at that verse index.
-  const [pageIndex, setPageIndex] = useState<number | null>(null);
-  const [flipDir, setFlipDir] = useState<"forward" | "back">("forward");
-  const [selected, setSelected] = useState<WordBreakdown | null>(null);
   const reduced = useReducedMotion();
-  const { open } = useAsk();
+  // null = shelf; set = inside a book. pageIndex null = index, set = reading.
+  const [bookKey, setBookKey] = useState<string | null>(null);
+  const [pageIndex, setPageIndex] = useState<number | null>(null);
+  // Restored "continue" rows: { [bookKey]: index }.
+  const [positions, setPositions] = useState<Record<string, number>>({});
 
-  // Data (Track C4): cached 60s, deduped, never setState after unmount.
-  const versesQ = useQuery<Shloka[]>(
-    `reader-${mode}-${tier}`,
-    () =>
-      mode === "verses"
-        ? api.listShlokas()
-        : api.readerTier(tier).then((rows) =>
-            rows.map(
-              (p, i): Shloka => ({
-                id: `tier${p.tier}-${i}`,
-                date: "",
-                source_ref: `Tier ${p.tier} · ${i + 1}`,
-                devanagari: p.devanagari,
-                iast: p.iast,
-                metre: "",
-                word_breakdown: p.word_breakdown,
-                features: p.features,
-                audio_url: "",
-              }),
-            ),
-          ),
-  );
-  const verses = versesQ.data;
-  const loading = versesQ.loading;
-  const error = versesQ.failed;
-  const load = versesQ.retry;
-
-  // The canon catalogue loads once, best-effort: a failure here never blocks
-  // reading (the full index still shows; the filter row just stays hidden).
+  // Corpus (Track C4): cached 60s, deduped, never setState after unmount.
+  const versesQ = useQuery<Shloka[]>("reader-verses", api.listShlokas);
+  // Catalogue: best-effort — a failure here never blocks reading (the All
+  // book still shows); the per-book shelf just stays hidden.
   const canonQ = useQuery<{ texts: CanonText[] }>("canon", api.canon);
-  const canon = canonQ.data?.texts ?? [];
 
-  const switchMode = useCallback((m: ReaderMode) => {
-    setPageIndex(null);
-    setSelected(null);
-    setMode(m);
+  const verses = versesQ.data;
+  const canon = useMemo(() => canonQ.data?.texts ?? [], [canonQ.data]);
+
+  // Graded tiers load lazily on open — the shelf must not fire three
+  // requests for rows the learner may never touch.
+  const [tierTier, setTierTier] = useState<number | null>(null);
+  const [tierRows, setTierRows] = useState<Shloka[] | null>(null);
+  const [tierLoading, setTierLoading] = useState(false);
+  const [tierFailed, setTierFailed] = useState(false);
+
+  const loadTier = useCallback((tier: number) => {
+    setTierTier(tier);
+    setTierRows(null);
+    setTierFailed(false);
+    setTierLoading(true);
+    api
+      .readerTier(tier)
+      .then((rows) =>
+        setTierRows(
+          rows.map(
+            (p, i): Shloka => ({
+              id: `tier${p.tier}-${i}`,
+              date: "",
+              source_ref: `Graded Tier ${p.tier} · verse ${i + 1}`,
+              devanagari: p.devanagari,
+              iast: p.iast,
+              metre: "",
+              word_breakdown: p.word_breakdown,
+              features: p.features,
+              audio_url: "",
+            }),
+          ),
+        ),
+      )
+      .catch(() => setTierFailed(true))
+      .finally(() => setTierLoading(false));
   }, []);
 
-  const switchTier = useCallback((t: number) => {
-    setPageIndex(null);
-    setSelected(null);
-    setTier(t);
-  }, []);
-
-  // P21-4: the visible index — whole corpus, or one canon text's verses.
-  const shown = useMemo(() => {
-    if (!verses || mode !== "verses" || !canonFilter) return verses;
-    const prefs = canon.find((t) => t.slug === canonFilter)?.ref_prefixes ?? [];
-    if (!prefs.length) return verses;
-    return verses.filter((v) => prefs.some((p) => !!p && v.source_ref.includes(p)));
-  }, [verses, mode, canonFilter, canon]);
-
-  const switchCanon = useCallback((slug: string | null) => {
-    setPageIndex(null);
-    setSelected(null);
-    setCanonFilter(slug);
-  }, []);
-
-  // Clamp a stale pageIndex when the visible list shrinks (e.g. canon filter
-  // emptied it). Runs as an effect — never setState during render.
-  const shownLen = shown?.length ?? 0;
+  // Refresh "continue" rows every time the shelf is shown.
   useEffect(() => {
-    if (pageIndex !== null && pageIndex >= shownLen) {
-      setPageIndex(null);
-      setSelected(null);
-    }
-  }, [pageIndex, shownLen]);
+    if (bookKey === null) getReadingPositions().then(setPositions).catch(() => {});
+  }, [bookKey]);
 
-  // INDEX rows — defined before any early return: hooks must run in the same
-  // order on every render. (A useCallback after the loading/error/reading
-  // returns crashed the screen as soon as the fetch resolved — "Rendered more
-  // hooks than during the previous render".)
-  const renderVerse = useCallback(
-    ({ item: v, index: i }: { item: Shloka; index: number }) => {
-      const firstLine = (v.devanagari ?? "").split(/।\s*/)[0] || "";
-      return (
-        <Pressable
-          key={v.id}
-          onPress={() => {
-            setPageIndex(i);
-            setSelected(null);
-            setFlipDir("forward");
-          }}
-          style={({ pressed }) => [styles.verseCard, pressed && styles.verseCardPressed]}
-          accessibilityRole="button"
-          accessibilityHint="Opens the verse as a page"
-          accessibilityLabel={`${v.source_ref}. ${firstLine}।`}
-        >
-          <View style={styles.cardText}>
-            <Text style={styles.cardSource}>{v.source_ref}</Text>
-            <Text style={[styles.cardPreview, script("bold")]} numberOfLines={1}>
-              {firstLine}।
-            </Text>
-          </View>
-          <View style={styles.cardIcon}>
-            <Ionicons name="book" size={16} color={color.saffron} />
-          </View>
-        </Pressable>
-      );
+  const bookOf = useMemo(() => makeBookOf(canon), [canon]);
+  const groups = useMemo(
+    () => (verses ? groupByBook(verses, canon) : []),
+    [verses, canon],
+  );
+  const allVerses = useMemo(
+    () => (verses ? sortVerses(verses, bookOf) : []),
+    [verses, bookOf],
+  );
+
+  const openBook: OpenBook | null = useMemo(() => {
+    if (!bookKey) return null;
+    if (bookKey === ALL_KEY) {
+      return {
+        key: ALL_KEY,
+        titleEn: "All verses",
+        titleSa: "सर्वम्",
+        verses: allVerses,
+        planned: null,
+        depth: null,
+      };
+    }
+    if (bookKey === OTHER_KEY) {
+      const g = groups.find((x) => x.text === null);
+      if (!g) return null;
+      return {
+        key: OTHER_KEY,
+        titleEn: "Other verses",
+        titleSa: "अन्यत्",
+        verses: g.verses,
+        planned: null,
+        depth: null,
+      };
+    }
+    if (bookKey.startsWith("graded-")) {
+      const tier = parseInt(bookKey.slice("graded-".length), 10);
+      const meta = TIERS.find((t) => t.tier === tier);
+      if (!meta || !tierRows) return null;
+      return {
+        key: bookKey,
+        titleEn: `Graded · ${meta.label}`,
+        titleSa: "अभ्यासः",
+        verses: tierRows,
+        planned: null,
+        depth: null,
+      };
+    }
+    const g = groups.find((x) => x.text?.slug === bookKey);
+    if (!g?.text) return null;
+    return {
+      key: bookKey,
+      titleEn: g.text.title_en,
+      titleSa: g.text.title_sa,
+      verses: g.verses,
+      planned: g.text.verses_planned || null,
+      depth: g.text.depth,
+    };
+  }, [bookKey, groups, allVerses, tierRows]);
+
+  // A stale book (corpus shrank under it) falls back to the shelf instead
+  // of rendering an empty book. Runs as an effect — never during render.
+  useEffect(() => {
+    if (bookKey && bookKey !== ALL_KEY && !bookKey.startsWith("graded-")) {
+      if (verses && !groups.some((g) => g.text?.slug === bookKey || (bookKey === OTHER_KEY && g.text === null))) {
+        setBookKey(null);
+        setPageIndex(null);
+      }
+    }
+  }, [bookKey, verses, groups]);
+
+  const openShelf = useCallback(() => {
+    haptics.tap();
+    setBookKey(null);
+    setPageIndex(null);
+    setTierTier(null);
+    setTierRows(null);
+  }, []);
+
+  const enterBook = useCallback(
+    async (key: string) => {
+      haptics.tap();
+      if (key.startsWith("graded-")) {
+        const tier = parseInt(key.slice("graded-".length), 10);
+        if (tierTier !== tier || !tierRows) loadTier(tier);
+      }
+      const pos = await getReadingPosition(key).catch(() => 0);
+      setBookKey(key);
+      // Land on the index, remembering where Continue should resume.
+      setPageIndex(null);
+      setPositions((p) => ({ ...p, [key]: pos }));
+    },
+    [loadTier, tierTier, tierRows],
+  );
+
+  const startReading = useCallback(
+    async (book: OpenBook) => {
+      haptics.press();
+      const pos = await getReadingPosition(book.key).catch(() => 0);
+      const at = Math.min(pos, book.verses.length - 1);
+      setPageIndex(Math.max(0, at));
     },
     [],
   );
 
-  if (loading) {
+  const turnTo = useCallback(
+    (book: OpenBook, i: number) => {
+      const at = Math.max(0, Math.min(book.verses.length - 1, i));
+      setPageIndex(at);
+      setReadingPosition(book.key, at);
+    },
+    [],
+  );
+
+  // ── Loading / error ──────────────────────────────────────────────
+  if (versesQ.loading) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <ScrollView contentContainerStyle={styles.body}>
@@ -189,248 +283,522 @@ export default function ReaderScreen() {
     );
   }
 
-  if (error || !verses || verses.length === 0) {
+  if (versesQ.failed || !verses) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}>
           <EmptyState
-            title={error ? "Couldn't load the reader." : "Nothing to read yet."}
-            hint={error ? "Check your connection and try again." : "Verses will appear here."}
+            title="Couldn't load the reader."
+            hint="Check your connection and try again."
           />
-          {error && <Button label="Try again" tone="primary" onPress={load} style={{ marginTop: space.md }} />}
+          <Button label="Try again" tone="primary" onPress={versesQ.retry} style={{ marginTop: space.md }} />
         </View>
       </SafeAreaView>
     );
   }
 
-  // READING posture — the verse as a page you flip through. The page flips
-  // through the FILTERED list (shown), so bounds, position and pageKey all
-  // read from shown. A stale pageIndex falls through to the index below (the
-  // effect above resets it) instead of crashing on verse.id of undefined.
-  if (pageIndex !== null) {
-    const list = shown ?? [];
-    const verse = list[pageIndex];
-    if (verse) {
-      const hasPrev = pageIndex > 0;
-      const hasNext = pageIndex < list.length - 1;
+  if (verses.length === 0) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <View style={styles.center}>
+          <EmptyState title="Nothing to read yet." hint="Verses will appear here." />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
-      const go = (dir: "forward" | "back") => {
-        const next = dir === "forward" ? pageIndex + 1 : pageIndex - 1;
-        if (next < 0 || next >= list.length) return;
-        setSelected(null);
-        setFlipDir(dir);
-        setPageIndex(next);
-      };
+  // ── PAGE posture ─────────────────────────────────────────────────
+  if (bookKey && pageIndex !== null && openBook && openBook.verses.length > 0) {
+    const book = openBook;
+    const at = Math.max(0, Math.min(pageIndex, book.verses.length - 1));
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <View style={styles.readHeader}>
+          <Pressable
+            onPress={() => {
+              haptics.tap();
+              setPageIndex(null);
+            }}
+            style={styles.headerBtn}
+            accessibilityRole="button"
+            accessibilityLabel={`Back to ${book.titleEn} contents`}
+          >
+            <Ionicons name="arrow-back" size={20} color={color.saffron} />
+            <Text style={styles.headerBtnText}>Index</Text>
+          </Pressable>
+          <Text style={styles.readPos} numberOfLines={1}>
+            {at + 1} / {book.verses.length}
+          </Text>
+          <Pressable
+            onPress={openShelf}
+            style={styles.headerBtnRight}
+            accessibilityRole="button"
+            accessibilityLabel="Back to the bookshelf"
+          >
+            <Ionicons name="library-outline" size={20} color={color.saffron} />
+          </Pressable>
+        </View>
 
+        <View style={styles.pageArea}>
+          {/* Remount per book: the flip's settled page belongs to one book. */}
+          <BookFlip
+            key={book.key}
+            index={at}
+            count={book.verses.length}
+            onIndexChange={(i) => turnTo(book, i)}
+            renderPage={(i) => {
+              const v = book.verses[i];
+              return v ? <ReaderPage key={v.id} verse={v} /> : <View style={styles.page} />;
+            }}
+            reducedMotion={reduced}
+          />
+        </View>
+
+        <ReaderSlider
+          index={at}
+          count={book.verses.length}
+          labelFor={(i) => book.verses[i]?.source_ref ?? ""}
+          onScrubEnd={(i) => {
+            haptics.press();
+            turnTo(book, i);
+          }}
+        />
+
+        <View style={styles.turnRow}>
+          <Pressable
+            onPress={() => turnTo(book, at - 1)}
+            disabled={at <= 0}
+            style={[styles.turnBtn, at <= 0 && styles.turnBtnDisabled]}
+            accessibilityRole="button"
+            accessibilityLabel="Previous verse"
+            accessibilityState={{ disabled: at <= 0 }}
+          >
+            <Ionicons name="chevron-back" size={22} color={at > 0 ? color.saffron : color.inkFaint} />
+            <Text style={[styles.turnText, at <= 0 && styles.turnTextDisabled]}>Previous</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => turnTo(book, at + 1)}
+            disabled={at >= book.verses.length - 1}
+            style={[styles.turnBtn, at >= book.verses.length - 1 && styles.turnBtnDisabled]}
+            accessibilityRole="button"
+            accessibilityLabel="Next verse"
+            accessibilityState={{ disabled: at >= book.verses.length - 1 }}
+          >
+            <Text style={[styles.turnText, at >= book.verses.length - 1 && styles.turnTextDisabled]}>Next</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={22}
+              color={at < book.verses.length - 1 ? color.saffron : color.inkFaint}
+            />
+          </Pressable>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // ── BOOK posture (index) ─────────────────────────────────────────
+  if (bookKey && openBook) {
+    // Graded rows still arriving (or failed): the index waits honestly.
+    if (bookKey.startsWith("graded-") && (tierLoading || !tierRows)) {
       return (
         <SafeAreaView style={styles.safe} edges={["top"]}>
-          {/* Reading header — back to the index, and the source/position. */}
-          <View style={styles.readHeader}>
-            <Pressable
-              onPress={() => setPageIndex(null)}
-              style={styles.headerBtn}
-              accessibilityRole="button"
-              accessibilityLabel="Back to the list of verses"
-            >
-              <Ionicons name="arrow-back" size={20} color={color.saffron} />
-              <Text style={styles.headerBtnText}>List</Text>
-            </Pressable>
-            <Text style={styles.readPos}>
-              {pageIndex + 1} / {list.length}
-            </Text>
-            <View style={styles.headerBtnSpacer} />
-          </View>
-
-          {/* The page — folds and turns as pageIndex changes. */}
-          <View style={styles.pageArea}>
-            <PageFlip pageKey={verse.id} direction={flipDir} reducedMotion={reduced}>
-              <ReaderPage
-                verse={verse}
-                selected={selected}
-                onWordTap={(w) => {
-                  setSelected(w);
-                  open({ surface: "shloka", subject: w.word });
-                }}
-                onAskVerse={() => open({ surface: "shloka", subject: verse.devanagari })}
-              />
-            </PageFlip>
-          </View>
-
-          {/* Turn controls — tap the edges, or the buttons. ≥44pt (U5-4). */}
-          <View style={styles.turnRow}>
-            <Pressable
-              onPress={() => go("back")}
-              disabled={!hasPrev}
-              style={[styles.turnBtn, !hasPrev && styles.turnBtnDisabled]}
-              accessibilityRole="button"
-              accessibilityLabel="Previous verse"
-              accessibilityState={{ disabled: !hasPrev }}
-            >
-              <Ionicons name="chevron-back" size={22} color={hasPrev ? color.saffron : color.inkFaint} />
-              <Text style={[styles.turnText, !hasPrev && styles.turnTextDisabled]}>Previous</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => go("forward")}
-              disabled={!hasNext}
-              style={[styles.turnBtn, !hasNext && styles.turnBtnDisabled]}
-              accessibilityRole="button"
-              accessibilityLabel="Next verse"
-              accessibilityState={{ disabled: !hasNext }}
-            >
-              <Text style={[styles.turnText, !hasNext && styles.turnTextDisabled]}>Next</Text>
-              <Ionicons name="chevron-forward" size={22} color={hasNext ? color.saffron : color.inkFaint} />
-            </Pressable>
-          </View>
+          <ScrollView contentContainerStyle={styles.body}>
+            <BackRow onPress={openShelf} label="Books" />
+            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Graded reading</Text>
+            {tierFailed ? (
+              <View style={styles.center}>
+                <EmptyState
+                  title="Couldn't load these passages."
+                  hint="Check your connection and try again."
+                />
+                <Button
+                  label="Try again"
+                  tone="primary"
+                  onPress={() => tierTier !== null && loadTier(tierTier)}
+                  style={{ marginTop: space.md }}
+                />
+              </View>
+            ) : (
+              <SkeletonGroup count={4} height={64} radius={radius.lg} />
+            )}
+          </ScrollView>
         </SafeAreaView>
       );
     }
+    return (
+      <BookIndex
+        book={openBook}
+        sized={sized}
+        resumeAt={positions[openBook.key] ?? 0}
+        onBack={openShelf}
+        onStart={() => startReading(openBook)}
+        onOpen={(i) => turnTo(openBook, i)}
+      />
+    );
   }
 
-  // INDEX posture — the list of collapsed cards (FlatList: the corpus
-  // grows with every canon import; the reading posture above is untouched).
-
+  // ── SHELF posture ────────────────────────────────────────────────
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <FlatList
-        data={shown ?? []}
-        keyExtractor={(v) => v.id}
-        renderItem={renderVerse}
-        contentContainerStyle={styles.body}
-        initialNumToRender={12}
-        ListHeaderComponent={
-          <View>
-            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
-            <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
-              Tap a verse to read it; in the page, tap any word or flip to the next.
-            </Text>
+      <ScrollView contentContainerStyle={styles.body}>
+        <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
+        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
+          Pick a book. Turn its pages. Tap any word.
+        </Text>
 
-            {/* U14-5: canon vs graded — one screen, two corpora. */}
-            <View style={styles.modeRow}>
-              {(["verses", "graded"] as const).map((m) => {
-                const active = mode === m;
-                return (
-                  <Pressable
-                    key={m}
-                    onPress={() => switchMode(m)}
-                    style={[styles.modeChip, active && styles.modeChipActive]}
-                    accessibilityRole="button"
-                    accessibilityLabel={m === "verses" ? "Canon verses" : "Graded reading"}
-                    accessibilityState={{ selected: active }}
-                  >
-                    <Text style={[styles.modeText, active && styles.modeTextActive]}>
-                      {m === "verses" ? "Verses" : "Graded"}
-                    </Text>
-                  </Pressable>
-                );
-              })}
+        <ContinueRows
+          groups={groups}
+          allCount={allVerses.length}
+          positions={positions}
+          onResume={(key, at) => {
+            if (key.startsWith("graded-")) {
+              const tier = parseInt(key.slice("graded-".length), 10);
+              if (tierTier !== tier || !tierRows) loadTier(tier);
+              setBookKey(key);
+              setPageIndex(at);
+            } else {
+              setBookKey(key);
+              setPageIndex(at);
+            }
+          }}
+        />
+
+        <Text style={styles.sectionTitle}>Books</Text>
+        <View style={styles.shelfGrid}>
+          <BookCard
+            titleSa="सर्वम्"
+            titleEn="All verses"
+            count={allVerses.length}
+            planned={null}
+            progress={positions[ALL_KEY] ?? 0}
+            onPress={() => enterBook(ALL_KEY)}
+          />
+          {groups.map((g) =>
+            g.text ? (
+              <BookCard
+                key={g.text.slug}
+                titleSa={g.text.title_sa}
+                titleEn={g.text.title_en}
+                count={g.verses.length}
+                planned={g.text.verses_planned || null}
+                depth={g.text.depth}
+                progress={positions[g.text.slug] ?? 0}
+                onPress={g.verses.length > 0 ? () => enterBook(g.text!.slug) : undefined}
+              />
+            ) : (
+              <BookCard
+                key={OTHER_KEY}
+                titleSa="अन्यत्"
+                titleEn="Other verses"
+                count={g.verses.length}
+                planned={null}
+                progress={positions[OTHER_KEY] ?? 0}
+                onPress={() => enterBook(OTHER_KEY)}
+              />
+            ),
+          )}
+        </View>
+
+        <Text style={styles.sectionTitle}>Graded reading</Text>
+        <Text style={styles.sectionHint}>Short passages, ordered by what you have learned.</Text>
+        {TIERS.map((t) => (
+          <Pressable
+            key={t.tier}
+            onPress={() => enterBook(gradedKey(t.tier))}
+            style={({ pressed }) => [styles.tierRow, pressed && styles.pressed]}
+            accessibilityRole="button"
+            accessibilityLabel={`Graded reading, ${t.label}, ${t.hint}`}
+          >
+            <View style={styles.tierIcon}>
+              <Ionicons name="trending-up-outline" size={20} color={color.saffron} />
             </View>
-            {mode === "graded" && (
-              <View style={styles.modeRow}>
-                {TIERS.map((t) => {
-                  const active = tier === t.tier;
-                  return (
-                    <Pressable
-                      key={t.tier}
-                      onPress={() => switchTier(t.tier)}
-                      style={[styles.modeChip, active && styles.modeChipActive]}
-                      accessibilityRole="button"
-                      accessibilityLabel={`Tier ${t.tier}: ${t.label}`}
-                      accessibilityState={{ selected: active }}
-                    >
-                      <Text style={[styles.modeText, active && styles.modeTextActive]}>{t.label}</Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-            )}
-
-            {mode === "verses" && canon.some((t) => t.verses_imported > 0) && (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.canonRow}>
-                <Pressable
-                  onPress={() => switchCanon(null)}
-                  style={[styles.modeChip, !canonFilter && styles.modeChipActive]}
-                  accessibilityRole="button"
-                  accessibilityLabel="All texts"
-                  accessibilityState={{ selected: !canonFilter }}
-                >
-                  <Text style={[styles.modeText, !canonFilter && styles.modeTextActive]}>All</Text>
-                </Pressable>
-                {canon
-                  .filter((t) => t.verses_imported > 0)
-                  .map((t) => {
-                    const active = canonFilter === t.slug;
-                    return (
-                      <Pressable
-                        key={t.slug}
-                        onPress={() => switchCanon(active ? null : t.slug)}
-                        style={[styles.modeChip, active && styles.modeChipActive]}
-                        accessibilityRole="button"
-                        accessibilityLabel={`${t.title_en}, ${t.verses_imported} verses`}
-                        accessibilityState={{ selected: active }}
-                      >
-                        <Text style={[styles.modeText, active && styles.modeTextActive, script("semibold")]}>
-                          {t.title_sa} · {t.verses_imported}
-                        </Text>
-                      </Pressable>
-                    );
-                  })}
-              </ScrollView>
-            )}
-          </View>
-        }
-        accessibilityLabel="Verses"
-      />
+            <View style={styles.tierText}>
+              <Text style={styles.tierLabel}>{t.label}</Text>
+              <Text style={styles.tierHint}>{t.hint}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
+          </Pressable>
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
-// ───────────────────────────────────────────────────────────────────────────
+// ─── Shelf pieces ───────────────────────────────────────────────────
 
-function ReaderPage({
-  verse,
-  selected,
-  onWordTap,
-  onAskVerse,
+function ContinueRows({
+  groups,
+  allCount,
+  positions,
+  onResume,
 }: {
-  verse: Shloka;
-  selected: WordBreakdown | null;
-  onWordTap: (w: WordBreakdown) => void;
-  onAskVerse: () => void;
+  groups: { text: CanonText | null; verses: Shloka[] }[];
+  allCount: number;
+  positions: Record<string, number>;
+  onResume: (key: string, at: number) => void;
 }) {
+  const rows: { key: string; title: string; at: number; total: number }[] = [];
+  const push = (key: string, title: string, total: number) => {
+    const at = positions[key] ?? 0;
+    if (total > 0 && at > 0 && at < total) rows.push({ key, title, at, total });
+  };
+  push(ALL_KEY, "All verses", allCount);
+  for (const g of groups) {
+    if (g.text) push(g.text.slug, g.text.title_en, g.verses.length);
+    else push(OTHER_KEY, "Other verses", g.verses.length);
+  }
+  for (const t of TIERS) push(gradedKey(t.tier), `Graded · ${t.label}`, Number.MAX_SAFE_INTEGER);
+  if (rows.length === 0) return null;
+  return (
+    <View style={styles.continueBlock}>
+      {rows.slice(0, 3).map((r) => (
+        <Pressable
+          key={r.key}
+          onPress={() => {
+            haptics.tap();
+            onResume(r.key, r.at);
+          }}
+          style={({ pressed }) => [styles.continueRow, pressed && styles.pressed]}
+          accessibilityRole="button"
+          accessibilityLabel={`Continue ${r.title} at page ${r.at + 1}`}
+        >
+          <Ionicons name="bookmark" size={18} color={color.saffron} />
+          <View style={styles.continueText}>
+            <Text style={styles.continueTitle}>Continue · {r.title}</Text>
+            <Text style={styles.continueSub}>
+              Page {r.at + 1}
+              {r.total !== Number.MAX_SAFE_INTEGER ? ` of ${r.total}` : ""}
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
+function BookCard({
+  titleSa,
+  titleEn,
+  count,
+  planned,
+  depth,
+  progress,
+  onPress,
+}: {
+  titleSa: string;
+  titleEn: string;
+  count: number;
+  planned: number | null;
+  depth?: string;
+  progress: number;
+  onPress?: () => void;
+}) {
+  const coming = count === 0;
+  const pct = planned ? Math.min(1, count / planned) : count > 0 ? 1 : 0;
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={coming}
+      style={({ pressed }) => [
+        styles.bookCard,
+        pressed && !coming && styles.pressed,
+        coming && styles.bookCardComing,
+      ]}
+      accessibilityRole="button"
+      accessibilityLabel={
+        coming ? `${titleEn}. Coming soon.` : `${titleEn}. ${count} verses.`
+      }
+      accessibilityState={{ disabled: coming }}
+    >
+      <Text style={[styles.bookSa, script("bold")]} numberOfLines={1}>
+        {titleSa}
+      </Text>
+      <Text style={styles.bookEn} numberOfLines={2}>
+        {titleEn}
+      </Text>
+      {coming ? (
+        <View style={styles.comingBadge}>
+          <Text style={styles.comingText}>Coming soon</Text>
+        </View>
+      ) : (
+        <>
+          <Text style={styles.bookCount}>
+            {count}{planned ? ` / ${planned}` : ""} verse{count === 1 ? "" : "s"}
+            {progress > 0 && progress < count ? ` · p.${progress + 1}` : ""}
+          </Text>
+          <ProgressBar progress={pct} height={8} style={{ marginTop: 6 }} />
+        </>
+      )}
+      {depth === "index" && !coming && (
+        <Text style={styles.bookDepth}>Catalogue selections</Text>
+      )}
+    </Pressable>
+  );
+}
+
+// ─── Book index ─────────────────────────────────────────────────────
+
+function BackRow({ onPress, label }: { onPress: () => void; label: string }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={styles.backRow}
+      accessibilityRole="button"
+      accessibilityLabel={`Back to ${label}`}
+    >
+      <Ionicons name="arrow-back" size={20} color={color.saffron} />
+      <Text style={styles.backText}>{label}</Text>
+    </Pressable>
+  );
+}
+
+function BookIndex({
+  book,
+  sized,
+  resumeAt,
+  onBack,
+  onStart,
+  onOpen,
+}: {
+  book: OpenBook;
+  sized: (pt: number, opts?: { sanskrit?: boolean }) => number;
+  resumeAt: number;
+  onBack: () => void;
+  onStart: () => void;
+  onOpen: (i: number) => void;
+}) {
+  const chapters = useMemo(() => groupByChapter(book.verses), [book]);
+  // Flat position of each verse for index → page jumps.
+  const positions = useMemo(() => {
+    const map = new Map<string, number>();
+    book.verses.forEach((v, i) => map.set(v.id, i));
+    return map;
+  }, [book]);
+  const resume = Math.max(0, Math.min(resumeAt, book.verses.length - 1));
+  const started = resume > 0;
+
+  return (
+    <SafeAreaView style={styles.safe} edges={["top"]}>
+      <ScrollView contentContainerStyle={styles.body}>
+        <BackRow onPress={onBack} label="Books" />
+        <Text style={[styles.bookIndexSa, script("bold"), { fontSize: sized(30, { sanskrit: true }) }]}>
+          {book.titleSa}
+        </Text>
+        <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>{book.titleEn}</Text>
+        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
+          {book.verses.length} verse{book.verses.length === 1 ? "" : "s"}
+          {book.planned ? ` of ${book.planned} planned` : ""} · in reading order
+        </Text>
+
+        <Button
+          label={started ? `Continue · page ${resume + 1}` : "Start reading"}
+          tone="primary"
+          block
+          onPress={onStart}
+          style={{ marginBottom: space.lg }}
+        />
+
+        {chapters.map((ch) => (
+          <View key={ch.label} style={styles.chapterBlock}>
+            <Text style={styles.chapterLabel}>{ch.label}</Text>
+            {ch.verses.map((v) => {
+              const at = positions.get(v.id) ?? 0;
+              const { nums } = parseRef(v.source_ref);
+              const num = nums.length > 0 ? nums[nums.length - 1] : at + 1;
+              return (
+                <Pressable
+                  key={v.id}
+                  onPress={() => {
+                    haptics.tap();
+                    onOpen(at);
+                  }}
+                  style={({ pressed }) => [styles.indexRow, pressed && styles.pressed]}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${v.source_ref}. ${firstLine(v.devanagari)}`}
+                >
+                  <View style={styles.indexNum}>
+                    <Text style={styles.indexNumText}>{num}</Text>
+                  </View>
+                  <View style={styles.indexText}>
+                    <Text style={styles.indexRef}>{v.source_ref}</Text>
+                    <Text style={[styles.indexPreview, script("semibold")]} numberOfLines={1}>
+                      {firstLine(v.devanagari)}
+                    </Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+                </Pressable>
+              );
+            })}
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+// ─── The page ───────────────────────────────────────────────────────
+// Owns its selected word: a tap shows the gloss inline. The Ask sheet opens
+// ONLY from the explicit button — a word tap that summons a modal is the
+// "verse loads nothing" bug wearing a costume.
+
+function ReaderPage({ verse }: { verse: Shloka }) {
+  const { sized } = useTypeScale();
+  const [selected, setSelected] = useState<WordBreakdown | null>(null);
+  const { open } = useAsk();
   const words = verse.word_breakdown ?? [];
+
+  if (!verse) return <View style={styles.page} />;
 
   return (
     <View style={styles.page}>
-      <Text style={styles.pageSource}>{verse.source_ref}</Text>
+      <Text style={styles.pageSource} numberOfLines={1}>
+        {verse.source_ref}
+      </Text>
       <ScrollView style={styles.pageScroll} contentContainerStyle={styles.pageBody}>
         {words.length > 0 ? (
-          <Text style={[styles.verse, script("bold")]}>
+          <View style={styles.wordWrap}>
             {words.map((w, i) => {
-              const active = selected?.word === w.word;
+              const active = selected?.word === w.word && selected?.meaning === w.meaning;
               return (
-                <React.Fragment key={`${w.word}-${i}`}>
-                  {i > 0 ? <Text> </Text> : null}
+                <Pressable
+                  key={`${w.word}-${i}`}
+                  onPress={() => {
+                    haptics.tap();
+                    setSelected(active ? null : w);
+                  }}
+                  style={[styles.wordChip, active && styles.wordChipActive]}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${w.word}. ${w.meaning ?? ""}`}
+                  accessibilityState={{ selected: active }}
+                >
                   <Text
-                    onPress={() => onWordTap(w)}
-                    style={[styles.wordSpan, active && styles.wordSpanActive]}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Tap to see ${w.word}. ${w.meaning ?? ""}`}
-                    accessibilityState={{ selected: active }}
+                    style={[
+                      styles.wordText,
+                      script("bold"),
+                      { fontSize: sized(font.sizes.xl, { sanskrit: true }) },
+                      active && styles.wordTextActive,
+                    ]}
                   >
                     {w.word}
                   </Text>
-                </React.Fragment>
+                </Pressable>
               );
             })}
-          </Text>
+          </View>
         ) : (
-          <Text style={[styles.verse, script("bold")]}>{verse.devanagari}</Text>
+          <Text style={[styles.verse, script("bold"), { fontSize: sized(font.sizes.xl, { sanskrit: true }) }]}>
+            {verse.devanagari}
+          </Text>
         )}
-        <Text style={styles.iast}>{verse.iast}</Text>
+        <Text style={[styles.iast, { fontSize: sized(font.sizes.base) }]}>{verse.iast}</Text>
 
-        {/* Selected-word gloss — straight from the row, ₹0 and instant. */}
         {selected && (
-          <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={styles.gloss}>
+          <Animated.View
+            entering={FadeIn.duration(160)}
+            exiting={FadeOut.duration(120)}
+            style={styles.gloss}
+          >
             <Text style={[styles.glossWord, script("bold")]}>{selected.word}</Text>
             {selected.meaning ? <Text style={styles.glossMeaning}>{selected.meaning}</Text> : null}
             {selected.features && selected.features.length > 0 ? (
@@ -446,7 +814,7 @@ function ReaderPage({
         )}
 
         <Pressable
-          onPress={onAskVerse}
+          onPress={() => open({ surface: "shloka", subject: verse.devanagari })}
           style={styles.askVerse}
           accessibilityRole="button"
           accessibilityLabel="Ask about this whole verse"
@@ -463,22 +831,113 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
   body: { padding: space.lg, paddingBottom: space.xxl * 2 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink },
+  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
   subtitle: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    color: color.inkSoft,
+    marginTop: 2,
+    marginBottom: space.md,
+    lineHeight: 20,
+  },
+  sectionTitle: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.md,
+    color: color.ink,
+    marginTop: space.md,
+    marginBottom: space.xs,
+  },
+  sectionHint: {
     fontFamily: "Nunito_400Regular",
     fontWeight: "400",
     fontSize: font.sizes.sm,
     color: color.inkSoft,
-    marginTop: 2,
-    marginBottom: space.lg,
-    lineHeight: 20,
+    marginBottom: space.sm,
   },
+  pressed: { transform: [{ translateY: 2 }] },
 
-  // Index cards
-  verseCard: {
+  // Shelf
+  shelfGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
+  bookCard: {
+    flex: 1,
+    minWidth: "46%",
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
+    ...shadow.card,
+    borderTopWidth: 4,
+    borderTopColor: color.saffron,
+  },
+  bookCardComing: { opacity: 0.7, borderTopColor: color.border },
+  bookSa: { fontSize: font.sizes.lg, color: color.ink },
+  bookEn: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.ink,
+    marginTop: 2,
+    minHeight: 36,
+  },
+  bookCount: {
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+    marginTop: 4,
+  },
+  bookDepth: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
+    marginTop: 4,
+  },
+  comingBadge: {
+    alignSelf: "flex-start",
+    backgroundColor: color.surfaceMuted,
+    borderRadius: radius.pill,
+    paddingHorizontal: space.sm,
+    paddingVertical: 4,
+    marginTop: space.sm,
+  },
+  comingText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+  },
+  continueBlock: { marginBottom: space.sm },
+  continueRow: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    gap: space.sm,
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
+    marginBottom: space.xs,
+    borderLeftWidth: 4,
+    borderLeftColor: color.saffron,
+    ...shadow.card,
+  },
+  continueText: { flex: 1 },
+  continueTitle: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.ink,
+  },
+  continueSub: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+    marginTop: 1,
+  },
+  tierRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
     backgroundColor: color.surface,
     borderRadius: radius.lg,
     padding: space.md,
@@ -486,19 +945,82 @@ const styles = StyleSheet.create({
     minHeight: 60,
     ...shadow.card,
   },
-  verseCardPressed: { transform: [{ translateY: 2 }] },
-  cardText: { flex: 1, marginRight: space.sm },
-  cardSource: {
+  tierIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: color.saffronLight,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tierText: { flex: 1 },
+  tierLabel: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
+    fontSize: font.sizes.base,
+    color: color.ink,
+  },
+  tierHint: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+  },
+
+  // Book index
+  backRow: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, marginBottom: space.xs },
+  backText: {
+    color: color.saffronText,
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.sm,
+  },
+  bookIndexSa: { color: color.ink },
+  chapterBlock: { marginBottom: space.md },
+  chapterLabel: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.saffronText,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+    marginBottom: space.xs,
+  },
+  indexRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    backgroundColor: color.surface,
+    borderRadius: radius.md,
+    padding: space.sm,
+    marginBottom: space.xs,
+    minHeight: 56,
+    ...shadow.card,
+  },
+  indexNum: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: color.saffronLight,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  indexNumText: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.saffronDeep,
+  },
+  indexText: { flex: 1 },
+  indexRef: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
     fontSize: font.sizes.xs,
     color: color.saffron,
     textTransform: "uppercase",
-    letterSpacing: 0.5,
-    marginBottom: 2,
+    letterSpacing: 0.4,
   },
-  cardPreview: { fontSize: font.sizes.base, color: color.ink },
-  cardIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: color.saffronLight, alignItems: "center", justifyContent: "center" },
+  indexPreview: { fontSize: font.sizes.base, color: color.ink, marginTop: 1 },
 
   // Reading header
   readHeader: {
@@ -511,19 +1033,19 @@ const styles = StyleSheet.create({
   },
   headerBtn: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, minWidth: 64 },
   headerBtnText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm },
-  headerBtnSpacer: { width: 64 },
-  readPos: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
-
-  // Page + its pad
-  pageArea: { flex: 1, paddingHorizontal: space.lg },
-  page: {
+  headerBtnRight: { minHeight: 44, minWidth: 64, alignItems: "flex-end", justifyContent: "center" },
+  readPos: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
     flex: 1,
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    ...shadow.card,
+    textAlign: "center",
   },
-  pageScroll: { flex: 1 },
-  pageBody: { padding: space.lg, paddingBottom: space.xl },
+
+  // Page + pad
+  pageArea: { flex: 1, paddingHorizontal: space.lg },
+  page: { flex: 1 },
   pageSource: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
@@ -531,22 +1053,32 @@ const styles = StyleSheet.create({
     color: color.saffron,
     textTransform: "uppercase",
     letterSpacing: 0.5,
-    paddingHorizontal: space.lg,
     paddingTop: space.md,
   },
-  verse: { fontSize: font.sizes.xl, color: color.ink, lineHeight: 46 },
-  wordSpan: { borderRadius: 6, padding: 2 },
-  wordSpanActive: { backgroundColor: color.saffronLight, color: color.saffronDeep },
+  pageScroll: { flex: 1 },
+  pageBody: { paddingBottom: space.xl },
+  wordWrap: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
+  wordChip: {
+    backgroundColor: "rgba(232,91,37,0.07)",
+    borderRadius: radius.sm,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    minHeight: 44,
+    justifyContent: "center",
+  },
+  wordChipActive: { backgroundColor: color.saffronLight },
+  wordText: { color: color.ink, lineHeight: 34 },
+  wordTextActive: { color: color.saffronDeep },
+  verse: { color: color.ink, lineHeight: 46, marginTop: space.sm },
   iast: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
-    fontSize: font.sizes.base,
     color: color.inkSoft,
     marginTop: space.md,
     lineHeight: 22,
   },
   gloss: {
-    marginTop: space.lg,
+    marginTop: space.md,
     backgroundColor: color.bg,
     borderRadius: radius.md,
     padding: space.md,
@@ -563,47 +1095,42 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   featRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
-  featChip: { backgroundColor: color.surfaceMuted, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 3 },
-  featText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
+  featChip: {
+    backgroundColor: color.surfaceMuted,
+    borderRadius: radius.pill,
+    paddingHorizontal: space.sm,
+    paddingVertical: 3,
+  },
+  featText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+  },
   askVerse: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginTop: space.md,
+    marginTop: space.sm,
     minHeight: 44,
     alignSelf: "flex-start",
   },
-  askVerseText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm },
+  askVerseText: {
+    color: color.saffronText,
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.sm,
+  },
 
   // Turn controls
   turnRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: space.lg,
-    paddingVertical: space.md,
+    paddingVertical: space.sm,
     gap: space.md,
   },
-  // U14-5: corpus + tier selector chips.
-  modeRow: { flexDirection: "row", gap: space.sm, marginBottom: space.sm },
-  canonRow: { marginBottom: space.sm },
-  modeChip: {
-    backgroundColor: color.surface,
-    borderRadius: radius.pill,
-    borderWidth: 1,
-    borderColor: color.border,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
-    minHeight: 44,
-    justifyContent: "center",
-  },
-  modeChipActive: { backgroundColor: color.saffron, borderColor: color.saffron },
-  modeText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-    color: color.ink,
-  },
-  modeTextActive: { color: color.white },  turnBtn: {
+  turnBtn: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,

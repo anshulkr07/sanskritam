@@ -38,7 +38,9 @@ export default function DailyWordScreen({ navigation }: Props) {
   const [solved, setSolved] = useState(false);
   const [finished, setFinished] = useState(false);
   const [revealed, setRevealed] = useState<string | null>(null);
-  const [streak, setStreak] = useState(0);
+  // null = still loading — the header pill hides until the real streak
+  // lands instead of flashing a fake 0.
+  const [streak, setStreak] = useState<number | null>(null);
   const [clue, setClue] = useState("");
   const [status, setStatus] = useState<"loading" | "open" | "solved" | "finished" | "no_word">("loading");
   const [guess, setGuess] = useState("");
@@ -48,6 +50,7 @@ export default function DailyWordScreen({ navigation }: Props) {
 
   const load = useCallback(() => {
     setStatus("loading");
+    setStreak(null);
     api
       .dailyWord()
       .then((p) => {
@@ -121,10 +124,12 @@ export default function DailyWordScreen({ navigation }: Props) {
             <Ionicons name="chevron-back" size={24} color={color.ink} />
           </Pressable>
           <Text style={styles.title}>वर्ण-बन्धः</Text>
-          <View style={styles.streakPill}>
-            <Ionicons name="flame" size={14} color={color.saffron} />
-            <Text style={styles.streakNum}>{streak}</Text>
-          </View>
+          {status !== "loading" && streak != null && streak > 0 && (
+            <View style={styles.streakPill}>
+              <Ionicons name="flame" size={14} color={color.saffron} />
+              <Text style={styles.streakNum}>{streak}</Text>
+            </View>
+          )}
         </View>
         <Text style={styles.subtitle}>Daily word · scored on the mouth-map grid</Text>
 

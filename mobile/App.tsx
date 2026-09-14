@@ -37,11 +37,11 @@ import ShlokaScreen from "./src/screens/Shloka";
 import VarnamalaScreen from "./src/screens/Varnamala";
 import DailyWordScreen from "./src/screens/DailyWord";
 import WritingScreen from "./src/screens/Writing";
-import ReaderScreen from "./src/screens/Reader";
 import LessonScreen from "./src/screens/Lesson";
 import VocabScreen from "./src/screens/Vocab";
 import LicencesScreen from "./src/screens/Licences";
 import PingalaScreen from "./src/screens/Pingala";
+import StoryDeckScreen from "./src/screens/StoryDeck";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -99,8 +99,6 @@ function RootNavigator() {
       <Stack.Screen name="Varnamala" component={VarnamalaScreen} options={{ title: "Varṇamālā" }} />
       {/* U12-5: Varṇamālā's practice mode — write the letters. */}
             <Stack.Screen name="Writing" component={WritingScreen} options={{ title: "Write it" }} />
-            {/* U13/P21: the canon reader — from Grammar. */}
-            <Stack.Screen name="Reader" component={ReaderScreen} options={{ title: "Read" }} />
             {/* U14/P22: the learning layer — Lesson → Practice → Challenge. */}
             <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
             <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
@@ -108,6 +106,8 @@ function RootNavigator() {
             <Stack.Screen name="Licences" component={LicencesScreen} options={{ title: "Licences and credits" }} />
             {/* U15-6: Piṅgala as binary. */}
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
+            {/* Story deck (Discover Sanskrit) — the swipeable basics→advanced cards. */}
+            <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Discover Sanskrit" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

@@ -1,7 +1,13 @@
-// Grammar — the differentiator's front door (U8-5). A search field: type a
-// word, get its derivation (U7-1's player) or its paradigm (U7-5's table).
-// This is the in-app form of the public viewer that HANDOVER P11-6 keeps
-// owner-gated — same components, no deployment question.
+// Grammar — the differentiator's front door (U8-5) + the Learn map.
+//
+// Two halves, one screen:
+//  - Learn: GET /grammar/guide sections (basics → advanced), each card with
+//    beginner text, tappable feature chips (→ Lesson), Learn/Practice buttons
+//    (→ Lesson step player / Challenge), and a Go-deeper toggle for the
+//    intermediate + advanced text. Lesson existence resolves from
+//    GET /lessons so the guide never stales.
+//  - Proof: the original search field — type a word, get its derivation
+//    (U7-1's player) or paradigm (U7-5's table).
 //
 // Rules that govern this screen:
 //  - Render ONLY what GET /grammar/derive/paradigm return; never a rule the
@@ -12,7 +18,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -20,11 +26,12 @@ import DerivationPlayer from "../components/derivation/DerivationPlayer";
 import SandhiVisual from "../components/derivation/SandhiVisual";
 import { useAsk } from "../ask/AskProvider";
 import ParadigmScreen from "./Paradigm";
-import type { TabScreenProps } from "../navigation/types";
 import { haptics } from "../services/haptics";
+import { api, type GuideSection, type LessonSummary } from "../api/client";
+import { useQuery } from "../hooks/useQuery";
+import { Button } from "../components/ui";
+import type { TabScreenProps } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
-
-type Props = TabScreenProps<"Grammar">;
 
 const RECENT_KEY = "shabd.grammar.recent";
 
@@ -34,12 +41,108 @@ function guessKind(word: string): "verb" | "noun" {
   return /[ऀ-ॿ]$/.test(word) ? "noun" : "verb";
 }
 
-export default function GrammarScreen({ navigation }: Props) {
+function LearnSectionCard({
+  section,
+  lessonsByFeature,
+  onLearn,
+  onPractice,
+  onFeature,
+}: {
+  section: GuideSection;
+  lessonsByFeature: Map<string, LessonSummary>;
+  onLearn: (featureId: string) => void;
+  onPractice: (features: string[]) => void;
+  onFeature: (featureId: string) => void;
+}) {
+  const [deep, setDeep] = useState(false);
+  const firstTeachable = section.feature_ids.find((f) => lessonsByFeature.has(f));
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>{section.title_en}</Text>
+      {!!section.title_hi && (
+        <Text style={[styles.cardSa, script("semibold")]}>{section.title_hi}</Text>
+      )}
+      <Text style={styles.cardBody}>{section.body_beginner}</Text>
+      {section.examples.slice(0, 3).map((ex) => (
+        <View key={ex.devanagari} style={styles.exampleRow}>
+          <Text style={[styles.exampleDev, script("semibold")]}>{ex.devanagari}</Text>
+          <Text style={styles.exampleGloss}>{ex.gloss}</Text>
+        </View>
+      ))}
+      <View style={styles.chipRow}>
+        {section.feature_ids.map((f) => {
+          const taught = lessonsByFeature.has(f);
+          return (
+            <Pressable
+              key={f}
+              onPress={() => {
+                haptics.tap();
+                onFeature(f);
+              }}
+              style={[styles.chip, taught && styles.chipTaught]}
+              accessibilityRole="button"
+              accessibilityLabel={`${f}${taught ? ", has lesson" : ", reference only"}`}
+            >
+              <Text style={[styles.chipText, taught && styles.chipTextTaught]}>{f}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      {deep && (
+        <View>
+          {!!section.body_intermediate && (
+            <Text style={styles.cardBodyDeep}>{section.body_intermediate}</Text>
+          )}
+          {!!section.body_advanced && (
+            <Text style={styles.cardBodyDeep}>{section.body_advanced}</Text>
+          )}
+        </View>
+      )}
+      <Pressable
+        onPress={() => {
+          haptics.tap();
+          setDeep((d) => !d);
+        }}
+        style={styles.deepToggle}
+        accessibilityRole="button"
+        accessibilityLabel={deep ? "Show less" : "Go deeper: intermediate and advanced"}
+        accessibilityState={{ expanded: deep }}
+      >
+        <Text style={styles.deepToggleText}>
+          {deep ? "Show less" : "Go deeper: intermediate + advanced"}
+        </Text>
+      </Pressable>
+      <View style={styles.cardActions}>
+        <Button
+          label={firstTeachable ? "Learn" : "No lesson yet"}
+          onPress={() => firstTeachable && onLearn(firstTeachable)}
+          disabled={!firstTeachable}
+        />
+        <Button label="Practice" onPress={() => onPractice(section.feature_ids)} />
+      </View>
+    </View>
+  );
+}
+
+export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState<string | null>(null);
   const [showParadigm, setShowParadigm] = useState(false);
   const [recent, setRecent] = useState<string[]>([]);
   const { setContext } = useAsk();
+  const { data: guide } = useQuery("grammar-guide", api.guide);
+  const { data: lessons } = useQuery("grammar-lessons", api.lessons);
+
+  const lessonsByFeature = useMemo(() => {
+    const m = new Map<string, LessonSummary>();
+    for (const l of lessons ?? []) {
+      if (!m.has(l.feature_id)) m.set(l.feature_id, l);
+      for (const f of l.features ?? []) {
+        if (!m.has(f)) m.set(f, l);
+      }
+    }
+    return m;
+  }, [lessons]);
 
   // U11: the ask button asks about the word on screen, not "this screen".
   React.useEffect(() => {
@@ -72,31 +175,58 @@ export default function GrammarScreen({ navigation }: Props) {
     [persistRecent],
   );
 
+  const onLearn = useCallback(
+    (featureId: string) => {
+      const found = lessonsByFeature.get(featureId);
+      navigation.navigate("Lesson", {
+        featureId,
+        lessonId: found?.id,
+      });
+    },
+    [lessonsByFeature, navigation],
+  );
+
+  const onPractice = useCallback(
+    (features: string[]) => {
+      navigation.navigate("Challenge", { features });
+    },
+    [navigation],
+  );
+
   const kind = submitted ? guessKind(submitted) : "noun";
+  const sections = useMemo(
+    () => [...(guide?.sections ?? [])].sort((a, b) => a.rank - b.rank),
+    [guide],
+  );
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         <Text style={styles.title}>Grammar</Text>
-                <Text style={styles.subtitle}>Derivations and paradigms — every claim proven.</Text>
+        <Text style={styles.subtitle}>Learn the endings, then prove every word.</Text>
 
-                {/* U13/P21: enter the canon reader. Reading is never graded (U13-3). */}
-                <Pressable
-                  onPress={() => { haptics.tap(); navigation.navigate("Reader"); }}
-                  style={({ pressed }) => [styles.readerCard, pressed && styles.readerCardPressed]}
-                  accessibilityRole="button"
-                  accessibilityLabel="Open the reader — a scroll of verses you can tap word by word"
-                >
-                  <View style={styles.readerIcon}>
-                    <Ionicons name="library-outline" size={22} color={color.saffron} />
-                  </View>
-                  <View style={styles.readerText}>
-                    <Text style={styles.readerTitle}>Read</Text>
-                    <Text style={styles.readerSub}>Open a verse and tap any word.</Text>
-                  </View>
-                  <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
-                </Pressable>
+        {/* Learn map: basics → advanced */}
+        {sections.length > 0 && (
+          <View style={styles.learnBlock}>
+            <Text style={styles.sectionTitle}>Learn: basics to advanced</Text>
+            {sections.map((s) => (
+              <LearnSectionCard
+                key={s.id}
+                section={s}
+                lessonsByFeature={lessonsByFeature}
+                onLearn={onLearn}
+                onPractice={onPractice}
+                onFeature={onLearn}
+              />
+            ))}
+          </View>
+        )}
 
+        <Text style={styles.sectionTitle}>Prove a word</Text>
+        <Text style={styles.proofHint}>
+          Derivations and paradigms — every claim proven by the engine.
+        </Text>
+                {/* Reading lives in its own Read tab now — Grammar stays proof. */}
                 {/* Search field */}
         <View style={styles.searchRow}>
           <TextInput
@@ -202,22 +332,25 @@ const styles = StyleSheet.create({
   body: { padding: space.lg, paddingBottom: space.xxl },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink },
   subtitle: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2, marginBottom: space.lg, lineHeight: 20 },
-    readerCard: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: space.sm,
-      backgroundColor: color.surface,
-      borderRadius: radius.lg,
-      padding: space.md,
-      marginBottom: space.md,
-      ...shadow.card,
-    },
-    readerCardPressed: { transform: [{ translateY: 2 }] },
-    readerIcon: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronLight, alignItems: "center", justifyContent: "center" },
-    readerText: { flex: 1 },
-    readerTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-    readerSub: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2 },
-    searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.md },
+  learnBlock: { marginBottom: space.lg },
+  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, marginBottom: space.md, ...shadow.card },
+  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  cardSa: { fontSize: font.sizes.base, color: color.saffronDeep, marginTop: 2 },
+  cardBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.ink, marginTop: space.xs, lineHeight: 20 },
+  cardBodyDeep: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.xs, lineHeight: 20 },
+  exampleRow: { flexDirection: "row", alignItems: "baseline", gap: space.sm, marginTop: space.xs },
+  exampleDev: { fontSize: font.sizes.base, color: color.ink },
+  exampleGloss: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, flex: 1, flexWrap: "wrap" },
+  chipRow: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, marginTop: space.sm },
+  chip: { borderWidth: 1, borderColor: color.border, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 4 },
+  chipTaught: { borderColor: color.saffron, backgroundColor: color.saffronLight },
+  chipText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
+  chipTextTaught: { color: color.saffronDeep },
+  deepToggle: { marginTop: space.sm, paddingVertical: 4 },
+  deepToggleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron },
+  cardActions: { flexDirection: "row", gap: space.sm, marginTop: space.sm },
+  proofHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm },
+  searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.md },
   input: {
     flex: 1,
     borderWidth: 2,

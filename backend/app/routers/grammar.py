@@ -15,6 +15,7 @@ from app.models import Feature, Learner
 from app.schemas import (
     DerivationResponse,
     FeatureResponse,
+    GuideResponse,
     ParadigmResponse,
     PathNodeResponse,
     PathSpineResponse,
@@ -25,6 +26,7 @@ from app.schemas import (
 )
 from app.seeds.varnamala import VARNAMALA_DATA
 from app.services import chandas, prakriya
+from app.services.grammar_guide import GUIDE_SECTIONS, GUIDE_VERSION
 from app.services.sandhi import split_candidates
 from app.services.varna_distance import distance_on_grid
 from app.services.word_order import equivalent_orders
@@ -128,6 +130,16 @@ async def get_path_spine(
 
     covered = sum(1 for n in nodes if n.approved_count > 0)
     return PathSpineResponse(nodes=nodes, features_covered=covered, features_total=len(nodes))
+
+
+@router.get("/grammar/guide", response_model=GuideResponse)
+async def get_guide():
+    """Static Learn map for the Grammar tab (basics → advanced).
+
+    No DB, no quota, no vendor — the section tree is data, and lesson
+    existence is resolved client-side from /units + /grammar/path so the
+    guide never goes stale when lessons land."""
+    return {"version": GUIDE_VERSION, "sections": GUIDE_SECTIONS}
 
 
 @router.get("/grammar/derive", response_model=DerivationResponse)

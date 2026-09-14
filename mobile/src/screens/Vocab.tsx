@@ -32,7 +32,9 @@ type Props = NativeStackScreenProps<RootStackParamList, "Vocab">;
 export default function VocabScreen({ route }: Props) {
   const { open } = useAsk();
   const { sized } = useTypeScale();
-  const [topic, setTopic] = useState(route.params?.topic ?? "family");
+  // null = no topic chosen yet: follow the route param, else the first
+  // loaded topic — never a hardcoded "family" that may not exist.
+  const [topic, setTopic] = useState<string | null>(route.params?.topic ?? null);
 
   // A Play card can route here with a new topic while mounted — follow it.
   const paramTopic = route.params?.topic;
@@ -41,9 +43,16 @@ export default function VocabScreen({ route }: Props) {
   }, [paramTopic]);
 
   const topicsQ = useQuery<{ topics: VocabTopic[] }>("vocab-topics", api.vocabTopics);
-  const wordsQ = useQuery<VocabWord[]>(`vocab-${topic}`, () => api.vocab(topic));
-
   const topics = topicsQ.data?.topics ?? [];
+  // Default to the first real topic once the list lands.
+  React.useEffect(() => {
+    if (topic == null && topics.length > 0) setTopic(topics[0].slug);
+  }, [topic, topics]);
+  const activeTopic = topic ?? topics[0]?.slug ?? "";
+  const wordsQ = useQuery<VocabWord[]>(
+    `vocab-${activeTopic || "none"}`,
+    () => (activeTopic ? api.vocab(activeTopic) : Promise.resolve([])),
+  );
   const words = wordsQ.data;
   const loading = wordsQ.loading;
   const failed = wordsQ.failed;
@@ -86,7 +95,7 @@ export default function VocabScreen({ route }: Props) {
       {/* Topic selector — horizontal chips, ≥44pt touch rows nearby. */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.topics}>
         {topics.map((t) => {
-          const active = t.slug === topic;
+          const active = t.slug === activeTopic;
           return (
             <Pressable
               key={t.slug}

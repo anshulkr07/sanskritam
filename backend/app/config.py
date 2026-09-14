@@ -43,7 +43,11 @@ class Settings(BaseSettings):
     # graph, which is kept working for exactly that reason.
     tutor_provider: str = "sarvam:sarvam-105b-conversations"
     tutor_enabled: bool = True
-    tutor_max_tokens: int = 400
+    # 400 → 180: a tutor turn is 1–2 short sentences plus JSON envelope. The
+    # extra 220 tokens bought generation latency, not quality — measured as the
+    # dominant cost on the talk path alongside inline TTS. Short lines also
+    # synthesise faster downstream.
+    tutor_max_tokens: int = 180
     # Non-zero: a tutor repeating itself verbatim is the failure this replaced.
     tutor_temperature: float = 0.6
 
@@ -93,12 +97,14 @@ class Settings(BaseSettings):
     # Synthesise the tutor's line inside /conversation/turn and return it as
     # base64, instead of letting the client make a separate /speech/tts call.
     #
-    # This is a trade, not a free win: it removes one client round trip from
-    # the wait for the VOICE, but the text bubble now waits for TTS too,
-    # where before it landed as soon as the model had written the line. Which
-    # reads as faster is a question about how it feels, not about the total —
-    # flip this off and compare the `[perf] turn` lines the client logs.
-    conversation_inline_audio: bool = True
+    # Default OFF (text fast, voice late): inline removes one client round trip
+    # from the wait for the VOICE, but the text bubble then waits for TTS too —
+    # LLM (2–6s) + Bulbul (2–5s) serially before anything renders. With this
+    # off the turn returns as soon as the words exist; the client renders text
+    # immediately and fetches audio in the background via its existing
+    # playTutorAudio fallback (no new endpoint, same quota path). Flip on only
+    # for a coupled A/B against the `[perf] turn` lines the client logs.
+    conversation_inline_audio: bool = False
 
     model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
 

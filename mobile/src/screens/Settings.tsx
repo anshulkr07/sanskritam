@@ -70,11 +70,11 @@ export default function SettingsPanel() {
         <Text style={styles.sectionTitle}>Account</Text>
         <View style={styles.row}>
           <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{(learner?.display_name || displayName || "G")[0].toUpperCase()}</Text>
+            <Text style={styles.avatarText}>{((learner?.display_name || displayName || "").trim().charAt(0).toUpperCase() || "…")}</Text>
           </View>
           <View style={{ flex: 1 }}>
             <Text style={[styles.name, script("bold")]}>
-              {learner?.display_name || displayName || "Learner"}
+              {learner?.display_name || displayName || "…"}
             </Text>
             <Text style={styles.sub}>Signed in on this device</Text>
           </View>

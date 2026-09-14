@@ -142,7 +142,7 @@ export default function SessionComplete({
           </View>
           <View style={styles.stat}>
             <Text style={styles.statValue}>{correctCount}</Text>
-            <Text style={styles.statLabel}>New words</Text>
+            <Text style={styles.statLabel}>Correct</Text>
           </View>
           <View style={styles.stat}>
             <Text style={styles.statValue}>{totalCount}</Text>

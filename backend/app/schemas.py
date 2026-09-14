@@ -55,6 +55,7 @@ class LearnerProfile(BaseModel):
     display_name: str
     bridge_langs: list[str]
     sanskrit_ratio: float
+    sanskrit_ratio_setting: Optional[float] = None
     script_ratio: float
     feature_mastery: dict[str, float]
     streak: int
@@ -378,6 +379,63 @@ class ReviewItemResponse(BaseModel):
     difficulty: float = 0.3
     lapses: int = 0
     last_verdict: str = ""
+
+
+# ─── Grammar guide (Grammar-tab Learn map) ───
+
+class GuideExample(BaseModel):
+    devanagari: str
+    gloss: str = ""
+
+
+class GuideProof(BaseModel):
+    type: str  # derive | paradigm | sandhi | word-order | scansion
+    params: dict[str, Any] = {}
+
+
+class GuideSection(BaseModel):
+    id: str
+    rank: int
+    title_en: str
+    title_hi: str = ""
+    unit_ids: list[str] = []
+    feature_ids: list[str] = []
+    body_beginner: str = ""
+    body_intermediate: str = ""
+    body_advanced: str = ""
+    examples: list[GuideExample] = []
+    proof: Optional[GuideProof] = None
+
+
+class GuideResponse(BaseModel):
+    version: str
+    sections: list[GuideSection]
+
+
+# ─── Story deck (Discover Sanskrit) ───
+
+class StoryCardResponse(BaseModel):
+    id: str
+    chapter_id: str
+    rank: int = 0
+    title_en: str = ""
+    title_hi: str = ""
+    body: str = ""
+    example_dev: str = ""
+    example_iast: str = ""
+    example_gloss: str = ""
+    deep_link: str = "none"
+    deep_link_label: str = ""
+    attribution: str = ""
+
+
+class StoryChapterResponse(BaseModel):
+    id: str
+    rank: int = 0
+    title_en: str = ""
+    title_hi: str = ""
+    blurb: str = ""
+    cards: list[StoryCardResponse] = []
 
 
 # ─── Admin ───

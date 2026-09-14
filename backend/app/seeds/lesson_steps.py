@@ -177,6 +177,91 @@ GENERATED: dict[str, list[tuple[str, dict, list[str]]]] = {
                          "purusha": "Prathama", "vacana": "Eka"},
          ["PARASMAIPADA"]),
     ],
+    # ── Grammar-guide expansion (2026-09-14): full-taxonomy gap lessons.
+    # Only engine-exact (measured 2026-09-14) pairs appear here. Concept-only
+    # lessons (FEM/INDECL/SAMASA-*/KARAKA-*) deliberately have NO entry:
+    # seed_lesson_steps then leaves them explain-only, never graded (P23-2).
+    "PL": [
+        ("grid_fill", {"pratipadika": "बालक", "linga": "Pum", "blanks": 2},
+         ["PL"]),
+        ("contrast", {"pratipadika": "बालक", "linga": "Pum"}, ["PL"]),
+    ],
+    "NOM.DU": [
+        ("grid_fill", {"pratipadika": "बालक", "linga": "Pum", "blanks": 2},
+         ["NOM.DU"]),
+        ("contrast", {"pratipadika": "बालक", "linga": "Pum"}, ["NOM.DU"]),
+    ],
+    "ACC.DU": [
+        ("grid_fill", {"pratipadika": "बालक", "linga": "Pum", "blanks": 2},
+         ["ACC.DU"]),
+        ("contrast", {"pratipadika": "बालक", "linga": "Pum"}, ["ACC.DU"]),
+    ],
+    "ACC.PL": [
+        ("grid_fill", {"pratipadika": "बालक", "linga": "Pum", "blanks": 2},
+         ["ACC.PL"]),
+        ("contrast", {"pratipadika": "बालक", "linga": "Pum"}, ["ACC.PL"]),
+    ],
+    "LOC.PL": [
+        ("grid_fill", {"pratipadika": "बालक", "linga": "Pum", "blanks": 2},
+         ["LOC.PL"]),
+        ("contrast", {"pratipadika": "बालक", "linga": "Pum"}, ["LOC.PL"]),
+    ],
+    "PRES.1PL": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lat",
+                         "purusha": "Uttama", "vacana": "Bahu"}, ["PRES.1PL"]),
+        ("derive_next", {"dhatu": "भू", "lakara": "Lat",
+                         "purusha": "Uttama", "vacana": "Bahu"}, ["PRES.1PL"]),
+    ],
+    "PRES.2PL": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lat",
+                         "purusha": "Madhyama", "vacana": "Bahu"}, ["PRES.2PL"]),
+        ("derive_next", {"dhatu": "भू", "lakara": "Lat",
+                         "purusha": "Madhyama", "vacana": "Bahu"}, ["PRES.2PL"]),
+    ],
+    "PRES.3PL": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Bahu"}, ["PRES.3PL"]),
+        ("derive_next", {"dhatu": "लिख्", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Bahu"}, ["PRES.3PL"]),
+    ],
+    "PRES.3DU": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Dvi"}, ["PRES.3DU"]),
+        ("derive_next", {"dhatu": "भू", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Dvi"}, ["PRES.3DU"]),
+    ],
+    "IMP.2SG": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lot",
+                         "purusha": "Madhyama", "vacana": "Eka"}, ["IMP.2SG"]),
+        ("derive_next", {"dhatu": "लिख्", "lakara": "Lot",
+                         "purusha": "Madhyama", "vacana": "Eka"}, ["IMP.2SG"]),
+    ],
+    "FUT.3SG": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lrt",
+                         "purusha": "Prathama", "vacana": "Eka"}, ["FUT.3SG"]),
+        ("derive_next", {"dhatu": "भू", "lakara": "Lrt",
+                         "purusha": "Prathama", "vacana": "Eka"}, ["FUT.3SG"]),
+    ],
+    "PARASMAIPADA": [
+        ("derive_next", {"dhatu": "पठ्", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Eka"},
+         ["PARASMAIPADA"]),
+        ("derive_next", {"dhatu": "लिख्", "lakara": "Lat",
+                         "purusha": "Prathama", "vacana": "Eka"},
+         ["PARASMAIPADA"]),
+    ],
+    "VISARGA-SANDHI": [
+        ("sandhi_split", {"joined": "रामश्च"}, ["VISARGA-SANDHI"]),
+        ("sandhi_join", {}, ["VISARGA-SANDHI"]),
+    ],
+    "ANUSVARA-SANDHI": [
+        ("sandhi_split", {"joined": "गङ्गोदकम्"}, ["ANUSVARA-SANDHI"]),
+        ("sandhi_join", {}, ["ANUSVARA-SANDHI"]),
+    ],
+    "CONSONANT-SANDHI": [
+        ("sandhi_split", {"joined": "तथेति"}, ["CONSONANT-SANDHI"]),
+        ("sandhi_join", {}, ["CONSONANT-SANDHI"]),
+    ],
 }
 
 

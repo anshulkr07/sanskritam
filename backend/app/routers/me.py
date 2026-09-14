@@ -12,12 +12,18 @@ router = APIRouter()
 
 
 def _profile(learner: Learner) -> LearnerProfile:
+    effective = learner.sanskrit_ratio if learner.sanskrit_ratio is not None else 0.3
+    setting = learner.sanskrit_ratio_setting
+    if setting is None:
+        # Legacy rows predate the ceiling column: the effective value IS the ceiling.
+        setting = effective
     return LearnerProfile(
         id=learner.id,
         display_name=learner.display_name,
         bridge_langs=learner.bridge_langs or [],
-        sanskrit_ratio=learner.sanskrit_ratio or 0.3,
-        script_ratio=learner.script_ratio or 0.3,
+        sanskrit_ratio=effective,
+        sanskrit_ratio_setting=setting,
+        script_ratio=learner.script_ratio if learner.script_ratio is not None else 0.3,
         feature_mastery=learner.feature_mastery or {},
         streak=learner.streak or 0,
         voice_minutes_used=learner.voice_minutes_used or 0.0,
@@ -26,10 +32,14 @@ def _profile(learner: Learner) -> LearnerProfile:
 
 
 def _model(learner: Learner) -> dict:
+    effective = learner.sanskrit_ratio if learner.sanskrit_ratio is not None else 0.3
+    setting = learner.sanskrit_ratio_setting
+    if setting is None:
+        setting = effective
     return {
-        "sanskrit_ratio": learner.sanskrit_ratio or 0.3,
-        "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
-        "script_ratio": learner.script_ratio or 0.3,
+        "sanskrit_ratio": effective,
+        "sanskrit_ratio_setting": setting,
+        "script_ratio": learner.script_ratio if learner.script_ratio is not None else 0.3,
         "feature_mastery": learner.feature_mastery or {},
         "streak": learner.streak or 0,
         "bridge_langs": learner.bridge_langs or [],

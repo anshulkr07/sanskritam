@@ -45,6 +45,8 @@ async def get_progress_history(
             "date": r.date,
             "xp": r.xp,
             "attempts": r.attempts,
+            "conversation_turns": r.conversation_turns or 0,
+            "pronunciation_attempts": r.pronunciation_attempts or 0,
             "goal_met": r.goal_met,
         }
         for r in rows

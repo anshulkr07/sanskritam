@@ -149,7 +149,13 @@ def test_seeded_examples_engine_derived(client):
     assert len(lessons) >= 11  # 10 Units 1–3 + the U6 sandhi lesson
     for summary in lessons:
         steps = client.get(f"/lessons/{summary['id']}/steps", headers=h).json()
-        assert len(steps) >= 2, summary["feature_id"]
+        # Concept-only lessons (FEM/INDECL/SAMASA-*/KARAKA-*) are explain-only
+        # by design (P23-2: never grade what the engine cannot mark).
+        assert len(steps) >= 1, summary["feature_id"]
+        if len(steps) == 1:
+            assert steps[0]["kind"] == "explain", summary["feature_id"]
+        else:
+            assert len(steps) >= 2, summary["feature_id"]
         lesson = client.get(f"/lessons/{summary['feature_id']}", headers=h).json()
         for ex in lesson["examples"]:
             der = ex.get("derivation")
@@ -334,8 +340,9 @@ def test_lessons_list_and_filter(client):
     all_lessons = client.get("/lessons", headers=h).json()
     u6 = client.get("/lessons?unit_id=u6", headers=h).json()
     assert all_lessons and u6
-    assert {l["feature_id"] for l in u6} == {"VOWEL-SANDHI"}
-    sandhi = u6[0]
+    assert {l["feature_id"] for l in u6} == {"VOWEL-SANDHI", "VISARGA-SANDHI",
+                                            "ANUSVARA-SANDHI", "CONSONANT-SANDHI"}
+    sandhi = next(l for l in u6 if l["feature_id"] == "VOWEL-SANDHI")
     assert set(sandhi["features"]) == {"VOWEL-SANDHI", "VISARGA-SANDHI",
                                        "ANUSVARA-SANDHI", "CONSONANT-SANDHI"}
 

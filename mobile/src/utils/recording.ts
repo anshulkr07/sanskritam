@@ -20,7 +20,10 @@ export interface RecorderLike {
 
 export async function settledRecordingUri(
   recorder: RecorderLike,
-  timeoutMs = 800,
+  // 800 → 400: the encoder flush is 1–2 ticks (20ms) in practice; the old
+  // 800ms cap spent most of a slow turn doing nothing. Timeout still hands
+  // back whatever exists so the upload reports the real failure.
+  timeoutMs = 400,
 ): Promise<string | null> {
   let FileSystem: any;
   try {

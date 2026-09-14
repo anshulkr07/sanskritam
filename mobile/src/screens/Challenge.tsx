@@ -89,6 +89,15 @@ export default function ChallengeScreen({ navigation, route }: Props) {
   const [submitError, setSubmitError] = useState(false);
   // U3-4: dual_correct fires dvivacana-prathama (once, ever).
   const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
+  // Real streak for the completion screen — fetched when the session ends so
+  // the banner reflects the backend streak, not a hardcoded 0.
+  const [finalStreak, setFinalStreak] = useState<number | null>(null);
+  useEffect(() => {
+    if (sessionDone) {
+      setFinalStreak(null);
+      api.progressStreak().then((s) => setFinalStreak(s.streak)).catch(() => setFinalStreak(null));
+    }
+  }, [sessionDone]);
 
   // Distractor pool for the word bank — every other target sentence in this
   // register, fetched once. A retry/failure just leaves the pool empty and
@@ -202,7 +211,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
         correctCount={correctCount}
         totalCount={SESSION_LENGTH}
         xpEarned={xp}
-        streakDays={0}
+        streakDays={finalStreak ?? 0}
         onOneMore={() => {
           setCompleted(0);
           setCorrectCount(0);
@@ -363,6 +372,11 @@ export default function ChallengeScreen({ navigation, route }: Props) {
         verdict={result?.verdict ?? null}
         abstained={result?.abstained}
         diagnosis={result?.diagnosis}
+        grammarNote={
+          typeof result?.grammar_note === "object" && result?.grammar_note !== null
+            ? String((result.grammar_note as Record<string, unknown>).note ?? "")
+            : null
+        }
         targetSanskrit={challenge.target_sanskrit}
         targetIast={challenge.target_iast}
         continueLabel={continueLabel}

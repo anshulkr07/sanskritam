@@ -14,8 +14,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
 from app.auth import require_learner
+from app.db import get_db
 from app.models import Learner
 from app.services import exercise_gen
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/exercises")
 
@@ -53,9 +55,21 @@ async def generate_exercise(
 @router.post("/grade")
 async def grade_exercise(
     req: GradeRequest,
-    _learner: Learner = Depends(require_learner),
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
 ):
     try:
-        return exercise_gen.grade(req.kind, req.params, req.seed, req.answer)
+        result = exercise_gen.grade(req.kind, req.params, req.seed, req.answer)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    # Standalone practice still moves the daily goal bar + calendar.
+    from app.services.activity import record_activity, xp_for_challenge_verdict
+    record_activity(
+        db,
+        learner,
+        xp=xp_for_challenge_verdict(
+            result.get("verdict", "unsure"), bool(result.get("abstained"))),
+        attempts=1,
+    )
+    db.commit()
+    return result

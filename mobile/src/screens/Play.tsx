@@ -106,7 +106,9 @@ export default function PlayScreen({ navigation }: Props) {
     if (mode.target === "wordOrder") {
       navigation.navigate("WordOrder", {});
     } else if (mode.target === "paradigm") {
-      navigation.navigate("Paradigm", { word: "देव", kind: "noun" });
+      // No demo word: the table needs a real looked-up word. Grammar is the
+      // lookup surface; Paradigm without a word only shows an empty state.
+      navigation.navigate("Grammar" as never);
     } else if (mode.target === "vocab") {
       navigation.navigate("Vocab", {});
     } else if (mode.target === "dailyWord") {

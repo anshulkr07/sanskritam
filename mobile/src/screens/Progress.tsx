@@ -6,6 +6,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,6 +20,7 @@ import { api, type ProgressDaily, type ProgressDay, type ProgressStreak } from "
 import { haptics } from "../services/haptics";
 import {
   ACHIEVEMENTS,
+  SPARSHA_25,
   getSparshaCoverage,
   getUnlocked,
 } from "../services/achievements";
@@ -26,7 +28,6 @@ import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
 import { useAuth } from "../store/auth";
-import type { TabScreenProps } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { spring as springCfg } from "../motion";
 
@@ -161,10 +162,19 @@ function StreakCalendar({ days }: { days: ProgressDay[] }) {
     const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
     const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
     const rec = byDate.get(key);
+    // Any recorded activity counts as "practice done" — XP, attempts,
+    // conversation turns, or pronunciation tries. An unsure-only day still
+    // shows the learner showed up (XP stays 0, correctly earning nothing).
+    const active =
+      !!rec &&
+      ((rec.xp ?? 0) > 0 ||
+        (rec.attempts ?? 0) > 0 ||
+        (rec.conversation_turns ?? 0) > 0 ||
+        (rec.pronunciation_attempts ?? 0) > 0);
     cells.push({
       date: key,
       day: String(d.getDate()),
-      active: !!rec && rec.xp > 0,
+      active,
       goal: !!rec && rec.goal_met,
       isToday: i === 0,
     });
@@ -191,14 +201,20 @@ function StreakCalendar({ days }: { days: ProgressDay[] }) {
 }
 
 // ── Main screen ───────────────────────────────────────────────────────
-
-export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
+// Lives in the left drawer now (not a tab): consulted, not lived in. Takes
+// no navigation props — every navigator (drawer today) can host it.
+export default function ProgressScreen() {
   const { learner, refresh } = useAuth();
   const [bumping, setBumping] = useState(false);
   // ── U9-2: real progress data (was /me-only) ──
   const [daily, setDaily] = useState<ProgressDaily | null>(null);
   const [streak, setStreak] = useState<ProgressStreak | null>(null);
   const [history, setHistory] = useState<ProgressDay[]>([]);
+  // Loading flags so the screen never flashes fake zeros: null/[] alone
+  // cannot distinguish "still loading" from "genuinely empty".
+  const [dailyLoaded, setDailyLoaded] = useState(false);
+  const [streakLoaded, setStreakLoaded] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   const [repairing, setRepairing] = useState(false);
   const [repairMsg, setRepairMsg] = useState<string | null>(null);
   // U10-3: three silent catches used to leave permanent skeletons. Count the
@@ -211,16 +227,32 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
 
   const loadProgress = useCallback(() => {
     setLoadsFailed(0);
-    api.progressDaily().then(setDaily).catch(() => setLoadsFailed((n) => n + 1));
-    api.progressStreak().then(setStreak).catch(() => setLoadsFailed((n) => n + 1));
-    api.progressHistory(35).then(setHistory).catch(() => setLoadsFailed((n) => n + 1));
+    setDailyLoaded(false);
+    setStreakLoaded(false);
+    setHistoryLoaded(false);
+    // /me holds ratios + mastery; the bars below hold XP + calendar. Refresh
+    // both together so the screen never shows a stale profile next to fresh
+    // bars (that staleness is what read as "mock data").
+    refresh().catch(() => {});
+    api.progressDaily().then((d) => { setDaily(d); setDailyLoaded(true); }).catch(() => { setLoadsFailed((n) => n + 1); setDailyLoaded(true); });
+    api.progressStreak().then((s) => { setStreak(s); setStreakLoaded(true); }).catch(() => { setLoadsFailed((n) => n + 1); setStreakLoaded(true); });
+    api.progressHistory(35).then((h) => { setHistory(h); setHistoryLoaded(true); }).catch(() => { setLoadsFailed((n) => n + 1); setHistoryLoaded(true); });
     getUnlocked().then(setUnlocked).catch(() => {});
     getSparshaCoverage().then((s) => setSparshaCount(s.length)).catch(() => {});
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     loadProgress();
   }, [loadProgress]);
+
+  // Progress goes stale behind other tabs (a lesson writes mastery + XP
+  // while this screen is unfocused). Refetch on focus so the bars always
+  // reflect what the learner just did.
+  useFocusEffect(
+    useCallback(() => {
+      loadProgress();
+    }, [loadProgress]),
+  );
 
   // U3-4: a 7-day streak unlocks sapta-dina the moment Progress sees it.
   useEffect(() => {
@@ -269,7 +301,7 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
     haptics.press();
     setBumping(true);
     try {
-      const next = Math.min(1, (learner.script_ratio || 0) + 0.1);
+      const next = Math.min(1, (learner.script_ratio ?? 0) + 0.1);
       await api.updateRatio({ script_ratio: next });
       await refresh();
     } finally {
@@ -287,63 +319,101 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
     </View>
   );
 
+  const avatarLetter = (learner.display_name || "?").trim().charAt(0).toUpperCase() || "?";
+  const bridgeLabel = learner.bridge_langs?.length ? learner.bridge_langs.join(" · ") : "—";
+  // Never flash fake zeros: while /progress/streak is loading show "—";
+  // only fall back to /me once the streak fetch has failed/loaded.
+  const streakText = streakLoaded ? `${streak?.streak ?? learner.streak ?? "—"}` : "—";
+  const sanskritText = learner.sanskrit_ratio == null ? "—" : `${Math.round(learner.sanskrit_ratio * 100)}%`;
+  const scriptText = learner.script_ratio == null ? "—" : `${Math.round(learner.script_ratio * 100)}%`;
+  const freezeText = streakLoaded ? `${streak?.freezes ?? "—"} / ${streak?.max_freezes ?? "—"}` : "— / —";
+  const freezeCount = streakLoaded ? (streak?.freezes ?? 0) : 0;
+  const freezeDisabled = repairing || !streakLoaded || freezeCount <= 0;
+
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={[]}>
       <ScrollView contentContainerStyle={styles.body}>
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{learner.display_name[0].toUpperCase()}</Text>
+            <Text style={styles.avatarText}>{avatarLetter}</Text>
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.name}>{learner.display_name}</Text>
-            <Text style={styles.langs}>{learner.bridge_langs.join(" · ")}</Text>
+            <Text style={styles.name}>{learner.display_name || "Learner"}</Text>
+            <Text style={styles.langs}>{bridgeLabel}</Text>
           </View>
         </View>
 
-        {/* Stat row */}
+        {/* Stat row — streak comes from /progress/streak (the writer is the
+            adaptive engine); "—" while it loads, never a fake 0. */}
         <View style={styles.statRow}>
-          {stat("Streak", `${learner.streak}`, color.saffron, "flame")}
-          {stat("Sãskṛta", `${Math.round((learner.sanskrit_ratio || 0) * 100)}%`, color.tutor)}
-          {stat("Script", `${Math.round((learner.script_ratio || 0) * 100)}%`, color.ok)}
+          {stat("Streak", streakText, color.saffron, "flame")}
+          {stat("Sãskṛta", sanskritText, color.tutor)}
+          {stat("Script", scriptText, color.ok)}
         </View>
 
-        {/* Code-switch dial (U4-3) */}
+        {/* Code-switch dial (U4-3) — fill is the effective ratio, the marker
+            is the learner's ceiling from /me (never the same value twice). */}
         <CodeSwitchDial
-          sanskritRatio={learner.sanskrit_ratio || 0}
-          sanskritRatioSetting={learner.sanskrit_ratio || 0}
+          sanskritRatio={learner.sanskrit_ratio ?? 0}
+          sanskritRatioSetting={
+            learner.sanskrit_ratio_setting ?? learner.sanskrit_ratio ?? 0
+          }
         />
 
-        {/* Daily goal — real progress, not a bare number (U9-2) */}
-        {daily && (
-          <View style={styles.dialCard}>
-            <Text style={styles.dialTitle}>Today's goal</Text>
-            <View style={styles.dialTrack}>
-              <View
-                style={{
-                  height: 12,
-                  borderRadius: 6,
-                  backgroundColor: color.saffron,
-                  width: `${Math.min(100, daily.goal_xp ? (daily.xp / daily.goal_xp) * 100 : 0)}%`,
-                }}
-              />
-            </View>
-            <Text style={styles.dialHint}>
-              {daily.xp} / {daily.goal_xp} XP {daily.goal_met ? "· goal met ✓" : ""}
-            </Text>
+        {/* Daily goal — real progress from /progress/daily (U9-2). Always
+            rendered so a slow fetch reads as loading, never as missing. */}
+        <View style={styles.dialCard}>
+          <Text style={styles.dialTitle}>Today's goal</Text>
+          <View
+            style={styles.dialTrack}
+            accessible
+            accessibilityRole="progressbar"
+            accessibilityLabel={
+              daily
+                ? `${daily.xp} of ${daily.goal_xp} XP today`
+                : dailyLoaded
+                  ? "Couldn't load today's progress"
+                  : "Loading today's progress"
+            }
+          >
+            <View
+              style={{
+                height: 12,
+                borderRadius: 6,
+                backgroundColor: color.saffron,
+                width: `${daily ? Math.min(100, daily.goal_xp ? (daily.xp / daily.goal_xp) * 100 : 0) : 0}%`,
+              }}
+            />
           </View>
-        )}
+          <Text style={styles.dialHint}>
+            {daily
+              ? `${daily.xp} / ${daily.goal_xp} XP${daily.goal_met ? " · goal met ✓" : daily.xp === 0 ? " · practice to earn XP" : ""}`
+              : dailyLoaded
+                ? "Couldn't load today's progress."
+                : "Loading today's progress…"}
+          </Text>
+        </View>
 
         {/* Streak calendar — real activity history (U3-2 / U9-2) */}
         <Text style={styles.sectionTitle}>Last 35 days</Text>
-        <StreakCalendar days={history} />
+        {!historyLoaded ? (
+          <Text style={styles.dialHint}>Loading your days…</Text>
+        ) : (
+          <StreakCalendar days={history} />
+        )}
+        {historyLoaded && history.length === 0 && loadsFailed === 0 && (
+          <Text style={styles.dialHint}>
+            No practice recorded yet — your days will fill in here as you learn.
+          </Text>
+        )}
 
         {/* Freeze / repair — explained BEFORE it fires (U3-2 / P13-3) */}
         <View style={styles.dialCard}>
           <View style={styles.dialRow}>
             <Ionicons name="shield-outline" size={18} color={color.saffron} />
             <Text style={styles.dialTitle}>Streak freezes</Text>
-            <Text style={styles.freezeCount}>{streak?.freezes ?? 0} / {streak?.max_freezes ?? 2}</Text>
+            <Text style={styles.freezeCount}>{freezeText}</Text>
           </View>
           <Text style={styles.dialHint}>
             A missed day can be repaired within 48 hours using one freeze. You have these before you ever
@@ -351,11 +421,11 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           </Text>
           <Pressable
             onPress={repair}
-            disabled={repairing || (streak?.freezes ?? 0) <= 0}
-            style={[styles.repairBtn, (streak?.freezes ?? 0) <= 0 && styles.repairBtnDisabled]}
+            disabled={freezeDisabled}
+            style={[styles.repairBtn, freezeDisabled && styles.repairBtnDisabled]}
             accessibilityRole="button"
             accessibilityLabel="Use a streak freeze"
-            accessibilityState={{ disabled: (streak?.freezes ?? 0) <= 0, busy: repairing }}
+            accessibilityState={{ disabled: freezeDisabled, busy: repairing }}
           >
             <Text style={styles.repairBtnText}>{repairing ? "Repairing…" : "Use a freeze"}</Text>
           </Pressable>
@@ -375,7 +445,7 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           {ACHIEVEMENTS.map((a) => {
             const isOut = !!unlocked[a.id];
             const sub =
-              a.id === "sparsha-pancaka" && !isOut ? `${sparshaCount} / 25 sounds tried` : a.hint;
+              a.id === "sparsha-pancaka" && !isOut ? `${sparshaCount} / ${SPARSHA_25.length} sounds tried` : a.hint;
             return (
               <View
                 key={a.id}
@@ -404,7 +474,7 @@ export default function ProgressScreen(_props: TabScreenProps<"Progress">) {
           <View style={styles.dialTrack}>
             <View
               style={{
-                width: `${Math.round((learner.script_ratio || 0) * 100)}%`,
+                width: `${Math.round((learner.script_ratio ?? 0) * 100)}%`,
                 height: 10,
                 borderRadius: 5,
                 backgroundColor: color.ok,

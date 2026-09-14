@@ -44,17 +44,24 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
   const ep = route?.params ?? {};
   const effDhatu = dhatu ?? (ep.kind === "verb" ? ep.word : undefined);
   const effPratipadika = pratipadika ?? (ep.kind === "noun" ? ep.word : undefined);
+  const hasWord = !!(effDhatu || effPratipadika);
   const [data, setData] = useState<Paradigm | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(hasWord);
   const [openCell, setOpenCell] = useState<ParadigmCell | null>(null);
 
   useEffect(() => {
+    if (!hasWord) {
+      setData(null);
+      setLoading(false);
+      return;
+    }
     let alive = true;
     setLoading(true);
     const p = effDhatu
       ? api.paradigm({ dhatu: effDhatu, lakara: lakara ?? "Lat" })
-      : api.paradigm({ pratipadika: effPratipadika ?? "देव", linga: linga ?? "Pum" });
+      : api.paradigm({ pratipadika: effPratipadika as string, linga: linga ?? "Pum" });
     p.then((d) => alive && setData(d))
+      .catch(() => alive && setData(null))
       .finally(() => alive && setLoading(false));
     return () => {
       alive = false;
@@ -62,6 +69,14 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [effDhatu, effPratipadika]);
 
+  if (!hasWord) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.heading}>No word chosen</Text>
+        <Text style={styles.muted}>Look up a word in Grammar to see its full table here.</Text>
+      </View>
+    );
+  }
   if (loading) {
     return <View style={styles.center}><Text style={styles.muted}>Loading…</Text></View>;
   }
@@ -74,7 +89,7 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.heading}>
-        {title ?? (isVerb ? `${dhatu ?? ""} — present` : `${pratipadika ?? "देव"} — declension`)}
+        {title ?? (isVerb ? `${effDhatu ?? ""} — present` : `${effPratipadika ?? ""} — declension`)}
       </Text>
 
       {/* Header row */}

@@ -30,6 +30,10 @@ interface VerdictSheetProps {
   verdict: Verdict | null;
   abstained?: boolean;
   diagnosis?: string;
+  /** P9-3 grammar_note from POST /attempts — explains the MEANING of the
+   * missed ending on off_by_one (derivation answers the form). Shown only
+   * on a confident grammatical miss, never on unsure. */
+  grammarNote?: string | null;
   targetSanskrit?: string;
   targetIast?: string;
   continueLabel: string;
@@ -48,6 +52,7 @@ export default function VerdictSheet({
   verdict,
   abstained,
   diagnosis,
+  grammarNote,
   targetSanskrit,
   targetIast,
   continueLabel,
@@ -107,6 +112,12 @@ export default function VerdictSheet({
               ? "I couldn't tell confidently — no penalty. Try listening again and repeating."
               : diagnosis || "Let's move on."}
           </Text>
+          {!isUnsure && !!grammarNote && (
+            <View style={styles.grammarNote}>
+              <Text style={styles.grammarNoteLabel}>Why this ending?</Text>
+              <Text style={styles.grammarNoteText}>{grammarNote}</Text>
+            </View>
+          )}
 
           {showTarget && !!targetSanskrit && (
             <View style={styles.target}>
@@ -142,6 +153,14 @@ const styles = StyleSheet.create({
   body: { padding: space.lg },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, marginBottom: space.xs },
   diagnosis: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.ink, lineHeight: 22 },
+  grammarNote: {
+    marginTop: space.sm,
+    backgroundColor: color.surface,
+    borderRadius: radius.md,
+    padding: space.sm,
+  },
+  grammarNoteLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronDeep, marginBottom: 2 },
+  grammarNoteText: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.ink, lineHeight: 20 },
   target: { marginTop: space.md },
   targetHint: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: 4 },
   targetSanskrit: { fontSize: font.sizes.lg, color: color.ink },

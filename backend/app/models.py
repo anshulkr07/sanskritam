@@ -856,3 +856,65 @@ class VideoItem(Base):
     __table_args__ = (
         UniqueConstraint("unit_id", "youtube_id", name="uq_video_unit_youtube"),
     )
+
+
+class StoryChapter(Base):
+    """One chapter of the Sanskrit story deck (Discover Sanskrit).
+
+    The swipeable story that takes a learner from "what is Sanskrit?" to
+    sandhi/samāsa/kāraka. Chapters are the section headers; the teaching
+    lives in ``StoryCard`` rows. Read-only content: reading a card writes
+    nothing — no mastery, no review item — so the deck stays outside the
+    grading contracts (adaptive.py stays frozen).
+
+    Ids are stable strings (``s0``..``s6``), seeded by
+    ``seeds/story_cards.py`` and safe for the client to persist as progress.
+    """
+
+    __tablename__ = "story_chapters"
+
+    id = Column(String(16), primary_key=True)            # "s0".."s6"
+    rank = Column(Integer, nullable=False, default=0)    # order in the deck
+    title_en = Column(String(128), default="")
+    title_hi = Column(String(128), default="")
+    blurb = Column(Text, default="")   # one line: what this chapter buys you
+    created_at = Column(DateTime, default=_utcnow)
+
+    cards = relationship("StoryCard", back_populates="chapter",
+                         order_by="StoryCard.rank",
+                         cascade="all, delete-orphan")
+
+
+class StoryCard(Base):
+    """One swipeable card of the story deck.
+
+    A card is one idea in ≤120 words: title, short body, one optional
+    Sanskrit example (Devanāgarī + lipi-derived IAST + gloss), and an
+    optional dive-deeper link into a screen that already exists
+    (``deep_link`` is a route name from the client's whitelist, or
+    ``"none"``). ``attribution`` is a ``content_sources`` registry key —
+    attribution stays a join, never free text (P23-4a rule).
+    """
+
+    __tablename__ = "story_cards"
+
+    id = Column(String(64), primary_key=True)  # stable: "s0c1".. — client progress keys
+    chapter_id = Column(String(16), ForeignKey("story_chapters.id"),
+                        nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=0)  # order within the chapter
+    title_en = Column(String(256), default="")
+    title_hi = Column(String(256), default="")
+    body = Column(Text, default="")  # the idea, ≤120 words
+    example_dev = Column(Text, default="")    # Devanagari example (may be "")
+    example_iast = Column(Text, default="")   # lipi-derived at seed time
+    example_gloss = Column(Text, default="")  # bridge-language gloss
+    deep_link = Column(String(32), default="none")  # route name or "none"
+    deep_link_label = Column(String(128), default="")  # button text ("See the mouth-map")
+    attribution = Column(String(64), default="original")  # registry key
+    created_at = Column(DateTime, default=_utcnow)
+
+    chapter = relationship("StoryChapter", back_populates="cards")
+
+    __table_args__ = (
+        UniqueConstraint("chapter_id", "rank", name="uq_story_chapter_rank"),
+    )

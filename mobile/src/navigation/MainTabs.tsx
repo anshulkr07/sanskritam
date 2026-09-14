@@ -1,7 +1,9 @@
 // The bottom tab bar — the app's "pages" (U8-1). Six tabs:
-// Home · Path · Talk · Play · Grammar · Progress.
-// Shloka and Varṇamālā are NOT tabs anymore — they are stack screens reached
-// from Home cards (U8-2). This file is wrapped in a left drawer (AppDrawer).
+// Home · Path · Talk · Play · Grammar · Read.
+// Shloka and Varṇamālā are NOT tabs — they are stack screens reached
+// from Home cards (U8-2). Progress is NOT a tab either — it lives in the
+// left drawer next to Settings. This file is wrapped in a left drawer
+// (AppDrawer).
 //
 // Six-tab width rule: below 360dp OR at font scale ≥1.5 we render icons only
 // (with an accessibilityLabel on every tab) so a label never truncates to an
@@ -25,7 +27,7 @@ import GrammarScreen from "../screens/Grammar";
 import HomeScreen from "../screens/Home";
 import PathScreen from "../screens/Path";
 import PlayScreen from "../screens/Play";
-import ProgressScreen from "../screens/Progress";
+import ReaderScreen from "../screens/Reader";
 import { haptics } from "../services/haptics";
 import { color, font } from "../theme";
 import type { MainTabParamList } from "./types";
@@ -38,7 +40,7 @@ const ICONS: Record<keyof MainTabParamList, { on: IoniconsIconName; off: Ionicon
   Conversation: { on: "chatbubbles", off: "chatbubbles-outline" },
   Play: { on: "game-controller", off: "game-controller-outline" },
   Grammar: { on: "school", off: "school-outline" },
-  Progress: { on: "bar-chart", off: "bar-chart-outline" },
+  Read: { on: "book", off: "book-outline" },
 };
 
 const LABEL: Record<keyof MainTabParamList, string> = {
@@ -47,7 +49,7 @@ const LABEL: Record<keyof MainTabParamList, string> = {
   Conversation: "Talk",
   Play: "Play",
   Grammar: "Grammar",
-  Progress: "Progress",
+  Read: "Read",
 };
 
 export default function MainTabs() {
@@ -96,7 +98,7 @@ export default function MainTabs() {
       <Tab.Screen name="Conversation" component={ConversationScreen} options={{ tabBarLabel: LABEL.Conversation }} />
       <Tab.Screen name="Play" component={PlayScreen} options={{ tabBarLabel: LABEL.Play }} />
       <Tab.Screen name="Grammar" component={GrammarScreen} options={{ tabBarLabel: LABEL.Grammar }} />
-      <Tab.Screen name="Progress" component={ProgressScreen} options={{ tabBarLabel: LABEL.Progress }} />
+      <Tab.Screen name="Read" component={ReaderScreen} options={{ tabBarLabel: LABEL.Read }} />
     </Tab.Navigator>
   );
 }
