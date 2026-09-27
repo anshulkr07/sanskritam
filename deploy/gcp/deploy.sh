@@ -114,7 +114,13 @@ done
 # deploy — the guard is against `set -u` on an empty expansion, not a config).
 SECRET_FLAGS=()
 if [ "${#SECRET_MOUNTS[@]}" -gt 0 ]; then
-  SECRET_FLAGS=(--set-secrets="$(IFS=,; echo "${SECRET_MOUNTS[*]}")")
+  # --update-secrets, never --set-secrets: --set-secrets REPLACES the whole
+  # mount list, so a run whose .env.deploy holds only GOOGLE_CLIENT_ID leaves
+  # only that secret mounted. Seen 2026-09-15: revision 00027 lost DATABASE_URL,
+  # SARVAM_API_KEY, OPENROUTER_API_KEY and ADMIN_TOKEN, and production fell
+  # back to an in-container SQLite with the default admin token. Updating
+  # mounts what this file has and keeps everything already mounted.
+  SECRET_FLAGS=(--update-secrets="$(IFS=,; echo "${SECRET_MOUNTS[*]}")")
 fi
 
 # ── 1b. Let Cloud Run's default runtime SA read the secrets (idempotent).
@@ -146,12 +152,32 @@ if [ -n "${GCS_AUDIO_BUCKET:-}" ]; then
     --member="serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com" \
     --role=roles/storage.objectAdmin >/dev/null 2>&1 || true
   AUDIO_ENV=",AUDIO_STORAGE=gcs,GCS_AUDIO_BUCKET=${GCS_AUDIO_BUCKET},CDN_BASE_URL=${CDN_BASE_URL:-}"
+elif [ "${AUDIO_STORAGE:-}" = "r2" ]; then
+  # Cloudflare R2 (2026-09-16) — zero-egress object store. Account id + S3
+  # keys are WRITE-only creds; reads are served directly from R2_BASE_URL.
+  # Env holds them; Optional: promote account/keys to a Secret Manager secret
+  # named "r2-credentials" later if you want them out of plain env.
+  AUDIO_ENV=",AUDIO_STORAGE=r2,R2_ACCOUNT_ID=${R2_ACCOUNT_ID:-},R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID:-},R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY:-},R2_BUCKET=${R2_BUCKET:-sanskritam},R2_BASE_URL=${R2_BASE_URL:-}"
 else
   AUDIO_ENV=""
 fi
 
+# ── 1d. Optional plain settings, passed only when set in .env.deploy:
+#       LEGAL_CONTACT_EMAIL, LEGAL_ENTITY_NAME   shown on /privacy and
+#                                   /delete-account (Play requires both pages)
+#       QUOTA_DAILY_BUDGET_INR       service-wide rupees/day ceiling (code
+#                                   default 300; 0 disables)
+EXTRA_ENV=""
+for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR; do
+  if [ -n "${!var:-}" ]; then
+    EXTRA_ENV="${EXTRA_ENV},${var}=${!var}"
+  fi
+done
+
 # ── 2. Deploy (buildpacks via --source; Dockerfile in repo root is used
-#       automatically when present) ────────────────────────────────────────
+#       automatically when present). --update-env-vars for the same reason as
+#       --update-secrets above: --set-env-vars would wipe every variable this
+#       run doesn't mention, such as the audio bucket settings. ──────────────
 gcloud run deploy "$SERVICE" \
   --project="$PROJECT_ID" \
   --region="$REGION" \
@@ -163,7 +189,7 @@ gcloud run deploy "$SERVICE" \
   --max-instances=2 \
   --timeout=120s \
   --allow-unauthenticated \
-  --set-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}" \
+  --update-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}${EXTRA_ENV}" \
   "${SECRET_FLAGS[@]}"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────

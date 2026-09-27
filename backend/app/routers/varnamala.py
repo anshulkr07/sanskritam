@@ -141,7 +141,7 @@ async def get_varnamala_full():
 
 
 @router.get("/progress", response_model=VarnamalaProgressResponse)
-async def get_varnamala_progress(
+def get_varnamala_progress(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):

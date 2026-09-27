@@ -105,3 +105,111 @@ def test_unknown_enum_member_warns_and_defaults(caplog):
     # Valid members resolve silently.
     assert _enum_member(Linga, "Napumsaka", Linga.Pum) is Linga.Napumsaka
     assert _enum_member(Linga, "Stri", Linga.Pum) is Linga.Stri
+
+
+# ─── 2026-09-15: feminine stems, exact roots, the rest of the engine ───
+# Every expected form below was measured live on vidyut 0.4.0.
+
+def _singular_column(stem, linga, **kw):
+    rows = prakriya.paradigm(pratipadika=stem, linga=linga, **kw)["rows"]
+    return [row[0]["form"] for row in rows], rows[0][2]["form"]
+
+
+def test_feminine_a_stem_declines_with_nyap():
+    sg, nom_pl = _singular_column("लता", "Stri")
+    assert sg == ["लता", "लताम्", "लतया", "लतायै", "लतायाः", "लतायाः", "लतायाम्", "लते"]
+    assert nom_pl == "लताः"
+
+
+def test_feminine_i_stem_declines_with_nyap():
+    sg, nom_pl = _singular_column("नदी", "Stri")
+    assert sg[:3] == ["नदी", "नदीम्", "नद्या"]
+    assert nom_pl == "नद्यः"
+
+
+def test_visarga_type_feminines_stay_basic():
+    for stem, nom in [("लक्ष्मी", "लक्ष्मीः"), ("श्री", "श्रीः"), ("वधू", "वधूः"), ("धी", "धीः")]:
+        assert prakriya.derive(pratipadika=stem, linga="Stri")["result"] == nom, stem
+    assert prakriya.derive(pratipadika="स्त्री", linga="Stri")["result"] == "स्त्री"
+
+
+def test_stem_type_override():
+    assert prakriya.derive(pratipadika="लता", linga="Stri", stem_type="basic")["result"] == "लताः"
+
+
+@pytest.mark.parametrize("root,form", [
+    ("वद्", "वदति"), ("वन्द्", "वन्दते"), ("गम्", "गच्छति"), ("स्था", "तिष्ठति"),
+    ("सेव्", "सेवते"), ("कृ", "करोति"), ("जन्", "जायते"), ("अस्", "अस्ति"),
+    ("लभ्", "लभते"), ("दृश्", "पश्यति"), ("नी", "नयति"),
+    # ज्ञा is also spelled plainly in gaṇa 1 (ज्ञाति); the usual sense must win.
+    ("ज्ञा", "जानाति"),
+])
+def test_root_lookup_resolves_the_intended_root(root, form):
+    assert form in prakriya.derive_forms(dhatu=root, lakara="Lat",
+                                         purusha="Prathama", vacana="Eka")
+
+
+def test_gana_and_upadesha_pin_the_root():
+    assert prakriya.derive(aupadeshika="vada~", gana="Bhvadi")["result"] == "वदति"
+    assert prakriya.derive(dhatu="वद्", gana="Nope")["result"] == ""
+
+
+def test_passive_voice():
+    assert prakriya.derive(dhatu="पठ्", prayoga="Karmani")["result"] == "पठ्यते"
+    assert "क्रियते" in prakriya.derive_forms(dhatu="कृ", prayoga="Karmani")
+
+
+def test_causative_and_desiderative():
+    assert "गमयति" in prakriya.derive_forms(dhatu="गम्", sanadi=["Nic"])
+    assert prakriya.derive(dhatu="पा", sanadi=["San"])["result"] == "पिपासति"
+    assert prakriya.derive(dhatu="गम्", sanadi=["Bogus"])["result"] == ""
+
+
+def test_prefixes():
+    assert prakriya.derive(dhatu="गम्", prefixes=["आ"])["result"] == "आगच्छति"
+    assert "उत्तिष्ठति" in prakriya.derive_forms(dhatu="स्था", prefixes=["उद्"])
+
+
+@pytest.mark.parametrize("kw,form", [
+    (dict(dhatu="गम्", krt="ktvA"), "गत्वा"),
+    (dict(dhatu="गम्", krt="ktvA", prefixes=["आ"]), "आगत्य"),
+    (dict(dhatu="पठ्", krt="tumun"), "पठितुम्"),
+    (dict(dhatu="गम्", krt="kta", linga="Pum"), "गतः"),
+    (dict(dhatu="गम्", krt="ktavatu", linga="Pum"), "गतवान्"),
+    (dict(dhatu="कृ", krt="tavya", linga="Napumsaka"), "कर्तव्यम्"),
+    (dict(dhatu="हृ", krt="GaY", prefixes=["प्र"], linga="Pum"), "प्रहारः"),
+])
+def test_krdanta(kw, form):
+    assert form in prakriya.derive_forms(**kw)
+
+
+@pytest.mark.parametrize("kw,form", [
+    (dict(pratipadika="रघु", taddhita="aR", linga="Pum"), "राघवः"),
+    (dict(pratipadika="कुन्ती", taddhita="Qak", linga="Pum"), "कौन्तेयः"),
+    (dict(pratipadika="मनुष्य", taddhita="tva", linga="Napumsaka"), "मनुष्यत्वम्"),
+    (dict(pratipadika="भग", taddhita="matup", linga="Pum"), "भगवान्"),
+])
+def test_taddhita(kw, form):
+    assert form in prakriya.derive_forms(**kw)
+
+
+def test_unknown_suffix_name_degrades_to_empty():
+    assert prakriya.derive(dhatu="गम्", krt="nope")["result"] == ""
+    assert prakriya.derive(pratipadika="गुरु", taddhita="nope")["result"] == ""
+
+
+def test_expect_picks_the_optional_form():
+    for want in ("देवात्", "देवाद्"):
+        assert prakriya.derive(pratipadika="देव", vibhakti="Panchami", expect=want)["result"] == want
+
+
+def test_routes_expose_the_new_params(client):
+    def result(**params):
+        return client.get("/grammar/derive", params=params).json()["result"]
+
+    assert result(pratipadika="लता", linga="Stri", vibhakti="Trtiya") == "लतया"
+    assert result(dhatu="गम्", prefixes="आ") == "आगच्छति"
+    assert result(dhatu="गम्", krt="ktvA") == "गत्वा"
+    assert result(dhatu="पठ्", prayoga="Karmani") == "पठ्यते"
+    rows = client.get("/grammar/paradigm", params={"pratipadika": "लता", "linga": "Stri"}).json()["rows"]
+    assert rows[2][0]["form"] == "लतया"

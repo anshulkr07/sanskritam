@@ -40,6 +40,7 @@ from app.grading.analyzer import (
 )
 from app.services import chandas, prakriya, sandhi
 from app.services.iast import to_iast
+from app.services.word_lookup import VACANA_BY_NUMBER, VIBHAKTI_BY_CASE
 
 logger = logging.getLogger("shabd.ask_engine")
 
@@ -97,10 +98,10 @@ def _derive_word_form(word: str, parsed: dict) -> Optional[dict]:
         stem_dev = _iast_to_dev(stem)
         if not stem_dev:
             continue
-        vib = {"NOM": "Prathama", "ACC": "Dvitiya", "INSTR": "Trtiya",
-               "DAT": "Chaturthi", "ABL": "Panchami", "GEN": "Shashthi",
-               "LOC": "Saptami", "VOC": "Sambodhana"}.get(case)
-        vac = {"SG": "Eka", "DU": "Dvi", "PL": "Bahu"}.get(number)
+        # Shared with the Word Lab lookup, which carries vidyut's own member
+        # names (this map once said Chaturthi/Shashthi and derived nominatives).
+        vib = VIBHAKTI_BY_CASE.get(case)
+        vac = VACANA_BY_NUMBER.get(number)
         if vib is None or vac is None:
             continue
         best = None

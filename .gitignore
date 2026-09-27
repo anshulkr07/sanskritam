@@ -59,3 +59,8 @@ backend/app.db.bak-*
 
 # Google OAuth client secret JSONs — never commit
 Client IDs/
+
+# Native build output of local Expo modules
+mobile/modules/*/android/build/
+mobile/modules/*/android/.gradle/
+mobile/modules/*/ios/build/

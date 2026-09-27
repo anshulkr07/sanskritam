@@ -11,6 +11,10 @@ _TMPDIR = tempfile.mkdtemp(prefix="shabd-test-")
 os.environ["DB_PATH"] = os.path.join(_TMPDIR, "test.db")
 os.environ["ANALYZER"] = "vidyut"  # exercise the real analyzer in tests
 os.environ["ADMIN_TOKEN"] = "test-admin"
+# The service-wide spend budget sums usage rows from EVERY learner, and the
+# whole suite shares one database — left on, one test's seeded usage would 429
+# unrelated tests. test_daily_budget.py turns it on per test.
+os.environ["QUOTA_DAILY_BUDGET_INR"] = "0"
 
 # The suite never talks to a real vendor and never reads a developer's .env.
 #

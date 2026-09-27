@@ -39,7 +39,7 @@ def _to_response(v: VideoItem) -> VideoItemResponse:
 
 
 @router.get("/videos", response_model=list[VideoItemResponse])
-async def read_videos(
+def read_videos(
     unit_id: str | None = Query(None, description="filter to one unit, e.g. u1"),
     lesson_id: str | None = Query(None, description="resolve the lesson's unit"),
     lang: str | None = Query(None, description="teaching medium: en | hi"),

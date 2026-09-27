@@ -48,7 +48,7 @@ def canon_report(db: Session) -> list[dict]:
 
 
 @router.get("/canon")
-async def get_canon(
+def get_canon(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):

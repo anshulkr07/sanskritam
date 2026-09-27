@@ -18,7 +18,7 @@ router = APIRouter(prefix="/progress")
 
 
 @router.get("/history")
-async def get_progress_history(
+def get_progress_history(
     days: int = Query(35, ge=1, le=90),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
@@ -54,7 +54,7 @@ async def get_progress_history(
 
 
 @router.get("/daily")
-async def get_daily_progress(
+def get_daily_progress(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
@@ -82,7 +82,7 @@ async def get_daily_progress(
 
 
 @router.get("/streak")
-async def get_streak(
+def get_streak(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):

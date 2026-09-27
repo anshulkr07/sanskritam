@@ -61,7 +61,7 @@ async def run_notify(
 
 
 @router.get("/admin/notify/ignored/{learner_id}")
-async def get_ignored(
+def get_ignored(
     learner_id: str,
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),

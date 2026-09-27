@@ -247,7 +247,7 @@ class EscapeLogResponse(BaseModel):
 
 
 @router.get("/conversation/scenarios", response_model=ScenarioListResponse)
-async def list_scenarios(
+def list_scenarios(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
@@ -991,7 +991,7 @@ async def explain_line(
 
 
 @router.get("/conversation/escape-log", response_model=EscapeLogResponse)
-async def get_escape_log(
+def get_escape_log(
     scenario_id: str = Query(..., description="Scenario ID to filter by"),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

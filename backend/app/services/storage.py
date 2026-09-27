@@ -100,6 +100,66 @@ class GCSStorage(StorageBackend):
         return f"https://storage.googleapis.com/{self._bucket.name}/audio/{safe_path}"
 
 
+class R2Storage(StorageBackend):
+    """Cloudflare R2 backend (2026-09-16) — S3-compatible, zero egress fees.
+
+    Selected by ``audio_storage="r2"``. R2 never bills egress (unlike GCS),
+    so audio serving is the bulletproof $0 path at any scale. Reads are served
+    directly from the bucket's public/CDN base URL (r2_base_url); the account
+    id + S3 keys are only needed for WRITES (store/exists). The boto3 client
+    is imported lazily so dev/test installs without it keep working.
+    """
+
+    def __init__(self, account_id: str, access_key_id: str, secret_access_key: str,
+                 bucket: str, base_url: str = "") -> None:
+        if not (account_id and access_key_id and secret_access_key):
+            raise ValueError("R2Storage needs account_id + keys (R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY)")
+        if not bucket:
+            raise ValueError("R2Storage needs a bucket name (R2_BUCKET)")
+        self._endpoint = f"https://{account_id}.r2.cloudflarestorage.com"
+        self._base = (base_url or "").rstrip("/")
+        self._bucket = bucket
+        try:
+            import boto3  # type: ignore
+        except ImportError as e:
+            raise RuntimeError(
+                "boto3 is not installed; add it to requirements.txt to use R2Storage"
+            ) from e
+        self._client = boto3.client(
+            "s3",
+            endpoint_url=self._endpoint,
+            aws_access_key_id=access_key_id,
+            aws_secret_access_key=secret_access_key,
+            region_name="auto",
+        )
+
+    def store(self, data: bytes, path: str) -> str:
+        safe_path = path.replace("..", "").lstrip("/")
+        self._client.put_object(
+            Bucket=self._bucket,
+            Key=f"audio/{safe_path}",
+            Body=data,
+            ContentType="audio/wav",
+            CacheControl="public, max-age=31536000, immutable",
+        )
+        return self.url(safe_path)
+
+    def exists(self, path: str) -> bool:
+        safe_path = path.replace("..", "").lstrip("/")
+        try:
+            self._client.head_object(Bucket=self._bucket, Key=f"audio/{safe_path}")
+            return True
+        except Exception:
+            return False
+
+    def url(self, path: str) -> str:
+        safe_path = path.replace("..", "").lstrip("/")
+        if self._base:
+            return f"{self._base}/audio/{safe_path}"
+        # No CDN configured: fall back to the R2 public (dev) URL root.
+        return f"https://pub.{self._bucket}.r2.dev/audio/{safe_path}"
+
+
 def content_hash(data: bytes) -> str:
     """Return a content-hashed filename (immutable asset naming)."""
     return hashlib.sha256(data).hexdigest()[:32]
@@ -120,7 +180,18 @@ def get_storage() -> StorageBackend:
             bucket = (settings.gcs_audio_bucket or "").strip()
         except Exception:
             backend, bucket = "local", ""
-        if backend == "gcs" and bucket:
+        if backend == "r2":
+            try:
+                _storage = R2Storage(
+                    account_id=getattr(settings, "r2_account_id", ""),
+                    access_key_id=getattr(settings, "r2_access_key_id", ""),
+                    secret_access_key=getattr(settings, "r2_secret_access_key", ""),
+                    bucket=getattr(settings, "r2_bucket", "sanskritam"),
+                    base_url=getattr(settings, "r2_base_url", ""),
+                )
+            except Exception:
+                _storage = LocalStorage()
+        elif backend == "gcs" and bucket:
             try:
                 _storage = GCSStorage(bucket, getattr(settings, "cdn_base_url", ""))
             except Exception:

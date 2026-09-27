@@ -107,6 +107,14 @@ def run_import(payload: dict, live: bool) -> dict:
         for v in verses:
             ref = v.get("ref", "")
             if ref in existing_refs:
+                # Preserve existing Sanskrit, IDs and authored meanings. Only
+                # fill translation gaps on rows with this exact source reference.
+                if live:
+                    for existing in db.query(Shloka).filter_by(source_ref=ref).all():
+                        for field in ("translation_hi", "translation_en"):
+                            incoming = (v.get(field) or "").strip()
+                            if incoming and not (getattr(existing, field) or "").strip():
+                                setattr(existing, field, incoming)
                 skipped_dup += 1
                 continue
             row = build_row(v.get("devanagari", ""), ref)
@@ -120,6 +128,8 @@ def run_import(payload: dict, live: bool) -> dict:
                     date=(next_date + datetime.timedelta(days=added)).isoformat(),
                     audio_url="",  # §6: never TTS a corpus import
                     register=register,
+                    translation_hi=(v.get("translation_hi") or "").strip(),
+                    translation_en=(v.get("translation_en") or "").strip(),
                     **row,
                 ))
                 db.flush()

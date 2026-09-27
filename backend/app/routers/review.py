@@ -18,7 +18,7 @@ router = APIRouter(prefix="/review")
 
 
 @router.get("/due")
-async def read_due(
+def read_due(
     limit: int = Query(20, ge=1, le=100),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

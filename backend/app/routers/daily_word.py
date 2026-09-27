@@ -20,7 +20,7 @@ router = APIRouter(prefix="/daily-word")
 
 
 @router.get("", response_model=DailyWordPuzzle)
-async def get_daily_word(
+def get_daily_word(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):

@@ -36,11 +36,7 @@ from app.services import lessons as lesson_service
 router = APIRouter()
 
 
-def _step_count(db: Session, lesson_id: str) -> int:
-    return db.query(LessonStep).filter(LessonStep.lesson_id == lesson_id).count()
-
-
-def _summary(db: Session, lesson) -> LessonSummary:
+def _summary(lesson, step_counts: dict[str, int]) -> LessonSummary:
     return LessonSummary(
         id=lesson.id,
         feature_id=lesson.feature_id,
@@ -50,7 +46,7 @@ def _summary(db: Session, lesson) -> LessonSummary:
         title_en=lesson.title_en or "",
         title_hi=lesson.title_hi or "",
         register=lesson.register or "laukika",
-        step_count=_step_count(db, lesson.id),
+        step_count=step_counts.get(lesson.id, 0),
         attribution=lesson.attribution or "",
     )
 
@@ -69,16 +65,22 @@ def _unit_progress(lesson_summaries: list[LessonSummary],
 
 
 @router.get("/units", response_model=list[UnitResponse])
-async def read_units(
+def read_units(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """The eleven units, ranked, each with its lessons and per-unit progress."""
+    """The eleven units, ranked, each with its lessons and per-unit progress.
+
+    A fixed four statements (auth, step counts, lessons, units) however many
+    lessons exist — never a query per unit or per lesson."""
     mastery = learner.feature_mastery if isinstance(learner.feature_mastery, dict) else {}
+    counts = lesson_service.step_counts(db)
+    by_unit: dict[str, list[LessonSummary]] = {}
+    for lesson in lesson_service.list_lessons(db):
+        by_unit.setdefault(lesson.unit_id, []).append(_summary(lesson, counts))
     out = []
     for unit in lesson_service.list_units(db):
-        lessons = [_summary(db, l) for l in
-                   lesson_service.list_lessons(db, unit.id)]
+        lessons = by_unit.get(unit.id, [])
         out.append(UnitResponse(
             id=unit.id,
             rank=unit.rank or 0,
@@ -93,17 +95,18 @@ async def read_units(
 
 
 @router.get("/lessons", response_model=list[LessonSummary])
-async def read_lessons(
+def read_lessons(
     unit_id: str | None = Query(None, description="filter to one unit, e.g. u2"),
     learner: Learner = Depends(require_learner),  # noqa: F841 — auth-bound like /shlokas
     db: Session = Depends(get_db),
 ):
     """List lessons, optionally filtered by unit."""
-    return [_summary(db, l) for l in lesson_service.list_lessons(db, unit_id)]
+    counts = lesson_service.step_counts(db)
+    return [_summary(l, counts) for l in lesson_service.list_lessons(db, unit_id)]
 
 
 @router.get("/lessons/{lesson_id}/steps", response_model=list[StepResponse])
-async def read_steps(
+def read_steps(
     lesson_id: str,
     learner: Learner = Depends(require_learner),  # noqa: F841
     db: Session = Depends(get_db),
@@ -120,7 +123,7 @@ async def read_steps(
     )
     out = []
     for s in steps:
-        served = lesson_service.serve_step(db, lesson_id, s.rank) or {}
+        served = lesson_service.serve_step(db, lesson_id, s.rank, step=s) or {}
         out.append(StepResponse(
             rank=s.rank,
             kind=s.kind,
@@ -163,7 +166,7 @@ async def attempt_step(
 
 
 @router.get("/lessons/{feature_id}", response_model=LessonResponse)
-async def read_lesson(
+def read_lesson(
     feature_id: str,
     learner: Learner = Depends(require_learner),  # noqa: F841
     db: Session = Depends(get_db),

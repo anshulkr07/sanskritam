@@ -62,7 +62,7 @@ class WritingItemResponse(BaseModel):
 
 
 @router.get("/items", response_model=list[WritingItemResponse])
-async def list_writing_items(
+def list_writing_items(
     tier: int | None = None,
     _learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

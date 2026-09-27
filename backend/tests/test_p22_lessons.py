@@ -63,10 +63,13 @@ def test_missing_lesson_is_honest_404(client):
 
 def test_verify_example_drops_engine_gaps():
     """The equality check drops confident-wrong engine output, not just
-    empty output — this is what keeps वद्→वन्दते out of lessons."""
+    empty output: a real form that is not the claimed one (the future
+    पठिष्यति for a present-tense पठति) keeps the example out of lessons.
+    (Until 2026-09-15 the case pinned here was वद्→वन्दते, a root-lookup bug
+    since fixed in prakriya._find_dhatu.)"""
     assert verify_example({
-        "devanagari": "वदति",
-        "derivation_params": {"dhatu": "वद्", "lakara": "Lat",
+        "devanagari": "पठति",
+        "derivation_params": {"dhatu": "पठ्", "lakara": "Lrt",
                               "purusha": "Prathama", "vacana": "Eka"},
     }) is None
     ok = verify_example({

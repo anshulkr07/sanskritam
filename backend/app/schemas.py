@@ -129,6 +129,8 @@ class ShlokaResponse(BaseModel):
     word_breakdown: list[dict[str, Any]]
     features: list[str]
     audio_url: str
+    translation_hi: str = ""
+    translation_en: str = ""
 
 
 # ─── Grammar ───
@@ -240,6 +242,25 @@ class ParadigmCell(BaseModel):
 class ParadigmResponse(BaseModel):
     rows: list[list[ParadigmCell]]  # 8 vibhakti × 3 vacana (nouns), or lakāra grid (verbs)
     kind: str  # subanta | tinanta
+
+
+# ─── Word Lab lookup (grammar-tab rebuild) ───
+
+class WordLookupCandidate(BaseModel):
+    kind: str  # noun | pronoun | verb | indeclinable
+    lemma: str  # stem or root, Devanagari
+    lemma_iast: str
+    linga: Optional[str] = None
+    lakara: Optional[str] = None
+    readings: list[dict[str, str]]  # {vibhakti, vacana} or {purusha, vacana}
+    plain: dict[str, str]  # {en, hi}
+    derive_params: dict[str, str]  # GET /grammar/derive query for this exact form
+
+
+class WordLookupResponse(BaseModel):
+    word: str
+    iast: str
+    candidates: list[WordLookupCandidate]  # each re-derives `word` exactly
 
 
 # ─── Curriculum (P22) ───
@@ -381,35 +402,64 @@ class ReviewItemResponse(BaseModel):
     last_verdict: str = ""
 
 
-# ─── Grammar guide (Grammar-tab Learn map) ───
+# ─── Grammar guide (Grammar tab: chapters → topics, English + Hindi) ───
+# Learner-facing strings are {"en", "hi"} pairs; Sanskrit carries lipi IAST.
+# Topic blocks travel as plain dicts — their shape is enforced by the builder
+# and the content tests in app/services/grammar_guide, not duplicated here.
 
-class GuideExample(BaseModel):
-    devanagari: str
-    gloss: str = ""
-
-
-class GuideProof(BaseModel):
-    type: str  # derive | paradigm | sandhi | word-order | scansion
-    params: dict[str, Any] = {}
-
-
-class GuideSection(BaseModel):
+class GuideChapter(BaseModel):
     id: str
     rank: int
-    title_en: str
-    title_hi: str = ""
-    unit_ids: list[str] = []
+    title: dict[str, str]
+    title_sa: str
+    title_iast: str = ""
+    blurb: dict[str, str]
+    icon: str = ""
+    topic_ids: list[str]
+
+
+class GuideTopicSummary(BaseModel):
+    id: str
+    chapter_id: str
+    rank: int
+    level: int  # 1 beginner · 2 intermediate · 3 advanced
+    title: dict[str, str]
+    title_sa: str
+    title_iast: str = ""
+    summary: dict[str, str]
+    minutes: int = 3
     feature_ids: list[str] = []
-    body_beginner: str = ""
-    body_intermediate: str = ""
-    body_advanced: str = ""
-    examples: list[GuideExample] = []
-    proof: Optional[GuideProof] = None
+    has_quiz: bool = False
 
 
-class GuideResponse(BaseModel):
+class GuideGlossaryItem(BaseModel):
+    id: str
+    term_sa: str
+    term_iast: str = ""
+    meaning: dict[str, str]
+    topic_id: str = ""
+    audio_url: str = ""
+
+
+class GuideIndexResponse(BaseModel):
     version: str
-    sections: list[GuideSection]
+    chapters: list[GuideChapter]
+    topics: list[GuideTopicSummary]
+    glossary: list[GuideGlossaryItem]
+
+
+class GuideTopicResponse(GuideTopicSummary):
+    chapter: dict[str, Any]
+    term: Optional[dict[str, Any]] = None
+    blocks: list[dict[str, Any]]
+    deeper: list[dict[str, Any]] = []
+    quiz: list[dict[str, Any]] = []
+    proofs: list[dict[str, Any]] = []
+    terms: list[GuideGlossaryItem] = []
+    related: list[dict[str, Any]] = []
+    prev: Optional[dict[str, Any]] = None
+    next: Optional[dict[str, Any]] = None
+    attribution: str = "original"
 
 
 # ─── Story deck (Discover Sanskrit) ───

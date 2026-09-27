@@ -19,7 +19,7 @@ router = APIRouter()
 
 
 @router.get("/reader/{tier}", response_model=list[ReaderPassageResponse])
-async def read_tier(
+def read_tier(
     tier: int,
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

@@ -148,6 +148,10 @@ class Shloka(Base):
     features = Column(JSON, default=list)
     audio_url = Column(String(512), default="")
     register = Column(String(16), default="classical")
+    # P21-5: per-verse translations carried by corpus imports (Gītā et al.).
+    # "" = not translated yet; attribution lives per text in canon_texts.
+    translation_hi = Column(Text, nullable=False, default="", server_default="")
+    translation_en = Column(Text, nullable=False, default="", server_default="")
 
 
 class Attempt(Base):

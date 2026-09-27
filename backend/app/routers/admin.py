@@ -59,7 +59,7 @@ async def create_challenge(
 
 
 @router.get("/admin/challenges", response_model=list[ChallengeResponse])
-async def list_admin_challenges(
+def list_admin_challenges(
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
@@ -81,7 +81,7 @@ async def list_admin_challenges(
 
 
 @router.get("/admin/metrics")
-async def get_metrics(
+def get_metrics(
     hours: int = Query(24, ge=1, le=168),
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),
@@ -132,7 +132,7 @@ def writing_abstention(db: Session) -> dict:
 
 
 @router.get("/admin/content-wells")
-async def get_content_wells(
+def get_content_wells(
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
@@ -147,7 +147,7 @@ async def get_content_wells(
 
 
 @router.get("/admin/errors")
-async def get_recent_errors(
+def get_recent_errors(
     limit: int = Query(50, ge=1, le=200),
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),

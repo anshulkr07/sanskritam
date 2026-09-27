@@ -119,10 +119,26 @@ class Settings(BaseSettings):
 
     # Voice quotas — rolling window per learner
     quota_enabled: bool = True
-    quota_tts_chars_per_day: int = 20_000     # ~₹20/day/learner at Bulbul rates
-    quota_stt_seconds_per_day: int = 900      # 15 minutes of speech
+    quota_tts_chars_per_day: int = 20_000     # ~₹60/day/learner at Bulbul v3's ₹30 per 10K chars
+    quota_stt_seconds_per_day: int = 900      # 15 minutes of speech (~₹7.50 at ₹30/hour)
     quota_llm_calls_per_day: int = 400       # LLM edge-router + explain calls
     quota_window_hours: int = 24
+
+    # Service-wide spend ceiling across ALL learners, same rolling window
+    # (owner decision 2026-09-15: ₹300/day). Per-learner quotas do not bound
+    # spend on their own — every new install is a new learner with a fresh
+    # allowance. 0 disables. Prices are Sarvam list prices on 2026-09-15.
+    quota_daily_budget_inr: float = 300.0
+    price_tts_inr_per_char: float = 30 / 10_000   # Bulbul v3: ₹30 per 10K characters
+    price_stt_inr_per_second: float = 30 / 3_600  # speech-to-text: ₹30 per hour
+    # sarvam-105b: ~2K input + ~180 output tokens at ₹29.28 / ₹73.20 per 1M
+    # tokens ≈ ₹0.07 a call; rounded up so the ceiling errs early, not late.
+    price_llm_inr_per_call: float = 0.10
+
+    # Public legal pages (/privacy, /delete-account). Google Play requires a
+    # privacy policy URL and an account-deletion URL; both name a contact.
+    legal_entity_name: str = "Sanskritam"
+    legal_contact_email: str = ""
 
     # Writing recognition (P20-3) — thresholds live in config, never in a
     # literal. The photo path biases HARD toward unsure (P20-4): OCR on a
@@ -150,16 +166,25 @@ class Settings(BaseSettings):
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False
 
-    # Audio object store (P8-5 — Cloud Run kept, owner decision 2026-09-08).
+    # Audio object store
+# Audio object store (P8-5 — Cloud Run kept, owner decision 2026-09-08).
     # Cloud Run's disk is ephemeral per revision, so pre-rendered WAVs must
     # live in a bucket, not on local disk. "local" = storage/audio (dev);
-    # "gcs" = Google Cloud Storage bucket below (production). The client is
-    # unaffected: LocalStorage.url() returns /audio/<path> while GCS returns
-    # the CDN URL — both are opaque strings to the app.
+    # "gcs" = Google Cloud Storage bucket below; "r2" = Cloudflare R2
+    # (zero-egress, 2026-09-16). The client is unaffected: LocalStorage.url()
+    # returns /audio/<path> while GCS/R2 return the CDN URL — both are opaque
+    # strings to the app.
     audio_storage: str = "local"
     gcs_audio_bucket: str = ""  # e.g. "sanskritam-audio"; empty = local
     cdn_base_url: str = ""  # e.g. "https://cdn.sanskritam.app"; empty = bucket URL
-
+    # Cloudflare R2 (audio_storage="r2") — S3-compatible zero-egress store.
+    # account_id + the two keys are only needed for WRITES (store/exists);
+    # reads are served directly from the bucket's public CDN URL (r2_base_url).
+    r2_account_id: str = ""
+    r2_access_key_id: str = ""
+    r2_secret_access_key: str = ""
+    r2_bucket: str = "sanskritam"
+    r2_base_url: str = ""  # public read root, e.g. "https://pub-<hash>.r2.dev"
     # Synthesise the tutor's line inside /conversation/turn and return it as
     # base64, instead of letting the client make a separate /speech/tts call.
     #

@@ -18,7 +18,7 @@ router = APIRouter()
 
 
 @router.get("/vocab/topics")
-async def vocab_topics(
+def vocab_topics(
     learner: Learner = Depends(require_learner),
 ):
     """The 10 topic slugs with titles — the selector the client renders."""
@@ -26,7 +26,7 @@ async def vocab_topics(
 
 
 @router.get("/vocab/{topic}", response_model=list[VocabWordResponse])
-async def read_vocab(
+def read_vocab(
     topic: str,
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

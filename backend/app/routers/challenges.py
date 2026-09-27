@@ -13,7 +13,7 @@ router = APIRouter()
 
 
 @router.get("/challenges/next", response_model=ChallengeResponse)
-async def get_next_challenge(
+def get_next_challenge(
     register: str = Query("laukika", pattern="^(laukika|classical)$"),
     mode: str = Query("text", pattern="^(text|audio)$"),
     learner: Learner = Depends(require_learner),
@@ -61,7 +61,7 @@ async def get_next_challenge(
 
 
 @router.get("/challenges", response_model=list[ChallengeResponse])
-async def list_challenges(
+def list_challenges(
     register: str = Query("laukika", pattern="^(laukika|classical)$"),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),

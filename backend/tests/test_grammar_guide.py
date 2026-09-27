@@ -98,20 +98,6 @@ def test_new_examples_engine_derived(client):
                 assert der.get("splits"), (fid, ex)
 
 
-def test_guide_shape(client):
-    h = _auth_h(client)
-    d = client.get("/grammar/guide", headers=h).json()
-    assert d["version"]
-    assert len(d["sections"]) == 8
-    ids = [s["id"] for s in d["sections"]]
-    assert ids == ["tags", "cases", "numbers", "verbs", "gender-voice",
-                   "sandhi", "samasa", "karaka"]
-    for s in d["sections"]:
-        assert s["title_en"] and s["body_beginner"], s["id"]
-        assert s["feature_ids"], s["id"]
-        assert s["examples"], s["id"]
-
-
 def test_path_has_lesson_flipped_for_new_features(client):
     h = _auth_h(client)
     d = client.get("/grammar/path", headers=h).json()

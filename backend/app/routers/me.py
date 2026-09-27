@@ -47,7 +47,7 @@ def _model(learner: Learner) -> dict:
 
 
 @router.get("/me", response_model=MeResponse)
-async def get_me(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+def get_me(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     """Get current learner profile + adaptive model state."""
     return MeResponse(learner=_profile(learner), model=_model(learner))
 
@@ -87,32 +87,55 @@ async def update_me(
     return MeResponse(learner=_profile(learner), model=_model(learner))
 
 
+def learner_owned_models() -> tuple:
+    """Every model whose rows belong to one learner and go with the account.
+
+    tests/test_account_deletion.py fails when a model gains a ``learners.id``
+    foreign key without being listed here. Postgres enforces those keys, so a
+    missed table does not quietly leave rows behind — it turns account
+    deletion into a 500, and Google Play requires deletion to work in-app.
+    """
+    from app.models import (
+        Attempt, ConversationSession, DailyActivity, DailyWordPlay, Entitlement,
+        NotificationSend, PronunciationAttempt, PushToken, ReviewItem, Token,
+        UsageEvent, WritingAttempt,
+    )
+
+    return (
+        UsageEvent, Token, Attempt, PronunciationAttempt, WritingAttempt,
+        ConversationSession, DailyActivity, DailyWordPlay, PushToken,
+        NotificationSend, Entitlement, ReviewItem,
+    )
+
+
 @router.delete("/me", status_code=204)
-async def delete_me(
+def delete_me(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """Hard-delete the current learner and their owned data.
+    """Hard-delete the current learner and everything they own.
 
-    - Tokens, attempts, usage_events, conversation_sessions are deleted.
+    - Conversation turns go first: they reference sessions, not the learner.
+    - Every model in ``learner_owned_models()`` is deleted.
     - EscapeLog.learner_id is set to NULL (aggregate metrics survive).
     - The learner row itself is hard-deleted.
+
+    Plain ``def``, not ``async``: ~15 statements at ~140 ms each in production
+    would otherwise block the single event loop for every other learner.
     """
-    # Nullify escape log references first (aggregate metrics are about content)
     import sqlalchemy as sa
+    from app.models import ConversationSession, ConversationTurn
+
+    # Nullify escape log references first (aggregate metrics are about content)
     db.execute(
         sa.text("UPDATE escape_logs SET learner_id = NULL WHERE learner_id = :lid"),
         {"lid": learner.id},
     )
 
-    # Delete owned rows (tokens and attempts cascade via ORM, but we do it
-    # explicitly for clarity and to handle usage_events and conversation_sessions)
-    from app.models import Attempt, ConversationSession, EscapeLog, Token, UsageEvent
-
-    db.query(UsageEvent).filter(UsageEvent.learner_id == learner.id).delete()
-    db.query(ConversationSession).filter(ConversationSession.learner_id == learner.id).delete()
-    db.query(Token).filter(Token.learner_id == learner.id).delete()
-    db.query(Attempt).filter(Attempt.learner_id == learner.id).delete()
+    session_ids = sa.select(ConversationSession.id).where(ConversationSession.learner_id == learner.id)
+    db.query(ConversationTurn).filter(ConversationTurn.session_id.in_(session_ids)).delete()
+    for model in learner_owned_models():
+        db.query(model).filter(model.learner_id == learner.id).delete()
 
     # Finally delete the learner itself
     db.delete(learner)

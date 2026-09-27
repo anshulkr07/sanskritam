@@ -160,7 +160,7 @@ async def authoring_render(
 
 
 @router.get("/scenarios")
-async def authoring_scenarios(
+def authoring_scenarios(
     _admin: bool = Depends(require_admin),
     _live: bool = Depends(require_live),
     db: Session = Depends(get_db),
@@ -213,7 +213,7 @@ class ReviewRequest(BaseModel):
 
 
 @router.get("/review")
-async def authoring_review_list(
+def authoring_review_list(
     status: Optional[str] = Query(default="pending", pattern="^(pending|approved|rejected)$"),
     _admin: bool = Depends(require_admin),
     db: Session = Depends(get_db),
@@ -280,7 +280,7 @@ async def authoring_review_submit(
 
 
 @router.get("/priorities")
-async def authoring_priorities(
+def authoring_priorities(
     _admin: bool = Depends(require_admin),
     db: Session = Depends(get_db),
 ) -> list[dict]:

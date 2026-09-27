@@ -21,7 +21,7 @@ router = APIRouter()
 
 
 @router.get("/licences", response_model=list[LicenceResponse])
-async def read_licences(
+def read_licences(
     learner: Learner = Depends(require_learner),  # noqa: F841 — auth-bound like /shlokas
     db: Session = Depends(get_db),
 ):

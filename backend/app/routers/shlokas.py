@@ -69,11 +69,13 @@ def _shloka_response(s: Shloka) -> ShlokaResponse:
         word_breakdown=s.word_breakdown or [],
         features=s.features or [],
         audio_url=s.audio_url or "",
+        translation_hi=s.translation_hi or "",
+        translation_en=s.translation_en or "",
     )
 
 
 @router.get("/shlokas", response_model=list[ShlokaResponse])
-async def list_shlokas(
+def list_shlokas(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
@@ -92,7 +94,7 @@ async def list_shlokas(
 
 
 @router.get("/shlokas/today", response_model=ShlokaResponse)
-async def get_today_shloka(
+def get_today_shloka(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):

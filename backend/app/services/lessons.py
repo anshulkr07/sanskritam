@@ -44,7 +44,9 @@ def verify_example(example: dict[str, Any]) -> Optional[dict[str, Any]]:
     params = example.get("derivation_params") or {}
     if params:
         try:
-            der = prakriya.derive(**params)
+            # expect: for a root with both ending sets (धावति/धावते) the
+            # engine must prove the form the example claims, not its first.
+            der = prakriya.derive(**{**params, "expect": params.get("expect") or dev})
         except Exception:  # noqa: BLE001 — unverifiable means dropped
             return None
         if not der or der.get("result") != dev:
@@ -102,6 +104,22 @@ def list_lessons(db: Session, unit_id: Optional[str] = None):
     return q.all()
 
 
+def step_counts(db: Session) -> dict[str, int]:
+    """Step count per lesson id, in one grouped query.
+
+    Lesson summaries used to COUNT each lesson on its own: with 151 lessons,
+    /units issued 165 statements — each one a network round trip on Postgres."""
+    from sqlalchemy import func
+
+    from app.models import LessonStep
+
+    return dict(
+        db.query(LessonStep.lesson_id, func.count())
+        .group_by(LessonStep.lesson_id)
+        .all()
+    )
+
+
 def get_step(db: Session, lesson_id: str, rank: int):
     from app.models import LessonStep
 
@@ -112,15 +130,18 @@ def get_step(db: Session, lesson_id: str, rank: int):
     )
 
 
-def serve_step(db: Session, lesson_id: str, rank: int) -> Optional[dict[str, Any]]:
+def serve_step(db: Session, lesson_id: str, rank: int,
+               step=None) -> Optional[dict[str, Any]]:
     """The ordered step, already ``generate``d where its kind is generated.
 
     The answer is never in the payload — ``grade`` rebuilds it from the
     same seed. An engine miss serves an abstention-shaped step, never a
-    broken exercise (§2.2)."""
+    broken exercise (§2.2). Pass ``step`` when it is already loaded (the
+    steps list is) to skip re-reading it by rank."""
     from app.services import exercise_gen
 
-    step = get_step(db, lesson_id, rank)
+    if step is None:
+        step = get_step(db, lesson_id, rank)
     if step is None:
         return None
     if step.kind in PRACTICE_KINDS:

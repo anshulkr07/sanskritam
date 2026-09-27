@@ -38,33 +38,31 @@ def _card_to_response(c: StoryCard) -> StoryCardResponse:
 
 
 @router.get("/story/chapters", response_model=list[StoryChapterResponse])
-async def read_story_chapters(
+def read_story_chapters(
     learner: Learner = Depends(require_learner),  # noqa: F841 — auth-bound like /units
     db: Session = Depends(get_db),
 ):
     """The deck: seven ranked chapters, each with its ranked cards."""
-    out = []
     chapters = db.query(StoryChapter).order_by(StoryChapter.rank).all()
+    # Every card in one query, grouped here — not one query per chapter.
+    cards_by_chapter: dict[str, list[StoryCard]] = {}
+    for c in db.query(StoryCard).order_by(StoryCard.chapter_id, StoryCard.rank).all():
+        cards_by_chapter.setdefault(c.chapter_id, []).append(c)
+    out = []
     for ch in chapters:
-        cards = (
-            db.query(StoryCard)
-            .filter(StoryCard.chapter_id == ch.id)
-            .order_by(StoryCard.rank)
-            .all()
-        )
         out.append(StoryChapterResponse(
             id=ch.id,
             rank=ch.rank or 0,
             title_en=ch.title_en or "",
             title_hi=ch.title_hi or "",
             blurb=ch.blurb or "",
-            cards=[_card_to_response(c) for c in cards],
+            cards=[_card_to_response(c) for c in cards_by_chapter.get(ch.id, [])],
         ))
     return out
 
 
 @router.get("/story/cards", response_model=list[StoryCardResponse])
-async def read_story_cards(
+def read_story_cards(
     chapter_id: str | None = Query(None, description="filter to one chapter, e.g. s2"),
     learner: Learner = Depends(require_learner),  # noqa: F841
     db: Session = Depends(get_db),

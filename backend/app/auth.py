@@ -19,18 +19,27 @@ def create_token(learner_id: str, db: Session) -> Token:
 
 
 def get_learner_from_token(token_value: str, db: Session) -> Optional[Learner]:
-    """Resolve a token string to a Learner or None."""
-    tok = db.query(Token).filter(Token.id == token_value).first()
-    if tok is None:
-        return None
-    return tok.learner
+    """Resolve a token string to a Learner or None.
+
+    One joined query, not token-then-learner: this runs on every authenticated
+    request, and against Postgres each statement is a network round trip."""
+    return (
+        db.query(Learner)
+        .join(Token, Token.learner_id == Learner.id)
+        .filter(Token.id == token_value)
+        .first()
+    )
 
 
-async def require_learner(
+def require_learner(
     authorization: str = Header(""),
     db: Session = Depends(get_db),
 ) -> Learner:
-    """FastAPI dependency: require a valid Bearer token, return Learner."""
+    """FastAPI dependency: require a valid Bearer token, return Learner.
+
+    Plain ``def`` on purpose: the token lookup is a blocking DB call, so it
+    must run in FastAPI's threadpool. As ``async def`` it ran on the event
+    loop and stalled every other in-flight request while the query ran."""
     scheme = "Bearer "
     if not authorization.startswith(scheme):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing or invalid auth header")
@@ -43,7 +52,7 @@ async def require_learner(
     return learner
 
 
-async def require_admin(
+def require_admin(
     x_admin_token: str = Header(""),
     db: Session = Depends(get_db),
 ) -> bool:

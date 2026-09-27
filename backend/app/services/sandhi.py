@@ -66,6 +66,19 @@ def _known(word: str) -> bool:
     return len(_kosha.get(word)) > 0
 
 
+def is_known_word(word: str) -> bool:
+    """True when a Devanagari word resolves in the kosha. False without the
+    data, and never raises — callers use it to rank, not to gate."""
+    if not word or not word.strip():
+        return False
+    try:
+        _load()
+        return bool(_kosha) and _known(_d2slp(word.strip()))
+    except Exception as e:  # noqa: BLE001 - degrade, never raise
+        logger.warning("kosha lookup failed for %r: %s", word, e)
+        return False
+
+
 def split_candidates(joined: str) -> list[dict]:
     """Return the ranked, lexical split candidates for a joined Devanagari form.
 
@@ -108,3 +121,29 @@ def split_candidates(joined: str) -> list[dict]:
     except Exception as e:  # noqa: BLE001 - degrade, never raise
         logger.warning("sandhi split failed for %r: %s", joined, e)
         return empty
+
+
+def rule_splits(joined: str) -> list[tuple[str, str]]:
+    """Every phonetically valid split of a joined form, as Devanagari pairs.
+
+    No lexicon filter — this is the sandhi rule table's own answer. The
+    grammar guide verifies its sandhi claims with it, because compound halves
+    (विद्या + आलयः's विद्या-) are stems, not dictionary words. Final visarga
+    comes back as स्/र् (रामस् + च). Never raises.
+    """
+    if not joined.strip():
+        return []
+    try:
+        _load()
+        if not _splitter:
+            return []
+        slp = _d2slp(joined.replace(" ", ""))
+        out: list[tuple[str, str]] = []
+        for i in range(1, len(slp)):
+            for sp in _splitter.split_at(slp, i):
+                if sp.is_valid:
+                    out.append((_s2d(sp.first), _s2d(sp.second)))
+        return list(dict.fromkeys(out))
+    except Exception as e:  # noqa: BLE001 - degrade, never raise
+        logger.warning("sandhi rule split failed for %r: %s", joined, e)
+        return []
