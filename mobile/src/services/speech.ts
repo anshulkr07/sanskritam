@@ -7,10 +7,40 @@ import { Platform } from "react-native";
 
 const IS_WEB = Platform.OS === "web";
 
-export function bulbulLangCode(lang: "sa" | "hi" | "en"): string {
-  // 'sa' renders hi-IN until the sa-IN beta flag lands (architecture §4.1).
-  if (lang === "en") return "en-IN";
-  return "hi-IN";
+/**
+ * A language this app can speak: Sanskrit, or any of Sarvam's ten bridge
+ * languages. Widened from `"sa" | "hi" | "en"` on 2026-09-22 when Talk became
+ * multilingual — the narrow type was not merely incomplete, it made the bug
+ * below untypeable.
+ */
+export type SpeakLang =
+  | "sa" | "en" | "hi" | "mr" | "bn" | "gu" | "pa" | "or" | "ta" | "te" | "kn" | "ml";
+
+/** Sarvam TTS code for each. */
+const BULBUL: Record<SpeakLang, string> = {
+  // Sanskrit is sent AS Sanskrit and the server picks the voice
+  // (TTS_SANSKRIT_CODE): Bulbul has no sa-IN outside beta, so today that is
+  // the Hindi voice (architecture §4.1), and flipping it once the beta lands
+  // needs no app release. Needs a backend that maps sa-IN — deploy it first.
+  // Every OTHER language uses its own voice: this function used to be
+  // `lang === "en" ? "en-IN" : "hi-IN"`, which read a Kannada or Telugu reply
+  // aloud in Hindi.
+  sa: "sa-IN",
+  en: "en-IN",
+  hi: "hi-IN",
+  mr: "mr-IN",
+  bn: "bn-IN",
+  gu: "gu-IN",
+  pa: "pa-IN",
+  or: "od-IN",   // Sarvam spells Odia "od-IN"; ISO 639-1 is "or".
+  ta: "ta-IN",
+  te: "te-IN",
+  kn: "kn-IN",
+  ml: "ml-IN",
+};
+
+export function bulbulLangCode(lang: string): string {
+  return BULBUL[lang as SpeakLang] ?? "hi-IN";
 }
 
 export interface SpeakHandle {
@@ -87,7 +117,7 @@ const hintFor = (text: string) => Math.max(1, text.length * 0.08);
 
 export async function speak(
   text: string,
-  lang: "sa" | "hi" | "en" = "sa",
+  lang: SpeakLang | string = "sa",
   pace = 1.0,
   onComplete?: () => void,
   onStart?: (durationMs: number) => void,
@@ -115,7 +145,7 @@ export async function speak(
 export async function playTutorAudio(
   url: string,
   text: string,
-  lang: "sa" | "hi" | "en" = "sa",
+  lang: SpeakLang | string = "sa",
   onComplete?: () => void,
   /**
    * Fired when audio is ACTUALLY audible, with the file's real duration.

@@ -16,6 +16,14 @@ SCORABLE_CONTRASTS: dict[str, tuple[str, ...]] = {
 }
 
 
+# Punctuation a transcriber wraps around a lone akṣara. saaras:v4 answers "त।"
+# for a spoken त where saaras:v3 answered "त" — measured 2026-09-23, and
+# compared exactly that turned most correct letters into "unsure". It says
+# nothing about how the letter was said. The visarga (ः) IS a sound, and is
+# not in this list.
+_EDGE_PUNCTUATION = "।॥.,?!;:'\"“”‘’ \t\r\n"
+
+
 def _find_contrast(ch: str) -> str | None:
     """Return the contrast class name for a character, or None."""
     for name, chars in SCORABLE_CONTRASTS.items():
@@ -33,7 +41,7 @@ def score_pronunciation(target: str, transcript: str) -> dict:
     Verdict values: correct | near | incorrect | unsure.
     """
     target = target.strip()
-    transcript = (transcript or "").strip()
+    transcript = (transcript or "").strip(_EDGE_PUNCTUATION)
 
     # Silence / empty → unsure
     if not transcript:

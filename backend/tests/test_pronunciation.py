@@ -16,6 +16,17 @@ def test_exact_match_returns_correct():
     assert result["abstained"] is False
 
 
+def test_punctuation_around_the_letter_is_not_pronunciation():
+    """saaras:v4 answers "त।" for a spoken त (v3 answered "त"). Measured
+    2026-09-23, comparing exactly turned most correct letters into "unsure"."""
+    for heard in ("त।", "त॥", " त. ", "त?", "“त”"):
+        assert score_pronunciation("त", heard)["verdict"] == "correct", heard
+    # Stripping must not launder a real substitution...
+    assert score_pronunciation("ट", "त।")["verdict"] == "incorrect"
+    # ...and the visarga is a sound, not punctuation.
+    assert score_pronunciation("क", "कः")["verdict"] != "correct"
+
+
 # ── Silence / empty ────────────────────────────────────
 
 def test_silence_returns_unsure():

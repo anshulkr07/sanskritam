@@ -371,6 +371,47 @@ export interface ConversationEdge {
   features: string[];
 }
 
+/**
+ * The correct Sanskrit, when the learner's line needed one.
+ *
+ * `roman` is generated server-side by services/iast.py, never by the model:
+ * P7-13 found 130 of 264 stored transliterations wrong when an LLM produced
+ * them. Both scripts are always populated together, or neither is.
+ */
+export interface TalkFix {
+  needed: boolean;
+  devanagari: string;
+  roman: string;
+  note_en: string;
+}
+
+/**
+ * One free-form tutor turn, as four distinct jobs rather than a sentence and
+ * its translation. Replaces the old `{devanagari, gloss}` pair on ConversationNode,
+ * which rendered as a translator because that is exactly what it was.
+ *
+ * LLM mode only — null in graph mode, where `node` still carries the turn.
+ */
+export interface TalkTurn {
+  /** What the learner said, and which languages it was in. */
+  read_back: string;
+  fix: TalkFix;
+  /** The tutor's own reply, in Sanskrit. */
+  reply_devanagari: string;
+  /** IAST of reply_devanagari. Server-generated (see TalkFix). */
+  reply_roman: string;
+  /** The same reply in the learner's own language and script. */
+  reply_native: string;
+  /** The teaching half. Always English. */
+  explain_en: string;
+  /** ISO 639-1, settled server-side from what the learner actually said. */
+  native_lang: string;
+  /** Script key -> a font, via src/services/scriptFonts.ts. */
+  native_script: string;
+  /** Which detection layer decided: script|marker|stt|llm|sticky|default. */
+  lang_source: string;
+}
+
 export interface StartResponse {
   session_id: string;
   scenario: {
@@ -382,6 +423,8 @@ export interface StartResponse {
   node: ConversationNode;
   edges: ConversationEdge[];
   mode: ConversationMode;
+  /** LLM mode: the structured opening turn. Null in graph mode. */
+  talk: TalkTurn | null;
 }
 
 /** A learner move ABOUT the conversation rather than in it. */
@@ -410,6 +453,12 @@ export interface TurnResponse {
    * a place — is never a correction.
    */
   correction: string;
+  /**
+   * LLM mode: the structured turn — read-back, fix, bilingual reply and the
+   * English explanation. Null in graph mode. Prefer this over `node`, which
+   * is kept so graph mode and older clients still render something.
+   */
+  talk: TalkTurn | null;
   /** LLM mode: the model was unreachable and this turn is a stand-in. */
   degraded: boolean;
 }
@@ -431,7 +480,10 @@ export interface TTSResponse {
 
 export interface STTResponse {
   transcript: string;
+  /** "" when auto-detect heard no language; "sa-IN" when it heard Sanskrit. */
   language_code: string;
+  /** Saaras' confidence in `language_code`, auto-detect only. Diagnostic. */
+  language_probability?: number | null;
 }
 
 // ─── Grammar proof surfaces (U7) ──────────────────────────────────────────
@@ -1022,12 +1074,29 @@ export const api = {
       { method: "POST", body: JSON.stringify({ scenario_id: scenarioId ?? null }) },
       true,
     ),
-  conversationTurn: (sessionId: string, transcript: string, edgeId?: string) =>
+  /**
+   * Submit one learner utterance.
+   *
+   * `sttLang` is the language code Saaras reported when the turn came from
+   * voice. It is a free, strong signal for romanized speech that a script
+   * scan cannot read ("naan porein" is Latin letters but Tamil), and the
+   * server folds it into its own detection. Omit it for typed input.
+   */
+  conversationTurn: (
+    sessionId: string,
+    transcript: string,
+    opts: { edgeId?: string; sttLang?: string } = {},
+  ) =>
     request<TurnResponse>(
       "/conversation/turn",
       {
         method: "POST",
-        body: JSON.stringify({ session_id: sessionId, transcript, edge_id: edgeId ?? null }),
+        body: JSON.stringify({
+          session_id: sessionId,
+          transcript,
+          edge_id: opts.edgeId ?? null,
+          stt_lang: opts.sttLang ?? null,
+        }),
       },
       true,
     ),
@@ -1065,7 +1134,20 @@ export const api = {
       true,
     ),
 
-  stt: (audio: string | Blob | Uint8Array, filename = "recording.wav", mime = "audio/wav", languageCode = "sa-IN") =>
+  /**
+   * Transcribe learner audio.
+   *
+   * Defaults to "unknown" — auto-detect — rather than a fixed language. Talk
+   * used to pin this to "sa-IN", which forced a Kannada or Telugu speaker's
+   * words through a Sanskrit model and got back mush. Plain Saaras v4
+   * auto-detect has the opposite failure (it translates spoken Sanskrit into
+   * English), so for "unknown" the server runs both and keeps the faithful
+   * one. The response's `language_code` says which language they actually
+   * spoke: "sa-IN" when it was Sanskrit.
+   *
+   * Throws ApiError 413 for a recording past Saaras' 30-second limit.
+   */
+  stt: (audio: string | Blob | Uint8Array, filename = "recording.wav", mime = "audio/wav", languageCode = "unknown") =>
     uploadSpeech(audio, filename, mime, languageCode, "transcribe"),
 
   // Ask anywhere (U11 / P19) — session-free, engine-first.

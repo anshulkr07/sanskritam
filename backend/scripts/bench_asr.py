@@ -1,4 +1,4 @@
-"""Saaras v3 ASR latency bench — p50/p95 vs the §12 live-conversation budget.
+"""Saaras ASR latency bench — p50/p95 vs the §12 live-conversation budget.
 
 Offline measurement tool, NOT request-path code.  Sizes the single live model
 call in a conversation turn (architecture.md §12: the entire live budget is
@@ -7,6 +7,11 @@ call in a conversation turn (architecture.md §12: the entire live budget is
 Usage::
 
     python scripts/bench_asr.py [--n 10] [--seconds 4] [--out results/bench_asr.json] [--synthetic]
+                                [--model saaras:v4] [--language sa-IN|unknown]
+
+``--model`` defaults to ``settings.sarvam_stt_model``. ``--language unknown``
+times what Talk actually waits for: the auto-detect and Sanskrit passes run
+together by ``services/learner_stt.py``, so the slower of two calls.
 
 What it does
     * Builds test audio: ``--synthetic`` (default-ish) synthesizes 16 kHz mono
@@ -41,6 +46,7 @@ from typing import Optional
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.config import settings  # noqa: E402
+from app.services.learner_stt import transcribe_learner  # noqa: E402
 from app.services.sarvam import SarvamClient, SarvamError  # noqa: E402 (import only — never modified)
 
 BUDGET_MS = 800
@@ -134,14 +140,26 @@ def load_audio(args: argparse.Namespace) -> tuple[list[bytes], str]:
     return [synthesize_wav(args.seconds)], "synthetic"
 
 
-async def _run_bench(client: SarvamClient, audio_clips: list[bytes], n: int, out_path: Path, source: str) -> dict:
+async def _run_bench(
+    client: SarvamClient,
+    audio_clips: list[bytes],
+    n: int,
+    out_path: Path,
+    source: str,
+    model: str,
+    language_code: str = "sa-IN",
+) -> dict:
     """Sequential round-trip timing; returns the full result document."""
     latencies: list[float] = []
     lengths: list[int] = []
     for i in range(n):
         audio = audio_clips[i % len(audio_clips)]
         t0 = time.perf_counter()
-        resp = await client.speech_to_text(audio_data=audio)  # full round trip
+        if language_code == "unknown":
+            # Talk's path: both passes, concurrently.
+            resp = await transcribe_learner(client, audio, model=model)
+        else:
+            resp = await client.speech_to_text(audio_data=audio, model=model, language_code=language_code)
         lat_ms = (time.perf_counter() - t0) * 1000.0
         latencies.append(round(lat_ms, 1))
         lengths.append(len(str(resp.get("transcript", ""))))
@@ -152,9 +170,9 @@ async def _run_bench(client: SarvamClient, audio_clips: list[bytes], n: int, out
     else:
         verdict_line = f"FAIL: p50 {stats['p50_ms']}ms exceeds {BUDGET_MS}ms budget — live conversation at risk"
     doc = {
-        "bench": "asr-saaras-v3",
-        "model": "saaras:v3",
-        "language_code": "sa-IN",
+        "bench": "asr-" + model.replace(":", "-"),
+        "model": model,
+        "language_code": language_code,
         "mode": "transcribe",
         "budget_ms": BUDGET_MS,
         "n": n,
@@ -178,7 +196,9 @@ def run_bench(args: argparse.Namespace) -> dict:
     """
     audio_clips, source = load_audio(args)
     client = SarvamClient(api_key=settings.sarvam_api_key)
-    return asyncio.run(_run_bench(client, audio_clips, args.n, Path(args.out), source))
+    return asyncio.run(_run_bench(
+        client, audio_clips, args.n, Path(args.out), source, args.model, args.language,
+    ))
 
 
 def print_table(doc: dict) -> None:
@@ -197,8 +217,12 @@ def print_table(doc: dict) -> None:
 # ── CLI ──────────────────────────────────────────────────────────────────────
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Saaras v3 ASR latency bench vs 800 ms §12 budget")
+    p = argparse.ArgumentParser(description="Saaras ASR latency bench vs 800 ms §12 budget")
     p.add_argument("--n", type=int, default=10, help="iterations (default 10)")
+    p.add_argument("--model", default=settings.sarvam_stt_model,
+                   help=f"Saaras model (default {settings.sarvam_stt_model}, from settings)")
+    p.add_argument("--language", default="sa-IN",
+                   help="language_code (default sa-IN; 'unknown' times Talk's two-pass path)")
     p.add_argument("--seconds", type=float, default=SYNTH_SECONDS, help="synthetic clip length (default 4)")
     p.add_argument("--out", default="results/bench_asr.json", help="JSON output path (default results/bench_asr.json)")
     p.add_argument(

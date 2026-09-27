@@ -11,51 +11,40 @@ from pathlib import Path
 import pytest
 
 
-def test_dry_run_makes_no_calls():
+# Environment and settings changes go through `monkeypatch`, which restores
+# them. Direct os.environ writes here used to leak SARVAM_API_KEY="mock-key"
+# into every later test, sending their unmocked code paths to the real Sarvam
+# API — see the matching note in tests/test_author_batch.py.
+
+
+def test_dry_run_makes_no_calls(monkeypatch):
     """Dry run prints estimate and exits 0 without network."""
-    os.environ["SARVAM_API_KEY"] = "mock-key"
-    sys.argv = ["challenge_batch.py", "--dry-run", "--limit", "2"]
-    try:
-        from scripts.challenge_batch import main
-        result = main()
-        assert result is None
-    finally:
-        sys.argv = sys.argv[:1]
+    monkeypatch.setenv("SARVAM_API_KEY", "mock-key")
+    monkeypatch.setattr(sys, "argv", ["challenge_batch.py", "--dry-run", "--limit", "2"])
+    from scripts.challenge_batch import main
+    result = main()
+    assert result is None
 
 
-def test_dry_run_without_key_succeeds():
+def test_dry_run_without_key_succeeds(monkeypatch):
     """Dry run works even without SARVAM_API_KEY."""
-    orig = os.environ.pop("SARVAM_API_KEY", None)
-    sys.argv = ["challenge_batch.py", "--dry-run", "--limit", "2"]
-    try:
-        from scripts.challenge_batch import main
-        result = main()
-        assert result is None
-    finally:
-        if orig:
-            os.environ["SARVAM_API_KEY"] = orig
-        sys.argv = sys.argv[:1]
+    monkeypatch.delenv("SARVAM_API_KEY", raising=False)
+    monkeypatch.setattr(sys, "argv", ["challenge_batch.py", "--dry-run", "--limit", "2"])
+    from scripts.challenge_batch import main
+    result = main()
+    assert result is None
 
 
-def test_live_without_key_fails():
+def test_live_without_key_fails(monkeypatch):
     """--live without SARVAM_API_KEY exits non-zero."""
-    orig = os.environ.pop("SARVAM_API_KEY", None)
     from app.config import settings as app_settings
-    old_key = app_settings.sarvam_api_key
-    app_settings.sarvam_api_key = ""
-    try:
-        sys.argv = ["challenge_batch.py", "--live", "--limit", "1"]
-        try:
-            from scripts.challenge_batch import main
-            main()
-            pytest.fail("Should have exited")
-        except SystemExit as e:
-            assert e.code != 0
-    finally:
-        app_settings.sarvam_api_key = old_key
-        if orig:
-            os.environ["SARVAM_API_KEY"] = orig
-        sys.argv = sys.argv[:1]
+    monkeypatch.delenv("SARVAM_API_KEY", raising=False)
+    monkeypatch.setattr(app_settings, "sarvam_api_key", "")
+    monkeypatch.setattr(sys, "argv", ["challenge_batch.py", "--live", "--limit", "1"])
+    from scripts.challenge_batch import main
+    with pytest.raises(SystemExit) as exc:
+        main()
+    assert exc.value.code != 0
 
 
 def test_estimate_printed():

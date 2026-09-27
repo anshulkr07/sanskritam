@@ -13,51 +13,44 @@ from unittest.mock import AsyncMock
 import pytest
 
 
-def test_dry_run_makes_no_calls():
+# Every environment and settings change below goes through `monkeypatch`,
+# which puts it back after the test. These used to assign os.environ directly
+# and never restore it, so SARVAM_API_KEY="mock-key" leaked into every test
+# that ran afterwards. The providers read os.environ FIRST, so a leaked key
+# made them report `configured=True`, and any code path a later test had not
+# mocked went out to the real Sarvam API — the suite's runtime swung between
+# ~50 s and over 10 minutes with the network. Found 2026-09-22 by
+# tests/test_config_env.py, which asserts the suite carries no vendor keys.
+
+
+def test_dry_run_makes_no_calls(monkeypatch):
     """The script should print estimates and exit 0 without network."""
-    os.environ["SARVAM_API_KEY"] = "mock-key"
-    sys.argv = ["author_batch.py", "--dry-run", "--slug", "greeting-a"]
-    try:
-        from scripts.author_batch import main
-        result = main()
-        assert result is None, "Dry run should return None (no calls)"
-    finally:
-        sys.argv = sys.argv[:1]
+    monkeypatch.setenv("SARVAM_API_KEY", "mock-key")
+    monkeypatch.setattr(sys, "argv", ["author_batch.py", "--dry-run", "--slug", "greeting-a"])
+    from scripts.author_batch import main
+    result = main()
+    assert result is None, "Dry run should return None (no calls)"
 
 
-def test_dry_run_without_key_succeeds():
+def test_dry_run_without_key_succeeds(monkeypatch):
     """Dry run works even without SARVAM_API_KEY."""
-    orig = os.environ.pop("SARVAM_API_KEY", None)
-    sys.argv = ["author_batch.py", "--dry-run", "--limit", "2"]
-    try:
-        from scripts.author_batch import main
-        result = main()
-        assert result is None
-    finally:
-        if orig:
-            os.environ["SARVAM_API_KEY"] = orig
-        sys.argv = sys.argv[:1]
+    monkeypatch.delenv("SARVAM_API_KEY", raising=False)
+    monkeypatch.setattr(sys, "argv", ["author_batch.py", "--dry-run", "--limit", "2"])
+    from scripts.author_batch import main
+    result = main()
+    assert result is None
 
 
-def test_live_without_key_fails():
+def test_live_without_key_fails(monkeypatch):
     """--live without SARVAM_API_KEY exits non-zero."""
-    orig = os.environ.pop("SARVAM_API_KEY", None)
     from app.config import settings as app_settings
-    old_key = app_settings.sarvam_api_key
-    app_settings.sarvam_api_key = ""
-    try:
-        sys.argv = ["author_batch.py", "--live", "--limit", "1"]
-        try:
-            from scripts.author_batch import main
-            main()
-            pytest.fail("Should have exited")
-        except SystemExit as e:
-            assert e.code != 0
-    finally:
-        app_settings.sarvam_api_key = old_key
-        if orig:
-            os.environ["SARVAM_API_KEY"] = orig
-        sys.argv = sys.argv[:1]
+    monkeypatch.delenv("SARVAM_API_KEY", raising=False)
+    monkeypatch.setattr(app_settings, "sarvam_api_key", "")
+    monkeypatch.setattr(sys, "argv", ["author_batch.py", "--live", "--limit", "1"])
+    from scripts.author_batch import main
+    with pytest.raises(SystemExit) as exc:
+        main()
+    assert exc.value.code != 0
 
 
 def test_estimate_contains_expected_fields():
@@ -81,7 +74,7 @@ def test_slug_filter_selects_one_brief():
 def test_results_file_written_on_run(tmp_path, monkeypatch):
     """Results file is written after running a brief (mock provider)."""
     monkeypatch.setattr("app.config.settings.sarvam_api_key", "mock-key")
-    os.environ["SARVAM_API_KEY"] = "mock-key"
+    monkeypatch.setenv("SARVAM_API_KEY", "mock-key")
     monkeypatch.setattr("app.config.settings.db_path", str(tmp_path / "app.db"))
 
     # Mock run_authoring at the module it's imported from

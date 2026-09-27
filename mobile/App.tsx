@@ -13,12 +13,25 @@ import {
   Baloo2_700Bold,
   Baloo2_800ExtraBold,
 } from "@expo-google-fonts/baloo-2";
+// The Sanskrit body face. Bundled eagerly because it renders the app's core
+// content on almost every screen; the learner's own Indic script is
+// registered on demand instead (src/services/scriptFonts.ts).
+//
+// Imported by its exact subpath, NOT from the package root. The root index
+// does `export const X = require(...)` for every weight at module scope, so
+// `from "@expo-google-fonts/tiro-devanagari-sanskrit"` drags the 700 KB
+// italic into the bundle for a face we never set in italic. Verified against
+// `npx expo export`: the italic disappears from the asset list this way.
+const TiroDevanagariSanskrit_400Regular = require(
+  "@expo-google-fonts/tiro-devanagari-sanskrit/400Regular/TiroDevanagariSanskrit_400Regular.ttf",
+);
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { color } from "./src/theme";
@@ -125,6 +138,7 @@ export default function App() {
     Baloo2_600SemiBold,
     Baloo2_700Bold,
     Baloo2_800ExtraBold,
+    TiroDevanagariSanskrit_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -138,6 +152,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
+        <KeyboardProvider>
         <PrefsLoader />
         <TypeScaleProvider>
           <AuthProvider>
@@ -149,6 +164,7 @@ export default function App() {
             <StatusBar style="dark" />
           </AuthProvider>
         </TypeScaleProvider>
+        </KeyboardProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );

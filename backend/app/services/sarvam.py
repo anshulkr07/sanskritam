@@ -1,4 +1,4 @@
-"""Sarvam AI API client — Bulbul v3 TTS + Saaras v3 STT.
+"""Sarvam AI API client — Bulbul v3 TTS + Saaras STT (``settings.sarvam_stt_model``).
 
 Thin async wrapper using httpx.  All API calls go through a singleton
 ``SarvamClient`` obtained via ``get_sarvam_client()``, which doubles as
@@ -67,10 +67,8 @@ class SarvamClient:
         speaker: str = "aditya",
         model: str = "bulbul:v3",
         pace: float = 1.0,
-        sample_rate: int = 24000,
+        sample_rate: int = 22050,
     ) -> str:
-        import time as _time
-        _t0 = _time.perf_counter()
         """Convert text to speech via Bulbul v3.
 
         Returns the audio as a **base64-encoded string** — the first entry of
@@ -78,14 +76,18 @@ class SarvamClient:
         the legacy ``audio``/``audio_base64`` keys are accepted as fallback).
         Callers can decode with ``base64.b64decode()`` for WAV bytes.
 
-        Note: ``sample_rate`` is currently **ignored** by bulbul:v3 — it
-        returns 22050 Hz mono regardless (probed 2026-08-29).  The param is
-        kept for forward compatibility.
+        ``sample_rate`` goes out as ``speech_sample_rate``, the field Bulbul
+        actually reads. This used to send ``sample_rate``, which Bulbul ignores
+        — that is why a 2026-08-29 probe found 22050 Hz "regardless". Probed
+        2026-09-23: ``speech_sample_rate=16000`` returns a 16 kHz WAV. The
+        default stays 22050 so learners hear exactly what they heard before.
 
         Note: Bulbul has no ``sa-IN`` outside beta — Devanagari Sanskrit text
-        renders via ``hi-IN`` (Hindi-flavored pronunciation) until the sa-IN
-        beta is enabled on the account.
+        renders via ``settings.tts_sanskrit_code`` (``hi-IN``, Hindi-flavoured
+        pronunciation) until the sa-IN beta is enabled on the account.
         """
+        import time as _time
+        _t0 = _time.perf_counter()
         client = await self._client()
         payload = {
             "text": text,
@@ -93,7 +95,7 @@ class SarvamClient:
             "speaker": speaker,
             "model": model,
             "pace": pace,
-            "sample_rate": sample_rate,
+            "speech_sample_rate": sample_rate,
         }
         resp = await client.post("/text-to-speech", json=payload)
         if resp.status_code != 200:
@@ -123,16 +125,24 @@ class SarvamClient:
         self,
         audio_data: bytes,
         language_code: str = "sa-IN",
-        model: str = "saaras:v4",
+        model: Optional[str] = None,
         mode: str = "transcribe",
         filename: str = "audio.wav",
     ) -> dict:
-        """Transcribe audio via Saaras v3.
+        """Transcribe audio via Saaras — ``settings.sarvam_stt_model`` unless given.
 
-        Returns ``{"transcript": str, "language_code": str}``.
+        Returns ``{"transcript": str, "language_code": str,
+        "language_probability": float | None}``. ``language_code`` is "" when
+        auto-detect heard no language (Saaras answers null), and
+        ``language_probability`` is only set on auto-detect ("unknown").
+
+        Do not call this with ``language_code="unknown"`` for a learner:
+        saaras:v4 translates spoken Sanskrit into English on auto-detect. Use
+        ``services.learner_stt.transcribe_learner``.
         """
         import time as _time2
         _t0 = _time2.perf_counter()
+        model = model or settings.sarvam_stt_model
         client = await self._client()
         files = {"file": (filename, audio_data, "audio/wav")}
         data = {
@@ -146,12 +156,18 @@ class SarvamClient:
 
         body = resp.json()
         logger.info(
-            "[talk] stt bytes=%d lang=%s ms=%.0f",
-            len(audio_data), language_code, (_time2.perf_counter() - _t0) * 1000,
+            "[talk] stt bytes=%d model=%s lang=%s->%s ms=%.0f",
+            len(audio_data), model, language_code, body.get("language_code"),
+            (_time2.perf_counter() - _t0) * 1000,
         )
+        # Auto-detect can answer `language_code: null`, which used to reach
+        # STTResponse (a required str) as None and 500 the request. A pinned
+        # request still falls back to the code it asked for.
+        detected = body.get("language_code") or ("" if language_code == "unknown" else language_code)
         return {
-            "transcript": body.get("transcript", ""),
-            "language_code": body.get("language_code", language_code),
+            "transcript": body.get("transcript") or "",
+            "language_code": detected,
+            "language_probability": body.get("language_probability"),
         }
 
 

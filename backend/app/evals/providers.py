@@ -73,8 +73,12 @@ class LLMResponse:
 # Override at runtime with --pricing pricing.json
 
 PRICING_INR_PER_1M: dict[str, tuple[float, float]] = {
-    "sarvam-105b": (25.0, 75.0),
-    "sarvam-105b-conversations": (25.0, 75.0),
+    # Sarvam pricing page, read 2026-09-23 (effective 2026-08-05). Cached
+    # input is ₹10.98.
+    "sarvam-105b": (29.28, 73.2),
+    "sarvam-105b-conversations": (29.28, 73.2),
+    # Retired by Sarvam 2026-08-18 — the API refuses it. Kept only so eval
+    # reports cached before then still price.
     "sarvam-30b": (10.0, 30.0),
     "gemini-2.5-flash": (26.0, 210.0),
     "gemini-2.5-pro": (105.0, 840.0),
@@ -347,11 +351,19 @@ class AnthropicProvider(Provider):
 
 # ─── Construction ───
 
-def build_provider(ref: str, api_key: Optional[str] = None) -> Provider:
+def build_provider(
+    ref: str,
+    api_key: Optional[str] = None,
+    timeout: Optional[float] = None,
+) -> Provider:
     """Build a provider from "name" or "name:model".
 
-    build_provider("sarvam")            -> sarvam-105b
-    build_provider("sarvam:sarvam-30b") -> sarvam-30b
+    build_provider("sarvam")                                -> sarvam-105b
+    build_provider("sarvam:sarvam-105b-conversations")      -> sarvam-105b-conversations
+
+    `timeout` overrides the 30 s default. The conversation tutor passes a
+    longer one: its reply is four fields rather than two, and a turn that
+    times out costs the learner their sentence.
     """
     name, _, model = ref.partition(":")
     name = name.strip().lower()
@@ -361,7 +373,10 @@ def build_provider(ref: str, api_key: Optional[str] = None) -> Provider:
         )
     spec = REGISTRY[name]
     cls = AnthropicProvider if spec.kind == "anthropic" else Provider
-    return cls(name, spec, model=model.strip() or None, api_key=api_key)
+    kwargs: dict = {"model": model.strip() or None, "api_key": api_key}
+    if timeout is not None:
+        kwargs["timeout"] = timeout
+    return cls(name, spec, **kwargs)
 
 
 def load_pricing(path: str) -> None:

@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner, PronunciationAttempt
+from app.services.audio_meta import estimate_seconds
 from app.services.pronunciation import score_pronunciation
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.sarvam import SarvamError, get_sarvam_client
@@ -44,8 +45,8 @@ async def pronunciation_attempt(
     if not audio_data:
         raise HTTPException(status_code=400, detail="Empty audio file")
 
-    # Estimate STT seconds for quota
-    estimated_seconds = len(audio_data) / (16000 * 2)
+    # STT seconds for quota: the recording's own header when it has one.
+    estimated_seconds = estimate_seconds(audio_data)
 
     # Check quota first
     try:

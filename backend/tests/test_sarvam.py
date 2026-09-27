@@ -85,6 +85,27 @@ def test_tts_validation_pace_out_of_range(client):
     assert r.status_code == 422
 
 
+def test_tts_sanskrit_is_voiced_by_the_configured_code(client, monkeypatch):
+    """The app says sa-IN; the server picks the voice. Bulbul still refuses
+    sa-IN without the beta (probed 2026-09-23), so the default is hi-IN — and
+    flipping it once the beta lands is a config change, not an app release."""
+    from app.config import settings
+    from app.routers.conversation import _bulbul_code
+
+    h = _login(client, "tts_sa")
+    for configured in ("hi-IN", "sa-IN"):
+        monkeypatch.setattr(settings, "tts_sanskrit_code", configured)
+        with patch("app.routers.speech.get_sarvam_client") as mock_get:
+            mock_client = AsyncMock()
+            mock_client.text_to_speech.return_value = FAKE_AUDIO_B64
+            mock_get.return_value = mock_client
+            r = client.post("/speech/tts", json={"text": "अहं गच्छामि", "language_code": "sa-IN"}, headers=h)
+        assert r.status_code == 200, r.text
+        assert mock_client.text_to_speech.call_args.kwargs["language_code"] == configured
+        # Inline turn audio follows the same switch.
+        assert _bulbul_code("sa") == configured
+
+
 def test_tts_sarvam_error_returns_502(client):
     h = _login(client, "tts_err")
 
@@ -162,6 +183,28 @@ def test_tts_client_default_speaker_is_valid():
 
     asyncio.run(run())
     assert captured["payload"]["speaker"] == "aditya"
+
+
+def test_tts_client_sends_the_sample_rate_bulbul_reads():
+    """Bulbul reads `speech_sample_rate`. This client sent `sample_rate`,
+    which Bulbul ignores — why a 2026-08-29 probe saw 22050 Hz "regardless".
+    The default stays 22050: exactly what learners have been hearing."""
+    captured: dict = {}
+
+    async def run():
+        def handler(request: httpx.Request) -> httpx.Response:
+            captured["payload"] = json.loads(request.content.decode())
+            return httpx.Response(200, json={"audios": [FAKE_AUDIO_B64]}, request=request)
+
+        c = _client_with_transport(handler)
+        try:
+            await c.text_to_speech(text="नमस्ते", language_code="hi-IN")
+        finally:
+            await c.close()
+
+    asyncio.run(run())
+    assert captured["payload"]["speech_sample_rate"] == 22050
+    assert "sample_rate" not in captured["payload"]
 
 
 # ─── STT tests ────────────────────────────────

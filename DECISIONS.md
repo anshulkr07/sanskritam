@@ -1143,3 +1143,379 @@ Full research: `CURRICULUM.md` §4.4 (sources), §5.5 (why it has no home),
   Vidya-mitra / INFLIBNET is described by secondary sources as CC BY-SA but
   its host did not resolve. It is the sole remaining route to *ownable*
   Sanskrit video.
+
+
+## 2026-09-22 — Talk: multilingual, and a conversation rather than a translator
+
+Owner report: *"Looks like its just translating what we are saying. No real
+conversation is happening... the fonts they return are very bad... the
+keyboard covers it."* All four complaints turned out to be separate defects
+with separate causes. Every claim below was measured against live Sarvam
+before any code was written; the probe scripts are the basis of
+`tests/test_lang_detect.py` and the new half of `tests/test_tutor.py`.
+
+- **It read as a translator because the schema WAS a translator.** The reply
+  shape was `{"sanskrit": ..., "bridge": ...}` — described in the prompt as
+  "two halves of ONE turn" — and at `tutor_max_tokens=180` a 105B model
+  collapses that into a sentence and its translation every time. The prompt
+  also said *"Ask ONE short question per turn"*, which is a quiz, not a
+  conversation. **DECIDED: a turn is four distinct jobs** — read-back, fix
+  (Devanagari + roman), a reply in Sanskrit *and* the learner's language, and
+  an English explanation. Rendered as four distinct blocks, not one bubble.
+
+- **`tutor_max_tokens` 180 → 3000, reversing the 2026-09-xx cut to 180.**
+  That cut assumed the ceiling drives latency. Measured over ~60 live calls
+  at a 3000 ceiling: the model emitted **172–297 tokens** and never
+  approached it, p50 787 ms / p100 1123 ms — indistinguishable from the 180
+  ceiling, because generation stops when the model is done. The ceiling is
+  headroom; truncation costs the whole turn. Do not cut it back without
+  re-measuring *emitted* tokens rather than the limit.
+
+- **Sarvam collapses to Kannada unless the language is ordered in the USER
+  message.** With the language rule in the system prompt, 2/7 languages came
+  back correct: Telugu, Tamil, Malayalam, Bengali **and Hindi** all answered
+  in Kannada. Resolving the language caller-side and naming it (with its
+  native script) as a direct order in the user message: **9/9**.
+  `services/explainer.py` recorded this identical finding for this identical
+  model on 2026-08-30. **DECIDED: `_SYSTEM_PROMPT` must never name the reply
+  language**; `tests/test_tutor.py` asserts the placement, not just the text,
+  because moving it back is silent.
+
+- **The Sanskrit field leaks the input script, 38% of the time.** On
+  native-script input the model returns `reply_sa` part-Telugu or
+  part-Kannada — one measured line was 26% Devanagari, the rest Telugu, with
+  a `गच्छामि` embedded mid-sentence. The pre-existing `_is_bridge_language`
+  guard is a Hindi **word list** and passes every one of these. **DECIDED: a
+  script-purity gate (≥90% Devanagari) runs BEFORE the Hindi check and the
+  Vidyut parse**, on `reply_sa` *and* `fix.devanagari`. Prompt hardening alone
+  took `reply_sa` to 0/12 but left `fix.devanagari` leaking 2/12, so the
+  prompt clause and the code gate are both required — neither is sufficient.
+
+- **The model invents Sanskrit words and then explains them.** Asked about
+  the owner's own line "Aham henge adini", it read "adini" as *today*,
+  invented **आदिनि** as the Sanskrit for it, and explained the invented word
+  confidently — while using the correct अद्य two clauses later. This is why
+  the Vidyut gate now covers `fix.devanagari`: an invented correction is
+  worse than no correction. Short heavily-code-mixed input is where this
+  model is weakest, and gating hard so it abstains is the mitigation.
+
+- **The language toggle was a provable no-op, and it is now fixed rather than
+  removed** (owner's call). `explainer.reply_language()` ended in
+  `"Hindi" if "hi" in langs and "en" not in langs else "English"`, while the
+  client hardcoded `bridge_langs=["en","hi"]` at every login — so the
+  condition could never fire and every learner got English forever, with
+  reordering the list changing nothing. Worse, `_bridge_lang()` returned
+  `"hi"` whenever Hindi was present, so that **English text was spoken by the
+  Hindi voice**. `bridge_langs` is now only a turn-1 seed; the language is
+  settled per turn from what the learner actually said.
+
+- **Language detection is four layers, cheapest first, and the paid one is
+  last for a measured reason.** Script scan (0 ms) → romanized marker table
+  (0 ms) → Saaras' own `language_code` (free, already in the response, read by
+  nothing) → an LLM classifier (~183 ms, ~15 tokens). The classifier alone
+  scores 16/17 on romanized input; its single miss is "Aham henge adini",
+  which it calls Telugu **at `confidence: 1.0`**. It is confidently wrong, so
+  confidence is never thresholded anywhere in `lang_detect.py` — the marker
+  table catches that line for free instead. Detection also sticks per session:
+  nobody switches from Telugu to Tamil halfway.
+
+- **STT was transliterating, not transcribing.** The client pinned
+  `language_code="sa-IN"` on every recording. Round-tripped through Bulbul →
+  Saaras, a Kannada line came back as `मेरा नाम अंशुल्, अहं संस्कृतं
+  शिक्षमाणः।` and a Telugu one as `ना पेरु अंशुल्। नेनु संस्कृतं
+  नेर्छुक्त्तुन्नु।` — a Kannada speaker's voice was silently rewritten into
+  Devanagari before the tutor ever saw it. `"unknown"` (Saaras v4 auto-detect)
+  returns the exact text **and** the correct `language_code`, which now feeds
+  the detector.
+
+- **Fonts: Baloo 2 is a display face and was being used for body Sanskrit.**
+  Every Devanagari string in the app runs through `script()` → Baloo 2, set at
+  16pt in a 24pt line box, so matras clip against the line above. **DECIDED:
+  Tiro Devanagari Sanskrit** (drawn for Sanskrit conjuncts) at a 1.75× line
+  box for the lines a learner is meant to *read*, scoped to Talk for now —
+  `script()` has ~100 call sites and a global swap is its own change. The
+  learner's own script gets a Noto face registered **on demand**
+  (`services/scriptFonts.ts`); registering ten Indic faces at boot delays the
+  splash for nine nobody will see. Honest limit: Metro bundles every `.ttf`
+  regardless, so this defers *registration*, not download.
+
+- **The keyboard covered the composer because nothing in this app ever
+  handled the keyboard.** Zero `KeyboardAvoidingView` in the entire tree, and
+  from Expo SDK 54 Android is edge-to-edge, where `softwareKeyboardLayoutMode`
+  is ignored and the OS does not resize the window. Added
+  `react-native-keyboard-controller`; the screen gives back
+  `keyboardHeight − tabBarHeight` (the tab bar already sits above the bottom,
+  so that much is free), and the 172dp avatar folds away on keyboard progress
+  so typing does not happen in a letterbox.
+
+- **Removed from Talk, deliberately:** the verdict flash (avatar lighting up
+  green on a correct sentence — that is grading, not talking), the "Show me
+  what to say" hint bar (it read `edges`, always empty in LLM mode, so it had
+  never once appeared), and the escape/repair-ladder copy. Graph mode keeps
+  all of it and remains the offline fallback.
+
+- **Deferred at the owner's call:** the three-way Sanskrit/native/English
+  ratio mirroring. `ratio_hint` and the Progress dial are untouched.
+
+### Addendum — the Talk regression suite, and two thresholds it moved
+
+`python -m app.evals.talk` (`--repeat N`, `--only kn,te`, `--kind native`) runs
+15 real utterances across 10 languages through the **shipped pipeline** —
+`lang_detect` → `tutor` (real prompt, real gates) → `iast` — and asserts the
+invariants the gates exist to hold: language detected correctly, Sanskrit
+fields ≥90% Devanagari, every Devanagari line carrying a roman line, no
+`fix.needed` with an empty fix, `reply_native` in its own script. Non-zero exit
+on any failure, so CI can gate on it.
+
+Deliberately NOT a pytest: it costs real money and ~1 s/turn. The
+deterministic half — detection ordering, gates against canned output — is in
+`tests/test_lang_detect.py` and `tests/test_tutor.py` and runs free on every
+commit. It is also deliberately not a `TASK_BUILDERS` task in the existing
+suite: that scores raw model output on seed challenges, one provider call per
+case, and routing Talk through it would bypass the gates, which are the thing
+worth watching.
+
+Current state: **45/45 over three passes**, free detection layers carrying
+45/45 (zero paid classifier calls), p50 1034 ms / p100 1862 ms. `--repeat`
+exists because the model is non-deterministic at `temperature=0.6` and a
+single pass understates the script-leak rate.
+
+Two thresholds moved because the suite surfaced them:
+
+- **The unique-script floor dropped 0.30 → 0.15**, guarded by a new minimum of
+  3 letters. None of Kannada/Telugu/Tamil/Malayalam/Bengali/Gujarati/Gurmukhi/
+  Odia is used to write Sanskrit, so their presence identifies the speaker
+  even when most of the line is not in them. The case that forced it:
+  `aham vidyalayam gacchami ಅಂತ ಸರಿನಾ?` — romanized Sanskrit with a Kannada
+  tag question — is 24% Kannada, fell through to the paid classifier, and the
+  classifier correctly answered "this is Sanskrit", which is useless. The
+  letter minimum is what keeps the low floor safe: a share alone would let one
+  pasted glyph in a short line decide the turn. **Devanagari keeps the 0.30
+  bar**, because it is shared with Sanskrit itself — a few Devanagari letters
+  mean "quoting the language being studied", not "speaks Hindi".
+
+- **`resolve_language` now reports `sticky(fallback)` rather than `default`**
+  when the classifier abstains and the session language carries the turn. Not
+  cosmetic: the classifier abstaining is frequently the *correct* answer (a
+  line of romanized Sanskrit contains no bridge language at all), and a log
+  reading `default` on a correct sticky hit is how you talk yourself into
+  believing detection is broken when it is working exactly as designed.
+
+Also fixed in passing: `app/evals/cli_env.py` now looks for `.env` in the
+**repo root** as well as `backend/`. This repo's `.env` is at the root and
+there is no `backend/.env`, so `python -m app.evals` had been finding no keys
+at all and silently skipping every provider.
+
+### Addendum — live multi-turn testing through the real endpoints
+
+Everything above was measured single-turn or against the services directly.
+Six rounds of real conversations through `/conversation/start` and `/turn`
+against live Sarvam (Kannada, Telugu, Tamil, English, a voice round trip, all
+twelve voices) found failures no single-turn test could. Each is now pinned by
+a test in `tests/test_tutor.py`.
+
+- **A regression of mine: every conversation opened in Hindi.** The first
+  seeding rule took the first non-English entry of `bridge_langs`, and the
+  client hardcodes `["en", "hi"]` at every login, so the answer was always
+  "hi" — the exact thing the owner asked to be rid of. **DECIDED: a learner is
+  greeted in the language they settled on in their previous conversation;
+  someone new gets English, and English is NOT persisted as settled**, so their
+  first line decides rather than a default they never chose.
+
+- **A second regression of mine: the correction guard would have discarded
+  real corrections.** It suppressed any fix when Vidyut read the line `ok` —
+  but `ok` only means every word is a real form. `aham gacchasi` (I you-go),
+  `tvam gacchami` and `aham gacchati` all parse 100%. These are the commonest
+  beginner mistakes there are. **DECIDED: `agreement_errors` checks person and
+  number between a first/second-person nominative pronoun and its verb, and
+  `SanskritHealth.is_correct` (not `ok`) is what the guard, the verdict and
+  the prompt use.** It abstains unless a sentence has exactly one such pronoun
+  and exactly one finite verb: `aham gacchāmi, tvam?` is correct ellipsis and
+  must never be accused. `bhavān` is excluded — it takes a third-person verb,
+  and the analyser misparses it as `bhava ACC.PL`. The outgoing gate applies
+  it too, so the tutor cannot say "अहं गच्छति" either. It also fixes a
+  pre-existing bug: those lines used to score `verdict=correct` and full XP.
+
+- **Sanskrit written in a native script was invisible to Vidyut.** Karnataka
+  and Andhra schools teach Sanskrit in the regional script, so `ಅಹಂ ಗಚ್ಛಾಮಿ`
+  is a realistic line — and it parsed 0%, after which the model "corrected"
+  a correct `మమ నామ అన్షుల్`. `vidyut.lipi` round-trips Telugu, Kannada,
+  Malayalam, Bengali, Gujarati, Gurmukhi and Odia losslessly; real native
+  SENTENCES still read as not-Sanskrit after conversion (measured 0.00–0.33,
+  no root, no pronoun). **Tamil is excluded from analysis**: its script has no
+  voiced or aspirated stops, so `கச்சாமி` returns `कच्चामि`, not `गच्छामि`. It
+  is included for DISPLAY, where vidyut.lipi's superscripts (`க³ச்சா²மி`) keep
+  the information.
+
+- **"What does that mean?" was broken in LLM mode — pre-existing.** The
+  explain endpoint looked up a graph node, and LLM mode has none
+  (`current_node_id` is NULL), so every request 404'd and the learner saw a
+  generic apology. It now falls back to the last tutor turn's row.
+
+- **Asking this model for grammatical labels gets wrong ones.** About 7 of 16
+  WHY paragraphs mislabelled the tutor's OWN words — आगच्छति called first
+  person, कुत्र and अद्य called locative, नामा called nominative.
+  `explainer.py` already forbade grammatical claims from this model for the
+  same reason, and my first prompt asked for them anyway. **DECIDED: label a
+  form only when it appears in Vidyut's analysis of the learner's line.**
+  Measured afterwards: 2 of 16. The model still labels its own words
+  sometimes; the complete fix is labels derived from Vidyut, not the model.
+
+- **Four quality failures are now caught deterministically and retried once,
+  together:** the reply merely translating the learner's line back (the owner's
+  first complaint, word for word); a question already asked (containment, not
+  equality — `अद्य भवान् कुतः आगतः?` is the same question); another script's
+  letters in the native line (one Sinhala letter turned up inside a Telugu
+  word); and the native line being the Sanskrit in native letters instead of a
+  translation. A system-prompt rule alone left "भवान् कुत्र वसति?" asked four
+  times in one conversation; with the list handed over in the user message and
+  the retry behind it, the last run asked 13 questions with no repeats. **The
+  first reply is kept as a fallback** and replaced only by a retry that is not
+  worse, so the retry can never cost the learner a complete turn.
+
+- **Two thresholds were moved by false alarms, not by failures.** The
+  "Sanskrit in native letters" check judged the whole line and flagged
+  `ഇത് ലളിതമാണ്. ഗൃഹം ഗച്ഛാമി.` — correct Malayalam, then the example — because
+  `ലളിതം` IS Sanskrit `lalita`; it now requires EVERY sentence to be Sanskrit.
+  And a stray native letter in the Sanskrit line (`ಅहम्`) is repaired before
+  the purity floor, for a slip of at most two letters — otherwise whether it
+  survived depended on sentence length (1 in 9 letters fails a 90% floor,
+  1 in 25 passes).
+
+- **Measured ceiling, not fixed:** on short, heavily code-mixed lines the
+  model sometimes misreads the learner's MEANING, and a fix card inherits it:
+  `naanu` (Kannada "I") became Sanskrit `न` ("not") once and `ननु` once;
+  `adini` became "today". Those fixes are valid Sanskrit with the wrong
+  meaning, so no gate can catch them. A stronger model is the lever.
+
+- **The local backend could not see its own key — fixed.** The Sarvam key
+  lives only in the repo-root `.env`, while `start_mob.ps1` and
+  `.claude/launch.json` run uvicorn from `backend/`, and `config.py` read
+  `.env` relative to the working directory. Started that way the backend had
+  no key and served `mode: graph` — the scripted dialogue — so a dev build
+  showed none of the LLM tutor. **DECIDED: `config.py` anchors its `.env`
+  paths to the source tree** (cwd `.env`, then repo root, then `backend/.env`,
+  later winning), so the answer no longer depends on the launch directory.
+  Verified by starting the backend exactly as the launch config does:
+  `mode: llm`. The Docker image is unaffected — it copies no `.env`.
+
+- **…which is why the test suite now reads no `.env` at all.** It never did
+  (there is no `backend/.env`), and that has to stay true now the root file
+  is visible: it holds live keys, and a `DATABASE_URL` there would point the
+  suite at a real database. `conftest.py` sets `SHABD_IGNORE_DOTENV` and
+  blanks every vendor key; `tests/test_config_env.py` asserts both. That test
+  failed on its first full run and found a pre-existing leak:
+  `test_author_batch.py` and `test_challenge_batch.py` assigned
+  `os.environ["SARVAM_API_KEY"] = "mock-key"` and never restored it, so every
+  later test had a "configured" key and any unmocked path called the real
+  Sarvam API — suite runtime swung from ~50 s to over 10 minutes with the
+  network. They use `monkeypatch` now. It also explained
+  `test_tts_502_refunds_quota`, failing all session: it called
+  `get_sarvam_client()`, which needs a configured key, so it only ever passed
+  on a machine that had one configured. It builds its client from a dummy key
+  now.
+
+Current state: `python -m app.evals.talk --repeat 3` passes **66/66**, the
+free detection layers carrying 63 of 66, p50 875 ms.
+
+
+## 2026-09-23 — Saaras v4: what it changes for Talk, and what it broke
+
+Sarvam shipped `saaras:v4` on 2026-08-18 (GA 2026-09-02): Global English on
+top of Indian English, better language identification on noisy and
+code-mixed audio, **keyterm prompting** (≤50 terms of ≤64 chars; REST, Batch
+and both WebSockets) and a seat on the Realtime API. Same price as v3
+(₹30/hour), same request and response shape, same 22 Indic languages.
+`sa-IN` is in the STT list for v3 AND v4, so Sanskrit *recognition* is not
+new; Sanskrit *synthesis* still is not available (below). This codebase had
+already defaulted `speech_to_text` to v4 without a v3/v4 comparison, while
+the ASR bench kept labelling its runs "saaras:v3". The model is now one
+setting, `SARVAM_STT_MODEL`, and the bench records the model it actually
+called.
+
+Everything below was measured against live Sarvam on 2026-09-23, with
+Bulbul-voiced lines (three voices for the Sanskrit), before any code changed.
+
+- **v4 auto-detect translates spoken Sanskrit into English, 19 times in 20.**
+  "मम नाम अंशुलः। अहं संस्कृतं पठामि।" came back as "My name is Anshul. I
+  read Sanskrit." (en-IN, probability 1.0). "अहं गच्छसि।" came back as "I am
+  going.", which erases the very mistake the tutor is there to catch. This was
+  Talk's shipped configuration: the 2026-09-22 switch from `sa-IN` to
+  `"unknown"` was measured on Kannada and Telugu speech only. v3 on
+  auto-detect did it 2 times in 20.
+- **Pinned to `sa-IN`, v4 is the most faithful Sanskrit transcriber
+  measured** (20/20, agreement errors intact). Everything else it rewrites
+  into Devanagari, and it TRANSLATES some of it: a Tamil sentence came back
+  as "एन नाम अन्शुल्। अहं संस्कृतम् शिक्षे।", which Vidyut scores as healthy
+  Sanskrit. The 2026-09-22 finding stands.
+- **v4 auto-detect is excellent at everything that is not Sanskrit.** Every
+  Kannada, Telugu, Tamil, Malayalam, Bengali, Hindi and Marathi line came
+  back in its own script at probability 0.82–1.0 (v3: 0.75–0.9).
+- **DECIDED: Talk runs both, concurrently, and a deterministic rule picks**
+  (`services/learner_stt.py`). The auto pass is trusted whenever it names a
+  bridge language other than English. Otherwise the Sanskrit pass wins only
+  if Vidyut reads it as Sanskrit and the free detection layers find no
+  Hindi, Marathi or other script in it. Real English fails that check: the
+  Sanskrit pass spells it out in Devanagari ("माय नेम इज़ अंशुल"). A failed
+  auto pass fails the turn, because the Sanskrit pass alone would turn Tamil
+  into Sanskrit. Cost: 2× STT (about ₹0.04 extra per five-second line). STT
+  p50 went from 387 ms to 441 ms (`bench_asr.py --language unknown`). Live
+  through `/speech/stt` and `/conversation/turn`, "अहं विद्यालयं गच्छसि" now
+  reaches the tutor intact and draws the गच्छामि fix instead of an English
+  sentence. When the Sanskrit pass wins it reports `sa-IN`, and
+  `lang_detect` treats that as "no bridge language": the session keeps its
+  language and the paid classifier is not called.
+- **Keyterms: deliberately NOT used.** Biasing towards Sanskrit vocabulary
+  turned a learner's "अहं गच्छसि" into "अहं गच्छामि", correcting them before
+  the tutor could. A Latin-script keyterm ("Anshul") flipped a Hindi line into
+  an English translation. A Devanagari name keyterm fixed "अंशु" → "अंशुल"
+  and harmed nothing measured. That is the only candidate, and it needs the
+  learner's name in Devanagari, which the app does not have.
+- **Varnamala regressed on v4, and the grader was the fragile part.** v4
+  answers "त।" for a spoken त where v3 answered "त". The exact-match grader
+  scored 5/30 correct on v4 against 18/30 on v3. **DECIDED:
+  `score_pronunciation` strips edge punctuation (never the visarga).** On the
+  same recordings v4 now scores 20/30 correct, with the same 4 "incorrect".
+- **Bulbul still has no Sanskrit voice.** `sa-IN` answers 400 "Please request
+  beta access to sa-IN by contacting our support team.", so the request made
+  on 2026-08-29 has not landed on this account. **DECIDED: the app sends
+  `sa-IN` for Sanskrit and the server maps it to `TTS_SANSKRIT_CODE`** (hi-IN
+  today), in `/speech/tts` and in inline turn audio. Once support enables the
+  beta, one env var moves every live Sanskrit line to the Sanskrit voice with
+  no app release. The backend must deploy before the app, or Sanskrit TTS
+  400s. The pre-render scripts keep their own `--sa-language` flag.
+- **Bulbul never received our sample rate.** It reads `speech_sample_rate`,
+  and this client sent `sample_rate`. That is why the 2026-08-29 probe found
+  22050 Hz "regardless". With the right field, 16000 returns 16 kHz. The
+  default stays 22050, exactly what learners have been hearing.
+- **STT metering was 8× low on Talk.** Both upload routes assumed 16 kHz
+  16-bit WAV (`bytes/32000`). Talk uploads 32 kbps AAC in an .m4a, so a
+  20-second turn was metered as 2.5 s. `services/audio_meta.py` now reads the
+  WAV header or the MP4 `mvhd` box, and falls back to the old guess for
+  anything else (web's webm). The same number enforces Saaras' 30-second
+  REST ceiling (probed: 400 "Audio duration exceeds the maximum limit of 30
+  seconds"). Such a recording is refused with 413 before any quota or vendor
+  call, and the app now says so instead of "the network failed". A 429 quota
+  refusal also got its own copy.
+- **Auto-detect can answer `language_code: null`**, which reached
+  `STTResponse` (a required string) as None and would have 500'd the turn.
+  It maps to "" now. `language_probability` is passed through as a
+  diagnostic and thresholded nowhere, because Sanskrit came back en-IN at 1.0.
+- **Found while testing: the tutor told learners they were right while
+  correcting them.** 10 of 21 correction turns opened with सत्यम् or सम्यक्,
+  shown as "Correct.", "Right." or "सही है।" beside the fix card. A
+  system-prompt rule brought that to 5 of 18. A soft problem
+  (`affirms_a_fixed_line`, opening word only, so praising the FIX still
+  passes) plus the existing retry brought it to **0 of 24**, p50 865 ms.
+  `python -m app.evals.talk --repeat 2`: 44/44.
+
+Sarvam changes that need no code: `sarvam-30b` was retired 2026-08-18 (not
+used here). `sarvam-105b` went from ₹4/₹16 to ₹29.28/₹73.2 per 1M tokens
+in/out on 2026-08-05; the eval pricing table is updated, and cached input is
+₹10.98. Workspace data-retention controls arrived 2026-09-15; they are an
+owner setting, and worth setting to the minimum given P1-4. Not adopted yet:
+the Realtime STT WebSocket (partial transcripts, VAD end-of-turn; v4 there
+has the same Sanskrit problem, so it would need both passes), Bulbul
+pronunciation dictionaries and `temperature`, which need listening rather
+than a script, and compressed TTS output (`output_audio_codec=aac` was 44 KB
+against 158 KB of WAV for the same line, but the app's players assume WAV).

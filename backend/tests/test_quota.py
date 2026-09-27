@@ -407,10 +407,13 @@ def test_unknown_quota_kind_raises_valueerror(fresh_client):
 
 def test_tts_502_refunds_quota(fresh_client, monkeypatch):
     """Sarvam TTS error refunds the consumed quota."""
-    from app.services.sarvam import get_sarvam_client
+    from app.services.sarvam import SarvamClient
 
-    # Make the client raise on text_to_speech
-    real_client = get_sarvam_client()
+    # A client built from a dummy key, not `get_sarvam_client()`. That call
+    # raises without a configured key — and tests never have one (conftest) —
+    # so this test failed everywhere a key was not lying around to be picked
+    # up. The key is never used: text_to_speech is replaced before any call.
+    real_client = SarvamClient(api_key="test-not-a-real-key")
     monkeypatch.setattr(real_client, "text_to_speech", AsyncMock(side_effect=SarvamError(502, "mock failure")))
     monkeypatch.setattr("app.routers.speech.get_sarvam_client", lambda: real_client)
 

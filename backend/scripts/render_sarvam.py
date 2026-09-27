@@ -48,11 +48,14 @@ DEFAULT_SPEAKER = "aditya"
 """Persona speaker for bulbul:v3 (§4.1 analogue of Parler's Aryan card)."""
 
 MODEL = "bulbul:v3"
-SAMPLE_RATE = 24000
-ACTUAL_SAMPLE_RATE = 22050
-"""Bulbul v3 ignores the sample_rate param and always returns 22050 Hz mono
-(probed 2026-08-29).  Recorded in the manifest so the CDN/serving layer and
-§12 budgets use the real number, not the requested one."""
+SAMPLE_RATE = 22050
+ACTUAL_SAMPLE_RATE = SAMPLE_RATE
+"""Every file rendered so far is 22050 Hz mono. The 2026-08-29 probe read that
+as "Bulbul ignores the rate"; in fact the client sent the wrong field
+(``sample_rate`` rather than ``speech_sample_rate``, fixed 2026-09-23). The
+request is now honoured, so this asks for what the library already holds —
+raising it would make new renders differ from old ones. Recorded in the
+manifest so the CDN/serving layer and §12 budgets use the real number."""
 
 
 # ── plan ─────────────────────────────────────────────────────────────────────

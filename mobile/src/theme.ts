@@ -91,6 +91,10 @@ export const font = {
 // Baloo 2 is Google's rounded Indic family (built for Devanagari) and pairs
 // visually with Nunito's roundness. Use `script(weight)` wherever text may
 // contain Devanagari.
+//
+// NOTE: Baloo 2 is a DISPLAY face. It is right for headings, counters and
+// chips, and wrong for a paragraph of Sanskrit — see `sanskritFace` below,
+// which is what Talk uses for the line the learner is meant to read.
 export const scriptFontFamily = {
   regular: "Baloo2_400Regular",
   medium: "Baloo2_500Medium",
@@ -98,6 +102,44 @@ export const scriptFontFamily = {
   bold: "Baloo2_700Bold",
   extrabold: "Baloo2_800ExtraBold",
 } as const;
+
+// ── Sanskrit body face ───────────────────────────────────────────────────
+// Tiro Devanagari Sanskrit, which is drawn specifically for Sanskrit: it
+// carries the conjuncts (क्ष्, ज्ञ्, त्र्) and the vowel-sign positioning that
+// a rounded UI face like Baloo 2 approximates badly at body size. The owner's
+// report was "the fonts they return are very bad", and Baloo 2 set at 16pt
+// with a 24pt line box — matras clipping against the line above — is what
+// that describes.
+//
+// Deliberately scoped to Talk for now. `script()` has ~100 call sites across
+// the app; swapping the global face is a separate, deliberate change.
+// Regular only. The italic is a separate 700 KB file and Sanskrit has no
+// italic convention, so App.tsx imports the regular by its exact subpath and
+// never loads the italic — naming it here would be a footgun that renders as
+// the OS fallback mid-paragraph.
+export const sanskritFace = {
+  regular: "TiroDevanagariSanskrit_400Regular",
+} as const;
+
+// ── Native-language faces, keyed by the `native_script` the server sends ──
+// Registered lazily by services/scriptFonts.ts: a learner uses ONE of these,
+// and registering ten Indic faces at boot delays the splash for nine nobody
+// will see. `undefined` means "the platform's own font", which is a correct
+// and complete Noto face for every one of these scripts on both iOS and
+// Android — so a script whose face has not finished loading still renders
+// properly, it just is not ours yet.
+export const nativeScriptFace: Record<string, string | undefined> = {
+  devanagari: "NotoSansDevanagari_400Regular",
+  kannada: "NotoSansKannada_400Regular",
+  telugu: "NotoSansTelugu_400Regular",
+  tamil: "NotoSansTamil_400Regular",
+  malayalam: "NotoSansMalayalam_400Regular",
+  bengali: "NotoSansBengali_400Regular",
+  gujarati: "NotoSansGujarati_400Regular",
+  gurmukhi: "NotoSansGurmukhi_400Regular",
+  oriya: "NotoSansOriya_400Regular",
+  latin: undefined,
+};
 
 const SCRIPT_WEIGHT_NUM: Record<keyof typeof scriptFontFamily, "400" | "500" | "600" | "700" | "800"> = {
   regular: "400",
@@ -111,6 +153,33 @@ export function script(weight: keyof typeof scriptFontFamily = "semibold") {
   return {
     fontFamily: scriptFontFamily[weight],
     fontWeight: SCRIPT_WEIGHT_NUM[weight],
+  };
+}
+
+/**
+ * The face for a line of Sanskrit the learner is meant to READ — not a chip,
+ * not a counter. Pairs with a generous line height: Devanagari needs vertical
+ * room above the baseline for its matras and below it for its conjuncts, and
+ * the default ~1.2x line box clips both.
+ */
+export function sanskritText(size: number = font.sizes.lg) {
+  return {
+    fontFamily: sanskritFace.regular,
+    fontSize: size,
+    lineHeight: Math.round(size * 1.75),
+  };
+}
+
+/**
+ * The face for the learner's own language, whichever script the server said
+ * it was. Falls back to the platform font, which renders every script we
+ * support correctly — so this is never blank, only sometimes not ours yet.
+ */
+export function nativeText(scriptKey: string, size: number = font.sizes.md) {
+  return {
+    fontFamily: nativeScriptFace[scriptKey],
+    fontSize: size,
+    lineHeight: Math.round(size * 1.65),
   };
 }
 

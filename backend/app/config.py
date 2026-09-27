@@ -1,6 +1,49 @@
 """Application configuration via pydantic-settings (env vars + .env)."""
 
+import os
+from pathlib import Path
+
 from pydantic_settings import BaseSettings
+
+# Where .env files are read from, LOWEST priority first — pydantic-settings
+# lets a later file override an earlier one, and real environment variables
+# override them all.
+#
+# This used to be just ".env", resolved against the working directory. This
+# repo keeps its .env at the REPO ROOT, while start_mob.ps1 and
+# .claude/launch.json deliberately run uvicorn from backend/ (the db_path
+# comment in start_mob.ps1 says why). So the backend started with no Sarvam
+# key and silently served `mode: graph` — the scripted dialogue — to every dev
+# build, and none of the LLM tutor was reachable locally. Found 2026-09-22.
+#
+# Paths are anchored to this file, not the working directory, so the answer
+# no longer depends on where the server was launched from:
+#   1. ".env" in the working directory — the old behaviour, kept last in
+#      priority for any launch path not listed here;
+#   2. the repo root — where this repo actually keeps it;
+#   3. backend/.env — highest, for a backend-only override.
+# Files that do not exist are skipped. The container is unaffected: the
+# Dockerfile copies no .env, and deploy secrets arrive as env vars.
+#
+# SHABD_IGNORE_DOTENV turns every file off. The test suite sets it: before
+# this change tests read no .env (there is no backend/.env), and that is the
+# guarantee worth keeping — otherwise a key or a DATABASE_URL in the root .env
+# would quietly reach them.
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+
+
+def env_files() -> tuple[str, ...] | None:
+    """The .env files to read, lowest priority first — or None for none."""
+    if os.environ.get("SHABD_IGNORE_DOTENV"):
+        return None
+    return (
+        ".env",
+        str(_BACKEND_DIR.parent / ".env"),
+        str(_BACKEND_DIR / ".env"),
+    )
+
+
+_ENV_FILES = env_files()
 
 
 class Settings(BaseSettings):
@@ -13,6 +56,18 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: str = "*"
     sarvam_api_key: str = ""  # Sarvam AI API subscription key (TTS/STT)
+    # Speech-to-text model for every surface. saaras:v4 (2026-09-23): better
+    # language ID on the learner's own language and Global English — but on
+    # auto-detect it TRANSLATES spoken Sanskrit into English, so Talk never
+    # calls it that way alone; see services/learner_stt.py.
+    sarvam_stt_model: str = "saaras:v4"
+    # Bulbul language code for Sanskrit lines. Bulbul v3 has no public sa-IN:
+    # probed 2026-09-23 it still answers 400 "Please request beta access to
+    # sa-IN". Until Sarvam support enables it, Sanskrit reads through the Hindi
+    # voice. Once granted, setting TTS_SANSKRIT_CODE=sa-IN switches every live
+    # Sanskrit line — the app sends sa-IN and the server maps it here, so no
+    # app release is needed.
+    tts_sanskrit_code: str = "hi-IN"
     # OpenRouter — carries the Gemini route for dual-number content (§2.6:
     # Sarvam false-accuses ~50% of dual-bearing sentences, so duals must not
     # go to Sarvam). Owner chose OpenRouter over a direct Gemini key,
@@ -43,11 +98,22 @@ class Settings(BaseSettings):
     # graph, which is kept working for exactly that reason.
     tutor_provider: str = "sarvam:sarvam-105b-conversations"
     tutor_enabled: bool = True
-    # 400 → 180: a tutor turn is 1–2 short sentences plus JSON envelope. The
-    # extra 220 tokens bought generation latency, not quality — measured as the
-    # dominant cost on the talk path alongside inline TTS. Short lines also
-    # synthesise faster downstream.
-    tutor_max_tokens: int = 180
+    # 180 → 3000 (2026-09-22). This reverses the earlier 400 → 180 cut, which
+    # was made when a turn was two short lines. A turn is now four fields
+    # (read-back, fix, bilingual reply, English explanation) and 180 truncated
+    # it outright.
+    #
+    # The old cut assumed the ceiling drove latency. Measured over ~60 live
+    # calls at max_tokens=3000, the model emitted 172–297 tokens and never
+    # approached the ceiling: p50 latency 787 ms, p100 1123 ms — indistinguish-
+    # able from the 180 ceiling, because generation stops when the model is
+    # done, not at the limit. The ceiling is headroom, not a target; raising it
+    # costs nothing and truncation costs the whole turn.
+    tutor_max_tokens: int = 3000
+    # The default 30 s is a p100 of roughly 1.1 s times a 25x safety factor.
+    # Generous on purpose: a timeout loses the learner's sentence, and the
+    # retry path would double the wait before it degrades.
+    tutor_timeout_s: float = 90.0
     # Non-zero: a tutor repeating itself verbatim is the failure this replaced.
     tutor_temperature: float = 0.6
 
@@ -106,7 +172,7 @@ class Settings(BaseSettings):
     # for a coupled A/B against the `[perf] turn` lines the client logs.
     conversation_inline_audio: bool = False
 
-    model_config = {"env_prefix": "", "env_file": ".env", "extra": "ignore"}
+    model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 
 
 settings = Settings()

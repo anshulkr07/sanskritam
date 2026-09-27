@@ -79,7 +79,7 @@ _DEVANAGARI = re.compile("[\u0900-\u097F]")
 _MARKUP = re.compile(r"[`*_#]+")
 
 
-def reply_language(question: str, bridge_langs=None) -> str:
+def reply_language(question: str, bridge_langs=None, fallback: str = "") -> str:
     """Decide which language the explanation must come back in.
 
     Sarvam ignores a "match the learner's language" rule in the system
@@ -88,17 +88,49 @@ def reply_language(question: str, bridge_langs=None) -> str:
     the model as a direct order in the user message, rather than left to
     its judgement.
 
-    The learner's own script decides: Devanagari in the question means
-    Hindi; Latin script means English, so romanized Hinglish ("matlab kya
-    hai") gets an English answer — someone typing in Latin can read one.
-    With no question at all (the tap-to-explain affordance) fall back to
-    the learner's declared bridge languages.
+    **Fixed 2026-09-22.** This used to end in::
+
+        "Hindi" if "hi" in langs and "en" not in langs else "English"
+
+    and the client hardcoded ``bridge_langs=["en", "hi"]`` at every login, so
+    the condition could never fire: the branch returned English for every
+    learner who ever used the app, and reordering the list changed nothing.
+    The "choice" was a no-op. Two consequences, both now fixed — a Kannada or
+    Telugu speaker was silently given English, and Talk's companion path
+    spoke that English text through the *Hindi* voice.
+
+    Resolution order now:
+      1. The question's own script, via `services/lang_detect.py` — which
+         reads all ten of Sarvam's languages, not just Devanagari-or-not.
+         Romanized input ("matlab kya hai") still answers in English: someone
+         typing in Latin can read it, and this path is deliberately free.
+      2. `fallback` — the session's settled language, for the tap-to-explain
+         affordance that carries no question at all.
+      3. English.
     """
+    from app.services import lang_detect
+
     q = (question or "").strip()
     if q:
-        return "Hindi (Devanagari script)" if _DEVANAGARI.search(q) else "English"
-    langs = [str(x).lower() for x in (bridge_langs or [])]
-    return "Hindi (Devanagari script)" if "hi" in langs and "en" not in langs else "English"
+        code, how = lang_detect.detect_free(q)
+        # "devanagari" with no code means it read as Sanskrit, which is the
+        # subject, not a language to answer in.
+        if code and how in ("script", "devanagari"):
+            return lang_detect.order_phrase(code)
+        if _DEVANAGARI.search(q):
+            return lang_detect.order_phrase("hi")
+        return "English"
+
+    if fallback:
+        code = lang_detect.normalize_code(fallback)
+        if code:
+            return lang_detect.order_phrase(code)
+
+    for raw in (bridge_langs or []):
+        code = lang_detect.normalize_code(str(raw))
+        if code and code != "en":
+            return lang_detect.order_phrase(code)
+    return "English"
 
 
 def strip_markup(text: str) -> str:

@@ -53,7 +53,10 @@ from app.services.sarvam import SarvamClient  # noqa: E402 (import only — neve
     ],
 )
 def test_bench_asr_verdict_both_sides(tmp_path, monkeypatch, capsys, stub_sleep_ms, expected_verdict):
+    called_models: list = []
+
     async def fake_stt(self, audio_data, **kwargs):
+        called_models.append(kwargs.get("model"))
         if stub_sleep_ms:
             await asyncio.sleep(stub_sleep_ms / 1000.0)
         return {"transcript": "रामः फलम् खादति।", "language_code": "sa-IN"}
@@ -76,7 +79,10 @@ def test_bench_asr_verdict_both_sides(tmp_path, monkeypatch, capsys, stub_sleep_
     assert doc["budget_ms"] == 800
     assert doc["n"] == 2
     assert doc["audio_source"] == "synthetic"
-    assert doc["model"] == "saaras:v3"
+    # The label is the model actually called. It said "saaras:v3" while the
+    # client's default had already moved to v4.
+    assert doc["model"] == settings.sarvam_stt_model
+    assert called_models == [settings.sarvam_stt_model] * 2
     assert len(doc["latencies_ms"]) == 2
     assert len(doc["transcript_lengths"]) == 2
     capsys.readouterr()

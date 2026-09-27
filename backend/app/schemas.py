@@ -481,7 +481,10 @@ class TTSResponse(BaseModel):
 
 class STTResponse(BaseModel):
     transcript: str
-    language_code: str
+    language_code: str  # "" when auto-detect heard no language
+    # Saaras' confidence in `language_code`, on auto-detect only. Diagnostic:
+    # nothing thresholds it, because Sanskrit came back en-IN at 1.0.
+    language_probability: Optional[float] = None
 
 
 # ─── Daily word (P12) ───

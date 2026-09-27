@@ -43,7 +43,10 @@ logger = logging.getLogger("shabd.render_app_audio")
 
 DEFAULT_SPEAKER = "aditya"
 MODEL = "bulbul:v3"
-SAMPLE_RATE = 24000
+# What every file rendered so far actually is: Bulbul never received the old
+# 24000 (wrong field name, fixed 2026-09-23 in services/sarvam.py) and
+# answered with its 22050 default. Honoured now, so it must say 22050.
+SAMPLE_RATE = 22050
 COST_PER_CHAR = 0.003  # ₹30/10K chars (architecture.md §4.1)
 
 

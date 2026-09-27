@@ -369,6 +369,12 @@ class ConversationSession(Base):
     turn_count = Column(Integer, default=0)
     consecutive_escapes = Column(Integer, default=0)
     ratio_hint = Column(Float, default=0.3)
+    # The learner's own language for THIS conversation, settled per turn by
+    # services/lang_detect.py and remembered here. Stickiness is the point: a
+    # learner does not switch from Telugu to Tamil halfway, so a settled
+    # session outranks a classifier guess on a short or ambiguous line.
+    # NULL until the first turn that carries enough signal to decide.
+    native_lang = Column(String(8), nullable=True)
     started_at = Column(DateTime, default=_utcnow)
     updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
 

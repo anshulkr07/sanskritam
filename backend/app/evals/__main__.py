@@ -15,29 +15,11 @@ import json
 import os
 import sys
 
+from app.evals.cli_env import force_utf8_stdio, load_dotenv
 from app.evals.providers import build_provider, load_pricing
 from app.evals.report import render_failures, render_leaderboard, render_markdown
 from app.evals.runner import DEFAULT_CACHE_DIR, run_suite, write_jsonl
 from app.evals.tasks import TASK_BUILDERS, build_cases
-
-
-def _load_dotenv() -> None:
-    """Populate os.environ from backend/.env without adding a dependency."""
-    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    path = os.path.join(root, ".env")
-    if not os.path.isfile(path):
-        return
-    with open(path, encoding="utf-8") as fh:
-        for raw in fh:
-            line = raw.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, _, value = line.partition("=")
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-            # Never let .env silently shadow a key exported for this run.
-            if key and key not in os.environ:
-                os.environ[key] = value
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -74,7 +56,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 async def _main(args) -> int:
-    _load_dotenv()
+    load_dotenv()
     if args.pricing:
         load_pricing(args.pricing)
 
@@ -154,20 +136,8 @@ async def _main(args) -> int:
     return 0
 
 
-def _force_utf8_stdio() -> None:
-    """Windows consoles default to cp1252, which cannot encode Devanagari or IAST
-    diacritics — every report this tool prints would die on a UnicodeEncodeError.
-    errors="replace" keeps output flowing even on a terminal with no Indic font."""
-    for stream in (sys.stdout, sys.stderr):
-        if hasattr(stream, "reconfigure"):
-            try:
-                stream.reconfigure(encoding="utf-8", errors="replace")
-            except (OSError, ValueError):
-                pass
-
-
 def main() -> int:
-    _force_utf8_stdio()
+    force_utf8_stdio()
     args = build_parser().parse_args()
     try:
         return asyncio.run(_main(args))
