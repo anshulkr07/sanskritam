@@ -26,11 +26,12 @@
 # (No HuggingFace token needed: vidyut's data downloads from GitHub releases,
 #  not HF, and nothing else in the codebase reads one — verified 2026-09-02.)
 #
-# Usage:  PROJECT_ID=<id> bash deploy/gcp/deploy.sh
+# Usage:  bash deploy/gcp/deploy.sh
+#   Project comes from PROJECT_ID (env or .env.deploy), else the active
+#   `gcloud config` project.
 
 set -euo pipefail
 
-PROJECT_ID="${PROJECT_ID:?export PROJECT_ID=<your-project-id> first}"
 REGION="asia-south1"
 SERVICE="shabd-api"
 ENV_FILE="${ENV_FILE:-.env.deploy}"
@@ -45,6 +46,13 @@ if [ -f "$ENV_FILE" ]; then
   source "$ENV_FILE"
   set +a
 fi
+
+PROJECT_ID="${PROJECT_ID:-$(gcloud config get-value project 2>/dev/null)}"
+if [ -z "$PROJECT_ID" ]; then
+  echo "No project: run 'gcloud config set project <id>' or set PROJECT_ID." >&2
+  exit 1
+fi
+echo "Deploying to project: $PROJECT_ID"
 
 # ── 0b. Normalize DATABASE_URL: percent-encode the password component.
 #       Supabase console URLs carry raw special chars (e.g. '@') in the
