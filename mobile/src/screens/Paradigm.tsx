@@ -114,9 +114,29 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
       {openCell ? (
         <View style={styles.drawer}>
           <Text style={styles.drawerTitle}>Why {openCell.form}?</Text>
+          {/* Derive the tapped cell itself — the stem alone would always prove
+              the nominative singular, whatever cell was opened. */}
           <DerivationPlayer
+            key={`${openCell.vibhakti}-${openCell.vacana}`}
             word={isVerb ? effDhatu ?? openCell.vibhakti ?? "" : effPratipadika ?? openCell.form ?? ""}
             kind={isVerb ? "verb" : "noun"}
+            params={
+              isVerb
+                ? {
+                    dhatu: effDhatu,
+                    lakara: lakara ?? "Lat",
+                    purusha: openCell.vibhakti.split(".")[0],
+                    vacana: openCell.vacana,
+                    expect: openCell.form ?? undefined,
+                  }
+                : {
+                    pratipadika: effPratipadika,
+                    linga: linga ?? "Pum",
+                    vibhakti: openCell.vibhakti,
+                    vacana: openCell.vacana,
+                    expect: openCell.form ?? undefined,
+                  }
+            }
             title={`${openCell.vibhakti} · ${VACANA_LABEL[openCell.vacana] ?? openCell.vacana}`}
             landOnEnd
           />

@@ -368,6 +368,17 @@ a coverage ceiling, not a generation defect.
   full-page reading posture with a 3D page-turn to adjacent verses; the
   collapsed list stays a vertical scroll (not a horizontal pager, U13-1). The
   turn is skippable (§3.7) and swapped instantly under Reduce Motion (§3.4).
+- **2026-09-15 — the book curls (owner's call).** The rigid `rotateY` flip
+  (`PageFlip`, then `BookFlip`) is replaced by
+  `components/book/PageCurlBook.tsx`: a true paper curl on iOS and Android,
+  with no rigid fallback — "true paper curl only". Still no new dependency: it
+  is the first runtime use of the already-installed Skia (`makeImageFromView`
+  snapshots + an SkSL cylinder-curl shader in `book/curlMath.ts`). Snapshots
+  are taken at rest, never on touch-down. Web gets a no-op `CurlLayer.tsx`
+  (Skia cannot snapshot RN views there) and turns instantly, as Reduce Motion
+  does. The contents list stays the landing page (also the owner's call), now
+  under the book's cover with **Open book** / **Continue**; any verse row
+  opens the book at that verse.
 - Tests: `backend/tests/test_shloka_reader.py` (4) — auth-gated list,
   ascending-date order, word_breakdown instrumentation present, deterministic
   across calls. Suite 495 → 499.
@@ -1144,6 +1155,99 @@ Full research: `CURRICULUM.md` §4.4 (sources), §5.5 (why it has no home),
   its host did not resolve. It is the sole remaining route to *ownable*
   Sanskrit video.
 
+## 2026-09-15 — Grammar tab rebuilt: a bilingual guide the engine checks
+
+The old Grammar tab was eight dense cards written for developers ("feature
+SETS", `ACC.SG`, "f(a,b) → c"). A learner who knows no Sanskrit could not
+follow it. It is now a guide: **18 chapters, 105 short topics (57 beginner,
+38 intermediate, 10 advanced), 44 glossary terms**, from the sounds of the
+script to Pāṇini's sūtras, plus a Word Lab.
+
+- **DECIDED: English and Hindi, both authored, one toggle.** Every
+  learner-facing string is a `{en, hi}` pair written natively in each language
+  — Hindi uses school-grammar words (कारक, विभक्ति, लिंग) rather than
+  translating the English. Sanskrit is language-neutral; its IAST always comes
+  from lipi. `tests/test_guide_content.py` fails on a missing language, the
+  wrong script, a feature code or developer jargon, unbalanced markup, prose
+  over the word caps (60 / 80 / 100), or a quote without a source.
+
+- **DECIDED: the engine is the author's editor.** Every Sanskrit claim in the
+  guide carries a server-only check (subanta, tiṅanta, kṛdanta, taddhita,
+  sandhi); **1,808 checks** run in tests, and the response keeps only
+  `checked: true`. Content the engine cannot derive was cut, not written
+  around. Gaps found while authoring (all left out of the guide): उद्+इ kta
+  (उदिते → उदिन्दिते), इष् (resolves to gaṇa 4: इष्यति), शक् (शक्यति), लिख्+tumun
+  (लेखितुम्), जागृ Lot (जागृत), भुज् san (बुभुक्षति), शी SAnac (शीकमानः), zyaY
+  (सौभाग्यम्), विद्वस्+tal, सुमित्रा+iY, and the sandhi splits वागीशः, षडाननः,
+  सङ्कल्पः, किञ्चित् and the ay/av joins (checked through word-building instead:
+  नी + ल्युट् → नयनम् fires 6.1.78). Chandas scans weights correctly but names
+  no anuṣṭubh, so the verse chapter teaches the śloka rule itself and never
+  credits the engine with a metre name.
+
+- **DECIDED: compounds are reference.** `prakriya` has no samāsa derivation.
+  The Compounds chapter labels every analysis as reference; what is checked is
+  the join, the declined compound and each word of the spelled-out analysis.
+
+- **Engine changes** (`services/prakriya.py`): `derive()` takes `gana`,
+  `aupadeshika`, `prayoga`, `sanadi`, `prefixes`, `krt`, `taddhita`,
+  `stem_type` and `expect`; feminine -ā/-ī/-ū stems use nyāp (लता → लताः was
+  wrong); roots resolve by surface form with a preferred-gaṇa table instead
+  of a prefix match (वद् no longer finds वन्द्); ubhayapada roots cite
+  parasmaipada first. `services/sandhi.py` gains `rule_splits` (the rule
+  table's own answer, for checking compound joins) and `is_known_word`.
+
+- **Word Lab lookup** (`GET /grammar/lookup`, `services/word_lookup.py`): the
+  rule-based analyzer proposes readings, the engine re-derives each one, and
+  only readings that reproduce the typed word survive; the kosha ranks real
+  stems above invented ones that derive the same form (गुरवे → गुरु, not
+  *गुरव). Local, no quota, like every /grammar route.
+
+- **Fixed in passing:** `ask_engine._derive_word_form` mapped dative and
+  genitive to `Chaturthi`/`Shashthi`, which are not vidyut names — those
+  derivations silently fell back to the nominative. It now shares the
+  lookup's case map. **Noticed, not fixed:** its verb branch is unreachable
+  (a `PRES.3SG` feature hits the noun branch's `continue` first), and
+  `lesson_service.list_lessons` does not filter `[staged]` rows.
+
+- **Audio: pre-rendered, gated on the owner.** `scripts/render_guide_audio.py`
+  collects every unique Sanskrit string (1,662 clips, 12,428 chars, **est
+  ₹37.28** at ₹30/10K), re-runs all engine checks before any spend, stores
+  clips through `services/storage`, and writes
+  `grammar_guide/audio_manifest.json`. The builder attaches `audio_url` only
+  for manifest entries, so no clip means no button. **Owner approved;
+  rendered 2026-09-15: all 1,662 clips (~₹37, 81 MB WAV) into local
+  `storage/audio/grammar/`, voice `aditya`, `hi-IN`.** Production serves audio
+  from GCS, so these files still have to be copied to the bucket under
+  `audio/grammar/` before the deployed app gets working buttons.
+
+- **Production had no audio store at all — found while uploading.** The live
+  Cloud Run service has no `AUDIO_STORAGE`/`GCS_AUDIO_BUCKET` (the last
+  `deploy.sh` ran without `GCS_AUDIO_BUCKET`), and the Dockerfile copies
+  `backend/app` but never `backend/storage/`, so every pre-rendered clip —
+  including the 2026-09-08 challenge and dialogue audio — has been a 404 in
+  production. **Owner approved, done 2026-09-15:** bucket
+  `gs://sanskritam-audio` (asia-south1, Standard, uniform access, `allUsers`
+  objectViewer, runtime SA objectAdmin — the deploy.sh setup) now holds all
+  2,025 WAVs (264 challenge, 99 dialogue, 1,662 grammar; 119 MiB) with
+  `audio/wav` and `public, max-age=31536000, immutable`. **Not done:** Cloud
+  Run still points nowhere — add `GCS_AUDIO_BUCKET=sanskritam-audio` to
+  `.env.deploy` before the next deploy. Challenge and dialogue rows store
+  `/audio/...` URLs in the database, so they also need a URL rewrite (or an
+  API redirect) before they play; the grammar guide builds its URLs from the
+  storage backend and needs nothing more. The guide builder now attaches
+  `audio_url` on local storage only when the WAV exists, so a deploy without
+  the bucket shows no speaker buttons instead of 1,662 dead ones.
+  Cost at Google's published rates: uploads ~₹0.86 once, storage ~₹0.24/month,
+  serving ~₹0.55 per 1,000 plays.
+
+- **Sarvam rate-limits bulk TTS.** The first live pass rendered 300 clips
+  back to back, then every request got `429 rate_limit_exceeded` and the
+  script logged 1,342 instant failures. The renderer now paces requests
+  (1 s), retries 429/5xx with backoff (5 → 120 s), and stops the run on a
+  limit that outlasts every retry instead of burning through the queue; the
+  per-clip manifest made the rerun resume exactly where it stopped. At that
+  pace the 1,342-clip rerun finished with no 429s. Any future bulk render
+  (lessons, vocab) should use the same pattern.
 
 ## 2026-09-22 — Talk: multilingual, and a conversation rather than a translator
 

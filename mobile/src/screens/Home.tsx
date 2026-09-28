@@ -25,10 +25,11 @@ import Animated, {
   withDelay,
 } from "react-native-reanimated";
 
-import { api, type DailyWordPuzzle, type LearnerProfile, type LessonSummary, type Shloka, type Unit } from "../api/client";
+import { api, type DailyWordPuzzle, type LessonSummary, type Shloka, type Unit } from "../api/client";
 import { Card, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
+import { cachedGet } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
@@ -42,7 +43,10 @@ type Props = TabScreenProps<"Home">;
 export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
   const rootNav = useNavigation();
-  const [profile, setProfile] = useState<LearnerProfile | null>(learner);
+  // The profile comes from auth context: AuthProvider filled it from /me while
+  // restoring the session (or from the login response), so Home issues no
+  // second /me on mount — and later refresh() calls elsewhere land here too.
+  const profile = learner;
   const [shloka, setShloka] = useState<Shloka | null>(null);
   const [shlokaLoading, setShlokaLoading] = useState(true);
   const [shlokaError, setShlokaError] = useState(false);
@@ -63,19 +67,19 @@ export default function HomeScreen({ navigation }: Props) {
   const [storyAt, setStoryAt] = useState(0);
 
   useEffect(() => {
+    if (learner) return;
     let alive = true;
     setProfileLoading(true);
-    refresh().then((p) => {
-      if (alive) {
-        setProfile(p);
-        setProfileLoading(false);
-      }
-    }).catch(() => {
-      if (alive) setProfileLoading(false);
-    });
+    refresh()
+      .catch(() => null)
+      .finally(() => {
+        if (alive) setProfileLoading(false);
+      });
     return () => {
       alive = false;
     };
+    // Only a missing profile is fetched; one that arrives later needs nothing.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refresh]);
 
   // U10-3: a failed fetch says so and offers retry — a catch that silently
@@ -83,8 +87,8 @@ export default function HomeScreen({ navigation }: Props) {
   const loadShloka = useCallback(() => {
     setShlokaLoading(true);
     setShlokaError(false);
-    api
-      .todayShloka()
+    // Same key as the Shloka screen, so opening the card renders from memory.
+    cachedGet("shloka-today", api.todayShloka)
       .then(setShloka)
       .catch(() => {
         setShloka(null);
@@ -96,8 +100,7 @@ export default function HomeScreen({ navigation }: Props) {
   const loadDaily = useCallback(() => {
     setDailyLoading(true);
     setDailyError(false);
-    api
-      .dailyWord()
+    cachedGet("daily-word", api.dailyWord)
       .then(setDailyWord)
       .catch(() => {
         setDailyWord(null);
@@ -109,9 +112,11 @@ export default function HomeScreen({ navigation }: Props) {
   useEffect(() => {
     loadShloka();
     loadDaily();
-    api.units().then((u) => { setUnits(u); setUnitsFailed(false); }).catch(() => { setUnits(null); setUnitsFailed(true); });
+    // Cached under the keys Path ("units") and the story deck
+    // ("story-chapters") read, so both open from memory after Home.
+    cachedGet("units", api.units).then((u) => { setUnits(u); setUnitsFailed(false); }).catch(() => { setUnits(null); setUnitsFailed(true); });
     api.reviewDue(1).then((d) => setDueCount(d.due_count ?? null)).catch(() => setDueCount(null));
-    api.storyChapters()
+    cachedGet("story-chapters", api.storyChapters)
       .then((chs) => setStoryTotal(chs.reduce((n, c) => n + c.cards.length, 0)))
       .catch(() => setStoryTotal(null));
   }, [loadShloka, loadDaily]);

@@ -24,23 +24,36 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.sanskritam.app"
+      "package": "com.sanskritam.app",
+      "versionCode": 1,
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font",
-      "expo-audio",
+      ["expo-audio", { "enableBackgroundPlayback": false }],
       "expo-file-system",
       "expo-status-bar",
       "expo-apple-authentication",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Sanskritam to photograph your handwriting so it can be read on this device"
+        }
+      ],
       "@react-native-vector-icons/ionicons",
       "expo-web-browser",
       [
         "@react-native-google-signin/google-signin",
         { "iosUrlScheme": "com.googleusercontent.apps.829757572630-4671983larm19abnu5qtopbbs6ehnbqp" }
-      ]
+      ],
+      "./plugins/withReleaseSigning"
     ]
   }
 }

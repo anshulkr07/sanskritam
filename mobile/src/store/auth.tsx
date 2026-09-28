@@ -11,8 +11,9 @@ import React, {
   useState,
 } from "react";
 
-import { api, setAuthToken, type DevLoginResponse, type LearnerProfile } from "../api/client";
+import { api, ApiError, setAuthToken, type DevLoginResponse, type LearnerProfile } from "../api/client";
 import { DEFAULT_LEARNER_NAME } from "../config";
+import { invalidateCache } from "../services/apiCache";
 import { registerPushToken } from "../services/push";
 
 const TOKEN_KEY = "shabd.token";
@@ -66,6 +67,7 @@ interface AuthState {
   guestLogin: () => Promise<LearnerProfile>;
   finishOnboarding: () => Promise<void>;
   logout: () => Promise<void>;
+  deleteAccount: () => Promise<void>;
   refresh: () => Promise<LearnerProfile | null>;
   updateName: (name: string) => Promise<void>;
 }
@@ -174,10 +176,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           try {
             const me = await api.me();
             mergeMe(me);
-          } catch {
-            await AsyncStorage.multiRemove([TOKEN_KEY]);
-            setAuthToken(null);
-            setToken(null);
+          } catch (e) {
+            if (e instanceof ApiError && e.status === 401) {
+              // The stored token is definitively dead (rotated secret, reset
+              // DB, ancient install — seen 2026-09-15). Wipe the session AND
+              // the onboarding flag so RootNavigator routes back to Login;
+              // otherwise the user is stranded in MainTabs where every
+              // screen 401s and reports "check your connection". Any other
+              // failure (offline, 5xx) keeps local state so a retry works.
+              await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY]);
+              setAuthToken(null);
+              setToken(null);
+              setOnboarded(false);
+            } else {
+              await AsyncStorage.multiRemove([TOKEN_KEY]);
+              setAuthToken(null);
+              setToken(null);
+            }
           }
         }
         // Check onboarding status
@@ -206,12 +221,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setOnboarded(false);
   }, []);
 
+  // Google Play requires in-app deletion. The server removes the account and
+  // all its learning data; then this device forgets everything it held (token,
+  // install id, cached responses, preferences), so the next start is a new,
+  // unlinked learner. If the server call fails, nothing local is touched.
+  const deleteAccount = useCallback(async () => {
+    await api.deleteMe();
+    invalidateCache();
+    await AsyncStorage.clear();
+    setAuthToken(null);
+    setToken(null);
+    setLearner(null);
+    setDisplayName("");
+    setOnboarded(false);
+  }, []);
+
   const refresh = useCallback(async (): Promise<LearnerProfile | null> => {
     if (!token) return null;
     try {
       const me = await api.me();
       return mergeMe(me);
-    } catch {
+    } catch (e) {
+      if (e instanceof ApiError && e.status === 401) {
+        // Dead token discovered after mount (Home/Progress refresh): same
+        // full wipe as the restore path so the app falls back to Login.
+        await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY]);
+        setAuthToken(null);
+        setToken(null);
+        setOnboarded(false);
+      }
       return null;
     }
   }, [token, mergeMe]);
@@ -234,6 +272,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       guestLogin,
       finishOnboarding,
       logout,
+      deleteAccount,
       refresh,
       updateName,
     }),
@@ -249,6 +288,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       guestLogin,
       finishOnboarding,
       logout,
+      deleteAccount,
       refresh,
       updateName,
     ],

@@ -25,6 +25,7 @@ import VarnaGrid from "../components/VarnaGrid";
 import { Skeleton } from "../components/Skeleton";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
+import { cachedGet, invalidateCache } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { color, font, radius, script, shadow, space } from "../theme";
 
@@ -51,8 +52,9 @@ export default function DailyWordScreen({ navigation }: Props) {
   const load = useCallback(() => {
     setStatus("loading");
     setStreak(null);
-    api
-      .dailyWord()
+    // Home fetched this moments ago under the same key. A guess drops the
+    // entry (below), so a return visit never replays a stale puzzle.
+    cachedGet("daily-word", api.dailyWord)
       .then((p) => {
         setWordLength(p.word_length);
         setGuessesUsed(p.guesses_used);
@@ -85,6 +87,7 @@ export default function DailyWordScreen({ navigation }: Props) {
     setBusy(true);
     try {
       const res = await api.dailyWordGuess(g);
+      invalidateCache("daily-word");
       if (res.status === "refused") {
         if (res.reason === "length_mismatch") {
           setRefusedReason("That word has a different number of sounds.");

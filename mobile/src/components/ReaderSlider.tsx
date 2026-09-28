@@ -5,9 +5,13 @@
 // scrubbing past six leaves with six flips is theatre, not wayfinding — with
 // a haptic tick on commit. ≥44pt touch height (U5-4); the tooltip and the
 // position announce through accessibility (value + adjustable actions).
+//
+// Taps go through a gesture-handler Tap (same coordinate space as the scrub
+// Pan) — never a nested Pressable reading locationX, which is undefined on
+// some platforms and used to commit NaN, poisoning the book's page state.
 
 import React, { useMemo, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   runOnJS,
@@ -28,7 +32,10 @@ interface ReaderSliderProps {
 
 function clamp(i: number, count: number): number {
   if (count <= 0) return 0;
-  return Math.max(0, Math.min(count - 1, Math.round(i)));
+  if (!Number.isFinite(i)) return 0;
+  const n = Math.round(i);
+  if (!Number.isFinite(n)) return 0;
+  return Math.max(0, Math.min(count - 1, n));
 }
 
 export default function ReaderSlider({
@@ -43,22 +50,21 @@ export default function ReaderSlider({
   const cbRef = useRef(onScrubEnd);
   cbRef.current = onScrubEnd;
   const scrub = useSharedValue(0);
-  const widthRef = useRef(0);
-  widthRef.current = width;
+  const widthShared = useSharedValue(0);
+  // Last previewed page, on the UI thread — scrubbing only crosses into JS
+  // when the previewed page actually changes, not every frame.
+  const lastPreview = useSharedValue(-1);
 
   const shown = preview ?? clamp(index, count);
-  const frac = count > 1 ? shown / (count - 1) : 0;
-
-  const toIndex = (x: number): number => {
-    const w = widthRef.current || 1;
-    return clamp((x / w) * (count - 1), count);
-  };
-  const toIndexRef = useRef(toIndex);
-  toIndexRef.current = toIndex;
+  const safeShown = Number.isFinite(shown) ? shown : 0;
+  const frac = count > 1 ? safeShown / (count - 1) : 0;
+  const safeFrac = Number.isFinite(frac) ? Math.max(0, Math.min(1, frac)) : 0;
 
   const commit = (i: number) => {
-    const c = clamp(i, count);
+    lastPreview.value = -1;
     setPreview(null);
+    if (!Number.isFinite(i)) return;
+    const c = clamp(i, count);
     if (c !== clamp(index, count)) {
       haptics.tap();
       cbRef.current(c);
@@ -67,8 +73,20 @@ export default function ReaderSlider({
   const commitRef = useRef(commit);
   commitRef.current = commit;
 
-  // Memoised like BookFlip's: scrubbing re-renders every frame (preview),
-  // and a gesture recreated mid-scrub cancels the scrub.
+  // Worklet: x (gesture space) → page. Reads the shared width so taps and
+  // scrubs agree even before the next render.
+  const toIndexWorklet = (x: number, w: number, n: number): number => {
+    "worklet";
+    if (!Number.isFinite(x) || n <= 1 || !(w > 0)) return 0;
+    const raw = (x / w) * (n - 1);
+    if (!Number.isFinite(raw)) return 0;
+    return Math.max(0, Math.min(n - 1, Math.round(raw)));
+  };
+
+  // Memoised like PageCurlBook's: scrubbing re-renders on preview change,
+  // and a gesture recreated mid-scrub cancels the scrub — so the gestures
+  // only ever depend on [enabled-shape], reading the rest from shared
+  // values and stable refs.
   const pan = useMemo(
     () =>
       Gesture.Pan()
@@ -77,21 +95,46 @@ export default function ReaderSlider({
         .failOffsetY([-10, 10])
         .onUpdate((e) => {
           scrub.value = e.x;
-          runOnJS(setPreview)(toIndexRef.current(e.x));
+          const nxt = toIndexWorklet(e.x, widthShared.value, count);
+          if (nxt !== lastPreview.value) {
+            lastPreview.value = nxt;
+            runOnJS(setPreview)(nxt);
+          }
         })
         .onEnd((e) => {
-          runOnJS(commitRef.current)(toIndexRef.current(e.x));
+          const end = toIndexWorklet(e.x, widthShared.value, count);
+          lastPreview.value = -1;
+          runOnJS(commitRef.current)(end);
         })
         .onFinalize(() => {
+          lastPreview.value = -1;
           runOnJS(setPreview)(null);
         }),
+    // `count` is captured by the worklet math — rebuilt when the book
+    // changes, never mid-scrub (the book is fixed while reading).
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [count],
   );
 
+  const tap = useMemo(
+    () =>
+      Gesture.Tap()
+        .enabled(count > 1)
+        .onEnd((e) => {
+          const at = toIndexWorklet(e.x, widthShared.value, count);
+          runOnJS(commitRef.current)(at);
+        }),
+    // Same as pan: rebuilt only when the book changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [count],
+  );
+
+  const composed = useMemo(() => Gesture.Exclusive(pan, tap), [pan, tap]);
+
   const thumbStyle = useAnimatedStyle(() => {
-    const w = width || 1;
-    const x = preview !== null ? Math.max(0, Math.min(w, scrub.value)) : frac * w;
+    const w = width > 0 ? width : 1;
+    const raw = preview !== null ? scrub.value : safeFrac * w;
+    const x = Number.isFinite(raw) ? Math.max(0, Math.min(w, raw)) : 0;
     return { transform: [{ translateX: x }] };
   });
 
@@ -103,30 +146,29 @@ export default function ReaderSlider({
       {preview !== null && (
         <View style={styles.tip} pointerEvents="none">
           <Text style={styles.tipText} numberOfLines={1}>
-            {labelFor(shown)} · {shown + 1}/{count}
+            {labelFor(safeShown)} · {safeShown + 1}/{count}
           </Text>
         </View>
       )}
-      <GestureDetector gesture={pan}>
+      <GestureDetector gesture={composed}>
         <View
           style={styles.hit}
-          onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
+          onLayout={(e) => {
+            const w = e.nativeEvent.layout.width;
+            setWidth(w);
+            widthShared.value = w;
+          }}
           accessibilityRole="adjustable"
-          accessibilityLabel={`Reading position, page ${shown + 1} of ${count}, ${labelFor(shown)}`}
+          accessibilityLabel={`Reading position, page ${safeShown + 1} of ${count}, ${labelFor(safeShown)}`}
           accessibilityActions={[{ name: "increment" }, { name: "decrement" }]}
           onAccessibilityAction={(e) => {
-            if (e.nativeEvent.actionName === "increment") commit(shown + 1);
-            else commit(shown - 1);
+            if (e.nativeEvent.actionName === "increment") commit(safeShown + 1);
+            else commit(safeShown - 1);
           }}
         >
-          <Pressable
-            style={styles.track}
-            onPress={(e) => commit(toIndex(e.nativeEvent.locationX))}
-            accessibilityRole="button"
-            accessibilityLabel="Jump to a page"
-          >
-            <View style={[styles.fill, { width: `${frac * 100}%` }]} />
-          </Pressable>
+          <View style={styles.track} accessibilityRole="none">
+            <View style={[styles.fill, { width: `${safeFrac * 100}%` }]} />
+          </View>
           <Animated.View style={[styles.thumbAnchor, thumbStyle]} pointerEvents="none">
             <View style={styles.thumb} />
           </Animated.View>

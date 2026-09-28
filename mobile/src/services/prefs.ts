@@ -12,10 +12,14 @@ export const PREF_KEYS = {
   haptics: "shabd.pref.haptics",
   reducedMotion: "shabd.pref.reducedMotion",
   textSize: "shabd.pref.textSize",
+  guideLang: "shabd.pref.guideLang",
 } as const;
 
 let hapticsEnabled = true;
 let reducedMotionOverride = false;
+// Grammar guide language. null = never chosen: the screen falls back to the
+// learner's bridge languages until the toggle is used.
+let guideLang: "en" | "hi" | null = null;
 
 type Listener = () => void;
 const listeners = new Set<Listener>();
@@ -40,12 +44,14 @@ export function subscribePrefs(l: Listener): () => void {
 /** Load persisted flags at startup; safe to call repeatedly. */
 export async function loadPrefs(): Promise<void> {
   try {
-    const [h, r] = await Promise.all([
+    const [h, r, g] = await Promise.all([
       AsyncStorage.getItem(PREF_KEYS.haptics),
       AsyncStorage.getItem(PREF_KEYS.reducedMotion),
+      AsyncStorage.getItem(PREF_KEYS.guideLang),
     ]);
     if (h !== null) hapticsEnabled = h !== "false";
     if (r !== null) reducedMotionOverride = r === "true";
+    if (g === "en" || g === "hi") guideLang = g;
     notify();
   } catch {
     /* storage unavailable — defaults stand */
@@ -69,5 +75,16 @@ export function isReducedMotionOverride(): boolean {
 export function setReducedMotionOverride(v: boolean): void {
   reducedMotionOverride = v;
   AsyncStorage.setItem(PREF_KEYS.reducedMotion, v ? "true" : "false").catch(() => null);
+  notify();
+}
+
+/** The grammar guide's language, or null when the learner never chose one. */
+export function getGuideLang(): "en" | "hi" | null {
+  return guideLang;
+}
+
+export function setGuideLang(v: "en" | "hi"): void {
+  guideLang = v;
+  AsyncStorage.setItem(PREF_KEYS.guideLang, v).catch(() => null);
   notify();
 }

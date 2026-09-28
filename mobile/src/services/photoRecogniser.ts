@@ -17,12 +17,10 @@ export interface PhotoRecogniser {
 }
 
 /**
- * The ML Kit adapter is wired here when the native module ships
- * (config plugin + dev build, same as Digital Ink):
- *
- *   // e.g. a text-recognition RN module exposing an on-device recogniser
- *   const mod = require("<text-recognition-module>");
- *   await mod.recognize(imageUri) -> [{text, confidence}] | {text, blocks}
+ * The ML Kit adapter is wired to `@react-native-ml-kit/text-recognition`
+ * (installed, on-device Text Recognition v2) with the Devanagari script.
+ * Needs a dev build (native linking + prebuild); in Expo Go the native
+ * module is absent and this returns UNAVAILABLE below.
  *
  * The adapter contract is deliberately narrow: a uri in, {text, confidence}
  * out, image discarded by the caller immediately after. Nothing transmitted.
@@ -41,14 +39,41 @@ export function getPhotoRecogniser(): PhotoRecogniser {
     // require (not import) so the app runs where the native module does not
     // exist yet. Must be a STATIC literal require — Metro/Expo's bundler
     // statically resolves require() and rejects a dynamic require(name) at
-    // build time (same seam pattern as inkRecogniser.ts). The module lives in
-    // a device that ships it; until then the catch below returns UNAVAILABLE.
+    // build time (same seam pattern as inkRecogniser.ts).
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const mod = require("@react-native-mlkit/text-recognition");
+    const { NativeModules } = require("react-native");
+    // No native linking (Expo Go / web) — honest unavailable adapter.
+    // The module's JS proxy throws a linking error on call, so gate on the
+    // native module's presence instead of letting `ready` lie.
+    if (!NativeModules?.TextRecognition) return UNAVAILABLE;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const mod = require("@react-native-ml-kit/text-recognition");
+    const TR = mod?.default ?? mod;
+    const script = mod?.TextRecognitionScript?.DEVANAGARI ?? "Devanagari";
+    if (TR?.recognize && typeof TR.recognize === "function") {
+      return {
+        ready: true,
+        statusNote: "",
+        async recognise(imageUri: string) {
+          try {
+            // On-device OCR, Devanagari script. The result carries no
+            // confidence, so report a neutral 0.5 and let the server bias
+            // the photo path toward unsure (P20-4).
+            const out = await TR.recognize(imageUri, script);
+            const text =
+              typeof out?.text === "string" ? out.text.trim() : "";
+            if (!text) return null;
+            return { text, confidence: 0.5 };
+          } catch {
+            return null;
+          }
+        },
+      };
+    }
     const adapter = ocrAdapter(mod);
     if (adapter) return adapter;
   } catch {
-    // module not present — honest unavailable adapter below
+    // module not present or native not linked — honest unavailable adapter
   }
   return UNAVAILABLE;
 }

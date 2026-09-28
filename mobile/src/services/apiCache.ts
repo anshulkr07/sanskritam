@@ -50,6 +50,12 @@ export async function cachedGet<T>(
   return p;
 }
 
+/** The cached value for `key` while it is still fresh — never fetches. */
+export function peekCache<T>(key: string, ttlMs: number = API_CACHE_TTL_MS): T | undefined {
+  const hit = cache.get(key);
+  return hit && Date.now() - hit.at < ttlMs ? (hit.data as T) : undefined;
+}
+
 /** Drop cached entries. No prefix = drop everything (e.g. after login). */
 export function invalidateCache(prefix?: string): void {
   if (!prefix) {

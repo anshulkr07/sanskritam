@@ -42,6 +42,12 @@ export interface InkRecogniser {
    * MUST NOT transmit strokes or images anywhere.
    */
   recognise: (strokes: Point[][]) => Promise<{ text: string; confidence: number } | null>;
+  /**
+   * The current copy target. The canvas pushes it whenever the item changes;
+   * the local template fallback needs it (it verifies against the reference),
+   * the ML Kit adapter ignores it (it classifies open handwriting).
+   */
+  setReference?: (devanagari: string, paths: StrokePath[]) => void;
 }
 
 /** A minimal SVG-path serialiser for captured strokes (client-side display). */
@@ -65,6 +71,12 @@ export default function WritingCanvas({ reference, referencePaths, recogniser, o
   const [strokes, setStrokes] = useState<Point[][]>([]);
   const [current, setCurrent] = useState<Point[]>([]);
   const [layout, setLayout] = useState({ w: 0, h: 0 });
+
+  // Keep the recogniser's copy target in step with the item. The template
+  // fallback verifies against this; the ML Kit adapter ignores it.
+  useEffect(() => {
+    recogniser.setReference?.(reference, referencePaths ?? []);
+  }, [recogniser, reference, referencePaths]);
 
   const pan = Gesture.Pan()
     .minDistance(2)

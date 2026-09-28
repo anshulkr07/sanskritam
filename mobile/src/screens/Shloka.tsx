@@ -18,6 +18,7 @@ import Animated, {
 
 import { api, type Shloka, type WordBreakdown } from "../api/client";
 import { useAsk } from "../ask/AskProvider";
+import { cachedGet } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
@@ -155,8 +156,8 @@ export default function ShlokaScreen() {
   const load = useCallback(() => {
     setLoading(true);
     setLoadFailed(false);
-    api
-      .todayShloka()
+    // Same key as Home's śloka card, so opening the card renders from memory.
+    cachedGet("shloka-today", api.todayShloka)
       .then((s) => {
         setShloka(s);
         // U3-4: opening the daily verse earns prathama-sloka (once).

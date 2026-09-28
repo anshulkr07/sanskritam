@@ -63,6 +63,11 @@ export type RootStackParamList = {
   // Story deck (Discover Sanskrit) — the swipeable basics→advanced cards,
   // reached from the Home hero. Read-only; progress lives on the device.
   Story: undefined;
+  // Grammar guide (2026-09-15): one topic page, and the word lookup that used
+  // to sit at the bottom of the Grammar tab. Both stack over the tab — never a
+  // seventh tab (U8-1).
+  GrammarTopic: { topicId: string };
+  WordLab: { word?: string } | undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

@@ -20,7 +20,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import api from "../../api/client";
-import type { Derivation } from "../../api/client";
+import type { DeriveParams, Derivation } from "../../api/client";
 import { duration, easing } from "../../motion";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { useDerivation, diffResult } from "../../hooks/useDerivation";
@@ -36,6 +36,8 @@ interface DerivationPlayerProps {
   title?: string;
   /** Prefix a stage form with this label (noun vs verb disambiguation). */
   kind?: "verb" | "noun";
+  /** Exact /grammar/derive query (grammar guide proofs); overrides word + kind. */
+  params?: DeriveParams;
 }
 
 export default function DerivationPlayer({
@@ -43,14 +45,17 @@ export default function DerivationPlayer({
   landOnEnd = false,
   title,
   kind = "verb",
+  params,
 }: DerivationPlayerProps) {
   const reduced = useReducedMotion();
   const [playing, setPlaying] = useState(false);
 
   const fetchFn = (): Promise<Derivation | null> =>
-    kind === "verb"
-      ? api.deriveWord({ dhatu: word })
-      : api.deriveWord({ pratipadika: word });
+    params
+      ? api.deriveWord(params)
+      : kind === "verb"
+        ? api.deriveWord({ dhatu: word })
+        : api.deriveWord({ pratipadika: word });
 
   const r = useDerivation(fetchFn);
 

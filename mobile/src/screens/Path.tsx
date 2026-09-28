@@ -15,13 +15,19 @@
 // in-flight, refetched on focus (progress changes behind other tabs), never
 // setState after unmount. The unit list is a FlatList (lesson counts only
 // grow); lessons inside an expanded unit stay a small nested map.
+//
+// Videos (P24): one cached GET /videos read maps unit_id → count, so every
+// unit header and lesson row states its watch-first load (a lesson's videos
+// ARE its unit's — the backend resolves lesson_id through the unit). The
+// badge hides while the catalogue loads or fails; the path never depends
+// on it.
 
 import React, { useCallback, useState } from "react";
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
-import { api, type LessonSummary, type Unit } from "../api/client";
+import { api, type LessonSummary, type Unit, type VideoItem } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { color, font, radius, script, shadow, space } from "../theme";
@@ -34,6 +40,21 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
   const { data: units, loading, failed, retry } = useQuery<Unit[]>("units", api.units, {
     refetchOnFocus: true,
   });
+  // P24: video counts per unit so every lesson row can state its watch-first
+  // load honestly. Videos resolve per unit (GET /videos?lesson_id= maps a
+  // lesson to its unit), so a lesson's count IS its unit's count — one
+  // cached catalogue read, never a request per row. A failed fetch hides
+  // the badges, never the path.
+  const { data: allVideos } = useQuery<VideoItem[]>("videos", api.videos, {
+    refetchOnFocus: true,
+  });
+  const videoCountByUnit = React.useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const v of allVideos ?? []) {
+      if (v.unit_id) counts[v.unit_id] = (counts[v.unit_id] ?? 0) + 1;
+    }
+    return counts;
+  }, [allVideos]);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [selected, setSelected] = useState<LessonSummary | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -77,6 +98,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
       const unlocked = unitUnlocked(ui);
       const open = expanded === unit.id;
       const pct = Math.round((unit.progress ?? 0) * 100);
+      const videoCount = videoCountByUnit[unit.id] ?? 0;
       return (
         <View style={styles.unit}>
           <Pressable
@@ -96,7 +118,10 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
             </View>
             <View style={{ flex: 1 }}>
               <Text style={[styles.unitSa, script("bold")]}>{unit.title_hi}</Text>
-              <Text style={styles.unitEn}>{unit.title_en} · {unit.lessons.length} lessons</Text>
+              <Text style={styles.unitEn}>
+                {unit.title_en} · {unit.lessons.length} {unit.lessons.length === 1 ? "lesson" : "lessons"}
+                {videoCount > 0 && ` · ${videoCount} ${videoCount === 1 ? "video" : "videos"}`}
+              </Text>
               <View style={styles.track}>
                 <View style={[styles.fill, { width: `${pct}%` }]} />
               </View>
@@ -115,14 +140,24 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
                 onPress={() => onLessonTap(lesson)}
                 style={styles.lessonRow}
                 accessibilityRole="button"
-                accessibilityLabel={`${lesson.title_hi} — ${lesson.title_en}. ${lesson.step_count} steps`}
+                accessibilityLabel={`${lesson.title_hi} — ${lesson.title_en}. ${lesson.step_count} steps${
+                  videoCount > 0 ? `, ${videoCount} ${videoCount === 1 ? "video" : "videos"}` : ""
+                }`}
               >
                 <Ionicons name="book-outline" size={18} color={color.saffron} />
                 <View style={{ flex: 1 }}>
                   <Text style={[styles.lessonSa, script("semibold")]}>{lesson.title_hi}</Text>
                   <Text style={styles.lessonEn}>{lesson.title_en}</Text>
                 </View>
-                <Text style={styles.lessonSteps}>{lesson.step_count} steps</Text>
+                <View style={styles.lessonSide}>
+                  <Text style={styles.lessonSteps}>{lesson.step_count} steps</Text>
+                  {videoCount > 0 && (
+                    <View style={styles.videoBadge}>
+                      <Ionicons name="play" size={10} color={color.saffronDeep} />
+                      <Text style={styles.videoBadgeText}>{videoCount}</Text>
+                    </View>
+                  )}
+                </View>
               </Pressable>
             ))}
           {open && !unlocked && (
@@ -131,7 +166,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
         </View>
       );
     },
-    [expanded, onLessonTap, unitUnlocked],
+    [expanded, onLessonTap, unitUnlocked, videoCountByUnit],
   );
 
   return (
@@ -162,6 +197,9 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
           renderItem={renderUnit}
           contentContainerStyle={styles.body}
           initialNumToRender={11}
+          refreshControl={
+            <RefreshControl refreshing={loading && list.length > 0} onRefresh={retry} />
+          }
           ListHeaderComponent={            <View>
               <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Your Path</Text>
               <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>Eleven units, from the mouth-map to the sentence.</Text>
@@ -183,7 +221,12 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
           <View style={styles.sheet}>
             <Text style={[styles.sheetTitle, script("bold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>{selected.title_hi}</Text>
             <Text style={[styles.sheetSub, { fontSize: sized(font.sizes.sm) }]}>{selected.title_en}</Text>
-            <Text style={styles.sheetMeta}>{selected.step_count} steps · graded as you go</Text>
+            <Text style={styles.sheetMeta}>
+              {selected.step_count} steps
+              {(videoCountByUnit[selected.unit_id] ?? 0) > 0 &&
+                ` · ${videoCountByUnit[selected.unit_id]} ${(videoCountByUnit[selected.unit_id] ?? 0) === 1 ? "video" : "videos"} play in the app`}
+              {" · graded as you go"}
+            </Text>
             <Button label="Learn" onPress={onLearn} block style={{ marginTop: space.md }} />
             <Button label="Practice" onPress={onPractice} block style={{ marginTop: space.sm }} />
           </View>
@@ -303,6 +346,22 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: font.sizes.xs,
     color: color.inkSoft,
+  },
+  lessonSide: { alignItems: "flex-end", gap: 4 },
+  videoBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 3,
+    backgroundColor: color.saffronLight,
+    borderRadius: radius.pill,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+  },
+  videoBadgeText: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.xs,
+    color: color.saffronDeep,
   },
   lockNote: {
     fontFamily: "Nunito_400Regular",

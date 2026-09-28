@@ -1,378 +1,496 @@
-// Grammar — the differentiator's front door (U8-5) + the Learn map.
+// Grammar — the guide's hub: Sanskrit grammar in plain English or Hindi.
 //
-// Two halves, one screen:
-//  - Learn: GET /grammar/guide sections (basics → advanced), each card with
-//    beginner text, tappable feature chips (→ Lesson), Learn/Practice buttons
-//    (→ Lesson step player / Challenge), and a Go-deeper toggle for the
-//    intermediate + advanced text. Lesson existence resolves from
-//    GET /lessons so the guide never stales.
-//  - Proof: the original search field — type a word, get its derivation
-//    (U7-1's player) or paradigm (U7-5's table).
+// Replaces the old single scroll of eight dense cards. Top to bottom: title
+// with the English | हिन्दी toggle, one search box (topics + glossary; a
+// Devanagari word offers the Word Lab), "New here?" and "Continue" cards,
+// level chips, collapsible chapter cards listing their topics, and tools.
 //
 // Rules that govern this screen:
-//  - Render ONLY what GET /grammar/derive/paradigm return; never a rule the
-//    backend did not send; never explain a sūtra with an LLM call (§U7).
-//  - An underivable input returns an honest "no derivation for this", not an
-//    empty screen or a spinner (P9-1.4).
-//  - Recent lookups persist locally — a reference with no history is hostile.
+//  - Content only from GET /grammar/guide (services/grammarGuide caches the
+//    last good copy for offline reading). Nothing is graded or sent: read
+//    marks live on the device.
+//  - Keeps useQuery("grammar-lessons", api.lessons) warm — Lesson.tsx peeks
+//    that cache for its title.
+//  - Every Pressable carries role + label + state; colour never the only
+//    signal (read state is an icon and text, level is a word).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import React from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import DerivationPlayer from "../components/derivation/DerivationPlayer";
-import SandhiVisual from "../components/derivation/SandhiVisual";
+import { api, type GuideChapter, type GuideLang, type GuideTopicSummary } from "../api/client";
 import { useAsk } from "../ask/AskProvider";
-import ParadigmScreen from "./Paradigm";
-import { haptics } from "../services/haptics";
-import { api, type GuideSection, type LessonSummary } from "../api/client";
+import FetchError from "../components/FetchError";
+import { Skeleton } from "../components/Skeleton";
+import Collapsible from "../components/grammar/Collapsible";
+import GlossarySheet from "../components/grammar/GlossarySheet";
+import InlineText from "../components/grammar/InlineText";
+import LangToggle from "../components/grammar/LangToggle";
+import LevelPill, { LEVEL_LABEL } from "../components/grammar/LevelPill";
+import { GUIDE_UI } from "../components/grammar/strings";
+import { Button, ProgressBar } from "../components/ui";
+import { useGrammarProgress, useGuideLang } from "../hooks/useGuide";
 import { useQuery } from "../hooks/useQuery";
-import { Button } from "../components/ui";
+import { useTypeScale } from "../hooks/useTypeScale";
 import type { TabScreenProps } from "../navigation/types";
+import { fetchGuideIndex } from "../services/grammarGuide";
+import { haptics } from "../services/haptics";
 import { color, font, radius, script, shadow, space } from "../theme";
 
-const RECENT_KEY = "shabd.grammar.recent";
+const DEVANAGARI = /[ऀ-ॿ]/;
+const norm = (s: string) => s.normalize("NFC").toLowerCase();
 
-// Small heuristic: a word ending in a vowel is treated as a noun (prātipadika)
-// for the derivation/paradigm guess. Verbs are looked up by their dhātu.
-function guessKind(word: string): "verb" | "noun" {
-  return /[ऀ-ॿ]$/.test(word) ? "noun" : "verb";
+function TopicRow({
+  topic,
+  read,
+  lang,
+  onPress,
+}: {
+  topic: GuideTopicSummary;
+  read: boolean;
+  lang: GuideLang;
+  onPress: () => void;
+}) {
+  const { sized } = useTypeScale();
+  const title = topic.title[lang] || topic.title.en;
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.topicRow, pressed && styles.pressed]}
+      accessibilityRole="button"
+      accessibilityLabel={`${title}. ${LEVEL_LABEL[topic.level]?.[lang] ?? ""}. ${read ? GUIDE_UI.markedRead[lang] : ""}`}
+    >
+      <Ionicons
+        name={read ? "checkmark-circle" : "ellipse-outline"}
+        size={20}
+        color={read ? color.okText : color.inkFaint}
+      />
+      <View style={styles.topicText}>
+        <InlineText text={title} lang={lang} style={[styles.topicTitle, { fontSize: sized(font.sizes.base) }]} />
+        <InlineText
+          text={topic.summary[lang] || topic.summary.en}
+          lang={lang}
+          style={[styles.topicSummary, { fontSize: sized(font.sizes.sm) }]}
+          numberOfLines={2}
+        />
+        <View style={styles.topicMeta}>
+          <LevelPill level={topic.level} lang={lang} />
+          <Text style={styles.metaText}>
+            {topic.minutes} {GUIDE_UI.minutes[lang]}
+          </Text>
+        </View>
+      </View>
+      <Ionicons name="chevron-forward" size={18} color={color.saffron} />
+    </Pressable>
+  );
 }
 
-function LearnSectionCard({
-  section,
-  lessonsByFeature,
-  onLearn,
-  onPractice,
-  onFeature,
+function ChapterCard({
+  chapter,
+  topics,
+  read,
+  lang,
+  open,
+  onToggle,
+  onOpenTopic,
 }: {
-  section: GuideSection;
-  lessonsByFeature: Map<string, LessonSummary>;
-  onLearn: (featureId: string) => void;
-  onPractice: (features: string[]) => void;
-  onFeature: (featureId: string) => void;
+  chapter: GuideChapter;
+  topics: GuideTopicSummary[];
+  read: Set<string>;
+  lang: GuideLang;
+  open: boolean;
+  onToggle: () => void;
+  onOpenTopic: (id: string) => void;
 }) {
-  const [deep, setDeep] = useState(false);
-  const firstTeachable = section.feature_ids.find((f) => lessonsByFeature.has(f));
+  const { sized } = useTypeScale();
+  const all = chapter.topic_ids.length;
+  const done = chapter.topic_ids.filter((id) => read.has(id)).length;
+  const title = chapter.title[lang] || chapter.title.en;
   return (
-    <View style={styles.card}>
-      <Text style={styles.cardTitle}>{section.title_en}</Text>
-      {!!section.title_hi && (
-        <Text style={[styles.cardSa, script("semibold")]}>{section.title_hi}</Text>
-      )}
-      <Text style={styles.cardBody}>{section.body_beginner}</Text>
-      {section.examples.slice(0, 3).map((ex) => (
-        <View key={ex.devanagari} style={styles.exampleRow}>
-          <Text style={[styles.exampleDev, script("semibold")]}>{ex.devanagari}</Text>
-          <Text style={styles.exampleGloss}>{ex.gloss}</Text>
+    <Collapsible
+      style={styles.chapter}
+      open={open}
+      onToggle={onToggle}
+      accessibilityLabel={`${title}. ${done} ${GUIDE_UI.of[lang]} ${all} ${GUIDE_UI.read[lang]}`}
+      header={
+        <View style={styles.chapterHead}>
+          <View style={styles.chapterIcon}>
+            <Ionicons name={(chapter.icon || "book-outline") as IoniconsIconName} size={22} color={color.saffron} />
+          </View>
+          <View style={styles.chapterText}>
+            <InlineText text={title} lang={lang} style={[styles.chapterTitle, { fontSize: sized(font.sizes.md) }]} />
+            <Text style={[script("semibold"), styles.chapterSa, { fontSize: sized(16) }]}>{chapter.title_sa}</Text>
+            <InlineText
+              text={chapter.blurb[lang] || chapter.blurb.en}
+              lang={lang}
+              style={[styles.chapterBlurb, { fontSize: sized(font.sizes.sm) }]}
+            />
+            <View style={styles.progressRow}>
+              <ProgressBar progress={all ? done / all : 0} height={6} style={styles.progress} />
+              <Text style={[styles.metaText, lang === "hi" && script("semibold")]}>
+                {done} / {all} {GUIDE_UI.read[lang]}
+              </Text>
+            </View>
+          </View>
         </View>
-      ))}
-      <View style={styles.chipRow}>
-        {section.feature_ids.map((f) => {
-          const taught = lessonsByFeature.has(f);
-          return (
-            <Pressable
-              key={f}
-              onPress={() => {
-                haptics.tap();
-                onFeature(f);
-              }}
-              style={[styles.chip, taught && styles.chipTaught]}
-              accessibilityRole="button"
-              accessibilityLabel={`${f}${taught ? ", has lesson" : ", reference only"}`}
-            >
-              <Text style={[styles.chipText, taught && styles.chipTextTaught]}>{f}</Text>
-            </Pressable>
-          );
-        })}
+      }
+    >
+      <View style={styles.topicList}>
+        {topics.map((tp) => (
+          <TopicRow key={tp.id} topic={tp} read={read.has(tp.id)} lang={lang} onPress={() => onOpenTopic(tp.id)} />
+        ))}
       </View>
-      {deep && (
-        <View>
-          {!!section.body_intermediate && (
-            <Text style={styles.cardBodyDeep}>{section.body_intermediate}</Text>
-          )}
-          {!!section.body_advanced && (
-            <Text style={styles.cardBodyDeep}>{section.body_advanced}</Text>
-          )}
-        </View>
-      )}
-      <Pressable
-        onPress={() => {
-          haptics.tap();
-          setDeep((d) => !d);
-        }}
-        style={styles.deepToggle}
-        accessibilityRole="button"
-        accessibilityLabel={deep ? "Show less" : "Go deeper: intermediate and advanced"}
-        accessibilityState={{ expanded: deep }}
-      >
-        <Text style={styles.deepToggleText}>
-          {deep ? "Show less" : "Go deeper: intermediate + advanced"}
-        </Text>
-      </Pressable>
-      <View style={styles.cardActions}>
-        <Button
-          label={firstTeachable ? "Learn" : "No lesson yet"}
-          onPress={() => firstTeachable && onLearn(firstTeachable)}
-          disabled={!firstTeachable}
-        />
-        <Button label="Practice" onPress={() => onPractice(section.feature_ids)} />
-      </View>
-    </View>
+    </Collapsible>
   );
 }
 
 export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">) {
-  const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState<string | null>(null);
-  const [showParadigm, setShowParadigm] = useState(false);
-  const [recent, setRecent] = useState<string[]>([]);
+  const { lang, t, setLang } = useGuideLang();
+  const ctx = React.useMemo(() => ({ lang, t }), [lang, t]);
+  const { sized } = useTypeScale();
+  const { read, last, ready } = useGrammarProgress();
   const { setContext } = useAsk();
-  const { data: guide } = useQuery("grammar-guide", api.guide);
-  const { data: lessons } = useQuery("grammar-lessons", api.lessons);
+  const { data: index, loading, failed, retry } = useQuery("guide-index", fetchGuideIndex, { ttlMs: 30 * 60_000 });
+  useQuery("grammar-lessons", api.lessons);
+  const [query, setQuery] = React.useState("");
+  const [level, setLevel] = React.useState(0);
+  const [openChapter, setOpenChapter] = React.useState<string | null>(null);
+  const [glossaryOpen, setGlossaryOpen] = React.useState(false);
 
-  const lessonsByFeature = useMemo(() => {
-    const m = new Map<string, LessonSummary>();
-    for (const l of lessons ?? []) {
-      if (!m.has(l.feature_id)) m.set(l.feature_id, l);
-      for (const f of l.features ?? []) {
-        if (!m.has(f)) m.set(f, l);
-      }
-    }
-    return m;
-  }, [lessons]);
-
-  // U11: the ask button asks about the word on screen, not "this screen".
   React.useEffect(() => {
-    setContext({ surface: "grammar", subject: submitted ?? "" });
-  }, [submitted, setContext]);
+    setContext({ surface: "grammar", subject: "" });
+  }, [setContext]);
 
-  useEffect(() => {
-    AsyncStorage.getItem(RECENT_KEY).then((v) => {
-      if (v) setRecent(JSON.parse(v));
-    });
-  }, []);
+  // Open the first chapter with something unread, once the guide arrives.
+  React.useEffect(() => {
+    if (!index || !ready || openChapter !== null) return;
+    const firstUnread = index.chapters.find((c) => c.topic_ids.some((id) => !read.has(id)));
+    setOpenChapter((firstUnread ?? index.chapters[0])?.id ?? null);
+  }, [index, ready, read, openChapter]);
 
-  const persistRecent = useCallback((word: string) => {
-    setRecent((prev) => {
-      const next = [word, ...prev.filter((w) => w !== word)].slice(0, 8);
-      AsyncStorage.setItem(RECENT_KEY, JSON.stringify(next)).catch(() => {});
-      return next;
-    });
-  }, []);
-
-  const search = useCallback(
-    (text: string) => {
-      const word = text.trim();
-      if (!word) return;
-      haptics.tap();
-      setSubmitted(word);
-      setShowParadigm(false);
-      persistRecent(word);
-    },
-    [persistRecent],
+  const topicsById = React.useMemo(
+    () => new Map((index?.topics ?? []).map((tp) => [tp.id, tp] as const)),
+    [index],
   );
 
-  const onLearn = useCallback(
-    (featureId: string) => {
-      const found = lessonsByFeature.get(featureId);
-      navigation.navigate("Lesson", {
-        featureId,
-        lessonId: found?.id,
-      });
-    },
-    [lessonsByFeature, navigation],
-  );
+  const q = query.trim();
+  const results = React.useMemo(() => {
+    if (!index || !q) return [];
+    const needle = norm(q);
+    const viaGlossary = new Set(
+      index.glossary
+        .filter((g) => [g.term_sa, g.term_iast, g.meaning.en, g.meaning.hi].some((s) => norm(s).includes(needle)))
+        .map((g) => g.topic_id)
+        .filter(Boolean),
+    );
+    return index.topics.filter(
+      (tp) =>
+        viaGlossary.has(tp.id) ||
+        [tp.title.en, tp.title.hi, tp.title_sa, tp.title_iast, tp.summary.en, tp.summary.hi].some((s) =>
+          norm(s).includes(needle),
+        ),
+    );
+  }, [index, q]);
 
-  const onPractice = useCallback(
-    (features: string[]) => {
-      navigation.navigate("Challenge", { features });
-    },
-    [navigation],
-  );
+  const openTopic = (id: string) => {
+    haptics.tap();
+    navigation.navigate("GrammarTopic", { topicId: id });
+  };
 
-  const kind = submitted ? guessKind(submitted) : "noun";
-  const sections = useMemo(
-    () => [...(guide?.sections ?? [])].sort((a, b) => a.rank - b.rank),
-    [guide],
-  );
+  const lastTopic = last ? topicsById.get(last) : undefined;
+  const firstTopic = index?.topics[0];
+  const levels = [0, 1, 2, 3];
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
-        <Text style={styles.title}>Grammar</Text>
-        <Text style={styles.subtitle}>Learn the endings, then prove every word.</Text>
-
-        {/* Learn map: basics → advanced */}
-        {sections.length > 0 && (
-          <View style={styles.learnBlock}>
-            <Text style={styles.sectionTitle}>Learn: basics to advanced</Text>
-            {sections.map((s) => (
-              <LearnSectionCard
-                key={s.id}
-                section={s}
-                lessonsByFeature={lessonsByFeature}
-                onLearn={onLearn}
-                onPractice={onPractice}
-                onFeature={onLearn}
-              />
-            ))}
+        <View style={styles.headerRow}>
+          <View style={styles.headerText}>
+            <Text style={[styles.title, lang === "hi" && script("bold"), { fontSize: sized(font.sizes.xl) }]} accessibilityRole="header">
+              {GUIDE_UI.title[lang]}
+            </Text>
+            <Text style={[styles.subtitle, lang === "hi" && script("regular"), { fontSize: sized(font.sizes.sm) }]}>
+              {GUIDE_UI.subtitle[lang]}
+            </Text>
           </View>
-        )}
+          <LangToggle lang={lang} onChange={setLang} />
+        </View>
 
-        <Text style={styles.sectionTitle}>Prove a word</Text>
-        <Text style={styles.proofHint}>
-          Derivations and paradigms — every claim proven by the engine.
-        </Text>
-                {/* Reading lives in its own Read tab now — Grammar stays proof. */}
-                {/* Search field */}
-        <View style={styles.searchRow}>
+        <View style={styles.search}>
+          <Ionicons name="search" size={20} color={color.inkSoft} />
           <TextInput
             value={query}
             onChangeText={setQuery}
-            onSubmitEditing={() => search(query)}
-            placeholder="Type a word… e.g. भवति or देव"
+            placeholder={GUIDE_UI.searchPlaceholder[lang]}
             placeholderTextColor={color.inkFaint}
-            style={[styles.input, script("semibold")]}
+            style={[styles.searchInput, script("regular"), { fontSize: sized(font.sizes.base) }]}
             autoCorrect={false}
             autoCapitalize="none"
             returnKeyType="search"
-            accessibilityLabel="Search a Sanskrit word"
+            onSubmitEditing={() => {
+              if (DEVANAGARI.test(q)) navigation.navigate("WordLab", { word: q });
+            }}
+            accessibilityLabel={GUIDE_UI.searchPlaceholder[lang]}
           />
-          <Pressable
-            onPress={() => search(query)}
-            style={styles.searchBtn}
-            accessibilityRole="button"
-            accessibilityLabel="Search"
-          >
-            <Ionicons name="search" size={22} color={color.white} />
-          </Pressable>
+          {!!query && (
+            <Pressable onPress={() => setQuery("")} hitSlop={10} accessibilityRole="button" accessibilityLabel={GUIDE_UI.close[lang]}>
+              <Ionicons name="close-circle" size={20} color={color.inkFaint} />
+            </Pressable>
+          )}
         </View>
 
-        {/* Toggle verb/noun for the submitted word */}
-        {submitted && (
-          <View style={styles.toggleRow}>
-            <Pressable
-              onPress={() => { haptics.tap(); setShowParadigm(false); }}
-              style={[styles.toggle, !showParadigm && styles.toggleActive]}
-              accessibilityRole="button"
-              accessibilityLabel={kind === "verb" ? "Show conjugation" : "Show derivation"}
-              accessibilityState={{ selected: !showParadigm }}
-            >
-              <Text style={[styles.toggleText, !showParadigm && styles.toggleTextActive]}>
-                {kind === "verb" ? "Conjugation" : "Derivation"}
-              </Text>
-            </Pressable>
-            <Pressable
-              onPress={() => { haptics.tap(); setShowParadigm(true); }}
-              style={[styles.toggle, showParadigm && styles.toggleActive]}
-              accessibilityRole="button"
-              accessibilityLabel={kind === "verb" ? "Show lakara grid" : "Show paradigm table"}
-              accessibilityState={{ selected: showParadigm }}
-            >
-              <Text style={[styles.toggleText, showParadigm && styles.toggleTextActive]}>
-                {kind === "verb" ? "Lakāra grid" : "Paradigm table"}
-              </Text>
-            </Pressable>
+        {q ? (
+          <View style={styles.results}>
+            {DEVANAGARI.test(q) && (
+              <Pressable
+                onPress={() => {
+                  haptics.tap();
+                  navigation.navigate("WordLab", { word: q });
+                }}
+                style={styles.wordLabRow}
+                accessibilityRole="button"
+                accessibilityLabel={`${GUIDE_UI.lookUp[lang]} ${q} ${GUIDE_UI.inWordLab[lang]}`}
+              >
+                <Ionicons name="flask-outline" size={20} color={color.saffron} />
+                <Text style={[styles.wordLabText, lang === "hi" && script("semibold")]}>
+                  {GUIDE_UI.lookUp[lang]} <Text style={script("bold")}>{q}</Text> {GUIDE_UI.inWordLab[lang]}
+                </Text>
+                <Ionicons name="arrow-forward" size={18} color={color.saffron} />
+              </Pressable>
+            )}
+            {results.map((tp) => (
+              <TopicRow key={tp.id} topic={tp} read={read.has(tp.id)} lang={lang} onPress={() => openTopic(tp.id)} />
+            ))}
+            {index && results.length === 0 && (
+              <Text style={[styles.empty, lang === "hi" && script("regular")]}>{GUIDE_UI.noMatch[lang]}</Text>
+            )}
           </View>
-        )}
+        ) : (
+          <>
+            {ready && read.size < 3 && firstTopic && (
+              <View style={styles.newCard}>
+                <Text style={[styles.cardTitle, lang === "hi" && script("bold")]}>{GUIDE_UI.newHere[lang]}</Text>
+                <Text style={[styles.cardBody, lang === "hi" && script("regular")]}>{GUIDE_UI.newHereBody[lang]}</Text>
+                <View style={styles.cardActions}>
+                  {/* The shared Button has no side padding; side-by-side labels
+                      (Hindi especially) would run into the edges. */}
+                  <Button
+                    label={GUIDE_UI.startHere[lang]}
+                    size="md"
+                    labelStyle={lang === "hi" ? { ...styles.actionLabel, ...script("bold") } : styles.actionLabel}
+                    onPress={() => openTopic(firstTopic.id)}
+                  />
+                  <Button
+                    label={GUIDE_UI.discover[lang]}
+                    size="md"
+                    tone="neutral"
+                    labelStyle={lang === "hi" ? { ...styles.actionLabel, ...script("bold") } : styles.actionLabel}
+                    onPress={() => navigation.navigate("Story")}
+                  />
+                </View>
+              </View>
+            )}
 
-        {submitted && showParadigm ? (
-          <View style={styles.paradigmWrap}>
-            <ParadigmScreen
-              pratipadika={kind === "noun" ? submitted : undefined}
-              dhatu={kind === "verb" ? submitted : undefined}
-              title={`${submitted} — full paradigm`}
-            />
-          </View>
-        ) : submitted && /\s/.test(submitted) ? (
-          // U4-5: a multi-word query visualises the junction — the surface
-          // only Sanskrit can teach, backed by GET /grammar/sandhi.
-          <View style={styles.derivWrap}>
-            <SandhiVisual joined={submitted} autoPlay />
-          </View>
-        ) : submitted ? (
-          <View style={styles.derivWrap}>
-            <DerivationPlayer
-              word={submitted}
-              kind={kind}
-              title={`Why ${submitted}?`}
-            />
-          </View>
-        ) : null}
+            {lastTopic && (
+              <Pressable
+                onPress={() => openTopic(lastTopic.id)}
+                style={styles.continue}
+                accessibilityRole="button"
+                accessibilityLabel={`${GUIDE_UI.continue[lang]}: ${t(lastTopic.title)}`}
+              >
+                <Ionicons name="play-circle" size={28} color={color.saffron} />
+                <View style={styles.continueText}>
+                  <Text style={[styles.eyebrow, lang === "hi" && script("semibold")]}>{GUIDE_UI.continue[lang]}</Text>
+                  <InlineText text={t(lastTopic.title)} lang={lang} style={styles.continueTitle} numberOfLines={2} />
+                </View>
+                <Ionicons name="chevron-forward" size={18} color={color.saffron} />
+              </Pressable>
+            )}
 
-        {/* Recent lookups */}
-        {recent.length > 0 && (
-          <View style={styles.recentBlock}>
-            <Text style={styles.sectionTitle}>Recent</Text>
-            <View style={styles.recentRow}>
-              {recent.map((w) => (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.levels}>
+              {levels.map((lv) => {
+                const active = level === lv;
+                const label = lv === 0 ? GUIDE_UI.all[lang] : LEVEL_LABEL[lv][lang];
+                return (
+                  <Pressable
+                    key={lv}
+                    onPress={() => {
+                      haptics.tap();
+                      setLevel(lv);
+                    }}
+                    style={[styles.levelChip, active && styles.levelChipActive]}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
+                    accessibilityLabel={label}
+                  >
+                    <Text style={[styles.levelText, lang === "hi" && script("semibold"), active && styles.levelTextActive]}>{label}</Text>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+
+            {loading && !index ? (
+              <View style={styles.skeletons} accessible accessibilityLabel="Loading">
+                {[0, 1, 2, 3].map((i) => (
+                  <Skeleton key={i} height={96} radius={radius.lg} />
+                ))}
+              </View>
+            ) : failed && !index ? (
+              <FetchError label={GUIDE_UI.loadFailed[lang]} onRetry={retry} retryLabel={GUIDE_UI.retry[lang]} />
+            ) : (
+              (index?.chapters ?? []).map((ch) => {
+                const topics = ch.topic_ids
+                  .map((id) => topicsById.get(id))
+                  .filter((tp): tp is GuideTopicSummary => !!tp && (level === 0 || tp.level === level));
+                if (topics.length === 0) return null;
+                return (
+                  <ChapterCard
+                    key={ch.id}
+                    chapter={ch}
+                    topics={topics}
+                    read={read}
+                    lang={lang}
+                    open={openChapter === ch.id || level !== 0}
+                    onToggle={() => setOpenChapter((cur) => (cur === ch.id ? "" : ch.id))}
+                    onOpenTopic={openTopic}
+                  />
+                );
+              })
+            )}
+
+            <Text style={[styles.toolsTitle, lang === "hi" && script("bold")]} accessibilityRole="header">
+              {GUIDE_UI.tools[lang]}
+            </Text>
+            <View style={styles.tools}>
+              {(
+                [
+                  { icon: "flask-outline", label: GUIDE_UI.wordLab, go: () => navigation.navigate("WordLab") },
+                  { icon: "musical-notes-outline", label: GUIDE_UI.soundMap, go: () => navigation.navigate("Varnamala") },
+                  { icon: "swap-horizontal-outline", label: GUIDE_UI.wordOrderLab, go: () => navigation.navigate("WordOrder", {}) },
+                  { icon: "pulse-outline", label: GUIDE_UI.rhythm, go: () => navigation.navigate("Pingala") },
+                  { icon: "library-outline", label: GUIDE_UI.glossary, go: () => setGlossaryOpen(true) },
+                ] as { icon: IoniconsIconName; label: { en: string; hi: string }; go: () => void }[]
+              ).map((tool) => (
                 <Pressable
-                  key={w}
-                  onPress={() => { setQuery(w); search(w); }}
-                  style={styles.recentChip}
+                  key={tool.label.en}
+                  onPress={() => {
+                    haptics.tap();
+                    tool.go();
+                  }}
+                  style={({ pressed }) => [styles.tool, pressed && styles.pressed]}
                   accessibilityRole="button"
-                  accessibilityLabel={`Look up ${w} again`}
+                  accessibilityLabel={tool.label[lang]}
                 >
-                  <Text style={[styles.recentText, script("semibold")]}>{w}</Text>
+                  <Ionicons name={tool.icon} size={24} color={color.saffron} />
+                  <Text style={[styles.toolText, lang === "hi" && script("semibold")]}>{tool.label[lang]}</Text>
                 </Pressable>
               ))}
             </View>
-          </View>
+          </>
         )}
       </ScrollView>
+
+      <GlossarySheet
+        items={index?.glossary ?? []}
+        visible={glossaryOpen}
+        onClose={() => setGlossaryOpen(false)}
+        ctx={ctx}
+        searchable
+        onOpenTopic={(id) => {
+          setGlossaryOpen(false);
+          openTopic(id);
+        }}
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink },
-  subtitle: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2, marginBottom: space.lg, lineHeight: 20 },
-  learnBlock: { marginBottom: space.lg },
-  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, marginBottom: space.md, ...shadow.card },
-  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
-  cardSa: { fontSize: font.sizes.base, color: color.saffronDeep, marginTop: 2 },
-  cardBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.ink, marginTop: space.xs, lineHeight: 20 },
-  cardBodyDeep: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.xs, lineHeight: 20 },
-  exampleRow: { flexDirection: "row", alignItems: "baseline", gap: space.sm, marginTop: space.xs },
-  exampleDev: { fontSize: font.sizes.base, color: color.ink },
-  exampleGloss: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, flex: 1, flexWrap: "wrap" },
-  chipRow: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, marginTop: space.sm },
-  chip: { borderWidth: 1, borderColor: color.border, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 4 },
-  chipTaught: { borderColor: color.saffron, backgroundColor: color.saffronLight },
-  chipText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
-  chipTextTaught: { color: color.saffronDeep },
-  deepToggle: { marginTop: space.sm, paddingVertical: 4 },
-  deepToggleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron },
-  cardActions: { flexDirection: "row", gap: space.sm, marginTop: space.sm },
-  proofHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm },
-  searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.md },
-  input: {
-    flex: 1,
+  body: { padding: space.lg, paddingBottom: space.xxl, gap: space.md },
+  headerRow: { flexDirection: "row", alignItems: "center", gap: space.sm },
+  headerText: { flex: 1 },
+  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
+  subtitle: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.inkSoft, marginTop: 2 },
+  search: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.xs,
     borderWidth: 2,
     borderColor: color.border,
     borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
-    fontSize: font.sizes.base,
-    color: color.ink,
+    paddingHorizontal: space.sm,
     backgroundColor: color.surface,
+    minHeight: 48,
   },
-  searchBtn: { width: 48, height: 48, borderRadius: radius.md, backgroundColor: color.saffron, alignItems: "center", justifyContent: "center", ...shadow.button },
-  toggleRow: { flexDirection: "row", marginBottom: space.md, backgroundColor: color.surfaceMuted, borderRadius: radius.md, padding: 4 },
-  toggle: { flex: 1, paddingVertical: space.xs, borderRadius: radius.sm, alignItems: "center" },
-  toggleActive: { backgroundColor: color.surface, ...shadow.card },
-  toggleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
-  toggleTextActive: { color: color.saffron },
-  derivWrap: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
-  paradigmWrap: { marginTop: 0 },
-  recentBlock: { marginTop: space.lg },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.sm },
-  recentRow: { flexDirection: "row", flexWrap: "wrap", gap: space.xs },
-  recentChip: { backgroundColor: color.surface, borderRadius: radius.pill, paddingHorizontal: space.md, paddingVertical: space.xs, ...shadow.card },
-  recentText: { fontSize: font.sizes.sm, color: color.ink },
+  searchInput: { flex: 1, color: color.ink, paddingVertical: space.xs },
+  results: { gap: space.xs },
+  wordLabRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.xs,
+    minHeight: 52,
+    backgroundColor: color.saffronLight,
+    borderRadius: radius.md,
+    paddingHorizontal: space.sm,
+  },
+  wordLabText: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  empty: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, paddingVertical: space.sm },
+  newCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: space.xs, ...shadow.card },
+  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  cardBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, lineHeight: 20 },
+  cardActions: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, marginTop: space.xs },
+  actionLabel: { paddingHorizontal: space.md },
+  continue: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.sm,
+    borderWidth: 2,
+    borderColor: color.saffronLight,
+  },
+  continueText: { flex: 1 },
+  eyebrow: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.saffronText, textTransform: "uppercase", letterSpacing: 0.6 },
+  continueTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  levels: { gap: space.xs },
+  levelChip: { paddingHorizontal: space.md, minHeight: 36, justifyContent: "center", borderRadius: radius.pill, backgroundColor: color.surfaceMuted },
+  levelChipActive: { backgroundColor: color.ink },
+  levelText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
+  levelTextActive: { color: color.white },
+  skeletons: { gap: space.sm },
+  chapter: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.sm, ...shadow.card },
+  chapterHead: { flexDirection: "row", gap: space.sm },
+  chapterIcon: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronLight, alignItems: "center", justifyContent: "center" },
+  chapterText: { flex: 1, gap: 2 },
+  chapterTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
+  chapterSa: { color: color.saffronText },
+  chapterBlurb: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.inkSoft },
+  progressRow: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: 4 },
+  progress: { flex: 1, width: undefined },
+  metaText: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
+  topicList: { marginTop: space.xs, gap: 2 },
+  topicRow: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: space.xs, paddingHorizontal: 4, borderRadius: radius.sm, minHeight: 56 },
+  pressed: { backgroundColor: color.surfaceMuted },
+  topicText: { flex: 1, gap: 2 },
+  topicTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
+  topicSummary: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.inkSoft },
+  topicMeta: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: 2 },
+  toolsTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginTop: space.xs },
+  tools: { flexDirection: "row", flexWrap: "wrap", gap: space.xs },
+  tool: {
+    flexGrow: 1,
+    flexBasis: "30%",
+    alignItems: "center",
+    gap: 4,
+    backgroundColor: color.surface,
+    borderRadius: radius.md,
+    paddingVertical: space.sm,
+    minHeight: 72,
+    ...shadow.card,
+  },
+  toolText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
 });

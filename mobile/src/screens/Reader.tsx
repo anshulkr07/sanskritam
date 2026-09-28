@@ -5,11 +5,12 @@
 //     "All verses" book, each with live counts and a coverage bar. Empty
 //     books stay visible as "coming soon" — a book disappearing until its
 //     import lands is how the reader looked incomplete.
-//   • BOOK — one book's index: chapters in canonical chapter-verse order
-//     (never seed-date order), each row opening its page. Start/Continue
-//     resumes the persisted position.
-//   • PAGE — one verse as a leaf of a real book: grab and drag to fold it
-//     over (BookFlip), scrub the Kindle slider to jump, tap a word chip for
+//   • BOOK — one book's contents: its cover first (tap it, or "Open book" /
+//     "Continue · 5.35"), then chapters in canonical chapter-verse order
+//     (never seed-date order), each row opening the book at that verse.
+//   • PAGE — the open book: the cover turns away, then every verse is a page
+//     that curls like paper under the finger, forward and back
+//     (PageCurlBook); scrub the Kindle slider to jump, tap a word chip for
 //     its gloss. The Ask sheet opens ONLY from the explicit Ask button —
 //     never hijacked by a word tap.
 //
@@ -25,11 +26,17 @@
 //   - Words render from word_breakdown, NOT split from the verse text.
 //   - Every text that may hold Sanskrit uses script() (§3.2).
 //   - No TTS here (P21: audio goes only on what is studied).
-//   - Turns are cosmetic and fully bypassed under Reduce Motion (§3.4).
+//   - Turns are cosmetic and instant under Reduce Motion (§3.4); Previous /
+//     Next and the slider are always there, so turning is never gesture-only.
+//   - An open book owns horizontal drags (the drawer's edge swipe is off) and
+//     Android back closes it onto its contents.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import type { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  BackHandler,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -46,8 +53,10 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useAsk } from "../ask/AskProvider";
 import { EmptyState, Button, ProgressBar } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
-import BookFlip from "../components/BookFlip";
+import BookCover from "../components/book/BookCover";
+import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import ReaderSlider from "../components/ReaderSlider";
+import type { DrawerParamList } from "../navigation/AppDrawer";
 import { haptics } from "../services/haptics";
 import {
   getReadingPosition,
@@ -109,6 +118,27 @@ export default function ReaderScreen() {
   const [pageIndex, setPageIndex] = useState<number | null>(null);
   // Restored "continue" rows: { [bookKey]: index }.
   const [positions, setPositions] = useState<Record<string, number>>({});
+  const navigation = useNavigation();
+  const reading = bookKey !== null && pageIndex !== null;
+
+  // An open book owns horizontal drags: the drawer's edge swipe would steal a
+  // page turned back from the spine. Given back the moment the book closes.
+  useEffect(() => {
+    if (!reading) return;
+    const drawer = navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
+    drawer?.setOptions({ swipeEnabled: false });
+    return () => drawer?.setOptions({ swipeEnabled: true });
+  }, [reading, navigation]);
+
+  // Android back closes the book onto its contents.
+  useEffect(() => {
+    if (!reading) return;
+    const sub = BackHandler.addEventListener("hardwareBackPress", () => {
+      setPageIndex(null);
+      return true;
+    });
+    return () => sub.remove();
+  }, [reading]);
 
   // Corpus (Track C4): cached 60s, deduped, never setState after unmount.
   const versesQ = useQuery<Shloka[]>("reader-verses", api.listShlokas);
@@ -248,7 +278,7 @@ export default function ReaderScreen() {
       setBookKey(key);
       // Land on the index, remembering where Continue should resume.
       setPageIndex(null);
-      setPositions((p) => ({ ...p, [key]: pos }));
+      setPositions((p) => ({ ...p, [key]: Number.isFinite(pos) ? pos : 0 }));
     },
     [loadTier, tierTier, tierRows],
   );
@@ -257,7 +287,8 @@ export default function ReaderScreen() {
     async (book: OpenBook) => {
       haptics.press();
       const pos = await getReadingPosition(book.key).catch(() => 0);
-      const at = Math.min(pos, book.verses.length - 1);
+      const safe = Number.isFinite(pos) ? pos : 0;
+      const at = Math.min(safe, book.verses.length - 1);
       setPageIndex(Math.max(0, at));
     },
     [],
@@ -265,6 +296,7 @@ export default function ReaderScreen() {
 
   const turnTo = useCallback(
     (book: OpenBook, i: number) => {
+      if (!Number.isFinite(i)) return;
       const at = Math.max(0, Math.min(book.verses.length - 1, i));
       setPageIndex(at);
       setReadingPosition(book.key, at);
@@ -310,7 +342,8 @@ export default function ReaderScreen() {
   // ── PAGE posture ─────────────────────────────────────────────────
   if (bookKey && pageIndex !== null && openBook && openBook.verses.length > 0) {
     const book = openBook;
-    const at = Math.max(0, Math.min(pageIndex, book.verses.length - 1));
+    const raw = Number.isFinite(pageIndex) ? pageIndex : 0;
+    const at = Math.max(0, Math.min(raw, book.verses.length - 1));
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.readHeader}>
@@ -324,7 +357,7 @@ export default function ReaderScreen() {
             accessibilityLabel={`Back to ${book.titleEn} contents`}
           >
             <Ionicons name="arrow-back" size={20} color={color.saffron} />
-            <Text style={styles.headerBtnText}>Index</Text>
+            <Text style={styles.headerBtnText}>Contents</Text>
           </Pressable>
           <Text style={styles.readPos} numberOfLines={1}>
             {at + 1} / {book.verses.length}
@@ -340,16 +373,37 @@ export default function ReaderScreen() {
         </View>
 
         <View style={styles.pageArea}>
-          {/* Remount per book: the flip's settled page belongs to one book. */}
-          <BookFlip
+          {/* Mounted each time the book is opened, so its cover turns away
+              first; keyed per book, since its pages belong to one book. */}
+          <PageCurlBook
             key={book.key}
             index={at}
             count={book.verses.length}
             onIndexChange={(i) => turnTo(book, i)}
             renderPage={(i) => {
               const v = book.verses[i];
-              return v ? <ReaderPage key={v.id} verse={v} /> : <View style={styles.page} />;
+              return v ? (
+                <ReaderPage
+                  key={v.id}
+                  verse={v}
+                  previous={book.verses[i - 1] ?? null}
+                  runningTitle={runningTitleFor(book, v)}
+                  position={i}
+                  total={book.verses.length}
+                />
+              ) : (
+                <View style={styles.page} />
+              );
             }}
+            cover={
+              <BookCover
+                variant="full"
+                titleSa={book.titleSa}
+                titleEn={book.titleEn}
+                caption={versesCaption(book)}
+              />
+            }
+            labelFor={(i) => book.verses[i]?.source_ref ?? ""}
             reducedMotion={reduced}
           />
         </View>
@@ -451,14 +505,15 @@ export default function ReaderScreen() {
           allCount={allVerses.length}
           positions={positions}
           onResume={(key, at) => {
+            const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
             if (key.startsWith("graded-")) {
               const tier = parseInt(key.slice("graded-".length), 10);
               if (tierTier !== tier || !tierRows) loadTier(tier);
               setBookKey(key);
-              setPageIndex(at);
+              setPageIndex(safe);
             } else {
               setBookKey(key);
-              setPageIndex(at);
+              setPageIndex(safe);
             }
           }}
         />
@@ -653,6 +708,24 @@ function BackRow({ onPress, label }: { onPress: () => void; label: string }) {
   );
 }
 
+/** "47 verses", or "47 of 700 verses" when the book's size is known. */
+function versesCaption(book: OpenBook): string {
+  const n = book.verses.length;
+  if (book.planned) return `${n} of ${book.planned} verses`;
+  return `${n} verse${n === 1 ? "" : "s"}`;
+}
+
+/** A verse's address for labels — "5.35" — or its whole reference when it has none. */
+function addressOf(v: Shloka): string {
+  const { nums } = parseRef(v.source_ref);
+  return nums.length > 0 ? nums.join(".") : v.source_ref;
+}
+
+/** A page's running head: the book, or in a mixed book the verse's own source. */
+function runningTitleFor(book: OpenBook, v: Shloka): string {
+  return book.key === ALL_KEY || book.key === OTHER_KEY ? parseRef(v.source_ref).book : book.titleEn;
+}
+
 function BookIndex({
   book,
   sized,
@@ -682,22 +755,26 @@ function BookIndex({
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body}>
         <BackRow onPress={onBack} label="Books" />
-        <Text style={[styles.bookIndexSa, script("bold"), { fontSize: sized(30, { sanskrit: true }) }]}>
-          {book.titleSa}
-        </Text>
-        <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>{book.titleEn}</Text>
-        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
-          {book.verses.length} verse{book.verses.length === 1 ? "" : "s"}
-          {book.planned ? ` of ${book.planned} planned` : ""} · in reading order
-        </Text>
-
+        {/* The book itself: tap the cover (or the button) to open it. */}
+        <BookCover
+          variant="card"
+          titleSa={book.titleSa}
+          titleEn={book.titleEn}
+          caption={versesCaption(book)}
+          bookmarked={started}
+          onPress={onStart}
+        />
         <Button
-          label={started ? `Continue · page ${resume + 1}` : "Start reading"}
+          label={started ? `Continue · ${addressOf(book.verses[resume])}` : "Open book"}
           tone="primary"
           block
+          icon={<Ionicons name={started ? "bookmark" : "book"} size={20} color={color.white} />}
           onPress={onStart}
-          style={{ marginBottom: space.lg }}
+          style={{ marginTop: space.md }}
         />
+        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
+          Contents, in reading order. Tap a verse to open the book there.
+        </Text>
 
         {chapters.map((ch) => (
           <View key={ch.label} style={styles.chapterBlock}>
@@ -742,20 +819,63 @@ function BookIndex({
 // ONLY from the explicit button — a word tap that summons a modal is the
 // "verse loads nothing" bug wearing a costume.
 
-function ReaderPage({ verse }: { verse: Shloka }) {
+function ReaderPage({
+  verse,
+  previous,
+  runningTitle,
+  position,
+  total,
+}: {
+  verse: Shloka;
+  /** The verse on the page before — a new chapter starts where they differ. */
+  previous: Shloka | null;
+  runningTitle: string;
+  position: number;
+  total: number;
+}) {
   const { sized } = useTypeScale();
   const [selected, setSelected] = useState<WordBreakdown | null>(null);
   const { open } = useAsk();
+  const { invalidate } = useBookPage();
   const words = verse.word_breakdown ?? [];
+  const ref = parseRef(verse.source_ref);
+  const chapter = ref.nums.length > 1 ? ref.nums[0] : null;
+  const before = previous ? parseRef(previous.source_ref) : null;
+  const opensChapter =
+    chapter !== null && (!before || before.book !== ref.book || before.nums[0] !== chapter);
+
+  // Whatever this page shows now is what its sheet must show when it turns.
+  useEffect(() => {
+    invalidate();
+  });
 
   if (!verse) return <View style={styles.page} />;
 
   return (
     <View style={styles.page}>
-      <Text style={styles.pageSource} numberOfLines={1}>
-        {verse.source_ref}
-      </Text>
-      <ScrollView style={styles.pageScroll} contentContainerStyle={styles.pageBody}>
+      {/* The running head, as a printed book has. */}
+      <View style={styles.runningHead}>
+        <Text style={styles.runningHeadText} numberOfLines={1}>
+          {runningTitle}
+        </Text>
+        {chapter !== null ? <Text style={styles.runningHeadText}>Chapter {chapter}</Text> : null}
+      </View>
+      <ScrollView
+        style={styles.pageScroll}
+        contentContainerStyle={styles.pageBody}
+        onScrollEndDrag={invalidate}
+        onMomentumScrollEnd={invalidate}
+      >
+        {opensChapter ? (
+          <View style={styles.chapterOpen} accessibilityRole="header">
+            <View style={styles.chapterRule} />
+            <Text style={styles.chapterOpenText}>Chapter {chapter}</Text>
+            <View style={styles.chapterRule} />
+          </View>
+        ) : null}
+        <Text style={styles.pageSource} numberOfLines={1}>
+          {verse.source_ref}
+        </Text>
         {words.length > 0 ? (
           <View style={styles.wordWrap}>
             {words.map((w, i) => {
@@ -793,6 +913,23 @@ function ReaderPage({ verse }: { verse: Shloka }) {
         )}
         <Text style={[styles.iast, { fontSize: sized(font.sizes.base) }]}>{verse.iast}</Text>
 
+        {verse.translation_hi ? (
+          <View style={styles.gloss}>
+            <Text style={[styles.glossWord, script("bold")]} accessibilityRole="header">हिन्दी अर्थ</Text>
+            <Text style={[styles.glossMeaning, script("regular"), { fontSize: sized(font.sizes.base, { sanskrit: true }) }]}>
+              {verse.translation_hi}
+            </Text>
+          </View>
+        ) : null}
+        {verse.translation_en ? (
+          <View style={styles.gloss}>
+            <Text style={styles.glossWord} accessibilityRole="header">English meaning</Text>
+            <Text style={[styles.glossMeaning, { fontSize: sized(font.sizes.base) }]}>
+              {verse.translation_en}
+            </Text>
+          </View>
+        ) : null}
+
         {selected && (
           <Animated.View
             entering={FadeIn.duration(160)}
@@ -823,6 +960,10 @@ function ReaderPage({ verse }: { verse: Shloka }) {
           <Text style={styles.askVerseText}>Ask about this verse</Text>
         </Pressable>
       </ScrollView>
+      <Text style={styles.folio}>
+        {ref.nums.length > 0 ? `${ref.nums.join(".")} · ` : ""}
+        {position + 1} / {total}
+      </Text>
     </View>
   );
 }
@@ -975,7 +1116,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: font.sizes.sm,
   },
-  bookIndexSa: { color: color.ink },
   chapterBlock: { marginBottom: space.md },
   chapterLabel: {
     fontFamily: "Nunito_800ExtraBold",
@@ -1043,9 +1183,54 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  // Page + pad
-  pageArea: { flex: 1, paddingHorizontal: space.lg },
-  page: { flex: 1 },
+  // The open book: PageCurlBook draws the board and page-block; this is the paper.
+  pageArea: { flex: 1, paddingHorizontal: space.md, paddingBottom: space.xs },
+  page: {
+    flex: 1,
+    backgroundColor: "#FFFDF7",
+    borderTopLeftRadius: 3,
+    borderBottomLeftRadius: 3,
+    borderTopRightRadius: radius.md,
+    borderBottomRightRadius: radius.md,
+    paddingHorizontal: space.md,
+    overflow: "hidden",
+  },
+  runningHead: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: space.sm,
+    paddingTop: space.sm,
+    paddingBottom: 6,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: color.border,
+  },
+  runningHeadText: {
+    flexShrink: 1,
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.xs,
+    color: color.inkSoft,
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+  },
+  chapterOpen: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.md },
+  chapterRule: { flex: 1, height: 1, backgroundColor: color.saffronLight },
+  chapterOpenText: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.saffronText,
+    textTransform: "uppercase",
+    letterSpacing: 1,
+  },
+  folio: {
+    textAlign: "center",
+    paddingVertical: 6,
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
+  },
   pageSource: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",

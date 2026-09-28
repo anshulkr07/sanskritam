@@ -13,9 +13,10 @@ import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 
+import { BASE_URL } from "../config";
 import { useAuth } from "../store/auth";
 import type { RootStackParamList } from "../navigation/types";
 import { setSoundEffectsEnabled } from "../services/sfx";
@@ -43,13 +44,27 @@ function setPref(key: string, v: boolean): Promise<void> {
   return AsyncStorage.setItem(key, v ? "true" : "false");
 }
 
+/** Open a page in the in-app browser, falling back to the system one. */
+async function openExternal(url: string): Promise<void> {
+  try {
+    await WebBrowser.openBrowserAsync(url);
+  } catch {
+    try {
+      await Linking.openURL(url);
+    } catch {
+      /* no browser available — the row stays, the link waits */
+    }
+  }
+}
+
 export default function SettingsPanel() {
-  const { learner, logout, displayName } = useAuth();
+  const { learner, logout, deleteAccount, displayName } = useAuth();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { textSize, setTextSize } = useTypeScale();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
   const [reduced, setReduced] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     pref(KEYS.sound).then(setSound);
@@ -60,6 +75,31 @@ export default function SettingsPanel() {
       setReduced(isReducedMotionOverride());
     });
   }, []);
+
+  // Google Play requires account deletion inside the app. It cannot be
+  // undone, so it asks first; on success the auth store resets to Login.
+  const confirmDelete = () => {
+    Alert.alert(
+      "Delete your account?",
+      "This permanently deletes your progress, answers and conversations from our servers, and clears the app on this device. It can't be undone.",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            setDeleting(true);
+            try {
+              await deleteAccount();
+            } catch {
+              setDeleting(false);
+              Alert.alert("Couldn't delete your account", "Check your connection and try again.");
+            }
+          },
+        },
+      ],
+    );
+  };
 
   return (
     <ScrollView style={styles.safe} contentContainerStyle={styles.body}>
@@ -86,6 +126,16 @@ export default function SettingsPanel() {
           accessibilityLabel="Sign out"
         >
           <Text style={styles.dangerText}>Sign out</Text>
+        </Pressable>
+        <Pressable
+          onPress={confirmDelete}
+          disabled={deleting}
+          style={styles.deleteBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Delete account"
+          accessibilityState={{ disabled: deleting }}
+        >
+          <Text style={styles.deleteText}>{deleting ? "Deleting…" : "Delete account"}</Text>
         </Pressable>
       </View>
 
@@ -153,21 +203,20 @@ export default function SettingsPanel() {
           <Text style={styles.link}>Licences and credits</Text>
             <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
           </Pressable>
+          <Pressable
+            onPress={() => openExternal(`${BASE_URL}/privacy`)}
+            style={styles.linkRow}
+            accessibilityRole="button"
+            accessibilityLabel="Privacy policy"
+          >
+            <Text style={styles.link}>Privacy policy</Text>
+            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+          </Pressable>
           {/* P24: YouTube API Services Developer Policies III.A.1 — clients
               must display a link to YouTube's Terms and bind their users to
               them. Lesson videos play in YouTube's own player. */}
           <Pressable
-            onPress={async () => {
-              try {
-                await WebBrowser.openBrowserAsync("https://www.youtube.com/t/terms");
-              } catch {
-                try {
-                  await Linking.openURL("https://www.youtube.com/t/terms");
-                } catch {
-                  /* no browser available — the row stays, the link waits */
-                }
-              }
-            }}
+            onPress={() => openExternal("https://www.youtube.com/t/terms")}
             style={styles.linkRow}
             accessibilityRole="button"
             accessibilityLabel="YouTube Terms of Service"
@@ -236,6 +285,8 @@ const styles = StyleSheet.create({
   rowHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.xs, color: color.inkFaint, marginTop: 2 },
   dangerBtn: { marginTop: space.xs, alignSelf: "flex-start", backgroundColor: color.badBg, borderRadius: radius.sm, paddingHorizontal: space.md, paddingVertical: space.xs },
   dangerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.badText },
+  deleteBtn: { marginTop: space.sm, alignSelf: "flex-start", paddingVertical: space.xs },
+  deleteText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.badText, textDecorationLine: "underline" },
   sizerRow: { flexDirection: "row", gap: space.sm },
   sizer: { flex: 1, alignItems: "center", justifyContent: "center", minHeight: 44, paddingVertical: space.sm, borderRadius: radius.sm, backgroundColor: color.surfaceMuted },
   sizerActive: { backgroundColor: color.saffron },

@@ -15,19 +15,13 @@
 
 import React, { useCallback, useRef, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+// expo-camera is an installed dependency — import statically. The hook below
+// must run unconditionally (React rules); permission state gates the preview.
+import { CameraView, useCameraPermissions } from "expo-camera";
 
 import { haptics } from "../../services/haptics";
 import type { PhotoRecogniser } from "../../services/photoRecogniser";
 import { color, font, radius, script, shadow, space } from "../../theme";
-
-function loadCamera(): unknown {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require("expo-camera");
-  } catch {
-    return null;
-  }
-}
 
 export default function PhotoCapture({
   reference,
@@ -42,17 +36,21 @@ export default function PhotoCapture({
 }) {
   const [busy, setBusy] = useState(false);
   const [denied, setDenied] = useState(false);
-  const cameraRef = useRef<unknown>(null);
+  // Preview is usable only after the native camera reports ready — never
+  // fire takePictureAsync into an unmounted preview.
+  const [cameraReady, setCameraReady] = useState(false);
+  const [permission, requestPermission] = useCameraPermissions();
+  const cameraRef = useRef<CameraView>(null);
 
   const capture = useCallback(async () => {
-    if (busy) return;
+    if (busy || !cameraReady) return;
     haptics.tap();
     setBusy(true);
     try {
-      const ref = cameraRef.current as {
-        takePictureAsync?: (opts?: Record<string, unknown>) => Promise<{ uri?: string } | null>;
-      } | null;
-      const photo = await ref?.takePictureAsync?.({ quality: 0.7, skipProcessing: true });
+      const photo = await cameraRef.current?.takePictureAsync?.({
+        quality: 0.7,
+        skipProcessing: true,
+      });
       const uri = photo?.uri;
       if (!uri) {
         onResult("", 0);
@@ -70,38 +68,23 @@ export default function PhotoCapture({
     } finally {
       setBusy(false);
     }
-  }, [busy, onResult, recogniser]);
-
-  const ensurePermission = useCallback(async (): Promise<boolean> => {
-    try {
-      const cam = loadCamera() as {
-        useCameraPermissions?: () => [{ granted?: boolean }, () => Promise<{ granted?: boolean }>];
-        requestCameraPermissionsAsync?: () => Promise<{ granted?: boolean }>;
-      } | null;
-      if (cam?.requestCameraPermissionsAsync) {
-        const res = await cam.requestCameraPermissionsAsync();
-        if (!res?.granted) setDenied(true);
-        return !!res?.granted;
-      }
-      if (cam?.useCameraPermissions) {
-        // Hook form cannot be called here; treat as unavailable rather than
-        // breaking hook rules — the dev-build pass wires this properly.
-        return false;
-      }
-      return false;
-    } catch {
-      return false;
-    }
-  }, []);
+  }, [busy, cameraReady, onResult, recogniser]);
 
   const begin = useCallback(async () => {
-    const ok = await ensurePermission();
-    if (ok) {
+    // Permission is requested from the capture button, never at mount.
+    if (!permission?.granted) {
+      const res = await requestPermission();
+      if (!res?.granted) {
+        setDenied(true);
+        return;
+      }
       setDenied(false);
-      await capture();
     }
-  }, [capture, ensurePermission]);
+    await capture();
+  }, [capture, permission?.granted, requestPermission]);
 
+  // Without the dev build the OCR seam reports not-ready: the honest
+  // unavailable card, exactly like the ink canvas before its module ships.
   if (!recogniser.ready) {
     return (
       <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel={recogniser.statusNote}>
@@ -112,22 +95,38 @@ export default function PhotoCapture({
     );
   }
 
-  const cam = loadCamera() as {
-    CameraView?: React.ComponentType<Record<string, unknown>>;
-  } | null;
-  if (!cam?.CameraView) {
+  // Camera permission still resolving.
+  if (!permission) {
     return (
-      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel="Camera preview needs the dev build.">
-        <Text style={styles.unavailableTitle}>Camera preview needs the dev build</Text>
-        <Text style={styles.unavailableText}>
-          The capture module is not in this build. Your photo would be processed on this device and
-          discarded — nothing would ever be uploaded.
-        </Text>
+      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel="Checking camera access.">
+        <Text style={styles.unavailableTitle}>Checking camera access…</Text>
         <Text style={[styles.reference, script("bold")]}>{reference}</Text>
       </View>
     );
   }
-  const CameraView = cam.CameraView;
+
+  // Permission denied (or not yet granted): explain + offer the system prompt
+  // again instead of rendering a dead preview.
+  if (!permission.granted) {
+    return (
+      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel="Camera access needed to photograph writing.">
+        <Text style={styles.unavailableTitle}>Camera access needed</Text>
+        <Text style={styles.unavailableText}>
+          Frame one letter on paper and it is read on this device, then discarded — nothing is
+          ever uploaded. Allow camera access to try it.
+        </Text>
+        <Pressable
+          onPress={() => void begin()}
+          accessibilityRole="button"
+          accessibilityLabel="Allow camera access"
+          style={styles.captureBtn}
+        >
+          <Text style={styles.captureText}>Allow camera</Text>
+        </Pressable>
+        <Text style={[styles.reference, script("bold")]}>{reference}</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.wrap}>
@@ -138,8 +137,9 @@ export default function PhotoCapture({
       <View style={styles.viewfinder}>
         <CameraView
           style={styles.preview}
-          ref={cameraRef as never}
+          ref={cameraRef}
           facing="back"
+          onCameraReady={() => setCameraReady(true)}
         />
         {/* Single-letter framing guide */}
         <View style={styles.frame} pointerEvents="none" />
@@ -148,11 +148,11 @@ export default function PhotoCapture({
       {denied && <Text style={styles.denied}>Camera access denied. Allow it in settings and try again.</Text>}
       <Pressable
         onPress={begin}
-        disabled={busy}
-        style={[styles.captureBtn, busy && styles.captureBtnBusy]}
+        disabled={busy || !cameraReady}
+        style={[styles.captureBtn, (busy || !cameraReady) && styles.captureBtnBusy]}
         accessibilityRole="button"
         accessibilityLabel={busy ? "Reading the photo" : "Photograph your writing"}
-        accessibilityState={{ busy, disabled: busy }}
+        accessibilityState={{ busy, disabled: busy || !cameraReady }}
       >
         <Text style={styles.captureText}>{busy ? "Reading…" : "Photograph it"}</Text>
       </Pressable>

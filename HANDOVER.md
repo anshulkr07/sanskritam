@@ -68,7 +68,8 @@ to write the script, **P21** the readable canon. See §4.
 
 | | |
 |---|---|
-| Backend tests | **650 passed** (4 new u579 + 5 vocab-dcs; 1 env-gated `test_tts_502_refunds_quota` needs `SARVAM_API_KEY`; the pre-existing `test_deploy_script_provisions_audio_bucket` hardcoded-path failure was fixed 2026-09-08 — repo-relative path + Apple-secret assertions) |
+| Backend tests | **750 passed** 2026-09-15 (grammar tab rebuild: guide content lint + 1,808 engine checks, prakriya params, Word Lab lookup, audio renderer). Earlier: 650 on 2026-09-08 (4 u579 + 5 vocab-dcs; 1 env-gated `test_tts_502_refunds_quota` needs `SARVAM_API_KEY`; the `test_deploy_script_provisions_audio_bucket` hardcoded-path failure was fixed 2026-09-08) |
+| Grammar guide | **18 chapters · 105 topics · 44 glossary terms**, English + Hindi, static (`app/services/grammar_guide/`, `GET /grammar/guide`, `/grammar/guide/topics/{id}`, `/grammar/lookup`). Audio: **1,662 clips rendered 2026-09-15** (~₹37) and **uploaded to `gs://sanskritam-audio/audio/grammar/`** (public-read, asia-south1) with the 264 challenge + 99 dialogue clips. Production uses it only after `GCS_AUDIO_BUCKET=sanskritam-audio` is in `.env.deploy` and `deploy.sh` runs |
 | Mobile typecheck | **0 errors** |
 | Alembic head | `b4c6d8e0f1a2` — **applied** (Apple `apple_sub`; Spec E `varna_progress` below it); verify with `alembic current` |
 | Engines live | all four — prakriya, chandas, sandhi, cheda (+ kosha, lipi) |

@@ -1519,13 +1519,29 @@ point: a "Read" card at the top of the Grammar tab.
   *not* a pager; U13-1). Uses U9-4's pattern — content-shaped skeleton, a
   U10-3 retryable error state, and an honest empty state. Corpus comes from the
   new `GET /shlokas` endpoint (date-ordered, auth-bound).
-- **Reading** — tapping a card opens that verse as a full page. A **3D book
-  page-turn** (`components/PageFlip.tsx`) folds to the adjacent verse as you
-  tap Previous/Next: the current face rotates about its vertical axis
-  (perspective-based `rotateY`), swaps at the edge via `runOnJS`, and unfolds
-  the incoming face flat. Pure cosmetic — skippable (§3.7) and absent under
-  Reduce Motion (§3.4), where it swaps instantly. No horizontal pager: the
-  index stays a scroll; the turn is a reading posture, not the primary browse.
+- **Reading** — tapping a card opens that verse as a full page. *(Superseded
+  2026-09-15 — the book, below.)*
+
+**The book (2026-09-15, replaces `PageFlip`/`BookFlip`).** A book's contents
+open with its cover (`components/book/BookCover.tsx`) and an **Open book** /
+**Continue · 5.35** button; the chapter list stays below. Open book, or any
+verse row, opens the book at that verse: the cover turns away, then every
+verse is a page that **curls like paper** under the finger
+(`components/book/PageCurlBook.tsx`) — forward and back, a diagonal pull
+lifting a corner, the sheet's back and its shadow showing.
+- The resting page is a live view (words tap, the gloss opens). A turn draws
+  a Skia snapshot of it (`makeImageFromView`) bent round a cylinder by an SkSL
+  shader (`book/curlMath.ts`) over the live neighbour page. Snapshots are
+  taken at rest and re-shot when a page changes — never on touch-down.
+- Previous/Next, the slider and a contents jump turn ONE leaf, never a riffle;
+  a tap finishes any automatic turn (§3.7).
+- Reduce Motion swaps pages instantly, swipe included (§3.4). So does web:
+  Skia cannot snapshot RN views there, and `CurlLayer.tsx` (the web twin of
+  `CurlLayer.native.tsx`) keeps Skia out of that bundle.
+- While a book is open the drawer's edge swipe is off (it would steal a page
+  turned back from the spine) and Android back returns to the contents.
+- No horizontal pager: the index stays a scroll; the book is a reading
+  posture, not the primary browse.
 
 ## U13-2 · Tap a word
 
@@ -1935,6 +1951,23 @@ Never cut:    U5 (accessibility)
 Cut first:    U6-1 profiling depth, U3-5
 Ask first:    U3-5 (leagues)
 Unblocked:    U4-2 → now U12 (ML Kit Digital Ink, owner decision 2026-09-05)
+
+New surfaces, 2026-09-15 — the Grammar tab rebuild (bilingual guide):
+  Grammar.tsx         hub: EN | हिन्दी toggle, search (topics + glossary; a
+                      Devanagari query offers Word Lab), New-here / Continue
+                      cards, level chips, 18 collapsible chapters, tools, glossary
+  GrammarTopic.tsx    one idea per page: term, one-liner, blocks, go deeper,
+                      quick check, see-it-proved, key terms, lesson/practice
+                      (never [staged]), mark as understood, prev/next
+  WordLab.tsx         GET /grammar/lookup names the typed form first (each
+                      reading engine re-derived); build / all-forms / sandhi
+  components/grammar/ BlockRenderer · InlineText (** and {{}}) · QuickCheck ·
+                      ProofPanel · GlossarySheet · LangToggle · Collapsible ·
+                      LevelPill · AudioButton
+  prefs.guideLang     one persisted language for hub, topic, glossary, Word Lab
+  grammarGuide.ts     read marks, last topic, last-good guide cache (offline)
+  AudioButton         renders only when a node carries audio_url; every guide
+                      Sanskrit string has a clip (1,662, rendered 2026-09-15)
 
 New surfaces, 2026-09-08 — P23's client half, the LIVE phase:
   U15  the step player   Lesson.tsx stops being an article and becomes a

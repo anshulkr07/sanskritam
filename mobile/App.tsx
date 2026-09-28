@@ -55,6 +55,8 @@ import VocabScreen from "./src/screens/Vocab";
 import LicencesScreen from "./src/screens/Licences";
 import PingalaScreen from "./src/screens/Pingala";
 import StoryDeckScreen from "./src/screens/StoryDeck";
+import GrammarTopicScreen from "./src/screens/GrammarTopic";
+import WordLabScreen from "./src/screens/WordLab";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -121,6 +123,9 @@ function RootNavigator() {
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
             {/* Story deck (Discover Sanskrit) — the swipeable basics→advanced cards. */}
             <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Discover Sanskrit" }} />
+            {/* Grammar guide: a topic page and the word lookup, stacked over the Grammar tab. */}
+            <Stack.Screen name="GrammarTopic" component={GrammarTopicScreen} options={{ title: "Grammar" }} />
+            <Stack.Screen name="WordLab" component={WordLabScreen} options={{ title: "Word Lab" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

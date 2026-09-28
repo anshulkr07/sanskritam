@@ -18,7 +18,15 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { api, type Lesson, type LessonStep, type StepAttempt, type VideoItem } from "../api/client";
+import {
+  api,
+  type Lesson,
+  type LessonStep,
+  type LessonSummary,
+  type StepAttempt,
+  type Unit,
+  type VideoItem,
+} from "../api/client";
 import { useAsk } from "../ask/AskProvider";
 import { Button, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
@@ -26,9 +34,38 @@ import StepRenderer from "../components/steps/StepRenderer";
 import VerdictSheet from "../components/VerdictSheet";
 import VideoSection from "../components/VideoSection";
 import type { RootStackParamList } from "../navigation/types";
+import { cachedGet, invalidateCache, peekCache } from "../services/apiCache";
 import { color, font, radius, script, shadow, space } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Lesson">;
+
+// Header meta from a lesson summary: the step player shows only the titles
+// and the unit, so nothing beyond the summary is needed to start.
+function summaryToLesson(s: LessonSummary): Lesson {
+  return {
+    feature_id: s.feature_id,
+    unit_id: s.unit_id,
+    rank: s.rank,
+    title_en: s.title_en,
+    title_hi: s.title_hi,
+    body: "",
+    examples: [],
+    visual_type: "none",
+    visual_data: {},
+    audio_url: "",
+    register: s.register,
+  };
+}
+
+// Path and Home cache /units and Grammar caches /lessons, so a lesson opened
+// from any of them already has its summary in memory.
+function cachedSummary(lessonId: string): LessonSummary | undefined {
+  for (const unit of peekCache<Unit[]>("units") ?? []) {
+    const hit = unit.lessons.find((l) => l.id === lessonId);
+    if (hit) return hit;
+  }
+  return peekCache<LessonSummary[]>("grammar-lessons")?.find((l) => l.id === lessonId);
+}
 
 export default function LessonScreen({ navigation, route }: Props) {
   const { featureId, lessonId: lessonIdParam } = route.params;
@@ -75,37 +112,32 @@ export default function LessonScreen({ navigation, route }: Props) {
           return;
         }
         setLessonId(lid);
-        if (!meta) {
-          // Meta for the header: find this lesson in the list.
-          const all = await api.lessons();
-          const found = all.find((l) => l.id === lid);
-          if (found) {
-            meta = {
-              feature_id: found.feature_id,
-              unit_id: found.unit_id,
-              rank: found.rank,
-              title_en: found.title_en,
-              title_hi: found.title_hi,
-              body: "",
-              examples: [],
-              visual_type: "none",
-              visual_data: {},
-              audio_url: "",
-              register: found.register,
-            };
+        // Steps and videos go out together: neither waits on the other or on
+        // the header. Videos resolve through the lesson's unit; a failure
+        // hides the section rather than failing the lesson.
+        const stepsReq = api.lessonSteps(lid);
+        const videosReq = api.lessonVideos(lid).catch((): VideoItem[] => []);
+        if (meta) {
+          setLesson(meta);
+        } else {
+          const cached = cachedSummary(lid);
+          if (cached) {
+            setLesson(summaryToLesson(cached));
+          } else {
+            // Cold entry: the header fills in when the list lands; the steps
+            // never wait for it.
+            cachedGet("grammar-lessons", api.lessons)
+              .then((all) => {
+                const found = all.find((l) => l.id === lid);
+                if (found) setLesson(summaryToLesson(found));
+              })
+              .catch(() => {});
           }
         }
-        setLesson(meta);
-        const fetched = await api.lessonSteps(lid);
+        const fetched = await stepsReq;
         if (!fetched.length) setMissing(true);
         else setSteps(fetched);
-        // Videos resolve through the lesson's unit; failure hides the
-        // section rather than failing the lesson.
-        try {
-          setVideos(await api.lessonVideos(lid));
-        } catch {
-          setVideos([]);
-        }
+        setVideos(await videosReq);
       } catch {
         setFailed(true);
       } finally {
@@ -133,6 +165,9 @@ export default function LessonScreen({ navigation, route }: Props) {
       setBusy(true);
       try {
         const res = await api.attemptStep(lessonId, current.rank, answer);
+        // Mastery may have moved: Path refetches unit progress on its next
+        // focus instead of replaying the 60s cache.
+        invalidateCache("units");
         setResult(res);
       } catch {
         // A network failure is a system failure, never a verdict — stay on

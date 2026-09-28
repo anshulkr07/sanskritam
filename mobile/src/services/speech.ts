@@ -175,4 +175,17 @@ export async function playTutorAudio(
   return speak(text, lang, 1.0, onComplete, onStart);
 }
 
-export default { speak, playTutorAudio, setPlaybackMode, bulbulLangCode };
+/**
+ * Grammar guide: play one pre-rendered clip. Unlike playTutorAudio there is no
+ * live-TTS fallback — the guide only shows a speaker when a clip exists, so a
+ * missing file stays silent instead of spending a synthesis call.
+ */
+export async function playClip(url: string, onComplete?: () => void): Promise<SpeakHandle | null> {
+  if (!url || !url.trim()) return null;
+  await setPlaybackMode();
+  const { BASE_URL } = await import("../config");
+  const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
+  return playSource(src, 2, onComplete);
+}
+
+export default { speak, playTutorAudio, playClip, setPlaybackMode, bulbulLangCode };

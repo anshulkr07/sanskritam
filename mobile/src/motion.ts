@@ -9,6 +9,7 @@ export const duration = {
   quick:   180,   // tile pickup, button depress, chip
   base:    260,   // the default: sheets, fades, most transitions
   slow:    400,   // screen transitions, sheet with content
+  turn:    520,   // a book page turned by a button — one unhurried leaf
   telling: 650,   // deliberate reveals — a śloka line, a badge
 } as const;
 

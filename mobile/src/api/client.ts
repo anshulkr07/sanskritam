@@ -130,6 +130,8 @@ export interface Shloka {
   word_breakdown: WordBreakdown[];
   features: string[];
   audio_url: string;
+  translation_hi?: string;
+  translation_en?: string;
 }
 
 // P21-4: one row of the canon catalogue — study order, depth, live counts.
@@ -539,6 +541,26 @@ export interface Paradigm {
   kind: string;
 }
 
+/** GET /grammar/lookup — each candidate re-derives the typed word exactly. */
+export interface WordLookupCandidate {
+  kind: "noun" | "pronoun" | "verb" | "indeclinable";
+  lemma: string;
+  lemma_iast: string;
+  linga: string | null;
+  lakara: string | null;
+  /** {vibhakti, vacana} for nouns, {purusha, vacana} for verbs */
+  readings: Record<string, string>[];
+  plain: { en: string; hi: string };
+  /** GET /grammar/derive query for this exact form; empty for indeclinables */
+  derive_params: Record<string, string>;
+}
+
+export interface WordLookup {
+  word: string;
+  iast: string;
+  candidates: WordLookupCandidate[];
+}
+
 // ─── Ask anywhere (U11 / P19) ─────────────────────────────────────────────
 // A session-free explain endpoint with engine-first routing. `routed_to`
 // tells the learner which shape of answer they are reading (U11-2: an engine
@@ -692,37 +714,158 @@ export interface DailyWordGuessResponse {
   reason?: string;
 }
 
-// ─── Grammar guide (Learn map for the Grammar tab) ────────────────────
-// Static basics→advanced sections from GET /grammar/guide. Lesson existence
-// resolves client-side from units()/pathSpine() so the guide never stales.
+// ─── Grammar guide (Grammar tab: chapters → topics, English + Hindi) ──
+// GET /grammar/guide (index) and /grammar/guide/topics/{id}. Every learner-
+// facing string is an {en, hi} pair; Sanskrit arrives with lipi IAST, an
+// optional pre-rendered clip, and `checked` when the engine verified it.
 
-export interface GuideExample {
-  devanagari: string;
-  gloss: string;
+export type GuideLang = "en" | "hi";
+
+export interface Loc {
+  en: string;
+  hi: string;
+}
+
+export interface GuideSanskrit {
+  sa: string;
+  iast: string;
+  checked?: boolean;
+  audio_url?: string;
+}
+
+export interface GuideWord extends GuideSanskrit {
+  gloss: Loc;
+}
+
+export interface GuideExample extends GuideSanskrit {
+  meaning: Loc;
+  words?: GuideWord[];
+  source?: Loc;
+}
+
+export interface GuideSanskritCell extends GuideSanskrit {
+  split?: [string, string];
+}
+
+export type GuideCell = GuideSanskritCell | { text: Loc };
+
+export type GuideBlock =
+  | { kind: "text"; text: Loc }
+  | { kind: "analogy"; text: Loc }
+  | { kind: "callout"; tone: "tip" | "watch" | "fact"; text: Loc }
+  | { kind: "steps"; items: Loc[] }
+  | { kind: "examples"; title?: Loc; items: GuideExample[] }
+  | { kind: "wild"; items: GuideExample[] }
+  | { kind: "formula"; a: GuideSanskrit; b: GuideSanskrit; result: GuideSanskrit; rule: Loc }
+  | { kind: "table"; caption: Loc; columns: Loc[]; rows: GuideCell[][]; stem?: string; note?: Loc };
+
+export interface GuideDeeper {
+  title: Loc;
+  level: number;
+  blocks: GuideBlock[];
+}
+
+export interface GuideQuizOption {
+  sa?: string;
+  iast?: string;
+  checked?: boolean;
+  text?: Loc;
+}
+
+export interface GuideQuiz {
+  prompt: Loc;
+  options: GuideQuizOption[];
+  answer: number;
+  explain: Loc;
 }
 
 export interface GuideProof {
-  type: string; // derive | paradigm | sandhi | word-order
-  params: Record<string, unknown>;
+  type: "derive" | "paradigm" | "sandhi" | "word-order" | "scansion";
+  label: Loc;
+  params: Record<string, string>;
 }
 
-export interface GuideSection {
+export interface GuideGlossaryItem {
+  id: string;
+  term_sa: string;
+  term_iast: string;
+  meaning: Loc;
+  topic_id: string;
+  audio_url?: string;
+}
+
+export interface GuideChapter {
   id: string;
   rank: number;
-  title_en: string;
-  title_hi: string;
-  unit_ids: string[];
-  feature_ids: string[];
-  body_beginner: string;
-  body_intermediate: string;
-  body_advanced: string;
-  examples: GuideExample[];
-  proof: GuideProof | null;
+  title: Loc;
+  title_sa: string;
+  title_iast: string;
+  blurb: Loc;
+  icon: string;
+  topic_ids: string[];
 }
 
-export interface GuideResponse {
+export interface GuideTopicSummary {
+  id: string;
+  chapter_id: string;
+  rank: number;
+  level: number; // 1 beginner · 2 intermediate · 3 advanced
+  title: Loc;
+  title_sa: string;
+  title_iast: string;
+  summary: Loc;
+  minutes: number;
+  feature_ids: string[];
+  has_quiz: boolean;
+}
+
+export interface GuideTopicRef {
+  id: string;
+  title: Loc;
+  title_sa: string;
+}
+
+export interface GuideIndex {
   version: string;
-  sections: GuideSection[];
+  chapters: GuideChapter[];
+  topics: GuideTopicSummary[];
+  glossary: GuideGlossaryItem[];
+}
+
+export interface GuideTopic extends GuideTopicSummary {
+  chapter: { id: string; title: Loc; title_sa: string; position: number; count: number };
+  term: (GuideSanskrit & { meaning: Loc }) | null;
+  blocks: GuideBlock[];
+  deeper: GuideDeeper[];
+  quiz: GuideQuiz[];
+  proofs: GuideProof[];
+  terms: GuideGlossaryItem[];
+  related: GuideTopicRef[];
+  prev: GuideTopicRef | null;
+  next: GuideTopicRef | null;
+  attribution: string;
+}
+
+/** GET /grammar/derive query — every field optional, lists comma-joined.
+ *  A type alias (not an interface) so it passes as a query record. */
+export type DeriveParams = {
+  dhatu?: string;
+  lakara?: string;
+  purusha?: string;
+  vacana?: string;
+  pratipadika?: string;
+  linga?: string;
+  vibhakti?: string;
+  gana?: string;
+  aupadeshika?: string;
+  prayoga?: string;
+  sanadi?: string;
+  prefixes?: string;
+  krt?: string;
+  taddhita?: string;
+  stem_type?: string;
+  avyaya?: string;
+  expect?: string;
 }
 
 // ─── Story deck (Discover Sanskrit) ───────────────────────────────────
@@ -807,6 +950,8 @@ async function request<T>(path: string, init: RequestInit = {}, withAuth = false
     }
     throw new ApiError(res.status, detail);
   }
+  // 204 No Content (DELETE /me) has no body to parse.
+  if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
 }
 
@@ -993,6 +1138,10 @@ export const api = {
     }),
 
   me: () => request<MeResponse>("/me", {}, true),
+
+  // Hard-deletes the account and all its learning data — Google Play requires
+  // deletion inside the app. 204 on success.
+  deleteMe: () => request<void>("/me", { method: "DELETE" }, true),
 
   updateRatio: (body: { sanskrit_ratio?: number; script_ratio?: number }) =>
     request<MeResponse>("/me", { method: "PATCH", body: JSON.stringify(body) }, true),
@@ -1185,10 +1334,7 @@ export const api = {
     ),
 
   // Grammar proof surfaces (U7) — local computation, no quota.
-  deriveWord: (params: {
-    dhatu?: string; lakara?: string; purusha?: string; vacana?: string;
-    pratipadika?: string; linga?: string; vibhakti?: string;
-  }) =>
+  deriveWord: (params: DeriveParams) =>
     request<Derivation>("/grammar/derive?" + toQuery(params)),
 
   scansion: (text: string) =>
@@ -1199,20 +1345,29 @@ export const api = {
       "/grammar/sandhi?joined=" + encodeURIComponent(joined),
     ),
 
+  lookupWord: (word: string) =>
+    request<WordLookup>("/grammar/lookup?word=" + encodeURIComponent(word)),
+
   wordOrder: (sentence: string) =>
     request<WordOrder>("/grammar/word-order?sentence=" + encodeURIComponent(sentence)),
 
   varnaDistance: (a: string, b: string) =>
     request<VarnaDistance>("/grammar/varna-distance?a=" + encodeURIComponent(a) + "&b=" + encodeURIComponent(b)),
 
-  paradigm: (params: { pratipadika?: string; linga?: string; dhatu?: string; lakara?: string }) =>
+  paradigm: (params: {
+    pratipadika?: string; linga?: string; dhatu?: string; lakara?: string;
+    gana?: string; aupadeshika?: string; prayoga?: string; sanadi?: string;
+    prefixes?: string; stem_type?: string;
+  }) =>
     request<Paradigm>("/grammar/paradigm?" + toQuery(params)),
 
   // Approved-content spine for the journey path (P7-5)
   pathSpine: () => request<PathSpine>("/grammar/path", {}, true),
 
-  // Grammar guide — static Learn map (basics → advanced), no quota.
-  guide: () => request<GuideResponse>("/grammar/guide", {}, true),
+  // Grammar guide — chapters → topics, English + Hindi, no quota.
+  guideIndex: () => request<GuideIndex>("/grammar/guide", {}, true),
+  guideTopic: (topicId: string) =>
+    request<GuideTopic>(`/grammar/guide/topics/${encodeURIComponent(topicId)}`, {}, true),
 
   // Curriculum (U14 / P22) — Lesson → Practice → Challenge; vocab; graded
   // reading. Static content: no quota, but still auth-bound like /shlokas.

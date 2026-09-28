@@ -1,0 +1,31 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'shabd.digitalink'
+version = '0.1.0'
+
+android {
+  namespace "expo.modules.shabddigitalink"
+
+  defaultConfig {
+    versionCode 1
+    versionName '0.1.0'
+  }
+}
+
+dependencies {
+  // On-device Digital Ink recognition (strokes in, text out, fully offline
+  // once the language model is downloaded).
+  implementation 'com.google.mlkit:digital-ink-recognition:16.1.0'
+  // MUST stay: digital-ink-recognition:16.1.0 transitively pulls
+  // androidx.work:work-runtime:2.2.0 (2020), whose ForceStopRunnable builds a
+  // PendingIntent with no mutability flag. On Android 12+ (targetSdk 31+)
+  // that throws at app start and kills the process before any UI renders
+  // ("Sanskritam keeps stopping", 2026-09-15). Nothing else in the app
+  // requests work-runtime, so Gradle would otherwise resolve 2.2.0.
+  // Pinning >= 2.7.0 here wins conflict resolution (highest version) and
+  // fixes model download + startup with no API change for ML Kit callers.
+  implementation 'androidx.work:work-runtime:2.9.0'
+}
