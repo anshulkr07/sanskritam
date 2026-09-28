@@ -1,0 +1,40 @@
+# EAS Build ignore list — excludes what's unneeded for the build
+
+# dependencies (huge)
+node_modules/
+
+# git history
+.git/
+
+# Expo caches
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+
+# generated native code (regenerated on EAS servers)
+/android
+/ios
+
+# keystores and signing keys
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# local env files (EAS injects its own)
+.env
+.env*
+!.env.example
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# debug logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
