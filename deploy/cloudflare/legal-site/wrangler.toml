@@ -1,0 +1,20 @@
+# Cloudflare Worker that serves the Sanškritam legal pages at
+# sanskritam.vedicvalor.com for the Google Play store listing.
+#
+# The page CONTENT is owned by the backend (backend/app/routers/legal.py) and
+# rendered at /privacy and /delete-account. This worker only puts a stable,
+# branded hostname in front of them — it reverse-proxies, it does not
+# duplicate the text, so "change the code, change the page" still holds.
+#
+# Deploy:  cd deploy/cloudflare/legal-site && npx wrangler deploy
+
+name = "sanskritam-legal"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+account_id = "53e63a62bf8caf42f7a21f5450e8f5a6"
+
+# custom_domain = true makes Cloudflare create the DNS record + certificate
+# for the subdomain automatically (no manual DNS work).
+routes = [
+  { pattern = "sanskritam.vedicvalor.com", custom_domain = true }
+]

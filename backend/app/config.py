@@ -137,7 +137,11 @@ class Settings(BaseSettings):
 
     # Public legal pages (/privacy, /delete-account). Google Play requires a
     # privacy policy URL and an account-deletion URL; both name a contact.
-    legal_entity_name: str = "Sanskritam"
+    # NOTE: the entity name is a CODE default (not pushed via LEGAL_ENTITY_NAME)
+    # because the Windows deploy path forwards --update-env-vars through
+    # gcloud.cmd -> cmd.exe, which splits any value containing a space and
+    # aborts the deploy. Set a space-free name here or in a non-Windows deploy.
+    legal_entity_name: str = "Vedic Valor"
     legal_contact_email: str = ""
 
     # Writing recognition (P20-3) — thresholds live in config, never in a
