@@ -65,7 +65,16 @@
       [
         "@react-native-google-signin/google-signin",
         {
-          "iosUrlScheme": "com.googleusercontent.apps.829757572630-4671983larm19abnu5qtopbbs6ehnbqp"
+          "iosUrlScheme": "com.googleusercontent.apps.829757572630-63unmold7f790tfkhpns7rlkfqfupjgk"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
+          }
         }
       ]
     ],
