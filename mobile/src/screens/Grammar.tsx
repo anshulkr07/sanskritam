@@ -2,7 +2,7 @@
 //
 // Replaces the old single scroll of eight dense cards. Top to bottom: title
 // with the English | हिन्दी toggle, one search box (topics + glossary; a
-// Devanagari word offers the Word Lab), "New here?" and "Continue" cards,
+// Devanagari word offers the Word Lab), "Continue" card,
 // level chips, collapsible chapter cards listing their topics, and tools.
 //
 // Rules that govern this screen:
@@ -30,7 +30,7 @@ import InlineText from "../components/grammar/InlineText";
 import LangToggle from "../components/grammar/LangToggle";
 import LevelPill, { LEVEL_LABEL } from "../components/grammar/LevelPill";
 import { GUIDE_UI } from "../components/grammar/strings";
-import { Button, ProgressBar } from "../components/ui";
+import { ProgressBar } from "../components/ui";
 import { useGrammarProgress, useGuideLang } from "../hooks/useGuide";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
@@ -200,7 +200,6 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
   };
 
   const lastTopic = last ? topicsById.get(last) : undefined;
-  const firstTopic = index?.topics[0];
   const levels = [0, 1, 2, 3];
 
   return (
@@ -269,30 +268,6 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
           </View>
         ) : (
           <>
-            {ready && read.size < 3 && firstTopic && (
-              <View style={styles.newCard}>
-                <Text style={[styles.cardTitle, lang === "hi" && script("bold")]}>{GUIDE_UI.newHere[lang]}</Text>
-                <Text style={[styles.cardBody, lang === "hi" && script("regular")]}>{GUIDE_UI.newHereBody[lang]}</Text>
-                <View style={styles.cardActions}>
-                  {/* The shared Button has no side padding; side-by-side labels
-                      (Hindi especially) would run into the edges. */}
-                  <Button
-                    label={GUIDE_UI.startHere[lang]}
-                    size="md"
-                    labelStyle={lang === "hi" ? { ...styles.actionLabel, ...script("bold") } : styles.actionLabel}
-                    onPress={() => openTopic(firstTopic.id)}
-                  />
-                  <Button
-                    label={GUIDE_UI.discover[lang]}
-                    size="md"
-                    tone="neutral"
-                    labelStyle={lang === "hi" ? { ...styles.actionLabel, ...script("bold") } : styles.actionLabel}
-                    onPress={() => navigation.navigate("Story")}
-                  />
-                </View>
-              </View>
-            )}
-
             {lastTopic && (
               <Pressable
                 onPress={() => openTopic(lastTopic.id)}
@@ -438,11 +413,6 @@ const styles = StyleSheet.create({
   },
   wordLabText: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
   empty: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, paddingVertical: space.sm },
-  newCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: space.xs, ...shadow.card },
-  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
-  cardBody: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, lineHeight: 20 },
-  cardActions: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, marginTop: space.xs },
-  actionLabel: { paddingHorizontal: space.md },
   continue: {
     flexDirection: "row",
     alignItems: "center",

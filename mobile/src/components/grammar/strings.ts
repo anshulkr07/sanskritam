@@ -8,13 +8,6 @@ export const GUIDE_UI = {
   lookUp: { en: "Look up", hi: "देखें" },
   inWordLab: { en: "in the Word Lab", hi: "शब्द-प्रयोगशाला में" },
   noMatch: { en: "No topic matches that yet.", hi: "इससे मिलता कोई पाठ अभी नहीं है।" },
-  newHere: { en: "New to Sanskrit?", hi: "संस्कृत में नए हैं?" },
-  newHereBody: {
-    en: "Start with how the grammar works, or swipe through the Discover Sanskrit story first.",
-    hi: "व्याकरण कैसे काम करता है, वहाँ से शुरू करें, या पहले 'संस्कृत की खोज' कहानी देखें।",
-  },
-  startHere: { en: "Start here", hi: "यहाँ से शुरू करें" },
-  discover: { en: "Discover Sanskrit", hi: "संस्कृत की खोज" },
   continue: { en: "Continue", hi: "जारी रखें" },
   all: { en: "All", hi: "सभी" },
   read: { en: "read", hi: "पढ़े" },

@@ -30,6 +30,14 @@
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.CAMERA"
       ]
     },
     "web": {
@@ -37,7 +45,12 @@
     },
     "plugins": [
       "expo-font",
-      ["expo-audio", { "enableBackgroundPlayback": false }],
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": false
+        }
+      ],
       "expo-file-system",
       "expo-status-bar",
       "expo-apple-authentication",
@@ -51,9 +64,16 @@
       "expo-web-browser",
       [
         "@react-native-google-signin/google-signin",
-        { "iosUrlScheme": "com.googleusercontent.apps.829757572630-4671983larm19abnu5qtopbbs6ehnbqp" }
-      ],
-      "./plugins/withReleaseSigning"
-    ]
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.829757572630-4671983larm19abnu5qtopbbs6ehnbqp"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ffc34e8f-6a3e-4c79-a3ef-d49791074530"
+      }
+    },
+    "owner": "sanskritam"
   }
 }
