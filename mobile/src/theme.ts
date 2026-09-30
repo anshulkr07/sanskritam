@@ -1,8 +1,8 @@
 // Sanskritam design system tokens.
-// Light theme only (the product is light — see DECISIONS; user explicitly
-// rejected dark "AI" aesthetics). Duolingo-inspired: warm paper background,
-// a single saturated action color, chunky rounded buttons with solid shadow,
-// and a calm ink for text. Everything else derives from these tokens.
+// Light theme only (the product is light, see DECISIONS; the owner rejected
+// dark "AI" aesthetics). Warm paper background, saffron for action and the
+// brand, a calm ink for text, and an accent family (teal, sage, rose, gold,
+// slate) for categories and hero cards. Everything else derives from these.
 
 export const color = {
   // Paper + surface
@@ -11,9 +11,10 @@ export const color = {
   surfaceMuted: "#FBEED9",
   border: "#EFE3CE",
 
-  // Brand — saffron (action) and deep ink (text). Saṃskṛta tutor mood.
-  saffron: "#E85B25", // primary action
-  saffronDeep: "#C74414", // button bottom shadow
+  // Brand: saffron (action) and deep ink (text). Matches the app icon.
+  saffron: "#E85B25", // brand, icons, tab tint
+  saffronBtn: "#D2461F", // fill behind white text (4.53:1; #E85B25 is 3.53:1)
+  saffronDeep: "#C74414", // shadow colour for saffron fills
   saffronLight: "#FFE3D3", // selected/active tint
   ink: "#3B2E25", // near-black warm text
   inkSoft: "#7A6A5C", // secondary text
@@ -47,6 +48,37 @@ export const color = {
   gold: "#F2B33D", // streak flame / crowns
   white: "#FFFFFF",
 };
+
+// ── Accent family ────────────────────────────────────────────────────────
+// One accent per card or category, never a rainbow inside one card.
+//   fg    text or icon on `bg` or on paper (>= 4.6:1 on both)
+//   bg    a pale tint for tiles
+//   from/to  a gradient for white text; BOTH stops are >= 4.5:1 against white,
+//            so text can sit anywhere on the card. Run scripts/check-contrast.mjs
+//            after touching any value here.
+export const accent = {
+  saffron: { fg: "#B23D10", bg: "#FFE3D3", from: "#D2461F", to: "#B23D10" },
+  teal: { fg: "#1F6E73", bg: "#DDEFEE", from: "#1F7A7C", to: "#17535C" },
+  sage: { fg: "#44703F", bg: "#E5EEDC", from: "#4A7F44", to: "#35603C" },
+  rose: { fg: "#AE3F5A", bg: "#F9E1E5", from: "#C04D6E", to: "#962F4E" },
+  gold: { fg: "#8E6108", bg: "#FBEFD2", from: "#9F640D", to: "#8A5608" },
+  slate: { fg: "#3C5A8E", bg: "#E3E9F4", from: "#4F6AA3", to: "#2F4677" },
+} as const;
+
+export type AccentName = keyof typeof accent;
+
+/** Units take these in turn, so neighbours never share a colour. */
+export const ACCENT_CYCLE: AccentName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
+
+/** The i-th accent in the cycle, for lists (units, tiles). */
+export function accentAt(i: number): AccentName {
+  return ACCENT_CYCLE[((i % ACCENT_CYCLE.length) + ACCENT_CYCLE.length) % ACCENT_CYCLE.length];
+}
+
+/** [from, to] for expo-linear-gradient. */
+export function gradientOf(name: AccentName): [string, string] {
+  return [accent[name].from, accent[name].to];
+}
 
 export const space = {
   xxs: 4,
@@ -184,13 +216,14 @@ export function nativeText(scriptKey: string, size: number = font.sizes.md) {
 }
 
 export const shadow = {
-  // Chunky "Duolingo button" shadow: solid darker copy of the fill below.
+  // A soft lift under filled buttons. The old solid under-shadow (a hard
+  // darker copy of the fill) read as template UI, so buttons are flat now.
   button: {
     shadowColor: color.saffronDeep,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.18,
+    shadowRadius: 10,
+    elevation: 3,
   },
   card: {
     shadowColor: color.ink,
@@ -203,4 +236,4 @@ export const shadow = {
 
 export type Theme = typeof color;
 
-export default { color, space, radius, font, shadow, script, scriptFontFamily };
+export default { color, accent, space, radius, font, shadow, script, scriptFontFamily };

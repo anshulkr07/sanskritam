@@ -30,7 +30,7 @@ const UNAVAILABLE: PhotoRecogniser = {
   ready: false,
   statusNote:
     "Reading from paper needs a dev build with the on-device text module. " +
-    "Photos are processed on this device and discarded — never uploaded.",
+    "On-device photo reading is not available in this build.",
   recognise: async () => null,
 };
 

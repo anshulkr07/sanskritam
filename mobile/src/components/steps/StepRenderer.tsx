@@ -80,11 +80,11 @@ export function stepHint(kind: string): string {
     case "contrast":
       return "Pick the role.";
     case "build":
-      return "Arrange the words. Practice — not graded.";
+      return "Arrange the words. Not graded.";
     case "articulate":
-      return "Shape the sound. Practice — not graded.";
+      return "Shape the sound. Not graded.";
     case "read":
-      return "Read the passage. Practice — not graded.";
+      return "Read the passage. Not graded.";
     default:
       return "Read, then continue.";
   }

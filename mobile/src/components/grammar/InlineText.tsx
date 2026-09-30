@@ -8,6 +8,7 @@ import { StyleSheet, Text, type StyleProp, type TextStyle } from "react-native";
 
 import type { GuideLang } from "../../api/client";
 import { color, script } from "../../theme";
+import { plain } from "../../utils/text";
 
 interface Part {
   text: string;
@@ -42,7 +43,8 @@ export default function InlineText({
   style?: StyleProp<TextStyle>;
   numberOfLines?: number;
 }) {
-  const parts = React.useMemo(() => parseInline(text), [text]);
+  // The guide is authored with em dashes; the app never shows one.
+  const parts = React.useMemo(() => parseInline(plain(text)), [text]);
   const hindi = lang === "hi";
   return (
     <Text

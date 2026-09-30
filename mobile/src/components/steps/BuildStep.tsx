@@ -11,19 +11,19 @@ import { StyleSheet, Text, View } from "react-native";
 import WordBank from "../WordBank";
 import { haptics } from "../../services/haptics";
 import { color, font, script, space } from "../../theme";
-import { field, type StepInputProps } from "./types";
+import { field, prose, type StepInputProps } from "./types";
 
 export default function BuildStep({ step, disabled, onSubmit }: StepInputProps) {
   const payload = step.payload;
   const sentence = field<string>(payload, "sentence", "");
   const corpus = field<string[]>(payload, "corpus", []);
-  const prompt = field<string>(payload, "prompt", "Arrange the words.");
+  const prompt = prose(payload, "prompt", "Arrange the words.");
 
   if (!sentence.trim()) {
     return (
       <View>
         <Text style={styles.prompt}>{prompt}</Text>
-        <Text style={styles.note}>Nothing to arrange yet — continue.</Text>
+        <Text style={styles.note}>Nothing to arrange. Continue.</Text>
       </View>
     );
   }
@@ -34,9 +34,9 @@ export default function BuildStep({ step, disabled, onSubmit }: StepInputProps) 
       <Text
         style={styles.practice}
         accessibilityRole="text"
-        accessibilityLabel="Practice. Arranging words is not graded."
+        accessibilityLabel="Arranging is not graded."
       >
-        Practice — arranging is not graded.
+        Arranging is not graded.
       </Text>
       <View style={styles.bank}>
         <WordBank

@@ -1,5 +1,5 @@
-// Shared UI primitives — the "Sanskritam look": warm paper, chunky buttons with a
-// solid bottom shadow, pill chips, and calm type. Light theme only.
+// Shared UI primitives: warm paper, flat filled buttons with a soft lift,
+// pill chips, and calm type. Light theme only.
 
 import React from "react";
 import {
@@ -14,11 +14,11 @@ import {
 } from "react-native";
 
 import { haptics } from "../services/haptics";
-import { color, font, radius, shadow, space } from "../theme";
+import { accent, color, font, radius, shadow, space } from "../theme";
 
-// ─── HeavyButton (the signature Duolingo-shaped action) ─────────────────────
+// ─── Button ─────────────────────────────────────────────────────────────────
 
-type Tone = "primary" | "ok" | "neutral" | "ghost" | "danger";
+type Tone = "primary" | "ok" | "neutral" | "ghost" | "danger" | "tonal" | "dark";
 
 interface ButtonProps extends Omit<PressableProps, "style"> {
   label: string;
@@ -33,28 +33,38 @@ interface ButtonProps extends Omit<PressableProps, "style"> {
 }
 
 const TONE_FILL: Record<Tone, string> = {
-  primary: color.saffron,
-  ok: color.ok,
+  primary: color.saffronBtn,
+  ok: color.okText,
   neutral: color.surfaceMuted,
   ghost: "transparent",
-  danger: color.bad,
-};
-
-const TONE_SHADOW: Record<Tone, string> = {
-  primary: color.saffronDeep,
-  ok: "#1E7A39",
-  neutral: "#E0CBA6",
-  ghost: "transparent",
-  danger: "#B02A20",
+  danger: color.badText,
+  tonal: color.saffronLight,
+  dark: color.ink,
 };
 
 const TONE_INK: Record<Tone, string> = {
   primary: color.white,
   ok: color.white,
   neutral: color.ink,
-  ghost: color.saffron,
+  ghost: color.saffronText,
   danger: color.white,
+  tonal: accent.saffron.fg,
+  dark: color.white,
 };
+
+// Only solid fills get a lift; tonal, neutral and ghost buttons sit flat.
+const TONE_LIFT: Partial<Record<Tone, string>> = {
+  primary: color.saffronDeep,
+  ok: "#1E6B34",
+  danger: "#A3231A",
+  dark: color.ink,
+};
+
+const SIZE = {
+  lg: { minHeight: 54, fontSize: font.sizes.base, borderRadius: radius.md },
+  md: { minHeight: 46, fontSize: font.sizes.base, borderRadius: radius.md },
+  sm: { minHeight: 36, fontSize: font.sizes.sm, borderRadius: radius.sm },
+} as const;
 
 export function Button({
   label,
@@ -69,13 +79,9 @@ export function Button({
   onPress,
   ...rest
 }: ButtonProps) {
-  const fill = TONE_FILL[tone];
-  const shadowC = TONE_SHADOW[tone];
   const ink = TONE_INK[tone];
-  const isGhost = tone === "ghost";
-  const padV = size === "lg" ? 18 : size === "md" ? 13 : 8;
-  const fontSize = size === "lg" ? font.sizes.md : size === "md" ? font.sizes.base : font.sizes.sm;
-  const baseShadow = size === "sm" ? 0 : 3;
+  const lift = size === "sm" ? undefined : TONE_LIFT[tone];
+  const s = SIZE[size];
 
   return (
     <View style={[style, block && styles.block]}>
@@ -90,35 +96,18 @@ export function Button({
         {...rest}
         style={({ pressed }) => [
           styles.button,
-          {
-            backgroundColor: isGhost ? "transparent" : fill,
-            borderRadius: size === "sm" ? radius.sm : radius.md,
-            paddingVertical: padV,
-            shadowColor: isGhost ? "transparent" : shadowC,
-            shadowOffset: { width: 0, height: baseShadow },
-            shadowOpacity: 1,
-            shadowRadius: 0,
-            elevation: isGhost ? 0 : size === "sm" ? 2 : size === "lg" ? 5 : 4,
-          },
-          pressed && (isGhost ? styles.ghostPressed : styles.buttonPressed),
-          (disabled || loading) && { opacity: isGhost ? 0.4 : 0.6 },
+          { backgroundColor: TONE_FILL[tone], borderRadius: s.borderRadius, minHeight: s.minHeight },
+          lift ? { ...shadow.button, shadowColor: lift } : null,
+          pressed && styles.buttonPressed,
+          (disabled || loading) && { opacity: 0.5 },
         ]}
       >
         {loading ? (
-          <ActivityIndicator color={tone === "ghost" ? color.saffron : color.white} />
+          <ActivityIndicator color={ink} />
         ) : (
           <View style={styles.buttonRow}>
             {icon}
-            <Text
-              style={[
-                styles.buttonText,
-                { color: ink, fontSize },
-                isGhost && { textTransform: "uppercase", letterSpacing: 0.8 },
-                labelStyle,
-              ]}
-            >
-              {label}
-            </Text>
+            <Text style={[styles.buttonText, { color: ink, fontSize: s.fontSize }, labelStyle]}>{label}</Text>
           </View>
         )}
       </Pressable>
@@ -250,10 +239,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 0,
-    minHeight: 40,
+    paddingHorizontal: space.lg,
   },
-  buttonPressed: { transform: [{ translateY: 1 }] },
-  ghostPressed: { opacity: 0.7 },
+  buttonPressed: { opacity: 0.88, transform: [{ scale: 0.98 }] },
   buttonRow: { flexDirection: "row", alignItems: "center", gap: space.sm },
   buttonText: {
     fontFamily: "Nunito_800ExtraBold",

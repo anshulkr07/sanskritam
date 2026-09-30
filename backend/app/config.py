@@ -122,6 +122,7 @@ class Settings(BaseSettings):
     quota_tts_chars_per_day: int = 20_000     # ~₹60/day/learner at Bulbul v3's ₹30 per 10K chars
     quota_stt_seconds_per_day: int = 900      # 15 minutes of speech (~₹7.50 at ₹30/hour)
     quota_llm_calls_per_day: int = 400       # LLM edge-router + explain calls
+    quota_doc_pages_per_day: int = 30        # photographed writing read by Sarvam Document Intelligence
     quota_window_hours: int = 24
 
     # Service-wide spend ceiling across ALL learners, same rolling window
@@ -134,6 +135,9 @@ class Settings(BaseSettings):
     # sarvam-105b: ~2K input + ~180 output tokens at ₹29.28 / ₹73.20 per 1M
     # tokens ≈ ₹0.07 a call; rounded up so the ceiling errs early, not late.
     price_llm_inr_per_call: float = 0.10
+    # Sarvam Document Digitization: ₹0.5 per page (docs.sarvam.ai/api/getting-started/pricing,
+    # 2026-09-30). One photographed letter or word is one page.
+    price_doc_inr_per_page: float = 0.5
 
     # Public legal pages (/privacy, /delete-account). Google Play requires a
     # privacy policy URL and an account-deletion URL; both name a contact.
@@ -154,6 +158,17 @@ class Settings(BaseSettings):
     writing_photo_correct_confidence: float = 0.92  # photo: much higher floor
     writing_wrong_confidence: float = 0.60        # ink: a confident DIFFERENT letter
     writing_photo_wrong_confidence: float = 0.85  # photo: rarely confident enough to be wrong
+
+    # POST /writing/photo-check: a photographed letter or word, read by Sarvam
+    # Document Intelligence. Sarvam returns text and no confidence, so an EXACT
+    # match with the target is reported at the match confidence (above the photo
+    # correct floor) and anything else at the miss confidence (below the photo
+    # wrong floor): a mismatch is `unsure`, never `wrong`, the same abstention
+    # rule as every other recogniser here.
+    writing_photo_max_bytes: int = 6 * 1024 * 1024
+    writing_photo_match_confidence: float = 0.95
+    writing_photo_miss_confidence: float = 0.5
+    sarvam_doc_language: str = "sa-IN"
 
     # Dev-login guard — disable in production
     dev_login_enabled: bool = True

@@ -4,234 +4,304 @@
 // never a failure. A beginner's letterforms are what a recogniser handles
 // worst, so most early attempts are uncertain, and the RECOGNISER is the one
 // that yields. Verdict rendering:
-//   • Recognised — guru-approves tone; the letter settles (soft green).
-//   • Unsure — the reference beside what they drew (the player is right
-//     there), the invitation is to try once more. Violet (color.unsureBg) —
+//   • Correct — the letter settles (soft green).
+//   • Unsure — the invitation is to try once more. Violet (color.unsureBg),
 //     never amber-as-soft-red.
 //   • Wrong — only when the recogniser is confident it saw a DIFFERENT
 //     letter. Rare by design.
+//   • Error — the wire failed, not the learner. Never dressed as a verdict.
 //
 // Two claims live here and must not be conflated (U12-3): "that is the
-// letter आ" (ML Kit's answer) and "that is how आ is written" (only P20-2's
-// stroke data answers). The stroke player is offered on every unsure result.
+// letter आ" (the recogniser's answer) and "that is how आ is written" (only the
+// stroke data answers). The stroke player is one tap away on every item.
 //
-// Placement (U12-5): NOT a seventh tab — this is Varṇamālā's practice mode,
-// the same relationship U9-1's mic has to U4-1's articulation map.
+// Photos (U12-4): sent to the server check (Sarvam Document Intelligence),
+// which keeps only the recognised text. If that is unavailable the photo is
+// read on the device instead. The image is deleted after the result.
+//
+// Placement (U12-5): NOT a seventh tab. This is Varṇamālā's practice mode.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
-import {
-  api,
-  type WritingAttemptResponse,
-  type WritingItem,
-} from "../api/client";
+import { api, type WritingAttemptResponse, type WritingItem } from "../api/client";
+import FetchError from "../components/FetchError";
+import { SkeletonGroup } from "../components/Skeleton";
+import { Button } from "../components/ui";
+import PhotoCapture from "../components/writing/PhotoCapture";
 import StrokePathPlayer from "../components/writing/StrokePathPlayer";
 import WritingCanvas, { type InkRecogniser } from "../components/writing/WritingCanvas";
-import PhotoCapture from "../components/writing/PhotoCapture";
+import { useTypeScale } from "../hooks/useTypeScale";
 import { getInkRecogniser } from "../services/inkRecogniser";
-import { getPhotoRecogniser, type PhotoRecogniser } from "../services/photoRecogniser";
+import { getPhotoRecogniser } from "../services/photoRecogniser";
 import { haptics } from "../services/haptics";
 import { announceVerdict } from "../utils/announce";
-import { Skeleton, SkeletonGroup } from "../components/Skeleton";
-import { useTypeScale } from "../hooks/useTypeScale";
-import { color, font, radius, script, space } from "../theme";
+import { accent, color, font, radius, script, shadow, space } from "../theme";
 
 type Tier = 1 | 2 | 3;
+type Source = "ink" | "photo";
 
-const TIER_LABEL: Record<Tier, string> = {
-  1: "Letters",
-  2: "Mātrās",
-  3: "Words",
-};
+const TIER_LABEL: Record<Tier, string> = { 1: "Letters", 2: "Mātrās", 3: "Words" };
+
+type Feedback =
+  | { kind: "correct" | "unsure" | "wrong"; read: string }
+  | { kind: "error"; read: "" };
+
+/** Delete the photo file once it has been checked (best effort). */
+function discardPhoto(uri: string): void {
+  try {
+    const FileSystem = require("expo-file-system/legacy");
+    FileSystem.deleteAsync(uri, { idempotent: true }).catch(() => {});
+  } catch {
+    /* nothing to delete on this platform */
+  }
+}
 
 export default function WritingScreen() {
   const { sized } = useTypeScale();
   const recogniser = useMemo<InkRecogniser>(() => getInkRecogniser(), []);
-  // U12-4: the paper path — same screen, second mode. Recognition stays
-  // on-device; what the server sees is identical in shape to ink.
-  const photoRecogniser = useMemo<PhotoRecogniser>(() => getPhotoRecogniser(), []);
-  const [source, setSource] = useState<"ink" | "photo">("ink");
+  const photoRecogniser = useMemo(() => getPhotoRecogniser(), []);
+  const scrollRef = useRef<unknown>(null);
+  const [drawing, setDrawing] = useState(false);
+  const [source, setSource] = useState<Source>("ink");
   const [items, setItems] = useState<WritingItem[] | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [tier, setTier] = useState<Tier>(1);
   const [idx, setIdx] = useState(0);
-  const [feedback, setFeedback] = useState<WritingAttemptResponse | null>(null);
-  const [loadError, setLoadError] = useState<string | null>(null);
+  // Bumped to clear the canvas: a new letter, or "Try again".
+  const [attempt, setAttempt] = useState(0);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [showStrokes, setShowStrokes] = useState(false);
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const [thumb, setThumb] = useState<string | null>(null);
 
-  useEffect(() => {
+  const load = useCallback(() => {
+    setLoadFailed(false);
     api
       .writingItems()
       .then(setItems)
-      .catch(() => setLoadError("Couldn't reach the writing corpus."));
+      .catch(() => setLoadFailed(true));
+  }, []);
+  useEffect(load, [load]);
+
+  const tierItems = useMemo(() => (items ?? []).filter((i) => i.tier === tier), [items, tier]);
+  const item = tierItems.length ? tierItems[idx % tierItems.length] : null;
+  const paths = item?.stroke_paths ?? [];
+
+  const reset = useCallback(() => {
+    setFeedback(null);
+    setShowStrokes(false);
+    setAttempt((a) => a + 1);
   }, []);
 
-  const tierItems = useMemo(
-    () => (items ?? []).filter((i) => i.tier === tier),
-    [items, tier],
+  const go = useCallback(
+    (delta: number) => {
+      haptics.tap();
+      setIdx((i) => (tierItems.length ? (i + delta + tierItems.length) % tierItems.length : 0));
+      reset();
+    },
+    [tierItems.length, reset],
   );
-  const item = tierItems.length ? tierItems[idx % tierItems.length] : null;
 
-  const next = useCallback(() => {
-    setFeedback(null);
-    setIdx((i) => (tierItems.length ? (i + 1) % tierItems.length : 0));
-  }, [tierItems.length]);
+  const show = useCallback((res: WritingAttemptResponse, read: string) => {
+    setFeedback({ kind: res.verdict, read });
+    if (res.verdict === "correct") haptics.correct();
+    else if (res.verdict === "unsure") haptics.near();
+    else haptics.incorrect();
+    // U5-1: explicit announcement for VoiceOver (alert role covers TalkBack).
+    announceVerdict(res.verdict === "wrong" ? "wrong" : res.verdict);
+  }, []);
 
-  const onAttempt = useCallback(
-    async (recognised: string, confidence: number, src: "ink" | "photo" = "ink") => {
+  const onInk = useCallback(
+    async (recognised: string, confidence: number) => {
       if (!item) return;
       try {
-        const res = await api.writingAttempt(item.id, recognised, confidence, src);
-        setFeedback(res);
-        if (res.verdict === "correct") haptics.correct();
-        else if (res.verdict === "unsure") haptics.near();
-        else haptics.incorrect();
-        // U5-1: explicit announcement for VoiceOver (alert role covers TalkBack).
-        announceVerdict(res.verdict === "wrong" ? "wrong" : res.verdict);
+        show(await api.writingAttempt(item.id, recognised, confidence, "ink"), recognised);
       } catch {
-        // U10-3: a network failure during an attempt never renders as a
-        // verdict — the learner's writing was fine; the wire was not.
-        setFeedback(null);
+        // A network failure is never a verdict: the writing was fine.
+        setFeedback({ kind: "error", read: "" });
       }
     },
-    [item],
+    [item, show],
   );
 
-  // U12-4: photo result feeds the SAME attempt pipeline with source "photo"
-  // (the server biases photo thresholds hard toward unsure, P20-4). Empty
-  // text reads as unsure downstream — never a bare rejection.
-  const onPhotoResult = useCallback(
-    (text: string, confidence: number) => {
-      haptics.tap();
-      void onAttempt(text, confidence, "photo");
+  const onPhoto = useCallback(
+    async (uri: string | null) => {
+      if (!item) return;
+      if (!uri) {
+        setFeedback({ kind: "unsure", read: "" });
+        return;
+      }
+      setThumb(uri);
+      setPhotoBusy(true);
+      try {
+        try {
+          const res = await api.writingPhotoCheck(item.id, uri);
+          show(res, res.recognised_text ?? "");
+        } catch {
+          // Endpoint not deployed (404/405), rate limited (429), or a
+          // server or network failure: read the photo on the device.
+          const out = await photoRecogniser.recognise(uri);
+          const text = out?.text ?? "";
+          show(await api.writingAttempt(item.id, text, out?.confidence ?? 0, "photo"), text);
+        }
+      } catch {
+        setFeedback({ kind: "error", read: "" });
+      } finally {
+        discardPhoto(uri);
+        setThumb(null);
+        setPhotoBusy(false);
+      }
     },
-    [onAttempt],
+    [item, photoRecogniser, show],
   );
+
+  const chooseTier = (t: Tier) => {
+    haptics.tap();
+    setTier(t);
+    setIdx(0);
+    reset();
+  };
+  const chooseSource = (s: Source) => {
+    haptics.tap();
+    setSource(s);
+    setFeedback(null);
+  };
+
+  const len = [...(item?.devanagari ?? "")].length;
+  const letterSize = len <= 2 ? 96 : len <= 4 ? 72 : 56;
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
-      <ScrollView contentContainerStyle={styles.body}>
-        <Text style={[styles.title, { fontSize: sized(font.sizes.lg) }]}>Write it</Text>
-        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
-          Trace the strokes, then draw it yourself. Nothing you write leaves this device.
-        </Text>
-
+    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+      <ScrollView
+        ref={scrollRef as never}
+        scrollEnabled={!drawing}
+        contentContainerStyle={styles.body}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
         {/* tier switch */}
-        <View style={styles.tierRow}>
-          {([1, 2, 3] as Tier[]).map((t) => (
-            <Pressable
-              key={t}
-              onPress={() => {
-                haptics.tap();
-                setTier(t);
-                setIdx(0);
-                setFeedback(null);
-              }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: tier === t }}
-              accessibilityLabel={`${TIER_LABEL[t]} practice`}
-              style={[styles.tierBtn, tier === t && styles.tierBtnActive]}
-            >
-              <Text style={[styles.tierText, tier === t && styles.tierTextActive, script("semibold")]}>
-                {TIER_LABEL[t]}
-              </Text>
-            </Pressable>
-          ))}
+        <View style={styles.segment} accessibilityRole="tablist">
+          {([1, 2, 3] as Tier[]).map((t) => {
+            const on = tier === t;
+            return (
+              <Pressable
+                key={t}
+                onPress={() => chooseTier(t)}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: on }}
+                accessibilityLabel={`${TIER_LABEL[t]} practice`}
+                style={[styles.seg, on && styles.segOn]}
+              >
+                <Text style={[styles.segText, on && styles.segTextOn, script("semibold")]}>{TIER_LABEL[t]}</Text>
+              </Pressable>
+            );
+          })}
         </View>
 
-        {/* source switch — ink canvas vs paper photo (U12-4). Not a seventh
-            tab: two modes of one practice screen. */}
-        <View style={styles.tierRow} accessible accessibilityRole="tablist" accessibilityLabel="Writing source">
-          {(["ink", "photo"] as const).map((s) => (
-            <Pressable
-              key={s}
-              onPress={() => {
-                haptics.tap();
-                setSource(s);
-                setFeedback(null);
-              }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: source === s }}
-              accessibilityLabel={s === "ink" ? "Draw on screen" : "Photograph paper writing"}
-              style={[styles.tierBtn, source === s && styles.tierBtnActive]}
-            >
-              <Text style={[styles.tierText, source === s && styles.tierTextActive, script("semibold")]}>
-                {s === "ink" ? "Draw" : "From paper"}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
-
-        {loadError ? (
-          <View style={styles.center}>
-            <Text style={styles.errorText}>{loadError}</Text>
-            <Pressable
-              onPress={() => {
-                setLoadError(null);
-                api.writingItems().then(setItems).catch(() => setLoadError("Couldn't reach the writing corpus."));
-              }}
-              accessibilityRole="button"
-              accessibilityLabel="Retry"
-              style={styles.retryBtn}
-            >
-              <Text style={styles.retryText}>Try again</Text>
-            </Pressable>
-          </View>
+        {loadFailed ? (
+          <FetchError label="Couldn't load the letters." onRetry={load} />
         ) : !items ? (
           <SkeletonGroup count={2} height={160} />
         ) : !item ? (
-          <View style={styles.center}>
-            <Text style={styles.errorText}>No items in this tier yet.</Text>
-          </View>
+          <Text style={styles.empty}>No letters here yet.</Text>
         ) : (
           <>
-            <View style={styles.playerWrap}>
-              <StrokePathPlayer
-                paths={item.stroke_paths ?? []}
-                devanagari={item.devanagari}
-                autoPlay
-              />
+            {/* position + previous / next */}
+            <View style={styles.pager}>
+              <Pressable
+                onPress={() => go(-1)}
+                hitSlop={8}
+                accessibilityRole="button"
+                accessibilityLabel="Previous"
+                style={styles.pagerBtn}
+              >
+                <Ionicons name="chevron-back" size={22} color={color.ink} />
+              </Pressable>
+              <Text style={styles.pagerText} accessibilityLabel={`${(idx % tierItems.length) + 1} of ${tierItems.length}`}>
+                {(idx % tierItems.length) + 1} / {tierItems.length}
+              </Text>
+              <Pressable
+                onPress={() => go(1)}
+                hitSlop={8}
+                accessibilityRole="button"
+                accessibilityLabel="Next"
+                style={styles.pagerBtn}
+              >
+                <Ionicons name="chevron-forward" size={22} color={color.ink} />
+              </Pressable>
             </View>
 
-            {item.iast ? (
-              <Text style={[styles.iast, { fontSize: sized(font.sizes.sm) }]}>{item.iast}</Text>
-            ) : null}
-            {item.gloss && item.tier === 3 ? (
-              <Text style={[styles.gloss, { fontSize: sized(font.sizes.sm) }]} numberOfLines={1}>
-                {item.gloss}
-              </Text>
-            ) : null}
-
-            {source === "ink" ? (
-              <>
-                <WritingCanvas
-                  reference={item.devanagari}
-                  referencePaths={item.stroke_paths ?? []}
-                  recogniser={recogniser}
-                  onAttempt={(recognised, confidence) => void onAttempt(recognised, confidence, "ink")}
+            {/* the target */}
+            <View style={styles.target}>
+              {showStrokes && paths.length > 0 ? (
+                <StrokePathPlayer paths={paths} devanagari={item.devanagari} size={170} autoPlay />
+              ) : (
+                <Text style={[styles.letter, script("bold"), { fontSize: letterSize, lineHeight: letterSize * 1.5 }]}>
+                  {item.devanagari}
+                </Text>
+              )}
+              {item.iast ? <Text style={[styles.iast, { fontSize: sized(font.sizes.md) }]}>{item.iast}</Text> : null}
+              {item.gloss && item.tier === 3 ? (
+                <Text style={[styles.gloss, { fontSize: sized(font.sizes.sm) }]} numberOfLines={1}>
+                  {item.gloss}
+                </Text>
+              ) : null}
+              {paths.length > 0 && (
+                <Button
+                  label={showStrokes ? "Hide strokes" : "Watch strokes"}
+                  tone="tonal"
+                  size="sm"
+                  onPress={() => setShowStrokes((v) => !v)}
+                  icon={<Ionicons name={showStrokes ? "eye-off" : "play"} size={15} color={accent.saffron.fg} />}
                 />
-                <Pressable
-                  onPress={() => {
-                    haptics.tap();
-                    setSource("photo");
-                    setFeedback(null);
-                  }}
-                  accessibilityRole="button"
-                  accessibilityLabel="Try photographing paper writing instead"
-                  style={styles.photoLink}
-                >
-                  <Text style={styles.photoLinkText}>Wrote it on paper instead? Photograph it →</Text>
-                </Pressable>
-              </>
-            ) : (
-              <PhotoCapture
-                reference={item.devanagari}
-                recogniser={photoRecogniser}
-                onResult={onPhotoResult}
-              />
-            )}
+              )}
+            </View>
+
+            {/* draw or photograph */}
+            <View style={styles.sources}>
+              {(
+                [
+                  { key: "ink", label: "Draw", icon: "brush" },
+                  { key: "photo", label: "Photo", icon: "camera" },
+                ] as const
+              ).map((s) => {
+                const on = source === s.key;
+                return (
+                  <Pressable
+                    key={s.key}
+                    onPress={() => chooseSource(s.key)}
+                    accessibilityRole="tab"
+                    accessibilityState={{ selected: on }}
+                    accessibilityLabel={s.key === "ink" ? "Draw on screen" : "Photograph paper writing"}
+                    style={[styles.source, on && styles.sourceOn]}
+                  >
+                    <Ionicons name={s.icon} size={18} color={on ? color.white : color.inkSoft} />
+                    <Text style={[styles.sourceText, on && styles.sourceTextOn]}>{s.label}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            <View style={styles.stage}>
+              {source === "ink" ? (
+                <WritingCanvas
+                  key={`${item.id}-${attempt}`}
+                  reference={item.devanagari}
+                  referencePaths={paths}
+                  recogniser={recogniser}
+                  scrollRef={scrollRef as never}
+                  onDrawingChange={setDrawing}
+                  onAttempt={(text, conf) => void onInk(text, conf)}
+                />
+              ) : (
+                <PhotoCapture busy={photoBusy} thumbnail={thumb} onCapture={(uri) => void onPhoto(uri)} />
+              )}
+            </View>
 
             {feedback ? (
               <Animated.View
@@ -239,46 +309,63 @@ export default function WritingScreen() {
                 exiting={FadeOut.duration(120)}
                 style={[
                   styles.feedback,
-                  feedback.verdict === "correct" && styles.fbCorrect,
-                  feedback.verdict === "unsure" && styles.fbUnsure,
-                  feedback.verdict === "wrong" && styles.fbWrong,
+                  feedback.kind === "correct" && styles.fbCorrect,
+                  feedback.kind === "unsure" && styles.fbUnsure, // violet, never amber or red (§3.3)
+                  (feedback.kind === "wrong" || feedback.kind === "error") && styles.fbWrong,
                 ]}
                 accessible
                 accessibilityRole="alert"
-                accessibilityLabel={feedbackVerdictLabel(feedback.verdict)}
+                accessibilityLabel={feedbackLabel(feedback)}
               >
                 <Ionicons
                   name={
-                    feedback.verdict === "correct"
+                    feedback.kind === "correct"
                       ? "checkmark-circle"
-                      : feedback.verdict === "unsure"
+                      : feedback.kind === "unsure"
                         ? "help-circle"
-                        : "close-circle"
+                        : feedback.kind === "error"
+                          ? "cloud-offline"
+                          : "close-circle"
                   }
-                  size={22}
+                  size={24}
                   color={
-                    feedback.verdict === "correct"
+                    feedback.kind === "correct"
                       ? color.okText
-                      : feedback.verdict === "unsure"
+                      : feedback.kind === "unsure"
                         ? color.unsureText
                         : color.badText
                   }
                 />
-                <Text style={[styles.fbText, { fontSize: sized(font.sizes.sm) }]}>
-                  {feedbackCopy(feedback.verdict)}
-                </Text>
+                <View style={{ flex: 1 }}>
+                  <Text style={[styles.fbText, { fontSize: sized(font.sizes.base) }]}>{feedbackLine(feedback)}</Text>
+                  {source === "photo" && feedback.kind !== "error" && feedback.read ? (
+                    <Text style={[styles.fbRead, script("semibold")]}>We read: {feedback.read}</Text>
+                  ) : null}
+                </View>
               </Animated.View>
             ) : null}
 
-            <Pressable
-              onPress={next}
-              accessibilityRole="button"
-              accessibilityLabel="Next letter"
-              style={styles.nextBtn}
-            >
-              <Text style={styles.nextText}>Next</Text>
-              <Ionicons name="arrow-forward" size={18} color={color.white} />
-            </Pressable>
+            {feedback ? (
+              <View style={styles.actions}>
+                {feedback.kind !== "correct" && (
+                  <Button label="Try again" tone="tonal" size="md" style={styles.action} onPress={reset} />
+                )}
+                <Button
+                  label="Next"
+                  tone={feedback.kind === "correct" ? "primary" : "neutral"}
+                  size="md"
+                  style={styles.action}
+                  onPress={() => go(1)}
+                  icon={
+                    <Ionicons
+                      name="arrow-forward"
+                      size={18}
+                      color={feedback.kind === "correct" ? color.white : color.ink}
+                    />
+                  }
+                />
+              </View>
+            ) : null}
           </>
         )}
       </ScrollView>
@@ -286,78 +373,83 @@ export default function WritingScreen() {
   );
 }
 
-/** §3.3 copy: the system failed to hear/read, never the learner failed. */
-function feedbackCopy(verdict: WritingAttemptResponse["verdict"]): string {
-  if (verdict === "correct") return "साधु! That's the letter.";
-  if (verdict === "unsure")
-    return "I couldn't read that clearly — no penalty. Compare with the reference, watch the strokes, try once more.";
-  return "That reads as a different letter. Compare with the reference and try again.";
+function feedbackLine(f: Feedback): string {
+  switch (f.kind) {
+    case "correct":
+      return "Correct";
+    case "unsure":
+      return "Couldn't read that clearly. Try again.";
+    case "wrong":
+      return f.read ? `That looks like ${f.read}. Try again.` : "That looks like a different letter. Try again.";
+    default:
+      return "Couldn't reach the server. Try again.";
+  }
 }
 
-function feedbackVerdictLabel(verdict: WritingAttemptResponse["verdict"]): string {
-  if (verdict === "correct") return "Correct. Well done.";
-  if (verdict === "unsure") return "Not clear enough to judge. No penalty. Try once more.";
-  return "Reads as a different letter. Try again.";
+function feedbackLabel(f: Feedback): string {
+  return f.kind === "correct" ? "Correct. Well done." : feedbackLine(f);
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.md, paddingBottom: space.xl, gap: space.sm },
-  title: { fontWeight: "800", color: color.ink },
-  subtitle: { color: color.inkSoft },
-  tierRow: { flexDirection: "row", gap: space.xs, marginTop: space.xxs },
-  tierBtn: {
+  body: { padding: space.lg, paddingBottom: space.xl, gap: space.md },
+  segment: {
+    flexDirection: "row",
+    backgroundColor: color.surfaceMuted,
+    borderRadius: radius.pill,
+    padding: 4,
+  },
+  seg: { flex: 1, minHeight: 40, borderRadius: radius.pill, alignItems: "center", justifyContent: "center" },
+  segOn: { backgroundColor: color.surface, ...shadow.card },
+  segText: { fontSize: font.sizes.sm, color: color.inkSoft },
+  segTextOn: { color: accent.saffron.fg },
+  empty: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft, textAlign: "center", paddingVertical: space.xl },
+  pager: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  pagerBtn: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.surface, alignItems: "center", justifyContent: "center", ...shadow.card },
+  pagerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+  target: {
+    alignItems: "center",
+    gap: space.xs,
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    paddingVertical: space.md,
+    paddingHorizontal: space.md,
+    ...shadow.card,
+  },
+  letter: { color: color.ink, textAlign: "center" },
+  iast: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.inkSoft },
+  gloss: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkFaint },
+  sources: { flexDirection: "row", gap: space.sm },
+  source: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
     minHeight: 44,
     borderRadius: radius.md,
+    backgroundColor: color.surface,
     borderWidth: 1,
     borderColor: color.border,
-    backgroundColor: color.surface,
-    alignItems: "center",
-    justifyContent: "center",
   },
-  tierBtnActive: { backgroundColor: color.saffronLight, borderColor: color.saffron },
-  tierText: { fontSize: font.sizes.sm, color: color.inkSoft, fontWeight: "700" },
-  tierTextActive: { color: color.saffronText },
-  playerWrap: { alignItems: "center", marginTop: space.xs },
-  photoLink: { minHeight: 44, alignItems: "center", justifyContent: "center", marginTop: space.xs },
-  photoLinkText: { fontSize: font.sizes.sm, color: color.saffronText, fontWeight: "700" },
-  iast: { color: color.inkSoft, textAlign: "center", fontStyle: "italic" },
-  gloss: { color: color.inkFaint, textAlign: "center" },
-  center: { alignItems: "center", gap: space.sm, paddingVertical: space.lg },
-  errorText: { color: color.badText, fontSize: font.sizes.sm, textAlign: "center" },
-  retryBtn: {
-    minHeight: 44,
-    paddingHorizontal: space.lg,
-    borderRadius: radius.md,
-    borderWidth: 1,
-    borderColor: color.saffron,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  retryText: { color: color.saffronText, fontWeight: "700" },
+  sourceOn: { backgroundColor: color.saffronBtn, borderColor: color.saffronBtn },
+  sourceText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
+  sourceTextOn: { color: color.white },
+  stage: { alignItems: "center" },
   feedback: {
     flexDirection: "row",
     alignItems: "center",
-    gap: space.xs,
+    gap: space.sm,
     borderRadius: radius.md,
     paddingHorizontal: space.md,
     paddingVertical: space.sm,
-    minHeight: 48,
+    minHeight: 52,
   },
   fbCorrect: { backgroundColor: color.okBg },
-  fbUnsure: { backgroundColor: color.unsureBg }, // violet — never amber/red (§3.3)
+  fbUnsure: { backgroundColor: color.unsureBg },
   fbWrong: { backgroundColor: color.badBg },
-  fbText: { color: color.ink, flex: 1 },
-  nextBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: space.xs,
-    backgroundColor: color.saffron,
-    minHeight: 52,
-    borderRadius: radius.md,
-    marginTop: space.xs,
-  },
-  nextText: { color: color.white, fontWeight: "800", fontSize: font.sizes.base },
+  fbText: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
+  fbRead: { fontSize: font.sizes.base, color: color.inkSoft, marginTop: 2 },
+  actions: { flexDirection: "row", gap: space.sm },
+  action: { flex: 1 },
 });

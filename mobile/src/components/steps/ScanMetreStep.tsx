@@ -39,7 +39,7 @@ export default function ScanMetreStep({ step, disabled, onSubmit }: StepInputPro
   return (
     <View>
       <Text style={styles.prompt}>
-        Mark every syllable — <Text style={styles.mark}>L</Text> light,{" "}
+        Mark every syllable: <Text style={styles.mark}>L</Text> light,{" "}
         <Text style={styles.mark}>G</Text> heavy:
       </Text>
       <Text style={[styles.verse, script("semibold")]}>{text}</Text>

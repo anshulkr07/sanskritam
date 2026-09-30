@@ -1,12 +1,16 @@
-// VarnaGrid — the tile grid for the daily-word game वर्ण-बन्धः (U8-4).
+// VarnaGrid — the checked rows of the daily-word game वर्ण-बन्धः (U8-4).
 //
-// Four states per tile (never colour alone, U5-3): exact · near (right place,
-// wrong axis) · present (correct char elsewhere) · absent. Each state pairs a
-// colour with a glyph/border treatment, and the phonetic axis is named in text
-// on tap. The flip reveal is transform-only, per-tile with a 45ms stagger.
+// One tile per akṣara (or per code point for the typing fallback). Four states,
+// never colour alone (U5-3): exact · near (one step away on the mouth-map, or a
+// vowel of the other length) · present (in the word, elsewhere) · absent. Each
+// pairs a colour with a glyph, and a near tile names what differs.
+//
+// The reveal is a flip from edge-on to face-on, started from an effect one tile
+// at a time. (It used to rotate 0 to 180 degrees, which left every letter
+// upside down, and it set its shared value while rendering.)
 
-import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,166 +19,132 @@ import Animated, {
 } from "react-native-reanimated";
 
 import type { DailyWordTile } from "../api/client";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { duration, easing, stagger } from "../motion";
-import { color, font, script, space } from "../theme";
+import { accent, color, radius, script, space } from "../theme";
 
 export type TileState = DailyWordTile["state"];
 
-interface VarnaGridProps {
-  answerLength: number;
-  /** rows already submitted, oldest first. */
-  rows: { tiles: DailyWordTile[]; guess: string }[];
+export interface GridRow {
+  tiles: DailyWordTile[];
 }
 
-const TILE_BG: Record<TileState, string> = {
-  exact: color.ok,
-  near: color.warn,
-  present: color.tutor,
+export const TILE_BG: Record<TileState, string> = {
+  exact: accent.sage.from,
+  near: accent.gold.from,
+  present: accent.slate.from,
   absent: color.surfaceMuted,
 };
 
-const TILE_BORDER: Record<TileState, string> = {
-  exact: color.ok,
-  near: color.warn,
-  present: color.tutor,
-  absent: color.border,
-};
-
-const STATE_GLYPH: Record<TileState, string> = {
+export const STATE_GLYPH: Record<TileState, string> = {
   exact: "●",
   near: "◐",
   present: "◍",
-  absent: "",
+  absent: "○",
 };
 
-const AXIS_LABEL: Record<string, string> = {
+const STATE_WORD: Record<TileState, string> = {
+  exact: "right",
+  near: "close",
+  present: "in the word, elsewhere",
+  absent: "not in the word",
+};
+
+const AXIS_SHORT: Record<string, string> = {
+  place: "place",
+  voicing: "voice",
+  aspiration: "breath",
+  nasality: "nasal",
+  length: "length",
+};
+
+const AXIS_LONG: Record<string, string> = {
   place: "place of articulation",
   voicing: "voicing",
   aspiration: "aspiration",
   nasality: "nasality",
+  length: "vowel length",
 };
 
-export default function VarnaGrid({ answerLength, rows }: VarnaGridProps) {
-  // Include the current partially-filled row (empty tiles) so the grid is
-  // always rectangular and entry tiles reveal the word length up front.
-  const shown = [...rows];
-  const n = rows.length;
+interface Props {
+  /** How many tiles a row has. */
+  slots: number;
+  /** Rows already checked, oldest first. */
+  rows: GridRow[];
+}
 
+export default function VarnaGrid({ slots, rows }: Props) {
   return (
     <View style={styles.grid} accessible={false}>
-      {shown.map((row, r) => (
-        <RowTiles key={r} row={row.tiles} rowIndex={r} length={answerLength} />
-      ))}
-      {n < 1 && <EmptyRow length={answerLength} />}
-    </View>
-  );
-}
-
-function RowTiles({
-  row,
-  rowIndex,
-  length,
-}: {
-  row: DailyWordTile[];
-  rowIndex: number;
-  length: number;
-}) {
-  return (
-    <View style={styles.row}>
-      {Array.from({ length }).map((_, i) => {
-        const t = row[i];
-        if (!t) return <View key={i} style={styles.tilePlaceholder} />;
-        return <Tile key={i} tile={t} index={i} />;
-      })}
-    </View>
-  );
-}
-
-function EmptyRow({ length }: { length: number }) {
-  return (
-    <View style={styles.row}>
-      {Array.from({ length }).map((_, i) => (
-        <View key={i} style={styles.tileInput}>
-          <Text style={styles.tileEmpty} />
+      {rows.map((row, r) => (
+        <View key={r} style={styles.row}>
+          {Array.from({ length: slots }).map((_, i) => {
+            const t = row.tiles[i];
+            return t ? <Tile key={i} tile={t} index={i} slots={slots} /> : <View key={i} style={[styles.tile, styles.empty]} />;
+          })}
         </View>
       ))}
     </View>
   );
 }
 
-function Tile({ tile, index }: { tile: DailyWordTile; index: number }) {
-  const flip = useSharedValue(0);
-  // Reveal one tile at a time, 45ms stagger, capped (motion.ts §8).
-  flip.value = withDelay(
-    stagger(index, 45),
-    withTiming(1, { duration: duration.quick, easing: easing.entrance }),
-  );
+export function tileFontSize(slots: number): number {
+  return slots <= 3 ? 30 : slots <= 5 ? 26 : 22;
+}
+
+function Tile({ tile, index, slots }: { tile: DailyWordTile; index: number; slots: number }) {
+  const reduced = useReducedMotion();
+  const flip = useSharedValue(reduced ? 1 : 0);
+
+  useEffect(() => {
+    if (reduced) {
+      flip.value = 1;
+      return;
+    }
+    // Reveal one tile at a time (motion.ts §8).
+    flip.value = withDelay(stagger(index, 60), withTiming(1, { duration: duration.base, easing: easing.entrance }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const flipStyle = useAnimatedStyle(() => ({
-    transform: [{ rotateX: `${flip.value * 180}deg` }],
-    opacity: flip.value,
+    opacity: 0.2 + 0.8 * flip.value,
+    transform: [{ perspective: 500 }, { rotateX: `${(1 - flip.value) * 90}deg` }],
   }));
 
-  const bg = TILE_BG[tile.state];
-  const border = TILE_BORDER[tile.state];
-  const glyph = STATE_GLYPH[tile.state];
-  const axis = tile.axis ? AXIS_LABEL[tile.axis] ?? tile.axis : null;
+  const absent = tile.state === "absent";
+  const ink = absent ? color.ink : color.white;
+  const axis = tile.axis ? AXIS_LONG[tile.axis] ?? tile.axis : null;
 
   return (
-    <Pressable
-      accessible={true}
-      accessibilityRole="button"
-      accessibilityLabel={
-        axis
-          ? `${tile.character} — nearly right, same ${axis}`
-          : tile.state === "exact"
-            ? `${tile.character} — exact`
-            : tile.state === "present"
-              ? `${tile.character} — in the word, elsewhere`
-              : `${tile.character} — not in the word`
-      }
-      hitSlop={2}
-      style={[styles.tileResult, { backgroundColor: bg, borderColor: border }]}
+    <Animated.View
+      style={[styles.tile, { backgroundColor: TILE_BG[tile.state] }, flipStyle]}
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={`${tile.character}, ${STATE_WORD[tile.state]}${axis && tile.state === "near" ? `, differs in ${axis}` : ""}`}
     >
-      <Animated.View style={[styles.flipInner, flipStyle]}>
-        <Text style={[styles.tileChar, script("bold")]}>{tile.character}</Text>
-        {glyph ? <Text style={styles.tileGlyph}>{glyph}</Text> : null}
-      </Animated.View>
-    </Pressable>
+      <Text style={[styles.char, script("bold"), { color: ink, fontSize: tileFontSize(slots), lineHeight: tileFontSize(slots) * 1.5 }]}>
+        {tile.character}
+      </Text>
+      <Text style={[styles.cue, { color: absent ? color.inkSoft : "rgba(255,255,255,0.92)" }]}>
+        {STATE_GLYPH[tile.state]}
+        {tile.state === "near" && tile.axis ? ` ${AXIS_SHORT[tile.axis] ?? tile.axis}` : ""}
+      </Text>
+    </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   grid: { gap: space.xs },
-  row: { flexDirection: "row", gap: space.xs },
-  tileResult: {
+  row: { flexDirection: "row", gap: space.xs, justifyContent: "center" },
+  tile: {
     flex: 1,
+    maxWidth: 76,
     aspectRatio: 1,
-    borderWidth: 2,
-    borderRadius: 10,
+    borderRadius: radius.md,
     alignItems: "center",
     justifyContent: "center",
   },
-  tilePlaceholder: {
-    flex: 1,
-    aspectRatio: 1,
-    borderWidth: 2,
-    borderColor: color.border,
-    borderRadius: 10,
-    backgroundColor: color.surface,
-  },
-  tileInput: {
-    flex: 1,
-    aspectRatio: 1,
-    borderWidth: 2,
-    borderColor: color.border,
-    borderRadius: 10,
-    backgroundColor: color.surface,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  tileEmpty: {},
-  flipInner: { alignItems: "center", justifyContent: "center" },
-  tileChar: { fontSize: 22, color: color.white },
-  tileGlyph: { fontSize: 9, color: "rgba(255,255,255,0.7)", marginTop: 1 },
+  empty: { backgroundColor: color.surface, borderWidth: 2, borderColor: color.border },
+  char: { textAlign: "center" },
+  cue: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 10, marginTop: -4 },
 });

@@ -104,6 +104,20 @@ def list_lessons(db: Session, unit_id: Optional[str] = None):
     return q.all()
 
 
+# The staged shelf: imported guide pages parked at rank 900 with a "[staged]"
+# title until they are reviewed and given real ranks and features. They stay
+# addressable by id (grammar-guide links, seeds), but they are not part of the
+# learner's path: /units used to serve all of them, which made each unit a
+# wall of unfinished cards.
+STAGED_PREFIX = "[staged]"
+STAGED_RANK = 900
+
+
+def is_staged(lesson) -> bool:
+    """True for a lesson that is still on the staged shelf."""
+    return (lesson.title_en or "").startswith(STAGED_PREFIX) or (lesson.rank or 0) >= STAGED_RANK
+
+
 def step_counts(db: Session) -> dict[str, int]:
     """Step count per lesson id, in one grouped query.
 

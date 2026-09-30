@@ -159,7 +159,12 @@ export interface VarnamalaChar {
   place: string | null;
   voicing: string | null;
   kind: string;
-  iast_place: string | null;
+  iast_place?: string | null;
+  /** Only the full GET /varnamala carries these; the legacy grid does not. */
+  id?: string;
+  /** Pre-rendered clip path (/audio/varnamala/<id>.wav). Present as a path
+   *  convention: the file may not exist, so callers fall back to TTS. */
+  audio_url?: string;
 }
 
 export interface VarnamalaResponse {
@@ -625,6 +630,8 @@ export interface WritingAttemptResponse {
   item_devanagari: string;
   item_iast: string;
   attempt_id: number | null;
+  /** What the photo check read (POST /writing/photo-check only). */
+  recognised_text?: string;
 }
 
 // ─── Daily word (U8-4 / P12) — वर्ण-बन्धः ────────────────────────────
@@ -696,10 +703,16 @@ export interface DailyWordPuzzle {
   finished: boolean;
   guesses_used: number;
   max_guesses: number;
-  word_length: number;
+  word_length: number; // Unicode code points (the typing fallback)
+  /** Akṣara count: how many slots the tapping game shows. */
+  letters?: number;
+  /** Whole akṣaras to tap: the word's own plus near-miss distractors. Absent
+   *  from a backend that predates the bank; the screen then falls back to typing. */
+  bank?: string[];
   clue: string;
   streak: number;
   status: string; // open | solved | finished | no_word
+  /** Set once the game has ended, so a returning learner sees the word. */
   revealed?: { answer: string; answer_iast: string } | null;
 }
 
@@ -1030,6 +1043,47 @@ export async function uploadSpeech(
   return (await res.json()) as STTResponse;
 }
 
+/**
+ * Upload a photographed letter or word to be read and graded on the server
+ * (POST /writing/photo-check). The server reads it with Sarvam Document
+ * Intelligence, keeps only the recognised text, and discards the image.
+ *
+ * The image is the raw request body (the item id is in the query), not
+ * multipart: the server holds it in memory only, and a multipart upload over
+ * 1 MB is spooled to a temp file on its disk.
+ *
+ * Throws ApiError; callers fall back to on-device reading for 404/405
+ * (endpoint not deployed yet), 429 (rate limit) and 5xx/network failures.
+ */
+export async function uploadWritingPhoto(itemId: string, uri: string): Promise<WritingAttemptResponse> {
+  const uploadUrl = `${BASE_URL}/writing/photo-check?item_id=${encodeURIComponent(itemId)}`;
+  const headers: Record<string, string> = { Accept: "application/json", "Content-Type": "image/jpeg" };
+  if (authToken) headers.Authorization = `Bearer ${authToken}`;
+
+  const FileSystem = require("expo-file-system/legacy");
+  const uploadType = FileSystem.FileSystemUploadType ? FileSystem.FileSystemUploadType.BINARY_CONTENT : 0;
+  let res: { status: number; body: string };
+  try {
+    res = await FileSystem.uploadAsync(uploadUrl, uri, {
+      httpMethod: "POST",
+      uploadType,
+      headers,
+    });
+  } catch {
+    throw new ApiError(0, `Network error reaching ${uploadUrl}`);
+  }
+  if (res.status >= 200 && res.status < 300) {
+    return JSON.parse(res.body) as WritingAttemptResponse;
+  }
+  let detail = `Upload failed with status ${res.status}`;
+  try {
+    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
+  } catch {
+    /* non-JSON error body: keep the status line */
+  }
+  throw new ApiError(res.status, detail);
+}
+
 // ─── Endpoint helpers ─────────────────────────────────────────────────
 
 /**
@@ -1210,7 +1264,18 @@ export const api = {
       true,
     ),
 
-  varnamala: () => request<VarnamalaResponse>("/grammar/varnamala"),
+  // The full grid (ids and audio paths) when the backend has it; the legacy
+  // grid otherwise, so a new app still works against an older backend.
+  varnamala: async (): Promise<VarnamalaResponse> => {
+    try {
+      return await request<VarnamalaResponse>("/varnamala");
+    } catch (e) {
+      if (e instanceof ApiError && (e.status === 404 || e.status === 405)) {
+        return request<VarnamalaResponse>("/grammar/varnamala");
+      }
+      throw e;
+    }
+  },
 
   features: () => request<Feature[]>("/grammar/features", {}, true),
 
@@ -1333,6 +1398,8 @@ export const api = {
       true,
     ),
 
+  writingPhotoCheck: (itemId: string, uri: string) => uploadWritingPhoto(itemId, uri),
+
   // Grammar proof surfaces (U7) — local computation, no quota.
   deriveWord: (params: DeriveParams) =>
     request<Derivation>("/grammar/derive?" + toQuery(params)),
@@ -1415,10 +1482,15 @@ export const api = {
   // Daily word (U8-4 / P12) — वर्ण-बन्धः
   dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),
 
-  dailyWordGuess: (guess: string) =>
+  // With `letters` (the guess already split into akṣaras) the server scores
+  // whole akṣaras; without, the original code-point scoring.
+  dailyWordGuess: (guess: string, letters?: string[]) =>
     request<DailyWordGuessResponse>(
       "/daily-word/guess",
-      { method: "POST", body: JSON.stringify({ guess }) },
+      {
+        method: "POST",
+        body: JSON.stringify(letters ? { guess, mode: "akshara", letters } : { guess }),
+      },
       true,
     ),
 

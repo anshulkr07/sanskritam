@@ -3,7 +3,7 @@
 Two limits, checked together before each Sarvam call:
 
 - **Per learner** — a rolling-window allowance per kind (``tts_chars``,
-  ``stt_seconds``, ``llm_calls``).
+  ``stt_seconds``, ``llm_calls``, ``doc_pages``).
 - **Per service** — a rolling-window rupee budget across ALL learners
   (``settings.quota_daily_budget_inr``). Per-learner limits alone do not bound
   spend: every new install is a new learner with a fresh allowance, so a crowd
@@ -53,6 +53,7 @@ def _price_inr(kind: str) -> float:
         "tts_chars": settings.price_tts_inr_per_char,
         "stt_seconds": settings.price_stt_inr_per_second,
         "llm_calls": settings.price_llm_inr_per_call,
+        "doc_pages": settings.price_doc_inr_per_page,
     }.get(kind, 0.0)
 
 
@@ -61,7 +62,7 @@ def _cost_inr():
     return case(
         *(
             (UsageEvent.kind == kind, UsageEvent.amount * _price_inr(kind))
-            for kind in ("tts_chars", "stt_seconds", "llm_calls")
+            for kind in ("tts_chars", "stt_seconds", "llm_calls", "doc_pages")
         ),
         else_=0.0,
     )
@@ -120,8 +121,12 @@ def check_and_consume(
         limit = settings.quota_stt_seconds_per_day
     elif kind == "llm_calls":
         limit = settings.quota_llm_calls_per_day
+    elif kind == "doc_pages":
+        limit = settings.quota_doc_pages_per_day
     else:
-        raise ValueError(f"Unknown quota kind: {kind!r}. Known kinds: tts_chars, stt_seconds, llm_calls")
+        raise ValueError(
+            f"Unknown quota kind: {kind!r}. Known kinds: tts_chars, stt_seconds, llm_calls, doc_pages"
+        )
 
     window_hours = settings.quota_window_hours
     budget = settings.quota_daily_budget_inr

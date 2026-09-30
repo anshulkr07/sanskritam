@@ -43,7 +43,7 @@ export default function ReorderStep({ step, disabled, onSubmit }: StepInputProps
   return (
     <View>
       <Text style={styles.prompt}>
-        Arrange the words so the sentence holds — endings carry the meaning, not positions.
+        Arrange the words. The endings carry the meaning.
       </Text>
       <View style={styles.line} accessible accessibilityLabel={`Word order. Current: ${order.join(" ")}`}>
         {order.map((w, i) => {
@@ -74,7 +74,7 @@ export default function ReorderStep({ step, disabled, onSubmit }: StepInputProps
         })}
       </View>
       {held !== null && (
-        <Text style={styles.hint}>Holding “{order[held]}” — tap a word to place it there.</Text>
+        <Text style={styles.hint}>Holding “{order[held]}”. Tap a word to place it.</Text>
       )}
       <Text style={[styles.current, script("semibold")]}>{order.join(" ")}</Text>
       <Button label="Check" onPress={submit} disabled={disabled || order.length === 0} block style={{ marginTop: space.md }} />

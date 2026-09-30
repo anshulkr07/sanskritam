@@ -38,7 +38,7 @@ export default function SutraCard({
     >
       <Text style={styles.code}>{code}</Text>
       <Text style={[styles.sutra, script("semibold")]} numberOfLines={2}>
-        {sutraDevanagari || "—"}
+        {sutraDevanagari || "-"}
       </Text>
       {dimmed ? <Text style={styles.note}>no change</Text> : null}
     </Animated.View>

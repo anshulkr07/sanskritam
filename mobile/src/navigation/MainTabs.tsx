@@ -83,7 +83,8 @@ export default function MainTabs() {
         tabBarLabelStyle: {
           fontFamily: "Nunito_700Bold",
           fontWeight: "700",
-          fontSize: font.sizes.xs,
+          // Six tabs at 60dp each: "Grammar" is 2dp too wide at 12 on a 360dp phone.
+          fontSize: width < 380 ? font.sizes.xs - 1 : font.sizes.xs,
         },
         tabBarShowLabel: !iconsOnly,
         tabBarIcon: ({ focused, color: c, size }) => {

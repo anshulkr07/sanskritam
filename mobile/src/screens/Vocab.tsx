@@ -26,6 +26,7 @@ import { Button, EmptyState } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
 import type { RootStackParamList } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
+import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Vocab">;
 
@@ -69,12 +70,12 @@ export default function VocabScreen({ route }: Props) {
         onPress={() => ask(w)}
         style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
         accessibilityRole="button"
-        accessibilityLabel={`${w.devanagari}. ${w.gloss}. Ask about this word.`}
+        accessibilityLabel={`${w.devanagari}. ${plain(w.gloss)}. Ask about this word.`}
       >
         <View style={styles.cardMain}>
           <Text style={[styles.sa, script("bold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>{w.devanagari}</Text>
           <Text style={[styles.iast, { fontSize: sized(font.sizes.sm) }]}>{w.iast}</Text>
-          <Text style={[styles.gloss, { fontSize: sized(font.sizes.base) }]}>{w.gloss}</Text>
+          <Text style={[styles.gloss, { fontSize: sized(font.sizes.base) }]}>{plain(w.gloss)}</Text>
           {(w.gender || w.stem) && (
             <Text style={styles.meta}>
               {[w.gender, w.stem ? `stem ${w.stem}` : ""].filter(Boolean).join(" · ")}
@@ -149,7 +150,7 @@ export default function VocabScreen({ route }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  body: { padding: space.lg, paddingBottom: 120 },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink },
   subtitle: {
     fontFamily: "Nunito_400Regular",

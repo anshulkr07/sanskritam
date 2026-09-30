@@ -116,7 +116,7 @@ export default function SandhiVisual({ joined, autoPlay = false }: SandhiVisualP
     return (
       <View style={styles.center} accessible>
         <Text style={[styles.joined, script("semibold")]}>{joined}</Text>
-        <Text style={styles.muted}>No lexical split found — a joined phrase this engine cannot answer.</Text>
+        <Text style={styles.muted}>No split found for this phrase.</Text>
       </View>
     );
   }

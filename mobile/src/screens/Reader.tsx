@@ -72,6 +72,7 @@ import {
   sortVerses,
 } from "../utils/verses";
 import { color, font, radius, script, shadow, space } from "../theme";
+import { plain } from "../utils/text";
 
 // The graded shelf (U14-5 / P22-6): Simple (Units 2–3) · Sandhi (Unit 6) ·
 // Compounds (Unit 10). Same page pattern, tier passages mapped onto verses.
@@ -533,7 +534,7 @@ export default function ReaderScreen() {
               <BookCard
                 key={g.text.slug}
                 titleSa={g.text.title_sa}
-                titleEn={g.text.title_en}
+                titleEn={plain(g.text.title_en)}
                 count={g.verses.length}
                 planned={g.text.verses_planned || null}
                 depth={g.text.depth}
@@ -773,7 +774,7 @@ function BookIndex({
           style={{ marginTop: space.md }}
         />
         <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
-          Contents, in reading order. Tap a verse to open the book there.
+          Tap a verse to open it.
         </Text>
 
         {chapters.map((ch) => (
@@ -889,7 +890,7 @@ function ReaderPage({
                   }}
                   style={[styles.wordChip, active && styles.wordChipActive]}
                   accessibilityRole="button"
-                  accessibilityLabel={`${w.word}. ${w.meaning ?? ""}`}
+                  accessibilityLabel={`${w.word}. ${plain(w.meaning)}`}
                   accessibilityState={{ selected: active }}
                 >
                   <Text
@@ -917,7 +918,7 @@ function ReaderPage({
           <View style={styles.gloss}>
             <Text style={[styles.glossWord, script("bold")]} accessibilityRole="header">हिन्दी अर्थ</Text>
             <Text style={[styles.glossMeaning, script("regular"), { fontSize: sized(font.sizes.base, { sanskrit: true }) }]}>
-              {verse.translation_hi}
+              {plain(verse.translation_hi)}
             </Text>
           </View>
         ) : null}
@@ -925,7 +926,7 @@ function ReaderPage({
           <View style={styles.gloss}>
             <Text style={styles.glossWord} accessibilityRole="header">English meaning</Text>
             <Text style={[styles.glossMeaning, { fontSize: sized(font.sizes.base) }]}>
-              {verse.translation_en}
+              {plain(verse.translation_en)}
             </Text>
           </View>
         ) : null}
@@ -937,7 +938,7 @@ function ReaderPage({
             style={styles.gloss}
           >
             <Text style={[styles.glossWord, script("bold")]}>{selected.word}</Text>
-            {selected.meaning ? <Text style={styles.glossMeaning}>{selected.meaning}</Text> : null}
+            {selected.meaning ? <Text style={styles.glossMeaning}>{plain(selected.meaning)}</Text> : null}
             {selected.features && selected.features.length > 0 ? (
               <View style={styles.featRow}>
                 {selected.features.map((f) => (
@@ -971,7 +972,7 @@ function ReaderPage({
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
-  body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  body: { padding: space.lg, paddingBottom: 120 },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
   subtitle: {
     fontFamily: "Nunito_400Regular",

@@ -18,7 +18,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type GuideGlossaryItem, type LessonSummary } from "../api/client";
-import { useAsk } from "../ask/AskProvider";
+import { useAskContext } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
 import BlockRenderer, { SanskritLine } from "../components/grammar/BlockRenderer";
@@ -77,7 +77,6 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
   const ctx = React.useMemo(() => ({ lang, t }), [lang, t]);
   const { sized } = useTypeScale();
   const { read } = useGrammarProgress();
-  const { setContext } = useAsk();
   const scrollRef = React.useRef<ScrollView>(null);
   const [term, setTerm] = React.useState<GuideGlossaryItem | null>(null);
 
@@ -94,9 +93,7 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
     scrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [topicId]);
 
-  React.useEffect(() => {
-    if (topic) setContext({ surface: "grammar", subject: topic.term?.sa ?? topic.title_sa });
-  }, [topic, setContext]);
+  useAskContext("grammar", topic ? (topic.term?.sa ?? topic.title_sa ?? "") : "");
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -325,7 +322,7 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl, gap: space.md },
+  body: { padding: space.lg, paddingBottom: 120, gap: space.md },
   skeletons: { gap: space.sm },
   eyebrow: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.saffronText, textTransform: "uppercase", letterSpacing: 0.6 },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink, marginTop: -space.xs },

@@ -27,7 +27,7 @@ import {
   type Unit,
   type VideoItem,
 } from "../api/client";
-import { useAsk } from "../ask/AskProvider";
+import { useAsk, useAskContext } from "../ask/AskProvider";
 import { Button, ProgressBar } from "../components/ui";
 import { Skeleton } from "../components/Skeleton";
 import StepRenderer from "../components/steps/StepRenderer";
@@ -69,7 +69,7 @@ function cachedSummary(lessonId: string): LessonSummary | undefined {
 
 export default function LessonScreen({ navigation, route }: Props) {
   const { featureId, lessonId: lessonIdParam } = route.params;
-  const { open, setContext, setSuppressed } = useAsk();
+  const { open, setSuppressed } = useAsk();
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [lessonId, setLessonId] = useState<string | null>(lessonIdParam ?? null);
   const [steps, setSteps] = useState<LessonStep[]>([]);
@@ -149,11 +149,10 @@ export default function LessonScreen({ navigation, route }: Props) {
   useEffect(load, [load]);
 
   // U11: the ask button asks about the lesson while no verdict is showing.
-  useEffect(() => {
-    setContext({ surface: "lesson", subject: lesson?.title_hi ?? "" });
-  }, [lesson?.title_hi, setContext]);
+  useAskContext("lesson", lesson?.title_hi ?? "");
   useEffect(() => {
     setSuppressed(result !== null);
+    return () => setSuppressed(false);
   }, [result, setSuppressed]);
 
   const current = steps[index] ?? null;
@@ -213,13 +212,13 @@ export default function LessonScreen({ navigation, route }: Props) {
         ) : missing ? (
           <View style={styles.errorCard}>
             <Text style={styles.errorTitle}>No lesson here yet.</Text>
-            <Text style={styles.errorSub}>Practice is still open — the lesson for this unit is being written.</Text>
+            <Text style={styles.errorSub}>Practice is open.</Text>
             <Button label="Practice anyway" onPress={onPractice} style={{ marginTop: space.md }} />
           </View>
         ) : failed || !current ? (
           <View style={styles.errorCard}>
             <Text style={styles.errorTitle}>Couldn't load the lesson.</Text>
-            <Text style={styles.errorSub}>Check your connection — your progress is safe.</Text>
+            <Text style={styles.errorSub}>Check your connection and try again.</Text>
             <Button label="Retry" onPress={load} style={{ marginTop: space.md }} />
           </View>
         ) : done ? (

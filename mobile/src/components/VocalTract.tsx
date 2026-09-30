@@ -121,7 +121,7 @@ function captionFor(phase: Phase, a: Articulation): string {
     case "approach":
       return a.labial ? "The lips come together." : `The tongue moves to ${where}.`;
     case "closure":
-      if (a.nasal) return "Held shut — but the soft palate drops, so the air escapes through the nose.";
+      if (a.nasal) return "Held shut, but the soft palate drops and the air escapes through the nose.";
       if (a.manner === "stop") return `Sealed at ${where}. Pressure builds behind the closure.`;
       if (a.manner === "fricative") return `A narrow gap at ${where}. The air hisses through.`;
       return `Close to ${where}, without touching.`;
@@ -129,11 +129,11 @@ function captionFor(phase: Phase, a: Articulation): string {
       if (a.nasal) return "The hum keeps going out through the nose.";
       if (a.manner !== "stop") return "The airflow continues.";
       return a.aspirated
-        ? "Release — the burst, then a clear puff of breath."
-        : "Release — a clean burst, no puff.";
+        ? "Release: a burst, then a clear puff of breath."
+        : "Release: a clean burst, no puff.";
     case "after":
       return a.voiced
-        ? "The vocal folds are already buzzing — voicing runs straight into the vowel."
+        ? "The vocal folds are already buzzing. Voice runs straight into the vowel."
         : "The vocal folds start late. That delay is what makes it sound unvoiced.";
     default:
       return "Back to rest.";
@@ -148,14 +148,29 @@ interface VocalTractProps {
   iast: string;
   /** Changes on every tap; each change replays the gesture. */
   playToken: number;
+  /**
+   * Panel mode: just the drawing and one caption line, no card, no header,
+   * no summary. The screen supplies the letter, controls and slow toggle.
+   */
+  compact?: boolean;
+  /** Controlled slow motion (compact mode). Uncontrolled when omitted. */
+  slow?: boolean;
 }
 
 const BASE_MS = 2200;
 const SLOW_MS = 4200;
 
-export default function VocalTract({ articulation: a, char, iast, playToken }: VocalTractProps) {
+export default function VocalTract({
+  articulation: a,
+  char,
+  iast,
+  playToken,
+  compact = false,
+  slow: slowProp,
+}: VocalTractProps) {
   const reduced = useReducedMotion();
-  const [slow, setSlow] = useState(false);
+  const [slowState, setSlow] = useState(false);
+  const slow = slowProp ?? slowState;
   const [phase, setPhase] = useState<Phase>(reduced ? "closure" : "rest");
   const tint = PLACE_COLORS[a.place] ?? color.saffron;
 
@@ -258,41 +273,7 @@ export default function VocalTract({ articulation: a, char, iast, playToken }: V
   const label = PLACE_LABEL[a.place] ?? { sa: a.place, en: a.place, where: a.place };
   const summary = useMemo(() => articulationSummary(a, char), [a, char]);
 
-  return (
-    <View style={styles.card}>
-      <View style={styles.header}>
-        <View style={styles.headerText}>
-          <Text style={styles.title}>
-            <Text style={script("bold")}>{char}</Text>
-            <Text style={styles.titleIast}>  {iast}</Text>
-          </Text>
-          <Text style={[styles.place, { color: tint }]}>
-            {label.sa} · {label.en}
-          </Text>
-        </View>
-        <View style={styles.controls}>
-          <Pressable
-            onPress={run}
-            accessibilityRole="button"
-            accessibilityLabel="Replay the articulation"
-            style={({ pressed }) => [styles.chip, pressed && styles.chipPressed]}
-          >
-            <Text style={styles.chipText}>Replay</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => setSlow((s) => !s)}
-            accessibilityRole="switch"
-            accessibilityState={{ checked: slow }}
-            accessibilityLabel="Slow motion"
-            style={({ pressed }) => [
-              styles.chip, slow && { backgroundColor: tint, borderColor: tint }, pressed && styles.chipPressed,
-            ]}
-          >
-            <Text style={[styles.chipText, slow && { color: color.white }]}>Slow</Text>
-          </Pressable>
-        </View>
-      </View>
-
+  const stage = (
       <View
         style={styles.stage}
         accessible
@@ -344,7 +325,56 @@ export default function VocalTract({ articulation: a, char, iast, playToken }: V
           <AnimatedPath animatedProps={puffProps} fill={color.saffronText} />
         </Svg>
       </View>
+  );
 
+  // Panel mode (the alphabet screen pins this above the letters): the drawing
+  // and a one-line caption. The screen owns the letter, replay and slow.
+  if (compact) {
+    return (
+      <View>
+        {stage}
+        <Text style={[styles.caption, styles.captionCompact]} numberOfLines={3}>
+          {captionFor(phase, a)}
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.card}>
+      <View style={styles.header}>
+        <View style={styles.headerText}>
+          <Text style={styles.title}>
+            <Text style={script("bold")}>{char}</Text>
+            <Text style={styles.titleIast}>  {iast}</Text>
+          </Text>
+          <Text style={[styles.place, { color: tint }]}>
+            {label.sa} · {label.en}
+          </Text>
+        </View>
+        <View style={styles.controls}>
+          <Pressable
+            onPress={run}
+            accessibilityRole="button"
+            accessibilityLabel="Replay the articulation"
+            style={({ pressed }) => [styles.chip, pressed && styles.chipPressed]}
+          >
+            <Text style={styles.chipText}>Replay</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => setSlow((s) => !s)}
+            accessibilityRole="switch"
+            accessibilityState={{ checked: slow }}
+            accessibilityLabel="Slow motion"
+            style={({ pressed }) => [
+              styles.chip, slow && { backgroundColor: tint, borderColor: tint }, pressed && styles.chipPressed,
+            ]}
+          >
+            <Text style={[styles.chipText, slow && { color: color.white }]}>Slow</Text>
+          </Pressable>
+        </View>
+      </View>
+      {stage}
       <Text style={styles.caption}>{captionFor(phase, a)}</Text>
       <Text style={styles.summary}>{summary}</Text>
     </View>
@@ -379,6 +409,9 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm,
     color: color.ink, marginTop: space.xs, minHeight: 36, lineHeight: 18,
   },
+  // Compact: a smaller caption whose height is reserved (three lines), so the
+  // letters below never shift as the phases change.
+  captionCompact: { fontSize: font.sizes.xs, lineHeight: 15, minHeight: 45, marginTop: 4 },
   summary: {
     fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.xs,
     color: color.inkSoft, marginTop: 2, lineHeight: 16,

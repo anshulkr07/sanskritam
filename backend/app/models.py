@@ -286,7 +286,7 @@ class UsageEvent(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
-    kind = Column(String(16), nullable=False)   # "tts_chars" | "stt_seconds"
+    kind = Column(String(16), nullable=False)   # "tts_chars" | "stt_seconds" | "llm_calls" | "doc_pages"
     amount = Column(Float, nullable=False)
     surface = Column(String(32), default="")    # "conversation" | "varnamala" | ...
     source = Column(String(16), default="live") # "live" | "prerendered"

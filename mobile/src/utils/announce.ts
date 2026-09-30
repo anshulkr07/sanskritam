@@ -17,9 +17,9 @@ export type AnnounceVerdictKind =
 
 const COPY: Record<AnnounceVerdictKind, string> = {
   correct: "Correct. Well done.",
-  off_by_one: "So close — one ending to fix.",
+  off_by_one: "So close. One ending to fix.",
   incorrect: "Not yet. Here it is.",
-  unsure: "I couldn't hear that clearly — no penalty.",
+  unsure: "Couldn't hear that clearly.",
   near: "Close. Try once more.",
   wrong: "That looks like a different letter. Compare with the reference.",
 };

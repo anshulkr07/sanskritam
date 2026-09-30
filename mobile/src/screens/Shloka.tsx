@@ -17,7 +17,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { api, type Shloka, type WordBreakdown } from "../api/client";
-import { useAsk } from "../ask/AskProvider";
+import { useAskContext } from "../ask/AskProvider";
 import { cachedGet } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
@@ -29,6 +29,7 @@ import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
+import { plain } from "../utils/text";
 
 // ── Metre rhythm visualization ────────────────────────────────────────
 
@@ -145,13 +146,10 @@ export default function ShlokaScreen() {
   const [speaking, setSpeaking] = useState(false);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
   const reduced = useReducedMotion();
-  const { setContext } = useAsk();
   const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
   // U11: the ask button asks about the verse on screen.
-  React.useEffect(() => {
-    setContext({ surface: "shloka", subject: shloka?.devanagari ?? "" });
-  }, [shloka?.devanagari, setContext]);
+  useAskContext("shloka", shloka?.devanagari ?? "");
 
   const load = useCallback(() => {
     setLoading(true);
@@ -273,7 +271,7 @@ export default function ShlokaScreen() {
               <AnimatedWord
                 key={i}
                 word={w.word}
-                meaning={w.meaning}
+                meaning={plain(w.meaning) || undefined}
                 played={playedWord === w.word}
                 onPlay={() => w.word && playWord(w.word)}
                 index={i}
@@ -336,7 +334,7 @@ function AnimatedLine({
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
-  body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  body: { padding: space.lg, paddingBottom: 120 },
   lineHit: { minHeight: 44, justifyContent: "center" },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
   source: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron, textTransform: "uppercase", letterSpacing: 0.5 },

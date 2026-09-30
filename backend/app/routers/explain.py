@@ -44,7 +44,11 @@ router = APIRouter(prefix="/explain")
 
 class AskRequest(BaseModel):
     surface: str = Field(description="The screen the learner is on (e.g. 'grammar', 'shloka', 'challenge')")
-    subject: str = Field(description="The thing on that screen — a sandhi pair, a word form, a verse line")
+    subject: str = Field(
+        default="",
+        description="The thing on that screen: a sandhi pair, a word form, a verse line. "
+                    "May be empty when the learner asks a general question.",
+    )
     question: str = Field(default="", description="What the learner typed, if anything")
 
 
@@ -67,6 +71,34 @@ _cache: dict[tuple[str, str, str], dict] = {}
 
 def _norm_question(q: str) -> str:
     return re.sub(r"\s+", " ", (q or "").strip().casefold())
+
+
+# ── which questions the grammar engines answer ───────────────────────────────
+# The engines parse a word or split a join, whatever was asked. That is right
+# for "why does it end like this?" and wrong for "What does this mean?", which
+# would get a derivation and no meaning. So a question about meaning, saying or
+# usage goes to the model, unless it also names a grammar term. No question at
+# all (the tap-to-explain case) keeps the engine-first behaviour.
+
+_MEANING_Q = re.compile(
+    r"\b(mean|means|meaning|translat\w*|say|pronounc\w*|example|sentence|use|used)\b", re.I
+)
+_GRAMMAR_Q = re.compile(
+    r"\b(grammar|case|cases|ending|endings|tense|sandhi|split|parse|derive|derivation|"
+    r"declen\w*|conjugat\w*|form|root|stem|metre|meter|scan\w*)\b",
+    re.I,
+)
+_DEVANAGARI = re.compile("[ऀ-ॿ]")
+
+
+def wants_engine(question: str) -> bool:
+    """True when the grammar engines should try before the model."""
+    q = (question or "").strip()
+    if not q:
+        return True
+    if _GRAMMAR_Q.search(q):
+        return True
+    return not _MEANING_Q.search(q)
 
 
 def _cache_key(surface: str, subject: str, question: str) -> tuple[str, str, str]:
@@ -161,10 +193,11 @@ async def ask_explain(
     db: Session = Depends(get_db),
 ):
     subject = (req.subject or "").strip()
-    if not subject:
-        raise HTTPException(status_code=422, detail="subject is required — what is the learner looking at?")
+    question = (req.question or "").strip()
+    if not subject and not question:
+        raise HTTPException(status_code=422, detail="Ask a question or say what you are looking at.")
 
-    key = _cache_key(req.surface, subject, req.question)
+    key = _cache_key(req.surface, subject, question)
 
     # 1. Cache first — a repeated question costs nothing.
     cached = _cache_get(key)
@@ -175,8 +208,9 @@ async def ask_explain(
         return AskResponse(**resp)
 
     # 2. Engine-first routing (P19-2) — grammar questions cost ₹0 and are
-    #    never metered (§2.9).
-    ans = ask_engine.route(req.surface, subject, req.question)
+    #    never metered (§2.9). A general question has no subject to parse, and
+    #    a question about meaning or saying goes to the model.
+    ans = ask_engine.route(req.surface, subject, question) if (subject and wants_engine(question)) else None
     if ans is not None:
         rendered = _render_engine_answer(ans)
         if rendered:
@@ -194,10 +228,14 @@ async def ask_explain(
     # 3. LLM path (P19-1) — metered, session-free, reply_language resolved
     #    server-side. The engine path above is an ADDITION to this, not a
     #    replacement; open-ended questions still reach the model.
-    language = reply_language(req.question, learner.bridge_langs)
+    language = reply_language(question, learner.bridge_langs)
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="explain")
     except QuotaExceeded as exc:
+        if not subject:
+            # A general question has no text of its own to fall back to, so
+            # say so plainly (the app shows a short try-again message).
+            raise HTTPException(status_code=429, detail="Today's explanations are used up. Try again tomorrow.")
         # P19-3: degrade honestly when the daily quota is spent — the subject
         # itself plus its IAST, never a blank and never a broken-button lie.
         from app.services.iast import to_iast as _to_iast
@@ -221,11 +259,27 @@ async def ask_explain(
         return AskResponse(**payload)
 
     explainer = get_explainer()
-    text = await explainer.explain(
-        subject,
-        question=req.question,
-        language=language,
-    )
+    if subject:
+        # Hand the model the IAST reading when the subject is Devanagari, so
+        # "How do I say it?" is answered from the deterministic transliteration
+        # rather than from the model's memory.
+        iast = ""
+        if _DEVANAGARI.search(subject):
+            try:
+                from app.services.iast import to_iast as _to_iast_llm
+
+                iast = _to_iast_llm(subject) or ""
+            except Exception:
+                iast = ""
+        text = await explainer.explain(
+            subject,
+            iast=iast,
+            question=question,
+            language=language,
+            answer_question=True,
+        )
+    else:
+        text = await explainer.answer(question, language=language)
     if text:
         provider = ""
         try:
@@ -245,4 +299,4 @@ async def ask_explain(
 
     # Model failed/empty — refund and say so honestly (§2.11: never silence).
     refund_quota(db, learner, "llm_calls", 1, surface="explain", reason="downstream_failure")
-    raise HTTPException(status_code=503, detail="Explanation unavailable right now — try again in a moment.")
+    raise HTTPException(status_code=503, detail="Explanation unavailable right now. Try again in a moment.")

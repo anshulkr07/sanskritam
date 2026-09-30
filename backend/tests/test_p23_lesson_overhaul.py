@@ -436,3 +436,54 @@ def test_writing_mastery_separate_from_feature_mastery(client):
     assert r.json()["verdict"] == "correct"
     me = client.get("/me", headers=h).json()["learner"]
     assert not [k for k in (me["feature_mastery"] or {}) if str(k).startswith("write:")]
+
+
+# ─── The staged shelf stays off the path ──────────────────────────────────
+
+def test_is_staged_rule():
+    import types
+    from app.services.lessons import is_staged
+
+    assert is_staged(types.SimpleNamespace(title_en="[staged] Vowels", rank=900))
+    assert is_staged(types.SimpleNamespace(title_en="Anything", rank=900))
+    assert is_staged(types.SimpleNamespace(title_en="[staged] Odd", rank=3))
+    assert not is_staged(types.SimpleNamespace(title_en="Sounds first", rank=0))
+    assert not is_staged(types.SimpleNamespace(title_en="", rank=None))
+
+
+def test_units_omit_staged_lessons_but_lessons_keep_them(client):
+    """Unreviewed imports are parked on the staged shelf. /units is the learner's
+    path, so it leaves them out; /lessons still lists them (the grammar guide
+    links by id)."""
+    from app.db import SessionLocal
+    from app.models import Lesson, Unit
+
+    db = SessionLocal()
+    try:
+        unit = db.query(Unit).filter(Unit.id == "u2").first()
+        feature = db.query(Lesson).filter(Lesson.unit_id == "u2").first().feature_id
+        row = Lesson(
+            id="staged-shelf-test", feature_id=feature, unit_id=unit.id, rank=900,
+            title_en="[staged] Shelf test", title_hi="", body="", examples=[],
+        )
+        db.add(row)
+        db.commit()
+    finally:
+        db.close()
+    try:
+        h = _auth_h(client, "p23staged")
+        in_units = {l["id"] for u in client.get("/units", headers=h).json() for l in u["lessons"]}
+        assert "staged-shelf-test" not in in_units
+        for u in client.get("/units", headers=h).json():
+            for l in u["lessons"]:
+                assert not l["title_en"].startswith("[staged]"), l["title_en"]
+                assert l["rank"] < 900
+        in_lessons = {l["id"] for l in client.get("/lessons", headers=h).json()}
+        assert "staged-shelf-test" in in_lessons
+    finally:
+        db = SessionLocal()
+        try:
+            db.query(Lesson).filter(Lesson.id == "staged-shelf-test").delete()
+            db.commit()
+        finally:
+            db.close()

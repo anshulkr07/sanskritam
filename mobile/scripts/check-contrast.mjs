@@ -84,6 +84,51 @@ for (const { name, hex, use } of TOKENS) {
   );
 }
 
+// ── Accent family (theme.ts `accent`) ──────────────────────────────────
+// Read from the source so this can never drift from the values the app uses.
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
+const themeSrc = readFileSync(fileURLToPath(new URL("../src/theme.ts", import.meta.url)), "utf8");
+const block = themeSrc.match(/export const accent = \{([\s\S]*?)\} as const;/);
+const ACCENTS = [];
+if (block) {
+  for (const m of block[1].matchAll(
+    /(\w+):\s*\{\s*fg:\s*"(#\w{6})",\s*bg:\s*"(#\w{6})",\s*from:\s*"(#\w{6})",\s*to:\s*"(#\w{6})"/g,
+  )) {
+    ACCENTS.push({ name: m[1], fg: m[2], bg: m[3], from: m[4], to: m[5] });
+  }
+}
+if (ACCENTS.length === 0) {
+  console.error("  Could not read the accent table from src/theme.ts.\n");
+  process.exit(1);
+}
+
+console.log("  Accents (body text 4.5:1)");
+console.log("  accent    fg/paper  fg/tint   white/from  white/to");
+console.log("  " + "-".repeat(52));
+for (const a of ACCENTS) {
+  const checks = [
+    ratio(a.fg, BG),
+    ratio(a.fg, a.bg),
+    ratio("#FFFFFF", a.from),
+    ratio("#FFFFFF", a.to),
+  ];
+  const bad = checks.filter((r) => r < 4.5).length;
+  failed += bad;
+  console.log(
+    `  ${a.name.padEnd(9)} ${checks.map((r) => r.toFixed(2).padStart(7)).join("   ")}   ${bad ? "FAIL" : "ok"}`,
+  );
+}
+
+// White label on the saffron button fill.
+const btn = themeSrc.match(/saffronBtn:\s*"(#\w{6})"/)?.[1];
+if (btn) {
+  const r = ratio("#FFFFFF", btn);
+  if (r < 4.5) failed++;
+  console.log(`\n  saffronBtn ${btn}  white label ${r.toFixed(2)}:1  ${r < 4.5 ? "FAIL" : "ok"}`);
+}
+
 console.log("");
 if (failed > 0) {
   console.error(`  ${failed} token(s) below their required contrast.\n`);

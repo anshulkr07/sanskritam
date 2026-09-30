@@ -552,7 +552,11 @@ class DailyWordPuzzle(BaseModel):
     finished: bool
     guesses_used: int
     max_guesses: int
-    word_length: int
+    word_length: int  # Unicode code points: the typing client's grid width
+    letters: int = 0  # akṣaras: the tapping client's slot count
+    # Whole akṣaras to tap: the word's own plus near-miss distractors, shuffled
+    # and stable for the day. Empty from a backend that predates the bank.
+    bank: list[str] = []
     clue: str = ""
     streak: int = 0
     status: str = "open"  # open | solved | finished | no_word
@@ -562,6 +566,12 @@ class DailyWordPuzzle(BaseModel):
 
 class DailyWordGuessRequest(BaseModel):
     guess: str = Field(..., min_length=1, max_length=64)
+    # "akshara" scores whole akṣaras (the tapping client); anything else is the
+    # original code-point scoring, so the app already in testing is unchanged.
+    mode: str = Field("codepoint", max_length=16)
+    # The guess already split into akṣaras (akshara mode). Sent by the tapping
+    # client so the server never has to re-segment and merge two tiles.
+    letters: Optional[list[str]] = Field(None, max_length=16)
 
 
 class DailyWordGuessResponse(BaseModel):

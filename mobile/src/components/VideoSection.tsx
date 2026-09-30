@@ -180,7 +180,7 @@ function EmbedRow({
               {video.channel} · {langLabel(video.lang)}
             </Text>
             <Text style={styles.rowCredit} numberOfLines={1}>
-              {errored ? "Tap to open in the in-app browser" : "Tap to play here — views support the creator"}
+              {errored ? "Tap to open" : "Tap to play"}
             </Text>
           </View>
           <Ionicons
@@ -192,7 +192,7 @@ function EmbedRow({
       )}
       {browserFailed && (
         <Text style={styles.openFailed} accessibilityRole="text">
-          Couldn't open that video — check your connection and try again.
+          Couldn't open that video. Check your connection.
         </Text>
       )}
     </View>
@@ -234,7 +234,7 @@ function LinkRow({ video }: { video: VideoItem }) {
       </Pressable>
       {openFailed && (
         <Text style={styles.openFailed} accessibilityRole="text">
-          Couldn't open that link — check your connection and try again.
+          Couldn't open that link. Check your connection.
         </Text>
       )}
     </View>
@@ -311,7 +311,7 @@ export default function VideoSection({ videos }: { videos: VideoItem[] }) {
         </Pressable>
       )}
       <Text style={styles.tosNote}>
-        Videos play here in the app via YouTube's player, under YouTube's Terms of Service.
+        Videos play in YouTube's player.
       </Text>
     </View>
   );

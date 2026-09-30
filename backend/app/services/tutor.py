@@ -550,6 +550,7 @@ something they already answered.
 - Never repeat a sentence you already said in this conversation. Each turn says \
 something new.
 - Keep "reply_sa" short: one to three simple sentences a beginner can read.
+- Never use em dashes in anything the learner will read. Use commas or full stops.
 
 WHAT COUNTS AS CORRECT
 - Sanskrit written in roman letters ("aham gacchami") or in the learner's own \

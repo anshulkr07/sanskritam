@@ -21,7 +21,7 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type GuideChapter, type GuideLang, type GuideTopicSummary } from "../api/client";
-import { useAsk } from "../ask/AskProvider";
+import { useAskContext } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
 import Collapsible from "../components/grammar/Collapsible";
@@ -151,17 +151,13 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
   const ctx = React.useMemo(() => ({ lang, t }), [lang, t]);
   const { sized } = useTypeScale();
   const { read, last, ready } = useGrammarProgress();
-  const { setContext } = useAsk();
+  useAskContext("grammar", "");
   const { data: index, loading, failed, retry } = useQuery("guide-index", fetchGuideIndex, { ttlMs: 30 * 60_000 });
   useQuery("grammar-lessons", api.lessons);
   const [query, setQuery] = React.useState("");
   const [level, setLevel] = React.useState(0);
   const [openChapter, setOpenChapter] = React.useState<string | null>(null);
   const [glossaryOpen, setGlossaryOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    setContext({ surface: "grammar", subject: "" });
-  }, [setContext]);
 
   // Open the first chapter with something unread, once the guide arrives.
   React.useEffect(() => {
@@ -384,7 +380,7 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl, gap: space.md },
+  body: { padding: space.lg, paddingBottom: 120, gap: space.md },
   headerRow: { flexDirection: "row", alignItems: "center", gap: space.sm },
   headerText: { flex: 1 },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },

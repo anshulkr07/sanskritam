@@ -87,9 +87,9 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
   const isVerb = data.kind === "tinanta";
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.screen} contentContainerStyle={[styles.content, !dhatu && !pratipadika && styles.contentRouted]}>
       <Text style={styles.heading}>
-        {title ?? (isVerb ? `${effDhatu ?? ""} — present` : `${effPratipadika ?? ""} — declension`)}
+        {title ?? (isVerb ? `${effDhatu ?? ""}, present` : `${effPratipadika ?? ""}, declension`)}
       </Text>
 
       {/* Header row */}
@@ -152,7 +152,7 @@ export default function ParadigmScreen({ pratipadika, linga, dhatu, lakara, titl
 function Cell({ cell, onOpen, isVerb }: { cell: ParadigmCell; onOpen: () => void; isVerb: boolean }) {
   if (cell.form == null) {
     // underivable cell — a dash, tappable-disabled, never blanks the grid
-    return <View style={[styles.cell, { flex: 1 }]}><Text style={styles.dash}>—</Text></View>;
+    return <View style={[styles.cell, { flex: 1 }]}><Text style={styles.dash}>-</Text></View>;
   }
   return (
     <Pressable
@@ -171,6 +171,8 @@ function Cell({ cell, onOpen, isVerb }: { cell: ParadigmCell; onOpen: () => void
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: color.bg },
   content: { padding: space.lg, paddingBottom: space.xxl },
+  // Opened as its own screen (no props): the last row scrolls clear of the Ask bubble.
+  contentRouted: { paddingBottom: 120 },
   center: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: color.bg },
   heading: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink, marginBottom: space.md },
   row: { flexDirection: "row", alignItems: "center", borderRadius: 8, marginVertical: 2, paddingVertical: 4 },

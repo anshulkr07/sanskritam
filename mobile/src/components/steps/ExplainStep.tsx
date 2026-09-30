@@ -9,10 +9,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "../ui";
 import { haptics } from "../../services/haptics";
 import { color, font, script, space } from "../../theme";
-import { field, type StepInputProps } from "./types";
+import { field, prose, type StepInputProps } from "./types";
 
 export default function ExplainStep({ step, disabled, onSubmit }: StepInputProps) {
-  const text = field<string>(step.payload, "text", "");
+  const text = prose(step.payload, "text");
   return (
     <View accessible accessibilityLabel={`Explanation. ${text}`}>
       <Text style={[styles.text, script("regular")]}>{text}</Text>

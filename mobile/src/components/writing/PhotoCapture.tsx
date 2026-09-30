@@ -1,227 +1,161 @@
 // PhotoCapture (U12-4) — write on paper, photograph it, get feedback.
 //
-// The camera frames a SINGLE letter or word — not a page — which improves
-// recognition and, more importantly, keeps a child's name and the rest of
-// their exercise book OUT of frame. The photo is processed on-device and
-// DISCARDED immediately after recognition: never uploaded, never logged,
-// never in a crash report (§2.16).
+// The camera frames a SINGLE letter or word, not a page: better for reading
+// and it keeps a child's name and the rest of their exercise book out of shot.
+// This component only takes the picture; the Writing screen sends it to the
+// server check (Sarvam Document Intelligence), falling back to on-device
+// reading, and never keeps the image after the result.
 //
-// Both native pieces (camera preview + OCR) resolve dynamically: without the
-// dev build this renders the honest unavailable card, exactly like the ink
-// canvas does before the ML Kit module ships. Because OCR on beginner
-// handwriting is materially less reliable than stroke ink, an unreadable
-// photo shows the reference and asks the learner to compare — never a bare
-// rejection (P20-4). The server biases the photo path hard toward `unsure`.
+// takePictureAsync runs with orientation processing ON (skipProcessing false):
+// skipping it discards `quality` and can return a rotated image.
 
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-// expo-camera is an installed dependency — import statically. The hook below
-// must run unconditionally (React rules); permission state gates the preview.
+import { ActivityIndicator, Image, Linking, Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
+import { Button } from "../ui";
 import { haptics } from "../../services/haptics";
-import type { PhotoRecogniser } from "../../services/photoRecogniser";
-import { color, font, radius, script, shadow, space } from "../../theme";
+import { color, font, radius, shadow, space } from "../../theme";
 
 export default function PhotoCapture({
-  reference,
-  recogniser,
-  onResult,
+  busy,
+  thumbnail,
+  onCapture,
 }: {
-  /** The Devanagari target shown beside the viewfinder for comparison. */
-  reference: string;
-  recogniser: PhotoRecogniser;
-  /** (text, confidence) from on-device OCR. The photo is already discarded. */
-  onResult: (text: string, confidence: number) => void;
+  /** True while the last photo is being checked. */
+  busy: boolean;
+  /** The photo just taken, shown while it is checked. Parent clears it after. */
+  thumbnail: string | null;
+  /** The photo's file uri, or null when the camera returned nothing. */
+  onCapture: (uri: string | null) => void;
 }) {
-  const [busy, setBusy] = useState(false);
-  const [denied, setDenied] = useState(false);
-  // Preview is usable only after the native camera reports ready — never
-  // fire takePictureAsync into an unmounted preview.
-  const [cameraReady, setCameraReady] = useState(false);
+  const { width: winW } = useWindowDimensions();
+  const size = Math.min(340, winW - space.lg * 2);
   const [permission, requestPermission] = useCameraPermissions();
+  // Never fire takePictureAsync into a preview that has not started.
+  const [cameraReady, setCameraReady] = useState(false);
+  const [shooting, setShooting] = useState(false);
   const cameraRef = useRef<CameraView>(null);
 
-  const capture = useCallback(async () => {
-    if (busy || !cameraReady) return;
-    haptics.tap();
-    setBusy(true);
+  const shoot = useCallback(async () => {
+    if (busy || shooting || !cameraReady) return;
+    haptics.press();
+    setShooting(true);
     try {
-      const photo = await cameraRef.current?.takePictureAsync?.({
-        quality: 0.7,
-        skipProcessing: true,
-      });
-      const uri = photo?.uri;
-      if (!uri) {
-        onResult("", 0);
-        return;
-      }
-      try {
-        const out = await recogniser.recognise(uri);
-        if (out && out.text) onResult(out.text, out.confidence);
-        else onResult("", 0);
-      } finally {
-        // The image is discarded here: no state keeps the uri, nothing is
-        // cached, nothing is uploaded (§2.16). There is nothing to delete
-        // because nothing retained it.
-      }
+      const photo = await cameraRef.current?.takePictureAsync({ quality: 0.5 });
+      onCapture(photo?.uri ?? null);
+    } catch {
+      onCapture(null);
     } finally {
-      setBusy(false);
+      setShooting(false);
     }
-  }, [busy, cameraReady, onResult, recogniser]);
+  }, [busy, shooting, cameraReady, onCapture]);
 
-  const begin = useCallback(async () => {
-    // Permission is requested from the capture button, never at mount.
-    if (!permission?.granted) {
-      const res = await requestPermission();
-      if (!res?.granted) {
-        setDenied(true);
-        return;
-      }
-      setDenied(false);
-    }
-    await capture();
-  }, [capture, permission?.granted, requestPermission]);
-
-  // Without the dev build the OCR seam reports not-ready: the honest
-  // unavailable card, exactly like the ink canvas before its module ships.
-  if (!recogniser.ready) {
-    return (
-      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel={recogniser.statusNote}>
-        <Text style={styles.unavailableTitle}>From paper — coming with the dev build</Text>
-        <Text style={styles.unavailableText}>{recogniser.statusNote}</Text>
-        <Text style={[styles.reference, script("bold")]}>{reference}</Text>
-      </View>
-    );
-  }
-
-  // Camera permission still resolving.
   if (!permission) {
-    return (
-      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel="Checking camera access.">
-        <Text style={styles.unavailableTitle}>Checking camera access…</Text>
-        <Text style={[styles.reference, script("bold")]}>{reference}</Text>
-      </View>
-    );
+    return <View style={[styles.box, { width: size, height: size }]} />;
   }
 
-  // Permission denied (or not yet granted): explain + offer the system prompt
-  // again instead of rendering a dead preview.
   if (!permission.granted) {
+    const blocked = permission.canAskAgain === false;
     return (
-      <View style={styles.unavailable} accessible accessibilityRole="text" accessibilityLabel="Camera access needed to photograph writing.">
-        <Text style={styles.unavailableTitle}>Camera access needed</Text>
-        <Text style={styles.unavailableText}>
-          Frame one letter on paper and it is read on this device, then discarded — nothing is
-          ever uploaded. Allow camera access to try it.
-        </Text>
-        <Pressable
-          onPress={() => void begin()}
-          accessibilityRole="button"
-          accessibilityLabel="Allow camera access"
-          style={styles.captureBtn}
-        >
-          <Text style={styles.captureText}>Allow camera</Text>
-        </Pressable>
-        <Text style={[styles.reference, script("bold")]}>{reference}</Text>
+      <View style={[styles.box, styles.center, { width: size, height: size }]}>
+        <Ionicons name="camera-outline" size={40} color={color.inkSoft} />
+        <Text style={styles.title}>Camera access is off</Text>
+        <Button
+          label={blocked ? "Open settings" : "Allow camera"}
+          tone="tonal"
+          size="md"
+          onPress={() => (blocked ? Linking.openSettings() : requestPermission())}
+        />
       </View>
     );
   }
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.hint}>
-        Frame one letter — keep names and the rest of the page out of shot. The photo is read on
-        this device and discarded.
-      </Text>
-      <View style={styles.viewfinder}>
-        <CameraView
-          style={styles.preview}
-          ref={cameraRef}
-          facing="back"
-          onCameraReady={() => setCameraReady(true)}
-        />
-        {/* Single-letter framing guide */}
-        <View style={styles.frame} pointerEvents="none" />
+      <View style={[styles.box, { width: size, height: size }]}>
+        {thumbnail ? (
+          <>
+            <Image source={{ uri: thumbnail }} style={styles.fill} resizeMode="cover" />
+            <View style={styles.checking} accessible accessibilityRole="progressbar" accessibilityLabel="Checking">
+              <ActivityIndicator color={color.white} />
+              <Text style={styles.checkingText}>Checking…</Text>
+            </View>
+          </>
+        ) : (
+          <>
+            <CameraView
+              ref={cameraRef}
+              style={styles.fill}
+              facing="back"
+              onCameraReady={() => setCameraReady(true)}
+            />
+            {/* single-letter framing guide */}
+            <View style={styles.frame} pointerEvents="none" />
+          </>
+        )}
       </View>
-      <Text style={[styles.reference, script("bold")]}>{reference}</Text>
-      {denied && <Text style={styles.denied}>Camera access denied. Allow it in settings and try again.</Text>}
-      <Pressable
-        onPress={begin}
-        disabled={busy || !cameraReady}
-        style={[styles.captureBtn, (busy || !cameraReady) && styles.captureBtnBusy]}
-        accessibilityRole="button"
-        accessibilityLabel={busy ? "Reading the photo" : "Photograph your writing"}
-        accessibilityState={{ busy, disabled: busy || !cameraReady }}
-      >
-        <Text style={styles.captureText}>{busy ? "Reading…" : "Photograph it"}</Text>
-      </Pressable>
+      {!thumbnail && (
+        <Pressable
+          onPress={shoot}
+          disabled={busy || shooting || !cameraReady}
+          accessibilityRole="button"
+          accessibilityLabel="Take photo"
+          accessibilityState={{ disabled: busy || shooting || !cameraReady, busy: shooting }}
+          style={({ pressed }) => [
+            styles.shutter,
+            (busy || shooting || !cameraReady) && { opacity: 0.5 },
+            pressed && { transform: [{ scale: 0.94 }] },
+          ]}
+        >
+          <View style={styles.shutterInner} />
+        </Pressable>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { gap: space.sm },
-  hint: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-  },
-  viewfinder: {
+  wrap: { alignItems: "center", gap: space.md },
+  box: {
     borderRadius: radius.lg,
     overflow: "hidden",
-    backgroundColor: "#1A140D",
-    aspectRatio: 4 / 3,
-    position: "relative",
+    backgroundColor: color.surfaceMuted,
+    borderWidth: 1,
+    borderColor: color.border,
   },
-  preview: { flex: 1 },
+  center: { alignItems: "center", justifyContent: "center", gap: space.sm, padding: space.lg },
+  title: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  fill: { flex: 1 },
   frame: {
     position: "absolute",
-    left: "25%",
-    top: "15%",
-    width: "50%",
-    height: "70%",
+    left: "22%",
+    top: "18%",
+    width: "56%",
+    height: "64%",
     borderWidth: 2,
-    borderColor: color.saffron,
+    borderColor: "rgba(255,255,255,0.9)",
     borderRadius: radius.md,
   },
-  reference: { fontSize: font.sizes.xl, color: color.ink, textAlign: "center" },
-  denied: { fontSize: font.sizes.sm, color: color.badText, textAlign: "center" },
-  captureBtn: {
-    backgroundColor: color.saffron,
-    borderRadius: radius.md,
-    minHeight: 44,
+  checking: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: "rgba(59,46,37,0.55)",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: space.xs,
+  },
+  checkingText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.white },
+  shutter: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: color.surface,
+    borderWidth: 4,
+    borderColor: color.saffronBtn,
     alignItems: "center",
     justifyContent: "center",
     ...shadow.button,
   },
-  captureBtnBusy: { opacity: 0.6 },
-  captureText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-    color: color.white,
-  },
-  unavailable: {
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    padding: space.lg,
-    alignItems: "center",
-    gap: space.sm,
-  },
-  unavailableTitle: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-    color: color.ink,
-    textAlign: "center",
-  },
-  unavailableText: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    textAlign: "center",
-  },
+  shutterInner: { width: 48, height: 48, borderRadius: 24, backgroundColor: color.saffronBtn },
 });

@@ -2,14 +2,14 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "scheme": "sanskritam",
     "splash": {
       "image": "./assets/splash-icon.png",
-      "backgroundColor": "#FFFCF2",
+      "backgroundColor": "#FFF6ED",
       "resizeMode": "contain"
     },
     "ios": {
@@ -18,14 +18,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#FFFCF2",
+        "backgroundColor": "#FFF6ED",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 2,
+      "versionCode": 3,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",

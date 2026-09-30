@@ -39,9 +39,6 @@ export default function LicencesScreen() {
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.title}>Licences and credits</Text>
-        <Text style={styles.sub}>
-          Everything Sanskritam is built from, and the terms it is shared under.
-        </Text>
 
         {loading && !rows ? (
           <>
@@ -76,7 +73,7 @@ export default function LicencesScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl },
+  body: { padding: space.lg, paddingBottom: 120 },
   title: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",

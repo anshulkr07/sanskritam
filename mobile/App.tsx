@@ -25,10 +25,10 @@ import {
 const TiroDevanagariSanskrit_400Regular = require(
   "@expo-google-fonts/tiro-devanagari-sanskrit/400Regular/TiroDevanagariSanskrit_400Regular.ttf",
 );
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -133,7 +133,8 @@ function RootNavigator() {
 }
 
 export default function App() {
-  const [fontsLoaded] = useFonts({    Nunito_400Regular,
+  const [fontsLoaded] = useFonts({
+    Nunito_400Regular,
     Nunito_500Medium,
     Nunito_600SemiBold,
     Nunito_700Bold,
@@ -145,6 +146,11 @@ export default function App() {
     Baloo2_800ExtraBold,
     TiroDevanagariSanskrit_400Regular,
   });
+  // The focused route's name, so the Ask bubble can step aside on screens that
+  // own the bottom of the display (Talk, Writing, the daily word).
+  const navRef = useNavigationContainerRef();
+  const [routeName, setRouteName] = useState<string | undefined>(undefined);
+  const trackRoute = () => setRouteName(navRef.getCurrentRoute()?.name);
 
   if (!fontsLoaded) {
     return (
@@ -158,17 +164,17 @@ export default function App() {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <KeyboardProvider>
-        <PrefsLoader />
-        <TypeScaleProvider>
-          <AuthProvider>
-            <NavigationContainer>
-              <AskProvider>
-                <RootNavigator />
-              </AskProvider>
-            </NavigationContainer>
-            <StatusBar style="dark" />
-          </AuthProvider>
-        </TypeScaleProvider>
+          <PrefsLoader />
+          <TypeScaleProvider>
+            <AuthProvider>
+              <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
+                <AskProvider routeName={routeName}>
+                  <RootNavigator />
+                </AskProvider>
+              </NavigationContainer>
+              <StatusBar style="dark" />
+            </AuthProvider>
+          </TypeScaleProvider>
         </KeyboardProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>

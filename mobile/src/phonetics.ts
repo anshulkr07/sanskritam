@@ -179,13 +179,13 @@ export function articulationFor(c: VarnaLike): Articulation | null {
 export function articulationSummary(a: Articulation, char: string): string {
   const where = PLACE_LABEL[a.place]?.where ?? a.place;
   const voice = a.voiced ? "with the voice on" : "with the voice off";
-  if (a.nasal) return `${char} — closed at ${where}, but the soft palate drops and the sound goes out through the nose.`;
+  if (a.nasal) return `${char}: closed at ${where}, but the soft palate drops and the sound goes out through the nose.`;
   if (a.manner === "stop") {
-    return `${char} — a full stop at ${where}, released ${a.aspirated ? "with a puff of breath" : "cleanly"}, ${voice}.`;
+    return `${char}: a full stop at ${where}, released ${a.aspirated ? "with a puff of breath" : "cleanly"}, ${voice}.`;
   }
-  if (a.manner === "fricative") return `${char} — a narrow gap at ${where}; the air hisses through, ${voice}.`;
-  if (a.manner === "approximant") return `${char} — the tongue comes near ${where} without touching, ${voice}.`;
-  return `${char} — the tongue shapes the space near ${where}; the air flows freely, ${voice}.`;
+  if (a.manner === "fricative") return `${char}: a narrow gap at ${where}; the air hisses through, ${voice}.`;
+  if (a.manner === "approximant") return `${char}: the tongue comes near ${where} without touching, ${voice}.`;
+  return `${char}: the tongue shapes the space near ${where}; the air flows freely, ${voice}.`;
 }
 
 // ── The gesture over time ─────────────────────────────────────────────

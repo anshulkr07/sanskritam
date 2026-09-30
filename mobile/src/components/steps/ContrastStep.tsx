@@ -10,7 +10,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Button } from "../ui";
 import { haptics } from "../../services/haptics";
 import { color, font, radius, script, space } from "../../theme";
-import { field, type StepInputProps } from "./types";
+import { field, prose, type StepInputProps } from "./types";
 
 interface Form {
   form: string;
@@ -22,7 +22,7 @@ export default function ContrastStep({ step, disabled, onSubmit }: StepInputProp
   const payload = step.payload;
   const a = field<Form>(payload, "a", { form: "", vibhakti: "", vacana: "" });
   const b = field<Form>(payload, "b", { form: "", vibhakti: "", vacana: "" });
-  const prompt = field<string>(payload, "prompt", "Which form is which?");
+  const prompt = prose(payload, "prompt", "Which form is which?");
   const [pick, setPick] = useState<"a" | "b" | null>(null);
 
   const submit = () => {

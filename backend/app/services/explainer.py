@@ -72,11 +72,42 @@ Sanskrit sentence, and never suggest what the learner should say next.
 - Describe meaning, not grammatical analysis. Do NOT make claims about \
 grammatical number (singular / dual / plural) or case endings unless the \
 learner explicitly asked about grammar.
+- Never use em dashes. Use commas or full stops.
 - If you cannot tell what the line means, say so plainly in one sentence."""
+
+
+# A question that is not about a line on screen ("How do I say hello?", "What
+# is sandhi?"). Same rules, with one deliberate difference: a learner asking how
+# to say something needs the Sanskrit, so single well-known words and short
+# standard phrases may be quoted, but nothing longer is composed.
+_GENERAL_PROMPT = """You are a patient Sanskrit tutor's assistant in Sanskritam, a \
+learning app. A beginner asks a question about Sanskrit. Answer it.
+
+Rules:
+- Answer in the language the final instruction names, and no other. This is \
+not negotiable: a learner who asked in English cannot read a Hindi answer.
+- 2-3 short sentences, maximum 60 words. Plain prose, no markdown, no lists, \
+no headings, no backticks, no asterisks, no preamble like "Sure!".
+- Answer only what was asked, simply, for a beginner.
+- You may quote a single well-known Sanskrit word or a short standard phrase \
+(for example namaste, dhanyavada, svagatam) with its meaning. NEVER compose a \
+new Sanskrit sentence; if the question needs one, say you are not sure of the \
+exact form.
+- Do NOT grade the learner.
+- Never use em dashes. Use commas or full stops.
+- If the question is not about Sanskrit or learning it, say in one sentence that \
+you can only help with Sanskrit.
+- If you are not sure, say so plainly in one sentence."""
 
 
 _DEVANAGARI = re.compile("[\u0900-\u097F]")
 _MARKUP = re.compile(r"[`*_#]+")
+# Em (and spaced en) dashes: the app's copy rule is none, and the model emits
+# them anyway. Mirrors mobile/src/utils/text.ts plain().
+_DASH_LEAD = re.compile(r"^[ \t]*[\u2014\u2013][ \t]*", re.M)
+_DASH_TRAIL = re.compile(r"[ \t]*[\u2014\u2013][ \t]*$", re.M)
+_DASH_SPACED = re.compile(r"[ \t]+[\u2014\u2013][ \t]+")
+_DASH_TIGHT = re.compile(r"(\S)\u2014(\S)")
 
 
 def reply_language(question: str, bridge_langs=None, fallback: str = "") -> str:
@@ -138,6 +169,16 @@ def strip_markup(text: str) -> str:
     return _MARKUP.sub("", text).strip()
 
 
+def strip_dashes(text: str) -> str:
+    """Replace em dashes with the punctuation the app's copy rule allows."""
+    text = _DASH_LEAD.sub("", text)
+    text = _DASH_TRAIL.sub("", text)
+    text = _DASH_SPACED.sub(", ", text)
+    text = _DASH_TIGHT.sub(r"\1, \2", text)
+    text = re.sub(r",\s*,", ",", text)
+    return re.sub(r",\s*([.;:!?])", r"\1", text).strip()
+
+
 class Explainer:
     """Generates a short natural-language explanation of a tutor line."""
 
@@ -169,6 +210,7 @@ class Explainer:
         question: str = "",
         translate_only: bool = False,
         language: str = "English",
+        answer_question: bool = False,
     ) -> Optional[str]:
         """Explain `line` to the learner who asked `question`.
 
@@ -183,6 +225,10 @@ class Explainer:
                 teach it.
             language: the language the answer must be written in, resolved
                 by reply_language(). An instruction, not a hint.
+            answer_question: the ask-anywhere path (POST /explain) sets this
+                so a specific question ("How do I say it?") is answered, not
+                just turned into "what does the line mean". The conversation
+                path leaves it False: its instruction was tuned and measured.
 
         Returns:
             The explanation text, or None on any failure (fail-closed).
@@ -192,21 +238,46 @@ class Explainer:
         if not settings.explain_enabled:
             return None
 
+        if translate_only:
+            instruction = (
+                f"Translate the line into {language} and stop — do not gloss "
+                "individual words."
+            )
+        elif answer_question and (question or "").strip():
+            instruction = "Answer the learner's question about the line."
+        else:
+            instruction = "Explain what the line means."
+
         parts = [f"Tutor's line: {line}"]
         if iast:
             parts.append(f"IAST: {iast}")
         if gloss:
             parts.append(f"Authored gloss (this is correct — stay consistent with it): {gloss}")
         parts.append(f"Learner asked: {question or 'What does that mean?'}")
-        parts.append(
-            f"Translate the line into {language} and stop — do not gloss "
-            "individual words." if translate_only
-            else "Explain what the line means."
-        )
+        parts.append(instruction)
         # Last line, so the language order sits closest to the model's turn.
         parts.append(f"Write your entire answer in {language}.")
-        user = "\n".join(parts)
+        return await self._complete(_SYSTEM_PROMPT, "\n".join(parts))
 
+    async def answer(self, question: str, *, language: str = "English") -> Optional[str]:
+        """Answer a general question about Sanskrit that is not tied to a line.
+
+        The ask-anywhere sheet takes free questions ("What is sandhi?") from
+        any screen. Same fail-closed contract as explain(): None on any
+        failure, and the caller refunds the quota it took.
+        """
+        q = (question or "").strip()
+        if not q or not settings.explain_enabled:
+            return None
+        user = "\n".join([
+            f"Learner asked: {q}",
+            "Answer the question.",
+            f"Write your entire answer in {language}.",
+        ])
+        return await self._complete(_GENERAL_PROMPT, user)
+
+    async def _complete(self, system: str, user: str) -> Optional[str]:
+        """One model call, cleaned. None on any failure (fail-closed)."""
         try:
             provider = self._get_provider()
         except ValueError as exc:
@@ -215,7 +286,7 @@ class Explainer:
 
         try:
             resp: LLMResponse = await provider.complete(
-                _SYSTEM_PROMPT,
+                system,
                 user,
                 temperature=0.2,
                 max_tokens=settings.explain_max_tokens,
@@ -231,7 +302,7 @@ class Explainer:
             )
             return None
 
-        text = strip_markup(resp.text or "")
+        text = strip_dashes(strip_markup(resp.text or ""))
         if not text:
             return None
         logger.info(

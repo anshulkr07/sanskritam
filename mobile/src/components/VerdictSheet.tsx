@@ -24,6 +24,7 @@ import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing, spring as springCfg } from "../motion";
 import type { Verdict } from "../api/client";
 import { Button } from "./ui";
+import { plain } from "../utils/text";
 
 interface VerdictSheetProps {
   visible: boolean;
@@ -109,13 +110,13 @@ export default function VerdictSheet({
           <Text style={[styles.title, { color: tone.fg }]} accessibilityRole="header">{tone.title}</Text>
           <Text style={styles.diagnosis}>
             {isUnsure
-              ? "I couldn't tell confidently — no penalty. Try listening again and repeating."
-              : diagnosis || "Let's move on."}
+              ? "Couldn't tell. Listen again and repeat."
+              : plain(diagnosis) || "Let's move on."}
           </Text>
           {!isUnsure && !!grammarNote && (
             <View style={styles.grammarNote}>
               <Text style={styles.grammarNoteLabel}>Why this ending?</Text>
-              <Text style={styles.grammarNoteText}>{grammarNote}</Text>
+              <Text style={styles.grammarNoteText}>{plain(grammarNote)}</Text>
             </View>
           )}
 

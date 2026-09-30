@@ -1,138 +1,138 @@
-// Home — the daily hub (U8-2). The screen the learner opens first: the mascot
-// greeting, then four cards — Continue (primary), Today's śloka, The daily
-// word, and a deliberately-quiet Varṇamālā reference. Śloka and Varṇamālā are
-// reached from here (they are cards, not tabs, since U8-1).
+// Home — the daily hub (U8-2). Greeting, today's progress (XP ring, day
+// streak, the week), the lesson to continue, the two daily cards (śloka and
+// word) and the explore tiles. Śloka and Varṇamālā are stack screens reached
+// from here, not tabs (U8-1).
 //
-// Rules: cards stagger in once per mount, capped at 6 (§8); every card states
-// its status in text, not colour alone (§U5-3); a data-less card shows a
-// skeleton, never a spinner or a collapsed row that shifts layout on arrival.
+// Every number here comes from the server and says what it is. While it loads
+// a skeleton holds its place, never a fake 0 (U9-4). A failed card offers
+// retry in place (U10-3). The streak is DAYS, computed from the activity
+// history: learner.streak from /me is a run of correct answers, not days.
 
 import { DrawerActions, useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-  withDelay,
-} from "react-native-reanimated";
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-import { api, type DailyWordPuzzle, type LessonSummary, type Shloka, type Unit } from "../api/client";
-import { Card, ProgressBar } from "../components/ui";
+import {
+  api,
+  type DailyWordPuzzle,
+  type LessonSummary,
+  type ProgressDaily,
+  type ProgressDay,
+  type Shloka,
+  type Unit,
+} from "../api/client";
+import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
 import { cachedGet } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
-import { DrawerToggle } from "../navigation/AppDrawer";
+import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
-import { color, font, radius, script, shadow, space } from "../theme";
+import {
+  accent,
+  accentAt,
+  color,
+  font,
+  gradientOf,
+  radius,
+  script,
+  shadow,
+  space,
+  type AccentName,
+} from "../theme";
+import { firstName } from "../utils/name";
+import { dayStreak, lastSevenDays, localToday } from "../utils/streak";
+import { plain } from "../utils/text";
 
 type Props = TabScreenProps<"Home">;
+type LoadState = "loading" | "ok" | "error";
 
 export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
   const rootNav = useNavigation();
-  // The profile comes from auth context: AuthProvider filled it from /me while
-  // restoring the session (or from the login response), so Home issues no
-  // second /me on mount — and later refresh() calls elsewhere land here too.
-  const profile = learner;
   const [shloka, setShloka] = useState<Shloka | null>(null);
-  const [shlokaLoading, setShlokaLoading] = useState(true);
-  const [shlokaError, setShlokaError] = useState(false);
+  const [shlokaState, setShlokaState] = useState<LoadState>("loading");
   const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
-  const [dailyLoading, setDailyLoading] = useState(true);
-  const [dailyError, setDailyError] = useState(false);
-  // U15-5: Home routes into the lesson — "continue Unit N" plus, once P23-5
-  // landed, an honest "N due today" from the review schedule.
+  const [wordState, setWordState] = useState<LoadState>("loading");
+  // U15-5: Home routes into the lesson (first unfinished unit), plus the
+  // review count. A failed fetch leaves these null and the card hides.
   const [units, setUnits] = useState<Unit[] | null>(null);
-  const [unitsFailed, setUnitsFailed] = useState(false);
-  // null = still loading (never render a fake 0); a failed fetch stays null
-  // so the due text hides instead of pretending nothing is due.
   const [dueCount, setDueCount] = useState<number | null>(null);
-  const [profileLoading, setProfileLoading] = useState(!learner);
-  // Story deck (Discover Sanskrit) — total cards for the hero status line.
-  // null = loading/failed; the hero then shows no fake count.
   const [storyTotal, setStoryTotal] = useState<number | null>(null);
   const [storyAt, setStoryAt] = useState(0);
+  // Today's XP and the day history the streak is computed from.
+  const [today, setToday] = useState<{ daily: ProgressDaily; history: ProgressDay[] } | null>(null);
+  const [todayFailed, setTodayFailed] = useState(false);
 
+  // The profile normally arrives with the session; fetch it only if missing.
   useEffect(() => {
-    if (learner) return;
-    let alive = true;
-    setProfileLoading(true);
-    refresh()
-      .catch(() => null)
-      .finally(() => {
-        if (alive) setProfileLoading(false);
-      });
-    return () => {
-      alive = false;
-    };
-    // Only a missing profile is fetched; one that arrives later needs nothing.
+    if (!learner) refresh().catch(() => null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refresh]);
-
-  // U10-3: a failed fetch says so and offers retry — a catch that silently
-  // leaves an empty card is indistinguishable from a card with no content.
-  const loadShloka = useCallback(() => {
-    setShlokaLoading(true);
-    setShlokaError(false);
-    // Same key as the Shloka screen, so opening the card renders from memory.
-    cachedGet("shloka-today", api.todayShloka)
-      .then(setShloka)
-      .catch(() => {
-        setShloka(null);
-        setShlokaError(true);
-      })
-      .finally(() => setShlokaLoading(false));
   }, []);
 
-  const loadDaily = useCallback(() => {
-    setDailyLoading(true);
-    setDailyError(false);
-    cachedGet("daily-word", api.dailyWord)
-      .then(setDailyWord)
-      .catch(() => {
-        setDailyWord(null);
-        setDailyError(true);
+  const loadShloka = useCallback(() => {
+    setShlokaState("loading");
+    // Same key as the Shloka screen, so opening the card renders from memory.
+    cachedGet("shloka-today", api.todayShloka)
+      .then((s) => {
+        setShloka(s);
+        setShlokaState("ok");
       })
-      .finally(() => setDailyLoading(false));
+      .catch(() => setShlokaState("error"));
+  }, []);
+
+  const loadWord = useCallback(() => {
+    setWordState("loading");
+    cachedGet("daily-word", api.dailyWord)
+      .then((w) => {
+        setDailyWord(w);
+        setWordState("ok");
+      })
+      .catch(() => setWordState("error"));
+  }, []);
+
+  const loadToday = useCallback(() => {
+    setTodayFailed(false);
+    Promise.all([api.progressDaily(), api.progressHistory(90)])
+      .then(([daily, history]) => setToday({ daily, history }))
+      .catch(() => setTodayFailed(true));
   }, []);
 
   useEffect(() => {
     loadShloka();
-    loadDaily();
-    // Cached under the keys Path ("units") and the story deck
-    // ("story-chapters") read, so both open from memory after Home.
-    cachedGet("units", api.units).then((u) => { setUnits(u); setUnitsFailed(false); }).catch(() => { setUnits(null); setUnitsFailed(true); });
-    api.reviewDue(1).then((d) => setDueCount(d.due_count ?? null)).catch(() => setDueCount(null));
+    // Cached under the keys Path ("units") and the story deck read.
+    cachedGet("units", api.units)
+      .then(setUnits)
+      .catch(() => setUnits(null));
     cachedGet("story-chapters", api.storyChapters)
       .then((chs) => setStoryTotal(chs.reduce((n, c) => n + c.cards.length, 0)))
       .catch(() => setStoryTotal(null));
-  }, [loadShloka, loadDaily]);
+  }, [loadShloka]);
 
-  // The story bookmark advances while Home sits mounted behind other tabs —
-  // re-read it every time Home regains focus so Resume never goes stale.
+  // XP, the daily word and the story bookmark all move while Home sits
+  // behind other screens, so they refresh every time Home regains focus.
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      getStoryIndex().then((i) => {
-        if (alive) setStoryAt(i);
-      });
+      loadToday();
+      loadWord();
+      api
+        .reviewDue(1)
+        .then((d) => alive && setDueCount(d.due_count ?? null))
+        .catch(() => {});
+      getStoryIndex().then((i) => alive && setStoryAt(i));
       return () => {
         alive = false;
       };
-    }, []),
+    }, [loadToday, loadWord]),
   );
 
   const openDrawer = useCallback(() => {
@@ -141,108 +141,113 @@ export default function HomeScreen({ navigation }: Props) {
     rootNav.dispatch(DrawerActions.openDrawer());
   }, [rootNav]);
 
-  // Pills show nothing fake: while the profile is loading (or failed and
-  // absent) they render a skeleton-width placeholder, never 0 or 30%.
-  const streak: number | null = profile?.streak ?? null;
-  const ratio: number | null = profile?.sanskrit_ratio ?? null;
-  const ratioPct = ratio == null ? null : Math.round(ratio * 100);
-  const profilePending = profileLoading && profile == null;
+  const todayKey = today?.daily.date ?? localToday();
+  const streak = today ? dayStreak(today.history, todayKey) : null;
+  const week = today ? lastSevenDays(today.history, todayKey) : null;
 
-  // U15-5: continue where the learner is — first unfinished unit, else review.
-  const continueTarget: { unit: Unit; lesson: LessonSummary } | null = (() => {
+  // Continue where the learner is: the first unit not yet complete.
+  const continueTarget: { unit: Unit; lesson: LessonSummary; index: number } | null = (() => {
     if (!units || units.length === 0) return null;
-    for (const u of units) {
-      if ((u.progress ?? 0) < 1 && u.lessons.length > 0) {
-        return { unit: u, lesson: u.lessons[0] };
-      }
-    }
-    const last = units[units.length - 1];
-    if (last.lessons.length > 0) return { unit: last, lesson: last.lessons[0] };
-    return null;
+    let index = units.findIndex((u) => (u.progress ?? 0) < 1 && u.lessons.length > 0);
+    if (index < 0) index = units.length - 1;
+    const unit = units[index];
+    return unit.lessons.length > 0 ? { unit, lesson: unit.lessons[0], index } : null;
   })();
+
+  const name = firstName(learner?.display_name);
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      {/* Top bar with hamburger */}
-      <View style={styles.topbar}>
-        <DrawerToggle onPress={openDrawer} />
-        <View style={{ flex: 1 }} />
-        {profilePending ? (
-          <>
-            <View style={styles.pill}><Skeleton style={{ height: 14, width: 28 }} /></View>
-            <View style={styles.pill}><Skeleton style={{ height: 14, width: 40 }} /></View>
-          </>
-        ) : (
-          <>
-            <View style={styles.pill}>
-              <Ionicons name="flame" size={16} color={color.saffron} />
-              <Text style={styles.pillNum}>{streak ?? "—"}</Text>
-            </View>
-            <View style={styles.pill}>
-              <Ionicons name="language" size={14} color={color.inkSoft} />
-              <Text style={styles.pillNum}>{ratioPct == null ? "—" : `${ratioPct}%`}</Text>
-            </View>
-          </>
-        )}
-      </View>
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={styles.topbar}>
+          <DrawerToggle onPress={openDrawer} />
+          {streak != null && <StreakChip days={streak} />}
+        </View>
 
-      <ScrollView contentContainerStyle={styles.body}>
-        {/* Mascot greeting */}
         <View style={styles.greetRow}>
-          <GuruNative state="idle" size={110} gesture={Gesture.Anjali} />
-          <View style={styles.greetBubble}>
-            {profilePending ? (
-              <Skeleton style={{ height: 20, width: 140 }} />
+          <GuruNative state="idle" size={72} gesture={Gesture.Anjali} />
+          <View style={styles.greetText}>
+            <Text style={[styles.hello, script("semibold")]}>नमस्ते</Text>
+            {learner ? (
+              <Text style={styles.name} numberOfLines={1}>
+                {name || "friend"}
+              </Text>
             ) : (
-              <Text style={[styles.greeting, script("extrabold")]}>नमस्ते, {profile?.display_name || "learner"}!</Text>
+              <Skeleton height={26} width={120} style={{ marginTop: 4 }} />
             )}
-            <Text style={styles.subline}>Ready for today's practice?</Text>
           </View>
         </View>
 
-        {/* Cards — stagger in once per mount, capped at 6 (§8) */}
-        {/* Hero — the story deck. The old Continue-Unit CTA lived here;
-            the deck takes the slot; continuing the Path survives as the slim
-            secondary row inside the hero so no route is lost. */}
         <Entrance index={0}>
-          {units === null && !unitsFailed && storyTotal === null ? (
-            <Skeleton style={{ height: 88, marginBottom: space.lg }} />
-          ) : (
-            <StoryHero
-              total={storyTotal}
-              at={storyAt}
-              target={continueTarget}
+          <TodayCard today={today} failed={todayFailed} week={week} onRetry={loadToday} />
+        </Entrance>
+
+        {continueTarget && (
+          <Entrance index={1}>
+            <ContinueCard
+              unit={continueTarget.unit}
+              lesson={continueTarget.lesson}
+              tone={accentAt(continueTarget.index)}
               dueCount={dueCount}
-              onOpen={() => navigation.navigate("Story")}
-              onLesson={(lesson) =>
-                navigation.navigate("Lesson", { featureId: lesson.feature_id, lessonId: lesson.id })
+              onPress={() =>
+                navigation.navigate("Lesson", {
+                  featureId: continueTarget.lesson.feature_id,
+                  lessonId: continueTarget.lesson.id,
+                })
               }
             />
-          )}
-        </Entrance>
-
-        <Entrance index={1}>
-          <ShlokaCard
-            shloka={shloka}
-            loading={shlokaLoading}
-            error={shlokaError}
-            onRetry={loadShloka}
-            onPress={() => navigation.navigate("Shloka")}
-          />
-        </Entrance>
+          </Entrance>
+        )}
 
         <Entrance index={2}>
-          <DailyWordCard
-            word={dailyWord}
-            loading={dailyLoading}
-            error={dailyError}
-            onRetry={loadDaily}
-            onPress={() => navigation.navigate("DailyWord")}
-          />
+          <Text style={styles.section}>Daily</Text>
+          <View style={styles.pair}>
+            <ShlokaTile
+              shloka={shloka}
+              state={shlokaState}
+              onPress={() => (shlokaState === "error" ? loadShloka() : navigation.navigate("Shloka"))}
+            />
+            <WordTile
+              word={dailyWord}
+              state={wordState}
+              onPress={() => (wordState === "error" ? loadWord() : navigation.navigate("DailyWord"))}
+            />
+          </View>
         </Entrance>
 
         <Entrance index={3}>
-          <VarnamalaCard onPress={() => navigation.navigate("Varnamala")} />
+          <Text style={styles.section}>Explore</Text>
+          <View style={styles.grid}>
+            <ExploreTile
+              tone="gold"
+              icon="grid"
+              title="Alphabet"
+              sa="वर्णमाला"
+              onPress={() => navigation.navigate("Varnamala")}
+            />
+            <ExploreTile
+              tone="slate"
+              icon="create"
+              title="Write"
+              sa="लेखनम्"
+              onPress={() => navigation.navigate("Writing")}
+            />
+            <ExploreTile
+              tone="saffron"
+              icon="compass"
+              title="Discover"
+              sa="परिचयः"
+              meta={storyTotal && storyAt > 0 ? `${Math.min(storyAt + 1, storyTotal)}/${storyTotal}` : undefined}
+              onPress={() => navigation.navigate("Story")}
+            />
+            <ExploreTile
+              tone="sage"
+              icon="book"
+              title="Words"
+              sa="शब्दाः"
+              onPress={() => navigation.navigate("Vocab", {})}
+            />
+          </View>
         </Entrance>
       </ScrollView>
     </SafeAreaView>
@@ -267,339 +272,386 @@ function Entrance({ index, children }: { index: number; children: React.ReactNod
   return <Animated.View style={style}>{children}</Animated.View>;
 }
 
-// ─── Story hero (Discover Sanskrit) ─────────────────────────────────────
-// Home's primary CTA is the swipeable story, not a unit: total cards with a
-// Resume position from the device-local bookmark. The Path's continue target
-// survives as a slim secondary row — the route is kept, the hero slot is
-// the story's.
+// ─── Streak chip ──────────────────────────────────────────────────────
 
-function StoryHero({
-  total,
-  at,
-  target,
-  dueCount,
-  onOpen,
-  onLesson,
-}: {
-  total: number | null;
-  at: number;
-  target: { unit: Unit; lesson: LessonSummary } | null;
-  dueCount: number | null;
-  onOpen: () => void;
-  onLesson: (lesson: LessonSummary) => void;
-}) {
-  const started = at > 0;
-  const status =
-    total == null ? "the story, zero to grammar" : started ? `${at + 1}/${total} · Resume` : `${total} cards · Start`;
-  const dueText = dueCount != null && dueCount > 0 ? ` · ${dueCount} due today` : "";
+function StreakChip({ days }: { days: number }) {
+  const label = `${days} ${days === 1 ? "day" : "days"}`;
   return (
-    <View style={{ marginBottom: space.lg }}>
-      <Pressable
-        onPress={() => {
-          haptics.tap();
-          onOpen();
-        }}
-        style={({ pressed }) => [styles.practice, pressed && styles.practicePressed]}
-        accessibilityRole="button"
-        accessibilityLabel={`Discover Sanskrit. ${status}`}
-      >
-        <View style={styles.practiceIcon}>
-          <Ionicons name="compass" size={30} color={color.white} />
-        </View>
-        <View style={styles.practiceText}>
-          <Text style={styles.practiceLabel}>Discover Sanskrit</Text>
-          <Text style={styles.practiceHint}>From zero to grammar · {status}</Text>
-        </View>
-        <Ionicons name="chevron-forward" size={22} color={color.white} />
-      </Pressable>
-      {target && (
-        <Pressable
-          onPress={() => {
-            haptics.tap();
-            onLesson(target.lesson);
-          }}
-          style={({ pressed }) => [styles.resumeRow, pressed && styles.practicePressed]}
-          accessibilityRole="button"
-          accessibilityLabel={`Continue Unit ${target.unit.rank}, ${target.unit.title_en}${dueCount != null && dueCount > 0 ? `, ${dueCount} reviews due` : ""}`}
-        >
-          <Ionicons name="book-outline" size={16} color={color.saffron} />
-          <Text style={styles.resumeText} numberOfLines={1}>
-            Continue Unit {target.unit.rank} — {target.lesson.title_en}
-            {dueText}
-          </Text>
-          <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-        </Pressable>
-      )}
+    <View style={styles.streak} accessible accessibilityLabel={`${label} streak`}>
+      <Ionicons name="flame" size={16} color={days > 0 ? color.saffron : color.inkFaint} />
+      <Text style={styles.streakText}>{label}</Text>
     </View>
   );
 }
 
-// ─── Today's śloka card ───────────────────────────────────────────────
+// ─── Today card ───────────────────────────────────────────────────────
 
-function ShlokaCard({
-  shloka,
-  loading,
-  error,
+function TodayCard({
+  today,
+  failed,
+  week,
   onRetry,
-  onPress,
 }: {
-  shloka: Shloka | null;
-  loading: boolean;
-  error: boolean;
+  today: { daily: ProgressDaily } | null;
+  failed: boolean;
+  week: ReturnType<typeof lastSevenDays> | null;
   onRetry: () => void;
-  onPress: () => void;
 }) {
-  const rawFirst = shloka?.devanagari?.split(/।|\n/)[0]?.trim() ?? "";
-  const firstLine = rawFirst;
-  const showVerse = rawFirst.length > 0;
-  return (
-    <HomeCard
-      title="Today's śloka"
-      status={loading ? "loading" : error ? "error" : shloka ? "read" : "unavailable"}
-      statusText={loading ? "…" : error ? "couldn't load" : shloka ? "daily verse" : "none yet"}
-      onPress={onPress}
-      icon="book"
-    >
-      {loading ? (
-        <Skeleton style={{ height: 28, marginTop: 4 }} />
-      ) : shloka && showVerse ? (
-        <Text style={[styles.cardBody, script("semibold")]} numberOfLines={1}>
-          {firstLine}{firstLine.endsWith("।") || firstLine.endsWith("॥") ? "" : "।"}
-        </Text>
-      ) : error ? (
-        <RetryInline onRetry={onRetry} label="Couldn't reach the verse." />
-      ) : (
-        <Text style={styles.cardMuted}>A verse will appear here daily.</Text>
-      )}
-    </HomeCard>
-  );
-}
-
-// ─── Daily word card ──────────────────────────────────────────────────
-
-function DailyWordCard({
-  word,
-  loading,
-  error,
-  onRetry,
-  onPress,
-}: {
-  word: DailyWordPuzzle | null;
-  loading: boolean;
-  error: boolean;
-  onRetry: () => void;
-  onPress: () => void;
-}) {
-  const solvedStreak = word?.streak ?? 0;
-  const statusText = loading
-    ? "…"
-    : error
-      ? "couldn't load"
-      : word?.solved
-        ? (solvedStreak > 0 ? `solved · ${solvedStreak} day streak` : "solved")
-        : word?.status === "finished"
-          ? "finished"
-          : word
-            ? "open"
-            : "unavailable";
-  return (
-    <HomeCard
-      title="Daily word"
-      status={loading ? "loading" : error ? "error" : word ? (word.solved ? "solved" : "open") : "unavailable"}
-      statusText={statusText}
-      onPress={onPress}
-      icon="extension-puzzle"
-    >
-      <View style={styles.dailyRow}>
-        {loading ? (
-          <Skeleton style={{ height: 24, width: 120 }} />
-        ) : word ? (
-          <>
-            {word.solved ? (
-              <Text style={[styles.cardBody, script("semibold")]}>{word.revealed?.answer ?? "Solved"}</Text>
-            ) : (
-              <Text style={styles.cardMuted}>
-                {word.status === "finished"
-                  ? "See how it went."
-                  : word.word_length > 0
-                    ? `A ${word.word_length}-sound word.`
-                    : "A daily word."}
-              </Text>
-            )}
-            {solvedStreak > 0 && (
-              <View style={styles.unlockBadge}>
-                <Ionicons name="flame" size={13} color={color.saffron} />
-                <Text style={styles.unlockBadgeText}>{solvedStreak}</Text>
-              </View>
-            )}
-          </>
-        ) : error ? (
-          <RetryInline onRetry={onRetry} label="Couldn't reach the word." />
+  if (!today) {
+    return (
+      <View style={[styles.card, styles.todayRow]}>
+        {failed ? (
+          <Pressable onPress={onRetry} style={styles.todayRetry} accessibilityRole="button" accessibilityLabel="Retry">
+            <Ionicons name="refresh" size={18} color={color.saffronText} />
+            <Text style={styles.retryText}>Couldn't load today. Tap to retry.</Text>
+          </Pressable>
         ) : (
-          <Text style={styles.cardMuted}>One word a day, scored on the mouth-map.</Text>
+          <>
+            <Skeleton width={72} height={72} radius={36} />
+            <View style={{ flex: 1, gap: space.xs }}>
+              <Skeleton height={18} width="50%" />
+              <Skeleton height={14} width="35%" />
+              <Skeleton height={22} width="90%" />
+            </View>
+          </>
         )}
       </View>
-    </HomeCard>
-  );
-}
-
-// U10-3: shared inline retry row — states the failure in text, offers retry,
-// never reads as a verdict or a punishment.
-function RetryInline({ onRetry, label }: { onRetry: () => void; label: string }) {
+    );
+  }
+  const { xp, goal_xp: goal, goal_met: met } = today.daily;
+  const target = goal || 50;
   return (
-    <View style={styles.retryRow}>
-      <Text style={styles.retryLabel}>{label}</Text>
-      <Pressable
-        onPress={onRetry}
-        accessibilityRole="button"
-        accessibilityLabel={`Retry: ${label}`}
-        style={styles.retryBtn}
-        hitSlop={8}
-      >
-        <Ionicons name="refresh" size={13} color={color.saffron} />
-        <Text style={styles.retryBtnText}>Retry</Text>
-      </Pressable>
+    <View
+      style={[styles.card, styles.todayRow]}
+      accessible
+      accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}`}
+    >
+      <ProgressRing progress={xp / target} size={72} stroke={8} tint={met ? color.okText : color.saffron}>
+        <Text style={styles.ringNum}>{xp}</Text>
+        <Text style={styles.ringUnit}>XP</Text>
+      </ProgressRing>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.todayTitle}>{met ? "Goal met today" : "Today's goal"}</Text>
+        <Text style={styles.todaySub}>
+          {xp} of {target} XP
+        </Text>
+        {week && (
+          <View style={styles.week}>
+            {week.map((d) => (
+              <View key={d.key} style={styles.weekDay}>
+                <View style={[styles.dot, d.active && styles.dotOn, d.isToday && styles.dotToday]}>
+                  {d.active && <Ionicons name="checkmark" size={11} color={color.white} />}
+                </View>
+                <Text style={[styles.weekLabel, d.isToday && styles.weekLabelToday]}>{d.label}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </View>
     </View>
   );
 }
 
-// ─── Varṇamālā card (deliberately the quietest) ─────────────────────
+// ─── Continue card ────────────────────────────────────────────────────
 
-function VarnamalaCard({ onPress }: { onPress: () => void }) {
+function ContinueCard({
+  unit,
+  lesson,
+  tone,
+  dueCount,
+  onPress,
+}: {
+  unit: Unit;
+  lesson: LessonSummary;
+  tone: AccentName;
+  dueCount: number | null;
+  onPress: () => void;
+}) {
+  const pct = Math.round((unit.progress ?? 0) * 100);
+  const titleSa = plain(lesson.title_hi || unit.title_hi);
   return (
-    <HomeCard
-      title="Varṇamālā"
-      status="reference"
-      statusText="alphabet"
-      onPress={onPress}
-      icon="language"
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      style={({ pressed }) => [styles.continueWrap, pressed && styles.pressed]}
+      accessibilityRole="button"
+      accessibilityLabel={`Continue unit ${unit.rank}, ${plain(unit.title_en)}: ${plain(lesson.title_en)}`}
     >
-      <Text style={styles.cardMuted}>The mouth-map of Sanskrit.</Text>
-    </HomeCard>
+      <LinearGradient colors={gradientOf(tone)} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.continue}>
+        <Text style={[styles.continueGhost, script("bold")]} aria-hidden>
+          {unit.title_hi.slice(0, 1)}
+        </Text>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.continueEyebrow}>Continue · Unit {unit.rank}</Text>
+          <Text style={[styles.continueSa, script("bold")]} numberOfLines={1}>
+            {titleSa}
+          </Text>
+          <Text style={styles.continueEn} numberOfLines={1}>
+            {plain(lesson.title_en)}
+          </Text>
+          <View style={styles.continueMeta}>
+            <View style={styles.continueTrack}>
+              <View style={[styles.continueFill, { width: `${pct}%` }]} />
+            </View>
+            <Text style={styles.continuePct}>{pct}%</Text>
+            {dueCount != null && dueCount > 0 && (
+              <View style={styles.duePill}>
+                <Text style={styles.dueText}>{dueCount} to review</Text>
+              </View>
+            )}
+          </View>
+        </View>
+        <View style={styles.play}>
+          <Ionicons name="play" size={22} color={accent[tone].fg} style={{ marginLeft: 3 }} />
+        </View>
+      </LinearGradient>
+    </Pressable>
   );
 }
 
-// ─── Shared card shell ───────────────────────────────────────────────
+// ─── Daily tiles ──────────────────────────────────────────────────────
 
-function HomeCard({
-  title,
-  status,
-  statusText,
+function ShlokaTile({ shloka, state, onPress }: { shloka: Shloka | null; state: LoadState; onPress: () => void }) {
+  const first = shloka?.devanagari?.split(/[।\n]/)[0]?.trim() ?? "";
+  return (
+    <DailyTile tone="rose" icon="musical-notes" label="Śloka" onPress={onPress}>
+      {state === "loading" ? (
+        <Skeleton height={40} />
+      ) : state === "error" ? (
+        <Text style={styles.tileMuted}>Couldn't load. Tap to retry.</Text>
+      ) : first ? (
+        <Text style={[styles.verse, script("semibold")]} numberOfLines={2}>
+          {first}
+        </Text>
+      ) : (
+        <Text style={styles.tileMuted}>No verse today.</Text>
+      )}
+    </DailyTile>
+  );
+}
+
+function WordTile({ word, state, onPress }: { word: DailyWordPuzzle | null; state: LoadState; onPress: () => void }) {
+  let body: React.ReactNode;
+  if (state === "loading") body = <Skeleton height={40} />;
+  else if (state === "error") body = <Text style={styles.tileMuted}>Couldn't load. Tap to retry.</Text>;
+  else if (!word || !word.available) body = <Text style={styles.tileMuted}>No word today.</Text>;
+  else if (word.solved)
+    body = (
+      <>
+        <Text style={[styles.verse, script("bold")]}>{word.revealed?.answer ?? "Solved"}</Text>
+        <Text style={[styles.tileMeta, { color: accent.teal.fg }]}>Solved</Text>
+      </>
+    );
+  else if (word.finished) body = <Text style={styles.tileMuted}>Played. New word tomorrow.</Text>;
+  else
+    body = (
+      <>
+        {!!word.clue && (
+          <Text style={styles.clue} numberOfLines={1}>
+            “{plain(word.clue)}”
+          </Text>
+        )}
+        <Text style={[styles.tileMeta, { color: accent.teal.fg }]}>
+          {word.guesses_used > 0 ? `${word.guesses_used}/${word.max_guesses} tries` : "Find the word"}
+        </Text>
+      </>
+    );
+  return (
+    <DailyTile tone="teal" icon="extension-puzzle" label="Daily word" onPress={onPress}>
+      {body}
+    </DailyTile>
+  );
+}
+
+function DailyTile({
+  tone,
   icon,
+  label,
   onPress,
   children,
 }: {
-  title: string;
-  status: string;
-  statusText: string;
-  icon: React.ComponentProps<typeof Ionicons>["name"];
+  tone: AccentName;
+  icon: IoniconsIconName;
+  label: string;
   onPress: () => void;
   children: React.ReactNode;
 }) {
+  const t = accent[tone];
   return (
     <Pressable
-      onPress={() => { haptics.tap(); onPress(); }}
-      style={({ pressed }) => [styles.card, pressed && styles.practicePressed]}
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      style={({ pressed }) => [styles.dailyTile, { backgroundColor: t.bg }, pressed && styles.pressed]}
       accessibilityRole="button"
-      accessibilityLabel={`${title}. ${statusText}`}
+      accessibilityLabel={label}
     >
-      <View style={styles.cardHeader}>
-        <Ionicons name={icon} size={18} color={color.saffron} />
-        <Text style={styles.cardTitle}>{title}</Text>
-        <View style={[styles.statusDot, status === "solved" && styles.statusSolved]} />
-        <Text style={styles.cardStatus}>{statusText}</Text>
+      <View style={styles.dailyHead}>
+        <View style={[styles.dailyIcon, { backgroundColor: t.fg }]}>
+          <Ionicons name={icon} size={14} color={color.white} />
+        </View>
+        <Text style={[styles.dailyLabel, { color: t.fg }]}>{label}</Text>
       </View>
-      {children}
+      <View style={styles.dailyBody}>{children}</View>
+    </Pressable>
+  );
+}
+
+// ─── Explore tiles ────────────────────────────────────────────────────
+
+function ExploreTile({
+  tone,
+  icon,
+  title,
+  sa,
+  meta,
+  onPress,
+}: {
+  tone: AccentName;
+  icon: IoniconsIconName;
+  title: string;
+  sa: string;
+  meta?: string;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      style={({ pressed }) => [styles.explore, pressed && styles.pressed]}
+      accessibilityRole="button"
+      accessibilityLabel={meta ? `${title}, ${meta}` : title}
+    >
+      <View style={styles.exploreTop}>
+        <LinearGradient colors={gradientOf(tone)} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.exploreIcon}>
+          <Ionicons name={icon} size={22} color={color.white} />
+        </LinearGradient>
+        {meta && <Text style={styles.exploreMeta}>{meta}</Text>}
+      </View>
+      <Text style={styles.exploreTitle}>{title}</Text>
+      <Text style={[styles.exploreSa, script("semibold"), { color: accent[tone].fg }]}>{sa}</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  topbar: { flexDirection: "row", alignItems: "center", paddingHorizontal: space.lg, paddingVertical: space.sm, gap: space.sm },
-  pill: { flexDirection: "row", alignItems: "center", backgroundColor: color.surface, borderRadius: 999, paddingHorizontal: space.md, paddingVertical: space.xs, gap: 4, ...shadow.card },
-  pillNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  body: { padding: space.lg, paddingBottom: space.xxl },
-  greetRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.lg },
-  greetBubble: { flex: 1, backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
-  greeting: { fontSize: font.sizes.md, color: color.ink },
-  subline: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2, lineHeight: 20 },
-  practice: {
+  // 120 at the bottom: the Ask bubble floats over the last row.
+  body: { paddingHorizontal: space.lg, paddingTop: space.xs, paddingBottom: 120 },
+  topbar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", minHeight: 44 },
+  streak: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    backgroundColor: color.surface,
+    borderRadius: radius.pill,
+    paddingHorizontal: space.md,
+    paddingVertical: 7,
+    ...shadow.card,
+  },
+  streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
+  greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
+  greetText: { flex: 1 },
+  hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
+  name: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink, marginTop: -2 },
+  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
+  todayRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginBottom: space.md, minHeight: 104 },
+  todayRetry: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: space.xs, minHeight: 72 },
+  retryText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
+  ringNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, lineHeight: 20 },
+  ringUnit: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 10, color: color.inkSoft, lineHeight: 12 },
+  todayTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+  todaySub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 1 },
+  week: { flexDirection: "row", justifyContent: "space-between", marginTop: space.sm },
+  weekDay: { alignItems: "center", gap: 3 },
+  dot: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: color.surfaceMuted,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  dotOn: { backgroundColor: color.saffronBtn },
+  dotToday: { borderWidth: 2, borderColor: color.ink },
+  weekLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 10, color: color.inkFaint },
+  weekLabelToday: { color: color.ink },
+  continueWrap: { marginBottom: space.lg, borderRadius: radius.lg, ...shadow.card },
+  continue: {
     flexDirection: "row",
     alignItems: "center",
     gap: space.md,
-    backgroundColor: color.saffron,
-    borderRadius: radius.xl,
-    padding: space.md,
-    marginBottom: space.lg,
-    ...shadow.button,
-  },
-  practicePressed: { transform: [{ translateY: 2 }] },
-  practiceIcon: {
-    width: 56, height: 56, borderRadius: 28,
-    backgroundColor: "rgba(255,255,255,0.22)",
-    alignItems: "center", justifyContent: "center",
-  },
-  practiceText: { flex: 1 },
-  practiceLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
-  practiceHint: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: "rgba(255,255,255,0.9)", marginTop: 2 },
-  resumeRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    paddingVertical: space.sm,
-    paddingHorizontal: space.md,
-    marginTop: space.sm,
-    minHeight: 48,
-    ...shadow.card,
-  },
-  resumeText: {
-    flex: 1,
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-  },
-  card: {
-    backgroundColor: color.surface,
     borderRadius: radius.lg,
     padding: space.md,
-    marginBottom: space.md,
+    paddingVertical: space.lg,
+    overflow: "hidden",
+  },
+  continueGhost: {
+    position: "absolute",
+    right: 56,
+    top: -18,
+    fontSize: 120,
+    lineHeight: 170,
+    color: "rgba(255,255,255,0.10)",
+  },
+  continueEyebrow: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.xs,
+    color: color.white,
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+  },
+  continueSa: { fontSize: font.sizes.lg, lineHeight: 32, color: color.white, marginTop: 4 },
+  continueEn: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.white },
+  continueMeta: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: space.sm },
+  continueTrack: { flex: 1, height: 6, borderRadius: 3, backgroundColor: "rgba(255,255,255,0.28)", overflow: "hidden" },
+  continueFill: { height: 6, borderRadius: 3, backgroundColor: color.white },
+  continuePct: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.white },
+  duePill: { backgroundColor: "rgba(255,255,255,0.2)", borderRadius: radius.pill, paddingHorizontal: space.xs, paddingVertical: 2 },
+  dueText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: color.white },
+  play: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: color.white,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  section: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.md,
+    color: color.ink,
+    marginBottom: space.sm,
+  },
+  pair: { flexDirection: "row", gap: space.sm, marginBottom: space.lg },
+  dailyTile: { flex: 1, borderRadius: radius.lg, padding: space.md, minHeight: 128 },
+  dailyHead: { flexDirection: "row", alignItems: "center", gap: 6 },
+  dailyIcon: { width: 24, height: 24, borderRadius: 12, alignItems: "center", justifyContent: "center" },
+  dailyLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
+  dailyBody: { flex: 1, justifyContent: "flex-end", marginTop: space.sm },
+  verse: { fontSize: font.sizes.md, lineHeight: 28, color: color.ink },
+  clue: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  tileMeta: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, marginTop: 2 },
+  tileMuted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
+  grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", rowGap: space.sm },
+  explore: {
+    width: "48.5%",
+    backgroundColor: color.surface,
+    borderRadius: radius.lg,
+    padding: space.md,
     ...shadow.card,
   },
-  cardHeader: { flexDirection: "row", alignItems: "center", gap: 6, marginBottom: 4 },
-  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink, flex: 1 },
-  statusDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: color.border },
-  statusSolved: { backgroundColor: color.ok },
-  cardStatus: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
-  cardBody: { fontSize: font.sizes.md, color: color.ink, marginTop: 4 },
-  cardMuted: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 4 },
-  dailyRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  retryRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", flex: 1, gap: space.sm },
-  retryLabel: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    flex: 1,
-  },
-  retryBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    minHeight: 44,
-    paddingHorizontal: space.sm,
-    borderRadius: radius.md,
-    backgroundColor: color.surfaceMuted,
-  },
-  retryBtnText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-    color: color.saffron,
-  },
-  unlockBadge: { flexDirection: "row", alignItems: "center", gap: 3, backgroundColor: color.surfaceMuted, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: 2 },
-  unlockBadgeText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.saffron },
+  exploreTop: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", marginBottom: space.sm },
+  exploreIcon: { width: 44, height: 44, borderRadius: 14, alignItems: "center", justifyContent: "center" },
+  exploreTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+  exploreSa: { fontSize: font.sizes.sm, lineHeight: 20 },
+  exploreMeta: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.inkSoft },
+  pressed: { opacity: 0.9, transform: [{ scale: 0.985 }] },
 });

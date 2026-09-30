@@ -11,6 +11,7 @@
 // animation survives Reduce Motion.
 
 import type { LessonStep } from "../../api/client";
+import { plain } from "../../utils/text";
 
 export interface StepInputProps {
   step: LessonStep;
@@ -24,4 +25,11 @@ export interface StepInputProps {
 export function field<T>(payload: Record<string, unknown>, key: string, fallback: T): T {
   const v = payload[key];
   return (v === undefined || v === null ? fallback : v) as T;
+}
+
+/** A prose field (a prompt, a gloss, a paragraph of teaching), with em dashes
+ *  removed: the app's copy rule reaches text that arrives from the server. Not
+ *  for Sanskrit fields, which are data. */
+export function prose(payload: Record<string, unknown>, key: string, fallback = ""): string {
+  return plain(field<string>(payload, key, fallback));
 }

@@ -91,7 +91,7 @@ export default function SessionShell({
           <Card style={styles.confirmCard}>
             <Text style={styles.confirmTitle}>Leave this session?</Text>
             <Text style={styles.confirmHint}>
-              Your progress so far will be saved, but you'll need to start a new session.
+              Your progress is saved.
             </Text>
             <View style={styles.confirmRow}>
               <Pressable onPress={cancelQuit} style={styles.cancelBtn} accessibilityRole="button" accessibilityLabel="Stay in session">

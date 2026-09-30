@@ -170,6 +170,104 @@ class SarvamClient:
             "language_probability": body.get("language_probability"),
         }
 
+    # ── Document Intelligence (photographed handwriting) ──────────────────
+
+    # Job states from the docs (docs.sarvam.ai/api/api-guides-tutorials/
+    # document-intelligence/overview, checked 2026-09-30).
+    _DOC_DONE = frozenset({"completed", "partially_completed"})
+    _DOC_FAILED = frozenset({"failed", "rejected"})
+
+    async def digitise_image(
+        self,
+        image: bytes,
+        filename: str = "writing.jpg",
+        mime: str = "image/jpeg",
+        language_code: str = "sa-IN",
+        *,
+        poll_interval_s: float = 2.0,
+        timeout_s: float = 45.0,
+    ) -> str:
+        """Read one image with Sarvam Document Intelligence; return its text.
+
+        The API is an asynchronous job:
+          1. ``POST /doc-ai/v1/job/digitise`` (multipart ``file``, ``language``,
+             ``output_format``) returns ``{"job_id": ..., "status": "pending"}``;
+          2. ``GET /job/{id}/status`` until ``completed`` (or a failed state);
+          3. ``GET /job/{id}/download-url`` returns a signed URL to a ZIP holding
+             the primary file (``.md`` here), ``metadata/page_NNN.json`` and
+             ``manifest.json``.
+
+        Privacy: the image and the text are never logged; only sizes are. The
+        signed download URL is fetched WITHOUT the API key (it belongs to a
+        storage host, not to Sarvam's API).
+
+        Raises ``SarvamError`` on any HTTP failure, a failed job, or a timeout.
+        """
+        import asyncio
+        import io
+        import time as _time3
+        import zipfile
+
+        _t0 = _time3.perf_counter()
+        client = await self._client()
+        resp = await client.post(
+            "/doc-ai/v1/job/digitise",
+            files={"file": (filename, image, mime)},
+            data={"language": language_code, "output_format": "md"},
+        )
+        if resp.status_code not in (200, 201, 202):
+            raise SarvamError(resp.status_code, resp.text[:300])
+        job = resp.json()
+        job_id = job.get("job_id") or job.get("id")
+        if not job_id:
+            raise SarvamError(502, "Sarvam document job returned no id")
+
+        status = str(job.get("status") or job.get("job_state") or "pending").lower()
+        deadline = _time3.monotonic() + timeout_s
+        while status not in self._DOC_DONE:
+            if status in self._DOC_FAILED:
+                raise SarvamError(502, f"Sarvam document job {status}")
+            if _time3.monotonic() >= deadline:
+                raise SarvamError(504, "Sarvam document job timed out")
+            await asyncio.sleep(poll_interval_s)
+            poll = await client.get(f"/doc-ai/v1/job/{job_id}/status")
+            if poll.status_code == 429:
+                await asyncio.sleep(5.0)  # rate limited: back off and keep waiting
+                continue
+            if poll.status_code != 200:
+                raise SarvamError(poll.status_code, poll.text[:300])
+            body = poll.json()
+            status = str(body.get("status") or body.get("job_state") or status).lower()
+
+        link = await client.get(f"/doc-ai/v1/job/{job_id}/download-url")
+        if link.status_code != 200:
+            raise SarvamError(link.status_code, link.text[:300])
+        link_body = link.json() or {}
+        url = link_body.get("url") or link_body.get("download_url")
+        if not url:
+            raise SarvamError(502, "Sarvam document job returned no download url")
+
+        async with httpx.AsyncClient(timeout=30.0) as plain:  # no API key: not Sarvam's host
+            blob = await plain.get(url)
+        if blob.status_code != 200:
+            raise SarvamError(blob.status_code, "Sarvam document download failed")
+
+        try:
+            with zipfile.ZipFile(io.BytesIO(blob.content)) as zf:
+                names = sorted(
+                    n for n in zf.namelist()
+                    if n.lower().endswith(".md") and "/" not in n.strip("/")
+                )
+                text = "\n".join(zf.read(n).decode("utf-8", errors="replace") for n in names)
+        except zipfile.BadZipFile as exc:
+            raise SarvamError(502, "Sarvam document download was not a zip") from exc
+
+        logger.info(
+            "[doc-ai] digitise bytes=%d lang=%s chars=%d ms=%.0f",
+            len(image), language_code, len(text), (_time3.perf_counter() - _t0) * 1000,
+        )
+        return text
+
 
 # ──────────────────────────────────────────────
 # Singleton / FastAPI dependency

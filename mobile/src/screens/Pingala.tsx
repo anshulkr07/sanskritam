@@ -82,15 +82,10 @@ export default function PingalaScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.kicker}>U15-6 · THE MATHEMATICS LAYER</Text>
         <Text style={[styles.titleSa, script("extrabold")]}>छन्दः-खेलः</Text>
-        <Text style={styles.titleEn}>Pingala — counting in light and heavy</Text>
+        <Text style={styles.titleEn}>Piṅgala</Text>
 
-        <Text style={styles.para}>
-          Two thousand years before binary, Piṅgala listed every pattern of two
-          states — light (laghu, L) and heavy (guru, G). Pick a length: there
-          are exactly 2^n patterns, no more, no fewer.
-        </Text>
+        <Text style={styles.para}>Every pattern of light (L) and heavy (G).</Text>
 
         <View style={styles.nRow} accessible accessibilityLabel={`Pattern length ${n}`}>
           {[1, 2, 3, 4].map((k) => (
@@ -111,7 +106,7 @@ export default function PingalaScreen() {
         </View>
 
         <Text style={styles.count}>
-          {rows.length} patterns — count them, they run out exactly on time.
+          {rows.length} patterns
         </Text>
         <View style={styles.grid}>
           {rows.map((row, i) => (
@@ -131,12 +126,8 @@ export default function PingalaScreen() {
           ))}
         </View>
 
-        <Text style={styles.section}>The mātrāmeru — count by weight, get Fibonacci</Text>
-        <Text style={styles.para}>
-          Group the patterns by total weight (L=1, G=2 morae): 1 way to make 0,
-          then 1, 2, 3, 5, 8… Every number is the sum of the two before it —
-          the sequence Europe would name for Fibonacci a thousand years later.
-        </Text>
+        <Text style={styles.section}>Mātrāmeru: count by weight</Text>
+        <Text style={styles.para}>Patterns by total weight (L = 1, G = 2): 1, 1, 2, 3, 5, 8. Each is the sum of the two before it.</Text>
         <View style={styles.meru}>
           {MERU.map((m, i) => (
             <View key={i} style={styles.meruCell} accessible accessibilityLabel={`Meru row ${i}: ${m}`}>
@@ -171,9 +162,9 @@ export default function PingalaScreen() {
                 <Text
                   style={styles.scanErrorText}
                   accessibilityRole="text"
-                  accessibilityLabel="The scansion engine could not be reached. Your patterns above are safe."
+                  accessibilityLabel="The scansion engine could not be reached. Try again."
                 >
-                  Couldn't reach the engine — your patterns above are safe. Not a mistake.
+                  Couldn't reach the engine. Try again.
                 </Text>
                 <Button label="Retry" tone="neutral" onPress={runScan} style={{ marginTop: space.md }} />
               </>
@@ -203,9 +194,9 @@ export default function PingalaScreen() {
                   <Text
                     style={styles.scanOkText}
                     accessibilityRole="text"
-                    accessibilityLabel={`Scanned ${syllables.length} syllables${scan?.metre ? `, metre ${scan.metre}` : ""}. The engine graded it.`}
+                    accessibilityLabel={`Scanned ${syllables.length} syllables${scan?.metre ? `, metre ${scan.metre}` : ""}.`}
                   >
-                    ✓ {syllables.length} syllables{scan?.metre ? ` · ${scan.metre}` : ""} — the engine graded it.
+                    ✓ {syllables.length} syllables{scan?.metre ? ` · ${scan.metre}` : ""}
                   </Text>
                 </View>
               </>
@@ -214,9 +205,9 @@ export default function PingalaScreen() {
                 <Text
                   style={styles.scanUnsureText}
                   accessibilityRole="text"
-                  accessibilityLabel="The engine could not scan this verse. No penalty. The patterns above still count."
+                  accessibilityLabel="Could not scan this verse."
                 >
-                  The engine couldn't scan this verse — no penalty. The patterns above still count.
+                  Couldn't scan this verse.
                 </Text>
               </View>
             )}
@@ -229,7 +220,7 @@ export default function PingalaScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  body: { padding: space.lg, paddingBottom: 120 },
   kicker: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",

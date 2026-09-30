@@ -4,9 +4,11 @@ data — the Play listing links here.
 
 Every claim is checked against the code, not borrowed boilerplate: audio is
 discarded after transcription (routers/speech.py, retain_raw_audio=False),
-handwriting never leaves the device (models.WritingAttempt stores only the
-recognised text), and deletion covers every learner-owned table
-(routers/me.learner_owned_models). Change the code, change the page.
+drawn handwriting never leaves the device, and a photo the learner chooses to
+check is sent to Sarvam, held in memory and discarded (routers/writing.py
+photo-check; models.WritingAttempt stores only the recognised text), and
+deletion covers every learner-owned table (routers/me.learner_owned_models).
+Change the code, change the page.
 """
 
 from html import escape
@@ -18,7 +20,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "16 September 2026"
+UPDATED = "30 September 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -82,9 +84,10 @@ to you and keep your progress.</li>
 turned into text, then discarded. We keep the transcript and the result, not the audio.</li>
 <li><strong>Conversations with the tutor.</strong> What you say or type to the tutor, and its replies, are
 stored with your account and sent to Sarvam AI's language model to write replies and explanations.</li>
-<li><strong>Handwriting.</strong> Letters you draw, and photos of your handwriting, are read on your
-device. Only the recognised letter and a confidence score reach us; the drawing and the photo never leave
-your phone.</li>
+<li><strong>Handwriting.</strong> Letters you draw on the screen are read on your device. Only the
+recognised letter and a confidence score reach us; the drawing never leaves your phone. If you choose to
+check a photo of your handwriting, that photo is sent to Sarvam AI to be read, then discarded. We keep the
+letter it read, not the photo.</li>
 <li><strong>Notifications.</strong> If you turn on reminders, a push token for your device, so we can send
 them.</li>
 <li><strong>Usage limits and errors.</strong> How many characters, seconds of speech and AI requests you
@@ -98,13 +101,14 @@ you across other apps and websites.</p>
 
 <h2>Who processes data for us</h2>
 <ul>
-<li><strong>Sarvam AI</strong> — speech-to-text, text-to-speech and the tutor's language model.</li>
+<li><strong>Sarvam AI</strong> — speech-to-text, text-to-speech, the tutor's language model, and reading
+photos of your handwriting when you choose to check one.</li>
 <li><strong>Google Cloud</strong> — runs our server in its Mumbai region and stores lesson audio.</li>
 <li><strong>Supabase</strong> — hosts our database.</li>
 <li><strong>Google Sign-In and Sign in with Apple</strong> — only if you choose to sign in with them.</li>
 <li><strong>YouTube</strong> — lesson videos play in YouTube's embedded player. When you play one, YouTube's
 Terms of Service and Google's Privacy Policy apply.</li>
-<li><strong>Google ML Kit</strong> — reads handwriting on your device; its recognition models are
+<li><strong>Google ML Kit</strong> — reads what you draw on your device; its recognition models are
 downloaded from Google.</li>
 </ul>
 <p>Some of these providers may process data outside India.</p>

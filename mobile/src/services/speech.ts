@@ -5,6 +5,8 @@
 import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
 import { Platform } from "react-native";
 
+import type { TTSResponse } from "../api/client";
+
 const IS_WEB = Platform.OS === "web";
 
 /**
@@ -115,6 +117,13 @@ function playSource(
 /** ~0.08 s per character — only ever a fallback; the player reports the truth. */
 const hintFor = (text: string) => Math.max(1, text.length * 0.08);
 
+// Short strings (a letter, a word) are spoken again and again: every tap on a
+// varṇa used to be a fresh ~900 ms synthesis round trip that also spent
+// quota. Keep the last few in memory so a repeat tap is instant and free.
+const TTS_CACHE_MAX_CHARS = 16;
+const TTS_CACHE_MAX_ENTRIES = 80;
+const ttsCache = new Map<string, TTSResponse>();
+
 export async function speak(
   text: string,
   lang: SpeakLang | string = "sa",
@@ -123,8 +132,21 @@ export async function speak(
   onStart?: (durationMs: number) => void,
 ): Promise<SpeakHandle> {
   await setPlaybackMode();
-  const { api } = await import("../api/client");
-  const res = await api.tts(text, bulbulLangCode(lang), "aditya", pace);
+  const cacheable = text.length <= TTS_CACHE_MAX_CHARS;
+  const key = `${bulbulLangCode(lang)}|${pace}|${text}`;
+  let res = cacheable ? ttsCache.get(key) : undefined;
+  if (!res) {
+    const { api } = await import("../api/client");
+    const fresh = await api.tts(text, bulbulLangCode(lang), "aditya", pace);
+    if (cacheable && fresh?.audio_base64) {
+      ttsCache.set(key, fresh);
+      if (ttsCache.size > TTS_CACHE_MAX_ENTRIES) {
+        const oldest = ttsCache.keys().next().value;
+        if (oldest !== undefined) ttsCache.delete(oldest);
+      }
+    }
+    res = fresh;
+  }
   return playSource(
     `data:audio/wav;base64,${res.audio_base64}`,
     res.duration_hint || hintFor(text),
@@ -175,6 +197,48 @@ export async function playTutorAudio(
   return speak(text, lang, 1.0, onComplete, onStart);
 }
 
+// Whether a pre-rendered clip exists, asked once per URL. The server sends a
+// clip path for every letter as a naming convention, but the bank may not be
+// rendered (or only partly), and playing a 404 is silent. After two misses
+// with no hit the bank is assumed absent and the check stops.
+const clipKnown = new Map<string, boolean>();
+let clipHits = 0;
+let clipMisses = 0;
+
+async function clipExists(src: string): Promise<boolean> {
+  const known = clipKnown.get(src);
+  if (known !== undefined) return known;
+  if (clipHits === 0 && clipMisses >= 2) return false;
+  try {
+    const ok = (await fetch(src, { method: "HEAD" })).ok;
+    clipKnown.set(src, ok);
+    if (ok) clipHits += 1;
+    else clipMisses += 1;
+    return ok;
+  } catch {
+    return false; // offline: not a verdict on the file, so nothing is remembered
+  }
+}
+
+/**
+ * One letter: the pre-rendered clip when the server has it, otherwise
+ * (cached) TTS. Free and instant when the clip exists; still correct when not.
+ */
+export async function playLetter(
+  url: string | undefined,
+  text: string,
+  lang: SpeakLang | string = "sa",
+  onComplete?: () => void,
+): Promise<SpeakHandle> {
+  await setPlaybackMode();
+  if (url && url.trim()) {
+    const { BASE_URL } = await import("../config");
+    const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
+    if (await clipExists(src)) return playSource(src, 1.5, onComplete);
+  }
+  return speak(text, lang, 1.0, onComplete);
+}
+
 /**
  * Grammar guide: play one pre-rendered clip. Unlike playTutorAudio there is no
  * live-TTS fallback — the guide only shows a speaker when a clip exists, so a
@@ -188,4 +252,4 @@ export async function playClip(url: string, onComplete?: () => void): Promise<Sp
   return playSource(src, 2, onComplete);
 }
 
-export default { speak, playTutorAudio, playClip, setPlaybackMode, bulbulLangCode };
+export default { speak, playLetter, playTutorAudio, playClip, setPlaybackMode, bulbulLangCode };

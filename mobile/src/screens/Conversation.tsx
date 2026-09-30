@@ -81,6 +81,7 @@ import {
   RecordingPresets,
   requestRecordingPermissionsAsync,
 } from "expo-audio";
+import { plain } from "../utils/text";
 
 type Msg =
   | { kind: "tutor"; talk: TalkTurn }
@@ -128,8 +129,8 @@ function TutorTurn({
     <View style={styles.turn}>
       {/* What they said, and in what. Muted: it is a receipt, not the reply. */}
       {!!talk.read_back && (
-        <Text style={styles.readBack} accessibilityLabel={`You said: ${talk.read_back}`}>
-          {talk.read_back}
+        <Text style={styles.readBack} accessibilityLabel={`You said: ${plain(talk.read_back)}`}>
+          {plain(talk.read_back)}
         </Text>
       )}
 
@@ -154,7 +155,7 @@ function TutorTurn({
               </Text>
             )}
           </Pressable>
-          {!!fix.note_en && <Text style={styles.fixNote}>{fix.note_en}</Text>}
+          {!!fix.note_en && <Text style={styles.fixNote}>{plain(fix.note_en)}</Text>}
         </View>
       )}
 
@@ -200,7 +201,7 @@ function TutorTurn({
         <View style={styles.whyCard}>
           <Text style={styles.whyLabel}>Why</Text>
           <Text style={styles.why} selectable>
-            {talk.explain_en}
+            {plain(talk.explain_en)}
           </Text>
         </View>
       )}
@@ -392,7 +393,7 @@ export default function ConversationScreen() {
         });
         setMsgs((m) =>
           m.map((msg) =>
-            msg.kind === "aside" && msg.pending ? { kind: "aside", text: r.explanation } : msg,
+            msg.kind === "aside" && msg.pending ? { kind: "aside", text: plain(r.explanation) } : msg,
           ),
         );
       } catch {
@@ -468,7 +469,7 @@ export default function ConversationScreen() {
         if (t.session_done) setDone(true);
       } catch {
         tl?.report("(turn failed)");
-        setMsgs((m) => [...m, { kind: "error", text: "The turn didn't land — try again." }]);
+        setMsgs((m) => [...m, { kind: "error", text: "That didn't go through. Try again." }]);
       } finally {
         setBusy(false);
         scrollBottom();
@@ -535,10 +536,10 @@ export default function ConversationScreen() {
             kind: "error",
             text:
               status === 413
-                ? "That was longer than 30 seconds — try it in shorter pieces?"
+                ? "Too long. Keep it under 30 seconds."
                 : status === 429
-                  ? "You've reached the voice limit for now — you can still type."
-                  : "The network failed on the way up — that's not a mistake. Say it again?",
+                  ? "Voice limit reached. You can still type."
+                  : "Couldn't send that. Say it again?",
           },
         ]);
       } finally {
@@ -560,7 +561,7 @@ export default function ConversationScreen() {
         setRecActive(true);
       } catch (err: any) {
         console.error("[MIC] Start error:", err);
-        setMsgs((m) => [...m, { kind: "error", text: `Mic error: ${err?.message || err}` }]);
+        setMsgs((m) => [...m, { kind: "error", text: "The microphone did not start. Try again?" }]);
       }
     }
   }, [busy, done, recActive, recorder, submit]);

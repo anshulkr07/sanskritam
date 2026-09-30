@@ -1,15 +1,22 @@
-// DailyWord — वर्ण-बन्धः (U8-4). One puzzle a day, scored on the varṇamālā
-// grid rather than letter identity: क against ग is one step (same place,
-// different voicing). The phonetic scoring is the product.
+// DailyWord — वर्ण-बन्धः (U8-4). One puzzle a day, scored on the varṇamālā grid
+// rather than letter identity: क against ग is one step (same place, different
+// voicing). The phonetic scoring is the product.
+//
+// Nobody has to type Devanagari. The clue is shown, the word's slots are shown
+// (one per akṣara, the letter as it is written), and the learner TAPS whole
+// akṣaras from a bank to fill them: the word's own plus near-miss decoys.
 //
 // - Four tile states, never colour alone (§3.3 / U5-3).
 // - One puzzle per learner-local day; no rollover at server midnight.
 // - A solved day stays solved; no replay (P12-2).
-// - The share card is a WhatsApp-shaped object; we render the summary as a
-//   text+emoji block for now (server-side rendering is owner-gated, P12-3).
+// - Checked rows are kept on the device under the puzzle's date, so coming back
+//   restores the board.
+// - If the backend sends no bank (one that predates it), the screen falls back
+//   to typing, so it never breaks.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -20,192 +27,245 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { api, type DailyWordTile } from "../api/client";
-import VarnaGrid from "../components/VarnaGrid";
+import { api, type DailyWordPuzzle } from "../api/client";
+import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
+import { Button } from "../components/ui";
+import VarnaGrid, { STATE_GLYPH, TILE_BG, tileFontSize, type GridRow, type TileState } from "../components/VarnaGrid";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { cachedGet, invalidateCache } from "../services/apiCache";
 import { haptics } from "../services/haptics";
-import { color, font, radius, script, shadow, space } from "../theme";
+import { accent, color, font, radius, script, shadow, space } from "../theme";
+import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "DailyWord">;
+type Phase = "loading" | "error" | "none" | "play" | "done";
+
+const storeKey = (date: string) => `shabd.dailyword.${date}`;
+
+async function loadRows(date: string): Promise<GridRow[]> {
+  try {
+    const raw = await AsyncStorage.getItem(storeKey(date));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as { rows?: GridRow[] };
+    return Array.isArray(parsed.rows) ? parsed.rows : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveRows(date: string, rows: GridRow[]): void {
+  AsyncStorage.setItem(storeKey(date), JSON.stringify({ rows })).catch(() => {});
+}
 
 export default function DailyWordScreen({ navigation }: Props) {
-  const [wordLength, setWordLength] = useState(0);
-  const [rows, setRows] = useState<{ tiles: DailyWordTile[]; guess: string }[]>([]);
+  const [puzzle, setPuzzle] = useState<DailyWordPuzzle | null>(null);
+  const [phase, setPhase] = useState<Phase>("loading");
+  const [rows, setRows] = useState<GridRow[]>([]);
+  // Bank indices in slot order. Removing one closes the gap, so the slots
+  // always fill from the left.
+  const [placed, setPlaced] = useState<number[]>([]);
   const [guessesUsed, setGuessesUsed] = useState(0);
-  const [maxGuesses, setMaxGuesses] = useState(6);
   const [solved, setSolved] = useState(false);
-  const [finished, setFinished] = useState(false);
-  const [revealed, setRevealed] = useState<string | null>(null);
-  // null = still loading — the header pill hides until the real streak
-  // lands instead of flashing a fake 0.
-  const [streak, setStreak] = useState<number | null>(null);
-  const [clue, setClue] = useState("");
-  const [status, setStatus] = useState<"loading" | "open" | "solved" | "finished" | "no_word">("loading");
-  const [guess, setGuess] = useState("");
+  const [revealed, setRevealed] = useState<{ answer: string; answer_iast: string } | null>(null);
   const [busy, setBusy] = useState(false);
-  const [refusedReason, setRefusedReason] = useState<string | null>(null);
-  const inputRef = useRef<TextInput>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  // Typing fallback, for a backend with no bank.
+  const [typed, setTyped] = useState("");
 
   const load = useCallback(() => {
-    setStatus("loading");
-    setStreak(null);
+    setPhase("loading");
+    setMessage(null);
     // Home fetched this moments ago under the same key. A guess drops the
-    // entry (below), so a return visit never replays a stale puzzle.
+    // entry, so a return visit never replays a stale puzzle.
     cachedGet("daily-word", api.dailyWord)
-      .then((p) => {
-        setWordLength(p.word_length);
-        setGuessesUsed(p.guesses_used);
-        setMaxGuesses(p.max_guesses);
-        setStreak(p.streak ?? 0);
-        setClue(p.clue ?? "");
-        setSolved(p.solved);
-        setFinished(p.finished);
-        if (p.solved || p.finished) {
-          setStatus("finished");
-        } else {
-          setStatus("open");
+      .then(async (p) => {
+        setPuzzle(p);
+        if (!p.available || p.status === "no_word") {
+          setPhase("none");
+          return;
         }
+        setRows(await loadRows(p.date));
+        setGuessesUsed(p.guesses_used);
+        setSolved(p.solved);
+        setRevealed(p.revealed ?? null);
+        setPlaced([]);
+        setPhase(p.finished ? "done" : "play");
       })
-      .catch(() => setStatus("no_word"));
+      .catch(() => setPhase("error"));
   }, []);
 
   useEffect(() => {
     load();
   }, [load]);
 
-  const submit = useCallback(async () => {
-    const g = guess.trim();
-    if (!g || busy || finished) return;
-    if (g.length !== wordLength) {
-      setRefusedReason("That word has a different number of sounds.");
-      return;
-    }
-    setRefusedReason(null);
-    setBusy(true);
-    try {
-      const res = await api.dailyWordGuess(g);
-      invalidateCache("daily-word");
-      if (res.status === "refused") {
-        if (res.reason === "length_mismatch") {
-          setRefusedReason("That word has a different number of sounds.");
-        } else {
-          setFinished(true);
-        }
-        return;
-      }
-      setRows((prev) => [...prev, { tiles: res.tiles, guess: g }]);
-      setGuessesUsed(res.guesses_used);
+  const bank = puzzle?.bank ?? [];
+  const tapping = bank.length > 0 && (puzzle?.letters ?? 0) > 0;
+  const slots = tapping ? (puzzle?.letters ?? 0) : (puzzle?.word_length ?? 0);
+  const maxGuesses = puzzle?.max_guesses ?? 6;
+  const full = placed.length === slots;
+  const chosen = useMemo(() => placed.map((i) => bank[i]), [placed, bank]);
+
+  const finish = useCallback(
+    (res: { solved: boolean; finished: boolean; revealed?: { answer: string; answer_iast: string } | null }, fallbackWord: string) => {
       if (res.solved) {
         setSolved(true);
-        setFinished(true);
-        setRevealed(res.revealed?.answer ?? g);
-        setStatus("solved");
+        setRevealed(res.revealed ?? { answer: fallbackWord, answer_iast: "" });
+        setPhase("done");
         haptics.correct();
       } else if (res.finished) {
-        setFinished(true);
-        setRevealed(res.revealed?.answer ?? null);
-        setStatus("finished");
+        setRevealed(res.revealed ?? null);
+        setPhase("done");
       }
-    } catch {
-      /* network/offline — leave the input for a retry */
-    } finally {
-      setBusy(false);
-      setGuess("");
-    }
-  }, [guess, busy, finished, wordLength]);
+    },
+    [],
+  );
 
-  const gameEnded = solved || finished;
+  const submit = useCallback(
+    async (guess: string, letters?: string[]) => {
+      if (busy || !puzzle) return;
+      setBusy(true);
+      setMessage(null);
+      try {
+        const res = await api.dailyWordGuess(guess, letters);
+        invalidateCache("daily-word");
+        if (res.status === "refused") {
+          if (res.reason === "already_finished") load();
+          else setMessage(letters ? "Fill every slot." : "That word has a different number of sounds.");
+          return;
+        }
+        const next = [...rows, { tiles: res.tiles }];
+        setRows(next);
+        saveRows(puzzle.date, next);
+        setGuessesUsed(res.guesses_used);
+        setPlaced([]);
+        setTyped("");
+        if (res.solved || res.finished) finish(res, guess);
+        else if (res.tiles.some((t) => t.state === "exact" || t.state === "near")) haptics.near();
+        else haptics.tap();
+      } catch {
+        // Offline: the tiles stay where they are, ready for a retry.
+        setMessage("Couldn't check. Try again.");
+      } finally {
+        setBusy(false);
+      }
+    },
+    [busy, puzzle, rows, load, finish],
+  );
+
+  const check = useCallback(() => {
+    if (!full || busy) return;
+    void submit(chosen.join(""), chosen);
+  }, [full, busy, chosen, submit]);
+
+  const pickTile = (idx: number) => {
+    if (busy || placed.length >= slots || placed.includes(idx)) return;
+    haptics.tap();
+    setMessage(null);
+    setPlaced((p) => [...p, idx]);
+  };
+  const unplace = (slot: number) => {
+    if (busy) return;
+    haptics.tap();
+    setPlaced((p) => p.filter((_, i) => i !== slot));
+  };
+  const backspace = () => {
+    if (busy || placed.length === 0) return;
+    haptics.tap();
+    setPlaced((p) => p.slice(0, -1));
+  };
+
+  const streak = puzzle?.streak ?? 0;
+  const done = phase === "done";
 
   return (
     <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
-      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
         <View style={styles.topRow}>
           <Pressable onPress={() => navigation.goBack()} style={styles.back} accessibilityRole="button" accessibilityLabel="Back">
             <Ionicons name="chevron-back" size={24} color={color.ink} />
           </Pressable>
-          <Text style={styles.title}>वर्ण-बन्धः</Text>
-          {status !== "loading" && streak != null && streak > 0 && (
-            <View style={styles.streakPill}>
+          <Text style={[styles.title, script("extrabold")]} accessibilityRole="header">
+            वर्ण-बन्धः
+          </Text>
+          {phase !== "loading" && streak > 0 && (
+            <View style={styles.streakPill} accessible accessibilityLabel={`${streak} day streak`}>
               <Ionicons name="flame" size={14} color={color.saffron} />
               <Text style={styles.streakNum}>{streak}</Text>
             </View>
           )}
         </View>
-        <Text style={styles.subtitle}>Daily word · scored on the mouth-map grid</Text>
 
-        {status === "loading" ? (
-          <DailyWordSkeleton />
-        ) : status === "no_word" ? (
-          <Text style={styles.muted}>No word available today. Check back soon.</Text>
+        {phase === "loading" ? (
+          <Loading />
+        ) : phase === "error" ? (
+          <FetchError label="Couldn't load today's word." onRetry={load} />
+        ) : phase === "none" ? (
+          <Text style={styles.muted}>No word today.</Text>
         ) : (
           <>
-            {/* Grid */}
-            <VarnaGrid answerLength={wordLength} rows={rows} />
-
-            {/* Clue + guesses */}
-            <View style={styles.infoRow}>
-              <Text style={styles.infoText}>
-                {solved ? "Solved!" : gameEnded ? "Finished" : "Guesses"}
-              </Text>
-              <Text style={styles.infoCount}>{guessesUsed}/{maxGuesses}</Text>
-            </View>
-            {!!clue && !solved && <Text style={styles.clue}>Hint: {clue}</Text>}
-            {refusedReason && <Text style={styles.refused}>{refusedReason}</Text>}
-
-            {/* Reveal */}
-            {gameEnded && revealed ? (
-              <View style={styles.revealCard}>
-                <Text style={styles.revealLabel}>The word was</Text>
-                <Text style={[styles.revealWord, script("bold")]}>{revealed}</Text>
-                <Text style={styles.revealNote}>
-                  {solved
-                    ? "You read the mouth map perfectly. Sådhū!"
-                    : "Every day starts a new word."}
-                </Text>
-              </View>
-            ) : (
-              /* Input + submit */
-              <View style={styles.inputRow}>
-                <TextInput
-                  ref={inputRef}
-                  value={guess}
-                  onChangeText={setGuess}
-                  placeholder="Type the word in Devanagari"
-                  placeholderTextColor={color.inkFaint}
-                  style={[styles.input, script("semibold")]}
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  maxLength={wordLength || 16}
-                  onSubmitEditing={submit}
-                  editable={!busy}
-                  accessibilityLabel="Your guess"
-                />
-                <Pressable
-                  onPress={submit}
-                  disabled={busy || !guess.trim()}
-                  style={[styles.saver, (!busy && guess.trim()) ? styles.saverActive : styles.saverIdle]}
-                  accessibilityRole="button"
-                  accessibilityLabel="Submit guess"
-                >
-                  {busy ? (
-                    <Ionicons name="hourglass-outline" size={22} color={color.white} />
-                  ) : (
-                    <Ionicons name="arrow-forward" size={22} color={color.white} />
-                  )}
-                </Pressable>
+            {!!puzzle?.clue && (
+              <View style={styles.clueBox}>
+                <Text style={styles.clueLabel}>Means</Text>
+                <Text style={styles.clue}>“{plain(puzzle.clue)}”</Text>
               </View>
             )}
 
-            {/* Four-state legend */}
-            <View style={styles.legend}>
-              <LegendItem color={color.ok} label="exact" />
-              <LegendItem color={color.warn} label="one step" />
-              <LegendItem color={color.tutor} label="elsewhere" />
-              <LegendItem color={color.surfaceMuted} label="not in word" />
+            <View style={styles.triesRow}>
+              <Text style={styles.tries} accessibilityLabel={`${guessesUsed} of ${maxGuesses} tries used`}>
+                {guessesUsed}/{maxGuesses}
+              </Text>
             </View>
+
+            <VarnaGrid slots={slots} rows={rows} />
+
+            {done ? (
+              <RevealCard solved={solved} revealed={revealed} />
+            ) : tapping ? (
+              <>
+                <SlotRow slots={slots} chosen={chosen} onRemove={unplace} />
+                <Bank bank={bank} used={placed} onPick={pickTile} />
+                <View style={styles.actions}>
+                  <Pressable
+                    onPress={backspace}
+                    disabled={placed.length === 0 || busy}
+                    accessibilityRole="button"
+                    accessibilityLabel="Remove the last letter"
+                    accessibilityState={{ disabled: placed.length === 0 || busy }}
+                    style={[styles.back2, (placed.length === 0 || busy) && { opacity: 0.4 }]}
+                  >
+                    <Ionicons name="backspace-outline" size={24} color={color.ink} />
+                  </Pressable>
+                  <Button
+                    label="Check"
+                    tone="primary"
+                    size="lg"
+                    style={{ flex: 1 }}
+                    disabled={!full}
+                    loading={busy}
+                    onPress={check}
+                    accessibilityLabel={full ? "Check the word" : "Fill every slot to check"}
+                  />
+                </View>
+              </>
+            ) : (
+              <TypingFallback
+                slots={slots}
+                value={typed}
+                onChange={setTyped}
+                busy={busy}
+                onSubmit={() => void submit(typed.trim())}
+              />
+            )}
+
+            {message ? (
+              <Text style={styles.message} accessibilityRole="alert">
+                {message}
+              </Text>
+            ) : null}
+
+            <Legend />
           </>
         )}
       </ScrollView>
@@ -213,76 +273,208 @@ export default function DailyWordScreen({ navigation }: Props) {
   );
 }
 
-function LegendItem({ color: c, label }: { color: string; label: string }) {
+// ─── Pieces ───────────────────────────────────────────────────────────
+
+function Loading() {
   return (
-    <View style={styles.legendItem}>
-      <View style={[styles.legendSwatch, { backgroundColor: c }]} />
-      <Text style={styles.legendLabel}>{label}</Text>
+    <View style={{ gap: space.sm, marginTop: space.lg }} accessible accessibilityLabel="Loading">
+      <Skeleton height={44} width="55%" />
+      {[0, 1, 2].map((r) => (
+        <View key={r} style={{ flexDirection: "row", gap: space.xs }}>
+          {[0, 1, 2].map((c) => (
+            <Skeleton key={c} height={64} style={{ flex: 1 }} radius={radius.md} />
+          ))}
+        </View>
+      ))}
     </View>
   );
 }
 
-// Skeleton preview of the puzzle: a guess grid + a clue bar, so the screen
-// holds its shape (no layout shift) while the daily word loads (U9-4).
-function DailyWordSkeleton() {
-  const tile = { width: 36, height: 44, radius: radius.sm };
+function SlotRow({ slots, chosen, onRemove }: { slots: number; chosen: string[]; onRemove: (slot: number) => void }) {
   return (
-    <View style={{ marginTop: space.xl, gap: space.sm }}>
-      {[0, 1, 2, 3].map((r) => (
-        <View key={r} style={{ flexDirection: "row", gap: 6 }}>
-          {[0, 1, 2, 3, 4].map((c) => (
-            <Skeleton key={c} {...tile} />
-          ))}
+    <View style={styles.slotRow}>
+      {Array.from({ length: slots }).map((_, i) => {
+        const text = chosen[i];
+        return (
+          <Pressable
+            key={i}
+            onPress={() => text && onRemove(i)}
+            disabled={!text}
+            accessibilityRole="button"
+            accessibilityLabel={text ? `Slot ${i + 1}, ${text}. Tap to remove` : `Slot ${i + 1}, empty`}
+            style={[styles.slot, !!text && styles.slotFilled]}
+          >
+            <Text style={[styles.slotChar, script("bold"), { fontSize: tileFontSize(slots), lineHeight: tileFontSize(slots) * 1.5 }]}>
+              {text ?? ""}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+function Bank({ bank, used, onPick }: { bank: string[]; used: number[]; onPick: (idx: number) => void }) {
+  return (
+    <View style={styles.bank} accessibilityLabel="Letters to choose from">
+      {bank.map((ak, i) => {
+        const taken = used.includes(i);
+        return (
+          <Pressable
+            key={`${i}-${ak}`}
+            onPress={() => onPick(i)}
+            disabled={taken}
+            accessibilityRole="button"
+            accessibilityLabel={ak}
+            accessibilityState={{ disabled: taken }}
+            style={({ pressed }) => [styles.bankTile, taken && styles.bankTaken, pressed && { opacity: 0.85, transform: [{ scale: 0.96 }] }]}
+          >
+            <Text style={[styles.bankChar, script("bold")]}>{ak}</Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+function RevealCard({ solved, revealed }: { solved: boolean; revealed: { answer: string; answer_iast: string } | null }) {
+  return (
+    <View style={[styles.reveal, { backgroundColor: solved ? accent.sage.bg : color.surfaceMuted }]} accessible>
+      <Text style={[styles.revealHead, { color: solved ? accent.sage.fg : color.inkSoft }]}>
+        {solved ? "साधु! Solved." : "The word was"}
+      </Text>
+      {revealed ? (
+        <>
+          <Text style={[styles.revealWord, script("bold")]}>{revealed.answer}</Text>
+          {!!revealed.answer_iast && <Text style={styles.revealIast}>{revealed.answer_iast}</Text>}
+        </>
+      ) : null}
+      <Text style={styles.revealNote}>New word tomorrow.</Text>
+    </View>
+  );
+}
+
+function TypingFallback({
+  slots,
+  value,
+  onChange,
+  busy,
+  onSubmit,
+}: {
+  slots: number;
+  value: string;
+  onChange: (v: string) => void;
+  busy: boolean;
+  onSubmit: () => void;
+}) {
+  return (
+    <View style={styles.inputRow}>
+      <TextInput
+        value={value}
+        onChangeText={onChange}
+        placeholder="Type the word in Devanagari"
+        placeholderTextColor={color.inkFaint}
+        style={[styles.input, script("semibold")]}
+        autoCorrect={false}
+        autoCapitalize="none"
+        maxLength={slots || 16}
+        onSubmitEditing={onSubmit}
+        editable={!busy}
+        accessibilityLabel="Your guess"
+      />
+      <Pressable
+        onPress={onSubmit}
+        disabled={busy || !value.trim()}
+        style={[styles.send, busy || !value.trim() ? styles.sendIdle : styles.sendActive]}
+        accessibilityRole="button"
+        accessibilityLabel="Check the word"
+      >
+        <Ionicons name={busy ? "hourglass-outline" : "arrow-forward"} size={22} color={color.white} />
+      </Pressable>
+    </View>
+  );
+}
+
+const LEGEND: { state: TileState; label: string }[] = [
+  { state: "exact", label: "Right" },
+  { state: "near", label: "Close" },
+  { state: "present", label: "Elsewhere" },
+  { state: "absent", label: "Not in word" },
+];
+
+function Legend() {
+  return (
+    <View style={styles.legend}>
+      {LEGEND.map((l) => (
+        <View key={l.state} style={styles.legendItem}>
+          <View style={[styles.swatch, { backgroundColor: TILE_BG[l.state] }]}>
+            <Text style={[styles.swatchGlyph, { color: l.state === "absent" ? color.inkSoft : color.white }]}>{STATE_GLYPH[l.state]}</Text>
+          </View>
+          <Text style={styles.legendLabel}>{l.label}</Text>
         </View>
       ))}
-      <Skeleton height={18} width="60%" style={{ marginTop: space.sm }} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl },
-  topRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: 2 },
+  body: { paddingHorizontal: space.lg, paddingBottom: space.xxl, gap: space.md },
+  topRow: { flexDirection: "row", alignItems: "center", gap: space.sm },
   back: { padding: 4 },
-  title: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink },
+  title: { flex: 1, fontSize: font.sizes.lg, lineHeight: 32, color: color.ink },
   streakPill: { flexDirection: "row", alignItems: "center", backgroundColor: color.surface, borderRadius: radius.pill, paddingHorizontal: space.sm, paddingVertical: space.xs, gap: 4, ...shadow.card },
   streakNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  subtitle: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.lg },
-  infoRow: { flexDirection: "row", justifyContent: "space-between", marginTop: space.md },
-  infoText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
-  infoCount: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  clue: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.sm },
-  refused: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, marginTop: space.sm },
-  inputRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.lg },
-  input: {
+  muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft, marginTop: space.xl, textAlign: "center" },
+  clueBox: { alignItems: "center", marginTop: space.xs },
+  clueLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
+  clue: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink, textAlign: "center" },
+  triesRow: { alignItems: "flex-end" },
+  tries: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.inkSoft },
+  slotRow: { flexDirection: "row", gap: space.xs, justifyContent: "center", marginTop: space.xs },
+  slot: {
     flex: 1,
-    borderWidth: 2,
-    borderColor: color.border,
+    maxWidth: 76,
+    aspectRatio: 1,
     borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
-    fontSize: font.sizes.base,
-    color: color.ink,
+    borderWidth: 2,
+    borderStyle: "dashed",
+    borderColor: color.border,
     backgroundColor: color.surface,
-  },
-  saver: { width: 48, height: 48, borderRadius: radius.md, alignItems: "center", justifyContent: "center" },
-  saverActive: { backgroundColor: color.saffron, ...shadow.button },
-  saverIdle: { backgroundColor: color.inkFaint },
-  revealCard: {
-    marginTop: space.lg,
-    backgroundColor: color.okBg,
-    borderRadius: radius.lg,
-    padding: space.md,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  slotFilled: { borderStyle: "solid", borderColor: color.saffronBtn, backgroundColor: color.saffronLight },
+  slotChar: { color: color.ink, textAlign: "center" },
+  bank: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, justifyContent: "center", marginTop: space.xs },
+  bankTile: {
+    minWidth: 56,
+    height: 56,
+    paddingHorizontal: space.sm,
+    borderRadius: radius.md,
+    backgroundColor: color.surface,
+    alignItems: "center",
+    justifyContent: "center",
     ...shadow.card,
   },
-  revealLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.okText },
-  revealWord: { fontSize: font.sizes.xl, color: color.ink, marginVertical: 4 },
-  revealNote: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, textAlign: "center" },
-  legend: { flexDirection: "row", justifyContent: "space-between", marginTop: space.xl },
-  legendItem: { alignItems: "center", gap: 4 },
-  legendSwatch: { width: 22, height: 22, borderRadius: 6, borderWidth: 2, borderColor: color.border },
+  bankTaken: { opacity: 0.25 },
+  bankChar: { fontSize: 26, lineHeight: 40, color: color.ink },
+  actions: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.xs },
+  back2: { width: 54, height: 54, borderRadius: radius.md, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },
+  message: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, textAlign: "center" },
+  reveal: { borderRadius: radius.lg, padding: space.md, alignItems: "center", gap: 2 },
+  revealHead: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base },
+  revealWord: { fontSize: 40, lineHeight: 60, color: color.ink },
+  revealIast: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
+  revealNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.xs },
+  inputRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.sm },
+  input: { flex: 1, borderWidth: 2, borderColor: color.border, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, fontSize: font.sizes.base, color: color.ink, backgroundColor: color.surface },
+  send: { width: 48, height: 48, borderRadius: radius.md, alignItems: "center", justifyContent: "center" },
+  sendActive: { backgroundColor: color.saffronBtn },
+  sendIdle: { backgroundColor: color.inkFaint },
+  legend: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: space.md, marginTop: space.sm },
+  legendItem: { flexDirection: "row", alignItems: "center", gap: 6 },
+  swatch: { width: 22, height: 22, borderRadius: 6, alignItems: "center", justifyContent: "center" },
+  swatchGlyph: { fontSize: 10, fontFamily: "Nunito_800ExtraBold", fontWeight: "800" },
   legendLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
-  muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft, marginTop: space.xl, textAlign: "center" },
 });

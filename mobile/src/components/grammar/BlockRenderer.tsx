@@ -83,7 +83,7 @@ function ExampleCard({ item, ctx, wild }: { item: GuideExample; ctx: GuideTextCt
       />
       {!!item.source && (
         <InlineText
-          text={`— ${ctx.t(item.source)}`}
+          text={ctx.t(item.source)}
           lang={ctx.lang}
           style={[styles.source, { fontSize: sized(font.sizes.xs) }]}
         />

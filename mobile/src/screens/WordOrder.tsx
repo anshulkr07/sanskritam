@@ -77,7 +77,7 @@ export default function WordOrderScreen() {
     } else {
       // Visible, gentle, never red: this order is not equivalent.
       setOrder(candidate);
-      setFeedback("That order changes the meaning — the endings no longer agree. Try another arrangement.");
+      setFeedback("The endings no longer agree. Try another order.");
       haptics.near();
     }
   };
@@ -142,7 +142,7 @@ export default function WordOrderScreen() {
 
       {held !== null && (
         <Text style={styles.holding} accessibilityRole="text">
-          Holding “{order[held]}” — tap a word to place it there.
+          Holding “{order[held]}”. Tap a word to place it.
         </Text>
       )}
       {feedback && (
@@ -175,7 +175,7 @@ export default function WordOrderScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: color.bg },
-  content: { padding: space.lg, paddingBottom: space.xxl },
+  content: { padding: space.lg, paddingBottom: 120 },
   center: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: color.bg, padding: space.lg },
   heading: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink },
   sub: { fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 4, marginBottom: space.md },

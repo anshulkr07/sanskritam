@@ -1,31 +1,39 @@
 // Login / entry screen. Stranger-first (U10-1): a fresh install reaches a
 // usable session with no typing. Three ways in:
 //   • Continue with Google  — an account, for syncing progress across devices
-//     (only if a Google client ID is configured; else the button is disabled).
+//     (only if a Google client ID is configured; else it says so).
 //   • Continue with Apple   — iOS only, required by Guideline 4.8 wherever
 //     Google sign-in is offered (only when the native module is available).
-//   • Continue as Guest     — anonymous local install, one tap, no account.
+//   • Continue as guest     — anonymous local install, one tap, no account.
 // This screen is shown by App.tsx whenever the user is not onboarded.
+//
+// The screen carries no copy beyond the wordmark, the three buttons, an error
+// when there is one, and the privacy link: the icon's guru and name are the
+// welcome.
 //
 // Google Sign-In uses the NATIVE SDK (@react-native-google-signin/google-signin),
 // not expo-auth-session: the deprecated browser flow uses a custom redirect URI
 // that Google rejects for Android OAuth clients ("Custom URI is not enabled").
 // The native flow verifies package name + signing-cert SHA-1 via Play Services
-// and returns an id_token whose aud is the configured webClientId — which the
+// and returns an id_token whose aud is the configured webClientId, which the
 // backend (POST /auth/google) verifies. Apple works the same way against
 // POST /auth/apple (ES256 identityToken, aud = bundle/Services ID).
 
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Linking,
   Platform,
   Pressable,
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Path } from "react-native-svg";
 import * as AppleAuthentication from "expo-apple-authentication";
 import {
   GoogleSignin,
@@ -33,9 +41,13 @@ import {
   statusCodes,
 } from "@react-native-google-signin/google-signin";
 
+import { Gesture, GuruNative } from "../components/guru";
 import { useAuth } from "../store/auth";
-import { color, font, radius, shadow, space } from "../theme";
-import { GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED } from "../config";
+import { accent, color, font, radius, script, shadow, space } from "../theme";
+import { BASE_URL, GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED } from "../config";
+
+// The icon's cream, so the app opens as a continuation of its launcher icon.
+const ICON_CREAM = "#FFF6ED";
 
 // Configure the native Google Sign-In once at module load. `webClientId` is
 // the audience of the id_token the SDK returns and what the backend verifies,
@@ -46,10 +58,11 @@ if (GOOGLE_CLIENT_IDS.webClientId) {
 
 export default function LoginScreen() {
   const { googleLogin, appleLogin, guestLogin, finishOnboarding } = useAuth();
+  const { height } = useWindowDimensions();
   const [busy, setBusy] = useState<"none" | "google" | "apple" | "guest">("none");
   const [error, setError] = useState<string | null>(null);
   // Sign in with Apple exists only on iOS with the native module (dev
-  // build). Never rendered elsewhere — Guideline 4.8 is an iOS rule.
+  // build). Never rendered elsewhere: Guideline 4.8 is an iOS rule.
   const [appleAvailable, setAppleAvailable] = useState(Platform.OS === "ios");
   useEffect(() => {
     if (Platform.OS !== "ios") return;
@@ -61,10 +74,7 @@ export default function LoginScreen() {
   const onGoogle = async () => {
     setError(null);
     if (!GOOGLE_LOGIN_ENABLED) {
-      setError(
-        "Google sign-in isn't configured yet (GOOGLE client ID missing). " +
-          "Use Continue as Guest for now.",
-      );
+      setError("Google sign-in isn't available in this build.");
       return;
     }
     setBusy("google");
@@ -74,7 +84,7 @@ export default function LoginScreen() {
       if (isSuccessResponse(response)) {
         const idToken = response.data.idToken;
         if (!idToken) {
-          setError("Google didn't return an identity token. Please try again.");
+          setError("Google didn't send a sign-in token. Try again.");
           return;
         }
         await googleLogin(idToken);
@@ -82,14 +92,13 @@ export default function LoginScreen() {
       }
       // isSuccessResponse === false means the user cancelled; nothing to do.
     } catch (e) {
-      if ((e as { code?: string }).code === statusCodes.SIGN_IN_CANCELLED) {
+      const code = (e as { code?: string }).code;
+      if (code === statusCodes.SIGN_IN_CANCELLED) {
         // User backed out; just re-enable the button.
-      } else if ((e as { code?: string }).code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      } else if (code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         setError("Google Play Services isn't available on this device.");
       } else {
-        setError(
-          e instanceof Error ? e.message : "Google sign-in failed. Please try again.",
-        );
+        setError("Google sign-in failed. Try again.");
       }
     } finally {
       setBusy("none");
@@ -107,10 +116,10 @@ export default function LoginScreen() {
         ],
       });
       if (!credential.identityToken) {
-        setError("Apple didn't return an identity token. Please try again.");
+        setError("Apple didn't send a sign-in token. Try again.");
         return;
       }
-      // Apple sends the name only on first authorization — forward it when
+      // Apple sends the name only on first authorization: forward it when
       // present; the backend falls back to the relay-email local part.
       const given = credential.fullName?.givenName?.trim() ?? "";
       const family = credential.fullName?.familyName?.trim() ?? "";
@@ -119,9 +128,7 @@ export default function LoginScreen() {
       await finishOnboarding();
     } catch (e) {
       if ((e as { code?: string }).code !== "ERR_REQUEST_CANCELED") {
-        setError(
-          e instanceof Error ? e.message : "Apple sign-in failed. Please try again.",
-        );
+        setError("Apple sign-in failed. Try again.");
       }
       // Cancelled: user backed out; just re-enable the button.
     } finally {
@@ -129,286 +136,175 @@ export default function LoginScreen() {
     }
   };
 
-  const onGuest = async () => {    setError(null);
+  const onGuest = async () => {
+    setError(null);
     setBusy("guest");
     try {
       await guestLogin();
       await finishOnboarding();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not connect. Is the backend running?");
+    } catch {
+      setError("Couldn't connect. Check your internet and try again.");
       setBusy("none");
     }
   };
 
-  const gDisabled = busy !== "none" || !GOOGLE_LOGIN_ENABLED;
+  const locked = busy !== "none";
+  // The mascot shrinks on short phones so the buttons never scroll off.
+  const guruSize = Math.max(140, Math.min(200, Math.round(height * 0.27)));
 
   return (
-    <LinearGradient colors={[color.bg, "#FFF1DD"]} style={styles.gradient}>
+    <View style={styles.root}>
+      {/* a soft saffron glow at the top, fading into the cream */}
+      <LinearGradient
+        colors={["rgba(232,91,37,0.20)", "rgba(232,91,37,0.06)", "rgba(255,246,237,0)"]}
+        style={styles.glow}
+        pointerEvents="none"
+      />
       <SafeAreaView style={styles.safe}>
-        <View style={styles.content}>
-          {/* Lockup */}
-          <View style={styles.logoRow}>
-            <View style={styles.logoBadge}>
-              <Text style={styles.logoGlyph}>श्</Text>
-            </View>
-            <Text style={styles.logoWord}>Sanskritam</Text>
-          </View>
-          <Text style={styles.tagline}>Speak Sanskrit. A word at a time.</Text>
+        <View style={styles.top}>
+          <GuruNative state="idle" size={guruSize} gesture={Gesture.Anjali} />
+          <Text style={[styles.wordmarkSa, script("extrabold")]} accessibilityRole="header">
+            संस्कृतम्
+          </Text>
+          <Text style={styles.wordmark}>Sanskritam</Text>
+        </View>
 
-          {/* Card */}
-          <View style={styles.card}>
-            <Text style={styles.heading}>नमस्ते 🙏</Text>
-            <Text style={styles.subheading}>
-              Sign in to save your progress across devices — or just jump in as a guest.
-            </Text>
+        <View style={styles.actions}>
+          <Pressable
+            disabled={locked}
+            onPress={onGoogle}
+            style={({ pressed }) => [styles.btn, styles.googleBtn, pressed && styles.pressed, locked && styles.dim]}
+            accessibilityRole="button"
+            accessibilityLabel="Continue with Google"
+            accessibilityState={{ disabled: locked, busy: busy === "google" }}
+          >
+            {busy === "google" ? <ActivityIndicator color={color.ink} /> : <GoogleMark />}
+            <Text style={styles.googleText}>Continue with Google</Text>
+          </Pressable>
 
-            {/* Continue with Google */}
+          {/* Continue with Apple: iOS only (Guideline 4.8). */}
+          {appleAvailable && (
             <Pressable
-              disabled={busy !== "none"}
-              onPress={onGoogle}
-              style={({ pressed }) => [
-                styles.googleBtn,
-                pressed && styles.googleBtnPressed,
-                (busy !== "none" || !GOOGLE_LOGIN_ENABLED) && styles.btnDisabled,
-              ]}
+              disabled={locked}
+              onPress={onApple}
+              style={({ pressed }) => [styles.btn, styles.appleBtn, pressed && styles.pressed, locked && styles.dim]}
               accessibilityRole="button"
-              accessibilityLabel="Continue with Google"
+              accessibilityLabel="Continue with Apple"
+              accessibilityState={{ disabled: locked, busy: busy === "apple" }}
             >
-              <View style={styles.googleIcon}>
-                <Text style={styles.googleIconText}>G</Text>
-              </View>
-              <Text style={styles.googleBtnText}>
-                {busy === "google" ? "Connecting…" : "Continue with Google"}
-              </Text>
-            </Pressable>
-
-            {/* Continue with Apple — iOS only (Guideline 4.8). */}
-            {appleAvailable && (
-              <Pressable
-                disabled={busy !== "none"}
-                onPress={onApple}
-                style={({ pressed }) => [
-                  styles.appleBtn,
-                  pressed && styles.googleBtnPressed,
-                  busy !== "none" && styles.btnDisabled,
-                ]}
-                accessibilityRole="button"
-                accessibilityLabel="Continue with Apple"
-              >
-                <Text style={styles.appleIconText}></Text>
-                <Text style={styles.appleBtnText}>
-                  {busy === "apple" ? "Connecting…" : "Continue with Apple"}
-                </Text>
-              </Pressable>
-            )}
-
-            {/* Divider */}
-            <View style={styles.dividerRow}>
-              <View style={styles.dividerLine} />
-              <Text style={styles.dividerText}>or</Text>
-              <View style={styles.dividerLine} />
-            </View>
-
-            {/* Continue as Guest */}
-            <Pressable
-              disabled={busy !== "none"}
-              onPress={onGuest}
-              style={({ pressed }) => [
-                styles.guestBtn,
-                pressed && styles.guestBtnPressed,
-                busy !== "none" && styles.btnDisabledSaffron,
-              ]}
-              accessibilityRole="button"
-              accessibilityLabel="Continue as Guest"
-            >
-              {busy === "guest" ? (
+              {busy === "apple" ? (
                 <ActivityIndicator color={color.white} />
               ) : (
-                <Text style={styles.guestBtnText}>Continue as Guest</Text>
+                <Ionicons name="logo-apple" size={20} color={color.white} />
               )}
+              <Text style={styles.appleText}>Continue with Apple</Text>
             </Pressable>
-            <Text style={styles.guestHint}>No account needed — start learning in seconds.</Text>
+          )}
 
-            {!!error && <Text style={styles.error}>{error}</Text>}
-          </View>
+          <Pressable
+            disabled={locked}
+            onPress={onGuest}
+            style={({ pressed }) => [styles.btn, styles.guestBtn, pressed && styles.pressed, locked && styles.dim]}
+            accessibilityRole="button"
+            accessibilityLabel="Continue as guest"
+            accessibilityState={{ disabled: locked, busy: busy === "guest" }}
+          >
+            {busy === "guest" ? (
+              <ActivityIndicator color={accent.saffron.fg} />
+            ) : (
+              <Ionicons name="person-outline" size={19} color={accent.saffron.fg} />
+            )}
+            <Text style={styles.guestText}>Continue as guest</Text>
+          </Pressable>
 
-          <Text style={styles.footnote}>
-            Your tutor speaks a little Sanskrit and a lot of your language,{'\n'}and raises the
-            Sanskrit share as you grow.
-          </Text>
+          {!!error && (
+            <Text style={styles.error} accessibilityRole="alert">
+              {error}
+            </Text>
+          )}
+
+          <Pressable
+            onPress={() => Linking.openURL(`${BASE_URL}/privacy`).catch(() => {})}
+            hitSlop={8}
+            accessibilityRole="link"
+            accessibilityLabel="Privacy policy"
+            style={styles.privacy}
+          >
+            <Text style={styles.privacyText}>Privacy policy</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
-    </LinearGradient>
+    </View>
+  );
+}
+
+// Google's four-colour "G", drawn rather than faked with a letter on a circle.
+function GoogleMark() {
+  return (
+    <Svg width={20} height={20} viewBox="0 0 48 48" aria-hidden>
+      <Path
+        fill="#FFC107"
+        d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"
+      />
+      <Path
+        fill="#FF3D00"
+        d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"
+      />
+      <Path
+        fill="#4CAF50"
+        d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"
+      />
+      <Path
+        fill="#1976D2"
+        d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"
+      />
+    </Svg>
   );
 }
 
 const styles = StyleSheet.create({
-  gradient: { flex: 1 },
-  safe: { flex: 1 },
-  content: {
-    flex: 1,
+  root: { flex: 1, backgroundColor: ICON_CREAM },
+  glow: { position: "absolute", left: 0, right: 0, top: 0, height: 340 },
+  safe: { flex: 1, paddingHorizontal: space.lg },
+  top: { flex: 1, alignItems: "center", justifyContent: "center" },
+  wordmarkSa: {
+    fontSize: 44,
+    lineHeight: 64,
+    color: color.saffron,
+    marginTop: space.sm,
+  },
+  wordmark: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: font.sizes.base,
+    color: color.inkSoft,
+    letterSpacing: 1.2,
+  },
+  actions: { gap: space.sm, paddingBottom: space.sm },
+  btn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: space.sm,
+    minHeight: 54,
+    borderRadius: radius.md,
     paddingHorizontal: space.lg,
-    justifyContent: "center",
   },
-  logoRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.xs },
-  logoBadge: {
-    width: 44,
-    height: 44,
-    borderRadius: radius.pill,
-    backgroundColor: color.saffron,
-    alignItems: "center",
-    justifyContent: "center",
-    ...shadow.button,
-  },
-  logoGlyph: { color: color.white, fontSize: 24, fontWeight: "800" },
-  logoWord: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.xxl,
-    color: color.ink,
-  },
-  tagline: {
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.base,
-    color: color.inkSoft,
-    marginBottom: space.xl,
-  },
-  card: {
-    backgroundColor: color.surface,
-    borderRadius: radius.xl,
-    padding: space.lg,
-    ...shadow.card,
-  },
-  heading: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.xl,
-    color: color.ink,
-  },
-  subheading: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    marginTop: space.xs,
-    marginBottom: space.lg,
-    lineHeight: 20,
-  },
-  // Google button — white with border and the recognisable G.
-  googleBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: space.sm,
-    backgroundColor: color.surface,
-    borderWidth: 2,
-    borderColor: color.border,
-    borderRadius: radius.md,
-    paddingVertical: space.md,
-    ...shadow.button,
-  },
-  googleBtnPressed: { transform: [{ translateY: 1 }] },
-  googleIcon: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: "#4285F4",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  googleIconText: {
-    color: color.white,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 14,
-  },
-  googleBtnText: {
-    color: color.ink,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-  },
-  // Apple button — black filled,  icon.
-  appleBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: space.sm,
-    backgroundColor: color.ink,
-    borderRadius: radius.md,
-    paddingVertical: space.md,
-    marginTop: space.sm,
-    minHeight: 52,
-    ...shadow.button,
-  },
-  appleIconText: {
-    color: color.white,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 16,
-  },
-  appleBtnText: {
-    color: color.white,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-  },
-  dividerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    marginVertical: space.md,
-  },
-  dividerLine: { flex: 1, height: 1, backgroundColor: color.border },
-  dividerText: {
-    color: color.inkFaint,
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.sm,
-  },
-  // Guest button — saffron filled.
-  guestBtn: {
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: 52,
-    backgroundColor: color.saffron,
-    borderRadius: radius.md,
-    paddingVertical: space.md,
-    ...shadow.button,
-  },
-  guestBtnPressed: { transform: [{ translateY: 1 }] },
-  guestBtnText: {
-    color: color.white,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-  },
-  guestHint: {
-    marginTop: space.sm,
-    textAlign: "center",
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-  },
-  btnDisabled: { opacity: 0.5 },
-  btnDisabledSaffron: { opacity: 0.7 },
+  pressed: { opacity: 0.88, transform: [{ scale: 0.98 }] },
+  dim: { opacity: 0.55 },
+  googleBtn: { backgroundColor: color.surface, borderWidth: 1, borderColor: color.border, ...shadow.card },
+  googleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  appleBtn: { backgroundColor: "#000000" },
+  appleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.white },
+  guestBtn: { backgroundColor: color.saffronLight },
+  guestText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: accent.saffron.fg },
   error: {
-    marginTop: space.md,
     color: color.badText,
     fontFamily: "Nunito_600SemiBold",
     fontWeight: "600",
     fontSize: font.sizes.sm,
     textAlign: "center",
   },
-  footnote: {
-    marginTop: space.lg,
-    textAlign: "center",
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkFaint,
-    lineHeight: 20,
-  },
+  privacy: { alignSelf: "center", minHeight: 44, justifyContent: "center", paddingHorizontal: space.md },
+  privacyText: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
 });

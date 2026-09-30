@@ -1,7 +1,9 @@
 """Daily word endpoints (P12): वर्ण-बन्धः, the varṇamālā guessing game.
 
-GET  /daily-word        → today's puzzle state (WITHOUT the answer)
-POST /daily-word/guess  → submit a guess, returns tile states + axis
+GET  /daily-word        → today's puzzle state (WITHOUT the answer): the slot
+                          count, and a bank of akṣaras to tap
+POST /daily-word/guess  → submit a guess (``mode="akshara"`` scores whole
+                          akṣaras), returns tile states + axis
 
 The guessing game is LOCAL computation (varṇamālā grid scoring) — no vendor
 call, no quota, by design. Do NOT add metering here.
@@ -35,4 +37,4 @@ async def submit_daily_word_guess(
     db: Session = Depends(get_db),
 ):
     """Score a guess and advance the per-day game. Refuses replay."""
-    return daily_word.guess(learner, db, req.guess)
+    return daily_word.guess(learner, db, req.guess, mode=req.mode, letters=req.letters)

@@ -16,13 +16,13 @@ import { articulationFor } from "../../phonetics";
 import { haptics } from "../../services/haptics";
 import { Button } from "../ui";
 import { color, font, radius, script, space } from "../../theme";
-import { field, type StepInputProps } from "./types";
+import { field, prose, type StepInputProps } from "./types";
 
 export default function ArticulateStep({ step, disabled, onSubmit }: StepInputProps) {
   const payload = step.payload;
   const devanagari = field<string>(payload, "devanagari", "");
   const iast = field<string>(payload, "iast", "");
-  const prompt = field<string>(payload, "prompt", "Shape this sound.");
+  const prompt = prose(payload, "prompt", "Shape this sound.");
   const [playToken, setPlayToken] = useState(0);
 
   const articulation = useMemo(
@@ -54,9 +54,9 @@ export default function ArticulateStep({ step, disabled, onSubmit }: StepInputPr
       <Text
         style={styles.practice}
         accessibilityRole="text"
-        accessibilityLabel="Practice. Saying the sound aloud is not graded."
+        accessibilityLabel="Say it aloud. Not graded."
       >
-        Practice — say it aloud. Not graded.
+        Say it aloud. Not graded.
       </Text>
       <View style={styles.stage}>
         <Text style={[styles.char, script("bold")]} accessibilityRole="text" accessibilityLabel={devanagari}>
@@ -66,7 +66,7 @@ export default function ArticulateStep({ step, disabled, onSubmit }: StepInputPr
         {articulation ? (
           <VocalTract articulation={articulation} char={devanagari} iast={iast} playToken={playToken} />
         ) : (
-          <Text style={styles.note}>No mouth map for this sound — follow the character above.</Text>
+          <Text style={styles.note}>No mouth map for this sound.</Text>
         )}
       </View>
       <View style={styles.row}>

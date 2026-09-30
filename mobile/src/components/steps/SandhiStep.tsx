@@ -47,7 +47,7 @@ export default function SandhiStep({ step, disabled, onSubmit }: StepInputProps)
     <View>
       {isSplit ? (
         <Text style={styles.prompt}>
-          Split <Text style={[styles.word, script("bold")]}>{joined}</Text> — which two
+          Split <Text style={[styles.word, script("bold")]}>{joined}</Text>. Which two
           words met here?
         </Text>
       ) : (
@@ -55,8 +55,8 @@ export default function SandhiStep({ step, disabled, onSubmit }: StepInputProps)
           Join{" "}
           <Text style={[styles.word, script("bold")]}>
             {first} + {second}
-          </Text>{" "}
-          — what does the meeting make?
+          </Text>
+          . What does the meeting make?
         </Text>
       )}
       {/* The function machine as a tree: two leaves, one root. f(a,b)→c

@@ -11,14 +11,14 @@ import { haptics } from "../../services/haptics";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { Button } from "../ui";
 import { color, font, script, space } from "../../theme";
-import { field, type StepInputProps } from "./types";
+import { field, prose, type StepInputProps } from "./types";
 
 export default function ReadStep({ step, disabled, onSubmit }: StepInputProps) {
   const payload = step.payload;
   const devanagari = field<string>(payload, "devanagari", "");
   const iast = field<string>(payload, "iast", "");
-  const gloss = field<string>(payload, "gloss", "");
-  const prompt = field<string>(payload, "prompt", "Read this.");
+  const gloss = prose(payload, "gloss");
+  const prompt = prose(payload, "prompt", "Read this.");
   const { sized } = useTypeScale();
 
   const cont = () => {
@@ -33,9 +33,9 @@ export default function ReadStep({ step, disabled, onSubmit }: StepInputProps) {
       <Text
         style={styles.practice}
         accessibilityRole="text"
-        accessibilityLabel="Reading. Reading is not graded."
+        accessibilityLabel="Reading. Not graded."
       >
-        Reading — not graded.
+        Reading. Not graded.
       </Text>
       <View style={styles.card}>
         {!!devanagari && (

@@ -1,11 +1,9 @@
-// Settings — the drawer's content (U8-1). The drawer is chrome: account,
-// sign out, sound and haptics toggles, a reduced-motion override, text size,
-// about, licences. No mascot, no streak, no gamification — it is where things
-// go to be configured, not celebrated.
+// Settings — its own drawer screen (U8-1). Account, sound and haptics, reduced
+// motion, text size, about. No mascot, no streak, no gamification: it is where
+// things go to be configured, not celebrated.
 //
-// The sound/haptics/reduced-motion preferences were previously invisible (the
-// services had no user-facing toggle, U6-2). They persist to AsyncStorage so
-// the drawer is honest: a toggle here changes real behaviour next run.
+// The sound, haptics and reduced-motion preferences persist to AsyncStorage so
+// the screen is honest: a toggle here changes real behaviour (services/prefs).
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
@@ -14,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 
 import { BASE_URL } from "../config";
@@ -27,15 +26,13 @@ import {
   setHapticsEnabled,
   setReducedMotionOverride,
 } from "../services/prefs";
-import { color, font, radius, script, shadow, space } from "../theme";
+import { accent, color, font, radius, shadow, space, type AccentName } from "../theme";
 import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
+import { firstName } from "../utils/name";
 
-const KEYS = {
-  sound: "shabd.pref.sound",
-  haptics: "shabd.pref.haptics",
-  reducedMotion: "shabd.pref.reducedMotion",
-  textSize: "shabd.pref.textSize",
-};
+const SOUND_KEY = "shabd.pref.sound";
+const HAPTICS_KEY = "shabd.pref.haptics";
+const MOTION_KEY = "shabd.pref.reducedMotion";
 
 function pref(key: string): Promise<boolean> {
   return AsyncStorage.getItem(key).then((v) => v !== "false");
@@ -52,12 +49,12 @@ async function openExternal(url: string): Promise<void> {
     try {
       await Linking.openURL(url);
     } catch {
-      /* no browser available — the row stays, the link waits */
+      /* no browser available: the row stays, the link waits */
     }
   }
 }
 
-export default function SettingsPanel() {
+export default function SettingsScreen() {
   const { learner, logout, deleteAccount, displayName } = useAuth();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { textSize, setTextSize } = useTypeScale();
@@ -67,8 +64,8 @@ export default function SettingsPanel() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    pref(KEYS.sound).then(setSound);
-    // U15-7: both flags are real now — haptics gates services/haptics, the
+    pref(SOUND_KEY).then(setSound);
+    // U15-7: both flags are real: haptics gates services/haptics, the
     // reduce-motion override gates useReducedMotion. Load persisted values.
     loadPrefs().then(() => {
       setHapticsOn(isHapticsEnabled());
@@ -76,193 +73,191 @@ export default function SettingsPanel() {
     });
   }, []);
 
+  const name = firstName(learner?.display_name || displayName);
+
   // Google Play requires account deletion inside the app. It cannot be
   // undone, so it asks first; on success the auth store resets to Login.
   const confirmDelete = () => {
-    Alert.alert(
-      "Delete your account?",
-      "This permanently deletes your progress, answers and conversations from our servers, and clears the app on this device. It can't be undone.",
-      [
-        { text: "Cancel", style: "cancel" },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: async () => {
-            setDeleting(true);
-            try {
-              await deleteAccount();
-            } catch {
-              setDeleting(false);
-              Alert.alert("Couldn't delete your account", "Check your connection and try again.");
-            }
-          },
+    Alert.alert("Delete your account?", "This permanently deletes your progress and conversations. It can't be undone.", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: async () => {
+          setDeleting(true);
+          try {
+            await deleteAccount();
+          } catch {
+            setDeleting(false);
+            Alert.alert("Couldn't delete your account", "Check your connection and try again.");
+          }
         },
-      ],
-    );
+      },
+    ]);
+  };
+
+  const openLicences = () => {
+    // Settings lives in the drawer; Licences lives on the root stack, above it.
+    const parent = navigation.getParent<NativeStackNavigationProp<RootStackParamList>>();
+    (parent ?? navigation).navigate("Licences");
   };
 
   return (
-    <ScrollView style={styles.safe} contentContainerStyle={styles.body}>
-      <Text style={styles.title}>Settings</Text>
-
-      {/* Account */}
-      <View style={styles.card}>
-        <Text style={styles.sectionTitle}>Account</Text>
-        <View style={styles.row}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{((learner?.display_name || displayName || "").trim().charAt(0).toUpperCase() || "…")}</Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={[styles.name, script("bold")]}>
-              {learner?.display_name || displayName || "…"}
+    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <Section title="Account">
+          <View style={styles.who}>
+            <View style={styles.avatar}>
+              {name ? (
+                <Text style={styles.avatarLetter}>{name.charAt(0).toUpperCase()}</Text>
+              ) : (
+                <Ionicons name="person" size={22} color={color.white} />
+              )}
+            </View>
+            <Text style={styles.whoName} numberOfLines={1}>
+              {name || "Friend"}
             </Text>
-            <Text style={styles.sub}>Signed in on this device</Text>
           </View>
-        </View>
-        <Pressable
-          onPress={() => logout()}
-          style={styles.dangerBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Sign out"
-        >
-          <Text style={styles.dangerText}>Sign out</Text>
-        </Pressable>
-        <Pressable
-          onPress={confirmDelete}
-          disabled={deleting}
-          style={styles.deleteBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Delete account"
-          accessibilityState={{ disabled: deleting }}
-        >
-          <Text style={styles.deleteText}>{deleting ? "Deleting…" : "Delete account"}</Text>
-        </Pressable>
-      </View>
+          <LinkRow icon="log-out-outline" tone="rose" label="Sign out" onPress={() => void logout()} />
+          <LinkRow
+            icon="trash-outline"
+            tone="rose"
+            label={deleting ? "Deleting…" : "Delete account"}
+            danger
+            disabled={deleting}
+            onPress={confirmDelete}
+          />
+        </Section>
 
-      {/* Experience */}
-      <View style={styles.card}>
-        <Text style={styles.sectionTitle}>Sound & feel</Text>
-        <ToggleRow
-          label="Sound effects"
-          value={sound}
-          onChange={(v) => {
-            setSound(v);
-            setSoundEffectsEnabled(v); // U6-2: immediate, respects the toggle
-          }}
-          icon="volume-high"
-        />
-        <ToggleRow label="Haptics" value={hapticsOn} onChange={(v) => { setHapticsOn(v); setHapticsEnabled(v); }} icon="phone-portrait" />
-        <ToggleRow
-          label="Reduce motion"
-          value={reduced}
-          onChange={(v) => { setReduced(v); setReducedMotionOverride(v); }}
-          icon="accessibility"
-          hint="Cut decorative animation"
-        />
-      </View>
+        <Section title="Sound and haptics">
+          <ToggleRow
+            icon="volume-high"
+            tone="teal"
+            label="Sound effects"
+            value={sound}
+            onChange={(v) => {
+              setSound(v);
+              setSoundEffectsEnabled(v); // U6-2: immediate, respects the toggle
+              void setPref(SOUND_KEY, v);
+            }}
+          />
+          <ToggleRow
+            icon="phone-portrait"
+            tone="sage"
+            label="Haptics"
+            value={hapticsOn}
+            onChange={(v) => {
+              setHapticsOn(v);
+              setHapticsEnabled(v);
+              void setPref(HAPTICS_KEY, v);
+            }}
+          />
+        </Section>
 
-      {/* Text size — U5-2: "Larger text" scales the app's own type ramp
-          independently of the OS; XL targets elder mode. */}
-      <View style={styles.card}>
-        <Text style={styles.sectionTitle}>Text size</Text>
-        <View style={styles.sizerRow}>
-          {(["S", "M", "L", "XL"] as const).map((s) => (
-            <Pressable
-              key={s}
-              onPress={() => setTextSize(s as TextSize)}
-              style={[styles.sizer, textSize === s && styles.sizerActive]}
-              accessibilityRole="button"
-              accessibilityLabel={`Text size ${s}`}
-              accessibilityState={{ selected: textSize === s }}
-            >
-              <Text style={[styles.sizerText, textSize === s && styles.sizerTextActive]}>{s}</Text>
-            </Pressable>
-          ))}
-        </View>
-        <Text style={styles.sizerHint}>
-          XL is elder mode — Sanskrit body text never drops below 18pt.
-        </Text>
-      </View>
+        <Section title="Motion">
+          <ToggleRow
+            icon="accessibility"
+            tone="slate"
+            label="Reduce motion"
+            value={reduced}
+            onChange={(v) => {
+              setReduced(v);
+              setReducedMotionOverride(v);
+              void setPref(MOTION_KEY, v);
+            }}
+          />
+        </Section>
 
-      {/* About */}
-      <View style={styles.card}>
-        <Text style={styles.sectionTitle}>About</Text>
-        <Text style={styles.aboutText}>Sanskritam — learn Sanskrit by evidence, not guesswork.</Text>
-        <Pressable
-          onPress={() => {
-            // Settings lives in the drawer; Licences lives on the root
-            // stack — route through the parent navigator.
-            const parent = navigation.getParent<NativeStackNavigationProp<RootStackParamList>>();
-            if (parent) parent.navigate("Licences");
-            else navigation.navigate("Licences" as never);
-          }}
-          style={styles.linkRow}
-          accessibilityRole="button"
-          accessibilityLabel="Licences and credits"
-        >
-          <Text style={styles.link}>Licences and credits</Text>
-            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-          </Pressable>
-          <Pressable
-            onPress={() => openExternal(`${BASE_URL}/privacy`)}
-            style={styles.linkRow}
-            accessibilityRole="button"
-            accessibilityLabel="Privacy policy"
-          >
-            <Text style={styles.link}>Privacy policy</Text>
-            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-          </Pressable>
-          {/* P24: YouTube API Services Developer Policies III.A.1 — clients
-              must display a link to YouTube's Terms and bind their users to
-              them. Lesson videos play in YouTube's own player. */}
-          <Pressable
-            onPress={() => openExternal("https://www.youtube.com/t/terms")}
-            style={styles.linkRow}
-            accessibilityRole="button"
-            accessibilityLabel="YouTube Terms of Service"
-          >
-            <Text style={styles.link}>YouTube Terms of Service</Text>
-            <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-          </Pressable>
-          <Text style={styles.aboutNote}>
-            Lesson videos play on YouTube. By watching them you agree to be bound by the YouTube Terms of Service.
-          </Text>
-        </View>
-    </ScrollView>
+        {/* Text size (U5-2): scales the app's own type ramp independently of
+            the OS; XL targets elder mode. */}
+        <Section title="Text size">
+          <View style={styles.sizerRow}>
+            {(["S", "M", "L", "XL"] as const).map((s) => {
+              const on = textSize === s;
+              return (
+                <Pressable
+                  key={s}
+                  onPress={() => setTextSize(s as TextSize)}
+                  style={[styles.sizer, on && styles.sizerOn]}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Text size ${s}`}
+                  accessibilityState={{ selected: on }}
+                >
+                  <Text style={[styles.sizerText, on && styles.sizerTextOn]}>{s}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </Section>
+
+        <Section title="About">
+          <LinkRow icon="document-text-outline" tone="gold" label="Licences and credits" chevron onPress={openLicences} />
+          <LinkRow
+            icon="shield-checkmark-outline"
+            tone="teal"
+            label="Privacy policy"
+            chevron
+            onPress={() => void openExternal(`${BASE_URL}/privacy`)}
+          />
+          {/* P24: YouTube API Services Developer Policies III.A.1: clients must
+              display a link to YouTube's Terms and bind their users to them.
+              Lesson videos play in YouTube's own player. */}
+          <LinkRow
+            icon="logo-youtube"
+            tone="rose"
+            label="YouTube Terms of Service"
+            chevron
+            onPress={() => void openExternal("https://www.youtube.com/t/terms")}
+          />
+          <Text style={styles.note}>Videos play on YouTube under YouTube's Terms of Service.</Text>
+        </Section>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+// ── Pieces ────────────────────────────────────────────────────────────
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle} accessibilityRole="header">
+        {title}
+      </Text>
+      <View style={styles.card}>{children}</View>
+    </View>
+  );
+}
+
+function IconBadge({ icon, tone }: { icon: IoniconsIconName; tone: AccentName }) {
+  return (
+    <View style={[styles.badge, { backgroundColor: accent[tone].bg }]}>
+      <Ionicons name={icon} size={18} color={accent[tone].fg} />
+    </View>
   );
 }
 
 function ToggleRow({
+  icon,
+  tone,
   label,
   value,
   onChange,
-  icon,
-  hint,
 }: {
+  icon: IoniconsIconName;
+  tone: AccentName;
   label: string;
   value: boolean;
   onChange: (v: boolean) => void;
-  icon?: IoniconsIconName;
-  hint?: string;
 }) {
   return (
     <View style={styles.row}>
-      {icon && <Ionicons name={icon} size={18} color={color.inkSoft} />}
-      <View style={{ flex: 1 }}>
-        <Text style={styles.rowLabel}>{label}</Text>
-        {hint && <Text style={styles.rowHint}>{hint}</Text>}
-      </View>
+      <IconBadge icon={icon} tone={tone} />
+      <Text style={styles.rowLabel}>{label}</Text>
       <Switch
         value={value}
-        onValueChange={(v) => {
-          onChange(v);
-          const key =
-            label === "Sound effects" ? KEYS.sound
-            : label === "Haptics" ? KEYS.haptics
-            : KEYS.reducedMotion;
-          setPref(key, v);
-        }}
-        trackColor={{ true: color.saffron, false: color.border }}
+        onValueChange={onChange}
+        trackColor={{ true: color.saffronBtn, false: color.border }}
         thumbColor={color.white}
         accessibilityLabel={label}
       />
@@ -270,45 +265,56 @@ function ToggleRow({
   );
 }
 
+function LinkRow({
+  icon,
+  tone,
+  label,
+  onPress,
+  chevron = false,
+  danger = false,
+  disabled = false,
+}: {
+  icon: IoniconsIconName;
+  tone: AccentName;
+  label: string;
+  onPress: () => void;
+  chevron?: boolean;
+  danger?: boolean;
+  disabled?: boolean;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+    >
+      <IconBadge icon={icon} tone={tone} />
+      <Text style={[styles.rowLabel, danger && { color: color.badText }]}>{label}</Text>
+      {chevron && <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />}
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: color.ink, marginBottom: space.md },
-  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, marginBottom: space.md, ...shadow.card },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.inkSoft, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: space.sm },
-  row: { flexDirection: "row", alignItems: "center", gap: space.sm, marginBottom: space.sm },
-  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffron, alignItems: "center", justifyContent: "center" },
-  avatarText: { color: color.white, fontSize: 18, fontWeight: "800" },
-  name: { fontSize: font.sizes.base, color: color.ink },
-  sub: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft },
-  rowLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
-  rowHint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.xs, color: color.inkFaint, marginTop: 2 },
-  dangerBtn: { marginTop: space.xs, alignSelf: "flex-start", backgroundColor: color.badBg, borderRadius: radius.sm, paddingHorizontal: space.md, paddingVertical: space.xs },
-  dangerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.badText },
-  deleteBtn: { marginTop: space.sm, alignSelf: "flex-start", paddingVertical: space.xs },
-  deleteText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.badText, textDecorationLine: "underline" },
-  sizerRow: { flexDirection: "row", gap: space.sm },
-  sizer: { flex: 1, alignItems: "center", justifyContent: "center", minHeight: 44, paddingVertical: space.sm, borderRadius: radius.sm, backgroundColor: color.surfaceMuted },
-  sizerActive: { backgroundColor: color.saffron },
+  body: { paddingHorizontal: space.lg, paddingTop: space.xs, paddingBottom: 120 },
+  section: { marginBottom: space.lg },
+  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.xs },
+  card: { backgroundColor: color.surface, borderRadius: radius.lg, paddingHorizontal: space.md, paddingVertical: space.xs, ...shadow.card },
+  who: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: space.sm },
+  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
+  avatarLetter: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
+  whoName: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 56 },
+  rowLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  badge: { width: 36, height: 36, borderRadius: 12, alignItems: "center", justifyContent: "center" },
+  sizerRow: { flexDirection: "row", gap: space.xs, paddingVertical: space.sm },
+  sizer: { flex: 1, minHeight: 48, borderRadius: radius.md, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },
+  sizerOn: { backgroundColor: color.saffronBtn },
   sizerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.inkSoft },
-  sizerTextActive: { color: color.white },
-  sizerHint: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-    marginTop: space.sm,
-    lineHeight: 16,
-  },
-  aboutText: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: space.sm, lineHeight: 19 },
-  aboutNote: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-    marginTop: space.xs,
-    lineHeight: 16,
-  },
-  linkRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: space.xs },
-  link: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
+  sizerTextOn: { color: color.white },
+  note: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkSoft, paddingBottom: space.sm },
 });

@@ -25,7 +25,7 @@ import AchievementReveal from "../components/AchievementReveal";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import WordBank from "../components/WordBank";
 import DerivationPlayer from "../components/derivation/DerivationPlayer";
-import { useAsk } from "../ask/AskProvider";
+import { useAsk, useAskContext } from "../ask/AskProvider";
 import SessionComplete from "../screens/SessionComplete";
 import { haptics } from "../services/haptics";
 import { speak } from "../services/speech";
@@ -33,6 +33,7 @@ import { Button, Card, ProgressBar } from "../components/ui";
 import type { RootStackParamList } from "../navigation/types";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { useTypeScale } from "../hooks/useTypeScale";
+import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Challenge">;
 
@@ -71,15 +72,14 @@ export default function ChallengeScreen({ navigation, route }: Props) {
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<AttemptResponse | null>(null);
-  const { setContext, setSuppressed } = useAsk();
+  const { setSuppressed } = useAsk();
 
-  // U11: the ask button asks about the challenge target. Suppressed while a
+  // U11: the ask button asks about the challenge target. Hidden while a
   // verdict is showing so it never blocks or distracts (§3.7).
-  React.useEffect(() => {
-    setContext({ surface: "challenge", subject: challenge?.target_sanskrit ?? "" });
-  }, [challenge?.target_sanskrit, setContext]);
+  useAskContext("challenge", challenge?.target_sanskrit ?? "");
   React.useEffect(() => {
     setSuppressed(result !== null);
+    return () => setSuppressed(false);
   }, [result, setSuppressed]);
   const [busy, setBusy] = useState(false);
   const [exerciseKey, setExerciseKey] = useState(0); // bump to reshuffle WordBank
@@ -243,7 +243,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
             You're ahead of us today!
           </Text>
           <Text style={[styles.emptyHint, { fontSize: sized(font.sizes.sm) }]}>
-            That was everything we have for now. New exercises are on the way.
+            No more exercises for now.
           </Text>
           <Button label="Try again" onPress={loadNext} style={{ alignSelf: "center", marginTop: space.md }} />
         </View>
@@ -270,7 +270,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
           <Text onPress={playPrompt} style={styles.chip} suppressHighlighting>
             <Ionicons name="headset" size={13} color={color.saffron} />  Tap to hear
           </Text>
-          <Text style={[styles.prompt, script("extrabold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>{challenge.prompt_l1}</Text>
+          <Text style={[styles.prompt, script("extrabold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>{plain(challenge.prompt_l1)}</Text>
           <Text style={styles.promptLang}>[ {challenge.prompt_lang} ]</Text>
         </Card>
 
@@ -321,7 +321,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
           <View style={styles.errorBanner}>
             <Ionicons name="cloud-offline" size={16} color={color.inkSoft} />
             <Text style={styles.errorBannerText}>
-              The network failed — your answer wasn't graded. Not a mistake.
+              Couldn't reach the server. Try again.
             </Text>
             <Pressable
               onPress={() => submitAnswer(answer)}

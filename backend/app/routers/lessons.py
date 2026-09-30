@@ -4,8 +4,8 @@ P22-1's ``GET /lessons/{feature_id}`` stays — Path.tsx and the ``has_lesson``
 contract (P22-4) depend on it, and its 404 is honest and must stay honest.
 P23-3 adds the spine a step player needs:
 
-- ``GET /units`` — the eleven units, ranked, each with its lessons and
-  per-unit progress.
+- ``GET /units`` — the eleven units, ranked, each with its released lessons
+  (the staged shelf is left out) and per-unit progress.
 - ``GET /lessons`` — list, filterable by ``unit_id``.
 - ``GET /lessons/{id}/steps`` — the ordered steps, each already ``generate``d
   where its kind is generated (the answer is never in the payload).
@@ -77,6 +77,8 @@ def read_units(
     counts = lesson_service.step_counts(db)
     by_unit: dict[str, list[LessonSummary]] = {}
     for lesson in lesson_service.list_lessons(db):
+        if lesson_service.is_staged(lesson):
+            continue  # unreviewed imports are not part of the path
         by_unit.setdefault(lesson.unit_id, []).append(_summary(lesson, counts))
     out = []
     for unit in lesson_service.list_units(db):

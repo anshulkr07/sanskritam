@@ -21,7 +21,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import api from "../api/client";
 import type { DeriveParams, GuideLang, WordLookupCandidate } from "../api/client";
-import { useAsk } from "../ask/AskProvider";
+import { useAskContext } from "../ask/AskProvider";
 import DerivationPlayer from "../components/derivation/DerivationPlayer";
 import SandhiVisual from "../components/derivation/SandhiVisual";
 import LangToggle from "../components/grammar/LangToggle";
@@ -149,9 +149,9 @@ function ReadingText({ text }: { text: string }) {
 export default function WordLabScreen({ route, navigation }: Props) {
   const initial = route.params?.word?.trim() ?? "";
   const { lang, setLang } = useGuideLang();
-  const { setContext } = useAsk();
   const [query, setQuery] = React.useState(initial);
   const [submitted, setSubmitted] = React.useState<string | null>(initial || null);
+  useAskContext("grammar", submitted ?? "");
   const [kind, setKind] = React.useState<Kind>(guessKind(initial));
   const [linga, setLinga] = React.useState<Linga>(guessLinga(initial));
   const [view, setView] = React.useState<"build" | "table">("build");
@@ -165,10 +165,6 @@ export default function WordLabScreen({ route, navigation }: Props) {
       headerRight: () => <LangToggle lang={lang} onChange={setLang} />,
     });
   }, [navigation, lang, setLang]);
-
-  React.useEffect(() => {
-    setContext({ surface: "grammar", subject: submitted ?? "" });
-  }, [submitted, setContext]);
 
   React.useEffect(() => {
     AsyncStorage.getItem(RECENT_KEY)
@@ -379,7 +375,7 @@ export default function WordLabScreen({ route, navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl, gap: space.md },
+  body: { padding: space.lg, paddingBottom: 120, gap: space.md },
   hint: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, lineHeight: 22 },
   hintSa: { color: color.saffronText },
   searchRow: { flexDirection: "row", alignItems: "center", gap: space.sm },

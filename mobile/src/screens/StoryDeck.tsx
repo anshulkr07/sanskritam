@@ -36,6 +36,7 @@ import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
 import { getStoryIndex, setStoryIndex } from "../services/storyProgress";
 import { color, font, radius, script, shadow, space } from "../theme";
+import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Story">;
 
@@ -181,7 +182,7 @@ export default function StoryDeckScreen({ navigation }: Props) {
           <View style={[styles.errorCard, shadow.card]}>
             <Text style={[styles.errorTitle, { fontSize: sized(font.sizes.base) }]}>Couldn't load the story.</Text>
             <Text style={[styles.errorSub, { fontSize: sized(font.sizes.sm) }]}>
-              Check your connection — your bookmark is safe.
+              Check your connection and try again.
             </Text>
             <Button label="Retry" onPress={retry} style={{ marginTop: space.md }} />
           </View>
@@ -262,8 +263,8 @@ function StoryPage({
         <Text style={[styles.titleSa, script("bold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>
           {card.title_hi}
         </Text>
-        <Text style={[styles.titleEn, { fontSize: sized(font.sizes.md) }]}>{card.title_en}</Text>
-        <Text style={[styles.cardBody, { fontSize: sized(font.sizes.base) }]}>{card.body}</Text>
+        <Text style={[styles.titleEn, { fontSize: sized(font.sizes.md) }]}>{plain(card.title_en)}</Text>
+        <Text style={[styles.cardBody, { fontSize: sized(font.sizes.base) }]}>{plain(card.body)}</Text>
         {hasExample && (
           <View style={styles.exampleBox}>
             <Text style={[styles.exampleDev, script("semibold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>
@@ -273,7 +274,7 @@ function StoryPage({
               <Text style={[styles.exampleIast, { fontSize: sized(font.sizes.sm) }]}>{card.example_iast}</Text>
             )}
             {card.example_gloss.length > 0 && (
-              <Text style={[styles.exampleGloss, { fontSize: sized(font.sizes.sm) }]}>{card.example_gloss}</Text>
+              <Text style={[styles.exampleGloss, { fontSize: sized(font.sizes.sm) }]}>{plain(card.example_gloss)}</Text>
             )}
           </View>
         )}
@@ -295,7 +296,7 @@ function StoryPage({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: space.xxl * 2 },
+  body: { padding: space.lg, paddingBottom: 120 },
   kicker: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
