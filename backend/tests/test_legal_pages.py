@@ -28,7 +28,7 @@ def test_missing_contact_email_is_visible_not_blank(client, monkeypatch, path):
 
 def test_privacy_policy_states_what_leaves_the_device(client):
     text = client.get("/privacy").text
-    for claim in ("Sarvam AI", "then discarded", "never leave", "under 13", "Delete account"):
+    for claim in ("Sarvam AI", "turned into text", "don't store the recording", "never leave", "under 13", "Delete account"):
         assert claim in text, claim
 
 
@@ -42,8 +42,8 @@ def test_privacy_policy_says_what_happens_to_a_handwriting_photo(client):
     may not say they never leave the phone. What a drawing does is unchanged."""
     text = " ".join(client.get("/privacy").text.split())  # the HTML wraps mid-sentence
     assert "check a photo of your handwriting" in text
-    assert "sent to Sarvam AI to be read, then discarded" in text
-    assert "We keep the letter it read, not the photo" in text
+    assert "the photo is sent to Sarvam AI to be read" in text
+    assert "We keep the letter it read and don't store the photo on our servers" in text
     assert "the drawing never leaves your phone" in text
     # the old blanket claim would now be false
     assert "the drawing and the photo never leave" not in text

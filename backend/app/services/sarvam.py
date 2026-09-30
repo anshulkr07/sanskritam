@@ -194,8 +194,8 @@ class SarvamClient:
              ``output_format``) returns ``{"job_id": ..., "status": "pending"}``;
           2. ``GET /job/{id}/status`` until ``completed`` (or a failed state);
           3. ``GET /job/{id}/download-url`` returns a signed URL to a ZIP holding
-             the primary file (``.md`` here), ``metadata/page_NNN.json`` and
-             ``manifest.json``.
+             ``<upload name>/<name>.md`` (the text), ``<upload name>/metadata/page_NNN.json``
+             (blocks with a confidence each) and ``manifest.json``.
 
         Privacy: the image and the text are never logged; only sizes are. The
         signed download URL is fetched WITHOUT the API key (it belongs to a
@@ -254,10 +254,10 @@ class SarvamClient:
 
         try:
             with zipfile.ZipFile(io.BytesIO(blob.content)) as zf:
-                names = sorted(
-                    n for n in zf.namelist()
-                    if n.lower().endswith(".md") and "/" not in n.strip("/")
-                )
+                # Sarvam nests the result in a folder named after the upload
+                # ("writing.jpg/writing.md", "writing.jpg/metadata/page_001.json"),
+                # so take the .md files at any depth.
+                names = sorted(n for n in zf.namelist() if n.lower().endswith(".md"))
                 text = "\n".join(zf.read(n).decode("utf-8", errors="replace") for n in names)
         except zipfile.BadZipFile as exc:
             raise SarvamError(502, "Sarvam document download was not a zip") from exc

@@ -2,10 +2,9 @@
 the account-deletion page (/delete-account). Plain HTML, no auth, no learner
 data — the Play listing links here.
 
-Every claim is checked against the code, not borrowed boilerplate: audio is
-discarded after transcription (routers/speech.py, retain_raw_audio=False),
+Every claim is checked against the code, not borrowed boilerplate: audio is not retained after transcription (routers/speech.py, retain_raw_audio=False),
 drawn handwriting never leaves the device, and a photo the learner chooses to
-check is sent to Sarvam, held in memory and discarded (routers/writing.py
+check is sent to Sarvam to be read and is not kept on our side (routers/writing.py
 photo-check; models.WritingAttempt stores only the recognised text), and
 deletion covers every learner-owned table (routers/me.learner_owned_models).
 Change the code, change the page.
@@ -81,13 +80,13 @@ address before the “@”). We don't store your email address.</li>
 activity, and settings such as your language mix and time zone, so the app can check your answers, adapt
 to you and keep your progress.</li>
 <li><strong>Your voice.</strong> When you use a speaking feature, the recording is sent to Sarvam AI to be
-turned into text, then discarded. We keep the transcript and the result, not the audio.</li>
+turned into text. We keep the transcript and the result, and don't store the recording on our servers.</li>
 <li><strong>Conversations with the tutor.</strong> What you say or type to the tutor, and its replies, are
 stored with your account and sent to Sarvam AI's language model to write replies and explanations.</li>
 <li><strong>Handwriting.</strong> Letters you draw on the screen are read on your device. Only the
 recognised letter and a confidence score reach us; the drawing never leaves your phone. If you choose to
-check a photo of your handwriting, that photo is sent to Sarvam AI to be read, then discarded. We keep the
-letter it read, not the photo.</li>
+check a photo of your handwriting, the photo is sent to Sarvam AI to be read. We keep the letter it read
+and don't store the photo on our servers.</li>
 <li><strong>Notifications.</strong> If you turn on reminders, a push token for your device, so we can send
 them.</li>
 <li><strong>Usage limits and errors.</strong> How many characters, seconds of speech and AI requests you
