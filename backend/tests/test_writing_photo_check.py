@@ -321,15 +321,17 @@ def test_digitise_image_creates_polls_downloads_and_unzips(monkeypatch):
 
     def download(request):
         seen["download_had_key"] = "api-subscription-key" in request.headers
+        # The layout Sarvam really returns (observed live, 2026-09-30): the
+        # result sits in a folder named after the uploaded file.
         return httpx.Response(200, content=_zip({
-            "output.md": "# क\n",
+            "writing.jpg/writing.md": "## क\n",
+            "writing.jpg/metadata/page_001.json": "{}",
             "manifest.json": "{}",
-            "metadata/page_001.json": "{}",
         }))
 
     c = _client_with(api, download, monkeypatch)
     text = asyncio.run(c.digitise_image(b"\xff\xd8\xff-image", poll_interval_s=0, language_code="sa-IN"))
-    assert text.strip() == "# क"
+    assert text.strip() == "## क"
     assert seen["polls"] == 2
     assert seen["download_had_key"] is False, "the API key must not be sent to the download host"
     assert b'name="language"' in seen["create_form"] and b"sa-IN" in seen["create_form"]

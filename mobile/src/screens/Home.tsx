@@ -30,6 +30,7 @@ import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
 import { cachedGet } from "../services/apiCache";
+import { useAskContext } from "../ask/AskProvider";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
@@ -59,6 +60,8 @@ export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
   const rootNav = useNavigation();
   const [shloka, setShloka] = useState<Shloka | null>(null);
+  // "This screen" in Ask reads what is registered here plus on-device OCR.
+  useAskContext("home", shloka?.devanagari ?? "");
   const [shlokaState, setShlokaState] = useState<LoadState>("loading");
   const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
   const [wordState, setWordState] = useState<LoadState>("loading");

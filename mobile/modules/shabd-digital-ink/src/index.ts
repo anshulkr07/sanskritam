@@ -9,10 +9,19 @@
 //   recognize("hi", strokes) — strokes in, [{text, score}] out.
 //                          Nothing leaves the device.
 //
-// Throws when the native module is absent (Expo Go) — callers must
-// require() inside try/catch and fall back to the unavailable adapter.
+// A missing native module must be HARMLESS, not fatal. `requireNativeModule`
+// throws at load time when the native code is absent (Expo Go, or a release
+// build whose archive skipped the Kotlin source), and Metro's
+// `guardedLoadModule` reports any error thrown while loading a module to
+// `ErrorUtils.reportFatalError` BEFORE the caller's try/catch can see it —
+// in a release build that is a fatal crash. So a lazy `require()` wrapped in
+// try/catch is NOT a guard for a native module. This file therefore uses
+// `requireOptionalNativeModule`, which returns `null` instead of throwing,
+// and every exported function rejects with a clear error when `Native` is
+// null. Callers check `isAvailable` first and fall back to the template
+// matcher without ever touching the native side.
 
-import { requireNativeModule } from "expo-modules-core";
+import { requireOptionalNativeModule } from "expo-modules-core";
 
 export interface InkPoint {
   x: number;
@@ -32,25 +41,37 @@ interface NativeModuleShape {
   recognize(languageTag: string, strokes: InkPoint[][]): Promise<InkCandidate[]>;
 }
 
-const Native = requireNativeModule<NativeModuleShape>("ShabdDigitalInk");
+const Native = requireOptionalNativeModule<NativeModuleShape>("ShabdDigitalInk");
+
+/** True when the native handwriting module is linked in this build. */
+export const isAvailable = Native != null;
+
+function needNative(): NativeModuleShape {
+  if (!Native) {
+    throw new Error(
+      "ShabdDigitalInk is not available in this build; use the offline matcher instead.",
+    );
+  }
+  return Native;
+}
 
 export async function downloadModel(languageTag: string): Promise<boolean> {
-  return Native.downloadModel(languageTag);
+  return needNative().downloadModel(languageTag);
 }
 
 export async function getDownloadedModels(): Promise<string[]> {
-  return Native.getDownloadedModels();
+  return needNative().getDownloadedModels();
 }
 
 export async function deleteModel(languageTag: string): Promise<boolean> {
-  return Native.deleteModel(languageTag);
+  return needNative().deleteModel(languageTag);
 }
 
 export async function recognize(
   languageTag: string,
   strokes: InkPoint[][],
 ): Promise<InkCandidate[]> {
-  return Native.recognize(languageTag, strokes);
+  return needNative().recognize(languageTag, strokes);
 }
 
-export default { downloadModel, getDownloadedModels, deleteModel, recognize };
+export default { downloadModel, getDownloadedModels, deleteModel, recognize, isAvailable };

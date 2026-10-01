@@ -1,0 +1,138 @@
+{
+  "about": "Book covers for Read, in the house style the owner chose on 2026-10-01: an 18th century Pahari (Kangra) miniature set on a plain ground, with the lower part empty for the title. The image model paints only the miniature (this file); compose_covers.py sets each painting into the same frame on the book's ground colour (hex), and export_covers.py makes the files the app ships. To add a book: add an item, generate it with the google-image plugin (gimage.py run --file covers.json --out-dir results/covers/paintings --only <key>), look at it, then compose and export. Keep the template sentences word for word: they are what makes the set one series.",
+  "label": "sanskritam-covers",
+  "model": "pro",
+  "aspect": "4:5",
+  "size": "4K",
+  "references": ["reference-gita.jpg"],
+  "template": "An 18th century Pahari (Kangra school) Indian miniature painted for the cover of {title}. {subject} Fine squirrel-hair brush detail, delicate outlines, flat perspective, opaque gouache on aged handmade paper, burnished gold highlights. Colours: gold, saffron, lapis blue, cream, with touches of {ground}. The painting fills the whole image from edge to edge: no border, no frame, no ruled line, no margin and no mount around it. Keep every figure and everything that matters well inside the picture, away from the edges. Absolutely no text, no letters, no numbers, no signature, no watermark. The attached image is another painting of the same series by the same painter: match its brushwork, its outlines, its faces and its colouring. Paint a completely new picture as described above; do not repeat the chariot, the horses, the armies or the two figures of the attached painting.",
+  "items": [
+    {
+      "key": "gita",
+      "title": "the Bhagavad Gita",
+      "ground": "deep wine red",
+      "hex": "#561722",
+      "subject": "Krishna as the charioteer, with blue skin, a yellow dhoti and a peacock feather in his crown, holds the reins and turns to speak; Arjuna sits behind him with folded hands, his bow laid down. A golden chariot with a flag, four white horses, the field of Kurukshetra at dawn with tiny distant armies.",
+      "note": "Approved by the owner on 2026-10-01. Its painting was cut from that cover (it is also reference-gita.jpg) and its ground colour was measured from it. Do not regenerate."
+    },
+    {
+      "key": "isha",
+      "title": "the Isha Upanishad",
+      "ground": "deep slate blue",
+      "hex": "#2F4677",
+      "subject": "A white-bearded rishi in saffron robes sits cross-legged on a deer skin under a flowering tree on a river bank, his hands folded, facing a very large golden sun disc that rises over the water. Pink lotus flowers float on the river, two white cranes stand in the shallows, and low blue hills lie far away under a pale dawn sky."
+    },
+    {
+      "key": "katha",
+      "title": "the Katha Upanishad",
+      "ground": "deep violet",
+      "hex": "#4B3B7A",
+      "subject": "The boy Nachiketa, a young student in a white dhoti with a small topknot, stands with folded hands before Yama, the lord of death. Yama, with dark green skin, a golden crown and red robes, sits on a low golden throne on the terrace of his palace, holding a staff in one hand and raising the other as he teaches. A black buffalo rests beside the throne and a small sacred fire burns between the two. Behind them a white palace pavilion under a deep night sky with a crescent moon and stars."
+    },
+    {
+      "key": "mundaka",
+      "title": "the Mundaka Upanishad",
+      "ground": "deep teal",
+      "hex": "#17535C",
+      "subject": "Two golden birds sit on one branch of a great sacred fig tree with heart-shaped leaves, large and clear in the middle of the picture: one bird pecks at a small red fig, the other sits still beside it and only watches. Under the tree, small, an old sage teaches a seated disciple beside a forest hermitage hut. A calm river and low hills behind, soft morning light."
+    },
+    {
+      "key": "ramayana",
+      "title": "the Ramayana",
+      "ground": "deep forest green",
+      "hex": "#2F5B3C",
+      "subject": "Rama, with blue skin, his hair tied in a topknot, in the simple dress of forest exile and carrying a tall bow, stands with Sita in a red sari at his side and his fair-skinned brother Lakshmana behind them with his own bow. Hanuman, the monkey hero, kneels before Rama with folded hands. A forest clearing with a thatched hermitage hut, flowering trees, two spotted deer and a winding river, under a soft morning sky."
+    },
+    {
+      "key": "mahabharata",
+      "title": "the Mahabharata",
+      "ground": "dark ink brown",
+      "hex": "#3B2E25",
+      "subject": "The old sage Vyasa, with matted hair and a long white beard, sits on a deer skin under a great banyan tree and dictates with one hand raised. Facing him sits Ganesha, the elephant-headed god, with one broken tusk, writing on a long palm leaf and holding his own broken tusk as the pen. Bundles of palm-leaf manuscripts lie between them. A hermitage hut, a stream, and the snow peaks of the Himalaya behind."
+    },
+    {
+      "key": "hito",
+      "title": "the Hitopadesha",
+      "ground": "deep peacock teal",
+      "hex": "#1F6E73",
+      "subject": "Four animal friends gathered under a large banyan tree beside a lotus pond: a black crow on a low branch, a small brown mouse at the roots, a tortoise at the water's edge and a spotted deer standing beside them, all turned toward one another as if talking. Tall grass, pink lotus flowers, a soft morning sky with a few birds far away."
+    },
+    {
+      "key": "pancha",
+      "title": "the Panchatantra",
+      "ground": "dark ochre brown",
+      "hex": "#8A5608",
+      "subject": "A brown monkey sits on a branch of a rose-apple tree heavy with dark purple fruit, on the bank of a wide river, and holds a fruit out to a crocodile whose long head and ridged back rise out of the water just below. Reeds and a few lotus flowers along the bank, low hills far away, a warm afternoon sky."
+    },
+    {
+      "key": "niti",
+      "title": "the Niti Shataka of Bhartrihari",
+      "ground": "deep rose red",
+      "hex": "#962F4E",
+      "subject": "The poet king Bhartrihari, in a jewelled turban and a fine long robe, sits cross-legged on a carpet in a white marble palace pavilion and writes on a long palm leaf with a reed pen. Beside him a low writing desk, an inkpot, a pile of manuscripts tied in red cloth and a lit brass oil lamp. Through the arches behind him, a garden with cypress trees under a pale evening sky."
+    },
+    {
+      "key": "subhashita",
+      "title": "a book of Subhashita, Sanskrit verses of wisdom",
+      "ground": "deep sage green",
+      "hex": "#35603C",
+      "subject": "A pair of white swans glide side by side on a still lotus pond among large pink lotus flowers, buds and round green leaves, large and clear in the middle of the picture. On the far bank a small white pavilion with a dome and flowering trees, under a golden evening sky with a line of birds."
+    },
+    {
+      "key": "simhasana",
+      "title": "the Simhasana Dvatrimshika, the tales of the throne of King Vikramaditya",
+      "ground": "dark oxblood red",
+      "hex": "#5E2216",
+      "subject": "The golden lion throne of King Vikramaditya stands empty on a stepped marble platform under a jewelled canopy, its two arms carved as seated lions, with small golden statuettes of maidens standing along the steps on both sides. King Bhoja, in a crown and royal dress, sets one foot on the lowest step; the nearest maiden statuette has come alive and raises her hand to stop him. A palace hall with slender columns behind, and two attendants with fly whisks."
+    },
+    {
+      "key": "ayurveda",
+      "title": "a book of Ayurveda",
+      "ground": "deep leaf green",
+      "hex": "#44703F",
+      "subject": "An old physician in white with a shawl over one shoulder sits on a veranda and grinds herbs in a stone mortar. Around him stand brass vessels, clay jars, bundles of dried roots and a closed palm-leaf manuscript on a low stand. A young student brings a basket of fresh green leaves. Behind them a garden of healing plants: a holy basil bush in a raised brick planter, a neem tree, turmeric and aloe, under a soft morning sky."
+    },
+    {
+      "key": "graded-1",
+      "title": "a first Sanskrit reader for beginners",
+      "ground": "deep teal",
+      "hex": "#17535C",
+      "subject": "A small child in a white dhoti sits cross-legged before a kind old teacher under a mango tree and holds a blank wooden writing board and a reed pen. The teacher leans forward and points to the board with one finger. A thatched school hut behind them, a green parrot on a branch, a pot of water and a small pile of closed palm-leaf books. Soft morning light."
+    },
+    {
+      "key": "graded-2",
+      "title": "a Sanskrit reader about sandhi, the joining of sounds",
+      "ground": "deep sage green",
+      "hex": "#35603C",
+      "subject": "Two rivers of different colours, one pale green and one deep blue, flow in from the left and from the right and join into one broad river in the middle of the picture. On the point of land where they meet stands a small white shrine with a flag under a flowering tree, and two students sit on the steps at the water's edge. Boats with white sails far away, low hills, a clear dawn sky."
+    },
+    {
+      "key": "graded-3",
+      "title": "a Sanskrit reader about compound words",
+      "ground": "dark ochre brown",
+      "hex": "#8A5608",
+      "subject": "A garland maker sits on a veranda and threads marigolds, jasmine and roses one after another onto a single long garland that spills across the floor in a curve. Baskets of loose flowers stand around her, finished garlands hang from the pillars behind, and a girl hands her another basket. A garden in bloom beyond, soft morning light."
+    },
+    {
+      "key": "all",
+      "title": "a complete library of Sanskrit verses",
+      "ground": "deep cornflower blue",
+      "hex": "#3C5A8E",
+      "subject": "A palace library: tall arched wall niches filled with palm-leaf manuscripts wrapped in red and saffron cloth, a scribe seated on a carpet at a low desk with a closed manuscript and a reed pen, a second scholar reaching up to a niche, a tall brass lamp stand, and an open window showing a garden. Warm, orderly and quiet."
+    },
+    {
+      "key": "other",
+      "title": "a miscellany of Sanskrit verses",
+      "ground": "deep cornflower blue",
+      "hex": "#3C5A8E",
+      "subject": "One palm-leaf manuscript, closed between two painted wooden covers and tied with a red cord, rests on a carved wooden book stand on a small carpet, with a reed pen, an inkpot, a lit brass oil lamp and a single pink lotus flower beside it, on a marble terrace. Beyond the terrace railing, a quiet lake and hills at dusk with the first stars."
+    },
+    {
+      "key": "sayings",
+      "title": "a book of short Sanskrit sayings",
+      "ground": "deep cornflower blue",
+      "hex": "#3C5A8E",
+      "subject": "A bright green parrot with a red beak perches on a branch of a mango tree hung with ripe golden mangoes, large and clear in the middle of the picture, its beak open as if speaking. A second parrot listens from a lower branch. Behind the tree a garden wall, a small white pavilion and a pale evening sky."
+    }
+  ]
+}

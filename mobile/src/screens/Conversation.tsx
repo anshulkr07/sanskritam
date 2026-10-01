@@ -35,6 +35,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import Animated, {
+  FadeIn,
   interpolate,
   useSharedValue,
   useAnimatedStyle,
@@ -50,7 +51,6 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 import {
   api,
-  ApiError,
   type TalkTurn,
   type ConversationNode,
   type MetaIntent,
@@ -58,34 +58,35 @@ import {
 } from "../api/client";
 import { GuruNative, type AvatarStateName as AvatarState } from "../components/guru/GuruNative";
 import { startTimeline, type Timeline } from "../utils/perf";
-import { settledRecordingUri } from "../utils/recording";
 import { haptics } from "../services/haptics";
 import { playTutorAudio } from "../services/speech";
 import { ensureScriptFont } from "../services/scriptFonts";
+import { useVoiceInput } from "../hooks/useVoiceInput";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import {
   color,
+  fill,
   font,
   nativeText,
+  onFill,
+  outline,
   radius,
   sanskritText,
   script,
-  shadow,
   space,
 } from "../theme";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import ReportButton from "../components/ReportButton";
 
-// expo-audio — import unconditionally; hooks must always be called.
-import {
-  useAudioRecorder,
-  RecordingPresets,
-  requestRecordingPermissionsAsync,
-} from "expo-audio";
 import { plain } from "../utils/text";
 
 type Msg =
   | { kind: "tutor"; talk: TalkTurn }
-  | { kind: "learner"; text: string }
+  // A voice line shows `display` (the mix as it was said) while `text` is
+  // what was sent to the tutor. When the turn comes back with `heard`, the
+  // bubble is replaced with it and `langs` names the languages under it.
+  | { kind: "learner"; text: string; display?: string; langs?: string }
   | { kind: "aside"; text: string; pending?: boolean }
   | { kind: "status"; text: string }
   | { kind: "error"; text: string };
@@ -124,59 +125,45 @@ function TutorTurn({
 
   const fix = talk.fix;
   const showFix = !!(fix?.needed && fix.devanagari);
+  const showWhy = !!(talk.explain_en || talk.read_back);
+  // A correction should be seen, so it starts open. Why starts closed.
+  const [fixOpen, setFixOpen] = useState(showFix);
+  const [whyOpen, setWhyOpen] = useState(false);
+  const reduced = useReducedMotion();
+  const panelEntering = reduced ? undefined : FadeIn.duration(120);
 
   return (
     <View style={styles.turn}>
-      {/* What they said, and in what. Muted: it is a receipt, not the reply. */}
-      {!!talk.read_back && (
-        <Text style={styles.readBack} accessibilityLabel={`You said: ${plain(talk.read_back)}`}>
-          {plain(talk.read_back)}
-        </Text>
-      )}
-
-      {showFix && (
-        <View style={styles.fixCard}>
-          <View style={styles.fixHead}>
-            <Ionicons name="sparkles" size={12} color={color.saffronText} />
-            <Text style={styles.fixLabel}>Say it like this</Text>
-          </View>
+      {/* The Sanskrit reply, with its replay button. The line stays pressable. */}
+      {!!talk.reply_devanagari && (
+        <View style={styles.replyRow}>
           <Pressable
-            onPress={() => onSpeak(fix.devanagari, "sa")}
+            onPress={() => onSpeak(talk.reply_devanagari, "sa")}
             disabled={speaking}
+            style={styles.replyPress}
             accessibilityRole="button"
-            accessibilityLabel={`Hear the correct Sanskrit: ${fix.devanagari}`}
+            accessibilityLabel={`Hear again: ${talk.reply_devanagari}`}
           >
-            <Text style={styles.fixDev} selectable>
-              {fix.devanagari}
+            <Text style={styles.replyDev} selectable>
+              {talk.reply_devanagari}
             </Text>
-            {!!fix.roman && (
-              <Text style={styles.roman} selectable>
-                {fix.roman}
+            {!!talk.reply_roman && (
+              <Text style={styles.replyRoman} selectable>
+                {talk.reply_roman}
               </Text>
             )}
           </Pressable>
-          {!!fix.note_en && <Text style={styles.fixNote}>{plain(fix.note_en)}</Text>}
+          <Pressable
+            onPress={() => onSpeak(talk.reply_devanagari, "sa")}
+            disabled={speaking}
+            style={styles.replayRound}
+            accessibilityRole="button"
+            accessibilityLabel={`Hear again: ${talk.reply_devanagari}`}
+            accessibilityState={{ disabled: speaking }}
+          >
+            <Ionicons name="volume-high" size={18} color={color.ink} />
+          </Pressable>
         </View>
-      )}
-
-      {/* The tutor actually replying. The Sanskrit is the thing to read, so
-          it is the largest thing on screen. */}
-      {!!talk.reply_devanagari && (
-        <Pressable
-          onPress={() => onSpeak(talk.reply_devanagari, "sa")}
-          disabled={speaking}
-          accessibilityRole="button"
-          accessibilityLabel={`Hear again: ${talk.reply_devanagari}`}
-        >
-          <Text style={styles.replyDev} selectable>
-            {talk.reply_devanagari}
-          </Text>
-          {!!talk.reply_roman && (
-            <Text style={styles.roman} selectable>
-              {talk.reply_roman}
-            </Text>
-          )}
-        </Pressable>
       )}
 
       {/* The same thought in the learner's own language. Tap to hear — it is
@@ -190,19 +177,112 @@ function TutorTurn({
           accessibilityRole="button"
           accessibilityLabel={`Hear in your language: ${talk.reply_native}`}
         >
-          <Text style={[styles.native, nativeText(talk.native_script)]} selectable>
+          <Text style={[styles.native, nativeText(talk.native_script, 16)]} selectable>
             {talk.reply_native}
           </Text>
-          <Ionicons name="volume-low-outline" size={15} color={color.inkFaint} />
         </Pressable>
       )}
 
-      {!!talk.explain_en && (
-        <View style={styles.whyCard}>
-          <Text style={styles.whyLabel}>Why</Text>
-          <Text style={styles.why} selectable>
-            {plain(talk.explain_en)}
-          </Text>
+      {/* Two small tabs on one row, then their panels. The flag reports the reply. */}
+      {(showFix || showWhy) && (
+        <View style={styles.tabRow}>
+          {showFix && (
+            <Pressable
+              onPress={() => {
+                haptics.tap();
+                setFixOpen((v) => !v);
+              }}
+              style={[styles.tab, styles.tabFix]}
+              accessibilityRole="button"
+              accessibilityLabel="Say it like this"
+              accessibilityState={{ expanded: fixOpen }}
+            >
+              <Text style={styles.tabText}>Say it like this</Text>
+              <Ionicons
+                name={fixOpen ? "chevron-up" : "chevron-down"}
+                size={14}
+                color={onFill.text}
+              />
+            </Pressable>
+          )}
+          {showWhy && (
+            <Pressable
+              onPress={() => {
+                haptics.tap();
+                setWhyOpen((v) => !v);
+              }}
+              style={[styles.tab, styles.tabWhy]}
+              accessibilityRole="button"
+              accessibilityLabel="Why"
+              accessibilityState={{ expanded: whyOpen }}
+            >
+              <Text style={styles.tabText}>Why</Text>
+              <Ionicons
+                name={whyOpen ? "chevron-up" : "chevron-down"}
+                size={14}
+                color={onFill.text}
+              />
+            </Pressable>
+          )}
+          <View style={styles.tabSpacer} />
+          <ReportButton
+            surface="talk"
+            question={talk.read_back || ""}
+            answer={[talk.reply_devanagari, talk.reply_native, talk.explain_en]
+              .filter(Boolean)
+              .join("\n")}
+          />
+        </View>
+      )}
+
+      {showFix && fixOpen && (
+        <Animated.View entering={panelEntering} style={[styles.panel, styles.fixPanel]}>
+          <Text style={styles.panelLabel}>Say it like this</Text>
+          <Pressable
+            onPress={() => onSpeak(fix.devanagari, "sa")}
+            disabled={speaking}
+            accessibilityRole="button"
+            accessibilityLabel={`Hear the correct Sanskrit: ${fix.devanagari}`}
+          >
+            <Text style={styles.fixDev} selectable>
+              {fix.devanagari}
+            </Text>
+            {!!fix.roman && (
+              <Text style={styles.fixRoman} selectable>
+                {fix.roman}
+              </Text>
+            )}
+          </Pressable>
+          {!!fix.note_en && <Text style={styles.fixNote}>{plain(fix.note_en)}</Text>}
+        </Animated.View>
+      )}
+
+      {showWhy && whyOpen && (
+        <Animated.View entering={panelEntering} style={[styles.panel, styles.whyPanel]}>
+          {!!talk.read_back && (
+            <Text style={styles.readBack} accessibilityLabel={`You said: ${plain(talk.read_back)}`}>
+              {plain(talk.read_back)}
+            </Text>
+          )}
+          {!!talk.explain_en && (
+            <Text style={styles.why} selectable>
+              {plain(talk.explain_en)}
+            </Text>
+          )}
+        </Animated.View>
+      )}
+
+      {/* No tabs to hang it on: the flag still has to be reachable. */}
+      {!showFix && !showWhy && (
+        <View style={styles.tabRow}>
+          <View style={styles.tabSpacer} />
+          <ReportButton
+            surface="talk"
+            question={talk.read_back || ""}
+            answer={[talk.reply_devanagari, talk.reply_native, talk.explain_en]
+              .filter(Boolean)
+              .join("\n")}
+          />
         </View>
       )}
     </View>
@@ -214,12 +294,10 @@ function TutorTurn({
 export default function ConversationScreen() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [node, setNode] = useState<ConversationNode | null>(null);
-  const [lastTalk, setLastTalk] = useState<TalkTurn | null>(null);
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [busy, setBusy] = useState(false);
   const [input, setInput] = useState("");
   const [done, setDone] = useState(false);
-  const [recActive, setRecActive] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   // What he is saying right now. viseme.ts reads the mouth shapes straight off
   // the Devanagari; the duration is the same ~0.08 s/char hint playTutorAudio
@@ -304,25 +382,52 @@ export default function ConversationScreen() {
     [isSpeaking, node, speakLine],
   );
 
-  // STT preset: 16kHz mono 32kbps AAC in the same .m4a container — ~4x
-  // smaller than HIGH_QUALITY stereo 44.1kHz, same codec Saaras already
-  // accepts. STT needs words, not fidelity (Varnamala keeps HIGH_QUALITY
-  // because retroflex-vs-dental scoring does need it).
-  const recorder = useAudioRecorder({
-    ...RecordingPresets.HIGH_QUALITY,
-    sampleRate: 16000,
-    numberOfChannels: 1,
-    bitRate: 32000,
-    ios: { ...RecordingPresets.HIGH_QUALITY.ios, audioQuality: 32 },
-    android: {
-      ...RecordingPresets.HIGH_QUALITY.android,
-      outputFormat: "mpeg4",
-      audioEncoder: "aac",
-    },
-    web: { ...RecordingPresets.HIGH_QUALITY.web, bitsPerSecond: 32000 },
-  });
-
   const pulseAnim = useSharedValue(1);
+  const scrollBottom = () =>
+    requestAnimationFrame(() => scrollRef.current?.scrollToEnd({ animated: true }));
+
+  // The mic, shared with Ask (hooks/useVoiceInput). A result is submitted
+  // with the transcript for the tutor and the display mix for the bubble.
+  const tlRef = useRef<Timeline | null>(null);
+  const voice = useVoiceInput({
+    disabled: busy || done,
+    onResult: (r) => {
+      const tl = tlRef.current;
+      tlRef.current = null;
+      tl?.mark("stt");
+      void submit(r.transcript, r.language_code || undefined, tl ?? undefined, r.display || undefined);
+    },
+    onError: (message) => {
+      tlRef.current?.report("(stt failed)");
+      tlRef.current = null;
+      setMsgs((m) => [...m, { kind: "error", text: message }]);
+      scrollBottom();
+    },
+    onProgress: (stage) => {
+      if (stage === "stop") {
+        tlRef.current = startTimeline("turn");
+        tlRef.current.mark("stop");
+      } else {
+        tlRef.current?.mark(stage);
+      }
+    },
+  });
+  const recActive = voice.recording;
+  const voiceBusy = voice.busy;
+
+  // While transcribing, the thread says so; the line is lifted when text arrives.
+  useEffect(() => {
+    if (voiceBusy) {
+      setMsgs((m) => [...m, { kind: "status", text: "Transcribing…" }]);
+      scrollBottom();
+    } else {
+      setMsgs((m) =>
+        m.filter((msg) => !(msg.kind === "status" && msg.text === "Transcribing…")),
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [voiceBusy]);
+
   useEffect(() => {
     if (recActive) {
       pulseAnim.value = withRepeat(
@@ -341,9 +446,6 @@ export default function ConversationScreen() {
 
   const micPulseStyle = useAnimatedStyle(() => ({ transform: [{ scale: pulseAnim.value }] }));
 
-  const scrollBottom = () =>
-    requestAnimationFrame(() => scrollRef.current?.scrollToEnd({ animated: true }));
-
   // Start a fresh session on mount.
   useEffect(() => {
     (async () => {
@@ -352,7 +454,6 @@ export default function ConversationScreen() {
         setSessionId(s.session_id);
         setNode(s.node);
         if (s.talk && hasContent(s.talk)) {
-          setLastTalk(s.talk);
           setMsgs([{ kind: "tutor", talk: s.talk }]);
           ensureScriptFont(s.talk.native_script);
         } else {
@@ -412,11 +513,13 @@ export default function ConversationScreen() {
   );
 
   const submit = useCallback(
-    async (text: string, sttLang?: string, tl?: Timeline) => {
+    async (text: string, sttLang?: string, tl?: Timeline, display?: string) => {
       if (!text.trim() || !sessionId || busy) return;
       setBusy(true);
       setInput("");
-      setMsgs((m) => [...m, { kind: "learner", text }]);
+      // The bubble shows the mix as it was said; the transcript is what the
+      // tutor is sent. A typed line shows exactly as typed.
+      setMsgs((m) => [...m, { kind: "learner", text, display }]);
       scrollBottom();
       try {
         const t: TurnResponse = await api.conversationTurn(sessionId, text.trim(), { sttLang });
@@ -443,9 +546,29 @@ export default function ConversationScreen() {
         if (t.node) setNode(t.node);
 
         if (t.talk && hasContent(t.talk)) {
-          setLastTalk(t.talk);
           ensureScriptFont(t.talk.native_script);
-          setMsgs((m) => [...m, { kind: "tutor", talk: t.talk as TalkTurn }]);
+          // A voice turn may come back with the line re-scripted per
+          // language: replace the bubble text and name the languages.
+          const heard = t.talk.heard?.trim();
+          if (heard) {
+            const langs = (t.talk.heard_langs || []).filter(Boolean);
+            setMsgs((m) => {
+              const out = [...m];
+              for (let i = out.length - 1; i >= 0; i--) {
+                if (out[i].kind === "learner") {
+                  out[i] = {
+                    ...(out[i] as { kind: "learner"; text: string }),
+                    display: heard,
+                    langs: langs.length >= 2 ? langs.join(" · ") : undefined,
+                  };
+                  break;
+                }
+              }
+              return [...out, { kind: "tutor", talk: t.talk as TalkTurn }];
+            });
+          } else {
+            setMsgs((m) => [...m, { kind: "tutor", talk: t.talk as TalkTurn }]);
+          }
         } else if (t.node) {
           setMsgs((m) => [
             ...m,
@@ -479,92 +602,11 @@ export default function ConversationScreen() {
   );
 
   // ── Mic ────────────────────────────────────────────────────────────────
-  const onMicPress = useCallback(async () => {
-    if (busy || done) return;
-
-    if (recActive) {
-      haptics.press();
-      setRecActive(false);
-      setBusy(true);
-      setMsgs((m) => [...m, { kind: "status", text: "Transcribing…" }]);
-      scrollBottom();
-
-      const tl = startTimeline("turn");
-      try {
-        await recorder.stop();
-        tl.mark("stop");
-        const uri = await settledRecordingUri(recorder);
-        tl.mark("flush");
-        if (!uri) throw new Error("No recording URI — recorder.uri is null after stop()");
-
-        // Auto-detect, NOT the language of the last tutor line. This used to
-        // send "sa-IN" always, which does not transcribe a Kannada or Telugu
-        // speaker — it transliterates them into Devanagari. Measured
-        // 2026-09-22: "ನನ್ನ ಹೆಸರು ಅಂಶುಲ್…" came back as "मेरा नाम अंशुल्, अहं
-        // संस्कृतं शिक्षमाणः।" — a translation of something they never said.
-        // Plain auto-detect fails the other way (v4 turns spoken Sanskrit into
-        // English), so the server runs both and keeps the faithful one.
-        const result = await api.stt(uri, "recording.m4a", "audio/m4a", "unknown");
-        tl.mark("stt");
-        const transcript = result.transcript?.trim();
-
-        setMsgs((m) => m.filter((msg) => !(msg.kind === "status" && msg.text === "Transcribing…")));
-
-        if (!transcript) {
-          tl.report("(no transcript)");
-          setMsgs((m) => [...m, { kind: "error", text: "I couldn't hear that clearly. Try again?" }]);
-          return;
-        }
-
-        // Saaras says which language it heard. That is the strongest signal
-        // available for romanized speech, and nothing used to read it.
-        await submit(transcript, result.language_code || undefined, tl);
-      } catch (err: any) {
-        tl.report("(stt failed)");
-        console.error("[STT] Error:", err);
-        setMsgs((m) => m.filter((msg) => !(msg.kind === "status" && msg.text === "Transcribing…")));
-        // U10-3: a network failure is a SYSTEM failure, never a wrong answer —
-        // copy must say the connection failed, and haptics must not read as
-        // "incorrect" (§3.3 / §2.2). Two refusals are not network failures
-        // and used to be reported as one: Saaras transcribes at most 30 s
-        // (413), and the voice quota (429).
-        haptics.near();
-        const status = err instanceof ApiError ? err.status : 0;
-        setMsgs((m) => [
-          ...m,
-          {
-            kind: "error",
-            text:
-              status === 413
-                ? "Too long. Keep it under 30 seconds."
-                : status === 429
-                  ? "Voice limit reached. You can still type."
-                  : "Couldn't send that. Say it again?",
-          },
-        ]);
-      } finally {
-        setBusy(false);
-      }
-    } else {
-      haptics.tap();
-      try {
-        const perm = await requestRecordingPermissionsAsync();
-        if (!perm.granted) {
-          setMsgs((m) => [
-            ...m,
-            { kind: "error", text: "Microphone access denied. Please allow it in settings." },
-          ]);
-          return;
-        }
-        await recorder.prepareToRecordAsync();
-        recorder.record();
-        setRecActive(true);
-      } catch (err: any) {
-        console.error("[MIC] Start error:", err);
-        setMsgs((m) => [...m, { kind: "error", text: "The microphone did not start. Try again?" }]);
-      }
-    }
-  }, [busy, done, recActive, recorder, submit]);
+  // Recording, stopping and transcription live in the shared hook; results
+  // and error lines arrive through its callbacks above.
+  const onMicPress = useCallback(() => {
+    voice.toggle();
+  }, [voice]);
 
   // The avatar no longer flashes a verdict. A conversation partner who lights
   // up green when you form a correct sentence is grading you, not talking.
@@ -601,15 +643,16 @@ export default function ConversationScreen() {
                 return (
                   <View key={i} style={styles.learner}>
                     <Text style={styles.learnerText} selectable>
-                      {m.text}
+                      {m.display || m.text}
                     </Text>
+                    {!!m.langs && <Text style={styles.learnerLangs}>{m.langs}</Text>}
                   </View>
                 );
               case "aside":
                 return (
-                  <View key={i} style={styles.aside}>
-                    <Text style={styles.asideText}>{m.text}</Text>
-                  </View>
+                  <Text key={i} style={styles.asideText}>
+                    {m.text}
+                  </Text>
                 );
               case "status":
                 return (
@@ -629,54 +672,38 @@ export default function ConversationScreen() {
 
           {recActive && (
             <View style={styles.recBanner}>
-              <Ionicons name="radio-button-on" size={12} color={color.bad} />
+              <Ionicons name="radio-button-on" size={12} color={onFill.text} />
               <Text style={styles.recText}>Listening… tap the mic when done</Text>
             </View>
           )}
 
           {done && (
             <View style={styles.doneCard}>
-              <Text style={styles.doneTitle}>🙏 Wonderful practice</Text>
+              <Text style={styles.doneTitle}>Wonderful practice</Text>
               <Text style={styles.doneSub}>That was the conversation.</Text>
             </View>
           )}
         </ScrollView>
 
         <View style={styles.inputBar}>
-          <Pressable
-            onPress={() =>
-              speakAgain(
-                lastTalk?.reply_devanagari || node?.devanagari || "",
-                lastTalk?.reply_devanagari ? "sa" : node?.lang || "sa",
-              )
-            }
-            style={styles.replay}
-            disabled={isSpeaking || (!lastTalk && !node)}
-            accessibilityRole="button"
-            accessibilityLabel="Replay the tutor's last line"
-            accessibilityState={{ disabled: isSpeaking }}
-          >
-            <Ionicons name="volume-high" size={20} color={color.inkSoft} />
-          </Pressable>
-
           {IS_NATIVE && (
             <Animated.View style={micPulseStyle}>
               <Pressable
                 onPress={onMicPress}
-                disabled={busy && !recActive}
+                disabled={(busy || voiceBusy) && !recActive}
                 style={[
                   styles.mic,
                   recActive && styles.micActive,
-                  busy && !recActive && styles.micDisabled,
+                  (busy || voiceBusy) && !recActive && styles.micDisabled,
                 ]}
                 accessibilityRole="button"
                 accessibilityLabel={recActive ? "Stop recording" : "Start recording"}
-                accessibilityState={{ disabled: busy && !recActive }}
+                accessibilityState={{ disabled: (busy || voiceBusy) && !recActive }}
               >
                 <Ionicons
-                  name={recActive ? "stop-circle" : "mic"}
-                  size={22}
-                  color={recActive ? color.bad : color.inkSoft}
+                  name={recActive ? "stop" : "mic"}
+                  size={20}
+                  color={recActive ? color.white : color.ink}
                 />
               </Pressable>
             </Animated.View>
@@ -685,12 +712,12 @@ export default function ConversationScreen() {
           <TextInput
             value={input}
             onChangeText={setInput}
-            placeholder="Say it however you like…"
+            placeholder="Say or type"
             placeholderTextColor={color.inkFaint}
             style={styles.input}
             onSubmitEditing={() => submit(input)}
             returnKeyType="send"
-            editable={!busy && !done}
+            editable={!busy && !voiceBusy && !done}
             multiline
             accessibilityRole="text"
             accessibilityLabel="Type your reply"
@@ -700,13 +727,13 @@ export default function ConversationScreen() {
               haptics.press();
               submit(input);
             }}
-            disabled={!input.trim() || busy || done}
-            style={[styles.send, (!input.trim() || busy || done) && styles.sendDisabled]}
+            disabled={!input.trim() || busy || voiceBusy || done}
+            style={[styles.send, (!input.trim() || busy || voiceBusy || done) && styles.sendDisabled]}
             accessibilityRole="button"
             accessibilityLabel="Send reply"
-            accessibilityState={{ disabled: !input.trim() || busy || done }}
+            accessibilityState={{ disabled: !input.trim() || busy || voiceBusy || done }}
           >
-            <Ionicons name="send" size={18} color={color.white} />
+            <Ionicons name="arrow-up" size={20} color={color.white} />
           </Pressable>
         </View>
       </Animated.View>
@@ -732,108 +759,130 @@ const styles = StyleSheet.create({
 
   // ── One tutor turn ──────────────────────────────────────────────────
   turn: { gap: space.sm },
+  // The Sanskrit reply with its replay button on the right.
+  replyRow: { flexDirection: "row", alignItems: "flex-start", gap: space.sm },
+  replyPress: { flex: 1 },
+  // The Sanskrit is the thing to read, so it is the biggest thing here.
+  // Devanagari needs vertical room: `sanskritText` sets a 1.75x line box so
+  // matras above and conjuncts below stop clipping.
+  replyDev: { ...sanskritText(24), color: color.ink },
+  replyRoman: {
+    fontFamily: "Nunito_400Regular",
+    fontStyle: "italic",
+    fontWeight: "400",
+    fontSize: 13,
+    color: color.inkSoft,
+    lineHeight: 19,
+    marginTop: 2,
+  },
+  replayRound: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    borderWidth: 1.5,
+    borderColor: color.ink,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 4,
+  },
+  nativeRow: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: 6 },
+  // 16pt in the readable tutor colour. The script face upgrades on load.
+  native: { flex: 1, color: color.tutorText },
+
+  // Two small tabs on one row, then their panels.
+  tabRow: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: 10 },
+  tab: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    height: 32,
+    paddingHorizontal: space.sm,
+    borderRadius: 8,
+  },
+  tabFix: { backgroundColor: fill.saffron },
+  tabWhy: { backgroundColor: fill.teal },
+  tabText: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 12,
+    color: onFill.text,
+  },
+  tabSpacer: { flex: 1 },
+  panel: { borderRadius: 12, padding: space.sm, gap: 2, marginTop: space.xs },
+  fixPanel: { backgroundColor: fill.saffron },
+  whyPanel: { backgroundColor: fill.teal },
+  panelLabel: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 10,
+    // Cream, not gold: gold labels are below 4.5:1 on the saffron fill.
+    color: onFill.text,
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+  },
+  fixDev: { ...sanskritText(20), color: onFill.text },
+  fixRoman: {
+    fontFamily: "Nunito_400Regular",
+    fontWeight: "400",
+    fontSize: font.sizes.sm,
+    color: onFill.soft,
+    lineHeight: 20,
+  },
+  fixNote: {
+    fontFamily: "Nunito_500Medium",
+    fontWeight: "500",
+    fontSize: 13,
+    color: onFill.text,
+    lineHeight: 19,
+    marginTop: 4,
+  },
   readBack: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
     fontSize: font.sizes.xs,
-    color: color.inkFaint,
+    color: onFill.soft,
     lineHeight: 17,
-  },
-  fixCard: {
-    backgroundColor: color.saffronLight,
-    borderRadius: radius.md,
-    padding: space.md,
-    gap: 2,
-    borderLeftWidth: 3,
-    borderLeftColor: color.saffron,
-  },
-  fixHead: { flexDirection: "row", alignItems: "center", gap: space.xxs, marginBottom: 4 },
-  fixLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 10,
-    color: color.saffronText,
-    textTransform: "uppercase",
-    letterSpacing: 0.8,
-  },
-  // Devanagari needs vertical room its rounded UI face never got. `sanskritText`
-  // sets a 1.75x line box so matras above and conjuncts below stop clipping.
-  fixDev: { ...sanskritText(font.sizes.lg), color: color.ink },
-  fixNote: {
-    fontFamily: "Nunito_500Medium",
-    fontWeight: "500",
-    fontSize: font.sizes.xs,
-    color: color.saffronText,
-    lineHeight: 18,
-    marginTop: 4,
-  },
-
-  // The Sanskrit is the thing to read, so it is the biggest thing here.
-  replyDev: { ...sanskritText(font.sizes.xl), color: color.ink },
-  roman: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    letterSpacing: 0.2,
-    marginTop: 2,
-  },
-  nativeRow: { flexDirection: "row", alignItems: "center", gap: space.xs },
-  native: { flex: 1, color: color.tutor },
-
-  whyCard: {
-    backgroundColor: color.surface,
-    borderRadius: radius.md,
-    padding: space.md,
-    borderWidth: 1,
-    borderColor: color.border,
-    marginTop: space.xxs,
-  },
-  whyLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 10,
-    color: color.inkFaint,
-    textTransform: "uppercase",
-    letterSpacing: 0.8,
-    marginBottom: 4,
   },
   why: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
-    fontSize: font.sizes.base,
-    color: color.ink,
-    lineHeight: 25,
+    fontSize: font.sizes.sm,
+    color: onFill.text,
+    lineHeight: 21,
   },
 
   // ── The learner's own line ──────────────────────────────────────────
   learner: {
     alignSelf: "flex-end",
     maxWidth: "88%",
-    backgroundColor: color.learnerBg,
-    borderRadius: radius.lg,
+    backgroundColor: fill.ink,
+    borderRadius: 14,
+    borderBottomRightRadius: 4,
     paddingHorizontal: space.md,
     paddingVertical: space.sm,
-    ...shadow.card,
   },
-  learnerText: { ...script("semibold"), fontSize: font.sizes.base, color: color.ink, lineHeight: 24 },
+  learnerText: {
+    ...script("semibold"),
+    fontSize: font.sizes.base,
+    color: onFill.text,
+    lineHeight: 24,
+  },
+  learnerLangs: {
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
+    fontSize: 11,
+    color: onFill.gold,
+    marginTop: 3,
+  },
 
-  aside: {
-    alignSelf: "center",
-    maxWidth: "92%",
-    backgroundColor: color.surfaceMuted,
-    borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
-    borderLeftWidth: 3,
-    borderLeftColor: color.saffron,
-  },
   asideText: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
     fontSize: font.sizes.sm,
     color: color.inkSoft,
     lineHeight: 21,
+    alignSelf: "center",
+    textAlign: "center",
   },
   status: {
     ...sanskritText(font.sizes.md),
@@ -841,15 +890,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textAlign: "center",
   },
+  // One line on the page: what happened and what to do.
   errorCard: {
     flexDirection: "row",
     alignItems: "center",
     gap: space.xs,
     alignSelf: "center",
-    backgroundColor: color.badBg,
-    borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
   },
   errorText: {
     flex: 1,
@@ -865,91 +911,83 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: space.xs,
     alignSelf: "center",
-    backgroundColor: "#FDE8E8",
-    borderRadius: radius.pill,
-    paddingHorizontal: space.lg,
+    backgroundColor: fill.ink,
+    borderRadius: 8,
+    paddingHorizontal: space.md,
     paddingVertical: space.sm,
   },
   recText: {
     fontFamily: "Nunito_700Bold",
     fontWeight: "700",
     fontSize: font.sizes.sm,
-    color: color.bad,
+    color: onFill.text,
   },
   doneCard: {
-    backgroundColor: color.okBg,
+    backgroundColor: fill.sage,
     borderRadius: radius.lg,
     padding: space.lg,
     alignItems: "center",
-    ...shadow.card,
   },
   doneTitle: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
     fontSize: font.sizes.md,
-    color: color.ok,
+    color: onFill.text,
   },
   doneSub: {
     fontFamily: "Nunito_500Medium",
     fontWeight: "500",
     fontSize: font.sizes.sm,
-    color: color.inkSoft,
+    color: onFill.soft,
     marginTop: 4,
   },
 
   inputBar: {
     flexDirection: "row",
-    alignItems: "flex-end",
-    padding: space.md,
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     backgroundColor: color.surface,
     borderTopWidth: 1,
     borderTopColor: color.border,
-    gap: space.sm,
-  },
-  replay: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: color.surfaceMuted,
-    alignItems: "center",
-    justifyContent: "center",
+    gap: 8,
   },
   mic: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: color.surfaceMuted,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 2,
-    borderColor: "transparent",
+    borderWidth: 1.5,
+    borderColor: color.ink,
   },
-  micActive: { backgroundColor: "#FDE8E8", borderColor: color.bad },
+  micActive: { backgroundColor: fill.bad, borderColor: fill.bad },
   micDisabled: { opacity: 0.4 },
   input: {
     flex: 1,
-    borderWidth: 2,
-    borderColor: color.border,
-    borderRadius: radius.md,
-    paddingHorizontal: space.md,
-    paddingVertical: space.sm,
+    borderWidth: 1.5,
+    borderColor: outline,
+    borderRadius: 12,
+    backgroundColor: color.white,
+    paddingHorizontal: space.sm,
+    paddingVertical: 8,
     fontSize: font.sizes.base,
     fontFamily: "Nunito_600SemiBold",
     fontWeight: "600",
     color: color.ink,
-    minHeight: 44,
+    minHeight: 40,
     // Grow with the text, then scroll. Unbounded `multiline` let a long
     // paste push the mic and send buttons off the bottom of the screen.
-    maxHeight: 120,
+    maxHeight: 96,
   },
   send: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: color.saffron,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: color.saffronBtn,
     alignItems: "center",
     justifyContent: "center",
-    ...shadow.button,
   },
   sendDisabled: { opacity: 0.4 },
 });

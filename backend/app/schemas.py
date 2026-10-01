@@ -535,6 +535,11 @@ class STTResponse(BaseModel):
     # Saaras' confidence in `language_code`, on auto-detect only. Diagnostic:
     # nothing thresholds it, because Sanskrit came back en-IN at 1.0.
     language_probability: Optional[float] = None
+    # The mix as it was said (Saaras codemix pass): Indic words in native
+    # script, English words in Latin. Equals `transcript` unless the auto
+    # pass won and the codemix pass agreed on the predominant language.
+    # Feeds display only — never the tutor. Old apps ignore it.
+    display: str = ""
 
 
 # ─── Daily word (P12) ───

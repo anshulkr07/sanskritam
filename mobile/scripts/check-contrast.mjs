@@ -129,6 +129,44 @@ if (btn) {
   console.log(`\n  saffronBtn ${btn}  white label ${r.toFixed(2)}:1  ${r < 4.5 ? "FAIL" : "ok"}`);
 }
 
+// ── Deep solid fills (theme.ts `fill` + `onFill`) ───────────────────────
+// Cream text must pass 4.5:1 on every fill. The gold small-label colour is
+// allowed only on fills where it passes 4.5:1 — never on saffron, gold or ok
+// (measured 3.73 / 3.90 / 3.03: small labels there are cream, not gold).
+const CREAM = "#FFF8EE";
+const ON_GOLD = "#F2C879";
+// bad is excluded too: gold on #B3261E measures 4.14:1, below the 4.5 bar,
+// so small labels on a bad fill are cream, not gold.
+const GOLD_EXCLUDED = new Set(["saffron", "gold", "ok", "bad"]);
+const fillBlock = themeSrc.match(/export const fill = \{([\s\S]*?)\} as const;/);
+const FILLS = [];
+if (fillBlock) {
+  for (const m of fillBlock[1].matchAll(/(\w+):\s*"(#\w{6})"/g)) {
+    FILLS.push({ name: m[1], hex: m[2] });
+  }
+}
+if (FILLS.length === 0) {
+  console.error("  Could not read the fill table from src/theme.ts.\n");
+  process.exit(1);
+}
+console.log("  Deep fills (cream body text 4.5:1; gold label 4.5:1 where allowed)");
+console.log("  fill       cream     gold label");
+console.log("  " + "-".repeat(38));
+for (const f of FILLS) {
+  const rc = ratio(CREAM, f.hex);
+  const rg = ratio(ON_GOLD, f.hex);
+  let mark = "ok";
+  if (rc < 4.5) {
+    failed++;
+    mark = "FAIL";
+  } else if (!GOLD_EXCLUDED.has(f.name) && rg < 4.5) {
+    failed++;
+    mark = "FAIL";
+  }
+  const goldTxt = GOLD_EXCLUDED.has(f.name) ? "   n/a " : rg.toFixed(2).padStart(7);
+  console.log(`  ${f.name.padEnd(10)} ${rc.toFixed(2).padStart(5)}:1  ${goldTxt}   ${mark}`);
+}
+
 console.log("");
 if (failed > 0) {
   console.error(`  ${failed} token(s) below their required contrast.\n`);

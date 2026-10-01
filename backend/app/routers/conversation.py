@@ -114,6 +114,8 @@ class TalkOut(BaseModel):
     """
 
     read_back: str = Field(default="", description="What the learner said, and in which languages.")
+    heard: str = Field(default="", description="The learner's line, word for word, each word in its own script. Voice turns only.")
+    heard_langs: list[str] = Field(default_factory=list, description="Languages used, in order of first appearance, as English names.")
     fix: FixOut = Field(default_factory=FixOut)
     reply_devanagari: str = Field(default="", description="The tutor's reply in Sanskrit.")
     reply_roman: str = Field(default="", description="IAST of reply_devanagari, from services/iast.py.")
@@ -450,6 +452,8 @@ def _talk_out(reply, lang_source: str) -> TalkOut:
     lang = lang_detect.get(reply.native_lang)
     return TalkOut(
         read_back=reply.read_back,
+        heard=reply.heard,
+        heard_langs=list(reply.heard_langs or []),
         fix=FixOut(
             needed=reply.fix_needed,
             devanagari=reply.fix_dev,
@@ -773,6 +777,9 @@ async def _turn_llm(
         situation=situation,
         target_features=features,
         native_lang=native_lang,
+        # Only voice turns re-script the line (the request carries stt_lang
+        # for those); a typed line is always shown exactly as typed.
+        want_heard=bool(stt_lang),
     )
     tutor_ms = (time.perf_counter() - t_tutor) * 1000
     if reply.source == "degraded":

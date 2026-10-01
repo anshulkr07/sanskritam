@@ -18,7 +18,12 @@ import httpx
 import pytest
 
 from app.services.audio_meta import audio_seconds, estimate_seconds
-from app.services.learner_stt import pick_transcript, reads_as_sanskrit, transcribe_learner
+from app.services.learner_stt import (
+    pick_display,
+    pick_transcript,
+    reads_as_sanskrit,
+    transcribe_learner,
+)
 from app.services.sarvam import SarvamError
 
 
@@ -134,6 +139,72 @@ def test_reads_as_sanskrit_refuses_hindi_and_blanks():
     assert not reads_as_sanskrit("")
 
 
+# ─── pick_display: the mix as it was said ──────────────────────────────
+# Transcripts below are verbatim from the 2026-10-01 codemix bench
+# (Bulbul-voiced stand-ins, scripts/bench_codemix.py).
+
+
+def test_display_keeps_hindi_and_english_mixed():
+    auto = _auto("नमस्ते, आज का टेंपरेचर कितना है?", "hi-IN", 0.971)
+    codemix = _auto("नमस्ते आज का temperature कितना है?", "hi-IN", 0.998)
+    chosen, source = pick_transcript(auto, _sa("नमस्ते, आज का टेम्परेचर कितना है?"))
+    assert source == "auto"
+    assert pick_display(chosen, source, auto, codemix) == "नमस्ते आज का temperature कितना है?"
+
+
+def test_display_keeps_kannada_and_english_mixed():
+    auto = _auto("ನನಗೆ ಸಂಸ್ಕೃತ ಕಲಿಯಬೇಕು ಪ್ಲೀಸ್ ಹೆಲ್ಪ್ ಮಿ.", "kn-IN", 0.904)
+    codemix = _auto("ನನಗೆ ಸಂಸ್ಕೃತ ಕಲಿಯಬೇಕು please help me.", "kn-IN", 0.999)
+    chosen, source = pick_transcript(auto, _sa("मला संस्कृत शिकायबेकु प्लीज हेल्प मी।"))
+    assert source == "auto"
+    assert pick_display(chosen, source, auto, codemix) == "ನನಗೆ ಸಂಸ್ಕೃತ ಕಲಿಯಬೇಕು please help me."
+
+
+def test_display_rejects_a_romanized_codemix_answer():
+    """Codemix v4 answered en-IN, fully romanized — the hi-IN Devanagari
+    transcript stands."""
+    auto = _auto("अहं गच्छामि बट कल नहीं।", "hi-IN", 0.592)
+    codemix = _auto("Aham Gachhami but kal Nahi.", "en-IN", 0.5)
+    chosen, source = pick_transcript(auto, _sa("अहं गच्छामि बट कल नहीं।"))
+    assert source == "auto"
+    assert pick_display(chosen, source, auto, codemix) == "अहं गच्छामि बट कल नहीं।"
+
+
+def test_display_is_the_transcript_when_sanskrit_wins():
+    """Codemix v4 romanized pure Sanskrit; the pinned pass won anyway."""
+    auto = _auto("I am Vidyalayam Gachchami.", "en-IN", 0.939)
+    codemix = _auto("Aham Vidyalayam Gachchhami.", "en-IN", 0.872)
+    chosen, source = pick_transcript(auto, _sa("अहं विद्यालयं गच्छामि।"))
+    assert source == "sanskrit"
+    assert pick_display(chosen, source, auto, codemix) == "अहं विद्यालयं गच्छामि।"
+
+
+def test_display_falls_back_on_empty_or_missing_codemix():
+    auto = _auto("मेरा नाम अंशु है। मैं संस्कृत सीख रहा हूँ।", "hi-IN", 0.679)
+    chosen, source = pick_transcript(auto, _sa("मेरा नाम अंशु है। मैं संस्कृत सीख रहा हूँ।"))
+    assert pick_display(chosen, source, auto, None) == chosen["transcript"]
+    assert pick_display(chosen, source, auto, _auto("", "hi-IN")) == chosen["transcript"]
+    assert pick_display(chosen, source, auto, SarvamError(500, "boom")) == chosen["transcript"]
+
+
+def test_a_failed_codemix_pass_never_fails_the_turn():
+    """The codemix pass is display-only: its failure is logged, not raised."""
+
+    async def stt(**kwargs):
+        if kwargs.get("mode") == "codemix":
+            raise SarvamError(500, "boom")
+        if kwargs["language_code"] == "sa-IN":
+            return _sa("मेरा नाम अंशु है। मैं संस्कृत सीख रहा हूँ।")
+        return _auto("मेरा नाम अंशु है। मैं संस्कृत सीख रहा हूँ।", "hi-IN", 0.679)
+
+    mock = AsyncMock()
+    mock.speech_to_text.side_effect = stt
+    out = asyncio.run(transcribe_learner(mock, b"audio"))
+    assert out["transcript"] == "मेरा नाम अंशु है। मैं संस्कृत सीख रहा हूँ।"
+    assert out["display"] == out["transcript"]
+    assert mock.speech_to_text.await_count == 3
+
+
 # ─── transcribe_learner: both passes, concurrently ───────────────────────
 
 
@@ -160,7 +231,7 @@ class _FakeSarvam:
         return dict(self.answers[code])
 
 
-def test_both_passes_run_together_with_the_same_model():
+def test_all_three_passes_run_together_with_the_same_model():
     fake = _FakeSarvam({
         "unknown": _auto("My name is Anshul. I read Sanskrit.", "en-IN"),
         "sa-IN": _sa("मम नाम अंशुलः। अहं संस्कृतं पठामि।"),
@@ -168,7 +239,12 @@ def test_both_passes_run_together_with_the_same_model():
     out = asyncio.run(transcribe_learner(fake, b"audio", filename="r.m4a", model="saaras:v4"))
     assert out["transcript"] == "मम नाम अंशुलः। अहं संस्कृतं पठामि।"
     assert out["source"] == "sanskrit"
-    assert sorted(c["language_code"] for c in fake.calls) == ["sa-IN", "unknown"]
+    # The Sanskrit pass won, so display equals the transcript, not the
+    # auto/codemix English.
+    assert out["display"] == "मम नाम अंशुलः। अहं संस्कृतं पठामि।"
+    assert sorted(c["language_code"] for c in fake.calls) == ["sa-IN", "unknown", "unknown"]
+    assert sorted(c.get("mode", "transcribe") for c in fake.calls) == [
+        "codemix", "transcribe", "transcribe"]
     assert {c["model"] for c in fake.calls} == {"saaras:v4"}
     assert {c["filename"] for c in fake.calls} == {"r.m4a"}
 
@@ -237,9 +313,10 @@ def test_talk_stt_keeps_sanskrit_and_reports_it(client):
             headers=h,
         )
     assert r.status_code == 200, r.text
+    # The Sanskrit pass won, so display equals the transcript.
     assert r.json() == {"transcript": "अहं गच्छसि।", "language_code": "sa-IN",
-                        "language_probability": None}
-    assert mock.speech_to_text.await_count == 2
+                        "language_probability": None, "display": "अहं गच्छसि।"}
+    assert mock.speech_to_text.await_count == 3
 
 
 def test_talk_stt_keeps_the_learners_language(client):
@@ -256,8 +333,9 @@ def test_talk_stt_keeps_the_learners_language(client):
             headers=h,
         )
     assert r.status_code == 200, r.text
+    # The auto pass won and the stubbed codemix agrees, so display matches.
     assert r.json() == {"transcript": "ನನ್ನ ಹೆಸರು ಅಂಶುಲ್.", "language_code": "kn-IN",
-                        "language_probability": 0.999}
+                        "language_probability": 0.999, "display": "ನನ್ನ ಹೆಸರು ಅಂಶುಲ್."}
 
 
 def test_a_pinned_language_is_still_one_call(client):

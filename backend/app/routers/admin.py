@@ -146,6 +146,38 @@ def get_content_wells(
     return content_well_report(db)
 
 
+@router.get("/admin/reports")
+def list_content_reports(
+    limit: int = Query(50, ge=1, le=200),
+    _auth: bool = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Learner-flagged AI replies, newest first — the Play policy queue."""
+    from app.models import ContentReport
+
+    rows = (
+        db.query(ContentReport)
+        .order_by(ContentReport.created_at.desc(), ContentReport.id.desc())
+        .limit(limit)
+        .all()
+    )
+    return {
+        "count": len(rows),
+        "reports": [
+            {
+                "id": r.id,
+                "learner_id": r.learner_id,
+                "surface": r.surface,
+                "question": r.question,
+                "answer": r.answer,
+                "reason": r.reason,
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+            }
+            for r in rows
+        ],
+    }
+
+
 @router.get("/admin/errors")
 def get_recent_errors(
     limit: int = Query(50, ge=1, le=200),

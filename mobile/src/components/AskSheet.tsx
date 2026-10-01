@@ -7,21 +7,23 @@
 // keyboard (react-native-keyboard-controller) and the Android back button
 // closes it.
 //
-// The answer has TWO SHAPES and they must not look alike (U11-2):
+// The answer has THREE SHAPES and they must not look alike (U11-2):
 //   • an ENGINE answer is a derivation — ordered steps with sūtra numbers via
 //     U7-1's SutraCard (never a second derivation renderer) — and is
 //     authoritative;
-//   • a MODEL answer is prose and is help, shown as plain text.
+//   • a MODEL answer is prose and is help, shown as plain text;
+//   • a CARD answer is a shaped wider answer (festivals, tithi, home
+//     practice): title, dates, steps and terms, with no white box around it.
 //
-// U11-3: no spinner on the engine path (it is instant and local); a
-// content-shaped skeleton on the model path; a retryable error state, never a
-// silent empty sheet (U10-3). When the daily quota is spent the sheet says so
-// plainly and still shows what it can (routed_to='engine_fallback').
+// The sheet enters straight up, never with a bounce. The input row carries
+// "This screen" (scan), the mic, the box and send. Suggestions are plain
+// rows, not chips.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   BackHandler,
+  Image,
   Keyboard,
   Pressable,
   ScrollView,
@@ -29,16 +31,37 @@ import {
   Text,
   TextInput,
   View,
+  type View as RNView,
 } from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
-import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from "react-native-reanimated";
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  SlideInDown,
+  SlideOutDown,
+} from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { captureRef } from "react-native-view-shot";
 
-import { ApiError, api, type AskEngineBlock, type AskResponse } from "../api/client";
+import {
+  ApiError,
+  api,
+  type AskCard,
+  type AskEngineBlock,
+  type AskPlace,
+  type AskResponse,
+} from "../api/client";
 import SutraCard from "./derivation/SutraCard";
 import { Skeleton } from "./Skeleton";
+import PlaceChooser from "./PlaceChooser";
+import ReportButton from "./ReportButton";
 import { haptics } from "../services/haptics";
-import { color, font, radius, script, space } from "../theme";
+import { getPhotoRecogniser } from "../services/photoRecogniser";
+import { getPlace, type Place } from "../services/place";
+import { useVoiceInput } from "../hooks/useVoiceInput";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import { color, fill, font, onFill, outline, radius, script, space } from "../theme";
 import { plain } from "../utils/text";
 
 export interface AskContext {
@@ -52,31 +75,69 @@ interface AskSheetProps {
   visible: boolean;
   context: AskContext | null;
   onClose: () => void;
+  /** Ref to the app content (bubble and sheet excluded) for screen capture. */
+  contentRef: React.RefObject<RNView | null>;
 }
 
 type Phase =
   | { kind: "idle" }
   | { kind: "loading"; question: string }
-  | { kind: "answer"; data: AskResponse; question: string }
+  | { kind: "answer"; data: AskResponse; question: string; place: AskPlace | null }
   | { kind: "error"; message: string; question: string };
 
-/** One tap asks; most questions need no typing. */
-function suggestionsFor(surface: string, hasSubject: boolean): string[] {
+interface Attachment {
+  uri: string;
+  text: string;
+  surfaceName: string;
+}
+
+const SCREEN_NAMES: Record<string, string> = {
+  grammar: "Grammar",
+  shloka: "Verse",
+  lesson: "Lesson",
+  challenge: "Challenge",
+  varnamala: "Letter",
+  read: "Reading",
+  home: "Home",
+  general: "Sanskritam",
+};
+
+function screenName(surface: string): string {
+  return SCREEN_NAMES[surface] ?? surface;
+}
+
+/** One tap asks; most questions need no typing. Plain rows, not chips. */
+function suggestionsFor(surface: string, hasSubject: boolean, hasScreen: boolean): string[] {
+  if (hasScreen) {
+    return ["What does this mean?", "Explain the grammar", "Give me one more example"];
+  }
   if (hasSubject && surface === "shloka") {
     return ["What does this verse mean?", "Split it into words", "What metre is this?"];
   }
-  if (hasSubject) return ["What does this mean?", "How do I say it?", "Explain the grammar"];
-  return ["How do I say hello?", "What is sandhi?", "What are the cases?"];
+  return ["How do I say hello?", "What is today's tithi?", "What is sandhi?"];
 }
 
-async function send(surface: string, subject: string, question: string): Promise<AskResponse> {
-  if (subject) return api.ask(surface, subject, question);
+async function send(
+  surface: string,
+  subject: string,
+  question: string,
+  screenText: string,
+  place: AskPlace | null,
+): Promise<AskResponse> {
+  const opts = {
+    ...(screenText ? { screenText } : {}),
+    ...(place ? { place } : {}),
+    cards: true,
+  };
+  if (subject) return api.ask(surface, subject, question, opts);
   try {
-    return await api.ask("general", "", question);
+    return await api.ask("general", "", question, opts);
   } catch (e) {
     // A backend from before free questions were allowed rejects an empty
     // subject (422). Send the question as the subject instead.
-    if (e instanceof ApiError && e.status === 422) return api.ask("general", question, question);
+    if (e instanceof ApiError && e.status === 422) {
+      return api.ask("general", question, question, opts);
+    }
     throw e;
   }
 }
@@ -90,19 +151,57 @@ function errorMessage(e: unknown): string {
   return "Something went wrong. Try again.";
 }
 
-export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
+function deleteTempFile(uri: string) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const FileSystem = require("expo-file-system/legacy");
+    FileSystem.deleteAsync(uri, { idempotent: true }).catch(() => {});
+  } catch {
+    // No filesystem module (web): nothing to clean up.
+  }
+}
+
+export default function AskSheet({ visible, context, onClose, contentRef }: AskSheetProps) {
   const insets = useSafeAreaInsets();
+  const reduced = useReducedMotion();
   const [phase, setPhase] = useState<Phase>({ kind: "idle" });
   const [question, setQuestion] = useState("");
   const [useSubject, setUseSubject] = useState(true);
+  const [attach, setAttach] = useState<Attachment | null>(null);
+  const [attaching, setAttaching] = useState(false);
+  const [attachNote, setAttachNote] = useState("");
+  const [voiceError, setVoiceError] = useState("");
+  const [choosingPlace, setChoosingPlace] = useState(false);
   const inputRef = useRef<TextInput>(null);
+  const noteTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const voiceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (noteTimer.current) clearTimeout(noteTimer.current);
+      if (voiceTimer.current) clearTimeout(voiceTimer.current);
+    },
+    [],
+  );
+
+  const clearAttach = useCallback((a: Attachment | null) => {
+    if (a) deleteTempFile(a.uri);
+  }, []);
 
   // A fresh sheet each time it opens, or when the subject it is about changes.
+  // The temp capture file is deleted with the attachment.
   useEffect(() => {
     if (visible) {
       setPhase({ kind: "idle" });
       setQuestion("");
       setUseSubject(true);
+      setChoosingPlace(false);
+      setVoiceError("");
+      setAttachNote("");
+      setAttach((a) => {
+        if (a) deleteTempFile(a.uri);
+        return null;
+      });
     }
   }, [visible, context?.surface, context?.subject]);
 
@@ -120,26 +219,96 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
   const subject = useSubject ? (context?.subject ?? "").trim() : "";
 
   const ask = useCallback(
-    async (raw: string) => {
+    async (raw: string, placeOverride?: AskPlace | null) => {
       const q = raw.trim();
       if (!q) return;
       Keyboard.dismiss();
       haptics.tap();
       setQuestion("");
+      setChoosingPlace(false);
       setPhase({ kind: "loading", question: q });
       try {
-        setPhase({ kind: "answer", data: await send(surface, subject, q), question: q });
+        const place = placeOverride ?? (await getPlace());
+        const data = await send(surface, subject, q, attach?.text ?? "", place);
+        setPhase({
+          kind: "answer",
+          data,
+          question: q,
+          place: placeOverride ?? place,
+        });
       } catch (e) {
         setPhase({ kind: "error", message: errorMessage(e), question: q });
       }
     },
-    [surface, subject],
+    [surface, subject, attach],
   );
 
   const again = useCallback(() => {
     setPhase({ kind: "idle" });
     setTimeout(() => inputRef.current?.focus(), 50);
   }, []);
+
+  const flashNote = useCallback((text: string) => {
+    setAttachNote(text);
+    if (noteTimer.current) clearTimeout(noteTimer.current);
+    noteTimer.current = setTimeout(() => setAttachNote(""), 2000);
+  }, []);
+
+  const flashVoiceError = useCallback((text: string) => {
+    setVoiceError(text);
+    if (voiceTimer.current) clearTimeout(voiceTimer.current);
+    voiceTimer.current = setTimeout(() => setVoiceError(""), 3000);
+  }, []);
+
+  const voice = useVoiceInput({
+    onResult: (r) => {
+      setVoiceError("");
+      setQuestion((r.display || r.transcript).slice(0, 300));
+    },
+    onError: (message) => flashVoiceError(message),
+  });
+
+  const attachScreen = useCallback(async () => {
+    if (attaching || attach) return;
+    haptics.tap();
+    setAttaching(true);
+    try {
+      const uri = await captureRef(contentRef, {
+        format: "jpg",
+        quality: 0.6,
+        result: "tmpfile",
+      });
+      const name = screenName(surface);
+      const bits: string[] = [];
+      bits.push(subject ? `${name}: ${subject}` : name);
+      // The on-device reader supplements the registered context. Its text
+      // never leaves the phone as an image — only the text is sent.
+      try {
+        const ocr = await getPhotoRecogniser().recognise(uri);
+        if (ocr?.text?.trim()) bits.push(ocr.text.trim());
+      } catch {
+        // Unreachable reader in this build: the registered context stands alone.
+      }
+      const text = bits.join("\n").slice(0, 1500);
+      if (!text.trim() || (!subject && bits.length < 2)) {
+        deleteTempFile(uri);
+        flashNote("Nothing to read on this screen");
+        return;
+      }
+      setAttach({ uri, text, surfaceName: name });
+    } catch {
+      flashNote("Nothing to read on this screen");
+    } finally {
+      setAttaching(false);
+    }
+  }, [attaching, attach, contentRef, surface, subject, flashNote]);
+
+  const removeAttach = useCallback(() => {
+    setAttach((a) => {
+      clearAttach(a);
+      return null;
+    });
+  }, [clearAttach]);
 
   const loading = phase.kind === "loading";
 
@@ -148,8 +317,8 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
       {visible ? (
         <>
           <Animated.View
-            entering={FadeIn.duration(140)}
-            exiting={FadeOut.duration(120)}
+            entering={reduced ? undefined : FadeIn.duration(140)}
+            exiting={reduced ? undefined : FadeOut.duration(120)}
             style={StyleSheet.absoluteFill}
           >
             <Pressable
@@ -161,8 +330,12 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
           </Animated.View>
           <KeyboardAvoidingView behavior="padding" style={styles.kav} pointerEvents="box-none">
             <Animated.View
-              entering={SlideInDown.springify().damping(22)}
-              exiting={SlideOutDown.duration(160)}
+              entering={
+                reduced
+                  ? undefined
+                  : SlideInDown.duration(180).easing(Easing.out(Easing.cubic))
+              }
+              exiting={reduced ? undefined : SlideOutDown.duration(140)}
               style={[styles.sheet, { paddingBottom: insets.bottom + space.md }]}
             >
               <View style={styles.grabber} />
@@ -198,23 +371,68 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
                 </View>
               ) : null}
 
+              {attach ? (
+                <View style={styles.attach}>
+                  <Image source={{ uri: attach.uri }} style={styles.thumb} />
+                  <View style={styles.attachText}>
+                    <Text style={styles.attachTitle}>This screen</Text>
+                    <Text style={styles.attachSub} numberOfLines={1}>
+                      {attach.surfaceName}
+                    </Text>
+                  </View>
+                  <Pressable
+                    onPress={removeAttach}
+                    hitSlop={10}
+                    accessibilityRole="button"
+                    accessibilityLabel="Remove this screen"
+                  >
+                    <Ionicons name="close-circle" size={18} color={color.inkFaint} />
+                  </Pressable>
+                </View>
+              ) : null}
+
+              {!!attachNote && <Text style={styles.note}>{attachNote}</Text>}
+
               <ScrollView
                 style={styles.scroll}
                 contentContainerStyle={styles.scrollBody}
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
               >
-                {phase.kind === "idle" ? (
-                  <View style={styles.chips}>
-                    {suggestionsFor(surface, !!subject).map((s) => (
+                {choosingPlace ? (
+                  <View>
+                    <Text style={styles.placeTitle}>Set your place</Text>
+                    <PlaceChooser
+                      onPick={(p: Place) => {
+                        const q =
+                          phase.kind === "answer" || phase.kind === "error"
+                            ? phase.question
+                            : question;
+                        if (q.trim()) void ask(q, p);
+                        else setChoosingPlace(false);
+                      }}
+                    />
+                    <Pressable
+                      onPress={() => setChoosingPlace(false)}
+                      accessibilityRole="button"
+                      accessibilityLabel="Back to the answer"
+                      style={styles.again}
+                    >
+                      <Text style={styles.againText}>Back to the answer</Text>
+                    </Pressable>
+                  </View>
+                ) : phase.kind === "idle" ? (
+                  <View style={styles.sug}>
+                    {suggestionsFor(surface, !!subject, !!attach).map((s) => (
                       <Pressable
                         key={s}
                         onPress={() => void ask(s)}
                         accessibilityRole="button"
                         accessibilityLabel={s}
-                        style={({ pressed }) => [styles.chip, pressed && styles.pressed]}
+                        style={styles.sugRow}
                       >
-                        <Text style={styles.chipText}>{s}</Text>
+                        <Text style={styles.sugText}>{s}</Text>
+                        <Ionicons name="chevron-forward" size={15} color={color.inkFaint} />
                       </Pressable>
                     ))}
                   </View>
@@ -224,7 +442,7 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
                   </Text>
                 )}
 
-                {loading ? (
+                {!choosingPlace && loading ? (
                   <View
                     style={styles.skeleton}
                     accessible
@@ -237,7 +455,7 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
                   </View>
                 ) : null}
 
-                {phase.kind === "error" ? (
+                {!choosingPlace && phase.kind === "error" ? (
                   <View style={styles.error} accessibilityRole="alert">
                     <Ionicons name="cloud-offline-outline" size={26} color={color.badText} />
                     <Text style={styles.errorText}>{phase.message}</Text>
@@ -252,9 +470,13 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
                   </View>
                 ) : null}
 
-                {phase.kind === "answer" ? (
+                {!choosingPlace && phase.kind === "answer" ? (
                   <View accessibilityLiveRegion="polite">
-                    <Answer data={phase.data} />
+                    <Answer
+                      data={phase.data}
+                      question={phase.question}
+                      onPlace={() => setChoosingPlace(true)}
+                    />
                     <Pressable
                       onPress={again}
                       accessibilityRole="button"
@@ -267,26 +489,63 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
                 ) : null}
               </ScrollView>
 
+              {!!voiceError && <Text style={styles.note}>{voiceError}</Text>}
+
               <View style={styles.inputRow}>
+                <Pressable
+                  onPress={attachScreen}
+                  disabled={attaching || !!attach}
+                  accessibilityRole="button"
+                  accessibilityLabel="Attach this screen"
+                  accessibilityState={{ disabled: attaching || !!attach }}
+                  style={[styles.round, (attaching || !!attach) && styles.roundActive]}
+                >
+                  <Ionicons
+                    name="scan-outline"
+                    size={20}
+                    color={attaching || !!attach ? onFill.text : color.ink}
+                  />
+                </Pressable>
+                <Pressable
+                  onPress={voice.toggle}
+                  disabled={voice.busy && !voice.recording}
+                  accessibilityRole="button"
+                  accessibilityLabel={voice.recording ? "Stop recording" : "Dictate your question"}
+                  accessibilityState={{ disabled: voice.busy && !voice.recording }}
+                  style={[
+                    styles.round,
+                    voice.recording && styles.roundRecording,
+                    voice.busy && !voice.recording && styles.roundOff,
+                  ]}
+                >
+                  <Ionicons
+                    name={voice.recording ? "stop" : "mic-outline"}
+                    size={20}
+                    color={voice.recording ? color.white : color.ink}
+                  />
+                </Pressable>
                 <TextInput
                   ref={inputRef}
                   style={styles.input}
                   value={question}
-                  onChangeText={setQuestion}
+                  onChangeText={(t) => {
+                    setQuestion(t);
+                    if (voiceError) setVoiceError("");
+                  }}
                   placeholder="Type a question"
                   placeholderTextColor={color.inkFaint}
                   multiline
                   maxLength={300}
-                  editable={!loading}
+                  editable={!loading && !voice.busy}
                   accessibilityLabel="Your question"
                 />
                 <Pressable
                   onPress={() => void ask(question)}
-                  disabled={loading || !question.trim()}
+                  disabled={loading || voice.busy || !question.trim()}
                   accessibilityRole="button"
                   accessibilityLabel="Send"
-                  accessibilityState={{ disabled: loading || !question.trim() }}
-                  style={[styles.send, (loading || !question.trim()) && styles.sendOff]}
+                  accessibilityState={{ disabled: loading || voice.busy || !question.trim() }}
+                  style={[styles.send, (loading || voice.busy || !question.trim()) && styles.sendOff]}
                 >
                   <Ionicons name="arrow-up" size={22} color={color.white} />
                 </Pressable>
@@ -301,7 +560,15 @@ export default function AskSheet({ visible, context, onClose }: AskSheetProps) {
 
 // ─── Answers ──────────────────────────────────────────────────────────
 
-function Answer({ data }: { data: AskResponse }) {
+function Answer({
+  data,
+  question,
+  onPlace,
+}: {
+  data: AskResponse;
+  question: string;
+  onPlace: () => void;
+}) {
   if (data.routed_to === "engine") {
     return <EngineAnswer blocks={data.engine.blocks ?? []} explanation={data.explanation} />;
   }
@@ -313,7 +580,91 @@ function Answer({ data }: { data: AskResponse }) {
       </View>
     );
   }
-  return <Text style={styles.prose}>{plain(data.explanation)}</Text>;
+  if (data.card) {
+    return <CardAnswer card={data.card} explanation={data.explanation} question={question} onPlace={onPlace} />;
+  }
+  return (
+    <View>
+      <Text style={styles.prose}>{plain(data.explanation)}</Text>
+      <ReportButton surface="ask" question={question} answer={data.explanation} />
+    </View>
+  );
+}
+
+function CardAnswer({
+  card,
+  explanation,
+  question,
+  onPlace,
+}: {
+  card: AskCard;
+  explanation: string;
+  question: string;
+  onPlace: () => void;
+}) {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>
+        {card.title}
+        {!!card.title_sa && <Text style={styles.cardTitleSa}> {card.title_sa}</Text>}
+      </Text>
+
+      {!!card.when?.text && (
+        <View style={styles.when}>
+          <Text style={styles.whenText}>{card.when.text}</Text>
+          {!!card.when.note && <Text style={styles.whenNote}>{card.when.note}</Text>}
+        </View>
+      )}
+
+      {card.place_needed ? (
+        <Pressable
+          onPress={onPlace}
+          accessibilityRole="button"
+          accessibilityLabel="Set your place"
+          style={styles.setPlace}
+        >
+          <Text style={styles.setPlaceText}>Set your place</Text>
+          <Ionicons name="chevron-forward" size={15} color={color.inkFaint} />
+        </Pressable>
+      ) : null}
+
+      {!!card.summary && <Text style={styles.cardSummary}>{plain(card.summary)}</Text>}
+
+      {(card.sections ?? []).map((s, i) => (
+        <View key={i} style={styles.section}>
+          {!!s.heading && <Text style={styles.sectionHead}>{s.heading}</Text>}
+          {(s.items ?? []).map((item, j) => (
+            <Text key={j} style={styles.sectionItem}>
+              {s.style === "steps" ? `${j + 1}. ${plain(item)}` : `• ${plain(item)}`}
+            </Text>
+          ))}
+        </View>
+      ))}
+
+      {(card.terms ?? []).length > 0 && (
+        <View style={styles.section}>
+          <Text style={styles.sectionHead}>Words</Text>
+          {(card.terms ?? []).map((t, i) => (
+            <Text key={i} style={styles.term}>
+              <Text style={[styles.termSa, script("semibold")]}>{t.sa} </Text>
+              <Text style={styles.termRest}>
+                {t.iast} · {t.meaning}
+              </Text>
+            </Text>
+          ))}
+        </View>
+      )}
+
+      {!!card.caution && (
+        <View style={styles.caution}>
+          <Ionicons name="alert-circle-outline" size={15} color={color.badText} />
+          <Text style={styles.cautionText}>{plain(card.caution)}</Text>
+        </View>
+      )}
+
+      <ReportButton surface="ask" question={question} answer={explanation} />
+    </View>
+  );
 }
 
 function Badge({ text, tone }: { text: string; tone: "explain" | "warn" }) {
@@ -428,20 +779,34 @@ const styles = StyleSheet.create({
   },
   aboutLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.saffronText },
   aboutSubject: { flexShrink: 1, fontSize: font.sizes.base, color: color.ink },
+  attach: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    marginTop: space.xs,
+    padding: space.xs,
+    borderWidth: 1.5,
+    borderColor: outline,
+    borderRadius: 12,
+  },
+  thumb: { width: 34, height: 46, borderRadius: 6, backgroundColor: color.border },
+  attachText: { flex: 1 },
+  attachTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
+  attachSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
+  note: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, marginTop: space.xs },
   scroll: { flexGrow: 0, flexShrink: 1 },
   scrollBody: { paddingVertical: space.sm, gap: space.sm },
-  chips: { flexDirection: "row", flexWrap: "wrap", gap: space.xs },
-  chip: {
-    minHeight: 40,
-    justifyContent: "center",
-    paddingHorizontal: space.md,
-    borderRadius: radius.pill,
-    backgroundColor: color.surfaceMuted,
-    borderWidth: 1,
-    borderColor: color.border,
+  sug: {},
+  sugRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 11,
+    borderBottomWidth: 1,
+    borderBottomColor: color.border,
+    minHeight: 44,
   },
-  chipText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
-  pressed: { opacity: 0.85 },
+  sugText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
   asked: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
   skeleton: { gap: space.xs, paddingVertical: space.xs },
   error: { alignItems: "center", gap: space.sm, paddingVertical: space.md },
@@ -450,18 +815,30 @@ const styles = StyleSheet.create({
   retryText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.saffronText },
   again: { alignSelf: "flex-start", minHeight: 44, justifyContent: "center", marginTop: space.sm },
   againText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.saffronText },
-  inputRow: { flexDirection: "row", alignItems: "flex-end", gap: space.xs, paddingTop: space.xs },
+  inputRow: { flexDirection: "row", alignItems: "center", gap: space.xs, paddingTop: space.xs },
+  round: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 1.5,
+    borderColor: color.ink,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  roundActive: { backgroundColor: fill.ink, borderColor: fill.ink },
+  roundRecording: { backgroundColor: fill.bad, borderColor: fill.bad },
+  roundOff: { opacity: 0.4 },
   input: {
     flex: 1,
-    minHeight: 48,
+    minHeight: 44,
     maxHeight: 112,
-    paddingHorizontal: space.md,
-    paddingTop: 12,
-    paddingBottom: 12,
-    borderRadius: 24,
-    backgroundColor: color.bg,
-    borderWidth: 1,
-    borderColor: color.border,
+    paddingHorizontal: space.sm,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 12,
+    backgroundColor: color.white,
+    borderWidth: 1.5,
+    borderColor: outline,
     fontFamily: "Nunito_600SemiBold",
     fontSize: font.sizes.base,
     color: color.ink,
@@ -474,6 +851,49 @@ const styles = StyleSheet.create({
   badgeWarn: { backgroundColor: color.warnBg },
   badgeText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.tutor },
   prose: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.ink, lineHeight: 24 },
+  // The card: no white box around the whole answer.
+  card: { gap: space.sm },
+  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 17, color: color.ink },
+  cardTitleSa: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 15, color: color.inkSoft },
+  when: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+    gap: space.sm,
+    backgroundColor: fill.gold,
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: space.sm,
+  },
+  whenText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
+  whenNote: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: onFill.text },
+  setPlace: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 11,
+    borderBottomWidth: 1,
+    borderBottomColor: color.border,
+    minHeight: 44,
+  },
+  setPlaceText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
+  placeTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+  cardSummary: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.ink, lineHeight: 24 },
+  section: { gap: 3, marginTop: 2 },
+  sectionHead: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 11,
+    color: color.inkSoft,
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+  },
+  sectionItem: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.ink, lineHeight: 21 },
+  term: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.inkSoft, lineHeight: 22 },
+  termSa: { fontSize: 15, color: color.ink },
+  termRest: { fontSize: font.sizes.sm, color: color.inkSoft },
+  caution: { flexDirection: "row", alignItems: "flex-start", gap: 6 },
+  cautionText: { flex: 1, fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, lineHeight: 20 },
   parseRow: { marginVertical: space.xs },
   parseWord: { fontSize: font.sizes.xl, color: color.ink },
   parseIast: { fontSize: font.sizes.sm, color: color.inkSoft, marginLeft: 6 },

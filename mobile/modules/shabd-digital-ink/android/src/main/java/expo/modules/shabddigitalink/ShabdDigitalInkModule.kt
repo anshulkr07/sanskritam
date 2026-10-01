@@ -97,8 +97,11 @@ class ShabdDigitalInkModule : Module() {
             promise.resolve(out)
           }
           .addOnFailureListener { e -> promise.reject("E_RECOGNIZE", e.message, e) }
-      } catch (e: Exception) {
-        promise.reject("E_RECOGNIZE", e.message, e)
+      } catch (e: Throwable) {
+        // Throwable, not Exception: a library mismatch surfaces as
+        // NoSuchMethodError/LinkageError, and that must become a rejected
+        // promise (JS falls back to the matcher), never a dead app.
+        promise.reject("E_RECOGNIZE", e.message, e as? Exception)
       }
     }
 
@@ -114,7 +117,8 @@ class ShabdDigitalInkModule : Module() {
       val identifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag(languageTag)
         ?: return null
       DigitalInkRecognitionModel.builder(identifier).build()
-    } catch (_: Exception) {
+    } catch (_: Throwable) {
+      // Throwable: an unknown tag or a linkage problem both mean "no model".
       null
     }
   }

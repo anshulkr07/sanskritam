@@ -89,6 +89,9 @@ class Settings(BaseSettings):
     explain_provider: str = "sarvam:sarvam-105b-conversations"
     explain_enabled: bool = True
     explain_max_tokens: int = 220
+    # Wider Ask answers with a card (services/explainer.py _WIDE_PROMPT):
+    # a title, summary, up to 3 sections and 4 terms need more headroom.
+    ask_card_max_tokens: int = 700
 
     # Free-form conversation tutor (services/tutor.py). This one IS on the
     # turn path — the 2026-09-02 decision traded §12's model-free sub-second

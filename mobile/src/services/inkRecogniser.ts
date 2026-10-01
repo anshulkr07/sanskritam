@@ -161,17 +161,17 @@ function localAdapter(mod: LocalModule): InkRecogniser {
 }
 
 export function getInkRecogniser(): InkRecogniser {
-  try {
-    // require (not import) so the app runs in Expo Go / JS bundles where the
-    // native module does not exist: src/index.ts calls requireNativeModule at
-    // load, which throws there and is caught below.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const mod = require("shabd-digital-ink");
-    if (mod?.recognize && mod?.downloadModel) {
-      return localAdapter(mod);
-    }
-  } catch {
-    // module not present or native not linked: template matcher below
+  // NOTE: a lazy require() in try/catch is NOT a guard for a native module.
+  // Metro's guardedLoadModule reports any error thrown while LOADING a module
+  // to ErrorUtils.reportFatalError before the caller's catch can see it, and
+  // in a release build that is fatal (Write crash, 2026-10-01). The module's
+  // own index.ts uses requireOptionalNativeModule (returns null, never
+  // throws), so loading it here is always safe; the isAvailable flag tells us
+  // whether the native side is actually linked.
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const mod = require("shabd-digital-ink");
+  if (mod?.isAvailable && mod?.recognize && mod?.downloadModel) {
+    return localAdapter(mod);
   }
   return matcherAdapter();
 }

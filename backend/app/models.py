@@ -928,3 +928,22 @@ class StoryCard(Base):
     __table_args__ = (
         UniqueConstraint("chapter_id", "rank", name="uq_story_chapter_rank"),
     )
+
+
+class ContentReport(Base):
+    """A learner-flagged AI reply (Play AI-Generated Content policy).
+
+    ``surface`` is "talk" or "ask"; ``question``/``answer``/``reason`` are
+    clipped to 2000 characters at the router. Rows are listed in the admin
+    router and deleted with the account.
+    """
+
+    __tablename__ = "content_reports"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    surface = Column(String(16), nullable=False, default="")
+    question = Column(Text, default="")
+    answer = Column(Text, default="")
+    reason = Column(Text, default="")
+    created_at = Column(DateTime, default=_utcnow, index=True)

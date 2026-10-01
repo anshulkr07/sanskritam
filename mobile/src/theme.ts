@@ -40,6 +40,7 @@ export const color = {
 
   // Conversation / accent
   tutor: "#5A7D9A", // tutor bubble (muted blue — human, calm)
+  tutorText: "#3F627F", // tutor body text on paper (6.1:1; #5A7D9A is 4.12:1)
   tutorBg: "#EAF1F7",
   learner: "#2FA84F", // learner bubble
   learnerBg: "#E3F6E8",
@@ -66,6 +67,38 @@ export const accent = {
 } as const;
 
 export type AccentName = keyof typeof accent;
+
+/** Deep solid fills. Text on them is onFill.text.
+ *
+ * October 2026 look rule: a coloured surface is a deep solid fill with cream
+ * text on it. Never use accent.*.bg, color.saffronLight, color.tutorBg,
+ * color.learnerBg, color.okBg, color.unsureBg, color.warnBg or
+ * color.surfaceMuted as the background of a card, panel, bubble, tile, chip
+ * or button. Plain content sits directly on the cream page.
+ */
+export const fill = {
+  saffron: "#B23D10",
+  teal: "#17535C",
+  sage: "#35603C",
+  rose: "#962F4E",
+  gold: "#8A5608",
+  slate: "#2F4677",
+  ink: "#3B2E25",
+  maroon: "#5E2216",
+  ok: "#25833E",
+  bad: "#B3261E",
+} as const;
+export type FillName = keyof typeof fill;
+export const FILL_CYCLE: FillName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
+export const fillAt = (i: number): FillName => FILL_CYCLE[((i % 6) + 6) % 6];
+export const onFill = {
+  text: "#FFF8EE",
+  soft: "rgba(255,248,238,0.78)",
+  faint: "rgba(255,248,238,0.20)", // watermark letters, progress tracks
+  gold: "#F2C879", // small labels; NOT on saffron, gold or ok fills (see table)
+} as const;
+/** 1.5dp outline for inputs and outlined round buttons on paper. */
+export const outline = "#D9C9AE";
 
 /** Units take these in turn, so neighbours never share a colour. */
 export const ACCENT_CYCLE: AccentName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];

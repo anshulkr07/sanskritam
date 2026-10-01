@@ -25,6 +25,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { Pressable, StyleSheet, View, useWindowDimensions } from "react-native";
@@ -90,7 +91,17 @@ export function useAskContext(surface: string, subject: string): void {
 }
 
 /** Screens that own the bottom of the display; the bubble would cover them. */
-const HIDDEN_ROUTES = new Set(["Conversation", "Writing", "DailyWord"]);
+const HIDDEN_ROUTES = new Set([
+  "Conversation",
+  "Writing",
+  "DailyWord",
+  // Full-screen game and reading surfaces (Play hub stays askable).
+  "Book",
+  "ShabdaRush",
+  "Smriti",
+  "VarnaJaal",
+  "PracticeRound",
+]);
 
 const BUBBLE = 56;
 const MARGIN = 12;
@@ -137,11 +148,18 @@ export function AskProvider({
   const showBubble =
     onboarded && !open && !hiddenByScreen && !(routeName && HIDDEN_ROUTES.has(routeName));
 
+  // The capture root for "This screen": the bubble and the sheet stay out of
+  // the picture, so capture can run with the sheet already open. The ref
+  // keeps its native view (collapsable false) for react-native-view-shot.
+  const contentRef = useRef<View | null>(null);
+
   return (
     <AskContext_.Provider value={api}>
-      {children}
+      <View ref={contentRef} collapsable={false} style={{ flex: 1 }}>
+        {children}
+      </View>
       {showBubble ? <AskBubble onPress={() => openSheet()} /> : null}
-      <AskSheet visible={open} context={sheet} onClose={close} />
+      <AskSheet visible={open} context={sheet} onClose={close} contentRef={contentRef} />
     </AskContext_.Provider>
   );
 }

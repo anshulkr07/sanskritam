@@ -417,6 +417,11 @@ export interface TalkTurn {
   native_script: string;
   /** Which detection layer decided: script|marker|stt|llm|sticky|default. */
   lang_source: string;
+  /** The learner's line, word for word, each word in its own script. Voice
+   * turns only; absent on old backends and always absent for typed lines. */
+  heard?: string;
+  /** Languages used, in order of first appearance, as English names. */
+  heard_langs?: string[];
 }
 
 export interface StartResponse {
@@ -491,6 +496,9 @@ export interface STTResponse {
   language_code: string;
   /** Saaras' confidence in `language_code`, auto-detect only. Diagnostic. */
   language_probability?: number | null;
+  /** The mix as it was said (Indic words in native script, English in
+   * Latin). Absent on old backends; display only, never sent to the tutor. */
+  display?: string;
 }
 
 // ─── Grammar proof surfaces (U7) ──────────────────────────────────────────
@@ -603,6 +611,33 @@ export interface AskResponse {
   source: "engine" | "llm" | "engine_fallback" | "";
   provider: string;
   cached: boolean;
+  /** A shaped answer for wider questions. Absent on old backends. */
+  card?: AskCard | null;
+}
+
+export interface AskCardSection {
+  heading: string;
+  style: string;
+  items: string[];
+}
+
+export interface AskCard {
+  title: string;
+  title_sa: string;
+  title_iast: string;
+  when: { text: string; note: string };
+  summary: string;
+  sections: AskCardSection[];
+  terms: { sa: string; iast: string; meaning: string }[];
+  caution: string;
+  place_needed: boolean;
+}
+
+export interface AskPlace {
+  lat: number;
+  lon: number;
+  tz: string;
+  label: string;
 }
 
 // ─── Writing practice (U12 / P20) ──────────────────────────────────────────
@@ -1364,13 +1399,51 @@ export const api = {
   stt: (audio: string | Blob | Uint8Array, filename = "recording.wav", mime = "audio/wav", languageCode = "unknown") =>
     uploadSpeech(audio, filename, mime, languageCode, "transcribe"),
 
-  // Ask anywhere (U11 / P19) — session-free, engine-first.
-  ask: (surface: string, subject: string, question = "") =>
+  // Ask anywhere (U11 / P19) — session-free, engine-first. New fields are
+  // optional so old backends keep working: they ignore what they do not know.
+  ask: (
+    surface: string,
+    subject: string,
+    question = "",
+    opts: { screenText?: string; place?: AskPlace | null; cards?: boolean } = {},
+  ) =>
     request<AskResponse>(
       "/explain",
       {
         method: "POST",
-        body: JSON.stringify({ surface, subject, question }),
+        body: JSON.stringify({
+          surface,
+          subject,
+          question,
+          ...(opts.screenText ? { screen_text: opts.screenText } : {}),
+          ...(opts.place ? { place: opts.place } : {}),
+          ...(opts.cards ? { cards: true } : {}),
+        }),
+      },
+      true,
+    ),
+
+  /**
+   * Flag AI-generated content (Play AI-Generated Content policy). The report
+   * carries the question, the answer and an optional reason, each clipped to
+   * 2000 characters. Returns 204. Rate limited to 20 a day per learner.
+   */
+  reportContent: (body: {
+    surface: "talk" | "ask";
+    question: string;
+    answer: string;
+    reason?: string;
+  }) =>
+    request<void>(
+      "/feedback/report",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          surface: body.surface,
+          question: (body.question || "").slice(0, 2000),
+          answer: (body.answer || "").slice(0, 2000),
+          reason: (body.reason || "").slice(0, 2000),
+        }),
       },
       true,
     ),

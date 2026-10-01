@@ -46,6 +46,7 @@ question instead: is anything here actually *malformed*?
 
 from __future__ import annotations
 
+import difflib
 import json
 import logging
 import re
@@ -103,6 +104,75 @@ def _is_bridge_language(text: str) -> bool:
     """True when a line the model called Sanskrit is actually Hindi."""
     words = {w.strip("।,!?.‍") for w in (text or "").split()}
     return bool(words & _HINDI_MARKERS)
+
+
+# Word runs: whitespace and punctuation split, combining marks stay inside
+# the word. ([^\W_] would split Devanagari at every vowel sign and virama —
+# Python's \w does not match Mn marks — shredding conjuncts into syllables.)
+_WORD_RE = re.compile(r"[^\s।॥.,!?;:\"'()\[\]{}—–\-…]+", re.UNICODE)
+#: lipi schemes that are already Latin: Skeleton keeps them as-is.
+_ROMAN_SCHEME_NAMES = frozenset({
+    "HarvardKyoto", "Slp1", "Itrans", "Velthuis", "Wx", "Iast", "Iso15919",
+})
+#: Folds a Latin skeleton further towards pronunciation: lipi's Dravidian
+#: short-e plus any precomposed IAST. SLP1 vowel length needs no entry —
+#: casefold already maps A/I/U/E/O onto a/i/u/e/o.
+_SKELETON_FOLD = str.maketrans({
+    "è": "e", "ā": "a", "ī": "i", "ū": "u", "ṛ": "r", "ṝ": "r",
+    "ḷ": "l", "ḹ": "l", "ē": "e", "ō": "o", "ṃ": "m", "ṁ": "m",
+    "ḥ": "h", "ṅ": "n", "ñ": "n", "ṇ": "n", "ṭ": "t", "ḍ": "d",
+    "ś": "s", "ṣ": "s",
+})
+
+
+def _latin_skeleton(text: str) -> list[str]:
+    """One Latin skeleton per word: every script run through vidyut.lipi.
+
+    Indic words are transliterated to SLP1, Latin words are lowercased
+    in place, then everything is casefolded, punctuation is dropped and
+    vowel length is folded away. Both sides of `faithful` go through the
+    same function, so a systematic transliteration quirk cancels out — the
+    comparison catches dropped, added or translated words, not phonetics.
+    """
+    words: list[str] = []
+    for word in _WORD_RE.findall(text or ""):
+        latin = word.casefold()
+        try:
+            from vidyut.lipi import Scheme, detect, transliterate
+
+            scheme = detect(word)
+            if scheme is not None and getattr(scheme, "name", "") not in _ROMAN_SCHEME_NAMES:
+                try:
+                    latin = transliterate(word, scheme, Scheme.Slp1).casefold()
+                except Exception:
+                    latin = word.casefold()
+        except Exception:
+            latin = word.casefold()
+        latin = latin.translate(_SKELETON_FOLD)
+        latin = re.sub(r"[^a-z0-9]", "", latin)
+        if latin:
+            words.append(latin)
+    return words
+
+
+def faithful(heard: str, transcript: str) -> bool:
+    """True when `heard` is the transcript re-scripted, never rewritten.
+
+    The model is asked to copy the learner's line word for word, changing
+    only the script. Trust it only when the two skeletons match: the word
+    count differs by at most one and the difflib ratio is at least 0.80.
+    Otherwise `heard` is sent as an empty string.
+    """
+    heard_words = _latin_skeleton(heard)
+    transcript_words = _latin_skeleton(transcript)
+    if not heard_words or not transcript_words:
+        return False
+    if abs(len(heard_words) - len(transcript_words)) > 1:
+        return False
+    ratio = difflib.SequenceMatcher(
+        None, " ".join(heard_words), " ".join(transcript_words)
+    ).ratio()
+    return ratio >= 0.80
 
 
 # Scripts a learner may WRITE Sanskrit in, mapped to their vidyut.lipi scheme.
@@ -488,6 +558,12 @@ class TutorReply:
 
     read_back: str = ""
 
+    # The learner's latest line copied word for word, changing only the
+    # script (voice turns only; "" when unsure or unfaithful — never shown
+    # as a correction, only as what was heard).
+    heard: str = ""
+    heard_langs: list[str] = field(default_factory=list)
+
     fix_needed: bool = False
     fix_dev: str = ""
     fix_iast: str = ""
@@ -541,6 +617,15 @@ not open with सत्यम्, सम्यक्, समीचीनम् o
 4. "explain_en": English teaching about the Sanskrit in THIS turn — what each \
 part means and why it was chosen. See the grammar-label rule below.
 
+HOW YOU SHOW WHAT YOU HEARD (voice turns — typed lines always show as typed)
+- "heard" is the learner's LATEST line copied word for word, changing ONLY \
+the script: each word goes in the script of the language it belongs to — \
+Hindi and Sanskrit in Devanagari, Kannada in Kannada script, Tamil in Tamil \
+script, English in Latin letters. Never translate, correct, add or drop a \
+word. When unsure, leave it EMPTY.
+- "heard_langs" names the languages used, in order of first appearance, as \
+English names ("Hindi", "English", "Kannada"...). Empty when "heard" is empty.
+
 HOW YOU TALK
 - Read the learner's latest line carefully. Answering a sentence they did not \
 write is worse than answering slowly. Never claim they wrote or added a word \
@@ -564,7 +649,11 @@ correct.
 
 OUTPUT — one JSON object, nothing else, no markdown fences:
 {"read_back": "<one line of English: what they said + which languages>",
- "fix": {"needed": <true|false>,
+  "heard": "<their latest line, word for word, each word in its own \
+language's script, empty when unsure>",
+  "heard_langs": "<English names of the languages used, in order, e.g. \
+[\"Hindi\", \"English\", \"Kannada\"]>",
+  "fix": {"needed": <true|false>,
          "devanagari": "<the correct Sanskrit in Devanagari, empty if nothing to fix>",
          "note_en": "<one line of English on what was wrong, empty if nothing to fix>"},
  "reply_sa": "<your conversational reply in Sanskrit, Devanagari>",
@@ -841,12 +930,16 @@ class ConversationTutor:
         target_features: list[str],
         native_lang: str,
         opening: bool = False,
+        want_heard: bool = False,
     ) -> TutorReply:
         """Produce the tutor's next turn.
 
         `transcript` is the learner's utterance ("" on the opening turn).
         `native_lang` has already been settled by `services/lang_detect.py` —
         this method does not guess it and does not let the model choose it.
+        `want_heard` keeps the model's "heard" re-scripting for voice turns
+        only (the turn request carries `stt_lang` for those); a typed line is
+        always shown exactly as typed.
 
         Returns a TutorReply whose Sanskrit has passed both gates, or which
         carries none at all. Never raises.
@@ -867,7 +960,8 @@ class ConversationTutor:
 
         t1 = time.perf_counter()
         reply = await self._call_and_gate(
-            user, asked=asked_questions(history), native_lang=native_lang
+            user, asked=asked_questions(history), native_lang=native_lang,
+            transcript=transcript, want_heard=want_heard,
         )
         gate_ms = (time.perf_counter() - t1) * 1000
 
@@ -901,6 +995,8 @@ class ConversationTutor:
         user: str,
         asked: Optional[list[str]] = None,
         native_lang: str = "en",
+        transcript: str = "",
+        want_heard: bool = False,
     ) -> TutorReply:
         """One call, then at most one retry — for rejected Sanskrit, or for
         every soft problem `soft_problems` finds, named together.
@@ -930,7 +1026,9 @@ class ConversationTutor:
                 logger.warning("tutor reply was not JSON: %r", raw[:200])
                 continue
 
-            reply, sanskrit_rejected = self._gate(parsed)
+            reply, sanskrit_rejected = self._gate(
+                parsed, transcript=transcript, want_heard=want_heard
+            )
             problems = (
                 soft_problems(reply, asked, native_lang) if reply.has_content else []
             )
@@ -962,17 +1060,38 @@ class ConversationTutor:
             source="degraded",
         )
 
-    def _gate(self, parsed: dict[str, Any]) -> tuple[TutorReply, bool]:
+    def _gate(
+        self, parsed: dict[str, Any], transcript: str = "", want_heard: bool = False
+    ) -> tuple[TutorReply, bool]:
         """Apply every gate to one parsed model reply.
 
         Returns ``(reply, sanskrit_rejected)``. `sanskrit_rejected` is True
         when a NON-EMPTY Sanskrit field was thrown away, which is the only
         condition worth retrying — a model that deliberately left the field
         empty has made a legitimate choice and retrying just burns a call.
+
+        `heard` is display-only and never gated for Sanskrit: it may carry
+        any script. It is kept only for voice turns, only when non-empty,
+        and only when `faithful` says it is the transcript re-scripted —
+        otherwise it is sent as an empty string.
         """
         fix_raw = parsed.get("fix")
         if not isinstance(fix_raw, dict):
             fix_raw = {}
+
+        heard_raw = str(parsed.get("heard") or "").strip()
+        heard_langs_raw = parsed.get("heard_langs") or []
+        if want_heard and heard_raw and transcript and faithful(heard_raw, transcript):
+            heard = heard_raw
+            if isinstance(heard_langs_raw, list):
+                heard_langs = [str(x).strip() for x in heard_langs_raw
+                               if str(x or "").strip()][:5]
+            else:
+                heard_langs = []
+        else:
+            if want_heard and heard_raw:
+                logger.info("tutor heard was not faithful, dropping: %r", heard_raw[:80])
+            heard, heard_langs = "", []
 
         reply_sa = str(parsed.get("reply_sa") or "").strip()
         fix_dev = str(fix_raw.get("devanagari") or "").strip()
@@ -990,6 +1109,8 @@ class ConversationTutor:
 
         reply = TutorReply(
             read_back=str(parsed.get("read_back") or "").strip(),
+            heard=heard,
+            heard_langs=heard_langs,
             fix_needed=fix_needed,
             fix_dev=fix_dev,
             fix_iast=to_iast(fix_dev) if fix_dev else "",

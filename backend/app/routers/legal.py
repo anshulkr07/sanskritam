@@ -19,7 +19,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "30 September 2026"
+UPDATED = "1 October 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -89,6 +89,11 @@ check a photo of your handwriting, the photo is sent to Sarvam AI to be read. We
 and don't store the photo on our servers.</li>
 <li><strong>Notifications.</strong> If you turn on reminders, a push token for your device, so we can send
 them.</li>
+<li><strong>Your place, only when you ask about dates.</strong> If you allow it or pick a city, the app
+sends an approximate place with a question about dates so the server can work out sunrise and tithi. It
+is used for that answer and not stored.</li>
+<li><strong>Your screen, only when you attach it.</strong> When you attach a screen to a question, its
+text is read on your phone and only the text is sent.</li>
 <li><strong>Usage limits and errors.</strong> How many characters, seconds of speech and AI requests you
 use, so we can enforce daily limits; and server error records (which request failed and a technical
 trace, with no answers, recordings or personal details).</li>

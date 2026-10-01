@@ -14,9 +14,12 @@ web-build/
 expo-env.d.ts
 .metro-health-check*
 
-# generated native code (regenerated on EAS servers)
-android/
-ios/
+# generated native code (regenerated on EAS servers).
+# Anchored to the generated dirs only: a bare `android/` also matches
+# mobile/modules/shabd-digital-ink/android/ and would strip the handwriting
+# module's Kotlin source from the EAS archive (Write crash, 2026-10-01).
+/mobile/android/
+/mobile/ios/
 
 # keystores and signing keys
 *.jks
@@ -43,3 +46,8 @@ yarn-error.*
 # backend/frontend (not needed for mobile builds)
 backend/
 frontend/
+
+# local artefacts that git already ignores. With an .easignore present EAS no
+# longer reads .gitignore, so they must be named here too: results/ holds the
+# 4K cover paintings and masters, about 1 GB. Anchored to the repo root.
+/results/

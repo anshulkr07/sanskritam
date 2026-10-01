@@ -94,9 +94,9 @@ async def speech_to_text(
 
     ``language_code="unknown"`` asks for auto-detect, and gets it WITHOUT
     losing Sanskrit: saaras:v4 translates spoken Sanskrit into English on
-    plain auto-detect, so this runs an auto pass and a Sanskrit pass together
-    and keeps the faithful one (`services/learner_stt.py`). Any other code is
-    one pinned call, as before.
+    plain auto-detect, so this runs an auto pass, a Sanskrit pass and a
+    codemix pass together — the faithful transcript plus a display string
+    (`services/learner_stt.py`). Any other code is one pinned call, as before.
 
     Quota is checked and consumed BEFORE the Sarvam call, in seconds read
     from the recording's own header (WAV or M4A), else estimated as 16-bit
@@ -161,4 +161,5 @@ async def speech_to_text(
         transcript=result.get("transcript") or "",
         language_code=result.get("language_code") or "",
         language_probability=result.get("language_probability"),
+        display=result.get("display") or "",
     )

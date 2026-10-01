@@ -193,6 +193,11 @@ export default function PageCurlBook({
   const width = useSharedValue(0);
   const height = useSharedValue(0);
   const turning = useSharedValue(IDLE);
+  // The hand's direction, decided on first movement (0 = undecided).
+  // On Android, gesture-handler's PanGestureHandler.activate() calls
+  // resetProgress() first, so translationX is exactly 0 in onStart and reading
+  // its sign there always picks BACK. Deciding in onUpdate fixes page turns.
+  const dir = useSharedValue(0);
   const travel = useSharedValue(0);
   const lift = useSharedValue(0);
   const grabY = useSharedValue(0);
@@ -545,27 +550,36 @@ export default function PageCurlBook({
         .onBegin((e) => {
           if (turning.value === IDLE) grabY.value = Math.max(0, Math.min(height.value, e.y));
         })
-        .onStart((e) => {
+        .onStart(() => {
           released.value = false;
           // A turn already under way (a button, a jump, the cover) keeps the book.
           ignored.value = turning.value !== IDLE;
           if (ignored.value) return;
-          const d = e.translationX < 0 ? FORWARD : BACK;
-          const at = curShared.value;
-          allowed.value = d === FORWARD ? at < countShared.value - 1 : at > 0;
-          turning.value = d;
-          const r = curlRadiusFor(width.value);
-          maxRadius.value = r;
-          lift.value = 0;
-          travel.value = d === FORWARD ? 0 : fullTravel(width.value, r);
-          if (!useCurl || (d === BACK && !allowed.value)) return;
-          const img = d === FORWARD ? curImg.value : prevImg.value;
-          sheet.value = img;
-          hidden.value = img && d === FORWARD ? at : NOTHING;
-          if (!img) runOnJS(shootSheet)(d);
+          // Direction stays undecided here: translationX is 0 on Android at
+          // activation (see `dir` above), so it is decided in onUpdate.
+          dir.value = 0;
         })
         .onUpdate((e) => {
           if (ignored.value) return;
+          if (dir.value === 0) {
+            // First real movement decides the direction (2dp dead zone).
+            if (Math.abs(e.translationX) < 2) return;
+            const d = e.translationX < 0 ? FORWARD : BACK;
+            dir.value = d;
+            const at = curShared.value;
+            allowed.value = d === FORWARD ? at < countShared.value - 1 : at > 0;
+            turning.value = d;
+            const r = curlRadiusFor(width.value);
+            maxRadius.value = r;
+            lift.value = 0;
+            travel.value = d === FORWARD ? 0 : fullTravel(width.value, r);
+            if (useCurl && (d === FORWARD || allowed.value)) {
+              const img = d === FORWARD ? curImg.value : prevImg.value;
+              sheet.value = img;
+              hidden.value = img && d === FORWARD ? at : NOTHING;
+              if (!img) runOnJS(shootSheet)(d);
+            }
+          }
           const w = width.value;
           if (turning.value === FORWARD) {
             const pulled = Math.min(0, e.translationX);
@@ -579,6 +593,12 @@ export default function PageCurlBook({
         })
         .onEnd((e) => {
           if (ignored.value) return;
+          // No turn started (a tap, or a gesture that never moved): nothing
+          // to settle, just mark released.
+          if (dir.value === 0) {
+            released.value = true;
+            return;
+          }
           released.value = true;
           const d = turning.value;
           const w = width.value || 1;
@@ -607,6 +627,11 @@ export default function PageCurlBook({
         })
         .onFinalize(() => {
           // Interrupted before a clean release: lay the sheet back down.
+          // A gesture that never moved started no turn: just mark released.
+          if (dir.value === 0) {
+            released.value = true;
+            return;
+          }
           if (ignored.value || released.value || turning.value === IDLE) return;
           released.value = true;
           const back = turning.value === FORWARD ? 0 : fullTravel(width.value, maxRadius.value);

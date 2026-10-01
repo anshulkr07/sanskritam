@@ -1,0 +1,708 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanskritam Screen Mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Kannada:wght@500&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Tiro+Devanagari+Sanskrit&display=swap">
+<style>
+/* Layout: a review board. One section per screen area. Each section has a short
+   list of what changes and a wrapping row of phone frames. The frames are drawn
+   with the app's own tokens (mobile/src/theme.ts), so they do not follow the
+   viewer's theme. Only the board around them does. */
+:root{
+  /* board */
+  --pg-bg:#E9ECEF; --pg-fg:#1D2227; --pg-muted:#56616C; --pg-line:#CFD5DB; --pg-accent:#2B5C8A; --pg-bezel:#211D1B;
+  /* app: paper, ink, brand (theme.ts color.*) */
+  --paper:#FFF8EE; --surface:#FFFFFF; --line:#EFE3CE;
+  --saffron:#E85B25; --saffron-btn:#D2461F; --saffron-fg:#B23D10;
+  --ink:#3B2E25; --ink-soft:#7A6A5C;
+  /* app: deep solid fills (theme.ts accent.*.to, plus ink). Colour is always a
+     deep fill with cream text on it. Pale tint panels are not used anywhere. */
+  --f-saffron:#B23D10; --f-teal:#17535C; --f-sage:#35603C; --f-rose:#962F4E; --f-gold:#8A5608; --f-slate:#2F4677; --f-ink:#3B2E25;
+  --on:#FFF8EE; --on-soft:rgba(255,248,238,.78); --on-faint:rgba(255,248,238,.2); --on-gold:#F2C879;
+  --gold:#8E6108; --ok:#25833E; --tutor:#3F627F; --rule:#D9C9AE;
+  /* app: new reading themes (proposed) */
+  --page:#FFFDF7; --night:#1B1714; --night-bar:#26201B; --night-fg:#EDE3D3; --night-soft:#A89B8A; --night-line:#3A322B; --night-accent:#F08A5D;
+  /* type */
+  --ui:"Nunito",system-ui,sans-serif;
+  --sa:"Tiro Devanagari Sanskrit","Noto Serif Devanagari","Nirmala UI",serif;
+  --dev:"Baloo 2","Noto Sans Devanagari","Nirmala UI",sans-serif;
+  --chrome:"IBM Plex Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --pg-bg:#14171A; --pg-fg:#E6E9EC; --pg-muted:#9AA4AE; --pg-line:#2C3239; --pg-accent:#8DB7DE; --pg-bezel:#0B0C0D; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --pg-bg:#14171A; --pg-fg:#E6E9EC; --pg-muted:#9AA4AE; --pg-line:#2C3239; --pg-accent:#8DB7DE; --pg-bezel:#0B0C0D; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--pg-bg);color:var(--pg-fg);font-family:var(--chrome);font-size:15px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+h1{font-size:26px;line-height:1.2;margin:0 0 6px;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:0;color:var(--pg-muted);max-width:64ch}
+.sec{margin-top:36px;padding-top:24px;border-top:1px solid var(--pg-line)}
+.sec h2{font-size:19px;margin:0 0 6px;font-weight:600}
+.chg{margin:0 0 22px;padding:0;list-style:none;color:var(--pg-muted);max-width:70ch;display:grid;gap:3px}
+.chg li{padding-left:16px;position:relative}
+.chg li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--pg-accent)}
+.row{display:flex;flex-wrap:wrap;gap:28px 24px;align-items:flex-start}
+.shot{width:min(336px,100%);display:grid;gap:10px;margin:0}
+.shot figcaption{font-size:13px;color:var(--pg-muted)}
+.shot figcaption b{color:var(--pg-fg);font-weight:600;display:block}
+
+/* ── phone frame ─────────────────────────────────────────── */
+.ph{height:720px;border:8px solid var(--pg-bezel);border-radius:38px;outline:1px solid var(--pg-line);background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:13px;line-height:1.35;overflow:hidden;display:flex;flex-direction:column;position:relative}
+:where(.ph) :where(p,h3,h4,h5){margin:0}
+.sb{flex:none;height:26px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;font-size:11px;font-weight:700;color:var(--ink-soft)}
+.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.tabs{flex:none;height:50px;display:flex;justify-content:space-around;align-items:center;background:var(--surface);border-top:1px solid var(--line);font-size:10px;font-weight:700;color:var(--ink-soft)}
+.tabs .on{color:var(--saffron)}
+.dv{font-family:var(--dev)} .san{font-family:var(--sa)} .kn{font-family:"Noto Sans Kannada",sans-serif}
+.lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)}
+.scr{flex:1;min-height:0;padding:6px 16px 0;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.h1{font-size:24px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+/* deep fills, cream text */
+.c-saf{background:var(--f-saffron);color:var(--on)} .c-teal{background:var(--f-teal);color:var(--on)}
+.c-sage{background:var(--f-sage);color:var(--on)} .c-rose{background:var(--f-rose);color:var(--on)}
+.c-gold{background:var(--f-gold);color:var(--on)} .c-slate{background:var(--f-slate);color:var(--on)}
+.c-ink{background:var(--f-ink);color:var(--on)}
+.c-saf,.c-gold{--on-gold:#FFF8EE} /* gold labels are below 4.5:1 on these two fills */
+
+/* ── Talk ────────────────────────────────────────────────── */
+.guru{flex:none;height:150px;display:grid;place-items:center;align-content:center;gap:6px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:11px;font-weight:700}
+.guru span{display:block;width:84px;height:96px;border-radius:42px 42px 16px 16px;border:2px dashed var(--rule)}
+.talk{flex:1;min-height:0;padding:12px 16px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.me{align-self:flex-end;max-width:88%;background:var(--f-ink);color:var(--on);border-radius:14px 14px 4px 14px;padding:9px 12px}
+.me .mix{font-size:15px;line-height:1.55}
+.me .langs{font-size:10.5px;font-weight:700;color:var(--on-gold);margin-top:3px}
+.sa-row{display:flex;gap:10px;align-items:flex-start}
+.sa-line{font-family:var(--sa);font-size:23px;line-height:1.6;flex:1;min-width:0}
+.rb{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--ink);color:var(--ink);margin-top:4px}
+.roman{font-size:12.5px;color:var(--ink-soft);font-style:italic}
+.tr{font-size:15px;color:var(--tutor);margin-top:6px}
+.more{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:800;padding:6px 10px;border-radius:8px}
+.tog .i{width:14px;height:14px}
+.pan{border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px;display:grid;gap:2px}
+.pan .san{font-size:19px;line-height:1.6}
+.pan h5{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--on-gold)}
+.pan .roman{color:var(--on-soft)}
+.bar{flex:none;display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--surface);border-top:1px solid var(--line)}
+.rnd{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--ink);color:var(--ink)}
+.rnd.go{background:var(--saffron-btn);border-color:var(--saffron-btn);color:#fff}
+.rnd.sm{width:36px;height:36px}
+.rnd.act{background:var(--f-ink);color:var(--on)}
+.inp{flex:1;min-width:0;height:40px;border:1.5px solid var(--rule);border-radius:12px;background:var(--surface);display:flex;align-items:center;padding:0 12px;color:var(--ink-soft);font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden}
+
+/* ── Ask ─────────────────────────────────────────────────── */
+.dimmed{flex:1;min-height:0;position:relative;background:#8E857C}
+.ghost{padding:16px;display:grid;gap:10px;opacity:.5}
+.ghost span{height:44px;border-radius:12px;background:#B9B0A6}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-radius:22px 22px 0 0;padding:8px 16px 0;display:flex;flex-direction:column;gap:10px}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);align-self:center}
+.sh-h{display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:800}
+.sh-h .i{color:var(--ink-soft)}
+.att{display:flex;align-items:center;gap:10px;padding:8px;border:1.5px solid var(--rule);border-radius:12px;font-size:12.5px;font-weight:800}
+.att .th{width:34px;height:46px;border-radius:6px;background:var(--f-rose);flex:none}
+.att small{display:block;font-weight:600;color:var(--ink-soft);font-size:11.5px}
+.att .i{margin-left:auto;color:var(--ink-soft)}
+.sug{display:grid}
+.sug span{display:flex;justify-content:space-between;align-items:center;padding:11px 2px;border-bottom:1px solid var(--line);font-weight:700;font-size:13.5px}
+.sug .i{color:var(--ink-soft);width:15px;height:15px}
+.q{align-self:flex-end;max-width:85%;background:var(--f-ink);color:var(--on);padding:8px 12px;border-radius:14px 14px 4px 14px;font-weight:600}
+.ans{display:grid;gap:8px}
+.ans h4{font-size:17px;font-weight:800}
+.ans h4 span{font-size:15px;color:var(--ink-soft);font-weight:600;margin-left:6px}
+.when{border-radius:10px;padding:8px 12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:800;font-size:14px}
+.when small{font-weight:700;font-size:10.5px}
+.ans ol{margin:0;padding-left:20px;display:grid;gap:3px}
+.ans h5{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+.terms{display:grid;gap:3px;font-size:12.5px;color:var(--ink-soft)}
+.terms b{color:var(--ink);font-size:15px;font-weight:600;margin-right:6px}
+.sheet .bar{margin:2px -16px 0}
+
+/* ── Play ────────────────────────────────────────────────── */
+.streak{display:inline-flex;gap:4px;align-items:center;font-size:12px;color:var(--gold);font-weight:800}
+.today{background:var(--f-teal);color:var(--on);border-radius:16px;padding:14px 68px 14px 14px;display:grid;gap:2px;position:relative}
+.today small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;opacity:.85}
+.today b{font-size:19px;font-weight:800}
+.today span{font-size:12.5px;font-weight:600;opacity:.92}
+.today em{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--on);color:var(--f-teal);display:grid;place-items:center;font-style:normal}
+.today em .i{fill:currentColor;stroke:none}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gt{border-radius:14px;padding:10px 12px;min-height:92px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.gt .gl{position:absolute;right:8px;top:-2px;font-family:var(--dev);font-size:44px;font-weight:700;color:var(--on-faint);line-height:1.25}
+.gt b{font-size:14.5px;font-weight:800}
+.gt span{font-family:var(--dev);font-size:12.5px;font-weight:600;color:var(--on-gold)}
+.gt small{font-size:10.5px;font-weight:700;color:var(--on-soft);margin-top:2px}
+.gt .pb{height:4px;border-radius:2px;background:var(--on-faint);margin-top:6px}
+.gt .pb i{display:block;height:100%;border-radius:2px;background:currentColor}
+.pr{display:grid}
+.pr div{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:13.5px}
+.pr i{width:26px;height:26px;border-radius:8px;flex:none}
+.pr small{margin-left:auto;color:var(--ink-soft);font-weight:700;font-size:11.5px}
+.hud{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink-soft);padding-top:6px}
+.hud .t{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.hud .t i{display:block;height:100%;width:70%;background:var(--saffron)}
+.hud .n{font-variant-numeric:tabular-nums;font-size:13px;color:var(--ink)}
+.stat{display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.stat b{font-size:28px;font-variant-numeric:tabular-nums}
+.stat span{border-radius:8px;padding:4px 8px;font-size:13px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 12px;text-align:center}
+.card .san{font-size:44px;line-height:1.4}
+.card small{color:var(--ink-soft);font-style:italic;font-size:13px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts span{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center;font-weight:800;font-size:15px}
+.opts .ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.plus{text-align:center;font-weight:800;color:var(--ok)}
+.foot{margin-top:auto;padding:12px 0 16px;text-align:center;font-size:11.5px;font-weight:800;color:var(--ink-soft)}
+.word{text-align:center;font-family:var(--dev);font-size:28px;font-weight:700;color:var(--f-slate);line-height:1.2}
+.word small{display:block;font-family:var(--ui);font-size:12px;color:var(--ink-soft);font-weight:700}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.grid4 span{aspect-ratio:1;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--dev);font-size:24px;font-weight:600}
+.grid4 .p{background:var(--f-slate);border-color:var(--f-slate);color:var(--on)}
+.found{display:flex;flex-wrap:wrap;gap:6px}
+.found span{font-family:var(--dev);font-size:14px;font-weight:600;padding:3px 9px;border-radius:8px}
+.found .no{border:1.5px dashed var(--rule);color:var(--ink-soft);font-family:var(--ui);font-size:12px;font-weight:700}
+
+/* ── Grammar ─────────────────────────────────────────────── */
+.srch{display:flex;align-items:center;gap:8px;height:40px;border-radius:12px;background:var(--surface);border:1.5px solid var(--rule);padding:0 12px;color:var(--ink-soft);font-weight:600}
+.cont{display:flex;align-items:center;gap:10px;background:var(--f-ink);color:var(--on);border-radius:14px;padding:10px 12px;font-weight:800;font-size:14px}
+.cont small{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--on-gold)}
+.cont .i{margin-left:auto}
+.lv{display:flex;gap:16px;font-weight:800;font-size:12.5px;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+.lv span{padding-bottom:6px}
+.lv .on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--saffron)}
+.tb{flex:none;display:flex;align-items:center;gap:8px;padding:6px 12px;font-weight:800;font-size:12.5px;color:var(--ink-soft)}
+.tb .lang{margin-left:auto;display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:11px}
+.lang b{padding:3px 8px;font-weight:800}
+.lang .on{background:var(--ink);color:#fff}
+.pg{flex:none;height:3px;background:var(--line)}
+.pg i{display:block;height:100%;background:var(--f-rose)}
+.doc{flex:1;min-height:0;overflow:hidden;padding:12px 16px 0;display:flex;flex-direction:column;gap:12px}
+.eyeb{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--f-rose)}
+.doc h3{font-size:21px;line-height:1.2;font-weight:800}
+.meta{font-size:11.5px;font-weight:700;color:var(--ink-soft)}
+.term{border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.term .san{font-size:30px;line-height:1.3}
+.term small{display:block;color:var(--on-soft);font-size:12px;font-weight:600}
+.term .i{margin-left:auto}
+.one{font-size:15.5px;font-weight:700;line-height:1.4}
+.gtab{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+.gtab th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding:4px 6px;border-bottom:1.5px solid var(--ink);font-weight:800}
+.gtab td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top;font-weight:600}
+.gtab td small{display:block;color:var(--ink-soft);font-size:11px;font-weight:600}
+.gtab .f{font-family:var(--dev);font-size:17px;font-weight:600;line-height:1.3}
+.gtab .f b{color:var(--f-rose);font-weight:700}
+.gtab .n{color:var(--f-rose);font-weight:800;margin-right:4px}
+.sub{font-size:14.5px;font-weight:800}
+.ex .w{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--sa);font-size:21px;line-height:1.5}
+.ex .w span{display:grid;justify-items:center}
+.ex .w small{font-family:var(--ui);font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-top:2px solid currentColor;padding-top:1px}
+.ex p{margin-top:6px;color:var(--ink-soft);font-weight:600}
+.tip{display:flex;gap:8px;color:var(--gold);font-weight:700}
+.tip p{color:var(--ink)}
+.qz{display:grid;gap:6px}
+.qz span{border:1.5px solid var(--rule);border-radius:12px;padding:8px 12px;font-family:var(--dev);font-size:16px;font-weight:600;background:var(--surface)}
+.nxt{flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--ink);color:#fff;font-weight:800;font-size:13.5px}
+.nxt small{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+
+/* ── Read ────────────────────────────────────────────────── */
+.cov{flex:none;border-radius:4px 9px 9px 4px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:10px 6px 8px 10px;text-align:center;box-shadow:inset 5px 0 0 rgba(0,0,0,.2)}
+.cov svg{width:54%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cov b{font-family:var(--dev);font-weight:700;line-height:1.15}
+.k-gita{background:#7A2E1E;color:#F2C879} .k-isha{background:#2F4677;color:#F3D27A} .k-rama{background:#2F5B3C;color:#F2D9A0}
+.k-katha{background:#4B3B7A;color:#EAD9A8} .k-hito{background:#17535C;color:#FCE9C2} .k-pancha{background:#8A5608;color:#FFF3D6} .k-niti{background:#962F4E;color:#FBE1C8}
+.hero{display:flex;gap:12px;background:#5E2216;color:#FBEFD2;border-radius:16px;padding:12px}
+.hero .cov{width:60px;height:86px;font-size:9px}
+.hero .in{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.hero .in b{font-size:16px;font-weight:800;color:#fff}
+.hero small{font-size:11.5px;font-weight:700;opacity:.85}
+.hero .pb{height:4px;border-radius:2px;background:rgba(255,255,255,.25);margin-top:6px}
+.hero .pb i{display:block;height:100%;width:7%;background:#F2C879;border-radius:2px}
+.hero .btn{align-self:flex-start;margin-top:8px;background:#F2C879;color:#4A1C10;border-radius:10px;padding:5px 14px;font-weight:800;font-size:12.5px}
+.rail{display:flex;gap:12px;overflow:hidden;margin-right:-16px}
+.bk{flex:none;width:94px;display:grid;gap:4px;align-content:start}
+.bk .cov{width:94px;height:132px;font-size:13px}
+.bk span{font-size:12px;font-weight:800;line-height:1.2}
+.bk small{font-size:10.5px;color:var(--ink-soft);font-weight:700}
+.pgl{flex:1;min-height:0;display:flex;flex-direction:column;padding:16px 22px 0;position:relative;background:var(--page)}
+.rh{text-align:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)}
+.pbody{margin-block:auto;display:grid;gap:10px}
+.vs{font-family:var(--sa);font-size:21px;line-height:1.85;text-align:center}
+.vs mark{background:none;color:var(--saffron-fg);box-shadow:inset 0 -2px 0 var(--saffron)}
+.vr{text-align:center;font-style:italic;color:var(--ink-soft);font-size:12.5px;line-height:1.6}
+.rule{width:36px;height:2px;background:var(--saffron);margin:6px auto}
+.mean{font-size:14px;line-height:1.6;text-align:center}
+.wbtn{align-self:center;display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:800;color:var(--saffron-fg);padding:6px 10px}
+.wbtn .i{width:14px;height:14px}
+.fol{text-align:center;font-size:10.5px;font-weight:800;color:var(--ink-soft);padding:10px 0 14px}
+.hair{position:absolute;left:0;bottom:0;height:3px;width:2%;background:var(--saffron)}
+.ph.dark{background:var(--night);color:var(--night-fg)}
+.dark .pgl{background:var(--night)}
+.dark .rh,.dark .vr,.dark .fol{color:var(--night-soft)}
+.dark .rule{background:var(--night-accent)}
+.top{flex:none;display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--night-bar);font-weight:800;font-size:13px}
+.top .sp{flex:1}
+.top .aa{font-size:15px}
+.pop{position:absolute;right:12px;top:8px;width:196px;background:#2C2520;border:1px solid var(--night-line);border-radius:14px;padding:12px;display:grid;gap:10px;font-size:11.5px;font-weight:800}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:34px;border-radius:8px;border:2px solid transparent;display:grid;place-items:center;font-size:10.5px}
+.sw .l{background:#FFFDF7;color:#3B2E25} .sw .s{background:#F1E3C6;color:#4A3A28} .sw .d{background:#14110F;color:#EDE3D3;border-color:var(--night-accent)}
+.sz{display:flex;align-items:center;gap:8px}
+.sz i{flex:1;height:3px;background:var(--night-line);border-radius:2px;position:relative}
+.sz i::after{content:"";position:absolute;left:55%;top:-5px;width:13px;height:13px;border-radius:50%;background:var(--night-accent)}
+.bot{flex:none;background:var(--night-bar);padding:14px 16px;display:grid;gap:10px;color:var(--night-soft);font-size:11px;font-weight:800}
+.trk{height:4px;border-radius:2px;background:var(--night-line);position:relative}
+.trk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6%;background:var(--night-accent);border-radius:2px}
+.trk::after{content:"";position:absolute;left:6%;top:-6px;width:16px;height:16px;border-radius:50%;background:var(--night-accent);transform:translateX(-50%)}
+.bot div:last-child{display:flex;justify-content:space-between}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10H4z"/><path d="M16 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-upc" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3"/><path d="M16 4h3a1 1 0 0 1 1 1v3"/><path d="M20 16v3a1 1 0 0 1-1 1h-3"/><path d="M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 24 24"><path d="M7 4h10v16l-5-4-5 4z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14a8 8 0 1 1-9-10 6 6 0 0 0 9 10z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M5 7h14"/><path d="M5 12h14"/><path d="M5 17h14"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 3H9c0-1 0-2-1-3z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-ask" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></symbol>
+    <!-- cover motifs: stand-ins for the generated cover art -->
+    <symbol id="m-wheel" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="4"/><path d="M24 6v14M24 28v14M6 24h14M28 24h14M11 11l10 10M27 27l10 10M37 11L27 21M21 27L11 37"/></symbol>
+    <symbol id="m-sun" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/></symbol>
+    <symbol id="m-bow" viewBox="0 0 48 48"><path d="M16 5c18 8 18 30 0 38"/><path d="M16 5v38"/><path d="M6 24h34"/><path d="M34 18l7 6-7 6"/></symbol>
+    <symbol id="m-lotus" viewBox="0 0 48 48"><path d="M24 40c-8-6-8-18 0-28 8 10 8 22 0 28z"/><path d="M24 40C12 38 8 30 8 22c8 2 14 8 16 18z"/><path d="M24 40c12-2 16-10 16-18-8 2-14 8-16 18z"/></symbol>
+    <symbol id="m-tree" viewBox="0 0 48 48"><path d="M24 44V24"/><circle cx="24" cy="16" r="12"/><path d="M24 34l-7-6M24 30l6-5"/></symbol>
+    <symbol id="m-lamp" viewBox="0 0 48 48"><path d="M24 6c3 5 6 8 6 12a6 6 0 0 1-12 0c0-4 3-7 6-12z"/><path d="M8 30h32c0 7-7 12-16 12S8 37 8 30z"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Sanskritam screen mockups</h1>
+  <p class="lede">Direction for the October redesign, drawn with the app's own colours. Layout and hierarchy are the point. Colour is always a deep solid fill with light text, the way the book covers use it. The guru art, the icons and the book covers are stand-ins.</p>
+
+  <!-- ═══ TALK ═══ -->
+  <section class="sec">
+    <h2>Talk</h2>
+    <ul class="chg">
+      <li>Your sentence shows the way you said it, each language in its own script.</li>
+      <li>Correction and Why open in place. Nothing is removed.</li>
+      <li>The input bar loses the speaker and drops from about 105dp to about 60dp. The guru keeps his size.</li>
+    </ul>
+    <div class="row">
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:38</span><span>5G</span></div>
+          <div class="guru"><span></span>Guru, same size as today</div>
+          <div class="talk">
+            <div class="me">
+              <p class="mix"><span class="dv">नमस्ते, आज का</span> temperature is how much? <span class="kn">ನೀವು ಹೇಳಿ</span></p>
+              <p class="langs">Hindi · English · Kannada</p>
+            </div>
+            <div>
+              <div class="sa-row">
+                <p class="sa-line">अद्य उष्णम् अस्ति। भवान् कुत्र वसति?</p>
+                <span class="rb"><svg class="i"><use href="#i-vol"/></svg></span>
+              </div>
+              <p class="roman">adya uṣṇam asti. bhavān kutra vasati?</p>
+              <p class="tr dv">आज गर्मी है। आप कहाँ रहते हैं?</p>
+              <div class="more"><span class="tog c-teal">Why <svg class="i"><use href="#i-down"/></svg></span></div>
+            </div>
+          </div>
+          <div class="bar">
+            <span class="rnd"><svg class="i"><use href="#i-mic"/></svg></span>
+            <span class="inp">Say or type</span>
+            <span class="rnd go"><svg class="i"><use href="#i-up"/></svg></span>
+          </div>
+          <div class="tabs"><span>Home</span><span>Path</span><span class="on">Talk</span><span>Play</span><span>Grammar</span><span>Read</span></div>
+        </div>
+        <figcaption><b>Reply, closed</b>Sanskrit, roman, meaning. Tap the round button to hear it again.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:39</span><span>5G</span></div>
+          <div class="guru"><span></span>Guru, same size as today</div>
+          <div class="talk">
+            <div class="me">
+              <p class="mix dv">अहं विद्यालयं गच्छसि</p>
+              <p class="langs">Sanskrit</p>
+            </div>
+            <div>
+              <div class="sa-row">
+                <p class="sa-line">शोभनम्। भवान् कदा गच्छति?</p>
+                <span class="rb"><svg class="i"><use href="#i-vol"/></svg></span>
+              </div>
+              <p class="roman">śobhanam. bhavān kadā gacchati?</p>
+              <p class="tr">Good. When do you go?</p>
+              <div class="more">
+                <span class="tog c-saf">Say it like this <svg class="i"><use href="#i-upc"/></svg></span>
+                <span class="tog c-teal">Why <svg class="i"><use href="#i-upc"/></svg></span>
+              </div>
+              <div class="pan c-saf">
+                <h5>Say it like this</h5>
+                <p class="san">अहं विद्यालयं गच्छामि।</p>
+                <p class="roman">ahaṃ vidyālayaṃ gacchāmi.</p>
+              </div>
+              <div class="pan c-teal">
+                <h5>Why</h5>
+                <p><span class="dv">गच्छसि</span> goes with you. With <span class="dv">अहम्</span> (I) the verb ends in <span class="dv">मि</span>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bar">
+            <span class="rnd"><svg class="i"><use href="#i-mic"/></svg></span>
+            <span class="inp">Say or type</span>
+            <span class="rnd go"><svg class="i"><use href="#i-up"/></svg></span>
+          </div>
+          <div class="tabs"><span>Home</span><span>Path</span><span class="on">Talk</span><span>Play</span><span>Grammar</span><span>Read</span></div>
+        </div>
+        <figcaption><b>Reply, opened</b>The correction opens by itself when there is one. Why opens on tap.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ ASK ═══ -->
+  <section class="sec">
+    <h2>Ask</h2>
+    <ul class="chg">
+      <li>The sheet slides straight up. No bounce.</li>
+      <li>This screen attaches what you are looking at. Its text is read on the phone.</li>
+      <li>A mic sits next to the box. Answers come as a title, dates, steps and terms.</li>
+    </ul>
+    <div class="row">
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:40</span><span>5G</span></div>
+          <div class="dimmed">
+            <div class="ghost"><span></span><span></span><span></span><span></span></div>
+            <div class="sheet">
+              <span class="grab"></span>
+              <div class="sh-h"><span>Ask</span><svg class="i"><use href="#i-x"/></svg></div>
+              <div class="att"><span class="th"></span><span>This screen<small>The 8 cases at a glance</small></span><svg class="i"><use href="#i-x"/></svg></div>
+              <div class="sug">
+                <span>What does this mean? <svg class="i"><use href="#i-right"/></svg></span>
+                <span>Explain the grammar <svg class="i"><use href="#i-right"/></svg></span>
+                <span>Give me one more example <svg class="i"><use href="#i-right"/></svg></span>
+              </div>
+              <div class="bar">
+                <span class="rnd sm act"><svg class="i"><use href="#i-scan"/></svg></span>
+                <span class="rnd sm"><svg class="i"><use href="#i-mic"/></svg></span>
+                <span class="inp">Type a question</span>
+                <span class="rnd go"><svg class="i"><use href="#i-up"/></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption><b>Asking about the screen</b>The first round button captures the screen. The second is the mic.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:41</span><span>5G</span></div>
+          <div class="dimmed">
+            <div class="ghost"><span></span><span></span></div>
+            <div class="sheet">
+              <span class="grab"></span>
+              <div class="sh-h"><span>Ask</span><svg class="i"><use href="#i-x"/></svg></div>
+              <p class="q">When is Pitru Paksha and how do I observe it?</p>
+              <div class="ans">
+                <h4>Pitru Paksha<span class="dv">पितृपक्षः</span></h4>
+                <div class="when c-gold"><span>27 Sep to 10 Oct 2026</span><small>For Bengaluru</small></div>
+                <p>Sixteen lunar days for remembering your ancestors.</p>
+                <h5>How to observe</h5>
+                <ol>
+                  <li>Offer water with sesame each morning.</li>
+                  <li>Offer food on your ancestor's tithi.</li>
+                  <li>Feed others, and crows and cows.</li>
+                </ol>
+                <h5>Words</h5>
+                <div class="terms">
+                  <span><b class="dv">तर्पणम्</b>tarpaṇam · water offering</span>
+                  <span><b class="dv">श्राद्धम्</b>śrāddham · offering made in faith</span>
+                </div>
+              </div>
+              <div class="bar">
+                <span class="rnd sm"><svg class="i"><use href="#i-scan"/></svg></span>
+                <span class="rnd sm"><svg class="i"><use href="#i-mic"/></svg></span>
+                <span class="inp">Type a question</span>
+                <span class="rnd go"><svg class="i"><use href="#i-up"/></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption><b>A wider question</b>Sample answer. Dates are calculated on the server for the user's place, never recalled by the model.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ PLAY ═══ -->
+  <section class="sec">
+    <h2>Play</h2>
+    <ul class="chg">
+      <li>Games and practice are separate.</li>
+      <li>Every game has a clock, a score, a combo and a best.</li>
+      <li>One challenge a day keeps its own streak.</li>
+    </ul>
+    <div class="row">
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:42</span><span>5G</span></div>
+          <div class="scr">
+            <div class="h1">Play <span class="streak"><svg class="i"><use href="#i-flame"/></svg>4 days</span></div>
+            <div class="today">
+              <small>Today's challenge</small>
+              <b>Shabda Rush</b>
+              <span>Beat 380 in 60 seconds</span>
+              <em><svg class="i"><use href="#i-play"/></svg></em>
+            </div>
+            <span class="lab">Games</span>
+            <div class="g2">
+              <div class="gt c-saf"><span class="gl">श</span><b>Shabda Rush</b><span>शब्द-वेगः</span><small>Best 420</small></div>
+              <div class="gt c-rose"><span class="gl">स्मृ</span><b>Smriti</b><span>स्मृतिः</span><small>Best 14 moves</small></div>
+              <div class="gt c-slate"><span class="gl">ज</span><b>Varna Jaal</b><span>वर्ण-जालम्</span><small>2 of 8 today</small></div>
+              <div class="gt c-gold"><span class="gl">व</span><b>Daily word</b><span>वर्ण-बन्धः</span><small>Solved in 3</small></div>
+            </div>
+            <span class="lab">Practice</span>
+            <div class="pr">
+              <div><i class="c-teal"></i>Word order<small>Level 3</small></div>
+              <div><i class="c-saf"></i>Sandhi<small>12 of 40</small></div>
+              <div><i class="c-sage"></i>Paradigms<small>8 tables</small></div>
+              <div><i class="c-gold"></i>Words<small>64 known</small></div>
+              <div><i class="c-slate"></i>Piṅgala<small>Level 2</small></div>
+              <div><i class="c-rose"></i>Challenges<small>5 done</small></div>
+            </div>
+          </div>
+          <div class="tabs"><span>Home</span><span>Path</span><span>Talk</span><span class="on">Play</span><span>Grammar</span><span>Read</span></div>
+        </div>
+        <figcaption><b>Hub</b>Today's challenge on top, games as tiles, the old drills as a quiet list.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:43</span><span>5G</span></div>
+          <div class="scr">
+            <div class="hud"><svg class="i"><use href="#i-x"/></svg><span class="t"><i></i></span><span class="n">0:42</span></div>
+            <div class="stat"><b>180</b><span class="c-gold">3 in a row · x3</span></div>
+            <div class="card"><p class="san">जलम्</p><small>jalam</small></div>
+            <div class="opts"><span>fire</span><span class="ok">water</span><span>sky</span><span>tree</span></div>
+            <p class="plus">+30</p>
+            <p class="foot">Best 420</p>
+          </div>
+        </div>
+        <figcaption><b>Shabda Rush</b>Sixty seconds. Right answers build a combo, a miss resets it.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:44</span><span>5G</span></div>
+          <div class="scr">
+            <div class="hud"><svg class="i"><use href="#i-x"/></svg><span class="t"><i style="width:25%"></i></span><span class="n">2:10</span></div>
+            <p class="word">नगरम्<small>city</small></p>
+            <div class="grid4">
+              <span class="p">न</span><span class="p">ग</span><span>क</span><span>ल</span>
+              <span>व</span><span class="p">र</span><span class="p">म्</span><span>त</span>
+              <span>ज</span><span>ल</span><span>दे</span><span>ह</span>
+              <span>प</span><span>थ</span><span>फ</span><span>ल</span>
+            </div>
+            <span class="lab">2 of 8 words</span>
+            <div class="found">
+              <span class="c-slate">जलम्</span><span class="c-slate">नगरम्</span>
+              <span class="no">fruit</span><span class="no">forest</span><span class="no">king</span><span class="no">house</span><span class="no">tree</span><span class="no">book</span>
+            </div>
+          </div>
+        </div>
+        <figcaption><b>Varna Jaal</b>Drag across neighbouring letters to make the word for each clue. One new board a day, no clock to beat.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ GRAMMAR ═══ -->
+  <section class="sec">
+    <h2>Grammar</h2>
+    <ul class="chg">
+      <li>Each chapter has its own colour and its own letter.</li>
+      <li>Tables fit the screen. An ending is coloured as a whole letter, so no dotted circles.</li>
+      <li>Callouts lose their boxes. The next topic waits at the end.</li>
+    </ul>
+    <div class="row">
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:45</span><span>5G</span></div>
+          <div class="scr">
+            <div class="h1">Grammar</div>
+            <div class="srch"><svg class="i"><use href="#i-search"/></svg>Search or type a word</div>
+            <div class="cont"><span><small>Continue</small>The 8 cases at a glance</span><svg class="i"><use href="#i-right"/></svg></div>
+            <div class="lv"><span class="on">All</span><span>Beginner</span><span>Intermediate</span><span>Advanced</span></div>
+            <div class="g2">
+              <div class="gt c-saf"><span class="gl">आ</span><b>Start here</b><span>आरम्भः</span><div class="pb"><i style="width:100%"></i></div></div>
+              <div class="gt c-teal"><span class="gl">व</span><b>Sounds &amp; script</b><span>वर्णाः</span><div class="pb"><i style="width:60%"></i></div></div>
+              <div class="gt c-sage"><span class="gl">ना</span><b>Nouns</b><span>नामपदानि</span><div class="pb"><i style="width:25%"></i></div></div>
+              <div class="gt c-rose"><span class="gl">वि</span><b>The 8 cases</b><span>विभक्तयः</span><div class="pb"><i style="width:10%"></i></div></div>
+              <div class="gt c-gold"><span class="gl">श</span><b>Noun families</b><span>शब्दरूपाणि</span><div class="pb"><i style="width:0"></i></div></div>
+              <div class="gt c-slate"><span class="gl">स</span><b>Pronouns</b><span>सर्वनामानि</span><div class="pb"><i style="width:0"></i></div></div>
+            </div>
+          </div>
+          <div class="tabs"><span>Home</span><span>Path</span><span>Talk</span><span>Play</span><span class="on">Grammar</span><span>Read</span></div>
+        </div>
+        <figcaption><b>Chapters</b>Eighteen tiles in two columns. Tapping one opens its topics as a plain numbered list.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:46</span><span>5G</span></div>
+          <div class="tb"><svg class="i"><use href="#i-back"/></svg>The 8 cases<span class="lang"><b class="on">EN</b><b class="dv">हिं</b></span><svg class="i"><use href="#i-ask"/></svg></div>
+          <div class="pg"><i style="width:10%"></i></div>
+          <div class="doc">
+            <div>
+              <p class="eyeb">Topic 1 of 10</p>
+              <h3>The 8 cases at a glance</h3>
+              <p class="meta">Beginner · 4 min</p>
+            </div>
+            <div class="term c-rose"><div><p class="san">विभक्तिः</p><small>vibhaktiḥ · the ending that shows a word's job</small></div><svg class="i"><use href="#i-vol"/></svg></div>
+            <p class="one">Eight sets of endings tell you a noun's job in the sentence.</p>
+            <table class="gtab">
+              <colgroup><col style="width:44%"><col style="width:26%"><col style="width:30%"></colgroup>
+              <thead><tr><th>Case</th><th>Form</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><span class="n">1</span>Nominative<small>who does it?</small></td><td><span class="f">रा<b>मः</b></span><small>rāmaḥ</small></td><td>Rāma (does)</td></tr>
+                <tr><td><span class="n">2</span>Accusative<small>whom? where to?</small></td><td><span class="f">रा<b>मम्</b></span><small>rāmam</small></td><td>Rāma, as object</td></tr>
+                <tr><td><span class="n">3</span>Instrumental<small>with or by what?</small></td><td><span class="f">रा<b>मेण</b></span><small>rāmeṇa</small></td><td>by Rāma</td></tr>
+                <tr><td><span class="n">4</span>Dative<small>for whom?</small></td><td><span class="f">रा<b>माय</b></span><small>rāmāya</small></td><td>for Rāma</td></tr>
+                <tr><td><span class="n">5</span>Ablative<small>from where?</small></td><td><span class="f">रा<b>मात्</b></span><small>rāmāt</small></td><td>from Rāma</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figcaption><b>Topic, top</b>The chapter colour runs through the page. Four data columns fold into three that fit.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:47</span><span>5G</span></div>
+          <div class="tb"><svg class="i"><use href="#i-back"/></svg>The 8 cases<span class="lang"><b class="on">EN</b><b class="dv">हिं</b></span><svg class="i"><use href="#i-ask"/></svg></div>
+          <div class="pg"><i style="width:70%"></i></div>
+          <div class="doc">
+            <table class="gtab">
+              <colgroup><col style="width:44%"><col style="width:26%"><col style="width:30%"></colgroup>
+              <tbody>
+                <tr><td><span class="n">7</span>Locative<small>where?</small></td><td><span class="f">रा<b>मे</b></span><small>rāme</small></td><td>in Rāma</td></tr>
+                <tr><td><span class="n">8</span>Vocative<small>calling out</small></td><td><span class="f"><b>राम</b></span><small>rāma</small></td><td>O Rāma</td></tr>
+              </tbody>
+            </table>
+            <div class="ex">
+              <p class="sub">One sentence, three cases</p>
+              <div class="w">
+                <span style="color:var(--f-saffron)">रामः<small>Rāma</small></span>
+                <span style="color:var(--f-teal)">ग्रामात्<small>from the village</small></span>
+                <span style="color:var(--f-slate)">वनं<small>to the forest</small></span>
+                <span>गच्छति<small>goes</small></span>
+              </div>
+              <p>Rāma goes from the village to the forest.</p>
+            </div>
+            <div class="tip"><svg class="i"><use href="#i-bulb"/></svg><p>Learn the first two cases first. Add one at a time after that.</p></div>
+            <div class="qz">
+              <p class="sub">Which form means "for Rāma"?</p>
+              <span>रामस्य</span><span>रामाय</span>
+            </div>
+          </div>
+          <div class="nxt"><span><small>Next</small>Nominative &amp; vocative</span><svg class="i"><use href="#i-right"/></svg></div>
+        </div>
+        <figcaption><b>Topic, further down</b>Each word in an example carries its meaning. Ask sits in the top bar here, so nothing floats over a table.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ READ ═══ -->
+  <section class="sec">
+    <h2>Read</h2>
+    <ul class="chg">
+      <li>Covers on a shelf, with Continue on top.</li>
+      <li>The page fills the screen. Tap the middle for controls, swipe or tap an edge to turn.</li>
+      <li>Light, sepia and dark, plus text size. The verse is printed as a verse, with its words one tap away.</li>
+    </ul>
+    <div class="row">
+      <figure class="shot">
+        <div class="ph">
+          <div class="sb"><span>11:48</span><span>5G</span></div>
+          <div class="scr">
+            <div class="h1">Read</div>
+            <div class="hero">
+              <div class="cov k-gita"><svg viewBox="0 0 48 48"><use href="#m-wheel"/></svg><b>गीता</b></div>
+              <div class="in">
+                <b>Bhagavad Gītā</b>
+                <small>Chapter 2 · verse 13</small>
+                <div class="pb"><i></i></div>
+                <span class="btn">Continue</span>
+              </div>
+            </div>
+            <span class="lab">Scriptures</span>
+            <div class="rail">
+              <div class="bk"><div class="cov k-gita"><svg viewBox="0 0 48 48"><use href="#m-wheel"/></svg><b>श्रीमद्भगवद्गीता</b></div><span>Bhagavad Gītā</span><small>51 of 700</small></div>
+              <div class="bk"><div class="cov k-isha"><svg viewBox="0 0 48 48"><use href="#m-sun"/></svg><b>ईशावास्यम्</b></div><span>Īśopaniṣad</span><small>18 of 18</small></div>
+              <div class="bk"><div class="cov k-rama"><svg viewBox="0 0 48 48"><use href="#m-bow"/></svg><b>रामायणम्</b></div><span>Rāmāyaṇa</span><small>12 of 60</small></div>
+              <div class="bk"><div class="cov k-katha"><svg viewBox="0 0 48 48"><use href="#m-lamp"/></svg><b>कठोपनिषद्</b></div><span>Kaṭhopaniṣad</span><small>8 of 40</small></div>
+            </div>
+            <span class="lab">Stories and wisdom</span>
+            <div class="rail">
+              <div class="bk"><div class="cov k-hito"><svg viewBox="0 0 48 48"><use href="#m-lotus"/></svg><b>हितोपदेशः</b></div><span>Hitopadeśa</span><small>9 of 50</small></div>
+              <div class="bk"><div class="cov k-pancha"><svg viewBox="0 0 48 48"><use href="#m-tree"/></svg><b>पञ्चतन्त्रम्</b></div><span>Pañcatantra</span><small>6 of 30</small></div>
+              <div class="bk"><div class="cov k-niti"><svg viewBox="0 0 48 48"><use href="#m-lamp"/></svg><b>नीतिशतकम्</b></div><span>Nītiśataka</span><small>10 of 100</small></div>
+              <div class="bk"><div class="cov k-rama"><svg viewBox="0 0 48 48"><use href="#m-lotus"/></svg><b>सुभाषितम्</b></div><span>Subhāṣita</span><small>14 of 100</small></div>
+            </div>
+          </div>
+          <div class="tabs"><span>Home</span><span>Path</span><span>Talk</span><span>Play</span><span>Grammar</span><span class="on">Read</span></div>
+        </div>
+        <figcaption><b>Shelf</b>These covers are placeholders. Each book gets its own illustrated cover.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph" style="background:var(--page)">
+          <div class="pgl">
+            <p class="rh">Bhagavad Gītā · Chapter 2</p>
+            <div class="pbody">
+              <p class="vs">अशोच्यानन्वशोचस्त्वं<br>प्रज्ञावादांश्च भाषसे ।<br>गतासूनगतासूंश्च<br>नानुशोचन्ति पण्डिताः ॥ ११ ॥</p>
+              <p class="vr">aśocyān anvaśocas tvaṃ prajñāvādāṃś ca bhāṣase<br>gatāsūn agatāsūṃś ca nānuśocanti paṇḍitāḥ</p>
+              <div class="rule"></div>
+              <p class="mean">You grieve for those who need no grief, yet speak as the wise do. The wise grieve neither for the dead nor for the living.</p>
+            </div>
+            <span class="wbtn">Word by word <svg class="i"><use href="#i-upc"/></svg></span>
+            <p class="fol">2.11 · 1 of 51</p>
+            <span class="hair"></span>
+          </div>
+        </div>
+        <figcaption><b>Page, controls hidden</b>No bars, no buttons. Word by word opens a sheet with every word and its meaning.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <div class="ph dark">
+          <div class="top"><svg class="i"><use href="#i-back"/></svg><span>Bhagavad Gītā</span><span class="sp"></span><span class="aa">Aa</span><svg class="i"><use href="#i-moon"/></svg><svg class="i"><use href="#i-mark"/></svg><svg class="i"><use href="#i-list"/></svg></div>
+          <div class="pgl">
+            <div class="pbody" style="margin-bottom:56px">
+              <p class="vs">देहिनोऽस्मिन्यथा देहे<br>कौमारं यौवनं जरा ।<br>तथा देहान्तरप्राप्तिर्<br>धीरस्तत्र न मुह्यति ॥ १३ ॥</p>
+              <p class="vr">dehino 'smin yathā dehe kaumāraṃ yauvanaṃ jarā<br>tathā dehāntaraprāptir dhīras tatra na muhyati</p>
+              <div class="rule"></div>
+              <p class="mean">As childhood, youth and old age come to the one who lives in this body, so does another body. The steady are not confused by this.</p>
+            </div>
+            <div class="pop">
+              <span>Theme</span>
+              <div class="sw"><span class="l">Light</span><span class="s">Sepia</span><span class="d">Dark</span></div>
+              <span>Text size</span>
+              <div class="sz"><span>A</span><i></i><span style="font-size:15px">A</span></div>
+            </div>
+          </div>
+          <div class="bot"><div class="trk"></div><div><span>2.13 · 3 of 51</span><span>18.63</span></div></div>
+        </div>
+        <figcaption><b>Page, dark, controls shown</b>One tap brings the top bar and the slider. Aa opens theme and text size.</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>

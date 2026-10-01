@@ -50,7 +50,7 @@ import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/cli
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { useAsk } from "../ask/AskProvider";
+import { useAsk, useAskContext } from "../ask/AskProvider";
 import { EmptyState, Button, ProgressBar } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
 import BookCover from "../components/book/BookCover";
@@ -121,6 +121,8 @@ export default function ReaderScreen() {
   const [positions, setPositions] = useState<Record<string, number>>({});
   const navigation = useNavigation();
   const reading = bookKey !== null && pageIndex !== null;
+  // "This screen" in Ask reads what is registered here plus on-device OCR.
+  useAskContext("read", bookKey ?? "");
 
   // An open book owns horizontal drags: the drawer's edge swipe would steal a
   // page turned back from the spine. Given back the moment the book closes.

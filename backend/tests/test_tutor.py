@@ -14,6 +14,7 @@ import pytest
 
 from app.services.tutor import (
     ConversationTutor,
+    faithful,
     is_devanagari_pure,
     sanskrit_health,
 )
@@ -1192,3 +1193,73 @@ def test_a_native_line_that_quotes_the_sanskrit_is_not_flagged(line, lang):
     before quotes were stripped, against 83% for a truly transliterated one."""
     from app.services.tutor import native_line_is_sanskrit
     assert not native_line_is_sanskrit(line, lang), line
+
+
+# ─── heard: the mix as it was said ────────────────────────────────────
+
+
+def test_a_rescripted_line_is_faithful():
+    """Same words, different scripts: Hindi+English as said vs as heard."""
+    assert faithful(
+        "नमस्ते आज का temperature कितना है?",
+        "नमस्ते, आज का टेंपरेचर कितना है?",
+    )
+
+
+def test_a_translated_line_is_not_faithful():
+    assert not faithful("My name is Anshul", "मम नाम अंशुलः।")
+
+
+def test_a_rewritten_line_is_not_faithful():
+    """A correction is not a copy: words added and dropped."""
+    assert not faithful("अहं विद्यालयं गच्छामि।", "अहं गच्छसि।")
+    assert not faithful("", "अहं गच्छामि।")
+    assert not faithful("अहं गच्छामि।", "")
+
+
+def _say_heard(heard="", heard_langs=None, **kw):
+    payload = json.loads(_say(**kw))
+    payload["heard"] = heard
+    payload["heard_langs"] = heard_langs or []
+    return json.dumps(payload)
+
+
+def test_heard_is_kept_on_a_voice_turn(monkeypatch):
+    _stub(monkeypatch, _say_heard(
+        reply_sa="शोभनम्।",
+        reply_native="Good.",
+        explain_en="Fine.",
+        heard="अहं गच्छामि, but कल नहीं।",
+        heard_langs=["Sanskrit", "English", "Hindi"],
+    ))
+    r = _run(_reply(ConversationTutor(), transcript="अहं गच्छामि बट कल नहीं।",
+                    want_heard=True))
+    assert r.heard == "अहं गच्छामि, but कल नहीं।"
+    assert r.heard_langs == ["Sanskrit", "English", "Hindi"]
+
+
+def test_heard_is_dropped_when_unfaithful(monkeypatch):
+    _stub(monkeypatch, _say_heard(
+        reply_sa="शोभनम्।",
+        reply_native="Good.",
+        explain_en="Fine.",
+        heard="My name is Anshul",
+        heard_langs=["English"],
+    ))
+    r = _run(_reply(ConversationTutor(), transcript="मम नाम अंशुलः।",
+                    want_heard=True))
+    assert r.heard == ""
+    assert r.heard_langs == []
+
+
+def test_heard_is_dropped_on_a_typed_turn(monkeypatch):
+    _stub(monkeypatch, _say_heard(
+        reply_sa="शोभनम्।",
+        reply_native="Good.",
+        explain_en="Fine.",
+        heard="अहं गच्छामि, but कल नहीं।",
+        heard_langs=["Sanskrit", "English", "Hindi"],
+    ))
+    r = _run(_reply(ConversationTutor(), transcript="अहं गच्छामि बट कल नहीं।"))
+    assert r.heard == ""
+    assert r.heard_langs == []

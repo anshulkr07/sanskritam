@@ -96,15 +96,15 @@ def learner_owned_models() -> tuple:
     deletion into a 500, and Google Play requires deletion to work in-app.
     """
     from app.models import (
-        Attempt, ConversationSession, DailyActivity, DailyWordPlay, Entitlement,
-        NotificationSend, PronunciationAttempt, PushToken, ReviewItem, Token,
-        UsageEvent, WritingAttempt,
+        Attempt, ContentReport, ConversationSession, DailyActivity, DailyWordPlay,
+        Entitlement, NotificationSend, PronunciationAttempt, PushToken, ReviewItem,
+        Token, UsageEvent, WritingAttempt,
     )
 
     return (
         UsageEvent, Token, Attempt, PronunciationAttempt, WritingAttempt,
         ConversationSession, DailyActivity, DailyWordPlay, PushToken,
-        NotificationSend, Entitlement, ReviewItem,
+        NotificationSend, Entitlement, ReviewItem, ContentReport,
     )
 
 
