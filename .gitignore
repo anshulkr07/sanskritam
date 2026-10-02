@@ -31,12 +31,9 @@ backend/.venv/
 backend/app/evals/.cache/
 backend/evals-out/
 
-# Speech bench artifacts (specs/speech-bench.md — offline tools write here).
-# Cover art is the exception: results/covers/ (paintings + masters) is tracked
-# in git per 2026-10-02 decision. EAS still excludes /results/ via .easignore.
-results/*
-!results/covers/
-!results/covers/**
+# Speech bench artifacts + cover masters (large binaries, EAS excludes /results/).
+# mobile/assets/covers/*.webp stay tracked (bundled via require in covers.ts).
+results/
 # Authoring draft cache lives under app/, not backend/ directly (§repo map)
 backend/app/.authoring-cache/
 # Challenge-generation draft cache (P7-4) — same class of LLM-draft cache
