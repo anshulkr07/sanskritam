@@ -97,14 +97,14 @@ def learner_owned_models() -> tuple:
     """
     from app.models import (
         Attempt, ContentReport, ConversationSession, DailyActivity, DailyWordPlay,
-        Entitlement, NotificationSend, PronunciationAttempt, PushToken, ReviewItem,
+        Entitlement, GameResult, NotificationSend, PronunciationAttempt, PushToken, ReviewItem,
         Token, UsageEvent, WritingAttempt,
     )
 
     return (
         UsageEvent, Token, Attempt, PronunciationAttempt, WritingAttempt,
         ConversationSession, DailyActivity, DailyWordPlay, PushToken,
-        NotificationSend, Entitlement, ReviewItem, ContentReport,
+        NotificationSend, Entitlement, ReviewItem, ContentReport, GameResult,
     )
 
 

@@ -588,6 +588,31 @@ def _makara_sankranti(year: int, place: dict) -> date:
     return hi.astimezone(zone).date()
 
 
+#: Festivals whose rule reproduces BOTH the 2026 and 2027 Drik Panchang dates
+#: for New Delhi (HANDOVER appendix B, verified 2026-10-01 by running
+#: tests/test_panchang.py with astronomy-engine 2.1.19). Only these ship:
+#: Ask answers any other festival with "cannot calculate that one yet".
+#: Dropped (rule does not reproduce both years, never hardcode a date):
+#: Makara Sankranti (2027 off by 1), Ugadi, Holika Dahan, Holi, Raksha
+#: Bandhan, Krishna Janmashtami, Govardhan Puja, Maha Navami.
+SHIPPED_FESTIVALS = frozenset({
+    "Vasant Panchami",
+    "Maha Shivaratri",
+    "Rama Navami",
+    "Buddha Purnima",
+    "Guru Purnima",
+    "Ganesh Chaturthi",
+    "Pitru Paksha",
+    "Durga Ashtami",
+    "Dussehra",
+    "Karwa Chauth",
+    "Diwali",
+    "Bhai Dooj",
+    "Chhath Puja",
+    "Kartik Purnima",
+})
+
+
 def festival(name_or_alias: str, year: int, place: dict) -> date | tuple[date, date]:
     """Next occurrence's local date (or date range) for a festival name.
 
@@ -596,6 +621,8 @@ def festival(name_or_alias: str, year: int, place: dict) -> date | tuple[date, d
     row = find_festival(name_or_alias)
     if row is None:
         raise LookupError(f"unknown festival: {name_or_alias!r}")
+    if row["name"] not in SHIPPED_FESTIVALS:
+        raise LookupError(f"cannot calculate {row['name']} yet")
     kind = row.get("kind")
     if kind == "sankranti":
         return _makara_sankranti(year, place)

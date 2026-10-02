@@ -9,6 +9,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
@@ -86,6 +87,9 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    # The reader fetches the whole corpus in one response (~1.2 MB after the
+    # Gita import); gzip keeps it fast on phones.
+    app.add_middleware(GZipMiddleware, minimum_size=1024)
 
     # Request timing middleware + crash log (P8-2)
     @app.middleware("http")
@@ -136,8 +140,10 @@ def create_app() -> FastAPI:
     from app.routers.varnamala import router as varnamala_router
     from app.routers.videos import router as videos_router
     from app.routers.story import router as story_router
+    from app.routers.word_origins import router as word_origins_router
     from app.routers.legal import router as legal_router
     from app.routers.feedback import router as feedback_router
+    from app.routers.games import router as games_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -167,8 +173,10 @@ def create_app() -> FastAPI:
     app.include_router(varnamala_router, tags=["Varnamala"])
     app.include_router(videos_router, tags=["Videos"])
     app.include_router(story_router, tags=["Story"])
+    app.include_router(word_origins_router, tags=["Word origins"])
     app.include_router(legal_router, tags=["Legal"])
     app.include_router(feedback_router, tags=["Feedback"])
+    app.include_router(games_router, tags=["Games"])
 
     # Serve pre-rendered audio (/audio/<path>) BEFORE the frontend catch-all
     # mount below so the static WAVs resolve even though the console is mounted

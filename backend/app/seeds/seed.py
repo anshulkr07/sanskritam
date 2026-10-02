@@ -41,6 +41,12 @@ def run_seed():
         # Seed shlokas
         _seed_shlokas(db)
 
+        # Reader corrections (HANDOVER 7.5): renumber 8.30 to 8.8, prefix
+        # unnumbered lines as Sūkti, delete rows that duplicate an imported
+        # verse. Keyed on the old reference and date so existing databases
+        # are repaired the same way fresh ones seed.
+        _correct_reader_rows(db)
+
         # Seed dialogue scenario
         seed_dialogue(db)
 
@@ -82,6 +88,11 @@ def run_seed():
         # After the registry it points at (attribution must resolve).
         from app.seeds.story_cards import seed_story
         seed_story(db)
+
+        # Seed the word journey (handover_language) — after the registry it
+        # points at. Additive and idempotent; rows missing from files withdraw.
+        from app.seeds.word_origins import seed_word_origins
+        seed_word_origins(db)
 
         db.commit()
         logger.info("Database seeded successfully")
@@ -149,10 +160,19 @@ def _seed_shlokas(db):
     inserted = 0
     for sdata in SEED_SLOKAS:
         date_iso = (SHLOKA_ANCHOR + timedelta(days=sdata["day_offset"])).isoformat()
+        ref = _normalise_ref(sdata["source_ref"])
         existing = db.query(Shloka).filter(
-            Shloka.source_ref == sdata["source_ref"],
+            Shloka.source_ref == ref,
             Shloka.date == date_iso,
         ).first()
+        # Also skip when the old (pre-correction) ref already seeded: the
+        # corrections step renames it, and re-inserting the old row would
+        # bring the wrong reference back.
+        if existing is None and ref != sdata["source_ref"]:
+            existing = db.query(Shloka).filter(
+                Shloka.source_ref == sdata["source_ref"],
+                Shloka.date == date_iso,
+            ).first()
         if existing:
             continue
         # Metre from the engine, never hand-typed (§6 / P7-6).
@@ -164,7 +184,7 @@ def _seed_shlokas(db):
         shloka = Shloka(
             id=uuid.uuid4().hex[:16],
             date=date_iso,
-            source_ref=sdata["source_ref"],
+            source_ref=ref,
             devanagari=sdata["devanagari"],
             # P7-13: derived from lipi, never hand-typed — the seed file's
             # value is ignored so the table-wide invariant holds.
@@ -179,3 +199,70 @@ def _seed_shlokas(db):
         inserted += 1
     if inserted:
         logger.info("Seeded %d new shlokas", inserted)
+
+
+def _normalise_ref(source_ref: str) -> str:
+    """Seed-time reference normalisation (HANDOVER 7.5).
+
+    - "Bhagavad Gita 8.30" does not exist (chapter 8 has 28 verses; the
+      text is 8.8), so it becomes 8.8 in fresh databases.
+    - A line with no verse number does not belong in a book: it is
+      prefixed "Sukti" so the reader shows it in one "Sayings" book.
+    """
+    import re as _re
+
+    ref = (source_ref or "").strip()
+    if "8.30" in ref and "Bhagavad" in ref:
+        ref = ref.replace("8.30", "8.8")
+    if ref.startswith("Sūkti") or ref.startswith("Sukti"):
+        return ref
+    if not _re.search(r"\d+\.\d+", ref):
+        return f"Sūkti: {ref}" if ref else "Sūkti"
+    return ref
+
+
+def _correct_reader_rows(db) -> None:
+    """Repair existing databases the same way fresh seeds insert (7.5).
+
+    Keyed on the old reference and date: renames 8.30 to 8.8, prefixes
+    unnumbered lines as Sūkti, and deletes a row that then duplicates
+    another verse. Changing a reference in place keeps the row's id and
+    date, so the daily schedule and the (source_ref, date) key are
+    untouched and the startup seed does not put the old row back.
+    """
+    import re as _re
+
+    rows = db.query(Shloka).all()
+    seen: set[tuple[str, str]] = set()
+    for r in rows:
+        want = _normalise_ref(r.source_ref or "")
+        if want != (r.source_ref or ""):
+            dup = db.query(Shloka).filter(
+                Shloka.source_ref == want,
+                Shloka.date == r.date,
+                Shloka.id != r.id,
+            ).first()
+            if dup is not None:
+                db.delete(r)
+                continue
+            r.source_ref = want
+    db.flush()
+    # Delete exact duplicates that share the normalised ref and date.
+    for r in db.query(Shloka).order_by(Shloka.date, Shloka.id).all():
+        key = ((r.source_ref or ""), (r.date or ""))
+        if key in seen:
+            db.delete(r)
+        else:
+            seen.add(key)
+    # Drop any residual 8.30 that slipped through (chapter 8 has 28 verses).
+    for r in db.query(Shloka).filter(Shloka.source_ref.contains("8.30")).all():
+        if "Bhagavad" in (r.source_ref or ""):
+            dup = db.query(Shloka).filter(
+                Shloka.source_ref == (r.source_ref or "").replace("8.30", "8.8"),
+                Shloka.date == r.date,
+            ).first()
+            if dup is not None:
+                db.delete(r)
+            else:
+                r.source_ref = (r.source_ref or "").replace("8.30", "8.8")
+    db.flush()

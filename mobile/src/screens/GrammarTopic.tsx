@@ -18,7 +18,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type GuideGlossaryItem, type LessonSummary } from "../api/client";
-import { useAskContext } from "../ask/AskProvider";
+import { useAsk, useAskContext } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
 import BlockRenderer, { SanskritLine } from "../components/grammar/BlockRenderer";
@@ -37,7 +37,7 @@ import { useTypeScale } from "../hooks/useTypeScale";
 import type { RootStackParamList } from "../navigation/types";
 import { fetchGuideTopic, setLastTopic, setTopicRead } from "../services/grammarGuide";
 import { haptics } from "../services/haptics";
-import { color, font, radius, script, shadow, space } from "../theme";
+import { color, fill, fillAt, font, onFill, radius, script, shadow, space, type FillName } from "../theme";
 import { announce } from "../utils/announce";
 
 type Props = NativeStackScreenProps<RootStackParamList, "GrammarTopic">;
@@ -74,7 +74,7 @@ function Section({ title, icon, lang, children }: { title: string; icon: React.C
 export default function GrammarTopicScreen({ route, navigation }: Props) {
   const { topicId } = route.params;
   const { lang, t, setLang } = useGuideLang();
-  const ctx = React.useMemo(() => ({ lang, t }), [lang, t]);
+  const { setHiddenBy, open } = useAsk();
   const { sized } = useTypeScale();
   const { read } = useGrammarProgress();
   const scrollRef = React.useRef<ScrollView>(null);
@@ -87,20 +87,41 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
   );
   // Same key and shape Grammar.tsx has always filled (Lesson.tsx peeks it).
   const { data: lessons } = useQuery("grammar-lessons", api.lessons);
+  const tone: FillName = fillAt(topicId.length % 6);
+  const ctx = React.useMemo(() => ({ lang, t, tone }), [lang, t, tone]);
 
   React.useEffect(() => {
     setLastTopic(topicId);
     scrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [topicId]);
 
+  // Hide the floating Ask bubble on this screen: tables plus a bubble overlap.
+  // The header carries the Ask entry instead.
+  React.useEffect(() => {
+    setHiddenBy("grammar-topic", true);
+    return () => setHiddenBy("grammar-topic", false);
+  }, [setHiddenBy]);
+
   useAskContext("grammar", topic ? (topic.term?.sa ?? topic.title_sa ?? "") : "");
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       title: topic ? t(topic.chapter.title) : GUIDE_UI.title[lang],
-      headerRight: () => <LangToggle lang={lang} onChange={setLang} />,
+      headerRight: () => (
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Pressable
+            onPress={() => open()}
+            accessibilityRole="button"
+            accessibilityLabel="Ask about this topic"
+            style={{ width: 44, height: 44, alignItems: "center", justifyContent: "center" }}
+          >
+            <Ionicons name="chatbubble-ellipses-outline" size={22} color={color.ink} />
+          </Pressable>
+          <LangToggle lang={lang} onChange={setLang} />
+        </View>
+      ),
     });
-  }, [navigation, topic, lang, t, setLang]);
+  }, [navigation, topic, lang, t, setLang, open]);
 
   const goTo = (id: string) => {
     haptics.tap();
@@ -125,8 +146,19 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
           <FetchError label={GUIDE_UI.loadFailed[lang]} onRetry={retry} retryLabel={GUIDE_UI.retry[lang]} />
         ) : topic ? (
           <>
-            <Text style={[styles.eyebrow, lang === "hi" && script("semibold")]}>
-              {t(topic.chapter.title)} · {topic.chapter.position} {GUIDE_UI.of[lang]} {topic.chapter.count}
+            <View style={styles.progressTrack} accessible={false}>
+              <View
+                style={[
+                  styles.progressFill,
+                  {
+                    backgroundColor: fill[tone],
+                    width: `${topic.chapter.count ? (topic.chapter.position / topic.chapter.count) * 100 : 0}%`,
+                  },
+                ]}
+              />
+            </View>
+            <Text style={[styles.eyebrow, lang === "hi" && script("semibold"), { color: fill[tone] }]}>
+              {lang === "hi" ? `पाठ ${topic.chapter.position} / ${topic.chapter.count}` : `Topic ${topic.chapter.position} of ${topic.chapter.count}`}
             </Text>
             <InlineText
               text={t(topic.title)}
@@ -147,16 +179,14 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
             </View>
 
             {topic.term && (
-              <View style={styles.term}>
-                <SanskritLine node={topic.term} ctx={ctx} size={28} meaning={topic.term.meaning} />
+              <View style={[styles.term, { backgroundColor: fill[tone] }]}>
+                <Text style={[styles.termSa, { fontSize: sized(30) }]}>{topic.term.sa}</Text>
+                <Text style={styles.termRoman}>{topic.term.iast}</Text>
                 <InlineText text={t(topic.term.meaning)} lang={lang} style={[styles.termMeaning, { fontSize: sized(font.sizes.base) }]} />
               </View>
             )}
 
-            <View style={styles.oneLine}>
-              <Text style={[styles.oneLineLabel, lang === "hi" && script("bold")]}>{GUIDE_UI.inOneLine[lang]}</Text>
-              <InlineText text={t(topic.summary)} lang={lang} style={[styles.oneLineText, { fontSize: sized(font.sizes.md) }]} />
-            </View>
+            <InlineText text={t(topic.summary)} lang={lang} style={[styles.oneLineText, { fontSize: sized(17) }]} />
 
             {topic.blocks.map((block, i) => (
               <BlockRenderer key={`${topicId}-b${i}`} block={block} ctx={ctx} />
@@ -256,11 +286,7 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
               </Section>
             )}
 
-            <Button
-              label={isRead ? GUIDE_UI.markedRead[lang] : GUIDE_UI.markRead[lang]}
-              tone={isRead ? "ok" : "primary"}
-              icon={<Ionicons name={isRead ? "checkmark-circle" : "checkmark-circle-outline"} size={20} color={color.white} />}
-              block
+            <Pressable
               onPress={() => {
                 const next = !isRead;
                 setTopicRead(topicId, next);
@@ -269,39 +295,28 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
                   announce(GUIDE_UI.markedRead[lang]);
                 }
               }}
+              accessibilityRole="button"
+              accessibilityLabel={isRead ? GUIDE_UI.markedRead[lang] : GUIDE_UI.markRead[lang]}
               accessibilityState={{ checked: isRead }}
-            />
+              style={styles.markRead}
+            >
+              <Text style={styles.markReadText}>{isRead ? GUIDE_UI.markedRead[lang] : GUIDE_UI.markRead[lang]}</Text>
+            </Pressable>
 
-            <View style={styles.navRow}>
-              {topic.prev ? (
-                <Pressable
-                  onPress={() => goTo(topic.prev!.id)}
-                  style={[styles.navCard, styles.navLeft]}
-                  accessibilityRole="link"
-                  accessibilityLabel={`${GUIDE_UI.previous[lang]}: ${t(topic.prev.title)}`}
-                >
-                  <Text style={[styles.navLabel, lang === "hi" && script("semibold")]}>← {GUIDE_UI.previous[lang]}</Text>
-                  <InlineText text={t(topic.prev.title)} lang={lang} style={styles.navTitle} numberOfLines={2} />
-                </Pressable>
-              ) : (
-                <View style={styles.navSpacer} />
-              )}
-              {topic.next ? (
-                <Pressable
-                  onPress={() => goTo(topic.next!.id)}
-                  style={[styles.navCard, styles.navRight]}
-                  accessibilityRole="link"
-                  accessibilityLabel={`${GUIDE_UI.next[lang]}: ${t(topic.next.title)}`}
-                >
-                  <Text style={[styles.navLabel, styles.navLabelRight, lang === "hi" && script("semibold")]}>
-                    {GUIDE_UI.next[lang]} →
-                  </Text>
-                  <InlineText text={t(topic.next.title)} lang={lang} style={[styles.navTitle, styles.navTitleRight]} numberOfLines={2} />
-                </Pressable>
-              ) : (
-                <View style={styles.navSpacer} />
-              )}
-            </View>
+            {topic.next ? (
+              <Pressable
+                onPress={() => {
+                  setTopicRead(topicId, true);
+                  goTo(topic.next!.id);
+                }}
+                style={[styles.nextBar, { backgroundColor: fill.ink }]}
+                accessibilityRole="button"
+                accessibilityLabel={`${GUIDE_UI.next[lang]}: ${t(topic.next.title)}`}
+              >
+                <Text style={styles.nextLabel}>{GUIDE_UI.next[lang]}</Text>
+                <InlineText text={t(topic.next.title)} lang={lang} style={styles.nextTitle} numberOfLines={1} />
+              </Pressable>
+            ) : null}
           </>
         ) : null}
       </ScrollView>
@@ -324,17 +339,24 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   body: { padding: space.lg, paddingBottom: 120, gap: space.md },
   skeletons: { gap: space.sm },
-  eyebrow: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.saffronText, textTransform: "uppercase", letterSpacing: 0.6 },
+  progressTrack: { height: 3, backgroundColor: color.border, borderRadius: 2, overflow: "hidden" },
+  progressFill: { height: 3, borderRadius: 2 },
+  eyebrow: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, textTransform: "uppercase", letterSpacing: 0.6 },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink, marginTop: -space.xs },
   metaRow: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: -space.xs },
   meta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
   readMark: { flexDirection: "row", alignItems: "center", gap: 3 },
   readText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.okText },
-  term: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 4, ...shadow.card },
-  termMeaning: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
-  oneLine: { borderLeftWidth: 4, borderLeftColor: color.saffron, paddingLeft: space.sm, gap: 2 },
-  oneLineLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.saffronText, textTransform: "uppercase", letterSpacing: 0.6 },
-  oneLineText: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink, lineHeight: 26 },
+  term: { borderRadius: 12, padding: space.md, gap: 4 },
+  termSa: { color: onFill.text, fontWeight: "800" },
+  termRoman: { color: onFill.soft, fontSize: 13, fontStyle: "italic" },
+  termMeaning: { fontWeight: "600", color: onFill.text },
+  oneLineText: { fontWeight: "800", color: color.ink, lineHeight: 26 },
+  markRead: { borderWidth: 1.5, borderColor: color.ink, borderRadius: 12, minHeight: 48, alignItems: "center", justifyContent: "center" },
+  markReadText: { fontWeight: "700", color: color.ink, fontSize: 16 },
+  nextBar: { borderRadius: 12, padding: space.md, gap: 2 },
+  nextLabel: { color: onFill.gold, fontSize: 12, fontWeight: "800", textTransform: "uppercase" },
+  nextTitle: { color: onFill.text, fontWeight: "800", fontSize: 16 },
   section: { gap: space.xs, marginTop: space.xs },
   sectionHead: { flexDirection: "row", alignItems: "center", gap: 6 },
   sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },

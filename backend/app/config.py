@@ -173,6 +173,16 @@ class Settings(BaseSettings):
     writing_photo_miss_confidence: float = 0.5
     sarvam_doc_language: str = "sa-IN"
 
+    # Word journey pipeline (handover_language 7.2): Gemini through Vertex AI
+    # batch jobs with the service account, and no other way. No OpenRouter
+    # and no online (non-batch) Gemini call in this feature.
+    vertex_credentials_path: str = "../vertex_credentials.json"
+    vertex_project: str = "videos-498005"
+    vertex_batch_bucket: str = "videos-498005-batch"
+    vertex_batch_prefix: str = "sanskritam-word-origins"
+    vertex_location: str = "global"
+    word_origins_model: str = "gemini-3.8-flash"
+
     # Dev-login guard — disable in production
     dev_login_enabled: bool = True
 
@@ -218,6 +228,15 @@ class Settings(BaseSettings):
     # playTutorAudio fallback (no new endpoint, same quota path). Flip on only
     # for a coupled A/B against the `[perf] turn` lines the client logs.
     conversation_inline_audio: bool = False
+
+    # Word journey pipeline (handover_language 7.2): Gemini through Vertex AI
+    # batch jobs with the service account, and no other way. No OpenRouter and
+    # no online Gemini call in this feature.
+    vertex_credentials_path: str = "../vertex_credentials.json"
+    vertex_batch_bucket: str = "videos-498005-batch"
+    vertex_batch_prefix: str = "sanskritam-word-origins"
+    vertex_location: str = "global"
+    word_origins_model: str = "gemini-3.8-flash"
 
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 

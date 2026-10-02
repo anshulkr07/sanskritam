@@ -5,10 +5,10 @@ the same cover: the layout, frame lines and paper grain measured from the Gita
 cover the owner approved on 2026-10-01, on the book's own ground colour. The
 part below the frame stays empty; the app sets the title there.
 
-Reads   results/covers/paintings/<key>.png   one painting per book (git ignores results/)
+Reads   results/covers/paintings-watercolour/<key>.png   one painting per book (tracked in git; EAS ignores /results/)
         specs/covers/covers.json             ground colour per book
         specs/covers/ground-texture.jpg      the paper grain of the approved cover
-Writes  results/covers/miniature/<key>.png   3392x5088 masters
+Writes  results/covers/miniature/<key>.png   3392x5088 masters (tracked in git; EAS ignores /results/)
 
     backend/.venv/Scripts/python.exe specs/covers/compose_covers.py [key ...]
 
@@ -24,7 +24,7 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-PAINTINGS = ROOT / "results" / "covers" / "paintings"
+PAINTINGS = ROOT / "results" / "covers" / "paintings-watercolour"
 MASTERS = ROOT / "results" / "covers" / "miniature"
 
 WIDTH, HEIGHT = 3392, 5088                  # 2:3

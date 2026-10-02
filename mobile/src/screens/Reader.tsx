@@ -39,6 +39,7 @@ import {
   BackHandler,
   Pressable,
   ScrollView,
+  SectionList,
   StyleSheet,
   Text,
   View,
@@ -54,6 +55,8 @@ import { useAsk, useAskContext } from "../ask/AskProvider";
 import { EmptyState, Button, ProgressBar } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
 import BookCover from "../components/book/BookCover";
+import CoverArt from "../components/book/CoverArt";
+import { coverColour } from "../components/book/covers";
 import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import ReaderSlider from "../components/ReaderSlider";
 import type { DrawerParamList } from "../navigation/AppDrawer";
@@ -292,19 +295,20 @@ export default function ReaderScreen() {
       const pos = await getReadingPosition(book.key).catch(() => 0);
       const safe = Number.isFinite(pos) ? pos : 0;
       const at = Math.min(safe, book.verses.length - 1);
-      setPageIndex(Math.max(0, at));
+      const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+      nav.navigate("Book", { bookKey: book.key, index: Math.max(0, at) });
     },
-    [],
+    [navigation],
   );
 
   const turnTo = useCallback(
     (book: OpenBook, i: number) => {
       if (!Number.isFinite(i)) return;
       const at = Math.max(0, Math.min(book.verses.length - 1, i));
-      setPageIndex(at);
-      setReadingPosition(book.key, at);
+      const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+      nav.navigate("Book", { bookKey: book.key, index: at });
     },
-    [],
+    [navigation],
   );
 
   // ── Loading / error ──────────────────────────────────────────────
@@ -499,90 +503,149 @@ export default function ReaderScreen() {
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
-        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>
-          Pick a book. Turn its pages. Tap any word.
-        </Text>
 
-        <ContinueRows
+        <ContinueBlock
           groups={groups}
           allCount={allVerses.length}
           positions={positions}
           onResume={(key, at) => {
             const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
-            if (key.startsWith("graded-")) {
-              const tier = parseInt(key.slice("graded-".length), 10);
-              if (tierTier !== tier || !tierRows) loadTier(tier);
-              setBookKey(key);
-              setPageIndex(safe);
-            } else {
-              setBookKey(key);
-              setPageIndex(safe);
-            }
+            const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+            nav.navigate("Book", { bookKey: key, index: safe });
           }}
         />
 
-        <Text style={styles.sectionTitle}>Books</Text>
-        <View style={styles.shelfGrid}>
-          <BookCard
-            titleSa="सर्वम्"
-            titleEn="All verses"
-            count={allVerses.length}
-            planned={null}
-            progress={positions[ALL_KEY] ?? 0}
-            onPress={() => enterBook(ALL_KEY)}
-          />
-          {groups.map((g) =>
-            g.text ? (
-              <BookCard
-                key={g.text.slug}
-                titleSa={g.text.title_sa}
-                titleEn={plain(g.text.title_en)}
-                count={g.verses.length}
-                planned={g.text.verses_planned || null}
-                depth={g.text.depth}
-                progress={positions[g.text.slug] ?? 0}
-                onPress={g.verses.length > 0 ? () => enterBook(g.text!.slug) : undefined}
-              />
-            ) : (
-              <BookCard
-                key={OTHER_KEY}
-                titleSa="अन्यत्"
-                titleEn="Other verses"
-                count={g.verses.length}
-                planned={null}
-                progress={positions[OTHER_KEY] ?? 0}
-                onPress={() => enterBook(OTHER_KEY)}
-              />
-            ),
-          )}
-        </View>
-
-        <Text style={styles.sectionTitle}>Graded reading</Text>
-        <Text style={styles.sectionHint}>Short passages, ordered by what you have learned.</Text>
-        {TIERS.map((t) => (
-          <Pressable
-            key={t.tier}
-            onPress={() => enterBook(gradedKey(t.tier))}
-            style={({ pressed }) => [styles.tierRow, pressed && styles.pressed]}
-            accessibilityRole="button"
-            accessibilityLabel={`Graded reading, ${t.label}, ${t.hint}`}
-          >
-            <View style={styles.tierIcon}>
-              <Ionicons name="trending-up-outline" size={20} color={color.saffron} />
-            </View>
-            <View style={styles.tierText}>
-              <Text style={styles.tierLabel}>{t.label}</Text>
-              <Text style={styles.tierHint}>{t.hint}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
-          </Pressable>
-        ))}
+        <ShelfRails
+          groups={groups}
+          allVerses={allVerses}
+          positions={positions}
+          tierRows={tierRows}
+          onOpen={(key) => enterBook(key)}
+        />
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 // ─── Shelf pieces ───────────────────────────────────────────────────
+
+const RAIL_DEFS: { title: string; slugs: string[] }[] = [
+  { title: "Scriptures", slugs: ["gita", "isha", "katha", "mundaka", "ramayana", "mahabharata"] },
+  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda"] },
+  { title: "Graded reading", slugs: ["graded-1", "graded-2", "graded-3"] },
+];
+
+function ShelfRails({
+  groups,
+  allVerses,
+  positions,
+  tierRows,
+  onOpen,
+}: {
+  groups: { text: CanonText | null; verses: Shloka[] }[];
+  allVerses: Shloka[];
+  positions: Record<string, number>;
+  tierRows: Shloka[] | null;
+  onOpen: (key: string) => void;
+}) {
+  const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
+  const sayings = allVerses.filter((v) => (v.source_ref || "").startsWith("Sūkti") || (v.source_ref || "").startsWith("Sukti"));
+  const rails = RAIL_DEFS.map((r) => ({
+    title: r.title,
+    books: r.slugs.map((slug) => {
+      if (slug.startsWith("graded-")) {
+        const tier = parseInt(slug.slice("graded-".length), 10);
+        return { key: slug, titleSa: slug === "graded-1" ? "सरलम्" : slug === "graded-2" ? "सन्धिः" : "समासः", titleEn: `Tier ${tier}`, count: tierRows?.length ?? 0, planned: null as number | null };
+      }
+      const g = bySlug.get(slug);
+      if (!g?.text) return { key: slug, titleSa: slug, titleEn: slug, count: 0, planned: null as number | null };
+      return { key: slug, titleSa: g.text.title_sa, titleEn: plain(g.text.title_en), count: g.verses.length, planned: g.text.verses_planned || null };
+    }),
+  }));
+  const known = new Set(RAIL_DEFS.flatMap((r) => r.slugs));
+  const more = [
+    { key: ALL_KEY, titleSa: "सर्वम्", titleEn: "All verses", count: allVerses.length, planned: null as number | null },
+    { key: OTHER_KEY, titleSa: "अन्यत्", titleEn: "Other verses", count: bySlug.get("other")?.verses.length ?? 0, planned: null as number | null },
+    ...(sayings.length > 0 ? [{ key: "sayings", titleSa: "सूक्तयः", titleEn: "Sayings", count: sayings.length, planned: null as number | null }] : []),
+    ...groups.filter((g) => g.text && !known.has(g.text.slug)).map((g) => ({ key: g.text!.slug, titleSa: g.text!.title_sa, titleEn: plain(g.text!.title_en), count: g.verses.length, planned: g.text!.verses_planned || null })),
+  ];
+  rails.push({ title: "More", books: more });
+  return (
+    <View style={{ gap: 16 }}>
+      {rails.map((rail) => (
+        <View key={rail.title}>
+          <Text style={styles.sectionTitle}>{rail.title}</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12, paddingVertical: 4 }}>
+            {rail.books.map((b) => {
+              const empty = b.count === 0;
+              return (
+                <Pressable
+                  key={b.key}
+                  onPress={empty ? undefined : () => onOpen(b.key)}
+                  disabled={empty}
+                  accessibilityRole="button"
+                  accessibilityLabel={empty ? `${b.titleEn}. Soon.` : `${b.titleEn}. ${b.count} verses.`}
+                  accessibilityState={{ disabled: empty }}
+                  style={{ width: 104, opacity: empty ? 0.55 : 1 }}
+                >
+                  <CoverArt bookKey={b.key} titleSa={b.titleSa} width={104} />
+                  <Text style={styles.railTitle} numberOfLines={1}>{b.titleEn}</Text>
+                  <Text style={styles.railCount}>{empty ? "Soon" : `${b.count}${b.planned ? ` of ${b.planned}` : ""}`}</Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function ContinueBlock({
+  groups,
+  allCount,
+  positions,
+  onResume,
+}: {
+  groups: { text: CanonText | null; verses: Shloka[] }[];
+  allCount: number;
+  positions: Record<string, number>;
+  onResume: (key: string, at: number) => void;
+}) {
+  // Most recently read book: AsyncStorage order is insertion order, so the
+  // last key with progress wins. Kept simple: first row with progress.
+  const rows: { key: string; title: string; at: number; total: number; colour: string }[] = [];
+  const push = (key: string, title: string, total: number) => {
+    const at = positions[key] ?? 0;
+    if (total > 0 && at > 0 && at < total) rows.push({ key, title, at, total, colour: coverColour(key) });
+  };
+  push(ALL_KEY, "All verses", allCount);
+  for (const g of groups) {
+    if (g.text) push(g.text.slug, plain(g.text.title_en), g.verses.length);
+    else push(OTHER_KEY, "Other verses", g.verses.length);
+  }
+  if (rows.length === 0) return null;
+  const r = rows[0];
+  return (
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onResume(r.key, r.at);
+      }}
+      style={[styles.continueBlock, { backgroundColor: r.colour }]}
+      accessibilityRole="button"
+      accessibilityLabel={`Continue ${r.title} at chapter page ${r.at + 1}`}
+    >
+      <Text style={styles.continueEyebrow}>Continue</Text>
+      <Text style={styles.continueTitle} numberOfLines={1}>{r.title}</Text>
+      <Text style={styles.continueSub}>Chapter verse {r.at + 1} of {r.total}</Text>
+      <View style={styles.continueBar}>
+        <View style={[styles.continueFill, { width: `${(r.at / Math.max(1, r.total)) * 100}%` }]} />
+      </View>
+      <Text style={styles.continueGo}>Continue</Text>
+    </Pressable>
+  );
+}
 
 function ContinueRows({
   groups,
@@ -753,66 +816,103 @@ function BookIndex({
   }, [book]);
   const resume = Math.max(0, Math.min(resumeAt, book.verses.length - 1));
   const started = resume > 0;
+  // Chapters collapsed to a header row by default, the chapter being read
+  // open, so opening the book never mounts 700 rows.
+  const resumeChapter = useMemo(() => {
+    let acc = 0;
+    for (const ch of chapters) {
+      if (resume >= acc && resume < acc + ch.verses.length) return ch.label;
+      acc += ch.verses.length;
+    }
+    return chapters[0]?.label ?? "";
+  }, [chapters, resume]);
+  const [openCh, setOpenCh] = React.useState<string | null>(null);
+  React.useEffect(() => setOpenCh(resumeChapter), [resumeChapter, book.key]);
+  const sections = useMemo(
+    () => chapters.map((ch) => ({ title: ch.label, data: openCh === ch.label ? ch.verses : [] })),
+    [chapters, openCh],
+  );
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <ScrollView contentContainerStyle={styles.body}>
-        <BackRow onPress={onBack} label="Books" />
-        {/* The book itself: tap the cover (or the button) to open it. */}
-        <BookCover
-          variant="card"
-          titleSa={book.titleSa}
-          titleEn={book.titleEn}
-          caption={versesCaption(book)}
-          bookmarked={started}
-          onPress={onStart}
-        />
-        <Button
-          label={started ? `Continue · ${addressOf(book.verses[resume])}` : "Open book"}
-          tone="primary"
-          block
-          icon={<Ionicons name={started ? "bookmark" : "book"} size={20} color={color.white} />}
-          onPress={onStart}
-          style={{ marginTop: space.md }}
-        />
-        <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
-          Tap a verse to open it.
-        </Text>
-
-        {chapters.map((ch) => (
-          <View key={ch.label} style={styles.chapterBlock}>
-            <Text style={styles.chapterLabel}>{ch.label}</Text>
-            {ch.verses.map((v) => {
-              const at = positions.get(v.id) ?? 0;
-              const { nums } = parseRef(v.source_ref);
-              const num = nums.length > 0 ? nums[nums.length - 1] : at + 1;
-              return (
-                <Pressable
-                  key={v.id}
-                  onPress={() => {
-                    haptics.tap();
-                    onOpen(at);
-                  }}
-                  style={({ pressed }) => [styles.indexRow, pressed && styles.pressed]}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${v.source_ref}. ${firstLine(v.devanagari)}`}
-                >
-                  <View style={styles.indexNum}>
-                    <Text style={styles.indexNumText}>{num}</Text>
-                  </View>
-                  <View style={styles.indexText}>
-                    <Text style={styles.indexRef}>{v.source_ref}</Text>
-                    <Text style={[styles.indexPreview, script("semibold")]} numberOfLines={1}>
-                      {firstLine(v.devanagari)}
-                    </Text>
-                  </View>
-                  <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-                </Pressable>
-              );
-            })}
-          </View>
-        ))}
-      </ScrollView>
+      <SectionList
+        sections={sections}
+        keyExtractor={(v) => (v as Shloka).id}
+        contentContainerStyle={styles.body}
+        ListHeaderComponent={
+          <>
+            <BackRow onPress={onBack} label="Books" />
+            <BookCover
+              variant="card"
+              titleSa={book.titleSa}
+              titleEn={book.titleEn}
+              caption={versesCaption(book)}
+              bookmarked={started}
+              onPress={onStart}
+            />
+            <Button
+              label={started ? `Continue · ${addressOf(book.verses[resume])}` : "Open book"}
+              tone="primary"
+              block
+              icon={<Ionicons name={started ? "bookmark" : "book"} size={20} color={color.white} />}
+              onPress={onStart}
+              style={{ marginTop: space.md }}
+            />
+            <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
+              Tap a verse to open it.
+            </Text>
+          </>
+        }
+        renderSectionHeader={({ section }) => {
+          const ch = chapters.find((c) => c.label === section.title);
+          const count = ch?.verses.length ?? 0;
+          const open = openCh === section.title;
+          return (
+            <Pressable
+              onPress={() => {
+                haptics.tap();
+                setOpenCh((cur) => (cur === section.title ? "" : section.title));
+              }}
+              accessibilityRole="button"
+              accessibilityState={{ expanded: open }}
+              accessibilityLabel={`${section.title}. ${count} verses.`}
+              style={styles.chapterHeader}
+            >
+              <Text style={styles.chapterLabel}>{section.title}</Text>
+              <Text style={styles.chapterCount}>{count}</Text>
+              <Ionicons name={open ? "chevron-up" : "chevron-down"} size={18} color={color.inkSoft} />
+            </Pressable>
+          );
+        }}
+        renderItem={({ item }) => {
+          const v = item as Shloka;
+          const at = positions.get(v.id) ?? 0;
+          const { nums } = parseRef(v.source_ref);
+          const num = nums.length > 0 ? nums[nums.length - 1] : at + 1;
+          return (
+            <Pressable
+              onPress={() => {
+                haptics.tap();
+                onOpen(at);
+              }}
+              style={({ pressed }) => [styles.indexRow, pressed && styles.pressed]}
+              accessibilityRole="button"
+              accessibilityLabel={`${v.source_ref}. ${firstLine(v.devanagari)}`}
+            >
+              <View style={styles.indexNum}>
+                <Text style={styles.indexNumText}>{num}</Text>
+              </View>
+              <View style={styles.indexText}>
+                <Text style={styles.indexRef}>{v.source_ref}</Text>
+                <Text style={[styles.indexPreview, script("semibold")]} numberOfLines={1}>
+                  {firstLine(v.devanagari)}
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+            </Pressable>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -940,7 +1040,11 @@ function ReaderPage({
             style={styles.gloss}
           >
             <Text style={[styles.glossWord, script("bold")]}>{selected.word}</Text>
-            {selected.meaning ? <Text style={styles.glossMeaning}>{plain(selected.meaning)}</Text> : null}
+            {selected.meaning ? (
+              <Text style={styles.glossMeaning}>
+                {/[ऀ-ॿ]/.test(selected.meaning) ? `Stem: ${selected.meaning}` : plain(selected.meaning)}
+              </Text>
+            ) : null}
             {selected.features && selected.features.length > 0 ? (
               <View style={styles.featRow}>
                 {selected.features.map((f) => (
@@ -1051,7 +1155,13 @@ const styles = StyleSheet.create({
     fontSize: font.sizes.xs,
     color: color.inkSoft,
   },
-  continueBlock: { marginBottom: space.sm },
+  continueBlock: { borderRadius: 16, padding: 16, gap: 4, marginBottom: 8 },
+  continueEyebrow: { color: "#F2C879", fontSize: 12, fontWeight: "800", textTransform: "uppercase" },
+  continueBar: { height: 4, backgroundColor: "rgba(255,248,238,0.2)", borderRadius: 2, marginTop: 8 },
+  continueFill: { height: 4, backgroundColor: "#FFF8EE", borderRadius: 2 },
+  continueGo: { color: "#FFF8EE", fontWeight: "800", marginTop: 8 },
+  railTitle: { fontWeight: "700", fontSize: 13, color: color.ink, marginTop: 4 },
+  railCount: { fontSize: 12, color: color.inkSoft },
   continueRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -1120,6 +1230,8 @@ const styles = StyleSheet.create({
     fontSize: font.sizes.sm,
   },
   chapterBlock: { marginBottom: space.md },
+  chapterHeader: { flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 12, minHeight: 48 },
+  chapterCount: { marginLeft: "auto", color: color.inkSoft, fontSize: 12, fontWeight: "700" },
   chapterLabel: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",

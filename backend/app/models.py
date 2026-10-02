@@ -947,3 +947,91 @@ class ContentReport(Base):
     answer = Column(Text, default="")
     reason = Column(Text, default="")
     created_at = Column(DateTime, default=_utcnow, index=True)
+
+
+class GameResult(Base):
+    """One finished game round (Play hub, HANDOVER 5.7).
+
+    ``date`` is the learner-local date the round finished on. ``daily`` marks
+    a round played as today's challenge; ``goal_met`` says the game's goal
+    was met. Indexed on (learner_id, date) for the streak query.
+    """
+
+    __tablename__ = "game_results"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    date = Column(String(10), nullable=False, index=True)
+    game = Column(String(32), nullable=False, default="")
+    mode = Column(String(32), nullable=False, default="")
+    score = Column(Integer, default=0)
+    moves = Column(Integer, default=0)
+    duration_ms = Column(Integer, default=0)
+    daily = Column(Boolean, default=False)
+    goal_met = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        sa.Index("ix_game_results_learner_date", "learner_id", "date"),
+    )
+
+
+class WordOrigin(Base):
+    """One Sanskrit word with its routes (Word journey, handover_language).
+
+    Seeded from ``app/seeds/word_origins/batch-*.json``; the database is a
+    copy of the files, never the other way round. ``scheduled_date`` is
+    ``start_date + position`` and is unique across batches. Rows that no file
+    carries any more become ``withdrawn``, never deleted.
+    """
+
+    __tablename__ = "word_origins"
+
+    id = Column(String(32), primary_key=True)
+    batch = Column(String(8), default="")
+    rank = Column(Integer, default=0)
+    scheduled_date = Column(String(10), unique=True, index=True)
+    mw_key = Column(String(64), default="")
+    sanskrit_dev = Column(String(64), default="")
+    sanskrit_iast = Column(String(64), default="")
+    display_dev = Column(String(64), default="")
+    display_iast = Column(String(64), default="")
+    gloss = Column(String(200), default="")
+    attested = Column(String(200), default="")
+    note = Column(Text, default="")
+    status = Column(String(12), default="approved", index=True)
+    created_at = Column(DateTime, default=_utcnow)
+
+    routes = relationship("WordRoute", back_populates="origin",
+                          order_by="WordRoute.rank",
+                          cascade="all, delete-orphan")
+
+
+class WordRoute(Base):
+    """One route from a Sanskrit word to a word in another language."""
+
+    __tablename__ = "word_routes"
+
+    id = Column(String(64), primary_key=True)
+    origin_id = Column(String(32), ForeignKey("word_origins.id"), nullable=False, index=True)
+    rank = Column(Integer, default=0)
+    lang = Column(String(8), default="")
+    lang_name = Column(String(32), default="")
+    word = Column(String(64), default="")
+    script = Column(String(16), default="")
+    roman = Column(String(64), default="")
+    gloss = Column(String(160), default="")
+    kind = Column(String(8), default="")  # loan|related
+    confidence = Column(String(12), default="")  # certain|probable
+    hops = Column(JSON, default=list)
+    source_keys = Column(JSON, default=list)
+    lookup = Column(String(120), default="")
+    checked_on = Column(String(10), default="")
+    status = Column(String(12), default="approved")
+    created_at = Column(DateTime, default=_utcnow)
+
+    origin = relationship("WordOrigin", back_populates="routes")
+
+    __table_args__ = (
+        UniqueConstraint("origin_id", "lang", "word", name="uq_word_route_origin_lang_word"),
+    )

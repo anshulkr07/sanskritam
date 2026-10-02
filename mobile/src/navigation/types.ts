@@ -67,7 +67,22 @@ export type RootStackParamList = {
   // to sit at the bottom of the Grammar tab. Both stack over the tab — never a
   // seventh tab (U8-1).
   GrammarTopic: { topicId: string };
+  GrammarChapter: { chapterId: string };
   WordLab: { word?: string } | undefined;
+  // Read fullscreen page (HANDOVER 7.4): covers the tab bar.
+  Book: { bookKey: string; index?: number };
+  // Play games (HANDOVER 5): fullscreen, header hidden.
+  ShabdaRush: { topic?: string; daily?: boolean } | undefined;
+  Smriti: { set?: string; size?: number; daily?: boolean } | undefined;
+  VarnaJaal: { daily?: boolean } | undefined;
+  PracticeRound: { kind: string; title: string; daily?: boolean };
+  // Kāla: time as Sanskrit counts it. The hub behind the Home date card, and
+  // one screen that shows whichever of its six chapters is asked for.
+  Kala: undefined;
+  KalaChapter: { chapter: "today" | "moon" | "clock" | "year" | "yugas" | "calendars" };
+  // Word journey: the screen behind the Home word card. Without params it
+  // shows today's word; "More words" pushes it with an originId.
+  WordJourney: { originId?: string } | undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

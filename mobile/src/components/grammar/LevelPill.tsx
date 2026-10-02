@@ -20,16 +20,12 @@ const TONE: Record<number, { bg: string; fg: string }> = {
 };
 
 export default function LevelPill({ level, lang }: { level: number; lang: GuideLang }) {
-  const tone = TONE[level] ?? TONE[1];
   const label = (LEVEL_LABEL[level] ?? LEVEL_LABEL[1])[lang];
   return (
-    <View style={[styles.pill, { backgroundColor: tone.bg }]}>
-      <Text style={[styles.text, lang === "hi" && script("semibold"), { color: tone.fg }]}>{label}</Text>
-    </View>
+    <Text style={[styles.text, lang === "hi" && script("semibold")]}>{label}</Text>
   );
 }
 
 const styles = StyleSheet.create({
-  pill: { borderRadius: radius.pill, paddingHorizontal: 8, paddingVertical: 2, alignSelf: "flex-start" },
-  text: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs },
+  text: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
 });

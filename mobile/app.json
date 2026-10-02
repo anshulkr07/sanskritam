@@ -2,7 +2,13 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.0.2",
+    "version": "1.1.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ffc34e8f-6a3e-4c79-a3ef-d49791074530"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,7 +31,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 3,
+      "versionCode": 4,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -37,9 +43,10 @@
       "android.permission.MODIFY_AUDIO_SETTINGS",
       "android.permission.READ_EXTERNAL_STORAGE",
       "android.permission.WRITE_EXTERNAL_STORAGE",
-      "android.permission.INTERNET",
-      "android.permission.CAMERA"
+        "android.permission.INTERNET",
+        "android.permission.CAMERA"
       ]
+    },
     "web": {
       "favicon": "./assets/favicon.png"
     },

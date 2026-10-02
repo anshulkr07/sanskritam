@@ -11,7 +11,7 @@ import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { Alert, Linking, Modal, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 
@@ -29,6 +29,10 @@ import {
 import { accent, color, font, radius, shadow, space, type AccentName } from "../theme";
 import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
 import { firstName } from "../utils/name";
+import PlaceChooser from "../components/PlaceChooser";
+import { getPlace, type Place } from "../services/place";
+import { applyAppUpdate, checkForAppUpdate } from "../services/ota";
+import { useFocusEffect } from "@react-navigation/native";
 
 const SOUND_KEY = "shabd.pref.sound";
 const HAPTICS_KEY = "shabd.pref.haptics";
@@ -62,16 +66,26 @@ export default function SettingsScreen() {
   const [hapticsOn, setHapticsOn] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [place, setPlaceState] = useState<Place | null>(null);
+  const [placeOpen, setPlaceOpen] = useState(false);
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState<string | null>(null);
 
   useEffect(() => {
     pref(SOUND_KEY).then(setSound);
-    // U15-7: both flags are real: haptics gates services/haptics, the
-    // reduce-motion override gates useReducedMotion. Load persisted values.
     loadPrefs().then(() => {
       setHapticsOn(isHapticsEnabled());
       setReduced(isReducedMotionOverride());
     });
+    void getPlace().then(setPlaceState);
   }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      void getPlace().then(setPlaceState);
+      return () => {};
+    }, []),
+  );
 
   const name = firstName(learner?.display_name || displayName);
 
@@ -100,6 +114,27 @@ export default function SettingsScreen() {
     // Settings lives in the drawer; Licences lives on the root stack, above it.
     const parent = navigation.getParent<NativeStackNavigationProp<RootStackParamList>>();
     (parent ?? navigation).navigate("Licences");
+  };
+
+  // Manual OTA check. The app also checks on every launch and downloads in
+  // the background; this row is for the learner who wants it now.
+  const checkUpdate = () => {
+    if (checkingUpdate) return;
+    setCheckingUpdate(true);
+    setUpdateStatus(null);
+    void checkForAppUpdate().then((res) => {
+      setCheckingUpdate(false);
+      if (res === "ready") {
+        Alert.alert("Update ready", "A new version was downloaded. Restart now to apply it?", [
+          { text: "Later", style: "cancel" },
+          { text: "Restart", onPress: () => void applyAppUpdate() },
+        ]);
+      } else if (res === "uptodate") {
+        setUpdateStatus("You are up to date.");
+      } else {
+        setUpdateStatus("Updates are not available in this build.");
+      }
+    });
   };
 
   return (
@@ -190,8 +225,35 @@ export default function SettingsScreen() {
           </View>
         </Section>
 
+        <Section title="Place">
+          <Pressable
+            onPress={() => setPlaceOpen(true)}
+            style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
+            accessibilityRole="button"
+            accessibilityLabel={`Place. ${place ? place.label : "Not set"}`}
+          >
+            <View style={[styles.badge, { backgroundColor: accent.teal.bg }]}>
+              <Ionicons name="location-outline" size={18} color={accent.teal.fg} />
+            </View>
+            <Text style={styles.rowLabel}>Place</Text>
+            <Text style={styles.placeValue} numberOfLines={1}>
+              {place ? place.label : "Not set"}
+            </Text>
+            <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
+          </Pressable>
+          <Text style={styles.note}>Used only for tithi and festival dates. Approximate, kept on this phone.</Text>
+        </Section>
+
         <Section title="About">
           <LinkRow icon="document-text-outline" tone="gold" label="Licences and credits" chevron onPress={openLicences} />
+          <LinkRow
+            icon="cloud-download-outline"
+            tone="slate"
+            label={checkingUpdate ? "Checking for updates…" : "Check for updates"}
+            disabled={checkingUpdate}
+            onPress={checkUpdate}
+          />
+          {!!updateStatus && <Text style={styles.note}>{updateStatus}</Text>}
           <LinkRow
             icon="shield-checkmark-outline"
             tone="teal"
@@ -212,6 +274,30 @@ export default function SettingsScreen() {
           <Text style={styles.note}>Videos play on YouTube under YouTube's Terms of Service.</Text>
         </Section>
       </ScrollView>
+
+      <Modal visible={placeOpen} animationType="slide" onRequestClose={() => setPlaceOpen(false)}>
+        <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+          <View style={styles.placeHead}>
+            <Pressable
+              onPress={() => setPlaceOpen(false)}
+              accessibilityRole="button"
+              accessibilityLabel="Close place chooser"
+              style={styles.placeClose}
+            >
+              <Ionicons name="close" size={24} color={color.ink} />
+            </Pressable>
+            <Text style={styles.placeTitle}>Choose your place</Text>
+          </View>
+          <View style={styles.placeBody}>
+            <PlaceChooser
+              onPick={(p) => {
+                setPlaceState(p);
+                setPlaceOpen(false);
+              }}
+            />
+          </View>
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -310,6 +396,11 @@ const styles = StyleSheet.create({
   whoName: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
   row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 56 },
   rowLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  placeValue: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, maxWidth: 140, textAlign: "right" },
+  placeHead: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.lg, paddingVertical: space.sm },
+  placeClose: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
+  placeTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  placeBody: { flex: 1, paddingHorizontal: space.lg },
   badge: { width: 36, height: 36, borderRadius: 12, alignItems: "center", justifyContent: "center" },
   sizerRow: { flexDirection: "row", gap: space.xs, paddingVertical: space.sm },
   sizer: { flex: 1, minHeight: 48, borderRadius: radius.md, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },

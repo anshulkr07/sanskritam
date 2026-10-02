@@ -1,9 +1,10 @@
 // Home — the daily hub (U8-2). Greeting, today's progress (XP ring, day
-// streak, the week), the lesson to continue, the two daily cards (śloka and
-// word) and the explore tiles. Śloka and Varṇamālā are stack screens reached
-// from here, not tabs (U8-1).
+// streak, the week), the lesson to continue, the daily cards (today's tithi,
+// the word's journey, the śloka and the word) and the explore tiles. Śloka and
+// Varṇamālā are stack screens reached from here, not tabs (U8-1).
 //
-// Every number here comes from the server and says what it is. While it loads
+// Every number here comes from the server and says what it is, except the
+// tithi card, which the phone works out itself (src/kala). While it loads
 // a skeleton holds its place, never a fake 0 (U9-4). A failed card offers
 // retry in place (U10-3). The streak is DAYS, computed from the activity
 // history: learner.streak from /me is a run of correct answers, not days.
@@ -31,6 +32,8 @@ import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
 import { cachedGet } from "../services/apiCache";
 import { useAskContext } from "../ask/AskProvider";
+import TithiCard from "../kala/TithiCard";
+import WordCard from "../words/WordCard";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
@@ -204,6 +207,10 @@ export default function HomeScreen({ navigation }: Props) {
 
         <Entrance index={2}>
           <Text style={styles.section}>Daily</Text>
+          {/* Today's date in the learner's calendar, worked out on the phone. */}
+          <TithiCard />
+          {/* Today's word journey. Hides itself when there is nothing today. */}
+          <WordCard />
           <View style={styles.pair}>
             <ShlokaTile
               shloka={shloka}

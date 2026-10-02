@@ -20,6 +20,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Pressable,
   ScrollView,
+  Share,
   StyleSheet,
   Text,
   TextInput,
@@ -221,7 +222,7 @@ export default function DailyWordScreen({ navigation }: Props) {
             <VarnaGrid slots={slots} rows={rows} />
 
             {done ? (
-              <RevealCard solved={solved} revealed={revealed} />
+              <RevealCard solved={solved} revealed={revealed} tries={guessesUsed} date={puzzle?.date ?? ""} rows={rows} />
             ) : tapping ? (
               <>
                 <SlotRow slots={slots} chosen={chosen} onRemove={unplace} />
@@ -337,7 +338,12 @@ function Bank({ bank, used, onPick }: { bank: string[]; used: number[]; onPick: 
   );
 }
 
-function RevealCard({ solved, revealed }: { solved: boolean; revealed: { answer: string; answer_iast: string } | null }) {
+function RevealCard({ solved, revealed, tries, date, rows }: { solved: boolean; revealed: { answer: string; answer_iast: string } | null; tries: number; date: string; rows: GridRow[] }) {
+  const share = () => {
+    const glyph: Record<string, string> = { exact: "🟩", near: "🟨", present: "🟦", absent: "⬜" };
+    const grid = rows.map((r) => (r.tiles ?? []).map((t) => glyph[t.state] ?? "⬜").join("")).join("\n");
+    void Share.share({ message: `Sanskritam ${date}: ${tries} tries\n${grid}` });
+  };
   return (
     <View style={[styles.reveal, { backgroundColor: solved ? accent.sage.bg : color.surfaceMuted }]} accessible>
       <Text style={[styles.revealHead, { color: solved ? accent.sage.fg : color.inkSoft }]}>
@@ -350,6 +356,10 @@ function RevealCard({ solved, revealed }: { solved: boolean; revealed: { answer:
         </>
       ) : null}
       <Text style={styles.revealNote}>New word tomorrow.</Text>
+      <Pressable onPress={share} accessibilityRole="button" accessibilityLabel="Share your result" style={styles.shareBtn}>
+        <Ionicons name="share-outline" size={18} color={color.ink} />
+        <Text style={styles.shareText}>Share</Text>
+      </Pressable>
     </View>
   );
 }
@@ -467,6 +477,8 @@ const styles = StyleSheet.create({
   revealWord: { fontSize: 40, lineHeight: 60, color: color.ink },
   revealIast: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
   revealNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: space.xs },
+  shareBtn: { flexDirection: "row", alignItems: "center", gap: 6, borderWidth: 1.5, borderColor: color.ink, borderRadius: 12, minHeight: 44, paddingHorizontal: 16, marginTop: 8 },
+  shareText: { fontWeight: "700", color: color.ink },
   inputRow: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.sm },
   input: { flex: 1, borderWidth: 2, borderColor: color.border, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, fontSize: font.sizes.base, color: color.ink, backgroundColor: color.surface },
   send: { width: 48, height: 48, borderRadius: radius.md, alignItems: "center", justifyContent: "center" },

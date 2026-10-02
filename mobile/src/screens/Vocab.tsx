@@ -30,7 +30,7 @@ import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Vocab">;
 
-export default function VocabScreen({ route }: Props) {
+export default function VocabScreen({ route, navigation }: Props) {
   const { open } = useAsk();
   const { sized } = useTypeScale();
   // null = no topic chosen yet: follow the route param, else the first
@@ -92,6 +92,15 @@ export default function VocabScreen({ route }: Props) {
     <View>
       <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Words</Text>
       <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm) }]}>The most-used words first, by topic.</Text>
+      <Pressable
+        onPress={() => (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate("ShabdaRush", { topic: activeTopic })}
+        accessibilityRole="button"
+        accessibilityLabel={`Play these words in Shabda Rush`}
+        style={styles.playThese}
+      >
+        <Ionicons name="play" size={18} color={color.white} />
+        <Text style={styles.playTheseText}>Play these</Text>
+      </Pressable>
 
       {/* Topic selector — horizontal chips, ≥44pt touch rows nearby. */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.topics}>
@@ -161,6 +170,8 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   topics: { marginBottom: space.md, marginHorizontal: -space.lg, paddingHorizontal: space.lg },
+  playThese: { flexDirection: "row", alignItems: "center", gap: 8, backgroundColor: color.saffronBtn, borderRadius: 12, minHeight: 44, paddingHorizontal: 16, alignSelf: "flex-start", marginBottom: 12 },
+  playTheseText: { color: color.white, fontWeight: "800", fontSize: 15 },
   chip: {
     backgroundColor: color.surface,
     borderRadius: radius.pill,

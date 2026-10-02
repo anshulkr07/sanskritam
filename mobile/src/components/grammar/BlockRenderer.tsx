@@ -7,7 +7,6 @@
 // wide tables scroll inside their own horizontal ScrollView.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import React from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -21,7 +20,9 @@ import type {
 } from "../../api/client";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
-import { color, font, radius, script, shadow, space } from "../../theme";
+import { color, fill, font, onFill, radius, script, space, type FillName } from "../../theme";
+import { splitAtAkshara } from "../../utils/akshara";
+import { playClip } from "../../services/speech";
 import AudioButton from "./AudioButton";
 import InlineText from "./InlineText";
 import { GUIDE_UI } from "./strings";
@@ -29,6 +30,7 @@ import { GUIDE_UI } from "./strings";
 export interface GuideTextCtx {
   lang: GuideLang;
   t: (loc?: Loc | null) => string;
+  tone?: FillName;
 }
 
 export function CheckedMark({ lang }: { lang: GuideLang }) {
@@ -73,9 +75,11 @@ function ExampleCard({ item, ctx, wild }: { item: GuideExample; ctx: GuideTextCt
   const { sized } = useTypeScale();
   const [open, setOpen] = React.useState(false);
   const words = item.words ?? [];
+  const showAll = words.length > 0 && words.length <= 5;
+  const underline: FillName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
   return (
     <View style={[styles.example, wild && styles.exampleWild]}>
-      <SanskritLine node={item} ctx={ctx} meaning={item.meaning} />
+      <SanskritLine node={item} ctx={ctx} size={22} meaning={item.meaning} />
       <InlineText
         text={ctx.t(item.meaning)}
         lang={ctx.lang}
@@ -88,39 +92,52 @@ function ExampleCard({ item, ctx, wild }: { item: GuideExample; ctx: GuideTextCt
           style={[styles.source, { fontSize: sized(font.sizes.xs) }]}
         />
       )}
-      {words.length > 0 && (
-        <Pressable
-          onPress={() => {
-            haptics.tap();
-            setOpen((o) => !o);
-          }}
-          style={styles.wordToggle}
-          accessibilityRole="button"
-          accessibilityState={{ expanded: open }}
-          accessibilityLabel={open ? GUIDE_UI.hideWords[ctx.lang] : GUIDE_UI.wordByWord[ctx.lang]}
-        >
-          <Ionicons name={open ? "remove-circle-outline" : "add-circle-outline"} size={16} color={color.saffron} />
-          <Text style={[styles.wordToggleText, ctx.lang === "hi" && script("semibold")]}>
-            {open ? GUIDE_UI.hideWords[ctx.lang] : GUIDE_UI.wordByWord[ctx.lang]}
-          </Text>
-        </Pressable>
-      )}
-      {open &&
-        words.map((wd, i) => (
-          <View key={`${wd.sa}-${i}`} style={styles.wordRow}>
-            <View style={styles.wordSa}>
+      {showAll ? (
+        <View style={styles.wordInline}>
+          {words.map((wd, i) => (
+            <View key={`${wd.sa}-${i}`} style={styles.wordCell}>
               <Text style={[script("semibold"), styles.sa, { fontSize: sized(18, { sanskrit: true }) }]}>{wd.sa}</Text>
-              <Text style={[styles.iast, { fontSize: sized(font.sizes.xs) }]}>{wd.iast}</Text>
+              <Text style={[styles.wordGloss, { borderBottomColor: fill[underline[i % underline.length]] }]}>{ctx.t(wd.gloss)}</Text>
             </View>
-            <InlineText
-              text={ctx.t(wd.gloss)}
-              lang={ctx.lang}
-              style={[styles.gloss, { fontSize: sized(font.sizes.sm) }]}
-            />
-            {wd.checked && <CheckedMark lang={ctx.lang} />}
-            <AudioButton url={wd.audio_url} label={wd.iast} />
-          </View>
-        ))}
+          ))}
+        </View>
+      ) : (
+        <>
+          {words.length > 0 && (
+            <Pressable
+              onPress={() => {
+                haptics.tap();
+                setOpen((o) => !o);
+              }}
+              style={styles.wordToggle}
+              accessibilityRole="button"
+              accessibilityState={{ expanded: open }}
+              accessibilityLabel={open ? GUIDE_UI.hideWords[ctx.lang] : GUIDE_UI.wordByWord[ctx.lang]}
+            >
+              <Ionicons name={open ? "remove-circle-outline" : "add-circle-outline"} size={16} color={color.saffron} />
+              <Text style={[styles.wordToggleText, ctx.lang === "hi" && script("semibold")]}>
+                {open ? GUIDE_UI.hideWords[ctx.lang] : GUIDE_UI.wordByWord[ctx.lang]}
+              </Text>
+            </Pressable>
+          )}
+          {open &&
+            words.map((wd, i) => (
+              <View key={`${wd.sa}-${i}`} style={styles.wordRow}>
+                <View style={styles.wordSa}>
+                  <Text style={[script("semibold"), styles.sa, { fontSize: sized(18, { sanskrit: true }) }]}>{wd.sa}</Text>
+                  <Text style={[styles.iast, { fontSize: sized(font.sizes.xs) }]}>{wd.iast}</Text>
+                </View>
+                <InlineText
+                  text={ctx.t(wd.gloss)}
+                  lang={ctx.lang}
+                  style={[styles.gloss, { fontSize: sized(font.sizes.sm) }]}
+                />
+                {wd.checked && <CheckedMark lang={ctx.lang} />}
+                <AudioButton url={wd.audio_url} label={wd.iast} />
+              </View>
+            ))}
+        </>
+      )}
     </View>
   );
 }
@@ -129,56 +146,85 @@ function TableCellView({ cell, first, ctx }: { cell: GuideCell; first: boolean; 
   const { sized } = useTypeScale();
   if ("text" in cell) {
     return (
-      <View style={[styles.td, first && styles.tdFirst]}>
+      <View style={[styles.td, styles.tdTextCol, first && styles.tdFirst]}>
         <InlineText text={ctx.t(cell.text)} lang={ctx.lang} style={[styles.tdText, { fontSize: sized(font.sizes.sm) }]} />
       </View>
     );
   }
-  const [head, tail] = cell.split ?? [cell.sa, ""];
-  return (
-    <View style={[styles.td, first && styles.tdFirst]}>
+  const [rawHead, rawTail] = cell.split ?? [cell.sa, ""];
+  const [head, tail] = splitAtAkshara(rawHead, rawTail);
+  const tone = ctx.tone ?? "saffron";
+  const tappable = !!cell.audio_url;
+  const play = () => {
+    if (cell.audio_url) {
+      haptics.tap();
+      void playClip(cell.audio_url, () => {}).catch(() => {});
+    }
+  };
+  const body = (
+    <View style={[styles.td, styles.tdSaCol, first && styles.tdFirst]}>
       <View style={styles.cellTop}>
         <Text
           style={[script("semibold"), styles.sa, { fontSize: sized(18, { sanskrit: true }) }]}
-          accessibilityLabel={cell.iast}
+          accessibilityLabel={`${cell.sa}. ${tappable ? "Tap to hear." : ""}`}
         >
           {head}
-          {!!tail && <Text style={[script("extrabold"), styles.ending]}>{tail}</Text>}
+          {!!tail && <Text style={[script("extrabold"), { color: fill[tone] }]}>{tail}</Text>}
         </Text>
-        <AudioButton url={cell.audio_url} label={cell.iast} />
       </View>
       <Text style={[styles.iast, { fontSize: sized(font.sizes.xs) }]}>{cell.iast}</Text>
     </View>
+  );
+  if (!tappable) return body;
+  return (
+    <Pressable onPress={play} accessibilityRole="button" accessibilityLabel={`${cell.sa}. Tap to hear.`} style={styles.tdSaCol}>
+      {body}
+    </Pressable>
   );
 }
 
 function TableBlock({ block, ctx }: { block: Extract<GuideBlock, { kind: "table" }>; ctx: GuideTextCtx }) {
   const { sized } = useTypeScale();
   const checked = block.rows.some((row) => row.some((c) => "sa" in c && c.checked));
+  const cols = block.columns.length;
+  // Up to four columns never scroll: fold the second text column into the
+  // first as a small second line (the case table becomes Case/question, Form, Meaning).
+  const folded = cols >= 4 && block.rows.every((row) => row.length >= 2 && "text" in row[0] && "text" in row[1]);
+  const showCols = folded ? [block.columns[0], ...block.columns.slice(2)] : block.columns;
+  const needsScroll = (folded ? showCols.length : cols) >= 5;
+  const table = (
+    <View>
+      <View style={styles.trHead}>
+        {showCols.map((c, i) => (
+          <View key={i} style={i === 0 ? styles.thCell : styles.thCellSa}>
+            <InlineText text={ctx.t(c)} lang={ctx.lang} style={[styles.th, { fontSize: sized(10.5) }]} />
+          </View>
+        ))}
+      </View>
+      {block.rows.map((row, r) => {
+        const cells = folded ? [row[0], ...row.slice(2)] : row;
+        return (
+          <View key={r} style={styles.tr}>
+            {cells.map((c, i) => (
+              <TableCellView key={i} cell={c} first={i === 0} ctx={ctx} />
+            ))}
+          </View>
+        );
+      })}
+    </View>
+  );
   return (
     <View style={styles.tableWrap}>
       <View style={styles.captionRow}>
         <InlineText text={ctx.t(block.caption)} lang={ctx.lang} style={[styles.caption, { fontSize: sized(font.sizes.base) }]} />
         {checked && <CheckedMark lang={ctx.lang} />}
+        {needsScroll && <Text style={styles.swipeHint}>swipe →</Text>}
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={styles.tableScroll}>
-        <View>
-          <View style={[styles.tr, styles.thRow]}>
-            {block.columns.map((c, i) => (
-              <View key={i} style={[styles.td, i === 0 && styles.tdFirst]}>
-                <InlineText text={ctx.t(c)} lang={ctx.lang} style={[styles.th, { fontSize: sized(font.sizes.xs) }]} />
-              </View>
-            ))}
-          </View>
-          {block.rows.map((row, r) => (
-            <View key={r} style={[styles.tr, r % 2 === 1 && styles.trAlt]}>
-              {row.map((c, i) => (
-                <TableCellView key={i} cell={c} first={i === 0} ctx={ctx} />
-              ))}
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      {needsScroll ? (
+        <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={styles.tableScroll}>{table}</ScrollView>
+      ) : (
+        table
+      )}
       {!!block.note && (
         <InlineText text={ctx.t(block.note)} lang={ctx.lang} style={[styles.note, { fontSize: sized(font.sizes.sm) }]} />
       )}
@@ -186,23 +232,35 @@ function TableBlock({ block, ctx }: { block: Extract<GuideBlock, { kind: "table"
   );
 }
 
-function SaChip({ node, strong }: { node: GuideSanskrit; strong?: boolean }) {
+function SaChip({ node, strong, tone }: { node: GuideSanskrit; strong?: boolean; tone?: FillName }) {
   const { sized } = useTypeScale();
+  const solid = strong && tone ? fill[tone] : undefined;
   return (
-    <View style={[styles.chip, strong && styles.chipStrong]} accessible accessibilityLabel={node.iast}>
-      <Text style={[script(strong ? "bold" : "semibold"), styles.sa, { fontSize: sized(20, { sanskrit: true }) }]}>
+    <View
+      style={[styles.chip, styles.chipOutline, strong && tone ? { backgroundColor: solid, borderColor: solid } : null]}
+      accessible
+      accessibilityLabel={node.iast}
+    >
+      <Text
+        style={[
+          script(strong ? "bold" : "semibold"),
+          styles.sa,
+          { fontSize: sized(20, { sanskrit: true }), color: strong && tone ? onFill.text : color.ink },
+        ]}
+      >
         {node.sa}
       </Text>
-      <Text style={[styles.iast, { fontSize: sized(font.sizes.xs) }]}>{node.iast}</Text>
+      <Text
+        style={[
+          styles.iast,
+          { fontSize: sized(font.sizes.xs), color: strong && tone ? onFill.soft : color.inkSoft },
+        ]}
+      >
+        {node.iast}
+      </Text>
     </View>
   );
 }
-
-const CALLOUT: Record<"tip" | "watch" | "fact", { icon: IoniconsIconName; bg: string; fg: string }> = {
-  tip: { icon: "bulb-outline", bg: color.saffronLight, fg: color.saffronText },
-  watch: { icon: "alert-circle-outline", bg: color.warnBg, fg: color.warnText },
-  fact: { icon: "sparkles-outline", bg: color.unsureBg, fg: color.unsureText },
-};
 
 export default function BlockRenderer({ block, ctx }: { block: GuideBlock; ctx: GuideTextCtx }) {
   const { sized } = useTypeScale();
@@ -214,10 +272,10 @@ export default function BlockRenderer({ block, ctx }: { block: GuideBlock; ctx: 
 
     case "analogy":
       return (
-        <View style={[styles.panel, { backgroundColor: color.tutorBg }]}>
+        <View style={styles.calloutPlain}>
           <View style={styles.panelHead}>
-            <Ionicons name="chatbubble-ellipses-outline" size={18} color={color.tutor} />
-            <Text style={[styles.panelLabel, { color: color.tutor }, ctx.lang === "hi" && script("bold")]}>
+            <Ionicons name="chatbubble-ellipses-outline" size={18} color={fill[ctx.tone ?? "saffron"]} />
+            <Text style={[styles.panelLabel, { color: fill[ctx.tone ?? "saffron"] }, ctx.lang === "hi" && script("bold")]}>
               {GUIDE_UI.thinkOfIt[ctx.lang]}
             </Text>
           </View>
@@ -226,12 +284,25 @@ export default function BlockRenderer({ block, ctx }: { block: GuideBlock; ctx: 
       );
 
     case "callout": {
-      const tone = CALLOUT[block.tone] ?? CALLOUT.tip;
+      if (block.tone === "watch") {
+        return (
+          <View style={styles.watchBlock}>
+            <View style={styles.panelHead}>
+              <Ionicons name="alert-circle-outline" size={18} color={onFill.text} />
+              <Text style={[styles.panelLabel, { color: onFill.text }, ctx.lang === "hi" && script("bold")]}>
+                {GUIDE_UI[block.tone][ctx.lang]}
+              </Text>
+            </View>
+            <InlineText text={ctx.t(block.text)} lang={ctx.lang} style={[body, styles.watchText]} />
+          </View>
+        );
+      }
+      const icon = block.tone === "fact" ? "sparkles-outline" : "bulb-outline";
       return (
-        <View style={[styles.panel, { backgroundColor: tone.bg }]}>
+        <View style={styles.calloutPlain}>
           <View style={styles.panelHead}>
-            <Ionicons name={tone.icon} size={18} color={tone.fg} />
-            <Text style={[styles.panelLabel, { color: tone.fg }, ctx.lang === "hi" && script("bold")]}>
+            <Ionicons name={icon} size={18} color={fill[ctx.tone ?? "saffron"]} />
+            <Text style={[styles.panelLabel, { color: fill[ctx.tone ?? "saffron"] }, ctx.lang === "hi" && script("bold")]}>
               {GUIDE_UI[block.tone][ctx.lang]}
             </Text>
           </View>
@@ -245,9 +316,7 @@ export default function BlockRenderer({ block, ctx }: { block: GuideBlock; ctx: 
         <View style={styles.steps}>
           {block.items.map((item, i) => (
             <View key={i} style={styles.stepRow}>
-              <View style={styles.stepNum}>
-                <Text style={styles.stepNumText}>{i + 1}</Text>
-              </View>
+              <Text style={[styles.stepNumText, { color: fill[ctx.tone ?? "saffron"] }]}>{i + 1}</Text>
               <InlineText text={ctx.t(item)} lang={ctx.lang} style={[body, styles.stepText]} />
             </View>
           ))}
@@ -285,11 +354,11 @@ export default function BlockRenderer({ block, ctx }: { block: GuideBlock; ctx: 
       return (
         <View style={styles.formula}>
           <View style={styles.formulaRow}>
-            <SaChip node={block.a} />
+            <SaChip node={block.a} tone={ctx.tone} />
             <Text style={styles.op} accessibilityLabel="plus">+</Text>
-            <SaChip node={block.b} />
+            <SaChip node={block.b} tone={ctx.tone} />
             <Ionicons name="arrow-forward" size={20} color={color.inkSoft} accessibilityLabel="becomes" />
-            <SaChip node={block.result} strong />
+            <SaChip node={block.result} strong tone={ctx.tone} />
             {block.result.checked && <CheckedMark lang={ctx.lang} />}
             <AudioButton url={block.result.audio_url} label={block.result.iast} />
           </View>
@@ -315,13 +384,15 @@ const styles = StyleSheet.create({
   meaning: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.ink, marginTop: space.xxs },
   source: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.inkSoft, marginTop: space.xxs },
   example: {
-    backgroundColor: color.surface,
-    borderRadius: radius.md,
-    padding: space.sm,
-    borderWidth: 1,
-    borderColor: color.border,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: color.border,
+    paddingVertical: space.sm,
+    gap: 4,
   },
-  exampleWild: { borderColor: color.gold, borderLeftWidth: 4 },
+  exampleWild: { borderLeftWidth: 3, borderLeftColor: fill.gold, paddingLeft: space.sm },
+  wordInline: { flexDirection: "row", flexWrap: "wrap", gap: space.sm, marginTop: space.xs },
+  wordCell: { minWidth: 72, gap: 2 },
+  wordGloss: { fontSize: font.sizes.xs, color: color.inkSoft, borderBottomWidth: 2, paddingBottom: 2, alignSelf: "flex-start" },
   wordToggle: { flexDirection: "row", alignItems: "center", gap: 4, marginTop: space.xs, minHeight: 36, alignSelf: "flex-start" },
   wordToggleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
   wordRow: {
@@ -336,46 +407,39 @@ const styles = StyleSheet.create({
   gloss: { flex: 1, fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.ink },
   group: { gap: space.xs },
   groupTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
-  panel: { borderRadius: radius.md, padding: space.sm, gap: space.xxs },
+  calloutPlain: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: color.border, paddingTop: space.xs, gap: 4 },
+  watchBlock: { backgroundColor: fill.gold, borderRadius: radius.md, padding: space.sm, gap: 4 },
+  watchText: { color: onFill.text },
   panelHead: { flexDirection: "row", alignItems: "center", gap: 6 },
   panelLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
   steps: { gap: space.xs },
   stepRow: { flexDirection: "row", gap: space.xs, alignItems: "flex-start" },
-  stepNum: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    backgroundColor: color.saffronLight,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 2,
-  },
-  stepNumText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.saffronText },
+  stepNumText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 16, minWidth: 24 },
   stepText: { flex: 1 },
   tableWrap: { gap: space.xs },
   captionRow: { flexDirection: "row", alignItems: "center", gap: space.xs },
   caption: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
-  tableScroll: { borderRadius: radius.md, overflow: "hidden", borderWidth: 1, borderColor: color.border },
-  tr: { flexDirection: "row", backgroundColor: color.surface },
-  thRow: { backgroundColor: color.surfaceMuted },
-  trAlt: { backgroundColor: "#FFFCF7" },
+  swipeHint: { fontSize: 12, color: color.inkSoft, fontWeight: "700" },
+  tableScroll: { paddingBottom: 4 },
+  tr: { flexDirection: "row", borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: color.border },
+  trHead: { flexDirection: "row", borderBottomWidth: 1.5, borderBottomColor: color.ink },
+  thCell: { flex: 1.3, paddingHorizontal: 6, paddingVertical: 6, justifyContent: "center" },
+  thCellSa: { flex: 1, paddingHorizontal: 6, paddingVertical: 6, justifyContent: "center" },
   td: {
-    width: 128,
-    paddingHorizontal: space.xs,
+    paddingHorizontal: 6,
     paddingVertical: 6,
-    borderRightWidth: StyleSheet.hairlineWidth,
-    borderRightColor: color.border,
     justifyContent: "center",
   },
-  tdFirst: { width: 132 },
-  th: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.inkSoft },
+  tdTextCol: { flex: 1.3 },
+  tdSaCol: { flex: 1 },
+  tdFirst: { flex: 1.3 },
+  th: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.inkSoft, textTransform: "uppercase" },
   tdText: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.ink },
   cellTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  ending: { color: color.saffronText, textDecorationLine: "underline" },
   note: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.inkSoft },
-  formula: { backgroundColor: color.surface, borderRadius: radius.md, padding: space.sm, gap: space.xs, ...shadow.card },
+  formula: { gap: space.xs, paddingVertical: space.xs },
   formulaRow: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: space.xs },
-  chip: { backgroundColor: color.surfaceMuted, borderRadius: radius.sm, paddingHorizontal: space.xs, paddingVertical: 4, alignItems: "center" },
-  chipStrong: { backgroundColor: color.saffronLight },
+  chip: { borderRadius: radius.sm, paddingHorizontal: space.xs, paddingVertical: 4, alignItems: "center" },
+  chipOutline: { borderWidth: 1.5, borderColor: color.border, backgroundColor: color.white },
   op: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.inkSoft },
 });

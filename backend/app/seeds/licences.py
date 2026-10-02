@@ -60,6 +60,16 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "CC BY-SA 4.0",
      "Short English glosses induced from Mitrasaṃgraha classical translations (CC BY-SA files only; NC-ND files excluded); no translation sentence ships.",
      "Gloss signal behind the DCS vocabulary expansion (P22-5 WordNet alternative)."),
+    # The URL was github.com/don-cross/astronomy-engine, which is a 404. The
+    # project lives at cosinekitty/astronomy (its own package metadata, and
+    # the page itself, checked 2026-10-01). The app now bundles the JavaScript
+    # build of the same release for the Home tithi card (mobile/src/kala).
+    ("astronomy-engine",
+     "astronomy-engine (Don Cross)",
+     "https://github.com/cosinekitty/astronomy",
+     "MIT",
+     "Hindu calendar math (sunrise, tithi, festivals) computed with astronomy-engine, MIT licence.",
+     "Tithi, nakshatra, yoga, karana and festival dates for Ask answers, and today's date on Home."),
     # P24 · lesson-video sources. Embed rows play through YouTube's own
     # player (views and ads accrue to the creator); link rows are course
     # pages, playlists, or NC-licensed material that must never be embedded
@@ -166,6 +176,45 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "YouTube Standard (official embed)",
      "Karaka lessons by Vakratunda Sanskrit Classes on YouTube, embedded via the official player; all views and ads accrue to the creator.",
      "Hindi-medium lesson video for karaka rules (Unit 11)."),
+    # Word journey (handover_language 4.4): dictionaries of record behind each
+    # card. Licence text for all six is "cited, not copied": word histories
+    # are checked against the entry, no dictionary text is reproduced.
+    ("mw",
+     "Monier-Williams Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+     "https://www.sanskrit-lexicon.uni-koeln.de/",
+     "cited, not copied",
+     "Word histories checked against Monier-Williams Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries. No dictionary text is reproduced.",
+     "Word journey: the Sanskrit word, its meaning and where it is cited."),
+    ("ahd",
+     "The American Heritage Dictionary of the English Language, Fifth Edition",
+     "https://ahdictionary.com/",
+     "cited, not copied",
+     "Word histories checked against The American Heritage Dictionary of the English Language, Fifth Edition. No dictionary text is reproduced.",
+     "Word journey: the route of each English word."),
+    ("pfeifer",
+     "Wolfgang Pfeifer et al., Etymologisches Wörterbuch des Deutschen (1993), in the Digitales Wörterbuch der deutschen Sprache",
+     "https://www.dwds.de/",
+     "cited, not copied",
+     "Word histories checked against Wolfgang Pfeifer et al., Etymologisches Wörterbuch des Deutschen (1993), in the Digitales Wörterbuch der deutschen Sprache. No dictionary text is reproduced.",
+     "Word journey: the route of each German word."),
+    ("duden",
+     "Duden online",
+     "https://www.duden.de/",
+     "cited, not copied",
+     "Word histories checked against Duden online. No dictionary text is reproduced.",
+     "Word journey: the route of each German word."),
+    ("vasmer",
+     "Этимологический словарь русского языка Макса Фасмера, read at gufo.me",
+     "https://gufo.me/dict/vasmer",
+     "cited, not copied",
+     "Word histories checked against Этимологический словарь русского языка Макса Фасмера, read at gufo.me. No dictionary text is reproduced.",
+     "Word journey: the route of each Russian word."),
+    ("platts",
+     "Platts, A dictionary of Urdu, classical Hindi, and English (1884), Digital Dictionaries of South Asia",
+     "https://dsal.uchicago.edu/dictionaries/platts/",
+     "cited, not copied",
+     "Word histories checked against Platts, A dictionary of Urdu, classical Hindi, and English (1884), Digital Dictionaries of South Asia. No dictionary text is reproduced.",
+     "Word journey: the route of each Hindi word."),
 ]
 
 

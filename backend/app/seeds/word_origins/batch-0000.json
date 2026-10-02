@@ -1,0 +1,2756 @@
+{
+ "batch": "0000",
+ "made_on": "2026-10-02",
+ "maker": "Checked by hand against the dictionaries named on each route, 2026-10-01. See specs/word-origins-verified.md.",
+ "model": "",
+ "start_date": "2026-10-15",
+ "items": [
+  {
+   "id": "sharkara",
+   "status": "approved",
+   "mw_key": "SarkarA",
+   "sanskrit": {
+    "dev": "शर्करा",
+    "iast": "śarkarā"
+   },
+   "gloss": "grit, gravel; later ground sugar",
+   "attested_abbr": [
+    "AV.",
+    "Kāv.",
+    "VarBṛS.",
+    "Suśr."
+   ],
+   "attested": "Atharva-veda, as gravel",
+   "note": "It first meant grit or gravel, and later ground sugar. German got it through Arabic and Italian, Russian through Greek.",
+   "routes": [
+    {
+     "id": "sharkara.en.sugar",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "sugar",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sugar",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "shakar"
+      },
+      {
+       "lang": "Arabic",
+       "form": "sukkar"
+      },
+      {
+       "lang": "Old Italian",
+       "form": "zucchero"
+      },
+      {
+       "lang": "Medieval Latin",
+       "form": "succārum"
+      },
+      {
+       "lang": "Old French",
+       "form": "sukere"
+      },
+      {
+       "lang": "Middle English",
+       "form": "sugre"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "sugar",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "sharkara.de.zucker",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Zucker",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sugar",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Arabic",
+       "form": "sukkar"
+      },
+      {
+       "lang": "Italian",
+       "form": "zucchero"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Zucker",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "sharkara.ru.sakhar",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "сахар",
+     "script": "cyrillic",
+     "roman": "sakhar",
+     "gloss": "sugar",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Pali",
+       "form": "sakkharā"
+      },
+      {
+       "lang": "Greek",
+       "form": "sákcharon"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "сахар",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "matri",
+   "status": "approved",
+   "mw_key": "mAtf",
+   "sanskrit": {
+    "dev": "मातृ",
+    "iast": "mātṛ"
+   },
+   "display_key": "mAtA",
+   "display": {
+    "dev": "माता",
+    "iast": "mātā"
+   },
+   "gloss": "mother",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "matri.en.mother",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "mother",
+     "script": "latin",
+     "roman": "",
+     "gloss": "mother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "mother",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "matri.de.mutter",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Mutter",
+     "script": "latin",
+     "roman": "",
+     "gloss": "mother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Mutter",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "matri.ru.mat",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "мать",
+     "script": "cyrillic",
+     "roman": "mat'",
+     "gloss": "mother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "мать",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "jangala",
+   "status": "approved",
+   "mw_key": "jaNgala",
+   "sanskrit": {
+    "dev": "जङ्गल",
+    "iast": "jaṅgala"
+   },
+   "gloss": "dry, thinly grown land",
+   "attested_abbr": [
+    "L.",
+    "Mn.",
+    "Yājñ.",
+    "Suśr."
+   ],
+   "attested": "Manu's law-book, as jāṅgala",
+   "note": "In Sanskrit it meant dry, thinly grown land. Hindi used it for wild land and forest, and English took it from there.",
+   "routes": [
+    {
+     "id": "jangala.en.jungle",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "jungle",
+     "script": "latin",
+     "roman": "",
+     "gloss": "thick tropical forest",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "jaṅgal"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "pfeifer"
+     ],
+     "lookup": "jungle",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "jangala.de.dschungel",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Dschungel",
+     "script": "latin",
+     "roman": "",
+     "gloss": "jungle",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "jaṅgal"
+      },
+      {
+       "lang": "English",
+       "form": "jungle"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Dschungel",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "jangala.ru.dzhungli",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "джунгли",
+     "script": "cyrillic",
+     "roman": "dzhungli",
+     "gloss": "jungle",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "jangal"
+      },
+      {
+       "lang": "German or English",
+       "form": "Dschungel, jungle"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "джунгли",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "agni",
+   "status": "approved",
+   "mw_key": "agni",
+   "sanskrit": {
+    "dev": "अग्नि",
+    "iast": "agni"
+   },
+   "gloss": "fire",
+   "attested_abbr": [],
+   "attested": "",
+   "note": "Latin ignis, behind ignite, is a relative.",
+   "routes": [
+    {
+     "id": "agni.ru.ogon",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "огонь",
+     "script": "cyrillic",
+     "roman": "ogon'",
+     "gloss": "fire",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "огонь",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "agni.en.ignite",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "ignite",
+     "script": "latin",
+     "roman": "",
+     "gloss": "to set on fire",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Latin",
+       "form": "ignis",
+       "gloss": "fire"
+      },
+      {
+       "lang": "Late Latin",
+       "form": "ignīre"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "mw"
+     ],
+     "lookup": "ignite",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "pippali",
+   "status": "approved",
+   "mw_key": "pippalI",
+   "sanskrit": {
+    "dev": "पिप्पली",
+    "iast": "pippalī"
+   },
+   "gloss": "long pepper",
+   "attested_abbr": [
+    "R.",
+    "Suśr.",
+    "Var."
+   ],
+   "attested": "Rāmāyaṇa",
+   "note": "Greek took the word from a spoken Indian form close to this one.",
+   "routes": [
+    {
+     "id": "pippali.en.pepper",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "pepper",
+     "script": "latin",
+     "roman": "",
+     "gloss": "pepper",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Prakrit",
+       "form": "pipparī",
+       "gloss": "a kindred form"
+      },
+      {
+       "lang": "Greek",
+       "form": "peperi"
+      },
+      {
+       "lang": "Latin",
+       "form": "piper"
+      },
+      {
+       "lang": "Old English",
+       "form": "pipor"
+      },
+      {
+       "lang": "Middle English",
+       "form": "peper"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "pepper",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "pippali.de.pfeffer",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Pfeffer",
+     "script": "latin",
+     "roman": "",
+     "gloss": "pepper",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Greek",
+       "form": "péperi"
+      },
+      {
+       "lang": "Latin",
+       "form": "piper"
+      },
+      {
+       "lang": "Old High German",
+       "form": "pheffur"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Pfeffer",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "pippali.ru.perets",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "перец",
+     "script": "cyrillic",
+     "roman": "perets",
+     "gloss": "pepper",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Greek",
+       "form": "péperi"
+      },
+      {
+       "lang": "Latin",
+       "form": "piper"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "перец",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "nava",
+   "status": "approved",
+   "mw_key": "nava",
+   "sanskrit": {
+    "dev": "नव",
+    "iast": "nava"
+   },
+   "gloss": "new, fresh",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "nava.en.new",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "new",
+     "script": "latin",
+     "roman": "",
+     "gloss": "new",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "new",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nava.de.neu",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "neu",
+     "script": "latin",
+     "roman": "",
+     "gloss": "new",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "neu",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nava.ru.novyy",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "новый",
+     "script": "cyrillic",
+     "roman": "novyy",
+     "gloss": "new",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "новый",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "upala",
+   "status": "approved",
+   "mw_key": "upala",
+   "sanskrit": {
+    "dev": "उपल",
+    "iast": "upala"
+   },
+   "gloss": "stone; also a gem",
+   "attested_abbr": [
+    "MBh.",
+    "Suśr.",
+    "Śak.",
+    "Yājñ.",
+    "Śiś.",
+    "Kir."
+   ],
+   "attested": "Mahā-bhārata",
+   "note": "One dictionary says probably for the step from this word to the Greek one.",
+   "routes": [
+    {
+     "id": "upala.en.opal",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "opal",
+     "script": "latin",
+     "roman": "",
+     "gloss": "opal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Greek",
+       "form": "opallios"
+      },
+      {
+       "lang": "Latin",
+       "form": "opalus"
+      },
+      {
+       "lang": "Middle French",
+       "form": "opale"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "opal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "upala.de.opal",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Opal",
+     "script": "latin",
+     "roman": "",
+     "gloss": "opal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Greek",
+       "form": "opállios"
+      },
+      {
+       "lang": "Latin",
+       "form": "opalus"
+      },
+      {
+       "lang": "French",
+       "form": "opale"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Opal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "upala.ru.opal",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "опал",
+     "script": "cyrillic",
+     "roman": "opal",
+     "gloss": "opal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Greek",
+       "form": "opállios"
+      },
+      {
+       "lang": "Latin",
+       "form": "opalus"
+      },
+      {
+       "lang": "German or French",
+       "form": "Opal, opale"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "опал",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "bhratri",
+   "status": "approved",
+   "mw_key": "BrAtf",
+   "sanskrit": {
+    "dev": "भ्रातृ",
+    "iast": "bhrātṛ"
+   },
+   "display_key": "BrAtA",
+   "display": {
+    "dev": "भ्राता",
+    "iast": "bhrātā"
+   },
+   "gloss": "brother",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "bhratri.en.brother",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "brother",
+     "script": "latin",
+     "roman": "",
+     "gloss": "brother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "brother",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "bhratri.de.bruder",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Bruder",
+     "script": "latin",
+     "roman": "",
+     "gloss": "brother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Bruder",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "bhratri.ru.brat",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "брат",
+     "script": "cyrillic",
+     "roman": "brat",
+     "gloss": "brother",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "брат",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "nila",
+   "status": "approved",
+   "mw_key": "nIla",
+   "sanskrit": {
+    "dev": "नील",
+    "iast": "nīla"
+   },
+   "gloss": "dark, dark blue",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "The indigo plant was called nīlī. Lilac, the German colour word lila and the dye base aniline all carry it.",
+   "routes": [
+    {
+     "id": "nila.en.lilac",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "lilac",
+     "script": "latin",
+     "roman": "",
+     "gloss": "lilac",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Sanskrit",
+       "form": "nīlī",
+       "gloss": "indigo"
+      },
+      {
+       "lang": "Middle Persian",
+       "form": "nīl",
+       "gloss": "indigo"
+      },
+      {
+       "lang": "Middle Persian",
+       "form": "nīlak"
+      },
+      {
+       "lang": "Arabic",
+       "form": "līlak"
+      },
+      {
+       "lang": "French",
+       "form": "lilac"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "lilac",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nila.de.lila",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "lila",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the colour lilac",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "līlaǧ"
+      },
+      {
+       "lang": "Arabic",
+       "form": "līlāk"
+      },
+      {
+       "lang": "French",
+       "form": "lilas"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "lila",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nila.de.anilin",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Anilin",
+     "script": "latin",
+     "roman": "",
+     "gloss": "aniline, a dye base",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Sanskrit",
+       "form": "nīlī",
+       "gloss": "the indigo plant"
+      },
+      {
+       "lang": "Persian",
+       "form": "nīl"
+      },
+      {
+       "lang": "Arabic",
+       "form": "an-nīl"
+      },
+      {
+       "lang": "Portuguese",
+       "form": "anil"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Anilin",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "hima",
+   "status": "approved",
+   "mw_key": "hima",
+   "sanskrit": {
+    "dev": "हिम",
+    "iast": "hima"
+   },
+   "gloss": "cold, frost, snow",
+   "attested_abbr": [
+    "RV.",
+    "VS.",
+    "AV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "hima.ru.zima",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "зима",
+     "script": "cyrillic",
+     "roman": "zima",
+     "gloss": "winter",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "зима",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "laksha",
+   "status": "approved",
+   "mw_key": "lAkzA",
+   "sanskrit": {
+    "dev": "लाक्षा",
+    "iast": "lākṣā"
+   },
+   "gloss": "lac, a red dye",
+   "attested_abbr": [
+    "AV.",
+    "Mn.",
+    "MBh."
+   ],
+   "attested": "Atharva-veda",
+   "note": "English lacquer goes back to the same Arabic word.",
+   "routes": [
+    {
+     "id": "laksha.en.lac",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "lac",
+     "script": "latin",
+     "roman": "",
+     "gloss": "lac, a resin",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Prakrit",
+       "form": "lakkhā"
+      },
+      {
+       "lang": "Arabic",
+       "form": "lakk"
+      },
+      {
+       "lang": "Medieval Latin",
+       "form": "lacca"
+      },
+      {
+       "lang": "Old French",
+       "form": "lacce"
+      },
+      {
+       "lang": "Dutch or French",
+       "form": "lac, laque"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "lac",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "laksha.de.lack",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Lack",
+     "script": "latin",
+     "roman": "",
+     "gloss": "varnish",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "lāk"
+      },
+      {
+       "lang": "Arabic",
+       "form": "lakk"
+      },
+      {
+       "lang": "Medieval Latin",
+       "form": "lacca"
+      },
+      {
+       "lang": "Italian",
+       "form": "lacca"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Lack",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "laksha.ru.lak",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "лак",
+     "script": "cyrillic",
+     "roman": "lak",
+     "gloss": "varnish",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Prakrit",
+       "form": "lakkha"
+      },
+      {
+       "lang": "Hindi",
+       "form": "lākh"
+      },
+      {
+       "lang": "Arabic",
+       "form": "lakk"
+      },
+      {
+       "lang": "Italian",
+       "form": "lacca"
+      },
+      {
+       "lang": "German, Dutch or French",
+       "form": "Lack, lak, laque"
+      }
+     ],
+     "sources": [
+      "vasmer",
+      "platts"
+     ],
+     "lookup": "лак",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "naman",
+   "status": "approved",
+   "mw_key": "nAman",
+   "sanskrit": {
+    "dev": "नामन्",
+    "iast": "nāman"
+   },
+   "display_key": "nAma",
+   "display": {
+    "dev": "नाम",
+    "iast": "nāma"
+   },
+   "gloss": "name",
+   "attested_abbr": [
+    "RV.",
+    "VS.",
+    "AV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "naman.en.name",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "name",
+     "script": "latin",
+     "roman": "",
+     "gloss": "name",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "name",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "naman.ru.imya",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "имя",
+     "script": "cyrillic",
+     "roman": "imya",
+     "gloss": "name",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "имя",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "mantrin",
+   "status": "approved",
+   "mw_key": "mantrin",
+   "sanskrit": {
+    "dev": "मन्त्रिन्",
+    "iast": "mantrin"
+   },
+   "display_key": "mantrI",
+   "display": {
+    "dev": "मन्त्री",
+    "iast": "mantrī"
+   },
+   "gloss": "counsellor, minister",
+   "attested_abbr": [
+    "VS.",
+    "Mn.",
+    "MBh."
+   ],
+   "attested": "Manu's law-book",
+   "note": "The Portuguese carried the Malay form to Europe as the title of a Chinese official. The fruit takes its name from the official.",
+   "routes": [
+    {
+     "id": "mantrin.en.mandarin",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "mandarin",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a high official of imperial China",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Malay",
+       "form": "menteri"
+      },
+      {
+       "lang": "Portuguese",
+       "form": "mandarim"
+      },
+      {
+       "lang": "Spanish",
+       "form": "mandarín"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "mandarin",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "mantrin.de.mandarin",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Mandarin",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a high official of imperial China",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "mantrī"
+      },
+      {
+       "lang": "Malay",
+       "form": "mantari"
+      },
+      {
+       "lang": "Portuguese",
+       "form": "mandarim"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Mandarin",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "mantrin.ru.mandarin",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "мандарин",
+     "script": "cyrillic",
+     "roman": "mandarin",
+     "gloss": "the mandarin orange",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Portuguese",
+       "form": "mandarim"
+      },
+      {
+       "lang": "French",
+       "form": "mandarine"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "мандарин",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "nakta",
+   "status": "approved",
+   "mw_key": "nakta",
+   "sanskrit": {
+    "dev": "नक्त",
+    "iast": "nakta"
+   },
+   "gloss": "night",
+   "attested_abbr": [
+    "RV.",
+    "AV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "nakta.en.night",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "night",
+     "script": "latin",
+     "roman": "",
+     "gloss": "night",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "night",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nakta.de.nacht",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Nacht",
+     "script": "latin",
+     "roman": "",
+     "gloss": "night",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Nacht",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nakta.ru.noch",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "ночь",
+     "script": "cyrillic",
+     "roman": "noch'",
+     "gloss": "night",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "ночь",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "dhyana",
+   "status": "approved",
+   "mw_key": "DyAna",
+   "sanskrit": {
+    "dev": "ध्यान",
+    "iast": "dhyāna"
+   },
+   "gloss": "meditation",
+   "attested_abbr": [
+    "ChUp.",
+    "Mn.",
+    "MBh.",
+    "Kāv."
+   ],
+   "attested": "Manu's law-book",
+   "note": "It reached Japan through Pali and Chinese.",
+   "routes": [
+    {
+     "id": "dhyana.en.zen",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "Zen",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the school of Buddhism",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Pali",
+       "form": "jhāna"
+      },
+      {
+       "lang": "Early Middle Chinese",
+       "form": "dʑian"
+      },
+      {
+       "lang": "Japanese",
+       "form": "zen"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "Zen",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "dhyana.de.zen",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Zen",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the school of Buddhism",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Chinese",
+       "form": "chan"
+      },
+      {
+       "lang": "Japanese",
+       "form": "zen"
+      }
+     ],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Zen",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "pitri",
+   "status": "approved",
+   "mw_key": "pitf",
+   "sanskrit": {
+    "dev": "पितृ",
+    "iast": "pitṛ"
+   },
+   "display_key": "pitA",
+   "display": {
+    "dev": "पिता",
+    "iast": "pitā"
+   },
+   "gloss": "father",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "pitri.en.father",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "father",
+     "script": "latin",
+     "roman": "",
+     "gloss": "father",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "father",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "pitri.de.vater",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Vater",
+     "script": "latin",
+     "roman": "",
+     "gloss": "father",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Vater",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "chandana",
+   "status": "approved",
+   "mw_key": "candana",
+   "sanskrit": {
+    "dev": "चन्दन",
+    "iast": "candana"
+   },
+   "gloss": "the sandal tree and its wood",
+   "attested_abbr": [
+    "Nir.",
+    "MBh.",
+    "R."
+   ],
+   "attested": "Nirukta",
+   "note": "One dictionary adds that the Sanskrit word itself came from a Dravidian language.",
+   "routes": [
+    {
+     "id": "chandana.en.sandalwood",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "sandalwood",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sandalwood",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Middle Persian",
+       "form": "čandal"
+      },
+      {
+       "lang": "Late Greek",
+       "form": "santalon"
+      },
+      {
+       "lang": "Medieval Latin",
+       "form": "sandalum"
+      },
+      {
+       "lang": "Old French",
+       "form": "sandale"
+      },
+      {
+       "lang": "Middle English",
+       "form": "sandal"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "sandal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "chandana.de.sandelholz",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Sandelholz",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sandalwood",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Arabic",
+       "form": "ṣandal"
+      },
+      {
+       "lang": "Greek",
+       "form": "sántalon"
+      },
+      {
+       "lang": "Medieval Latin",
+       "form": "santalum"
+      },
+      {
+       "lang": "Italian",
+       "form": "santalo"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Sandelholz",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "chandana.ru.sandal",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "сандал",
+     "script": "cyrillic",
+     "roman": "sandal",
+     "gloss": "sandalwood",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Arabic",
+       "form": "ṣandal"
+      },
+      {
+       "lang": "Greek",
+       "form": "sántalon"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "сандал",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "madhu",
+   "status": "approved",
+   "mw_key": "maDu",
+   "sanskrit": {
+    "dev": "मधु",
+    "iast": "madhu"
+   },
+   "gloss": "sweet; honey; mead",
+   "attested_abbr": [
+    "RV.",
+    "TS.",
+    "AV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "madhu.en.mead",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "mead",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the honey drink",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "mead",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "madhu.ru.myod",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "мёд",
+     "script": "cyrillic",
+     "roman": "myod",
+     "gloss": "honey",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "мед",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "yoga",
+   "status": "approved",
+   "mw_key": "yoga",
+   "sanskrit": {
+    "dev": "योग",
+    "iast": "yoga"
+   },
+   "gloss": "yoking, joining; later the discipline",
+   "attested_abbr": [
+    "RV.",
+    "MBh.",
+    "Up.",
+    "Kāv."
+   ],
+   "attested": "Ṛg-veda, as yoking",
+   "note": "The first meaning is yoking or joining.",
+   "routes": [
+    {
+     "id": "yoga.en.yoga",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "yoga",
+     "script": "latin",
+     "roman": "",
+     "gloss": "yoga",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "yoga"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "yoga",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "yoga.de.yoga",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Yoga",
+     "script": "latin",
+     "roman": "",
+     "gloss": "yoga",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Yoga",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "sunu",
+   "status": "approved",
+   "mw_key": "sUnu",
+   "sanskrit": {
+    "dev": "सूनु",
+    "iast": "sūnu"
+   },
+   "gloss": "son",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "sunu.en.son",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "son",
+     "script": "latin",
+     "roman": "",
+     "gloss": "son",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "son",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "sunu.de.sohn",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Sohn",
+     "script": "latin",
+     "roman": "",
+     "gloss": "son",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Sohn",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "sunu.ru.syn",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "сын",
+     "script": "cyrillic",
+     "roman": "syn",
+     "gloss": "son",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "сын",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "naranga",
+   "status": "approved",
+   "mw_key": "nAraNga",
+   "sanskrit": {
+    "dev": "नारङ्ग",
+    "iast": "nāraṅga"
+   },
+   "gloss": "the orange tree",
+   "attested_abbr": [
+    "Suśr.",
+    "ŚārṅgP."
+   ],
+   "attested": "Suśruta",
+   "note": "One dictionary adds that the Sanskrit word may itself come from a Dravidian language.",
+   "routes": [
+    {
+     "id": "naranga.en.orange",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "orange",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the fruit",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "nārang"
+      },
+      {
+       "lang": "Arabic",
+       "form": "nāranj"
+      },
+      {
+       "lang": "Old Italian",
+       "form": "arancio"
+      },
+      {
+       "lang": "Old French",
+       "form": "orenge"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "orange",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "dama",
+   "status": "approved",
+   "mw_key": "dama",
+   "sanskrit": {
+    "dev": "दम",
+    "iast": "dama"
+   },
+   "gloss": "house, home",
+   "attested_abbr": [
+    "RV.",
+    "AV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "Latin domus, behind domestic, is a relative.",
+   "routes": [
+    {
+     "id": "dama.ru.dom",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "дом",
+     "script": "cyrillic",
+     "roman": "dom",
+     "gloss": "house",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "дом",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "dama.en.domestic",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "domestic",
+     "script": "latin",
+     "roman": "",
+     "gloss": "of the home",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Latin",
+       "form": "domus",
+       "gloss": "house"
+      },
+      {
+       "lang": "Latin",
+       "form": "domesticus"
+      },
+      {
+       "lang": "Old French",
+       "form": "domestique"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "mw"
+     ],
+     "lookup": "domestic",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "guru",
+   "status": "approved",
+   "mw_key": "guru",
+   "sanskrit": {
+    "dev": "गुरु",
+    "iast": "guru"
+   },
+   "gloss": "heavy; a teacher",
+   "attested_abbr": [
+    "RV.",
+    "AV.",
+    "RPrāt.",
+    "ĀśvGṛ.",
+    "PārGṛ.",
+    "Mn."
+   ],
+   "attested": "Ṛg-veda, as heavy",
+   "note": "The first meaning is heavy. Latin gravis, behind gravity, is a relative.",
+   "routes": [
+    {
+     "id": "guru.en.guru",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "guru",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a teacher or guide",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "guru"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "guru",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "guru.de.guru",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Guru",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a teacher or guide",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Hindi",
+       "form": "guru"
+      }
+     ],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Guru",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "guru.en.gravity",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "gravity",
+     "script": "latin",
+     "roman": "",
+     "gloss": "weight, heaviness",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Latin",
+       "form": "gravis",
+       "gloss": "heavy"
+      },
+      {
+       "lang": "Latin",
+       "form": "gravitās"
+      },
+      {
+       "lang": "French",
+       "form": "gravité"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "mw"
+     ],
+     "lookup": "gravity",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "svasri",
+   "status": "approved",
+   "mw_key": "svasf",
+   "sanskrit": {
+    "dev": "स्वसृ",
+    "iast": "svasṛ"
+   },
+   "display_key": "svasA",
+   "display": {
+    "dev": "स्वसा",
+    "iast": "svasā"
+   },
+   "gloss": "sister",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "svasri.en.sister",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "sister",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sister",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "sister",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "svasri.de.schwester",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Schwester",
+     "script": "latin",
+     "roman": "",
+     "gloss": "sister",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "mw"
+     ],
+     "lookup": "Schwester",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "svasri.ru.sestra",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "сестра",
+     "script": "cyrillic",
+     "roman": "sestra",
+     "gloss": "sister",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "сестра",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "khanda",
+   "status": "approved",
+   "mw_key": "KaRqa",
+   "sanskrit": {
+    "dev": "खण्ड",
+    "iast": "khaṇḍa"
+   },
+   "gloss": "a piece; later candied sugar",
+   "attested_abbr": [
+    "R.",
+    "Suśr.",
+    "Megh.",
+    "Bhpr.",
+    "Naiṣ.",
+    "Sāh."
+   ],
+   "attested": "Rāmāyaṇa, as a piece",
+   "note": "One dictionary adds that the Sanskrit word may itself come from a Munda language.",
+   "routes": [
+    {
+     "id": "khanda.en.candy",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "candy",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a sweet",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Sanskrit",
+       "form": "khaṇḍaka"
+      },
+      {
+       "lang": "Middle Indic",
+       "form": "kaṇḍa",
+       "gloss": "a form close to the Pali"
+      },
+      {
+       "lang": "Arabic",
+       "form": "qand",
+       "gloss": "lump of sugar"
+      },
+      {
+       "lang": "Arabic",
+       "form": "qandī"
+      },
+      {
+       "lang": "Old French",
+       "form": "sucre candi"
+      },
+      {
+       "lang": "Middle English",
+       "form": "candi"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "candy",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "nau",
+   "status": "approved",
+   "mw_key": "nO",
+   "sanskrit": {
+    "dev": "नौ",
+    "iast": "nau"
+   },
+   "gloss": "ship, boat",
+   "attested_abbr": [
+    "RV."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "Navigate comes from Latin navis, a relative of this word. It was not borrowed from Sanskrit.",
+   "routes": [
+    {
+     "id": "nau.en.navigate",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "navigate",
+     "script": "latin",
+     "roman": "",
+     "gloss": "to steer a course",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Latin",
+       "form": "nāvis",
+       "gloss": "ship"
+      },
+      {
+       "lang": "Latin",
+       "form": "nāvigāre"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "mw"
+     ],
+     "lookup": "navigate",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nau.en.navy",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "navy",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a fleet of warships",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [
+      {
+       "lang": "Latin",
+       "form": "nāvis",
+       "gloss": "ship"
+      },
+      {
+       "lang": "Latin",
+       "form": "nāvigāre"
+      },
+      {
+       "lang": "Latin",
+       "form": "nāvigium"
+      },
+      {
+       "lang": "Old French",
+       "form": "navie"
+      }
+     ],
+     "sources": [
+      "ahd",
+      "mw"
+     ],
+     "lookup": "navy",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "kajjala",
+   "status": "approved",
+   "mw_key": "kajjala",
+   "sanskrit": {
+    "dev": "कज्जल",
+    "iast": "kajjala"
+   },
+   "gloss": "lampblack for the eyes",
+   "attested_abbr": [
+    "Suśr.",
+    "Kathās."
+   ],
+   "attested": "Suśruta",
+   "note": "Hindi has it as kājal.",
+   "routes": [
+    {
+     "id": "kajjala.de.kajal",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Kajal",
+     "script": "latin",
+     "roman": "",
+     "gloss": "eyeliner",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Kajal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "duhitri",
+   "status": "approved",
+   "mw_key": "duhitf",
+   "sanskrit": {
+    "dev": "दुहितृ",
+    "iast": "duhitṛ"
+   },
+   "display_key": "duhitA",
+   "display": {
+    "dev": "दुहिता",
+    "iast": "duhitā"
+   },
+   "gloss": "daughter",
+   "attested_abbr": [],
+   "attested": "",
+   "note": "",
+   "routes": [
+    {
+     "id": "duhitri.de.tochter",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Tochter",
+     "script": "latin",
+     "roman": "",
+     "gloss": "daughter",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Tochter",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "duhitri.ru.doch",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "дочь",
+     "script": "cyrillic",
+     "roman": "doch'",
+     "gloss": "daughter",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "дочь",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "shrigala",
+   "status": "approved",
+   "mw_key": "SfgAla",
+   "sanskrit": {
+    "dev": "शृगाल",
+    "iast": "śṛgāla"
+   },
+   "gloss": "jackal",
+   "attested_abbr": [
+    "ŚBr."
+   ],
+   "attested": "Śatapatha-brāhmaṇa",
+   "note": "One German dictionary calls the earlier history of the word uncertain.",
+   "routes": [
+    {
+     "id": "shrigala.en.jackal",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "jackal",
+     "script": "latin",
+     "roman": "",
+     "gloss": "jackal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Middle Indic",
+       "form": "sigāl"
+      },
+      {
+       "lang": "Persian",
+       "form": "šaghāl"
+      },
+      {
+       "lang": "Turkish",
+       "form": "çakal"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "jackal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "shrigala.de.schakal",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Schakal",
+     "script": "latin",
+     "roman": "",
+     "gloss": "jackal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "šaġāl"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Schakal",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "shrigala.ru.shakal",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "шакал",
+     "script": "cyrillic",
+     "roman": "shakal",
+     "gloss": "jackal",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "šaɣāl"
+      },
+      {
+       "lang": "German or French",
+       "form": "Schakal, chacal"
+      }
+     ],
+     "sources": [
+      "vasmer"
+     ],
+     "lookup": "шакал",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "dvar",
+   "status": "approved",
+   "mw_key": "dvAr",
+   "sanskrit": {
+    "dev": "द्वार्",
+    "iast": "dvār"
+   },
+   "gloss": "door, gate",
+   "attested_abbr": [
+    "RV.",
+    "AV.",
+    "ŚBr."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "dvar.de.tür",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Tür",
+     "script": "latin",
+     "roman": "",
+     "gloss": "door",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Tür",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "dvar.ru.dver",
+     "status": "approved",
+     "lang": "ru",
+     "lang_name": "Russian",
+     "word": "дверь",
+     "script": "cyrillic",
+     "roman": "dver'",
+     "gloss": "door",
+     "kind": "related",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "vasmer",
+      "mw"
+     ],
+     "lookup": "дверь",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "karman",
+   "status": "approved",
+   "mw_key": "karman",
+   "sanskrit": {
+    "dev": "कर्मन्",
+    "iast": "karman"
+   },
+   "display_key": "karma",
+   "display": {
+    "dev": "कर्म",
+    "iast": "karma"
+   },
+   "gloss": "act, deed",
+   "attested_abbr": [
+    "RV.",
+    "AV.",
+    "ŚBr.",
+    "MBh."
+   ],
+   "attested": "Ṛg-veda",
+   "note": "",
+   "routes": [
+    {
+     "id": "karman.en.karma",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "karma",
+     "script": "latin",
+     "roman": "",
+     "gloss": "action and its consequences",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "karma",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "karman.de.karma",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Karma",
+     "script": "latin",
+     "roman": "",
+     "gloss": "action and its consequences",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Karma",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "krimi",
+   "status": "approved",
+   "mw_key": "kfmi",
+   "sanskrit": {
+    "dev": "कृमि",
+    "iast": "kṛmi"
+   },
+   "gloss": "worm, insect",
+   "attested_abbr": [
+    "VS.",
+    "TS.",
+    "AV.",
+    "ŚBr.",
+    "Mn."
+   ],
+   "attested": "Atharva-veda",
+   "note": "The red dye came from an insect. Dictionaries say probably for the step from Sanskrit to Arabic.",
+   "routes": [
+    {
+     "id": "krimi.en.crimson",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "crimson",
+     "script": "latin",
+     "roman": "",
+     "gloss": "deep red",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Sanskrit",
+       "form": "kṛmi-ja",
+       "gloss": "made by worms"
+      },
+      {
+       "lang": "Arabic",
+       "form": "qirmiz",
+       "gloss": "the kermes insect"
+      },
+      {
+       "lang": "Arabic",
+       "form": "qirmizī"
+      },
+      {
+       "lang": "Old Spanish",
+       "form": "cremesín"
+      },
+      {
+       "lang": "Middle English",
+       "form": "cremesin"
+      }
+     ],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "crimson, kermes",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "krimi.de.karmesin",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Karmesin",
+     "script": "latin",
+     "roman": "",
+     "gloss": "crimson",
+     "kind": "loan",
+     "confidence": "probable",
+     "hops": [
+      {
+       "lang": "Persian",
+       "form": "kirm"
+      },
+      {
+       "lang": "Arabic",
+       "form": "qirmiz"
+      },
+      {
+       "lang": "Italian",
+       "form": "carmesino"
+      }
+     ],
+     "sources": [
+      "pfeifer"
+     ],
+     "lookup": "Karmesin",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "nirvana",
+   "status": "approved",
+   "mw_key": "nirvARa",
+   "sanskrit": {
+    "dev": "निर्वाण",
+    "iast": "nirvāṇa"
+   },
+   "gloss": "blown out; extinction",
+   "attested_abbr": [
+    "MBh.",
+    "Kāv."
+   ],
+   "attested": "Mahā-bhārata",
+   "note": "The first meaning is blown out, like a lamp.",
+   "routes": [
+    {
+     "id": "nirvana.en.nirvana",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "nirvana",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the Buddhist goal",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "nirvana",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    },
+    {
+     "id": "nirvana.de.nirwana",
+     "status": "approved",
+     "lang": "de",
+     "lang_name": "German",
+     "word": "Nirwana",
+     "script": "latin",
+     "roman": "",
+     "gloss": "the Buddhist goal",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "duden"
+     ],
+     "lookup": "Nirwana",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  },
+  {
+   "id": "asana",
+   "status": "approved",
+   "mw_key": "Asana",
+   "sanskrit": {
+    "dev": "आसन",
+    "iast": "āsana"
+   },
+   "gloss": "sitting; a seat; a posture",
+   "attested_abbr": [
+    "KātyŚr.",
+    "Mn.",
+    "ŚBr.",
+    "Kum."
+   ],
+   "attested": "Śatapatha-brāhmaṇa, as a seat",
+   "note": "",
+   "routes": [
+    {
+     "id": "asana.en.asana",
+     "status": "approved",
+     "lang": "en",
+     "lang_name": "English",
+     "word": "asana",
+     "script": "latin",
+     "roman": "",
+     "gloss": "a yoga posture",
+     "kind": "loan",
+     "confidence": "certain",
+     "hops": [],
+     "sources": [
+      "ahd"
+     ],
+     "lookup": "asana",
+     "checked_on": "2026-10-01",
+     "checked_by": "hand"
+    }
+   ]
+  }
+ ]
+}

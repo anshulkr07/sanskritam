@@ -944,6 +944,67 @@ export interface StoryChapter {
   cards: StoryCard[];
 }
 
+// ─── Word journey (one Sanskrit word's routes into other languages) ───
+// Backend-driven, read-only: GET /word-origins/today, /word-origins and
+// /word-origins/{id}. Every field is optional-safe: an old backend answers
+// 404 (the Home card hides), and a new backend may omit fields the client
+// reads defensively.
+
+export interface WordHop {
+  lang?: string;
+  form?: string;
+  roman?: string;
+  gloss?: string;
+}
+
+export interface WordRoute {
+  id?: string;
+  lang?: string;
+  lang_name?: string;
+  word?: string;
+  script?: string;
+  roman?: string;
+  gloss?: string;
+  kind?: string;
+  /** Worked out server-side: borrowed | travelled | related. */
+  relation?: string;
+  confidence?: string;
+  hops?: WordHop[] | null;
+  sources?: string[];
+}
+
+export interface WordSource {
+  key?: string;
+  name?: string;
+  url?: string;
+}
+
+export interface WordOrigin {
+  id?: string;
+  sanskrit?: { dev?: string; iast?: string };
+  stem?: { dev?: string; iast?: string };
+  gloss?: string;
+  attested?: string;
+  note?: string;
+  routes?: WordRoute[];
+  sources?: WordSource[];
+}
+
+export interface WordOriginSummary {
+  id?: string;
+  sanskrit?: { dev?: string; iast?: string };
+  gloss?: string;
+  languages?: string[];
+  scheduled_date?: string;
+}
+
+export interface WordToday {
+  date?: string;
+  available?: boolean;
+  origin?: WordOrigin | null;
+  headline_route_id?: string;
+}
+
 // ─── Client ───────────────────────────────────────────────────────────────
 
 export class ApiError extends Error {
@@ -1555,6 +1616,10 @@ export const api = {
   // Daily word (U8-4 / P12) — वर्ण-बन्धः
   dailyWord: () => request<DailyWordPuzzle>("/daily-word", {}, true),
 
+  // Word journey — one Sanskrit word's routes into other languages.
+  wordToday: () => request<WordToday>("/word-origins/today", {}, true),
+  wordOrigins: () => request<{ origins: WordOriginSummary[] }>("/word-origins", {}, true),
+  wordOrigin: (id: string) => request<WordOrigin>(`/word-origins/${encodeURIComponent(id)}`, {}, true),
   // With `letters` (the guess already split into akṣaras) the server scores
   // whole akṣaras; without, the original code-point scoring.
   dailyWordGuess: (guess: string, letters?: string[]) =>
@@ -1583,6 +1648,22 @@ export const api = {
     request<ProgressRepair>("/progress/repair", { method: "POST" }, true),
   progressHistory: (days = 35) =>
     request<ProgressDay[]>(`/progress/history?days=${days}`, {}, true),
+
+  // Play games (HANDOVER 5.7): no vendor calls, no quota.
+  gamesDeck: (game: string, set?: string, topic?: string) => {
+    const q = new URLSearchParams({ game });
+    if (set) q.set("set", set);
+    if (topic) q.set("topic", topic);
+    return request<{ game: string; set: string; count: number; items: { sa: string; iast: string; meaning: string; topic: string }[] }>(`/games/deck?${q.toString()}`, {}, true);
+  },
+  gamesDaily: () =>
+    request<{ date: string; game: string; goal: { type: string; value: number; label: string }; done: boolean; streak: number }>("/games/daily", {}, true),
+  gamesResult: (body: { game: string; mode: string; score: number; moves?: number; duration_ms?: number; daily?: boolean; found?: number; total?: number }) =>
+    request<{ xp: number; best: number; is_best: boolean; daily_done: boolean; streak: number }>("/games/result", { method: "POST", body: JSON.stringify(body) }, true),
+  varnaJaal: () =>
+    request<{ date: string; size: number; cells: string[]; words: { aksharas: string[]; sa: string; iast: string; meaning: string }[] }>("/games/varna-jaal", {}, true),
+  gamesPools: (kind?: string) =>
+    request<{ kind?: string; count?: number; params?: Record<string, unknown>[]; kinds?: string[] }>(`/games/pools${kind ? `?kind=${encodeURIComponent(kind)}` : ""}`, {}, true),
 
   // Notify (P13) — token collection. Registration is best-effort: a failure
   // here must never block the learner (the daily job simply has no token).

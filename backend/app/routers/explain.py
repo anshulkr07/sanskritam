@@ -42,6 +42,13 @@ logger = logging.getLogger("shabd.ask")
 router = APIRouter(prefix="/explain")
 
 
+class AskPlace(BaseModel):
+    lat: float = 0.0
+    lon: float = 0.0
+    tz: str = ""
+    label: str = ""
+
+
 class AskRequest(BaseModel):
     surface: str = Field(description="The screen the learner is on (e.g. 'grammar', 'shloka', 'challenge')")
     subject: str = Field(
@@ -50,6 +57,9 @@ class AskRequest(BaseModel):
                     "May be empty when the learner asks a general question.",
     )
     question: str = Field(default="", description="What the learner typed, if anything")
+    screen_text: str = Field(default="", description="Text read on-device from the screen, at most 2000 chars")
+    place: AskPlace | None = Field(default=None, description="Approximate place for calendar math, body only")
+    cards: bool = Field(default=False, description="The app can render a card")
 
 
 class AskResponse(BaseModel):
@@ -59,14 +69,18 @@ class AskResponse(BaseModel):
     source: str = Field(default="", description="'llm' | 'engine' | 'cache' — for metrics")
     provider: str = ""
     cached: bool = False
+    card: dict | None = Field(default=None, description="Shaped wider answer, when cards=true")
 
 
 # ── P19-3: the answer cache ──────────────────────────────────────────────────
 # In-process, keyed by (surface, subject, normalised question). Twenty learners
 # stuck on the same join ask the same thing; only the first call costs money.
+# For an answer that used calculated facts, the learner-local date and the
+# place rounded to one decimal join the key, or a tithi answer would replay
+# tomorrow.
 
 _CACHE_MAX = 512
-_cache: dict[tuple[str, str, str], dict] = {}
+_cache: dict[tuple[str, ...], dict] = {}
 
 
 def _norm_question(q: str) -> str:
@@ -101,8 +115,9 @@ def wants_engine(question: str) -> bool:
     return not _MEANING_Q.search(q)
 
 
-def _cache_key(surface: str, subject: str, question: str) -> tuple[str, str, str]:
-    return (surface.strip().lower(), subject.strip(), _norm_question(question))
+def _cache_key(surface: str, subject: str, question: str, extra: str = "") -> tuple[str, ...]:
+    base = (surface.strip().lower(), subject.strip(), _norm_question(question))
+    return base if not extra else base + (extra,)
 
 
 def _cache_get(key) -> dict | None:
@@ -147,6 +162,120 @@ def explain_metrics() -> dict:
 
 
 # ── rendering ────────────────────────────────────────────────────────────────
+
+_CALENDAR_Q = re.compile(
+    r"tithi|panchang|panchangam|nakshatra|nakshatram|yoga\b|karana|today|aaj|आज|"
+    r"when is|kab hai|कब|muhurta|muhurtam|sunrise|sunset|moonrise|vrat|vrata|"
+    r"festival|utsav|parva",
+    re.I,
+)
+
+_DELHI = {"lat": 28.6139, "lon": 77.2090, "tz": "Asia/Kolkata", "label": "New Delhi"}
+
+
+def _resolve_place(place: AskPlace | None) -> tuple[dict, bool]:
+    """Approximate place for calendar math. Returns (place_dict, place_needed).
+
+    With no place in the request, calculate for New Delhi and set
+    place_needed True. The server uses the place for the calculation and
+    never stores or logs it.
+    """
+    if place is not None and (place.lat or place.lon):
+        try:
+            lat = round(float(place.lat), 1)
+            lon = round(float(place.lon), 1)
+        except (TypeError, ValueError):
+            lat, lon = _DELHI["lat"], _DELHI["lon"]
+        tz = (place.tz or "Asia/Kolkata").strip() or "Asia/Kolkata"
+        label = (place.label or "").strip() or "Your place"
+        return {"lat": lat, "lon": lon, "tz": tz, "label": label}, False
+    return dict(_DELHI), True
+
+
+def _find_festival_in_text(text: str) -> dict | None:
+    from app.services import panchang as _panchang
+
+    q = (text or "").casefold()
+    if not q:
+        return None
+    for row in _panchang._FESTIVALS:
+        names = [row["name"].casefold(), *[a.casefold() for a in row.get("aliases", [])]]
+        for n in names:
+            if n and n in q:
+                return row
+    return None
+
+
+def _fmt_day(d) -> str:
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    return f"{d.day} {months[d.month - 1]} {d.year}"
+
+
+def _build_facts(question: str, screen_text: str, place: dict) -> tuple[str, str, str, str, str]:
+    """Calendar FACTS for the model, plus when_text, when_note, date_str, place_key.
+
+    Returns empty facts when the question is not about the calendar. Never
+    raises: a calculation failure means no FACTS, and the model is told it
+    cannot calculate that yet.
+    """
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    from app.services import panchang as _panchang
+
+    combined = f"{question} {screen_text}"
+    if not _CALENDAR_Q.search(combined) and _find_festival_in_text(combined) is None:
+        return "", "", "", "", ""
+    tzname = place.get("tz") or "Asia/Kolkata"
+    try:
+        zone = ZoneInfo(tzname)
+    except Exception:
+        zone = ZoneInfo("Asia/Kolkata")
+        tzname = "Asia/Kolkata"
+    today = datetime.now(zone).date()
+    date_str = today.isoformat()
+    place_key = f"{round(float(place.get('lat', 0)), 1)},{round(float(place.get('lon', 0)), 1)}"
+    label = place.get("label") or "New Delhi"
+    try:
+        d = _panchang.day(today, place)
+    except Exception:
+        return "", "", "", date_str, place_key
+    fest_row = _find_festival_in_text(combined)
+    fest_line = ""
+    when_text = _fmt_day(today)
+    if fest_row is not None:
+        try:
+            for yr in (today.year, today.year + 1):
+                try:
+                    occ = _panchang.festival(fest_row["name"], yr, place)
+                except LookupError:
+                    continue
+                if isinstance(occ, tuple):
+                    start, end = occ
+                    if end >= today:
+                        fest_line = f"- {fest_row['name']}: {_fmt_day(start)} to {_fmt_day(end)}."
+                        when_text = f"{_fmt_day(start)} to {_fmt_day(end)}"
+                        break
+                else:
+                    if occ >= today:
+                        fest_line = f"- {fest_row['name']}: {_fmt_day(occ)}."
+                        when_text = _fmt_day(occ)
+                        break
+            else:
+                fest_line = f"- {fest_row['name']}: cannot calculate that yet."
+        except Exception:
+            fest_line = f"- {fest_row['name']}: cannot calculate that yet."
+    when_note = f"For {label}"
+    today_line = (
+        f"- Today, {_fmt_day(today)}: {d.get('tithi', '')} until {d.get('tithi_end', '')}, "
+        f"then {d.get('tithi_next', '')}. Month {d.get('month_purnimanta', '')} (Purnimanta)."
+    )
+    facts = (
+        f"FACTS (calculated for {label}; use exactly as given, never change or add to them):\n"
+        f"{today_line}"
+        + (f"\n{fest_line}" if fest_line else "")
+    )
+    return facts, when_text, when_note, date_str, place_key
+
 
 def _render_engine_answer(ans: dict) -> str:
     """Flatten the structured engine answer into readable prose. The blocks
@@ -194,10 +323,27 @@ async def ask_explain(
 ):
     subject = (req.subject or "").strip()
     question = (req.question or "").strip()
-    if not subject and not question:
+    screen_text = (req.screen_text or "")[:2000].strip()
+    wants_cards = bool(req.cards)
+    if not subject and not question and not screen_text:
         raise HTTPException(status_code=422, detail="Ask a question or say what you are looking at.")
 
-    key = _cache_key(req.surface, subject, question)
+    # The new card path is taken when cards is true and either there is no
+    # subject or screen_text is present. The engine-first path for a Sanskrit
+    # subject stays exactly as it is.
+    use_cards = wants_cards and (not subject or bool(screen_text))
+
+    place_dict, place_needed = _resolve_place(req.place)
+    facts, when_text, when_note, date_str, place_key = _build_facts(
+        question or subject, screen_text, place_dict
+    )
+    has_facts = bool(facts)
+    if use_cards and has_facts:
+        key = _cache_key(req.surface, subject, question or screen_text, f"cards:{date_str}:{place_key}")
+    elif use_cards:
+        key = _cache_key(req.surface, subject, question or screen_text, "cards")
+    else:
+        key = _cache_key(req.surface, subject, question)
 
     # 1. Cache first — a repeated question costs nothing.
     cached = _cache_get(key)
@@ -209,35 +355,33 @@ async def ask_explain(
 
     # 2. Engine-first routing (P19-2) — grammar questions cost ₹0 and are
     #    never metered (§2.9). A general question has no subject to parse, and
-    #    a question about meaning or saying goes to the model.
-    ans = ask_engine.route(req.surface, subject, question) if (subject and wants_engine(question)) else None
-    if ans is not None:
-        rendered = _render_engine_answer(ans)
-        if rendered:
-            payload = {
-                "routed_to": "engine",
-                "explanation": rendered,
-                "engine": dict(ans),
-                "source": "engine",
-                "provider": "",
-            }
-            _cache_put(key, payload)
-            metrics_note("engine")
-            return AskResponse(**payload)
+    #    a question about meaning or saying goes to the model. The card path
+    #    skips the engine: a shaped wider answer, not a derivation.
+    if not use_cards:
+        ans = ask_engine.route(req.surface, subject, question) if (subject and wants_engine(question)) else None
+        if ans is not None:
+            rendered = _render_engine_answer(ans)
+            if rendered:
+                payload = {
+                    "routed_to": "engine",
+                    "explanation": rendered,
+                    "engine": dict(ans),
+                    "source": "engine",
+                    "provider": "",
+                    "card": None,
+                }
+                _cache_put(key, payload)
+                metrics_note("engine")
+                return AskResponse(**payload)
 
-    # 3. LLM path (P19-1) — metered, session-free, reply_language resolved
-    #    server-side. The engine path above is an ADDITION to this, not a
-    #    replacement; open-ended questions still reach the model.
-    language = reply_language(question, learner.bridge_langs)
+    # 3. LLM path — metered, session-free, reply_language resolved
+    #    server-side. One llm_calls unit per answer, card or prose.
+    language = reply_language(question or screen_text or subject, learner.bridge_langs)
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="explain")
     except QuotaExceeded as exc:
         if not subject:
-            # A general question has no text of its own to fall back to, so
-            # say so plainly (the app shows a short try-again message).
             raise HTTPException(status_code=429, detail="Today's explanations are used up. Try again tomorrow.")
-        # P19-3: degrade honestly when the daily quota is spent — the subject
-        # itself plus its IAST, never a blank and never a broken-button lie.
         from app.services.iast import to_iast as _to_iast
 
         subject_iast = _to_iast(subject)
@@ -253,16 +397,60 @@ async def ask_explain(
                        "blocks": [{"kind": "info", "text": subject}], "subject": subject},
             "source": "engine_fallback",
             "provider": "",
+            "card": None,
         }
-        _cache_put(key, payload)  # no LLM spend to replay; caching is free
+        _cache_put(key, payload)
         metrics_note("fallback")
         return AskResponse(**payload)
 
     explainer = get_explainer()
-    if subject:
-        # Hand the model the IAST reading when the subject is Devanagari, so
-        # "How do I say it?" is answered from the deterministic transliteration
-        # rather than from the model's memory.
+
+    # 3a. Card path: shaped wider answer with FACTS. The model never writes
+    # `when`; the server sets it from the same calculated facts. A broken
+    # JSON falls back to the prose path with card null.
+    if use_cards:
+        from app.services.explainer import flatten_card as _flatten
+
+        card_raw = await explainer.answer_card(
+            question or "What does this mean?",
+            language=language,
+            facts=facts,
+            screen_text=screen_text,
+        )
+        if card_raw is not None:
+            when = {"text": when_text, "note": when_note} if (when_text or has_facts) else {"text": "", "note": ""}
+            card = {
+                "title": card_raw.get("title", ""),
+                "title_sa": card_raw.get("title_sa", ""),
+                "title_iast": card_raw.get("title_iast", ""),
+                "when": when,
+                "summary": card_raw.get("summary", ""),
+                "sections": card_raw.get("sections", []),
+                "terms": card_raw.get("terms", []),
+                "caution": card_raw.get("caution", ""),
+                "place_needed": place_needed if has_facts else False,
+            }
+            explanation = _flatten(card_raw, when_text if has_facts else "", when_note if has_facts else "")
+            if not explanation:
+                explanation = card_raw.get("summary", "") or "Here is what I found."
+            try:
+                provider = explainer._get_provider().label
+            except Exception:
+                provider = ""
+            payload = {
+                "routed_to": "llm",
+                "explanation": explanation,
+                "engine": {},
+                "source": "llm",
+                "provider": provider,
+                "card": card,
+            }
+            _cache_put(key, payload)
+            metrics_note("llm")
+            return AskResponse(**payload)
+        # Parsing failed: fall through to the prose path with card null.
+
+    if subject and not use_cards:
         iast = ""
         if _DEVANAGARI.search(subject):
             try:
@@ -279,7 +467,7 @@ async def ask_explain(
             answer_question=True,
         )
     else:
-        text = await explainer.answer(question, language=language)
+        text = await explainer.answer(question or screen_text or subject, language=language)
     if text:
         provider = ""
         try:
@@ -292,11 +480,11 @@ async def ask_explain(
             "engine": {},
             "source": "llm",
             "provider": provider,
+            "card": None,
         }
         _cache_put(key, payload)
         metrics_note("llm")
         return AskResponse(**payload)
 
-    # Model failed/empty — refund and say so honestly (§2.11: never silence).
     refund_quota(db, learner, "llm_calls", 1, surface="explain", reason="downstream_failure")
     raise HTTPException(status_code=503, detail="Explanation unavailable right now. Try again in a moment.")

@@ -502,7 +502,7 @@ _todo.append(_v(
      ("भवति", "comes about", ["PRES.3SG"])],
 ))
 _todo.append(_v(
-    63, "Bhagavad Gītā 8.30",
+    63, "Bhagavad Gītā 8.8",
     "अभ्यासयोगयुक्तेन चेतसा नान्यगामिना। परमं पुरुषं दिव्यं याति पार्थानुचिन्तयन्॥",
     "abhyāsayogayuktena cetasā nānyagāminā. paramaṃ puruṣaṃ divyaṃ yāti pārthānucintayan.",
     [("अभ्यासयोगयुक्तेन", "united by the yoga of practice", ["INSTR.SG"]),

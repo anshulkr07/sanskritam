@@ -29,6 +29,15 @@ expo-env.d.ts
 *.key
 *.mobileprovision
 
+# cloud credential JSONs (Vertex service account, Play submit key, Google
+# OAuth client secrets). With an .easignore present EAS no longer reads
+# .gitignore, and eas.json has requireCommit false, so untracked files in the
+# working tree are uploaded unless they are named here.
+vertex_credentials.json
+*credentials*.json
+service-account-key.json
+Client IDs/
+
 # local env files (EAS injects its own)
 .env
 .env*

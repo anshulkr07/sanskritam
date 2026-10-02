@@ -36,7 +36,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { color } from "./src/theme";
 import type { RootStackParamList } from "./src/navigation/types";
-import { AuthProvider, useAuth } from "./src/store/auth";
+import UpdateBanner from "./src/components/UpdateBanner";import { AuthProvider, useAuth } from "./src/store/auth";
 import { TypeScaleProvider } from "./src/hooks/useTypeScale";
 import { AskProvider } from "./src/ask/AskProvider";
 
@@ -56,7 +56,16 @@ import LicencesScreen from "./src/screens/Licences";
 import PingalaScreen from "./src/screens/Pingala";
 import StoryDeckScreen from "./src/screens/StoryDeck";
 import GrammarTopicScreen from "./src/screens/GrammarTopic";
+import GrammarChapterScreen from "./src/screens/GrammarChapter";
 import WordLabScreen from "./src/screens/WordLab";
+import BookScreen from "./src/screens/Book";
+import ShabdaRushScreen from "./src/screens/ShabdaRush";
+import SmritiScreen from "./src/screens/Smriti";
+import VarnaJaalScreen from "./src/screens/VarnaJaal";
+import PracticeRoundScreen from "./src/screens/PracticeRound";
+import KalaScreen from "./src/screens/Kala";
+import KalaChapterScreen from "./src/screens/KalaChapter";
+import WordJourneyScreen from "./src/screens/WordJourney";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -125,7 +134,20 @@ function RootNavigator() {
             <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Discover Sanskrit" }} />
             {/* Grammar guide: a topic page and the word lookup, stacked over the Grammar tab. */}
             <Stack.Screen name="GrammarTopic" component={GrammarTopicScreen} options={{ title: "Grammar" }} />
+            <Stack.Screen name="GrammarChapter" component={GrammarChapterScreen} options={{ title: "Chapter" }} />
             <Stack.Screen name="WordLab" component={WordLabScreen} options={{ title: "Word Lab" }} />
+            {/* Read fullscreen page: covers the tab bar. */}
+            <Stack.Screen name="Book" component={BookScreen} options={{ headerShown: false }} />
+            {/* Play games: fullscreen, header hidden. */}
+            <Stack.Screen name="ShabdaRush" component={ShabdaRushScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Smriti" component={SmritiScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="VarnaJaal" component={VarnaJaalScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PracticeRound" component={PracticeRoundScreen} options={{ headerShown: false }} />
+            {/* Kāla: the calendar hub behind the Home date card, and its chapters. */}
+            <Stack.Screen name="Kala" component={KalaScreen} options={{ title: "Kāla" }} />
+            <Stack.Screen name="KalaChapter" component={KalaChapterScreen} options={{ title: "Kāla" }} />
+            {/* Word journey: the screen behind the Home word card. */}
+            <Stack.Screen name="WordJourney" component={WordJourneyScreen} options={{ title: "Word journey" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
@@ -170,6 +192,8 @@ export default function App() {
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
                 <AskProvider routeName={routeName}>
                   <RootNavigator />
+                  {/* OTA: the restart prompt when an update has downloaded. */}
+                  <UpdateBanner />
                 </AskProvider>
               </NavigationContainer>
               <StatusBar style="dark" />

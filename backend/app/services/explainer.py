@@ -34,6 +34,7 @@ Contract:
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -98,6 +99,46 @@ exact form.
 - If the question is not about Sanskrit or learning it, say in one sentence that \
 you can only help with Sanskrit.
 - If you are not sure, say so plainly in one sentence."""
+
+
+# Wider Ask answers with a card (HANDOVER 4.4). One JSON object, no markdown.
+# Never state a date, tithi or time that is not in FACTS. The server sets
+# `when` itself from calculated facts; the model never writes it.
+_WIDE_PROMPT = """You are a patient Sanskrit tutor's assistant in Sanskritam, a \
+learning app. Answer the learner's question as one JSON object, no markdown.
+
+You may answer about: the Sanskrit language; Sanskrit texts and their ideas; \
+Hindu festivals, vratas and rituals and what they mean; the panchang, using \
+only the FACTS given; Ayurveda and yoga as traditional practice; stories, \
+epics and deities.
+
+Anything else gets one sentence saying what you can help with: news and \
+politics, comparing or judging religions, predictions about a person's \
+future, medical diagnosis or prescription, legal or money advice, coding.
+
+Calendar facts: never state a date, a tithi or a time that is not in FACTS. \
+If the question needs one and FACTS has none, say you cannot calculate that \
+yet (in `summary`, with empty sections and terms).
+
+Health: general traditional home practice only. No doses. Nothing for \
+infants or pregnancy. Never say something cures a disease. Always fill \
+`caution` with one line on when to see a doctor when health is discussed, \
+else empty string.
+
+Sanskrit terms: only well-known single words or short standard phrases, in \
+Devanagari. Never compose a Sanskrit sentence. Do not transliterate: the \
+server adds the roman.
+
+Shape: title of at most 6 words; summary of one sentence; at most 3 \
+sections; at most 5 items each, one short sentence per item; at most 4 \
+terms. Each term is {"sa": Devanagari, "meaning": short meaning}. \
+Sections use style "steps" for ordered practice or "bullets" otherwise. \
+No em dashes anywhere. Never use markdown.
+
+Return ONLY this JSON object:
+{"title": "", "title_sa": "", "summary": "", \
+"sections": [{"heading": "", "style": "bullets", "items": [""]}], \
+"terms": [{"sa": "", "meaning": ""}], "caution": ""}"""
 
 
 _DEVANAGARI = re.compile("[\u0900-\u097F]")
@@ -311,6 +352,180 @@ class Explainer:
             resp.prompt_tokens, resp.completion_tokens,
         )
         return text
+
+    async def answer_card(
+        self,
+        question: str,
+        *,
+        language: str = "English",
+        facts: str = "",
+        screen_text: str = "",
+    ) -> Optional[dict]:
+        """Answer a wider question as a shaped card dict, or None.
+
+        Uses _WIDE_PROMPT with ask_card_max_tokens headroom. Parses leniently
+        (like tutor._parse_reply), enforces shape limits, strips markup and
+        dashes, drops non-Devanagari terms, fills iast via to_iast(). The
+        caller sets `when` from calculated FACTS; the model never writes it.
+        Broken JSON returns None so the caller falls back to prose.
+        """
+        q = (question or "").strip()
+        if not q or not settings.explain_enabled:
+            return None
+        parts = [f"Learner asked: {q}"]
+        if screen_text:
+            parts.append(f"Text on their screen (read on-device, may be partial): {screen_text[:1500]}")
+        if facts:
+            parts.append(facts)
+        parts.append("Answer as one JSON object.")
+        parts.append(f"Write your entire answer in {language}.")
+        user = "\n".join(parts)
+        try:
+            provider = self._get_provider()
+        except ValueError as exc:
+            logger.warning("explainer provider unavailable: %s", exc)
+            return None
+        try:
+            resp: LLMResponse = await provider.complete(
+                _WIDE_PROMPT,
+                user,
+                temperature=0.2,
+                max_tokens=settings.ask_card_max_tokens,
+                json_mode=True,
+            )
+        except Exception as exc:
+            logger.warning("explainer card call failed: %s", exc)
+            return None
+        if not resp.ok:
+            logger.warning("explainer card not ok on %s: %s", provider.label, resp.error or "empty")
+            return None
+        raw = parse_card_json(resp.text or "")
+        if raw is None:
+            return None
+        return clip_card(raw)
+
+
+_DEVA_RUN = re.compile("^[\u0900-\u097F\u1CD0-\u1CFF ]+$")
+
+
+def _clean_line(s: str, limit: int = 0) -> str:
+    t = strip_dashes(strip_markup(str(s or ""))).strip()
+    t = re.sub(r"\s+", " ", t)
+    if limit and len(t.split()) > limit:
+        t = " ".join(t.split()[:limit])
+    return t
+
+
+def parse_card_json(text: str) -> Optional[dict]:
+    """Lenient JSON parse for the card prompt, mirroring tutor._parse_reply."""
+    data = None
+    try:
+        data = json.loads(text or "")
+    except (json.JSONDecodeError, TypeError):
+        m = re.search(r"\{.*\}", text or "", re.DOTALL)
+        if m:
+            try:
+                data = json.loads(m.group(0))
+            except json.JSONDecodeError:
+                return None
+    if not isinstance(data, dict):
+        return None
+    if not any(k in data for k in ("title", "summary", "sections", "terms")):
+        for v in data.values():
+            if isinstance(v, dict) and any(k in v for k in ("title", "summary")):
+                return v
+        return None
+    return data
+
+
+def clip_card(raw: dict) -> dict:
+    """Enforce the card shape: strip, clip, drop bad terms, fill iast."""
+    from app.services.iast import to_iast as _to_iast
+
+    title = _clean_line(raw.get("title", ""), 6)
+    title_sa = _clean_line(raw.get("title_sa", ""))
+    # title_sa must be Devanagari when present; else drop it.
+    if title_sa and not _DEVA_RUN.match(title_sa):
+        title_sa = ""
+    try:
+        title_iast = _to_iast(title_sa) if title_sa else _clean_line(raw.get("title_iast", ""))
+    except Exception:
+        title_iast = ""
+    summary = _clean_line(raw.get("summary", ""))
+    # A refusal stays one line.
+    if summary and len(summary.split()) <= 40 and not raw.get("sections") and not raw.get("terms"):
+        pass
+
+    sections: list[dict] = []
+    for s in (raw.get("sections") or [])[:3]:
+        if not isinstance(s, dict):
+            continue
+        heading = _clean_line(s.get("heading", ""))
+        style = str(s.get("style") or "bullets").strip().lower()
+        if style not in ("steps", "bullets"):
+            style = "bullets"
+        items = [_clean_line(i) for i in (s.get("items") or [])[:5]]
+        items = [i for i in items if i]
+        if heading or items:
+            sections.append({"heading": heading, "style": style, "items": items})
+
+    terms: list[dict] = []
+    for t in (raw.get("terms") or [])[:4]:
+        if not isinstance(t, dict):
+            continue
+        sa = _clean_line(t.get("sa", ""))
+        if not sa or not _DEVA_RUN.match(sa):
+            continue
+        meaning = _clean_line(t.get("meaning", ""))
+        if not meaning:
+            continue
+        try:
+            iast = _to_iast(sa)
+        except Exception:
+            iast = ""
+        terms.append({"sa": sa, "iast": iast, "meaning": meaning})
+
+    caution = _clean_line(raw.get("caution", ""))
+    return {
+        "title": title,
+        "title_sa": title_sa,
+        "title_iast": title_iast,
+        "summary": summary,
+        "sections": sections,
+        "terms": terms,
+        "caution": caution,
+    }
+
+
+def flatten_card(card: dict, when_text: str = "", when_note: str = "") -> str:
+    """Flatten a card to text for explanation, cache and read-aloud."""
+    lines: list[str] = []
+    title = (card.get("title") or "").strip()
+    if title:
+        lines.append(title_sa_line(card) or title)
+    if when_text:
+        lines.append(when_text + (f" ({when_note})" if when_note else ""))
+    if card.get("summary"):
+        lines.append(str(card["summary"]).strip())
+    for s in card.get("sections") or []:
+        if s.get("heading"):
+            lines.append(str(s["heading"]).strip())
+        for i, item in enumerate(s.get("items") or [], 1):
+            prefix = f"{i}. " if (s.get("style") == "steps") else "- "
+            lines.append(prefix + str(item).strip())
+    for t in card.get("terms") or []:
+        lines.append(f"{t.get('sa', '')} ({t.get('iast', '')}): {t.get('meaning', '')}".strip())
+    if card.get("caution"):
+        lines.append(str(card["caution"]).strip())
+    return "\n".join(l for l in lines if l)
+
+
+def title_sa_line(card: dict) -> str:
+    title = (card.get("title") or "").strip()
+    sa = (card.get("title_sa") or "").strip()
+    if title and sa:
+        return f"{title} ({sa})"
+    return title or sa
 
 
 _singleton: Optional[Explainer] = None

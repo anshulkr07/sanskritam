@@ -488,6 +488,70 @@ class StoryChapterResponse(BaseModel):
     cards: list[StoryCardResponse] = []
 
 
+# ─── Word journey (handover_language) ───
+
+class WordScriptResponse(BaseModel):
+    dev: str = ""
+    iast: str = ""
+
+
+class WordHopResponse(BaseModel):
+    lang: str = ""
+    form: str = ""
+    gloss: str = ""
+
+
+class WordRouteResponse(BaseModel):
+    id: str
+    lang: str = ""
+    lang_name: str = ""
+    word: str = ""
+    script: str = ""
+    roman: str = ""
+    gloss: str = ""
+    kind: str = ""
+    relation: str = ""
+    confidence: str = ""
+    hops: list[WordHopResponse] = []
+    sources: list[str] = []
+
+
+class WordSourceResponse(BaseModel):
+    key: str
+    name: str = ""
+    url: str = ""
+
+
+class WordOriginResponse(BaseModel):
+    id: str
+    sanskrit: WordScriptResponse = WordScriptResponse()
+    stem: WordScriptResponse = WordScriptResponse()
+    gloss: str = ""
+    attested: str = ""
+    note: str = ""
+    routes: list[WordRouteResponse] = []
+    sources: list[WordSourceResponse] = []
+
+
+class WordOriginSummary(BaseModel):
+    id: str
+    sanskrit: WordScriptResponse = WordScriptResponse()
+    gloss: str = ""
+    languages: list[str] = []
+    scheduled_date: str = ""
+
+
+class WordOriginsResponse(BaseModel):
+    origins: list[WordOriginSummary] = []
+
+
+class WordTodayResponse(BaseModel):
+    date: str = ""
+    available: bool = False
+    origin: Optional[WordOriginResponse] = None
+    headline_route_id: str = ""
+
+
 # ─── Admin ───
 
 class CreateChallengeRequest(BaseModel):

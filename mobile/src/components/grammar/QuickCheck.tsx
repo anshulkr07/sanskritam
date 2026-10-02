@@ -11,7 +11,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import type { GuideQuiz } from "../../api/client";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
-import { color, font, radius, script, space } from "../../theme";
+import { color, fill, font, onFill, radius, script, space } from "../../theme";
 import { announce } from "../../utils/announce";
 import type { GuideTextCtx } from "./BlockRenderer";
 import InlineText from "./InlineText";
@@ -58,15 +58,15 @@ export default function QuickCheck({ items, ctx }: { items: GuideQuiz[]; ctx: Gu
                   <View style={styles.optionBody}>
                     {opt.sa ? (
                       <>
-                        <Text style={[script("semibold"), styles.optionSa, { fontSize: sized(20, { sanskrit: true }) }]}>{opt.sa}</Text>
-                        {!!opt.iast && <Text style={styles.optionIast}>{opt.iast}</Text>}
+                        <Text style={[script("semibold"), styles.optionSa, { fontSize: sized(20, { sanskrit: true }), color: showRight || showWrong ? onFill.text : color.ink }]}>{opt.sa}</Text>
+                        {!!opt.iast && <Text style={[styles.optionIast, { color: showRight || showWrong ? onFill.soft : color.inkSoft }]}>{opt.iast}</Text>}
                       </>
                     ) : (
-                      <InlineText text={t(opt.text)} lang={lang} style={[styles.optionText, { fontSize: sized(font.sizes.base) }]} />
+                      <InlineText text={t(opt.text)} lang={lang} style={[styles.optionText, { fontSize: sized(font.sizes.base), color: showRight || showWrong ? onFill.text : color.ink }]} />
                     )}
                   </View>
-                  {showRight && <Ionicons name="checkmark-circle" size={22} color={color.ok} />}
-                  {showWrong && <Ionicons name="close-circle" size={22} color={color.bad} />}
+                  {showRight && <Ionicons name="checkmark-circle" size={22} color={onFill.text} />}
+                  {showWrong && <Ionicons name="close-circle" size={22} color={onFill.text} />}
                 </Pressable>
               );
             })}
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.sm,
     paddingVertical: space.xxs,
   },
-  optionRight: { borderColor: color.ok, backgroundColor: color.okBg },
-  optionWrong: { borderColor: color.bad, backgroundColor: color.badBg },
+  optionRight: { borderColor: fill.ok, backgroundColor: fill.ok },
+  optionWrong: { borderColor: fill.bad, backgroundColor: fill.bad },
   optionBody: { flex: 1 },
   optionSa: { color: color.ink },
   optionIast: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft, fontStyle: "italic" },
