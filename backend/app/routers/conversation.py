@@ -161,7 +161,9 @@ class StartResponse(BaseModel):
 class TurnRequest(BaseModel):
     session_id: str
     edge_id: Optional[str] = Field(default=None, description="Optional client-pinned edge ID")
-    transcript: str = Field(..., description="Learner's utterance in any language (Sanskrit graded by features; bridge replies routed by the LLM edge-router)")
+    # 2,000 characters is several times a 30-second voice turn. The model call
+    # behind a turn is charged one flat unit, so its input has a ceiling.
+    transcript: str = Field(..., max_length=2000, description="Learner's utterance in any language (Sanskrit graded by features; bridge replies routed by the LLM edge-router)")
     stt_lang: Optional[str] = Field(
         default=None,
         description=(
@@ -215,8 +217,8 @@ class TurnResponse(BaseModel):
 
 class ExplainRequest(BaseModel):
     session_id: str
-    question: str = Field(default="", description="The learner's own words, so the reply matches their language")
-    text: str = Field(default="", description="Line to explain; defaults to the session's current node")
+    question: str = Field(default="", max_length=500, description="The learner's own words, so the reply matches their language")
+    text: str = Field(default="", max_length=2000, description="Line to explain; defaults to the session's current node")
     translate_only: bool = Field(default=False, description="True for meta_intent='translate' — render, don't teach")
 
 

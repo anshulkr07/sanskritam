@@ -83,6 +83,9 @@ export type RootStackParamList = {
   // Word journey: the screen behind the Home word card. Without params it
   // shows today's word; "More words" pushes it with an originId.
   WordJourney: { originId?: string } | undefined;
+  // Do you know: the screen behind the Home fact card. Without params it
+  // shows today's fact; "Earlier" pushes it with a factId.
+  DoYouKnow: { factId?: string } | undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

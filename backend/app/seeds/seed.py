@@ -41,6 +41,10 @@ def run_seed():
         # Seed shlokas
         _seed_shlokas(db)
 
+        # Seed corrections (2026-10-02): rows seeded from an earlier seed
+        # file take the corrected reference, text and glosses, in place.
+        _correct_seed_rows(db)
+
         # Reader corrections (HANDOVER 7.5): renumber 8.30 to 8.8, prefix
         # unnumbered lines as Sūkti, delete rows that duplicate an imported
         # verse. Keyed on the old reference and date so existing databases
@@ -156,40 +160,29 @@ def _seed_shlokas(db):
     date.today(), so a re-seed or a fresh boot cannot drift the schedule.
     ``metre`` is computed from the chandas engine rather than hand-typed;
     anuṣṭubh (variable) returns empty, which is correct (§6).
+
+    A seeded day is recognised by its date alone. Each day_offset is one date
+    and one verse, so a row on that date IS this slot, whatever reference or
+    text it holds by now: the reference may have been corrected since, or the
+    text replaced by ``scripts/import_text --fix-existing``. The check used
+    to be (source_ref, date), which put a second row on the date every time
+    a reference in the seed file changed.
     """
     inserted = 0
     for sdata in SEED_SLOKAS:
         date_iso = (SHLOKA_ANCHOR + timedelta(days=sdata["day_offset"])).isoformat()
-        ref = _normalise_ref(sdata["source_ref"])
-        existing = db.query(Shloka).filter(
-            Shloka.source_ref == ref,
-            Shloka.date == date_iso,
-        ).first()
-        # Also skip when the old (pre-correction) ref already seeded: the
-        # corrections step renames it, and re-inserting the old row would
-        # bring the wrong reference back.
-        if existing is None and ref != sdata["source_ref"]:
-            existing = db.query(Shloka).filter(
-                Shloka.source_ref == sdata["source_ref"],
-                Shloka.date == date_iso,
-            ).first()
-        if existing:
+        if db.query(Shloka.id).filter(Shloka.date == date_iso).first():
             continue
-        # Metre from the engine, never hand-typed (§6 / P7-6).
-        metre = ""
-        try:
-            metre = (chandas_scan(sdata["devanagari"]).get("metre") or "") or ""
-        except Exception:  # chandas data missing/unsupported — metre stays absent
-            metre = ""
         shloka = Shloka(
             id=uuid.uuid4().hex[:16],
             date=date_iso,
-            source_ref=ref,
+            source_ref=_normalise_ref(sdata["source_ref"]),
             devanagari=sdata["devanagari"],
             # P7-13: derived from lipi, never hand-typed — the seed file's
             # value is ignored so the table-wide invariant holds.
             iast=iast.to_iast(sdata["devanagari"]),
-            metre=metre,
+            # Metre from the engine, never hand-typed (§6 / P7-6).
+            metre=_metre(sdata["devanagari"]),
             word_breakdown=sdata.get("word_breakdown", []),
             features=sdata.get("features", []),
             register=sdata.get("register", "classical"),
@@ -201,6 +194,102 @@ def _seed_shlokas(db):
         logger.info("Seeded %d new shlokas", inserted)
 
 
+def _metre(devanagari: str) -> str:
+    """The verse's metre from the chandas engine, "" when it names none."""
+    try:
+        return (chandas_scan(devanagari).get("metre") or "") or ""
+    except Exception:  # chandas data missing/unsupported — metre stays absent
+        return ""
+
+
+def _correct_seed_rows(db) -> None:
+    """Bring rows seeded from an earlier seed file up to the current one.
+
+    The seeder leaves a day that already has a row alone, so a correction in
+    seeds/shlokas.py (a wrong reference, an invented line replaced by a real
+    verse, a wrong gloss) would otherwise reach fresh databases only. Keyed
+    on the date plus the exact Devanagari, so a row whose text something else
+    changed (``import_text --fix-existing``) matches nothing and is left as
+    it is:
+
+    - the row holds the seed's text: its reference and word breakdown are
+      brought to the seed's. Id, date, text and stored meaning stay.
+    - the row holds a text the seed file used to carry for that day (the
+      entry's ``was``): the verse is replaced in place, keeping id and date,
+      so the daily schedule does not move. Unless the old text was the same
+      verse misspelt, its translations are cleared: a meaning must not
+      outlive the Sanskrit it was written for.
+
+    The reference is not unique in this table. An imported Gītā holds the
+    whole of 18.66 under the reference this step gives the seeded half-verse,
+    and the seed itself repeats 2.47; a row with the same reference on
+    another date is not touched. A second row on the SAME date holding the
+    day's old or new text is a copy and is deleted.
+
+    Last, what was stored under a retired text is removed once no verse
+    carries that text: the ``ask_answers`` rows keyed by it
+    (services/verse_study.py) and the graded-reading passage copied from it
+    (seeds/reader_passages.py, which only ever adds).
+    """
+    from app.models import AskAnswer, ReaderPassage
+
+    renamed = replaced = reglossed = 0
+    retired: list[str] = []
+    for sdata in SEED_SLOKAS:
+        date_iso = (SHLOKA_ANCHOR + timedelta(days=sdata["day_offset"])).isoformat()
+        text = sdata["devanagari"]
+        was = dict(sdata.get("was") or [])  # old text -> same verse, respelt
+        retired.extend(old for old, same in was.items() if not same)
+        rows = db.query(Shloka).filter(Shloka.date == date_iso).order_by(Shloka.id).all()
+        ours = [r for r in rows if r.devanagari == text or r.devanagari in was]
+        if not ours:
+            continue
+        # One row carries the day: the one already holding the seed's text
+        # (with a stored meaning, if two do), else one holding an old text.
+        ours.sort(key=lambda r: (r.devanagari != text,
+                                 not ((r.translation_en or "") + (r.translation_hi or "")).strip()))
+        row = ours[0]
+        for copy in ours[1:]:
+            db.delete(copy)
+        if row.devanagari != text:
+            keep_meaning = was[row.devanagari]
+            row.devanagari = text
+            row.iast = iast.to_iast(text)
+            row.metre = _metre(text)
+            if not keep_meaning:
+                row.translation_en = ""
+                row.translation_hi = ""
+                row.audio_url = sdata.get("audio_url", "")
+            replaced += 1
+        ref = _normalise_ref(sdata["source_ref"])
+        if (row.source_ref or "") != ref:
+            row.source_ref = ref
+            renamed += 1
+        breakdown = sdata.get("word_breakdown", [])
+        if (row.word_breakdown or []) != breakdown:
+            row.word_breakdown = breakdown
+            row.features = sdata.get("features", [])
+            reglossed += 1
+    db.flush()
+
+    if retired:
+        still = {d for (d,) in db.query(Shloka.devanagari)
+                 .filter(Shloka.devanagari.in_(retired)).all()}
+        gone = [t for t in retired if t not in still]
+        if gone:
+            # ask_answers.subject is the verse text as asked, stripped.
+            db.query(AskAnswer).filter(
+                AskAnswer.subject.in_([t.strip() for t in gone])
+            ).delete(synchronize_session=False)
+            db.query(ReaderPassage).filter(
+                ReaderPassage.devanagari.in_(gone)
+            ).delete(synchronize_session=False)
+    if renamed or replaced or reglossed:
+        logger.info("Seed corrections: %d verse(s) replaced, %d reference(s) "
+                    "corrected, %d word breakdown(s) updated",
+                    replaced, renamed, reglossed)
+
+
 def _normalise_ref(source_ref: str) -> str:
     """Seed-time reference normalisation (HANDOVER 7.5).
 
@@ -208,6 +297,8 @@ def _normalise_ref(source_ref: str) -> str:
       text is 8.8), so it becomes 8.8 in fresh databases.
     - A line with no verse number does not belong in a book: it is
       prefixed "Sukti" so the reader shows it in one "Sayings" book.
+      A number is "2.47" or, for a text counted straight through, the
+      trailing "13" of "Nītiśataka 13".
     """
     import re as _re
 
@@ -216,7 +307,7 @@ def _normalise_ref(source_ref: str) -> str:
         ref = ref.replace("8.30", "8.8")
     if ref.startswith("Sūkti") or ref.startswith("Sukti"):
         return ref
-    if not _re.search(r"\d+\.\d+", ref):
+    if not _re.search(r"\d+\.\d+|\s\d+$", ref):
         return f"Sūkti: {ref}" if ref else "Sūkti"
     return ref
 

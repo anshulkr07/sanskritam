@@ -514,6 +514,9 @@ class WordRouteResponse(BaseModel):
     confidence: str = ""
     hops: list[WordHopResponse] = []
     sources: list[str] = []
+    # Set on a route the daily pipeline wrote: the page that states its origin.
+    source_url: str = ""
+    source_site: str = ""
 
 
 class WordSourceResponse(BaseModel):
@@ -550,6 +553,43 @@ class WordTodayResponse(BaseModel):
     available: bool = False
     origin: Optional[WordOriginResponse] = None
     headline_route_id: str = ""
+
+
+# ─── Do you know (daily fact) ───
+
+class FactResponse(BaseModel):
+    id: str
+    fact: str = ""
+    # text | tradition | modern: who says so (the text, its tradition, or a
+    # modern reading of it).
+    claim_kind: str = ""
+    text_name: str = ""
+    ref: str = ""
+    devanagari: str = ""
+    iast: str = ""
+    translation: str = ""
+    explanation: str = ""
+    source_url: str = ""
+    source_site: str = ""
+    scheduled_date: str = ""
+
+
+class FactTodayResponse(BaseModel):
+    date: str = ""
+    available: bool = False
+    fact: Optional[FactResponse] = None
+
+
+class FactSummary(BaseModel):
+    id: str
+    fact: str = ""
+    text_name: str = ""
+    ref: str = ""
+    scheduled_date: str = ""
+
+
+class FactsResponse(BaseModel):
+    facts: list[FactSummary] = []
 
 
 # ─── Admin ───

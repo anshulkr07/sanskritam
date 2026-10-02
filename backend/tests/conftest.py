@@ -15,6 +15,12 @@ os.environ["ADMIN_TOKEN"] = "test-admin"
 # whole suite shares one database — left on, one test's seeded usage would 429
 # unrelated tests. test_daily_budget.py turns it on per test.
 os.environ["QUOTA_DAILY_BUDGET_INR"] = "0"
+# Same for the Gemini ceiling; test_gemini_budget.py turns it on per test.
+os.environ["GEMINI_DAILY_BUDGET_INR"] = "0"
+# The TTS audio cache is one per process, and many tests speak the same word:
+# left on, the second of them would be served from memory with no usage row.
+# test_tts_cache.py turns it on per test.
+os.environ["TTS_CACHE_MAX_BYTES"] = "0"
 
 # The suite never talks to a real vendor and never reads a developer's .env.
 #
@@ -33,6 +39,12 @@ os.environ["DATABASE_URL"] = ""
 for _vendor_key in ("SARVAM_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY",
                     "OPENAI_API_KEY", "ANTHROPIC_API_KEY", "HF_TOKEN"):
     os.environ[_vendor_key] = ""
+
+# The daily-content tick must not find the Vertex service-account key that
+# sits beside the repo on a developer's machine: with it, a test that calls
+# the tick could start a real, billed batch job.
+os.environ["VERTEX_CREDENTIALS_PATH"] = ""
+os.environ["VERTEX_CREDENTIALS_JSON"] = ""
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

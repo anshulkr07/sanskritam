@@ -134,6 +134,13 @@ export interface Shloka {
   translation_en?: string;
 }
 
+export interface ShlokaMeaning {
+  translation_en: string;
+  translation_hi: string;
+  /** "db" stored, "llm" just written and stored, "none" nothing to show. */
+  source: "db" | "llm" | "none";
+}
+
 // P21-4: one row of the canon catalogue — study order, depth, live counts.
 export interface CanonText {
   slug: string;
@@ -966,11 +973,14 @@ export interface WordRoute {
   roman?: string;
   gloss?: string;
   kind?: string;
-  /** Worked out server-side: borrowed | travelled | related. */
+  /** Worked out server-side: borrowed | travelled | related | traced. */
   relation?: string;
   confidence?: string;
   hops?: WordHop[] | null;
   sources?: string[];
+  /** On a route the daily pipeline wrote: the page that states its origin. */
+  source_url?: string;
+  source_site?: string;
 }
 
 export interface WordSource {
@@ -1003,6 +1013,40 @@ export interface WordToday {
   available?: boolean;
   origin?: WordOrigin | null;
   headline_route_id?: string;
+}
+
+// ─── Do you know (one fact a day, resting on a quoted verse) ───
+// Backend-driven, read-only: GET /facts/today, /facts and /facts/{id}. Every
+// field is optional-safe: an old backend answers 404 and the Home card hides.
+
+export interface Fact {
+  id?: string;
+  fact?: string;
+  /** Who says so: text | tradition | modern. */
+  claim_kind?: string;
+  text_name?: string;
+  ref?: string;
+  devanagari?: string;
+  iast?: string;
+  translation?: string;
+  explanation?: string;
+  source_url?: string;
+  source_site?: string;
+  scheduled_date?: string;
+}
+
+export interface FactToday {
+  date?: string;
+  available?: boolean;
+  fact?: Fact | null;
+}
+
+export interface FactSummary {
+  id?: string;
+  fact?: string;
+  text_name?: string;
+  ref?: string;
+  scheduled_date?: string;
 }
 
 // ─── Client ───────────────────────────────────────────────────────────────
@@ -1311,6 +1355,13 @@ export const api = {
 
   todayShloka: () => request<Shloka>("/shlokas/today", {}, true),
 
+  // A verse's meaning in English and Hindi. Stored meaning comes straight
+  // back; a verse with none is written once on the server and stored, so the
+  // first learner to open it waits a few seconds. Never fails for a missing
+  // meaning: source is "none" and both strings are empty.
+  shlokaMeaning: (shlokaId: string) =>
+    request<ShlokaMeaning>(`/shlokas/${encodeURIComponent(shlokaId)}/meaning`, {}, true),
+
   // U13/P21: the reader corpus — full list in date order, instrumentation included.
   listShlokas: () => request<Shloka[]>("/shlokas", {}, true),
 
@@ -1490,7 +1541,7 @@ export const api = {
    * 2000 characters. Returns 204. Rate limited to 20 a day per learner.
    */
   reportContent: (body: {
-    surface: "talk" | "ask";
+    surface: "talk" | "ask" | "fact" | "word";
     question: string;
     answer: string;
     reason?: string;
@@ -1620,6 +1671,11 @@ export const api = {
   wordToday: () => request<WordToday>("/word-origins/today", {}, true),
   wordOrigins: () => request<{ origins: WordOriginSummary[] }>("/word-origins", {}, true),
   wordOrigin: (id: string) => request<WordOrigin>(`/word-origins/${encodeURIComponent(id)}`, {}, true),
+
+  // Do you know — one fact a day, with the verse it rests on.
+  factToday: () => request<FactToday>("/facts/today", {}, true),
+  facts: () => request<{ facts: FactSummary[] }>("/facts", {}, true),
+  fact: (id: string) => request<Fact>(`/facts/${encodeURIComponent(id)}`, {}, true),
   // With `letters` (the guess already split into akṣaras) the server scores
   // whole akṣaras; without, the original code-point scoring.
   dailyWordGuess: (guess: string, letters?: string[]) =>

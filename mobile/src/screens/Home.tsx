@@ -34,6 +34,7 @@ import { cachedGet } from "../services/apiCache";
 import { useAskContext } from "../ask/AskProvider";
 import TithiCard from "../kala/TithiCard";
 import WordCard from "../words/WordCard";
+import FactCard from "../facts/FactCard";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
@@ -211,6 +212,8 @@ export default function HomeScreen({ navigation }: Props) {
           <TithiCard />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />
+          {/* Today's "Do you know". Hides itself when there is no fact yet. */}
+          <FactCard />
           <View style={styles.pair}>
             <ShlokaTile
               shloka={shloka}

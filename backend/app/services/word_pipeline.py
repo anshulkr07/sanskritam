@@ -17,7 +17,9 @@ from datetime import date
 from pathlib import Path
 from typing import Optional
 
-from app.services.word_check import classify_ahd, parse_json, parse_list
+from app.services.word_check import (
+    classify_ahd, parse_json, parse_list, stem_from_printed_form,
+)
 
 PROPOSE_N = 60
 
@@ -121,6 +123,26 @@ def rejected_words_by_lang(seeds_dir: Path | str | None = None) -> dict[str, set
     return out
 
 
+def live_origin_ids(seeds_dir: Path | str | None = None) -> set[str]:
+    """Every origin id a batch file already carries, whatever its status.
+
+    One item is one Sanskrit word, and the loader keys rows by this id, so a
+    new batch must not carry an id an earlier batch holds.
+    """
+    d = Path(seeds_dir) if seeds_dir else seeds_dir_default()
+    out: set[str] = set()
+    for path in sorted(d.glob("batch-*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for item in data.get("items", []):
+            iid = str(item.get("id") or "")
+            if iid:
+                out.add(iid)
+    return out
+
+
 def build_propose_known(
     live: dict[str, set[str]],
     rejected: dict[str, set[str]],
@@ -190,11 +212,18 @@ def verify_reply(
     reply: dict | None,
     rejected_set: set[str] | None = None,
     live_set: set[str] | None = None,
+    mw_key: str = "",
+    check_status: str = "pass",
+    check_reason: str = "",
+    origin_ids: set[str] | None = None,
 ) -> tuple[bool, list[str]]:
     """Verify one write reply. Returns (passed, reasons).
 
     A reply is accepted only if ALL hold; otherwise the word goes to
-    "needs a look" with the reason.
+    "needs a look" with the reason. ``mw_key`` is the stem the check step
+    gated, ``check_status``/``check_reason`` what that step said of the word
+    (only a word it passed goes on without the owner naming it), and
+    ``origin_ids`` the Sanskrit words earlier batches already carry.
     """
     reasons: list[str] = []
     if not isinstance(reply, dict):
@@ -274,6 +303,23 @@ def verify_reply(
     if label == "sanskrit_hedged" and not hedged:
         if "hedged_mismatch" not in reasons:
             reasons.append("hedged_mismatch")
+
+    # The Sanskrit word on the card is the gated stem, so the form the model
+    # copied must be that word and not another one the entry happens to name.
+    if mw_key and sanskrit_form and stem_from_printed_form(sanskrit_form) != mw_key:
+        reasons.append("sanskrit_form_is_not_the_checked_stem")
+
+    # 7.4: only a word the check passed goes on by itself. A hedged entry, or
+    # a stem the owner supplied, waits for the owner to name it (--also).
+    if check_status != "pass":
+        reasons.append(f"check:{check_reason or check_status}")
+
+    # One item is one Sanskrit word. A new word for a Sanskrit word an earlier
+    # batch already carries belongs in that batch as one more route.
+    if mw_key and origin_ids:
+        oid = origin_id_for_mw(mw_key)
+        if oid in origin_ids:
+            reasons.append(f"stem_already_live:{oid}")
 
     return (len(reasons) == 0), reasons
 
@@ -481,6 +527,7 @@ def validate_new_batch(
     rej = rejected if rejected is not None else rejected_words_by_lang(seeds_dir)
     liv = live if live is not None else live_words_by_lang(seeds_dir)
 
+    held_ids = live_origin_ids(seeds_dir)
     seen_ids: set[str] = set()
     for offset, item in enumerate(items):
         day = (base + timedelta(days=offset)).isoformat()
@@ -491,6 +538,9 @@ def validate_new_batch(
             errors.append(f"item {offset}: missing id")
         elif iid in seen_ids:
             errors.append(f"duplicate id {iid}")
+        elif iid in held_ids:
+            errors.append(f"{iid}: an earlier batch already carries this Sanskrit word; "
+                          f"add the route to that batch by hand, or hold the word back with --except")
         seen_ids.add(iid)
         mw_key = str(item.get("mw_key") or "")
         if not mw_key:
@@ -601,14 +651,32 @@ def review_markdown(
             word = str(cand.get("word") or "")
             gloss = str(cand.get("gloss") or "")
             mw_key = str(cand.get("mw_key") or "")
-            hops = cand.get("hops") or []
+            lang_name = str(cand.get("lang_name") or "English")
+            hops = [h for h in (cand.get("hops") or []) if isinstance(h, dict)]
             label = relation_label(str(cand.get("kind") or "loan"), hops)
-            lines.append(f"### {word} ({mw_key})")
+            # The Sanskrit word as the learner will see it: derived from the
+            # stem by lipi, never typed. No stem, no Sanskrit line.
+            dev = iast = ""
+            if mw_key:
+                try:
+                    dev, iast = sanskrit_forms_for(mw_key)
+                except Exception:
+                    dev = iast = ""
+            lines.append(f"### {word}")
             lines.append("")
-            lines.append(f"Word: {word}, meaning: {gloss or '-'}")
-            stops = [mw_key] + [str(h.get("form") or "") for h in hops] + [word]
+            lines.append(f"Word: {word} ({lang_name}), meaning: {gloss or '-'}")
+            if dev:
+                lines.append(f"Sanskrit: {dev} {iast}, meaning: {cand.get('sanskrit_gloss') or '-'}")
+            else:
+                lines.append("Sanskrit: no stem yet")
+            stops = ([f"Sanskrit {iast}"] if iast else []) + [
+                " ".join(p for p in (str(h.get("lang") or ""), str(h.get("form") or "")) if p)
+                for h in hops
+            ] + [f"{lang_name} {word}"]
             lines.append("Stops: " + " > ".join(s for s in stops if s))
             lines.append(f"Label: {label}")
+            if str(cand.get("label") or "") == "sanskrit_hedged":
+                lines.append("Dictionaries say probably")
             if cand.get("note"):
                 lines.append(f"Note: {cand.get('note')}")
             lines.append("")

@@ -949,6 +949,29 @@ class ContentReport(Base):
     created_at = Column(DateTime, default=_utcnow, index=True)
 
 
+class AskAnswer(Base):
+    """A model-written answer about a verse, kept for good.
+
+    The first learner to ask pays for one model call; everyone after is
+    served this row (services/verse_study.py). ``key`` is the SHA-256 of the
+    verse text, the question and the answer's language, so the same verse
+    asked in English and in Hindi holds two rows. ``payload`` is the Ask
+    response as sent (explanation and card). A row whose payload has an empty
+    card and an empty explanation records "asked, nothing honest to say", so
+    a line the model could not read is not paid for twice.
+    """
+
+    __tablename__ = "ask_answers"
+
+    key = Column(String(64), primary_key=True)
+    subject = Column(Text, nullable=False)
+    question = Column(String(512), nullable=False, default="")
+    language = Column(String(48), nullable=False, default="")
+    payload = Column(JSON, nullable=False, default=dict)
+    provider = Column(String(64), default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+
 class GameResult(Base):
     """One finished game round (Play hub, HANDOVER 5.7).
 
@@ -979,10 +1002,12 @@ class GameResult(Base):
 class WordOrigin(Base):
     """One Sanskrit word with its routes (Word journey, handover_language).
 
-    Seeded from ``app/seeds/word_origins/batch-*.json``; the database is a
-    copy of the files, never the other way round. ``scheduled_date`` is
-    ``start_date + position`` and is unique across batches. Rows that no file
-    carries any more become ``withdrawn``, never deleted.
+    Two makers. Hand-checked rows are seeded from
+    ``app/seeds/word_origins/batch-*.json`` and are a copy of those files:
+    ``scheduled_date`` is ``start_date + position``, and a row no file carries
+    any more becomes ``withdrawn``, never deleted. Rows the daily pipeline
+    writes (services/daily_content.py) have ``batch`` "auto", live only in the
+    database, and take the next free ``scheduled_date``, which is unique.
     """
 
     __tablename__ = "word_origins"
@@ -1027,6 +1052,12 @@ class WordRoute(Base):
     source_keys = Column(JSON, default=list)
     lookup = Column(String(120), default="")
     checked_on = Column(String(10), default="")
+    # A route the daily pipeline wrote (services/daily_content.py) carries the
+    # page that states its origin and checked_by "page". A hand-checked route
+    # leaves all three empty or "hand".
+    source_url = Column(String(500), default="")
+    source_site = Column(String(120), default="")
+    checked_by = Column(String(12), default="")
     status = Column(String(12), default="approved")
     created_at = Column(DateTime, default=_utcnow)
 
@@ -1034,4 +1065,83 @@ class WordRoute(Base):
 
     __table_args__ = (
         UniqueConstraint("origin_id", "lang", "word", name="uq_word_route_origin_lang_word"),
+    )
+
+
+class FactCard(Base):
+    """One "Do you know" fact resting on a quoted verse (daily content).
+
+    Written by the daily pipeline (services/daily_content.py): the model
+    proposes the fact and quotes the verse, and code opens a page on a trusted
+    site and finds the verse there before the row is written. ``source_url``
+    is that page. ``scheduled_date`` is the day the fact is shown and is
+    unique. A withdrawn row is kept, never deleted.
+    """
+
+    __tablename__ = "fact_cards"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    scheduled_date = Column(String(10), unique=True, index=True)
+    fact = Column(Text, default="")
+    claim_kind = Column(String(12), default="")  # text|tradition|modern
+    text_name = Column(String(120), default="")
+    ref = Column(String(64), default="")
+    ref_key = Column(String(160), default="", index=True)
+    devanagari = Column(Text, default="")
+    iast = Column(Text, default="")
+    translation = Column(Text, default="")
+    explanation = Column(Text, default="")
+    source_url = Column(String(500), default="")
+    source_site = Column(String(120), default="")
+    verse_match = Column(Float, default=0.0)  # share of the quote found on the page
+    checked_on = Column(String(10), default="")
+    made_by = Column(String(12), default="auto")
+    status = Column(String(12), default="approved", index=True)
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class ContentJob(Base):
+    """One run of the daily content pipeline, and where it stands.
+
+    ``active_key`` equals ``kind`` while the run is in flight and is NULL once
+    it has ended, so its unique index allows one run per kind at a time.
+    ``stage`` is propose | cite | check | done | failed. ``payload`` carries
+    the candidates between stages; ``stats`` is what the run did.
+    ``locked_until`` (epoch seconds) keeps two overlapping ticks apart.
+    """
+
+    __tablename__ = "content_jobs"
+
+    id = Column(String(40), primary_key=True)
+    kind = Column(String(8), nullable=False, index=True)  # words|facts
+    active_key = Column(String(8), unique=True, nullable=True)
+    stage = Column(String(12), default="propose")
+    job_name = Column(String(255), default="")
+    payload = Column(JSON, default=dict)
+    stats = Column(JSON, default=dict)
+    error = Column(Text, default="")
+    locked_until = Column(Integer, default=0)
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow)
+
+
+class ContentRejection(Base):
+    """A candidate the daily pipeline turned down, so it is not proposed again.
+
+    ``key`` is the word (case folded) for words, the reference key for facts.
+    ``reason`` is the check that failed. No page text is stored.
+    """
+
+    __tablename__ = "content_rejections"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    kind = Column(String(8), nullable=False)  # words|facts
+    lang = Column(String(8), nullable=False, default="")
+    key = Column(String(160), nullable=False, default="")
+    reason = Column(String(64), default="")
+    detail = Column(Text, default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("kind", "lang", "key", name="uq_content_rejection"),
     )

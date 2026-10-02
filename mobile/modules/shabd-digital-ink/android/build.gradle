@@ -23,9 +23,13 @@ dependencies {
   // page sizes". 16.1.0 (2021) shipped a libdigitalink.so aligned to 4 KB
   // pages, which Google Play rejects for apps targeting Android 15+ (this app
   // targets SDK 36), and predates the 17.0.1 fix for the API-31 runtime
-  // exception. No API change for our call sites (DigitalInkRecognition,
-  // DigitalInkRecognitionModel[Identifier], Ink builder — all unchanged per
-  // https://developers.google.com/ml-kit/vision/digital-ink-recognition/android).
+  // exception. The classes we call (DigitalInkRecognition,
+  // DigitalInkRecognitionModel[Identifier], DigitalInkRecognizer[Options],
+  // Ink) keep their methods but live in
+  // com.google.mlkit.vision.digitalink.recognition, not
+  // com.google.mlkit.vision.digitalink as in 16.1.0; the old imports fail to
+  // compile (EAS build 6662eda2, 2026-10-02). Package per
+  // https://developers.google.com/android/reference/com/google/mlkit/vision/digitalink/recognition/package-summary.
   implementation 'com.google.mlkit:digital-ink-recognition:19.0.0'
   // MUST stay: the digital-ink library transitively pulls an old
   // androidx.work:work-runtime whose ForceStopRunnable builds a PendingIntent

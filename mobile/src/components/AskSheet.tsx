@@ -111,8 +111,15 @@ function suggestionsFor(surface: string, hasSubject: boolean, hasScreen: boolean
   if (hasScreen) {
     return ["What does this mean?", "Explain the grammar", "Give me one more example"];
   }
-  if (hasSubject && surface === "shloka") {
-    return ["What does this verse mean?", "Split it into words", "What metre is this?"];
+  // Home registers the verse of the day too. The Hindi row asks in Hindi, so
+  // the answer comes back in Hindi.
+  if (hasSubject && (surface === "shloka" || surface === "home")) {
+    return [
+      "What does this verse mean?",
+      "इस श्लोक का अर्थ हिंदी में बताइए",
+      "Split it into words",
+      "What metre is this?",
+    ];
   }
   return ["How do I say hello?", "What is today's tithi?", "What is sandhi?"];
 }

@@ -1,5 +1,8 @@
 // Daily Shloka — one verse a day. Loads /shlokas/today, shows Devanagari +
-// IAST + word breakdown, and can speak the verse.
+// IAST + meaning + word breakdown, and can speak the verse.
+// The meaning (Hindi and English) rides in with the verse when the server
+// has it stored. When it does not, /shlokas/{id}/meaning writes it once and
+// stores it; the verse shows at once and the meaning fills in under it.
 // U4-4: Now renders as an unfurling manuscript — verse fades in line by line
 // at duration.telling, each word tappable to expand word_breakdown, with
 // metre visualised as a rhythm strip. Palette evokes a manuscript.
@@ -24,6 +27,7 @@ import { speak } from "../services/speech";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
+import ReportButton from "../components/ReportButton";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -145,6 +149,8 @@ export default function ShlokaScreen() {
   const [loadFailed, setLoadFailed] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
+  const [meaning, setMeaning] = useState<{ hi: string; en: string } | null>(null);
+  const [meaningLoading, setMeaningLoading] = useState(false);
   const reduced = useReducedMotion();
   const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
@@ -160,6 +166,20 @@ export default function ShlokaScreen() {
         setShloka(s);
         // U3-4: opening the daily verse earns prathama-sloka (once).
         recordAch({ type: "sloka_studied" });
+        const hi = s.translation_hi ?? "";
+        const en = s.translation_en ?? "";
+        if (hi || en) {
+          setMeaning({ hi, en });
+          return;
+        }
+        // Not stored with the verse: ask for it. A backend from before this
+        // route answers 404, and the screen simply shows no meaning.
+        setMeaning(null);
+        setMeaningLoading(true);
+        cachedGet(`shloka-meaning-${s.id}`, () => api.shlokaMeaning(s.id))
+          .then((m) => setMeaning({ hi: m.translation_hi, en: m.translation_en }))
+          .catch(() => setMeaning(null))
+          .finally(() => setMeaningLoading(false));
       })
       .catch(() => {
         setShloka(null);
@@ -263,6 +283,34 @@ export default function ShlokaScreen() {
           <MetreStrip metre={shloka.metre} />
         </View>
 
+        {/* Meaning: Hindi, then English, whichever exist */}
+        {meaningLoading ? (
+          <View
+            style={styles.meaning}
+            accessible
+            accessibilityRole="progressbar"
+            accessibilityLabel="Loading the meaning"
+          >
+            <Text style={styles.sectionTitle}>Meaning</Text>
+            <Skeleton height={16} width="94%" />
+            <Skeleton height={16} width="68%" style={{ marginTop: 8 }} />
+          </View>
+        ) : meaning && (meaning.hi || meaning.en) ? (
+          <View style={styles.meaning}>
+            <Text style={styles.sectionTitle}>Meaning</Text>
+            {!!meaning.hi && (
+              <Text style={[styles.meaningHi, script("regular")]}>{plain(meaning.hi)}</Text>
+            )}
+            {!!meaning.en && <Text style={styles.meaningEn}>{plain(meaning.en)}</Text>}
+            <ReportButton
+              surface="ask"
+              question={`Meaning of the verse: ${shloka.devanagari}`}
+              answer={[meaning.hi, meaning.en].filter(Boolean).join("\n")}
+              noun="meaning"
+            />
+          </View>
+        ) : null}
+
         {/* Word breakdown */}
         {(shloka.word_breakdown ?? []).length > 0 && (
           <View style={styles.words}>
@@ -353,6 +401,9 @@ const styles = StyleSheet.create({
   metreLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: 4 },
   metreStrip: { flexDirection: "row", alignItems: "flex-end", gap: 3, flexWrap: "wrap" },
   metreBeat: { borderRadius: 3 },
+  meaning: { marginTop: space.lg },
+  meaningHi: { fontSize: font.sizes.base, color: color.ink, lineHeight: 28, marginBottom: space.xs },
+  meaningEn: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.inkSoft, lineHeight: 24 },
   words: { marginTop: space.lg },
   sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.sm },
   wordRow: { flexDirection: "row", alignItems: "center", backgroundColor: color.surface, borderRadius: radius.md, padding: space.md, marginBottom: space.xs, ...shadow.card },

@@ -23,6 +23,16 @@
 #                                   /auth/apple (Guideline 4.8: mandatory if
 #                                   Google login is offered). Omit to disable.
 #
+# Daily content (the word journey and "Do you know", services/daily_content.py):
+#   The Vertex service-account key is read from the file vertex_credentials.json
+#   at the repo root (gitignored; set VERTEX_CREDENTIALS_FILE to use another
+#   path). When the file is there it is stored as the secret
+#   "vertex-credentials" and mounted as VERTEX_CREDENTIALS_JSON; without it the
+#   pipeline stays off and the app shows what is already stored.
+#   A Cloud Scheduler job then calls POST /admin/content/tick every half hour.
+#   That needs, once:  gcloud services enable cloudscheduler.googleapis.com
+#   and ADMIN_TOKEN in .env.deploy for the run that creates the job.
+#
 # (No HuggingFace token needed: vidyut's data downloads from GitHub releases,
 #  not HF, and nothing else in the codebase reads one — verified 2026-09-02.)
 #
@@ -109,6 +119,19 @@ for name in "${!SECRETS[@]}"; do
   fi
   SECRET_MOUNTS+=("${var}=${name}:latest")
 done
+
+# The Vertex service-account key for the daily-content pipeline: a JSON file,
+# so it goes up from the file itself and never through a shell variable. The
+# key is for the project that runs the batch jobs, which need not be this one.
+VERTEX_CREDENTIALS_FILE="${VERTEX_CREDENTIALS_FILE:-vertex_credentials.json}"
+if [ -f "$VERTEX_CREDENTIALS_FILE" ]; then
+  if gcloud secrets describe vertex-credentials --project="$PROJECT_ID" >/dev/null 2>&1; then
+    gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE"
+  else
+    gcloud secrets create vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE"
+  fi
+  SECRET_MOUNTS+=("VERTEX_CREDENTIALS_JSON=vertex-credentials:latest")
+fi
 # --set-secrets is passed only when at least one secret is set (SARVAM_API_KEY
 # and DATABASE_URL are required in practice, so this is never empty on a real
 # deploy — the guard is against `set -u` on an empty expansion, not a config).
@@ -165,10 +188,17 @@ fi
 # ── 1d. Optional plain settings, passed only when set in .env.deploy:
 #       LEGAL_CONTACT_EMAIL, LEGAL_ENTITY_NAME   shown on /privacy and
 #                                   /delete-account (Play requires both pages)
-#       QUOTA_DAILY_BUDGET_INR       service-wide rupees/day ceiling (code
-#                                   default 300; 0 disables)
+#       QUOTA_DAILY_BUDGET_INR       Sarvam rupees/day ceiling across all
+#                                   learners (code default 300; 0 disables)
+#       GEMINI_DAILY_BUDGET_INR      online Gemini rupees/day ceiling across
+#                                   all learners (code default 200; 0 disables)
+#       CONTENT_WORDS_STOCK_DAYS, CONTENT_FACTS_STOCK_DAYS   how many future
+#                                   days of each daily card to keep filled
+#                                   (code defaults 60 and 30)
+#       CONTENT_DAILY_BUDGET_INR     rupees/day the pipeline may spend on
+#                                   batch jobs (code default 60; 0 disables)
 EXTRA_ENV=""
-for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR; do
+for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR; do
   if [ -n "${!var:-}" ]; then
     EXTRA_ENV="${EXTRA_ENV},${var}=${!var}"
   fi
@@ -198,3 +228,29 @@ echo ""
 echo "Deployed: $URL"
 echo "Health:   $URL/health"
 curl -sS "$URL/health" && echo "" && echo "HEALTH OK" || echo "HEALTH CHECK FAILED — check logs: gcloud run services logs read $SERVICE --region $REGION"
+
+# ── 4. Daily content: Cloud Scheduler calls the tick every half hour ──────
+#       The tick is a job, not a request path. A call with nothing to do costs
+#       two small queries; a call with work to do stops opening pages after
+#       75 seconds, inside the 120s request limit above. The admin token is
+#       stored in the job as a header, so anyone who can view Scheduler jobs
+#       in this project can read it. Skipped, with a line saying so, when
+#       ADMIN_TOKEN is not in this run's environment or Scheduler is not
+#       enabled; nothing else in the deploy depends on it.
+TICK_JOB="sanskritam-content-tick"
+if [ -z "${ADMIN_TOKEN:-}" ]; then
+  echo "Daily content: ADMIN_TOKEN is not set in this run, so the scheduler job was left as it is."
+else
+  if gcloud scheduler jobs describe "$TICK_JOB" --project="$PROJECT_ID" --location="$REGION" >/dev/null 2>&1; then
+    TICK_VERB=(update http "$TICK_JOB" --update-headers="X-Admin-Token=${ADMIN_TOKEN}")
+  else
+    TICK_VERB=(create http "$TICK_JOB" --headers="X-Admin-Token=${ADMIN_TOKEN}")
+  fi
+  if gcloud scheduler jobs "${TICK_VERB[@]}"       --project="$PROJECT_ID"       --location="$REGION"       --schedule="*/30 * * * *"       --time-zone="Etc/UTC"       --uri="${URL}/admin/content/tick"       --http-method=POST       --attempt-deadline=150s >/dev/null; then
+    echo "Daily content: scheduler job $TICK_JOB calls $URL/admin/content/tick every 30 minutes."
+  else
+    echo "Daily content: could not set up the scheduler job. Enable it once with:"
+    echo "  gcloud services enable cloudscheduler.googleapis.com --project=$PROJECT_ID"
+    echo "then run this script again. Until then no new daily cards are made."
+  fi
+fi

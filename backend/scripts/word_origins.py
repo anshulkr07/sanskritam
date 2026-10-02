@@ -16,11 +16,11 @@ Usage::
     ./.venv/Scripts/python.exe -m scripts.word_origins propose --live
     ./.venv/Scripts/python.exe -m scripts.word_origins collect --run <id> --step propose --live
     ./.venv/Scripts/python.exe -m scripts.word_origins check --run <id> --live
-    ./.venv/Scripts/python.exe -m scripts.word_origins write --run <id> --live
+    ./.venv/Scripts/python.exe -m scripts.word_origins write --run <id> [--stem word=STEM] --live
     ./.venv/Scripts/python.exe -m scripts.word_origins collect --run <id> --step write --live
     ./.venv/Scripts/python.exe -m scripts.word_origins verify --run <id>
     ./.venv/Scripts/python.exe -m scripts.word_origins review --run <id>
-    ./.venv/Scripts/python.exe -m scripts.word_origins approve --run <id> --live
+    ./.venv/Scripts/python.exe -m scripts.word_origins approve --run <id> [--also word] --live
     ./.venv/Scripts/python.exe -m scripts.word_origins status [--run <id>]
     ./.venv/Scripts/python.exe -m scripts.word_origins selfcheck --live
 
@@ -39,6 +39,7 @@ import sys
 import time
 from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -51,6 +52,16 @@ BACKEND_DIR = Path(__file__).resolve().parent.parent
 RESULTS_DIR = BACKEND_DIR / "results" / "word_origins"
 SEEDS_WO_DIR = BACKEND_DIR / "app" / "seeds" / "word_origins"
 GOLD_PATH = BACKEND_DIR / "tests" / "fixtures" / "word_origins" / "gold.json"
+
+# What rejected.json says of a word the rule turned away, by the rule's label.
+REJECT_WORDING = {
+    "not_sanskrit": "the entry does not name Sanskrit",
+    "akin_only": "the entry names the Sanskrit word as a relative, not as the source",
+    "no_etymology": "no entry, or an entry with no word history",
+}
+
+# The letters of SLP1, for a stem the owner supplies by hand.
+SLP1_LETTERS = set("aAiIuUfFxXeEoOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzshL")
 
 
 def _resolve_credentials(path_value: str) -> str:
@@ -208,7 +219,8 @@ def cmd_collect(args) -> int:
 def cmd_check(args) -> int:
     import httpx
     from app.services.word_check import (
-        UA, check_word, fetch_with_crossref, load_kosha_stems,
+        UA, check_word, fetch_failed, fetch_with_crossref, load_kosha_stems,
+        stem_from_printed_form,
     )
 
     is_live = args.live and not args.dry_run
@@ -242,36 +254,55 @@ def cmd_check(args) -> int:
         for i, prop in enumerate(proposals):
             word = str(prop.get("word") or "")
             key = word.casefold()
-            if key in cached:
+            if key in cached and not fetch_failed(cached[key].get("segs", [])):
                 segs = cached[key].get("segs", [])
                 followed = cached[key].get("followed", [])
                 entry_url = cached[key].get("url", "")
             else:
-                segs, followed = fetch_with_crossref(client, word)
-                entry_url = f"https://ahdictionary.com/word/search.html?q={word}"
-                cached[key] = {
-                    "word": word, "segs": segs, "followed": followed,
-                    "url": entry_url,
-                    "fetched_at": datetime.now(timezone.utc).isoformat(),
-                }
-                _write_json(entries_path, {"entries": cached})
-                # One request a second at most (plus the cross-ref fetches
-                # already made above, which is why the sleep is per word).
+                # One request a second at most, the followed entries included.
+                try:
+                    segs, followed = fetch_with_crossref(client, word, pause_s=1.0)
+                except Exception as e:
+                    segs, followed = [f"HTTP error {type(e).__name__}"], []
+                entry_url = f"https://ahdictionary.com/word/search.html?q={quote(word)}"
+                # A fetch that failed is not saved, so the next run reads the
+                # word again instead of keeping the failure.
+                if not fetch_failed(segs):
+                    cached[key] = {
+                        "word": word, "segs": segs, "followed": followed,
+                        "url": entry_url,
+                        "fetched_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                    _write_json(entries_path, {"entries": cached})
                 if i < len(proposals) - 1:
                     time.sleep(1.0)
             result = check_word(word, segs, stems)
             result.update({
                 "entry_text": " ".join(segs),
+                "entry_segs": segs,
                 "entry_url": entry_url,
                 "followed": followed,
                 "proposed_sanskrit": str(prop.get("sanskrit") or ""),
             })
+            if result["reason"] == "stem_not_in_kosha":
+                result["stem_guess"] = stem_from_printed_form(result["printed"])
             rows.append(result)
     _write_json(rundir / "check.json", {"rows": rows})
     n_pass = sum(1 for r in rows if r["status"] == "pass")
     n_look = sum(1 for r in rows if r["status"] == "needs_look")
     n_rej = sum(1 for r in rows if r["status"] == "rejected")
+    n_fail = sum(1 for r in rows if r["status"] == "fetch_failed")
     print(f"check: {n_pass} pass, {n_look} needs a look, {n_rej} rejected.")
+    if n_fail:
+        print(f"{n_fail} could not be fetched and are neither passed nor rejected: "
+              + ", ".join(str(r["word"]) for r in rows if r["status"] == "fetch_failed"))
+        print("Run check again to read them.")
+    misses = [r for r in rows if r["reason"] == "stem_not_in_kosha"]
+    if misses:
+        print("Stem not in the kosha (give the stem in SLP1 to carry one on: "
+              "write --stem word=STEM):")
+        for r in misses:
+            print(f"  {r['word']}: entry prints {r['printed']}, read as {r.get('stem_guess') or '?'}")
 
     # Rejections append to rejected.json with the reason (7.4). This writes
     # outside results/, so it only happens under --live.
@@ -288,11 +319,14 @@ def cmd_check(args) -> int:
             key = ("en", str(r["word"] or "").casefold())
             if key in have:
                 continue
+            # Our own words for what the rule found. The entry's text is not
+            # copied: this file ships in the image.
             rej_data.setdefault("items", []).append({
                 "lang": "en",
                 "word": str(r["word"] or ""),
-                "verdict": str(r.get("label") or "not from Sanskrit"),
-                "what_the_dictionary_says": (r.get("entry_text") or "")[:300],
+                "verdict": "not from Sanskrit",
+                "what_the_dictionary_says": REJECT_WORDING.get(
+                    str(r.get("label") or ""), "the entry does not derive it from Sanskrit"),
                 "read_in": "ahd",
                 "decided_on": today,
             })
@@ -320,11 +354,33 @@ def cmd_write(args) -> int:
     check_data = _read_json(rundir / "check.json", {})
     rows = check_data.get("rows", [])
     entries = _read_json(rundir / "entries.json", {}).get("entries", {})
+
+    # --stem word=STEM: the owner supplies, in SLP1, the stem of a word whose
+    # printed form the kosha does not hold (it is not complete). The word
+    # stays "needs a look"; this only lets it be written, verified and then
+    # named with approve --also.
+    by_word = {str(r.get("word") or "").casefold(): r for r in rows}
+    for pair in [p.strip() for p in (args.stem or "").split(",") if p.strip()]:
+        word, _, stem = pair.partition("=")
+        row = by_word.get(word.strip().casefold())
+        stem = stem.strip()
+        if row is None or row.get("status") != "needs_look":
+            print(f"--stem {pair}: not a needs-a-look word of this run")
+            return 2
+        if not stem or not set(stem) <= SLP1_LETTERS:
+            print(f"--stem {pair}: the stem must be in SLP1 letters")
+            return 2
+        row["mw_key"] = stem
+        row["stem_source"] = "owner"
+    if args.stem:
+        _write_json(rundir / "check.json", {"rows": rows})
+
     survivors = [r for r in rows
                  if r.get("status") in ("pass", "needs_look") and r.get("mw_key")]
     if not survivors:
         print("nothing survived check with a stem: nothing to write")
         return 0
+    import vidyut.lipi as lipi
     lines = []
     for i, r in enumerate(survivors):
         word = str(r.get("word") or "")
@@ -332,7 +388,9 @@ def cmd_write(args) -> int:
         if not entry_text:
             cached = entries.get(word.casefold(), {})
             entry_text = " ".join(cached.get("segs", []))
-        user = build_write_user(word, "English", str(r.get("mw_key") or ""), entry_text)
+        # The prompt names the stem in roman letters (IAST), not in SLP1.
+        stem_roman = lipi.transliterate(str(r.get("mw_key") or ""), lipi.Scheme.Slp1, lipi.Scheme.Iast)
+        user = build_write_user(word, "English", stem_roman, entry_text)
         from app.services.word_pipeline import WRITE_SYSTEM
         lines.append(build_request_line(f"write-{i:03d}-{word.lower()}", WRITE_SYSTEM, user))
     (rundir / "write_input.jsonl").write_text(to_jsonl(lines), encoding="utf-8")
@@ -359,7 +417,7 @@ def cmd_write(args) -> int:
 def cmd_verify(args) -> int:
     from app.services.word_pipeline import parse_write_reply, verify_reply
     from app.services.word_pipeline import (
-        live_words_by_lang, rejected_words_by_lang,
+        live_origin_ids, live_words_by_lang, rejected_words_by_lang,
     )
 
     if not args.run:
@@ -378,6 +436,7 @@ def cmd_verify(args) -> int:
     rejected = {w for w in rejected_words_by_lang(SEEDS_WO_DIR).get("en", set())}
     # Never ship a word already live or rejected even if the files changed
     # between check and verify: both sets are re-read here.
+    origin_ids = live_origin_ids(SEEDS_WO_DIR)
 
     out_rows: list[dict] = []
     for key, raw in writes.items():
@@ -395,12 +454,18 @@ def cmd_verify(args) -> int:
             word = ""
         check = rows.get(word, {})
         entry_text = str(check.get("entry_text") or "")
-        segs = [entry_text] if entry_text else []
+        # The segments as the check step read them, so both steps apply the
+        # hedge rule to the same text (an older run saved only the joined text).
+        segs = check.get("entry_segs") or ([entry_text] if entry_text else [])
         label = str(check.get("label") or "")
         passed, reasons = verify_reply(
-            word, entry_text, segs if segs != [""] else [],
+            word, entry_text, segs,
             label, reply,
             rejected_set=rejected, live_set=live,
+            mw_key=str(check.get("mw_key") or ""),
+            check_status=str(check.get("status") or ""),
+            check_reason=str(check.get("reason") or ""),
+            origin_ids=origin_ids,
         )
         out_rows.append({
             "word": word, "key": key, "label": label,
@@ -440,7 +505,9 @@ def cmd_review(args) -> int:
         reply = v.get("reply", {}) or {}
         cand = {
             "word": word,
+            "lang_name": "English",
             "gloss": str(reply.get("gloss") or ""),
+            "sanskrit_gloss": str(reply.get("sanskrit_gloss") or ""),
             "mw_key": str(v.get("mw_key") or check.get("mw_key") or ""),
             "kind": "loan",
             "hops": reply.get("hops") or [],
@@ -459,13 +526,25 @@ def cmd_review(args) -> int:
         if word in wrote or c.get("status") == "rejected":
             continue
         if c.get("status") == "needs_look" and not c.get("mw_key"):
+            reason = str(c.get("reason") or c.get("label") or "")
+            if c.get("stem_guess"):
+                reason += (f" (entry prints {c.get('printed')}, read as {c.get('stem_guess')}; "
+                           f"to carry it on: write --stem {word}=STEM)")
             needs.append({
                 "word": word, "gloss": "", "mw_key": "",
                 "kind": "loan", "hops": [],
                 "note": "", "entry_text": str(c.get("entry_text") or ""),
                 "entry_url": str(c.get("entry_url") or ""),
-                "reason": str(c.get("reason") or c.get("label") or ""),
+                "reason": reason,
                 "label": str(c.get("label") or ""),
+            })
+        elif c.get("status") == "fetch_failed":
+            needs.append({
+                "word": word, "gloss": "", "mw_key": "",
+                "kind": "loan", "hops": [], "note": "", "entry_text": "",
+                "entry_url": str(c.get("entry_url") or ""),
+                "reason": f"the dictionary did not answer ({c.get('reason')}); run check again",
+                "label": "",
             })
     md = review_markdown(passed, needs)
     (rundir / "review.md").write_text(md, encoding="utf-8")
@@ -510,7 +589,8 @@ def cmd_approve(args) -> int:
         for extra in also_set:
             if extra in have:
                 continue
-            print(f"--also {extra}: not a verified word in this run; skipped")
+            print(f"--also {extra}: no write reply for this word in this run; skipped. "
+                  f"A word whose stem missed the kosha needs write --stem {extra}=STEM first.")
 
     if not picked:
         print("nothing to approve")
@@ -586,7 +666,7 @@ def cmd_approve(args) -> int:
             rej_data.setdefault("items", []).append({
                 "lang": "en", "word": word,
                 "verdict": "held back by the owner at approve",
-                "what_the_dictionary_says": str(v.get("entry_text") or "")[:300],
+                "what_the_dictionary_says": "passed the rule; the owner turned it down on reading the entry",
                 "read_in": "ahd",
                 "decided_on": today,
             })
@@ -641,7 +721,7 @@ def cmd_selfcheck(args) -> int:
         for i, item in enumerate(en):
             word = str(item["word"])
             try:
-                segs, _followed = fetch_with_crossref(client, word)
+                segs, _followed = fetch_with_crossref(client, word, pause_s=1.0)
             except Exception as e:
                 segs = [f"HTTP error {type(e).__name__}"]
             from app.services.word_check import classify_ahd
@@ -691,6 +771,9 @@ def main(argv=None) -> int:
 
     p = sub.add_parser("write", help="one Vertex batch job copying routes from entries")
     p.add_argument("--run", default="", required=True)
+    p.add_argument("--stem", default="",
+                   help="word=STEM[,word=STEM]: the SLP1 stem of a needs-a-look word "
+                        "whose printed form the kosha does not hold")
     _live(p)
     p.set_defaults(func=cmd_write)
 

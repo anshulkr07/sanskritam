@@ -97,7 +97,14 @@ def pick(origins, routes_by_origin: dict, day: str):
 
 
 def relation_of(route) -> str:
-    """Worked out, not stored: related|borrowed|travelled."""
+    """Worked out, not stored: related|borrowed|travelled|traced.
+
+    A hand-checked loan with no stops was read in a dictionary as a direct
+    borrowing: "borrowed". A route the daily pipeline wrote is only known to
+    go back to the Sanskrit word (the page was checked for the word and its
+    source, not for how it travelled), so without confirmed stops it is
+    "traced", which the app words as "Goes back to Sanskrit".
+    """
     kind = _get(route, "kind") or ""
     if kind == "related":
         return "related"
@@ -105,8 +112,30 @@ def relation_of(route) -> str:
         hops = _get(route, "hops") or []
         if isinstance(hops, list) and len(hops) > 0:
             return "travelled"
+        if (_get(route, "checked_by") or "") == "page":
+            return "traced"
         return "borrowed"
     return ""
+
+
+def read_in_dictionary(origin) -> bool:
+    """True when the Sanskrit word itself was read in Monier-Williams.
+
+    That holds for every hand-checked batch and for no pipeline row: the
+    pipeline checks a stem against the Vidyut kosha, not against the
+    dictionary, so its cards must not name the dictionary as a source.
+    """
+    return (_get(origin, "batch") or "") != "auto"
+
+
+def source_keys_of(origin, routes) -> set[str]:
+    """Licence-registry keys behind one origin's card."""
+    keys: set[str] = {"mw"} if read_in_dictionary(origin) else set()
+    for r in routes or []:
+        for k in (_get(r, "source_keys") or []):
+            if k:
+                keys.add(k)
+    return keys
 
 
 def today_for(db, learner):
@@ -137,11 +166,7 @@ def today_for(db, learner):
     if origin is None:
         return (day, None, None, [], [])
     routes = _visible_routes(by_origin.get(origin.id, []))
-    keys: set[str] = {"mw"}
-    for r in routes:
-        for k in (r.source_keys or []):
-            if k:
-                keys.add(k)
+    keys = source_keys_of(origin, routes)
     sources = db.query(ContentSource).filter(ContentSource.key.in_(sorted(keys))).all() if keys else []
     return (day, origin, headline, routes, sources)
 
@@ -200,10 +225,6 @@ def get_for(db, origin_id: str, learner):
     routes = _visible_routes(routes)
     if not routes:
         return (day, None, [], [])
-    keys: set[str] = {"mw"}
-    for r in routes:
-        for k in (r.source_keys or []):
-            if k:
-                keys.add(k)
+    keys = source_keys_of(origin, routes)
     sources = db.query(ContentSource).filter(ContentSource.key.in_(sorted(keys))).all() if keys else []
     return (day, origin, routes, sources)

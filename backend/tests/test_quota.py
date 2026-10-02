@@ -431,7 +431,8 @@ def test_tts_502_refunds_quota(fresh_client, monkeypatch):
         assert len(events) == 2, f"Expected 2 events (consume + refund), got {len(events)}"
         assert events[0].amount == char_count, f"Consume amount should be {char_count}, got {events[0].amount}"
         assert events[1].amount == -char_count, f"Refund amount should be -{char_count}, got {events[1].amount}"
-        assert events[1].source == "downstream_failure"
+        # The ledger column is 16 characters; the long reason goes to the log.
+        assert events[1].source == "refund"
     finally:
         db.close()
 

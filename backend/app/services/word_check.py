@@ -8,6 +8,7 @@ imports them from here so there is one copy.
 Plus the pipeline additions the bench does not have:
 
 * cross-reference following (once, never twice),
+* a failed fetch kept apart from "no entry",
 * the Sanskrit gate (printed form -> SLP1 stem -> kosha stem list),
 * the display-form check (first-case singular via the kosha).
 
@@ -22,6 +23,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 import unicodedata
 from pathlib import Path
 from typing import Callable, Optional
@@ -166,31 +168,31 @@ def classify_ahd(segs: list[str]) -> str:
 
 # ─── Cross-references: followed once, never twice ───────────────────────────
 
-_SEE_REF = re.compile(r"\bsee\s+([A-Za-z][A-Za-z'\-]*)\b", re.I)
-_PLUS_REF = re.compile(r"\b([A-Z][A-Z'\-]{1,})\s*\+\s*([A-Z][A-Z'\-]{1,})\b")
+# A pointer names its headword in capitals, with a digit when the word has
+# homographs: "see LAC1.", "[SANDAL1 + WOOD1.]" (run 2026-10-02). A pointer
+# into the appendix of roots is in lower case ("see kwel- in the Appendix")
+# and is not an entry, so capitals are required.
+_HEAD = r"([A-Z][A-Z'\-]+)\d*(?![A-Za-z])"
+_SEE_REF = re.compile(r"\b[Ss]ee\s+" + _HEAD)
+_PLUS_REF = re.compile(r"(?<![A-Za-z])" + _HEAD + r"\s*\+\s*" + _HEAD)
 
 
 def extract_cross_refs(segs: list[str]) -> list[str]:
-    """Words this entry points at instead of giving a history.
+    """Headwords this entry points at instead of giving the whole history.
 
-    Handles ``see LAC`` and ``SANDAL + WOOD`` shapes. Returns deduplicated
-    uppercase-guarded candidates in first-seen order.
+    Handles ``see LAC1`` and ``SANDAL1 + WOOD1``. Returns the headwords
+    without their homograph digit, deduplicated, in first-seen order.
     """
     out: list[str] = []
     for s in segs or []:
-        for m in _SEE_REF.finditer(s):
-            w = m.group(1).strip(".,;:()[]")
-            if w and w.lower() not in ("also", "under", "above", "below"):
-                key = w.lower()
-                if key not in [x.lower() for x in out]:
-                    out.append(w)
+        found = [m.group(1) for m in _SEE_REF.finditer(s)]
         for m in _PLUS_REF.finditer(s):
-            for w in (m.group(1), m.group(2)):
-                w = w.strip(".,;:()[]")
-                if w and w.lower() not in [x.lower() for x in out]:
-                    out.append(w)
-    # Keep only plausible headwords: alphabetic, at least 2 chars.
-    return [w for w in out if re.fullmatch(r"[A-Za-z'\-]{2,}", w)]
+            found.extend((m.group(1), m.group(2)))
+        for w in found:
+            w = w.strip("'-")
+            if len(w) >= 2 and w.lower() not in [x.lower() for x in out]:
+                out.append(w)
+    return out
 
 
 def is_cross_ref_only(segs: list[str]) -> bool:
@@ -206,21 +208,35 @@ def is_cross_ref_only(segs: list[str]) -> bool:
     return bool(extract_cross_refs(segs))
 
 
+def fetch_failed(segs: list[str]) -> bool:
+    """True when the dictionary did not answer (``ahd_etymology`` gave "HTTP <status>").
+
+    That is not "no entry": the word has not been read, so it must not be
+    rejected on it.
+    """
+    return bool(segs) and segs[0].startswith("HTTP ")
+
+
 def fetch_with_crossref(
     client,
     word: str,
     fetch_fn: Optional[Callable[[object, str], list[str]]] = None,
+    pause_s: float = 0.0,
+    sleep_fn: Optional[Callable[[float], None]] = None,
 ) -> tuple[list[str], list[str]]:
     """Fetch ``word``, following a cross-reference exactly once.
 
     Returns ``(segments_to_use, followed_words)``. When the first fetch
-    is a pointer (``see LAC`` / ``SANDAL + WOOD``), each named entry is
-    fetched once and their texts are used. A second-level pointer is NOT
-    followed again, which also bounds loops (A -> B -> A).
+    is a pointer (``see LAC1`` / ``SANDAL1 + WOOD1``), each named entry is
+    fetched once and its text is added after the word's own, so the whole
+    chain from the word back to the Sanskrit is in one place. A second-level
+    pointer is NOT followed again, which also bounds loops (A -> B -> A).
+    ``pause_s`` is slept before each followed fetch (one request a second).
     """
     fetch = fetch_fn or ahd_etymology
+    sleep = sleep_fn or time.sleep
     first = fetch(client, word) or []
-    if not is_cross_ref_only(first):
+    if fetch_failed(first) or not is_cross_ref_only(first):
         return first, []
     refs = extract_cross_refs(first)[:4]
     # Never fetch the same word twice in this call (A -> A, A -> B -> A).
@@ -231,31 +247,38 @@ def fetch_with_crossref(
         if ref.casefold() in seen:
             continue
         seen.add(ref.casefold())
+        if pause_s > 0:
+            sleep(pause_s)
         try:
             segs = fetch(client, ref) or []
         except Exception:
             segs = []
         followed.append(ref)
+        if fetch_failed(segs):
+            continue
         for s in segs:
-            if s not in combined:
+            if s not in combined and s not in first:
                 combined.append(s)
-    # If nothing came back, keep the original pointer text (labelled later).
-    return (combined if combined else first), followed
+    return first + combined, followed
 
 
 # ─── The Sanskrit gate ──────────────────────────────────────────────────────
 
-# The first token after the word "Sanskrit": yogaḥ, jaṅgalam, śarkarā.
-# Trailing punctuation stripped by the caller.
+# The form after "from Sanskrit" (or an entry that opens with "Sanskrit"):
+# yogaḥ, jaṅgalam, śarkarā. The letters run from Latin-1 (n with tilde is
+# U+00F1) through the combining marks to Latin Extended Additional. A form
+# the entry only calls "akin to Sanskrit ..." is a relative, not the source,
+# and is not read. Trailing punctuation stripped by the caller.
 _SANSKRIT_FORM = re.compile(
-    r"Sanskrit\s+([A-Za-z\u0100-\u1EFF\u2018\u2019'\-·]+)",
+    r"(?:from|\[)\s*Sanskrit\s+([A-Za-z\u00C0-\u1EFF\u2018\u2019'\-·]+)",
+    re.I,
 )
 
 
 def sanskrit_printed_form(entry_texts: list[str] | str) -> str:
-    """The form the entry prints after 'Sanskrit' (first case: yogaḥ ...)."""
+    """The form the entry derives the word from (first case: yogaḥ ...)."""
     text = " ".join(entry_texts) if isinstance(entry_texts, list) else (entry_texts or "")
-    m = _SANSKRIT_FORM.search(text)
+    m = _SANSKRIT_FORM.search(unicodedata.normalize("NFC", text))
     if not m:
         return ""
     return m.group(1).strip(".,;:()[]\"'· ")
@@ -267,7 +290,14 @@ def stem_from_printed_form(printed: str) -> str:
     yogaḥ -> yoga, jaṅgalam -> jaNgala, śarkarā -> SarkarA. Returns "" when
     lipi cannot transliterate.
     """
-    form = (printed or "").strip(".,;:()[]\"'· ")
+    form = unicodedata.normalize("NFC", (printed or "").strip(".,;:()[]\"'· "))
+    if not form:
+        return ""
+    # A form printed with a closing hyphen (jaṅgala-, kṛmi-ja-) is the stem
+    # already: there is no case ending to drop. Hyphens inside only mark the
+    # parts of a compound.
+    is_stem = form.endswith("-")
+    form = form.replace("-", "").replace("·", "")
     if not form:
         return ""
     try:
@@ -276,7 +306,7 @@ def stem_from_printed_form(printed: str) -> str:
     except Exception:
         return ""
     slp = (slp or "").strip()
-    if slp.endswith("H") or slp.endswith("m"):
+    if not is_stem and (slp.endswith("H") or slp.endswith("m")):
         slp = slp[:-1]
     return slp
 
@@ -383,9 +413,16 @@ def check_word(
 
     Returns ``{word, label, printed, mw_key, stem_found, status, reason}``
     where ``status`` is ``pass`` (sanskrit + stem found), ``needs_look``
-    (hedged, or stem miss), or ``rejected`` (akin_only / not_sanskrit /
-    no_etymology).
+    (hedged, or stem miss), ``rejected`` (akin_only / not_sanskrit /
+    no_etymology), or ``fetch_failed`` (the dictionary did not answer: the
+    word has not been read, and is fetched again on the next run).
     """
+    if fetch_failed(segs or []):
+        return {
+            "word": word, "label": "fetch_failed", "printed": "",
+            "mw_key": "", "stem_found": False,
+            "status": "fetch_failed", "reason": segs[0],
+        }
     label = classify_ahd(segs or [])
     if label in ("akin_only", "not_sanskrit", "no_etymology"):
         return {

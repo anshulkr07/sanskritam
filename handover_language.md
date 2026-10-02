@@ -1,5 +1,14 @@
 # Word journey: handover
 
+> **Superseded in part on 2026-10-02, after this was written.** The owner decided the cards are
+> automatic: no approval step, every language, stored in the database, checked against a page on a
+> trusted site instead of one dictionary per language, and a second card, "Do you know". What was
+> built from this file (tables, loader, API, the Word journey screen, the `scripts/word_origins.py`
+> runner) stays and still works for hand-checked batches. The automatic pipeline is
+> `backend/app/services/daily_content.py` with `services/page_check.py`; its decisions and what is
+> not verified are in `DECISIONS.md`, entry "Daily word and Do you know". Sections 4.1, 7 and 8
+> below describe the older, owner-approved flow.
+
 Written 2026-10-02 for the implementing agent (Muse Spark in opencode). You arrive with no context, so
 this file carries all of it.
 

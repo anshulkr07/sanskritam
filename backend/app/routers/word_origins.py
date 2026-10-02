@@ -66,12 +66,15 @@ def _route_to_response(r) -> WordRouteResponse:
         confidence=r.confidence or "",
         hops=hops,
         sources=list(r.source_keys or []),
+        source_url=getattr(r, "source_url", "") or "",
+        source_site=getattr(r, "source_site", "") or "",
     )
 
 
 def _origin_to_response(origin, routes, sources) -> WordOriginResponse:
     src_by_key = {s.key: s for s in sources}
-    ordered_keys = ["mw"] + [k for r in routes for k in (r.source_keys or []) if k != "mw"]
+    first = ["mw"] if svc.read_in_dictionary(origin) else []
+    ordered_keys = first + [k for r in routes for k in (r.source_keys or []) if k != "mw"]
     seen: list[str] = []
     for k in ordered_keys:
         if k and k not in seen:
@@ -81,6 +84,17 @@ def _origin_to_response(origin, routes, sources) -> WordOriginResponse:
                            url=(src_by_key[k].url if k in src_by_key else ""))
         for k in seen if k in src_by_key
     ]
+    # A route the daily pipeline wrote cites the very page that was checked.
+    pages: list[str] = []
+    for r in routes:
+        url = getattr(r, "source_url", "") or ""
+        if url and url not in pages:
+            pages.append(url)
+            srcs.append(WordSourceResponse(
+                key=f"page:{r.id}",
+                name=(getattr(r, "source_site", "") or "") or url,
+                url=url,
+            ))
     return WordOriginResponse(
         id=origin.id,
         sanskrit=_script(origin),

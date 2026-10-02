@@ -42,8 +42,11 @@ export default function RouteLadder({ origin, route }: { origin: OriginLike; rou
               <Text
                 style={[
                   styles.form,
-                  row.script !== "" && row.script !== "latin" && styles.formPlain,
                   last && styles.formLast,
+                  // After formLast, so the word itself (always the last row,
+                  // and the only one that names its script) drops the roman
+                  // face and keeps the weight.
+                  row.script !== "" && row.script !== "latin" && styles.formPlain,
                   { fontSize: sized(last ? 22 : 20) },
                 ]}
                 numberOfLines={2}

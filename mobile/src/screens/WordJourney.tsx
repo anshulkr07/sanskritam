@@ -7,7 +7,9 @@
 // 4. "Also in": the other languages this Sanskrit word reached. Tapping one
 //    redraws the ladder.
 // 5. The note, when there is one.
-// 6. "Sources": the dictionaries behind the card, each opening its site.
+// 6. "Sources": the dictionaries behind the card, each opening its site. A
+//    word the daily pipeline found names the very page it was checked
+//    against, says a model found it, and carries a flag to report it.
 // 7. "More words": earlier words, newest first.
 //
 // Read-only: opening it writes nothing. With an originId it shows that word;
@@ -23,6 +25,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { api, type WordOrigin, type WordToday } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
+import ReportButton from "../components/ReportButton";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { Ghost, Panel, Sa, SectionLabel } from "../kala/ui";
@@ -32,7 +35,7 @@ import { color, font, onFill, space } from "../theme";
 import { plain } from "../utils/text";
 import RouteLadder from "../words/RouteLadder";
 import { fetchWordToday } from "../words/WordCard";
-import { confidenceLine, headlineRoute, relationLine } from "../words/labels";
+import { confidenceLine, headlineRoute, relationLine, sourcePage } from "../words/labels";
 
 type Props = NativeStackScreenProps<RootStackParamList, "WordJourney">;
 
@@ -69,6 +72,8 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
         .join(", ")
     : "";
   useAskContext("word", askSubject);
+  // Set only on a word the daily pipeline found: the page it was checked on.
+  const page = sourcePage(selected);
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
@@ -115,6 +120,22 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
             )}
             {!!confidenceLine(selected) && (
               <Text style={[styles.confidence, { fontSize: sized(font.sizes.base) }]}>{confidenceLine(selected)}</Text>
+            )}
+            {page && (
+              <Pressable
+                onPress={() => {
+                  haptics.tap();
+                  void Linking.openURL(page.url).catch(() => null);
+                }}
+                style={({ pressed }) => [styles.pageRow, pressed && styles.pressed]}
+                accessibilityRole="link"
+                accessibilityLabel={`Source: ${page.site}. Opens the page.`}
+              >
+                <Text style={[styles.pageText, { fontSize: sized(font.sizes.base) }]} numberOfLines={2}>
+                  {`Source: ${page.site}`}
+                </Text>
+                <Ionicons name="open-outline" size={18} color={color.inkSoft} />
+              </Pressable>
             )}
 
             {routes.filter((r) => r !== selected).length > 0 && (
@@ -177,7 +198,7 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                         }}
                         style={({ pressed }) => [styles.row, pressed && styles.pressed]}
                         accessibilityRole="link"
-                        accessibilityLabel={`${name}. Opens the dictionary site.`}
+                        accessibilityLabel={`${name}. Opens ${(s.key ?? "").startsWith("page:") ? "the page" : "the dictionary site"}.`}
                       >
                         <View style={styles.rowText}>
                           <Text style={[styles.rowWord, { fontSize: sized(font.sizes.base) }]} numberOfLines={2}>
@@ -200,6 +221,17 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
               </>
             )}
 
+            {page && (
+              <View style={styles.aiBlock}>
+                <Text style={[styles.aiNote, { fontSize: sized(font.sizes.sm) }]}>
+                  Found by AI, then checked against the source page. The meanings are the AI's wording.
+                </Text>
+                <View style={styles.aiFlag}>
+                  <ReportButton surface="word" question={selected.id ?? ""} answer={askSubject} noun="card" />
+                </View>
+              </View>
+            )}
+
             {!more.loading && !more.failed && (more.data?.origins ?? []).filter((o) => o.id !== origin.id).length > 0 && (
               <>
                 <SectionLabel>More words</SectionLabel>
@@ -209,6 +241,10 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                     .map((o) => {
                       const langs = o.languages ?? [];
                       const count = `${langs.length} language${langs.length === 1 ? "" : "s"}`;
+                      // Read aloud by its Sanskrit word first, as the row shows it.
+                      const spoken = [(o.sanskrit?.iast ?? "").trim(), plain(o.gloss), count]
+                        .filter((p) => p !== "")
+                        .join(", ");
                       return (
                         <Pressable
                           key={o.id ?? `${o.sanskrit?.iast}`}
@@ -218,7 +254,7 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                           }}
                           style={({ pressed }) => [styles.row, pressed && styles.pressed]}
                           accessibilityRole="button"
-                          accessibilityLabel={`${plain(o.gloss)}, ${count}`}
+                          accessibilityLabel={spoken}
                         >
                           <View style={styles.rowText}>
                             {!!(o.sanskrit?.dev ?? "").trim() && (
@@ -265,6 +301,11 @@ const styles = StyleSheet.create({
   relation: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink, marginTop: space.md },
   confidence: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, marginTop: 2 },
   note: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.ink, marginTop: space.md },
+  pageRow: { flexDirection: "row", alignItems: "center", gap: space.xs, minHeight: 44, marginTop: 2 },
+  pageText: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.inkSoft },
+  aiBlock: { marginTop: space.md },
+  aiNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, lineHeight: 20 },
+  aiFlag: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44 },
   row: {
     flexDirection: "row",
     alignItems: "center",

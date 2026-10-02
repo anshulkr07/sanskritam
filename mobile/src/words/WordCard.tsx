@@ -12,7 +12,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { ApiError, api, type WordToday } from "../api/client";
@@ -47,7 +47,16 @@ export default function WordCard() {
   const { sized } = useTypeScale();
   const navigation = useNavigation();
 
-  if (loading) {
+  // The last answer that arrived. Home asks again each time it regains focus,
+  // and while it asks the card keeps showing that answer: the word stays in
+  // place, and on a backend without the endpoint the card stays hidden
+  // instead of flashing its placeholder. The placeholder is for the first
+  // load only, before any answer exists.
+  const [settled, setSettled] = useState<WordToday | null | undefined>(undefined);
+  if (!loading && !failed && settled !== data) setSettled(data);
+  const shown = loading ? settled : data;
+
+  if (shown === undefined) {
     return (
       <View style={styles.card} accessible accessibilityLabel="Today's word, loading">
         <Ghost lines={3} on="fill" />
@@ -55,7 +64,7 @@ export default function WordCard() {
     );
   }
 
-  if (failed) {
+  if (failed && !loading) {
     return (
       <View style={styles.card}>
         <Pressable
@@ -71,8 +80,8 @@ export default function WordCard() {
     );
   }
 
-  const origin = data?.available ? (data?.origin ?? null) : null;
-  const route = origin ? headlineRoute(origin.routes, data?.headline_route_id) : null;
+  const origin = shown?.available ? (shown?.origin ?? null) : null;
+  const route = origin ? headlineRoute(origin.routes, shown?.headline_route_id) : null;
   // Nothing today, or the headline route cannot be found: render nothing.
   if (!origin || !route) return null;
   const relation = relationLine(route);

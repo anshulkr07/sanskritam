@@ -19,6 +19,14 @@ P19-3: survivable at 400 calls/day — answers are cached by
 ``(surface, subject, normalised question)``; a repeated identical question
 costs one call; quota exhaustion DEGRADES to the engine answer (or the
 authored text alone) with an honest note, never to a blank (§2.11).
+
+Verse questions (2026-10-02): when the subject is a verse, a question about
+it is answered from the database when the answer is stored there, and by
+Gemini Flash when it is not; that answer is a card, it is stored, and the
+next learner who asks gets the stored row (services/verse_study.py). The
+model call draws on the Gemini budget, not Sarvam's. With no Gemini
+credentials, a spent Gemini budget or a failed call, the question falls back
+to the Sarvam explainer below.
 """
 
 from __future__ import annotations
@@ -32,8 +40,8 @@ from sqlalchemy.orm import Session
 
 from app.auth import require_learner
 from app.db import get_db
-from app.models import Learner
-from app.services import ask_engine
+from app.models import Learner, Shloka
+from app.services import ask_engine, verse_study
 from app.services.explainer import get_explainer, reply_language
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 
@@ -113,6 +121,74 @@ def wants_engine(question: str) -> bool:
     if _GRAMMAR_Q.search(q):
         return True
     return not _MEANING_Q.search(q)
+
+
+# ── input ceilings ───────────────────────────────────────────────────────────
+# A model call is charged one flat unit whatever its size, so the size is
+# bounded here: the app sends a question of at most 300 characters and a
+# subject of one verse. Longer input is cut, not refused.
+_SUBJECT_MAX = 1200
+_QUESTION_MAX = 500
+
+
+# ── questions about a verse ──────────────────────────────────────────────────
+# The screens that put a whole verse in `subject`. The verse can be from any
+# text. One the app holds brings its stored meaning and word glosses along;
+# one it does not hold is still answered, from the text alone.
+_VERSE_SURFACES = frozenset({"shloka", "home"})
+# Grammar words a learner types in Hindi or Sanskrit. `_GRAMMAR_Q` reads only
+# English, so "इसका अर्थ क्या है?" used to count as a grammar question and get
+# a scansion instead of a meaning.
+_GRAMMAR_Q_DEVA = re.compile(
+    "सन्धि|संधि|विभक्ति|छन्द|छंद|पदच्छेद|व्याकरण|धातु|लकार|समास|वचन|लिङ्ग|लिंग"
+)
+# Questions about how a verse sounds are the scansion engine's too.
+_RHYTHM_Q = re.compile(r"\b(rhythm\w*|syllable\w*|chandas?|chhand\w*|laghu|guru)\b", re.I)
+
+
+def is_verse_subject(surface: str, subject: str) -> bool:
+    """True when the learner is looking at a verse: a Devanagari line of some
+    length on a verse screen. A single word is the engines' business."""
+    return (
+        (surface or "").strip().lower() in _VERSE_SURFACES
+        and len(subject) >= 8
+        and bool(_DEVANAGARI.search(subject))
+        and len(subject.split()) >= 2
+    )
+
+
+def is_engine_question(question: str) -> bool:
+    """True when a question about a verse is the grammar engines' to answer:
+    its words, its joins, its metre. Everything else is about what it says."""
+    return bool(
+        _GRAMMAR_Q.search(question)
+        or _GRAMMAR_Q_DEVA.search(question)
+        or _RHYTHM_Q.search(question)
+    )
+
+
+def _find_verse(db: Session, subject: str) -> Shloka | None:
+    """The app's own record of this verse, or None when it holds none."""
+    return db.query(Shloka).filter(Shloka.devanagari == subject).first()
+
+
+async def _answer_verse(
+    db: Session, learner: Learner, text: str, verse: Shloka | None,
+    question: str, language: str,
+) -> dict | None:
+    """The answer to a question about a verse: the database first, Gemini
+    when the database has nothing, and then stored. None for the caller to
+    fall back on the Sarvam explainer."""
+    if verse_study.is_meaning_question(question):
+        slot = verse_study.slot_for(language)
+        if slot is not None:
+            return await verse_study.meaning_answer(db, learner, text, verse, slot)
+        return await verse_study.question_answer(
+            db, learner, text, verse, verse_study.MEANING_Q, language
+        )
+    return await verse_study.question_answer(
+        db, learner, text, verse, _norm_question(question), language
+    )
 
 
 def _cache_key(surface: str, subject: str, question: str, extra: str = "") -> tuple[str, ...]:
@@ -321,8 +397,8 @@ async def ask_explain(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    subject = (req.subject or "").strip()
-    question = (req.question or "").strip()
+    subject = (req.subject or "").strip()[:_SUBJECT_MAX]
+    question = (req.question or "").strip()[:_QUESTION_MAX]
     screen_text = (req.screen_text or "")[:2000].strip()
     wants_cards = bool(req.cards)
     if not subject and not question and not screen_text:
@@ -345,6 +421,19 @@ async def ask_explain(
     else:
         key = _cache_key(req.surface, subject, question)
 
+    # A question about a verse on screen, other than a grammar question, goes
+    # to the verse answer below. The answer's language joins the key: one
+    # verse and one question can be asked by an English and a Hindi reader.
+    verse_q = (
+        (not use_cards) and bool(question)
+        and is_verse_subject(req.surface, subject)
+        and not is_engine_question(question)
+    )
+    verse_language = ""
+    if verse_q:
+        verse_language = reply_language(question, learner.bridge_langs)
+        key = _cache_key(req.surface, subject, question, f"verse:{verse_language}")
+
     # 1. Cache first — a repeated question costs nothing.
     cached = _cache_get(key)
     if cached is not None:
@@ -357,26 +446,57 @@ async def ask_explain(
     #    never metered (§2.9). A general question has no subject to parse, and
     #    a question about meaning or saying goes to the model. The card path
     #    skips the engine: a shaped wider answer, not a derivation.
-    if not use_cards:
+    def _from_engine() -> AskResponse | None:
         ans = ask_engine.route(req.surface, subject, question) if (subject and wants_engine(question)) else None
-        if ans is not None:
-            rendered = _render_engine_answer(ans)
-            if rendered:
-                payload = {
-                    "routed_to": "engine",
-                    "explanation": rendered,
-                    "engine": dict(ans),
-                    "source": "engine",
-                    "provider": "",
-                    "card": None,
-                }
-                _cache_put(key, payload)
-                metrics_note("engine")
-                return AskResponse(**payload)
+        if ans is None:
+            return None
+        rendered = _render_engine_answer(ans)
+        if not rendered:
+            return None
+        payload = {
+            "routed_to": "engine",
+            "explanation": rendered,
+            "engine": dict(ans),
+            "source": "engine",
+            "provider": "",
+            "card": None,
+        }
+        _cache_put(key, payload)
+        metrics_note("engine")
+        return AskResponse(**payload)
 
-    # 3. LLM path — metered, session-free, reply_language resolved
+    if not use_cards and not verse_q:
+        answered = _from_engine()
+        if answered is not None:
+            return answered
+
+    # 3. Verse path: the stored answer, else Gemini Flash on the Gemini
+    #    budget, stored for next time. None means neither had it (no
+    #    credentials, budget spent, call failed) and the Sarvam path below
+    #    takes the question, with any stored meaning as its gloss.
+    verse = None
+    if verse_q:
+        verse = _find_verse(db, subject)
+        payload = await _answer_verse(db, learner, subject, verse, question, verse_language)
+        if payload is not None:
+            if not wants_cards:
+                payload = dict(payload, card=None)
+            _cache_put(key, payload)
+            metrics_note("llm")
+            return AskResponse(**payload)
+        # Nothing stored and no Gemini: what the engines can say about the
+        # line, as before this path existed, ahead of the Sarvam call.
+        answered = _from_engine()
+        if answered is not None:
+            return answered
+    verse_gloss = ""
+    if verse is not None:
+        en, hi = (verse.translation_en or "").strip(), (verse.translation_hi or "").strip()
+        verse_gloss = (hi or en) if verse_language.startswith("Hindi") else (en or hi)
+
+    # 4. LLM path — metered, session-free, reply_language resolved
     #    server-side. One llm_calls unit per answer, card or prose.
-    language = reply_language(question or screen_text or subject, learner.bridge_langs)
+    language = verse_language or reply_language(question or screen_text or subject, learner.bridge_langs)
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="explain")
     except QuotaExceeded as exc:
@@ -385,11 +505,15 @@ async def ask_explain(
         from app.services.iast import to_iast as _to_iast
 
         subject_iast = _to_iast(subject)
-        note = (
-            "Today's explanation quota is used up, so here is the text itself: "
-            f"{subject}"
-            + (f" ({subject_iast})" if subject_iast and subject_iast != subject else "")
-        )
+        if verse_gloss:
+            # The app's own meaning for this verse costs nothing to show.
+            note = f"Today's explanation quota is used up. The verse means: {verse_gloss}"
+        else:
+            note = (
+                "Today's explanation quota is used up, so here is the text itself: "
+                f"{subject}"
+                + (f" ({subject_iast})" if subject_iast and subject_iast != subject else "")
+            )
         payload = {
             "routed_to": "engine_fallback",
             "explanation": note,
@@ -405,7 +529,7 @@ async def ask_explain(
 
     explainer = get_explainer()
 
-    # 3a. Card path: shaped wider answer with FACTS. The model never writes
+    # 4a. Card path: shaped wider answer with FACTS. The model never writes
     # `when`; the server sets it from the same calculated facts. A broken
     # JSON falls back to the prose path with card null.
     if use_cards:
@@ -462,6 +586,7 @@ async def ask_explain(
         text = await explainer.explain(
             subject,
             iast=iast,
+            gloss=verse_gloss,
             question=question,
             language=language,
             answer_question=True,

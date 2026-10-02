@@ -71,16 +71,71 @@ def test_cross_ref_followed_once():
     from app.services.word_check import fetch_with_crossref
 
     pages = {
-        # Pointer only, no history of its own.
-        "lacquer": _ety_page("see LAC"),
-        "LAC": _ety_page("Middle test, from Sanskrit teststem"),
+        # The site's own shape: part of the history, then a pointer in
+        # capitals with a homograph digit.
+        "lacquer": _ety_page("[Old Test lacre, from Other Test laca; see LAC1.]"),
+        "LAC": _ety_page("[Middle test, from Sanskrit teststem.]"),
     }
     client = _FakeClient(pages)
-    segs, followed = fetch_with_crossref(client, "lacquer")
+    slept: list[float] = []
+    segs, followed = fetch_with_crossref(client, "lacquer", pause_s=1.0, sleep_fn=slept.append)
     assert followed == ["LAC"]
+    # The word's own text comes first, then the entry it points at.
+    assert segs[0].startswith("[Old Test lacre") and "Sanskrit" in segs[1]
+    assert client.calls == ["lacquer", "LAC"]
+    assert slept == [1.0]  # one request a second, the followed one included
+
+
+def test_cross_ref_shapes():
+    from app.services.word_check import extract_cross_refs, fetch_with_crossref
+
+    assert extract_cross_refs(["[SANDAL1 + WOOD1.]"]) == ["SANDAL", "WOOD"]
+    assert extract_cross_refs(["[x; see LAC1.]"]) == ["LAC"]
+    assert extract_cross_refs(["[See KERMES.]"]) == ["KERMES"]
+    # A pointer into the appendix of roots is not an entry.
+    root = "[Middle Test, from Old Test; see kwel- in the Appendix of Indo-European roots.]"
+    assert extract_cross_refs([root]) == []
+    client = _FakeClient({"wheel": _ety_page(root)})
+    segs, followed = fetch_with_crossref(client, "wheel")
+    assert followed == [] and client.calls == ["wheel"]
+
+    # A compound is followed into both of its parts.
+    client = _FakeClient({
+        "sandalwood": _ety_page("[SANDAL1 + WOOD1.]"),
+        "SANDAL": _ety_page("[Middle Test, from Sanskrit teststem.]"),
+        "WOOD": _ety_page("[Old Test wudu.]"),
+    })
+    segs, followed = fetch_with_crossref(client, "sandalwood")
+    assert followed == ["SANDAL", "WOOD"]
     assert any("Sanskrit" in s for s in segs)
-    assert client.calls.count("lacquer") == 1
-    assert client.calls.count("LAC") == 1
+
+
+def test_failed_fetch_is_not_a_rejection():
+    from app.services.word_check import check_word, fetch_failed, fetch_with_crossref
+
+    class _Down(_FakeClient):
+        def get(self, url, params=None):
+            self.calls.append((params or {}).get("q", ""))
+            return _FakeResp(503, "")
+
+    segs, followed = fetch_with_crossref(_Down({}), "anyword")
+    assert fetch_failed(segs) and followed == []
+    row = check_word("anyword", segs, set())
+    assert row["status"] == "fetch_failed"
+    # Really no word history is still a rejection.
+    assert check_word("anyword", [], set())["status"] == "rejected"
+
+    # A followed entry that does not answer adds nothing to the text.
+    class _HalfDown(_FakeClient):
+        def get(self, url, params=None):
+            word = (params or {}).get("q", "")
+            self.calls.append(word)
+            if word == "LAC":
+                return _FakeResp(503, "")
+            return _FakeResp(200, self.pages.get(word, ""))
+
+    segs, followed = fetch_with_crossref(_HalfDown({"lacquer": _ety_page("[x; see LAC1.]")}), "lacquer")
+    assert segs == ["[x; see LAC1.]"] and followed == ["LAC"]
 
 
 def test_cross_ref_not_followed_twice():
@@ -118,6 +173,29 @@ def test_sanskrit_gate_endings_and_invented():
 
     key, found = gate_sanskrit("blorpus", stems)
     assert key == "" and found is False
+
+
+def test_sanskrit_form_is_read_whole_and_from_the_source_clause():
+    from app.services.word_check import (
+        check_word, sanskrit_printed_form, stem_from_printed_form,
+    )
+
+    # A letter outside ASCII and the long-vowel range must not end the form:
+    # the form after "Sanskrit" here was once read as its first two letters.
+    form = sanskrit_printed_form(["[Hindi panch, from Sanskrit pañca, five.]"])
+    assert form == "pañca"
+    assert stem_from_printed_form(form) == "paYca"
+
+    # A form printed as a stem keeps its last letter; hyphens are not letters.
+    assert stem_from_printed_form("jaṅgala-") == "jaNgala"
+    assert stem_from_printed_form("kṛmi-ja-") == "kfmija"
+
+    # The relative an entry calls "akin to Sanskrit ..." is not the source.
+    seg = "[Old Test modor, akin to Sanskrit mātā, mother; later from Sanskrit yogaḥ, union.]"
+    assert sanskrit_printed_form([seg]) == "yogaḥ"
+    row = check_word("madeupword", [seg], {"yoga", "mAtA"})
+    assert (row["status"], row["mw_key"]) == ("pass", "yoga")
+    assert sanskrit_printed_form(["[Old Test modor, akin to Sanskrit mātā, mother.]"]) == ""
 
 
 # ─── 4. Verify ──────────────────────────────────────────────────────────────
@@ -195,6 +273,44 @@ def test_verify_clean_passes_and_builds_valid_item():
     assert item["routes"][0]["sources"] == ["ahd"]
     assert item["routes"][0]["checked_by"] == "rule"
     assert item["routes"][0]["hops"][0] == {"lang": "Old Madeup", "form": "shakar"}
+
+
+def test_verify_holds_back_what_the_check_did_not_pass():
+    from app.services.word_pipeline import verify_reply
+
+    hedged_entry = "Madeupword, probably from Old Madeup shakar, from Sanskrit madeupstem."
+    reply = _reply(hops=[{"lang": "Old Madeup", "form": "shakar"}], hedged=True)
+    # The reply itself is faithful, but a hedged entry waits for the owner.
+    ok, reasons = verify_reply("madeupword", hedged_entry, [hedged_entry], "sanskrit_hedged",
+                               reply, check_status="needs_look", check_reason="hedged")
+    assert not ok and reasons == ["check:hedged"]
+
+
+def test_verify_form_must_be_the_checked_stem():
+    from app.services.word_pipeline import verify_reply
+
+    entry = "[Old Test modor, akin to Sanskrit mātā, mother; later from Sanskrit yogaḥ, union.]"
+    good = {"sanskrit_form": "yogaḥ", "hops": [], "hedged": False, "gloss": "a thing", "note": ""}
+    ok, reasons = verify_reply("madeupword", entry, [entry], "sanskrit", good, mw_key="yoga")
+    assert ok, reasons
+    other = dict(good, sanskrit_form="mātā")
+    ok, reasons = verify_reply("madeupword", entry, [entry], "sanskrit", other, mw_key="yoga")
+    assert not ok and "sanskrit_form_is_not_the_checked_stem" in reasons
+
+
+def test_verify_and_approve_refuse_a_sanskrit_word_already_carried():
+    from app.services.word_pipeline import origin_id_for_mw, verify_reply
+
+    entry = "[Hindi madeup, from Sanskrit yogaḥ, union.]"
+    reply = {"sanskrit_form": "yogaḥ", "hops": [{"lang": "Hindi", "form": "madeup"}],
+             "hedged": False, "gloss": "a thing", "note": ""}
+    held = {origin_id_for_mw("yoga")}
+    ok, reasons = verify_reply("madeupword", entry, [entry], "sanskrit", reply,
+                               mw_key="yoga", origin_ids=held)
+    assert not ok and reasons == ["stem_already_live:yoga"]
+    ok, reasons = verify_reply("madeupword", entry, [entry], "sanskrit", reply,
+                               mw_key="yoga", origin_ids={"sharkara"})
+    assert ok, reasons
 
 
 # ─── 5. Vertex client with a mocked transport ───────────────────────────────
@@ -352,3 +468,134 @@ def test_approve_writes_valid_file_and_refuses_collision(tmp_path):
     reread = json.loads(out.read_text(encoding="utf-8"))
     assert reread["start_date"] == "2026-10-16"
     assert reread["items"][0]["routes"][0]["word"] == "sugarfree"
+
+
+def _made_run(tmp_path, monkeypatch):
+    """The CLI pointed at a temp working folder and a temp seeds folder that
+    holds one batch (the Sanskrit word yoga, on 2026-10-15)."""
+    import scripts.word_origins as cli
+    from app.services.word_pipeline import sanskrit_forms_for
+
+    seeds = tmp_path / "seeds"
+    seeds.mkdir()
+    (seeds / "rejected.json").write_text(json.dumps({"items": []}), encoding="utf-8")
+    dev, iast = sanskrit_forms_for("yoga")
+    (seeds / "batch-0000.json").write_text(json.dumps({
+        "batch": "0000", "made_on": "2026-10-02", "maker": "t", "model": "",
+        "start_date": "2026-10-15",
+        "items": [{
+            "id": "yoga", "status": "approved", "mw_key": "yoga",
+            "sanskrit": {"dev": dev, "iast": iast}, "gloss": "discipline",
+            "attested_abbr": [], "attested": "", "note": "",
+            "routes": [{"id": "yoga.en.yoga", "status": "approved", "lang": "en",
+                        "lang_name": "English", "word": "yoga", "script": "latin",
+                        "roman": "", "gloss": "discipline", "kind": "loan",
+                        "confidence": "certain", "hops": [], "sources": ["ahd"],
+                        "lookup": "yoga", "checked_on": "2026-10-01", "checked_by": "hand"}],
+        }],
+    }), encoding="utf-8")
+    monkeypatch.setattr(cli, "SEEDS_WO_DIR", seeds)
+    monkeypatch.setattr(cli, "RESULTS_DIR", tmp_path / "results")
+    run = tmp_path / "results" / "made"
+    run.mkdir(parents=True)
+
+    def entry(lang_word, form, lead=""):
+        return f"[{lead}Hindi {lang_word}, from Sanskrit {form}, something.]"
+
+    words = {
+        # word: (entry, check status, check reason, label, stem)
+        "alphaword": (entry("alfa", "rathaḥ"), "pass", "", "sanskrit", "raTa"),
+        "betaword": (entry("beta", "śarkarā", "Probably from "), "needs_look", "hedged",
+                     "sanskrit_hedged", "SarkarA"),
+        "gammaword": (entry("gamma", "yogaḥ"), "pass", "", "sanskrit", "yoga"),
+    }
+    check_rows, replies = [], {}
+    for i, (word, (text, status, reason, label, stem)) in enumerate(words.items()):
+        check_rows.append({"word": word, "label": label, "printed": "", "mw_key": stem,
+                           "stem_found": True, "status": status, "reason": reason,
+                           "entry_text": text, "entry_segs": [text],
+                           "entry_url": "https://example.invalid/" + word})
+        replies[f"write-{i:03d}-{word}"] = json.dumps({
+            "sanskrit_form": text.split("Sanskrit ")[1].split(",")[0],
+            "hops": [{"lang": "Hindi", "form": text.split("Hindi ")[1].split(",")[0]}],
+            "hedged": label == "sanskrit_hedged",
+            "gloss": "a made up thing", "sanskrit_gloss": "made up meaning",
+            "note": "A short made up note.",
+        }, ensure_ascii=False)
+    (run / "check.json").write_text(json.dumps({"rows": check_rows}, ensure_ascii=False), encoding="utf-8")
+    (run / "write_manifest.json").write_text(json.dumps({"words": list(words)}), encoding="utf-8")
+    (run / "writes.json").write_text(json.dumps({"replies": replies}, ensure_ascii=False), encoding="utf-8")
+    return cli, seeds, run
+
+
+def test_cli_verify_review_approve_on_a_made_up_run(tmp_path, monkeypatch, capsys):
+    """The commands themselves: only the word the check passed goes on by
+    itself; a hedged one needs --also; a Sanskrit word an earlier batch
+    carries is refused; a date clash is refused."""
+    from app.services.word_pipeline import sanskrit_forms_for, validate_new_batch
+
+    cli, seeds, run = _made_run(tmp_path, monkeypatch)
+    assert cli.main(["verify", "--run", "made"]) == 0
+    rows = {r["word"]: r for r in json.loads((run / "verify.json").read_text(encoding="utf-8"))["rows"]}
+    assert rows["alphaword"]["passed"] is True
+    assert rows["betaword"]["passed"] is False and rows["betaword"]["reasons"] == ["check:hedged"]
+    assert rows["gammaword"]["reasons"] == ["stem_already_live:yoga"]
+
+    assert cli.main(["review", "--run", "made"]) == 0
+    sheet = (run / "review.md").read_text(encoding="utf-8")
+    passed_part, look_part = sheet.split("## Needs a look")
+    assert "### alphaword" in passed_part and "### betaword" in look_part and "### gammaword" in look_part
+    dev, iast = sanskrit_forms_for("raTa")
+    # The Sanskrit word as the learner will see it, and each stop with its language.
+    assert f"Sanskrit: {dev} {iast}" in passed_part and "raTa" not in passed_part
+    assert f"Stops: Sanskrit {iast} > Hindi alfa > English alphaword" in passed_part
+    assert "Dictionaries say probably" in look_part
+
+    # A dry run writes nothing.
+    assert cli.main(["approve", "--run", "made"]) == 0
+    assert sorted(p.name for p in seeds.glob("batch-*.json")) == ["batch-0000.json"]
+
+    # A clash with a date that is taken is refused.
+    assert cli.main(["approve", "--run", "made", "--start", "2026-10-15", "--live"]) == 1
+    # So is the word whose Sanskrit word batch 0 already carries.
+    assert cli.main(["approve", "--run", "made", "--also", "gammaword", "--live"]) == 1
+    assert sorted(p.name for p in seeds.glob("batch-*.json")) == ["batch-0000.json"]
+
+    # The owner's yes: the passed word, plus the hedged one by name.
+    assert cli.main(["approve", "--run", "made", "--also", "betaword", "--live"]) == 0
+    doc = json.loads((seeds / "batch-0001.json").read_text(encoding="utf-8"))
+    assert doc["start_date"] == "2026-10-16"  # the day after the last one taken
+    by_word = {r["word"]: r for it in doc["items"] for r in it["routes"]}
+    assert set(by_word) == {"alphaword", "betaword"}
+    assert by_word["alphaword"]["confidence"] == "certain"
+    assert by_word["betaword"]["confidence"] == "probable"
+    # The file it wrote keeps every file rule, checked as if it were new.
+    (seeds / "batch-0001.json").rename(tmp_path / "written.json")
+    assert validate_new_batch(doc["items"], doc["start_date"], seeds) == []
+    capsys.readouterr()
+
+
+def test_cli_write_takes_a_stem_from_the_owner(tmp_path, monkeypatch, capsys):
+    """A word whose printed form the kosha does not hold can be carried on
+    with a stem the owner gives; it still needs --also."""
+    cli, seeds, run = _made_run(tmp_path, monkeypatch)
+    data = json.loads((run / "check.json").read_text(encoding="utf-8"))
+    data["rows"].append({"word": "deltaword", "label": "sanskrit", "printed": "rājā",
+                         "mw_key": "", "stem_found": False, "status": "needs_look",
+                         "reason": "stem_not_in_kosha", "stem_guess": "rAjA",
+                         "entry_text": "[Hindi delta, from Sanskrit rājā, king.]",
+                         "entry_segs": ["[Hindi delta, from Sanskrit rājā, king.]"],
+                         "entry_url": "https://example.invalid/deltaword"})
+    (run / "check.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    assert cli.main(["write", "--run", "made", "--stem", "deltaword=rAjan!"]) == 2
+    assert cli.main(["write", "--run", "made", "--stem", "alphaword=raTa"]) == 2  # not needs-a-look
+    assert cli.main(["write", "--run", "made", "--stem", "deltaword=rAjan"]) == 0  # dry: no job
+    lines = [json.loads(l) for l in (run / "write_input.jsonl").read_text(encoding="utf-8").splitlines()]
+    prompt = next(l for l in lines if l["key"].endswith("deltaword"))["request"]["contents"][0]["parts"][0]["text"]
+    # The stem goes to the model in roman letters, not in the SLP1 key.
+    assert "Sanskrit stem (roman letters): rājan" in prompt
+    row = next(r for r in json.loads((run / "check.json").read_text(encoding="utf-8"))["rows"]
+               if r["word"] == "deltaword")
+    assert (row["mw_key"], row["status"], row["stem_source"]) == ("rAjan", "needs_look", "owner")
+    capsys.readouterr()

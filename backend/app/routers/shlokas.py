@@ -12,19 +12,27 @@ scroll of verse cards over the 96 verses already in `shlokas`. It returns the
 whole lightweight corpus in date order, with the already-populated
 `word_breakdown` — word, meaning and features per word — which is the reader's
 instrumentation (P21-1: "built and paid for"). No TTS, no LLM, ₹0 (P21).
+
+GET /shlokas/{id}/meaning (2026-10-02) is the one route here that may reach a
+model: the verse's meaning in English and Hindi, from the row when it is
+stored, written once by Gemini and stored when it is not
+(services/verse_study.py). It is its own route so that /shlokas/today, which
+Home waits on, stays a plain read.
 """
 
 from __future__ import annotations
 
 from datetime import date
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner, Shloka
 from app.schemas import ShlokaResponse
+from app.services import verse_study
 from app.services.localtime import local_date
 
 router = APIRouter()
@@ -108,7 +116,51 @@ def get_today_shloka(
     if shloka is None:
         # No rows at all — empty well, not a freeze. Caller sees 404; the
         # runway guard (P7-7) pages loudly on this before it happens.
-        from fastapi import HTTPException
         raise HTTPException(status_code=404, detail="No shloka available")
 
     return _shloka_response(shloka)
+
+
+class ShlokaMeaning(BaseModel):
+    translation_en: str = ""
+    translation_hi: str = ""
+    source: str = Field(
+        default="none",
+        description="'db' when the meaning was stored, 'llm' when it was just "
+                    "written and stored, 'none' when there is none to show",
+    )
+
+
+@router.get("/shlokas/{shloka_id}/meaning", response_model=ShlokaMeaning)
+async def get_shloka_meaning(
+    shloka_id: str,
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """The verse's meaning in English and Hindi.
+
+    Stored meaning is returned as it is. A verse with none is written once by
+    Gemini (metered on the Gemini budget), stored on the row, and served from
+    the row to everyone after. A verse the model was already asked about and
+    could not read is not sent again. Never an error for a missing meaning:
+    'none' and two empty strings, and the screen shows the verse without it.
+    """
+    shloka = db.query(Shloka).filter(Shloka.id == shloka_id).first()
+    if shloka is None:
+        raise HTTPException(status_code=404, detail="No such shloka")
+
+    def _stored() -> tuple[str, str]:
+        return (shloka.translation_en or "").strip(), (shloka.translation_hi or "").strip()
+
+    en, hi = _stored()
+    if en or hi:
+        return ShlokaMeaning(translation_en=en, translation_hi=hi, source="db")
+    # Asked before and the answer was "nothing honest to say": do not pay again.
+    if verse_study.load_answer(db, shloka.devanagari, verse_study.MEANING_Q, "en") is not None:
+        return ShlokaMeaning()
+
+    written = await verse_study.write_study(db, learner, shloka.devanagari, shloka)
+    en, hi = _stored()
+    if written and (en or hi):
+        return ShlokaMeaning(translation_en=en, translation_hi=hi, source="llm")
+    return ShlokaMeaning()

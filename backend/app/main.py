@@ -141,6 +141,7 @@ def create_app() -> FastAPI:
     from app.routers.videos import router as videos_router
     from app.routers.story import router as story_router
     from app.routers.word_origins import router as word_origins_router
+    from app.routers.daily_content import router as daily_content_router
     from app.routers.legal import router as legal_router
     from app.routers.feedback import router as feedback_router
     from app.routers.games import router as games_router
@@ -174,6 +175,7 @@ def create_app() -> FastAPI:
     app.include_router(videos_router, tags=["Videos"])
     app.include_router(story_router, tags=["Story"])
     app.include_router(word_origins_router, tags=["Word origins"])
+    app.include_router(daily_content_router, tags=["Daily content"])
     app.include_router(legal_router, tags=["Legal"])
     app.include_router(feedback_router, tags=["Feedback"])
     app.include_router(games_router, tags=["Games"])

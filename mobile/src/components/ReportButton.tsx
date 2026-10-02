@@ -3,7 +3,8 @@
 // Google Play's AI-Generated Content policy requires in-app reporting for
 // chatbots. A small flag sits at the end of a reply's tab row; tapping it
 // swaps the row for one confirm line, and reporting shows "Reported" for two
-// seconds. Shared by Talk replies and Ask answers.
+// seconds. Shared by Talk replies, Ask answers and the two daily cards
+// (the word journey and Do you know), which a model also writes.
 
 import React, { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
@@ -17,10 +18,13 @@ export default function ReportButton({
   surface,
   question,
   answer,
+  noun = "reply",
 }: {
-  surface: "talk" | "ask";
+  surface: "talk" | "ask" | "fact" | "word";
   question: string;
   answer: string;
+  /** What is being reported, for the wording: "reply" or "card". */
+  noun?: string;
 }) {
   const [phase, setPhase] = useState<"idle" | "confirm" | "sent">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -44,7 +48,7 @@ export default function ReportButton({
   if (phase === "confirm") {
     return (
       <View style={styles.confirmRow}>
-        <Text style={styles.confirmText}>Report this reply?</Text>
+        <Text style={styles.confirmText}>{`Report this ${noun}?`}</Text>
         <Pressable
           onPress={() => {
             haptics.tap();
@@ -62,7 +66,7 @@ export default function ReportButton({
           }}
           style={styles.report}
           accessibilityRole="button"
-          accessibilityLabel="Report this reply"
+          accessibilityLabel={`Report this ${noun}`}
           hitSlop={8}
         >
           <Text style={styles.reportText}>Report</Text>
@@ -88,7 +92,7 @@ export default function ReportButton({
       }}
       style={styles.flag}
       accessibilityRole="button"
-      accessibilityLabel="Report this reply"
+      accessibilityLabel={`Report this ${noun}`}
       hitSlop={6}
     >
       <Ionicons name="flag-outline" size={16} color={color.inkFaint} />

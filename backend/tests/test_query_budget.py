@@ -67,6 +67,10 @@ def test_word_today_stays_within_budget(client, auth_headers):
     _assert_budget(client, auth_headers, "/word-origins/today", 5)
 
 
+def test_fact_today_stays_within_budget(client, auth_headers):
+    _assert_budget(client, auth_headers, "/facts/today", 4)
+
+
 def test_db_bound_read_handlers_stay_off_the_event_loop():
     """uvicorn runs one worker, so an ``async def`` handler that makes
     synchronous DB calls stalls every other request until it returns. Read

@@ -2,7 +2,9 @@
 // imports, so mobile/scripts/check-words.mjs can load it in plain Node.
 //
 // The relation of a route is worked out server-side (borrowed | travelled |
-// related) and never guessed here: an unknown relation renders no line.
+// related | traced) and never guessed here: an unknown relation renders no
+// line. "traced" is a word checked against a page that names its Sanskrit
+// source without the stops in between, so the line claims no more than that.
 
 export const FEATURE_TITLE = "Word journey";
 
@@ -26,6 +28,8 @@ export interface RouteLike {
   confidence?: string | null;
   hops?: HopLike[] | null;
   sources?: string[] | null;
+  source_url?: string | null;
+  source_site?: string | null;
 }
 
 export interface OriginLike {
@@ -60,11 +64,19 @@ export function relationLine(route: RouteLike | null | undefined): string {
   const relation = text(route?.relation);
   if (relation === "borrowed") return "Borrowed from Sanskrit";
   if (relation === "related") return "Same family as Sanskrit";
+  if (relation === "traced") return "Goes back to Sanskrit";
   if (relation === "travelled") {
     const n = hopsOf(route).length;
     return `From Sanskrit, through ${n} language${n === 1 ? "" : "s"}`;
   }
   return "";
+}
+
+/** The page a route was checked against, when the route carries one. */
+export function sourcePage(route: RouteLike | null | undefined): { site: string; url: string } | null {
+  const url = text(route?.source_url);
+  if (!/^https?:\/\//i.test(url)) return null;
+  return { site: text(route?.source_site) || url, url };
 }
 
 /** "Dictionaries say probably" for probable, else "". */

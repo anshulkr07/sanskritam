@@ -197,6 +197,176 @@ def test_no_two_origins_share_date():
         db.close()
 
 
+def test_no_two_items_share_a_date_across_files():
+    """The files themselves, not the table: the unique index would hide a clash
+    by dropping the later item at boot."""
+    seen: dict[str, str] = {}
+    for p, doc in _batch_items():
+        start = date.fromisoformat(doc["start_date"])
+        for pos, it in enumerate(doc.get("items", [])):
+            if it.get("status") != "approved":
+                continue
+            day = (start + timedelta(days=pos)).isoformat()
+            assert day not in seen, f"{p.name}: {it['id']} and {seen[day]} share {day}"
+            seen[day] = it["id"]
+
+
+def test_no_origin_id_is_carried_twice():
+    seen: dict[str, str] = {}
+    for p, doc in _batch_items():
+        for it in doc.get("items", []):
+            assert it["id"] not in seen, f"{it['id']} is in {seen.get(it['id'])} and {p.name}"
+            seen[it["id"]] = p.name
+
+
+def _seed_from(folder):
+    """Run the word loader against another folder of batch files."""
+    import app.seeds.word_origins as seedmod
+    from app.db import SessionLocal
+    real = seedmod._data_dir
+    seedmod._data_dir = lambda: folder
+    db = SessionLocal()
+    try:
+        out = seedmod.seed_word_origins(db)
+        db.commit()
+        return out
+    finally:
+        db.close()
+        seedmod._data_dir = real
+
+
+def _table():
+    from app.db import SessionLocal
+    from app.models import WordOrigin
+    db = SessionLocal()
+    try:
+        return {o.id: (o.scheduled_date, o.status, o.gloss, o.attested)
+                for o in db.query(WordOrigin).all()}
+    finally:
+        db.close()
+
+
+def _pipeline_dates():
+    """Dates held by words the daily pipeline wrote (batch "auto"). The loader
+    leaves those rows alone and skips a file item that wants one of their days."""
+    from app.db import SessionLocal
+    from app.models import WordOrigin
+    db = SessionLocal()
+    try:
+        return {o.scheduled_date for o in db.query(WordOrigin).filter(WordOrigin.batch == "auto").all()}
+    finally:
+        db.close()
+
+
+def _copy_of_batch0(tmp_path, name, change):
+    folder = tmp_path / name
+    folder.mkdir()
+    doc = json.loads((DATA_DIR / "batch-0000.json").read_text(encoding="utf-8"))
+    change(doc)
+    (folder / "batch-0000.json").write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+    return folder, doc
+
+
+def test_reseed_when_the_start_date_moves_or_an_item_goes(client, tmp_path):
+    """The owner sets start_date to the release day, and may drop an item.
+    Dates then pass from one row to another under a unique index; the seed
+    runs at startup, so it must not raise."""
+    before = _table()
+    try:
+        for days in (5, -5, 60):
+            _seed_from(DATA_DIR)
+
+            def move(doc, days=days):
+                start = date.fromisoformat(doc["start_date"]) + timedelta(days=days)
+                doc["start_date"] = start.isoformat()
+
+            folder, doc = _copy_of_batch0(tmp_path, f"moved{days}", move)
+            _seed_from(folder)
+            rows = _table()
+            taken = _pipeline_dates()
+            for pos, it in enumerate(doc["items"]):
+                want = (date.fromisoformat(doc["start_date"]) + timedelta(days=pos)).isoformat()
+                if want not in taken:
+                    assert rows[it["id"]][0] == want, (days, it["id"])
+
+        _seed_from(DATA_DIR)
+        gone = {}
+
+        def drop(doc):
+            gone["id"] = doc["items"].pop(3)["id"]
+
+        folder, doc = _copy_of_batch0(tmp_path, "dropped", drop)
+        _seed_from(folder)
+        rows = _table()
+        assert rows[gone["id"]][:2] == (None, "withdrawn")
+        start = date.fromisoformat(doc["start_date"])
+        assert rows[doc["items"][3]["id"]][0] == (start + timedelta(days=3)).isoformat()
+    finally:
+        _seed_from(DATA_DIR)
+    assert _table() == before
+
+
+def test_loader_leaves_pipeline_rows_alone(client):
+    """A word the daily pipeline stored (batch "auto") is in no file. The
+    loader must not withdraw it or take its date."""
+    from app.db import SessionLocal
+    from app.models import WordOrigin, WordRoute
+    db = SessionLocal()
+    try:
+        db.add(WordOrigin(id="test-auto", batch="auto", rank=0, scheduled_date="2999-01-01",
+                          mw_key="yoga", sanskrit_dev="x", sanskrit_iast="x", status="approved"))
+        db.add(WordRoute(id="test-auto.en.x", origin_id="test-auto", rank=0, lang="en",
+                         lang_name="English", word="x", script="latin", kind="loan",
+                         confidence="certain", hops=[], source_keys=["ahd"], status="approved"))
+        db.commit()
+    finally:
+        db.close()
+    try:
+        _seed_from(DATA_DIR)
+        assert _table()["test-auto"][:2] == ("2999-01-01", "approved")
+    finally:
+        db = SessionLocal()
+        try:
+            for rr in db.query(WordRoute).filter(WordRoute.origin_id == "test-auto").all():
+                db.delete(rr)
+            row = db.query(WordOrigin).filter(WordOrigin.id == "test-auto").first()
+            if row is not None:
+                db.delete(row)
+            db.commit()
+        finally:
+            db.close()
+
+
+def test_a_later_batch_cannot_take_over_an_origin(client, tmp_path):
+    """A second file that reuses an origin id is skipped with a warning: the
+    first file's word keeps its date, its meaning and its "Found in"."""
+    before = _table()
+    folder, doc = _copy_of_batch0(tmp_path, "twice", lambda doc: None)
+    first = doc["items"][0]
+    last_day = date.fromisoformat(doc["start_date"]) + timedelta(days=len(doc["items"]))
+    clash = {
+        "batch": "0001", "made_on": "2026-10-02", "maker": "test", "model": "",
+        "start_date": last_day.isoformat(),
+        "items": [{
+            "id": first["id"], "status": "approved", "mw_key": first["mw_key"],
+            "sanskrit": first["sanskrit"], "gloss": "another meaning",
+            "attested_abbr": [], "attested": "", "note": "",
+            "routes": [{
+                "id": first["id"] + ".en.madeup", "status": "approved", "lang": "en",
+                "lang_name": "English", "word": "madeup", "script": "latin", "roman": "",
+                "gloss": "x", "kind": "loan", "confidence": "certain", "hops": [],
+                "sources": ["ahd"], "lookup": "madeup", "checked_on": "2026-10-02",
+                "checked_by": "rule"}],
+        }],
+    }
+    (folder / "batch-0001.json").write_text(json.dumps(clash, ensure_ascii=False), encoding="utf-8")
+    try:
+        _seed_from(folder)
+        assert _table() == before
+    finally:
+        _seed_from(DATA_DIR)
+
+
 def _made_rows():
     # origins with scheduled dates, routes by origin.
     origins = [
@@ -284,9 +454,15 @@ def test_origin_404(client):
     from app.models import WordOrigin as WO, WordRoute as WR
     from app.services.localtime import local_date
     today = local_date("UTC")
-    fut_day = (date.fromisoformat(today) + timedelta(days=1)).isoformat()
     db = SessionLocal()
     try:
+        # The first day after today that no word holds (the date is unique,
+        # and a batch may well be running through tomorrow).
+        held = {o.scheduled_date for o in db.query(WO).all() if o.id != "test-future"}
+        nxt = date.fromisoformat(today) + timedelta(days=1)
+        while nxt.isoformat() in held:
+            nxt += timedelta(days=1)
+        fut_day = nxt.isoformat()
         fo = db.query(WO).filter(WO.id == "test-future").first()
         if fo is None:
             fo = WO(id="test-future", batch="test", rank=999,
@@ -306,17 +482,39 @@ def test_origin_404(client):
     finally:
         db.close()
     assert client.get("/word-origins/test-future", headers=h).status_code == 404
-    # Withdrawn is also 404.
-    db2 = SessionLocal()
-    try:
-        fo2 = db2.query(WO).filter(WO.id == "test-future").first()
-        if fo2 is not None:
-            db2.delete(fo2)
-            for rr in db2.query(WR).filter(WR.origin_id == "test-future").all():
-                db2.delete(rr)
+
+    def _set(**fields):
+        db2 = SessionLocal()
+        try:
+            row = db2.query(WO).filter(WO.id == "test-future").first()
+            for name, value in fields.items():
+                setattr(row, name, value)
             db2.commit()
+        finally:
+            db2.close()
+
+    try:
+        # Once its day has come the same row is served...
+        _set(scheduled_date="2000-01-01")
+        assert client.get("/word-origins/test-future", headers=h).status_code == 200
+        ids = [o["id"] for o in client.get("/word-origins", headers=h).json()["origins"]]
+        assert "test-future" in ids
+        # ...and withdrawn it is 404 again, and gone from the list.
+        _set(status="withdrawn")
+        assert client.get("/word-origins/test-future", headers=h).status_code == 404
+        ids = [o["id"] for o in client.get("/word-origins", headers=h).json()["origins"]]
+        assert "test-future" not in ids
     finally:
-        db2.close()
+        db3 = SessionLocal()
+        try:
+            for rr in db3.query(WR).filter(WR.origin_id == "test-future").all():
+                db3.delete(rr)
+            fo2 = db3.query(WO).filter(WO.id == "test-future").first()
+            if fo2 is not None:
+                db3.delete(fo2)
+            db3.commit()
+        finally:
+            db3.close()
 
 
 def test_post_today_and_me_unchanged(client):

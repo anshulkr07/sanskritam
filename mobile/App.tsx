@@ -66,6 +66,7 @@ import PracticeRoundScreen from "./src/screens/PracticeRound";
 import KalaScreen from "./src/screens/Kala";
 import KalaChapterScreen from "./src/screens/KalaChapter";
 import WordJourneyScreen from "./src/screens/WordJourney";
+import DoYouKnowScreen from "./src/screens/DoYouKnow";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -148,6 +149,8 @@ function RootNavigator() {
             <Stack.Screen name="KalaChapter" component={KalaChapterScreen} options={{ title: "Kāla" }} />
             {/* Word journey: the screen behind the Home word card. */}
             <Stack.Screen name="WordJourney" component={WordJourneyScreen} options={{ title: "Word journey" }} />
+            {/* Do you know: the screen behind the Home fact card. */}
+            <Stack.Screen name="DoYouKnow" component={DoYouKnowScreen} options={{ title: "Do you know" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

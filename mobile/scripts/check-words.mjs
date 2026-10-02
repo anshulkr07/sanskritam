@@ -126,6 +126,8 @@ same(
   "travelled, three",
 );
 same(L.relationLine({ relation: "related" }), "Same family as Sanskrit", "related");
+same(L.relationLine({ relation: "traced" }), "Goes back to Sanskrit", "traced");
+same(L.relationLine({ relation: "traced", hops: [{ lang: "A", form: "a" }] }), "Goes back to Sanskrit", "traced claims no stops");
 same(L.relationLine({ relation: "loan" }), "", "a stored kind is not a label");
 same(L.relationLine({ relation: "" }), "", "empty relation gives no line");
 same(L.relationLine({}), "", "missing relation gives no line");
@@ -136,6 +138,14 @@ section("Confidence");
 same(L.confidenceLine({ confidence: "probable" }), "Dictionaries say probably", "probable");
 same(L.confidenceLine({ confidence: "certain" }), "", "certain gives no line");
 same(L.confidenceLine({}), "", "missing confidence gives no line");
+
+// ── the page behind a route ─────────────────────────────────────────────
+section("Source page");
+same(L.sourcePage({ source_url: "https://dle.rae.es/x", source_site: "RAE" })?.site, "RAE", "site named");
+same(L.sourcePage({ source_url: "https://dle.rae.es/x" })?.site, "https://dle.rae.es/x", "no site name: the address");
+same(L.sourcePage({ source_url: "javascript:alert(1)", source_site: "x" }), null, "only web addresses open");
+same(L.sourcePage({ source_url: "" }), null, "no page");
+same(L.sourcePage(zucker), null, "a hand-checked route has no page");
 
 // ── stops ───────────────────────────────────────────────────────────────
 section("Stops");
@@ -200,6 +210,7 @@ section("Copy rule");
     L.relationLine({ relation: "borrowed" }),
     L.relationLine(zucker),
     L.relationLine({ relation: "related" }),
+    L.relationLine({ relation: "traced" }),
     L.confidenceLine({ confidence: "probable" }),
     L.cardSentence(sharkara, zucker),
     L.journeySentence(sharkara, zucker),

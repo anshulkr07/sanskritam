@@ -84,6 +84,8 @@ PRICING_INR_PER_1M: dict[str, tuple[float, float]] = {
     "gemini-2.5-pro": (105.0, 840.0),
     "gemini-2.0-flash": (9.0, 34.0),
     "google/gemini-3.7-flash": (26.0, 210.0),
+    # $0.75 / $3.75 per 1M (Google's page, 2026-10-02) at ₹100 to the dollar.
+    "gemini-3.8-flash": (75.0, 375.0),
     "gpt-4o": (210.0, 840.0),
     "gpt-4o-mini": (13.0, 50.0),
     "claude-sonnet-4-5": (250.0, 1250.0),
@@ -165,6 +167,16 @@ REGISTRY: dict[str, ProviderSpec] = {
             "HTTP-Referer": "https://sanskritam.io",
             "X-Title": "Sanskritam",
         },
+    ),
+    # Gemini online on Vertex AI with the service account, not an API key
+    # (services/vertex_live.py). env_key names the setting that can carry the
+    # key as JSON; a key file at settings.vertex_credentials_path works too.
+    "vertex": ProviderSpec(
+        base_url="https://aiplatform.googleapis.com/v1",
+        env_key="VERTEX_CREDENTIALS_JSON",
+        default_model="gemini-3.8-flash",
+        auth="vertex",
+        kind="vertex",
     ),
 }
 
@@ -372,7 +384,12 @@ def build_provider(
             f"Unknown provider {name!r}. Known: {', '.join(sorted(REGISTRY))}"
         )
     spec = REGISTRY[name]
-    cls = AnthropicProvider if spec.kind == "anthropic" else Provider
+    if spec.kind == "vertex":
+        from app.services.vertex_live import VertexProvider  # lazy: no cycle at module load
+
+        cls = VertexProvider
+    else:
+        cls = AnthropicProvider if spec.kind == "anthropic" else Provider
     kwargs: dict = {"model": model.strip() or None, "api_key": api_key}
     if timeout is not None:
         kwargs["timeout"] = timeout

@@ -51,14 +51,23 @@ TERMINAL_STATES = frozenset({
 CLOUD_SCOPE = ["https://www.googleapis.com/auth/cloud-platform"]
 
 
-def load_token(credentials_path: str) -> str:
-    """OAuth token for the Vertex service account. Imported here, never logged."""
+def load_token(credentials_path: str = "", credentials_info: Optional[dict] = None) -> str:
+    """OAuth token for the Vertex service account. Imported here, never logged.
+
+    ``credentials_info`` is the key as a parsed JSON object (how a host with
+    no key file passes it); when given it wins over the path.
+    """
     import google.auth.transport.requests  # lazy: google-auth only needed for live runs
     from google.oauth2 import service_account
 
-    creds = service_account.Credentials.from_service_account_file(
-        credentials_path, scopes=CLOUD_SCOPE
-    )
+    if credentials_info:
+        creds = service_account.Credentials.from_service_account_info(
+            credentials_info, scopes=CLOUD_SCOPE
+        )
+    else:
+        creds = service_account.Credentials.from_service_account_file(
+            credentials_path, scopes=CLOUD_SCOPE
+        )
     creds.refresh(google.auth.transport.requests.Request())
     return creds.token
 
@@ -113,7 +122,9 @@ def extract_reply_text(response: dict) -> str:
         if not cands:
             return ""
         parts = ((cands[0] or {}).get("content") or {}).get("parts") or []
-        return "".join(str((p or {}).get("text") or "") for p in parts)
+        # A part marked "thought" is the model's working, not its reply.
+        return "".join(str((p or {}).get("text") or "") for p in parts
+                       if not (p or {}).get("thought"))
     except Exception:
         return ""
 
@@ -219,8 +230,12 @@ class VertexBatchClient:
         model: str = "gemini-3.8-flash",
         http=None,
         token: str = "",
+        credentials_info: Optional[dict] = None,
     ) -> None:
         self.credentials_path = credentials_path
+        self.credentials_info = credentials_info
+        self._fetched_token = ""
+        self._fetched_at = 0.0
         self.project = project
         self.bucket = bucket
         self.prefix = prefix.strip("/")
@@ -237,7 +252,13 @@ class VertexBatchClient:
         return httpx.Client(timeout=120, follow_redirects=True)
 
     def _headers(self) -> dict[str, str]:
-        token = self._token or load_token(self.credentials_path)
+        token = self._token
+        if not token:
+            # One refresh serves a run: a token lasts an hour, a tick two minutes.
+            if not self._fetched_token or time.monotonic() - self._fetched_at > 1800:
+                self._fetched_token = load_token(self.credentials_path, self.credentials_info)
+                self._fetched_at = time.monotonic()
+            token = self._fetched_token
         # The token is never logged.
         return {"Authorization": f"Bearer {token}"}
 

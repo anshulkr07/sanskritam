@@ -4,6 +4,10 @@ Google Play's AI-Generated Content policy requires in-app reporting for
 chatbots. POST /feedback/report stores one row and returns 204. Every new
 endpoint uses require_learner. Nothing here logs a place or a screen's text —
 a report carries only the question, the answer and an optional reason.
+
+The daily cards are written by a model too, so they can be flagged the same
+way: surface "fact" (question = the card's id, answer = the fact) and
+surface "word" (question = the route's id, answer = the word).
 """
 
 from datetime import datetime, timezone
@@ -27,7 +31,7 @@ MAX_FIELD = 2000
 
 
 class ReportRequest(BaseModel):
-    surface: str = Field(..., pattern="^(talk|ask)$")
+    surface: str = Field(..., pattern="^(talk|ask|fact|word)$")
     question: str = ""
     answer: str = ""
     reason: str = ""
@@ -39,7 +43,7 @@ def report_content(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """Flag a tutor reply or Ask answer. Returns 204, always."""
+    """Flag a tutor reply, an Ask answer or a daily card. Returns 204, always."""
     day_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     today = (
         db.query(func.count(ContentReport.id))

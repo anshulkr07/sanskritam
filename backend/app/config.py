@@ -141,6 +141,49 @@ class Settings(BaseSettings):
     # Sarvam Document Digitization: ₹0.5 per page (docs.sarvam.ai/api/getting-started/pricing,
     # 2026-09-30). One photographed letter or word is one page.
     price_doc_inr_per_page: float = 0.5
+    # POST /speech/stt on auto-detect runs three Saaras passes over one
+    # recording (services/learner_stt.py). The learner's allowance is charged
+    # once; the budget above counts all three, because all three are billed.
+    stt_auto_detect_passes: int = 3
+
+    # What a verse means (services/verse_study.py): the meaning under the
+    # verse of the day and the Ask sheet's answers about a verse. Shown from
+    # the database when stored; otherwise written once by Gemini Flash,
+    # online, through Vertex AI with the service account below, and stored
+    # (owner instruction 2026-10-02). Any Google-billed "name:model" from
+    # evals/providers.py works here. With no credentials, a spent budget or a
+    # failed call, a verse question falls back to the Sarvam explainer above.
+    verse_explain_provider: str = "vertex:gemini-3.8-flash"
+    verse_explain_enabled: bool = True
+    # One study: meaning and idea in English and Hindi plus key words.
+    verse_study_max_tokens: int = 1200
+    # One card answering any other question about a verse.
+    verse_explain_max_tokens: int = 700
+    verse_explain_timeout_s: float = 20.0
+
+    # Gemini has its own ceiling, apart from the Sarvam one: rupees across ALL
+    # learners in the same rolling window (owner decision 2026-10-02: ₹200).
+    # 0 disables the ceiling. Every online Gemini call must go through
+    # services/quota.py with kind "gemini_inr" so it counts here.
+    gemini_daily_budget_inr: float = 200.0
+    # One learner's share of it, so a single account cannot drain the pool.
+    quota_gemini_inr_per_day: float = 10.0
+    # Gemini 3.8 Flash, global, USD per 1M tokens (input, output including
+    # reasoning). Read on Google's pricing page 2026-10-02: $0.75 / $3.75
+    # through 2026-12-31, then $1.50 / $7.50. services/quota.py switches on
+    # the date. OpenRouter's model list showed the same $0.75 / $3.75.
+    price_gemini_usd_per_m_input: float = 0.75
+    price_gemini_usd_per_m_output: float = 3.75
+    price_gemini_usd_per_m_input_2027: float = 1.50
+    price_gemini_usd_per_m_output_2027: float = 7.50
+    # Rounded up on purpose so the ceiling errs early (about 96 on 2026-10-02).
+    usd_inr: float = 100.0
+
+    # POST /speech/tts keeps recent audio in memory, keyed by text, voice and
+    # pace, so the verse of the day is synthesised once per instance and not
+    # once per tap per learner. A hit costs no vendor call and no quota.
+    # 0 turns the cache off.
+    tts_cache_max_bytes: int = 32 * 1024 * 1024
 
     # Public legal pages (/privacy, /delete-account). Google Play requires a
     # privacy policy URL and an account-deletion URL; both name a contact.
@@ -182,6 +225,25 @@ class Settings(BaseSettings):
     vertex_batch_prefix: str = "sanskritam-word-origins"
     vertex_location: str = "global"
     word_origins_model: str = "gemini-3.8-flash"
+    # The same service-account key as one JSON string, for hosts with no key
+    # file: Cloud Run mounts it from Secret Manager as VERTEX_CREDENTIALS_JSON.
+    # When set it wins over vertex_credentials_path. Never logged.
+    vertex_credentials_json: str = ""
+
+    # Daily content (services/daily_content.py): the word journey and the
+    # "Do you know" fact are written by the model, checked by code against a
+    # page on a trusted site, and stored in the database. POST
+    # /admin/content/tick moves the work one step; a scheduler calls it.
+    # Each kind is topped up when fewer than this many future days are filled.
+    content_words_stock_days: int = 60
+    content_facts_stock_days: int = 30
+    # Rupees the pipeline may spend on batch jobs in any 24 hours, by its own
+    # token counts at half the list price (batch). 0 turns the ceiling off.
+    # It also stays under what is left of gemini_daily_budget_inr.
+    content_daily_budget_inr: float = 60.0
+    # Hosts trusted as evidence on top of the built-in list
+    # (services/page_check.py), comma-separated, for example "example.edu".
+    content_extra_trusted_hosts: str = ""
 
     # Dev-login guard — disable in production
     dev_login_enabled: bool = True
@@ -228,15 +290,6 @@ class Settings(BaseSettings):
     # playTutorAudio fallback (no new endpoint, same quota path). Flip on only
     # for a coupled A/B against the `[perf] turn` lines the client logs.
     conversation_inline_audio: bool = False
-
-    # Word journey pipeline (handover_language 7.2): Gemini through Vertex AI
-    # batch jobs with the service account, and no other way. No OpenRouter and
-    # no online Gemini call in this feature.
-    vertex_credentials_path: str = "../vertex_credentials.json"
-    vertex_batch_bucket: str = "videos-498005-batch"
-    vertex_batch_prefix: str = "sanskritam-word-origins"
-    vertex_location: str = "global"
-    word_origins_model: str = "gemini-3.8-flash"
 
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 
