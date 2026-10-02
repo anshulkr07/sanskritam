@@ -19,7 +19,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "1 October 2026"
+UPDATED = "2 October 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -75,7 +75,7 @@ processes it for us, and how to delete it. Questions and requests: {contact}.</p
 <li><strong>Your account.</strong> If you start without signing in, the app creates a random ID on your
 device and an account linked to it. If you sign in with Google or Apple, we receive an account identifier
 and your name, which becomes your display name (if no name is shared, we use the part of your email
-address before the “@”). We don't store your email address.</li>
+address before the "@"). We don't store your email address.</li>
 <li><strong>Your learning.</strong> Your answers, scores, lesson and review progress, streaks, daily
 activity, and settings such as your language mix and time zone, so the app can check your answers, adapt
 to you and keep your progress.</li>
@@ -89,11 +89,18 @@ check a photo of your handwriting, the photo is sent to Sarvam AI to be read. We
 and don't store the photo on our servers.</li>
 <li><strong>Notifications.</strong> If you turn on reminders, a push token for your device, so we can send
 them.</li>
-<li><strong>Your place, only when you ask about dates.</strong> If you allow it or pick a city, the app
-sends an approximate place with a question about dates so the server can work out sunrise and tithi. It
-is used for that answer and not stored.</li>
+<li><strong>Your place, for location-aware features.</strong> The app needs location access on your
+device to work out your local tithi, sunrise and festival dates. If you allow it or pick a city, the app
+sends an approximate place with each date query so the server can compute the correct times. It is used for
+that answer and not stored. You can turn off location at any time in your device settings, though date
+features will stop working.</li>
 <li><strong>Your screen, only when you attach it.</strong> When you attach a screen to a question, its
 text is read on your phone and only the text is sent.</li>
+<li><strong>Files on your device.</strong> The app may read and write lesson content and audio files on your
+device so you can use them offline. We decide which files to store; the app does not browse your personal
+files.</li>
+<li><strong>Audio playback settings.</strong> The app adjusts your device's audio settings to play
+pronunciations and music clearly. No listening data is collected.</li>
 <li><strong>Usage limits and errors.</strong> How many characters, seconds of speech and AI requests you
 use, so we can enforce daily limits; and server error records (which request failed and a technical
 trace, with no answers, recordings or personal details).</li>
@@ -157,7 +164,7 @@ def delete_account() -> HTMLResponse:
 stored on your phone.</p>
 
 <h2>Without the app</h2>
-<p>Email {contact} with the subject “Delete my Sanskritam account” and your display name as shown in
+<p>Email {contact} with the subject "Delete my Sanskritam account" and your display name as shown in
 Settings. We don't store email addresses, so the display name is how we find your account; if we can't
 tell which account is yours, we'll ask you a question about it before deleting anything. We delete it
 within 30 days and reply to confirm.</p>
