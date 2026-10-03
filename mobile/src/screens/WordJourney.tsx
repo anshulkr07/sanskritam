@@ -9,7 +9,7 @@
 // 5. The note, when there is one.
 // 6. "Sources": the dictionaries behind the card, each opening its site. A
 //    word the daily pipeline found names the very page it was checked
-//    against, says a model found it, and carries a flag to report it.
+//    against and carries a flag to report it.
 // 7. "More words": earlier words, newest first.
 //
 // Read-only: opening it writes nothing. With an originId it shows that word;
@@ -222,13 +222,8 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
             )}
 
             {page && (
-              <View style={styles.aiBlock}>
-                <Text style={[styles.aiNote, { fontSize: sized(font.sizes.sm) }]}>
-                  Found by AI, then checked against the source page. The meanings are the AI's wording.
-                </Text>
-                <View style={styles.aiFlag}>
-                  <ReportButton surface="word" question={selected.id ?? ""} answer={askSubject} noun="card" />
-                </View>
+              <View style={styles.flagRow}>
+                <ReportButton surface="word" question={selected.id ?? ""} answer={askSubject} noun="card" />
               </View>
             )}
 
@@ -303,9 +298,7 @@ const styles = StyleSheet.create({
   note: { fontFamily: "Nunito_400Regular", fontWeight: "400", color: color.ink, marginTop: space.md },
   pageRow: { flexDirection: "row", alignItems: "center", gap: space.xs, minHeight: 44, marginTop: 2 },
   pageText: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.inkSoft },
-  aiBlock: { marginTop: space.md },
-  aiNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, lineHeight: 20 },
-  aiFlag: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44 },
+  flagRow: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44, marginTop: space.sm },
   row: {
     flexDirection: "row",
     alignItems: "center",

@@ -7,7 +7,7 @@
 // 3. "In English": the passage translated.
 // 4. "What it says": a short explanation, when there is one.
 // 5. "Source": the page that carries the verse, opening in the browser.
-// 6. One line saying a model wrote the card, and a flag to report it.
+// 6. A flag to report the card.
 // 7. "Earlier": earlier facts, newest first.
 //
 // Read-only: opening it writes nothing. With a factId it shows that fact;
@@ -149,19 +149,13 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
               </>
             )}
 
-            <View style={styles.aiBlock}>
-              <Text style={[styles.aiNote, { fontSize: sized(font.sizes.sm) }]}>
-                Written by AI. The verse was checked against the source page. The fact, the translation and the
-                explanation are the AI's wording.
-              </Text>
-              <View style={styles.aiFlag}>
-                <ReportButton
-                  surface="fact"
-                  question={fact.id ?? ""}
-                  answer={[body, ref].filter((p) => p !== "").join(" ")}
-                  noun="card"
-                />
-              </View>
+            <View style={styles.flagRow}>
+              <ReportButton
+                surface="fact"
+                question={fact.id ?? ""}
+                answer={[body, ref].filter((p) => p !== "").join(" ")}
+                noun="card"
+              />
             </View>
 
             {!more.loading && !more.failed && earlier.length > 0 && (
@@ -235,7 +229,5 @@ const styles = StyleSheet.create({
   rowText: { flex: 1, minWidth: 0 },
   rowTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   rowSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
-  aiBlock: { marginTop: space.md },
-  aiNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, lineHeight: 20 },
-  aiFlag: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44 },
+  flagRow: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44, marginTop: space.sm },
 });
