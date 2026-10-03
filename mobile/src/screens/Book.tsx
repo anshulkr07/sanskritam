@@ -25,6 +25,7 @@ import { setReadingPosition } from "../services/readingProgress";
 import { READER_THEMES, READER_SIZES, type ReaderThemeName } from "./readerTheme";
 import { color, font, sanskritText, script, space } from "../theme";
 import { plain } from "../utils/text";
+import { bookVerses, tierVerses } from "../utils/verses";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Book">;
 
@@ -59,19 +60,20 @@ export default function BookScreen({ navigation, route }: Props) {
     });
   }, []);
 
-  const { data: verses } = useQuery(`shlokas-all`, api.listShlokas, { ttlMs: 30 * 60_000 });
-  const { data: canon } = useQuery(`canon`, api.canon, { ttlMs: 30 * 60_000 });
-
-  const book = useMemo(() => {
-    const list = (verses ?? []).filter((v) => (v.source_ref || "").includes("") );
-    return { verses: list };
-  }, [verses]);
+  // The same queries the Reader's contents page reads, so `index` (a position
+  // in that list) opens the same verse here.
+  const { data: verses } = useQuery("reader-verses", api.listShlokas, { ttlMs: 30 * 60_000 });
+  const { data: canon } = useQuery("canon", api.canon, { ttlMs: 30 * 60_000 });
+  const tier = bookKey.startsWith("graded-") ? parseInt(bookKey.slice("graded-".length), 10) : 0;
+  const { data: tierRows } = useQuery(
+    `reader-tier-${tier}`,
+    () => (tier ? api.readerTier(tier) : Promise.resolve([])),
+  );
 
   const pages: Shloka[] = useMemo(() => {
-    // Filter to this book by slug heuristics until useReaderBooks is wired here.
-    // Reader passes the exact index; the book's verses come from the cache.
-    return (verses ?? []).slice(0, 700);
-  }, [verses]);
+    if (tier) return tierVerses(tierRows ?? []);
+    return bookVerses(bookKey, verses ?? [], canon?.texts ?? []) ?? [];
+  }, [tier, tierRows, bookKey, verses, canon]);
 
   const theme = READER_THEMES[themeName];
   const readerScale = READER_SIZES[sizeStep] ?? 1;

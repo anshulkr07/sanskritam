@@ -8,7 +8,7 @@
 // groups verses under their canon books (matched by ref_prefixes exactly the
 // way the backend's /canon counts them, so shelf counts and contents agree).
 
-import type { CanonText, Shloka } from "../api/client";
+import type { CanonText, ReaderPassage, Shloka } from "../api/client";
 
 export interface ParsedRef {
   /** The book/canto part, spelling-normalised. */
@@ -92,6 +92,50 @@ export function sortVerses(verses: Shloka[], bookOf: BookOf): Shloka[] {
   return [...verses].sort((a, b) => compareVerses(a, b, bookOf));
 }
 
+/** "Bhagavad Gītā 18.66" → "Bhagavad Gītā 18.66"; "" when the ref has no number.
+ *  The backend counts a book's verses by the same key (routers/canon.py). */
+export function verseKey(ref: string): string {
+  const { book, nums } = parseRef(ref);
+  return nums.length > 0 ? `${book} ${nums.join(".")}` : "";
+}
+
+function devanagariLength(v: Shloka): number {
+  return (v.devanagari ?? "").replace(/[^ऀ-ॿ]|[।॥]/g, "").length;
+}
+
+/** The row to show when several carry one verse: the fullest text, then one
+ *  with a stored meaning, then the earliest date. */
+function fuller(a: Shloka, b: Shloka): boolean {
+  const la = devanagariLength(a);
+  const lb = devanagariLength(b);
+  if (la !== lb) return la > lb;
+  const ma = Boolean((a.translation_en || a.translation_hi || "").trim());
+  const mb = Boolean((b.translation_en || b.translation_hi || "").trim());
+  if (ma !== mb) return ma;
+  if (a.date !== b.date) return a.date < b.date;
+  return a.id < b.id;
+}
+
+/**
+ * One entry per verse. The daily verses hold half-verses under the verse's
+ * number and an imported text holds the whole verse under the same number
+ * (Gītā 18.66 is both), so a book would list it twice. A reference with no
+ * number ("Sūkti: Subhāṣita") is shared by different sayings and never merged.
+ */
+export function oneVersePerRef(verses: Shloka[]): Shloka[] {
+  const best = new Map<string, Shloka>();
+  for (const v of verses) {
+    const k = verseKey(v.source_ref);
+    if (!k) continue;
+    const had = best.get(k);
+    if (!had || fuller(v, had)) best.set(k, v);
+  }
+  return verses.filter((v) => {
+    const k = verseKey(v.source_ref);
+    return !k || best.get(k) === v;
+  });
+}
+
 export interface BookGroup {
   /** The canon row, or null for verses no book claims ("Other verses"). */
   text: CanonText | null;
@@ -119,12 +163,46 @@ export function groupByBook(verses: Shloka[], canon: CanonText[]): BookGroup[] {
   }
   const groups: BookGroup[] = canon.map((t) => ({
     text: t,
-    verses: sortVerses(buckets.get(t.slug) ?? [], bookOf),
+    verses: sortVerses(oneVersePerRef(buckets.get(t.slug) ?? []), bookOf),
   }));
   if (orphans.length > 0) {
-    groups.push({ text: null, verses: sortVerses(orphans, bookOf) });
+    groups.push({ text: null, verses: sortVerses(oneVersePerRef(orphans), bookOf) });
   }
   return groups;
+}
+
+export const ALL_BOOK = "all";
+export const OTHER_BOOK = "other";
+
+/**
+ * The pages of one book, in reading order: what the contents page lists and
+ * what the reading page turns through, so an index from one opens the same
+ * verse in the other. "all" is every row; "other" the rows no canon text
+ * claims; anything else a canon slug. Null when there is no such book.
+ * Graded tiers are not verses; see ``tierVerses``.
+ */
+export function bookVerses(key: string, verses: Shloka[], canon: CanonText[]): Shloka[] | null {
+  if (key === ALL_BOOK) return sortVerses(verses, makeBookOf(canon));
+  const groups = groupByBook(verses, canon);
+  const g = key === OTHER_BOOK
+    ? groups.find((x) => x.text === null)
+    : groups.find((x) => x.text?.slug === key);
+  return g ? g.verses : null;
+}
+
+/** A graded tier's passages as pages (U14-5 / P22-6). */
+export function tierVerses(rows: ReaderPassage[]): Shloka[] {
+  return rows.map((p, i) => ({
+    id: `tier${p.tier}-${i}`,
+    date: "",
+    source_ref: `Graded Tier ${p.tier} · verse ${i + 1}`,
+    devanagari: p.devanagari,
+    iast: p.iast,
+    metre: "",
+    word_breakdown: p.word_breakdown,
+    features: p.features,
+    audio_url: "",
+  }));
 }
 
 export interface ChapterGroup {
@@ -158,7 +236,11 @@ export default {
   makeBookOf,
   compareVerses,
   sortVerses,
+  verseKey,
+  oneVersePerRef,
   groupByBook,
+  bookVerses,
+  tierVerses,
   groupByChapter,
   firstLine,
 };

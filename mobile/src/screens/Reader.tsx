@@ -73,6 +73,7 @@ import {
   makeBookOf,
   parseRef,
   sortVerses,
+  tierVerses,
 } from "../utils/verses";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { plain } from "../utils/text";
@@ -169,23 +170,7 @@ export default function ReaderScreen() {
     setTierLoading(true);
     api
       .readerTier(tier)
-      .then((rows) =>
-        setTierRows(
-          rows.map(
-            (p, i): Shloka => ({
-              id: `tier${p.tier}-${i}`,
-              date: "",
-              source_ref: `Graded Tier ${p.tier} · verse ${i + 1}`,
-              devanagari: p.devanagari,
-              iast: p.iast,
-              metre: "",
-              word_breakdown: p.word_breakdown,
-              features: p.features,
-              audio_url: "",
-            }),
-          ),
-        ),
-      )
+      .then((rows) => setTierRows(tierVerses(rows)))
       .catch(() => setTierFailed(true))
       .finally(() => setTierLoading(false));
   }, []);

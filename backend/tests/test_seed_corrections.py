@@ -60,6 +60,54 @@ def test_a_trailing_verse_number_is_a_number():
     assert _normalise_ref("Manusmṛti 8.15") == "Manusmṛti 8.15"
     assert _normalise_ref("Subhāṣita") == "Sūkti: Subhāṣita"
     assert _normalise_ref("Sūkti: Hitopadeśa") == "Sūkti: Hitopadeśa"
+    # The old rule prefixed numbered lines; they get their reference back.
+    assert _normalise_ref("Sūkti: Īśopaniṣad 1") == "Īśopaniṣad 1"
+    assert _normalise_ref("Sūkti: Subhāṣita Ratna Bhāṇḍāgāra") == "Sūkti: Subhāṣita Ratna Bhāṇḍāgāra"
+
+
+def test_a_prefixed_import_gets_its_reference_back(client):
+    """The Īśā import's rows were renamed "Sūkti: Īśopaniṣad N" on every boot."""
+    from app.seeds.seed import _correct_reader_rows
+
+    text = "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः।"
+    with SessionLocal() as db:
+        db.add(Shloka(id="isa-renamed", date="2031-02-01", source_ref="Sūkti: Īśopaniṣad 2",
+                      devanagari=text, iast=to_iast(text)))
+        # A day holding both the prefixed and the plain row keeps one.
+        db.add(Shloka(id="isa-twin-a", date="2031-02-02", source_ref="Sūkti: Īśopaniṣad 3",
+                      devanagari=text, iast=to_iast(text)))
+        db.add(Shloka(id="isa-twin-b", date="2031-02-02", source_ref="Īśopaniṣad 3",
+                      devanagari=text, iast=to_iast(text)))
+        db.commit()
+
+        _correct_reader_rows(db)
+        db.commit()
+        assert db.get(Shloka, "isa-renamed").source_ref == "Īśopaniṣad 2"
+        day = db.query(Shloka).filter(Shloka.date == "2031-02-02").all()
+        assert [r.source_ref for r in day] == ["Īśopaniṣad 3"]
+
+        for r in db.query(Shloka).filter(Shloka.date.in_(["2031-02-01", "2031-02-02"])).all():
+            db.delete(r)
+        db.commit()
+
+
+def test_canon_counts_a_numbered_verse_once(client):
+    """Gītā 18.66 is a seeded half-verse and, in production, an imported verse."""
+    from app.routers.canon import canon_report, verse_key
+
+    assert verse_key("Bhagavad Gītā 18.66") == verse_key("Bhagavad Gītā  18.66 ") != ""
+    assert verse_key("Nītīśataka 13") == verse_key("Nītiśataka 13")
+    assert verse_key("Sūkti: Subhāṣita Ratna Bhāṇḍāgāra") == ""
+    whole = "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥"
+    with SessionLocal() as db:
+        before = {t["slug"]: t["verses_imported"] for t in canon_report(db)}
+        db.add(Shloka(id="gita-18-66-whole", date="2031-03-01", source_ref="Bhagavad Gītā 18.66",
+                      devanagari=whole, iast=to_iast(whole)))
+        db.commit()
+        after = {t["slug"]: t["verses_imported"] for t in canon_report(db)}
+        assert after["gita"] == before["gita"], "a second row of 18.66 is not a second verse"
+        db.delete(db.get(Shloka, "gita-18-66-whole"))
+        db.commit()
 
 
 def test_corrected_reference_renames_the_row_and_adds_none(client):

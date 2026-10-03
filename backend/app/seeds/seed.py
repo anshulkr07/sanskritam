@@ -299,15 +299,22 @@ def _normalise_ref(source_ref: str) -> str:
       prefixed "Sukti" so the reader shows it in one "Sayings" book.
       A number is "2.47" or, for a text counted straight through, the
       trailing "13" of "Nītiśataka 13".
+    - Until 2026-10-02 a trailing single number did not count, so rows
+      such as the imported "Īśopaniṣad 1" were renamed "Sūkti: Īśopaniṣad 1"
+      on every boot, which also broke re-importing them by reference. A
+      prefixed reference that carries a number gets its own reference back.
     """
     import re as _re
 
+    numbered = _re.compile(r"\d+\.\d+|\s\d+$")
     ref = (source_ref or "").strip()
     if "8.30" in ref and "Bhagavad" in ref:
         ref = ref.replace("8.30", "8.8")
-    if ref.startswith("Sūkti") or ref.startswith("Sukti"):
-        return ref
-    if not _re.search(r"\d+\.\d+|\s\d+$", ref):
+    prefixed = _re.match(r"S[ūu]kti\b:?\s*(.*)$", ref)
+    if prefixed:
+        rest = prefixed.group(1).strip()
+        return rest if rest and numbered.search(rest) else ref
+    if not numbered.search(ref):
         return f"Sūkti: {ref}" if ref else "Sūkti"
     return ref
 
@@ -316,7 +323,8 @@ def _correct_reader_rows(db) -> None:
     """Repair existing databases the same way fresh seeds insert (7.5).
 
     Keyed on the old reference and date: renames 8.30 to 8.8, prefixes
-    unnumbered lines as Sūkti, and deletes a row that then duplicates
+    unnumbered lines as Sūkti, takes the prefix off a numbered line the old
+    rule prefixed ("Sūkti: Īśopaniṣad 1"), and deletes a row that then duplicates
     another verse. Changing a reference in place keeps the row's id and
     date, so the daily schedule and the (source_ref, date) key are
     untouched and the startup seed does not put the old row back.
