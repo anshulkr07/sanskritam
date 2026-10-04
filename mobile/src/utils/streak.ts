@@ -89,20 +89,3 @@ export function weekGrid(days: ProgressDay[], today: string, weeks = 5): Calenda
   }
   return cells;
 }
-
-/** The last seven days, oldest first, for a week strip. */
-export function lastSevenDays(days: ProgressDay[], today: string): { key: string; label: string; active: boolean; isToday: boolean }[] {
-  const byDate = new Map(days.map((d) => [d.date, d]));
-  const labels = ["S", "M", "T", "W", "T", "F", "S"];
-  const out = [];
-  for (let i = 6; i >= 0; i--) {
-    const key = shiftDay(today, -i);
-    out.push({
-      key,
-      label: labels[parseDay(key).getUTCDay()],
-      active: isActiveDay(byDate.get(key)),
-      isToday: i === 0,
-    });
-  }
-  return out;
-}

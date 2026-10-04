@@ -1,6 +1,7 @@
 // AppDrawer — the left drawer (U8-1). Wraps the six-tab bar: Drawer > Tabs.
 // A swipe from the left edge opens it anywhere; the hamburger sits in the
-// header of Home, Progress and Settings.
+// header of Home and of every drawer screen (Progress, Settings, Licences,
+// Privacy policy), so each place the menu leads to has the same way back.
 //
 // The drawer is a short menu, not a settings dump: who you are (name and day
 // streak), where to go (Home, Progress, Settings, Licences, Privacy policy),
@@ -16,18 +17,18 @@ import {
   type DrawerNavigationProp,
 } from "@react-navigation/drawer";
 import { LinearGradient } from "expo-linear-gradient";
-import * as WebBrowser from "expo-web-browser";
 import React, { useEffect } from "react";
-import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import MainTabs from "./MainTabs";
 import { DrawerToggle } from "./DrawerToggle";
 import { useAsk } from "../ask/AskProvider";
-import { BASE_URL } from "../config";
 import { useDayStats } from "../hooks/useDayStats";
 import SettingsScreen from "../screens/Settings";
 import ProgressScreen from "../screens/Progress";
+import LicencesScreen from "../screens/Licences";
+import PrivacyScreen from "../screens/Privacy";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
 import { accent, color, font, gradientOf, radius, space } from "../theme";
@@ -39,22 +40,11 @@ export type DrawerParamList = {
   Tabs: undefined;
   Progress: undefined;
   Settings: undefined;
+  Licences: undefined;
+  Privacy: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
-
-/** Open a page in the in-app browser, falling back to the system one. */
-async function openExternal(url: string): Promise<void> {
-  try {
-    await WebBrowser.openBrowserAsync(url);
-  } catch {
-    try {
-      await Linking.openURL(url);
-    } catch {
-      /* no browser available: the row stays, the link waits */
-    }
-  }
-}
 
 function DrawerMenu(props: DrawerContentComponentProps) {
   const { navigation, state } = props;
@@ -109,23 +99,12 @@ function DrawerMenu(props: DrawerContentComponentProps) {
         <MenuRow icon="home" label="Home" selected={active === "Tabs"} onPress={() => go("Tabs")} />
         <MenuRow icon="stats-chart" label="Progress" selected={active === "Progress"} onPress={() => go("Progress")} />
         <MenuRow icon="settings" label="Settings" selected={active === "Settings"} onPress={() => go("Settings")} />
-        <MenuRow
-          icon="document-text"
-          label="Licences"
-          onPress={() => {
-            haptics.tap();
-            navigation.closeDrawer();
-            // Licences lives on the root stack, above this navigator.
-            navigation.getParent()?.navigate("Licences" as never);
-          }}
-        />
+        <MenuRow icon="document-text" label="Licences" selected={active === "Licences"} onPress={() => go("Licences")} />
         <MenuRow
           icon="shield-checkmark"
           label="Privacy policy"
-          onPress={() => {
-            haptics.tap();
-            void openExternal(`${BASE_URL}/privacy`);
-          }}
+          selected={active === "Privacy"}
+          onPress={() => go("Privacy")}
         />
       </View>
 
@@ -172,7 +151,7 @@ function MenuRow({
   );
 }
 
-/** Header for the drawer screens that have one (Progress, Settings). */
+/** Header for the drawer screens that have one (all but the tabs). */
 function withHeader(title: string) {
   return ({ navigation }: { navigation: DrawerNavigationProp<DrawerParamList> }): DrawerNavigationOptions => ({
     headerShown: true,
@@ -208,6 +187,8 @@ export default function AppDrawer() {
       <Drawer.Screen name="Tabs" component={MainTabs} />
       <Drawer.Screen name="Progress" component={ProgressScreen} options={withHeader("Progress")} />
       <Drawer.Screen name="Settings" component={SettingsScreen} options={withHeader("Settings")} />
+      <Drawer.Screen name="Licences" component={LicencesScreen} options={withHeader("Licences and credits")} />
+      <Drawer.Screen name="Privacy" component={PrivacyScreen} options={withHeader("Privacy policy")} />
     </Drawer.Navigator>
   );
 }

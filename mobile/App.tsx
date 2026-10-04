@@ -52,7 +52,6 @@ import DailyWordScreen from "./src/screens/DailyWord";
 import WritingScreen from "./src/screens/Writing";
 import LessonScreen from "./src/screens/Lesson";
 import VocabScreen from "./src/screens/Vocab";
-import LicencesScreen from "./src/screens/Licences";
 import PingalaScreen from "./src/screens/Pingala";
 import StoryDeckScreen from "./src/screens/StoryDeck";
 import GrammarTopicScreen from "./src/screens/GrammarTopic";
@@ -127,8 +126,6 @@ function RootNavigator() {
             {/* U14/P22: the learning layer — Lesson → Practice → Challenge. */}
             <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
             <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
-            {/* U15-7: licences and credits — renders GET /licences. */}
-            <Stack.Screen name="Licences" component={LicencesScreen} options={{ title: "Licences and credits" }} />
             {/* U15-6: Piṅgala as binary. */}
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
             {/* Story deck (Discover Sanskrit) — the swipeable basics→advanced cards. */}

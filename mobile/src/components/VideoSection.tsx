@@ -49,7 +49,9 @@ function langLabel(lang: string): string {
 // inline text instead of leaving the app.
 async function openInApp(url: string): Promise<boolean> {
   try {
-    await WebBrowser.openBrowserAsync(url);
+    // createTask false: open on top of the app, not through the transparent
+    // proxy activity that left the app dead to touch after a hardware back.
+    await WebBrowser.openBrowserAsync(url, { createTask: false });
     return true;
   } catch {
     return false;

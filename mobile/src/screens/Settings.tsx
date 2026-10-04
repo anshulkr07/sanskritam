@@ -8,16 +8,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { Alert, Linking, Modal, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 
-import { BASE_URL } from "../config";
 import { useAuth } from "../store/auth";
-import type { RootStackParamList } from "../navigation/types";
+import type { DrawerParamList } from "../navigation/AppDrawer";
 import { setSoundEffectsEnabled } from "../services/sfx";
 import {
   isHapticsEnabled,
@@ -48,7 +47,11 @@ function setPref(key: string, v: boolean): Promise<void> {
 /** Open a page in the in-app browser, falling back to the system one. */
 async function openExternal(url: string): Promise<void> {
   try {
-    await WebBrowser.openBrowserAsync(url);
+    // createTask false: the tab opens on top of the app, not through
+    // expo-web-browser's transparent proxy activity. With the proxy, a
+    // hardware back left the app dead to touch until a second back (owner's
+    // report, 2026-10-05; the proxy is the suspected cause).
+    await WebBrowser.openBrowserAsync(url, { createTask: false });
   } catch {
     try {
       await Linking.openURL(url);
@@ -60,7 +63,7 @@ async function openExternal(url: string): Promise<void> {
 
 export default function SettingsScreen() {
   const { learner, logout, deleteAccount, displayName } = useAuth();
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
   const { textSize, setTextSize } = useTypeScale();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
@@ -110,11 +113,9 @@ export default function SettingsScreen() {
     ]);
   };
 
-  const openLicences = () => {
-    // Settings lives in the drawer; Licences lives on the root stack, above it.
-    const parent = navigation.getParent<NativeStackNavigationProp<RootStackParamList>>();
-    (parent ?? navigation).navigate("Licences");
-  };
+  // Licences and the privacy policy are drawer screens, next to this one.
+  const openLicences = () => navigation.navigate("Licences");
+  const openPrivacy = () => navigation.navigate("Privacy");
 
   // Manual OTA check. The app also checks on every launch and downloads in
   // the background; this row is for the learner who wants it now.
@@ -259,7 +260,7 @@ export default function SettingsScreen() {
             tone="teal"
             label="Privacy policy"
             chevron
-            onPress={() => void openExternal(`${BASE_URL}/privacy`)}
+            onPress={openPrivacy}
           />
           {/* P24: YouTube API Services Developer Policies III.A.1: clients must
               display a link to YouTube's Terms and bind their users to them.

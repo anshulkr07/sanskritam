@@ -37,12 +37,11 @@ export default function LicencesScreen() {
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
+      {/* A drawer screen: the header carries the title and the hamburger. */}
       <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.title}>Licences and credits</Text>
-
         {loading && !rows ? (
           <>
-            <Skeleton style={{ height: 90, marginTop: space.md }} />
+            <Skeleton style={{ height: 90 }} />
             <Skeleton style={{ height: 90, marginTop: space.sm }} />
           </>
         ) : failed || !rows ? (
@@ -74,12 +73,6 @@ export default function LicencesScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   body: { padding: space.lg, paddingBottom: 120 },
-  title: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.xl,
-    color: color.ink,
-  },
   sub: {
     fontFamily: "Nunito_400Regular",
     fontWeight: "400",

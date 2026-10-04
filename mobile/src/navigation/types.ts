@@ -56,8 +56,6 @@ export type RootStackParamList = {
   // as the legacy entry (Path nodes that only know their feature).
   Lesson: { featureId: string; lessonId?: string };
   Vocab: { topic?: string } | undefined;
-  // U15-7: licences and credits — renders GET /licences, nothing else.
-  Licences: undefined;
   // U15-6: Piṅgala as binary — light/heavy enumeration, mātrāmeru.
   Pingala: undefined;
   // Story deck (Discover Sanskrit) — the swipeable basics→advanced cards,

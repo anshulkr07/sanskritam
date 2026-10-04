@@ -1,7 +1,8 @@
-// Home — the daily hub (U8-2). Greeting, today's progress (XP ring, day
-// streak, the week), the lesson to continue, the daily cards (today's tithi,
-// the word's journey, the śloka and the word) and the explore tiles. Śloka and
-// Varṇamālā are stack screens reached from here, not tabs (U8-1).
+// Home — the daily hub (U8-2). The day streak, the greeting with today's XP
+// goal beside it, the daily cards (today's tithi, the word's journey, the
+// śloka and the word) and the explore tiles. Lessons start from the Path tab;
+// the week's history is on Progress. Śloka and Varṇamālā are stack screens
+// reached from here, not tabs (U8-1).
 //
 // Every number here comes from the server and says what it is, except the
 // tithi card, which the phone works out itself (src/kala). While it loads
@@ -18,15 +19,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-import {
-  api,
-  type DailyWordPuzzle,
-  type LessonSummary,
-  type ProgressDaily,
-  type ProgressDay,
-  type Shloka,
-  type Unit,
-} from "../api/client";
+import { api, type DailyWordPuzzle, type ProgressDaily, type ProgressDay, type Shloka } from "../api/client";
 import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
@@ -41,20 +34,9 @@ import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
-import {
-  accent,
-  accentAt,
-  color,
-  font,
-  gradientOf,
-  radius,
-  script,
-  shadow,
-  space,
-  type AccentName,
-} from "../theme";
+import { accent, color, font, gradientOf, radius, script, shadow, space, type AccentName } from "../theme";
 import { firstName } from "../utils/name";
-import { dayStreak, lastSevenDays, localToday } from "../utils/streak";
+import { dayStreak, localToday } from "../utils/streak";
 import { plain } from "../utils/text";
 
 type Props = TabScreenProps<"Home">;
@@ -69,10 +51,6 @@ export default function HomeScreen({ navigation }: Props) {
   const [shlokaState, setShlokaState] = useState<LoadState>("loading");
   const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
   const [wordState, setWordState] = useState<LoadState>("loading");
-  // U15-5: Home routes into the lesson (first unfinished unit), plus the
-  // review count. A failed fetch leaves these null and the card hides.
-  const [units, setUnits] = useState<Unit[] | null>(null);
-  const [dueCount, setDueCount] = useState<number | null>(null);
   const [storyTotal, setStoryTotal] = useState<number | null>(null);
   const [storyAt, setStoryAt] = useState(0);
   // Today's XP and the day history the streak is computed from.
@@ -115,10 +93,7 @@ export default function HomeScreen({ navigation }: Props) {
 
   useEffect(() => {
     loadShloka();
-    // Cached under the keys Path ("units") and the story deck read.
-    cachedGet("units", api.units)
-      .then(setUnits)
-      .catch(() => setUnits(null));
+    // Cached under the key the story deck reads.
     cachedGet("story-chapters", api.storyChapters)
       .then((chs) => setStoryTotal(chs.reduce((n, c) => n + c.cards.length, 0)))
       .catch(() => setStoryTotal(null));
@@ -131,10 +106,6 @@ export default function HomeScreen({ navigation }: Props) {
       let alive = true;
       loadToday();
       loadWord();
-      api
-        .reviewDue(1)
-        .then((d) => alive && setDueCount(d.due_count ?? null))
-        .catch(() => {});
       getStoryIndex().then((i) => alive && setStoryAt(i));
       return () => {
         alive = false;
@@ -150,16 +121,6 @@ export default function HomeScreen({ navigation }: Props) {
 
   const todayKey = today?.daily.date ?? localToday();
   const streak = today ? dayStreak(today.history, todayKey) : null;
-  const week = today ? lastSevenDays(today.history, todayKey) : null;
-
-  // Continue where the learner is: the first unit not yet complete.
-  const continueTarget: { unit: Unit; lesson: LessonSummary; index: number } | null = (() => {
-    if (!units || units.length === 0) return null;
-    let index = units.findIndex((u) => (u.progress ?? 0) < 1 && u.lessons.length > 0);
-    if (index < 0) index = units.length - 1;
-    const unit = units[index];
-    return unit.lessons.length > 0 ? { unit, lesson: unit.lessons[0], index } : null;
-  })();
 
   const name = firstName(learner?.display_name);
 
@@ -183,30 +144,10 @@ export default function HomeScreen({ navigation }: Props) {
               <Skeleton height={26} width={120} style={{ marginTop: 4 }} />
             )}
           </View>
+          <TodayGoal today={today} failed={todayFailed} onRetry={loadToday} />
         </View>
 
         <Entrance index={0}>
-          <TodayCard today={today} failed={todayFailed} week={week} onRetry={loadToday} />
-        </Entrance>
-
-        {continueTarget && (
-          <Entrance index={1}>
-            <ContinueCard
-              unit={continueTarget.unit}
-              lesson={continueTarget.lesson}
-              tone={accentAt(continueTarget.index)}
-              dueCount={dueCount}
-              onPress={() =>
-                navigation.navigate("Lesson", {
-                  featureId: continueTarget.lesson.feature_id,
-                  lessonId: continueTarget.lesson.id,
-                })
-              }
-            />
-          </Entrance>
-        )}
-
-        <Entrance index={2}>
           <Text style={styles.section}>Daily</Text>
           {/* Today's date in the learner's calendar, worked out on the phone. */}
           <TithiCard />
@@ -228,7 +169,7 @@ export default function HomeScreen({ navigation }: Props) {
           </View>
         </Entrance>
 
-        <Entrance index={3}>
+        <Entrance index={1}>
           <Text style={styles.section}>Explore</Text>
           <View style={styles.grid}>
             <ExploreTile
@@ -297,132 +238,46 @@ function StreakChip({ days }: { days: number }) {
   );
 }
 
-// ─── Today card ───────────────────────────────────────────────────────
+// ─── Today's goal ─────────────────────────────────────────────────────
+// Sits at the right of the greeting: today's XP against the daily goal.
 
-function TodayCard({
+function TodayGoal({
   today,
   failed,
-  week,
   onRetry,
 }: {
   today: { daily: ProgressDaily } | null;
   failed: boolean;
-  week: ReturnType<typeof lastSevenDays> | null;
   onRetry: () => void;
 }) {
   if (!today) {
-    return (
-      <View style={[styles.card, styles.todayRow]}>
-        {failed ? (
-          <Pressable onPress={onRetry} style={styles.todayRetry} accessibilityRole="button" accessibilityLabel="Retry">
-            <Ionicons name="refresh" size={18} color={color.saffronText} />
-            <Text style={styles.retryText}>Couldn't load today. Tap to retry.</Text>
-          </Pressable>
-        ) : (
-          <>
-            <Skeleton width={72} height={72} radius={36} />
-            <View style={{ flex: 1, gap: space.xs }}>
-              <Skeleton height={18} width="50%" />
-              <Skeleton height={14} width="35%" />
-              <Skeleton height={22} width="90%" />
-            </View>
-          </>
-        )}
+    return failed ? (
+      <Pressable onPress={onRetry} style={styles.goal} accessibilityRole="button" accessibilityLabel="Couldn't load today's goal. Retry">
+        <View style={styles.goalRetry}>
+          <Ionicons name="refresh" size={22} color={color.saffronText} />
+        </View>
+        <Text style={[styles.goalLabel, { color: color.saffronText }]}>Retry</Text>
+      </Pressable>
+    ) : (
+      <View style={styles.goal}>
+        <Skeleton width={GOAL_RING} height={GOAL_RING} radius={GOAL_RING / 2} />
+        <Skeleton height={12} width={56} />
       </View>
     );
   }
   const { xp, goal_xp: goal, goal_met: met } = today.daily;
   const target = goal || 50;
   return (
-    <View
-      style={[styles.card, styles.todayRow]}
-      accessible
-      accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}`}
-    >
-      <ProgressRing progress={xp / target} size={72} stroke={8} tint={met ? color.okText : color.saffron}>
+    <View style={styles.goal} accessible accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}`}>
+      <ProgressRing progress={xp / target} size={GOAL_RING} stroke={7} tint={met ? color.okText : color.saffron}>
         <Text style={styles.ringNum}>{xp}</Text>
-        <Text style={styles.ringUnit}>XP</Text>
+        <Text style={styles.ringUnit}>/ {target} XP</Text>
       </ProgressRing>
-      <View style={{ flex: 1 }}>
-        <Text style={styles.todayTitle}>{met ? "Goal met today" : "Today's goal"}</Text>
-        <Text style={styles.todaySub}>
-          {xp} of {target} XP
-        </Text>
-        {week && (
-          <View style={styles.week}>
-            {week.map((d) => (
-              <View key={d.key} style={styles.weekDay}>
-                <View style={[styles.dot, d.active && styles.dotOn, d.isToday && styles.dotToday]}>
-                  {d.active && <Ionicons name="checkmark" size={11} color={color.white} />}
-                </View>
-                <Text style={[styles.weekLabel, d.isToday && styles.weekLabelToday]}>{d.label}</Text>
-              </View>
-            ))}
-          </View>
-        )}
-      </View>
+      <Text style={[styles.goalLabel, met && { color: color.okText }]}>{met ? "Goal met" : "Today's goal"}</Text>
     </View>
   );
 }
 
-// ─── Continue card ────────────────────────────────────────────────────
-
-function ContinueCard({
-  unit,
-  lesson,
-  tone,
-  dueCount,
-  onPress,
-}: {
-  unit: Unit;
-  lesson: LessonSummary;
-  tone: AccentName;
-  dueCount: number | null;
-  onPress: () => void;
-}) {
-  const pct = Math.round((unit.progress ?? 0) * 100);
-  const titleSa = plain(lesson.title_hi || unit.title_hi);
-  return (
-    <Pressable
-      onPress={() => {
-        haptics.tap();
-        onPress();
-      }}
-      style={({ pressed }) => [styles.continueWrap, pressed && styles.pressed]}
-      accessibilityRole="button"
-      accessibilityLabel={`Continue unit ${unit.rank}, ${plain(unit.title_en)}: ${plain(lesson.title_en)}`}
-    >
-      <LinearGradient colors={gradientOf(tone)} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.continue}>
-        <Text style={[styles.continueGhost, script("bold")]} aria-hidden>
-          {unit.title_hi.slice(0, 1)}
-        </Text>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.continueEyebrow}>Continue · Unit {unit.rank}</Text>
-          <Text style={[styles.continueSa, script("bold")]} numberOfLines={1}>
-            {titleSa}
-          </Text>
-          <Text style={styles.continueEn} numberOfLines={1}>
-            {plain(lesson.title_en)}
-          </Text>
-          <View style={styles.continueMeta}>
-            <View style={styles.continueTrack}>
-              <View style={[styles.continueFill, { width: `${pct}%` }]} />
-            </View>
-            <Text style={styles.continuePct}>{pct}%</Text>
-            {dueCount != null && dueCount > 0 && (
-              <View style={styles.duePill}>
-                <Text style={styles.dueText}>{dueCount} to review</Text>
-              </View>
-            )}
-          </View>
-        </View>
-        <View style={styles.play}>
-          <Ionicons name="play" size={22} color={accent[tone].fg} style={{ marginLeft: 3 }} />
-        </View>
-      </LinearGradient>
-    </Pressable>
-  );
-}
 
 // ─── Daily tiles ──────────────────────────────────────────────────────
 
@@ -552,6 +407,9 @@ function ExploreTile({
   );
 }
 
+// The goal ring at the right of the greeting, a little smaller than the guru.
+const GOAL_RING = 68;
+
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   // 120 at the bottom: the Ask bubble floats over the last row.
@@ -572,70 +430,19 @@ const styles = StyleSheet.create({
   greetText: { flex: 1 },
   hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
   name: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink, marginTop: -2 },
-  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
-  todayRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginBottom: space.md, minHeight: 104 },
-  todayRetry: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: space.xs, minHeight: 72 },
-  retryText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffronText },
+  goal: { alignItems: "center", gap: 4 },
+  goalRetry: {
+    width: GOAL_RING,
+    height: GOAL_RING,
+    borderRadius: GOAL_RING / 2,
+    backgroundColor: color.surface,
+    alignItems: "center",
+    justifyContent: "center",
+    ...shadow.card,
+  },
+  goalLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
   ringNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, lineHeight: 20 },
   ringUnit: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 10, color: color.inkSoft, lineHeight: 12 },
-  todayTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  todaySub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 1 },
-  week: { flexDirection: "row", justifyContent: "space-between", marginTop: space.sm },
-  weekDay: { alignItems: "center", gap: 3 },
-  dot: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: color.surfaceMuted,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  dotOn: { backgroundColor: color.saffronBtn },
-  dotToday: { borderWidth: 2, borderColor: color.ink },
-  weekLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 10, color: color.inkFaint },
-  weekLabelToday: { color: color.ink },
-  continueWrap: { marginBottom: space.lg, borderRadius: radius.lg, ...shadow.card },
-  continue: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.md,
-    borderRadius: radius.lg,
-    padding: space.md,
-    paddingVertical: space.lg,
-    overflow: "hidden",
-  },
-  continueGhost: {
-    position: "absolute",
-    right: 56,
-    top: -18,
-    fontSize: 120,
-    lineHeight: 170,
-    color: "rgba(255,255,255,0.10)",
-  },
-  continueEyebrow: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.xs,
-    color: color.white,
-    textTransform: "uppercase",
-    letterSpacing: 0.8,
-  },
-  continueSa: { fontSize: font.sizes.lg, lineHeight: 32, color: color.white, marginTop: 4 },
-  continueEn: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.white },
-  continueMeta: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: space.sm },
-  continueTrack: { flex: 1, height: 6, borderRadius: 3, backgroundColor: "rgba(255,255,255,0.28)", overflow: "hidden" },
-  continueFill: { height: 6, borderRadius: 3, backgroundColor: color.white },
-  continuePct: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.white },
-  duePill: { backgroundColor: "rgba(255,255,255,0.2)", borderRadius: radius.pill, paddingHorizontal: space.xs, paddingVertical: 2 },
-  dueText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: color.white },
-  play: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: color.white,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   section: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
