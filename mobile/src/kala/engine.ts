@@ -590,6 +590,28 @@ export function ayanaAt(at: Date): 0 | 1 {
   return sign >= 9 || sign <= 2 ? 0 : 1;
 }
 
+/** The Sun's tropical longitude, 0 to 360: 90 at the June solstice, 270 at
+ *  the December one. */
+export function tropicalSun(at: Date): number {
+  const A = astro();
+  return mod(A.EclipticLongitude(A.Body.Earth, at) + 180, 360);
+}
+
+/** The Sun's next solstice after `at`: the moment it stops going north
+ *  (`north` true, tropical 90 degrees) or south (270). Drik Panchang's
+ *  "Drik Ayana" turns here; its "Vedic Ayana" turns at the entry into
+ *  Karka or Makara, as ayanaAt() does (read 2026-10-05 for 1 and 20
+ *  January and 1 July 2027). */
+export function nextSolstice(at: Date): { north: boolean; at: Date } {
+  const north = tropicalSun(at) < 90 || tropicalSun(at) >= 270;
+  return { north, at: nextCrossing(at, tropicalSun, north ? 90 : 270, 190) };
+}
+
+/** The Sun's next entry into one sign, 0 = Mesha. */
+export function nextSankrantiInto(at: Date, sign: number): Date {
+  return nextCrossing(at, siderealSun, mod(sign, 12) * 30, 370);
+}
+
 // ── the yugas ──────────────────────────────────────────────────────────
 // Lengths and the present position as the Surya Siddhanta gives them
 // (1.15-23; GRETIL's e-text of the 1854 Bibliotheca Indica edition, read

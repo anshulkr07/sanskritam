@@ -167,12 +167,12 @@ export default function YearChapter({ today, tone, width }: ChapterProps) {
         <Row label={`Vikrama, from ${cap(MONTHS[0].iast)}`} value={String(year.years.vikrama)} sized={sized} />
         <Row label="Śaka" value={String(year.years.shaka)} sized={sized} />
         <Row label="Kali" value={String(year.years.kali)} sized={sized} />
-        <View style={styles.row} accessible accessibilityLabel={`The Sun's half of the year: ${romanName(AYANAS[ayana])}, heading ${ayana === 0 ? "north" : "south"}.`}>
+        <View style={styles.row} accessible accessibilityLabel={`The Sun's half of the year: ${romanName(AYANAS[ayana])}, the ${ayana === 0 ? "northward" : "southward"} half.`}>
           <Text style={[styles.rowLabel, { fontSize: sized(14) }]}>Sun's half</Text>
           <View style={styles.rowRight}>
             <Sa size={18}>{AYANAS[ayana].nom}</Sa>
             <Text style={[styles.rowNote, { fontSize: sized(12.5) }]}>
-              {romanName(AYANAS[ayana])} · heading {ayana === 0 ? "north" : "south"}
+              {romanName(AYANAS[ayana])} · {ayana === 0 ? "northward" : "southward"} half
             </Text>
           </View>
         </View>

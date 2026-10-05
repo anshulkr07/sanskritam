@@ -78,6 +78,11 @@ export type RootStackParamList = {
   // one screen that shows whichever of its six chapters is asked for.
   Kala: undefined;
   KalaChapter: { chapter: "today" | "moon" | "clock" | "year" | "yugas" | "calendars" };
+  // One basics card (kala/topics.ts); `month` opens the months card on one.
+  KalaTopic: {
+    topic: "kala" | "kalpa" | "manvantara" | "yuga" | "ayana" | "ritu" | "masa" | "paksha" | "tithi" | "vara" | "nakshatra";
+    month?: number;
+  };
   // Word journey: the screen behind the Home word card. Without params it
   // shows today's word; "More words" pushes it with an originId.
   WordJourney: { originId?: string } | undefined;

@@ -15,7 +15,7 @@
  * Exits 1 if any check fails.
  */
 
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -550,7 +550,7 @@ section("The Kāla screens");
   // The hub's ladder.
   const rows = L.ladder(north);
   same(rows.map((r) => r.sa).join(" | "), "श्वेतवाराहकल्पे | वैवस्वतमन्वन्तरे | कलियुगे | दक्षिणायने | वर्षासु | आश्विनमासे | कृष्णपक्षे | पञ्चम्याम् | गुरुवासरे | रोहिणीनक्षत्रे", "the ladder, north");
-  same(rows.map((r) => r.gloss).join(" | "), "Śvetavārāhakalpa | 7th manvantara of 14 | Kali age, year 5127 | Sun heading south | Rains | Āśvina month | Waning half | 5th tithi | Thursday | Moon in Rohiṇī", "its glosses");
+  same(rows.map((r) => r.gloss).join(" | "), "Śvetavārāhakalpa | 7th manvantara of 14 | Kali age, year 5127 | Sun's southward half | Rains | Āśvina month | Waning half | 5th tithi | Thursday | Moon in Rohiṇī", "its glosses");
   same(L.ladder(deccan)[5].sa, "भाद्रपदमासे", "the ladder's month, deccan");
   const addedAt = new Date(Date.UTC(2026, 5, 5, 12, 0) - IST);
   const added = K.snapshot(addedAt, { date: { y: 2026, m: 6, d: 5 }, minutes: 720 }, DELHI, "deccan");
@@ -763,6 +763,169 @@ section("The Kāla screens");
   E.lunarYearAt(new Date(Date.UTC(2031, 5, 1)));
   const t3 = Date.now();
   console.log(`    in Node: today ${t1 - t0} ms, tithi lengths ${t2 - t1} ms, a year ${t3 - t2} ms`);
+}
+
+// ── 9. the basics cards ─────────────────────────────────────────────────
+// The eleven cards behind "Start here" and the lines of You are here. What
+// they say was read at the sources listed in src/kala/basics.ts (2026-10-05).
+section("The basics cards");
+{
+  const B = loadTs(resolve(here, "../src/kala/basics.ts"));
+  const L = loadTs(resolve(here, "../src/kala/learn.ts"));
+  const TP = loadTs(resolve(here, "../src/kala/topics.ts"));
+  const T = loadTs(resolve(here, "../src/kala/traditions.ts"));
+  const N = loadTs(resolve(here, "../src/kala/sanskritNames.ts"));
+  const same = (got, want, label) => check(got === want, label, `"${got}" is not "${want}"`);
+  const DELHI = T.traditionById("north").city;
+  const at = new Date(Date.UTC(2026, 9, 1, 9, 40) - IST);
+  const north = K.snapshot(at, { date: { y: 2026, m: 10, d: 1 }, minutes: 9 * 60 + 40 }, DELHI, "north");
+
+  // The cards follow the ladder: time first, then one per line, in order.
+  const ids = TP.TOPICS.map((t) => t.id);
+  same(ids.join(" "), "kala kalpa manvantara yuga ayana ritu masa paksha tithi vara nakshatra", "eleven cards, in the ladder's order");
+  same(L.ladder(north).map((r) => r.key).join(" "), ids.slice(1).join(" "), "each line of You are here opens its own card");
+  check(new Set(ids).size === ids.length && TP.TOPICS.every((t) => t.word && t.word.nom && t.hook && t.meaning), "each card has a word, a meaning and a line");
+
+  // Time: five cycles, inner to outer.
+  const year = L.yearModel(at);
+  const rows = B.cycleRows(north, at, year);
+  same(rows.map((r) => r.key).join(" "), "day month year age kalpa", "five cycles, the day innermost");
+  check(rows.every((r) => r.fraction === null || (r.fraction >= 0 && r.fraction <= 1)), "each fraction between 0 and 1");
+  check(Math.abs(rows[0].fraction - (9 * 60 + 40 - (6 * 60 + 14)) / ((24 * 60) + 1)) < 0.01, "the day: 206 minutes after a 06:14 sunrise", String(rows[0].fraction));
+  check(Math.abs(rows[4].fraction - 0.45670) < 0.0001 && rows[3].fraction > 5127 / 432000 && rows[3].fraction < 5128 / 432000, "the kalpa 45.67%, the Kali age 5,127 years and a part", `${rows[4].fraction} ${rows[3].fraction}`);
+  same(`${B.percentText(0.4567)} ${B.percentText(0.01187)} ${B.percentText(0.08)}`, "46% 1.2% 8.0%", "shares as the cards write them");
+
+  // The kalpa: fifteen junctions and fourteen Manus fill it exactly.
+  const pieces = B.kalpaPieces();
+  check(pieces.length === 29 && pieces.filter((p) => p.kind === "manu").length === 14 && pieces[0].from === 0 && Math.abs(pieces[28].to - 1) < 1e-12, "fifteen junctions and fourteen Manus fill the kalpa");
+  check(pieces.every((p, i) => i === 0 || Math.abs(p.from - pieces[i - 1].to) < 1e-12), "with no gaps");
+  const brahma = B.brahmaModel(5127);
+  check(brahma.yearsGone === 1972949127 && brahma.toNoon === 187050873 && brahma.day01 < 0.5, "1,972,949,127 years gone, 187,050,873 to noon", JSON.stringify([brahma.yearsGone, brahma.toNoon]));
+  const seventh = pieces.find((p) => p.kind === "manu" && p.index === 6);
+  check(brahma.day01 > seventh.from && brahma.day01 < seventh.to, "now falls in the seventh Manu's piece");
+
+  // The fourteen Manus, from the generator (Manusmrti 1.61-62, Bhagavata 8.13).
+  const manus = B.manuRows();
+  same(manus.map((m) => m.roman).join(" "), "Svāyambhuva Svārociṣa Uttama Tāmasa Raivata Cākṣuṣa Vaivasvata Sāvarṇi Dakṣasāvarṇi Brahmasāvarṇi Dharmasāvarṇi Rudrasāvarṇi Devasāvarṇi Indrasāvarṇi", "the fourteen Manus");
+  same(manus.map((m) => m.state[0]).join(""), "ggggggnccccccc", "six gone, the seventh now, seven to come");
+  same(N.MANUS[6].dev + N.SPANS[1].dev, N.WORDS.vaivasvatamanvantara.dev, "the seventh is the one the ladder's manvantara is named after");
+
+  // The yugas' dice: four, three, two, one.
+  same(L.yugaModel(5127).yugas.map((y) => y.share).join(""), "4321", "the ages are the dice 4, 3, 2, 1");
+
+  // The Sun's two halves, held to Drik Panchang's two readings (read
+  // 2026-10-05): on 1 January 2027 its Drik Ayana is Uttarayana and its
+  // Vedic Ayana Dakshinayana; on 20 January both Uttarayana; on 1 July 2027
+  // Drik Dakshinayana and Vedic Uttarayana.
+  const ay = (y, m, d) => B.ayanaModel(new Date(Date.UTC(y, m - 1, d, 6, 30)));
+  const jan1 = ay(2027, 1, 1);
+  const jan20 = ay(2027, 1, 20);
+  const jul1 = ay(2027, 7, 1);
+  check(jan1.sun === 0 && jan1.almanac === 1, "1 January 2027: the Sun going north, the almanac still in Dakshinayana", JSON.stringify([jan1.sun, jan1.almanac]));
+  check(jan20.sun === 0 && jan20.almanac === 0, "20 January 2027: both northward");
+  check(jul1.sun === 1 && jul1.almanac === 0, "1 July 2027: the Sun going south, the almanac still in Uttarayana");
+  const y26 = B.ayanaModel(at);
+  check(y26.sun === 1 && y26.almanac === 1, "1 October 2026: both southward");
+  const june = y26.turns.find((t) => t.north);
+  const dec = y26.turns.find((t) => !t.north);
+  check(angleDiff(E.tropicalSun(june.at), 90) < 1e-5 && angleDiff(E.tropicalSun(dec.at), 270) < 1e-5, "the turns are the solstices");
+  same(`${june.at.toISOString().slice(0, 10)} ${dec.at.toISOString().slice(0, 10)}`, "2026-06-21 2026-12-21", "21 June and 21 December 2026 (UTC)");
+  const mk = y26.entries.find((e) => e.sign === 9);
+  const kk = y26.entries.find((e) => e.sign === 3);
+  check(angleDiff(E.siderealSun(mk.at), 270) < 1e-5 && angleDiff(E.siderealSun(kk.at), 90) < 1e-5, "the almanac's halves turn at Makara and Karka");
+  same(`${new Date(mk.at.getTime() + IST).toISOString().slice(0, 10)} ${new Date(kk.at.getTime() + IST).toISOString().slice(0, 10)}`, "2026-01-14 2026-07-16", "Makara on 14 January, Karka on 16 July 2026 (IST)");
+  check(y26.lagDays >= 23 && y26.lagDays <= 26, "about 24 days after each turn", String(y26.lagDays));
+  check(y26.curve.length === 73 && Math.max(...y26.curve.map((c) => c.dec)) > 23 && Math.min(...y26.curve.map((c) => c.dec)) < -23, "the curve swings 23 degrees each way");
+
+  // The seasons of 2026-27: the added Jyaistha makes Grishma three months.
+  const ritus = B.rituSpans(year);
+  same(ritus.map((r) => `${r.ritu}:${r.months.length}`).join(" "), "0:2 1:3 2:2 3:2 4:2 5:2", "six seasons, one of three months");
+  check(ritus[0].from === 0 && Math.abs(ritus[5].to - 1) < 1e-12 && ritus.every((r, i) => i === 0 || Math.abs(r.from - ritus[i - 1].to) < 1e-12), "they fill the year");
+
+  // The months' stars, as Monier-Williams names them.
+  same(B.MONTH_STARS.map((s) => s.map((i) => N.NAKSHATRAS[i].iast).join("+")).join(" "), "citrā viśākhā jyeṣṭhā pūrvāṣāḍhā+uttarāṣāḍhā śravaṇa pūrvabhādrapadā+uttarabhādrapadā aśvinī kṛttikā mṛgaśīrṣa puṣya maghā pūrvaphalgunī+uttaraphalgunī", "each month's star");
+  const cards = B.monthCards(L.traditionMonth(north));
+  check(cards.length === 12 && cards.filter((c) => c.now).length === 1 && cards[6].now && !cards[6].adhikaNow, "the twelve cards, Asvina now in the north on 1 October 2026");
+  same(`${cards[0].starText} / ${cards[3].starText} / ${cards[0].about} / ${cards[9].about}`, "Citrā / Pūrvāṣāḍhā and Uttarāṣāḍhā / March to April / December to January", "how a card words them");
+  check(cards.every((c) => c.ritu === E.rituOfMonth(c.index)), "each card's season is the engine's");
+  // "About March to April": the first is the month a full-moon month of that
+  // name most often opens in, the second the month the middle of a new-moon
+  // month most often falls in, over twenty years of the engine's months.
+  {
+    const tally = Array.from({ length: 12 }, () => ({ open: {}, mid: {} }));
+    const gm = (d) => new Date(d.getTime() + IST).getUTCMonth();
+    const bump = (o, k) => (o[k] = (o[k] || 0) + 1);
+    let t = new Date(Date.UTC(2026, 0, 1));
+    while (t.getTime() < Date.UTC(2046, 0, 1)) {
+      const l = E.lunationAt(t);
+      if (!l.adhika) {
+        bump(tally[l.month].mid, gm(new Date((l.start.getTime() + l.end.getTime()) / 2)));
+        bump(tally[l.month].open, gm(E.nextMoonPhase(new Date(l.start.getTime() - 20 * 86400000), 180)));
+      }
+      t = new Date(l.end.getTime() + 86400000);
+    }
+    const top = (o) => Number(Object.entries(o).sort((a, b) => b[1] - a[1])[0][0]);
+    const got = tally.map((x) => `${top(x.open)},${top(x.mid)}`).join(" ");
+    same(got, B.MONTH_ABOUT.map((m) => m.join(",")).join(" "), "each month's 'about' pair, held over 2026 to 2045");
+  }
+
+  // The tithis: fourteen numbers, then the full and new moons.
+  const tithis = B.tithiRows(20);
+  same(tithis.map((r) => r.roman).join(" "), "Pratipadā Dvitīyā Tṛtīyā Caturthī Pañcamī Ṣaṣṭhī Saptamī Aṣṭamī Navamī Daśamī Ekādaśī Dvādaśī Trayodaśī Caturdaśī Pūrṇimā Amāvāsyā", "the sixteen names");
+  check(tithis.filter((r) => r.now).map((r) => r.key).join() === "t5" && B.tithiRows(15).find((r) => r.now).key === "full" && B.tithiRows(30).find((r) => r.now).key === "new", "the one now, the full moon and the new moon");
+
+  // The weekdays: the Surya Siddhanta's order by height (12.31) and its rule
+  // for the days' lords (12.78) give the week; the hours (12.79) agree.
+  same(B.BY_HEIGHT.map((w) => N.GRAHAS[w].iast).join(" "), "śani guru maṅgala ravi śukra budha soma", "the seven from the highest down");
+  same(B.dayLords().join(""), "6012345", "every fourth from Saturn: the week");
+  check([0, 1, 2, 3, 4, 5, 6].every((w) => B.hourLord(w, 0) === w && B.hourLord(w, 24) === (w + 1) % 7), "24 hours on, the hours' lord is the next day's");
+  same(N.GRAHAS.map((g, i) => g.dev + N.WORDS.vasara.dev === N.WEEKDAYS[i].dev).join(), "true,true,true,true,true,true,true", "each weekday is its graha and vasara");
+
+  // The Moon's time round the stars, from the engine's Moon over a hundred
+  // rounds: the first crossing of 0 degrees after each of two instants.
+  {
+    const crossing = (from) => {
+      let lo = from.getTime();
+      let prev = E.siderealMoon(from);
+      for (let i = 1; i < 30 * 24; i++) {
+        const t = from.getTime() + i * 3600000;
+        const v = E.siderealMoon(new Date(t));
+        if (v < prev) {
+          let a = t - 3600000;
+          let b = t;
+          for (let k = 0; k < 30; k++) {
+            const m = (a + b) / 2;
+            if (E.siderealMoon(new Date(m)) > 180) a = m;
+            else b = m;
+          }
+          return b;
+        }
+        prev = v;
+        lo = t;
+      }
+      return lo;
+    };
+    const c0 = crossing(new Date(Date.UTC(2026, 0, 1)));
+    const c1 = crossing(new Date(c0 + 100 * 27.3 * 86400000 - 3 * 86400000));
+    const mean = (c1 - c0) / 100 / 86400000;
+    check(Math.abs(mean - B.SIDEREAL_MONTH_DAYS) < 0.01, "the Moon goes round the stars in 27.32 days", String(mean));
+  }
+
+  // Copy rule and the Sanskrit rule, over the new files: no dashes in what
+  // is shown, and no Devanagari typed by hand (it all comes from
+  // sanskritNames.ts).
+  const files = ["src/kala/basics.ts", "src/kala/basicsUi.tsx", "src/kala/topics.ts", "src/kala/HubCards.tsx", "src/screens/KalaTopic.tsx", "src/kala/charts/TopicEmblem.tsx", "src/kala/charts/CycleRings.tsx", "src/kala/charts/BrahmaDay.tsx", "src/kala/charts/SunSwing.tsx", "src/kala/charts/WeekStar.tsx"];
+  const topicDir = resolve(here, "../src/kala/topics");
+  for (const f of readdirSync(topicDir)) if (f.endsWith(".tsx")) files.push(`src/kala/topics/${f}`);
+  for (const f of files) {
+    const code = readFileSync(resolve(here, "..", f), "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .split("\n")
+      .map((l) => l.replace(/^\s*\/\/.*$/, "").replace(/\s\/\/ .*$/, ""))
+      .join("\n");
+    check(!/—|\s–\s/.test(code), `${f}: no em dash or spaced en dash`);
+    check(!/[\u0900-\u097F]/.test(code), `${f}: no Devanagari typed by hand`);
+  }
 }
 
 console.log("");

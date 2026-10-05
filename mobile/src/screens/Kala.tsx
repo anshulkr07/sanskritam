@@ -1,9 +1,13 @@
 // Kāla — time, as Sanskrit counts it. The hub behind the Home card.
 //
-// "You are here" names the present moment at ten scales, from the kalpa
+// From the top: "Start here", eleven basics cards in a sideways row (time
+// itself, then one for each line of "You are here", largest span first);
+// the twelve months, each named after a star, with the learner's month
+// marked; the six chapters, each tile carrying one live reading; and last
+// "You are here", the present moment named at ten scales from the kalpa
 // down to the star the Moon is in, each in the seventh case the way a date
-// is spoken. Each line opens the chapter that explains it. Under it, six
-// chapters, each tile carrying one live reading.
+// is spoken. Each of its lines opens the basics card that explains it, so a
+// newcomer meets the words before the summary that uses them.
 //
 // Everything is worked out on the phone (kala/useToday): no network, no
 // location permission, nothing sent anywhere.
@@ -11,9 +15,9 @@
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { useIsFocused } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import Animated, { FadeInDown } from "react-native-reanimated";
+import Animated, { FadeInDown, FadeInRight } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useAskContext } from "../ask/AskProvider";
@@ -21,8 +25,11 @@ import { Button } from "../components/ui";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import CalendarSheet from "../kala/CalendarSheet";
-import { CHAPTERS, chapterById, DEEPER_APP, type ChapterId, type ChapterMeta } from "../kala/chapters";
-import { hubStats, ladder, type HubStats } from "../kala/learn";
+import { monthCards } from "../kala/basics";
+import { CHAPTERS, DEEPER_APP, type ChapterId, type ChapterMeta } from "../kala/chapters";
+import { MonthCard, TopicCard, useCardWidths } from "../kala/HubCards";
+import { hubStats, ladder, traditionMonth, type HubStats } from "../kala/learn";
+import { TOPICS, topicById, type TopicId } from "../kala/topics";
 import { UNITS, WORDS } from "../kala/sanskritNames";
 import { traditionById } from "../kala/traditions";
 import { Ghost, labelOn, Panel, Sa, SectionLabel, useDeferred } from "../kala/ui";
@@ -95,12 +102,70 @@ export default function KalaScreen({ navigation }: Props) {
     haptics.tap();
     navigation.navigate("KalaChapter", { chapter: id });
   };
+  const openTopic = (topic: TopicId, month?: number) => {
+    haptics.tap();
+    navigation.navigate("KalaTopic", month === undefined ? { topic } : { topic, month });
+  };
 
   const tradition = traditionById(today.prefs.tradition);
+  const current = snap ? traditionMonth(snap) : null;
+  const currentKey = current ? `${current.month}${current.adhika ? "a" : ""}` : "";
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const months = useMemo(() => monthCards(current), [currentKey]);
+
+  // The months row opens on the month now, once it is known.
+  const cardWidths = useCardWidths();
+  const monthsRef = useRef<ScrollView>(null);
+  const monthsPlaced = useRef(false);
+  const placeMonths = useCallback(() => {
+    if (monthsPlaced.current || !current) return;
+    monthsPlaced.current = true;
+    const x = Math.max(0, (current.month - 0.35) * (cardWidths.month + ROW_GAP));
+    monthsRef.current?.scrollTo({ x, animated: false });
+  }, [current, cardWidths.month]);
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <SectionLabel style={styles.firstLabel}>Start here</SectionLabel>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.row}
+          contentContainerStyle={styles.rowContent}
+          snapToInterval={cardWidths.topic + ROW_GAP}
+          decelerationRate="fast"
+        >
+          {TOPICS.map((t, i) => (
+            <Animated.View key={t.id} style={styles.rowCard} entering={reduced ? undefined : FadeInRight.delay(stagger(i, 60, 4)).duration(duration.slow)}>
+              <TopicCard meta={t} index={i} onPress={() => openTopic(t.id)} />
+            </Animated.View>
+          ))}
+        </ScrollView>
+
+        <SectionLabel>The twelve months</SectionLabel>
+        <ScrollView
+          ref={monthsRef}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.row}
+          contentContainerStyle={styles.rowContent}
+          snapToInterval={cardWidths.month + ROW_GAP}
+          decelerationRate="fast"
+          onContentSizeChange={placeMonths}
+        >
+          {months.map((m) => (
+            <MonthCard key={m.index} month={m} onPress={() => openTopic("masa", m.index)} />
+          ))}
+        </ScrollView>
+
+        <SectionLabel>Six chapters</SectionLabel>
+        <View style={styles.grid}>
+          {CHAPTERS.map((c) => (
+            <Tile key={c.id} meta={c} stat={statFor(c.id, stats, today.clockText, tradition.short)} onPress={() => open(c.id)} sized={sized} />
+          ))}
+        </View>
+
         <Panel tone="ink" style={styles.here}>
           <View style={styles.hereHead}>
             <Text style={styles.eyebrow} accessibilityRole="header">
@@ -125,11 +190,11 @@ export default function KalaScreen({ navigation }: Props) {
               return (
                 <Animated.View key={r.key} entering={reduced ? undefined : FadeInDown.delay(stagger(i, 40, 10)).duration(duration.base)}>
                   <Pressable
-                    onPress={() => open(r.chapter)}
+                    onPress={() => openTopic(r.key)}
                     style={({ pressed }) => [styles.rung, pressed && styles.pressed]}
                     accessibilityRole="button"
                     accessibilityLabel={`${r.gloss}.`}
-                    accessibilityHint={`Opens ${chapterById(r.chapter).title}`}
+                    accessibilityHint={`Opens the card on ${topicById(r.key).title.replace(/^The /, "the ")}`}
                   >
                     <View style={styles.dotBox}>
                       {i > 0 && <View style={styles.threadTop} />}
@@ -164,13 +229,7 @@ export default function KalaScreen({ navigation }: Props) {
             <Text style={styles.change}>Change</Text>
           </Pressable>
         </Panel>
-
-        <SectionLabel>Six chapters</SectionLabel>
-        <View style={styles.grid}>
-          {CHAPTERS.map((c) => (
-            <Tile key={c.id} meta={c} stat={statFor(c.id, stats, today.clockText, tradition.short)} onPress={() => open(c.id)} sized={sized} />
-          ))}
-        </View>
+        <Text style={[styles.hereNote, { fontSize: sized(13) }]}>Tap a line to open its card.</Text>
 
         {DEEPER_APP.url !== null && (
           <Pressable
@@ -218,12 +277,22 @@ function Tile({ meta, stat, onPress, sized }: { meta: ChapterMeta; stat: string;
   );
 }
 
+/** The gap between cards in a sideways row. */
+const ROW_GAP = 12;
+
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
+  firstLabel: { marginTop: space.xs },
+  // The rows run to the screen's edges and line up with the page inside.
+  row: { marginHorizontal: -space.md, flexGrow: 0 },
+  rowContent: { paddingHorizontal: space.md, gap: ROW_GAP },
+  // Every card in a row takes the height of the tallest.
+  rowCard: { alignSelf: "stretch" },
+  hereNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
   body: { paddingHorizontal: space.md, paddingTop: space.xs, paddingBottom: 120, gap: space.sm },
   headerButton: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
 
-  here: { paddingBottom: space.xs },
+  here: { paddingBottom: space.xs, marginTop: space.sm },
   hereHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 2 },
   eyebrow: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 0.9, textTransform: "uppercase", color: onFill.gold },
   hereWord: { color: onFill.soft },

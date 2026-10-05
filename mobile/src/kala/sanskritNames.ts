@@ -276,6 +276,35 @@ export const RASHIS: SanskritName[] = [
   {"dev": "मीन", "iast": "mīna", "nom": "मीनः", "nomIast": "mīnaḥ", "loc": "मीने", "locIast": "mīne", "pl": "", "attested": true},
 ];
 
+/** The fourteen Manus of a kalpa, Svayambhuva first. The seventh, Vaivasvata, is the present one. */
+export const MANUS: SanskritName[] = [
+  {"dev": "स्वायम्भुव", "iast": "svāyambhuva", "nom": "स्वायम्भुवः", "nomIast": "svāyambhuvaḥ", "loc": "स्वायम्भुवे", "locIast": "svāyambhuve", "pl": "", "attested": true},
+  {"dev": "स्वारोचिष", "iast": "svārociṣa", "nom": "स्वारोचिषः", "nomIast": "svārociṣaḥ", "loc": "स्वारोचिषे", "locIast": "svārociṣe", "pl": "", "attested": true},
+  {"dev": "उत्तम", "iast": "uttama", "nom": "उत्तमः", "nomIast": "uttamaḥ", "loc": "उत्तमे", "locIast": "uttame", "pl": "", "attested": true},
+  {"dev": "तामस", "iast": "tāmasa", "nom": "तामसः", "nomIast": "tāmasaḥ", "loc": "तामसे", "locIast": "tāmase", "pl": "", "attested": true},
+  {"dev": "रैवत", "iast": "raivata", "nom": "रैवतः", "nomIast": "raivataḥ", "loc": "रैवते", "locIast": "raivate", "pl": "", "attested": true},
+  {"dev": "चाक्षुष", "iast": "cākṣuṣa", "nom": "चाक्षुषः", "nomIast": "cākṣuṣaḥ", "loc": "चाक्षुषे", "locIast": "cākṣuṣe", "pl": "", "attested": true},
+  {"dev": "वैवस्वत", "iast": "vaivasvata", "nom": "वैवस्वतः", "nomIast": "vaivasvataḥ", "loc": "वैवस्वते", "locIast": "vaivasvate", "pl": "", "attested": true},
+  {"dev": "सावर्णि", "iast": "sāvarṇi", "nom": "सावर्णिः", "nomIast": "sāvarṇiḥ", "loc": "सावर्णौ", "locIast": "sāvarṇau", "pl": "", "attested": true},
+  {"dev": "दक्षसावर्णि", "iast": "dakṣasāvarṇi", "nom": "दक्षसावर्णिः", "nomIast": "dakṣasāvarṇiḥ", "loc": "दक्षसावर्णौ", "locIast": "dakṣasāvarṇau", "pl": "", "attested": true},
+  {"dev": "ब्रह्मसावर्णि", "iast": "brahmasāvarṇi", "nom": "ब्रह्मसावर्णिः", "nomIast": "brahmasāvarṇiḥ", "loc": "ब्रह्मसावर्णौ", "locIast": "brahmasāvarṇau", "pl": "", "attested": false},
+  {"dev": "धर्मसावर्णि", "iast": "dharmasāvarṇi", "nom": "धर्मसावर्णिः", "nomIast": "dharmasāvarṇiḥ", "loc": "धर्मसावर्णौ", "locIast": "dharmasāvarṇau", "pl": "", "attested": true},
+  {"dev": "रुद्रसावर्णि", "iast": "rudrasāvarṇi", "nom": "रुद्रसावर्णिः", "nomIast": "rudrasāvarṇiḥ", "loc": "रुद्रसावर्णौ", "locIast": "rudrasāvarṇau", "pl": "", "attested": true},
+  {"dev": "देवसावर्णि", "iast": "devasāvarṇi", "nom": "देवसावर्णिः", "nomIast": "devasāvarṇiḥ", "loc": "देवसावर्णौ", "locIast": "devasāvarṇau", "pl": "", "attested": true},
+  {"dev": "इन्द्रसावर्णि", "iast": "indrasāvarṇi", "nom": "इन्द्रसावर्णिः", "nomIast": "indrasāvarṇiḥ", "loc": "इन्द्रसावर्णौ", "locIast": "indrasāvarṇau", "pl": "", "attested": true},
+];
+
+/** The seven the weekdays are named after, Sunday's first: the Sun, the Moon, Mars, Mercury, Jupiter, Venus, Saturn. */
+export const GRAHAS: SanskritName[] = [
+  {"dev": "रवि", "iast": "ravi", "nom": "रविः", "nomIast": "raviḥ", "loc": "रवौ", "locIast": "ravau", "pl": "", "attested": true},
+  {"dev": "सोम", "iast": "soma", "nom": "सोमः", "nomIast": "somaḥ", "loc": "सोमे", "locIast": "some", "pl": "", "attested": true},
+  {"dev": "मङ्गल", "iast": "maṅgala", "nom": "मङ्गलः", "nomIast": "maṅgalaḥ", "loc": "मङ्गले", "locIast": "maṅgale", "pl": "", "attested": true},
+  {"dev": "बुध", "iast": "budha", "nom": "बुधः", "nomIast": "budhaḥ", "loc": "बुधे", "locIast": "budhe", "pl": "", "attested": true},
+  {"dev": "गुरु", "iast": "guru", "nom": "गुरुः", "nomIast": "guruḥ", "loc": "गुरौ", "locIast": "gurau", "pl": "", "attested": true},
+  {"dev": "शुक्र", "iast": "śukra", "nom": "शुक्रः", "nomIast": "śukraḥ", "loc": "शुक्रे", "locIast": "śukre", "pl": "", "attested": true},
+  {"dev": "शनि", "iast": "śani", "nom": "शनिः", "nomIast": "śaniḥ", "loc": "शनौ", "locIast": "śanau", "pl": "", "attested": true},
+];
+
 /** The names the engine gives the karanas, in the order of KARANAS. */
 export const KARANA_ORDER = ["Bava", "Balava", "Kaulava", "Taitila", "Garaja", "Vanija", "Vishti", "Shakuni", "Chatushpada", "Naga", "Kimstughna"];
 
@@ -313,4 +342,11 @@ export const WORDS = {
   suryasta: {"dev": "सूर्यास्त", "iast": "sūryāsta", "nom": "सूर्यास्तः", "nomIast": "sūryāstaḥ", "loc": "सूर्यास्ते", "locIast": "sūryāste", "pl": "सूर्यास्ताः", "attested": true},
   shvetavarahakalpa: {"dev": "श्वेतवाराहकल्प", "iast": "śvetavārāhakalpa", "nom": "श्वेतवाराहकल्पः", "nomIast": "śvetavārāhakalpaḥ", "loc": "श्वेतवाराहकल्पे", "locIast": "śvetavārāhakalpe", "pl": "श्वेतवाराहकल्पाः", "attested": false},
   vaivasvatamanvantara: {"dev": "वैवस्वतमन्वन्तर", "iast": "vaivasvatamanvantara", "nom": "वैवस्वतमन्वन्तरम्", "nomIast": "vaivasvatamanvantaram", "loc": "वैवस्वतमन्वन्तरे", "locIast": "vaivasvatamanvantare", "pl": "वैवस्वतमन्वन्तराणि", "attested": true},
+  brahma: {"dev": "ब्रह्मन्", "iast": "brahman", "nom": "ब्रह्मा", "nomIast": "brahmā", "loc": "ब्रह्मणि", "locIast": "brahmaṇi", "pl": "ब्रह्माणः", "attested": true},
+  shveta: {"dev": "श्वेत", "iast": "śveta", "nom": "श्वेतः", "nomIast": "śvetaḥ", "loc": "श्वेते", "locIast": "śvete", "pl": "श्वेताः", "attested": true},
+  vaaraha: {"dev": "वाराह", "iast": "vārāha", "nom": "वाराहः", "nomIast": "vārāhaḥ", "loc": "वाराहे", "locIast": "vārāhe", "pl": "वाराहाः", "attested": true},
+  varaha: {"dev": "वराह", "iast": "varāha", "nom": "वराहः", "nomIast": "varāhaḥ", "loc": "वराहे", "locIast": "varāhe", "pl": "वराहाः", "attested": true},
+  parardha: {"dev": "परार्ध", "iast": "parārdha", "nom": "परार्धः", "nomIast": "parārdhaḥ", "loc": "परार्धे", "locIast": "parārdhe", "pl": "परार्धाः", "attested": true},
+  manu: {"dev": "मनु", "iast": "manu", "nom": "मनुः", "nomIast": "manuḥ", "loc": "मनौ", "locIast": "manau", "pl": "मनवः", "attested": true},
+  vasara: {"dev": "वासर", "iast": "vāsara", "nom": "वासरः", "nomIast": "vāsaraḥ", "loc": "वासरे", "locIast": "vāsare", "pl": "वासराः", "attested": true},
 } satisfies Record<string, SanskritName>;

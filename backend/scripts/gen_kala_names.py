@@ -152,6 +152,28 @@ RASHIS = [  # the Sun's twelve signs, Mesha first: each is in MW as the sign's n
     ("siMha", "Pum"), ("kanyA", "Stri"), ("tulA", "Stri"), ("vfScika", "Pum"),
     ("Danus", "Napumsaka"), ("makara", "Pum"), ("kumBa", "Pum"), ("mIna", "Pum"),
 ]
+MANUS = [  # the fourteen Manus of a kalpa, first to last
+    # Read 2026-10-05. Manusmrti 1.61-62 (GRETIL) names the first seven:
+    # svayambhuva, then svarocisa, uttama, tamasa, raivata, caksusa and the
+    # son of Vivasvat. Bhagavata Purana 8.1.23 also calls the third Uttama
+    # (MW, after the Vishnu Purana, has Auttami), and 8.13.1 calls the
+    # seventh, the son of Vivasvat, the present one. The seven to come are as
+    # Bhagavata Purana 8.13.11, 18, 21, 24, 27, 30 and 33 name them
+    # (vedabase.io): savarni, then daksa-, brahma-, dharma-, rudra-, deva- and
+    # indra-savarni. MW's entry for manu lists the same fourteen.
+    ("svAyamBuva", "Pum"), ("svArociza", "Pum"), ("uttama", "Pum"), ("tAmasa", "Pum"),
+    ("rEvata", "Pum"), ("cAkzuza", "Pum"), ("vEvasvata", "Pum"), ("sAvarRi", "Pum"),
+    ("dakzasAvarRi", "Pum"), ("brahmasAvarRi", "Pum"), ("DarmasAvarRi", "Pum"),
+    ("rudrasAvarRi", "Pum"), ("devasAvarRi", "Pum"), ("indrasAvarRi", "Pum"),
+]
+GRAHAS = [  # the seven that give the weekdays their names, Sunday first
+    # MW: ravi "the sun", soma "the moon or moon-god", maNgala "the planet
+    # Mars", buDa "Mercury", guru "the planet Jupiter", Sukra "the planet
+    # Venus", Sani "the planet Saturn"; and vAra "a day of the week", listing
+    # the seven by these names.
+    ("ravi", "Pum"), ("soma", "Pum"), ("maNgala", "Pum"), ("buDa", "Pum"),
+    ("guru", "Pum"), ("Sukra", "Pum"), ("Sani", "Pum"),
+]
 WINDOWS = {  # keyed as engine.ts WindowKey
     # brahmamuhurta and abhijit ("the eighth muhurta of the day, about
     # midday") are in MW. The other three are almanac terms that MW does not
@@ -195,6 +217,21 @@ WORDS = {  # single words
     # son of Vivasvat the seventh Manu, the present one.
     "shvetavarahakalpa": ("SvetavArAhakalpa", "Pum"),
     "vaivasvatamanvantara": ("vEvasvatamanvantara", "Napumsaka"),
+    # For the basics cards (read 2026-10-05). Brahma, whose day is a kalpa
+    # (Surya Siddhanta 1.20; MW brahman m.). The kalpa's name taken apart, as
+    # MW glosses each part: Sveta "white", vArAha "relating to the Boar form
+    # of Vishnu", and varAha "a boar; Vishnu in his boar-incarnation" (the
+    # Bhagavata Purana, 3.11.37, names the kalpa for that form). parArDa,
+    # half of Brahma's life (MW; Bhagavata Purana 3.11.34). manu (MW: "the
+    # representative man and father of the human race"). vAsara, "a day; a
+    # week-day" (MW), the second half of each weekday's name.
+    "brahma": ("brahman", "Pum"),
+    "shveta": ("Sveta", "Pum"),
+    "vaaraha": ("vArAha", "Pum"),
+    "varaha": ("varAha", "Pum"),
+    "parardha": ("parArDa", "Pum"),
+    "manu": ("manu", "Pum"),
+    "vasara": ("vAsara", "Pum"),
 }
 
 # Stems the engine cannot inflect from the bare stem. Each override is itself
@@ -293,6 +330,8 @@ def main() -> None:
         "YUGAS": [entry(*s) for s in YUGAS],
         "SPANS": [entry(*s) for s in SPANS],
         "RASHIS": [entry(*s) for s in RASHIS],
+        "MANUS": [entry(*s) for s in MANUS],
+        "GRAHAS": [entry(*s) for s in GRAHAS],
     }
     windows = {k: entry(*v) for k, v in WINDOWS.items()}
     words = {k: entry(*v) for k, v in WORDS.items()}
@@ -351,6 +390,8 @@ def main() -> None:
         "YUGAS": "The four ages, first to last.",
         "SPANS": "The four-age cycle, the manvantara and the kalpa.",
         "RASHIS": "The Sun's twelve signs, Mesha first.",
+        "MANUS": "The fourteen Manus of a kalpa, Svayambhuva first. The seventh, Vaivasvata, is the present one.",
+        "GRAHAS": "The seven the weekdays are named after, Sunday's first: the Sun, the Moon, Mars, Mercury, Jupiter, Venus, Saturn.",
     }
     body = []
     for name, rows in groups.items():

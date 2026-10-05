@@ -120,8 +120,13 @@ export const RASHIS_EN = ["Ram", "Bull", "Twins", "Crab", "Lion", "Maiden", "Bal
 
 export type ChapterId = "today" | "moon" | "clock" | "year" | "yugas" | "calendars";
 
+/** The basics cards: one for time itself, then one for each line of the
+ *  ladder, in the ladder's order (kala/topics.ts). */
+export type TopicId = "kala" | "kalpa" | "manvantara" | "yuga" | "ayana" | "ritu" | "masa" | "paksha" | "tithi" | "vara" | "nakshatra";
+
 export interface LadderRow {
-  key: string;
+  /** Also the basics card that explains the row. */
+  key: Exclude<TopicId, "kala">;
   /** Sanskrit, in the seventh case: "in the Kali age". */
   sa: string;
   gloss: string;
@@ -149,7 +154,10 @@ export function ladder(snap: Snapshot): LadderRow[] {
     { key: "kalpa", sa: WORDS.shvetavarahakalpa.loc, gloss: `${cap(WORDS.shvetavarahakalpa.iast)}`, chapter: "yugas" },
     { key: "manvantara", sa: WORDS.vaivasvatamanvantara.loc, gloss: "7th manvantara of 14", chapter: "yugas" },
     { key: "yuga", sa: YUGAS[3].loc, gloss: `Kali age, year ${snap.years.kali}`, chapter: "yugas" },
-    { key: "ayana", sa: AYANAS[ayana].loc, gloss: ayana === 0 ? "Sun heading north" : "Sun heading south", chapter: "year" },
+    // The almanac's half (Drik Panchang's "Vedic Ayana"), which turns some
+    // 24 or 25 days after the Sun itself does, so the gloss names the half rather
+    // than saying which way the Sun is moving.
+    { key: "ayana", sa: AYANAS[ayana].loc, gloss: ayana === 0 ? "Sun's northward half" : "Sun's southward half", chapter: "year" },
     { key: "ritu", sa: RITUS[ritu].loc, gloss: RITUS_EN[ritu], chapter: "year" },
     {
       key: "masa",
