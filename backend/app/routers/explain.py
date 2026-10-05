@@ -69,6 +69,7 @@ class AskRequest(BaseModel):
     screen_text: str = Field(default="", description="Text read on-device from the screen, at most 2000 chars")
     place: AskPlace | None = Field(default=None, description="Approximate place for calendar math, body only")
     cards: bool = Field(default=False, description="The app can render a card")
+    tradition: str | None = Field(default=None, description="The learner's Kala tradition for month lists")
 
 
 class AskResponse(BaseModel):
@@ -261,9 +262,10 @@ def _fmt_day(d) -> str:
     return ask_facts.fmt_day(d)
 
 
-def _build_facts(question: str, screen_text: str, place: dict) -> tuple[str, str, str, str, str]:
+def _build_facts(question: str, screen_text: str, place: dict,
+                 tradition: str = "") -> tuple[str, str, str, str, str]:
     """Calendar FACTS for the model, plus when_text, when_note, date_str, place_key."""
-    return ask_facts.calendar_facts(question, screen_text, place)
+    return ask_facts.calendar_facts(question, screen_text, place, tradition)
 
 
 def _render_engine_answer(ans: dict) -> str:
@@ -323,12 +325,14 @@ async def ask_explain(
     use_cards = wants_cards and (not subject or bool(screen_text))
 
     place_dict, place_needed = _resolve_place(req.place)
+    tradition = ask_facts.norm_tradition(req.tradition or "")
     facts, when_text, when_note, date_str, place_key = _build_facts(
-        question or subject, screen_text, place_dict
+        question or subject, screen_text, place_dict, tradition
     )
     has_facts = bool(facts)
+    trad_extra = f":{tradition}" if (has_facts and facts and "MONTHS" in facts) else ""
     if use_cards and has_facts:
-        key = _cache_key(req.surface, subject, question or screen_text, f"cards:{date_str}:{place_key}")
+        key = _cache_key(req.surface, subject, question or screen_text, f"cards:{date_str}:{place_key}{trad_extra}")
     elif use_cards:
         key = _cache_key(req.surface, subject, question or screen_text, "cards")
     else:
@@ -422,6 +426,7 @@ async def ask_explain(
         if ask_live.has_content(card):
             ask_sources.mark_stored(db, card)
             await asyncio.to_thread(ask_sources.check_card, card)
+            ask_live.finalize_more(card)
             if has_facts:
                 card["when"] = {"text": when_text, "note": when_note}
                 card["place_needed"] = place_needed

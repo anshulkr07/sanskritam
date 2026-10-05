@@ -637,6 +637,12 @@ export interface AskCard {
   when: { text: string; note: string };
   summary: string;
   sections: AskCardSection[];
+  /** The answer kind. Absent on old backends, drawn as today. */
+  kind?: string;
+  table?: AskTable | null;
+  remedies?: AskRemedy[] | null;
+  /** Offer to go further, verses kind only. Absent unless the model set it. */
+  more?: { label: string; question: string } | null;
   terms: { sa: string; iast: string; meaning: string }[];
   caution: string;
   place_needed: boolean;
@@ -651,12 +657,27 @@ export interface AskCard {
   needs_partner?: boolean;
 }
 
+export interface AskTable {
+  columns: string[];
+  rows: string[][];
+}
+
+export interface AskRemedy {
+  name: string;
+  type: string;
+  what: string[];
+  how: string[];
+  when: string;
+}
+
 export interface AskVerse {
   sa: string;
   iast: string;
   /** The text, with its verse number only when the number was checked too. */
   ref: string;
   meaning: string;
+  /** One line on living the verse, verses kind only. */
+  apply?: string;
   /** Where the verse was found; "" when the app holds it. */
   url: string;
   site: string;
@@ -752,8 +773,11 @@ export interface AskMatch {
   exception?: string;
 }
 
-/** A card still being written: title, summary and sections only. */
-export type AskPartialCard = Pick<AskCard, "title" | "title_sa" | "title_iast" | "summary" | "sections">;
+/** A card still being written: title, summary, sections, kind, table and remedies. */
+export type AskPartialCard = Pick<
+  AskCard,
+  "title" | "title_sa" | "title_iast" | "summary" | "sections" | "kind" | "table" | "remedies"
+>;
 
 export interface AskTalkOptions {
   history?: AskTurn[];
@@ -764,6 +788,8 @@ export interface AskTalkOptions {
   /** The other person, for gun milan; sent only with `birth`. */
   partner?: AskBirth | null;
   askerIs?: "boy" | "girl";
+  /** The learner's Kala tradition, for month lists. */
+  tradition?: string;
 }
 
 export interface AskTalkResponse {
@@ -791,6 +817,7 @@ function askBody(question: string, opts: AskTalkOptions): string {
     ...(opts.place ? { place: opts.place } : {}),
     ...(opts.birth ? { birth: opts.birth } : {}),
     ...(opts.birth && opts.partner ? { partner: opts.partner, asker_is: opts.askerIs ?? "boy" } : {}),
+    ...(opts.tradition ? { tradition: opts.tradition } : {}),
   });
 }
 
@@ -1664,7 +1691,7 @@ export const api = {
     surface: string,
     subject: string,
     question = "",
-    opts: { screenText?: string; place?: AskPlace | null; cards?: boolean } = {},
+    opts: { screenText?: string; place?: AskPlace | null; cards?: boolean; tradition?: string } = {},
   ) =>
     request<AskResponse>(
       "/explain",
@@ -1677,6 +1704,7 @@ export const api = {
           ...(opts.screenText ? { screen_text: opts.screenText } : {}),
           ...(opts.place ? { place: opts.place } : {}),
           ...(opts.cards ? { cards: true } : {}),
+          ...(opts.tradition ? { tradition: opts.tradition } : {}),
         }),
       },
       true,
@@ -1694,9 +1722,10 @@ export const api = {
   /**
    * The same question, answered while it is written (POST /ask/talk/stream,
    * server-sent events read through expo/fetch). `onPartial` receives the
-   * card so far, title, summary and sections only; the resolved value is
-   * the whole checked answer, as /ask/talk returns it. Throws ApiError on a
-   * refused request or an error event, like `request` does.
+   * card so far (title, summary, sections, kind, table and remedies; verses
+   * and more wait for the check); the resolved value is the whole checked
+   * answer, as /ask/talk returns it. Throws ApiError on a refused request
+   * or an error event, like `request` does.
    */
   askTalkStream: async (
     question: string,

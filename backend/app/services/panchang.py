@@ -306,18 +306,25 @@ def month_of(day: date, place: dict) -> tuple[str, str, bool]:
     """(amanta month, purnimanta month, adhika) for a learner-local date.
 
     Amanta is the lunation the date falls in; purnimanta names the Krishna
-    half after the following month. An adhika (extra) month carries the same
-    name with the prefix, in both conventions.
+    half after the following month. An adhika (extra) month keeps its own
+    name in both halves (Drik Panchang shows "Jyeshtha (Adhik)" in both
+    conventions on 1 Jun 2026, read 2026-10-05): the Krishna half of an
+    added month does not take the next month's name.
     """
-    nm = _new_moon_around(day, place, -1)
+    # The lunation in progress at the day's sunrise (a civil day belongs to
+    # the month running at its sunrise), not at noon: a new moon between
+    # sunrise and noon used to give the next month a day early.
+    anchor = sunrise(day, place) or (_local_midnight_utc(day, place["tz"]) + timedelta(hours=6))
+    found = astronomy.SearchMoonPhase(0.0, _utc_to_time(anchor), -40.0)
+    nm = _time_to_utc(found) if found is not None else _new_moon_around(day, place, -1)
     month, sign = amanta_month(nm)
-    nm_next = _new_moon_around(day, place, +1)
+    nm_next = _time_to_utc(astronomy.SearchMoonPhase(0.0, _utc_to_time(nm + timedelta(days=1)), 40.0))
     _, sign_next = amanta_month(nm_next)
     adhika = sign_next == sign
     # The day's paksha at sunrise decides the purnimanta name.
     sr = sunrise(day, place)
     paksha_now, _ = tithi_name(tithi_at(sr)[0]) if sr else ("Shukla", "")
-    if paksha_now == "Krishna":
+    if paksha_now == "Krishna" and not adhika:
         purni_base = MONTHS[(MONTHS.index(month) + 1) % 12]
     else:
         purni_base = month
@@ -393,7 +400,8 @@ def samvat(day_local: date, place: dict) -> tuple[int, int]:
 _PARTS = ("sunrise", "forenoon", "midday", "afternoon", "pradosh", "midnight", "moonrise")
 
 #: name, aliases, amanta month, paksha, tithi number, part. Month "" means
-#: computed, not lunar (Makara Sankranti, Holi).
+#: computed, not lunar (Makara Sankranti, Holi). A "range" kind carries its
+#: own start and end tithi numbers in "range_start" and "range_end".
 _FESTIVALS: list[dict] = [
     {"name": "Makara Sankranti", "aliases": ["makara sankranti", "makar sankranti", "pongal", "uttarayana", "uttarayan", "lohri"],
      "month": "", "paksha": "", "tithi": 0, "part": "sunrise", "kind": "sankranti"},
@@ -420,7 +428,14 @@ _FESTIVALS: list[dict] = [
     {"name": "Ganesh Chaturthi", "aliases": ["ganesh chaturthi", "vinayaka chaturthi", "vinayagar chaturthi", "ganeshotsav"],
      "month": "Bhadrapada", "paksha": "Shukla", "tithi": 4, "part": "midday"},
     {"name": "Pitru Paksha", "aliases": ["pitru paksha", "pitra paksh", "pitr paksha", "mahalaya", "shraddha paksha"],
-     "month": "Bhadrapada", "paksha": "Krishna", "tithi": 16, "part": "afternoon", "kind": "range"},
+     "month": "Bhadrapada", "paksha": "Krishna", "tithi": 16, "part": "afternoon", "kind": "range",
+     "range_start": 16, "range_end": 30},
+    {"name": "Chaitra Navratri", "aliases": ["chaitra navratri", "chaitra navaratri", "vasant navratri", "vasanta navratri", "rama navratri"],
+     "month": "Chaitra", "paksha": "Shukla", "tithi": 1, "part": "sunrise", "kind": "range",
+     "range_start": 1, "range_end": 9},
+    {"name": "Sharad Navratri", "aliases": ["sharad navratri", "shardiya navratri", "shardiya navaratri", "maha navratri", "navratri", "navaratri", "navratra", "नवरात्रि", "ghatasthapana"],
+     "month": "Ashwina", "paksha": "Shukla", "tithi": 1, "part": "sunrise", "kind": "range",
+     "range_start": 1, "range_end": 9},
     {"name": "Durga Ashtami", "aliases": ["durga ashtami", "maha ashtami", "ashtami"],
      "month": "Ashwina", "paksha": "Shukla", "tithi": 8, "part": None},
     {"name": "Maha Navami", "aliases": ["maha navami", "navami", "saraswati visarjan"],
@@ -501,9 +516,79 @@ def _lunations(year: int, place: dict) -> list[datetime]:
     return out
 
 
+def _full_moons(year: int, place: dict) -> list[datetime]:
+    """Full moons from mid-December (year-1) to mid-January (year+1)."""
+    start = _utc_to_time(datetime(year - 1, 12, 15, 12, tzinfo=timezone.utc))
+    out: list[datetime] = []
+    t = start
+    for _ in range(16):
+        found = astronomy.SearchMoonPhase(180.0, t, 32.0)
+        if found is None:
+            break
+        out.append(_time_to_utc(found))
+        t = found.AddDays(20.0)
+    return out
+
+
+def _moons_between(start_utc: datetime, end_utc: datetime, phase: float) -> list[datetime]:
+    """Every `phase` moon (0 new, 180 full) in [start_utc, end_utc)."""
+    out: list[datetime] = []
+    t = _utc_to_time(start_utc)
+    for _ in range(60):
+        found = astronomy.SearchMoonPhase(phase, t, 35.0)
+        if found is None:
+            break
+        fu = _time_to_utc(found)
+        if fu >= end_utc:
+            break
+        if not out or (fu - out[-1]).total_seconds() > 20 * 86400:
+            out.append(fu)
+        t = found.AddDays(20.0)
+    return out
+
+
+def _month_bounds(opening: datetime, closing: datetime, place: dict) -> tuple[date, date]:
+    """(first, last) civil date whose sunrise falls after `opening` / before `closing`.
+
+    A civil day belongs to the month in progress at its sunrise.
+    """
+    tzname = place.get("tz") or "Asia/Kolkata"
+    zone = _zone(tzname)
+    open_local = opening.astimezone(zone).date()
+    close_local = closing.astimezone(zone).date()
+    first = open_local
+    for _ in range(4):
+        sr = sunrise(first, place)
+        if sr is not None and sr > opening:
+            break
+        first += timedelta(days=1)
+    else:
+        first = open_local + timedelta(days=1)
+    last = close_local
+    for _ in range(4):
+        sr = sunrise(last, place)
+        if sr is not None and sr < closing:
+            break
+        last -= timedelta(days=1)
+    else:
+        last = close_local - timedelta(days=1)
+    return first, last
+
+
 def _tithi_start_instant(from_utc: datetime, number: int) -> datetime:
-    """Next instant the elongation reaches tithi `number`'s opening edge."""
+    """Next instant the elongation reaches tithi `number`'s opening edge.
+
+    When `from_utc` is already on the edge (a new moon for tithi 1, a full
+    moon for tithi 16), it is returned as is: SearchMoonPhase looks strictly
+    ahead and would otherwise skip to the next lunation.
+    """
     target = ((number - 1) * 12) % 360.0
+    try:
+        elong = elongation(_utc_to_time(from_utc))
+    except Exception:
+        elong = None
+    if elong is not None and ((elong - target) % 360.0) < 1.0:
+        return from_utc
     found = astronomy.SearchMoonPhase(target, _utc_to_time(from_utc), 32.0)
     if found is None:
         raise ValueError(f"tithi {number} not found in range")
@@ -542,6 +627,37 @@ def _dates_for_tithi(
     # Dedupe, keep year-local dates.
     seen = sorted({d for d in hits if d.year == year})
     return seen
+
+
+def _tithi_begin_date(year: int, place: dict, month: str, paksha: str, number: int) -> Optional[date]:
+    """Local date a tithi begins, for a range edge with no sunrise inside it.
+
+    Chaitra Shukla 1 in 2026 runs 19 Mar 06:54 to 20 Mar 04:53 IST: no
+    sunrise falls inside, so _dates_for_tithi finds nothing, yet the
+    festival starts on the 19th (Drik Panchang's Chaitra Navratri page, read
+    2026-10-05). The date it begins is then the answer.
+    """
+    tzname = place.get("tz") or "Asia/Kolkata"
+    zone = _zone(tzname)
+    for nm in _lunations(year, place):
+        m, sign = amanta_month(nm)
+        try:
+            nm_next = _time_to_utc(astronomy.SearchMoonPhase(0.0, _utc_to_time(nm), 32.0))
+        except Exception:
+            continue
+        _, sign_next = amanta_month(nm_next)
+        if m != month or sign_next == sign:
+            continue
+        try:
+            if paksha == "Shukla":
+                start = _tithi_start_instant(nm, number)
+            else:
+                full = _tithi_start_instant(nm, 15)
+                start = _tithi_start_instant(full, number)
+        except ValueError:
+            continue
+        return start.astimezone(zone).date()
+    return None
 
 
 def _pick_day(days: list[date], place: dict, part: Optional[str], number: int) -> Optional[date]:
@@ -590,7 +706,8 @@ def _makara_sankranti(year: int, place: dict) -> date:
 
 #: Festivals whose rule reproduces BOTH the 2026 and 2027 Drik Panchang dates
 #: for New Delhi (HANDOVER appendix B, verified 2026-10-01 by running
-#: tests/test_panchang.py with astronomy-engine 2.1.19). Only these ship:
+#: tests/test_panchang.py with astronomy-engine 2.1.19, plus the Navratri
+#: rows verified 2026-10-05 against Drik's Navratri pages). Only these ship:
 #: Ask answers any other festival with "cannot calculate that one yet".
 #: Dropped (rule does not reproduce both years, never hardcode a date):
 #: Makara Sankranti (2027 off by 1), Ugadi, Holika Dahan, Holi, Raksha
@@ -603,6 +720,8 @@ SHIPPED_FESTIVALS = frozenset({
     "Guru Purnima",
     "Ganesh Chaturthi",
     "Pitru Paksha",
+    "Chaitra Navratri",
+    "Sharad Navratri",
     "Durga Ashtami",
     "Dussehra",
     "Karwa Chauth",
@@ -631,10 +750,16 @@ def festival(name_or_alias: str, year: int, place: dict) -> date | tuple[date, d
         assert isinstance(d, date)
         return d + timedelta(days=1)
     if kind == "range":
-        start_days = _dates_for_tithi(year, place, row["month"], row["paksha"], 16, row["part"])
-        end_days = _dates_for_tithi(year, place, row["month"], row["paksha"], 30, row["part"])
-        start = _pick_day(start_days, place, row["part"], 16)
-        end = _pick_day(end_days, place, row["part"], 30)
+        rs = int(row.get("range_start", 16))
+        re_ = int(row.get("range_end", 30))
+        start_days = _dates_for_tithi(year, place, row["month"], row["paksha"], rs, row["part"])
+        end_days = _dates_for_tithi(year, place, row["month"], row["paksha"], re_, row["part"])
+        start = _pick_day(start_days, place, row["part"], rs)
+        end = _pick_day(end_days, place, row["part"], re_)
+        if start is None:
+            start = _tithi_begin_date(year, place, row["month"], row["paksha"], rs)
+        if end is None:
+            end = _tithi_begin_date(year, place, row["month"], row["paksha"], re_)
         if start is None or end is None:
             raise LookupError(f"cannot calculate {row['name']} for {year}")
         return (start, end)
@@ -643,3 +768,209 @@ def festival(name_or_alias: str, year: int, place: dict) -> date | tuple[date, d
     if picked is None:
         raise LookupError(f"cannot calculate {row['name']} for {year}")
     return picked
+
+
+# ── Brahma muhurta, the next tithi, the months of a year ──────────────
+# All pure, all for New Delhi unless a place is given. Verified 2026-10-05
+# against Drik Panchang's day pages for New Delhi (see tests/test_ask_kinds.py
+# for the dates and times read).
+
+def brahma_muhurta(day_local: date, place: dict) -> Optional[tuple[datetime, datetime, datetime]]:
+    """(start, end, sunrise) of Brahma muhurta for a learner-local date, UTC.
+
+    The 14th of the night's 15 muhurtas: night runs from the previous
+    sunset to this sunrise, one muhurta is a fifteenth of it, and Brahma
+    muhurta is sunrise minus two muhurtas to sunrise minus one. None when
+    either rise or set is missing (near the poles).
+    """
+    sr = sunrise(day_local, place)
+    ss = sunset(day_local - timedelta(days=1), place)
+    if sr is None or ss is None:
+        return None
+    night = (sr - ss).total_seconds()
+    if night <= 0:
+        return None
+    muhurta = night / 15.0
+    return (sr - timedelta(seconds=2 * muhurta), sr - timedelta(seconds=1 * muhurta), sr)
+
+
+def next_tithi_occurrence(number: int, from_utc: datetime, place: dict) -> tuple[datetime, datetime, date]:
+    """(begin, end, civil date) of the next tithi `number` after `from_utc`.
+
+    Begin and end are the tithi's opening and closing instants (UTC). The
+    civil date is the local date whose sunrise falls inside the tithi; when
+    no sunrise does (a kshaya tithi), it is the date the tithi begins.
+    """
+    tzname = place.get("tz") or "Asia/Kolkata"
+    zone = _zone(tzname)
+    if tithi_at(from_utc)[0] == number:
+        # Running now: its opening edge lies behind us, within two days.
+        begin = _tithi_start_instant(from_utc - timedelta(days=2), number)
+    else:
+        begin = _tithi_start_instant(from_utc - timedelta(minutes=1), number)
+    # When the tithi is already running at from_utc, the search above lands
+    # on its opening edge (just behind us); when it is not, it lands on the
+    # next one. Either way this is the occurrence to report, unless it ended
+    # before from_utc, in which case move to the following one.
+    for _ in range(3):
+        _num, end = tithi_at(begin + timedelta(minutes=1))
+        if _num != number:
+            begin = _tithi_start_instant(begin + timedelta(hours=12), number)
+            continue
+        if end <= from_utc:
+            begin = _tithi_start_instant(end + timedelta(minutes=1), number)
+            continue
+        break
+    else:
+        _num, end = tithi_at(begin + timedelta(minutes=1))
+    _num, end = tithi_at(begin + timedelta(minutes=1))
+    cur = (begin - timedelta(hours=12)).astimezone(zone).date()
+    last = (end + timedelta(hours=12)).astimezone(zone).date()
+    d = cur
+    while d <= last:
+        sr = sunrise(d, place)
+        if sr is not None and begin <= sr < end:
+            return begin, end, d
+        if (d - cur).days > 4:
+            break
+        d += timedelta(days=1)
+    return begin, end, begin.astimezone(zone).date()
+
+
+def next_amavasya(from_utc: datetime, place: dict) -> tuple[datetime, datetime, date]:
+    """The next Amavasya (tithi 30) after `from_utc`."""
+    return next_tithi_occurrence(30, from_utc, place)
+
+
+def next_purnima(from_utc: datetime, place: dict) -> tuple[datetime, datetime, date]:
+    """The next Purnima (tithi 15) after `from_utc`."""
+    return next_tithi_occurrence(15, from_utc, place)
+
+
+def next_ekadashi(from_utc: datetime, place: dict) -> tuple[str, datetime, datetime]:
+    """The next Ekadashi tithi (Shukla 11 or Krishna 26), whichever opens first.
+
+    Returns (which, begin, end): which is "Shukla Ekadashi" or
+    "Krishna Ekadashi". The fasting day is NOT worked out here: it follows
+    Dashami-viddha, Smarta and Vaishnava rules this module does not
+    reproduce, so callers say the day cannot be calculated yet.
+    """
+    b11 = _tithi_start_instant(from_utc - timedelta(minutes=1), 11)
+    b26 = _tithi_start_instant(from_utc - timedelta(minutes=1), 26)
+    if b11 <= b26:
+        _n, end = tithi_at(b11 + timedelta(minutes=1))
+        return "Shukla Ekadashi", b11, end
+    _n, end = tithi_at(b26 + timedelta(minutes=1))
+    return "Krishna Ekadashi", b26, end
+
+
+#: SLP1 stems of the twelve amanta months, Chaitra first, as listed in
+#: backend/scripts/gen_kala_names.py MONTHS. Never type Devanagari: the
+#: script below makes it with vidyut.lipi.
+MONTH_SLP1 = [
+    "cEtra", "vESAKa", "jyEzWa", "AzAQa", "SrAvaRa", "BAdrapada",
+    "ASvina", "kArttika", "mArgaSIrza", "pOza", "mAGa", "PAlguna",
+]
+
+
+def month_devanagari(roman: str) -> str:
+    """Devanagari for an amanta month name, made by vidyut, never typed."""
+    try:
+        idx = MONTHS.index(roman.replace("Adhika ", ""))
+    except ValueError:
+        return ""
+    try:
+        import vidyut.lipi as lipi
+
+        slp = ("aDika " if roman.startswith("Adhika ") else "") + MONTH_SLP1[idx]
+        return lipi.transliterate(slp, lipi.Scheme.Slp1, lipi.Scheme.Devanagari)
+    except Exception:
+        return ""
+
+
+def months_of_year(today_local: date, place: dict, convention: str = "purnimanta") -> tuple[int, str, list[dict]]:
+    """The months of the current Chaitradi Vikram Samvat year, Chaitra first.
+
+    Returns (vs_year, convention, rows): vs_year is the Chaitradi number,
+    convention is "purnimanta" or "amanta", and each row is
+    {"roman", "dev", "start", "end"} with civil dates. Thirteen rows when the
+    year holds an adhika month. Amanta months run new moon to new moon;
+    purnimanta months run full moon to full moon. A civil day belongs to the
+    month in progress at its sunrise, so a month runs from the first date
+    whose sunrise falls after its opening moon to the last date whose sunrise
+    falls before the next one.
+    """
+    conv = "amanta" if (convention or "").strip().lower() == "amanta" else "purnimanta"
+    vs_year, _shaka = samvat(today_local, place)
+    start_utc = datetime(today_local.year - 2, 1, 1, tzinfo=timezone.utc)
+    end_utc = datetime(today_local.year + 2, 6, 1, tzinfo=timezone.utc)
+    rows: list[dict] = []
+    if conv == "amanta":
+        nms = _moons_between(start_utc, end_utc, 0.0)
+        for i in range(len(nms) - 1):
+            nm, nm_next = nms[i], nms[i + 1]
+            try:
+                m, sign = amanta_month(nm)
+                _, sign_next = amanta_month(nm_next)
+            except Exception:
+                continue
+            adhika = sign_next == sign
+            roman = ("Adhika " if adhika else "") + m
+            try:
+                first, last = _month_bounds(nm, nm_next, place)
+            except Exception:
+                continue
+            rows.append({"roman": roman, "dev": month_devanagari(roman), "start": first, "end": last})
+    else:
+        # Purnimanta, built from the lunations by halves. A Shukla half keeps
+        # its lunation's name; the Krishna half of a nija month takes the next
+        # nija month's name; both halves of an adhika month keep the adhika
+        # name (Drik Panchang 2026: Jyeshtha on 10 May, Adhika Jyeshtha on
+        # 1 and 15 Jun, Jyeshtha on 20 Jun). Runs of one name become one row,
+        # so an adhika year shows the nija month on both sides of it.
+        nms = _moons_between(start_utc, end_utc, 0.0)
+        halves: list[tuple[str, datetime, datetime]] = []
+        for i in range(len(nms) - 1):
+            nm, nm_next = nms[i], nms[i + 1]
+            try:
+                m, sign = amanta_month(nm)
+                _, sign_next = amanta_month(nm_next)
+                found = astronomy.SearchMoonPhase(180.0, _utc_to_time(nm), 32.0)
+            except Exception:
+                continue
+            if found is None:
+                continue
+            fm = _time_to_utc(found)
+            adhika = sign_next == sign
+            shukla = ("Adhika " if adhika else "") + m
+            krishna = shukla if adhika else MONTHS[(MONTHS.index(m) + 1) % 12]
+            halves.append((shukla, nm, fm))
+            halves.append((krishna, fm, nm_next))
+        runs: list[list] = []
+        for name, opening, closing in halves:
+            if runs and runs[-1][0] == name and runs[-1][2] == opening:
+                runs[-1][2] = closing
+            else:
+                runs.append([name, opening, closing])
+        for name, opening, closing in runs:
+            try:
+                first, last = _month_bounds(opening, closing, place)
+            except Exception:
+                continue
+            rows.append({"roman": name, "dev": month_devanagari(name), "start": first, "end": last})
+    # Keep the Chaitradi year holding today: the last Chaitra starting on or
+    # before today opens it.
+    today_idx: Optional[int] = None
+    for i, r in enumerate(rows):
+        if r["roman"].replace("Adhika ", "") == "Chaitra" and r["start"] <= today_local:
+            today_idx = i
+    if today_idx is None:
+        today_idx = next((i for i, r in enumerate(rows) if r["roman"].replace("Adhika ", "") == "Chaitra"), 0)
+    out: list[dict] = []
+    for r in rows[today_idx:]:
+        if out and r["roman"].replace("Adhika ", "") == "Chaitra":
+            break
+        out.append(r)
+        if len(out) >= 14:
+            break
+    return vs_year, conv, out

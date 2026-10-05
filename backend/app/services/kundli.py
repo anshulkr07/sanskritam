@@ -436,5 +436,39 @@ def facts_text(c: dict) -> str:
         lines.append(f"- Saturn is in the {tr['dhaiya']} house from the Moon (dhaiya).")
     else:
         lines.append("- Sade sati: not running now.")
-    lines.append("- Gun milan (matching two charts) is not calculated by the app yet.")
     return "\n".join(lines)
+
+
+def daily_text(c: dict) -> str:
+    """Two lines for a daily horoscope: today's Moon and today's nakshatra.
+
+    Plain arithmetic on positions the app already calculates; no new
+    astronomy. Today's Moon sign and its house from the natal Moon come from
+    the chart's own transits; today's nakshatra is worked from the current
+    Moon longitude, with its tara counted from the birth nakshatra
+    (milan.tara_of, milan.TARA_NAMES).
+    """
+    from datetime import datetime, timezone
+
+    from app.services import milan as _milan
+    from app.services import panchang as _panchang
+
+    now = datetime.now(timezone.utc)
+    moon_now = positions(now)["moon"]
+    today_idx, _pada = nakshatra_of(moon_now["lon"])
+    today_nak = _panchang.NAKSHATRAS[today_idx]
+    birth_nak = c.get("nakshatra") or ""
+    try:
+        birth_idx = _panchang.NAKSHATRAS.index(birth_nak)
+    except ValueError:
+        birth_idx = today_idx
+    tara_n = _milan.tara_of(birth_idx, today_idx)
+    tara_name = _milan.TARA_NAMES[tara_n - 1]
+    tr_moon = next((pl for pl in c.get("transits", {}).get("planets", []) if pl.get("name") == "Moon"), {})
+    sign_en = tr_moon.get("sign_en") or moon_now["sign_en"]
+    sign_roman = tr_moon.get("sign_roman") or moon_now["sign_roman"]
+    house = tr_moon.get("house_from_moon", "")
+    return (
+        f"- Today's Moon is in {sign_roman} ({sign_en}), house {house} from the natal Moon.\n"
+        f"- Today's nakshatra is {today_nak} (tara {tara_name} from the birth nakshatra {birth_nak})."
+    )

@@ -83,6 +83,7 @@ class TalkRequest(BaseModel):
     partner: Optional[Birth] = Field(default=None, description="The other person, for gun milan")
     asker_is: Optional[Literal["boy", "girl"]] = Field(
         default=None, description="Which side of the match the asker is; the partner is the other")
+    tradition: Optional[str] = Field(default=None, description="The learner's Kala tradition for month lists")
 
 
 class TalkResponse(BaseModel):
@@ -159,7 +160,9 @@ async def _prepare(req: TalkRequest) -> Prepared:
                                                      req.place.label, given=True)
     else:
         place, place_needed = ask_facts.resolve_place()
-    facts, when_text, when_note, date_str, place_key = ask_facts.calendar_facts(question, "", place)
+    tradition = ask_facts.norm_tradition(req.tradition or "")
+    facts, when_text, when_note, date_str, place_key = ask_facts.calendar_facts(
+        question, "", place, tradition)
 
     p = Prepared(
         question=question,
@@ -170,6 +173,11 @@ async def _prepare(req: TalkRequest) -> Prepared:
     if req.birth is not None:
         p.chart = _chart_of(req.birth)
         p.chart_text = kundli.facts_text(p.chart)
+        if ask_facts.is_daily_question(question):
+            try:
+                p.chart_text += "\n" + kundli.daily_text(p.chart)
+            except Exception:
+                pass
     if req.birth is not None and req.partner is not None:
         other = _chart_of(req.partner)
         asker = req.asker_is or "boy"
@@ -179,7 +187,10 @@ async def _prepare(req: TalkRequest) -> Prepared:
 
     # A question about the world, asked before, costs nothing.
     p.store = not p.history and p.chart is None and ask_live.shareable(question)
-    p.key = ask_live.store_key(question, f"{date_str}|{place_key}" if facts else "")
+    extra = f"{date_str}|{place_key}" if facts else ""
+    if facts and "MONTHS" in facts:
+        extra = f"{extra}|{tradition}" if extra else tradition
+    p.key = ask_live.store_key(question, extra)
     return p
 
 
@@ -222,6 +233,7 @@ async def _finish(db: Session, p: Prepared, card: dict, routed: str, provider: s
     """Check the answer's verses and links, keep it when it may be shared."""
     ask_sources.mark_stored(db, card)
     counts = await asyncio.to_thread(ask_sources.check_card, card)
+    ask_live.finalize_more(card)
     if p.store and routed == "llm" and not card.get("needs_birth") and not card.get("needs_partner"):
         save_answer(db, STORE_SUBJECT, p.key, p.lang.code, {"card": card, "provider": provider}, provider)
     logger.info(

@@ -72,6 +72,7 @@ import { startTimeline, type Timeline } from "../utils/perf";
 import { haptics } from "../services/haptics";
 import { getBirth, getPartner, type SavedPartner } from "../services/birth";
 import { getPlace } from "../services/place";
+import { getKalaPrefs } from "../kala/prefs";
 import { playTutorAudio, speak, type SpeakHandle } from "../services/speech";
 import { ensureScriptFont } from "../services/scriptFonts";
 import { useVoiceInput } from "../hooks/useVoiceInput";
@@ -131,13 +132,14 @@ type AskMsg =
   | { kind: "place"; question: string }
   | { kind: "error"; text: string };
 
-/** Rows offered before the first question; one tap asks. */
+/** Rows offered before the first question; one tap asks. Five of the owner's
+ * examples (handover section 1): a fact, a table, a reading, a remedy and a verse. */
 const ASK_STARTERS = [
-  "Dussehra puja vidhi, step by step",
-  "What does the Gita say about sadness?",
-  "Which yoga asanas help a stiff back?",
-  "What maths is in the Shulba Sutras?",
-  "What does my kundli say?",
+  "What date is today according to Vikram Samvat?",
+  "List the 12 months in English and Sanskrit with their dates",
+  "How can I get a job through astrology?",
+  "What should I eat when I have a cold, according to Ayurveda?",
+  "What should I do when I am sad, according to the Bhagavad Gita?",
 ];
 
 // A question about the asker's own chart. With birth details saved on the
@@ -154,12 +156,15 @@ const wantsMatch = (q: string) => MATCH_WORDS.test(q);
 /** A card still being written, in the shape the answer card draws. */
 function liveCard(c: AskPartialCard): AskCard {
   return {
+    kind: c.kind ?? "explain",
     title: c.title ?? "",
     title_sa: c.title_sa ?? "",
     title_iast: c.title_iast ?? "",
     when: { text: "", note: "" },
     summary: c.summary ?? "",
     sections: c.sections ?? [],
+    table: c.table ?? null,
+    remedies: c.remedies ?? null,
     terms: [],
     caution: "",
     place_needed: false,
@@ -175,11 +180,33 @@ function askHistory(msgs: AskMsg[]): AskTurn[] {
   return turns.slice(-6);
 }
 
-/** What "listen" reads: the answer and its steps, not the extras. Capped,
- * because reading aloud costs more than writing the answer did. */
+/** What "listen" reads, by kind. Capped, because reading aloud costs more
+ * than writing the answer did. */
 function listenText(card: AskCard): string {
-  const parts = [card.summary];
-  for (const s of card.sections ?? []) parts.push(...(s.items ?? []));
+  const kind = card.kind ?? "explain";
+  const parts: string[] = [];
+  if (kind === "fact") {
+    parts.push(card.summary);
+  } else if (kind === "table") {
+    parts.push(card.summary);
+  } else if (kind === "remedies") {
+    parts.push(card.summary);
+    for (const r of card.remedies ?? []) {
+      parts.push(r.name);
+      if (r.when) parts.push(r.when);
+    }
+  } else if (kind === "verses") {
+    parts.push(card.summary);
+    for (const v of card.verses ?? []) parts.push(v.meaning);
+  } else if (kind === "procedure") {
+    parts.push(card.summary);
+    for (const s of card.sections ?? []) {
+      if (s.style === "steps") parts.push(...(s.items ?? []));
+    }
+  } else {
+    parts.push(card.summary);
+    for (const s of card.sections ?? []) parts.push(...(s.items ?? []));
+  }
   let out = "";
   for (const p of parts.map((x) => plain(x)).filter(Boolean)) {
     if ((out + " " + p).length > 1200) break;
@@ -782,6 +809,7 @@ export default function ConversationScreen() {
             birth: b,
             partner: b && p ? p.birth : null,
             askerIs: p?.askerIs,
+            tradition: getKalaPrefs().tradition,
           };
           try {
             return await api.askTalkStream(text, o, showPartial);
@@ -913,6 +941,7 @@ export default function ConversationScreen() {
             chart={m.data.chart}
             surface="ask"
             onFollowUp={(f) => void askSubmit(f)}
+            onMore={(qq, display) => void askSubmit(qq, { display })}
             onListen={() => void toggleListen(i, card, m.data.lang)}
             listening={listening === i}
             onPlace={() => {
@@ -1062,6 +1091,7 @@ export default function ConversationScreen() {
                   }}
                   style={styles.starter}
                   accessibilityRole="button"
+                  accessibilityLabel={q}
                 >
                   <Text style={styles.starterText}>{q}</Text>
                   <Ionicons name="arrow-forward" size={14} color={color.ink} />

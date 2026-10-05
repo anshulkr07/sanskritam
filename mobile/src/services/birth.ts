@@ -85,7 +85,8 @@ export function describeBirth(b: AskBirth): string {
 
 /**
  * Check what was typed. Returns the details or a message saying what to fix.
- * Day, month and year are separate boxes; the time is 24-hour.
+ * Day, month and year come from dropdowns; the time from hour, minute and
+ * AM/PM dropdowns (kept here as 24-hour "HH:MM").
  */
 export function parseBirth(
   day: string,
@@ -115,7 +116,7 @@ export function parseBirth(
     const hh = t ? parseInt(t[1], 10) : -1;
     const mm = t ? parseInt(t[2], 10) : -1;
     if (!(hh >= 0 && hh <= 23 && mm >= 0 && mm <= 59)) {
-      return { error: "Enter the time as hours and minutes, 24-hour, like 14:30." };
+      return { error: "Enter the time as hours and minutes, like 2:30 PM." };
     }
     time = `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
   }
@@ -134,4 +135,34 @@ export function parseBirth(
       label: place.label,
     },
   };
+}
+
+/** Days in a month, leap years counted. Month is 1 to 12. */
+export function daysInMonth(m: number, y: number): number {
+  if (m === 2) {
+    const leap = y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0);
+    return leap ? 29 : 28;
+  }
+  return [4, 6, 9, 11].includes(m) ? 30 : 31;
+}
+
+/** 12-hour dropdowns to 24-hour "HH:MM". Hour 1 to 12, minute "00" to "59". */
+export function to24h(h12: string, min: string, ampm: "AM" | "PM" | ""): string {
+  let h = parseInt(h12, 10);
+  const m = parseInt(min, 10);
+  if (!(h >= 1 && h <= 12) || !(m >= 0 && m <= 59) || !ampm) return "";
+  if (ampm === "AM") h = h === 12 ? 0 : h;
+  else h = h === 12 ? 12 : h + 12;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+/** 24-hour "HH:MM" to 12-hour dropdowns. Empty when the time is unknown. */
+export function from24h(hhmm: string): { h12: string; min: string; ampm: "AM" | "PM" | "" } {
+  const m = /^(\d{1,2}):(\d{2})$/.exec((hhmm || "").trim());
+  const hh = m ? parseInt(m[1], 10) : -1;
+  const mm = m ? parseInt(m[2], 10) : -1;
+  if (!(hh >= 0 && hh <= 23 && mm >= 0 && mm <= 59)) return { h12: "", min: "", ampm: "" };
+  const ampm = hh < 12 ? "AM" : "PM";
+  const h12 = hh % 12 === 0 ? 12 : hh % 12;
+  return { h12: String(h12), min: String(mm).padStart(2, "0"), ampm };
 }

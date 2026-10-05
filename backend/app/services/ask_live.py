@@ -56,18 +56,18 @@ logger = logging.getLogger("shabd.ask_live")
 
 SYSTEM_PROMPT = """You are the guide in Ask mode of Sanskritam, an app that \
 teaches Sanskrit and the knowledge written in it. A learner asks you anything \
-about India's traditions of knowledge and practice. Answer fully, clearly and \
-warmly, the way a learned teacher who loves the subject explains it to a \
-curious student.
+about India's traditions of knowledge and practice. Answer clearly and \
+warmly, as long as the question needs and no longer, the way a learned \
+teacher who loves the subject explains it to a curious student.
 
 WHAT YOU ANSWER
 - Sanskrit and its texts: the Vedas, Upanishads, Puranas, Ramayana, \
 Mahabharata, Gita, smritis, darshanas and stotras.
 - Dharma, philosophy and how to live: duty, karma, the self, ethics, and \
 what the texts teach about sadness, fear, anger, joy and grief.
-- Festivals, vratas and puja vidhi: when (from FACTS), the samagri, the \
-preparation, the sankalpa, every step in order, the mantras, aarti, prasad, \
-and regional differences.
+- Festivals, vratas and puja vidhi: when (from FACTS), what matters most: \
+the samagri, the main steps in order, the key mantra, and a regional \
+difference only when it changes what to do.
 - Jyotisha: nakshatras, rashis, grahas, kundli reading and predictions, \
 muhurta and remedies.
 - Ayurveda: food, drinks, daily and seasonal routine, home remedies for \
@@ -143,9 +143,10 @@ know word for word. "sa" is the verse in Devanagari exactly as the text has \
 it. "ref" is the text's usual name in roman letters with the verse number, \
 whatever the answer language: "Bhagavad Gita 2.47", "Rigveda 10.191.4", \
 "Katha Upanishad 1.2.23", "Yoga Sutra 1.2". "meaning" gives it in the answer \
-language. "url": leave it "" unless you are certain of the exact page; the \
-app finds the text itself. The app checks every verse against the text and \
-removes any it cannot find there.
+language. "apply" is one line on living the verse (verses kind only). "url": \
+leave it "" unless you are certain of the exact page; the app finds the \
+text itself. The app checks every verse against the text and removes any it \
+cannot find there.
 - A short standard mantra of one line (such as ॐ नमः शिवाय) may stand inside a \
 step. Anything longer goes in "verses".
 - "sources": up to 2 pages on trusted sites (a text library, a university, a \
@@ -153,29 +154,67 @@ government body, a scholarly publisher) that support the answer, only \
 addresses you are certain exist, else none. Never Wikipedia, blogs or \
 forums. The app opens each one and removes any that do not open.
 
+LENGTH AND SHAPE
+First choose "kind", then keep to its limits. Say what matters; leave out \
+what a learner would skip. A "SHAPE HINT" line in the question is a hint \
+only; you decide the kind.
+- "fact": a date, a time, a name, a yes or no. "summary" gives the answer in \
+one or two sentences, the date or time from FACTS first. Nothing else, and \
+at most 2 "follow_ups".
+- "table": the learner asked to list or compare like things. "summary" is one \
+sentence. "table" has "columns" (2 to 5 short headers) and "rows" (a few \
+words a cell). Dates come only from FACTS.
+- "reading": the learner's own chart, match or day. "summary": the direct \
+answer in two or three sentences. Then a section "Main points" of 3 to 5 \
+items, each a finding and a short why from the CHART (house, lord, dasha, \
+transit), and a section "Remedies" of 1 or 2 items.
+- "remedies": what to eat, drink or do for a complaint. "summary" in one or \
+two sentences, then 3 to 5 "remedies", each with "name", "type" (drink, \
+food, herb, oil or practice), "what" (what goes in), "how" (up to 4 short \
+steps) and "when" (when and how much, one line).
+- "verses": what a text teaches on a theme. "summary": an overview in two or \
+three sentences. Then 2 or 3 "verses", each with "meaning" and "apply" (one \
+line on living it). Set "more" with "label" (offering more verses) and \
+"question" (asking for more verses on the same theme), both in the answer \
+language.
+- "procedure": a puja vidhi, a vrata or a ritual. Only what matters: a \
+section "What you need" (up to 10 short items), a section "Steps" (up to 12 \
+steps, one line each), the key mantra in "verses", and at most 3 items in a \
+section "Avoid".
+- "explain": anything else. "summary" in two or three sentences, then 2 to 4 \
+short sections of up to 4 items, one sentence each.
+
 SHAPE
 - Every field in the language the final instruction names. Sanskrit stays in \
 Devanagari. Do not transliterate: the app adds the roman.
 - "title": at most 8 words. "title_sa": the topic's Sanskrit name in \
 Devanagari, or "".
-- "summary": the direct answer in one to three sentences.
+- "summary": the direct answer in one to three sentences (each kind keeps to \
+its own shorter limit above).
 - "sections": up to 6, each a short "heading" and up to 8 "items". "style" \
 is "steps" for anything done in order (a puja, an asana, a recipe, a worked \
 sum), "bullets" for a list, "text" for short paragraphs. An item is one to \
-three sentences.
+three sentences. Each kind keeps to its own shorter limits above.
+- "table": {"columns": [""], "rows": [[""]]} for the table kind.
+- "remedies": [{"name": "", "type": "drink", "what": [""], "how": [""], \
+"when": ""}] for the remedies kind.
+- "more": {"label": "", "question": ""} offering more verses (verses kind \
+only), both in the answer language.
 - Maths in plain text: 23 × 47 = 1081, x² + 5x + 6 = 0. No LaTeX.
 - "terms": up to 6 Sanskrit words the answer uses, in Devanagari, each with a \
-short meaning.
+short meaning (the explain kind uses up to 4).
 - "follow_ups": up to 3 short questions the learner might ask next, in the \
-answer language.
+answer language (the fact kind uses at most 2).
 - No markdown, no asterisks, no em dashes.
 
 Return ONLY this JSON object:
-{"title": "", "title_sa": "", "summary": "", "sections": [{"heading": "", \
-"style": "steps", "items": [""]}], "verses": [{"sa": "", "ref": "", \
-"meaning": "", "url": ""}], "terms": [{"sa": "", "meaning": ""}], \
-"sources": [{"title": "", "url": ""}], "follow_ups": [""], \
-"needs_birth": false, "needs_partner": false}"""
+{"kind": "explain", "title": "", "title_sa": "", "summary": "", "sections": \
+[{"heading": "", "style": "steps", "items": [""]}], "table": {"columns": [""], \
+"rows": [[""]]}, "remedies": [{"name": "", "type": "drink", "what": [""], \
+"how": [""], "when": ""}], "verses": [{"sa": "", "ref": "", "meaning": "", \
+"apply": "", "url": ""}], "more": {"label": "", "question": ""}, "terms": \
+[{"sa": "", "meaning": ""}], "sources": [{"title": "", "url": ""}], \
+"follow_ups": [""], "needs_birth": false, "needs_partner": false}"""
 
 
 # ── the model ─────────────────────────────────────────────────────────────
@@ -228,6 +267,26 @@ def _parse(text: str) -> Optional[dict]:
     return data if isinstance(data, dict) else None
 
 
+def _shape_hint(question: str, facts: str, chart: str, match: str) -> str:
+    """A hint for the model's kind, from what code can tell (handover 3.3).
+
+    fact for a Brahma muhurta, next-tithi or today's-date question; table
+    when MONTHS FACTS are present; reading when a CHART or MATCH is present.
+    The model still decides; the prompt says the hint is a hint.
+    """
+    if chart or match:
+        return "reading"
+    if "MONTHS" in (facts or ""):
+        return "table"
+    f = facts or ""
+    q = (question or "").casefold()
+    if "Brahma muhurta" in f or "Next Amavasya" in f or "Next Purnima" in f or "Next Ekadashi" in f:
+        return "fact"
+    if "Vikram Samvat" in f and ("samvat" in q or "vikrami" in q or (("today" in q or "aaj" in q) and "date" in q)):
+        return "fact"
+    return ""
+
+
 def user_message(
     question: str,
     language: str,
@@ -253,6 +312,9 @@ def user_message(
         parts.append(match)
     if screen_text:
         parts.append(f"Text on the learner's screen (read on the phone, may be partial): {screen_text[:1500]}")
+    hint = _shape_hint(question, facts, chart, match)
+    if hint:
+        parts.append(f"SHAPE HINT: {hint} (a hint only; you decide the kind).")
     parts.append(f"Learner asks: {question.strip()}")
     parts.append("Answer as one JSON object.")
     # Last, so the language order sits closest to the model's turn.
@@ -479,15 +541,21 @@ def repair_json(prefix: str) -> Optional[dict]:
 
 
 def partial_card(text: str) -> Optional[dict]:
-    """What may be shown of an answer still being written: no verses, words
-    or links yet (those are checked first), and no empty card."""
+    """What may be shown of an answer still being written.
+
+    Title, summary, sections, kind, table and remedies travel while the
+    answer grows (they hold no verse or link, so they need no check). Verses
+    and more wait for the final event. No empty card.
+    """
     raw = repair_json(text)
     if not raw:
         return None
-    card = clip({k: raw[k] for k in ("title", "title_sa", "summary", "sections") if k in raw})
+    card = clip({k: raw[k] for k in ("kind", "title", "title_sa", "summary", "sections",
+                                     "table", "remedies") if k in raw})
     if not (card["title"] or card["summary"]):
         return None
-    return {k: card[k] for k in ("title", "title_sa", "title_iast", "summary", "sections")}
+    return {k: card[k] for k in ("kind", "title", "title_sa", "title_iast", "summary",
+                                 "sections", "table", "remedies") if k in card}
 
 # ── the card ──────────────────────────────────────────────────────────────
 
@@ -514,66 +582,254 @@ def _roman(sa: str) -> str:
         return ""
 
 
+KINDS = ("fact", "table", "reading", "remedies", "verses", "procedure", "explain")
+
+_SUMMARY_CAPS = {"fact": 45, "table": 30, "reading": 70, "remedies": 45,
+                 "verses": 80, "procedure": 45, "explain": 70}
+
+_REMEDY_TYPES = ("drink", "food", "herb", "oil", "practice")
+
+
+def _norm_kind(raw: object) -> str:
+    k = str(raw or "").strip().lower()
+    return k if k in KINDS else "explain"
+
+
+def _clip_table(raw: object) -> Optional[dict]:
+    if not isinstance(raw, dict):
+        return None
+    cols = [_text(c, 8) for c in (raw.get("columns") or [])[:5] if str(c or "").strip()]
+    cols = [c for c in cols if c]
+    if len(cols) < 2:
+        cols = []
+    rows: list[list[str]] = []
+    for r in (raw.get("rows") or [])[:14]:
+        if not isinstance(r, (list, tuple)):
+            continue
+        cells = [_text(c, 8) for c in list(r)[:5]]
+        cells = [c for c in cells if c]
+        if cells:
+            rows.append(cells)
+    if not rows:
+        return None
+    if cols and any(len(r) != len(cols) for r in rows):
+        # Ragged rows still draw (the phone scrolls); keep them.
+        pass
+    return {"columns": cols, "rows": rows}
+
+
+def _clip_remedies(raw: object) -> list[dict]:
+    out: list[dict] = []
+    for r in (raw or [])[:5]:
+        if not isinstance(r, dict):
+            continue
+        name = _text(r.get("name"), 5)
+        if not name:
+            continue
+        rtype = str(r.get("type") or "").strip().lower()
+        if rtype not in _REMEDY_TYPES:
+            rtype = "practice" if rtype else ""
+        what = [_text(w, 5) for w in (r.get("what") or [])[:5]]
+        what = [w for w in what if w]
+        how = [_text(_BULLET.sub("", str(h or "")), 18) for h in (r.get("how") or [])[:4]]
+        how = [h for h in how if h]
+        when = _text(r.get("when"), 15)
+        out.append({"name": name, "type": rtype, "what": what, "how": how, "when": when})
+    return out
+
+
+def _compat_sections(kind: str, table: Optional[dict], remedies: list[dict]) -> list[dict]:
+    """Sections for the phone already out (update 01a10cc8).
+
+    It knows nothing of table, remedies, more or apply, so those two kinds
+    also carry their content as sections. The new card ignores sections when
+    it draws a table or remedies card; flatten then has a single text form.
+    """
+    if kind == "table" and table:
+        items = [" · ".join(row) for row in table.get("rows", [])]
+        items = [i for i in items if i]
+        if items:
+            return [{"heading": "", "style": "bullets", "items": items}]
+    if kind == "remedies" and remedies:
+        secs = []
+        for r in remedies:
+            items: list[str] = []
+            if r.get("what"):
+                items.append("What goes in: " + ", ".join(r["what"]))
+            items.extend(r.get("how") or [])
+            if r.get("when"):
+                items.append("When: " + r["when"])
+            if items:
+                secs.append({"heading": r.get("name", ""), "style": "steps", "items": items})
+        return secs
+    return []
+
+
 def clip(raw: dict) -> dict:
-    """Hold the model's JSON to the card shape the app renders."""
+    """Hold the model's JSON to the card shape the app renders.
+
+    The model picks a kind first and writes to that kind's limits (handover
+    3.2); this enforces them so Flash cannot overfill. An unknown or missing
+    kind is explain. A table with no rows, or remedies with none, falls back
+    to explain with the summary kept.
+    """
+    kind = _norm_kind(raw.get("kind"))
     title_sa = _text(raw.get("title_sa"))
     if title_sa and not _DEVA_RUN.match(title_sa):
         title_sa = ""
 
-    sections = []
-    for s in (raw.get("sections") or [])[:6]:
-        if not isinstance(s, dict):
-            continue
-        style = str(s.get("style") or "bullets").strip().lower()
-        if style not in ("steps", "bullets", "text"):
-            style = "bullets"
-        items = [_text(_BULLET.sub("", str(i or "")), 90) for i in (s.get("items") or [])[:8]]
-        items = [i for i in items if i]
-        heading = _text(s.get("heading"), 12)
-        if heading or items:
-            sections.append({"heading": heading, "style": style, "items": items})
+    table = _clip_table(raw.get("table")) if kind == "table" else None
+    remedies = _clip_remedies(raw.get("remedies")) if kind == "remedies" else []
+    if kind == "table" and table is None:
+        kind = "explain"
+    if kind == "remedies" and not remedies:
+        kind = "explain"
+
+    summary_cap = _SUMMARY_CAPS.get(kind, 70)
+    summary = _text(raw.get("summary"), summary_cap)
+
+    sections: list[dict] = []
+    if kind == "reading":
+        for s in (raw.get("sections") or [])[:2]:
+            if not isinstance(s, dict):
+                continue
+            style = str(s.get("style") or "bullets").strip().lower()
+            if style not in ("steps", "bullets", "text"):
+                style = "bullets"
+            items = [_text(_BULLET.sub("", str(i or "")), 40) for i in (s.get("items") or [])[:5]]
+            items = [i for i in items if i]
+            heading = _text(s.get("heading"), 12)
+            if heading or items:
+                sections.append({"heading": heading, "style": style, "items": items})
+    elif kind == "remedies":
+        for s in (raw.get("sections") or [])[:1]:
+            if not isinstance(s, dict):
+                continue
+            items = [_text(_BULLET.sub("", str(i or "")), 25) for i in (s.get("items") or [])[:4]]
+            items = [i for i in items if i]
+            heading = _text(s.get("heading"), 12)
+            if heading or items:
+                sections.append({"heading": heading, "style": "bullets", "items": items})
+    elif kind == "verses":
+        for s in (raw.get("sections") or [])[:1]:
+            if not isinstance(s, dict):
+                continue
+            items = [_text(_BULLET.sub("", str(i or "")), 35) for i in (s.get("items") or [])[:3]]
+            items = [i for i in items if i]
+            heading = _text(s.get("heading"), 12)
+            if heading or items:
+                sections.append({"heading": heading, "style": "bullets", "items": items})
+    elif kind == "procedure":
+        for s in (raw.get("sections") or [])[:4]:
+            if not isinstance(s, dict):
+                continue
+            heading = _text(s.get("heading"), 12)
+            h = heading.casefold()
+            if "need" in h:
+                cap_n, cap_w = 10, 6
+            elif "step" in h:
+                cap_n, cap_w = 12, 22
+            elif "avoid" in h:
+                cap_n, cap_w = 3, 20
+            else:
+                cap_n, cap_w = 8, 22
+            style = str(s.get("style") or ("steps" if "step" in h else "bullets")).strip().lower()
+            if style not in ("steps", "bullets", "text"):
+                style = "bullets"
+            items = [_text(_BULLET.sub("", str(i or "")), cap_w) for i in (s.get("items") or [])[:cap_n]]
+            items = [i for i in items if i]
+            if heading or items:
+                sections.append({"heading": heading, "style": style, "items": items})
+    elif kind in ("explain",):
+        for s in (raw.get("sections") or [])[:4]:
+            if not isinstance(s, dict):
+                continue
+            style = str(s.get("style") or "bullets").strip().lower()
+            if style not in ("steps", "bullets", "text"):
+                style = "bullets"
+            items = [_text(_BULLET.sub("", str(i or "")), 35) for i in (s.get("items") or [])[:4]]
+            items = [i for i in items if i]
+            heading = _text(s.get("heading"), 12)
+            if heading or items:
+                sections.append({"heading": heading, "style": style, "items": items})
+    # fact and table carry no sections.
 
     verses = []
-    for v in (raw.get("verses") or [])[:3]:
-        if not isinstance(v, dict):
-            continue
-        sa = re.sub(r"[ \t]+", " ", str(v.get("sa") or "")).strip()
-        # A verse with a roman word inside is corrupt: on 2026-10-05 the
-        # model put "Broadway" in the middle of a Shulba Sutra line.
-        if not _DEVANAGARI.search(sa) or re.search(r"[A-Za-z]", sa) or len(sa) > 600:
-            continue
-        verses.append({
-            "sa": sa,
-            "iast": _roman(sa),
-            "ref": _text(v.get("ref"), 16),
-            "meaning": _text(v.get("meaning"), 120),
-            "url": str(v.get("url") or "").strip()[:500],
-        })
+    verse_cap = 2 if kind in ("procedure", "explain") else 3
+    meaning_cap = 45 if kind == "verses" else (120 if kind in ("explain", "reading") else 45)
+    if kind in ("verses", "procedure", "explain"):
+        for v in (raw.get("verses") or [])[:verse_cap]:
+            if not isinstance(v, dict):
+                continue
+            sa = re.sub(r"[ \t]+", " ", str(v.get("sa") or "")).strip()
+            # A verse with a roman word inside is corrupt: on 2026-10-05 the
+            # model put "Broadway" in the middle of a Shulba Sutra line.
+            if not _DEVANAGARI.search(sa) or re.search(r"[A-Za-z]", sa) or len(sa) > 600:
+                continue
+            apply = _text(v.get("apply"), 22) if kind == "verses" else ""
+            verses.append({
+                "sa": sa,
+                "iast": _roman(sa),
+                "ref": _text(v.get("ref"), 16),
+                "meaning": _text(v.get("meaning"), meaning_cap),
+                "apply": apply,
+                "url": str(v.get("url") or "").strip()[:500],
+            })
 
     terms = []
-    for t in (raw.get("terms") or [])[:6]:
-        if not isinstance(t, dict):
-            continue
-        sa = _text(t.get("sa"))
-        meaning = _text(t.get("meaning"), 20)
-        if sa and meaning and _DEVA_RUN.match(sa):
-            terms.append({"sa": sa, "iast": _roman(sa), "meaning": meaning})
+    if kind == "explain":
+        for t in (raw.get("terms") or [])[:4]:
+            if not isinstance(t, dict):
+                continue
+            sa = _text(t.get("sa"))
+            meaning = _text(t.get("meaning"), 20)
+            if sa and meaning and _DEVA_RUN.match(sa):
+                terms.append({"sa": sa, "iast": _roman(sa), "meaning": meaning})
+    elif kind not in ("fact", "table", "reading", "remedies", "verses", "procedure"):
+        for t in (raw.get("terms") or [])[:6]:
+            if not isinstance(t, dict):
+                continue
+            sa = _text(t.get("sa"))
+            meaning = _text(t.get("meaning"), 20)
+            if sa and meaning and _DEVA_RUN.match(sa):
+                terms.append({"sa": sa, "iast": _roman(sa), "meaning": meaning})
 
     sources = []
-    for s in (raw.get("sources") or [])[:4]:
-        if isinstance(s, dict) and str(s.get("url") or "").strip():
-            sources.append({"title": _text(s.get("title"), 16), "url": str(s["url"]).strip()[:500]})
+    if kind not in ("fact", "table"):
+        for s in (raw.get("sources") or [])[:2]:
+            if isinstance(s, dict) and str(s.get("url") or "").strip():
+                sources.append({"title": _text(s.get("title"), 16), "url": str(s["url"]).strip()[:500]})
 
-    follow_ups = [_text(f, 18) for f in (raw.get("follow_ups") or [])[:3] if isinstance(f, str)]
+    more: Optional[dict] = None
+    if kind == "verses" and isinstance(raw.get("more"), dict):
+        label = _text(raw["more"].get("label"), 12)
+        question = _text(raw["more"].get("question"), 30)
+        if label or question:
+            more = {"label": label, "question": question}
+
+    follow_cap = 2 if kind == "fact" else 3
+    follow_ups = [_text(f, 18) for f in (raw.get("follow_ups") or [])[:follow_cap] if isinstance(f, str)]
+
+    compat = _compat_sections(kind, table, remedies)
+    if compat:
+        sections = compat + [s for s in sections if s not in compat]
+        # Old phone draws sections; new phone ignores them for these kinds.
+        # Keep compat (up to 5 remedy sections or 1 table section) plus the
+        # kind's own section (Avoid), at most 6.
+        sections = sections[:6]
 
     return {
-        "title": _text(raw.get("title"), 10),
+        "kind": kind,
+        "title": _text(raw.get("title"), 8),
         "title_sa": title_sa,
         "title_iast": _roman(title_sa) if title_sa else "",
         "when": {"text": "", "note": ""},
-        "summary": _text(raw.get("summary"), 120),
+        "summary": summary,
         "sections": sections,
+        "table": table,
+        "remedies": remedies,
         "verses": verses,
+        "more": more,
         "terms": terms,
         "sources": sources,
         "caution": _text(raw.get("caution"), 50),
@@ -585,33 +841,79 @@ def clip(raw: dict) -> dict:
 
 
 def from_old_card(card: dict) -> dict:
-    """The Sarvam card (services/explainer.clip_card) in this shape."""
-    out = clip({**card, "verses": [], "sources": [], "follow_ups": []})
+    """The Sarvam card (services/explainer.clip_card) in this shape.
+
+    The old shape carries no kind; it is drawn as explain, and explain caps
+    now shorten it too.
+    """
+    out = clip({**card, "kind": "explain", "verses": [], "sources": [], "follow_ups": []})
     out["title_iast"] = card.get("title_iast") or out["title_iast"]
     return out
 
 
 def flatten(card: dict) -> str:
-    """The card as plain text: the explanation field, history and read-aloud."""
+    """The card as plain text: the explanation field, history and read-aloud.
+
+    Table rows read as lines (Chaitra | चैत्र | 19 Mar to 17 Apr); each
+    remedy reads as one line (name: what; how; when). Sections double as the
+    old phone's form of those two kinds, so flattening both would repeat;
+    the table and remedies win and sections are skipped for those kinds.
+    """
     lines: list[str] = []
     if card.get("title"):
         lines.append(card["title"])
     if card.get("summary"):
         lines.append(card["summary"])
-    for s in card.get("sections") or []:
-        if s.get("heading"):
-            lines.append(s["heading"])
-        for n, item in enumerate(s.get("items") or [], 1):
-            lines.append((f"{n}. " if s.get("style") == "steps" else "") + item)
+    kind = str(card.get("kind") or "").strip().lower()
+    table = card.get("table") if kind == "table" else None
+    if isinstance(table, dict):
+        for row in table.get("rows") or []:
+            line = " | ".join(str(c) for c in row if str(c or "").strip())
+            if line.strip():
+                lines.append(line)
+    for r in (card.get("remedies") or [] if kind == "remedies" else []):
+        line = (str(r.get("name", "")) + ": " if r.get("name") else "") + "; ".join(
+            b for b in [", ".join(str(w) for w in (r.get("what") or [])),
+                        "; ".join(str(h) for h in (r.get("how") or [])),
+                        str(r.get("when") or "")] if b)
+        if line.strip(" :;"):
+            lines.append(line)
+    if kind not in ("table", "remedies"):
+        for s in card.get("sections") or []:
+            if s.get("heading"):
+                lines.append(s["heading"])
+            for n, item in enumerate(s.get("items") or [], 1):
+                lines.append((f"{n}. " if s.get("style") == "steps" else "") + item)
     for v in card.get("verses") or []:
-        lines.append(f"{v.get('sa', '')} ({v.get('ref', '')}): {v.get('meaning', '')}")
+        apply = f" Apply: {v['apply']}" if v.get("apply") else ""
+        lines.append(f"{v.get('sa', '')} ({v.get('ref', '')}): {v.get('meaning', '')}{apply}")
     if card.get("caution"):
         lines.append(card["caution"])
     return "\n".join(line for line in lines if line.strip())
 
 
 def has_content(card: Optional[dict]) -> bool:
-    return bool(card and (card.get("summary") or card.get("sections")))
+    if not card:
+        return False
+    return bool(card.get("summary") or card.get("sections") or card.get("table") or card.get("remedies"))
+
+
+def finalize_more(card: Optional[dict]) -> None:
+    """Build more.question from the verses that survived the check (in place).
+
+    The model writes label and question in the answer language; the server
+    appends the refs already shown, in roman, so the next answer does not
+    repeat them. If no verse survived, more is dropped.
+    """
+    if not card or not isinstance(card.get("more"), dict):
+        return
+    refs = [str(v.get("ref") or "").strip() for v in (card.get("verses") or []) if str(v.get("ref") or "").strip()]
+    if not refs:
+        card["more"] = None
+        return
+    q = str(card["more"].get("question") or "").strip()
+    if q and "(not:" not in q:
+        card["more"]["question"] = f"{q} (not: {', '.join(refs)})"
 
 
 # ── what may be kept and shared ───────────────────────────────────────────
@@ -636,4 +938,5 @@ def shareable(question: str) -> bool:
 
 def store_key(question: str, extra: str = "") -> str:
     base = re.sub(r"\s+", " ", (question or "").strip().casefold())
-    return f"{base}|{extra}" if extra else base
+    key = f"{base}|{extra}" if extra else base
+    return f"v2|{key}"

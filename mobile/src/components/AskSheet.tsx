@@ -57,6 +57,7 @@ import { Skeleton } from "./Skeleton";
 import PlaceChooser from "./PlaceChooser";
 import ReportButton from "./ReportButton";
 import { haptics } from "../services/haptics";
+import { getKalaPrefs } from "../kala/prefs";
 import { getPhotoRecogniser } from "../services/photoRecogniser";
 import { getPlace, type Place } from "../services/place";
 import { useVoiceInput } from "../hooks/useVoiceInput";
@@ -135,6 +136,7 @@ async function send(
     ...(screenText ? { screenText } : {}),
     ...(place ? { place } : {}),
     cards: true,
+    tradition: getKalaPrefs().tradition,
   };
   if (subject) return api.ask(surface, subject, question, opts);
   try {
@@ -226,25 +228,25 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
   const subject = useSubject ? (context?.subject ?? "").trim() : "";
 
   const ask = useCallback(
-    async (raw: string, placeOverride?: AskPlace | null) => {
+    async (raw: string, placeOverride?: AskPlace | null, display?: string) => {
       const q = raw.trim();
       if (!q) return;
       Keyboard.dismiss();
       haptics.tap();
       setQuestion("");
       setChoosingPlace(false);
-      setPhase({ kind: "loading", question: q });
+      setPhase({ kind: "loading", question: display?.trim() || q });
       try {
         const place = placeOverride ?? (await getPlace());
         const data = await send(surface, subject, q, attach?.text ?? "", place);
         setPhase({
           kind: "answer",
           data,
-          question: q,
+          question: display?.trim() || q,
           place: placeOverride ?? place,
         });
       } catch (e) {
-        setPhase({ kind: "error", message: errorMessage(e), question: q });
+        setPhase({ kind: "error", message: errorMessage(e), question: display?.trim() || q });
       }
     },
     [surface, subject, attach],
@@ -484,6 +486,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
                       question={phase.question}
                       onPlace={() => setChoosingPlace(true)}
                       onFollowUp={(f) => void ask(f)}
+                      onMore={(qq, display) => void ask(qq, undefined, display)}
                     />
                     <Pressable
                       onPress={again}
@@ -573,11 +576,13 @@ function Answer({
   question,
   onPlace,
   onFollowUp,
+  onMore,
 }: {
   data: AskResponse;
   question: string;
   onPlace: () => void;
   onFollowUp?: (q: string) => void;
+  onMore?: (question: string, display: string) => void;
 }) {
   if (data.routed_to === "engine") {
     return <EngineAnswer blocks={data.engine.blocks ?? []} explanation={data.explanation} />;
@@ -598,6 +603,7 @@ function Answer({
         question={question}
         onPlace={onPlace}
         onFollowUp={onFollowUp}
+        onMore={onMore}
       />
     );
   }
