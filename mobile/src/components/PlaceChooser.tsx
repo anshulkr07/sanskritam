@@ -1,11 +1,16 @@
 // PlaceChooser — "Use my location" or a searchable city list.
 //
+// Typing two letters or more searches every city above 5,000 people on the
+// server (GET /places/search, GeoNames), so a place of birth can be Berlin or
+// a small town. Without the server (offline, old backend) the bundled list
+// below is searched instead.
+//
 // The approximate place Ask needs for tithi and festival dates. Permission is
 // asked only here, when an answer needs it. Denying leaves the city list
 // usable. After a choice the caller re-sends the question. Also used from
 // Settings, the manual route.
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -17,6 +22,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
+import { api, type PlaceHit } from "../api/client";
 import { CITIES } from "../data/cities";
 import { setPlace, useDevicePlace, type Place } from "../services/place";
 import { haptics } from "../services/haptics";
@@ -37,11 +43,46 @@ export default function PlaceChooser({
   const [query, setQuery] = useState("");
   const [notice, setNotice] = useState("");
 
-  const cities = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return CITIES;
-    return CITIES.filter((c) => c.name.toLowerCase().includes(q));
+  const [remote, setRemote] = useState<PlaceHit[] | null>(null);
+  const asked = useRef(0);
+
+  // The server's search, a moment after typing stops; the newest answer wins.
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setRemote(null);
+      return;
+    }
+    const n = ++asked.current;
+    const timer = setTimeout(() => {
+      api
+        .searchPlaces(q)
+        .then((hits) => {
+          if (n === asked.current) setRemote(hits);
+        })
+        .catch(() => {
+          if (n === asked.current) setRemote(null);
+        });
+    }, 250);
+    return () => clearTimeout(timer);
   }, [query]);
+
+  const cities = useMemo(() => {
+    if (remote) {
+      return remote.map((h) => ({
+        key: `${h.label}|${h.lat}|${h.lon}`,
+        shown: h.label,
+        // Kept short: the name and the country (the state when in India).
+        name: [h.name, h.country === "India" ? h.region : h.country].filter(Boolean).join(", "),
+        lat: h.lat,
+        lon: h.lon,
+        tz: h.tz,
+      }));
+    }
+    const q = query.trim().toLowerCase();
+    const list = q ? CITIES.filter((c) => c.name.toLowerCase().includes(q)) : CITIES;
+    return list.map((c) => ({ key: c.name, shown: c.name, ...c }));
+  }, [query, remote]);
 
   const useLocation = async () => {
     haptics.tap();
@@ -99,17 +140,17 @@ export default function PlaceChooser({
 
       <FlatList
         data={cities}
-        keyExtractor={(c) => c.name}
+        keyExtractor={(c) => c.key}
         keyboardShouldPersistTaps="handled"
         style={styles.list}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => pickCity(item.name, item.lat, item.lon, item.tz)}
             accessibilityRole="button"
-            accessibilityLabel={item.name}
+            accessibilityLabel={item.shown}
             style={styles.city}
           >
-            <Text style={styles.cityText}>{item.name}</Text>
+            <Text style={styles.cityText}>{item.shown}</Text>
             <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
           </Pressable>
         )}

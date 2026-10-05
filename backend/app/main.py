@@ -129,6 +129,7 @@ def create_app() -> FastAPI:
     from app.routers.daily_word import router as daily_word_router
     from app.routers.explain import router as explain_router
     from app.routers.ask import router as ask_router
+    from app.routers.places import router as places_router
     from app.routers.writing import router as writing_router
     from app.routers.lessons import router as lessons_router
     from app.routers.vocab import router as vocab_router
@@ -164,6 +165,7 @@ def create_app() -> FastAPI:
     app.include_router(daily_word_router, tags=["Daily Word"])
     app.include_router(explain_router, tags=["Explain"])
     app.include_router(ask_router, tags=["Ask"])
+    app.include_router(places_router, tags=["Places"])
     app.include_router(writing_router, tags=["Writing"])
     app.include_router(lessons_router, tags=["Lessons"])
     app.include_router(vocab_router, tags=["Vocabulary"])

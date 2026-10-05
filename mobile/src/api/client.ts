@@ -684,6 +684,17 @@ export interface AskVerse {
   shloka_id?: string;
 }
 
+/** One place from GET /places/search. */
+export interface PlaceHit {
+  label: string;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  tz: string;
+}
+
 export interface AskPlace {
   lat: number;
   lon: number;
@@ -1544,6 +1555,9 @@ export const api = {
 
   // P23-4a / U15-7: the licence registry — name, wording, credit verbatim.
   licences: () => request<Licence[]>("/licences", {}, true),
+  /** Any city above 5,000 people (GeoNames), best match first. */
+  searchPlaces: (q: string, limit = 12) =>
+    request<PlaceHit[]>(`/places/search?q=${encodeURIComponent(q)}&limit=${limit}`, {}, true),
 
   // P24: lesson videos — ranked metadata for a unit (or a lesson in it).
   videos: (opts: { unitId?: string; lang?: string; playback?: string } = {}) => {

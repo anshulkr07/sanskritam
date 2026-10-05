@@ -70,6 +70,15 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "MIT",
      "Hindu calendar math (sunrise, tithi, festivals) computed with astronomy-engine, MIT licence.",
      "Tithi, nakshatra, yoga, karana and festival dates for Ask answers, and today's date on Home."),
+    # Place search (routers/places.py) and the bundled city list
+    # (mobile/src/data/cities.ts). Licence read in GeoNames' readme.txt,
+    # 2026-10-06.
+    ("geonames",
+     "GeoNames",
+     "https://www.geonames.org",
+     "CC BY 4.0",
+     "Place names, coordinates and time zones from GeoNames (geonames.org), used under CC BY 4.0.",
+     "Finding a place of birth or your place, and its time zone."),
     # P24 · lesson-video sources. Embed rows play through YouTube's own
     # player (views and ads accrue to the creator); link rows are course
     # pages, playlists, or NC-licensed material that must never be embedded
