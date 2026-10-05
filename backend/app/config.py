@@ -161,6 +161,24 @@ class Settings(BaseSettings):
     verse_explain_max_tokens: int = 700
     verse_explain_timeout_s: float = 20.0
 
+    # Ask mode (services/ask_live.py): Talk's Ask switch and the Ask bubble's
+    # wider questions, on Gemini Flash through Vertex AI (owner, 2026-10-05).
+    # Draws on the Gemini budget below. With no credentials, a spent budget or
+    # a failed call, the old Sarvam card (explain_provider) answers instead.
+    ask_live_provider: str = "vertex:gemini-3.8-flash"
+    ask_live_enabled: bool = True
+    # A puja vidhi with its steps and mantras, or a chart reading, is long.
+    ask_live_max_tokens: int = 2400
+    ask_live_timeout_s: float = 30.0
+    # Earlier questions and answers sent with a follow-up (the phone keeps them).
+    ask_history_turns: int = 6
+    # Seconds one answer may spend opening the pages that check its verses
+    # and links (services/ask_sources.py). 0 skips the pages: only verses the
+    # app holds are then shown.
+    ask_source_check_s: float = 6.0
+    # Sites trusted for Ask's links on top of services/page_check.py's list.
+    ask_extra_trusted_hosts: str = "drikpanchang.com"
+
     # Gemini has its own ceiling, apart from the Sarvam one: rupees across ALL
     # learners in the same rolling window (owner decision 2026-10-02: ₹200).
     # 0 disables the ceiling. Every online Gemini call must go through

@@ -22,7 +22,17 @@ import { setPlace, useDevicePlace, type Place } from "../services/place";
 import { haptics } from "../services/haptics";
 import { color, font, outline, space } from "../theme";
 
-export default function PlaceChooser({ onPick }: { onPick: (place: Place) => void }) {
+export default function PlaceChooser({
+  onPick,
+  remember = true,
+  showLocate = true,
+}: {
+  onPick: (place: Place) => void;
+  /** Store the pick as the learner's place. Off for a place of birth. */
+  remember?: boolean;
+  /** Offer "Use my location". Off for a place of birth, which is not here. */
+  showLocate?: boolean;
+}) {
   const { locating, locate } = useDevicePlace();
   const [query, setQuery] = useState("");
   const [notice, setNotice] = useState("");
@@ -46,27 +56,29 @@ export default function PlaceChooser({ onPick }: { onPick: (place: Place) => voi
   const pickCity = (name: string, lat: number, lon: number, tz: string) => {
     haptics.tap();
     const place: Place = { lat, lon, tz, label: name, source: "city" };
-    void setPlace(place);
+    if (remember) void setPlace(place);
     onPick(place);
   };
 
   return (
     <View style={styles.wrap}>
-      <Pressable
-        onPress={useLocation}
-        disabled={locating}
-        accessibilityRole="button"
-        accessibilityLabel="Use my location"
-        style={styles.row}
-      >
-        {locating ? (
-          <ActivityIndicator size="small" color={color.ink} />
-        ) : (
-          <Ionicons name="locate-outline" size={20} color={color.ink} />
-        )}
-        <Text style={styles.rowText}>Use my location</Text>
-        <Text style={styles.rowSub}>Approximate, stored on this phone</Text>
-      </Pressable>
+      {showLocate && (
+        <Pressable
+          onPress={useLocation}
+          disabled={locating}
+          accessibilityRole="button"
+          accessibilityLabel="Use my location"
+          style={styles.row}
+        >
+          {locating ? (
+            <ActivityIndicator size="small" color={color.ink} />
+          ) : (
+            <Ionicons name="locate-outline" size={20} color={color.ink} />
+          )}
+          <Text style={styles.rowText}>Use my location</Text>
+          <Text style={styles.rowSub}>Approximate, stored on this phone</Text>
+        </Pressable>
+      )}
 
       {!!notice && <Text style={styles.notice}>{notice}</Text>}
 

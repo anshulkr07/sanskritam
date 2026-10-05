@@ -1,6 +1,8 @@
 // Typed API client against the Sanskritam FastAPI backend.
 // Contract mirrors backend/app/schemas.py + routers/ exactly (mapped 2026-08-30).
 
+import { fetch as streamFetch } from "expo/fetch";
+
 import { BASE_URL } from "../config";
 
 export type BridgeLangs = string[];
@@ -638,6 +640,27 @@ export interface AskCard {
   terms: { sa: string; iast: string; meaning: string }[];
   caution: string;
   place_needed: boolean;
+  // Ask mode's wider card (services/ask_live.py). Optional: the Sarvam card
+  // and old backends send none of these.
+  /** Verses that passed the server's check against the text. */
+  verses?: AskVerse[];
+  /** Links that opened on a trusted site. */
+  sources?: { title: string; url: string; site: string }[];
+  follow_ups?: string[];
+  needs_birth?: boolean;
+  needs_partner?: boolean;
+}
+
+export interface AskVerse {
+  sa: string;
+  iast: string;
+  /** The text, with its verse number only when the number was checked too. */
+  ref: string;
+  meaning: string;
+  /** Where the verse was found; "" when the app holds it. */
+  url: string;
+  site: string;
+  shloka_id?: string;
 }
 
 export interface AskPlace {
@@ -645,6 +668,130 @@ export interface AskPlace {
   lon: number;
   tz: string;
   label: string;
+}
+
+// ─── Ask mode in Talk (POST /ask/talk) ───────────────────────────────────
+// The phone keeps the thread and sends the last few turns with each new
+// question; the server keeps none.
+
+export interface AskTurn {
+  q: string;
+  a: string;
+}
+
+/** Birth details for a chart. Used for the calculation, never stored server-side. */
+export interface AskBirth {
+  date: string; // YYYY-MM-DD
+  time: string; // HH:MM, 24-hour; "" when unknown
+  time_known: boolean;
+  lat: number;
+  lon: number;
+  tz: string;
+  label: string;
+}
+
+export interface AskChartPlanet {
+  key: string;
+  name: string;
+  name_sa: string;
+  sign_en: string;
+  sign_sa: string;
+  sign_roman: string;
+  deg: string;
+  house: number;
+  nakshatra: string;
+  pada: number;
+  retro: boolean;
+  dignity: string;
+}
+
+export interface AskChart {
+  time_known: boolean;
+  lagna: { sign_en: string; sign_sa: string; sign_roman: string; deg: string; nakshatra: string; pada: number } | null;
+  planets: AskChartPlanet[];
+  moon_sign_en: string;
+  moon_sign_sa: string;
+  nakshatra: string;
+  pada: number;
+  dasha: {
+    maha: { lord: string; start: string; end: string } | null;
+    antar: { lord: string; start: string; end: string } | null;
+  };
+  conventions: { ayanamsa: string; houses: string; node: string };
+}
+
+/** One of the eight kootas of a gun milan, as the server calculated it. */
+export interface AskKoota {
+  key: string;
+  name: string;
+  max: number;
+  points: number;
+  boy: string;
+  girl: string;
+}
+
+export interface AskMatchSide {
+  nakshatra: string;
+  pada: number;
+  rashi: string;
+  rashi_en: string;
+  /** Where Mars counts from by the common Manglik rule; empty when not Manglik. */
+  manglik_from: string[];
+}
+
+export interface AskMatch {
+  boy: AskMatchSide;
+  girl: AskMatchSide;
+  kootas: AskKoota[];
+  total: number;
+  max: number;
+  verdict: string;
+  nadi_dosha: boolean;
+  bhakoot_dosha: boolean;
+  /** Which Nadi/Bhakoot exception decided those two kootas; "" when none did. */
+  exception?: string;
+}
+
+/** A card still being written: title, summary and sections only. */
+export type AskPartialCard = Pick<AskCard, "title" | "title_sa" | "title_iast" | "summary" | "sections">;
+
+export interface AskTalkOptions {
+  history?: AskTurn[];
+  lang?: string;
+  sttLang?: string;
+  place?: AskPlace | null;
+  birth?: AskBirth | null;
+  /** The other person, for gun milan; sent only with `birth`. */
+  partner?: AskBirth | null;
+  askerIs?: "boy" | "girl";
+}
+
+export interface AskTalkResponse {
+  card: AskCard | null;
+  explanation: string;
+  /** ISO 639-1 code of the answer's language. */
+  lang: string;
+  /** Script key the client maps to a font. */
+  script: string;
+  routed_to: "llm" | "cache" | "fallback";
+  cached: boolean;
+  /** "birth" or "partner" when a reading needs those details. */
+  needs: "" | "birth" | "partner";
+  provider: string;
+  chart: AskChart | null;
+  match?: AskMatch | null;
+}
+
+function askBody(question: string, opts: AskTalkOptions): string {
+  return JSON.stringify({
+    question,
+    history: opts.history ?? [],
+    ...(opts.lang ? { lang: opts.lang } : {}),
+    ...(opts.sttLang ? { stt_lang: opts.sttLang } : {}),
+    ...(opts.place ? { place: opts.place } : {}),
+    ...(opts.birth ? { birth: opts.birth } : {}),
+    ...(opts.birth && opts.partner ? { partner: opts.partner, asker_is: opts.askerIs ?? "boy" } : {}),
+  });
 }
 
 // ─── Writing practice (U12 / P20) ──────────────────────────────────────────
@@ -1534,6 +1681,93 @@ export const api = {
       },
       true,
     ),
+
+  /**
+   * One question in Talk's Ask mode. `history` is the thread so far (the
+   * server keeps none), `lang` the language the thread has been answered in.
+   * `birth` goes in the POST body only, for a chart; the server does not
+   * store or log it.
+   */
+  askTalk: (question: string, opts: AskTalkOptions = {}) =>
+    request<AskTalkResponse>("/ask/talk", { method: "POST", body: askBody(question, opts) }, true),
+
+  /**
+   * The same question, answered while it is written (POST /ask/talk/stream,
+   * server-sent events read through expo/fetch). `onPartial` receives the
+   * card so far, title, summary and sections only; the resolved value is
+   * the whole checked answer, as /ask/talk returns it. Throws ApiError on a
+   * refused request or an error event, like `request` does.
+   */
+  askTalkStream: async (
+    question: string,
+    opts: AskTalkOptions,
+    onPartial: (card: AskPartialCard) => void,
+  ): Promise<AskTalkResponse> => {
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      Accept: "text/event-stream",
+    };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+    let res: Awaited<ReturnType<typeof streamFetch>>;
+    try {
+      res = await streamFetch(`${BASE_URL}/ask/talk/stream`, {
+        method: "POST",
+        headers,
+        body: askBody(question, opts),
+      });
+    } catch {
+      throw new ApiError(0, `Network error reaching ${BASE_URL}/ask/talk/stream`);
+    }
+    if (!res.ok) {
+      let detail = res.statusText;
+      try {
+        detail = ((await res.json()) as { detail?: string }).detail ?? detail;
+      } catch {
+        /* keep statusText */
+      }
+      throw new ApiError(res.status, detail);
+    }
+    if (!res.body) throw new ApiError(0, "The answer could not be streamed.");
+    const reader = res.body.getReader();
+    // Lines are cut at the newline byte before decoding: a newline is never
+    // part of a multi-byte character, so no Devanagari letter is split.
+    const decoder = new TextDecoder();
+    let pending = new Uint8Array(0);
+    let final: AskTalkResponse | null = null;
+    const handle = (line: string) => {
+      if (!line.startsWith("data: ")) return;
+      const ev = JSON.parse(line.slice(6)) as {
+        type: string;
+        card?: AskPartialCard;
+        response?: AskTalkResponse;
+        status?: number;
+        detail?: string;
+      };
+      if (ev.type === "partial" && ev.card) onPartial(ev.card);
+      else if (ev.type === "final" && ev.response) final = ev.response;
+      else if (ev.type === "error") throw new ApiError(ev.status ?? 500, ev.detail ?? "No answer right now.");
+    };
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (value && value.length) {
+        const joined = new Uint8Array(pending.length + value.length);
+        joined.set(pending);
+        joined.set(value, pending.length);
+        let start = 0;
+        for (let i = 0; i < joined.length; i++) {
+          if (joined[i] === 10) {
+            handle(decoder.decode(joined.subarray(start, i)).replace(/\r$/, ""));
+            start = i + 1;
+          }
+        }
+        pending = joined.slice(start);
+      }
+      if (done) break;
+    }
+    if (pending.length) handle(decoder.decode(pending));
+    if (!final) throw new ApiError(0, "The answer stopped before it finished.");
+    return final;
+  },
 
   /**
    * Flag AI-generated content (Play AI-Generated Content policy). The report

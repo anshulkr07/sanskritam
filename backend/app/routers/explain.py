@@ -31,6 +31,7 @@ to the Sarvam explainer below.
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import re
 
@@ -41,7 +42,7 @@ from sqlalchemy.orm import Session
 from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner, Shloka
-from app.services import ask_engine, verse_study
+from app.services import ask_engine, ask_facts, ask_live, ask_sources, verse_study
 from app.services.explainer import get_explainer, reply_language
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 
@@ -239,118 +240,30 @@ def explain_metrics() -> dict:
 
 # ── rendering ────────────────────────────────────────────────────────────────
 
-_CALENDAR_Q = re.compile(
-    r"tithi|panchang|panchangam|nakshatra|nakshatram|yoga\b|karana|today|aaj|आज|"
-    r"when is|kab hai|कब|muhurta|muhurtam|sunrise|sunset|moonrise|vrat|vrata|"
-    r"festival|utsav|parva",
-    re.I,
-)
-
-_DELHI = {"lat": 28.6139, "lon": 77.2090, "tz": "Asia/Kolkata", "label": "New Delhi"}
+# Calendar facts live in services/ask_facts.py, shared with Talk's Ask mode.
+# These names stay here for the callers and tests that import them.
+_CALENDAR_Q = ask_facts.CALENDAR_Q
+_DELHI = ask_facts.DELHI
 
 
 def _resolve_place(place: AskPlace | None) -> tuple[dict, bool]:
-    """Approximate place for calendar math. Returns (place_dict, place_needed).
-
-    With no place in the request, calculate for New Delhi and set
-    place_needed True. The server uses the place for the calculation and
-    never stores or logs it.
-    """
-    if place is not None and (place.lat or place.lon):
-        try:
-            lat = round(float(place.lat), 1)
-            lon = round(float(place.lon), 1)
-        except (TypeError, ValueError):
-            lat, lon = _DELHI["lat"], _DELHI["lon"]
-        tz = (place.tz or "Asia/Kolkata").strip() or "Asia/Kolkata"
-        label = (place.label or "").strip() or "Your place"
-        return {"lat": lat, "lon": lon, "tz": tz, "label": label}, False
-    return dict(_DELHI), True
+    """Approximate place for calendar math. Returns (place_dict, place_needed)."""
+    if place is None:
+        return ask_facts.resolve_place()
+    return ask_facts.resolve_place(place.lat, place.lon, place.tz, place.label, given=True)
 
 
 def _find_festival_in_text(text: str) -> dict | None:
-    from app.services import panchang as _panchang
-
-    q = (text or "").casefold()
-    if not q:
-        return None
-    for row in _panchang._FESTIVALS:
-        names = [row["name"].casefold(), *[a.casefold() for a in row.get("aliases", [])]]
-        for n in names:
-            if n and n in q:
-                return row
-    return None
+    return ask_facts.find_festival_in_text(text)
 
 
 def _fmt_day(d) -> str:
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    return f"{d.day} {months[d.month - 1]} {d.year}"
+    return ask_facts.fmt_day(d)
 
 
 def _build_facts(question: str, screen_text: str, place: dict) -> tuple[str, str, str, str, str]:
-    """Calendar FACTS for the model, plus when_text, when_note, date_str, place_key.
-
-    Returns empty facts when the question is not about the calendar. Never
-    raises: a calculation failure means no FACTS, and the model is told it
-    cannot calculate that yet.
-    """
-    from datetime import datetime
-    from zoneinfo import ZoneInfo
-    from app.services import panchang as _panchang
-
-    combined = f"{question} {screen_text}"
-    if not _CALENDAR_Q.search(combined) and _find_festival_in_text(combined) is None:
-        return "", "", "", "", ""
-    tzname = place.get("tz") or "Asia/Kolkata"
-    try:
-        zone = ZoneInfo(tzname)
-    except Exception:
-        zone = ZoneInfo("Asia/Kolkata")
-        tzname = "Asia/Kolkata"
-    today = datetime.now(zone).date()
-    date_str = today.isoformat()
-    place_key = f"{round(float(place.get('lat', 0)), 1)},{round(float(place.get('lon', 0)), 1)}"
-    label = place.get("label") or "New Delhi"
-    try:
-        d = _panchang.day(today, place)
-    except Exception:
-        return "", "", "", date_str, place_key
-    fest_row = _find_festival_in_text(combined)
-    fest_line = ""
-    when_text = _fmt_day(today)
-    if fest_row is not None:
-        try:
-            for yr in (today.year, today.year + 1):
-                try:
-                    occ = _panchang.festival(fest_row["name"], yr, place)
-                except LookupError:
-                    continue
-                if isinstance(occ, tuple):
-                    start, end = occ
-                    if end >= today:
-                        fest_line = f"- {fest_row['name']}: {_fmt_day(start)} to {_fmt_day(end)}."
-                        when_text = f"{_fmt_day(start)} to {_fmt_day(end)}"
-                        break
-                else:
-                    if occ >= today:
-                        fest_line = f"- {fest_row['name']}: {_fmt_day(occ)}."
-                        when_text = _fmt_day(occ)
-                        break
-            else:
-                fest_line = f"- {fest_row['name']}: cannot calculate that yet."
-        except Exception:
-            fest_line = f"- {fest_row['name']}: cannot calculate that yet."
-    when_note = f"For {label}"
-    today_line = (
-        f"- Today, {_fmt_day(today)}: {d.get('tithi', '')} until {d.get('tithi_end', '')}, "
-        f"then {d.get('tithi_next', '')}. Month {d.get('month_purnimanta', '')} (Purnimanta)."
-    )
-    facts = (
-        f"FACTS (calculated for {label}; use exactly as given, never change or add to them):\n"
-        f"{today_line}"
-        + (f"\n{fest_line}" if fest_line else "")
-    )
-    return facts, when_text, when_note, date_str, place_key
+    """Calendar FACTS for the model, plus when_text, when_note, date_str, place_key."""
+    return ask_facts.calendar_facts(question, screen_text, place)
 
 
 def _render_engine_answer(ans: dict) -> str:
@@ -497,6 +410,33 @@ async def ask_explain(
     # 4. LLM path — metered, session-free, reply_language resolved
     #    server-side. One llm_calls unit per answer, card or prose.
     language = verse_language or reply_language(question or screen_text or subject, learner.bridge_langs)
+
+    # 4·0. A wider question goes to the same Gemini explainer as Talk's Ask
+    #      mode (services/ask_live.py), on the Gemini budget, with its verses
+    #      and links checked. When it cannot answer, the Sarvam card below
+    #      does, exactly as before.
+    if use_cards and ask_live.available():
+        got = await ask_live.ask(db, learner, question or "What does this mean?", language,
+                                 facts=facts, screen_text=screen_text, surface="explain")
+        card = ask_live.clip(got[0]) if got else None
+        if ask_live.has_content(card):
+            ask_sources.mark_stored(db, card)
+            await asyncio.to_thread(ask_sources.check_card, card)
+            if has_facts:
+                card["when"] = {"text": when_text, "note": when_note}
+                card["place_needed"] = place_needed
+            payload = {
+                "routed_to": "llm",
+                "explanation": ask_live.flatten(card),
+                "engine": {},
+                "source": "llm",
+                "provider": got[1],
+                "card": card,
+            }
+            _cache_put(key, payload)
+            metrics_note("llm")
+            return AskResponse(**payload)
+
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="explain")
     except QuotaExceeded as exc:

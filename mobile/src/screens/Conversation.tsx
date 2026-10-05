@@ -51,15 +51,28 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 import {
   api,
+  ApiError,
+  type AskBirth,
+  type AskCard,
+  type AskPlace,
+  type AskTalkResponse,
+  type AskPartialCard,
+  type AskTalkOptions,
+  type AskTurn,
   type TalkTurn,
   type ConversationNode,
   type MetaIntent,
   type TurnResponse,
 } from "../api/client";
 import { GuruNative, type AvatarStateName as AvatarState } from "../components/guru/GuruNative";
+import AnswerCard from "../components/ask/AnswerCard";
+import BirthForm from "../components/ask/BirthForm";
+import PlaceChooser from "../components/PlaceChooser";
 import { startTimeline, type Timeline } from "../utils/perf";
 import { haptics } from "../services/haptics";
-import { playTutorAudio } from "../services/speech";
+import { getBirth, getPartner, type SavedPartner } from "../services/birth";
+import { getPlace } from "../services/place";
+import { playTutorAudio, speak, type SpeakHandle } from "../services/speech";
 import { ensureScriptFont } from "../services/scriptFonts";
 import { useVoiceInput } from "../hooks/useVoiceInput";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
@@ -97,6 +110,89 @@ const HEADER_H = 172;
 /** A tutor turn that carries nothing is a bug, not an empty state. */
 const hasContent = (t: TalkTurn) =>
   !!(t.reply_devanagari || t.reply_native || t.explain_en || t.fix?.devanagari);
+
+// ─── Ask mode ─────────────────────────────────────────────────────────────
+// Talk has two modes (owner, 2026-10-05). Practise is the Sanskrit
+// conversation above, unchanged. Ask is an explainer for everything else a
+// learner wants to know (texts, dharma, festivals and puja vidhi, kundli,
+// Ayurveda, yoga, maths and astronomy in the texts), answered in their own
+// language by POST /ask/talk. The two threads are kept apart: switching
+// modes loses neither, and Ask questions never enter the tutor's history.
+
+type Mode = "practise" | "ask";
+
+type AskMsg =
+  | { kind: "q"; text: string; display?: string }
+  | { kind: "a"; data: AskTalkResponse; question: string }
+  | { kind: "pending" }
+  | { kind: "stream"; card: AskCard; question: string }
+  | { kind: "birth"; question: string }
+  | { kind: "partner"; question: string }
+  | { kind: "place"; question: string }
+  | { kind: "error"; text: string };
+
+/** Rows offered before the first question; one tap asks. */
+const ASK_STARTERS = [
+  "Dussehra puja vidhi, step by step",
+  "What does the Gita say about sadness?",
+  "Which yoga asanas help a stiff back?",
+  "What maths is in the Shulba Sutras?",
+  "What does my kundli say?",
+];
+
+// A question about the asker's own chart. With birth details saved on the
+// phone, these go with the question at once instead of after a round trip.
+const CHART_WORDS =
+  /kundli|kundali|horoscope|birth\s*chart|janam|janm|rashi|rasi|lagna|ascendant|nakshatra|dasha|dosha|manglik|mangal|sade\s*sati|shani|jyotish|astrolog|कुंडली|कुण्डली|राशि|लग्न|नक्षत्र|दशा|दोष|मांगलिक|मंगल|साढ़े|शनि|ज्योतिष/i;
+const MINE = /\b(my|me|mine|i|mera|meri|mere|mujhe)\b|मेरी|मेरा|मेरे|मुझे|मैं/i;
+const wantsChart = (q: string) => CHART_WORDS.test(q) && MINE.test(q);
+// A question about matching two charts. With both people's details saved,
+// they go with the question at once.
+const MATCH_WORDS = /milan|match|compatib|gun\b|guna|ashtakoo?ta|मिलान|मिलाप|गुण/i;
+const wantsMatch = (q: string) => MATCH_WORDS.test(q);
+
+/** A card still being written, in the shape the answer card draws. */
+function liveCard(c: AskPartialCard): AskCard {
+  return {
+    title: c.title ?? "",
+    title_sa: c.title_sa ?? "",
+    title_iast: c.title_iast ?? "",
+    when: { text: "", note: "" },
+    summary: c.summary ?? "",
+    sections: c.sections ?? [],
+    terms: [],
+    caution: "",
+    place_needed: false,
+  };
+}
+
+/** The thread as the server wants it: the last six answered questions. */
+function askHistory(msgs: AskMsg[]): AskTurn[] {
+  const turns: AskTurn[] = [];
+  for (const m of msgs) {
+    if (m.kind === "a" && m.data.card) turns.push({ q: m.question, a: m.data.explanation.slice(0, 900) });
+  }
+  return turns.slice(-6);
+}
+
+/** What "listen" reads: the answer and its steps, not the extras. Capped,
+ * because reading aloud costs more than writing the answer did. */
+function listenText(card: AskCard): string {
+  const parts = [card.summary];
+  for (const s of card.sections ?? []) parts.push(...(s.items ?? []));
+  let out = "";
+  for (const p of parts.map((x) => plain(x)).filter(Boolean)) {
+    if ((out + " " + p).length > 1200) break;
+    out = out ? `${out} ${p}` : p;
+  }
+  return out;
+}
+
+function askError(e: unknown): string {
+  if (e instanceof ApiError && e.status === 429) return "Today's questions are used up. Try again tomorrow.";
+  if (e instanceof ApiError && e.status === 422) return "Those birth details didn't work. Check the date and time.";
+  return "I couldn't answer that just now. Try again.";
+}
 
 // ─── One tutor turn ───────────────────────────────────────────────────────
 
@@ -306,6 +402,26 @@ export default function ConversationScreen() {
   const scrollRef = useRef<ScrollView>(null);
   const { queue: achQueue, record: recordAch, dismiss: dismissAch } = useAchievementReveal();
 
+  // Ask mode: its own thread, its own busy flag, the language the thread has
+  // been answered in, and the birth details saved on this phone.
+  const [mode, setMode] = useState<Mode>("practise");
+  const [askMsgs, setAskMsgs] = useState<AskMsg[]>([]);
+  const [askBusy, setAskBusy] = useState(false);
+  const askLangRef = useRef("");
+  const [birth, setBirthState] = useState<AskBirth | null>(null);
+  const [partner, setPartnerState] = useState<SavedPartner | null>(null);
+  const askScriptRef = useRef("latin");
+  const [listening, setListening] = useState<number | null>(null);
+  const listenRef = useRef<SpeakHandle | null>(null);
+
+  useEffect(() => {
+    void getBirth().then(setBirthState);
+    void getPartner().then(setPartnerState);
+    return () => {
+      void listenRef.current?.stop().catch(() => undefined);
+    };
+  }, []);
+
   const tabBarHeight = useBottomTabBarHeight();
   const keyboard = useReanimatedKeyboardAnimation();
 
@@ -390,17 +506,25 @@ export default function ConversationScreen() {
   // with the transcript for the tutor and the display mix for the bubble.
   const tlRef = useRef<Timeline | null>(null);
   const voice = useVoiceInput({
-    disabled: busy || done,
+    disabled: mode === "ask" ? askBusy : busy || done,
     onResult: (r) => {
       const tl = tlRef.current;
       tlRef.current = null;
+      if (mode === "ask") {
+        void askSubmit(r.transcript, { sttLang: r.language_code || undefined, display: r.display || undefined });
+        return;
+      }
       tl?.mark("stt");
       void submit(r.transcript, r.language_code || undefined, tl ?? undefined, r.display || undefined);
     },
     onError: (message) => {
       tlRef.current?.report("(stt failed)");
       tlRef.current = null;
-      setMsgs((m) => [...m, { kind: "error", text: message }]);
+      if (mode === "ask") {
+        setAskMsgs((m) => [...m, { kind: "error", text: message }]);
+      } else {
+        setMsgs((m) => [...m, { kind: "error", text: message }]);
+      }
       scrollBottom();
     },
     onProgress: (stage) => {
@@ -601,6 +725,152 @@ export default function ConversationScreen() {
     [sessionId, busy, node, explainLine, speakLine],
   );
 
+  // ── Ask mode ──────────────────────────────────────────────────────────
+
+  /**
+   * Ask one question; the answer is shown while it is written. `quiet`
+   * re-asks a question already in the thread (after birth details, a
+   * partner's or a place were given) without showing it twice. Saved details
+   * go along at once with a question that needs them; if the server still
+   * says it needs them, the question is asked again with them rather than
+   * showing the form.
+   */
+  const askSubmit = useCallback(
+    async (
+      q: string,
+      opts: {
+        sttLang?: string;
+        display?: string;
+        birth?: AskBirth | null;
+        partner?: SavedPartner | null;
+        place?: AskPlace | null;
+        quiet?: boolean;
+      } = {},
+    ) => {
+      const text = q.trim();
+      if (!text || askBusy) return;
+      setAskBusy(true);
+      if (!opts.quiet) setInput("");
+      const history = askHistory(askMsgs);
+      setAskMsgs((m) => [
+        ...m.filter((x) => x.kind !== "birth" && x.kind !== "partner" && x.kind !== "place" && x.kind !== "error"),
+        ...(opts.quiet ? [] : [{ kind: "q" as const, text, display: opts.display }]),
+        { kind: "pending" as const },
+      ]);
+      scrollBottom();
+      // The card so far replaces "Thinking…", then grows in place.
+      const showPartial = (c: AskPartialCard) =>
+        setAskMsgs((m) => {
+          const at = m.findIndex((x) => x.kind === "pending" || x.kind === "stream");
+          if (at < 0) return m;
+          const out = [...m];
+          out[at] = { kind: "stream", card: liveCard(c), question: text };
+          return out;
+        });
+      try {
+        // A place just picked is passed in: storing it is not finished yet.
+        const saved = opts.place === undefined ? await getPlace() : opts.place;
+        const place = saved ? { lat: saved.lat, lon: saved.lon, tz: saved.tz, label: saved.label } : null;
+        const myBirth = opts.birth !== undefined ? opts.birth : birth;
+        const theirs = opts.partner !== undefined ? opts.partner : partner;
+        const ask = async (b: AskBirth | null, p: SavedPartner | null) => {
+          const o: AskTalkOptions = {
+            history,
+            lang: askLangRef.current || undefined,
+            sttLang: opts.sttLang,
+            place,
+            birth: b,
+            partner: b && p ? p.birth : null,
+            askerIs: p?.askerIs,
+          };
+          try {
+            return await api.askTalkStream(text, o, showPartial);
+          } catch (e) {
+            // A server without the stream, or a stream cut short: ask plainly.
+            if (e instanceof ApiError && ![0, 404, 405].includes(e.status)) throw e;
+            return await api.askTalk(text, o);
+          }
+        };
+        const matchQ = wantsMatch(text);
+        const firstBirth = opts.birth !== undefined || wantsChart(text) || matchQ ? myBirth : null;
+        const firstPartner = opts.partner !== undefined || matchQ ? theirs : null;
+        let r = await ask(firstBirth, firstPartner);
+        if (r.needs === "birth" && !firstBirth && myBirth) r = await ask(myBirth, firstPartner);
+        if (r.needs === "partner" && !firstPartner && theirs && myBirth) r = await ask(myBirth, theirs);
+        askLangRef.current = r.lang || askLangRef.current;
+        askScriptRef.current = r.script || askScriptRef.current;
+        void ensureScriptFont(r.script);
+        const next: AskMsg[] = [];
+        if (r.needs === "birth" || (r.needs === "partner" && !myBirth)) next.push({ kind: "birth", question: text });
+        else if (r.needs === "partner") next.push({ kind: "partner", question: text });
+        setAskMsgs((m) => [
+          ...m.filter((x) => x.kind !== "pending" && x.kind !== "stream"),
+          r.card ? { kind: "a" as const, data: r, question: text } : { kind: "error" as const, text: askError(null) },
+          ...next,
+        ]);
+      } catch (e) {
+        setAskMsgs((m) => [
+          ...m.filter((x) => x.kind !== "pending" && x.kind !== "stream"),
+          { kind: "error", text: askError(e) },
+        ]);
+      } finally {
+        setAskBusy(false);
+        scrollBottom();
+      }
+    },
+    [askBusy, askMsgs, birth, partner],
+  );
+
+  const stopListening = useCallback(() => {
+    void listenRef.current?.stop().catch(() => undefined);
+    listenRef.current = null;
+    setListening(null);
+    setIsSpeaking(false);
+    setSpeech(null);
+  }, []);
+
+  /** Read an answer aloud in its own language, or stop if it is reading. */
+  const toggleListen = useCallback(
+    async (idx: number, card: AskCard, lang: string) => {
+      const wasThis = listening === idx;
+      stopListening();
+      if (wasThis) return;
+      const text = listenText(card);
+      if (!text) return;
+      haptics.tap();
+      setListening(idx);
+      setIsSpeaking(true);
+      try {
+        listenRef.current = await speak(
+          text,
+          lang || "en",
+          1.0,
+          () => {
+            listenRef.current = null;
+            setListening(null);
+            setIsSpeaking(false);
+            setSpeech(null);
+          },
+          (durationMs) => setSpeech({ text, durationMs }),
+        );
+      } catch {
+        stopListening();
+      }
+    },
+    [listening, stopListening],
+  );
+
+  const switchMode = useCallback(
+    (m: Mode) => {
+      if (m === mode) return;
+      haptics.tap();
+      stopListening();
+      setMode(m);
+      scrollBottom();
+    },
+    [mode, stopListening],
+  );
+
   // ── Mic ────────────────────────────────────────────────────────────────
   // Recording, stopping and transcription live in the shared hook; results
   // and error lines arrive through its callbacks above.
@@ -613,7 +883,130 @@ export default function ConversationScreen() {
   let avatarState: AvatarState = "idle";
   if (isSpeaking) avatarState = "speaking";
   else if (recActive) avatarState = "listening";
-  else if (busy) avatarState = "thinking";
+  else if (busy || askBusy) avatarState = "thinking";
+
+  const asking = mode === "ask";
+  const inputBusy = asking ? askBusy : busy;
+  const inputClosed = asking ? false : done;
+
+  /** One question and its answer, in Ask mode. */
+  const renderAsk = (m: AskMsg, i: number) => {
+    switch (m.kind) {
+      case "q":
+        return (
+          <View key={`a${i}`} style={styles.learner}>
+            <Text style={styles.learnerText} selectable>
+              {m.display || m.text}
+            </Text>
+          </View>
+        );
+      case "a": {
+        const card = m.data.card;
+        if (!card) return null;
+        return (
+          <AnswerCard
+            key={`a${i}`}
+            card={card}
+            explanation={m.data.explanation}
+            question={m.question}
+            scriptKey={m.data.script}
+            chart={m.data.chart}
+            surface="ask"
+            onFollowUp={(f) => void askSubmit(f)}
+            onListen={() => void toggleListen(i, card, m.data.lang)}
+            listening={listening === i}
+            onPlace={() => {
+              setAskMsgs((list) => [...list, { kind: "place", question: m.question }]);
+              scrollBottom();
+            }}
+            onBirth={
+              m.data.chart
+                ? () => {
+                    setAskMsgs((list) => [...list, { kind: "birth", question: m.question }]);
+                    scrollBottom();
+                  }
+                : undefined
+            }
+            match={m.data.match}
+            askerIs={partner?.askerIs}
+            onPartner={
+              m.data.match
+                ? () => {
+                    setAskMsgs((list) => [...list, { kind: "partner", question: m.question }]);
+                    scrollBottom();
+                  }
+                : undefined
+            }
+          />
+        );
+      }
+      case "stream":
+        return (
+          <AnswerCard
+            key={`a${i}`}
+            card={m.card}
+            explanation=""
+            question={m.question}
+            scriptKey={askScriptRef.current}
+            live
+          />
+        );
+      case "birth":
+        return (
+          <BirthForm
+            key={`a${i}`}
+            initial={birth}
+            onDone={(b) => {
+              setBirthState(b);
+              void askSubmit(m.question, { birth: b, quiet: true });
+            }}
+            onCancel={() => {
+              void getBirth().then(setBirthState);
+              setAskMsgs((list) => list.filter((x) => x !== m));
+            }}
+          />
+        );
+      case "partner":
+        return (
+          <BirthForm
+            key={`a${i}`}
+            who="partner"
+            initial={partner?.birth ?? null}
+            initialAskerIs={partner?.askerIs ?? "boy"}
+            onDone={(b, side) => {
+              const p: SavedPartner = { birth: b, askerIs: side };
+              setPartnerState(p);
+              if (birth) void askSubmit(m.question, { partner: p, quiet: true });
+              else setAskMsgs((list) => [...list.filter((x) => x !== m), { kind: "birth", question: m.question }]);
+            }}
+            onCancel={() => {
+              void getPartner().then(setPartnerState);
+              setAskMsgs((list) => list.filter((x) => x !== m));
+            }}
+          />
+        );
+      case "place":
+        return (
+          <View key={`a${i}`} style={styles.placeBox}>
+            <Text style={styles.placeHead}>Your place</Text>
+            <PlaceChooser onPick={(p) => void askSubmit(m.question, { quiet: true, place: p })} />
+          </View>
+        );
+      case "pending":
+        return (
+          <Text key={`a${i}`} style={styles.asideText}>
+            Thinking…
+          </Text>
+        );
+      case "error":
+        return (
+          <View key={`a${i}`} style={styles.errorCard}>
+            <Ionicons name="cloud-offline-outline" size={14} color={color.badText} />
+            <Text style={styles.errorText}>{m.text}</Text>
+          </View>
+        );
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -622,13 +1015,66 @@ export default function ConversationScreen() {
       </Animated.View>
 
       <Animated.View style={[styles.column, shiftStyle]}>
+        <View style={styles.modeRow} accessibilityRole="tablist">
+          {(["practise", "ask"] as Mode[]).map((m) => {
+            const on = mode === m;
+            return (
+              <Pressable
+                key={m}
+                onPress={() => switchMode(m)}
+                style={[styles.modeBtn, on && styles.modeBtnOn]}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: on }}
+                accessibilityLabel={m === "practise" ? "Practise speaking Sanskrit" : "Ask a question"}
+              >
+                <Ionicons
+                  name={m === "practise" ? "chatbubbles-outline" : "help-circle-outline"}
+                  size={16}
+                  color={on ? onFill.text : color.ink}
+                />
+                <Text style={[styles.modeText, on && styles.modeTextOn]}>
+                  {m === "practise" ? "Practise" : "Ask"}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
         <ScrollView
           ref={scrollRef}
           contentContainerStyle={styles.body}
           keyboardShouldPersistTaps="handled"
-          accessibilityLabel="Conversation messages"
+          accessibilityLabel={asking ? "Questions and answers" : "Conversation messages"}
         >
-          {msgs.map((m, i) => {
+          {asking && askMsgs.length === 0 && (
+            <View style={styles.starters}>
+              <Text style={styles.startHead}>Ask anything</Text>
+              <Text style={styles.startSub}>
+                Texts and their ideas, dharma, festivals and puja vidhi, kundli, Ayurveda, yoga, and the maths and
+                astronomy in the texts. Ask in your own language.
+              </Text>
+              {ASK_STARTERS.map((q) => (
+                <Pressable
+                  key={q}
+                  onPress={() => {
+                    haptics.tap();
+                    void askSubmit(q);
+                  }}
+                  style={styles.starter}
+                  accessibilityRole="button"
+                >
+                  <Text style={styles.starterText}>{q}</Text>
+                  <Ionicons name="arrow-forward" size={14} color={color.ink} />
+                </Pressable>
+              ))}
+            </View>
+          )}
+
+          {asking && askMsgs.map(renderAsk)}
+
+          {asking && voiceBusy && <Text style={styles.asideText}>Transcribing…</Text>}
+
+          {!asking && msgs.map((m, i) => {
             switch (m.kind) {
               case "tutor":
                 return (
@@ -677,7 +1123,7 @@ export default function ConversationScreen() {
             </View>
           )}
 
-          {done && (
+          {!asking && done && (
             <View style={styles.doneCard}>
               <Text style={styles.doneTitle}>Wonderful practice</Text>
               <Text style={styles.doneSub}>That was the conversation.</Text>
@@ -690,15 +1136,15 @@ export default function ConversationScreen() {
             <Animated.View style={micPulseStyle}>
               <Pressable
                 onPress={onMicPress}
-                disabled={(busy || voiceBusy) && !recActive}
+                disabled={(inputBusy || voiceBusy) && !recActive}
                 style={[
                   styles.mic,
                   recActive && styles.micActive,
-                  (busy || voiceBusy) && !recActive && styles.micDisabled,
+                  (inputBusy || voiceBusy) && !recActive && styles.micDisabled,
                 ]}
                 accessibilityRole="button"
                 accessibilityLabel={recActive ? "Stop recording" : "Start recording"}
-                accessibilityState={{ disabled: (busy || voiceBusy) && !recActive }}
+                accessibilityState={{ disabled: (inputBusy || voiceBusy) && !recActive }}
               >
                 <Ionicons
                   name={recActive ? "stop" : "mic"}
@@ -712,26 +1158,27 @@ export default function ConversationScreen() {
           <TextInput
             value={input}
             onChangeText={setInput}
-            placeholder="Say or type"
+            placeholder={asking ? "Ask about texts, festivals, kundli…" : "Say or type"}
             placeholderTextColor={color.inkFaint}
             style={styles.input}
-            onSubmitEditing={() => submit(input)}
+            onSubmitEditing={() => (asking ? void askSubmit(input) : submit(input))}
             returnKeyType="send"
-            editable={!busy && !voiceBusy && !done}
+            editable={!inputBusy && !voiceBusy && !inputClosed}
             multiline
             accessibilityRole="text"
-            accessibilityLabel="Type your reply"
+            accessibilityLabel={asking ? "Type your question" : "Type your reply"}
           />
           <Pressable
             onPress={() => {
               haptics.press();
-              submit(input);
+              if (asking) void askSubmit(input);
+              else submit(input);
             }}
-            disabled={!input.trim() || busy || voiceBusy || done}
-            style={[styles.send, (!input.trim() || busy || voiceBusy || done) && styles.sendDisabled]}
+            disabled={!input.trim() || inputBusy || voiceBusy || inputClosed}
+            style={[styles.send, (!input.trim() || inputBusy || voiceBusy || inputClosed) && styles.sendDisabled]}
             accessibilityRole="button"
-            accessibilityLabel="Send reply"
-            accessibilityState={{ disabled: !input.trim() || busy || voiceBusy || done }}
+            accessibilityLabel={asking ? "Send question" : "Send reply"}
+            accessibilityState={{ disabled: !input.trim() || inputBusy || voiceBusy || inputClosed }}
           >
             <Ionicons name="arrow-up" size={20} color={color.white} />
           </Pressable>
@@ -756,6 +1203,56 @@ const styles = StyleSheet.create({
   },
   column: { flex: 1 },
   body: { padding: space.lg, paddingBottom: space.xl, gap: space.lg },
+
+  // ── The Practise | Ask switch ─────────────────────────────────────────
+  modeRow: {
+    flexDirection: "row",
+    gap: space.xs,
+    paddingHorizontal: space.lg,
+    paddingVertical: space.xs,
+    borderBottomWidth: 1,
+    borderBottomColor: color.border,
+    backgroundColor: color.bg,
+  },
+  modeBtn: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+    minHeight: 40,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    borderColor: outline,
+  },
+  modeBtnOn: { backgroundColor: fill.ink, borderColor: fill.ink },
+  modeText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
+  modeTextOn: { color: onFill.text },
+
+  // ── Ask mode ──────────────────────────────────────────────────────────
+  starters: { gap: space.xs },
+  startHead: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  startSub: {
+    fontFamily: "Nunito_500Medium",
+    fontWeight: "500",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+    lineHeight: 21,
+    marginBottom: space.xs,
+  },
+  starter: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: space.xs,
+    minHeight: 48,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: color.border,
+  },
+  starterText: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  placeBox: { gap: space.xs },
+  placeHead: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 17, color: color.ink },
 
   // ── One tutor turn ──────────────────────────────────────────────────
   turn: { gap: space.sm },

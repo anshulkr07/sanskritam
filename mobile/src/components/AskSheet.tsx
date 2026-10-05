@@ -47,12 +47,12 @@ import { captureRef } from "react-native-view-shot";
 import {
   ApiError,
   api,
-  type AskCard,
   type AskEngineBlock,
   type AskPlace,
   type AskResponse,
 } from "../api/client";
 import SutraCard from "./derivation/SutraCard";
+import AnswerCard from "./ask/AnswerCard";
 import { Skeleton } from "./Skeleton";
 import PlaceChooser from "./PlaceChooser";
 import ReportButton from "./ReportButton";
@@ -483,6 +483,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
                       data={phase.data}
                       question={phase.question}
                       onPlace={() => setChoosingPlace(true)}
+                      onFollowUp={(f) => void ask(f)}
                     />
                     <Pressable
                       onPress={again}
@@ -571,10 +572,12 @@ function Answer({
   data,
   question,
   onPlace,
+  onFollowUp,
 }: {
   data: AskResponse;
   question: string;
   onPlace: () => void;
+  onFollowUp?: (q: string) => void;
 }) {
   if (data.routed_to === "engine") {
     return <EngineAnswer blocks={data.engine.blocks ?? []} explanation={data.explanation} />;
@@ -588,88 +591,20 @@ function Answer({
     );
   }
   if (data.card) {
-    return <CardAnswer card={data.card} explanation={data.explanation} question={question} onPlace={onPlace} />;
+    return (
+      <AnswerCard
+        card={data.card}
+        explanation={data.explanation}
+        question={question}
+        onPlace={onPlace}
+        onFollowUp={onFollowUp}
+      />
+    );
   }
   return (
     <View>
       <Text style={styles.prose}>{plain(data.explanation)}</Text>
       <ReportButton surface="ask" question={question} answer={data.explanation} />
-    </View>
-  );
-}
-
-function CardAnswer({
-  card,
-  explanation,
-  question,
-  onPlace,
-}: {
-  card: AskCard;
-  explanation: string;
-  question: string;
-  onPlace: () => void;
-}) {
-  return (
-    <View style={styles.card}>
-      <Text style={styles.cardTitle}>
-        {card.title}
-        {!!card.title_sa && <Text style={styles.cardTitleSa}> {card.title_sa}</Text>}
-      </Text>
-
-      {!!card.when?.text && (
-        <View style={styles.when}>
-          <Text style={styles.whenText}>{card.when.text}</Text>
-          {!!card.when.note && <Text style={styles.whenNote}>{card.when.note}</Text>}
-        </View>
-      )}
-
-      {card.place_needed ? (
-        <Pressable
-          onPress={onPlace}
-          accessibilityRole="button"
-          accessibilityLabel="Set your place"
-          style={styles.setPlace}
-        >
-          <Text style={styles.setPlaceText}>Set your place</Text>
-          <Ionicons name="chevron-forward" size={15} color={color.inkFaint} />
-        </Pressable>
-      ) : null}
-
-      {!!card.summary && <Text style={styles.cardSummary}>{plain(card.summary)}</Text>}
-
-      {(card.sections ?? []).map((s, i) => (
-        <View key={i} style={styles.section}>
-          {!!s.heading && <Text style={styles.sectionHead}>{s.heading}</Text>}
-          {(s.items ?? []).map((item, j) => (
-            <Text key={j} style={styles.sectionItem}>
-              {s.style === "steps" ? `${j + 1}. ${plain(item)}` : `• ${plain(item)}`}
-            </Text>
-          ))}
-        </View>
-      ))}
-
-      {(card.terms ?? []).length > 0 && (
-        <View style={styles.section}>
-          <Text style={styles.sectionHead}>Words</Text>
-          {(card.terms ?? []).map((t, i) => (
-            <Text key={i} style={styles.term}>
-              <Text style={[styles.termSa, script("semibold")]}>{t.sa} </Text>
-              <Text style={styles.termRest}>
-                {t.iast} · {t.meaning}
-              </Text>
-            </Text>
-          ))}
-        </View>
-      )}
-
-      {!!card.caution && (
-        <View style={styles.caution}>
-          <Ionicons name="alert-circle-outline" size={15} color={color.badText} />
-          <Text style={styles.cautionText}>{plain(card.caution)}</Text>
-        </View>
-      )}
-
-      <ReportButton surface="ask" question={question} answer={explanation} />
     </View>
   );
 }
@@ -858,49 +793,7 @@ const styles = StyleSheet.create({
   badgeWarn: { backgroundColor: color.warnBg },
   badgeText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.tutor },
   prose: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.ink, lineHeight: 24 },
-  // The card: no white box around the whole answer.
-  card: { gap: space.sm },
-  cardTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 17, color: color.ink },
-  cardTitleSa: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 15, color: color.inkSoft },
-  when: {
-    flexDirection: "row",
-    alignItems: "baseline",
-    justifyContent: "space-between",
-    gap: space.sm,
-    backgroundColor: fill.gold,
-    borderRadius: 10,
-    paddingVertical: 8,
-    paddingHorizontal: space.sm,
-  },
-  whenText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
-  whenNote: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: onFill.text },
-  setPlace: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 11,
-    borderBottomWidth: 1,
-    borderBottomColor: color.border,
-    minHeight: 44,
-  },
-  setPlaceText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
   placeTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  cardSummary: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.ink, lineHeight: 24 },
-  section: { gap: 3, marginTop: 2 },
-  sectionHead: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 11,
-    color: color.inkSoft,
-    textTransform: "uppercase",
-    letterSpacing: 0.6,
-  },
-  sectionItem: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.ink, lineHeight: 21 },
-  term: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.sm, color: color.inkSoft, lineHeight: 22 },
-  termSa: { fontSize: 15, color: color.ink },
-  termRest: { fontSize: font.sizes.sm, color: color.inkSoft },
-  caution: { flexDirection: "row", alignItems: "flex-start", gap: 6 },
-  cautionText: { flex: 1, fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.badText, lineHeight: 20 },
   parseRow: { marginVertical: space.xs },
   parseWord: { fontSize: font.sizes.xl, color: color.ink },
   parseIast: { fontSize: font.sizes.sm, color: color.inkSoft, marginLeft: 6 },

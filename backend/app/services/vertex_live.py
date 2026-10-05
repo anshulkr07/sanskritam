@@ -131,6 +131,49 @@ class VertexProvider(Provider):
             "generationConfig": config,
         }
 
+    async def stream(self, system: str, user: str, *, temperature: float = 0.0,
+                     max_tokens: int = 512, json_mode: bool = False,
+                     usage: Optional[dict] = None):
+        """The answer as it is written: yields text pieces in order.
+
+        ``streamGenerateContent?alt=sse`` sends one ``data:`` line per piece;
+        the token counts arrive with the last ones, and are written into
+        ``usage`` (``prompt_tokens``, ``output_tokens``, reasoning included)
+        so the caller can settle what it reserved. Raises on an HTTP error or
+        a broken connection; the caller decides what to refund.
+        """
+        if not self.configured:
+            raise RuntimeError("Vertex credentials not set")
+        token = await self._bearer()
+        if self._http is None or self._http.is_closed:
+            self._http = httpx.AsyncClient(timeout=self._timeout)
+        url = self._url().replace(":generateContent", ":streamGenerateContent") + "?alt=sse"
+        body = self._body(system, user, temperature, max_tokens, json_mode)
+        async with self._http.stream("POST", url, headers={"Authorization": f"Bearer {token}"},
+                                     json=body) as resp:
+            if resp.status_code != 200:
+                if resp.status_code in (401, 403):
+                    self._token = ""
+                detail = (await resp.aread())[:300]
+                raise RuntimeError(f"HTTP {resp.status_code}: {detail!r}")
+            async for line in resp.aiter_lines():
+                if not line.startswith("data:"):
+                    continue
+                try:
+                    chunk = json.loads(line[5:].strip())
+                except json.JSONDecodeError:
+                    continue
+                meta = chunk.get("usageMetadata") or {}
+                if usage is not None and meta:
+                    usage["prompt_tokens"] = int(meta.get("promptTokenCount") or 0)
+                    usage["output_tokens"] = (int(meta.get("candidatesTokenCount") or 0)
+                                              + int(meta.get("thoughtsTokenCount") or 0))
+                for cand in chunk.get("candidates") or []:
+                    for part in (cand.get("content") or {}).get("parts") or []:
+                        text = (part or {}).get("text")
+                        if text and not (part or {}).get("thought"):
+                            yield text
+
     async def complete(self, system: str, user: str, *, temperature: float = 0.0,
                        max_tokens: int = 512, json_mode: bool = False) -> LLMResponse:
         if not self.configured:
