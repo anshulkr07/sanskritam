@@ -224,7 +224,7 @@ _todo.append(_v(
     was=[("अहो वृद्धत्वं कष्टम्।", False)],
 ))
 _todo.append(_v(
-    14, "Muṇḍaka Upaniṣad 3.1.6",
+    14, "Mundaka Upaniṣad 3.1.6",
     "सत्यमेव जयते नानृतम्। सत्येन पन्था विततो देवयानः।",
     "satyameva jayate nānṛtam. satyena panthā vitato devayānaḥ.",
     [("सत्यम्", "truth", ["NOM.SG"]), ("एव", "indeed", ["INDECL"]),
@@ -234,7 +234,7 @@ _todo.append(_v(
      ("देवयानः", "leading to the gods", ["NOM.SG"])],
 ))
 _todo.append(_v(
-    15, "Muṇḍaka Upaniṣad 3.1.6",
+    15, "Mundaka Upaniṣad 3.1.6",
     "सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः। येनाक्रमन्त्यृषयो ह्याप्तकामा यत्र तत् सत्यस्य परमं निधानम्॥",
     "satyameva jayate nānṛtaṃ satyena panthā vitato devayānaḥ. yenākramanty ṛṣayo hyāptakāmā yatra tat satyasya paramaṃ nidhānam.",
     [("सत्यम्", "truth", ["NOM.SG"]), ("एव", "indeed", ["INDECL"]),
@@ -776,7 +776,7 @@ _todo.append(_v(
      ("दहति", "burns", ["PRES.3SG"]), ("पावकः", "fire", ["NOM.SG"])],
 ))
 _todo.append(_v(
-    81, "Muṇḍaka Upaniṣad 3.1.6",
+    81, "Mundaka Upaniṣad 3.1.6",
     "सत्यमेव जयते।",
     "satyameva jayate.",
     [("सत्यम्", "truth", ["NOM.SG"]), ("एव", "indeed", ["INDECL"]),

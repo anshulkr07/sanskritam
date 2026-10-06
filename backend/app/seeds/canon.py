@@ -34,7 +34,7 @@ CANON_TEXTS = [
         "study_order": 2,
         "depth": "studied",
         "tier": "free",
-        "verses_planned": 50,
+        "verses_planned": 100,
         "ref_prefixes": ["Hitopade"],
         "notes": "Story verses: simple classical, best second text after the Gītā.",
     },
@@ -126,7 +126,7 @@ CANON_TEXTS = [
         "depth": "studied",
         "tier": "free",
         "verses_planned": 100,
-        "ref_prefixes": ["Subhāṣita", "Subhashita"],
+        "ref_prefixes": ["Subhāṣita", "Subhashita", "Vairāgya", "Vairagya", "Śṛṅgāra", "Sringara"],
         "notes": "Single-verse readings: the daily-śloka well's natural extension.",
     },
     {

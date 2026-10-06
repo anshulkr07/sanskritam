@@ -65,6 +65,14 @@ def test_a_trailing_verse_number_is_a_number():
     assert _normalise_ref("Sūkti: Subhāṣita Ratna Bhāṇḍāgāra") == "Sūkti: Subhāṣita Ratna Bhāṇḍāgāra"
 
 
+def test_1830_is_a_real_verse_not_88():
+    """Chapter 8 has 28 verses, so seed "8.30" is 8.8 — but 18.30 exists and
+    must not be renamed (it once collapsed an imported 18.30 into 18.8)."""
+    assert _normalise_ref("Bhagavad Gītā 8.30") == "Bhagavad Gītā 8.8"
+    assert _normalise_ref("Bhagavad Gītā 18.30") == "Bhagavad Gītā 18.30"
+    assert _normalise_ref("Bhagavad Gītā 18.8") == "Bhagavad Gītā 18.8"
+
+
 def test_a_prefixed_import_gets_its_reference_back(client):
     """The Īśā import's rows were renamed "Sūkti: Īśopaniṣad N" on every boot."""
     from app.seeds.seed import _correct_reader_rows

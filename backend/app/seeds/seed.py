@@ -308,8 +308,10 @@ def _normalise_ref(source_ref: str) -> str:
 
     numbered = _re.compile(r"\d+\.\d+|\s\d+$")
     ref = (source_ref or "").strip()
-    if "8.30" in ref and "Bhagavad" in ref:
-        ref = ref.replace("8.30", "8.8")
+    if "Bhagavad" in ref:
+        # Chapter 8 has 28 verses: seed file's "8.30" is 8.8. The lookbehind
+        # keeps "18.30" (a real verse) intact — it was once renamed to 18.8.
+        ref = _re.sub(r"(?<!\d)8\.30\b", "8.8", ref)
     prefixed = _re.match(r"S[ūu]kti\b:?\s*(.*)$", ref)
     if prefixed:
         rest = prefixed.group(1).strip()
@@ -354,14 +356,15 @@ def _correct_reader_rows(db) -> None:
         else:
             seen.add(key)
     # Drop any residual 8.30 that slipped through (chapter 8 has 28 verses).
+    # Same standalone-8.30 rule as _normalise_ref: 18.30 is a real verse.
     for r in db.query(Shloka).filter(Shloka.source_ref.contains("8.30")).all():
-        if "Bhagavad" in (r.source_ref or ""):
+        if "Bhagavad" in (r.source_ref or "") and _re.search(r"(?<!\d)8\.30\b", r.source_ref or ""):
             dup = db.query(Shloka).filter(
-                Shloka.source_ref == (r.source_ref or "").replace("8.30", "8.8"),
+                Shloka.source_ref == _re.sub(r"(?<!\d)8\.30\b", "8.8", r.source_ref or ""),
                 Shloka.date == r.date,
             ).first()
             if dup is not None:
                 db.delete(r)
             else:
-                r.source_ref = (r.source_ref or "").replace("8.30", "8.8")
+                r.source_ref = _re.sub(r"(?<!\d)8\.30\b", "8.8", r.source_ref or "")
     db.flush()
