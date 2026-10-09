@@ -107,7 +107,6 @@ notes now recorded in it.
   `gpu/Dockerfile.cpu`), approve rules/prize/pieces.
 
 ## Full render + recurring workflow (*run* 2026-10-09, owner-approved)
-
 - Phase 0 accepted as-is: all 20 approved, default QC thresholds kept, CPU
   scorer host. Commits d0b4bab (code), 85581b7 (measurements), 690b6e5
   (workflow). Shared edited files (models, Book, etc.) still uncommitted:
@@ -120,6 +119,21 @@ notes now recorded in it.
   New verses later: `chant_export --skip-served`, same script with
   `JOBS=...`, review, `chant_import --live` to R2/GCS. Supabase Storage is
   not a backend yet (R2/GCS only).
+
+## Meter LUT bug found in verification, full run redone (*run* 2026-10-09)
+
+- The finished full run (1,395 verses, 1,395 `.m4a`) rendered EVERYTHING to
+  the fallback reference: my wrapper checked the detector name against the
+  JSON keys (`anuṣṭubh`) while the detector returns ASCII (`anushtubh`),
+  which only the LUT's wav-stem aliases resolve (author's docstring says so;
+  `anushtubh.wav` exists). All 4,187 takes used vasantatilaka reference.
+  Right text, wrong metre feel. Commit 56ab4ca fixes the wrapper to mirror
+  render_core's LUT (keys + stems, lowercased).
+- Probe after fix (*run*): Gita 1.1 + 2.71 resolve `anushtubh`,
+  fallback false, RTF 1.15 on the free GPU.
+- Wiped the fallback audio and relaunched the full run from zero. The
+  Phase 0 sample bundle on your PC has the same fallback caveat (voice
+  approval still valid; metre feel is fallback throughout).
 
 ## Defaults as built (owner may change)
 
