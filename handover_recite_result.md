@@ -106,6 +106,21 @@ notes now recorded in it.
   `scorer_max_seconds = 45`, pick scorer host (recommend CPU,
   `gpu/Dockerfile.cpu`), approve rules/prize/pieces.
 
+## Full render + recurring workflow (*run* 2026-10-09, owner-approved)
+
+- Phase 0 accepted as-is: all 20 approved, default QC thresholds kept, CPU
+  scorer host. Commits d0b4bab (code), 85581b7 (measurements), 690b6e5
+  (workflow). Shared edited files (models, Book, etc.) still uncommitted:
+  they interleave with the shelf session's work; left for you to review.
+- Full 1,395-verse render launched on the machine (`~/gpu/run_full.sh`:
+  render, qc, reseed, qc, assemble; resumable; contended with ComfyUI per
+  your call). First attempt caught a truncated `chant_jobs.jsonl` (first
+  scp cut 87 KB); re-sent whole (1,496,056 bytes, ends clean) and relaunched.
+- Recurring workflow: `gpu/run_full.sh` + `gpu/README.md` "Recurring runs".
+  New verses later: `chant_export --skip-served`, same script with
+  `JOBS=...`, review, `chant_import --live` to R2/GCS. Supabase Storage is
+  not a backend yet (R2/GCS only).
+
 ## Defaults as built (owner may change)
 
 competition_results_hour 8; one verse/competition from competition_pieces.py; tie-break earliest best_at; competition_attempts_per_day 10; entry = Google/Apple + public name (3-24, unique ci, reserved list) + 18+ + current rules + recording consent, not banned; competition_audio_days 30; prize_contact_email "" (winner sees in-app contact line); quota_recite_seconds_per_day 900; chant_serve_statuses auto_ok,approved; under-18s blocked from entry only. competition_replay_threshold 0.0 (report only). competition_piece_max_ms 35000. Thresholds face 0.9 / eyes 0.85 / multi 0.1.

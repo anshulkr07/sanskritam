@@ -54,10 +54,29 @@ def _load_renderer():
 
 
 def _bank_lookup(bank: dict, meter: str) -> float:
+    lut = _build_lut(bank)
+    e = lut.get((meter or "").lower())
     try:
-        return float(bank[meter]["sec_per_syll"])
+        return float(e["sec_per_syll"])
     except Exception:
         return 0.33
+
+
+def _build_lut(bank: dict) -> dict:
+    """Mirror render_core's bank LUT: JSON keys AND wav stems, lowercased.
+
+    The detector returns ASCII names ('anushtubh') while the JSON keys carry
+    diacritics ('anuṣṭubh'); the LUT's wav-stem aliases ('anushtubh') are what
+    resolve them. Checking membership against the raw keys alone falls back
+    for every verse (caught 2026-10-09 after the first full run).
+    """
+    lut: dict = {}
+    for k, v in bank.items():
+        if k.startswith("_") or not isinstance(v, dict) or "wav" not in v:
+            continue
+        lut[k.lower()] = v
+        lut[str(v["wav"]).replace(".wav", "").lower()] = v
+    return lut
 
 
 def main() -> None:
@@ -101,8 +120,9 @@ def main() -> None:
             meter = render_core.detect_meter_key(verse_tts) or ""
         except Exception:
             meter = ""
+        lut = _build_lut(bank)
         fallback = False
-        if not meter or meter not in bank:
+        if not meter or meter.lower() not in lut:
             meter = "vasantatilaka"
             fallback = True
         sps = _bank_lookup(bank, meter)
