@@ -121,7 +121,6 @@ notes now recorded in it.
   not a backend yet (R2/GCS only).
 
 ## Meter LUT bug found in verification, full run redone (*run* 2026-10-09)
-
 - The finished full run (1,395 verses, 1,395 `.m4a`) rendered EVERYTHING to
   the fallback reference: my wrapper checked the detector name against the
   JSON keys (`anuṣṭubh`) while the detector returns ASCII (`anushtubh`),
@@ -134,6 +133,15 @@ notes now recorded in it.
 - Wiped the fallback audio and relaunched the full run from zero. The
   Phase 0 sample bundle on your PC has the same fallback caveat (voice
   approval still valid; metre feel is fallback throughout).
+
+## Live dashboard (*run* 2026-10-09, commit 8127e8c)
+
+- `gpu/dash/dashboard.py` refreshes `~/gpu_out/dash/index.html` every
+  120 s: per-verse text lines, parts done/total, meter, QC flags, and an
+  audio preview for each completed verse (encoded like assemble).
+- Live view: `ssh -L 8000:localhost:8000 spark`, on the machine
+  `cd ~/gpu_out/dash && python -m http.server 8000`, open localhost:8000.
+  Or ask for a snapshot and it is copied to your PC like phase0_out.
 
 ## Defaults as built (owner may change)
 
