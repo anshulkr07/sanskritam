@@ -54,7 +54,7 @@ DECISIONS.md: appended 2026-10-09 Recite entry (11.14).
 - *Run*: full backend suite 1612 passed, 16 skipped, 4 failed (below; all unrelated to recite code; recite files all pass).
 - *Run*: `mobile npx tsc --noEmit` clean; `check-contrast.mjs` pass (maroon/gold 7.76 covered); `check-recite.mjs` 14 passed; `check-kala.mjs` 4106 pass; `a11y-audit.js` 0 issues.
 - *Run*: gpu tests 13 passed via backend venv (numpy/soundfile/pytest only imports; torch/NeMo/GPU not needed).
-- *Run*: `chant_export --sample 20`: 20 verses, vedic 1, non-vedic 19, 40 lines, 660 syllables (Gita 8, Hitopadesa 3, Katha 1, Mahabharata 4, Niti 1, Ramayana 1, Subhasita 1, Taittiriya 1). Full export: 1395 verses, vedic 84, non-vedic 1311, 2771 lines, 52359 syllables (book counts in run output).
+- *Run*: `chant_export --sample 20`: 20 verses, 40 lines, 660 syllables (Gita 8, Hitopadesa 3, Katha 1, Mahabharata 4, Niti 1, Ramayana 1, Subhasita 1, Taittiriya 1). Full export: 1395 verses, vedic 84, non-vedic 1311, 2771 lines, 52359 syllables (book counts in run output).
 - *Read*: HANDOVER.md sections 0/2; backend routers/services/mobile files cited above; expo-audio v57 AudioPlayer.remove + setActiveForLockScreen signatures in node_modules (used, not guessed).
 - *Not verified*: everything needing GPU/owner (Phase 0 measurements, CER vs 4.36, latency, render quality, thresholds, scorer host, replay threshold, Gita 2.47 >= 90, empty unclear on device, eyes ratios on phone, capture interval, cache emptiness, full competition cycle on device, background/lock-screen on device, push). No machine rented, no deploy/build/commit (*read* app.json/package.json only; packages not installed).
 - Pre-existing failures (not caused by recite; concurrent shelf session + date): test_licence_names_exact (shelf rewrote sa-wikisource to CC BY-SA 4.0 + 23 books), test_reader_tiers_shape (tier 2 empty breakdown from reader_passages seed), test_progress history (2026-09-01 outside 35-day window on 2026-10-09), all *run* above. Left untouched per no-revert rule.
@@ -63,6 +63,48 @@ DECISIONS.md: appended 2026-10-09 Recite entry (11.14).
 
 - Done in tree: Phase 0 code (awaits owner section-14 steps 1-4 + phase0.json), Phase 1 code (awaits owner render/review/import), Phase 2 code (awaits owner scorer + device checks), Phase 3 code (awaits owner build + device checks), Phase 4 code (awaits owner rules/prize/pieces approval + first competition), Phase 5 background play included in app.json/player (needs same 1.2.0 build).
 - Owner runbook: gpu/README.md = section 14 copy.
+
+## Phase 0 GPU results (*run* 2026-10-09 on the rented GB10, commit d0b4bab)
+
+Machine used with your permission; ComfyUI left running throughout; nothing
+installed into system Python. Setup: `bash gpu/setup_vast.sh` plus the dep
+notes now recorded in it.
+
+- NeMo 2.7.3 loads v13b on ARM + container torch 2.10: YES (*run*). Stock
+  NeMo cannot: the checkpoint needs AI4Bharat `multilingual` tokenizer
+  routing + `multisoftmax` kwarg stripping (`gpu/asr/sushrota.py`, recipe
+  from the author's own running HF Space demo, *read* 2026-10-09). The
+  `.nemo` is a POSIX tar (not zip). `sa` tokenizer present, model on cuda:0.
+- Decoder check: CER 4.47% on all 327 `in_the_wild_test` clips vs author's
+  4.36%: within 0.5pp (0.11pp away). ACCEPTANCE PASSES (*run*,
+  `~/gpu_out/decoder_check.json`).
+- Sample render: 20 verses, 41 parts + 12 reseeds = 53 renders, 229 s audio
+  (*run*). RTF ~6.4 wall (contended: ComfyUI at 96%; author's A6000 number
+  is 1.24). Full 4 h chant at this contention is ~25 GPU-hours: run the full
+  render when ComfyUI is idle.
+- QC: 40/53 clean; first takes 37/41 clean, CER mean 0.022. Reseeds fixed
+  one CER flag (0.12 clean) and improved another (0.429 to 0.286, still
+  flagged). One long line flags short+pause on every seed (threshold vs
+  fallback-meter fit; needs your listen).
+- Assemble: 20 verses, 20 `.m4a` (1.5 MB), manifest 20 rows, all
+  `needs_listen` (meter fallback / vedic / speaker-first). review.html has
+  20 rows (*run*).
+- Latency (*run*): GPU 10/30/45/60 s clips in 0.49/0.14/0.29/0.49 s, peak
+  1.6 GB. CPU/4-threads: 0.48/1.31/2.23/3.33 s. RECOMMENDATION: CPU host
+  suffices (45 s in 2.2 s, far under the 25 s timeout); GPU only for
+  concurrency. Set `scorer_max_seconds = 45` (unchanged).
+- AAC offset measured (*run*): encoded `.m4a` lags the joined wav by 42.7 ms
+  (xcorr 0.998). Line timings are ~43 ms early vs the file; acceptable for
+  line highlighting.
+- Your listening bundle is on your PC at
+  `%LOCALAPPDATA%\Temp\opencode\phase0_out\` (review.html + audio/ (20) +
+  manifest.jsonl + phase0.json + setup.json); originals in `~/gpu_out/` on
+  the machine. Serve locally: `cd phase0_out && python -m http.server`,
+  Approve/Reject, Download decisions.
+- Still yours: listen to the 20, set QC thresholds
+  (`competition_audio_days` n/a here; duration/pause/CER), confirm
+  `scorer_max_seconds = 45`, pick scorer host (recommend CPU,
+  `gpu/Dockerfile.cpu`), approve rules/prize/pieces.
 
 ## Defaults as built (owner may change)
 
