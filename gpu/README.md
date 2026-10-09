@@ -44,6 +44,30 @@ Estimate: 3.5 to 4.5 h chant, 4.5 to 5.5 GPU-h for one take, plus reseeds.
 
 ## 6. Review and import: see handover section 14 step 6.
 
+## Recurring runs (new/changed verses later)
+
+Same flow, incremental. `--skip-served` exports only verses with no
+`approved`/`auto_ok` chant, and every machine stage is resumable:
+
+```
+# On your PC:
+cd backend
+python -m scripts.chant_export --out ../gpu_jobs/chant_new.jsonl --skip-served
+scp -r ../gpu_jobs/chant_new.jsonl spark:~/gpu_jobs/
+# On the machine (same script, different jobs file):
+JOBS=~/gpu_jobs/chant_new.jsonl nohup bash ~/gpu/run_full.sh > full-runner.log 2>&1 &
+# Back on your PC: review, then import (uploads to the configured store).
+scp -r spark:~/gpu_out ./gpu_out_new   # or copy just manifest+audio+review.html
+cd gpu_out_new && python -m http.server  # review.html, Download decisions
+cd backend && python -m scripts.chant_import --manifest ../gpu_out_new/manifest.jsonl --audio ../gpu_out_new/audio --decisions ../gpu_out_new/decisions.json
+python -m scripts.chant_import --manifest ../gpu_out_new/manifest.jsonl --audio ../gpu_out_new/audio --decisions ../gpu_out_new/decisions.json --live
+```
+
+Storage: `--live` uploads through the configured backend (`AUDIO_STORAGE=r2`
++ `R2_*` for Cloudflare R2, zero egress; or `gcs`). Verse rows go to
+whichever database `DATABASE_URL` points at. Supabase Storage is not a
+backend yet (R2/GCS only); say the word and it gets one.
+
 ## 7. Scorer
 Run `gpu/asr/server.py` (or Dockerfile.gpu) on a datacenter GPU host, or
 Dockerfile.cpu on CPU if fast enough. HTTPS in front (Cloudflare Tunnel).
