@@ -1,0 +1,9 @@
+# Container numpy (2.1) is used as-is on the GB10; do NOT pin numpy==1.26.4 here
+# (it would shadow the container build torch was compiled against).
+librosa==0.11.0
+soundfile>=0.12
+transformers==4.46.3
+indic-transliteration
+huggingface_hub
+# torch/torchaudio come from the container via --system-site-packages. Never install them here.
+# IndicF5 is installed from git at Vagdhenu's pinned commit by setup_vast.sh.

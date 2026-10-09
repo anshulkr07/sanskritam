@@ -1,0 +1,13 @@
+# NOTE: setup_vast.sh installs nemo_toolkit[asr]==2.7.3 with --no-deps (torch
+# comes from the container via --system-site-packages; PyPI has no ARM CUDA
+# wheel for Vagdhenu's torch==2.4.1 cu121). Do NOT pip install this file
+# directly on the GB10; run setup_vast.sh.
+numpy
+soundfile
+librosa
+fastapi
+uvicorn
+python-multipart
+huggingface_hub
+datasets
+nemo_toolkit[asr]==2.7.3
