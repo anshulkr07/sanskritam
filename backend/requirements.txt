@@ -27,3 +27,5 @@ tzdata>=2024.1
 # MIT licence, no dependencies. Never use Swiss Ephemeris / pyswisseph here
 # (AGPL or commercial).
 astronomy-engine==2.1.19
+# Vector operations for Ask book search (services/book_search.py)
+numpy>=1.26

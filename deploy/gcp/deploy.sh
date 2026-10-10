@@ -52,7 +52,14 @@ REGION="asia-south1"
 SERVICE="shabd-api"
 ENV_FILE="${ENV_FILE:-.env.deploy}"
 
-cd "$(dirname "$0")/../.."   # repo root
+# Locate repo root robustly whether invoked from repo root, deploy/gcp, or elsewhere
+if [ -f "Dockerfile" ]; then
+  : # already at repo root
+elif [ -f "$(dirname "$0")/../../Dockerfile" ]; then
+  cd "$(dirname "$0")/../.."
+elif [ -f "../../Dockerfile" ]; then
+  cd ../..
+fi
 
 # ── 0. Load secrets from .env.deploy (KEY=VALUE lines) into the environment.
 #       Kept out of the repo/history (.gitignore lists .env.deploy).
