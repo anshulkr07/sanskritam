@@ -134,6 +134,17 @@ notes now recorded in it.
   Phase 0 sample bundle on your PC has the same fallback caveat (voice
   approval still valid; metre feel is fallback throughout).
 
+## Instance destroyed (*run* 2026-10-10, owner-ordered)
+
+- Claude's flows finished first (main + mbh_bori + paged, archived to
+  `gdrive:sanskritam-chant/runs/`). Main manifest was short (1,202) from a
+  stale assemble; re-ran it to 1,395/1,395 + 428 review rows, re-archived
+  (1,400 files, 0 differences; 1,017 auto_ok, 378 needs_listen).
+- Vast instance 54803678 destroyed by owner order after verifying Drive
+  archives; code committed (d0b4bab, 85581b7, 690b6e5, 56ab4ca, 8127e8c,
+  d2d781a, 111cc21). Credit balance not checkable with the machine key
+  (see console billing).
+
 ## Live dashboard (*run* 2026-10-09, commit 8127e8c)
 
 - `gpu/dash/dashboard.py` refreshes `~/gpu_out/dash/index.html` every
