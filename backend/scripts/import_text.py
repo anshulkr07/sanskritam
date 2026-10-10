@@ -83,6 +83,17 @@ def same_verse(a: str, b: str) -> bool:
     return la == lb or difflib.SequenceMatcher(None, la, lb).ratio() >= _SAME_VERSE_RATIO
 
 
+def _scan_copy(dev: str) -> str:
+    """The text the metre engine reads. Its Rust core panics (not a catchable
+    exception) on Vedic accent marks (seen 2026-10-09 on a Katha verse), so it
+    gets a copy without them; the stored verse keeps its text."""
+    dev = dev.replace("ꣳ", "ं")
+    return "".join(
+        ch for ch in dev
+        if not (0x0951 <= ord(ch) <= 0x0954 or 0x1CD0 <= ord(ch) <= 0x1CFF
+                or 0xA8E0 <= ord(ch) <= 0xA8F2))
+
+
 def build_row(devanagari: str, ref: str, min_words: int = MIN_BREAKDOWN_WORDS) -> dict | None:
     """Run the seed pipeline for one verse. None => skip (reported)."""
     dev = (devanagari or "").strip()
@@ -102,7 +113,7 @@ def build_row(devanagari: str, ref: str, min_words: int = MIN_BREAKDOWN_WORDS) -
     if confident < min_words:
         return None
     try:
-        metre = (chandas_scan(dev).get("metre") or "") or ""
+        metre = (chandas_scan(_scan_copy(dev)).get("metre") or "") or ""
     except Exception:  # noqa: BLE001 — metre stays absent
         metre = ""
     feats: list[str] = []
@@ -118,8 +129,214 @@ def build_row(devanagari: str, ref: str, min_words: int = MIN_BREAKDOWN_WORDS) -
     }
 
 
+def _trailing_numbers(ref: str) -> list[str] | None:
+    """Trailing number parts of a ref, e.g. 'Yoga Sūtra 1.2' -> ['1', '2']."""
+    import re as _re
+    m = _re.search(r"(\d+(?:\.\d+)*)\s*$", (ref or "").strip())
+    if not m:
+        return None
+    return m.group(1).split(".")
+
+
+def _chapter_of_ref(ref: str) -> str | None:
+    """Every number but the last, joined by '.', or '' for a one-number ref."""
+    parts = _trailing_numbers(ref)
+    if parts is None:
+        return None
+    if len(parts) <= 1:
+        return ""
+    return ".".join(str(int(p)) for p in parts[:-1])
+
+
+def _paged_book_entry(slug: str) -> dict | None:
+    try:
+        from app.seeds.canon import CANON_TEXTS as _CANON
+    except Exception:
+        return None
+    for t in _CANON:
+        if t.get("slug") == slug:
+            return t
+    return None
+
+
+def _build_paged_row(devanagari: str, ref: str) -> tuple[dict, bool]:
+    """Build a paged row that is never skipped.
+
+    Returns (row, had_breakdown). On analyzer failure the verse is kept with
+    an empty breakdown (handover_reading_shelf.md 6.3.5); the caller lists it
+    under no_breakdown.
+    """
+    dev = (devanagari or "").strip()
+    try:
+        breakdown_src = analyze_sentence(dev) if dev else None
+    except Exception:
+        breakdown_src = None
+    if breakdown_src is None:
+        try:
+            metre = (chandas_scan(_scan_copy(dev)).get("metre") or "") or "" if dev else ""
+        except Exception:
+            metre = ""
+        try:
+            iast_text = iast.to_iast(dev) if dev else ""
+        except Exception:
+            iast_text = ""
+        return ({
+            "source_ref": ref,
+            "devanagari": dev,
+            "iast": iast_text,
+            "metre": metre,
+            "word_breakdown": [],
+            "features": [],
+        }, False)
+    breakdown = [
+        {"word": r.word,
+         "meaning": (sorted(set((r.parsed or {}).keys())) or [""])[0] if r.is_confident else "",
+         "features": sorted(set((r.parsed or {}).values())) if r.is_confident else []}
+        for r in breakdown_src
+    ]
+    try:
+        metre = (chandas_scan(_scan_copy(dev)).get("metre") or "") or ""
+    except Exception:
+        metre = ""
+    feats: list[str] = []
+    for w in breakdown:
+        feats.extend(f for f in w["features"] if f not in feats)
+    return ({
+        "source_ref": ref,
+        "devanagari": dev,
+        "iast": iast.to_iast(dev),
+        "metre": metre,
+        "word_breakdown": breakdown,
+        "features": feats,
+    }, True)
+
+
+def _run_paged_import(payload: dict, live: bool, min_words: int | None) -> dict:
+    import time as _time
+    import uuid as _uuid
+
+    slug = payload.get("book")
+    licence = (payload.get("licence") or "").strip()
+    source = (payload.get("source") or "").strip()
+    register = (payload.get("register") or "classical").strip().lower()
+    if not licence:
+        raise SystemExit("import refused: no per-text licence in the payload (§6)")
+    if register not in ("classical", "vedic", "laukika"):
+        raise SystemExit(f"import refused: unknown register {register!r} (§5)")
+    entry = _paged_book_entry(slug)
+    if not entry or not entry.get("paged"):
+        raise SystemExit(f"import refused: unknown or non-paged book {slug!r} (6.3.1)")
+    if "daily" not in payload or payload.get("daily") is not False:
+        raise SystemExit("import refused: paged payload needs 'daily': false (6.3.2)")
+    ref_name = (entry.get("ref_prefixes") or [""])[0]
+    if not ref_name:
+        raise SystemExit(f"import refused: book {slug!r} has no ref name (6.3.3)")
+    verses = payload.get("verses") or []
+    # 6.3.3: refuse the whole payload on the first bad ref/chapter.
+    failures: list[str] = []
+    for v in verses:
+        ref = v.get("ref", "")
+        chapter = v.get("chapter", "")
+        ok = True
+        if not ref.startswith(ref_name + " "):
+            ok = False
+        elif _trailing_numbers(ref) is None:
+            ok = False
+        else:
+            want_chapter = _chapter_of_ref(ref)
+            # Normalise numeric chapters ("01" -> "1", "1.01" -> "1.1").
+            def _norm(ch: str) -> str:
+                if ch == "":
+                    return ""
+                try:
+                    return ".".join(str(int(p)) for p in str(ch).split("."))
+                except Exception:
+                    return str(ch)
+            if _norm(chapter) != _norm(want_chapter or ""):
+                ok = False
+        if not ok:
+            failures.append(f"{ref!r} chapter={chapter!r} want={_chapter_of_ref(ref)!r}")
+    if failures:
+        print(f"import refused: {len(failures)} verse(s) outside book {slug!r} (6.3.3):")
+        for f in failures[:20]:
+            print(f"           {f}")
+        raise SystemExit(f"import refused: {len(failures)} verse(s) fail the ref/chapter check (6.3.3)")
+    # Within-book dedupe only (6.3.4): a classic row may carry the same ref.
+    db = SessionLocal()
+    try:
+        existing_book_refs = {r[0] for r in db.query(Shloka.source_ref).filter(Shloka.book == slug).all()}
+        incoming_refs = {v.get("ref", "") for v in verses}
+        orphans = sorted(r for r in existing_book_refs if r not in incoming_refs)
+        today_iso = datetime.date.today().isoformat()
+        added = 0
+        skipped_dup = 0
+        no_breakdown: list[str] = []
+        chapters: dict[str, int] = {}
+        # A paged import never skips a verse (6.3.5), so --min-words (default 0
+        # here) has nothing to filter; the argument is accepted and ignored.
+        t0 = _time.time()
+        seen_in_payload: set[str] = set()
+        for idx, v in enumerate(verses):
+            ref = v.get("ref", "")
+            chapter = v.get("chapter", "")
+            # Normalise chapter numbers for storage.
+            try:
+                if chapter == "":
+                    chapter_norm = ""
+                else:
+                    chapter_norm = ".".join(str(int(p)) for p in str(chapter).split("."))
+            except Exception:
+                chapter_norm = str(chapter)
+            if ref in existing_book_refs or ref in seen_in_payload:
+                skipped_dup += 1
+                seen_in_payload.add(ref)
+                continue
+            seen_in_payload.add(ref)
+            row, _ok = _build_paged_row(v.get("devanagari", ""), ref)
+            # Thin analysis is listed, never a reason to drop the verse (a
+            # scripture with holes is worse than a verse without analysis).
+            if not row["word_breakdown"]:
+                no_breakdown.append(ref)
+            chapters[chapter_norm] = chapters.get(chapter_norm, 0) + 1
+            if live:
+                db.add(Shloka(
+                    id=_uuid.uuid4().hex[:16],
+                    date=today_iso,
+                    audio_url="",
+                    register=register,
+                    book=slug,
+                    chapter=chapter_norm,
+                    seq=idx + 1,
+                    in_daily=False,
+                    translation_hi=(v.get("translation_hi") or "").strip(),
+                    translation_en=(v.get("translation_en") or "").strip(),
+                    **row,
+                ))
+                added += 1
+                if added % 500 == 0:
+                    db.commit()
+                    print(f"[import] {slug}: {added} verses ...")
+            else:
+                added += 1
+        if live:
+            db.commit()
+        dt = max(1e-6, _time.time() - t0)
+        print(f"[import] {slug}: {added} verses in {dt:.1f}s ({added / dt:.1f}/s)")
+        return {"added": added, "skipped_dup": skipped_dup,
+                "skipped_thin": [], "fixed": [], "mismatched": [],
+                "orphans": orphans, "licence": licence, "source": source,
+                "book": slug, "chapters": chapters, "no_breakdown": no_breakdown}
+    finally:
+        db.close()
+
+
 def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
-               min_words: int = MIN_BREAKDOWN_WORDS) -> dict:
+               min_words: int | None = None) -> dict:
+    # Paged import (handover_reading_shelf.md 6.3): a payload with "book".
+    if payload.get("book"):
+        return _run_paged_import(payload, live, min_words)
+    if min_words is None:
+        min_words = MIN_BREAKDOWN_WORDS
     licence = (payload.get("licence") or "").strip()
     source = (payload.get("source") or "").strip()
     if not licence:
@@ -190,6 +407,10 @@ def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
                     date=(next_date + datetime.timedelta(days=added)).isoformat(),
                     audio_url="",  # §6: never TTS a corpus import
                     register=register,
+                    book=None,
+                    chapter="",
+                    seq=0,
+                    in_daily=True,
                     translation_hi=(v.get("translation_hi") or "").strip(),
                     translation_en=(v.get("translation_en") or "").strip(),
                     **row,
@@ -206,11 +427,16 @@ def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
             "orphans": orphans, "licence": licence, "source": source}
 
 
-def print_report(report: dict, live: bool, min_words: int = MIN_BREAKDOWN_WORDS) -> None:
+def print_report(report: dict, live: bool, min_words: int | None = MIN_BREAKDOWN_WORDS) -> None:
     mode = "LIVE" if live else "DRY-RUN (nothing written)"
     verb = "added" if live else "would be added"
     print(f"[import] {mode}: {report['added']} distinct verse(s) {verb}, "
           f"{report['skipped_dup']} duplicate(s) skipped")
+    if report.get("book"):
+        print(f"[import] book: {report['book']}, chapters: {report.get('chapters', {})}")
+    if report.get("no_breakdown"):
+        print(f"[import] {len(report['no_breakdown'])} verse(s) kept with empty breakdown: "
+              + ", ".join(report["no_breakdown"][:20]))
     if report["skipped_thin"]:
         print(f"[import] skipped (< {min_words} confident words): "
               + ", ".join(report["skipped_thin"]))
@@ -235,13 +461,18 @@ def main(argv=None) -> int:
     p.add_argument("--live", action="store_true", help="write rows (default dry-run)")
     p.add_argument("--fix-existing", action="store_true",
                    help="replace an existing row's text when it is not the incoming verse")
-    p.add_argument("--min-words", type=int, default=MIN_BREAKDOWN_WORDS,
-                   help="fewest confidently analysed words for a verse to be imported (default 2)")
+    p.add_argument("--min-words", type=int, default=None,
+                   help="fewest confidently analysed words for a verse to be imported "
+                        "(default 2 classic, 0 paged)")
     args = p.parse_args(argv)
     payload = json.loads(Path(args.file).read_text(encoding="utf-8"))
+    # Paged payloads set --min-words 0 themselves (6.3.5).
+    min_words = args.min_words
+    if min_words is None:
+        min_words = 0 if payload.get("book") else MIN_BREAKDOWN_WORDS
     report = run_import(payload, live=args.live, fix_existing=args.fix_existing,
-                        min_words=args.min_words)
-    print_report(report, args.live, args.min_words)
+                        min_words=min_words)
+    print_report(report, args.live, min_words)
     print(f"[import] licence: {report['licence']}")
     if args.live:
         out = Path("results/imports") / (Path(args.file).stem + ".report.json")

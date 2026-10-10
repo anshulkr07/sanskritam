@@ -1,14 +1,16 @@
-"""P21-4 · The canon catalogue (owner's editorial question, decided 2026-09-08).
+"""P21-4 + reading shelf (2026-10-09) · The canon catalogue.
 
-"Most depth": the Gītā is the full spine (all 700 verses, the one text worth
-complete instrumentation), the Upaniṣads enter whole where short (Īśā: 18/18
-imported), everything else enters as curated studied passages, and the
-epics/Āyurveda sit as indexed catalogue entries until their selections are
-curated. ALL reading is FREE — the reader is a reference posture and the
-acquisition loop; gating any of it is a pricing decision (§6), not a default.
+Owner decisions 2026-10-09 (handover_reading_shelf.md section 1): 39 new books
+go on the Read shelf whole; 36 from commercial-use sources (Ambuda CC0 1.0,
+DCS CC BY 4.0, Sanskrit Wikisource CC BY-SA 4.0) are Plus books; Garuda
+Purana, Arthashastra and Lilavati have only a non-commercial source and are
+free books. The Plus lock is built now and switched off (CANON_PLUS_GATE).
+New books are paged (served one chapter at a time), never feed the daily
+verse, games or graded reader, and the 12 old books keep their path.
 
 Licences: ancient texts are public domain; each row records its transcription
-source's licence. "It was on the internet" is not a licence (§6).
+source's licence verbatim. GRETIL/sanskritdocuments/TITUS/Muktabodha/Vedabase
+are never a source for a Plus book.
 """
 
 CANON_TEXTS = [
@@ -75,33 +77,33 @@ CANON_TEXTS = [
         "tier": "free",
         "verses_planned": 40,
         "ref_prefixes": ["Kaṭh", "Katha"],
-        "notes": "Nachiketas dialogue: the most teachable Upaniṣad after Īśā.",
+        "notes": "Nachiketas dialogue: the most teachable Upaniṣad after Īśā. Not yet complete: a 120-verse completion from the Digital Corpus of Sanskrit was built 2026-10-09 but not imported, because 22 of the 40 rows here read differently from it (handover_reading_shelf_result.md). Which text stands is the owner's decision; until then this row stays 40 selections.",
     },
     {
         "slug": "ramayana",
         "title_en": "Rāmāyaṇa (selections)",
         "title_sa": "रामायणम्",
-        "source": "Vālmīki; GRETIL e-text (per-text licence at import)",
-        "licence": "Text: public domain (ancient); transcription licence recorded at import",
+        "source": "Vālmīki, southern vulgate; AshuVj/Valmiki_Ramayan_Dataset (MIT)",
+        "licence": "Text: public domain (ancient, Vālmīki; southern vulgate as in dataset); dataset: AshuVj/Valmiki_Ramayan_Dataset (MIT): Sanskrit verses + English explanations (after M.N. Dutt 1891-94, public domain)",
         "study_order": 6,
         "depth": "studied",
         "tier": "free",
         "verses_planned": 60,
         "ref_prefixes": ["Rāmāyaṇa", "Ramayana"],
-        "notes": "Bāla + Sundara selections first; anuṣṭubh metre names stay absent (§6).",
+        "notes": "Bāla + Sundara selections first; anuṣṭubh metre names stay absent (§6). Numbers are the southern vulgate's, as in the dataset (the curse is 1.2.15; the critical edition has 1.2.14). The daily-verse seeds for 5.10.10 and 6.10.16 still carry the critical edition's numbers.",
     },
     {
         "slug": "mahabharata",
-        "title_en": "Mahābhārata (indexed)",
+        "title_en": "Mahābhārata (selections)",
         "title_sa": "महाभारतम्",
-        "source": "GRETIL e-text (per-text licence at import)",
-        "licence": "Text: public domain (ancient); transcription licence recorded at import",
+        "source": "Vyāsa; Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Mahābhārata), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
         "study_order": 7,
-        "depth": "index",
+        "depth": "studied",
         "tier": "free",
-        "verses_planned": 200,
+        "verses_planned": 194,
         "ref_prefixes": ["Mahābhārata", "Mahabharata"],
-        "notes": "Catalogue only until selections are curated. NEVER bulk-import: ~10M chars is ₹30,000+ of TTS (§6 forbids TTS on import; rows are free, audio is not).",
+        "notes": "Vidura Nīti (Udyoga 33-34) re-sourced from DCS with BORI numbering 2026-10-09 (187 verses + 7 seeded = 194). NEVER bulk-import the whole epic: ~10M chars is ₹30,000+ of TTS (§6 forbids TTS on import; rows are free, audio is not).",
     },
     {
         "slug": "pancha",
@@ -140,20 +142,20 @@ CANON_TEXTS = [
         "tier": "free",
         "verses_planned": 20,
         "ref_prefixes": ["Mundaka", "Muṇḍaka"],
-        "notes": "Dvā suparṇā and friends: short, famous, teachable.",
+        "notes": "Dvā suparṇā and friends: short, famous, teachable. Not yet complete: a 64-verse completion from sa.wikisource was built 2026-10-09 but not imported, because 3.1.1 and 3.1.6 read differently from the rows here (handover_reading_shelf_result.md). Which text stands is the owner's decision; until then this row stays selections.",
     },
     {
         "slug": "ayurveda",
-        "title_en": "Āyurvedic saṃhitās (indexed)",
+        "title_en": "Caraka Saṃhitā (indexed)",
         "title_sa": "आयुर्वेदसंहिताः",
-        "source": "Caraka/Suśruta e-texts (per-text licence at import)",
+        "source": "Caraka e-text (per-text licence at import)",
         "licence": "Text: public domain (ancient); transcription licence recorded at import",
         "study_order": 11,
         "depth": "index",
         "tier": "free",
         "verses_planned": 30,
-        "ref_prefixes": ["Caraka", "Suśruta", "Sushruta"],
-        "notes": "Catalogue only: technical śāstra prose is post-v1 reading, not core.",
+        "ref_prefixes": ["Caraka"],
+        "notes": "Catalogue only. Susruta is now its own paged book, so this row indexes Caraka only.",
     },
     {
         "slug": "simhasana",
@@ -168,29 +170,741 @@ CANON_TEXTS = [
         "ref_prefixes": ["Siṃhāsana", "Simhasana"],
         "notes": "Story-frame verses: graded reading tier-3 material (P22-6).",
     },
+    # ── Reading shelf 2026-10-09: 39 paged books, study_order 13-51 ──
+    # 4.1 Stotras and short works (Plus)
+    {
+        "slug": "vishnusahasranama",
+        "title_en": "Viṣṇu Sahasranāma",
+        "title_sa": "विष्णुसहस्रनामस्तोत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"विष्णुसहस्रनामस्तोत्रम्‌\" and 0 more, revisions recorded in results/imports/books/vishnusahasranama.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 13,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 170,
+        "ref_prefixes": ["Viṣṇu Sahasranāma"],
+        "notes": "Chapters are the page sections with numbered verses (mulapatha=1, dhyana=2, stotra=3, uttaranyasa=4, upasamhara=5, paryaya=6); nyasa prose and sambandhanubandhah left out.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "lalita",
+        "title_en": "Lalitā Sahasranāma",
+        "title_sa": "ललितासहस्रनामस्तोत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"ललितासहस्रनामस्तोत्रम्\" and 0 more, revisions recorded in results/imports/books/lalita.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 14,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Lalitā Sahasranāma"],
+        "notes": "Unnumbered page: split at every danda, numbered 1..n per chapter (1 purvabhaga, 2 stotra with dhyana then names from Om srimata). Planned count set to the built count after build.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "bhajagovindam",
+        "title_en": "Bhaja Govindam",
+        "title_sa": "भजगोविन्दम्",
+        "source": "Ambuda (CC0 1.0)",
+        "licence": "Text: public domain (ancient); text: Ambuda (ambuda.org/texts/mohamudgara), CC0 1.0, Works of Sri Sankaracharya vol. 18, Sri Vani Vilas Press 1910, accessed 2026-10-09.",
+        "study_order": 15,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 31,
+        "ref_prefixes": ["Bhaja Govindam"],
+        "notes": "One chapter; 31 lg verses from Ambuda mohamudgara TEI.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "ambuda",
+    },
+    {
+        "slug": "saundarya",
+        "title_en": "Saundarya Laharī",
+        "title_sa": "सौन्दर्यलहरी",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"सौन्दर्यलहरी\" and 0 more, revisions recorded in results/imports/books/saundarya.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 16,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 100,
+        "ref_prefixes": ["Saundarya Laharī"],
+        "notes": "Transclusion page: read the rendered text. 95 numbered ends found; GRETIL critical text has 103; planned 100.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "aditya",
+        "title_en": "Āditya Hṛdayam",
+        "title_sa": "आदित्यहृदयम्",
+        "source": "Ambuda (CC0 1.0)",
+        "licence": "Text: public domain (ancient); text: Ambuda (ambuda.org/texts/adityahrdayam), CC0 1.0, edition as in the TEI sourceDesc, accessed 2026-10-09.",
+        "study_order": 17,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 31,
+        "ref_prefixes": ["Āditya Hṛdayam"],
+        "notes": "One chapter; 31 verses. Not in the critical Ramayana: never label with a Ramayana number.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "ambuda",
+    },
+    {
+        "slug": "tandava",
+        "title_en": "Śiva Tāṇḍava Stotra",
+        "title_sa": "शिवताण्डवस्तोत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शिवताण्डवस्तोत्रम्\" and 0 more, revisions recorded in results/imports/books/tandava.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 18,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 13,
+        "ref_prefixes": ["Śiva Tāṇḍava Stotra"],
+        "notes": "One chapter; 13 numbered ends before removing U+200D; report the count after cleaning.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "mahimna",
+        "title_en": "Śiva Mahimna Stotra",
+        "title_sa": "शिवमहिम्नःस्तोत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शिवमहिम्नःस्तोत्रम्\" and 0 more, revisions recorded in results/imports/books/mahimna.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 19,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 31,
+        "ref_prefixes": ["Śiva Mahimna Stotra"],
+        "notes": "Transclusion of Brhat Stotra Ratnakara 1953 print (rendered text). Verse ends look like danda-1 with no closing mark; GRETIL critical text has 31, the printed popular version is longer: report.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "ramaraksha",
+        "title_en": "Rāmarakṣā Stotra",
+        "title_sa": "रामरक्षास्तोत्रम्",
+        "source": "Ambuda (CC0 1.0)",
+        "licence": "Text: public domain (ancient); text: Ambuda (ambuda.org/texts/ramarakshastotram), CC0 1.0, edition as in the TEI sourceDesc, accessed 2026-10-09.",
+        "study_order": 20,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 38,
+        "ref_prefixes": ["Rāmarakṣā Stotra"],
+        "notes": "One chapter; 38 numbered verses. The unnumbered viniyoga and dhyana passages are left out.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "ambuda",
+    },
+    {
+        "slug": "naradabhakti",
+        "title_en": "Nārada Bhakti Sūtra",
+        "title_sa": "नारदभक्तिसूत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"नारदभक्तिसूत्रम्\" and 0 more, revisions recorded in results/imports/books/naradabhakti.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 21,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 84,
+        "ref_prefixes": ["Nārada Bhakti Sūtra"],
+        "notes": "One chapter; 84 sutras.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    # 4.2 Puranas and the Devi Mahatmya
+    {
+        "slug": "devimahatmya",
+        "title_en": "Devī Māhātmya",
+        "title_sa": "देवीमाहात्म्यम्",
+        "source": "sa.wikisource.org, Markandeya Purana chapters 81-93 (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"मार्कण्डेयपुराणम्/अध्यायः ८१\" and 12 more, revisions recorded in results/imports/books/devimahatmya.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 22,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 587,
+        "ref_prefixes": ["Devī Māhātmya"],
+        "notes": "MkP chapters 81-93 as chapters 1-13 (chapter = MkP chapter minus 80); first verse Savarni suryatanayo. Numbering matches GRETIL's copy (see 3.2); stays Plus on the stated licence.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "bhagavata",
+        "title_en": "Bhāgavata Purāṇa",
+        "title_sa": "श्रीमद्भागवतपुराणम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"श्रीमद्भागवतपुराणम्/स्कन्धः १/अध्यायः १\" and 334 more, revisions recorded in results/imports/books/bhagavata.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 23,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 14067,
+        "ref_prefixes": ["Bhāgavata Purāṇa"],
+        "notes": "335 chapters (S.C; skandha 10 split into purvardha/uttarardha); skips the two mahatmya page sets. Spot checks 2.9.32, 8.3.2, 10.31.1.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "shivapurana",
+        "title_en": "Śiva Purāṇa",
+        "title_sa": "शिवपुराणम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शिवपुराणम्/संहिता १\" and others, revisions recorded in results/imports/books/shivapurana.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 24,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Śiva Purāṇa"],
+        "notes": "Chapters N.C (samhitas 1,3,4,5,6), 2.K.C (Rudra Samhita), 7.B.C (Vayaviya purva=1/uttara=2). Vidyesvara Samhita 25 chapters 1539 verses. Reconcile each part against its index page (visayanukramanika); planned count set to the built count after build.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "garuda",
+        "title_en": "Garuḍa Purāṇa",
+        "title_sa": "गरुडपुराणम्",
+        "source": "GRETIL (CC BY-NC-SA 4.0, free shelf only)",
+        "licence": "Text: public domain (ancient); transcription: GRETIL sa_garuDapurANa, edition as in its header, CC BY-NC-SA 4.0 (non-commercial), accessed 2026-10-09. Free shelf only.",
+        "study_order": 25,
+        "depth": "full",
+        "tier": "free",
+        "verses_planned": 11957,
+        "ref_prefixes": ["Garuḍa Purāṇa"],
+        "notes": "317 chapters (239 Acara, 49 Preta/Dharma, 29 Brahma/Moksa) as P.C. Treated as a GRETIL text (3.2): the wikisource copy repeats GRETIL's headers. First chapter of the Nitisara is 1.108.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "gretil",
+    },
+    # 4.3 Vedas (Plus, vedic, accents removed)
+    {
+        "slug": "rigveda",
+        "title_en": "Ṛgveda",
+        "title_sa": "ऋग्वेदः",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Ṛgveda), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 26,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 10552,
+        "ref_prefixes": ["Ṛgveda"],
+        "notes": "1028 suktas as M.S; DCS has all 1028 sukta files. Spot checks 3.62.10, 7.59.12, 10.90.1, 10.129.1, 10.191.2.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "samaveda",
+        "title_en": "Sāmaveda",
+        "title_sa": "सामवेदः",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"सामवेदः/कौथुमीया/संहिता/सस्वरा पूर्णा\" and 0 more, revisions recorded in results/imports/books/samaveda.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md; Vedic accent marks removed.",
+        "study_order": 27,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 1875,
+        "ref_prefixes": ["Sāmaveda"],
+        "notes": "One page (Kauthumiya samhita). Chapters 1.P (Purvarcika) and 2.P (Uttararcika); verse = running number (Purvarcika 1-650, Uttararcika from ranges starting 651-712). Planned 1875 traditional; reconciled against GRETIL sa_sAmavedasaMhitA at build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "yajurveda",
+        "title_en": "Śukla Yajurveda (Vājasaneyi Mādhyandina)",
+        "title_sa": "शुक्लयजुर्वेदः",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शुक्लयजुर्वेदः/अध्यायः ०१\" and 39 more, revisions recorded in results/imports/books/yajurveda.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md; Vedic accent marks removed.",
+        "study_order": 28,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 1975,
+        "ref_prefixes": ["Śukla Yajurveda"],
+        "notes": "40 adhyaya pages; chapter A, verse from the A.M number line before each mantra (16.1 namas te rudra manyava). Count reconciled against GRETIL Vajasaneyi Samhita at build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "atharvaveda",
+        "title_en": "Atharvaveda (Śaunaka)",
+        "title_sa": "अथर्ववेदः",
+        "source": "Digital Corpus of Sanskrit (kandas 1-18) + sa.wikisource.org (kandas 19-20)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Atharvaveda (Śaunaka)), CC BY 4.0 for kandas 1-18, and transcription: sa.wikisource.org, pages \"अथर्ववेदः/अथर्ववेद: काण्डं 19\" and 1 more (CC BY-SA 4.0) for 19-20, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined; wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 29,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 5650,
+        "ref_prefixes": ["Atharvaveda"],
+        "notes": "Chapters K.S. DCS has kandas 1-18 complete (519 suktas) and 3 of 19; wikisource kanda 19 has 449 and kanda 20 has 958 numbered ends; GRETIL Saunaka 20 kandas 724 suktas 5650 refs.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    # 4.4 Upanisads (Plus, vedic)
+    {
+        "slug": "kena",
+        "title_en": "Kena Upaniṣad",
+        "title_sa": "केनोपनिषद्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"केनोपनिषत्\" and 0 more, revisions recorded in results/imports/books/kena.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 30,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 35,
+        "ref_prefixes": ["Kena Upaniṣad"],
+        "notes": "Chapters K (khanda); 35 numbered ends on the page.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "prashna",
+        "title_en": "Praśna Upaniṣad",
+        "title_sa": "प्रश्नोपनिषद्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"प्रश्नोपनिषत्/प्रथमः प्रश्नः\" and 5 more, revisions recorded in results/imports/books/prashna.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 31,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Praśna Upaniṣad"],
+        "notes": "Chapters P (6 prasnas; 1st 16, 2nd 13 numbered; rest counted at build). Planned set to the built count after build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "mandukya",
+        "title_en": "Māṇḍūkya Upaniṣad",
+        "title_sa": "माण्डूक्योपनिषद्",
+        "source": "Ambuda (CC0 1.0)",
+        "licence": "Text: public domain (ancient); text: Ambuda (ambuda.org/texts/mandukyopanishat), CC0 1.0, Isadi vimsottarasatopanisadah, ed. Narayana Rama Acarya, Nirnayasagara 1948, accessed 2026-10-09.",
+        "study_order": 32,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 12,
+        "ref_prefixes": ["Māṇḍūkya Upaniṣad"],
+        "notes": "One chapter; 12 mantras p n=1..12; the santi p1 left out.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "ambuda",
+    },
+    {
+        "slug": "taittiriya",
+        "title_en": "Taittirīya Upaniṣad",
+        "title_sa": "तैत्तिरीयोपनिषद्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Taittirīyopaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 33,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Taittirīya Upaniṣad"],
+        "notes": "Chapters V.A (valli.anuvaka); 31 anuvakas (12,9,10). Planned set to the built verse count after build. Classic seed rows named Taittiriya Upanisad stay; paged dedupe is within-book only.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "aitareya",
+        "title_en": "Aitareya Upaniṣad",
+        "title_sa": "ऐतरेयोपनिषद्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Aitareyopaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 34,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Aitareya Upaniṣad"],
+        "notes": "Chapters A.K; 13 sections. Planned set to the built verse count after build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "shvetashvatara",
+        "title_en": "Śvetāśvatara Upaniṣad",
+        "title_sa": "श्वेताश्वतरोपनिषद्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Śvetāśvataropaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 35,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 113,
+        "ref_prefixes": ["Śvetāśvatara Upaniṣad"],
+        "notes": "Chapters A (6 adhyayas). Planned 113 traditional; reconciled to the built count at build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "chandogya",
+        "title_en": "Chāndogya Upaniṣad",
+        "title_sa": "छान्दोग्योपनिषद्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Chāndogyopaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 36,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Chāndogya Upaniṣad"],
+        "notes": "Chapters P.K; 153 khanda files; report any missing khanda. Planned set to the built verse count after build.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "brihadaranyaka",
+        "title_en": "Bṛhadāraṇyaka Upaniṣad",
+        "title_sa": "बृहदारण्यकोपनिषद्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Bṛhadāraṇyakopaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 37,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Bṛhadāraṇyaka Upaniṣad"],
+        "notes": "Chapters A.B; 47 brahmanas. Planned set to the built verse count after build. Classic seed rows stay; paged dedupe is within-book only.",
+        "register": "vedic",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    # 4.5 Poetry, drama and stories (Plus)
+    {
+        "slug": "meghaduta",
+        "title_en": "Meghadūta",
+        "title_sa": "मेघदूतम्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Meghadūta), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 38,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 122,
+        "ref_prefixes": ["Meghadūta"],
+        "notes": "Chapters 1 Purvamegha, 2 Uttaramegha (67+55=122); 1.1 kascitkanta.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "kumarasambhava",
+        "title_en": "Kumārasambhava",
+        "title_sa": "कुमारसम्भवम्",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Kumārasaṃbhava), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 39,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 613,
+        "ref_prefixes": ["Kumārasambhava"],
+        "notes": "Cantos 1-8 only (Kalidasa's own; later cantos 9-17 left out); 613 verses (60,64,76,46,86,95,95,91).",
+        "register": "classical",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "raghuvamsha",
+        "title_en": "Raghuvaṃśa",
+        "title_sa": "रघुवंशम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"रघुवंशम्/प्रथमः सर्गः\" and 18 more, revisions recorded in results/imports/books/raghuvamsha.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 40,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 1567,
+        "ref_prefixes": ["Raghuvaṃśa"],
+        "notes": "19 sargas (ignore misspelt duplicates astamah and astadasah); 1567 verses; 8.1 atha tasya vivahakautukam.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "shakuntala",
+        "title_en": "Abhijñānaśākuntala (verses)",
+        "title_sa": "अभिज्ञानशाकुन्तलम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"अभिज्ञानशाकुन्तलम्/प्रथमोऽङ्कः\" and 6 more, revisions recorded in results/imports/books/shakuntala.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 41,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 194,
+        "ref_prefixes": ["Abhijñānaśākuntala"],
+        "notes": "Numbered verses only (prose and Prakrit dialogue left out): 194 (31,18,25,22,31,32,35); act 1 has 31 and act 4 has 22 on the page.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "gitagovinda",
+        "title_en": "Gītagovinda",
+        "title_sa": "गीतगोविन्दम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"गीतगोविन्दम्/प्रथमः सर्गः\" and 11 more, revisions recorded in results/imports/books/gitagovinda.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 42,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 264,
+        "ref_prefixes": ["Gītagovinda"],
+        "notes": "12 sargas from the 12 sarga pages. GRETIL counts 264 units; wikisource sarga 1 has 51 and sarga 2 has 20 numbered ends (song stanzas counted differently): report both.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "vetala",
+        "title_en": "Vetāla Pañcaviṃśati (Somadeva)",
+        "title_sa": "वेतालपञ्चविंशतिः",
+        "source": "sa.wikisource.org, Kathasaritsagara 12.8-32 (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"वेतालपञ्चविंशति 00\" and 25 more, revisions recorded in results/imports/books/vetala.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 43,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 2175,
+        "ref_prefixes": ["Vetāla Pañcaviṃśati"],
+        "notes": "Stories 0-25 (0 is the frame story); T = story. Pages number two ways (59 and 12.8.60): take the last number. GRETIL Vetala file: 26 tarangas 2175 verses.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    # 4.6 Yoga, Ayurveda, sastra and wisdom
+    {
+        "slug": "yogasutra",
+        "title_en": "Yoga Sūtra",
+        "title_sa": "योगसूत्रम्",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"योगसूत्रम्/पादः १\" and 3 more, revisions recorded in results/imports/books/yogasutra.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 44,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 195,
+        "ref_prefixes": ["Yoga Sūtra"],
+        "notes": "Chapters P (4 padas 51,55,55,34); 1.2 yogascittavrttinirodhah. Padas 2-4 end with danda-2.1-danda.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "hathayoga",
+        "title_en": "Haṭhayogapradīpikā",
+        "title_sa": "हठयोगप्रदीपिका",
+        "source": "Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); text: Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Haṭhayogapradīpikā), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined.",
+        "study_order": 45,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 392,
+        "ref_prefixes": ["Haṭhayogapradīpikā"],
+        "notes": "Chapters U (4 upadesas 70,78,130,114).",
+        "register": "classical",
+        "paged": True,
+        "source_key": "dcs",
+    },
+    {
+        "slug": "ashtavakra",
+        "title_en": "Aṣṭāvakra Gītā",
+        "title_sa": "अष्टावक्रगीता",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"अष्टावक्रगीता\" and 0 more, revisions recorded in results/imports/books/ashtavakra.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 46,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 298,
+        "ref_prefixes": ["Aṣṭāvakra Gītā"],
+        "notes": "Chapters C (20 chapters, numbers danda-1-1-danda); 298 verses (GRETIL and the page agree).",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "sushruta",
+        "title_en": "Suśruta Saṃhitā",
+        "title_sa": "सुश्रुतसंहिता",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"सुश्रुतसंहिता/सूत्रस्थानम्/अध्याय ०१-१५\" and 10 more, revisions recorded in results/imports/books/sushruta.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 47,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 0,
+        "ref_prefixes": ["Suśruta Saṃhitā"],
+        "notes": "Chapters T.C (T 1 Sutra 46, 2 Nidana 16, 3 Sarira 10, 4 Cikitsa 40, 5 Kalpa 8, 6 Uttara 66 = 186 chapters). Non-overlapping page set of 11 pages (5.4). DCS is the measuring stick by chapter (its Su.16 stops before the nose passage), not the text. Planned set to the built verse count after build.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "arthashastra",
+        "title_en": "Arthaśāstra",
+        "title_sa": "अर्थशास्त्रम्",
+        "source": "GRETIL (CC BY-NC-SA 4.0, free shelf only)",
+        "licence": "Text: public domain (ancient); transcription: GRETIL sa_kauTilya-arthazAstra, R. P. Kangle edition, University of Bombay, 2nd ed. 1969, CC BY-NC-SA 4.0 (non-commercial), accessed 2026-10-09. Free shelf only.",
+        "study_order": 48,
+        "depth": "full",
+        "tier": "free",
+        "verses_planned": 0,
+        "ref_prefixes": ["Arthaśāstra"],
+        "notes": "Chapters B.C (Kangle 15 books). Treated as a GRETIL text (3.2): the wikisource copy repeats GRETIL's compound dots and Kangle numbering. Planned set to the built count after build. Kangle 1969 copyright not checked (for the owner).",
+        "register": "classical",
+        "paged": True,
+        "source_key": "gretil",
+    },
+    {
+        "slug": "lilavati",
+        "title_en": "Līlāvatī",
+        "title_sa": "लीलावती",
+        "source": "GRETIL (CC BY-NC-SA 4.0, free shelf only)",
+        "licence": "Text: public domain (ancient); transcription: GRETIL sa_bhAskara-lIlAvatI, edition as in its header, CC BY-NC-SA 4.0 (non-commercial), accessed 2026-10-09. Free shelf only.",
+        "study_order": 49,
+        "depth": "full",
+        "tier": "free",
+        "verses_planned": 272,
+        "ref_prefixes": ["Līlāvatī"],
+        "notes": "One chapter (number = GRETIL Lil_N); 272 verses. The wikisource copy is raw OCR of a 1938 edition mixed with notes: unusable.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "gretil",
+    },
+    {
+        "slug": "amarakosha",
+        "title_en": "Amarakośa",
+        "title_sa": "अमरकोशः",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"अमरकोशः/प्रथमकाण्डम्\" and 2 more, revisions recorded in results/imports/books/amarakosha.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 50,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 3134,
+        "ref_prefixes": ["Amarakośa"],
+        "notes": "Chapters K.V (kanda.varga); verse number is the half-line number. 3134 half-lines (608,1494,1032 GRETIL); wikisource kanda 1 has 608 and kanda 3 has 1031. Numbering matches GRETIL (3.2); stays Plus on the stated licence.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
+    {
+        "slug": "chanakya",
+        "title_en": "Chāṇakya Nīti",
+        "title_sa": "चाणक्यनीतिदर्पणः",
+        "source": "sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"चाणक्यनीतिदर्पणः\" and 0 more, revisions recorded in results/imports/books/chanakya.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "study_order": 51,
+        "depth": "full",
+        "tier": "plus",
+        "verses_planned": 345,
+        "ref_prefixes": ["Chāṇakya Nīti"],
+        "notes": "Chapters C (all 17 chapters from Canakyanitidarpanah, not the Canakyanitih page which stops at 15). 345 verses in 17 chapters by sanskritdocuments numbering (used only as a count); the page has 361 numbered ends including chapter-end markers. 17.1 pustakapratyayadhitam.",
+        "register": "classical",
+        "paged": True,
+        "source_key": "sa-wikisource",
+    },
 ]
 
 
 def seed_canon(db) -> dict:
-    """Additive + idempotent (§2.13): insert missing slugs; backfill the
-    P23-4a registry pointer (one registry, not two) without touching the
-    per-text verbatim licence strings."""
+    """Additive + idempotent: insert missing slugs; backfill the registry
+    pointer and the paged flag; re-apply the retuned rows on every boot.
+
+    The retuned slugs (handover_reading_shelf.md 6.5 + section 8) are
+    mahabharata, katha, mundaka, ayurveda and ramayana: their fields are re-applied on
+    every boot so existing databases agree with fresh seeds. Idempotent: a
+    second run changes nothing.
+    """
     from app.models import CanonText
+
+    # Default registry keys for the 12 old rows (fresh inserts).
+    def _default_key(slug: str) -> str:
+        if slug in ("isha",):
+            return "sa-wikisource"
+        return "public-domain"
 
     rows = {r.slug: r for r in db.query(CanonText).all()}
     added = 0
     backfilled = 0
     for t in CANON_TEXTS:
-        # The Īśā transcription came from sa.wikisource (CC BY-SA 3.0);
-        # every other catalogue text is public-domain ancient text.
-        key = "sa-wikisource" if t["slug"] == "isha" else "public-domain"
         row = rows.get(t["slug"])
         if row is None:
-            db.add(CanonText(**t, source_key=key))
+            data = dict(t)
+            # Old rows carry no source_key/paged/register in this dict unless
+            # set above; fill the join key the same way fresh seeds insert.
+            if "source_key" not in data:
+                data["source_key"] = _default_key(t["slug"])
+            if "paged" not in data:
+                data["paged"] = False
+            data.pop("register", None)
+            db.add(CanonText(**data))
             added += 1
             continue
+        # Backfill the join key and the paged flag without touching the
+        # verbatim licence strings.
         if not row.source_key:
-            row.source_key = key
+            row.source_key = t.get("source_key") or _default_key(t["slug"])
             backfilled += 1
+        # SQLAlchemy only persists assigned attributes; a missing column on
+        # an old database raises here only after the migration runs, which
+        # init_db guarantees before any seed.
+        try:
+            if row.paged is None:
+                row.paged = bool(t.get("paged", False))
+                backfilled += 1
+        except Exception:
+            pass
+    # Re-apply the retuned rows (6.5 + section 8) on every boot.
+    retuned = 0
+    # ramayana: its source and licence named GRETIL, but the imported rows are
+    # the MIT dataset's southern vulgate (results/imports/ramayana.payload.json).
+    for slug in ("mahabharata", "katha", "mundaka", "ayurveda", "ramayana"):
+        want = next(t for t in CANON_TEXTS if t["slug"] == slug)
+        row = rows.get(slug)
+        if row is None:
+            row = db.query(CanonText).filter(CanonText.slug == slug).first()
+        if row is None:
+            continue
+        for field in ("title_en", "title_sa", "source", "licence", "depth",
+                      "verses_planned", "ref_prefixes", "notes"):
+            if getattr(row, field) != want[field]:
+                setattr(row, field, want[field])
+                retuned += 1
+        want_key = want.get("source_key")
+        if slug == "mahabharata":
+            want_key = "dcs"
+        elif slug in ("katha", "mundaka"):
+            # Their rows are the older selections; nothing from DCS or
+            # sa.wikisource is in them until a completion is imported.
+            want_key = "public-domain"
+        elif slug == "ayurveda":
+            want_key = row.source_key or "public-domain"
+        if want_key and row.source_key != want_key:
+            row.source_key = want_key
+            retuned += 1
+    # New paged rows: keep their catalogue fields in sync on every boot
+    # (study_order, tier, depth, planned, prefixes, source, licence, notes,
+    # source_key, paged) so a corrected count or licence reaches old DBs.
+    for t in CANON_TEXTS:
+        if not t.get("paged"):
+            continue
+        row = rows.get(t["slug"])
+        if row is None:
+            row = db.query(CanonText).filter(CanonText.slug == t["slug"]).first()
+        if row is None:
+            continue
+        for field in ("title_en", "title_sa", "source", "licence", "study_order",
+                      "depth", "tier", "verses_planned", "ref_prefixes", "notes"):
+            if getattr(row, field) != t[field]:
+                setattr(row, field, t[field])
+                retuned += 1
+        if (row.source_key or "") != (t.get("source_key") or ""):
+            row.source_key = t.get("source_key")
+            retuned += 1
+        try:
+            if bool(row.paged or False) is not True:
+                row.paged = True
+                retuned += 1
+        except Exception:
+            pass
     db.commit()
-    return {"added": added, "total": len(CANON_TEXTS), "backfilled": backfilled}
+    return {"added": added, "total": len(CANON_TEXTS), "backfilled": backfilled,
+            "retuned": retuned}

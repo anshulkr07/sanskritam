@@ -85,6 +85,9 @@ def scan(text: str) -> dict:
             "lines": lines,
             "metre": match.padya,  # often None — see module docstring
         }
-    except Exception as e:  # noqa: BLE001 - degrade, never raise
+    except BaseException as e:  # noqa: BLE001 - degrade, never raise.
+        # The Rust engine panics (PanicException, a BaseException) on marks
+        # outside its table (seen 2026-10-09 on a Katha verse); a metre that
+        # stays absent is correct, a dead import is not.
         logger.warning("scansion failed for %r: %s", text, e)
         return empty

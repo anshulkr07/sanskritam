@@ -21,9 +21,10 @@ import Animated, {
 
 import { api, type Shloka, type WordBreakdown } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
+import { useNavigation } from "@react-navigation/native";
 import { cachedGet } from "../services/apiCache";
 import { haptics } from "../services/haptics";
-import { speak } from "../services/speech";
+import { playClip, speak } from "../services/speech";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
@@ -144,6 +145,7 @@ function ShlokaSkeleton() {
 }
 
 export default function ShlokaScreen() {
+  const navigation = useNavigation();
   const [shloka, setShloka] = useState<Shloka | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -197,7 +199,8 @@ export default function ShlokaScreen() {
     haptics.tap();
     setSpeaking(true);
     try {
-      await speak(shloka.devanagari, "sa");
+      if (shloka.chant?.url) await playClip(shloka.chant.url);
+      else await speak(shloka.devanagari, "sa");
     } finally {
       setSpeaking(false);
     }
@@ -252,20 +255,32 @@ export default function ShlokaScreen() {
         {/* Top: source + play */}
         <View style={styles.topRow}>
           <Text style={styles.source}>{shloka.source_ref}</Text>
-          <Pressable
-            onPress={play}
-            style={styles.playBtn}
-            disabled={speaking}
-            accessibilityRole="button"
-            accessibilityLabel={speaking ? "Playing the verse" : "Play the verse aloud"}
-            accessibilityState={{ busy: speaking, disabled: speaking }}
-          >
+          <View style={styles.topBtns}>
+            <Pressable
+              onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
+                verseUid: shloka.verse_uid ?? shloka.id, start: "listen",
+              })}
+              accessibilityRole="button"
+              accessibilityLabel="Learn this verse"
+              style={styles.learnBtn}
+            >
+              <Text style={styles.learnText}>Learn</Text>
+            </Pressable>
+            <Pressable
+              onPress={play}
+              style={styles.playBtn}
+              disabled={speaking}
+              accessibilityRole="button"
+              accessibilityLabel={speaking ? "Playing the verse" : "Play the verse aloud"}
+              accessibilityState={{ busy: speaking, disabled: speaking }}
+            >
             {speaking ? (
               <Ionicons name="hourglass-outline" size={22} color={color.white} />
             ) : (
               <Ionicons name="volume-high" size={22} color={color.white} />
             )}
-          </Pressable>
+            </Pressable>
+          </View>
         </View>
 
         {/* Verse — unfurling manuscript style */}
@@ -385,6 +400,9 @@ const styles = StyleSheet.create({
   body: { padding: space.lg, paddingBottom: 120 },
   lineHit: { minHeight: 44, justifyContent: "center" },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
+  topBtns: { flexDirection: "row", alignItems: "center", gap: 8 },
+  learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
+  learnText: { fontWeight: "700", color: color.ink },
   source: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron, textTransform: "uppercase", letterSpacing: 0.5 },
   playBtn: { width: 48, height: 48, borderRadius: 24, backgroundColor: color.saffron, alignItems: "center", justifyContent: "center", ...shadow.button },
   verseCard: {

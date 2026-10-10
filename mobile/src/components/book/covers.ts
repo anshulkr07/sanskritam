@@ -33,6 +33,10 @@ export function paintedCover(key: string): ImageSourcePropType | null {
 
 // Ground colour of each painted cover (appendix C): the book's colour
 // everywhere else. Foreground is the title colour on it.
+//
+// Reading shelf 2026-10-09: the 39 paged books reuse the deep solid fills
+// (cream #FFF8EE passes 4.5:1 on all of them, so check-contrast holds). No
+// painted covers: the vector cover is the fallback.
 export const COVER_COLOURS: Record<string, { colour: string; foreground: string; titleSa: string }> = {
   gita: { colour: "#561722", foreground: "#F2C879", titleSa: "श्रीमद्भगवद्गीता" },
   isha: { colour: "#2F4677", foreground: "#F3D27A", titleSa: "ईशावास्योपनिषद्" },
@@ -52,6 +56,45 @@ export const COVER_COLOURS: Record<string, { colour: string; foreground: string;
   all: { colour: "#3C5A8E", foreground: "#FFF8EE", titleSa: "सर्वम्" },
   other: { colour: "#3C5A8E", foreground: "#FFF8EE", titleSa: "अन्यत्" },
   sayings: { colour: "#3C5A8E", foreground: "#FFF8EE", titleSa: "सूक्तयः" },
+  vishnusahasranama: { colour: "#B23D10", foreground: "#FFF8EE", titleSa: "विष्णुसहस्रनामस्तोत्रम्" },
+  lalita: { colour: "#17535C", foreground: "#FFF8EE", titleSa: "ललितासहस्रनामस्तोत्रम्" },
+  bhajagovindam: { colour: "#35603C", foreground: "#FFF8EE", titleSa: "भजगोविन्दम्" },
+  saundarya: { colour: "#962F4E", foreground: "#FFF8EE", titleSa: "सौन्दर्यलहरी" },
+  aditya: { colour: "#8A5608", foreground: "#FFF8EE", titleSa: "आदित्यहृदयम्" },
+  tandava: { colour: "#2F4677", foreground: "#FFF8EE", titleSa: "शिवताण्डवस्तोत्रम्" },
+  mahimna: { colour: "#3B2E25", foreground: "#FFF8EE", titleSa: "शिवमहिम्नःस्तोत्रम्" },
+  ramaraksha: { colour: "#5E2216", foreground: "#FFF8EE", titleSa: "रामरक्षास्तोत्रम्" },
+  naradabhakti: { colour: "#B23D10", foreground: "#FFF8EE", titleSa: "नारदभक्तिसूत्रम्" },
+  devimahatmya: { colour: "#17535C", foreground: "#FFF8EE", titleSa: "देवीमाहात्म्यम्" },
+  bhagavata: { colour: "#35603C", foreground: "#FFF8EE", titleSa: "श्रीमद्भागवतपुराणम्" },
+  shivapurana: { colour: "#962F4E", foreground: "#FFF8EE", titleSa: "शिवपुराणम्" },
+  garuda: { colour: "#8A5608", foreground: "#FFF8EE", titleSa: "गरुडपुराणम्" },
+  rigveda: { colour: "#2F4677", foreground: "#FFF8EE", titleSa: "ऋग्वेदः" },
+  samaveda: { colour: "#3B2E25", foreground: "#FFF8EE", titleSa: "सामवेदः" },
+  yajurveda: { colour: "#5E2216", foreground: "#FFF8EE", titleSa: "शुक्लयजुर्वेदः" },
+  atharvaveda: { colour: "#B23D10", foreground: "#FFF8EE", titleSa: "अथर्ववेदः" },
+  kena: { colour: "#17535C", foreground: "#FFF8EE", titleSa: "केनोपनिषद्" },
+  prashna: { colour: "#35603C", foreground: "#FFF8EE", titleSa: "प्रश्नोपनिषद्" },
+  mandukya: { colour: "#962F4E", foreground: "#FFF8EE", titleSa: "माण्डूक्योपनिषद्" },
+  taittiriya: { colour: "#8A5608", foreground: "#FFF8EE", titleSa: "तैत्तिरीयोपनिषद्" },
+  aitareya: { colour: "#2F4677", foreground: "#FFF8EE", titleSa: "ऐतरेयोपनिषद्" },
+  shvetashvatara: { colour: "#3B2E25", foreground: "#FFF8EE", titleSa: "श्वेताश्वतरोपनिषद्" },
+  chandogya: { colour: "#5E2216", foreground: "#FFF8EE", titleSa: "छान्दोग्योपनिषद्" },
+  brihadaranyaka: { colour: "#B23D10", foreground: "#FFF8EE", titleSa: "बृहदारण्यकोपनिषद्" },
+  meghaduta: { colour: "#17535C", foreground: "#FFF8EE", titleSa: "मेघदूतम्" },
+  kumarasambhava: { colour: "#35603C", foreground: "#FFF8EE", titleSa: "कुमारसम्भवम्" },
+  raghuvamsha: { colour: "#962F4E", foreground: "#FFF8EE", titleSa: "रघुवंशम्" },
+  shakuntala: { colour: "#8A5608", foreground: "#FFF8EE", titleSa: "अभिज्ञानशाकुन्तलम्" },
+  gitagovinda: { colour: "#2F4677", foreground: "#FFF8EE", titleSa: "गीतगोविन्दम्" },
+  vetala: { colour: "#3B2E25", foreground: "#FFF8EE", titleSa: "वेतालपञ्चविंशतिः" },
+  yogasutra: { colour: "#5E2216", foreground: "#FFF8EE", titleSa: "योगसूत्रम्" },
+  hathayoga: { colour: "#B23D10", foreground: "#FFF8EE", titleSa: "हठयोगप्रदीपिका" },
+  ashtavakra: { colour: "#17535C", foreground: "#FFF8EE", titleSa: "अष्टावक्रगीता" },
+  sushruta: { colour: "#35603C", foreground: "#FFF8EE", titleSa: "सुश्रुतसंहिता" },
+  arthashastra: { colour: "#962F4E", foreground: "#FFF8EE", titleSa: "अर्थशास्त्रम्" },
+  lilavati: { colour: "#8A5608", foreground: "#FFF8EE", titleSa: "लीलावती" },
+  amarakosha: { colour: "#2F4677", foreground: "#FFF8EE", titleSa: "अमरकोशः" },
+  chanakya: { colour: "#3B2E25", foreground: "#FFF8EE", titleSa: "चाणक्यनीतिदर्पणः" },
 };
 
 export function coverColour(key: string): string {

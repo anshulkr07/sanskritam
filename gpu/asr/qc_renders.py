@@ -49,6 +49,7 @@ def main() -> None:
 
     import soundfile as sf
 
+    from asr import qc_rules as R
     from asr import scoring as S
     from asr import sushrota as U
 
@@ -80,12 +81,18 @@ def main() -> None:
                 continue
             flags: list[str] = []
             seconds = float(r.get("seconds", 0))
-            expected = float(r.get("syllables", 0)) * float(r.get("sec_per_syll", 0.33))
-            if expected > 0:
-                if seconds < 0.55 * expected:
-                    flags.append("short")
-                elif seconds > 1.8 * expected:
-                    flags.append("long")
+            # The record's syllables are the whole line's; a part is its share
+            # of the line (qc_rules.py says why: every split line used to flag).
+            line_parts: list[str] = []
+            for ln in jobs.get(r.get("verse_uid"), {}).get("lines", []):
+                if ln.get("i") == r.get("line_i"):
+                    line_parts = ln.get("parts", [])
+            expected = R.expected_seconds(
+                float(r.get("syllables", 0)), float(r.get("sec_per_syll", 0.33)),
+                [len(S.aksharas(p)) for p in line_parts], int(r.get("part_j", 0)))
+            length = R.length_flag(seconds, expected)
+            if length:
+                flags.append(length)
             # Pause.
             try:
                 wav, sr = sf.read(r["path"], dtype="float32")

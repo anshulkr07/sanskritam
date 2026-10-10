@@ -550,7 +550,7 @@ def admin_tick(request: Request, _ok: bool = Depends(require_admin), db: Session
     except Exception:
         body = None
     override = request.headers.get("X-Test-Now", "")
-    if override and getattr(settings, "env", "dev") != "production":
+    if override and not settings.is_production:
         try:
             now = datetime.fromisoformat(override.replace("Z", "+00:00"))
         except Exception:

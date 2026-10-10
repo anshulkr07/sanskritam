@@ -119,6 +119,21 @@ class WordBreakdown(BaseModel):
     features: list[str] = []
 
 
+class ChantLine(BaseModel):
+    i: int = 0
+    text: str = ""
+    kind: str = "verse"
+    start_ms: int = 0
+    end_ms: int = 0
+
+
+class ChantInfo(BaseModel):
+    url: str = ""
+    duration_ms: int = 0
+    voice: str = ""
+    lines: list[ChantLine] = []
+
+
 class ShlokaResponse(BaseModel):
     id: str
     date: str
@@ -131,6 +146,8 @@ class ShlokaResponse(BaseModel):
     audio_url: str
     translation_hi: str = ""
     translation_en: str = ""
+    verse_uid: str = ""
+    chant: ChantInfo | None = None
 
 
 # ─── Grammar ───

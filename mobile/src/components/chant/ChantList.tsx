@@ -1,6 +1,6 @@
 // ChantList: karaoke verse cards for one book.
 
-import React from "react";
+import React, { useRef } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { Shloka } from "../../api/client";
@@ -39,9 +39,25 @@ export default function ChantList({
   onUserScroll: () => void;
 }) {
   const { sized } = useTypeScale();
+  // The card to scroll to may not be drawn yet, so its place is unknown.
+  const failedAt = useRef<{ index: number; at: number } | null>(null);
   return (
     <FlatList
       ref={listRef as never}
+      onScrollToIndexFailed={(info) => {
+        // Go to an estimate (cards are about the average height), then try the
+        // exact card once more. A second failure for the same card stays at the estimate.
+        const last = failedAt.current;
+        const again = last !== null && last.index === info.index && Date.now() - last.at < 2000;
+        failedAt.current = { index: info.index, at: Date.now() };
+        listRef.current?.scrollToOffset({ offset: Math.max(0, info.averageItemLength * info.index), animated: false });
+        if (again) return;
+        setTimeout(() => {
+          try {
+            listRef.current?.scrollToIndex({ index: info.index, viewPosition: 0.3, animated: false });
+          } catch { /* stays at the estimate */ }
+        }, 120);
+      }}
       data={verses}
       keyExtractor={(v) => v.id}
       onScrollBeginDrag={onUserScroll}

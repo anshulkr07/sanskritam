@@ -22,6 +22,12 @@
 #   APPLE_CLIENT_ID=...             optional — bundle ID and/or Services ID for
 #                                   /auth/apple (Guideline 4.8: mandatory if
 #                                   Google login is offered). Omit to disable.
+#   GEMINI_API_KEYS=key1,key2,key3  optional — free-tier Gemini keys, one per
+#                                   Google account (AI Studio), tried before paid
+#                                   Vertex (services/gemini_pool.py). Stored as the
+#                                   secret "gemini-api-keys". Every key must come
+#                                   from a project WITHOUT billing: a project that
+#                                   AI Studio shows as Tier 1 is billed per call.
 #
 # Daily content (the word journey and "Do you know", services/daily_content.py):
 #   The Vertex service-account key is read from the file vertex_credentials.json
@@ -106,6 +112,7 @@ declare -A SECRETS=(
   [shabd-database-url]=DATABASE_URL
   [google-client-id]=GOOGLE_CLIENT_ID
   [apple-client-id]=APPLE_CLIENT_ID
+  [gemini-api-keys]=GEMINI_API_KEYS
 )
 SECRET_MOUNTS=()
 for name in "${!SECRETS[@]}"; do
@@ -197,8 +204,19 @@ fi
 #                                   (code defaults 60 and 30)
 #       CONTENT_DAILY_BUDGET_INR     rupees/day the pipeline may spend on
 #                                   batch jobs (code default 60; 0 disables)
+#       SCORER_URL, SCORER_KEY       Su-srota scorer service (recite);
+#                                   R2_PRIVATE_BUCKET, GCS_PRIVATE_BUCKET
+#                                   private competition recordings
+#       ENV                          dev|production (fake scorer refused in prod)
+#       PRIZE_CONTACT_EMAIL          monthly prize contact shown to winner
+#       BOOK_SEARCH_ENABLED          true: Ask searches the app's books and hands
+#                                   the verses to the model (needs the verse_vectors
+#                                   index: scripts/build_verse_index.py)
+#       GEMINI_FREE_ENABLED          false turns the free-key route off
+#       GEMINI_FREE_ALLOW_PERSONAL   true lets birth-chart and match requests use the
+#                                   free keys too (default false: Google may read them)
 EXTRA_ENV=""
-for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR; do
+for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR SCORER_URL SCORER_KEY R2_PRIVATE_BUCKET GCS_PRIVATE_BUCKET ENV PRIZE_CONTACT_EMAIL BOOK_SEARCH_ENABLED GEMINI_FREE_ENABLED GEMINI_FREE_ALLOW_PERSONAL; do
   if [ -n "${!var:-}" ]; then
     EXTRA_ENV="${EXTRA_ENV},${var}=${!var}"
   fi
@@ -252,5 +270,22 @@ else
     echo "Daily content: could not set up the scheduler job. Enable it once with:"
     echo "  gcloud services enable cloudscheduler.googleapis.com --project=$PROJECT_ID"
     echo "then run this script again. Until then no new daily cards are made."
+  fi
+fi
+
+# ── 5. Competitions: tick every 15 minutes (open, close, publish, monthly, purge).
+COMP_TICK_JOB="sanskritam-competition-tick"
+if [ -z "${ADMIN_TOKEN:-}" ]; then
+  echo "Competitions: ADMIN_TOKEN is not set in this run, so the scheduler job was left as it is."
+else
+  if gcloud scheduler jobs describe "$COMP_TICK_JOB" --project="$PROJECT_ID" --location="$REGION" >/dev/null 2>&1; then
+    COMP_VERB=(update http "$COMP_TICK_JOB" --update-headers="X-Admin-Token=${ADMIN_TOKEN}")
+  else
+    COMP_VERB=(create http "$COMP_TICK_JOB" --headers="X-Admin-Token=${ADMIN_TOKEN}")
+  fi
+  if gcloud scheduler jobs "${COMP_VERB[@]}"       --project="$PROJECT_ID"       --location="$REGION"       --schedule="*/15 * * * *"       --time-zone="Etc/UTC"       --uri="${URL}/admin/competitions/tick"       --http-method=POST       --attempt-deadline=150s >/dev/null; then
+    echo "Competitions: scheduler job $COMP_TICK_JOB calls $URL/admin/competitions/tick every 15 minutes."
+  else
+    echo "Competitions: could not set up the scheduler job."
   fi
 fi

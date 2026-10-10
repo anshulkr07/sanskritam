@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime, timezone
 
 import sqlalchemy as sa
-from sqlalchemy import Column, Float, ForeignKey, Integer, String, Text, Boolean, JSON, DateTime, UniqueConstraint
+from sqlalchemy import Column, Float, ForeignKey, Integer, LargeBinary, String, Text, Boolean, JSON, DateTime, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from app.db import Base
@@ -134,7 +134,13 @@ class Challenge(Base):
             "review_status": self.review_status,
         }
 class Shloka(Base):
-    """Daily shloka with word breakdown."""
+    """Daily shloka with word breakdown.
+
+    A paged book's rows (handover_reading_shelf.md section 6) carry
+    ``book`` = its slug and ``in_daily`` = False; its verses are served by
+    chapter (GET /canon/{slug}/chapters + /verses), never by GET /shlokas.
+    Classic rows have ``book`` None and ``in_daily`` True.
+    """
 
     __tablename__ = "shlokas"
 
@@ -148,10 +154,189 @@ class Shloka(Base):
     features = Column(JSON, default=list)
     audio_url = Column(String(512), default="")
     register = Column(String(16), default="classical")
+    # Recite (2026-10): stable id across databases; see services/chant_text.
+    verse_uid = Column(String(16), nullable=True, index=True)
     # P21-5: per-verse translations carried by corpus imports (Gītā et al.).
     # "" = not translated yet; attribution lives per text in canon_texts.
     translation_hi = Column(Text, nullable=False, default="", server_default="")
     translation_en = Column(Text, nullable=False, default="", server_default="")
+    # Reading shelf (2026-10-09): paged books served one chapter at a time.
+    book = Column(String(64), nullable=True)
+    chapter = Column(String(64), nullable=False, default="", server_default="")
+    seq = Column(Integer, nullable=False, default=0, server_default="0")
+    in_daily = Column(Boolean, nullable=False, default=True, server_default=sa.true())
+
+    __table_args__ = (
+        sa.Index("ix_shlokas_book_chapter_seq", "book", "chapter", "seq"),
+    )
+
+
+# Recite: keep verse_uid in sync on every insert/update without touching
+# import scripts. Imported here so models import alone is enough.
+try:  # pragma: no cover - exercised via tests
+    import sqlalchemy as _sa_events
+    from sqlalchemy import event as _sa_event
+
+    @_sa_event.listens_for(Shloka, "before_insert")
+    def _shloka_uid_insert(mapper, connection, target):  # noqa: ANN001,ANN202
+        try:
+            from app.services.chant_text import verse_uid as _verse_uid_fn
+            target.verse_uid = _verse_uid_fn(
+                getattr(target, "source_ref", "") or "",
+                getattr(target, "devanagari", "") or "",
+            )
+        except Exception:
+            pass
+
+    @_sa_event.listens_for(Shloka, "before_update")
+    def _shloka_uid_update(mapper, connection, target):  # noqa: ANN001,ANN202
+        try:
+            from app.services.chant_text import verse_uid as _verse_uid_fn
+            target.verse_uid = _verse_uid_fn(
+                getattr(target, "source_ref", "") or "",
+                getattr(target, "devanagari", "") or "",
+            )
+        except Exception:
+            pass
+except Exception:  # pragma: no cover
+    pass
+
+
+class VerseAudio(Base):
+    """One chanted verse (Vagdhenu). Keyed by (verse_uid, voice)."""
+
+    __tablename__ = "verse_audio"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    verse_uid = Column(String(16), nullable=False, index=True)
+    voice = Column(String(48), nullable=False, default="vagdhenu-steer-2026-06-17")
+    url = Column(String(512), nullable=False, default="")
+    duration_ms = Column(Integer, nullable=False, default=0)
+    lines = Column(JSON, nullable=False, default=list)
+    meter = Column(String(32), nullable=False, default="", server_default="")
+    qc_status = Column(String(16), nullable=False, default="needs_listen")
+    qc_reasons = Column(JSON, nullable=False, default=list)
+    source_commit = Column(String(48), nullable=False, default="", server_default="")
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("verse_uid", "voice", name="uq_verse_audio_uid_voice"),
+    )
+
+
+class ReciteAttempt(Base):
+    """One scored recitation. No audio, no transcript stored."""
+
+    __tablename__ = "recite_attempts"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    verse_uid = Column(String(16), nullable=False, index=True)
+    unit = Column(String(16), nullable=False, default="verse")
+    purpose = Column(String(16), nullable=False, default="practise")
+    mode = Column(String(8), nullable=False, default="strict")
+    status = Column(String(8), nullable=False, default="scored")
+    percent = Column(Float, nullable=True)
+    n_ok = Column(Integer, nullable=False, default=0)
+    n_fix = Column(Integer, nullable=False, default=0)
+    n_unclear = Column(Integer, nullable=False, default=0)
+    bands = Column(String(512), nullable=False, default="")
+    duration_ms = Column(Integer, nullable=False, default=0)
+    competition_id = Column(String(64), nullable=True, index=True)
+    camera = Column(JSON, nullable=True)
+    counted = Column(Boolean, nullable=False, default=False, server_default="0")
+    flags = Column(JSON, nullable=False, default=list)
+    created_at = Column(DateTime, default=_utcnow, index=True)
+
+
+class Competition(Base):
+    """One twice-weekly recitation contest."""
+
+    __tablename__ = "competitions"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    slug = Column(String(64), nullable=False, unique=True, index=True)
+    kind = Column(String(16), nullable=False, default="weekend")
+    opens_at = Column(DateTime, nullable=False)
+    closes_at = Column(DateTime, nullable=False)
+    results_at = Column(DateTime, nullable=False)
+    pieces = Column(JSON, nullable=False, default=list)
+    status = Column(String(16), nullable=False, default="scheduled", index=True)
+    rules_version = Column(String(32), nullable=False, default="2026-10-1")
+    created_at = Column(DateTime, default=_utcnow)
+    published_at = Column(DateTime, nullable=True)
+
+
+class CompetitionEntry(Base):
+    """One learner's entry in one competition."""
+
+    __tablename__ = "competition_entries"
+
+    id = Column(String(64), primary_key=True, default=_uuid)
+    competition_id = Column(String(64), ForeignKey("competitions.id"), nullable=False, index=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    public_name = Column(String(64), nullable=False, default="")
+    best_percent = Column(Float, nullable=True)
+    best_at = Column(DateTime, nullable=True)
+    best_attempt_id = Column(Integer, nullable=True)
+    attempts_counted = Column(Integer, nullable=False, default=0)
+    flags = Column(JSON, nullable=False, default=dict)
+    flags_cleared = Column(JSON, nullable=False, default=dict)
+    disqualified = Column(Boolean, nullable=False, default=False, server_default="0")
+    dq_reason = Column(Text, nullable=False, default="", server_default="")
+    final_rank = Column(Integer, nullable=True)
+    audio_key = Column(String(512), nullable=True)
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("competition_id", "learner_id", name="uq_comp_entry"),
+    )
+
+
+class LearnerPublic(Base):
+    """Public competition profile for one learner."""
+
+    __tablename__ = "learner_public"
+
+    learner_id = Column(String(64), ForeignKey("learners.id"), primary_key=True)
+    public_name = Column(String(64), nullable=False, default="")
+    age_confirmed_at = Column(DateTime, nullable=True)
+    rules_version = Column(String(32), nullable=False, default="")
+    rules_accepted_at = Column(DateTime, nullable=True)
+    recordings_consent_at = Column(DateTime, nullable=True)
+    banned = Column(Boolean, nullable=False, default=False, server_default="0")
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class Certificate(Base):
+    """A top-3 or monthly certificate, verified at /certificates/<code>."""
+
+    __tablename__ = "certificates"
+
+    code = Column(String(16), primary_key=True)
+    kind = Column(String(16), nullable=False, default="competition")
+    competition_id = Column(String(64), nullable=True, index=True)
+    month = Column(String(8), nullable=True, index=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=1)
+    public_name = Column(String(64), nullable=False, default="")
+    piece_ref = Column(String(128), nullable=False, default="")
+    issued_at = Column(DateTime, default=_utcnow)
+
+
+class MonthlyWinner(Base):
+    """The master-board winner of one calendar month."""
+
+    __tablename__ = "monthly_winners"
+
+    month = Column(String(8), primary_key=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False)
+    public_name = Column(String(64), nullable=False, default="")
+    wins = Column(Integer, nullable=False, default=0)
+    claim_code = Column(String(16), nullable=False, default="")
+    created_at = Column(DateTime, default=_utcnow)
 
 
 class Attempt(Base):
@@ -684,12 +869,11 @@ class CanonText(Base):
     Depth: ``full`` = every verse imported with word_breakdown (the reader's
     instrumentation); ``studied`` = curated passages imported; ``index`` =
     catalogue entry only, import planned. ``verses_imported`` is recomputed
-    live by the /canon endpoint from ``ref_prefixes`` — the column is the
-    plan, the endpoint is the truth. Everything reads FREE: the reader is a
-    reference posture and the acquisition loop (P14-2 spirit); if a text is
-    ever gated, that is a pricing decision (§6), not a default.
+    live by the /canon endpoint from ``ref_prefixes`` for classic books and
+    from the ``book`` column for paged books — the column is the plan, the
+    endpoint is the truth. Tier ``plus`` books lock behind ``CANON_PLUS_GATE``
+    (owner, 2026-10-09): with the gate off nothing is locked for anyone.
     """
-
     __tablename__ = "canon_texts"
 
     id = Column(String(64), primary_key=True, default=_uuid)
@@ -708,6 +892,7 @@ class CanonText(Base):
     verses_planned = Column(Integer, default=0)
     ref_prefixes = Column(JSON, default=list)  # source_ref substrings identifying its rows
     notes = Column(Text, default="")
+    paged = Column(Boolean, nullable=False, default=False, server_default=sa.false())
     created_at = Column(DateTime, default=_utcnow)
 
 
@@ -1145,3 +1330,23 @@ class ContentRejection(Base):
     __table_args__ = (
         UniqueConstraint("kind", "lang", "key", name="uq_content_rejection"),
     )
+
+
+class VerseVector(Base):
+    """One verse's meaning as numbers, for Ask's book search.
+
+    services/book_search.py compares a question with these to find verses
+    about the same thing in any language. Written by
+    scripts/build_verse_index.py; ``text_hash`` is the hash of the text that
+    was embedded, so a changed verse or translation is embedded again.
+    ``vec`` is float32, little-endian, ``dims`` long, unit length.
+    """
+
+    __tablename__ = "verse_vectors"
+
+    shloka_id = Column(String(64), ForeignKey("shlokas.id", ondelete="CASCADE"), primary_key=True)
+    model = Column(String(64), nullable=False)
+    dims = Column(Integer, nullable=False)
+    text_hash = Column(String(64), nullable=False)
+    vec = Column(LargeBinary, nullable=False)
+    updated_at = Column(DateTime, default=_utcnow)

@@ -2,6 +2,8 @@
 
 import io
 
+import pytest
+
 
 def _login(client, name="reciter"):
     r = client.post("/auth/dev-login", json={"display_name": name, "bridge_langs": ["en"]})
@@ -107,3 +109,28 @@ def test_tips_and_deletion(client, monkeypatch):
         assert db.query(ReciteAttempt).filter(ReciteAttempt.learner_id == lid).count() == 0
     finally:
         db.close()
+
+
+def test_cloud_run_counts_as_production_even_if_env_is_not_set(monkeypatch):
+    """ENV defaults to "dev". Cloud Run sets K_SERVICE on every revision, so a
+    deploy that forgets ENV=production must still refuse the fake scorer."""
+    import asyncio
+
+    from app.config import settings
+    from app.services import scorer_client
+
+    monkeypatch.delenv("K_SERVICE", raising=False)
+    monkeypatch.setattr(settings, "env", "dev")
+    assert settings.is_production is False
+    monkeypatch.setattr(settings, "scorer_url", "fake")
+    res = asyncio.run(scorer_client.score(b"x", ["रामः"], True))
+    assert res["model"] == "fake"          # fine on a dev machine
+
+    monkeypatch.setenv("K_SERVICE", "sanskritam-api")
+    assert settings.is_production is True
+    with pytest.raises(scorer_client.ScorerError):
+        asyncio.run(scorer_client.score(b"x", ["रामः"], True))
+
+    monkeypatch.delenv("K_SERVICE")
+    monkeypatch.setattr(settings, "env", " Production ")
+    assert settings.is_production is True

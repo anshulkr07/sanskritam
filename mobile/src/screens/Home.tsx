@@ -56,6 +56,7 @@ export default function HomeScreen({ navigation }: Props) {
   // Today's XP and the day history the streak is computed from.
   const [today, setToday] = useState<{ daily: ProgressDaily; history: ProgressDay[] } | null>(null);
   const [todayFailed, setTodayFailed] = useState(false);
+  const [compLast, setCompLast] = useState<{ my_rank: number | null; competition: { id: string } } | null>(null);
 
   // The profile normally arrives with the session; fetch it only if missing.
   useEffect(() => {
@@ -107,6 +108,10 @@ export default function HomeScreen({ navigation }: Props) {
       loadToday();
       loadWord();
       getStoryIndex().then((i) => alive && setStoryAt(i));
+      api.competitionCurrent().then((c) => {
+        if (alive && c.last) setCompLast(c.last as never);
+        else if (alive) setCompLast(null);
+      }).catch(() => {});
       return () => {
         alive = false;
       };
@@ -146,6 +151,17 @@ export default function HomeScreen({ navigation }: Props) {
           </View>
           <TodayGoal today={today} failed={todayFailed} onRetry={loadToday} />
         </View>
+
+        {!!compLast && (
+          <Pressable
+            onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("ContestResults", { id: compLast.competition.id })}
+            accessibilityRole="button"
+            accessibilityLabel={`Results are out, you came ${compLast.my_rank ?? ""}`}
+            style={styles.compCard}
+          >
+            <Text style={styles.compText}>Results are out: you came {compLast.my_rank ?? "-"}</Text>
+          </Pressable>
+        )}
 
         <Entrance index={0}>
           <Text style={styles.section}>Daily</Text>
@@ -427,6 +443,8 @@ const styles = StyleSheet.create({
   },
   streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
+  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: radius.lg, backgroundColor: "#17535C", marginBottom: space.sm },
+  compText: { color: "#FFF8EE", fontWeight: "800" },
   greetText: { flex: 1 },
   hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
   name: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink, marginTop: -2 },

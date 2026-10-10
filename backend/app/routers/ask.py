@@ -36,9 +36,10 @@ from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.auth import require_learner
+from app.config import settings
 from app.db import SessionLocal, get_db
 from app.models import Learner
-from app.services import ask_facts, ask_live, ask_sources, kundli, lang_detect, milan
+from app.services import ask_facts, ask_live, ask_route, ask_sources, book_search, kundli, lang_detect, milan
 from app.services.explainer import get_explainer
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 from app.services.verse_study import load_answer, save_answer
@@ -146,6 +147,12 @@ class Prepared:
     match_text: str = ""
     store: bool = False
     key: str = ""
+    books: str = ""                     # the verses book search found, as the model reads them
+    book_hits: list = field(default_factory=list)
+    books_named: list = field(default_factory=list)
+    refs_asked: list = field(default_factory=list)
+    searched: bool = False              # the search ran and found its way (no embedding error)
+    lane: str = ""                      # which free Gemini model goes first (services/ask_route.py)
     started: float = field(default_factory=time.perf_counter)
 
 
@@ -194,6 +201,40 @@ async def _prepare(req: TalkRequest) -> Prepared:
     return p
 
 
+async def _find_books(db: Session, p: Prepared) -> None:
+    """Search the books the app holds for this question (services/book_search.py)
+    and keep the verses for the model. Off unless BOOK_SEARCH_ENABLED; asked only
+    after the stored-answer check, so a repeated question costs no embedding. A
+    failure leaves the question to be answered without them."""
+    if not settings.book_search_enabled:
+        _route(p)
+        return
+    # A follow-up often names nothing, so the question before it is searched too.
+    query = (p.history[-1][0] + "\n" if p.history else "") + p.question
+    try:
+        res = await book_search.search(db, query)
+    except Exception as exc:  # noqa: BLE001 — never block an answer on the search
+        logger.warning("[ask] book search failed: %s", type(exc).__name__)
+        _route(p)
+        return
+    p.book_hits = res.hits
+    p.books = book_search.books_block(res.hits)
+    p.books_named, p.refs_asked, p.searched = res.books_named, res.refs_asked, not res.error
+    logger.info("[ask] book search hits=%d named=%s refs=%s embed=%.0fms search=%.0fms error=%s",
+                len(res.hits), res.books_named, res.refs_asked, res.embed_ms, res.search_ms, res.error or "-")
+    _route(p)
+
+
+def _route(p: Prepared) -> None:
+    """Choose the free Gemini model order for this question (services/ask_route.py)."""
+    r = ask_route.lane(p.question, history=p.history, facts=p.facts, chart=p.chart_text, match=p.match_text,
+                       hits=p.book_hits, books_named=p.books_named, refs_asked=p.refs_asked,
+                       searched=p.searched)
+    p.lane = r.lane
+    if p.searched:
+        logger.info("[ask] lane=%s (%s)", r.lane, r.why)
+
+
 def _respond(p: Prepared, card: Optional[dict], routed: str, provider: str = "",
              cached: bool = False) -> TalkResponse:
     needs = ""
@@ -232,6 +273,7 @@ def _stored(db: Session, p: Prepared) -> Optional[TalkResponse]:
 async def _finish(db: Session, p: Prepared, card: dict, routed: str, provider: str) -> TalkResponse:
     """Check the answer's verses and links, keep it when it may be shared."""
     ask_sources.mark_stored(db, card)
+    book_search.restore_refs(card, p.book_hits)
     counts = await asyncio.to_thread(ask_sources.check_card, card)
     ask_live.finalize_more(card)
     if p.store and routed == "llm" and not card.get("needs_birth") and not card.get("needs_partner"):
@@ -276,8 +318,10 @@ async def ask_talk(
 
     card: Optional[dict] = None
     routed, provider = "llm", ""
+    await _find_books(db, p)
     got = await ask_live.ask(db, learner, p.question, p.language, history=p.history,
-                             facts=p.facts, chart=p.chart_text, match=p.match_text, surface="ask")
+                             facts=p.facts, chart=p.chart_text, match=p.match_text, books=p.books,
+                             lane=p.lane, surface="ask")
     if got is not None:
         card, provider = ask_live.clip(got[0]), got[1]
     if not ask_live.has_content(card):
@@ -312,9 +356,10 @@ async def ask_talk_stream(
         try:
             me = own.get(Learner, learner_id)
             raw, provider = None, ""
+            await _find_books(own, p)
             async for ev in ask_live.ask_stream(own, me, p.question, p.language, history=p.history,
                                                 facts=p.facts, chart=p.chart_text, match=p.match_text,
-                                                surface="ask"):
+                                                books=p.books, lane=p.lane, surface="ask"):
                 if ev["type"] == "partial":
                     yield _event(ev)
                 elif ev["type"] == "done":

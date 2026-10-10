@@ -68,7 +68,9 @@ export type RootStackParamList = {
   GrammarChapter: { chapterId: string };
   WordLab: { word?: string } | undefined;
   // Read fullscreen page (HANDOVER 7.4): covers the tab bar.
-  Book: { bookKey: string; index?: number };
+  // Paged books read one chapter at a time: chapter names the chapter.
+  // mode "chant" opens it in Chant mode (a paged chapter's Chant button).
+  Book: { bookKey: string; index?: number; chapter?: string; mode?: "chant" };
   // Play games (HANDOVER 5): fullscreen, header hidden.
   ShabdaRush: { topic?: string; daily?: boolean } | undefined;
   Smriti: { set?: string; size?: number; daily?: boolean } | undefined;
@@ -89,6 +91,14 @@ export type RootStackParamList = {
   // Do you know: the screen behind the Home fact card. Without params it
   // shows today's fact; "Earlier" pushes it with a factId.
   DoYouKnow: { factId?: string } | undefined;
+  // Recite (handover_recite): Learn screen, contests, certificates, rules.
+  Recite: { verseUid: string; competitionId?: string; start?: "listen" | "practise" | "recite" };
+  RecitePicker: undefined;
+  Contest: { id?: string } | undefined;
+  ContestResults: { id: string } | undefined;
+  MasterBoard: undefined;
+  Certificate: { code: string } | undefined;
+  ContestRules: undefined;
 };
 
 // Screens that live inside a tab but need to push a screen from the parent

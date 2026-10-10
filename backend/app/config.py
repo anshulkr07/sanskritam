@@ -178,6 +178,59 @@ class Settings(BaseSettings):
     ask_source_check_s: float = 6.0
     # Sites trusted for Ask's links on top of services/page_check.py's list.
     ask_extra_trusted_hosts: str = "drikpanchang.com"
+    # Book search for Ask (services/book_search.py): verses from the app's
+    # own books, found by reference, by Sanskrit wording and by meaning, are
+    # handed to the model with the question. Off until the owner turns it on.
+    # The meaning search needs the index built by scripts/build_verse_index.py
+    # with the same embedding model and size.
+    book_search_enabled: bool = False
+    book_search_embed_model: str = "gemini-embedding-001"
+    book_search_dims: int = 768
+    book_search_top_k: int = 6
+    book_search_timeout_s: float = 8.0
+    # Where the embedding model is called: the Cloud Run region (deploy.sh).
+    # From here the first call to "global" took 12 s, asia-south1 under 1 s.
+    book_search_location: str = "asia-south1"
+
+    # Free-tier Gemini in front of the paid Vertex route (services/gemini_pool.py).
+    # GEMINI_API_KEYS: AI Studio keys, comma or newline separated, one per Google
+    # account. EVERY key must come from a project with NO billing account: a
+    # project with billing linked (AI Studio shows "Tier 1" or higher) is a paid
+    # service, bills every call, and would be counted here as free. Keep such a
+    # key out of this list. Each (key, model) pair has its own quota.
+    gemini_api_keys: str = ""
+    # Models tried in this order on every key; the free quota is per model.
+    gemini_free_models: str = "gemini-3.8-flash,gemini-3.7-flash"
+    # Per kind of question (services/ask_route.py), owner decision 2026-10-10: 3.7
+    # Flash first where the 60-question test showed it as good as 3.8 (a plain
+    # question about a verse the books hold, grammar), 3.8 alone where it was
+    # worse (questions of where a verse is from, a verse reference asked, a book
+    # the app does not hold, a conversation or calendar context, weak evidence).
+    # Paid Vertex is always 3.8. A model named here that is not in
+    # gemini_free_models has no slot and is skipped.
+    gemini_free_models_simple: str = "gemini-3.7-flash,gemini-3.8-flash"
+    gemini_free_models_careful: str = "gemini-3.8-flash"
+    gemini_free_enabled: bool = True
+    # The free quota as AI Studio showed it for Gemini 3.8 Flash on 2026-10-10:
+    # 5 requests a minute, 20 a day (and 250K input tokens a minute). A request
+    # past a limit is not sent; a 429 from Google still wins (limits change).
+    gemini_free_rpm: int = 5
+    gemini_free_rpd: int = 20
+    # Free-tier prompts and answers may be read by Google and used to improve
+    # its products ("do not submit personal information"). False keeps a request
+    # that carries a birth chart or a match on the paid route.
+    gemini_free_allow_personal: bool = False
+    # Query and index embeddings also try the free keys first. The free quota for
+    # embeddings is not known; 0 means "send, and rely on the 429".
+    gemini_free_embeddings: bool = True
+    gemini_free_embed_rpm: int = 0
+    gemini_free_embed_rpd: int = 0
+    # How long a learner waits on a free key before the request goes to Vertex:
+    # for a streamed answer, until its first piece; otherwise the whole call. The
+    # free tier is slower and busier than Vertex (2026-10-10, two keys: 16 to 19 s
+    # for a 50-token answer; a third key got 503 "high demand"), so a free key
+    # that is slower than this is set aside, for longer each time it repeats.
+    gemini_free_timeout_s: float = 12.0
 
     # Gemini has its own ceiling, apart from the Sarvam one: rupees across ALL
     # learners in the same rolling window (owner decision 2026-10-02: ₹200).
@@ -211,6 +264,13 @@ class Settings(BaseSettings):
     # aborts the deploy. Set a space-free name here or in a non-Windows deploy.
     legal_entity_name: str = "Vedic Valor"
     legal_contact_email: str = ""
+
+    # Reading shelf Plus lock (owner decision 2026-10-09, turned on when
+    # buying Plus works). Off by default, so with no environment change
+    # nothing is locked for anyone. CANON_PLUS_GATE=true locks every
+    # tier=plus paged book to its preview (first chapter; first 5 verses for
+    # a one-chapter book) for learners without the canon_plus entitlement.
+    canon_plus_gate: bool = False
 
     # Writing recognition (P20-3) — thresholds live in config, never in a
     # literal. The photo path biases HARD toward unsure (P20-4): OCR on a
@@ -309,7 +369,38 @@ class Settings(BaseSettings):
     # for a coupled A/B against the `[perf] turn` lines the client logs.
     conversation_inline_audio: bool = False
 
+    # Recite + competitions (handover_recite 8.1, 11.9).
+    env: str = "dev"
+    scorer_url: str = ""
+    scorer_key: str = ""
+    scorer_timeout_s: float = 25.0
+    scorer_max_seconds: int = 45
+    quota_recite_seconds_per_day: int = 900
+    chant_voice: str = "vagdhenu-steer-2026-06-17"
+    chant_serve_statuses: str = "auto_ok,approved"
+    private_storage: str = "local"
+    r2_private_bucket: str = ""
+    gcs_private_bucket: str = ""
+    competition_tz: str = "Asia/Kolkata"
+    competition_results_hour: int = 8
+    competition_attempts_per_day: int = 10
+    competition_audio_days: int = 30
+    competition_min_face_ratio: float = 0.9
+    competition_min_eyes_closed_ratio: float = 0.85
+    competition_max_multi_face_ratio: float = 0.1
+    competition_replay_threshold: float = 0.0
+    competition_piece_max_ms: int = 35000
+    competition_rules_version: str = "2026-10-1"
+    prize_contact_email: str = ""
+
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
+
+    @property
+    def is_production(self) -> bool:
+        """True when ENV=production, and always on Cloud Run (it sets K_SERVICE
+        on every revision), so a deploy that forgets ENV still counts as
+        production. Guards the fake scorer and the competition test clock."""
+        return self.env.strip().lower() == "production" or bool(os.environ.get("K_SERVICE"))
 
 
 settings = Settings()

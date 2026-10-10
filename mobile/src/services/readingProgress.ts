@@ -1,16 +1,19 @@
 // readingProgress — where the learner left off in each book.
 //
-// One JSON object in AsyncStorage: { [bookKey]: verseIndex }. Written
-// fire-and-forget on every settled page turn (a lost write costs one tap, a
-// blocking write costs a dropped frame mid-flip). Reads clamp to range at the
-// call site — the corpus only grows, but a book's list can shrink under a
-// canon filter change, and a stale index must open the shelf, never crash.
+// Classic books keep shabd.read.pos as now: { [bookKey]: verseIndex }.
+// For a paged book the verse index is saved under positionKey(slug, chapter)
+// in the same map, and the last chapter in shabd.read.chapter
+// ({ [slug]: chapter }). A saved chapter that no longer exists opens the
+// contents, never crashes. Written fire-and-forget on every settled page
+// turn (a lost write costs one tap, a blocking write costs a dropped frame).
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const KEY = "shabd.read.pos";
+const CHAPTER_KEY = "shabd.read.chapter";
 
 type Positions = Record<string, number>;
+type Chapters = Record<string, string>;
 
 async function readAll(): Promise<Positions> {
   try {
@@ -18,6 +21,18 @@ async function readAll(): Promise<Positions> {
     if (!raw) return {};
     const parsed = JSON.parse(raw) as unknown;
     if (parsed && typeof parsed === "object") return parsed as Positions;
+  } catch {
+    /* corrupt or missing — start fresh */
+  }
+  return {};
+}
+
+async function readChapters(): Promise<Chapters> {
+  try {
+    const raw = await AsyncStorage.getItem(CHAPTER_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as unknown;
+    if (parsed && typeof parsed === "object") return parsed as Chapters;
   } catch {
     /* corrupt or missing — start fresh */
   }
@@ -43,4 +58,31 @@ export function setReadingPosition(bookKey: string, index: number): void {
     .catch(() => {});
 }
 
-export default { getReadingPosition, getReadingPositions, setReadingPosition };
+/** Last chapter read in a paged book. */
+export async function getReadingChapter(slug: string): Promise<string | null> {
+  const all = await readChapters();
+  const v = all[slug];
+  return typeof v === "string" && v ? v : null;
+}
+
+export async function getReadingChapters(): Promise<Chapters> {
+  return readChapters();
+}
+
+export function setReadingChapter(slug: string, chapter: string): void {
+  readChapters()
+    .then((all) => {
+      all[slug] = chapter;
+      return AsyncStorage.setItem(CHAPTER_KEY, JSON.stringify(all));
+    })
+    .catch(() => {});
+}
+
+export default {
+  getReadingPosition,
+  getReadingPositions,
+  setReadingPosition,
+  getReadingChapter,
+  getReadingChapters,
+  setReadingChapter,
+};

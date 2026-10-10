@@ -126,7 +126,9 @@ def seed_reader_passages(db: Session) -> dict[str, int]:
             added["tier1"] += 1
 
     # ── Tiers 2+3: served ślokas, shorter half then longer half ────────
-    shlokas = db.query(Shloka).order_by(Shloka.date).all()
+    # The graded reader must keep choosing from the same verses (6.4):
+    # paged books never feed it.
+    shlokas = db.query(Shloka).filter(Shloka.in_daily.is_(True)).order_by(Shloka.date).all()
     by_len = sorted(shlokas, key=lambda s: len((s.devanagari or "").split()))
     half = max(1, len(by_len) // 2)
     for tier, rows in ((2, by_len[:half]), (3, by_len[half:])):

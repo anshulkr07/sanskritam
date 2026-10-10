@@ -23,9 +23,11 @@ def read_due(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    items = due_items(db, learner.id, limit=limit)
+    # Old kinds only: verse items live under GET /recite/due so old phones
+    # and Home never see them.
+    items = due_items(db, learner.id, limit=limit, kinds=["step", "vocab"])
     return {
-        "due_count": due_count(db, learner.id),
+        "due_count": due_count(db, learner.id, kinds=["step", "vocab"]),
         "items": [
             ReviewItemResponse(
                 item_key=r.item_key,

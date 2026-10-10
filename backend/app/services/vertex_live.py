@@ -31,6 +31,7 @@ import json
 import logging
 import os
 import time
+from pathlib import Path
 from typing import Optional
 
 import httpx
@@ -39,6 +40,8 @@ from app.config import settings
 from app.evals.providers import LLMResponse, Provider, ProviderSpec
 
 logger = logging.getLogger("shabd.vertex_live")
+
+_BACKEND_DIR = Path(__file__).resolve().parents[2]
 
 # A token lasts an hour; fetch a new one well before that.
 _TOKEN_TTL_S = 45 * 60
@@ -59,7 +62,12 @@ def credentials_info() -> Optional[dict]:
             return None
         return info if isinstance(info, dict) else None
     path = (settings.vertex_credentials_path or "").strip()
-    if path and os.path.isfile(path):
+    # A relative path is tried from the working directory (as it always was) and
+    # then from backend/, where "../vertex_credentials.json" means the repo root
+    # whichever directory a script was started from.
+    candidates = [path, str(_BACKEND_DIR / path)] if path and not os.path.isabs(path) else [path]
+    path = next((c for c in candidates if c and os.path.isfile(c)), "")
+    if path:
         try:
             with open(path, encoding="utf-8") as fh:
                 info = json.load(fh)
@@ -84,6 +92,12 @@ def _fetch_token(info: dict) -> str:
 
 class VertexProvider(Provider):
     """Gemini ``generateContent`` on Vertex AI. Same interface as ``Provider``."""
+
+    # How much of an error body is kept in the error text.
+    _ERR_CHARS = 300
+
+    def _auth_headers(self, token: str) -> dict:
+        return {"Authorization": f"Bearer {token}"}
 
     def __init__(self, name: str, spec: ProviderSpec, model: Optional[str] = None,
                  api_key: Optional[str] = None, timeout: float = 30.0) -> None:
@@ -149,12 +163,12 @@ class VertexProvider(Provider):
             self._http = httpx.AsyncClient(timeout=self._timeout)
         url = self._url().replace(":generateContent", ":streamGenerateContent") + "?alt=sse"
         body = self._body(system, user, temperature, max_tokens, json_mode)
-        async with self._http.stream("POST", url, headers={"Authorization": f"Bearer {token}"},
+        async with self._http.stream("POST", url, headers=self._auth_headers(token),
                                      json=body) as resp:
             if resp.status_code != 200:
                 if resp.status_code in (401, 403):
                     self._token = ""
-                detail = (await resp.aread())[:300]
+                detail = (await resp.aread())[:self._ERR_CHARS]
                 raise RuntimeError(f"HTTP {resp.status_code}: {detail!r}")
             async for line in resp.aiter_lines():
                 if not line.startswith("data:"):
@@ -187,7 +201,7 @@ class VertexProvider(Provider):
                 self._http = httpx.AsyncClient(timeout=self._timeout)
             resp = await self._http.post(
                 self._url(),
-                headers={"Authorization": f"Bearer {token}"},
+                headers=self._auth_headers(token),
                 json=self._body(system, user, temperature, max_tokens, json_mode),
             )
             elapsed = (time.perf_counter() - started) * 1000
@@ -195,7 +209,7 @@ class VertexProvider(Provider):
                 if resp.status_code in (401, 403):
                     self._token = ""  # a revoked or expired token is not reused
                 return LLMResponse(provider=self.name, model=self.model, latency_ms=elapsed,
-                                   error=f"HTTP {resp.status_code}: {resp.text[:300]}")
+                                   error=f"HTTP {resp.status_code}: {resp.text[:self._ERR_CHARS]}")
             body = resp.json()
             usage = body.get("usageMetadata") or {}
             prompt_tokens = int(usage.get("promptTokenCount") or 0)

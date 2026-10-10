@@ -122,6 +122,21 @@ export interface WordBreakdown {
   features: string[];
 }
 
+export interface ChantLine {
+  i: number;
+  text: string;
+  kind: "verse" | "speaker";
+  start_ms: number;
+  end_ms: number;
+}
+
+export interface ChantInfo {
+  url: string;
+  duration_ms: number;
+  voice: string;
+  lines: ChantLine[];
+}
+
 export interface Shloka {
   id: string;
   date: string;
@@ -134,6 +149,8 @@ export interface Shloka {
   audio_url: string;
   translation_hi?: string;
   translation_en?: string;
+  verse_uid?: string;
+  chant?: ChantInfo | null;
 }
 
 export interface ShlokaMeaning {
@@ -158,6 +175,37 @@ export interface CanonText {
   coverage: number;
   notes: string;
   ref_prefixes?: string[];
+  /** Paged shelf (2026-10-09): served one chapter at a time. Absent on old backends. */
+  paged?: boolean;
+  /** True when this learner may read only the preview (Plus lock). */
+  locked?: boolean;
+}
+
+/** One chapter of a paged book (GET /canon/{slug}/chapters). */
+export interface PagedChapter {
+  chapter: string;
+  section: string;
+  count: number;
+  first_ref: string;
+  locked: boolean;
+}
+
+export interface PagedChapters {
+  slug: string;
+  title_en: string;
+  title_sa: string;
+  tier: string;
+  locked: boolean;
+  preview: { chapter: string; verses: number | null };
+  chapters: PagedChapter[];
+}
+
+export interface PagedVerses {
+  slug: string;
+  chapter: string;
+  locked: boolean;
+  locked_after: number | null;
+  verses: Shloka[];
 }
 
 // ─── Varnamala ────────────────────────────────────────────────────────────
@@ -1234,6 +1282,53 @@ export interface FactSummary {
   scheduled_date?: string;
 }
 
+// ─── Recite + competitions (handover_recite) ────────────────────────────
+
+export interface CompetitionPiece {
+  source_ref: string;
+  verse_uid: string;
+}
+
+export interface Competition {
+  id: string;
+  slug: string;
+  kind: string;
+  opens_at: string;
+  closes_at: string;
+  results_at: string;
+  status: string;
+  pieces: CompetitionPiece[];
+  me?: { best_percent: number | null; rank: number | null; attempts_today: number; attempts_left: number } | null;
+}
+
+export interface ReciteAkshara {
+  t: string;
+  band: "ok" | "fix" | "unclear";
+  heard?: string;
+}
+
+export interface ReciteLine {
+  i: number;
+  aksharas: ReciteAkshara[];
+}
+
+export interface ReciteResult {
+  status: "scored" | "unclear";
+  percent: number | null;
+  mode: string;
+  counts: { ok: number; fix: number; unclear: number };
+  lines: ReciteLine[];
+  tips: { kind: string; text: string }[];
+  perfect: boolean;
+  heard: string;
+  review?: { verdict: string; due_at: string };
+  counted?: boolean;
+  why_not?: string;
+  best_percent?: number | null;
+  rank?: number | null;
+  is_new_best?: boolean;
+}
+
 // ─── Client ───────────────────────────────────────────────────────────────
 
 export class ApiError extends Error {
@@ -1472,6 +1567,74 @@ export async function uploadPronunciation(
   return (await res.json()) as PronunciationResult;
 }
 
+/**
+ * Upload a recitation for scoring (POST /recite/score). Mirrors
+ * uploadPronunciation shape. 404 hides the feature with one line.
+ */
+export async function uploadRecite(
+  audio: string,
+  opts: { verseUid: string; unit: string; mode?: string; purpose?: string; hideLevel?: number },
+): Promise<ReciteResult> {
+  const uploadUrl = `${BASE_URL}/recite/score`;
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (authToken) headers.Authorization = `Bearer ${authToken}`;
+  const FileSystem = require("expo-file-system/legacy");
+  const uploadType = FileSystem.FileSystemUploadType ? FileSystem.FileSystemUploadType.MULTIPART : 1;
+  const res = await FileSystem.uploadAsync(uploadUrl, audio, {
+    httpMethod: "POST",
+    uploadType,
+    fieldName: "file",
+    mimeType: "audio/m4a",
+    parameters: {
+      verse_uid: opts.verseUid,
+      unit: opts.unit,
+      mode: opts.mode ?? "strict",
+      purpose: opts.purpose ?? "practise",
+      hide_level: String(opts.hideLevel ?? 0),
+    },
+    headers,
+  });
+  if (res.status >= 200 && res.status < 300) return JSON.parse(res.body) as ReciteResult;
+  let detail = `Upload failed with status ${res.status}`;
+  try {
+    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
+  } catch { /* keep */ }
+  throw new ApiError(res.status, detail);
+}
+
+/**
+ * Upload a competition attempt (POST /competitions/{id}/attempts).
+ */
+export async function uploadCompetitionAttempt(
+  competitionId: string,
+  audio: string,
+  opts: { verseUid: string; camera: string; hidden: boolean },
+): Promise<ReciteResult> {
+  const uploadUrl = `${BASE_URL}/competitions/${encodeURIComponent(competitionId)}/attempts`;
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (authToken) headers.Authorization = `Bearer ${authToken}`;
+  const FileSystem = require("expo-file-system/legacy");
+  const uploadType = FileSystem.FileSystemUploadType ? FileSystem.FileSystemUploadType.MULTIPART : 1;
+  const res = await FileSystem.uploadAsync(uploadUrl, audio, {
+    httpMethod: "POST",
+    uploadType,
+    fieldName: "file",
+    mimeType: "audio/m4a",
+    parameters: {
+      verse_uid: opts.verseUid,
+      camera: opts.camera,
+      hidden: opts.hidden ? "true" : "false",
+    },
+    headers,
+  });
+  if (res.status >= 200 && res.status < 300) return JSON.parse(res.body) as ReciteResult;
+  let detail = `Upload failed with status ${res.status}`;
+  try {
+    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
+  } catch { /* keep */ }
+  throw new ApiError(res.status, detail);
+}
+
 export const api = {
   health: () => request<{ status: string; version: string }>("/health"),
 
@@ -1551,7 +1714,21 @@ export const api = {
   listShlokas: () => request<Shloka[]>("/shlokas", {}, true),
 
   // P21-4: the canon catalogue — study order, depth, live imported counts.
-  canon: () => request<{ texts: CanonText[] }>("/canon", {}, true),
+  // Paged shelf: ?include=paged asks for every row with paged/locked. An old
+  // backend ignores the parameter and returns the classic rows without paged.
+  canon: () => request<{ texts: CanonText[] }>("/canon?include=paged", {}, true),
+
+  // Paged books, one chapter at a time (2026-10-09). Defensive reads: an old
+  // backend answers 404 and the shelf shows the 12 old books only.
+  canonChapters: (slug: string) =>
+    request<PagedChapters>(`/canon/${encodeURIComponent(slug)}/chapters`, {}, true),
+
+  canonVerses: (slug: string, chapter: string) =>
+    request<PagedVerses>(
+      `/canon/${encodeURIComponent(slug)}/verses?chapter=${encodeURIComponent(chapter)}`,
+      {},
+      true,
+    ),
 
   // P23-4a / U15-7: the licence registry — name, wording, credit verbatim.
   licences: () => request<Licence[]>("/licences", {}, true),
@@ -2008,6 +2185,62 @@ export const api = {
     ),
   removePushToken: (deviceId: string) =>
     request<{ removed: boolean }>(`/me/push-tokens?device_id=${encodeURIComponent(deviceId)}`, { method: "DELETE" }, true),
+
+  // Recite (handover_recite 8-9): scoring, due verses, competitions.
+  reciteDue: () =>
+    request<{ items: { verse_uid: string; source_ref: string; due_at: string; last_percent: number | null }[] }>(
+      "/recite/due", {}, true,
+    ).catch((e) => {
+      if (e instanceof ApiError && e.status === 404) return { items: [] };
+      throw e;
+    }),
+  competitionCurrent: () =>
+    request<{
+      open: Competition | null;
+      next: Competition | null;
+      last: { competition: Competition; my_rank: number | null; certificate_code: string | null } | null;
+    }>("/competitions/current", {}, true).catch((e) => {
+      if (e instanceof ApiError && e.status === 404) return { open: null, next: null, last: null };
+      throw e;
+    }),
+  competitionLeaderboard: (id: string, limit = 50) =>
+    request<{ status: string; rows: { rank: number; public_name: string; percent: number }[]; me: { rank: number; percent: number } | null }>(
+      `/competitions/${encodeURIComponent(id)}/leaderboard?limit=${limit}`, {}, true,
+    ),
+  competitionResults: (id: string) =>
+    request<{ rows: { rank: number; public_name: string; percent: number }[]; me: { rank: number | null; percent: number | null; certificate_code: string | null } | null }>(
+      `/competitions/${encodeURIComponent(id)}/results`, {}, true,
+    ),
+  competitionMaster: (month?: string) =>
+    request<{
+      month: string;
+      rows: { rank: number; public_name: string; wins: number; seconds: number; thirds: number }[];
+      me: { rank: number; public_name: string; wins: number; seconds: number; thirds: number } | null;
+      winner: { public_name: string; wins: number; claim_code: string } | null;
+    }>(`/competitions/master${month ? `?month=${encodeURIComponent(month)}` : ""}`, {}, true).catch((e) => {
+      if (e instanceof ApiError && e.status === 404) return { month: "", rows: [], me: null, winner: null };
+      throw e;
+    }),
+  competitionRules: () =>
+    request<{ version: string; rules: string[] }>("/competitions/rules", {}, true).catch(() => ({ version: "", rules: [] })),
+  publicProfile: () =>
+    request<{ public_name: string; age_confirmed: boolean; rules_version: string; recordings_consent: boolean }>(
+      "/me/public-profile", {}, true,
+    ).catch((e) => {
+      if (e instanceof ApiError && e.status === 404) return { public_name: "", age_confirmed: false, rules_version: "", recordings_consent: false };
+      throw e;
+    }),
+  savePublicProfile: (body: { public_name?: string; age_confirmed?: boolean; rules_version?: string; rules_accepted?: boolean; recordings_consent?: boolean }) =>
+    request<{ public_name: string; age_confirmed: boolean; rules_version: string; recordings_consent: boolean }>(
+      "/me/public-profile", { method: "PUT", body: JSON.stringify(body) }, true,
+    ),
+  myCertificates: () =>
+    request<{ certificates: { code: string; kind: string; rank: number; competition_id: string | null; month: string | null; piece_ref: string }[] }>(
+      "/me/certificates", {}, true,
+    ).catch((e) => {
+      if (e instanceof ApiError && e.status === 404) return { certificates: [] };
+      throw e;
+    }),
 };
 
 export default api;

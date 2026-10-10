@@ -84,6 +84,13 @@ def main() -> None:
     ap.add_argument("--jobs", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--reseed", default="")
+    ap.add_argument("--reseed-seeds", default="",
+                    help="comma-separated seeds to try instead of config RESEEDS (fresh ones once those are used up)")
+    ap.add_argument("--reseed-flags", default="",
+                    help="comma-separated QC flags worth a new seed (default: any flag)")
+    ap.add_argument("--force-meter", default="",
+                    help="render with this reference metre instead of the detected one (a verse whose metre "
+                         "is not recognised stays marked unknown_meter; the take records meter_forced)")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
@@ -98,7 +105,9 @@ def main() -> None:
     reseed_seeds: dict[tuple, list[int]] = {}
     if args.reseed:
         from tts.plan import plan_reseeds
-        plan = plan_reseeds(args.reseed, G.RESEEDS)
+        only = {f.strip() for f in args.reseed_flags.split(",") if f.strip()} or None
+        seeds_to_try = [int(x) for x in args.reseed_seeds.split(",") if x.strip()] or G.RESEEDS
+        plan = plan_reseeds(args.reseed, seeds_to_try, only)
         wanted = set(plan.keys())
         reseed_seeds = plan
 
@@ -125,6 +134,12 @@ def main() -> None:
         if not meter or meter.lower() not in lut:
             meter = "vasantatilaka"
             fallback = True
+        forced = False
+        if args.force_meter:
+            fm = args.force_meter.strip().lower()
+            if fm not in lut:
+                raise SystemExit(f"--force-meter {args.force_meter!r} is not in the reference bank")
+            meter, forced = fm, True      # `fallback` stays as detected: the metre is still not recognised
         sps = _bank_lookup(bank, meter)
         for ln in lines:
             li = ln["i"]
@@ -154,6 +169,8 @@ def main() -> None:
                     rec = {"verse_uid": uid, "line_i": li, "part_j": pj, "seed": seed,
                            "meter": meter, "meter_fallback": fallback, "path": str(path),
                            "seconds": secs, "syllables": syl, "sec_per_syll": sps}
+                    if forced:
+                        rec["meter_forced"] = True
                     with open(renders_log, "a", encoding="utf-8") as f:
                         f.write(json.dumps(rec) + "\n")
                     if n % 20 == 0:

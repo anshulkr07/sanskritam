@@ -21,7 +21,7 @@ async def score(
     if not url:
         raise ScorerError("no scorer")
     if url == "fake":
-        if getattr(settings, "env", "dev") == "production":
+        if settings.is_production:
             raise ScorerError("fake scorer in production")
         # Canned: every aksara green except the third (red, heard ta).
         from app.services.chant_text import chant_lines  # noqa: F401

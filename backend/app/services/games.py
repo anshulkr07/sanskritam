@@ -55,7 +55,7 @@ def _vocab_items(db: Session) -> list[dict]:
     except Exception:
         pass
     try:
-        for s in db.query(Shloka).all():
+        for s in db.query(Shloka).filter(Shloka.in_daily.is_(True)).all():
             for e in (s.word_breakdown or []):
                 sa = str(e.get("word", "") or "").strip()
                 meaning = str(e.get("meaning", "") or "").strip()

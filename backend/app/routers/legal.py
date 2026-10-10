@@ -96,6 +96,7 @@ that answer and not stored. You can turn off location at any time in your device
 features will stop working.</li>
 <li><strong>Your screen, only when you attach it.</strong> When you attach a screen to a question, its
 text is read on your phone and only the text is sent.</li>
+<li><strong>Recitation and competitions.</strong> Recordings are sent to our scoring server and deleted after scoring. Competition entrants' best recordings are kept for 30 days after results. Camera photos for the eyes-closed check are read on the phone and deleted at once; none leaves it. The public name and scores are shown on leaderboards. Competitions are for people aged 18 and over.</li>
 <li><strong>Files on your device.</strong> The app may read and write lesson content and audio files on your
 device so you can use them offline. We decide which files to store; the app does not browse your personal
 files.</li>

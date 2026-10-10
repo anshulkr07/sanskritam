@@ -171,7 +171,8 @@ def _seed_shlokas(db):
     inserted = 0
     for sdata in SEED_SLOKAS:
         date_iso = (SHLOKA_ANCHOR + timedelta(days=sdata["day_offset"])).isoformat()
-        if db.query(Shloka.id).filter(Shloka.date == date_iso).first():
+        # Boot repairs are for seed rows only (6.4): paged books share dates.
+        if db.query(Shloka.id).filter(Shloka.date == date_iso, Shloka.in_daily.is_(True)).first():
             continue
         shloka = Shloka(
             id=uuid.uuid4().hex[:16],
@@ -187,6 +188,10 @@ def _seed_shlokas(db):
             features=sdata.get("features", []),
             register=sdata.get("register", "classical"),
             audio_url=sdata.get("audio_url", ""),
+            book=None,
+            chapter="",
+            seq=0,
+            in_daily=True,
         )
         db.add(shloka)
         inserted += 1
@@ -240,7 +245,7 @@ def _correct_seed_rows(db) -> None:
         text = sdata["devanagari"]
         was = dict(sdata.get("was") or [])  # old text -> same verse, respelt
         retired.extend(old for old, same in was.items() if not same)
-        rows = db.query(Shloka).filter(Shloka.date == date_iso).order_by(Shloka.id).all()
+        rows = db.query(Shloka).filter(Shloka.date == date_iso, Shloka.in_daily.is_(True)).order_by(Shloka.id).all()
         ours = [r for r in rows if r.devanagari == text or r.devanagari in was]
         if not ours:
             continue
@@ -333,7 +338,7 @@ def _correct_reader_rows(db) -> None:
     """
     import re as _re
 
-    rows = db.query(Shloka).all()
+    rows = db.query(Shloka).filter(Shloka.in_daily.is_(True)).all()
     seen: set[tuple[str, str]] = set()
     for r in rows:
         want = _normalise_ref(r.source_ref or "")
@@ -341,6 +346,7 @@ def _correct_reader_rows(db) -> None:
             dup = db.query(Shloka).filter(
                 Shloka.source_ref == want,
                 Shloka.date == r.date,
+                Shloka.in_daily.is_(True),
                 Shloka.id != r.id,
             ).first()
             if dup is not None:
@@ -349,7 +355,7 @@ def _correct_reader_rows(db) -> None:
             r.source_ref = want
     db.flush()
     # Delete exact duplicates that share the normalised ref and date.
-    for r in db.query(Shloka).order_by(Shloka.date, Shloka.id).all():
+    for r in db.query(Shloka).filter(Shloka.in_daily.is_(True)).order_by(Shloka.date, Shloka.id).all():
         key = ((r.source_ref or ""), (r.date or ""))
         if key in seen:
             db.delete(r)
@@ -357,11 +363,12 @@ def _correct_reader_rows(db) -> None:
             seen.add(key)
     # Drop any residual 8.30 that slipped through (chapter 8 has 28 verses).
     # Same standalone-8.30 rule as _normalise_ref: 18.30 is a real verse.
-    for r in db.query(Shloka).filter(Shloka.source_ref.contains("8.30")).all():
+    for r in db.query(Shloka).filter(Shloka.source_ref.contains("8.30"), Shloka.in_daily.is_(True)).all():
         if "Bhagavad" in (r.source_ref or "") and _re.search(r"(?<!\d)8\.30\b", r.source_ref or ""):
             dup = db.query(Shloka).filter(
                 Shloka.source_ref == _re.sub(r"(?<!\d)8\.30\b", "8.8", r.source_ref or ""),
                 Shloka.date == r.date,
+                Shloka.in_daily.is_(True),
             ).first()
             if dup is not None:
                 db.delete(r)

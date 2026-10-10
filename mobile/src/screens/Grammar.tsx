@@ -1,11 +1,11 @@
-// Grammar chapters: deep solid tiles, underlined level tabs, solid Continue.
+// Grammar chapters: painted tiles, underlined level tabs, and a reading banner.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { api, type GuideLang } from "../api/client";
+import { api, type GuideChapter, type GuideLang, type GuideTopicSummary } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
@@ -18,10 +18,10 @@ import { useTypeScale } from "../hooks/useTypeScale";
 import type { TabScreenProps } from "../navigation/types";
 import { fetchGuideIndex } from "../services/grammarGuide";
 import { haptics } from "../services/haptics";
-import { color, fill, fillAt, font, onFill, outline, space } from "../theme";
+import { color, fill, fillAt, font, onFill, outline, script } from "../theme";
 import { firstAkshara } from "../utils/akshara";
-
-const DEVANAGARI = /[ऀ-ॿ]/;
+import PaintedBackground from "../components/artwork/PaintedBackground";
+import { hubArtwork } from "../components/artwork/hubs";
 const norm = (s: string) => s.normalize("NFC").toLowerCase();
 
 export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">) {
@@ -92,15 +92,11 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
         ) : (
           <>
             {lastTopic && (
-              <Pressable
+              <GrammarContinueCard
+                topic={lastTopic}
+                lang={lang}
                 onPress={() => openTopic(lastTopic.id)}
-                style={[styles.continue, { backgroundColor: fill.ink }]}
-                accessibilityRole="button"
-                accessibilityLabel={`${GUIDE_UI.continue[lang]}: ${t(lastTopic.title)}`}
-              >
-                <Text style={styles.continueEyebrow}>{GUIDE_UI.continue[lang]}</Text>
-                <InlineText text={t(lastTopic.title)} lang={lang} style={styles.continueTitle} numberOfLines={2} />
-              </Pressable>
+              />
             )}
 
             <View style={styles.levels}>
@@ -126,24 +122,15 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
                 {(index?.chapters ?? []).map((ch) => {
                   const topics = ch.topic_ids.map((id) => topicsById.get(id)).filter((x): x is NonNullable<typeof x> => !!x && (level === 0 || x.level === level));
                   if (topics.length === 0) return null;
-                  const tone = fillAt(ch.rank);
                   const done = ch.topic_ids.filter((id) => read.has(id)).length;
-                  const all = ch.topic_ids.length;
                   return (
-                    <Pressable
+                    <GrammarChapterCard
                       key={ch.id}
+                      chapter={ch}
+                      lang={lang}
+                      done={done}
                       onPress={() => openChapter(ch.id)}
-                      accessibilityRole="button"
-                      accessibilityLabel={`${t(ch.title)}. ${done} of ${all} read`}
-                      style={[styles.tile, { backgroundColor: fill[tone] }]}
-                    >
-                      <Text style={styles.tileLetter}>{firstAkshara(ch.title_sa)}</Text>
-                      <Text style={styles.tileTitle} numberOfLines={2}>{t(ch.title)}</Text>
-                      <Text style={styles.tileSa} numberOfLines={1}>{ch.title_sa}</Text>
-                      <View style={styles.tileBar}>
-                        <View style={[styles.tileBarFill, { width: `${all ? (done / all) * 100 : 0}%` }]} />
-                      </View>
-                    </Pressable>
+                    />
                   );
                 })}
               </View>
@@ -152,22 +139,20 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
             <View style={styles.toolsRow}>
               {(
                 [
-                  { icon: "flask-outline", label: "Word Lab", go: () => navigation.navigate("WordLab") },
-                  { icon: "musical-notes-outline", label: "Sound map", go: () => navigation.navigate("Varnamala") },
-                  { icon: "swap-horizontal-outline", label: "Word order", go: () => navigation.navigate("WordOrder", {}) },
-                  { icon: "pulse-outline", label: "Rhythm", go: () => navigation.navigate("Pingala") },
+                  { key: "word-lab", icon: "flask-outline", label: "Word Lab", go: () => navigation.navigate("WordLab") },
+                  { key: "sound-map", icon: "musical-notes-outline", label: "Sound map", go: () => navigation.navigate("Varnamala") },
+                  { key: "word-order", icon: "swap-horizontal-outline", label: "Word order", go: () => navigation.navigate("WordOrder", {}) },
+                  { key: "rhythm", icon: "pulse-outline", label: "Rhythm", go: () => navigation.navigate("Pingala") },
                 ] as const
               ).map((tool, i) => (
-                <Pressable
+                <GrammarToolCard
                   key={tool.label}
+                  toolKey={tool.key}
+                  icon={tool.icon}
+                  label={tool.label}
+                  index={i}
                   onPress={() => { haptics.tap(); tool.go(); }}
-                  accessibilityRole="button"
-                  accessibilityLabel={tool.label}
-                  style={[styles.tool, { backgroundColor: fill[fillAt(i + 2)] }]}
-                >
-                  <Ionicons name={tool.icon as never} size={22} color={onFill.text} />
-                  <Text style={styles.toolText}>{tool.label}</Text>
-                </Pressable>
+                />
               ))}
             </View>
           </>
@@ -175,6 +160,38 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
       </ScrollView>
     </SafeAreaView>
   );
+}
+
+// The preview renders these same cards with bilingual curriculum fixtures.
+export function GrammarChapterCard({ chapter, lang, done, onPress }: { chapter: GuideChapter; lang: GuideLang; done: number; onPress: () => void }) {
+  const artwork = hubArtwork(`grammar:${chapter.id}`);
+  const all = chapter.topic_ids.length;
+  const title = chapter.title[lang] || chapter.title.en;
+  return <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={`${title}. ${done} of ${all} read`} style={[styles.tile, { backgroundColor: fill[fillAt(chapter.rank)] }]}>
+    <PaintedBackground source={artwork} />
+    {!artwork && <Text style={styles.tileLetter} aria-hidden>{firstAkshara(chapter.title_sa)}</Text>}
+    <View style={{ flex: 1 }} />
+    <Text style={[styles.tileTitle, lang === "hi" && script("bold")]} numberOfLines={3}>{title}</Text>
+    <Text style={[styles.tileSa, script("regular")]} numberOfLines={1}>{chapter.title_sa}</Text>
+    <View style={styles.tileBar}><View style={[styles.tileBarFill, { width: `${all ? (done / all) * 100 : 0}%` }]} /></View>
+  </Pressable>;
+}
+
+export function GrammarContinueCard({ topic, lang, onPress }: { topic: GuideTopicSummary; lang: GuideLang; onPress: () => void }) {
+  const title = topic.title[lang] || topic.title.en;
+  return <Pressable onPress={onPress} style={[styles.continue, { backgroundColor: fill.ink }]} accessibilityRole="button" accessibilityLabel={`${GUIDE_UI.continue[lang]}: ${title}`}>
+    <PaintedBackground source={hubArtwork("grammar:continue")} banner />
+    <Text style={styles.continueEyebrow}>{GUIDE_UI.continue[lang]}</Text>
+    <InlineText text={title} lang={lang} style={styles.continueTitle} numberOfLines={3} />
+  </Pressable>;
+}
+
+export function GrammarToolCard({ toolKey, icon, label, index, onPress }: { toolKey: string; icon: string; label: string; index: number; onPress: () => void }) {
+  return <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} style={[styles.tool, { backgroundColor: fill[fillAt(index + 2)] }]}>
+    <PaintedBackground source={hubArtwork(`tool:${toolKey}`)} />
+    <Ionicons name={icon as never} size={22} color={onFill.text} />
+    <Text style={styles.toolText}>{label}</Text>
+  </Pressable>;
 }
 
 const styles = StyleSheet.create({
@@ -187,9 +204,9 @@ const styles = StyleSheet.create({
   results: { gap: 2 },
   resultRow: { flexDirection: "row", alignItems: "center", paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: color.border },
   resultTitle: { flex: 1, fontWeight: "700", color: color.ink, fontSize: 16 },
-  continue: { borderRadius: 16, padding: 16, gap: 4 },
+  continue: { borderRadius: 16, padding: 16, gap: 4, minHeight: 132, overflow: "hidden" },
   continueEyebrow: { color: onFill.gold, fontSize: 12, fontWeight: "800", textTransform: "uppercase" },
-  continueTitle: { color: onFill.text, fontWeight: "800", fontSize: 18 },
+  continueTitle: { color: onFill.text, fontWeight: "800", fontSize: 18, maxWidth: "68%" },
   levels: { flexDirection: "row", gap: 16 },
   levelTab: { paddingVertical: 8, alignItems: "center" },
   levelText: { fontWeight: "700", fontSize: 14, color: color.inkSoft },
@@ -197,13 +214,13 @@ const styles = StyleSheet.create({
   levelLine: { height: 2, backgroundColor: color.ink, alignSelf: "stretch", marginTop: 2 },
   skeletons: { gap: 8 },
   grid: { flexDirection: "row", flexWrap: "wrap", gap: 12 },
-  tile: { width: "48%", borderRadius: 16, padding: 14, minHeight: 140, overflow: "hidden" },
+  tile: { width: "47.5%", borderRadius: 16, padding: 14, height: 208, overflow: "hidden" },
   tileLetter: { position: "absolute", right: 4, bottom: -10, fontSize: 72, color: onFill.faint, fontWeight: "800" },
-  tileTitle: { color: onFill.text, fontWeight: "800", fontSize: 16 },
-  tileSa: { color: onFill.soft, fontSize: 13 },
+  tileTitle: { color: onFill.text, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 16, lineHeight: 24 },
+  tileSa: { color: onFill.text, fontSize: 13, lineHeight: 22 },
   tileBar: { height: 4, backgroundColor: onFill.faint, borderRadius: 2, marginTop: 8 },
   tileBarFill: { height: 4, backgroundColor: onFill.text, borderRadius: 2 },
   toolsRow: { flexDirection: "row", gap: 8 },
-  tool: { flex: 1, borderRadius: 12, minHeight: 72, alignItems: "center", justifyContent: "center", gap: 4 },
+  tool: { flex: 1, borderRadius: 12, minHeight: 112, alignItems: "center", justifyContent: "flex-end", padding: 8, gap: 4, overflow: "hidden" },
   toolText: { color: onFill.text, fontSize: 12, fontWeight: "700" },
 });

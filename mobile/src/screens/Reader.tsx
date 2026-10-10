@@ -58,13 +58,17 @@ import BookCover from "../components/book/BookCover";
 import CoverArt from "../components/book/CoverArt";
 import { coverColour } from "../components/book/covers";
 import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
+import { PagedBookIndex, PagedChapterReader } from "../components/book/PagedBook";
+import { isPaged, positionKey } from "../utils/paged";
 import ReaderSlider from "../components/ReaderSlider";
 import type { DrawerParamList } from "../navigation/AppDrawer";
 import { haptics } from "../services/haptics";
 import {
   getReadingPosition,
   getReadingPositions,
+  getReadingChapter,
   setReadingPosition,
+  setReadingChapter,
 } from "../services/readingProgress";
 import {
   firstLine,
@@ -121,10 +125,13 @@ export default function ReaderScreen() {
   // null = shelf; set = inside a book. pageIndex null = index, set = reading.
   const [bookKey, setBookKey] = useState<string | null>(null);
   const [pageIndex, setPageIndex] = useState<number | null>(null);
+  // Paged books: which chapter is open (null = contents).
+  const [pagedChapter, setPagedChapter] = useState<string | null>(null);
+  const [pagedIndex, setPagedIndex] = useState(0);
   // Restored "continue" rows: { [bookKey]: index }.
   const [positions, setPositions] = useState<Record<string, number>>({});
   const navigation = useNavigation();
-  const reading = bookKey !== null && pageIndex !== null;
+  const reading = bookKey !== null && (pageIndex !== null || pagedChapter !== null);
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("read", bookKey ?? "");
 
@@ -141,11 +148,13 @@ export default function ReaderScreen() {
   useEffect(() => {
     if (!reading) return;
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
-      setPageIndex(null);
+      // A chapter of a paged book closes onto that book's contents.
+      if (pagedChapter !== null) setPagedChapter(null);
+      else setPageIndex(null);
       return true;
     });
     return () => sub.remove();
-  }, [reading]);
+  }, [reading, pagedChapter]);
 
   // Corpus (Track C4): cached 60s, deduped, never setState after unmount.
   const versesQ = useQuery<Shloka[]>("reader-verses", api.listShlokas);
@@ -241,19 +250,22 @@ export default function ReaderScreen() {
 
   // A stale book (corpus shrank under it) falls back to the shelf instead
   // of rendering an empty book. Runs as an effect — never during render.
+  // Paged books are exempt: their verses never ride GET /shlokas.
   useEffect(() => {
     if (bookKey && bookKey !== ALL_KEY && !bookKey.startsWith("graded-")) {
+      if (canon.some((c) => c.slug === bookKey && isPaged(c))) return;
       if (verses && !groups.some((g) => g.text?.slug === bookKey || (bookKey === OTHER_KEY && g.text === null))) {
         setBookKey(null);
         setPageIndex(null);
       }
     }
-  }, [bookKey, verses, groups]);
+  }, [bookKey, verses, groups, canon]);
 
   const openShelf = useCallback(() => {
     haptics.tap();
     setBookKey(null);
     setPageIndex(null);
+    setPagedChapter(null);
     setTierTier(null);
     setTierRows(null);
   }, []);
@@ -265,6 +277,7 @@ export default function ReaderScreen() {
         const tier = parseInt(key.slice("graded-".length), 10);
         if (tierTier !== tier || !tierRows) loadTier(tier);
       }
+      setPagedChapter(null);
       const pos = await getReadingPosition(key).catch(() => 0);
       setBookKey(key);
       // Land on the index, remembering where Continue should resume.
@@ -443,6 +456,48 @@ export default function ReaderScreen() {
   }
 
   // ── BOOK posture (index) ─────────────────────────────────────────
+  // Paged books first: contents and chapter reader from /canon chapters.
+  const pagedText = bookKey ? canon.find((c) => c.slug === bookKey && isPaged(c)) ?? null : null;
+  if (bookKey && pagedText) {
+    if (pagedChapter !== null) {
+      return (
+        <PagedChapterReader
+          text={pagedText}
+          chapter={pagedChapter}
+          startIndex={pagedIndex}
+          onBack={() => setPagedChapter(null)}
+          onChapter={(ch) => {
+            setPagedChapter(ch);
+            setPagedIndex(0);
+          }}
+          onChant={(i) => {
+            const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+            nav.navigate("Book", { bookKey: pagedText.slug, chapter: pagedChapter, index: i, mode: "chant" });
+          }}
+          renderVerse={(v, previous, i, total) => (
+            <ReaderPage
+              verse={v}
+              previous={previous}
+              runningTitle={plain(pagedText.title_en)}
+              position={i}
+              total={total}
+              pagedChapter={pagedChapter}
+            />
+          )}
+        />
+      );
+    }
+    return (
+      <PagedBookIndex
+        text={pagedText}
+        onBack={openShelf}
+        onOpenChapter={(ch, idx) => {
+          setPagedChapter(ch);
+          setPagedIndex(idx);
+        }}
+      />
+    );
+  }
   if (bookKey && openBook) {
     // Graded rows still arriving (or failed): the index waits honestly.
     if (bookKey.startsWith("graded-") && (tierLoading || !tierRows)) {
@@ -505,6 +560,7 @@ export default function ReaderScreen() {
           allVerses={allVerses}
           positions={positions}
           tierRows={tierRows}
+          canon={canon}
           onOpen={(key) => enterBook(key)}
         />
       </ScrollView>
@@ -516,8 +572,14 @@ export default function ReaderScreen() {
 
 const RAIL_DEFS: { title: string; slugs: string[] }[] = [
   { title: "Scriptures", slugs: ["gita", "isha", "katha", "mundaka", "ramayana", "mahabharata"] },
-  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda"] },
+  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda", "vetala", "chanakya"] },
   { title: "Graded reading", slugs: ["graded-1", "graded-2", "graded-3"] },
+  { title: "Vedas", slugs: ["rigveda", "samaveda", "yajurveda", "atharvaveda"] },
+  { title: "Upaniṣads", slugs: ["kena", "prashna", "mandukya", "taittiriya", "aitareya", "shvetashvatara", "chandogya", "brihadaranyaka"] },
+  { title: "Purāṇas", slugs: ["bhagavata", "shivapurana", "garuda", "devimahatmya"] },
+  { title: "Stotras", slugs: ["vishnusahasranama", "lalita", "bhajagovindam", "saundarya", "aditya", "tandava", "mahimna", "ramaraksha", "naradabhakti"] },
+  { title: "Poetry and drama", slugs: ["meghaduta", "kumarasambhava", "raghuvamsha", "shakuntala", "gitagovinda"] },
+  { title: "Yoga, Āyurveda and śāstra", slugs: ["yogasutra", "hathayoga", "ashtavakra", "sushruta", "arthashastra", "lilavati", "amarakosha"] },
 ];
 
 function ShelfRails({
@@ -525,34 +587,42 @@ function ShelfRails({
   allVerses,
   positions,
   tierRows,
+  canon,
   onOpen,
 }: {
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allVerses: Shloka[];
   positions: Record<string, number>;
   tierRows: Shloka[] | null;
+  canon: CanonText[];
   onOpen: (key: string) => void;
 }) {
   const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
+  const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
   const sayings = allVerses.filter((v) => (v.source_ref || "").startsWith("Sūkti") || (v.source_ref || "").startsWith("Sukti"));
   const rails = RAIL_DEFS.map((r) => ({
     title: r.title,
     books: r.slugs.map((slug) => {
       if (slug.startsWith("graded-")) {
         const tier = parseInt(slug.slice("graded-".length), 10);
-        return { key: slug, titleSa: slug === "graded-1" ? "सरलम्" : slug === "graded-2" ? "सन्धिः" : "समासः", titleEn: `Tier ${tier}`, count: tierRows?.length ?? 0, planned: null as number | null };
+        return { key: slug, titleSa: slug === "graded-1" ? "सरलम्" : slug === "graded-2" ? "सन्धिः" : "समासः", titleEn: `Tier ${tier}`, count: tierRows?.length ?? 0, planned: null as number | null, locked: false, paged: false };
+      }
+      const c = canonBySlug.get(slug);
+      // Paged books: cover from /canon counts, never from the verse list.
+      if (c && (c.paged ?? false)) {
+        return { key: slug, titleSa: c.title_sa || slug, titleEn: plain(c.title_en || slug), count: c.verses_imported ?? 0, planned: c.verses_planned || null, locked: c.locked ?? false, paged: true };
       }
       const g = bySlug.get(slug);
-      if (!g?.text) return { key: slug, titleSa: slug, titleEn: slug, count: 0, planned: null as number | null };
-      return { key: slug, titleSa: g.text.title_sa, titleEn: plain(g.text.title_en), count: g.verses.length, planned: g.text.verses_planned || null };
+      if (!g?.text) return { key: slug, titleSa: slug, titleEn: slug, count: 0, planned: null as number | null, locked: false, paged: false };
+      return { key: slug, titleSa: g.text.title_sa, titleEn: plain(g.text.title_en), count: g.verses.length, planned: g.text.verses_planned || null, locked: false, paged: false };
     }),
   }));
   const known = new Set(RAIL_DEFS.flatMap((r) => r.slugs));
   const more = [
-    { key: ALL_KEY, titleSa: "सर्वम्", titleEn: "All verses", count: allVerses.length, planned: null as number | null },
-    { key: OTHER_KEY, titleSa: "अन्यत्", titleEn: "Other verses", count: bySlug.get("other")?.verses.length ?? 0, planned: null as number | null },
-    ...(sayings.length > 0 ? [{ key: "sayings", titleSa: "सूक्तयः", titleEn: "Sayings", count: sayings.length, planned: null as number | null }] : []),
-    ...groups.filter((g) => g.text && !known.has(g.text.slug)).map((g) => ({ key: g.text!.slug, titleSa: g.text!.title_sa, titleEn: plain(g.text!.title_en), count: g.verses.length, planned: g.text!.verses_planned || null })),
+    { key: ALL_KEY, titleSa: "सर्वम्", titleEn: "All verses", count: allVerses.length, planned: null as number | null, locked: false, paged: false },
+    { key: OTHER_KEY, titleSa: "अन्यत्", titleEn: "Other verses", count: bySlug.get("other")?.verses.length ?? 0, planned: null as number | null, locked: false, paged: false },
+    ...(sayings.length > 0 ? [{ key: "sayings", titleSa: "सूक्तयः", titleEn: "Sayings", count: sayings.length, planned: null as number | null, locked: false, paged: false }] : []),
+    ...groups.filter((g) => g.text && !known.has(g.text.slug)).map((g) => ({ key: g.text!.slug, titleSa: g.text!.title_sa, titleEn: plain(g.text!.title_en), count: g.verses.length, planned: g.text!.verses_planned || null, locked: false, paged: false })),
   ];
   rails.push({ title: "More", books: more });
   return (
@@ -563,19 +633,28 @@ function ShelfRails({
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12, paddingVertical: 4 }}>
             {rail.books.map((b) => {
               const empty = b.count === 0;
+              const label = empty
+                ? `${b.titleEn}. Soon.`
+                : (b as { locked?: boolean }).locked
+                  ? `${b.titleEn}. Plus. ${b.count} verses.`
+                  : `${b.titleEn}. ${b.count} verses.`;
               return (
                 <Pressable
                   key={b.key}
                   onPress={empty ? undefined : () => onOpen(b.key)}
                   disabled={empty}
                   accessibilityRole="button"
-                  accessibilityLabel={empty ? `${b.titleEn}. Soon.` : `${b.titleEn}. ${b.count} verses.`}
+                  accessibilityLabel={label}
                   accessibilityState={{ disabled: empty }}
                   style={{ width: 104, opacity: empty ? 0.55 : 1 }}
                 >
                   <CoverArt bookKey={b.key} titleSa={b.titleSa} width={104} />
                   <Text style={styles.railTitle} numberOfLines={1}>{b.titleEn}</Text>
-                  <Text style={styles.railCount}>{empty ? "Soon" : `${b.count}${b.planned ? ` of ${b.planned}` : ""}`}</Text>
+                  <Text style={styles.railCount}>
+                    {empty
+                      ? "Soon"
+                      : `${b.count}${b.planned ? ` of ${b.planned}` : ""}${(b as { locked?: boolean }).locked ? " Plus" : ""}`}
+                  </Text>
                 </Pressable>
               );
             })}
@@ -913,6 +992,7 @@ function ReaderPage({
   runningTitle,
   position,
   total,
+  pagedChapter,
 }: {
   verse: Shloka;
   /** The verse on the page before — a new chapter starts where they differ. */
@@ -920,6 +1000,10 @@ function ReaderPage({
   runningTitle: string;
   position: number;
   total: number;
+  /** A paged book's chapter id as the server names it ("3.62"; "" for a book
+   *  with one chapter). Absent for a classic book, whose chapter is read off
+   *  the verse reference. */
+  pagedChapter?: string;
 }) {
   const { sized } = useTypeScale();
   const [selected, setSelected] = useState<WordBreakdown | null>(null);
@@ -927,10 +1011,16 @@ function ReaderPage({
   const { invalidate } = useBookPage();
   const words = verse.word_breakdown ?? [];
   const ref = parseRef(verse.source_ref);
-  const chapter = ref.nums.length > 1 ? ref.nums[0] : null;
+  const inPagedBook = pagedChapter !== undefined;
+  const chapter: string | number | null = inPagedBook
+    ? pagedChapter || null
+    : ref.nums.length > 1
+      ? ref.nums[0]
+      : null;
   const before = previous ? parseRef(previous.source_ref) : null;
-  const opensChapter =
-    chapter !== null && (!before || before.book !== ref.book || before.nums[0] !== chapter);
+  const opensChapter = inPagedBook
+    ? chapter !== null && position === 0
+    : chapter !== null && (!before || before.book !== ref.book || before.nums[0] !== chapter);
 
   // Whatever this page shows now is what its sheet must show when it turns.
   useEffect(() => {

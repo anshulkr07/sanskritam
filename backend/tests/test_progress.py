@@ -163,9 +163,12 @@ def test_history_reflects_recorded_activity(client):
     headers, lid = _login(client, "history-seeded")
     from app.db import SessionLocal
     from app.models import DailyActivity
+    import datetime
     db = SessionLocal()
     try:
-        day = "2026-09-01"
+        # Within the 35-day window whatever today is (was a fixed 2026-09-01,
+        # which aged out of the window by 2026-10-09).
+        day = (datetime.date.today() - datetime.timedelta(days=5)).isoformat()
         db.add(DailyActivity(learner_id=lid, date=day, xp=35, attempts=2, goal_met=True))
         db.commit()
     finally:

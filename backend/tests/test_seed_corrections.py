@@ -30,7 +30,9 @@ def _date(day_offset):
 
 
 def _rows(db, day_offset):
-    return db.query(Shloka).filter(Shloka.date == _date(day_offset)).all()
+    # Seeded days are classic rows (paged books share dates; 6.4).
+    return db.query(Shloka).filter(Shloka.date == _date(day_offset),
+                                   Shloka.in_daily.is_(True)).all()
 
 
 def _first_was(same_verse):
@@ -303,3 +305,39 @@ def test_corrections_are_idempotent(client):
             row = _rows(db, s["day_offset"])
             assert len(row) == 1 and row[0].devanagari == s["devanagari"]
             assert row[0].source_ref == _normalise_ref(s["source_ref"])
+
+
+def test_the_curse_verse_follows_the_imported_books_number(client):
+    """Day 75 held the hunter's curse as Rāmāyaṇa 1.2.14 (the critical edition's
+    number) while the imported selections number it 1.2.15 and give 1.2.14 to
+    another verse, so two verses shared 1.2.14. The row is renamed in place."""
+    seed = _seed(75)
+    assert seed["source_ref"] == "Rāmāyaṇa 1.2.15"
+    assert seed["devanagari"].startswith("मा निषाद प्रतिष्ठां")
+    with SessionLocal() as db:
+        row = _rows(db, 75)[0]
+        row_id, total = row.id, db.query(Shloka).count()
+        row.source_ref = "Rāmāyaṇa 1.2.14"          # as an older database holds it
+        db.commit()
+
+        _correct_seed_rows(db)
+        db.commit()
+        rows = _rows(db, 75)
+        assert [r.id for r in rows] == [row_id] and rows[0].source_ref == "Rāmāyaṇa 1.2.15"
+        assert db.query(Shloka).count() == total
+
+
+def test_the_ramayana_book_names_its_real_source_on_an_old_database(client):
+    from app.models import CanonText
+    from app.seeds.canon import seed_canon
+
+    with SessionLocal() as db:
+        row = db.query(CanonText).filter_by(slug="ramayana").one()
+        row.source = "Vālmīki; GRETIL e-text (per-text licence at import)"
+        row.licence = "Text: public domain (ancient); transcription licence recorded at import"
+        db.commit()
+
+        seed_canon(db)
+        row = db.query(CanonText).filter_by(slug="ramayana").one()
+        assert "AshuVj/Valmiki_Ramayan_Dataset" in row.source and "(MIT)" in row.licence
+        assert "southern vulgate" in row.notes

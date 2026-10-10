@@ -32,7 +32,8 @@ from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parent.parent
 FIELDS = ["id", "date", "source_ref", "devanagari", "iast", "metre", "word_breakdown",
-          "features", "audio_url", "register", "translation_hi", "translation_en"]
+          "features", "audio_url", "register", "translation_hi", "translation_en",
+          "book", "chapter", "seq", "in_daily"]
 
 
 def _database_url(secret: str) -> str:
@@ -143,14 +144,16 @@ def main(argv=None) -> int:
 
         payload = json.loads(Path(args.file).read_text(encoding="utf-8"))
         books = {v.get("ref", "").rsplit(" ", 1)[0] for v in payload.get("verses") or []}
-        min_words = MIN_BREAKDOWN_WORDS if args.min_words is None else args.min_words
+        # None lets run_import pick its own default: 2 for a classic payload,
+        # and a paged payload (it has "book") never skips a verse at all.
+        min_words = args.min_words
         with SessionLocal() as db:
             print("[before]", _counts(db, Shloka, books))
             if args.live:
                 _backup(db, Shloka)
         report = run_import(payload, live=args.live, fix_existing=args.fix_existing,
                             min_words=min_words)
-        print_report(report, args.live, min_words)
+        print_report(report, args.live, MIN_BREAKDOWN_WORDS if min_words is None else min_words)
         print(f"[import] licence: {report['licence']}")
         if args.live:
             out = Path("results/imports") / (Path(args.file).stem + ".prod-report.json")

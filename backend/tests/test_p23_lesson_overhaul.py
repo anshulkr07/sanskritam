@@ -194,12 +194,16 @@ def test_attribution_resolves(client):
 
 
 def test_licence_names_exact(client):
-    """Licences are named exactly — CC BY 4.0, MIT, CC BY-SA 3.0."""
+    """Licences are named exactly — CC BY 4.0, MIT, CC BY-SA 4.0."""
     h = _auth_h(client, "p23lic")
     by_key = {r["key"]: r for r in client.get("/licences", headers=h).json()}
     assert by_key["learnsanskrit"]["licence"] == "CC BY 4.0"
     assert by_key["vidyut-data"]["licence"] == "MIT"
-    assert by_key["sa-wikisource"]["licence"] == "CC BY-SA 3.0"
+    # Reading shelf 2026-10-09 (6.10): sa.wikisource states CC BY-SA 4.0.
+    assert by_key["sa-wikisource"]["licence"] == "CC BY-SA 4.0"
+    assert by_key["dcs"]["licence"] == "CC BY 4.0"
+    assert by_key["ambuda"]["licence"] == "CC0 1.0"
+    assert by_key["gretil"]["licence"] == "CC BY-NC-SA 4.0"
     assert by_key["public-domain"]["licence"] == "public domain"
     for row in by_key.values():
         assert row["credit"], row["key"]

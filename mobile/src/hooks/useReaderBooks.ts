@@ -19,8 +19,14 @@ export interface ReaderBook {
 
 const RAILS: { title: string; slugs: string[] }[] = [
   { title: "Scriptures", slugs: ["gita", "isha", "katha", "mundaka", "ramayana", "mahabharata"] },
-  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda"] },
+  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda", "vetala", "chanakya"] },
   { title: "Graded reading", slugs: ["graded-1", "graded-2", "graded-3"] },
+  { title: "Vedas", slugs: ["rigveda", "samaveda", "yajurveda", "atharvaveda"] },
+  { title: "Upaniṣads", slugs: ["kena", "prashna", "mandukya", "taittiriya", "aitareya", "shvetashvatara", "chandogya", "brihadaranyaka"] },
+  { title: "Purāṇas", slugs: ["bhagavata", "shivapurana", "garuda", "devimahatmya"] },
+  { title: "Stotras", slugs: ["vishnusahasranama", "lalita", "bhajagovindam", "saundarya", "aditya", "tandava", "mahimna", "ramaraksha", "naradabhakti"] },
+  { title: "Poetry and drama", slugs: ["meghaduta", "kumarasambhava", "raghuvamsha", "shakuntala", "gitagovinda"] },
+  { title: "Yoga, Āyurveda and śāstra", slugs: ["yogasutra", "hathayoga", "ashtavakra", "sushruta", "arthashastra", "lilavati", "amarakosha"] },
 ];
 
 export function useReaderBooks(

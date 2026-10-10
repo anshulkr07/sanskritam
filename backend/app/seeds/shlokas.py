@@ -716,7 +716,13 @@ _todo.append(_v(
     was=[("देहं पृथग्बुद्धेर्यो ज्ञानी।", False)],
 ))
 _todo.append(_v(
-    75, "Rāmāyaṇa 1.2.14",
+    # The imported Bāla and Sundara selections carry the southern vulgate's
+    # numbers (ramayana.payload.json), where the curse is 1.2.15 and 1.2.14 is
+    # "tataḥ karuṇaveditvād…". The critical edition (GRETIL) numbers the curse
+    # 1.2.14, which made two different verses share 1.2.14 in a database that
+    # holds both. This row follows the imported book. (Day 65, 5.10.10, and
+    # day 48, 6.10.16, still carry critical-edition numbers.)
+    75, "Rāmāyaṇa 1.2.15",
     "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः। यत्क्रौञ्चमिथुनादेकमवधीः काममोहितम्॥",
     "mā niṣāda pratiṣṭhāṃ tvamagamaḥ śāśvatīḥ samāḥ. yatkrauñcamithunādekamavadhīḥ kāmamohitam..",
     [("मा", "not", ["INDECL"]), ("निषाद", "O hunter", ["VOC.SG"]),

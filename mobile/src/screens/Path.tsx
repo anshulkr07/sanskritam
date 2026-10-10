@@ -24,6 +24,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   BackHandler,
   FlatList,
+  Image,
   Pressable,
   RefreshControl,
   StyleSheet,
@@ -37,6 +38,7 @@ import { api, type LessonSummary, type Unit, type VideoItem } from "../api/clien
 import { useAsk } from "../ask/AskProvider";
 import FetchError from "../components/FetchError";
 import { Skeleton } from "../components/Skeleton";
+import { lessonArtwork, unitArtwork } from "../components/path/artwork";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { haptics } from "../services/haptics";
@@ -294,7 +296,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
 
 // ─── Hero ─────────────────────────────────────────────────────────────
 
-function Hero({
+export function Hero({
   unit,
   lesson,
   tone,
@@ -306,6 +308,13 @@ function Hero({
   onPress: () => void;
 }) {
   const pct = Math.round((unit.progress ?? 0) * 100);
+  const artwork = unitArtwork(unit.id);
+  const [heroSize, setHeroSize] = useState({ width: 408, height: 214 });
+  // Keep Sanskrit unit names inside the painting's quiet area on small phones.
+  const titleSize = Math.min(34, heroSize.width / (plain(unit.title_hi).length > 9 ? 12 : 9));
+  // All banners are 2:1. Anchor their subjects to the right when a phone
+  // crops the landscape painting into a taller card.
+  const paintingWidth = Math.max(heroSize.width, heroSize.height * 2);
   return (
     <Pressable
       onPress={onPress}
@@ -313,18 +322,37 @@ function Hero({
       accessibilityRole="button"
       accessibilityLabel={`Continue unit ${unit.rank}, ${plain(unit.title_en)}. ${plain(lesson.title_en)}. ${pct} percent`}
     >
-      <LinearGradient colors={gradientOf(tone)} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
-        <Text style={[styles.heroGhost, script("bold")]} aria-hidden>
-          {ghostLetter(unit.title_hi)}
-        </Text>
+      <LinearGradient colors={gradientOf(tone)} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero} onLayout={(event) => setHeroSize({ width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height })}>
+        {artwork ? (
+          <View
+            style={StyleSheet.absoluteFill}
+            pointerEvents="none"
+            aria-hidden
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+          >
+            <Image source={artwork} style={[styles.cardArtwork, { width: paintingWidth, left: heroSize.width - paintingWidth }]} resizeMode="cover" accessible={false} />
+            <LinearGradient
+              colors={["rgba(48,18,8,0.64)", "rgba(48,18,8,0.38)", "rgba(48,18,8,0.06)"]}
+              locations={[0, 0.55, 1]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={StyleSheet.absoluteFill}
+            />
+          </View>
+        ) : (
+          <Text style={[styles.heroGhost, script("bold")]} aria-hidden>
+            {ghostLetter(unit.title_hi)}
+          </Text>
+        )}
         <Text style={styles.heroEyebrow}>Unit {unit.rank}</Text>
-        <Text style={[styles.heroSa, script("extrabold")]} numberOfLines={1}>
+        <Text style={[styles.heroSa, script("extrabold"), !!artwork && styles.heroArtTitle, { fontSize: titleSize }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75}>
           {plain(unit.title_hi)}
         </Text>
-        <Text style={styles.heroEn} numberOfLines={1}>
+        <Text style={[styles.heroEn, !!artwork && styles.heroArtTitle]} numberOfLines={1}>
           {plain(unit.title_en)}
         </Text>
-        <Text style={styles.heroNext} numberOfLines={1}>
+        <Text style={[styles.heroNext, !!artwork && styles.heroArtNext]} numberOfLines={1}>
           Next: {plain(lesson.title_en)}
         </Text>
         <View style={styles.heroFoot}>
@@ -344,7 +372,7 @@ function Hero({
 
 // ─── Lesson card ──────────────────────────────────────────────────────
 
-function LessonCard({
+export function LessonCard({
   lesson,
   number,
   tone,
@@ -360,6 +388,7 @@ function LessonCard({
   onPress: () => void;
 }) {
   const sa = plain(lesson.title_hi) || plain(lesson.title_en);
+  const artwork = lessonArtwork(lesson.unit_id, lesson.feature_id);
   return (
     <Pressable
       onPress={onPress}
@@ -376,9 +405,26 @@ function LessonCard({
         end={{ x: 1, y: 1 }}
         style={styles.card}
       >
-        <Text style={[styles.cardGhost, script("bold")]} aria-hidden>
-          {ghostLetter(lesson.title_hi)}
-        </Text>
+        {artwork ? (
+          <View
+            style={StyleSheet.absoluteFill}
+            pointerEvents="none"
+            aria-hidden
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+          >
+            <Image source={artwork} style={[styles.cardArtwork, locked && styles.artLocked]} resizeMode="cover" accessible={false} />
+            <LinearGradient
+              colors={["rgba(25,18,12,0.28)", "rgba(25,18,12,0.08)", "rgba(25,18,12,0.80)", "rgba(25,18,12,0.92)"]}
+              locations={[0, 0.28, 0.62, 1]}
+              style={StyleSheet.absoluteFill}
+            />
+          </View>
+        ) : (
+          <Text style={[styles.cardGhost, script("bold")]} aria-hidden>
+            {ghostLetter(lesson.title_hi)}
+          </Text>
+        )}
         <View style={styles.cardNum}>
           <Text style={styles.cardNumText}>{number}</Text>
         </View>
@@ -504,6 +550,8 @@ const styles = StyleSheet.create({
   heroSa: { fontSize: 34, lineHeight: 50, color: color.white, marginTop: 2 },
   heroEn: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.white },
   heroNext: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.white, marginTop: 2 },
+  heroArtTitle: { maxWidth: "60%" },
+  heroArtNext: { maxWidth: "72%" },
   heroFoot: { flexDirection: "row", alignItems: "center", gap: space.xs, marginTop: space.md },
   heroTrack: { flex: 1, height: 6, borderRadius: 3, backgroundColor: "rgba(255,255,255,0.28)", overflow: "hidden" },
   heroFill: { height: 6, borderRadius: 3, backgroundColor: color.white },
@@ -521,6 +569,8 @@ const styles = StyleSheet.create({
   cardWrap: { width: CARD_W, height: CARD_H, borderRadius: radius.lg, ...shadow.card },
   card: { flex: 1, borderRadius: radius.lg, padding: space.sm + 2, overflow: "hidden" },
   cardGhost: { position: "absolute", right: -8, bottom: 30, fontSize: 96, lineHeight: 140, color: "rgba(255,255,255,0.12)" },
+  artLocked: { opacity: 0.45 },
+  cardArtwork: { position: "absolute", top: 0, left: 0, width: "100%", height: "100%" },
   cardNum: { width: 26, height: 26, borderRadius: 13, backgroundColor: "rgba(255,255,255,0.22)", alignItems: "center", justifyContent: "center" },
   cardNumText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.white },
   cardSa: { fontSize: font.sizes.md, lineHeight: 26, color: color.white },

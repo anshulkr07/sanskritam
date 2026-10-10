@@ -21,7 +21,7 @@ class StorageBackend(ABC):
     """Abstract storage backend for audio files."""
 
     @abstractmethod
-    def store(self, data: bytes, path: str) -> str:
+    def store(self, data: bytes, path: str, content_type: str = "audio/wav") -> str:
         """Store audio bytes and return the URL/path to access them."""
         ...
 
@@ -35,6 +35,20 @@ class StorageBackend(ABC):
         """Return the public URL for a stored path."""
         ...
 
+    def store_private(self, data: bytes, path: str, content_type: str = "audio/mp4") -> str:
+        """Store private bytes (competition recordings). Returns a key."""
+        raise PrivateStorageOff("private storage not configured")
+
+    def read_private(self, key: str) -> bytes:
+        raise PrivateStorageOff("private storage not configured")
+
+    def delete_private(self, key: str) -> None:
+        raise PrivateStorageOff("private storage not configured")
+
+
+class PrivateStorageOff(RuntimeError):
+    """Private bucket not configured: caller keeps no audio (no_audio flag)."""
+
 
 class LocalStorage(StorageBackend):
     """Local filesystem storage — content-hashed filenames."""
@@ -42,8 +56,10 @@ class LocalStorage(StorageBackend):
     def __init__(self, base_dir: str = "storage/audio") -> None:
         self._base = Path(base_dir)
         self._base.mkdir(parents=True, exist_ok=True)
+        self._priv = Path("storage/private")
+        # Private dir created lazily so tests without it still raise via mode.
 
-    def store(self, data: bytes, path: str) -> str:
+    def store(self, data: bytes, path: str, content_type: str = "audio/wav") -> str:
         safe_path = path.replace("..", "").lstrip("/")
         full = self._base / safe_path
         full.parent.mkdir(parents=True, exist_ok=True)
@@ -55,6 +71,34 @@ class LocalStorage(StorageBackend):
 
     def url(self, path: str) -> str:
         return f"/audio/{path}"
+
+    def _priv_path(self, key: str) -> Path:
+        safe = key.replace("..", "").lstrip("/")
+        return self._priv / safe
+
+    def store_private(self, data: bytes, path: str, content_type: str = "audio/mp4") -> str:
+        from app.config import settings
+        if (getattr(settings, "private_storage", "local") or "local").lower() == "off":
+            raise PrivateStorageOff("private storage off")
+        if (getattr(settings, "private_storage", "local") or "local").lower() not in ("local",):
+            raise PrivateStorageOff("private storage not local")
+        p = self._priv_path(path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(data)
+        return path.replace("..", "").lstrip("/")
+
+    def read_private(self, key: str) -> bytes:
+        return self._priv_path(key).read_bytes()
+
+    def delete_private(self, key: str) -> None:
+        try:
+            self._priv_path(key).unlink(missing_ok=True)
+        except TypeError:
+            # Python < 3.8 compat: missing_ok unavailable.
+            try:
+                self._priv_path(key).unlink()
+            except FileNotFoundError:
+                pass
 
 
 class GCSStorage(StorageBackend):
@@ -82,11 +126,11 @@ class GCSStorage(StorageBackend):
         self._bucket = self._client.bucket(bucket)
         self._cdn = (cdn_base_url or "").rstrip("/")
 
-    def store(self, data: bytes, path: str) -> str:
+    def store(self, data: bytes, path: str, content_type: str = "audio/wav") -> str:
         safe_path = path.replace("..", "").lstrip("/")
         blob = self._bucket.blob(f"audio/{safe_path}")
         blob.cache_control = "public, max-age=31536000, immutable"
-        blob.upload_from_string(data, content_type="audio/wav")
+        blob.upload_from_string(data, content_type=content_type)
         return self.url(safe_path)
 
     def exists(self, path: str) -> bool:
@@ -98,6 +142,25 @@ class GCSStorage(StorageBackend):
         if self._cdn:
             return f"{self._cdn}/audio/{safe_path}"
         return f"https://storage.googleapis.com/{self._bucket.name}/audio/{safe_path}"
+
+    def _private_bucket(self):
+        from app.config import settings
+        name = (getattr(settings, "gcs_private_bucket", "") or "").strip()
+        if not name:
+            raise PrivateStorageOff("no private bucket")
+        return self._client.bucket(name)
+
+    def store_private(self, data: bytes, path: str, content_type: str = "audio/mp4") -> str:
+        safe_path = path.replace("..", "").lstrip("/")
+        blob = self._private_bucket().blob(safe_path)
+        blob.upload_from_string(data, content_type=content_type)
+        return safe_path
+
+    def read_private(self, key: str) -> bytes:
+        return self._private_bucket().blob(key).download_as_bytes()
+
+    def delete_private(self, key: str) -> None:
+        self._private_bucket().blob(key).delete()
 
 
 class R2Storage(StorageBackend):
@@ -133,13 +196,13 @@ class R2Storage(StorageBackend):
             region_name="auto",
         )
 
-    def store(self, data: bytes, path: str) -> str:
+    def store(self, data: bytes, path: str, content_type: str = "audio/wav") -> str:
         safe_path = path.replace("..", "").lstrip("/")
         self._client.put_object(
             Bucket=self._bucket,
             Key=f"audio/{safe_path}",
             Body=data,
-            ContentType="audio/wav",
+            ContentType=content_type,
             CacheControl="public, max-age=31536000, immutable",
         )
         return self.url(safe_path)
@@ -151,6 +214,30 @@ class R2Storage(StorageBackend):
             return True
         except Exception:
             return False
+
+    def _private_bucket_name(self) -> str:
+        from app.config import settings
+        name = (getattr(settings, "r2_private_bucket", "") or "").strip()
+        if not name:
+            raise PrivateStorageOff("no private bucket")
+        return name
+
+    def store_private(self, data: bytes, path: str, content_type: str = "audio/mp4") -> str:
+        safe_path = path.replace("..", "").lstrip("/")
+        self._client.put_object(
+            Bucket=self._private_bucket_name(),
+            Key=safe_path,
+            Body=data,
+            ContentType=content_type,
+        )
+        return safe_path
+
+    def read_private(self, key: str) -> bytes:
+        r = self._client.get_object(Bucket=self._private_bucket_name(), Key=key)
+        return r["Body"].read()
+
+    def delete_private(self, key: str) -> None:
+        self._client.delete_object(Bucket=self._private_bucket_name(), Key=key)
 
     def url(self, path: str) -> str:
         safe_path = path.replace("..", "").lstrip("/")

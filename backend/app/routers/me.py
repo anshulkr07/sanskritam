@@ -96,8 +96,8 @@ def learner_owned_models() -> tuple:
     deletion into a 500, and Google Play requires deletion to work in-app.
     """
     from app.models import (
-        Attempt, ContentReport, ConversationSession, DailyActivity, DailyWordPlay,
-        Entitlement, GameResult, NotificationSend, PronunciationAttempt, PushToken, ReviewItem,
+        Attempt, Certificate, CompetitionEntry, ContentReport, ConversationSession, DailyActivity, DailyWordPlay,
+        Entitlement, GameResult, LearnerPublic, MonthlyWinner, NotificationSend, PronunciationAttempt, PushToken, ReciteAttempt, ReviewItem,
         Token, UsageEvent, WritingAttempt,
     )
 
@@ -105,6 +105,7 @@ def learner_owned_models() -> tuple:
         UsageEvent, Token, Attempt, PronunciationAttempt, WritingAttempt,
         ConversationSession, DailyActivity, DailyWordPlay, PushToken,
         NotificationSend, Entitlement, ReviewItem, ContentReport, GameResult,
+        ReciteAttempt, CompetitionEntry, LearnerPublic, Certificate, MonthlyWinner,
     )
 
 
@@ -134,6 +135,21 @@ def delete_me(
 
     session_ids = sa.select(ConversationSession.id).where(ConversationSession.learner_id == learner.id)
     db.query(ConversationTurn).filter(ConversationTurn.session_id.in_(session_ids)).delete()
+    # Delete private competition audio before rows go away.
+    try:
+        from app.models import CompetitionEntry
+        from app.services.storage import get_storage
+        _store = get_storage()
+        for (k,) in db.query(CompetitionEntry.audio_key).filter(
+                CompetitionEntry.learner_id == learner.id,
+                CompetitionEntry.audio_key.is_not(None)).all():
+            if k:
+                try:
+                    _store.delete_private(k)
+                except Exception:
+                    pass
+    except Exception:
+        pass
     for model in learner_owned_models():
         db.query(model).filter(model.learner_id == learner.id).delete()
 

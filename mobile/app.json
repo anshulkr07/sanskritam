@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -31,7 +31,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 4,
+      "versionCode": 5,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -61,7 +61,7 @@
       [
         "expo-audio",
         {
-          "enableBackgroundPlayback": false
+          "enableBackgroundPlayback": true
         }
       ],
       "expo-file-system",
@@ -70,7 +70,8 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow Sanskritam to photograph your handwriting so it can be read on this device"
+          "cameraPermission": "Allow Sanskritam to use the camera to read your handwriting and to check your eyes are closed while you recite. Photos stay on this phone.",
+          "microphonePermission": "Allow Sanskritam to hear your recitation so it can be scored."
         }
       ],
       "@react-native-vector-icons/ionicons",

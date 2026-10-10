@@ -14,7 +14,7 @@ def test_canon_seed_is_ordered_and_licenced(client):
     db = SessionLocal()
     try:
         rep = seed_canon(db)
-        assert rep["total"] == 12
+        assert rep["total"] == 51
         # Idempotent: second run adds 0.
         assert seed_canon(db)["added"] == 0
     finally:
@@ -26,6 +26,7 @@ def test_canon_endpoint_shape(client):
     r = client.get("/canon", headers=h)
     assert r.status_code == 200, r.text
     texts = r.json()["texts"]
+    # Default (old phone): classic rows only, field for field as before.
     assert len(texts) == 12
     orders = [t["study_order"] for t in texts]
     assert orders == sorted(orders) == list(range(1, 13))
@@ -35,9 +36,21 @@ def test_canon_endpoint_shape(client):
                       "coverage", "notes", "ref_prefixes"):
             assert field in t, f"{t.get('slug')} missing {field}"
         assert t["depth"] in ("full", "studied", "index")
-        assert t["tier"] == "free", "reading is never gated by default (§6)"
+        assert t["tier"] == "free", "the 12 old books stay free"
         assert t["licence"], f"{t['slug']} has no recorded licence (§6)"
         assert 0.0 <= t["coverage"] <= 1.0 + 1e-9 or t["coverage"] > 0
+    # New phone: ?include=paged adds the 39 paged books with paged/locked.
+    r2 = client.get("/canon?include=paged", headers=h)
+    assert r2.status_code == 200, r2.text
+    all_texts = r2.json()["texts"]
+    assert len(all_texts) == 51
+    assert [t["study_order"] for t in all_texts] == sorted(t["study_order"] for t in all_texts) == list(range(1, 52))
+    for t in all_texts:
+        assert "paged" in t and "locked" in t
+    paged = [t for t in all_texts if t.get("paged")]
+    assert len(paged) == 39
+    # Gate off: nothing locked for anyone.
+    assert all(t["locked"] is False for t in all_texts)
 
 
 def test_canon_counts_live_imports(client):

@@ -31,7 +31,7 @@ from sqlalchemy.orm import Session
 from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner, Shloka
-from app.schemas import ShlokaResponse
+from app.schemas import ChantInfo, ChantLine, ShlokaResponse
 from app.services import verse_study
 from app.services.localtime import local_date
 
@@ -48,15 +48,16 @@ def _select_shloka(db: Session, day: str) -> Shloka | None:
 
     Seeded rows win when one exists for the exact day; past the seeded window
     the schedule cycles deterministically. Mirrors daily_word._select_word.
+    Paged books never feed the daily verse (handover_reading_shelf.md 6.4).
     """
-    row = db.query(Shloka).filter(Shloka.date == day).first()
+    row = db.query(Shloka).filter(Shloka.date == day, Shloka.in_daily.is_(True)).first()
     if row is not None:
         return row
 
     try:
         d = date.fromisoformat(day)
         offset = (d - _CYCLE_ANCHOR).days
-        rows = db.query(Shloka).order_by(Shloka.date.asc()).all()
+        rows = db.query(Shloka).filter(Shloka.in_daily.is_(True)).order_by(Shloka.date.asc()).all()
         if not rows:
             return None
         idx = offset % len(rows)
@@ -65,8 +66,14 @@ def _select_shloka(db: Session, day: str) -> Shloka | None:
         return None
 
 
-def _shloka_response(s: Shloka) -> ShlokaResponse:
+def _shloka_response(s: Shloka, chant_by_uid: dict | None = None) -> ShlokaResponse:
     """Map an ORM Shloka to the API shape (shared by list + today)."""
+    from app.config import settings as _settings
+    from app.services.chant_text import verse_uid as _uid
+    uid = getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")
+    chant = None
+    if chant_by_uid is not None and uid in chant_by_uid:
+        chant = chant_by_uid[uid]
     return ShlokaResponse(
         id=s.id,
         date=s.date,
@@ -79,7 +86,38 @@ def _shloka_response(s: Shloka) -> ShlokaResponse:
         audio_url=s.audio_url or "",
         translation_hi=s.translation_hi or "",
         translation_en=s.translation_en or "",
+        verse_uid=uid,
+        chant=chant,
     )
+
+
+def _chant_map(db, uids: list[str]) -> dict:
+    """Load served VerseAudio rows once into {verse_uid: ChantInfo}."""
+    from app.config import settings as _settings
+    from app.models import VerseAudio
+    if not uids:
+        return {}
+    statuses = [s.strip() for s in (_settings.chant_serve_statuses or "").split(",") if s.strip()]
+    rows = (
+        db.query(VerseAudio)
+        .filter(VerseAudio.verse_uid.in_(uids),
+                VerseAudio.voice == _settings.chant_voice,
+                VerseAudio.qc_status.in_(statuses) if statuses else True)
+        .all()
+    )
+    out: dict = {}
+    for r in rows:
+        try:
+            lines = [ChantLine(i=int(l.get("i", 0)), text=str(l.get("text", "")),
+                               kind=str(l.get("kind", "verse")),
+                               start_ms=int(l.get("start_ms", 0)),
+                               end_ms=int(l.get("end_ms", 0)))
+                     for l in (r.lines or [])]
+        except Exception:
+            lines = []
+        out[r.verse_uid] = ChantInfo(url=r.url or "", duration_ms=int(r.duration_ms or 0),
+                                     voice=r.voice or "", lines=lines)
+    return out
 
 
 @router.get("/shlokas", response_model=list[ShlokaResponse])
@@ -90,15 +128,22 @@ def list_shlokas(
     """The full reader corpus (U13/P21-1) in date order.
 
     Authenticated like /today (the reader rides on the same learner token).
-    Returns every verse with its word_breakdown — the reader's instrumentation.
+    Returns every classic verse with its word_breakdown — the reader's
+    instrumentation. Paged books are never listed here (6.4): they are served
+    one chapter at a time by GET /canon/{slug}/verses. Old phones then see
+    exactly today's list.
     No TTS, no LLM: reading is not metered (U13-3, P21).
     """
     rows = (
         db.query(Shloka)
+        .filter(Shloka.in_daily.is_(True))
         .order_by(Shloka.date.asc(), Shloka.id.asc())
         .all()
     )
-    return [_shloka_response(s) for s in rows]
+    from app.services.chant_text import verse_uid as _uid
+    uids = [(getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")) for s in rows]
+    cmap = _chant_map(db, uids)
+    return [_shloka_response(s, cmap) for s in rows]
 
 
 @router.get("/shlokas/today", response_model=ShlokaResponse)
@@ -118,7 +163,9 @@ def get_today_shloka(
         # runway guard (P7-7) pages loudly on this before it happens.
         raise HTTPException(status_code=404, detail="No shloka available")
 
-    return _shloka_response(shloka)
+    from app.services.chant_text import verse_uid as _uid
+    uid = getattr(shloka, "verse_uid", "") or _uid(shloka.source_ref or "", shloka.devanagari or "")
+    return _shloka_response(shloka, _chant_map(db, [uid]))
 
 
 class ShlokaMeaning(BaseModel):
@@ -144,10 +191,20 @@ async def get_shloka_meaning(
     the row to everyone after. A verse the model was already asked about and
     could not read is not sent again. Never an error for a missing meaning:
     'none' and two empty strings, and the screen shows the verse without it.
+
+    A locked Plus verse answers 403 before any model call (6.7).
     """
     shloka = db.query(Shloka).filter(Shloka.id == shloka_id).first()
     if shloka is None:
         raise HTTPException(status_code=404, detail="No such shloka")
+
+    if getattr(shloka, "book", None):
+        from app.models import CanonText
+        from app.services import canon_access as _access
+
+        text = db.query(CanonText).filter(CanonText.slug == shloka.book).first()
+        if text is not None and not _access.verse_open(db, learner, text, shloka):
+            raise HTTPException(status_code=403, detail="Part of Plus")
 
     def _stored() -> tuple[str, str]:
         return (shloka.translation_en or "").strip(), (shloka.translation_hi or "").strip()

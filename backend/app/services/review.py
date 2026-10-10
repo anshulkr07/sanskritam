@@ -111,24 +111,27 @@ def schedule_review(db: Session, learner_id: str, item_key: str, kind: str,
 
 
 def due_items(db: Session, learner_id: str, now: datetime | None = None,
-              limit: int = 50) -> list[ReviewItem]:
+              limit: int = 50, kinds: list[str] | None = None) -> list[ReviewItem]:
     """Items whose due date has passed — oldest first."""
     moment = now or _utcnow()
-    rows = (
-        db.query(ReviewItem)
-        .filter(ReviewItem.learner_id == learner_id)
-        .order_by(ReviewItem.due_at)
-        .limit(limit * 3)
-        .all()
-    )
+    q = db.query(ReviewItem).filter(ReviewItem.learner_id == learner_id)
+    if kinds is not None:
+        q = q.filter(ReviewItem.kind.in_(kinds))
+    rows = q.order_by(ReviewItem.due_at).limit(limit * 3).all()
     return [r for r in rows if _as_aware(r.due_at) <= moment][:limit]
 
 
-def due_count(db: Session, learner_id: str, now: datetime | None = None) -> int:
+def due_count(db: Session, learner_id: str, now: datetime | None = None,
+              kinds: list[str] | None = None) -> int:
     moment = now or _utcnow()
+    q = db.query(ReviewItem.due_at, ReviewItem.kind).filter(
+        ReviewItem.learner_id == learner_id)
+    if kinds is not None:
+        q = q.filter(ReviewItem.kind.in_(kinds))
     n = 0
-    for (due_at,) in db.query(ReviewItem.due_at).filter(
-            ReviewItem.learner_id == learner_id).all():
+    for due_at, kind in q.all():
+        if kinds is not None and kind not in kinds:
+            continue
         if due_at is not None and _as_aware(due_at) <= moment:
             n += 1
     return n

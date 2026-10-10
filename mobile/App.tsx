@@ -67,6 +67,13 @@ import KalaChapterScreen from "./src/screens/KalaChapter";
 import KalaTopicScreen from "./src/screens/KalaTopic";
 import WordJourneyScreen from "./src/screens/WordJourney";
 import DoYouKnowScreen from "./src/screens/DoYouKnow";
+import ReciteScreen from "./src/screens/Recite";
+import RecitePickerScreen from "./src/screens/RecitePicker";
+import ContestScreen from "./src/screens/Contest";
+import ContestResultsScreen from "./src/screens/ContestResults";
+import MasterBoardScreen from "./src/screens/MasterBoard";
+import CertificateScreen from "./src/screens/Certificate";
+import ContestRulesScreen from "./src/screens/ContestRules";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -150,6 +157,14 @@ function RootNavigator() {
             <Stack.Screen name="WordJourney" component={WordJourneyScreen} options={{ title: "Word journey" }} />
             {/* Do you know: the screen behind the Home fact card. */}
             <Stack.Screen name="DoYouKnow" component={DoYouKnowScreen} options={{ title: "Do you know" }} />
+            {/* Recite + competitions */}
+            <Stack.Screen name="Recite" component={ReciteScreen} options={{ title: "Learn" }} />
+            <Stack.Screen name="RecitePicker" component={RecitePickerScreen} options={{ title: "Recite" }} />
+            <Stack.Screen name="Contest" component={ContestScreen} options={{ title: "Competition" }} />
+            <Stack.Screen name="ContestResults" component={ContestResultsScreen} options={{ title: "Results" }} />
+            <Stack.Screen name="MasterBoard" component={MasterBoardScreen} options={{ title: "Master board" }} />
+            <Stack.Screen name="Certificate" component={CertificateScreen} options={{ title: "Certificate" }} />
+            <Stack.Screen name="ContestRules" component={ContestRulesScreen} options={{ title: "Rules" }} />
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

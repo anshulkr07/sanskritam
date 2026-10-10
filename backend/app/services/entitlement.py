@@ -50,8 +50,11 @@ ALWAYS_FREE = frozenset({
 
 # Explicitly premium future surfaces. Only these may ever answer False, and
 # only for the free tier. Open conversation is the metered tier (§12).
+# canon_plus gates the paged Plus shelf (owner decision 2026-10-09): the
+# first chapter of each Plus book stays open as a preview.
 PREMIUM_FEATURES = frozenset({
     "conversation_open",  # free-form talk with live synthesis — metered, premium
+    "canon_plus",  # Plus book chapters beyond the preview — paid, behind CANON_PLUS_GATE
 })
 
 VALID_TIERS = frozenset({"free", "plus", "institutional"})

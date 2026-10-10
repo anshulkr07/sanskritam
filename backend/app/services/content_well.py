@@ -37,10 +37,15 @@ MIN_APPROVED_SCENARIOS = 1
 def _future_rows(db: Session, model) -> int:
     """Count of seeded rows active today or later (distinct remaining days)."""
     today = datetime.date.today().isoformat()
+    if model is Shloka:
+        # Paged books never feed the daily verse or the runway (6.4).
+        return db.query(model).filter(model.date >= today, model.in_daily.is_(True)).count()
     return db.query(model).filter(model.date >= today).count()
 
 
 def _well_rows(db: Session, model) -> int:
+    if model is Shloka:
+        return db.query(model).filter(model.in_daily.is_(True)).count()
     return db.query(model).count()
 
 
@@ -74,7 +79,10 @@ def content_well_report(db: Session) -> dict:
     # Useful context: the seeded date span of each well, so a human can see
     # at a glance whether the well still has fresh content coming.
     for model, key in ((DailyWord, "daily_word"), (Shloka, "shloka")):
-        dates = sorted({r[0] for r in db.query(model.date).all()})
+        if model is Shloka:
+            dates = sorted({r[0] for r in db.query(model.date).filter(model.in_daily.is_(True)).all()})
+        else:
+            dates = sorted({r[0] for r in db.query(model.date).all()})
         if dates:
             wells[key]["dates_from"] = dates[0]
             wells[key]["dates_to"] = dates[-1]

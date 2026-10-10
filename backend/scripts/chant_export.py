@@ -2,7 +2,11 @@
 
 Usage:
     python -m scripts.chant_export --out ../gpu_jobs/chant_jobs.jsonl \
-        [--books "Bhagavad Gita,Hitopadesa"] [--sample 20] [--skip-served]
+        [--books "Bhagavad Gita,Hitopadesa"] [--sample 20] [--skip-served]         [--exclude-jobs ../gpu_jobs/chant_jobs.jsonl]
+
+--exclude-jobs leaves out every verse already in the named jobs file(s)
+(comma-separated): the way to export only what a render run has not seen, such
+as verses whose text changed after the run was exported, or books added since.
 
 Reads shlokas from the configured database (DATABASE_URL or local app.db).
 Writes one JSON line per verse: verse_uid, source_ref, book, vedic, lines.
@@ -105,12 +109,29 @@ def served_uids() -> set[str]:
         return set()
 
 
+def exclude_uids(paths: str) -> set[str]:
+    """verse_uids already in the given jobs files (comma-separated)."""
+    out: set[str] = set()
+    for p in (x.strip() for x in (paths or "").split(",")):
+        if not p:
+            continue
+        f = Path(p)
+        if not f.exists():
+            raise SystemExit(f"--exclude-jobs: no such file {p}")
+        for line in f.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                out.add(json.loads(line)["verse_uid"])
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
     ap.add_argument("--books", default="")
     ap.add_argument("--sample", type=int, default=0)
     ap.add_argument("--skip-served", action="store_true")
+    ap.add_argument("--exclude-jobs", default="",
+                    help="jobs file(s), comma-separated: skip verses already in them")
     args = ap.parse_args()
 
     from app.services.chant_text import chant_lines, verse_uid
@@ -122,6 +143,7 @@ def main() -> None:
 
     jobs: list[dict] = []
     served = served_uids() if args.skip_served else set()
+    served |= exclude_uids(args.exclude_jobs)
     for r in rows:
         ref = r["source_ref"] or ""
         dev = r["devanagari"] or ""
