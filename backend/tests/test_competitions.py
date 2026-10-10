@@ -150,3 +150,27 @@ def test_eligibility_counted_best_hold_publish(client, monkeypatch):
 def test_monthly_purge_cert_page(client):
     r = client.get("/certificates/NOPE123")
     assert r.status_code == 404
+
+
+def test_certificate_page_escapes_what_it_prints(client):
+    """The page is public by link; whatever is stored in a certificate row must come
+    out as text, never as markup (public names are validated today, this keeps it so)."""
+    from app.db import SessionLocal
+    from app.models import Certificate
+    _, tok = _login(client, "certesc")
+    from app.auth import get_learner_from_token
+    db = SessionLocal()
+    try:
+        learner = get_learner_from_token(tok, db)
+        db.add(Certificate(code="ESC12345", kind="competition",
+                           competition_id="<b>comp</b>", learner_id=learner.id, rank=1,
+                           public_name="<script>alert(1)</script>", piece_ref="Gita 1.1 & 1.2"))
+        db.commit()
+    finally:
+        db.close()
+    r = client.get("/certificates/ESC12345")
+    assert r.status_code == 200
+    assert "<script>" not in r.text and "<b>comp</b>" not in r.text
+    assert "&lt;script&gt;alert(1)&lt;/script&gt;" in r.text
+    assert "Gita 1.1 &amp; 1.2" in r.text
+    assert "First place" in r.text

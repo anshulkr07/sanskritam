@@ -41,7 +41,7 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "https://sa.wikisource.org",
      "CC BY-SA 4.0",
      "Transcriptions from Sanskrit Wikisource contributors (sa.wikisource.org), used under CC BY-SA 4.0.",
-     "The Īśopaniṣad, the Muṇḍaka completion and the 23 books: Viṣṇu Sahasranāma, Lalitā Sahasranāma, Saundarya Laharī, Śiva Tāṇḍava, Śiva Mahimna, Nārada Bhakti Sūtra, Devī Māhātmya, Bhāgavata Purāṇa, Śiva Purāṇa, Sāmaveda, Śukla Yajurveda, Atharvaveda kāṇḍas 19-20, Kena, Praśna, Raghuvaṃśa, Abhijñānaśākuntala, Gītagovinda, Vetāla Pañcaviṃśati, Yoga Sūtra, Aṣṭāvakra Gītā, Suśruta Saṃhitā, Amarakośa, Chāṇakya Nīti."),
+     "The Īśopaniṣad, and the books Yoga Sūtra, Aṣṭāvakra Gītā and Nārada Bhakti Sūtra. Further books are added to this line when they are added to the shelf."),
     ("public-domain",
      "Public-domain Sanskrit sources",
      "",
@@ -53,7 +53,7 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "https://www.sanskrit-linguistics.org/dcs/",
      "CC BY 4.0",
      "Text and data from the Digital Corpus of Sanskrit by Oliver Hellwig (2010-2021), used under CC BY 4.0. English glosses induced from Mitrasaṃgraha translations (see mitrasamgraha).",
-     "Frequency-ranked vocabulary headwords (Devanagari via lipi) for the P22-5 expansion; the 10 books (Ṛgveda, Atharvaveda kāṇḍas 1-18, Taittirīya, Aitareya, Śvetāśvatara, Chāndogya, Bṛhadāraṇyaka, Meghadūta, Kumārasambhava, Haṭhayogapradīpikā), the Kaṭha completion and the Mahābhārata selections."),
+     "Frequency-ranked vocabulary headwords (Devanagari via lipi) for the P22-5 expansion; the Meghadūta; and the Mahābhārata verses (Vidura Nīti, Udyoga 33–34, numbered as in the BORI critical edition). Further books are added to this line when they are added to the shelf."),
     ("mitrasamgraha",
      "Mitrasaṃgraha Sanskrit–English bitext (Dharmamitra)",
      "https://github.com/dharmamitra/mitrasamgraha-dataset",
@@ -71,7 +71,7 @@ CONTENT_SOURCES: list[tuple[str, str, str, str, str, str]] = [
      "https://gretil.sub.uni-goettingen.de",
      "CC BY-NC-SA 4.0",
      "Texts from GRETIL, SUB Göttingen, used under CC BY-NC-SA 4.0 on the free shelf.",
-     "Garuḍa Purāṇa, Arthaśāstra, Līlāvatī."),
+     "The wording and numbering of verses from the Kaṭhopaniṣad, Nītiśataka, Vairāgyaśataka, Śṛṅgāraśataka and Pañcatantra. The free-shelf books Garuḍa Purāṇa, Arthaśāstra and Līlāvatī are added to this line when they are added to the shelf."),
     # The URL was github.com/don-cross/astronomy-engine, which is a 404. The
     # project lives at cosinekitty/astronomy (its own package metadata, and
     # the page itself, checked 2026-10-01). The app now bundles the JavaScript
