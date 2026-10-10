@@ -9,7 +9,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import type { RootStackParamList } from "../navigation/types";
 import { ApiError, api, uploadCompetitionAttempt, uploadRecite, type ReciteResult, type Shloka } from "../api/client";
-import { playClip } from "../services/speech";
+import { playClip, preloadClip } from "../services/speech";
 import { useQuery } from "../hooks/useQuery";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
@@ -47,6 +47,10 @@ export default function ReciteScreen({ navigation, route }: Props) {
   const [consent, setConsent] = useState(false);
   const [lineX3, setLineX3] = useState(false);
   const [speed, setSpeed] = useState(1);
+
+  useEffect(() => {
+    void preloadClip(verse?.chant?.url);
+  }, [verse?.chant?.url]);
 
   const recorder = useAudioRecorder({
     ...RecordingPresets.HIGH_QUALITY,

@@ -8,7 +8,7 @@
 // metre visualised as a rhythm strip. Palette evokes a manuscript.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, {
@@ -21,10 +21,11 @@ import Animated, {
 
 import { api, type Shloka, type WordBreakdown } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
-import { useNavigation } from "@react-navigation/native";
-import { cachedGet } from "../services/apiCache";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { cachedGet, peekCache } from "../services/apiCache";
 import { haptics } from "../services/haptics";
-import { playClip, speak } from "../services/speech";
+import { playClip, preloadClip, speak } from "../services/speech";
+import { SinglePlayback } from "../services/singlePlayback";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
@@ -146,10 +147,13 @@ function ShlokaSkeleton() {
 
 export default function ShlokaScreen() {
   const navigation = useNavigation();
-  const [shloka, setShloka] = useState<Shloka | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [shloka, setShloka] = useState<Shloka | null>(() => peekCache<Shloka>("shloka-today") ?? null);
+  const [loading, setLoading] = useState(() => peekCache("shloka-today") === undefined);
   const [loadFailed, setLoadFailed] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const [playError, setPlayError] = useState("");
+  const playback = useRef(new SinglePlayback()).current;
+  const mounted = useRef(true);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
   const [meaning, setMeaning] = useState<{ hi: string; en: string } | null>(null);
   const [meaningLoading, setMeaningLoading] = useState(false);
@@ -160,7 +164,7 @@ export default function ShlokaScreen() {
   useAskContext("shloka", shloka?.devanagari ?? "");
 
   const load = useCallback(() => {
-    setLoading(true);
+    setLoading(peekCache("shloka-today") === undefined);
     setLoadFailed(false);
     // Same key as Home's śloka card, so opening the card renders from memory.
     cachedGet("shloka-today", api.todayShloka)
@@ -194,27 +198,50 @@ export default function ShlokaScreen() {
     load();
   }, [load]);
 
+  useEffect(() => {
+    void preloadClip(shloka?.chant?.url || shloka?.audio_url);
+  }, [shloka?.chant?.url, shloka?.audio_url]);
+
+  useFocusEffect(useCallback(() => {
+    mounted.current = true;
+    setSpeaking(false);
+    setPlayedWord(null);
+    return () => {
+      mounted.current = false;
+      playback.stop();
+    };
+  }, [playback]));
+
   const play = useCallback(async () => {
-    if (!shloka || speaking) return;
+    if (!shloka || playback.busy) return;
     haptics.tap();
+    setPlayError("");
     setSpeaking(true);
     try {
-      if (shloka.chant?.url) await playClip(shloka.chant.url);
-      else await speak(shloka.devanagari, "sa");
+      const recording = shloka.chant?.url || shloka.audio_url;
+      await playback.play((onComplete, signal) => recording
+        ? playClip(recording, onComplete, signal)
+        : speak(shloka.devanagari, "sa", 1, onComplete, undefined, signal));
+    } catch {
+      if (mounted.current) setPlayError("Couldn't play the verse. Tap to try again.");
     } finally {
-      setSpeaking(false);
+      if (mounted.current && !playback.busy) setSpeaking(false);
     }
-  }, [shloka, speaking]);
+  }, [shloka, playback]);
 
   const playWord = useCallback(async (word: string) => {
+    if (playback.busy) return;
     haptics.tap();
+    setPlayError("");
     setPlayedWord(word);
     try {
-      await speak(word, "sa");
+      await playback.play((onComplete, signal) => speak(word, "sa", 1, onComplete, undefined, signal));
+    } catch {
+      if (mounted.current) setPlayError("Couldn't play the word. Tap to try again.");
     } finally {
-      setPlayedWord(null);
+      if (mounted.current && !playback.busy) setPlayedWord(null);
     }
-  }, []);
+  }, [playback]);
 
   // Animate verse lines unfurling (splitting on newlines or sentence boundaries)
   const lines = shloka?.devanagari?.split(/\n|।\s*/).filter(Boolean) ?? [];
@@ -269,10 +296,10 @@ export default function ShlokaScreen() {
             <Pressable
               onPress={play}
               style={styles.playBtn}
-              disabled={speaking}
+              disabled={speaking || playedWord !== null}
               accessibilityRole="button"
               accessibilityLabel={speaking ? "Playing the verse" : "Play the verse aloud"}
-              accessibilityState={{ busy: speaking, disabled: speaking }}
+              accessibilityState={{ busy: speaking, disabled: speaking || playedWord !== null }}
             >
             {speaking ? (
               <Ionicons name="hourglass-outline" size={22} color={color.white} />
@@ -282,6 +309,8 @@ export default function ShlokaScreen() {
             </Pressable>
           </View>
         </View>
+
+        {!!playError && <Text accessibilityRole="alert" style={styles.meaningEn}>{playError}</Text>}
 
         {/* Verse — unfurling manuscript style */}
         <View style={styles.verseCard}>

@@ -2,10 +2,10 @@
 // The recorder is hook-based and lives in the talking-agent screen; this
 // module owns `speak()` and mode setup that is callable from any component.
 
-import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
+import { clearPreloadedSource, createAudioPlayer, preload, setAudioModeAsync } from "expo-audio";
 import { Platform } from "react-native";
 
-import type { TTSResponse } from "../api/client";
+import { TtsAudioCache } from "./ttsAudioCache";
 
 const IS_WEB = Platform.OS === "web";
 
@@ -50,6 +50,32 @@ export interface SpeakHandle {
   durationHint: number; // in seconds
 }
 
+let activePlayback: (() => void) | null = null;
+const preloadedClips = new Map<string, Promise<void>>();
+
+/** Buffer only recordings the learner is about to hear; never synthesise speculatively. */
+export async function preloadClip(url?: string): Promise<void> {
+  if (!url?.trim()) return;
+  const { BASE_URL } = await import("../config");
+  const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
+  const pending = preloadedClips.get(src);
+  if (pending) return pending;
+  const loading = Promise.resolve().then(() => preload(src)).catch(() => {
+    if (preloadedClips.get(src) === loading) preloadedClips.delete(src);
+  });
+  preloadedClips.set(src, loading);
+  // Keep only three nearby clips, including buffers retained by Android/web.
+  if (preloadedClips.size > 3) {
+    const oldest = preloadedClips.keys().next().value!;
+    const ready = preloadedClips.get(oldest)!;
+    preloadedClips.delete(oldest);
+    void ready.then(() => {
+      if (!preloadedClips.has(oldest)) return clearPreloadedSource(oldest);
+    }).catch(() => {});
+  }
+  return loading;
+}
+
 export async function setPlaybackMode(): Promise<void> {
   if (IS_WEB) return;
   try {
@@ -72,16 +98,25 @@ function playSource(
   durationHint: number,
   onComplete?: () => void,
   onStart?: (durationMs: number) => void,
+  signal?: AbortSignal,
 ): SpeakHandle {
+  if (signal?.aborted) throw new Error("Playback cancelled");
+  activePlayback?.();
   const player = createAudioPlayer(src);
+  // iOS transfers the preloaded source to the player; it can be warmed again.
+  if (Platform.OS === "ios") preloadedClips.delete(src);
 
   let started = false;
   let finished = false;
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
+  let sub: { remove(): void } | null = null;
 
   const cleanup = () => {
     if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
-    try { sub.remove(); } catch { /* already gone */ }
+    try { sub?.remove(); } catch { /* already gone */ }
+    try { player.pause(); } catch { /* already gone */ }
+    try { player.remove(); } catch { /* already gone */ }
+    if (activePlayback === finish) activePlayback = null;
   };
   const finish = () => {
     if (finished) return;
@@ -90,25 +125,43 @@ function playSource(
     onComplete?.();
   };
 
-  const sub = player.addListener("playbackStatusUpdate", (st) => {
+  const armTimeout = (seconds: number) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(finish, (seconds + 3) * 1000);
+  };
+
+  sub = player.addListener("playbackStatusUpdate", (st) => {
+    if (finished) return;
     // "Audible", not "asked to play": loading a clip takes a few hundred ms
     // and a mouth started at call time runs that far ahead of the voice.
     if (!started && st.isLoaded && st.playing && st.currentTime > 0) {
       started = true;
       onStart?.((st.duration > 0 ? st.duration : durationHint) * 1000);
     }
+    // A clip's duration is unknown at creation. Keep the backstop beyond its
+    // actual remaining time instead of treating every verse as a 2-second clip.
+    if (st.isLoaded && st.duration > 0) {
+      armTimeout(Math.max(0, st.duration - st.currentTime));
+    }
     if (st.didJustFinish) finish();
   });
 
-  player.play();
-  // Backstop, in case the status listener never lands.
-  timeoutId = setTimeout(finish, (durationHint + 3) * 1000);
+  activePlayback = finish;
+  try {
+    // Allow a slow download before we have a duration/status to work with.
+    armTimeout(Math.max(30, durationHint));
+    player.play();
+  } catch (error) {
+    finished = true;
+    cleanup();
+    throw error;
+  }
 
   return {
     stop: async () => {
+      if (finished) return;
       finished = true;
       cleanup();
-      try { player.pause(); } catch { /* already ended */ }
     },
     durationHint,
   };
@@ -117,12 +170,7 @@ function playSource(
 /** ~0.08 s per character — only ever a fallback; the player reports the truth. */
 const hintFor = (text: string) => Math.max(1, text.length * 0.08);
 
-// Short strings (a letter, a word) are spoken again and again: every tap on a
-// varṇa used to be a fresh ~900 ms synthesis round trip that also spent
-// quota. Keep the last few in memory so a repeat tap is instant and free.
-const TTS_CACHE_MAX_CHARS = 16;
-const TTS_CACHE_MAX_ENTRIES = 80;
-const ttsCache = new Map<string, TTSResponse>();
+const ttsCache = new TtsAudioCache();
 
 export async function speak(
   text: string,
@@ -130,28 +178,21 @@ export async function speak(
   pace = 1.0,
   onComplete?: () => void,
   onStart?: (durationMs: number) => void,
+  signal?: AbortSignal,
 ): Promise<SpeakHandle> {
-  await setPlaybackMode();
-  const cacheable = text.length <= TTS_CACHE_MAX_CHARS;
-  const key = `${bulbulLangCode(lang)}|${pace}|${text}`;
-  let res = cacheable ? ttsCache.get(key) : undefined;
-  if (!res) {
+  if (signal?.aborted) throw new Error("Playback cancelled");
+  const language = bulbulLangCode(lang);
+  const key = JSON.stringify([language, "aditya", pace, text]);
+  const [, res] = await Promise.all([setPlaybackMode(), ttsCache.get(key, async () => {
     const { api } = await import("../api/client");
-    const fresh = await api.tts(text, bulbulLangCode(lang), "aditya", pace);
-    if (cacheable && fresh?.audio_base64) {
-      ttsCache.set(key, fresh);
-      if (ttsCache.size > TTS_CACHE_MAX_ENTRIES) {
-        const oldest = ttsCache.keys().next().value;
-        if (oldest !== undefined) ttsCache.delete(oldest);
-      }
-    }
-    res = fresh;
-  }
+    return api.tts(text, language, "aditya", pace);
+  })]);
   return playSource(
     `data:audio/wav;base64,${res.audio_base64}`,
     res.duration_hint || hintFor(text),
     onComplete,
     onStart,
+    signal,
   );
 }
 
@@ -176,6 +217,9 @@ export async function playTutorAudio(
   onStart?: (durationMs: number) => void,
   audioBase64?: string,
 ): Promise<SpeakHandle> {
+  if (!audioBase64?.trim() && !url?.trim()) {
+    return speak(text, lang, 1.0, onComplete, onStart);
+  }
   await setPlaybackMode();
 
   if (audioBase64 && audioBase64.trim()) {
@@ -230,11 +274,11 @@ export async function playLetter(
   lang: SpeakLang | string = "sa",
   onComplete?: () => void,
 ): Promise<SpeakHandle> {
-  await setPlaybackMode();
   if (url && url.trim()) {
     const { BASE_URL } = await import("../config");
     const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
-    if (await clipExists(src)) return playSource(src, 1.5, onComplete);
+    const [, exists] = await Promise.all([setPlaybackMode(), clipExists(src)]);
+    if (exists) return playSource(src, 1.5, onComplete);
   }
   return speak(text, lang, 1.0, onComplete);
 }
@@ -244,12 +288,12 @@ export async function playLetter(
  * live-TTS fallback — the guide only shows a speaker when a clip exists, so a
  * missing file stays silent instead of spending a synthesis call.
  */
-export async function playClip(url: string, onComplete?: () => void): Promise<SpeakHandle | null> {
+export async function playClip(url: string, onComplete?: () => void, signal?: AbortSignal): Promise<SpeakHandle | null> {
   if (!url || !url.trim()) return null;
   await setPlaybackMode();
   const { BASE_URL } = await import("../config");
   const src = url.startsWith("http") ? url : `${BASE_URL}${url}`;
-  return playSource(src, 2, onComplete);
+  return playSource(src, 2, onComplete, undefined, signal);
 }
 
 export default { speak, playLetter, playTutorAudio, playClip, setPlaybackMode, bulbulLangCode };

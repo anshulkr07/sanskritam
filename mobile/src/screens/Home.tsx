@@ -24,6 +24,7 @@ import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
 import { cachedGet } from "../services/apiCache";
+import { preloadClip } from "../services/speech";
 import { useAskContext } from "../ask/AskProvider";
 import TithiCard from "../kala/TithiCard";
 import WordCard from "../words/WordCard";
@@ -71,6 +72,7 @@ export default function HomeScreen({ navigation }: Props) {
       .then((s) => {
         setShloka(s);
         setShlokaState("ok");
+        void preloadClip(s.chant?.url || s.audio_url);
       })
       .catch(() => setShlokaState("error"));
   }, []);

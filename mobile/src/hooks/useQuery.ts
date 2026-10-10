@@ -14,7 +14,7 @@
 import React from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
-import { cachedGet } from "../services/apiCache";
+import { cachedGet, peekCache } from "../services/apiCache";
 
 export interface QueryResult<T> {
   data: T | null;
@@ -28,31 +28,40 @@ export function useQuery<T>(
   fetcher: () => Promise<T>,
   opts?: { refetchOnFocus?: boolean; ttlMs?: number },
 ): QueryResult<T> {
-  const [data, setData] = React.useState<T | null>(null);
-  const [loading, setLoading] = React.useState(true);
-  const [failed, setFailed] = React.useState(false);
+  const ttlMs = opts?.ttlMs;
+  const cached = peekCache<T>(key, ttlMs);
+  const [state, setState] = React.useState<{
+    key: string; data: T | null; loading: boolean; failed: boolean;
+  }>(() => ({
+    key, data: cached ?? null, loading: cached === undefined, failed: false,
+  }));
   const [nonce, setNonce] = React.useState(0);
   const fetcherRef = React.useRef(fetcher);
   fetcherRef.current = fetcher;
 
   const refetchOnFocus = opts?.refetchOnFocus ?? false;
-  const ttlMs = opts?.ttlMs;
 
   const run = React.useCallback(() => {
     let cancelled = false;
-    setLoading(true);
-    setFailed(false);
+    const hit = peekCache<T>(key, ttlMs);
+    if (hit !== undefined) {
+      setState({ key, data: hit, loading: false, failed: false });
+      return () => { cancelled = true; };
+    }
+    setState((prev) => ({
+      key,
+      data: prev.key === key ? prev.data : null,
+      loading: prev.key !== key || prev.data === null,
+      failed: false,
+    }));
     cachedGet(key, () => fetcherRef.current(), ttlMs).then(
       (d) => {
         if (cancelled) return;
-        setData(d);
-        setLoading(false);
+        setState({ key, data: d, loading: false, failed: false });
       },
       () => {
         if (cancelled) return;
-        setData(null);
-        setFailed(true);
-        setLoading(false);
+        setState({ key, data: null, loading: false, failed: true });
       },
     );
     return () => {
@@ -78,5 +87,10 @@ export function useQuery<T>(
 
   const retry = React.useCallback(() => setNonce((n) => n + 1), []);
 
-  return { data, loading, failed, retry };
+  // A new key must never briefly show the previous book/chapter's data while
+  // its effect is waiting to run. A cached destination renders on this frame.
+  const shown = state.key === key ? state : {
+    data: cached ?? null, loading: cached === undefined, failed: false,
+  };
+  return { data: shown.data, loading: shown.loading, failed: shown.failed, retry };
 }
