@@ -1,0 +1,162 @@
+// Parva list: by month, next 60 days then Load more to 120.
+// Filters: All, Vrats, Festivals. Plain text tabs, not pills.
+
+import { useNavigation } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+import { useAskContext } from "../ask/AskProvider";
+import { t, useLang } from "../i18n";
+import { getKalaPrefs } from "../kala/prefs";
+import { resolvePlace } from "../kala/useToday";
+import { getPlace } from "../services/place";
+import { getParvaCalendar } from "../parva/cache";
+import type { ParvaOccurrence } from "../parva/api";
+import { PARVA_DAYS_AHEAD, PARVA_MAX_DAYS, parvaCalendar } from "../parva/api";
+import { color, font, space } from "../theme";
+import { plain } from "../utils/text";
+
+type Filter = "all" | "vrats" | "festivals";
+
+const VRAT_SLUGS = new Set(["ekadashi", "pradosh", "sankashti", "vinayaka_chaturthi", "masik_shivaratri", "masik_durgashtami", "purnima", "amavasya", "karwa_chauth", "chhath"]);
+
+export default function ParvaScreen() {
+  useLang();
+  const nav = useNavigation() as unknown as { navigate: (r: string, p?: object) => void };
+  const [occs, setOccs] = useState<ParvaOccurrence[]>([]);
+  const [failed, setFailed] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [days, setDays] = useState(PARVA_DAYS_AHEAD);
+  const [filter, setFilter] = useState<Filter>("all");
+
+  useAskContext("parva", "festivals");
+
+  const load = useCallback(async (d: number) => {
+    setLoading(true);
+    setFailed(false);
+    try {
+      const prefs = getKalaPrefs();
+      const stored = await getPlace().catch(() => null);
+      const { place } = resolvePlace(
+        stored ? { lat: stored.lat, lon: stored.lon, tz: stored.tz, label: stored.label } : null,
+        prefs.tradition,
+      );
+      let today = new Date().toISOString().slice(0, 10);
+      try {
+        today = new Intl.DateTimeFormat("en-CA", { timeZone: place.tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      } catch {
+        /* keep */
+      }
+      const data =
+        (await getParvaCalendar(
+          { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang: "en" },
+          { start: today, days: d, tz: place.tz, label: place.label },
+        )) ??
+        (await parvaCalendar({
+          start: today,
+          days: d,
+          lat: Math.round(place.lat * 10) / 10,
+          lon: Math.round(place.lon * 10) / 10,
+          tz: place.tz,
+          tradition: prefs.tradition,
+          lang: "en",
+        }));
+      setOccs(data?.occurrences ?? []);
+    } catch {
+      setFailed(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void load(days);
+  }, [days, load]);
+
+  const shown = occs.filter((o) => {
+    if (filter === "all") return true;
+    if (filter === "vrats") return VRAT_SLUGS.has(o.slug);
+    return !VRAT_SLUGS.has(o.slug);
+  });
+
+  return (
+    <View style={styles.page}>
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <Text style={styles.title} accessibilityRole="header">{t("parva.title")}</Text>
+        <View style={styles.tabs}>
+          {(
+            [
+              ["all", t("parva.filterAll")],
+              ["vrats", t("parva.filterVrats")],
+              ["festivals", t("parva.filterFestivals")],
+            ] as [Filter, string][]
+          ).map(([k, label]) => (
+            <Pressable
+              key={k}
+              onPress={() => setFilter(k)}
+              accessibilityRole="button"
+              accessibilityLabel={label}
+              accessibilityState={{ selected: filter === k }}
+              style={styles.tabHit}
+            >
+              <Text style={[styles.tab, filter === k && styles.tabOn]}>{label}</Text>
+            </Pressable>
+          ))}
+        </View>
+        {loading && occs.length === 0 ? (
+          <Text style={styles.muted}>Loading.</Text>
+        ) : failed && occs.length === 0 ? (
+          <Pressable onPress={() => void load(days)} accessibilityRole="button" accessibilityLabel={t("parva.retry")} style={styles.retryHit}>
+            <Text style={styles.muted}>{t("parva.retry")}</Text>
+          </Pressable>
+        ) : shown.length === 0 ? (
+          <Text style={styles.muted}>{t("parva.empty", { days })}</Text>
+        ) : (
+          shown.map((o) => (
+            <Pressable
+              key={`${o.slug}_${o.variant}_${o.date}`}
+              onPress={() => nav.navigate("ParvaPage", { slug: o.slug, variant: o.variant, date: o.date ?? undefined })}
+              style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+              accessibilityRole="button"
+              accessibilityLabel={`${o.title}. ${o.date ?? ""}`}
+            >
+              <View style={styles.rowText}>
+                <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>
+                <Text style={styles.rowMeta} numberOfLines={1}>{o.date ?? ""}</Text>
+              </View>
+            </Pressable>
+          ))
+        )}
+        {days < PARVA_MAX_DAYS && (
+          <Pressable
+            onPress={() => setDays(PARVA_MAX_DAYS)}
+            accessibilityRole="button"
+            accessibilityLabel={t("parva.loadMore")}
+            style={styles.moreHit}
+          >
+            <Text style={styles.more}>{t("parva.loadMore")}</Text>
+          </Pressable>
+        )}
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  page: { flex: 1, backgroundColor: color.bg },
+  body: { paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: 120 },
+  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink, marginBottom: space.xs },
+  tabs: { flexDirection: "row", gap: space.md, marginBottom: space.sm },
+  tabHit: { minWidth: 44, minHeight: 44, justifyContent: "center" },
+  tab: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
+  tabOn: { color: color.ink, textDecorationLine: "underline" },
+  row: { minHeight: 56, justifyContent: "center", paddingVertical: space.xs, borderTopWidth: 1, borderTopColor: color.border },
+  pressed: { opacity: 0.85 },
+  rowText: { gap: 2 },
+  rowTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
+  rowMeta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
+  muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft },
+  retryHit: { minHeight: 44, justifyContent: "center" },
+  moreHit: { minHeight: 48, alignItems: "center", justifyContent: "center", marginTop: space.sm },
+  more: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
+});

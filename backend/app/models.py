@@ -1350,3 +1350,52 @@ class VerseVector(Base):
     text_hash = Column(String(64), nullable=False)
     vec = Column(LargeBinary, nullable=False)
     updated_at = Column(DateTime, default=_utcnow)
+
+
+class ParvaPage(Base):
+    """One festival page version (handover_festivals 7.1, 8.3).
+
+    (`slug`, `variant`, `lang`, `version`) is unique. Withdrawn rows are kept,
+    never deleted. `body` is the 8.3 JSON; `sources` lists
+    {text_name, ref, url, read_on}. Only versions whose status is served
+    (config `parva_serve_statuses`, default ["approved"]) are returned.
+    """
+
+    __tablename__ = "parva_pages"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    slug = Column(String(64), nullable=False, index=True)
+    variant = Column(String(64), nullable=False, default="")
+    lang = Column(String(5), nullable=False, default="en")
+    version = Column(Integer, nullable=False, default=1)
+    body = Column(JSON, nullable=False, default=dict)
+    sources = Column(JSON, nullable=False, default=list)
+    status = Column(String(12), nullable=False, default="draft", index=True)
+    checked_on = Column(String(10), nullable=False, default="")
+    approved_on = Column(String(10), nullable=False, default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("slug", "variant", "lang", "version", name="uq_parva_page_slug_variant_lang_version"),
+    )
+
+
+class ParvaArt(Base):
+    """One painting for a festival page (handover_festivals 7.1, 9.2).
+
+    `key` e.g. `navadurga_shailaputri`. `checklist` is the iconography list
+    from the dhyana verse with its source. Only `approved` rows are served
+    (config `parva_art_serve_statuses`). The owner approves after checking
+    the painting against its list.
+    """
+
+    __tablename__ = "parva_art"
+
+    key = Column(String(64), primary_key=True)
+    url = Column(String(512), nullable=False, default="")
+    width = Column(Integer, nullable=False, default=0)
+    height = Column(Integer, nullable=False, default=0)
+    prompt = Column(Text, nullable=False, default="")
+    checklist = Column(JSON, nullable=False, default=list)
+    status = Column(String(12), nullable=False, default="draft")
+    created_at = Column(DateTime, default=_utcnow)

@@ -369,6 +369,12 @@ class Settings(BaseSettings):
     # for a coupled A/B against the `[perf] turn` lines the client logs.
     conversation_inline_audio: bool = False
 
+    # Parva festivals (handover_festivals 7.2): which page and painting
+    # statuses are served, and how far ahead the calendar may be asked for.
+    parva_serve_statuses: str = "approved"
+    parva_art_serve_statuses: str = "approved"
+    parva_max_days: int = 120
+
     # Recite + competitions (handover_recite 8.1, 11.9).
     env: str = "dev"
     scorer_url: str = ""

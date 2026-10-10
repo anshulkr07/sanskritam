@@ -159,6 +159,20 @@ export default function KalaScreen({ navigation }: Props) {
           ))}
         </ScrollView>
 
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            (navigation as unknown as { navigate: (r: string) => void }).navigate("Parva");
+          }}
+          style={({ pressed }) => [styles.parvaRow, pressed && styles.pressed]}
+          accessibilityRole="button"
+          accessibilityLabel="Festivals and vrats"
+        >
+          <Ionicons name="moon-outline" size={18} color={color.ink} />
+          <Text style={styles.parvaText} numberOfLines={1}>Festivals and vrats</Text>
+          <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
+        </Pressable>
+
         <SectionLabel>Six chapters</SectionLabel>
         <View style={styles.grid}>
           {CHAPTERS.map((c) => (
@@ -325,6 +339,8 @@ const styles = StyleSheet.create({
   tileWord: { color: onFill.soft },
   tileStat: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12.5, marginTop: "auto", paddingTop: space.xs },
 
+  parvaRow: { flexDirection: "row", alignItems: "center", gap: space.xs, minHeight: 48, marginBottom: space.xs },
+  parvaText: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 15, color: color.ink },
   deeper: { flexDirection: "row", alignItems: "center", gap: space.sm, borderRadius: 16, padding: space.md, backgroundColor: fill.ink, minHeight: 64 },
   deeperText: { flex: 1, minWidth: 0 },
   deeperTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 0.9, textTransform: "uppercase", color: onFill.gold },

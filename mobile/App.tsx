@@ -65,6 +65,8 @@ import PracticeRoundScreen from "./src/screens/PracticeRound";
 import KalaScreen from "./src/screens/Kala";
 import KalaChapterScreen from "./src/screens/KalaChapter";
 import KalaTopicScreen from "./src/screens/KalaTopic";
+import ParvaScreen from "./src/screens/Parva";
+import ParvaPageScreen from "./src/screens/ParvaPage";
 import WordJourneyScreen from "./src/screens/WordJourney";
 import DoYouKnowScreen from "./src/screens/DoYouKnow";
 import ReciteScreen from "./src/screens/Recite";
@@ -149,6 +151,9 @@ function RootNavigator() {
             <Stack.Screen name="Smriti" component={SmritiScreen} options={{ headerShown: false }} />
             <Stack.Screen name="VarnaJaal" component={VarnaJaalScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PracticeRound" component={PracticeRoundScreen} options={{ headerShown: false }} />
+            {/* Parva: festivals and vrats. */}
+            <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />
+            <Stack.Screen name="ParvaPage" component={ParvaPageScreen} options={{ title: "Festival" }} />
             {/* Kāla: the calendar hub behind the Home date card, its basics cards and its chapters. */}
             <Stack.Screen name="Kala" component={KalaScreen} options={{ title: "Kāla" }} />
             <Stack.Screen name="KalaTopic" component={KalaTopicScreen} options={{ title: "Kāla" }} />

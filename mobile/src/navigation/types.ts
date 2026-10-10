@@ -76,6 +76,9 @@ export type RootStackParamList = {
   Smriti: { set?: string; size?: number; daily?: boolean } | undefined;
   VarnaJaal: { daily?: boolean } | undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };
+  // Parva: festivals and vrats. List plus one page per observance.
+  Parva: undefined;
+  ParvaPage: { slug: string; variant?: string; date?: string };
   // Kāla: time as Sanskrit counts it. The hub behind the Home date card, and
   // one screen that shows whichever of its six chapters is asked for.
   Kala: undefined;

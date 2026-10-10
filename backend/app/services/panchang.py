@@ -236,18 +236,25 @@ def _next_crossing(
     period: float,
     limit_days: float = 2.0,
 ) -> datetime:
-    """Bisect the next time `value` (rising through `period`) hits `boundary`."""
+    """Bisect the next time `value` (rising through `period`) hits `boundary`.
+
+    The distance run is taken modulo `period`, so a wrap past 360 inside the
+    window is a normal crossing (the phone engine `mobile/src/kala/engine.ts`
+    `nextCrossing` does the same). The window always holds the crossing for
+    nakshatra and yoga (13 deg 20 min at 12 to 15 deg a day); when it does
+    not, the window is extended rather than guessed.
+    """
     lo = start_utc
-    lo_v = value(lo)
-    span = (boundary - (lo_v % period)) % period
+    lo_v = value(lo) % period
+    span = (boundary - lo_v) % period
     if span < 1e-9:
         span = period
-    # Mean rate over one span: robust to the Moon's uneven speed.
     hi = lo + timedelta(days=limit_days)
-    rate = (value(hi) - lo_v) / limit_days
-    if rate <= 0:
-        return lo + timedelta(days=span / 13.0)
-    hi = lo + timedelta(days=span / rate + 0.2)
+    for _ in range(5):
+        run = (value(hi) - lo_v) % period
+        if run >= span:
+            break
+        hi = hi + timedelta(days=limit_days)
     for _ in range(60):
         mid = lo + (hi - lo) / 2
         if (value(mid) - lo_v) % period >= span:
@@ -381,12 +388,34 @@ def day(day_local: date, place: dict) -> dict:
 
 
 def samvat(day_local: date, place: dict) -> tuple[int, int]:
-    """(Vikram Samvat, Shaka) for a learner-local date (Chaitradi new year)."""
+    """(Vikram Samvat, Shaka) for a learner-local date (Chaitradi new year).
+
+    The year turns at Chaitra Shukla Pratipada worked out from the lunations,
+    not at a fixed 22 March and not through `festival("ugadi")` (which is
+    unshipped). When the year holds two Chaitras the year turns at the first
+    of the two, as the phone engine does.
+    """
     gy = day_local.year
+    start: Optional[date] = None
     try:
-        ugadi = festival("ugadi", gy, place)
-        start = ugadi if isinstance(ugadi, date) else ugadi[0]
+        tzname = place.get("tz") or "Asia/Kolkata"
+        zone = _zone(tzname)
+        for nm in _lunations(gy, place):
+            try:
+                m, _sign = amanta_month(nm)
+            except Exception:
+                continue
+            if m == "Chaitra":
+                start = nm.astimezone(zone).date()
+                break
     except Exception:
+        start = None
+    if start is None:
+        try:
+            start = _tithi_begin_date(gy, place, "Chaitra", "Shukla", 1)
+        except Exception:
+            start = None
+    if start is None:
         start = date(gy, 3, 22)
     vs = gy + 57 if day_local >= start else gy + 56
     return vs, vs - 135
@@ -604,7 +633,12 @@ def _dates_for_tithi(
     hits: list[date] = []
     for nm in _lunations(year, place):
         m, sign = amanta_month(nm)
-        nm_next = _time_to_utc(astronomy.SearchMoonPhase(0.0, _utc_to_time(nm), 32.0))
+        # Search from a day after the opening new moon: SearchMoonPhase from
+        # the exact instant sometimes returns the same instant (2027-03-08),
+        # which would misread every month as adhika.
+        nm_next = _time_to_utc(
+            astronomy.SearchMoonPhase(0.0, _utc_to_time(nm + timedelta(days=1)), 32.0)
+        )
         _, sign_next = amanta_month(nm_next)
         if m != month or sign_next == sign:
             continue
@@ -642,7 +676,9 @@ def _tithi_begin_date(year: int, place: dict, month: str, paksha: str, number: i
     for nm in _lunations(year, place):
         m, sign = amanta_month(nm)
         try:
-            nm_next = _time_to_utc(astronomy.SearchMoonPhase(0.0, _utc_to_time(nm), 32.0))
+            nm_next = _time_to_utc(
+                astronomy.SearchMoonPhase(0.0, _utc_to_time(nm + timedelta(days=1)), 32.0)
+            )
         except Exception:
             continue
         _, sign_next = amanta_month(nm_next)

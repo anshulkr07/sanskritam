@@ -30,6 +30,8 @@ import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
 import { firstName } from "../utils/name";
 import PlaceChooser from "../components/PlaceChooser";
 import { getPlace, type Place } from "../services/place";
+import { getLang, setLang, t } from "../i18n";
+import { ensurePermission, isRemindUnavailable } from "../parva/reminders";
 import { applyAppUpdate, checkForAppUpdate } from "../services/ota";
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -73,6 +75,8 @@ export default function SettingsScreen() {
   const [placeOpen, setPlaceOpen] = useState(false);
   const [checkingUpdate, setCheckingUpdate] = useState(false);
   const [updateStatus, setUpdateStatus] = useState<string | null>(null);
+  const [lang, setLangState] = useState<"en" | "hi">(getLang());
+  const [remindOff, setRemindOff] = useState(false);
 
   useEffect(() => {
     pref(SOUND_KEY).then(setSound);
@@ -81,6 +85,7 @@ export default function SettingsScreen() {
       setReduced(isReducedMotionOverride());
     });
     void getPlace().then(setPlaceState);
+    void isRemindUnavailable().then(setRemindOff);
   }, []);
 
   useFocusEffect(
@@ -224,6 +229,39 @@ export default function SettingsScreen() {
               );
             })}
           </View>
+        </Section>
+
+        <Section title={t("parva.language")}>
+          <View style={styles.row}>
+            <Text style={styles.rowLabel}>{t("parva.language")}</Text>
+            {(["en", "hi"] as const).map((l) => (
+              <Pressable
+                key={l}
+                onPress={() => {
+                  setLang(l);
+                  setLangState(l);
+                }}
+                style={[styles.sizer, lang === l && styles.sizerOn]}
+                accessibilityRole="button"
+                accessibilityLabel={l === "en" ? "English" : "हिन्दी"}
+                accessibilityState={{ selected: lang === l }}
+              >
+                <Text style={[styles.sizerText, lang === l && styles.sizerTextOn]}>{l === "en" ? "English" : "हिन्दी"}</Text>
+              </Pressable>
+            ))}
+          </View>
+          <Text style={styles.note}>{t("parva.languageNote")}</Text>
+          {!remindOff && (
+            <Pressable
+              onPress={() => void ensurePermission().then((ok) => setRemindOff(!ok))}
+              style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
+              accessibilityRole="button"
+              accessibilityLabel={t("parva.remindersRow")}
+            >
+              <Text style={styles.rowLabel}>{t("parva.remindersRow")}</Text>
+              <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
+            </Pressable>
+          )}
         </Section>
 
         <Section title="Place">

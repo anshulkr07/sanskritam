@@ -27,6 +27,7 @@ import { cachedGet } from "../services/apiCache";
 import { preloadClip } from "../services/speech";
 import { useAskContext } from "../ask/AskProvider";
 import TithiCard from "../kala/TithiCard";
+import ParvaStrip from "../components/parva/ParvaStrip";
 import WordCard from "../words/WordCard";
 import FactCard from "../facts/FactCard";
 import { haptics } from "../services/haptics";
@@ -169,6 +170,8 @@ export default function HomeScreen({ navigation }: Props) {
           <Text style={styles.section}>Daily</Text>
           {/* Today's date in the learner's calendar, worked out on the phone. */}
           <TithiCard />
+          {/* Festivals today and coming up. Hides itself on 404 or offline. */}
+          <ParvaStrip />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />
           {/* Today's "Do you know". Hides itself when there is no fact yet. */}
