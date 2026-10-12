@@ -1,0 +1,40 @@
+{
+  "name": "Approved Ramapathe voice and music reference",
+  "model_id": "music_v2_5",
+  "seed": 20261013,
+  "output_format": "mp3_44100_128",
+  "store_for_inpainting": true,
+  "reference_song_id": "GBdpvIsuxh0k5qwcLtQ7_upload",
+  "accepted_edit_song_id": "ED1LVldnXC8MzTHpnDtX",
+  "voice_id": null,
+  "context_adherence": "high",
+  "condition_strength": "xhigh",
+  "reference_ranges_ms": {
+    "hook": {"start_ms": 9820, "end_ms": 15020},
+    "verse": {"start_ms": 20300, "end_ms": 41780},
+    "outro": {"start_ms": 52450, "end_ms": 55000}
+  },
+  "positive_styles": [
+    "original Sanskrit devotional song",
+    "warm male vocals",
+    "acoustic guitar arpeggios",
+    "soft shaker",
+    "peaceful melodic singing",
+    "natural phrasing",
+    "clear Sanskrit diction"
+  ],
+  "negative_styles": ["spoken narration", "distortion", "extra lyrics"],
+  "reference_audio": "reference_audio/original_preview.mp3",
+  "approved_audio": "reference_audio/approved_complete.mp3",
+  "approved_lossless_master": "reference_audio/approved_complete.wav",
+  "original_generation": {
+    "model_id": "music_v2_5",
+    "seed": null,
+    "music_length_ms": 55000,
+    "force_instrumental": false,
+    "requested_bpm": 92,
+    "request_file": "original_request.json"
+  },
+  "accepted_edit_request_file": "accepted_edit_request.json",
+  "notes": "The seed belongs to the successful ending edit, not the original preview. Voice and music are preserved as reference audio, not a separately cloned voice or isolated backing track. New lyrics can produce different melody and singing even with these settings."
+}

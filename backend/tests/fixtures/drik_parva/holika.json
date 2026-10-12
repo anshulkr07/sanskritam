@@ -1,0 +1,17 @@
+{
+  "source": "Drik Panchang Holika pages and Holi pages (Kathmandu/Colombo/Houston renders for cross-check), read 2026-10-11 via webfetch/search. Rule status: UNSHIPPED, no principled Bhadra rule found.",
+  "urls": {
+    "holika": "https://www.drikpanchang.com/hindu-festivals/holi/holika-dahan.html",
+    "holi_2027": "https://www.drikpanchang.com/festivals/holi/festivals-holi-rangwali.html?year=2027"
+  },
+  "read_on": "2026-10-11",
+  "drik_dates": {
+    "2026": {"holika": "2026-03-03", "holi": "2026-03-04"},
+    "2027": {"holika": "2027-03-21", "holi": "2027-03-22",
+              "delhi_muhurat": "06:33 PM to 08:55 PM Mar 21",
+              "purnima_begins": "~06:30 PM Mar 21", "purnima_ends": "~04:15 PM Mar 22"},
+    "2028": {"holika": "2028-03-10", "holi": "2028-03-11"}
+  },
+  "puzzle": "2026 shifts for Bhadra (Mar 2 pradosh has Purnima but full Vishti; Drik Mar 3, whose pradosh holds no Purnima at all) while 2027 does not (Mar 21 pradosh has Purnima with full-evening Vishti per engine karana scan 18:32-20:52; Drik Mar 21 with muhurat 18:33-20:55 covering the whole pradosh). Max-Purnima-pradosh-overlap explains 2027 but not 2026; instant-plus-Bhadra-shift explains 2026 but not 2027. Leading hypothesis: Bhadra-vasa (residence) doctrine excuses the 2027 Bhadra but not 2026's; no opened source states it, so the rule stays out.",
+  "engine_today": "phase2 Holika (instant pradosh + Vishti-mid shift) gives Mar 2 + shift = Mar 3 for 2026 (matches by luck or rule), Mar 21 + shift = Mar 22 for 2027 (off by one vs Drik Mar 21)."
+}

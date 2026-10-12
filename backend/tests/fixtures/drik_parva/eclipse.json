@@ -1,0 +1,31 @@
+{
+  "source": "Drik Panchang lunar eclipse page for New Delhi + eclipse-kind rule prose, read 2026-10-11 via webfetch (text format). Region lists from search excerpts (timeanddate/Britannica) are corroboration, not fixtures.",
+  "urls": {
+    "mar3_2026_delhi": "https://www.drikpanchang.com/eclipse/lunar-eclipse-date-time-duration.html?date=03%2F03%2F2026&geoname-id=1261481"
+  },
+  "read_on": "2026-10-11",
+  "mar3_2026_delhi": {
+    "kind": "Total",
+    "penumbra_begin": "14:16", "umbra_begin": "15:21", "total_begin": "16:35",
+    "peak": "17:04", "total_end": "17:33", "umbra_end": "18:46", "penumbra_end": "19:52",
+    "moonrise": "18:26", "visible_span": ["18:26", "18:46"],
+    "sutak_begin": "09:39", "sutak_end": "18:46",
+    "kids_sutak": ["15:28", "18:46"],
+    "visible_cities": ["New Delhi", "Mumbai", "Kolkata", "Chennai", "Bengaluru", "Hyderabad", "Ahmedabad", "Bhubaneswar", "Patna", "Guwahati", "Imphal", "Shillong", "Kohima", "Itanagar"]
+  },
+  "rules_confirmed": [
+    "Penumbral lunar eclipses carry no sutak (Sutak Begins/Ends Not Applicable on the Feb 20 2027 penumbral page).",
+    "Sutak precautions apply only when the eclipse is visible in your city.",
+    "Sutak ends at the umbral end (18:46), not the penumbral end (19:52)."
+  ],
+  "open_items": [
+    "Sutak-BEGIN formula does not match any tried rule (begin-9h gives 05:16 vs Drik 09:39): grahan_sutak stays UNSHIPPED.",
+    "Aug 28 2026 partial lunar eclipse is not visible from Asia (region list): engine must emit nothing for Indian cities.",
+    "No India-visible solar eclipse in 2026-2028 per region lists; the solar path has zero positive cases to verify against."
+  ],
+  "engine_2026_2028_india": {
+    "2026": ["lunar 2026-03-03 (all three cities)"],
+    "2027": [],
+    "2028": []
+  }
+}

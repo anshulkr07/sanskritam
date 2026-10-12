@@ -1,0 +1,79 @@
+{
+  "model_id": "music_v2_5",
+  "composition_plan": {
+    "chunks": [
+      {
+        "song_id": "GBdpvIsuxh0k5qwcLtQ7_upload",
+        "range": {
+          "start_ms": 0,
+          "end_ms": 41780
+        }
+      },
+      {
+        "text": "[Verse]\nन मे लोभः, न मे भयम्! रामस्मरणं मम बलं परम्।\nउत्तिष्ठामि, प्रचलामि! सत्यं वदामि, शुभं चरामि।\nद्वेषं त्यजामि, प्रेम भजामि! सर्वेषां हितमाचरामि।",
+        "duration_ms": 15600,
+        "positive_styles": [
+          "original Sanskrit devotional song",
+          "warm male vocals",
+          "acoustic guitar arpeggios",
+          "soft shaker",
+          "peaceful melodic singing",
+          "natural phrasing",
+          "clear Sanskrit diction",
+          "continue the exact verse cadence and melody, one full lyric line per two bars"
+        ],
+        "negative_styles": [
+          "spoken narration",
+          "distortion",
+          "extra lyrics"
+        ],
+        "context_adherence": "high",
+        "conditioning_ref": {
+          "song_id": "GBdpvIsuxh0k5qwcLtQ7_upload",
+          "range": {
+            "start_ms": 20300,
+            "end_ms": 41780
+          }
+        },
+        "condition_strength": "xhigh"
+      },
+      {
+        "text": "[Final Chorus]\nजय जय राम, जय जय राम! मम जीवने तव नाम!",
+        "duration_ms": 5200,
+        "positive_styles": [
+          "original Sanskrit devotional song",
+          "warm male vocals",
+          "acoustic guitar arpeggios",
+          "soft shaker",
+          "peaceful melodic singing",
+          "natural phrasing",
+          "clear Sanskrit diction",
+          "repeat the opening hook tune with the supplied closing words"
+        ],
+        "negative_styles": [
+          "spoken narration",
+          "distortion",
+          "extra lyrics"
+        ],
+        "context_adherence": "high",
+        "conditioning_ref": {
+          "song_id": "GBdpvIsuxh0k5qwcLtQ7_upload",
+          "range": {
+            "start_ms": 9820,
+            "end_ms": 15020
+          }
+        },
+        "condition_strength": "xhigh"
+      },
+      {
+        "song_id": "GBdpvIsuxh0k5qwcLtQ7_upload",
+        "range": {
+          "start_ms": 52450,
+          "end_ms": 55000
+        }
+      }
+    ]
+  },
+  "seed": 20261013,
+  "store_for_inpainting": true
+}

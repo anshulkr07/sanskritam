@@ -1,0 +1,2418 @@
+{
+  "as_of": "2026-10-12",
+  "scope": "Whole learning curriculum; estimate and migration audit, not an image-generation completion claim",
+  "count_definitions": {
+    "chapters": "18 top-level sections = 17 teaching chapters + reference",
+    "reference_sheets": 5,
+    "baseline_guided_lessons": "105 guide topics - 5 reference sheets - 9 old Sandhi topics - 3 old verse topics + 13 Sandhi manuscript lessons + 48 verse manuscript lessons = 149; editorial splitting adds lessons",
+    "asset_estimate": "Distinct reusable teaching assets; excludes navigation cover art, card placements, retries and language duplicates. Native diagrams are additional and do not require AI image generation."
+  },
+  "counts": {
+    "path_units": 11,
+    "path_lessons": 49,
+    "guide_chapters": 18,
+    "guide_topics": 105,
+    "sandhi_lessons": 13,
+    "sandhi_manuscript_cards": 108,
+    "verse_modules": 12,
+    "verse_lessons": 48,
+    "learn_live_lessons": 7,
+    "learn_live_cards": 62,
+    "ready_requests": 3,
+    "draft_requests": 2,
+    "generated_delivery_assets": 3,
+    "integrated_prototype_scene_assets": 3,
+    "integrated_generated_delivery_assets": 0,
+    "path_navigation_assets": 60,
+    "grammar_chapter_navigation_assets": 18
+  },
+  "estimate_totals": {
+    "planned_guided_lessons": [
+      156,
+      187
+    ],
+    "planned_scene_illustrations": [
+      186,
+      262
+    ],
+    "planned_native_diagrams": [
+      200,
+      299
+    ]
+  },
+  "chapters": [
+    {
+      "id": "start",
+      "title": "Start here",
+      "source": "backend/app/services/grammar_guide/c00_start.py",
+      "guide_topics": [
+        {
+          "id": "how-it-works",
+          "title": "How Sanskrit grammar works",
+          "feature_ids": [
+            "NOM.SG",
+            "ACC.SG"
+          ]
+        },
+        {
+          "id": "reading-roman",
+          "title": "Reading romanized Sanskrit",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 2,
+      "planned_guided_lessons": [
+        2,
+        3
+      ],
+      "planned_scene_illustrations": [
+        3,
+        4
+      ],
+      "planned_native_diagrams": [
+        2,
+        3
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "sounds",
+      "title": "Sounds & script",
+      "source": "backend/app/services/grammar_guide/c01_sounds.py",
+      "guide_topics": [
+        {
+          "id": "vowels",
+          "title": "Vowels, short and long",
+          "feature_ids": []
+        },
+        {
+          "id": "consonants",
+          "title": "The consonant grid",
+          "feature_ids": []
+        },
+        {
+          "id": "anusvara-visarga",
+          "title": "ṃ and ḥ: the hum and the breath",
+          "feature_ids": [
+            "ANUSVARA-SANDHI",
+            "VISARGA-SANDHI"
+          ]
+        },
+        {
+          "id": "conjuncts",
+          "title": "Joined letters",
+          "feature_ids": []
+        },
+        {
+          "id": "guna-vrddhi",
+          "title": "Guṇa and vṛddhi: vowels that grow",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 5,
+      "planned_guided_lessons": [
+        5,
+        7
+      ],
+      "planned_scene_illustrations": [
+        3,
+        5
+      ],
+      "planned_native_diagrams": [
+        10,
+        15
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "nouns",
+      "title": "Nouns",
+      "source": "backend/app/services/grammar_guide/c02_nouns.py",
+      "guide_topics": [
+        {
+          "id": "stem-ending",
+          "title": "Stem + ending",
+          "feature_ids": [
+            "NOM.SG",
+            "ACC.SG"
+          ]
+        },
+        {
+          "id": "gender",
+          "title": "Gender: masculine, feminine, neuter",
+          "feature_ids": [
+            "MASC",
+            "FEM",
+            "NEUT"
+          ]
+        },
+        {
+          "id": "number",
+          "title": "One, two, many",
+          "feature_ids": [
+            "SG",
+            "DU",
+            "PL",
+            "NOM.DU",
+            "NOM.PL"
+          ]
+        },
+        {
+          "id": "agreement",
+          "title": "Adjectives agree",
+          "feature_ids": [
+            "MASC",
+            "FEM",
+            "NEUT"
+          ]
+        }
+      ],
+      "guide_topic_count": 4,
+      "planned_guided_lessons": [
+        4,
+        6
+      ],
+      "planned_scene_illustrations": [
+        12,
+        16
+      ],
+      "planned_native_diagrams": [
+        5,
+        8
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "cases",
+      "title": "The 8 cases",
+      "source": "backend/app/services/grammar_guide/c03_cases.py",
+      "guide_topics": [
+        {
+          "id": "cases-overview",
+          "title": "The 8 cases at a glance",
+          "feature_ids": [
+            "NOM.SG",
+            "ACC.SG",
+            "INSTR.SG",
+            "DAT.SG",
+            "ABL.SG",
+            "GEN.SG",
+            "LOC.SG",
+            "VOC.SG"
+          ]
+        },
+        {
+          "id": "nominative-vocative",
+          "title": "Nominative & vocative: the doer and the call",
+          "feature_ids": [
+            "NOM.SG",
+            "VOC.SG"
+          ]
+        },
+        {
+          "id": "accusative",
+          "title": "Accusative: the object and the goal",
+          "feature_ids": [
+            "ACC.SG",
+            "ACC.DU",
+            "ACC.PL"
+          ]
+        },
+        {
+          "id": "instrumental",
+          "title": "Instrumental: with and by",
+          "feature_ids": [
+            "INSTR.SG"
+          ]
+        },
+        {
+          "id": "dative",
+          "title": "Dative: for and to",
+          "feature_ids": [
+            "DAT.SG"
+          ]
+        },
+        {
+          "id": "ablative",
+          "title": "Ablative: from",
+          "feature_ids": [
+            "ABL.SG"
+          ]
+        },
+        {
+          "id": "genitive",
+          "title": "Genitive: of, 's",
+          "feature_ids": [
+            "GEN.SG",
+            "GEN.PL"
+          ]
+        },
+        {
+          "id": "locative",
+          "title": "Locative: in, on, at",
+          "feature_ids": [
+            "LOC.SG",
+            "LOC.PL"
+          ]
+        },
+        {
+          "id": "upapada",
+          "title": "Words that demand a case",
+          "feature_ids": []
+        },
+        {
+          "id": "karaka",
+          "title": "Kāraka: the roles behind the endings",
+          "feature_ids": [
+            "KARAKA-KARTR",
+            "KARAKA-KARMA",
+            "KARAKA-KARANA",
+            "KARAKA-SAMPRADANA",
+            "KARAKA-APADANA",
+            "KARAKA-ADHIKARANA"
+          ]
+        }
+      ],
+      "guide_topic_count": 10,
+      "planned_guided_lessons": [
+        15,
+        18
+      ],
+      "planned_scene_illustrations": [
+        28,
+        36
+      ],
+      "planned_native_diagrams": [
+        10,
+        14
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "families",
+      "title": "Noun families",
+      "source": "backend/app/services/grammar_guide/c04_families.py",
+      "guide_topics": [
+        {
+          "id": "a-masculine",
+          "title": "-a masculine nouns: देव",
+          "feature_ids": [
+            "MASC",
+            "NOM.PL",
+            "ACC.PL",
+            "GEN.PL",
+            "LOC.PL"
+          ]
+        },
+        {
+          "id": "a-neuter",
+          "title": "-a neuter nouns: फल",
+          "feature_ids": [
+            "NEUT"
+          ]
+        },
+        {
+          "id": "aa-feminine",
+          "title": "-ā feminine nouns: लता",
+          "feature_ids": [
+            "FEM"
+          ]
+        },
+        {
+          "id": "i-stems",
+          "title": "-i nouns: कवि and मति",
+          "feature_ids": [
+            "MASC",
+            "FEM"
+          ]
+        },
+        {
+          "id": "u-stems",
+          "title": "-u nouns: गुरु, मधु, धेनु",
+          "feature_ids": [
+            "MASC",
+            "NEUT"
+          ]
+        },
+        {
+          "id": "ii-uu-feminine",
+          "title": "-ī and -ū feminines: नदी, वधू",
+          "feature_ids": [
+            "FEM"
+          ]
+        },
+        {
+          "id": "r-stems",
+          "title": "-ṛ nouns: पितृ and मातृ",
+          "feature_ids": [
+            "MASC",
+            "FEM"
+          ]
+        },
+        {
+          "id": "consonant-stems",
+          "title": "Consonant stems: राजन्, मनस्, जगत्, वाच्",
+          "feature_ids": []
+        },
+        {
+          "id": "odd-nouns",
+          "title": "Odd ones: गो and the -vat words",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 9,
+      "planned_guided_lessons": [
+        9,
+        12
+      ],
+      "planned_scene_illustrations": [
+        8,
+        12
+      ],
+      "planned_native_diagrams": [
+        12,
+        18
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "pronouns",
+      "title": "Pronouns & numbers",
+      "source": "backend/app/services/grammar_guide/c05_pronouns.py",
+      "guide_topics": [
+        {
+          "id": "pronoun-i-we",
+          "title": "I and we: अस्मद्",
+          "feature_ids": [
+            "PRES.1SG"
+          ]
+        },
+        {
+          "id": "pronoun-you",
+          "title": "You: युष्मद्",
+          "feature_ids": [
+            "PRES.2SG"
+          ]
+        },
+        {
+          "id": "pronoun-he-she-it",
+          "title": "He, she, it: तद्",
+          "feature_ids": [
+            "PRES.3SG"
+          ]
+        },
+        {
+          "id": "pronoun-this-that",
+          "title": "This and that: एतद्, इदम्, अदस्",
+          "feature_ids": []
+        },
+        {
+          "id": "pronoun-who-which",
+          "title": "Who, what, which: किम् and यद्",
+          "feature_ids": []
+        },
+        {
+          "id": "polite-you",
+          "title": "Polite “you”: भवान्, भवती",
+          "feature_ids": [
+            "PRES.3SG"
+          ]
+        },
+        {
+          "id": "numbers-1-10",
+          "title": "Numbers 1–10",
+          "feature_ids": [
+            "NOM.PL"
+          ]
+        },
+        {
+          "id": "numbers-big-time",
+          "title": "Bigger numbers, ordinals and telling time",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 8,
+      "planned_guided_lessons": [
+        8,
+        10
+      ],
+      "planned_scene_illustrations": [
+        18,
+        24
+      ],
+      "planned_native_diagrams": [
+        8,
+        12
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "verbs",
+      "title": "Verbs",
+      "source": "backend/app/services/grammar_guide/c06_verbs.py",
+      "guide_topics": [
+        {
+          "id": "verb-anatomy",
+          "title": "Anatomy of a verb",
+          "feature_ids": [
+            "PRES.3SG"
+          ]
+        },
+        {
+          "id": "verb-grid",
+          "title": "The 9-cell grid: person × number",
+          "feature_ids": [
+            "PRES.1SG",
+            "PRES.2SG",
+            "PRES.3SG",
+            "PRES.1DU",
+            "PRES.2DU",
+            "PRES.3DU",
+            "PRES.1PL",
+            "PRES.2PL",
+            "PRES.3PL"
+          ]
+        },
+        {
+          "id": "two-endings",
+          "title": "Two sets of endings: -ti and -te",
+          "feature_ids": [
+            "PARASMAIPADA",
+            "ATMANEPADA"
+          ]
+        },
+        {
+          "id": "verb-classes",
+          "title": "The 10 verb classes",
+          "feature_ids": []
+        },
+        {
+          "id": "to-be",
+          "title": "“To be”: अस्ति, and sentences without it",
+          "feature_ids": [
+            "PRES.3SG",
+            "PRES.3PL"
+          ]
+        }
+      ],
+      "guide_topic_count": 5,
+      "planned_guided_lessons": [
+        7,
+        10
+      ],
+      "planned_scene_illustrations": [
+        15,
+        21
+      ],
+      "planned_native_diagrams": [
+        10,
+        15
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "tenses",
+      "title": "Tenses & moods",
+      "source": "backend/app/services/grammar_guide/c07_tenses.py",
+      "guide_topics": [
+        {
+          "id": "lakaras-overview",
+          "title": "The 10 tenses and moods at a glance",
+          "feature_ids": [
+            "PRES.3SG",
+            "IMP.2SG",
+            "IMPF.3SG",
+            "FUT.3SG"
+          ]
+        },
+        {
+          "id": "present-tense",
+          "title": "Present: laṭ",
+          "feature_ids": [
+            "PRES.3SG",
+            "PRES.1SG",
+            "PRES.3PL"
+          ]
+        },
+        {
+          "id": "command-mood",
+          "title": "Commands and wishes: loṭ",
+          "feature_ids": [
+            "IMP.2SG",
+            "IMP.2PL"
+          ]
+        },
+        {
+          "id": "simple-past",
+          "title": "Simple past: laṅ",
+          "feature_ids": [
+            "IMPF.3SG"
+          ]
+        },
+        {
+          "id": "future-tense",
+          "title": "Future: lṛṭ",
+          "feature_ids": [
+            "FUT.1SG",
+            "FUT.3SG"
+          ]
+        },
+        {
+          "id": "should-may",
+          "title": "“Should, may”: vidhiliṅ",
+          "feature_ids": []
+        },
+        {
+          "id": "story-past",
+          "title": "Story past: liṭ, the perfect",
+          "feature_ids": []
+        },
+        {
+          "id": "aorist-rare",
+          "title": "The aorist, मा, and the rare four",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 8,
+      "planned_guided_lessons": [
+        8,
+        11
+      ],
+      "planned_scene_illustrations": [
+        18,
+        24
+      ],
+      "planned_native_diagrams": [
+        8,
+        12
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "small-words",
+      "title": "Small words",
+      "source": "backend/app/services/grammar_guide/c08_small_words.py",
+      "guide_topics": [
+        {
+          "id": "indeclinables",
+          "title": "Words that never change",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "joining-words",
+          "title": "Joining words: च, वा, अपि, एव, तु",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "question-place-time",
+          "title": "Question, place and time words",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "na-ma",
+          "title": "Saying no: न and मा",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "iti",
+          "title": "इति: quotes and thoughts",
+          "feature_ids": [
+            "INDECL"
+          ]
+        }
+      ],
+      "guide_topic_count": 5,
+      "planned_guided_lessons": [
+        5,
+        6
+      ],
+      "planned_scene_illustrations": [
+        10,
+        14
+      ],
+      "planned_native_diagrams": [
+        3,
+        5
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "sentences",
+      "title": "Sentences",
+      "source": "backend/app/services/grammar_guide/c09_sentences.py",
+      "guide_topics": [
+        {
+          "id": "word-order",
+          "title": "Free word order",
+          "feature_ids": [
+            "KARAKA-KARTR",
+            "KARAKA-KARMA"
+          ]
+        },
+        {
+          "id": "subject-verb",
+          "title": "The verb matches its doer",
+          "feature_ids": [
+            "PRES.3SG",
+            "PRES.3DU",
+            "PRES.3PL"
+          ]
+        },
+        {
+          "id": "questions",
+          "title": "Asking questions",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "relative-clauses",
+          "title": "“Who… he”: यः … सः sentences",
+          "feature_ids": []
+        },
+        {
+          "id": "participle-clauses",
+          "title": "“Having gone”, “while going”, “when he had gone”",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 5,
+      "planned_guided_lessons": [
+        5,
+        7
+      ],
+      "planned_scene_illustrations": [
+        12,
+        18
+      ],
+      "planned_native_diagrams": [
+        8,
+        12
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "sandhi",
+      "title": "Sandhi: sounds that merge",
+      "source": "backend/app/services/grammar_guide/c10_sandhi.py",
+      "guide_topics": [
+        {
+          "id": "sandhi-why",
+          "title": "Why sounds merge",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-long-vowels",
+          "title": "Like vowels become long",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-guna",
+          "title": "a + i → e, a + u → o",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-vrddhi",
+          "title": "a + e → ai, a + o → au",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-yan",
+          "title": "i → y, u → v, ṛ → r before a vowel",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-ayadi",
+          "title": "e/o + vowel → ay/av, and the ऽ sign",
+          "feature_ids": [
+            "VOWEL-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-visarga",
+          "title": "What happens to ḥ",
+          "feature_ids": [
+            "VISARGA-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-consonants",
+          "title": "Consonants that change",
+          "feature_ids": [
+            "CONSONANT-SANDHI",
+            "ANUSVARA-SANDHI"
+          ]
+        },
+        {
+          "id": "sandhi-splitting",
+          "title": "How to split a sandhi",
+          "feature_ids": [
+            "VOWEL-SANDHI",
+            "VISARGA-SANDHI",
+            "CONSONANT-SANDHI"
+          ]
+        }
+      ],
+      "guide_topic_count": 9,
+      "planned_guided_lessons": [
+        13,
+        13
+      ],
+      "planned_scene_illustrations": [
+        3,
+        5
+      ],
+      "planned_native_diagrams": [
+        24,
+        36
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "compounds",
+      "title": "Compounds",
+      "source": "backend/app/services/grammar_guide/c11_compounds.py",
+      "guide_topics": [
+        {
+          "id": "compounds-intro",
+          "title": "Words inside words",
+          "feature_ids": [
+            "SAMASA-TATPURUSA"
+          ]
+        },
+        {
+          "id": "dvandva",
+          "title": "Dvandva: “X and Y”",
+          "feature_ids": [
+            "SAMASA-DVANDVA"
+          ]
+        },
+        {
+          "id": "tatpurusha",
+          "title": "Tatpuruṣa: “X's Y”, “Y for X”",
+          "feature_ids": [
+            "SAMASA-TATPURUSA"
+          ]
+        },
+        {
+          "id": "karmadharaya-dvigu",
+          "title": "Karmadhāraya and dvigu",
+          "feature_ids": [
+            "SAMASA-TATPURUSA"
+          ]
+        },
+        {
+          "id": "nan-upapada",
+          "title": "“Not-X” and “X-maker”",
+          "feature_ids": [
+            "SAMASA-TATPURUSA"
+          ]
+        },
+        {
+          "id": "bahuvrihi",
+          "title": "Bahuvrīhi: “the one who has…”",
+          "feature_ids": [
+            "SAMASA-BAHUVRIHI"
+          ]
+        },
+        {
+          "id": "avyayibhava",
+          "title": "Avyayībhāva: compound adverbs",
+          "feature_ids": [
+            "SAMASA-AVYAYIBHAVA"
+          ]
+        },
+        {
+          "id": "long-compounds",
+          "title": "Reading long compounds",
+          "feature_ids": [
+            "SAMASA-TATPURUSA"
+          ]
+        }
+      ],
+      "guide_topic_count": 8,
+      "planned_guided_lessons": [
+        8,
+        10
+      ],
+      "planned_scene_illustrations": [
+        14,
+        20
+      ],
+      "planned_native_diagrams": [
+        10,
+        14
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "krdanta",
+      "title": "Verb-made words",
+      "source": "backend/app/services/grammar_guide/c12_krdanta.py",
+      "guide_topics": [
+        {
+          "id": "ktva-lyap",
+          "title": "-tvā and -ya: “having done”",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "tumun",
+          "title": "-tum: “to do”",
+          "feature_ids": [
+            "INDECL"
+          ]
+        },
+        {
+          "id": "kta-ktavatu",
+          "title": "-ta and -tavat: “gone”, “has gone”",
+          "feature_ids": [
+            "MASC",
+            "FEM",
+            "NEUT"
+          ]
+        },
+        {
+          "id": "present-participles",
+          "title": "-at and -māna: “while doing”",
+          "feature_ids": []
+        },
+        {
+          "id": "gerundives",
+          "title": "-tavya, -anīya, -ya: “should be done”",
+          "feature_ids": []
+        },
+        {
+          "id": "doer-action-nouns",
+          "title": "Doers and actions: कर्ता, पाठक, भोजन",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 6,
+      "planned_guided_lessons": [
+        6,
+        8
+      ],
+      "planned_scene_illustrations": [
+        12,
+        18
+      ],
+      "planned_native_diagrams": [
+        6,
+        10
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "voice",
+      "title": "Prefixes & voice",
+      "source": "backend/app/services/grammar_guide/c13_voice.py",
+      "guide_topics": [
+        {
+          "id": "prefixes",
+          "title": "Prefixes change the meaning",
+          "feature_ids": []
+        },
+        {
+          "id": "passive",
+          "title": "Active → passive",
+          "feature_ids": [
+            "ATMANEPADA"
+          ]
+        },
+        {
+          "id": "causative",
+          "title": "Causative: “makes someone do”",
+          "feature_ids": []
+        },
+        {
+          "id": "desiderative",
+          "title": "“Wants to”: desiderative and intensive verbs",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 4,
+      "planned_guided_lessons": [
+        4,
+        6
+      ],
+      "planned_scene_illustrations": [
+        10,
+        14
+      ],
+      "planned_native_diagrams": [
+        6,
+        8
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "taddhita",
+      "title": "Word-making suffixes",
+      "source": "backend/app/services/grammar_guide/c14_taddhita.py",
+      "guide_topics": [
+        {
+          "id": "son-of-names",
+          "title": "“Son of” names: राघव, कौन्तेय",
+          "feature_ids": [
+            "MASC"
+          ]
+        },
+        {
+          "id": "tva-ta",
+          "title": "-tva and -tā: “-ness”",
+          "feature_ids": [
+            "NEUT",
+            "FEM"
+          ]
+        },
+        {
+          "id": "vat-mat",
+          "title": "-vat and -mat: “having”",
+          "feature_ids": []
+        },
+        {
+          "id": "ika",
+          "title": "-ika: “related to”",
+          "feature_ids": []
+        },
+        {
+          "id": "comparison",
+          "title": "-tara/-tama and -īyas/-iṣṭha: “more”, “most”",
+          "feature_ids": []
+        },
+        {
+          "id": "feminine-suffixes",
+          "title": "Making feminines: -ā, -ī, -ānī",
+          "feature_ids": [
+            "FEM"
+          ]
+        }
+      ],
+      "guide_topic_count": 6,
+      "planned_guided_lessons": [
+        6,
+        8
+      ],
+      "planned_scene_illustrations": [
+        10,
+        16
+      ],
+      "planned_native_diagrams": [
+        7,
+        10
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "verse",
+      "title": "Verse & rhythm",
+      "source": "backend/app/services/grammar_guide/c15_verse.py",
+      "guide_topics": [
+        {
+          "id": "light-heavy",
+          "title": "Light and heavy syllables",
+          "feature_ids": []
+        },
+        {
+          "id": "shloka",
+          "title": "The śloka: 4 × 8",
+          "feature_ids": []
+        },
+        {
+          "id": "pingala-binary",
+          "title": "Piṅgala's patterns",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 3,
+      "planned_guided_lessons": [
+        48,
+        48
+      ],
+      "planned_scene_illustrations": [
+        8,
+        12
+      ],
+      "planned_native_diagrams": [
+        60,
+        90
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "panini",
+      "title": "Pāṇini's system",
+      "source": "backend/app/services/grammar_guide/c16_panini.py",
+      "guide_topics": [
+        {
+          "id": "ashtadhyayi",
+          "title": "The Aṣṭādhyāyī",
+          "feature_ids": []
+        },
+        {
+          "id": "shiva-sutras",
+          "title": "The Śiva sūtras and pratyāhāras",
+          "feature_ids": []
+        },
+        {
+          "id": "reading-derivation",
+          "title": "Reading an engine derivation",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 3,
+      "planned_guided_lessons": [
+        3,
+        4
+      ],
+      "planned_scene_illustrations": [
+        2,
+        3
+      ],
+      "planned_native_diagrams": [
+        6,
+        9
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    },
+    {
+      "id": "reference",
+      "title": "Quick reference",
+      "source": "backend/app/services/grammar_guide/c17_reference.py",
+      "guide_topics": [
+        {
+          "id": "ref-case-endings",
+          "title": "Case endings at a glance",
+          "feature_ids": [
+            "NOM.SG",
+            "ACC.SG",
+            "INSTR.SG",
+            "DAT.SG",
+            "ABL.SG",
+            "GEN.SG",
+            "LOC.SG",
+            "VOC.SG"
+          ]
+        },
+        {
+          "id": "ref-verb-endings",
+          "title": "Verb endings at a glance",
+          "feature_ids": [
+            "PRES.3SG",
+            "PRES.2SG",
+            "PRES.1SG",
+            "PRES.3PL",
+            "IMPF.3SG",
+            "FUT.3SG"
+          ]
+        },
+        {
+          "id": "ref-pronouns",
+          "title": "Pronouns at a glance",
+          "feature_ids": []
+        },
+        {
+          "id": "ref-sandhi",
+          "title": "Sandhi on one page",
+          "feature_ids": [
+            "VOWEL-SANDHI",
+            "VISARGA-SANDHI",
+            "CONSONANT-SANDHI",
+            "ANUSVARA-SANDHI"
+          ]
+        },
+        {
+          "id": "ref-suffixes",
+          "title": "Suffix finder",
+          "feature_ids": []
+        }
+      ],
+      "guide_topic_count": 5,
+      "planned_guided_lessons": [
+        0,
+        0
+      ],
+      "planned_scene_illustrations": [
+        0,
+        0
+      ],
+      "planned_native_diagrams": [
+        5,
+        8
+      ],
+      "estimate_status": "editorial_estimate_not_verified_asset_queue"
+    }
+  ],
+  "path_crosswalk": [
+    {
+      "unit_id": "u1",
+      "feature_id": "SG",
+      "title": "Sounds first, then singulars",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "number"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u2",
+      "feature_id": "NOM.SG",
+      "title": "What is a case?",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "start",
+          "topic_id": "how-it-works"
+        },
+        {
+          "chapter_id": "nouns",
+          "topic_id": "stem-ending"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "nominative-vocative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u2",
+      "feature_id": "ACC.SG",
+      "title": "The object: whom the action reaches",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "start",
+          "topic_id": "how-it-works"
+        },
+        {
+          "chapter_id": "nouns",
+          "topic_id": "stem-ending"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "accusative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u2",
+      "feature_id": "PRES.3SG",
+      "title": "What is a verb?",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "pronouns",
+          "topic_id": "pronoun-he-she-it"
+        },
+        {
+          "chapter_id": "pronouns",
+          "topic_id": "polite-you"
+        },
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-anatomy"
+        },
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        },
+        {
+          "chapter_id": "verbs",
+          "topic_id": "to-be"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "lakaras-overview"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "present-tense"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "subject-verb"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "INSTR.SG",
+      "title": "With what? The instrument",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "instrumental"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "DAT.SG",
+      "title": "For whom? The recipient",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "dative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "ABL.SG",
+      "title": "From where? The source",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "ablative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "GEN.SG",
+      "title": "Whose? Belonging",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "genitive"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "LOC.SG",
+      "title": "Where? The ground of action",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "locative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "VOC.SG",
+      "title": "Calling out: the address",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "cases-overview"
+        },
+        {
+          "chapter_id": "cases",
+          "topic_id": "nominative-vocative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u6",
+      "feature_id": "VOWEL-SANDHI",
+      "title": "Sandhi is a function: f(a, b) → c",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-why"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-long-vowels"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-guna"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-vrddhi"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-yan"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-ayadi"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-splitting"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u8",
+      "feature_id": "IMP.2PL",
+      "title": "Orders to many: the imperative",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "tenses",
+          "topic_id": "command-mood"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u8",
+      "feature_id": "IMPF.3SG",
+      "title": "What already happened: the imperfect",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "tenses",
+          "topic_id": "lakaras-overview"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "simple-past"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u8",
+      "feature_id": "FUT.1SG",
+      "title": "What will happen: the future",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "tenses",
+          "topic_id": "future-tense"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "DU",
+      "title": "Two is special: the dual",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "number"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "NOM.PL",
+      "title": "Many: the plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "number"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-masculine"
+        },
+        {
+          "chapter_id": "pronouns",
+          "topic_id": "numbers-1-10"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "GEN.PL",
+      "title": "Whose and where, for many",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "genitive"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-masculine"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u7",
+      "feature_id": "NEUT",
+      "title": "It changes everything: neuter",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "gender"
+        },
+        {
+          "chapter_id": "nouns",
+          "topic_id": "agreement"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-neuter"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "u-stems"
+        },
+        {
+          "chapter_id": "krdanta",
+          "topic_id": "kta-ktavatu"
+        },
+        {
+          "chapter_id": "taddhita",
+          "topic_id": "tva-ta"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u7",
+      "feature_id": "MASC",
+      "title": "Masculine, and how you know",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "gender"
+        },
+        {
+          "chapter_id": "nouns",
+          "topic_id": "agreement"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-masculine"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "i-stems"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "u-stems"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "r-stems"
+        },
+        {
+          "chapter_id": "krdanta",
+          "topic_id": "kta-ktavatu"
+        },
+        {
+          "chapter_id": "taddhita",
+          "topic_id": "son-of-names"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.1SG",
+      "title": "Who speaks: I and you",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "pronouns",
+          "topic_id": "pronoun-i-we"
+        },
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "present-tense"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.1DU",
+      "title": "We-two and you-two",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u9",
+      "feature_id": "ATMANEPADA",
+      "title": "For others, for self: the two voices",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "two-endings"
+        },
+        {
+          "chapter_id": "voice",
+          "topic_id": "passive"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "PL",
+      "title": "Many as an idea: what plural means",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "number"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "NOM.DU",
+      "title": "Two who act: nominative dual",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "number"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "ACC.DU",
+      "title": "Two undergone: accusative dual",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "accusative"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "ACC.PL",
+      "title": "Many undergone: accusative plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "accusative"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-masculine"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u4",
+      "feature_id": "LOC.PL",
+      "title": "Among many: locative plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "locative"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "a-masculine"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.1PL",
+      "title": "We (many) speak: first plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.2PL",
+      "title": "You (many) speak: second plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.3PL",
+      "title": "They speak: third plural",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        },
+        {
+          "chapter_id": "verbs",
+          "topic_id": "to-be"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "present-tense"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "subject-verb"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u5",
+      "feature_id": "PRES.3DU",
+      "title": "Those two speak: third dual",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "verb-grid"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "subject-verb"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u8",
+      "feature_id": "IMP.2SG",
+      "title": "Order one: the singular imperative",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "tenses",
+          "topic_id": "lakaras-overview"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "command-mood"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u8",
+      "feature_id": "FUT.3SG",
+      "title": "He will: third future",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "tenses",
+          "topic_id": "lakaras-overview"
+        },
+        {
+          "chapter_id": "tenses",
+          "topic_id": "future-tense"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u9",
+      "feature_id": "PARASMAIPADA",
+      "title": "Outward voice: parasmaipada",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "verbs",
+          "topic_id": "two-endings"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u7",
+      "feature_id": "FEM",
+      "title": "Feminine: the pattern, honestly held",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "nouns",
+          "topic_id": "gender"
+        },
+        {
+          "chapter_id": "nouns",
+          "topic_id": "agreement"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "aa-feminine"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "i-stems"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "ii-uu-feminine"
+        },
+        {
+          "chapter_id": "families",
+          "topic_id": "r-stems"
+        },
+        {
+          "chapter_id": "krdanta",
+          "topic_id": "kta-ktavatu"
+        },
+        {
+          "chapter_id": "taddhita",
+          "topic_id": "tva-ta"
+        },
+        {
+          "chapter_id": "taddhita",
+          "topic_id": "feminine-suffixes"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u3",
+      "feature_id": "INDECL",
+      "title": "Words that never change: avyaya",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "small-words",
+          "topic_id": "indeclinables"
+        },
+        {
+          "chapter_id": "small-words",
+          "topic_id": "joining-words"
+        },
+        {
+          "chapter_id": "small-words",
+          "topic_id": "question-place-time"
+        },
+        {
+          "chapter_id": "small-words",
+          "topic_id": "na-ma"
+        },
+        {
+          "chapter_id": "small-words",
+          "topic_id": "iti"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "questions"
+        },
+        {
+          "chapter_id": "krdanta",
+          "topic_id": "ktva-lyap"
+        },
+        {
+          "chapter_id": "krdanta",
+          "topic_id": "tumun"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u6",
+      "feature_id": "VISARGA-SANDHI",
+      "title": "The breathing that changes: visarga",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "sounds",
+          "topic_id": "anusvara-visarga"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-visarga"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-splitting"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u6",
+      "feature_id": "ANUSVARA-SANDHI",
+      "title": "The nose takes over: anusvara",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "sounds",
+          "topic_id": "anusvara-visarga"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-consonants"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u6",
+      "feature_id": "CONSONANT-SANDHI",
+      "title": "Stops meet stops: consonant sandhi",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-consonants"
+        },
+        {
+          "chapter_id": "sandhi",
+          "topic_id": "sandhi-splitting"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u10",
+      "feature_id": "SAMASA-DVANDVA",
+      "title": "Both-and: dvandva compounds",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "compounds",
+          "topic_id": "dvandva"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u10",
+      "feature_id": "SAMASA-TATPURUSA",
+      "title": "Of-him: tatpurusha compounds",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "compounds",
+          "topic_id": "compounds-intro"
+        },
+        {
+          "chapter_id": "compounds",
+          "topic_id": "tatpurusha"
+        },
+        {
+          "chapter_id": "compounds",
+          "topic_id": "karmadharaya-dvigu"
+        },
+        {
+          "chapter_id": "compounds",
+          "topic_id": "nan-upapada"
+        },
+        {
+          "chapter_id": "compounds",
+          "topic_id": "long-compounds"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u10",
+      "feature_id": "SAMASA-BAHUVRIHI",
+      "title": "One-who-has: bahuvrihi compounds",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "compounds",
+          "topic_id": "bahuvrihi"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u10",
+      "feature_id": "SAMASA-AVYAYIBHAVA",
+      "title": "Never-declined: avyayibhava compounds",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "compounds",
+          "topic_id": "avyayibhava"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-KARTR",
+      "title": "Who does: kartr, the agent",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "word-order"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-KARMA",
+      "title": "What is reached: karma, the object",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        },
+        {
+          "chapter_id": "sentences",
+          "topic_id": "word-order"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-KARANA",
+      "title": "With what: karana, the instrument",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-SAMPRADANA",
+      "title": "For whom: sampradana, the recipient",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-APADANA",
+      "title": "From where: apadana, the source",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    },
+    {
+      "unit_id": "u11",
+      "feature_id": "KARAKA-ADHIKARANA",
+      "title": "Where: adhikarana, the locus",
+      "candidate_guide_topics": [
+        {
+          "chapter_id": "cases",
+          "topic_id": "karaka"
+        }
+      ],
+      "mapping_status": "feature_match_only_requires_outcome_and_assessment_review"
+    }
+  ],
+  "sandhi_lessons": [
+    {
+      "id": "boundary",
+      "title": "Where words meet",
+      "cards": 8
+    },
+    {
+      "id": "like-vowels",
+      "title": "Two vowels of one family",
+      "cards": 8
+    },
+    {
+      "id": "a-combinations",
+      "title": "When a meets a different vowel",
+      "cards": 8
+    },
+    {
+      "id": "glides",
+      "title": "A vowel becomes a glide",
+      "cards": 8
+    },
+    {
+      "id": "e-o",
+      "title": "The special behaviour of e and o",
+      "cards": 8
+    },
+    {
+      "id": "protected",
+      "title": "When the ordinary vowel rule stops",
+      "cards": 8
+    },
+    {
+      "id": "stops",
+      "title": "Final stops follow their neighbour",
+      "cards": 10
+    },
+    {
+      "id": "nasals",
+      "title": "Nasals and small inserted sounds",
+      "cards": 10
+    },
+    {
+      "id": "a-visarga",
+      "title": "The common aḥ and āḥ endings",
+      "cards": 8
+    },
+    {
+      "id": "visarga-more",
+      "title": "Visarga beyond aḥ",
+      "cards": 8
+    },
+    {
+      "id": "internal",
+      "title": "Changes inside a formed word",
+      "cards": 8
+    },
+    {
+      "id": "retroflex",
+      "title": "When s and n become retroflex",
+      "cards": 8
+    },
+    {
+      "id": "reading",
+      "title": "Read a whole passage",
+      "cards": 8
+    }
+  ],
+  "verse_lessons": [
+    {
+      "number": 1,
+      "title": "A verse has more than one kind of rhythm"
+    },
+    {
+      "number": 2,
+      "title": "Find the vowel; find the syllable"
+    },
+    {
+      "number": 3,
+      "title": "Vowel length without guessing"
+    },
+    {
+      "number": 4,
+      "title": "From syllable to pāda to stanza"
+    },
+    {
+      "number": 5,
+      "title": "The light case: know the baseline"
+    },
+    {
+      "number": 6,
+      "title": "Heavy because the vowel is long"
+    },
+    {
+      "number": 7,
+      "title": "Heavy before a consonant cluster"
+    },
+    {
+      "number": 8,
+      "title": "Anusvāra, visarga and final closure"
+    },
+    {
+      "number": 9,
+      "title": "Word boundaries do not stop the rule"
+    },
+    {
+      "number": 10,
+      "title": "Sandhi changes what you count"
+    },
+    {
+      "number": 11,
+      "title": "The last position is special"
+    },
+    {
+      "number": 12,
+      "title": "Exceptions without destroying the rule"
+    },
+    {
+      "number": 13,
+      "title": "One pāda, every reason visible"
+    },
+    {
+      "number": 14,
+      "title": "Two counts tell different stories"
+    },
+    {
+      "number": 15,
+      "title": "Gaṇas: useful shorthand, not a new obstacle"
+    },
+    {
+      "number": 16,
+      "title": "A map of metre families"
+    },
+    {
+      "number": 17,
+      "title": "The familiar śloka cadence"
+    },
+    {
+      "number": 18,
+      "title": "Eight syllables are not enough"
+    },
+    {
+      "number": 19,
+      "title": "Vipulās: learn variation as a system"
+    },
+    {
+      "number": 20,
+      "title": "Read a complete śloka"
+    },
+    {
+      "number": 21,
+      "title": "Start with a repeating twelve-syllable pattern"
+    },
+    {
+      "number": 22,
+      "title": "One position changes the family resemblance"
+    },
+    {
+      "number": 23,
+      "title": "Other medium metres: compare before naming"
+    },
+    {
+      "number": 24,
+      "title": "Alternating and unequal quarters"
+    },
+    {
+      "number": 25,
+      "title": "Vasantatilakā and Mālinī"
+    },
+    {
+      "number": 26,
+      "title": "Mandākrāntā: a long line you can navigate"
+    },
+    {
+      "number": 27,
+      "title": "Śikhariṇī, Pṛthvī and Hariṇī"
+    },
+    {
+      "number": 28,
+      "title": "Longer lines and the edge of the catalogue"
+    },
+    {
+      "number": 29,
+      "title": "Mātrā groups: same time, different shapes"
+    },
+    {
+      "number": 30,
+      "title": "Āryā: understand the whole framework"
+    },
+    {
+      "number": 31,
+      "title": "Āryā variants and the Gīti family"
+    },
+    {
+      "number": 32,
+      "title": "Vaitālīya and other measured families"
+    },
+    {
+      "number": 33,
+      "title": "Yati: a division that helps the listener"
+    },
+    {
+      "number": 34,
+      "title": "Meaning survives the metrical arrangement"
+    },
+    {
+      "number": 35,
+      "title": "Metre is not rhyme, tune or emotion"
+    },
+    {
+      "number": 36,
+      "title": "A practical recitation loop"
+    },
+    {
+      "number": 37,
+      "title": "Vedic metre: a related but distinct system"
+    },
+    {
+      "number": 38,
+      "title": "Read a three-pāda Vedic stanza"
+    },
+    {
+      "number": 39,
+      "title": "Accent, duration and recitation tradition"
+    },
+    {
+      "number": 40,
+      "title": "Variants, pāṭhas and the limits of a simple count"
+    },
+    {
+      "number": 41,
+      "title": "Read a metrical definition in Sanskrit"
+    },
+    {
+      "number": 42,
+      "title": "Piṅgala’s combinatorial world"
+    },
+    {
+      "number": 43,
+      "title": "When a tool disagrees with the poem"
+    },
+    {
+      "number": 44,
+      "title": "Compose with constraints and meaning"
+    },
+    {
+      "number": 45,
+      "title": "Studio: speech and meaning in Raghuvaṃśa"
+    },
+    {
+      "number": 46,
+      "title": "Studio: the opening of Meghadūta"
+    },
+    {
+      "number": 47,
+      "title": "Studio: explain Āryā to another learner"
+    },
+    {
+      "number": 48,
+      "title": "Finish with evidence, then choose a branch"
+    }
+  ],
+  "live_learn_lesson_ids": [
+    "verbs-number",
+    "sandhi-boundary",
+    "sandhi-like-vowels",
+    "sandhi-a-combinations",
+    "sandhi-glides",
+    "sandhi-e-o",
+    "sandhi-protected"
+  ],
+  "learning_asset_provenance": [
+    {
+      "asset_id": "verbs-reading-single",
+      "files": [
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-single-v1.jpg",
+          "sha256": "15d7eb4286001e55ef31799c156ed6ce680d3412820f2de8437f3b5cc7afcd2d",
+          "role": "integrated_prototype_art"
+        },
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-single-v1.png",
+          "sha256": "4e39fa873ab6185d747439a5148a7625190eaf3da4b325f07638beebe6cb73a4",
+          "role": "codex_delivery_not_used_by_asset_map"
+        }
+      ],
+      "jpg_scene_height": 390,
+      "jpg_height": 600,
+      "jpg_width": 900,
+      "source_variants_are_not_derivatives": true
+    },
+    {
+      "asset_id": "verbs-reading-dual",
+      "files": [
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-dual-v1.jpg",
+          "sha256": "eaf6e87ddaffa25fb3612f1b3d0498118fcdb01754255d9bc6e02bf45ad07a70",
+          "role": "integrated_prototype_art"
+        },
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-dual-v1.png",
+          "sha256": "a443d3c8cf3cea2b23b589bb67b0875ea1c467487e42ef61ba82d042448a0e3f",
+          "role": "codex_delivery_not_used_by_asset_map"
+        }
+      ],
+      "jpg_scene_height": 400,
+      "jpg_height": 600,
+      "jpg_width": 900,
+      "source_variants_are_not_derivatives": true
+    },
+    {
+      "asset_id": "verbs-reading-plural",
+      "files": [
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-plural-v1.jpg",
+          "sha256": "f300a20cff5a2c708a85da6b93db56b4a4187095be8fa454532f45a59e9fdf00",
+          "role": "integrated_prototype_art"
+        },
+        {
+          "path": "mobile/assets/learn-v2/verbs-reading-plural-v1.png",
+          "sha256": "df6a3528d7f93640f53f1b50e05902bff47b0d60cf5a811f1e9003c53ee4cee8",
+          "role": "codex_delivery_not_used_by_asset_map"
+        }
+      ],
+      "jpg_scene_height": 408,
+      "jpg_height": 600,
+      "jpg_width": 900,
+      "source_variants_are_not_derivatives": true
+    }
+  ],
+  "limitations": [
+    "Feature-tag matches establish candidate coverage, not teaching/assessment equivalence.",
+    "Topic-to-card adaptation and verified image requests remain incomplete.",
+    "No new images generated during this audit.",
+    "Counts describe local source and files, not deployment or user mastery."
+  ],
+  "planning_budget": {
+    "guided_lessons_rounded": [
+      160,
+      190
+    ],
+    "scene_illustrations_with_scope_margin": [
+      200,
+      300
+    ],
+    "native_diagrams_rounded": [
+      200,
+      300
+    ],
+    "teaching_and_retrieval_cards_rounded": [
+      950,
+      1900
+    ],
+    "reference_sheets": 5
+  }
+}

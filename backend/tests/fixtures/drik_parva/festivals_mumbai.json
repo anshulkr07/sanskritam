@@ -1,0 +1,24 @@
+{
+  "source": "Drik Panchang Mumbai (geoname-id 1275339) festival pages, read 2026-10-11 via webfetch (text format). Both resolve the engine divergences flagged in the correction round: the engine was wrong, Drik right.",
+  "urls": {
+    "lakshmi_puja_2027": "https://www.drikpanchang.com/festivals/lakshmipuja/festivals-lakshmipuja-timings.html?year=2027&geoname-id=1275339",
+    "ganesh_2027": "https://www.drikpanchang.com/festivals/ganesh-chaturthi/ganesh-chaturthi-date-time.html?year=2027&geoname-id=1275339"
+  },
+  "read_on": "2026-10-11",
+  "lakshmi_puja_2027": {
+    "date": "2027-10-29",
+    "weekday": "Friday",
+    "amavasya_begins": "08:47 PM Oct 28",
+    "amavasya_ends": "07:05 PM Oct 29",
+    "pradosh_muhurat": "06:07 PM to 07:05 PM Oct 29",
+    "rule": "Lakshmi Puja during Pradosh Kaal when Amavasya prevails; Oct 28 pradosh ends before Amavasya begins, Oct 29 pradosh holds it. Engine gave Oct 28 (begin-date fallback after the midpoint-instant rule found no candidate); fixed by pradosh-window candidacy."
+  },
+  "ganesh_2027": {
+    "date": "2027-09-04",
+    "weekday": "Saturday",
+    "chaturthi_begins": "02:18 PM Sep 03",
+    "chaturthi_ends": "12:25 PM Sep 04",
+    "madhyahna_muhurat": "11:23 AM to 12:25 PM Sep 04",
+    "rule": "Sthapana/puja during the Madhyahna part (middle fifth of daylight). Sep 3 Madhyahna ends before Chaturthi begins; Sep 4 Madhyahna holds it. Engine gave Sep 3 (midpoint instant 12:37 falls after Chaturthi ends 12:26, begin-date fallback); fixed by Madhyahna-window candidacy."
+  }
+}
