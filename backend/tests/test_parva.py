@@ -455,6 +455,32 @@ def test_page_series_exact_day_delhi_oct_2026(client, auth_headers):
         db.close()
 
 
+def test_page_series_day_art_from_navadurga_rows(client, auth_headers):
+    """Approved navadurga_<form_key> art reaches each day entry; drafts do not."""
+    from app.db import SessionLocal
+    db = SessionLocal()
+    try:
+        _seed_navaratri(db)
+        db.add(ParvaArt(key="navadurga_shailaputri", url="https://x/shaila.webp",
+                        width=1, height=1, status="approved"))
+        db.add(ParvaArt(key="navadurga_brahmacharini", url="https://x/brahma.webp",
+                        width=1, height=1, status="draft"))
+        db.commit()
+        r = client.get("/parva/page/sharad_navaratri?lang=en&lat=28.6&lon=77.2&tz=Asia/Kolkata&tradition=north&date=2026-10-11",
+                       headers=auth_headers)
+        assert r.status_code == 200, r.text
+        days = r.json()["day"] or []
+        by_form = {d["form_key"]: d for d in days}
+        assert by_form["shailaputri"]["art_url"] == "https://x/shaila.webp"
+        # Draft art is never served.
+        assert by_form["brahmacharini"]["art_url"] == ""
+    finally:
+        db.query(ParvaPage).delete()
+        db.query(ParvaArt).delete()
+        db.commit()
+        db.close()
+
+
 def test_basic_detail_without_page(client, auth_headers):
     """Janmashtami/Chaturmas open verified dates with an honest message."""
     r = client.get("/parva/basic/janmashtami?lat=28.6&lon=77.2&tz=Asia/Kolkata&tradition=north&date=2026-09-04",

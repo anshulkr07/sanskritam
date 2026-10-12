@@ -378,6 +378,9 @@ def parva_page(
                         dd["tithi_key"] = normalize_tithi_key(str(dd["tithi_key"]))
                     if dd.get("form_key"):
                         dd["form_key"] = normalize_form_key(str(dd["form_key"]))
+                        # Per-day deity painting (navadurga_<form_key> art row);
+                        # blank when none approved, the client falls back.
+                        dd["art_url"] = arts.get(f"navadurga_{dd['form_key']}", "")
                     day_out.append(dd)
                     if date and dd.get("date") == date:
                         day_index = i

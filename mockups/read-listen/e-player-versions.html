@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listen — four more versions of the Now Playing screen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8EE; --surface:#FFFFFF; --muted:#FBEED9; --border:#EFE3CE;
+    --saffron:#E85B25; --saffron-btn:#D2461F; --saffron-deep:#C74414; --saffron-light:#FFE3D3;
+    --ink:#3B2E25; --soft:#7A6A5C; --faint:#846F57;
+    --gold:#F2C879; --gold-deep:#C29B4C; --cream:#FFF8EE; --maroon:#561722;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:#EFE6D6; font-family:'Nunito',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .sa{font-family:'Baloo 2','Noto Sans Devanagari',sans-serif;}
+  .sk{font-family:'Tiro Devanagari Sanskrit','Noto Sans Devanagari',serif;}
+
+  .vnav{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:18px;
+    padding:12px 28px; background:rgba(59,46,37,.94); color:var(--cream); backdrop-filter:blur(8px);}
+  .vnav .brand{font-weight:900; letter-spacing:.4px; font-size:14px;}
+  .vnav .links{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap;}
+  .vnav a{color:rgba(255,248,238,.75); text-decoration:none; font-weight:800; font-size:13px; padding:7px 13px; border-radius:999px;}
+  .vnav a:hover{color:var(--cream); background:rgba(255,248,238,.12);}
+  .vnav a.cur{background:var(--saffron); color:#fff;}
+  .page-head{max-width:1200px; margin:0 auto; padding:44px 28px 8px;}
+  .page-head .kicker{color:var(--saffron-deep); font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase;}
+  .page-head h1{font-size:38px; font-weight:900; letter-spacing:-.5px; margin:6px 0 10px;}
+  .page-head p{max-width:760px; font-size:15.5px; line-height:1.65; color:var(--soft);}
+  .points{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; max-width:920px;}
+  .points li{list-style:none; background:var(--surface); border:1px solid var(--border);
+    padding:7px 14px; border-radius:999px; font-size:13px; font-weight:700; color:var(--ink);}
+  .points li b{color:var(--saffron-deep);}
+
+  .gallery{display:flex; gap:44px; overflow-x:auto; padding:36px 40px 70px; align-items:flex-start; scroll-snap-type:x proximity;}
+  .shot{flex:0 0 auto; scroll-snap-align:start;}
+  figcaption{margin-top:16px; max-width:375px;}
+  figcaption .num{display:inline-flex; align-items:center; gap:8px; font-weight:900; font-size:13px; color:var(--saffron-deep); text-transform:uppercase; letter-spacing:1px;}
+  figcaption .num::after{content:""; width:26px; height:2px; background:var(--saffron); border-radius:2px;}
+  figcaption h3{font-size:16px; font-weight:800; margin:4px 0 6px;}
+  figcaption p{font-size:13px; line-height:1.55; color:var(--soft);}
+
+  .phone{width:393px; height:830px; border-radius:52px; background:#241c16; padding:11px;
+    box-shadow:0 30px 60px rgba(48,36,24,.35), 0 4px 14px rgba(48,36,24,.25);}
+  .screen{width:100%; height:100%; border-radius:42px; overflow:hidden; background:var(--bg);
+    position:relative; display:flex; flex-direction:column;}
+  .status{height:50px; flex:none; display:flex; align-items:flex-end; justify-content:space-between;
+    padding:0 26px 6px; font-weight:800; font-size:14px; color:var(--ink); z-index:30;}
+  .body-scroll{flex:1; overflow:hidden auto; scrollbar-width:none;}
+  .body-scroll::-webkit-scrollbar{display:none;}
+  .homebar{position:absolute; left:50%; transform:translateX(-50%); bottom:7px; width:120px; height:5px;
+    border-radius:99px; background:rgba(59,46,37,.28); z-index:40;}
+
+  .iconbtn{width:38px; height:38px; border-radius:14px; background:var(--surface); display:flex; align-items:center;
+    justify-content:center; box-shadow:0 3px 10px rgba(59,46,37,.08); color:var(--ink);}
+  .navrow{display:flex; align-items:center; gap:10px; padding:4px 18px 8px;}
+  .navrow .grow{flex:1;}
+  .modes{display:flex; gap:8px;}
+  .mode{border:1.5px solid var(--border); border-radius:99px; padding:6px 15px; font-size:12.5px; font-weight:800; color:var(--soft); background:var(--surface);}
+  .mode.on{background:var(--ink); border-color:var(--ink); color:var(--cream);}
+
+  /* ── E1 · karaoke stage ── */
+  .st-head{display:flex; align-items:center; gap:10px; padding:2px 18px 6px;}
+  .st-head .thumb{width:36px; height:36px; border-radius:11px; overflow:hidden; flex:none;}
+  .st-head .thumb img{width:100%; height:100%; object-fit:cover;}
+  .st-head .t{flex:1; min-width:0;}
+  .st-head .t .a{font-size:14px; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .st-head .t .b{font-size:11px; font-weight:700; color:var(--soft);}
+  .stage{flex:1; display:flex; flex-direction:column; justify-content:center; padding:8px 26px;}
+  .kbig{font-family:'Tiro Devanagari Sanskrit'; font-size:23px; line-height:2.15; color:rgba(59,46,37,.28); transition:color .3s;}
+  .kbig.act{color:var(--ink);}
+  .kbig .w{border-radius:6px; padding:0 2px;}
+  .kbig.act .w.lit{background:rgba(232,91,37,.15); color:var(--saffron-deep); box-shadow:0 0 0 1.5px rgba(232,91,37,.35);}
+  .iast-c{font-style:italic; font-size:13px; color:var(--soft); font-weight:600; margin-top:14px; line-height:1.7;}
+  .linedots{display:flex; gap:6px; justify-content:center; margin-top:18px; align-items:center;}
+  .linedots i{width:7px; height:7px; border-radius:99px; background:var(--border);}
+  .linedots i.on{width:22px; background:var(--saffron);}
+  .linelabel{text-align:center; font-size:10.5px; font-weight:800; color:var(--faint); letter-spacing:.14em; text-transform:uppercase; margin-top:7px;}
+  .transport{flex:none; margin:0 18px 14px; background:var(--surface); border-radius:24px; padding:16px 18px 13px;
+    box-shadow:0 12px 30px rgba(59,46,37,.1); border-top:4px solid var(--maroon);}
+  .t-main{display:flex; align-items:center; justify-content:center; gap:26px;}
+  .tbtn{width:52px; height:52px; border-radius:99px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink); background:var(--muted);}
+  .tbtn.play{width:72px; height:72px; background:var(--saffron-btn); color:#fff; box-shadow:0 12px 26px rgba(210,70,31,.35);}
+  .t-sub{display:flex; justify-content:center; gap:8px; margin-top:13px; flex-wrap:wrap;}
+  .tsub{display:flex; align-items:center; gap:5px; font-size:11.5px; font-weight:800; color:var(--soft);
+    background:var(--bg); border-radius:99px; padding:6px 12px;}
+  .tsub.on{background:var(--saffron-light); color:var(--saffron-deep);}
+  .credit{text-align:center; font-size:10.5px; font-weight:700; color:var(--faint); margin-top:10px; letter-spacing:.04em;}
+  .upnext1{display:flex; align-items:center; gap:9px; margin:0 22px 30px; padding-top:12px; border-top:1px solid var(--border);}
+  .upnext1 .lbl{font-size:10px; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; color:var(--faint);}
+  .upnext1 .d{font-family:'Tiro Devanagari Sanskrit'; font-size:13.5px; color:var(--ink); flex:1;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+  /* ── E2 · vinyl ── */
+  .vinyl-wrap{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 0 0;}
+  .vinyl{width:252px; height:252px; border-radius:99px; position:relative;
+    background:radial-gradient(circle at 50% 50%, #3B2E25 0%, #2A1F17 100%);
+    box-shadow:0 22px 44px rgba(48,32,20,.35), 0 0 0 1px rgba(232,194,122,.25); animation:spin 9s linear infinite;}
+  .vinyl .disc-art{position:absolute; inset:26px; border-radius:99px; overflow:hidden;}
+  .vinyl .disc-art img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.92);}
+  .vinyl::after{content:""; position:absolute; inset:0; border-radius:99px; pointer-events:none;
+    background:repeating-radial-gradient(circle at 50% 50%, rgba(255,248,238,.055) 0 1.2px, transparent 1.2px 5px);}
+  .vinyl .label{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:86px; height:86px; border-radius:99px;
+    background:var(--maroon); border:3px solid var(--gold); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:var(--gold);}
+  .vinyl .label .ref{font-family:'Baloo 2'; font-weight:700; font-size:15px;}
+  .vinyl .label .g{font-size:8px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; margin-top:1px; opacity:.8;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .v-title{text-align:center; margin-top:26px;}
+  .v-title .a{font-size:17px; font-weight:900;}
+  .v-title .b{font-size:12px; font-weight:700; color:var(--soft); margin-top:2px;}
+  .v-cap{margin:16px 30px 0; text-align:center; font-family:'Tiro Devanagari Sanskrit'; font-size:16.5px; line-height:1.95; color:var(--ink);}
+  .v-cap .lit{background:rgba(232,91,37,.14); color:var(--saffron-deep); border-radius:5px; padding:0 2px;}
+  .v-bar{display:flex; align-items:center; gap:10px; margin:18px 34px 0;}
+  .v-bar .track{flex:1; height:5px; border-radius:99px; background:var(--border); overflow:hidden;}
+  .v-bar .track i{display:block; height:100%; width:20%; background:var(--gold-deep); border-radius:99px;}
+  .v-bar .t{font-size:10.5px; font-weight:800; color:var(--soft);}
+  .v-transport{display:flex; align-items:center; justify-content:center; gap:30px; margin:20px 0 6px;}
+  .vtbtn{width:54px; height:54px; border-radius:99px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink); border:1.5px solid var(--border);}
+  .vtbtn.play{width:74px; height:74px; background:var(--gold); color:var(--maroon); border:none;
+    box-shadow:0 10px 26px rgba(194,155,76,.4), 0 0 0 7px rgba(194,155,76,.14);}
+  .v-sub{display:flex; justify-content:center; gap:8px; margin:14px 0 0;}
+
+  /* ── E3 · waveform podcast ── */
+  .wf-card{margin:4px 18px 0; background:var(--surface); border-radius:20px; padding:16px; box-shadow:0 6px 16px rgba(59,46,37,.08);}
+  .wf-card .ref{font-size:10.5px; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; color:var(--saffron);}
+  .wf-card .k{font-family:'Tiro Devanagari Sanskrit'; font-size:18.5px; line-height:2; color:var(--ink);}
+  .wf-card .k .lit{background:rgba(232,91,37,.14); color:var(--saffron-deep); border-radius:5px; padding:0 2px;}
+  .wf-card .tr{font-size:12.5px; color:var(--soft); font-weight:600; line-height:1.6; margin-top:8px;}
+  .wavebox{margin:20px 18px 0;}
+  .wave{display:flex; align-items:center; gap:2.5px; height:64px; position:relative;}
+  .wave i{flex:1; border-radius:2px; background:#EFE3CE; display:block;}
+  .wave i.hit{background:var(--saffron);}
+  .wave .ph{position:absolute; left:21%; top:-7px; bottom:-7px; width:2.5px; background:var(--ink); border-radius:2px;}
+  .wave .ph::after{content:""; position:absolute; top:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:9px; height:9px; background:var(--ink); border-radius:2px;}
+  .times{display:flex; justify-content:space-between; font-size:11px; font-weight:800; color:var(--soft); margin-top:10px;}
+  .wf-transport{display:flex; align-items:center; justify-content:space-between; margin:22px 26px 0;}
+  .wbtn{width:56px; height:56px; border-radius:99px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink); background:var(--surface); box-shadow:0 4px 12px rgba(59,46,37,.1);}
+  .wbtn.play{width:80px; height:80px; background:var(--saffron-btn); color:#fff; box-shadow:0 14px 30px rgba(210,70,31,.35);}
+  .w-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:20px 18px 0;}
+  .wcell{background:var(--surface); border-radius:14px; padding:10px 4px; display:flex; flex-direction:column;
+    align-items:center; gap:5px; box-shadow:0 3px 10px rgba(59,46,37,.06); font-size:10.5px; font-weight:800; color:var(--soft);}
+  .wcell.on{background:var(--saffron-light); color:var(--saffron-deep);}
+  .wcell svg{display:block;}
+  .nextchips{display:flex; gap:8px; margin:18px 18px 0; overflow:hidden;}
+  .nchip{flex:none; display:flex; align-items:center; gap:6px; background:var(--surface); border-radius:13px;
+    padding:8px 13px; font-size:12px; font-weight:800; color:var(--ink); box-shadow:0 3px 10px rgba(59,46,37,.06);}
+  .nchip.hot{background:var(--ink); color:var(--cream);}
+
+  /* ── E4 · zen word flow ── */
+  .zen{flex:1; display:flex; flex-direction:column;}
+  .zen-top{display:flex; justify-content:space-between; padding:8px 24px 0; font-size:11.5px; font-weight:800; color:var(--faint); letter-spacing:.06em;}
+  .zen-mid{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 30px; position:relative;}
+  .halo{position:absolute; width:300px; height:300px; border-radius:99px; top:50%; left:50%; transform:translate(-50%,-52%);
+    background:radial-gradient(circle, rgba(232,91,37,.14) 0%, rgba(232,91,37,0) 62%); animation:breathe 4s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{transform:translate(-50%,-52%) scale(.92); opacity:.75;}50%{transform:translate(-50%,-52%) scale(1.06); opacity:1;}}
+  .ghost{font-family:'Tiro Devanagari Sanskrit'; font-size:14.5px; color:rgba(59,46,37,.34); line-height:1.9; max-width:300px;}
+  .bigword{font-family:'Tiro Devanagari Sanskrit'; font-size:40px; line-height:1.7; color:var(--saffron-deep); position:relative;}
+  .wordmeta{margin-top:18px; font-size:12.5px; font-weight:700; color:var(--soft); position:relative;}
+  .wordmeta .sa-w{font-family:'Baloo 2'; color:var(--ink); font-weight:700; font-size:14px;}
+  .linelabel2{margin-top:22px; font-size:10px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); position:relative;}
+  .zen-bottom{flex:none; padding:0 30px 30px;}
+  .zen-bar{height:3px; border-radius:99px; background:var(--border); overflow:hidden; margin-bottom:18px;}
+  .zen-bar i{display:block; height:100%; width:38%; background:var(--saffron); border-radius:99px;}
+  .zen-ctrl{display:flex; align-items:center; justify-content:space-between; padding:0 26px;}
+  .zbtn{width:52px; height:52px; border-radius:99px; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--ink);}
+  .zbtn.play{width:64px; height:64px; background:var(--saffron-btn); border:none; color:#fff; box-shadow:0 12px 26px rgba(210,70,31,.32);}
+  .zen-credit{text-align:center; font-size:10px; font-weight:700; color:var(--faint); margin-top:16px;}
+</style>
+</head>
+<body>
+
+<nav class="vnav">
+  <span class="brand">Read · Listen — design directions</span>
+  <div class="links">
+    <a href="a-saffron-library.html">A · Saffron Library</a>
+    <a href="b-manuscript.html">B · Manuscript</a>
+    <a href="c-modern.html">C · Modern Reader</a>
+    <a href="d-contents-versions.html">D · Contents ×4</a>
+    <a class="cur" href="e-player-versions.html">E · Player ×4</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="kicker">Round 2 · Screen 5</div>
+  <h1>Four more ways to play the canon</h1>
+  <p>You liked the full-bleed Now Playing — here are four fresh players beyond A/B/C (transport card, maroon hall, cover hero). All four keep Verse | Meaning | Both, the karaoke word, repeat/speed/autoplay, and the Vagdhenu credit — they differ in what leads: the text, the object, the timeline, or the single word.</p>
+  <ul class="points">
+    <li><b>E1</b> Karaoke Stage — the verse is the hero, no art</li>
+    <li><b>E2</b> Vinyl — a spinning disc of the cover</li>
+    <li><b>E3</b> Waveform — podcast scrubber + labeled controls</li>
+    <li><b>E4</b> Word-flow — one pada at a time, eyes closed</li>
+  </ul>
+</header>
+
+<main class="gallery">
+
+  <!-- ═══ E1 · KARAOKE STAGE ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="st-head">
+        <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg></div>
+        <div class="thumb"><img src="../../mobile/assets/covers/gita.webp" alt=""></div>
+        <div class="t"><div class="a">Bhagavad Gītā</div><div class="b">BG 2.47 · verse 94 of 700</div></div>
+        <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+      </div>
+      <div class="navrow" style="padding-bottom:0;"><div class="grow"></div>
+        <div class="modes"><span class="mode on">Verse</span><span class="mode">Meaning</span><span class="mode">Both</span></div>
+      </div>
+
+      <div class="stage">
+        <div class="kbig">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।</div>
+        <div class="kbig act"><span class="w">मा</span> <span class="w">कर्मफलहेतुर्भूः</span> <span class="w">मा</span> <span class="w">ते</span> <span class="w lit">सङ्गोऽस्त्वकर्मणि॥</span></div>
+        <div class="kbig">मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</div>
+        <div class="iast-c">mā karma-phala-hetur bhūr mā te saṅgo 'stv akarmaṇi</div>
+        <div class="linedots"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+        <div class="linelabel">Line 2 of 4 · tap a line to play it</div>
+      </div>
+
+      <div class="transport">
+        <div class="t-main">
+          <div class="tbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2.2v12H6zM18.5 6v12l-9-6z"/></svg></div>
+          <div class="tbtn play"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+          <div class="tbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.8 6H18v12h-2.2zM5.5 6v12l9-6z"/></svg></div>
+        </div>
+        <div class="t-sub">
+          <span class="tsub on">0.9×</span>
+          <span class="tsub on"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.3M21 3v6h-6"/></svg>Verse</span>
+          <span class="tsub on"><span style="font-weight:900; font-size:14px; line-height:1;">∞</span>Auto</span>
+          <span class="tsub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>Learn</span>
+        </div>
+        <div class="credit">Chant · Vagdhenu, IISc</div>
+      </div>
+
+      <div class="upnext1">
+        <span class="lbl">Up next</span>
+        <span class="d">2.48 · योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय…</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#846F57" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">E1 · Player</span>
+      <h3>Karaoke Stage</h3>
+      <p>The opposite bet from the cover hero: no art at all. The verse fills the screen in Tiro — sung lines ghost back, the sounding line is full ink with the word lit — with a line-dot scrubber ("line 2 of 4", tap any line to sing from there). Transport docks at the bottom, one Up-next line beneath. Best for people who read along.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ E2 · VINYL ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="navrow">
+        <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg></div>
+        <div class="grow" style="text-align:center; font-size:11px; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--soft);">Now spinning</div>
+        <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+      </div>
+
+      <div class="vinyl-wrap">
+        <div class="vinyl">
+          <div class="disc-art"><img src="../../mobile/assets/covers/gita.webp" alt=""></div>
+          <div class="label"><span class="ref sa">॥ २.४७ ॥</span><span class="g">Gītā</span></div>
+        </div>
+        <div class="v-title">
+          <div class="a">Bhagavad Gītā · Chapter 2</div>
+          <div class="b">Verse mode · 0.9× · verse 94 of 700</div>
+        </div>
+        <div class="v-cap sk">…मा ते <span class="lit">सङ्गोऽस्त्वकर्मणि॥</span></div>
+        <div class="v-bar"><span class="t">0:12</span><div class="track"><i></i></div><span class="t">−0:48</span></div>
+      </div>
+
+      <div class="v-transport">
+        <div class="vtbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2.2v12H6zM18.5 6v12l-9-6z"/></svg></div>
+        <div class="vtbtn play"><svg width="31" height="31" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+        <div class="vtbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.8 6H18v12h-2.2zM5.5 6v12l9-6z"/></svg></div>
+      </div>
+      <div class="v-sub" style="padding-bottom:26px;">
+        <span class="mode on">Verse</span><span class="mode">Meaning</span><span class="mode">Both</span>
+        <span class="mode on" style="letter-spacing:.04em;">∞ Auto</span>
+        <span class="mode"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">E2 · Player</span>
+      <h3>Vinyl — now spinning</h3>
+      <p>The chant as an object: the cover pressed into a spinning disc with grooves and a maroon-and-gold centre label carrying ॥ २.४७ ॥ (it stops when paused). A single karaoke caption line keeps you oriented, a gold progress arm tracks time, and the transport is a big gold play between ringed skips. The most characterful option.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ E3 · WAVEFORM / PODCAST ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="navrow">
+        <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg></div>
+        <div class="grow" style="text-align:center;"><div style="font-size:15px; font-weight:900;">Listen · Bhagavad Gītā</div>
+          <div style="font-size:11px; font-weight:700; color:var(--soft);">BG 2.47 · 94 of 700 · Chapter 2</div></div>
+        <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+      </div>
+
+      <div class="wf-card">
+        <div class="ref">Now · BG 2.47</div>
+        <div class="k">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br>मा कर्मफलहेतुर्भूर्मा ते <span class="lit">सङ्गोऽस्त्वकर्मणि॥</span></div>
+        <div class="tr">Your right is to action alone, never to its fruits…</div>
+      </div>
+
+      <div class="wavebox">
+        <div class="wave" data-bars="46" data-hit="21"><div class="ph"></div></div>
+        <div class="times"><span>0:12</span><span>verse 0:60 · chapter 12 min left</span></div>
+      </div>
+
+      <div class="wf-transport">
+        <div class="wbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2.2v12H6zM18.5 6v12l-9-6z"/></svg></div>
+        <div class="wbtn play"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+        <div class="wbtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.8 6H18v12h-2.2zM5.5 6v12l9-6z"/></svg></div>
+      </div>
+
+      <div class="w-grid">
+        <div class="wcell on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.3M21 3v6h-6"/></svg>Repeat<br>verse</div>
+        <div class="wcell on">0.9×</div>
+        <div class="wcell on"><span style="font-weight:900; font-size:16px; line-height:1;">∞</span>Auto</div>
+        <div class="wcell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg>Sleep<br>off</div>
+        <div class="wcell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>Learn</div>
+      </div>
+
+      <div class="nextchips" style="padding-bottom:30px;">
+        <span class="nchip hot">Up next · 2.48</span>
+        <span class="nchip">2.49</span>
+        <span class="nchip">2.50</span>
+        <span class="nchip">Chapter list <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">E3 · Player</span>
+      <h3>Waveform — the podcast console</h3>
+      <p>The Overcast shape: a scrubber you can actually aim (drag the playhead anywhere in the verse), times for verse and chapter, and controls that say what they do — Repeat verse, 0.9×, Autoplay, Sleep (new idea: stop after this chapter for bedtime listening), Learn. Up-next as chips instead of a list.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ E4 · WORD FLOW ZEN ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+
+      <div class="zen">
+        <div class="zen-top"><span>BG 2.47 · Verse</span><span>0.9×</span></div>
+
+        <div class="zen-mid">
+          <div class="halo"></div>
+          <div class="ghost">मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</div>
+          <div class="bigword sa" style="font-family:'Tiro Devanagari Sanskrit';">सङ्गोऽस्त्वकर्मणि</div>
+          <div class="wordmeta"><span class="sa-w">सङ्गः + अस्तु + अकर्मणि</span> · attachment · let there be · in inaction</div>
+          <div class="linelabel2">word 5 of 6 · line 2 of 4</div>
+        </div>
+
+        <div class="zen-bottom">
+          <div class="zen-bar"><i></i></div>
+          <div class="zen-ctrl">
+            <div class="zbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7M20 5l-7 7 7 7"/></svg></div>
+            <div class="zbtn play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+            <div class="zbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5l7 7-7 7M4 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="zen-credit">Chant · Vagdhenu, IISc</div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">E4 · Player</span>
+      <h3>Word-flow — listening with eyes half-closed</h3>
+      <p>The most radical: one pada at a time, giant in the centre with a breathing halo, the full line ghosted around it for context, and the sandhi breakdown as it sounds (सङ्गः + अस्तु + अकर्मणि). Nothing else to read, three quiet controls. A "focus mode" toggle on any of the other players could lead here.</p>
+    </figcaption>
+  </figure>
+
+</main>
+
+<script>
+  // E3 waveform: pseudo-random smooth bars; first `hit` bars are "played".
+  document.querySelectorAll(".wave").forEach((wave) => {
+    const bars = +wave.dataset.bars, hit = +wave.dataset.hit;
+    const ph = wave.querySelector(".ph");
+    for (let i = 0; i < bars; i++) {
+      const h = 10 + Math.round(14 * Math.abs(Math.sin(i * 0.7)) + 12 * Math.abs(Math.sin(i * 0.23)) + 6 * Math.abs(Math.sin(i * 1.9)));
+      const b = document.createElement("i");
+      b.style.height = Math.min(64, h) + "px";
+      if (i < hit) b.classList.add("hit");
+      wave.insertBefore(b, ph);
+    }
+  });
+</script>
+</body>
+</html>

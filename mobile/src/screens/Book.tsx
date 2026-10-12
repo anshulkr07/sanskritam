@@ -123,7 +123,16 @@ export default function BookScreen({ navigation, route }: Props) {
     cycleSpeed,
     scrollToCurrent,
     openLearn,
-  } = useChant(pages, bookTitle, { initialIndex: index ?? 0, navigate, onAt: persistAt, scrollToList: !focus });
+  } = useChant(pages, bookTitle, {
+    initialIndex: index ?? 0,
+    navigate,
+    onAt: persistAt,
+    scrollToList: !focus,
+    // Name the session so the shelf mini player can reopen this book.
+    sessionKey: `chant:${bookKey}:${chapter ?? "*"}`,
+    bookKey,
+    chapter: chapter ?? null,
+  });
 
   const saveMode = (m: ReadMode) => {
     setMode(m);

@@ -74,6 +74,26 @@ def _is_item(v: Any) -> bool:
     return isinstance(v, dict) and isinstance(v.get("text"), str) and v.get("basis") in BASIS
 
 
+TEXT_KINDS = ("mantra", "stotra", "aarti", "dhyana")
+
+
+def _text_item_error(t: Any) -> str | None:
+    """Shared rule for body.texts and series_days[].texts items."""
+    if not isinstance(t, dict) or t.get("kind") not in TEXT_KINDS:
+        return f"texts item needs kind {'|'.join(TEXT_KINDS)}"
+    # Rich devotional text needs verifiable provenance: original
+    # script, transliteration, meaning, and an exact source. Passing
+    # the schema check alone never means the quotation is complete.
+    if not isinstance(t.get("title"), str) or not t.get("title", "").strip():
+        return "texts item needs title"
+    if t.get("devanagari") is not None and not isinstance(t.get("devanagari"), str):
+        return "texts devanagari must be a string"
+    src = t.get("source") or t.get("ref") or t.get("source_url")
+    if t.get("devanagari") and not src:
+        return "texts with devanagari needs source/ref/source_url"
+    return None
+
+
 def validate_page(body: dict) -> list[str]:
     """Schema and limit errors; [] means valid."""
     errs: list[str] = []
@@ -134,21 +154,9 @@ def validate_page(body: dict) -> list[str]:
         errs.append("texts must be a list")
     else:
         for t in texts:
-            if not isinstance(t, dict) or t.get("kind") not in ("mantra", "stotra", "aarti"):
-                errs.append("texts item needs kind mantra|stotra|aarti")
-                break
-            # Rich devotional text needs verifiable provenance: original
-            # script, transliteration, meaning, and an exact source. Passing
-            # the schema check alone never means the quotation is complete.
-            if not isinstance(t.get("title"), str) or not t.get("title", "").strip():
-                errs.append("texts item needs title")
-                break
-            if t.get("devanagari") is not None and not isinstance(t.get("devanagari"), str):
-                errs.append("texts devanagari must be a string")
-                break
-            src = t.get("source") or t.get("ref") or t.get("source_url")
-            if t.get("devanagari") and not src:
-                errs.append("texts with devanagari needs source/ref/source_url")
+            err = _text_item_error(t)
+            if err:
+                errs.append(err)
                 break
     regions = body.get("regions", [])
     if not isinstance(regions, list):
@@ -193,6 +201,17 @@ def validate_page(body: dict) -> list[str]:
                     break
                 if len(it["text"]) > STEP_LIMIT:
                     errs.append(f"series_days {fk}: step over {STEP_LIMIT} chars")
+                    break
+            # Optional per-day texts: same provenance rules as body.texts,
+            # so a day can carry its own dhyana/mantra without a full page.
+            s_texts = s.get("texts", [])
+            if not isinstance(s_texts, list):
+                errs.append(f"series_days {fk}: texts must be a list")
+                break
+            for t in s_texts:
+                err = _text_item_error(t)
+                if err:
+                    errs.append(f"series_days {fk}: {err}")
                     break
             seen_forms.add(fk)
     return errs
@@ -282,6 +301,7 @@ def section_counts(body: dict) -> dict[str, int]:
         "texts": len(body.get("texts", []) or []),
         "regions": len(body.get("regions", []) or []),
         "series_days": len(series),
+        "series_texts": sum(len(s.get("texts", []) or []) for s in series),
     }
 
 
@@ -301,7 +321,8 @@ PAGE_JSON_SCHEMA = {
     "do": {"gather": [], "steps": []},
     "vrat": {"eat": [], "avoid": [], "break": [], "who_should_eat": []},
     "dont": [],
-    "texts": [{"kind": "mantra|stotra|aarti"}],
+    "texts": [{"kind": "mantra|stotra|aarti|dhyana"}],
     "regions": [{"region": "bengal", "items": []}],
-    "series_days": [{"tithi_key": "...", "form_key": "...", "summary": "...", "steps": []}],
+    "series_days": [{"tithi_key": "...", "form_key": "...", "summary": "...", "steps": [],
+                     "texts": [{"kind": "mantra|stotra|aarti|dhyana"}]}],
 }

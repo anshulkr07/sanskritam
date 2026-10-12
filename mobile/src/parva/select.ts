@@ -9,6 +9,8 @@ export interface SeriesContent {
   form_key?: string;
   summary?: string;
   steps?: { text?: string }[];
+  /** Per-day mantra/dhyana, same shape as body-level texts. */
+  texts?: Record<string, unknown>[];
   [k: string]: unknown;
 }
 

@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read · Listen — Variant B · Manuscript</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800&family=Baloo+2:wght@400;500;600;700;800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF4E3; --paper-deep:#F3E8D2; --surface:#FFFDF6; --border:#E4D5B8;
+    --maroon:#561722; --maroon-deep:#430F18; --gold:#C29B4C; --gold-bright:#E8C27A;
+    --ink:#3A2B20; --soft:#7C6A54; --faint:#9A8668;
+    --saffron:#E85B25; --cream:#FFF8EE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:#E9DEC8; font-family:'Cormorant Garamond',serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .sa{font-family:'Baloo 2','Noto Sans Devanagari',sans-serif;}
+  .sk{font-family:'Tiro Devanagari Sanskrit','Noto Sans Devanagari',serif;}
+  .caps{font-family:'Cormorant Garamond',serif; text-transform:uppercase; letter-spacing:.22em; font-weight:600;}
+
+  /* ── page chrome ─────────────────────────────── */
+  .vnav{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:18px;
+    padding:12px 28px; background:rgba(67,15,24,.95); color:var(--cream); backdrop-filter:blur(8px);}
+  .vnav .brand{font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:14px;}
+  .vnav .links{display:flex; gap:6px; margin-left:auto;}
+  .vnav a{color:rgba(255,248,238,.75); text-decoration:none; font-family:'Nunito',sans-serif; font-weight:800; font-size:13px; padding:7px 14px; border-radius:999px;}
+  .vnav a:hover{color:var(--cream); background:rgba(255,248,238,.12);}
+  .vnav a.cur{background:var(--gold); color:var(--maroon-deep);}
+  .page-head{max-width:1200px; margin:0 auto; padding:44px 28px 8px;}
+  .page-head .kicker{color:var(--maroon); font-weight:600; font-size:14px; letter-spacing:.24em; text-transform:uppercase;}
+  .page-head h1{font-size:42px; font-weight:700; margin:6px 0 10px; letter-spacing:-.2px;}
+  .page-head p{max-width:780px; font-size:18px; line-height:1.6; color:var(--soft);}
+  .points{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; max-width:960px;}
+  .points li{list-style:none; background:var(--surface); border:1px solid var(--border);
+    padding:7px 14px; border-radius:999px; font-family:'Nunito',sans-serif; font-size:12.5px; font-weight:700; color:var(--ink);}
+  .points li b{color:var(--maroon);}
+
+  .gallery{display:flex; gap:44px; overflow-x:auto; padding:36px 40px 70px; align-items:flex-start; scroll-snap-type:x proximity;}
+  .shot{flex:0 0 auto; scroll-snap-align:start;}
+  figcaption{margin-top:16px; max-width:375px;}
+  figcaption .num{display:inline-flex; align-items:center; gap:8px; font-family:'Nunito',sans-serif; font-weight:900; font-size:13px; color:var(--maroon); text-transform:uppercase; letter-spacing:1px;}
+  figcaption .num::after{content:""; width:26px; height:2px; background:var(--gold); border-radius:2px;}
+  figcaption h3{font-size:22px; font-weight:700; margin:4px 0 6px;}
+  figcaption p{font-size:14.5px; line-height:1.55; color:var(--soft);}
+
+  /* ── phone ───────────────────────────────────── */
+  .phone{width:393px; height:830px; border-radius:52px; background:#241c16; padding:11px;
+    box-shadow:0 30px 60px rgba(48,36,24,.35), 0 4px 14px rgba(48,36,24,.25);}
+  .screen{width:100%; height:100%; border-radius:42px; overflow:hidden; background:var(--paper);
+    position:relative; display:flex; flex-direction:column;}
+  .status{height:50px; flex:none; display:flex; align-items:flex-end; justify-content:space-between;
+    padding:0 26px 6px; font-family:'Nunito',sans-serif; font-weight:800; font-size:14px; color:var(--ink); z-index:30;}
+  .screen.on-maroon .status{color:var(--gold-bright);}
+  .body-scroll{flex:1; overflow:hidden auto; scrollbar-width:none;}
+  .body-scroll::-webkit-scrollbar{display:none;}
+  .homebar{position:absolute; left:50%; transform:translateX(-50%); bottom:7px; width:120px; height:5px;
+    border-radius:99px; background:rgba(59,46,37,.28); z-index:40;}
+  .screen.on-maroon .homebar{background:rgba(255,248,238,.3);}
+
+  /* ── covers + wooden shelf ───────────────────── */
+  .cover{position:relative; border-radius:3px 7px 7px 3px; overflow:hidden; width:104px; height:156px;
+    background:var(--c,#3A2B20); color:var(--fg,#FFF8EE); flex:none;
+    box-shadow:2px 0 6px rgba(50,30,15,.22), 0 6px 12px rgba(50,30,15,.2);
+    outline:1px solid rgba(232,194,122,.35); outline-offset:-3px;}
+  .cover .art{width:100%; height:71%; object-fit:cover; display:block;}
+  .cover .ground{height:29%; display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:0 8px; font-family:'Baloo 2'; font-weight:700; font-size:12.5px; line-height:1.3;}
+  .cover.vector{display:flex; flex-direction:column;}
+  .cover.vector .spine{position:absolute; left:0; top:0; bottom:0; width:8px; background:rgba(0,0,0,.24);}
+  .cover.vector .motif{flex:1; display:flex; align-items:center; justify-content:center; padding-top:10px;}
+  .cover.vector .title{font-family:'Baloo 2'; font-weight:700; font-size:12.5px; text-align:center; line-height:1.3; padding:0 8px 10px 14px;}
+  .cover.soon{opacity:.45; filter:saturate(.4);}
+  .badge-audio{position:absolute; right:6px; bottom:calc(29% + 6px); width:22px; height:22px; border-radius:99px;
+    background:rgba(20,10,6,.62); display:flex; align-items:center; justify-content:center; color:var(--gold-bright);}
+
+  .shelfplate{height:11px; margin-top:6px; border-radius:2px;
+    background:linear-gradient(180deg,#C79A64 0%,#B5854E 55%,#8F6234 100%);
+    box-shadow:0 4px 7px rgba(70,45,20,.35), 0 1px 0 rgba(255,240,200,.5) inset;}
+  .rail{padding:22px 22px 0;}
+  .railhead{display:flex; align-items:baseline; gap:10px; margin-bottom:10px;}
+  .railhead .en{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink);}
+  .railhead .dv{font-size:13.5px; color:var(--gold); font-weight:600;}
+  .railhead .rule{flex:1; height:1px; background:linear-gradient(90deg,var(--gold),transparent); align-self:center;}
+  .row{display:flex; gap:13px; align-items:flex-end; overflow:hidden;}
+
+  /* ── codex hero ──────────────────────────────── */
+  .codex{margin:14px 22px 0; background:var(--surface); position:relative; padding:6px;
+    box-shadow:0 12px 28px rgba(90,60,20,.18);}
+  .codex .in{border:1px solid var(--gold); padding:2px;}
+  .codex .in2{border:1px solid rgba(194,155,76,.55); padding:18px 18px 16px; text-align:center;}
+  .codex .eyebrow{font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:var(--maroon); font-weight:600;}
+  .codex h3{font-size:26px; font-weight:400; margin-top:8px; line-height:1.35;}
+  .codex .meta{font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:700; color:var(--soft); margin-top:6px; letter-spacing:.05em;}
+  .codex .line1{font-size:17px; line-height:1.9; margin-top:12px; color:var(--ink);}
+  .codex .rule-orn{display:flex; align-items:center; gap:9px; justify-content:center; margin:13px 0 12px; color:var(--gold);}
+  .codex .rule-orn i{width:52px; height:1px; background:var(--gold);}
+  .codex .rule-orn b{width:6px; height:6px; background:var(--gold); transform:rotate(45deg);}
+  .codex .bar{height:3px; background:var(--paper-deep); border-radius:99px; overflow:hidden; margin:0 26px;}
+  .codex .bar i{display:block; height:100%; width:13%; background:var(--maroon); border-radius:99px;}
+  .codex .cta{display:flex; gap:10px; justify-content:center; margin-top:14px;}
+  .codex .go{display:inline-flex; align-items:center; gap:8px; background:var(--maroon); color:var(--gold-bright);
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:13px; padding:10px 18px; border-radius:4px; letter-spacing:.04em;}
+  .codex .alt{display:inline-flex; align-items:center; gap:7px; border:1.5px solid var(--gold); color:var(--maroon);
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:13px; padding:10px 16px; border-radius:4px;}
+
+  .masthead{padding:10px 22px 0; display:flex; align-items:baseline; justify-content:space-between;}
+  .masthead h2{font-size:34px; font-weight:700;}
+  .masthead .dev{font-size:15px; color:var(--gold); }
+  .switchrow{display:flex; align-items:center; gap:12px; padding:10px 22px 0;}
+  .switchrow .seg{display:flex; align-items:center; gap:7px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:800;
+    color:var(--soft); padding:7px 16px; border-radius:3px; border:1.5px solid transparent;}
+  .switchrow .seg.on{color:var(--maroon); border-color:var(--gold); background:var(--surface);}
+
+  /* ── TOC ─────────────────────────────────────── */
+  .backrow{display:flex; align-items:center; gap:8px; padding:4px 22px 8px; color:var(--maroon);
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:13.5px;}
+  .tochead{padding:8px 22px 4px; text-align:center;}
+  .tochead .big{font-size:27px; line-height:1.4;}
+  .tochead .orn{display:flex; align-items:center; gap:9px; justify-content:center; margin:9px 0;}
+  .tochead .orn i{width:44px; height:1px; background:var(--gold);}
+  .tochead .orn b{width:6px; height:6px; background:var(--gold); transform:rotate(45deg);}
+  .tochead .sub{font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:var(--soft); font-weight:600;}
+  .tocopen{margin:16px 22px 0; background:var(--surface); border:1px solid var(--border); padding:14px 18px;
+    display:flex; align-items:center; gap:14px; box-shadow:0 8px 20px rgba(90,60,20,.12);}
+  .tocopen .mini{width:52px; height:78px; border-radius:2px 5px 5px 2px; background:var(--maroon);
+    outline:1px solid rgba(232,194,122,.5); outline-offset:-3px; display:flex; align-items:center; justify-content:center;
+    color:var(--gold-bright); font-family:'Baloo 2'; font-weight:700; font-size:10px; text-align:center; line-height:1.3; padding:4px;}
+  .tocopen .txt{flex:1;}
+  .tocopen .t1{font-family:'Nunito',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--maroon);}
+  .tocopen .t2{font-size:17px; margin-top:2px;}
+  .tocopen .go{margin-top:9px; display:inline-flex; align-items:center; gap:7px; background:var(--maroon); color:var(--gold-bright);
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:12.5px; padding:8px 15px; border-radius:3px;}
+  .toc{padding:6px 26px 34px;}
+  .toc .chap{display:flex; align-items:baseline; gap:10px; padding:15px 0 7px; color:var(--maroon);}
+  .toc .chap .n{font-weight:700; font-size:16px; letter-spacing:.14em; text-transform:uppercase;}
+  .toc .chap .dv{font-size:13px; color:var(--gold);}
+  .toc .chap .rule{flex:1; height:1px; background:var(--border);}
+  .toc .chap .c{font-family:'Nunito',sans-serif; font-size:11px; font-weight:700; color:var(--soft);}
+  .tocrow{display:flex; align-items:baseline; gap:8px; padding:6.5px 0;}
+  .tocrow .first{font-size:14.5px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1;}
+  .tocrow .leader{flex:0 1 40px; border-bottom:1.5px dotted #C9B488; transform:translateY(-3px);}
+  .tocrow .pg{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:14px; color:var(--maroon); width:26px; text-align:right;}
+  .tocrow.cur .first{color:var(--maroon); font-weight:400;}
+  .tocrow.cur .pg{background:var(--maroon); color:var(--gold-bright); border-radius:2px; padding:0 4px;}
+
+  /* ── reading page ────────────────────────────── */
+  .readhead{display:flex; align-items:center; padding:2px 20px 6px; font-family:'Nunito',sans-serif;}
+  .readhead .back{display:flex; align-items:center; gap:6px; color:var(--maroon); font-weight:800; font-size:13px; min-width:84px;}
+  .readhead .pos{flex:1; text-align:center; font-weight:700; font-size:12.5px; color:var(--soft); letter-spacing:.1em;}
+  .readhead .lib{min-width:84px; display:flex; justify-content:flex-end; color:var(--maroon);}
+  .desk{flex:1; padding:2px 18px 0; display:flex;}
+  .leaf{flex:1; position:relative; background:var(--surface); border-radius:2px; overflow:hidden auto;
+    scrollbar-width:none; padding:16px 20px 14px;
+    box-shadow:3px 3px 0 var(--paper-deep), 8px 8px 20px rgba(90,60,20,.12);}
+  .leaf::-webkit-scrollbar{display:none;}
+  .leaf::before{content:""; position:absolute; left:7px; top:0; bottom:0; width:1px; background:rgba(194,155,76,.4);}
+  .leaf::after{content:""; position:absolute; left:10px; top:0; bottom:0; width:1px; background:rgba(194,155,76,.25);}
+  .runhead{text-align:center; font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--soft); font-weight:600;}
+  .runhead .orn{display:flex; align-items:center; gap:8px; justify-content:center; margin-top:7px; color:var(--gold);}
+  .runhead .orn i{width:30px; height:1px; background:var(--gold);}
+  .runhead .orn b{width:5px; height:5px; background:var(--gold); transform:rotate(45deg);}
+  .verseno{text-align:center; margin:14px 0 4px; color:var(--maroon); font-size:15px;}
+  .verse{font-size:19.5px; line-height:2.15; color:var(--ink); text-align:center;}
+  .verse .pada{border-bottom:1.5px solid transparent; border-radius:2px; padding:0 1px;}
+  .verse .pada.sel{color:var(--maroon); border-bottom:1.5px solid var(--gold); background:rgba(194,155,76,.12);}
+  .sep{color:var(--gold); font-size:15px;}
+  .iast{text-align:center; font-style:italic; font-size:13.5px; color:var(--soft); margin-top:12px; line-height:1.7;}
+  .trans{margin-top:16px; border-top:1px solid var(--border); padding-top:12px;}
+  .trans .h{display:flex; align-items:center; gap:8px; justify-content:center; font-size:11.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--maroon); font-weight:600;}
+  .trans .h i{width:22px; height:1px; background:var(--gold);}
+  .trans p{text-align:center; font-size:15.5px; line-height:1.65; margin-top:7px; color:var(--ink);}
+  .gloss{margin:16px 8px 0; border:1px solid var(--gold); background:rgba(194,155,76,.07); padding:12px 14px; text-align:center;}
+  .gloss .w{font-size:17px; color:var(--maroon);}
+  .gloss .m{font-size:14.5px; margin-top:3px;}
+  .gloss .f{font-family:'Nunito',sans-serif; display:flex; gap:6px; justify-content:center; margin-top:8px; flex-wrap:wrap;}
+  .gloss .f span{font-size:10.5px; font-weight:800; color:var(--soft); border:1px solid var(--border); border-radius:99px; padding:2.5px 9px;}
+  .askrow{display:flex; justify-content:center; margin-top:14px; font-family:'Nunito',sans-serif; font-weight:800; font-size:12.5px; color:var(--maroon); gap:6px; align-items:center;}
+  .folio{text-align:center; margin-top:13px; color:var(--gold); font-size:14px; letter-spacing:.1em;}
+  .folio .n{color:var(--soft); font-family:'Nunito',sans-serif; font-size:11px; font-weight:700; letter-spacing:.06em;}
+  .scrubwrap{padding:8px 24px 0; font-family:'Nunito',sans-serif;}
+  .scrub{position:relative; height:26px; display:flex; align-items:center;}
+  .scrub .track{height:5px; border-radius:99px; background:var(--paper-deep); width:100%; overflow:hidden;}
+  .scrub .track i{display:block; height:100%; width:13%; background:var(--maroon); border-radius:99px;}
+  .scrub .thumb{position:absolute; left:13%; top:50%; transform:translate(-50%,-50%); width:19px; height:19px;
+    background:var(--surface); border:3px solid var(--gold); border-radius:99px; box-shadow:0 2px 6px rgba(59,46,37,.25);}
+  .scrubends{display:flex; justify-content:space-between; font-size:10.5px; font-weight:700; color:var(--faint); margin-top:3px;}
+  .turnrow{display:flex; gap:12px; padding:12px 20px 26px; font-family:'Nunito',sans-serif;}
+  .turnbtn{flex:1; display:flex; align-items:center; justify-content:center; gap:7px; background:var(--surface);
+    border:1px solid var(--gold); border-radius:3px; padding:12px; font-weight:800; font-size:13.5px; color:var(--maroon);}
+  .turnbtn.dis{color:var(--faint); border-color:var(--border);}
+
+  /* ── player on maroon ────────────────────────── */
+  .screen.on-maroon{background:linear-gradient(178deg,#5E1A26 0%, #430F18 62%, #370A12 100%); color:var(--cream);}
+  .lhead{display:flex; align-items:center; gap:10px; padding:2px 16px 6px; font-family:'Nunito',sans-serif;}
+  .lhead .t{flex:1; min-width:0;}
+  .lhead .t .a{font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--gold-bright); letter-spacing:.04em;}
+  .lhead .t .b{font-size:11px; font-weight:700; color:rgba(255,248,238,.55); margin-top:1px;}
+  .orn-wide{display:flex; align-items:center; gap:10px; justify-content:center; color:var(--gold); margin:2px 0 8px;}
+  .orn-wide i{flex:1; max-width:90px; height:1px; background:linear-gradient(90deg,transparent,var(--gold));}
+  .orn-wide i:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
+  .orn-wide b{width:6px; height:6px; background:var(--gold); transform:rotate(45deg);}
+  .modes{display:flex; gap:9px; justify-content:center; padding:0 18px 10px; font-family:'Nunito',sans-serif;}
+  .mode{border:1.5px solid rgba(232,194,122,.5); border-radius:2px; padding:6px 16px; font-size:12px; font-weight:800;
+    letter-spacing:.12em; text-transform:uppercase; color:rgba(255,248,238,.72);}
+  .mode.on{background:var(--gold); color:var(--maroon-deep); border-color:var(--gold);}
+  .stage{margin:0 22px; border:1px solid rgba(232,194,122,.45); border-radius:2px; padding:3px; background:rgba(0,0,0,.12);}
+  .stage .in{border:1px solid rgba(232,194,122,.25); padding:18px 16px 14px; text-align:center;}
+  .stage .nref{font-family:'Nunito',sans-serif; font-size:10px; font-weight:800; letter-spacing:.28em; text-transform:uppercase; color:var(--gold);}
+  .kline{font-size:20px; line-height:2.1; color:rgba(255,248,238,.92); padding:3px 0;}
+  .kline.dim{color:rgba(255,248,238,.4);}
+  .kline .w{border-radius:2px; padding:0 2px;}
+  .kline .w.lit{background:rgba(232,194,122,.18); color:var(--gold-bright); box-shadow:0 0 0 1px rgba(232,194,122,.4);}
+  .ntrans{font-family:'Cormorant Garamond',serif; font-size:15.5px; font-style:italic; color:rgba(255,248,238,.75); margin-top:11px; line-height:1.6;}
+  .ncredit{font-family:'Nunito',sans-serif; font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(232,194,122,.6); margin-top:11px;}
+  .transport{padding:18px 26px 8px; font-family:'Nunito',sans-serif;}
+  .t-main{display:flex; align-items:center; justify-content:center; gap:26px;}
+  .tbtn{width:52px; height:52px; border-radius:99px; display:flex; align-items:center; justify-content:center;
+    color:var(--gold-bright); border:1.5px solid rgba(232,194,122,.5);}
+  .tbtn.play{width:78px; height:78px; background:var(--gold); color:var(--maroon-deep); border:none;
+    box-shadow:0 0 0 6px rgba(232,194,122,.14), 0 14px 30px rgba(0,0,0,.4);}
+  .t-sub{display:flex; justify-content:center; gap:9px; margin-top:16px;}
+  .tsub{display:flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color:rgba(255,248,238,.7);
+    border:1px solid rgba(232,194,122,.35); border-radius:2px; padding:6px 11px; letter-spacing:.08em;}
+  .tsub.on{background:rgba(232,194,122,.16); color:var(--gold-bright); border-color:var(--gold);}
+  .plist{padding:14px 26px 30px;}
+  .plist h5{display:flex; align-items:center; gap:9px; font-family:'Nunito',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.26em; text-transform:uppercase; color:rgba(232,194,122,.75); margin-bottom:4px;}
+  .plist h5 i{flex:1; height:1px; background:linear-gradient(90deg,rgba(232,194,122,.5),transparent);}
+  .prow{display:flex; align-items:center; gap:12px; padding:8px 2px; border-bottom:1px solid rgba(232,194,122,.14); font-family:'Nunito',sans-serif;}
+  .prow .n{width:24px; font-size:11px; font-weight:700; color:rgba(255,248,238,.4); text-align:center; font-family:'Cormorant Garamond',serif; font-size:13.5px;}
+  .prow .txt{flex:1; min-width:0;}
+  .prow .r{font-size:9.5px; font-weight:800; letter-spacing:.2em; color:rgba(232,194,122,.6);}
+  .prow .d{font-family:'Tiro Devanagari Sanskrit'; font-size:14px; color:rgba(255,248,238,.85);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .prow.cur .d{color:var(--gold-bright);}
+  .prow.cur .n{color:var(--gold-bright);}
+  .prow .eq{display:flex; gap:2.5px; align-items:flex-end; height:14px; color:var(--gold-bright);}
+  .prow .eq i{width:3px; background:currentColor; border-radius:2px; display:block; animation:eq 1s ease-in-out infinite;}
+  .prow .eq i:nth-child(1){height:7px;} .prow .eq i:nth-child(2){height:13px; animation-delay:.25s;} .prow .eq i:nth-child(3){height:9px; animation-delay:.5s;}
+  @keyframes eq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+</style>
+</head>
+<body>
+
+<nav class="vnav">
+  <span class="brand">Read · Listen — design directions</span>
+  <div class="links">
+    <a href="a-saffron-library.html">A · Saffron Library</a>
+    <a class="cur" href="b-manuscript.html">B · Manuscript</a>
+    <a href="c-modern.html">C · Modern Reader</a>
+    <a href="d-contents-versions.html">D · Contents ×4</a>
+    <a href="e-player-versions.html">E · Player ×4</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="kicker">Variant B</div>
+  <h1>Manuscript — the poṭha, treated like one</h1>
+  <p>The boldest of the three. The Read tab stops pretending to be an app store and becomes a library of editions: books stand on wooden shelves, contents pages read like a printed edition's front matter, the leaf you read is rubricated cream with gold hairlines, and the player sits in a deep maroon hall with gold type. Typography leads — a serif (Cormorant) joins the family for English display, Tiro carries all Sanskrit, ornaments replace icon-chrome.</p>
+  <ul class="points">
+    <li><b>Shelves</b> are literal — wooden ledges under each rail</li>
+    <li><b>Contents</b> as a printed table of contents, dot leaders and all</li>
+    <li><b>Leaf</b> with margin rules, pada words underlined in gold, not boxed</li>
+    <li><b>Player</b> a maroon hall — gold karaoke, gold transport</li>
+    <li>New English display face (Cormorant) — a real brand decision</li>
+  </ul>
+</header>
+
+<main class="gallery">
+
+  <!-- ═══ 1 · BOOKS SHELF ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3A2B20"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3A2B20" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3A2B20"/><path d="M22 4v4" stroke="#3A2B20" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="masthead"><h2>The Library</h2><span class="dev sa sa">पुस्तकालयः</span></div>
+        <div class="switchrow">
+          <div class="seg on">Books</div>
+          <div class="seg">Listening</div>
+        </div>
+
+        <div class="codex">
+          <div class="in"><div class="in2">
+            <div class="eyebrow">Continue reading</div>
+            <h3 class="sk">श्रीमद्भगवद्गीता</h3>
+            <div class="meta">Chapter 2 · verse 47 · 94 of 700</div>
+            <div class="line1 sk">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन…</div>
+            <div class="rule-orn"><i></i><b></b><i></i></div>
+            <div class="bar"><i></i></div>
+            <div class="cta">
+              <span class="go"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Open at 2.47</span>
+              <span class="alt">Contents</span>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="rail">
+          <div class="railhead"><span class="en">Scriptures</span><span class="dv sa">शास्त्राणि</span><span class="rule"></span></div>
+          <div class="row">
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#561722;--fg:#F2C879"><img class="art" src="../../mobile/assets/covers/gita.webp" alt=""><div class="ground sa">गीता</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#2F4677;--fg:#F3D27A"><img class="art" src="../../mobile/assets/covers/isha.webp" alt=""><div class="ground sa">ईशावास्यम्</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#4B3B7A;--fg:#EAD9A8"><img class="art" src="../../mobile/assets/covers/katha.webp" alt=""><div class="ground sa">कठः</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#2F5B3C;--fg:#F2D9A0"><img class="art" src="../../mobile/assets/covers/ramayana.webp" alt=""><div class="ground sa">रामायणम्</div></div><div class="shelfplate"></div></div>
+          </div>
+        </div>
+
+        <div class="rail">
+          <div class="railhead"><span class="en">Stories &amp; wisdom</span><span class="dv sa">कथाः</span><span class="rule"></span></div>
+          <div class="row">
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#1F6E73;--fg:#FCE9C2"><img class="art" src="../../mobile/assets/covers/hito.webp" alt=""><div class="ground sa">हितोपदेशः</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#8A5608;--fg:#FFF3D6"><img class="art" src="../../mobile/assets/covers/pancha.webp" alt=""><div class="ground sa">पञ्चतन्त्रम्</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover soon" style="--c:#962F4E;--fg:#FBE1C8"><img class="art" src="../../mobile/assets/covers/niti.webp" alt=""><div class="ground sa">नीतिशतकम्</div></div><div class="shelfplate"></div></div>
+          </div>
+        </div>
+
+        <div class="rail" style="padding-bottom:34px;">
+          <div class="railhead"><span class="en">Graded reading</span><span class="dv sa">क्रमशः</span><span class="rule"></span></div>
+          <div class="row">
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#17535C;--fg:#FFF8EE"><img class="art" src="../../mobile/assets/covers/graded-1.webp" alt=""><div class="ground sa">सरलम्</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#35603C;--fg:#FFF8EE"><img class="art" src="../../mobile/assets/covers/graded-2.webp" alt=""><div class="ground sa">सन्धिः</div></div><div class="shelfplate"></div></div>
+            <div style="flex:none; width:104px;"><div class="cover" style="--c:#8A5608;--fg:#FFF8EE"><img class="art" src="../../mobile/assets/covers/graded-3.webp" alt=""><div class="ground sa">समासः</div></div><div class="shelfplate"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">Screen 1</span>
+      <h3>The Library — books on real shelves</h3>
+      <p>Every rail sits on a wooden ledge, so the shelf reads as furniture, not a carousel. The Continue card is a framed codex page carrying the actual verse you stopped at — the shelf speaks Sanskrit before you open anything.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ 2 · AUDIO SHELF ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3A2B20"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3A2B20" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3A2B20"/><path d="M22 4v4" stroke="#3A2B20" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="masthead"><h2>The Library</h2><span class="dev sa">श्रवणालयः</span></div>
+        <div class="switchrow">
+          <div class="seg">Books</div>
+          <div class="seg on">Listening</div>
+        </div>
+
+        <div class="codex">
+          <div class="in"><div class="in2">
+            <div class="eyebrow">Continue listening</div>
+            <h3 class="sk">श्रीमद्भगवद्गीता</h3>
+            <div class="meta">BG 2.47 · verse 94 of 700 · verse mode · 0.9×</div>
+            <div class="line1 sk">…मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</div>
+            <div class="rule-orn"><i></i><b></b><i></i></div>
+            <div class="bar"><i style="width:13%"></i></div>
+            <div class="cta">
+              <span class="go"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Resume</span>
+              <span class="alt">Chapters</span>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="rail">
+          <div class="railhead"><span class="en">Voiced</span><span class="dv sa">स्वरावितानि</span><span class="rule"></span></div>
+          <div class="row">
+            <div style="flex:none; width:104px;">
+              <div class="cover" style="--c:#561722;--fg:#F2C879"><img class="art" src="../../mobile/assets/covers/gita.webp" alt=""><div class="ground sa">गीता</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">94 of 700</div>
+            </div>
+            <div style="flex:none; width:104px;">
+              <div class="cover" style="--c:#2F4677;--fg:#F3D27A"><img class="art" src="../../mobile/assets/covers/isha.webp" alt=""><div class="ground sa">ईशावास्यम्</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">18 · complete</div>
+            </div>
+            <div style="flex:none; width:104px;">
+              <div class="cover" style="--c:#4B3B7A;--fg:#EAD9A8"><img class="art" src="../../mobile/assets/covers/katha.webp" alt=""><div class="ground sa">कठः</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">20 of 120</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rail" style="padding-bottom:34px;">
+          <div class="railhead"><span class="en">Chant &amp; stotra</span><span class="dv sa">स्तोत्राणि</span><span class="rule"></span></div>
+          <div class="row">
+            <div style="flex:none; width:104px;">
+              <div class="cover vector" style="--c:#5E2216;--fg:#F2C879"><div class="spine"></div><div class="motif"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="24" cy="24" r="16" opacity=".9"/><path d="M24 8v8M24 32v8M8 24h8M32 24h8"/><path d="M18 30 24 18l6 12z"/><rect x="14" y="34" width="20" height="2" opacity=".7" stroke="none" fill="currentColor"/></svg></div><div class="title">योगसूत्रम्</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">195 · complete</div>
+            </div>
+            <div style="flex:none; width:104px;">
+              <div class="cover vector" style="--c:#B23D10;--fg:#FFF8EE"><div class="spine"></div><div class="motif"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="24" cy="24" r="16" opacity=".9"/><path d="M24 8v8M24 32v8M8 24h8M32 24h8"/><path d="M18 30 24 18l6 12z"/><rect x="14" y="34" width="20" height="2" opacity=".7" stroke="none" fill="currentColor"/></svg></div><div class="title">विष्णुसहस्रनाम</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">142 of 1072</div>
+            </div>
+            <div style="flex:none; width:104px;">
+              <div class="cover" style="--c:#1F6E73;--fg:#FCE9C2"><img class="art" src="../../mobile/assets/covers/hito.webp" alt=""><div class="ground sa">हितोपदेशः</div>
+                <div class="badge-audio"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg></div>
+              </div><div class="shelfplate"></div>
+              <div style="font-family:'Nunito'; font-size:11px; font-weight:700; color:var(--soft); text-align:center; margin-top:6px;">42 · complete</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">Screen 2</span>
+      <h3>The Library — listening</h3>
+      <p>Same shelf, a different doorway: "Listening" instead of "Audio", the codex now carries the line you last heard, and counts sit under the ledge like spine labels — "18 · complete" versus "20 of 120" keeps coverage honest without a badge farm.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ 3 · CONTENTS ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3A2B20"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3A2B20" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3A2B20"/><path d="M22 4v4" stroke="#3A2B20" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="backrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Library</div>
+
+        <div class="tochead">
+          <div class="big sk">श्रीमद्भगवद्गीता</div>
+          <div class="orn"><i></i><b></b><i></i></div>
+          <div class="sub">Contents · सप्तशती</div>
+        </div>
+
+        <div class="tocopen">
+          <div class="mini sa">गीता</div>
+          <div class="txt">
+            <div class="t1">Bookmark</div>
+            <div class="t2 sk" style="font-family:'Tiro Devanagari Sanskrit',serif;">Chapter 2 · verse 47</div>
+            <span class="go"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Continue reading</span>
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="chap"><span class="n">Chapter One</span><span class="dv sa">अर्जुनविषादयोगः</span><span class="rule"></span><span class="c">47</span></div>
+          <div class="tocrow"><span class="first sk">धृतराष्ट्र उवाच…</span><span class="leader"></span><span class="pg">1</span></div>
+          <div class="tocrow"><span class="first sk">सञ्जय उवाच…</span><span class="leader"></span><span class="pg">23</span></div>
+
+          <div class="chap"><span class="n">Chapter Two</span><span class="dv sa">सांख्ययोगः</span><span class="rule"></span><span class="c">72</span></div>
+          <div class="tocrow"><span class="first sk">सञ्जय उवाच…</span><span class="leader"></span><span class="pg">1</span></div>
+          <div class="tocrow"><span class="first sk">त्रैगुण्यविषया वेदा…</span><span class="leader"></span><span class="pg">45</span></div>
+          <div class="tocrow cur"><span class="first sk">कर्मण्येवाधिकारस्ते मा फलेषु…</span><span class="leader"></span><span class="pg">47</span></div>
+          <div class="tocrow"><span class="first sk">योगस्थः कुरु कर्माणि…</span><span class="leader"></span><span class="pg">48</span></div>
+          <div class="tocrow"><span class="first sk">दूरेण ह्यवरं कर्म…</span><span class="leader"></span><span class="pg">49</span></div>
+
+          <div class="chap"><span class="n">Chapter Three</span><span class="dv sa">कर्मयोगः</span><span class="rule"></span><span class="c">43</span></div>
+          <div class="chap" style="padding-bottom:0;"><span class="n">Chapter Four</span><span class="dv sa">ज्ञानकर्मसंन्यासयोगः</span><span class="rule"></span><span class="c">42</span></div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">Screen 3</span>
+      <h3>Contents — front matter of an edition</h3>
+      <p>The book opens onto its own title page: Devanagari title, ornament, and a table of contents with dot leaders. Chapters carry their Sanskrit names (सांख्ययोगः), and your bookmark verse is set in maroon so "where was I" answers itself.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ 4 · READING LEAF ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3A2B20"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3A2B20" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3A2B20"/><path d="M22 4v4" stroke="#3A2B20" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="readhead">
+        <div class="back"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Contents</div>
+        <div class="pos">94 · 700</div>
+        <div class="lib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5M9.5 19V5M15 5l4.5 14"/></svg></div>
+      </div>
+      <div class="desk">
+        <div class="leaf">
+          <div class="runhead">Sāṅkhya yoga<div class="orn"><i></i><b></b><i></i></div></div>
+          <div class="verseno sa">॥ २ · ४७ ॥</div>
+          <div class="verse sk">
+            <span class="pada">कर्मणि</span> <span class="sep">✦</span> <span class="pada">एव</span> <span class="sep">✦</span> <span class="pada sel">अधिकारः</span> <span class="sep">✦</span> <span class="pada">ते</span><br>
+            <span class="pada">मा</span> <span class="sep">✦</span> <span class="pada">फलेषु</span> <span class="sep">✦</span> <span class="pada">कदाचन</span> ।<br>
+            <span class="pada">मा</span> <span class="sep">✦</span> <span class="pada">कर्मफलहेतुर्भूः</span> <span class="sep">✦</span> <span class="pada">मा</span> <span class="sep">✦</span> <span class="pada">ते</span><br>
+            <span class="pada">सङ्गोऽस्त्वकर्मणि</span> ॥
+          </div>
+          <div class="iast">karmaṇy evādhikāras te mā phaleṣu kadācana</div>
+          <div class="gloss">
+            <div class="w sk">अधिकारः</div>
+            <div class="m">right, privilege — authority over</div>
+            <div class="f"><span>noun</span><span>masculine</span><span>nom. sg.</span></div>
+          </div>
+          <div class="trans">
+            <div class="h"><i></i>हिन्दी अर्थ<i></i></div>
+            <p class="sa">कर्म करने में ही तेरा अधिकार है, उसके फलों में कभी नहीं।</p>
+          </div>
+          <div class="trans">
+            <div class="h"><i></i>English<i></i></div>
+            <p>Your right is to action alone, never to its fruits. Let not the fruit of action be your motive, nor your attachment be to inaction.</p>
+          </div>
+          <div class="askrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.8.3-.9 1-.9 1.7"/><circle cx="12" cy="17" r=".4" fill="currentColor"/></svg>Ask about this verse</div>
+          <div class="folio">॥ <span class="n">2.47 · 94 / 700</span> ॥</div>
+        </div>
+      </div>
+      <div class="scrubwrap">
+        <div class="scrub"><div class="track"><i></i></div><div class="thumb"></div></div>
+        <div class="scrubends"><span>1.1</span><span>18.78</span></div>
+      </div>
+      <div class="turnrow">
+        <div class="turnbtn dis"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Previous</div>
+        <div class="turnbtn">Next<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">Screen 4</span>
+      <h3>The leaf — rubricated reading</h3>
+      <p>No chip boxes: the verse sets as continuous poetry in Tiro, padas separated by gold diamonds, tappable words underlined in gold when chosen. The verse number is a rubricated ॥ २ · ४७ ॥, translations are centred beneath hairline rules — the whole page behaves like a critical edition.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ 5 · LISTEN HALL ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen on-maroon">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#E8C27A"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#E8C27A" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#E8C27A"/><path d="M22 4v4" stroke="#E8C27A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="lhead">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C27A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg>
+        <div class="t"><div class="a">Bhagavad Gītā · Śravaṇam</div><div class="b">Chapter 2 · verse 94 of 700 · 12 min left</div></div>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="rgba(232,194,122,.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+      </div>
+      <div class="orn-wide"><i></i><b></b><i></i></div>
+
+      <div class="modes"><span class="mode on">Verse</span><span class="mode">Meaning</span><span class="mode">Both</span></div>
+
+      <div class="stage"><div class="in">
+        <div class="nref">॥ 2.47 ॥</div>
+        <div class="kline sk">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।</div>
+        <div class="kline sk dim" style="color:rgba(255,248,238,.85);"><span class="w">मा</span> <span class="w">कर्मफलहेतुर्भूः</span> <span class="w">मा</span> <span class="w">ते</span> <span class="w lit">सङ्गोऽस्त्वकर्मणि॥</span></div>
+        <div class="ntrans">Your right is to action alone, never to its fruits. Let not the fruit of action be your motive, nor your attachment be to inaction.</div>
+        <div class="ncredit">Chant · Vagdhenu, IISc</div>
+      </div></div>
+
+      <div class="transport">
+        <div class="t-main">
+          <div class="tbtn"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2.2v12H6zM18.5 6v12l-9-6z"/></svg></div>
+          <div class="tbtn play"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></div>
+          <div class="tbtn"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M15.8 6H18v12h-2.2zM5.5 6v12l9-6z"/></svg></div>
+        </div>
+        <div class="t-sub">
+          <span class="tsub on">Verse</span>
+          <span class="tsub on">0.9×</span>
+          <span class="tsub on">∞ Auto</span>
+          <span class="tsub">Learn</span>
+        </div>
+      </div>
+
+      <div class="plist">
+        <h5>Chapter Two · Sāṅkhya yoga<i></i></h5>
+        <div class="prow"><span class="n">45</span><div class="txt"><div class="r">2.45</div><div class="d">त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन…</div></div></div>
+        <div class="prow"><span class="n">46</span><div class="txt"><div class="r">2.46</div><div class="d">यावानर्थ उदपाने सर्वतः संप्लुतोदके…</div></div></div>
+        <div class="prow cur"><span class="n">47</span><div class="txt"><div class="r">2.47</div><div class="d">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन…</div></div><span class="eq"><i></i><i></i><i></i></span></div>
+        <div class="prow"><span class="n">48</span><div class="txt"><div class="r">2.48</div><div class="d">योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय…</div></div></div>
+        <div class="prow"><span class="n">49</span><div class="txt"><div class="r">2.49</div><div class="d">दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय…</div></div></div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">Screen 5</span>
+      <h3>Listen — the hall</h3>
+      <p>Listening deserves a room of its own: the full screen becomes a deep maroon fill (the one place the app goes dark, and only here), the verse framed in gold like the codex, the sounding word lit in bright gold, transport as gold-ringed instruments. The verse list runs below in gold on maroon.</p>
+    </figcaption>
+  </figure>
+
+</main>
+</body>
+</html>

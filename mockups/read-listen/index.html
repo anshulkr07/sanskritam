@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read · Listen — three design directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8EE; --surface:#fff; --muted:#FBEED9; --border:#EFE3CE;
+    --saffron:#E85B25; --saffron-deep:#C74414; --ink:#3B2E25; --soft:#7A6A5C;
+    --maroon:#561722; --gold:#C29B4C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:#EFE6D6; font-family:'Nunito',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1060px; margin:0 auto; padding:56px 28px 80px;}
+  .kicker{color:var(--saffron-deep); font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase;}
+  h1{font-size:38px; font-weight:900; letter-spacing:-.5px; margin:8px 0 12px;}
+  .lede{font-size:16.5px; line-height:1.65; color:var(--soft); max-width:780px;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:36px;}
+  a.card{display:flex; flex-direction:column; text-decoration:none; color:var(--ink); background:var(--surface);
+    border-radius:24px; overflow:hidden; border:1px solid var(--border);
+    box-shadow:0 10px 30px rgba(59,46,37,.08); transition:transform .15s ease, box-shadow .15s ease;}
+  a.card:hover{transform:translateY(-4px); box-shadow:0 18px 40px rgba(59,46,37,.14);}
+  .card .strip{height:88px; display:flex; align-items:flex-end; padding:14px 18px; color:#FFF8EE;}
+  .card .strip .dev{margin-left:auto; font-family:'Baloo 2'; font-weight:700; font-size:20px; opacity:.85;}
+  .card .strip .name{font-size:19px; font-weight:900;}
+  .card .body{padding:16px 18px 20px; display:flex; flex-direction:column; flex:1;}
+  .card p{font-size:13.5px; line-height:1.6; color:var(--soft);}
+  .card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;}
+  .card .tags span{font-size:11px; font-weight:800; color:var(--ink); background:var(--muted); border-radius:99px; padding:4px 10px;}
+  .card .effort{margin-top:auto; padding-top:14px; font-size:12px; font-weight:800;}
+  .foot{margin-top:40px; padding:18px 22px; background:rgba(59,46,37,.06); border-radius:18px; font-size:13.5px; line-height:1.65; color:var(--soft);}
+  .foot b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Sanskritam · Read &amp; Listen</div>
+  <h1>Three ways to beautify the library</h1>
+  <p class="lede">Every variant mocks up the same five screens — the Books shelf, the Audio shelf, a book's contents, the reading page, and the Listen player — with the real painted covers, real verse content (Gītā 2.47), and the app's own tokens. Open each, flip between them from the bar at the top, and tell me which direction (or which mix) to build.</p>
+
+  <div class="cards">
+    <a class="card" href="a-saffron-library.html">
+      <div class="strip" style="background:linear-gradient(135deg,#D2461F,#B23D10);">
+        <span class="name">A · Saffron Library</span><span class="dev">पठनम्</span>
+      </div>
+      <div class="body">
+        <p>Today's architecture, levelled up: deep-fill Continue heroes, painted covers on every rail, a proper transport with a big saffron play, contents with medallions. Nothing structural moves.</p>
+        <div class="tags"><span>lowest risk</span><span>keep rails</span><span>new player</span></div>
+        <div class="effort" style="color:var(--saffron-deep);">≈ 1–2 days of RN work</div>
+      </div>
+    </a>
+
+    <a class="card" href="b-manuscript.html">
+      <div class="strip" style="background:linear-gradient(135deg,#5E1A26,#430F18);">
+        <span class="name">B · Manuscript</span><span class="dev" style="color:#E8C27A;">पोठः</span>
+      </div>
+      <div class="body">
+        <p>The boldest: a heritage poṭha. Wooden shelves, printed-edition contents with dot leaders, a rubricated reading leaf in Tiro, and a maroon-and-gold listening hall. Adds a serif display face to the family.</p>
+        <div class="tags"><span>most distinctive</span><span>typography-led</span><span>new typeface</span></div>
+        <div class="effort" style="color:var(--saffron-deep);">≈ 3–4 days · brand decision</div>
+      </div>
+    </a>
+
+    <a class="card" href="c-modern.html">
+      <div class="strip" style="background:linear-gradient(135deg,#17535C,#0F3A40);">
+        <span class="name">C · Modern Reader</span><span class="dev">श्रवणम्</span>
+      </div>
+      <div class="body">
+        <p>The Kindle/podcast shape: bottom tab bar, featured banner, Continue carousel, chapter chips, bottom-sheet gloss, floating control dock, a mini-player that follows you, and a full-bleed Now Playing.</p>
+        <div class="tags"><span>most familiar UX</span><span>mini-player</span><span>bottom sheets</span></div>
+        <div class="effort" style="color:var(--saffron-deep);">≈ 4–6 days · new shell patterns</div>
+      </div>
+    </a>
+
+    <a class="card" href="d-contents-versions.html">
+      <div class="strip" style="background:linear-gradient(135deg,#B23D10,#7C2A0C);">
+        <span class="name">D · Contents ×4</span><span class="dev">अनुक्रमणी</span>
+      </div>
+      <div class="body">
+        <p>Round 2 on the contents screen: a compact library header with per-chapter progress, a verse grid (every verse one tap), a reading timeline with a "you are here" flag, and a cover hero with floating resume.</p>
+        <div class="tags"><span>Apple-Books header</span><span>verse grid</span><span>timeline</span><span>cover hero</span></div>
+        <div class="effort" style="color:var(--saffron-deep);">4 directions · pick one</div>
+      </div>
+    </a>
+
+    <a class="card" href="e-player-versions.html">
+      <div class="strip" style="background:linear-gradient(135deg,#8A5608,#5E3A06);">
+        <span class="name">E · Player ×4</span><span class="dev">गानम्</span>
+      </div>
+      <div class="body">
+        <p>Round 2 on the Now Playing: a karaoke stage where the verse is the hero, a spinning vinyl disc of the cover, a podcast console with waveform scrubber and labeled controls (plus sleep timer), and a zen word-flow mode.</p>
+        <div class="tags"><span>karaoke stage</span><span>vinyl</span><span>waveform</span><span>word-flow</span></div>
+        <div class="effort" style="color:var(--saffron-deep);">4 directions · pick one</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="foot">
+    <b>Mixing is fine.</b> Common combos: A's shelf + C's mini-player and Now Playing; or B's reading leaf and contents inside A's shell. Say the mix and I'll build it into the app.
+    <br><br>Files live in <b>mockups/read-listen/</b> — a/b/c (full directions), d (four more contents screens), e (four more player screens).
+  </div>
+</div>
+</body>
+</html>

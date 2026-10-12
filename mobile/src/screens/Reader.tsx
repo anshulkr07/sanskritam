@@ -48,6 +48,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import Svg, { Circle } from "react-native-svg";
 
 import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
@@ -63,8 +64,10 @@ import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import { PagedBookIndex, PagedChapterReader } from "../components/book/PagedBook";
 import { isPaged, positionKey } from "../utils/paged";
 import ReaderSlider from "../components/ReaderSlider";
+import MiniPlayer from "../components/chant/MiniPlayer";
 import type { DrawerParamList } from "../navigation/AppDrawer";
 import { haptics } from "../services/haptics";
+import { useMiniPlayerUp } from "../services/listenBus";
 import {
   getReadingPosition,
   getReadingPositions,
@@ -72,7 +75,7 @@ import {
   setReadingPosition,
   setReadingChapter,
 } from "../services/readingProgress";
-import { getLastListen, type ListenPosition } from "../services/audioProgress";
+import { getLastListen, getListenMode, type ListenPosition } from "../services/audioProgress";
 import {
   firstLine,
   groupByBook,
@@ -574,12 +577,15 @@ export default function ReaderScreen() {
 
   // ── SHELF posture ────────────────────────────────────────────────
   // Two shelves under one tab: Books (paper, as ever) and Audio (books with
-  // a voice), switched by the pill in the header.
+  // a voice), switched by the pill in the header. The mini player floats
+  // over either while a chant session is live.
   const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+  const miniUp = useMiniPlayerUp();
   if (media === "audio") {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <AudioShelf
+          bottomPad={miniUp}
           header={
             <>
               <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
@@ -590,6 +596,10 @@ export default function ReaderScreen() {
                   pos={lastListen.pos}
                   groups={groups}
                   onResume={(key, index, chapter) => nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })}
+                  onBrowse={(key) => {
+                    setMedia("books");
+                    enterBook(key);
+                  }}
                 />
               )}
             </>
@@ -598,12 +608,18 @@ export default function ReaderScreen() {
           canon={canon}
           onListen={(key, index) => nav.navigate("Listen", { bookKey: key, index })}
         />
+        <MiniPlayer
+          onOpen={(key, chapter, index) =>
+            nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })
+          }
+        />
       </SafeAreaView>
     );
   }
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ShelfRails
+        bottomPad={miniUp}
         header={
           <>
             <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
@@ -616,6 +632,7 @@ export default function ReaderScreen() {
                 const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
                 nav.navigate("Book", { bookKey: key, index: safe });
               }}
+              onContents={(key) => enterBook(key)}
             />
           </>
         }
@@ -625,6 +642,11 @@ export default function ReaderScreen() {
         tierRows={tierRows}
         canon={canon}
         onOpen={(key) => enterBook(key)}
+      />
+      <MiniPlayer
+        onOpen={(key, chapter, index) =>
+          nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })
+        }
       />
     </SafeAreaView>
   );
@@ -652,6 +674,7 @@ function ShelfRails({
   tierRows,
   canon,
   onOpen,
+  bottomPad,
 }: {
   header: React.ReactElement;
   groups: { text: CanonText | null; verses: Shloka[] }[];
@@ -660,6 +683,8 @@ function ShelfRails({
   tierRows: Shloka[] | null;
   canon: CanonText[];
   onOpen: (key: string) => void;
+  /** The mini player floats above: pad the list so nothing hides under it. */
+  bottomPad?: boolean;
 }) {
   const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
   const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
@@ -693,14 +718,17 @@ function ShelfRails({
     <FlatList
       data={rails}
       keyExtractor={(rail) => rail.title}
-      contentContainerStyle={styles.body}
+      contentContainerStyle={[styles.body, bottomPad && styles.bodyMini]}
       ListHeaderComponent={header}
       initialNumToRender={2}
       maxToRenderPerBatch={2}
       windowSize={3}
       renderItem={({ item: rail }) => (
         <View style={{ marginBottom: 16 }}>
-          <Text style={styles.sectionTitle}>{rail.title}</Text>
+          <View style={styles.railHead}>
+            <Text style={styles.sectionTitle}>{rail.title}</Text>
+            <View style={styles.railRule} />
+          </View>
           <FlatList
             horizontal
             data={rail.books}
@@ -781,11 +809,14 @@ function AudioShelf({
   groups,
   canon,
   onListen,
+  bottomPad,
 }: {
   header: React.ReactElement;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   canon: CanonText[];
   onListen: (key: string, index: number) => void;
+  /** The mini player floats above: pad the list so nothing hides under it. */
+  bottomPad?: boolean;
 }) {
   const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
   const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
@@ -812,7 +843,7 @@ function AudioShelf({
     <FlatList
       data={rails}
       keyExtractor={(rail) => rail.title}
-      contentContainerStyle={styles.body}
+      contentContainerStyle={[styles.body, bottomPad && styles.bodyMini]}
       ListHeaderComponent={header}
       ListEmptyComponent={
         <View style={styles.center}>
@@ -824,7 +855,10 @@ function AudioShelf({
       windowSize={3}
       renderItem={({ item: rail }) => (
         <View style={{ marginBottom: 16 }}>
-          <Text style={styles.sectionTitle}>{rail.title}</Text>
+          <View style={styles.railHead}>
+            <Text style={styles.sectionTitle}>{rail.title}</Text>
+            <View style={styles.railRule} />
+          </View>
           <FlatList
             horizontal
             data={rail.books}
@@ -871,44 +905,94 @@ function AudioShelf({
 }
 
 // "Continue listening": where the learner last played a book, as the reader
-// shelf's Continue is for reading.
+// shelf's Continue is for reading. A deep-fill hero in the book's own
+// colour, the cover leaning out of it, with the saved listen mode named.
 function ContinueListening({
   bookKey,
   pos,
   groups,
   onResume,
+  onBrowse,
 }: {
   bookKey: string;
   pos: ListenPosition;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   onResume: (key: string, index: number, chapter: string | null) => void;
+  onBrowse: (key: string) => void;
 }) {
   const g = groups.find((x) => x.text?.slug === bookKey);
   const title = g ? plain(g.text!.title_en) : bookKey;
+  const titleSa = g?.text?.title_sa ?? "";
   const total = g?.verses.length ?? 0;
   const at = Math.min(pos.index, Math.max(0, total - 1));
+  // The saved Verse | Meaning | Both choice, named in the hero.
+  const [modeLabel, setModeLabel] = useState("");
+  useEffect(() => {
+    let on = true;
+    getListenMode(bookKey)
+      .then((m) => {
+        if (on) setModeLabel(m === "meaning" ? "Meaning" : m === "both" ? "Verse + meaning" : "Verse");
+      })
+      .catch(() => {});
+    return () => {
+      on = false;
+    };
+  }, [bookKey]);
   return (
     <Pressable
       onPress={() => {
         haptics.tap();
         onResume(bookKey, pos.index, pos.chapter);
       }}
-      style={[styles.continueBlock, { backgroundColor: coverColour(bookKey) }]}
+      style={[styles.continueHero, { backgroundColor: coverColour(bookKey) }]}
       accessibilityRole="button"
       accessibilityLabel={`Continue listening to ${title} at verse ${at + 1}`}
     >
-      <View style={styles.continueHead}>
-        <Text style={styles.continueEyebrow}>Continue listening</Text>
-        <Ionicons name={"headphones" as never} size={16} color="#F2C879" />
-      </View>
-      <Text style={styles.continueTitle} numberOfLines={1}>{title}</Text>
-      <Text style={styles.continueSub}>Verse {at + 1}{total ? ` of ${total}` : ""}</Text>
-      {total > 0 && (
-        <View style={styles.continueBar}>
-          <View style={[styles.continueFill, { width: `${(at / Math.max(1, total)) * 100}%` }]} />
+      <View style={styles.heroRow}>
+        <View style={styles.heroText}>
+          <View style={styles.heroEyebrowRow}>
+            <Ionicons name={"headphones" as never} size={12} color="#FFF8EE" />
+            <Text style={styles.heroEyebrow}>Continue listening</Text>
+          </View>
+          <Text style={styles.heroTitle} numberOfLines={1}>
+            {title}
+          </Text>
+          {!!titleSa && (
+            <Text style={[styles.heroSa, script("semibold")]} numberOfLines={1}>
+              {titleSa}
+            </Text>
+          )}
+          <Text style={styles.heroMeta} numberOfLines={1}>
+            {modeLabel ? `${modeLabel} · ` : ""}verse {at + 1}
+            {total ? ` of ${total}` : ""}
+          </Text>
+          {total > 0 && (
+            <View style={styles.heroBar}>
+              <View style={[styles.heroFill, { width: `${(at / Math.max(1, total)) * 100}%` }]} />
+            </View>
+          )}
         </View>
-      )}
-      <Text style={styles.continueGo}>Listen</Text>
+        <View style={styles.heroCover}>
+          <CoverArt bookKey={bookKey} titleSa={titleSa || title} width={72} />
+        </View>
+      </View>
+      <View style={styles.heroCtas}>
+        <View style={styles.heroGo}>
+          <Ionicons name="play" size={11} color={coverColour(bookKey)} />
+          <Text style={[styles.heroGoText, { color: coverColour(bookKey) }]}>Resume</Text>
+        </View>
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            onBrowse(bookKey);
+          }}
+          style={styles.heroAlt}
+          accessibilityRole="button"
+          accessibilityLabel={`Open ${title} in the bookshelf`}
+        >
+          <Text style={styles.heroAltText}>Contents</Text>
+        </Pressable>
+      </View>
     </Pressable>
   );
 }
@@ -918,23 +1002,25 @@ function ContinueBlock({
   allCount,
   positions,
   onResume,
+  onContents,
 }: {
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allCount: number;
   positions: Record<string, number>;
   onResume: (key: string, at: number) => void;
+  onContents: (key: string) => void;
 }) {
   // Most recently read book: AsyncStorage order is insertion order, so the
   // last key with progress wins. Kept simple: first row with progress.
-  const rows: { key: string; title: string; at: number; total: number; colour: string }[] = [];
-  const push = (key: string, title: string, total: number) => {
+  const rows: { key: string; title: string; sa: string; at: number; total: number; colour: string }[] = [];
+  const push = (key: string, title: string, sa: string, total: number) => {
     const at = positions[key] ?? 0;
-    if (total > 0 && at > 0 && at < total) rows.push({ key, title, at, total, colour: coverColour(key) });
+    if (total > 0 && at > 0 && at < total) rows.push({ key, title, sa, at, total, colour: coverColour(key) });
   };
-  push(ALL_KEY, "All verses", allCount);
+  push(ALL_KEY, "All verses", "सर्वम्", allCount);
   for (const g of groups) {
-    if (g.text) push(g.text.slug, plain(g.text.title_en), g.verses.length);
-    else push(OTHER_KEY, "Other verses", g.verses.length);
+    if (g.text) push(g.text.slug, plain(g.text.title_en), g.text.title_sa, g.verses.length);
+    else push(OTHER_KEY, "Other verses", "अन्यत्", g.verses.length);
   }
   if (rows.length === 0) return null;
   const r = rows[0];
@@ -944,17 +1030,52 @@ function ContinueBlock({
         haptics.tap();
         onResume(r.key, r.at);
       }}
-      style={[styles.continueBlock, { backgroundColor: r.colour }]}
+      style={[styles.continueHero, { backgroundColor: r.colour }]}
       accessibilityRole="button"
       accessibilityLabel={`Continue ${r.title} at chapter page ${r.at + 1}`}
     >
-      <Text style={styles.continueEyebrow}>Continue</Text>
-      <Text style={styles.continueTitle} numberOfLines={1}>{r.title}</Text>
-      <Text style={styles.continueSub}>Chapter verse {r.at + 1} of {r.total}</Text>
-      <View style={styles.continueBar}>
-        <View style={[styles.continueFill, { width: `${(r.at / Math.max(1, r.total)) * 100}%` }]} />
+      <View style={styles.heroRow}>
+        <View style={styles.heroText}>
+          <View style={styles.heroEyebrowRow}>
+            <Ionicons name="bookmark" size={12} color="#FFF8EE" />
+            <Text style={styles.heroEyebrow}>Continue reading</Text>
+          </View>
+          <Text style={styles.heroTitle} numberOfLines={1}>
+            {r.title}
+          </Text>
+          {!!r.sa && (
+            <Text style={[styles.heroSa, script("semibold")]} numberOfLines={1}>
+              {r.sa}
+            </Text>
+          )}
+          <Text style={styles.heroMeta} numberOfLines={1}>
+            Chapter verse {r.at + 1} of {r.total}
+          </Text>
+          <View style={styles.heroBar}>
+            <View style={[styles.heroFill, { width: `${(r.at / Math.max(1, r.total)) * 100}%` }]} />
+          </View>
+        </View>
+        <View style={styles.heroCover}>
+          <CoverArt bookKey={r.key} titleSa={r.sa || r.title} width={72} />
+        </View>
       </View>
-      <Text style={styles.continueGo}>Continue</Text>
+      <View style={styles.heroCtas}>
+        <View style={styles.heroGo}>
+          <Ionicons name="play" size={11} color={r.colour} />
+          <Text style={[styles.heroGoText, { color: r.colour }]}>Read verse {r.at + 1}</Text>
+        </View>
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            onContents(r.key);
+          }}
+          style={styles.heroAlt}
+          accessibilityRole="button"
+          accessibilityLabel={`Open ${r.title} contents`}
+        >
+          <Text style={styles.heroAltText}>Contents</Text>
+        </Pressable>
+      </View>
     </Pressable>
   );
 }
@@ -1104,6 +1225,41 @@ function runningTitleFor(book: OpenBook, v: Shloka): string {
   return book.key === ALL_KEY || book.key === OTHER_KEY ? parseRef(v.source_ref).book : book.titleEn;
 }
 
+/** The contents ring: how far through the book, read off the saved position. */
+function ProgressRing({
+  size,
+  progress,
+  label,
+}: {
+  size: number;
+  progress: number;
+  label: string;
+}) {
+  const stroke = 6;
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const p = Math.max(0, Math.min(1, progress));
+  return (
+    <View style={{ width: size, height: size, alignItems: "center", justifyContent: "center" }}>
+      <Svg width={size} height={size} style={{ position: "absolute", transform: [{ rotate: "-90deg" }] }}>
+        <Circle cx={size / 2} cy={size / 2} r={r} stroke={color.border} strokeWidth={stroke} fill="none" />
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          stroke={color.saffron}
+          strokeWidth={stroke}
+          fill="none"
+          strokeLinecap="round"
+          strokeDasharray={`${c}`}
+          strokeDashoffset={c * (1 - p)}
+        />
+      </Svg>
+      <Text style={styles.ringLabel}>{label}</Text>
+    </View>
+  );
+}
+
 function BookIndex({
   book,
   sized,
@@ -1144,6 +1300,16 @@ function BookIndex({
     () => chapters.map((ch) => ({ title: ch.label, data: openCh === ch.label ? ch.verses : [] })),
     [chapters, openCh],
   );
+  // Each chapter's flat range drives its timeline node: read, current, ahead.
+  const chMeta = useMemo(() => {
+    let acc = 0;
+    return chapters.map((ch) => {
+      const start = acc;
+      acc += ch.verses.length;
+      return { label: ch.label, start, end: acc - 1, count: ch.verses.length };
+    });
+  }, [chapters]);
+  const pct = book.verses.length > 1 ? Math.min(1, resume / (book.verses.length - 1)) : 0;
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -1154,30 +1320,46 @@ function BookIndex({
         ListHeaderComponent={
           <>
             <BackRow onPress={onBack} label="Books" />
-            <BookCover
-              variant="card"
-              titleSa={book.titleSa}
-              titleEn={book.titleEn}
-              caption={versesCaption(book)}
-              bookmarked={started}
+            <View style={styles.tlHead}>
+              <ProgressRing
+                size={58}
+                progress={started ? pct : 0}
+                label={`${Math.round((started ? pct : 0) * 100)}%`}
+              />
+              <View style={styles.tlHeadText}>
+                <Text style={[styles.tlTitle, { fontSize: sized(font.sizes.lg) }]} numberOfLines={1}>
+                  {book.titleEn}
+                </Text>
+                <Text
+                  style={[styles.tlSa, script("semibold"), { fontSize: sized(font.sizes.base, { sanskrit: true }) }]}
+                  numberOfLines={1}
+                >
+                  {book.titleSa}
+                </Text>
+              </View>
+            </View>
+            <Pressable
               onPress={onStart}
-            />
-            <Button
-              label={started ? `Continue · ${addressOf(book.verses[resume])}` : "Open book"}
-              tone="primary"
-              block
-              icon={<Ionicons name={started ? "bookmark" : "book"} size={20} color={color.white} />}
-              onPress={onStart}
-              style={{ marginTop: space.md }}
-            />
+              style={styles.tlResume}
+              accessibilityRole="button"
+              accessibilityLabel={started ? `Continue at ${addressOf(book.verses[resume])}` : "Start reading"}
+            >
+              <Ionicons name={started ? "bookmark" : "play"} size={14} color={color.white} />
+              <Text style={styles.tlResumeText}>
+                {started ? `Continue · ${addressOf(book.verses[resume])}` : "Start reading"}
+              </Text>
+            </Pressable>
             <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
-              Tap a verse to open it.
+              Tap a chapter to list its verses; tap a verse to open it.
             </Text>
           </>
         }
         renderSectionHeader={({ section }) => {
           const ch = chapters.find((c) => c.label === section.title);
           const count = ch?.verses.length ?? 0;
+          const meta = chMeta.find((m) => m.label === section.title);
+          const done = !!meta && meta.end < resume;
+          const now = !!meta && meta.start <= resume && resume <= meta.end;
           const open = openCh === section.title;
           return (
             <Pressable
@@ -1188,8 +1370,13 @@ function BookIndex({
               accessibilityRole="button"
               accessibilityState={{ expanded: open }}
               accessibilityLabel={`${section.title}. ${count} verses.`}
-              style={styles.chapterHeader}
+              style={styles.tlChapter}
             >
+              <View style={styles.tlNodeCol}>
+                <View style={[styles.tlNode, done && styles.tlNodeDone, now && styles.tlNodeNow]}>
+                  {now ? <View style={styles.tlNodeCore} /> : null}
+                </View>
+              </View>
               <Text style={styles.chapterLabel}>{section.title}</Text>
               <Text style={styles.chapterCount}>{count}</Text>
               <Ionicons name={open ? "chevron-up" : "chevron-down"} size={18} color={color.inkSoft} />
@@ -1199,6 +1386,7 @@ function BookIndex({
         renderItem={({ item }) => {
           const v = item as Shloka;
           const at = positions.get(v.id) ?? 0;
+          const isHere = started && at === resume;
           const { nums } = parseRef(v.source_ref);
           const num = nums.length > 0 ? nums[nums.length - 1] : at + 1;
           return (
@@ -1207,7 +1395,12 @@ function BookIndex({
                 haptics.tap();
                 onOpen(at);
               }}
-              style={({ pressed }) => [styles.indexRow, pressed && styles.pressed]}
+              style={({ pressed }) => [
+                styles.indexRow,
+                styles.tlRow,
+                pressed && styles.pressed,
+                isHere && styles.indexRowHere,
+              ]}
               accessibilityRole="button"
               accessibilityLabel={`${v.source_ref}. ${firstLine(v.devanagari)}`}
             >
@@ -1220,6 +1413,11 @@ function BookIndex({
                   {firstLine(v.devanagari)}
                 </Text>
               </View>
+              {isHere && (
+                <View style={styles.hereChip}>
+                  <Text style={styles.hereChipText}>here</Text>
+                </View>
+              )}
               <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
             </Pressable>
           );
@@ -1416,8 +1614,6 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: font.sizes.md,
     color: color.ink,
-    marginTop: space.md,
-    marginBottom: space.xs,
   },
   sectionHint: {
     fontFamily: "Nunito_400Regular",
@@ -1466,8 +1662,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  continueHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-
   // Shelf
   shelfGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
   bookCard: {
@@ -1519,10 +1713,56 @@ const styles = StyleSheet.create({
     color: color.inkSoft,
   },
   continueBlock: { borderRadius: 16, padding: 16, gap: 4, marginBottom: 8 },
-  continueEyebrow: { color: "#F2C879", fontSize: 12, fontWeight: "800", textTransform: "uppercase" },
-  continueBar: { height: 4, backgroundColor: "rgba(255,248,238,0.2)", borderRadius: 2, marginTop: 8 },
-  continueFill: { height: 4, backgroundColor: "#FFF8EE", borderRadius: 2 },
-  continueGo: { color: "#FFF8EE", fontWeight: "800", marginTop: 8 },
+
+  // Shelf hero: the deep-fill Continue card (October look rule) with the
+  // book's cover leaning out of it and the two actions on the front.
+  continueHero: { borderRadius: 16, padding: 14, marginBottom: 8, ...shadow.card },
+  heroRow: { flexDirection: "row", gap: 12 },
+  heroText: { flex: 1, minWidth: 0 },
+  heroEyebrowRow: { flexDirection: "row", alignItems: "center", gap: 6 },
+  heroEyebrow: {
+    color: "rgba(255,248,238,0.78)",
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1.4,
+    textTransform: "uppercase",
+  },
+  heroTitle: {
+    color: "#FFF8EE",
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 20,
+    marginTop: 6,
+  },
+  heroSa: { color: "rgba(255,248,238,0.85)", fontSize: 14, marginTop: 1 },
+  heroMeta: { color: "rgba(255,248,238,0.66)", fontSize: 12, fontWeight: "600", marginTop: 4 },
+  heroBar: { height: 4, borderRadius: 2, backgroundColor: "rgba(255,248,238,0.2)", marginTop: 10 },
+  heroFill: { height: 4, borderRadius: 2, backgroundColor: "#FFF8EE" },
+  heroCover: { transform: [{ rotate: "3deg" }] },
+  heroCtas: { flexDirection: "row", gap: 8, marginTop: 14 },
+  heroGo: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    backgroundColor: "#FFF8EE",
+    borderRadius: 12,
+    paddingVertical: 9,
+    paddingHorizontal: 14,
+  },
+  heroGoText: { fontWeight: "800", fontSize: 13 },
+  heroAlt: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: "rgba(255,248,238,0.4)",
+    paddingVertical: 9,
+    paddingHorizontal: 14,
+  },
+  heroAltText: { color: "#FFF8EE", fontWeight: "800", fontSize: 13 },
+  railHead: { flexDirection: "row", alignItems: "center", gap: 10, marginTop: space.md, marginBottom: space.xs },
+  railRule: { flex: 1, height: 1, backgroundColor: color.border },
+  bodyMini: { paddingBottom: 200 },
   railTitle: { fontWeight: "700", fontSize: 13, color: color.ink, marginTop: 4 },
   railCount: { fontSize: 12, color: color.inkSoft },
   continueRow: {
@@ -1602,8 +1842,61 @@ const styles = StyleSheet.create({
     color: color.saffronText,
     textTransform: "uppercase",
     letterSpacing: 0.5,
-    marginBottom: space.xs,
   },
+
+  // Contents timeline (D3): ring + resume pill up top, chapters down a spine
+  // of nodes — read chapters solid, the current one ringed in saffron.
+  tlHead: { flexDirection: "row", alignItems: "center", gap: 14, marginTop: space.xs },
+  tlHeadText: { flex: 1, minWidth: 0 },
+  tlTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
+  tlSa: { color: color.inkSoft, marginTop: 1 },
+  tlResume: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    gap: 7,
+    backgroundColor: color.saffronBtn,
+    borderRadius: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    marginTop: space.md,
+  },
+  tlResumeText: {
+    color: color.white,
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+  },
+  ringLabel: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 12,
+    color: color.saffronDeep,
+  },
+  tlChapter: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 12, minHeight: 48 },
+  tlNodeCol: { width: 24, alignItems: "center", justifyContent: "center" },
+  tlNode: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    backgroundColor: color.bg,
+    borderWidth: 3,
+    borderColor: color.border,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tlNodeDone: { backgroundColor: "#17535C", borderColor: "#17535C" },
+  tlNodeNow: { borderColor: color.saffron },
+  tlNodeCore: { width: 8, height: 8, borderRadius: 4, backgroundColor: color.saffron },
+  tlRow: { marginLeft: 34 },
+  indexRowHere: { backgroundColor: color.saffronLight },
+  hereChip: {
+    backgroundColor: color.saffron,
+    borderRadius: 8,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+  },
+  hereChipText: { color: color.white, fontSize: 10, fontWeight: "800" },
   indexRow: {
     flexDirection: "row",
     alignItems: "center",

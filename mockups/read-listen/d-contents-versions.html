@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read — four more versions of the Book contents screen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8EE; --surface:#FFFFFF; --muted:#FBEED9; --border:#EFE3CE;
+    --saffron:#E85B25; --saffron-btn:#D2461F; --saffron-deep:#C74414; --saffron-light:#FFE3D3;
+    --ink:#3B2E25; --soft:#7A6A5C; --faint:#846F57;
+    --gold:#F2C879; --cream:#FFF8EE; --maroon:#561722;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:#EFE6D6; font-family:'Nunito',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .sa{font-family:'Baloo 2','Noto Sans Devanagari',sans-serif;}
+  .sk{font-family:'Tiro Devanagari Sanskrit','Noto Sans Devanagari',serif;}
+
+  .vnav{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:18px;
+    padding:12px 28px; background:rgba(59,46,37,.94); color:var(--cream); backdrop-filter:blur(8px);}
+  .vnav .brand{font-weight:900; letter-spacing:.4px; font-size:14px;}
+  .vnav .links{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap;}
+  .vnav a{color:rgba(255,248,238,.75); text-decoration:none; font-weight:800; font-size:13px; padding:7px 13px; border-radius:999px;}
+  .vnav a:hover{color:var(--cream); background:rgba(255,248,238,.12);}
+  .vnav a.cur{background:var(--saffron); color:#fff;}
+  .page-head{max-width:1200px; margin:0 auto; padding:44px 28px 8px;}
+  .page-head .kicker{color:var(--saffron-deep); font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase;}
+  .page-head h1{font-size:38px; font-weight:900; letter-spacing:-.5px; margin:6px 0 10px;}
+  .page-head p{max-width:760px; font-size:15.5px; line-height:1.65; color:var(--soft);}
+  .points{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; max-width:920px;}
+  .points li{list-style:none; background:var(--surface); border:1px solid var(--border);
+    padding:7px 14px; border-radius:999px; font-size:13px; font-weight:700; color:var(--ink);}
+  .points li b{color:var(--saffron-deep);}
+
+  .gallery{display:flex; gap:44px; overflow-x:auto; padding:36px 40px 70px; align-items:flex-start; scroll-snap-type:x proximity;}
+  .shot{flex:0 0 auto; scroll-snap-align:start;}
+  figcaption{margin-top:16px; max-width:375px;}
+  figcaption .num{display:inline-flex; align-items:center; gap:8px; font-weight:900; font-size:13px; color:var(--saffron-deep); text-transform:uppercase; letter-spacing:1px;}
+  figcaption .num::after{content:""; width:26px; height:2px; background:var(--saffron); border-radius:2px;}
+  figcaption h3{font-size:16px; font-weight:800; margin:4px 0 6px;}
+  figcaption p{font-size:13px; line-height:1.55; color:var(--soft);}
+
+  .phone{width:393px; height:830px; border-radius:52px; background:#241c16; padding:11px;
+    box-shadow:0 30px 60px rgba(48,36,24,.35), 0 4px 14px rgba(48,36,24,.25);}
+  .screen{width:100%; height:100%; border-radius:42px; overflow:hidden; background:var(--bg);
+    position:relative; display:flex; flex-direction:column;}
+  .status{height:50px; flex:none; display:flex; align-items:flex-end; justify-content:space-between;
+    padding:0 26px 6px; font-weight:800; font-size:14px; color:var(--ink); z-index:30;}
+  .status.onimg{color:#fff; position:absolute; left:0; right:0; top:0;}
+  .body-scroll{flex:1; overflow:hidden auto; scrollbar-width:none;}
+  .body-scroll::-webkit-scrollbar{display:none;}
+  .homebar{position:absolute; left:50%; transform:translateX(-50%); bottom:7px; width:120px; height:5px;
+    border-radius:99px; background:rgba(59,46,37,.28); z-index:40;}
+
+  /* icon buttons */
+  .iconbtn{width:38px; height:38px; border-radius:14px; background:var(--surface); display:flex; align-items:center;
+    justify-content:center; box-shadow:0 3px 10px rgba(59,46,37,.08); color:var(--ink);}
+  .navrow{display:flex; align-items:center; gap:10px; padding:4px 18px 8px;}
+  .navrow .grow{flex:1;}
+
+  /* ── V1 · compact library header ── */
+  .bookhead{display:flex; gap:14px; margin:4px 18px 0; background:var(--surface); border-radius:22px; padding:14px;
+    box-shadow:0 6px 16px rgba(59,46,37,.08);}
+  .bh-cover{width:82px; height:123px; border-radius:9px; overflow:hidden; flex:none; position:relative;
+    box-shadow:0 6px 14px rgba(48,32,20,.25);}
+  .bh-cover img{width:100%; height:100%; object-fit:cover; display:block;}
+  .bh-txt{flex:1; min-width:0; display:flex; flex-direction:column;}
+  .bh-txt .sa-t{font-family:'Baloo 2'; font-weight:700; font-size:16.5px; line-height:1.3;}
+  .bh-txt .en-t{font-size:13px; font-weight:800; color:var(--soft); margin-top:1px;}
+  .metachips{display:flex; flex-wrap:wrap; gap:5px; margin-top:7px;}
+  .metachips span{font-size:10.5px; font-weight:800; color:var(--soft); background:var(--muted);
+    border-radius:99px; padding:3px 9px;}
+  .metachips span.hot{background:var(--saffron-light); color:var(--saffron-deep);}
+  .bh-prog{margin-top:auto;}
+  .bh-prog .bar{height:5px; border-radius:99px; background:var(--muted); overflow:hidden;}
+  .bh-prog .bar i{display:block; height:100%; width:13%; background:var(--saffron); border-radius:99px;}
+  .bh-prog .lbl{font-size:10.5px; font-weight:800; color:var(--soft); margin-top:4px;}
+  .bh-actions{display:flex; gap:8px; margin:10px 18px 0;}
+  .abtn{flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:11px; border-radius:15px;
+    font-size:13.5px; font-weight:900;}
+  .abtn.fill{background:var(--saffron-btn); color:#fff; box-shadow:0 8px 18px rgba(210,70,31,.28);}
+  .abtn.ghost{background:var(--surface); color:var(--ink); border:1.5px solid var(--border);}
+  .seg3{display:flex; margin:14px 18px 0; background:var(--muted); border-radius:15px; padding:3px;}
+  .seg3 span{flex:1; text-align:center; padding:8px; border-radius:12px; font-size:12.5px; font-weight:800; color:var(--soft);}
+  .seg3 span.on{background:var(--surface); color:var(--ink); box-shadow:0 2px 8px rgba(59,46,37,.1);}
+  .chrow{display:flex; align-items:center; gap:12px; padding:11px 18px;}
+  .chnum{width:44px; height:44px; border-radius:14px; color:var(--cream); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; flex:none;}
+  .chnum b{font-size:17px; font-weight:900; line-height:1;}
+  .chnum i{font-style:normal; font-size:8px; font-weight:800; letter-spacing:.8px; opacity:.75;}
+  .cht{flex:1; min-width:0;}
+  .cht .a{font-size:14px; font-weight:900;}
+  .cht .b{font-size:11px; font-weight:700; color:var(--soft); margin-top:1px;}
+  .cht .mini{height:3px; border-radius:99px; background:var(--muted); margin-top:6px; overflow:hidden;}
+  .cht .mini i{display:block; height:100%; border-radius:99px; background:var(--saffron);}
+  .chcnt{font-size:11px; font-weight:800; color:var(--soft);}
+  .vr{display:flex; align-items:center; gap:10px; padding:6px 18px 6px 74px;}
+  .vr .n{width:24px; text-align:right; font-size:12px; font-weight:900; color:var(--faint);}
+  .vr .d{flex:1; font-family:'Tiro Devanagari Sanskrit'; font-size:13.5px; color:var(--ink);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .vr.cur{background:var(--saffron-light); border-radius:14px;}
+  .vr.cur .n{color:var(--saffron-deep);}
+  .vr .bm{color:var(--saffron);}
+
+  /* ── V2 · verse grid ── */
+  .ghead{padding:8px 22px 2px; text-align:center;}
+  .ghead .sa-t{font-family:'Baloo 2'; font-weight:700; font-size:23px;}
+  .ghead .sub{font-size:11px; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--soft); margin-top:2px;}
+  .orn{display:flex; align-items:center; gap:9px; justify-content:center; margin:9px 0 4px; color:#C29B4C;}
+  .orn i{width:44px; height:1px; background:currentColor;}
+  .orn b{width:6px; height:6px; background:currentColor; transform:rotate(45deg);}
+  .searchpill{display:flex; align-items:center; gap:9px; margin:12px 20px 0; background:var(--surface);
+    border:1.5px solid var(--border); border-radius:16px; padding:11px 14px; color:var(--faint); font-size:13.5px; font-weight:700;}
+  .gchap{display:flex; align-items:center; gap:10px; padding:16px 22px 6px;}
+  .gchap .n{font-size:13.5px; font-weight:900;}
+  .gchap .dv{font-family:'Baloo 2'; font-size:12.5px; color:var(--gold); font-weight:600;}
+  .gchap .cnt{margin-left:auto; font-size:11px; font-weight:800; color:var(--soft);}
+  .vgrid{display:flex; flex-wrap:wrap; gap:7px; padding:6px 22px 4px;}
+  .vgrid .cell{width:34.5px; height:34.5px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:800; color:var(--soft); border:1.5px solid var(--border); background:var(--surface);}
+  .vgrid .cell.read{background:var(--saffron-light); border-color:transparent; color:var(--saffron-deep);}
+  .vgrid .cell.cur{background:var(--saffron); border-color:transparent; color:#fff; position:relative; box-shadow:0 6px 14px rgba(232,91,37,.4);}
+  .vgrid .cell.cur::after{content:""; position:absolute; top:-4px; right:-4px; width:11px; height:11px; border-radius:99px;
+    background:var(--maroon); border:2px solid var(--bg);}
+  .gfoot{display:flex; align-items:center; gap:8px; margin:14px 22px 0; font-size:11.5px; font-weight:800; color:var(--soft);}
+  .gfoot .dot{width:12px; height:12px; border-radius:4px; display:inline-block;}
+  .padbottom{padding-bottom:36px;}
+
+  /* ── V3 · timeline ── */
+  .tl-head{display:flex; align-items:center; gap:14px; padding:6px 20px 8px;}
+  .ring{width:62px; height:62px; flex:none; position:relative; display:flex; align-items:center; justify-content:center;}
+  .ring svg{position:absolute; inset:0; transform:rotate(-90deg);}
+  .ring .pct{font-size:13px; font-weight:900; color:var(--saffron-deep);}
+  .tl-head .t{flex:1;}
+  .tl-head .t .a{font-size:17px; font-weight:900;}
+  .tl-head .t .b{font-size:12px; font-weight:700; color:var(--soft); margin-top:2px;}
+  .tl-head .resume{display:inline-flex; align-items:center; gap:6px; background:var(--saffron-btn); color:#fff;
+    font-size:12px; font-weight:900; padding:9px 14px; border-radius:99px; margin-top:8px; box-shadow:0 8px 18px rgba(210,70,31,.3);}
+  .timeline{position:relative; margin:4px 20px 0; padding-left:30px;}
+  .timeline::before{content:""; position:absolute; left:9px; top:8px; bottom:12px; width:2.5px; border-radius:2px;
+    background:linear-gradient(180deg, var(--saffron) 0%, var(--saffron) 12%, var(--border) 12%);}
+  .tlrow{position:relative; padding:9px 0 9px 6px;}
+  .tlrow .node{position:absolute; left:-27.5px; top:14px; width:15px; height:15px; border-radius:99px;
+    background:var(--bg); border:3px solid var(--border); z-index:2;}
+  .tlrow.done .node{background:#17535C; border-color:#17535C;}
+  .tlrow.now .node{border-color:var(--saffron); background:linear-gradient(90deg, var(--saffron) 50%, var(--bg) 50%);}
+  .tlrow .a{font-size:14px; font-weight:900;}
+  .tlrow .a .dv{font-family:'Baloo 2'; font-weight:600; font-size:12.5px; color:var(--gold); margin-left:7px;}
+  .tlrow .b{font-size:11px; font-weight:700; color:var(--soft); margin-top:1px;}
+  .tlverses{margin:6px 0 4px; border-left:2px dotted var(--border); padding-left:14px;}
+  .tlv{display:flex; align-items:center; gap:9px; padding:4.5px 0; font-size:12px; color:var(--soft); font-weight:700;}
+  .tlv .d{font-family:'Tiro Devanagari Sanskrit'; color:var(--ink); font-size:13px; flex:1;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .tlv.cur{color:var(--saffron-deep);}
+  .tlv.cur .flag{background:var(--saffron); color:#fff; border-radius:99px; font-size:10px; font-weight:900;
+    padding:3px 9px; letter-spacing:.5px;}
+
+  /* ── V4 · cover hero ── */
+  .hero4{position:relative; height:320px; flex:none;}
+  .hero4 img{width:100%; height:100%; object-fit:cover; display:block;}
+  .hero4 .scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,8,12,.35) 0%, rgba(20,8,12,0) 34%, rgba(20,8,12,.85) 100%);}
+  .hero4 .toprow{position:absolute; top:6px; left:0; right:0; display:flex; justify-content:space-between; padding:0 16px;}
+  .hero4 .cbtn{width:38px; height:38px; border-radius:99px; background:rgba(255,248,238,.18); backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center; color:#fff;}
+  .hero4 .btext{position:absolute; left:20px; right:20px; bottom:16px; color:var(--cream);}
+  .hero4 .btext .sa-t{font-family:'Baloo 2'; font-weight:700; font-size:23px;}
+  .hero4 .btext .en-t{font-size:14px; font-weight:800; margin-top:1px;}
+  .hero4 .btext .metarow{display:flex; gap:7px; margin-top:9px; flex-wrap:wrap;}
+  .hero4 .chip-lite{font-size:10.5px; font-weight:800; background:rgba(255,248,238,.16); backdrop-filter:blur(4px);
+    border-radius:99px; padding:4px 10px; color:var(--cream);}
+  .hero4 .resumepill{position:absolute; right:18px; bottom:86px; display:flex; align-items:center; gap:7px;
+    background:var(--saffron-btn); color:#fff; font-size:12.5px; font-weight:900; padding:10px 15px; border-radius:99px;
+    box-shadow:0 12px 26px rgba(210,70,31,.45);}
+  .quick{display:flex; gap:8px; padding:14px 18px 0; overflow:hidden;}
+  .qchip{flex:none; background:var(--surface); border-radius:14px; padding:9px 15px; font-size:12.5px; font-weight:800;
+    color:var(--ink); box-shadow:0 3px 10px rgba(59,46,37,.07); display:flex; align-items:center; gap:6px;}
+  .qchip.hot{background:var(--ink); color:var(--cream);}
+  .cardch{display:flex; align-items:center; gap:0; margin:11px 18px 0; background:var(--surface); border-radius:18px;
+    overflow:hidden; box-shadow:0 5px 14px rgba(59,46,37,.08);}
+  .cardch .strip{width:6px; align-self:stretch;}
+  .cardch .in{flex:1; padding:12px 14px; min-width:0;}
+  .cardch .eyebrow{font-size:9.5px; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; color:var(--soft);}
+  .cardch .dvname{font-family:'Baloo 2'; font-weight:700; font-size:16.5px; line-height:1.35;}
+  .cardch .meta{font-size:11px; font-weight:700; color:var(--soft); margin-top:2px;}
+  .cardch .mini{height:3.5px; border-radius:99px; background:var(--muted); margin-top:8px; overflow:hidden;}
+  .cardch .mini i{display:block; height:100%; border-radius:99px;}
+  .cardch .cnt{padding-right:14px; color:var(--faint); flex:none;}
+  .vr2{display:flex; align-items:center; gap:10px; margin:0 18px; padding:8px 12px; border-radius:14px;}
+  .vr2.cur{background:var(--saffron-light);}
+  .vr2 .n{width:26px; font-size:12px; font-weight:900; color:var(--faint); text-align:right;}
+  .vr2.cur .n{color:var(--saffron-deep);}
+  .vr2 .d{flex:1; font-family:'Tiro Devanagari Sanskrit'; font-size:14px; color:var(--ink);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+</style>
+</head>
+<body>
+
+<nav class="vnav">
+  <span class="brand">Read · Listen — design directions</span>
+  <div class="links">
+    <a href="a-saffron-library.html">A · Saffron Library</a>
+    <a href="b-manuscript.html">B · Manuscript</a>
+    <a href="c-modern.html">C · Modern Reader</a>
+    <a class="cur" href="d-contents-versions.html">D · Contents ×4</a>
+    <a href="e-player-versions.html">E · Player ×4</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="kicker">Round 2 · Screen 3</div>
+  <h1>Four more ways to open a book</h1>
+  <p>You liked the contents screen — here are four fresh takes beyond the three you've seen (A's cover card, B's printed TOC, C's chapter chips). Same book, same bookmark (Gītā 2.47, verse 94 of 700) so you can compare navigation, density, and how each answers "where was I?".</p>
+  <ul class="points">
+    <li><b>D1</b> compact library header + per-chapter progress</li>
+    <li><b>D2</b> the verse grid — every verse one tap away</li>
+    <li><b>D3</b> the timeline — reading as a journey</li>
+    <li><b>D4</b> cover hero with floating resume</li>
+  </ul>
+</header>
+
+<main class="gallery">
+
+  <!-- ═══ D1 · COMPACT LIBRARY HEADER ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="navrow">
+          <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+          <div class="grow"></div>
+          <div class="iconbtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+        </div>
+
+        <div class="bookhead">
+          <div class="bh-cover"><img src="../../mobile/assets/covers/gita.webp" alt=""></div>
+          <div class="bh-txt">
+            <div class="sa-t">श्रीमद्भगवद्गीता</div>
+            <div class="en-t">Bhagavad Gītā · 700 verses</div>
+            <div class="metachips"><span>18 chapters</span><span class="hot">Audio ✓</span><span>~3.5 h listen</span></div>
+            <div class="bh-prog">
+              <div class="bar"><i></i></div>
+              <div class="lbl">94 of 700 · bookmarked at 2.47</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bh-actions">
+          <div class="abtn fill"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Resume · 2.47</div>
+          <div class="abtn ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9z"/></svg>Listen</div>
+        </div>
+
+        <div class="seg3"><span class="on">Contents</span><span>Bookmarks · 1</span><span>About</span></div>
+
+        <div class="chrow" style="padding-top:16px;">
+          <div class="chnum" style="background:#17535C;"><b>1</b><i>CH</i></div>
+          <div class="cht"><div class="a">Arjuna's Despondency</div><div class="b sa">अर्जुनविषादयोगः · verses 1–47</div>
+            <div class="mini"><i style="width:100%; background:#17535C;"></i></div></div>
+          <span class="chcnt">47 · read</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+
+        <div class="chrow">
+          <div class="chnum" style="background:#B23D10;"><b>2</b><i>CH</i></div>
+          <div class="cht"><div class="a">Sāṅkhya yoga</div><div class="b sa">सांख्ययोगः · verses 1–72</div>
+            <div class="mini"><i style="width:65%"></i></div></div>
+          <span class="chcnt">47 of 72</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+        </div>
+        <div class="vr"><span class="n">45</span><span class="d">त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन…</span></div>
+        <div class="vr"><span class="n">46</span><span class="d">यावानर्थ उदपाने सर्वतः संप्लुतोदके…</span></div>
+        <div class="vr cur"><span class="n">47</span><span class="d">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन…</span>
+          <svg class="bm" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+        <div class="vr"><span class="n">48</span><span class="d">योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय…</span></div>
+        <div class="vr"><span class="n">49</span><span class="d">दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय…</span></div>
+
+        <div class="chrow">
+          <div class="chnum" style="background:#35603C;"><b>3</b><i>CH</i></div>
+          <div class="cht"><div class="a">Karma yoga</div><div class="b sa">कर्मयोगः · verses 1–43</div>
+            <div class="mini"><i style="width:0"></i></div></div>
+          <span class="chcnt">43</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="chrow padbottom">
+          <div class="chnum" style="background:#8A5608;"><b>4</b><i>CH</i></div>
+          <div class="cht"><div class="a">Knowledge and action</div><div class="b sa">ज्ञानकर्मसंन्यासयोगः · 1–42</div>
+            <div class="mini"><i style="width:0"></i></div></div>
+          <span class="chcnt">42</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">D1 · Contents</span>
+      <h3>Compact library header</h3>
+      <p>The Apple-Books shape: one dense header card (cover, stats, bookmark progress), Resume and Listen side by side, then a Contents/Bookmarks/About segmented list. Chapters get numbered colour tiles and their own progress bar — how much of each chapter you've read, at a glance.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ D2 · VERSE GRID ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="navrow">
+          <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+          <div class="grow"></div>
+          <div class="iconbtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+        </div>
+
+        <div class="ghead">
+          <div class="sa-t">श्रीमद्भगवद्गीता</div>
+          <div class="sub">Verse index</div>
+          <div class="orn"><i></i><b></b><i></i></div>
+        </div>
+
+        <div class="searchpill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          Jump to a verse — try “2.47”
+        </div>
+
+        <div class="gchap">
+          <span class="n">Chapter 1</span><span class="dv">अर्जुनविषादयोगः</span><span class="cnt">47 · all read</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="gchap" style="padding-top:10px;">
+          <span class="n">Chapter 2</span><span class="dv">सांख्ययोगः</span><span class="cnt">72 · at v.47</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+        </div>
+        <div class="vgrid" data-count="72" data-read="46" data-cur="47"></div>
+
+        <div class="gchap" style="padding-top:12px;">
+          <span class="n">Chapter 3</span><span class="dv">कर्मयोगः</span><span class="cnt">43</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+        <div class="gchap">
+          <span class="n">Chapter 4</span><span class="dv">ज्ञानकर्मसंन्यासयोगः</span><span class="cnt">42</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A6A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="gfoot padbottom">
+          <span class="dot" style="background:var(--saffron-light); border:1px solid rgba(232,91,37,.4);"></span>read
+          <span class="dot" style="background:var(--saffron);"></span>bookmark
+          <span class="dot" style="background:var(--surface); border:1.5px solid var(--border);"></span>unread
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">D2 · Contents</span>
+      <h3>The verse grid</h3>
+      <p>The bible-index move: every verse is a cell, one tap from anywhere. Read verses are tinted, your bookmark is the saffron cell with a notch, unread stay outlined — the whole book's shape is visible in one screen. Search ("2.47") jumps straight there. Densest option; zero preview text.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ D3 · TIMELINE ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="status"><span>9:41</span>
+        <span class="icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#3B2E25"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#3B2E25" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#3B2E25"/><path d="M22 4v4" stroke="#3B2E25" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <div class="body-scroll">
+        <div class="navrow">
+          <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+          <div class="grow"></div>
+          <div class="iconbtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+        </div>
+
+        <div class="tl-head">
+          <div class="ring">
+            <svg width="62" height="62" viewBox="0 0 62 62">
+              <circle cx="31" cy="31" r="27" fill="none" stroke="#FBEED9" stroke-width="6"/>
+              <circle cx="31" cy="31" r="27" fill="none" stroke="#E85B25" stroke-width="6" stroke-linecap="round"
+                stroke-dasharray="169.6" stroke-dashoffset="147.6"/>
+            </svg>
+            <span class="pct">13%</span>
+          </div>
+          <div class="t">
+            <div class="a">Bhagavad Gītā</div>
+            <div class="b sa">श्रीमद्भगवद्गीता · verse 94 of 700</div>
+            <span class="resume"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Resume 2.47</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="tlrow done">
+            <div class="node"></div>
+            <div class="a">Chapter 1<span class="dv">अर्जुनविषादयोगः</span></div>
+            <div class="b">47 verses · finished Sunday</div>
+          </div>
+          <div class="tlrow now">
+            <div class="node"></div>
+            <div class="a">Chapter 2<span class="dv">सांख्ययोगः</span></div>
+            <div class="b">72 verses · you're at verse 47</div>
+            <div class="tlverses">
+              <div class="tlv"><span>2.45</span><span class="d">त्रैगुण्यविषया वेदा…</span></div>
+              <div class="tlv"><span>2.46</span><span class="d">यावानर्थ उदपाने…</span></div>
+              <div class="tlv cur"><span>2.47</span><span class="d">कर्मण्येवाधिकारस्ते मा फलेषु…</span><span class="flag">you are here</span></div>
+              <div class="tlv"><span>2.48</span><span class="d">योगस्थः कुरु कर्माणि…</span></div>
+            </div>
+          </div>
+          <div class="tlrow">
+            <div class="node"></div>
+            <div class="a">Chapter 3<span class="dv">कर्मयोगः</span></div>
+            <div class="b">43 verses</div>
+          </div>
+          <div class="tlrow">
+            <div class="node"></div>
+            <div class="a">Chapter 6<span class="dv">ध्यानयोगः</span></div>
+            <div class="b">47 verses</div>
+          </div>
+          <div class="tlrow">
+            <div class="node"></div>
+            <div class="a">Chapter 11<span class="dv">विश्वरूपदर्शनयोगः</span></div>
+            <div class="b">55 verses</div>
+          </div>
+          <div class="tlrow padbottom">
+            <div class="node"></div>
+            <div class="a">Chapter 18<span class="dv">मोक्षसंन्यासयोगः</span></div>
+            <div class="b">78 verses · the last chapter</div>
+          </div>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">D3 · Contents</span>
+      <h3>The timeline</h3>
+      <p>Reading as a journey: chapters sit along a spine, finished ones solid teal, the current one half-filled saffron, the road ahead plain. A 13% ring answers "how far through am I", and the "you are here" flag makes re-entry effortless. Emotionally the most rewarding for long books.</p>
+    </figcaption>
+  </figure>
+
+  <!-- ═══ D4 · COVER HERO ═══ -->
+  <figure class="shot">
+    <div class="phone"><div class="screen">
+      <div class="hero4">
+        <img src="../../mobile/assets/covers/gita.webp" alt="">
+        <div class="scrim"></div>
+        <div class="status onimg"><span>9:41</span>
+          <span class="icons">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="#FFF8EE"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#FFF8EE" stroke-width="1.4"/><rect x="3" y="3" width="12" height="6" rx="1.5" fill="#FFF8EE"/><path d="M22 4v4" stroke="#FFF8EE" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <div class="toprow">
+          <div class="cbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+          <div class="cbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div>
+        </div>
+        <div class="resumepill"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Resume · 2.47</div>
+        <div class="btext">
+          <div class="sa-t">श्रीमद्भगवद्गीता</div>
+          <div class="en-t">Bhagavad Gītā</div>
+          <div class="metarow"><span class="chip-lite">700 verses</span><span class="chip-lite">18 chapters</span><span class="chip-lite">Audio ✓</span></div>
+        </div>
+      </div>
+
+      <div class="body-scroll" style="background:var(--bg); border-radius:26px 26px 0 0; margin-top:-22px; position:relative; z-index:5;">
+        <div class="quick">
+          <div class="qchip hot">Chapter 2 · continue</div>
+          <div class="qchip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Bookmarks</div>
+          <div class="qchip">About</div>
+        </div>
+
+        <div class="cardch" style="margin-top:16px;">
+          <div class="strip" style="background:#17535C;"></div>
+          <div class="in">
+            <div class="eyebrow">Chapter 1</div>
+            <div class="dvname">अर्जुनविषादयोगः</div>
+            <div class="meta">Arjuna's despondency · verses 1–47 · ~12 min</div>
+            <div class="mini"><i style="width:100%; background:#17535C;"></i></div>
+          </div>
+          <svg class="cnt" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="cardch" style="border:2px solid var(--saffron);">
+          <div class="strip" style="background:#E85B25;"></div>
+          <div class="in">
+            <div class="eyebrow">Chapter 2 · reading now</div>
+            <div class="dvname">सांख्ययोगः</div>
+            <div class="meta">Sāṅkhya yoga · verses 1–72 · at verse 47</div>
+            <div class="mini"><i style="width:65%; background:#E85B25;"></i></div>
+          </div>
+          <svg class="cnt" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+        </div>
+        <div class="vr2"><span class="n">45</span><span class="d">त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन…</span></div>
+        <div class="vr2"><span class="n">46</span><span class="d">यावानर्थ उदपाने सर्वतः संप्लुतोदके…</span></div>
+        <div class="vr2 cur"><span class="n">47</span><span class="d">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन…</span></div>
+        <div class="vr2"><span class="n">48</span><span class="d">योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय…</span></div>
+
+        <div class="cardch">
+          <div class="strip" style="background:#35603C;"></div>
+          <div class="in">
+            <div class="eyebrow">Chapter 3</div>
+            <div class="dvname">कर्मयोगः</div>
+            <div class="meta">Karma yoga · verses 1–43 · ~11 min</div>
+            <div class="mini"><i style="width:0"></i></div>
+          </div>
+          <svg class="cnt" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+        <div class="cardch padbottom" style="margin-bottom:30px;">
+          <div class="strip" style="background:#8A5608;"></div>
+          <div class="in">
+            <div class="eyebrow">Chapter 4</div>
+            <div class="dvname">ज्ञानकर्मसंन्यासयोगः</div>
+            <div class="meta">Knowledge and action · verses 1–42</div>
+            <div class="mini"><i style="width:0"></i></div>
+          </div>
+          <svg class="cnt" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <figcaption>
+      <span class="num">D4 · Contents</span>
+      <h3>Cover hero with floating resume</h3>
+      <p>The book opens like a store page: full-bleed painted cover, title on the scrim, and a floating Resume pill that never scrolls away. Contents become wide cards with colour spines, Sanskrit chapter names large, estimated reading time, and the open chapter outlined in saffron.</p>
+    </figcaption>
+  </figure>
+
+</main>
+
+<script>
+  // D2 verse grid: cells 1..72 — 1..46 read, 47 bookmark, rest unread.
+  document.querySelectorAll(".vgrid").forEach((grid) => {
+    const count = +grid.dataset.count, read = +grid.dataset.read, cur = +grid.dataset.cur;
+    for (let i = 1; i <= count; i++) {
+      const c = document.createElement("span");
+      c.className = "cell" + (i <= read ? " read" : i === cur ? " cur" : "");
+      c.textContent = i;
+      grid.appendChild(c);
+    }
+  });
+</script>
+</body>
+</html>

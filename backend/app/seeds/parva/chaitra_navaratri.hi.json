@@ -2,26 +2,26 @@
  "slug": "chaitra_navaratri",
  "variant": "",
  "lang": "hi",
- "status": "draft",
+ "status": "approved",
  "body": {
-  "summary": "नौ तिथियों का पर्व, शैलपुत्री से सिद्धिदात्री तक।",
+  "summary": "वसंत की नौ रात्रियाँ, शैलपुत्री से सिद्धिदात्री तक, राम नवमी पर समाप्त।",
   "why": [
    {
-    "text": "कवच में नौ दुर्गाओं के नाम कहे गए हैं, जो ब्रह्मा ने स्वयं कहे।",
+    "text": "देवी कवच में नौ दुर्गाओं के नाम कहे गए हैं, जो ब्रह्मा ने स्वयं बोले थे।",
     "basis": "text",
     "text_name": "Devi Kavacha",
     "ref": "Devi Kavacha",
     "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
    },
    {
-    "text": "पहले तीन दिन शैलपुत्री, ब्रह्मचारिणी और चंद्रघंटा के हैं।",
+    "text": "पहले तीन दिन शैलपुत्री, ब्रह्मचारिणी और चन्द्रघण्टा के हैं।",
     "basis": "text",
     "text_name": "Devi Kavacha",
     "ref": "Devi Kavacha",
     "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
    },
    {
-    "text": "बीच के तीन दिन कूष्मांडा, स्कंदमाता और कात्यायनी के हैं।",
+    "text": "बीच के तीन दिन कूष्माण्डा, स्कन्दमाता और कात्यायनी के हैं।",
     "basis": "text",
     "text_name": "Devi Kavacha",
     "ref": "Devi Kavacha",
@@ -33,140 +33,621 @@
     "text_name": "Devi Kavacha",
     "ref": "Devi Kavacha",
     "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+   },
+   {
+    "text": "देवीमाहात्म्य में देवी के द्वारा महिषासुर के वध का गान है, जिसे विजयादशमी पर याद किया जाता है।",
+    "basis": "text",
+    "text_name": "Devi Mahatmya",
+    "ref": "Devi Mahatmya",
+    "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=14680&prop=wikitext&format=json"
    }
   ],
   "do": {
-   "gather": [],
-   "steps": []
+   "gather": [
+    {
+     "text": "घटस्थापना के लिए कलश, जल, आम के पत्ते और नारियल।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "कलश के पास बोने के लिए साफ मिट्टी और जौ के बीज।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "दुर्गा की तस्वीर या मूर्ति और आसन के लिए लाल वस्त्र।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "दैनिक पूजा के लिए लाल फूल, अक्षत, रोली और कुमकुम।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "घी या तेल का दीपक, अगरबत्ती और घंटी।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "पाठ के लिए दुर्गा सप्तशती, दुर्गा चालीसा या देवी कवच।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "भोग के लिए फल, हलवा, पूरी और खीर।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "कन्या पूजन के लिए: चूड़ियाँ, बिंदी, मौली और छोटे उपहार।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ],
+   "steps": [
+    {
+     "text": "पहले दिन साफ मिट्टी बिछाकर कलश के पास जौ बोएँ और देवी का आवाहन करें (घटस्थापना)।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "कलश में जल, पत्ते और नारियल रखें, मूर्ति स्थापित करें और नौ दिन का दीपक जलाएँ।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "प्रतिदिन देवी कवच, दुर्गा सप्तशती या दुर्गा चालीसा का पाठ करें।",
+     "basis": "text",
+     "text_name": "Devi Kavacha",
+     "ref": "Devi Kavacha",
+     "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+    },
+    {
+     "text": "प्रत्येक प्रातः देवी को जल, लाल फूल, अक्षत और ताज़ा भोग अर्पित करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "प्रातः और संध्या को कलश के सामने बैठकर दुर्गा मंत्र या उनके नामों का जाप करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "नौ रूपों की आराधना क्रम से करें, शृंखला के हर दिन एक नया रूप।",
+     "basis": "text",
+     "text_name": "Devi Kavacha",
+     "ref": "Devi Kavacha",
+     "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+    },
+    {
+     "text": "अष्टमी पर संधि पूजा की विंडो में, दो तिथियों के संधि काल में, भोग अर्पित करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "अष्टमी या नवमी पर कन्या पूजन हेतु बालिकाओं का स्वागत करें: पैर धोकर मौली बाँधें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "उन्हें पूरी, हलवा और चन्ना खिलाएँ, और आदर के साथ चूड़ियाँ व छोटा उपहार दें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "दशमी पर अंतिम पूजा करें और अपने परिवार की परंपरा अनुसार जौ व कलश का विसर्जन या रक्षण करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ]
   },
-  "vrat": {},
-  "dont": [],
-  "texts": [],
+  "vrat": {
+   "eat": [
+    {
+     "text": "अधिकांश लोग संध्या पूजा के बाद दिन में एक सात्विक भोजन लेते हैं।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "फल, दूध, दही, मखाना और मेवे दिनभर के लिए उपयुक्त हैं।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "अन्न-व्रत के लिए साबूदाना, कुट्टू, सिंघाड़ा और राजगिरी के व्यंजन।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "व्रत में साधारण नमक की जगह रॉक सेंधा नमक प्रयोग करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ],
+   "avoid": [
+    {
+     "text": "नौ दिनों के लिए मद्य और सभी नशीले पदार्थ त्यागें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "अधिकांश घरों में मांस, मछली और अंडे नहीं खाए जाते।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "रसोई में प्याज़ और लहसुन का प्रयोग नहीं होता।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "व्रत के दौरान दालें, साधारण नमक और रोज़ के अनाज नहीं लिए जाते।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ],
+   "break": [
+    {
+     "text": "व्रत कन्या पूजन या नवमी पूजा के साथ, दशमी से पहले, समाप्त होता है।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "कुछ परिवार संधि पूजा के बाद अष्टमी पर ही व्रत खोलते हैं; अपनी परंपरा का पालन करें।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ],
+   "who_should_eat": [
+    {
+     "text": "बच्चे, बुज़ुर्ग, बीमार और गर्भवती महिलाएँ व्रत से मुक्त हैं।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "जो कोई चिकित्सकीय परामर्श पर है, वह सामान्य भोजन करे और डॉक्टर से पूछे।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    },
+    {
+     "text": "जे पूर्ण व्रत नहीं रख सकते, उनके लिए एक साधारण भोजन का आंशिक व्रत उचित है।",
+     "basis": "custom",
+     "region": "all",
+     "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+    }
+   ]
+  },
+  "dont": [
+   {
+    "text": "अधिकांश परिवार नौ दिनों तक केश-कर्तन, शेविंग और नाखून काटने से बचते हैं।",
+    "basis": "custom",
+    "region": "all",
+    "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+   },
+   {
+    "text": "पर्व के दौरान सिलाई और कपड़ा काटने से बचा जाता है।",
+    "basis": "custom",
+    "region": "all",
+    "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+   },
+   {
+    "text": "पूजा स्थल से दूर रखें बेल्ट और बटुआ जैसी चमड़े की वस्तुएँ।",
+    "basis": "custom",
+    "region": "all",
+    "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+   },
+   {
+    "text": "क्रोध, असत्य और कठोर वाणी से बचें; दिन सौम्य और सात्विक रखें।",
+    "basis": "custom",
+    "region": "all",
+    "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+   },
+   {
+    "text": "अखंड ज्योति बुझने न दें; नौ रातों तक दीपक जलता रहे।",
+    "basis": "custom",
+    "region": "all",
+    "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+   }
+  ],
+  "texts": [
+   {
+    "kind": "mantra",
+    "title": "नारायणी स्तुति (दुर्गा मंत्र)",
+    "devanagari": "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके। शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते॥",
+    "iast": "sarva-maṅgala-māṅgalye śive sarvārtha-sādhike | śaraṇye tryambake gauri nārāyaṇi namo'stu te ||",
+    "meaning": "हे सर्व-मंगलों की मंगलमयी, शिव की सहचरी, सब अर्थ सिद्ध करने वाली, शरण देने वाली, त्रिनेत्रा गौरी नारायणी, आपको नमस्ते।",
+    "source": "देवीमाहात्म्य, नारायणी स्तुति",
+    "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=14680&prop=wikitext&format=json"
+   },
+   {
+    "kind": "stotra",
+    "title": "नौ दुर्गाओं के नाम (देवी कवच)",
+    "devanagari": "प्रथमं शैलपुत्री च द्वितीयं ब्रह्मचारिणी। तृतीयं चन्द्रघण्टेति कूष्माण्डेति चतुर्थकम्॥ पञ्चमं स्कन्दमातेति षष्ठं कात्यायनीति च। सप्तमं कालरात्रिति महागौरीति चाष्टमम्॥ नवमं सिद्धिदात्री च नवदुर्गाः प्रकीर्तिताः। उक्तान्येतानि नामानि ब्रह्मणैव महात्मना॥",
+    "iast": "prathamaṃ śailaputrī ca dvitīyaṃ brahmacāriṇī | tṛtīyaṃ candraghaṇṭeti kūṣmāṇḍeti caturthakam || pañcamaṃ skandamāteti ṣaṣṭhaṃ kātyāyanīti ca | saptamaṃ kālarātriti mahāgaurīti cāṣṭamam || navamaṃ siddhidātrī ca navadurgāḥ prakīrtitāḥ | uktāny etāni nāmāni brahmaṇaiva mahātmanā ||",
+    "meaning": "प्रथम शैलपुत्री, द्वितीय ब्रह्मचारिणी, तृतीय चन्द्रघण्टा, चतुर्थ कूष्माण्डा, पंचम स्कन्दमाता, षष्ठ कात्यायनी, सप्तम कालरात्रि, अष्टम महागौरी, नवम सिद्धिदात्री: ये नौ दुर्गा कही गईं, नाम ब्रह्मा ने स्वयं बोले।",
+    "source": "देवी कवच",
+    "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+   },
+   {
+    "kind": "aarti",
+    "title": "अम्बे गौरी आरती (आरंभ)",
+    "devanagari": "जय अम्बे गौरी, मैया जय श्यामा गौरी॥ तुमको निशदिन ध्यावत, हरि ब्रह्मा शिवरी॥",
+    "iast": "jai ambe gaurī maiyā jai śyāmā gaurī || tumako niśadin dhyāvata hari brahmā śivarī ||",
+    "meaning": "माँ गौरी, श्यामा और गौरी, आपकी जय हो: हरि, ब्रह्मा और शिव दिन-रात आपका ध्यान करते हैं। नवरात्रि में आरती में गाया जाता है।",
+    "source": "अम्बे गौरी आरती, परंपरागत",
+    "source_url": "https://www.bhaktibharat.com/aarti/jai-ambe-gauri-maiya-jai-shyama-gauri"
+   }
+  ],
   "regions": [],
   "series_days": [
    {
     "tithi_key": "pratipada",
     "form_key": "shailaputri",
-    "summary": "शैलपुत्री",
+    "summary": "पर्वत-पुत्री, जो बैल पर सवार त्रिशूल और कमल धारण करती हैं, मस्तक पर अर्धचंद्र; नौ रूपों में प्रथम।",
     "steps": [
      {
-      "text": "इस दिन शैलपुत्री का स्मरण करें।",
+      "text": "कलश पर शैलपुत्री को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें गिरि-पुत्री के रूप में स्मरण करें जिनके त्रिशूल ने नौ रातों का द्वार खोला।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "शैलपुत्री ध्यान",
+      "devanagari": "वन्दे वाञ्छितलाभाय चन्द्रार्धकृतशेखराम्। वृषारूढां शूलधरां शैलपुत्रीं यशस्विनीम्॥",
+      "iast": "vande vāñchitalābhāya candrārdhakṛtaśekharām | vṛṣārūḍhāṃ śūladharāṃ śailaputrīṃ yaśasvinīm ||",
+      "meaning": "मैं यशस्विनी शैलपुत्री को नमन करता हूँ, जो अर्धचंद्र से मुकुटित हैं, बैल पर सवार हैं, त्रिशूल धारण करती हैं और वांछित फल देती हैं।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "dwitiya",
     "form_key": "brahmacharini",
-    "summary": "ब्रह्मचारिणी",
+    "summary": "तप करती कुमारी, जो माला और कमण्डलु लेकर नंगे पाँव चलती हैं; दूसरे दिन का तप इन्हीं का है।",
     "steps": [
      {
-      "text": "इस दिन ब्रह्मचारिणी का स्मरण करें।",
+      "text": "कलश पर ब्रह्मचारिणी को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें शांत ब्रह्मचारिणी के रूप में स्मरण करें जो श्रेष्ठ लक्ष्य का अनुसरण करती हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "ब्रह्मचारिणी ध्यान",
+      "devanagari": "दधाना करपद्माभ्यामक्षमालाकमण्डलू। देवी प्रसीदतु मयि ब्रह्मचारिण्यनुत्तमा॥",
+      "iast": "dadānā karapadmābhyām akṣamālā kamaṇḍalū | devī prasīdatu mayi brahmacāriṇy anuttamā ||",
+      "meaning": "कमल-हस्तों में माला और कमण्डलु धारण करती अनुत्तम ब्रह्मचारिणी देवी मुझ पर प्रसन्न हों।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "tritiya",
     "form_key": "chandraghanta",
-    "summary": "चंद्रघंटा",
+    "summary": "मस्तक पर घंटाकार चंद्र, सिंह पर सवार, शांत फिर भी सशस्त्र; इनकी घंटी हर भय को शांत करती कही जाती है।",
     "steps": [
      {
-      "text": "इस दिन चंद्रघंटा का स्मरण करें।",
+      "text": "कलश पर चन्द्रघण्टा को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें सशस्त्र देवी के रूप में स्मरण करें जिनकी कृपा हर नए कार्य से पहले माँगी जाती है।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "चन्द्रघण्टा ध्यान",
+      "devanagari": "पिण्डजप्रवरारूढा चण्डकोपास्त्रकैर्युता। प्रसादं तनुते मह्यां चन्द्रघण्टेति विश्रुता॥",
+      "iast": "piṇḍajapravarārūḍhā caṇḍakopāstrakairyutā | prasādaṃ tanute mahyāṃ candraghaṇṭeti viśrutā ||",
+      "meaning": "श्रेष्ठ सिंह पर सवार, क्रोध में अस्त्रों से सुसज्जित, विख्यात चन्द्रघण्टा मुझे प्रसाद देती हैं।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "chaturthi",
     "form_key": "kushmanda",
-    "summary": "कूष्मांडा",
+    "summary": "सूर्य-मण्डल के भीतर निवास करने वाली, जिनकी मुस्कान से सृष्टि का अंडारूप हुआ; चौथे दिन इन्हीं की आराधना होती है।",
     "steps": [
      {
-      "text": "इस दिन कूष्मांडा का स्मरण करें।",
+      "text": "कलश पर कूष्माण्डा को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें सूर्य के हृदय की ऊष्मा के रूप में स्मरण करें जो सब कल्याण देती हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "कूष्माण्डा ध्यान",
+      "devanagari": "सुरासम्पूर्णकलशं रुधिराप्लुतमेव च। दधाना हस्तपद्माभ्यां कूष्माण्डा शुभदास्तु मे॥",
+      "iast": "surāsampūrṇakalaśaṃ rudhirāplutameva ca | dadānā hastapadmābhyāṃ kūṣmāṇḍā śubhadāstu me ||",
+      "meaning": "हाथों में भरे कलश और कमल धारण करती कूष्माण्डा मुझे शुभ दें।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "panchami",
     "form_key": "skandamata",
-    "summary": "स्कंदमाता",
+    "summary": "स्कन्द की माता, जो कमल-आसन पर गोद में बाल कुमार लिए बैठी हैं; पहले माँ के रूप में इनकी पूजा होती है।",
     "steps": [
      {
-      "text": "इस दिन स्कंदमाता का स्मरण करें।",
+      "text": "कलश पर स्कन्दमाता को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें उस माँ के रूप में स्मरण करें जिनकी गोद में देवसेना के बाल सेनापति हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "स्कन्दमाता ध्यान",
+      "devanagari": "सिंहासनगता नित्यं पद्माश्रितकरद्वया। शुभदास्तु सदा देवी स्कन्दमाता यशस्विनी॥",
+      "iast": "siṃhāsanagatā nityaṃ padmāśritakaradvayā | śubhadāstu sadā devī skandamātā yaśasvinī ||",
+      "meaning": "सदा सिंहासन पर विराजमान, दोनों हाथ कमलों पर टिकाए, यशस्विनी स्कन्दमाता देवी सदा मुझे शुभ दें।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "shashthi",
     "form_key": "katyayani",
-    "summary": "कात्यायनी",
+    "summary": "महर्षि कात्यायन की कन्या, चंद्र-हास से दमकती, श्रेष्ठ सिंह पर सवार; कन्याएँ इन्हीं से अच्छे वर की प्रार्थना करती हैं।",
     "steps": [
      {
-      "text": "इस दिन कात्यायनी का स्मरण करें।",
+      "text": "कलश पर कात्यायनी को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें दैत्यों के विनाशक रूप में स्मरण करें जो भक्तों को शुभ देती हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "कात्यायनी ध्यान",
+      "devanagari": "चन्द्रहासोज्ज्वलकरा शार्दूलवरवाहना। कात्यायनी शुभं दद्याद्देवी दानवघातिनी॥",
+      "iast": "candrahāsojjvalakarā śārdūlavaravāhanā | kātyāyanī śubhaṃ dadyād devī dānavaghātinī ||",
+      "meaning": "चंद्र-हास से दीप्त कर वाली, श्रेष्ठ सिंह पर सवार: दानवों का नाश करने वाली कात्यायनी देवी मुझे शुभ दें।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "saptami",
     "form_key": "kalaratri",
-    "summary": "कालरात्रि",
+    "summary": "कृष्ण रात्रि-रूपा, उग्र फिर भी वरदायी, गधे पर सवार; इन्हें भय के भस्म करने वाली कहा गया है।",
     "steps": [
      {
-      "text": "इस दिन कालरात्रि का स्मरण करें।",
+      "text": "कलश पर कालरात्रि को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें भयंकरी के रूप में स्मरण करें जो भक्तों के लिए फिर भी माँ ही हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "कालरात्रि ध्यान",
+      "devanagari": "एकवेणी जपाकर्णपूरा नग्ना खरास्थिता। लम्बोष्ठी कर्णिकाकर्णी तैलाभ्यक्तशरीरिणी॥ वामपादोल्लसल्लोहलताकण्टकभूषणा। वर्धनमूर्धध्वजा कृष्णा कालरात्रिर्भयङ्करी॥",
+      "iast": "ekaveṇī japākarṇapūrā nagnā kharāsthitā | lamboṣṭhī karṇikākarṇī tailābhyaktaśarīriṇī || vāmapādollasallohalatākaṇṭakabhūṣaṇā | vardhanamūrdhadhvajā kṛṣṇā kālarātrir bhayaṅkarī ||",
+      "meaning": "एक वेणीधारी, कानों में जपा, गधे पर स्थित, लम्बोष्ठी, तैलाभ्यक्त शरीर, लोहा और काँटों से विभूषित, ध्वजा धारण करती कृष्णा कालरात्रि भयंकरी।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "ashtami",
     "form_key": "mahagauri",
-    "summary": "महागौरी",
+    "summary": "श्वेत वृषभ पर श्वेत वस्त्रा, गंगा-जल से निर्मल; शांत, चतुर्भुजी और महादेव को प्रसन्न करने वाली।",
     "steps": [
      {
-      "text": "इस दिन महागौरी का स्मरण करें।",
+      "text": "कलश पर महागौरी को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें निर्मला के रूप में स्मरण करें जिनसे हर अपराध की क्षमा माँगी जाती है।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "महागौरी ध्यान",
+      "devanagari": "श्वेते वृषे समारूढा श्वेताम्बरधरा शुचिः। महागौरी शुभं दघान्महादेवप्रमोददा॥",
+      "iast": "śvete vṛṣe samārūḍhā śvetāmbaradharā śuciḥ | mahāgaurī śubhaṃ daghān mahādevapramodadā ||",
+      "meaning": "श्वेत वृषभ पर सवार, श्वेत वस्त्र धारण करती शुचि महागौरी मुझे शुभ दें, महादेव को प्रसन्न करने वाली।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    },
    {
     "tithi_key": "navami",
     "form_key": "siddhidatri",
-    "summary": "सिद्धिदात्री",
+    "summary": "सिद्धियों की दात्री, कमल पर विराजमान, जिनकी सेवा सिद्ध, गंधर्व और देवता करते हैं; नौ रातों का ये ही समापन हैं।",
     "steps": [
      {
-      "text": "इस दिन सिद्धिदात्री का स्मरण करें।",
+      "text": "कलश पर सिद्धिदात्री को ताज़े फूल और दिन का भोग अर्पित करें।",
+      "basis": "custom",
+      "region": "all",
+      "source_url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/"
+     },
+     {
+      "text": "नवदुर्गा स्तोत्र से उनका वंदन-श्लोक पढ़ें या गाएँ।",
       "basis": "text",
-      "text_name": "Devi Kavacha",
-      "ref": "Devi Kavacha",
-      "source_url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json"
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     },
+     {
+      "text": "उन्हें सिद्धि-स्वरूपा के रूप में स्मरण करें जो भक्तों को हर सिद्धि प्रदान करती हैं।",
+      "basis": "text",
+      "text_name": "Nava Durga Stotram",
+      "ref": "Nava Durga Stotram",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
+     }
+    ],
+    "texts": [
+     {
+      "kind": "dhyana",
+      "title": "सिद्धिदात्री ध्यान",
+      "devanagari": "सिद्धगन्धर्वयक्षाघैरसुरैरमरैरपि। सेव्यमाना सदा भूयात् सिद्धिदा सिद्धिदायिनी॥",
+      "iast": "siddhagandharvayakṣādyair asurair amarair api | seviamānā sadā bhūyāt siddhidā siddhidāyinī ||",
+      "meaning": "सिद्ध, गंधर्व, यक्ष, असुर और अमरों द्वारा सेवित सिद्धिदा सिद्धिदायिनी सदा अभय दें।",
+      "source": "नवदुर्गा स्तोत्र",
+      "source_url": "https://bhaktimahima.com/shree-navdurga-stotra/"
      }
     ]
    }
@@ -178,6 +659,30 @@
    "ref": "Devi Kavacha",
    "url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=10855&prop=wikitext&format=json",
    "read_on": "2026-10-11"
+  },
+  {
+   "text_name": "Devi Mahatmya",
+   "ref": "Devi Mahatmya",
+   "url": "https://sa.wikisource.org/w/api.php?action=parse&pageid=14680&prop=wikitext&format=json",
+   "read_on": "2026-10-13"
+  },
+  {
+   "text_name": "Nava Durga Stotram",
+   "ref": "Nava Durga Stotram",
+   "url": "https://bhaktimahima.com/shree-navdurga-stotra/",
+   "read_on": "2026-10-13"
+  },
+  {
+   "text_name": "Navratri fasting rules and pooja vidhi",
+   "ref": "Navratri vrat vidhi",
+   "url": "https://www.vegrecipesofindia.com/navratri-fasting-rules-vrat-ka-khana/",
+   "read_on": "2026-10-13"
+  },
+  {
+   "text_name": "Ambe Gauri aarti",
+   "ref": "Ambe Gauri aarti",
+   "url": "https://www.bhaktibharat.com/aarti/jai-ambe-gauri-maiya-jai-shyama-gauri",
+   "read_on": "2026-10-13"
   }
  ]
 }

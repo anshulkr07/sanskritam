@@ -67,6 +67,10 @@ export const LEGAL_BASE_URL = "https://sanskritam.vedicvalor.com";
 export const PRIVACY_POLICY_URL = `${LEGAL_BASE_URL}/privacy`;
 export const DELETE_ACCOUNT_URL = `${LEGAL_BASE_URL}/delete-account`;
 
+// Play Store listing (package id from app.json). Encoded in the QR on festival
+// share cards and appended to text shares.
+export const APP_STORE_URL = "https://play.google.com/store/apps/details?id=com.sanskritam.app";
+
 const RELEASE_BASE_URL = RELEASE_BASE_URL_ENV || CLOUD_RUN_FALLBACK_URL;
 
 // A helper to build a full URL joined to the API base.

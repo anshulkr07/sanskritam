@@ -18,8 +18,8 @@ import type { RootStackParamList } from "../navigation/types";
 import type { ListenMode } from "../services/audioProgress";
 import { getListenMode, setListenMode, setListenPosition } from "../services/audioProgress";
 import ChantList from "../components/chant/ChantList";
-import ChantPlayer from "../components/chant/ChantPlayer";
 import KaraokeLine from "../components/chant/KaraokeLine";
+import Waveform from "../components/chant/Waveform";
 import { useBookPages } from "../hooks/useBookPages";
 import { useChant } from "../hooks/useChant";
 import { color } from "../theme";
@@ -73,6 +73,11 @@ export default function ListenScreen({ navigation, route }: Props) {
   } = useChant(pages, title, {
     initialIndex: index ?? 0,
     navigate,
+    // Name the session so the shelf's mini player can reopen this exact
+    // player, and playback keeps running after this screen closes.
+    sessionKey: `listen:${bookKey}:${chapter ?? "*"}`,
+    bookKey,
+    chapter: chapter ?? null,
     // The verse index feeds both memories: the reader's own (as before) and
     // the audiobook's Continue-listening slot.
     onAt: (i) => {
@@ -204,29 +209,113 @@ export default function ListenScreen({ navigation, route }: Props) {
             <Text style={styles.credit}>Chant: Vagdhenu, IISc</Text>
           </View>
         )}
+
+        {!!cur && curLines.length > 0 && (
+          <View style={styles.waveCard}>
+            <Waveform
+              lines={curLines}
+              fillFrac={curLit ? fillFrac : 0}
+              onSeekLine={(ln) => pickLine(cur, ln)}
+            />
+            <View style={styles.waveMeta}>
+              <Text style={styles.waveRef} numberOfLines={1}>
+                {cur.source_ref}
+              </Text>
+              <Text style={styles.wavePos}>
+                {pages.length ? `${playingAt + 1} of ${pages.length}` : ""}
+              </Text>
+            </View>
+          </View>
+        )}
       </ScrollView>
 
-      <View style={styles.player}>
-        <ChantPlayer
-          onPrev={() => step(-1)}
-          onToggle={toggle}
-          playing={isPlaying}
-          onNext={() => step(1)}
-          repeat={repeat}
-          onRepeat={cycleRepeat}
-          speed={speed}
-          onSpeed={cycleSpeed}
-          autoplay={autoplay}
-          onAutoplay={cycleAutoplay}
-          onLearn={openLearn}
-          verseRef={playingVerse?.source_ref}
-          position={pages.length ? `${playingAt + 1} of ${pages.length}` : undefined}
-          follow={follow}
-          onFollow={() => {
-            setFollow(true);
-            scrollToCurrent();
-          }}
-        />
+      {/* The player console: transport, then controls that say what they do. */}
+      <View style={styles.console}>
+        <View style={styles.consoleMain}>
+          <Pressable
+            onPress={() => step(-1)}
+            accessibilityRole="button"
+            accessibilityLabel="Previous verse"
+            style={styles.skip}
+          >
+            <Ionicons name="play-skip-back" size={22} color={color.ink} />
+          </Pressable>
+          <Pressable
+            onPress={toggle}
+            accessibilityRole="button"
+            accessibilityLabel={isPlaying ? "Pause" : "Play"}
+            style={styles.playBig}
+          >
+            <Ionicons name={isPlaying ? "pause" : "play"} size={28} color={color.white} />
+          </Pressable>
+          <Pressable
+            onPress={() => step(1)}
+            accessibilityRole="button"
+            accessibilityLabel="Next verse"
+            style={styles.skip}
+          >
+            <Ionicons name="play-skip-forward" size={22} color={color.ink} />
+          </Pressable>
+        </View>
+        <View style={styles.consoleGrid}>
+          <Pressable
+            onPress={cycleRepeat}
+            accessibilityRole="button"
+            accessibilityLabel={`Repeat ${repeat}`}
+            accessibilityState={{ selected: repeat !== "off" }}
+            style={[styles.cell, repeat !== "off" && styles.cellOn]}
+          >
+            <Ionicons
+              name="repeat"
+              size={16}
+              color={repeat !== "off" ? color.saffronDeep : color.inkSoft}
+            />
+            <Text style={[styles.cellT, repeat !== "off" && styles.cellTOn]}>Repeat</Text>
+            <Text style={[styles.cellV, repeat !== "off" && styles.cellVOn]}>{repeat}</Text>
+          </Pressable>
+          <Pressable
+            onPress={cycleSpeed}
+            accessibilityRole="button"
+            accessibilityLabel={`Speed ${speed} times`}
+            style={styles.cell}
+          >
+            <Text style={styles.cellBig}>{speed}×</Text>
+            <Text style={styles.cellT}>Speed</Text>
+          </Pressable>
+          <Pressable
+            onPress={cycleAutoplay}
+            accessibilityRole="button"
+            accessibilityLabel={autoplay ? "Autoplay on" : "Autoplay off"}
+            accessibilityState={{ selected: autoplay }}
+            style={[styles.cell, autoplay && styles.cellOn]}
+          >
+            <Text style={[styles.cellBig, autoplay && styles.cellTOn]}>∞</Text>
+            <Text style={[styles.cellT, autoplay && styles.cellTOn]}>Autoplay</Text>
+            <Text style={[styles.cellV, autoplay && styles.cellVOn]}>{autoplay ? "on" : "off"}</Text>
+          </Pressable>
+          <Pressable
+            onPress={openLearn}
+            accessibilityRole="button"
+            accessibilityLabel="Learn this verse"
+            style={styles.cell}
+          >
+            <Ionicons name="school" size={16} color={color.inkSoft} />
+            <Text style={styles.cellT}>Learn</Text>
+          </Pressable>
+        </View>
+        {!follow && (
+          <Pressable
+            onPress={() => {
+              setFollow(true);
+              scrollToCurrent();
+            }}
+            accessibilityRole="button"
+            accessibilityLabel="Follow the chant"
+            style={styles.followBtn}
+          >
+            <Text style={styles.followText}>Follow the chant</Text>
+          </Pressable>
+        )}
       </View>
 
       <View style={styles.listWrap}>
@@ -284,6 +373,69 @@ const styles = StyleSheet.create({
   meaning: { fontSize: 15, lineHeight: 23, color: color.ink, marginTop: 8 },
   meaningHi: { fontSize: 14, lineHeight: 22, color: color.inkSoft, marginTop: 2 },
   credit: { fontSize: 12, color: color.inkSoft, marginTop: 6 },
-  player: { borderTopWidth: 1, borderBottomWidth: 1, borderColor: "#EFE3CE" },
+  waveCard: {
+    backgroundColor: color.surface ?? "#fff",
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    marginTop: 10,
+  },
+  waveMeta: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 2,
+  },
+  waveRef: {
+    fontSize: 11,
+    fontWeight: "800",
+    color: color.saffron,
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+    flexShrink: 1,
+  },
+  wavePos: { fontSize: 11, fontWeight: "700", color: color.inkSoft, marginLeft: 8 },
+
+  // The player console: transport over a labeled control row.
+  console: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: "#EFE3CE",
+    paddingHorizontal: 16,
+    paddingTop: 10,
+    paddingBottom: 12,
+    gap: 12,
+  },
+  consoleMain: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 30 },
+  skip: { width: 48, height: 48, alignItems: "center", justifyContent: "center" },
+  playBig: {
+    width: 68,
+    height: 68,
+    borderRadius: 34,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: color.saffronBtn,
+  },
+  consoleGrid: { flexDirection: "row", gap: 8 },
+  cell: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 3,
+    backgroundColor: color.surface,
+    borderWidth: 1,
+    borderColor: color.border,
+    borderRadius: 12,
+    paddingVertical: 9,
+    minHeight: 64,
+  },
+  cellOn: { backgroundColor: color.saffronLight, borderColor: color.saffronLight },
+  cellBig: { fontSize: 16, fontWeight: "800", color: color.ink, lineHeight: 18 },
+  cellT: { fontSize: 11, fontWeight: "800", color: color.ink },
+  cellTOn: { color: color.saffronDeep },
+  cellV: { fontSize: 10, fontWeight: "700", color: color.inkSoft, textTransform: "uppercase", letterSpacing: 0.5 },
+  cellVOn: { color: color.saffronDeep },
+  followBtn: { alignSelf: "center", minHeight: 32, justifyContent: "center", paddingHorizontal: 10 },
+  followText: { fontSize: 12, fontWeight: "800", color: color.saffronText },
   listWrap: { flex: 1 },
 });

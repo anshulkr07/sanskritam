@@ -18,6 +18,8 @@ export interface ParvaDay {
   tithi_key: string;
   label: string;
   form_key: string;
+  /** Per-day deity painting (navadurga_<form_key>); empty when none approved. */
+  art_url?: string;
 }
 
 export interface ParvaOccurrence {
