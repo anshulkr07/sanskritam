@@ -10,6 +10,8 @@
  * - cache keys (tz + window coverage, v2)
  * - en/hi key parity
  * - no em or spaced en dash in either strings file
+ * - no unguarded deref of `page` above the null guard in ParvaPage
+ *   (the black screen of 2026-10-12)
  *
  * Usage: node scripts/check-parva.mjs (from mobile/)
  */
@@ -57,6 +59,19 @@ function check(ok, label, detail = "") {
   failed++;
   console.error(`  FAIL  ${label}${detail ? "  " + detail : ""}`);
 }
+
+// Comments and string literals removed in one left-to-right pass, so a `//`
+// inside a URL string and a quote inside a comment both behave. Prose such as
+// "Could not load this page. Go back and retry." must not read as code.
+const NOISE =
+  /\/\*[\s\S]*?\*\/|\/\/[^\n]*|'(?:\\.|[^'\\\n])*'|"(?:\\.|[^"\\\n])*"|`(?:\\.|[^`\\])*`/g;
+const stripNoise = (src) => src.replace(NOISE, " ");
+
+// `page.x` / `(page as T).x` — but not `styles.page`, not `ParvaPageBody`, and
+// not prose: a real dereference is followed by an identifier.
+const DEREF_RE =
+  /(?<![\w.])page\s*\.[A-Za-z_$]|(?<![\w.])page\s+as[^)]*\)\s*\.[A-Za-z_$]/g;
+const unguardedPageDerefs = (src) => stripNoise(src).match(DEREF_RE) ?? [];
 
 // 1. en/hi parity + no dashes
 {
@@ -172,6 +187,35 @@ function check(ok, label, detail = "") {
   } else {
     check(false, "windowCovers exported from keys.ts");
   }
+}
+
+// 6. ParvaPage must not deref `page` above its null guard. The black screen of
+//    2026-10-12: derived values are computed above the `if (!page && !basic)`
+//    early-return, so an unguarded `page.x` there threw on the first render
+//    (page is null), ReactHost destroyed the React instance and the app went
+//    black. The fix is optional chaining, so guard ORDER is not what matters —
+//    what matters is that nothing above the guard derefs `page` unguarded.
+{
+  const src = stripNoise(readFileSync(resolve(here, "../src/screens/ParvaPage.tsx"), "utf8"));
+  const guardIdx = src.search(/if\s*\(\s*!page\b/);
+  check(guardIdx > 0, "ParvaPage has a null guard on page");
+  const above = guardIdx > 0 ? src.slice(0, guardIdx) : src;
+  const hits = above.match(DEREF_RE) ?? [];
+  check(hits.length === 0, "no unguarded deref of `page` above the null guard", hits.join(" | "));
+
+  // Teeth. Without these the assertion above could pass vacuously: it must
+  // flag the exact shape that caused the black screen, and must stay quiet on
+  // optional chaining, on `styles.page`, and on prose.
+  check(unguardedPageDerefs("const c = ((page as unknown as { day?: string[] }).day) ?? [];").length === 1,
+    "scan catches the historical black-screen deref");
+  check(unguardedPageDerefs("const c = (page as { day?: string[] }).day ?? [];").length === 1,
+    "scan catches the cast-without-optional-chaining deref");
+  check(unguardedPageDerefs("const b = page?.body ?? {};").length === 0,
+    "scan accepts optional chaining");
+  check(unguardedPageDerefs("const s = styles.page;").length === 0,
+    "scan ignores styles.page");
+  check(unguardedPageDerefs('t("Could not load this page. Go back and retry.")').length === 0,
+    "scan ignores prose containing 'page.'");
 }
 
 console.log(`\n  check-parva: ${passed} passed, ${failed} failed.`);
