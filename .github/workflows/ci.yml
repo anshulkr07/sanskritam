@@ -50,3 +50,14 @@ jobs:
 
       - name: TypeScript check
         run: npx tsc --noEmit
+
+      # The check-*.mjs scripts are the regression net for bugs that typecheck
+      # cannot see: check-parva's guard on `page` derefs exists because an
+      # unguarded one black-screened the app on 2026-10-12. They were only ever
+      # run by hand, so a regression could ship; run every one here.
+      - name: Repo checks
+        run: |
+          for f in scripts/check-*.mjs scripts/check-*.cjs; do
+            echo "== $f"
+            node "$f"
+          done
