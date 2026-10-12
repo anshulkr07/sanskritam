@@ -128,5 +128,18 @@ function check(ok, label, detail = "") {
   check(direct.length + cast.length === 0, "no unguarded deref of `page` before the null guard", [...direct, ...cast].join(" | "));
 }
 
+// 6. Every ParvaPage navigation must be gated on has_page, so tapping an
+//    observance with no authored page cannot dead-end on the error screen
+//    (Chaturmas has no page; the API exposes has_page for exactly this).
+{
+  for (const f of ["../src/components/parva/ParvaStrip.tsx", "../src/screens/Parva.tsx"]) {
+    const src = readFileSync(resolve(here, f), "utf8");
+    const navs = (src.match(/navigate\("ParvaPage"/g) ?? []).length;
+    const gates = (src.match(/disabled=\{!/g) ?? []).length;
+    check(navs > 0, `${f}: navigates to ParvaPage`, `found ${navs}`);
+    check(navs === gates, `${f}: every ParvaPage nav gated on has_page`, `navs=${navs} gates=${gates}`);
+  }
+}
+
 console.log(`\n  check-parva: ${passed} passed, ${failed} failed.`);
 process.exit(failed ? 1 : 0);

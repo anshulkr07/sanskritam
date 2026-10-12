@@ -116,9 +116,11 @@ export default function ParvaScreen() {
             <Pressable
               key={`${o.slug}_${o.variant}_${o.date}`}
               onPress={() => nav.navigate("ParvaPage", { slug: o.slug, variant: o.variant, date: o.date ?? undefined })}
+              disabled={!o.has_page}
               style={({ pressed }) => [styles.row, pressed && styles.pressed]}
               accessibilityRole="button"
               accessibilityLabel={`${o.title}. ${o.date ?? ""}`}
+              accessibilityState={{ disabled: !o.has_page }}
             >
               <View style={styles.rowText}>
                 <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>

@@ -92,9 +92,11 @@ export default function ParvaStrip() {
     <View style={styles.wrap}>
       <Pressable
         onPress={() => nav.navigate("ParvaPage", { slug: todayOne.slug, variant: todayOne.variant, date: todayOne.date ?? undefined })}
+        disabled={!todayOne.has_page}
         style={({ pressed }) => [styles.today, pressed && styles.pressed]}
         accessibilityRole="button"
         accessibilityLabel={`${todayOne.title}. ${relLabel(todayOne.date, todayStr)}`}
+        accessibilityState={{ disabled: !todayOne.has_page }}
       >
         {!!todayOne.art_url && (
           <Image source={{ uri: todayOne.art_url }} style={styles.thumb} accessible={false} importantForAccessibility="no" />
@@ -121,9 +123,11 @@ export default function ParvaStrip() {
         <Pressable
           key={`${o.slug}_${o.variant}_${o.date}`}
           onPress={() => nav.navigate("ParvaPage", { slug: o.slug, variant: o.variant, date: o.date ?? undefined })}
+          disabled={!o.has_page}
           style={({ pressed }) => [styles.row, pressed && styles.pressed]}
           accessibilityRole="button"
           accessibilityLabel={`${o.title}. ${relLabel(o.date, todayStr)}`}
+          accessibilityState={{ disabled: !o.has_page }}
         >
           <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>
           <Text style={styles.rowMeta}>{relLabel(o.date, todayStr)}</Text>
