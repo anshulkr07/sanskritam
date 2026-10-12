@@ -6,7 +6,7 @@
 //
 // U8-1 (info architecture): tabs plus a left drawer. Shloka and Varnamala
 // stop being tabs and become stack screens reached from Home cards (U8-2);
-// Play, Grammar and Read are tabs; Progress lives in the drawer (hamburger)
+// Learn combines Course, Reference and Practice; Progress lives in the drawer (hamburger)
 // next to Settings — it is consulted, not lived in. The drawer hangs off a
 // hamburger on Home.
 
@@ -16,15 +16,19 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type MainTabParamList = {
   Home: undefined;
-  Path: undefined;
   Conversation: undefined;
   Play: undefined;
-  Grammar: undefined;
   Read: undefined;
+  Learn: undefined;
 };
 
 export type RootStackParamList = {
   MainTabs: undefined;
+  // Compatible entry routes for the original course/reference, now inside Learn.
+  Path: undefined;
+  Grammar: undefined;
+  LearnCards: undefined;
+  LearnChapter: { chapterId: string };
   // U8-0: a session launched from a Path node carries the unit's feature
   // filter. This is a deliberate shape (NOT smuggled through challengeId).
   Challenge: { challengeId?: string; features?: string[] };
@@ -55,6 +59,9 @@ export type RootStackParamList = {
   // U15-1: the lesson is now a step player addressed by id; featureId stays
   // as the legacy entry (Path nodes that only know their feature).
   Lesson: { featureId: string; lessonId?: string };
+  // LearnV2 (additive Learn tab): static catalogue lessons. Reading progress
+  // is device-local (shabd.learnv2.*); nothing here writes mastery or XP.
+  LearnV2Lesson: { lessonId: string };
   Vocab: { topic?: string } | undefined;
   // U15-6: Piṅgala as binary — light/heavy enumeration, mātrāmeru.
   Pingala: undefined;
@@ -71,14 +78,20 @@ export type RootStackParamList = {
   // Paged books read one chapter at a time: chapter names the chapter.
   // mode "chant" opens it in Chant mode (a paged chapter's Chant button).
   Book: { bookKey: string; index?: number; chapter?: string; mode?: "chant" };
+  // Listen: the player-first chant screen — same chapter, transport on top.
+  // Reuses Book's player (useChant), reached from the chant player bar.
+  Listen: { bookKey: string; index?: number; chapter?: string };
   // Play games (HANDOVER 5): fullscreen, header hidden.
   ShabdaRush: { topic?: string; daily?: boolean } | undefined;
   Smriti: { set?: string; size?: number; daily?: boolean } | undefined;
   VarnaJaal: { daily?: boolean } | undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };
   // Parva: festivals and vrats. List plus one page per observance.
+  // `date` is the occurrence start; `dayDate` the selected series day.
+  // `tradition` pins the calculation so share/Ask/reminder links reopen
+  // the same occurrence instead of a different year's or month's.
   Parva: undefined;
-  ParvaPage: { slug: string; variant?: string; date?: string };
+  ParvaPage: { slug: string; variant?: string; date?: string; dayDate?: string; tradition?: string };
   // Kāla: time as Sanskrit counts it. The hub behind the Home date card, and
   // one screen that shows whichever of its six chapters is asked for.
   Kala: undefined;

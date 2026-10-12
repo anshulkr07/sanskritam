@@ -422,6 +422,7 @@ export default function ConversationScreen() {
   const [input, setInput] = useState("");
   const [done, setDone] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [guruVisible, setGuruVisible] = useState(true);
   // What he is saying right now. viseme.ts reads the mouth shapes straight off
   // the Devanagari; the duration is the same ~0.08 s/char hint playTutorAudio
   // uses to time its own completion callback.
@@ -467,11 +468,12 @@ export default function ConversationScreen() {
 
   // The avatar is 172dp of the screen. Leaving it up while typing pushes the
   // conversation into a letterbox, so it folds away as the keyboard rises and
-  // comes back when it goes. Driven by keyboard progress rather than a timer,
-  // so it tracks the keyboard exactly instead of racing it.
+  // comes back when it goes, unless the learner has hidden it. Driven by
+  // keyboard progress rather than a timer, so it tracks the keyboard exactly.
   const headerStyle = useAnimatedStyle(() => ({
-    height: interpolate(keyboard.progress.value, [0, 1], [HEADER_H, 0]),
-    opacity: interpolate(keyboard.progress.value, [0, 0.6], [1, 0]),
+    height: guruVisible ? interpolate(keyboard.progress.value, [0, 1], [HEADER_H, 0]) : 0,
+    opacity: guruVisible ? interpolate(keyboard.progress.value, [0, 0.6], [1, 0]) : 0,
+    borderBottomWidth: guruVisible ? 1 : 0,
   }));
 
   useEffect(() => {
@@ -843,7 +845,7 @@ export default function ConversationScreen() {
         ]);
       } finally {
         setAskBusy(false);
-        scrollBottom();
+        // Keep the reader's position when the answer finishes growing.
       }
     },
     [askBusy, askMsgs, birth, partner],
@@ -1040,33 +1042,48 @@ export default function ConversationScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <Animated.View style={[styles.header, headerStyle]}>
-        <GuruNative state={avatarState} size={160} speech={speech} />
+        {guruVisible && <GuruNative state={avatarState} size={160} speech={speech} />}
       </Animated.View>
 
       <Animated.View style={[styles.column, shiftStyle]}>
-        <View style={styles.modeRow} accessibilityRole="tablist">
-          {(["practise", "ask"] as Mode[]).map((m) => {
-            const on = mode === m;
-            return (
-              <Pressable
-                key={m}
-                onPress={() => switchMode(m)}
-                style={[styles.modeBtn, on && styles.modeBtnOn]}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: on }}
-                accessibilityLabel={m === "practise" ? "Practise speaking Sanskrit" : "Ask a question"}
-              >
-                <Ionicons
-                  name={m === "practise" ? "chatbubbles-outline" : "help-circle-outline"}
-                  size={16}
-                  color={on ? onFill.text : color.ink}
-                />
-                <Text style={[styles.modeText, on && styles.modeTextOn]}>
-                  {m === "practise" ? "Practise" : "Ask"}
-                </Text>
-              </Pressable>
-            );
-          })}
+        <View style={styles.toolbar}>
+          <View style={styles.modeRow} accessibilityRole="tablist">
+            {(["practise", "ask"] as Mode[]).map((m) => {
+              const on = mode === m;
+              return (
+                <Pressable
+                  key={m}
+                  onPress={() => switchMode(m)}
+                  style={[styles.modeBtn, on && styles.modeBtnOn]}
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: on }}
+                  accessibilityLabel={m === "practise" ? "Practise speaking Sanskrit" : "Ask a question"}
+                >
+                  <Ionicons
+                    name={m === "practise" ? "chatbubbles-outline" : "help-circle-outline"}
+                    size={16}
+                    color={on ? onFill.text : color.ink}
+                  />
+                  <Text style={[styles.modeText, on && styles.modeTextOn]}>
+                    {m === "practise" ? "Practise" : "Ask"}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          <Pressable
+            onPress={() => {
+              haptics.tap();
+              setGuruVisible((visible) => !visible);
+            }}
+            style={({ pressed }) => [styles.guruToggle, pressed && styles.guruTogglePressed]}
+            accessibilityRole="button"
+            accessibilityLabel={guruVisible ? "Hide guru" : "Show guru"}
+            accessibilityHint={guruVisible ? "Expands the reading area" : "Restores the guru above the conversation"}
+            accessibilityState={{ expanded: guruVisible }}
+          >
+            <Ionicons name={guruVisible ? "eye-off-outline" : "eye-outline"} size={20} color={color.ink} />
+          </Pressable>
         </View>
 
         <ScrollView
@@ -1188,13 +1205,13 @@ export default function ConversationScreen() {
           <TextInput
             value={input}
             onChangeText={setInput}
-            placeholder={asking ? "Ask about texts, festivals, kundli…" : "Say or type"}
+            placeholder={asking ? "Ask a question…" : "Say or type"}
             placeholderTextColor={color.inkFaint}
             style={styles.input}
             onSubmitEditing={() => (asking ? void askSubmit(input) : submit(input))}
             returnKeyType="send"
             editable={!inputBusy && !voiceBusy && !inputClosed}
-            multiline
+            multiline={!asking}
             accessibilityRole="text"
             accessibilityLabel={asking ? "Type your question" : "Type your reply"}
           />
@@ -1234,9 +1251,10 @@ const styles = StyleSheet.create({
   column: { flex: 1 },
   body: { padding: space.lg, paddingBottom: space.xl, gap: space.lg },
 
-  // ── The Practise | Ask switch ─────────────────────────────────────────
-  modeRow: {
+  // ── The Practise | Ask switch and guru visibility ──────────────────────
+  toolbar: {
     flexDirection: "row",
+    alignItems: "center",
     gap: space.xs,
     paddingHorizontal: space.lg,
     paddingVertical: space.xs,
@@ -1244,6 +1262,15 @@ const styles = StyleSheet.create({
     borderBottomColor: color.border,
     backgroundColor: color.bg,
   },
+  modeRow: { flex: 1, flexDirection: "row", gap: space.xs },
+  guruToggle: {
+    width: 44,
+    height: 44,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+  },
+  guruTogglePressed: { backgroundColor: color.surface },
   modeBtn: {
     flex: 1,
     flexDirection: "row",

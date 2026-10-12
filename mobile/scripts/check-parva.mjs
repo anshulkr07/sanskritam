@@ -4,9 +4,10 @@
  * Transpiles TypeScript with the project's own compiler and runs in Node.
  *
  * - date labels in both languages
- * - series day selection for 17, 18, 19 Oct 2026 from a fixture response
+ * - production selection helpers (select.ts): active-day, ranking,
+ *   dated content resolution, tithi normalisation
  * - reminder scheduling (which dates, at most 30, never in the past)
- * - cache keys
+ * - cache keys (tz + window coverage, v2)
  * - en/hi key parity
  * - no em or spaced en dash in either strings file
  *
@@ -70,16 +71,24 @@ function check(ok, label, detail = "") {
   }
 }
 
-// 2. cache keys round to 0.1
+// 2. cache keys round to 0.1, carry tz + window, v2
 {
   const C = loadTs(resolve(here, "../src/parva/keys.ts"));
   check(C.round1(28.6123) === 28.6 && C.round1(77.2099) === 77.2, "round to 0.1");
-  check(C.cacheKey({ lat: 28.6123, lon: 77.2099, tradition: "north", lang: "en" }) === "shabd.parva.28.6_77.2_north_en", "cache key shape");
+  const k = { lat: 28.6123, lon: 77.2099, tradition: "north", lang: "en" };
+  const full = C.cacheKey(k, { tz: "Asia/Kolkata", start: "2026-10-11", days: 60 });
+  check(full.includes("Asia/Kolkata") && full.includes("2026-10-11") && full.includes("60"), "tz+window in cache key", full);
+  check(C.cacheKey(k, { tz: "Asia/Kolkata", start: "2026-10-11", days: 60 }) !== C.cacheKey(k, { tz: "Asia/Kolkata", start: "2026-10-11", days: 120 }), "60 vs 120 days differ");
+  check(C.cacheKey(k, { tz: "Asia/Kolkata", start: "2026-10-11", days: 60 }) !== C.cacheKey(k, { tz: "America/New_York", start: "2026-10-11", days: 60 }), "tz in cache key");
   check(C.cacheKey({ lat: 28.6123, lon: 77.2099, tradition: "north", lang: "en" }) !== C.cacheKey({ lat: 28.6123, lon: 77.2099, tradition: "north", lang: "hi" }), "lang in cache key");
 }
 
-// 3. series days 17/18/19 Oct 2026: Saptami twice, then Ashtami+Navami
+// 3. production select.ts: Delhi 11/12 Oct 2026 regression
 {
+  const S = loadTs(resolve(here, "../src/parva/select.ts"));
+  check(S.normalizeTithiKey("dvitiya") === "dwitiya", "dvitiya normalises to dwitiya");
+  check(S.normalizeTithiKey("dwitiya") === "dwitiya", "dwitiya stays");
+  // Series days 17/18/19 Oct 2026: Saptami twice, then Ashtami+Navami
   const days = [
     { date: "2026-10-17", tithi_key: "saptami", label: "Kalaratri", form_key: "kalaratri" },
     { date: "2026-10-18", tithi_key: "saptami", label: "Kalaratri, second day", form_key: "kalaratri" },
@@ -89,6 +98,44 @@ function check(ok, label, detail = "") {
   check(kal.length === 2 && kal[0].date === "2026-10-17" && kal[1].date === "2026-10-18", "Saptami gives two dates, same form");
   check(kal[1].label.includes("second day"), "second Saptami labelled");
   check(days[2].form_key === "mahagauri", "19 Oct is Ashtami Mahagauri");
+
+  // Active-day selection: series begun yesterday still surfaces today.
+  const nav = {
+    slug: "sharad_navaratri", variant: "sharad_navaratri", title: "Sharad Navaratri",
+    date: "2026-10-11", end_date: "2026-10-20", has_page: true, art_url: "",
+    day: [
+      { date: "2026-10-11", tithi_key: "pratipada", label: "Shailaputri", form_key: "shailaputri" },
+      { date: "2026-10-12", tithi_key: "dwitiya", label: "Brahmacharini", form_key: "brahmacharini" },
+      { date: "2026-10-13", tithi_key: "tritiya", label: "Chandraghanta", form_key: "chandraghanta" },
+    ],
+  };
+  const chaturmas = {
+    slug: "chaturmas", variant: "chaturmas", title: "Chaturmas",
+    date: "2026-07-01", end_date: "2026-11-01", has_page: false, art_url: "", day: null,
+  };
+  const ranked12 = S.rankOccurrences([chaturmas, nav], "2026-10-12");
+  check(ranked12.main && ranked12.main.slug === "sharad_navaratri", "12 Oct main is Navaratri, not Chaturmas");
+  check(ranked12.supporting.some((o) => o.slug === "chaturmas"), "Chaturmas kept as supporting context");
+  const active = S.activeDayFor(nav, "2026-10-12");
+  check(active && active.form_key === "brahmacharini", "12 Oct active day is Brahmacharini", JSON.stringify(active));
+  const active11 = S.activeDayFor(nav, "2026-10-11");
+  check(active11 && active11.form_key === "shailaputri", "11 Oct active day is Shailaputri");
+
+  // Day index: requested date wins, else today, else first future.
+  check(S.selectDayIndex([{ date: "2026-10-11" }, { date: "2026-10-12" }], { requestedDate: "2026-10-12", todayStr: "2026-10-11" }) === 1, "requested date wins");
+  check(S.selectDayIndex([{ date: "2026-10-11" }, { date: "2026-10-12" }], { todayStr: "2026-10-12" }) === 1, "today inside series wins");
+  check(S.selectDayIndex([{ date: "2026-10-20" }, { date: "2026-10-21" }], { todayStr: "2026-10-11" }) === 0, "upcoming picks first");
+
+  // Content resolution by form_key survives repeated tithis + spelling.
+  const series = [
+    { tithi_key: "dwitiya", form_key: "brahmacharini", summary: "Brahmacharini", steps: [{ text: "x" }] },
+    { tithi_key: "saptami", form_key: "kalaratri", summary: "Kalaratri", steps: [{ text: "y" }] },
+  ];
+  const hitOld = S.resolveDayContent({ date: "2026-10-12", tithi_key: "dvitiya", form_key: "brahmacharini" }, series);
+  check(hitOld && hitOld.summary === "Brahmacharini", "old dvitiya spelling still resolves by form");
+  const hitRepeat = S.resolveDayContent({ date: "2026-10-18", tithi_key: "saptami", form_key: "kalaratri" }, series);
+  check(hitRepeat && hitRepeat.summary === "Kalaratri", "repeated Saptami shares form content");
+  check(S.occurrenceIdentity({ slug: "ekadashi", variant: "papankusha", date: "2026-10-10", tradition: "north", dayDate: "2026-10-10" }).includes("papankusha"), "occurrence identity carries variant+date");
 }
 
 // 4. reminders: at most 30, never in the past, evening 19:00 + parana start
@@ -114,30 +161,16 @@ function check(ok, label, detail = "") {
   check(eve.getHours() === 19, "evening reminder at 19:00");
 }
 
-// 5. ParvaPageScreen must not dereference `page` before its null guard.
-//    Derived values are computed above the `if (!page) return` early-return, so
-//    a single raw `page.x` there throws "Cannot read property 'x' of null" on
-//    the first render and blanks the whole app (seen on device 2026-10-12).
+// 5. cache window coverage (60 must not satisfy 120)
 {
-  const src = readFileSync(resolve(here, "../src/screens/ParvaPage.tsx"), "utf8");
-  const guardIdx = src.search(/if\s*\(\s*!page\s*\)/);
-  check(guardIdx > 0, "ParvaPage has a null guard");
-  const before = guardIdx > 0 ? src.slice(0, guardIdx) : src;
-  const direct = before.match(/\bpage\.[A-Za-z_]/g) ?? [];
-  const cast = before.match(/\(\s*page\s+as[^)]*\)\s*\./g) ?? [];
-  check(direct.length + cast.length === 0, "no unguarded deref of `page` before the null guard", [...direct, ...cast].join(" | "));
-}
-
-// 6. Every ParvaPage navigation must be gated on has_page, so tapping an
-//    observance with no authored page cannot dead-end on the error screen
-//    (Chaturmas has no page; the API exposes has_page for exactly this).
-{
-  for (const f of ["../src/components/parva/ParvaStrip.tsx", "../src/screens/Parva.tsx"]) {
-    const src = readFileSync(resolve(here, f), "utf8");
-    const navs = (src.match(/navigate\("ParvaPage"/g) ?? []).length;
-    const gates = (src.match(/disabled=\{!/g) ?? []).length;
-    check(navs > 0, `${f}: navigates to ParvaPage`, `found ${navs}`);
-    check(navs === gates, `${f}: every ParvaPage nav gated on has_page`, `navs=${navs} gates=${gates}`);
+  const K = loadTs(resolve(here, "../src/parva/keys.ts"));
+  const covers = K.windowCovers;
+  if (typeof covers === "function") {
+    check(covers({ start: "2026-10-11", days: 60 }, { start: "2026-10-11", days: 60 }), "same window covers");
+    check(!covers({ start: "2026-10-11", days: 60 }, { start: "2026-10-11", days: 120 }), "60 does not cover 120");
+    check(!covers({ start: "2026-10-12", days: 60 }, { start: "2026-10-11", days: 60 }), "later start does not cover earlier");
+  } else {
+    check(false, "windowCovers exported from keys.ts");
   }
 }
 

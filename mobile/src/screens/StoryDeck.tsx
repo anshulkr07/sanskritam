@@ -49,7 +49,7 @@ interface FlatCard {
 // Tab destinations resolve through the MainTabs navigator; stack screens
 // resolve directly. (Precedent: Play.tsx navigates tabs by bare name with
 // `as never`; from a stack screen the path goes through MainTabs.)
-const TAB_TARGETS = new Set(["Conversation", "Path", "Play", "Grammar", "Read"]);
+const TAB_TARGETS = new Set(["Conversation", "Learn", "Play", "Read"]);
 
 export default function StoryDeckScreen({ navigation }: Props) {
   const { sized } = useTypeScale();
@@ -129,7 +129,7 @@ export default function StoryDeckScreen({ navigation }: Props) {
         // the same `as never` precedent Play.tsx uses for tab targets.
         (navigation.navigate as unknown as (s: string, p?: object) => void)(
           "MainTabs",
-          { screen: link },
+          { screen: "Tabs", params: { screen: link } },
         );
         return;
       }
@@ -144,6 +144,8 @@ export default function StoryDeckScreen({ navigation }: Props) {
           navigation.navigate("Vocab", {});
           break;
         case "Varnamala":
+        case "Path":
+        case "Grammar":
         case "Writing":
         case "Shloka":
         case "Pingala":

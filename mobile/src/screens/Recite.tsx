@@ -69,7 +69,13 @@ export default function ReciteScreen({ navigation, route }: Props) {
         await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(next));
       } catch { /* keep */ }
     });
-  }, [verseUid]);
+    // Consent may have been granted in ContestRules after this screen mounted
+    // — re-read it every time we return here so the eyes-closed toggle works.
+    const sub = navigation.addListener("focus", () => {
+      void AsyncStorage.getItem(CONSENT_KEY).then((v) => setConsent(v === "1"));
+    });
+    return sub;
+  }, [navigation, verseUid]);
 
   const lines = verse?.chant?.lines?.length
     ? verse.chant.lines
@@ -156,10 +162,26 @@ export default function ReciteScreen({ navigation, route }: Props) {
         });
       }
       setResult(res);
+      if (competitionId && res.counted === false) {
+        const why: Record<string, string> = {
+          unclear: "Unclear recording — not counted for the leaderboard. Try again in a quieter place.",
+          text_shown: "Text was shown — not counted. Hide the words fully (or stay on Recite) and try again.",
+          no_face: "Face not seen enough — not counted. Prop the phone so the front camera sees you.",
+          two_faces: "Two faces seen — not counted. Recite alone in frame.",
+          eyes_open: "Your eyes opened — not counted for the leaderboard.",
+          old_app: "App is too old for the face check — update, then try again.",
+        };
+        setError(why[res.why_not ?? ""] ?? (res.why_not ? `Not counted (${res.why_not}).` : "Not counted for the leaderboard."));
+      }
     } catch (e) {
-      if (e instanceof ApiError && e.status === 404) setError("Scoring is not available yet");
+      if (e instanceof ApiError && e.message) {
+        // Surface the server's own detail: 503 "Scoring is not available yet"
+        // vs 503 "Scoring is busy. Try again." are different fixes, and 403 /
+        // 409 / 422 competition gates each name their own next step.
+        setError(e.message);
+      } else if (e instanceof ApiError && e.status === 503) setError("Scoring is busy. Try again.");
+      else if (e instanceof ApiError && e.status === 404) setError("Scoring is not available yet");
       else if (e instanceof ApiError && e.status === 429) setError("Daily recitation time used up. Try again tomorrow.");
-      else if (e instanceof ApiError && e.status === 503) setError("Scoring is busy. Try again.");
       else setError("Could not score that. Try again?");
     } finally {
       setBusy(false);
@@ -251,9 +273,38 @@ export default function ReciteScreen({ navigation, route }: Props) {
           >
             <Text style={styles.rowText}>Hide words: {hide}</Text>
           </Pressable>
-          <Text style={[sanskritText(Math.max(18, sized(22))), { color: color.ink }]}>
-            {mask(lines[lineIdx]?.text ?? "", hide)}
-          </Text>
+          {/* Whole verse context — tap any line to practise it. */}
+          <View style={styles.verseBox} accessible accessibilityLabel={`Whole verse, ${lines.length} lines`}>
+            <Text style={styles.verseTitle}>
+              Whole verse · practising line {Math.min(lineIdx + 1, lines.length)} of {lines.length}
+            </Text>
+            {lines.map((ln) => {
+              const active = ln.i === lineIdx;
+              return (
+                <Pressable
+                  key={ln.i}
+                  onPress={() => { if (!recording) { setLineIdx(ln.i); setResult(null); } }}
+                  disabled={recording}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Practise line ${ln.i + 1}: ${ln.text}`}
+                  accessibilityState={{ selected: active }}
+                  style={[styles.verseLine, active && styles.verseLineActive]}
+                >
+                  <Text style={[sanskritText(Math.max(16, sized(18))), styles.verseLineText, active && styles.verseLineTextActive]}>
+                    {ln.text}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          <View style={styles.practiceCard}>
+            <Text style={styles.practiceLabel}>
+              Practising line {Math.min(lineIdx + 1, lines.length)} of {lines.length}
+            </Text>
+            <Text style={[sanskritText(Math.max(18, sized(22))), { color: color.ink }]}>
+              {mask(lines[lineIdx]?.text ?? "", hide)}
+            </Text>
+          </View>
           <Pressable onPress={() => void playLine(lineIdx)} accessibilityRole="button" accessibilityLabel="Hear this line" style={styles.row}>
             <Text style={styles.rowText}>Hear line</Text>
           </Pressable>
@@ -278,14 +329,28 @@ export default function ReciteScreen({ navigation, route }: Props) {
               onPlayLine={() => void playLine(lineIdx)}
             />
           )}
-          <Pressable
-            onPress={() => { setLineIdx((i) => Math.min(i + 1, lines.length - 1)); setResult(null); }}
-            accessibilityRole="button"
-            accessibilityLabel="Next line"
-            style={styles.row}
-          >
-            <Text style={styles.rowText}>Next line</Text>
-          </Pressable>
+          <View style={styles.navRow}>
+            <Pressable
+              onPress={() => { if (!recording) { setLineIdx((i) => Math.max(i - 1, 0)); setResult(null); } }}
+              disabled={recording || lineIdx <= 0}
+              accessibilityRole="button"
+              accessibilityLabel="Previous line"
+              accessibilityState={{ disabled: recording || lineIdx <= 0 }}
+              style={[styles.row, styles.navBtn, (recording || lineIdx <= 0) && styles.navDisabled]}
+            >
+              <Text style={styles.rowText}>Prev line</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => { if (!recording) { setLineIdx((i) => Math.min(i + 1, lines.length - 1)); setResult(null); } }}
+              disabled={recording || lineIdx >= lines.length - 1}
+              accessibilityRole="button"
+              accessibilityLabel="Next line"
+              accessibilityState={{ disabled: recording || lineIdx >= lines.length - 1 }}
+              style={[styles.row, styles.navBtn, (recording || lineIdx >= lines.length - 1) && styles.navDisabled]}
+            >
+              <Text style={styles.rowText}>Next line</Text>
+            </Pressable>
+          </View>
         </View>
       )}
 
@@ -366,4 +431,15 @@ const styles = StyleSheet.create({
   rowText: { color: color.ink, fontWeight: "600" },
   rec: { minHeight: 48, alignItems: "center", justifyContent: "center", backgroundColor: fill.bad, borderRadius: 12 },
   recDot: { color: fill.bad, fontWeight: "800" },
+  verseBox: { gap: 4, padding: 12, borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
+  verseTitle: { fontSize: 13, fontWeight: "700", color: color.inkSoft },
+  verseLine: { minHeight: 44, justifyContent: "center", paddingHorizontal: 8, paddingVertical: 6, borderRadius: 8, borderWidth: 1.5, borderColor: "transparent" },
+  verseLineActive: { borderColor: color.saffronBtn, backgroundColor: "#FFF8EE" },
+  verseLineText: { color: color.inkSoft },
+  verseLineTextActive: { color: color.ink },
+  practiceCard: { gap: 4, padding: 12, borderRadius: 12, backgroundColor: "#FFF8EE", borderWidth: 1.5, borderColor: "#D9C9AE" },
+  practiceLabel: { fontSize: 13, fontWeight: "700", color: color.inkSoft },
+  navRow: { flexDirection: "row", gap: 8 },
+  navBtn: { flex: 1, alignItems: "center" },
+  navDisabled: { opacity: 0.45 },
 });

@@ -59,6 +59,14 @@ export const GOOGLE_CLIENT_IDS = {
   expoClientId: GOOGLE_CLIENT_ID_EXPO,
 }
 
+// Public legal site (Cloudflare worker in deploy/cloudflare/legal-site).
+// This is the stable hostname the Play listing links to. The in-app privacy
+// policy must use this, not BASE_URL (Cloud Run), whose hostname is an
+// implementation detail and changes across deploys.
+export const LEGAL_BASE_URL = "https://sanskritam.vedicvalor.com";
+export const PRIVACY_POLICY_URL = `${LEGAL_BASE_URL}/privacy`;
+export const DELETE_ACCOUNT_URL = `${LEGAL_BASE_URL}/delete-account`;
+
 const RELEASE_BASE_URL = RELEASE_BASE_URL_ENV || CLOUD_RUN_FALLBACK_URL;
 
 // A helper to build a full URL joined to the API base.

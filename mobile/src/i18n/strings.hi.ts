@@ -54,4 +54,12 @@ export const hi: Record<ParvaKey, string> = {
   "parva.next": "आगे",
   "parva.done": "हो गया",
   "parva.close": "बंद करें",
+  "parva.basicDetail": "सत्यापित तिथियां। पूरा मार्गदर्शन अभी प्रकाशित नहीं है।",
+  "parva.unverified": "इस पालन की तिथियां अभी सत्यापित नहीं हैं। कोई समय नहीं दिखाया गया।",
+  "parva.stale": "ऑफलाइन तिथियां। समय पुराना हो सकता है।",
+  "parva.dayOf": "दिन {n}",
+  "parva.supporting": "साथ में चल रहा",
+  "parva.openBasic": "तिथियां देखें",
+  "parva.seriesToday": "{title}, दिन {n}: {day}",
+  "parva.noGuide": "इस दिन के लिए अभी चरणबद्ध मार्गदर्शन नहीं है।",
 };

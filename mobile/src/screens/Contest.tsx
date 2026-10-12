@@ -12,22 +12,31 @@ import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Contest">;
 
-export default function ContestScreen({ navigation, route }: Props) {
+export default function ContestScreen({ navigation }: Props) {
   const [comp, setComp] = useState<Competition | null>(null);
+  const [nextMsg, setNextMsg] = useState("");
+  const [lastMsg, setLastMsg] = useState("");
+  const [lastId, setLastId] = useState("");
   const [board, setBoard] = useState<{ rank: number; public_name: string; percent: number }[]>([]);
   const [meRank, setMeRank] = useState<string>("");
+  const [gateMsg, setGateMsg] = useState("");
   const { data: verses } = useQuery("reader-verses", api.listShlokas, { ttlMs: 30 * 60_000 });
 
   const load = useCallback(() => {
     api.competitionCurrent()
       .then((c) => {
-        const open = route.params?.id
-          ? null
-          : c.open;
-        setComp(open ?? c.open);
+        setComp(c.open);
+        setNextMsg(c.next?.opens_at ? `Next opens ${c.next.opens_at}` : "");
+        if (c.last) {
+          setLastMsg(`Last: rank ${c.last.my_rank ?? "-"}${c.last.certificate_code ? ", certificate ready" : ""}`);
+          setLastId(c.last.competition?.id ?? "");
+        } else {
+          setLastMsg("");
+          setLastId("");
+        }
       })
       .catch(() => setComp(null));
-  }, [route.params?.id]);
+  }, []);
 
   useEffect(() => { load(); }, [load]);
   useEffect(() => {
@@ -49,14 +58,21 @@ export default function ContestScreen({ navigation, route }: Props) {
   const verse: Shloka | undefined = (verses ?? []).find((v) => v.verse_uid === pieceUid);
 
   const enter = async () => {
+    setGateMsg("");
     try {
-      const p = await api.publicProfile();
-      if (!p.public_name) {
+      const [p, r] = await Promise.all([api.publicProfile(), api.competitionRules().catch(() => ({ version: "" }))]);
+      if (!p.public_name || !p.age_confirmed || !p.rules_version || !p.recordings_consent) {
+        navigation.navigate("ContestRules" as never);
+        return;
+      }
+      if (r.version && p.rules_version !== r.version) {
         navigation.navigate("ContestRules" as never);
         return;
       }
     } catch (e) {
       if (e instanceof ApiError && e.status === 404) return;
+      setGateMsg("Could not check entry. Check your connection and try again.");
+      return;
     }
     if (verse && comp) {
       (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
@@ -69,7 +85,18 @@ export default function ContestScreen({ navigation, route }: Props) {
     return (
       <View style={styles.center}>
         <Text style={styles.title}>Competition</Text>
-        <Text style={styles.hint}>Next competition opens Thursday</Text>
+        <Text style={styles.hint}>{nextMsg || "No competition open right now."}</Text>
+        {!!lastMsg && <Text style={styles.hint}>{lastMsg}</Text>}
+        {!!lastId && (
+          <Pressable
+            onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("ContestResults", { id: lastId })}
+            accessibilityRole="button"
+            accessibilityLabel="Open last results"
+            style={styles.sec}
+          >
+            <Text style={styles.secText}>Last results</Text>
+          </Pressable>
+        )}
       </View>
     );
   }
@@ -101,6 +128,7 @@ export default function ContestScreen({ navigation, route }: Props) {
           <Text style={styles.priText}>Enter</Text>
         </Pressable>
       </View>
+      {!!gateMsg && <Text style={styles.hint}>{gateMsg}</Text>}
       <Text style={styles.section}>Leaderboard</Text>
       {board.map((r) => (
         <Text key={r.rank} style={styles.rowText}>{r.rank}. {plain(r.public_name)} {r.percent}%</Text>

@@ -42,7 +42,8 @@ import { lessonArtwork, unitArtwork } from "../components/path/artwork";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { haptics } from "../services/haptics";
-import type { TabScreenProps } from "../navigation/types";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/types";
 import {
   accent,
   accentAt,
@@ -71,7 +72,7 @@ function ghostLetter(s: string): string {
   return s.match(/[ऄ-हक़-ॡ]/)?.[0] ?? "";
 }
 
-export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
+export default function PathScreen({ navigation }: NativeStackScreenProps<RootStackParamList, "Path">) {
   const { sized } = useTypeScale();
   const { data: units, loading, failed, retry } = useQuery<Unit[]>("units", api.units, {
     refetchOnFocus: true,
@@ -241,7 +242,7 @@ export default function PathScreen({ navigation }: TabScreenProps<"Path">) {
   );
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={["bottom"]}>
       {loading && !units ? (
         <View style={styles.body} accessible accessibilityRole="progressbar" accessibilityLabel="Loading the path">
           <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Path</Text>

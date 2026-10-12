@@ -15,7 +15,8 @@ import { GUIDE_UI } from "../components/grammar/strings";
 import { useGrammarProgress, useGuideLang } from "../hooks/useGuide";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
-import type { TabScreenProps } from "../navigation/types";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/types";
 import { fetchGuideIndex } from "../services/grammarGuide";
 import { haptics } from "../services/haptics";
 import { color, fill, fillAt, font, onFill, outline, script } from "../theme";
@@ -24,7 +25,7 @@ import PaintedBackground from "../components/artwork/PaintedBackground";
 import { hubArtwork } from "../components/artwork/hubs";
 const norm = (s: string) => s.normalize("NFC").toLowerCase();
 
-export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">) {
+export default function GrammarScreen({ navigation }: NativeStackScreenProps<RootStackParamList, "Grammar">) {
   const { lang, t, setLang } = useGuideLang();
   const { sized } = useTypeScale();
   const { read, last, ready } = useGrammarProgress();
@@ -58,7 +59,7 @@ export default function GrammarScreen({ navigation }: TabScreenProps<"Grammar">)
   const levelName = (lv: number, l: GuideLang) => (lv === 0 ? GUIDE_UI.all[l] : ["", "Beginner", "Intermediate", "Advanced"][lv]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         <View style={styles.headerRow}>
           <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]} accessibilityRole="header">{GUIDE_UI.title[lang]}</Text>

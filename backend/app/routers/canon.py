@@ -166,7 +166,9 @@ def get_canon_chapters(
 
     text = _get_paged_text(db, slug)
     rows = (
-        db.query(Shloka)
+        # Contents need only addresses and ordering. Loading full ORM rows
+        # also transfers every verse's text, glosses and parse for large books.
+        db.query(Shloka.chapter, Shloka.seq, Shloka.source_ref)
         .filter(Shloka.book == slug, Shloka.in_daily.is_(False))
         .order_by(Shloka.seq.asc())
         .all()
@@ -177,7 +179,8 @@ def get_canon_chapters(
     ordered = sorted(by_chapter.keys(), key=lambda c: (
         min(int(x.seq or 0) for x in by_chapter[c]) if by_chapter[c] else 10 ** 9, c))
     locked_book = _access.plus_locked(db, learner, text)
-    preview = _access.preview_chapter(db, text)
+    # The first chapter is already known; avoid reading the book a second time.
+    preview = ordered[0] if ordered else ""
     one_chapter = len(ordered) <= 1
     chapters = []
     for ch in ordered:

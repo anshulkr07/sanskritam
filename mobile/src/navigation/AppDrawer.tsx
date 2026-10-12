@@ -1,4 +1,4 @@
-// AppDrawer — the left drawer (U8-1). Wraps the six-tab bar: Drawer > Tabs.
+// AppDrawer — the left drawer (U8-1). Wraps the five-tab bar: Drawer > Tabs.
 // A swipe from the left edge opens it anywhere; the hamburger sits in the
 // header of Home and of every drawer screen (Progress, Settings, Licences,
 // Privacy policy), so each place the menu leads to has the same way back.

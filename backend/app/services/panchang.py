@@ -531,12 +531,43 @@ def _tithi_number_at(instant_utc: datetime) -> Optional[int]:
     return tithi_at(instant_utc)[0]
 
 
+def _part_window(day: date, place: dict, part: Optional[str]):
+    """UTC (start, end) of a part of day, for parts Drik judges by prevalence.
+
+    Drik's Lakshmi Puja rule (read 2026-10-11): the day is decided when
+    Amavasya prevails during Pradosh (sunset + 2h24m). Drik's Ganesh rule
+    (read 2026-10-11): sthapana/puja during the Madhyahna part, i.e. the
+    middle fifth of daylight. A single midpoint instant misses both when
+    the tithi starts/ends inside the part (Mumbai 2027: Amavasya begins
+    20:47, pradosh ends ~20:31; Chaturthi begins 14:18, midday 12:37).
+    Returns None for parts still judged at an instant.
+    """
+    if part == "pradosh":
+        ss = sunset(day, place)
+        if ss is None:
+            return None
+        return (ss, ss + _PRADOSH)
+    if part == "midday":
+        sr = sunrise(day, place)
+        ss = sunset(day, place)
+        if sr is None or ss is None:
+            return None
+        span = ss - sr
+        return (sr + span * _MIDDAY_SPAN[0], sr + span * _MIDDAY_SPAN[1])
+    return None
+
+
 def _lunations(year: int, place: dict) -> list[datetime]:
-    """New moons from mid-December (year-1) to mid-January (year+1)."""
-    start = _utc_to_time(datetime(year - 1, 12, 15, 12, tzinfo=timezone.utc))
+    """New moons from December (year-1) to mid-January (year+1).
+
+    Starts on 1 December, not the 15th: a new moon on 9 December 2026 opens
+    the lunation holding January 2027's Ekadashi, and the mid-December start
+    missed it entirely (Saphala Jan 2027 had no lunation to be found in).
+    """
+    start = _utc_to_time(datetime(year - 1, 12, 1, 12, tzinfo=timezone.utc))
     out: list[datetime] = []
     t = start
-    for _ in range(16):
+    for _ in range(17):
         found = astronomy.SearchMoonPhase(0.0, t, 32.0)
         if found is None:
             break
@@ -626,8 +657,15 @@ def _tithi_start_instant(from_utc: datetime, number: int) -> datetime:
 
 def _dates_for_tithi(
     year: int, place: dict, month: str, paksha: str, number: int, part: Optional[str],
+    include_adhika: bool = False,
 ) -> list[date]:
-    """Local dates of one tithi in one amanta month (nija only)."""
+    """Local dates of one tithi in one amanta month (nija only, unless asked).
+
+    Yearly festivals never fall in an adhika month (handover 5.2: keep
+    skipping). Monthly vrats do: Drik lists Pradosh for both nija and Adhika
+    Jyeshtha in 2026 (May 28 and Jun 27 Shukla, Jun 12 Krishna; read
+    2026-10-11), so monthly callers pass include_adhika=True.
+    """
     tzname = place.get("tz") or "Asia/Kolkata"
     zone = _zone(tzname)
     hits: list[date] = []
@@ -640,7 +678,7 @@ def _dates_for_tithi(
             astronomy.SearchMoonPhase(0.0, _utc_to_time(nm + timedelta(days=1)), 32.0)
         )
         _, sign_next = amanta_month(nm_next)
-        if m != month or sign_next == sign:
+        if m != month or (sign_next == sign and not include_adhika):
             continue
         if paksha == "Shukla":
             start = _tithi_start_instant(nm, number)
@@ -652,12 +690,32 @@ def _dates_for_tithi(
         cur = (start - timedelta(hours=36)).astimezone(zone).date()
         last = (end + timedelta(hours=36)).astimezone(zone).date()
         d = cur
+        # One date per lunation for window-judged parts: Drik lists a single
+        # Pradosh per paksha (Apr 2026 Delhi is the 28th with a full-pradosh
+        # overlap, not the 29th with 56 min; read 2026-10-11). A Gregorian
+        # year can still hold two lunations of one amanta month (Pausha in
+        # Jan and Dec 2028), and each keeps its own date.
+        best: Optional[date] = None
+        best_overlap = -1.0
         while d <= last and (d - cur).days < 6:
-            instant = _part_instant(d, place, part)
-            if instant is not None and _tithi_number_at(instant) == number:
-                # The tithi must belong to this lunation, not a neighbour's.
-                hits.append(d)
+            window = _part_window(d, place, part)
+            if window is not None:
+                # Prevalence in the part window (Drik's pradosh/madhyahna
+                # rule); the tithi span is this lunation's, so the hit still
+                # belongs to this lunation, not a neighbour's.
+                wstart, wend = window
+                if start < wend and end > wstart:
+                    scored = (min(end, wend) - max(start, wstart)).total_seconds()
+                    if scored > best_overlap:
+                        best, best_overlap = d, scored
+            else:
+                instant = _part_instant(d, place, part)
+                if instant is not None and _tithi_number_at(instant) == number:
+                    # The tithi must belong to this lunation, not a neighbour's.
+                    hits.append(d)
             d += timedelta(days=1)
+        if best is not None:
+            hits.append(best)
     # Dedupe, keep year-local dates.
     seen = sorted({d for d in hits if d.year == year})
     return seen
@@ -697,7 +755,14 @@ def _tithi_begin_date(year: int, place: dict, month: str, paksha: str, number: i
 
 
 def _pick_day(days: list[date], place: dict, part: Optional[str], number: int) -> Optional[date]:
-    """One date from candidates: most daylight overlap wins, then the earlier."""
+    """One date from candidates: most overlap with the part wins, then earlier.
+
+    For pradosh/midday the score is the overlap of tithi `number`'s span
+    with the part window (Drik lists one Pradosh per paksha: Apr 2026 Delhi
+    is the 28th with a full-pradosh overlap, not the 29th with 56 min;
+    Mar 2026 is the 1st with 48 min, not the 28th with none; read
+    2026-10-11). Otherwise the score is the daylight overlap as before.
+    """
     if not days:
         return None
     if len(days) == 1:
@@ -706,6 +771,18 @@ def _pick_day(days: list[date], place: dict, part: Optional[str], number: int) -
     zone = _zone(tzname)
 
     def overlap(d: date) -> float:
+        window = _part_window(d, place, part)
+        if window is not None:
+            ws, we = window
+            try:
+                begin = _tithi_start_instant(ws - timedelta(hours=40), number)
+            except ValueError:
+                return 0.0
+            probe = ws if tithi_at(ws)[0] == number else we - timedelta(seconds=1)
+            num, end = tithi_at(probe)
+            if num != number:
+                return 0.0
+            return max(0.0, (min(end, we) - max(begin, ws)).total_seconds())
         sr = sunrise(d, place)
         ss = sunset(d, place)
         if sr is None or ss is None:

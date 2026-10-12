@@ -14,7 +14,7 @@
 //    stands down and frees what it made.
 
 import type { ChantLine } from "../api/client";
-import { afterFinish, lineAt, nextChantIndex } from "./chantClock";
+import { afterFinish, lineAt, lineFill, nextChantIndex, type RepeatMode } from "./chantClock";
 
 export interface ChantVerse {
   id: string;
@@ -47,7 +47,7 @@ export interface ChantHost {
   createPlayer(url: string): PlayerLike;
   prepareAudio(): Promise<void>;
   pages(): ChantVerse[];
-  repeat(): "off" | "verse";
+  repeat(): RepeatMode;
   speed(): number;
   follow(): boolean;
   bookTitle(): string;
@@ -56,6 +56,9 @@ export interface ChantHost {
   /** The verse now playing (idx -1, id null: none). */
   onVerse(idx: number, id: string | null): void;
   onLine(line: number): void;
+  /** Fluid fill: how far through `line` (0..1) playback is. Throttled to
+   *  ~5% steps so screens redraw cheaply; optional (older hosts omit it). */
+  onProgress?(line: number, frac: number): void;
   onPlaying(playing: boolean): void;
   scrollTo(idx: number): void;
 }
@@ -118,12 +121,23 @@ export class ChantController {
 
     let prefetched = false;
     let finished = false;
+    let lastLine = -2;
+    let lastFrac = 0;
     this.sub = p.addListener("playbackStatusUpdate", (st) => {
       if (token !== this.token || !st.isLoaded) return;
       const tMs = st.currentTime * 1000;
-      this.host.onLine(lineAt(v.chant?.lines ?? [], tMs));
+      const line = lineAt(v.chant?.lines ?? [], tMs);
+      this.host.onLine(line);
+      // The fill for the karaoke bar: emitted on line changes and ~5% steps.
+      const ln = (v.chant?.lines ?? []).find((l) => l.i === line);
+      const frac = lineFill(ln, tMs);
+      if (line !== lastLine || Math.abs(frac - lastFrac) >= 0.05 || frac >= 1) {
+        lastLine = line;
+        lastFrac = frac;
+        try { this.host.onProgress?.(line, frac); } catch { /* keep */ }
+      }
       const durMs = (st.duration || (v.chant?.duration_ms ?? 0) / 1000) * 1000;
-      if (!prefetched && durMs && tMs / durMs >= PREFETCH_AT && this.host.repeat() === "off") {
+      if (!prefetched && durMs && tMs / durMs >= PREFETCH_AT && this.host.repeat() !== "verse") {
         prefetched = true;
         this.buildAhead(idx);
       }

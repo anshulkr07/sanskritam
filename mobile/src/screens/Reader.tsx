@@ -37,6 +37,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   BackHandler,
+  FlatList,
   Pressable,
   ScrollView,
   SectionList,
@@ -310,7 +311,12 @@ export default function ReaderScreen() {
   );
 
   // ── Loading / error ──────────────────────────────────────────────
-  if (versesQ.loading) {
+  // The catalogue is enough to show the shelf or open a paged book. Classic
+  // contents still wait for their corpus, but no longer hold up every cover.
+  const needsCorpus = bookKey !== null
+    && !bookKey.startsWith("graded-")
+    && !canon.some((c) => c.slug === bookKey && isPaged(c));
+  if (versesQ.loading && (canon.length === 0 || needsCorpus)) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <ScrollView contentContainerStyle={styles.body}>
@@ -320,7 +326,7 @@ export default function ReaderScreen() {
     );
   }
 
-  if (versesQ.failed || !verses) {
+  if (versesQ.failed || (!verses && !versesQ.loading)) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}>
@@ -334,7 +340,7 @@ export default function ReaderScreen() {
     );
   }
 
-  if (verses.length === 0) {
+  if (verses?.length === 0 && canon.length === 0) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}>
@@ -541,29 +547,29 @@ export default function ReaderScreen() {
   // ── SHELF posture ────────────────────────────────────────────────
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <ScrollView contentContainerStyle={styles.body}>
-        <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
-
-        <ContinueBlock
-          groups={groups}
-          allCount={allVerses.length}
-          positions={positions}
-          onResume={(key, at) => {
-            const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
-            const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
-            nav.navigate("Book", { bookKey: key, index: safe });
-          }}
-        />
-
-        <ShelfRails
-          groups={groups}
-          allVerses={allVerses}
-          positions={positions}
-          tierRows={tierRows}
-          canon={canon}
-          onOpen={(key) => enterBook(key)}
-        />
-      </ScrollView>
+      <ShelfRails
+        header={
+          <>
+            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
+            <ContinueBlock
+              groups={groups}
+              allCount={allVerses.length}
+              positions={positions}
+              onResume={(key, at) => {
+                const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
+                const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+                nav.navigate("Book", { bookKey: key, index: safe });
+              }}
+            />
+          </>
+        }
+        groups={groups}
+        allVerses={allVerses}
+        positions={positions}
+        tierRows={tierRows}
+        canon={canon}
+        onOpen={(key) => enterBook(key)}
+      />
     </SafeAreaView>
   );
 }
@@ -583,6 +589,7 @@ const RAIL_DEFS: { title: string; slugs: string[] }[] = [
 ];
 
 function ShelfRails({
+  header,
   groups,
   allVerses,
   positions,
@@ -590,6 +597,7 @@ function ShelfRails({
   canon,
   onOpen,
 }: {
+  header: React.ReactElement;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allVerses: Shloka[];
   positions: Record<string, number>;
@@ -613,7 +621,7 @@ function ShelfRails({
         return { key: slug, titleSa: c.title_sa || slug, titleEn: plain(c.title_en || slug), count: c.verses_imported ?? 0, planned: c.verses_planned || null, locked: c.locked ?? false, paged: true };
       }
       const g = bySlug.get(slug);
-      if (!g?.text) return { key: slug, titleSa: slug, titleEn: slug, count: 0, planned: null as number | null, locked: false, paged: false };
+      if (!g?.text) return { key: slug, titleSa: c?.title_sa || slug, titleEn: plain(c?.title_en || slug), count: c?.verses_imported ?? 0, planned: c?.verses_planned || null, locked: false, paged: false };
       return { key: slug, titleSa: g.text.title_sa, titleEn: plain(g.text.title_en), count: g.verses.length, planned: g.text.verses_planned || null, locked: false, paged: false };
     }),
   }));
@@ -626,12 +634,28 @@ function ShelfRails({
   ];
   rails.push({ title: "More", books: more });
   return (
-    <View style={{ gap: 16 }}>
-      {rails.map((rail) => (
-        <View key={rail.title}>
+    <FlatList
+      data={rails}
+      keyExtractor={(rail) => rail.title}
+      contentContainerStyle={styles.body}
+      ListHeaderComponent={header}
+      initialNumToRender={2}
+      maxToRenderPerBatch={2}
+      windowSize={3}
+      renderItem={({ item: rail }) => (
+        <View style={{ marginBottom: 16 }}>
           <Text style={styles.sectionTitle}>{rail.title}</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12, paddingVertical: 4 }}>
-            {rail.books.map((b) => {
+          <FlatList
+            horizontal
+            data={rail.books}
+            keyExtractor={(b) => b.key}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ gap: 12, paddingVertical: 4 }}
+            initialNumToRender={3}
+            maxToRenderPerBatch={3}
+            windowSize={3}
+            getItemLayout={(_, index) => ({ length: 116, offset: 116 * index, index })}
+            renderItem={({ item: b }) => {
               const empty = b.count === 0;
               const label = empty
                 ? `${b.titleEn}. Soon.`
@@ -657,11 +681,11 @@ function ShelfRails({
                   </Text>
                 </Pressable>
               );
-            })}
-          </ScrollView>
+            }}
+          />
         </View>
-      ))}
-    </View>
+      )}
+    />
   );
 }
 

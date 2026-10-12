@@ -7,11 +7,12 @@ The owner approves by changing "status" to "approved" in the file and
 importing again.
 
 Usage:
-    cd backend && ./.venv/Scripts/python.exe scripts/parva_import.py [--check-only]
+    cd backend && ./.venv/Scripts/python.exe scripts/parva_import.py [--check-only] [--slug SLUG]
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from datetime import date
@@ -26,10 +27,27 @@ from app.services.parva_content import check_draft  # noqa: E402
 SEEDS = Path(__file__).resolve().parents[1] / "app" / "seeds" / "parva"
 
 
+def load_passages() -> dict:
+    """ref -> {text_name, url, read_on} from seeds/parva/passages.json.
+
+    Every text item's ref must be in here: it records the exact source
+    opened for that reference. Model drafts built by parva_drafts.py carry
+    the same passages in their requests.
+    """
+    fp = SEEDS / "passages.json"
+    if not fp.is_file():
+        return {}
+    try:
+        data = json.loads(fp.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
 def load_files() -> list[dict]:
     out = []
     for fp in sorted(SEEDS.glob("*.json")):
-        if fp.name == "batch_input.jsonl":
+        if fp.name in ("batch_input.jsonl", "passages.json"):
             continue
         try:
             data = json.loads(fp.read_text(encoding="utf-8"))
@@ -42,13 +60,20 @@ def load_files() -> list[dict]:
 
 
 def main() -> None:
-    check_only = "--check-only" in sys.argv
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-only", action="store_true")
+    parser.add_argument("--slug", help="Import only this festival's pages, in both languages")
+    args = parser.parse_args()
+    check_only = args.check_only
+    passages = load_passages()
     init_db()
     db = SessionLocal()
     try:
         n_ok = n_fail = 0
         for data in load_files():
             slug = str(data.get("slug", ""))
+            if args.slug and slug != args.slug:
+                continue
             variant = str(data.get("variant", "") or "")
             lang = str(data.get("lang", ""))
             status = str(data.get("status", "draft"))
@@ -58,7 +83,7 @@ def main() -> None:
                 print(f"SKIP {data['_file']}: need slug + lang en|hi")
                 n_fail += 1
                 continue
-            errs = check_draft(body or {})
+            errs = check_draft(body or {}, passages or None)
             auto = not errs
             if errs:
                 print(f"FAIL {data['_file']}: " + "; ".join(errs[:5]))

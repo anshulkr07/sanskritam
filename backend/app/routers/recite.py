@@ -87,12 +87,9 @@ async def score_recite(
         raise HTTPException(status_code=429, detail="Daily recitation time used up. Try again tomorrow.",
                             headers={"Retry-After": str(secs_left)})
     # 4/5. Scorer.
-    if not (settings.scorer_url or "").strip():
-        raise HTTPException(status_code=503, detail="Scoring is not available yet")
-    try:
-        res = await scorer_client.score(data, reference, strict)
-    except scorer_client.ScorerError:
-        raise HTTPException(status_code=503, detail="Scoring is busy. Try again.")
+    res = await scorer_client.score_attempt(data, reference, strict, db=db,
+                                           learner=learner, surface="recite")
+    dur_ms = int(res.get("duration_ms", dur_ms))
     status = res.get("status", "scored")
     n = res.get("n", {}) or {}
     g = int(n.get("green", 0))

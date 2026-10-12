@@ -211,7 +211,8 @@ fi
 #                                   (code defaults 60 and 30)
 #       CONTENT_DAILY_BUDGET_INR     rupees/day the pipeline may spend on
 #                                   batch jobs (code default 60; 0 disables)
-#       SCORER_URL, SCORER_KEY       Su-srota scorer service (recite);
+#       SCORER_URL, SCORER_KEY       "sarvam" or external Su-srota URL (recite);
+#       SARVAM_STT_MODEL             saaras:v4 for pinned Sanskrit scoring;
 #                                   R2_PRIVATE_BUCKET, GCS_PRIVATE_BUCKET
 #                                   private competition recordings
 #       ENV                          dev|production (fake scorer refused in prod)
@@ -223,7 +224,7 @@ fi
 #       GEMINI_FREE_ALLOW_PERSONAL   true lets birth-chart and match requests use the
 #                                   free keys too (default false: Google may read them)
 EXTRA_ENV=""
-for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR SCORER_URL SCORER_KEY R2_PRIVATE_BUCKET GCS_PRIVATE_BUCKET ENV PRIZE_CONTACT_EMAIL BOOK_SEARCH_ENABLED GEMINI_FREE_ENABLED GEMINI_FREE_ALLOW_PERSONAL; do
+for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR SCORER_URL SCORER_KEY SARVAM_STT_MODEL R2_PRIVATE_BUCKET GCS_PRIVATE_BUCKET ENV PRIZE_CONTACT_EMAIL BOOK_SEARCH_ENABLED GEMINI_FREE_ENABLED GEMINI_FREE_ALLOW_PERSONAL; do
   if [ -n "${!var:-}" ]; then
     EXTRA_ENV="${EXTRA_ENV},${var}=${!var}"
   fi

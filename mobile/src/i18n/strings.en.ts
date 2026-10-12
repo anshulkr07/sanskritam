@@ -52,6 +52,14 @@ export const en = {
   "parva.next": "Next",
   "parva.done": "Done",
   "parva.close": "Close",
+  "parva.basicDetail": "Verified dates. A complete guide is not yet published.",
+  "parva.unverified": "Dates for this observance are not yet verified. No timings are shown.",
+  "parva.stale": "Offline dates. Timings may be old.",
+  "parva.dayOf": "Day {n}",
+  "parva.supporting": "Also active",
+  "parva.openBasic": "See dates",
+  "parva.seriesToday": "{title}, day {n}: {day}",
+  "parva.noGuide": "No step-by-step guide yet for this day.",
 } as const;
 
 export type ParvaKey = keyof typeof en;

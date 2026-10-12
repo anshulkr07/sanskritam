@@ -43,6 +43,28 @@ FORBIDDEN_HI = [
 FORBIDDEN_OWN = ["will give you wealth", "will fulfil all wishes", "100% result"]
 
 
+#: Tithi spelling normalisation: seed files historically used `dvitiya`
+#: while the engine uses `dwitiya`. Join content by stable identifiers,
+#: never by array index or raw spelling.
+TITHI_ALIASES = {
+    "dvitiya": "dwitiya",
+    "dwitiya": "dwitiya",
+    "dwadashi": "dwadashi",
+    "dvadashi": "dwadashi",
+}
+
+
+def normalize_tithi_key(raw: str) -> str:
+    """Normalise a tithi key to engine spelling (lowercase, alias-resolved)."""
+    key = (raw or "").strip().lower()
+    return TITHI_ALIASES.get(key, key)
+
+
+def normalize_form_key(raw: str) -> str:
+    """Normalise a Devi/form key to lowercase stripped form."""
+    return (raw or "").strip().lower()
+
+
 def has_dash(text: str) -> bool:
     t = text or ""
     return "—" in t or " – " in t or t.strip().startswith("–") or t.strip().startswith("—")
@@ -115,9 +137,64 @@ def validate_page(body: dict) -> list[str]:
             if not isinstance(t, dict) or t.get("kind") not in ("mantra", "stotra", "aarti"):
                 errs.append("texts item needs kind mantra|stotra|aarti")
                 break
+            # Rich devotional text needs verifiable provenance: original
+            # script, transliteration, meaning, and an exact source. Passing
+            # the schema check alone never means the quotation is complete.
+            if not isinstance(t.get("title"), str) or not t.get("title", "").strip():
+                errs.append("texts item needs title")
+                break
+            if t.get("devanagari") is not None and not isinstance(t.get("devanagari"), str):
+                errs.append("texts devanagari must be a string")
+                break
+            src = t.get("source") or t.get("ref") or t.get("source_url")
+            if t.get("devanagari") and not src:
+                errs.append("texts with devanagari needs source/ref/source_url")
+                break
     regions = body.get("regions", [])
     if not isinstance(regions, list):
         errs.append("regions must be a list")
+    else:
+        for r in regions:
+            if not isinstance(r, dict):
+                errs.append("regions item must be an object")
+                break
+            items = r.get("items", [])
+            if not isinstance(items, list):
+                errs.append("regions.items must be a list")
+                break
+            for it in items:
+                if not _is_item(it):
+                    errs.append("regions item needs text+basis")
+                    break
+    series = body.get("series_days", [])
+    if not isinstance(series, list):
+        errs.append("series_days must be a list")
+    else:
+        seen_forms: set[str] = set()
+        for s in series:
+            if not isinstance(s, dict):
+                errs.append("series_days item must be an object")
+                break
+            tk = normalize_tithi_key(str(s.get("tithi_key", "")))
+            fk = normalize_form_key(str(s.get("form_key", "")))
+            if not tk or not fk:
+                errs.append("series_days item needs tithi_key+form_key")
+                break
+            if not isinstance(s.get("summary", ""), str) or not s.get("summary", "").strip():
+                errs.append(f"series_days {fk}: summary missing")
+                break
+            steps = s.get("steps", [])
+            if not isinstance(steps, list) or not steps:
+                errs.append(f"series_days {fk}: steps missing")
+                break
+            for it in steps:
+                if not _is_item(it):
+                    errs.append(f"series_days {fk}: step needs text+basis")
+                    break
+                if len(it["text"]) > STEP_LIMIT:
+                    errs.append(f"series_days {fk}: step over {STEP_LIMIT} chars")
+                    break
+            seen_forms.add(fk)
     return errs
 
 
@@ -192,6 +269,7 @@ def check_draft(body: dict, passages: dict[str, str] | None = None) -> list[str]
 def section_counts(body: dict) -> dict[str, int]:
     do = body.get("do", {}) or {}
     vrat = body.get("vrat", {}) or {}
+    series = body.get("series_days", []) or []
     return {
         "why": len(body.get("why", []) or []),
         "gather": len(do.get("gather", []) or []),
@@ -203,6 +281,7 @@ def section_counts(body: dict) -> dict[str, int]:
         "dont": len(body.get("dont", []) or []),
         "texts": len(body.get("texts", []) or []),
         "regions": len(body.get("regions", []) or []),
+        "series_days": len(series),
     }
 
 

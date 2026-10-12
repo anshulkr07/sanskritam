@@ -28,6 +28,7 @@ const TiroDevanagariSanskrit_400Regular = require(
 import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import AppErrorBoundary from "./src/components/AppErrorBoundary";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -51,6 +52,11 @@ import VarnamalaScreen from "./src/screens/Varnamala";
 import DailyWordScreen from "./src/screens/DailyWord";
 import WritingScreen from "./src/screens/Writing";
 import LessonScreen from "./src/screens/Lesson";
+import LearnV2LessonScreen from "./src/screens/LearnV2Lesson";
+import LearnV2MapScreen from "./src/screens/LearnV2Map";
+import LearnChapterScreen from "./src/screens/LearnChapter";
+import PathScreen from "./src/screens/Path";
+import GrammarScreen from "./src/screens/Grammar";
 import VocabScreen from "./src/screens/Vocab";
 import PingalaScreen from "./src/screens/Pingala";
 import StoryDeckScreen from "./src/screens/StoryDeck";
@@ -58,6 +64,7 @@ import GrammarTopicScreen from "./src/screens/GrammarTopic";
 import GrammarChapterScreen from "./src/screens/GrammarChapter";
 import WordLabScreen from "./src/screens/WordLab";
 import BookScreen from "./src/screens/Book";
+import ListenScreen from "./src/screens/Listen";
 import ShabdaRushScreen from "./src/screens/ShabdaRush";
 import SmritiScreen from "./src/screens/Smriti";
 import VarnaJaalScreen from "./src/screens/VarnaJaal";
@@ -67,6 +74,7 @@ import KalaChapterScreen from "./src/screens/KalaChapter";
 import KalaTopicScreen from "./src/screens/KalaTopic";
 import ParvaScreen from "./src/screens/Parva";
 import ParvaPageScreen from "./src/screens/ParvaPage";
+import ParvaNotifyNav from "./src/parva/notifyNav";
 import WordJourneyScreen from "./src/screens/WordJourney";
 import DoYouKnowScreen from "./src/screens/DoYouKnow";
 import ReciteScreen from "./src/screens/Recite";
@@ -113,6 +121,10 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={HEADER_OPTS}>
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="Path" component={PathScreen} options={{ title: "Course" }} />
+      <Stack.Screen name="Grammar" component={GrammarScreen} options={{ title: "Reference" }} />
+      <Stack.Screen name="LearnCards" component={LearnV2MapScreen} options={{ title: "Card lessons" }} />
+      <Stack.Screen name="LearnChapter" component={LearnChapterScreen} options={{ title: "Learn" }} />
       <Stack.Screen
         name="Challenge"
         component={ChallengeScreen}
@@ -135,6 +147,9 @@ function RootNavigator() {
             <Stack.Screen name="Writing" component={WritingScreen} options={{ title: "Write it" }} />
             {/* U14/P22: the learning layer — Lesson → Practice → Challenge. */}
             <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
+            {/* LearnV2: the additive Learn tab's static lesson player. Separate
+                route and separate resume state; old Lesson/Path flows untouched. */}
+            <Stack.Screen name="LearnV2Lesson" component={LearnV2LessonScreen} options={{ title: "Learn" }} />
             <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
             {/* U15-6: Piṅgala as binary. */}
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
@@ -146,6 +161,8 @@ function RootNavigator() {
             <Stack.Screen name="WordLab" component={WordLabScreen} options={{ title: "Word Lab" }} />
             {/* Read fullscreen page: covers the tab bar. */}
             <Stack.Screen name="Book" component={BookScreen} options={{ headerShown: false }} />
+            {/* Listen: player-first chant screen over the tab bar. */}
+            <Stack.Screen name="Listen" component={ListenScreen} options={{ title: "Listen" }} />
             {/* Play games: fullscreen, header hidden. */}
             <Stack.Screen name="ShabdaRush" component={ShabdaRushScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Smriti" component={SmritiScreen} options={{ headerShown: false }} />
@@ -211,13 +228,16 @@ export default function App() {
           <PrefsLoader />
           <TypeScaleProvider>
             <AuthProvider>
+              <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
                 <AskProvider routeName={routeName}>
+                  <ParvaNotifyNav />
                   <RootNavigator />
                   {/* OTA: the restart prompt when an update has downloaded. */}
                   <UpdateBanner />
                 </AskProvider>
               </NavigationContainer>
+              </AppErrorBoundary>
               <StatusBar style="dark" />
             </AuthProvider>
           </TypeScaleProvider>

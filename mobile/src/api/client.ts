@@ -1636,6 +1636,8 @@ export async function uploadCompetitionAttempt(
 }
 
 export const api = {
+  reportClientError: (body: { route: string; error_type: string; components: string[] }) =>
+    request<void>("/feedback/client-error", { method: "POST", body: JSON.stringify(body) }, true),
   health: () => request<{ status: string; version: string }>("/health"),
 
   devLogin: (displayName: string, bridgeLangs: BridgeLangs = ["en", "hi"]) =>

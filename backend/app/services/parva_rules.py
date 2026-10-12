@@ -34,13 +34,13 @@ from app.services import panchang as p
 
 RULE_SOURCES: dict[str, dict] = {
     "ekadashi": {
-        "text": "Nirnayasindhu / Dharmasindhu Ekadashi and parana section: not opened in this work (archive.org copy not located)",
-        "drik": "https://www.drikpanchang.com/vrats/ekadashi-dates.html (menu seen, contents not read in this work)",
-        "source": "Drik Panchang only",
+        "text": "Padma Purana Uttarakhanda 6.36 (Papmochani katha) and 6.351 (Nirjala katha and vidhi), Skanda Purana Kartika-mahatmya 2.12 (Bhishma-panchaka and Ekadashi/Dwadashi vidhi), all read on sa.wikisource 2026-10-11; names and Smarta days held to Drik's Ekadashi lists (Delhi+Mumbai 2026, Delhi+Chennai 2027). Nirnayasindhu/Dharmasindhu digest sections not opened (no full-text search on the archive.org scan).",
+        "drik": "https://www.drikpanchang.com/vrats/ekadashidates.html (Delhi+Mumbai 2026 full lists with begins/ends) and .../ekadashidates.html?year=2027 (Delhi 2027, 25 days with begins/ends) and ...?year=2027&geoname-id=1264527 (Chennai 2027, same 25 dates; ID titles Chennai, verified 2026-10-11) and ...?year=2027&geoname-id=1275339 (Mumbai 2027, same 25 dates) and ...?year=2028 (Delhi 2028, 25 Smarta days) and ...?year=2028&geoname-id=1264527 (Chennai 2028, same spans, Smarta Feb 7 not Feb 6 and Oct 29 not Oct 28), all read 2026-10-11; engine 24/24 + 25/25 + 25/25 + 25/25 + 25/25",
+        "source": "Texts + Drik lists",
     },
     "purnima": {"text": "", "drik": "Drik Panchang purnima year lists (via tests/test_ask_kinds.py)", "source": "Drik Panchang only"},
     "amavasya": {"text": "", "drik": "Drik Panchang amavasya year lists (via tests/test_ask_kinds.py)", "source": "Drik Panchang only"},
-    "diwali_days": {"text": "", "drik": "Drik Panchang festival calendar New Delhi 2026-2027 (tests/test_panchang.py)", "source": "Drik Panchang only"},
+    "diwali_days": {"text": "Bhagavata Purana 8.8 (churning: Lakshmi and Dhanvantari), 10.25 (Govardhan lifting), 10.59 (Narakasura), all read on Vedabase 2026-10-11 (retellings only; BBT translations never quoted); Garga Samhita Vrindavana-khanda 2 (Govardhan origin, sa.wikisource 2026-10-11)", "drik": "Drik New Delhi festival calendar 2026-2027 (tests/test_panchang.py); Drik Mumbai pages read 2026-10-11 resolved both engine divergences as engine bugs (Lakshmi 2027 Oct 29 not 28; Ganesh 2027 Sep 4 not 3; fixture festivals_mumbai.json), fixed by pradosh/Madhyahna window candidacy; Drik Mumbai recent-years confirm engine 2028 Diwali Oct 17 and Ganesh Aug 23", "source": "Texts + Drik Delhi/Mumbai"},
     "karwa_chauth": {"text": "", "drik": "Drik Panchang festival calendar New Delhi 2026-2027", "source": "Drik Panchang only"},
     "chhath": {"text": "", "drik": "Drik Panchang festival calendar New Delhi 2026-2027", "source": "Drik Panchang only"},
     "sankranti": {
@@ -54,36 +54,36 @@ RULE_SOURCES: dict[str, dict] = {
         "source": "Drik Panchang only",
     },
     "ugadi": {"text": "", "drik": "Drik Panchang 2026-03-19 and 2027-04-07 (begin-date fallback for kshaya Pratipada)", "source": "Drik Panchang only"},
-    "holika_dahan": {"text": "", "drik": "Drik Panchang 2026-03-03 and 2027-03-21 (Bhadra/Vishti avoidance)", "source": "Drik Panchang only"},
-    "holi": {"text": "", "drik": "Drik Panchang 2026-03-04 and 2027-03-22 (day after Holika)", "source": "Drik Panchang only"},
+    "holika_dahan": {"text": "", "drik": "Drik 2026-03-03, 2027-03-21 (Delhi muhurat 18:33-20:55), 2028-03-10 (all read 2026-10-11; fixture holika.json). No principled Bhadra rule: 2026 shifts with Bhadra but 2027 keeps Mar 21 despite full-evening Vishti; max-overlap explains 2027 but not 2026. Bhadra-vasa hypothesis unopened: NOT SHIPPED.", "source": "Drik Panchang only; not shipped"},
+    "holi": {"text": "", "drik": "Drik 2026-03-04, 2027-03-22, 2028-03-11 (day after Holika; read 2026-10-11)", "source": "Drik Panchang only; not shipped"},
     "raksha_bandhan": {"text": "", "drik": "Drik Panchang 2026-08-28 and 2027-08-17 (Bhadra avoidance)", "source": "Drik Panchang only"},
     "janmashtami": {"text": "", "drik": "Drik Panchang Smarta 2026-09-04 and 2027-08-25 (Ashtami at sunrise)", "source": "Drik Panchang only"},
     "govardhan_puja": {"text": "", "drik": "Drik Panchang 2026-11-10 and 2027-10-30", "source": "Drik Panchang only"},
     "maha_navami": {"text": "", "drik": "Drik Panchang 2026-10-19 and 2027-10-08 (afternoon rule)", "source": "Drik Panchang only"},
     "maha_shivaratri": {"text": "", "drik": "Drik Panchang festival calendar (nishitha window)", "source": "Drik Panchang only"},
     "rama_navami": {"text": "", "drik": "Drik Panchang festival calendar (madhyahna window)", "source": "Drik Panchang only"},
-    "ganesh_chaturthi": {"text": "", "drik": "Drik Panchang festival calendar (madhyahna window)", "source": "Drik Panchang only"},
-    "pradosh": {"text": "", "drik": "Drik Panchang pradosh convention (Trayodashi in pradosh window)", "source": "Drik Panchang only"},
-    "sankashti": {"text": "", "drik": "Drik Panchang sankashti convention (Chaturthi moonrise)", "source": "Drik Panchang only"},
+    "ganesh_chaturthi": {"text": "", "drik": "Drik festival calendar Delhi 2026-2027; Drik Mumbai 2027 page (Sep 4, Chaturthi 14:18 Sep 3 to 12:25 Sep 4, madhyahna 11:23-12:25; read 2026-10-11) fixed engine Sep-3 bug via Madhyahna-window candidacy; Drik Mumbai recent-years confirm engine 2028 Aug 23", "source": "Drik Panchang only"},
+    "pradosh": {"text": "", "drik": "Drik Delhi pradosh lists 2026 (25) and 2027 (25), both pakshas, read 2026-10-11; engine 25/25 both years (fixture pradosh.json). Rule: Trayodashi prevailing in pradosh, one date per paksha per lunation by max overlap; monthly vrats recur in adhika months.", "source": "Drik Panchang only"},
+    "sankashti": {"text": "", "drik": "Drik Sankashti 2028 lists for Mumbai (geoname-id 1275339) and Chennai (geoname-id 1264527), full year Jan-Dec read 2026-10-11: Mumbai 12/12, Chennai 11/12 (Mar Mar 14 engine vs Mar 13 Drik, 5-min Chaturthi-begin edge, documented in test). Rule: moonrise while Chaturthi prevails (Drik prose); moonrise hits win, consecutive duplicates keep first (Mumbai Aug 8 not 8+9), empty moonrise falls back to sunrise date (Jan 15, May 12) not begin date.", "source": "Drik Panchang only"},
     "vinayaka_chaturthi": {"text": "", "drik": "Drik Panchang vinayaka convention", "source": "Drik Panchang only"},
     "masik_shivaratri": {"text": "", "drik": "Drik Panchang masik shivaratri convention", "source": "Drik Panchang only"},
     "masik_durgashtami": {"text": "", "drik": "Drik Panchang masik durgashtami convention", "source": "Drik Panchang only"},
     "sharad_navaratri": {
-        "text": "Devi Mahatmya (Markandeya Purana ch. 81-93 in LIBRARY) for the Devi; forms list source pending (Devi Kavaca not verified)",
-        "drik": "https://www.drikpanchang.com/navratri/ashwin-shardiya-navratri-dates.html?year=2026 and 2027-2028 (both Navaratris)",
-        "source": "Drik Panchang only for dates; text for story",
+        "text": "Date model only (tithi-following); form names pending the Devi-kavaca/dhyana source (not opened). No series seed pages exist yet.",
+        "drik": "https://www.drikpanchang.com/navratri/ashwin-shardiya-navratri-dates.html?year=2026|2027|2028 (Delhi, Mumbai geoname-id 1275339, Chennai geoname-id 1264527 — titles Chennai on list and day pages, verified 2026-10-11), all read 2026-10-11",
+        "source": "Drik Panchang 9/9",
     },
     "chaitra_navaratri": {
-        "text": "Devi Mahatmya (LIBRARY)",
-        "drik": "Drik Panchang Chaitra Navaratri 2027-04-07 to 2027-04-15 (tests/test_ask_kinds.py)",
-        "source": "Drik Panchang only for dates",
+        "text": "Date model only (tithi-following); form names pending as above. No series seed pages exist yet.",
+        "drik": "https://www.drikpanchang.com/navratri/chaitra-vasant-navratri-dates.html?year=2026|2027|2028 (same 3 city settings), all read 2026-10-11; Delhi 2027 also in tests/test_ask_kinds.py (read 2026-10-05)",
+        "source": "Drik Panchang 9/9",
     },
     "pitru_paksha": {
         "text": "Garuda Purana, Vishnu Purana, Manusmriti ch. 3 (LIBRARY); digests not opened",
         "drik": "https://www.drikpanchang.com/shraddha/pitru-paksha-shraddha-dates.html (menu seen); 2026 range 27 Sep to 10 Oct",
         "source": "Drik Panchang only for dates",
     },
-    "grahan_sutak": {"text": "Digest sutaka section not opened", "drik": "Drik Panchang eclipse pages 2026-2028 (not read in this work)", "source": "Drik Panchang only"},
+    "grahan_sutak": {"text": "Nirnaya Sindhu, Prathama Pariccheda (grahana-sutaka/vedha): lunar no-eating 3 praharas before, solar 4 praharas, all varnas sutaka on Rahu-darshana (archive.org CC0 scan, printed pp.44-53, read 2026-10-11); Dharmasindhu Prathama Pariccheda pp.27-29 (solar vedha 4 yamas, lunar 3 praharas, child/old/sick half-prahara; 1986 reprint, read-only reference 2026-10-11). Texts state variable prahara/yama watches, never fixed 9/12 clock hours.", "drik": "Lunar eclipse 2026-03-03 Delhi page re-read 2026-10-11 (Total; partial 18:26-18:46; sutak 09:39-18:46; kids 15:28-18:46; prose states visibility-only rule, penumbral exclusion, umbral-end). Engine matches kind/contacts/visibility/end; sutak-BEGIN unresolved (fixed begin-9h gives 05:16 vs Drik 09:39): NOT SHIPPED. No second India-visible case 2026-28 exists to test any watch formula, so no guess ships.", "source": "Texts (watches) + Drik components; not shipped"},
     "panchaka": {"text": "", "drik": "Drik Panchang panchaka convention (Moon in last five nakshatras)", "source": "Drik Panchang only"},
     "bhadra": {"text": "", "drik": "Drik Panchang bhadra convention (Vishti karana)", "source": "Drik Panchang only"},
     "kharmas": {"text": "", "drik": "Drik Panchang kharmas convention (Sun in Dhanu and Mina)", "source": "Drik Panchang only"},
@@ -100,9 +100,12 @@ RULE_SOURCES: dict[str, dict] = {
 #: Rules that reproduced Drik New Delhi 2026 and 2027 in this work. Others
 #: produce nothing until they pass. Mumbai/Chennai and 2028 are not verified
 #: in this work (see handover result).
-#: Holika Dahan and Holi are NOT shipped: the Bhadra rule passes New Delhi
-#: 2026 but not 2027 (off by one day, see handover result). Per policy a rule
-#: that fails any city-year ships nothing.
+#: NOT shipped (2026-10-11 correction round): Holika Dahan and Holi (Bhadra
+#: rule passes Delhi 2026 but not 2027); Pitru Paksha (range verified, tithi
+#: mapping held to no Drik page yet); Panchaka, Bhadra, Kharmas, Holashtak,
+#: Adhika Masa (conventions implemented, no Drik fixtures yet). Per policy a
+#: rule that fails any city-year, or has no fixtures, ships nothing. Each
+#: lists its exact gap in the hand-back.
 SHIPPED_RULES = frozenset({
     "ekadashi", "purnima", "amavasya",
     "diwali_days", "karwa_chauth", "chhath", "kartika_purnima",
@@ -113,9 +116,8 @@ SHIPPED_RULES = frozenset({
     "durga_ashtami", "dussehra",
     "pradosh", "sankashti", "vinayaka_chaturthi",
     "masik_shivaratri", "masik_durgashtami",
-    "sharad_navaratri", "chaitra_navaratri", "pitru_paksha",
-    "grahan_sutak", "panchaka", "bhadra", "kharmas",
-    "holashtak", "adhika_masa", "chaturmas",
+    "sharad_navaratri", "chaitra_navaratri",
+    "chaturmas",
     "diwali", "dhanteras", "naraka_chaturdashi", "lakshmi_puja",
     "bhai_dooj",
 })
@@ -304,8 +306,10 @@ def _tithi_span_at(instant: datetime):
     return p.tithi_at(instant)
 
 
-def _dates_for(year: int, place: dict, month: str, paksha: str, tithi: int, part) -> list[date]:
-    days = p._dates_for_tithi(year, place, month, paksha, tithi, part)
+def _dates_for(year: int, place: dict, month: str, paksha: str, tithi: int, part,
+               include_adhika: bool = False) -> list[date]:
+    days = p._dates_for_tithi(year, place, month, paksha, tithi, part,
+                              include_adhika=include_adhika)
     if not days:
         begin = p._tithi_begin_date(year, place, month, paksha, tithi)
         if begin is not None and begin.year == year:
@@ -314,12 +318,38 @@ def _dates_for(year: int, place: dict, month: str, paksha: str, tithi: int, part
 
 
 def _pick_single(year: int, place: dict, month: str, paksha: str, tithi: int, part) -> list[date]:
-    """One date for a single festival: most daylight overlap, then earlier."""
+    """One date for a single festival: most part overlap, then earlier."""
     days = _dates_for(year, place, month, paksha, tithi, part)
     if not days:
         return []
     picked = p._pick_day(days, place, part, tithi)
     return [picked] if picked and picked.year == year else []
+
+
+def _sankashti_dates(year: int, place: dict, month: str) -> list[date]:
+    """Sankashti Chaturthi dates for one amanta month (Drik-held, Drik-only).
+
+    Moonrise hits win when present; consecutive duplicate hits from one
+    lunation keep the first (Mumbai Aug 2028 is Aug 8, not Aug 8+9).
+    When no moonrise falls inside Chaturthi, fall back to the sunrise
+    date, not the begin date (Mumbai Jan 2028 is Jan 15 and May 2028 is
+    May 12; all read 2026-10-11).
+    """
+    hits = sorted(d for d in p._dates_for_tithi(
+        year, place, month, "Krishna", 19, "moonrise", include_adhika=True) if d.year == year)
+    if hits:
+        deduped: list[date] = []
+        for d in hits:
+            if deduped and (d - deduped[-1]).days == 1:
+                continue
+            deduped.append(d)
+        return deduped
+    alt = sorted(d for d in p._dates_for_tithi(
+        year, place, month, "Krishna", 19, "sunrise", include_adhika=True) if d.year == year)
+    if alt:
+        return alt
+    b = p._tithi_begin_date(year, place, month, "Krishna", 19)
+    return [b] if b and b.year == year else []
 
 
 def _is_vishti_at(instant: datetime) -> bool:
@@ -376,7 +406,50 @@ def _makara_date(year: int, place: dict) -> date:
 
 # ─── Ekadashi ─────────────────────────────────────────────────────────
 
-def ekadashi_occurrences(year: int, place: dict) -> list[Occurrence]:
+def _ekadashi_variant(m: str, adhika: bool, paksha: str) -> str:
+    """Ekadashi name key from the purnimanta month, every tradition.
+
+    Drik prints purnimanta-style names even for Mumbai (Amanta region):
+    14 Jan 2026 is Shattila (Magha-Krishna), not Saphala, and 10 Jul 2026
+    is Yogini (Ashadha-Krishna), not Apara, in both the Delhi and Mumbai
+    lists (read 2026-10-11). Shukla halves keep the lunation's name in both
+    conventions; Krishna halves take the next nija month's name in
+    purnimanta. Both halves of an adhika month keep the adhika name
+    (Padmini/Parama, as Drik prints for May/Jun 2026).
+    """
+    if not adhika and paksha == "Krishna":
+        try:
+            key_month = p.MONTHS[(p.MONTHS.index(m) + 1) % 12]
+        except ValueError:
+            key_month = m
+    else:
+        key_month = "Adhika" if adhika else m
+    return EKADASHI_NAMES.get((key_month, paksha)) or EKADASHI_NAMES.get((m, paksha), "")
+
+
+def _dwadashi_has_sunrise(ekadashi_end: datetime, last_sunrise: date, place: dict,
+                          dwad_num: int) -> bool:
+    """True when the Dwadashi after an Ekadashi span holds a sunrise.
+
+    The parana must fall in Dwadashi next morning; a kshaya Dwadashi (no
+    sunrise, e.g. 20 Jan 2027) makes the last-sunrise fasting day
+    infeasible. Checks the two mornings after the last sunrise.
+    """
+    try:
+        dwad_start = p._tithi_start_instant(ekadashi_end, dwad_num)
+        _dn, dend = p.tithi_at(dwad_start + timedelta(minutes=1))
+        if _dn != dwad_num:
+            return True
+        for i in (1, 2):
+            sr = p.sunrise(last_sunrise + timedelta(days=i), place)
+            if sr is not None and dwad_start <= sr < dend:
+                return True
+        return False
+    except Exception:
+        return True
+
+
+def ekadashi_occurrences(year: int, place: dict, tradition: str = "north") -> list[Occurrence]:
     """Smarta fasting days with parana windows and names."""
     tzname = place.get("tz") or "Asia/Kolkata"
     out: list[Occurrence] = []
@@ -433,12 +506,34 @@ def ekadashi_occurrences(year: int, place: dict) -> list[Occurrence]:
                 b = start.astimezone(zone).date()
                 if b.year == year:
                     found = [b]
-            # Name from the amanta month and paksha.
-            key_month = "Adhika" if adhika else m
-            variant = EKADASHI_NAMES.get((key_month, paksha)) or EKADASHI_NAMES.get((m, paksha), "")
+            # Name from the purnimanta month for every tradition: Drik
+            # prints purnimanta-style names even for Mumbai (Amanta region):
+            # 14 Jan 2026 is Shattila (Magha-Krishna), 10 Jul 2026 is Yogini
+            # (Ashadha-Krishna) in both Delhi and Mumbai lists (read
+            # 2026-10-11). The `tradition` argument stays for future
+            # regional notes; it does not change the name in this work.
+            variant = _ekadashi_variant(m, adhika, paksha)
             if not variant:
                 continue
-            for fd in sorted(set(found)):
+            # One fasting day: the LAST sunrise inside the tithi, unless the
+            # parana is infeasible next morning. When the following Dwadashi
+            # holds no sunrise (kshaya, e.g. after Putrada Jan 2027: Dwadashi
+            # ends 20 Jan before sunrise), the parana cannot fall in
+            # Dwadashi, and Drik fasts the begin date (18 Jan, Dashami at
+            # sunrise) instead of the single sunrise (19 Jan). When the
+            # tithi holds two sunrises Drik fasts the second (Unmilini
+            # Mahadwadashi, 27 May 2026); the other sunrise is otherwise the
+            # Gauna/Vaishnava day, never a second Smarta day in 2026-27. If
+            # Drik ever prints two Smarta days this drops one: the Drik-list
+            # tests would catch it.
+            cands = sorted(set(found))
+            dwad_num = 12 if paksha == "Shukla" else 27
+            if cands and _dwadashi_has_sunrise(end, cands[-1], place, dwad_num):
+                fast = [cands[-1]]
+            else:
+                b = start.astimezone(zone).date()
+                fast = [b] if b.year == year else []
+            for fd in fast:
                 if fd.year != year:
                     continue
                 # Parana window next day: after Hari Vasara (first quarter of
@@ -865,25 +960,37 @@ def shipped_panchang_festivals(year: int, place: dict) -> list[Occurrence]:
 def monthly_vrats(year: int, place: dict) -> list[Occurrence]:
     out: list[Occurrence] = []
     for m in p.MONTHS:
-        for d in _dates_for(year, place, m, "Shukla", 13, "pradosh"):
+        # One Pradosh per paksha per lunation, most pradosh-overlap wins
+        # (enforced in _dates_for_tithi; Drik Delhi 2026 lists Apr 28, not
+        # Apr 29, and Mar 1, not Feb 28; read 2026-10-11). Both pakshas:
+        # Drik observes Pradosh on Shukla and Krishna Trayodashi alike.
+        # Monthly vrats recur in adhika months too (Drik lists May 28, Jun 12
+        # and Jun 27 for Jyeshtha 2026; read 2026-10-11).
+        for d in _dates_for(year, place, m, "Shukla", 13, "pradosh", include_adhika=True):
             if d.year == year:
                 wd = d.weekday()
                 variant = "pradosh_" + ["mon", "tue", "wed", "thu", "fri", "sat", "sun"][wd]
                 out.append(Occurrence(slug="pradosh", variant=f"{m.lower()}_{variant}", date=d,
                                       title="Pradosh", times=_day_times(d, place, "pradosh")))
-        for d in _dates_for(year, place, m, "Krishna", 19, "moonrise"):
+        for d in _dates_for(year, place, m, "Krishna", 28, "pradosh", include_adhika=True):
+            if d.year == year:
+                wd = d.weekday()
+                variant = "pradosh_" + ["mon", "tue", "wed", "thu", "fri", "sat", "sun"][wd]
+                out.append(Occurrence(slug="pradosh", variant=f"{m.lower()}_{variant}", date=d,
+                                      title="Pradosh", times=_day_times(d, place, "pradosh")))
+        for d in _sankashti_dates(year, place, m):
             if d.year == year:
                 out.append(Occurrence(slug="sankashti", variant=f"{m.lower()}_sankashti", date=d,
                                       title="Sankashti Chaturthi", times=_day_times(d, place, "moonrise")))
-        for d in _dates_for(year, place, m, "Shukla", 4, None):
+        for d in _dates_for(year, place, m, "Shukla", 4, None, include_adhika=True):
             if d.year == year:
                 out.append(Occurrence(slug="vinayaka_chaturthi", variant=f"{m.lower()}_vinayaka", date=d,
                                       title="Vinayaka Chaturthi", times=_day_times(d, place, None)))
-        for d in _dates_for(year, place, m, "Krishna", 29, None):
+        for d in _dates_for(year, place, m, "Krishna", 29, None, include_adhika=True):
             if d.year == year:
                 out.append(Occurrence(slug="masik_shivaratri", variant=f"{m.lower()}_shivaratri", date=d,
                                       title="Masik Shivaratri", times=_day_times(d, place, None)))
-        for d in _dates_for(year, place, m, "Shukla", 8, None):
+        for d in _dates_for(year, place, m, "Shukla", 8, None, include_adhika=True):
             if d.year == year:
                 out.append(Occurrence(slug="masik_durgashtami", variant=f"{m.lower()}_durgashtami", date=d,
                                       title="Masik Durgashtami", times=_day_times(d, place, None)))
@@ -892,55 +999,80 @@ def monthly_vrats(year: int, place: dict) -> list[Occurrence]:
 
 # ─── Series ───────────────────────────────────────────────────────────
 
-def _navaratri_for(year: int, place: dict, month: str, slug: str, title: str) -> list[Occurrence]:
+def _navaratri_for(year: int, place: dict, month: str, slug: str, title: str,
+                   dussehra: bool = True) -> list[Occurrence]:
     tzname = place.get("tz") or "Asia/Kolkata"
     zone = _zone(tzname)
-    # Collect sunrise tithis 1..10 in the month's lunation.
+    # Sunrise tithis 1..9 in the month's lunation, forms attached to tithis.
+    # A tithi with no sunrise is folded into the date it begins on (handover
+    # 4.1); a tithi with two sunrises gives two dates with the same form.
+# Dashami is NOT a sunrise day here: Vijayadashami follows the afternoon
+# rule like Dussehra (Drik 2026: 20 Oct, not the 21st). Drik's visarjan
+# is observed on the Dashami-sunrise date when it differs (Drik 2027:
+# parana on the 9th, visarjan on the 10th), but that is Drik behaviour,
+# not a verified rule: visarjan is NOT computed, see below.
     days: list[DayEntry] = []
     seen_forms: dict[str, int] = {}
     first: Optional[date] = None
     last: Optional[date] = None
     ashtami_end: Optional[datetime] = None
     pratipada_date: Optional[date] = None
-    for tithi_num in range(1, 11):
+    for tithi_num in range(1, 10):
         paksha = "Shukla"
         ds = p._dates_for_tithi(year, place, month, paksha, tithi_num, "sunrise")
-        if not ds and tithi_num == 1:
+        if not ds:
             b = p._tithi_begin_date(year, place, month, paksha, tithi_num)
             ds = [b] if b and b.year == year else []
         for d in ds:
             if d.year != year:
                 continue
-            key = TITHI_KEYS[tithi_num - 1] if tithi_num <= 15 else TITHI_KEYS[tithi_num - 1]
-            form = ""
-            label = ""
-            if 1 <= tithi_num <= 9:
-                _tk, form_key, form_name = NAVADURGA[tithi_num - 1]
-                # Doubled tithi: two dates, same form, second marked.
-                count = seen_forms.get(form_key, 0) + 1
-                seen_forms[form_key] = count
-                form = form_key
-                label = form_name if count == 1 else f"{form_name}, second day"
-            elif tithi_num == 10:
-                label = "Vijayadashami"
+            key = TITHI_KEYS[tithi_num - 1]
+            _tk, form_key, form_name = NAVADURGA[tithi_num - 1]
+            # Doubled tithi: two dates, same form, second marked.
+            count = seen_forms.get(form_key, 0) + 1
+            seen_forms[form_key] = count
+            form = form_key
+            label = form_name if count == 1 else f"{form_name}, second day"
             if first is None:
                 first = d
             last = d
             if tithi_num == 1 and pratipada_date is None:
                 pratipada_date = d
             days.append(DayEntry(date=d.isoformat(), tithi_key=key, label=label, form_key=form))
-            if tithi_num == 8:
+            if tithi_num == 8 and ashtami_end is None:
                 try:
                     sr = p.sunrise(d, place)
-                    if sr is not None:
-                        _n, end = p.tithi_at(sr)
-                        # If sunrise is Ashtami use its end, else find Ashtami span.
-                        if _n == 8:
-                            ashtami_end = end
+                    if sr is not None and p.tithi_at(sr)[0] == 8:
+                        ashtami_end = p.tithi_at(sr)[1]
                 except Exception:
                     pass
+    # Vijayadashami by the afternoon rule, Sharad only (Drik 2026 gives
+    # 20 Oct, not the 21st; Drik 2027 gives 9 Oct). Chaitra ends on Navami
+    # (Rama Navami + parana, no Dashami day: Drik Delhi 2026 ends 27 Mar,
+    # 2027 ends 15 Apr). Visarjan is NOT computed: Drik puts it on
+    # Vijayadashami day in 2026 but on the next day in 2027, and no verified
+    # rule distinguishes the two (needs the digest's Durgotsava section).
+    # Visarjan dates live in fixtures only.
+    if dussehra:
+        for d in _pick_single(year, place, month, "Shukla", 10, "afternoon"):
+            days.append(DayEntry(date=d.isoformat(), tithi_key="dashami",
+                                 label="Vijayadashami", form_key=""))
+            if first is None:
+                first = d
+            last = d
     if first is None or last is None:
         return []
+    # Kshaya Ashtami (no sunrise): find its span overlapping the series.
+    if ashtami_end is None:
+        try:
+            lo = p._local_midnight_utc(first, tzname)
+            hi = p._local_midnight_utc(last + timedelta(days=1), tzname)
+            start8 = p._tithi_start_instant(lo - timedelta(days=3), 8)
+            n8, end8 = p.tithi_at(start8 + timedelta(minutes=1))
+            if n8 == 8 and start8 < hi and end8 > lo:
+                ashtami_end = end8
+        except Exception:
+            pass
     days.sort(key=lambda e: e.date)
     times: list[TimeSpan] = []
     # Ghatasthapana muhurat: first third of daylight on Pratipada + Abhijit.
@@ -972,7 +1104,9 @@ def _navaratri_for(year: int, place: dict, month: str, slug: str, title: str) ->
         times.append(TimeSpan(key="sandhi_puja",
                               start=ashtami_end - timedelta(minutes=24),
                               end=ashtami_end + timedelta(minutes=24)))
-    # Parana: morning after Navami/Dashami.
+    # Parana on the last tithi-day morning (Navami for Chaitra; the same
+    # morning as Vijayadashami for Sharad: Drik 2026 gives homa+parana on
+    # 20 Oct, Drik 2027 on 9 Oct).
     try:
         if last is not None:
             sr_last = p.sunrise(last, place)
@@ -987,8 +1121,10 @@ def _navaratri_for(year: int, place: dict, month: str, slug: str, title: str) ->
 
 def navaratri_occurrences(year: int, place: dict) -> list[Occurrence]:
     out: list[Occurrence] = []
-    out += _navaratri_for(year, place, "Ashwina", "sharad_navaratri", "Sharad Navaratri")
-    out += _navaratri_for(year, place, "Chaitra", "chaitra_navaratri", "Chaitra Navaratri")
+    out += _navaratri_for(year, place, "Ashwina", "sharad_navaratri", "Sharad Navaratri",
+                          dussehra=True)
+    out += _navaratri_for(year, place, "Chaitra", "chaitra_navaratri", "Chaitra Navaratri",
+                          dussehra=False)
     return out
 
 
@@ -1049,67 +1185,154 @@ def shraddha_date(tithi: int, year: int, place: dict) -> Optional[date]:
 
 # ─── Periods ──────────────────────────────────────────────────────────
 
+def _body_up(body, at_utc: datetime, obs) -> bool:
+    """True when a body is above the horizon at the place (refraction on)."""
+    import astronomy
+
+    try:
+        t = p._utc_to_time(at_utc)
+        eq = astronomy.Equator(body, t, obs, True, True)
+        hor = astronomy.Horizon(t, obs, eq.ra, eq.dec, astronomy.Refraction.Normal)
+        return hor.altitude > 0.0
+    except Exception:
+        return False
+
+
+def _span_visible_lunar(begin_utc: datetime, end_utc: datetime, obs) -> bool:
+    """True when the Moon is up for any part of a lunar eclipse span.
+
+    The old check compared only the peak with that date's sunrise and sunset,
+    which misses an eclipse whose tail (or head) rises while the peak is in
+    daylight (Delhi, 3 Mar 2026).
+    """
+    import astronomy
+
+    span = (end_utc - begin_utc).total_seconds()
+    if span <= 0:
+        return _body_up(astronomy.Body.Moon, begin_utc, obs)
+    for i in range(9):
+        at = begin_utc + timedelta(seconds=span * i / 8)
+        if _body_up(astronomy.Body.Moon, at, obs):
+            return True
+    return False
+
+
+def _span_visible_solar(begin_utc: datetime, end_utc: datetime, obs) -> bool:
+    """True when the Sun is up for any part of a solar eclipse span.
+
+    SearchLocalSolarEclipse can report an eclipse that is partly or wholly
+    below the horizon at the place (library docs), so check the span.
+    """
+    import astronomy
+
+    span = (end_utc - begin_utc).total_seconds()
+    if span <= 0:
+        return _body_up(astronomy.Body.Sun, begin_utc, obs)
+    for i in range(9):
+        at = begin_utc + timedelta(seconds=span * i / 8)
+        if _body_up(astronomy.Body.Sun, at, obs):
+            return True
+    return False
+
+
+#: Lunar kinds that carry sutak. Penumbral lunar eclipses get no sutak
+#: (Drik Feb-20-2027 penumbral page: Sutak Not Applicable; read 2026-10-11).
+_LUNAR_SUTAK_KINDS = frozenset({"Total", "Partial"})
+#: Solar kinds that carry sutak (all real local kinds).
+_SOLAR_SUTAK_KINDS = frozenset({"Total", "Annular", "Partial"})
+
+
+def _eclipse_kind_name(e) -> str:
+    try:
+        return str(e.kind).split(".")[-1]
+    except Exception:
+        return ""
+
+
 def eclipse_occurrences(year: int, place: dict) -> list[Occurrence]:
+    """Grahan sutak for eclipses of `year` visible at the place.
+
+    UNSHIPPED (not in SHIPPED_RULES, never on the calendar): the texts
+    state variable prahara/yama watches (Nirnaya Sindhu: lunar 3 praharas,
+    solar 4), never fixed clock hours, and the fixed 9h/12h below does not
+    match Drik (Mar-3-2026-Delhi begin-9h gives 05:16 vs Drik 09:39).
+    Kept for engine tests only. An eclipse not visible at the place gets
+    no sutak. Sutak ends at the umbral end, not the penumbral end.
+    Penumbral lunar eclipses get no sutak.
+    """
     out: list[Occurrence] = []
     import astronomy
 
     tzname = place.get("tz") or "Asia/Kolkata"
     zone = _zone(tzname)
     obs = astronomy.Observer(float(place["lat"]), float(place["lon"]), 0.0)
-    # Lunar eclipses: search from Jan 1.
+    jan1 = datetime(year, 1, 1, tzinfo=timezone.utc)
+    jan1_next = datetime(year + 1, 1, 1, tzinfo=timezone.utc)
+    # Lunar eclipses.
     try:
         t = astronomy.Time.Make(year, 1, 1, 0, 0, 0)
-        for _ in range(4):
+        for _ in range(6):
             e = astronomy.SearchLunarEclipse(t)
             if e is None:
                 break
             peak = p._time_to_utc(e.peak)
-            if peak.astimezone(zone).date().year != year:
-                t = e.peak.AddDays(20)
+            if peak >= jan1_next + timedelta(days=40):
+                break
+            kind = _eclipse_kind_name(e)
+            # NOTE: sd_penum/sd_partial/sd_total are SEMIDURATIONS IN
+            # MINUTES (verified: Mar 2026 totals 169.6/103.9/29.7 against
+            # Drik's 5:36/3:25/0:57 phase lengths, read 2026-10-11), not
+            # days. timedelta(days=...) here once put eclipses months away.
+            begin = peak - timedelta(minutes=float(e.sd_penum or 0.0))
+            end = peak + timedelta(minutes=float(e.sd_penum or 0.0))
+            # Sutak ends at the UMBRAL end, not the penumbral end (Drik
+            # Mar-3-2026-Delhi: sutak ends 18:46 = umbra-last, while the
+            # penumbra runs to 19:52).
+            umbra_end = peak + timedelta(minutes=float(e.sd_partial or 0.0))
+            t = astronomy.NextLunarEclipse(e.peak)
+            if end < jan1 or begin >= jan1_next:
                 continue
-            # Visible when the Moon is up at the place (approx: peak at night).
-            try:
-                sr = p.sunrise(peak.astimezone(zone).date(), place)
-                ss = p.sunset(peak.astimezone(zone).date(), place)
-                visible = sr is not None and ss is not None and (peak < sr or peak > ss)
-            except Exception:
-                visible = False
-            if visible:
-                d = peak.astimezone(zone).date()
-                # Sutak 9 hours before for lunar (source pending).
-                out.append(Occurrence(
-                    slug="grahan_sutak", variant="lunar", date=d,
-                    times=[TimeSpan(key="eclipse", start=peak, end=peak),
-                           TimeSpan(key="sutak", start=peak - timedelta(hours=9), end=peak)],
-                    title="Lunar eclipse sutak"))
-            t = e.peak.AddDays(20)
+            if kind not in _LUNAR_SUTAK_KINDS:
+                continue
+            if not _span_visible_lunar(begin, end, obs):
+                continue
+            d = peak.astimezone(zone).date()
+            out.append(Occurrence(
+                slug="grahan_sutak", variant="lunar", date=d,
+                times=[TimeSpan(key="eclipse", start=begin, end=end),
+                       TimeSpan(key="sutak", start=begin - timedelta(hours=9), end=umbra_end)],
+                title="Lunar eclipse sutak"))
     except Exception:
         pass
-    # Solar: local search.
+    # Solar eclipses, local to the place.
     try:
         t = astronomy.Time.Make(year, 1, 1, 0, 0, 0)
-        for _ in range(4):
+        for _ in range(6):
             e = astronomy.SearchLocalSolarEclipse(t, obs)
             if e is None:
                 break
             peak = p._time_to_utc(e.peak)
-            if peak.astimezone(zone).date().year != year:
-                t = e.peak.AddDays(20)
-                continue
-            # SearchLocalSolarEclipse only returns visible ones; confirm
-            # partial or more (kind).
+            if peak >= jan1_next + timedelta(days=40):
+                break
+            kind = _eclipse_kind_name(e)
+            t = astronomy.NextLocalSolarEclipse(e.peak, obs)
             try:
-                kind = str(getattr(e, "kind", ""))
+                begin = p._time_to_utc(e.partial_begin)
+                end = p._time_to_utc(e.partial_end)
             except Exception:
-                kind = ""
-            if "Total" in kind or "Partial" in kind or "Annular" in kind or True:
-                d = peak.astimezone(zone).date()
-                out.append(Occurrence(
-                    slug="grahan_sutak", variant="solar", date=d,
-                    times=[TimeSpan(key="eclipse", start=peak, end=peak),
-                           TimeSpan(key="sutak", start=peak - timedelta(hours=12), end=peak)],
-                    title="Solar eclipse sutak"))
-            t = e.peak.AddDays(20)
+                continue
+            if end < jan1 or begin >= jan1_next:
+                continue
+            if kind not in _SOLAR_SUTAK_KINDS:
+                continue
+            if not _span_visible_solar(begin, end, obs):
+                continue
+            d = peak.astimezone(zone).date()
+            out.append(Occurrence(
+                slug="grahan_sutak", variant="solar", date=d,
+                times=[TimeSpan(key="eclipse", start=begin, end=end),
+                       TimeSpan(key="sutak", start=begin - timedelta(hours=12), end=end)],
+                title="Solar eclipse sutak"))
     except Exception:
         pass
     return out
@@ -1232,24 +1455,24 @@ def holashtak_adhika_chaturmas(year: int, place: dict) -> list[Occurrence]:
 
 # ─── Top-level ────────────────────────────────────────────────────────
 
-def _year_occurrences(year: int, place: dict) -> list[Occurrence]:
+def _year_occurrences(year: int, place: dict, tradition: str = "north") -> list[Occurrence]:
     out: list[Occurrence] = []
     if "ekadashi" in SHIPPED_RULES:
-        out += ekadashi_occurrences(year, place)
+        out += ekadashi_occurrences(year, place, tradition)
     if "purnima" in SHIPPED_RULES:
         out += purnima_occurrences(year, place)
     if "amavasya" in SHIPPED_RULES:
         out += amavasya_occurrences(year, place)
-    out += [o for o in phase1_festivals(year, place) if o.slug in SHIPPED_RULES or o.slug in ("dhanteras", "naraka_chaturdashi", "lakshmi_puja", "diwali", "govardhan_puja", "bhai_dooj", "karwa_chauth", "chhath")]
+    out += [o for o in phase1_festivals(year, place) if o.slug in SHIPPED_RULES]
     out += [o for o in sankranti_occurrences(year, place) if o.slug in SHIPPED_RULES]
-    out += phase2_festivals(year, place)
     out += [o for o in shipped_panchang_festivals(year, place) if o.slug in SHIPPED_RULES]
-    out += monthly_vrats(year, place)
-    out += navaratri_occurrences(year, place)
-    out += pitru_paksha_occurrences(year, place)
+    out += [o for o in monthly_vrats(year, place) if o.slug in SHIPPED_RULES]
+    out += [o for o in phase2_festivals(year, place) if o.slug in SHIPPED_RULES]
+    out += [o for o in navaratri_occurrences(year, place) if o.slug in SHIPPED_RULES]
+    out += [o for o in pitru_paksha_occurrences(year, place) if o.slug in SHIPPED_RULES]
     if "grahan_sutak" in SHIPPED_RULES:
         out += eclipse_occurrences(year, place)
-    out += holashtak_adhika_chaturmas(year, place)
+    out += [o for o in holashtak_adhika_chaturmas(year, place) if o.slug in SHIPPED_RULES]
     return out
 
 
@@ -1259,24 +1482,26 @@ def occurrences(start: date, days: int, place: dict, tradition: str = "north") -
         return []
     end = start + timedelta(days=days - 1)
     years = sorted({start.year, end.year})
+    trad = tradition if tradition in ("north", "deccan", "gujarat", "tamil", "kerala", "bengal") else "north"
     all_occs: list[Occurrence] = []
     for y in years:
         try:
-            all_occs += _year_occurrences(y, place)
+            all_occs += _year_occurrences(y, place, trad)
         except Exception:
             continue
     # Periods that need the window (panchaka/bhadra/kharmas scan the window).
-    try:
-        all_occs += panchaka_bhadra_kharmas(years[0], place, start - timedelta(days=2), days + 4)
-    except Exception:
-        pass
+    # Computed only when at least one of them ships; unshipped rules produce
+    # nothing, per policy.
+    if SHIPPED_RULES & {"panchaka", "bhadra", "kharmas"}:
+        try:
+            all_occs += panchaka_bhadra_kharmas(years[0], place, start - timedelta(days=2), days + 4)
+        except Exception:
+            pass
     # Keep those overlapping the window. Series/periods with end_date overlap
     # when any part lies inside.
     kept: list[Occurrence] = []
     for o in all_occs:
-        if o.slug not in SHIPPED_RULES and o.slug not in (
-            "dhanteras", "naraka_chaturdashi", "lakshmi_puja", "diwali",
-            "govardhan_puja", "bhai_dooj"):
+        if o.slug not in SHIPPED_RULES:
             continue
         sd = o.date
         ed = o.end_date or o.date

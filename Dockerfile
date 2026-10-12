@@ -13,9 +13,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /srv/shabd
 
 # System deps: nothing exotic needed (vidyut wheels are prebuilt for 3.11).
-# curl for the container-level health check convenience during debugging.
+# curl for health checks; ffmpeg decodes and chunks long recitations.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl \
+    && apt-get install -y --no-install-recommends curl ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt /srv/shabd/backend/requirements.txt

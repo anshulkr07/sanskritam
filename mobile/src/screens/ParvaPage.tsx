@@ -1,6 +1,7 @@
 // Parva page: painting header, times, why, do, vrat, texts, dont,
-// regions, ask, share. Series open on today's day with a day row.
-// Sections hide when empty. One-line errors only.
+// regions, ask, share. Series open on the requested/today day with a dated
+// day row. Sections hide when empty; a basic verified-dates page shows when
+// no rich body is published. One-line errors only.
 
 import { captureRef } from "react-native-view-shot";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -15,8 +16,10 @@ import { wallClockAt, localMidnight } from "../kala/clock";
 import { TITHIS } from "../kala/sanskritNames";
 import { resolvePlace } from "../kala/useToday";
 import type { RootStackParamList } from "../navigation/types";
-import { parvaCalendar, parvaPage, shraddhaDate, type ParvaPageBody } from "../parva/api";
-import { ensurePermission, followedSlugs, setFollowed } from "../parva/reminders";
+import { parvaBasic, type ParvaBasic, type ParvaPageBody } from "../parva/api";
+import { getParvaPage } from "../parva/cache";
+import { resolveDayContent, selectDayIndex, seriesDayNumber } from "../parva/select";
+import { ensurePermission, followedSlugs, isRemindUnavailable, setFollowed } from "../parva/reminders";
 import { getPlace } from "../services/place";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
@@ -80,13 +83,17 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const { sized } = useTypeScale();
   const reduced = useReducedMotion();
   const ask = useAsk();
-  const { slug, variant, date } = route.params as { slug: string; variant?: string; date?: string };
+  const { slug, variant, date, dayDate, tradition } = route.params as {
+    slug: string; variant?: string; date?: string; dayDate?: string; tradition?: string;
+  };
   const [page, setPage] = useState<ParvaPageBody | null>(null);
-  const [occTitle, setOccTitle] = useState("");
+  const [basic, setBasic] = useState<ParvaBasic | null>(null);
   const [failed, setFailed] = useState(false);
   const [placeLabel, setPlaceLabel] = useState("");
   const [placeTz, setPlaceTz] = useState("Asia/Kolkata");
+  const [trad, setTrad] = useState("north");
   const [followed, setFollowedState] = useState<string[]>([]);
+  const [remindOff, setRemindOff] = useState(false);
   const [todayStr, setTodayStr] = useState("");
   const [dayIdx, setDayIdx] = useState(0);
   const [doOpen, setDoOpen] = useState(false);
@@ -95,7 +102,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const [shrResult, setShrResult] = useState<string | null>(null);
   const shareRef = useRef<View | null>(null);
 
-  useAskContext("parva", slug);
+  useAskContext("parva", `${slug}:${variant ?? ""}:${dayDate ?? date ?? ""}`);
 
   useEffect(() => {
     let alive = true;
@@ -103,51 +110,54 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
       try {
         const stored = await getPlace().catch(() => null);
         const prefs = getKalaPrefs();
+        const useTrad = tradition ?? prefs.tradition;
         const { place } = resolvePlace(
           stored ? { lat: stored.lat, lon: stored.lon, tz: stored.tz, label: stored.label } : null,
-          prefs.tradition,
+          useTrad,
         );
         if (!alive) return;
         setPlaceLabel(place.label);
         setPlaceTz(place.tz);
+        setTrad(useTrad);
+        let today = "";
         try {
-          setTodayStr(new Intl.DateTimeFormat("en-CA", { timeZone: place.tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()));
+          today = new Intl.DateTimeFormat("en-CA", { timeZone: place.tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
         } catch {
-          setTodayStr(new Date().toISOString().slice(0, 10));
+          today = new Date().toISOString().slice(0, 10);
         }
+        setTodayStr(today);
         setFollowedState(await followedSlugs());
+        void isRemindUnavailable().then((v) => { if (alive) setRemindOff(v); });
         const lang = getLang();
-        const y = date ? Number(date.slice(0, 4)) : new Date().getFullYear();
-        const data = await parvaPage({
-          slug,
-          variant: variant ?? "",
-          lang,
-          year: y,
-          lat: Math.round(place.lat * 10) / 10,
-          lon: Math.round(place.lon * 10) / 10,
-          tz: place.tz,
-        });
+        const y = (dayDate ?? date) ? Number((dayDate ?? date ?? "").slice(0, 4)) : new Date().getFullYear();
+        const lat = Math.round(place.lat * 10) / 10;
+        const lon = Math.round(place.lon * 10) / 10;
+        // Exact occurrence + selected day in one call; no 366-day lookup.
+        const data = await getParvaPage(
+          { lat, lon, tradition: useTrad, lang, slug, variant: variant ?? "", date: dayDate ?? date, tz: place.tz },
+          { year: y, lat, lon },
+        );
         if (!alive) return;
-        if (!data) setFailed(true);
-        else {
+        if (data) {
           setPage(data);
-          // Occurrence title for the hero (the page body carries no title).
-          try {
-            const cal = await parvaCalendar({
-              start: `${y}-01-01`,
-              days: 366,
-              lat: Math.round(place.lat * 10) / 10,
-              lon: Math.round(place.lon * 10) / 10,
-              tz: place.tz,
-              tradition: prefs.tradition,
-              lang,
-            });
-            const hit = cal?.occurrences.find(
-              (o) => o.slug === slug && (!variant || o.variant === variant),
-            );
-            if (hit) setOccTitle(hit.title);
-          } catch {
-            /* title stays as the slug */
+          setBasic(null);
+          const days = data.day ?? [];
+          const init = data.day_index != null && data.day_index >= 0
+            ? data.day_index
+            : selectDayIndex(days.map((d) => ({ date: d.date })), { requestedDate: dayDate ?? date, todayStr: today });
+          setDayIdx(Math.max(0, init));
+        } else {
+          // No rich body: useful verified-dates page instead of a dead end.
+          const b = await parvaBasic({
+            slug, variant: variant ?? "", date: dayDate ?? date, year: y,
+            lat, lon, tz: place.tz, tradition: useTrad,
+          });
+          if (!alive) return;
+          if (!b) setFailed(true);
+          else {
+            setBasic(b);
+            const days = b.day ?? [];
+            setDayIdx(Math.max(0, selectDayIndex(days.map((d) => ({ date: d.date })), { requestedDate: dayDate ?? date, todayStr: today })));
           }
         }
       } catch {
@@ -157,7 +167,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     return () => {
       alive = false;
     };
-  }, [slug, variant, date]);
+  }, [slug, variant, date, dayDate, tradition]);
 
   const body = (page?.body ?? {}) as Record<string, unknown>;
   const why = (body.why as Item[] | undefined) ?? [];
@@ -168,40 +178,55 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const texts = (body.texts as Record<string, unknown>[] | undefined) ?? [];
   const regions = (body.regions as { region?: string; items?: Item[] }[] | undefined) ?? [];
   const seriesDays = (body.series_days as { tithi_key?: string; form_key?: string; summary?: string; steps?: Item[] }[] | undefined) ?? [];
-  // Calendar day entries (tithi days with forms) arrive on the page payload;
-  // the seeds carry no series_days of their own yet.
-  const calDays = ((page as unknown as { day?: { date?: string; label?: string; form_key?: string; tithi_key?: string }[] } | null)?.day) ?? [];
-  const dayRow = seriesDays.length > 0
-    ? seriesDays.map((d) => ({ key: d.tithi_key ?? "", label: d.summary ?? d.tithi_key ?? "" }))
-    : calDays.map((d, i) => ({ key: `${d.tithi_key}_${i}`, label: d.label ?? d.date ?? "" }));
+  // Calendar day entries are the authority for day order. Content resolves
+  // by stable form_key so repeated tithis keep both dated entries.
+  const calDays = (page?.day ?? basic?.day ?? []) as { date?: string; label?: string; form_key?: string; tithi_key?: string }[];
+  const dayRow = calDays.map((d, i) => ({
+    key: `${d.tithi_key ?? ""}_${d.form_key ?? ""}_${i}`,
+    label: d.date ?? "",
+    sub: d.label ?? "",
+    tithi: d.tithi_key ?? "",
+  }));
+  const selectedCalDay = calDays[dayIdx] ?? null;
+  const selectedContent = resolveDayContent(selectedCalDay, seriesDays);
+  const selectedDate = selectedCalDay?.date ?? (dayDate ?? date ?? page?.date ?? basic?.date ?? null);
+  const selectedDayNum = selectedCalDay?.date ? seriesDayNumber(calDays, selectedCalDay.date) : 0;
   const summary = typeof body.summary === "string" ? body.summary : "";
-  const heroTitle = occTitle || (variant ? variant.replace(/_/g, " ") : slug.replace(/_/g, " "));
+  const heroTitle = plain(page?.title || basic?.title || (variant ? variant.replace(/_/g, " ") : slug.replace(/_/g, " ")));
+  // When a series day is selected, heading/date/significance/vidhi/texts move
+  // together: per-day steps override the generic steps.
+  const shownSteps = selectedContent?.steps?.length ? (selectedContent.steps as Item[]) : steps;
+  const shownSummary = selectedContent?.summary ? String(selectedContent.summary) : summary;
 
   const rahuAbhijit = useMemo(() => {
-    if (!date) return [];
-    const mid = midnightUtcForDate(date, placeTz);
+    if (!selectedDate) return [];
+    const mid = midnightUtcForDate(selectedDate, placeTz);
     if (!mid) return [];
     try {
       const sun = sunDay(mid, { lat: 28.6, lon: 77.2 });
       if (!sun) return [];
-      const wd = new Date(Date.UTC(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, Number(date.slice(8, 10)))).getUTCDay();
+      const wd = new Date(Date.UTC(Number(selectedDate.slice(0, 4)), Number(selectedDate.slice(5, 7)) - 1, Number(selectedDate.slice(8, 10)))).getUTCDay();
       return dayWindows(sun, wd).filter((w) => w.key === "rahu" || w.key === "abhijit");
     } catch {
       return [];
     }
-  }, [date, placeTz]);
+  }, [selectedDate, placeTz]);
 
   const toggleFollow = async () => {
     const on = !followed.includes(slug);
     if (on) {
       const ok = await ensurePermission();
-      if (!ok) return;
+      if (!ok) {
+        setRemindOff(await isRemindUnavailable());
+        return;
+      }
     }
     setFollowedState(await setFollowed(slug, on));
   };
 
   const doShare = async () => {
-    const text = t("parva.sharedText", { title: slug, date: date ?? "", summary: plain(summary).slice(0, 120) });
+    const shareDate = selectedDate ?? "";
+    const text = t("parva.sharedText", { title: `${heroTitle}${selectedDayNum ? `, day ${selectedDayNum}` : ""}`, date: shareDate, summary: plain(shownSummary).slice(0, 120) });
     try {
       const uri = await captureRef(shareRef, { format: "png", result: "tmpfile" });
       let done = false;
@@ -234,13 +259,14 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const findShraddha = async () => {
     setShrResult(null);
     try {
+      const { shraddhaDate } = await import("../parva/api");
       const stored = await getPlace().catch(() => null);
       const prefs = getKalaPrefs();
       const { place } = resolvePlace(
         stored ? { lat: stored.lat, lon: stored.lon, tz: stored.tz, label: stored.label } : null,
         prefs.tradition,
       );
-      const y = date ? Number(date.slice(0, 4)) : new Date().getFullYear();
+      const y = selectedDate ? Number(selectedDate.slice(0, 4)) : new Date().getFullYear();
       const r = await shraddhaDate({ tithi: shrTithi, year: y, lat: Math.round(place.lat * 10) / 10, lon: Math.round(place.lon * 10) / 10, tz: place.tz });
       setShrResult(r?.date ?? null);
     } catch {
@@ -275,14 +301,14 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     };
   }, [doOpen]);
 
-  if (failed && !page) {
+  if (failed && !page && !basic) {
     return (
       <View style={styles.page}>
         <Text style={styles.error}>Could not load this page. Go back and retry.</Text>
       </View>
     );
   }
-  if (!page) {
+  if (!page && !basic) {
     return (
       <View style={styles.page}>
         <Text style={styles.muted}>Loading.</Text>
@@ -290,22 +316,50 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     );
   }
 
-  const isSeries = slug === "sharad_navaratri" || slug === "chaitra_navaratri" || slug === "pitru_paksha" || slug === "diwali_days";
+  const times = page?.times ?? basic?.times ?? [];
+  const availability = page?.availability ?? basic?.availability ?? "";
+  const isSeries = (calDays.length > 0) && (slug === "sharad_navaratri" || slug === "chaitra_navaratri" || slug === "pitru_paksha" || slug === "diwali_days" || calDays.length > 1);
+  const hasRichSections = why.length + gather.length + shownSteps.length + texts.length + dont.length + regions.length + Object.keys(vrat).length > 0;
 
   return (
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
       <View ref={shareRef} collapsable={false}>
         <View style={styles.hero}>
-          <Text style={styles.heroTitle}>{plain(heroTitle)}</Text>
-          <Text style={styles.heroDate}>{dateLabel(date, todayStr)}</Text>
+          <Text style={styles.heroTitle}>{heroTitle}</Text>
+          <Text style={styles.heroDate}>
+            {selectedCalDay ? `${selectedCalDay.date ?? ""} · ${plain(selectedCalDay.label ?? "")}` : dateLabel(selectedDate, todayStr)}
+            {selectedDayNum ? ` · ${t("parva.dayOf", { n: selectedDayNum })}` : ""}
+            {selectedCalDay?.tithi_key ? ` · ${selectedCalDay.tithi_key}` : ""}
+          </Text>
         </View>
-        {!!summary && <Text style={styles.summary}>{plain(summary)}</Text>}
+        {!!shownSummary && <Text style={styles.summary}>{plain(shownSummary)}</Text>}
       </View>
 
-      {((page.times ?? []).length > 0 || rahuAbhijit.length > 0) && (
+      {isSeries && dayRow.length > 0 && (
+        <View style={styles.section}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {dayRow.map((d, i) => (
+              <Pressable
+                key={`${d.key}_${i}`}
+                onPress={() => { setDayIdx(i); setDoStep(0); }}
+                accessibilityRole="button"
+                accessibilityLabel={`${calDays[i]?.date ?? ""}, ${calDays[i]?.label ?? ""}`}
+                accessibilityState={{ selected: dayIdx === i }}
+                accessibilityHint={calDays[i]?.date ?? ""}
+                style={styles.dayHit}
+              >
+                <Text style={[styles.dayText, dayIdx === i && styles.dayOn]}>{d.label.slice(5)}</Text>
+                <Text style={[styles.daySub, dayIdx === i && styles.dayOn]} numberOfLines={1}>{plain(d.sub)}</Text>
+              </Pressable>
+            ))}
+          </ScrollView>
+        </View>
+      )}
+
+      {(times.length > 0 || rahuAbhijit.length > 0) && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.times")}</Text>
-          {(page.times ?? []).map((tm, i) => (
+          {times.map((tm, i) => (
             <View key={`${tm.key}_${i}`} style={styles.timeRow}>
               <Text style={styles.timeKey}>{tm.key}</Text>
               <Text style={styles.timeVal} numberOfLines={1}>
@@ -326,6 +380,13 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
+      {!hasRichSections && (
+        <View style={styles.section}>
+          <Text style={styles.step}>{basic?.message || t("parva.basicDetail")}</Text>
+          {selectedCalDay ? <Text style={styles.basis}>{plain(selectedCalDay.label ?? "")} · {selectedCalDay.date}</Text> : null}
+        </View>
+      )}
+
       {why.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.why")}</Text>
@@ -341,7 +402,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {(gather.length > 0 || steps.length > 0) && (
+      {(gather.length > 0 || shownSteps.length > 0) && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.whatToDo")}</Text>
           {gather.length > 0 && <Text style={styles.sub}>{t("parva.gather")}</Text>}
@@ -354,7 +415,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
               </View>
             </View>
           ))}
-          {steps.map((it, i) => (
+          {shownSteps.map((it, i) => (
             <View key={i} style={styles.stepRow}>
               <Text style={styles.stepNum}>{i + 1}.</Text>
               <View style={styles.stepText}>
@@ -363,7 +424,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
               </View>
             </View>
           ))}
-          {steps.length > 0 && (
+          {shownSteps.length > 0 && (
             <Pressable
               onPress={() => {
                 setDoStep(0);
@@ -376,25 +437,6 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
               <Text style={styles.startText}>{t("parva.start")}</Text>
             </Pressable>
           )}
-        </View>
-      )}
-
-      {isSeries && dayRow.length > 0 && (
-        <View style={styles.section}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {dayRow.map((d, i) => (
-              <Pressable
-                key={`${d.key}_${i}`}
-                onPress={() => setDayIdx(i)}
-                accessibilityRole="button"
-                accessibilityLabel={d.label}
-                accessibilityState={{ selected: dayIdx === i }}
-                style={styles.dayHit}
-              >
-                <Text style={[styles.dayText, dayIdx === i && styles.dayOn]}>{d.label}</Text>
-              </Pressable>
-            ))}
-          </ScrollView>
         </View>
       )}
 
@@ -500,7 +542,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
 
       <View style={styles.btnRow}>
         <Pressable
-          onPress={() => ask.open({ surface: "parva", subject: slug })}
+          onPress={() => ask.open({ surface: "parva", subject: `${slug}:${variant ?? ""}:${selectedDate ?? ""}:${trad}` })}
           style={({ pressed }) => [styles.ghostBtn, pressed && styles.pressed]}
           accessibilityRole="button"
           accessibilityLabel={t("parva.askAbout")}
@@ -515,23 +557,28 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         >
           <Text style={styles.ghostText}>{t("parva.share")}</Text>
         </Pressable>
-        <Pressable
-          onPress={() => void toggleFollow()}
-          style={({ pressed }) => [styles.ghostBtn, pressed && styles.pressed]}
-          accessibilityRole="button"
-          accessibilityLabel={followed.includes(slug) ? t("parva.remindOff") : t("parva.remind")}
-        >
-          <Text style={styles.ghostText}>{followed.includes(slug) ? t("parva.remindOff") : t("parva.remind")}</Text>
-        </Pressable>
+        {!remindOff && (
+          <Pressable
+            onPress={() => void toggleFollow()}
+            style={({ pressed }) => [styles.ghostBtn, pressed && styles.pressed]}
+            accessibilityRole="button"
+            accessibilityLabel={followed.includes(slug) ? t("parva.remindOff") : t("parva.remind")}
+          >
+            <Text style={styles.ghostText}>{followed.includes(slug) ? t("parva.remindOff") : t("parva.remind")}</Text>
+          </Pressable>
+        )}
       </View>
+      {availability === "verified_dates" ? (
+        <Text style={styles.basis}>{t("parva.basicDetail")}</Text>
+      ) : null}
 
       <Modal visible={doOpen} animationType={reduced ? "none" : "slide"} onRequestClose={() => setDoOpen(false)}>
         <View style={styles.doPage}>
           <Text style={[styles.doStep, { fontSize: sized(22, { sanskrit: true }) }]}>
-            {plain(steps[Math.min(doStep, Math.max(0, steps.length - 1))]?.text ?? "")}
+            {plain(shownSteps[Math.min(doStep, Math.max(0, shownSteps.length - 1))]?.text ?? "")}
           </Text>
           <Text style={styles.doCount}>
-            {steps.length > 0 ? `${doStep + 1} / ${steps.length}` : ""}
+            {shownSteps.length > 0 ? `${doStep + 1} / ${shownSteps.length}` : ""}
           </Text>
           <View style={styles.btnRow}>
             <Pressable
@@ -542,9 +589,9 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
             >
               <Text style={styles.ghostText}>{t("parva.back")}</Text>
             </Pressable>
-            {doStep + 1 < steps.length ? (
+            {doStep + 1 < shownSteps.length ? (
               <Pressable
-                onPress={() => setDoStep((s) => Math.min(steps.length - 1, s + 1))}
+                onPress={() => setDoStep((s) => Math.min(shownSteps.length - 1, s + 1))}
                 style={styles.ghostBtn}
                 accessibilityRole="button"
                 accessibilityLabel={t("parva.next")}
@@ -603,8 +650,9 @@ const styles = StyleSheet.create({
   startBtn: { minHeight: 48, alignItems: "center", justifyContent: "center", borderRadius: 12, backgroundColor: fill.sage, marginTop: space.sm },
   startText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: onFill.text },
   pressed: { opacity: 0.9 },
-  dayHit: { minWidth: 44, minHeight: 44, justifyContent: "center", paddingHorizontal: space.sm },
+  dayHit: { minWidth: 64, minHeight: 48, justifyContent: "center", paddingHorizontal: space.sm },
   dayText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
+  daySub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
   dayOn: { color: color.ink, textDecorationLine: "underline" },
   btnRow: { flexDirection: "row", flexWrap: "wrap", gap: space.sm, marginTop: space.md },
   ghostBtn: { minHeight: 48, paddingHorizontal: space.md, alignItems: "center", justifyContent: "center", borderRadius: 12, borderWidth: 1.5, borderColor: color.ink },

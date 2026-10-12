@@ -63,16 +63,24 @@ def user_text(slug: str, variant: str, lang: str, passages: dict[str, str]) -> s
         "Passages you may cite (ref: passage):",
     ]
     if passages:
-        for ref, text in passages.items():
-            lines.append(f"- {ref}: {text[:600]}")
+        for ref, url in passages.items():
+            lines.append(f"- {ref} (opened: {url})")
     else:
         lines.append("- none in this dry run: use basis calc or custom only, no text items.")
     return "\n".join(lines)
 
 
 def passages_for(_slug: str) -> dict[str, str]:
-    # Code-extracted passages go here (8.2 sources). The dry run carries none,
-    # so the model must not emit text items; the checker enforces it.
+    # Refs opened for the seeds (app/seeds/parva/passages.json): ref ->
+    # {text_name, url, read_on}. The request carries refs, not excerpts, so
+    # the model must cite ref only and emit no Sanskrit quotes; the checker
+    # fails any quote (nothing to match it against) and any ref not listed.
+    try:
+        data = json.loads((OUT_DIR / "passages.json").read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            return {k: str(v.get("url", "")) for k, v in data.items() if isinstance(v, dict)}
+    except Exception:
+        pass
     return {}
 
 

@@ -377,7 +377,7 @@ class Settings(BaseSettings):
 
     # Recite + competitions (handover_recite 8.1, 11.9).
     env: str = "dev"
-    scorer_url: str = ""
+    scorer_url: str = ""  # "sarvam": pinned Sanskrit STT; URL: external Su-srota; "fake": dev only.
     scorer_key: str = ""
     scorer_timeout_s: float = 25.0
     scorer_max_seconds: int = 45

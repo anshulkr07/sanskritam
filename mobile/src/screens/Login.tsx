@@ -43,8 +43,9 @@ import {
 
 import { Gesture, GuruNative } from "../components/guru";
 import { useAuth } from "../store/auth";
+import { ApiError } from "../api/client";
 import { accent, color, font, radius, script, shadow, space } from "../theme";
-import { BASE_URL, GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED } from "../config";
+import { GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED, PRIVACY_POLICY_URL } from "../config";
 
 // The icon's cream, so the app opens as a continuation of its launcher icon.
 const ICON_CREAM = "#FFF6ED";
@@ -92,13 +93,30 @@ export default function LoginScreen() {
       }
       // isSuccessResponse === false means the user cancelled; nothing to do.
     } catch (e) {
-      const code = (e as { code?: string }).code;
-      if (code === statusCodes.SIGN_IN_CANCELLED) {
+      // Report the real reason, not one generic line: a closed-testing
+      // failure is almost always console config (Play app-signing SHA-1
+      // missing from the Android OAuth client, or the OAuth consent screen
+      // still in Testing without the tester added), and the code tells the
+      // owner which one. Backend rejections (401/501) surface separately.
+      const code = String((e as { code?: unknown })?.code ?? "");
+      if (code === statusCodes.SIGN_IN_CANCELLED || code === "12501") {
         // User backed out; just re-enable the button.
       } else if (code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         setError("Google Play Services isn't available on this device.");
+      } else if (e instanceof ApiError && e.status === 501) {
+        setError("Google sign-in isn't set up on the server yet (server 501). Tell us you saw this.");
+      } else if (e instanceof ApiError && e.status === 401) {
+        setError("The server rejected Google's token (server 401). Tell us you saw this.");
+      } else if (e instanceof ApiError && e.status === 0) {
+        setError("Couldn't reach the server. Check your internet and try again.");
+      } else if (code === statusCodes.IN_PROGRESS || code === statusCodes.SIGN_IN_REQUIRED) {
+        setError("Sign-in is still running. Wait a moment and try again.");
       } else {
-        setError("Google sign-in failed. Try again.");
+        setError(
+          code
+            ? `Google sign-in failed (code ${code}). Tell us the code and try again.`
+            : "Google sign-in failed. Try again.",
+        );
       }
     } finally {
       setBusy("none");
@@ -224,7 +242,7 @@ export default function LoginScreen() {
           )}
 
           <Pressable
-            onPress={() => Linking.openURL(`${BASE_URL}/privacy`).catch(() => {})}
+            onPress={() => Linking.openURL(PRIVACY_POLICY_URL).catch(() => {})}
             hitSlop={8}
             accessibilityRole="link"
             accessibilityLabel="Privacy policy"

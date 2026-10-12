@@ -170,6 +170,21 @@ whichever database `DATABASE_URL` points at. Supabase Storage is not a
 backend yet (R2/GCS only); say the word and it gets one.
 
 ## 7. Scorer
+The deployed app can instead use hosted Sarvam: set `SCORER_URL=sarvam`
+with `SARVAM_API_KEY` and `SARVAM_STT_MODEL=saaras:v4`. No GPU is needed.
+This uses Sanskrit (`sa-IN`) transcription, without reference hints,
+and local akshara alignment. Matches earn credit; substitutions, omissions,
+and extra units reduce the score. `+` in feedback marks an extra unit.
+Strict and liberal percentages are identical for this single-transcript
+provider; it supplies no three-decode uncertainty or replay-similarity check.
+Empty/unrecognizable transcripts return unclear. Recordings over 30 seconds
+are decoded by FFmpeg and split into WAV chunks of at most 28 seconds,
+preferring quiet boundaries. Chunks do not overlap. Transcripts are joined
+in order and the complete passage is scored once. Uploads may be up to
+20 MB and 10 minutes, subject to the speech allowance and vendor budget.
+Completed chunks remain metered if a later chunk fails; no partial score is
+saved, and unprocessed duration is refunded.
+
 Run `gpu/asr/server.py` (or Dockerfile.gpu) on a datacenter GPU host, or
 Dockerfile.cpu on CPU if fast enough. HTTPS in front (Cloudflare Tunnel).
 Never expose 8090 openly. Set SCORER_URL + SCORER_KEY in backend deploy env.

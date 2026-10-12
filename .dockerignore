@@ -25,6 +25,21 @@ icons
 .vscode
 .claude
 .claude/
+# Build context only: never COPYed by the Dockerfile (it takes backend/app,
+# backend/migrations, backend/alembic.ini, requirements.txt and frontend/).
+# Each of these is hundreds of MB of upload + billed build minutes.
+chant_runs
+results
+storage
+deploy
+gpu
+gpu_jobs
+frontend/src
+Claude outputs/
+*.rar
+*.zip
+*.wav
+*.mp3
 
 # vidyut-data is downloaded fresh at build time (baked into image)
 backend/vidyut-data

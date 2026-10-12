@@ -37,6 +37,7 @@ export const PRACTICE: { name: string; kind: string; title: string }[] = [
 export default function PlayScreen({ navigation }: Props) {
   const [daily, setDaily] = useState<{ date: string; game: string; goal: { label: string }; done: boolean; streak: number } | null>(null);
   const [comp, setComp] = useState<{ id: string; pieces: { source_ref: string }[]; me?: { best_percent: number | null; rank: number | null } | null; closes_at: string } | null>(null);
+  const [compNext, setCompNext] = useState("");
   const [compGone, setCompGone] = useState(false);
   const { data: progress } = useQuery("progress-daily", api.progressDaily);
 
@@ -44,6 +45,7 @@ export default function PlayScreen({ navigation }: Props) {
     void gamesDaily().then(setDaily).catch(() => {});
     api.competitionCurrent().then((c) => {
       setComp(c.open as never);
+      setCompNext(c.next?.opens_at ? `Next opens ${c.next.opens_at}` : "");
     }).catch((e) => {
       if ((e as { status?: number }).status === 404) setCompGone(true);
     });
@@ -143,7 +145,7 @@ export default function PlayScreen({ navigation }: Props) {
                 </View>
               </>
             ) : (
-              <Text style={styles.chGoal}>Next competition opens Thursday</Text>
+              <Text style={styles.chGoal}>{compNext || "No competition open right now."}</Text>
             )}
           </PlayBanner>
         )}

@@ -160,20 +160,23 @@ def get_profile(learner: Learner = Depends(require_learner), db: Session = Depen
 
 @router.put("/me/public-profile")
 def put_profile(body: dict, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    name = str(body.get("public_name", "") or "").strip()
-    if not name or len(name) < 3 or len(name) > 24 or not _NAME_RE.match(name):
-        raise HTTPException(status_code=422, detail="Bad public name.")
-    if name.lower() in _RESERVED:
-        raise HTTPException(status_code=422, detail="Name is reserved.")
-    other = db.query(LearnerPublic).filter(LearnerPublic.learner_id != learner.id).all()
-    if any((o.public_name or "").lower() == name.lower() for o in other):
-        raise HTTPException(status_code=422, detail="Name is taken.")
     pub = db.query(LearnerPublic).filter(LearnerPublic.learner_id == learner.id).first()
     if pub is None:
         pub = LearnerPublic(learner_id=learner.id)
         db.add(pub)
     now = datetime.now(timezone.utc)
-    pub.public_name = name
+    # Public name is optional per request so eligibility steps can be saved
+    # one at a time (name, 18+, rules, consent). Validate only when provided.
+    if "public_name" in body:
+        name = str(body.get("public_name", "") or "").strip()
+        if not name or len(name) < 3 or len(name) > 24 or not _NAME_RE.match(name):
+            raise HTTPException(status_code=422, detail="Bad public name.")
+        if name.lower() in _RESERVED:
+            raise HTTPException(status_code=422, detail="Name is reserved.")
+        other = db.query(LearnerPublic).filter(LearnerPublic.learner_id != learner.id).all()
+        if any((o.public_name or "").lower() == name.lower() for o in other):
+            raise HTTPException(status_code=422, detail="Name is taken.")
+        pub.public_name = name
     if body.get("age_confirmed"):
         pub.age_confirmed_at = pub.age_confirmed_at or now
     if body.get("rules_version"):
@@ -231,7 +234,7 @@ async def post_attempt(
     data = await file.read()
     lines = chant_lines(shloka.devanagari or "")
     reference = [ln["tts"] for ln in lines if ln.get("kind") != "speaker"]
-    if not (settings.scorer_url or "").strip():
+    if not scorer_client.available():
         raise HTTPException(status_code=503, detail="Scoring is not available yet")
     # Ref chant URL for replay check.
     ref_url = ""
@@ -243,10 +246,8 @@ async def post_attempt(
             ref_url = va.url or ""
     except Exception:
         ref_url = ""
-    try:
-        res = await scorer_client.score(data, reference, True, ref_audio_url=ref_url)
-    except scorer_client.ScorerError:
-        raise HTTPException(status_code=503, detail="Scoring is busy. Try again.")
+    res = await scorer_client.score_attempt(data, reference, True, db=db,
+                                           learner=learner, surface="competition", ref_audio_url=ref_url)
     try:
         cam = json.loads(camera or "{}")
     except Exception:
@@ -282,7 +283,7 @@ async def post_attempt(
                         status=res.get("status", "scored"), percent=pct,
                         n_ok=int(n.get("green", 0)), n_fix=int(n.get("red", 0)),
                         n_unclear=int(n.get("amber", 0)),
-                        bands="", duration_ms=int(estimate_seconds(data) * 1000),
+                        bands="", duration_ms=int(res.get("duration_ms", estimate_seconds(data) * 1000)),
                         competition_id=comp.id, camera=cam, counted=counted,
                         flags=[] if counted else [why])
     db.add(row)

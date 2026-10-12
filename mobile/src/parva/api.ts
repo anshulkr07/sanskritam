@@ -31,6 +31,26 @@ export interface ParvaOccurrence {
   day: ParvaDay[] | null;
   has_page: boolean;
   art_url: string;
+  availability?: string;
+}
+
+export interface ParvaCatalogEntry {
+  slug: string;
+  type: string;
+  recurrence: string;
+  aliases: string[];
+  traditions: string[];
+  rule: string;
+  rule_state: string;
+  rule_evidence: string;
+  shipped: boolean;
+  priority: number;
+  content: string[];
+  missing: string[];
+  content_complete: boolean;
+  publication: string;
+  has_published_page?: boolean;
+  availability?: string;
 }
 
 export interface ParvaCalendar {
@@ -49,6 +69,24 @@ export interface ParvaPageBody {
   date: string | null;
   end_date: string | null;
   day?: ParvaDay[] | null;
+  title?: string;
+  tradition?: string;
+  availability?: string;
+  day_index?: number;
+  occurrence_date?: string | null;
+}
+
+export interface ParvaBasic {
+  slug: string;
+  variant: string;
+  title: string;
+  date: string | null;
+  end_date: string | null;
+  times: ParvaTime[];
+  day: ParvaDay[] | null;
+  availability: string;
+  message: string;
+  tradition: string;
 }
 
 async function getJson<T>(path: string): Promise<T | null> {
@@ -95,9 +133,29 @@ export function parvaPage(opts: {
   lat?: number;
   lon?: number;
   tz?: string;
+  tradition?: string;
+  date?: string;
 }): Promise<ParvaPageBody | null> {
   const { slug, ...rest } = opts;
   return getJson<ParvaPageBody>(`/parva/page/${encodeURIComponent(slug)}?${q(rest)}`);
+}
+
+export function parvaBasic(opts: {
+  slug: string;
+  variant?: string;
+  date?: string;
+  year?: number;
+  lat: number;
+  lon: number;
+  tz: string;
+  tradition?: string;
+}): Promise<ParvaBasic | null> {
+  const { slug, ...rest } = opts;
+  return getJson<ParvaBasic>(`/parva/basic/${encodeURIComponent(slug)}?${q(rest)}`);
+}
+
+export function parvaCatalog(opts: { lang: string }): Promise<{ catalog: ParvaCatalogEntry[] } | null> {
+  return getJson<{ catalog: ParvaCatalogEntry[] }>(`/parva/catalog?${q(opts)}`);
 }
 
 export function shraddhaDate(opts: {

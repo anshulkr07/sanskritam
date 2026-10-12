@@ -1,18 +1,19 @@
 // Parva list: by month, next 60 days then Load more to 120.
-// Filters: All, Vrats, Festivals. Plain text tabs, not pills.
+// Filters: All, Vrats, Festivals. Every row opens a useful destination:
+// the rich page when published, else the basic verified-dates page.
 
 import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useAskContext } from "../ask/AskProvider";
-import { t, useLang } from "../i18n";
-import { getKalaPrefs } from "../kala/prefs";
+import { getLang, subscribeLang, t, useLang } from "../i18n";
+import { getKalaPrefs, subscribeKalaPrefs } from "../kala/prefs";
 import { resolvePlace } from "../kala/useToday";
 import { getPlace } from "../services/place";
 import { getParvaCalendar } from "../parva/cache";
 import type { ParvaOccurrence } from "../parva/api";
-import { PARVA_DAYS_AHEAD, PARVA_MAX_DAYS, parvaCalendar } from "../parva/api";
+import { PARVA_DAYS_AHEAD, PARVA_MAX_DAYS } from "../parva/api";
 import { color, font, space } from "../theme";
 import { plain } from "../utils/text";
 
@@ -28,6 +29,7 @@ export default function ParvaScreen() {
   const [loading, setLoading] = useState(true);
   const [days, setDays] = useState(PARVA_DAYS_AHEAD);
   const [filter, setFilter] = useState<Filter>("all");
+  const [tradition, setTradition] = useState("north");
 
   useAskContext("parva", "festivals");
 
@@ -36,6 +38,7 @@ export default function ParvaScreen() {
     setFailed(false);
     try {
       const prefs = getKalaPrefs();
+      setTradition(prefs.tradition);
       const stored = await getPlace().catch(() => null);
       const { place } = resolvePlace(
         stored ? { lat: stored.lat, lon: stored.lon, tz: stored.tz, label: stored.label } : null,
@@ -47,21 +50,14 @@ export default function ParvaScreen() {
       } catch {
         /* keep */
       }
-      const data =
-        (await getParvaCalendar(
-          { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang: "en" },
-          { start: today, days: d, tz: place.tz, label: place.label },
-        )) ??
-        (await parvaCalendar({
-          start: today,
-          days: d,
-          lat: Math.round(place.lat * 10) / 10,
-          lon: Math.round(place.lon * 10) / 10,
-          tz: place.tz,
-          tradition: prefs.tradition,
-          lang: "en",
-        }));
+      // Request the full window every time: a cached 60-day response never
+      // satisfies a 120-day request (window coverage is checked in cache).
+      const data = await getParvaCalendar(
+        { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang: getLang() },
+        { start: today, days: d, tz: place.tz, label: place.label },
+      );
       setOccs(data?.occurrences ?? []);
+      if (!data) setFailed(true);
     } catch {
       setFailed(true);
     } finally {
@@ -73,11 +69,25 @@ export default function ParvaScreen() {
     void load(days);
   }, [days, load]);
 
+  useEffect(() => subscribeKalaPrefs(() => void load(days)), [days, load]);
+
+  useEffect(() => subscribeLang(() => void load(days)), [days, load]);
+
   const shown = occs.filter((o) => {
     if (filter === "all") return true;
     if (filter === "vrats") return VRAT_SLUGS.has(o.slug);
     return !VRAT_SLUGS.has(o.slug);
   });
+
+  const openOcc = (o: ParvaOccurrence) => {
+    nav.navigate("ParvaPage", {
+      slug: o.slug,
+      variant: o.variant,
+      date: o.date ?? undefined,
+      dayDate: o.date ?? undefined,
+      tradition,
+    });
+  };
 
   return (
     <View style={styles.page}>
@@ -115,16 +125,16 @@ export default function ParvaScreen() {
           shown.map((o) => (
             <Pressable
               key={`${o.slug}_${o.variant}_${o.date}`}
-              onPress={() => nav.navigate("ParvaPage", { slug: o.slug, variant: o.variant, date: o.date ?? undefined })}
-              disabled={!o.has_page}
+              onPress={() => openOcc(o)}
               style={({ pressed }) => [styles.row, pressed && styles.pressed]}
               accessibilityRole="button"
-              accessibilityLabel={`${o.title}. ${o.date ?? ""}`}
-              accessibilityState={{ disabled: !o.has_page }}
+              accessibilityLabel={`${o.title}. ${o.date ?? ""}${o.availability === "verified_dates" ? `. ${t("parva.basicDetail")}` : ""}`}
             >
               <View style={styles.rowText}>
                 <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>
-                <Text style={styles.rowMeta} numberOfLines={1}>{o.date ?? ""}</Text>
+                <Text style={styles.rowMeta} numberOfLines={1}>
+                  {o.date ?? ""}{o.availability === "verified_dates" ? `, ${t("parva.openBasic")}` : ""}
+                </Text>
               </View>
             </Pressable>
           ))

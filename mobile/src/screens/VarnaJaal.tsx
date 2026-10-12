@@ -66,8 +66,12 @@ export default function VarnaJaalScreen({ navigation, route }: Props) {
   const tapCell = (i: number) => {
     if (foundCount >= total) return;
     if (sel.includes(i)) {
-      selRef.current = [];
-      setSel([]);
+      // Tapping the last cell steps back; tapping any other selected cell
+      // clears the path so a wrong diagonal can be restarted quickly.
+      const last = sel[sel.length - 1];
+      const next = i === last ? sel.slice(0, -1) : [];
+      selRef.current = next;
+      setSel(next);
       return;
     }
     if (sel.length > 0 && !adjacent(sel[sel.length - 1], i)) {
@@ -80,9 +84,9 @@ export default function VarnaJaalScreen({ navigation, route }: Props) {
     setSel(next);
   };
 
-  const check = () => {
-    if (sel.length === 0) return;
-    const spelled = sel.map((i) => cells[i]).join("");
+  const checkPath = (path: number[]) => {
+    if (path.length === 0) return;
+    const spelled = path.map((i) => cells[i]).join("");
     const hit = words.find((w) => w.aksharas.join("") === spelled && !found.has(w.sa));
     if (hit) {
       const next = new Set(found);
@@ -100,18 +104,41 @@ export default function VarnaJaalScreen({ navigation, route }: Props) {
     setSel([]);
   };
 
+  const check = () => checkPath(selRef.current);
+
   const cellFromPoint = (x: number, y: number): number | null => {
     const { w, h } = sizeRef.current;
     if (!w || !h) return null;
+    if (x < 0 || y < 0 || x > w || y > h) return null;
     const c = Math.floor((x / w) * 4);
     const r = Math.floor((y / h) * 4);
     if (c < 0 || c > 3 || r < 0 || r > 3) return null;
+    // Diagonal drags fail without this: sliding centre-to-centre diagonally
+    // clips the corner of an orthogonal neighbour. Only accept the cell when
+    // the finger is near its centre, so corner clips are ignored and the
+    // intended diagonal cell is picked on arrival.
+    const cw = w / 4;
+    const ch = h / 4;
+    const cx = (c + 0.5) * cw;
+    const cy = (r + 0.5) * ch;
+    const dx = (x - cx) / cw;
+    const dy = (y - cy) / ch;
+    if (dx * dx + dy * dy > 0.16) return null;
     return r * 4 + c;
   };
 
   const addToPath = (idx: number) => {
     const cur = selRef.current;
-    if (cur.includes(idx)) return;
+    if (cur.includes(idx)) {
+      // Dragging back onto the previous cell steps back one, so an accidental
+      // orthogonal pickup on the way to a diagonal can be undone mid-drag.
+      if (cur.length >= 2 && idx === cur[cur.length - 2]) {
+        const next = cur.slice(0, -1);
+        selRef.current = next;
+        setSel(next);
+      }
+      return;
+    }
     if (cur.length > 0 && !adjacent(cur[cur.length - 1], idx)) return;
     const next = [...cur, idx];
     selRef.current = next;
@@ -137,7 +164,7 @@ export default function VarnaJaalScreen({ navigation, route }: Props) {
           if (idx != null) addToPath(idx);
         })
         .onFinalize(() => {
-          if (selRef.current.length > 0) check();
+          if (selRef.current.length > 0) checkPath(selRef.current);
         }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [cells, words, found, reduced],

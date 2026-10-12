@@ -1,13 +1,13 @@
 // Privacy policy — a drawer screen, so it carries the hamburger like Progress
-// and Settings. It shows the backend's /privacy page (the page the Play
-// listing links) in a WebView, inside the app.
+// and Settings. It shows https://sanskritam.vedicvalor.com/privacy (the page
+// the Play listing links) in a WebView, inside the app.
 //
 // It used to open in a Custom Tab (expo-web-browser), which on Android goes
 // through a transparent proxy activity. After the hardware back button the
 // app stayed dead to touch until a second back (owner's report, 2026-10-05;
 // the proxy is the suspected cause). A WebView never leaves the app.
 //
-// Pages on our own backend (the policy links /delete-account) open in place,
+// Pages on our legal site (the policy links /delete-account) open in place,
 // and hardware back steps back through them before it leaves the screen.
 // Anything else (the contact email) goes to the phone's own app for it.
 
@@ -19,10 +19,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { WebView } from "react-native-webview";
 
 import { Button } from "../components/ui";
-import { BASE_URL } from "../config";
+import { BASE_URL, LEGAL_BASE_URL, PRIVACY_POLICY_URL } from "../config";
 import { color, font, radius, shadow, space } from "../theme";
 
-const PAGE = `${BASE_URL}/privacy`;
+const PAGE = PRIVACY_POLICY_URL;
 
 export default function PrivacyScreen() {
   const web = useRef<WebView>(null);
@@ -79,7 +79,12 @@ export default function PrivacyScreen() {
             source={{ uri: PAGE }}
             style={styles.web}
             onShouldStartLoadWithRequest={(req) => {
-              if (req.url.startsWith(`${BASE_URL}/`) || req.url === "about:blank") return true;
+              if (
+                req.url.startsWith(`${LEGAL_BASE_URL}/`) ||
+                req.url.startsWith(`${BASE_URL}/`) ||
+                req.url === "about:blank"
+              )
+                return true;
               Linking.openURL(req.url).catch(() => {});
               return false;
             }}

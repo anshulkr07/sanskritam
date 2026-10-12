@@ -25,6 +25,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { cachedGet, peekCache } from "../services/apiCache";
 import { haptics } from "../services/haptics";
 import { playClip, preloadClip, speak } from "../services/speech";
+import { playChantSegment, type SegmentHandle } from "../recite/linePlayback";
 import { SinglePlayback } from "../services/singlePlayback";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
@@ -155,6 +156,8 @@ export default function ShlokaScreen() {
   const playback = useRef(new SinglePlayback()).current;
   const mounted = useRef(true);
   const [playedWord, setPlayedWord] = useState<string | null>(null);
+  const [linePlaying, setLinePlaying] = useState<number | null>(null);
+  const segRef = useRef<SegmentHandle | null>(null);
   const [meaning, setMeaning] = useState<{ hi: string; en: string } | null>(null);
   const [meaningLoading, setMeaningLoading] = useState(false);
   const reduced = useReducedMotion();
@@ -206,9 +209,12 @@ export default function ShlokaScreen() {
     mounted.current = true;
     setSpeaking(false);
     setPlayedWord(null);
+    setLinePlaying(null);
     return () => {
       mounted.current = false;
       playback.stop();
+      try { segRef.current?.stop(); } catch { /* gone */ }
+      segRef.current = null;
     };
   }, [playback]));
 
@@ -217,6 +223,8 @@ export default function ShlokaScreen() {
     haptics.tap();
     setPlayError("");
     setSpeaking(true);
+    setLinePlaying(null);
+    try { segRef.current?.stop(); } catch { /* gone */ }
     try {
       const recording = shloka.chant?.url || shloka.audio_url;
       await playback.play((onComplete, signal) => recording
@@ -243,8 +251,38 @@ export default function ShlokaScreen() {
     }
   }, [playback]);
 
+  // Per-line chant play on the daily card: when the verse has chant lines,
+  // each line plays its own segment (same helper as Learn's listen step).
+  const playLine = useCallback(async (i: number) => {
+    const chant = shloka?.chant;
+    const ln = chant?.lines?.find((l) => l.i === i);
+    if (!chant?.url || !ln || playback.busy) return;
+    haptics.tap();
+    setPlayError("");
+    setLinePlaying(i);
+    try { segRef.current?.stop(); } catch { /* gone */ }
+    try {
+      segRef.current = await playChantSegment(
+        async (u) => {
+          if (u.startsWith("http")) return u;
+          const base = (await import("../config")).BASE_URL;
+          return `${base}${u}`;
+        },
+        chant.url,
+        ln,
+        1,
+      );
+    } catch {
+      if (mounted.current) {
+        setPlayError("Couldn't play that line. Tap to try again.");
+        setLinePlaying(null);
+      }
+    }
+  }, [shloka, playback]);
+
   // Animate verse lines unfurling (splitting on newlines or sentence boundaries)
   const lines = shloka?.devanagari?.split(/\n|।\s*/).filter(Boolean) ?? [];
+  const chantLines = shloka?.chant?.lines?.length ? shloka.chant.lines : null;
 
   if (loading) {
     return (
@@ -314,15 +352,27 @@ export default function ShlokaScreen() {
 
         {/* Verse — unfurling manuscript style */}
         <View style={styles.verseCard}>
-          {lines.map((line, i) => (
-            <AnimatedLine
-              key={i}
-              text={line}
-              index={i}
-              reduced={reduced}
-              onPress={play}
-            />
-          ))}
+          {chantLines
+            ? chantLines.map((ln) => (
+              <AnimatedLine
+                key={ln.i}
+                text={ln.text}
+                index={ln.i}
+                reduced={reduced}
+                active={linePlaying === ln.i}
+                onPress={() => void playLine(ln.i)}
+              />
+            ))
+            : lines.map((line, i) => (
+              <AnimatedLine
+                key={i}
+                text={line}
+                index={i}
+                reduced={reduced}
+                active={false}
+                onPress={play}
+              />
+            ))}
           <Text style={styles.iast}>{shloka.iast}</Text>
           <MetreStrip metre={shloka.metre} />
         </View>
@@ -383,11 +433,13 @@ function AnimatedLine({
   text,
   index,
   reduced,
+  active,
   onPress,
 }: {
   text: string;
   index: number;
   reduced: boolean;
+  active: boolean;
   onPress: () => void;
 }) {
   const opacity = useSharedValue(reduced ? 1 : 0);
@@ -414,10 +466,14 @@ function AnimatedLine({
       <Pressable
         onPress={onPress}
         accessibilityRole="button"
-        accessibilityLabel={`Play verse line. ${text}।`}
+        accessibilityLabel={active ? `Playing verse line. ${text}।` : `Play verse line. ${text}।`}
+        accessibilityState={{ busy: active }}
         style={styles.lineHit}
       >
-        <Text style={[styles.verse, script("bold")]}>{text}।</Text>
+        <View style={styles.lineRow}>
+          <Text style={[styles.verse, script("bold")]}>{text}।</Text>
+          {active && <Ionicons name="volume-high" size={16} color={color.saffron} />}
+        </View>
       </Pressable>
     </Animated.View>
   );
@@ -428,6 +484,7 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   body: { padding: space.lg, paddingBottom: 120 },
   lineHit: { minHeight: 44, justifyContent: "center" },
+  lineRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
   topBtns: { flexDirection: "row", alignItems: "center", gap: 8 },
   learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },

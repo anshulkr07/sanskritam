@@ -78,6 +78,28 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
   // Repeat is read when the verse ends, so switching it on mid-verse counts.
   check(C.afterFinish("verse", list, 2).kind === "repeat", "repeat verse");
   check(C.afterFinish("verse", list, 0).kind === "repeat", "repeat verse, not the next");
+  // Repeat chapter wraps at the end of the chapter to its first chant.
+  check(C.afterFinish("chapter", list, 0).index === 2, "repeat chapter goes on mid-chapter");
+  {
+    const w = C.afterFinish("chapter", list, 2);
+    check(w.kind === "next" && w.index === 0, "repeat chapter wraps to the first chant");
+  }
+  check(C.afterFinish("chapter", [v(false)], 0).kind === "stop", "repeat chapter with no chant stops");
+}
+
+// chantClock: fluid fill + akshara weights.
+{
+  const ln = { i: 0, text: "a", kind: "verse", start_ms: 200, end_ms: 1200 };
+  check(C.lineFill(ln, 0) === 0, "fill before start");
+  check(C.lineFill(ln, 200) === 0, "fill at start");
+  check(C.lineFill(ln, 700) === 0.5, "fill halfway");
+  check(C.lineFill(ln, 1200) === 1, "fill at end");
+  check(C.lineFill(ln, 9999) === 1, "fill past end");
+  check(C.lineFill(undefined, 500) === 0, "fill with no line");
+  check(C.aksharaCount("योगश्चित्तवृत्तिनिरोधः") > 5, "aksharas counted", String(C.aksharaCount("योगश्चित्तवृत्तिनिरोधः")));
+  check(C.aksharaCount("क्षत्रिय") === 3, "conjuncts count once", String(C.aksharaCount("क्षत्रिय")));
+  check(C.aksharaCount("योग") === 2, "vowel signs add none", String(C.aksharaCount("योग")));
+  check(C.aksharaCount("") === 0, "empty counts zero");
 }
 
 // hide: levels.

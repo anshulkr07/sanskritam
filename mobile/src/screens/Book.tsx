@@ -5,32 +5,29 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
+import { setAudioModeAsync } from "expo-audio";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FlatList, Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { RootStackParamList } from "../navigation/types";
-import { api, type Shloka } from "../api/client";
+import type { Shloka } from "../api/client";
 import PageCurlBook from "../components/book/PageCurlBook";
 import BookCover from "../components/book/BookCover";
 import CoverArt from "../components/book/CoverArt";
 import ReaderSlider from "../components/ReaderSlider";
 import ChantList from "../components/chant/ChantList";
 import ChantPlayer, { type RepeatMode } from "../components/chant/ChantPlayer";
-import { ChantController, type PlayerLike } from "../recite/chantController";
-import { useQuery } from "../hooks/useQuery";
+import { useBookPages } from "../hooks/useBookPages";
+import { useChant } from "../hooks/useChant";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { useAsk } from "../ask/AskProvider";
-import { setReadingPosition, setReadingChapter } from "../services/readingProgress";
 import { READER_THEMES, READER_SIZES, type ReaderThemeName } from "./readerTheme";
 import { color, font, sanskritText, script, space } from "../theme";
 import { plain } from "../utils/text";
-import { bookVerses, tierVerses } from "../utils/verses";
-import { isPaged, positionKey } from "../utils/paged";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Book">;
 
@@ -50,7 +47,6 @@ export default function BookScreen({ navigation, route }: Props) {
   const reduced = useReducedMotion();
   const { sized } = useTypeScale();
   const ask = useAsk();
-  const [at, setAt] = useState(index ?? 0);
   const [controls, setControls] = useState(false);
   const [aaOpen, setAaOpen] = useState(false);
   const [themeName, setThemeName] = useState<ReaderThemeName>("light");
@@ -58,13 +54,8 @@ export default function BookScreen({ navigation, route }: Props) {
   const [roman, setRoman] = useState(true);
   const [wordOpen, setWordOpen] = useState(false);
   const [mode, setMode] = useState<ReadMode>(startMode ?? "read");
-  const [playingId, setPlayingId] = useState<string | null>(null);
-  const [lineNow, setLineNow] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [repeat, setRepeat] = useState<RepeatMode>("off");
-  const [speed, setSpeed] = useState(1);
-  const [follow, setFollow] = useState(true);
-  const listRef = useRef<FlatList | null>(null);
+  // Focused previous/current/next view instead of the whole chapter list.
+  const [focus, setFocus] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem(THEME_KEY).then((v) => {
@@ -81,32 +72,8 @@ export default function BookScreen({ navigation, route }: Props) {
   }, []);
 
   // The same queries the Reader's contents page reads, so `index` (a position
-  // in that list) opens the same verse here.
-  const { data: verses } = useQuery("reader-verses", api.listShlokas, { ttlMs: 30 * 60_000 });
-  const { data: canon } = useQuery("canon", api.canon, { ttlMs: 30 * 60_000 });
-  const tier = bookKey.startsWith("graded-") ? parseInt(bookKey.slice("graded-".length), 10) : 0;
-  const { data: tierRows } = useQuery(
-    `reader-tier-${tier}`,
-    () => (tier ? api.readerTier(tier) : Promise.resolve([])),
-  );
-  const pagedText = useMemo(
-    () => (canon?.texts ?? []).find((c) => c.slug === bookKey && isPaged(c)) ?? null,
-    [canon, bookKey],
-  );
-  const pagedChapter = chapter ?? null;
-  const { data: pagedVerses } = useQuery(
-    pagedText && pagedChapter !== null ? `paged-${bookKey}-${pagedChapter}` : "paged-none",
-    () =>
-      pagedText && pagedChapter !== null
-        ? api.canonVerses(bookKey, pagedChapter).then((d) => d.verses)
-        : Promise.resolve(null),
-  );
-
-  const pages: Shloka[] = useMemo(() => {
-    if (tier) return tierVerses(tierRows ?? []);
-    if (pagedText && pagedChapter !== null) return pagedVerses ?? [];
-    return bookVerses(bookKey, verses ?? [], canon?.texts ?? []) ?? [];
-  }, [tier, tierRows, bookKey, verses, canon, pagedText, pagedChapter, pagedVerses]);
+  // in that list) opens the same verse here (shared with Listen).
+  const { pages, pagedText, pagedChapter, title: bookTitle, persistAt } = useBookPages(bookKey, chapter ?? null);
 
   const theme = READER_THEMES[themeName];
   const readerScale = READER_SIZES[sizeStep] ?? 1;
@@ -120,72 +87,49 @@ export default function BookScreen({ navigation, route }: Props) {
     void AsyncStorage.setItem(SIZE_KEY, String(READER_SIZES[i]));
   };
 
-  const verse: Shloka | undefined = pages[at];
-  const onIndexChange = useCallback(
-    (i: number) => {
-      setAt(i);
-      if (pagedText && pagedChapter !== null) {
-        void setReadingPosition(positionKey(bookKey, pagedChapter), i);
-        void setReadingChapter(bookKey, pagedChapter);
-      } else {
-        void setReadingPosition(bookKey, i);
-      }
-    },
-    [bookKey, pagedText, pagedChapter],
-  );
+  // Reading position persists wherever the page goes (read scrub or chant).
 
-  const hasChant = useMemo(() => pages.some((p) => !!p.chant), [pages]);
+  // Chant mode player wiring, shared with the Listen screen.
+  const navigate = useCallback(
+    (r: string, p?: object) =>
+      (navigation as never as { navigate: (rr: string, pp?: object) => void }).navigate(r, p),
+    [navigation],
+  );
+  const {
+    at,
+    setAt,
+    verse,
+    playingVerse,
+    playingAt,
+    playingId,
+    lineNow,
+    fillFrac,
+    isPlaying,
+    repeat,
+    speed,
+    follow,
+    setFollow,
+    listRef,
+    hasChant,
+    pick,
+    pickLine,
+    toggle,
+    step,
+    stop,
+    cycleRepeat,
+    cycleSpeed,
+    scrollToCurrent,
+    openLearn,
+  } = useChant(pages, bookTitle, { initialIndex: index ?? 0, navigate, onAt: persistAt, scrollToList: !focus });
+
   const saveMode = (m: ReadMode) => {
     setMode(m);
     void AsyncStorage.setItem(MODE_KEY, m);
     if (m === "read") {
+      stop();
       try { void setAudioModeAsync({ playsInSilentMode: true }); } catch { /* keep */ }
     }
   };
-
-  // The newest values for the player, which outlives any one render: a verse
-  // that ends starts the next one, and must see the Repeat, speed and Follow
-  // chosen since it began. The playing itself is src/recite/chantController.ts.
-  const live = useRef({ repeat, speed, follow, reduced, pages, title: bookKey });
-  live.current = {
-    repeat,
-    speed,
-    follow,
-    reduced,
-    pages,
-    title: plain((canon?.texts ?? []).find((c) => c.slug === bookKey)?.title_en ?? bookKey),
-  };
-  const baseUrl = useRef("");
-  const chantRef = useRef<ChantController | null>(null);
-  if (chantRef.current === null) {
-    chantRef.current = new ChantController({
-      ready: async () => {
-        if (!baseUrl.current) baseUrl.current = (await import("../config")).BASE_URL;
-      },
-      resolve: (u) => (u.startsWith("http") ? u : `${baseUrl.current}${u}`),
-      createPlayer: (url) => createAudioPlayer(url, { updateInterval: 100 }) as unknown as PlayerLike,
-      prepareAudio: () =>
-        setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }),
-      pages: () => live.current.pages,
-      repeat: () => live.current.repeat,
-      speed: () => live.current.speed,
-      follow: () => live.current.follow,
-      bookTitle: () => live.current.title,
-      setTimer: (fn, ms) => setTimeout(fn, ms),
-      clearTimer: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
-      onVerse: (idx, id) => {
-        setPlayingId(id);
-        if (idx >= 0) setAt(idx);
-      },
-      onLine: setLineNow,
-      onPlaying: setIsPlaying,
-      // A card the list has not drawn yet is ChantList's onScrollToIndexFailed to scroll to.
-      scrollTo: (idx) =>
-        listRef.current?.scrollToIndex({ index: idx, viewPosition: 0.3, animated: !live.current.reduced }),
-    });
-  }
-  const chant = chantRef.current;
-  useEffect(() => () => chant.dispose(), [chant]);
 
   // Chant mode is only on in a book that has a chant. The saved choice stays
   // as it is, so the Gītā opens in Chant again, but a book with none must not
@@ -213,24 +157,17 @@ export default function BookScreen({ navigation, route }: Props) {
           verses={pages}
           playingId={playingId}
           lineNow={lineNow}
+          fillFrac={fillFrac}
           pageColor={theme.page}
           textColor={theme.text}
           softColor={theme.soft}
           roman={roman}
-          onPick={(v) => {
-            const i = pages.findIndex((p) => p.id === v.id);
-            if (i >= 0) void chant.start(i);
-          }}
-          onPickLine={(v, ln) => {
-            const i = pages.findIndex((p) => p.id === v.id);
-            const start = v.chant?.lines.find((l) => l.i === ln)?.start_ms ?? 0;
-            if (i >= 0) void chant.start(i, start);
-          }}
+          focusIndex={focus ? playingAt : null}
+          onPick={pick}
+          onPickLine={pickLine}
           onLearn={(v) => {
-            chant.stop();
-            (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
-              verseUid: v.verse_uid ?? v.id, start: "listen",
-            });
+            stop();
+            navigate("Recite", { verseUid: v.verse_uid ?? v.id, start: "listen" });
           }}
           listRef={listRef}
           onUserScroll={() => setFollow(false)}
@@ -239,7 +176,7 @@ export default function BookScreen({ navigation, route }: Props) {
         <PageCurlBook
           index={at}
           count={Math.max(1, pages.length)}
-          onIndexChange={onIndexChange}
+          onIndexChange={setAt}
           reducedMotion={reduced}
           renderPage={(i) => (
             <ReaderPageView
@@ -284,7 +221,6 @@ export default function BookScreen({ navigation, route }: Props) {
                     if (m === "read" && playingId) {
                       const i = pages.findIndex((p) => p.id === playingId);
                       if (i >= 0) setAt(i);
-                      chant.stop();
                     }
                     saveMode(m);
                   }}
@@ -316,41 +252,33 @@ export default function BookScreen({ navigation, route }: Props) {
       )}
       {controls && (
         <View style={[styles.bottomBar, { backgroundColor: theme.bar, paddingBottom: insets.bottom }]}>
-          <ReaderSlider index={at} count={pages.length} labelFor={(i) => pages[i]?.source_ref ?? `Page ${i + 1}`} onScrubEnd={onIndexChange} />
+          <ReaderSlider index={at} count={pages.length} labelFor={(i) => pages[i]?.source_ref ?? `Page ${i + 1}`} onScrubEnd={setAt} />
           <Text style={[styles.posText, { color: theme.soft }]}>{`${at + 1} of ${pages.length}`}</Text>
         </View>
       )}
       {chantOn && (
         <View style={[styles.playerWrap, { backgroundColor: theme.page }]}>
           <ChantPlayer
-            onPrev={() => chant.step(-1, at)}
-            onToggle={() => chant.toggle(at)}
+            onPrev={() => step(-1)}
+            onToggle={toggle}
             playing={isPlaying}
-            onNext={() => chant.step(1, at)}
+            onNext={() => step(1)}
             repeat={repeat}
-            onRepeat={() => setRepeat((r) => (r === "off" ? "verse" : "off"))}
+            onRepeat={cycleRepeat}
             speed={speed}
-            onSpeed={() => {
-              const next = speed === 1 ? 1.25 : speed === 1.25 ? 0.75 : 1;
-              setSpeed(next);
-              chant.setSpeed(next);
+            onSpeed={cycleSpeed}
+            onLearn={openLearn}
+            onListen={() => {
+              navigate("Listen", { bookKey, chapter: pagedChapter ?? undefined, index: playingAt });
             }}
-            onLearn={() => {
-              const v = pages.find((p) => p.id === playingId) ?? verse;
-              if (v) {
-                chant.stop();
-                (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
-                  verseUid: v.verse_uid ?? v.id, start: "listen",
-                });
-              }
-            }}
+            verseRef={playingVerse?.source_ref}
+            position={pages.length ? `${playingAt + 1} of ${pages.length}` : undefined}
+            focus={focus}
+            onFocus={() => setFocus((f) => !f)}
             follow={follow}
             onFollow={() => {
               setFollow(true);
-              const cur = pages.findIndex((p) => p.id === playingId);
-              if (cur >= 0) {
-                try { listRef.current?.scrollToIndex({ index: cur, viewPosition: 0.3, animated: !reduced }); } catch { /* keep */ }
-              }
+              scrollToCurrent();
             }}
           />
         </View>

@@ -104,7 +104,10 @@ export async function ensurePermission(): Promise<boolean> {
 }
 
 /** Reschedule ours (tagged data.parva) whenever the cache refreshes. At most 30. */
-export async function rescheduleFromCalendar(cal: ParvaCalendar | null): Promise<void> {
+export async function rescheduleFromCalendar(
+  cal: ParvaCalendar | null,
+  opts?: { tradition?: string; tz?: string },
+): Promise<void> {
   const N = notif();
   if (!N || !("scheduleNotificationAsync" in N)) {
     await markUnavailable();
@@ -129,25 +132,49 @@ export async function rescheduleFromCalendar(cal: ParvaCalendar | null): Promise
     } catch {
       /* listing failed: still try to add */
     }
-    const items: { at: Date; title: string; body: string }[] = [];
+    const items: { at: Date; title: string; body: string; data: Record<string, unknown> }[] = [];
+    const seen = new Set<string>();
     for (const o of cal?.occurrences ?? []) {
       if (!followed.has(o.slug) || !o.date) continue;
-      const d = new Date(`${o.date}T00:00:00`);
-      if (Number.isNaN(d.getTime())) continue;
-      // Evening before at 19:00.
-      const eve = new Date(d);
-      eve.setDate(eve.getDate() - 1);
-      eve.setHours(19, 0, 0, 0);
-      if (eve.getTime() > Date.now()) {
-        items.push({ at: eve, title: o.title, body: t("parva.reminderEvening", { title: o.title }) });
+      // Series: one reminder per dated day still in the future; single days:
+      // one evening reminder. Identity includes the exact day so reschedules
+      // never duplicate and taps open the right day.
+      const days: string[] = o.day?.length ? o.day.map((d) => d.date) : [o.date];
+      for (const dayDate of days) {
+        const id = `${o.slug}|${o.variant}|${o.date}|${dayDate}`;
+        if (seen.has(id)) continue;
+        seen.add(id);
+        const d = new Date(`${dayDate}T00:00:00`);
+        if (Number.isNaN(d.getTime())) continue;
+        // Evening before at 19:00.
+        const eve = new Date(d);
+        eve.setDate(eve.getDate() - 1);
+        eve.setHours(19, 0, 0, 0);
+        if (eve.getTime() > Date.now()) {
+          items.push({
+            at: eve,
+            title: o.title,
+            body: t("parva.reminderEvening", { title: o.title }),
+            data: { parva: true, slug: o.slug, variant: o.variant, date: o.date, dayDate, tradition: opts?.tradition ?? "", tz: opts?.tz ?? "" },
+          });
+        }
       }
-      // Ekadashi parana start.
+      // Ekadashi parana start (occurrence-specific, future only).
       if (o.slug === "ekadashi") {
         const par = (o.times ?? []).find((x) => x.key === "parana" && x.start);
         if (par?.start) {
           const at = new Date(par.start);
           if (!Number.isNaN(at.getTime()) && at.getTime() > Date.now()) {
-            items.push({ at, title: o.title, body: t("parva.reminderParana", { title: o.title }) });
+            const id = `${o.slug}|${o.variant}|${o.date}|parana`;
+            if (!seen.has(id)) {
+              seen.add(id);
+              items.push({
+                at,
+                title: o.title,
+                body: t("parva.reminderParana", { title: o.title }),
+                data: { parva: true, slug: o.slug, variant: o.variant, date: o.date, tradition: opts?.tradition ?? "", tz: opts?.tz ?? "" },
+              });
+            }
           }
         }
       }
@@ -157,7 +184,7 @@ export async function rescheduleFromCalendar(cal: ParvaCalendar | null): Promise
     for (const it of items.slice(0, 30)) {
       try {
         await N.scheduleNotificationAsync({
-          content: { title: it.title, body: it.body, data: { parva: true } },
+          content: { title: it.title, body: it.body, data: it.data },
           // Inexact date trigger; no exact alarm permission needed.
           trigger: { type: "date", date: it.at } as never,
         });
