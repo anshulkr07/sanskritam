@@ -30,6 +30,22 @@ icons
 # vidyut-data is downloaded fresh at build time (baked into image)
 backend/vidyut-data
 
+# Render output and media the image never uses. The Dockerfile COPYs only
+# backend/requirements.txt, backend/app, backend/migrations, backend/alembic.ini
+# and frontend/ — nothing here. Without these, `--source=.` tars ~780 MB of
+# render output (results/ 371 MB + chant_runs/ 399 MB) and the upload hangs.
+results
+chant_runs
+gpu
+gpu_jobs
+storage
+deploy
+Claude outputs
+*.rar
+*.zip
+*.wav
+*.mp3
+
 # Never bake secrets
 .env
 .env.local
