@@ -38,8 +38,9 @@ assert.ok(!model.releasedLessons(extended).some(l=>['staged','parked'].includes(
 assert.ok(model.releasedLessons(extended).some(l=>l.id==='future'),'new server lessons remain available to search and the complete course');
 assert.equal(model.searchLearning(' VISARGA ',units,[]).lessons[0].feature_id,'VISARGA-SANDHI');
 assert.equal(model.searchLearning('पठति',units,[]).cards[0].id,'verbs-number');
+assert.equal(model.searchLearning('sandhi',units,[]).cards.length,6,'search includes all card lessons in the Sandhi course');
 assert.equal(model.searchLearning('',units,[]).lessons.length,0);
-const topic={id:'test',title:{en:'Caf\u00e9',hi:'स्वर'},title_sa:'स्वर',title_iast:'svara',summary:{en:'Sounds',hi:'ध्वनियाँ'}};
+const topic={id:'test',chapter_id:'sounds',title:{en:'Caf\u00e9',hi:'स्वर'},title_sa:'स्वर',title_iast:'svara',summary:{en:'Sounds',hi:'ध्वनियाँ'}};
 assert.equal(model.searchLearning('Cafe\u0301',[],[topic]).topics[0].id,'test','search normalizes Unicode');
 const app=fs.readFileSync(path.join(root,'App.tsx'),'utf8');
 const tabs=fs.readFileSync(path.join(root,'src/navigation/MainTabs.tsx'),'utf8');

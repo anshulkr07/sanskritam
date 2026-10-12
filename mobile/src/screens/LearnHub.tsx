@@ -108,7 +108,7 @@ export default function LearnHubScreen({navigation}:TabScreenProps<"Learn">){
           const cards=chapterCards(chapter.id).length;
           return <LearningRow key={chapter.id} title={t(chapter.title)} artwork={hubArtwork(`grammar:${chapter.id}`)}
             subtitle={section==="reference"?text(`${topicCount} topics · ${readCount} read`,`${topicCount} विषय · ${readCount} पढ़े`):
-              text(`${topicCount} reading topics${count?` · ${count} assessed lessons`:""}${cards?` · ${cards} card lessons`:""}`,`${topicCount} पठन विषय${count?` · ${count} मूल्यांकित पाठ`:""}${cards?` · ${cards} कार्ड पाठ`:""}`)}
+              text(`${topicCount} reading topics${count?` · ${count} assessed lesson${count===1?"":"s"}`:""}${cards?` · ${cards} card lesson${cards===1?"":"s"}`:""}`,`${topicCount} पठन विषय${count?` · ${count} मूल्यांकित पाठ`:""}${cards?` · ${cards} कार्ड पाठ`:""}`)}
             onPress={()=>section==="reference"?navigation.navigate("GrammarChapter",{chapterId:chapter.id}):navigation.navigate("LearnChapter",{chapterId:chapter.id})}/>;
         })}
       </>}

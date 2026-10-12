@@ -1,5 +1,7 @@
 # Codex image generation result
 
+Navigation/content integration update: [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md) records the locally implemented single Learn destination. This image report still describes three generated PNG deliveries, not a completed whole-course image set.
+
 Current whole-course estimate and audit: [WHOLE-COURSE-AUDIT.md](WHOLE-COURSE-AUDIT.md), with all source IDs in [whole-course-inventory.json](whole-course-inventory.json). The estimate is 18 sections, 156–187 guided lessons plus five reference sheets, 186–262 scene illustrations before contingency (budget about 200–300), and 200–299 native/vector diagrams. These are planning estimates, not generated assets.
 
 Generated 12 October 2026 after the owner's explicit instruction to start. Built-in Codex Image Generation was used, with `verbs-card-1.png` from the existing prototype as the style reference. Three 1536 × 1024 reading scenes are in `mobile/assets/learn-v2/`.

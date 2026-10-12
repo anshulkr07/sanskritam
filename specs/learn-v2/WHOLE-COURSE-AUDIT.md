@@ -2,6 +2,8 @@
 
 Audited 12 October 2026 against local source, manifests and image files. This is a planning estimate and implementation audit, not a claim of deployment, full Sanskrit re-verification or completed image generation. The owner's later instructions authorize images for the whole curriculum and allow pens/pencils; they supersede the initial generation hold and the writing-tool exclusion in request revision 1.
 
+Later implementation on 12 October: the owner authorized consolidation. The five-tab navigation and unified Learn catalogue are implemented locally; see [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md). The lesson/image estimates below remain estimates for the new teaching format. All existing assessed lessons and reference topics remain accessible.
+
 ## Exact existing inventory
 
 | Source | Sections | Lessons/topics | Present state |
@@ -75,7 +77,7 @@ Implementation sequence:
 4. Adapt the remaining chapters and author verified card-level image requests; generate/inspect the full image set in tracked batches.
 5. Retire duplicate presentations only once their outcomes, references and assessments are covered. Retain source provenance and compatible old IDs.
 
-This audit prepares the consolidation; it does not claim a completed tab or progress migration.
+The navigation consolidation is now implemented locally. Existing progress IDs/stores are read directly, so no destructive progress migration was needed. Full new-format content replacement and the whole image set are still pending.
 
 ## Rectifications made and validation
 

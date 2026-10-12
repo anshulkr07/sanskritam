@@ -24,7 +24,7 @@ function load(file){
   if(name.endsWith('/learnv2/progress'))return {getLearnV2LastLesson:async()=>null,loadLearnV2DoneMap:async()=>({})};
   if(!name.startsWith('.'))return require(name);
   let abs=path.resolve(path.dirname(file),name);
-  if(abs.endsWith('.webp'))return {uri:'../../'+path.relative(path.dirname(root),abs).replaceAll('\\','/'),width:600,height:750};
+  if(abs.endsWith('.webp'))return {uri:'data:image/webp;base64,'+fs.readFileSync(abs).toString('base64'),width:600,height:750};
   abs=[abs,abs+'.ts',abs+'.tsx'].find(f=>fs.existsSync(f)&&fs.statSync(f).isFile());
   if(!abs)throw new Error(name);
   return load(abs);
@@ -57,3 +57,4 @@ for(const weight of ['400Regular','500Medium','600SemiBold','700Bold','800ExtraB
 fonts+=`@font-face{font-family:TiroDevanagariSanskrit_400Regular;src:url(data:font/ttf;base64,${fs.readFileSync(path.join(root,'node_modules/@expo-google-fonts/tiro-devanagari-sanskrit/400Regular/TiroDevanagariSanskrit_400Regular.ttf')).toString('base64')})}`;
 const html=`<!doctype html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unified Learn QA</title><style>${fonts}${RN.StyleSheet.getSheet().textContent}body{margin:20px;background:#fff8ee;font-family:sans-serif}.gallery{display:flex;flex-wrap:wrap;gap:24px;align-items:start}.phone{display:flex;height:800px;border:1px solid #efe3ce;border-radius:16px;overflow:hidden}h2{font-size:18px;max-width:320px}</style><body><h1>Unified Learn</h1><p>Production screens rendered with read-only curriculum, language and text-size fixtures. No native runtime or live backend behavior is claimed.</p><div class="gallery">${phones}</div></body></html>`;
 const out=path.join(root,'../specs/learn-v2/unified-learn-qa.html');fs.writeFileSync(out,html);console.log(out);
+

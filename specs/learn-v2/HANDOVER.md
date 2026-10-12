@@ -4,6 +4,8 @@ Prepared 12 October 2026, Asia/Calcutta. Workspace: `C:/Users/AnshulKumar/Pychar
 
 ## Owner's later scope amendment — 12 October 2026
 
+The subsequent “lets implement it then” instruction authorizes combining Path and Grammar under Learn. The unified entry and five-tab navigation are now implemented locally; see [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md). Earlier instructions below to retain separate visible tabs describe the original comparison build and are superseded. Keep existing assessment/reference routes, source content and progress accessible during the full content/image expansion.
+
 The owner has explicitly started image generation for the whole learning curriculum, including Path/Grammar foundations and advanced topics as well as Sandhi and Verse & Rhythm. The initial generation hold and slice-only reading below are superseded. Pens and pencils are allowed. Codex inspects results and regenerates failures without asking the owner to perform manual QA. Read [WHOLE-COURSE-AUDIT.md](WHOLE-COURSE-AUDIT.md) and [whole-course-inventory.json](whole-course-inventory.json) for the full scope, estimates, current progress and proposed unified Learn destination. The current three ready requests are only the first batch. The original comparison build remains the historical rationale for separate tabs; the owner is now evaluating consolidation. Do not interpret the seven-lesson Learn catalogue as a complete replacement for existing content or assessed practice.
 
 ## Owner's instructions and objective

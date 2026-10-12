@@ -30,7 +30,7 @@ export function searchLearning(query: string, units: Unit[], topics: GuideTopicS
   const matches = (...texts: string[]) => texts.some((text) => text.normalize("NFC").toLowerCase().includes(needle));
   return {
     lessons: needle ? releasedLessons(units).filter((lesson) => matches(lesson.title_en, lesson.title_hi, lesson.feature_id)) : [],
-    topics: needle ? topics.filter((topic) => matches(topic.title.en, topic.title.hi, topic.title_sa, topic.title_iast, topic.summary.en, topic.summary.hi)) : [],
-    cards: needle ? LEARNV2_LESSONS.filter((lesson) => matches(lesson.title.en, lesson.title.hi, lesson.titleSa, lesson.titleIast)) : [],
+    topics: needle ? topics.filter((topic) => matches(topic.id, topic.chapter_id, topic.title.en, topic.title.hi, topic.title_sa, topic.title_iast, topic.summary.en, topic.summary.hi)) : [],
+    cards: needle ? LEARNV2_LESSONS.filter((lesson) => matches(lesson.id, lesson.title.en, lesson.title.hi, lesson.titleSa, lesson.titleIast, lesson.unit.en, lesson.unit.hi, lesson.outcome.en, lesson.outcome.hi)) : [],
   };
 }

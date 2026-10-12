@@ -1,5 +1,7 @@
 # Learn v2 — coverage map (Muse Spark, 12 Oct 2026)
 
+> Later implementation: Path and Grammar are combined under the new Learn entry with Course / Reference / Practice and five bottom tabs. All 49 assessed lessons and 105 reference topics remain accessible. See [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md). Seven lessons / 62 cards below describe the new card format only; the original additive-navigation statements below are historical.
+
 > Current audit correction, 12 October: the owner has authorized images across the whole learning curriculum. See [WHOLE-COURSE-AUDIT.md](WHOLE-COURSE-AUDIT.md). The seven lessons / 62 cards below remain the exact live local catalogue. Three generated PNGs have been delivered, but the app currently uses three different prototype JPG illustrations; these are not PNG derivatives. Their baked captions are clipped out by the corrected renderer and replaced with verified native text. References below to a generation hold, photos, or no Codex delivery are historical wording superseded by this audit. Pens and pencils are allowed.
 
 Workspace: `C:/Users/AnshulKumar/PycharmProjects/sanskrit`.
