@@ -96,18 +96,22 @@ export default function ParvaStrip() {
     const unsubPrefs = subscribeKalaPrefs(() => void load());
     const unsubLang = subscribeLang(() => void load());
     // Day rollover while open: re-rank every minute on the minute.
-    const now = new Date();
-    const msToMinute = 60000 - (now.getTime() % 60000) + 50;
-    const startTimer = setTimeout(() => {
-      void load();
-      const iv = setInterval(() => void load(), 60000);
-      (startTimer as unknown as { iv?: unknown }).iv = iv;
-    }, msToMinute);
+    // Android returns a number for setTimeout — keep the handle free of any
+    // metadata. Attaching an interval handle to it here (startTimer.iv)
+    // destroyed the UI at the first minute tick, exactly like useToday.ts.
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      timer = setTimeout(() => {
+        void load();
+        schedule();
+      }, 60000 - (Date.now() % 60000) + 50);
+    };
+    schedule();
     const sub = AppState.addEventListener("change", (state) => {
       if (state === "active") void load();
     });
     return () => {
-      clearTimeout(startTimer);
+      clearTimeout(timer);
       sub.remove();
       unsubPrefs();
       unsubLang();

@@ -3,8 +3,11 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
+const here = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
 const js = ts.transpileModule(
@@ -105,3 +108,22 @@ assert.equal(hidden.timers.size, 0, "no ticking off-screen");
 assert.equal(hidden.hasListener(), false);
 assert.equal(hidden.ticks.length, 0);
 console.log("Calendar timer passes: numeric handles, three minute boundaries, resume and cleanup.");
+
+// Static whole-src guard for the class of bug above: attaching metadata
+// (`.iv`) to an Android timer handle. useToday.ts was the first place found
+// (2026-10-12); ParvaStrip.tsx reintroduced the same `.iv = iv` idiom and only
+// a source-wide scan catches it, so drive every timer through a numeric handle
+// free of any extra property.
+import { readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
+const SRC = resolve(here, "../src");
+const IV_ASSIGN = /\.iv\s*=/;
+const offenders = [];
+(function walk(dir) {
+  for (const e of readdirSync(dir)) {
+    const p = join(dir, e);
+    if (statSync(p).isDirectory()) walk(p);
+    else if (/\.(ts|tsx)$/.test(p) && IV_ASSIGN.test(readFileSync(p, "utf8"))) offenders.push(p);
+  }
+})(SRC);
+assert.deepEqual(offenders, [], "no .iv metadata attached to any timer handle anywhere in src/" + (offenders.length ? " -> " + offenders.join(", ") : ""));
