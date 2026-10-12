@@ -2,6 +2,10 @@
 
 Prepared 12 October 2026, Asia/Calcutta. Workspace: `C:/Users/AnshulKumar/PycharmProjects/sanskrit`.
 
+## Latest image handover — 13 October 2026
+
+All current concrete scene generation queues are complete: **203 saved teaching deliveries** (141 Grammar/foundations, 35 Sandhi, 24 Verse & Rhythm, three original reading images). See [CODEX-RESULT.md](CODEX-RESULT.md) and [image-delivery-index.json](image-delivery-index.json). The final 59 images skipped visual review at the owner's explicit request; older instructions requiring inspection are superseded for this batch. App integration and checked native captions remain pending; precise formulas/metre diagrams remain native/vector work. Earlier three-ready-image counts below are historical.
+
 ## Owner's later scope amendment — 12 October 2026
 
 The subsequent “lets implement it then” instruction authorizes combining Path and Grammar under Learn. The unified entry and five-tab navigation are now implemented locally; see [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md). Earlier instructions below to retain separate visible tabs describe the original comparison build and are superseded. Keep existing assessment/reference routes, source content and progress accessible during the full content/image expansion.

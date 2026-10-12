@@ -1,5 +1,17 @@
 # Codex image generation result
 
+## Completed image production — 13 October 2026
+
+**203 teaching images are generated and saved:** 141 Grammar/foundations scenes, 35 Sandhi scenes, 24 Verse & Rhythm scenes, and the original three reading PNGs. All 200 jobs in `image-production-queue.json` and `manuscript-image-production-queue.json` have ready delivery records; no queued scene jobs remain. All recorded project files exist.
+
+The 200 new scenes are 1536 × 1024 WebP exports in `mobile/assets/learn-v2/`; original generated PNGs are preserved. Pens and pencils are allowed. Prompts, exact source references, captions, dimensions and hashes are recorded in `requests.jsonl`, `deliveries.jsonl`, and [image-delivery-index.json](image-delivery-index.json).
+
+The 141 Grammar scenes and original three reading images were previously visually reviewed. The final 59 Sandhi/Verse images were generated without visual review following the owner's explicit “No need to review the images now” instruction. Their records say `waived_by_owner`; they must not be described as reviewed.
+
+This completes the current source-derived concrete scene generation queues. It does not certify artwork for every lesson or complete the planned native/vector diagrams. Generated deliveries still need app mapping and checked native captions; this report does not claim app integration. Verse contextual scenes intentionally have no invented Sanskrit labels. Sandhi scenery illustrates meaning; native formulas must explain the sound rule.
+
+The sections below document the earlier three-image delivery and 12 October audit and are historical; their image-production counts are superseded by this update.
+
 Navigation/content integration update: [UNIFIED-LEARN-RESULT.md](UNIFIED-LEARN-RESULT.md) records the locally implemented single Learn destination. This image report still describes three generated PNG deliveries, not a completed whole-course image set.
 
 Current whole-course estimate and audit: [WHOLE-COURSE-AUDIT.md](WHOLE-COURSE-AUDIT.md), with all source IDs in [whole-course-inventory.json](whole-course-inventory.json). The estimate is 18 sections, 156–187 guided lessons plus five reference sheets, 186–262 scene illustrations before contingency (budget about 200–300), and 200–299 native/vector diagrams. These are planning estimates, not generated assets.
