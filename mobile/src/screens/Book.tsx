@@ -103,10 +103,13 @@ export default function BookScreen({ navigation, route }: Props) {
     playingAt,
     playingId,
     lineNow,
+    wordNow,
     fillFrac,
     isPlaying,
     repeat,
     speed,
+    autoplay,
+    cycleAutoplay,
     follow,
     setFollow,
     listRef,
@@ -157,6 +160,7 @@ export default function BookScreen({ navigation, route }: Props) {
           verses={pages}
           playingId={playingId}
           lineNow={lineNow}
+          wordNow={wordNow}
           fillFrac={fillFrac}
           pageColor={theme.page}
           textColor={theme.text}
@@ -267,6 +271,8 @@ export default function BookScreen({ navigation, route }: Props) {
             onRepeat={cycleRepeat}
             speed={speed}
             onSpeed={cycleSpeed}
+            autoplay={autoplay}
+            onAutoplay={cycleAutoplay}
             onLearn={openLearn}
             onListen={() => {
               navigate("Listen", { bookKey, chapter: pagedChapter ?? undefined, index: playingAt });

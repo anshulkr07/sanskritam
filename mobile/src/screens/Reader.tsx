@@ -34,6 +34,7 @@
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   BackHandler,
@@ -71,6 +72,7 @@ import {
   setReadingPosition,
   setReadingChapter,
 } from "../services/readingProgress";
+import { getLastListen, type ListenPosition } from "../services/audioProgress";
 import {
   firstLine,
   groupByBook,
@@ -94,6 +96,10 @@ const TIERS = [
 const ALL_KEY = "all";
 const OTHER_KEY = "other";
 const gradedKey = (tier: number) => `graded-${tier}`;
+const MEDIA_KEY = "shabd.read.media";
+
+/** The Read tab's two shelves: paper books and audio books. */
+type Media = "books" | "audio";
 
 interface OpenBook {
   key: string;
@@ -131,6 +137,10 @@ export default function ReaderScreen() {
   const [pagedIndex, setPagedIndex] = useState(0);
   // Restored "continue" rows: { [bookKey]: index }.
   const [positions, setPositions] = useState<Record<string, number>>({});
+  // Which shelf is showing: paper books or audio books (remembered).
+  const [media, setMediaState] = useState<Media>("books");
+  // The most recent listen, for the Audio shelf's Continue card.
+  const [lastListen, setLastListen] = useState<{ bookKey: string; pos: ListenPosition } | null>(null);
   const navigation = useNavigation();
   const reading = bookKey !== null && (pageIndex !== null || pagedChapter !== null);
   // "This screen" in Ask reads what is registered here plus on-device OCR.
@@ -189,6 +199,24 @@ export default function ReaderScreen() {
   useEffect(() => {
     if (bookKey === null) getReadingPositions().then(setPositions).catch(() => {});
   }, [bookKey]);
+
+  // The shelf choice is remembered; the audio shelf's Continue card refreshes
+  // whenever the shelf shows.
+  useEffect(() => {
+    AsyncStorage.getItem(MEDIA_KEY)
+      .then((v) => v === "audio" && setMediaState("audio"))
+      .catch(() => {});
+  }, []);
+  useEffect(() => {
+    if (bookKey !== null) return;
+    getLastListen().then(setLastListen).catch(() => {});
+  }, [bookKey, media]);
+
+  const setMedia = useCallback((m: Media) => {
+    haptics.tap();
+    setMediaState(m);
+    AsyncStorage.setItem(MEDIA_KEY, m).catch(() => {});
+  }, []);
 
   const bookOf = useMemo(() => makeBookOf(canon), [canon]);
   const groups = useMemo(
@@ -545,19 +573,47 @@ export default function ReaderScreen() {
   }
 
   // ── SHELF posture ────────────────────────────────────────────────
+  // Two shelves under one tab: Books (paper, as ever) and Audio (books with
+  // a voice), switched by the pill in the header.
+  const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+  if (media === "audio") {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <AudioShelf
+          header={
+            <>
+              <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
+              <MediaSwitch value="audio" onChange={setMedia} />
+              {lastListen && (
+                <ContinueListening
+                  bookKey={lastListen.bookKey}
+                  pos={lastListen.pos}
+                  groups={groups}
+                  onResume={(key, index, chapter) => nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })}
+                />
+              )}
+            </>
+          }
+          groups={groups}
+          canon={canon}
+          onListen={(key, index) => nav.navigate("Listen", { bookKey: key, index })}
+        />
+      </SafeAreaView>
+    );
+  }
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <ShelfRails
         header={
           <>
             <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
+            <MediaSwitch value="books" onChange={setMedia} />
             <ContinueBlock
               groups={groups}
               allCount={allVerses.length}
               positions={positions}
               onResume={(key, at) => {
                 const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
-                const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
                 nav.navigate("Book", { bookKey: key, index: safe });
               }}
             />
@@ -686,6 +742,174 @@ function ShelfRails({
         </View>
       )}
     />
+  );
+}
+
+// The Books | Audio pill at the top of the Read tab.
+function MediaSwitch({ value, onChange }: { value: Media; onChange: (m: Media) => void }) {
+  const seg = (m: Media, icon: string, label: string) => {
+    const on = value === m;
+    return (
+      <Pressable
+        onPress={() => onChange(m)}
+        accessibilityRole="tab"
+        accessibilityState={{ selected: on }}
+        accessibilityLabel={label}
+        style={[styles.mediaSeg, on && styles.mediaSegOn]}
+      >
+        <Ionicons name={icon as never} size={15} color={on ? "#FFF8EE" : color.inkSoft} />
+        <Text style={[styles.mediaSegText, on && styles.mediaSegTextOn]}>{label}</Text>
+      </Pressable>
+    );
+  };
+  return (
+    <View style={styles.mediaSwitch} accessibilityRole="tablist">
+      {seg("books", "book", "Books")}
+      {seg("audio", "headphones", "Audio")}
+    </View>
+  );
+}
+
+// ─── Audio shelf ─────────────────────────────────────────────────────
+// The same canon as books, filtered to what has a voice: a Continue
+// listening card, then rails of audio-capable books (voiced of total,
+// honest about partial coverage). Paged books stay out until their chapter
+// audio can be counted client-side.
+
+function AudioShelf({
+  header,
+  groups,
+  canon,
+  onListen,
+}: {
+  header: React.ReactElement;
+  groups: { text: CanonText | null; verses: Shloka[] }[];
+  canon: CanonText[];
+  onListen: (key: string, index: number) => void;
+}) {
+  const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
+  const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
+  const rails = RAIL_DEFS.map((r) => ({
+    title: r.title,
+    books: r.slugs
+      .filter((slug) => !slug.startsWith("graded-"))
+      .map((slug) => {
+        const g = bySlug.get(slug);
+        const c = canonBySlug.get(slug);
+        return {
+          key: slug,
+          titleSa: g?.text?.title_sa ?? c?.title_sa ?? slug,
+          titleEn: plain(g?.text?.title_en ?? c?.title_en ?? slug),
+          voiced: g ? g.verses.filter((v) => !!v.chant).length : 0,
+          total: g?.verses.length ?? c?.verses_imported ?? 0,
+          locked: c?.locked ?? false,
+        };
+      })
+      .filter((b) => b.voiced > 0),
+  })).filter((r) => r.books.length > 0);
+
+  return (
+    <FlatList
+      data={rails}
+      keyExtractor={(rail) => rail.title}
+      contentContainerStyle={styles.body}
+      ListHeaderComponent={header}
+      ListEmptyComponent={
+        <View style={styles.center}>
+          <EmptyState title="No audio books yet." hint="Books with a chant will appear here." />
+        </View>
+      }
+      initialNumToRender={2}
+      maxToRenderPerBatch={2}
+      windowSize={3}
+      renderItem={({ item: rail }) => (
+        <View style={{ marginBottom: 16 }}>
+          <Text style={styles.sectionTitle}>{rail.title}</Text>
+          <FlatList
+            horizontal
+            data={rail.books}
+            keyExtractor={(b) => b.key}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ gap: 12, paddingVertical: 4 }}
+            initialNumToRender={3}
+            maxToRenderPerBatch={3}
+            windowSize={3}
+            getItemLayout={(_, index) => ({ length: 116, offset: 116 * index, index })}
+            renderItem={({ item: b }) => {
+              const partial = b.voiced < b.total;
+              const label = `${b.titleEn}. ${b.voiced} of ${b.total} verses voiced.${b.locked ? " Plus." : ""}`;
+              return (
+                <Pressable
+                  key={b.key}
+                  onPress={() => {
+                    haptics.tap();
+                    onListen(b.key, 0);
+                  }}
+                  accessibilityRole="button"
+                  accessibilityLabel={label}
+                  style={{ width: 104 }}
+                >
+                  <View>
+                    <CoverArt bookKey={b.key} titleSa={b.titleSa} width={104} />
+                    <View style={styles.audioBadge}>
+                      <Ionicons name={"headphones" as never} size={10} color="#FFF8EE" />
+                    </View>
+                  </View>
+                  <Text style={styles.railTitle} numberOfLines={1}>{b.titleEn}</Text>
+                  <Text style={styles.railCount}>
+                    {b.locked ? "Plus · " : ""}
+                    {partial ? `${b.voiced} of ${b.total} voiced` : `${b.voiced} voiced`}
+                  </Text>
+                </Pressable>
+              );
+            }}
+          />
+        </View>
+      )}
+    />
+  );
+}
+
+// "Continue listening": where the learner last played a book, as the reader
+// shelf's Continue is for reading.
+function ContinueListening({
+  bookKey,
+  pos,
+  groups,
+  onResume,
+}: {
+  bookKey: string;
+  pos: ListenPosition;
+  groups: { text: CanonText | null; verses: Shloka[] }[];
+  onResume: (key: string, index: number, chapter: string | null) => void;
+}) {
+  const g = groups.find((x) => x.text?.slug === bookKey);
+  const title = g ? plain(g.text!.title_en) : bookKey;
+  const total = g?.verses.length ?? 0;
+  const at = Math.min(pos.index, Math.max(0, total - 1));
+  return (
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onResume(bookKey, pos.index, pos.chapter);
+      }}
+      style={[styles.continueBlock, { backgroundColor: coverColour(bookKey) }]}
+      accessibilityRole="button"
+      accessibilityLabel={`Continue listening to ${title} at verse ${at + 1}`}
+    >
+      <View style={styles.continueHead}>
+        <Text style={styles.continueEyebrow}>Continue listening</Text>
+        <Ionicons name={"headphones" as never} size={16} color="#F2C879" />
+      </View>
+      <Text style={styles.continueTitle} numberOfLines={1}>{title}</Text>
+      <Text style={styles.continueSub}>Verse {at + 1}{total ? ` of ${total}` : ""}</Text>
+      {total > 0 && (
+        <View style={styles.continueBar}>
+          <View style={[styles.continueFill, { width: `${(at / Math.max(1, total)) * 100}%` }]} />
+        </View>
+      )}
+      <Text style={styles.continueGo}>Listen</Text>
+    </Pressable>
   );
 }
 
@@ -1203,6 +1427,46 @@ const styles = StyleSheet.create({
     marginBottom: space.sm,
   },
   pressed: { transform: [{ translateY: 2 }] },
+
+  // Books | Audio switch
+  mediaSwitch: {
+    flexDirection: "row",
+    alignSelf: "flex-start",
+    backgroundColor: color.surfaceMuted,
+    borderRadius: 999,
+    padding: 3,
+    marginTop: space.sm,
+    marginBottom: space.sm,
+  },
+  mediaSeg: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    borderRadius: 999,
+    paddingVertical: 7,
+    paddingHorizontal: 16,
+    minHeight: 36,
+  },
+  mediaSegOn: { backgroundColor: color.ink },
+  mediaSegText: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: font.sizes.sm,
+    color: color.inkSoft,
+  },
+  mediaSegTextOn: { color: "#FFF8EE" },
+  audioBadge: {
+    position: "absolute",
+    right: 6,
+    bottom: 6,
+    backgroundColor: "rgba(0,0,0,0.55)",
+    borderRadius: 999,
+    width: 20,
+    height: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  continueHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
 
   // Shelf
   shelfGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },

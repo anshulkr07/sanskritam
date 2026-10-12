@@ -4,6 +4,7 @@ import React, { memo, useMemo, useRef } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { Shloka } from "../../api/client";
+import KaraokeLine from "./KaraokeLine";
 import { fill, onFill } from "../../theme";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { plain } from "../../utils/text";
@@ -16,6 +17,7 @@ const VerseCard = memo(function VerseCard({
   item,
   playing,
   lineNow,
+  wordNow,
   fillFrac,
   pageColor,
   textColor,
@@ -29,6 +31,8 @@ const VerseCard = memo(function VerseCard({
   item: Shloka;
   playing: boolean;
   lineNow: number;
+  /** The word sounding now within the playing line (-1 none). */
+  wordNow: number;
   /** 0..1 fluid fill of the sounding line (meaningful only when playing). */
   fillFrac: number;
   pageColor: string;
@@ -67,20 +71,21 @@ const VerseCard = memo(function VerseCard({
             accessibilityLabel={`Play line ${ln.i + 1} of ${item.source_ref}`}
             style={styles.lineHit}
           >
-            <Text
+            <KaraokeLine
+              line={ln}
+              active={lit}
+              wordNow={lit ? wordNow : -1}
               style={[
                 styles.line,
                 { fontSize: Math.max(18, sized(22)) },
                 lit
-                  ? { color: onFill.gold, fontWeight: "700" }
+                  ? { color: onFill.gold }
                   : playing
                     ? { color: onFill.soft }
                     : { color: textColor },
               ]}
-            >
-              {lit ? "▶ " : ""}
-              {ln.text}
-            </Text>
+              litWordStyle={{ color: onFill.gold, backgroundColor: "rgba(242,200,121,0.22)", borderRadius: 4 }}
+            />
             {lit && (
               <View style={styles.fillTrack}>
                 <View style={[styles.fillBar, { width: `${Math.round(fillFrac * 100)}%` }]} />
@@ -106,6 +111,7 @@ export default function ChantList({
   verses,
   playingId,
   lineNow,
+  wordNow,
   fillFrac,
   pageColor,
   textColor,
@@ -122,6 +128,8 @@ export default function ChantList({
   verses: Shloka[];
   playingId: string | null;
   lineNow: number;
+  /** The word sounding now within the playing line (-1 none). */
+  wordNow: number;
   fillFrac: number;
   pageColor: string;
   textColor: string;
@@ -171,6 +179,7 @@ export default function ChantList({
           item={item}
           playing={item.id === playingId}
           lineNow={lineNow}
+          wordNow={item.id === playingId ? wordNow : -1}
           fillFrac={item.id === playingId ? fillFrac : 0}
           pageColor={pageColor}
           textColor={textColor}

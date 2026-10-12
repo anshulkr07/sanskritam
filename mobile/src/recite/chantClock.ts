@@ -1,7 +1,7 @@
 // chantClock: which chant line is sounding at tMs.
 // Between lines keep the previous line lit until the next starts.
 
-import type { ChantLine } from "../api/client";
+import type { ChantLine, ChantWord } from "../api/client";
 
 export function lineAt(lines: ChantLine[], tMs: number): number {
   if (!lines.length) return -1;
@@ -24,7 +24,10 @@ export function nextChantIndex(verses: { chant?: unknown }[], from: number, dir:
   return -1;
 }
 
-export type AfterFinish = { kind: "repeat" } | { kind: "next"; index: number } | { kind: "stop" };
+export type AfterFinish =
+  | { kind: "repeat" }
+  | { kind: "next"; index: number }
+  | { kind: "stop" };
 
 export type RepeatMode = "off" | "verse" | "chapter";
 
@@ -33,15 +36,20 @@ export const REPEAT_ORDER: RepeatMode[] = ["off", "verse", "chapter"];
 
 /** What the player does when verse `idx` ends: Repeat plays it again,
  *  otherwise the next verse with a chant. At the last one Repeat Chapter
- *  wraps to the first verse with a chant, otherwise it stops. */
+ *  wraps to the first verse with a chant, otherwise it stops.
+ *  Autoplay off (audiobook mode) stops after the verse unless Repeat holds. */
 export function afterFinish(
   repeat: RepeatMode,
   verses: { chant?: unknown }[],
   idx: number,
+  autoplay = true,
 ): AfterFinish {
   if (repeat === "verse") return { kind: "repeat" };
   const n = nextChantIndex(verses, idx, 1);
-  if (n >= 0) return { kind: "next", index: n };
+  if (n >= 0) {
+    if (autoplay || repeat === "chapter") return { kind: "next", index: n };
+    return { kind: "stop" };
+  }
   if (repeat === "chapter") {
     const first = nextChantIndex(verses, -1, 1);
     if (first >= 0) return { kind: "next", index: first };
@@ -78,4 +86,49 @@ export function aksharaCount(text: string): number {
   const letters = bare.match(/[\u0904-\u0939\u0958-\u0961]/g);
   if (letters && letters.length) return letters.length;
   return t.trim() ? 1 : 0;
+}
+
+// ── Word timing ──────────────────────────────────────────────────────
+// The karaoke highlight works on words. Exact per-word times do not exist
+// yet (the render pipeline records line bounds only), so within a line the
+// words share its span weighted by akṣara count — the same estimate the
+// line fill and the Guru lipsync use. When ChantLine.words arrives from
+// the pipeline, lineWords returns it untouched and nothing else changes.
+
+export interface WordSpan {
+  text: string;
+  start_ms: number;
+  end_ms: number;
+}
+
+/** The words of `line` with their times: the pipeline's own when present,
+ *  otherwise an akshara-weighted split of the line's span. A line with no
+ *  usable bounds returns the bare words with zero spans. */
+export function lineWords(line: Pick<ChantLine, "text" | "start_ms" | "end_ms"> & { words?: ChantWord[] }): WordSpan[] {
+  if (line.words?.length) return line.words;
+  const tokens = (line.text || "").split(/\s+/).filter((w) => w.length > 0);
+  const { start_ms: s, end_ms: e } = line;
+  if (!tokens.length) return [];
+  if (!(e > s)) return tokens.map((text) => ({ text, start_ms: s, end_ms: e }));
+  const weights = tokens.map((t) => Math.max(1, aksharaCount(t.replace(/[।॥]+$/g, ""))));
+  const total = weights.reduce((a, b) => a + b, 0);
+  const spans: WordSpan[] = [];
+  let at = s;
+  for (let i = 0; i < tokens.length; i++) {
+    const end = i === tokens.length - 1 ? e : at + ((e - s) * weights[i]) / total;
+    spans.push({ text: tokens[i], start_ms: Math.round(at), end_ms: Math.round(end) });
+    at = end;
+  }
+  return spans;
+}
+
+/** Which word of the line is sounding at tMs. Between words (and before
+ *  the first) the previous word stays lit, like lineAt keeps the line. */
+export function wordAt(words: WordSpan[], tMs: number): number {
+  let at = -1;
+  for (let i = 0; i < words.length; i++) {
+    if (tMs >= words[i].start_ms) at = i;
+    else break;
+  }
+  return at;
 }

@@ -14,7 +14,7 @@
 //    stands down and frees what it made.
 
 import type { ChantLine } from "../api/client";
-import { afterFinish, lineAt, lineFill, nextChantIndex, type RepeatMode } from "./chantClock";
+import { afterFinish, lineAt, lineFill, lineWords, nextChantIndex, wordAt, type RepeatMode, type WordSpan } from "./chantClock";
 
 export interface ChantVerse {
   id: string;
@@ -50,6 +50,9 @@ export interface ChantHost {
   repeat(): RepeatMode;
   speed(): number;
   follow(): boolean;
+  /** Audiobook autoplay: when false (and Repeat off) the queue stops after
+   *  the current verse. Absent on older hosts = true. */
+  autoplay?(): boolean;
   bookTitle(): string;
   setTimer(fn: () => void, ms: number): unknown;
   clearTimer(handle: unknown): void;
@@ -59,6 +62,8 @@ export interface ChantHost {
   /** Fluid fill: how far through `line` (0..1) playback is. Throttled to
    *  ~5% steps so screens redraw cheaply; optional (older hosts omit it). */
   onProgress?(line: number, frac: number): void;
+  /** The word of the line now sounding (-1 none). Emitted on change only. */
+  onWord?(word: number): void;
   onPlaying(playing: boolean): void;
   scrollTo(idx: number): void;
 }
@@ -76,6 +81,7 @@ export class ChantController {
   private token = 0; // bumped by every start and release
   private idx = -1;
   private playing = false;
+  private wordLine: number | null = null; // the line whose word spans are cached
 
   constructor(private host: ChantHost) {}
 
@@ -104,6 +110,7 @@ export class ChantController {
     this.idx = idx;
     this.host.onVerse(idx, v.id);
     this.host.onLine(-1);
+    this.wordLine = null;
 
     await this.host.ready();
     if (token !== this.token) return;
@@ -123,6 +130,8 @@ export class ChantController {
     let finished = false;
     let lastLine = -2;
     let lastFrac = 0;
+    let words: WordSpan[] = [];
+    let lastWord = -2;
     this.sub = p.addListener("playbackStatusUpdate", (st) => {
       if (token !== this.token || !st.isLoaded) return;
       const tMs = st.currentTime * 1000;
@@ -136,8 +145,19 @@ export class ChantController {
         lastFrac = frac;
         try { this.host.onProgress?.(line, frac); } catch { /* keep */ }
       }
+      // The word-level karaoke: spans follow the line, the index emits on change.
+      if (line !== (this.wordLine ?? -2)) {
+        this.wordLine = line;
+        words = ln ? lineWords(ln) : [];
+        lastWord = -2;
+      }
+      const w = line >= 0 ? wordAt(words, tMs) : -1;
+      if (w !== lastWord) {
+        lastWord = w;
+        try { this.host.onWord?.(w); } catch { /* keep */ }
+      }
       const durMs = (st.duration || (v.chant?.duration_ms ?? 0) / 1000) * 1000;
-      if (!prefetched && durMs && tMs / durMs >= PREFETCH_AT && this.host.repeat() !== "verse") {
+      if (!prefetched && durMs && tMs / durMs >= PREFETCH_AT && this.willContinue()) {
         prefetched = true;
         this.buildAhead(idx);
       }
@@ -219,7 +239,7 @@ export class ChantController {
   }
 
   private finish(idx: number): void {
-    const plan = afterFinish(this.host.repeat(), this.host.pages(), idx);
+    const plan = afterFinish(this.host.repeat(), this.host.pages(), idx, this.host.autoplay?.() ?? true);
     if (plan.kind === "repeat") {
       void this.start(idx);
     } else if (plan.kind === "next") {
@@ -240,11 +260,21 @@ export class ChantController {
   private buildAhead(idx: number): void {
     const pages = this.host.pages();
     const n = nextChantIndex(pages, idx, 1);
-    const url = n >= 0 ? pages[n]?.chant?.url : undefined;
+    const url = n >= 0 && this.willContinue() ? pages[n]?.chant?.url : undefined;
     if (!url || this.ahead?.idx === n) return;
     try {
       this.ahead = { idx: n, player: this.host.createPlayer(this.host.resolve(url)) };
     } catch { /* keep */ }
+  }
+
+  /** Whether the queue goes on after this verse (Repeat verse replays the
+   *  same one, so nothing next is wanted); Repeat chapter continues to the
+   *  next even with autoplay off. */
+  private willContinue(): boolean {
+    const r = this.host.repeat();
+    if (r === "verse") return false;
+    if (r === "chapter") return true;
+    return this.host.autoplay?.() ?? true;
   }
 
   /** Frees every player except `keep` (the prefetched one about to be used). */

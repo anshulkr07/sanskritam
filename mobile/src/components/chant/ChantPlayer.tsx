@@ -25,6 +25,8 @@ export default function ChantPlayer({
   onRepeat,
   speed,
   onSpeed,
+  autoplay,
+  onAutoplay,
   onLearn,
   onListen,
   follow,
@@ -42,6 +44,10 @@ export default function ChantPlayer({
   onRepeat: () => void;
   speed: number;
   onSpeed: () => void;
+  /** Audiobook autoplay: keep going through the verses. Optional on hosts
+   *  that always continue (Book's Chant mode omits it). */
+  autoplay?: boolean;
+  onAutoplay?: () => void;
   onLearn: () => void;
   /** Open the Listen screen. Absent on the Listen screen itself. */
   onListen?: () => void;
@@ -92,6 +98,13 @@ export default function ChantPlayer({
         {btn("Previous verse", "play-skip-back", onPrev)}
         {btn(playing ? "Pause" : "Play", playing ? "pause" : "play", onToggle)}
         {btn("Next verse", "play-skip-forward", onNext)}
+        {onAutoplay !== undefined &&
+          btn(
+            autoplay ? "Autoplay on" : "Autoplay off",
+            autoplay ? "infinity" : "infinity-outline",
+            onAutoplay,
+            !!autoplay,
+          )}
         {btn(REPEAT_LABEL[repeat], "repeat", onRepeat, repeat !== "off")}
         <Pressable
           onPress={onSpeed}

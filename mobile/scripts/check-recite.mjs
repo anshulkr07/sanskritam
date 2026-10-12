@@ -102,6 +102,36 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
   check(C.aksharaCount("") === 0, "empty counts zero");
 }
 
+// chantClock: word spans + the word being sung.
+{
+  const ln = { i: 0, text: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन", kind: "verse", start_ms: 0, end_ms: 1000 };
+  const ws = C.lineWords(ln);
+  check(ws.length === 4, "line splits into words", JSON.stringify(ws.map((w) => w.text)));
+  check(ws[0].start_ms === 0 && ws[3].end_ms === 1000, "spans cover the line");
+  check(ws[1].text === "मा", "second word is मा");
+  check(C.wordAt(ws, -1) === -1, "no word before the line");
+  check(C.wordAt(ws, 0) === 0, "first word at start");
+  check(C.wordAt(ws, ws[2].start_ms) === 2, "word switches at its start");
+  check(C.wordAt(ws, ws[2].start_ms - 1) === 1, "previous word stays lit between words");
+  // Exact pipeline words, when they arrive, pass through untouched.
+  const exact = C.lineWords({ ...ln, words: [{ text: "x", start_ms: 0, end_ms: 500 }, { text: "y", start_ms: 500, end_ms: 1000 }] });
+  check(exact.length === 2 && exact[0].end_ms === 500, "exact words win");
+  // A trailing danda stays with its word and adds no weight.
+  const danda = C.lineWords({ i: 0, text: "रामः। सीता", kind: "verse", start_ms: 0, end_ms: 300 });
+  check(danda[0].text === "रामः।" && danda[1].text === "सीता", "danda stays with its word");
+  check(danda[1].start_ms >= 150, "danda adds no weight", JSON.stringify(danda));
+}
+
+// afterFinish honours autoplay (the audiobook toggle).
+{
+  const v = (c) => (c ? { chant: { url: "x" } } : { chant: null });
+  const list = [v(true), v(true)];
+  check(C.afterFinish("off", list, 0, false).kind === "stop", "autoplay off stops after the verse");
+  check(C.afterFinish("off", list, 0, true).kind === "next", "autoplay on goes on");
+  check(C.afterFinish("chapter", list, 0, false).kind === "next", "repeat chapter continues with autoplay off");
+  check(C.afterFinish("verse", list, 0, false).kind === "repeat", "repeat verse holds with autoplay off");
+}
+
 // hide: levels.
 {
   check(H.mask("a b c d", 0) === "a b c d", "hide 0");

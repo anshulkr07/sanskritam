@@ -15,7 +15,7 @@ import { useReducedMotion } from "./useReducedMotion";
 export { REPEAT_ORDER };
 export type { RepeatMode };
 
-const SPEEDS = [1, 1.25, 0.75];
+const SPEEDS = [1, 1.25, 1.5, 0.75];
 
 export function useChant(
   pages: Shloka[],
@@ -33,11 +33,26 @@ export function useChant(
   const [at, setAtState] = useState(opts.initialIndex ?? 0);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [lineNow, setLineNow] = useState(0);
+  const [wordNow, setWordNow] = useState(-1);
   const [fillFrac, setFillFrac] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [repeat, setRepeat] = useState<RepeatMode>("off");
   const [speed, setSpeed] = useState(1);
+  // Audiobook autoplay (persisted globally): false stops after the verse.
+  const [autoplay, setAutoplay] = useState(true);
   const [follow, setFollow] = useState(true);
+  useEffect(() => {
+    let on = true;
+    import("../services/audioProgress")
+      .then((m) => m.getAutoplay())
+      .then((v) => {
+        if (on) setAutoplay(v);
+      })
+      .catch(() => {});
+    return () => {
+      on = false;
+    };
+  }, []);
   const listRef = useRef<FlatList | null>(null);
   const navRef = useRef(opts.navigate);
   navRef.current = opts.navigate;
@@ -58,8 +73,8 @@ export function useChant(
   // The newest values for the player, which outlives any one render: a verse
   // that ends starts the next one, and must see the Repeat, speed and Follow
   // chosen since it began.
-  const live = useRef({ repeat, speed, follow, reduced, pages, title: bookTitle, scroll: opts.scrollToList !== false });
-  live.current = { repeat, speed, follow, reduced, pages, title: bookTitle, scroll: opts.scrollToList !== false };
+  const live = useRef({ repeat, speed, follow, reduced, pages, title: bookTitle, scroll: opts.scrollToList !== false, autoplay });
+  live.current = { repeat, speed, follow, reduced, pages, title: bookTitle, scroll: opts.scrollToList !== false, autoplay };
   const baseUrl = useRef("");
   const chantRef = useRef<ChantController | null>(null);
   if (chantRef.current === null) {
@@ -75,6 +90,7 @@ export function useChant(
       repeat: () => live.current.repeat,
       speed: () => live.current.speed,
       follow: () => live.current.follow,
+      autoplay: () => live.current.autoplay,
       bookTitle: () => live.current.title,
       setTimer: (fn, ms) => setTimeout(fn, ms),
       clearTimer: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
@@ -83,6 +99,7 @@ export function useChant(
         if (idx >= 0) setAt(idx);
       },
       onLine: setLineNow,
+      onWord: setWordNow,
       onPlaying: setIsPlaying,
       onProgress: (_line, frac) => setFillFrac(frac),
       scrollTo: (idx) => {
@@ -110,6 +127,7 @@ export function useChant(
     playingAt,
     playingId,
     lineNow,
+    wordNow,
     fillFrac,
     isPlaying,
     repeat,
@@ -120,6 +138,14 @@ export function useChant(
       const next = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length] ?? 1;
       setSpeed(next);
       chant.setSpeed(next);
+    },
+    autoplay,
+    cycleAutoplay: () => {
+      const next = !autoplay;
+      setAutoplay(next);
+      void import("../services/audioProgress")
+        .then((m) => m.setAutoplay(next))
+        .catch(() => {});
     },
     follow,
     setFollow,

@@ -1,24 +1,37 @@
-// Listen: the player-first chant screen.
+// Listen: the player-first chant screen — the audiobook player.
 // One chapter (or book) as continuous audio: the sounding verse large on top
 // with its meaning as text, transport right under it, the chapter list below.
 // Playback itself is the shared ChantController (useChant), the same player
 // Book's Chant mode uses — a fix there fixes it here too.
+//
+// Audiobook layer: a Verse | Meaning | Both selector (only modes whose audio
+// exists for this book are offered), an autoplay toggle, and the listen
+// position saved so the Read tab's Audio shelf can offer Continue listening.
 
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { RootStackParamList } from "../navigation/types";
+import type { ListenMode } from "../services/audioProgress";
+import { getListenMode, setListenMode, setListenPosition } from "../services/audioProgress";
 import ChantList from "../components/chant/ChantList";
 import ChantPlayer from "../components/chant/ChantPlayer";
+import KaraokeLine from "../components/chant/KaraokeLine";
 import { useBookPages } from "../hooks/useBookPages";
 import { useChant } from "../hooks/useChant";
 import { color } from "../theme";
 import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Listen">;
+
+const MODE_LABEL: Record<ListenMode, string> = {
+  verse: "Verse",
+  meaning: "Meaning",
+  both: "Both",
+};
 
 export default function ListenScreen({ navigation, route }: Props) {
   const { bookKey, chapter, index } = route.params;
@@ -35,10 +48,13 @@ export default function ListenScreen({ navigation, route }: Props) {
     playingAt,
     playingId,
     lineNow,
+    wordNow,
     fillFrac,
     isPlaying,
     repeat,
     speed,
+    autoplay,
+    cycleAutoplay,
     follow,
     setFollow,
     listRef,
@@ -54,7 +70,16 @@ export default function ListenScreen({ navigation, route }: Props) {
     cycleRepeat,
     cycleSpeed,
     scrollToCurrent,
-  } = useChant(pages, title, { initialIndex: index ?? 0, navigate, onAt: persistAt });
+  } = useChant(pages, title, {
+    initialIndex: index ?? 0,
+    navigate,
+    // The verse index feeds both memories: the reader's own (as before) and
+    // the audiobook's Continue-listening slot.
+    onAt: (i) => {
+      persistAt(i);
+      setListenPosition(bookKey, i, chapter ?? null);
+    },
+  });
 
   // Player-first: start the chapter's chant on open (once).
   const started = useRef(false);
@@ -67,14 +92,33 @@ export default function ListenScreen({ navigation, route }: Props) {
     }
   }, [pages, pages.length, index, startAt]);
 
+  // Verse | Meaning | Both, persisted per book. Modes without audio for
+  // this book are not offered; with only chant recorded the selector shows
+  // Verse alone (Meaning arrives with the narration render pass).
+  const hasMeaningAudio = pages.some((p) => !!p.meaning_audio);
+  const [mode, setModeState] = useState<ListenMode>("verse");
+  useEffect(() => {
+    getListenMode(bookKey)
+      .then((m) => {
+        // A saved mode this book can no longer play falls back to Verse.
+        setModeState(m === "meaning" && !hasMeaningAudio ? "verse" : m);
+      })
+      .catch(() => {});
+  }, [bookKey, hasMeaningAudio]);
+  const setMode = (m: ListenMode) => {
+    setModeState(m);
+    setListenMode(bookKey, m);
+  };
+
   const cur = playingVerse ?? verse;
+  const curLit = playingVerse?.id === cur?.id;
   const curLines = cur?.chant?.lines?.length
     ? cur.chant.lines
     : (cur?.devanagari ?? "")
         .split(/(?<=[।॥])/)
         .map((s) => s.trim())
         .filter(Boolean)
-        .map((text, i) => ({ i, text }));
+        .map((text, i) => ({ i, text, start_ms: 0, end_ms: 0 }));
 
   return (
     <View style={[styles.root, { paddingTop: insets.top }]}>
@@ -100,14 +144,36 @@ export default function ListenScreen({ navigation, route }: Props) {
         </View>
       </View>
 
+      {(hasChant || hasMeaningAudio) && (
+        <View style={styles.modes} accessibilityRole="tablist">
+          {(["verse", "meaning", "both"] as ListenMode[])
+            .filter((m) => (m === "verse" ? hasChant : hasMeaningAudio))
+            .map((m) => {
+              const on = mode === m;
+              return (
+                <Pressable
+                  key={m}
+                  onPress={() => setMode(m)}
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: on }}
+                  accessibilityLabel={`${MODE_LABEL[m]} audio`}
+                  style={[styles.modeChip, on && styles.modeChipOn]}
+                >
+                  <Text style={[styles.modeText, on && styles.modeTextOn]}>{MODE_LABEL[m]}</Text>
+                </Pressable>
+              );
+            })}
+        </View>
+      )}
+
       <ScrollView style={styles.cardScroll} contentContainerStyle={styles.cardBody}>
-        {!hasChant && (
+        {!hasChant && !hasMeaningAudio && (
           <Text style={styles.hint}>No chant yet for this chapter.</Text>
         )}
         {!!cur && (
           <View style={styles.card}>
             {curLines.map((ln) => {
-              const lit = playingVerse?.id === cur.id && ln.i === lineNow;
+              const lit = curLit && ln.i === lineNow;
               return (
                 <Pressable
                   key={ln.i}
@@ -116,17 +182,20 @@ export default function ListenScreen({ navigation, route }: Props) {
                   accessibilityLabel={`Play line ${ln.i + 1} of ${cur.source_ref}`}
                   style={styles.lineHit}
                 >
-                  <Text style={[styles.line, lit && { color: color.saffronBtn }]}>
-                    {lit ? "▶ " : ""}
-                    {ln.text}
-                  </Text>
+                  <KaraokeLine
+                    line={ln}
+                    active={lit}
+                    wordNow={lit ? wordNow : -1}
+                    style={styles.line}
+                    litWordStyle={{ color: color.saffronDeep, backgroundColor: "rgba(232,91,37,0.12)", borderRadius: 4 }}
+                  />
                 </Pressable>
               );
             })}
-            {!!cur.iast && <Text style={styles.iast}>{cur.iast}</Text>}
-            {!!cur.translation_en && (
+            {(mode === "meaning" || mode === "both") && !!cur.translation_en && (
               <Text style={styles.meaning}>{plain(cur.translation_en)}</Text>
             )}
+            {(mode === "verse" || mode === "both") && !!cur.iast && <Text style={styles.iast}>{cur.iast}</Text>}
             {!!(cur as { translation_hi?: string }).translation_hi && (
               <Text style={styles.meaningHi}>
                 {plain((cur as { translation_hi?: string }).translation_hi ?? "")}
@@ -147,6 +216,8 @@ export default function ListenScreen({ navigation, route }: Props) {
           onRepeat={cycleRepeat}
           speed={speed}
           onSpeed={cycleSpeed}
+          autoplay={autoplay}
+          onAutoplay={cycleAutoplay}
           onLearn={openLearn}
           verseRef={playingVerse?.source_ref}
           position={pages.length ? `${playingAt + 1} of ${pages.length}` : undefined}
@@ -163,6 +234,7 @@ export default function ListenScreen({ navigation, route }: Props) {
           verses={pages}
           playingId={playingId}
           lineNow={lineNow}
+          wordNow={wordNow}
           fillFrac={fillFrac}
           pageColor={color.bg}
           textColor={color.ink}
@@ -189,6 +261,19 @@ const styles = StyleSheet.create({
   headText: { flex: 1 },
   title: { fontWeight: "800", fontSize: 16, color: color.ink },
   ref: { fontSize: 12, color: color.inkSoft },
+  modes: { flexDirection: "row", gap: 8, paddingHorizontal: 16, paddingVertical: 6 },
+  modeChip: {
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: color.border,
+    paddingHorizontal: 14,
+    paddingVertical: 5,
+    minHeight: 32,
+    justifyContent: "center",
+  },
+  modeChipOn: { backgroundColor: color.ink, borderColor: color.ink },
+  modeText: { fontSize: 13, fontWeight: "700", color: color.inkSoft },
+  modeTextOn: { color: "#FFF8EE" },
   cardScroll: { flexGrow: 0, maxHeight: "42%" },
   cardBody: { paddingHorizontal: 16 },
   hint: { fontSize: 14, color: color.inkSoft },

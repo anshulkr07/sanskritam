@@ -122,12 +122,23 @@ export interface WordBreakdown {
   features: string[];
 }
 
+/** One word of a chant line with its exact times. Absent until the render
+ *  pipeline emits word timestamps; until then the player estimates them
+ *  (chantClock.lineWords) from the line's span, so this field is optional. */
+export interface ChantWord {
+  text: string;
+  start_ms: number;
+  end_ms: number;
+}
+
 export interface ChantLine {
   i: number;
   text: string;
   kind: "verse" | "speaker";
   start_ms: number;
   end_ms: number;
+  /** Exact word times when the pipeline provides them (audiobook karaoke). */
+  words?: ChantWord[];
 }
 
 export interface ChantInfo {
@@ -135,6 +146,16 @@ export interface ChantInfo {
   duration_ms: number;
   voice: string;
   lines: ChantLine[];
+}
+
+/** Narrated meaning track (Phase 2 audiobooks): rendered from the verse's
+ *  translation. Absent until the render pass lands; the Listen player then
+ *  offers Meaning / Both alongside Verse. */
+export interface MeaningAudio {
+  url: string;
+  duration_ms: number;
+  voice: string;
+  lang: string;
 }
 
 export interface Shloka {
@@ -151,6 +172,7 @@ export interface Shloka {
   translation_en?: string;
   verse_uid?: string;
   chant?: ChantInfo | null;
+  meaning_audio?: MeaningAudio | null;
 }
 
 export interface ShlokaMeaning {
