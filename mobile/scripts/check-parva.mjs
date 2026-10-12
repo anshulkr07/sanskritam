@@ -114,5 +114,19 @@ function check(ok, label, detail = "") {
   check(eve.getHours() === 19, "evening reminder at 19:00");
 }
 
+// 5. ParvaPageScreen must not dereference `page` before its null guard.
+//    Derived values are computed above the `if (!page) return` early-return, so
+//    a single raw `page.x` there throws "Cannot read property 'x' of null" on
+//    the first render and blanks the whole app (seen on device 2026-10-12).
+{
+  const src = readFileSync(resolve(here, "../src/screens/ParvaPage.tsx"), "utf8");
+  const guardIdx = src.search(/if\s*\(\s*!page\s*\)/);
+  check(guardIdx > 0, "ParvaPage has a null guard");
+  const before = guardIdx > 0 ? src.slice(0, guardIdx) : src;
+  const direct = before.match(/\bpage\.[A-Za-z_]/g) ?? [];
+  const cast = before.match(/\(\s*page\s+as[^)]*\)\s*\./g) ?? [];
+  check(direct.length + cast.length === 0, "no unguarded deref of `page` before the null guard", [...direct, ...cast].join(" | "));
+}
+
 console.log(`\n  check-parva: ${passed} passed, ${failed} failed.`);
 process.exit(failed ? 1 : 0);

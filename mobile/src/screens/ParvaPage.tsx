@@ -170,7 +170,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const seriesDays = (body.series_days as { tithi_key?: string; form_key?: string; summary?: string; steps?: Item[] }[] | undefined) ?? [];
   // Calendar day entries (tithi days with forms) arrive on the page payload;
   // the seeds carry no series_days of their own yet.
-  const calDays = ((page as unknown as { day?: { date?: string; label?: string; form_key?: string; tithi_key?: string }[] }).day) ?? [];
+  const calDays = ((page as unknown as { day?: { date?: string; label?: string; form_key?: string; tithi_key?: string }[] } | null)?.day) ?? [];
   const dayRow = seriesDays.length > 0
     ? seriesDays.map((d) => ({ key: d.tithi_key ?? "", label: d.summary ?? d.tithi_key ?? "" }))
     : calDays.map((d, i) => ({ key: `${d.tithi_key}_${i}`, label: d.label ?? d.date ?? "" }));
