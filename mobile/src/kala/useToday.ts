@@ -111,6 +111,8 @@ export function useToday(active: boolean): TodayState {
   useEffect(() => {
     if (!active) return;
     setNow(new Date());
+    // Android returns a number. Keep the handle separate from any metadata:
+    // attaching an interval handle to it crashed the UI at the first minute tick.
     let timer: ReturnType<typeof setTimeout>;
     const schedule = () => {
       timer = setTimeout(() => {

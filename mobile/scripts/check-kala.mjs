@@ -920,7 +920,7 @@ section("The basics cards");
   for (const f of files) {
     const code = readFileSync(resolve(here, "..", f), "utf8")
       .replace(/\/\*[\s\S]*?\*\//g, "")
-      .split("\n")
+      .split(/\r?\n/)
       .map((l) => l.replace(/^\s*\/\/.*$/, "").replace(/\s\/\/ .*$/, ""))
       .join("\n");
     check(!/—|\s–\s/.test(code), `${f}: no em dash or spaced en dash`);
