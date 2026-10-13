@@ -35,11 +35,11 @@ export function validateLearnV2Catalogue(lessons: LearnV2Lesson[]): LearnV2Issue
       issues.push({ lessonId: lesson.id, cardId: "", message: "lesson needs an IAST title" });
     }
     const n = lesson.cards.length;
-    if (n < 6 || n > 12) {
+    if ((!lesson.sourceReading && (n < 6 || n > 12)) || n === 0) {
       issues.push({ lessonId: lesson.id, cardId: "", message: `lesson holds ${n} cards; contract is 6–12` });
     }
     const practice = lesson.cards.filter((c) => c.kind === "practice").length;
-    if (practice === 0) {
+    if (!lesson.sourceReading && practice === 0) {
       issues.push({ lessonId: lesson.id, cardId: "", message: "lesson needs at least one retrieval card" });
     }
     if (practice > 3) {
@@ -55,7 +55,7 @@ export function validateLearnV2Catalogue(lessons: LearnV2Lesson[]): LearnV2Issue
         issues.push({ lessonId: lesson.id, cardId: card.id, message: "card title must be bilingual" });
       }
       const words = card.body.en.trim().split(/\s+/).length;
-      if (words < 10 || words > 110) {
+      if (!lesson.sourceReading && (words < 10 || words > 110)) {
         issues.push({ lessonId: lesson.id, cardId: card.id, message: `English body is ${words} words; keep 10–110` });
       }
       if (!card.body.hi) {

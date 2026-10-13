@@ -11,8 +11,10 @@
     "reviewed_grammar": 141,
     "previously_reviewed_reading": 3,
     "visual_review_waived_by_owner": 59,
-    "integration_status": "Pending for generated deliveries; saved files do not prove app integration.",
-    "scope_note": "All concrete scene jobs in both current source-derived queues completed. Whole curriculum lesson/content expansion and precise native/vector diagrams are separate work."
+    "integration_status": "All 203 deliveries connected in code to reachable lesson cards; native device rendering not checked.",
+    "scope_note": "All concrete scene jobs in both current source-derived queues completed. Whole curriculum lesson/content expansion and precise native/vector diagrams are separate work.",
+    "source_reading_lessons": 130,
+    "source_reading_cards": 629
   },
   "assets": [
     {
@@ -31,7 +33,13 @@
         "sa": "पठति",
         "iast": "paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verbs-number",
+          "card_id": "verbs-number-1"
+        }
+      ]
     },
     {
       "asset_id": "verbs-reading-dual",
@@ -49,7 +57,17 @@
         "sa": "पठतः",
         "iast": "paṭhataḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verbs-number",
+          "card_id": "verbs-number-4"
+        },
+        {
+          "lesson_id": "verbs-number",
+          "card_id": "verbs-number-5"
+        }
+      ]
     },
     {
       "asset_id": "verbs-reading-plural",
@@ -67,7 +85,17 @@
         "sa": "पठन्ति",
         "iast": "paṭhanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verbs-number",
+          "card_id": "verbs-number-6"
+        },
+        {
+          "lesson_id": "verbs-number",
+          "card_id": "verbs-number-7"
+        }
+      ]
     },
     {
       "asset_id": "foundations-boy-eats-fruit",
@@ -87,7 +115,13 @@
         "sa": "बालकः फलं खादति",
         "iast": "bālakaḥ phalaṃ khādati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-how-it-works",
+          "card_id": "guide-art-how-it-works-foundations-boy-eats-fruit"
+        }
+      ]
     },
     {
       "asset_id": "cases-teacher-gives-book",
@@ -107,7 +141,13 @@
         "sa": "गुरुः शिष्याय पुस्तकं ददाति",
         "iast": "guruḥ śiṣyāya pustakaṃ dadāti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-dative",
+          "card_id": "guide-art-dative-cases-teacher-gives-book"
+        }
+      ]
     },
     {
       "asset_id": "cases-leaf-falls-from-tree",
@@ -127,7 +167,13 @@
         "sa": "वृक्षात् पत्रं पतति",
         "iast": "vṛkṣāt patraṃ patati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-ablative",
+          "card_id": "guide-art-ablative-cases-leaf-falls-from-tree"
+        }
+      ]
     },
     {
       "asset_id": "guide-stem-ending-1",
@@ -146,7 +192,13 @@
         "sa": "गजः जलं पिबति",
         "iast": "gajaḥ jalaṃ pibati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-stem-ending",
+          "card_id": "guide-art-stem-ending-guide-stem-ending-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-locative-1",
@@ -165,7 +217,13 @@
         "sa": "खगाः वृक्षे वसन्ति",
         "iast": "khagāḥ vṛkṣe vasanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-locative",
+          "card_id": "guide-art-locative-guide-locative-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-number-3",
@@ -184,7 +242,13 @@
         "sa": "फलानि",
         "iast": "phalāni"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-number",
+          "card_id": "guide-art-number-guide-number-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-locative-2",
@@ -203,7 +267,13 @@
         "sa": "नौका जले चलति",
         "iast": "naukā jale calati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-locative",
+          "card_id": "guide-art-locative-guide-locative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-karaka-1",
@@ -222,7 +292,13 @@
         "sa": "पिता पुत्राय गृहे हस्तेन पुस्तकं ददाति",
         "iast": "pitā putrāya gṛhe hastena pustakaṃ dadāti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-karaka",
+          "card_id": "guide-art-karaka-guide-karaka-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-accusative-1",
@@ -241,7 +317,13 @@
         "sa": "सः ग्रामं गच्छति",
         "iast": "saḥ grāmaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-accusative",
+          "card_id": "guide-art-accusative-guide-accusative-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-vowels-1",
@@ -260,7 +342,13 @@
         "sa": "दिनम्",
         "iast": "dinam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-vowels",
+          "card_id": "guide-art-vowels-guide-vowels-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-vowels-2",
@@ -279,7 +367,13 @@
         "sa": "दीनः",
         "iast": "dīnaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-vowels",
+          "card_id": "guide-art-vowels-guide-vowels-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-vowels-3",
@@ -298,7 +392,13 @@
         "sa": "कुलम्",
         "iast": "kulam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-vowels",
+          "card_id": "guide-art-vowels-guide-vowels-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-vowels-4",
@@ -317,7 +417,13 @@
         "sa": "कूलम्",
         "iast": "kūlam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-vowels",
+          "card_id": "guide-art-vowels-guide-vowels-4"
+        }
+      ]
     },
     {
       "asset_id": "guide-consonants-1",
@@ -336,7 +442,13 @@
         "sa": "करः",
         "iast": "karaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-consonants",
+          "card_id": "guide-art-consonants-guide-consonants-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-consonants-2",
@@ -355,7 +467,13 @@
         "sa": "खरः",
         "iast": "kharaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-consonants",
+          "card_id": "guide-art-consonants-guide-consonants-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-consonants-4",
@@ -374,7 +492,13 @@
         "sa": "फलम्",
         "iast": "phalam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-consonants",
+          "card_id": "guide-art-consonants-guide-consonants-4"
+        }
+      ]
     },
     {
       "asset_id": "guide-stem-ending-2",
@@ -393,7 +517,13 @@
         "sa": "बालकः पुस्तकं पठति",
         "iast": "bālakaḥ pustakaṃ paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-stem-ending",
+          "card_id": "guide-art-stem-ending-guide-stem-ending-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-gender-2",
@@ -412,7 +542,13 @@
         "sa": "सूर्यः",
         "iast": "sūryaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-gender",
+          "card_id": "guide-art-gender-guide-gender-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-gender-3",
@@ -431,7 +567,13 @@
         "sa": "भूमिः",
         "iast": "bhūmiḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-gender",
+          "card_id": "guide-art-gender-guide-gender-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-gender-4",
@@ -450,7 +592,13 @@
         "sa": "पुस्तकम्",
         "iast": "pustakam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-gender",
+          "card_id": "guide-art-gender-guide-gender-4"
+        }
+      ]
     },
     {
       "asset_id": "guide-number-1",
@@ -469,7 +617,13 @@
         "sa": "नेत्रे",
         "iast": "netre"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-number",
+          "card_id": "guide-art-number-guide-number-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-number-2",
@@ -488,7 +642,13 @@
         "sa": "हस्तौ",
         "iast": "hastau"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-number",
+          "card_id": "guide-art-number-guide-number-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-agreement-1",
@@ -507,7 +667,13 @@
         "sa": "सुन्दरः बालकः",
         "iast": "sundaraḥ bālakaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-agreement",
+          "card_id": "guide-art-agreement-guide-agreement-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-agreement-2",
@@ -526,7 +692,13 @@
         "sa": "सुन्दरी बालिका",
         "iast": "sundarī bālikā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-agreement",
+          "card_id": "guide-art-agreement-guide-agreement-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-agreement-3",
@@ -545,7 +717,13 @@
         "sa": "सुन्दराणि फलानि",
         "iast": "sundarāṇi phalāni"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-agreement",
+          "card_id": "guide-art-agreement-guide-agreement-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-cases-overview-1",
@@ -564,7 +742,13 @@
         "sa": "रामः ग्रामात् वनं गच्छति",
         "iast": "rāmaḥ grāmāt vanaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-cases-overview",
+          "card_id": "guide-art-cases-overview-guide-cases-overview-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-nominative-vocative-1",
@@ -583,7 +767,13 @@
         "sa": "रामः वनं गच्छति",
         "iast": "rāmaḥ vanaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-nominative-vocative",
+          "card_id": "guide-art-nominative-vocative-guide-nominative-vocative-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-nominative-vocative-2",
@@ -602,7 +792,13 @@
         "sa": "हे कृष्ण, अत्र आगच्छ",
         "iast": "he kṛṣṇa, atra āgaccha"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-nominative-vocative",
+          "card_id": "guide-art-nominative-vocative-guide-nominative-vocative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-accusative-2",
@@ -621,7 +817,13 @@
         "sa": "रामः सीतां पश्यति",
         "iast": "rāmaḥ sītāṃ paśyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-accusative",
+          "card_id": "guide-art-accusative-guide-accusative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-instrumental-2",
@@ -640,7 +842,13 @@
         "sa": "रामः लक्ष्मणेन सह वनं गच्छति",
         "iast": "rāmaḥ lakṣmaṇena saha vanaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-instrumental",
+          "card_id": "guide-art-instrumental-guide-instrumental-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-ablative-2",
@@ -659,7 +867,13 @@
         "sa": "बालकः सिंहात् बिभेति",
         "iast": "bālakaḥ siṃhāt bibheti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-ablative",
+          "card_id": "guide-art-ablative-guide-ablative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-genitive-1",
@@ -678,7 +892,13 @@
         "sa": "दशरथस्य पुत्रः रामः",
         "iast": "daśarathasya putraḥ rāmaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-genitive",
+          "card_id": "guide-art-genitive-guide-genitive-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-dative-2",
@@ -697,7 +917,13 @@
         "sa": "सः विद्यायै पठति",
         "iast": "saḥ vidyāyai paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-dative",
+          "card_id": "guide-art-dative-guide-dative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-genitive-2",
@@ -716,7 +942,13 @@
         "sa": "गङ्गायाः जलम्",
         "iast": "gaṅgāyāḥ jalam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-genitive",
+          "card_id": "guide-art-genitive-guide-genitive-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-upapada-1",
@@ -735,7 +967,13 @@
         "sa": "रामः सीतया सह वनं गच्छति",
         "iast": "rāmaḥ sītayā saha vanaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-upapada",
+          "card_id": "guide-art-upapada-guide-upapada-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-upapada-2",
@@ -754,7 +992,13 @@
         "sa": "विद्यालयं परितः वृक्षाः सन्ति",
         "iast": "vidyālayaṃ paritaḥ vṛkṣāḥ santi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-upapada",
+          "card_id": "guide-art-upapada-guide-upapada-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-a-masculine-3",
@@ -773,7 +1017,13 @@
         "sa": "बालकेभ्यः",
         "iast": "bālakebhyaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-a-masculine",
+          "card_id": "guide-art-a-masculine-guide-a-masculine-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-a-neuter-2",
@@ -792,7 +1042,13 @@
         "sa": "पुस्तकानि",
         "iast": "pustakāni"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-a-neuter",
+          "card_id": "guide-art-a-neuter-guide-a-neuter-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-aa-feminine-2",
@@ -811,7 +1067,13 @@
         "sa": "बालिकायै",
         "iast": "bālikāyai"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-aa-feminine",
+          "card_id": "guide-art-aa-feminine-guide-aa-feminine-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-i-stems-2",
@@ -830,7 +1092,13 @@
         "sa": "भूमौ",
         "iast": "bhūmau"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-i-stems",
+          "card_id": "guide-art-i-stems-guide-i-stems-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-i-stems-3",
@@ -849,7 +1117,13 @@
         "sa": "अग्नये",
         "iast": "agnaye"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-i-stems",
+          "card_id": "guide-art-i-stems-guide-i-stems-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-u-stems-1",
@@ -868,7 +1142,13 @@
         "sa": "गुरवे नमः",
         "iast": "gurave namaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-u-stems",
+          "card_id": "guide-art-u-stems-guide-u-stems-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-u-stems-3",
@@ -887,7 +1167,13 @@
         "sa": "वस्तूनि",
         "iast": "vastūni"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-u-stems",
+          "card_id": "guide-art-u-stems-guide-u-stems-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-ii-uu-feminine-2",
@@ -906,7 +1192,13 @@
         "sa": "पुत्र्याः",
         "iast": "putryāḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-ii-uu-feminine",
+          "card_id": "guide-art-ii-uu-feminine-guide-ii-uu-feminine-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-r-stems-1",
@@ -925,7 +1217,13 @@
         "sa": "कर्ता",
         "iast": "kartā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-r-stems",
+          "card_id": "guide-art-r-stems-guide-r-stems-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-r-stems-2",
@@ -944,7 +1242,13 @@
         "sa": "कर्तारः",
         "iast": "kartāraḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-r-stems",
+          "card_id": "guide-art-r-stems-guide-r-stems-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-r-stems-3",
@@ -963,7 +1267,13 @@
         "sa": "भ्रातरम्",
         "iast": "bhrātaram"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-r-stems",
+          "card_id": "guide-art-r-stems-guide-r-stems-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-odd-nouns-1",
@@ -982,7 +1292,13 @@
         "sa": "गवाम्",
         "iast": "gavām"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-odd-nouns",
+          "card_id": "guide-art-odd-nouns-guide-odd-nouns-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-i-we-2",
@@ -1001,7 +1317,13 @@
         "sa": "मम नाम रामः",
         "iast": "mama nāma rāmaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-i-we",
+          "card_id": "guide-art-pronoun-i-we-guide-pronoun-i-we-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-i-we-1",
@@ -1020,7 +1342,13 @@
         "sa": "अहं छात्रः अस्मि",
         "iast": "ahaṃ chātraḥ asmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-i-we",
+          "card_id": "guide-art-pronoun-i-we-guide-pronoun-i-we-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-i-we-3",
@@ -1039,7 +1367,13 @@
         "sa": "वयं भारतीयाः",
         "iast": "vayaṃ bhāratīyāḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-i-we",
+          "card_id": "guide-art-pronoun-i-we-guide-pronoun-i-we-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-you-1",
@@ -1058,7 +1392,13 @@
         "sa": "त्वं कुत्र गच्छसि",
         "iast": "tvaṃ kutra gacchasi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-you",
+          "card_id": "guide-art-pronoun-you-guide-pronoun-you-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-you-2",
@@ -1077,7 +1417,13 @@
         "sa": "तव नाम किम्",
         "iast": "tava nāma kim"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-you",
+          "card_id": "guide-art-pronoun-you-guide-pronoun-you-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-you-3",
@@ -1096,7 +1442,13 @@
         "sa": "यूयं पठथ",
         "iast": "yūyaṃ paṭhatha"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-you",
+          "card_id": "guide-art-pronoun-you-guide-pronoun-you-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-he-she-it-1",
@@ -1115,7 +1467,13 @@
         "sa": "सः बालकः पठति",
         "iast": "saḥ bālakaḥ paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-he-she-it",
+          "card_id": "guide-art-pronoun-he-she-it-guide-pronoun-he-she-it-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-he-she-it-2",
@@ -1134,7 +1492,13 @@
         "sa": "सा बालिका गायति",
         "iast": "sā bālikā gāyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-he-she-it",
+          "card_id": "guide-art-pronoun-he-she-it-guide-pronoun-he-she-it-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-he-she-it-3",
@@ -1153,7 +1517,13 @@
         "sa": "तत् फलं मधुरम्",
         "iast": "tat phalaṃ madhuram"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-he-she-it",
+          "card_id": "guide-art-pronoun-he-she-it-guide-pronoun-he-she-it-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-this-that-1",
@@ -1172,7 +1542,13 @@
         "sa": "एषः मम भ्राता",
         "iast": "eṣaḥ mama bhrātā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-this-that",
+          "card_id": "guide-art-pronoun-this-that-guide-pronoun-this-that-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-this-that-2",
@@ -1191,7 +1567,13 @@
         "sa": "इयं मम माता",
         "iast": "iyaṃ mama mātā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-this-that",
+          "card_id": "guide-art-pronoun-this-that-guide-pronoun-this-that-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-this-that-3",
@@ -1210,7 +1592,13 @@
         "sa": "एतत् पुस्तकम्",
         "iast": "etat pustakam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-this-that",
+          "card_id": "guide-art-pronoun-this-that-guide-pronoun-this-that-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-who-which-1",
@@ -1229,7 +1617,13 @@
         "sa": "कः अत्र आगच्छति",
         "iast": "kaḥ atra āgacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-who-which",
+          "card_id": "guide-art-pronoun-who-which-guide-pronoun-who-which-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-who-which-2",
@@ -1248,7 +1642,13 @@
         "sa": "किं करोषि",
         "iast": "kiṃ karoṣi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-who-which",
+          "card_id": "guide-art-pronoun-who-which-guide-pronoun-who-which-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-pronoun-who-which-3",
@@ -1267,7 +1667,13 @@
         "sa": "यः पठति सः जानाति",
         "iast": "yaḥ paṭhati saḥ jānāti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-pronoun-who-which",
+          "card_id": "guide-art-pronoun-who-which-guide-pronoun-who-which-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-polite-you-1",
@@ -1286,7 +1692,13 @@
         "sa": "भवान् कुत्र गच्छति",
         "iast": "bhavān kutra gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-polite-you",
+          "card_id": "guide-art-polite-you-guide-polite-you-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-polite-you-2",
@@ -1305,7 +1717,13 @@
         "sa": "भवती किं पठति",
         "iast": "bhavatī kiṃ paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-polite-you",
+          "card_id": "guide-art-polite-you-guide-polite-you-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-numbers-1-10-1",
@@ -1324,7 +1742,13 @@
         "sa": "त्रयः बालकाः",
         "iast": "trayaḥ bālakāḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-numbers-1-10",
+          "card_id": "guide-art-numbers-1-10-guide-numbers-1-10-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-numbers-1-10-2",
@@ -1343,7 +1767,13 @@
         "sa": "तिस्रः बालिकाः",
         "iast": "tisraḥ bālikāḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-numbers-1-10",
+          "card_id": "guide-art-numbers-1-10-guide-numbers-1-10-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-numbers-1-10-3",
@@ -1362,7 +1792,13 @@
         "sa": "चत्वारि फलानि",
         "iast": "catvāri phalāni"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-numbers-1-10",
+          "card_id": "guide-art-numbers-1-10-guide-numbers-1-10-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-numbers-big-time-1",
@@ -1381,7 +1817,13 @@
         "sa": "सः प्रथमः छात्रः",
         "iast": "saḥ prathamaḥ chātraḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-numbers-big-time",
+          "card_id": "guide-art-numbers-big-time-guide-numbers-big-time-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-verb-grid-1",
@@ -1400,7 +1842,13 @@
         "sa": "त्वं किं पठसि",
         "iast": "tvaṃ kiṃ paṭhasi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-verb-grid",
+          "card_id": "guide-art-verb-grid-guide-verb-grid-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-verb-grid-2",
@@ -1419,7 +1867,13 @@
         "sa": "आवां गच्छावः",
         "iast": "āvāṃ gacchāvaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-verb-grid",
+          "card_id": "guide-art-verb-grid-guide-verb-grid-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-verb-grid-3",
@@ -1438,7 +1892,13 @@
         "sa": "ते क्रीडन्ति",
         "iast": "te krīḍanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-verb-grid",
+          "card_id": "guide-art-verb-grid-guide-verb-grid-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-two-endings-1",
@@ -1457,7 +1917,13 @@
         "sa": "सः फलं लभते",
         "iast": "saḥ phalaṃ labhate"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-two-endings",
+          "card_id": "guide-art-two-endings-guide-two-endings-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-two-endings-2",
@@ -1476,7 +1942,13 @@
         "sa": "अहं गुरुं सेवे",
         "iast": "ahaṃ guruṃ seve"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-two-endings",
+          "card_id": "guide-art-two-endings-guide-two-endings-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-verb-classes-1",
@@ -1495,7 +1967,13 @@
         "sa": "बालिका नृत्यति",
         "iast": "bālikā nṛtyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-verb-classes",
+          "card_id": "guide-art-verb-classes-guide-verb-classes-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-verb-classes-2",
@@ -1514,7 +1992,13 @@
         "sa": "सः वस्त्रं क्रीणाति",
         "iast": "saḥ vastraṃ krīṇāti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-verb-classes",
+          "card_id": "guide-art-verb-classes-guide-verb-classes-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-to-be-1",
@@ -1533,7 +2017,13 @@
         "sa": "अहं छात्रः",
         "iast": "ahaṃ chātraḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-to-be",
+          "card_id": "guide-art-to-be-guide-to-be-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-to-be-2",
@@ -1552,7 +2042,13 @@
         "sa": "वृक्षे खगाः सन्ति",
         "iast": "vṛkṣe khagāḥ santi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-to-be",
+          "card_id": "guide-art-to-be-guide-to-be-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-to-be-3",
@@ -1571,7 +2067,13 @@
         "sa": "कुत्र असि",
         "iast": "kutra asi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-to-be",
+          "card_id": "guide-art-to-be-guide-to-be-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-lakaras-overview-1",
@@ -1590,7 +2092,13 @@
         "sa": "सः पठति",
         "iast": "saḥ paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-lakaras-overview",
+          "card_id": "guide-art-lakaras-overview-guide-lakaras-overview-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-lakaras-overview-2",
@@ -1609,7 +2117,13 @@
         "sa": "सः पठतु",
         "iast": "saḥ paṭhatu"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-lakaras-overview",
+          "card_id": "guide-art-lakaras-overview-guide-lakaras-overview-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-lakaras-overview-3",
@@ -1628,7 +2142,13 @@
         "sa": "सः अपठत्",
         "iast": "saḥ apaṭhat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-lakaras-overview",
+          "card_id": "guide-art-lakaras-overview-guide-lakaras-overview-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-lakaras-overview-4",
@@ -1647,7 +2167,13 @@
         "sa": "सः पठिष्यति",
         "iast": "saḥ paṭhiṣyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-lakaras-overview",
+          "card_id": "guide-art-lakaras-overview-guide-lakaras-overview-4"
+        }
+      ]
     },
     {
       "asset_id": "guide-present-tense-1",
@@ -1666,7 +2192,13 @@
         "sa": "अहं विद्यालयं गच्छामि",
         "iast": "ahaṃ vidyālayaṃ gacchāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-present-tense",
+          "card_id": "guide-art-present-tense-guide-present-tense-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-present-tense-2",
@@ -1685,7 +2217,13 @@
         "sa": "श्वः ते आगच्छन्ति",
         "iast": "śvaḥ te āgacchanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-present-tense",
+          "card_id": "guide-art-present-tense-guide-present-tense-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-command-mood-1",
@@ -1704,7 +2242,13 @@
         "sa": "अत्र आगच्छ",
         "iast": "atra āgaccha"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-command-mood",
+          "card_id": "guide-art-command-mood-guide-command-mood-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-simple-past-1",
@@ -1723,7 +2267,13 @@
         "sa": "सः गृहम् आगच्छत्",
         "iast": "saḥ gṛham āgacchat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-simple-past",
+          "card_id": "guide-art-simple-past-guide-simple-past-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-simple-past-2",
@@ -1742,7 +2292,13 @@
         "sa": "वने सिंहः अवसत्",
         "iast": "vane siṃhaḥ avasat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-simple-past",
+          "card_id": "guide-art-simple-past-guide-simple-past-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-simple-past-3",
@@ -1761,7 +2317,13 @@
         "sa": "अहं पत्रम् अलिखम्",
         "iast": "ahaṃ patram alikham"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-simple-past",
+          "card_id": "guide-art-simple-past-guide-simple-past-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-future-tense-1",
@@ -1780,7 +2342,13 @@
         "sa": "श्वः अहं ग्रामं गमिष्यामि",
         "iast": "śvaḥ ahaṃ grāmaṃ gamiṣyāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-future-tense",
+          "card_id": "guide-art-future-tense-guide-future-tense-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-future-tense-3",
@@ -1799,7 +2367,13 @@
         "sa": "सा पुस्तकं दास्यति",
         "iast": "sā pustakaṃ dāsyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-future-tense",
+          "card_id": "guide-art-future-tense-guide-future-tense-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-should-may-1",
@@ -1818,7 +2392,13 @@
         "sa": "छात्रः प्रतिदिनं पठेत्",
         "iast": "chātraḥ pratidinaṃ paṭhet"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-should-may",
+          "card_id": "guide-art-should-may-guide-should-may-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-should-may-2",
@@ -1837,7 +2417,13 @@
         "sa": "यदि वर्षा भवेत्",
         "iast": "yadi varṣā bhavet"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-should-may",
+          "card_id": "guide-art-should-may-guide-should-may-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-story-past-1",
@@ -1856,7 +2442,13 @@
         "sa": "पपाठ",
         "iast": "papāṭha"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-story-past",
+          "card_id": "guide-art-story-past-guide-story-past-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-story-past-2",
@@ -1875,7 +2467,13 @@
         "sa": "उवाच",
         "iast": "uvāca"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-story-past",
+          "card_id": "guide-art-story-past-guide-story-past-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-aorist-rare-2",
@@ -1894,7 +2492,13 @@
         "sa": "अगमः",
         "iast": "agamaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-aorist-rare",
+          "card_id": "guide-art-aorist-rare-guide-aorist-rare-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-aorist-rare-3",
@@ -1913,7 +2517,13 @@
         "sa": "यदि वर्षा अभविष्यत्",
         "iast": "yadi varṣā abhaviṣyat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-aorist-rare",
+          "card_id": "guide-art-aorist-rare-guide-aorist-rare-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-indeclinables-1",
@@ -1932,7 +2542,13 @@
         "sa": "रामः सीता च वनं गच्छतः",
         "iast": "rāmaḥ sītā ca vanaṃ gacchataḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-indeclinables",
+          "card_id": "guide-art-indeclinables-guide-indeclinables-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-indeclinables-2",
@@ -1951,7 +2567,13 @@
         "sa": "अद्य अहं शीघ्रं गच्छामि",
         "iast": "adya ahaṃ śīghraṃ gacchāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-indeclinables",
+          "card_id": "guide-art-indeclinables-guide-indeclinables-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-joining-words-1",
@@ -1970,7 +2592,13 @@
         "sa": "अहम् अपि आगच्छामि",
         "iast": "aham api āgacchāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-joining-words",
+          "card_id": "guide-art-joining-words-guide-joining-words-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-joining-words-2",
@@ -1989,7 +2617,13 @@
         "sa": "सः तु न पठति",
         "iast": "saḥ tu na paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-joining-words",
+          "card_id": "guide-art-joining-words-guide-joining-words-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-question-place-time-1",
@@ -2008,7 +2642,13 @@
         "sa": "भवान् कुत्र गच्छति",
         "iast": "bhavān kutra gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-question-place-time",
+          "card_id": "guide-art-question-place-time-guide-question-place-time-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-question-place-time-2",
@@ -2027,7 +2667,13 @@
         "sa": "अहं श्वः आगमिष्यामि",
         "iast": "ahaṃ śvaḥ āgamiṣyāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-question-place-time",
+          "card_id": "guide-art-question-place-time-guide-question-place-time-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-question-place-time-3",
@@ -2046,7 +2692,13 @@
         "sa": "कथम् अस्ति भवान्",
         "iast": "katham asti bhavān"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-question-place-time",
+          "card_id": "guide-art-question-place-time-guide-question-place-time-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-na-ma-1",
@@ -2065,7 +2717,13 @@
         "sa": "अहं मांसं न खादामि",
         "iast": "ahaṃ māṃsaṃ na khādāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-na-ma",
+          "card_id": "guide-art-na-ma-guide-na-ma-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-na-ma-2",
@@ -2084,7 +2742,13 @@
         "sa": "मा चिन्तय",
         "iast": "mā cintaya"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-na-ma",
+          "card_id": "guide-art-na-ma-guide-na-ma-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-na-ma-3",
@@ -2103,7 +2767,13 @@
         "sa": "अहं न जानामि",
         "iast": "ahaṃ na jānāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-na-ma",
+          "card_id": "guide-art-na-ma-guide-na-ma-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-iti-1",
@@ -2122,7 +2792,13 @@
         "sa": "गच्छामि इति सः अवदत्",
         "iast": "gacchāmi iti saḥ avadat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-iti",
+          "card_id": "guide-art-iti-guide-iti-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-iti-2",
@@ -2141,7 +2817,13 @@
         "sa": "वर्षा भविष्यति इति चिन्तयामि",
         "iast": "varṣā bhaviṣyati iti cintayāmi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-iti",
+          "card_id": "guide-art-iti-guide-iti-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-word-order-1",
@@ -2160,7 +2842,13 @@
         "sa": "रामः फलं खादति",
         "iast": "rāmaḥ phalaṃ khādati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-word-order",
+          "card_id": "guide-art-word-order-guide-word-order-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-subject-verb-1",
@@ -2179,7 +2867,13 @@
         "sa": "बालकाः उद्याने क्रीडन्ति",
         "iast": "bālakāḥ udyāne krīḍanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-subject-verb",
+          "card_id": "guide-art-subject-verb-guide-subject-verb-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-subject-verb-2",
@@ -2198,7 +2892,13 @@
         "sa": "वृक्षात् पत्राणि पतन्ति",
         "iast": "vṛkṣāt patrāṇi patanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-subject-verb",
+          "card_id": "guide-art-subject-verb-guide-subject-verb-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-relative-clauses-1",
@@ -2217,7 +2917,13 @@
         "sa": "यः पठति सः जानाति",
         "iast": "yaḥ paṭhati saḥ jānāti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-relative-clauses",
+          "card_id": "guide-art-relative-clauses-guide-relative-clauses-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-participle-clauses-1",
@@ -2236,7 +2942,13 @@
         "sa": "बालकः गृहं गत्वा भोजनं खादति",
         "iast": "bālakaḥ gṛhaṃ gatvā bhojanaṃ khādati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-participle-clauses",
+          "card_id": "guide-art-participle-clauses-guide-participle-clauses-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-participle-clauses-2",
@@ -2255,7 +2967,13 @@
         "sa": "बालिका गच्छन्ती गायति",
         "iast": "bālikā gacchantī gāyati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-participle-clauses",
+          "card_id": "guide-art-participle-clauses-guide-participle-clauses-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-participle-clauses-3",
@@ -2274,7 +2992,13 @@
         "sa": "रामे वनं गते दशरथः दुःखी अभवत्",
         "iast": "rāme vanaṃ gate daśarathaḥ duḥkhī abhavat"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-participle-clauses",
+          "card_id": "guide-art-participle-clauses-guide-participle-clauses-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-sandhi-guna-3",
@@ -2293,7 +3017,13 @@
         "sa": "महोत्सवः",
         "iast": "mahotsavaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-sandhi-guna",
+          "card_id": "guide-art-sandhi-guna-guide-sandhi-guna-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-dvandva-1",
@@ -2312,7 +3042,13 @@
         "sa": "रामलक्ष्मणौ",
         "iast": "rāmalakṣmaṇau"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-dvandva",
+          "card_id": "guide-art-dvandva-guide-dvandva-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-dvandva-3",
@@ -2331,7 +3067,13 @@
         "sa": "सुखदुःखे",
         "iast": "sukhaduḥkhe"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-dvandva",
+          "card_id": "guide-art-dvandva-guide-dvandva-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-tatpurusha-2",
@@ -2350,7 +3092,13 @@
         "sa": "गजस्य आननम्",
         "iast": "gajasya ānanam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-tatpurusha",
+          "card_id": "guide-art-tatpurusha-guide-tatpurusha-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-dvandva-2",
@@ -2369,7 +3117,13 @@
         "sa": "मातापितरौ",
         "iast": "mātāpitarau"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-dvandva",
+          "card_id": "guide-art-dvandva-guide-dvandva-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-nan-upapada-1",
@@ -2388,7 +3142,13 @@
         "sa": "कुम्भं करोति",
         "iast": "kumbhaṃ karoti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-nan-upapada",
+          "card_id": "guide-art-nan-upapada-guide-nan-upapada-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-bahuvrihi-1",
@@ -2407,7 +3167,13 @@
         "sa": "पीतम् अम्बरं यस्य सः",
         "iast": "pītam ambaraṃ yasya saḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-bahuvrihi",
+          "card_id": "guide-art-bahuvrihi-guide-bahuvrihi-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-ktva-lyap-1",
@@ -2426,7 +3192,13 @@
         "sa": "रामः फलं खादित्वा जलं पिबति",
         "iast": "rāmaḥ phalaṃ khāditvā jalaṃ pibati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-ktva-lyap",
+          "card_id": "guide-art-ktva-lyap-guide-ktva-lyap-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-tumun-1",
@@ -2445,7 +3217,13 @@
         "sa": "सः पठितुं विद्यालयं गच्छति",
         "iast": "saḥ paṭhituṃ vidyālayaṃ gacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-tumun",
+          "card_id": "guide-art-tumun-guide-tumun-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-tumun-2",
@@ -2464,7 +3242,13 @@
         "sa": "बालकाः क्रीडितुम् उद्यानं गच्छन्ति",
         "iast": "bālakāḥ krīḍitum udyānaṃ gacchanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-tumun",
+          "card_id": "guide-art-tumun-guide-tumun-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-kta-ktavatu-1",
@@ -2483,7 +3267,13 @@
         "sa": "रामः पुस्तकं पठितवान्",
         "iast": "rāmaḥ pustakaṃ paṭhitavān"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-kta-ktavatu",
+          "card_id": "guide-art-kta-ktavatu-guide-kta-ktavatu-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-kta-ktavatu-2",
@@ -2502,7 +3292,13 @@
         "sa": "सीता पुस्तकं पठितवती",
         "iast": "sītā pustakaṃ paṭhitavatī"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-kta-ktavatu",
+          "card_id": "guide-art-kta-ktavatu-guide-kta-ktavatu-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-kta-ktavatu-3",
@@ -2521,7 +3317,13 @@
         "sa": "रामेण पुस्तकं पठितम्",
         "iast": "rāmeṇa pustakaṃ paṭhitam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-kta-ktavatu",
+          "card_id": "guide-art-kta-ktavatu-guide-kta-ktavatu-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-present-participles-1",
@@ -2540,7 +3342,13 @@
         "sa": "पठन् बालकः हसति",
         "iast": "paṭhan bālakaḥ hasati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-present-participles",
+          "card_id": "guide-art-present-participles-guide-present-participles-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-present-participles-2",
@@ -2559,7 +3367,13 @@
         "sa": "गायन्ती बालिका",
         "iast": "gāyantī bālikā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-present-participles",
+          "card_id": "guide-art-present-participles-guide-present-participles-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-gerundives-1",
@@ -2578,7 +3392,13 @@
         "sa": "त्वया पुस्तकं पठितव्यम्",
         "iast": "tvayā pustakaṃ paṭhitavyam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-gerundives",
+          "card_id": "guide-art-gerundives-guide-gerundives-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-prefixes-2",
@@ -2597,7 +3417,13 @@
         "sa": "उपविशति",
         "iast": "upaviśati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-prefixes",
+          "card_id": "guide-art-prefixes-guide-prefixes-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-passive-1",
@@ -2616,7 +3442,13 @@
         "sa": "रामः पुस्तकं पठति",
         "iast": "rāmaḥ pustakaṃ paṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-passive",
+          "card_id": "guide-art-passive-guide-passive-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-passive-2",
@@ -2635,7 +3467,13 @@
         "sa": "रामेण पुस्तकं पठ्यते",
         "iast": "rāmeṇa pustakaṃ paṭhyate"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-passive",
+          "card_id": "guide-art-passive-guide-passive-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-passive-3",
@@ -2654,7 +3492,13 @@
         "sa": "बालकेन फलानि खाद्यन्ते",
         "iast": "bālakena phalāni khādyante"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-passive",
+          "card_id": "guide-art-passive-guide-passive-3"
+        }
+      ]
     },
     {
       "asset_id": "guide-causative-1",
@@ -2673,7 +3517,13 @@
         "sa": "शिक्षकः छात्रं पाठयति",
         "iast": "śikṣakaḥ chātraṃ pāṭhayati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-causative",
+          "card_id": "guide-art-causative-guide-causative-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-prefixes-4",
@@ -2692,7 +3542,13 @@
         "sa": "उत्तिष्ठति",
         "iast": "uttiṣṭhati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-prefixes",
+          "card_id": "guide-art-prefixes-guide-prefixes-4"
+        }
+      ]
     },
     {
       "asset_id": "guide-causative-2",
@@ -2711,7 +3567,13 @@
         "sa": "माता पुत्रं भोजयति",
         "iast": "mātā putraṃ bhojayati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-causative",
+          "card_id": "guide-art-causative-guide-causative-2"
+        }
+      ]
     },
     {
       "asset_id": "guide-desiderative-1",
@@ -2730,7 +3592,13 @@
         "sa": "जिज्ञासुः",
         "iast": "jijñāsuḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-desiderative",
+          "card_id": "guide-art-desiderative-guide-desiderative-1"
+        }
+      ]
     },
     {
       "asset_id": "guide-feminine-suffixes-2",
@@ -2749,7 +3617,13 @@
         "sa": "पठन्ती",
         "iast": "paṭhantī"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "guide-art-feminine-suffixes",
+          "card_id": "guide-art-feminine-suffixes-guide-feminine-suffixes-2"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-boundary-1",
@@ -2765,7 +3639,13 @@
         "sa": "रामः + अस्ति → रामोऽस्ति",
         "iast": "rāmaḥ + asti → rāmo’sti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-boundary",
+          "card_id": "sandhi-source-boundary-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-boundary-7",
@@ -2781,7 +3661,13 @@
         "sa": "मरुत् + भिः → मरुद्भिः",
         "iast": "marut + bhiḥ → marudbhiḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-boundary",
+          "card_id": "sandhi-source-boundary-07"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-like-vowels-1",
@@ -2797,7 +3683,13 @@
         "sa": "सीता + अपि → सीतापि",
         "iast": "sītā + api → sītāpi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-like-vowels",
+          "card_id": "sandhi-source-like-vowels-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-like-vowels-8",
@@ -2813,7 +3705,13 @@
         "sa": "देव + आलय → देवालय",
         "iast": "deva + ālaya → devālaya"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-like-vowels",
+          "card_id": "sandhi-source-like-vowels-08"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-like-vowels-6",
@@ -2829,7 +3727,13 @@
         "sa": "सु + उक्तम् → सूक्तम्",
         "iast": "su + uktam → sūktam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-like-vowels",
+          "card_id": "sandhi-source-like-vowels-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-a-combinations-1",
@@ -2845,7 +3749,13 @@
         "sa": "देव + इन्द्र → देवेन्द्र",
         "iast": "deva + indra → devendra"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-a-combinations",
+          "card_id": "sandhi-source-a-combinations-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-a-combinations-2",
@@ -2861,7 +3771,13 @@
         "sa": "महा + ईश्वर → महेश्वर",
         "iast": "mahā + īśvara → maheśvara"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-a-combinations",
+          "card_id": "sandhi-source-a-combinations-02"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-a-combinations-3",
@@ -2877,7 +3793,13 @@
         "sa": "हित + उपदेशः → हितोपदेशः",
         "iast": "hita + upadeśaḥ → hitopadeśaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-a-combinations",
+          "card_id": "sandhi-source-a-combinations-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-a-combinations-4",
@@ -2893,7 +3815,13 @@
         "sa": "महा + ऋषिः → महर्षिः",
         "iast": "mahā + ṛṣiḥ → maharṣiḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-a-combinations",
+          "card_id": "sandhi-source-a-combinations-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-a-combinations-6",
@@ -2909,7 +3837,13 @@
         "sa": "जल + ओघः → जलौघः",
         "iast": "jala + oghaḥ → jalaughaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-a-combinations",
+          "card_id": "sandhi-source-a-combinations-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-glides-2",
@@ -2925,7 +3859,13 @@
         "sa": "नदी + अत्र → नद्यत्र",
         "iast": "nadī + atra → nadyatra"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-glides",
+          "card_id": "sandhi-source-glides-02"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-glides-3",
@@ -2941,7 +3881,13 @@
         "sa": "सु + आगतम् → स्वागतम्",
         "iast": "su + āgatam → svāgatam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-glides",
+          "card_id": "sandhi-source-glides-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-glides-4",
@@ -2957,7 +3903,13 @@
         "sa": "पितृ + आदेशः → पित्रादेशः",
         "iast": "pitṛ + ādeśaḥ → pitrādeśaḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-glides",
+          "card_id": "sandhi-source-glides-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-glides-7",
@@ -2973,7 +3925,13 @@
         "sa": "नदी + वहति → नदी वहति",
         "iast": "nadī vahati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-glides",
+          "card_id": "sandhi-source-glides-07"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-e-o-1",
@@ -2989,7 +3947,13 @@
         "sa": "ने + अ + न्ति → नयन्ति",
         "iast": "ne + a + nti → nayanti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-e-o",
+          "card_id": "sandhi-source-e-o-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-e-o-3",
@@ -3005,7 +3969,13 @@
         "sa": "ते + अपि → तेऽपि",
         "iast": "te + api → te’pi"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-e-o",
+          "card_id": "sandhi-source-e-o-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-e-o-4",
@@ -3021,7 +3991,13 @@
         "sa": "ते + आगताः → त आगताः",
         "iast": "te + āgatāḥ → ta āgatāḥ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-e-o",
+          "card_id": "sandhi-source-e-o-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-e-o-6",
@@ -3037,7 +4013,13 @@
         "sa": "तस्यै + अपि → तस्या अपि",
         "iast": "tasyai + api → tasyā api"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-e-o",
+          "card_id": "sandhi-source-e-o-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-protected-1",
@@ -3053,7 +4035,13 @@
         "sa": "अग्नी + अपश्यम् → अग्नी अपश्यम्",
         "iast": "agnī apaśyam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-protected",
+          "card_id": "sandhi-source-protected-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-protected-2",
@@ -3069,7 +4057,13 @@
         "sa": "बाहू + उद्यच्छति → बाहू उद्यच्छति",
         "iast": "bāhū udyacchati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-protected",
+          "card_id": "sandhi-source-protected-02"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-protected-3",
@@ -3085,7 +4079,13 @@
         "sa": "तौ लभेते + अश्वान् → तौ लभेते अश्वान्",
         "iast": "tau labhete aśvān"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-protected",
+          "card_id": "sandhi-source-protected-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-protected-4",
@@ -3101,7 +4101,13 @@
         "sa": "अमी + अत्र → अमी अत्र",
         "iast": "amī atra"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-protected",
+          "card_id": "sandhi-source-protected-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-stops-1",
@@ -3117,7 +4123,13 @@
         "sa": "वाच् → pause form → वाक्",
         "iast": "vāc stem → vāk at pause"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-stops",
+          "card_id": "sandhi-source-stops-01"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-stops-4",
@@ -3133,7 +4145,13 @@
         "sa": "तत् + फलम् → तत्फलम्",
         "iast": "tat + phalam → tatphalam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-stops",
+          "card_id": "sandhi-source-stops-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-stops-6",
@@ -3149,7 +4167,13 @@
         "sa": "तत् + चित्रम् · तत् + जलम् → तच्चित्रम् · तज्जलम्",
         "iast": "tat citram → taccitram · tat jalam → tajjalam"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-stops",
+          "card_id": "sandhi-source-stops-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-stops-8",
@@ -3165,7 +4189,13 @@
         "sa": "तत् + लभस्व → तल्लभस्व",
         "iast": "tat + labhasva → tallabhasva"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-stops",
+          "card_id": "sandhi-source-stops-08"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-nasals-6",
@@ -3181,7 +4211,13 @@
         "sa": "तान् + तरति · न् + ट् → तांस्तरति · ंष्ट्",
         "iast": "tān tarati → tāṃstarati · n+ṭ→ṃṣṭ"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-nasals",
+          "card_id": "sandhi-source-nasals-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-nasals-10",
@@ -3197,7 +4233,13 @@
         "sa": "अत्र + छाया → अत्रच्छाया",
         "iast": "atra + chāyā → atracchāyā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-nasals",
+          "card_id": "sandhi-source-nasals-10"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-visarga-more-3",
@@ -3213,7 +4255,13 @@
         "sa": "रामः + शेते → रामः शेते / रामश्शेते",
         "iast": "rāmaḥ śete / rāmaś śete"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-visarga-more",
+          "card_id": "sandhi-source-visarga-more-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-visarga-more-4",
@@ -3229,7 +4277,13 @@
         "sa": "अग्निः + अस्ति → अग्निरस्ति",
         "iast": "agniḥ + asti → agnirasti"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-visarga-more",
+          "card_id": "sandhi-source-visarga-more-04"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-internal-3",
@@ -3245,7 +4299,13 @@
         "sa": "बुध् + त → बुद्ध",
         "iast": "budh + ta → buddha"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-internal",
+          "card_id": "sandhi-source-internal-03"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-retroflex-2",
@@ -3261,7 +4321,13 @@
         "sa": "धनुस् + आ → धनुषा",
         "iast": "dhanus + ā → dhanuṣā"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-retroflex",
+          "card_id": "sandhi-source-retroflex-02"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-retroflex-6",
@@ -3277,7 +4343,13 @@
         "sa": "रथेन → रथेन",
         "iast": "rathena"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-retroflex",
+          "card_id": "sandhi-source-retroflex-06"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-retroflex-7",
@@ -3293,7 +4365,13 @@
         "sa": "हरिः + नमति → हरिर्नमति",
         "iast": "hariḥ + namati → harirnamati"
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-retroflex",
+          "card_id": "sandhi-source-retroflex-07"
+        }
+      ]
     },
     {
       "asset_id": "sandhi-reading-1",
@@ -3309,7 +4387,13 @@
         "sa": "रामः इह अस्ति । सः अपि वनम् गच्छति । → राम इहास्ति । सोऽपि वनं गच्छति ।",
         "iast": "rāma ihāsti. so’pi vanaṃ gacchati."
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "sandhi-source-reading",
+          "card_id": "sandhi-source-reading-01"
+        }
+      ]
     },
     {
       "asset_id": "verse-01-spoken",
@@ -3325,7 +4409,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-01",
+          "card_id": "verse-01-04"
+        }
+      ]
     },
     {
       "asset_id": "verse-01-sung",
@@ -3341,7 +4431,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-01",
+          "card_id": "verse-01-04"
+        }
+      ]
     },
     {
       "asset_id": "verse-02-yoga",
@@ -3357,7 +4453,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-02",
+          "card_id": "verse-02-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-02-field",
@@ -3373,7 +4475,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-02",
+          "card_id": "verse-02-05"
+        }
+      ]
     },
     {
       "asset_id": "verse-04-assembly",
@@ -3389,7 +4497,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-04",
+          "card_id": "verse-04-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-05-poet",
@@ -3405,7 +4519,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-05",
+          "card_id": "verse-05-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-05-teacher",
@@ -3421,7 +4541,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-05",
+          "card_id": "verse-05-01"
+        }
+      ]
     },
     {
       "asset_id": "verse-06-sita",
@@ -3437,7 +4563,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-06",
+          "card_id": "verse-06-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-07-fire",
@@ -3453,7 +4585,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-07",
+          "card_id": "verse-07-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-07-friend",
@@ -3469,7 +4607,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-07",
+          "card_id": "verse-07-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-07-story",
@@ -3485,7 +4629,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-07",
+          "card_id": "verse-07-05"
+        }
+      ]
     },
     {
       "asset_id": "verse-08-sorrow",
@@ -3501,7 +4651,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-08",
+          "card_id": "verse-08-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-10-temple",
@@ -3517,7 +4673,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-10",
+          "card_id": "verse-10-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-22-himalaya",
@@ -3533,7 +4695,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-22",
+          "card_id": "verse-22-05"
+        }
+      ]
     },
     {
       "asset_id": "verse-26-separation",
@@ -3549,7 +4717,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-26",
+          "card_id": "verse-26-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-34-parents",
@@ -3565,7 +4739,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-34",
+          "card_id": "verse-34-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-36-recitation",
@@ -3581,7 +4761,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-36",
+          "card_id": "verse-36-01"
+        }
+      ]
     },
     {
       "asset_id": "verse-38-agni",
@@ -3597,7 +4783,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-38",
+          "card_id": "verse-38-02"
+        }
+      ]
     },
     {
       "asset_id": "verse-39-tradition",
@@ -3613,7 +4805,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-39",
+          "card_id": "verse-39-01"
+        }
+      ]
     },
     {
       "asset_id": "verse-41-ocean",
@@ -3629,7 +4827,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-41",
+          "card_id": "verse-41-04"
+        }
+      ]
     },
     {
       "asset_id": "verse-44-composition",
@@ -3645,7 +4849,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-44",
+          "card_id": "verse-44-03"
+        }
+      ]
     },
     {
       "asset_id": "verse-46-hermitage",
@@ -3661,7 +4871,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-46",
+          "card_id": "verse-46-05"
+        }
+      ]
     },
     {
       "asset_id": "verse-47-peer",
@@ -3677,7 +4893,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-47",
+          "card_id": "verse-47-01"
+        }
+      ]
     },
     {
       "asset_id": "verse-48-study",
@@ -3693,7 +4915,13 @@
         "sa": "",
         "iast": ""
       },
-      "integration_status": "pending"
+      "integration_status": "code_integrated",
+      "mapping": [
+        {
+          "lesson_id": "verse-48",
+          "card_id": "verse-48-01"
+        }
+      ]
     }
   ]
 }

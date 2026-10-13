@@ -1,5 +1,9 @@
 # Codex image generation result
 
+## Lesson integration completed — 13 October 2026
+
+All **203 generated deliveries are now connected to reachable lesson cards in local app code**. The generated reading PNGs replace the older prototype JPGs in the registry. See [IMAGE-INTEGRATION-RESULT.md](IMAGE-INTEGRATION-RESULT.md) and the updated [image-delivery-index.json](image-delivery-index.json). Added 69 illustrated Grammar topic readings, 13 full Sandhi source readings and 48 Verse & Rhythm source readings. The English manuscript readings are labelled; the seven reviewed lessons and assessed course routes are preserved. No new visual review or native-device validation is claimed. Earlier integration-pending statements below describe prior stages and are superseded.
+
 ## Completed image production — 13 October 2026
 
 **203 teaching images are generated and saved:** 141 Grammar/foundations scenes, 35 Sandhi scenes, 24 Verse & Rhythm scenes, and the original three reading PNGs. All 200 jobs in `image-production-queue.json` and `manuscript-image-production-queue.json` have ready delivery records; no queued scene jobs remain. All recorded project files exist.

@@ -88,7 +88,7 @@ export default function GrammarTopicScreen({ route, navigation }: Props) {
   // Same key and shape Grammar.tsx has always filled (Lesson.tsx peeks it).
   const { data: lessons } = useQuery("grammar-lessons", api.lessons);
   const tone: FillName = fillAt(topicId.length % 6);
-  const ctx = React.useMemo(() => ({ lang, t, tone }), [lang, t, tone]);
+  const ctx = React.useMemo(() => ({ lang, t, tone, topicId }), [lang, t, tone, topicId]);
 
   React.useEffect(() => {
     setLastTopic(topicId);

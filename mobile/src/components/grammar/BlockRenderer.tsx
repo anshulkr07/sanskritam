@@ -18,6 +18,8 @@ import type {
   GuideSanskrit,
   Loc,
 } from "../../api/client";
+import TeachingArt from "../../learnv2/TeachingArt";
+import { findGuideArt } from "../../learnv2/assetMap";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
 import { color, fill, font, onFill, radius, script, space, type FillName } from "../../theme";
@@ -31,6 +33,7 @@ export interface GuideTextCtx {
   lang: GuideLang;
   t: (loc?: Loc | null) => string;
   tone?: FillName;
+  topicId?: string;
 }
 
 export function CheckedMark({ lang }: { lang: GuideLang }) {
@@ -74,12 +77,19 @@ export function SanskritLine({
 function ExampleCard({ item, ctx, wild }: { item: GuideExample; ctx: GuideTextCtx; wild?: boolean }) {
   const { sized } = useTypeScale();
   const [open, setOpen] = React.useState(false);
+  const artId = wild ? undefined : findGuideArt(ctx.topicId, item.sa, item.iast);
   const words = item.words ?? [];
   const showAll = words.length > 0 && words.length <= 5;
   const underline: FillName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
   return (
     <View style={[styles.example, wild && styles.exampleWild]}>
-      <SanskritLine node={item} ctx={ctx} size={22} meaning={item.meaning} />
+      {artId ? <>
+        <TeachingArt assetId={artId} sa={item.sa} iast={item.iast} />
+        <View style={styles.saRow}>
+          {item.checked && <CheckedMark lang={ctx.lang} />}
+          <AudioButton url={item.audio_url} label={item.iast} />
+        </View>
+      </> : <SanskritLine node={item} ctx={ctx} size={22} meaning={item.meaning} />}
       <InlineText
         text={ctx.t(item.meaning)}
         lang={ctx.lang}

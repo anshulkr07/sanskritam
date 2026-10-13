@@ -56,6 +56,8 @@ export interface LearnV2Card {
   };
   /** Production asset id (see assetMap). Absent = native diagram/text only. */
   assetId?: string;
+  /** Multiple contextual images can support one source passage. */
+  assetIds?: string[];
   /** New technical term introduced on this card, with its plain explanation. */
   term?: { sa: string; iast: string; meaning: LearnV2Text };
 }
@@ -72,6 +74,11 @@ export interface LearnV2Lesson {
   prereqIds: string[];
   cards: LearnV2Card[];
   sourcesLabel: LearnV2Text;
+  /** Preserved manuscript/reference reading; not a reviewed graded lesson. */
+  sourceReading?: boolean;
+  sourceLanguage?: "en" | "bilingual";
+  sourceUrls?: string[];
+  chapterId?: string;
 }
 
 export interface LearnV2Unit {
