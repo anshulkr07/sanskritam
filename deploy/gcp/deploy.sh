@@ -77,31 +77,21 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 echo "Deploying to project: $PROJECT_ID"
 
-# ── 0b. Normalize DATABASE_URL: percent-encode the password component.
-#       Supabase console URLs carry raw special chars (e.g. '@') in the
-#       password; SQLAlchemy splits user:pass@host on the FIRST '@', which
-#       corrupts the host and crashes the app at first connect.  urlsplit
-#       splits on the LAST '@' so it decodes correctly, and requoting makes
-#       this idempotent (already-encoded URLs pass through unchanged).
+# ── 0b. Normalize and TEST DATABASE_URL before changing any cloud secrets.
+#       Cloud Shell has its own .env.deploy; a correct file on Windows does
+#       not update it. A stale password must fail here, not at service boot.
+#       Use an isolated temporary Python environment if psycopg is absent.
 if [ -n "${DATABASE_URL:-}" ]; then
-  DATABASE_URL=$(python3 -c '
-import sys
-from urllib.parse import quote, unquote
-url = sys.argv[1]
-if "://" in url:
-    scheme, rest = url.split("://", 1)
-else:
-    scheme, rest = "postgresql", url
-userinfo, _, hostport = rest.rpartition("@")
-user, _, pw = userinfo.partition(":")
-# UNQUOTE to true characters, then QUOTE exactly once: idempotent by
-# construction — safe to run on raw or already-encoded URLs.
-# (Quoted components are built as plain variables — no quotes inside the
-# f-string expression, which Python < 3.12 forbids.)
-q_user = quote(unquote(user), safe="")
-q_pw = quote(unquote(pw), safe="")
-print(scheme + "://" + q_user + ":" + q_pw + "@" + hostport)
-' "$DATABASE_URL")
+  DB_CHECK_PYTHON=python3
+  if ! "$DB_CHECK_PYTHON" -c 'import psycopg' >/dev/null 2>&1; then
+    DB_CHECK_DIR=$(mktemp -d)
+    trap 'rm -rf -- "$DB_CHECK_DIR"' EXIT
+    python3 -m venv "$DB_CHECK_DIR"
+    DB_CHECK_PYTHON="$DB_CHECK_DIR/bin/python"
+    "$DB_CHECK_PYTHON" -m pip install --quiet 'psycopg[binary]>=3.1,<4'
+  fi
+  export DATABASE_URL
+  DATABASE_URL=$("$DB_CHECK_PYTHON" deploy/gcp/check_database.py)
   export DATABASE_URL
 fi
 
@@ -127,11 +117,14 @@ for name in "${!SECRETS[@]}"; do
   val="${!var:-}"
   [ -z "$val" ] && continue
   if gcloud secrets describe "$name" --project="$PROJECT_ID" >/dev/null 2>&1; then
-    printf '%s' "$val" | gcloud secrets versions add "$name" --project="$PROJECT_ID" --data-file=-
+    version_path=$(printf '%s' "$val" | gcloud secrets versions add "$name" --project="$PROJECT_ID" --data-file=- --format='value(name)')
   else
-    printf '%s' "$val" | gcloud secrets create "$name" --project="$PROJECT_ID" --data-file=-
+    gcloud secrets create "$name" --project="$PROJECT_ID"
+    version_path=$(printf '%s' "$val" | gcloud secrets versions add "$name" --project="$PROJECT_ID" --data-file=- --format='value(name)')
   fi
-  SECRET_MOUNTS+=("${var}=${name}:latest")
+  version="${version_path##*/}"
+  [[ "$version" =~ ^[0-9]+$ ]] || { echo "No secret version returned for $name" >&2; exit 1; }
+  SECRET_MOUNTS+=("${var}=${name}:${version}")
 done
 
 # The Vertex service-account key for the daily-content pipeline: a JSON file,
@@ -140,11 +133,14 @@ done
 VERTEX_CREDENTIALS_FILE="${VERTEX_CREDENTIALS_FILE:-vertex_credentials.json}"
 if [ -f "$VERTEX_CREDENTIALS_FILE" ]; then
   if gcloud secrets describe vertex-credentials --project="$PROJECT_ID" >/dev/null 2>&1; then
-    gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE"
+    version_path=$(gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE" --format='value(name)')
   else
-    gcloud secrets create vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE"
+    gcloud secrets create vertex-credentials --project="$PROJECT_ID"
+    version_path=$(gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE" --format='value(name)')
   fi
-  SECRET_MOUNTS+=("VERTEX_CREDENTIALS_JSON=vertex-credentials:latest")
+  version="${version_path##*/}"
+  [[ "$version" =~ ^[0-9]+$ ]] || { echo "No secret version returned for vertex-credentials" >&2; exit 1; }
+  SECRET_MOUNTS+=("VERTEX_CREDENTIALS_JSON=vertex-credentials:${version}")
 fi
 # --set-secrets is passed only when at least one secret is set (SARVAM_API_KEY
 # and DATABASE_URL are required in practice, so this is never empty on a real
@@ -253,7 +249,12 @@ URL=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="
 echo ""
 echo "Deployed: $URL"
 echo "Health:   $URL/health"
-curl -sS "$URL/health" && echo "" && echo "HEALTH OK" || echo "HEALTH CHECK FAILED — check logs: gcloud run services logs read $SERVICE --region $REGION"
+if ! curl --fail --silent --show-error --max-time 30 "$URL/health"; then
+  echo "HEALTH CHECK FAILED — check logs: gcloud run services logs read $SERVICE --region $REGION" >&2
+  exit 1
+fi
+echo ""
+echo "HEALTH OK"
 
 # ── 4. Daily content: Cloud Scheduler calls the tick every half hour ──────
 #       The tick is a job, not a request path. A call with nothing to do costs
