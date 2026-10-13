@@ -6,10 +6,11 @@
 // pilot manuscripts are merged into `body` as plain sentences.
 
 import type { LearnV2Lesson, LearnV2Unit } from "./types";
+import { SOURCE_READING_LESSONS, SOURCE_READING_UNITS } from "./sourceReadings";
 
 export const LEARNV2_VERSION = 1;
 
-export const LEARNV2_LESSONS: LearnV2Lesson[] = [
+export const REVIEWED_LEARNV2_LESSONS: LearnV2Lesson[] = [
   // ─── 1. Verb number: one, two and many readers ──────────────────────────
   {
     id: "verbs-number",
@@ -53,20 +54,20 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
       {
         id: "verbs-number-2",
         kind: "teach",
-        title: { en: "Root, stem, complete verb.", hi: "धातु, stem और पूर्ण क्रिया।" },
+        title: { en: "Root, stem, complete verb.", hi: "धातु, अंग और पूर्ण क्रिया।" },
         body: {
           en: "The root पठ् carries “read”. Its present stem here is पठ. Adding the ending ति gives पठति. A root names the basic action; the complete verb adds who and how many. This is one verb class; other classes build their stems differently.",
-          hi: "धातु पठ् में “पढ़ना” का अर्थ है। यहाँ present stem पठ है। अंत में ति जुड़कर पठति बनता है। धातु मूल क्रिया बताती है; पूर्ण क्रिया बताती है कौन और कितने। यह एक वर्ग का उदाहरण है; अन्य वर्ग stem अलग बनाते हैं।",
+          hi: "धातु पठ् में “पढ़ना” का अर्थ है। यहाँ वर्तमान अंग पठ है। अंत में ति जुड़कर पठति बनता है। धातु मूल क्रिया बताती है; पूर्ण क्रिया बताती है कौन और कितने। यह एक वर्ग का उदाहरण है; अन्य वर्ग अंग अलग बनाते हैं।",
         },
         steps: [
           { sa: "पठ्", iast: "paṭh", label: { en: "root", hi: "धातु" } },
-          { sa: "पठ", iast: "paṭha", label: { en: "present stem", hi: "present stem" } },
+          { sa: "पठ", iast: "paṭha", label: { en: "present stem", hi: "वर्तमान अंग" } },
           { sa: "पठति", iast: "paṭhati", label: { en: "verb", hi: "क्रिया" } },
         ],
         example: {
           sa: "पठ + ति → पठति",
           iast: "paṭha + ti → paṭhati",
-          gloss: { en: "Stem plus ending gives the complete verb.", hi: "Stem और प्रत्यय मिलकर पूर्ण क्रिया बनाते हैं।" },
+          gloss: { en: "Stem plus ending gives the complete verb.", hi: "अंग और प्रत्यय मिलकर पूर्ण क्रिया बनाते हैं।" },
           alt: { en: "Three-step formation from root to verb.", hi: "धातु से क्रिया तक तीन चरण।" },
         },
         term: {
@@ -99,7 +100,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Exactly two readers have their own form.", hi: "ठीक दो पाठकों का अपना रूप है।" },
         body: {
           en: "Both children are reading. Sanskrit uses the dual for exactly two: पठतः. It differs from both पठति and the plural ahead. We are talking about two people, so this is third person; speaking to two people directly needs a different ending.",
-          hi: "दोनों बच्चे पढ़ रहे हैं। ठीक दो के लिए संस्कृत में द्विवचन है: पठतः। यह पठति से भी अलग है और आगे आने वाले बहुवचन से भी। हम दो लोगों की बात कर रहे हैं, इसलिए यह third person है; दो से सीधे बात करने पर अंत बदलता है।",
+          hi: "दोनों बच्चे पढ़ रहे हैं। ठीक दो के लिए संस्कृत में द्विवचन है: पठतः। यह पठति से भी अलग है और आगे आने वाले बहुवचन से भी। हम दो लोगों की बात कर रहे हैं, इसलिए यह प्रथम पुरुष है; दो से सीधे बात करने पर अंत बदलता है।",
         },
         example: {
           sa: "पठतः",
@@ -119,13 +120,13 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "anchor",
         title: { en: "Keep the action. Change the ending.", hi: "क्रिया वही। अंत बदलें।" },
         body: {
-          en: "The same stem पठ still carries reading. The ending तः marks these two readers. Its final ः is visarga, written ḥ — a sound of its own, not plain h. This stem split is a working classroom analysis, not the full ancient derivation.",
-          hi: "वही stem पठ पढ़ने का अर्थ रखता है। अंत तः इन दो पाठकों को बताता है। अंतिम ः विसर्ग है, जिसे ḥ लिखते हैं — यह साधारण h नहीं। यह stem-विभाजन कक्षा का सरल विश्लेषण है, पूर्ण प्राचीन व्युत्पत्ति नहीं।",
+          en: "The same stem पठ still carries reading. The ending तः marks these two readers. Its final ः is visarga, written ḥ — a sound of its own, not plain h.",
+          hi: "वही अंग पठ पढ़ने का अर्थ रखता है। अंत तः इन दो पाठकों को बताता है। अंतिम ः विसर्ग है, जिसे ḥ लिखते हैं — यह साधारण h नहीं।",
         },
         example: {
           sa: "पठ + तः → पठतः",
           iast: "paṭha + taḥ → paṭhataḥ",
-          gloss: { en: "Same stem, dual ending.", hi: "वही stem, द्विवचन का अंत।" },
+          gloss: { en: "Same stem, dual ending.", hi: "वही अंग, द्विवचन का अंत।" },
           formula: "stem + taḥ → dual",
           alt: { en: "Exactly two learners reading; the ending changes.", hi: "ठीक दो विद्यार्थी पढ़ते हुए; अंत बदलता है।" },
         },
@@ -137,7 +138,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Three or more: the plural.", hi: "तीन या अधिक: बहुवचन।" },
         body: {
           en: "Now a group of children is reading. For three or more people we are talking about, use पठन्ति. The picture shows one group, but the same form covers any larger group too. All three forms so far are third person.",
-          hi: "अब बच्चों का समूह पढ़ रहा है। तीन या अधिक लोगों की बात हो तो पठन्ति प्रयोग करें। चित्र में एक समूह है, पर यही रूप बड़े समूह के लिए भी है। अब तक तीनों रूप third person के हैं।",
+          hi: "अब बच्चों का समूह पढ़ रहा है। तीन या अधिक लोगों की बात हो तो पठन्ति प्रयोग करें। चित्र में एक समूह है, पर यही रूप बड़े समूह के लिए भी है। अब तक तीनों रूप प्रथम पुरुष के हैं।",
         },
         example: {
           sa: "पठन्ति",
@@ -155,17 +156,17 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
       {
         id: "verbs-number-7",
         kind: "anchor",
-        title: { en: "Find the stem inside पठन्ति.", hi: "पठन्ति में stem पहचानें।" },
+        title: { en: "Find the stem inside पठन्ति.", hi: "पठन्ति में अंग पहचानें।" },
         body: {
           en: "The stem पठ remains. The ending न्ति signals these plural readers. In writing, न् and त join into one conjunct, yet the word still holds the same reading stem. Do not attach -nti to every verb; each class has its own endings.",
-          hi: "stem पठ बना रहता है। अंत न्ति इन बहुवचन पाठकों को बताता है। लेखन में न् और त एक संयुक्त अक्षर बनाते हैं, फिर भी वही पढ़ने वाला stem रहता है। -nti हर क्रिया में न जोड़ें; हर वर्ग के अपने अंत हैं।",
+          hi: "अंग पठ बना रहता है। अंत न्ति इन बहुवचन पाठकों को बताता है। लेखन में न् और त एक संयुक्त अक्षर बनाते हैं, फिर भी वही पढ़ने वाला अंग रहता है। -nti हर क्रिया में न जोड़ें; हर वर्ग के अपने अंत हैं।",
         },
         example: {
           sa: "पठ + न्ति → पठन्ति",
           iast: "paṭha + nti → paṭhanti",
-          gloss: { en: "Same stem, plural ending.", hi: "वही stem, बहुवचन का अंत।" },
+          gloss: { en: "Same stem, plural ending.", hi: "वही अंग, बहुवचन का अंत।" },
           formula: "stem + nti → plural",
-          alt: { en: "A group reading; the stem stays inside the long word.", hi: "समूह पढ़ता हुआ; लंबे शब्द में stem बना रहता है।" },
+          alt: { en: "A group reading; the stem stays inside the long word.", hi: "समूह पढ़ता हुआ; लंबे शब्द में अंग बना रहता है।" },
         },
         assetId: "verbs-reading-plural",
       },
@@ -175,7 +176,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "One action. Three numbers.", hi: "एक क्रिया। तीन वचन।" },
         body: {
           en: "The action stays “read”; only the ending changes with number. You can now explain one, two and many readers without a nine-form table. Next comes a new question: keeping the action, how do “I read” and “you read” sound? Scope so far: third person, present, one verb class.",
-          hi: "क्रिया “पढ़ना” वही रहती है; केवल वचन से अंत बदलता है। अब आप नौ-रूपों की तालिका बिना एक, दो और अनेक पाठक समझा सकते हैं। अगला प्रश्न: वही क्रिया “मैं पढ़ता हूँ” और “तुम पढ़ते हो” में कैसी लगेगी? अब तक: third person, present, एक वर्ग।",
+          hi: "क्रिया “पढ़ना” वही रहती है; केवल वचन से अंत बदलता है। अब आप नौ-रूपों की तालिका बिना एक, दो और अनेक पाठक समझा सकते हैं। अगला प्रश्न: वही क्रिया “मैं पढ़ता हूँ” और “तुम पढ़ते हो” में कैसी लगेगी? अब तक: प्रथम पुरुष, वर्तमान काल, एक वर्ग।",
         },
         rows: [
           { sa: "पठति", iast: "paṭhati", gloss: { en: "one reads", hi: "एक पढ़ता है" } },
@@ -188,8 +189,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: two readers.", hi: "करके देखें: दो पाठक।" },
         body: {
-          en: "Picture exactly two children, both reading. Reach for the form before checking. Reading the choices is the practice; nothing is graded or stored as mastery.",
-          hi: "ठीक दो बच्चों की कल्पना करें, दोनों पढ़ रहे हैं। उत्तर देखे बिना रूप चुनें। विकल्प पढ़ना ही अभ्यास है; कोई अंक या mastery नहीं मिलती।",
+          en: "Picture exactly two children, both reading. Reach for the form before checking.",
+          hi: "ठीक दो बच्चों की कल्पना करें, दोनों पढ़ रहे हैं। उत्तर देखे बिना रूप चुनें।",
         },
         practice: {
           prompt: {
@@ -250,7 +251,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     prereqIds: [],
     sourcesLabel: {
       en: "After Whitney §§109–125, 149 (public domain). Original lesson wording.",
-      hi: "Whitney §§109–125, 149 के आधार पर (public domain)। मूल पाठ-शब्द।",
+      hi: "Whitney §§109–125, 149 के आधार पर (सार्वजनिक डोमेन)। मूल पाठ-शब्द।",
     },
     cards: [
       {
@@ -340,7 +341,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "A pause changes the setting.", hi: "विराम स्थिति बदलता है।" },
         body: {
           en: "At a real pause, read the pause form: रामः । stays रामः । Do not force a rule across a full stop just because two written words sit side by side. A space alone never proves spoken joining.",
-          hi: "सच्चे विराम पर विराम-रूप पढ़ें: रामः । वही रहता है। केवल पास लिखे होने से पूर्णविराम के पार नियम न लगाएँ। अकेला space बोले गए सन्धि का प्रमाण नहीं।",
+          hi: "सच्चे विराम पर विराम-रूप पढ़ें: रामः । वही रहता है। केवल पास लिखे होने से पूर्णविराम के पार नियम न लगाएँ। अकेली खाली जगह बोले गए सन्धि का प्रमाण नहीं।",
         },
         example: {
           sa: "रामः ।",
@@ -361,9 +362,9 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         example: {
           sa: "मरुत् + भिः → मरुद्भिः",
           iast: "marut + bhiḥ → marudbhiḥ",
-          gloss: { en: "“By the winds.” Stem plus ending.", hi: "“वायुओं द्वारा।” stem और प्रत्यय।" },
+          gloss: { en: "“By the winds.” Stem plus ending.", hi: "“वायुओं द्वारा।” अंग और प्रत्यय।" },
           formula: "t + bh → dbh",
-          alt: { en: "A stem joining its case ending.", hi: "stem का विभक्ति-प्रत्यय से मेल।" },
+          alt: { en: "A stem joining its case ending.", hi: "अंग का विभक्ति-प्रत्यय से मेल।" },
         },
       },
       {
@@ -387,8 +388,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: find the boundary.", hi: "करके देखें: स्थल पहचानें।" },
         body: {
-          en: "Name the two meeting sounds before any rule. This choice is local practice only — it writes no score anywhere.",
-          hi: "नियम से पहले दोनों मिलने वाली ध्वनियाँ बताएँ। यह केवल स्थानीय अभ्यास है — कहीं कोई अंक नहीं लिखा जाता।",
+          en: "Name the two meeting sounds before any rule.",
+          hi: "नियम से पहले दोनों मिलने वाली ध्वनियाँ बताएँ।",
         },
         practice: {
           prompt: {
@@ -425,7 +426,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     prereqIds: ["sandhi-boundary"],
     sourcesLabel: {
       en: "After Whitney §126 (public domain); like-vowel examples cross-checked with learnsanskrit.org vowel-sandhi (CC BY 4.0).",
-      hi: "Whitney §126 के आधार पर (public domain); उदाहरण learnsanskrit.org स्वर-सन्धि से मिलान (CC BY 4.0)।",
+      hi: "Whitney §126 के आधार पर (सार्वजनिक डोमेन); उदाहरण learnsanskrit.org स्वर-सन्धि से मिलान (CC BY 4.0)।",
     },
     cards: [
       {
@@ -566,8 +567,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: merge the pair.", hi: "करके देखें: जोड़ी मिलाएँ।" },
         body: {
-          en: "Apply the family rule to a fresh pair. Local practice only — no score is stored.",
-          hi: "नई जोड़ी पर परिवार-नियम लगाएँ। केवल स्थानीय अभ्यास — कोई अंक संचित नहीं।",
+          en: "Apply the family rule to a fresh pair.",
+          hi: "नई जोड़ी पर परिवार-नियम लगाएँ।",
         },
         practice: {
           prompt: {
@@ -581,7 +582,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
           ],
           explain: {
             en: "Same family (i + i) merges to long ī: अतीव. A glide (y) needs a different next vowel.",
-            hi: "एक परिवार (इ + इ) दीर्घ ई में मिलता है: अतीव। glide (य्) के लिए भिन्न अगला स्वर चाहिए।",
+            hi: "एक परिवार (इ + इ) दीर्घ ई में मिलता है: अतीव। अर्धस्वर (य्) के लिए भिन्न अगला स्वर चाहिए।",
           },
         },
       },
@@ -604,7 +605,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     prereqIds: ["sandhi-like-vowels"],
     sourcesLabel: {
       en: "After Whitney §127 (public domain). Original lesson wording.",
-      hi: "Whitney §127 के आधार पर (public domain)। मूल पाठ-शब्द।",
+      hi: "Whitney §127 के आधार पर (सार्वजनिक डोमेन)। मूल पाठ-शब्द।",
     },
     cards: [
       {
@@ -718,8 +719,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "teach",
         title: { en: "Direction matters.", hi: "क्रम मायने रखता है।" },
         body: {
-          en: "a + i gives e — but i + a gives ya (next lesson's glide). You cannot reverse the inputs and keep the rule. These rows are sound demonstrations, clearly labelled, not full vocabulary items.",
-          hi: "अ + इ ए देता है — पर इ + अ य देता है (अगले पाठ की glide)। क्रम उल्टाकर नियम वही नहीं रहता। ये पंक्तियाँ ध्वनि-प्रदर्शन हैं, स्पष्ट चिह्नित — पूर्ण शब्द नहीं।",
+          en: "a + i gives e — but i + a gives ya (next lesson's glide). You cannot reverse the inputs and keep the rule.",
+          hi: "अ + इ ए देता है — पर इ + अ य देता है (अगले पाठ की अर्धस्वर)। क्रम उल्टाकर नियम वही नहीं रहता।",
         },
         rows: [
           { sa: "अ + इ → ए", iast: "a + i → e", gloss: { en: "a first", hi: "अ पहले" } },
@@ -746,8 +747,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: name the result.", hi: "करके देखें: परिणाम बताएँ।" },
         body: {
-          en: "Use the decision map on a fresh pair. Local practice only.",
-          hi: "नई जोड़ी पर निर्णय-नक्शा लगाएँ। केवल स्थानीय अभ्यास।",
+          en: "Use the decision map on a fresh pair.",
+          hi: "नई जोड़ी पर निर्णय-नक्शा लगाएँ।",
         },
         practice: {
           prompt: {
@@ -756,7 +757,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
           },
           choices: [
             { label: { en: "हितोपदेशः (hitopadeśaḥ)", hi: "हितोपदेशः (hitopadeśaḥ)" }, correct: true },
-            { label: { en: "हितैदेशः (hitaitheśaḥ)", hi: "हितैदेशः (hitaitheśaḥ)" }, correct: false },
+            { label: { en: "हितैदेशः (hitaideśaḥ)", hi: "हितैदेशः (hitaideśaḥ)" }, correct: false },
             { label: { en: "हितूपदेशः (hitūpadeśaḥ)", hi: "हितूपदेशः (hitūpadeśaḥ)" }, correct: false },
           ],
           explain: {
@@ -773,7 +774,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     id: "sandhi-glides",
     rank: 5,
     unit: { en: "How words join", hi: "शब्द कैसे जुड़ते हैं" },
-    title: { en: "A vowel becomes a glide", hi: "स्वर glide बनता है" },
+    title: { en: "A vowel becomes a glide", hi: "स्वर अर्धस्वर बनता है" },
     titleSa: "यण्-सन्धि",
     titleIast: "yaṇ-sandhi",
     outcome: {
@@ -784,7 +785,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     prereqIds: ["sandhi-a-combinations"],
     sourcesLabel: {
       en: "After Whitney §129 (public domain). Original lesson wording.",
-      hi: "Whitney §129 के आधार पर (public domain)। मूल पाठ-शब्द।",
+      hi: "Whitney §129 के आधार पर (सार्वजनिक डोमेन)। मूल पाठ-शब्द।",
     },
     cards: [
       {
@@ -793,19 +794,19 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "i can become y.", hi: "इ य् बन सकता है।" },
         body: {
           en: "इति + अपि → इत्यपि (“thus also”): final i meets a, a different family, so i becomes the glide y while a stays. The traditional name is yaṇ: y belongs with i, v with u, r with ṛ.",
-          hi: "इति + अपि → इत्यपि (“इस प्रकार भी”): अंतिम इ अ से मिलता है, भिन्न परिवार, इसलिए इ glide य् बनता है और अ बचा रहता है। परंपरागत नाम यण् है: य् इ का, व् उ का, र् ऋ का साथी है।",
+          hi: "इति + अपि → इत्यपि (“इस प्रकार भी”): अंतिम इ अ से मिलता है, भिन्न परिवार, इसलिए इ अर्धस्वर य् बनता है और अ बचा रहता है। परंपरागत नाम यण् है: य् इ का, व् उ का, र् ऋ का साथी है।",
         },
         example: {
           sa: "इति + अपि → इत्यपि",
           iast: "iti + api → ityapi",
           gloss: { en: "“Thus also.” i + a → ya.", hi: "“इस प्रकार भी।” इ + अ → य।" },
           formula: "i + a → ya",
-          alt: { en: "Final i turning into a glide before a.", hi: "अंतिम इ अ से पहले glide बनता हुआ।" },
+          alt: { en: "Final i turning into a glide before a.", hi: "अंतिम इ अ से पहले अर्धस्वर बनता हुआ।" },
         },
         term: {
           sa: "यण्",
           iast: "yaṇ",
-          meaning: { en: "The change of i/u/ṛ into the glides y/v/r.", hi: "इ/उ/ऋ का य्/व्/र् glide में बदलाव।" },
+          meaning: { en: "The change of i/u/ṛ into the glides y/v/r.", hi: "इ/उ/ऋ का य्/व्/र् अर्धस्वर में बदलाव।" },
         },
       },
       {
@@ -846,7 +847,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "ṛ becomes r.", hi: "ऋ र् बनता है।" },
         body: {
           en: "पितृ + आदेशः → पित्रादेशः (“a father's instruction”): vocalic ṛ turns consonantal r before ā, which then supplies the boundary syllable. Rare ḷ has the matching glide l. Never swap compound stems with standalone word forms.",
-          hi: "पितृ + आदेशः → पित्रादेशः (“पिता का आदेश”): स्वर-ऋ आ से पहले व्यंजन-र् बनता है, और आ संधि-अक्षर देता है। दुर्लभ ऌ का साथी glide ल् है। समास-stem और स्वतंत्र शब्द-रूप न बदलें।",
+          hi: "पितृ + आदेशः → पित्रादेशः (“पिता का आदेश”): स्वर-ऋ आ से पहले व्यंजन-र् बनता है, और आ संधि-अक्षर देता है। दुर्लभ ऌ का साथी अर्धस्वर ल् है। समास-अंग और स्वतंत्र शब्द-रूप न बदलें।",
         },
         example: {
           sa: "पितृ + आदेशः → पित्रादेशः",
@@ -869,23 +870,23 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
           iast: "iti + eva → ityeva",
           gloss: { en: "“Just so.” i + e → ye.", hi: "“ठीक ऐसा।” इ + ए → ये।" },
           formula: "i + e → ye",
-          alt: { en: "The second vowel surviving beside the new glide.", hi: "नए glide के पास दूसरा स्वर बचा हुआ।" },
+          alt: { en: "The second vowel surviving beside the new glide.", hi: "नए अर्धस्वर के पास दूसरा स्वर बचा हुआ।" },
         },
       },
       {
         id: "sandhi-glides-6",
         kind: "teach",
-        title: { en: "Same-family vowels do not glide.", hi: "एक परिवार के स्वर glide नहीं बनते।" },
+        title: { en: "Same-family vowels do not glide.", hi: "एक परिवार के स्वर अर्धस्वर नहीं बनते।" },
         body: {
           en: "अति + इव → अतीव: two i vowels of one family merge into ī — never yi. Compare families first: same family merges, different family glides. Rare ṛ/ḷ pairs follow their traditional classification in the reference.",
-          hi: "अति + इव → अतीव: एक परिवार के दो इ स्वर ई में मिलते हैं — यि कभी नहीं। पहले परिवार तुलना करें: समान मिलते हैं, भिन्न glide बनते हैं। दुर्लभ ऋ/ऌ जोड़ियाँ संदर्भ के पारंपरिक वर्ग से चलें।",
+          hi: "अति + इव → अतीव: एक परिवार के दो इ स्वर ई में मिलते हैं — यि कभी नहीं। पहले परिवार तुलना करें: समान मिलते हैं, भिन्न अर्धस्वर बनते हैं। दुर्लभ ऋ/ऌ जोड़ियाँ संदर्भ के पारंपरिक वर्ग से चलें।",
         },
         example: {
           sa: "अति + इव → अतीव",
           iast: "ati + iva → atīva",
           gloss: { en: "i + i → ī, not yi.", hi: "इ + इ → ई, यि नहीं।" },
           formula: "same family → merge",
-          alt: { en: "Same-family vowels merging instead of gliding.", hi: "एक परिवार के स्वर glide के बजाय मिलते हुए।" },
+          alt: { en: "Same-family vowels merging instead of gliding.", hi: "एक परिवार के स्वर अर्धस्वर के बजाय मिलते हुए।" },
         },
       },
       {
@@ -907,26 +908,26 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
       {
         id: "sandhi-glides-8",
         kind: "summary",
-        title: { en: "Recover the vowel through the glide.", hi: "glide से स्वर वापस पाएँ।" },
+        title: { en: "Recover the vowel through the glide.", hi: "अर्धस्वर से स्वर वापस पाएँ।" },
         body: {
           en: "Reading नद्यत्र, spot अत्र and test नदी as the first word: y can come from ī before a. But a glide never reveals the original length, and not every y or v comes from sandhi — some are original consonants. Propose with words, then test with grammar.",
-          hi: "नद्यत्र पढ़ते समय अत्र पहचानें और नदी को पहला शब्द मानकर परखें: अ से पहले ई से य् आ सकता है। पर glide मूल लंबाई नहीं बताता, और हर य्/व् सन्धि से नहीं — कुछ मूल व्यंजन हैं। शब्दों से सुझाएँ, व्याकरण से परखें।",
+          hi: "नद्यत्र पढ़ते समय अत्र पहचानें और नदी को पहला शब्द मानकर परखें: अ से पहले ई से य् आ सकता है। पर अर्धस्वर मूल लंबाई नहीं बताता, और हर य्/व् सन्धि से नहीं — कुछ मूल व्यंजन हैं। शब्दों से सुझाएँ, व्याकरण से परखें।",
         },
         example: {
           sa: "नदी + अत्र → नद्यत्र",
           iast: "nadyatra ← nadī + atra",
           gloss: { en: "y may point back to i or ī.", hi: "य् इ या ई की ओर इशारा कर सकता है।" },
           formula: "y ← i / ī",
-          alt: { en: "Reading backwards from glide to possible vowels.", hi: "glide से संभावित स्वरों तक उल्टा पठन।" },
+          alt: { en: "Reading backwards from glide to possible vowels.", hi: "अर्धस्वर से संभावित स्वरों तक उल्टा पठन।" },
         },
       },
       {
         id: "sandhi-glides-9",
         kind: "practice",
-        title: { en: "Try it: glide or merge?", hi: "करके देखें: glide या मेल?" },
+        title: { en: "Try it: glide or merge?", hi: "करके देखें: अर्धस्वर या मेल?" },
         body: {
-          en: "First compare the families, then choose. Local practice only.",
-          hi: "पहले परिवार तुलना करें, फिर चुनें। केवल स्थानीय अभ्यास।",
+          en: "First compare the families, then choose.",
+          hi: "पहले परिवार तुलना करें, फिर चुनें।",
         },
         practice: {
           prompt: {
@@ -957,13 +958,13 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     titleIast: "e-o-sandhi",
     outcome: {
       en: "Separate internal ay/av from external elision and retained hiatus.",
-      hi: "आंतरिक अय्/अव् को बाह्य लोप और शेष hiatus से अलग करें।",
+      hi: "आंतरिक अय्/अव् को बाह्य लोप और शेष स्वर-अंतराल से अलग करें।",
     },
     minutes: 7,
     prereqIds: ["sandhi-glides"],
     sourcesLabel: {
       en: "After Whitney §§131–135 (public domain). Internal formations labelled schematic.",
-      hi: "Whitney §§131–135 के आधार पर (public domain)। आंतरिक रचनाएँ schematic चिह्नित।",
+      hi: "Whitney §§131–135 के आधार पर (सार्वजनिक डोमेन)। आंतरिक रचनाएँ सांकेतिक चिह्नित।",
     },
     cards: [
       {
@@ -972,7 +973,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Inside formations, e can open to ay.", hi: "रचना में ए अय् खुलता है।" },
         body: {
           en: "In the schematic formation ने + अ + न्ति → नयन्ति (“they lead”), e develops into ay before a. This is internal word-building — never transfer its ay result automatically to separate words ending in e.",
-          hi: "schematic रचना ने + अ + न्ति → नयन्ति (“वे ले जाते हैं”) में ए अ से पहले अय् बनता है। यह आंतरिक शब्द-रचना है — इसका अय् अलग शब्दों के ए पर स्वतः न लगाएँ।",
+          hi: "सांकेतिक रचना ने + अ + न्ति → नयन्ति (“वे ले जाते हैं”) में ए अ से पहले अय् बनता है। यह आंतरिक शब्द-रचना है — इसका अय् अलग शब्दों के ए पर स्वतः न लगाएँ।",
         },
         example: {
           sa: "ने + अ → नय (→ नयन्ति)",
@@ -988,7 +989,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "The parallel for o is av.", hi: "ओ का समांतर अव् है।" },
         body: {
           en: "The schematic भो + अ + न्ति → भवन्ति (“they are”) opens internal o to av. Internal ai→āy and au→āv follow the same pattern. Sandhi is one stage of derivation here, not a substitute for the conjugation system.",
-          hi: "schematic भो + अ + न्ति → भवन्ति (“वे होते हैं”) में आंतरिक ओ अव् खुलता है। आंतरिक ऐ→आय् और औ→आव् भी इसी ढर्रे पर। यहाँ सन्धि व्युत्पत्ति का एक चरण है, क्रिया-तंत्र का विकल्प नहीं।",
+          hi: "सांकेतिक भो + अ + न्ति → भवन्ति (“वे होते हैं”) में आंतरिक ओ अव् खुलता है। आंतरिक ऐ→आय् और औ→आव् भी इसी ढर्रे पर। यहाँ सन्धि व्युत्पत्ति का एक चरण है, क्रिया-तंत्र का विकल्प नहीं।",
         },
         example: {
           sa: "भो + अ → भव (→ भवन्ति)",
@@ -1041,7 +1042,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Other vowels keep the gap too.", hi: "अन्य स्वर भी अंतर रखते हैं।" },
         body: {
           en: "ते + इह → त इह (“they are here”): final e becomes a and i stays intact. Two adjacent vowel syllables are therefore correct in joined Sanskrit. The space is an editorial help; the rule, not the space, explains the gap.",
-          hi: "ते + इह → त इह (“वे यहाँ हैं”): अंतिम ए अ बनता है, इ ज्यों का त्यों। अतः जुड़े संस्कृत में दो पास स्वर-अक्षर सही हैं। space संपादकीय सहायता है; अंतर का कारण नियम है, space नहीं।",
+          hi: "ते + इह → त इह (“वे यहाँ हैं”): अंतिम ए अ बनता है, इ ज्यों का त्यों। अतः जुड़े संस्कृत में दो पास स्वर-अक्षर सही हैं। खाली जगह संपादकीय सहायता है; अंतर का कारण नियम है, खाली जगह नहीं।",
         },
         example: {
           sa: "ते + इह → त इह",
@@ -1057,7 +1058,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "External ai leaves ā; au keeps v.", hi: "बाह्य ऐ आ देता है; औ व् रखता है।" },
         body: {
           en: "तस्यै + अपि → तस्या अपि (“to her too”): external ai becomes ā and the next vowel stays separate — never merge them again. But तौ + एव → तावेव: au becomes āv with v retained. Learn this contrast instead of dropping every glide.",
-          hi: "तस्यै + अपि → तस्या अपि (“उसको भी”): बाह्य ऐ आ बनता है, अगला स्वर अलग — फिर न मिलाएँ। पर तौ + एव → तावेव: औ आव् बनता है, व् बचा रहता है। हर glide न गिराएँ; यह अंतर सीखें।",
+          hi: "तस्यै + अपि → तस्या अपि (“उसको भी”): बाह्य ऐ आ बनता है, अगला स्वर अलग — फिर न मिलाएँ। पर तौ + एव → तावेव: औ आव् बनता है, व् बचा रहता है। हर अर्धस्वर न गिराएँ; यह अंतर सीखें।",
         },
         rows: [
           { sa: "तस्यै + अपि → तस्या अपि", iast: "tasyai + api → tasyā api", gloss: { en: "ai → ā | vowel", hi: "ऐ → आ | स्वर" } },
@@ -1085,8 +1086,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: elide or keep?", hi: "करके देखें: लोप या रक्षा?" },
         body: {
-          en: "Short a after e disappears; long ā stays. Local practice only.",
-          hi: "ए के बाद ह्रस्व अ लुप्त होता है; दीर्घ आ बचता है। केवल स्थानीय अभ्यास।",
+          en: "Short a after e disappears; long ā stays.",
+          hi: "ए के बाद ह्रस्व अ लुप्त होता है; दीर्घ आ बचता है।",
         },
         practice: {
           prompt: {
@@ -1123,7 +1124,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
     prereqIds: ["sandhi-e-o"],
     sourcesLabel: {
       en: "After Whitney §§136–138 (public domain). Specialist forms labelled as such.",
-      hi: "Whitney §§136–138 के आधार पर (public domain)। विशेष रूप चिह्नित।",
+      hi: "Whitney §§136–138 के आधार पर (सार्वजनिक डोमेन)। विशेष रूप चिह्नित।",
     },
     cards: [
       {
@@ -1132,7 +1133,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Some dual endings are protected.", hi: "कुछ द्विवचन अंत रक्षित हैं।" },
         body: {
           en: "अग्नी अपश्यम् (“I saw two fires”): the dual ending ī stands before the next vowel — no ī→y glide. This protected class is called pragṛhya. Always identify the grammatical ending before the usual rule.",
-          hi: "अग्नी अपश्यम् (“मैंने दो अग्नियाँ देखीं”): द्विवचन अंत ई अगले स्वर से पहले ज्यों का त्यों — ई→य् glide नहीं। इस रक्षित वर्ग को प्रगृह्य कहते हैं। साधारण नियम से पहले व्याकरणिक अंत पहचानें।",
+          hi: "अग्नी अपश्यम् (“मैंने दो अग्नियाँ देखीं”): द्विवचन अंत ई अगले स्वर से पहले ज्यों का त्यों — ई→य् अर्धस्वर नहीं। इस रक्षित वर्ग को प्रगृह्य कहते हैं। साधारण नियम से पहले व्याकरणिक अंत पहचानें।",
         },
         example: {
           sa: "अग्नी अपश्यम्",
@@ -1233,12 +1234,12 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         title: { en: "Grammar comes before the table.", hi: "तालिका से पहले व्याकरण।" },
         body: {
           en: "The past-tense marker a can give ai before i (augment + ita → aita) instead of ordinary e — more proof that sandhi needs grammatical context. Lesson rule: identify ending, prefix, or augment first; only then choose the sound rule. Scope ends here for vowels; consonants need their own chapter.",
-          hi: "भूतकाल-चिह्न अ इ से पहले ऐ दे सकता है (augment + ita → aita), साधारण ए के बजाय — यही प्रमाण कि सन्धि को व्याकरण-संदर्भ चाहिए। पाठ-नियम: पहले अंत, उपसर्ग या augment पहचानें; तभी ध्वनि-नियम चुनें। स्वरों का दायरा यहीं; व्यंजनों का अलग अध्याय होगा।",
+          hi: "भूतकाल-चिह्न अ इ से पहले ऐ दे सकता है (आगम + ita → aita), साधारण ए के बजाय — यही प्रमाण कि सन्धि को व्याकरण-संदर्भ चाहिए। पाठ-नियम: पहले अंत, उपसर्ग या आगम पहचानें; तभी ध्वनि-नियम चुनें। स्वरों का दायरा यहीं; व्यंजनों का अलग अध्याय होगा।",
         },
         example: {
           sa: "अ + इत → ऐत",
           iast: "a + ita → aita",
-          gloss: { en: "Augment a + i → ai (specialist).", hi: "augment अ + इ → ऐ (विशेष)।" },
+          gloss: { en: "Augment a + i → ai (specialist).", hi: "आगम अ + इ → ऐ (विशेष)।" },
           formula: "augment a + i → ai",
           alt: { en: "Grammar overriding the ordinary vowel table.", hi: "व्याकरण साधारण स्वर-तालिका पर भारी पड़ता हुआ।" },
         },
@@ -1248,8 +1249,8 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
         kind: "practice",
         title: { en: "Try it: join or protect?", hi: "करके देखें: संधि या रक्षा?" },
         body: {
-          en: "Check the grammar class before the sound rule. Local practice only.",
-          hi: "ध्वनि-नियम से पहले व्याकरण-वर्ग जाँचें। केवल स्थानीय अभ्यास।",
+          en: "Check the grammar class before the sound rule.",
+          hi: "ध्वनि-नियम से पहले व्याकरण-वर्ग जाँचें।",
         },
         practice: {
           prompt: {
@@ -1271,7 +1272,7 @@ export const LEARNV2_LESSONS: LearnV2Lesson[] = [
   },
 ];
 
-export const LEARNV2_UNITS: LearnV2Unit[] = [
+export const REVIEWED_LEARNV2_UNITS: LearnV2Unit[] = [
   {
     id: "beginnings",
     rank: 1,
@@ -1294,6 +1295,22 @@ export const LEARNV2_UNITS: LearnV2Unit[] = [
     ],
   },
 ];
+
+// Off the Learn trail (owner, 2026-10-13): the 1–4-card Grammar guide
+// readings (`guide-art-*`; the guide topics themselves stay in the Library,
+// with their pictures) and the six manuscript copies of the reviewed Sandhi
+// lessons. Their data stays in sourceReadings.ts for the rebuild.
+const RETIRED_SANDHI_COPIES = new Set([
+  "sandhi-source-boundary", "sandhi-source-like-vowels", "sandhi-source-a-combinations",
+  "sandhi-source-glides", "sandhi-source-e-o", "sandhi-source-protected",
+]);
+const kept = (id: string) => !id.startsWith("guide-art-") && !RETIRED_SANDHI_COPIES.has(id);
+
+export const LEARNV2_LESSONS: LearnV2Lesson[] = [...REVIEWED_LEARNV2_LESSONS, ...SOURCE_READING_LESSONS.filter((l) => kept(l.id))];
+export const LEARNV2_UNITS: LearnV2Unit[] = [...REVIEWED_LEARNV2_UNITS, ...SOURCE_READING_UNITS]
+  .filter((u) => !u.id.startsWith("guide-art-"))
+  .map((u) => ({ ...u, lessonIds: u.lessonIds.filter(kept) }))
+  .filter((u) => u.lessonIds.length > 0);
 
 export function getLearnV2Lesson(id: string): LearnV2Lesson | undefined {
   return LEARNV2_LESSONS.find((l) => l.id === id);

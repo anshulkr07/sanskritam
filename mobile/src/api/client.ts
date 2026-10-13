@@ -2182,6 +2182,11 @@ export const api = {
     request<ProgressRepair>("/progress/repair", { method: "POST" }, true),
   progressHistory: (days = 35) =>
     request<ProgressDay[]>(`/progress/history?days=${days}`, {}, true),
+  // Learn trail: a card lesson read to its end. First finish earns XP; any
+  // finish marks the day active for the streak.
+  cardLessonDone: (body: { lesson_id: string; checks_right: number; checks_total: number }) =>
+    request<{ xp: number; first_time: boolean; today_xp: number; goal_xp: number; goal_met: boolean }>(
+      "/progress/card-lesson", { method: "POST", body: JSON.stringify(body) }, true),
 
   // Play games (HANDOVER 5.7): no vendor calls, no quota.
   gamesDeck: (game: string, set?: string, topic?: string) => {

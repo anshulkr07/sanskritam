@@ -3,7 +3,7 @@
 import logging
 from datetime import date, timedelta
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -91,6 +91,68 @@ def get_streak(
         "streak": learner.streak or 0,
         "freezes": learner.streak_freezes or 0,
         "max_freezes": 2,
+    }
+
+
+CARD_LESSON_XP = 10
+CARD_LESSON_GAME = "card-lesson"
+
+
+class CardLessonIn(BaseModel):
+    lesson_id: str
+    checks_right: int = 0
+    checks_total: int = 0
+
+
+@router.post("/card-lesson")
+def finish_card_lesson(
+    body: CardLessonIn,
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """A Learn card lesson read to its last card (owner decision 2026-10-13:
+    card lessons count toward XP and the streak).
+
+    The first finish of a lesson earns CARD_LESSON_XP; finishing it again
+    earns nothing but still marks the day active. Finishes are kept as
+    GameResult rows (game "card-lesson", mode = lesson id) so no migration
+    is needed; score stays 0 and goal_met False, so the games' own point cap
+    and daily-challenge streak never count them.
+    """
+    from app.models import GameResult
+    from app.services.activity import record_activity
+
+    lesson_id = (body.lesson_id or "").strip()[:32]
+    if not lesson_id:
+        raise HTTPException(status_code=422, detail="lesson_id is required.")
+    seen = (
+        db.query(GameResult)
+        .filter(
+            GameResult.learner_id == learner.id,
+            GameResult.game == CARD_LESSON_GAME,
+            GameResult.mode == lesson_id,
+        )
+        .first()
+    )
+    xp = 0 if seen else CARD_LESSON_XP
+    db.add(GameResult(
+        learner_id=learner.id,
+        date=learner_today(learner),
+        game=CARD_LESSON_GAME,
+        mode=lesson_id,
+        score=0,
+        moves=max(0, int(body.checks_right or 0)),
+        goal_met=False,
+        daily=False,
+    ))
+    row = record_activity(db, learner, xp=xp, attempts=1)
+    db.commit()
+    return {
+        "xp": xp,
+        "first_time": seen is None,
+        "today_xp": row.xp,
+        "goal_xp": learner.daily_goal_xp or 50,
+        "goal_met": bool(row.goal_met),
     }
 
 

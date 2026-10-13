@@ -121,8 +121,10 @@ for (const m of assetSrc.matchAll(/require\("([^"]+)"\)/g)) {
   if (!existsSync(abs)) fail(`assetMap requires missing file ${rel}`);
   else ok(`asset present: ${rel}`);
 }
-if (assetSrc.includes("learn-v2/verbs-reading") && !assetSrc.includes(".jpg"))
-  fail("assetMap should prefer the production JPGs");
+// 13 Oct 2026: the delivered one/two/five-reader PNGs replaced the prototype
+// JPGs (IMAGE-INTEGRATION-RESULT.md); the JPG files stay on disk unused.
+if (assetSrc.includes("learn-v2/verbs-reading") && !assetSrc.includes("verbs-reading-dual-v1.png"))
+  fail("assetMap should use the delivered verbs-reading PNGs");
 
 // ── 4. Progress keys are versioned and separate ──────────────────────────
 const progSrc = readFileSync(path.join(root, "progress.ts"), "utf8");

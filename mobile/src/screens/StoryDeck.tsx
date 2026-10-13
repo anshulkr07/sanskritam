@@ -121,9 +121,11 @@ export default function StoryDeckScreen({ navigation }: Props) {
   );
 
   const goDeep = useCallback(
-    (link: string) => {
-      if (!link || link === "none") return;
+    (target: string) => {
+      if (!target || target === "none") return;
       haptics.tap();
+      // The old Path screen is now the Learn trail.
+      const link = target === "Path" ? "Learn" : target;
       if (TAB_TARGETS.has(link)) {
         // Stack → tab: route through the MainTabs navigator. The cast is
         // the same `as never` precedent Play.tsx uses for tab targets.
@@ -144,7 +146,6 @@ export default function StoryDeckScreen({ navigation }: Props) {
           navigation.navigate("Vocab", {});
           break;
         case "Varnamala":
-        case "Path":
         case "Grammar":
         case "Writing":
         case "Shloka":

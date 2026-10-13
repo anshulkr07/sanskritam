@@ -6,7 +6,7 @@
 //
 // U8-1 (info architecture): tabs plus a left drawer. Shloka and Varnamala
 // stop being tabs and become stack screens reached from Home cards (U8-2);
-// Learn combines Course, Reference and Practice; Progress lives in the drawer (hamburger)
+// Learn is one trail plus a Library; Progress lives in the drawer (hamburger)
 // next to Settings — it is consulted, not lived in. The drawer hangs off a
 // hamburger on Home.
 
@@ -24,11 +24,11 @@ export type MainTabParamList = {
 
 export type RootStackParamList = {
   MainTabs: undefined;
-  // Compatible entry routes for the original course/reference, now inside Learn.
-  Path: undefined;
+  // The full Grammar guide browser, reached from Learn's Library.
   Grammar: undefined;
-  LearnCards: undefined;
-  LearnChapter: { chapterId: string };
+  // Learn's Library (2026-10-13): tables, Grammar chapters, tools, deeper
+  // readings. `section: "verse"` lists the metre course.
+  LearnLibrary: { section?: "verse" } | undefined;
   // U8-0: a session launched from a Path node carries the unit's feature
   // filter. This is a deliberate shape (NOT smuggled through challengeId).
   Challenge: { challengeId?: string; features?: string[] };

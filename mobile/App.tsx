@@ -25,6 +25,12 @@ import {
 const TiroDevanagariSanskrit_400Regular = require(
   "@expo-google-fonts/tiro-devanagari-sanskrit/400Regular/TiroDevanagariSanskrit_400Regular.ttf",
 );
+// Learn's interface face (2026-10-13): English and Hindi in one family. Same
+// exact-subpath import, so only the four weights Learn uses are bundled.
+const Mukta_400Regular = require("@expo-google-fonts/mukta/400Regular/Mukta_400Regular.ttf");
+const Mukta_500Medium = require("@expo-google-fonts/mukta/500Medium/Mukta_500Medium.ttf");
+const Mukta_600SemiBold = require("@expo-google-fonts/mukta/600SemiBold/Mukta_600SemiBold.ttf");
+const Mukta_700Bold = require("@expo-google-fonts/mukta/700Bold/Mukta_700Bold.ttf");
 import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
@@ -53,9 +59,7 @@ import DailyWordScreen from "./src/screens/DailyWord";
 import WritingScreen from "./src/screens/Writing";
 import LessonScreen from "./src/screens/Lesson";
 import LearnV2LessonScreen from "./src/screens/LearnV2Lesson";
-import LearnV2MapScreen from "./src/screens/LearnV2Map";
-import LearnChapterScreen from "./src/screens/LearnChapter";
-import PathScreen from "./src/screens/Path";
+import LearnLibraryScreen from "./src/screens/LearnLibrary";
 import GrammarScreen from "./src/screens/Grammar";
 import VocabScreen from "./src/screens/Vocab";
 import PingalaScreen from "./src/screens/Pingala";
@@ -121,10 +125,8 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={HEADER_OPTS}>
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-      <Stack.Screen name="Path" component={PathScreen} options={{ title: "Course" }} />
       <Stack.Screen name="Grammar" component={GrammarScreen} options={{ title: "Reference" }} />
-      <Stack.Screen name="LearnCards" component={LearnV2MapScreen} options={{ title: "Card lessons" }} />
-      <Stack.Screen name="LearnChapter" component={LearnChapterScreen} options={{ title: "Learn" }} />
+      <Stack.Screen name="LearnLibrary" component={LearnLibraryScreen} options={{ headerShown: false }} />
       <Stack.Screen
         name="Challenge"
         component={ChallengeScreen}
@@ -149,7 +151,7 @@ function RootNavigator() {
             <Stack.Screen name="Lesson" component={LessonScreen} options={{ title: "Learn" }} />
             {/* LearnV2: the additive Learn tab's static lesson player. Separate
                 route and separate resume state; old Lesson/Path flows untouched. */}
-            <Stack.Screen name="LearnV2Lesson" component={LearnV2LessonScreen} options={{ title: "Learn" }} />
+            <Stack.Screen name="LearnV2Lesson" component={LearnV2LessonScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Vocab" component={VocabScreen} options={{ title: "Words" }} />
             {/* U15-6: Piṅgala as binary. */}
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
@@ -206,6 +208,10 @@ export default function App() {
     Baloo2_700Bold,
     Baloo2_800ExtraBold,
     TiroDevanagariSanskrit_400Regular,
+    Mukta_400Regular,
+    Mukta_500Medium,
+    Mukta_600SemiBold,
+    Mukta_700Bold,
   });
   // The focused route's name, so the Ask bubble can step aside on screens that
   // own the bottom of the display (Talk, Writing, the daily word).

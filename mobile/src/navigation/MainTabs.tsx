@@ -1,4 +1,4 @@
-// Five destinations. Learn holds courses, reference and practice.
+// Five destinations. Learn is one trail with a Library beside it.
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
@@ -6,7 +6,7 @@ import { PixelRatio, Platform, useWindowDimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ConversationScreen from "../screens/Conversation";
 import HomeScreen from "../screens/Home";
-import LearnHubScreen from "../screens/LearnHub";
+import LearnTrailScreen from "../screens/LearnTrail";
 import PlayScreen from "../screens/Play";
 import ReaderScreen from "../screens/Reader";
 import { haptics } from "../services/haptics";
@@ -35,7 +35,7 @@ export default function MainTabs() {
     tabBarIcon:({focused,color:c,size})=><Ionicons name={focused?ICONS[route.name].on:ICONS[route.name].off} size={size} color={c}/>,
   })}>
     <Tab.Screen name="Home" component={HomeScreen} options={{tabBarLabel:LABEL.Home}}/>
-    <Tab.Screen name="Learn" component={LearnHubScreen} options={{tabBarLabel:LABEL.Learn}}/>
+    <Tab.Screen name="Learn" component={LearnTrailScreen} options={{tabBarLabel:LABEL.Learn}}/>
     <Tab.Screen name="Conversation" component={ConversationScreen} options={{tabBarLabel:LABEL.Conversation}}/>
     <Tab.Screen name="Play" component={PlayScreen} options={{tabBarLabel:LABEL.Play}}/>
     <Tab.Screen name="Read" component={ReaderScreen} options={{tabBarLabel:LABEL.Read}}/>
