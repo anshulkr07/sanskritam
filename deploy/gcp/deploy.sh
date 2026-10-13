@@ -10,7 +10,10 @@
 #   SARVAM_API_KEY=...
 #   OPENROUTER_API_KEY=...
 #   ADMIN_TOKEN=...
-#   DATABASE_URL=postgresql://...   (Supabase session-pooler string, port 5432)
+#   DATABASE_URL=postgresql://...   only used with --rotate-database-url
+#                                   (first deployment or credential rotation).
+#                                   Normal deploys use the last ready revision's
+#                                   database secret, ignoring local DATABASE_URL.
 #   GCS_AUDIO_BUCKET=sanskritam-audio   pre-rendered WAVs live here, not on
 #                                   Cloud Run's ephemeral disk (P8-5). Omit to
 #                                   stay on local disk (dev only).
@@ -43,6 +46,8 @@
 #  not HF, and nothing else in the codebase reads one — verified 2026-09-02.)
 #
 # Usage:  bash deploy/gcp/deploy.sh
+# Rotate DB credentials: bash deploy/gcp/deploy.sh --rotate-database-url
+#   The supplied DATABASE_URL is tested before any cloud secret is changed.
 #   Project comes from PROJECT_ID (env or .env.deploy), else the active
 #   `gcloud config` project.
 
@@ -70,6 +75,14 @@ if [ -f "$ENV_FILE" ]; then
   set +a
 fi
 
+ROTATE_DATABASE_URL=false
+for arg in "$@"; do
+  case "$arg" in
+    --rotate-database-url) ROTATE_DATABASE_URL=true ;;
+    *) echo "Unknown argument: $arg" >&2; exit 1 ;;
+  esac
+done
+
 PROJECT_ID="${PROJECT_ID:-$(gcloud config get-value project 2>/dev/null)}"
 if [ -z "$PROJECT_ID" ]; then
   echo "No project: run 'gcloud config set project <id>' or set PROJECT_ID." >&2
@@ -77,11 +90,29 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 echo "Deploying to project: $PROJECT_ID"
 
-# ── 0b. Normalize and TEST DATABASE_URL before changing any cloud secrets.
-#       Cloud Shell has its own .env.deploy; a correct file on Windows does
-#       not update it. A stale password must fail here, not at service boot.
-#       Use an isolated temporary Python environment if psycopg is absent.
-if [ -n "${DATABASE_URL:-}" ]; then
+# ── 0b. Normal deploys reuse the last READY revision's DB secret. A stale
+#       .env.deploy cannot overwrite it. Credential changes are explicit.
+DATABASE_BINDING=""
+if [ "$ROTATE_DATABASE_URL" = true ]; then
+  if [ -z "${DATABASE_URL:-}" ]; then
+    echo "--rotate-database-url requires DATABASE_URL in .env.deploy." >&2
+    exit 1
+  fi
+else
+  DATABASE_BINDING=$(python3 deploy/gcp/database_secret_binding.py "$PROJECT_ID" "$REGION" "$SERVICE")
+  DB_SECRET_NAME="${DATABASE_BINDING%:*}"
+  DB_SECRET_VERSION="${DATABASE_BINDING##*:}"
+  DATABASE_URL=$(gcloud secrets versions access "$DB_SECRET_VERSION" --secret="$DB_SECRET_NAME" --project="$PROJECT_ID")
+  echo "Reusing database secret $DATABASE_BINDING from the last ready revision."
+fi
+if [ -z "$DATABASE_URL" ]; then
+  echo "Selected database secret is empty. No secrets uploaded." >&2
+  exit 1
+fi
+
+# Test the exact selected credentials before any cloud writes. Use an
+# isolated temporary Python environment if psycopg is absent.
+if [ -n "$DATABASE_URL" ]; then
   DB_CHECK_PYTHON=python3
   if ! "$DB_CHECK_PYTHON" -c 'import psycopg' >/dev/null 2>&1; then
     DB_CHECK_DIR=$(mktemp -d)
@@ -106,12 +137,17 @@ declare -A SECRETS=(
   [sarvam-api-key]=SARVAM_API_KEY
   [openrouter-api-key]=OPENROUTER_API_KEY
   [admin-token]=ADMIN_TOKEN
-  [shabd-database-url]=DATABASE_URL
   [google-client-id]=GOOGLE_CLIENT_ID
   [apple-client-id]=APPLE_CLIENT_ID
   [gemini-api-keys]=GEMINI_API_KEYS
 )
 SECRET_MOUNTS=()
+# Only an explicit rotation creates a new database secret version.
+if [ "$ROTATE_DATABASE_URL" = true ]; then
+  SECRETS[shabd-database-url]=DATABASE_URL
+else
+  SECRET_MOUNTS+=("DATABASE_URL=${DATABASE_BINDING}")
+fi
 for name in "${!SECRETS[@]}"; do
   var="${SECRETS[$name]}"
   val="${!var:-}"

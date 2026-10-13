@@ -5,10 +5,21 @@ import io
 import unittest
 from unittest.mock import MagicMock, patch
 
-from check_database import main, normalize_url, verify_connection
+from check_database import connection_failure_reason, main, normalize_url, verify_connection
 
 
 class DatabasePreflightTests(unittest.TestCase):
+    def test_failure_categories_are_specific_and_redacted(self):
+        for message, expected in [
+            ("password authentication failed URL=privatepassword", "rejected the selected credentials"),
+            ("tenant or user not found URL=privatepassword", "project reference"),
+            ("connection timeout URL=privatepassword", "timed out"),
+            ("could not resolve URL=privatepassword", "hostname"),
+        ]:
+            reason = connection_failure_reason(RuntimeError(message))
+            self.assertIn(expected, reason)
+            self.assertNotIn("privatepassword", reason)
+
     def test_raw_at_in_password_is_encoded_and_idempotent(self):
         raw = "postgresql://postgres.example:a@b:c@pooler.example:5432/postgres"
         expected = "postgresql://postgres.example:a%40b%3Ac@pooler.example:5432/postgres"

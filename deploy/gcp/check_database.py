@@ -37,20 +37,39 @@ def verify_connection(url: str, connect) -> None:
                 raise RuntimeError("Unexpected database response.")
 
 
+def fail(reason: str) -> int:
+    print(f"Database preflight FAILED: {reason} No secrets uploaded.", file=sys.stderr)
+    return 1
+
+
+def connection_failure_reason(exc: Exception) -> str:
+    # Inspect the error privately, but emit only fixed messages. psycopg can
+    # include connection strings in its exception text.
+    message = str(exc).lower()
+    if getattr(exc, "sqlstate", None) == "28P01" or "password authentication failed" in message:
+        return "Database rejected the selected credentials; check the secret or rotation input."
+    if "tenant or user not found" in message:
+        return "Pooler username or project reference is incorrect."
+    if "timeout" in message or "timed out" in message:
+        return "Connection timed out; check database availability and network access."
+    if "resolve" in message or "name or service not known" in message:
+        return "Database hostname could not be resolved."
+    return "Database connection check failed; check connection settings and database availability."
+
+
 def main() -> int:
     try:
         import psycopg
-
+    except ImportError:
+        return fail("Python dependency psycopg is missing; run through deploy.sh to install it.")
+    try:
         normalized = normalize_url(os.environ.get("DATABASE_URL", ""))
-        verify_connection(normalized, psycopg.connect)
     except Exception:
-        # Driver/parser exceptions can include credentials. Do not print them.
-        print(
-            "Database preflight FAILED. No secrets uploaded. Check DATABASE_URL "
-            "in this machine's .env.deploy against Supabase's connection settings.",
-            file=sys.stderr,
-        )
-        return 1
+        return fail("Selected DATABASE_URL is missing or malformed.")
+    try:
+        verify_connection(normalized, psycopg.connect)
+    except Exception as exc:
+        return fail(connection_failure_reason(exc))
     print("Database preflight passed.", file=sys.stderr)
     print(normalized)
     return 0
