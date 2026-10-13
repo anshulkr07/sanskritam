@@ -1,249 +1,255 @@
-// Play hub: Today's challenge, games grid, practice rows.
-// Painted cards over deep fills. Bottom padding so Ask never covers rows.
+// Play hub v2: today's rank and goal up top, play with friends and quick
+// match beside the game collection, the recitation competition, and the
+// weekly friend goal. Specialised grammar exercises live in Learn/Practice —
+// only discovery links remain here.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import { Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import type { TabScreenProps } from "../navigation/types";
 import { api } from "../api/client";
-import { gamesDaily } from "../games/api";
 import { useQuery } from "../hooks/useQuery";
+import { playApi, socialApi, type PlaySummary } from "../games/v2/client";
+import { useCatalog } from "../games/v2/useCatalog";
 import { haptics } from "../services/haptics";
-import { color, fill, onFill, script, type FillName } from "../theme";
-import { firstAkshara } from "../utils/akshara";
-import PaintedBackground, { PaintedThumbnail } from "../components/artwork/PaintedBackground";
-import { hubArtwork, practiceArtwork } from "../components/artwork/hubs";
+import { color, fill, font, onFill, radius, script, shadow, space } from "../theme";
+import { GAMES_TINT_FALLBACK } from "./playTheme";
 
 type Props = TabScreenProps<"Play">;
 
-export const GAMES: { key: string; name: string; sa: string; tint: FillName; stat: string; route: string; params?: object }[] = [
-  { key: "rush", name: "Shabda Rush", sa: "शब्द-वेगः", tint: "saffron", stat: "Best", route: "ShabdaRush" },
-  { key: "smriti", name: "Smriti", sa: "स्मृतिः", tint: "rose", stat: "Best", route: "Smriti" },
-  { key: "varna", name: "Varna Jaal", sa: "वर्ण-जालम्", tint: "slate", stat: "Today", route: "VarnaJaal" },
-  { key: "daily", name: "Daily word", sa: "वर्ण-बन्धः", tint: "gold", stat: "Streak", route: "DailyWord" },
-];
-
-export const PRACTICE: { name: string; kind: string; title: string }[] = [
-  { name: "Word order", kind: "reorder", title: "Word order" },
-  { name: "Sandhi", kind: "sandhi_join", title: "Sandhi" },
-  { name: "Paradigms", kind: "grid_fill", title: "Paradigms" },
-  { name: "Pingala", kind: "scan_metre", title: "Pingala" },
-  { name: "Words", kind: "words", title: "Words" },
-  { name: "Challenges", kind: "challenges", title: "Challenges" },
-];
-
 export default function PlayScreen({ navigation }: Props) {
-  const [daily, setDaily] = useState<{ date: string; game: string; goal: { label: string }; done: boolean; streak: number } | null>(null);
-  const [comp, setComp] = useState<{ id: string; pieces: { source_ref: string }[]; me?: { best_percent: number | null; rank: number | null } | null; closes_at: string } | null>(null);
-  const [compNext, setCompNext] = useState("");
-  const [compGone, setCompGone] = useState(false);
+  const [summary, setSummary] = useState<PlaySummary | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const catalog = useCatalog();
   const { data: progress } = useQuery("progress-daily", api.progressDaily);
 
-  useEffect(() => {
-    void gamesDaily().then(setDaily).catch(() => {});
-    api.competitionCurrent().then((c) => {
-      setComp(c.open as never);
-      setCompNext(c.next?.opens_at ? `Next opens ${c.next.opens_at}` : "");
-    }).catch((e) => {
-      if ((e as { status?: number }).status === 404) setCompGone(true);
-    });
+  const load = useCallback(() => {
+    playApi.summary().then(setSummary).catch(() => {});
+  }, []);
+  useEffect(() => { load(); }, [load]);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    playApi.summary().then(setSummary).catch(() => {}).finally(() => setRefreshing(false));
   }, []);
 
-  const openGame = (g: (typeof GAMES)[number]) => {
+  const nav = navigation as unknown as { navigate: (r: string, p?: object) => void };
+  const openGame = (key: string) => {
     haptics.tap();
-    if (g.route === "DailyWord") {
-      (navigation as unknown as { navigate: (r: string) => void }).navigate("DailyWord");
-      return;
-    }
-    (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate(g.route, g.params ?? {});
+    const route = { rush: "ShabdaRush", smriti: "Smriti", "varna-jaal": "VarnaJaal",
+      "daily-word": "DailyWord", "word-groups": "WordGroups", "pada-path": "PadaPath",
+      number: "NumberBuilder" }[key] ?? "ShabdaRush";
+    nav.navigate(route, {});
   };
 
-  const openPractice = (p: (typeof PRACTICE)[number]) => {
-    haptics.tap();
-    const nav = navigation as unknown as { navigate: (r: string, params?: object) => void };
-    if (p.kind === "words") {
-      nav.navigate("Vocab", {});
-      return;
-    }
-    if (p.kind === "challenges") {
-      nav.navigate("Challenge", {});
-      return;
-    }
-    if (p.kind === "sandhi_join") {
-      nav.navigate("PracticeRound", { kind: "sandhi_join", title: "Sandhi" });
-      return;
-    }
-    if (p.kind === "grid_fill") {
-      nav.navigate("PracticeRound", { kind: "grid_fill", title: "Paradigms" });
-      return;
-    }
-    if (p.kind === "scan_metre") {
-      nav.navigate("PracticeRound", { kind: "scan_metre", title: "Pingala" });
-      return;
-    }
-    nav.navigate("PracticeRound", { kind: p.kind, title: p.title });
-  };
+  const rank = summary?.rank_today;
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={color.inkSoft} />}>
         <View style={styles.headRow}>
           <Text style={styles.title} accessibilityRole="header">Play</Text>
-          {!!daily && daily.streak > 0 && (
+          {!!summary && summary.goal.streak > 0 && (
             <View style={styles.streak}>
               <Ionicons name="flame" size={16} color={color.saffronText} />
-              <Text style={styles.streakText}>{daily.streak} days</Text>
+              <Text style={styles.streakText}>{summary.goal.streak}-day streak</Text>
             </View>
           )}
         </View>
 
-        {!!daily && (
-          <PlayBanner kind="challenge" done={daily.done}>
-            <Text style={styles.chLabel}>Today's challenge</Text>
-            <Text style={styles.chGame}>{daily.game}</Text>
-            <Text style={styles.chGoal}>{daily.goal.label}</Text>
-            {daily.done ? (
-              <View style={styles.chDoneRow}>
-                <Ionicons name="checkmark-circle" size={20} color={onFill.text} />
-                <Text style={styles.chDone}>Done for today</Text>
+        {/* 1. Your rank today — never a fabricated position */}
+        <View style={styles.rankCard}>
+          <Text style={styles.rankLabel}>Your rank today</Text>
+          {rank?.unranked_yet ? (
+            <Text style={styles.rankBody}>Play a ranked round to get your rank.</Text>
+          ) : (
+            <View style={styles.rankRow}>
+              <Text style={styles.rankNum}>{rank?.rank != null ? `#${rank.rank}` : "—"}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.rankPoints}>{rank?.points ?? 0} ranked points</Text>
+                <Text style={styles.rankSub}>
+                  Best of three games today{rank && rank.change_since_visit !== 0
+                    ? ` · ${rank.change_since_visit > 0 ? "+" : ""}${rank.change_since_visit} since your last visit`
+                    : ""}
+                </Text>
               </View>
-            ) : (
-              <Pressable
-                onPress={() => {
-                  haptics.tap();
-                  const g = GAMES.find((x) => x.key === daily.game || x.route.toLowerCase().includes(daily.game.split("-")[0]));
-                  if (g) openGame(g);
-                }}
-                accessibilityRole="button"
-                accessibilityLabel={`Play today's challenge: ${daily.game}`}
-                style={styles.chPlay}
-              >
-                <Ionicons name="play" size={20} color={fill.teal} />
-              </Pressable>
-            )}
-          </PlayBanner>
+            </View>
+          )}
+          <Pressable onPress={() => nav.navigate("Leaderboards", { period: "daily" })}
+            accessibilityRole="button" accessibilityLabel="Open leaderboards" style={styles.rankLink}>
+            <Text style={styles.rankLinkText}>Leaderboards</Text>
+            <Ionicons name="chevron-forward" size={14} color={onFill.gold} />
+          </Pressable>
+          <Text style={styles.rankIst}>{rank?.explain_ist}</Text>
+        </View>
+
+        {/* 2. Personal goal (separate from ranked points) */}
+        <View style={styles.goalCard}>
+          <View style={styles.goalRow}>
+            <Ionicons name="flag" size={16} color={color.saffronText} />
+            <Text style={styles.goalText}>{summary?.goal.label ?? "Complete 3 rounds"}</Text>
+            <Text style={styles.goalCount}>{summary?.goal.done ?? 0}/{summary?.goal.target ?? 3}</Text>
+          </View>
+          <View style={styles.goalTrack}>
+            <View style={[styles.goalFill, {
+              width: `${Math.min(100, ((summary?.goal.done ?? 0) / Math.max(1, summary?.goal.target ?? 3)) * 100)}%`,
+            }]} />
+          </View>
+        </View>
+
+        {/* 3. Play with friends + quick match */}
+        <View style={styles.socialRow}>
+          <Pressable onPress={() => nav.navigate("Friends", {})} accessibilityRole="button"
+            accessibilityLabel="Play with friends" style={[styles.socialBtn, { backgroundColor: fill.teal }]}>
+            <Ionicons name="people" size={22} color={onFill.text} />
+            <Text style={styles.socialText}>Play with friends</Text>
+          </Pressable>
+          <Pressable onPress={() => nav.navigate("RoomLobby", {})} accessibilityRole="button"
+            accessibilityLabel="Quick match" style={[styles.socialBtn, { backgroundColor: fill.rose }]}>
+            <Ionicons name="flash" size={22} color={onFill.text} />
+            <Text style={styles.socialText}>Quick match</Text>
+          </Pressable>
+        </View>
+
+        {/* 4. Recitation competition */}
+        <Pressable onPress={() => nav.navigate("Contest", {})} accessibilityRole="button"
+          accessibilityLabel="Open recitation competition" style={styles.compCard}>
+          <Ionicons name="mic" size={22} color={onFill.gold} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.compTitle}>Recitation competition</Text>
+            <Text style={styles.compSub}>
+              {summary?.competition
+                ? `${summary.competition.pieces} verse${summary.competition.pieces === 1 ? "" : "s"} · closes ${fmtTime(summary.competition.closes_at)}`
+                : "No competition open right now"}
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={onFill.text} />
+        </Pressable>
+
+        {/* 5. Weekly friend goal — only after opting in */}
+        {summary?.friend_goal && (
+          <View style={styles.friendGoal}>
+            <View style={styles.goalRow}>
+              <Ionicons name="hand-left" size={16} color={onFill.gold} />
+              <Text style={styles.friendGoalText}>
+                Weekly goal with {summary.friend_goal.partner.name}: {summary.friend_goal.total}/{summary.friend_goal.target} rounds
+              </Text>
+            </View>
+            <View style={styles.goalTrack}>
+              <View style={[styles.goalFillGold, {
+                width: `${Math.min(100, (summary.friend_goal.total / summary.friend_goal.target) * 100)}%`,
+              }]} />
+            </View>
+            <Text style={styles.friendGoalSub}>
+              You {summary.friend_goal.mine} · {summary.friend_goal.partner.name.split(" ")[0]} {summary.friend_goal.partner_rounds} · at least {summary.friend_goal.min_each} each. Earns a badge, never rank.
+            </Text>
+          </View>
         )}
 
-        {!compGone && (
-          <PlayBanner kind="competition">
-            <Text style={styles.chLabel}>Competition</Text>
-            {comp ? (
-              <>
-                <Text style={styles.chGame}>{comp.pieces?.[0]?.source_ref ?? "Recite"}</Text>
-                <Text style={styles.chGoal}>Best {comp.me?.best_percent ?? "-"} rank {comp.me?.rank ?? "-"}</Text>
-                <View style={styles.compRow}>
-                  <Pressable
-                    onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Contest", {})}
-                    accessibilityRole="button"
-                    accessibilityLabel="Open competition"
-                    style={styles.compBtn}
-                  >
-                    <Text style={styles.compBtnText}>Enter</Text>
-                  </Pressable>
-                </View>
-              </>
-            ) : (
-              <Text style={styles.chGoal}>{compNext || "No competition open right now."}</Text>
-            )}
-          </PlayBanner>
-        )}
-
-        <ReciteCard
-          onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("RecitePicker")}
-        />
-
+        {/* Game collection */}
         <Text style={styles.section}>Games</Text>
         <View style={styles.grid}>
-          {GAMES.map((g) => (
-            <GameTile
-              key={g.key}
-              game={g}
-              onPress={() => openGame(g)}
-            />
+          {(catalog?.games ?? []).map((g) => (
+            <GameTile key={g.key} title={g.title} sa={g.sa} subtitle={g.subtitle}
+              tint={(GAMES_TINT_FALLBACK as Record<string, string>)[g.key] ?? "slate"}
+              onPress={() => openGame(g.key)} />
           ))}
         </View>
 
-        <Text style={styles.section}>Practice</Text>
-        {PRACTICE.map((p) => (
-          <PracticeRow
-            key={p.name}
-            practice={p}
-            stat={p.kind === "challenges" ? `${progress?.attempts ?? 0} today` : ""}
-            onPress={() => openPractice(p)}
-          />
-        ))}
+        {/* Discovery links for specialised practice in Learn/Practice */}
+        <Text style={styles.section}>More practice</Text>
+        <View style={styles.moreCard}>
+          <Text style={styles.moreText}>
+            Grammar drills — word order, sandhi, paradigms, metre — live in Learn › Practice.
+          </Text>
+          <Pressable onPress={() => nav.navigate("PracticeRound", { kind: "reorder", title: "Word order" })}
+            accessibilityRole="button" accessibilityLabel="Open word order practice" style={styles.moreBtn}>
+            <Text style={styles.moreBtnText}>Open</Text>
+            <Ionicons name="chevron-forward" size={14} color={color.saffronText} />
+          </Pressable>
+        </View>
+
+        {!!progress && (
+          <Text style={styles.foot}>{progress.attempts ?? 0} practice rounds today</Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-// Shared with the local visual preview; navigation remains in PlayScreen.
-export function PlayBanner({ kind, done = false, children }: { kind: "challenge" | "competition"; done?: boolean; children: React.ReactNode }) {
-  return <View style={[styles.challenge, { backgroundColor: done ? fill.sage : fill.teal }]}>
-    <PaintedBackground source={hubArtwork(`play:${kind}`)} banner />
-    {children}
-  </View>;
+function fmtTime(iso: string): string {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString(undefined, { weekday: "short", hour: "numeric", minute: "2-digit" });
+  } catch {
+    return "";
+  }
 }
 
-export function GameTile({ game, onPress }: { game: (typeof GAMES)[number]; onPress: () => void }) {
-  const artwork = hubArtwork(`play:${game.key}`);
-  return <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={`${game.name}. ${game.sa}`} style={[styles.tile, { backgroundColor: fill[game.tint] }]}>
-    <PaintedBackground source={artwork} />
-    {!artwork && <Text style={styles.tileSa} aria-hidden>{firstAkshara(game.sa)}</Text>}
-    <View style={{ flex: 1 }} />
-    <Text style={styles.tileName} numberOfLines={2}>{game.name}</Text>
-    <Text style={[styles.tileSub, script("regular")]} numberOfLines={1}>{game.sa}</Text>
-    <Text style={styles.tileStat}>{game.stat}</Text>
-  </Pressable>;
-}
-
-export function PracticeRow({ practice, stat = "", onPress }: { practice: (typeof PRACTICE)[number]; stat?: string; onPress: () => void }) {
-  return <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={practice.name} style={styles.row}>
-    <PaintedThumbnail source={practiceArtwork(practice.kind)} />
-    <Text style={styles.rowName}>{practice.name}</Text>
-    <Text style={styles.rowStat}>{stat}</Text>
-    <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
-  </Pressable>;
-}
-
-export function ReciteCard({ onPress }: { onPress: () => void }) {
-  return <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel="Recite" style={styles.reciteRow}>
-    <PaintedBackground source={hubArtwork("play:recite")} banner />
-    <View style={{ flex: 1 }}><Text style={styles.reciteName}>Recite</Text><Text style={styles.reciteSub}>Read a verse aloud</Text></View>
-    <Ionicons name="chevron-forward" size={20} color={onFill.text} />
-  </Pressable>;
+function GameTile({ title, sa, subtitle, tint, onPress }: {
+  title: string; sa: string; subtitle: string; tint: string; onPress: () => void;
+}) {
+  const bg = (fill as Record<string, string>)[tint] ?? fill.slate;
+  return (
+    <Pressable onPress={() => { haptics.tap(); onPress(); }} accessibilityRole="button"
+      accessibilityLabel={`${title}. ${subtitle}`} style={[styles.tile, { backgroundColor: bg }]}>
+      <Text style={styles.tileTitle} numberOfLines={2}>{title}</Text>
+      <Text style={[styles.tileSa, script("regular")]} numberOfLines={1}>{sa}</Text>
+      <Text style={styles.tileSub} numberOfLines={2}>{subtitle}</Text>
+    </Pressable>
+  );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { paddingHorizontal: 16, paddingTop: 8, paddingBottom: 120, gap: 12 },
+  body: { paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: 120, gap: space.md },
   headRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink },
   streak: { flexDirection: "row", alignItems: "center", gap: 4 },
-  streakText: { fontWeight: "800", color: color.ink },
-  challenge: { borderRadius: 16, padding: 16, gap: 4, minHeight: 124, overflow: "hidden" },
-  chLabel: { color: onFill.gold, fontSize: 12, fontWeight: "800", textTransform: "uppercase" },
-  chGame: { color: onFill.text, fontSize: 20, fontWeight: "800", maxWidth: "72%" },
-  chGoal: { color: onFill.text, fontSize: 14, maxWidth: "70%" },
-  chPlay: { position: "absolute", right: 16, bottom: 12, width: 44, height: 44, borderRadius: 22, backgroundColor: onFill.text, alignItems: "center", justifyContent: "center" },
-  chDoneRow: { flexDirection: "row", alignItems: "center", gap: 6, marginTop: 4 },
-  chDone: { color: onFill.text, fontWeight: "700" },
-  section: { fontWeight: "800", fontSize: 18, color: color.ink, marginTop: 8 },
-  grid: { flexDirection: "row", flexWrap: "wrap", gap: 12 },
-  tile: { width: "47.5%", borderRadius: 16, padding: 14, height: 190, gap: 2, overflow: "hidden" },
-  tileSa: { position: "absolute", right: 6, bottom: -8, fontSize: 72, color: onFill.faint, fontWeight: "800" },
-  tileName: { color: onFill.text, fontWeight: "800", fontSize: 16 },
-  tileSub: { color: onFill.text, fontSize: 13, lineHeight: 22 },
-  tileStat: { color: onFill.gold, fontSize: 12, fontWeight: "700", marginTop: 6 },
-  row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: color.border, minHeight: 56 },
-  reciteRow: { flexDirection: "row", alignItems: "center", gap: 12, padding: 16, borderRadius: 16, backgroundColor: fill.maroon, minHeight: 108, overflow: "hidden" },
-  reciteName: { color: onFill.text, fontSize: 20, fontWeight: "800" },
-  reciteSub: { color: onFill.text, fontSize: 13, marginTop: 4, maxWidth: "65%" },
-  compRow: { flexDirection: "row", gap: 8, marginTop: 8 },
-  compBtn: { minHeight: 44, paddingHorizontal: 20, alignItems: "center", justifyContent: "center", backgroundColor: onFill.text, borderRadius: 12 },
-  compBtnText: { color: fill.teal, fontWeight: "800" },
-  rowName: { flex: 1, fontWeight: "700", fontSize: 16, color: color.ink },
-  rowStat: { color: color.inkSoft, fontSize: 13 },
+  streakText: { fontWeight: "800", color: color.ink, fontSize: font.sizes.sm },
+  rankCard: { backgroundColor: fill.ink, borderRadius: radius.lg, padding: space.lg, gap: 6, overflow: "hidden", ...shadow.card },
+  rankLabel: { color: onFill.gold, fontSize: font.sizes.xs, fontWeight: "800", textTransform: "uppercase" },
+  rankBody: { color: onFill.text, fontSize: font.sizes.lg, fontWeight: "700" },
+  rankRow: { flexDirection: "row", alignItems: "center", gap: space.md },
+  rankNum: { color: onFill.text, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 40 },
+  rankPoints: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
+  rankSub: { color: onFill.soft, fontSize: font.sizes.xs },
+  rankLink: { flexDirection: "row", alignItems: "center", gap: 2, alignSelf: "flex-start", minHeight: 32 },
+  rankLinkText: { color: onFill.gold, fontWeight: "800", fontSize: font.sizes.sm },
+  rankIst: { color: onFill.faint, fontSize: font.sizes.xs },
+  goalCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 8, ...shadow.card },
+  goalRow: { flexDirection: "row", alignItems: "center", gap: 6 },
+  goalText: { flex: 1, fontWeight: "700", color: color.ink },
+  goalCount: { fontWeight: "800", color: color.ink, fontVariant: ["tabular-nums"] },
+  goalTrack: { height: 6, borderRadius: 3, backgroundColor: color.border, overflow: "hidden" },
+  goalFill: { height: 6, backgroundColor: color.saffronBtn },
+  goalFillGold: { height: 6, backgroundColor: color.gold },
+  socialRow: { flexDirection: "row", gap: space.sm },
+  socialBtn: { flex: 1, borderRadius: radius.lg, padding: space.md, gap: 6, minHeight: 84, justifyContent: "center" },
+  socialText: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.base },
+  compCard: {
+    flexDirection: "row", alignItems: "center", gap: space.md, backgroundColor: fill.maroon,
+    borderRadius: radius.lg, padding: space.md, minHeight: 76,
+  },
+  compTitle: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
+  compSub: { color: onFill.soft, fontSize: font.sizes.sm },
+  friendGoal: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 8, ...shadow.card },
+  friendGoalText: { flex: 1, fontWeight: "700", color: color.ink, fontSize: font.sizes.sm },
+  friendGoalSub: { color: color.inkSoft, fontSize: font.sizes.xs },
+  section: { fontWeight: "800", fontSize: 18, color: color.ink, marginTop: space.xs },
+  grid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
+  tile: { width: "47.6%", borderRadius: radius.lg, padding: space.md, minHeight: 116, gap: 2 },
+  tileTitle: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
+  tileSa: { color: onFill.soft, fontSize: font.sizes.sm, lineHeight: 22 },
+  tileSub: { color: onFill.faint, fontSize: font.sizes.xs, marginTop: 2 },
+  moreCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 8, ...shadow.card },
+  moreText: { color: color.inkSoft, fontSize: font.sizes.sm },
+  moreBtn: { flexDirection: "row", alignItems: "center", gap: 2, alignSelf: "flex-start", minHeight: 36 },
+  moreBtnText: { color: color.saffronText, fontWeight: "800" },
+  foot: { color: color.inkFaint, fontSize: font.sizes.xs, textAlign: "center" },
 });
+
+export { socialApi };

@@ -112,7 +112,7 @@ export default function ProgressScreen() {
 
   if (!learner) {
     return (
-      <SafeAreaView style={styles.safe} edges={[]}>
+      <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
         <View style={styles.center}>
           <Text style={styles.muted}>No profile yet.</Text>
         </View>
@@ -140,7 +140,7 @@ export default function ProgressScreen() {
   const goal = daily?.goal_xp || 50;
 
   return (
-    <SafeAreaView style={styles.safe} edges={[]}>
+    <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
         {/* the three numbers that matter */}
         <View style={styles.tiles}>

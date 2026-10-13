@@ -2,7 +2,7 @@
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { PixelRatio, Platform, useWindowDimensions } from "react-native";
+import { PixelRatio, useWindowDimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ConversationScreen from "../screens/Conversation";
 import HomeScreen from "../screens/Home";
@@ -26,10 +26,10 @@ export default function MainTabs() {
   const insets=useSafeAreaInsets();
   const {width}=useWindowDimensions();
   const iconsOnly=width<320 || PixelRatio.getFontScale()>=1.4;
-  const bottomPad=Platform.OS==="ios"?28:Math.max(insets.bottom,8);
+  const bottomPad=Math.max(insets.bottom,8);
   return <Tab.Navigator screenListeners={{tabPress:()=>haptics.tap()}} screenOptions={({route})=>({
     headerShown:false,tabBarActiveTintColor:color.saffron,tabBarInactiveTintColor:color.inkFaint,
-    tabBarStyle:{backgroundColor:color.surface,borderTopColor:color.border,borderTopWidth:1,height:Platform.OS==="ios"?84:56+bottomPad,paddingTop:6,paddingBottom:bottomPad},
+    tabBarStyle:{backgroundColor:color.surface,borderTopColor:color.border,borderTopWidth:1,height:56+bottomPad,paddingTop:6,paddingBottom:bottomPad},
     tabBarLabelStyle:{fontFamily:"Nunito_700Bold",fontWeight:"700",fontSize:width<360?font.sizes.xs:font.sizes.sm},
     tabBarShowLabel:!iconsOnly,tabBarAccessibilityLabel:LABEL[route.name],
     tabBarIcon:({focused,color:c,size})=><Ionicons name={focused?ICONS[route.name].on:ICONS[route.name].off} size={size} color={c}/>,

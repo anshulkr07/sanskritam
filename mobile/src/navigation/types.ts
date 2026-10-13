@@ -82,9 +82,19 @@ export type RootStackParamList = {
   // Reuses Book's player (useChant), reached from the chant player bar.
   Listen: { bookKey: string; index?: number; chapter?: string };
   // Play games (HANDOVER 5): fullscreen, header hidden.
-  ShabdaRush: { topic?: string; daily?: boolean } | undefined;
-  Smriti: { set?: string; size?: number; daily?: boolean } | undefined;
+  ShabdaRush: { topic?: string; daily?: boolean; mode?: "local"; seats?: number } | undefined;
+  Smriti: { set?: string; size?: number; daily?: boolean; mode?: "local"; seats?: number } | undefined;
   VarnaJaal: { daily?: boolean } | undefined;
+  // Play v2 (handover_games_daily_multiplayer): the seven games' new screens,
+  // leaderboards, friends and the room lobby.
+  WordGroups: undefined;
+  PadaPath: undefined;
+  NumberBuilder: undefined;
+  Leaderboards: { period?: "daily" | "weekly" | "monthly"; board?: string } | undefined;
+  Friends: undefined;
+  RoomLobby: { matchId?: string; code?: string } | undefined;
+  // Recitation calibration capture (dev builds only, brief §8).
+  Calibration: undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };
   // Parva: festivals and vrats. List plus one page per observance.
   // `date` is the occurrence start; `dayDate` the selected series day.

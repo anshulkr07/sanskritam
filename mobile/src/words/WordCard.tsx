@@ -20,7 +20,7 @@ import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { Ghost, Sa, labelOn } from "../kala/ui";
 import { haptics } from "../services/haptics";
-import { fill, onFill, radius, shadow, space } from "../theme";
+import { fill, onFill, shadow, space } from "../theme";
 import { firstAkshara } from "../utils/akshara";
 import { plain } from "../utils/text";
 import { FEATURE_TITLE, cardSentence, headlineRoute, relationLine } from "./labels";
@@ -162,7 +162,7 @@ export default function WordCard() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: fill.maroon,
-    borderRadius: radius.lg,
+    borderRadius: 0,
     padding: space.md,
     marginBottom: space.sm,
     overflow: "hidden",

@@ -39,7 +39,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView, initialWindowMetrics } from "react-native-safe-area-context";
 
 import { color } from "./src/theme";
 import type { RootStackParamList } from "./src/navigation/types";
@@ -73,6 +73,14 @@ import ShabdaRushScreen from "./src/screens/ShabdaRush";
 import SmritiScreen from "./src/screens/Smriti";
 import VarnaJaalScreen from "./src/screens/VarnaJaal";
 import PracticeRoundScreen from "./src/screens/PracticeRound";
+import WordGroupsScreen from "./src/screens/WordGroups";
+import { LinkNav } from "./src/games/v2/linkNav";
+import PadaPathScreen from "./src/screens/PadaPath";
+import NumberBuilderScreen from "./src/screens/NumberBuilder";
+import LeaderboardsScreen from "./src/screens/Leaderboards";
+import FriendsScreen from "./src/screens/Friends";
+import RoomLobbyScreen from "./src/screens/RoomLobby";
+import CalibrationScreen from "./src/screens/Calibration";
 import KalaScreen from "./src/screens/Kala";
 import KalaChapterScreen from "./src/screens/KalaChapter";
 import KalaTopicScreen from "./src/screens/KalaTopic";
@@ -90,6 +98,15 @@ import CertificateScreen from "./src/screens/Certificate";
 import ContestRulesScreen from "./src/screens/ContestRules";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
+// These screens have no safe-area root of their own. Protect every state
+// (setup, loading, play and results), while the native header owns the top
+// on routes that show it. Tab screens and readers manage their own insets.
+const FRAMED_ROUTES = new Set<keyof RootStackParamList>([
+  "Certificate", "Contest", "ContestResults", "ContestRules", "MasterBoard",
+  "Paradigm", "Parva", "ParvaPage", "PracticeRound", "Recite", "RecitePicker",
+  "ShabdaRush", "Smriti", "VarnaJaal", "WordOrder",
+]);
 
 const HEADER_OPTS = {
   headerStyle: { backgroundColor: color.bg },
@@ -123,7 +140,15 @@ function RootNavigator() {
     return <LoginScreen />;
   }
   return (
-    <Stack.Navigator screenOptions={HEADER_OPTS}>
+    <Stack.Navigator screenOptions={HEADER_OPTS} screenLayout={({ children, route, options }) => (
+      FRAMED_ROUTES.has(route.name) ? (
+        <SafeAreaView style={{ flex: 1, backgroundColor: color.bg }}
+          edges={options.headerShown === false
+            ? ["top", "bottom", "left", "right"] : ["bottom", "left", "right"]}>
+          {children}
+        </SafeAreaView>
+      ) : <>{children}</>
+    )}>
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
       <Stack.Screen name="Grammar" component={GrammarScreen} options={{ title: "Reference" }} />
       <Stack.Screen name="LearnLibrary" component={LearnLibraryScreen} options={{ headerShown: false }} />
@@ -164,12 +189,20 @@ function RootNavigator() {
             {/* Read fullscreen page: covers the tab bar. */}
             <Stack.Screen name="Book" component={BookScreen} options={{ headerShown: false }} />
             {/* Listen: player-first chant screen over the tab bar. */}
-            <Stack.Screen name="Listen" component={ListenScreen} options={{ title: "Listen" }} />
+            <Stack.Screen name="Listen" component={ListenScreen} options={{ headerShown: false }} />
             {/* Play games: fullscreen, header hidden. */}
             <Stack.Screen name="ShabdaRush" component={ShabdaRushScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Smriti" component={SmritiScreen} options={{ headerShown: false }} />
             <Stack.Screen name="VarnaJaal" component={VarnaJaalScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PracticeRound" component={PracticeRoundScreen} options={{ headerShown: false }} />
+            {/* Play v2 (handover_games_daily_multiplayer): new games + social surfaces. */}
+            <Stack.Screen name="WordGroups" component={WordGroupsScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PadaPath" component={PadaPathScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="NumberBuilder" component={NumberBuilderScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Leaderboards" component={LeaderboardsScreen} options={{ title: "Leaderboards" }} />
+            <Stack.Screen name="Friends" component={FriendsScreen} options={{ title: "Friends" }} />
+            <Stack.Screen name="RoomLobby" component={RoomLobbyScreen} options={{ title: "Play with others" }} />
+            <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
             {/* Parva: festivals and vrats. */}
             <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />
             <Stack.Screen name="ParvaPage" component={ParvaPageScreen} options={{ title: "Festival" }} />
@@ -228,7 +261,7 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <KeyboardProvider>
           <PrefsLoader />
@@ -237,6 +270,8 @@ export default function App() {
               <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
                 <AskProvider routeName={routeName}>
+                  {/* Play share links (handover_games_daily_multiplayer §11). */}
+                  <LinkNav navRef={navRef} />
                   <ParvaNotifyNav />
                   <RootNavigator />
                   {/* OTA: the restart prompt when an update has downloaded. */}

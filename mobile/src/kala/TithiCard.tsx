@@ -24,7 +24,7 @@ import { useMotionDuration } from "../hooks/useReducedMotion";
 import { duration, easing } from "../motion";
 import { haptics } from "../services/haptics";
 import { ensureScriptFont } from "../services/scriptFonts";
-import { fill, onFill, radius, script, shadow, space } from "../theme";
+import { fill, onFill, script, shadow, space } from "../theme";
 import { faceFor, isRegionalScript } from "./faces";
 import MoonDial from "./MoonDial";
 import { useToday } from "./useToday";
@@ -40,7 +40,7 @@ const HEADLINE_SIZE = {
 export default function TithiCard() {
   const focused = useIsFocused();
   const today = useToday(focused);
-  const { view, failed } = today;
+  const { view, failed, place } = today;
   const navigation = useNavigation();
   const [, setFontTick] = useState(0);
 
@@ -162,6 +162,12 @@ export default function TithiCard() {
               </View>
               <Ionicons name="chevron-forward" size={18} color={onFill.text} />
             </View>
+            <Text style={styles.explainer}>
+              Tithi means lunar day. This is day {view.tithiNumber <= 15 ? view.tithiNumber : view.tithiNumber - 15} of the {view.tithiNumber <= 15 ? "waxing" : "waning"} fortnight.
+            </Text>
+            <Text style={styles.placeNote}>
+              {place.source === "chosen" ? `Times for ${place.place.label}` : `Using ${place.place.label} from your time zone. Change your calendar place in Settings.`}
+            </Text>
           </>
         )}
       </Pressable>
@@ -172,7 +178,7 @@ export default function TithiCard() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: fill.slate,
-    borderRadius: radius.lg,
+    borderRadius: 0,
     padding: space.md,
     marginBottom: space.sm,
     overflow: "hidden",
@@ -204,8 +210,8 @@ const styles = StyleSheet.create({
   headline: { color: onFill.text },
   sub: { fontSize: 18, lineHeight: 27, color: onFill.text },
   gloss: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 13, lineHeight: 18, color: onFill.soft },
-  track: { height: 4, borderRadius: 2, backgroundColor: onFill.faint, marginTop: 14, overflow: "hidden" },
-  bar: { height: 4, borderRadius: 2, backgroundColor: onFill.text },
+  track: { height: 4, borderRadius: 0, backgroundColor: onFill.faint, marginTop: 14, overflow: "hidden" },
+  bar: { height: 4, borderRadius: 0, backgroundColor: onFill.text },
   untilRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 4, gap: space.sm },
   until: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.text },
   then: { flexShrink: 1, textAlign: "right", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.soft },
@@ -224,8 +230,10 @@ const styles = StyleSheet.create({
   metaSa: { fontSize: 18, lineHeight: 26 },
   metaNative: { fontSize: 15, lineHeight: 22 },
   dot: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: "rgba(255,248,238,0.5)" },
+  explainer: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12, lineHeight: 17, color: onFill.text, marginTop: 8 },
+  placeNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, lineHeight: 16, color: onFill.soft, marginTop: 3 },
   failRow: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: space.xs, minHeight: 156 },
   failText: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 14, color: onFill.text },
   dialGhost: { width: DIAL, height: DIAL, borderRadius: DIAL / 2, borderWidth: 3.5, borderColor: onFill.faint },
-  ghostBar: { borderRadius: 4, backgroundColor: onFill.faint },
+  ghostBar: { borderRadius: 0, backgroundColor: onFill.faint },
 });

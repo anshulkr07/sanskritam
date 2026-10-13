@@ -215,7 +215,11 @@ def publish_due(db: Session, now: datetime) -> int:
                                         Competition.results_at <= now_utc).all()
     n = 0
     for r in rows:
-        publish_comp(db, r)
+        from app.services.competition_sets import is_set, publish_sets
+        if is_set(r):
+            publish_sets(db, r)
+        else:
+            publish_comp(db, r)
         n += 1
     return n
 
@@ -306,11 +310,17 @@ def purge(db: Session, now: datetime) -> int:
 
 def tick(db: Session, now: datetime) -> dict:
     made = ensure_next(db, now)
+    try:
+        from app.services.competition_sets import ensure_weekly_sets
+        sets_made = ensure_weekly_sets(db, now)
+    except Exception:
+        logger.exception("set scheduling failed")
+        sets_made = 0
     opened = open_due(db, now)
     closed = close_due(db, now)
     published = publish_due(db, now)
     months = month_end(db, now)
     purged = purge(db, now)
     db.commit()
-    return {"made": made, "opened": opened, "closed": closed,
+    return {"made": made, "sets": sets_made, "opened": opened, "closed": closed,
             "published": published, "months": months, "purged": purged}

@@ -90,7 +90,8 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
           <Text style={[styles.empty, { fontSize: sized(font.sizes.base) }]}>No word today.</Text>
         ) : (
           <>
-            <Panel tone="maroon">
+            <Text style={[styles.intro, { fontSize: sized(font.sizes.base) }]}>Explore words derived from Sanskrit, with related language paths clearly labelled.</Text>
+            <Panel tone="maroon" style={{ borderRadius: 0 }}>
               {!!(origin.sanskrit?.dev ?? "").trim() && (
                 <Sa size={30} weight="bold" on="fill">
                   {(origin.sanskrit?.dev ?? "").trim()}
@@ -111,6 +112,31 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                 </View>
               )}
             </Panel>
+
+            {routes.length > 1 && (
+              <>
+                <SectionLabel>Across languages</SectionLabel>
+                <View>
+                  {routes.map((r) => {
+                    const id = r.id ?? `${r.lang}-${r.word}`;
+                    const active = r === selected;
+                    const relation = r.relation === "related" ? "Related" : r.relation === "borrowed" ? "Borrowed" : "Derived";
+                    return (
+                      <Pressable key={id} onPress={() => { haptics.tap(); setSelectedId(r.id ?? null); }}
+                        style={({ pressed }) => [styles.row, active && styles.rowActive, pressed && styles.pressed]}
+                        accessibilityRole="button" accessibilityLabel={`Show ${plain(r.word)} in ${plain(r.lang_name)}`}
+                        accessibilityState={{ selected: active }}>
+                        <View style={styles.rowText}>
+                          <Text style={[styles.rowWord, { fontSize: sized(font.sizes.base) }]} numberOfLines={1}>{plain(r.word)}</Text>
+                          {!!(r.lang_name ?? "").trim() && <Text style={[styles.rowLang, { fontSize: sized(font.sizes.sm) }]} numberOfLines={1}>{r.lang_name}</Text>}
+                        </View>
+                        <Text style={styles.relationTag}>{relation}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </>
+            )}
 
             <SectionLabel>The journey</SectionLabel>
             <RouteLadder origin={origin} route={selected} />
@@ -227,12 +253,13 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
               </View>
             )}
 
-            {!more.loading && !more.failed && (more.data?.origins ?? []).filter((o) => o.id !== origin.id).length > 0 && (
+            {!more.loading && !more.failed && (more.data?.origins ?? []).filter((o) => o.id !== origin.id && !!o.id).slice(0, 5).length > 0 && (
               <>
                 <SectionLabel>More words</SectionLabel>
                 <View>
                   {(more.data?.origins ?? [])
-                    .filter((o) => o.id !== origin.id)
+                    .filter((o) => o.id !== origin.id && !!o.id)
+                    .slice(0, 5)
                     .map((o) => {
                       const langs = o.languages ?? [];
                       const count = `${langs.length} language${langs.length === 1 ? "" : "s"}`;
@@ -281,6 +308,7 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   body: { paddingHorizontal: space.md, paddingTop: space.xs, paddingBottom: 120 },
   empty: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, marginTop: space.lg },
+  intro: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, lineHeight: 24, marginBottom: space.sm },
   panelRoman: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: onFill.soft, marginTop: 2 },
   panelGloss: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: onFill.text, marginTop: 4, lineHeight: 24 },
   found: { marginTop: space.sm, paddingTop: space.sm, borderTopWidth: 1, borderTopColor: onFill.faint },
@@ -308,6 +336,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: color.border,
   },
+  rowActive: { borderLeftWidth: 3, borderLeftColor: color.saffron, paddingLeft: space.sm },
+  relationTag: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12, color: color.inkSoft },
   pressed: { opacity: 0.75 },
   rowText: { flex: 1, minWidth: 0 },
   rowWord: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },

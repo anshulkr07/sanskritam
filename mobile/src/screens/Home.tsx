@@ -19,7 +19,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-import { api, type DailyWordPuzzle, type ProgressDaily, type ProgressDay, type Shloka } from "../api/client";
+import { api, type ProgressDaily, type ProgressDay, type Shloka } from "../api/client";
 import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
@@ -30,13 +30,14 @@ import TithiCard from "../kala/TithiCard";
 import ParvaStrip from "../components/parva/ParvaStrip";
 import WordCard from "../words/WordCard";
 import FactCard from "../facts/FactCard";
+import DailyRashiCard from "../home/DailyRashiCard";
 import { haptics } from "../services/haptics";
 import { getStoryIndex } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
-import { accent, color, font, gradientOf, radius, script, shadow, space, type AccentName } from "../theme";
+import { accent, color, fill, font, gradientOf, radius, script, shadow, space, type AccentName } from "../theme";
 import { firstName } from "../utils/name";
 import { dayStreak, localToday } from "../utils/streak";
 import { plain } from "../utils/text";
@@ -51,8 +52,6 @@ export default function HomeScreen({ navigation }: Props) {
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("home", shloka?.devanagari ?? "");
   const [shlokaState, setShlokaState] = useState<LoadState>("loading");
-  const [dailyWord, setDailyWord] = useState<DailyWordPuzzle | null>(null);
-  const [wordState, setWordState] = useState<LoadState>("loading");
   const [storyTotal, setStoryTotal] = useState<number | null>(null);
   const [storyAt, setStoryAt] = useState(0);
   // Today's XP and the day history the streak is computed from.
@@ -78,16 +77,6 @@ export default function HomeScreen({ navigation }: Props) {
       .catch(() => setShlokaState("error"));
   }, []);
 
-  const loadWord = useCallback(() => {
-    setWordState("loading");
-    cachedGet("daily-word", api.dailyWord)
-      .then((w) => {
-        setDailyWord(w);
-        setWordState("ok");
-      })
-      .catch(() => setWordState("error"));
-  }, []);
-
   const loadToday = useCallback(() => {
     setTodayFailed(false);
     Promise.all([api.progressDaily(), api.progressHistory(90)])
@@ -103,13 +92,12 @@ export default function HomeScreen({ navigation }: Props) {
       .catch(() => setStoryTotal(null));
   }, [loadShloka]);
 
-  // XP, the daily word and the story bookmark all move while Home sits
+  // XP and the story bookmark move while Home sits
   // behind other screens, so they refresh every time Home regains focus.
   useFocusEffect(
     useCallback(() => {
       let alive = true;
       loadToday();
-      loadWord();
       getStoryIndex().then((i) => alive && setStoryAt(i));
       api.competitionCurrent().then((c) => {
         if (alive && c.last) setCompLast(c.last as never);
@@ -118,7 +106,7 @@ export default function HomeScreen({ navigation }: Props) {
       return () => {
         alive = false;
       };
-    }, [loadToday, loadWord]),
+    }, [loadToday]),
   );
 
   const openDrawer = useCallback(() => {
@@ -172,6 +160,7 @@ export default function HomeScreen({ navigation }: Props) {
           <TithiCard />
           {/* Festivals today and coming up. Hides itself on 404 or offline. */}
           <ParvaStrip />
+          <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />
           {/* Today's "Do you know". Hides itself when there is no fact yet. */}
@@ -182,50 +171,29 @@ export default function HomeScreen({ navigation }: Props) {
               state={shlokaState}
               onPress={() => (shlokaState === "error" ? loadShloka() : navigation.navigate("Shloka"))}
             />
-            <WordTile
-              word={dailyWord}
-              state={wordState}
-              onPress={() => (wordState === "error" ? loadWord() : navigation.navigate("DailyWord"))}
-            />
+            <DailyMeaningTile />
           </View>
-        </Entrance>
-
-        <Entrance index={1}>
-          <Text style={styles.section}>Explore</Text>
-          <View style={styles.grid}>
-            <ExploreTile
-              tone="gold"
-              icon="grid"
-              title="Alphabet"
-              sa="वर्णमाला"
-              onPress={() => navigation.navigate("Varnamala")}
-            />
-            <ExploreTile
-              tone="slate"
-              icon="create"
-              title="Write"
-              sa="लेखनम्"
-              onPress={() => navigation.navigate("Writing")}
-            />
-            <ExploreTile
-              tone="saffron"
-              icon="compass"
-              title="Discover"
-              sa="परिचयः"
-              meta={storyTotal && storyAt > 0 ? `${Math.min(storyAt + 1, storyTotal)}/${storyTotal}` : undefined}
-              onPress={() => navigation.navigate("Story")}
-            />
-            <ExploreTile
-              tone="sage"
-              icon="book"
-              title="Words"
-              sa="शब्दाः"
-              onPress={() => navigation.navigate("Vocab", {})}
-            />
-          </View>
+          <DailyRashiCard />
         </Entrance>
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+function IntroductionTiles({ navigation, storyTotal, storyAt }: { navigation: Props["navigation"]; storyTotal: number | null; storyAt: number }) {
+  return (
+    <View style={styles.introduction}>
+      <Text style={styles.section}>Introduction</Text>
+      <View style={styles.grid}>
+        <ExploreTile tone="gold" icon="grid" title="Alphabet" sa="वर्णमाला" onPress={() => navigation.navigate("Varnamala")} />
+        <ExploreTile tone="slate" icon="create" title="Write" sa="लेखनम्" onPress={() => navigation.navigate("Writing")} />
+        <ExploreTile
+          tone="saffron" icon="compass" title="Introduction" sa="परिचयः"
+          meta={storyTotal && storyAt > 0 ? `${Math.min(storyAt + 1, storyTotal)}/${storyTotal}` : undefined}
+          onPress={() => navigation.navigate("Story")}
+        />
+      </View>
+    </View>
   );
 }
 
@@ -303,17 +271,21 @@ function TodayGoal({
 // ─── Daily tiles ──────────────────────────────────────────────────────
 
 function ShlokaTile({ shloka, state, onPress }: { shloka: Shloka | null; state: LoadState; onPress: () => void }) {
-  const first = shloka?.devanagari?.split(/[।\n]/)[0]?.trim() ?? "";
+  const verse = shloka?.devanagari?.trim() ?? "";
+  const meaning = shloka?.translation_en?.trim() || shloka?.translation_hi?.trim() || "";
   return (
-    <DailyTile tone="rose" icon="musical-notes" label="Śloka" onPress={onPress}>
+    <DailyTile icon="musical-notes" label="Daily śloka" onPress={onPress}>
       {state === "loading" ? (
         <Skeleton height={40} />
       ) : state === "error" ? (
         <Text style={styles.tileMuted}>Couldn't load. Tap to retry.</Text>
-      ) : first ? (
-        <Text style={[styles.verse, script("semibold")]} numberOfLines={2}>
-          {first}
+      ) : verse ? (
+        <>
+        <Text style={[styles.verse, script("semibold"), { color: "#FFF8EE" }]} numberOfLines={2}>
+          {verse}
         </Text>
+        {!!meaning && <Text style={[styles.tileMuted, { color: "rgba(255,248,238,0.82)" }]} numberOfLines={2}>{plain(meaning)}</Text>}
+        </>
       ) : (
         <Text style={styles.tileMuted}>No verse today.</Text>
       )}
@@ -321,68 +293,62 @@ function ShlokaTile({ shloka, state, onPress }: { shloka: Shloka | null; state: 
   );
 }
 
-function WordTile({ word, state, onPress }: { word: DailyWordPuzzle | null; state: LoadState; onPress: () => void }) {
-  let body: React.ReactNode;
-  if (state === "loading") body = <Skeleton height={40} />;
-  else if (state === "error") body = <Text style={styles.tileMuted}>Couldn't load. Tap to retry.</Text>;
-  else if (!word || !word.available) body = <Text style={styles.tileMuted}>No word today.</Text>;
-  else if (word.solved)
-    body = (
-      <>
-        <Text style={[styles.verse, script("bold")]}>{word.revealed?.answer ?? "Solved"}</Text>
-        <Text style={[styles.tileMeta, { color: accent.teal.fg }]}>Solved</Text>
-      </>
-    );
-  else if (word.finished) body = <Text style={styles.tileMuted}>Played. New word tomorrow.</Text>;
-  else
-    body = (
-      <>
-        {!!word.clue && (
-          <Text style={styles.clue} numberOfLines={1}>
-            “{plain(word.clue)}”
-          </Text>
-        )}
-        <Text style={[styles.tileMeta, { color: accent.teal.fg }]}>
-          {word.guesses_used > 0 ? `${word.guesses_used}/${word.max_guesses} tries` : "Find the word"}
-        </Text>
-      </>
-    );
+// These entries are copied from the reviewed DCS_VOCAB list in
+// backend/app/seeds/vocab.py. The Home card is intentionally independent
+// from Play's daily puzzle and does not generate Sanskrit at runtime.
+const DAILY_VOCABULARY = [
+  { word: "सूक्ष्मं", meaning: "subtle; minute" },
+  { word: "संशयः", meaning: "doubt; uncertainty" },
+  { word: "काञ्चनं", meaning: "gold" },
+  { word: "ताम्रं", meaning: "copper" },
+  { word: "ऋणं", meaning: "debt" },
+  { word: "हरीतकी", meaning: "haritaki, a medicinal fruit" },
+  { word: "त्रिफला", meaning: "triphala, a three-fruit preparation" },
+];
+
+function DailyMeaningTile() {
+  const day = Number(localToday().replace(/-/g, ""));
+  const entry = DAILY_VOCABULARY[((day % DAILY_VOCABULARY.length) + DAILY_VOCABULARY.length) % DAILY_VOCABULARY.length];
   return (
-    <DailyTile tone="teal" icon="extension-puzzle" label="Daily word" onPress={onPress}>
-      {body}
-    </DailyTile>
+    <View style={[styles.dailyTile, { backgroundColor: fill.ink }]} accessible accessibilityLabel={`Daily Sanskrit word ${entry.word}, ${entry.meaning}`}>
+      <View style={styles.dailyHead}>
+        <View style={[styles.dailyIcon, { backgroundColor: color.inkSoft }]}><Ionicons name="language" size={14} color={color.white} /></View>
+        <Text style={[styles.dailyLabel, { color: "#FFF8EE" }]}>Daily word</Text>
+      </View>
+      <View style={styles.dailyBody}>
+        <Text style={[styles.verse, script("bold"), { color: "#FFF8EE" }]} numberOfLines={1}>{entry.word}</Text>
+        <Text style={[styles.tileMuted, { color: "#FFF8EE" }]} numberOfLines={2}>{entry.meaning}</Text>
+      </View>
+    </View>
   );
 }
 
 function DailyTile({
-  tone,
   icon,
   label,
   onPress,
   children,
 }: {
-  tone: AccentName;
   icon: IoniconsIconName;
   label: string;
   onPress: () => void;
   children: React.ReactNode;
 }) {
-  const t = accent[tone];
   return (
     <Pressable
       onPress={() => {
         haptics.tap();
         onPress();
       }}
-      style={({ pressed }) => [styles.dailyTile, { backgroundColor: t.bg }, pressed && styles.pressed]}
+      style={({ pressed }) => [styles.dailyTile, { backgroundColor: fill.slate }, pressed && styles.pressed]}
       accessibilityRole="button"
       accessibilityLabel={label}
     >
       <View style={styles.dailyHead}>
-        <View style={[styles.dailyIcon, { backgroundColor: t.fg }]}>
+        <View style={[styles.dailyIcon, { backgroundColor: fill.ink }]}>
           <Ionicons name={icon} size={14} color={color.white} />
         </View>
-        <Text style={[styles.dailyLabel, { color: t.fg }]}>{label}</Text>
+        <Text style={[styles.dailyLabel, { color: "#F2C879" }]}>{label}</Text>
       </View>
       <View style={styles.dailyBody}>{children}</View>
     </Pressable>
@@ -441,14 +407,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 6,
     backgroundColor: color.surface,
-    borderRadius: radius.pill,
+    borderRadius: 0,
     paddingHorizontal: space.md,
     paddingVertical: 7,
     ...shadow.card,
   },
   streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
-  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: radius.lg, backgroundColor: "#17535C", marginBottom: space.sm },
+  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: 0, backgroundColor: "#17535C", marginBottom: space.sm },
   compText: { color: "#FFF8EE", fontWeight: "800" },
   greetText: { flex: 1 },
   hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
@@ -457,7 +423,7 @@ const styles = StyleSheet.create({
   goalRetry: {
     width: GOAL_RING,
     height: GOAL_RING,
-    borderRadius: GOAL_RING / 2,
+    borderRadius: 0,
     backgroundColor: color.surface,
     alignItems: "center",
     justifyContent: "center",
@@ -473,10 +439,11 @@ const styles = StyleSheet.create({
     color: color.ink,
     marginBottom: space.sm,
   },
+  introduction: { marginTop: space.md, marginBottom: space.lg },
   pair: { flexDirection: "row", gap: space.sm, marginBottom: space.lg },
-  dailyTile: { flex: 1, borderRadius: radius.lg, padding: space.md, minHeight: 128 },
+  dailyTile: { flex: 1, borderRadius: 0, padding: space.md, minHeight: 128 },
   dailyHead: { flexDirection: "row", alignItems: "center", gap: 6 },
-  dailyIcon: { width: 24, height: 24, borderRadius: 12, alignItems: "center", justifyContent: "center" },
+  dailyIcon: { width: 24, height: 24, borderRadius: 0, alignItems: "center", justifyContent: "center" },
   dailyLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
   dailyBody: { flex: 1, justifyContent: "flex-end", marginTop: space.sm },
   verse: { fontSize: font.sizes.md, lineHeight: 28, color: color.ink },
@@ -487,12 +454,12 @@ const styles = StyleSheet.create({
   explore: {
     width: "48.5%",
     backgroundColor: color.surface,
-    borderRadius: radius.lg,
+    borderRadius: 0,
     padding: space.md,
     ...shadow.card,
   },
   exploreTop: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", marginBottom: space.sm },
-  exploreIcon: { width: 44, height: 44, borderRadius: 14, alignItems: "center", justifyContent: "center" },
+  exploreIcon: { width: 44, height: 44, borderRadius: 0, alignItems: "center", justifyContent: "center" },
   exploreTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
   exploreSa: { fontSize: font.sizes.sm, lineHeight: 20 },
   exploreMeta: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.inkSoft },

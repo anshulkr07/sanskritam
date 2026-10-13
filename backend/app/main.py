@@ -151,6 +151,11 @@ def create_app() -> FastAPI:
     from app.routers.competitions import router as competitions_router
     from app.routers.certificates import router as certificates_router
     from app.routers.parva import router as parva_router
+    from app.routers.play import router as play_router
+    from app.routers.social import router as social_router
+    from app.routers.matches import router as matches_router
+    from app.routers.share import router as share_router
+    from app.routers.recite_calibration import router as recite_calibration_router
 
     app.include_router(health_router, tags=["Health"])
     app.include_router(auth_router, tags=["Auth"])
@@ -191,6 +196,18 @@ def create_app() -> FastAPI:
     app.include_router(competitions_router, tags=["Competitions"])
     app.include_router(certificates_router, tags=["Certificates"])
     app.include_router(parva_router, tags=["Parva"])
+    app.include_router(play_router, tags=["Play"])
+    app.include_router(social_router, tags=["Social"])
+    app.include_router(matches_router, tags=["Matches"])
+    app.include_router(share_router, tags=["Share"])
+    app.include_router(recite_calibration_router, tags=["Recite calibration"])
+    # Live match socket lives at /ws/matches/{ticket}, outside the router
+    # prefix (the matches router prefix is for its REST half).
+    from app.routers.matches import ws_matches
+    app.websocket("/ws/matches/{ticket}")(ws_matches)
+    # Live recitation captions (§7): backend-proxied realtime STT.
+    from app.services.recite_stream import recite_stream_ws
+    app.websocket("/ws/recite/{ticket}")(recite_stream_ws)
 
     # Serve pre-rendered audio (/audio/<path>) BEFORE the frontend catch-all
     # mount below so the static WAVs resolve even though the console is mounted

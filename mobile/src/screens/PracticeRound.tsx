@@ -2,7 +2,7 @@
 
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import type { RootStackParamList } from "../navigation/types";
 import { api } from "../api/client";
@@ -84,9 +84,9 @@ export default function PracticeRoundScreen({ navigation, route }: Props) {
 
   if (done) {
     return (
-      <View style={styles.start}>
+      <ScrollView style={styles.startScroll} contentContainerStyle={styles.start}>
         <ResultSheet score={score} best={done.best} isBest={done.isBest} xp={done.xp} onAgain={() => { setScore(0); setAt(0); setDone(null); setDisabled(false); }} onDone={() => navigation.goBack()} />
-      </View>
+      </ScrollView>
     );
   }
 
@@ -105,6 +105,7 @@ export default function PracticeRoundScreen({ navigation, route }: Props) {
 }
 
 const styles = StyleSheet.create({
-  start: { flex: 1, backgroundColor: color.bg, alignItems: "center", justifyContent: "center", padding: 24 },
+  startScroll: { flex: 1, backgroundColor: color.bg },
+  start: { flexGrow: 1, backgroundColor: color.bg, alignItems: "center", justifyContent: "center", padding: 24 },
   loading: { fontSize: 14, color: color.inkSoft, textAlign: "center" },
 });

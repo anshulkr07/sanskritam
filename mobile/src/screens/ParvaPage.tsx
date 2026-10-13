@@ -10,7 +10,9 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 import QRCode from "react-native-qrcode-svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Modal, Pressable, ScrollView, Share, StyleSheet, Text, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { useAsk, useAskContext } from "../ask/AskProvider";
 import { APP_STORE_URL } from "../config";
@@ -28,6 +30,7 @@ import { getParvaPage } from "../parva/cache";
 import { resolveDayContent, selectDayIndex, seriesDayNumber } from "../parva/select";
 import { ensurePermission, followedSlugs, isRemindUnavailable, setFollowed } from "../parva/reminders";
 import { getPlace } from "../services/place";
+import JapaCounter from "../parva/JapaCounter";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { color, fill, fillAt, font, onFill, radius, script, shadow, space } from "../theme";
@@ -161,7 +164,7 @@ function FestivalShareCard({
 }
 
 const shareCardStyles = StyleSheet.create({
-  card: { borderRadius: 24, overflow: "hidden", backgroundColor: fill.ink },
+  card: { borderRadius: 0, overflow: "hidden", backgroundColor: fill.ink },
   art: { ...StyleSheet.absoluteFill, width: "100%", height: "100%" },
   top: { position: "absolute", top: 16, left: 0, right: 0, alignItems: "center" },
   brand: { ...script("semibold"), fontSize: 15, color: onFill.text, letterSpacing: 1 },
@@ -173,7 +176,7 @@ const shareCardStyles = StyleSheet.create({
   word: { flex: 1, paddingRight: 12 },
   wordMark: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 17, color: onFill.text },
   wordSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, color: onFill.soft, marginTop: 2 },
-  qrTile: { backgroundColor: "#FFFFFF", borderRadius: 10, padding: 6 },
+  qrTile: { backgroundColor: "#FFFFFF", borderRadius: 0, padding: 6 },
 });
 
 const CARD_W = 320;
@@ -194,6 +197,8 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const [reload, setReload] = useState(0);
   const [placeLabel, setPlaceLabel] = useState("");
   const [placeTz, setPlaceTz] = useState("Asia/Kolkata");
+  const [placeLat, setPlaceLat] = useState(28.6);
+  const [placeLon, setPlaceLon] = useState(77.2);
   const [trad, setTrad] = useState("north");
   const [followed, setFollowedState] = useState<string[]>([]);
   const [remindOff, setRemindOff] = useState(false);
@@ -228,6 +233,8 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         if (!alive) return;
         setPlaceLabel(place.label);
         setPlaceTz(place.tz);
+        setPlaceLat(place.lat);
+        setPlaceLon(place.lon);
         setTrad(useTrad);
         let today = "";
         try {
@@ -311,14 +318,14 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     const mid = midnightUtcForDate(selectedDate, placeTz);
     if (!mid) return [];
     try {
-      const sun = sunDay(mid, { lat: 28.6, lon: 77.2 });
+      const sun = sunDay(mid, { lat: placeLat, lon: placeLon });
       if (!sun) return [];
       const wd = new Date(Date.UTC(Number(selectedDate.slice(0, 4)), Number(selectedDate.slice(5, 7)) - 1, Number(selectedDate.slice(8, 10)))).getUTCDay();
       return dayWindows(sun, wd).filter((w) => w.key === "rahu" || w.key === "abhijit");
     } catch {
       return [];
     }
-  }, [selectedDate, placeTz]);
+  }, [selectedDate, placeLat, placeLon, placeTz]);
 
   const toggleFollow = async () => {
     const on = !followed.includes(slug);
@@ -558,11 +565,11 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
               const a = fmtClock(tm.s, placeTz);
               const b = fmtClock(tm.e, placeTz);
               const span = a && b && tm.s !== tm.e ? `${a} – ${b}` : a || b;
-              return (
-                <View key={`${tm.key}_${i}`} style={[styles.timeRow, i > 0 && styles.hairTop]}>
+                return (
+                <Animated.View key={`${tm.key}_${i}`} entering={reduced ? undefined : FadeInDown.delay(i * 45).duration(240)} style={[styles.timeRow, i > 0 && styles.hairTop]}>
                   <Text style={styles.timeKey}>{timeLabel(tm.key)}</Text>
                   <Text style={styles.timeVal}>{span}</Text>
-                </View>
+                </Animated.View>
               );
             })}
           </View>
@@ -671,6 +678,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
           {texts.map((tx, i) => (
             <View key={i} style={[styles.card, { marginBottom: space.sm }]}>
               <TextCard tx={tx} idx={i} expanded={expandedText === `t${i}`} onToggle={() => setExpandedText(expandedText === `t${i}` ? null : `t${i}`)} />
+              {String(tx.kind ?? "mantra") === "mantra" && <JapaCounter storageKey={`shabd.parva.japa.${slug}.${variant ?? ""}.${selectedDate ?? ""}.${i}`} />}
             </View>
           ))}
         </View>
@@ -834,7 +842,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
       </View>
 
       <Modal visible={doOpen} animationType={reduced ? "none" : "slide"} onRequestClose={() => setDoOpen(false)}>
-        <View style={styles.doPage}>
+        <SafeAreaView style={styles.doPage}>
           <Text style={[styles.doStep, { fontSize: sized(22, { sanskrit: true }) }]}>
             {plain(shownSteps[Math.min(doStep, Math.max(0, shownSteps.length - 1))]?.text ?? "")}
           </Text>
@@ -878,7 +886,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
           >
             <Text style={styles.ghostText}>{t("parva.close")}</Text>
           </Pressable>
-        </View>
+        </SafeAreaView>
       </Modal>
     </ScrollView>
   );
@@ -949,7 +957,7 @@ const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: color.bg, padding: space.lg },
   body: { paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: 120 },
   hero: {
-    borderRadius: radius.lg, overflow: "hidden", backgroundColor: fill.maroon,
+    borderRadius: 0, overflow: "hidden", backgroundColor: fill.maroon,
     minHeight: 216, justifyContent: "flex-end",
   },
   heroMark: {
@@ -961,7 +969,7 @@ const styles = StyleSheet.create({
   heroDate: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: onFill.soft, marginTop: 2 },
   chipRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
   heroChip: {
-    borderRadius: radius.pill, borderWidth: 1, borderColor: "rgba(255,248,238,0.45)",
+    borderRadius: 0, borderWidth: 1, borderColor: "rgba(255,248,238,0.45)",
     paddingHorizontal: 10, paddingVertical: 3,
   },
   heroChipText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: onFill.text },
@@ -969,13 +977,13 @@ const styles = StyleSheet.create({
   section: { marginTop: space.lg },
   label: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.xs },
   card: {
-    backgroundColor: color.surface, borderRadius: radius.md, padding: space.md,
+    backgroundColor: color.surface, borderRadius: 0, padding: space.md,
     ...shadow.card,
   },
   hairTop: { borderTopWidth: 1, borderTopColor: color.border },
   whyRow: { flexDirection: "row", gap: space.sm, paddingVertical: 8 },
   numDisc: {
-    width: 26, height: 26, borderRadius: 13, backgroundColor: fill.ink,
+    width: 26, height: 26, borderRadius: 0, backgroundColor: fill.ink,
     alignItems: "center", justifyContent: "center", marginTop: 2,
   },
   numText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: onFill.text },
@@ -992,20 +1000,20 @@ const styles = StyleSheet.create({
   timeVal: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.ink, textAlign: "right" },
   chipWrap: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: space.sm },
   gatherChip: {
-    backgroundColor: color.surface, borderRadius: radius.pill, borderWidth: 1, borderColor: color.border,
+    backgroundColor: color.surface, borderRadius: 0, borderWidth: 1, borderColor: color.border,
     paddingHorizontal: 12, paddingVertical: 6,
   },
   gatherText: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.ink },
-  startBtn: { minHeight: 48, alignItems: "center", justifyContent: "center", borderRadius: radius.md, backgroundColor: fill.sage, marginTop: space.sm },
+  startBtn: { minHeight: 48, alignItems: "center", justifyContent: "center", borderRadius: 0, backgroundColor: fill.sage, marginTop: space.sm },
   startText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: onFill.text },
   pressed: { opacity: 0.9 },
   dayRow: { gap: space.sm, paddingRight: space.lg },
   dayCard: {
-    width: 76, borderRadius: radius.md, borderWidth: 1.5, borderColor: color.border,
+    width: 76, borderRadius: 0, borderWidth: 1.5, borderColor: color.border,
     backgroundColor: color.surface, alignItems: "center", padding: space.xs, gap: 4,
   },
   dayCardOn: { backgroundColor: fill.ink, borderColor: fill.ink },
-  dayAvatar: { width: 44, height: 44, borderRadius: 22, overflow: "hidden" },
+  dayAvatar: { width: 44, height: 44, borderRadius: 0, overflow: "hidden" },
   dayAvatarText: { ...script("bold"), fontSize: 18, color: onFill.text },
   dayDate: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
   dayName: { ...script("semibold"), fontSize: 12, color: color.ink, maxWidth: 68 },
@@ -1013,13 +1021,13 @@ const styles = StyleSheet.create({
   dayHit: { minWidth: 64, minHeight: 48, justifyContent: "center", paddingHorizontal: space.sm },
   dayText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
   deityHead: { flexDirection: "row", gap: space.md, alignItems: "flex-start" },
-  deityArt: { width: 64, height: 64, borderRadius: radius.md, overflow: "hidden", backgroundColor: fill.ink },
+  deityArt: { width: 64, height: 64, borderRadius: 0, overflow: "hidden", backgroundColor: fill.ink },
   deityArtFill: { alignItems: "center", justifyContent: "center" },
   deityArtText: { ...script("extrabold"), fontSize: 26, color: onFill.text },
   deityName: { ...script("bold"), fontSize: font.sizes.lg, color: color.ink },
   textBlock: { marginTop: space.xs },
   textHead: { flexDirection: "row", alignItems: "center", gap: space.sm, flexWrap: "wrap" },
-  kindPill: { borderRadius: radius.pill, paddingHorizontal: 10, paddingVertical: 3 },
+  kindPill: { borderRadius: 0, paddingHorizontal: 10, paddingVertical: 3 },
   kindText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 10, color: onFill.text, textTransform: "uppercase", letterSpacing: 0.5 },
   dev: { ...script("semibold"), color: color.ink, lineHeight: 34, marginTop: space.xs },
   roman: { fontStyle: "italic", fontSize: 13, color: color.inkSoft, marginTop: 4 },
@@ -1027,23 +1035,23 @@ const styles = StyleSheet.create({
   fmtRow: { flexDirection: "row", gap: space.sm, marginBottom: space.sm },
   fmtChip: {
     minHeight: 40, paddingHorizontal: space.lg, alignItems: "center", justifyContent: "center",
-    borderRadius: radius.pill, borderWidth: 1.5, borderColor: color.ink,
+    borderRadius: 0, borderWidth: 1.5, borderColor: color.ink,
   },
   fmtChipOn: { backgroundColor: fill.ink, borderColor: fill.ink },
   fmtText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   fmtTextOn: { color: onFill.text },
   previewBox: {
     width: "100%", alignItems: "center", justifyContent: "center",
-    overflow: "hidden", borderRadius: radius.lg,
+    overflow: "hidden", borderRadius: 0,
   },
   shareBtn: {
     minHeight: 50, alignItems: "center", justifyContent: "center",
-    borderRadius: radius.md, backgroundColor: color.saffronBtn, marginTop: space.sm,
+    borderRadius: 0, backgroundColor: color.saffronBtn, marginTop: space.sm,
     ...shadow.button,
   },
   shareBtnText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.white },
   btnRow: { flexDirection: "row", flexWrap: "wrap", gap: space.sm, marginTop: space.md },
-  ghostBtn: { minHeight: 48, paddingHorizontal: space.md, alignItems: "center", justifyContent: "center", borderRadius: radius.md, borderWidth: 1.5, borderColor: color.ink },
+  ghostBtn: { minHeight: 48, paddingHorizontal: space.md, alignItems: "center", justifyContent: "center", borderRadius: 0, borderWidth: 1.5, borderColor: color.ink },
   ghostText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
   doPage: { flex: 1, backgroundColor: color.bg, padding: space.lg, justifyContent: "center", gap: space.md },
   doStep: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink, lineHeight: 38 },

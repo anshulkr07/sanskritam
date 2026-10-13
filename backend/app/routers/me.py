@@ -96,9 +96,12 @@ def learner_owned_models() -> tuple:
     deletion into a 500, and Google Play requires deletion to work in-app.
     """
     from app.models import (
-        Attempt, Certificate, CompetitionEntry, ContentReport, ConversationSession, DailyActivity, DailyWordPlay,
-        Entitlement, GameResult, LearnerPublic, MonthlyWinner, NotificationSend, PronunciationAttempt, PushToken, ReciteAttempt, ReviewItem,
-        Token, UsageEvent, WritingAttempt,
+        Attempt, Block, Certificate, CompetitionEntry, ContentReport, ConversationSession,
+        DailyActivity, DailyGamePoints, DailyWordPlay, Entitlement, FriendGoal, FriendGoalRound,
+        GameDayScore, GameResult, GameSession, LearnerPublic, LeaderboardSnapshot, LiveMatch,
+        MatchParticipant, MatchQueueEntry, MatchTicket, MonthlyWinner, NotificationSend,
+        PronunciationAttempt, PushToken, ReciteAttempt, ReviewItem, ShareLink, Token,
+        UsageEvent, WritingAttempt, CosmeticGrant, Friendship, ReciteCalibration,
     )
 
     return (
@@ -106,6 +109,13 @@ def learner_owned_models() -> tuple:
         ConversationSession, DailyActivity, DailyWordPlay, PushToken,
         NotificationSend, Entitlement, ReviewItem, ContentReport, GameResult,
         ReciteAttempt, CompetitionEntry, LearnerPublic, Certificate, MonthlyWinner,
+        # Play v2 (handover_games_daily_multiplayer): games, matches, social,
+        # sharing and cosmetics all go with the account. FriendGoal has no
+        # learner_id column (learner_a/learner_b pair) — delete_me removes it
+        # explicitly after the rounds are gone.
+        GameSession, GameDayScore, DailyGamePoints, LeaderboardSnapshot,
+        MatchTicket, MatchParticipant, MatchQueueEntry, FriendGoalRound,
+        CosmeticGrant, ShareLink, Friendship, Block, FriendGoal, ReciteCalibration,
     )
 
 
@@ -151,7 +161,22 @@ def delete_me(
     except Exception:
         pass
     for model in learner_owned_models():
+        if not hasattr(model, "learner_id"):
+            continue  # paired-row tables (FriendGoal) handled below
         db.query(model).filter(model.learner_id == learner.id).delete()
+
+    # Play v2 edges where the learner is not the row owner: friendships and
+    # blocks pointed at them, and cooperative goals they are a pair of
+    # (rounds were already deleted above, so the goals can go).
+    from app.models import Block, FriendGoal, Friendship, LiveMatch
+    db.query(Friendship).filter(Friendship.friend_id == learner.id).delete()
+    db.query(Block).filter(Block.blocked_id == learner.id).delete()
+    db.query(FriendGoal).filter(
+        (FriendGoal.learner_a == learner.id) | (FriendGoal.learner_b == learner.id)
+    ).delete(synchronize_session=False)
+    # Empty quick-match rooms they hosted, and seats in live matches.
+    db.query(LiveMatch).filter(LiveMatch.host_id == learner.id,
+                               LiveMatch.status == "lobby").delete(synchronize_session=False)
 
     # Finally delete the learner itself
     db.delete(learner)

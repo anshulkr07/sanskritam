@@ -33,14 +33,14 @@ export default function GrammarChapterScreen({ navigation, route }: Props) {
 
   if (!chapter) {
     return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
+      <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
         <Text style={styles.empty}>Chapter not found.</Text>
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body}>
         <View style={[styles.band, { backgroundColor: fill[tone] }]}>
           <Text style={[styles.bandTitle, { fontSize: sized(font.sizes.xl) }]}>{t(chapter.title)}</Text>

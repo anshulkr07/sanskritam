@@ -122,6 +122,11 @@ export default function SettingsScreen() {
   const openLicences = () => navigation.navigate("Licences");
   const openPrivacy = () => navigation.navigate("Privacy");
 
+  // Calibration capture: dev builds only — the recitation-rubric study (§8).
+  // Calibration lives on the root stack (dev builds only, §8).
+  const openCalibration = () =>
+    (navigation as never as { navigate: (r: string) => void }).navigate("Calibration");
+
   // Manual OTA check. The app also checks on every launch and downloads in
   // the background; this row is for the learner who wants it now.
   const checkUpdate = () => {
@@ -300,6 +305,15 @@ export default function SettingsScreen() {
             chevron
             onPress={openPrivacy}
           />
+          {__DEV__ && (
+            <LinkRow
+              icon="mic-outline"
+              tone="sage"
+              label="Calibration capture (dev)"
+              chevron
+              onPress={openCalibration}
+            />
+          )}
           {/* P24: YouTube API Services Developer Policies III.A.1: clients must
               display a link to YouTube's Terms and bind their users to them.
               Lesson videos play in YouTube's own player. */}

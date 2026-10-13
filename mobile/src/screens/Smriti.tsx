@@ -1,157 +1,208 @@
-// Smriti: memory pairs. Letters pair Devanagari with roman; Words pair Sanskrit with meaning.
+// Smriti v2 (स्मृतिः): memory pairs against the server-held deck. The
+// client never receives hidden faces up front — every flip is an authorised
+// reveal, attempts are counted server-side, and the rubric scores fewer
+// attempts higher at equal completion. Decks: picture-word (illustrations
+// with Devanagari + Roman on the word card), word-meaning, letters, and
+// sound-picture. Pass-and-play seats rotate turns on a shared board.
 
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useEffect, useMemo, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import type { RootStackParamList } from "../navigation/types";
-import GameShell from "../games/GameShell";
-import ResultSheet from "../games/ResultSheet";
-import { gamesDeck, gamesResult } from "../games/api";
+import { CatalogGame, playApi, type SmritiPackView } from "../games/v2/client";
+import { useCatalogGame } from "../games/v2/useCatalog";
+import { loadRemembered, usePlaySession } from "../games/v2/useSession";
+import { GameTopBar, ResultSheetV2, SetupSheet, type SetupChoice } from "../games/v2/parts";
+import { color, fill, font, onFill, radius, script, space } from "../theme";
 import { haptics } from "../services/haptics";
 import { playLetter } from "../services/speech";
-import { color, fill, font, onFill, script, space } from "../theme";
+import { resolveGameImage } from "../games/v2/gameImages";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Smriti">;
+type Props = {
+  navigation: { goBack: () => void; navigate: (r: string, p?: object) => void };
+  route?: { params?: { mode?: "local"; seats?: number } };
+};
 
-interface Card { id: number; key: string; label: string; sub?: string }
+interface Face {
+  id: number; pair: number; face: string;
+  sa: string; iast: string; meaning: string; image: string; audio: string;
+}
 
 export default function SmritiScreen({ navigation, route }: Props) {
-  const set = route.params?.set ?? "Words";
-  const size = route.params?.size ?? 16;
-  const daily = !!route.params?.daily;
-  const [cards, setCards] = useState<Card[]>([]);
+  const localSeats = route?.params?.mode === "local" ? (route.params?.seats ?? 2) : 0;
+  const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("smriti");
+  const pack = session?.pack as SmritiPackView | undefined;
+  const [faces, setFaces] = useState<Record<number, Face>>({});
   const [open, setOpen] = useState<number[]>([]);
-  const [matched, setMatched] = useState<Set<string>>(new Set());
-  const [moves, setMoves] = useState(0);
+  const [matched, setMatched] = useState<Set<number>>(new Set());
+  const [attempts, setAttempts] = useState(0);
+  const [seat, setSeat] = useState(0);
+  const [pairsBySeat, setPairsBySeat] = useState<number[]>([]);
+  const [remembered, setRemembered] = useState<Record<string, unknown>>({});
   const [started, setStarted] = useState(false);
-  const [choice, setChoice] = useState<string>("Words");
-  const [count, setCount] = useState<number>(16);
-  const [done, setDone] = useState<{ xp: number; best: number; isBest: boolean } | null>(null);
+  const game = useCatalogGame("smriti");
+  const settle = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const build = async (kind: string, n: number) => {
-    const d = await gamesDeck("smriti", kind.toLowerCase() === "letters" ? "letters" : "words");
-    const pairs = [...d.items].sort(() => Math.random() - 0.5).slice(0, n / 2);
-    const deck: Card[] = [];
-    pairs.forEach((p, i) => {
-      if (kind === "Letters") {
-        deck.push({ id: i * 2, key: `p${i}`, label: p.sa, sub: "letter" });
-        deck.push({ id: i * 2 + 1, key: `p${i}`, label: p.meaning || p.iast, sub: "roman" });
-      } else {
-        deck.push({ id: i * 2, key: `p${i}`, label: p.sa, sub: p.iast });
-        deck.push({ id: i * 2 + 1, key: `p${i}`, label: p.meaning, sub: "meaning" });
-      }
-    });
-    setCards(deck.sort(() => Math.random() - 0.5));
-    setOpen([]);
-    setMatched(new Set());
-    setMoves(0);
-    setDone(null);
-    setStarted(true);
-  };
+  useEffect(() => { void loadRemembered("smriti").then(setRemembered); }, []);
+  useEffect(() => () => { if (settle.current) clearTimeout(settle.current); }, []);
 
-  useEffect(() => {
-    if (route.params?.set || route.params?.size) {
-      void build(set, size);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const flip = (idx: number) => {
-    if (open.includes(idx) || open.length >= 2) return;
-    const c = cards[idx];
-    if (matched.has(c.key)) return;
+  const flip = useCallback(async (id: number) => {
+    if (busy || open.includes(id) || open.length >= 2 || matched.size >= (pack?.pairs ?? 0)) return;
     haptics.tap();
-    const next = [...open, idx];
-    setOpen(next);
-    if (c.sub === "letter") {
-      try { void playLetter(undefined, c.label, "sa"); } catch { /* no audio */ }
+    const res = await answer({ type: "reveal", card: id });
+    if (!res) return;
+    const face = (res as { reveal: Face }).reveal;
+    setFaces((f) => ({ ...f, [id]: face }));
+    const nextOpen = [...open, id];
+    setOpen(nextOpen);
+    if (face.face === "sa") {
+      try { void playLetter(undefined, face.sa, "sa"); } catch { /* audio optional */ }
     }
-    if (next.length === 2) {
-      setMoves((m) => m + 1);
-      const [a, b] = next.map((i) => cards[i]);
-      setTimeout(() => {
-        if (a.key === b.key) {
-          setMatched((m) => new Set(m).add(a.key));
-          haptics.tap();
+    if (nextOpen.length === 2) {
+      setBusy(true);
+      const r2 = await answer({ type: "attempt", a: nextOpen[0], b: nextOpen[1] });
+      setBusy(false);
+      if (!r2) return;
+      const out = r2 as { match: boolean; found: number; complete: boolean; attempts: number };
+      setAttempts(out.attempts);
+      settle.current = setTimeout(() => {
+        if (out.match) {
+          setMatched((m) => new Set(m).add(faces[nextOpen[0]]?.pair ?? face.pair));
+          setPairsBySeat((p) => { const n = [...p]; n[seat] = (n[seat] ?? 0) + 1; return n; });
+          haptics.correct();
+          if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
+          else setSeat(0); // a correct match grants another turn solo
+        } else {
+          haptics.incorrect();
+          if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
         }
         setOpen([]);
-        const nm = new Set(matched);
-        if (a.key === b.key) nm.add(a.key);
-        if (nm.size * 2 >= cards.length && cards.length > 0) {
-          void gamesResult({ game: "smriti", mode: `${choice}-${count}`, score: moves + 1, moves: moves + 1, daily }).then((r) => {
-            setDone({ xp: r.xp, best: r.best, isBest: r.is_best });
-          }).catch(() => setDone({ xp: 0, best: moves + 1, isBest: false }));
-        }
-      }, a.key === b.key ? 300 : 700);
+        if (out.complete) void finish();
+      }, out.match ? 350 : 650);
     }
-  };
+  }, [answer, busy, faces, localSeats, matched, open, pack, seat]);
 
-  if (!started) {
+  if (!session) {
     return (
-      <View style={styles.start}>
-        <Text style={styles.title}>Smriti</Text>
-        <Text style={styles.sub}>Memory pairs</Text>
-        <View style={styles.row}>
-          {(["Letters", "Words"] as const).map((k) => (
-            <Pressable key={k} onPress={() => setChoice(k)} accessibilityRole="button" accessibilityLabel={k} accessibilityState={{ selected: choice === k }} style={[styles.chip, choice === k && styles.chipOn]}>
-              <Text style={[styles.chipText, choice === k && styles.chipTextOn]}>{k}</Text>
-            </Pressable>
-          ))}
-        </View>
-        <View style={styles.row}>
-          {([12, 16, 20] as const).map((n) => (
-            <Pressable key={n} onPress={() => setCount(n)} accessibilityRole="button" accessibilityLabel={`${n} cards`} accessibilityState={{ selected: count === n }} style={[styles.chip, count === n && styles.chipOn]}>
-              <Text style={[styles.chipText, count === n && styles.chipTextOn]}>{n}</Text>
-            </Pressable>
-          ))}
-        </View>
-        <Pressable onPress={() => void build(choice, count)} accessibilityRole="button" accessibilityLabel="Start" style={styles.primary}>
-          <Text style={styles.primaryText}>Start</Text>
-        </Pressable>
-      </View>
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <GameTopBar title="Smriti" sa="स्मृतिः" onClose={() => navigation.goBack()}
+          right={localSeats > 1 ? <Text style={styles.localTag}>Pass & play · {localSeats}</Text> : undefined} />
+        {!game || error ? (
+          <Text style={styles.loading} accessibilityRole="alert">{error ?? "Loading…"}</Text>
+        ) : (
+          <SetupSheet game={game as CatalogGame} remembered={remembered}
+            onStart={(c) => { setStarted(true); void start(c); }} busy={busy} />
+        )}
+      </SafeAreaView>
     );
   }
 
-  if (done) {
+  if (result) {
+    const myPairs = localSeats > 1 ? Math.max(...pairsBySeat, 0) : undefined;
     return (
-      <View style={styles.start}>
-        <ResultSheet score={moves} best={done.best} isBest={done.isBest} xp={done.xp} onAgain={() => void build(choice, count)} onDone={() => navigation.goBack()} />
-      </View>
-    );
-  }
-
-  return (
-    <GameShell title="Smriti" progress={matched.size / (cards.length / 2 || 1)} progressLabel={`${matched.size} of ${cards.length / 2} pairs`} score={moves} combo={`${moves} moves`} onClose={() => navigation.goBack()}>
-      <View style={styles.grid}>
-        {cards.map((c, i) => {
-          const face = open.includes(i) || matched.has(c.key);
-          return (
-            <Pressable key={c.id} onPress={() => flip(i)} accessibilityRole="button" accessibilityLabel={face ? c.label : "Hidden card"} style={[styles.card, face && styles.cardUp]}>
-              <Text style={[styles.cardText, script("semibold"), { color: face ? onFill.text : color.ink }]} numberOfLines={2}>
-                {face ? c.label : "·"}
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <ScrollView contentContainerStyle={styles.doneBody}>
+          {localSeats > 1 && (
+            <View style={styles.localResult}>
+              {pairsBySeat.map((p, i) => (
+                <Text key={i} style={styles.localResultRow}>Player {i + 1}: {p} pairs</Text>
+              ))}
+              <Text style={styles.localResultRow}>
+                {pairsBySeat.every((p) => p === pairsBySeat[0]) ? "Shared victory" : `Player ${pairsBySeat.indexOf(Math.max(...pairsBySeat)) + 1} wins`}
               </Text>
-            </Pressable>
-          );
-        })}
+            </View>
+          )}
+          <ResultSheetV2 result={result}
+            onAgain={() => { reset(); setFaces({}); setOpen([]); setMatched(new Set()); setAttempts(0); setPairsBySeat([]); }}
+            onDone={() => navigation.goBack()} />
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
+  const cols = (pack?.count ?? 16) <= 12 ? 3 : 4;
+  return (
+    <SafeAreaView style={styles.safe} edges={["top"]}>
+      <GameTopBar title="Smriti" sa="स्मृतिः" onClose={() => void finish().then(() => navigation.goBack())}
+        right={<View style={{ alignItems: "flex-end", marginRight: space.sm }}>
+          <Text style={styles.count}>{matched.size}/{pack?.pairs ?? 8}</Text>
+          <Text style={styles.countLabel}>{attempts} attempts{localSeats > 1 ? ` · player ${seat + 1}` : ""}</Text>
+        </View>} />
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={styles.grid}>
+          {Array.from({ length: pack?.count ?? 16 }).map((_, id) => {
+            const face = faces[id];
+            const isOpen = open.includes(id) || (face && matched.has(face.pair));
+            return (
+              <Pressable key={id} onPress={() => void flip(id)} disabled={!!isOpen || busy}
+                accessibilityRole="button"
+                accessibilityLabel={isOpen && face ? faceLabel(face) : "Hidden card"}
+                accessibilityState={{ selected: !!isOpen, disabled: !!isOpen || busy }}
+                style={[styles.card, { width: `${100 / cols - 2}%` }, isOpen && styles.cardUp]}>
+                {isOpen && face ? <FaceView face={face} /> : <Text style={styles.cardBack}>·</Text>}
+              </Pressable>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+function faceLabel(f: Face): string {
+  if (f.face === "sa") return `Sanskrit: ${f.sa}`;
+  if (f.image) return "Picture card";
+  return f.meaning || f.iast || f.sa;
+}
+
+function FaceView({ face }: { face: Face }) {
+  const img = resolveGameImage(face.image);
+  if (face.face === "match" && img) {
+    return <Image source={img} style={styles.cardImg} />;
+  }
+  if (face.face === "sa") {
+    return (
+      <View style={styles.cardCenter}>
+        <Text style={[styles.cardSa, script("semibold")]} numberOfLines={2}>{face.sa}</Text>
+        {!!face.iast && <Text style={styles.cardSub} numberOfLines={1}>{face.iast}</Text>}
       </View>
-    </GameShell>
+    );
+  }
+  // match card: Devanagari + Roman for word decks, roman for letters, meaning text
+  return (
+    <View style={styles.cardCenter}>
+      {!!face.meaning && face.meaning !== face.iast && (
+        <Text style={styles.cardMeaning} numberOfLines={2}>{face.meaning}</Text>
+      )}
+      {!!face.iast && <Text style={styles.cardRoman} numberOfLines={1}>{face.iast}</Text>}
+      {!face.meaning && !face.iast && <Text style={styles.cardSa}>{face.sa}</Text>}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  start: { flex: 1, backgroundColor: color.bg, alignItems: "center", justifyContent: "center", gap: 12, padding: 24 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink },
-  sub: { fontSize: 14, color: color.inkSoft },
-  row: { flexDirection: "row", gap: 8 },
-  chip: { borderWidth: 1.5, borderColor: color.ink, borderRadius: 999, paddingHorizontal: 16, minHeight: 40, justifyContent: "center" },
-  chipOn: { backgroundColor: fill.ink },
-  chipText: { color: color.ink, fontWeight: "700" },
-  chipTextOn: { color: onFill.text },
-  primary: { backgroundColor: color.saffronBtn, borderRadius: 12, minHeight: 48, paddingHorizontal: 24, justifyContent: "center" },
-  primaryText: { color: "#fff", fontWeight: "800", fontSize: 16 },
+  safe: { flex: 1, backgroundColor: color.bg },
+  body: { padding: space.lg },
+  doneBody: { padding: space.lg, justifyContent: "center", flexGrow: 1, gap: space.md },
   grid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
-  card: { width: "23%", aspectRatio: 0.8, backgroundColor: color.surface, borderRadius: 10, borderWidth: 1, borderColor: color.border, alignItems: "center", justifyContent: "center", padding: 4 },
-  cardUp: { backgroundColor: fill.slate },
-  cardText: { fontSize: 14, textAlign: "center" },
+  card: {
+    aspectRatio: 0.82, borderRadius: radius.md, backgroundColor: color.surface,
+    borderWidth: 1, borderColor: color.border, alignItems: "center", justifyContent: "center",
+    padding: 4,
+  },
+  cardUp: { backgroundColor: fill.slate, borderColor: fill.slate },
+  cardBack: { fontSize: 28, color: color.inkFaint },
+  cardCenter: { alignItems: "center", gap: 2 },
+  cardSa: { fontSize: 17, lineHeight: 26, color: onFill.text, textAlign: "center" },
+  cardSub: { fontSize: font.sizes.xs, color: onFill.soft },
+  cardMeaning: { fontSize: font.sizes.sm, color: onFill.text, textAlign: "center" },
+  cardRoman: { fontSize: font.sizes.xs, color: onFill.gold },
+  cardImg: { width: "100%", height: "100%", borderRadius: radius.sm },
+  count: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink },
+  countLabel: { fontSize: font.sizes.xs, color: color.inkSoft },
+  localTag: { fontSize: font.sizes.xs, color: color.inkSoft, fontWeight: "700", marginRight: space.sm },
+  localResult: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 2 },
+  localResultRow: { fontWeight: "700", color: color.ink },
+  loading: { textAlign: "center", marginTop: 40, color: color.inkSoft },
 });

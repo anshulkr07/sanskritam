@@ -1,169 +1,182 @@
-// Shabda Rush: word and meaning against the clock.
+// Shabda Rush v2 (शब्द-वेगः): ten short prompts — word-meaning, picture-word
+// and audio-word tasks from one unseen pack. Correctness dominates; speed
+// adds at most a tenth, measured from the server window. Pass-and-play deals
+// equivalent unseen packs so one player's turn never exposes another's
+// answers.
 
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import type { RootStackParamList } from "../navigation/types";
-import GameShell from "../games/GameShell";
-import ResultSheet from "../games/ResultSheet";
-import { gamesDeck, gamesResult } from "../games/api";
+import { CatalogGame, playApi, type RushPack } from "../games/v2/client";
+import { useCatalogGame } from "../games/v2/useCatalog";
+import { loadRemembered, usePlaySession } from "../games/v2/useSession";
+import { GameTopBar, ResultSheetV2, SetupSheet, type SetupChoice } from "../games/v2/parts";
+import { color, fill, font, onFill, radius, script, space, sanskritText } from "../theme";
 import { haptics } from "../services/haptics";
 import { sfx } from "../services/sfx";
-import { color, fill, font, onFill, sanskritText, space } from "../theme";
+import { playClip } from "../services/speech";
+import { resolveGameImage } from "../games/v2/gameImages";
 
-type Props = NativeStackScreenProps<RootStackParamList, "ShabdaRush">;
+type Props = {
+  navigation: { goBack: () => void; navigate: (r: string, p?: object) => void };
+  route?: { params?: { mode?: "local"; seats?: number } };
+};
 
-interface Item { sa: string; iast: string; meaning: string }
+const TASK_LABEL: Record<string, string> = {
+  "word-meaning": "Pick the meaning",
+  "meaning-word": "Pick the Sanskrit word",
+  "picture-word": "Pick the matching word",
+  "audio-word": "Listen, then pick the word",
+};
 
 export default function ShabdaRushScreen({ navigation, route }: Props) {
-  const topic = route.params?.topic;
-  const daily = !!route.params?.daily;
-  const [items, setItems] = useState<Item[]>([]);
+  const localSeats = route?.params?.mode === "local" ? (route.params?.seats ?? 2) : 0;
+  const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("rush");
+  const pack = session?.pack as RushPack | undefined;
   const [at, setAt] = useState(0);
-  const [score, setScore] = useState(0);
-  const [streak, setStreak] = useState(0);
-  const [noClock, setNoClock] = useState(false);
-  const [started, setStarted] = useState(false);
-  const [left, setLeft] = useState(60);
-  const [done, setDone] = useState<{ xp: number; best: number; isBest: boolean } | null>(null);
-  const [picked, setPicked] = useState<number | null>(null);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [picked, setPicked] = useState<string | null>(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [shownAt, setShownAt] = useState(0);
+  const [seat, setSeat] = useState(0);
+  const [remembered, setRemembered] = useState<Record<string, unknown>>({});
+  const game = useCatalogGame("rush");
+  const q = pack?.questions[at];
+  const askedAt = useRef(0);
 
-  useEffect(() => {
-    void gamesDeck("rush", undefined, topic).then((d) => setItems(d.items)).catch(() => setItems([]));
-  }, [topic]);
+  useEffect(() => { void loadRemembered("rush").then(setRemembered); }, []);
+  useEffect(() => { setShownAt(Date.now()); }, [at, session?.id]);
 
-  const stop = useCallback(async () => {
-    if (timer.current) clearInterval(timer.current);
-    try {
-      const r = await gamesResult({ game: "rush", mode: noClock ? "15words" : "60s", score, daily });
-      setDone({ xp: r.xp, best: r.best, isBest: r.is_best });
-    } catch {
-      setDone({ xp: 0, best: score, isBest: false });
-    }
-  }, [score, noClock, daily]);
-
-  useEffect(() => {
-    if (!started || noClock) return;
-    timer.current = setInterval(() => {
-      setLeft((l) => {
-        if (l <= 1) {
-          void stop();
-          return 0;
-        }
-        return l - 1;
-      });
-    }, 1000);
-    return () => {
-      if (timer.current) clearInterval(timer.current);
-    };
-  }, [started, noClock, stop]);
-
-  const q = items[at % Math.max(1, items.length)];
-  const flipped = score >= 100 && Math.floor(at / 5) % 2 === 1;
-  const options = useMemo(() => {
-    if (!q || items.length < 4) return [];
-    if (!flipped) {
-      const others = items.filter((i) => i.sa !== q.sa && i.meaning !== q.meaning);
-      const picks = [...others].sort(() => Math.random() - 0.5).slice(0, 3);
-      return [...picks.map((p) => p.meaning), q.meaning].sort(() => Math.random() - 0.5);
-    }
-    const others = items.filter((i) => i.sa !== q.sa && i.meaning !== q.meaning);
-    const picks = [...others].sort(() => Math.random() - 0.5).slice(0, 3);
-    return [...picks.map((p) => p.sa), q.sa].sort(() => Math.random() - 0.5);
-  }, [q, items, at, flipped]);
-
-  const pick = (value: string, idx: number) => {
-    if (picked != null || !q) return;
-    const correct = flipped ? value === q.sa : value === q.meaning;
-    setPicked(idx);
-    if (correct) {
-      const mult = Math.min(5, 1 + Math.floor(streak / 3));
-      setScore((s) => s + 10 * mult);
-      setStreak((s) => s + 1);
-      void sfx.correct();
-      haptics.tap();
-      setTimeout(() => {
-        setPicked(null);
-        if (!noClock && at + 1 >= 15 && false) { void stop(); return; }
-        if (noClock && at + 1 >= 15) { void stop(); return; }
-        setAt((a) => a + 1);
-      }, 350);
-    } else {
-      setStreak(0);
-      void sfx.incorrect();
-      haptics.tap();
-      setTimeout(() => {
-        setPicked(null);
-        setAt((a) => a + 1);
-      }, 900);
-    }
+  const pick = async (choice: string) => {
+    if (!q || picked != null) return;
+    setPicked(choice);
+    const elapsed = Math.max(0, Date.now() - Math.max(shownAt, askedAt.current));
+    setBusy(true);
+    const res = await answer({ index: at, choice, elapsed_ms: elapsed });
+    setBusy(false);
+    if (!res) return;
+    const r = res as { correct: boolean; already?: boolean };
+    if (r.correct) { void sfx.correct(); haptics.correct(); setCorrectCount((c) => c + 1); }
+    else { void sfx.incorrect(); haptics.incorrect(); }
+    setTimeout(() => {
+      setPicked(null);
+      if (!pack) return;
+      if (at + 1 >= pack.questions.length) void finish({ window_ms: pack.window_ms });
+      else {
+        setAt(at + 1);
+        if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
+      }
+    }, r.correct ? 320 : 650);
   };
 
-  if (!started) {
+  const playAudio = async () => {
+    if (!q?.audio) return;
+    try { await playClip(q.audio); } catch { /* audio optional */ }
+  };
+
+  if (!session) {
     return (
-      <View style={styles.start}>
-        <Text style={styles.title}>Shabda Rush</Text>
-        <Text style={styles.sub}>Word and meaning against the clock</Text>
-        <Pressable onPress={() => { setNoClock(false); setStarted(true); }} accessibilityRole="button" accessibilityLabel="Play 60 seconds" style={styles.primary}>
-          <Text style={styles.primaryText}>Play, 60 seconds</Text>
-        </Pressable>
-        <Pressable onPress={() => { setNoClock(true); setStarted(true); }} accessibilityRole="button" accessibilityLabel="Play without clock, 15 words" style={styles.secondary}>
-          <Text style={styles.secondaryText}>No clock, 15 words</Text>
-        </Pressable>
-      </View>
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <GameTopBar title="Shabda Rush" sa="शब्द-वेगः" onClose={() => navigation.goBack()}
+          right={localSeats > 1 ? <Text style={styles.localTag}>Pass & play · {localSeats}</Text> : undefined} />
+        {!game || error ? (
+          <Text style={styles.loading} accessibilityRole="alert">{error ?? "Loading…"}</Text>
+        ) : (
+          <SetupSheet game={game as CatalogGame} remembered={remembered}
+            onStart={(c) => void start(c)} busy={busy} />
+        )}
+      </SafeAreaView>
     );
   }
 
-  if (done) {
+  if (result) {
     return (
-      <View style={styles.start}>
-        <ResultSheet score={score} best={done.best} isBest={done.isBest} xp={done.xp} onAgain={() => { setScore(0); setAt(0); setStreak(0); setDone(null); setLeft(60); setStarted(true); }} onDone={() => navigation.goBack()} />
-      </View>
-    );
-  }
-
-  if (!q) {
-    return (
-      <View style={styles.start}>
-        <Text style={styles.sub}>Loading words…</Text>
-      </View>
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <ScrollView contentContainerStyle={styles.doneBody}>
+          {localSeats > 1 && (
+            <Text style={styles.localNote}>Pass-and-play round — the ranked variant is the solo pack.</Text>
+          )}
+          <ResultSheetV2 result={result} onAgain={() => { reset(); setAt(0); setCorrectCount(0); }}
+            onDone={() => navigation.goBack()} />
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 
   return (
-    <GameShell title="Shabda Rush" progress={noClock ? at / 15 : 1 - left / 60} progressLabel={noClock ? `${at + 1} of 15` : `${left}s`} score={score} combo={streak >= 3 ? `x${Math.min(5, 1 + Math.floor(streak / 3))}` : undefined} onClose={() => navigation.goBack()}>
-      <Text style={[sanskritText(28), { color: color.ink, textAlign: "center" }]}>{flipped ? q.meaning : q.sa}</Text>
-      {!flipped && <Text style={styles.roman}>{q.iast}</Text>}
-      <View style={styles.opts}>
-        {options.map((m, i) => {
-          const answer = flipped ? q.sa : q.meaning;
-          const isAnswer = m === answer;
-          const isPicked = picked === i;
-          const bg = picked == null ? color.surface : isPicked ? (isAnswer ? fill.ok : fill.bad) : isAnswer && picked != null ? fill.ok : color.surface;
-          const fg = picked != null && (isPicked || isAnswer) ? onFill.text : color.ink;
-          return (
-            <Pressable key={i} onPress={() => pick(m, i)} accessibilityRole="button" accessibilityLabel={m} style={[styles.opt, { backgroundColor: bg }]}>
-              <Text style={[styles.optText, { color: fg }]}>{m}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-    </GameShell>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
+      <GameTopBar title="Shabda Rush" sa="शब्द-वेगः"
+        onClose={() => void finish({ window_ms: pack?.window_ms }).then(() => navigation.goBack())}
+        right={<View style={{ alignItems: "flex-end", marginRight: space.sm }}>
+          <Text style={styles.count}>{at + 1}/{pack?.questions.length ?? 10}</Text>
+          <Text style={styles.countLabel}>{correctCount} right{localSeats > 1 ? ` · player ${seat + 1}` : ""}</Text>
+        </View>} />
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <Text style={styles.taskLabel}>{TASK_LABEL[q?.task ?? ""] ?? "Pick the answer"}</Text>
+        {q?.task === "word-meaning" && (
+          <View style={styles.promptBox}>
+            <Text style={[sanskritText(30), { color: color.ink, textAlign: "center" }]}>{q.prompt}</Text>
+            <Text style={styles.promptIast}>{q.iast}</Text>
+          </View>
+        )}
+        {q?.task === "meaning-word" && (
+          <View style={styles.promptBox}>
+            <Text style={styles.meaningPrompt}>{q.prompt}</Text>
+          </View>
+        )}
+        {q?.task === "picture-word" && !!resolveGameImage(q.image) && (
+          <Image source={resolveGameImage(q.image)!} style={styles.picture} />
+        )}
+        {q?.task === "audio-word" && (
+          <Pressable onPress={() => void playAudio()} accessibilityRole="button"
+            accessibilityLabel="Play the word" style={styles.audioBtn}>
+            <Ionicons name="volume-high" size={26} color={onFill.text} />
+            <Text style={styles.audioLabel}>Play</Text>
+          </Pressable>
+        )}
+        <View style={styles.options}>
+          {(q?.options ?? []).map((o) => {
+            const state = picked == null ? "idle" : "done";
+            return (
+              <Pressable key={o} onPress={() => void pick(o)} disabled={picked != null}
+                accessibilityRole="button" accessibilityLabel={o}
+                accessibilityState={{ disabled: picked != null }}
+                style={[styles.opt, state === "done" && styles.optDone]}>
+                <Text style={[styles.optText, script("regular")]}>{o}</Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  start: { flex: 1, backgroundColor: color.bg, alignItems: "center", justifyContent: "center", gap: 12, padding: 24 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink },
-  sub: { fontSize: 14, color: color.inkSoft, textAlign: "center" },
-  primary: { backgroundColor: color.saffronBtn, borderRadius: 12, minHeight: 48, paddingHorizontal: 24, justifyContent: "center" },
-  primaryText: { color: "#fff", fontWeight: "800", fontSize: 16 },
-  secondary: { borderWidth: 1.5, borderColor: color.ink, borderRadius: 12, minHeight: 48, paddingHorizontal: 24, justifyContent: "center" },
-  secondaryText: { color: color.ink, fontWeight: "700", fontSize: 16 },
-  roman: { fontSize: 14, fontStyle: "italic", color: color.inkSoft, textAlign: "center" },
-  opts: { gap: 8 },
-  opt: { borderRadius: 12, minHeight: 52, justifyContent: "center", paddingHorizontal: 16, borderWidth: 1, borderColor: color.border },
-  optText: { fontSize: 16, fontWeight: "600" },
+  safe: { flex: 1, backgroundColor: color.bg },
+  body: { padding: space.lg, gap: space.md },
+  doneBody: { padding: space.lg, justifyContent: "center", flexGrow: 1, gap: space.md },
+  taskLabel: { fontWeight: "700", color: color.inkSoft, textAlign: "center", fontSize: font.sizes.sm, textTransform: "uppercase" },
+  promptBox: { alignItems: "center", paddingVertical: space.md, gap: 4 },
+  promptIast: { fontSize: font.sizes.sm, fontStyle: "italic", color: color.inkSoft },
+  meaningPrompt: { fontSize: 26, fontWeight: "800", color: color.ink, textAlign: "center" },
+  picture: { width: "72%", aspectRatio: 1.25, borderRadius: radius.lg, alignSelf: "center", backgroundColor: color.surfaceMuted },
+  audioBtn: {
+    width: 108, height: 108, borderRadius: 54, backgroundColor: fill.teal,
+    alignItems: "center", justifyContent: "center", alignSelf: "center", gap: 2,
+  },
+  audioLabel: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.sm },
+  options: { gap: space.sm },
+  opt: {
+    borderRadius: radius.md, minHeight: 56, justifyContent: "center", paddingHorizontal: space.md,
+    borderWidth: 1, borderColor: color.border, backgroundColor: color.surface,
+  },
+  optDone: { opacity: 0.9 },
+  optText: { fontSize: 17, lineHeight: 26, fontWeight: "600", color: color.ink },
+  count: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink },
+  countLabel: { fontSize: font.sizes.xs, color: color.inkSoft },
+  localTag: { fontSize: font.sizes.xs, color: color.inkSoft, fontWeight: "700", marginRight: space.sm },
+  localNote: { color: color.inkSoft, fontSize: font.sizes.sm, textAlign: "center" },
+  loading: { textAlign: "center", marginTop: 40, color: color.inkSoft },
 });

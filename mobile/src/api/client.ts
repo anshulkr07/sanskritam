@@ -1320,7 +1320,7 @@ export interface Competition {
   results_at: string;
   status: string;
   pieces: CompetitionPiece[];
-  me?: { best_percent: number | null; rank: number | null; attempts_today: number; attempts_left: number } | null;
+  me?: { best_percent: number | null; rank: number | null; attempts_today: number; attempts_left: number; piece_results?: Record<string, { percent: number; attempt_id: number }> | null } | null;
 }
 
 export interface ReciteAkshara {
@@ -1381,7 +1381,7 @@ function toQuery(params: Record<string, unknown>): string {
   return parts.join("&");
 }
 
-async function request<T>(path: string, init: RequestInit = {}, withAuth = false): Promise<T> {
+export async function request<T>(path: string, init: RequestInit = {}, withAuth = false): Promise<T> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(init.headers as Record<string, string> | undefined),

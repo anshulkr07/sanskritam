@@ -2,7 +2,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { color, font, space } from "../theme";
 
@@ -40,7 +40,8 @@ export default function GameShell({
         <Text style={styles.score}>{score}</Text>
         {!!combo && <Text style={styles.combo}>{combo}</Text>}
       </View>
-      <View style={styles.body}>{children}</View>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.body}
+        keyboardShouldPersistTaps="handled">{children}</ScrollView>
     </View>
   );
 }
@@ -56,5 +57,6 @@ const styles = StyleSheet.create({
   scoreRow: { flexDirection: "row", alignItems: "baseline", gap: 8 },
   score: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink },
   combo: { fontSize: 14, color: color.saffronText, fontWeight: "700" },
-  body: { flex: 1, gap: 12 },
+  scroll: { flex: 1 },
+  body: { flexGrow: 1, gap: 12, paddingBottom: 16 },
 });

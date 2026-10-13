@@ -12,6 +12,7 @@ import { ApiError, api, uploadCompetitionAttempt, uploadRecite, type ReciteResul
 import { playClip, preloadClip } from "../services/speech";
 import { useQuery } from "../hooks/useQuery";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { haptics } from "../services/haptics";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { color, fill, sanskritText } from "../theme";
 import { plain } from "../utils/text";
@@ -120,18 +121,44 @@ export default function ReciteScreen({ navigation, route }: Props) {
     }
   }, [verse, lineX3, playLine, reduced]);
 
+  // Visible, audible countdown before the mic opens (brief §7): permission
+  // preflight happens BEFORE the countdown starts, never halfway through it.
+  const [countdown, setCountdown] = useState<number | null>(null);
   const startRec = useCallback(async () => {
     setError("");
-    setRecording(true);
-    setRecSecs(0);
     try {
-      await recorder.prepareToRecordAsync();
-      recorder.record();
-    } catch {
-      setRecording(false);
-      setError("The microphone did not start. Try again?");
+      const { Camera } = await import("expo-camera");
+      const perm = await Camera.requestMicrophonePermissionsAsync();
+      if (perm.status !== "granted") {
+        setError("Allow the microphone in Settings to record.");
+        return;
+      }
+    } catch { /* permission module unavailable: the record call surfaces it */ }
+    setCountdown(3);
+    haptics.tap();
+  }, []);
+
+  useEffect(() => {
+    if (countdown == null) return;
+    if (countdown === 0) {
+      setCountdown(null);
+      (async () => {
+        setRecording(true);
+        setRecSecs(0);
+        try {
+          await recorder.prepareToRecordAsync();
+          recorder.record();
+        } catch {
+          setRecording(false);
+          setError("The microphone did not start. Try again?");
+        }
+      })();
+      return;
     }
-  }, [recorder]);
+    haptics.tap();
+    const t = setTimeout(() => setCountdown((c) => (c ?? 1) - 1), 1000);
+    return () => clearTimeout(t);
+  }, [countdown, recorder]);
 
   useEffect(() => {
     if (!recording) return;
@@ -308,6 +335,11 @@ export default function ReciteScreen({ navigation, route }: Props) {
           <Pressable onPress={() => void playLine(lineIdx)} accessibilityRole="button" accessibilityLabel="Hear this line" style={styles.row}>
             <Text style={styles.rowText}>Hear line</Text>
           </Pressable>
+          {countdown != null && (
+            <Text style={styles.countdown} accessibilityRole="alert" accessibilityLabel={`Starting in ${countdown}`}>
+              {countdown === 0 ? "Go" : countdown}
+            </Text>
+          )}
           {!recording ? (
             <Pressable onPress={() => void startRec()} accessibilityRole="button" accessibilityLabel="Record this line" style={styles.primary}>
               <Text style={styles.primaryText}>Record</Text>
@@ -382,6 +414,11 @@ export default function ReciteScreen({ navigation, route }: Props) {
           >
             <Text style={styles.rowText}>Eyes-closed test: {eyesOn ? "On" : "Off"}</Text>
           </Pressable>
+          {countdown != null && (
+            <Text style={styles.countdown} accessibilityRole="alert" accessibilityLabel={`Starting in ${countdown}`}>
+              {countdown === 0 ? "Go" : countdown}
+            </Text>
+          )}
           {!recording ? (
             <Pressable onPress={() => void startRec()} accessibilityRole="button" accessibilityLabel="Record the verse" style={styles.primary}>
               <Text style={styles.primaryText}>Record</Text>
@@ -426,6 +463,7 @@ const styles = StyleSheet.create({
   block: { gap: 8 },
   lineHit: { minHeight: 44, justifyContent: "center" },
   primary: { minHeight: 48, alignItems: "center", justifyContent: "center", backgroundColor: color.saffronBtn, borderRadius: 12 },
+  countdown: { textAlign: "center", fontSize: 56, lineHeight: 68, fontWeight: "800", color: color.saffronText, fontVariant: ["tabular-nums"] },
   primaryText: { color: "#fff", fontWeight: "800" },
   row: { minHeight: 44, justifyContent: "center", paddingHorizontal: 12, borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
   rowText: { color: color.ink, fontWeight: "600" },

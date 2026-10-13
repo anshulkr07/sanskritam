@@ -5,7 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { registerRootComponent } from "expo";
 import { useFonts, Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold } from "@expo-google-fonts/nunito";
 import { Baloo2_700Bold, Baloo2_800ExtraBold } from "@expo-google-fonts/baloo-2";
-import { GAMES, PRACTICE, GameTile, PlayBanner, PracticeRow, ReciteCard } from "../src/screens/Play";
+import { GAMES, PRACTICE, GameTile, PlayBanner, PracticeRow, ReciteCard } from "../src/screens/playPreviewParts";
 import { GrammarChapterCard, GrammarContinueCard, GrammarToolCard } from "../src/screens/Grammar";
 import LangToggle from "../src/components/grammar/LangToggle";
 import { color, onFill } from "../src/theme";

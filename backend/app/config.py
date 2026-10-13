@@ -61,6 +61,8 @@ class Settings(BaseSettings):
     # auto-detect it TRANSLATES spoken Sanskrit into English, so Talk never
     # calls it that way alone; see services/learner_stt.py.
     sarvam_stt_model: str = "saaras:v4"
+    # Realtime STT websocket endpoint (re-verify against current docs at deploy).
+    sarvam_realtime_url: str = ""
     # Bulbul language code for Sanskrit lines. Bulbul v3 has no public sa-IN:
     # probed 2026-09-23 it still answers 400 "Please request beta access to
     # sa-IN". Until Sarvam support enables it, Sanskrit reads through the Hindi
@@ -398,6 +400,15 @@ class Settings(BaseSettings):
     competition_piece_max_ms: int = 35000
     competition_rules_version: str = "2026-10-1"
     prize_contact_email: str = ""
+
+    # Play sharing / verified app links (handover_games_daily_multiplayer §11).
+    # public_base_url: first-party HTTPS origin that hosts /l/<code> and the
+    # landing page. The certificate fingerprints / Apple app ids stay empty
+    # until the owner adds the real signing values — the statement files then
+    # assert nothing rather than faking verification.
+    public_base_url: str = ""
+    android_cert_fingerprints: str = ""
+    apple_app_ids: str = ""
 
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 

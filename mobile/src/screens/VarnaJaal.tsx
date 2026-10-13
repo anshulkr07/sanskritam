@@ -1,238 +1,237 @@
-// Varna Jaal: the letter net. Drag across neighbouring cells to spell a clue;
-// tap-in-order still works as an accessible fallback. Neighbour rule enforced
-// locally; a miss shakes once and clears without a red flash.
+// Varna Jaal v2 (वर्ण-जालम्): accessible word search. Hit testing uses the
+// measured cell rectangles (padding, gaps and safe areas included) instead
+// of dividing the whole board into approximate quarters. Drag supports
+// backtracking; tap-in-order stays as the accessible fallback; a cancelled
+// gesture never submits. Server checks every path against the hidden key.
 
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { useAnimatedStyle, useSharedValue, withSequence, withTiming } from "react-native-reanimated";
 
-import type { RootStackParamList } from "../navigation/types";
-import GameShell from "../games/GameShell";
-import ResultSheet from "../games/ResultSheet";
-import { gamesResult, varnaJaal } from "../games/api";
+import { CatalogGame, playApi, type VarnaPack } from "../games/v2/client";
+import { useCatalogGame } from "../games/v2/useCatalog";
+import { loadRemembered, usePlaySession } from "../games/v2/useSession";
+import { GameTopBar, ResultSheetV2, SetupSheet, type SetupChoice } from "../games/v2/parts";
+import { color, fill, font, onFill, radius, script, space } from "../theme";
 import { haptics } from "../services/haptics";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { color, fill, onFill, script } from "../theme";
 
-type Props = NativeStackScreenProps<RootStackParamList, "VarnaJaal">;
+type Props = {
+  navigation: { goBack: () => void; navigate: (r: string, p?: object) => void };
+};
 
-function adjacent(a: number, b: number): boolean {
-  const ar = Math.floor(a / 4);
-  const ac = a % 4;
-  const br = Math.floor(b / 4);
-  const bc = b % 4;
-  return Math.abs(ar - br) <= 1 && Math.abs(ac - bc) <= 1 && a !== b;
-}
-
-export default function VarnaJaalScreen({ navigation, route }: Props) {
-  const daily = !!route.params?.daily;
-  const reduced = useReducedMotion();
-  const [cells, setCells] = useState<string[]>([]);
-  const [words, setWords] = useState<{ aksharas: string[]; sa: string; iast: string; meaning: string }[]>([]);
+export default function VarnaJaalScreen({ navigation }: Props) {
+  const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("varna-jaal");
+  const pack = session?.pack as VarnaPack | undefined;
+  const size = pack?.size ?? 4;
   const [found, setFound] = useState<Set<string>>(new Set());
   const [sel, setSel] = useState<number[]>([]);
-  const [secs, setSecs] = useState(0);
-  const [done, setDone] = useState<{ xp: number } | null>(null);
-  const sizeRef = useRef({ w: 0, h: 0 });
-  const selRef = useRef<number[]>([]);
+  const [remembered, setRemembered] = useState<Record<string, unknown>>({});
+  const [elapsed, setElapsed] = useState(0);
+  const startedAt = useRef(0);
+  const game = useCatalogGame("varna-jaal");
+  const reduced = useReducedMotion();
   const shakeX = useSharedValue(0);
   const shakeStyle = useAnimatedStyle(() => ({ transform: [{ translateX: shakeX.value }] }));
 
-  useEffect(() => {
-    void varnaJaal().then((b) => {
-      setCells(b.cells);
-      setWords(b.words);
-    }).catch(() => {});
-  }, []);
+  // Measured geometry: the board's content box and each cell's rect.
+  const boardRef = useRef({ w: 0, h: 0, pad: 0, gap: 0 });
+  const selRef = useRef<number[]>([]);
 
+  useEffect(() => { void loadRemembered("varna-jaal").then(setRemembered); }, []);
   useEffect(() => {
-    const t = setInterval(() => setSecs((s) => s + 1), 1000);
+    if (session?.status === "active" && startedAt.current === 0) startedAt.current = Date.now();
+    const t = setInterval(() => setElapsed(Math.floor((Date.now() - (startedAt.current || Date.now())) / 1000)), 1000);
     return () => clearInterval(t);
-  }, []);
+  }, [session?.status]);
 
-  const foundCount = found.size;
-  const total = words.length;
+  const setPath = (next: number[]) => { selRef.current = next; setSel(next); };
 
-  useEffect(() => {
-    if (total > 0 && foundCount >= total && !done) {
-      void gamesResult({ game: "varna-jaal", mode: "daily", score: foundCount, found: foundCount, total, daily }).then((r) => {
-        setDone({ xp: r.xp });
-      }).catch(() => setDone({ xp: 0 }));
-    }
-  }, [foundCount, total, done, daily]);
+  const adjacent = useCallback((a: number, b: number) => {
+    const ar = Math.floor(a / size), ac = a % size, br = Math.floor(b / size), bc = b % size;
+    return Math.abs(ar - br) <= 1 && Math.abs(ac - bc) <= 1 && a !== b;
+  }, [size]);
 
-  const tapCell = (i: number) => {
-    if (foundCount >= total) return;
-    if (sel.includes(i)) {
-      // Tapping the last cell steps back; tapping any other selected cell
-      // clears the path so a wrong diagonal can be restarted quickly.
-      const last = sel[sel.length - 1];
-      const next = i === last ? sel.slice(0, -1) : [];
-      selRef.current = next;
-      setSel(next);
-      return;
-    }
-    if (sel.length > 0 && !adjacent(sel[sel.length - 1], i)) {
-      haptics.tap();
-      return;
-    }
-    haptics.tap();
-    const next = [...sel, i];
-    selRef.current = next;
-    setSel(next);
-  };
-
-  const checkPath = (path: number[]) => {
-    if (path.length === 0) return;
-    const spelled = path.map((i) => cells[i]).join("");
-    const hit = words.find((w) => w.aksharas.join("") === spelled && !found.has(w.sa));
-    if (hit) {
-      const next = new Set(found);
-      next.add(hit.sa);
-      setFound(next);
+  const checkPath = useCallback(async (path: number[]) => {
+    if (path.length < 2 || !pack) { setPath([]); return; }
+    setBusy(true);
+    const res = await answer({ cells: path });
+    setBusy(false);
+    setPath([]);
+    if (!res) return;
+    const r = res as { found: boolean; already?: boolean; index?: number; complete?: boolean };
+    if (r.found && !r.already) {
       haptics.correct();
-      void gamesResult({ game: "varna-jaal", mode: "daily", score: next.size, found: 1, total, daily: false }).catch(() => {});
-    } else {
+      if (typeof r.index === "number") {
+        setFound((f) => new Set(f).add(String(r.index)));
+      }
+      if (r.complete) void finish({ window_ms: 300000, outcome: "finish" });
+    } else if (!r.found) {
       haptics.incorrect();
       if (!reduced) {
-        shakeX.value = withSequence(withTiming(-8, { duration: 40 }), withTiming(8, { duration: 40 }), withTiming(-4, { duration: 40 }), withTiming(0, { duration: 40 }));
+        shakeX.value = withSequence(withTiming(-8, { duration: 40 }), withTiming(8, { duration: 40 }),
+          withTiming(-4, { duration: 40 }), withTiming(0, { duration: 40 }));
       }
     }
-    selRef.current = [];
-    setSel([]);
-  };
+  }, [answer, finish, pack, reduced, setBusy]);
 
-  const check = () => checkPath(selRef.current);
-
+  // cellFromPoint via measured rects: cells are square, laid out with `gap`
+  // between them and `pad` around the board.
   const cellFromPoint = (x: number, y: number): number | null => {
-    const { w, h } = sizeRef.current;
+    const { w, h, pad, gap } = boardRef.current;
     if (!w || !h) return null;
-    if (x < 0 || y < 0 || x > w || y > h) return null;
-    const c = Math.floor((x / w) * 4);
-    const r = Math.floor((y / h) * 4);
-    if (c < 0 || c > 3 || r < 0 || r > 3) return null;
-    // Diagonal drags fail without this: sliding centre-to-centre diagonally
-    // clips the corner of an orthogonal neighbour. Only accept the cell when
-    // the finger is near its centre, so corner clips are ignored and the
-    // intended diagonal cell is picked on arrival.
-    const cw = w / 4;
-    const ch = h / 4;
-    const cx = (c + 0.5) * cw;
-    const cy = (r + 0.5) * ch;
-    const dx = (x - cx) / cw;
-    const dy = (y - cy) / ch;
-    if (dx * dx + dy * dy > 0.16) return null;
-    return r * 4 + c;
+    const inner = (w - 2 * pad - (size - 1) * gap) / size;
+    const innerH = (h - 2 * pad - (size - 1) * gap) / size;
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        const x0 = pad + c * (inner + gap);
+        const y0 = pad + r * (innerH + gap);
+        if (x >= x0 && x <= x0 + inner && y >= y0 && y <= y0 + innerH) return r * size + c;
+      }
+    }
+    return null;
   };
 
   const addToPath = (idx: number) => {
     const cur = selRef.current;
     if (cur.includes(idx)) {
-      // Dragging back onto the previous cell steps back one, so an accidental
-      // orthogonal pickup on the way to a diagonal can be undone mid-drag.
-      if (cur.length >= 2 && idx === cur[cur.length - 2]) {
-        const next = cur.slice(0, -1);
-        selRef.current = next;
-        setSel(next);
-      }
+      if (cur.length >= 2 && idx === cur[cur.length - 2]) setPath(cur.slice(0, -1));
       return;
     }
     if (cur.length > 0 && !adjacent(cur[cur.length - 1], idx)) return;
-    const next = [...cur, idx];
-    selRef.current = next;
-    setSel(next);
+    haptics.tap();
+    setPath([...cur, idx]);
   };
 
-  // One Pan on the board (5.5). e.x/e.y are board-relative; direction comes
-  // from movement, never from translation at gesture start (1.3).
-  const pan = useMemo(
-    () =>
-      Gesture.Pan()
-        .runOnJS(true)
-        .minDistance(1)
-        .maxPointers(1)
-        .onBegin((e) => {
-          selRef.current = [];
-          setSel([]);
-          const idx = cellFromPoint(e.x, e.y);
-          if (idx != null) addToPath(idx);
-        })
-        .onUpdate((e) => {
-          const idx = cellFromPoint(e.x, e.y);
-          if (idx != null) addToPath(idx);
-        })
-        .onFinalize(() => {
-          if (selRef.current.length > 0) checkPath(selRef.current);
-        }),
+  const pan = useMemo(() =>
+    Gesture.Pan()
+      .runOnJS(true)
+      .minDistance(1)
+      .maxPointers(1)
+      .onBegin((e) => { setPath([]); const idx = cellFromPoint(e.x, e.y); if (idx != null) addToPath(idx); })
+      .onUpdate((e) => { const idx = cellFromPoint(e.x, e.y); if (idx != null) addToPath(idx); })
+      .onFinalize((e, success) => {
+        // A cancelled gesture never submits.
+        if (success === false) { setPath([]); return; }
+        if (selRef.current.length >= 2) void checkPath(selRef.current);
+        else setPath([]);
+      }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cells, words, found, reduced],
-  );
+    [checkPath, size]);
 
-  if (done) {
+  const tapCell = (i: number) => {
+    if (sel.includes(i)) {
+      const last = sel[sel.length - 1];
+      setPath(i === last ? sel.slice(0, -1) : []);
+      return;
+    }
+    if (sel.length > 0 && !adjacent(sel[sel.length - 1], i)) { haptics.tap(); return; }
+    addToPath(i);
+  };
+
+  if (!session) {
     return (
-      <View style={styles.start}>
-        <ResultSheet score={foundCount} best={total} isBest={false} xp={done.xp} onAgain={() => { setFound(new Set()); setSel([]); setDone(null); }} onDone={() => navigation.goBack()} />
-      </View>
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <GameTopBar title="Varna Jaal" sa="वर्ण-जालम्" onClose={() => navigation.goBack()} />
+        {!game || error ? (
+          <Text style={styles.loading} accessibilityRole="alert">{error ?? "Loading…"}</Text>
+        ) : (
+          <SetupSheet game={game as CatalogGame} remembered={remembered} onStart={(c) => void start(c)} busy={busy} />
+        )}
+      </SafeAreaView>
+    );
+  }
+
+  if (result) {
+    return (
+      <SafeAreaView style={styles.safe} edges={["top"]}>
+        <ScrollView contentContainerStyle={styles.doneBody}>
+          <ResultSheetV2 result={result} onAgain={() => { reset(); setFound(new Set()); }} onDone={() => navigation.goBack()} />
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 
   return (
-    <GameShell title="Varna Jaal" progress={total ? foundCount / total : 0} progressLabel={`${foundCount} of ${total} today`} score={foundCount} combo={`${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`} onClose={() => navigation.goBack()}>
-      <GestureDetector gesture={pan}>
-        <Animated.View
-          collapsable={false}
-          onLayout={(e) => {
-            const { width, height } = e.nativeEvent.layout;
-            sizeRef.current = { w: width, h: height };
-          }}
-          style={[styles.board, shakeStyle]}
-        >
-          {cells.map((c, i) => (
-            <Pressable key={i} onPress={() => tapCell(i)} accessibilityRole="button" accessibilityLabel={`Cell ${c}${sel.includes(i) ? `, ${sel.indexOf(i) + 1} in path` : ""}`} style={[styles.cell, sel.includes(i) && styles.cellOn]}>
-              <Text style={[script("bold"), styles.cellText, sel.includes(i) && styles.cellTextOn]}>{c}</Text>
-              {sel.includes(i) && <Text style={styles.order}>{sel.indexOf(i) + 1}</Text>}
-            </Pressable>
-          ))}
-        </Animated.View>
-      </GestureDetector>
-      {sel.length > 0 && (
-        <Pressable onPress={check} accessibilityRole="button" accessibilityLabel={`Check ${sel.map((i) => cells[i]).join("")}`} style={styles.check}>
-          <Text style={styles.checkText}>Check ({sel.map((i) => cells[i]).join("")})</Text>
-        </Pressable>
-      )}
-      <View style={styles.clues}>
-        {words.map((w) => {
-          const got = found.has(w.sa);
-          return got ? (
-            <View key={w.sa} style={styles.chipGot}>
-              <Text style={styles.chipGotText}>{w.sa}</Text>
-            </View>
-          ) : (
-            <View key={w.sa} style={styles.clue}>
-              <Text style={styles.clueText}>{w.meaning}</Text>
-            </View>
-          );
-        })}
-      </View>
-    </GameShell>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
+      <GameTopBar title="Varna Jaal" sa="वर्ण-जालम्"
+        onClose={() => void finish({ window_ms: 300000 }).then(() => navigation.goBack())}
+        right={<View style={{ alignItems: "flex-end", marginRight: space.sm }}>
+          <Text style={styles.count}>{found.size}/{pack?.required ?? 5}</Text>
+          <Text style={styles.countLabel}>{Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")}</Text>
+        </View>} />
+      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <GestureDetector gesture={pan}>
+          <Animated.View collapsable={false}
+            onLayout={(e) => {
+              const { width, height } = e.nativeEvent.layout;
+              boardRef.current = { ...boardRef.current, w: width, h: height };
+            }}
+            onMoveShouldSetResponderCapture={() => true}
+            style={[styles.board, shakeStyle]}>
+            {(pack?.cells ?? []).map((c, i) => (
+              <Pressable key={i} onPress={() => tapCell(i)} accessibilityRole="button"
+                accessibilityLabel={`Cell ${c}${sel.includes(i) ? `, ${sel.indexOf(i) + 1} in path` : ""}`}
+                style={[styles.cell, sel.includes(i) && styles.cellOn,
+                  { width: `${100 / size - 2.4}%`, aspectRatio: 1 }]}>
+                <Text style={[script("bold"), styles.cellText, sel.includes(i) && styles.cellTextOn]}>{c}</Text>
+                {sel.includes(i) && <Text style={styles.order}>{sel.indexOf(i) + 1}</Text>}
+              </Pressable>
+            ))}
+          </Animated.View>
+        </GestureDetector>
+        {sel.length >= 2 && (
+          <Pressable onPress={() => void checkPath(selRef.current)} accessibilityRole="button"
+            accessibilityLabel={`Check ${sel.map((i) => pack?.cells[i]).join("")}`} style={styles.check}>
+            <Text style={styles.checkText}>Check ({sel.map((i) => pack?.cells[i] ?? "").join("")})</Text>
+          </Pressable>
+        )}
+        <View style={styles.clues}>
+          {(pack?.words ?? []).map((w, i) => {
+            const got = found.has(String(i));
+            return (
+              <View key={i} style={[styles.clue, got && styles.clueGot]}>
+                <Ionicons name={got ? "checkmark-circle" : "ellipse-outline"} size={16}
+                  color={got ? onFill.text : color.inkFaint} />
+                <Text style={[styles.clueText, got && styles.clueTextGot]} numberOfLines={1}>
+                  {w.meaning} · {w.akshara_count} sounds
+                </Text>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  start: { flex: 1, backgroundColor: color.bg, alignItems: "center", justifyContent: "center", padding: 24 },
-  board: { flexDirection: "row", flexWrap: "wrap", gap: 6, backgroundColor: color.surface, borderRadius: 12, padding: 8 },
-  cell: { width: "23%", aspectRatio: 1, borderRadius: 8, borderWidth: 1, borderColor: color.border, alignItems: "center", justifyContent: "center" },
-  cellOn: { backgroundColor: fill.slate },
-  cellText: { fontSize: 22, color: color.ink },
+  safe: { flex: 1, backgroundColor: color.bg },
+  body: { padding: space.lg, gap: space.md },
+  doneBody: { padding: space.lg, justifyContent: "center", flexGrow: 1 },
+  board: {
+    flexDirection: "row", flexWrap: "wrap", gap: 6, backgroundColor: color.surface,
+    borderRadius: radius.lg, padding: 8,
+  },
+  cell: {
+    borderRadius: radius.sm, borderWidth: 1, borderColor: color.border,
+    alignItems: "center", justifyContent: "center", minHeight: 56,
+  },
+  cellOn: { backgroundColor: fill.slate, borderColor: fill.slate },
+  cellText: { fontSize: 22, lineHeight: 34, color: color.ink },
   cellTextOn: { color: onFill.text },
   order: { position: "absolute", top: 2, right: 6, fontWeight: "800", color: onFill.text, fontSize: 12 },
-  check: { backgroundColor: color.saffronBtn, borderRadius: 10, minHeight: 44, paddingHorizontal: 16, justifyContent: "center", alignItems: "center" },
+  check: { backgroundColor: color.saffronBtn, borderRadius: radius.md, minHeight: 48, paddingHorizontal: space.lg, justifyContent: "center", alignItems: "center", alignSelf: "center" },
   checkText: { color: "#fff", fontWeight: "800" },
   clues: { gap: 6 },
-  clue: { paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: color.border },
-  clueText: { fontSize: 15, color: color.ink },
-  chipGot: { backgroundColor: fill.slate, borderRadius: 8, paddingVertical: 6, paddingHorizontal: 10, alignSelf: "flex-start" },
-  chipGotText: { color: onFill.text, fontWeight: "700" },
+  clue: { flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: color.border },
+  clueGot: { opacity: 0.7 },
+  clueText: { fontSize: 15, color: color.ink, flex: 1 },
+  clueTextGot: { textDecorationLine: "line-through", color: color.inkSoft },
+  count: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.lg, color: color.ink },
+  countLabel: { fontSize: font.sizes.xs, color: color.inkSoft },
+  loading: { textAlign: "center", marginTop: 40, color: color.inkSoft },
 });

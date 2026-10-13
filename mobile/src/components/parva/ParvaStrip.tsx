@@ -154,6 +154,7 @@ export default function ParvaStrip() {
         accessibilityRole="button"
         accessibilityLabel={`${plain(main.title)}. ${mainSubtitle(main, todayStr)}`}
       >
+        <View style={styles.todayEyebrow}><Text style={styles.todayEyebrowText}>{t("parva.today")}</Text></View>
         {!!main.art_url && (
           <Image source={{ uri: main.art_url }} style={styles.thumb} accessible={false} importantForAccessibility="no" />
         )}
@@ -218,12 +219,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: space.sm,
     minHeight: 64,
-    borderRadius: 16,
+    borderRadius: 0,
     padding: space.md,
     backgroundColor: fill.teal,
   },
   pressed: { opacity: 0.9 },
-  thumb: { width: 44, height: 44, borderRadius: 8 },
+  thumb: { width: 56, height: 64 },
+  todayEyebrow: { position: "absolute", top: 0, right: 0, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: "rgba(255,248,238,0.14)" },
+  todayEyebrowText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 10, color: onFill.text, textTransform: "uppercase", letterSpacing: 0.8 },
   todayText: { flex: 1, minWidth: 0 },
   todayTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: onFill.text },
   todayMeta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: onFill.soft },

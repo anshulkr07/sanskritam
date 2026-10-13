@@ -11,6 +11,43 @@ import { plain } from "../../utils/text";
 const SYM = { ok: "✓", fix: "✗", unclear: "?" } as const;
 const SYM_COLOR = { ok: fill.ok, fix: fill.bad, unclear: "#2F4677" } as const;
 
+// Rubric v2 component bars (handover_games_daily_multiplayer §8). Missing
+// components render as explicitly unavailable, never as a free full score.
+const COMPONENT_LABELS: { key: keyof ReciteComponents; label: string; weight: number }[] = [
+  { key: "content", label: "Words", weight: 60 },
+  { key: "sequence", label: "Order", weight: 20 },
+  { key: "continuity", label: "Flow", weight: 15 },
+  { key: "rhythm", label: "Pace", weight: 5 },
+];
+
+interface ReciteComponents {
+  content: number; sequence: number; continuity: number | null; rhythm: number | null;
+}
+
+function ComponentBars({ components }: { components: ReciteComponents }) {
+  return (
+    <View style={styles.components} accessibilityLabel="Score components">
+      {COMPONENT_LABELS.map(({ key, label, weight }) => {
+        const v = components[key];
+        return (
+          <View key={key} style={styles.compRow}>
+            <Text style={styles.compLabel}>{label}</Text>
+            <View style={styles.compTrack}>
+              <View style={[styles.compFill, {
+                width: `${v == null ? 0 : Math.round((v / weight) * 100)}%`,
+                opacity: v == null ? 0.25 : 1,
+              }]} />
+            </View>
+            <Text style={[styles.compVal, v == null && styles.compMissing]}>
+              {v == null ? "n/a" : `${Math.round(v)}/${weight}`}
+            </Text>
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
 export default function RecitationResult({
   result,
   onPlayMine,
@@ -34,6 +71,9 @@ export default function RecitationResult({
       <Text style={styles.counts}>
         {result.counts.ok} right, {result.counts.fix} to fix, {result.counts.unclear} unclear
       </Text>
+      {(result as unknown as { components?: ReciteComponents }).components && (
+        <ComponentBars components={(result as unknown as { components: ReciteComponents }).components} />
+      )}
       {result.lines.map((ln, li) => (
         <View
           key={ln.i}
@@ -72,6 +112,13 @@ const styles = StyleSheet.create({
   root: { gap: 8, paddingVertical: 8 },
   percent: { fontSize: 32, fontWeight: "800", color: color.ink },
   counts: { fontSize: 14, color: color.inkSoft },
+  components: { gap: 4, marginTop: 2 },
+  compRow: { flexDirection: "row", alignItems: "center", gap: 6 },
+  compLabel: { width: 52, fontSize: 12, color: color.inkSoft, fontWeight: "700" },
+  compTrack: { flex: 1, height: 6, borderRadius: 3, backgroundColor: color.border, overflow: "hidden" },
+  compFill: { height: 6, backgroundColor: color.saffronBtn },
+  compVal: { width: 46, fontSize: 11, color: color.inkSoft, textAlign: "right", fontVariant: ["tabular-nums"] },
+  compMissing: { color: color.inkFaint },
   line: { flexDirection: "row", flexWrap: "wrap", gap: 6, paddingVertical: 4 },
   ak: { alignItems: "center", minWidth: 28 },
   t: { color: color.ink },

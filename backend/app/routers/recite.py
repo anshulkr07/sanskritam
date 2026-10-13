@@ -137,6 +137,27 @@ async def score_recite(
                         purpose=purpose[:16], mode=("strict" if strict else "liberal"),
                         status=status, percent=pct, n_ok=g, n_fix=r_, n_unclear=a_,
                         bands=bands_str, duration_ms=dur_ms)
+    # Rubric v2 components (handover_games_daily_multiplayer §8). Timing
+    # evidence comes from the provider when it returns timestamps; without
+    # them the timing components stay None — partial, never invented.
+    components_payload = None
+    if status == "scored":
+        try:
+            from app.services.recite_scoring_v2 import Segment, score_v2
+            seg_times = res.get("segments") or []
+            if seg_times:
+                segs = [Segment(text=str(s.get("text", "")),
+                                start_s=s.get("start_s"), end_s=s.get("end_s"))
+                        for s in seg_times]
+            else:
+                heard_all = res.get("heard", "")
+                segs = [Segment(text=heard_all)] if heard_all else []
+            v2 = score_v2(reference, segs)
+            if v2.status == "scored":
+                components_payload = v2.as_payload()
+        except Exception:
+            components_payload = None
+    row.components = components_payload
     db.add(row)
     review_info = None
     if purpose == "recite" and unit == "verse":
@@ -163,6 +184,9 @@ async def score_recite(
             "counts": {"ok": g, "fix": r_, "unclear": a_},
             "lines": out_lines if status == "scored" else [],
             "tips": tip_list, "perfect": perfect, "heard": res.get("heard", "")}
+    if components_payload is not None:
+        resp["components"] = components_payload.get("components")
+        resp["rubric_version"] = components_payload.get("rubric_version")
     if review_info is not None:
         resp["review"] = review_info
     return resp

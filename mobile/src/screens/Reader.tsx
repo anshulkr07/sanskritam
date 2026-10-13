@@ -145,6 +145,9 @@ export default function ReaderScreen() {
   // The most recent listen, for the Audio shelf's Continue card.
   const [lastListen, setLastListen] = useState<{ bookKey: string; pos: ListenPosition } | null>(null);
   const navigation = useNavigation();
+  // Subscribe on every render, including loading and book contents.
+  // Calling this only on the shelf changes hook order when data arrives.
+  const miniUp = useMiniPlayerUp();
   const reading = bookKey !== null && (pageIndex !== null || pagedChapter !== null);
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("read", bookKey ?? "");
@@ -580,7 +583,6 @@ export default function ReaderScreen() {
   // a voice), switched by the pill in the header. The mini player floats
   // over either while a chant session is live.
   const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
-  const miniUp = useMiniPlayerUp();
   if (media === "audio") {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>

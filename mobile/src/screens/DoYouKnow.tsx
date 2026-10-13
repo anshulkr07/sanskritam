@@ -16,9 +16,11 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { Linking, Pressable, ScrollView, Share, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { captureRef } from "react-native-view-shot";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { api, type Fact, type FactToday } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
@@ -34,11 +36,42 @@ import { haptics } from "../services/haptics";
 import { color, font, onFill, space } from "../theme";
 import { plain } from "../utils/text";
 
+const SHARE_W = 320;
+const SHARE_POST_H = 400;
+const SHARE_STORY_H = 569;
+
+function FactShareCard({
+  width, height, body, verse, translation, explanation, refText, source, captureRefFn,
+}: {
+  width: number; height: number; body: string; verse: string; translation: string; explanation: string;
+  refText: string; source: string; captureRefFn?: (v: View | null) => void;
+}) {
+  return (
+    <View ref={captureRefFn} collapsable={false} style={[shareStyles.card, { width, height }]}>
+      <LinearGradient colors={["#17535C", "#3B2E25"]} style={StyleSheet.absoluteFill} />
+      <Text style={shareStyles.kicker}>DO YOU KNOW</Text>
+      <Text style={shareStyles.fact} numberOfLines={5}>{body}</Text>
+      {!!verse && <Text style={shareStyles.verse} numberOfLines={3}>{verse}</Text>}
+      {!!translation && <Text style={shareStyles.translation} numberOfLines={3}>{translation}</Text>}
+      {!!explanation && <Text style={shareStyles.explanation} numberOfLines={3}>{explanation}</Text>}
+      <View style={shareStyles.sourceBlock}>
+        {!!refText && <Text style={shareStyles.ref} numberOfLines={1}>{refText}</Text>}
+        {!!source && <Text style={shareStyles.source} numberOfLines={2}>Source: {source}</Text>}
+        <Text style={shareStyles.brand}>Sanskritam</Text>
+      </View>
+    </View>
+  );
+}
+
 type Props = NativeStackScreenProps<RootStackParamList, "DoYouKnow">;
 
 export default function DoYouKnowScreen({ route, navigation }: Props) {
   const factId = route.params?.factId;
   const { sized } = useTypeScale();
+  const [shareFormat, setShareFormat] = useState<"post" | "story">("post");
+  const [shareWidth, setShareWidth] = useState(0);
+  const postRef = useRef<View | null>(null);
+  const storyRef = useRef<View | null>(null);
 
   const key = factId ? `fact:${factId}` : "fact-today";
   const { data, loading, failed, retry } = useQuery<FactToday | Fact | null>(key, () =>
@@ -64,7 +97,25 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
   const translation = plain(fact?.translation).trim();
   const explanation = plain(fact?.explanation).trim();
   const page = sourcePage(fact);
-  const earlier = (more.data?.facts ?? []).filter((f) => f.id !== fact?.id && plain(f.fact).trim() !== "");
+  const earlier = (more.data?.facts ?? []).filter((f) => f.id !== fact?.id && plain(f.fact).trim() !== "").slice(0, 5);
+  const shareScale = Math.min(1, shareWidth / SHARE_W);
+  const shareSource = page?.site ?? fact?.source_site ?? "";
+  const shareMessage = [body, ref, translation, explanation, page?.url ?? fact?.source_url ?? ""].filter(Boolean).join("\n\n");
+  const share = async () => {
+    const target = shareFormat === "post" ? postRef.current : storyRef.current;
+    try {
+      if (target) {
+        const uri = await captureRef(target, { format: "png", result: "tmpfile" });
+        try {
+          const Sharing = require("expo-sharing") as { shareAsync?: (file: string) => Promise<void> };
+          if (Sharing.shareAsync) { await Sharing.shareAsync(uri); return; }
+        } catch { /* use native text share below */ }
+      }
+      await Share.share({ message: shareMessage });
+    } catch {
+      await Share.share({ message: shareMessage }).catch(() => {});
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
@@ -77,7 +128,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
           <Text style={[styles.empty, { fontSize: sized(font.sizes.base) }]}>No fact today.</Text>
         ) : (
           <>
-            <Panel tone="teal">
+            <Panel tone="teal" style={{ borderRadius: 0 }}>
               {!!claim && <Text style={[styles.eyebrow, { color: labelOn("teal") }]}>{claim}</Text>}
               <Text
                 style={[styles.fact, { fontSize: sized(20), lineHeight: Math.round(sized(20) * 1.4) }]}
@@ -149,6 +200,27 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
               </>
             )}
 
+            <SectionLabel>Share this insight</SectionLabel>
+            <View style={styles.shareFormats}>
+              {(["post", "story"] as const).map((format) => (
+                <Pressable key={format} onPress={() => setShareFormat(format)} accessibilityRole="button"
+                  accessibilityState={{ selected: shareFormat === format }}
+                  accessibilityLabel={format === "post" ? "Preview 4 by 5 post" : "Preview 9 by 16 story"}
+                  style={[styles.shareFormat, shareFormat === format && styles.shareFormatOn]}>
+                  <Text style={[styles.shareFormatText, shareFormat === format && styles.shareFormatTextOn]}>{format === "post" ? "Post · 4:5" : "Story · 9:16"}</Text>
+                </Pressable>
+              ))}
+            </View>
+            <View style={[styles.sharePreview, { aspectRatio: shareFormat === "post" ? 4 / 5 : 9 / 16 }]} onLayout={(e) => setShareWidth(e.nativeEvent.layout.width)}>
+              <View style={{ transform: [{ scale: shareScale }] }}>
+                <FactShareCard width={SHARE_W} height={shareFormat === "post" ? SHARE_POST_H : SHARE_STORY_H} body={body}
+                  verse={lines.join(" ")} translation={translation} explanation={explanation} refText={ref} source={shareSource} />
+              </View>
+            </View>
+            <Pressable onPress={() => void share()} style={({ pressed }) => [styles.shareButton, pressed && styles.pressed]} accessibilityRole="button" accessibilityLabel="Share this insight as an image">
+              <Text style={styles.shareButtonText}>Share image</Text>
+            </Pressable>
+
             <View style={styles.flagRow}>
               <ReportButton
                 surface="fact"
@@ -195,6 +267,12 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
             )}
           </>
         )}
+        {!!fact && (
+          <View style={styles.offscreen}>
+            <FactShareCard width={SHARE_W} height={SHARE_POST_H} body={body} verse={lines.join(" ")} translation={translation} explanation={explanation} refText={ref} source={shareSource} captureRefFn={(v) => { postRef.current = v; }} />
+            <FactShareCard width={SHARE_W} height={SHARE_STORY_H} body={body} verse={lines.join(" ")} translation={translation} explanation={explanation} refText={ref} source={shareSource} captureRefFn={(v) => { storyRef.current = v; }} />
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -230,4 +308,26 @@ const styles = StyleSheet.create({
   rowTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   rowSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
   flagRow: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44, marginTop: space.sm },
+  shareFormats: { flexDirection: "row", gap: space.sm, marginTop: space.xs, marginBottom: space.xs },
+  shareFormat: { minHeight: 44, paddingHorizontal: space.md, justifyContent: "center", borderWidth: 1, borderColor: color.ink },
+  shareFormatOn: { backgroundColor: color.ink },
+  shareFormatText: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
+  shareFormatTextOn: { color: "#FFF8EE" },
+  sharePreview: { width: "100%", alignItems: "center", justifyContent: "center", overflow: "hidden" },
+  shareButton: { minHeight: 48, justifyContent: "center", alignItems: "center", backgroundColor: color.saffronBtn, marginTop: space.sm },
+  shareButtonText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: "#FFF8EE" },
+  offscreen: { position: "absolute", left: 0, top: -10000 },
+});
+
+const shareStyles = StyleSheet.create({
+  card: { overflow: "hidden", padding: 24, justifyContent: "flex-start", backgroundColor: "#17535C" },
+  kicker: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, color: "#F2C879", letterSpacing: 1.2 },
+  fact: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 24, lineHeight: 32, color: "#FFF8EE", marginTop: 20 },
+  verse: { fontFamily: "Baloo2_600SemiBold", fontWeight: "600", fontSize: 20, lineHeight: 34, color: "#FFF8EE", marginTop: 16 },
+  translation: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 14, lineHeight: 21, color: "rgba(255,248,238,0.88)", marginTop: 8 },
+  explanation: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 13, lineHeight: 19, color: "rgba(255,248,238,0.9)", marginTop: 8 },
+  sourceBlock: { marginTop: "auto", borderTopWidth: 1, borderTopColor: "rgba(255,248,238,0.34)", paddingTop: 10 },
+  ref: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, color: "#F2C879" },
+  source: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, lineHeight: 16, color: "rgba(255,248,238,0.82)", marginTop: 4 },
+  brand: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 13, color: "#FFF8EE", marginTop: 8 },
 });

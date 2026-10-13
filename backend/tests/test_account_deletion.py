@@ -36,13 +36,16 @@ def test_every_table_referencing_learners_is_deleted_with_the_account():
     assert referencing - {"escape_logs"} == owned
 
     # Rows that reference a learner-owned table rather than the learner must
-    # be deleted first; delete_me handles conversation_turns explicitly.
+    # be deleted first; delete_me handles them explicitly. conversation_turns
+    # (by session ids) and the Play v2 grandchildren: match_participants and
+    # match_events (by membership / with the match) and friend_goal_rounds
+    # (by learner_id, before the paired friend_goals row goes).
     grandchildren = {
         t.name
         for t in Base.metadata.tables.values()
         if any(fk.target_fullname.split(".")[0] in owned for fk in t.foreign_keys)
     }
-    assert grandchildren <= {"conversation_turns"}
+    assert grandchildren <= {"conversation_turns", "match_participants", "match_events", "friend_goal_rounds"}
 
 
 def test_delete_me_removes_rows_in_every_owned_table(client):
@@ -77,8 +80,13 @@ def test_delete_me_removes_rows_in_every_owned_table(client):
     db = SessionLocal()
     try:
         for model in learner_owned_models():
+            if not hasattr(model, "learner_id"):
+                continue  # paired-row tables (FriendGoal) are checked below
             left = db.query(model).filter(model.learner_id == lid).count()
             assert left == 0, f"{model.__tablename__} kept {left} row(s)"
+        # Paired-row table: both columns must be clear of the deleted id.
+        from app.models import FriendGoal
+        assert db.query(FriendGoal).filter((FriendGoal.learner_a == lid) | (FriendGoal.learner_b == lid)).count() == 0
         assert db.query(ConversationTurn).filter(ConversationTurn.session_id == session_id).count() == 0
         assert db.get(Learner, lid) is None
     finally:

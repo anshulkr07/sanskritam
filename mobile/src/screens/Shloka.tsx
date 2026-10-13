@@ -1,25 +1,23 @@
 // Daily Shloka — one verse a day. Loads /shlokas/today, shows Devanagari +
-// IAST + meaning + word breakdown, and can speak the verse.
+// IAST + whole-verse meaning, and can speak the verse.
 // The meaning (Hindi and English) rides in with the verse when the server
 // has it stored. When it does not, /shlokas/{id}/meaning writes it once and
 // stores it; the verse shows at once and the meaning fills in under it.
-// U4-4: Now renders as an unfurling manuscript — verse fades in line by line
-// at duration.telling, each word tappable to expand word_breakdown, with
-// metre visualised as a rhythm strip. Palette evokes a manuscript.
+// The verse fades in line by line at duration.telling, with its metre shown
+// as a rhythm strip. Meaning is given for the whole verse.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, {
-  Easing,
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   withDelay,
 } from "react-native-reanimated";
 
-import { api, type Shloka, type WordBreakdown } from "../api/client";
+import { api, type Shloka } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { cachedGet, peekCache } from "../services/apiCache";
@@ -31,7 +29,7 @@ import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
 import ReportButton from "../components/ReportButton";
-import { color, font, radius, script, shadow, space } from "../theme";
+import { color, font, script, shadow, space } from "../theme";
 import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState } from "../components/ui";
@@ -71,60 +69,6 @@ function MetreStrip({ metre }: { metre: string }) {
   );
 }
 
-// ── Animated word breakdown row ───────────────────────────────────────
-
-function AnimatedWord({
-  word,
-  meaning,
-  played,
-  onPlay,
-  index,
-}: {
-  word: string;
-  meaning?: string;
-  played: boolean;
-  onPlay: () => void;
-  index: number;
-}) {
-  const reduced = useReducedMotion();
-  const opacity = useSharedValue(reduced ? 1 : 0);
-  const translateY = useSharedValue(reduced ? 0 : 12);
-
-  useEffect(() => {
-    opacity.value = withDelay(
-      index * 120,
-      withTiming(1, { duration: duration.base, easing: easingCfg.entrance }),
-    );
-    translateY.value = withDelay(
-      index * 120,
-      withTiming(0, { duration: duration.base, easing: easingCfg.entrance }),
-    );
-  }, [index, opacity, translateY]);
-
-  const animStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    transform: [{ translateY: translateY.value }],
-  }));
-
-  return (
-    <Animated.View style={animStyle}>
-      <Pressable
-        style={styles.wordRow}
-        onPress={onPlay}
-        accessibilityRole="button"
-        accessibilityLabel={`Play the word ${word}. Meaning: ${meaning ?? "not given"}`}
-        accessibilityState={{ selected: played }}
-      >
-        <View style={styles.wordMain}>
-          <Text style={[styles.wordDev, script("bold")]}>{word}</Text>
-          {!!meaning && <Text style={styles.wordMeaning}>{meaning}</Text>}
-        </View>
-        {played && <Ionicons name="volume-high" size={16} color={color.saffron} />}
-      </Pressable>
-    </Animated.View>
-  );
-}
-
 // ── Main screen ───────────────────────────────────────────────────────
 
 // Skeleton preview of the manuscript: source line, verse card, and the word
@@ -132,7 +76,7 @@ function AnimatedWord({
 function ShlokaSkeleton() {
   return (
     <>
-      <Skeleton width={140} height={14} radius={radius.sm} style={{ marginBottom: space.md }} />
+      <Skeleton width={140} height={14} radius={0} style={{ marginBottom: space.md }} />
       <View style={styles.verseCard}>
         <Skeleton height={26} width="92%" />
         <Skeleton height={26} width="72%" style={{ marginTop: 8 }} />
@@ -140,7 +84,7 @@ function ShlokaSkeleton() {
         <Skeleton height={16} width="45%" style={{ marginTop: space.sm }} />
       </View>
       <View style={{ marginTop: space.lg }}>
-        <SkeletonGroup count={5} height={52} radius={radius.md} />
+        <SkeletonGroup count={5} height={52} radius={0} />
       </View>
     </>
   );
@@ -155,7 +99,6 @@ export default function ShlokaScreen() {
   const [playError, setPlayError] = useState("");
   const playback = useRef(new SinglePlayback()).current;
   const mounted = useRef(true);
-  const [playedWord, setPlayedWord] = useState<string | null>(null);
   const [linePlaying, setLinePlaying] = useState<number | null>(null);
   const segRef = useRef<SegmentHandle | null>(null);
   const [meaning, setMeaning] = useState<{ hi: string; en: string } | null>(null);
@@ -208,7 +151,6 @@ export default function ShlokaScreen() {
   useFocusEffect(useCallback(() => {
     mounted.current = true;
     setSpeaking(false);
-    setPlayedWord(null);
     setLinePlaying(null);
     return () => {
       mounted.current = false;
@@ -236,20 +178,6 @@ export default function ShlokaScreen() {
       if (mounted.current && !playback.busy) setSpeaking(false);
     }
   }, [shloka, playback]);
-
-  const playWord = useCallback(async (word: string) => {
-    if (playback.busy) return;
-    haptics.tap();
-    setPlayError("");
-    setPlayedWord(word);
-    try {
-      await playback.play((onComplete, signal) => speak(word, "sa", 1, onComplete, undefined, signal));
-    } catch {
-      if (mounted.current) setPlayError("Couldn't play the word. Tap to try again.");
-    } finally {
-      if (mounted.current && !playback.busy) setPlayedWord(null);
-    }
-  }, [playback]);
 
   // Per-line chant play on the daily card: when the verse has chant lines,
   // each line plays its own segment (same helper as Learn's listen step).
@@ -286,7 +214,7 @@ export default function ShlokaScreen() {
 
   if (loading) {
     return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
+      <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
         <ScrollView contentContainerStyle={styles.body}>
           <ShlokaSkeleton />
         </ScrollView>
@@ -315,7 +243,7 @@ export default function ShlokaScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body}>
         {/* Top: source + play */}
         <View style={styles.topRow}>
@@ -334,10 +262,10 @@ export default function ShlokaScreen() {
             <Pressable
               onPress={play}
               style={styles.playBtn}
-              disabled={speaking || playedWord !== null}
+              disabled={speaking}
               accessibilityRole="button"
               accessibilityLabel={speaking ? "Playing the verse" : "Play the verse aloud"}
-              accessibilityState={{ busy: speaking, disabled: speaking || playedWord !== null }}
+              accessibilityState={{ busy: speaking, disabled: speaking }}
             >
             {speaking ? (
               <Ionicons name="hourglass-outline" size={22} color={color.white} />
@@ -405,22 +333,6 @@ export default function ShlokaScreen() {
           </View>
         ) : null}
 
-        {/* Word breakdown */}
-        {(shloka.word_breakdown ?? []).length > 0 && (
-          <View style={styles.words}>
-            <Text style={styles.sectionTitle}>Word by word</Text>
-            {shloka.word_breakdown.map((w, i) => (
-              <AnimatedWord
-                key={i}
-                word={w.word}
-                meaning={plain(w.meaning) || undefined}
-                played={playedWord === w.word}
-                onPlay={() => w.word && playWord(w.word)}
-                index={i}
-              />
-            ))}
-          </View>
-        )}
       </ScrollView>
       <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
@@ -487,13 +399,13 @@ const styles = StyleSheet.create({
   lineRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
   topBtns: { flexDirection: "row", alignItems: "center", gap: 8 },
-  learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
+  learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 0 },
   learnText: { fontWeight: "700", color: color.ink },
   source: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron, textTransform: "uppercase", letterSpacing: 0.5 },
-  playBtn: { width: 48, height: 48, borderRadius: 24, backgroundColor: color.saffron, alignItems: "center", justifyContent: "center", ...shadow.button },
+  playBtn: { width: 48, height: 48, borderRadius: 0, backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
   verseCard: {
     backgroundColor: color.surface,
-    borderRadius: radius.xl,
+    borderRadius: 0,
     padding: space.lg,
     ...shadow.card,
     borderLeftWidth: 4,
@@ -504,14 +416,9 @@ const styles = StyleSheet.create({
   metreWrap: { marginTop: space.md },
   metreLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, marginBottom: 4 },
   metreStrip: { flexDirection: "row", alignItems: "flex-end", gap: 3, flexWrap: "wrap" },
-  metreBeat: { borderRadius: 3 },
+  metreBeat: { borderRadius: 0 },
   meaning: { marginTop: space.lg },
   meaningHi: { fontSize: font.sizes.base, color: color.ink, lineHeight: 28, marginBottom: space.xs },
   meaningEn: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.base, color: color.inkSoft, lineHeight: 24 },
-  words: { marginTop: space.lg },
   sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.sm },
-  wordRow: { flexDirection: "row", alignItems: "center", backgroundColor: color.surface, borderRadius: radius.md, padding: space.md, marginBottom: space.xs, ...shadow.card },
-  wordMain: { flex: 1 },
-  wordDev: { fontSize: font.sizes.base, color: color.ink },
-  wordMeaning: { fontFamily: "Nunito_400Regular", fontWeight: "400", fontSize: font.sizes.sm, color: color.inkSoft, marginTop: 2 },
 });

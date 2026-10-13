@@ -1,6 +1,7 @@
 // Contest: the set verse, times, best, leaderboard, entry.
 
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -74,10 +75,18 @@ export default function ContestScreen({ navigation }: Props) {
       setGateMsg("Could not check entry. Check your connection and try again.");
       return;
     }
-    if (verse && comp) {
-      (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
-        verseUid: verse.verse_uid ?? verse.id, competitionId: comp.id, start: "recite",
-      });
+    if (comp) {
+      // Enter goes to the first unsubmitted piece (single-piece events: the piece).
+      const nextPiece = (comp.pieces ?? []).find(
+        (p) => !comp.me?.piece_results?.[p.source_ref]) ?? comp.pieces?.[0];
+      const v = nextPiece
+        ? (verses ?? []).find((x) => x.verse_uid === nextPiece.verse_uid) ?? verse
+        : verse;
+      if (v) {
+        (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
+          verseUid: v.verse_uid ?? v.id, competitionId: comp.id, start: "recite",
+        });
+      }
     }
   };
 
@@ -101,11 +110,55 @@ export default function ContestScreen({ navigation }: Props) {
     );
   }
 
+  // Multi-shloka set events (handover_games_daily_multiplayer §9): every
+  // entrant completes the same prescribed set, pieces in any order. Show all
+  // pieces with per-piece progress; the event total is the mean of all of
+  // them, so an incomplete set stays provisional.
+  const isSet = (comp?.pieces?.length ?? 0) > 1;
+
   return (
     <ScrollView contentContainerStyle={styles.body}>
       <Text style={styles.title} accessibilityRole="header">Competition</Text>
-      <Text style={styles.ref}>{comp.pieces?.[0]?.source_ref ?? ""}</Text>
-      {verse && <Text style={[sanskritText(20), { color: color.ink }]}>{verse.devanagari}</Text>}
+      {isSet ? (
+        <>
+          <Text style={styles.hint}>
+            This week's set: {comp.pieces.length} verses · submit each in any order.
+            {"\n"}Your total is the average across all of them.
+          </Text>
+          {comp.pieces.map((p, i) => {
+            const v = (verses ?? []).find((x) => x.verse_uid === p.verse_uid);
+            const submitted = !!comp.me?.piece_results?.[p.source_ref];
+            return (
+              <Pressable
+                key={p.verse_uid || i}
+                onPress={() => {
+                  if (v) {
+                    (navigation as never as { navigate: (r: string, params?: object) => void }).navigate("Recite", {
+                      verseUid: v.verse_uid ?? v.id, competitionId: comp.id, start: submitted ? "practise" : "recite",
+                    });
+                  }
+                }}
+                accessibilityRole="button"
+                accessibilityLabel={`${submitted ? "Submitted" : "Recite"} verse ${p.source_ref}`}
+                style={styles.pieceRow}
+              >
+                <Ionicons name={submitted ? "checkmark-circle" : "ellipse-outline"} size={18}
+                  color={submitted ? "#2C5F50" : color.inkFaint} />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.pieceRef}>{p.source_ref}</Text>
+                  {v && <Text style={[sanskritText(14), { color: color.inkSoft }]} numberOfLines={1}>{v.devanagari}</Text>}
+                </View>
+                <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+              </Pressable>
+            );
+          })}
+        </>
+      ) : (
+        <>
+          <Text style={styles.ref}>{comp.pieces?.[0]?.source_ref ?? ""}</Text>
+          {verse && <Text style={[sanskritText(20), { color: color.ink }]}>{verse.devanagari}</Text>}
+        </>
+      )}
       <Text style={styles.hint}>Closes {comp.closes_at}</Text>
       {!!comp.me && <Text style={styles.hint}>Best {comp.me.best_percent ?? "-"} rank {comp.me.rank ?? "-"}</Text>}
       <Text style={styles.hint}>Attempts left today {comp.me?.attempts_left ?? "-"}</Text>
@@ -155,6 +208,8 @@ export default function ContestScreen({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
+  pieceRow: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: color.border, minHeight: 56 },
+  pieceRef: { fontWeight: "800", color: color.ink, fontSize: 16 },
   body: { padding: 16, gap: 8, paddingBottom: 120 },
   center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 8 },
   title: { fontSize: 22, fontWeight: "800", color: color.ink },

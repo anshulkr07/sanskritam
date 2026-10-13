@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanskritam — Play</title>
+  <meta name="description" content="Play Sanskritam: memory pairs, word races and more. Open your invite in the app, or try a round right here.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8EE; --ink: #3B2E25; --soft: #6E5D4E; --faint: #A99884;
+      --saffron: #D2461F; --teal: #17535C; --rose: #962F4E; --gold: #F2C879; --border: #E7DAC4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "Nunito", system-ui, sans-serif; line-height: 1.5;
+      display: flex; justify-content: center;
+    }
+    main { width: 100%; max-width: 430px; padding: 24px 20px 64px; }
+    .brand { font-size: 15px; font-weight: 800; letter-spacing: .06em; color: var(--saffron); }
+    h1 { font-size: 28px; font-weight: 800; margin: 8px 0 4px; }
+    .sub { color: var(--soft); margin: 0 0 20px; }
+    .card {
+      background: #fff; border: 1px solid var(--border); border-radius: 20px;
+      padding: 20px; margin-bottom: 16px;
+    }
+    .card.dark { background: #3B2E25; color: #FFF8EE; border: none; }
+    .eyebrow { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--saffron); }
+    .dark .eyebrow { color: var(--gold); }
+    .big { font-size: 40px; font-weight: 800; margin: 4px 0; }
+    .code {
+      font-size: 32px; font-weight: 800; letter-spacing: .3em; text-align: center;
+      padding: 12px; border: 2px dashed var(--border); border-radius: 14px; margin: 10px 0;
+    }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: 52px; border-radius: 14px; border: none;
+      font: inherit; font-weight: 800; font-size: 16px; cursor: pointer; margin-top: 8px;
+    }
+    .btn-primary { background: var(--saffron); color: #fff; }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+    .stores { display: flex; gap: 10px; margin-top: 14px; }
+    .store {
+      flex: 1; text-align: center; padding: 12px 8px; border-radius: 12px;
+      background: var(--bg); border: 1px solid var(--border); text-decoration: none;
+      color: var(--ink); font-size: 13px; font-weight: 700;
+    }
+    /* sample game */
+    #sample-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+    .cell {
+      aspect-ratio: 0.9; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--bg); display: flex; align-items: center; justify-content: center;
+      font-family: "Noto Sans Devanagari", sans-serif; font-size: 20px; font-weight: 700;
+      cursor: pointer; user-select: none;
+    }
+    .cell.up { background: var(--teal); color: #FFF8EE; border-color: var(--teal); }
+    .cell.done { background: #35603C; color: #FFF8EE; border-color: #35603C; }
+    .muted { color: var(--soft); font-size: 13px; }
+    .hidden { display: none; }
+    footer { margin-top: 28px; color: var(--faint); font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="brand">संस्कृतम् · SANSKRITAM</div>
+  <h1>You're invited to play</h1>
+  <p class="sub">Memory pairs, word sprints, phrase building and a number game that teaches you to say any number in Sanskrit — alone or with friends.</p>
+
+  <div class="card dark" id="invite-card">
+    <div class="eyebrow" id="invite-kind">Invite</div>
+    <div class="big" id="invite-title">Open in the app</div>
+    <div class="muted" style="color:rgba(255,248,238,.78)" id="invite-detail">Install the app, then open this link again — or enter this code:</div>
+    <div class="code" id="invite-code">—</div>
+    <button class="btn" style="background:#FFF8EE;color:#3B2E25" onclick="openApp()">
+      Open the app
+    </button>
+  </div>
+
+  <div class="stores">
+    <a class="store" id="store-android" href="#" onclick="storeClick('android');return true;">
+      ▶ Google Play<br><span class="muted">Android</span>
+    </a>
+    <a class="store" id="store-ios" href="#" onclick="storeClick('ios');return true;">
+      App Store<br><span class="muted">iPhone · iPad</span>
+    </a>
+  </div>
+
+  <div class="card" id="sample">
+    <div class="eyebrow">Try it now — no account needed</div>
+    <h1 style="font-size:20px">Smriti: memory pairs</h1>
+    <p class="muted">Match each Sanskrit word with its meaning. Six cards, one round. This sample is unranked.</p>
+    <div id="sample-grid"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+      <span class="muted" id="sample-status">Tap two cards.</span>
+      <button class="btn btn-ghost" style="width:auto;min-height:40px;padding:0 16px;margin:0" onclick="resetSample()">Again</button>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" style="color:var(--faint)">Sanskritam</a> ·
+    <a href="/legal/privacy" style="color:var(--faint)">Privacy</a>
+  </footer>
+</main>
+
+<script>
+// ── Invite resolution ────────────────────────────────────────────────────────
+// /l/<code> resolves through the API; the page shows the safe payload only.
+const CODE = decodeURIComponent(location.pathname.split("/l/")[1] || "");
+const API = window.SANSKRITAM_API || "";
+
+async function resolve() {
+  if (!CODE) { document.getElementById("invite-card").classList.add("hidden"); return; }
+  document.getElementById("invite-code").textContent = CODE;
+  try {
+    const res = await fetch(`${API}/share/links/${encodeURIComponent(CODE)}`);
+    if (!res.ok) throw new Error("gone");
+    const body = await res.json();
+    document.getElementById("invite-kind").textContent =
+      body.kind === "match" ? "Match invite" : "Challenge";
+    document.getElementById("invite-title").textContent = body.payload.title || "Play together";
+    if (body.payload.detail) document.getElementById("invite-detail").textContent = body.payload.detail;
+    fetch(`${API}/share/events`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: CODE, event: "sample_started" }),
+    }).catch(() => {});
+  } catch {
+    document.getElementById("invite-kind").textContent = "Invite";
+    document.getElementById("invite-title").textContent = "This link has expired";
+    document.getElementById("invite-detail").textContent = "Ask your friend for a fresh one — or try the game below.";
+  }
+}
+resolve();
+
+function openApp() {
+  // Installed: the app links handler picks this up. Uninstalled: stores below.
+  const t = Date.now();
+  window.location = `sanskritam://l/${CODE}`;
+  setTimeout(() => {
+    if (Date.now() - t < 2500 && document.visibilityState !== "hidden") {
+      document.getElementById("store-android").scrollIntoView({ behavior: "smooth" });
+    }
+  }, 1800);
+}
+function storeClick(platform) {
+  fetch(`${API}/share/events`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code: CODE, event: "store_click", meta: { platform } }),
+  }).catch(() => {});
+  // A store click is NOT an install — attribution stays unknown until the
+  // app's first launch redeems the code.
+}
+
+// ── Sample game: a fixed, unranked 3-pair memory board ──────────────────────
+// No secrets: the deck is client-side and it never touches ranked play.
+const DECK = [
+  { sa: "फलम्", en: "fruit" }, { sa: "जलम्", en: "water" }, { sa: "गृहम्", en: "house" },
+];
+let first = null, lock = false, moves = 0, done = 0;
+
+function resetSample() {
+  first = null; lock = false; moves = 0; done = 0;
+  const grid = document.getElementById("sample-grid");
+  grid.innerHTML = "";
+  const cards = DECK.flatMap((d, i) => [
+    { ...d, id: `${i}-sa`, text: d.sa },
+    { ...d, id: `${i}-en`, text: d.en },
+  ]).sort(() => Math.random() - 0.5);
+  for (const c of cards) {
+    const el = document.createElement("div");
+    el.className = "cell";
+    el.textContent = "?";
+    el.dataset.pair = c.id.split("-")[0];
+    el.dataset.text = c.text;
+    el.addEventListener("click", () => flip(el));
+    grid.appendChild(el);
+  }
+  document.getElementById("sample-status").textContent = "Tap two cards.";
+}
+
+function flip(el) {
+  if (lock || el.classList.contains("up") || el.classList.contains("done")) return;
+  el.classList.add("up");
+  el.textContent = el.dataset.text;
+  if (!first) { first = el; return; }
+  moves += 1;
+  if (first.dataset.pair === el.dataset.pair) {
+    first.classList.add("done"); el.classList.add("done");
+    first = null; done += 1;
+    if (done === DECK.length) {
+      fetch(`${API}/share/events`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: CODE, event: "sample_completed" }),
+      }).catch(() => {});
+      document.getElementById("sample-status").textContent =
+        `साधु! Solved in ${moves} moves. The app has six more games.`;
+    } else {
+      document.getElementById("sample-status").textContent = "A match — keep going!";
+    }
+  } else {
+    lock = true;
+    setTimeout(() => {
+      first.classList.remove("up"); first.textContent = "?";
+      el.classList.remove("up"); el.textContent = "?";
+      first = null; lock = false;
+      document.getElementById("sample-status").textContent = "Tap two cards.";
+    }, 700);
+  }
+}
+
+resetSample();
+</script>
+</body>
+</html>

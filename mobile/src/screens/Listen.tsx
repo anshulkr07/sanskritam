@@ -126,7 +126,8 @@ export default function ListenScreen({ navigation, route }: Props) {
         .map((text, i) => ({ i, text, start_ms: 0, end_ms: 0 }));
 
   return (
-    <View style={[styles.root, { paddingTop: insets.top }]}>
+    <View style={[styles.root, { paddingTop: insets.top, paddingBottom: insets.bottom,
+      paddingLeft: insets.left, paddingRight: insets.right }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => navigation.goBack()}

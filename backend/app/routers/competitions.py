@@ -201,6 +201,7 @@ async def post_attempt(
     verse_uid: str = Form(""),
     camera: str = Form("{}"),
     hidden: bool = Form(True),
+    division: str = Form("standard"),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
@@ -294,10 +295,28 @@ async def post_attempt(
         CompetitionEntry.competition_id == comp.id,
         CompetitionEntry.learner_id == learner.id).first()
     if entry is None:
+        # Division freezes at entry (brief §9).
         entry = CompetitionEntry(competition_id=comp.id, learner_id=learner.id,
-                                 public_name=(pub.public_name if pub else learner.display_name or "")[:64])
+                                 public_name=(pub.public_name if pub else learner.display_name or "")[:64],
+                                 division=("beginner" if division == "beginner" else "standard"))
         db.add(entry)
         db.flush()
+    # Set events track the best per prescribed piece (event total = mean of
+    # ALL pieces, so nobody ranks by picking easy verses).
+    piece_best = False
+    set_progress = None
+    try:
+        from app.services.competition_sets import event_progress, is_set, record_piece_result
+        if is_set(comp) and counted and pct is not None:
+            piece_ref = verse_uid
+            for p in (comp.pieces or []):
+                if isinstance(p, dict) and p.get("verse_uid") == verse_uid:
+                    piece_ref = p.get("source_ref", verse_uid)
+                    break
+            piece_best = record_piece_result(db, entry, comp, piece_ref, row.id, pct)
+            set_progress = event_progress(entry, comp)
+    except Exception:
+        pass
     is_best = False
     if counted and pct is not None and (entry.best_percent is None or pct > entry.best_percent):
         entry.best_percent = pct
@@ -332,7 +351,9 @@ async def post_attempt(
     # Rank.
     rank = None
     if entry.best_percent is not None:
-        for i, e in enumerate(svc.rank_entries(db, comp)):
+        from app.services.competition_sets import is_set as _is_set, rank_entries_sets
+        ordered = rank_entries_sets(db, comp) if _is_set(comp) else svc.rank_entries(db, comp)
+        for i, e in enumerate(ordered):
             if e.id == entry.id:
                 rank = i + 1
                 break
@@ -350,7 +371,9 @@ async def post_attempt(
             "tips": [], "perfect": bool(pct == 100.0),
             "heard": res.get("heard", ""),
             "counted": counted, "why_not": "" if counted else why,
-            "best_percent": entry.best_percent, "rank": rank, "is_new_best": is_best}
+            "best_percent": entry.best_percent, "rank": rank, "is_new_best": is_best,
+            "piece_best": piece_best,
+            "set_progress": set_progress}
 
 
 @router.get("/competitions/{comp_id}/results")

@@ -119,8 +119,18 @@ export default function DailyWordScreen({ navigation }: Props) {
         setRevealed(res.revealed ?? null);
         setPhase("done");
       }
+      // Play v2 bridge: the day's ranked contribution is recorded once,
+      // server-side (replays return the stored result). Best effort — the
+      // puzzle never depends on it.
+      if (puzzle && (res.solved || res.finished)) {
+        void import("../games/v2/client").then(({ playApi }) =>
+          playApi.dailyWordFinish({
+            date: puzzle.date, guesses: res.solved ? guessesUsed + 1 : guessesUsed,
+            solved: res.solved, finished: true,
+          }).catch(() => {}));
+      }
     },
-    [],
+    [puzzle, guessesUsed],
   );
 
   const submit = useCallback(

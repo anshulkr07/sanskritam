@@ -247,6 +247,10 @@ class ReciteAttempt(Base):
     camera = Column(JSON, nullable=True)
     counted = Column(Boolean, nullable=False, default=False, server_default="0")
     flags = Column(JSON, nullable=False, default=list)
+    # Recitation rubric v2 (handover_games_daily_multiplayer §8): component
+    # scores {content, sequence, continuity, rhythm} with the rubric version,
+    # so old attempts keep their original interpretation.
+    components = Column(JSON, nullable=True)
     created_at = Column(DateTime, default=_utcnow, index=True)
 
 
@@ -287,6 +291,13 @@ class CompetitionEntry(Base):
     dq_reason = Column(Text, nullable=False, default="", server_default="")
     final_rank = Column(Integer, nullable=True)
     audio_key = Column(String(512), nullable=True)
+    # Multi-shloka events (handover_games_daily_multiplayer §9): the division
+    # freezes at entry; piece_results holds the best eligible attempt per
+    # prescribed piece {piece_ref: {attempt_id, percent, at}} so the event
+    # total is the mean over ALL pieces, never only the submitted ones.
+    division = Column(String(16), nullable=False, default="standard", server_default="standard")
+    piece_results = Column(JSON, nullable=False, default=dict, server_default="{}")
+    rules_version = Column(String(32), nullable=False, default="", server_default="")
     created_at = Column(DateTime, default=_utcnow)
     updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
 
@@ -1398,4 +1409,418 @@ class ParvaArt(Base):
     prompt = Column(Text, nullable=False, default="")
     checklist = Column(JSON, nullable=False, default=list)
     status = Column(String(12), nullable=False, default="draft")
+    created_at = Column(DateTime, default=_utcnow)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Play games v2 (handover_games_daily_multiplayer): reviewed content,
+# server-validated sessions and scores, period boards, live matches,
+# friends and cooperative goals, share links and attribution, cosmetics.
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+class GameContent(Base):
+    """One reviewed content item for the Play games.
+
+    A single reusable schema (brief §10): stable content id plus an immutable
+    version, Sanskrit display form, IAST, meaning, topic, difficulty, media
+    references, source/licence and review state. `body` holds the full item
+    (word-groups partitions, pada-path accepted orders, smriti pairs); ranked
+    serving extracts a client view so answer keys never ship publicly.
+    Statuses: draft -> validated (automatic checks passed) -> reviewed (a
+    human signed it off) -> retired. Only validated+ items serve ranked play.
+    """
+
+    __tablename__ = "game_content"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    content_id = Column(String(64), nullable=False, index=True)  # stable, e.g. "wg-std-0001"
+    game = Column(String(32), nullable=False, index=True)  # word-groups|pada-path|smriti|rush|number
+    kind = Column(String(16), nullable=False, default="board")  # board|prompt|deck|concept
+    version = Column(Integer, nullable=False, default=1)
+    status = Column(String(12), nullable=False, default="draft", index=True)
+    topic = Column(String(64), nullable=False, default="", index=True)
+    difficulty = Column(String(16), nullable=False, default="standard")  # beginner|standard|advanced
+    lang = Column(String(8), nullable=False, default="sa")  # answer language filter
+    body = Column(JSON, nullable=False, default=dict)
+    sources = Column(JSON, nullable=False, default=list)
+    reviewer = Column(String(64), nullable=False, default="")
+    review_notes = Column(Text, nullable=False, default="")
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("content_id", "version", name="uq_game_content_id_version"),
+    )
+
+
+class GameSession(Base):
+    """One issued game round with its server-held answer key.
+
+    A ranked start reserves an allocation for the (learner, game, IST day);
+    the reservation converts to a score at finish, is consumed by a client
+    abandon after its deadline, and is released (void) on verified server
+    failure. Hints/reveals set `status` to practice so an answer-peeking
+    retry can never double-spend. `pack` holds the full key and is never
+    serialised to the client.
+    """
+
+    __tablename__ = "game_sessions"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    game = Column(String(32), nullable=False, index=True)
+    mode = Column(String(16), nullable=False, default="practice")  # ranked|practice|local|online-casual
+    ruleset = Column(String(32), nullable=False, default="v1")
+    answer_lang = Column(String(8), nullable=False, default="sa")
+    allocation_day = Column(String(10), nullable=False, default="", index=True)  # IST date for ranked
+    status = Column(String(16), nullable=False, default="active", index=True)  # active|finished|abandoned|void|practice
+    pack = Column(JSON, nullable=False, default=dict)  # SERVER ONLY: prompts + answer keys
+    pack_ref = Column(JSON, nullable=False, default=list)  # content ids used
+    seed = Column(String(32), nullable=False, default="")
+    deadline = Column(DateTime, nullable=True)
+    hints_used = Column(Integer, nullable=False, default=0)
+    score = Column(Integer, nullable=True)  # 0-1000 game score at finish
+    result = Column(JSON, nullable=True)  # validated breakdown
+    idempotency_key = Column(String(64), nullable=True, index=True)
+    match_id = Column(String(32), nullable=True, index=True)  # when played inside a live match
+    created_at = Column(DateTime, default=_utcnow, index=True)
+    finished_at = Column(DateTime, nullable=True)
+
+    __table_args__ = (
+        UniqueConstraint("idempotency_key", name="uq_game_session_idempotency"),
+    )
+
+
+class GameDayScore(Base):
+    """Best validated score per learner / IST day / game, and the ranked
+    allocation count for that cell. Unique constraint prevents duplicate
+    awards; the row is written transactionally at finish."""
+
+    __tablename__ = "game_day_scores"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    day = Column(String(10), nullable=False, index=True)  # Asia/Kolkata date
+    game = Column(String(32), nullable=False, index=True)
+    best_score = Column(Integer, nullable=False, default=0)
+    attempts_used = Column(Integer, nullable=False, default=0)
+    ruleset = Column(String(32), nullable=False, default="v1")
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "day", "game", name="uq_game_day_cell"),
+    )
+
+
+class DailyGamePoints(Base):
+    """The combined daily aggregate: sum of the best ranked results from the
+    learner's three distinct games that day (max 3000). Recomputed in the
+    same transaction as the GameDayScore write that changed it."""
+
+    __tablename__ = "daily_game_points"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    day = Column(String(10), nullable=False, index=True)  # Asia/Kolkata date
+    total = Column(Integer, nullable=False, default=0)
+    games = Column(JSON, nullable=False, default=list)  # [{game, score}] chosen top three
+    rounds_done = Column(Integer, nullable=False, default=0)  # valid rounds today (personal goal)
+    # "Change since last visit" on the rank card: the total as of the learner's
+    # previous Play summary read, updated on each read.
+    visit_total = Column(Integer, nullable=False, default=0)
+    visit_at = Column(DateTime, nullable=True)
+    computed_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "day", name="uq_daily_game_points"),
+    )
+
+
+class LeaderboardSnapshot(Base):
+    """A frozen period board (previous days/weeks/months and recitation
+    tracks). Competition ranks are shared for ties (1, 2, 2, 4). Live current
+    periods are computed from game_day_scores instead of this table."""
+
+    __tablename__ = "leaderboard_snapshots"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    period = Column(String(10), nullable=False, index=True)  # daily|weekly|monthly
+    period_key = Column(String(16), nullable=False, index=True)  # 2026-10-13 | 2026-W42 | 2026-10
+    board = Column(String(32), nullable=False, index=True)  # combined|<game key>|recitation-weekly|...
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=0)
+    score = Column(Integer, nullable=False, default=0)
+    participation = Column(Integer, nullable=False, default=0)
+    computed_at = Column(DateTime, default=_utcnow)
+
+
+class LiveMatch(Base):
+    """Authoritative shared state for one live/room match.
+
+    `state` is the single source of truth (pub/sub delivery alone is not a
+    database): boards, authorised reveals, progress, deadlines. `seq` is the
+    last committed event sequence; clients reconciling from a missed sequence
+    request a snapshot. Multi-worker instances share this table transactionally.
+    """
+
+    __tablename__ = "live_matches"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    code = Column(String(12), nullable=False, default="", index=True)  # join code for private rooms
+    game = Column(String(32), nullable=False)
+    kind = Column(String(12), nullable=False, default="private")  # private|quick
+    ruleset = Column(String(32), nullable=False, default="casual")
+    answer_lang = Column(String(8), nullable=False, default="sa")
+    status = Column(String(16), nullable=False, default="lobby", index=True)
+    # lobby -> countdown -> active -> resolving -> results -> (rematch) closed
+    host_id = Column(String(64), nullable=False, default="")
+    config = Column(JSON, nullable=False, default=dict)  # difficulty, board spec, round count
+    state = Column(JSON, nullable=False, default=dict)  # authoritative shared state
+    seq = Column(Integer, nullable=False, default=0)
+    round_deadline = Column(DateTime, nullable=True)
+    result = Column(JSON, nullable=True)
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+
+class MatchParticipant(Base):
+    """Membership and per-player public state for a live match."""
+
+    __tablename__ = "match_participants"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    match_id = Column(String(32), ForeignKey("live_matches.id"), nullable=False, index=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    alias = Column(String(32), nullable=False, default="")
+    is_host = Column(Boolean, nullable=False, default=False)
+    ready = Column(Boolean, nullable=False, default=False)
+    connected = Column(Boolean, nullable=False, default=False)
+    score = Column(Integer, nullable=False, default=0)
+    progress = Column(JSON, nullable=False, default=dict)  # public progress only
+    state = Column(JSON, nullable=False, default=dict)  # private server-side state (keys etc.)
+    forfeited = Column(Boolean, nullable=False, default=False)
+    joined_at = Column(DateTime, default=_utcnow)
+    last_seen = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+    left_at = Column(DateTime, nullable=True)
+
+    __table_args__ = (
+        UniqueConstraint("match_id", "learner_id", name="uq_match_participant"),
+    )
+
+
+class MatchEvent(Base):
+    """Append-only match event log with per-match sequence numbers, so
+    duplicate/out-of-order deliveries can be reconciled."""
+
+    __tablename__ = "match_events"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    match_id = Column(String(32), ForeignKey("live_matches.id"), nullable=False, index=True)
+    seq = Column(Integer, nullable=False)
+    type = Column(String(24), nullable=False)
+    payload = Column(JSON, nullable=False, default=dict)
+    actor = Column(String(64), nullable=False, default="system")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("match_id", "seq", name="uq_match_event_seq"),
+    )
+
+
+class MatchQueueEntry(Base):
+    """One quick-match waiting entry. Unique per learner while waiting."""
+
+    __tablename__ = "match_queue"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    game = Column(String(32), nullable=False)
+    ruleset = Column(String(32), nullable=False, default="casual")
+    answer_lang = Column(String(8), nullable=False, default="sa")
+    band = Column(String(16), nullable=False, default="open")  # broad experience band
+    status = Column(String(12), nullable=False, default="waiting", index=True)  # waiting|matched|cancelled
+    match_id = Column(String(32), nullable=True)
+    enqueued_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        sa.Index("ix_match_queue_waiting", "game", "status"),
+    )
+
+
+class MatchTicket(Base):
+    """Short-lived WebSocket connection ticket. Long-lived tokens never go
+    into invite URLs; the ticket proves membership for one connection."""
+
+    __tablename__ = "match_tickets"
+
+    id = Column(String(48), primary_key=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    match_id = Column(String(32), nullable=True, index=True)
+    scope = Column(String(24), nullable=False, default="match")  # match|queue
+    expires_at = Column(DateTime, nullable=False)
+    used_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class Friendship(Base):
+    """One direction of a friend edge; acceptance writes both rows."""
+
+    __tablename__ = "friendships"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    friend_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    status = Column(String(12), nullable=False, default="pending")  # pending|accepted|declined
+    requested_by = Column(String(64), nullable=False, default="")
+    alias = Column(String(32), nullable=False, default="")  # local display alias
+    created_at = Column(DateTime, default=_utcnow)
+    responded_at = Column(DateTime, nullable=True)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "friend_id", name="uq_friendship_edge"),
+    )
+
+
+class Block(Base):
+    """A learner-blocks-learner row; blocked edges are invisible and inert."""
+
+    __tablename__ = "blocks"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    blocked_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    reason = Column(String(256), nullable=False, default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "blocked_id", name="uq_block_edge"),
+    )
+
+
+class FriendGoal(Base):
+    """The weekly cooperative friend goal: opt-in pair, 20 completed rounds
+    together, at least five by each player, at most five counted per person
+    per day. Rewards a badge, never ranked points."""
+
+    __tablename__ = "friend_goals"
+
+    id = Column(String(32), primary_key=True, default=_uuid)
+    week = Column(String(12), nullable=False, index=True)  # ISO week key "2026-W42"
+    pair_key = Column(String(132), nullable=False, index=True)  # sorted "a|b"
+    learner_a = Column(String(64), ForeignKey("learners.id"), nullable=False)
+    learner_b = Column(String(64), ForeignKey("learners.id"), nullable=False)
+    rounds_a = Column(Integer, nullable=False, default=0)
+    rounds_b = Column(Integer, nullable=False, default=0)
+    status = Column(String(12), nullable=False, default="active")  # active|completed
+    completed_at = Column(DateTime, nullable=True)
+    reward_key = Column(String(64), nullable=False, default="badgefriendgoal")
+    created_at = Column(DateTime, default=_utcnow)
+    updated_at = Column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("week", "pair_key", name="uq_friend_goal_week_pair"),
+    )
+
+
+class FriendGoalRound(Base):
+    """One qualifying round credited to a friend goal (idempotent per round)."""
+
+    __tablename__ = "friend_goal_rounds"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    goal_id = Column(String(32), ForeignKey("friend_goals.id"), nullable=False, index=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    day = Column(String(10), nullable=False)
+    session_ref = Column(String(64), nullable=False)  # finished GameSession id
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("goal_id", "session_ref", name="uq_friend_goal_round"),
+    )
+
+
+class ShareLink(Base):
+    """An opaque, scoped, revocable public link. Payloads never carry account
+    identifiers or tokens. Room invites and achievement links use different
+    lifetimes."""
+
+    __tablename__ = "share_links"
+
+    code = Column(String(24), primary_key=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    kind = Column(String(24), nullable=False)  # result|rank|match|recitation|invite|number
+    payload = Column(JSON, nullable=False, default=dict)
+    expires_at = Column(DateTime, nullable=True)
+    revoked = Column(Boolean, nullable=False, default=False)
+    opens = Column(Integer, nullable=False, default=0)
+    max_opens = Column(Integer, nullable=False, default=0)  # 0 = unlimited
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class LinkEvent(Base):
+    """Attribution events. Measurable events are recorded; unverifiable
+    attribution stays unknown (store_click is not an install)."""
+
+    __tablename__ = "link_events"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    code = Column(String(24), nullable=False, default="", index=True)
+    event = Column(String(24), nullable=False)  # opened|sample_started|sample_completed|store_click|install|redeemed|first_game
+    learner_id = Column(String(64), nullable=True, index=True)
+    meta = Column(JSON, nullable=False, default=dict)
+    created_at = Column(DateTime, default=_utcnow, index=True)
+
+
+class CosmeticItem(Base):
+    """Metadata for earned cosmetics/content packs. No purchasable points or
+    competitive advantages; core play never requires payment."""
+
+    __tablename__ = "cosmetic_items"
+
+    key = Column(String(64), primary_key=True)
+    kind = Column(String(16), nullable=False, default="badge")  # badge|pack|theme
+    title = Column(String(64), nullable=False, default="")
+    sa = Column(String(64), nullable=False, default="")
+    description = Column(Text, nullable=False, default="")
+    how_earned = Column(String(128), nullable=False, default="")  # e.g. friend-goal-week
+    entitlement_feature = Column(String(32), nullable=False, default="")  # optional Entitlement gate
+    active = Column(Boolean, nullable=False, default=True)
+
+
+class CosmeticGrant(Base):
+    """One earned cosmetic granted to a learner."""
+
+    __tablename__ = "cosmetic_grants"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    item_key = Column(String(64), ForeignKey("cosmetic_items.key"), nullable=False)
+    source = Column(String(32), nullable=False, default="goal")
+    created_at = Column(DateTime, default=_utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("learner_id", "item_key", name="uq_cosmetic_grant"),
+    )
+
+
+class ReciteCalibration(Base):
+    """One consented calibration recording for the recitation rubric study
+    (handover_games_daily_multiplayer §8): real speech with a human quality
+    label, so the v2 thresholds (pause allowances, pace floors) are frozen
+    from data, not guesses. Audio is private; transcripts live only in the
+    calibration outputs, never in logs."""
+
+    __tablename__ = "recite_calibrations"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    learner_id = Column(String(64), ForeignKey("learners.id"), nullable=False, index=True)
+    speaker_alias = Column(String(32), nullable=False, default="")
+    device = Column(String(32), nullable=False, default="")
+    prompt_id = Column(String(32), nullable=False)
+    label = Column(String(16), nullable=False, default="clean")  # clean|slow|pauses|scrambled|noisy|other
+    consent = Column(Boolean, nullable=False, default=False)
+    audio_key = Column(String(512), nullable=False, default="")
+    duration_ms = Column(Integer, nullable=False, default=0)
+    note = Column(String(256), nullable=False, default="")
     created_at = Column(DateTime, default=_utcnow)

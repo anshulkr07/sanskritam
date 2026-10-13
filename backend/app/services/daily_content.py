@@ -228,11 +228,18 @@ Reply as one JSON object: {{"verdict": "source" or "relative" or "not stated", "
 "hedged" is true when the passage itself calls the origin probable, possible or uncertain."""
 
 FACT_SYSTEM = (
-    "You write short facts for a Sanskrit learning app. Every fact must rest on a verse or "
-    "sentence you quote exactly from the named text. Reply with one JSON array and nothing else."
+    "You are an evidence-led editor for a Sanskrit learning app. Make each card a genuinely "
+    "surprising insight about language, mathematics, astronomy, medicine as historical practice, "
+    "poetics, music or an unusual idea in a named text. Avoid generic devotional or moral verses. "
+    "Every claim must be supported by the exact passage you quote. Never claim an ancient passage "
+    "predicted or measured a modern scientific result unless the passage and reliable scholarship "
+    "establish that exact claim. Never repeat viral quotations or calculations as fact. Reply with "
+    "one JSON array and nothing else."
 )
 
-FACT_USER = """Write {n} "Do you know" facts that would surprise a curious reader, each resting on one specific verse or sentence of {group}.
+FACT_USER = """Write {n} "Do you know" cards for a curious adult reader, each resting on one specific verse or sentence of {group}. Choose details that make the reader want to learn more: a precise linguistic pattern, a mathematical or metrical method, an unusual observation, or an unexpected idea. Do not return a random verse followed by a generic moral. Say what the passage actually describes, and clearly separate that from any later interpretation.
+
+Do not use these popular but unsupported claims: the Hanuman Cālīsā gives a verified ancient measurement of the Earth–Sun distance; a text states an exact Moon–Earth diameter/distance ratio of 108; Albert Einstein made an untraceable quotation praising the Vedas; Piṅgala discovered Fibonacci's sequence in its later named form. A passage about a pattern is not proof of a modern scientific measurement or of historical influence.
 
 Reply as a JSON array of {n} objects with exactly these keys:
 - "text": the name of the text, with diacritics (for example "Bhagavad-gītā")

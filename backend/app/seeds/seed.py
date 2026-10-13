@@ -98,6 +98,12 @@ def run_seed():
         from app.seeds.word_origins import seed_word_origins
         seed_word_origins(db)
 
+        # Play games (handover_games_daily_multiplayer): reviewed content and
+        # the cosmetic catalogue — additive, idempotent.
+        from app.seeds.game_content import seed_game_content, seed_cosmetics
+        seed_game_content(db)
+        seed_cosmetics(db)
+
         db.commit()
         logger.info("Database seeded successfully")
     except Exception:

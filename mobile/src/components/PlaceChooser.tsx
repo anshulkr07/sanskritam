@@ -32,12 +32,15 @@ export default function PlaceChooser({
   onPick,
   remember = true,
   showLocate = true,
+  square = false,
 }: {
   onPick: (place: Place) => void;
   /** Store the pick as the learner's place. Off for a place of birth. */
   remember?: boolean;
   /** Offer "Use my location". Off for a place of birth, which is not here. */
   showLocate?: boolean;
+  /** Home's square-corner form style; other callers keep their current shape. */
+  square?: boolean;
 }) {
   const { locating, locate } = useDevicePlace();
   const [query, setQuery] = useState("");
@@ -123,7 +126,7 @@ export default function PlaceChooser({
 
       {!!notice && <Text style={styles.notice}>{notice}</Text>}
 
-      <View style={styles.search}>
+      <View style={[styles.search, square && styles.squareSearch]}>
         <Ionicons name="search" size={16} color={color.inkFaint} />
         <TextInput
           value={query}
@@ -200,6 +203,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: color.white,
   },
+  squareSearch: { borderRadius: 0 },
   searchInput: {
     flex: 1,
     fontFamily: "Nunito_600SemiBold",

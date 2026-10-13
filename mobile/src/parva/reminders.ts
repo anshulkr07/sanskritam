@@ -115,7 +115,6 @@ export async function rescheduleFromCalendar(
   }
   try {
     const followed = new Set(await followedSlugs());
-    if (followed.size === 0) return;
     // Cancel ours only.
     try {
       const all = await N.getAllScheduledNotificationsAsync();
@@ -132,6 +131,7 @@ export async function rescheduleFromCalendar(
     } catch {
       /* listing failed: still try to add */
     }
+    if (followed.size === 0) return;
     const items: { at: Date; title: string; body: string; data: Record<string, unknown> }[] = [];
     const seen = new Set<string>();
     for (const o of cal?.occurrences ?? []) {
@@ -158,6 +158,23 @@ export async function rescheduleFromCalendar(
             data: { parva: true, slug: o.slug, variant: o.variant, date: o.date, dayDate, tradition: opts?.tradition ?? "", tz: opts?.tz ?? "" },
           });
         }
+      }
+      // Notify shortly before the published observance window as well as the
+      // existing evening heads-up. These remain inexact OS notifications.
+      const important = new Set(["muhurat", "parana", "ghatasthapana", "sandhi_puja", "abhijit", "nishitha", "sunset_arghya", "sunrise_arghya"]);
+      for (const tm of o.times ?? []) {
+        if (!important.has(tm.key) || !tm.start) continue;
+        const at = new Date(new Date(tm.start).getTime() - 15 * 60_000);
+        const id = `${o.slug}|${o.variant}|${o.date}|window|${tm.key}`;
+        if (seen.has(id) || Number.isNaN(at.getTime()) || at.getTime() <= Date.now()) continue;
+        seen.add(id);
+        const label = tm.key.replace(/_/g, " ");
+        items.push({
+          at,
+          title: o.title,
+          body: `${label.charAt(0).toUpperCase()}${label.slice(1)} begins in 15 minutes.`,
+          data: { parva: true, slug: o.slug, variant: o.variant, date: o.date, dayDate: o.date, timingKey: tm.key, tradition: opts?.tradition ?? "", tz: opts?.tz ?? "" },
+        });
       }
       // Ekadashi parana start (occurrence-specific, future only).
       if (o.slug === "ekadashi") {
