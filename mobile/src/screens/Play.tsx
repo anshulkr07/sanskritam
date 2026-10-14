@@ -104,12 +104,12 @@ export default function PlayScreen({ navigation }: Props) {
 
         {/* 3. Play with friends + quick match */}
         <View style={styles.socialRow}>
-          <Pressable onPress={() => nav.navigate("Friends", {})} accessibilityRole="button"
+          <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "friends" })} accessibilityRole="button"
             accessibilityLabel="Play with friends" style={[styles.socialBtn, { backgroundColor: fill.teal }]}>
             <Ionicons name="people" size={22} color={onFill.text} />
             <Text style={styles.socialText}>Play with friends</Text>
           </Pressable>
-          <Pressable onPress={() => nav.navigate("RoomLobby", {})} accessibilityRole="button"
+          <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "quick" })} accessibilityRole="button"
             accessibilityLabel="Quick match" style={[styles.socialBtn, { backgroundColor: fill.rose }]}>
             <Ionicons name="flash" size={22} color={onFill.text} />
             <Text style={styles.socialText}>Quick match</Text>

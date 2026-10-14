@@ -97,7 +97,7 @@ export type RootStackParamList = {
   NumberBuilder: undefined;
   Leaderboards: { period?: "daily" | "weekly" | "monthly"; board?: string; track?: "games" | "recitation"; division?: "standard" | "beginner" } | undefined;
   Friends: undefined;
-  RoomLobby: { matchId?: string; code?: string } | undefined;
+  RoomLobby: { matchId?: string; code?: string; mode?: "friends" | "quick" } | undefined;
   // Recitation calibration capture (dev builds only, brief §8).
   Calibration: undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };

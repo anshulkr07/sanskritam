@@ -64,6 +64,12 @@ export default function FriendsScreen(_props: Props) {
     <SafeAreaView style={styles.safe} edges={["top"]}>
       {/* The stack header already says "Friends" with a back arrow. */}
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <Pressable onPress={() => _props.navigation.navigate("RoomLobby", { mode: "friends" })}
+          accessibilityRole="button" accessibilityLabel="Play with friends"
+          style={styles.goalCard}>
+          <Text style={styles.goalHead}>Play with friends</Text>
+          <Text style={styles.goalBody}>Create a room and share its code, or join your friend's room.</Text>
+        </Pressable>
         {goal && (
           <View style={styles.goalCard}>
             <Text style={styles.goalHead}>Weekly goal with {goal.partner.name}</Text>

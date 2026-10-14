@@ -27,7 +27,8 @@ export default function VarnaJaalScreen({ navigation }: Props) {
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("varna-jaal");
   const pack = session?.pack as VarnaPack | undefined;
   const size = pack?.size ?? 4;
-  const [found, setFound] = useState<Set<string>>(new Set());
+  const [found, setFound] = useState<Set<string>>(() => new Set(
+    (session?.resume_state?.found_indices ?? []) as string[]));
   const [sel, setSel] = useState<number[]>([]);
   const [remembered, setRemembered] = useState<Record<string, unknown>>({});
   const [elapsed, setElapsed] = useState(0);
@@ -56,7 +57,7 @@ export default function VarnaJaalScreen({ navigation }: Props) {
   }, [size]);
 
   const checkPath = useCallback(async (path: number[]) => {
-    if (path.length < 2 || !pack) { setPath([]); return; }
+    if (path.length < 2 || !pack || busy) { setPath([]); return; }
     setBusy(true);
     const res = await answer({ cells: path });
     setBusy(false);
@@ -76,7 +77,7 @@ export default function VarnaJaalScreen({ navigation }: Props) {
           withTiming(-4, { duration: 40 }), withTiming(0, { duration: 40 }));
       }
     }
-  }, [answer, finish, pack, reduced, setBusy]);
+  }, [answer, finish, pack, reduced, setBusy, busy]);
 
   // cellFromPoint via measured rects: cells are square, laid out with `gap`
   // between them and `pad` around the board.

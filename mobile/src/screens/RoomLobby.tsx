@@ -6,26 +6,36 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { usePreventRemove, type NavigationAction } from "@react-navigation/native";
 
-import { BASE_URL } from "../config";
-import { matchApi, wsUrl, type MatchSnapshot } from "../games/v2/client";
+import { matchApi, type MatchSnapshot } from "../games/v2/client";
 import { GameTopBar } from "../games/v2/parts";
 import { usePlayMatchSocket } from "../games/v2/useMatchSocket";
 import { useCatalogGame } from "../games/v2/useCatalog";
-import { color, fill, font, onFill, radius, script, space } from "../theme";
+import { color, fill, font, onFill, radius, space } from "../theme";
 import { haptics } from "../services/haptics";
+import { useAuth } from "../store/auth";
+import LiveMatchGame from "../games/v2/LiveMatchGame";
 
 type Props = {
   navigation: {
     goBack: () => void;
     navigate: (r: string, p?: object) => void;
     setOptions: (o: { headerShown?: boolean }) => void;
+    dispatch: (action: NavigationAction) => void;
   };
-  route?: { params?: { matchId?: string; code?: string } };
+  route?: { params?: { matchId?: string; code?: string; mode?: "friends" | "quick" } };
+};
+
+const SOLO_ROUTES: Record<string, string> = {
+  smriti: "Smriti", rush: "ShabdaRush", "varna-jaal": "VarnaJaal",
+  "word-groups": "WordGroups", "pada-path": "PadaPath", number: "NumberBuilder",
 };
 
 export default function RoomLobbyScreen({ navigation, route }: Props) {
-  const [mode, setMode] = useState<"pick" | "create" | "join" | "queue">("pick");
+  const { learner } = useAuth();
+  const [mode, setMode] = useState<"pick" | "create" | "join" | "queue" | "quick">(
+    route?.params?.code ? "join" : route?.params?.mode === "quick" ? "quick" : "pick");
   const [gameKey, setGameKey] = useState<string>("smriti");
   const [code, setCode] = useState(route?.params?.code ?? "");
   const [answerLang, setAnswerLang] = useState<"sa" | "en">("sa");
@@ -34,21 +44,50 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
   const [snap, setSnap] = useState<MatchSnapshot | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [waited, setWaited] = useState(0);
-  const game = useCatalogGame(gameKey);
-  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [revision, setRevision] = useState(0);
+  const game = useCatalogGame(snap?.game ?? gameKey);
+  const leaving = useRef(false);
+  const changed = useCallback(() => setRevision((r) => r + 1), []);
+  const acceptSnapshot = useCallback((s: MatchSnapshot) => {
+    setSnap((current) => current?.match_id === s.match_id && current.seq > s.seq ? current : s);
+  }, []);
 
   const onEvent = useCallback((type: string, payload: Record<string, unknown>) => {
-    if (type === "countdown") setCountdown(Number(payload.seconds ?? 5));
-    if (type === "start") { setCountdown(0); }
-    if (type === "results" || type === "settled") setCountdown(null);
+    if (type === "error") {
+      setError(String(payload.detail ?? "Couldn't update the match."));
+      return;
+    }
+    // Events carry changes, not a full snapshot. Refresh readiness, host and
+    // match status so both devices show the same controls.
+    if (type !== "ack" && type !== "pong") setRevision((r) => r + 1);
   }, []);
 
   const { send, status: wsStatus } = usePlayMatchSocket({
     matchId: snap?.match_id ?? null,
     ticket: snap?.ticket,
     onEvent,
-    onSnapshot: (s) => setSnap(s as unknown as MatchSnapshot),
+    onSnapshot: (s) => acceptSnapshot(s as unknown as MatchSnapshot),
   });
+
+  const matchId = snap?.match_id;
+  useEffect(() => {
+    if (!matchId) return;
+    let cancelled = false;
+    let fetching = false;
+    const refresh = async () => {
+      if (fetching) return;
+      fetching = true;
+      try {
+        let s = await matchApi.snapshot(matchId);
+        if (s.rematch_id) s = await matchApi.snapshot(s.rematch_id);
+        if (!cancelled) acceptSnapshot(s);
+      } catch { /* the socket reconnect and the next poll can recover */ }
+      finally { fetching = false; }
+    };
+    void refresh();
+    const timer = setInterval(() => void refresh(), 1500);
+    return () => { cancelled = true; clearInterval(timer); };
+  }, [matchId, revision, acceptSnapshot]);
 
   // In a match the screen's own bar (code, live state, a Leave that asks
   // first) replaces the stack header; outside one, the stack header alone.
@@ -59,46 +98,73 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
 
   // resume an active match on entry
   useEffect(() => {
-    if (route?.params?.matchId) {
-      setBusy(true);
-      matchApi.resume().then((r) => {
-        if (r.match) {
-          setSnap({ ...r.match, ticket: r.match.ticket });
-          setMode("pick");
-        } else if (route.params?.matchId) {
-          return matchApi.snapshot(route.params.matchId).then(setSnap);
-        }
-      }).catch(() => setError("Couldn't find that match."))
-        .finally(() => setBusy(false));
-    }
-  }, [route?.params?.matchId]);
+    if (route?.params?.code) return;
+    let cancelled = false;
+    setBusy(true);
+    const load = route?.params?.matchId
+      ? matchApi.snapshot(route.params.matchId)
+      : matchApi.resume().then((r) => r.match);
+    void load.then((s) => {
+      if (!cancelled && s) { acceptSnapshot(s); setMode("pick"); }
+    }).catch(() => { if (!cancelled) setError("Couldn't check for an existing match. Try again."); })
+      .finally(() => { if (!cancelled) setBusy(false); });
+    return () => { cancelled = true; };
+  }, [route?.params?.matchId, route?.params?.code, acceptSnapshot]);
 
   // queue polling with the widen-at-15s and offer-solo-at-30s promises
   useEffect(() => {
     if (mode !== "queue") return;
+    let cancelled = false;
+    let fetching = false;
     const tick = async () => {
+      if (fetching) return;
+      fetching = true;
       try {
         const st = await matchApi.queueStatus();
+        if (cancelled) return;
         setWaited(st.waited_seconds ?? 0);
         if (st.matched && st.match_id) {
           const s = await matchApi.snapshot(st.match_id);
-          setSnap(s);
+          if (cancelled) return;
+          acceptSnapshot(s);
           setMode("pick");
-          if (pollRef.current) clearInterval(pollRef.current);
+        } else if (!st.waiting) {
+          setMode("quick");
+          setError("The search ended. Tap Find match to try again.");
         }
       } catch { /* keep waiting */ }
+      finally { fetching = false; }
     };
     void tick();
-    pollRef.current = setInterval(tick, 1500);
-    return () => { if (pollRef.current) clearInterval(pollRef.current); };
-  }, [mode]);
+    const timer = setInterval(tick, 1500);
+    return () => { cancelled = true; clearInterval(timer); };
+  }, [mode, acceptSnapshot]);
 
   useEffect(() => {
-    if (countdown != null && countdown > 0) {
-      const t = setTimeout(() => setCountdown((c) => (c ?? 1) - 1), 1000);
-      return () => clearTimeout(t);
+    if ((snap?.status !== "countdown" && snap?.status !== "active") || !snap.deadline) {
+      setCountdown(null);
+      return;
     }
-  }, [countdown]);
+    const deadline = Date.parse(snap.deadline);
+    const tick = () => setCountdown(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+    tick();
+    const timer = setInterval(tick, 250);
+    return () => clearInterval(timer);
+  }, [snap?.status, snap?.deadline]);
+
+  const startMatch = async () => {
+    if (!snap || busy) return;
+    haptics.tap();
+    setBusy(true); setError(null);
+    try {
+      await matchApi.start(snap.match_id);
+      setSnap((current) => current?.match_id === snap.match_id
+        ? { ...current, status: "countdown" } : current);
+      setRevision((r) => r + 1);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't start the match.");
+    } finally { setBusy(false); }
+  };
 
   const create = async () => {
     setBusy(true); setError(null);
@@ -125,44 +191,90 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
   const enqueue = async () => {
     setBusy(true); setError(null);
     try {
-      await matchApi.enqueue({ game: gameKey, answer_lang: answerLang });
-      setMode("queue");
+      const r = await matchApi.enqueue({ game: gameKey, answer_lang: answerLang });
+      if (r.matched && r.match_id) acceptSnapshot(await matchApi.snapshot(r.match_id));
+      else { setWaited(0); setMode("queue"); }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Couldn't join the queue.");
     } finally { setBusy(false); }
   };
 
+  const exitMatch = async () => {
+    if (!snap) return;
+    setBusy(true); setError(null);
+    try {
+      await matchApi.leave(snap.match_id);
+      leaving.current = true;
+      setSnap(null); setMode("pick"); navigation.goBack();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't leave. Please try again.");
+    } finally { setBusy(false); }
+  };
+
   const leave = () => {
+    if (snap?.status === "results" || snap?.status === "closed") { void exitMatch(); return; }
     Alert.alert("Leave this match?", snap?.status === "lobby" ? "The room stays open for others." : "Leaving mid-play counts as a forfeit.", [
       { text: "Stay", style: "cancel" },
       {
-        text: "Leave", style: "destructive", onPress: () => {
-          if (snap) void matchApi.leave(snap.match_id);
-          setSnap(null); setMode("pick"); navigation.goBack();
-        },
+        text: "Leave", style: "destructive", onPress: () => void exitMatch(),
       },
     ]);
   };
 
+  const rematch = async () => {
+    if (!snap || busy) return;
+    setBusy(true); setError(null);
+    try {
+      const r = await matchApi.rematch(snap.match_id);
+      if (r.rematch) acceptSnapshot(await matchApi.snapshot(r.rematch));
+      else { acceptSnapshot(await matchApi.snapshot(snap.match_id)); }
+    } catch (e) { setError(e instanceof Error ? e.message : "Couldn't request a rematch."); }
+    finally { setBusy(false); }
+  };
+
+  usePreventRemove(!!snap || mode === "queue", ({ data }) => {
+    if (leaving.current) { navigation.dispatch(data.action); return; }
+    if (snap) { leave(); }
+    else if (mode === "queue") {
+      void matchApi.cancelQueue().then(() => {
+        leaving.current = true; navigation.dispatch(data.action);
+      }).catch(() => setError("Couldn't cancel the search. Try again."));
+    }
+  });
+
   // ── In a match ────────────────────────────────────────────────────────────
   if (snap) {
+    const isHost = snap.host === learner?.id;
+    const everyoneReady = snap.players.length >= 2 && snap.players.every((p) => p.ready);
+    const canStart = everyoneReady && !busy && wsStatus === "open";
+    const me = snap.players.find((p) => p.learner_id === learner?.id);
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <GameTopBar title={snap.kind === "quick" ? "Quick match" : "Room"} sa={snap.code ? `Code ${snap.code}` : undefined}
           onClose={leave}
           right={<Text style={styles.wsState}>{wsStatus === "open" ? "live" : wsStatus}</Text>} />
-        {countdown != null && countdown > 0 && (
+        {snap.status === "countdown" && countdown != null && countdown > 0 && (
           <View style={styles.countdown} accessible accessibilityLabel={`Starting in ${countdown}`}>
             <Text style={styles.countdownNum}>{countdown}</Text>
             <Text style={styles.countdownLabel}>Get ready…</Text>
           </View>
         )}
-        {countdown === 0 && (
-          <View style={styles.activeNote}>
-            <Text style={styles.activeNoteText}>Playing {game?.title ?? snap.game} — make your moves in the game screen.</Text>
-          </View>
-        )}
-        <ScrollView contentContainerStyle={styles.body}>
+        {snap.status === "active" && !snap.own_done && snap.pack ? (
+          <>
+            <View style={styles.livePlayers}>
+              <Text style={styles.playerState}>Time left: {Math.floor((countdown ?? 0) / 60)}:{String((countdown ?? 0) % 60).padStart(2, "0")}</Text>
+              {snap.players.map((p) => <Text key={p.learner_id} style={styles.playerState}>
+                {p.alias}: {p.score}{p.forfeited ? " · left" : !p.connected ? " · reconnecting" : ""}
+              </Text>)}
+            </View>
+            <LiveMatchGame key={snap.match_id} snapshot={snap} onLeave={leave}
+              onChanged={changed} connected={wsStatus === "open"} />
+            {!!error && <Text style={styles.error} accessibilityRole="alert">{error}</Text>}
+          </>
+        ) : <ScrollView contentContainerStyle={styles.body}>
+          {snap.status === "active" && snap.own_done && <Text style={styles.fine}>
+            Your round is complete. Waiting for the other players…
+          </Text>}
           <Text style={styles.section}>Players</Text>
           {snap.players.map((p) => (
             <View key={p.learner_id} style={styles.playerRow}>
@@ -177,12 +289,33 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
           {snap.status === "lobby" && (
             <>
               <Pressable onPress={() => { haptics.tap(); send({ type: "ready", ready: true }); }}
-                accessibilityRole="button" accessibilityLabel="Ready" style={styles.primary}>
-                <Text style={styles.primaryText}>Ready</Text>
+                disabled={!!me?.ready || wsStatus !== "open"}
+                accessibilityRole="button" accessibilityLabel="Ready"
+                accessibilityState={{ disabled: !!me?.ready || wsStatus !== "open" }}
+                style={[styles.primary, (me?.ready || wsStatus !== "open") && styles.disabled]}>
+                <Text style={styles.primaryText}>{me?.ready ? "You're ready" : "Ready"}</Text>
               </Pressable>
+              {isHost ? (
+                <>
+                  <Pressable onPress={() => void startMatch()} disabled={!canStart}
+                    accessibilityRole="button" accessibilityLabel="Start match"
+                    accessibilityState={{ disabled: !canStart, busy }}
+                    style={[styles.primary, !canStart && styles.disabled]}>
+                    <Text style={styles.primaryText}>{busy ? "Starting…" : "Start match"}</Text>
+                  </Pressable>
+                  <Text style={styles.codeShare}>
+                    {snap.players.length < 2 ? "Waiting for another player to join." :
+                      !everyoneReady ? "Everyone needs to tap Ready before you can start." :
+                        "Everyone is ready. Start the match when you're ready."}
+                  </Text>
+                </>
+              ) : (
+                <Text style={styles.codeShare}>The host will start once everyone is ready.</Text>
+              )}
               <Text style={styles.codeShare}>Share this code with a friend: {snap.code}</Text>
             </>
           )}
+          {!!error && <Text style={styles.error} accessibilityRole="alert">{error}</Text>}
           {snap.status === "results" && snap.result && (
             <View style={styles.results}>
               <Text style={styles.section}>Results</Text>
@@ -194,17 +327,16 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
                 </View>
               ))}
               <Text style={styles.casualNote}>{snap.result.note}</Text>
-              <Pressable onPress={() => void matchApi.rematch(snap.match_id).then((r) => {
-                if (r.rematch) {
-                  void matchApi.ticket(r.rematch).then((t) =>
-                    matchApi.snapshot(r.rematch!).then((s2) => setSnap({ ...s2, ticket: t.ticket })));
-                }
-              }).catch(() => {})} accessibilityRole="button" accessibilityLabel="Rematch" style={styles.primary}>
-                <Text style={styles.primaryText}>Rematch</Text>
+              <Pressable onPress={() => void rematch()} disabled={busy || !!snap.rematch_voted}
+                accessibilityRole="button" accessibilityLabel="Rematch"
+                style={[styles.primary, (busy || snap.rematch_voted) && styles.disabled]}>
+                <Text style={styles.primaryText}>{snap.rematch_voted ? "Waiting for rematch votes…" : "Rematch"}</Text>
               </Pressable>
+              <Pressable onPress={() => void exitMatch()} disabled={busy} accessibilityRole="button"
+                accessibilityLabel="Done" style={styles.secondary}><Text style={styles.secondaryText}>Done</Text></Pressable>
             </View>
           )}
-        </ScrollView>
+        </ScrollView>}
       </SafeAreaView>
     );
   }
@@ -237,6 +369,12 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
           ))}
         </View>
 
+        {mode === "quick" && (
+          <Pressable onPress={() => void enqueue()} disabled={busy} accessibilityRole="button"
+            accessibilityLabel="Find match" style={styles.primary}>
+            <Text style={styles.primaryText}>{busy ? "Connecting…" : "Find match"}</Text>
+          </Pressable>
+        )}
         {mode === "pick" && (
           <>
             <Pressable onPress={() => { haptics.tap(); setMode("create"); }} accessibilityRole="button"
@@ -255,8 +393,8 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
               <Text style={styles.secondaryText}>Quick match</Text>
             </Pressable>
             <Text style={styles.fine}>
-              Private rooms host 2–8 players. Quick match groups 2–4 compatible players —
-              never bots. Online matches are friendly play; ranked points come from solo ranked rounds.
+              Private rooms host 2–8 players. Quick match pairs you with another compatible player.
+              Online matches are friendly play; ranked points come from solo ranked rounds.
             </Text>
           </>
         )}
@@ -288,7 +426,20 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
                 waited < 30 ? "Widening the search…" : "Still searching — you can keep waiting, invite a friend, or play solo."}
             </Text>
             <Text style={styles.queueWait}>{waited}s</Text>
-            <Pressable onPress={() => { void matchApi.cancelQueue(); setMode("pick"); }}
+            {waited >= 30 && <Pressable disabled={busy} accessibilityRole="button"
+              accessibilityLabel="Play solo instead" style={styles.primary}
+              onPress={() => {
+                setBusy(true);
+                void matchApi.cancelQueue().then(() => {
+                  setMode("quick");
+                  const route = SOLO_ROUTES[gameKey];
+                  if (route) navigation.navigate(route);
+                }).catch(() => setError("Couldn't end the search. Try again.")).finally(() => setBusy(false));
+              }}><Text style={styles.primaryText}>Play solo instead</Text></Pressable>}
+            <Pressable onPress={() => { setBusy(true); void matchApi.cancelQueue().then(() => {
+              setMode("quick");
+            }).catch(() => setError("Couldn't cancel the search. Try again.")).finally(() => setBusy(false)); }}
+              disabled={busy}
               accessibilityRole="button" accessibilityLabel="Cancel" style={styles.secondary}>
               <Text style={styles.secondaryText}>Cancel</Text>
             </Pressable>
@@ -327,8 +478,7 @@ const styles = StyleSheet.create({
   countdown: { alignItems: "center", paddingVertical: space.xl },
   countdownNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 72, color: color.saffronText },
   countdownLabel: { color: color.inkSoft, fontWeight: "700" },
-  activeNote: { backgroundColor: color.saffronLight, borderRadius: radius.md, padding: space.md, marginHorizontal: space.lg },
-  activeNoteText: { color: color.ink, fontWeight: "700" },
+  livePlayers: { flexDirection: "row", flexWrap: "wrap", gap: space.md, paddingHorizontal: space.lg, paddingVertical: space.sm },
   playerRow: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: color.border },
   playerName: { flex: 1, fontWeight: "700", color: color.ink },
   playerState: { color: color.inkSoft, fontVariant: ["tabular-nums"] },

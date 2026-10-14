@@ -22,8 +22,9 @@ type Props = {
 export default function WordGroupsScreen({ navigation }: Props) {
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("word-groups");
   const [sel, setSel] = useState<string[]>([]);
-  const [locked, setLocked] = useState<{ tiles: string[]; label: string }[]>([]);
-  const [mistakesLeft, setMistakesLeft] = useState(4);
+  const [locked, setLocked] = useState<{ tiles: string[]; label: string }[]>(
+    () => (session?.resume_state?.locked ?? []) as { tiles: string[]; label: string }[]);
+  const [mistakesLeft, setMistakesLeft] = useState(() => 4 - Number(session?.resume_state?.wrong ?? 0));
   const [note, setNote] = useState<string | null>(null);
   const [remembered, setRemembered] = useState<Record<string, unknown>>({});
   const game = useCatalogGame("word-groups");
@@ -46,7 +47,7 @@ export default function WordGroupsScreen({ navigation }: Props) {
   };
 
   const submit = async () => {
-    if (!pack || sel.length !== pack.group_size) return;
+    if (!pack || sel.length !== pack.group_size || busy) return;
     setBusy(true);
     const res = await answer({ type: "submit_group", tiles: sel });
     setBusy(false);

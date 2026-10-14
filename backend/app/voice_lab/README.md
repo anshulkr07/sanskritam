@@ -40,6 +40,10 @@ Test full-duplex audio and barge-in on the actual target phone before release.
    `notice`, `error`, `fatal`. Invalid settings leave the prior settings active.
 
 Calls end after 10 minutes, tab blur, app backgrounding or transport failure.
+The microphone permission screen's temporary inactive/background state does not
+cancel startup. Startup waits for the app to return to the foreground before
+connecting. The call panel shows startup progress and errors; startup times out
+after 30 seconds and can be cancelled or retried.
 Pipeline/model/voice/tool changes rebuild the provider session when necessary,
 while keeping the client socket. Native Gemini model switches start fresh
 provider context. Other settings cancel an active composed turn and apply to
@@ -81,6 +85,8 @@ authentication, validation, cancellation, clause flushing and phonetics.
 `cd mobile && npx tsc --noEmit` checks the mobile integration.
 `cd mobile && node scripts/check-voice-lab.mjs` verifies playback scheduling,
 interruption, asynchronous decode cancellation and playback recovery.
+`cd mobile && node scripts/check-voice-lab-startup.mjs` verifies permission-sheet
+focus changes, startup timeouts, cancellation, retry and microphone cleanup.
 Provider availability, speech quality and hardware echo behavior need a live
 call; these are not claimed by the offline tests.
 

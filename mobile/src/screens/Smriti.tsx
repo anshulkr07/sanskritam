@@ -33,19 +33,49 @@ export default function SmritiScreen({ navigation, route }: Props) {
   const localSeats = route?.params?.mode === "local" ? (route.params?.seats ?? 2) : 0;
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("smriti");
   const pack = session?.pack as SmritiPackView | undefined;
-  const [faces, setFaces] = useState<Record<number, Face>>({});
-  const [open, setOpen] = useState<number[]>([]);
-  const [matched, setMatched] = useState<Set<number>>(new Set());
-  const [attempts, setAttempts] = useState(0);
+  const [faces, setFaces] = useState<Record<number, Face>>(
+    () => (session?.resume_state?.faces ?? {}) as Record<number, Face>);
+  const [open, setOpen] = useState<number[]>(() => Object.entries(
+    (session?.resume_state?.reveals ?? {}) as Record<string, { settled?: boolean }>)
+    .filter(([, reveal]) => !reveal.settled).map(([id]) => Number(id)));
+  const [matched, setMatched] = useState<Set<number>>(
+    () => new Set((session?.resume_state?.found_pairs ?? []) as number[]));
+  const [attempts, setAttempts] = useState(() => Number(session?.resume_state?.attempts ?? 0));
   const [seat, setSeat] = useState(0);
   const [pairsBySeat, setPairsBySeat] = useState<number[]>([]);
   const [remembered, setRemembered] = useState<Record<string, unknown>>({});
   const [started, setStarted] = useState(false);
   const game = useCatalogGame("smriti");
   const settle = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const recovering = useRef(open.length === 2);
 
   useEffect(() => { void loadRemembered("smriti").then(setRemembered); }, []);
   useEffect(() => () => { if (settle.current) clearTimeout(settle.current); }, []);
+
+  const attemptPair = useCallback(async (cards: number[], pair: number) => {
+    setBusy(true);
+    const res = await answer({ type: "attempt", a: cards[0], b: cards[1] });
+    if (!res) { setBusy(false); return; }
+    const out = res as { match: boolean; complete: boolean; attempts: number };
+    setAttempts(out.attempts);
+    settle.current = setTimeout(() => {
+      if (out.match) {
+        setMatched((m) => new Set(m).add(pair));
+        setPairsBySeat((p) => { const n = [...p]; n[seat] = (n[seat] ?? 0) + 1; return n; });
+        haptics.correct();
+      } else { haptics.incorrect(); }
+      if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
+      setOpen([]); setBusy(false);
+      if (out.complete) void finish();
+    }, out.match ? 350 : 650);
+  }, [answer, finish, localSeats, seat, setBusy]);
+
+  useEffect(() => {
+    if (recovering.current && !busy && open.length === 2) {
+      recovering.current = false;
+      void attemptPair(open, faces[open[0]].pair);
+    }
+  }, [attemptPair, busy, faces, open]);
 
   const flip = useCallback(async (id: number) => {
     if (busy || open.includes(id) || open.length >= 2 || matched.size >= (pack?.pairs ?? 0)) return;
@@ -60,28 +90,9 @@ export default function SmritiScreen({ navigation, route }: Props) {
       try { void playLetter(undefined, face.sa, "sa"); } catch { /* audio optional */ }
     }
     if (nextOpen.length === 2) {
-      setBusy(true);
-      const r2 = await answer({ type: "attempt", a: nextOpen[0], b: nextOpen[1] });
-      setBusy(false);
-      if (!r2) return;
-      const out = r2 as { match: boolean; found: number; complete: boolean; attempts: number };
-      setAttempts(out.attempts);
-      settle.current = setTimeout(() => {
-        if (out.match) {
-          setMatched((m) => new Set(m).add(faces[nextOpen[0]]?.pair ?? face.pair));
-          setPairsBySeat((p) => { const n = [...p]; n[seat] = (n[seat] ?? 0) + 1; return n; });
-          haptics.correct();
-          if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
-          else setSeat(0); // a correct match grants another turn solo
-        } else {
-          haptics.incorrect();
-          if (localSeats > 1) setSeat((s) => (s + 1) % localSeats);
-        }
-        setOpen([]);
-        if (out.complete) void finish();
-      }, out.match ? 350 : 650);
+      await attemptPair(nextOpen, face.pair);
     }
-  }, [answer, busy, faces, localSeats, matched, open, pack, seat]);
+  }, [answer, attemptPair, busy, matched, open, pack]);
 
   if (!session) {
     return (
@@ -130,6 +141,9 @@ export default function SmritiScreen({ navigation, route }: Props) {
           <Text style={styles.countLabel}>{attempts} attempts{localSeats > 1 ? ` · player ${seat + 1}` : ""}</Text>
         </View>} />
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        {open.length === 2 && !!error && <Pressable disabled={busy}
+          onPress={() => void attemptPair(open, faces[open[0]].pair)} accessibilityRole="button"
+          accessibilityLabel="Retry pair"><Text style={styles.loading}>Retry this pair</Text></Pressable>}
         <View style={styles.grid}>
           {Array.from({ length: pack?.count ?? 16 }).map((_, id) => {
             const face = faces[id];

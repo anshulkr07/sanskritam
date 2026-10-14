@@ -2,7 +2,7 @@
 // by all seven games. Remembered casual settings live on the device under
 // shabd.playv2.<game>.
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useCallback, useEffect, useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { playApi, type FinishResult, type GameSessionView } from "./client";
@@ -16,7 +16,16 @@ export function loadRemembered(game: string): Promise<Record<string, unknown>> {
     .catch(() => ({}));
 }
 
-export function usePlaySession(game: string) {
+export type PlaySessionController = ReturnType<typeof useSoloPlaySession>;
+export const PlaySessionContext = createContext<PlaySessionController | null>(null);
+
+export function usePlaySession(game: string): PlaySessionController {
+  const live = useContext(PlaySessionContext);
+  const solo = useSoloPlaySession(game);
+  return live ?? solo;
+}
+
+function useSoloPlaySession(game: string) {
   const [session, setSession] = useState<GameSessionView | null>(null);
   const [result, setResult] = useState<FinishResult | null>(null);
   const [busy, setBusy] = useState(false);

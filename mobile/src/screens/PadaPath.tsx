@@ -19,7 +19,7 @@ type Props = {
 
 export default function PadaPathScreen({ navigation }: Props) {
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("pada-path");
-  const [at, setAt] = useState(0);
+  const [at, setAt] = useState(() => Object.keys((session?.resume_state?.scores ?? {}) as object).length);
   const [order, setOrder] = useState<string[]>([]);
   const [placed, setPlaced] = useState<{ id: string; sa: string; iast: string }[]>([]);
   const [feedback, setFeedback] = useState<{ accepted: boolean; score: number; detail: string; reading: string } | null>(null);
@@ -45,7 +45,7 @@ export default function PadaPathScreen({ navigation }: Props) {
   };
 
   const submit = async () => {
-    if (!prompt || placed.length !== prompt.tiles.length) return;
+    if (!prompt || placed.length !== prompt.tiles.length || busy) return;
     setBusy(true);
     const res = await answer({ index: at, order });
     setBusy(false);

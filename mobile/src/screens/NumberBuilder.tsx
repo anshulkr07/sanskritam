@@ -22,7 +22,7 @@ type Props = {
 
 export default function NumberBuilderScreen({ navigation }: Props) {
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("number");
-  const [at, setAt] = useState(0);
+  const [at, setAt] = useState(() => Object.keys((session?.resume_state?.prompt_scores ?? {}) as object).length);
   const [sel, setSel] = useState<Record<string, string>>({});
   const [open, setOpen] = useState<NumberSlot | null>(null);
   const [feedback, setFeedback] = useState<{
@@ -39,13 +39,17 @@ export default function NumberBuilderScreen({ navigation }: Props) {
   useEffect(() => { setSel({}); setFeedback(null); }, [at, session?.id]);
 
   const submit = async () => {
-    if (!prompt) return;
+    if (!prompt || busy) return;
     setBusy(true);
     const res = await answer({ index: at, selections: sel });
     setBusy(false);
     if (!res) return;
     const r = res as typeof feedback & { error?: string };
-    if (r.error) { setFeedback(null); return; }
+    if (r.error) {
+      setFeedback({ score: 0, c: 0, s: 0, l: 0, assembled: "", reading: "",
+        alternative: "", display_indian: prompt.display_indian, display_international: prompt.display_international });
+      return;
+    }
     setFeedback(r);
   };
 

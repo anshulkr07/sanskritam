@@ -35,9 +35,9 @@ export default function ShabdaRushScreen({ navigation, route }: Props) {
   const localSeats = route?.params?.mode === "local" ? (route.params?.seats ?? 2) : 0;
   const { session, result, busy, error, start, answer, finish, reset, setBusy } = usePlaySession("rush");
   const pack = session?.pack as RushPack | undefined;
-  const [at, setAt] = useState(0);
+  const [at, setAt] = useState(() => Object.keys((session?.resume_state?.answers ?? {}) as object).length);
   const [picked, setPicked] = useState<string | null>(null);
-  const [correctCount, setCorrectCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(() => Object.values((session?.resume_state?.answers ?? {}) as object).filter(Boolean).length);
   const [shownAt, setShownAt] = useState(0);
   const [seat, setSeat] = useState(0);
   const [remembered, setRemembered] = useState<Record<string, unknown>>({});
@@ -49,13 +49,13 @@ export default function ShabdaRushScreen({ navigation, route }: Props) {
   useEffect(() => { setShownAt(Date.now()); }, [at, session?.id]);
 
   const pick = async (choice: string) => {
-    if (!q || picked != null) return;
+    if (!q || picked != null || busy) return;
     setPicked(choice);
     const elapsed = Math.max(0, Date.now() - Math.max(shownAt, askedAt.current));
     setBusy(true);
     const res = await answer({ index: at, choice, elapsed_ms: elapsed });
     setBusy(false);
-    if (!res) return;
+    if (!res) { setPicked(null); return; }
     const r = res as { correct: boolean; already?: boolean };
     if (r.correct) { void sfx.correct(); haptics.correct(); setCorrectCount((c) => c + 1); }
     else { void sfx.incorrect(); haptics.incorrect(); }

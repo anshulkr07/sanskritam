@@ -58,6 +58,7 @@ export interface Allocations {
 }
 
 export interface GameSessionView {
+  resume_state?: Record<string, unknown>;
   id: string;
   game: string;
   mode: string;
@@ -211,6 +212,9 @@ export interface MatchSnapshot {
   }[];
   pack: unknown;
   own_state: Record<string, unknown>;
+  own_done?: boolean;
+  rematch_id?: string | null;
+  rematch_voted?: boolean;
   result: { standings: { learner_id: string; alias: string; score: number; rank: number; forfeited: boolean }[]; note: string } | null;
   ticket?: string;
 }
@@ -325,6 +329,10 @@ export const socialApi = {
 };
 
 export const matchApi = {
+  action: (matchId: string, action: Record<string, unknown>, idem: string) =>
+    request<Record<string, unknown>>(`/play/matches/${matchId}/actions`, {
+      method: "POST", body: JSON.stringify({ action, idem }),
+    }, true),
   createRoom: (body: { game: string; ruleset?: string; answer_lang?: string; config?: Record<string, unknown> }) =>
     request<MatchSnapshot>("/play/matches/rooms", {
       method: "POST", body: JSON.stringify(body),

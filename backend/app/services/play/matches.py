@@ -16,11 +16,13 @@ actor while opponents converge within about a second.
 
 from __future__ import annotations
 
+from copy import deepcopy
 import logging
 import random
 import uuid
 from datetime import datetime, timedelta, timezone
 
+from sqlalchemy import update, text
 from sqlalchemy.orm import Session
 
 from app.models import (
@@ -36,6 +38,7 @@ COUNTDOWN_SECONDS = 5
 RECONNECT_GRACE_SECONDS = 30
 WIDEN_AFTER_SECONDS = 15
 TICKET_TTL_SECONDS = 120
+LIVE_GAMES = {"smriti", "rush", "varna-jaal", "word-groups", "pada-path", "number"}
 
 GAME_ROUND_SECONDS = {
     "smriti": 240, "rush": 120, "varna-jaal": 300, "word-groups": 300,
@@ -64,9 +67,9 @@ def _code(rng: random.Random) -> str:
 
 def create_room(db: Session, learner, *, game: str, ruleset: str = "casual",
                 answer_lang: str = "sa", config: dict | None = None) -> LiveMatch:
-    from app.services.play.catalog import GAMES
-    if game not in GAMES:
-        raise MatchError(404, "Unknown game.")
+    if game not in LIVE_GAMES:
+        raise MatchError(422, "This game does not support online matches.")
+    _validate_setup(game, config or {})
     for _ in range(12):
         code = _code(random.Random(uuid.uuid4().hex))
         if not db.query(LiveMatch).filter(LiveMatch.code == code,
@@ -130,7 +133,7 @@ def _blocked_in(db: Session, m: LiveMatch, learner_id: str) -> bool:
 
 
 def leave_room(db: Session, learner, match_id: str) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     p = _participant(db, m, learner.id)
     if m.status == "lobby":
         db.delete(p)
@@ -146,6 +149,9 @@ def leave_room(db: Session, learner, match_id: str) -> dict:
                 _emit(db, m, "host", {"learner_id": nxt.learner_id})
             else:
                 m.status = "closed"
+    elif m.status in ("results", "closed"):
+        p.left_at = _now()
+        _emit(db, m, "left", {"learner_id": learner.id})
     else:
         # Leaving mid-play is a forfeit, not a room teardown.
         p.forfeited = True
@@ -157,8 +163,10 @@ def leave_room(db: Session, learner, match_id: str) -> dict:
 
 
 def set_ready(db: Session, learner, match_id: str, ready: bool) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     p = _participant(db, m, learner.id)
+    if m.status != "lobby":
+        raise MatchError(409, "Match already started.")
     p.ready = bool(ready)
     _emit(db, m, "ready", {"learner_id": learner.id, "ready": p.ready})
     db.commit()
@@ -166,19 +174,21 @@ def set_ready(db: Session, learner, match_id: str, ready: bool) -> dict:
 
 
 def update_config(db: Session, learner, match_id: str, config: dict) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     if m.host_id != learner.id:
         raise MatchError(403, "Only the host can change the setup.")
     if m.status != "lobby":
         raise MatchError(409, "Match already started.")
-    m.config = {**(m.config or {}), **(config or {})}
+    merged = {**(m.config or {}), **(config or {})}
+    _validate_setup(m.game, merged)
+    m.config = merged
     _emit(db, m, "config", {"config": m.config})
     db.commit()
     return {"config": m.config}
 
 
 def transfer_host(db: Session, learner, match_id: str, to: str) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     if m.host_id != learner.id:
         raise MatchError(403, "Only the host can transfer the host role.")
     p = _participant(db, m, to)
@@ -192,7 +202,7 @@ def transfer_host(db: Session, learner, match_id: str, to: str) -> dict:
 
 
 def start_match(db: Session, learner, match_id: str) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     if m.host_id != learner.id:
         raise MatchError(403, "Only the host can start.")
     if m.status != "lobby":
@@ -212,18 +222,20 @@ def start_match(db: Session, learner, match_id: str) -> dict:
 def activate(db: Session, m: LiveMatch) -> None:
     """Move a countdown match into active play, dealing the packs (called by
     the tick job and lazily by WS reads)."""
+    m = _get(db, m.id, write=True)
+    if m.status != "countdown":
+        db.commit()
+        return
     participants = _participants(db, m)
     seed = m.id  # equal content and layout seed for every player
     cfg = m.config or {}
     state = {"players": {}, "started_at": _now().isoformat()}
-    pack_view = None
+    pack = _deal(db, m, seed, cfg)
+    pack_view = _client_view(m.game, pack)
     for p in participants:
-        pack = _deal(db, m, seed, cfg)
         state["players"][p.learner_id] = {
-            "pack": pack, "progress": {}, "score": 0, "done": False,
+            "pack": deepcopy(pack), "progress": {}, "score": 0, "done": False,
         }
-        if pack_view is None:
-            pack_view = _client_view(m.game, pack)
     m.state = state
     from sqlalchemy.orm.attributes import flag_modified
     flag_modified(m, "state")
@@ -253,10 +265,17 @@ def _deal(db: Session, m: LiveMatch, seed: str, cfg: dict) -> dict:
         return packs.number_pack(prompts=int(cfg.get("prompts", 5)), seed=seed,
                                  answer_lang=m.answer_lang or "sa",
                                  band=cfg.get("band", ""), grouping="indian")
-    if game == "daily-word":
-        # Duel puzzles are fresh and clearly labelled — never the daily word.
-        return {"duel": True, "seed": seed}
     return {}
+
+
+def _validate_setup(game: str, config: dict) -> None:
+    if game == "word-groups" and (config.get("tiles", 16), config.get("group_size", 4)) not in ((16, 4), (9, 3)):
+        raise MatchError(422, "Choose a standard 16/4 or beginner 9/3 Word Groups board.")
+    for key, high in {"pairs": 12, "questions": 30, "prompts": 20, "words": 8}.items():
+        if key in config and (not isinstance(config[key], int) or not 1 <= config[key] <= high):
+            raise MatchError(422, f"Invalid {key} for this match.")
+    if "size" in config and config["size"] not in (3, 4):
+        raise MatchError(422, "Choose a 3 or 4 cell grid.")
 
 
 def _client_view(game: str, pack: dict) -> dict:
@@ -279,14 +298,17 @@ def _client_view(game: str, pack: dict) -> dict:
 
 
 def submit_action(db: Session, learner, match_id: str, action: dict, idem: str = "") -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     p = _participant(db, m, learner.id)
     if p.forfeited:
         raise MatchError(409, "You left this match.")
-    if idem and p.state.get("last_idem") == idem:
-        return p.state.get("last_ack", {"ok": True, "repeat": True})
+    if idem and idem in (p.state or {}).get("acks", {}):
+        ack = p.state["acks"][idem]
+        db.commit()
+        return ack
     if m.status == "countdown" and _now() >= (m.round_deadline or _now()):
         activate(db, m)
+        m = _get(db, match_id, write=True)
     if m.status != "active":
         raise MatchError(409, f"Match is {m.status}.")
     if m.round_deadline and _now() > m.round_deadline + timedelta(seconds=2):
@@ -296,6 +318,8 @@ def submit_action(db: Session, learner, match_id: str, action: dict, idem: str =
     mine = players.get(learner.id)
     if mine is None:
         raise MatchError(409, "Not seated.")
+    if mine.get("done"):
+        raise MatchError(409, "Your round is complete. Waiting for the other players.")
     state = mine.get("progress") or _fresh_live_state(m.game)
     try:
         result = _live_action(db, m, mine, state, action)
@@ -303,25 +327,25 @@ def submit_action(db: Session, learner, match_id: str, action: dict, idem: str =
         raise MatchError(e.status, e.detail)
     from sqlalchemy.orm.attributes import flag_modified
     mine["progress"] = state
-    mine["done"] = bool(result.get("complete"))
-    p.score = int(result.get("score", _live_score(m.game, state)))
+    mine["done"] = bool(result.get("complete") or result.get("over"))
+    p.score = _live_score(m.game, state, mine["pack"])
     _emit(db, m, "progress", {
         "learner_id": learner.id,
         "public": _public_progress(m.game, state),
         "score": p.score,
     }, actor=learner.id)
-    m.state = players
+    m.state = {**(m.state or {}), "players": players}
     flag_modified(m, "state")
-    db.commit()
     ack = {"ok": True, **result}
     if idem:
-        p.state = {**(p.state or {}), "last_idem": idem, "last_ack": ack}
-        db.commit()
+        acks = {**(p.state or {}).get("acks", {}), idem: ack}
+        # Retain enough acknowledgements to safely retry every move in a round.
+        p.state = {**(p.state or {}), "acks": dict(list(acks.items())[-512:])}
     players_now = (m.state or {}).get("players", {})
     if players_now and all(players_now.get(pp.learner_id, {}).get("done") or pp.forfeited
                            for pp in _participants(db, m)):
         _resolve(db, m)
-        db.commit()
+    db.commit()
     return ack
 
 
@@ -363,9 +387,24 @@ def _live_action(db: Session, m: LiveMatch, mine: dict, state: dict, action: dic
     if game == "word-groups":
         return session_svc._wordgroups_action(pack, state, action)
     if game == "pada-path":
-        return session_svc._padapath_action(pack, state, action)
+        idx = str(action.get("index", -1))
+        order = action.get("order", [])
+        prompts = pack["prompts"]
+        index = int(idx)
+        if not 0 <= index < len(prompts) or sorted(order) != sorted(t["id"] for t in prompts[index]["tiles"]):
+            raise session_svc.PlayError(422, "Place every word tile exactly once.")
+        result = session_svc._padapath_action(pack, state, action)
+        result = {"score": state["scores"].get(idx, 0), **result,
+                  "complete": len(state["scores"]) >= len(pack["prompts"])}
+        state["details"][idx] = result
+        return result
     if game == "number":
-        return session_svc._number_action(pack, state, action)
+        idx = str(action.get("index", -1))
+        result = session_svc._number_action(pack, state, action)
+        result = {"score": state["prompt_scores"].get(idx, 0), **result,
+                  "complete": len(state["prompt_scores"]) >= len(pack["prompts"])}
+        state["prompt_results"][idx] = result
+        return result
     raise session_svc.PlayError(404, "Unknown game.")
 
 
@@ -391,25 +430,28 @@ def _public_progress(game: str, state: dict) -> dict:
     return {}
 
 
-def _live_score(game: str, state: dict) -> int:
+def _live_score(game: str, state: dict, pack: dict | None = None) -> int:
     from app.services.play import rubrics
+    pack = pack or {}
     try:
         if game == "smriti":
-            return rubrics.smriti(8, state.get("attempts", 0), len(state.get("found_pairs", []))).score
+            return rubrics.smriti(pack.get("pairs", 8), state.get("attempts", 0), len(state.get("found_pairs", []))).score
         if game == "rush":
-            answers = [{"correct": v, "elapsed_ms": state.get("received_ms", {}).get(k, 10**9)}
-                       for k, v in state.get("answers", {}).items()]
-            return rubrics.rush(answers, 12000).score
+            answers = [{"correct": state.get("answers", {}).get(str(i), False),
+                        "elapsed_ms": state.get("received_ms", {}).get(str(i), 10**9)}
+                       for i in range(len(pack.get("questions", [])))]
+            return rubrics.rush(answers, pack.get("window_ms", 12000)).score
         if game == "varna-jaal":
             found = len(state.get("found", []))
-            return rubrics.varna_jaal(5, found, found >= 5, 300000, 300000).score
+            required = len(pack.get("words", [])) or 5
+            return rubrics.varna_jaal(required, found, found >= required, 300000, 300000).score
         if game == "word-groups":
-            return rubrics.word_groups(4, len(state.get("solved_groups", [])), state.get("wrong", 0)).score
+            return rubrics.word_groups(pack.get("groups_total", 4), len(state.get("solved_groups", [])), state.get("wrong", 0)).score
         if game == "pada-path":
-            vals = [int(v) for v in state.get("scores", {}).values()]
+            vals = [int(state.get("scores", {}).get(str(i), 0)) for i in range(len(pack.get("prompts", [])))]
             return rubrics.pada_path(vals).score
         if game == "number":
-            vals = [int(v) for v in state.get("prompt_scores", {}).values()]
+            vals = [int(state.get("prompt_scores", {}).get(str(i), 0)) for i in range(len(pack.get("prompts", [])))]
             return rubrics.number(vals).score
     except Exception:
         return 0
@@ -430,6 +472,7 @@ def tick(db: Session) -> int:
             n += 1
     for m in db.query(LiveMatch).filter(LiveMatch.status == "active").all():
         if m.round_deadline and now >= m.round_deadline + timedelta(seconds=2):
+            m = _get(db, m.id, write=True)
             if _resolve(db, m):
                 n += 1
     db.commit()
@@ -456,7 +499,7 @@ def _resolve(db: Session, m: LiveMatch) -> bool:
         players = (m.state or {}).get("players", {})
         mine = players.get(p.learner_id, {})
         state = mine.get("progress") or _fresh_live_state(m.game)
-        score = 0 if p.forfeited else _live_score(m.game, state)
+        score = 0 if p.forfeited else _live_score(m.game, state, mine.get("pack"))
         p.score = score
         standings.append({"learner_id": p.learner_id, "alias": p.alias,
                           "score": score, "forfeited": p.forfeited})
@@ -478,16 +521,22 @@ def _resolve(db: Session, m: LiveMatch) -> bool:
 
 
 def rematch_vote(db: Session, learner, match_id: str) -> dict:
-    m = _get(db, match_id)
+    m = _get(db, match_id, write=True)
     p = _participant(db, m, learner.id)
+    if m.status == "closed" and (m.state or {}).get("rematch_id"):
+        rematch_id = m.state["rematch_id"]
+        db.commit()
+        return {"rematch": rematch_id}
+    if m.status != "results":
+        raise MatchError(409, "Wait for the match results before requesting a rematch.")
     votes = set((p.state or {}).get("rematch_votes", []))
     votes.add(learner.id)
     p.state = {**(p.state or {}), "rematch_votes": sorted(votes)}
-    participants = _participants(db, m)
-    if all(learner.id in (pp.state or {}).get("rematch_votes", []) for pp in participants):
+    participants = [pp for pp in _participants(db, m) if pp.left_at is None and not pp.forfeited]
+    if len(participants) >= 2 and all(pp.learner_id in (pp.state or {}).get("rematch_votes", []) for pp in participants):
         nm = LiveMatch(code=_code(random.Random(uuid.uuid4().hex)), game=m.game,
                        kind=m.kind, ruleset=m.ruleset, answer_lang=m.answer_lang,
-                       host_id=m.host_id, config=m.config,
+                       host_id=m.host_id if any(pp.learner_id == m.host_id for pp in participants) else participants[0].learner_id, config=m.config,
                        state={"players": {}})
         db.add(nm)
         db.flush()
@@ -499,12 +548,13 @@ def rematch_vote(db: Session, learner, match_id: str) -> dict:
         for pp in participants:
             _emit(db, nm, "joined", {"learner_id": pp.learner_id, "alias": pp.alias})
         m.status = "closed"
+        m.state = {**(m.state or {}), "rematch_id": nm.id}
         _emit(db, m, "rematch", {"match_id": nm.id})
         db.commit()
         return {"rematch": nm.id, "code": nm.code}
     _emit(db, m, "rematch_vote", {"learner_id": learner.id,
                                   "votes": len([pp for pp in participants
-                                                if learner.id in (pp.state or {}).get("rematch_votes", [])])})
+                                                if pp.learner_id in (pp.state or {}).get("rematch_votes", [])])})
     db.commit()
     return {"votes_pending": True}
 
@@ -532,9 +582,24 @@ def snapshot(db: Session, m: LiveMatch, learner_id: str) -> dict:
                      "progress": _public_progress(m.game, (players.get(p.learner_id, {}) or {}).get("progress") or _fresh_live_state(m.game))}
                     for p in participants],
         "pack": pack_view,
-        "own_state": _public_progress(m.game, (mine.get("progress") or _fresh_live_state(m.game))),
+        "own_state": _resume_progress(m.game, mine),
+        "own_done": bool(mine.get("done")),
+        "rematch_id": (m.state or {}).get("rematch_id"),
+        "rematch_voted": learner_id in (next((p.state or {} for p in participants if p.learner_id == learner_id), {})).get("rematch_votes", []),
         "result": m.result,
     }
+
+
+def _resume_progress(game: str, mine: dict) -> dict:
+    """Only the requester receives their previous moves and authorised faces."""
+    state = dict(mine.get("progress") or _fresh_live_state(game))
+    if game == "smriti" and mine:
+        state["faces"] = {cid: packs.smriti_reveal(mine["pack"], int(cid))
+                          for cid in state.get("reveals", {})}
+    if game == "varna-jaal" and mine:
+        state["found_indices"] = [str(i) for i, w in enumerate(mine["pack"]["words"])
+                                  if w["id"] in state.get("found", [])]
+    return state
 
 
 def make_ticket(db: Session, learner, match_id: str | None, scope: str = "match") -> str:
@@ -567,10 +632,12 @@ def _emit(db: Session, m: LiveMatch, type_: str, payload: dict, actor: str = "sy
 
 
 def mark_connected(db: Session, m: LiveMatch, learner_id: str, connected: bool) -> None:
+    m = _get(db, m.id, write=True)
     p = (db.query(MatchParticipant)
          .filter(MatchParticipant.match_id == m.id, MatchParticipant.learner_id == learner_id)
          .first())
     if p is None:
+        db.commit()
         return
     was = p.connected
     p.connected = connected
@@ -587,9 +654,9 @@ def mark_connected(db: Session, m: LiveMatch, learner_id: str, connected: bool) 
 
 def enqueue(db: Session, learner, *, game: str, ruleset: str = "casual",
             answer_lang: str = "sa", band: str = "open") -> dict:
-    from app.services.play.catalog import GAMES
-    if game not in GAMES:
-        raise MatchError(404, "Unknown game.")
+    if game not in LIVE_GAMES:
+        raise MatchError(422, "This game does not support online matches.")
+    _lock_queue(db)
     _cancel_queue(db, learner.id)
     now = _now()
     # 1) someone waiting with same game/ruleset/lang and compatible band
@@ -603,7 +670,7 @@ def enqueue(db: Session, learner, *, game: str, ruleset: str = "casual",
                   .all())
     for c in candidates:
         waited = (now - (c.enqueued_at or now)).total_seconds()
-        if _bands_compatible(c.band, band, waited):
+        if _bands_compatible(c.band, band, waited) and not _queue_blocked(db, learner.id, c.learner_id):
             m = _pair(db, c, learner, game, ruleset, answer_lang, band)
             return {"matched": True, "match_id": m.id, "code": m.code}
     entry = MatchQueueEntry(learner_id=learner.id, game=game, ruleset=ruleset,
@@ -633,6 +700,14 @@ def _pair(db: Session, other: MatchQueueEntry, learner, game, ruleset, answer_la
                             alias=_alias(learner), is_host=False, ready=True))
     other.status = "matched"
     other.match_id = m.id
+    entry = db.query(MatchQueueEntry).filter(MatchQueueEntry.learner_id == learner.id,
+                                            MatchQueueEntry.status == "waiting").first()
+    if entry is None:
+        entry = MatchQueueEntry(learner_id=learner.id, game=game, ruleset=ruleset,
+                                answer_lang=answer_lang, band=band or "open")
+        db.add(entry)
+    entry.status = "matched"
+    entry.match_id = m.id
     _emit(db, m, "joined", {"learner_id": other.learner_id})
     _emit(db, m, "joined", {"learner_id": learner.id})
     db.commit()
@@ -646,43 +721,111 @@ def _alias_of(db: Session, learner_id: str) -> str:
 
 
 def queue_status(db: Session, learner) -> dict:
+    _lock_queue(db)
     entry = (db.query(MatchQueueEntry)
              .filter(MatchQueueEntry.learner_id == learner.id,
                      MatchQueueEntry.status == "waiting")
              .first())
     if entry is None:
         matched = (db.query(MatchQueueEntry)
+                   .join(LiveMatch, LiveMatch.id == MatchQueueEntry.match_id)
+                   .join(MatchParticipant, (MatchParticipant.match_id == LiveMatch.id) &
+                         (MatchParticipant.learner_id == learner.id))
                    .filter(MatchQueueEntry.learner_id == learner.id,
                            MatchQueueEntry.status == "matched",
-                           MatchQueueEntry.match_id.isnot(None))
+                           LiveMatch.status.in_(("lobby", "countdown", "active")),
+                           MatchParticipant.left_at.is_(None), MatchParticipant.forfeited.is_(False))
                    .order_by(MatchQueueEntry.enqueued_at.desc()).first())
         if matched:
-            return {"matched": True, "match_id": matched.match_id}
+            match_id = matched.match_id
+            db.commit()
+            return {"matched": True, "match_id": match_id}
+        db.commit()
         return {"matched": False, "waiting": False}
     waited = (_now() - (entry.enqueued_at or _now())).total_seconds()
-    return {"matched": False, "waiting": True,
+    # Re-evaluate compatibility while polling: two queued bands may become
+    # compatible after 15s without a third player arriving.
+    candidates = (db.query(MatchQueueEntry).filter(
+        MatchQueueEntry.game == entry.game, MatchQueueEntry.ruleset == entry.ruleset,
+        MatchQueueEntry.answer_lang == entry.answer_lang, MatchQueueEntry.status == "waiting",
+        MatchQueueEntry.learner_id != learner.id).order_by(MatchQueueEntry.enqueued_at).all())
+    for other in candidates:
+        age = max(waited, (_now() - (other.enqueued_at or _now())).total_seconds())
+        if _bands_compatible(entry.band, other.band, age) and not _queue_blocked(db, learner.id, other.learner_id):
+            m = _pair(db, other, learner, entry.game, entry.ruleset, entry.answer_lang, entry.band)
+            return {"matched": True, "match_id": m.id, "code": m.code}
+    result = {"matched": False, "waiting": True,
             "game": entry.game, "waited_seconds": int(waited),
             "widened": waited >= WIDEN_AFTER_SECONDS,
             "offer_solo_after": max(0, 30 - int(waited))}
+    db.commit()
+    return result
 
 
 def _cancel_queue(db: Session, learner_id: str) -> None:
     (db.query(MatchQueueEntry)
      .filter(MatchQueueEntry.learner_id == learner_id,
-             MatchQueueEntry.status == "waiting")
+             MatchQueueEntry.status.in_(("waiting", "matched")))
      .update({"status": "cancelled"}))
 
 
 def cancel_queue(db: Session, learner) -> dict:
+    _lock_queue(db)
+    # A pairing can win the race with the Cancel tap. Remove the cancelling
+    # player's lobby seat as well, rather than leave a ghost ready player.
+    entries = db.query(MatchQueueEntry).filter(MatchQueueEntry.learner_id == learner.id,
+                                              MatchQueueEntry.status == "matched").all()
+    mids = {entry.match_id for entry in entries if entry.match_id}
     _cancel_queue(db, learner.id)
+    db.flush()
+    for mid in mids:
+        m = _get(db, mid, write=True)
+        p = db.query(MatchParticipant).filter(MatchParticipant.match_id == mid,
+                                              MatchParticipant.learner_id == learner.id).first()
+        if m.status in ("lobby", "countdown", "active") and p is not None:
+            leave_room(db, learner, mid)
     db.commit()
     return {"cancelled": True}
 
 
-def _get(db: Session, match_id: str) -> LiveMatch:
-    m = db.query(LiveMatch).filter(LiveMatch.id == match_id).first()
+def _queue_blocked(db: Session, a: str, b: str) -> bool:
+    from app.models import Block
+    from sqlalchemy import or_, and_
+    return db.query(Block).filter(or_(and_(Block.learner_id == a, Block.blocked_id == b),
+                                      and_(Block.learner_id == b, Block.blocked_id == a))).first() is not None
+
+
+def _lock_queue(db: Session) -> None:
+    if db.get_bind().dialect.name == "sqlite":
+        db.execute(update(MatchQueueEntry).where(MatchQueueEntry.status == "waiting")
+                   .values(status=MatchQueueEntry.status))
+    elif db.get_bind().dialect.name == "postgresql":
+        db.execute(text("SELECT pg_advisory_xact_lock(75438771)"))
+
+
+def _get(db: Session, match_id: str, *, write: bool = False) -> LiveMatch:
+    if write and db.get_bind().dialect.name == "sqlite":
+        # SQLite has no row locks. Acquire its write lock before reading the
+        # JSON state so simultaneous moves cannot overwrite each other.
+        db.execute(update(LiveMatch).where(LiveMatch.id == match_id)
+                   .values(updated_at=LiveMatch.updated_at))
+    query = db.query(LiveMatch).filter(LiveMatch.id == match_id)
+    if write:
+        query = query.populate_existing().with_for_update()
+    m = query.first()
     if m is None:
         raise MatchError(404, "Match not found.")
+    return m
+
+
+def advance(db: Session, m: LiveMatch) -> LiveMatch:
+    """Snapshots also drive deadlines when a socket is reconnecting."""
+    if m.round_deadline and m.status == "countdown" and _now() >= m.round_deadline:
+        activate(db, m)
+    elif m.round_deadline and m.status == "active" and _now() >= m.round_deadline + timedelta(seconds=2):
+        m = _get(db, m.id, write=True)
+        _resolve(db, m)
+        db.commit()
     return m
 
 

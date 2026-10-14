@@ -3,6 +3,9 @@ import { AudioModule, requestRecordingPermissionsAsync, setAudioModeAsync } from
 export type Microphone = { stop: () => void };
 export type MicBuffer = { data: ArrayBuffer; sampleRate: number; channels: number };
 export async function microphonePermission(): Promise<void> {
+  if (typeof AudioModule.AudioStream !== "function") {
+    throw new Error("This app build does not support live microphone streaming. Install a new app build to use Voice Lab.");
+  }
   if (!(await requestRecordingPermissionsAsync()).granted) throw new Error("Allow microphone access to start a voice call.");
 }
 export async function startMicrophone(onBuffer: (buffer: MicBuffer) => void): Promise<Microphone> {

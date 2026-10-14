@@ -63,17 +63,17 @@ export default function VoiceLabTab() {
       <Choices label="Your companion" values={Object.values(PERSONA_NAMES)} selected={PERSONA_NAMES[config.persona]}
         onChange={value => { const key = (Object.keys(PERSONA_NAMES) as LabConfig["persona"][]).find(k => PERSONA_NAMES[k] === value)!; setConfig({ ...PRESETS[key] }); }} />
       <View style={styles.callPanel}>
-        <Text style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : "Listening · बोलतु") : lab.state === "connecting" ? "Connecting…" : "Ready when you are"}</Text>
+        <Text accessibilityLiveRegion="polite" style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : "Listening · बोलतु") : lab.state === "connecting" ? lab.connectionStatus : lab.error ? "Call could not start" : "Ready when you are"}</Text>
         <Text style={styles.callCaption}>{PIPELINES[config.pipeline - 1]} · {config.speaker}</Text>
         <Pressable accessibilityRole="button" style={styles.callButton} onPress={() => lab.state === "idle" ? void lab.start() : lab.stop()}>
-          <Text style={styles.selectedText}>{lab.state === "idle" ? "Start voice call" : "End call"}</Text>
+          <Text style={styles.selectedText}>{lab.state === "idle" ? "Start voice call" : lab.state === "connecting" ? "Cancel" : "End call"}</Text>
         </Pressable>
+        {!!lab.error && <Text accessibilityRole="alert" style={styles.error}>{lab.error}</Text>}
         {lab.state === "live" && <View style={styles.choices}>
           <Pressable accessibilityRole="button" style={styles.callButton} onPress={lab.toggleMute}><Text style={styles.selectedText}>{lab.muted ? "Unmute" : "Mute"}</Text></Pressable>
           <Pressable accessibilityRole="button" style={styles.callButton} onPress={lab.interrupt}><Text style={styles.selectedText}>Interrupt reply</Text></Pressable>
         </View>}
       </View>
-      {!!lab.error && <Text accessibilityRole="alert" style={styles.error}>{lab.error}</Text>}
       {!!lab.notice && <Text accessibilityLiveRegion="polite" style={styles.note}>{lab.notice}</Text>}
       <Pressable accessibilityRole="button" accessibilityState={{ expanded: sandbox }} style={styles.sandboxButton} onPress={() => setSandbox(!sandbox)}>
         <Text style={styles.label}>{sandbox ? "Close sandbox settings −" : "Open sandbox settings +"}</Text>
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   thumb: { position: "absolute", width: 22, height: 22, borderRadius: 11, backgroundColor: fill.teal, marginLeft: -11 },
   input: { borderWidth: 1, borderColor: color.border, borderRadius: 12, minHeight: 48, padding: 12, color: color.ink, fontSize: 16 },
   note: { color: color.inkSoft, fontFamily: "Nunito_400Regular", fontSize: 13, lineHeight: 21 },
-  error: { color: color.badText, fontFamily: "Nunito_600SemiBold", fontSize: 15 },
+  error: { color: color.badText, backgroundColor: color.bg, padding: 12, borderRadius: 12, fontFamily: "Nunito_600SemiBold", fontSize: 15 },
   transcript: { borderBottomWidth: 1, borderColor: color.border, paddingVertical: 12, gap: 8 },
   sanskrit: { color: color.ink, fontFamily: sanskritFace.regular, fontSize: 20, lineHeight: 34 },
   sendText: { color: color.bg, fontFamily: "Nunito_700Bold", textAlign: "center", padding: 14 },

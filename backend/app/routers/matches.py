@@ -21,7 +21,6 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
-from datetime import timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, Query, WebSocket, WebSocketDisconnect
 from pydantic import BaseModel
@@ -79,6 +78,7 @@ def get_resume(learner: Learner = Depends(require_learner), db: Session = Depend
     m = match_svc.my_match(db, learner.id)
     if m is None:
         return {"match": None}
+    match_svc.advance(db, m)
     snap = match_svc.snapshot(db, m, learner.id)
     ticket = match_svc.make_ticket(db, learner, m.id)
     snap["ticket"] = ticket
@@ -87,6 +87,20 @@ def get_resume(learner: Learner = Depends(require_learner), db: Session = Depend
 
 class ReadyBody(BaseModel):
     ready: bool = True
+
+
+class ActionBody(BaseModel):
+    action: dict
+    idem: str
+
+
+@router.post("/{match_id}/actions")
+def post_action(match_id: str, body: ActionBody,
+                learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    try:
+        return match_svc.submit_action(db, learner, match_id, body.action, body.idem)
+    except match_svc.MatchError as e:
+        raise _http(e)
 
 
 @router.post("/rooms/{match_id}/ready")
@@ -189,6 +203,7 @@ def get_snapshot(match_id: str, learner: Learner = Depends(require_learner),
         match_svc._participant(db, m, learner.id)
     except match_svc.MatchError as e:
         raise _http(e)
+    match_svc.advance(db, m)
     return match_svc.snapshot(db, m, learner.id)
 
 
@@ -249,6 +264,7 @@ async def ws_matches(websocket: WebSocket, ticket: str, since: int = 0):
 
         async def handle(msg: dict) -> None:
             nonlocal last_seq
+            db.expire_all()
             type_ = msg.get("type", "")
             if type_ == "action":
                 ack = match_svc.submit_action(db, learner, match.id, msg.get("action", {}),
@@ -283,8 +299,10 @@ async def ws_matches(websocket: WebSocket, ticket: str, since: int = 0):
                 try:
                     await handle(msg)
                 except match_svc.MatchError as e:
-                    await _send({"type": "error", "detail": e.detail, "status": e.status})
+                    db.rollback()
+                    await _send({"type": "error", "detail": e.detail, "status": e.status, "idem": msg.get("idem")})
                 except Exception as e:  # never let one bad message kill the socket
+                    db.rollback()
                     logger.info("ws action failed: %s", e)
                     await _send({"type": "error", "detail": "action failed"})
 
@@ -292,23 +310,14 @@ async def ws_matches(websocket: WebSocket, ticket: str, since: int = 0):
             nonlocal last_seq
             while True:
                 await asyncio.sleep(POLL_SECONDS)
-                db.expire(match)
-                if match.status == "closed":
-                    await _send({"seq": match.seq, "type": "closed", "payload": {}})
-                    break
-                if match.status == "countdown" and match.round_deadline and \
-                        match_svc._now() >= match.round_deadline:
-                    match_svc.activate(db, match)
-                if match.status == "active" and match.round_deadline and \
-                        match_svc._now() >= match.round_deadline + timedelta(seconds=2):
-                    match_svc._resolve(db, match)
-                    db.commit()
+                db.expire_all()
+                match_svc.advance(db, match)
                 events = match_svc.events_since(db, match, last_seq)
                 for ev in events:
                     await _send({"seq": ev.seq, "type": ev.type, "payload": ev.payload})
                     last_seq = max(last_seq, ev.seq)
-                if match.status == "results" and last_seq >= match.seq:
-                    await _send({"seq": match.seq, "type": "settled", "payload": {"status": "results"}})
+                if match.status == "closed" and last_seq >= match.seq:
+                    await _send({"type": "closed", "payload": {}})
                     break
 
         recv_task = asyncio.create_task(receiver())

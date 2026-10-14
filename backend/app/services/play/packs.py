@@ -367,7 +367,8 @@ def pada_path_pack(db: Session, *, prompts: int, seed: str, ranked: bool,
     carries its reviewed accepted orders (sentences) or prescribed sequence
     (quotations), and the adjacency pairs used for partial credit."""
     from app.models import GameContent
-    from app.seeds.game_content_seed import PADA_PATH_PROMPTS
+    from app.seeds.game_content_seed import build_pada_path_prompts
+    fallback_prompts = build_pada_path_prompts()
 
     rng = random.Random(seed)
     pool: list[dict] = []
@@ -385,7 +386,7 @@ def pada_path_pack(db: Session, *, prompts: int, seed: str, ranked: bool,
         pass
     if len(pool) < prompts:
         have = {p["id"] for p in pool}
-        pool.extend(p for p in PADA_PATH_PROMPTS if p["id"] not in have
+        pool.extend(p for p in fallback_prompts if p["id"] not in have
                     and (not exclude_ids or p["id"] not in exclude_ids))
     quotes = [p for p in pool if p.get("type") == "quotation"]
     sentences = [p for p in pool if p.get("type", "sentence") == "sentence"]
@@ -407,14 +408,33 @@ def pada_path_pack(db: Session, *, prompts: int, seed: str, ranked: bool,
         # canonical_order: tile ids in the word list's original order — the
         # quotation key (server only).
         canonical_order = [f"w{order.index(k)}" for k in range(n)]
+        tiles = [{"id": f"w{j}", "sa": words[order[j]]["sa"],
+                  "iast": words[order[j]].get("iast") or _iast(words[order[j]]["sa"])}
+                 for j in range(n)]
+
+        def tile_order(values):
+            # Authoring stores Sanskrit words; clients submit shuffled tile
+            # ids. Consume occurrences so repeated words remain distinct.
+            available = list(tiles)
+            result = []
+            for value in values:
+                tile = next((t for t in available if value in (t["id"], t["sa"])), None)
+                if tile is None:
+                    return []
+                result.append(tile["id"])
+                available.remove(tile)
+            return result
+
+        accepted_orders = [tile_order(values) for values in (p.get("accepted_orders") or [])]
+        by_word = {t["sa"]: t["id"] for t in tiles}
+        required_pairs = [[by_word.get(a, a), by_word.get(b, b)]
+                          for a, b in p.get("required_pairs", [])]
         out.append({
             "index": i, "id": p["id"], "type": p.get("type", "sentence"),
-            "tiles": [{"id": f"w{j}", "sa": words[order[j]]["sa"],
-                       "iast": words[order[j]].get("iast") or _iast(words[order[j]]["sa"])}
-                      for j in range(n)],
-            "accepted_orders": p.get("accepted_orders"),  # SERVER ONLY (sentences)
+            "tiles": tiles,
+            "accepted_orders": accepted_orders,  # SERVER ONLY (sentences)
             "canonical_order": canonical_order,  # SERVER ONLY (quotations)
-            "required_pairs": p.get("required_pairs", []),  # SERVER ONLY
+            "required_pairs": required_pairs,  # SERVER ONLY
             "meaning": p.get("meaning", ""), "source": p.get("source", ""),
             "explanation": p.get("explanation", ""),
         })
@@ -462,7 +482,6 @@ _NUMBER_BANDS = ["0-20", "21-99", "hundreds-thousands", "lakhs-crores", "decimal
 
 
 def _band_value(band: str, rng: random.Random) -> str:
-    import random as _r
     if band == "0-20":
         return str(rng.randint(0, 20))
     if band == "21-99":
@@ -472,7 +491,7 @@ def _band_value(band: str, rng: random.Random) -> str:
     if band == "lakhs-crores":
         return str(rng.randint(100000, 99999999))
     if band == "decimals-negatives":
-        r = _r.random()
+        r = rng.random()
         if r < 0.3:
             return f"{rng.randint(0, 999)}.{rng.randint(1, 999):03d}".rstrip("0") or "0.04"
         if r < 0.45:
