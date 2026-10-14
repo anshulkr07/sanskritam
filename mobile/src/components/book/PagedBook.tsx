@@ -38,6 +38,8 @@ import CoverArt from "./CoverArt";
 import PageCurlBook from "./PageCurlBook";
 import ReaderSlider from "../ReaderSlider";
 import { Button, EmptyState } from "../ui";
+import { T, sa, ui } from "../../read/look";
+import { NumBox, SectionHead, SquareButton } from "../../read/ui";
 
 export function PlusSheet({
   visible,
@@ -156,53 +158,62 @@ export function PagedBookIndex({
   }
 
   const started = (resume?.index ?? 0) > 0;
+  const totalVerses = data.chapters.reduce((a, c) => a + c.count, 0);
+  const order = data.chapters.map((c) => c.chapter);
+  const nowAt = resume ? order.indexOf(resume.chapter) : -1;
+  const many = data.chapters.length > 1;
+  const open = () => {
+    if (resume) onOpenChapter(resume.chapter, resume.index);
+  };
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <SectionList
         sections={sections.map((s) => ({
-          title: s.section ? `Part ${s.section}` : "Chapters",
+          title: s.section ? `Part ${s.section}` : "",
           data: s.chapters,
         }))}
         keyExtractor={(c) => (c as { chapter: string }).chapter || "one"}
         contentContainerStyle={styles.body}
+        stickySectionHeadersEnabled={false}
         ListHeaderComponent={
-          <>
-            <Pressable
-              onPress={onBack}
-              style={styles.backRow}
-              accessibilityRole="button"
-              accessibilityLabel="Back to Books"
-            >
-              <Ionicons name="arrow-back" size={20} color={color.saffron} />
+          <View>
+            <Pressable onPress={onBack} style={styles.backRow} accessibilityRole="button" accessibilityLabel="Back to Books">
+              <Ionicons name="arrow-back" size={20} color={T.ink} />
               <Text style={styles.backText}>Books</Text>
             </Pressable>
-            <BookCover
-              variant="card"
-              titleSa={text.title_sa}
-              titleEn={plain(text.title_en)}
-              caption={`${data.chapters.reduce((a, c) => a + c.count, 0)} verses`}
-              bookmarked={started}
-              onPress={() => {
-                if (resume) onOpenChapter(resume.chapter, resume.index);
-              }}
-            />
-            <Button
-              label={started ? "Continue" : "Open book"}
-              tone="primary"
-              block
-              onPress={() => {
-                if (resume) onOpenChapter(resume.chapter, resume.index);
-              }}
-              style={{ marginTop: space.md }}
-            />
-          </>
+            <View style={styles.hero}>
+              <CoverArt bookKey={text.slug} titleSa={text.title_sa} width={96} />
+              <View style={styles.heroText}>
+                <Text style={[styles.title, { fontSize: sized(25) }]} accessibilityRole="header">
+                  {plain(text.title_en)}
+                </Text>
+                {!!text.title_sa && <Text style={[sa(18), { color: T.ink2 }]}>{text.title_sa}</Text>}
+                <Text style={styles.fact}>
+                  {many ? `${data.chapters.length} chapters · ${totalVerses} verses` : `${totalVerses} verses`}
+                </Text>
+                {text.locked ? <Text style={styles.fact}>Opening chapters free · rest with Plus</Text> : null}
+              </View>
+            </View>
+            <View style={styles.actions}>
+              <SquareButton
+                label={started && resume ? `Continue${resume.chapter ? ` · chapter ${resume.chapter}` : ""}` : "Start reading"}
+                icon="play"
+                onPress={open}
+                style={{ flex: 1 }}
+              />
+            </View>
+            <SectionHead title={many ? "Chapters" : "Verses"} right={many ? `${data.chapters.length}` : undefined} style={styles.listHead} />
+            <View style={styles.rule} />
+          </View>
         }
-        renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionLabel}>{section.title}</Text>
-        )}
+        renderSectionHeader={({ section }) =>
+          section.title ? <Text style={styles.sectionLabel}>{section.title}</Text> : null
+        }
         renderItem={({ item }) => {
           const c = item as { chapter: string; count: number; locked: boolean; first_ref: string };
           const label = c.chapter ? `Chapter ${c.chapter}` : "Verses";
+          const i = order.indexOf(c.chapter);
+          const state = !started || nowAt < 0 ? "ahead" : i < nowAt ? "done" : i === nowAt ? "now" : "ahead";
           return (
             <Pressable
               onPress={() => {
@@ -211,22 +222,24 @@ export function PagedBookIndex({
                   setPlusOpen(true);
                   return;
                 }
-                onOpenChapter(c.chapter, 0);
+                onOpenChapter(c.chapter, i === nowAt && resume ? resume.index : 0);
               }}
               style={styles.row}
               accessibilityRole="button"
               accessibilityLabel={c.locked ? `${label}, Plus` : `${label}. ${c.count} verses.`}
             >
+              <NumBox state={state} label={c.chapter || "1"} />
               <View style={styles.rowText}>
                 <Text style={styles.rowTitle}>{label}</Text>
-                <Text style={styles.rowSub}>
-                  {c.count} verses{c.locked ? " Plus" : ""}
+                <Text style={[styles.rowSub, state === "now" && styles.rowSubNow]}>
+                  {state === "now" && resume ? `You are at verse ${resume.index + 1} of ${c.count}` : `${c.count} verses`}
+                  {c.locked ? " · Plus" : ""}
                 </Text>
               </View>
               {c.locked ? (
-                <Ionicons name="lock-closed" size={18} color={color.inkSoft} />
+                <Ionicons name="lock-closed" size={18} color={T.ink3} />
               ) : (
-                <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
+                <Ionicons name="chevron-forward" size={16} color={T.ink3} />
               )}
             </Pressable>
           );
@@ -459,35 +472,33 @@ export function PagedChapterReader({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: color.bg },
-  body: { padding: space.lg, paddingBottom: 120 },
+  safe: { flex: 1, backgroundColor: T.paper },
+  body: { paddingHorizontal: 20, paddingBottom: 120 },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
+  title: { ...ui("bold"), lineHeight: 30, color: T.ink },
   hint: { color: color.inkSoft, marginTop: 8 },
-  backRow: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, marginBottom: 8 },
-  backText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm },
-  sectionLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.saffronText,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    marginTop: 12,
-    marginBottom: 4,
-  },
+  backRow: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 48, alignSelf: "flex-start" },
+  backText: { ...ui("semibold"), fontSize: 15, color: T.ink },
+  sectionLabel: { ...ui("bold"), fontSize: 12, letterSpacing: 1.4, color: T.ink3, marginTop: 16, marginBottom: 2 },
   row: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
-    paddingVertical: 12,
-    minHeight: 56,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: color.border,
+    gap: 14,
+    minHeight: 62,
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: T.line,
   },
-  rowText: { flex: 1 },
-  rowTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  rowSub: { color: color.inkSoft, fontSize: 12, marginTop: 2 },
+  rowText: { flex: 1, minWidth: 0 },
+  rowSubNow: { ...ui("semibold"), color: T.action },
+  hero: { flexDirection: "row", gap: 16, marginTop: 2 },
+  heroText: { flex: 1, minWidth: 0, paddingTop: 2, gap: 2 },
+  fact: { ...ui("regular"), fontSize: 14, color: T.ink2, marginTop: 6 },
+  actions: { flexDirection: "row", marginTop: 18 },
+  listHead: { marginTop: 26, marginBottom: 8 },
+  rule: { height: 1, backgroundColor: T.line },
+  rowTitle: { ...ui("semibold"), fontSize: 16, lineHeight: 21, color: T.ink },
+  rowSub: { ...ui("regular"), color: T.ink3, fontSize: 13 },
   readHeader: {
     flexDirection: "row",
     alignItems: "center",

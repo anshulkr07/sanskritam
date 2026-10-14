@@ -64,11 +64,13 @@ import GrammarScreen from "./src/screens/Grammar";
 import VocabScreen from "./src/screens/Vocab";
 import PingalaScreen from "./src/screens/Pingala";
 import StoryDeckScreen from "./src/screens/StoryDeck";
+import SandhiPracticeScreen from "./src/screens/SandhiPractice";
 import GrammarTopicScreen from "./src/screens/GrammarTopic";
 import GrammarChapterScreen from "./src/screens/GrammarChapter";
 import WordLabScreen from "./src/screens/WordLab";
 import BookScreen from "./src/screens/Book";
 import ListenScreen from "./src/screens/Listen";
+import AudiobookScreen from "./src/screens/Audiobook";
 import ShabdaRushScreen from "./src/screens/ShabdaRush";
 import SmritiScreen from "./src/screens/Smriti";
 import VarnaJaalScreen from "./src/screens/VarnaJaal";
@@ -181,7 +183,8 @@ function RootNavigator() {
             {/* U15-6: Piṅgala as binary. */}
             <Stack.Screen name="Pingala" component={PingalaScreen} options={{ title: "Pingala" }} />
             {/* Story deck (Discover Sanskrit) — the swipeable basics→advanced cards. */}
-            <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Discover Sanskrit" }} />
+            <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Introduction" }} />
+            <Stack.Screen name="SandhiPractice" component={SandhiPracticeScreen} options={{ title: "Play with sandhi" }} />
             {/* Grammar guide: a topic page and the word lookup, stacked over the Grammar tab. */}
             <Stack.Screen name="GrammarTopic" component={GrammarTopicScreen} options={{ title: "Grammar" }} />
             <Stack.Screen name="GrammarChapter" component={GrammarChapterScreen} options={{ title: "Chapter" }} />
@@ -190,6 +193,8 @@ function RootNavigator() {
             <Stack.Screen name="Book" component={BookScreen} options={{ headerShown: false }} />
             {/* Listen: player-first chant screen over the tab bar. */}
             <Stack.Screen name="Listen" component={ListenScreen} options={{ headerShown: false }} />
+            {/* Audiobook: a book's page on the Audio side, before the player. */}
+            <Stack.Screen name="Audiobook" component={AudiobookScreen} options={{ headerShown: false }} />
             {/* Play games: fullscreen, header hidden. */}
             <Stack.Screen name="ShabdaRush" component={ShabdaRushScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Smriti" component={SmritiScreen} options={{ headerShown: false }} />

@@ -274,10 +274,14 @@ def build_book(slug: str) -> dict:
             if kind == "wiki_sections":
                 # Vishnu: == sections listed in 4.1 become chapters 1..6;
                 # skip nyasa prose and sambandhanubandhah.
-                for sec_body_heading, sec_body in _split_wiki_sections(body or ""):
-                    name = sec_body_heading or ""
-                    if any(s in name for s in (spec.get("skip_sections") or [])):
-                        continue
+            for sec_body_heading, sec_body in _split_wiki_sections(body or ""):
+                name = sec_body_heading or ""
+                # "न्यास" would also match "उत्तरन्यासः", whose 33 verses ARE
+                # wanted (170-name canonical count) — only the prose nyasa
+                # sections are skipped.
+                if any(s in name for s in (spec.get("skip_sections") or [])) \
+                        and not name.startswith("उत्तरन्यास"):
+                    continue
                     if "न्यास" in name and "उत्तरन्यास" not in name:
                         continue
                     # Match to the listed sections in order.
@@ -312,13 +316,48 @@ def build_book(slug: str) -> dict:
                         if c:
                             raw_verses.append((None, str(i), c + " ॥"))
             elif slug == "kena":
-                # 4 khandas: numbers restart per khanda.
-                secs = [s for s in _split_wiki_sections(body or "") if s[1].strip()]
+                # 4 khandas: numbers restart per khanda. Select the khanda
+                # sections by name — positional secs[-4:] silently skipped
+                # khanda 1 whenever the page ends with an unnumbered
+                # section (it does: "अधिकाध्ययनाय" holds no verses).
+                secs = [s for s in _split_wiki_sections(body or "")
+                        if "खण्ड" in s[0] and s[1].strip()]
                 if len(secs) >= 4:
                     for ci, (_, sec_body) in enumerate(secs[-4:], 1):
                         for num_raw, cleaned in _wiki_numbered_verses(sec_body, vedic=vedic):
                             raw_verses.append((str(ci), num_raw, cleaned))
                 else:
+                    for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
+                        raw_verses.append((None, num_raw, cleaned))
+            elif slug == "chanakya":
+                # The page numbers chapters with bare "(N)" lines and restarts
+                # verse numbers (॥१॥) in every chapter; split at the chapter
+                # lines so refs are unique (1.1 ... 2.1 ...). Content before
+                # the first "(N)" line is chapter 1.
+                parts_ck = re.split(r"(?m)^\s*\(([०-९]+)\)\s*$", body or "")
+                chunks_ck: list[tuple[str, str]] = []
+                if parts_ck and parts_ck[0].strip():
+                    chunks_ck.append(("1", parts_ck[0]))
+                for i in range(1, len(parts_ck) - 1, 2):
+                    chunks_ck.append((parts_ck[i].strip(), parts_ck[i + 1] or ""))
+                for ch_ck, chunk_ck in chunks_ck:
+                    # 1. The page appends an unnumbered "प्रकीर्णक" misc tail
+                    #    (no verse numbers, an inline "(चाणक्यश्लोक ३६)"
+                    #    annotation, a garbled ॥५१३१॥ marker): drop it, the
+                    #    numbered chapters are complete without it.
+                    chunk_ck = chunk_ck.split("प्रकीर्ण")[0]
+                    # 2. Each chapter ends "इति चाणक्यनीतिदर्पणे ... अध्यायः"
+                    #    followed by a bare ॥N॥ chapter-number line; without
+                    #    this, the colophon number becomes a phantom verse and
+                    #    every chapter's refs collide (N.N twice).
+                    chunk_ck = re.sub(r"(?m)^\s*इति[^\n]*$", "", chunk_ck)
+                    chunk_ck = re.sub(r"(?m)^\s*॥\s*[०-९]+\s*॥\s*$", "", chunk_ck)
+                    # 3. Page typo: the danda+index of "पण्डितः" was saved as
+                    #    "‚" (2026-10-14, chapter 1 verse on पण्डितः).
+                    chunk_ck = chunk_ck.replace("पण्‚इतः", "पण्डितः")
+                    for num_raw, cleaned in _wiki_numbered_verses(chunk_ck, vedic=vedic):
+                        raw_verses.append((ch_ck, num_raw, cleaned))
+                if not raw_verses:
                     for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
                         raw_verses.append((None, num_raw, cleaned))
             elif slug == "prashna":

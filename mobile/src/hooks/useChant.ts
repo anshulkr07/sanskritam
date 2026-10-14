@@ -95,6 +95,8 @@ export function useChant(
     lineNow: bus.lineNow,
     wordNow: bus.wordNow,
     fillFrac: bus.fillFrac,
+    posMs: bus.posMs,
+    durMs: bus.durMs,
     isPlaying: bus.isPlaying,
     repeat: bus.repeat,
     cycleRepeat: listenBus.cycleRepeat,

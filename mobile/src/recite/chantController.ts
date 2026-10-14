@@ -64,6 +64,9 @@ export interface ChantHost {
   onProgress?(line: number, frac: number): void;
   /** The word of the line now sounding (-1 none). Emitted on change only. */
   onWord?(word: number): void;
+  /** Where playback is in the verse and how long the verse is, both in ms,
+   *  in 250 ms steps (the player's clock and scrubber). Optional. */
+  onTime?(ms: number, durMs: number): void;
   onPlaying(playing: boolean): void;
   scrollTo(idx: number): void;
 }
@@ -132,6 +135,7 @@ export class ChantController {
     let lastFrac = 0;
     let words: WordSpan[] = [];
     let lastWord = -2;
+    let lastStep = -1;
     this.sub = p.addListener("playbackStatusUpdate", (st) => {
       if (token !== this.token || !st.isLoaded) return;
       const tMs = st.currentTime * 1000;
@@ -157,6 +161,11 @@ export class ChantController {
         try { this.host.onWord?.(w); } catch { /* keep */ }
       }
       const durMs = (st.duration || (v.chant?.duration_ms ?? 0) / 1000) * 1000;
+      const step = Math.floor(tMs / 250);
+      if (step !== lastStep) {
+        lastStep = step;
+        try { this.host.onTime?.(step * 250, durMs); } catch { /* keep */ }
+      }
       if (!prefetched && durMs && tMs / durMs >= PREFETCH_AT && this.willContinue()) {
         prefetched = true;
         this.buildAhead(idx);

@@ -52,11 +52,12 @@ CHAPTERS: list[tuple[str, int, str, str, str]] = [
 CARDS: list[tuple] = [
     # ── s0 · What is Sanskrit? ──────────────────────────────────────
     ("s0c1", "s0", 0, "A language you already half-know", "परिचितं नाम",
-     "If you speak Hindi, Marathi, Bengali — or even English — you already "
-     "carry Sanskrit. Mother is माता, brother is भ्राता, and English words "
-     "like mother, door (द्वारम्) and two (द्वौ) are distant cousins. "
-     "Sanskrit is the old root most Indian languages grew from, so learning "
-     "it feels less like a new language and more like meeting family.",
+     "Hindi, Marathi and Bengali share an Indo-Aryan heritage with Sanskrit. "
+     "English mother and Sanskrit माता are distant cousins from an older "
+     "language, not a borrowing from Sanskrit. Other Indian languages, "
+     "including Tamil and Kannada, have borrowed much Sanskrit vocabulary "
+     "while belonging to a different language family. Learning Sanskrit "
+     "helps you notice both kinds of connection.",
      "माता", "mother", "none", ""),
     ("s0c2", "s0", 1, "Who speaks it today?", "के वदन्ति?",
      "Sanskrit never died. It is spoken in villages like Mattur, taught in "
@@ -64,12 +65,13 @@ CARDS: list[tuple] = [
      "lakhs of learners. People order tea, argue cricket, and flirt — in "
      "Sanskrit. This app teaches that living, spoken Sanskrit first.",
      "नमस्ते", "hello — I bow to you", "Conversation", "Hear it spoken"),
-    ("s0c3", "s0", 2, "Three flavours, one grammar", "त्रयः प्रकाराः",
+    ("s0c3", "s0", 2, "Three registers", "त्रयः प्रकाराः",
      "Sanskrit comes in three registers. Vedic is the ancient mantra style "
      "of the Vedas. Classical is the polished language of the epics and "
-     "Kālidāsa. Spoken Sanskrit is today's living conversation. One grammar "
-     "covers all three — you will start with the spoken one and borrow from "
-     "the classics as you grow.",
+     "Kālidāsa. Spoken Sanskrit is today's living conversation. They share "
+     "much grammar, but Vedic also has forms and accent patterns that "
+     "Classical Sanskrit does not use. Start with the spoken register "
+     "and explore the classics as you grow.",
      "", "", "Read", "Browse the reader"),
     ("s0c4", "s0", 3, "Why learn it?", "किमर्थम्?",
      "For the mantras you chant without knowing the words. For the Gītā, "

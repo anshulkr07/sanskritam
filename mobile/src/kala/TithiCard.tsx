@@ -16,7 +16,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
@@ -28,6 +28,9 @@ import { fill, onFill, script, shadow, space } from "../theme";
 import { faceFor, isRegionalScript } from "./faces";
 import MoonDial from "./MoonDial";
 import { useToday } from "./useToday";
+import type { KalaPlace } from "./traditions";
+import MoonCountdown from "../home/MoonCountdown";
+import { homeMoment, homeSkyDetails, homeTime } from "../home/todayDetails";
 
 const DIAL = 76;
 
@@ -37,12 +40,16 @@ const HEADLINE_SIZE = {
   regional: { fontSize: 23, lineHeight: 36 },
 } as const;
 
-export default function TithiCard() {
+export default function TithiCard({ calendarPlace }: { calendarPlace?: KalaPlace | null }) {
   const focused = useIsFocused();
-  const today = useToday(focused);
-  const { view, failed, place } = today;
+  const today = useToday(focused, calendarPlace);
+  const { view, snap, now, failed, place } = today;
   const navigation = useNavigation();
   const [, setFontTick] = useState(0);
+  const [explained, setExplained] = useState(false);
+  const sky = useMemo(() => snap ? homeSkyDetails(snap) : null, [snap]);
+  const tz = place.place.tz;
+  const ends = snap ? `Ends ${homeMoment(snap.tithi.end, tz, now)}` : "";
 
   // The learner's own script is registered the first time it is shown.
   const regionalScript = view && isRegionalScript(view.headlineScript) ? view.headlineScript : null;
@@ -86,12 +93,17 @@ export default function TithiCard() {
 
   return (
     <>
+      <View style={styles.card}>
+        <View style={styles.placeHead}>
+          <Ionicons name="location-outline" size={14} color={onFill.soft} />
+          <Text style={styles.placeName}>{place.place.label}</Text>
+        </View>
       <Pressable
         onPress={open}
-        style={({ pressed }) => [styles.card, pressed && styles.pressed]}
+        style={({ pressed }) => [pressed && styles.pressed]}
         accessibilityRole="button"
         accessibilityLabel={
-          failed ? "Today's date could not be worked out. Tap to retry." : view ? view.label : "Today's date, loading"
+          failed ? "Today's date could not be worked out. Tap to retry." : view ? `${view.gloss}. ${ends}. Then ${view.nextRoman}. ${place.place.label}.` : "Today's date, loading"
         }
         accessibilityHint={failed ? undefined : "Opens the calendar"}
       >
@@ -142,7 +154,7 @@ export default function TithiCard() {
               <Animated.View style={[styles.bar, barStyle]} />
             </View>
             <View style={styles.untilRow}>
-              <Text style={styles.until}>{view.until}</Text>
+              <Text style={styles.until}>{ends}</Text>
               <Text style={styles.then}>
                 then{" "}
                 {!!view.nextScript && <Text style={[styles.thenSa, script("semibold")]}>{view.nextScript} </Text>}
@@ -162,15 +174,37 @@ export default function TithiCard() {
               </View>
               <Ionicons name="chevron-forward" size={18} color={onFill.text} />
             </View>
-            <Text style={styles.explainer}>
-              Tithi means lunar day. This is day {view.tithiNumber <= 15 ? view.tithiNumber : view.tithiNumber - 15} of the {view.tithiNumber <= 15 ? "waxing" : "waning"} fortnight.
-            </Text>
-            <Text style={styles.placeNote}>
-              {place.source === "chosen" ? `Times for ${place.place.label}` : `Using ${place.place.label} from your time zone. Change your calendar place in Settings.`}
-            </Text>
           </>
         )}
       </Pressable>
+      {!!view && <>
+        <View style={styles.sunRow}>
+          <View style={styles.sunItem}>
+            <Ionicons name="sunny-outline" size={18} color={onFill.gold} />
+            <View><Text style={styles.sunLabel}>Sunrise</Text><Text style={styles.sunTime}>{sky?.sun ? homeTime(sky.sun.sunrise, tz) : "Unavailable"}</Text></View>
+          </View>
+          <View style={styles.sunItem}>
+            <Ionicons name="moon-outline" size={18} color={onFill.gold} />
+            <View><Text style={styles.sunLabel}>Sunset</Text><Text style={styles.sunTime}>{sky?.sun ? homeTime(sky.sun.sunset, tz) : "Unavailable"}</Text></View>
+          </View>
+        </View>
+        {!!sky?.moon && <MoonCountdown moon={sky.moon} now={now} tz={tz} />}
+        <Pressable onPress={() => setExplained((value) => !value)} style={styles.explainToggle} accessibilityRole="button" accessibilityState={{ expanded: explained }}>
+          <Text style={styles.explainTitle}>What does it mean?</Text>
+          <Ionicons name={explained ? "chevron-up" : "chevron-down"} size={18} color={onFill.text} />
+        </Pressable>
+        {explained && <View style={styles.explanations}>
+          {[
+            ["Tithi · lunar day", "A tithi follows the changing angle between the Sun and Moon. Each 12° step is one lunar day, so its length can be shorter or longer than 24 hours. The end time above tells you when the next tithi begins."],
+            ["Paksha · half of the lunar month", `This is day ${view.tithiNumber <= 15 ? view.tithiNumber : view.tithiNumber - 15} of the ${view.tithiNumber <= 15 ? "waxing (Shukla)" : "waning (Krishna)"} half. In Shukla Paksha, the lit Moon grows toward Poornima; in Krishna Paksha, it shrinks toward Amavasya. Each half has 15 tithis.`],
+            ["Poornima & Amavasya", "Poornima is the full-moon lunar day; Amavasya is the new-moon lunar day. The countdown shows when that tithi begins in your selected city's time zone. The exact full or new Moon occurs at the end of that lunar day."],
+            ["Nakshatra · the Moon's sky region", `${view.nakshatra} is the region the Moon is passing through. The traditional calendar divides the Moon's path into 27 such regions. This is a calendar marker that changes as the Moon travels.`],
+            ["Month, weekday & year", `The heading uses your selected calendar tradition. Its month and year can differ from the everyday Gregorian calendar; ${view.year} is that tradition's year. The traditional weekday runs from one local sunrise to the next.`],
+            ["Sunrise & sunset", "These times are calculated for the city shown above and written in its local time. Sunrise starts the traditional day; sunset ends its daylight hours. Times change with both the season and the location."],
+          ].map(([label, text]) => <View key={label} style={styles.explanation}><Text style={styles.explanationLabel}>{label}</Text><Text style={styles.explanationText}>{text}</Text></View>)}
+        </View>}
+      </>}
+      </View>
     </>
   );
 }
@@ -178,7 +212,7 @@ export default function TithiCard() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: fill.slate,
-    borderRadius: 0,
+    borderRadius: 10,
     padding: space.md,
     marginBottom: space.sm,
     overflow: "hidden",
@@ -213,8 +247,8 @@ const styles = StyleSheet.create({
   track: { height: 4, borderRadius: 0, backgroundColor: onFill.faint, marginTop: 14, overflow: "hidden" },
   bar: { height: 4, borderRadius: 0, backgroundColor: onFill.text },
   untilRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 4, gap: space.sm },
-  until: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.text },
-  then: { flexShrink: 1, textAlign: "right", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.soft },
+  until: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.text },
+  then: { flex: 1, textAlign: "right", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: onFill.soft },
   thenSa: { fontSize: 18, lineHeight: 26, color: onFill.text },
   meta: {
     flexDirection: "row",
@@ -230,8 +264,18 @@ const styles = StyleSheet.create({
   metaSa: { fontSize: 18, lineHeight: 26 },
   metaNative: { fontSize: 15, lineHeight: 22 },
   dot: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12.5, color: "rgba(255,248,238,0.5)" },
-  explainer: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12, lineHeight: 17, color: onFill.text, marginTop: 8 },
-  placeNote: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, lineHeight: 16, color: onFill.soft, marginTop: 3 },
+  placeHead: { flexDirection: "row", alignItems: "center", gap: 4, marginBottom: space.sm },
+  placeName: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12, color: onFill.soft, flexShrink: 1 },
+  sunRow: { flexDirection: "row", flexWrap: "wrap", columnGap: space.lg, rowGap: space.sm, paddingTop: space.sm, marginTop: space.sm, borderTopWidth: 1, borderTopColor: onFill.faint },
+  sunItem: { flex: 1, minWidth: 110, flexDirection: "row", alignItems: "center", gap: space.xs },
+  sunLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, color: onFill.soft },
+  sunTime: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 15, color: onFill.text },
+  explainToggle: { minHeight: 44, flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderTopWidth: 1, borderTopColor: onFill.faint, gap: space.sm },
+  explainTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13, color: onFill.text },
+  explanations: { gap: space.sm, paddingBottom: space.xs },
+  explanation: { gap: 3 },
+  explanationLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 13, color: onFill.gold },
+  explanationText: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12, lineHeight: 19, color: onFill.text },
   failRow: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: space.xs, minHeight: 156 },
   failText: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 14, color: onFill.text },
   dialGhost: { width: DIAL, height: DIAL, borderRadius: DIAL / 2, borderWidth: 3.5, borderColor: onFill.faint },

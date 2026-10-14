@@ -25,10 +25,14 @@ const paintings: Record<string, ImageSourcePropType> = {
   "play:smriti": require("../../../assets/hubs/play-smriti.webp"),
   "play:varna": require("../../../assets/hubs/play-varna.webp"),
   "play:daily": require("../../../assets/hubs/play-daily.webp"),
+  "play:word-groups": require("../../../assets/games/word-groups.webp"),
+  "play:pada-path": require("../../../assets/games/pada-path.webp"),
+  "play:number": require("../../../assets/games/number.webp"),
   "play:challenge": require("../../../assets/hubs/play-challenge.webp"),
   "play:competition": require("../../../assets/hubs/play-competition.webp"),
   "play:recite": require("../../../assets/hubs/play-recite.webp"),
   "tool:word-lab": require("../../../assets/hubs/tool-word-lab.webp"),
+  "tool:writing": require("../../../assets/learn/writing-study.webp"),
   "tool:sound-map": require("../../../assets/hubs/tool-sound-map.webp"),
   "tool:word-order": require("../../../assets/hubs/tool-word-order.webp"),
   "tool:rhythm": require("../../../assets/hubs/tool-rhythm.webp"),
@@ -40,6 +44,11 @@ const paintings: Record<string, ImageSourcePropType> = {
 
 export function hubArtwork(key: string): ImageSourcePropType | undefined {
   return paintings[key];
+}
+
+export function gameArtwork(key: string): ImageSourcePropType | undefined {
+  const aliases: Record<string, string> = { "varna-jaal": "varna", "daily-word": "daily" };
+  return hubArtwork(`play:${aliases[key] ?? key}`);
 }
 
 const practiceKeys: Record<string, string> = {

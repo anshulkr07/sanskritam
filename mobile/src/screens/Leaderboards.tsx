@@ -1,215 +1,455 @@
-// Leaderboards: daily/weekly/monthly periods, combined and per-game boards,
-// Friends/Everyone filters, restrained top-three treatment, a pinned "You"
-// row, and a score explanation on tap. Empty, loading and offline states are
-// designed, not accidental.
+// Leaderboards (design option B, owner-picked 2026-10-14): your standing
+// first, then the top of the board and the players around you.
+//
+// Today | This week | This month as tabs; the board (all games or one game)
+// and Everyone | Friends as two pickers. The standing card says where you
+// are, out of how many, how many games counted and how far it is to pass
+// the next rank, all read off the board the server sends (the top 50 and
+// your own row). Ties share a rank. "Around you" needs your neighbours in
+// that top 50; further down, the card still shows your own row.
+//
+// The stack header already says "Leaderboards" with a back arrow, so the
+// screen draws no bar of its own.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { playApi, type Leaderboard, type LeaderRow } from "../games/v2/client";
-import { GameTopBar } from "../games/v2/parts";
-import { color, fill, font, onFill, radius, script, space } from "../theme";
+import { CREAM, CREAM_FAINT, GOLD, T, softOn, ui } from "../read/look";
+import { ProgressLine } from "../read/ui";
+import { haptics } from "../services/haptics";
 
 type Props = {
   navigation: { goBack: () => void };
   route?: { params?: { period?: "daily" | "weekly" | "monthly"; board?: string } };
 };
 
-const PERIODS: { key: Leaderboard["period"]; label: string }[] = [
-  { key: "daily", label: "Today" },
-  { key: "weekly", label: "This week" },
-  { key: "monthly", label: "This month" },
+type Period = "daily" | "weekly" | "monthly";
+
+const PERIODS: { key: Period; label: string; card: string }[] = [
+  { key: "daily", label: "Today", card: "TODAY" },
+  { key: "weekly", label: "This week", card: "THIS WEEK" },
+  { key: "monthly", label: "This month", card: "THIS MONTH" },
 ];
 
-export default function LeaderboardsScreen({ navigation, route }: Props) {
-  const [period, setPeriod] = useState<string>(route?.params?.period ?? "daily");
+const BOARDS: { key: string; label: string }[] = [
+  { key: "combined", label: "All games" },
+  { key: "rush", label: "Rush" },
+  { key: "smriti", label: "Smriti" },
+  { key: "varna-jaal", label: "Varna Jaal" },
+  { key: "daily-word", label: "Daily word" },
+  { key: "word-groups", label: "Word Groups" },
+  { key: "pada-path", label: "Pada Path" },
+  { key: "number", label: "Number" },
+];
+
+const SCOPES: { key: "everyone" | "friends"; label: string }[] = [
+  { key: "everyone", label: "Everyone" },
+  { key: "friends", label: "Friends" },
+];
+
+// Medal squares for the top three: deep fills, cream numbers on them.
+const MEDAL = ["#8A5608", "#4F5B6B", "#8A4B22"];
+const CARD = "#17535C";
+
+export default function LeaderboardsScreen({ route }: Props) {
+  const [period, setPeriod] = useState<Period>(route?.params?.period ?? "daily");
   const [board, setBoard] = useState<string>(route?.params?.board ?? "combined");
   const [scope, setScope] = useState<"everyone" | "friends">("everyone");
   const [data, setData] = useState<Leaderboard | null>(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
-  const [explain, setExplain] = useState<LeaderRow | null>(null);
+  const [picker, setPicker] = useState<"board" | "scope" | null>(null);
+  const [all, setAll] = useState(false);
+  const [explain, setExplain] = useState(false);
 
   const load = useCallback(() => {
     setLoading(true);
     setErr(null);
-    playApi.leaderboard({ period, board, scope, limit: 50 })
+    playApi
+      .leaderboard({ period, board, scope, limit: 50 })
       .then(setData)
       .catch((e) => setErr(e instanceof Error ? e.message : "Couldn't load the board."))
       .finally(() => setLoading(false));
   }, [period, board, scope]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    load();
+    setAll(false);
+  }, [load]);
 
-  const boards: { key: string; label: string }[] = [
-    { key: "combined", label: "All games" },
-    { key: "rush", label: "Rush" },
-    { key: "smriti", label: "Smriti" },
-    { key: "varna-jaal", label: "Varna Jaal" },
-    { key: "daily-word", label: "Daily word" },
-    { key: "word-groups", label: "Word Groups" },
-    { key: "pada-path", label: "Pada Path" },
-    { key: "number", label: "Number" },
-  ];
+  const boardLabel = BOARDS.find((b) => b.key === board)?.label ?? "All games";
+  const scopeLabel = SCOPES.find((s) => s.key === scope)?.label ?? "Everyone";
+  const periodMeta = PERIODS.find((p) => p.key === period) ?? PERIODS[0];
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <GameTopBar title="Leaderboards" sa="श्रेणी-सूची" onClose={() => navigation.goBack()} />
-      <View style={styles.filters}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.filterRow}>
-          {PERIODS.map((p) => (
-            <Chip key={p.key} label={p.label} on={period === p.key} onPress={() => setPeriod(p.key)} />
-          ))}
-          <View style={styles.divider} />
-          {boards.map((b) => (
-            <Chip key={b.key} label={b.label} on={board === b.key} onPress={() => setBoard(b.key)} />
-          ))}
-        </ScrollView>
-        <View style={styles.scopeRow}>
-          <Chip label="Everyone" on={scope === "everyone"} onPress={() => setScope("everyone")} />
-          <Chip label="Friends" on={scope === "friends"} onPress={() => setScope("friends")} />
-          <Text style={styles.ist}>India Standard Time · resets 00:00 IST</Text>
-        </View>
+      <View style={styles.tabs} accessibilityRole="tablist">
+        {PERIODS.map((p) => {
+          const on = p.key === period;
+          return (
+            <Pressable
+              key={p.key}
+              onPress={() => {
+                haptics.tap();
+                setPeriod(p.key);
+              }}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: on }}
+              style={[styles.tab, on && styles.tabOn]}
+            >
+              <Text style={[styles.tabText, on && styles.tabTextOn]}>{p.label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      <View style={styles.pickers}>
+        <PickerButton label={boardLabel} a11y={`Board: ${boardLabel}. Change board`} onPress={() => setPicker("board")} />
+        <PickerButton label={scopeLabel} a11y={`Showing ${scopeLabel}. Change`} onPress={() => setPicker("scope")} />
       </View>
 
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-        {loading && <Text style={styles.state}>Loading…</Text>}
+        {loading && <Text style={styles.state}>Loading the board.</Text>}
         {!loading && err && (
           <View style={styles.stateBox}>
-            <Ionicons name="cloud-offline" size={22} color={color.inkSoft} />
+            <Ionicons name="cloud-offline-outline" size={24} color={T.ink3} />
             <Text style={styles.state}>{err}</Text>
-            <Pressable onPress={load} accessibilityRole="button" accessibilityLabel="Retry" style={styles.retry}>
+            <Pressable onPress={load} accessibilityRole="button" style={styles.retry}>
               <Text style={styles.retryText}>Try again</Text>
             </Pressable>
           </View>
         )}
-        {!loading && !err && data?.empty && (
-          <View style={styles.stateBox}>
-            <Ionicons name="sparkles" size={22} color={color.inkSoft} />
-            <Text style={styles.state}>No one has played a ranked round in this period yet. Be the first.</Text>
-          </View>
-        )}
-        {!loading && !err && data && !data.empty && (
+        {!loading && !err && data && (
           <>
-            {data.rows.slice(0, 3).map((r) => (
-              <Place key={r.learner_id} row={r} podium={r.rank}
-                onPress={() => setExplain(explain?.learner_id === r.learner_id ? null : r)} />
-            ))}
-            {data.rows.slice(3).map((r) => (
-              <Row key={r.learner_id} row={r}
-                onPress={() => setExplain(explain?.learner_id === r.learner_id ? null : r)} />
-            ))}
-            {data.me && !data.rows.some((r) => r.is_me) && (
-              <View style={styles.pinned}>
-                <Row row={data.me} onPress={() => setExplain(data.me?.learner_id === explain?.learner_id ? null : data.me!)} />
-              </View>
-            )}
-            {!!explain && (
-              <View style={styles.explain}>
-                <Text style={styles.explainHead}>
-                  {explain.rank === 1 ? "1st" : explain.rank === 2 ? "2nd" : explain.rank === 3 ? "3rd" : `${explain.rank}th`} · {explain.score} points
-                </Text>
-                <Text style={styles.explainBody}>
-                  Combined boards sum the best ranked result from three different games today
-                  (max 3000). Each game allows three ranked rounds a day; your best counts. Ties share a rank.
-                </Text>
-                <Text style={styles.explainBody}>
-                  {data.frozen ? "This period has closed and the standings are frozen." :
-                    `Period ends ${fmtEnd(data.period_end)}.`}
+            <Standing
+              data={data}
+              title={`YOUR STANDING ${periodMeta.card}`}
+              combined={board === "combined"}
+              explainOpen={explain}
+              onExplain={() => setExplain((v) => !v)}
+            />
+            {explain && <Explain data={data} combined={board === "combined"} />}
+            {data.empty ? (
+              <View style={styles.stateBox}>
+                <Ionicons name="sparkles-outline" size={24} color={T.ink3} />
+                <Text style={styles.state}>
+                  {scope === "friends"
+                    ? "None of your friends has played a ranked round in this period yet."
+                    : "No one has played a ranked round in this period yet. Be the first."}
                 </Text>
               </View>
+            ) : (
+              <Boards data={data} all={all} onAll={() => setAll((v) => !v)} />
             )}
           </>
         )}
       </ScrollView>
+
+      <Picker
+        visible={picker !== null}
+        title={picker === "scope" ? "Show" : "Board"}
+        options={picker === "scope" ? SCOPES : BOARDS}
+        value={picker === "scope" ? scope : board}
+        onPick={(k) => {
+          haptics.tap();
+          if (picker === "scope") setScope(k as "everyone" | "friends");
+          else setBoard(k);
+          setPicker(null);
+        }}
+        onClose={() => setPicker(null)}
+      />
     </SafeAreaView>
   );
 }
 
-function fmtEnd(iso: string): string {
-  try {
-    return new Date(iso).toLocaleString(undefined, { weekday: "short", hour: "numeric" });
-  } catch {
-    return iso;
-  }
-}
-
-function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
+function PickerButton({ label, a11y, onPress }: { label: string; a11y: string; onPress: () => void }) {
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label}
-      accessibilityState={{ selected: on }} style={[styles.chip, on && styles.chipOn]}>
-      <Text style={[styles.chipText, on && styles.chipTextOn]}>{label}</Text>
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      accessibilityRole="button"
+      accessibilityLabel={a11y}
+      style={styles.pickerBtn}
+    >
+      <Text style={styles.pickerText}>{label}</Text>
+      <Ionicons name="chevron-down" size={16} color={T.ink} />
     </Pressable>
   );
 }
 
-function Place({ row, podium, onPress }: { row: LeaderRow; podium: number; onPress: () => void }) {
-  const bg = podium === 1 ? fill.gold : podium === 2 ? fill.slate : fill.rose;
+/** "6 h 12 m", "48 m", or null when the period has closed. */
+function timeLeft(iso: string): string | null {
+  const end = Date.parse(iso);
+  if (!Number.isFinite(end)) return null;
+  const min = Math.max(0, Math.round((end - Date.now()) / 60000));
+  if (min <= 0) return null;
+  const d = Math.floor(min / 1440);
+  const h = Math.floor((min % 1440) / 60);
+  const m = min % 60;
+  if (d > 0) return `${d} d ${h} h`;
+  return h > 0 ? `${h} h ${m} m` : `${m} m`;
+}
+
+function fmt(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+/** The teal card: rank, out of how many, points, games, the gap upward. */
+function Standing({
+  data,
+  title,
+  combined,
+  explainOpen,
+  onExplain,
+}: {
+  data: Leaderboard;
+  title: string;
+  combined: boolean;
+  explainOpen: boolean;
+  onExplain: () => void;
+}) {
+  const soft = softOn(CARD);
+  const me = data.me ?? data.rows.find((r) => r.is_me) ?? null;
+  const left = data.frozen ? null : timeLeft(data.period_end);
+  // The nearest row ranked above you, and what it takes to pass it.
+  const above = me ? [...data.rows].reverse().find((r) => r.rank < me.rank) ?? null : null;
+  const gap = me && above ? above.score - me.score + 1 : 0;
+
   return (
-    <Pressable onPress={onPress} accessibilityRole="button"
-      accessibilityLabel={`Rank ${row.rank}: ${row.name}, ${row.score} points`} style={[styles.place, { backgroundColor: bg }]}>
-      <Text style={styles.placeRank}>{row.rank}</Text>
-      <View style={styles.avatar}><Text style={styles.avatarText}>{initials(row.name)}</Text></View>
-      <Text style={styles.placeName} numberOfLines={1}>{row.name}{row.is_me ? " (you)" : ""}</Text>
-      <Text style={styles.placeScore}>{row.score}</Text>
-    </Pressable>
+    <View style={styles.card} accessibilityLabel={me ? `Your rank ${me.rank} of ${data.total}, ${me.score} points` : "Not ranked yet"}>
+      <View style={styles.cardTop}>
+        <Text style={[styles.cardEyebrow, { color: GOLD }]}>{title}</Text>
+        <Pressable onPress={onExplain} accessibilityRole="button" accessibilityState={{ expanded: explainOpen }} hitSlop={10}>
+          <Text style={[styles.cardLink, { color: CREAM }]}>How points work</Text>
+        </Pressable>
+      </View>
+      {me ? (
+        <>
+          <View style={styles.rankRow}>
+            <Text style={styles.rankBig}>#{me.rank}</Text>
+            {data.total > 0 && (
+              <Text style={[styles.rankOf, { color: soft }]}>
+                of {fmt(data.total)} player{data.total === 1 ? "" : "s"}
+              </Text>
+            )}
+          </View>
+          <View style={styles.stats}>
+            <View style={styles.stat}>
+              <Text style={styles.statNum}>{fmt(me.score)}</Text>
+              <Text style={[styles.statLabel, { color: soft }]}>points</Text>
+            </View>
+            <View style={[styles.stat, styles.statRight]}>
+              <Text style={styles.statNum}>{combined ? `${me.participation} of 3` : fmt(me.participation)}</Text>
+              <Text style={[styles.statLabel, { color: soft }]}>{combined ? "games counted" : "rounds played"}</Text>
+            </View>
+          </View>
+          <View style={styles.cardFoot}>
+            <Text style={styles.cardFootMain}>
+              {me.rank === 1 ? "You lead the board" : above ? `${fmt(gap)} point${gap === 1 ? "" : "s"} to pass #${above.rank}` : ""}
+            </Text>
+            <Text style={[styles.cardFootSide, { color: soft }]}>{left ? `Resets in ${left}` : "Final standings"}</Text>
+          </View>
+          {above && above.score > 0 && (
+            <ProgressLine frac={me.score / above.score} fillColor={CREAM} trackColor={CREAM_FAINT} style={{ marginTop: 8 }} />
+          )}
+        </>
+      ) : (
+        <>
+          <Text style={styles.unranked}>Play a ranked round to get on the board.</Text>
+          <Text style={[styles.cardFootSide, { color: soft, marginTop: 8 }]}>{left ? `Resets in ${left}` : "Final standings"}</Text>
+        </>
+      )}
+    </View>
   );
 }
 
-function Row({ row, onPress }: { row: LeaderRow; onPress: () => void }) {
+function Explain({ data, combined }: { data: Leaderboard; combined: boolean }) {
   return (
-    <Pressable onPress={onPress} accessibilityRole="button"
-      accessibilityLabel={`Rank ${row.rank}: ${row.name}, ${row.score} points`}
-      style={[styles.row, row.is_me && styles.rowMe]}>
-      <Text style={styles.rank}>{row.rank}</Text>
-      <View style={[styles.avatar, styles.avatarSmall]}><Text style={styles.avatarTextSm}>{initials(row.name)}</Text></View>
-      <Text style={styles.name} numberOfLines={1}>{row.name}{row.is_me ? " (you)" : ""}</Text>
-      <Text style={styles.score}>{row.score}</Text>
-    </Pressable>
+    <View style={styles.explain}>
+      <Text style={styles.explainText}>
+        {combined
+          ? "All games adds up your best ranked result from three different games (up to 3,000). Each game allows three ranked rounds a day; your best counts."
+          : "This board counts your best ranked results in this game. Each game allows three ranked rounds a day."}{" "}
+        Equal scores share a rank. Days run on India Standard Time and reset at midnight IST.
+      </Text>
+      {data.frozen ? <Text style={styles.explainText}>This period has closed and the standings are frozen.</Text> : null}
+    </View>
   );
 }
 
-function initials(name: string): string {
-  return name.trim().split(/\s+/).map((w) => w[0] ?? "").join("").slice(0, 2).toUpperCase() || "S";
+/** Top of the board (or the whole list) and the players around you. */
+function Boards({ data, all, onAll }: { data: Leaderboard; all: boolean; onAll: () => void }) {
+  const meIdx = data.rows.findIndex((r) => r.is_me);
+  const around = useMemo(() => {
+    if (meIdx < 3) return [];
+    return data.rows.slice(Math.max(3, meIdx - 1), meIdx + 3);
+  }, [data.rows, meIdx]);
+  const top = all ? data.rows : data.rows.slice(0, 3);
+  const more = data.total > 3 || data.rows.length > 3;
+
+  return (
+    <>
+      <View style={styles.section}>
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionTitle} accessibilityRole="header">
+            {all ? "Standings" : "Top of the board"}
+          </Text>
+          {more && (
+            <Pressable onPress={onAll} accessibilityRole="button" hitSlop={10}>
+              <Text style={styles.sectionLink}>
+                {all ? "Show less" : data.rows.length < data.total ? `See top ${data.rows.length}` : `See all ${data.total}`}
+              </Text>
+            </Pressable>
+          )}
+        </View>
+        <View style={styles.rule} />
+        {top.map((r) => (
+          <Row key={r.learner_id} row={r} />
+        ))}
+      </View>
+      {!all && around.length > 0 && (
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { marginBottom: 4 }]} accessibilityRole="header">
+            Around you
+          </Text>
+          <View style={styles.rule} />
+          {around.map((r) => (
+            <Row key={r.learner_id} row={r} />
+          ))}
+        </View>
+      )}
+    </>
+  );
+}
+
+function Row({ row }: { row: LeaderRow }) {
+  const medal = row.rank <= 3 ? MEDAL[row.rank - 1] : null;
+  return (
+    <View
+      style={[styles.row, row.is_me && styles.rowMe]}
+      accessible
+      accessibilityLabel={`Rank ${row.rank}: ${row.is_me ? "you" : row.name}, ${row.score} points`}
+    >
+      {medal ? (
+        <View style={[styles.medal, { backgroundColor: medal }]}>
+          <Text style={styles.medalText}>{row.rank}</Text>
+        </View>
+      ) : (
+        <Text style={[styles.rank, row.is_me && { color: T.action }]}>{row.rank}</Text>
+      )}
+      <Text style={[styles.name, row.is_me && styles.nameMe]} numberOfLines={1}>
+        {row.is_me ? "You" : row.name}
+      </Text>
+      <Text style={styles.score}>{fmt(row.score)}</Text>
+    </View>
+  );
+}
+
+function Picker({
+  visible,
+  title,
+  options,
+  value,
+  onPick,
+  onClose,
+}: {
+  visible: boolean;
+  title: string;
+  options: { key: string; label: string }[];
+  value: string;
+  onPick: (key: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
+      <Pressable style={styles.scrim} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close">
+        <Pressable style={styles.sheet} onPress={() => {}} accessible={false}>
+          <Text style={styles.sheetTitle} accessibilityRole="header">
+            {title}
+          </Text>
+          {options.map((o) => {
+            const on = o.key === value;
+            return (
+              <Pressable
+                key={o.key}
+                onPress={() => onPick(o.key)}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: on }}
+                style={styles.option}
+              >
+                <Text style={[styles.optionText, on && styles.optionTextOn]}>{o.label}</Text>
+                {on && <Ionicons name="checkmark" size={20} color={T.action} />}
+              </Pressable>
+            );
+          })}
+        </Pressable>
+      </Pressable>
+    </Modal>
+  );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: color.bg },
-  filters: { gap: 6, paddingBottom: 4 },
-  filterRow: { flexDirection: "row", gap: 6, paddingHorizontal: space.lg, alignItems: "center" },
-  divider: { width: 1, height: 20, backgroundColor: color.border, marginHorizontal: 4 },
-  scopeRow: { flexDirection: "row", alignItems: "center", gap: 6, paddingHorizontal: space.lg },
-  ist: { marginLeft: "auto", fontSize: font.sizes.xs, color: color.inkFaint, flexShrink: 1 },
-  chip: {
-    borderWidth: 1.5, borderColor: color.border, borderRadius: radius.pill,
-    paddingHorizontal: space.md, minHeight: 40, justifyContent: "center", backgroundColor: color.surface,
+  safe: { flex: 1, backgroundColor: T.paper },
+  tabs: { flexDirection: "row", gap: 26, marginHorizontal: 16, borderBottomWidth: 1, borderBottomColor: T.line },
+  tab: { minHeight: 44, justifyContent: "center", borderBottomWidth: 3, borderBottomColor: "transparent", marginBottom: -1 },
+  tabOn: { borderBottomColor: T.action },
+  tabText: { ...ui("medium"), fontSize: 16, color: T.ink3 },
+  tabTextOn: { ...ui("semibold"), color: T.ink },
+  pickers: { flexDirection: "row", gap: 10, marginHorizontal: 16, marginTop: 12 },
+  pickerBtn: {
+    minHeight: 44,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingHorizontal: 12,
+    borderWidth: 1.5,
+    borderColor: T.lineStrong,
   },
-  chipOn: { backgroundColor: fill.ink, borderColor: fill.ink },
-  chipText: { color: color.ink, fontWeight: "700", fontSize: font.sizes.sm },
-  chipTextOn: { color: onFill.text },
-  body: { padding: space.lg, gap: 8 },
-  state: { color: color.inkSoft, textAlign: "center", marginTop: space.md },
-  stateBox: { alignItems: "center", gap: space.sm, paddingVertical: space.xl, paddingHorizontal: space.xl },
-  retry: { borderWidth: 1.5, borderColor: color.ink, borderRadius: radius.md, minHeight: 44, paddingHorizontal: space.lg, justifyContent: "center" },
-  retryText: { fontWeight: "700", color: color.ink },
-  place: { flexDirection: "row", alignItems: "center", gap: space.md, borderRadius: radius.lg, padding: space.md, minHeight: 68 },
-  placeRank: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xl, color: onFill.text, width: 30 },
-  placeName: { flex: 1, color: onFill.text, fontWeight: "800", fontSize: font.sizes.base },
-  placeScore: { color: onFill.gold, fontWeight: "800", fontSize: font.sizes.lg, fontVariant: ["tabular-nums"] },
-  row: { flexDirection: "row", alignItems: "center", gap: space.md, paddingVertical: 10, paddingHorizontal: space.sm, borderBottomWidth: 1, borderBottomColor: color.border, minHeight: 52 },
-  rowMe: { backgroundColor: color.saffronLight, borderRadius: radius.md },
-  rank: { width: 30, fontWeight: "800", color: color.inkSoft, fontVariant: ["tabular-nums"], textAlign: "center" },
-  name: { flex: 1, fontWeight: "700", color: color.ink },
-  score: { fontWeight: "800", color: color.ink, fontVariant: ["tabular-nums"] },
-  avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: onFill.faint, alignItems: "center", justifyContent: "center" },
-  avatarSmall: { width: 30, height: 30, borderRadius: 15, backgroundColor: color.surfaceMuted },
-  avatarText: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.sm },
-  avatarTextSm: { color: color.inkSoft, fontWeight: "800", fontSize: font.sizes.xs },
-  pinned: { borderTopWidth: 2, borderTopColor: color.border, paddingTop: 6, marginTop: 6 },
-  explain: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 6 },
-  explainHead: { fontWeight: "800", color: color.ink },
-  explainBody: { color: color.inkSoft, fontSize: font.sizes.sm, lineHeight: 21 },
+  pickerText: { ...ui("semibold"), fontSize: 14.5, color: T.ink },
+  body: { padding: 16, paddingBottom: 48 },
+  state: { ...ui("regular"), fontSize: 15, color: T.ink2, textAlign: "center", marginTop: 12 },
+  stateBox: { alignItems: "center", gap: 8, paddingVertical: 28, paddingHorizontal: 24 },
+  retry: { borderWidth: 1.5, borderColor: T.ink, minHeight: 44, paddingHorizontal: 20, justifyContent: "center" },
+  retryText: { ...ui("semibold"), fontSize: 15, color: T.ink },
+  card: { backgroundColor: CARD, paddingHorizontal: 18, paddingTop: 14, paddingBottom: 18 },
+  cardTop: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 12 },
+  cardEyebrow: { ...ui("bold"), fontSize: 12, letterSpacing: 1.4, flexShrink: 1 },
+  cardLink: { ...ui("semibold"), fontSize: 13, textDecorationLine: "underline" },
+  rankRow: { flexDirection: "row", alignItems: "baseline", gap: 12, marginTop: 2 },
+  rankBig: { ...ui("bold"), fontSize: 52, lineHeight: 60, color: CREAM, fontVariant: ["tabular-nums"] },
+  rankOf: { ...ui("regular"), fontSize: 15 },
+  stats: { flexDirection: "row", marginTop: 10, borderTopWidth: 1, borderBottomWidth: 1, borderColor: CREAM_FAINT },
+  stat: { flex: 1, paddingVertical: 10 },
+  statRight: { paddingLeft: 16, borderLeftWidth: 1, borderLeftColor: CREAM_FAINT },
+  statNum: { ...ui("bold"), fontSize: 21, lineHeight: 26, color: CREAM, fontVariant: ["tabular-nums"] },
+  statLabel: { ...ui("regular"), fontSize: 12.5 },
+  cardFoot: { flexDirection: "row", justifyContent: "space-between", gap: 12, marginTop: 12 },
+  cardFootMain: { ...ui("semibold"), fontSize: 13.5, color: CREAM, flexShrink: 1 },
+  cardFootSide: { ...ui("regular"), fontSize: 13 },
+  unranked: { ...ui("semibold"), fontSize: 18, lineHeight: 25, color: CREAM, marginTop: 10 },
+  explain: { borderWidth: 1, borderColor: T.line, backgroundColor: T.surface, padding: 14, gap: 6, marginTop: 10 },
+  explainText: { ...ui("regular"), fontSize: 14, lineHeight: 21, color: T.ink2 },
+  section: { marginTop: 22 },
+  sectionHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 },
+  sectionTitle: { ...ui("bold"), fontSize: 17, color: T.ink },
+  sectionLink: { ...ui("semibold"), fontSize: 14, color: T.action },
+  rule: { height: 1, backgroundColor: T.line },
+  row: { flexDirection: "row", alignItems: "center", gap: 12, minHeight: 50, borderBottomWidth: 1, borderBottomColor: T.line },
+  rowMe: { borderWidth: 1.5, borderColor: T.ink, backgroundColor: T.surface, paddingHorizontal: 8, marginHorizontal: -8 },
+  medal: { width: 28, height: 28, alignItems: "center", justifyContent: "center" },
+  medalText: { ...ui("bold"), fontSize: 14, color: CREAM },
+  rank: { ...ui("bold"), width: 28, textAlign: "center", fontSize: 15, color: T.ink2, fontVariant: ["tabular-nums"] },
+  name: { ...ui("semibold"), flex: 1, fontSize: 15, color: T.ink },
+  nameMe: { ...ui("bold") },
+  score: { ...ui("bold"), fontSize: 15.5, color: T.ink, fontVariant: ["tabular-nums"] },
+  scrim: { flex: 1, backgroundColor: T.scrim, justifyContent: "flex-end" },
+  sheet: { backgroundColor: T.paper, paddingHorizontal: 20, paddingTop: 16, paddingBottom: 28 },
+  sheetTitle: { ...ui("bold"), fontSize: 19, color: T.ink, marginBottom: 6 },
+  option: { minHeight: 50, flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottomWidth: 1, borderBottomColor: T.line },
+  optionText: { ...ui("regular"), fontSize: 16, color: T.ink },
+  optionTextOn: { ...ui("semibold"), color: T.action },
 });

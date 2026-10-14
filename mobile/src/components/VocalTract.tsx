@@ -133,8 +133,8 @@ function captionFor(phase: Phase, a: Articulation): string {
         : "Release: a clean burst, no puff.";
     case "after":
       return a.voiced
-        ? "The vocal folds are already buzzing. Voice runs straight into the vowel."
-        : "The vocal folds start late. That delay is what makes it sound unvoiced.";
+        ? "Voice is already present; it continues into the vowel."
+        : "Voice begins after release. Listen for the delay.";
     default:
       return "Back to rest.";
   }
@@ -157,8 +157,8 @@ interface VocalTractProps {
   slow?: boolean;
 }
 
-const BASE_MS = 2200;
-const SLOW_MS = 4200;
+const BASE_MS = 9500;
+const SLOW_MS = 16000;
 
 export default function VocalTract({
   articulation: a,

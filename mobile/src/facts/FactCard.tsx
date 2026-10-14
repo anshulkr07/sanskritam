@@ -118,7 +118,7 @@ export default function FactCard() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: fill.teal,
-    borderRadius: 0,
+    borderRadius: 10,
     padding: space.md,
     marginBottom: space.sm,
     overflow: "hidden",

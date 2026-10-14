@@ -63,6 +63,7 @@ export function hopsOf(route: RouteLike | null | undefined): HopLike[] {
 export function relationLine(route: RouteLike | null | undefined): string {
   const relation = text(route?.relation);
   if (relation === "borrowed") return "Borrowed from Sanskrit";
+  if (relation === "inherited") return "Inherited through Middle Indo-Aryan";
   if (relation === "related") return "Same family as Sanskrit";
   if (relation === "traced") return "Goes back to Sanskrit";
   if (relation === "travelled") {

@@ -10,7 +10,7 @@
 // retry in place (U10-3). The streak is DAYS, computed from the activity
 // history: learner.streak from /me is a run of correct answers, not days.
 
-import { DrawerActions, useFocusEffect, useNavigation } from "@react-navigation/native";
+import { DrawerActions, useFocusEffect, useIsFocused, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -31,13 +31,16 @@ import ParvaStrip from "../components/parva/ParvaStrip";
 import WordCard from "../words/WordCard";
 import FactCard from "../facts/FactCard";
 import DailyRashiCard from "../home/DailyRashiCard";
+import PlacePicker from "../home/PlacePicker";
+import { useHomePlace } from "../home/useHomePlace";
+import { vocabularyForDate } from "../home/dailyVocabulary";
 import { haptics } from "../services/haptics";
-import { getStoryIndex } from "../services/storyProgress";
+import { getStoryIndex, getStoryCompleted } from "../services/storyProgress";
 import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
-import { accent, color, fill, font, gradientOf, radius, script, shadow, space, type AccentName } from "../theme";
+import { accent, color, fill, font, gradientOf, script, shadow, space, type AccentName } from "../theme";
 import { firstName } from "../utils/name";
 import { dayStreak, localToday } from "../utils/streak";
 import { plain } from "../utils/text";
@@ -48,12 +51,15 @@ type LoadState = "loading" | "ok" | "error";
 export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
   const rootNav = useNavigation();
+  const homePlace = useHomePlace(useIsFocused());
+  const [placePickerOpen, setPlacePickerOpen] = useState(false);
   const [shloka, setShloka] = useState<Shloka | null>(null);
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("home", shloka?.devanagari ?? "");
   const [shlokaState, setShlokaState] = useState<LoadState>("loading");
   const [storyTotal, setStoryTotal] = useState<number | null>(null);
   const [storyAt, setStoryAt] = useState(0);
+  const [storyCompleted, setStoryCompleted] = useState(false);
   // Today's XP and the day history the streak is computed from.
   const [today, setToday] = useState<{ daily: ProgressDaily; history: ProgressDay[] } | null>(null);
   const [todayFailed, setTodayFailed] = useState(false);
@@ -99,6 +105,7 @@ export default function HomeScreen({ navigation }: Props) {
       let alive = true;
       loadToday();
       getStoryIndex().then((i) => alive && setStoryAt(i));
+      getStoryCompleted().then((done) => alive && setStoryCompleted(done));
       api.competitionCurrent().then((c) => {
         if (alive && c.last) setCompLast(c.last as never);
         else if (alive) setCompLast(null);
@@ -125,6 +132,11 @@ export default function HomeScreen({ navigation }: Props) {
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
         <View style={styles.topbar}>
           <DrawerToggle onPress={openDrawer} />
+          <Pressable onPress={() => setPlacePickerOpen(true)} style={styles.cityButton} accessibilityRole="button" accessibilityLabel={`Calendar city: ${homePlace.place?.label ?? "Choose city"}. Change city`}>
+            <Ionicons name="location-outline" size={16} color={color.inkSoft} />
+            <Text style={styles.cityName} numberOfLines={1}>{homePlace.place?.label ?? (homePlace.ready ? "Choose city" : "Loading city…")}</Text>
+            <Ionicons name="chevron-down" size={12} color={color.inkSoft} />
+          </Pressable>
           {streak != null && <StreakChip days={streak} />}
         </View>
 
@@ -157,10 +169,10 @@ export default function HomeScreen({ navigation }: Props) {
         <Entrance index={0}>
           <Text style={styles.section}>Daily</Text>
           {/* Today's date in the learner's calendar, worked out on the phone. */}
-          <TithiCard />
-          {/* Festivals today and coming up. Hides itself on 404 or offline. */}
-          <ParvaStrip />
-          <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} />
+          <TithiCard calendarPlace={homePlace.place} />
+          {/* Today's festivals only. */}
+          <ParvaStrip calendarPlace={homePlace.place} />
+          <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} showStory={!storyCompleted} />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />
           {/* Today's "Do you know". Hides itself when there is no fact yet. */}
@@ -173,25 +185,27 @@ export default function HomeScreen({ navigation }: Props) {
             />
             <DailyMeaningTile />
           </View>
-          <DailyRashiCard />
+          <DailyRashiCard calendarPlace={homePlace.place} />
+          {storyCompleted && <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} storyOnly />}
         </Entrance>
       </ScrollView>
+      <PlacePicker visible={placePickerOpen} onClose={() => setPlacePickerOpen(false)} onPick={(place) => { setPlacePickerOpen(false); void homePlace.pick(place); }} />
     </SafeAreaView>
   );
 }
 
-function IntroductionTiles({ navigation, storyTotal, storyAt }: { navigation: Props["navigation"]; storyTotal: number | null; storyAt: number }) {
+function IntroductionTiles({ navigation, storyTotal, storyAt, showStory = true, storyOnly = false }: { navigation: Props["navigation"]; storyTotal: number | null; storyAt: number; showStory?: boolean; storyOnly?: boolean }) {
   return (
     <View style={styles.introduction}>
-      <Text style={styles.section}>Introduction</Text>
+      <Text style={styles.section}>{showStory ? "Introduction" : "Practice"}</Text>
       <View style={styles.grid}>
-        <ExploreTile tone="gold" icon="grid" title="Alphabet" sa="वर्णमाला" onPress={() => navigation.navigate("Varnamala")} />
-        <ExploreTile tone="slate" icon="create" title="Write" sa="लेखनम्" onPress={() => navigation.navigate("Writing")} />
-        <ExploreTile
+        {!storyOnly && <ExploreTile tone="gold" icon="grid" title="Alphabet" sa="वर्णमाला" onPress={() => navigation.navigate("Varnamala")} />}
+        {!storyOnly && <ExploreTile tone="slate" icon="create" title="Write" sa="लेखनम्" onPress={() => navigation.navigate("Writing")} />}
+        {showStory && <ExploreTile
           tone="saffron" icon="compass" title="Introduction" sa="परिचयः"
           meta={storyTotal && storyAt > 0 ? `${Math.min(storyAt + 1, storyTotal)}/${storyTotal}` : undefined}
           onPress={() => navigation.navigate("Story")}
-        />
+        />}
       </View>
     </View>
   );
@@ -293,22 +307,8 @@ function ShlokaTile({ shloka, state, onPress }: { shloka: Shloka | null; state: 
   );
 }
 
-// These entries are copied from the reviewed DCS_VOCAB list in
-// backend/app/seeds/vocab.py. The Home card is intentionally independent
-// from Play's daily puzzle and does not generate Sanskrit at runtime.
-const DAILY_VOCABULARY = [
-  { word: "सूक्ष्मं", meaning: "subtle; minute" },
-  { word: "संशयः", meaning: "doubt; uncertainty" },
-  { word: "काञ्चनं", meaning: "gold" },
-  { word: "ताम्रं", meaning: "copper" },
-  { word: "ऋणं", meaning: "debt" },
-  { word: "हरीतकी", meaning: "haritaki, a medicinal fruit" },
-  { word: "त्रिफला", meaning: "triphala, a three-fruit preparation" },
-];
-
 function DailyMeaningTile() {
-  const day = Number(localToday().replace(/-/g, ""));
-  const entry = DAILY_VOCABULARY[((day % DAILY_VOCABULARY.length) + DAILY_VOCABULARY.length) % DAILY_VOCABULARY.length];
+  const entry = vocabularyForDate(localToday());
   return (
     <View style={[styles.dailyTile, { backgroundColor: fill.ink }]} accessible accessibilityLabel={`Daily Sanskrit word ${entry.word}, ${entry.meaning}`}>
       <View style={styles.dailyHead}>
@@ -316,7 +316,7 @@ function DailyMeaningTile() {
         <Text style={[styles.dailyLabel, { color: "#FFF8EE" }]}>Daily word</Text>
       </View>
       <View style={styles.dailyBody}>
-        <Text style={[styles.verse, script("bold"), { color: "#FFF8EE" }]} numberOfLines={1}>{entry.word}</Text>
+        <Text style={[styles.verse, script("bold"), { color: "#FFF8EE" }]} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.75}>{entry.word}</Text>
         <Text style={[styles.tileMuted, { color: "#FFF8EE" }]} numberOfLines={2}>{entry.meaning}</Text>
       </View>
     </View>
@@ -401,20 +401,22 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   // 120 at the bottom: the Ask bubble floats over the last row.
   body: { paddingHorizontal: space.lg, paddingTop: space.xs, paddingBottom: 120 },
-  topbar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", minHeight: 44 },
+  topbar: { flexDirection: "row", alignItems: "center", gap: space.xs, minHeight: 44 },
+  cityButton: { flex: 1, minWidth: 0, minHeight: 44, flexDirection: "row", alignItems: "center", gap: 4, marginRight: space.xs },
+  cityName: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
   streak: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
     backgroundColor: color.surface,
-    borderRadius: 0,
+    borderRadius: 8,
     paddingHorizontal: space.md,
     paddingVertical: 7,
     ...shadow.card,
   },
   streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
-  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: 0, backgroundColor: "#17535C", marginBottom: space.sm },
+  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: 10, backgroundColor: "#17535C", marginBottom: space.sm },
   compText: { color: "#FFF8EE", fontWeight: "800" },
   greetText: { flex: 1 },
   hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
@@ -423,7 +425,7 @@ const styles = StyleSheet.create({
   goalRetry: {
     width: GOAL_RING,
     height: GOAL_RING,
-    borderRadius: 0,
+    borderRadius: 8,
     backgroundColor: color.surface,
     alignItems: "center",
     justifyContent: "center",
@@ -441,9 +443,9 @@ const styles = StyleSheet.create({
   },
   introduction: { marginTop: space.md, marginBottom: space.lg },
   pair: { flexDirection: "row", gap: space.sm, marginBottom: space.lg },
-  dailyTile: { flex: 1, borderRadius: 0, padding: space.md, minHeight: 128 },
+  dailyTile: { flex: 1, borderRadius: 10, padding: space.md, minHeight: 128 },
   dailyHead: { flexDirection: "row", alignItems: "center", gap: 6 },
-  dailyIcon: { width: 24, height: 24, borderRadius: 0, alignItems: "center", justifyContent: "center" },
+  dailyIcon: { width: 24, height: 24, borderRadius: 5, alignItems: "center", justifyContent: "center" },
   dailyLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
   dailyBody: { flex: 1, justifyContent: "flex-end", marginTop: space.sm },
   verse: { fontSize: font.sizes.md, lineHeight: 28, color: color.ink },
@@ -454,12 +456,12 @@ const styles = StyleSheet.create({
   explore: {
     width: "48.5%",
     backgroundColor: color.surface,
-    borderRadius: 0,
+    borderRadius: 10,
     padding: space.md,
     ...shadow.card,
   },
   exploreTop: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", marginBottom: space.sm },
-  exploreIcon: { width: 44, height: 44, borderRadius: 0, alignItems: "center", justifyContent: "center" },
+  exploreIcon: { width: 44, height: 44, borderRadius: 8, alignItems: "center", justifyContent: "center" },
   exploreTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
   exploreSa: { fontSize: font.sizes.sm, lineHeight: 20 },
   exploreMeta: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, color: color.inkSoft },

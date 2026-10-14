@@ -98,11 +98,13 @@ const styles = StyleSheet.create({
   total: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 22, color: onFill.text },
   of: { fontSize: 14, color: onFill.soft },
   verdict: {
+    flexShrink: 1,
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
     fontSize: font.sizes.sm,
     color: onFill.text,
     textTransform: "capitalize",
+    textAlign: "right",
   },
   line: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.ink, lineHeight: 21 },
   table: { marginTop: space.xs, borderTopWidth: 1, borderTopColor: color.border },

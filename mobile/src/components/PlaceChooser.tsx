@@ -33,6 +33,7 @@ export default function PlaceChooser({
   remember = true,
   showLocate = true,
   square = false,
+  fillSpace = false,
 }: {
   onPick: (place: Place) => void;
   /** Store the pick as the learner's place. Off for a place of birth. */
@@ -41,6 +42,8 @@ export default function PlaceChooser({
   showLocate?: boolean;
   /** Home's square-corner form style; other callers keep their current shape. */
   square?: boolean;
+  /** Home's dedicated picker lets results fill the space above the keyboard. */
+  fillSpace?: boolean;
 }) {
   const { locating, locate } = useDevicePlace();
   const [query, setQuery] = useState("");
@@ -105,7 +108,7 @@ export default function PlaceChooser({
   };
 
   return (
-    <View style={styles.wrap}>
+    <View style={[styles.wrap, fillSpace && styles.fillWrap]}>
       {showLocate && (
         <Pressable
           onPress={useLocation}
@@ -120,7 +123,7 @@ export default function PlaceChooser({
             <Ionicons name="locate-outline" size={20} color={color.ink} />
           )}
           <Text style={styles.rowText}>Use my location</Text>
-          <Text style={styles.rowSub}>Approximate, stored on this phone</Text>
+          {!fillSpace && <Text style={styles.rowSub}>Approximate, stored on this phone</Text>}
         </Pressable>
       )}
 
@@ -145,7 +148,7 @@ export default function PlaceChooser({
         data={cities}
         keyExtractor={(c) => c.key}
         keyboardShouldPersistTaps="handled"
-        style={styles.list}
+        style={[styles.list, fillSpace && styles.fillList]}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => pickCity(item.name, item.lat, item.lon, item.tz)}
@@ -164,6 +167,8 @@ export default function PlaceChooser({
 
 const styles = StyleSheet.create({
   wrap: { gap: space.sm, paddingTop: space.xs },
+  fillWrap: { flex: 1, minHeight: 0 },
+  fillList: { flex: 1, maxHeight: undefined },
   row: {
     flexDirection: "row",
     alignItems: "center",

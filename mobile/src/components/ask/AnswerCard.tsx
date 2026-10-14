@@ -616,8 +616,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: space.sm,
   },
-  whenText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
-  whenNote: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: onFill.text },
+  whenText: { flexShrink: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
+  whenNote: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 11, color: onFill.text, textAlign: "right" },
   linkRow: {
     flexDirection: "row",
     alignItems: "center",

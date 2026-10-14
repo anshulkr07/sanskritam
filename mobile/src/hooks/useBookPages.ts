@@ -42,6 +42,10 @@ export function useBookPages(bookKey: string, chapter?: string | null) {
     () => (canon?.texts ?? []).find((c) => c.slug === bookKey)?.title_en ?? bookKey,
     [canon, bookKey],
   );
+  const titleSa = useMemo(
+    () => (canon?.texts ?? []).find((c) => c.slug === bookKey)?.title_sa ?? "",
+    [canon, bookKey],
+  );
 
   // Reading position persists wherever the page goes (read scrub or chant).
   const persistAt = useCallback(
@@ -56,5 +60,5 @@ export function useBookPages(bookKey: string, chapter?: string | null) {
     [bookKey, pagedText, pagedChapter],
   );
 
-  return { pages, pagedText, pagedChapter, title, persistAt };
+  return { pages, pagedText, pagedChapter, title, titleSa, persistAt };
 }

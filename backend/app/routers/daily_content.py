@@ -71,13 +71,13 @@ def read_facts(
 ):
     """Facts dated on or before today, newest first."""
     day = local_date(learner.timezone)
-    rows = (
+    query = (
         db.query(FactCard)
         .filter(FactCard.status == "approved", FactCard.scheduled_date <= day)
-        .order_by(FactCard.scheduled_date.desc())
-        .limit(200)
-        .all()
     )
+    if query.filter(FactCard.made_by == "reviewed").first() is not None:
+        query = query.filter(FactCard.made_by == "reviewed")
+    rows = query.order_by(FactCard.scheduled_date.desc()).limit(6).all()
     return FactsResponse(facts=[
         FactSummary(id=r.id, fact=r.fact or "", text_name=r.text_name or "",
                     ref=r.ref or "", scheduled_date=r.scheduled_date or "")

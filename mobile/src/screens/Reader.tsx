@@ -1,21 +1,20 @@
-// Read — the canon as a shelf of books (the Read tab).
+// Read — the canon as books and as audiobooks (the Read tab).
 //
 // Three postures, one screen:
-//   • SHELF — book covers first: every canon text in study order plus an
-//     "All verses" book, each with live counts and a coverage bar. Empty
-//     books stay visible as "coming soon" — a book disappearing until its
-//     import lands is how the reader looked incomplete.
-//   • BOOK — one book's contents: its cover first (tap it, or "Open book" /
-//     "Continue · 5.35"), then chapters in canonical chapter-verse order
-//     (never seed-date order), each row opening the book at that verse.
-//   • PAGE — the open book: the cover turns away, then every verse is a page
-//     that curls like paper under the finger, forward and back
-//     (PageCurlBook); scrub the Kindle slider to jump, tap a word chip for
-//     its gloss. The Ask sheet opens ONLY from the explicit Ask button —
-//     never hijacked by a word tap.
+//   • HOME — two shelves under Books | Audio tabs (the choice is
+//     remembered). Books: a Continue reading card and rows of painted
+//     covers (read/BooksHome). Audio: the listening side in each book's own
+//     colour (read/AudioHome); its books open the Audiobook page.
+//   • CONTENTS — one book: what it is, how far in, Continue and Listen, and
+//     its chapters with their first lines (read/BookContents; paged books
+//     use PagedBookIndex).
+//   • A paged book's chapter reads in place (PagedChapterReader); a classic
+//     book's pages open the fullscreen Book screen over the tab bar.
 //
-// Reading, not drilling (U13-3): no verdict, no streak, no score, no meter of
-// any kind. Someone reading the Gītā at night is not in a session.
+// The Read tab button always comes back to HOME; Android back steps from a
+// chapter to its contents and from contents to HOME.
+//
+// Reading, not drilling (U13-3): no verdict, no streak, no score here.
 //
 // Rules this screen honours:
 //   - The corpus comes from GET /shlokas; the catalogue from GET /canon.
@@ -24,69 +23,45 @@
 //   - Verses are matched to books by ref_prefixes exactly like /canon's
 //     counts, so shelf numbers and contents always agree.
 //   - Words render from word_breakdown, NOT split from the verse text.
-//   - Every text that may hold Sanskrit uses script() (§3.2).
-//   - No TTS here (P21: audio goes only on what is studied).
-//   - Turns are cosmetic and instant under Reduce Motion (§3.4); Previous /
-//     Next and the slider are always there, so turning is never gesture-only.
-//   - An open book owns horizontal drags (the drawer's edge swipe is off) and
-//     Android back closes it onto its contents.
+//   - Every text that may hold Sanskrit uses a Devanagari face.
+//   - An open chapter owns horizontal drags (the drawer's edge swipe is off).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  BackHandler,
-  FlatList,
-  Pressable,
-  ScrollView,
-  SectionList,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { BackHandler, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import Svg, { Circle } from "react-native-svg";
 
 import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
-import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useAsk, useAskContext } from "../ask/AskProvider";
-import { EmptyState, Button, ProgressBar } from "../components/ui";
+import { EmptyState, Button } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
-import BookCover from "../components/book/BookCover";
-import CoverArt from "../components/book/CoverArt";
-import { coverColour } from "../components/book/covers";
-import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
+import { useBookPage } from "../components/book/PageCurlBook";
 import { PagedBookIndex, PagedChapterReader } from "../components/book/PagedBook";
-import { isPaged, positionKey } from "../utils/paged";
-import ReaderSlider from "../components/ReaderSlider";
+import { isPaged } from "../utils/paged";
 import MiniPlayer from "../components/chant/MiniPlayer";
 import type { DrawerParamList } from "../navigation/AppDrawer";
+import type { MainTabParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
 import { useMiniPlayerUp } from "../services/listenBus";
-import {
-  getReadingPosition,
-  getReadingPositions,
-  getReadingChapter,
-  setReadingPosition,
-  setReadingChapter,
-} from "../services/readingProgress";
-import { getLastListen, getListenMode, type ListenPosition } from "../services/audioProgress";
-import {
-  firstLine,
-  groupByBook,
-  groupByChapter,
-  makeBookOf,
-  parseRef,
-  sortVerses,
-  tierVerses,
-} from "../utils/verses";
-import { color, font, radius, script, shadow, space } from "../theme";
+import { getReadingPosition, getReadingPositions } from "../services/readingProgress";
+import { getLastListen, getListenPosition, type ListenPosition } from "../services/audioProgress";
+import { groupByBook, makeBookOf, parseRef, sortVerses, tierVerses } from "../utils/verses";
+import { color, font, radius, script, space } from "../theme";
 import { plain } from "../utils/text";
+import AudioHome from "../read/AudioHome";
+import BookContents, { type ContentsBook } from "../read/BookContents";
+import BooksHome from "../read/BooksHome";
+import { voicedCount } from "../read/audio";
+import { T, ui } from "../read/look";
+import type { Media } from "../read/ui";
+import { shelfTitle } from "../read/shelves";
 
 // The graded shelf (U14-5 / P22-6): Simple (Units 2–3) · Sandhi (Unit 6) ·
 // Compounds (Unit 10). Same page pattern, tier passages mapped onto verses.
@@ -98,80 +73,48 @@ const TIERS = [
 
 const ALL_KEY = "all";
 const OTHER_KEY = "other";
-const gradedKey = (tier: number) => `graded-${tier}`;
 const MEDIA_KEY = "shabd.read.media";
-
-/** The Read tab's two shelves: paper books and audio books. */
-type Media = "books" | "audio";
-
-interface OpenBook {
-  key: string;
-  titleEn: string;
-  titleSa: string;
-  verses: Shloka[];
-  /** Planned total for the coverage bar; null hides it (All, Graded). */
-  planned: number | null;
-  depth: string | null;
-}
 
 function ReaderSkeleton() {
   return (
     <>
-      <Skeleton width={120} height={26} radius={radius.sm} style={{ marginBottom: space.xs }} />
-      <Skeleton width={220} height={14} radius={radius.sm} style={{ marginBottom: space.lg }} />
-      <View style={styles.shelfGrid}>
-        {[0, 1, 2, 3].map((i) => (
-          <Skeleton key={i} height={150} radius={radius.lg} style={{ flex: 1, minWidth: "46%" }} />
-        ))}
-      </View>
-      <SkeletonGroup count={2} height={56} radius={radius.lg} />
+      <Skeleton width={120} height={30} radius={0} style={{ marginBottom: space.sm }} />
+      <Skeleton width={200} height={20} radius={0} style={{ marginBottom: space.lg }} />
+      <Skeleton height={190} radius={0} style={{ marginBottom: space.lg }} />
+      <SkeletonGroup count={2} height={150} radius={0} />
     </>
   );
 }
 
 export default function ReaderScreen() {
   const { sized } = useTypeScale();
-  const reduced = useReducedMotion();
-  // null = shelf; set = inside a book. pageIndex null = index, set = reading.
+  // null = HOME; set = inside a book.
   const [bookKey, setBookKey] = useState<string | null>(null);
-  const [pageIndex, setPageIndex] = useState<number | null>(null);
   // Paged books: which chapter is open (null = contents).
   const [pagedChapter, setPagedChapter] = useState<string | null>(null);
   const [pagedIndex, setPagedIndex] = useState(0);
-  // Restored "continue" rows: { [bookKey]: index }.
+  // Restored "continue" positions: { [bookKey]: index }.
   const [positions, setPositions] = useState<Record<string, number>>({});
   // Which shelf is showing: paper books or audio books (remembered).
   const [media, setMediaState] = useState<Media>("books");
-  // The most recent listen, for the Audio shelf's Continue card.
+  // The most recent listen, for the Audio shelf's band.
   const [lastListen, setLastListen] = useState<{ bookKey: string; pos: ListenPosition } | null>(null);
   const navigation = useNavigation();
+  const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
   // Subscribe on every render, including loading and book contents.
-  // Calling this only on the shelf changes hook order when data arrives.
   const miniUp = useMiniPlayerUp();
-  const reading = bookKey !== null && (pageIndex !== null || pagedChapter !== null);
+  const reading = bookKey !== null && pagedChapter !== null;
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("read", bookKey ?? "");
 
-  // An open book owns horizontal drags: the drawer's edge swipe would steal a
-  // page turned back from the spine. Given back the moment the book closes.
+  // An open chapter owns horizontal drags: the drawer's edge swipe would steal
+  // a page turned back from the spine. Given back the moment it closes.
   useEffect(() => {
     if (!reading) return;
     const drawer = navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
     drawer?.setOptions({ swipeEnabled: false });
     return () => drawer?.setOptions({ swipeEnabled: true });
   }, [reading, navigation]);
-
-  // Android back closes the book onto its contents.
-  useEffect(() => {
-    if (!reading) return;
-    const sub = BackHandler.addEventListener("hardwareBackPress", () => {
-      // A chapter of a paged book closes onto that book's contents.
-      if (pagedChapter !== null) setPagedChapter(null);
-      else setPageIndex(null);
-      return true;
-    });
-    return () => sub.remove();
-  }, [reading, pagedChapter]);
 
   // Corpus (Track C4): cached 60s, deduped, never setState after unmount.
   const versesQ = useQuery<Shloka[]>("reader-verses", api.listShlokas);
@@ -201,22 +144,28 @@ export default function ReaderScreen() {
       .finally(() => setTierLoading(false));
   }, []);
 
-  // Refresh "continue" rows every time the shelf is shown.
+  // Refresh positions and the last listen every time HOME is shown.
   useEffect(() => {
-    if (bookKey === null) getReadingPositions().then(setPositions).catch(() => {});
-  }, [bookKey]);
+    if (bookKey !== null) return;
+    getReadingPositions().then(setPositions).catch(() => {});
+    getLastListen().then(setLastListen).catch(() => {});
+  }, [bookKey, media]);
+  // Coming back from the player or a book page also moves them.
+  useEffect(
+    () =>
+      navigation.addListener("focus", () => {
+        getReadingPositions().then(setPositions).catch(() => {});
+        getLastListen().then(setLastListen).catch(() => {});
+      }),
+    [navigation],
+  );
 
-  // The shelf choice is remembered; the audio shelf's Continue card refreshes
-  // whenever the shelf shows.
+  // The shelf choice is remembered.
   useEffect(() => {
     AsyncStorage.getItem(MEDIA_KEY)
       .then((v) => v === "audio" && setMediaState("audio"))
       .catch(() => {});
   }, []);
-  useEffect(() => {
-    if (bookKey !== null) return;
-    getLastListen().then(setLastListen).catch(() => {});
-  }, [bookKey, media]);
 
   const setMedia = useCallback((m: Media) => {
     haptics.tap();
@@ -225,57 +174,30 @@ export default function ReaderScreen() {
   }, []);
 
   const bookOf = useMemo(() => makeBookOf(canon), [canon]);
-  const groups = useMemo(
-    () => (verses ? groupByBook(verses, canon) : []),
-    [verses, canon],
-  );
-  const allVerses = useMemo(
-    () => (verses ? sortVerses(verses, bookOf) : []),
-    [verses, bookOf],
-  );
+  const groups = useMemo(() => (verses ? groupByBook(verses, canon) : []), [verses, canon]);
+  const allVerses = useMemo(() => (verses ? sortVerses(verses, bookOf) : []), [verses, bookOf]);
 
-  const openBook: OpenBook | null = useMemo(() => {
+  const openBook: ContentsBook | null = useMemo(() => {
     if (!bookKey) return null;
     if (bookKey === ALL_KEY) {
-      return {
-        key: ALL_KEY,
-        titleEn: "All verses",
-        titleSa: "सर्वम्",
-        verses: allVerses,
-        planned: null,
-        depth: null,
-      };
+      return { key: ALL_KEY, titleEn: "All verses", titleSa: "सर्वम्", verses: allVerses, planned: null, depth: null };
     }
     if (bookKey === OTHER_KEY) {
       const g = groups.find((x) => x.text === null);
       if (!g) return null;
-      return {
-        key: OTHER_KEY,
-        titleEn: "Other verses",
-        titleSa: "अन्यत्",
-        verses: g.verses,
-        planned: null,
-        depth: null,
-      };
+      return { key: OTHER_KEY, titleEn: "Other verses", titleSa: "अन्यत्", verses: g.verses, planned: null, depth: null };
     }
     if (bookKey.startsWith("graded-")) {
       const tier = parseInt(bookKey.slice("graded-".length), 10);
       const meta = TIERS.find((t) => t.tier === tier);
       if (!meta || !tierRows) return null;
-      return {
-        key: bookKey,
-        titleEn: `Graded · ${meta.label}`,
-        titleSa: "अभ्यासः",
-        verses: tierRows,
-        planned: null,
-        depth: null,
-      };
+      return { key: bookKey, titleEn: `Graded · ${meta.label}`, titleSa: "अभ्यासः", verses: tierRows, planned: null, depth: null };
     }
     const g = groups.find((x) => x.text?.slug === bookKey);
     if (!g?.text) return null;
     return {
       key: bookKey,
-      titleEn: g.text.title_en,
+      titleEn: shelfTitle(g.text.title_en),
       titleSa: g.text.title_sa,
       verses: g.verses,
       planned: g.text.verses_planned || null,
@@ -283,31 +205,51 @@ export default function ReaderScreen() {
     };
   }, [bookKey, groups, allVerses, tierRows]);
 
-  // A stale book (corpus shrank under it) falls back to the shelf instead
-  // of rendering an empty book. Runs as an effect — never during render.
+  // A stale book (corpus shrank under it) falls back to HOME instead of
+  // rendering an empty book. Runs as an effect — never during render.
   // Paged books are exempt: their verses never ride GET /shlokas.
   useEffect(() => {
     if (bookKey && bookKey !== ALL_KEY && !bookKey.startsWith("graded-")) {
       if (canon.some((c) => c.slug === bookKey && isPaged(c))) return;
       if (verses && !groups.some((g) => g.text?.slug === bookKey || (bookKey === OTHER_KEY && g.text === null))) {
         setBookKey(null);
-        setPageIndex(null);
       }
     }
   }, [bookKey, verses, groups, canon]);
 
-  const openShelf = useCallback(() => {
-    haptics.tap();
+  const goHome = useCallback(() => {
     setBookKey(null);
-    setPageIndex(null);
     setPagedChapter(null);
     setTierTier(null);
     setTierRows(null);
   }, []);
 
+  const openShelf = useCallback(() => {
+    haptics.tap();
+    goHome();
+  }, [goHome]);
+
+  // The Read tab button always lands on HOME (the shelf last chosen, Books
+  // or Audio), from a book's contents or an open paged chapter alike. The
+  // tab bar already gives the haptic.
+  useEffect(() => {
+    const tabs = navigation as unknown as BottomTabNavigationProp<MainTabParamList, "Read">;
+    return tabs.addListener("tabPress", goHome);
+  }, [navigation, goHome]);
+
+  // Android back: a chapter closes onto its contents, contents onto HOME.
+  useEffect(() => {
+    if (bookKey === null) return;
+    const sub = BackHandler.addEventListener("hardwareBackPress", () => {
+      if (pagedChapter !== null) setPagedChapter(null);
+      else goHome();
+      return true;
+    });
+    return () => sub.remove();
+  }, [bookKey, pagedChapter, goHome]);
+
   const enterBook = useCallback(
     async (key: string) => {
-      haptics.tap();
       if (key.startsWith("graded-")) {
         const tier = parseInt(key.slice("graded-".length), 10);
         if (tierTier !== tier || !tierRows) loadTier(tier);
@@ -315,45 +257,51 @@ export default function ReaderScreen() {
       setPagedChapter(null);
       const pos = await getReadingPosition(key).catch(() => 0);
       setBookKey(key);
-      // Land on the index, remembering where Continue should resume.
-      setPageIndex(null);
       setPositions((p) => ({ ...p, [key]: Number.isFinite(pos) ? pos : 0 }));
     },
     [loadTier, tierTier, tierRows],
   );
 
-  const startReading = useCallback(
-    async (book: OpenBook) => {
-      haptics.press();
-      const pos = await getReadingPosition(book.key).catch(() => 0);
-      const safe = Number.isFinite(pos) ? pos : 0;
-      const at = Math.min(safe, book.verses.length - 1);
-      const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
-      nav.navigate("Book", { bookKey: book.key, index: Math.max(0, at) });
-    },
-    [navigation],
-  );
-
   const turnTo = useCallback(
-    (book: OpenBook, i: number) => {
+    (book: ContentsBook, i: number) => {
       if (!Number.isFinite(i)) return;
       const at = Math.max(0, Math.min(book.verses.length - 1, i));
-      const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
       nav.navigate("Book", { bookKey: book.key, index: at });
     },
-    [navigation],
+    [nav],
+  );
+
+  const startReading = useCallback(
+    async (book: ContentsBook) => {
+      const pos = await getReadingPosition(book.key).catch(() => 0);
+      turnTo(book, Number.isFinite(pos) ? pos : 0);
+    },
+    [turnTo],
+  );
+
+  // index -1: wherever the book was left off listening (or its start).
+  const listen = useCallback(
+    async (key: string, index: number) => {
+      let i = index;
+      if (i < 0) i = (await getListenPosition(key).catch(() => null))?.index ?? 0;
+      nav.navigate("Listen", { bookKey: key, index: Math.max(0, i) });
+    },
+    [nav],
+  );
+  const openPlayer = useCallback(
+    (key: string, chapter: string | null, index: number) =>
+      nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined }),
+    [nav],
   );
 
   // ── Loading / error ──────────────────────────────────────────────
-  // The catalogue is enough to show the shelf or open a paged book. Classic
+  // The catalogue is enough to show HOME or open a paged book. Classic
   // contents still wait for their corpus, but no longer hold up every cover.
-  const needsCorpus = bookKey !== null
-    && !bookKey.startsWith("graded-")
-    && !canon.some((c) => c.slug === bookKey && isPaged(c));
+  const needsCorpus = bookKey !== null && !bookKey.startsWith("graded-") && !canon.some((c) => c.slug === bookKey && isPaged(c));
   if (versesQ.loading && (canon.length === 0 || needsCorpus)) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
-        <ScrollView contentContainerStyle={styles.body}>
+        <ScrollView contentContainerStyle={styles.homeBody}>
           <ReaderSkeleton />
         </ScrollView>
       </SafeAreaView>
@@ -364,10 +312,7 @@ export default function ReaderScreen() {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}>
-          <EmptyState
-            title="Couldn't load the reader."
-            hint="Check your connection and try again."
-          />
+          <EmptyState title="Couldn't load the reader." hint="Check your connection and try again." />
           <Button label="Try again" tone="primary" onPress={versesQ.retry} style={{ marginTop: space.md }} />
         </View>
       </SafeAreaView>
@@ -384,118 +329,7 @@ export default function ReaderScreen() {
     );
   }
 
-  // ── PAGE posture ─────────────────────────────────────────────────
-  if (bookKey && pageIndex !== null && openBook && openBook.verses.length > 0) {
-    const book = openBook;
-    const raw = Number.isFinite(pageIndex) ? pageIndex : 0;
-    const at = Math.max(0, Math.min(raw, book.verses.length - 1));
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        <View style={styles.readHeader}>
-          <Pressable
-            onPress={() => {
-              haptics.tap();
-              setPageIndex(null);
-            }}
-            style={styles.headerBtn}
-            accessibilityRole="button"
-            accessibilityLabel={`Back to ${book.titleEn} contents`}
-          >
-            <Ionicons name="arrow-back" size={20} color={color.saffron} />
-            <Text style={styles.headerBtnText}>Contents</Text>
-          </Pressable>
-          <Text style={styles.readPos} numberOfLines={1}>
-            {at + 1} / {book.verses.length}
-          </Text>
-          <Pressable
-            onPress={openShelf}
-            style={styles.headerBtnRight}
-            accessibilityRole="button"
-            accessibilityLabel="Back to the bookshelf"
-          >
-            <Ionicons name="library-outline" size={20} color={color.saffron} />
-          </Pressable>
-        </View>
-
-        <View style={styles.pageArea}>
-          {/* Mounted each time the book is opened, so its cover turns away
-              first; keyed per book, since its pages belong to one book. */}
-          <PageCurlBook
-            key={book.key}
-            index={at}
-            count={book.verses.length}
-            onIndexChange={(i) => turnTo(book, i)}
-            renderPage={(i) => {
-              const v = book.verses[i];
-              return v ? (
-                <ReaderPage
-                  key={v.id}
-                  verse={v}
-                  previous={book.verses[i - 1] ?? null}
-                  runningTitle={runningTitleFor(book, v)}
-                  position={i}
-                  total={book.verses.length}
-                />
-              ) : (
-                <View style={styles.page} />
-              );
-            }}
-            cover={
-              <BookCover
-                variant="full"
-                titleSa={book.titleSa}
-                titleEn={book.titleEn}
-                caption={versesCaption(book)}
-              />
-            }
-            labelFor={(i) => book.verses[i]?.source_ref ?? ""}
-            reducedMotion={reduced}
-          />
-        </View>
-
-        <ReaderSlider
-          index={at}
-          count={book.verses.length}
-          labelFor={(i) => book.verses[i]?.source_ref ?? ""}
-          onScrubEnd={(i) => {
-            haptics.press();
-            turnTo(book, i);
-          }}
-        />
-
-        <View style={styles.turnRow}>
-          <Pressable
-            onPress={() => turnTo(book, at - 1)}
-            disabled={at <= 0}
-            style={[styles.turnBtn, at <= 0 && styles.turnBtnDisabled]}
-            accessibilityRole="button"
-            accessibilityLabel="Previous verse"
-            accessibilityState={{ disabled: at <= 0 }}
-          >
-            <Ionicons name="chevron-back" size={22} color={at > 0 ? color.saffron : color.inkFaint} />
-            <Text style={[styles.turnText, at <= 0 && styles.turnTextDisabled]}>Previous</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => turnTo(book, at + 1)}
-            disabled={at >= book.verses.length - 1}
-            style={[styles.turnBtn, at >= book.verses.length - 1 && styles.turnBtnDisabled]}
-            accessibilityRole="button"
-            accessibilityLabel="Next verse"
-            accessibilityState={{ disabled: at >= book.verses.length - 1 }}
-          >
-            <Text style={[styles.turnText, at >= book.verses.length - 1 && styles.turnTextDisabled]}>Next</Text>
-            <Ionicons
-              name="chevron-forward"
-              size={22}
-              color={at < book.verses.length - 1 ? color.saffron : color.inkFaint}
-            />
-          </Pressable>
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  // ── BOOK posture (index) ─────────────────────────────────────────
+  // ── CONTENTS ─────────────────────────────────────────────────────
   // Paged books first: contents and chapter reader from /canon chapters.
   const pagedText = bookKey ? canon.find((c) => c.slug === bookKey && isPaged(c)) ?? null : null;
   if (bookKey && pagedText) {
@@ -510,10 +344,7 @@ export default function ReaderScreen() {
             setPagedChapter(ch);
             setPagedIndex(0);
           }}
-          onChant={(i) => {
-            const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
-            nav.navigate("Book", { bookKey: pagedText.slug, chapter: pagedChapter, index: i, mode: "chant" });
-          }}
+          onChant={(i) => nav.navigate("Book", { bookKey: pagedText.slug, chapter: pagedChapter, index: i, mode: "chant" })}
           renderVerse={(v, previous, i, total) => (
             <ReaderPage
               verse={v}
@@ -538,20 +369,20 @@ export default function ReaderScreen() {
       />
     );
   }
-  if (bookKey && openBook) {
-    // Graded rows still arriving (or failed): the index waits honestly.
-    if (bookKey.startsWith("graded-") && (tierLoading || !tierRows)) {
+  if (bookKey && (openBook || bookKey.startsWith("graded-"))) {
+    // Graded rows still arriving (or failed): the contents wait honestly.
+    if (!openBook) {
       return (
         <SafeAreaView style={styles.safe} edges={["top"]}>
-          <ScrollView contentContainerStyle={styles.body}>
-            <BackRow onPress={openShelf} label="Books" />
-            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Graded reading</Text>
+          <ScrollView contentContainerStyle={styles.homeBody}>
+            <Pressable onPress={openShelf} style={styles.back} accessibilityRole="button" accessibilityLabel="Back to Books">
+              <Ionicons name="arrow-back" size={20} color={T.ink} />
+              <Text style={styles.backText}>Books</Text>
+            </Pressable>
+            <Text style={[styles.gradedTitle, { fontSize: sized(25) }]}>Graded reading</Text>
             {tierFailed ? (
               <View style={styles.center}>
-                <EmptyState
-                  title="Couldn't load these passages."
-                  hint="Check your connection and try again."
-                />
+                <EmptyState title="Couldn't load these passages." hint="Check your connection and try again." />
                 <Button
                   label="Try again"
                   tone="primary"
@@ -560,871 +391,57 @@ export default function ReaderScreen() {
                 />
               </View>
             ) : (
-              <SkeletonGroup count={4} height={64} radius={radius.lg} />
+              <SkeletonGroup count={4} height={56} radius={0} />
             )}
           </ScrollView>
         </SafeAreaView>
       );
     }
+    const isCanon = canon.some((c) => c.slug === openBook.key);
     return (
-      <BookIndex
+      <BookContents
         book={openBook}
-        sized={sized}
         resumeAt={positions[openBook.key] ?? 0}
         onBack={openShelf}
         onStart={() => startReading(openBook)}
         onOpen={(i) => turnTo(openBook, i)}
+        onListen={isCanon && voicedCount(openBook.verses) > 0 ? () => nav.navigate("Audiobook", { bookKey: openBook.key }) : undefined}
       />
     );
   }
 
-  // ── SHELF posture ────────────────────────────────────────────────
-  // Two shelves under one tab: Books (paper, as ever) and Audio (books with
-  // a voice), switched by the pill in the header. The mini player floats
-  // over either while a chant session is live.
-  const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
+  // ── HOME ─────────────────────────────────────────────────────────
+  // Two shelves under one tab, Books and Audio, switched by the tabs in the
+  // header. The mini player floats over either while a chant session is live.
   if (media === "audio") {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
-        <AudioShelf
-          bottomPad={miniUp}
-          header={
-            <>
-              <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
-              <MediaSwitch value="audio" onChange={setMedia} />
-              {lastListen && (
-                <ContinueListening
-                  bookKey={lastListen.bookKey}
-                  pos={lastListen.pos}
-                  groups={groups}
-                  onResume={(key, index, chapter) => nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })}
-                  onBrowse={(key) => {
-                    setMedia("books");
-                    enterBook(key);
-                  }}
-                />
-              )}
-            </>
-          }
+        <AudioHome
+          media={media}
+          onMedia={setMedia}
           groups={groups}
-          canon={canon}
-          onListen={(key, index) => nav.navigate("Listen", { bookKey: key, index })}
-        />
-        <MiniPlayer
-          onOpen={(key, chapter, index) =>
-            nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })
-          }
+          lastListen={lastListen}
+          onListen={listen}
+          onBook={(key) => nav.navigate("Audiobook", { bookKey: key })}
+          onOpenPlayer={openPlayer}
         />
       </SafeAreaView>
     );
   }
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <ShelfRails
-        bottomPad={miniUp}
-        header={
-          <>
-            <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>Read</Text>
-            <MediaSwitch value="books" onChange={setMedia} />
-            <ContinueBlock
-              groups={groups}
-              allCount={allVerses.length}
-              positions={positions}
-              onResume={(key, at) => {
-                const safe = Number.isFinite(at) ? Math.max(0, Math.floor(at)) : 0;
-                nav.navigate("Book", { bookKey: key, index: safe });
-              }}
-              onContents={(key) => enterBook(key)}
-            />
-          </>
-        }
+      <BooksHome
+        media={media}
+        onMedia={setMedia}
         groups={groups}
         allVerses={allVerses}
         positions={positions}
-        tierRows={tierRows}
         canon={canon}
-        onOpen={(key) => enterBook(key)}
+        onOpen={(key) => void enterBook(key)}
+        onResume={(key, at) => nav.navigate("Book", { bookKey: key, index: Math.max(0, Math.floor(at)) })}
+        bottomPad={miniUp}
       />
-      <MiniPlayer
-        onOpen={(key, chapter, index) =>
-          nav.navigate("Listen", { bookKey: key, index, chapter: chapter ?? undefined })
-        }
-      />
-    </SafeAreaView>
-  );
-}
-
-// ─── Shelf pieces ───────────────────────────────────────────────────
-
-const RAIL_DEFS: { title: string; slugs: string[] }[] = [
-  { title: "Scriptures", slugs: ["gita", "isha", "katha", "mundaka", "ramayana", "mahabharata"] },
-  { title: "Stories and wisdom", slugs: ["hito", "pancha", "niti", "subhashita", "simhasana", "ayurveda", "vetala", "chanakya"] },
-  { title: "Graded reading", slugs: ["graded-1", "graded-2", "graded-3"] },
-  { title: "Vedas", slugs: ["rigveda", "samaveda", "yajurveda", "atharvaveda"] },
-  { title: "Upaniṣads", slugs: ["kena", "prashna", "mandukya", "taittiriya", "aitareya", "shvetashvatara", "chandogya", "brihadaranyaka"] },
-  { title: "Purāṇas", slugs: ["bhagavata", "shivapurana", "garuda", "devimahatmya"] },
-  { title: "Stotras", slugs: ["vishnusahasranama", "lalita", "bhajagovindam", "saundarya", "aditya", "tandava", "mahimna", "ramaraksha", "naradabhakti"] },
-  { title: "Poetry and drama", slugs: ["meghaduta", "kumarasambhava", "raghuvamsha", "shakuntala", "gitagovinda"] },
-  { title: "Yoga, Āyurveda and śāstra", slugs: ["yogasutra", "hathayoga", "ashtavakra", "sushruta", "arthashastra", "lilavati", "amarakosha"] },
-];
-
-function ShelfRails({
-  header,
-  groups,
-  allVerses,
-  positions,
-  tierRows,
-  canon,
-  onOpen,
-  bottomPad,
-}: {
-  header: React.ReactElement;
-  groups: { text: CanonText | null; verses: Shloka[] }[];
-  allVerses: Shloka[];
-  positions: Record<string, number>;
-  tierRows: Shloka[] | null;
-  canon: CanonText[];
-  onOpen: (key: string) => void;
-  /** The mini player floats above: pad the list so nothing hides under it. */
-  bottomPad?: boolean;
-}) {
-  const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
-  const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
-  const sayings = allVerses.filter((v) => (v.source_ref || "").startsWith("Sūkti") || (v.source_ref || "").startsWith("Sukti"));
-  const rails = RAIL_DEFS.map((r) => ({
-    title: r.title,
-    books: r.slugs.map((slug) => {
-      if (slug.startsWith("graded-")) {
-        const tier = parseInt(slug.slice("graded-".length), 10);
-        return { key: slug, titleSa: slug === "graded-1" ? "सरलम्" : slug === "graded-2" ? "सन्धिः" : "समासः", titleEn: `Tier ${tier}`, count: tierRows?.length ?? 0, planned: null as number | null, locked: false, paged: false };
-      }
-      const c = canonBySlug.get(slug);
-      // Paged books: cover from /canon counts, never from the verse list.
-      if (c && (c.paged ?? false)) {
-        return { key: slug, titleSa: c.title_sa || slug, titleEn: plain(c.title_en || slug), count: c.verses_imported ?? 0, planned: c.verses_planned || null, locked: c.locked ?? false, paged: true };
-      }
-      const g = bySlug.get(slug);
-      if (!g?.text) return { key: slug, titleSa: c?.title_sa || slug, titleEn: plain(c?.title_en || slug), count: c?.verses_imported ?? 0, planned: c?.verses_planned || null, locked: false, paged: false };
-      return { key: slug, titleSa: g.text.title_sa, titleEn: plain(g.text.title_en), count: g.verses.length, planned: g.text.verses_planned || null, locked: false, paged: false };
-    }),
-  }));
-  const known = new Set(RAIL_DEFS.flatMap((r) => r.slugs));
-  const more = [
-    { key: ALL_KEY, titleSa: "सर्वम्", titleEn: "All verses", count: allVerses.length, planned: null as number | null, locked: false, paged: false },
-    { key: OTHER_KEY, titleSa: "अन्यत्", titleEn: "Other verses", count: bySlug.get("other")?.verses.length ?? 0, planned: null as number | null, locked: false, paged: false },
-    ...(sayings.length > 0 ? [{ key: "sayings", titleSa: "सूक्तयः", titleEn: "Sayings", count: sayings.length, planned: null as number | null, locked: false, paged: false }] : []),
-    ...groups.filter((g) => g.text && !known.has(g.text.slug)).map((g) => ({ key: g.text!.slug, titleSa: g.text!.title_sa, titleEn: plain(g.text!.title_en), count: g.verses.length, planned: g.text!.verses_planned || null, locked: false, paged: false })),
-  ];
-  rails.push({ title: "More", books: more });
-  return (
-    <FlatList
-      data={rails}
-      keyExtractor={(rail) => rail.title}
-      contentContainerStyle={[styles.body, bottomPad && styles.bodyMini]}
-      ListHeaderComponent={header}
-      initialNumToRender={2}
-      maxToRenderPerBatch={2}
-      windowSize={3}
-      renderItem={({ item: rail }) => (
-        <View style={{ marginBottom: 16 }}>
-          <View style={styles.railHead}>
-            <Text style={styles.sectionTitle}>{rail.title}</Text>
-            <View style={styles.railRule} />
-          </View>
-          <FlatList
-            horizontal
-            data={rail.books}
-            keyExtractor={(b) => b.key}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ gap: 12, paddingVertical: 4 }}
-            initialNumToRender={3}
-            maxToRenderPerBatch={3}
-            windowSize={3}
-            getItemLayout={(_, index) => ({ length: 116, offset: 116 * index, index })}
-            renderItem={({ item: b }) => {
-              const empty = b.count === 0;
-              const label = empty
-                ? `${b.titleEn}. Soon.`
-                : (b as { locked?: boolean }).locked
-                  ? `${b.titleEn}. Plus. ${b.count} verses.`
-                  : `${b.titleEn}. ${b.count} verses.`;
-              return (
-                <Pressable
-                  key={b.key}
-                  onPress={empty ? undefined : () => onOpen(b.key)}
-                  disabled={empty}
-                  accessibilityRole="button"
-                  accessibilityLabel={label}
-                  accessibilityState={{ disabled: empty }}
-                  style={{ width: 104, opacity: empty ? 0.55 : 1 }}
-                >
-                  <CoverArt bookKey={b.key} titleSa={b.titleSa} width={104} />
-                  <Text style={styles.railTitle} numberOfLines={1}>{b.titleEn}</Text>
-                  <Text style={styles.railCount}>
-                    {empty
-                      ? "Soon"
-                      : `${b.count}${b.planned ? ` of ${b.planned}` : ""}${(b as { locked?: boolean }).locked ? " Plus" : ""}`}
-                  </Text>
-                </Pressable>
-              );
-            }}
-          />
-        </View>
-      )}
-    />
-  );
-}
-
-// The Books | Audio pill at the top of the Read tab.
-function MediaSwitch({ value, onChange }: { value: Media; onChange: (m: Media) => void }) {
-  const seg = (m: Media, icon: string, label: string) => {
-    const on = value === m;
-    return (
-      <Pressable
-        onPress={() => onChange(m)}
-        accessibilityRole="tab"
-        accessibilityState={{ selected: on }}
-        accessibilityLabel={label}
-        style={[styles.mediaSeg, on && styles.mediaSegOn]}
-      >
-        <Ionicons name={icon as never} size={15} color={on ? "#FFF8EE" : color.inkSoft} />
-        <Text style={[styles.mediaSegText, on && styles.mediaSegTextOn]}>{label}</Text>
-      </Pressable>
-    );
-  };
-  return (
-    <View style={styles.mediaSwitch} accessibilityRole="tablist">
-      {seg("books", "book", "Books")}
-      {seg("audio", "headphones", "Audio")}
-    </View>
-  );
-}
-
-// ─── Audio shelf ─────────────────────────────────────────────────────
-// The same canon as books, filtered to what has a voice: a Continue
-// listening card, then rails of audio-capable books (voiced of total,
-// honest about partial coverage). Paged books stay out until their chapter
-// audio can be counted client-side.
-
-function AudioShelf({
-  header,
-  groups,
-  canon,
-  onListen,
-  bottomPad,
-}: {
-  header: React.ReactElement;
-  groups: { text: CanonText | null; verses: Shloka[] }[];
-  canon: CanonText[];
-  onListen: (key: string, index: number) => void;
-  /** The mini player floats above: pad the list so nothing hides under it. */
-  bottomPad?: boolean;
-}) {
-  const bySlug = new Map(groups.map((g) => [g.text?.slug ?? "other", g]));
-  const canonBySlug = new Map((canon ?? []).map((c) => [c.slug, c]));
-  const rails = RAIL_DEFS.map((r) => ({
-    title: r.title,
-    books: r.slugs
-      .filter((slug) => !slug.startsWith("graded-"))
-      .map((slug) => {
-        const g = bySlug.get(slug);
-        const c = canonBySlug.get(slug);
-        return {
-          key: slug,
-          titleSa: g?.text?.title_sa ?? c?.title_sa ?? slug,
-          titleEn: plain(g?.text?.title_en ?? c?.title_en ?? slug),
-          voiced: g ? g.verses.filter((v) => !!v.chant).length : 0,
-          total: g?.verses.length ?? c?.verses_imported ?? 0,
-          locked: c?.locked ?? false,
-        };
-      })
-      .filter((b) => b.voiced > 0),
-  })).filter((r) => r.books.length > 0);
-
-  return (
-    <FlatList
-      data={rails}
-      keyExtractor={(rail) => rail.title}
-      contentContainerStyle={[styles.body, bottomPad && styles.bodyMini]}
-      ListHeaderComponent={header}
-      ListEmptyComponent={
-        <View style={styles.center}>
-          <EmptyState title="No audio books yet." hint="Books with a chant will appear here." />
-        </View>
-      }
-      initialNumToRender={2}
-      maxToRenderPerBatch={2}
-      windowSize={3}
-      renderItem={({ item: rail }) => (
-        <View style={{ marginBottom: 16 }}>
-          <View style={styles.railHead}>
-            <Text style={styles.sectionTitle}>{rail.title}</Text>
-            <View style={styles.railRule} />
-          </View>
-          <FlatList
-            horizontal
-            data={rail.books}
-            keyExtractor={(b) => b.key}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ gap: 12, paddingVertical: 4 }}
-            initialNumToRender={3}
-            maxToRenderPerBatch={3}
-            windowSize={3}
-            getItemLayout={(_, index) => ({ length: 116, offset: 116 * index, index })}
-            renderItem={({ item: b }) => {
-              const partial = b.voiced < b.total;
-              const label = `${b.titleEn}. ${b.voiced} of ${b.total} verses voiced.${b.locked ? " Plus." : ""}`;
-              return (
-                <Pressable
-                  key={b.key}
-                  onPress={() => {
-                    haptics.tap();
-                    onListen(b.key, 0);
-                  }}
-                  accessibilityRole="button"
-                  accessibilityLabel={label}
-                  style={{ width: 104 }}
-                >
-                  <View>
-                    <CoverArt bookKey={b.key} titleSa={b.titleSa} width={104} />
-                    <View style={styles.audioBadge}>
-                      <Ionicons name={"headphones" as never} size={10} color="#FFF8EE" />
-                    </View>
-                  </View>
-                  <Text style={styles.railTitle} numberOfLines={1}>{b.titleEn}</Text>
-                  <Text style={styles.railCount}>
-                    {b.locked ? "Plus · " : ""}
-                    {partial ? `${b.voiced} of ${b.total} voiced` : `${b.voiced} voiced`}
-                  </Text>
-                </Pressable>
-              );
-            }}
-          />
-        </View>
-      )}
-    />
-  );
-}
-
-// "Continue listening": where the learner last played a book, as the reader
-// shelf's Continue is for reading. A deep-fill hero in the book's own
-// colour, the cover leaning out of it, with the saved listen mode named.
-function ContinueListening({
-  bookKey,
-  pos,
-  groups,
-  onResume,
-  onBrowse,
-}: {
-  bookKey: string;
-  pos: ListenPosition;
-  groups: { text: CanonText | null; verses: Shloka[] }[];
-  onResume: (key: string, index: number, chapter: string | null) => void;
-  onBrowse: (key: string) => void;
-}) {
-  const g = groups.find((x) => x.text?.slug === bookKey);
-  const title = g ? plain(g.text!.title_en) : bookKey;
-  const titleSa = g?.text?.title_sa ?? "";
-  const total = g?.verses.length ?? 0;
-  const at = Math.min(pos.index, Math.max(0, total - 1));
-  // The saved Verse | Meaning | Both choice, named in the hero.
-  const [modeLabel, setModeLabel] = useState("");
-  useEffect(() => {
-    let on = true;
-    getListenMode(bookKey)
-      .then((m) => {
-        if (on) setModeLabel(m === "meaning" ? "Meaning" : m === "both" ? "Verse + meaning" : "Verse");
-      })
-      .catch(() => {});
-    return () => {
-      on = false;
-    };
-  }, [bookKey]);
-  return (
-    <Pressable
-      onPress={() => {
-        haptics.tap();
-        onResume(bookKey, pos.index, pos.chapter);
-      }}
-      style={[styles.continueHero, { backgroundColor: coverColour(bookKey) }]}
-      accessibilityRole="button"
-      accessibilityLabel={`Continue listening to ${title} at verse ${at + 1}`}
-    >
-      <View style={styles.heroRow}>
-        <View style={styles.heroText}>
-          <View style={styles.heroEyebrowRow}>
-            <Ionicons name={"headphones" as never} size={12} color="#FFF8EE" />
-            <Text style={styles.heroEyebrow}>Continue listening</Text>
-          </View>
-          <Text style={styles.heroTitle} numberOfLines={1}>
-            {title}
-          </Text>
-          {!!titleSa && (
-            <Text style={[styles.heroSa, script("semibold")]} numberOfLines={1}>
-              {titleSa}
-            </Text>
-          )}
-          <Text style={styles.heroMeta} numberOfLines={1}>
-            {modeLabel ? `${modeLabel} · ` : ""}verse {at + 1}
-            {total ? ` of ${total}` : ""}
-          </Text>
-          {total > 0 && (
-            <View style={styles.heroBar}>
-              <View style={[styles.heroFill, { width: `${(at / Math.max(1, total)) * 100}%` }]} />
-            </View>
-          )}
-        </View>
-        <View style={styles.heroCover}>
-          <CoverArt bookKey={bookKey} titleSa={titleSa || title} width={72} />
-        </View>
-      </View>
-      <View style={styles.heroCtas}>
-        <View style={styles.heroGo}>
-          <Ionicons name="play" size={11} color={coverColour(bookKey)} />
-          <Text style={[styles.heroGoText, { color: coverColour(bookKey) }]}>Resume</Text>
-        </View>
-        <Pressable
-          onPress={() => {
-            haptics.tap();
-            onBrowse(bookKey);
-          }}
-          style={styles.heroAlt}
-          accessibilityRole="button"
-          accessibilityLabel={`Open ${title} in the bookshelf`}
-        >
-          <Text style={styles.heroAltText}>Contents</Text>
-        </Pressable>
-      </View>
-    </Pressable>
-  );
-}
-
-function ContinueBlock({
-  groups,
-  allCount,
-  positions,
-  onResume,
-  onContents,
-}: {
-  groups: { text: CanonText | null; verses: Shloka[] }[];
-  allCount: number;
-  positions: Record<string, number>;
-  onResume: (key: string, at: number) => void;
-  onContents: (key: string) => void;
-}) {
-  // Most recently read book: AsyncStorage order is insertion order, so the
-  // last key with progress wins. Kept simple: first row with progress.
-  const rows: { key: string; title: string; sa: string; at: number; total: number; colour: string }[] = [];
-  const push = (key: string, title: string, sa: string, total: number) => {
-    const at = positions[key] ?? 0;
-    if (total > 0 && at > 0 && at < total) rows.push({ key, title, sa, at, total, colour: coverColour(key) });
-  };
-  push(ALL_KEY, "All verses", "सर्वम्", allCount);
-  for (const g of groups) {
-    if (g.text) push(g.text.slug, plain(g.text.title_en), g.text.title_sa, g.verses.length);
-    else push(OTHER_KEY, "Other verses", "अन्यत्", g.verses.length);
-  }
-  if (rows.length === 0) return null;
-  const r = rows[0];
-  return (
-    <Pressable
-      onPress={() => {
-        haptics.tap();
-        onResume(r.key, r.at);
-      }}
-      style={[styles.continueHero, { backgroundColor: r.colour }]}
-      accessibilityRole="button"
-      accessibilityLabel={`Continue ${r.title} at chapter page ${r.at + 1}`}
-    >
-      <View style={styles.heroRow}>
-        <View style={styles.heroText}>
-          <View style={styles.heroEyebrowRow}>
-            <Ionicons name="bookmark" size={12} color="#FFF8EE" />
-            <Text style={styles.heroEyebrow}>Continue reading</Text>
-          </View>
-          <Text style={styles.heroTitle} numberOfLines={1}>
-            {r.title}
-          </Text>
-          {!!r.sa && (
-            <Text style={[styles.heroSa, script("semibold")]} numberOfLines={1}>
-              {r.sa}
-            </Text>
-          )}
-          <Text style={styles.heroMeta} numberOfLines={1}>
-            Chapter verse {r.at + 1} of {r.total}
-          </Text>
-          <View style={styles.heroBar}>
-            <View style={[styles.heroFill, { width: `${(r.at / Math.max(1, r.total)) * 100}%` }]} />
-          </View>
-        </View>
-        <View style={styles.heroCover}>
-          <CoverArt bookKey={r.key} titleSa={r.sa || r.title} width={72} />
-        </View>
-      </View>
-      <View style={styles.heroCtas}>
-        <View style={styles.heroGo}>
-          <Ionicons name="play" size={11} color={r.colour} />
-          <Text style={[styles.heroGoText, { color: r.colour }]}>Read verse {r.at + 1}</Text>
-        </View>
-        <Pressable
-          onPress={() => {
-            haptics.tap();
-            onContents(r.key);
-          }}
-          style={styles.heroAlt}
-          accessibilityRole="button"
-          accessibilityLabel={`Open ${r.title} contents`}
-        >
-          <Text style={styles.heroAltText}>Contents</Text>
-        </Pressable>
-      </View>
-    </Pressable>
-  );
-}
-
-function ContinueRows({
-  groups,
-  allCount,
-  positions,
-  onResume,
-}: {
-  groups: { text: CanonText | null; verses: Shloka[] }[];
-  allCount: number;
-  positions: Record<string, number>;
-  onResume: (key: string, at: number) => void;
-}) {
-  const rows: { key: string; title: string; at: number; total: number }[] = [];
-  const push = (key: string, title: string, total: number) => {
-    const at = positions[key] ?? 0;
-    if (total > 0 && at > 0 && at < total) rows.push({ key, title, at, total });
-  };
-  push(ALL_KEY, "All verses", allCount);
-  for (const g of groups) {
-    if (g.text) push(g.text.slug, g.text.title_en, g.verses.length);
-    else push(OTHER_KEY, "Other verses", g.verses.length);
-  }
-  for (const t of TIERS) push(gradedKey(t.tier), `Graded · ${t.label}`, Number.MAX_SAFE_INTEGER);
-  if (rows.length === 0) return null;
-  return (
-    <View style={styles.continueBlock}>
-      {rows.slice(0, 3).map((r) => (
-        <Pressable
-          key={r.key}
-          onPress={() => {
-            haptics.tap();
-            onResume(r.key, r.at);
-          }}
-          style={({ pressed }) => [styles.continueRow, pressed && styles.pressed]}
-          accessibilityRole="button"
-          accessibilityLabel={`Continue ${r.title} at page ${r.at + 1}`}
-        >
-          <Ionicons name="bookmark" size={18} color={color.saffron} />
-          <View style={styles.continueText}>
-            <Text style={styles.continueTitle}>Continue · {r.title}</Text>
-            <Text style={styles.continueSub}>
-              Page {r.at + 1}
-              {r.total !== Number.MAX_SAFE_INTEGER ? ` of ${r.total}` : ""}
-            </Text>
-          </View>
-          <Ionicons name="chevron-forward" size={18} color={color.inkSoft} />
-        </Pressable>
-      ))}
-    </View>
-  );
-}
-
-function BookCard({
-  titleSa,
-  titleEn,
-  count,
-  planned,
-  depth,
-  progress,
-  onPress,
-}: {
-  titleSa: string;
-  titleEn: string;
-  count: number;
-  planned: number | null;
-  depth?: string;
-  progress: number;
-  onPress?: () => void;
-}) {
-  const coming = count === 0;
-  const pct = planned ? Math.min(1, count / planned) : count > 0 ? 1 : 0;
-  return (
-    <Pressable
-      onPress={onPress}
-      disabled={coming}
-      style={({ pressed }) => [
-        styles.bookCard,
-        pressed && !coming && styles.pressed,
-        coming && styles.bookCardComing,
-      ]}
-      accessibilityRole="button"
-      accessibilityLabel={
-        coming ? `${titleEn}. Coming soon.` : `${titleEn}. ${count} verses.`
-      }
-      accessibilityState={{ disabled: coming }}
-    >
-      <Text style={[styles.bookSa, script("bold")]} numberOfLines={1}>
-        {titleSa}
-      </Text>
-      <Text style={styles.bookEn} numberOfLines={2}>
-        {titleEn}
-      </Text>
-      {coming ? (
-        <View style={styles.comingBadge}>
-          <Text style={styles.comingText}>Coming soon</Text>
-        </View>
-      ) : (
-        <>
-          <Text style={styles.bookCount}>
-            {count}{planned ? ` / ${planned}` : ""} verse{count === 1 ? "" : "s"}
-            {progress > 0 && progress < count ? ` · p.${progress + 1}` : ""}
-          </Text>
-          <ProgressBar progress={pct} height={8} style={{ marginTop: 6 }} />
-        </>
-      )}
-      {depth === "index" && !coming && (
-        <Text style={styles.bookDepth}>Catalogue selections</Text>
-      )}
-    </Pressable>
-  );
-}
-
-// ─── Book index ─────────────────────────────────────────────────────
-
-function BackRow({ onPress, label }: { onPress: () => void; label: string }) {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={styles.backRow}
-      accessibilityRole="button"
-      accessibilityLabel={`Back to ${label}`}
-    >
-      <Ionicons name="arrow-back" size={20} color={color.saffron} />
-      <Text style={styles.backText}>{label}</Text>
-    </Pressable>
-  );
-}
-
-/** "47 verses", or "47 of 700 verses" when the book's size is known. */
-function versesCaption(book: OpenBook): string {
-  const n = book.verses.length;
-  if (book.planned) return `${n} of ${book.planned} verses`;
-  return `${n} verse${n === 1 ? "" : "s"}`;
-}
-
-/** A verse's address for labels — "5.35" — or its whole reference when it has none. */
-function addressOf(v: Shloka): string {
-  const { nums } = parseRef(v.source_ref);
-  return nums.length > 0 ? nums.join(".") : v.source_ref;
-}
-
-/** A page's running head: the book, or in a mixed book the verse's own source. */
-function runningTitleFor(book: OpenBook, v: Shloka): string {
-  return book.key === ALL_KEY || book.key === OTHER_KEY ? parseRef(v.source_ref).book : book.titleEn;
-}
-
-/** The contents ring: how far through the book, read off the saved position. */
-function ProgressRing({
-  size,
-  progress,
-  label,
-}: {
-  size: number;
-  progress: number;
-  label: string;
-}) {
-  const stroke = 6;
-  const r = (size - stroke) / 2;
-  const c = 2 * Math.PI * r;
-  const p = Math.max(0, Math.min(1, progress));
-  return (
-    <View style={{ width: size, height: size, alignItems: "center", justifyContent: "center" }}>
-      <Svg width={size} height={size} style={{ position: "absolute", transform: [{ rotate: "-90deg" }] }}>
-        <Circle cx={size / 2} cy={size / 2} r={r} stroke={color.border} strokeWidth={stroke} fill="none" />
-        <Circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          stroke={color.saffron}
-          strokeWidth={stroke}
-          fill="none"
-          strokeLinecap="round"
-          strokeDasharray={`${c}`}
-          strokeDashoffset={c * (1 - p)}
-        />
-      </Svg>
-      <Text style={styles.ringLabel}>{label}</Text>
-    </View>
-  );
-}
-
-function BookIndex({
-  book,
-  sized,
-  resumeAt,
-  onBack,
-  onStart,
-  onOpen,
-}: {
-  book: OpenBook;
-  sized: (pt: number, opts?: { sanskrit?: boolean }) => number;
-  resumeAt: number;
-  onBack: () => void;
-  onStart: () => void;
-  onOpen: (i: number) => void;
-}) {
-  const chapters = useMemo(() => groupByChapter(book.verses), [book]);
-  // Flat position of each verse for index → page jumps.
-  const positions = useMemo(() => {
-    const map = new Map<string, number>();
-    book.verses.forEach((v, i) => map.set(v.id, i));
-    return map;
-  }, [book]);
-  const resume = Math.max(0, Math.min(resumeAt, book.verses.length - 1));
-  const started = resume > 0;
-  // Chapters collapsed to a header row by default, the chapter being read
-  // open, so opening the book never mounts 700 rows.
-  const resumeChapter = useMemo(() => {
-    let acc = 0;
-    for (const ch of chapters) {
-      if (resume >= acc && resume < acc + ch.verses.length) return ch.label;
-      acc += ch.verses.length;
-    }
-    return chapters[0]?.label ?? "";
-  }, [chapters, resume]);
-  const [openCh, setOpenCh] = React.useState<string | null>(null);
-  React.useEffect(() => setOpenCh(resumeChapter), [resumeChapter, book.key]);
-  const sections = useMemo(
-    () => chapters.map((ch) => ({ title: ch.label, data: openCh === ch.label ? ch.verses : [] })),
-    [chapters, openCh],
-  );
-  // Each chapter's flat range drives its timeline node: read, current, ahead.
-  const chMeta = useMemo(() => {
-    let acc = 0;
-    return chapters.map((ch) => {
-      const start = acc;
-      acc += ch.verses.length;
-      return { label: ch.label, start, end: acc - 1, count: ch.verses.length };
-    });
-  }, [chapters]);
-  const pct = book.verses.length > 1 ? Math.min(1, resume / (book.verses.length - 1)) : 0;
-
-  return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
-      <SectionList
-        sections={sections}
-        keyExtractor={(v) => (v as Shloka).id}
-        contentContainerStyle={styles.body}
-        ListHeaderComponent={
-          <>
-            <BackRow onPress={onBack} label="Books" />
-            <View style={styles.tlHead}>
-              <ProgressRing
-                size={58}
-                progress={started ? pct : 0}
-                label={`${Math.round((started ? pct : 0) * 100)}%`}
-              />
-              <View style={styles.tlHeadText}>
-                <Text style={[styles.tlTitle, { fontSize: sized(font.sizes.lg) }]} numberOfLines={1}>
-                  {book.titleEn}
-                </Text>
-                <Text
-                  style={[styles.tlSa, script("semibold"), { fontSize: sized(font.sizes.base, { sanskrit: true }) }]}
-                  numberOfLines={1}
-                >
-                  {book.titleSa}
-                </Text>
-              </View>
-            </View>
-            <Pressable
-              onPress={onStart}
-              style={styles.tlResume}
-              accessibilityRole="button"
-              accessibilityLabel={started ? `Continue at ${addressOf(book.verses[resume])}` : "Start reading"}
-            >
-              <Ionicons name={started ? "bookmark" : "play"} size={14} color={color.white} />
-              <Text style={styles.tlResumeText}>
-                {started ? `Continue · ${addressOf(book.verses[resume])}` : "Start reading"}
-              </Text>
-            </Pressable>
-            <Text style={[styles.subtitle, { fontSize: sized(font.sizes.sm), marginTop: space.md }]}>
-              Tap a chapter to list its verses; tap a verse to open it.
-            </Text>
-          </>
-        }
-        renderSectionHeader={({ section }) => {
-          const ch = chapters.find((c) => c.label === section.title);
-          const count = ch?.verses.length ?? 0;
-          const meta = chMeta.find((m) => m.label === section.title);
-          const done = !!meta && meta.end < resume;
-          const now = !!meta && meta.start <= resume && resume <= meta.end;
-          const open = openCh === section.title;
-          return (
-            <Pressable
-              onPress={() => {
-                haptics.tap();
-                setOpenCh((cur) => (cur === section.title ? "" : section.title));
-              }}
-              accessibilityRole="button"
-              accessibilityState={{ expanded: open }}
-              accessibilityLabel={`${section.title}. ${count} verses.`}
-              style={styles.tlChapter}
-            >
-              <View style={styles.tlNodeCol}>
-                <View style={[styles.tlNode, done && styles.tlNodeDone, now && styles.tlNodeNow]}>
-                  {now ? <View style={styles.tlNodeCore} /> : null}
-                </View>
-              </View>
-              <Text style={styles.chapterLabel}>{section.title}</Text>
-              <Text style={styles.chapterCount}>{count}</Text>
-              <Ionicons name={open ? "chevron-up" : "chevron-down"} size={18} color={color.inkSoft} />
-            </Pressable>
-          );
-        }}
-        renderItem={({ item }) => {
-          const v = item as Shloka;
-          const at = positions.get(v.id) ?? 0;
-          const isHere = started && at === resume;
-          const { nums } = parseRef(v.source_ref);
-          const num = nums.length > 0 ? nums[nums.length - 1] : at + 1;
-          return (
-            <Pressable
-              onPress={() => {
-                haptics.tap();
-                onOpen(at);
-              }}
-              style={({ pressed }) => [
-                styles.indexRow,
-                styles.tlRow,
-                pressed && styles.pressed,
-                isHere && styles.indexRowHere,
-              ]}
-              accessibilityRole="button"
-              accessibilityLabel={`${v.source_ref}. ${firstLine(v.devanagari)}`}
-            >
-              <View style={styles.indexNum}>
-                <Text style={styles.indexNumText}>{num}</Text>
-              </View>
-              <View style={styles.indexText}>
-                <Text style={styles.indexRef}>{v.source_ref}</Text>
-                <Text style={[styles.indexPreview, script("semibold")]} numberOfLines={1}>
-                  {firstLine(v.devanagari)}
-                </Text>
-              </View>
-              {isHere && (
-                <View style={styles.hereChip}>
-                  <Text style={styles.hereChipText}>here</Text>
-                </View>
-              )}
-              <Ionicons name="chevron-forward" size={16} color={color.inkFaint} />
-            </Pressable>
-          );
-        }}
-      />
+      <MiniPlayer onOpen={openPlayer} />
     </SafeAreaView>
   );
 }
@@ -1599,365 +616,14 @@ function ReaderPage({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: color.bg },
+  safe: { flex: 1, backgroundColor: T.paper },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
-  body: { padding: space.lg, paddingBottom: 120 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
-  subtitle: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    color: color.inkSoft,
-    marginTop: 2,
-    marginBottom: space.md,
-    lineHeight: 20,
-  },
-  sectionTitle: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.md,
-    color: color.ink,
-  },
-  sectionHint: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    marginBottom: space.sm,
-  },
-  pressed: { transform: [{ translateY: 2 }] },
+  homeBody: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 120 },
+  back: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 48, alignSelf: "flex-start" },
+  backText: { ...ui("semibold"), fontSize: 15, color: T.ink },
+  gradedTitle: { ...ui("bold"), color: T.ink, marginBottom: space.md },
 
-  // Books | Audio switch
-  mediaSwitch: {
-    flexDirection: "row",
-    alignSelf: "flex-start",
-    backgroundColor: color.surfaceMuted,
-    borderRadius: 999,
-    padding: 3,
-    marginTop: space.sm,
-    marginBottom: space.sm,
-  },
-  mediaSeg: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    borderRadius: 999,
-    paddingVertical: 7,
-    paddingHorizontal: 16,
-    minHeight: 36,
-  },
-  mediaSegOn: { backgroundColor: color.ink },
-  mediaSegText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-  },
-  mediaSegTextOn: { color: "#FFF8EE" },
-  audioBadge: {
-    position: "absolute",
-    right: 6,
-    bottom: 6,
-    backgroundColor: "rgba(0,0,0,0.55)",
-    borderRadius: 999,
-    width: 20,
-    height: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  // Shelf
-  shelfGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
-  bookCard: {
-    flex: 1,
-    minWidth: "46%",
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    padding: space.md,
-    ...shadow.card,
-    borderTopWidth: 4,
-    borderTopColor: color.saffron,
-  },
-  bookCardComing: { opacity: 0.7, borderTopColor: color.border },
-  bookSa: { fontSize: font.sizes.lg, color: color.ink },
-  bookEn: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.ink,
-    marginTop: 2,
-    minHeight: 36,
-  },
-  bookCount: {
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.xs,
-    color: color.inkSoft,
-    marginTop: 4,
-  },
-  bookDepth: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-    marginTop: 4,
-  },
-  comingBadge: {
-    alignSelf: "flex-start",
-    backgroundColor: color.surfaceMuted,
-    borderRadius: radius.pill,
-    paddingHorizontal: space.sm,
-    paddingVertical: 4,
-    marginTop: space.sm,
-  },
-  comingText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.xs,
-    color: color.inkSoft,
-  },
-  continueBlock: { borderRadius: 16, padding: 16, gap: 4, marginBottom: 8 },
-
-  // Shelf hero: the deep-fill Continue card (October look rule) with the
-  // book's cover leaning out of it and the two actions on the front.
-  continueHero: { borderRadius: 16, padding: 14, marginBottom: 8, ...shadow.card },
-  heroRow: { flexDirection: "row", gap: 12 },
-  heroText: { flex: 1, minWidth: 0 },
-  heroEyebrowRow: { flexDirection: "row", alignItems: "center", gap: 6 },
-  heroEyebrow: {
-    color: "rgba(255,248,238,0.78)",
-    fontSize: 11,
-    fontWeight: "800",
-    letterSpacing: 1.4,
-    textTransform: "uppercase",
-  },
-  heroTitle: {
-    color: "#FFF8EE",
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 20,
-    marginTop: 6,
-  },
-  heroSa: { color: "rgba(255,248,238,0.85)", fontSize: 14, marginTop: 1 },
-  heroMeta: { color: "rgba(255,248,238,0.66)", fontSize: 12, fontWeight: "600", marginTop: 4 },
-  heroBar: { height: 4, borderRadius: 2, backgroundColor: "rgba(255,248,238,0.2)", marginTop: 10 },
-  heroFill: { height: 4, borderRadius: 2, backgroundColor: "#FFF8EE" },
-  heroCover: { transform: [{ rotate: "3deg" }] },
-  heroCtas: { flexDirection: "row", gap: 8, marginTop: 14 },
-  heroGo: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    backgroundColor: "#FFF8EE",
-    borderRadius: 12,
-    paddingVertical: 9,
-    paddingHorizontal: 14,
-  },
-  heroGoText: { fontWeight: "800", fontSize: 13 },
-  heroAlt: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 12,
-    borderWidth: 1.5,
-    borderColor: "rgba(255,248,238,0.4)",
-    paddingVertical: 9,
-    paddingHorizontal: 14,
-  },
-  heroAltText: { color: "#FFF8EE", fontWeight: "800", fontSize: 13 },
-  railHead: { flexDirection: "row", alignItems: "center", gap: 10, marginTop: space.md, marginBottom: space.xs },
-  railRule: { flex: 1, height: 1, backgroundColor: color.border },
-  bodyMini: { paddingBottom: 200 },
-  railTitle: { fontWeight: "700", fontSize: 13, color: color.ink, marginTop: 4 },
-  railCount: { fontSize: 12, color: color.inkSoft },
-  continueRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    padding: space.md,
-    marginBottom: space.xs,
-    borderLeftWidth: 4,
-    borderLeftColor: color.saffron,
-    ...shadow.card,
-  },
-  continueText: { flex: 1 },
-  continueTitle: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.ink,
-  },
-  continueSub: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.xs,
-    color: color.inkSoft,
-    marginTop: 1,
-  },
-  tierRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    padding: space.md,
-    marginBottom: space.sm,
-    minHeight: 60,
-    ...shadow.card,
-  },
-  tierIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: color.saffronLight,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  tierText: { flex: 1 },
-  tierLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.base,
-    color: color.ink,
-  },
-  tierHint: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-  },
-
-  // Book index
-  backRow: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, marginBottom: space.xs },
-  backText: {
-    color: color.saffronText,
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-  },
-  chapterBlock: { marginBottom: space.md },
-  chapterHeader: { flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 12, minHeight: 48 },
-  chapterCount: { marginLeft: "auto", color: color.inkSoft, fontSize: 12, fontWeight: "700" },
-  chapterLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.saffronText,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-  },
-
-  // Contents timeline (D3): ring + resume pill up top, chapters down a spine
-  // of nodes — read chapters solid, the current one ringed in saffron.
-  tlHead: { flexDirection: "row", alignItems: "center", gap: 14, marginTop: space.xs },
-  tlHeadText: { flex: 1, minWidth: 0 },
-  tlTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink },
-  tlSa: { color: color.inkSoft, marginTop: 1 },
-  tlResume: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "flex-start",
-    gap: 7,
-    backgroundColor: color.saffronBtn,
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    marginTop: space.md,
-  },
-  tlResumeText: {
-    color: color.white,
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-  },
-  ringLabel: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 12,
-    color: color.saffronDeep,
-  },
-  tlChapter: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 12, minHeight: 48 },
-  tlNodeCol: { width: 24, alignItems: "center", justifyContent: "center" },
-  tlNode: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    backgroundColor: color.bg,
-    borderWidth: 3,
-    borderColor: color.border,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  tlNodeDone: { backgroundColor: "#17535C", borderColor: "#17535C" },
-  tlNodeNow: { borderColor: color.saffron },
-  tlNodeCore: { width: 8, height: 8, borderRadius: 4, backgroundColor: color.saffron },
-  tlRow: { marginLeft: 34 },
-  indexRowHere: { backgroundColor: color.saffronLight },
-  hereChip: {
-    backgroundColor: color.saffron,
-    borderRadius: 8,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-  },
-  hereChipText: { color: color.white, fontSize: 10, fontWeight: "800" },
-  indexRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    backgroundColor: color.surface,
-    borderRadius: radius.md,
-    padding: space.sm,
-    marginBottom: space.xs,
-    minHeight: 56,
-    ...shadow.card,
-  },
-  indexNum: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: color.saffronLight,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  indexNumText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.saffronDeep,
-  },
-  indexText: { flex: 1 },
-  indexRef: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.xs,
-    color: color.saffron,
-    textTransform: "uppercase",
-    letterSpacing: 0.4,
-  },
-  indexPreview: { fontSize: font.sizes.base, color: color.ink, marginTop: 1 },
-
-  // Reading header
-  readHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: space.lg,
-    paddingTop: space.sm,
-    paddingBottom: space.xs,
-  },
-  headerBtn: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, minWidth: 64 },
-  headerBtnText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm },
-  headerBtnRight: { minHeight: 44, minWidth: 64, alignItems: "flex-end", justifyContent: "center" },
-  readPos: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-    color: color.inkSoft,
-    flex: 1,
-    textAlign: "center",
-  },
-
-  // The open book: PageCurlBook draws the board and page-block; this is the paper.
-  pageArea: { flex: 1, paddingHorizontal: space.md, paddingBottom: space.xs },
+  // The page of a paged book's chapter (PagedChapterReader draws the board).
   page: {
     flex: 1,
     backgroundColor: "#FFFDF7",
@@ -1986,6 +652,8 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 0.6,
   },
+  pageScroll: { flex: 1 },
+  pageBody: { paddingBottom: space.xl },
   chapterOpen: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.md },
   chapterRule: { flex: 1, height: 1, backgroundColor: color.saffronLight },
   chapterOpenText: {
@@ -1996,14 +664,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 1,
   },
-  folio: {
-    textAlign: "center",
-    paddingVertical: 6,
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-  },
   pageSource: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800",
@@ -2013,8 +673,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     paddingTop: space.md,
   },
-  pageScroll: { flex: 1 },
-  pageBody: { paddingBottom: space.xl },
   wordWrap: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
   wordChip: {
     backgroundColor: "rgba(232,91,37,0.07)",
@@ -2079,28 +737,12 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: font.sizes.sm,
   },
-
-  // Turn controls
-  turnRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: space.lg,
-    paddingVertical: space.sm,
-    gap: space.md,
+  folio: {
+    textAlign: "center",
+    paddingVertical: 6,
+    fontFamily: "Nunito_600SemiBold",
+    fontWeight: "600",
+    fontSize: font.sizes.xs,
+    color: color.inkFaint,
   },
-  turnBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    backgroundColor: color.surface,
-    borderRadius: radius.lg,
-    paddingHorizontal: space.lg,
-    minHeight: 52,
-    flex: 1,
-    justifyContent: "center",
-    ...shadow.card,
-  },
-  turnBtnDisabled: { opacity: 0.5 },
-  turnText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base },
-  turnTextDisabled: { color: color.inkFaint },
 });

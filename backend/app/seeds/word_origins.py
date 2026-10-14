@@ -124,7 +124,7 @@ def _read_files(lipi) -> tuple[dict[str, dict], dict[str, dict], int]:
                                    rid, triple_owner[triple], oid)
                     continue
                 triple_owner[triple] = rid
-                roman = ""
+                roman = str(r.get("roman") or "")[:64] if script != "latin" else ""
                 if script == "cyrillic":
                     try:
                         roman = romanize_ru(word)[:64]
@@ -145,6 +145,9 @@ def _read_files(lipi) -> tuple[dict[str, dict], dict[str, dict], int]:
                     "source_keys": r.get("sources") or [],
                     "lookup": str(r.get("lookup") or "")[:120],
                     "checked_on": str(r.get("checked_on") or "")[:10],
+                    "checked_by": str(r.get("checked_by") or "")[:12],
+                    "source_url": str(r.get("source_url") or "")[:500],
+                    "source_site": str(r.get("source_site") or "")[:120],
                     "status": "approved",
                 }
     return origins, routes, len(files)

@@ -11,7 +11,6 @@ import { useAudioRecorder, RecordingPresets } from "expo-audio";
 
 import { request } from "../api/client";
 import { uploadCalibration } from "../api/uploadCalibration";
-import { GameTopBar } from "../games/v2/parts";
 import { color, fill, font, onFill, radius, space } from "../theme";
 import { haptics } from "../services/haptics";
 
@@ -29,7 +28,7 @@ const LABEL_TINT: Record<string, string> = {
   scrambled: fill.rose, noisy: fill.slate, other: fill.maroon,
 };
 
-export default function CalibrationScreen({ navigation }: Props) {
+export default function CalibrationScreen(_props: Props) {
   const [set, setSet] = useState<PromptSet | null>(null);
   const [promptIdx, setPromptIdx] = useState(0);
   const [label, setLabel] = useState("clean");
@@ -90,7 +89,7 @@ export default function CalibrationScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <GameTopBar title="Calibration" sa="श्रुति-संग्रहः" onClose={() => navigation.goBack()} />
+      {/* The stack header already says "Calibration" with a back arrow. */}
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         <Text style={styles.note}>
           Recitation-rubric study captures. Takes are private, labelled, and used

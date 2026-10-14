@@ -12,8 +12,8 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { AppState, Platform, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { SafeAreaView, useSafeAreaFrame } from "react-native-safe-area-context";
 
 import { api, type VarnamalaChar, type VarnamalaResponse, type PronunciationResult } from "../api/client";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -33,6 +33,7 @@ import {
   useAudioRecorder,
   RecordingPresets,
   requestRecordingPermissionsAsync,
+  setAudioModeAsync,
 } from "expo-audio";
 
 export { PLACE_COLORS };
@@ -56,7 +57,7 @@ function placeColorOf(c: VarnamalaChar): string {
 type Props = NativeStackScreenProps<RootStackParamList, "Varnamala">;
 
 export default function VarnamalaScreen({ navigation }: Props) {
-  const { width } = useWindowDimensions();
+  const { width } = useSafeAreaFrame();
   const [grid, setGrid] = useState<VarnamalaResponse | null>(null);
   const [gridFailed, setGridFailed] = useState(false);
   const [speaking, setSpeaking] = useState<string | null>(null);
@@ -123,13 +124,14 @@ export default function VarnamalaScreen({ navigation }: Props) {
 
   const select = useCallback(
     (c: VarnamalaChar) => {
+      if (recActive || attempting) return;
       setSelectedChar(c);
       // A new target means the previous verdict no longer applies.
       setPron(null);
       setMicError(null);
       void playChar(c);
     },
-    [playChar],
+    [playChar, recActive, attempting],
   );
 
   // Never an empty panel: open on the first vowel (animation only, no sound
@@ -155,14 +157,15 @@ export default function VarnamalaScreen({ navigation }: Props) {
       setMicError(null);
       try {
         await recorder.stop();
+        await setAudioModeAsync({ allowsRecording: false });
         // Small delay to let the native side finalize the file.
         await new Promise((r) => setTimeout(r, 300));
         const uri = recorder.uri;
         if (!uri) throw new Error("no recording");
         const res = await api.pronunciationAttempt(
-          uri,
-          "recording.m4a",
-          "audio/m4a",
+          Platform.OS === "web" ? await (await fetch(uri)).blob() : uri,
+          Platform.OS === "web" ? "recording.webm" : "recording.m4a",
+          Platform.OS === "web" ? "audio/webm" : "audio/m4a",
           selectedChar.devanagari,
           selectedChar.iast,
         );
@@ -190,15 +193,30 @@ export default function VarnamalaScreen({ navigation }: Props) {
           setMicError("Microphone is off. Allow it in settings.");
           return;
         }
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
         await recorder.prepareToRecordAsync();
         recorder.record();
         setRecActive(true);
         setMicError(null);
       } catch {
+        void setAudioModeAsync({ allowsRecording: false });
         setMicError("Couldn't start the microphone. Try again.");
       }
     }
   }, [recActive, attempting, selectedChar, recorder, recordAch]);
+
+  useEffect(() => {
+    const sub = AppState.addEventListener("change", (state) => {
+      if (state !== "active" && recorder.isRecording) {
+        void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false }));
+        setRecActive(false);
+      }
+    });
+    return () => {
+      sub.remove();
+      if (recorder.isRecording) void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false }));
+    };
+  }, [recorder]);
 
   // All chars, for the "vs" chip.
   const allChars = useMemo(() => {
@@ -329,6 +347,11 @@ export default function VarnamalaScreen({ navigation }: Props) {
       </View>
 
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={{ backgroundColor: color.surface, padding: space.md, borderLeftWidth: 3, borderLeftColor: color.saffron, gap: 6 }}>
+          <Text style={{ fontFamily: "Nunito_800ExtraBold", color: color.ink }}>An alphabet organised by sound</Text>
+          <Text style={{ fontFamily: "Nunito_600SemiBold", color: color.inkSoft, lineHeight: 22 }}>The five consonant rows move from the back of the mouth to the lips. Within each row, compare breath, voice and nasal airflow. The arrangement reflects how the sounds are made.</Text>
+          <Text style={{ fontFamily: "Nunito_700Bold", color: color.ink }}>Throat → palate → curled tongue → teeth → lips</Text>
+        </View>
         <SectionHead title="Vowels" sa="स्वराः" />
         <Wrap>
           {(grid.vowels ?? []).map((c) => (

@@ -68,6 +68,7 @@ export type RootStackParamList = {
   // Story deck (Discover Sanskrit) — the swipeable basics→advanced cards,
   // reached from the Home hero. Read-only; progress lives on the device.
   Story: undefined;
+  SandhiPractice: undefined;
   // Grammar guide (2026-09-15): one topic page, and the word lookup that used
   // to sit at the bottom of the Grammar tab. Both stack over the tab — never a
   // seventh tab (U8-1).
@@ -81,6 +82,9 @@ export type RootStackParamList = {
   // Listen: the player-first chant screen — same chapter, transport on top.
   // Reuses Book's player (useChant), reached from the chant player bar.
   Listen: { bookKey: string; index?: number; chapter?: string };
+  // Audiobook: one book on the Audio side (chapters with lengths, Resume,
+  // Read along), opened from the Audio shelf before the player.
+  Audiobook: { bookKey: string };
   // Play games (HANDOVER 5): fullscreen, header hidden.
   ShabdaRush: { topic?: string; daily?: boolean; mode?: "local"; seats?: number } | undefined;
   Smriti: { set?: string; size?: number; daily?: boolean; mode?: "local"; seats?: number } | undefined;

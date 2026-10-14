@@ -2,19 +2,22 @@
 // is null (404 or offline and empty). No skeleton flash after first load.
 
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AppState, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { festivalArtwork, festivalDayArtwork } from "../artwork/festivals";
 
 import { getLang, subscribeLang, t, useLang } from "../../i18n";
 import { getKalaPrefs, subscribeKalaPrefs } from "../../kala/prefs";
 import { resolvePlace } from "../../kala/useToday";
+import type { KalaPlace } from "../../kala/traditions";
 import { getPlace } from "../../services/place";
-import { color, fill, font, onFill, script, space } from "../../theme";
+import { color, fill, font, onFill, space } from "../../theme";
 import { plain } from "../../utils/text";
 import { PARVA_DAYS_AHEAD, type ParvaCalendar, type ParvaOccurrence } from "../../parva/api";
 import { getParvaCalendar } from "../../parva/cache";
 import { rescheduleFromCalendar } from "../../parva/reminders";
 import { activeDayFor, rankOccurrences, seriesDayNumber } from "../../parva/select";
+import { homeFestivalOccurrences } from "../../home/festivalSelection";
 
 function startOfToday(tz: string, at?: Date): string {
   try {
@@ -58,38 +61,42 @@ function mainSubtitle(o: ParvaOccurrence, todayStr: string): string {
   return kt ? `${rel}, ${kt}` : rel;
 }
 
-export default function ParvaStrip() {
+export default function ParvaStrip({ calendarPlace }: { calendarPlace?: KalaPlace | null }) {
   useLang();
   const nav = useNavigation() as unknown as { navigate: (r: string, p?: object) => void };
   const [cal, setCal] = useState<ParvaCalendar | null>(null);
   const [loadedOnce, setLoadedOnce] = useState(false);
   const [todayStr, setTodayStr] = useState(() => startOfToday("Asia/Kolkata"));
   const [tradition, setTradition] = useState("north");
+  const request = useRef(0);
 
   const load = useCallback(async () => {
+    const id = ++request.current;
     try {
       const prefs = getKalaPrefs();
       setTradition(prefs.tradition);
       const stored = await getPlace().catch(() => null);
       const { place } = resolvePlace(
-        stored ? { lat: stored.lat, lon: stored.lon, tz: stored.tz, label: stored.label } : null,
+        calendarPlace === undefined ? stored : calendarPlace,
         prefs.tradition,
       );
       const today = startOfToday(place.tz);
+      if (id !== request.current) return;
       setTodayStr(today);
       const lang = getLang();
       const data = await getParvaCalendar(
         { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang },
         { start: today, days: PARVA_DAYS_AHEAD, tz: place.tz, label: place.label },
       );
+      if (id !== request.current) return;
       setCal(data);
       if (data) void rescheduleFromCalendar(data, { tradition: prefs.tradition, tz: place.tz });
     } catch {
       /* hidden */
     } finally {
-      setLoadedOnce(true);
+      if (id === request.current) setLoadedOnce(true);
     }
-  }, []);
+  }, [calendarPlace]);
 
   useEffect(() => {
     void load();
@@ -111,6 +118,7 @@ export default function ParvaStrip() {
       if (state === "active") void load();
     });
     return () => {
+      request.current++;
       clearTimeout(timer);
       sub.remove();
       unsubPrefs();
@@ -126,10 +134,10 @@ export default function ParvaStrip() {
 
   if (!loadedOnce) return null;
   if (!cal || (cal.occurrences ?? []).length === 0) return null;
-  const occs = cal.occurrences;
-  const { main, supporting, upcoming } = rankOccurrences(occs, todayStr);
+  const occs = homeFestivalOccurrences(cal.occurrences, todayStr);
+  const { main, supporting: periods, upcoming: otherToday } = rankOccurrences(occs, todayStr);
+  const supporting = [...periods, ...otherToday];
   if (!main) return null;
-  const next3 = upcoming.slice(0, 3);
 
   // Every item has a useful destination: rich page when published, else the
   // basic verified-dates page. Nothing ignores a tap.
@@ -145,6 +153,7 @@ export default function ParvaStrip() {
   };
 
   const mainActive = activeDayFor(main, todayStr);
+  const mainArt = festivalDayArtwork(mainActive?.form_key, mainActive?.art_url) || festivalArtwork(main.slug, main.art_url);
 
   return (
     <View style={styles.wrap}>
@@ -155,8 +164,8 @@ export default function ParvaStrip() {
         accessibilityLabel={`${plain(main.title)}. ${mainSubtitle(main, todayStr)}`}
       >
         <View style={styles.todayEyebrow}><Text style={styles.todayEyebrowText}>{t("parva.today")}</Text></View>
-        {!!main.art_url && (
-          <Image source={{ uri: main.art_url }} style={styles.thumb} accessible={false} importantForAccessibility="no" />
+        {!!mainArt && (
+          <Image source={mainArt} style={styles.thumb} accessible={false} importantForAccessibility="no" />
         )}
         <View style={styles.todayText}>
           <Text style={styles.todayTitle} numberOfLines={1}>{plain(main.title)}</Text>
@@ -171,7 +180,7 @@ export default function ParvaStrip() {
       {supporting.length > 0 && (
         <View style={styles.supportBlock}>
           <Text style={styles.supportLabel}>{t("parva.supporting")}</Text>
-          {supporting.slice(0, 2).map((o) => (
+          {supporting.map((o) => (
             <Pressable
               key={`s_${o.slug}_${o.variant}_${o.date}`}
               onPress={() => openOcc(o)}
@@ -185,29 +194,6 @@ export default function ParvaStrip() {
           ))}
         </View>
       )}
-      <View style={styles.comingHead}>
-        <Text style={styles.comingLabel}>{t("parva.comingUp")}</Text>
-        <Pressable
-          onPress={() => nav.navigate("Parva")}
-          accessibilityRole="button"
-          accessibilityLabel={t("parva.all")}
-          style={styles.allHit}
-        >
-          <Text style={styles.all}>{t("parva.all")}</Text>
-        </Pressable>
-      </View>
-      {next3.map((o) => (
-        <Pressable
-          key={`${o.slug}_${o.variant}_${o.date}`}
-          onPress={() => openOcc(o)}
-          style={({ pressed }) => [styles.row, pressed && styles.pressed]}
-          accessibilityRole="button"
-          accessibilityLabel={`${o.title}. ${relLabel(o.date, todayStr)}`}
-        >
-          <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>
-          <Text style={styles.rowMeta}>{relLabel(o.date, todayStr)}</Text>
-        </Pressable>
-      ))}
     </View>
   );
 }
@@ -219,12 +205,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: space.sm,
     minHeight: 64,
-    borderRadius: 0,
+    borderRadius: 10,
+    overflow: "hidden",
     padding: space.md,
     backgroundColor: fill.teal,
   },
   pressed: { opacity: 0.9 },
-  thumb: { width: 56, height: 64 },
+  thumb: { width: 56, height: 64, borderRadius: 6 },
   todayEyebrow: { position: "absolute", top: 0, right: 0, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: "rgba(255,248,238,0.14)" },
   todayEyebrowText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 10, color: onFill.text, textTransform: "uppercase", letterSpacing: 0.8 },
   todayText: { flex: 1, minWidth: 0 },
@@ -243,21 +230,4 @@ const styles = StyleSheet.create({
   },
   supportTitle: { flex: 1, fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
   supportMeta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
-  comingHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: space.sm, minHeight: 44 },
-  comingLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  allHit: { minWidth: 44, minHeight: 44, alignItems: "center", justifyContent: "center" },
-  all: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: space.sm,
-    minHeight: 48,
-    paddingVertical: space.xs,
-    borderTopWidth: 1,
-    borderTopColor: color.border,
-  },
-  rowTitle: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
-  rowMeta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
-  sa: { ...script("semibold"), fontSize: font.sizes.sm },
 });

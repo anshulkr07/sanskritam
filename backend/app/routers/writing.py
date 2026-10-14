@@ -85,6 +85,7 @@ def list_writing_items(
     db: Session = Depends(get_db),
 ):
     """The writing drill corpus, ordered tier then teaching order."""
+    from app.seeds.writing_paths import writing_paths
     q = db.query(WritingItem)
     if tier is not None:
         q = q.filter(WritingItem.tier == tier)
@@ -97,7 +98,7 @@ def list_writing_items(
             devanagari=r.devanagari,
             iast=r.iast or "",
             gloss=r.gloss or "",
-            stroke_paths=r.stroke_paths or [],
+            stroke_paths=writing_paths(r.devanagari),
             challenge_id=r.challenge_id,
         )
         for r in rows

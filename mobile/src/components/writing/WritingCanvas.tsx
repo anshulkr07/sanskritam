@@ -27,7 +27,8 @@ import Svg, { Path, Rect, Text as SvgText } from "react-native-svg";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { Button } from "../ui";
-import { color, radius, shadow, space } from "../../theme";
+import { color, script, shadow, space } from "../../theme";
+import { fitWritingPaths, writingFontSize } from "./geometry";
 import type { StrokePath } from "../../api/client";
 
 const VIEW = 100; // same coordinate space as P20-2 stroke data
@@ -95,6 +96,7 @@ export default function WritingCanvas({
 }: Props) {
   const { width: winW } = useWindowDimensions();
   const size = Math.min(340, winW - space.lg * 2);
+  const guidePaths = useMemo(() => fitWritingPaths(referencePaths ?? []), [referencePaths]);
   const status = useSyncExternalStore(recogniser.subscribe, recogniser.getStatus, recogniser.getStatus);
   const [strokes, setStrokes] = useState<Point[][]>([]);
   const [current, setCurrent] = useState<Point[]>([]);
@@ -111,8 +113,8 @@ export default function WritingCanvas({
 
   // Keep the recogniser's copy target in step with the item.
   useEffect(() => {
-    recogniser.setReference?.(reference, referencePaths ?? []);
-  }, [recogniser, reference, referencePaths]);
+    recogniser.setReference?.(reference, guidePaths);
+  }, [recogniser, reference, guidePaths]);
 
   const toPoint = useCallback((x: number, y: number): Point | null => {
     const { w, h } = layoutRef.current;
@@ -190,10 +192,9 @@ export default function WritingCanvas({
             {/* centre guides, then the śirorekhā headline */}
             <Path d="M 50 4 L 50 96" stroke={color.border} strokeWidth={0.8} strokeDasharray="2 3" />
             <Path d="M 4 55 L 96 55" stroke={color.border} strokeWidth={0.8} strokeDasharray="2 3" />
-            <Path d={`M 5 ${REEKHA_Y} L 95 ${REEKHA_Y}`} stroke={color.border} strokeWidth={1.6} strokeLinecap="round" />
             {/* reference ghost */}
-            {referencePaths && referencePaths.length > 0 ? (
-              referencePaths.map((s, i) => (
+            {guidePaths.length > 0 ? (
+              guidePaths.map((s, i) => (
                 <Path
                   key={i}
                   d={s.d}
@@ -205,7 +206,7 @@ export default function WritingCanvas({
                 />
               ))
             ) : (
-              <SvgText x={50} y={70} textAnchor="middle" fontSize={64} fill={color.saffronLight}>
+              <SvgText x={50} y={62} textAnchor="middle" fontFamily={script("regular").fontFamily} fontSize={writingFontSize(reference)} fill={color.saffronLight}>
                 {reference}
               </SvgText>
             )}
@@ -236,7 +237,7 @@ export default function WritingCanvas({
       </View>
 
       <View style={[styles.row, { width: size }]}>
-        <Button
+        <Button cornerRadius={4}
           label="Undo"
           tone="neutral"
           size="md"
@@ -246,7 +247,7 @@ export default function WritingCanvas({
           icon={<Ionicons name="arrow-undo" size={18} color={color.inkSoft} />}
           accessibilityLabel="Undo the last stroke"
         />
-        <Button
+        <Button cornerRadius={4}
           label="Clear"
           tone="neutral"
           size="md"
@@ -257,7 +258,7 @@ export default function WritingCanvas({
           accessibilityLabel="Clear the canvas"
         />
       </View>
-      <Button
+      <Button cornerRadius={4}
         label={checkLabel}
         tone="primary"
         size="lg"
@@ -276,7 +277,7 @@ export default function WritingCanvas({
 const styles = StyleSheet.create({
   root: { alignItems: "center", gap: space.sm },
   canvas: {
-    borderRadius: radius.lg,
+    borderRadius: 4,
     overflow: "hidden",
     backgroundColor: color.surface,
     borderWidth: 1,

@@ -24,15 +24,18 @@ export default function CoverArt({
   const painted = paintedCover(bookKey);
   const colour = coverColour(bookKey);
   const fg = coverForeground(bookKey);
+  // The title scales with the cover: 15 at the shelf's 100 wide, smaller on thumbnails.
+  const titleSize = sized(Math.max(9, Math.round(width * 0.15)));
 
   if (painted) {
+    // The whole cover is drawn; the title is set on its empty lower ground.
     const groundH = Math.round(height * 0.29);
     return (
       <View style={[styles.box, { width, height, backgroundColor: colour }]}>
-        <Image source={painted} style={{ width, height: height - groundH }} resizeMode="cover" />
-        <View style={[styles.ground, { height: groundH, backgroundColor: colour }]}>
+        <Image source={painted} style={{ width, height }} resizeMode="cover" accessibilityIgnoresInvertColors />
+        <View style={[styles.ground, { height: groundH }]}>
           <Text
-            style={[script("bold"), { color: fg, fontSize: sized(15), lineHeight: 22, textAlign: "center", paddingHorizontal: Math.round(width * 0.08) }]}
+            style={[script("bold"), { color: fg, fontSize: titleSize, lineHeight: Math.round(titleSize * 1.45), textAlign: "center", paddingHorizontal: Math.round(width * 0.08) }]}
             numberOfLines={2}
             adjustsFontSizeToFit
             minimumFontScale={0.6}
@@ -59,7 +62,7 @@ export default function CoverArt({
         </Svg>
       </View>
       <Text
-        style={[script("bold"), { color: fg, fontSize: sized(15), lineHeight: 22, textAlign: "center", paddingHorizontal: 8 }]}
+        style={[script("bold"), { color: fg, fontSize: titleSize, lineHeight: Math.round(titleSize * 1.45), textAlign: "center", paddingHorizontal: 8 }]}
         numberOfLines={2}
       >
         {titleSa}
@@ -69,8 +72,9 @@ export default function CoverArt({
 }
 
 const styles = StyleSheet.create({
-  box: { borderRadius: 8, overflow: "hidden", position: "relative" },
-  ground: { alignItems: "center", justifyContent: "center" },
+  // Square corners, as everywhere in Read and Learn (owner, 2026-10-13).
+  box: { overflow: "hidden", position: "relative" },
+  ground: { position: "absolute", left: 0, right: 0, bottom: 0, alignItems: "center", justifyContent: "center" },
   spine: { position: "absolute", left: 0, top: 0, bottom: 0, width: 8, backgroundColor: "rgba(0,0,0,0.22)" },
   motif: { flex: 1, alignItems: "center", justifyContent: "center", paddingTop: 12 },
 });

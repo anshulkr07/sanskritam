@@ -2,6 +2,12 @@
 
 Date: 2026-10-13. Implementation checkpoint: Home-only work is in the working tree.
 
+Scope update, 2026-10-14: the owner explicitly approved completing the missing festival, Word Journey, Do You Know, daily-content and Introduction work, plus targeted Alphabet and Writing fixes. Those two Home-linked screens and the Introduction's sandhi destination are now included. The earlier deferrals below describe the first pass, not the current scope. Preserve the approved Today, local-city, moon countdown, slightly rounded Home cards and compact Rashi changes. See `handover_home_implementation_result.md` for the current implementation and verification boundaries.
+
+### Owner refinements, 2026-10-14
+
+The owner now requests slightly rounded Home boxes, superseding the earlier square-corner decision for the Home hub. Hub cards use 10dp corners and small controls use 5–8dp; keep the established fonts and palette. Today shows the city at the top, AM/PM times, local sunrise/sunset, an animated countdown to the start of the next Poornima or Amavasya tithi, and an expandable “What does it mean?” explanation. The timezone/settings disclaimer is removed. The header shows the city immediately beside the menu: an already shared device location when available, otherwise the saved place, with a chooser when neither is available. Home shows current/ongoing observances and no Coming up section. Rashi setup uses day/month/year and hour/minute/AM-PM dropdowns; place search opens in its own keyboard-aware picker. Rashi displays a short summary rather than the full chart explanation, and its cached summary is keyed to the profile, local day and calendar location. These changes remain within Home; detailed festival/share styling and other tabs retain their existing treatment.
+
 ## 1. Final owner decisions and scope
 
 This document records the approved design and scope. The current working tree contains a first implementation pass; see the checkpoint below for what is implemented and what still needs editorial or device work.
@@ -27,7 +33,7 @@ The owner's latest instruction overrides the earlier, broader request: **only Ho
 | Writing / pronunciation / lessons | Excluded by the final Home-only instruction. |
 | Learn / Talk / Play / Read | No visual, functional or content changes. |
 
-Do not implement the earlier Varnamala microphone/scoring work, animation retiming, writing calibration, stroke animations, camera flow or learning-page redesign under this handoff. These are deferred, not silently considered completed.
+The first pass deferred Varnamala and Writing. The owner's 2026-10-14 approval supersedes that deferral for microphone/scoring, explanation pacing, writing guides/calibration and the camera/result flow. General Learn, Talk, Play and Read redesigns remain excluded.
 
 ### Strict boundaries
 

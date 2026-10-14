@@ -7,6 +7,16 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const STORY_PROGRESS_KEY = "shabd.story.index";
+const STORY_COMPLETED_KEY = "shabd.story.completed";
+
+export async function getStoryCompleted(): Promise<boolean> {
+  try { return (await AsyncStorage.getItem(STORY_COMPLETED_KEY)) === "true"; }
+  catch { return false; }
+}
+
+export function completeStory(): Promise<void> {
+  return AsyncStorage.setItem(STORY_COMPLETED_KEY, "true");
+}
 
 export async function getStoryIndex(): Promise<number> {
   try {

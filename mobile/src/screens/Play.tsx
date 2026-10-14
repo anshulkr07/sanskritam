@@ -16,6 +16,8 @@ import { useCatalog } from "../games/v2/useCatalog";
 import { haptics } from "../services/haptics";
 import { color, fill, font, onFill, radius, script, shadow, space } from "../theme";
 import { GAMES_TINT_FALLBACK } from "./playTheme";
+import PaintedBackground from "../components/artwork/PaintedBackground";
+import { gameArtwork, hubArtwork } from "../components/artwork/hubs";
 
 type Props = TabScreenProps<"Play">;
 
@@ -117,6 +119,7 @@ export default function PlayScreen({ navigation }: Props) {
         {/* 4. Recitation competition */}
         <Pressable onPress={() => nav.navigate("Contest", {})} accessibilityRole="button"
           accessibilityLabel="Open recitation competition" style={styles.compCard}>
+          <PaintedBackground source={hubArtwork("play:competition")} banner />
           <Ionicons name="mic" size={22} color={onFill.gold} />
           <View style={{ flex: 1 }}>
             <Text style={styles.compTitle}>Recitation competition</Text>
@@ -153,7 +156,7 @@ export default function PlayScreen({ navigation }: Props) {
         <Text style={styles.section}>Games</Text>
         <View style={styles.grid}>
           {(catalog?.games ?? []).map((g) => (
-            <GameTile key={g.key} title={g.title} sa={g.sa} subtitle={g.subtitle}
+            <GameTile key={g.key} gameKey={g.key} title={g.title} sa={g.sa} subtitle={g.subtitle}
               tint={(GAMES_TINT_FALLBACK as Record<string, string>)[g.key] ?? "slate"}
               onPress={() => openGame(g.key)} />
           ))}
@@ -189,13 +192,14 @@ function fmtTime(iso: string): string {
   }
 }
 
-function GameTile({ title, sa, subtitle, tint, onPress }: {
-  title: string; sa: string; subtitle: string; tint: string; onPress: () => void;
+function GameTile({ gameKey, title, sa, subtitle, tint, onPress }: {
+  gameKey: string; title: string; sa: string; subtitle: string; tint: string; onPress: () => void;
 }) {
   const bg = (fill as Record<string, string>)[tint] ?? fill.slate;
   return (
     <Pressable onPress={() => { haptics.tap(); onPress(); }} accessibilityRole="button"
       accessibilityLabel={`${title}. ${subtitle}`} style={[styles.tile, { backgroundColor: bg }]}>
+      <PaintedBackground source={gameArtwork(gameKey)} />
       <Text style={styles.tileTitle} numberOfLines={2}>{title}</Text>
       <Text style={[styles.tileSa, script("regular")]} numberOfLines={1}>{sa}</Text>
       <Text style={styles.tileSub} numberOfLines={2}>{subtitle}</Text>
@@ -232,7 +236,7 @@ const styles = StyleSheet.create({
   socialText: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.base },
   compCard: {
     flexDirection: "row", alignItems: "center", gap: space.md, backgroundColor: fill.maroon,
-    borderRadius: radius.lg, padding: space.md, minHeight: 76,
+    borderRadius: radius.lg, padding: space.md, minHeight: 76, overflow: "hidden",
   },
   compTitle: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
   compSub: { color: onFill.soft, fontSize: font.sizes.sm },
@@ -241,7 +245,7 @@ const styles = StyleSheet.create({
   friendGoalSub: { color: color.inkSoft, fontSize: font.sizes.xs },
   section: { fontWeight: "800", fontSize: 18, color: color.ink, marginTop: space.xs },
   grid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
-  tile: { width: "47.6%", borderRadius: radius.lg, padding: space.md, minHeight: 116, gap: 2 },
+  tile: { width: "47.6%", borderRadius: radius.lg, padding: space.md, minHeight: 216, justifyContent: "flex-end", overflow: "hidden", gap: 2 },
   tileTitle: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
   tileSa: { color: onFill.soft, fontSize: font.sizes.sm, lineHeight: 22 },
   tileSub: { color: onFill.faint, fontSize: font.sizes.xs, marginTop: 2 },

@@ -106,6 +106,7 @@ def relation_of(route) -> str:
     "traced", which the app words as "Goes back to Sanskrit".
     """
     kind = _get(route, "kind") or ""
+    if kind == "inherit": return "inherited"
     if kind == "related":
         return "related"
     if kind == "loan":

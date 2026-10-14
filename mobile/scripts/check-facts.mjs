@@ -67,7 +67,7 @@ same(L.FACT_TITLE, "Do you know", "feature title");
 section("Who says so");
 same(L.claimLine({ claim_kind: "text" }), "The text says this", "text");
 same(L.claimLine({ claim_kind: "tradition" }), "Tradition reads it this way", "tradition");
-same(L.claimLine({ claim_kind: "modern" }), "A modern reading of the text", "modern");
+same(L.claimLine({ claim_kind: "modern" }), "Historical research", "modern");
 same(L.claimLine({ claim_kind: "certain" }), "", "an unknown kind gives no line");
 same(L.claimLine({}), "", "a missing kind gives no line");
 same(L.claimLine(null), "", "null gives no line");

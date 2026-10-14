@@ -21,6 +21,8 @@ import { Linking, Pressable, ScrollView, Share, StyleSheet, Text, View } from "r
 import { SafeAreaView } from "react-native-safe-area-context";
 import { captureRef } from "react-native-view-shot";
 import { LinearGradient } from "expo-linear-gradient";
+import QRCode from "react-native-qrcode-svg";
+import InsightProof from "../facts/InsightProof";
 
 import { api, type Fact, type FactToday } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
@@ -36,9 +38,9 @@ import { haptics } from "../services/haptics";
 import { color, font, onFill, space } from "../theme";
 import { plain } from "../utils/text";
 
-const SHARE_W = 320;
-const SHARE_POST_H = 400;
-const SHARE_STORY_H = 569;
+const SHARE_W = 432;
+const SHARE_POST_H = 540;
+const SHARE_STORY_H = 768;
 
 function FactShareCard({
   width, height, body, verse, translation, explanation, refText, source, captureRefFn,
@@ -50,13 +52,14 @@ function FactShareCard({
     <View ref={captureRefFn} collapsable={false} style={[shareStyles.card, { width, height }]}>
       <LinearGradient colors={["#17535C", "#3B2E25"]} style={StyleSheet.absoluteFill} />
       <Text style={shareStyles.kicker}>DO YOU KNOW</Text>
-      <Text style={shareStyles.fact} numberOfLines={5}>{body}</Text>
+      <Text style={shareStyles.fact} numberOfLines={3}>{body}</Text>
       {!!verse && <Text style={shareStyles.verse} numberOfLines={3}>{verse}</Text>}
-      {!!translation && <Text style={shareStyles.translation} numberOfLines={3}>{translation}</Text>}
-      {!!explanation && <Text style={shareStyles.explanation} numberOfLines={3}>{explanation}</Text>}
+      {!!translation && <Text style={shareStyles.translation} numberOfLines={2}>{translation}</Text>}
+      {!!explanation && <Text style={shareStyles.explanation} numberOfLines={verse ? 2 : 4}>{explanation}</Text>}
       <View style={shareStyles.sourceBlock}>
         {!!refText && <Text style={shareStyles.ref} numberOfLines={1}>{refText}</Text>}
-        {!!source && <Text style={shareStyles.source} numberOfLines={2}>Source: {source}</Text>}
+        {!!source && <Text style={shareStyles.source} numberOfLines={2}>Source: {source.replace(/^https?:\/\//, "")}</Text>}
+        {/^(https?):\/\//.test(source) && <View style={{ position: "absolute", right: 0, bottom: 0, padding: 4, backgroundColor: "#FFF8EE" }}><QRCode value={source} size={42} backgroundColor="#FFF8EE" color="#3B2E25" /></View>}
         <Text style={shareStyles.brand}>Sanskritam</Text>
       </View>
     </View>
@@ -99,13 +102,13 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
   const page = sourcePage(fact);
   const earlier = (more.data?.facts ?? []).filter((f) => f.id !== fact?.id && plain(f.fact).trim() !== "").slice(0, 5);
   const shareScale = Math.min(1, shareWidth / SHARE_W);
-  const shareSource = page?.site ?? fact?.source_site ?? "";
-  const shareMessage = [body, ref, translation, explanation, page?.url ?? fact?.source_url ?? ""].filter(Boolean).join("\n\n");
+  const shareSource = page?.url ?? fact?.source_url ?? "";
+  const shareMessage = [body, dev, ref, translation, explanation, page?.url ?? fact?.source_url ?? ""].filter(Boolean).join("\n\n");
   const share = async () => {
     const target = shareFormat === "post" ? postRef.current : storyRef.current;
     try {
       if (target) {
-        const uri = await captureRef(target, { format: "png", result: "tmpfile" });
+        const uri = await captureRef(target, { format: "png", result: "tmpfile", width: 1080, height: shareFormat === "post" ? 1350 : 1920 });
         try {
           const Sharing = require("expo-sharing") as { shareAsync?: (file: string) => Promise<void> };
           if (Sharing.shareAsync) { await Sharing.shareAsync(uri); return; }
@@ -137,6 +140,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
                 {body}
               </Text>
             </Panel>
+            <InsightProof id={fact.id ?? ""} />
 
             {lines.length > 0 && (
               <>
@@ -192,7 +196,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
                       {page.site}
                     </Text>
                     <Text style={[styles.rowSub, { fontSize: sized(font.sizes.sm) }]} numberOfLines={2}>
-                      The verse was found on this page
+                      Read the cited passage or research
                     </Text>
                   </View>
                   <Ionicons name="open-outline" size={18} color={color.inkFaint} />
@@ -268,7 +272,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
           </>
         )}
         {!!fact && (
-          <View style={styles.offscreen}>
+          <View style={styles.offscreen} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
             <FactShareCard width={SHARE_W} height={SHARE_POST_H} body={body} verse={lines.join(" ")} translation={translation} explanation={explanation} refText={ref} source={shareSource} captureRefFn={(v) => { postRef.current = v; }} />
             <FactShareCard width={SHARE_W} height={SHARE_STORY_H} body={body} verse={lines.join(" ")} translation={translation} explanation={explanation} refText={ref} source={shareSource} captureRefFn={(v) => { storyRef.current = v; }} />
           </View>
@@ -322,11 +326,11 @@ const styles = StyleSheet.create({
 const shareStyles = StyleSheet.create({
   card: { overflow: "hidden", padding: 24, justifyContent: "flex-start", backgroundColor: "#17535C" },
   kicker: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, color: "#F2C879", letterSpacing: 1.2 },
-  fact: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 24, lineHeight: 32, color: "#FFF8EE", marginTop: 20 },
-  verse: { fontFamily: "Baloo2_600SemiBold", fontWeight: "600", fontSize: 20, lineHeight: 34, color: "#FFF8EE", marginTop: 16 },
+  fact: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 22, lineHeight: 28, color: "#FFF8EE", marginTop: 16 },
+  verse: { fontFamily: "Baloo2_600SemiBold", fontWeight: "600", fontSize: 18, lineHeight: 28, color: "#FFF8EE", marginTop: 12 },
   translation: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 14, lineHeight: 21, color: "rgba(255,248,238,0.88)", marginTop: 8 },
   explanation: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 13, lineHeight: 19, color: "rgba(255,248,238,0.9)", marginTop: 8 },
-  sourceBlock: { marginTop: "auto", borderTopWidth: 1, borderTopColor: "rgba(255,248,238,0.34)", paddingTop: 10 },
+  sourceBlock: { marginTop: "auto", borderTopWidth: 1, borderTopColor: "rgba(255,248,238,0.34)", paddingTop: 10, paddingRight: 60 },
   ref: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, color: "#F2C879" },
   source: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 11, lineHeight: 16, color: "rgba(255,248,238,0.82)", marginTop: 4 },
   brand: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 13, color: "#FFF8EE", marginTop: 8 },

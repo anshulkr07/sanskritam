@@ -431,7 +431,7 @@ shlokas-row IDs, and texts[] is empty).
 |---|---|---|
 | Name of the feature on screen | "Festivals" / "त्योहार और व्रत" as the title; "Parva" only in code | strings |
 | Pages served before the owner reads them | only `approved` pages; drafts that pass every automatic check are `auto_ok` and not served | `parva_serve_statuses` (default `["approved"]`) |
-| Paintings served before the owner looks | none: a page without an approved painting shows its plain header | `parva_art_serve_statuses` (default `["approved"]`) |
+| Festival artwork | owner-authorized deity paintings can be bundled and displayed directly; remote uploads retain their asset statuses | `parva_art_serve_statuses` governs remote uploads only |
 | Menstruation rules for puja and vrat | not mentioned on any page | content rule 11.6 |
 | Reminder times | 19:00 the evening before; and at the start of a pāraṇa window | code constants |
 | How far ahead the calendar is fetched | 60 days | `PARVA_DAYS_AHEAD` (phone) |

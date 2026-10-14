@@ -11,7 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import QRCode from "react-native-qrcode-svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image, Modal, Pressable, ScrollView, Share, StyleSheet, Text, View } from "react-native";
+import { Image, Linking, Modal, Pressable, ScrollView, Share, StyleSheet, Text, View, type ImageSourcePropType } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { useAsk, useAskContext } from "../ask/AskProvider";
@@ -31,10 +31,13 @@ import { resolveDayContent, selectDayIndex, seriesDayNumber } from "../parva/sel
 import { ensurePermission, followedSlugs, isRemindUnavailable, setFollowed } from "../parva/reminders";
 import { getPlace } from "../services/place";
 import JapaCounter from "../parva/JapaCounter";
+import MuhuratClock from "../parva/MuhuratClock";
+import { toggleWindowReminder, windowReminderId, windowReminderIds } from "../parva/windowReminders";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { color, fill, fillAt, font, onFill, radius, script, shadow, space } from "../theme";
 import { plain } from "../utils/text";
+import { festivalArtwork, festivalDayArtwork } from "../components/artwork/festivals";
 
 type Props = NativeStackScreenProps<RootStackParamList, "ParvaPage">;
 
@@ -45,6 +48,21 @@ interface Item {
   ref?: string;
   source_url?: string;
   region?: string;
+}
+
+function readerUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+    const pageId = parsed.searchParams.get("pageid");
+    if (parsed.hostname === "sa.wikisource.org" && parsed.pathname === "/w/api.php" && pageId) return `https://sa.wikisource.org/?curid=${pageId}`;
+  } catch { /* retain the citation */ }
+  return url;
+}
+
+function shortDate(date: string | null | undefined): string {
+  if (!date) return "";
+  try { return new Intl.DateTimeFormat(getLang() === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`)); }
+  catch { return date; }
 }
 
 function basisLabel(it: Item, placeLabel: string): string {
@@ -95,7 +113,7 @@ function fmtClock(v: string | Date | null | undefined, tz: string): string {
     const d = typeof v === "string" ? new Date(v) : v;
     if (isNaN(d.getTime())) return "";
     return new Intl.DateTimeFormat(getLang() === "hi" ? "hi-IN" : "en-IN", {
-      hour: "numeric", minute: "2-digit", timeZone: tz,
+      hour: "numeric", minute: "2-digit", hour12: true, timeZone: tz,
     }).format(d);
   } catch {
     return "";
@@ -120,7 +138,7 @@ function FestivalShareCard({
 }: {
   width: number;
   height: number;
-  art: string;
+  art?: ImageSourcePropType;
   title: string;
   dateLine: string;
   dayLine: string;
@@ -133,7 +151,7 @@ function FestivalShareCard({
       style={[shareCardStyles.card, { width, height }]}
     >
       {!!art ? (
-        <Image source={{ uri: art }} style={shareCardStyles.art} resizeMode="cover" />
+        <Image source={art} style={shareCardStyles.art} resizeMode="cover" />
       ) : (
         <LinearGradient colors={["#5E2216", "#3B2E25"]} style={shareCardStyles.art} />
       )}
@@ -204,6 +222,13 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const [remindOff, setRemindOff] = useState(false);
   const [todayStr, setTodayStr] = useState("");
   const [dayIdx, setDayIdx] = useState(0);
+  const [section, setSection] = useState<"Today" | "Practice" | "Prepare" | "Story">("Today");
+  const [budget, setBudget] = useState(false);
+  const [sharingOpen, setSharingOpen] = useState(false);
+  const [windowIds, setWindowIds] = useState<string[]>([]);
+  const [reminderError, setReminderError] = useState("");
+  const [reminderBusy, setReminderBusy] = useState(false);
+  useEffect(() => { void windowReminderIds().then(setWindowIds); }, []);
   const [doOpen, setDoOpen] = useState(false);
   const [doStep, setDoStep] = useState(0);
   const [shrTithi, setShrTithi] = useState(30);
@@ -289,6 +314,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const body = (page?.body ?? {}) as Record<string, unknown>;
   const why = (body.why as Item[] | undefined) ?? [];
   const gather = ((body.do as { gather?: Item[] } | undefined)?.gather) ?? [];
+  const budgetGather = ((body.do as { budget?: Item[] } | undefined)?.budget) ?? [];
   const steps = ((body.do as { steps?: Item[] } | undefined)?.steps) ?? [];
   const vrat = (body.vrat as Record<string, Item[]> | undefined) ?? {};
   const dont = (body.dont as Item[] | undefined) ?? [];
@@ -310,8 +336,8 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const shownSummary = selectedContent?.summary ? String(selectedContent.summary) : summary;
   const dayTexts = (selectedContent?.texts ?? []) as Record<string, unknown>[];
   const pageArt = page?.art_url ?? "";
-  const dayArt = selectedCalDay?.art_url ?? "";
-  const heroArt = dayArt || pageArt;
+  const dayArt = festivalDayArtwork(selectedCalDay?.form_key, selectedCalDay?.art_url);
+  const heroArt = dayArt || festivalArtwork(slug, pageArt);
 
   const rahuAbhijit = useMemo(() => {
     if (!selectedDate) return [];
@@ -452,7 +478,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const hasRichSections = why.length + gather.length + shownSteps.length + texts.length + dont.length + regions.length + Object.keys(vrat).length > 0;
 
   const heroDateLine = selectedCalDay
-    ? `${selectedCalDay.date ?? ""} · ${plain(selectedCalDay.label ?? "")}`
+    ? `${heroTitle} · ${shortDate(selectedCalDay.date)}`
     : dateLabel(selectedDate, todayStr);
   const heroChips: string[] = [];
   if (selectedDayNum) heroChips.push(t("parva.dayOf", { n: selectedDayNum }));
@@ -465,7 +491,10 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   const previewScale = Math.min(1, previewW / CARD_W);
 
   const timeRows = [
-    ...times.map((tm) => ({ key: tm.key, s: tm.start ?? "", e: tm.end ?? "" })),
+    ...times.filter(tm => {
+      if (!isSeries || !selectedDate || !tm.start) return true;
+      try { return new Intl.DateTimeFormat("en-CA", { timeZone: placeTz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(tm.start)) === selectedDate; } catch { return false; }
+    }).map((tm) => ({ key: tm.key, s: tm.start ?? "", e: tm.end ?? "" })),
     ...rahuAbhijit.map((w) => ({
       key: w.key,
       s: w.start.toISOString(),
@@ -474,18 +503,18 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+    <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false} stickyHeaderIndices={[1 + Number(!!shownSummary) + Number(isSeries && calDays.length > 0)]}>
       {/* Hero: festival painting with scrim, or a deep-fill block with a
           watermark glyph. Never a broken image: no art means no Image. */}
       <View style={styles.hero}>
-        {!!heroArt && <Image source={{ uri: heroArt }} style={StyleSheet.absoluteFill} resizeMode="cover" />}
+        {!!heroArt && <Image source={heroArt} style={StyleSheet.absoluteFill} resizeMode="cover" accessible={false} />}
         <LinearGradient
           colors={heroArt ? ["rgba(59,46,37,0.05)", "rgba(59,46,37,0.55)", "rgba(59,46,37,0.92)"] : ["rgba(255,248,238,0)", "rgba(255,248,238,0.08)"]}
           style={StyleSheet.absoluteFill}
         />
         {!heroArt && <Text style={styles.heroMark}>ॐ</Text>}
         <View style={styles.heroBody}>
-          <Text style={styles.heroTitle}>{heroTitle}</Text>
+          <Text style={styles.heroTitle}>{slug.includes("navaratri") && selectedCalDay?.label ? plain(selectedCalDay.label) : heroTitle}</Text>
           <Text style={styles.heroDate}>{heroDateLine}</Text>
           {heroChips.length > 0 && (
             <View style={styles.chipRow}>
@@ -515,14 +544,14 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
                   accessibilityState={{ selected: on }}
                   style={[styles.dayCard, on && styles.dayCardOn]}
                 >
-                  {d.art_url ? (
-                    <Image source={{ uri: d.art_url }} style={styles.dayAvatar} />
+                  {festivalDayArtwork(d.form_key, d.art_url) ? (
+                    <Image source={festivalDayArtwork(d.form_key, d.art_url)} style={styles.dayAvatar} accessible={false} />
                   ) : (
                     <View style={[styles.dayAvatar, { backgroundColor: fillAt(i) }]}>
                       <Text style={styles.dayAvatarText}>{initialOf(d.label ?? d.form_key ?? "")}</Text>
                     </View>
                   )}
-                  <Text style={[styles.dayDate, on && styles.dayOn]}>{(d.date ?? "").slice(5)}</Text>
+                  <Text style={[styles.dayDate, on && styles.dayOn]}>{shortDate(d.date)}</Text>
                   <Text style={[styles.dayName, on && styles.dayOn]} numberOfLines={1}>{plain(d.label ?? "")}</Text>
                 </Pressable>
               );
@@ -531,13 +560,17 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {(dayTexts.length > 0 || (isSeries && selectedContent?.summary)) && (
+      <View style={styles.tabs} accessibilityRole="tablist">
+        {(["Today", "Practice", "Prepare", "Story"] as const).map(name => <Pressable key={name} onPress={() => setSection(name)} accessibilityRole="tab" accessibilityLabel={name} accessibilityState={{ selected: section === name }} style={[styles.tab, section === name && styles.tabOn]}><Text style={[styles.tabText, section === name && { color: color.saffronText }]}>{name}</Text></Pressable>)}
+      </View>
+
+      {section === "Today" && (dayTexts.length > 0 || (isSeries && selectedContent?.summary)) && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.deityOfDay")}</Text>
           <View style={styles.card}>
             <View style={styles.deityHead}>
               {dayArt ? (
-                <Image source={{ uri: dayArt }} style={styles.deityArt} />
+                <Image source={dayArt} style={styles.deityArt} accessible={false} />
               ) : (
                 <View style={[styles.deityArt, styles.deityArtFill]}>
                   <Text style={styles.deityArtText}>{initialOf(selectedCalDay?.label ?? selectedCalDay?.form_key ?? "")}</Text>
@@ -550,30 +583,34 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
                 )}
               </View>
             </View>
-            {dayTexts.map((tx, i) => (
-              <TextCard key={i} tx={tx} idx={i} expanded={expandedText === `d${i}`} onToggle={() => setExpandedText(expandedText === `d${i}` ? null : `d${i}`)} />
-            ))}
           </View>
         </View>
       )}
 
-      {timeRows.length > 0 && (
+      {section === "Today" && timeRows.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.times")}</Text>
+          <MuhuratClock times={timeRows} tz={placeTz} place={placeLabel} />
           <View style={styles.card}>
             {timeRows.map((tm, i) => {
               const a = fmtClock(tm.s, placeTz);
               const b = fmtClock(tm.e, placeTz);
-              const span = a && b && tm.s !== tm.e ? `${a} – ${b}` : a || b;
+              const nextDay = tm.s && tm.e && new Intl.DateTimeFormat("en-CA", { timeZone: placeTz, day: "2-digit", month: "2-digit" }).format(new Date(tm.s)) !== new Intl.DateTimeFormat("en-CA", { timeZone: placeTz, day: "2-digit", month: "2-digit" }).format(new Date(tm.e));
+              const span = a && b && tm.s !== tm.e ? `${a} – ${b}${nextDay ? " (next day)" : ""}` : a || b;
                 return (
                 <Animated.View key={`${tm.key}_${i}`} entering={reduced ? undefined : FadeInDown.delay(i * 45).duration(240)} style={[styles.timeRow, i > 0 && styles.hairTop]}>
-                  <Text style={styles.timeKey}>{timeLabel(tm.key)}</Text>
-                  <Text style={styles.timeVal}>{span}</Text>
+                  <View style={{ flex: 1, gap: 4 }}><Text style={styles.timeKey}>{timeLabel(tm.key)}</Text><Text style={[styles.timeVal, { textAlign: "left" }]}>{span}</Text></View>
+                  {tm.s && !["rahu", "bhadra", "tithi"].includes(tm.key) && new Date(tm.s).getTime() - 900000 > Date.now() && (() => {
+                    const w = { slug, variant: variant ?? "", date: page?.occurrence_date ?? page?.date ?? selectedDate ?? "", dayDate: selectedDate ?? "", tradition: trad, tz: placeTz, timingKey: tm.key, start: tm.s, title: heroTitle };
+                    const id = windowReminderId(w), on = windowIds.includes(id);
+                    return <Pressable disabled={reminderBusy} onPress={async () => { setReminderBusy(true); setReminderError(""); try { const enabled = await toggleWindowReminder(w); setWindowIds(ids => enabled ? [...ids, id] : ids.filter(x => x !== id)); } catch (e) { setReminderError(e instanceof Error ? e.message : "Couldn't set the reminder."); } finally { setReminderBusy(false); } }} accessibilityRole="button" accessibilityLabel={`${on ? "Cancel" : "Set"} reminder 15 minutes before ${timeLabel(tm.key)}`} style={styles.windowButton}><Text style={styles.tabText}>{on ? "Reminder on" : "Remind me"}</Text></Pressable>;
+                  })()}
                 </Animated.View>
               );
             })}
           </View>
           <Text style={styles.basis}>{t("parva.basisCalc", { place: placeLabel })}</Text>
+          {!!reminderError && <Text style={styles.step} accessibilityRole="alert">{reminderError}</Text>}
         </View>
       )}
 
@@ -584,7 +621,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {why.length > 0 && (
+      {section === "Story" && why.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.why")}</Text>
           <View style={styles.card}>
@@ -603,18 +640,9 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {(gather.length > 0 || shownSteps.length > 0) && (
+      {section === "Practice" && shownSteps.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.whatToDo")}</Text>
-          {gather.length > 0 && (
-            <View style={styles.chipWrap}>
-              {gather.map((it, i) => (
-                <View key={i} style={styles.gatherChip}>
-                  <Text style={styles.gatherText}>{plain(it.text ?? "")}</Text>
-                </View>
-              ))}
-            </View>
-          )}
           {shownSteps.length > 0 && (
             <View style={styles.card}>
               {shownSteps.map((it, i) => (
@@ -646,15 +674,21 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {Object.keys(vrat).length > 0 && (
+      {section === "Prepare" && <View style={styles.section}>
+        <Text style={styles.label}>Pooja samagri</Text>
+        {budgetGather.length > 0 && <View style={styles.tabs}>{[false, true].map(simple => <Pressable key={String(simple)} onPress={() => setBudget(simple)} accessibilityRole="button" accessibilityLabel={simple ? "Show budget pooja supplies" : "Show full pooja supplies"} accessibilityState={{ selected: budget === simple }} style={[styles.tab, budget === simple && styles.tabOn]}><Text style={styles.tabText}>{simple ? "Simple / budget" : "Traditional"}</Text></Pressable>)}</View>}
+        <View style={styles.card}>{(budget && budgetGather.length ? budgetGather : gather).map((it, i) => <View key={i} style={[styles.whyRow, i > 0 && styles.hairTop]}><Text style={styles.step}>{plain(it.text ?? "")}</Text></View>)}{!gather.length && <Text style={styles.step}>Use the supplies appropriate to your family's practice; a detailed list is not available for this observance yet.</Text>}</View>
+      </View>}
+
+      {section === "Prepare" && Object.keys(vrat).length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.vrat")}</Text>
           <View style={styles.card}>
-            {(["eat", "avoid", "break", "who_should_eat"] as const).map((k) =>
+            {(["types", "eat", "avoid", "break", "who_should_eat"] as const).map((k) =>
               (vrat[k] ?? []).length > 0 ? (
                 <View key={k} style={[styles.subBlock, k !== "eat" && styles.hairTop]}>
                   <Text style={styles.sub}>
-                    {t(`parva.${k === "break" ? "break" : k === "who_should_eat" ? "whoShouldEat" : k}` as never)}
+                    {k === "types" ? "Ways to observe a vrat" : t(`parva.${k === "break" ? "break" : k === "who_should_eat" ? "whoShouldEat" : k}` as never)}
                   </Text>
                   {(vrat[k] ?? []).map((it, i) => (
                     <View key={i} style={styles.bulletRow}>
@@ -672,19 +706,19 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {texts.length > 0 && (
+      {section === "Practice" && texts.length + dayTexts.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.texts")}</Text>
-          {texts.map((tx, i) => (
+          {[...dayTexts, ...texts].map((tx, i) => (
             <View key={i} style={[styles.card, { marginBottom: space.sm }]}>
               <TextCard tx={tx} idx={i} expanded={expandedText === `t${i}`} onToggle={() => setExpandedText(expandedText === `t${i}` ? null : `t${i}`)} />
-              {String(tx.kind ?? "mantra") === "mantra" && <JapaCounter storageKey={`shabd.parva.japa.${slug}.${variant ?? ""}.${selectedDate ?? ""}.${i}`} />}
+              {String(tx.kind ?? "mantra") === "mantra" && <JapaCounter key={`${selectedDate}.${i}`} storageKey={`shabd.parva.japa.${slug}.${variant ?? ""}.${selectedDate ?? ""}.${i}`} />}
             </View>
           ))}
         </View>
       )}
 
-      {dont.length > 0 && (
+      {section === "Practice" && dont.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.dont")}</Text>
           <View style={styles.card}>
@@ -701,7 +735,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {regions.length > 0 && (
+      {section === "Story" && regions.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.regions")}</Text>
           <View style={styles.card}>
@@ -717,7 +751,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      {slug === "pitru_paksha" && (
+      {section === "Today" && slug === "pitru_paksha" && (
         <View style={styles.section}>
           <Text style={styles.label} accessibilityRole="header">{t("parva.shraddhaTitle")}</Text>
           <Text style={styles.sub}>{t("parva.shraddhaPick")}</Text>
@@ -749,11 +783,19 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         </View>
       )}
 
+      {section === "Story" && (page?.sources?.length ?? 0) > 0 && <View style={styles.section}><Text style={styles.label}>Sources behind this guide</Text>{page?.sources.map((source, i) => {
+        const url = String(source.url ?? source.source_url ?? "");
+        let citation = String(source.ref ?? "");
+        if (!citation && /^https?:\/\//.test(url)) { try { citation = new URL(url).hostname.replace(/^www\./, ""); } catch { /* citation unavailable */ } }
+        return <Pressable key={i} disabled={!/^https?:\/\//.test(url)} onPress={() => void Linking.openURL(readerUrl(url))} accessibilityRole="link" accessibilityLabel={`Open ${String(source.title ?? source.name ?? source.text_name ?? "source")}`} style={styles.windowButton}><Text style={styles.step}>{String(source.title ?? source.name ?? source.text_name ?? "Source")}</Text><Text style={styles.basis}>{citation}</Text></Pressable>;
+      })}</View>}
+
       {/* Share block: format toggle, scaled preview, share button. The full
           size cards render offscreen below and are what actually gets
           captured. */}
       <View style={styles.section}>
-        <Text style={styles.label} accessibilityRole="header">{t("parva.shareCard")}</Text>
+        <Pressable onPress={() => setSharingOpen(v => !v)} accessibilityRole="button" accessibilityLabel="Preview festival share card" accessibilityState={{ expanded: sharingOpen }} style={styles.windowButton}><Text style={styles.tabText}>{sharingOpen ? "Close share preview" : "Share this festival · post or story"}</Text></Pressable>
+        {sharingOpen && <>
         <View style={styles.fmtRow}>
           {(["square", "story"] as const).map((f) => (
             <Pressable
@@ -793,6 +835,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         >
           <Text style={styles.shareBtnText}>{t("parva.shareVia")}</Text>
         </Pressable>
+        </>}
       </View>
 
       <View style={styles.btnRow}>
@@ -803,14 +846,6 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
           accessibilityLabel={t("parva.askAbout")}
         >
           <Text style={styles.ghostText}>{t("parva.askAbout")}</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => void doShare()}
-          style={({ pressed }) => [styles.ghostBtn, pressed && styles.pressed]}
-          accessibilityRole="button"
-          accessibilityLabel={t("parva.share")}
-        >
-          <Text style={styles.ghostText}>{t("parva.share")}</Text>
         </Pressable>
         {!remindOff && (
           <Pressable
@@ -828,7 +863,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
       ) : null}
 
       {/* Offscreen full-size share cards; only the selected one is captured. */}
-      <View style={styles.offscreen}>
+      <View style={styles.offscreen} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <FestivalShareCard
           width={CARD_W} height={CARD_SQUARE_H} art={heroArt} title={heroTitle}
           dateLine={shareDateLine} dayLine={shareDayLine}
@@ -949,11 +984,18 @@ function TextCard({
       )}
       {!!m.iast && <Text style={styles.roman}>{m.iast}</Text>}
       {!!m.meaning && <Text style={styles.step}>{plain(m.meaning)}</Text>}
+      {!!m.source && <Text style={styles.basis}>{String(m.source)}</Text>}
+      {typeof m.source_url === "string" && /^https?:\/\//.test(m.source_url) && <Pressable onPress={() => void Linking.openURL(readerUrl(String(m.source_url)))} accessibilityRole="link" accessibilityLabel={`Read complete ${kindLabel.toLowerCase()} at its source`} style={{ minHeight: 44, justifyContent: "center" }}><Text style={[styles.more, { textDecorationLine: "underline" }]}>Read complete {kindLabel.toLowerCase()} · source</Text></Pressable>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  tabs: { flexDirection: "row", marginTop: space.md, backgroundColor: color.bg, borderBottomWidth: 1, borderBottomColor: color.border },
+  tab: { flex: 1, minHeight: 48, alignItems: "center", justifyContent: "center", borderBottomWidth: 2, borderBottomColor: "transparent" },
+  tabOn: { borderBottomColor: color.saffronText },
+  tabText: { fontFamily: "Nunito_800ExtraBold", color: color.ink, fontSize: font.sizes.sm },
+  windowButton: { minHeight: 44, padding: 10, borderWidth: 1, borderColor: color.border, justifyContent: "center" },
   page: { flex: 1, backgroundColor: color.bg, padding: space.lg },
   body: { paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: 120 },
   hero: {

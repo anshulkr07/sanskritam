@@ -8,7 +8,6 @@ import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { socialApi, type PlaySummary } from "../games/v2/client";
-import { GameTopBar } from "../games/v2/parts";
 import { color, fill, font, onFill, radius, space } from "../theme";
 import { haptics } from "../services/haptics";
 
@@ -21,7 +20,7 @@ interface FriendsData {
   requests: { learner_id: string; name: string }[];
 }
 
-export default function FriendsScreen({ navigation }: Props) {
+export default function FriendsScreen(_props: Props) {
   const [data, setData] = useState<FriendsData | null>(null);
   const [goal, setGoal] = useState<PlaySummary["friend_goal"]>(null);
   const [msg, setMsg] = useState<string | null>(null);
@@ -63,7 +62,7 @@ export default function FriendsScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <GameTopBar title="Friends" sa="मित्राणि" onClose={() => navigation.goBack()} />
+      {/* The stack header already says "Friends" with a back arrow. */}
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
         {goal && (
           <View style={styles.goalCard}>

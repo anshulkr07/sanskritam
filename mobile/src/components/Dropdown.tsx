@@ -10,6 +10,7 @@
 
 import React, { useState } from "react";
 import { FlatList, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 import { haptics } from "../services/haptics";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -22,6 +23,7 @@ export default function Dropdown({
   options,
   onPick,
   disabled = false,
+  showOptionLabel = false,
 }: {
   value: string;
   placeholder: string;
@@ -30,10 +32,13 @@ export default function Dropdown({
   options: { value: string; label: string }[];
   onPick: (value: string) => void;
   disabled?: boolean;
+  /** Home form displays the readable label with a dropdown chevron. */
+  showOptionLabel?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
   const current = options.findIndex((o) => o.value === value);
+  const shown = showOptionLabel && current >= 0 ? options[current].label : value;
 
   return (
     <>
@@ -43,12 +48,13 @@ export default function Dropdown({
           setOpen(true);
         }}
         disabled={disabled}
-        style={[styles.field, disabled && styles.off]}
+        style={[styles.field, showOptionLabel && styles.homeField, disabled && styles.off]}
         accessibilityRole="button"
-        accessibilityLabel={value ? `${label}: ${value}` : `${label}: ${placeholder}`}
+        accessibilityLabel={value ? `${label}: ${shown}` : `${label}: ${placeholder}`}
         accessibilityState={{ disabled }}
       >
-        <Text style={[styles.fieldText, !value && styles.hint]}>{value || placeholder}</Text>
+        <Text style={[styles.fieldText, showOptionLabel && styles.homeFieldText, !value && styles.hint]}>{shown || placeholder}</Text>
+        {showOptionLabel && <Ionicons name="chevron-down" size={14} color={color.inkSoft} />}
       </Pressable>
       <Modal
         visible={open}
@@ -125,6 +131,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   hint: { color: color.inkFaint },
+  homeField: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 4, borderRadius: 8, minHeight: 48, minWidth: 0 },
+  homeFieldText: { flexShrink: 1, textAlign: "left" },
   off: { opacity: 0.4 },
   backdrop: { flex: 1, justifyContent: "flex-end", backgroundColor: "rgba(59,46,37,0.45)" },
   sheet: { maxHeight: "70%", backgroundColor: color.white, borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: space.md },

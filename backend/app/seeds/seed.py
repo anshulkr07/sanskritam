@@ -97,6 +97,8 @@ def run_seed():
         # points at. Additive and idempotent; rows missing from files withdraw.
         from app.seeds.word_origins import seed_word_origins
         seed_word_origins(db)
+        from app.seeds.home_insights import seed_home_insights
+        seed_home_insights(db)
 
         # Play games (handover_games_daily_multiplayer): reviewed content and
         # the cosmetic catalogue — additive, idempotent.

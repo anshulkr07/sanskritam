@@ -22,18 +22,33 @@ _BOLD2 = "''"
 
 # Verse-end numbers: danda(s) + number + danda(s), or a newline for Mahimna.
 # Numbers may be Devanagari or ASCII: 1, 1.2, 81.1, 1,108.1, 1- 1, 12.8.60.
-_DEVA_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
+# A trailing "*" or "?" is an editor's footnote mark (Raghuvamsha "॥ १.३४* ॥").
 _NUM = r"[0-9०-९]+(?:[.,\-–\s]*[0-9०-९]+)*"
-_VERSE_END = re.compile(r"॥\s*(" + _NUM + r")\s*॥?")
-_VERSE_END_NL = re.compile(r"॥\s*(" + _NUM + r")\s*(?:॥|\n|$)")
+_MARK = r"[\*?]*"
+_DEVA_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
+_VERSE_END = re.compile(r"॥\s*(" + _NUM + r")" + _MARK + r"\s*॥?")
+_VERSE_END_NL = re.compile(r"॥\s*(" + _NUM + r")" + _MARK + r"\s*(?:॥|\n|$)")
 _SPEAKER = re.compile(
     r"(.+?(उवाच|ऊचुः|उवाच्))\s*[।॥—–-]?\s*$"
 )
+_SPEAKER_LABEL = re.compile(r"^[ऀ-ॿ]+ः\s*[-–—]")
 _HEADING = re.compile(
-    r"(॥\s*अथ\s+[^॥]+॥|.*(अध्यायः|सर्गः|पादः|काण्डम्|अङ्कः|प्रश्नः|वल्ली|खण्डः|प्रारभ्यते)\s*[।॥\s]*$)"
+    r"(॥\s*अथ\s+[^॥]+॥|.*(अध्यायः|सर्गः|पादः|काण्डम्|अङ्कः|प्रश्नः|वल्ली|खण्डः|प्रारभ्यते)\s*[०-९]*\s*[।॥\s]*$)"
 )
+# "॥ गीतम् ५ ॥" song/section headers: danda + word(s) + number + danda, no
+# verse text — always structure, never a verse.
+_SECTION_HEADER = re.compile(r"^॥\s*[^\॥\d][^\॥]*[०-९०-९]\s*॥\s*$")
 _AUSPICIOUS_ONLY = re.compile(r"^॥?\s*(श्रीः?|ॐ|ओम्)\s*॥?\s*$")
 _COLOPHON = re.compile(r"(इति\s+.+(सम्पूर्णम्|समाप्तम्|समाप्ता)|इति\s+श्री.+)")
+# "इति वैश्यवर्गः ९ अत्र मूलश्लोकाः ११" (Amarakosha), "इत्यमरसिंहकृतौ …
+# काण्डो": a line that opens with iti and names a section is a colophon.
+_COLOPHON_SECTION = re.compile(
+    r"^इति\S*\s+.*?(काण्ड|वर्ग|अध्याय|सर्ग|खण्ड|सूक्त|प्रपाठक|तरङ्ग|आश्वास|उल्लास)")
+_ATRA_COUNT = re.compile(r"अत्र\s+मूलश्लोकाः")
+_STAGE_DIR = re.compile(r"^\([^)]*\)\s*[।॥]?\s*$")
+# Scanned-page artefacts ("81(78)" on the Devimahatmya page).
+_PAGE_ARTIFACT = re.compile(r"^\d+\(\d+\)$")
+_ANUVAKA_COUNT = re.compile(r"^\s*॥?\s*इति\s+श्री")
 
 _ALLOWED_EXTRA = set("॥।ऽ \n")
 
@@ -48,6 +63,13 @@ def strip_wiki_markup(text: str) -> str:
     out = text or ""
     out = _REF_TAG.sub("", out)
     out = _FILE_LINK.sub("", out)
+    # Rendered pages carry their chrome in <table> blocks (ambox notices,
+    # {{rh}} running headers with title/author/page-number): drop them whole.
+    for _ in range(20):
+        new = re.sub(r"<table\b.*?</table>", "", out, flags=re.S | re.I)
+        if new == out:
+            break
+        out = new
     # Templates: repeat until none (nested {{..}} are rare here).
     for _ in range(5):
         new = _TEMPLATE.sub("", out)
@@ -65,6 +87,8 @@ def strip_wiki_markup(text: str) -> str:
     for ln in out.split("\n"):
         s = ln.strip()
         if re.fullmatch(r"==+.*==+", s):
+            continue
+        if "An image should appear" in ln:
             continue
         kept.append(ln)
     out = "\n".join(kept)
@@ -124,6 +148,22 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     # or at the end of a line is a danda typo.
     t = re.sub(r"\s+\|\s*", " । ", t)
     t = re.sub(r"\|\s*$", " ।", t, flags=re.M)
+    # Vedic vowel-length notation sits inside a word ("व्यद्युतदा३इतीन्" in
+    # Kena): a digit run between two Devanagari letters is a scholarly length
+    # marker, never part of the text. Verse numbers always carry a danda or
+    # space around them, so they are untouched. The marker can also close a
+    # word ("न्यमीमिषदा३"), so a digit run directly after a vowel sign goes
+    # too.
+    t = re.sub(r"(?<=[ऀ-ॿ])[०-९]+(?=[ऀ-ॿ])", "", t)
+    t = re.sub(r"(?<=[ािीुूृॄॢॣेैोौ])[०-९]+", "", t)
+    # English editorial glosses and uncertainty marks ("विरजो (or विरतो)" on
+    # the Vishnusahasranama page, "शश्वद्(?)" in Raghuvamsha).
+    t = re.sub(r"\s*\((?:or|and)\s[^)]*\)", "", t)
+    t = t.replace("(?)", "")
+    # "तस्मि/श्च" (Prashna): a slash jammed between two Devanagari letters is
+    # a danda typo inside a word — drop it. Spaced slashes were already
+    # converted to a danda above.
+    t = re.sub(r"(?<=[ऀ-ॿ])\s*/\s*(?=[ऀ-ॿ])", "", t)
     # Collapse whitespace; keep one line break between half-verses.
     parts = [re.sub(r"[ \t\u00a0]+", " ", p).strip() for p in t.split("\n")]
     parts = [p for p in parts if p]
@@ -142,8 +182,8 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
 def strip_verse_number(text: str) -> str:
     """Remove the trailing verse number (dandas + number) before the check."""
     t = (text or "").strip()
-    t = re.sub(r"\s*॥\s*" + _NUM + r"\s*॥?\s*$", "", t).strip()
-    t = re.sub(r"\s*" + _NUM + r"\s*$", "", t).strip() if re.search(r"\d\s*$", t.translate(_DEVA_DIGITS)) and "॥" not in t[-8:] else t
+    t = re.sub(r"\s*॥\s*" + _NUM + _MARK + r"\s*॥?\s*$", "", t).strip()
+    t = re.sub(r"\s*" + _NUM + _MARK + r"\s*$", "", t).strip() if re.search(r"\d\s*$", t.translate(_DEVA_DIGITS)) and "॥" not in t[-8:] else t
     return t
 
 
@@ -215,11 +255,14 @@ def split_numbered_verses(text: str) -> list[tuple[str, str]]:
     component (take the last number for '12.8.60'). A danda with no number
     inside a verse is a half-verse end and stays.
     """
-    # Normalise the double-danda used as verse end first.
-    t = (text or "").replace("।।", "॥")
+    # Normalise the double-danda used as verse end first. Zero-width chars
+    # are dropped before matching: the Shivatandava page hides a U+200D
+    # inside the marker itself ("॥५॥"), which the end regex would otherwise
+    # not recognise and two verses would merge into one chunk.
+    t = (text or "").replace("।।", "॥").replace("‌", "").replace("‍", "").replace("​", "")
     out: list[tuple[str, str]] = []
     # Find every "danda number danda-or-newline" end.
-    pat = re.compile(r"॥\s*(" + _NUM + r")\s*(?:॥|(?=\n|$))")
+    pat = re.compile(r"॥\s*(" + _NUM + r")" + _MARK + r"\s*(?:॥|(?=\n|$))")
     last = 0
     for m in pat.finditer(t):
         num_raw = m.group(1).strip()
@@ -243,9 +286,24 @@ def is_dropped_line(line: str) -> bool:
         return False
     if _AUSPICIOUS_ONLY.match(line.strip()):
         return True
+    if _STAGE_DIR.match(line.strip()):
+        # A fully parenthesised stage direction ("(पञ्चमो वेतालः ।)").
+        return True
+    if _SECTION_HEADER.match(line.strip()):
+        # "॥ गीतम् ५ ॥" song header — structure, not a verse.
+        return True
     if _SPEAKER.search(line.strip()):
         return True
+    if _SPEAKER_LABEL.match(line.strip()):
+        # "विदूषकः - (निःश्वस्य) …" drama speaker label before prose.
+        return True
     if _COLOPHON.search(t):
+        return True
+    if _COLOPHON_SECTION.search(line.strip()):
+        return True
+    if _ATRA_COUNT.search(line):
+        return True
+    if _PAGE_ARTIFACT.match(line.strip()):
         return True
     if _HEADING.search(line.strip()):
         # Only drop short headings, never a verse line.

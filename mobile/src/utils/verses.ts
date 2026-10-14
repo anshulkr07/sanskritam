@@ -216,7 +216,8 @@ export function groupByChapter(verses: Shloka[]): ChapterGroup[] {
   const out: ChapterGroup[] = [];
   for (const v of verses) {
     const { nums } = parseRef(v.source_ref);
-    const label = nums.length > 0 ? `Chapter ${nums[0]}` : "Verses";
+    // "Gītā 2.47" sits in chapter 2; "Īśopaniṣad 5" has no chapters at all.
+    const label = nums.length > 1 ? `Chapter ${nums[0]}` : "Verses";
     const last = out[out.length - 1];
     if (last && last.label === label) last.verses.push(v);
     else out.push({ label, verses: [v] });
@@ -224,9 +225,24 @@ export function groupByChapter(verses: Shloka[]): ChapterGroup[] {
   return out;
 }
 
-/** First pāda for preview lines: everything up to the first daṇḍa. */
+// "अर्जुन उवाच", and joined as in "श्रीभगवानुवाच" (the vowel sign ु).
+const SPEAKER = /(?:उ|ु)वाच$/;
+
+/** First pāda for preview lines: everything up to the first daṇḍa, passing
+ *  over a speaker line ("सञ्जय उवाच", "श्रीभगवानुवाच"), which names who
+ *  speaks rather than starting the verse. */
 export function firstLine(devanagari: string): string {
-  return ((devanagari ?? "").split(/।\s*/)[0] || "").trim();
+  const parts = (devanagari ?? "")
+    .split(/[।॥\n]+/)
+    .map((p) => p.replace(/[०-९\d\s.]+$/u, "").trim())
+    .filter(Boolean);
+  return parts.find((p) => !SPEAKER.test(p)) ?? parts[0] ?? "";
+}
+
+/** The speaker line a verse opens with ("अर्जुन उवाच"), or "" for none. */
+export function speakerOf(devanagari: string): string {
+  const first = ((devanagari ?? "").split(/[।॥\n]+/)[0] ?? "").trim();
+  return SPEAKER.test(first) ? first : "";
 }
 
 export default {

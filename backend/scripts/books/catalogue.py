@@ -45,10 +45,12 @@ BOOKS: dict[str, dict] = {
         "reference_total": 31, "planned": 31, "vedic": False,
     },
     "tandava": {
-        "ref": "Śiva Tāṇḍava Stotra", "tier": "plus", "register": "classical",
+        "ref": "Śiva Tāṇḍava Stotra", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_numbered",
         "pages": ["शिवताण्डवस्तोत्रम्"],
-        "reference_total": 13, "planned": 13, "vedic": False,
+        # 2026-10-14: the page carries 16 verses; the old 13 came from three
+        # verse-end markers that a hidden U+200D inside "॥N॥" had merged.
+        "reference_total": 16, "planned": 16, "vedic": False,
     },
     "mahimna": {
         "ref": "Śiva Mahimna Stotra", "tier": "plus", "register": "classical",
@@ -273,10 +275,15 @@ BOOKS: dict[str, dict] = {
         "reference_total": 3134, "planned": 3134, "vedic": False,
     },
     "chanakya": {
-        "ref": "Chāṇakya Nīti", "tier": "plus", "register": "classical",
+        "ref": "Chāṇakya Nīti", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_chanakya",
         "pages": ["चाणक्यनीतिदर्पणः"],
-        "reference_total": 345, "planned": 345, "vedic": False,
+        # 2026-10-14: verified against the page — 343 numbered verses over 17
+        # chapters (numbering restarts per chapter; 15 chapter-colophon
+        # numbers and 1 garbled ॥५१३१॥ marker on the page are not verses and
+        # the unnumbered प्रकीर्णक tail is dropped). The old 345 was an
+        # edition estimate.
+        "reference_total": 343, "planned": 343, "vedic": False,
     },
 }
 

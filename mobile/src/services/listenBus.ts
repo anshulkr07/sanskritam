@@ -48,6 +48,9 @@ interface BusState {
   lineNow: number;
   wordNow: number;
   fillFrac: number;
+  /** Position in the sounding verse and its length, ms (250 ms steps). */
+  posMs: number;
+  durMs: number;
   isPlaying: boolean;
   repeat: RepeatMode;
   speed: number;
@@ -64,6 +67,8 @@ let state: BusState = {
   lineNow: 0,
   wordNow: -1,
   fillFrac: 0,
+  posMs: 0,
+  durMs: 0,
   isPlaying: false,
   repeat: "off",
   speed: 1,
@@ -115,13 +120,14 @@ const chant = new ChantController({
   setTimer: (fn, ms) => setTimeout(fn, ms),
   clearTimer: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
   onVerse: (idx, id) => {
-    set({ playingId: id });
+    set({ playingId: id, posMs: 0 });
     if (idx >= 0) setAt(idx);
   },
   onLine: (line) => set({ lineNow: line }),
   onWord: (word) => set({ wordNow: word }),
   onPlaying: (playing) => set({ isPlaying: playing }),
   onProgress: (_line, frac) => set({ fillFrac: frac }),
+  onTime: (ms, durMs) => set({ posMs: ms, durMs: Math.round(durMs) }),
   scrollTo: (idx) => {
     if (!state.session?.autoScroll) return;
     try {
@@ -158,6 +164,8 @@ export function bindSession(session: ListenSession, initialIndex: number | null)
     lineNow: 0,
     wordNow: -1,
     fillFrac: 0,
+    posMs: 0,
+    durMs: 0,
     miniHiddenFor: null,
   });
 }
@@ -227,6 +235,29 @@ const miniUpSnapshot = () => {
 
 export function useMiniPlayerUp(): boolean {
   return useSyncExternalStore(subscribe, miniUpSnapshot).v;
+}
+
+// A coarse summary for screens that only need which book is live and whether
+// it is sounding (the Audio shelf's hero); it never changes per word tick.
+export interface ListenSummary {
+  bookKey: string;
+  chapter: string | null;
+  isPlaying: boolean;
+  at: number;
+}
+let summaryCache: ListenSummary = { bookKey: "", chapter: null, isPlaying: false, at: 0 };
+const summarySnapshot = () => {
+  const bookKey = state.session?.bookKey ?? "";
+  const chapter = state.session?.chapter ?? null;
+  const c = summaryCache;
+  if (c.bookKey !== bookKey || c.chapter !== chapter || c.isPlaying !== state.isPlaying || c.at !== state.at) {
+    summaryCache = { bookKey, chapter, isPlaying: state.isPlaying, at: state.at };
+  }
+  return summaryCache;
+};
+
+export function useListenSummary(): ListenSummary {
+  return useSyncExternalStore(subscribe, summarySnapshot);
 }
 
 // The saved autoplay preference lands whenever it arrives.

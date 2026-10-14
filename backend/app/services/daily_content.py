@@ -1312,6 +1312,12 @@ def fact_for_day(db, day: str):
     )
     if not rows:
         return None
+    reviewed = [row for row in rows if getattr(row, "made_by", "") == "reviewed"]
+    if reviewed:
+        # The reviewed launch collection replaces generic legacy verses.
+        # A later generated collection must pass an editorial release first.
+        offset = (date.fromisoformat(day) - date(2026, 9, 1)).days
+        return reviewed[offset % len(reviewed)]
     if rows[-1].scheduled_date == day:
         return rows[-1]
     try:

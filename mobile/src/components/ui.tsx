@@ -30,6 +30,7 @@ interface ButtonProps extends Omit<PressableProps, "style"> {
   style?: ViewStyle;
   labelStyle?: TextStyle;
   icon?: React.ReactNode;
+  cornerRadius?: number;
 }
 
 const TONE_FILL: Record<Tone, string> = {
@@ -76,6 +77,7 @@ export function Button({
   style,
   labelStyle,
   icon,
+  cornerRadius,
   onPress,
   ...rest
 }: ButtonProps) {
@@ -96,7 +98,7 @@ export function Button({
         {...rest}
         style={({ pressed }) => [
           styles.button,
-          { backgroundColor: TONE_FILL[tone], borderRadius: s.borderRadius, minHeight: s.minHeight },
+          { backgroundColor: TONE_FILL[tone], borderRadius: cornerRadius ?? s.borderRadius, minHeight: s.minHeight },
           lift ? { ...shadow.button, shadowColor: lift } : null,
           pressed && styles.buttonPressed,
           (disabled || loading) && { opacity: 0.5 },

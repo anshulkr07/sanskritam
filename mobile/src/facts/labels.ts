@@ -31,7 +31,7 @@ export function claimLine(fact: FactLike | null | undefined): string {
   const kind = text(fact?.claim_kind);
   if (kind === "text") return "The text says this";
   if (kind === "tradition") return "Tradition reads it this way";
-  if (kind === "modern") return "A modern reading of the text";
+  if (kind === "modern") return "Historical research";
   return "";
 }
 

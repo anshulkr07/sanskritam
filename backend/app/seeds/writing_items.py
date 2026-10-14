@@ -26,7 +26,7 @@ import logging
 from sqlalchemy.orm import Session
 
 from app.models import Challenge, DailyWord, WritingItem
-from app.seeds.stroke_data import letter_strokes
+from app.seeds.writing_paths import writing_paths
 from app.seeds.varnamala import VARNAMALA_DATA
 from app.services import iast
 
@@ -141,7 +141,7 @@ def seed_writing_items(db: Session) -> None:
     candidates = _tier1_rows() + _tier2_rows() + _tier3_rows(db)
     # P20-2: attach the authored stroke paths where the letter has them.
     for row in candidates:
-        row["stroke_paths"] = letter_strokes(row["devanagari"]) or []
+        row["stroke_paths"] = writing_paths(row["devanagari"])
     inserted = 0
     for row in candidates:
         exists = (
@@ -155,7 +155,7 @@ def seed_writing_items(db: Session) -> None:
         if exists is not None:
             # Fill the P20-2 stroke paths in when they have been authored but
             # the row predates them. Otherwise leave the row untouched.
-            if row.get("stroke_paths") and not (exists.stroke_paths or []):
+            if (exists.stroke_paths or []) != row["stroke_paths"]:
                 exists.stroke_paths = row["stroke_paths"]
             continue
         item = WritingItem(

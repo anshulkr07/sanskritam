@@ -4,7 +4,7 @@
 
 import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useAskContext } from "../ask/AskProvider";
 import { getLang, subscribeLang, t, useLang } from "../i18n";
@@ -16,6 +16,7 @@ import type { ParvaOccurrence } from "../parva/api";
 import { PARVA_DAYS_AHEAD, PARVA_MAX_DAYS } from "../parva/api";
 import { color, font, space } from "../theme";
 import { plain } from "../utils/text";
+import { festivalArtwork } from "../components/artwork/festivals";
 
 type Filter = "all" | "vrats" | "festivals";
 
@@ -130,6 +131,7 @@ export default function ParvaScreen() {
               accessibilityRole="button"
               accessibilityLabel={`${o.title}. ${o.date ?? ""}${o.availability === "verified_dates" ? `. ${t("parva.basicDetail")}` : ""}`}
             >
+              {festivalArtwork(o.slug, o.art_url) && <Image source={festivalArtwork(o.slug, o.art_url)} style={styles.thumb} accessible={false} />}
               <View style={styles.rowText}>
                 <Text style={styles.rowTitle} numberOfLines={1}>{plain(o.title)}</Text>
                 <Text style={styles.rowMeta} numberOfLines={1}>
@@ -162,9 +164,10 @@ const styles = StyleSheet.create({
   tabHit: { minWidth: 44, minHeight: 44, justifyContent: "center" },
   tab: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.inkSoft },
   tabOn: { color: color.ink, textDecorationLine: "underline" },
-  row: { minHeight: 56, justifyContent: "center", paddingVertical: space.xs, borderTopWidth: 1, borderTopColor: color.border },
+  row: { minHeight: 76, flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: space.xs, borderTopWidth: 1, borderTopColor: color.border },
+  thumb: { width: 64, height: 64, borderRadius: 10 },
   pressed: { opacity: 0.85 },
-  rowText: { gap: 2 },
+  rowText: { gap: 2, flex: 1 },
   rowTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
   rowMeta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
   muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft },

@@ -16,7 +16,11 @@ import { color, fill, font, onFill, radius, script, space } from "../theme";
 import { haptics } from "../services/haptics";
 
 type Props = {
-  navigation: { goBack: () => void; navigate: (r: string, p?: object) => void };
+  navigation: {
+    goBack: () => void;
+    navigate: (r: string, p?: object) => void;
+    setOptions: (o: { headerShown?: boolean }) => void;
+  };
   route?: { params?: { matchId?: string; code?: string } };
 };
 
@@ -45,6 +49,13 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
     onEvent,
     onSnapshot: (s) => setSnap(s as unknown as MatchSnapshot),
   });
+
+  // In a match the screen's own bar (code, live state, a Leave that asks
+  // first) replaces the stack header; outside one, the stack header alone.
+  const inMatch = snap !== null;
+  useEffect(() => {
+    navigation.setOptions({ headerShown: !inMatch });
+  }, [navigation, inMatch]);
 
   // resume an active match on entry
   useEffect(() => {
@@ -201,7 +212,7 @@ export default function RoomLobbyScreen({ navigation, route }: Props) {
   // ── Entry modes ───────────────────────────────────────────────────────────
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <GameTopBar title="Play with others" sa="सह-क्रीडा" onClose={() => navigation.goBack()} />
+      {/* The stack header already says "Play with others" with a back arrow. */}
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.section}>Choose a game</Text>
         <View style={styles.gameRow}>

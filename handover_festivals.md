@@ -113,7 +113,7 @@ hand-back:
 |---|---|---|
 | Name of the feature on screen | "Festivals" / "त्योहार और व्रत" as the title; "Parva" only in code | strings |
 | Pages served before the owner reads them | only `approved` pages; drafts that pass every automatic check are `auto_ok` and not served | `parva_serve_statuses` (default `["approved"]`) |
-| Paintings served before the owner looks | none: a page without an approved painting shows its plain header | `parva_art_serve_statuses` (default `["approved"]`) |
+| Festival artwork | owner-authorized generated deity images may be bundled and displayed directly; remote uploads retain their asset statuses | `parva_art_serve_statuses` governs remote uploads only |
 | Menstruation rules for puja and vrat | not mentioned on any page | content rule 11.6 |
 | Reminder times | 19:00 the evening before; and at the start of a pāraṇa window | code constants |
 | How far ahead the calendar is fetched | 60 days | `PARVA_DAYS_AHEAD` (phone) |
@@ -222,7 +222,8 @@ month (*read* on GRETIL 2026-10-09).
 
 `specs/path-art/README.md`: the Path card paintings were generated on 2026-10-09 in the Read covers'
 watercolour and gouache style, exported as WebP (600 px cards, 1200 px wide hero, quality 86), with the
-full prompts kept in that README. Follow the same style and record keeping.
+full prompts kept in that README. Keep the record-keeping; deity images use watercolor and gouache,
+while Learn and Play may use other suitable styles (owner update, 2026-10-14).
 
 ### 2.7 Notifications (*read* 2026-10-09 and 2026-10-10)
 
@@ -579,26 +580,26 @@ disclaimer; keep the existing doctor's-treatment rule: never tell anyone to stop
 
 Phase 1: one painting per Phase 1 page (Lakṣmī for Diwali, Viṣṇu for Ekādaśī, the full and new moon
 over water for Pūrṇimā and Amāvasyā, Chhath's sunset arghya, the Karwa Chauth moon). Phase 3: the nine
-forms of the Devī, Durgā for the Navarātri series, and for Pitṛ Pakṣa a scene with **no deity** (water
-offered at a river at dawn). Sūtak pages have no painting.
+forms of the Devī, Durgā for the Navarātri series, and a river scene for Pitṛ Pakṣa.
+Include the appropriate gods on deity-associated festival pages. Decorative imagery is allowed on
+other observance pages when useful. Owner update, 2026-10-14: deity images are explicitly requested.
 
 ### 9.2 Iconography checklist
 
-For each deity painting, write a checklist from the dhyāna verse or the text you sourced: number of
-arms; what each hand holds or shows; the mount; the colour or complexion the verse names; anything the
-verse says on the head (for example a crescent moon). Store it in `parva_art.checklist` with the verse's
-source. The owner checks each painting against its list before setting `approved`. A deity with no
-sourced verse gets no painting.
+For each deity painting, check recognizable traditional iconography: number of arms, held objects,
+mount, complexion and head attributes. Record the intended depiction and generation prompt.
+A sourced dhyāna verse is useful context when available, but is not a prerequisite for generating,
+saving or displaying deity artwork. Do not present generated art as a verified textual quotation.
 
 ### 9.3 Making them
 
-- Style: the Read covers' and Path cards' watercolour and gouache (`specs/path-art/README.md`); warm,
+- Style: deity images use watercolor and gouache (owner refinement, 2026-10-14).
+  Learn and Play may use other appropriate styles. Keep festival art warm,
   calm, devotional, natural anatomy, no text in the image, no frame, no watermark, faces dignified.
   Never sexualised, never gory (Kālarātri is fierce but drawn with reverence; follow the verse, not a
   horror look).
-- Write the prompts to `specs/parva-art/README.md`, one per painting, with the checklist inline. The
-  owner runs the image model (decision 2: generated). Earlier image work used the owner's Vertex bucket;
-  the owner's GPU machine also runs ComfyUI; don't run either yourself.
+- Keep one prompt per image in `specs/generated-art/manifest.json` and preserve full-resolution masters
+  in the workspace. Generate with the built-in ImageGen tool; the owner has authorized this work.
 - `backend/scripts/parva_art_import.py`: takes the owner's chosen file per key, converts to WebP (1200 px
   wide hero, quality 86), uploads through `get_storage()` to `parva-art/<key>.webp`, writes the
   `parva_art` row as `draft`.

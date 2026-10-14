@@ -7,12 +7,14 @@ import { color, fill, font, onFill, space } from "../theme";
 /** Small, private mantra counter. Each festival/day/mantra has its own count. */
 export default function JapaCounter({ storageKey }: { storageKey: string }) {
   const [count, setCount] = useState(0);
+  const [ready, setReady] = useState(false);
   useEffect(() => {
     let alive = true;
+    setCount(0); setReady(false);
     void AsyncStorage.getItem(storageKey).then((value) => {
       const n = Number(value);
       if (alive && Number.isFinite(n) && n >= 0) setCount(Math.floor(n));
-    }).catch(() => {});
+    }).catch(() => {}).finally(() => { if (alive) setReady(true); });
     return () => { alive = false; };
   }, [storageKey]);
 
@@ -32,13 +34,13 @@ export default function JapaCounter({ storageKey }: { storageKey: string }) {
         <View style={[styles.progress, { width: `${progress * 100}%` }]} />
       </View>
       <View style={styles.actions}>
-        <Pressable onPress={() => save(Math.max(0, count - 1))} style={styles.secondary} accessibilityRole="button" accessibilityLabel="Undo one repetition">
+        <Pressable disabled={!ready} onPress={() => save(Math.max(0, count - 1))} style={styles.secondary} accessibilityRole="button" accessibilityLabel="Undo one repetition">
           <Text style={styles.secondaryText}>Undo</Text>
         </Pressable>
-        <Pressable onPress={() => save(count + 1)} style={styles.add} accessibilityRole="button" accessibilityLabel={`Count one repetition. ${count} of 108`}>
+        <Pressable disabled={!ready} onPress={() => save(count + 1)} style={styles.add} accessibilityRole="button" accessibilityLabel={`Count one repetition. ${count} of 108`}>
           <Text style={styles.addText}>+ 1 repetition</Text>
         </Pressable>
-        <Pressable onPress={() => save(0)} style={styles.secondary} accessibilityRole="button" accessibilityLabel="Reset japa count">
+        <Pressable disabled={!ready} onPress={() => save(0)} style={styles.secondary} accessibilityRole="button" accessibilityLabel="Reset japa count">
           <Text style={styles.secondaryText}>Reset</Text>
         </Pressable>
       </View>

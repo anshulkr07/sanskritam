@@ -123,7 +123,7 @@ def validate_page(body: dict) -> list[str]:
     if not isinstance(do, dict):
         errs.append("do must be an object")
     else:
-        for key in ("gather", "steps"):
+        for key in ("gather", "steps", "budget"):
             items = do.get(key, [])
             if not isinstance(items, list):
                 errs.append(f"do.{key} must be a list")
@@ -140,7 +140,7 @@ def validate_page(body: dict) -> list[str]:
     if not isinstance(vrat, dict):
         errs.append("vrat must be an object")
     else:
-        for key in ("eat", "avoid", "break", "who_should_eat"):
+        for key in ("types", "eat", "avoid", "break", "who_should_eat"):
             items = vrat.get(key, [])
             if not isinstance(items, list):
                 errs.append(f"vrat.{key} must be a list")
@@ -227,8 +227,10 @@ def _all_texts(body: dict) -> list[tuple[str, dict]]:
         out.append(("do.gather", it))
     for it in do.get("steps", []) or []:
         out.append(("do.steps", it))
+    for it in do.get("budget", []) or []:
+        out.append(("do.budget", it))
     vrat = body.get("vrat", {}) or {}
-    for key in ("eat", "avoid", "break", "who_should_eat"):
+    for key in ("types", "eat", "avoid", "break", "who_should_eat"):
         for it in vrat.get(key, []) or []:
             out.append((f"vrat.{key}", it))
     for it in body.get("dont", []) or []:

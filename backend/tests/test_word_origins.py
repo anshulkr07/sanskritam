@@ -124,7 +124,7 @@ def test_romanize_ru_matches_batch():
                     continue
                 if r.get("script") == "cyrillic":
                     assert romanize_ru(r["word"]) == r["roman"], r["id"]
-                else:
+                elif r.get("script") == "latin":
                     assert (r.get("roman") or "") == "", r["id"]
     # Spot pins from the handover.
     assert romanize_ru("сахар") == "sakhar"
@@ -143,7 +143,7 @@ def test_kind_confidence_and_hops():
         rows = db.query(WordRoute).filter(WordRoute.status == "approved").all()
         assert rows
         for r in rows:
-            assert r.kind in ("loan", "related"), r.id
+            assert r.kind in ("loan", "related", "inherit"), r.id
             assert r.confidence in ("certain", "probable"), r.id
             for h in (r.hops or []):
                 assert isinstance(h, dict), r.id
@@ -261,6 +261,9 @@ def _pipeline_dates():
 def _copy_of_batch0(tmp_path, name, change):
     folder = tmp_path / name
     folder.mkdir()
+    for other in DATA_DIR.glob("batch-*.json"):
+        if other.name != "batch-0000.json":
+            (folder / other.name).write_bytes(other.read_bytes())
     doc = json.loads((DATA_DIR / "batch-0000.json").read_text(encoding="utf-8"))
     change(doc)
     (folder / "batch-0000.json").write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
@@ -359,7 +362,7 @@ def test_a_later_batch_cannot_take_over_an_origin(client, tmp_path):
                 "checked_by": "rule"}],
         }],
     }
-    (folder / "batch-0001.json").write_text(json.dumps(clash, ensure_ascii=False), encoding="utf-8")
+    (folder / "batch-9999.json").write_text(json.dumps(clash, ensure_ascii=False), encoding="utf-8")
     try:
         _seed_from(folder)
         assert _table() == before

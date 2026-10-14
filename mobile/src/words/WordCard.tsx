@@ -162,7 +162,7 @@ export default function WordCard() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: fill.maroon,
-    borderRadius: 0,
+    borderRadius: 10,
     padding: space.md,
     marginBottom: space.sm,
     overflow: "hidden",

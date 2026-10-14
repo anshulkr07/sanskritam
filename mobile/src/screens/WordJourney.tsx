@@ -18,7 +18,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -31,7 +31,8 @@ import { useTypeScale } from "../hooks/useTypeScale";
 import { Ghost, Panel, Sa, SectionLabel } from "../kala/ui";
 import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
-import { color, font, onFill, space } from "../theme";
+import { color, font, nativeScriptFace, onFill, space } from "../theme";
+import { ensureScriptFont, isScriptLoaded } from "../services/scriptFonts";
 import { plain } from "../utils/text";
 import RouteLadder from "../words/RouteLadder";
 import { fetchWordToday } from "../words/WordCard";
@@ -57,6 +58,9 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
   const headlineId = originId ? undefined : (data as WordToday | null)?.headline_route_id;
 
   const routes = (origin?.routes ?? []).filter((r) => (r.word ?? "").trim() !== "");
+  const [, refreshFonts] = useState(0);
+  const scripts = [...new Set(routes.map(r => r.script).filter(Boolean))].join(",");
+  useEffect(() => { let alive = true; void Promise.all(scripts.split(",").filter(Boolean).map(ensureScriptFont)).then(() => { if (alive) refreshFonts(n => n + 1); }); return () => { alive = false; }; }, [scripts]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const tapped = selectedId == null ? null : routes.find((r) => r.id === selectedId);
   const selected = tapped ?? headlineRoute(routes, headlineId);
@@ -120,14 +124,15 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                   {routes.map((r) => {
                     const id = r.id ?? `${r.lang}-${r.word}`;
                     const active = r === selected;
-                    const relation = r.relation === "related" ? "Related" : r.relation === "borrowed" ? "Borrowed" : "Derived";
+                    const relation = r.relation === "related" ? "Related" : r.relation === "inherited" ? "Inherited" : r.relation === "borrowed" ? "Borrowed" : "Travelled";
                     return (
                       <Pressable key={id} onPress={() => { haptics.tap(); setSelectedId(r.id ?? null); }}
                         style={({ pressed }) => [styles.row, active && styles.rowActive, pressed && styles.pressed]}
                         accessibilityRole="button" accessibilityLabel={`Show ${plain(r.word)} in ${plain(r.lang_name)}`}
                         accessibilityState={{ selected: active }}>
                         <View style={styles.rowText}>
-                          <Text style={[styles.rowWord, { fontSize: sized(font.sizes.base) }]} numberOfLines={1}>{plain(r.word)}</Text>
+                          <Text style={[styles.rowWord, { fontSize: sized(20), fontFamily: r.script && r.script !== "latin" ? (isScriptLoaded(r.script) ? nativeScriptFace[r.script] : undefined) : "Nunito_700Bold" }]} numberOfLines={2}>{plain(r.word)}</Text>
+                          {!!r.roman && <Text style={styles.rowLang}>{r.roman}</Text>}
                           {!!(r.lang_name ?? "").trim() && <Text style={[styles.rowLang, { fontSize: sized(font.sizes.sm) }]} numberOfLines={1}>{r.lang_name}</Text>}
                         </View>
                         <Text style={styles.relationTag}>{relation}</Text>
@@ -162,43 +167,6 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
                 </Text>
                 <Ionicons name="open-outline" size={18} color={color.inkSoft} />
               </Pressable>
-            )}
-
-            {routes.filter((r) => r !== selected).length > 0 && (
-              <>
-                <SectionLabel>Also in</SectionLabel>
-                <View>
-                  {routes
-                    .filter((r) => r !== selected)
-                    .map((r) => {
-                      const id = r.id ?? `${r.lang}-${r.word}`;
-                      return (
-                        <Pressable
-                          key={id}
-                          onPress={() => {
-                            haptics.tap();
-                            setSelectedId(r.id ?? null);
-                          }}
-                          style={({ pressed }) => [styles.row, pressed && styles.pressed]}
-                          accessibilityRole="button"
-                          accessibilityLabel={`Show ${plain(r.word)} in ${plain(r.lang_name)}`}
-                        >
-                          <View style={styles.rowText}>
-                            <Text style={[styles.rowWord, { fontSize: sized(font.sizes.base) }]} numberOfLines={1}>
-                              {plain(r.word)}
-                            </Text>
-                            {!!(r.lang_name ?? "").trim() && (
-                              <Text style={[styles.rowLang, { fontSize: sized(font.sizes.sm) }]} numberOfLines={1}>
-                                {(r.lang_name ?? "").trim()}
-                              </Text>
-                            )}
-                          </View>
-                          <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
-                        </Pressable>
-                      );
-                    })}
-                </View>
-              </>
             )}
 
             {!!plain(origin.note) && (

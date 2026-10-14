@@ -70,7 +70,7 @@ export interface TodayState {
 
 /** `active` is whether the card is on a focused screen. Off-screen it holds
  *  its last reading and does no work. */
-export function useToday(active: boolean): TodayState {
+export function useToday(active: boolean, suppliedPlace?: KalaPlace | null): TodayState {
   const [prefs, setPrefs] = useState<KalaPrefs>(getKalaPrefs);
   const [stored, setStored] = useState<KalaPlace | null>(null);
   const [placeLoaded, setPlaceLoaded] = useState(false);
@@ -104,7 +104,7 @@ export function useToday(active: boolean): TodayState {
     if (active) refreshPlace();
   }, [active, refreshPlace]);
 
-  const place = useMemo(() => resolvePlace(stored, prefs.tradition), [stored, prefs.tradition]);
+  const place = useMemo(() => resolvePlace(suppliedPlace === undefined ? stored : suppliedPlace, prefs.tradition), [stored, suppliedPlace, prefs.tradition]);
   const { lat, lon, tz } = place.place;
 
   // One tick a minute, on the minute, while the card is in view.
@@ -141,7 +141,7 @@ export function useToday(active: boolean): TodayState {
     now.getTime() < snap.validUntil.getTime();
 
   useEffect(() => {
-    if (!active || !placeLoaded || fresh || failed) return;
+    if (!active || (suppliedPlace === undefined && !placeLoaded) || fresh || failed) return;
     // Off the current frame: the first reading loads the astronomy tables.
     // A change of tradition or place before it runs cancels and reschedules.
     const timer = setTimeout(() => {
@@ -155,9 +155,10 @@ export function useToday(active: boolean): TodayState {
       }
     }, 0);
     return () => clearTimeout(timer);
-  }, [active, placeLoaded, fresh, failed, attempt, tz, place.place, prefs.tradition, setSnap]);
+  }, [active, placeLoaded, suppliedPlace, fresh, failed, attempt, tz, place.place, prefs.tradition, setSnap]);
 
-  const current = snap && snap.traditionId === prefs.tradition ? snap : null;
+  const current = snap && snap.traditionId === prefs.tradition &&
+    (suppliedPlace === undefined || (snap.place.lat === lat && snap.place.lon === lon && snap.place.tz === tz)) ? snap : null;
   const zone = current ? current.place.tz : tz;
   const clockText = useMemo(() => clockTextFor(zone, now), [zone, now]);
   const whenText = useMemo(() => whenTextFor(zone, now), [zone, now]);

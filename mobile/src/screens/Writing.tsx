@@ -23,7 +23,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
@@ -33,7 +33,7 @@ import FetchError from "../components/FetchError";
 import { SkeletonGroup } from "../components/Skeleton";
 import { Button } from "../components/ui";
 import PhotoCapture from "../components/writing/PhotoCapture";
-import StrokePathPlayer from "../components/writing/StrokePathPlayer";
+import StrokePathPlayer from "../components/writing/StrokeDemonstration";
 import WritingCanvas, { type InkRecogniser } from "../components/writing/WritingCanvas";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { getInkRecogniser } from "../services/inkRecogniser";
@@ -78,6 +78,9 @@ export default function WritingScreen() {
   const [showStrokes, setShowStrokes] = useState(false);
   const [photoBusy, setPhotoBusy] = useState(false);
   const [thumb, setThumb] = useState<string | null>(null);
+  const [photoOpen, setPhotoOpen] = useState(false);
+  const requestRevision = useRef(0);
+  const feedbackY = useRef(0);
 
   const load = useCallback(() => {
     setLoadFailed(false);
@@ -93,6 +96,7 @@ export default function WritingScreen() {
   const paths = item?.stroke_paths ?? [];
 
   const reset = useCallback(() => {
+    requestRevision.current += 1;
     setFeedback(null);
     setShowStrokes(false);
     setAttempt((a) => a + 1);
@@ -119,11 +123,15 @@ export default function WritingScreen() {
   const onInk = useCallback(
     async (recognised: string, confidence: number) => {
       if (!item) return;
+      const revision = requestRevision.current;
       try {
-        show(await api.writingAttempt(item.id, recognised, confidence, "ink"), recognised);
+        const result = await api.writingAttempt(item.id, recognised, confidence, "ink");
+        if (revision !== requestRevision.current) return;
+        show(result, recognised);
+        requestAnimationFrame(() => (scrollRef.current as { scrollTo?: (o: object) => void })?.scrollTo?.({ y: Math.max(0, feedbackY.current - 32), animated: true }));
       } catch {
         // A network failure is never a verdict: the writing was fine.
-        setFeedback({ kind: "error", read: "" });
+        if (revision === requestRevision.current) setFeedback({ kind: "error", read: "" });
       }
     },
     [item, show],
@@ -132,6 +140,7 @@ export default function WritingScreen() {
   const onPhoto = useCallback(
     async (uri: string | null) => {
       if (!item) return;
+      const revision = requestRevision.current;
       if (!uri) {
         setFeedback({ kind: "unsure", read: "" });
         return;
@@ -141,16 +150,17 @@ export default function WritingScreen() {
       try {
         try {
           const res = await api.writingPhotoCheck(item.id, uri);
-          show(res, res.recognised_text ?? "");
+          if (revision === requestRevision.current) show(res, res.recognised_text ?? "");
         } catch {
           // Endpoint not deployed (404/405), rate limited (429), or a
           // server or network failure: read the photo on the device.
           const out = await photoRecogniser.recognise(uri);
           const text = out?.text ?? "";
-          show(await api.writingAttempt(item.id, text, out?.confidence ?? 0, "photo"), text);
+          const result = await api.writingAttempt(item.id, text, out?.confidence ?? 0, "photo");
+          if (revision === requestRevision.current) show(result, text);
         }
       } catch {
-        setFeedback({ kind: "error", read: "" });
+        if (revision === requestRevision.current) setFeedback({ kind: "error", read: "" });
       } finally {
         discardPhoto(uri);
         setThumb(null);
@@ -170,6 +180,7 @@ export default function WritingScreen() {
     haptics.tap();
     setSource(s);
     setFeedback(null);
+    if (s === "photo") setPhotoOpen(true);
   };
 
   const len = [...(item?.devanagari ?? "")].length;
@@ -241,7 +252,7 @@ export default function WritingScreen() {
               {showStrokes && paths.length > 0 ? (
                 <StrokePathPlayer paths={paths} devanagari={item.devanagari} size={170} autoPlay />
               ) : (
-                <Text style={[styles.letter, script("bold"), { fontSize: letterSize, lineHeight: letterSize * 1.5 }]}>
+                <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.35} style={[styles.letter, script("bold"), { fontSize: letterSize, lineHeight: letterSize * 1.5, maxWidth: "100%" }]}>
                   {item.devanagari}
                 </Text>
               )}
@@ -252,7 +263,7 @@ export default function WritingScreen() {
                 </Text>
               ) : null}
               {paths.length > 0 && (
-                <Button
+                <Button cornerRadius={4}
                   label={showStrokes ? "Hide strokes" : "Watch strokes"}
                   tone="tonal"
                   size="sm"
@@ -299,10 +310,11 @@ export default function WritingScreen() {
                   onAttempt={(text, conf) => void onInk(text, conf)}
                 />
               ) : (
-                <PhotoCapture busy={photoBusy} thumbnail={thumb} onCapture={(uri) => void onPhoto(uri)} />
+                <Button cornerRadius={4} label="Open camera" tone="primary" style={{ borderRadius: 4, width: "100%" }} onPress={() => { setFeedback(null); setPhotoOpen(true); }} />
               )}
             </View>
 
+            <View onLayout={e => { feedbackY.current = e.nativeEvent.layout.y; }} />
             {feedback ? (
               <Animated.View
                 entering={FadeIn.duration(180)}
@@ -348,9 +360,9 @@ export default function WritingScreen() {
             {feedback ? (
               <View style={styles.actions}>
                 {feedback.kind !== "correct" && (
-                  <Button label="Try again" tone="tonal" size="md" style={styles.action} onPress={reset} />
+                  <Button cornerRadius={4} label="Try again" tone="tonal" size="md" style={styles.action} onPress={reset} />
                 )}
-                <Button
+                <Button cornerRadius={4}
                   label="Next"
                   tone={feedback.kind === "correct" ? "primary" : "neutral"}
                   size="md"
@@ -369,6 +381,15 @@ export default function WritingScreen() {
           </>
         )}
       </ScrollView>
+      <Modal visible={photoOpen} animationType="slide" onRequestClose={() => { if (!photoBusy) setPhotoOpen(false); }}>
+        <SafeAreaView style={styles.safe}>
+          <View style={styles.cameraHeader}><View style={{ flex: 1 }}><Text style={styles.pagerText}>Photograph your writing</Text><Text style={[styles.gloss, script("semibold")]}>Keep {item?.devanagari} inside the frame</Text></View><Pressable disabled={photoBusy} onPress={() => setPhotoOpen(false)} accessibilityRole="button" accessibilityLabel="Close camera" style={styles.pagerBtn}><Ionicons name="close" size={24} color={color.ink} /></Pressable></View>
+          <View style={styles.cameraBody}>
+            {feedback && !photoBusy ? <View style={styles.photoResult} accessibilityRole="alert"><Text style={[styles.letter, script("bold"), { fontSize: 52 }]}>{item?.devanagari}</Text><Text style={styles.pagerText}>{feedbackLine(feedback)}</Text>{!!feedback.read && <Text style={[styles.fbRead, script("regular")]}>We read: {feedback.read}</Text>}<Button cornerRadius={4} label="Take another photo" onPress={() => setFeedback(null)} style={{ borderRadius: 4 }} /><Button cornerRadius={4} label="Done" tone="neutral" onPress={() => setPhotoOpen(false)} style={{ borderRadius: 4 }} /></View>
+              : <PhotoCapture busy={photoBusy} thumbnail={thumb} onCapture={uri => void onPhoto(uri)} />}
+          </View>
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -391,27 +412,30 @@ function feedbackLabel(f: Feedback): string {
 }
 
 const styles = StyleSheet.create({
+  cameraHeader: { flexDirection: "row", alignItems: "center", padding: space.md, borderBottomWidth: 1, borderBottomColor: color.border, gap: space.sm },
+  cameraBody: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.md },
+  photoResult: { width: "100%", padding: space.md, gap: space.md, alignItems: "stretch", backgroundColor: color.surface, borderWidth: 1, borderColor: color.border },
   safe: { flex: 1, backgroundColor: color.bg },
   body: { padding: space.lg, paddingBottom: space.xl, gap: space.md },
   segment: {
     flexDirection: "row",
     backgroundColor: color.surfaceMuted,
-    borderRadius: radius.pill,
+    borderRadius: 4,
     padding: 4,
   },
-  seg: { flex: 1, minHeight: 40, borderRadius: radius.pill, alignItems: "center", justifyContent: "center" },
+  seg: { flex: 1, minHeight: 40, borderRadius: 4, alignItems: "center", justifyContent: "center" },
   segOn: { backgroundColor: color.surface, ...shadow.card },
   segText: { fontSize: font.sizes.sm, color: color.inkSoft },
   segTextOn: { color: accent.saffron.fg },
   empty: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.base, color: color.inkSoft, textAlign: "center", paddingVertical: space.xl },
   pager: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  pagerBtn: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.surface, alignItems: "center", justifyContent: "center", ...shadow.card },
+  pagerBtn: { width: 44, height: 44, borderRadius: 4, backgroundColor: color.surface, alignItems: "center", justifyContent: "center", ...shadow.card },
   pagerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
   target: {
     alignItems: "center",
     gap: space.xs,
     backgroundColor: color.surface,
-    borderRadius: radius.lg,
+    borderRadius: 4,
     paddingVertical: space.md,
     paddingHorizontal: space.md,
     ...shadow.card,
@@ -427,7 +451,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 6,
     minHeight: 44,
-    borderRadius: radius.md,
+    borderRadius: 4,
     backgroundColor: color.surface,
     borderWidth: 1,
     borderColor: color.border,
@@ -440,7 +464,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: space.sm,
-    borderRadius: radius.md,
+    borderRadius: 4,
     paddingHorizontal: space.md,
     paddingVertical: space.sm,
     minHeight: 52,

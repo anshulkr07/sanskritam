@@ -1,4 +1,4 @@
-// StoryDeck — Discover Sanskrit, the swipeable basics→advanced story.
+// StoryDeck — Introduction to Sanskrit, the swipeable basics→advanced story.
 //
 // ~40 backend-driven cards in 7 chapters, from "what is Sanskrit?" to
 // sandhi/samāsa/kāraka. Horizontal paging (swipe left/right) PLUS Prev/Next
@@ -19,12 +19,13 @@ import {
   AccessibilityInfo,
   FlatList,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaFrame } from "react-native-safe-area-context";
 
 import { api, type StoryCard } from "../api/client";
 import { Button, ProgressBar } from "../components/ui";
@@ -34,7 +35,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
-import { getStoryIndex, setStoryIndex } from "../services/storyProgress";
+import { getStoryIndex, setStoryIndex, completeStory } from "../services/storyProgress";
 import { color, font, radius, script, shadow, space } from "../theme";
 import { plain } from "../utils/text";
 
@@ -54,9 +55,11 @@ const TAB_TARGETS = new Set(["Conversation", "Learn", "Play", "Read"]);
 export default function StoryDeckScreen({ navigation }: Props) {
   const { sized } = useTypeScale();
   const reduced = useReducedMotion();
-  const { width } = useWindowDimensions();
+  const { width } = useSafeAreaFrame();
   const listRef = useRef<FlatList<FlatCard>>(null);
   const [index, setIndex] = useState(0);
+  const visibleIndex = useRef(0);
+  visibleIndex.current = index;
   const [resumed, setResumed] = useState(false);
   const { data: chapters, loading, failed, retry } = useQuery(
     "story-chapters",
@@ -79,6 +82,9 @@ export default function StoryDeckScreen({ navigation }: Props) {
   }, [chapters]);
 
   const total = flat.length;
+  useEffect(() => {
+    if (total) listRef.current?.scrollToOffset({ offset: visibleIndex.current * width, animated: false });
+  }, [width, total]);
 
   // Resume the device-local bookmark once the cards have loaded.
   useEffect(() => {
@@ -112,20 +118,27 @@ export default function StoryDeckScreen({ navigation }: Props) {
   const onViewable = useCallback(
     ({ viewableItems }: { viewableItems: Array<{ index: number | null }> }) => {
       const at = viewableItems[0]?.index;
-      if (at != null && at !== index) {
+      if (at != null && at !== visibleIndex.current) {
+        visibleIndex.current = at;
         setIndex(at);
         setStoryIndex(at);
       }
     },
-    [index],
+    [],
   );
 
   const goDeep = useCallback(
-    (target: string) => {
+    (target: string, actionLabel = "") => {
       if (!target || target === "none") return;
       haptics.tap();
       // The old Path screen is now the Learn trail.
       const link = target === "Path" ? "Learn" : target;
+      // The story's sandhi cards used to point at the whole Play tab.
+      // Send their specific action to the existing two-word sandhi tool.
+      if (link === "Play" && actionLabel.toLowerCase().includes("sandhi")) {
+        navigation.navigate("SandhiPractice");
+        return;
+      }
       if (TAB_TARGETS.has(link)) {
         // Stack → tab: route through the MainTabs navigator. The cast is
         // the same `as never` precedent Play.tsx uses for tab targets.
@@ -141,6 +154,9 @@ export default function StoryDeckScreen({ navigation }: Props) {
           break;
         case "WordOrder":
           navigation.navigate("WordOrder", {});
+          break;
+        case "Sandhi":
+          navigation.navigate("SandhiPractice");
           break;
         case "Vocab":
           navigation.navigate("Vocab", {});
@@ -175,19 +191,19 @@ export default function StoryDeckScreen({ navigation }: Props) {
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       {loading && flat.length === 0 ? (
         <View style={styles.body} accessible accessibilityRole="progressbar" accessibilityLabel="Loading the Sanskrit story">
-          <Text style={[styles.kicker, { fontSize: sized(font.sizes.sm) }]}>Discover Sanskrit</Text>
+          <Text style={[styles.kicker, { fontSize: sized(font.sizes.sm) }]}>Introduction to Sanskrit</Text>
           <Skeleton style={{ height: 220, marginTop: space.sm }} />
           <Skeleton style={{ height: 48, marginTop: space.sm }} />
         </View>
       ) : failed && flat.length === 0 ? (
         <View style={styles.body}>
-          <Text style={[styles.kicker, { fontSize: sized(font.sizes.sm) }]}>Discover Sanskrit</Text>
+          <Text style={[styles.kicker, { fontSize: sized(font.sizes.sm) }]}>Introduction to Sanskrit</Text>
           <View style={[styles.errorCard, shadow.card]}>
             <Text style={[styles.errorTitle, { fontSize: sized(font.sizes.base) }]}>Couldn't load the story.</Text>
             <Text style={[styles.errorSub, { fontSize: sized(font.sizes.sm) }]}>
               Check your connection and try again.
             </Text>
-            <Button label="Retry" onPress={retry} style={{ marginTop: space.md }} />
+            <Button cornerRadius={4} label="Retry" onPress={retry} style={{ marginTop: space.md }} />
           </View>
         </View>
       ) : (
@@ -229,14 +245,18 @@ export default function StoryDeckScreen({ navigation }: Props) {
               <Text style={[styles.navText, index === 0 && styles.navTextDisabled]}>Back</Text>
             </Pressable>
             <Pressable
-              onPress={() => goTo(index + 1)}
-              disabled={index >= total - 1}
-              style={[styles.navBtn, index >= total - 1 && styles.navDisabled]}
+              onPress={() => {
+                if (index >= total - 1) {
+                  void completeStory().then(() => navigation.goBack());
+                } else goTo(index + 1);
+              }}
+              disabled={total === 0}
+              style={styles.navBtn}
               accessibilityRole="button"
-              accessibilityLabel={index >= total - 1 ? "Last card" : `Next card, ${index + 2} of ${total}`}
-              accessibilityState={{ disabled: index >= total - 1 }}
+              accessibilityLabel={index >= total - 1 ? "Finish introduction" : `Next card, ${index + 2} of ${total}`}
+              accessibilityState={{ disabled: total === 0 }}
             >
-              <Text style={[styles.navText, index >= total - 1 && styles.navTextDisabled]}>Next</Text>
+              <Text style={styles.navText}>{index >= total - 1 ? "Finish" : "Next"}</Text>
               <Ionicons name="chevron-forward" size={20} color={index >= total - 1 ? color.inkFaint : color.saffron} />
             </Pressable>
           </View>
@@ -253,14 +273,14 @@ function StoryPage({
 }: {
   item: FlatCard;
   pageWidth: number;
-  onDeepLink: (link: string) => void;
+  onDeepLink: (link: string, label?: string) => void;
 }) {
   const { sized } = useTypeScale();
   const { card } = item;
   const hasExample = card.example_dev.length > 0;
   const hasLink = card.deep_link !== "none";
   return (
-    <View style={[styles.page, { width: pageWidth }]}>
+    <ScrollView style={{ width: pageWidth }} contentContainerStyle={styles.page} showsVerticalScrollIndicator={false}>
       <View style={[styles.card, shadow.card]}>
         <Text style={[styles.eyebrow, { fontSize: sized(font.sizes.xs) }]}>{item.chapterEyebrow}</Text>
         <Text style={[styles.titleSa, script("bold"), { fontSize: sized(font.sizes.lg, { sanskrit: true }) }]}>
@@ -282,9 +302,9 @@ function StoryPage({
           </View>
         )}
         {hasLink && (
-          <Button
+          <Button cornerRadius={4}
             label={card.deep_link_label || "Explore"}
-            onPress={() => onDeepLink(card.deep_link)}
+            onPress={() => onDeepLink(card.deep_link, card.deep_link_label)}
             tone="neutral"
             size="md"
             block
@@ -293,7 +313,7 @@ function StoryPage({
           />
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -307,7 +327,7 @@ const styles = StyleSheet.create({
   },
   errorCard: {
     backgroundColor: color.surface,
-    borderRadius: radius.lg,
+    borderRadius: 4,
     padding: space.lg,
     marginTop: space.sm,
   },
@@ -339,7 +359,7 @@ const styles = StyleSheet.create({
   page: { paddingHorizontal: space.lg, paddingVertical: space.md, justifyContent: "center" },
   card: {
     backgroundColor: color.surface,
-    borderRadius: radius.xl,
+    borderRadius: 4,
     padding: space.lg,
   },
   eyebrow: {
@@ -364,7 +384,7 @@ const styles = StyleSheet.create({
   },
   exampleBox: {
     backgroundColor: color.surfaceMuted,
-    borderRadius: radius.lg,
+    borderRadius: 4,
     padding: space.md,
     marginTop: space.md,
   },
@@ -394,7 +414,7 @@ const styles = StyleSheet.create({
     gap: 2,
     minHeight: 44,
     paddingHorizontal: space.md,
-    borderRadius: radius.md,
+    borderRadius: 4,
     backgroundColor: color.surface,
     ...shadow.card,
   },

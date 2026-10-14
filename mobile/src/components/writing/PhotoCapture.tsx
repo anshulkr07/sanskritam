@@ -30,8 +30,8 @@ export default function PhotoCapture({
   /** The photo's file uri, or null when the camera returned nothing. */
   onCapture: (uri: string | null) => void;
 }) {
-  const { width: winW } = useWindowDimensions();
-  const size = Math.min(340, winW - space.lg * 2);
+  const { width: winW, height: winH } = useWindowDimensions();
+  const size = Math.max(120, Math.min(420, winW - space.md * 2, winH - 180));
   const [permission, requestPermission] = useCameraPermissions();
   // Never fire takePictureAsync into a preview that has not started.
   const [cameraReady, setCameraReady] = useState(false);
@@ -62,7 +62,7 @@ export default function PhotoCapture({
       <View style={[styles.box, styles.center, { width: size, height: size }]}>
         <Ionicons name="camera-outline" size={40} color={color.inkSoft} />
         <Text style={styles.title}>Camera access is off</Text>
-        <Button
+        <Button cornerRadius={4}
           label={blocked ? "Open settings" : "Allow camera"}
           tone="tonal"
           size="md"
@@ -109,7 +109,7 @@ export default function PhotoCapture({
             pressed && { transform: [{ scale: 0.94 }] },
           ]}
         >
-          <View style={styles.shutterInner} />
+          <Ionicons name="camera" size={23} color={color.white} /><Text style={styles.checkingText}>Take photo</Text>
         </Pressable>
       )}
     </View>
@@ -119,7 +119,7 @@ export default function PhotoCapture({
 const styles = StyleSheet.create({
   wrap: { alignItems: "center", gap: space.md },
   box: {
-    borderRadius: radius.lg,
+    borderRadius: 4,
     overflow: "hidden",
     backgroundColor: color.surfaceMuted,
     borderWidth: 1,
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     height: "64%",
     borderWidth: 2,
     borderColor: "rgba(255,255,255,0.9)",
-    borderRadius: radius.md,
+    borderRadius: 4,
   },
   checking: {
     ...StyleSheet.absoluteFill,
@@ -147,12 +147,12 @@ const styles = StyleSheet.create({
   },
   checkingText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.white },
   shutter: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    backgroundColor: color.surface,
-    borderWidth: 4,
-    borderColor: color.saffronBtn,
+    position: "absolute", bottom: 14,
+    flexDirection: "row", gap: 8,
+    minWidth: 160,
+    height: 52,
+    borderRadius: 4,
+    backgroundColor: color.saffronBtn,
     alignItems: "center",
     justifyContent: "center",
     ...shadow.button,

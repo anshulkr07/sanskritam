@@ -6,7 +6,7 @@
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ImageSourcePropType } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useGrammarProgress, useGuideLang } from "../hooks/useGuide";
@@ -19,6 +19,9 @@ import { haptics } from "../services/haptics";
 import { LIBRARY_CARD_LESSONS, LIBRARY_TOPIC_TITLES, LIBRARY_TOPICS, TRAIL, type TrailLesson } from "../trail/course";
 import { T, sa, ui } from "../trail/theme";
 import { IconButton, LangSwitch, Overline } from "../trail/ui";
+import { PaintedThumbnail } from "../components/artwork/PaintedBackground";
+import { hubArtwork } from "../components/artwork/hubs";
+import { getLearnV2Asset } from "../learnv2/assetMap";
 
 type Props = NativeStackScreenProps<RootStackParamList, "LearnLibrary">;
 
@@ -35,6 +38,17 @@ const TOOLS: { route: string; params?: object; icon: IoniconsIconName; en: strin
 ];
 
 const norm = (s: string) => s.normalize("NFC").toLowerCase();
+function lessonArtwork(id?: string): ImageSourcePropType | undefined {
+  const lesson = LEARNV2_LESSONS.find((l) => l.id === id);
+  const card = lesson?.cards.find((c) => c.assetId || c.assetIds?.length);
+  const assetId = card?.assetId ?? card?.assetIds?.[0];
+  return assetId ? getLearnV2Asset(assetId)?.source : undefined;
+}
+const TOOL_ART: Record<string, string> = {
+  Varnamala: "tool:sound-map", Writing: "tool:writing", WordLab: "tool:word-lab",
+  WordOrder: "tool:word-order", Paradigm: "practice:paradigms", Pingala: "tool:rhythm",
+  Vocab: "practice:words", Challenge: "practice:challenges",
+};
 
 export default function LearnLibraryScreen({ navigation, route }: Props) {
   const { lang, t, setLang } = useGuideLang();
@@ -64,8 +78,9 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
     ? topics.filter((tp) => norm(`${tp.id} ${tp.title.en} ${tp.title.hi} ${tp.title_sa} ${tp.title_iast} ${tp.summary.en} ${tp.summary.hi}`).includes(q))
     : [];
 
-  const Row = ({ title, sub, onPress, saTitle }: { title: string; sub?: string; onPress: () => void; saTitle?: boolean }) => (
+  const Row = ({ title, sub, onPress, saTitle, artwork }: { title: string; sub?: string; onPress: () => void; saTitle?: boolean; artwork?: ImageSourcePropType }) => (
     <Pressable onPress={() => { haptics.tap(); onPress(); }} accessibilityRole="button" accessibilityLabel={sub ? `${title}. ${sub}` : title} style={styles.row}>
+      {artwork && <PaintedThumbnail source={artwork} />}
       <View style={{ flex: 1 }}>
         <Text style={[saTitle ? sa(sized(18)) : ui("regular"), { color: T.ink, fontSize: sized(saTitle ? 18 : 16) }]}>{title}</Text>
         {sub ? <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(13.5) }]}>{sub}</Text> : null}
@@ -94,7 +109,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                 <Overline text={`${hi ? "भाग" : "Part"} ${i + 1} · ${u.title[lang].replace(/^Verse & Rhythm: /, "")}`} />
                 {u.lessonIds.map((id) => {
                   const l = LEARNV2_LESSONS.find((x) => x.id === id);
-                  return l ? <Row key={id} title={l.title[lang]} sub={hi ? `${l.cards.length} कार्ड` : `${l.cards.length} cards`} onPress={() => navigation.navigate("LearnV2Lesson", { lessonId: id })} /> : null;
+                  return l ? <Row key={id} artwork={lessonArtwork(id)} title={l.title[lang]} sub={hi ? `${l.cards.length} कार्ड` : `${l.cards.length} cards`} onPress={() => navigation.navigate("LearnV2Lesson", { lessonId: id })} /> : null;
                 })}
               </View>
             ))}
@@ -110,7 +125,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
             {q ? (
               <View style={styles.section}>
                 {lessonHits.length ? <Overline text={hi ? "पाठ" : "Lessons"} /> : null}
-                {lessonHits.map((l) => <Row key={l.id} title={l.title[lang]} onPress={() => openLesson(l)} />)}
+                {lessonHits.map((l) => <Row key={l.id} artwork={lessonArtwork(l.cards)} title={l.title[lang]} onPress={() => openLesson(l)} />)}
                 {topicHits.length ? <Overline text={hi ? "व्याकरण नोट्स" : "Grammar notes"} /> : null}
                 {topicHits.slice(0, 40).map((tp) => <Row key={tp.id} title={t(tp.title)} sub={tp.title_sa} onPress={() => navigation.navigate("GrammarTopic", { topicId: tp.id })} />)}
                 {!lessonHits.length && !topicHits.length ? <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(15) }]}>{hi ? "कुछ नहीं मिला।" : "Nothing found."}</Text> : null}
@@ -127,7 +142,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                   {(guide.data?.chapters ?? []).map((ch) => {
                     const count = ch.topic_ids.length;
                     const done = ch.topic_ids.filter((id) => read.has(id)).length;
-                    return <Row key={ch.id} title={t(ch.title)} sub={hi ? `${count} विषय${done ? ` · ${done} पढ़े` : ""}` : `${count} topics${done ? ` · ${done} read` : ""}`}
+                    return <Row key={ch.id} artwork={hubArtwork(`grammar:${ch.id}`)} title={t(ch.title)} sub={hi ? `${count} विषय${done ? ` · ${done} पढ़े` : ""}` : `${count} topics${done ? ` · ${done} read` : ""}`}
                       onPress={() => navigation.navigate("GrammarChapter", { chapterId: ch.id })} />;
                   })}
                   {guide.loading && !guide.data ? <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(14) }]}>{hi ? "लोड हो रहा है…" : "Loading…"}</Text> : null}
@@ -141,8 +156,8 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                     {TOOLS.map((tool) => (
                       <Pressable key={tool.en} onPress={() => { haptics.tap(); nav.navigate(tool.route, tool.params); }} accessibilityRole="button"
                         accessibilityLabel={hi ? tool.hi : tool.en} style={styles.tool}>
-                        <Ionicons name={tool.icon} size={20} color={T.action} />
-                        <Text style={[ui("semibold"), { color: T.ink, fontSize: sized(15) }]} numberOfLines={1}>{hi ? tool.hi : tool.en}</Text>
+                        <PaintedThumbnail source={hubArtwork(TOOL_ART[tool.route])} />
+                        <Text style={[ui("semibold"), { flex: 1, color: T.ink, fontSize: sized(15) }]}>{hi ? tool.hi : tool.en}</Text>
                       </Pressable>
                     ))}
                   </View>
@@ -154,7 +169,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                     onPress={() => navigation.navigate("LearnLibrary", { section: "verse" })} />
                   {LIBRARY_CARD_LESSONS.map((id) => {
                     const l = LEARNV2_LESSONS.find((x) => x.id === id);
-                    return l ? <Row key={id} title={l.title[lang]} sub={hi ? `सन्धि · ${l.cards.length} कार्ड` : `Sandhi · ${l.cards.length} cards`} onPress={() => navigation.navigate("LearnV2Lesson", { lessonId: id })} /> : null;
+                    return l ? <Row key={id} artwork={lessonArtwork(id)} title={l.title[lang]} sub={hi ? `सन्धि · ${l.cards.length} कार्ड` : `Sandhi · ${l.cards.length} cards`} onPress={() => navigation.navigate("LearnV2Lesson", { lessonId: id })} /> : null;
                   })}
                 </View>
 
@@ -181,5 +196,5 @@ const styles = StyleSheet.create({
   section: { gap: 2 },
   row: { flexDirection: "row", alignItems: "center", gap: 10, minHeight: 48, paddingVertical: 6, borderBottomWidth: 1, borderBottomColor: T.line },
   tools: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 6 },
-  tool: { flexBasis: "48%", flexGrow: 1, flexDirection: "row", alignItems: "center", gap: 10, minHeight: 54, paddingHorizontal: 12, backgroundColor: T.surface, borderWidth: 1, borderColor: T.line },
+  tool: { flexBasis: "48%", flexGrow: 1, flexDirection: "row", alignItems: "center", gap: 8, minHeight: 70, paddingHorizontal: 8, backgroundColor: T.surface, borderWidth: 1, borderColor: T.line },
 });
