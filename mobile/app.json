@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -31,7 +31,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 7,
+      "versionCode": 8,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -58,6 +58,7 @@
         }
       ],
       "expo-font",
+      "./plugins/withVoiceEchoCancellation",
       [
         "expo-audio",
         {

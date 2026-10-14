@@ -20,6 +20,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   const [speaking, setSpeaking] = useState(false);
   const [thinking, setThinking] = useState(false);
   const [micLevel, setMicLevel] = useState(0);
+  const [bargeAvailable, setBargeAvailable] = useState(false);
   const socket = useRef<WebSocket | null>(null);
   const stream = useRef<Microphone | null>(null);
   const ready = useRef(false);
@@ -38,6 +39,12 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   const playbackBusy = useRef(false);
   const speakerActive = useRef(false);
   const echoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const supportsPlaybackFeedback = useRef(false);
+  const playbackReported = useRef(false);
+  const supportsBargeIn = useRef(false);
+  const bargePending = useRef(false);
+  const bargeFrames = useRef<ArrayBuffer[]>([]);
+  const ignoreReplyAudio = useRef(false);
   currentConfig.current = config;
 
   const send = useCallback((message: object) => {
@@ -50,16 +57,23 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     echoTimer.current = setTimeout(() => {
       echoTimer.current = null; speakerActive.current = false;
       input.current.reset(); setSpeaking(false);
+      if (playbackReported.current) { playbackReported.current = false; send({ type: "playback", busy: false }); }
     }, 500);
-  }, []);
+  }, [send]);
   const onPlaybackBusy = useCallback((busy: boolean) => {
+    if (busy && ignoreReplyAudio.current) return;
     playbackBusy.current = busy;
     if (busy) {
       if (echoTimer.current !== null) clearTimeout(echoTimer.current);
+      const began = !speakerActive.current;
       echoTimer.current = null; speakerActive.current = true;
-      input.current.reset(); setSpeaking(true); setMicLevel(0);
+      if (began) input.current.reset();
+      setSpeaking(true); setMicLevel(0);
+      if (supportsPlaybackFeedback.current && !playbackReported.current) {
+        playbackReported.current = true; send({ type: "playback", busy: true });
+      }
     } else releaseMicrophone();
-  }, [releaseMicrophone]);
+  }, [releaseMicrophone, send]);
   const stop = useCallback(() => {
     generation.current++;
     starting.current = false;
@@ -70,6 +84,9 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     startTimer.current = null;
     ticketRequest.current?.abort(); ticketRequest.current = null;
     ready.current = false;
+    supportsPlaybackFeedback.current = false; playbackReported.current = false;
+    supportsBargeIn.current = false; bargePending.current = false;
+    bargeFrames.current = []; ignoreReplyAudio.current = false; setBargeAvailable(false);
     if (echoTimer.current !== null) clearTimeout(echoTimer.current);
     echoTimer.current = null; replyPending.current = false;
     playbackBusy.current = false; speakerActive.current = false;
@@ -82,6 +99,16 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     try { sink.current?.send({ type: "stop" }); } catch { /* playback unavailable */ }
     setState("idle"); setConnectionStatus(""); setMuted(false); mutedRef.current = false;
   }, [sink]);
+  const beginBargeIn = useCallback((frames: ArrayBuffer[] = []) => {
+    if (!supportsBargeIn.current || bargePending.current) return;
+    bargePending.current = true; bargeFrames.current = frames;
+    ignoreReplyAudio.current = true;
+    if (echoTimer.current !== null) clearTimeout(echoTimer.current);
+    echoTimer.current = null; replyPending.current = false;
+    playbackBusy.current = false; speakerActive.current = false;
+    input.current.reset(); setSpeaking(false); setThinking(false);
+    sink.current?.send({ type: "stop" }); send({ type: "barge_in" });
+  }, [send, sink]);
   const start = useCallback(async () => {
     if (starting.current || socket.current || stream.current) return;
     const epoch = ++generation.current;
@@ -115,7 +142,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
         if (epoch !== generation.current) { ws.close(); return; }
         setConnectionStatus("Connecting to your companion…");
         applied.current = currentConfig.current;
-        ws.send(JSON.stringify({ ticket: ticket.ticket, config: applied.current }));
+        ws.send(JSON.stringify({ ticket: ticket.ticket, config: applied.current, capabilities: { playback_feedback: true, barge_in: true } }));
       };
       ws.onmessage = e => {
         if (epoch !== generation.current) return;
@@ -124,6 +151,8 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
         if (msg.type === "ready") {
           if (ready.current) return;
           ready.current = true;
+          supportsPlaybackFeedback.current = msg.capabilities?.playback_feedback === true;
+          supportsBargeIn.current = msg.capabilities?.barge_in === true;
           setConnectionStatus("Starting microphone…");
           sink.current?.send({ type: "settings", pitch: currentConfig.current.pipeline === 3 ? 0 : currentConfig.current.pitch, loudness: currentConfig.current.loudness });
           void (async () => {
@@ -131,8 +160,17 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
             const mic = await startMicrophone(buffer => {
               if (epoch !== generation.current || !ready.current || mutedRef.current || ws.readyState !== WebSocket.OPEN) return;
               if (ws.bufferedAmount > 128000) { setError("Network is too slow for live audio."); stop(); return; }
+              setBargeAvailable(supportsBargeIn.current && buffer.echoCancelled === true);
               const frame = input.current.process(buffer, speakerActive.current);
               setMicLevel(frame.level);
+              if (bargePending.current) {
+                bargeFrames.current.push(frame.pcm);
+                if (bargeFrames.current.reduce((size, data) => size + data.byteLength, 0) > 128000) {
+                  setError("The voice connection is too slow to interrupt. Start another call."); stop();
+                }
+                return;
+              }
+              if (frame.bargeIn && supportsBargeIn.current) { beginBargeIn(frame.bargeIn); return; }
               if (frame.pcm.byteLength) ws.send(frame.pcm);
               if (frame.endTurn) send({ type: "end_audio" });
             });
@@ -145,11 +183,26 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
             catch (e) { if (epoch === generation.current) { setError(e instanceof Error ? e.message : "Microphone streaming failed. Check microphone access and try again."); stop(); } }
           })();
         } else if (msg.type === "audio") {
+          if (ignoreReplyAudio.current) return;
           // Gate capture before the WebView decodes/schedules the first sound.
           replyPending.current = true; onPlaybackBusy(true); setThinking(false);
           sink.current?.send(msg);
         }
-        else if (msg.type === "response_started") { replyPending.current = true; setThinking(true); setError(""); }
+        else if (msg.type === "response_started") { ignoreReplyAudio.current = false; replyPending.current = true; setThinking(true); setError(""); }
+        else if (msg.type === "barge_in_ready" && bargePending.current) {
+          bargePending.current = false;
+          const frames = bargeFrames.current; bargeFrames.current = [];
+          if (playbackReported.current) { playbackReported.current = false; send({ type: "playback", busy: false }); }
+          input.current.reset();
+          if (!mutedRef.current) {
+            let ended = false;
+            for (const data of frames) {
+              ws.send(data);
+              ended = input.current.process({ data, sampleRate: 16000, channels: 1 }).endTurn || ended;
+            }
+            if (ended) send({ type: "end_audio" });
+          }
+        }
         else if (msg.type === "interrupted") {
           replyPending.current = false; setThinking(false);
           sink.current?.send({ type: "stop" }); onPlaybackBusy(false); activeRole.current = null;
@@ -177,7 +230,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     } catch (e) {
       if (epoch === generation.current) { setError(e instanceof Error ? e.message : "Could not start call."); stop(); }
     }
-  }, [sink, stop, send, onPlaybackBusy, releaseMicrophone]);
+  }, [sink, stop, send, onPlaybackBusy, releaseMicrophone, beginBargeIn]);
 
   useEffect(() => {
     sink.current?.send({ type: "settings", pitch: config.pipeline === 3 ? 0 : config.pitch, loudness: config.loudness });
@@ -200,9 +253,10 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   const endAudio = () => { input.current.reset(); send({ type: "end_audio" }); };
   const toggleMute = () => { mutedRef.current = !mutedRef.current; setMuted(mutedRef.current); if (mutedRef.current) { setMicLevel(0); endAudio(); } };
   const interrupt = () => {
+    if (supportsBargeIn.current) { beginBargeIn(); return; }
     replyPending.current = false; setThinking(false);
     sink.current?.send({ type: "stop" }); onPlaybackBusy(false); send({ type: "interrupt" });
   };
   const onAudioError = useCallback((message: string) => { setError(message); stop(); }, [stop]);
-  return { state, connectionStatus, error, setError, onAudioError, onPlaybackBusy, speaking, thinking, micLevel, transcripts, muted, settingsStatus, notice, start, stop, toggleMute, interrupt, endAudio, send };
+  return { state, connectionStatus, error, setError, onAudioError, onPlaybackBusy, speaking, thinking, micLevel, bargeAvailable, transcripts, muted, settingsStatus, notice, start, stop, toggleMute, interrupt, endAudio, send };
 }

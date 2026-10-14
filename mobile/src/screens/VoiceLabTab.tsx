@@ -65,7 +65,7 @@ export default function VoiceLabTab() {
       <Choices label="Your companion" values={Object.values(PERSONA_NAMES)} selected={PERSONA_NAMES[config.persona]}
         onChange={value => { const key = (Object.keys(PERSONA_NAMES) as LabConfig["persona"][]).find(k => PERSONA_NAMES[k] === value)!; setConfig({ ...PRESETS[key] }); }} />
       <View style={styles.callPanel}>
-        <Text accessibilityLiveRegion="polite" style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : lab.speaking ? "Speaking · microphone paused" : lab.thinking ? "Preparing reply…" : "Listening · बोलतु") : lab.state === "connecting" ? lab.connectionStatus : lab.error ? "Call needs attention" : "Ready when you are"}</Text>
+        <Text accessibilityLiveRegion="polite" style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : lab.speaking ? (lab.bargeAvailable ? "Speaking · you can interrupt" : "Speaking · microphone paused") : lab.thinking ? "Preparing reply…" : "Listening · बोलतु") : lab.state === "connecting" ? lab.connectionStatus : lab.error ? "Call needs attention" : "Ready when you are"}</Text>
         <Text style={styles.callCaption}>{PIPELINES[config.pipeline - 1]} · {config.speaker}</Text>
         <Pressable accessibilityRole="button" disabled={!!community.active} style={[styles.callButton, !!community.active && { opacity: 0.45 }]} onPress={() => lab.state === "idle" ? void lab.start() : lab.stop()}>
           <Text style={styles.selectedText}>{lab.state === "idle" ? "Start voice call" : lab.state === "connecting" ? "Cancel" : "End call"}</Text>
@@ -79,7 +79,7 @@ export default function VoiceLabTab() {
         </View>}
         {lab.state === "live" && <>
           <View accessibilityLabel={`Microphone level ${Math.round(lab.micLevel * 100)} percent`} style={styles.micTrack}><View style={[styles.micLevel, { width: `${Math.max(1, lab.micLevel * 100)}%` }]} /></View>
-          <Text style={styles.callCaption}>The microphone pauses during replies to prevent speaker echo. Tap Interrupt reply to speak.</Text>
+          <Text style={styles.callCaption}>{lab.bargeAvailable ? "Speak for a moment to interrupt naturally. Brief sounds are ignored." : "Tap Interrupt reply to speak. Automatic voice interruption needs echo-cancelled microphone support."}</Text>
         </>}
       </View>
       {!!lab.notice && <Text accessibilityLiveRegion="polite" style={styles.note}>{lab.notice}</Text>}

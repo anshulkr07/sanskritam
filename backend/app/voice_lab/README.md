@@ -8,6 +8,12 @@ to disk or the learner's conversation history. Existing usage counters apply.
 
 Install `backend/requirements.txt`, restart the FastAPI backend, and reload the
 Expo 57 app. No database migration or new mobile dependency is required.
+Automatic Android voice interruption now requires a rebuilt 1.4.1 app (version
+code 8). Its prebuild plugin extends Expo AudioStream with opt-in
+VOICE_COMMUNICATION capture, AcousticEchoCanceler and NoiseSuppressor. Run
+prebuild before a local Android build; EAS applies the plugin during prebuild.
+The installed runtime must report echo-cancelled frames before automatic
+interruption is enabled. Other audio capture callers retain their defaults.
 Provider keys remain server-side and use the existing environment loading:
 
 - `SARVAM_API_KEY`: pipelines 1, 2 and 4.
@@ -31,10 +37,15 @@ Test full-duplex audio and barge-in on the actual target phone before release.
 
 1. Authenticated `POST /voice-lab/ticket` returns a short-lived single-use ticket.
 2. Connect `/ws/voice-lab` and send `{ticket, config}` within 10 seconds.
+   New clients also send `capabilities: {playback_feedback: true, barge_in: true}`. The ready
+   frame confirms the negotiated capability; older clients remain compatible.
 3. Wait for `ready`. Send binary mono PCM16 little-endian microphone frames,
    16000 Hz, at most 64000 bytes each. All settings and media use this one socket.
 4. JSON control frames: `config` (partial settings), `text`, `interrupt`,
-   `end_audio` (flush microphone input), `stop`.
+   `end_audio` (flush microphone input), `stop`, and negotiated
+   `playback` (`busy: true/false`, released after the playback echo tail).
+   Negotiated `barge_in` cancels provider output; `barge_in_ready` acknowledges
+   cancellation before the client releases its held microphone frames.
 5. Server frames: `ready`, `config_applied`, `transcript` (role/text/final),
    `audio` (base64 data/codec/sample_rate), `response_started`, `interrupted`, `turn_complete`,
    `notice`, `error`, `fatal`. Invalid settings leave the prior settings active.
@@ -52,6 +63,18 @@ Calls use speaker-safe turn-taking: microphone frames are replaced with silence
 from the first queued audio packet until all playback/decodes have drained and
 a 500 ms echo tail has elapsed. Generation completion alone does not reopen the
 microphone. Interrupt reply stops playback so the learner can take the next turn.
+The backend ignores delayed STT/VAD events during protected output so they cannot
+cancel the rest of a sentence. Playback feedback extends protection past provider
+generation until the actual audio finishes. The player schedules a short horizon
+and waits for space; fast-arriving replies no longer trip a 20-second cutoff.
+With echo-cancelled capture, 800 ms of sustained speech above the barge-in
+threshold can interrupt automatically; quiet gaps of 200 ms reset the candidate.
+Brief sounds are ignored. A rolling 1.2-second prefix retains opening words.
+Local playback stops immediately, stale reply audio is discarded, and held PCM
+is sent after provider cancellation is acknowledged. Without confirmed echo
+cancellation, the manual Interrupt reply button remains available.
+For negotiated Gemini calls, manual activity boundaries replace automatic VAD
+interruption: ActivityStart cancels output, and ActivityEnd submits the new turn.
 An audio level meter shows capture; a 900 ms quiet pause flushes a spoken turn,
 and Done speaking also submits it. Soft/leading frames are still sent to STT.
 
@@ -103,9 +126,14 @@ authentication, validation, cancellation, clause flushing and phonetics.
 `cd mobile && npx tsc --noEmit` checks the mobile integration.
 `cd mobile && node scripts/check-voice-lab.mjs` verifies playback scheduling,
 interruption, asynchronous decode cancellation and playback recovery.
+It also checks a fast-arriving 30-second reply plays completely and that an
+explicit interruption cancels packets waiting for scheduling room.
 `cd mobile && node scripts/check-voice-lab-startup.mjs` verifies permission-sheet
 focus changes, startup timeouts, cancellation, retry, microphone cleanup,
 automatic turn finalization and speaker-echo suppression through playback drain.
+`cd mobile && node scripts/check-voice-barge.mjs` checks sustained speech, noise
+rejection, pre-roll, the echo-cancellation capability guard and the SDK-specific
+native patch. These checks do not compile Kotlin or certify handset echo removal.
 `cd backend && python scripts/check_voice_lab_live.py --search --stt` exercises
 all four providers, Friend's real grounded lookup and synthetic Sanskrit STT.
 It uses configured provider billing, prints only counts/status, and saves no

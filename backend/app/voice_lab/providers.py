@@ -225,11 +225,13 @@ class SpeechOutput:
                 raise RuntimeError("Sarvam TTS rejected the configuration. Check model, speaker and language.")
 
 
-def live_config(c, search_fallback=False):
+def live_config(c, search_fallback=False, manual_input=False):
     result = {"response_modalities": ["AUDIO"], "system_instruction": instruction(c),
               "input_audio_transcription": {}, "output_audio_transcription": {},
               "temperature": c.temperature,
               "speech_config": {"voice_config": {"prebuilt_voice_config": {"voice_name": c.speaker}}}}
+    if manual_input:
+        result["realtime_input_config"] = {"automatic_activity_detection": {"disabled": True}}
     # Current 3.8 Live explicitly forbids thinking_config. The older 2.5
     # native audio accepts budgets; 3.1 accepts levels rather than token budgets.
     if c.live_model.startswith("gemini-2.5"):

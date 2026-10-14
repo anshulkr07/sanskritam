@@ -2,6 +2,8 @@ import asyncio
 import base64
 import contextlib
 import json
+import math
+import struct
 from urllib.parse import urlencode
 
 from app.config import settings
@@ -20,13 +22,34 @@ async def cancel(task):
 class VoicePipelineSession:
     """Session interface shared by composed and native audio strategies."""
     def __init__(self, config: LabConfig, send, meter):
-        self.config, self.send, self.meter = config, send, meter
+        self.config, self._send, self.meter = config, send, meter
         self.history = []
         self.receiver = None
         self.turn = None
         self.upstream = None
         self.tts = SpeechOutput()
         self.last_stt_request = None
+        self.playback_feedback = False
+        self.playback_busy = False
+        self.output_started = False
+        self.barge_enabled = False
+
+    async def send(self, message):
+        if message.get("type") == "audio":
+            self.output_started = True
+            if self.playback_feedback:
+                self.playback_busy = True
+        await self._send(message)
+
+    async def playback(self, busy):
+        self.playback_busy = busy
+
+    async def barge_in(self):
+        await self.interrupt()
+        await self.send({"type": "barge_in_ready"})
+
+    def protecting_reply(self):
+        return self.playback_busy or (self.output_started and self.turn is not None and not self.turn.done())
 
     async def start(self):
         if not settings.sarvam_api_key:
@@ -65,6 +88,11 @@ class VoicePipelineSession:
             async for raw in self.upstream:
                 msg = json.loads(raw)
                 data = msg.get("data") or {}
+                # VAD/finals from previously buffered input can arrive after
+                # output starts. Speaker-safe calls use explicit interruption;
+                # stale recognition must not cancel the rest of this reply.
+                if msg.get("type") in ("events", "data") and self.protecting_reply():
+                    continue
                 if msg.get("type") == "events" and data.get("signal_type") == "START_SPEECH":
                     await self.interrupt()
                 elif msg.get("type") == "data" and data.get("transcript", "").strip():
@@ -92,6 +120,7 @@ class VoicePipelineSession:
     async def interrupt(self):
         await cancel(self.turn)
         self.turn = None
+        self.playback_busy = False; self.output_started = False
         await self.tts.close()  # discard old provider audio, including buffered chunks
         await self.send({"type": "interrupted"})
 
@@ -201,7 +230,9 @@ class GeminiNativeSession(VoicePipelineSession):
         self.client = gemini_client()
         self.search_client = None
         self.search_tasks = {}
-        self.connection = self.client.aio.live.connect(model=self.config.live_model, config=live_config(self.config))
+        self.audio_started = False
+        self.input_prefix = bytearray()
+        self.connection = self.client.aio.live.connect(model=self.config.live_model, config=live_config(self.config, manual_input=self.barge_enabled))
         try:
             self.upstream = await self.connection.__aenter__()
         except Exception as exc:
@@ -211,7 +242,7 @@ class GeminiNativeSession(VoicePipelineSession):
             # Live search quota is unavailable. No changes to native audio.
             self.search_client = vertex_client()
             config = self.config if self.search_client else self.config.model_copy(update={"web_search": False})
-            self.connection = self.client.aio.live.connect(model=config.live_model, config=live_config(config, search_fallback=bool(self.search_client)))
+            self.connection = self.client.aio.live.connect(model=config.live_model, config=live_config(config, search_fallback=bool(self.search_client), manual_input=self.barge_enabled))
             try:
                 self.upstream = await self.connection.__aenter__()
             except Exception as retry:
@@ -256,7 +287,28 @@ class GeminiNativeSession(VoicePipelineSession):
 
     async def audio(self, pcm):
         from google.genai import types
+        if self.barge_enabled and not self.audio_started:
+            self.input_prefix.extend(pcm)
+            if len(self.input_prefix) > 8000:
+                del self.input_prefix[:-8000]
+            samples = len(pcm) // 2
+            rms = math.sqrt(sum(value * value for (value,) in struct.iter_unpack("<h", pcm)) / max(1, samples)) / 32768
+            if rms < 0.008:
+                return
+            await self.upstream.send_realtime_input(activity_start=types.ActivityStart())
+            self.audio_started = True
+            pcm = bytes(self.input_prefix); self.input_prefix.clear()
         await self.upstream.send_realtime_input(audio=types.Blob(data=pcm, mime_type="audio/pcm;rate=16000"))
+
+    async def barge_in(self):
+        from google.genai import types
+        if self.barge_enabled:
+            await self.upstream.send_realtime_input(activity_start=types.ActivityStart())
+            self.audio_started = True; self.input_prefix.clear()
+            await self.send({"type": "interrupted"})
+        else:
+            await self.interrupt()
+        await self.send({"type": "barge_in_ready"})
 
     async def search(self, call):
         from google.genai import types
@@ -280,6 +332,13 @@ class GeminiNativeSession(VoicePipelineSession):
             await self.upstream.send_tool_response(function_responses=[response])
 
     async def end_audio(self):
+        from google.genai import types
+        if self.barge_enabled:
+            if self.audio_started:
+                await self.send({"type": "response_started"})
+                await self.upstream.send_realtime_input(activity_end=types.ActivityEnd())
+                self.audio_started = False; self.input_prefix.clear()
+            return
         await self.upstream.send_realtime_input(audio_stream_end=True)
 
     async def text(self, text):

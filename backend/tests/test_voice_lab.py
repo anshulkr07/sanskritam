@@ -71,6 +71,13 @@ class FakeSession:
     async def interrupt(self):
         await self.send({"type": "interrupted"})
 
+    async def playback(self, busy):
+        self.playback_busy = busy
+
+    async def barge_in(self):
+        await self.interrupt()
+        await self.send({"type": "barge_in_ready"})
+
     async def text(self, text):
         await self.send({"type": "transcript", "role": "assistant", "text": "नमस्ते।", "final": False})
 
@@ -128,6 +135,113 @@ def test_malformed_messages_and_frames_are_recoverable(lab_client):
         ws.send_bytes(b"x")
         assert ws.receive_json()["type"] == "error"
         ws.send_json({"type": "stop"})
+
+
+def test_playback_feedback_is_negotiated_and_validated(lab_client):
+    with lab_client.websocket_connect("/ws/voice-lab") as ws:
+        ws.send_json({"ticket": "valid", "capabilities": {"playback_feedback": True}})
+        assert ws.receive_json()["capabilities"]["playback_feedback"] is True
+        ws.send_json({"type": "playback", "busy": True})
+        ws.send_json({"type": "text", "text": "नमस्ते।"})
+        ws.receive_json(); ws.receive_json()
+        assert FakeSession.instances[-1].playback_busy is True
+        ws.send_json({"type": "playback", "busy": "false"})
+        assert ws.receive_json()["type"] == "error"
+        ws.send_json({"type": "playback", "busy": False})
+        ws.send_json({"type": "text", "text": "नमस्ते।"})
+        ws.receive_json(); ws.receive_json()
+        assert FakeSession.instances[-1].playback_busy is False
+        ws.send_json({"type": "stop"})
+
+
+def test_delayed_stt_cannot_interrupt_playback_after_generation_finishes():
+    async def run():
+        messages, turns = [], []
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        session = VoicePipelineSession(LabConfig(), send, meter)
+        session.playback_feedback = True
+        session.turn = asyncio.create_task(asyncio.sleep(0))
+        await session.turn
+        await session.send({"type": "audio", "codec": "pcm", "data": "AAA="})
+        async def text(value): turns.append(value)
+        session.text = text
+        class Input:
+            def __aiter__(self):
+                async def messages():
+                    yield json.dumps({"type": "events", "data": {"signal_type": "START_SPEECH"}})
+                    yield json.dumps({"type": "data", "data": {"request_id": "stale", "transcript": "late input"}})
+                    await session.playback(False)
+                    yield json.dumps({"type": "data", "data": {"request_id": "new", "transcript": "new input"}})
+                return messages()
+        session.upstream = Input()
+        await session.listen()
+        assert turns == ["new input"]
+        assert not any(message["type"] == "interrupted" for message in messages)
+    asyncio.run(run())
+
+
+def test_eight_word_sentence_synthesizes_every_clause_and_tail():
+    async def run():
+        messages, spoken = [], []
+        sentence = "अद्य अहं मित्रैः सह ग्रामस्य सुन्दरं उद्यानं पश्यामि।"
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        class Fixed(VoicePipelineSession):
+            async def tokens(self, config):
+                for word in sentence.split():
+                    yield word + " "
+        class Output:
+            async def speak(self, text, config, send):
+                spoken.append(text)
+                await send({"type": "audio", "codec": "pcm", "data": "AAA="})
+            async def close(self): pass
+        session = Fixed(LabConfig(), send, meter); session.tts = Output()
+        await session.respond("test")
+        assert " ".join(spoken).split() == sentence.split()
+        assert len(" ".join(spoken).split()) == 8
+        assert messages[-1]["type"] == "turn_complete"
+        assert sum(message["type"] == "audio" for message in messages) == 2
+    asyncio.run(run())
+
+
+def test_barge_in_negotiation_and_acknowledgement(lab_client):
+    with lab_client.websocket_connect("/ws/voice-lab") as ws:
+        ws.send_json({"ticket": "valid", "capabilities": {"barge_in": True}})
+        assert ws.receive_json()["capabilities"]["barge_in"] is True
+        ws.send_json({"type": "barge_in"})
+        assert ws.receive_json()["type"] == "interrupted"
+        assert ws.receive_json()["type"] == "barge_in_ready"
+        ws.send_bytes(b"\0\0" * 160)
+        assert ws.receive_json()["type"] == "audio_received"
+        ws.send_json({"type": "stop"})
+
+
+def test_live_manual_activity_preserves_prefix_and_interrupts_without_prompt():
+    from app.voice_lab.session import GeminiNativeSession
+    from google.genai.types import LiveConnectConfig
+    async def run():
+        frames, messages = [], []
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        class Input:
+            async def send_realtime_input(self, **kwargs): frames.append(kwargs)
+        session = GeminiNativeSession(LabConfig(pipeline=3, speaker="Puck"), send, meter)
+        session.barge_enabled = True; session.audio_started = False; session.input_prefix = bytearray(); session.upstream = Input()
+        await session.audio(b"\0\0" * 1600)
+        assert not frames, "Silence must not start or interrupt a Live activity"
+        await session.audio(b"\xff\x0f" * 1600)
+        assert "activity_start" in frames[0]
+        assert frames[1]["audio"].data == b"\0\0" * 1600 + b"\xff\x0f" * 1600
+        await session.end_audio()
+        assert "activity_end" in frames[-1]
+        await session.barge_in()
+        assert "activity_start" in frames[-1]
+        assert messages[-1]["type"] == "barge_in_ready"
+        config = live_config(session.config, manual_input=True)
+        LiveConnectConfig(**config)
+        assert config["realtime_input_config"]["automatic_activity_detection"]["disabled"] is True
+    asyncio.run(run())
 
 
 def test_interruption_cancels_synthesis_and_closes_provider():

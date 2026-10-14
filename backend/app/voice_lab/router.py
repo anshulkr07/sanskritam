@@ -62,9 +62,15 @@ async def voice_lab(websocket: WebSocket):
             await asyncio.to_thread(consume, learner_id, kind, amount)
 
         config = LabConfig.model_validate(hello.get("config", {}))
+        capabilities = hello.get("capabilities") or {}
+        playback_feedback = isinstance(capabilities, dict) and capabilities.get("playback_feedback") is True
+        barge_in = isinstance(capabilities, dict) and capabilities.get("barge_in") is True
         session = STRATEGIES[config.pipeline](config, send, meter)
+        session.playback_feedback = playback_feedback
+        session.barge_enabled = barge_in
         await session.start()
-        await send({"type": "ready", "config": config.model_dump(), "max_seconds": MAX_SECONDS})
+        await send({"type": "ready", "config": config.model_dump(), "max_seconds": MAX_SECONDS,
+                    "capabilities": {"playback_feedback": playback_feedback, "barge_in": barge_in}})
         metered_audio = 0
         while True:
             remaining = MAX_SECONDS - (time.monotonic() - started)
@@ -104,6 +110,8 @@ async def voice_lab(websocket: WebSocket):
                     if updated.pipeline != config.pipeline or (updated.pipeline == 3 and structural != previous):
                         await session.close()
                         session = STRATEGIES[updated.pipeline](updated, send, meter)
+                        session.playback_feedback = playback_feedback
+                        session.barge_enabled = barge_in
                         await session.start()
                         await send({"type": "interrupted"})
                     else:
@@ -114,6 +122,14 @@ async def voice_lab(websocket: WebSocket):
                     await session.interrupt()
                 elif kind == "end_audio":
                     await session.end_audio()
+                elif kind == "playback":
+                    if not playback_feedback or type(msg.get("busy")) is not bool:
+                        raise ValueError("Invalid playback feedback")
+                    await session.playback(msg["busy"])
+                elif kind == "barge_in":
+                    if not barge_in:
+                        raise ValueError("Barge-in was not negotiated")
+                    await session.barge_in()
                 elif kind == "text":
                     text = str(msg.get("text", "")).strip()[:2000]
                     if text:

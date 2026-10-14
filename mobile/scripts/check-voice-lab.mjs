@@ -61,4 +61,32 @@ assert.equal(playback.at(-1), true, "An old source ending must not release the c
 scheduled[2].onended();
 assert.equal(playback.at(-1), false, "Release mic only after the last scheduled source actually ends");
 assert.equal(errors.length, 0);
+// Providers can generate a complete reply much faster than it is spoken.
+// Keep the whole sentence/reply, but schedule only a short horizon at a time.
+command({ type: "stop" });
+const firstLong = scheduled.length;
+const longPcm = Buffer.alloc(24000 * 2 * 3).toString("base64");
+for (let i = 0; i < 10; i++) command({ type: "audio", codec: "pcm", data: longPcm, sample_rate: 24000 });
+await tick();
+assert.equal(errors.length, 0, "Fast delivery of a 30-second reply must not truncate it");
+assert.ok(scheduled.length - firstLong < 10, "Do not schedule the whole backlog in the audio graph");
+for (let i = 0; i < 10; i++) {
+  await tick();
+  const source = scheduled[firstLong + i];
+  assert.ok(source, `Audio packet ${i + 1} must eventually play`);
+  context.currentTime = source.at + 3;
+  source.onended();
+}
+await tick();
+assert.equal(scheduled.length - firstLong, 10, "Play every packet through the end of the reply");
+assert.equal(playback.at(-1), false);
+assert.equal(errors.length, 0);
+// Interrupt also wakes a decoder waiting for scheduling room.
+command({ type: "stop" });
+const beforeCancel = scheduled.length;
+for (let i = 0; i < 4; i++) command({ type: "audio", codec: "pcm", data: longPcm, sample_rate: 24000 });
+await tick();
+command({ type: "stop" });
+await tick();
+assert.equal(scheduled.length, beforeCancel + 2, "Cancelled waiting packets must never schedule");
 console.log("Voice Lab playback: scheduling, interruption, decode cancellation and recovery passed.");

@@ -222,12 +222,13 @@ console.log("Android voice startup: permission activity/resume, cancellation and
 // Speaker output, queued decode and echo tail must never go back into STT.
 {
   const h = harness(); await h.render().start(); h.sockets[0].open();
-  h.sockets[0].message({ type: "ready" }); await tick();
+  h.sockets[0].message({ type: "ready", capabilities: { playback_feedback: true } }); await tick();
   const speech = new Int16Array(1600).fill(5000);
   const buffer = { data: speech.buffer, channels: 1, sampleRate: 16000 };
   h.buffer(buffer);
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value));
   h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  assert.ok(h.sockets[0].messages.some(value => typeof value === "string" && JSON.parse(value).type === "playback" && JSON.parse(value).busy === true));
   h.buffer(buffer);
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Never stream the speaker echo");
   h.sockets[0].message({ type: "turn_complete" }); h.buffer(buffer);
@@ -235,6 +236,7 @@ console.log("Android voice startup: permission activity/resume, cancellation and
   h.render().onPlaybackBusy(false); h.buffer(buffer);
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Keep the mic gated through the echo tail");
   h.echoCooldown(); h.buffer(buffer);
+  assert.ok(h.sockets[0].messages.some(value => typeof value === "string" && JSON.parse(value).type === "playback" && JSON.parse(value).busy === false));
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value), "Resume real input after playback and echo tail");
   h.render().stop();
 }
@@ -248,3 +250,35 @@ console.log("Android voice startup: permission activity/resume, cancellation and
   h.render().stop();
 }
 console.log("Voice input: automatic turn finalization, speaker echo suppression, playback drain and echo-tail recovery passed.");
+
+// Natural barge-in survives repeated playback packets and preserves opening words.
+{
+  const h = harness(); await h.render().start(); h.sockets[0].open();
+  h.sockets[0].message({ type: "ready", capabilities: { playback_feedback: true, barge_in: true } }); await tick();
+  const data = Int16Array.from({ length: 1600 }, (_, i) => Math.round(4000 * Math.sin(i * Math.PI / 20))).buffer;
+  const voice = { data, sampleRate: 16000, channels: 1, echoCancelled: true };
+  for (let i = 0; i < 7; i++) {
+    h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+    h.buffer(voice);
+  }
+  assert.equal(h.sockets[0].messages.filter(value => typeof value === "string" && JSON.parse(value).type === "barge_in").length, 0);
+  h.buffer(voice);
+  assert.equal(h.sockets[0].messages.filter(value => typeof value === "string" && JSON.parse(value).type === "barge_in").length, 1);
+  assert.equal(h.audio.at(-1).type, "stop");
+  const played = h.audio.filter(command => command.type === "audio").length;
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  assert.equal(h.audio.filter(command => command.type === "audio").length, played, "Discard late audio from the cancelled reply");
+  h.render().onPlaybackBusy(true); // stale WebView event must not re-gate capture
+  h.buffer(voice);
+  h.sockets[0].message({ type: "barge_in_ready" });
+  const held = h.sockets[0].messages.filter(value => typeof value !== "string").slice(-9);
+  assert.equal(held.length, 9);
+  assert.ok(held.every(frame => new Int16Array(frame).some(value => value)), "Keep the first 800ms and speech while awaiting cancellation");
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  assert.equal(h.audio.filter(command => command.type === "audio").length, played);
+  h.sockets[0].message({ type: "response_started" });
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  assert.equal(h.audio.at(-1).type, "audio", "The next reply must play normally");
+  h.render().stop();
+}
+console.log("Natural interruption: sustained speech, immediate playback stop, provider acknowledgement, pre-roll and stale-audio rejection passed.");
