@@ -1309,6 +1309,19 @@ export interface FactSummary {
 export interface CompetitionPiece {
   source_ref: string;
   verse_uid: string;
+  /** "short" | "medium" | "longer" in weekly sets. */
+  length?: string;
+  /** "standard" | "beginner"; a piece without one belongs to every division. */
+  division?: string;
+}
+
+export type Division = "standard" | "beginner";
+
+export interface SetProgress {
+  submitted: number;
+  total: number;
+  provisional_total: number;
+  complete: boolean;
 }
 
 export interface Competition {
@@ -1320,7 +1333,27 @@ export interface Competition {
   results_at: string;
   status: string;
   pieces: CompetitionPiece[];
-  me?: { best_percent: number | null; rank: number | null; attempts_today: number; attempts_left: number; piece_results?: Record<string, { percent: number; attempt_id: number }> | null } | null;
+  /** Weekly three-verse set (rules 2026-10-14) rather than a single verse. */
+  is_set?: boolean;
+  /** "v2": words, order, flow and pace; "akshara": the older percent. */
+  scoring?: string;
+  rules_version?: string;
+  me?: {
+    best_percent: number | null;
+    rank: number | null;
+    attempts_today: number;
+    attempts_left: number;
+    division?: Division | null;
+    piece_results?: Record<string, { percent: number; at?: string }> | null;
+    set_progress?: SetProgress | null;
+  } | null;
+}
+
+export interface ReciteComponents {
+  content: number;
+  sequence: number;
+  continuity: number | null;
+  rhythm: number | null;
 }
 
 export interface ReciteAkshara {
@@ -1349,6 +1382,18 @@ export interface ReciteResult {
   best_percent?: number | null;
   rank?: number | null;
   is_new_best?: boolean;
+  /** Rubric v2 (words 60, order 20, flow 15, pace 5) and its total. */
+  components?: ReciteComponents;
+  total?: number | null;
+  rubric_version?: string;
+  piece_best?: boolean;
+  division?: Division;
+  set_progress?: SetProgress | null;
+}
+
+/** A WAV from the live stream, otherwise the recorder's m4a. */
+function audioMime(uri: string): string {
+  return /\.wav$/i.test(uri) ? "audio/wav" : "audio/m4a";
 }
 
 // ─── Client ───────────────────────────────────────────────────────────────
@@ -1606,7 +1651,7 @@ export async function uploadRecite(
     httpMethod: "POST",
     uploadType,
     fieldName: "file",
-    mimeType: "audio/m4a",
+    mimeType: audioMime(audio),
     parameters: {
       verse_uid: opts.verseUid,
       unit: opts.unit,
@@ -1630,7 +1675,7 @@ export async function uploadRecite(
 export async function uploadCompetitionAttempt(
   competitionId: string,
   audio: string,
-  opts: { verseUid: string; camera: string; hidden: boolean },
+  opts: { verseUid: string; camera: string; hidden: boolean; division?: Division },
 ): Promise<ReciteResult> {
   const uploadUrl = `${BASE_URL}/competitions/${encodeURIComponent(competitionId)}/attempts`;
   const headers: Record<string, string> = { Accept: "application/json" };
@@ -1641,11 +1686,12 @@ export async function uploadCompetitionAttempt(
     httpMethod: "POST",
     uploadType,
     fieldName: "file",
-    mimeType: "audio/m4a",
+    mimeType: audioMime(audio),
     parameters: {
       verse_uid: opts.verseUid,
       camera: opts.camera,
       hidden: opts.hidden ? "true" : "false",
+      division: opts.division ?? "standard",
     },
     headers,
   });
@@ -1736,6 +1782,8 @@ export const api = {
 
   // U13/P21: the reader corpus — full list in date order, instrumentation included.
   listShlokas: () => request<Shloka[]>("/shlokas", {}, true),
+  /** One verse by verse_uid from any book (paged books too). */
+  shlokaByUid: (uid: string) => request<Shloka>(`/shlokas/uid/${encodeURIComponent(uid)}`, {}, true),
 
   // P21-4: the canon catalogue — study order, depth, live imported counts.
   // Paged shelf: ?include=paged asks for every row with paged/locked. An old
@@ -2232,14 +2280,42 @@ export const api = {
       if (e instanceof ApiError && e.status === 404) return { open: null, next: null, last: null };
       throw e;
     }),
-  competitionLeaderboard: (id: string, limit = 50) =>
-    request<{ status: string; rows: { rank: number; public_name: string; percent: number }[]; me: { rank: number; percent: number } | null }>(
-      `/competitions/${encodeURIComponent(id)}/leaderboard?limit=${limit}`, {}, true,
+  reciteStreamTicket: () =>
+    request<{ ticket: string; max_seconds: number }>("/recite/stream-ticket", { method: "POST" }, true),
+  competitionLeaderboard: (id: string, limit = 50, division?: Division) =>
+    request<{
+      status: string;
+      division?: Division;
+      rows: { rank: number; public_name: string; percent: number; is_me?: boolean }[];
+      me: { rank: number | null; percent: number; submitted?: number; total?: number; complete?: boolean } | null;
+      ranked?: number;
+      provisional?: number;
+    }>(
+      `/competitions/${encodeURIComponent(id)}/leaderboard?limit=${limit}${division ? `&division=${division}` : ""}`, {}, true,
     ),
-  competitionResults: (id: string) =>
-    request<{ rows: { rank: number; public_name: string; percent: number }[]; me: { rank: number | null; percent: number | null; certificate_code: string | null } | null }>(
-      `/competitions/${encodeURIComponent(id)}/results`, {}, true,
+  competitionResults: (id: string, division?: Division) =>
+    request<{
+      rows: { rank: number; public_name: string; percent: number }[];
+      me: { rank: number | null; percent: number | null; certificate_code: string | null; division?: Division } | null;
+      division?: Division | null;
+      is_set?: boolean;
+    }>(
+      `/competitions/${encodeURIComponent(id)}/results${division ? `?division=${division}` : ""}`, {}, true,
     ),
+  /** Recitation standings in the Leaderboards shape (weekly set or month). */
+  competitionStandings: (period: "weekly" | "monthly", division: Division) =>
+    request<{
+      period: string;
+      period_key: string;
+      board: string;
+      scope: string;
+      period_end: string;
+      rows: { rank: number; learner_id: string; name: string; score: number; participation: number; is_me: boolean; of?: number; pending?: number }[];
+      total: number;
+      me: { rank: number; learner_id: string; name: string; score: number; participation: number; is_me: boolean; of?: number; complete?: boolean; pending?: number } | null;
+      empty: boolean;
+      frozen?: boolean;
+    }>(`/competitions/standings?period=${period}&division=${division}`, {}, true),
   competitionMaster: (month?: string) =>
     request<{
       month: string;

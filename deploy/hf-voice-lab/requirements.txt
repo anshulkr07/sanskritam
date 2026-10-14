@@ -1,0 +1,9 @@
+# Keep the legacy Parler implementation's Transformers version compatible.
+torch==2.8.0
+torchaudio==2.8.0
+torchvision==0.23.0
+transformers==4.46.1
+huggingface-hub>=0.33.5,<1.0
+numpy>=1.26,<3
+spaces
+git+https://github.com/huggingface/parler-tts.git@d108732cd57788ec86bc857d99a6cabd66663d68

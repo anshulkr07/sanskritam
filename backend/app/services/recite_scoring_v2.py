@@ -160,16 +160,21 @@ def rhythm_score(segments: list[Segment], expected_aksharas: int) -> tuple[float
     return WEIGHT_RHYTHM * factor, {"rate_aksharas_per_s": round(rate, 2)}
 
 
-def score_v2(reference_lines: list[str], segments: list[Segment]) -> ReciteScoreV2:
+def score_v2(reference_lines: list[str], segments: list[Segment],
+             heard: str | None = None) -> ReciteScoreV2:
     """Score one recitation. `segments` carry the recognised text plus the
     timestamps the provider (or the deterministic envelope) produced. With
     no usable timing evidence the timing components are returned as missing
     rather than invented; callers may present a partial result (practice) or
-    mark the attempt unclear (ranked)."""
+    mark the attempt unclear (ranked).
+
+    `heard`, when given, is the whole transcript and the segments carry
+    timing only (voiced spans measured from the audio)."""
     ref = [a for line in reference_lines for a in aksharas(line)]
-    heard = "".join(s.text + " " for s in segments)
+    if heard is None:
+        heard = "".join(s.text + " " for s in segments)
     hyp = aksharas(heard)
-    if len(ref) < 3 or len(hyp) < 2 or not any(s.text.strip() for s in segments):
+    if len(ref) < 3 or len(hyp) < 2 or not heard.strip():
         return ReciteScoreV2(status="unclear", total=None,
                              reason="insufficient recognised speech")
 
@@ -182,6 +187,11 @@ def score_v2(reference_lines: list[str], segments: list[Segment]) -> ReciteScore
     if timed:
         cont, cont_evi = continuity_score(segments, len(ref))
         rhythm, rhy_evi = rhythm_score(segments, len(ref))
+        # Coverage cap: flow and pace are earned only on the content actually
+        # recited, so one fluent line of a long verse (or humming) cannot
+        # collect the full timing points.
+        cont *= coverage
+        rhythm *= coverage
     else:
         cont = cont_evi = None
         rhythm = rhy_evi = None
@@ -209,10 +219,26 @@ def score_v2(reference_lines: list[str], segments: list[Segment]) -> ReciteScore
         return ReciteScoreV2(status="scored", total=total,
                              components=components, evidence=evidence,
                              reason="timing components unavailable; partial total")
-    total = round(content + seq_score + cont + rhythm)
-    total = int(min(total, partial + WEIGHT_CONTINUITY + WEIGHT_RHYTHM))
+    total = int(round(content + seq_score + cont + rhythm))
     return ReciteScoreV2(status="scored", total=max(0, total),
                          components=components, evidence=evidence)
+
+
+def score_recording(reference_lines: list[str], heard: str,
+                    spans: list[tuple[float, float]] | None) -> ReciteScoreV2:
+    """Score a real recording: words from the transcript, timing from the
+    voiced spans measured in the audio (app.services.recite_timing). No
+    spans (undecodable or silent audio) leaves timing missing, never
+    invented."""
+    segments = [Segment(text="~", start_s=a, end_s=b) for a, b in (spans or [])]
+    return score_v2(reference_lines, segments, heard=heard)
+
+
+def is_complete(result: ReciteScoreV2) -> bool:
+    """Every component present: the only result a ranked event may count."""
+    c = result.components or {}
+    return result.status == "scored" and all(
+        c.get(k) is not None for k in ("content", "sequence", "continuity", "rhythm"))
 
 
 # ── Counterexample helpers used by calibration fixtures ─────────────────────

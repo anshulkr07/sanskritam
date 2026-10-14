@@ -93,6 +93,13 @@ def wiki_fetch_page(title: str, *, rendered: bool = False) -> dict:
                           "prop": "wikitext|revid", "redirects": "1", "format": "json"}
             data = _http_get_json("wiki", params)
             parse = data.get("parse") or {}
+            if not parse:
+                # An error response ("missingtitle", rate-limit HTML) would
+                # otherwise be cached as an empty page and silently poison
+                # every later build (seen 2026-10-14: 40 empty Yajurveda
+                # pages fetched under ASCII-digit titles).
+                raise RuntimeError(
+                    f"wiki parse failed for {title!r}: {str(data)[:150]}")
             out = {"title": title, "revid": parse.get("revid"),
                    "url": f"https://sa.wikisource.org/wiki/{urllib.parse.quote(title)}"}
             if rendered:

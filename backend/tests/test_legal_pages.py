@@ -81,14 +81,16 @@ def test_privacy_policy_covers_recitation_and_competitions(client):
     text = _flat(client)
     for claim in (
         "Reciting a verse",
-        "the scoring server we run",
-        "which marks it syllable by syllable",
+        "the whole recording is sent to Sarvam AI to be turned into text",
+        "marks that text syllable by syllable",
+        "measures the pauses and pace from the recording",
         "Competitions",
         "aged 18 or over",
         "sign in with Google or Apple",
         "choose a public name",
         "certificates, which anyone with the link can open",
-        "compares it with the chant to see whether it is a playback",
+        "scored the same way as a practice recitation",
+        "best counted recording of each verse",
         "each picture is checked on your phone and deleted at once",
         "no picture leaves it",
         "until 30 days after the results",
@@ -106,23 +108,25 @@ def test_privacy_policy_names_the_new_processors(client):
         "Mumbai region",
         "Cloudflare",
         "stores and delivers the lesson and chant audio files",
-        "Our scoring server",
+        "including recitations, live and after you stop",
         "Supabase",
         "checks that your eyes are closed during a competition recitation",
     ):
         assert claim in text, claim
 
 
-def test_privacy_policy_does_not_say_recitations_go_to_a_vendor_model(client):
-    """A recitation is scored on our own server (routers/recite.py), not by Sarvam
-    or a Google model; the page must keep saying so."""
+def test_privacy_policy_says_where_recitations_go(client):
+    """Recitations are transcribed by Sarvam (SCORER_URL=sarvam, live captions
+    in services/recite_stream.py) and never by a Google model; the page must
+    say both and keep the camera promise."""
     text = _flat(client)
-    assert "It is not sent to Sarvam AI or to Google's AI models" in text
+    assert "the sound goes through our server to Sarvam AI" in text
+    assert "It is not sent to Google's AI models" in text
     assert "no picture leaves it" in text
 
 
 def test_privacy_policy_date_is_current(client):
-    assert "last updated 10 October 2026" in _flat(client)
+    assert "last updated 14 October 2026" in _flat(client)
 
 
 def test_delete_page_lists_the_competition_and_recitation_data(client):

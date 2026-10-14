@@ -11,7 +11,7 @@ from __future__ import annotations
 BOOKS: dict[str, dict] = {
     # 4.1 Stotras and short works
     "vishnusahasranama": {
-        "ref": "Viṣṇu Sahasranāma", "tier": "plus", "register": "classical",
+        "ref": "Viṣṇu Sahasranāma", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_sections",
         "pages": ["विष्णुसहस्रनामस्तोत्रम्‌"],
         "sections": ["मूलपाठः", "अथ ध्यानम्", "स्तोत्रम्", "उत्तरन्यासः",
@@ -20,26 +20,26 @@ BOOKS: dict[str, dict] = {
         "reference_total": 170, "planned": 170, "vedic": False,
     },
     "lalita": {
-        "ref": "Lalitā Sahasranāma", "tier": "plus", "register": "classical",
+        "ref": "Lalitā Sahasranāma", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_unnumbered",
         "pages": ["ललितासहस्रनामस्तोत्रम्"],
         "chapters": {"1": "पूर्वभाग", "2": "श्री ललितासहस्रनामस्तोत्र"},
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "bhajagovindam": {
-        "ref": "Bhaja Govindam", "tier": "plus", "register": "classical",
+        "ref": "Bhaja Govindam", "tier": "free", "register": "classical",
         "source_key": "ambuda", "kind": "ambuda_lg",
         "ambuda_slug": "mohamudgara",
         "reference_total": 31, "planned": 31, "vedic": False,
     },
     "saundarya": {
-        "ref": "Saundarya Laharī", "tier": "plus", "register": "classical",
+        "ref": "Saundarya Laharī", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_rendered",
         "pages": ["सौन्दर्यलहरी"],
         "reference_total": 100, "planned": 100, "vedic": False,
     },
     "aditya": {
-        "ref": "Āditya Hṛdayam", "tier": "plus", "register": "classical",
+        "ref": "Āditya Hṛdayam", "tier": "free", "register": "classical",
         "source_key": "ambuda", "kind": "ambuda_auto",
         "ambuda_slug": "adityahrdayam",
         "reference_total": 31, "planned": 31, "vedic": False,
@@ -53,29 +53,37 @@ BOOKS: dict[str, dict] = {
         "reference_total": 16, "planned": 16, "vedic": False,
     },
     "mahimna": {
-        "ref": "Śiva Mahimna Stotra", "tier": "plus", "register": "classical",
+        "ref": "Śiva Mahimna Stotra", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_rendered_newline_nums",
         "pages": ["शिवमहिम्नःस्तोत्रम्"],
-        "reference_total": 31, "planned": 31, "vedic": False,
+        # 2026-10-14: the page also prints the dhyana and phala-shraddhi
+        # verses around the 31 stotra verses — all 37 rows are kept.
+        "reference_total": 37, "planned": 37, "vedic": False,
     },
     "ramaraksha": {
-        "ref": "Rāmarakṣā Stotra", "tier": "plus", "register": "classical",
+        "ref": "Rāmarakṣā Stotra", "tier": "free", "register": "classical",
         "source_key": "ambuda", "kind": "ambuda_numbered",
         "ambuda_slug": "ramarakshastotram",
         "reference_total": 38, "planned": 38, "vedic": False,
     },
     "naradabhakti": {
-        "ref": "Nārada Bhakti Sūtra", "tier": "plus", "register": "classical",
+        "ref": "Nārada Bhakti Sūtra", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_numbered",
         "pages": ["नारदभक्तिसूत्रम्"],
         "reference_total": 84, "planned": 84, "vedic": False,
     },
     # 4.2 Puranas
     "devimahatmya": {
-        "ref": "Devī Māhātmya", "tier": "plus", "register": "classical",
+        "ref": "Devī Māhātmya", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_mkp_81_93",
-        "pages": ["मार्कण्डेयपुराणम्/अध्यायः ८१",
-                  "मार्कण्डेयपुराणम्/अध्यायः ८१-९०",
+        # 2026-10-14: the full zero-padded Markandeya series exists; the
+        # builder remaps MP chapters 81-93 to DM 1-13 and keeps only those
+        # (the ०९१-०९५ page carries two extra chapters). The old page set
+        # (८१ / ८१-९० / ९१-९३) was missing DM 6-10 and duplicated 81-85.
+        # The ०९१-०९५ page only stubs DM 11-13 (4/3/5 of 51/38/17 verses);
+        # the old-series ९१-९३ page carries them in full (106 verses).
+        "pages": ["मार्कण्डेयपुराणम्/अध्यायः ०८१-०८५",
+                  "मार्कण्डेयपुराणम्/अध्यायः ०८६-०९०",
                   "मार्कण्डेयपुराणम्/अध्यायः ९१-९३"],
         "reference_total": 587,
         "reference_by_chapter": {"1": 78, "2": 70, "3": 44, "4": 38, "5": 79,
@@ -84,15 +92,27 @@ BOOKS: dict[str, dict] = {
         "planned": 587, "vedic": False,
     },
     "bhagavata": {
-        "ref": "Bhāgavata Purāṇa", "tier": "plus", "register": "classical",
+        "ref": "Bhāgavata Purāṇa", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_bhagavata",
         "prefix": "श्रीमद्भागवतपुराणम्/स्कन्धः",
-        "reference_total": 14067, "planned": 14067, "vedic": False,
+        # Chapter comes from the page title (skandha.adhyaya); verse numbers
+        # restart every adhyaya. Each adhyaya's first verse ends "। १ ॥" with
+        # a single opening danda — handled by clean._DANDA (2026-10-14).
+        "chapter_from_title": ["स्कन्धः", "अध्यायः"],
+        # The wikisource transcription is incomplete (~10.4k of the 14,067
+        # canonical shlokas; skandhas 10-11 are the short ones) - the import
+        # takes everything the source has. No count gate.
+        "reference_total": None, "planned": 14067, "vedic": False,
     },
     "shivapurana": {
-        "ref": "Śiva Purāṇa", "tier": "plus", "register": "classical",
+        "ref": "Śiva Purāṇa", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_shiva",
         "prefix": "शिवपुराणम्/",
+        # One page per samhita-adhyaya; verse numbers restart everywhere,
+        # so the reading chapter is the page order and the verse number its
+        # ordinal within the page.
+        "chapter_per_page": True,
+        "renumber_per_chapter": True,
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "garuda": {
@@ -103,25 +123,35 @@ BOOKS: dict[str, dict] = {
     },
     # 4.3 Vedas
     "rigveda": {
-        "ref": "Ṛgveda", "tier": "plus", "register": "vedic",
+        "ref": "Ṛgveda", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Ṛgveda",
-        "reference_total": 10552, "planned": 10552, "vedic": True,
+        # 2026-10-14: DCS's current export groups sentences ("sent_id N_M"),
+        # not ṛcs — 10,552 canonical ṛcs come out as ~11.7k finer rows.
+        # Verse numbers are ordinals within each sūkta file, not canonical.
+        # No count gate (nothing is lost; the unit is just finer).
+        "reference_total": None, "planned": 10552, "vedic": True,
     },
     "samaveda": {
-        "ref": "Sāmaveda", "tier": "plus", "register": "vedic",
+        "ref": "Sāmaveda", "tier": "free", "register": "vedic",
         "source_key": "sa-wikisource", "kind": "wiki_samaveda",
         "pages": ["सामवेदः/कौथुमीया/संहिता/सस्वरा पूर्णा"],
         "reference_total": 1875, "planned": 1875, "vedic": True,
     },
     "yajurveda": {
-        "ref": "Śukla Yajurveda", "tier": "plus", "register": "vedic",
+        "ref": "Śukla Yajurveda", "tier": "free", "register": "vedic",
         "source_key": "sa-wikisource", "kind": "wiki_yajurveda",
-        "pages": [f"शुक्लयजुर्वेदः/अध्यायः {i:02d}" for i in range(1, 41)],
-        "reference_total": 1975, "planned": 1975, "vedic": True,
+        # Page titles use Devanagari digits ("अध्यायः ०१"); the ASCII-digit
+        # titles return empty parses and were silently cached empty on
+        # 2026-10-14 (empties deleted, refetched).
+        "pages": ["शुक्लयजुर्वेदः/अध्यायः " + "".join("०१२३४५६७८९"[int(d)] for d in f"{i:02d}")
+                  for i in range(1, 41)],
+        # 1975 is the traditional kandika count; the page split yields 2015
+        # rows (a few headers/section breaks read as kandikas) - no gate.
+        "reference_total": None, "planned": 1975, "vedic": True,
     },
     "atharvaveda": {
-        "ref": "Atharvaveda", "tier": "plus", "register": "vedic",
+        "ref": "Atharvaveda", "tier": "free", "register": "vedic",
         "source_key": "mixed", "kind": "atharvaveda",
         "dcs_text": "Atharvaveda (Śaunaka)",
         "wiki_pages": ["अथर्ववेदः/अथर्ववेद: काण्डं 19",
@@ -130,13 +160,13 @@ BOOKS: dict[str, dict] = {
     },
     # 4.4 Upanisads
     "kena": {
-        "ref": "Kena Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Kena Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "sa-wikisource", "kind": "wiki_numbered",
         "pages": ["केनोपनिषत्"],
         "reference_total": 35, "planned": 35, "vedic": False,
     },
     "prashna": {
-        "ref": "Praśna Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Praśna Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "sa-wikisource", "kind": "wiki_prashna",
         "pages": ["प्रश्नोपनिषत्/प्रथमः प्रश्नः", "प्रश्नोपनिषत्/द्वितीयः प्रश्नः",
                   "प्रश्नोपनिषत्/तृतीयः प्रश्नः", "प्रश्नोपनिषत्/चतुर्थः प्रश्नः",
@@ -144,63 +174,70 @@ BOOKS: dict[str, dict] = {
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "mandukya": {
-        "ref": "Māṇḍūkya Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Māṇḍūkya Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "ambuda", "kind": "ambuda_p",
         "ambuda_slug": "mandukyopanishat",
         "reference_total": 12, "planned": 12, "vedic": False,
     },
     "taittiriya": {
-        "ref": "Taittirīya Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Taittirīya Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Taittirīyopaniṣad",
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "aitareya": {
-        "ref": "Aitareya Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Aitareya Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Aitareyopaniṣad",
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "shvetashvatara": {
-        "ref": "Śvetāśvatara Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Śvetāśvatara Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Śvetāśvataropaniṣad",
-        "reference_total": 113, "planned": 113, "vedic": False,
+        # 113 is the mantra count; DCS groups sentences, so long mantras
+        # split across rows. No count gate.
+        "reference_total": None, "planned": 113, "vedic": False,
     },
     "chandogya": {
-        "ref": "Chāndogya Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Chāndogya Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Chāndogyopaniṣad",
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "brihadaranyaka": {
-        "ref": "Bṛhadāraṇyaka Upaniṣad", "tier": "plus", "register": "vedic",
+        "ref": "Bṛhadāraṇyaka Upaniṣad", "tier": "free", "register": "vedic",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Bṛhadāraṇyakopaniṣad",
         "reference_total": None, "planned": 0, "vedic": False,
     },
     # 4.5 Poetry, drama, stories
     "meghaduta": {
-        "ref": "Meghadūta", "tier": "plus", "register": "classical",
+        "ref": "Meghadūta", "tier": "free", "register": "classical",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Meghadūta",
         "reference_total": 122, "planned": 122, "vedic": False,
     },
     "kumarasambhava": {
-        "ref": "Kumārasambhava", "tier": "plus", "register": "classical",
+        "ref": "Kumārasambhava", "tier": "free", "register": "classical",
         "source_key": "dcs", "kind": "dcs_cantos_1_8",
         "dcs_text": "Kumārasaṃbhava",
         "reference_total": 613, "planned": 613, "vedic": False,
     },
     "raghuvamsha": {
-        "ref": "Raghuvaṃśa", "tier": "plus", "register": "classical",
+        "ref": "Raghuvaṃśa", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_raghu",
         "prefix": "रघुवंशम्/",
-        "reference_total": 1567, "planned": 1567, "vedic": False,
+        # 1567 is the canonical sarga total; the page also carries editorial
+        # variant rows beyond that, all kept (variants with the same verse
+        # number are suffixed .2/.3). No count gate.
+        "reference_total": None, "planned": 1567, "vedic": False,
     },
     "shakuntala": {
-        "ref": "Abhijñānaśākuntala", "tier": "plus", "register": "classical",
+        "ref": "Abhijñānaśākuntala", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_shakuntala",
+        # Verse numbers restart every act: chapter = page order.
+        "chapter_per_page": True,
         "pages": ["अभिज्ञानशाकुन्तलम्/प्रथमोऽङ्कः", "अभिज्ञानशाकुन्तलम्/द्वितीयोऽङ्कः",
                   "अभिज्ञानशाकुन्तलम्/तृतीयोऽङ्कः", "अभिज्ञानशाकुन्तलम्/चतुर्थोऽङ्कः",
                   "अभिज्ञानशाकुन्तलम्/पञ्चमोऽङ्कः", "अभिज्ञानशाकुन्तलम्/षष्ठोऽङ्कः",
@@ -208,39 +245,55 @@ BOOKS: dict[str, dict] = {
         "reference_total": 194, "planned": 194, "vedic": False,
     },
     "gitagovinda": {
-        "ref": "Gītagovinda", "tier": "plus", "register": "classical",
+        "ref": "Gītagovinda", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_gita_govinda",
+        # One page per sarga, verse numbers restart per sarga: chapter = page
+        # order among the sarga pages (the bare title page is skipped).
+        "chapter_per_page": True,
+        # Song numbers restart at every song inside a sarga — store the
+        # reading ordinal within the sarga.
+        "renumber_per_chapter": True,
         "prefix": "गीतगोविन्दम्/",
-        "reference_total": 264, "planned": 264, "vedic": False,
+        # 2026-10-14: 272 units as printed (the traditional 264 counts the
+        # verses without their dhruva refrains the page prints separately).
+        "reference_total": 272, "planned": 272, "vedic": False,
     },
     "vetala": {
-        "ref": "Vetāla Pañcaviṃśati", "tier": "plus", "register": "classical",
+        "ref": "Vetāla Pañcaviṃśati", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_vetala",
+        # One page per tale, verse numbers restart per tale: chapter = page
+        # order. The prose between verses travels inside the verse chunks
+        # (the source interleaves them).
+        "chapter_per_page": True,
+        # Prose and verses interleave; the source's verse numbers restart
+        # inside a tale — store the reading ordinal within the tale.
+        "renumber_per_chapter": True,
         "pages": [f"वेतालपञ्चविंशति {i:02d}" for i in range(0, 26)],
-        "reference_total": 2175, "planned": 2175, "vedic": False,
+        # 2175 was the handover estimate; the page carries 2610 ॥N॥ chunks.
+        "reference_total": 2610, "planned": 2610, "vedic": False,
     },
     # 4.6 Yoga, Ayurveda, sastra, wisdom
     "yogasutra": {
-        "ref": "Yoga Sūtra", "tier": "plus", "register": "classical",
+        "ref": "Yoga Sūtra", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_yoga",
         "pages": ["योगसूत्रम्/पादः १", "योगसूत्रम्/पादः २",
                   "योगसूत्रम्/पादः ३", "योगसूत्रम्/पादः ४"],
         "reference_total": 195, "planned": 195, "vedic": False,
     },
     "hathayoga": {
-        "ref": "Haṭhayogapradīpikā", "tier": "plus", "register": "classical",
+        "ref": "Haṭhayogapradīpikā", "tier": "free", "register": "classical",
         "source_key": "dcs", "kind": "dcs",
         "dcs_text": "Haṭhayogapradīpikā",
         "reference_total": 392, "planned": 392, "vedic": False,
     },
     "ashtavakra": {
-        "ref": "Aṣṭāvakra Gītā", "tier": "plus", "register": "classical",
+        "ref": "Aṣṭāvakra Gītā", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_ashtavakra",
         "pages": ["अष्टावक्रगीता"],
         "reference_total": 298, "planned": 298, "vedic": False,
     },
     "sushruta": {
-        "ref": "Suśruta Saṃhitā", "tier": "plus", "register": "classical",
+        "ref": "Suśruta Saṃhitā", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_sushruta",
         "pages": ["सुश्रुतसंहिता/सूत्रस्थानम्/अध्याय ०१-१५",
                   "सुश्रुतसंहिता/सूत्रस्थानम्/अध्याय १६-३०",
@@ -268,7 +321,7 @@ BOOKS: dict[str, dict] = {
         "reference_total": 272, "planned": 272, "vedic": False,
     },
     "amarakosha": {
-        "ref": "Amarakośa", "tier": "plus", "register": "classical",
+        "ref": "Amarakośa", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_amara",
         "pages": ["अमरकोशः/प्रथमकाण्डम्", "अमरकोशः/द्वितीयकाण्डम्",
                   "अमरकोशः/तृतीयकाण्डम्"],

@@ -10,21 +10,32 @@
 //
 // The stack header already says "Leaderboards" with a back arrow, so the
 // screen draws no bar of its own.
+//
+// Games | Recitation (handover_games_daily_multiplayer §9): recitation
+// standings never mix with game points. Recitation has This week (the weekly
+// three-verse set; ranked = all three verses in) and This month (the average
+// of the month's weekly totals), each per division. There is no daily
+// recitation event, so there is no Today tab for it.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { api, type Division } from "../api/client";
 import { playApi, type Leaderboard, type LeaderRow } from "../games/v2/client";
 import { CREAM, CREAM_FAINT, GOLD, T, softOn, ui } from "../read/look";
 import { ProgressLine } from "../read/ui";
 import { haptics } from "../services/haptics";
 
+type Track = "games" | "recitation";
+
 type Props = {
   navigation: { goBack: () => void };
-  route?: { params?: { period?: "daily" | "weekly" | "monthly"; board?: string } };
+  route?: { params?: { period?: "daily" | "weekly" | "monthly"; board?: string; track?: Track; division?: Division } };
 };
+
+type RecRow = LeaderRow & { of?: number; pending?: number };
 
 type Period = "daily" | "weekly" | "monthly";
 
@@ -45,6 +56,16 @@ const BOARDS: { key: string; label: string }[] = [
   { key: "number", label: "Number" },
 ];
 
+const REC_PERIODS: { key: Period; label: string; card: string }[] = [
+  { key: "weekly", label: "This week", card: "THIS WEEK" },
+  { key: "monthly", label: "This month", card: "THIS MONTH" },
+];
+
+const DIVISIONS: { key: Division; label: string }[] = [
+  { key: "standard", label: "Standard" },
+  { key: "beginner", label: "Beginner" },
+];
+
 const SCOPES: { key: "everyone" | "friends"; label: string }[] = [
   { key: "everyone", label: "Everyone" },
   { key: "friends", label: "Friends" },
@@ -55,25 +76,39 @@ const MEDAL = ["#8A5608", "#4F5B6B", "#8A4B22"];
 const CARD = "#17535C";
 
 export default function LeaderboardsScreen({ route }: Props) {
-  const [period, setPeriod] = useState<Period>(route?.params?.period ?? "daily");
+  const [track, setTrack] = useState<Track>(route?.params?.track ?? "games");
+  const [period, setPeriod] = useState<Period>(route?.params?.period ?? (route?.params?.track === "recitation" ? "weekly" : "daily"));
   const [board, setBoard] = useState<string>(route?.params?.board ?? "combined");
   const [scope, setScope] = useState<"everyone" | "friends">("everyone");
+  const [division, setDivision] = useState<Division>(route?.params?.division ?? "standard");
   const [data, setData] = useState<Leaderboard | null>(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
-  const [picker, setPicker] = useState<"board" | "scope" | null>(null);
+  const [picker, setPicker] = useState<"board" | "scope" | "division" | null>(null);
   const [all, setAll] = useState(false);
   const [explain, setExplain] = useState(false);
+  const rec = track === "recitation";
+  const periods = rec ? REC_PERIODS : PERIODS;
 
   const load = useCallback(() => {
     setLoading(true);
     setErr(null);
-    playApi
-      .leaderboard({ period, board, scope, limit: 50 })
+    const req: Promise<Leaderboard> = rec
+      ? api.competitionStandings(period === "monthly" ? "monthly" : "weekly", division) as unknown as Promise<Leaderboard>
+      : playApi.leaderboard({ period, board, scope, limit: 50 });
+    req
       .then(setData)
       .catch((e) => setErr(e instanceof Error ? e.message : "Couldn't load the board."))
       .finally(() => setLoading(false));
-  }, [period, board, scope]);
+  }, [rec, period, board, scope, division]);
+
+  const switchTrack = (t: Track) => {
+    if (t === track) return;
+    haptics.tap();
+    setTrack(t);
+    setPeriod(t === "recitation" ? "weekly" : "daily");
+    setExplain(false);
+  };
 
   useEffect(() => {
     load();
@@ -82,15 +117,29 @@ export default function LeaderboardsScreen({ route }: Props) {
 
   const boardLabel = BOARDS.find((b) => b.key === board)?.label ?? "All games";
   const scopeLabel = SCOPES.find((s) => s.key === scope)?.label ?? "Everyone";
-  const periodMeta = PERIODS.find((p) => p.key === period) ?? PERIODS[0];
+  const divisionLabel = DIVISIONS.find((d) => d.key === division)?.label ?? "Standard";
+  const periodMeta = periods.find((p) => p.key === period) ?? periods[0];
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
+      <View style={styles.track} accessibilityRole="tablist">
+        {(["games", "recitation"] as const).map((t) => (
+          <Pressable accessibilityLabel={t === "games" ? "Games standings" : "Recitation standings"}
+            key={t}
+            onPress={() => switchTrack(t)}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: track === t }}
+            style={[styles.trackBtn, track === t && styles.trackOn]}
+          >
+            <Text style={[styles.trackText, track === t && styles.trackTextOn]}>{t === "games" ? "Games" : "Recitation"}</Text>
+          </Pressable>
+        ))}
+      </View>
       <View style={styles.tabs} accessibilityRole="tablist">
-        {PERIODS.map((p) => {
+        {periods.map((p) => {
           const on = p.key === period;
           return (
-            <Pressable
+            <Pressable accessibilityLabel={p.label}
               key={p.key}
               onPress={() => {
                 haptics.tap();
@@ -106,8 +155,14 @@ export default function LeaderboardsScreen({ route }: Props) {
         })}
       </View>
       <View style={styles.pickers}>
-        <PickerButton label={boardLabel} a11y={`Board: ${boardLabel}. Change board`} onPress={() => setPicker("board")} />
-        <PickerButton label={scopeLabel} a11y={`Showing ${scopeLabel}. Change`} onPress={() => setPicker("scope")} />
+        {rec ? (
+          <PickerButton label={`${divisionLabel} division`} a11y={`Division: ${divisionLabel}. Change`} onPress={() => setPicker("division")} />
+        ) : (
+          <>
+            <PickerButton label={boardLabel} a11y={`Board: ${boardLabel}. Change board`} onPress={() => setPicker("board")} />
+            <PickerButton label={scopeLabel} a11y={`Showing ${scopeLabel}. Change`} onPress={() => setPicker("scope")} />
+          </>
+        )}
       </View>
 
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
@@ -116,7 +171,7 @@ export default function LeaderboardsScreen({ route }: Props) {
           <View style={styles.stateBox}>
             <Ionicons name="cloud-offline-outline" size={24} color={T.ink3} />
             <Text style={styles.state}>{err}</Text>
-            <Pressable onPress={load} accessibilityRole="button" style={styles.retry}>
+            <Pressable accessibilityLabel="Try again" onPress={load} accessibilityRole="button" style={styles.retry}>
               <Text style={styles.retryText}>Try again</Text>
             </Pressable>
           </View>
@@ -127,17 +182,22 @@ export default function LeaderboardsScreen({ route }: Props) {
               data={data}
               title={`YOUR STANDING ${periodMeta.card}`}
               combined={board === "combined"}
+              rec={rec ? (period === "monthly" ? "monthly" : "weekly") : null}
               explainOpen={explain}
               onExplain={() => setExplain((v) => !v)}
             />
-            {explain && <Explain data={data} combined={board === "combined"} />}
+            {explain && <Explain data={data} combined={board === "combined"} rec={rec ? (period === "monthly" ? "monthly" : "weekly") : null} />}
             {data.empty ? (
               <View style={styles.stateBox}>
                 <Ionicons name="sparkles-outline" size={24} color={T.ink3} />
                 <Text style={styles.state}>
-                  {scope === "friends"
-                    ? "None of your friends has played a ranked round in this period yet."
-                    : "No one has played a ranked round in this period yet. Be the first."}
+                  {rec
+                    ? period === "monthly"
+                      ? "No recitation results in this month yet."
+                      : "Nobody has recited all three of this week's verses yet."
+                    : scope === "friends"
+                      ? "None of your friends has played a ranked round in this period yet."
+                      : "No one has played a ranked round in this period yet. Be the first."}
                 </Text>
               </View>
             ) : (
@@ -149,12 +209,13 @@ export default function LeaderboardsScreen({ route }: Props) {
 
       <Picker
         visible={picker !== null}
-        title={picker === "scope" ? "Show" : "Board"}
-        options={picker === "scope" ? SCOPES : BOARDS}
-        value={picker === "scope" ? scope : board}
+        title={picker === "scope" ? "Show" : picker === "division" ? "Division" : "Board"}
+        options={picker === "scope" ? SCOPES : picker === "division" ? DIVISIONS : BOARDS}
+        value={picker === "scope" ? scope : picker === "division" ? division : board}
         onPick={(k) => {
           haptics.tap();
           if (picker === "scope") setScope(k as "everyone" | "friends");
+          else if (picker === "division") setDivision(k as Division);
           else setBoard(k);
           setPicker(null);
         }}
@@ -203,17 +264,35 @@ function Standing({
   data,
   title,
   combined,
+  rec,
   explainOpen,
   onExplain,
 }: {
   data: Leaderboard;
   title: string;
   combined: boolean;
+  rec: "weekly" | "monthly" | null;
   explainOpen: boolean;
   onExplain: () => void;
 }) {
   const soft = softOn(CARD);
-  const me = data.me ?? data.rows.find((r) => r.is_me) ?? null;
+  const meRaw = (data.me ?? data.rows.find((r) => r.is_me) ?? null) as RecRow | null;
+  if (rec && meRaw && !meRaw.rank) {
+    // In the weekly set but not ranked yet: not every verse is in.
+    const left = data.frozen ? null : timeLeft(data.period_end);
+    return (
+      <View style={styles.card}>
+        <Text style={[styles.cardEyebrow, { color: GOLD }]}>{title}</Text>
+        <Text style={styles.unranked}>
+          {meRaw.participation} of {meRaw.of ?? 3} verses in. Recite all of them to get a rank.
+        </Text>
+        <Text style={[styles.cardFootSide, { color: soft, marginTop: 8 }]}>
+          Total so far {fmt(meRaw.score)} (missing verses count as zero){left ? ` · closes in ${left}` : ""}
+        </Text>
+      </View>
+    );
+  }
+  const me = meRaw;
   const left = data.frozen ? null : timeLeft(data.period_end);
   // The nearest row ranked above you, and what it takes to pass it.
   const above = me ? [...data.rows].reverse().find((r) => r.rank < me.rank) ?? null : null;
@@ -224,7 +303,7 @@ function Standing({
       <View style={styles.cardTop}>
         <Text style={[styles.cardEyebrow, { color: GOLD }]}>{title}</Text>
         <Pressable onPress={onExplain} accessibilityRole="button" accessibilityState={{ expanded: explainOpen }} hitSlop={10}>
-          <Text style={[styles.cardLink, { color: CREAM }]}>How points work</Text>
+          <Text style={[styles.cardLink, { color: CREAM }]}>{rec ? "How scores work" : "How points work"}</Text>
         </Pressable>
       </View>
       {me ? (
@@ -240,16 +319,16 @@ function Standing({
           <View style={styles.stats}>
             <View style={styles.stat}>
               <Text style={styles.statNum}>{fmt(me.score)}</Text>
-              <Text style={[styles.statLabel, { color: soft }]}>points</Text>
+              <Text style={[styles.statLabel, { color: soft }]}>{rec === "weekly" ? "week total" : rec === "monthly" ? "monthly average" : "points"}</Text>
             </View>
             <View style={[styles.stat, styles.statRight]}>
-              <Text style={styles.statNum}>{combined ? `${me.participation} of 3` : fmt(me.participation)}</Text>
-              <Text style={[styles.statLabel, { color: soft }]}>{combined ? "games counted" : "rounds played"}</Text>
+              <Text style={styles.statNum}>{rec === "weekly" ? `${me.participation} of ${(me as RecRow).of ?? 3}` : combined && !rec ? `${me.participation} of 3` : fmt(me.participation)}</Text>
+              <Text style={[styles.statLabel, { color: soft }]}>{rec === "weekly" ? "verses in" : rec === "monthly" ? "weeks finished" : combined ? "games counted" : "rounds played"}</Text>
             </View>
           </View>
           <View style={styles.cardFoot}>
             <Text style={styles.cardFootMain}>
-              {me.rank === 1 ? "You lead the board" : above ? `${fmt(gap)} point${gap === 1 ? "" : "s"} to pass #${above.rank}` : ""}
+              {me.rank === 1 ? "You lead the board" : above ? (rec ? `${fmt(Math.round((above.score - me.score) * 10) / 10)} behind #${above.rank}` : `${fmt(gap)} point${gap === 1 ? "" : "s"} to pass #${above.rank}`) : ""}
             </Text>
             <Text style={[styles.cardFootSide, { color: soft }]}>{left ? `Resets in ${left}` : "Final standings"}</Text>
           </View>
@@ -259,7 +338,7 @@ function Standing({
         </>
       ) : (
         <>
-          <Text style={styles.unranked}>Play a ranked round to get on the board.</Text>
+          <Text style={styles.unranked}>{rec === "weekly" ? "Recite all three of this week's verses to get on the board." : rec === "monthly" ? "Finish a weekly competition to get on this table." : "Play a ranked round to get on the board."}</Text>
           <Text style={[styles.cardFootSide, { color: soft, marginTop: 8 }]}>{left ? `Resets in ${left}` : "Final standings"}</Text>
         </>
       )}
@@ -267,7 +346,21 @@ function Standing({
   );
 }
 
-function Explain({ data, combined }: { data: Leaderboard; combined: boolean }) {
+function Explain({ data, combined, rec }: { data: Leaderboard; combined: boolean; rec: "weekly" | "monthly" | null }) {
+  if (rec) {
+    return (
+      <View style={styles.explain}>
+        <Text style={styles.explainText}>
+          Each recitation is scored out of 100: words 60, order 20, flow 15 and pace 5. Your score for a verse is your best
+          counted recitation of it, and your week total is the average of the week's three verses. Only people who have
+          recited all three are ranked.
+          {rec === "monthly" ? " The monthly table averages your weekly totals for the weeks that close this month; a week you started but did not finish counts as zero." : ""}
+          {" "}Equal scores share a rank. Times are India Standard Time.
+        </Text>
+        {data.frozen ? <Text style={styles.explainText}>This period has closed and the standings are frozen.</Text> : null}
+      </View>
+    );
+  }
   return (
     <View style={styles.explain}>
       <Text style={styles.explainText}>
@@ -394,6 +487,11 @@ function Picker({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: T.paper },
+  track: { flexDirection: "row", marginHorizontal: 16, marginTop: 10, marginBottom: 6, borderWidth: 1.5, borderColor: T.ink },
+  trackBtn: { flex: 1, minHeight: 44, alignItems: "center", justifyContent: "center" },
+  trackOn: { backgroundColor: T.ink },
+  trackText: { ...ui("semibold"), fontSize: 15, color: T.ink },
+  trackTextOn: { color: T.paper },
   tabs: { flexDirection: "row", gap: 26, marginHorizontal: 16, borderBottomWidth: 1, borderBottomColor: T.line },
   tab: { minHeight: 44, justifyContent: "center", borderBottomWidth: 3, borderBottomColor: "transparent", marginBottom: -1 },
   tabOn: { borderBottomColor: T.action },

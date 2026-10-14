@@ -175,7 +175,7 @@ export default function ContestRulesScreen({ navigation }: Props) {
       </View>
 
       <Text style={styles.section}>4. Recording consent</Text>
-      <Text style={styles.hint}>Your best recording is kept privately for 30 days after results so entries can be checked, then deleted.</Text>
+      <Text style={styles.hint}>Your best recording of each verse is kept privately until 30 days after the results so entries can be checked, then deleted.</Text>
       <Pressable onPress={() => void saveConsent()} accessibilityRole="button" accessibilityLabel="I agree to recording storage" style={styles.sec}>
         <Text style={styles.secText}>{consentDone ? "Consent saved" : "I agree"}</Text>
       </Pressable>

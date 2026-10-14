@@ -56,6 +56,11 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: str = "*"
     sarvam_api_key: str = ""  # Sarvam AI API subscription key (TTS/STT)
+    gemini_api_key: str = ""
+    google_api_key: str = ""
+    voice_lab_parler_url: str = ""  # POST {text, description, language}; returns audio/wav or audio/mpeg
+    voice_lab_parler_space: str = ""  # Hugging Face owner/space-name (ZeroGPU Gradio API)
+    hf_token: str = ""  # Server-only HF token: gated model download + signed-in Space quota
     # Speech-to-text model for every surface. saaras:v4 (2026-09-23): better
     # language ID on the learner's own language and Global English — but on
     # auto-detect it TRANSLATES spoken Sanskrit into English, so Talk never
@@ -398,7 +403,10 @@ class Settings(BaseSettings):
     competition_max_multi_face_ratio: float = 0.1
     competition_replay_threshold: float = 0.0
     competition_piece_max_ms: int = 35000
-    competition_rules_version: str = "2026-10-1"
+    competition_rules_version: str = "2026-10-14"
+    # Twice-weekly single-verse events (rules 2026-10-1). Off since the
+    # weekly three-verse sets took over on 2026-10-14.
+    competition_legacy_events: bool = False
     prize_contact_email: str = ""
 
     # Play sharing / verified app links (handover_games_daily_multiplayer §11).

@@ -31,6 +31,14 @@ TODAY = datetime.date.today().isoformat()
 _DEVA = str.maketrans("०१२३४५६७८९", "0123456789")
 
 
+def _letters_ratio(a: str, b: str) -> float:
+    """difflib ratio over two already letter-only strings."""
+    import difflib
+    if not a or not b:
+        return 0.0
+    return difflib.SequenceMatcher(None, a, b).ratio()
+
+
 def _canon_entry(slug: str) -> dict:
     from app.seeds.canon import CANON_TEXTS as _CANON
 
@@ -58,8 +66,20 @@ def _source_for(slug: str) -> str:
 # ── DCS ─────────────────────────────────────────────────────────────────
 
 def parse_dcs_conllu(body: str) -> list[tuple[int, str]]:
-    """[(sent_counter N, joined IAST text)]. Same N in M order, joined."""
+    """[(verse_ordinal_in_file, joined IAST text)] for one DCS file.
+
+    Two export formats exist (2026-10-14: DCS switched; both live in the
+    corpus): the older carries "# sent_counter = N" + "# sent_subcounter = M",
+    the newer packs the same grouping into "# sent_id = N_M" after each
+    "# text =". In both, one N = one verse and its M-ordered parts join.
+    The verse's number is the group's ordinal within the file, so refs read
+    Ṛgveda 1.1.1 (files were fetched back when the counter was per-file
+    ordinal already — Meghadūta 1.1 was built the same way).
+    """
     groups: dict[int, list[tuple[int, str]]] = {}
+    cur_text = None
+    cur_n = None
+    cur_m = 0
     for line in (body or "").splitlines():
         if line.startswith("# text ="):
             cur_text = line.split("=", 1)[1].strip()
@@ -75,10 +95,15 @@ def parse_dcs_conllu(body: str) -> list[tuple[int, str]]:
                 cur_m = 0
             if cur_n is not None and cur_n >= 0:
                 groups.setdefault(cur_n, []).append((cur_m, cur_text))
+        elif line.startswith("# sent_id ="):
+            m = re.match(r"# sent_id = (\d+)_(\d+)\s*$", line)
+            if m and cur_text:
+                groups.setdefault(int(m.group(1)), []).append(
+                    (int(m.group(2)), cur_text))
     out = []
-    for n in sorted(groups):
+    for ordinal, n in enumerate(sorted(groups), 1):
         parts = [t for _, t in sorted(groups[n])]
-        out.append((n, " ".join(parts)))
+        out.append((ordinal, " ".join(parts)))
     return out
 
 
@@ -86,6 +111,18 @@ def dcs_to_devanagari(iast_text: str) -> str:
     from vidyut.lipi import Scheme, transliterate
 
     dev = transliterate(iast_text, Scheme.Iast, Scheme.Devanagari)
+    # DCS encodes the udatta accent as a halfwidth form ('ﾱ', U+FFB1; 386
+    # occurrences across 237 Rigveda files). The house rule is "Vedic accent
+    # marks removed", and nothing else in the halfwidth block is Sanskrit.
+    dev = re.sub(r"[\uFF00-\uFFEF]", "", dev)
+    # "_" separates parts of one verse in the DCS IAST ("सु कृतम् _ इति") —
+    # a word joiner here, never content.
+    dev = dev.replace("_", " ")
+    # Accent/length notation with spaces around it ("अरा ३ इति" in
+    # Chandogya): digits never appear in DCS verse text except as these
+    # markers (the numbers live in the comments), so a digit run between
+    # Devanagari with optional spaces goes too.
+    dev = re.sub(r"(?<=[ऀ-ॿ])\s*[०-९0-9]+\s*(?=[ऀ-ॿ])", "", dev)
     # Check "'" became avagraha (5.4).
     return dev
 
@@ -113,13 +150,10 @@ def _dcs_chapter(slug: str, filename: str, fallback_n: int) -> str:
         if "uttara" in low or ", 2" in filename:
             return "2"
         return "1"
-    if slug in ("taittiriya",):
-        # 31 anuvaka files: V.A from citation.
-        cands = [n for n in nums if n < 100]
-        if len(cands) >= 2:
-            return f"{cands[-2]}.{cands[-1]}"
-        return str(fallback_n)
-    if slug in ("aitareya",):
+    if slug in ("taittiriya", "aitareya", "chandogya", "brihadaranyaka"):
+        # 31/13/153/47 anuvaka-or-khanda files: V.K from the citation
+        # (verse numbers restart every khanda, so the khanda must be in
+        # the chapter).
         cands = [n for n in nums if n < 100]
         if len(cands) >= 2:
             return f"{cands[-2]}.{cands[-1]}"
@@ -192,14 +226,31 @@ def parse_ambuda_tei(xml: str, kind: str) -> list[tuple[str, str]]:
 def _strip_html(html: str) -> str:
     t = re.sub(r"<br\s*/?>", "\n", html, flags=re.I)
     t = re.sub(r"</p\s*>", "\n", t, flags=re.I)
+    # Page chrome: the ws-data metadata block (title/author/year spans),
+    # ambox notices and {{rh}} running headers all arrive as tables or
+    # ws-noexport divs — none of it is verse text.
+    for _ in range(30):
+        new = re.sub(r"<table\b.*?</table>", "", t, flags=re.S | re.I)
+        new = re.sub(r'<div\b[^>]*ws-noexport[^>]*>.*?</div>', "", new, flags=re.S | re.I)
+        if new == t:
+            break
+        t = new
     t = re.sub(r"<[^>]+>", "", t)
-    return _html.unescape(t)
+    t = _html.unescape(t)
+    kept = [ln for ln in t.split("\n")
+            if "An image should appear" not in ln
+            and "If you are able to provide" not in ln]
+    return "\n".join(kept)
 
 
 def _wiki_numbered_verses(wikitext: str, *, vedic: bool) -> list[tuple[str, str]]:
     parts = _clean.split_numbered_verses(wikitext)
     out = []
     for num_raw, body in parts:
+        if num_raw.endswith("*"):
+            # Raghuvamsha variant reading ("॥ १.३४* ॥") — the main verse is
+            # already captured; variants duplicate its ref.
+            continue
         # Last component is the verse number (take last for 12.8.60).
         nums = _clean.number_parts(num_raw)
         if not nums:
@@ -241,13 +292,14 @@ def build_book(slug: str) -> dict:
     # register comes from section 4 (vedic for Samhitas/Upanisads).
     kind = spec.get("kind")
     sources: dict = {"slug": slug, "pages": [], "files": []}
+    renum_counts: dict = {}  # (chapter) -> ordinal, for renumber_per_chapter
     raw_verses: list[tuple[str, str, str]] = []  # (chapter, num_raw, cleaned)
 
     if kind in ("wiki_numbered", "wiki_unnumbered", "wiki_rendered",
                 "wiki_rendered_newline_nums", "wiki_mkp_81_93", "wiki_bhagavata",
-                "wiki_shiva", "wiki_samaveda", "wiki_yajurveda", "wiki_prashna",
+                "wiki_shiva", "wiki_prashna",
                 "wiki_raghu", "wiki_shakuntala", "wiki_gita_govinda",
-                "wiki_vetala", "wiki_yoga", "wiki_ashtavakra", "wiki_sushruta",
+                "wiki_vetala", "wiki_yoga", "wiki_ashtavakra",
                 "wiki_amara", "wiki_chanakya", "wiki_sections"):
         pages = list(spec.get("pages") or [])
         if kind == "wiki_bhagavata":
@@ -255,6 +307,9 @@ def build_book(slug: str) -> dict:
             # Skandha 10 split + skip mahatmya sets.
             pages = [p for p in pages if "हात्म्य" not in p and "हात्यम" not in p
                      and "माहात्म्य" not in p]
+            # Keep only "स्कन्धः N/अध्यायः M" content pages; the bare skandha
+            # index pages hold no verses.
+            pages = [p for p in pages if "अध्याय" in p]
         elif kind == "wiki_shiva":
             pages = _fetch.wiki_list_pages(spec["prefix"])
         elif kind == "wiki_raghu":
@@ -274,15 +329,13 @@ def build_book(slug: str) -> dict:
             if kind == "wiki_sections":
                 # Vishnu: == sections listed in 4.1 become chapters 1..6;
                 # skip nyasa prose and sambandhanubandhah.
-            for sec_body_heading, sec_body in _split_wiki_sections(body or ""):
-                name = sec_body_heading or ""
-                # "न्यास" would also match "उत्तरन्यासः", whose 33 verses ARE
-                # wanted (170-name canonical count) — only the prose nyasa
-                # sections are skipped.
-                if any(s in name for s in (spec.get("skip_sections") or [])) \
-                        and not name.startswith("उत्तरन्यास"):
-                    continue
-                    if "न्यास" in name and "उत्तरन्यास" not in name:
+                for sec_body_heading, sec_body in _split_wiki_sections(body or ""):
+                    name = sec_body_heading or ""
+                    # "न्यास" would also match "उत्तरन्यासः", whose 33 verses
+                    # ARE wanted (170-name canonical count) — only the prose
+                    # nyasa sections are skipped.
+                    if any(s in name for s in (spec.get("skip_sections") or [])) \
+                            and not name.startswith("उत्तरन्यास"):
                         continue
                     # Match to the listed sections in order.
                     idx = None
@@ -298,14 +351,30 @@ def build_book(slug: str) -> dict:
                     for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
                         raw_verses.append((None, num_raw, cleaned))
             elif kind == "wiki_unnumbered":
-                # Lalita: 1 purvabhaga, 2 stotra; split at dandas per chapter.
-                secs = _split_wiki_sections(body or "")
-                if len(secs) >= 2:
-                    for ci, (_, sec_body) in enumerate(secs[:2], 1):
-                        chunks = [c.strip() for c in
-                                  _clean.verse_text(sec_body, vedic=vedic).split("॥") if c.strip()]
-                        for i, chunk in enumerate(chunks, 1):
-                            raw_verses.append((str(ci), str(i), chunk + " ॥"))
+                # Lalita: the poem carries NO per-verse numbers — a shloka is
+                # the lines up to one closing with ॥. Speaker lines
+                # ("अगस्त्य उवाच-") and the नमः invocation header drop out.
+                secs_l = [(h, b) for h, b in _split_wiki_sections(body or "")
+                          if b.strip()]
+                if secs_l:
+                    for ci_l, (_, sec_body_l) in enumerate(secs_l, 1):
+                        cur_l: list[str] = []
+                        for ln_l in _clean.strip_wiki_markup(sec_body_l).splitlines():
+                            s_l = ln_l.strip()
+                            if not s_l or _clean.is_dropped_line(s_l):
+                                continue
+                            cur_l.append(s_l)
+                            if s_l.endswith(("॥", "।।")):
+                                text_l = _clean.verse_text("\n".join(cur_l), vedic=vedic)
+                                cur_l = []
+                                if len(text_l) > 15:
+                                    n_l = 1 + sum(1 for v in raw_verses if v[0] == str(ci_l))
+                                    raw_verses.append((str(ci_l), str(n_l), text_l))
+                        if cur_l:
+                            text_l = _clean.verse_text("\n".join(cur_l), vedic=vedic)
+                            if len(text_l) > 15:
+                                n_l = 1 + sum(1 for v in raw_verses if v[0] == str(ci_l))
+                                raw_verses.append((str(ci_l), str(n_l), text_l))
                 else:
                     for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
                         raw_verses.append((None, num_raw, cleaned))
@@ -365,10 +434,186 @@ def build_book(slug: str) -> dict:
                 for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
                     raw_verses.append((str(pi + 1), num_raw, cleaned))
             else:
+                # Page-order chapters (Shakuntala acts, Gitagovinda sargas,
+                # Vetala tales): verse numbers restart every page. Or chapters
+                # straight out of the page title ("स्कन्धः १/अध्यायः ५" →
+                # "1.5", the Bhagavata page set) — the verse numbers there
+                # restart per adhyaya.
+                page_ch = None
+                if spec.get("chapter_from_title"):
+                    parts_t = []
+                    for key_t in spec["chapter_from_title"]:
+                        m_t = re.search(re.escape(key_t) + r"\s*[०-९]+", title)
+                        if m_t:
+                            parts_t.append(str(_clean.number_parts(
+                                m_t.group(0)[len(key_t):])[-1]))
+                    # Skandha 10 is split into पूर्वार्ध/उत्तरार्ध on the
+                    # pages, and both halves restart their adhyaya numbers —
+                    # mark the half so chapters stay unique.
+                    if "पूर्वार्ध" in title:
+                        parts_t.insert(1, "p")
+                    elif "उत्तरार्ध" in title:
+                        parts_t.insert(1, "u")
+                    page_ch = ".".join(parts_t) or None
+                elif spec.get("chapter_per_page"):
+                    page_ch = str(pi + 1)
                 for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
-                    raw_verses.append((None, num_raw, cleaned))
+                    if slug == "amarakosha" and any(
+                            p in cleaned for p in
+                            ("अत्र मूलश्लोकाः", "मू श्लो", "क्षे श्लो",
+                             "इत्यमरसिंहकृतौ")):
+                        # Index/summary rows the page appends after kanda 2
+                        # ("सर्वे च मिलित्वा ७५० प्र का मू श्लो २८१ …",
+                        # numbered १४९१+) — not Amara's verses.
+                        continue
+                    if spec.get("renumber_per_chapter"):
+                        # Gitagovinda songs and Vetala tales repeat numbers
+                        # inside one chapter (the source restarts them at
+                        # every song / section); the reading order is the
+                        # ordinal within the chapter.
+                        page_ch = page_ch or ""
+                        renum = renum_counts.get(page_ch, 0) + 1
+                        renum_counts[page_ch] = renum
+                        raw_verses.append((page_ch, str(renum), cleaned))
+                    else:
+                        raw_verses.append((page_ch, num_raw, cleaned))
         # Chapter assignment for generic wiki books is done per-kind below.
         raw_verses = _assign_wiki_chapters(slug, spec, pages, raw_verses)
+    elif kind == "wiki_yajurveda":
+        # Each adhyaya page lists kandikas: an "N.M" header line, then the
+        # kandika's lines — the closing ॥ ends one kandika. Vedic accents
+        # (ꣳ and the U+1CD0 range) are removed per the vedic policy.
+        for pi_y, title_y in enumerate(list(spec.get("pages") or []), 1):
+            pg_y = _fetch.wiki_fetch_page(title_y)
+            sources["pages"].append({"title": title_y, "revid": pg_y.get("revid"),
+                                     "url": pg_y.get("url")})
+            cur_y: list[str] = []
+            cur_num_y = ""
+            for ln_y in _clean.strip_wiki_markup(pg_y.get("wikitext", "")).splitlines():
+                s_y = ln_y.strip()
+                if not s_y:
+                    continue
+                if re.search(r"[0-9]", s_y) and "।" not in s_y and "॥" not in s_y:
+                    # Index/prakarana lines ("दर्शपूर्णमासयागः 2.1 2.28 …")
+                    # carry ASCII ranges and no dandas — structure, not text.
+                    continue
+                m_num = re.fullmatch(r"[0-9०-९]+\.([0-9०-९]+)", s_y)
+                if m_num:
+                    # flush a kandika that never closed with ॥
+                    if cur_y:
+                        text_y = _clean.verse_text("\n".join(cur_y), vedic=True)
+                        cur_y = []
+                        if len(text_y) > 12:
+                            raw_verses.append((str(pi_y), cur_num_y or "0", text_y))
+                    cur_num_y = str(_clean.verse_number_of(m_num.group(1)))
+                    continue
+                if re.fullmatch(r"अध्याय\s*[0-9०-९]+", s_y):
+                    continue
+                cur_y.append(s_y)
+                if s_y.endswith("॥"):
+                    text_y = _clean.verse_text("\n".join(cur_y), vedic=True)
+                    cur_y = []
+                    if len(text_y) > 12:
+                        raw_verses.append((str(pi_y), cur_num_y or "0", text_y))
+                        cur_num_y = ""
+            if cur_y:
+                text_y = _clean.verse_text("\n".join(cur_y), vedic=True)
+                if len(text_y) > 12:
+                    raw_verses.append((str(pi_y), cur_num_y or "0", text_y))
+    elif kind == "wiki_sushruta":
+        # Line-numbered sutra format: each sutra is a line ending with a
+        # Devanagari number (no dandas); long sutras wrap as continuation
+        # lines. Ordinal अध्यायः headings increment the chapter counter
+        # (the pages walk the sthanas in order).
+        adhyaya_s = 0
+        cur_num_s = ""
+        cur_s: list[str] = []
+        renum_s = 0
+
+        def _flush_s() -> None:
+            nonlocal renum_s
+            if cur_s:
+                text_s = _clean.verse_text("\n".join(cur_s), vedic=False)
+                # Stray digits inside sutra prose are page noise (the sutra
+                # numbers were already taken off the line ends).
+                text_s = re.sub(r"[०-९]+", "", text_s)
+                if len(text_s) > 12:
+                    # The page's own numbers restart mid-adhyaya; store the
+                    # running ordinal within the adhyaya.
+                    renum_s += 1
+                    raw_verses.append((str(adhyaya_s), str(renum_s), text_s))
+
+        for title_s in list(spec.get("pages") or []):
+            pg_s = _fetch.wiki_fetch_page(title_s)
+            sources["pages"].append({"title": title_s, "revid": pg_s.get("revid"),
+                                     "url": pg_s.get("url")})
+            for ln_s in _clean.strip_wiki_markup(pg_s.get("wikitext", "")).splitlines():
+                s_s = ln_s.strip()
+                if not s_s:
+                    continue
+                if s_s.startswith("इति सुश्रुत"):
+                    # The adhyaya colophon ("इति सुश्रुतसंहितायां …
+                    # अध्यायः | 21 ॥") — not a sutra.
+                    continue
+                if re.search(r"[अऽ]ध्यायः?\s*$", s_s) and len(s_s) <= 40:
+                    # "प्रथमोऽध्यायः" — the initial a is an avagraha here.
+                    _flush_s()
+                    cur_s = []
+                    cur_num_s = ""
+                    adhyaya_s += 1
+                    continue
+                m_s = re.search(r"\s([०-९0-9]+)\s*[।|॥]*\s*$", s_s)
+                if m_s:
+                    _flush_s()
+                    cur_num_s = m_s.group(1)
+                    cur_s = [re.sub(r"\s[०-९0-९]+\s*[।|॥]*\s*$", "", s_s)]
+                else:
+                    cur_s.append(s_s)
+        _flush_s()
+    elif kind == "wiki_samaveda":
+        # One page holds both archikas. Section headers carry the path
+        # ("पूर्वार्चिकः/… 1.1.1 प्रथमप्रपाठकः/…") and verse ends are "।। N ।।"
+        # with the number restarting per prapathaka: chapter = archika.
+        # prapathaka from the header's first two numbers.
+        ch_sa = ""
+        cur_body_sa: list[str] = []
+        renum_sa: dict = {}
+
+        def _split_sa() -> None:
+            body_sa = "\n".join(cur_body_sa)
+            for num_raw, cleaned in _wiki_numbered_verses(body_sa, vedic=True):
+                # The archa numbers restart per prapathaka on the page; store
+                # the ordinal within the chapter so refs stay unique.
+                n_sa = renum_sa.get(ch_sa, 0) + 1
+                renum_sa[ch_sa] = n_sa
+                raw_verses.append((ch_sa, str(n_sa), cleaned))
+            cur_body_sa.clear()
+
+        for title_sa in list(spec.get("pages") or []):
+            pg_sa = _fetch.wiki_fetch_page(title_sa)
+            sources["pages"].append({"title": title_sa, "revid": pg_sa.get("revid"),
+                                     "url": pg_sa.get("url")})
+            for ln_sa in _clean.strip_wiki_markup(pg_sa.get("wikitext", "")).splitlines():
+                s_sa = ln_sa.strip()
+                if not s_sa:
+                    continue
+                if ("आर्चिक" in s_sa or "प्रपाठक" in s_sa or "दशति" in s_sa
+                        or re.match(r"^[\u0965\u0964|\s]*\d+(\.\d+)+", s_sa)):
+                    # The header can carry leading dandas/pipes ("। 1.3.12.3 |").
+                    m_sa = re.search(r"(\d+)\.(\d+)", s_sa)
+                    if m_sa:
+                        _split_sa()
+                        ch_sa = f"{int(m_sa.group(1))}.{int(m_sa.group(2))}"
+                        continue
+                    # a second header line of the same section (e.g. the
+                    # path line followed by "प्रथमोऽर्द्धः") — keep chapter
+                    cur_body_sa.append(s_sa)
+                    continue
+                if re.fullmatch(r"[0-9c .|\u0965\u0964\u0966-\u096f]+", s_sa):
+                    # Bare arika-index annotation lines ("1 5 1 0305c").
+                    continue
+                cur_body_sa.append(s_sa)
+        _split_sa()
     elif kind in ("ambuda_lg", "ambuda_p", "ambuda_numbered", "ambuda_auto"):
         xml = _fetch.ambuda_fetch_tei(spec["ambuda_slug"])
         sources["files"].append({"ambuda": spec["ambuda_slug"]})
@@ -519,6 +764,19 @@ def _assign_wiki_chapters(slug: str, spec: dict, pages: list[str],
     the number (all but last).
     """
     kind = spec.get("kind")
+    # Devimahatmya: the pages are Markandeya-Purana chapters 81-93 and the
+    # verse markers read "८१.१"; the DM's own chapters are 81-80 … 93-80.
+    # The ०९१-०९५ page runs two chapters long — keep only 81-93.
+    if slug == "devimahatmya":
+        out_dm = []
+        for _ch, num_raw, cleaned in raw:
+            nums_dm = _clean.number_parts(num_raw)
+            first_dm = nums_dm[0] if nums_dm else 0
+            if not 81 <= first_dm <= 93:
+                continue
+            out_dm.append((str(first_dm - 80) if first_dm >= 81 else (_ch or ""),
+                           num_raw, cleaned))
+        raw = out_dm
     # Explicit chapters win.
     if any((ch is not None and ch != "") or slug in ("kena", "prashna")
            or kind in ("wiki_sections", "wiki_unnumbered") for ch, _, _ in raw):
@@ -595,6 +853,7 @@ def _assign_wiki_chapters(slug: str, spec: dict, pages: list[str],
 def _finalise_verses(slug: str, ref_name: str, raw: list[tuple[str, str, str]],
                      spec: dict) -> list[dict]:
     verses: list[dict] = []
+    seen_refs: dict[str, str] = {}  # ref -> letters-only text of first row
     # Group by chapter preserving first-seen order, then order chapters
     # numerically and verses numerically.
     by_ch: dict[str, list[tuple[str, str]]] = {}
@@ -637,7 +896,18 @@ def _finalise_verses(slug: str, ref_name: str, raw: list[tuple[str, str, str]],
             # Strip trailing verse numbers from the text body already done;
             # ensure the stored text ends with a danda.
             dev = cleaned.strip()
-            verses.append({"ref": f"{ref_name} {number}", "chapter": ch,
+            # Same-text repeats (a stanza printed twice, page-header junk)
+            # collapse onto the first row; a genuine second verse carrying
+            # the same number (Saundarya Laharī repeats numbers 10 and 21)
+            # is dropped too — the importer's ref/chapter check (6.3.3)
+            # cannot express a numeric variant suffix, and the payload stays
+            # one row per ref.
+            ref = f"{ref_name} {number}"
+            norm = re.sub(r"[\s।॥\d०-९.,;:!?'\"\-–—ऽ|]+", "", dev)
+            if ref in seen_refs:
+                continue
+            seen_refs[ref] = norm
+            verses.append({"ref": ref, "chapter": ch,
                            "devanagari": dev, "translation_hi": "",
                            "translation_en": ""})
     return verses

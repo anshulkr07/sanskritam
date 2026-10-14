@@ -1,483 +1,799 @@
-// Recite: Learn screen with Listen, Practise, Recite steps.
+// Recite: learn one verse in three steps (handover_games_daily_multiplayer §7).
+//
+//   Listen   the verse, its meaning and optional Roman text; tap a line to
+//            hear it; play the verse straight or each line three times;
+//            speed really applies. One player, moved on by playback events.
+//   Practise one line (or the whole verse) at a time: listen, record after a
+//            3-2-1, read the feedback, retry or go on. Text shown, partly
+//            hidden or hidden. Practice never counts for a competition, even
+//            when opened from one.
+//   Recite   from memory. Short instructions, permissions asked up front, a
+//            one-time rehearsal of the stop gesture, 3-2-1, "Close your eyes;
+//            begin after the tone", a settling pause, the tone, then a large
+//            stop area and a separate Stop button. The verse is never shown
+//            while recording; rough live captions may be. Stopping ends the
+//            eye check at once and says "Finished. You can open your eyes."
+//            Opened from a competition, this step is the ranked attempt and
+//            the eyes-closed check is required; otherwise it is optional.
+//
+// The recording (16 kHz WAV from the live stream, or m4a when the stream is
+// unavailable) is uploaded once and scored on the server.
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useAudioRecorder, RecordingPresets } from "expo-audio";
 import * as FileSystem from "expo-file-system/legacy";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import type { RootStackParamList } from "../navigation/types";
-import { ApiError, api, uploadCompetitionAttempt, uploadRecite, type ReciteResult, type Shloka } from "../api/client";
-import { playClip, preloadClip } from "../services/speech";
+import {
+  ApiError, api, uploadCompetitionAttempt, uploadRecite,
+  type ChantLine, type Division, type ReciteResult, type Shloka,
+} from "../api/client";
+import EyesClosedTest, { type EyesOutcome } from "../components/recite/EyesClosedTest";
+import RecitationResult from "../components/recite/RecitationResult";
 import { useQuery } from "../hooks/useQuery";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { haptics } from "../services/haptics";
-import { useTypeScale } from "../hooks/useTypeScale";
-import { color, fill, sanskritText } from "../theme";
-import { plain } from "../utils/text";
+import { useLang } from "../i18n";
+import { T, sa, ui } from "../read/look";
+import { playCue, preloadCues } from "../recite/cues";
 import { mask } from "../recite/hide";
-import RecitationResult from "../components/recite/RecitationResult";
-import EyesClosedTest from "../components/recite/EyesClosedTest";
+import { useLiveRecitation } from "../recite/useLiveRecitation";
+import { useVersePlayer } from "../recite/useVersePlayer";
+import { haptics } from "../services/haptics";
+import { playClip } from "../services/speech";
+import { plain } from "../utils/text";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Recite">;
+type Step = "listen" | "practise" | "recite";
 
-const CONSENT_KEY = "shabd.recite.cameraConsent";
 const RECENT_KEY = "shabd.recite.recent";
+const POS_KEY = "shabd.recite.pos.";
+const REHEARSED_KEY = "shabd.recite.stopRehearsed";
+/** Time to close the eyes after the spoken cue, before the tone. */
+export const SETTLE_MS = 1500;
+
+const VISIBILITY: { level: number; label: string; note: string }[] = [
+  { level: 0, label: "Shown", note: "The whole line is on screen." },
+  { level: 1, label: "Partly hidden", note: "Every other word shows only its first syllable." },
+  { level: 3, label: "Hidden", note: "Nothing on screen. Recite from memory." },
+];
+
+const WHY_NOT: Record<string, string> = {
+  unclear: "The recording was not clear enough to score, so it did not count. Try again somewhere quieter.",
+  no_timing: "Flow and pace could not be measured from this recording, so it did not count. Try again.",
+  text_shown: "The text was on screen, so it did not count.",
+  no_face: "Your face was not seen enough, so it did not count. Prop the phone so the front camera sees you.",
+  two_faces: "Two faces were seen, so it did not count. Recite alone in the frame.",
+  eyes_open: "Your eyes were open, so it did not count for the leaderboard.",
+  old_app: "This app version is too old for the face check. Update the app, then try again.",
+};
+
+function errorText(e: unknown): string {
+  if (e instanceof ApiError) {
+    if (e.status === 403) return "Finish the competition entry steps first (name, age, rules, consent).";
+    if (e.status === 429) return e.message || "Today's recitation allowance is used up. Try again tomorrow.";
+    if (e.message) return e.message;
+    if (e.status === 503) return "Scoring is busy. Try again.";
+  }
+  return "Could not score that. Check your connection and try again.";
+}
+
+function lineTexts(verse: Shloka | undefined): ChantLine[] {
+  if (verse?.chant?.lines?.length) return verse.chant.lines;
+  return (verse?.devanagari ?? "").split(/(?<=[।॥])/).map((s) => s.trim()).filter(Boolean)
+    .map((text, i) => ({ i, text, kind: "verse" as const, start_ms: 0, end_ms: 0 }));
+}
 
 export default function ReciteScreen({ navigation, route }: Props) {
-  const { verseUid, competitionId, start } = route.params;
-  const reduced = useReducedMotion();
-  const { sized } = useTypeScale();
+  const { verseUid, competitionId, start, division } = route.params;
   const { data: verses } = useQuery("reader-verses", api.listShlokas, { ttlMs: 30 * 60_000 });
-  const verse: Shloka | undefined = useMemo(
+  const listed: Shloka | undefined = useMemo(
     () => (verses ?? []).find((v) => v.verse_uid === verseUid || v.id === verseUid),
     [verses, verseUid],
   );
-  const [step, setStep] = useState<"listen" | "practise" | "recite">(start ?? "listen");
-  const [hide, setHide] = useState(0);
-  const [lineIdx, setLineIdx] = useState(0);
-  const [result, setResult] = useState<ReciteResult | null>(null);
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [recording, setRecording] = useState(false);
-  const [recSecs, setRecSecs] = useState(0);
-  const [localUri, setLocalUri] = useState<string | null>(null);
-  const [eyesOn, setEyesOn] = useState(false);
-  const [cameraJson, setCameraJson] = useState("{}");
-  const [consent, setConsent] = useState(false);
-  const [lineX3, setLineX3] = useState(false);
-  const [speed, setSpeed] = useState(1);
+  // Verses of paged books are not in the classic list: fetch those by uid.
+  const [fetched, setFetched] = useState<Shloka | null>(null);
+  const [missing, setMissing] = useState(false);
+  useEffect(() => {
+    if (!verses || listed) return;
+    let live = true;
+    api.shlokaByUid(verseUid).then((v) => { if (live) setFetched(v); }).catch(() => { if (live) setMissing(true); });
+    return () => { live = false; };
+  }, [verses, listed, verseUid]);
+  const verse = listed ?? fetched ?? undefined;
+  const [step, setStep] = useState<Step>(start ?? "listen");
+  const lines = useMemo(() => lineTexts(verse), [verse]);
+  const chantLines = useMemo(() => verse?.chant?.lines ?? [], [verse]);
+  const player = useVersePlayer(verse?.chant?.url, chantLines);
+  const live = useLiveRecitation({ captions: true });
 
   useEffect(() => {
-    void preloadClip(verse?.chant?.url);
-  }, [verse?.chant?.url]);
-
-  const recorder = useAudioRecorder({
-    ...RecordingPresets.HIGH_QUALITY,
-    sampleRate: 16000,
-    numberOfChannels: 1,
-    bitRate: 32000,
-    android: { ...RecordingPresets.HIGH_QUALITY.android, outputFormat: "mpeg4", audioEncoder: "aac" },
-  });
+    navigation.setOptions({ title: competitionId ? "Competition verse" : "Learn this verse" });
+  }, [navigation, competitionId]);
 
   useEffect(() => {
-    void AsyncStorage.getItem(CONSENT_KEY).then((v) => setConsent(v === "1"));
+    preloadCues();
     void AsyncStorage.getItem(RECENT_KEY).then(async (v) => {
       try {
         const list: string[] = v ? JSON.parse(v) : [];
-        const next = [verseUid, ...list.filter((x) => x !== verseUid)].slice(0, 10);
-        await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(next));
+        await AsyncStorage.setItem(RECENT_KEY, JSON.stringify([verseUid, ...list.filter((x) => x !== verseUid)].slice(0, 10)));
       } catch { /* keep */ }
     });
-    // Consent may have been granted in ContestRules after this screen mounted
-    // — re-read it every time we return here so the eyes-closed toggle works.
-    const sub = navigation.addListener("focus", () => {
-      void AsyncStorage.getItem(CONSENT_KEY).then((v) => setConsent(v === "1"));
-    });
-    return sub;
-  }, [navigation, verseUid]);
-
-  const lines = verse?.chant?.lines?.length
-    ? verse.chant.lines
-    : (verse?.devanagari ?? "").split(/(?<=[।॥])/).map((s) => s.trim()).filter(Boolean)
-        .map((text, i) => ({ i, text, kind: "verse" as const, start_ms: 0, end_ms: 0 }));
-
-  const playLine = useCallback(async (i: number) => {
-    if (!verse?.chant?.url) return;
-    const base = (await import("../config")).BASE_URL;
-    const url = verse.chant.url.startsWith("http") ? verse.chant.url : `${base}${verse.chant.url}`;
-    const { createAudioPlayer } = await import("expo-audio");
-    const p = createAudioPlayer(url);
-    const ln = verse.chant.lines[i];
-    if (ln) {
-      await p.seekTo(ln.start_ms / 1000);
-      try { p.setPlaybackRate?.(speed, "high"); } catch { /* keep */ }
-      p.play();
-      const stopAt = ln.end_ms + 150;
-      const sub = p.addListener("playbackStatusUpdate", (st) => {
-        if (st.isLoaded && st.currentTime * 1000 >= stopAt) {
-          p.pause();
-          sub.remove();
-        }
-      });
-    } else {
-      p.play();
-    }
-  }, [verse, speed]);
-
-  const playAll = useCallback(async () => {
-    if (!verse?.chant?.url) return;
-    if (!lineX3 && verse.chant.lines.length) {
-      await playClip(verse.chant.url);
-      return;
-    }
-    for (const ln of verse?.chant?.lines ?? []) {
-      for (let k = 0; k < (lineX3 ? 3 : 1); k++) {
-        // eslint-disable-next-line no-await-in-loop
-        await playLine(ln.i);
-        await new Promise((r) => setTimeout(r, reduced ? 50 : 600));
-      }
-    }
-  }, [verse, lineX3, playLine, reduced]);
-
-  // Visible, audible countdown before the mic opens (brief §7): permission
-  // preflight happens BEFORE the countdown starts, never halfway through it.
-  const [countdown, setCountdown] = useState<number | null>(null);
-  const startRec = useCallback(async () => {
-    setError("");
-    try {
-      const { Camera } = await import("expo-camera");
-      const perm = await Camera.requestMicrophonePermissionsAsync();
-      if (perm.status !== "granted") {
-        setError("Allow the microphone in Settings to record.");
-        return;
-      }
-    } catch { /* permission module unavailable: the record call surfaces it */ }
-    setCountdown(3);
-    haptics.tap();
-  }, []);
-
-  useEffect(() => {
-    if (countdown == null) return;
-    if (countdown === 0) {
-      setCountdown(null);
-      (async () => {
-        setRecording(true);
-        setRecSecs(0);
+    if (!start) {
+      void AsyncStorage.getItem(POS_KEY + verseUid).then((v) => {
         try {
-          await recorder.prepareToRecordAsync();
-          recorder.record();
-        } catch {
-          setRecording(false);
-          setError("The microphone did not start. Try again?");
-        }
-      })();
-      return;
+          const pos = v ? JSON.parse(v) as { step?: Step } : null;
+          if (pos?.step) setStep(pos.step);
+        } catch { /* keep */ }
+      });
     }
-    haptics.tap();
-    const t = setTimeout(() => setCountdown((c) => (c ?? 1) - 1), 1000);
-    return () => clearTimeout(t);
-  }, [countdown, recorder]);
+  }, [verseUid, start]);
 
-  useEffect(() => {
-    if (!recording) return;
-    const t = setInterval(() => setRecSecs((s) => s + 1), 1000);
-    return () => clearInterval(t);
-  }, [recording]);
+  const go = useCallback((s: Step) => {
+    if (live.recording) return;
+    player.stop();
+    setStep(s);
+    void AsyncStorage.setItem(POS_KEY + verseUid, JSON.stringify({ step: s })).catch(() => {});
+  }, [live.recording, player, verseUid]);
 
-  const stopAndScore = useCallback(async (unit: string, purpose: string) => {
-    setBusy(true);
-    try {
-      await recorder.stop();
-      const uri = recorder.uri;
-      setRecording(false);
-      if (!uri) {
-        setError("No recording. Try again?");
-        return;
-      }
-      setLocalUri(uri);
-      const uid = verse?.verse_uid ?? verseUid;
-      let res: ReciteResult;
-      if (competitionId) {
-        res = await uploadCompetitionAttempt(competitionId, uri, {
-          verseUid: uid, camera: cameraJson, hidden: hide >= 3 || step === "recite",
-        });
-      } else {
-        res = await uploadRecite(uri, {
-          verseUid: uid, unit, purpose, hideLevel: hide,
-        });
-      }
-      setResult(res);
-      if (competitionId && res.counted === false) {
-        const why: Record<string, string> = {
-          unclear: "Unclear recording — not counted for the leaderboard. Try again in a quieter place.",
-          text_shown: "Text was shown — not counted. Hide the words fully (or stay on Recite) and try again.",
-          no_face: "Face not seen enough — not counted. Prop the phone so the front camera sees you.",
-          two_faces: "Two faces seen — not counted. Recite alone in frame.",
-          eyes_open: "Your eyes opened — not counted for the leaderboard.",
-          old_app: "App is too old for the face check — update, then try again.",
-        };
-        setError(why[res.why_not ?? ""] ?? (res.why_not ? `Not counted (${res.why_not}).` : "Not counted for the leaderboard."));
-      }
-    } catch (e) {
-      if (e instanceof ApiError && e.message) {
-        // Surface the server's own detail: 503 "Scoring is not available yet"
-        // vs 503 "Scoring is busy. Try again." are different fixes, and 403 /
-        // 409 / 422 competition gates each name their own next step.
-        setError(e.message);
-      } else if (e instanceof ApiError && e.status === 503) setError("Scoring is busy. Try again.");
-      else if (e instanceof ApiError && e.status === 404) setError("Scoring is not available yet");
-      else if (e instanceof ApiError && e.status === 429) setError("Daily recitation time used up. Try again tomorrow.");
-      else setError("Could not score that. Try again?");
-    } finally {
-      setBusy(false);
-    }
-  }, [recorder, verse, verseUid, competitionId, cameraJson, hide, step]);
-
-  useEffect(() => () => {
-    if (localUri) void FileSystem.deleteAsync(localUri, { idempotent: true }).catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Leaving the screen stops audio and any recording.
+  useEffect(() => navigation.addListener("blur", () => {
+    player.stop();
+  }), [navigation, player]);
 
   if (!verse) {
     return (
       <View style={styles.center}>
-        <Text style={styles.title}>Learn</Text>
-        <Text style={styles.hint}>Verse not found.</Text>
+        <Text style={styles.body}>{missing ? "This verse is not available." : "Loading the verse…"}</Text>
       </View>
     );
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.body}>
-      <Text style={styles.title} accessibilityRole="header">Learn</Text>
+    <ScrollView style={{ backgroundColor: T.paper }} contentContainerStyle={styles.page} keyboardShouldPersistTaps="handled"
+      scrollEnabled={!live.recording}>
       <Text style={styles.ref}>{verse.source_ref}</Text>
-      <View style={styles.switch}>
-        {(["listen", "practise", "recite"] as const).map((s) => (
-          <Pressable
+      {!!competitionId && (
+        <Text style={styles.banner}>
+          Competition{division ? ` · ${division === "beginner" ? "Beginner" : "Standard"} division` : ""}. Only the Recite step counts; practice never does.
+        </Text>
+      )}
+      <View style={styles.tabs} accessibilityRole="tablist">
+        {(["listen", "practise", "recite"] as const).map((s, i) => (
+          <Pressable accessibilityLabel={s === "listen" ? "Step 1, listen" : s === "practise" ? "Step 2, practise" : "Step 3, recite"}
             key={s}
-            onPress={() => { setStep(s); setResult(null); }}
-            accessibilityRole="button"
-            accessibilityLabel={s}
-            accessibilityState={{ selected: step === s }}
-            style={[styles.swBtn, step === s && { backgroundColor: fill.ink }]}
+            onPress={() => go(s)}
+            disabled={live.recording}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: step === s, disabled: live.recording }}
+            style={[styles.tab, step === s && styles.tabOn]}
           >
-            <Text style={[styles.swText, step === s && { color: "#FFF8EE" }]}>{s}</Text>
+            <Text style={[styles.tabNum, step === s && styles.tabTextOn]}>{i + 1}</Text>
+            <Text style={[styles.tabText, step === s && styles.tabTextOn]}>{s === "listen" ? "Listen" : s === "practise" ? "Practise" : "Recite"}</Text>
           </Pressable>
         ))}
       </View>
 
       {step === "listen" && (
-        <View style={styles.block}>
-          {verse.chant ? (
-            <>
-              {lines.map((ln) => (
-                <Pressable
-                  key={ln.i}
-                  onPress={() => void playLine(ln.i)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Play line ${ln.i + 1}`}
-                  style={styles.lineHit}
-                >
-                  <Text style={[sanskritText(Math.max(18, sized(22))), { color: color.ink }]}>{ln.text}</Text>
-                </Pressable>
-              ))}
-              <Pressable onPress={() => void playAll()} accessibilityRole="button" accessibilityLabel="Play the whole chant" style={styles.primary}>
-                <Text style={styles.primaryText}>Play</Text>
-              </Pressable>
-              <Pressable
-                onPress={() => setLineX3((v) => !v)}
-                accessibilityRole="switch"
-                accessibilityState={{ checked: lineX3 }}
-                accessibilityLabel="Repeat each line three times"
-                style={styles.row}
-              >
-                <Text style={styles.rowText}>Line x3: {lineX3 ? "On" : "Off"}</Text>
-              </Pressable>
-              <Pressable
-                onPress={() => setSpeed((s) => (s === 1 ? 1.25 : s === 1.25 ? 0.75 : 1))}
-                accessibilityRole="button"
-                accessibilityLabel={`Speed ${speed} times`}
-                style={styles.row}
-              >
-                <Text style={styles.rowText}>Speed: {speed}x</Text>
-              </Pressable>
-            </>
-          ) : (
-            <Text style={styles.hint}>No chant yet for this verse</Text>
-          )}
-        </View>
+        <ListenStep verse={verse} lines={lines} player={player} onNext={() => go("practise")} />
       )}
-
       {step === "practise" && (
-        <View style={styles.block}>
-          <Pressable
-            onPress={() => setHide((h) => (h + 1) % 4)}
-            accessibilityRole="button"
-            accessibilityLabel={`Hide words level ${hide}`}
-            style={styles.row}
-          >
-            <Text style={styles.rowText}>Hide words: {hide}</Text>
-          </Pressable>
-          {/* Whole verse context — tap any line to practise it. */}
-          <View style={styles.verseBox} accessible accessibilityLabel={`Whole verse, ${lines.length} lines`}>
-            <Text style={styles.verseTitle}>
-              Whole verse · practising line {Math.min(lineIdx + 1, lines.length)} of {lines.length}
-            </Text>
-            {lines.map((ln) => {
-              const active = ln.i === lineIdx;
-              return (
-                <Pressable
-                  key={ln.i}
-                  onPress={() => { if (!recording) { setLineIdx(ln.i); setResult(null); } }}
-                  disabled={recording}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Practise line ${ln.i + 1}: ${ln.text}`}
-                  accessibilityState={{ selected: active }}
-                  style={[styles.verseLine, active && styles.verseLineActive]}
-                >
-                  <Text style={[sanskritText(Math.max(16, sized(18))), styles.verseLineText, active && styles.verseLineTextActive]}>
-                    {ln.text}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.practiceCard}>
-            <Text style={styles.practiceLabel}>
-              Practising line {Math.min(lineIdx + 1, lines.length)} of {lines.length}
-            </Text>
-            <Text style={[sanskritText(Math.max(18, sized(22))), { color: color.ink }]}>
-              {mask(lines[lineIdx]?.text ?? "", hide)}
-            </Text>
-          </View>
-          <Pressable onPress={() => void playLine(lineIdx)} accessibilityRole="button" accessibilityLabel="Hear this line" style={styles.row}>
-            <Text style={styles.rowText}>Hear line</Text>
-          </Pressable>
-          {countdown != null && (
-            <Text style={styles.countdown} accessibilityRole="alert" accessibilityLabel={`Starting in ${countdown}`}>
-              {countdown === 0 ? "Go" : countdown}
-            </Text>
-          )}
-          {!recording ? (
-            <Pressable onPress={() => void startRec()} accessibilityRole="button" accessibilityLabel="Record this line" style={styles.primary}>
-              <Text style={styles.primaryText}>Record</Text>
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={() => void stopAndScore(`line:${lineIdx}`, "practise")}
-              accessibilityRole="button"
-              accessibilityLabel="Stop and score"
-              style={styles.rec}
-            >
-              <Text style={styles.primaryText}>Stop ({recSecs}s)</Text>
-            </Pressable>
-          )}
-          {result && (
-            <RecitationResult
-              result={result}
-              onPlayMine={() => { if (localUri) void playClip(localUri); }}
-              onPlayLine={() => void playLine(lineIdx)}
-            />
-          )}
-          <View style={styles.navRow}>
-            <Pressable
-              onPress={() => { if (!recording) { setLineIdx((i) => Math.max(i - 1, 0)); setResult(null); } }}
-              disabled={recording || lineIdx <= 0}
-              accessibilityRole="button"
-              accessibilityLabel="Previous line"
-              accessibilityState={{ disabled: recording || lineIdx <= 0 }}
-              style={[styles.row, styles.navBtn, (recording || lineIdx <= 0) && styles.navDisabled]}
-            >
-              <Text style={styles.rowText}>Prev line</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => { if (!recording) { setLineIdx((i) => Math.min(i + 1, lines.length - 1)); setResult(null); } }}
-              disabled={recording || lineIdx >= lines.length - 1}
-              accessibilityRole="button"
-              accessibilityLabel="Next line"
-              accessibilityState={{ disabled: recording || lineIdx >= lines.length - 1 }}
-              style={[styles.row, styles.navBtn, (recording || lineIdx >= lines.length - 1) && styles.navDisabled]}
-            >
-              <Text style={styles.rowText}>Next line</Text>
-            </Pressable>
-          </View>
-        </View>
+        <PractiseStep verse={verse} lines={lines} player={player} live={live} onNext={() => go("recite")} />
       )}
-
       {step === "recite" && (
-        <View style={styles.block}>
-          <Text style={styles.hint}>Recite from memory. {lines.length} lines.</Text>
-          {competitionId || eyesOn ? (
-            <EyesClosedTest
-              onDone={(json, outcome) => {
-                setCameraJson(json);
-                if (outcome !== "closed") {
-                  setError(outcome === "nosee" ? "Face not seen. Prop the phone so the camera sees you." : "Your eyes opened. This try is not counted for the leaderboard");
-                }
-              }}
-            />
-          ) : null}
-          <Pressable
-            onPress={() => {
-              if (!consent) {
-                navigation.navigate("ContestRules" as never);
-                return;
-              }
-              setEyesOn((v) => !v);
-            }}
-            accessibilityRole="switch"
-            accessibilityState={{ checked: eyesOn }}
-            accessibilityLabel="Eyes closed test"
-            style={styles.row}
-          >
-            <Text style={styles.rowText}>Eyes-closed test: {eyesOn ? "On" : "Off"}</Text>
-          </Pressable>
-          {countdown != null && (
-            <Text style={styles.countdown} accessibilityRole="alert" accessibilityLabel={`Starting in ${countdown}`}>
-              {countdown === 0 ? "Go" : countdown}
-            </Text>
-          )}
-          {!recording ? (
-            <Pressable onPress={() => void startRec()} accessibilityRole="button" accessibilityLabel="Record the verse" style={styles.primary}>
-              <Text style={styles.primaryText}>Record</Text>
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={() => void stopAndScore("verse", "recite")}
-              accessibilityRole="button"
-              accessibilityLabel="Stop and score"
-              style={styles.rec}
-            >
-              <Text style={styles.primaryText}>Stop ({recSecs}s)</Text>
-            </Pressable>
-          )}
-          {recording && <Text style={styles.recDot}>Recording</Text>}
-          {!!error && <Text style={styles.error}>{plain(error)}</Text>}
-          {busy && <Text style={styles.hint}>Scoring</Text>}
-          {result && (
-            <RecitationResult
-              result={result}
-              onPlayMine={() => { if (localUri) void playClip(localUri); }}
-              onPlayLine={() => void playLine(0)}
-            />
-          )}
-        </View>
+        <ReciteStep
+          verse={verse}
+          lines={lines}
+          player={player}
+          live={live}
+          competitionId={competitionId}
+          division={division}
+          onBack={() => navigation.goBack()}
+        />
       )}
-      {!!error && step !== "recite" && <Text style={styles.error}>{plain(error)}</Text>}
     </ScrollView>
   );
 }
 
+type PlayerApi = ReturnType<typeof useVersePlayer>;
+type LiveApi = ReturnType<typeof useLiveRecitation>;
+
+// ── Listen ──────────────────────────────────────────────────────────────
+
+function ListenStep({ verse, lines, player, onNext }: { verse: Shloka; lines: ChantLine[]; player: PlayerApi; onNext: () => void }) {
+  const lang = useLang();
+  const [roman, setRoman] = useState(false);
+  const [x3, setX3] = useState(false);
+  const meaning = (lang === "hi" ? verse.translation_hi || verse.translation_en : verse.translation_en || verse.translation_hi) || "";
+  const iastLines = (verse.iast ?? "").split(/\n|(?<=\|\|?)\s*/).map((s) => s.trim()).filter(Boolean);
+  return (
+    <View style={styles.block}>
+      <View style={styles.verseCard}>
+        {lines.map((ln) => {
+          const on = player.line === ln.i;
+          return (
+            <Pressable
+              key={ln.i}
+              onPress={() => (on ? player.stop() : void player.playLine(ln.i))}
+              disabled={!player.available}
+              accessibilityRole="button"
+              accessibilityLabel={`${on ? "Stop" : "Play"} line ${ln.i + 1}`}
+              accessibilityState={{ selected: on }}
+              style={[styles.lineRow, on && styles.lineOn]}
+            >
+              <Text style={[sa(22), { color: T.ink }]}>{ln.text}</Text>
+            </Pressable>
+          );
+        })}
+        {roman && !!verse.iast && (
+          <Text style={styles.roman}>{iastLines.join("\n") || verse.iast}</Text>
+        )}
+        {!!meaning && <Text style={styles.meaning}>{plain(meaning)}</Text>}
+      </View>
+      {player.available ? (
+        <>
+          <Text style={styles.small}>Tap a line to hear just that line.</Text>
+          <View style={styles.row}>
+            <Pressable
+              onPress={() => (player.playing ? player.stop() : void player.playVerse(x3 ? 3 : 1))}
+              accessibilityRole="button"
+              accessibilityLabel={player.playing ? "Stop" : x3 ? "Play each line three times" : "Play the verse"}
+              style={[styles.primary, { flex: 1 }]}
+            >
+              <Text style={styles.primaryText}>{player.playing ? "Stop" : x3 ? "Play each line ×3" : "Play the verse"}</Text>
+            </Pressable>
+          </View>
+          <Toggle label="Each line three times" value={x3} onChange={(v) => { player.stop(); setX3(v); }} />
+          <View style={styles.chips} accessibilityRole="radiogroup" accessibilityLabel="Speed">
+            <Text style={styles.chipsLabel}>Speed</Text>
+            {[0.75, 1, 1.25].map((s) => (
+              <Pressable accessibilityLabel={`Speed ${s} times`}
+                key={s}
+                onPress={() => player.setSpeed(s)}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: player.speed === s }}
+                style={[styles.chip, player.speed === s && styles.chipOn]}
+              >
+                <Text style={[styles.chipText, player.speed === s && styles.chipTextOn]}>{s}×</Text>
+              </Pressable>
+            ))}
+          </View>
+        </>
+      ) : (
+        <Text style={styles.small}>No chant recording for this verse yet. You can still practise and recite it.</Text>
+      )}
+      {!!verse.iast && <Toggle label="Show Roman letters" value={roman} onChange={setRoman} />}
+      <Pressable accessibilityLabel="Next: practise" onPress={onNext} accessibilityRole="button" style={styles.secondary}>
+        <Text style={styles.secondaryText}>Next: practise →</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+// ── Practise ────────────────────────────────────────────────────────────
+
+function PractiseStep({ verse, lines, player, live, onNext }: {
+  verse: Shloka; lines: ChantLine[]; player: PlayerApi; live: LiveApi; onNext: () => void;
+}) {
+  const reduced = useReducedMotion();
+  const [unit, setUnit] = useState(0); // line index, or -1 for the whole verse
+  const [vis, setVis] = useState(0);
+  const [phase, setPhase] = useState<"ready" | "countdown" | "recording" | "scoring" | "result">("ready");
+  const [count, setCount] = useState(3);
+  const [result, setResult] = useState<ReciteResult | null>(null);
+  const [mine, setMine] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const cancelled = useRef(false);
+
+  useEffect(() => () => { cancelled.current = true; }, []);
+  useEffect(() => () => { if (mine) void FileSystem.deleteAsync(mine, { idempotent: true }).catch(() => {}); }, [mine]);
+
+  const shown = unit < 0 ? lines : lines.filter((l) => l.i === unit);
+  const expected = shown.map((l) => l.text);
+
+  const begin = async () => {
+    setError("");
+    setResult(null);
+    player.stop();
+    if (!(await live.preflight())) {
+      setError("Allow the microphone in your phone's Settings to record.");
+      return;
+    }
+    setPhase("countdown");
+    for (let n = 3; n >= 1; n--) {
+      if (cancelled.current) return;
+      setCount(n);
+      haptics.tap();
+      void playCue("tick");
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((r) => setTimeout(r, reduced ? 600 : 1000));
+    }
+    const ok = await live.start();
+    if (!ok) {
+      setPhase("ready");
+      setError("The microphone did not start. Close other apps using it and try again.");
+      return;
+    }
+    setPhase("recording");
+  };
+
+  const finish = async () => {
+    if (phase !== "recording") return;
+    setPhase("scoring");
+    haptics.press();
+    const { uri } = await live.stop();
+    if (!uri) {
+      setPhase("ready");
+      setError("Nothing was recorded. Try again.");
+      return;
+    }
+    setMine(uri);
+    try {
+      const res = await uploadRecite(uri, {
+        verseUid: verse.verse_uid ?? verse.id,
+        unit: unit < 0 ? "verse" : `line:${unit}`,
+        purpose: "practise",
+        hideLevel: vis,
+      });
+      setResult(res);
+      setPhase("result");
+    } catch (e) {
+      setError(errorText(e));
+      setPhase("ready");
+    }
+  };
+
+  const busy = phase !== "ready" && phase !== "result";
+  const visNote = VISIBILITY.find((v) => v.level === vis)?.note ?? "";
+
+  return (
+    <View style={styles.block}>
+      <Text style={styles.label}>WHAT TO PRACTISE</Text>
+      <View style={styles.chips}>
+        {lines.map((l) => (
+          <Pressable accessibilityLabel={`Practise line ${l.i + 1}`} key={l.i} disabled={busy} onPress={() => { setUnit(l.i); setResult(null); }}
+            accessibilityRole="radio" accessibilityState={{ checked: unit === l.i, disabled: busy }}
+            style={[styles.chip, unit === l.i && styles.chipOn]}>
+            <Text style={[styles.chipText, unit === l.i && styles.chipTextOn]}>Line {l.i + 1}</Text>
+          </Pressable>
+        ))}
+        <Pressable accessibilityLabel="Practise the whole verse" disabled={busy} onPress={() => { setUnit(-1); setResult(null); }}
+          accessibilityRole="radio" accessibilityState={{ checked: unit === -1, disabled: busy }}
+          style={[styles.chip, unit === -1 && styles.chipOn]}>
+          <Text style={[styles.chipText, unit === -1 && styles.chipTextOn]}>Whole verse</Text>
+        </Pressable>
+      </View>
+
+      <Text style={styles.label}>TEXT</Text>
+      <View style={styles.segment} accessibilityRole="radiogroup" accessibilityLabel="How much text to show">
+        {VISIBILITY.map((v) => (
+          <Pressable accessibilityLabel={`Text: ${v.label}`} key={v.level} disabled={busy} onPress={() => setVis(v.level)}
+            accessibilityRole="radio" accessibilityState={{ checked: vis === v.level, disabled: busy }}
+            style={[styles.segBtn, vis === v.level && styles.segOn]}>
+            <Text style={[styles.segText, vis === v.level && styles.segTextOn]}>{v.label}</Text>
+          </Pressable>
+        ))}
+      </View>
+      <Text style={styles.small}>{visNote}</Text>
+
+      <View style={[styles.verseCard, { minHeight: 96 }]}>
+        {vis >= 3 ? (
+          <Text style={styles.hiddenNote}>Hidden — {shown.length === 1 ? "one line" : `${shown.length} lines`}</Text>
+        ) : (
+          shown.map((l) => (
+            <Text key={l.i} style={[sa(22), { color: T.ink }]}>{mask(l.text, vis)}</Text>
+          ))
+        )}
+      </View>
+
+      {phase === "ready" || phase === "result" ? (
+        <View style={styles.row}>
+          {player.available && (
+            <Pressable accessibilityLabel={player.playing ? "Stop" : unit < 0 ? "Listen to the verse" : "Listen to the line"}
+              onPress={() => (player.playing ? player.stop() : unit < 0 ? void player.playVerse(1) : void player.playLine(unit))}
+              accessibilityRole="button"
+              style={[styles.secondary, { flex: 1 }]}
+            >
+              <Text style={styles.secondaryText}>{player.playing ? "Stop" : unit < 0 ? "Listen to the verse" : "Listen to the line"}</Text>
+            </Pressable>
+          )}
+          <Pressable accessibilityLabel={phase === "result" ? "Record again" : "Record"} onPress={() => void begin()} accessibilityRole="button" style={[styles.primary, { flex: 1 }]}>
+            <Text style={styles.primaryText}>{phase === "result" ? "Record again" : "Record"}</Text>
+          </Pressable>
+        </View>
+      ) : null}
+
+      {phase === "countdown" && <Countdown n={count} />}
+      {phase === "recording" && (
+        <RecordingPanel live={live} onStop={() => void finish()} hint="Recite, then tap anywhere here to stop." />
+      )}
+      {phase === "scoring" && <Text style={styles.status} accessibilityLiveRegion="polite">Scoring…</Text>}
+      {!!error && <Text style={styles.error} accessibilityRole="alert">{error}</Text>}
+
+      {phase === "result" && result && (
+        <>
+          <RecitationResult
+            result={result}
+            expected={expected}
+            onPlayMine={mine ? () => void playClip(mine) : undefined}
+            onPlayReference={player.available ? () => (unit < 0 ? void player.playVerse(1) : void player.playLine(unit)) : undefined}
+            referenceLabel={unit < 0 ? "Hear the verse" : "Hear the line"}
+          />
+          <View style={styles.row}>
+            {unit >= 0 && unit < lines.length - 1 && (
+              <Pressable accessibilityLabel="Next line" onPress={() => { setUnit(unit + 1); setResult(null); setPhase("ready"); }}
+                accessibilityRole="button" style={[styles.secondary, { flex: 1 }]}>
+                <Text style={styles.secondaryText}>Next line →</Text>
+              </Pressable>
+            )}
+            {(unit < 0 || unit >= lines.length - 1) && (
+              <Pressable accessibilityLabel="Next: recite from memory" onPress={onNext} accessibilityRole="button" style={[styles.secondary, { flex: 1 }]}>
+                <Text style={styles.secondaryText}>Next: recite from memory →</Text>
+              </Pressable>
+            )}
+          </View>
+        </>
+      )}
+    </View>
+  );
+}
+
+// ── Recite ──────────────────────────────────────────────────────────────
+
+type RecitePhase = "intro" | "rehearse" | "countdown" | "cue" | "recording" | "scoring" | "result";
+
+function ReciteStep({ verse, lines, player, live, competitionId, division, onBack }: {
+  verse: Shloka; lines: ChantLine[]; player: PlayerApi; live: LiveApi;
+  competitionId?: string; division?: Division; onBack: () => void;
+}) {
+  const reduced = useReducedMotion();
+  const ranked = !!competitionId;
+  const [eyesWanted, setEyesWanted] = useState(ranked);
+  const eyes = ranked || eyesWanted;
+  const [faceReady, setFaceReady] = useState(false);
+  const [eyesRunning, setEyesRunning] = useState(false);
+  const [rehearsed, setRehearsed] = useState<boolean | null>(null);
+  const [phase, setPhase] = useState<RecitePhase>("intro");
+  const [count, setCount] = useState(3);
+  const [result, setResult] = useState<ReciteResult | null>(null);
+  const [mine, setMine] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [cueText, setCueText] = useState("");
+  const camera = useRef<{ json: string; outcome: EyesOutcome } | null>(null);
+  const cameraWait = useRef<((v: { json: string; outcome: EyesOutcome }) => void) | null>(null);
+  const cancelled = useRef(false);
+
+  useEffect(() => {
+    void AsyncStorage.getItem(REHEARSED_KEY).then((v) => setRehearsed(v === "1")).catch(() => setRehearsed(false));
+    return () => { cancelled.current = true; };
+  }, []);
+  useEffect(() => () => { if (mine) void FileSystem.deleteAsync(mine, { idempotent: true }).catch(() => {}); }, [mine]);
+
+  const onEyesDone = useCallback((json: string, outcome: EyesOutcome) => {
+    const v = { json, outcome };
+    camera.current = v;
+    cameraWait.current?.(v);
+    cameraWait.current = null;
+  }, []);
+
+  const runSequence = async () => {
+    setPhase("countdown");
+    for (let n = 3; n >= 1; n--) {
+      if (cancelled.current) return;
+      setCount(n);
+      haptics.tap();
+      void playCue("tick");
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((r) => setTimeout(r, reduced ? 600 : 1000));
+    }
+    setPhase("cue");
+    if (eyes) {
+      setCueText("Close your eyes. Begin after the tone.");
+      await playCue("close");
+      await new Promise((r) => setTimeout(r, SETTLE_MS));
+    } else {
+      setCueText("Begin after the tone.");
+    }
+    if (cancelled.current) return;
+    await playCue("tone", 1500);
+    camera.current = null;
+    const ok = await live.start();
+    if (!ok) {
+      setPhase("intro");
+      setError("The microphone did not start. Close other apps using it and try again.");
+      return;
+    }
+    if (eyes) setEyesRunning(true);
+    haptics.press();
+    setPhase("recording");
+  };
+
+  const begin = async () => {
+    setError("");
+    setResult(null);
+    player.stop();
+    if (!(await live.preflight())) {
+      setError("Allow the microphone in your phone's Settings to record.");
+      return;
+    }
+    if (!rehearsed) {
+      setPhase("rehearse");
+      return;
+    }
+    await runSequence();
+  };
+
+  const rehearsalTapped = async () => {
+    haptics.correct();
+    setRehearsed(true);
+    void AsyncStorage.setItem(REHEARSED_KEY, "1").catch(() => {});
+    setPhase("intro");
+  };
+
+  const finish = async () => {
+    if (phase !== "recording") return;
+    setPhase("scoring");
+    // Freeze the scored interval and the eye check first, then the cues.
+    const stopping = live.stop();
+    let cam: Promise<{ json: string; outcome: EyesOutcome } | null> = Promise.resolve(null);
+    if (eyes) {
+      cam = new Promise((resolve) => {
+        cameraWait.current = resolve;
+        setTimeout(() => resolve(camera.current), 1500);
+      });
+      setEyesRunning(false);
+    }
+    const { uri } = await stopping;
+    haptics.correct();
+    void playCue(eyes ? "done" : "tone", 4000);
+    const camResult = await cam;
+    if (!uri) {
+      setPhase("intro");
+      setError("Nothing was recorded. Try again.");
+      return;
+    }
+    setMine(uri);
+    try {
+      let res: ReciteResult;
+      if (ranked) {
+        res = await uploadCompetitionAttempt(competitionId as string, uri, {
+          verseUid: verse.verse_uid ?? verse.id,
+          camera: camResult?.json ?? "{}",
+          hidden: true,
+          division,
+        });
+      } else {
+        res = await uploadRecite(uri, { verseUid: verse.verse_uid ?? verse.id, unit: "verse", purpose: "recite", hideLevel: 3 });
+      }
+      setResult(res);
+      setPhase("result");
+      if (!ranked && eyes && camResult && camResult.outcome !== "closed") {
+        setError(camResult.outcome === "nosee" ? "The camera could not see your face for most of it." : "Your eyes opened during the recitation.");
+      }
+    } catch (e) {
+      setError(errorText(e));
+      setPhase("intro");
+    }
+  };
+
+  const canStart = !eyes || faceReady;
+
+  if (phase === "rehearse") {
+    return (
+      <View style={styles.block}>
+        <Text style={styles.h2}>First, practise stopping</Text>
+        <Text style={styles.body}>
+          With your eyes closed you will not see a button. To finish, tap anywhere in the big box. Try it now.
+        </Text>
+        <Pressable onPress={() => void rehearsalTapped()} accessibilityRole="button"
+          accessibilityLabel="Rehearsal: tap anywhere here to stop" style={styles.stopArea}>
+          <Text style={styles.stopAreaText}>Tap anywhere here</Text>
+        </Pressable>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.block}>
+      {phase === "intro" && (
+        <>
+          <Text style={styles.h2}>{ranked ? "Competition recitation" : "Recite from memory"}</Text>
+          <View style={styles.steps}>
+            {[
+              "The text stays hidden while you recite.",
+              ...(eyes ? ["Prop the phone so the front camera sees your face."] : []),
+              "Tap Start. After 3, 2, 1" + (eyes ? " you will hear “Close your eyes; begin after the tone”." : " a tone sounds."),
+              "Recite the whole verse after the tone.",
+              "To finish, tap anywhere in the big box (or the Stop button).",
+            ].map((t, i) => (
+              <Text key={i} style={styles.body}>{i + 1}. {t}</Text>
+            ))}
+          </View>
+          {!ranked && (
+            <Toggle label="Eyes-closed check (camera stays on this phone)" value={eyesWanted} onChange={setEyesWanted} />
+          )}
+          {ranked && <Text style={styles.small}>Competition rule: eyes closed, text hidden. The front camera checks your eyes on this phone; no photo is sent.</Text>}
+        </>
+      )}
+
+      {/* Mounted through scoring: stopping flips `running`, and the summary
+          comes back from the camera component after that. */}
+      {eyes && phase !== "result" && (
+        <EyesClosedTest running={eyesRunning} onReady={setFaceReady} onDone={onEyesDone} />
+      )}
+
+      {phase === "intro" && (
+        <Pressable accessibilityLabel={canStart ? "Start" : "Waiting for your face in the camera"} onPress={() => void begin()} disabled={!canStart || rehearsed === null}
+          accessibilityRole="button" accessibilityState={{ disabled: !canStart }}
+          style={[styles.primary, !canStart && styles.disabled]}>
+          <Text style={styles.primaryText}>{canStart ? "Start" : "Waiting for your face in the camera"}</Text>
+        </Pressable>
+      )}
+
+      {phase === "countdown" && <Countdown n={count} />}
+      {phase === "cue" && <Text style={styles.cue} accessibilityRole="alert">{cueText}</Text>}
+      {phase === "recording" && (
+        <RecordingPanel live={live} onStop={() => void finish()} hint="Tap anywhere here to finish" big />
+      )}
+      {phase === "scoring" && (
+        <Text style={styles.status} accessibilityLiveRegion="polite">
+          {eyes ? "Finished. You can open your eyes. Scoring…" : "Scoring…"}
+        </Text>
+      )}
+      {!!error && <Text style={styles.error} accessibilityRole="alert">{error}</Text>}
+
+      {phase === "result" && result && (
+        <>
+          {ranked && (
+            <View style={[styles.verdict, result.counted ? styles.verdictOk : styles.verdictNo]}>
+              <Text style={styles.verdictTitle}>{result.counted ? "Counted for the competition" : "Not counted"}</Text>
+              {!result.counted && <Text style={styles.body}>{WHY_NOT[result.why_not ?? ""] ?? "This try did not count."}</Text>}
+              {result.counted && result.set_progress && (
+                <Text style={styles.body}>
+                  {result.piece_best ? "A new best for this verse. " : ""}
+                  {result.set_progress.submitted} of {result.set_progress.total} verses submitted
+                  {result.set_progress.complete ? ` · week total ${result.set_progress.provisional_total}` : " · the total counts once all are in"}
+                  {result.rank ? ` · rank ${result.rank}` : ""}
+                </Text>
+              )}
+            </View>
+          )}
+          <RecitationResult
+            result={result}
+            expected={lines.map((l) => l.text)}
+            onPlayMine={mine ? () => void playClip(mine) : undefined}
+            onPlayReference={player.available ? () => void player.playVerse(1) : undefined}
+          />
+          <View style={styles.row}>
+            <Pressable accessibilityLabel="Try again" onPress={() => { setResult(null); setError(""); setPhase("intro"); }}
+              accessibilityRole="button" style={[styles.secondary, { flex: 1 }]}>
+              <Text style={styles.secondaryText}>Try again</Text>
+            </Pressable>
+            {ranked && (
+              <Pressable accessibilityLabel="Back to the competition" onPress={onBack} accessibilityRole="button" style={[styles.primary, { flex: 1 }]}>
+                <Text style={styles.primaryText}>Back to the competition</Text>
+              </Pressable>
+            )}
+          </View>
+        </>
+      )}
+    </View>
+  );
+}
+
+// ── Shared pieces ───────────────────────────────────────────────────────
+
+function Countdown({ n }: { n: number }) {
+  return (
+    <View style={styles.countBox} accessible accessibilityRole="alert" accessibilityLabel={`Starting in ${n}`}>
+      <Text style={styles.countNum}>{n}</Text>
+    </View>
+  );
+}
+
+function RecordingPanel({ live, onStop, hint, big }: { live: LiveApi; onStop: () => void; hint: string; big?: boolean }) {
+  const cap = live.captionState;
+  return (
+    <View style={styles.block}>
+      <Pressable onPress={onStop} accessibilityLabel="Recording. Tap anywhere here to finish" accessibilityRole="button"
+        style={[styles.stopArea, big && { minHeight: 340 }]}>
+        <View style={styles.recRow}>
+          <View style={styles.recDot} />
+          <Text style={styles.recText}>Recording · {live.seconds} s</Text>
+        </View>
+        <View style={styles.meter}>
+          <View style={[styles.meterFill, { width: `${Math.round(Math.min(1, live.level * 1.6) * 100)}%` }]} />
+        </View>
+        <Text style={styles.stopAreaText}>{hint}</Text>
+        {cap !== "off" && (
+          <View style={styles.captionBox}>
+            <Text style={styles.captionLabel}>
+              {cap === "live" ? "ROUGH LIVE TRANSCRIPT — NOT YOUR SCORE" : cap === "connecting" ? "CONNECTING LIVE TRANSCRIPT…" : "LIVE TRANSCRIPT UNAVAILABLE — RECORDING CONTINUES"}
+            </Text>
+            {!!live.captions && <Text style={[sa(16), { color: "#E8DCC8" }]} numberOfLines={4}>{live.captions}</Text>}
+          </View>
+        )}
+      </Pressable>
+      <Pressable onPress={onStop} accessibilityRole="button" accessibilityLabel="Stop recording" style={styles.stopBtn}>
+        <Text style={styles.primaryText}>Stop</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+function Toggle({ label, value, onChange }: { label: string; value: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <Pressable onPress={() => onChange(!value)} accessibilityRole="switch" accessibilityState={{ checked: value }}
+      accessibilityLabel={label} style={styles.toggle}>
+      <View style={[styles.box, value && styles.boxOn]}>{value && <Text style={styles.tick}>✓</Text>}</View>
+      <Text style={styles.toggleText}>{label}</Text>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
-  body: { padding: 16, paddingBottom: 120, gap: 8 },
-  center: { flex: 1, alignItems: "center", justifyContent: "center" },
-  title: { fontSize: 22, fontWeight: "800", color: color.ink },
-  ref: { fontSize: 13, color: color.inkSoft },
-  hint: { fontSize: 14, color: color.inkSoft },
-  error: { fontSize: 14, color: color.badText },
-  switch: { flexDirection: "row", gap: 8 },
-  swBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderRadius: 12, borderWidth: 1.5, borderColor: "#D9C9AE" },
-  swText: { fontWeight: "700", color: color.ink, textTransform: "capitalize" },
-  block: { gap: 8 },
-  lineHit: { minHeight: 44, justifyContent: "center" },
-  primary: { minHeight: 48, alignItems: "center", justifyContent: "center", backgroundColor: color.saffronBtn, borderRadius: 12 },
-  countdown: { textAlign: "center", fontSize: 56, lineHeight: 68, fontWeight: "800", color: color.saffronText, fontVariant: ["tabular-nums"] },
-  primaryText: { color: "#fff", fontWeight: "800" },
-  row: { minHeight: 44, justifyContent: "center", paddingHorizontal: 12, borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
-  rowText: { color: color.ink, fontWeight: "600" },
-  rec: { minHeight: 48, alignItems: "center", justifyContent: "center", backgroundColor: fill.bad, borderRadius: 12 },
-  recDot: { color: fill.bad, fontWeight: "800" },
-  verseBox: { gap: 4, padding: 12, borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
-  verseTitle: { fontSize: 13, fontWeight: "700", color: color.inkSoft },
-  verseLine: { minHeight: 44, justifyContent: "center", paddingHorizontal: 8, paddingVertical: 6, borderRadius: 8, borderWidth: 1.5, borderColor: "transparent" },
-  verseLineActive: { borderColor: color.saffronBtn, backgroundColor: "#FFF8EE" },
-  verseLineText: { color: color.inkSoft },
-  verseLineTextActive: { color: color.ink },
-  practiceCard: { gap: 4, padding: 12, borderRadius: 12, backgroundColor: "#FFF8EE", borderWidth: 1.5, borderColor: "#D9C9AE" },
-  practiceLabel: { fontSize: 13, fontWeight: "700", color: color.inkSoft },
-  navRow: { flexDirection: "row", gap: 8 },
-  navBtn: { flex: 1, alignItems: "center" },
-  navDisabled: { opacity: 0.45 },
+  page: { padding: 16, paddingBottom: 120, gap: 12 },
+  center: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: T.paper, padding: 24 },
+  ref: { ...ui("semibold"), fontSize: 14, color: T.ink2 },
+  banner: { ...ui("medium"), fontSize: 14, lineHeight: 20, color: T.ink, padding: 10, backgroundColor: T.surface, borderLeftWidth: 3, borderLeftColor: T.action },
+  tabs: { flexDirection: "row", borderBottomWidth: 1, borderBottomColor: T.line },
+  tab: { flex: 1, minHeight: 48, flexDirection: "row", gap: 6, alignItems: "center", justifyContent: "center", borderBottomWidth: 3, borderBottomColor: "transparent", marginBottom: -1 },
+  tabOn: { borderBottomColor: T.action },
+  tabNum: { ...ui("bold"), fontSize: 13, color: T.ink3 },
+  tabText: { ...ui("medium"), fontSize: 16, color: T.ink3 },
+  tabTextOn: { ...ui("semibold"), color: T.ink },
+  block: { gap: 10 },
+  h2: { ...ui("bold"), fontSize: 20, color: T.ink },
+  body: { ...ui("regular"), fontSize: 15, lineHeight: 22, color: T.ink },
+  small: { ...ui("regular"), fontSize: 13, lineHeight: 19, color: T.ink2 },
+  label: { ...ui("bold"), fontSize: 12, letterSpacing: 1.2, color: T.ink3, marginTop: 4 },
+  verseCard: { backgroundColor: T.surface, borderWidth: 1, borderColor: T.line, padding: 12, gap: 4 },
+  lineRow: { minHeight: 48, justifyContent: "center", paddingHorizontal: 8, borderLeftWidth: 3, borderLeftColor: "transparent" },
+  lineOn: { borderLeftColor: T.action, backgroundColor: "#FBEFE3" },
+  roman: { ...ui("regular"), fontSize: 15, lineHeight: 22, fontStyle: "italic", color: T.ink2, marginTop: 6 },
+  meaning: { ...ui("regular"), fontSize: 15, lineHeight: 22, color: T.ink2, marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: T.line },
+  hiddenNote: { ...ui("medium"), fontSize: 15, color: T.ink3, textAlign: "center", paddingVertical: 24 },
+  row: { flexDirection: "row", gap: 8 },
+  primary: { minHeight: 52, alignItems: "center", justifyContent: "center", backgroundColor: T.action, paddingHorizontal: 16 },
+  primaryText: { ...ui("bold"), fontSize: 16, color: T.white },
+  secondary: { minHeight: 52, alignItems: "center", justifyContent: "center", borderWidth: 1.5, borderColor: T.ink, paddingHorizontal: 12 },
+  secondaryText: { ...ui("semibold"), fontSize: 15, color: T.ink, textAlign: "center" },
+  disabled: { backgroundColor: T.muted },
+  chips: { flexDirection: "row", flexWrap: "wrap", gap: 8, alignItems: "center" },
+  chipsLabel: { ...ui("semibold"), fontSize: 14, color: T.ink2, marginRight: 4 },
+  chip: { minHeight: 44, minWidth: 52, paddingHorizontal: 12, alignItems: "center", justifyContent: "center", borderWidth: 1.5, borderColor: T.lineStrong },
+  chipOn: { borderColor: T.ink, backgroundColor: T.ink },
+  chipText: { ...ui("semibold"), fontSize: 14, color: T.ink },
+  chipTextOn: { color: T.paper },
+  segment: { flexDirection: "row", borderWidth: 1.5, borderColor: T.ink },
+  segBtn: { flex: 1, minHeight: 46, alignItems: "center", justifyContent: "center" },
+  segOn: { backgroundColor: T.ink },
+  segText: { ...ui("semibold"), fontSize: 14, color: T.ink },
+  segTextOn: { color: T.paper },
+  steps: { gap: 4 },
+  toggle: { flexDirection: "row", alignItems: "center", gap: 10, minHeight: 48 },
+  box: { width: 24, height: 24, borderWidth: 2, borderColor: T.ink, alignItems: "center", justifyContent: "center" },
+  boxOn: { backgroundColor: T.ink },
+  tick: { color: T.paper, fontSize: 15, fontWeight: "800" },
+  toggleText: { ...ui("medium"), fontSize: 15, color: T.ink, flexShrink: 1 },
+  countBox: { minHeight: 200, alignItems: "center", justifyContent: "center", backgroundColor: T.surface, borderWidth: 1, borderColor: T.line },
+  countNum: { ...ui("bold"), fontSize: 96, lineHeight: 112, color: T.action, fontVariant: ["tabular-nums"] },
+  cue: { ...ui("bold"), fontSize: 22, lineHeight: 30, color: T.ink, textAlign: "center", paddingVertical: 48 },
+  stopArea: { minHeight: 240, padding: 16, gap: 12, justifyContent: "center", backgroundColor: "#2A2019" },
+  stopAreaText: { ...ui("bold"), fontSize: 20, color: "#FFF8EE", textAlign: "center" },
+  recRow: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
+  recDot: { width: 12, height: 12, borderRadius: 6, backgroundColor: "#E5533D" },
+  recText: { ...ui("semibold"), fontSize: 15, color: "#FFF8EE", fontVariant: ["tabular-nums"] },
+  meter: { height: 6, backgroundColor: "rgba(255,248,238,0.18)" },
+  meterFill: { height: 6, backgroundColor: "#F2C879" },
+  captionBox: { gap: 4, paddingTop: 8, borderTopWidth: 1, borderTopColor: "rgba(255,248,238,0.22)" },
+  captionLabel: { ...ui("bold"), fontSize: 11, letterSpacing: 1, color: "#CDBFAA" },
+  stopBtn: { minHeight: 52, alignItems: "center", justifyContent: "center", backgroundColor: T.wrong },
+  status: { ...ui("semibold"), fontSize: 16, color: T.ink, textAlign: "center", paddingVertical: 16 },
+  error: { ...ui("medium"), fontSize: 15, lineHeight: 21, color: T.wrongInk },
+  verdict: { padding: 12, gap: 4, borderLeftWidth: 4 },
+  verdictOk: { backgroundColor: T.doneBg, borderLeftColor: T.done },
+  verdictNo: { backgroundColor: T.wrongBg, borderLeftColor: T.wrong },
+  verdictTitle: { ...ui("bold"), fontSize: 16, color: T.ink },
 });

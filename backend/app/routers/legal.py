@@ -5,8 +5,12 @@ deploy/cloudflare/legal-site, and the app's Privacy screen shows the same page.
 
 Every claim is checked against the code, not borrowed boilerplate:
 - audio is not retained after transcription (routers/speech.py,
-  retain_raw_audio=False); a practice recitation is scored and not kept
-  (routers/recite.py stores only the result in ReciteAttempt);
+  retain_raw_audio=False); a practice recitation is transcribed by Sarvam
+  (SCORER_URL=sarvam, services/scorer_client.py), its pauses and pace are
+  measured on our server (services/recite_timing.py), and it is not kept
+  (routers/recite.py stores only the result in ReciteAttempt); while
+  recording, live captions stream the audio to Sarvam through our server
+  (services/recite_stream.py), which keeps nothing but a seconds count;
 - drawn handwriting never leaves the device, and a photo the learner chooses to
   check is sent to Sarvam to be read and is not kept on our side (routers/writing.py
   photo-check; models.WritingAttempt stores only the recognised text);
@@ -19,8 +23,8 @@ Every claim is checked against the code, not borrowed boilerplate:
   is pinned in tests/test_legal_pages.py; the sentence on this page depends on it);
 - competitions (routers/competitions.py): sign-in, public name, 18+, rules and
   recording consent are stored with the time (models.LearnerPublic); the best
-  counted recording is kept privately and purged 30 days after the results
-  (services/competitions.purge); the camera summary is four ratios and an app
+  counted recording of each verse is kept privately and purged 30 days after
+  the results (services/competitions.purge, competition_sets.entry_audio_keys); the camera summary is four ratios and an app
   version (the phone deletes each frame after the on-device face check,
   components/recite/EyesClosedTest.tsx); certificates are public pages;
 - deletion covers every learner-owned table (routers/me.learner_owned_models),
@@ -37,7 +41,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "10 October 2026"
+UPDATED = "14 October 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -110,20 +114,22 @@ from them, are sent with that question; we use them for that answer and don't st
 the app's books that fit a question, the question is also sent to Google's embedding model. A short,
 general question (200 characters or fewer, with no personal details) and its answer may be stored without
 any account details and shown to other learners who ask the same thing.</li>
-<li><strong>Reciting a verse.</strong> When you practise reciting a verse, the recording is sent to the
-scoring server we run, which marks it syllable by syllable. It is not sent to Sarvam AI or to Google's AI
-models, and we don't keep the recording. We keep the result: the score, which syllables were right or
-wrong, how long it was, and when the verse is next due for review.</li>
+<li><strong>Reciting a verse.</strong> While you recite, the sound goes through our server to Sarvam AI,
+which turns it into the rough text shown on screen as you speak. When you stop, the whole recording is sent
+to Sarvam AI to be turned into text, and our server marks that text syllable by syllable and measures the
+pauses and pace from the recording. It is not sent to Google's AI models, and we don't keep a practice
+recording. We keep the result: the score and its parts, which syllables were right or wrong, how long it
+was, and when the verse is next due for review.</li>
 <li><strong>Competitions.</strong> Entering is optional and free, and only for people aged 18 or over who
 sign in with Google or Apple. To enter you choose a public name, say that you are 18 or over, accept the
 rules and agree to be recorded; we keep the name, each of those confirmations with the time, and the version
 of the rules. Your public name and score are shown to other learners on the leaderboard, and on
-certificates, which anyone with the link can open. For each attempt the recording goes to our scoring
-server, which marks it and also compares it with the chant to see whether it is a playback. The front camera
+certificates, which anyone with the link can open. Each attempt is scored the same way as
+a practice recitation (see "Reciting a verse"). The front camera
 checks that your eyes are closed: each picture is checked on your phone and deleted at once, and no picture
 leaves it. Only a few totals are sent and kept with the attempt: the share of the time a face was seen,
 your eyes were closed, a second face was seen and your mouth was moving, with the app version. We keep your
-best counted recording in private storage until 30 days after the results, so entries can be checked, then
+best counted recording of each verse in private storage until 30 days after the results, so entries can be checked, then
 delete it; we may listen to it to check an entry. If you win a prize, we will ask you for the details needed
 to send it and use them only for that.</li>
 <li><strong>Handwriting.</strong> Letters you draw on the screen are read on your device. Only the
@@ -156,8 +162,9 @@ you across other apps and websites.</p>
 
 <h2>Who processes data for us</h2>
 <ul>
-<li><strong>Sarvam AI</strong> — speech-to-text, text-to-speech, the tutor's language model, and reading
-photos of your handwriting when you choose to check one.</li>
+<li><strong>Sarvam AI</strong> — speech-to-text (including recitations, live and after you stop),
+text-to-speech, the tutor's language model, and reading photos of your handwriting when you choose to check
+one.</li>
 <li><strong>Google (Gemini)</strong> — answers your questions in Ask and turns them into numbers to find
 matching verses. Some questions go through Google's free Gemini service, whose terms let Google read what
 is sent and use it to improve its products. A request with birth or match details never uses that service.
@@ -166,8 +173,6 @@ Please don't put personal details in a question, or attach a screen that shows t
 <li><strong>Cloudflare</strong> — stores and delivers the lesson and chant audio files, and routes requests
 for this page.</li>
 <li><strong>Supabase</strong> — hosts our database.</li>
-<li><strong>Our scoring server</strong> — marks recitations (see "Reciting a verse" and "Competitions").
-It is run for us and is not part of Sarvam AI or Google's AI services.</li>
 <li><strong>Google Sign-In and Sign in with Apple</strong> — only if you choose to sign in with them.</li>
 <li><strong>YouTube</strong> — lesson videos play in YouTube's embedded player. When you play one, YouTube's
 Terms of Service and Google's Privacy Policy apply.</li>

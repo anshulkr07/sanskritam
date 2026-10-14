@@ -1,0 +1,250 @@
+import asyncio
+import base64
+import contextlib
+import json
+from urllib.parse import urlencode
+
+from app.config import settings
+from .config import LabConfig
+from .providers import SpeechOutput, connect_ws, gemini_client, gemini_tokens, live_config, sarvam_tokens
+from .sanskrit_phonetics import take_clauses
+
+
+async def cancel(task):
+    if task:
+        task.cancel()
+        with contextlib.suppress(asyncio.CancelledError, Exception):
+            await task
+
+
+class VoicePipelineSession:
+    """Session interface shared by composed and native audio strategies."""
+    def __init__(self, config: LabConfig, send, meter):
+        self.config, self.send, self.meter = config, send, meter
+        self.history = []
+        self.receiver = None
+        self.turn = None
+        self.upstream = None
+        self.tts = SpeechOutput()
+
+    async def start(self):
+        if not settings.sarvam_api_key:
+            raise RuntimeError("Configure SARVAM_API_KEY for this pipeline.")
+        if self.config.pipeline == 4:
+            client = gemini_client()
+            await client.aio.aclose()
+        if self.config.pipeline == 2:
+            if self.config.open_provider == "edge_tts_prosody":
+                import edge_tts  # noqa: F401 — preflight optional dependency
+            elif not (settings.voice_lab_parler_url or settings.voice_lab_parler_space):
+                raise RuntimeError("Set VOICE_LAB_PARLER_SPACE or VOICE_LAB_PARLER_URL to use Indic-Parler.")
+            elif settings.voice_lab_parler_space:
+                from .indic_parler import validate_space_id
+                validate_space_id(settings.voice_lab_parler_space)
+                if not settings.hf_token:
+                    raise RuntimeError("Set HF_TOKEN to use your signed-in Hugging Face GPU quota.")
+        query = {"language-code": "sa-IN", "model": settings.sarvam_stt_model,
+                 "mode": "transcribe", "sample_rate": 16000, "input_audio_codec": "pcm_s16le",
+                 "high_vad_sensitivity": "true", "vad_signals": "true", "flush_signal": "true"}
+        endpoint = settings.sarvam_realtime_url or "wss://api.sarvam.ai/speech-to-text/ws"
+        try:
+            self.upstream = await connect_ws(endpoint + "?" + urlencode(query))
+        except Exception as exc:
+            status = getattr(getattr(exc, "response", None), "status_code", getattr(exc, "status_code", None))
+            if query["model"] != "saaras:v4" or status not in (400, 404, 422):
+                raise
+            query["model"] = "saaras:v3"
+            self.upstream = await connect_ws(endpoint + "?" + urlencode(query))
+            await self.send({"type": "notice", "message": "Saaras v4 unavailable; using Saaras v3 for this call."})
+        self.receiver = asyncio.create_task(self.listen())
+
+    async def listen(self):
+        try:
+            async for raw in self.upstream:
+                msg = json.loads(raw)
+                data = msg.get("data") or {}
+                if msg.get("type") == "events" and data.get("signal_type") == "START_SPEECH":
+                    await self.interrupt()
+                elif msg.get("type") == "data" and data.get("transcript", "").strip():
+                    text = data["transcript"].strip()
+                    await self.send({"type": "transcript", "role": "user", "text": text, "final": True})
+                    await self.text(text)
+                elif msg.get("type") == "error":
+                    raise RuntimeError("Speech recognition rejected the session configuration.")
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            await self.send({"type": "fatal", "message": "Speech provider disconnected. End the call and reconnect."})
+
+    async def audio(self, pcm):
+        await self.upstream.send(json.dumps({"audio": {"data": base64.b64encode(pcm).decode(),
+                                                       "sample_rate": "16000", "encoding": "audio/wav"}}))
+
+    async def end_audio(self):
+        await self.upstream.send(json.dumps({"type": "flush"}))
+
+    async def interrupt(self):
+        await cancel(self.turn)
+        self.turn = None
+        await self.tts.close()  # discard old provider audio, including buffered chunks
+        await self.send({"type": "interrupted"})
+
+    async def text(self, text):
+        await self.interrupt()
+        self.turn = asyncio.create_task(self.respond(text))
+
+    async def update(self, config):
+        # Updates apply atomically between utterances; cancel the previous turn.
+        await self.interrupt()
+        self.config = config
+
+    def tokens(self, config):
+        return sarvam_tokens(config, self.history)
+
+    async def respond(self, text):
+        c = self.config.model_copy()
+        queue = asyncio.Queue(maxsize=16)
+        first = asyncio.Event()
+        speech = filler = None
+        response = ""
+        try:
+            await self.meter("llm_calls", 1)
+            if c.pipeline == 4:
+                # Conservative sandbox reservation; includes search/reasoning.
+                await self.meter("gemini_inr", 1)
+            self.history.append({"role": "user", "content": text})
+            self.history = self.history[-16:]
+
+            async def speak():
+                while True:
+                    clause = await queue.get()
+                    if clause is None:
+                        return
+                    await self.meter("tts_chars", len(clause))
+                    await self.tts.speak(clause, c, self.send)
+
+            async def fill():
+                try:
+                    await asyncio.wait_for(first.wait(), 0.35)
+                except asyncio.TimeoutError:
+                    await queue.put("एकं क्षणम्, अहं विचारयामि।")
+
+            speech = asyncio.create_task(speak())
+            if c.pipeline == 4 and c.filler_phrases and (c.thinking_budget or c.web_search):
+                filler = asyncio.create_task(fill())
+            pending = ""
+            async for token in self.tokens(c):
+                first.set()
+                response += token
+                pending += token
+                await self.send({"type": "transcript", "role": "assistant", "text": token, "final": False})
+                clauses, pending = take_clauses(pending)
+                for clause in clauses:
+                    if speech.done():
+                        await speech
+                    await asyncio.wait_for(queue.put(clause), 35)
+            clauses, _ = take_clauses(pending, final=True)
+            for clause in clauses:
+                if speech.done():
+                    await speech
+                await asyncio.wait_for(queue.put(clause), 35)
+            await cancel(filler)
+            if speech.done():
+                await speech
+            else:
+                await asyncio.wait_for(queue.put(None), 35)
+                await speech
+            self.history.append({"role": "assistant", "content": response})
+            await self.send({"type": "turn_complete"})
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:
+            await self.tts.close()
+            await self.send({"type": "interrupted"})
+            message = str(exc) if isinstance(exc, RuntimeError) else "Provider request failed. Check the selected model, voice and server configuration."
+            await self.send({"type": "error", "message": message})
+        finally:
+            await cancel(filler)
+            await cancel(speech)
+
+    async def close(self):
+        await cancel(self.receiver)
+        await cancel(self.turn)
+        await self.tts.close()
+        if self.upstream:
+            await self.upstream.close()
+
+
+class PureSarvamSession(VoicePipelineSession):
+    pass
+
+
+class OpenSanskritSession(VoicePipelineSession):
+    pass
+
+
+class HybridSession(VoicePipelineSession):
+    def tokens(self, config):
+        return gemini_tokens(config, self.history)
+
+
+class GeminiNativeSession(VoicePipelineSession):
+    async def start(self):
+        self.client = gemini_client()
+        self.connection = self.client.aio.live.connect(model=self.config.live_model, config=live_config(self.config))
+        self.upstream = await self.connection.__aenter__()
+        self.receiver = asyncio.create_task(self.listen())
+
+    async def listen(self):
+        try:
+            while True:
+                async for response in self.upstream.receive():
+                    content = response.server_content
+                    if not content:
+                        continue
+                    if content.interrupted:
+                        await self.send({"type": "interrupted"})
+                    for role, transcript in (("user", content.input_transcription), ("assistant", content.output_transcription)):
+                        if transcript and transcript.text:
+                            await self.send({"type": "transcript", "role": role, "text": transcript.text, "final": False})
+                    if content.model_turn:
+                        for part in content.model_turn.parts:
+                            if part.inline_data and part.inline_data.data:
+                                await self.send({"type": "audio", "codec": "pcm", "sample_rate": 24000,
+                                                 "data": base64.b64encode(part.inline_data.data).decode()})
+                    if content.turn_complete:
+                        await self.meter("llm_calls", 1)
+                        await self.send({"type": "turn_complete"})
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            await self.send({"type": "fatal", "message": "Gemini Live disconnected. End the call and reconnect."})
+
+    async def audio(self, pcm):
+        from google.genai import types
+        await self.upstream.send_realtime_input(audio=types.Blob(data=pcm, mime_type="audio/pcm;rate=16000"))
+
+    async def end_audio(self):
+        await self.upstream.send_realtime_input(audio_stream_end=True)
+
+    async def text(self, text):
+        await self.upstream.send_client_content(turns={"role": "user", "parts": [{"text": text}]}, turn_complete=True)
+
+    async def interrupt(self):
+        await self.upstream.send_client_content(turns={"role": "user", "parts": [{"text": "Pause and listen to me."}]}, turn_complete=True)
+        await self.send({"type": "interrupted"})
+
+    async def update(self, config):
+        from .config import instruction
+        self.config = config
+        await self.upstream.send_client_content(turns={"role": "user", "parts": [{"text": "Voice direction for subsequent replies: " + instruction(config)}]}, turn_complete=False)
+
+    async def close(self):
+        await cancel(self.receiver)
+        if getattr(self, "upstream", None):
+            await self.connection.__aexit__(None, None, None)
+        if getattr(self, "client", None):
+            await self.client.aio.aclose()
+
+
+STRATEGIES = {1: PureSarvamSession, 2: OpenSanskritSession, 3: GeminiNativeSession, 4: HybridSession}

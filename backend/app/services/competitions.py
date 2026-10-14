@@ -5,6 +5,7 @@ All functions take now (UTC) so tests can move time. Idempotent.
 
 from __future__ import annotations
 
+import logging
 import secrets
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -22,6 +23,11 @@ from app.models import (
     VerseAudio,
 )
 from app.services.chant_text import verse_uid as _uid
+
+logger = logging.getLogger("shabd.competitions")
+
+# Rules the twice-weekly single-verse events were run under.
+LEGACY_EVENT_RULES = "2026-10-1"
 
 _KIND_WEEKEND = "weekend"
 _KIND_MIDWEEK = "midweek"
@@ -117,7 +123,7 @@ def ensure_next(db: Session, now: datetime) -> int:
                     continue
                 db.add(Competition(slug=slug, kind=k, opens_at=o_u, closes_at=c_u,
                                    results_at=r_u, pieces=[piece], status="scheduled",
-                                   rules_version=settings.competition_rules_version))
+                                   rules_version=LEGACY_EVENT_RULES))
                 made += 1
         if delta_days == 0:
             # Also ensure the NEXT window (step past this window's close).
@@ -130,7 +136,7 @@ def ensure_next(db: Session, now: datetime) -> int:
                 if piece is not None:
                     db.add(Competition(slug=slug, kind=kind2, opens_at=o_u, closes_at=c_u,
                                        results_at=r_u, pieces=[piece], status="scheduled",
-                                       rules_version=settings.competition_rules_version))
+                                       rules_version=LEGACY_EVENT_RULES))
                     made += 1
     db.flush()
     return made
@@ -242,6 +248,19 @@ def month_end(db: Session, now: datetime) -> int:
             continue
         if db.query(MonthlyWinner).filter(MonthlyWinner.month == m).first() is not None:
             continue
+        from app.services.competition_sets import month_has_sets, monthly_winner
+        if month_has_sets(db, m):
+            # Weekly set rules: the prize follows the Standard monthly table.
+            top = monthly_winner(db, m)
+            if top is None:
+                continue
+            db.add(MonthlyWinner(month=m, learner_id=top["learner_id"], public_name=top["name"],
+                                 wins=top["events_complete"], claim_code=_cert_code()))
+            db.add(Certificate(code=_cert_code(), kind="monthly", competition_id=None,
+                               month=m, learner_id=top["learner_id"], rank=1,
+                               public_name=top["name"], piece_ref="sets:standard"))
+            made += 1
+            continue
         # Count final ranks in that month.
         wins: dict[str, dict] = {}
         first_win_at: dict[str, datetime] = {}
@@ -290,26 +309,33 @@ def purge(db: Session, now: datetime) -> int:
         store = get_storage()
     except Exception:
         store = None
-    rows = db.query(CompetitionEntry).filter(CompetitionEntry.audio_key.is_not(None)).all()
+    from app.services.competition_sets import drop_piece_audio, entry_audio_keys
     comp_by_id = {c.id: c for c in db.query(Competition).all()}
-    for e in rows:
+    for e in db.query(CompetitionEntry).all():
+        keys = entry_audio_keys(e)
+        if not keys:
+            continue
         c = comp_by_id.get(e.competition_id)
         if c is None or c.results_at is None:
             continue
         if _as_aware(c.results_at) < cutoff:
-            if store is not None and e.audio_key:
-                try:
-                    store.delete_private(e.audio_key)
-                except Exception:
-                    pass
+            for k in keys:
+                if store is not None:
+                    try:
+                        store.delete_private(k)
+                    except Exception:
+                        pass
             e.audio_key = None
+            drop_piece_audio(e)
             n += 1
     db.flush()
     return n
 
 
 def tick(db: Session, now: datetime) -> dict:
-    made = ensure_next(db, now)
+    # The twice-weekly single-verse events stop at the cut-over to weekly
+    # sets; events already scheduled or open run to their end unchanged.
+    made = ensure_next(db, now) if settings.competition_legacy_events else 0
     try:
         from app.services.competition_sets import ensure_weekly_sets
         sets_made = ensure_weekly_sets(db, now)

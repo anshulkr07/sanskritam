@@ -146,6 +146,21 @@ def list_shlokas(
     return [_shloka_response(s, cmap) for s in rows]
 
 
+@router.get("/shlokas/uid/{verse_uid}", response_model=ShlokaResponse)
+def get_shloka_by_uid(
+    verse_uid: str,
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    """One verse by its verse_uid, from any book (paged books included), for
+    the Learn screen when a competition or a book links a verse that the
+    classic list does not carry."""
+    row = db.query(Shloka).filter(Shloka.verse_uid == verse_uid).first()
+    if row is None:
+        raise HTTPException(status_code=404, detail="No such verse.")
+    return _shloka_response(row, _chant_map(db, [verse_uid]))
+
+
 @router.get("/shlokas/today", response_model=ShlokaResponse)
 def get_today_shloka(
     learner: Learner = Depends(require_learner),

@@ -347,5 +347,98 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
   }
 }
 
+
+// ── pcm: resample, WAV, base64 (live recitation stream) ──────────────────
+{
+  const P = loadTs(resolve(here, "../src/recite/pcm.ts"));
+  const s48 = new Int16Array(4800).map((_, i) => Math.round(1000 * Math.sin(i / 10)));
+  const r = P.resampleTo16k(s48, 48000);
+  check(r.length === 1600, "48 kHz -> 16 kHz keeps duration", String(r.length));
+  check(P.resampleTo16k(s48, 16000) === s48, "16 kHz input is passed through");
+  check(P.firstChannel(new Int16Array([1, 9, 2, 9, 3, 9]), 2).join(",") === "1,2,3", "first channel of stereo");
+  const wav = P.buildWav([new Int16Array([1, -1]), new Int16Array([256])]);
+  const dv = new DataView(wav.buffer);
+  check(wav.length === 44 + 6, "WAV size = header + samples");
+  check(String.fromCharCode(...wav.slice(0, 4)) === "RIFF" && String.fromCharCode(...wav.slice(8, 12)) === "WAVE", "RIFF/WAVE tags");
+  check(dv.getUint32(24, true) === 16000 && dv.getUint16(22, true) === 1 && dv.getUint16(34, true) === 16, "16 kHz mono 16-bit header");
+  check(dv.getUint32(40, true) === 6 && dv.getInt16(44, true) === 1 && dv.getInt16(46, true) === -1, "data chunk carries the samples");
+  for (const n of [0, 1, 2, 3, 4, 5, 100, 12289]) {
+    const bytes = new Uint8Array(n).map((_, i) => (i * 37 + 11) & 255);
+    check(P.toBase64(bytes) === Buffer.from(bytes).toString("base64"), `base64 of ${n} bytes`);
+  }
+  check(P.level(new Int16Array(10)) === 0 && P.level(new Int16Array(10).fill(32767)) === 1, "level 0..1");
+  check(P.joinCaptions([" a ", "", "b"]) === "a b", "captions join for display");
+}
+
+// ── versePlayer: one player, lines end on playback position, not timers ──
+{
+  const V = loadTs(resolve(here, "../src/recite/versePlayer.ts"));
+  const lines = [
+    { i: 0, text: "a", kind: "verse", start_ms: 200, end_ms: 1000 },
+    { i: 1, text: "b", kind: "verse", start_ms: 1500, end_ms: 2500 },
+  ];
+  function fakePlayer(url) {
+    const p = {
+      url, t: 0, playing: false, rate: 1, removed: false, listeners: [], plays: 0,
+      play() { p.playing = true; p.plays++; },
+      pause() { p.playing = false; },
+      seekTo(s) { p.t = s; },
+      setPlaybackRate(r) { p.rate = r; },
+      addListener(_e, fn) { p.listeners.push(fn); return { remove() { p.listeners = p.listeners.filter((x) => x !== fn); } }; },
+      remove() { p.removed = true; },
+      tick(sec) { p.t = sec; for (const fn of [...p.listeners]) fn({ currentTime: sec, isLoaded: true }); },
+      finish() { for (const fn of [...p.listeners]) fn({ currentTime: p.t, didJustFinish: true }); },
+    };
+    return p;
+  }
+  const flush = () => new Promise((r) => setTimeout(r, 0));
+  const made = [];
+  const seen = [];
+  const host = { create: (u) => { const p = fakePlayer(u); made.push(p); return p; }, onLine: (i) => seen.push(i), onPlaying: () => {} };
+  const vp = new V.VersePlayer(host, lines);
+  vp.speed = 1.25;
+
+  const one = vp.playLine("u.m4a", 1);
+  await flush();
+  const p = made[0];
+  check(p.t === 1.5 && p.playing && p.rate === 1.25, "line seeks to its start at the chosen speed");
+  p.tick(2.0);
+  check(p.playing, "still playing inside the line");
+  p.tick(2.65);
+  check(!p.playing && (await one) === true, "pauses once playback passes the line end");
+
+  // ×3: each repeat starts only after the previous one ended (no sleeps).
+  const three = vp.playVerse("u.m4a", 3);
+  await flush();
+  check(made.length === 1, "the same player is reused");
+  let plays = p.plays;
+  p.tick(0.9);
+  await flush();
+  check(p.plays === plays, "no restart before the line has ended");
+  for (let k = 0; k < 6; k++) {
+    const ln = lines[Math.floor(k / 3)];
+    p.tick(ln.end_ms / 1000 + 0.2);
+    // eslint-disable-next-line no-await-in-loop
+    await flush(); await flush();
+  }
+  check((await three) === true && p.plays === plays + 5, "each line three times, moved on by playback events", `${p.plays - plays}`);
+
+  // Whole verse straight through lights lines by position; stop resolves false.
+  seen.length = 0;
+  const whole = vp.playVerse("u.m4a", 1);
+  await flush();
+  p.tick(0.5); p.tick(1.2); p.tick(1.7);
+  check(seen.includes(0) && seen.includes(1), "lines light as the verse plays");
+  vp.stop();
+  check(!p.playing && (await new Promise((r) => setTimeout(() => r(whole), 250)).then((x) => x)) === false, "stop really stops and the play reports it");
+
+  // A new URL replaces (and frees) the old player.
+  void vp.playLine("other.m4a", 0);
+  await flush();
+  check(made.length === 2 && made[0].removed, "a new verse frees the old player");
+  vp.release();
+  check(made[1].removed, "release frees the player");
+}
+
 console.log(`\n  recite: ${passed} passed, ${failed} failed\n`);
 if (failed) process.exit(1);

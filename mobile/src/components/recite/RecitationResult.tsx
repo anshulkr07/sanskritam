@@ -1,131 +1,183 @@
-// RecitationResult: percent, counts, akshara columns, tips.
+// RecitationResult (handover_games_daily_multiplayer §8): the total, four
+// component bars (words 60, order 20, flow 15, pace 5), one or two specific
+// suggestions, the expected text against what was heard, and replay of the
+// learner's recording and of the reference. A part the server could not
+// measure shows "not measured", never a free full score.
 
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-import type { ReciteResult } from "../../api/client";
-import { toDisplay } from "../../recite/bands";
-import { color, fill } from "../../theme";
+import type { ReciteComponents, ReciteResult } from "../../api/client";
+import { T, sa, ui } from "../../read/look";
 import { plain } from "../../utils/text";
 
-const SYM = { ok: "✓", fix: "✗", unclear: "?" } as const;
-const SYM_COLOR = { ok: fill.ok, fix: fill.bad, unclear: "#2F4677" } as const;
-
-// Rubric v2 component bars (handover_games_daily_multiplayer §8). Missing
-// components render as explicitly unavailable, never as a free full score.
-const COMPONENT_LABELS: { key: keyof ReciteComponents; label: string; weight: number }[] = [
-  { key: "content", label: "Words", weight: 60 },
-  { key: "sequence", label: "Order", weight: 20 },
-  { key: "continuity", label: "Flow", weight: 15 },
-  { key: "rhythm", label: "Pace", weight: 5 },
+const PARTS: { key: keyof ReciteComponents; label: string; weight: number; what: string }[] = [
+  { key: "content", label: "Words", weight: 60, what: "syllables you said that the verse has" },
+  { key: "sequence", label: "Order", weight: 20, what: "words in the verse's order" },
+  { key: "continuity", label: "Flow", weight: 15, what: "no long pauses inside the verse" },
+  { key: "rhythm", label: "Pace", weight: 5, what: "a steady reciting pace" },
 ];
 
-interface ReciteComponents {
-  content: number; sequence: number; continuity: number | null; rhythm: number | null;
-}
+const BAND_COLOR = { ok: T.doneInk, fix: T.wrongInk, unclear: T.ink3 } as const;
 
-function ComponentBars({ components }: { components: ReciteComponents }) {
-  return (
-    <View style={styles.components} accessibilityLabel="Score components">
-      {COMPONENT_LABELS.map(({ key, label, weight }) => {
-        const v = components[key];
-        return (
-          <View key={key} style={styles.compRow}>
-            <Text style={styles.compLabel}>{label}</Text>
-            <View style={styles.compTrack}>
-              <View style={[styles.compFill, {
-                width: `${v == null ? 0 : Math.round((v / weight) * 100)}%`,
-                opacity: v == null ? 0.25 : 1,
-              }]} />
-            </View>
-            <Text style={[styles.compVal, v == null && styles.compMissing]}>
-              {v == null ? "n/a" : `${Math.round(v)}/${weight}`}
-            </Text>
-          </View>
-        );
-      })}
-    </View>
-  );
+/** One or two suggestions from the weakest measured parts. */
+export function suggestions(c: ReciteComponents | undefined, tips: string[]): string[] {
+  const out: string[] = [];
+  if (c) {
+    const share = PARTS
+      .map((p) => ({ p, v: c[p.key] }))
+      .filter((x) => x.v != null)
+      .map((x) => ({ key: x.p.key, frac: (x.v as number) / x.p.weight }))
+      .sort((a, b) => a.frac - b.frac);
+    for (const s of share) {
+      if (s.frac >= 0.85 || out.length >= 2) break;
+      if (s.key === "content") out.push("Some syllables were missing or different. Listen to the marked words again, then say them slowly.");
+      if (s.key === "sequence") out.push("Some words came out of order. Recite line by line before joining the lines up.");
+      if (s.key === "continuity") out.push("There were long pauses inside the verse. Breathe at the end of a half-line, not in the middle.");
+      if (s.key === "rhythm") out.push("The pace was uneven or very slow. Recite along with the chant once, then alone.");
+    }
+  }
+  for (const t of tips) {
+    if (out.length >= 2) break;
+    if (t && !out.includes(t)) out.push(t);
+  }
+  return out;
 }
 
 export default function RecitationResult({
   result,
+  expected,
   onPlayMine,
-  onPlayLine,
+  onPlayReference,
+  referenceLabel = "Hear the verse",
 }: {
   result: ReciteResult;
-  onPlayMine: () => void;
-  onPlayLine: () => void;
+  expected: string[];
+  onPlayMine?: () => void;
+  onPlayReference?: () => void;
+  referenceLabel?: string;
 }) {
   if (result.status === "unclear") {
     return (
-      <View style={styles.root}>
-        <Text style={styles.percent} accessibilityRole="header">Unclear, try again</Text>
+      <View style={styles.root} accessibilityLiveRegion="polite">
+        <Text style={styles.big} accessibilityRole="header">Not clear enough to score</Text>
+        <Text style={styles.body}>
+          The recording was too quiet, too short or too noisy. Hold the phone closer, find a quieter place and try again.
+        </Text>
+        {!!onPlayMine && (
+          <Pressable accessibilityLabel="Play my recording" onPress={onPlayMine} accessibilityRole="button" style={styles.btn}>
+            <Text style={styles.btnText}>Play my recording</Text>
+          </Pressable>
+        )}
       </View>
     );
   }
-  const rows = toDisplay(result.lines);
+  const c = result.components;
+  const total = result.total ?? (c ? null : result.percent);
+  const missing = c ? PARTS.filter((p) => c[p.key] == null) : [];
+  const advice = suggestions(c, (result.tips ?? []).map((t) => plain(t.text)));
   return (
-    <View style={styles.root}>
-      <Text style={styles.percent} accessibilityRole="header">{result.percent}%</Text>
-      <Text style={styles.counts}>
-        {result.counts.ok} right, {result.counts.fix} to fix, {result.counts.unclear} unclear
-      </Text>
-      {(result as unknown as { components?: ReciteComponents }).components && (
-        <ComponentBars components={(result as unknown as { components: ReciteComponents }).components} />
+    <View style={styles.root} accessibilityLiveRegion="polite">
+      <View style={styles.totalRow}>
+        <Text style={styles.total} accessibilityRole="header">
+          {total != null ? Math.round(total) : "—"}
+        </Text>
+        <Text style={styles.outOf}>{c ? `out of ${missing.length ? 100 - missing.reduce((n, p) => n + p.weight, 0) : 100}` : "% syllables right"}</Text>
+      </View>
+      {c && missing.length > 0 && (
+        <Text style={styles.small}>
+          {missing.map((p) => p.label).join(" and ")} could not be measured for this recording, so the total is out of{" "}
+          {100 - missing.reduce((n, p) => n + p.weight, 0)}.
+        </Text>
       )}
-      {result.lines.map((ln, li) => (
-        <View
-          key={ln.i}
-          accessible
-          accessibilityRole="text"
-          accessibilityLabel={rows[li]?.label ?? `Line ${ln.i + 1}`}
-          style={styles.line}
-        >
-          {ln.aksharas.map((a, i) => (
-            <View key={i} style={styles.ak}>
-              <Text style={[styles.t, { fontSize: 18 }]}>{a.t}</Text>
-              <Text style={[styles.sym, { color: SYM_COLOR[a.band] }]}>{SYM[a.band]}</Text>
-              {a.band === "fix" && !!a.heard && (
-                <Text style={styles.heard}>heard: {a.heard}</Text>
-              )}
-            </View>
+      {c && (
+        <View style={styles.parts} accessibilityLabel="Score parts">
+          {PARTS.map((p) => {
+            const v = c[p.key];
+            return (
+              <View key={p.key} style={styles.partRow} accessible accessibilityLabel={`${p.label}: ${v == null ? "not measured" : `${Math.round(v)} of ${p.weight}`}, ${p.what}`}>
+                <Text style={styles.partLabel}>{p.label}</Text>
+                <View style={styles.track}>
+                  <View style={[styles.fill, { width: `${v == null ? 0 : Math.round((v / p.weight) * 100)}%` }]} />
+                </View>
+                <Text style={[styles.partVal, v == null && { color: T.ink3 }]}>
+                  {v == null ? "not measured" : `${Math.round(v)}/${p.weight}`}
+                </Text>
+              </View>
+            );
+          })}
+        </View>
+      )}
+      {advice.length > 0 && (
+        <View style={styles.advice}>
+          {advice.map((a, i) => (
+            <Text key={i} style={styles.body}>• {a}</Text>
           ))}
         </View>
-      ))}
-      {(result.tips ?? []).map((t, i) => (
-        <Text key={i} style={styles.tip}>{plain(t.text)}</Text>
-      ))}
+      )}
+      {result.lines.length > 0 && (
+        <View style={styles.compare}>
+          <Text style={styles.label}>THE VERSE, SYLLABLE BY SYLLABLE</Text>
+          {result.lines.map((ln, li) => (
+            <Text key={ln.i ?? li} style={sa(19)} accessibilityLabel={`Line ${li + 1}: ${ln.aksharas.filter((a) => a.band !== "ok").length} to fix`}>
+              {ln.aksharas.map((a, i) => (
+                <Text key={i} style={{ color: BAND_COLOR[a.band], textDecorationLine: a.band === "fix" ? "underline" : "none" }}>
+                  {a.t === "+" ? "" : a.t}
+                </Text>
+              ))}
+            </Text>
+          ))}
+          <Text style={styles.small}>Underlined in red: missing or different. Grey: unclear.</Text>
+        </View>
+      )}
+      {!!result.heard && (
+        <View style={styles.compare}>
+          <Text style={styles.label}>WHAT WE HEARD</Text>
+          <Text style={[sa(17), { color: T.ink2 }]}>{result.heard}</Text>
+          {expected.length > 0 && (
+            <>
+              <Text style={[styles.label, { marginTop: 6 }]}>THE VERSE</Text>
+              {expected.map((t, i) => (
+                <Text key={i} style={[sa(17), { color: T.ink }]}>{t}</Text>
+              ))}
+            </>
+          )}
+        </View>
+      )}
       <View style={styles.btnRow}>
-        <Pressable onPress={onPlayMine} accessibilityRole="button" accessibilityLabel="Play my recording" style={styles.btn}>
-          <Text style={styles.btnText}>Play mine</Text>
-        </Pressable>
-        <Pressable onPress={onPlayLine} accessibilityRole="button" accessibilityLabel="Play the line" style={styles.btn}>
-          <Text style={styles.btnText}>Play line</Text>
-        </Pressable>
+        {!!onPlayMine && (
+          <Pressable accessibilityLabel="Play my recording" onPress={onPlayMine} accessibilityRole="button" style={styles.btn}>
+            <Text style={styles.btnText}>Play my recording</Text>
+          </Pressable>
+        )}
+        {!!onPlayReference && (
+          <Pressable accessibilityLabel={referenceLabel} onPress={onPlayReference} accessibilityRole="button" style={styles.btn}>
+            <Text style={styles.btnText}>{referenceLabel}</Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  root: { gap: 8, paddingVertical: 8 },
-  percent: { fontSize: 32, fontWeight: "800", color: color.ink },
-  counts: { fontSize: 14, color: color.inkSoft },
-  components: { gap: 4, marginTop: 2 },
-  compRow: { flexDirection: "row", alignItems: "center", gap: 6 },
-  compLabel: { width: 52, fontSize: 12, color: color.inkSoft, fontWeight: "700" },
-  compTrack: { flex: 1, height: 6, borderRadius: 3, backgroundColor: color.border, overflow: "hidden" },
-  compFill: { height: 6, backgroundColor: color.saffronBtn },
-  compVal: { width: 46, fontSize: 11, color: color.inkSoft, textAlign: "right", fontVariant: ["tabular-nums"] },
-  compMissing: { color: color.inkFaint },
-  line: { flexDirection: "row", flexWrap: "wrap", gap: 6, paddingVertical: 4 },
-  ak: { alignItems: "center", minWidth: 28 },
-  t: { color: color.ink },
-  sym: { fontSize: 14, fontWeight: "800" },
-  heard: { fontSize: 11, color: color.inkSoft },
-  tip: { fontSize: 14, color: color.ink },
-  btnRow: { flexDirection: "row", gap: 8 },
-  btn: { minHeight: 44, justifyContent: "center", paddingHorizontal: 16, borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 12 },
-  btnText: { fontWeight: "700", color: color.ink },
+  root: { gap: 10, paddingVertical: 12, borderTopWidth: 1, borderTopColor: T.line },
+  totalRow: { flexDirection: "row", alignItems: "baseline", gap: 10 },
+  total: { ...ui("bold"), fontSize: 48, lineHeight: 56, color: T.ink, fontVariant: ["tabular-nums"] },
+  outOf: { ...ui("medium"), fontSize: 15, color: T.ink2 },
+  big: { ...ui("bold"), fontSize: 20, color: T.ink },
+  body: { ...ui("regular"), fontSize: 15, lineHeight: 22, color: T.ink },
+  small: { ...ui("regular"), fontSize: 13, lineHeight: 19, color: T.ink2 },
+  label: { ...ui("bold"), fontSize: 12, letterSpacing: 1.2, color: T.ink3 },
+  parts: { gap: 6 },
+  partRow: { flexDirection: "row", alignItems: "center", gap: 10, minHeight: 28 },
+  partLabel: { ...ui("semibold"), width: 52, fontSize: 14, color: T.ink },
+  track: { flex: 1, height: 8, backgroundColor: T.line },
+  fill: { height: 8, backgroundColor: T.action },
+  partVal: { ...ui("semibold"), minWidth: 56, textAlign: "right", fontSize: 13, color: T.ink, fontVariant: ["tabular-nums"] },
+  advice: { gap: 4, padding: 12, backgroundColor: T.surface, borderWidth: 1, borderColor: T.line },
+  compare: { gap: 2 },
+  btnRow: { flexDirection: "row", gap: 8, flexWrap: "wrap" },
+  btn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 16, borderWidth: 1.5, borderColor: T.ink },
+  btnText: { ...ui("semibold"), fontSize: 15, color: T.ink },
 });

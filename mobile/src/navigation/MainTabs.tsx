@@ -1,4 +1,4 @@
-// Five destinations. Learn is one trail with a Library beside it.
+// Main destinations, with the isolated Voice Lab beside Read.
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
@@ -9,6 +9,7 @@ import HomeScreen from "../screens/Home";
 import LearnTrailScreen from "../screens/LearnTrail";
 import PlayScreen from "../screens/Play";
 import ReaderScreen from "../screens/Reader";
+import VoiceLabTab from "../screens/VoiceLabTab";
 import { haptics } from "../services/haptics";
 import { color, font } from "../theme";
 import type { MainTabParamList } from "./types";
@@ -20,8 +21,9 @@ const ICONS: Record<keyof MainTabParamList, {on: IoniconsIconName; off: Ionicons
   Conversation: {on:"chatbubbles",off:"chatbubbles-outline"},
   Play: {on:"game-controller",off:"game-controller-outline"},
   Read: {on:"book",off:"book-outline"},
+  VoiceLab: {on:"mic",off:"mic-outline"},
 };
-const LABEL: Record<keyof MainTabParamList,string> = {Home:"Home",Learn:"Learn",Conversation:"Talk",Play:"Play",Read:"Read"};
+const LABEL: Record<keyof MainTabParamList,string> = {Home:"Home",Learn:"Learn",Conversation:"Talk",Play:"Play",Read:"Read",VoiceLab:"Voice Lab"};
 export default function MainTabs() {
   const insets=useSafeAreaInsets();
   const {width}=useWindowDimensions();
@@ -39,5 +41,6 @@ export default function MainTabs() {
     <Tab.Screen name="Conversation" component={ConversationScreen} options={{tabBarLabel:LABEL.Conversation}}/>
     <Tab.Screen name="Play" component={PlayScreen} options={{tabBarLabel:LABEL.Play}}/>
     <Tab.Screen name="Read" component={ReaderScreen} options={{tabBarLabel:LABEL.Read}}/>
+    <Tab.Screen name="VoiceLab" component={VoiceLabTab} options={{tabBarLabel:LABEL.VoiceLab}}/>
   </Tab.Navigator>;
 }

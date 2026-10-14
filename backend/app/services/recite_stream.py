@@ -1,29 +1,37 @@
-"""Live recitation streaming: a backend WebSocket proxy to the hosted
-realtime STT provider (brief §7 "Live STT and audio handling").
+"""Live recitation captions: a backend WebSocket relay to Sarvam's streaming
+speech-to-text (handover_games_daily_multiplayer §7 "Live STT").
 
-Design:
-  • The provider key never leaves the server. The client authenticates with a
-    short-lived ticket (the same MatchTicket table, scope "recite").
-  • The client streams timestamped PCM chunks; the server forwards them to
-    Sarvam's realtime Sanskrit endpoint and relays interim transcripts plus
-    the final reconciled transcript for the same attempt id.
-  • If the upstream stream cannot be opened, the server says so explicitly
-    and the client keeps recording locally and uploads at the end — a
-    post-upload transcript is clearly labelled, never presented as live STT.
-  • Final scoring always uses the full audio upload; provisional captions
-    are coaching-visible text only and never replace the recorded attempt.
+  • The provider key never leaves the server. The phone gets a short-lived,
+    single-use ticket from POST /recite/stream-ticket (MatchTicket, scope
+    "recite") and connects to /ws/recite/{ticket}.
+  • The phone sends binary frames of 16 kHz mono 16-bit PCM. The server
+    wraps each in Sarvam's JSON audio message and forwards it.
+  • Sarvam answers with one transcript per spoken segment (its own voice
+    activity detection). Each becomes {"type": "caption", "text", "final"}.
+    Captions are provisional coaching text only: the score always comes from
+    the full recording uploaded afterwards.
+  • "stop" from the phone flushes the provider, waits briefly for the last
+    segment, then closes. Streamed seconds are metered as STT use.
+  • Any failure says {"type": "unavailable"}: the phone keeps recording and
+    scores from the upload.
 
-The exact realtime contract is re-verified against Sarvam's current docs at
-deployment time (the brief flags this); the adapter isolates that contract
-in _upstream_url/_upstream_headers so a shape change is a one-file edit.
+Contract read at docs.sarvam.ai (speech-to-text WebSocket, 2026-10-14):
+wss://api.sarvam.ai/speech-to-text/ws with query language-code, model,
+mode, sample_rate, input_audio_codec, vad_signals, flush_signal; header
+Api-Subscription-Key; client messages {"audio": {"data", "sample_rate",
+"encoding"}} and {"type": "flush"}; responses {"type": "data"|"error"|
+"events", "data": {...}}.
 """
 
 from __future__ import annotations
 
 import asyncio
+import base64
 import json
 import logging
+import time
 import uuid
+from urllib.parse import urlencode
 
 from fastapi import WebSocket, WebSocketDisconnect
 
@@ -33,116 +41,179 @@ from app.services.play.matches import use_ticket
 
 logger = logging.getLogger("shabd.recite-stream")
 
-PROTOCOL = "recite-stream-1"
+PROTOCOL = "recite-stream-2"
+RATE = 16000
+MAX_SECONDS = 120
+FLUSH_WAIT_S = 2.5
 
 
 def _upstream_url() -> str:
-    return getattr(settings, "sarvam_realtime_url", "") or \
-        "wss://api.sarvam.ai/speech-to-text/ws"
+    base = getattr(settings, "sarvam_realtime_url", "") or "wss://api.sarvam.ai/speech-to-text/ws"
+    q = {
+        "language-code": "sa-IN",
+        "model": settings.sarvam_stt_model or "saaras:v4",
+        "mode": "transcribe",
+        "sample_rate": str(RATE),
+        "input_audio_codec": "pcm_s16le",
+        "high_vad_sensitivity": "true",
+        "vad_signals": "true",
+        "flush_signal": "true",
+    }
+    return f"{base}?{urlencode(q)}"
 
 
 def _upstream_headers() -> dict:
-    return {"api-subscription-key": settings.sarvam_api_key or ""}
+    return {"Api-Subscription-Key": settings.sarvam_api_key or ""}
 
 
-async def _pump_upstream(ws_up, websocket, attempt_id: str) -> None:
-    """Relay provider events to the learner as interim/final captions."""
+def audio_message(pcm: bytes) -> str:
+    return json.dumps({"audio": {"data": base64.b64encode(pcm).decode("ascii"),
+                                 "sample_rate": str(RATE), "encoding": "audio/wav"}})
+
+
+def caption_from(raw: str) -> dict | None:
+    """One provider message -> one phone message (or None to skip)."""
     try:
-        async for raw in ws_up.iter_text():
-            try:
-                data = json.loads(raw)
-            except Exception:
+        msg = json.loads(raw)
+    except (TypeError, ValueError):
+        return None
+    kind = msg.get("type")
+    data = msg.get("data") or {}
+    if kind == "data":
+        text = (data.get("transcript") or "").strip()
+        return {"type": "caption", "text": text, "final": True} if text else None
+    if kind == "events":
+        sig = data.get("signal_type")
+        if sig in ("START_SPEECH", "END_SPEECH"):
+            return {"type": "speech", "state": "start" if sig == "START_SPEECH" else "end"}
+        return None
+    if kind == "error":
+        return {"type": "unavailable", "reason": "provider error"}
+    return None
+
+
+async def _connect():
+    import websockets
+    headers = _upstream_headers()
+    try:
+        return await websockets.connect(_upstream_url(), additional_headers=headers, max_size=2 ** 22)
+    except TypeError:  # websockets < 14
+        return await websockets.connect(_upstream_url(), extra_headers=headers, max_size=2 ** 22)
+
+
+async def _relay(ws_up, websocket: WebSocket, attempt_id: str, finished: asyncio.Event) -> None:
+    try:
+        async for raw in ws_up:
+            out = caption_from(raw if isinstance(raw, str) else raw.decode("utf-8", "ignore"))
+            if out is None:
                 continue
-            transcript = data.get("transcript") or data.get("text") or ""
-            if not transcript:
-                continue
-            final = bool(data.get("final") or data.get("is_final"))
-            await websocket.send_json({
-                "type": "caption", "attempt_id": attempt_id,
-                "text": transcript, "final": final, "provisional": True,
-            })
-    except Exception as e:  # upstream closed
+            out["attempt_id"] = attempt_id
+            await websocket.send_json(out)
+            if finished.is_set() and out.get("type") == "caption":
+                return
+    except Exception as e:  # noqa: BLE001 — upstream closed
         logger.info("upstream closed for %s: %s", attempt_id, e)
+
+
+async def _drain(websocket: WebSocket) -> None:
+    while True:
+        msg = await websocket.receive()
+        if msg.get("type") == "websocket.disconnect" or msg.get("text") == "stop":
+            return
+
+
+def _meter(learner_id: str, seconds: float) -> None:
+    if seconds <= 0:
+        return
+    from app.models import Learner
+    from app.services.quota import QuotaExceeded, check_and_consume
+    db = SessionLocal()
+    try:
+        learner = db.query(Learner).filter(Learner.id == learner_id).first()
+        if learner is not None:
+            try:
+                check_and_consume(db, learner, "stt_seconds", seconds, surface="recite-live")
+            except QuotaExceeded:
+                pass  # already streamed; the next ticket is refused instead
     finally:
-        try:
-            await websocket.send_json({"type": "caption_end", "attempt_id": attempt_id})
-        except Exception:
-            pass
+        db.close()
 
 
 async def recite_stream_ws(websocket: WebSocket, ticket: str, attempt_id: str = ""):
-    """/ws/recite/{ticket}?attempt_id=... — registered on the app in main.py."""
-    db = SessionLocal()
+    """/ws/recite/{ticket}?attempt_id=... (registered in main.py)."""
     attempt_id = attempt_id or uuid.uuid4().hex[:16]
-    import websockets  # noqa: F401  — presence checked before accepting
+    db = SessionLocal()
     try:
         try:
             t = use_ticket(db, ticket)
         except Exception:
             await websocket.close(code=4401)
             return
-        if t.scope != "recite" and t.scope != "match":
+        if t.scope != "recite":
             await websocket.close(code=4403)
             return
-        await websocket.accept()
+        learner_id = t.learner_id
+    finally:
+        db.close()
+
+    await websocket.accept()
+    sent_bytes = 0
+    try:
         if not settings.sarvam_api_key:
-            # No upstream configured: say so; the client records locally and
-            # uploads at the end (clearly not live STT).
-            await websocket.send_json({"type": "unavailable",
-                                       "reason": "streaming provider not configured",
-                                       "attempt_id": attempt_id,
-                                       "fallback": "record-and-upload"})
-            while True:
-                msg = await websocket.receive_text()  # drain until client closes
-                if msg == "stop":
-                    break
+            await websocket.send_json({"type": "unavailable", "reason": "not configured",
+                                       "attempt_id": attempt_id})
+            await _drain(websocket)
             return
-        import websockets
         try:
-            ws_up = await websockets.connect(
-                _upstream_url(), extra_headers=_upstream_headers(), max_size=2 ** 22)
-        except Exception as e:
+            ws_up = await _connect()
+        except Exception as e:  # noqa: BLE001
             logger.info("upstream connect failed: %s", e)
-            await websocket.send_json({"type": "unavailable",
-                                       "reason": "upstream unreachable",
-                                       "attempt_id": attempt_id,
-                                       "fallback": "record-and-upload"})
-            while True:
-                msg = await websocket.receive_text()
-                if msg == "stop":
-                    break
+            await websocket.send_json({"type": "unavailable", "reason": "provider unreachable",
+                                       "attempt_id": attempt_id})
+            await _drain(websocket)
             return
         await websocket.send_json({"type": "ready", "attempt_id": attempt_id,
-                                   "protocol": PROTOCOL})
-        pump = asyncio.create_task(_pump_upstream(ws_up, websocket, attempt_id))
+                                   "protocol": PROTOCOL, "sample_rate": RATE,
+                                   "max_seconds": MAX_SECONDS})
+        finished = asyncio.Event()
+        relay = asyncio.create_task(_relay(ws_up, websocket, attempt_id, finished))
+        started = time.monotonic()
         try:
             while True:
                 msg = await websocket.receive()
                 if msg.get("type") == "websocket.disconnect":
                     break
-                if "bytes" in msg and msg["bytes"]:
-                    await ws_up.send(msg["bytes"])
-                elif "text" in msg:
-                    text = msg["text"]
-                    if text == "stop":
-                        try:
-                            await ws_up.send(json.dumps({"type": "end"}))
-                        except Exception:
-                            pass
-                        break
+                if msg.get("bytes"):
+                    if sent_bytes >= MAX_SECONDS * RATE * 2 or time.monotonic() - started > MAX_SECONDS + 15:
+                        continue  # captions stop; the recording carries on
+                    chunk = msg["bytes"]
+                    sent_bytes += len(chunk)
+                    await ws_up.send(audio_message(chunk))
+                elif msg.get("text") == "stop":
+                    finished.set()
+                    try:
+                        await ws_up.send(json.dumps({"type": "flush"}))
+                        await asyncio.wait_for(asyncio.shield(relay), timeout=FLUSH_WAIT_S)
+                    except Exception:  # noqa: BLE001 — timeout or closed
+                        pass
+                    try:
+                        await websocket.send_json({"type": "caption_end", "attempt_id": attempt_id})
+                    except Exception:  # noqa: BLE001
+                        pass
+                    break
         finally:
-            pump.cancel()
+            relay.cancel()
             try:
                 await ws_up.close()
-            except Exception:
+            except Exception:  # noqa: BLE001
                 pass
     except WebSocketDisconnect:
         pass
     except Exception as e:  # noqa: BLE001
         logger.info("recite stream closed: %s", e)
     finally:
-        db.close()
+        await asyncio.to_thread(_meter, learner_id, sent_bytes / (RATE * 2))
         try:
             await websocket.close()
-        except Exception:
+        except Exception:  # noqa: BLE001
             pass

@@ -112,6 +112,8 @@ def create_app() -> FastAPI:
         return response
 
     # Register routers
+    from app.voice_lab.router import router as voice_lab_router
+    app.include_router(voice_lab_router, tags=["Voice Lab"])
     from app.routers.health import router as health_router
     from app.routers.auth_router import router as auth_router
     from app.routers.me import router as me_router

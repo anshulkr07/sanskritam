@@ -19,6 +19,7 @@ export type MainTabParamList = {
   Conversation: undefined;
   Play: undefined;
   Read: undefined;
+  VoiceLab: undefined;
   Learn: undefined;
 };
 
@@ -94,7 +95,7 @@ export type RootStackParamList = {
   WordGroups: undefined;
   PadaPath: undefined;
   NumberBuilder: undefined;
-  Leaderboards: { period?: "daily" | "weekly" | "monthly"; board?: string } | undefined;
+  Leaderboards: { period?: "daily" | "weekly" | "monthly"; board?: string; track?: "games" | "recitation"; division?: "standard" | "beginner" } | undefined;
   Friends: undefined;
   RoomLobby: { matchId?: string; code?: string } | undefined;
   // Recitation calibration capture (dev builds only, brief §8).
@@ -122,7 +123,7 @@ export type RootStackParamList = {
   // shows today's fact; "Earlier" pushes it with a factId.
   DoYouKnow: { factId?: string } | undefined;
   // Recite (handover_recite): Learn screen, contests, certificates, rules.
-  Recite: { verseUid: string; competitionId?: string; start?: "listen" | "practise" | "recite" };
+  Recite: { verseUid: string; competitionId?: string; start?: "listen" | "practise" | "recite"; division?: "standard" | "beginner" };
   RecitePicker: undefined;
   Contest: { id?: string } | undefined;
   ContestResults: { id: string } | undefined;

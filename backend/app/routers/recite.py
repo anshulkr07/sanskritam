@@ -44,6 +44,39 @@ def _parse_unit(unit: str, lines: list[dict]) -> list[dict]:
     raise HTTPException(status_code=422, detail="Bad unit.")
 
 
+async def rubric_v2(reference: list[str], res: dict, audio: bytes):
+    """Rubric v2 for one scored recording: words from the transcript, flow
+    and pace from voiced spans measured in the audio. None when it cannot
+    be computed; the old percent still stands then."""
+    import asyncio
+
+    from app.services.recite_scoring_v2 import score_recording
+    from app.services.recite_timing import voiced_spans
+    try:
+        spans = await asyncio.to_thread(voiced_spans, audio)
+        return score_recording(reference, res.get("heard", "") or "", spans)
+    except Exception:
+        return None
+
+
+@router.post("/stream-ticket")
+def stream_ticket(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """A short-lived, single-use ticket for /ws/recite/{ticket} (live
+    captions). The provider key stays on the server."""
+    from app.services.play.matches import make_ticket
+    if not settings.sarvam_api_key:
+        raise HTTPException(status_code=503, detail="Live captions are not available.")
+    from app.services.quota import _limit, usage_since
+    if settings.quota_enabled and usage_since(db, learner.id, "stt_seconds",
+                                              settings.quota_window_hours) >= _limit("stt_seconds"):
+        raise HTTPException(status_code=429, detail="Speech allowance used up. Try again later.")
+    return {"ticket": make_ticket(db, learner, None, scope="recite"),
+            "max_seconds": STREAM_MAX_SECONDS}
+
+
+STREAM_MAX_SECONDS = 120
+
+
 @router.post("/score")
 async def score_recite(
     file: UploadFile = File(...),
@@ -142,21 +175,9 @@ async def score_recite(
     # them the timing components stay None — partial, never invented.
     components_payload = None
     if status == "scored":
-        try:
-            from app.services.recite_scoring_v2 import Segment, score_v2
-            seg_times = res.get("segments") or []
-            if seg_times:
-                segs = [Segment(text=str(s.get("text", "")),
-                                start_s=s.get("start_s"), end_s=s.get("end_s"))
-                        for s in seg_times]
-            else:
-                heard_all = res.get("heard", "")
-                segs = [Segment(text=heard_all)] if heard_all else []
-            v2 = score_v2(reference, segs)
-            if v2.status == "scored":
-                components_payload = v2.as_payload()
-        except Exception:
-            components_payload = None
+        v2 = await rubric_v2(reference, res, data)
+        if v2 is not None and v2.status == "scored":
+            components_payload = v2.as_payload()
     row.components = components_payload
     db.add(row)
     review_info = None
@@ -187,6 +208,7 @@ async def score_recite(
     if components_payload is not None:
         resp["components"] = components_payload.get("components")
         resp["rubric_version"] = components_payload.get("rubric_version")
+        resp["total"] = components_payload.get("total")
     if review_info is not None:
         resp["review"] = review_info
     return resp

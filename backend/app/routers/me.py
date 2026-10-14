@@ -150,10 +150,10 @@ def delete_me(
         from app.models import CompetitionEntry
         from app.services.storage import get_storage
         _store = get_storage()
-        for (k,) in db.query(CompetitionEntry.audio_key).filter(
-                CompetitionEntry.learner_id == learner.id,
-                CompetitionEntry.audio_key.is_not(None)).all():
-            if k:
+        from app.services.competition_sets import entry_audio_keys
+        for entry in db.query(CompetitionEntry).filter(
+                CompetitionEntry.learner_id == learner.id).all():
+            for k in entry_audio_keys(entry):
                 try:
                     _store.delete_private(k)
                 except Exception:

@@ -61,8 +61,18 @@ def _eligibility(db: Session, learner: Learner) -> str | None:
     return None
 
 
+def _public_piece_results(entry: CompetitionEntry | None) -> dict:
+    out = {}
+    for ref, v in ((entry.piece_results if entry else None) or {}).items():
+        if isinstance(v, dict):
+            out[ref] = {"percent": v.get("percent"), "at": v.get("at", "")}
+    return out
+
+
 def _comp_out(db: Session, comp: Competition, learner: Learner | None) -> dict:
+    from app.services.competition_sets import event_progress, event_standings, is_set, uses_v2
     pieces = comp.pieces or []
+    set_event = is_set(comp)
     me = None
     if learner is not None:
         entry = db.query(CompetitionEntry).filter(
@@ -77,7 +87,15 @@ def _comp_out(db: Session, comp: Competition, learner: Learner | None) -> dict:
             if local_date_of(a.created_at, getattr(learner, "timezone", None)) == day]
         best = entry.best_percent if entry else None
         rank = None
-        if entry is not None and entry.best_percent is not None:
+        progress = None
+        if set_event and entry is not None:
+            progress = event_progress(entry, comp)
+            best = progress["provisional_total"] if progress["submitted"] else None
+            for r in event_standings(db, comp, entry.division):
+                if r["learner_id"] == learner.id:
+                    rank = r["rank"]
+                    break
+        elif entry is not None and entry.best_percent is not None:
             ordered = svc.rank_entries(db, comp)
             for i, e in enumerate(ordered):
                 if e.id == entry.id:
@@ -85,12 +103,17 @@ def _comp_out(db: Session, comp: Competition, learner: Learner | None) -> dict:
                     break
         me = {"best_percent": best, "rank": rank,
               "attempts_today": len(today),
-              "attempts_left": max(0, settings.competition_attempts_per_day - len(today))}
+              "attempts_left": max(0, settings.competition_attempts_per_day - len(today)),
+              "division": entry.division if entry else None,
+              "piece_results": _public_piece_results(entry),
+              "set_progress": progress}
     return {"id": comp.id, "slug": comp.slug, "kind": comp.kind,
             "opens_at": comp.opens_at.isoformat() if comp.opens_at else "",
             "closes_at": comp.closes_at.isoformat() if comp.closes_at else "",
             "results_at": comp.results_at.isoformat() if comp.results_at else "",
-            "status": comp.status, "pieces": pieces, "me": me}
+            "status": comp.status, "pieces": pieces, "me": me,
+            "is_set": set_event, "scoring": "v2" if uses_v2(comp) else "akshara",
+            "rules_version": comp.rules_version or ""}
 
 
 @router.get("/competitions/rules")
@@ -101,7 +124,11 @@ def get_rules():
 @router.get("/competitions/current")
 def get_current(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     now = datetime.now(timezone.utc)
-    open_c = db.query(Competition).filter(Competition.status == "open").order_by(Competition.opens_at).first()
+    from app.services.competition_sets import is_set
+    # Weekly sets come first while a legacy single-verse event runs out.
+    open_all = db.query(Competition).filter(Competition.status == "open").order_by(Competition.opens_at).all()
+    sets_open = [c for c in open_all if is_set(c)]
+    open_c = sets_open[-1] if sets_open else (open_all[0] if open_all else None)  # newest set
     nxt = db.query(Competition).filter(Competition.status == "scheduled").order_by(Competition.opens_at).first()
     last = None
     pubs = db.query(Competition).filter(Competition.status == "published").order_by(Competition.results_at.desc()).all()
@@ -119,12 +146,76 @@ def get_current(learner: Learner = Depends(require_learner), db: Session = Depen
             "last": last}
 
 
+@router.get("/competitions/standings")
+def standings(period: str = Query("weekly"), division: str = Query("standard"),
+              month: str = Query(""), limit: int = Query(50, ge=1, le=100),
+              learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """Recitation standings in the Leaderboards shape: the current weekly
+    set event (ranked = finished all three verses) or the month's table
+    (average of weekly totals). Kept apart from game points."""
+    from app.services.competition_sets import (
+        SET_VERSIONS, event_standings, is_set, monthly_standings, norm_division,
+    )
+    div = norm_division(division)
+
+    def shape(rows, me_row, total, end, key, frozen):
+        return {"period": period, "period_key": key, "board": "recitation", "scope": div,
+                "period_end": end, "rows": rows[:limit], "total": total, "me": me_row,
+                "empty": total == 0, "frozen": frozen}
+
+    if period == "monthly":
+        tz_now = local_now(getattr(learner, "timezone", None))
+        key = month or f"{tz_now.year:04d}-{tz_now.month:02d}"
+        table = monthly_standings(db, key, div)
+        rows = [{"rank": r["rank"], "learner_id": r["learner_id"], "name": r["name"],
+                 "score": r["average"], "participation": r["events_complete"],
+                 "pending": r["events_pending"], "is_me": r["learner_id"] == learner.id}
+                for r in table]
+        me = next((r for r in rows if r["is_me"]), None)
+        y, m = (int(x) for x in key.split("-"))
+        end_local = datetime(y + (m == 12), m % 12 + 1, 1, tzinfo=svc._tz())
+        return shape(rows, me, len(rows), end_local.astimezone(timezone.utc).isoformat(), key,
+                     end_local <= datetime.now(timezone.utc))
+    comps = [c for c in db.query(Competition).filter(
+        Competition.rules_version.in_(SET_VERSIONS),
+        Competition.status.in_(("open", "closed", "published"))).order_by(Competition.opens_at.desc()).all()
+        if is_set(c)]
+    comp = next((c for c in comps if c.status == "open"), comps[0] if comps else None)
+    if comp is None:
+        return shape([], None, 0, "", "", False)
+    table = event_standings(db, comp, div)
+    rows = [{"rank": r["rank"] or 0, "learner_id": r["learner_id"], "name": r["public_name"],
+             "score": r["percent"], "participation": r["submitted"], "of": r["total"],
+             "complete": r["complete"], "is_me": r["learner_id"] == learner.id}
+            for r in table]
+    ranked = [r for r in rows if r["complete"]]
+    me = next((r for r in rows if r["is_me"]), None)
+    closes = svc._as_aware(comp.closes_at).isoformat() if comp.closes_at else ""
+    return shape(ranked, me, len(ranked), closes, comp.slug, comp.status != "open")
+
+
 @router.get("/competitions/{comp_id}/leaderboard")
-def leaderboard(comp_id: str, limit: int = Query(50, ge=1, le=100),
+def leaderboard(comp_id: str, limit: int = Query(50, ge=1, le=100), division: str = Query(""),
                 learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    from app.services.competition_sets import event_standings, is_set, norm_division
     comp = db.query(Competition).filter(Competition.id == comp_id).first()
     if comp is None:
         raise HTTPException(status_code=404, detail="No such competition.")
+    mine = db.query(CompetitionEntry).filter(
+        CompetitionEntry.competition_id == comp.id, CompetitionEntry.learner_id == learner.id).first()
+    if is_set(comp):
+        div = norm_division(division or (mine.division if mine else ""))
+        rows_all = event_standings(db, comp, div)
+        ranked = [r for r in rows_all if r["complete"]]
+        rows = [{"rank": r["rank"], "public_name": r["public_name"], "percent": r["percent"],
+                 "is_me": r["learner_id"] == learner.id} for r in ranked[:limit]]
+        me = None
+        for r in rows_all:
+            if r["learner_id"] == learner.id:
+                me = {"rank": r["rank"], "percent": r["percent"], "submitted": r["submitted"],
+                      "total": r["total"], "complete": r["complete"]}
+        return {"status": comp.status, "division": div, "rows": rows, "me": me,
+                "ranked": len(ranked), "provisional": len(rows_all) - len(ranked)}
     import time
     now_t = time.time()
     cached = _leader_cache.get(comp_id)
@@ -136,8 +227,6 @@ def leaderboard(comp_id: str, limit: int = Query(50, ge=1, le=100),
                 for i, e in enumerate(ordered[:limit])]
         _leader_cache[comp_id] = (now_t, {"rows": rows})
     me = None
-    mine = db.query(CompetitionEntry).filter(
-        CompetitionEntry.competition_id == comp.id, CompetitionEntry.learner_id == learner.id).first()
     if mine is not None and mine.best_percent is not None:
         ordered = svc.rank_entries(db, comp)
         for i, e in enumerate(ordered):
@@ -194,6 +283,10 @@ def put_profile(body: dict, learner: Learner = Depends(require_learner), db: Ses
             "recordings_consent": pub.recordings_consent_at is not None}
 
 
+def _audio_kind(data: bytes) -> tuple[str, str]:
+    return ("wav", "audio/wav") if data[:4] == b"RIFF" else ("m4a", "audio/mp4")
+
+
 @router.post("/competitions/{comp_id}/attempts")
 async def post_attempt(
     comp_id: str,
@@ -205,14 +298,26 @@ async def post_attempt(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
+    from app.routers.recite import rubric_v2
+    from app.services.competition_sets import (
+        event_progress, is_set, norm_division, pieces_for, record_piece_result, uses_v2,
+    )
+    from app.services.recite_scoring_v2 import is_complete
+
     comp = db.query(Competition).filter(Competition.id == comp_id).first()
     if comp is None:
         raise HTTPException(status_code=404, detail="No such competition.")
     if comp.status != "open":
         raise HTTPException(status_code=409, detail="This competition has closed")
-    pieces = comp.pieces or []
-    piece_uids = {p.get("verse_uid") for p in pieces if isinstance(p, dict)}
-    piece_refs = {p.get("source_ref") for p in pieces if isinstance(p, dict)}
+    set_event = is_set(comp)
+    entry = db.query(CompetitionEntry).filter(
+        CompetitionEntry.competition_id == comp.id,
+        CompetitionEntry.learner_id == learner.id).first()
+    # Division freezes at entry (brief §9): later requests cannot switch it.
+    div = entry.division if entry is not None else norm_division(division)
+    pieces = pieces_for(comp, div) if set_event else [p for p in (comp.pieces or []) if isinstance(p, dict)]
+    piece_uids = {p.get("verse_uid") for p in pieces}
+    piece_refs = {p.get("source_ref") for p in pieces}
     shloka = db.query(Shloka).filter(Shloka.verse_uid == verse_uid).first()
     if shloka is None:
         for s in db.query(Shloka).all():
@@ -220,7 +325,7 @@ async def post_attempt(
                 shloka = s
                 break
     if shloka is None or (verse_uid not in piece_uids and (shloka.source_ref not in piece_refs)):
-        raise HTTPException(status_code=422, detail="Not the set verse.")
+        raise HTTPException(status_code=422, detail="Not a verse of your division's set.")
     step = _eligibility(db, learner)
     if step:
         raise HTTPException(status_code=403, detail=step)
@@ -249,6 +354,11 @@ async def post_attempt(
         ref_url = ""
     res = await scorer_client.score_attempt(data, reference, True, db=db,
                                            learner=learner, surface="competition", ref_audio_url=ref_url)
+    # Rubric v2 (words, order, flow, pace) scores events run under it; a
+    # result missing any component does not count there.
+    v2 = None
+    if res.get("status") == "scored":
+        v2 = await rubric_v2(reference, res, data)
     try:
         cam = json.loads(camera or "{}")
     except Exception:
@@ -267,6 +377,8 @@ async def post_attempt(
     why = ""
     if res.get("status") != "scored":
         counted, why = False, "unclear"
+    elif uses_v2(comp) and (v2 is None or not is_complete(v2)):
+        counted, why = False, "no_timing"
     elif not hidden:
         counted, why = False, "text_shown"
     elif face < settings.competition_min_face_ratio:
@@ -278,7 +390,12 @@ async def post_attempt(
     elif not _v_ok(app_v):
         counted, why = False, "old_app"
     n = res.get("n", {}) or {}
-    pct = round(float(res.get("percent_strict", 0.0)) * 100.0, 1) if res.get("status") == "scored" else None
+    pct = None
+    if res.get("status") == "scored":
+        if uses_v2(comp) and v2 is not None and is_complete(v2):
+            pct = float(v2.total)
+        else:
+            pct = round(float(res.get("percent_strict", 0.0)) * 100.0, 1)
     row = ReciteAttempt(learner_id=learner.id, verse_uid=verse_uid, unit="verse",
                         purpose="competition", mode="strict",
                         status=res.get("status", "scored"), percent=pct,
@@ -286,121 +403,147 @@ async def post_attempt(
                         n_unclear=int(n.get("amber", 0)),
                         bands="", duration_ms=int(res.get("duration_ms", estimate_seconds(data) * 1000)),
                         competition_id=comp.id, camera=cam, counted=counted,
-                        flags=[] if counted else [why])
+                        flags=[] if counted else [why],
+                        components=v2.as_payload() if v2 is not None and v2.status == "scored" else None)
     db.add(row)
     db.flush()
     # Entry.
     pub = db.query(LearnerPublic).filter(LearnerPublic.learner_id == learner.id).first()
-    entry = db.query(CompetitionEntry).filter(
-        CompetitionEntry.competition_id == comp.id,
-        CompetitionEntry.learner_id == learner.id).first()
     if entry is None:
-        # Division freezes at entry (brief §9).
         entry = CompetitionEntry(competition_id=comp.id, learner_id=learner.id,
                                  public_name=(pub.public_name if pub else learner.display_name or "")[:64],
-                                 division=("beginner" if division == "beginner" else "standard"))
+                                 division=div, rules_version=comp.rules_version or "")
         db.add(entry)
         db.flush()
-    # Set events track the best per prescribed piece (event total = mean of
-    # ALL pieces, so nobody ranks by picking easy verses).
+    ext, mime = _audio_kind(data)
+
+    def _store(key: str, old: str | None) -> str | None:
+        try:
+            from app.services.storage import get_storage
+            store = get_storage()
+            if old and old != key:
+                try:
+                    store.delete_private(old)
+                except Exception:
+                    pass
+            return store.store_private(data, key, mime)
+        except Exception:
+            return None
+
+    flags = dict(entry.flags or {})
+    mouth = float(cam.get("mouth_moving_ratio", 1) or 1)
+    sim = res.get("replay_similarity")
+    # Set events: best eligible attempt per prescribed piece (event total =
+    # mean of ALL pieces, so nobody ranks by picking easy verses).
     piece_best = False
     set_progress = None
-    try:
-        from app.services.competition_sets import event_progress, is_set, record_piece_result
-        if is_set(comp) and counted and pct is not None:
-            piece_ref = verse_uid
-            for p in (comp.pieces or []):
-                if isinstance(p, dict) and p.get("verse_uid") == verse_uid:
-                    piece_ref = p.get("source_ref", verse_uid)
-                    break
-            piece_best = record_piece_result(db, entry, comp, piece_ref, row.id, pct)
-            set_progress = event_progress(entry, comp)
-    except Exception:
-        pass
+    if set_event:
+        if counted and pct is not None:
+            piece_ref = next((p.get("source_ref", verse_uid) for p in pieces
+                              if p.get("verse_uid") == verse_uid), shloka.source_ref or verse_uid)
+            prev = (entry.piece_results or {}).get(piece_ref) or {}
+            if prev.get("percent") is None or float(prev["percent"]) < pct:
+                key = _store(f"competitions/{comp.id}/{entry.id}/{verse_uid}.{ext}", prev.get("audio_key"))
+                if key is None:
+                    flags["no_audio"] = True
+                piece_best = record_piece_result(db, entry, comp, piece_ref, row.id, pct, key)
+                if mouth < 0.3:
+                    flags["mouth_still"] = True
+                entry.best_at = datetime.now(timezone.utc)
+        set_progress = event_progress(entry, comp)
+        entry.best_percent = set_progress["provisional_total"] if set_progress["submitted"] else None
     is_best = False
-    if counted and pct is not None and (entry.best_percent is None or pct > entry.best_percent):
+    if not set_event and counted and pct is not None and (entry.best_percent is None or pct > entry.best_percent):
         entry.best_percent = pct
         entry.best_at = datetime.now(timezone.utc)
         entry.best_attempt_id = row.id
-        flags = dict(entry.flags or {})
-        mouth = float(cam.get("mouth_moving_ratio", 1) or 1)
         if mouth < 0.3:
             flags["mouth_still"] = True
-        sim = res.get("replay_similarity")
         if sim is not None and settings.competition_replay_threshold and sim > settings.competition_replay_threshold:
             flags["replay_suspect"] = True
-        entry.flags = flags
-        # Store best audio privately.
-        try:
-            from app.services.storage import PrivateStorageOff, get_storage
-            store = get_storage()
-            key = f"competitions/{comp.id}/{entry.id}.m4a"
-            if entry.audio_key and entry.audio_key != key:
-                try:
-                    store.delete_private(entry.audio_key)
-                except Exception:
-                    pass
-            entry.audio_key = store.store_private(data, key, "audio/mp4")
-        except Exception:
+        key = _store(f"competitions/{comp.id}/{entry.id}.{ext}", entry.audio_key)
+        if key is None:
             flags["no_audio"] = True
-            entry.flags = flags
+        else:
+            entry.audio_key = key
         is_best = True
+    entry.flags = flags
     if counted:
         entry.attempts_counted = (entry.attempts_counted or 0) + 1
     db.commit()
     # Rank.
     rank = None
-    if entry.best_percent is not None:
-        from app.services.competition_sets import is_set as _is_set, rank_entries_sets
-        ordered = rank_entries_sets(db, comp) if _is_set(comp) else svc.rank_entries(db, comp)
-        for i, e in enumerate(ordered):
+    if set_event:
+        from app.services.competition_sets import event_standings
+        for r in event_standings(db, comp, entry.division):
+            if r["learner_id"] == learner.id:
+                rank = r["rank"]
+                break
+    elif entry.best_percent is not None:
+        for i, e in enumerate(svc.rank_entries(db, comp)):
             if e.id == entry.id:
                 rank = i + 1
                 break
-    # Map bands for response (same shape as /recite/score, strict).
-    raw = res.get("lines", [])
-    flat = []
-    for grp in raw:
-        flat.extend(grp if isinstance(grp, list) else [])
-    mapped = [{"t": b.get("t", ""), "band": _band_map(b.get("band", "")),
-               **({"heard": b.get("heard", "")} if b.get("heard") else {})} for b in flat]
-    return {"status": res.get("status", "scored"), "percent": pct, "mode": "strict",
+    # Bands per reference line (same shape as /recite/score, strict).
+    out_lines = []
+    for idx, grp in enumerate(res.get("lines", []) or []):
+        if not isinstance(grp, list):
+            continue
+        out_lines.append({"i": idx, "aksharas": [
+            {"t": b.get("t", ""), "band": _band_map(b.get("band", "")),
+             **({"heard": b.get("heard", "")} if b.get("heard") else {})} for b in grp]})
+    resp = {"status": res.get("status", "scored"), "percent": pct, "mode": "strict",
             "counts": {"ok": int(n.get("green", 0)), "fix": int(n.get("red", 0)),
                        "unclear": int(n.get("amber", 0))},
-            "lines": [{"i": 0, "aksharas": mapped}] if mapped and res.get("status") == "scored" else [],
+            "lines": out_lines if res.get("status") == "scored" else [],
             "tips": [], "perfect": bool(pct == 100.0),
             "heard": res.get("heard", ""),
             "counted": counted, "why_not": "" if counted else why,
             "best_percent": entry.best_percent, "rank": rank, "is_new_best": is_best,
-            "piece_best": piece_best,
+            "piece_best": piece_best, "division": entry.division,
             "set_progress": set_progress}
+    if v2 is not None and v2.status == "scored":
+        resp["components"] = v2.components
+        resp["total"] = v2.total
+        resp["rubric_version"] = v2.as_payload()["rubric_version"]
+    return resp
 
 
 @router.get("/competitions/{comp_id}/results")
-def get_results(comp_id: str, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+def get_results(comp_id: str, division: str = Query(""), learner: Learner = Depends(require_learner),
+                db: Session = Depends(get_db)):
+    from app.services.competition_sets import event_progress, is_set, norm_division
     comp = db.query(Competition).filter(Competition.id == comp_id).first()
     if comp is None:
         raise HTTPException(status_code=404, detail="No such competition.")
     if comp.status != "published":
         raise HTTPException(status_code=409, detail="Results are not out yet.")
-    ordered = svc.rank_entries(db, comp)
-    # Re-rank by final_rank when published.
-    rows_db = db.query(CompetitionEntry).filter(
-        CompetitionEntry.competition_id == comp.id,
-        CompetitionEntry.final_rank.is_not(None)).order_by(CompetitionEntry.final_rank).limit(10).all()
-    rows = [{"rank": e.final_rank, "public_name": e.public_name, "percent": e.best_percent}
-            for e in rows_db]
-    me = None
     mine = db.query(CompetitionEntry).filter(
         CompetitionEntry.competition_id == comp.id, CompetitionEntry.learner_id == learner.id).first()
+    set_event = is_set(comp)
+    q = db.query(CompetitionEntry).filter(
+        CompetitionEntry.competition_id == comp.id,
+        CompetitionEntry.final_rank.is_not(None))
+    div = None
+    if set_event:
+        div = norm_division(division or (mine.division if mine else ""))
+        q = q.filter(CompetitionEntry.division == div)
+
+    def score(e):
+        return event_progress(e, comp)["provisional_total"] if set_event else e.best_percent
+
+    rows = [{"rank": e.final_rank, "public_name": e.public_name, "percent": score(e)}
+            for e in q.order_by(CompetitionEntry.final_rank).limit(10).all()]
+    me = None
     if mine is not None:
         code = None
         if mine.final_rank in (1, 2, 3):
             c = db.query(Certificate).filter(Certificate.competition_id == comp.id,
                                              Certificate.learner_id == learner.id).first()
             code = c.code if c else None
-        me = {"rank": mine.final_rank, "percent": mine.best_percent, "certificate_code": code}
-    return {"rows": rows, "me": me}
+        me = {"rank": mine.final_rank, "percent": score(mine), "certificate_code": code,
+              "division": mine.division}
+    return {"rows": rows, "me": me, "division": div, "is_set": set_event}
 
 
 @router.get("/competitions/master")
@@ -487,7 +630,7 @@ def admin_create(body: dict, _ok: bool = Depends(require_admin), db: Session = D
     if row is None:
         row = Competition(slug=slug, kind=kind, opens_at=o_u, closes_at=c_u,
                           results_at=r_u, pieces=pieces, status="scheduled",
-                          rules_version=settings.competition_rules_version)
+                          rules_version=svc.LEGACY_EVENT_RULES)
         db.add(row)
     else:
         row.pieces = pieces
