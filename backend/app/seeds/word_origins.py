@@ -15,7 +15,8 @@ backend.
 
 The tables also hold rows that come from no file: the daily pipeline writes
 origins with ``batch = "auto"`` and routes with ``checked_by = "page"``.
-Those are left exactly as they are.
+Those are left exactly as they are; a file item that reuses one of their
+ids or dates is skipped.
 """
 
 from __future__ import annotations
@@ -168,20 +169,30 @@ def seed_word_origins(db) -> dict:
 
     # Rows the daily pipeline wrote (services/daily_content.py) come from no
     # file and are not this loader's: an origin with batch "auto", a route
-    # with checked_by "page". They are never withdrawn here and keep their
-    # dates; a file item that wants a date one of them holds is skipped.
+    # with checked_by "page". They are never withdrawn or re-dated here and
+    # keep their dates. A file item that reuses the id of one of them, or
+    # wants a date one of them holds, is skipped. (2026-10-14: batch-0001's
+    # ratri reused the pipeline's ratri, was skipped for its own date, and
+    # left the pipeline row's date uncounted; mantra then took that date and
+    # the unique index stopped the boot.)
     def _auto_origin(row) -> bool:
         return (row.batch or "") == AUTO_BATCH
 
     def _page_route(rrow) -> bool:
         return (getattr(rrow, "checked_by", "") or "") == PAGE_CHECKED
 
-    auto_dates = {row.scheduled_date: oid for oid, row in origin_rows.items()
-                  if _auto_origin(row) and row.scheduled_date and oid not in want_origins}
-    for oid in [o for o, f in want_origins.items() if f["scheduled_date"] in auto_dates]:
-        logger.warning("word_origins: %s wants %s, which the pipeline's %s holds; skipped",
-                       oid, want_origins[oid]["scheduled_date"],
-                       auto_dates[want_origins[oid]["scheduled_date"]])
+    auto_ids = {oid for oid, row in origin_rows.items() if _auto_origin(row)}
+    auto_dates = {origin_rows[oid].scheduled_date: oid for oid in auto_ids
+                  if origin_rows[oid].scheduled_date}
+    for oid in list(want_origins):
+        sched = want_origins[oid]["scheduled_date"]
+        if oid in auto_ids:
+            logger.warning("word_origins: %s is already the pipeline's word; skipped", oid)
+        elif sched in auto_dates:
+            logger.warning("word_origins: %s wants %s, which the pipeline's %s holds; skipped",
+                           oid, sched, auto_dates[sched])
+        else:
+            continue
         del want_origins[oid]
         for rid in [r for r, f in want_routes.items() if f["origin_id"] == oid]:
             del want_routes[rid]

@@ -340,6 +340,66 @@ def test_loader_leaves_pipeline_rows_alone(client):
             db.close()
 
 
+def test_a_file_cannot_take_over_a_pipeline_word(client, tmp_path):
+    """A file item that reuses the id of a word the daily pipeline stored is
+    skipped, and that word keeps its date, so no other file item can take it.
+    2026-10-14: batch-0001's ratri reused the pipeline's ratri and was skipped
+    for its own date; mantra then wanted the pipeline ratri's date and the
+    unique index stopped production at boot."""
+    from app.db import SessionLocal
+    from app.models import WordOrigin, WordRoute
+
+    def item(oid, mw_key):
+        return {"id": oid, "status": "approved", "mw_key": mw_key, "gloss": "x",
+                "attested": "", "note": "",
+                "routes": [{"id": oid + ".en.x", "status": "approved", "lang": "en",
+                            "lang_name": "English", "word": oid, "script": "latin",
+                            "gloss": "x", "kind": "loan", "confidence": "certain",
+                            "hops": [], "sources": ["ahd"], "lookup": oid,
+                            "checked_on": "2026-10-14", "checked_by": "rule"}]}
+
+    folder = tmp_path / "reused"
+    folder.mkdir()
+    for p in DATA_DIR.glob("batch-*.json"):
+        (folder / p.name).write_bytes(p.read_bytes())
+    (folder / "batch-9999.json").write_text(json.dumps({
+        "batch": "9999", "start_date": "2999-01-01",
+        "items": [item("test-first", "yoga"), item("test-reused", "nara")],
+    }), encoding="utf-8")
+    # test-reused sits on test-first's day; test-holder on test-reused's.
+    pipeline = {"test-reused": "2999-01-01", "test-holder": "2999-01-02"}
+    start = _table()
+    db = SessionLocal()
+    try:
+        for oid, day in pipeline.items():
+            db.add(WordOrigin(id=oid, batch="auto", rank=0, scheduled_date=day,
+                              mw_key="deva", sanskrit_dev="x", sanskrit_iast="x",
+                              status="approved"))
+        db.commit()
+    finally:
+        db.close()
+    try:
+        before = _table()
+        _seed_from(folder)
+        after = _table()
+        assert "test-first" not in after
+        for oid in pipeline:
+            assert after[oid] == before[oid], oid
+    finally:
+        db = SessionLocal()
+        try:
+            ids = [*pipeline, "test-first"]
+            for rr in db.query(WordRoute).filter(WordRoute.origin_id.in_(ids)).all():
+                db.delete(rr)
+            for row in db.query(WordOrigin).filter(WordOrigin.id.in_(ids)).all():
+                db.delete(row)
+            db.commit()
+        finally:
+            db.close()
+        _seed_from(DATA_DIR)
+    assert _table() == start
+
+
 def test_a_later_batch_cannot_take_over_an_origin(client, tmp_path):
     """A second file that reuses an origin id is skipped with a warning: the
     first file's word keeps its date, its meaning and its "Found in"."""
