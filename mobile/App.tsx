@@ -47,6 +47,7 @@ import UpdateBanner from "./src/components/UpdateBanner";import { AuthProvider, 
 import { TypeScaleProvider } from "./src/hooks/useTypeScale";
 import { AskProvider } from "./src/ask/AskProvider";
 
+import { CommunityProvider } from "./src/community/CommunityProvider";
 import MainTabs from "./src/navigation/AppDrawer";
 import { loadPrefs } from "./src/services/prefs";
 import ChallengeScreen from "./src/screens/Challenge";
@@ -274,6 +275,7 @@ export default function App() {
             <AuthProvider>
               <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
+                <CommunityProvider>
                 <AskProvider routeName={routeName}>
                   {/* Play share links (handover_games_daily_multiplayer §11). */}
                   <LinkNav navRef={navRef} />
@@ -282,6 +284,7 @@ export default function App() {
                   {/* OTA: the restart prompt when an update has downloaded. */}
                   <UpdateBanner />
                 </AskProvider>
+                </CommunityProvider>
               </NavigationContainer>
               </AppErrorBoundary>
               <StatusBar style="dark" />

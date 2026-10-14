@@ -92,6 +92,7 @@ export function useAskContext(surface: string, subject: string): void {
 
 /** Screens that own the bottom of the display; the bubble would cover them. */
 const HIDDEN_ROUTES = new Set([
+  "Group",
   "Conversation",
   "Writing",
   "DailyWord",

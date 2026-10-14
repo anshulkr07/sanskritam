@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -31,7 +31,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 6,
+      "versionCode": 7,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -87,8 +87,22 @@
         {
           "android": {
             "enableMinifyInReleaseBuilds": true,
-            "enableShrinkResourcesInReleaseBuilds": true
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "minSdkVersion": 24
           }
+        }
+      ],
+      "@stream-io/video-react-native-sdk",
+      [
+        "@config-plugins/react-native-webrtc",
+        {
+          "microphonePermission": "Allow Sanskritam to use your microphone in Sanskrit audio rooms and calls."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Choose a photo to share with your Sanskrit study group or friend."
         }
       ]
     ],

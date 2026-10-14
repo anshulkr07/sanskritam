@@ -111,6 +111,9 @@ def create_app() -> FastAPI:
         )
         return response
 
+    from app.routers.community import router as community_router
+    app.include_router(community_router, tags=["Group"])
+
     # Register routers
     from app.voice_lab.router import router as voice_lab_router
     app.include_router(voice_lab_router, tags=["Voice Lab"])

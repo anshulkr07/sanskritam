@@ -9,6 +9,10 @@ const compiled = ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/use
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText;
 const tick = () => new Promise(resolve => setImmediate(resolve));
+const inputModule = { exports: {} };
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/audioInput.ts", import.meta.url), "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+}).outputText, { exports: inputModule.exports });
 function deferred() {
   let resolve, reject;
   const promise = new Promise((a, b) => { resolve = a; reject = b; });
@@ -57,6 +61,7 @@ function harness({ permission = async () => {}, ticket = async () => ({ ticket: 
     "react-native": { AppState: appState },
     "../api/client": { request: async (...args) => { requests.push(args); return ticket(...args); } },
     "../config": { BASE_URL: "http://localhost:8001" },
+    "./audioInput": inputModule.exports,
     "./microphone": {
       microphonePermission: permission,
       startMicrophone: async onBuffer => {
@@ -85,6 +90,7 @@ function harness({ permission = async () => {}, ticket = async () => ({ ticket: 
     render, sockets, audio, requests,
     lifecycle(value) { appState.currentState = value; lifecycle(value); },
     timeout() { assert.equal(timers.size, 1, "Startup must have a bounded wait"); const [id, timer] = [...timers][0]; timers.delete(id); timer.callback(); },
+    echoCooldown() { const entry = [...timers].find(([, timer]) => timer.ms === 500); assert.ok(entry); timers.delete(entry[0]); entry[1].callback(); },
     buffer: data => buffers(data),
     get micStarts() { return micStarts; }, get micStops() { return micStops; },
     get timers() { return timers.size; },
@@ -212,3 +218,33 @@ console.log("Voice Lab startup: permission focus, cancellation, timeouts, retry,
   await exports.microphonePermission(); assert.equal(permissionRequests, 1);
 }
 console.log("Android voice startup: permission activity/resume, cancellation and native build capability checks passed.");
+
+// Speaker output, queued decode and echo tail must never go back into STT.
+{
+  const h = harness(); await h.render().start(); h.sockets[0].open();
+  h.sockets[0].message({ type: "ready" }); await tick();
+  const speech = new Int16Array(1600).fill(5000);
+  const buffer = { data: speech.buffer, channels: 1, sampleRate: 16000 };
+  h.buffer(buffer);
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value));
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  h.buffer(buffer);
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Never stream the speaker echo");
+  h.sockets[0].message({ type: "turn_complete" }); h.buffer(buffer);
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Server completion precedes playback completion");
+  h.render().onPlaybackBusy(false); h.buffer(buffer);
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Keep the mic gated through the echo tail");
+  h.echoCooldown(); h.buffer(buffer);
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value), "Resume real input after playback and echo tail");
+  h.render().stop();
+}
+// Short speech followed by a quiet pause sends exactly one finalization signal.
+{
+  const h = harness(); await h.render().start(); h.sockets[0].open(); h.sockets[0].message({ type: "ready" }); await tick();
+  const frame = data => ({ data: data.buffer, sampleRate: 16000, channels: 1 });
+  for (let i = 0; i < 3; i++) h.buffer(frame(new Int16Array(1600).fill(4000)));
+  for (let i = 0; i < 12; i++) h.buffer(frame(new Int16Array(1600)));
+  assert.equal(h.sockets[0].messages.filter(value => typeof value === "string" && JSON.parse(value).type === "end_audio").length, 1);
+  h.render().stop();
+}
+console.log("Voice input: automatic turn finalization, speaker echo suppression, playback drain and echo-tail recovery passed.");

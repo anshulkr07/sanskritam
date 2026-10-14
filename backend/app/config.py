@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 from pydantic_settings import BaseSettings
+from pydantic import Field, AliasChoices
 
 # Where .env files are read from, LOWEST priority first — pydantic-settings
 # lets a later file override an earlier one, and real environment variables
@@ -417,6 +418,12 @@ class Settings(BaseSettings):
     public_base_url: str = ""
     android_cert_fingerprints: str = ""
     apple_app_ids: str = ""
+
+    # Audio-only community calls; secrets stay on the server.
+    stream_api_key: str = Field(
+        default="", validation_alias=AliasChoices("STREAM_API_KEY", "NEXT_PUBLIC_STREAM_API_KEY")
+    )
+    stream_api_secret: str = ""
 
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 

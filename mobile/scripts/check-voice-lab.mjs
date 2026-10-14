@@ -11,7 +11,7 @@ const module = { exports: {} };
 vm.runInNewContext(compiled, { exports: module.exports });
 const html = module.exports.AUDIO_HTML;
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
-const scheduled = [], errors = [];
+const scheduled = [], errors = [], playback = [];
 let finishDecode;
 const context = {
   currentTime: 1, destination: {},
@@ -24,7 +24,11 @@ const context = {
     return s;
   },
 };
-const window = { AudioContext: function () { return context; }, addEventListener() {}, ReactNativeWebView: { postMessage: raw => errors.push(JSON.parse(raw)) } };
+const window = { AudioContext: function () { return context; }, addEventListener() {}, ReactNativeWebView: { postMessage: raw => {
+  const message = JSON.parse(raw);
+  if (message.error) errors.push(message.error);
+  if (typeof message.voiceLabPlaybackBusy === "boolean") playback.push(message.voiceLabPlaybackBusy);
+} } };
 vm.runInNewContext(script, { window, parent: {}, atob: data => Buffer.from(data, "base64").toString("binary"), Uint8Array, DataView, Set, Promise, Math, Error });
 const command = window.voiceLabCommand;
 const tick = () => new Promise(resolve => setImmediate(resolve));
@@ -34,10 +38,12 @@ command({ type: "audio", codec: "pcm", data: pcm, sample_rate: 24000 });
 command({ type: "audio", codec: "pcm", data: pcm, sample_rate: 24000 });
 await tick();
 assert.equal(scheduled.length, 2);
+assert.deepEqual(playback, [true], "Mic must pause as soon as audio is queued, and stay paused during playback");
 assert.equal(scheduled[0].detune.value, 1200);
 assert.ok(Math.abs(scheduled[1].at - scheduled[0].at - 0.05) < 1e-9, "Scheduling must account for detune duration");
 command({ type: "stop" });
 assert.ok(scheduled.every(s => s.stopped), "Interrupt must stop scheduled audio");
+assert.equal(playback.at(-1), false, "Stopping playback must release its busy state");
 command({ type: "audio", codec: "wav", data: "AAAA" });
 await tick();
 assert.ok(finishDecode);
@@ -49,5 +55,10 @@ command({ type: "settings", pitch: 0, loudness: 1 });
 command({ type: "audio", codec: "pcm", data: pcm, sample_rate: 24000 });
 await tick();
 assert.equal(scheduled.length, 3, "Playback must recover after interruption");
+assert.equal(playback.at(-1), true);
+scheduled[0].onended();
+assert.equal(playback.at(-1), true, "An old source ending must not release the current reply");
+scheduled[2].onended();
+assert.equal(playback.at(-1), false, "Release mic only after the last scheduled source actually ends");
 assert.equal(errors.length, 0);
 console.log("Voice Lab playback: scheduling, interruption, decode cancellation and recovery passed.");

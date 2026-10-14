@@ -45,7 +45,7 @@ def test_every_table_referencing_learners_is_deleted_with_the_account():
         for t in Base.metadata.tables.values()
         if any(fk.target_fullname.split(".")[0] in owned for fk in t.foreign_keys)
     }
-    assert grandchildren <= {"conversation_turns", "match_participants", "match_events", "friend_goal_rounds"}
+    assert grandchildren <= {"conversation_turns", "match_participants", "match_events", "friend_goal_rounds", "community_members", "community_messages", "community_media"}
 
 
 def test_delete_me_removes_rows_in_every_owned_table(client):

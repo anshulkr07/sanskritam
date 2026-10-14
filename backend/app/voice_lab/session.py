@@ -6,7 +6,7 @@ from urllib.parse import urlencode
 
 from app.config import settings
 from .config import LabConfig
-from .providers import SpeechOutput, connect_ws, gemini_client, gemini_tokens, live_config, sarvam_tokens
+from .providers import SpeechOutput, connect_ws, gemini_client, gemini_tokens, live_config, sarvam_tokens, provider_error, search_unavailable, vertex_client, grounded_search
 from .sanskrit_phonetics import take_clauses
 
 
@@ -26,6 +26,7 @@ class VoicePipelineSession:
         self.turn = None
         self.upstream = None
         self.tts = SpeechOutput()
+        self.last_stt_request = None
 
     async def start(self):
         if not settings.sarvam_api_key:
@@ -45,7 +46,8 @@ class VoicePipelineSession:
                     raise RuntimeError("Set HF_TOKEN to use your signed-in Hugging Face GPU quota.")
         query = {"language-code": "sa-IN", "model": settings.sarvam_stt_model,
                  "mode": "transcribe", "sample_rate": 16000, "input_audio_codec": "pcm_s16le",
-                 "high_vad_sensitivity": "true", "vad_signals": "true", "flush_signal": "true"}
+                 "high_vad_sensitivity": "true", "first_turn_min_speech_frames": "2",
+                 "vad_signals": "true", "flush_signal": "true"}
         endpoint = settings.sarvam_realtime_url or "wss://api.sarvam.ai/speech-to-text/ws"
         try:
             self.upstream = await connect_ws(endpoint + "?" + urlencode(query))
@@ -66,6 +68,10 @@ class VoicePipelineSession:
                 if msg.get("type") == "events" and data.get("signal_type") == "START_SPEECH":
                     await self.interrupt()
                 elif msg.get("type") == "data" and data.get("transcript", "").strip():
+                    request_id = data.get("request_id")
+                    if request_id and request_id == self.last_stt_request:
+                        continue
+                    self.last_stt_request = request_id
                     text = data["transcript"].strip()
                     await self.send({"type": "transcript", "role": "user", "text": text, "final": True})
                     await self.text(text)
@@ -108,6 +114,7 @@ class VoicePipelineSession:
         speech = filler = None
         response = ""
         try:
+            await self.send({"type": "response_started"})
             await self.meter("llm_calls", 1)
             if c.pipeline == 4:
                 # Conservative sandbox reservation; includes search/reasoning.
@@ -154,6 +161,8 @@ class VoicePipelineSession:
             else:
                 await asyncio.wait_for(queue.put(None), 35)
                 await speech
+            if not response.strip():
+                raise RuntimeError("The model returned no spoken answer. Try another question.")
             self.history.append({"role": "assistant", "content": response})
             await self.send({"type": "turn_complete"})
         except asyncio.CancelledError:
@@ -161,8 +170,7 @@ class VoicePipelineSession:
         except Exception as exc:
             await self.tts.close()
             await self.send({"type": "interrupted"})
-            message = str(exc) if isinstance(exc, RuntimeError) else "Provider request failed. Check the selected model, voice and server configuration."
-            await self.send({"type": "error", "message": message})
+            await self.send({"type": "error", "message": provider_error(exc)})
         finally:
             await cancel(filler)
             await cancel(speech)
@@ -185,20 +193,46 @@ class OpenSanskritSession(VoicePipelineSession):
 
 class HybridSession(VoicePipelineSession):
     def tokens(self, config):
-        return gemini_tokens(config, self.history)
+        return gemini_tokens(config, self.history, self.send)
 
 
 class GeminiNativeSession(VoicePipelineSession):
     async def start(self):
         self.client = gemini_client()
+        self.search_client = None
+        self.search_tasks = {}
         self.connection = self.client.aio.live.connect(model=self.config.live_model, config=live_config(self.config))
-        self.upstream = await self.connection.__aenter__()
+        try:
+            self.upstream = await self.connection.__aenter__()
+        except Exception as exc:
+            if not self.config.web_search or not search_unavailable(exc):
+                raise RuntimeError(provider_error(exc)) from exc
+            # Keep grounding via the existing Vertex service if the built-in
+            # Live search quota is unavailable. No changes to native audio.
+            self.search_client = vertex_client()
+            config = self.config if self.search_client else self.config.model_copy(update={"web_search": False})
+            self.connection = self.client.aio.live.connect(model=config.live_model, config=live_config(config, search_fallback=bool(self.search_client)))
+            try:
+                self.upstream = await self.connection.__aenter__()
+            except Exception as retry:
+                raise RuntimeError(provider_error(retry)) from retry
+            message = "Web search is using the configured backup service for this call." if self.search_client else "Google Search is unavailable for this provider account. The voice call continues without web grounding."
+            await self.send({"type": "notice", "message": message})
         self.receiver = asyncio.create_task(self.listen())
 
     async def listen(self):
         try:
             while True:
                 async for response in self.upstream.receive():
+                    if response.tool_call and self.search_client:
+                        for call in response.tool_call.function_calls or []:
+                            if call.id not in self.search_tasks:
+                                task = asyncio.create_task(self.search(call))
+                                self.search_tasks[call.id] = task
+                                task.add_done_callback(lambda _, call_id=call.id: self.search_tasks.pop(call_id, None))
+                    if response.tool_call_cancellation:
+                        for call_id in response.tool_call_cancellation.ids or []:
+                            await cancel(self.search_tasks.pop(call_id, None))
                     content = response.server_content
                     if not content:
                         continue
@@ -217,17 +251,39 @@ class GeminiNativeSession(VoicePipelineSession):
                         await self.send({"type": "turn_complete"})
         except asyncio.CancelledError:
             raise
-        except Exception:
-            await self.send({"type": "fatal", "message": "Gemini Live disconnected. End the call and reconnect."})
+        except Exception as exc:
+            await self.send({"type": "fatal", "message": provider_error(exc)})
 
     async def audio(self, pcm):
         from google.genai import types
         await self.upstream.send_realtime_input(audio=types.Blob(data=pcm, mime_type="audio/pcm;rate=16000"))
 
+    async def search(self, call):
+        from google.genai import types
+        try:
+            query = (call.args or {}).get("query", "")
+            if call.name != "web_search" or not isinstance(query, str) or not query.strip() or len(query) > 2000:
+                raise RuntimeError("Invalid web search request.")
+            await self.meter("llm_calls", 1)
+            await self.meter("gemini_inr", 1)
+            result = await grounded_search(query, self.search_client)
+            await self.send({"type": "notice", "message": f"Web search checked {len(result['sources'])} source pages."})
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:
+            result = {"error": provider_error(exc)}
+            await self.send({"type": "notice", "message": "Web search could not complete. The voice call continues."})
+        response = types.FunctionResponse(id=call.id, name=call.name, response=result)
+        if self.config.live_model.startswith("gemini-3.8"):
+            response.scheduling = types.FunctionResponseScheduling.WHEN_IDLE
+        with contextlib.suppress(Exception):
+            await self.upstream.send_tool_response(function_responses=[response])
+
     async def end_audio(self):
         await self.upstream.send_realtime_input(audio_stream_end=True)
 
     async def text(self, text):
+        await self.send({"type": "response_started"})
         await self.upstream.send_client_content(turns={"role": "user", "parts": [{"text": text}]}, turn_complete=True)
 
     async def interrupt(self):
@@ -241,6 +297,10 @@ class GeminiNativeSession(VoicePipelineSession):
 
     async def close(self):
         await cancel(self.receiver)
+        for task in list(getattr(self, "search_tasks", {}).values()):
+            await cancel(task)
+        if getattr(self, "search_client", None):
+            await self.search_client.aio.aclose()
         if getattr(self, "upstream", None):
             await self.connection.__aexit__(None, None, None)
         if getattr(self, "client", None):

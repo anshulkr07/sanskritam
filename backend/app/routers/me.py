@@ -104,7 +104,10 @@ def learner_owned_models() -> tuple:
         UsageEvent, WritingAttempt, CosmeticGrant, Friendship, ReciteCalibration,
     )
 
+    from app.community_models import CommunityProfile, CommunityConversation, CommunityMember, CommunityMessage, CommunityMedia, CommunityRoom, CommunityEvent, CommunityTicket
+
     return (
+        CommunityProfile, CommunityConversation, CommunityMember, CommunityMessage, CommunityMedia, CommunityRoom, CommunityEvent, CommunityTicket,
         UsageEvent, Token, Attempt, PronunciationAttempt, WritingAttempt,
         ConversationSession, DailyActivity, DailyWordPlay, PushToken,
         NotificationSend, Entitlement, ReviewItem, ContentReport, GameResult,
@@ -177,6 +180,9 @@ def delete_me(
     # Empty quick-match rooms they hosted, and seats in live matches.
     db.query(LiveMatch).filter(LiveMatch.host_id == learner.id,
                                LiveMatch.status == "lobby").delete(synchronize_session=False)
+
+    from app.services.community_lifecycle import delete_account
+    delete_account(db, learner.id)
 
     # Finally delete the learner itself
     db.delete(learner)

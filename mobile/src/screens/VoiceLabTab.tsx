@@ -3,6 +3,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { color, fill, sanskritFace } from "../theme";
+import { useCommunity } from "../community/CommunityProvider";
 import AudioSink from "../voiceLab/AudioSink";
 import { AudioSinkHandle } from "../voiceLab/audioRuntime";
 import { BASE_CONFIG, LabConfig, PERSONA_NAMES, PIPELINES, PRESETS, voices } from "../voiceLab/config";
@@ -37,6 +38,7 @@ function NumberControl({ label, value, min, max, step, onChange }: { label: stri
 }
 
 export default function VoiceLabTab() {
+  const community = useCommunity();
   const [config, setConfig] = useState<LabConfig>({ ...BASE_CONFIG });
   const [sandbox, setSandbox] = useState(false);
   const [draft, setDraft] = useState("");
@@ -63,16 +65,22 @@ export default function VoiceLabTab() {
       <Choices label="Your companion" values={Object.values(PERSONA_NAMES)} selected={PERSONA_NAMES[config.persona]}
         onChange={value => { const key = (Object.keys(PERSONA_NAMES) as LabConfig["persona"][]).find(k => PERSONA_NAMES[k] === value)!; setConfig({ ...PRESETS[key] }); }} />
       <View style={styles.callPanel}>
-        <Text accessibilityLiveRegion="polite" style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : "Listening · बोलतु") : lab.state === "connecting" ? lab.connectionStatus : lab.error ? "Call could not start" : "Ready when you are"}</Text>
+        <Text accessibilityLiveRegion="polite" style={styles.callTitle}>{lab.state === "live" ? (lab.muted ? "Microphone muted" : lab.speaking ? "Speaking · microphone paused" : lab.thinking ? "Preparing reply…" : "Listening · बोलतु") : lab.state === "connecting" ? lab.connectionStatus : lab.error ? "Call needs attention" : "Ready when you are"}</Text>
         <Text style={styles.callCaption}>{PIPELINES[config.pipeline - 1]} · {config.speaker}</Text>
-        <Pressable accessibilityRole="button" style={styles.callButton} onPress={() => lab.state === "idle" ? void lab.start() : lab.stop()}>
+        <Pressable accessibilityRole="button" disabled={!!community.active} style={[styles.callButton, !!community.active && { opacity: 0.45 }]} onPress={() => lab.state === "idle" ? void lab.start() : lab.stop()}>
           <Text style={styles.selectedText}>{lab.state === "idle" ? "Start voice call" : lab.state === "connecting" ? "Cancel" : "End call"}</Text>
         </Pressable>
+        {!!community.active && <Text style={styles.body}>Leave your Group audio call to start Voice Lab.</Text>}
         {!!lab.error && <Text accessibilityRole="alert" style={styles.error}>{lab.error}</Text>}
         {lab.state === "live" && <View style={styles.choices}>
           <Pressable accessibilityRole="button" style={styles.callButton} onPress={lab.toggleMute}><Text style={styles.selectedText}>{lab.muted ? "Unmute" : "Mute"}</Text></Pressable>
+          {!lab.speaking && !lab.muted && <Pressable accessibilityRole="button" style={styles.callButton} onPress={lab.endAudio}><Text style={styles.selectedText}>Done speaking</Text></Pressable>}
           <Pressable accessibilityRole="button" style={styles.callButton} onPress={lab.interrupt}><Text style={styles.selectedText}>Interrupt reply</Text></Pressable>
         </View>}
+        {lab.state === "live" && <>
+          <View accessibilityLabel={`Microphone level ${Math.round(lab.micLevel * 100)} percent`} style={styles.micTrack}><View style={[styles.micLevel, { width: `${Math.max(1, lab.micLevel * 100)}%` }]} /></View>
+          <Text style={styles.callCaption}>The microphone pauses during replies to prevent speaker echo. Tap Interrupt reply to speak.</Text>
+        </>}
       </View>
       {!!lab.notice && <Text accessibilityLiveRegion="polite" style={styles.note}>{lab.notice}</Text>}
       <Pressable accessibilityRole="button" accessibilityState={{ expanded: sandbox }} style={styles.sandboxButton} onPress={() => setSandbox(!sandbox)}>
@@ -124,7 +132,7 @@ export default function VoiceLabTab() {
         <Pressable accessibilityRole="button" style={styles.selected} onPress={() => { if (draft.trim()) { lab.send({ type: "text", text: draft.trim() }); setDraft(""); } }}><Text style={styles.sendText}>Send message</Text></Pressable>
       </View>}
     </ScrollView>
-    <AudioSink ref={sink} onError={lab.setError} />
+    <AudioSink ref={sink} onError={lab.onAudioError} onPlaybackBusy={lab.onPlaybackBusy} />
   </SafeAreaView>;
 }
 
@@ -142,6 +150,8 @@ const styles = StyleSheet.create({
   callPanel: { backgroundColor: fill.teal, padding: 20, borderRadius: 20, gap: 14 },
   callTitle: { color: color.bg, fontFamily: "Nunito_700Bold", fontSize: 22 },
   callCaption: { color: color.bg, fontFamily: "Nunito_400Regular", fontSize: 13 },
+  micTrack: { height: 5, borderRadius: 3, backgroundColor: "rgba(255,255,255,0.2)", overflow: "hidden" },
+  micLevel: { height: 5, backgroundColor: color.bg, borderRadius: 3 },
   callButton: { minHeight: 48, padding: 12, borderRadius: 12, borderWidth: 1, borderColor: color.bg, alignItems: "center", justifyContent: "center" },
   sandboxButton: { minHeight: 48, justifyContent: "center", borderBottomWidth: 1, borderColor: color.border },
   row: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12 },

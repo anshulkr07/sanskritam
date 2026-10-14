@@ -2,6 +2,8 @@
 import asyncio
 import base64
 import json
+import io
+import wave
 
 import pytest
 from fastapi import FastAPI
@@ -152,7 +154,7 @@ def test_sarvam_tts_protocol_and_completion(monkeypatch):
             async def send(self, raw): messages.append(json.loads(raw))
             async def recv(self):
                 if not sent:
-                    return json.dumps({"type": "audio", "data": {"audio": base64.b64encode(b"wav").decode()}})
+                    return json.dumps({"type": "audio", "data": {"audio": base64.b64encode(wav_bytes(b"\x01\x00" * 160)).decode()}})
                 return json.dumps({"type": "event", "data": {"event_type": "final"}})
             async def close(self): pass
         async def connect(url):
@@ -165,9 +167,206 @@ def test_sarvam_tts_protocol_and_completion(monkeypatch):
         assert [m["type"] for m in messages] == ["config", "text", "flush"]
         assert messages[0]["data"]["output_audio_codec"] == "wav"
         assert messages[1]["data"]["text"] == "రామ."
-        assert sent[0]["codec"] == "wav"
+        assert sent[0]["codec"] == "pcm"
+        assert base64.b64decode(sent[0]["data"]) == b"\x01\x00" * 160
         await output.close()
     asyncio.run(run())
+
+
+def wav_bytes(pcm):
+    result = io.BytesIO()
+    with wave.open(result, "wb") as wav:
+        wav.setnchannels(1); wav.setsampwidth(2); wav.setframerate(24000)
+        wav.writeframes(pcm)
+    return result.getvalue()
+
+
+def test_sarvam_fragmented_wav_header_and_odd_audio_packets():
+    from app.voice_lab.wav_stream import WavStream
+    pcm = b"\x01\x00\x02\x00" * 100
+    raw = bytearray(wav_bytes(pcm))
+    raw[4:8] = b"\xff" * 4; raw[40:44] = b"\xff" * 4
+    stream = WavStream()
+    pieces = [bytes(raw[:17]), bytes(raw[17:44]), bytes(raw[44:101]), bytes(raw[101:])]
+    output = [stream.feed(piece) for piece in pieces]
+    assert output[:2] == [b"", b""], "Do not try to play the WAV header"
+    assert b"".join(output) == pcm
+    assert all(len(piece) % 2 == 0 for piece in output)
+    assert stream.sample_rate == 24000
+    stream.finish()
+
+
+def test_wav_empty_or_incomplete_is_explicit():
+    from app.voice_lab.wav_stream import WavStream
+    for raw in (b"", wav_bytes(b""), wav_bytes(b"\x01\x00")[:-1]):
+        stream = WavStream(); stream.feed(raw)
+        with pytest.raises(RuntimeError, match="incomplete or empty"):
+            stream.finish()
+
+
+def test_wav_socket_format_persists_across_clauses_and_accepts_new_headers():
+    from app.voice_lab.wav_stream import WavStream
+    stream = WavStream()
+    first, second = b"\x01\x00" * 20, b"\x02\x00" * 30
+    stream.begin_turn(); assert stream.feed(wav_bytes(first)) == first; stream.finish()
+    stream.begin_turn(); assert stream.feed(second) == second; stream.finish()
+    stream.begin_turn(); assert stream.feed(wav_bytes(first)) == first; stream.finish()
+
+
+def test_stt_audio_flush_and_repeated_request_deduplication():
+    async def run():
+        frames, turns, sent = [], [], []
+        class Input:
+            async def send(self, frame): frames.append(json.loads(frame))
+            def __aiter__(self):
+                async def messages():
+                    for _ in range(2):
+                        yield json.dumps({"type": "data", "data": {"request_id": "same", "transcript": "नमस्ते।"}})
+                return messages()
+        async def send(message): sent.append(message)
+        async def meter(*args): pass
+        session = VoicePipelineSession(LabConfig(), send, meter)
+        session.upstream = Input()
+        async def text(value): turns.append(value)
+        session.text = text
+        await session.audio(b"\x01\x00" * 160)
+        await session.end_audio()
+        assert base64.b64decode(frames[0]["audio"]["data"]) == b"\x01\x00" * 160
+        assert frames[-1] == {"type": "flush"}
+        await session.listen()
+        assert turns == ["नमस्ते।"]
+    asyncio.run(run())
+
+
+def test_empty_model_answer_reports_error_instead_of_silent_completion():
+    async def run():
+        messages = []
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        class Empty(VoicePipelineSession):
+            async def tokens(self, config):
+                if False: yield ""
+        session = Empty(LabConfig(), send, meter)
+        await session.respond("नमस्ते।")
+        assert messages[0]["type"] == "response_started"
+        assert messages[-1]["type"] == "error"
+        assert "no spoken answer" in messages[-1]["message"]
+        assert not any(message["type"] == "turn_complete" for message in messages)
+    asyncio.run(run())
+
+
+def test_hybrid_current_model_search_quota_and_configured_vertex_fallback(monkeypatch):
+    from types import SimpleNamespace
+    from app.voice_lab import providers
+    async def run():
+        calls, notices, closed = [], [], []
+        class Failure(Exception):
+            def __init__(self, code): self.code = code
+            def __str__(self): return "search quota exhausted" if self.code == 429 else "service unavailable"
+        class Models:
+            def __init__(self, vertex=False): self.vertex = vertex
+            async def generate_content_stream(self, **kwargs):
+                calls.append((self.vertex, json.loads(json.dumps(kwargs))))
+                if not self.vertex: raise Failure(429 if len(calls) == 1 else 503)
+                async def tokens(): yield SimpleNamespace(text="नमस्ते।")
+                return tokens()
+        def client(vertex=False):
+            async def close(): closed.append(vertex)
+            return SimpleNamespace(aio=SimpleNamespace(models=Models(vertex), aclose=close))
+        monkeypatch.setattr(providers, "gemini_client", lambda: client())
+        monkeypatch.setattr(providers, "vertex_client", lambda: client(True))
+        monkeypatch.setattr(providers.settings, "gemini_free_models", "gemini-3.8-flash,gemini-3.7-flash")
+        async def send(message): notices.append(message)
+        result = "".join([text async for text in providers.gemini_tokens(LabConfig(pipeline=4, web_search=True, thinking_budget=1024), [{"role": "user", "content": "नमस्ते।"}], send)])
+        assert result == "नमस्ते।"
+        assert [vertex for vertex, _ in calls] == [False, False, False, True]
+        assert all(call["model"] != "gemini-2.5-flash" for _, call in calls)
+        assert calls[0][1]["config"]["thinking_config"] == {"thinking_level": "medium"}
+        assert "tools" not in calls[1][1]["config"]
+        assert "tools" in calls[-1][1]["config"]
+        assert any("without web grounding" in message["message"] for message in notices)
+        assert closed == [False, True]
+    asyncio.run(run())
+
+
+def test_gemini_live_search_quota_keeps_voice_available(monkeypatch):
+    from types import SimpleNamespace
+    from app.voice_lab import session as sessions
+    async def run():
+        configs, messages = [], []
+        class Quota(Exception):
+            code = 1011
+            def __str__(self): return "You exceeded your current quota"
+        class Connection:
+            def __init__(self, config): self.config = config
+            async def __aenter__(self):
+                if "tools" in self.config: raise Quota()
+                return SimpleNamespace(receive=self.receive)
+            async def receive(self):
+                await asyncio.Event().wait()
+                if False: yield None
+            async def __aexit__(self, *args): pass
+        def connect(**kwargs):
+            configs.append(kwargs["config"]); return Connection(kwargs["config"])
+        async def close(): pass
+        monkeypatch.setattr(sessions, "gemini_client", lambda: SimpleNamespace(aio=SimpleNamespace(live=SimpleNamespace(connect=connect), aclose=close)))
+        monkeypatch.setattr(sessions, "vertex_client", lambda: None)
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        session = sessions.GeminiNativeSession(LabConfig(pipeline=3, web_search=True, speaker="Puck"), send, meter)
+        await session.start(); await session.close()
+        assert "tools" in configs[0] and "tools" not in configs[1]
+        assert messages[0]["type"] == "notice"
+        assert "without web grounding" in messages[0]["message"]
+    asyncio.run(run())
+
+
+def test_live_grounded_search_tool_uses_reserved_budget_and_returns_sources(monkeypatch):
+    from types import SimpleNamespace
+    from app.voice_lab import session as sessions
+    from google.genai import types
+    async def run():
+        responses, metered, messages = [], [], []
+        async def send(message): messages.append(message)
+        async def meter(kind, amount): metered.append((kind, amount))
+        async def lookup(query, client):
+            assert query == "Python release"
+            return {"result": "उत्तरम्।", "sources": [{"title": "Python", "url": "https://www.python.org/"}]}
+        monkeypatch.setattr(sessions, "grounded_search", lookup)
+        async def respond(**kwargs): responses.extend(kwargs["function_responses"])
+        session = sessions.GeminiNativeSession(LabConfig(pipeline=3, web_search=True), send, meter)
+        session.search_client = object()
+        session.upstream = SimpleNamespace(send_tool_response=respond)
+        await session.search(types.FunctionCall(id="lookup-1", name="web_search", args={"query": "Python release"}))
+        assert metered == [("llm_calls", 1), ("gemini_inr", 1)]
+        assert responses[0].id == "lookup-1"
+        assert responses[0].response["sources"][0]["url"] == "https://www.python.org/"
+        assert responses[0].scheduling == types.FunctionResponseScheduling.WHEN_IDLE
+        assert messages[0]["type"] == "notice"
+    asyncio.run(run())
+
+
+def test_grounded_search_refuses_a_reply_without_verified_sources(monkeypatch):
+    from types import SimpleNamespace
+    from app.voice_lab.providers import grounded_search
+    async def run():
+        async def generate(**kwargs):
+            assert kwargs["config"]["tools"] == [{"google_search": {}}]
+            return SimpleNamespace(text="unverified answer", candidates=[])
+        client = SimpleNamespace(aio=SimpleNamespace(models=SimpleNamespace(generate_content=generate)))
+        with pytest.raises(RuntimeError, match="no verified sources"):
+            await grounded_search("current facts", client)
+    asyncio.run(run())
+
+
+def test_live_search_fallback_config_has_a_metered_function_instead_of_builtin_search():
+    from google.genai.types import LiveConnectConfig
+    config = live_config(LabConfig(pipeline=3, web_search=True), search_fallback=True)
+    LiveConnectConfig(**config)
+    function = config["tools"][0]["function_declarations"][0]
+    assert function["name"] == "web_search"
+    assert function["behavior"] == "NON_BLOCKING"
+    assert "google_search" not in config["tools"][0]
 
 
 def test_ticket_auth_scope_and_single_use(client, auth_headers):

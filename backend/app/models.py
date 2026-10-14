@@ -1824,3 +1824,6 @@ class ReciteCalibration(Base):
     duration_ms = Column(Integer, nullable=False, default=0)
     note = Column(String(256), nullable=False, default="")
     created_at = Column(DateTime, default=_utcnow)
+
+# Register additive community tables with Alembic and account lifecycle.
+from app import community_models  # noqa: E402,F401

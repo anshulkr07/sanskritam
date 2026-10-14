@@ -36,7 +36,7 @@ Test full-duplex audio and barge-in on the actual target phone before release.
 4. JSON control frames: `config` (partial settings), `text`, `interrupt`,
    `end_audio` (flush microphone input), `stop`.
 5. Server frames: `ready`, `config_applied`, `transcript` (role/text/final),
-   `audio` (base64 data/codec/sample_rate), `interrupted`, `turn_complete`,
+   `audio` (base64 data/codec/sample_rate), `response_started`, `interrupted`, `turn_complete`,
    `notice`, `error`, `fatal`. Invalid settings leave the prior settings active.
 
 Calls end after 10 minutes, tab blur, app backgrounding or transport failure.
@@ -48,6 +48,12 @@ Pipeline/model/voice/tool changes rebuild the provider session when necessary,
 while keeping the client socket. Native Gemini model switches start fresh
 provider context. Other settings cancel an active composed turn and apply to
 the next utterance. Reconnection after transport failure is an explicit Start.
+Calls use speaker-safe turn-taking: microphone frames are replaced with silence
+from the first queued audio packet until all playback/decodes have drained and
+a 500 ms echo tail has elapsed. Generation completion alone does not reopen the
+microphone. Interrupt reply stops playback so the learner can take the next turn.
+An audio level meter shows capture; a 900 ms quiet pause flushes a spoken turn,
+and Done speaking also submits it. Soft/leading frames are still sent to STT.
 
 ## Deliberate compatibility choices
 
@@ -58,8 +64,10 @@ the next utterance. Reconnection after transport failure is an explicit Start.
   pipelines stream tokens and synthesize punctuation/six-word clauses in order.
   Hybrid sends a filler after 350 ms without a first token when reasoning/search
   is enabled. User speech or Interrupt cancels generation and buffered audio.
-- Bulbul uses WAV output, supported by the current WebSocket API. Pitch and
-  gain apply through Web Audio; detune changes playback duration as well as pitch.
+- Bulbul's WAV stream sends a header followed by raw PCM fragments. The backend
+  parses that header and sends mono PCM16 frames; fragments are never decoded
+  as standalone WAV files. The format can persist across clauses on a socket.
+  Pitch and gain apply through Web Audio; detune changes playback duration.
 - Edge's MP3 transport fragments are collected **per short clause in memory**
   before decoding; they are not standalone MP3 files. Pace is provider-controlled;
   pitch and gain are playback controls. No temporary audio files are created.
@@ -71,12 +79,22 @@ the next utterance. Reconnection after transport failure is an explicit Start.
   isolated from the backend; Torch is not installed on your laptop for this path.
 - Gemini 3.8 Live omits thinking_config, 3.1 uses minimal/high levels, and the
   legacy 2.5 native audio model uses token budgets. The sandbox explains this.
+- Scholar uses Gemini 3.8 Flash with low/medium/high reasoning. Retry before any
+  text is emitted can use the configured alternative model and the existing
+  Vertex credentials when the Developer API is unavailable. A reply is never
+  restarted after partial text. Empty answers and timeouts are explicit errors.
+- Friend's built-in search quota can be separate from Live audio access. When
+  that quota is unavailable, its web_search function uses the already configured
+  Vertex search route, requires grounded source metadata, and returns sources
+  to Live. Search cancellation ends the lookup. Without Vertex configuration,
+  voice still connects with a clear notice that grounding is unavailable.
 - Available voice choices depend on model/provider. A custom speaker ID allows
   the current vendor catalogue; the vendor validates it. Sanskrit phonetics are
   experimental, especially the explicit final-vowel hint for Hindi TTS.
 - Sandbox Gemini quota reservations are conservative estimates: ₹1 per hybrid
   generation and ₹0.10 per native audio input second, rather than measured
   provider invoices. These coexist with existing speech/LLM/TTS allowances.
+  Each Friend fallback search reserves one extra LLM call and ₹1 Gemini usage.
 
 ## Verification
 
@@ -86,7 +104,12 @@ authentication, validation, cancellation, clause flushing and phonetics.
 `cd mobile && node scripts/check-voice-lab.mjs` verifies playback scheduling,
 interruption, asynchronous decode cancellation and playback recovery.
 `cd mobile && node scripts/check-voice-lab-startup.mjs` verifies permission-sheet
-focus changes, startup timeouts, cancellation, retry and microphone cleanup.
+focus changes, startup timeouts, cancellation, retry, microphone cleanup,
+automatic turn finalization and speaker-echo suppression through playback drain.
+`cd backend && python scripts/check_voice_lab_live.py --search --stt` exercises
+all four providers, Friend's real grounded lookup and synthetic Sanskrit STT.
+It uses configured provider billing, prints only counts/status, and saves no
+audio or transcripts. The optional STT check requires ffmpeg.
 Provider availability, speech quality and hardware echo behavior need a live
 call; these are not claimed by the offline tests.
 

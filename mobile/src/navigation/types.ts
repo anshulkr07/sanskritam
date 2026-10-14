@@ -20,6 +20,7 @@ export type MainTabParamList = {
   Play: undefined;
   Read: undefined;
   VoiceLab: undefined;
+  Group: undefined;
   Learn: undefined;
 };
 
