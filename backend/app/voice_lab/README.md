@@ -134,6 +134,20 @@ The client retains the initial words, stops local playback immediately, and boun
 the cancellation acknowledgement wait. Suppressed speaker audio is not sent to
 STT. Input quota is reserved in five-second blocks; unused credit is refunded.
 
+Android must acquire communication mode before creating the recorder and its
+AEC effect. Expo's default `setAudioModeAsync` selects media mode, even when
+`allowsRecording` is true. Voice Lab now starts the already shipped
+`StreamInCallManager` native session after Expo configuration, verifies
+`MODE_IN_COMMUNICATION`, and only then creates `AudioStream`. The SDK owns the
+speaker/connected-device route and the Android communication-mode keep-alive.
+The public Stream `callManager.start()` only stores configuration until a Stream
+call joins; Voice Lab does not join a Stream call, so it uses the installed native
+module directly. Stop/failure releases both capture and the call session. No new
+native API is added. `node scripts/check-voice-call-audio.mjs` verifies ordering,
+asynchronous mode activation, cleanup and the iOS guard. The live mic meter is
+no longer forced to zero during playback. Unconfirmed AEC still does not enable
+automatic speakerphone interruption; this is distinct from microphone capture.
+
 App allowance failures are distinct from vendor quota failures. At the Gemini
 allowance, Friend and Scholar continue on the metered Sarvam service with an
 explicit notice that web search is unavailable. Mother uses a Sarvam backup if

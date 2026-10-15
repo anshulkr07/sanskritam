@@ -48,6 +48,8 @@ export class VoiceInput {
       this.silenceMs += pcm.length / 16;
       if (this.silenceMs >= 900) { endTurn = this.speechMs >= 160; this.reset(); }
     }
-    return { pcm: pcm.buffer, level: suppressed ? 0 : Math.min(1, rms * 8), endTurn, bargeIn };
+    // Show capture even while speaker echo is withheld from recognition. A
+    // forced zero here made an active microphone look muted during replies.
+    return { pcm: pcm.buffer, level: Math.min(1, rms * 8), endTurn, bargeIn };
   }
 }

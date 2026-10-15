@@ -212,7 +212,10 @@ console.log("Voice Lab startup: permission focus, cancellation, timeouts, retry,
   const code = ts.transpileModule(microphoneSource, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
   const exports = {}; let permissionRequests = 0;
   const native = { AudioModule: {}, requestRecordingPermissionsAsync: async () => { permissionRequests++; return { granted: true }; } };
-  vm.runInNewContext(code, { exports, require: name => { assert.equal(name, "expo-audio"); return native; }, Error });
+  vm.runInNewContext(code, { exports, require: name => {
+    if (name === "./callAudio") return { startCallAudio: async () => () => {} };
+    assert.equal(name, "expo-audio"); return native;
+  }, Error });
   await assert.rejects(exports.microphonePermission(), /Install a new app build/);
   assert.equal(permissionRequests, 0);
   native.AudioModule.AudioStream = function () {};

@@ -1,4 +1,5 @@
 import { AudioModule, requestRecordingPermissionsAsync, setAudioModeAsync } from "expo-audio";
+import { startCallAudio } from "./callAudio";
 
 export type Microphone = { stop: () => void };
 export type MicBuffer = { data: ArrayBuffer; sampleRate: number; channels: number; echoCancelled?: boolean };
@@ -10,10 +11,31 @@ export async function microphonePermission(): Promise<void> {
 }
 export async function startMicrophone(onBuffer: (buffer: MicBuffer) => void): Promise<Microphone> {
   await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
-  const options = { sampleRate: 16000, channels: 1, encoding: "int16", echoCancellation: true };
-  const mic = new AudioModule.AudioStream(options);
-  const sub = mic.addListener("audioStreamBuffer", onBuffer);
-  const stop = () => { sub.remove(); mic.stop(); mic.release(); void setAudioModeAsync({ allowsRecording: false }).catch(() => {}); };
-  try { await mic.start(); return { stop }; }
+  let releaseCallAudio: (() => void) | undefined;
+  let mic: InstanceType<typeof AudioModule.AudioStream> | undefined;
+  let sub: { remove: () => void } | undefined;
+  let stopped = false;
+  const stop = () => {
+    if (stopped) return;
+    stopped = true;
+    try { sub?.remove(); mic?.stop(); }
+    finally {
+      try { mic?.release(); }
+      finally {
+        try { releaseCallAudio?.(); }
+        finally { void setAudioModeAsync({ allowsRecording: false }).catch(() => {}); }
+      }
+    }
+  };
+  try {
+    // Expo's default Android audio mode selects MODE_NORMAL. Acquire the call
+    // session AFTER that call, so it cannot undo communication routing/AEC.
+    releaseCallAudio = await startCallAudio();
+    const options = { sampleRate: 16000, channels: 1, encoding: "int16", echoCancellation: true };
+    mic = new AudioModule.AudioStream(options);
+    sub = mic.addListener("audioStreamBuffer", onBuffer);
+    await mic.start();
+    return { stop };
+  }
   catch (e) { stop(); throw e; }
 }

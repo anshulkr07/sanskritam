@@ -22,6 +22,7 @@ const speech = new exports.VoiceInput();
 for (let i = 0; i < 3; i++) {
   const result = speech.process(frame(4000), true);
   assert.equal(result.bargeIn, null);
+  assert.ok(result.level > 0, "An active microphone must remain visible while AI audio plays");
   assert.ok(new Int16Array(result.pcm).every(value => value === 0));
 }
 const result = speech.process(frame(4000), true);

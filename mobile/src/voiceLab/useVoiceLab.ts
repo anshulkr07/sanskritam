@@ -70,7 +70,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
       const began = !speakerActive.current;
       echoTimer.current = null; speakerActive.current = true;
       if (began) input.current.reset();
-      setSpeaking(true); setMicLevel(0);
+      setSpeaking(true);
       if (supportsPlaybackFeedback.current && !playbackReported.current) {
         playbackReported.current = true; send({ type: "playback", busy: true });
       }

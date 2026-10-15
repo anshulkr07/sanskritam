@@ -1,0 +1,71 @@
+// Exercise the actual native microphone wrapper with an asynchronous Android
+// audio route. A recorder must never be created in the media-mode race window.
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+const ts = require("typescript");
+const compile = file => ts.transpileModule(fs.readFileSync(new URL(file, import.meta.url), "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+}).outputText;
+const callCode = compile("../src/voiceLab/callAudio.ts");
+const micCode = compile("../src/voiceLab/microphone.ts");
+
+function harness({ activate = true, failCapture = false, platform = "android" } = {}) {
+  const events = [];
+  let mode = "MODE_NORMAL", polls = 0, listener;
+  const manager = {
+    setAudioRole(role) { events.push(`role:${role}`); },
+    setDefaultAudioDeviceEndpointType(route) { events.push(`route:${route}`); },
+    start() { events.push("call:start"); },
+    stop() { events.push("call:stop"); mode = "MODE_NORMAL"; },
+    getAudioStateLog() {
+      if (++polls >= 3 && activate) mode = "MODE_IN_COMMUNICATION";
+      return `Audio State: audio mode: ${mode}, has mic: true`;
+    },
+  };
+  const callExports = {};
+  vm.runInNewContext(callCode, { exports: callExports, require: () => ({ Platform: { OS: platform }, NativeModules: { StreamInCallManager: manager } }), setTimeout: fn => queueMicrotask(fn), Error });
+  const audio = {
+    AudioModule: { AudioStream: class {
+      constructor(options) {
+        assert.equal(mode, "MODE_IN_COMMUNICATION", "Call routing must activate before AudioRecord and AEC are created");
+        assert.equal(options.echoCancellation, true); events.push("mic:create");
+      }
+      addListener(name, fn) { listener = fn; return { remove() { events.push("mic:unlisten"); } }; }
+      async start() { events.push("mic:start"); if (failCapture) throw new Error("Capture failed"); }
+      stop() { events.push("mic:stop"); }
+      release() { events.push("mic:release"); }
+    } },
+    async setAudioModeAsync(options) { mode = "MODE_NORMAL"; events.push(options.allowsRecording ? "expo:record" : "expo:restore"); },
+    async requestRecordingPermissionsAsync() { return { granted: true }; },
+  };
+  const micExports = {};
+  vm.runInNewContext(micCode, { exports: micExports, require: name => name === "expo-audio" ? audio : callExports, Error });
+  return { events, manager, callExports, start: micExports.startMicrophone, emit: data => listener(data) };
+}
+
+{
+  const h = harness(), buffers = [];
+  const mic = await h.start(buffer => buffers.push(buffer));
+  assert.deepEqual(h.events.slice(0, 6), ["expo:record", "role:communicator", "route:speaker", "call:start", "mic:create", "mic:start"]);
+  h.emit({ data: new ArrayBuffer(3200), sampleRate: 16000, channels: 1, echoCancelled: true });
+  assert.equal(buffers[0].echoCancelled, true);
+  mic.stop(); mic.stop();
+  assert.deepEqual(h.events.slice(-5), ["mic:unlisten", "mic:stop", "mic:release", "call:stop", "expo:restore"]);
+  assert.equal(h.events.filter(e => e === "call:stop").length, 1);
+}
+for (const options of [{ activate: false }, { failCapture: true }]) {
+  const h = harness(options);
+  await assert.rejects(h.start(() => {}), options.activate === false ? /did not activate/ : /Capture failed/);
+  assert.ok(h.events.includes("call:stop"), "Failed startup must release communication mode");
+  assert.equal(h.events.at(-1), "expo:restore");
+  if (options.activate === false) assert.ok(!h.events.includes("mic:create"));
+}
+{
+  const h = harness({ platform: "ios" });
+  const stop = await h.callExports.startCallAudio(); stop();
+  assert.equal(h.events.length, 0, "Do not apply Android call routing on iOS");
+}
+console.log("Voice call audio: communication-mode ordering, delayed route, capture capability, failure cleanup and release passed.");
