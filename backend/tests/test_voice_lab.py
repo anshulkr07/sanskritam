@@ -87,6 +87,7 @@ def lab_client(monkeypatch):
     FakeSession.instances = []
     monkeypatch.setattr(routes, "authenticate", lambda ticket: "learner" if ticket == "valid" else (_ for _ in ()).throw(ValueError()))
     monkeypatch.setattr(routes, "consume", lambda *args: None)
+    monkeypatch.setattr(routes, "refund", lambda *args: None)
     monkeypatch.setattr(routes, "STRATEGIES", {i: FakeSession for i in range(1, 5)})
     app = FastAPI()
     app.include_router(routes.router)
@@ -349,6 +350,143 @@ def test_stt_audio_flush_and_repeated_request_deduplication():
         assert frames[-1] == {"type": "flush"}
         await session.listen()
         assert turns == ["नमस्ते।"]
+    asyncio.run(run())
+
+
+def test_sarvam_connection_id_does_not_drop_second_turn_or_repeated_words():
+    async def run():
+        turns = []
+        async def send(message): pass
+        async def meter(*args): pass
+        session = VoicePipelineSession(LabConfig(), send, meter)
+        session.barge_enabled = True
+        async def text(value): turns.append(value)
+        session.text = text
+        class Input:
+            def __aiter__(self):
+                async def messages():
+                    for text in ("नमस्ते।", "भोजनं कृतवान्।", "भोजनं कृतवान्।"):
+                        yield json.dumps({"type": "events", "data": {"signal_type": "START_SPEECH"}})
+                        for _ in range(2):
+                            yield json.dumps({"type": "data", "data": {"request_id": "connection-1", "transcript": text}})
+                return messages()
+        session.upstream = Input()
+        await session.listen()
+        assert turns == ["नमस्ते।", "भोजनं कृतवान्।", "भोजनं कृतवान्।"]
+    asyncio.run(run())
+
+
+def test_client_endpoint_collects_segments_and_delayed_vad_cannot_cancel_reply():
+    async def run():
+        turns, messages = [], []
+        async def send(message): messages.append(message)
+        async def meter(*args): pass
+        session = VoicePipelineSession(LabConfig(), send, meter)
+        session.barge_enabled = session.client_endpointing = True
+        async def text(value): turns.append(value)
+        session.text = text
+        class Input:
+            async def send(self, frame): pass
+            def __aiter__(self):
+                async def messages():
+                    for index, text in enumerate(("नमस्ते।", "मम नाम रामः।")):
+                        yield json.dumps({"type": "events", "data": {"signal_type": "START_SPEECH"}})
+                        yield json.dumps({"type": "data", "data": {"request_id": "connection-1", "audio_hash": str(index), "transcript": text}})
+                    assert not turns
+                return messages()
+        session.upstream = Input()
+        await session.listen()
+        await session.end_audio()
+        await session.endpoint_task
+        assert turns == ["नमस्ते। मम नाम रामः।"]
+        assert not any(m["type"] == "interrupted" for m in messages)
+    asyncio.run(run())
+
+
+def test_scholar_app_quota_uses_backup_without_bypassing_gemini_cap(monkeypatch):
+    from app.voice_lab import session as sessions
+    from app.services.quota import QuotaExceeded
+    async def run():
+        messages, charged = [], []
+        async def send(message): messages.append(message)
+        async def meter(kind, amount):
+            charged.append(kind)
+            if kind == "gemini_inr": raise QuotaExceeded(kind, 9.93, 10, 3600)
+        async def backup(config, history): yield "नमस्ते।"
+        monkeypatch.setattr(sessions, "sarvam_tokens", backup)
+        class Output:
+            async def speak(self, text, config, send): await send({"type": "audio", "codec": "pcm", "data": "AAA="})
+            async def close(self): pass
+        session = sessions.HybridSession(LabConfig(pipeline=4), send, meter)
+        session.tts = Output()
+        await session.respond("test")
+        assert messages[-1]["type"] == "turn_complete"
+        assert any("daily Gemini allowance" in m.get("message", "") for m in messages)
+        assert charged.count("gemini_inr") == 1
+    asyncio.run(run())
+
+
+def test_friend_quota_fallback_keeps_socket_and_endpoint_capability(lab_client, monkeypatch):
+    from app.services.quota import QuotaExceeded
+    def consume(learner, kind, amount):
+        if kind == "gemini_inr": raise QuotaExceeded(kind, 9.93, 10, 3600)
+    monkeypatch.setattr(routes, "consume", consume)
+    with lab_client.websocket_connect("/ws/voice-lab") as ws:
+        ws.send_json({"ticket": "valid", "config": {"pipeline": 3, "speaker": "Puck"}, "capabilities": {"client_endpointing": True}})
+        assert ws.receive_json()["type"] == "ready"
+        ws.send_bytes(b"\0\0" * 1600)
+        assert ws.receive_json()["type"] == "interrupted"
+        assert "daily Gemini allowance" in ws.receive_json()["message"]
+        assert ws.receive_json()["type"] == "audio_received"
+        assert FakeSession.instances[-1].config.pipeline == 1
+        assert FakeSession.instances[-1].client_endpointing
+        ws.send_json({"type": "stop"})
+
+
+def test_quota_error_distinguishes_app_allowance_from_provider():
+    from app.services.quota import QuotaExceeded
+    from app.voice_lab.providers import provider_error
+    assert "app's daily allowance" in provider_error(QuotaExceeded("gemini_inr", 10, 10, 3600))
+
+
+def test_input_reservations_refund_unused_audio(lab_client, monkeypatch):
+    charged, refunded = [], []
+    monkeypatch.setattr(routes, "consume", lambda learner, kind, amount: charged.append((kind, amount)))
+    monkeypatch.setattr(routes, "refund", lambda learner, kind, amount: refunded.append((kind, amount)))
+    with lab_client.websocket_connect("/ws/voice-lab") as ws:
+        ws.send_json({"ticket": "valid"}); ws.receive_json()
+        for _ in range(2):
+            ws.send_bytes(b"\0\0" * 1600); ws.receive_json()
+        ws.send_json({"type": "stop"})
+        from starlette.websockets import WebSocketDisconnect
+        with pytest.raises(WebSocketDisconnect): ws.receive_json()
+    assert charged == [("stt_seconds", 5)]
+    assert refunded[0][0] == "stt_seconds"
+    assert refunded[0][1] == pytest.approx(4.8)
+
+
+def test_mother_empty_edge_audio_switches_to_backup_once(monkeypatch):
+    import edge_tts
+    async def run():
+        attempts, spoken, messages = [], [], []
+        class Empty:
+            async def stream(self):
+                attempts.append(True)
+                if False: yield None
+        monkeypatch.setattr(edge_tts, "Communicate", lambda *args, **kwargs: Empty())
+        class Output(SpeechOutput):
+            async def speak(self, text, config, send):
+                if config.pipeline == 1:
+                    spoken.append((text, config.speaker)); return
+                await super().speak(text, config, send)
+        async def send(message): messages.append(message)
+        output = Output()
+        config = LabConfig(pipeline=2, speaker="te-IN-ShrutiNeural")
+        await output.speak("नमस्ते।", config, send)
+        await output.speak("भोजनं कृतवान्।", config, send)
+        assert len(attempts) == 1 and len(spoken) == 2
+        assert all(voice == "priya" for _, voice in spoken)
+        assert len(messages) == 1 and messages[0]["type"] == "notice"
     asyncio.run(run())
 
 

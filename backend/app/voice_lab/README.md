@@ -67,7 +67,7 @@ The backend ignores delayed STT/VAD events during protected output so they canno
 cancel the rest of a sentence. Playback feedback extends protection past provider
 generation until the actual audio finishes. The player schedules a short horizon
 and waits for space; fast-arriving replies no longer trip a 20-second cutoff.
-With echo-cancelled capture, 800 ms of sustained speech above the barge-in
+With echo-cancelled capture, 350 ms of sustained speech above the barge-in
 threshold can interrupt automatically; quiet gaps of 200 ms reset the candidate.
 Brief sounds are ignored. A rolling 1.2-second prefix retains opening words.
 Local playback stops immediately, stale reply audio is discarded, and held PCM
@@ -120,6 +120,36 @@ and Done speaking also submits it. Soft/leading frames are still sent to STT.
   Each Friend fallback search reserves one extra LLM call and ₹1 Gemini usage.
 
 ## Verification
+
+### Conversation recovery (2026-10-15)
+
+Sarvam reuses `request_id` across a connection. Deduplicate by audio hash and
+transcript, resetting at new speech; never discard a new utterance just because
+the request ID repeats. The `client_endpointing` capability collects STT segments
+until the client's `end_audio`, allowing a 450 ms flush grace period. Provider VAD
+cannot cancel a response on clients that negotiate explicit barge-in.
+
+Echo-cancelled capture now requires 350 ms of sustained speech to interrupt.
+The client retains the initial words, stops local playback immediately, and bounds
+the cancellation acknowledgement wait. Suppressed speaker audio is not sent to
+STT. Input quota is reserved in five-second blocks; unused credit is refunded.
+
+App allowance failures are distinct from vendor quota failures. At the Gemini
+allowance, Friend and Scholar continue on the metered Sarvam service with an
+explicit notice that web search is unavailable. Mother uses a Sarvam backup if
+Edge speech fails or times out. Native connection failure also selects the backup.
+The companion persona stays the same; the voice may change. Budget caps remain.
+
+Cloud Run must allow the 600-second call plus cleanup: deploy with `--timeout=660s`.
+Production exceeded 1 GiB during scheduled work, so use `--memory=2Gi`.
+
+`python scripts/check_voice_conversation.py --cloud-project PROJECT --conversations`
+loads provider credentials in memory, sends synthetic speech for two successive
+turns per companion, and interrupts a reply before checking the next answer.
+It never records microphone audio or prints credentials/transcripts. `--stt`
+checks upstream segmentation; `--quota` reads the latest voice learner's aggregate
+usage without printing identity. These are provider/transport checks; Android
+speaker echo quality still needs testing on the actual handset.
 
 `python -m pytest tests/test_voice_lab.py -q` verifies the offline wire protocol,
 authentication, validation, cancellation, clause flushing and phonetics.

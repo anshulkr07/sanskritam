@@ -45,6 +45,8 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   const bargePending = useRef(false);
   const bargeFrames = useRef<ArrayBuffer[]>([]);
   const ignoreReplyAudio = useRef(false);
+  const interruptionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const responseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   currentConfig.current = config;
 
   const send = useCallback((message: object) => {
@@ -86,6 +88,10 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     ready.current = false;
     supportsPlaybackFeedback.current = false; playbackReported.current = false;
     supportsBargeIn.current = false; bargePending.current = false;
+    if (interruptionTimer.current !== null) clearTimeout(interruptionTimer.current);
+    interruptionTimer.current = null;
+    if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+    responseTimer.current = null;
     bargeFrames.current = []; ignoreReplyAudio.current = false; setBargeAvailable(false);
     if (echoTimer.current !== null) clearTimeout(echoTimer.current);
     echoTimer.current = null; replyPending.current = false;
@@ -108,7 +114,13 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
     playbackBusy.current = false; speakerActive.current = false;
     input.current.reset(); setSpeaking(false); setThinking(false);
     sink.current?.send({ type: "stop" }); send({ type: "barge_in" });
-  }, [send, sink]);
+    if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+    responseTimer.current = null;
+    interruptionTimer.current = setTimeout(() => {
+      if (!bargePending.current) return;
+      setError("The voice service did not resume listening. Please start another call."); stop();
+    }, 5000);
+  }, [send, sink, stop]);
   const start = useCallback(async () => {
     if (starting.current || socket.current || stream.current) return;
     const epoch = ++generation.current;
@@ -142,7 +154,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
         if (epoch !== generation.current) { ws.close(); return; }
         setConnectionStatus("Connecting to your companion…");
         applied.current = currentConfig.current;
-        ws.send(JSON.stringify({ ticket: ticket.ticket, config: applied.current, capabilities: { playback_feedback: true, barge_in: true } }));
+        ws.send(JSON.stringify({ ticket: ticket.ticket, config: applied.current, capabilities: { playback_feedback: true, barge_in: true, client_endpointing: true } }));
       };
       ws.onmessage = e => {
         if (epoch !== generation.current) return;
@@ -171,7 +183,9 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
                 return;
               }
               if (frame.bargeIn && supportsBargeIn.current) { beginBargeIn(frame.bargeIn); return; }
-              if (frame.pcm.byteLength) ws.send(frame.pcm);
+              // Capture still runs for interruption, but don't send speaker
+              // silence to STT or charge the learner while the AI is talking.
+              if (!speakerActive.current && frame.pcm.byteLength) ws.send(frame.pcm);
               if (frame.endTurn) send({ type: "end_audio" });
             });
             if (epoch === generation.current) {
@@ -188,8 +202,19 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
           replyPending.current = true; onPlaybackBusy(true); setThinking(false);
           sink.current?.send(msg);
         }
-        else if (msg.type === "response_started") { ignoreReplyAudio.current = false; replyPending.current = true; setThinking(true); setError(""); }
+        else if (msg.type === "response_started") {
+          if (bargePending.current) return;
+          ignoreReplyAudio.current = false; replyPending.current = true; setThinking(true); setError("");
+          if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+          responseTimer.current = setTimeout(() => {
+            responseTimer.current = null;
+            replyPending.current = false; setThinking(false); releaseMicrophone();
+            setError("The reply service took too long. You can interrupt and try again.");
+          }, 90000);
+        }
         else if (msg.type === "barge_in_ready" && bargePending.current) {
+          if (interruptionTimer.current !== null) clearTimeout(interruptionTimer.current);
+          interruptionTimer.current = null;
           bargePending.current = false;
           const frames = bargeFrames.current; bargeFrames.current = [];
           if (playbackReported.current) { playbackReported.current = false; send({ type: "playback", busy: false }); }
@@ -204,10 +229,14 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
           }
         }
         else if (msg.type === "interrupted") {
+          if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+          responseTimer.current = null;
           replyPending.current = false; setThinking(false);
           sink.current?.send({ type: "stop" }); onPlaybackBusy(false); activeRole.current = null;
         }
         else if (msg.type === "turn_complete") {
+          if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+          responseTimer.current = null;
           replyPending.current = false; setThinking(false); releaseMicrophone(); activeRole.current = null;
         }
         else if (msg.type === "config_applied") { applied.current = msg.config; setSettingsStatus("Settings applied"); }
@@ -222,7 +251,9 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
             return next.slice(-60);
           });
         } else if (msg.type === "error" || msg.type === "fatal") {
-          setError(msg.message); setThinking(false); if (msg.type === "fatal") stop();
+          if (responseTimer.current !== null) clearTimeout(responseTimer.current);
+          responseTimer.current = null; replyPending.current = false;
+          setError(msg.message); setThinking(false); releaseMicrophone(); if (msg.type === "fatal") stop();
         }
       };
       ws.onerror = () => { if (epoch === generation.current) { setError("Cannot connect to Voice Lab."); stop(); } };

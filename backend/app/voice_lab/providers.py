@@ -2,6 +2,7 @@
 import asyncio
 import base64
 import json
+import contextlib
 from urllib.parse import urlencode
 
 import httpx
@@ -32,6 +33,10 @@ def search_unavailable(exc):
 
 
 def provider_error(exc):
+    from app.services.quota import QuotaExceeded
+    if isinstance(exc, QuotaExceeded):
+        labels = {"gemini_inr": "Gemini voice and replies", "gemini_budget": "Gemini service", "stt_seconds": "speech recognition", "tts_chars": "spoken replies", "llm_calls": "replies", "daily_budget": "speech service"}
+        return f"The app's daily allowance for {labels.get(exc.kind, 'voice')} is used. It refreshes as earlier usage expires."
     code = getattr(exc, "code", None)
     if code == 404:
         return "The selected provider model is unavailable. Update the Voice Lab model configuration."
@@ -172,12 +177,15 @@ class SpeechOutput:
         self.model = None
         self.wav = None
         self.parler = IndicParlerAdapter()
+        self.edge_failed = False
 
     async def close(self):
         await self.parler.close()
         if self.socket:
-            await self.socket.close()
+            socket = self.socket
             self.socket = None
+            with contextlib.suppress(Exception):
+                await asyncio.wait_for(socket.close(), 2)
         self.wav = None
 
     async def speak(self, text: str, c: LabConfig, send):
@@ -186,16 +194,27 @@ class SpeechOutput:
             return
         routed = SanskritPhoneticRouter.transform(text, c.language, c.visarga_expansion, c.schwa_fix, c.transliterate)
         if c.pipeline == 2 and c.open_provider == "edge_tts_prosody":
+            if self.edge_failed:
+                await self.speak(text, c.model_copy(update={"pipeline": 1, "tts_model": "bulbul:v3", "speaker": "priya"}), send)
+                return
             import edge_tts
             # MP3 transport fragments aren't independently decodable; concatenate
             # one short clause in memory, then send it as one playable buffer.
             rate = f"{round((c.pace - 1) * 100):+d}%"
             voice = c.speaker
             audio = bytearray()
-            async for chunk in edge_tts.Communicate(routed, voice, rate=rate).stream():
-                if chunk["type"] == "audio":
-                    audio.extend(chunk["data"])
-            await send({"type": "audio", "codec": "mp3", "data": base64.b64encode(audio).decode(), "sample_rate": 24000})
+            try:
+                async with asyncio.timeout(12):
+                    async for chunk in edge_tts.Communicate(routed, voice, rate=rate).stream():
+                        if chunk["type"] == "audio":
+                            audio.extend(chunk["data"])
+                if not audio:
+                    raise RuntimeError("No speech audio returned")
+                await send({"type": "audio", "codec": "mp3", "data": base64.b64encode(audio).decode(), "sample_rate": 24000})
+            except Exception:
+                self.edge_failed = True
+                await send({"type": "notice", "message": "Mother's usual voice is unavailable. Using the backup voice for this reply."})
+                await self.speak(text, c.model_copy(update={"pipeline": 1, "tts_model": "bulbul:v3", "speaker": "priya"}), send)
             return
         if self.model != c.tts_model:
             await self.close()

@@ -4,12 +4,15 @@ import contextlib
 import json
 import math
 import struct
+import logging
 from urllib.parse import urlencode
 
 from app.config import settings
 from .config import LabConfig
 from .providers import SpeechOutput, connect_ws, gemini_client, gemini_tokens, live_config, sarvam_tokens, provider_error, search_unavailable, vertex_client, grounded_search
 from .sanskrit_phonetics import take_clauses
+
+logger = logging.getLogger("shabd.voice_lab")
 
 
 async def cancel(task):
@@ -28,11 +31,15 @@ class VoicePipelineSession:
         self.turn = None
         self.upstream = None
         self.tts = SpeechOutput()
-        self.last_stt_request = None
+        self.last_stt_result = None
         self.playback_feedback = False
         self.playback_busy = False
         self.output_started = False
         self.barge_enabled = False
+        self.client_endpointing = False
+        self.input_text = []
+        self.endpoint_task = None
+        self.input_ended = False
 
     async def send(self, message):
         if message.get("type") == "audio":
@@ -94,20 +101,32 @@ class VoicePipelineSession:
                 if msg.get("type") in ("events", "data") and self.protecting_reply():
                     continue
                 if msg.get("type") == "events" and data.get("signal_type") == "START_SPEECH":
-                    await self.interrupt()
+                    self.last_stt_result = None
+                    # The client owns deliberate barge-in. Delayed provider VAD
+                    # must not cancel a reply that is still preparing its audio.
+                    if not self.barge_enabled:
+                        await self.interrupt()
                 elif msg.get("type") == "data" and data.get("transcript", "").strip():
-                    request_id = data.get("request_id")
-                    if request_id and request_id == self.last_stt_request:
-                        continue
-                    self.last_stt_request = request_id
                     text = data["transcript"].strip()
-                    await self.send({"type": "transcript", "role": "user", "text": text, "final": True})
-                    await self.text(text)
+                    # Sarvam's request_id identifies the CONNECTION, not a turn.
+                    # Only deduplicate identical results for the same audio.
+                    result = (data.get("audio_hash") or data.get("request_id"), text)
+                    if result == self.last_stt_result:
+                        continue
+                    self.last_stt_result = result
+                    if self.client_endpointing:
+                        self.input_text.append(text)
+                        if self.input_ended:
+                            self.schedule_endpoint()
+                    else:
+                        await self.send({"type": "transcript", "role": "user", "text": text, "final": True})
+                        await self.text(text)
                 elif msg.get("type") == "error":
                     raise RuntimeError("Speech recognition rejected the session configuration.")
         except asyncio.CancelledError:
             raise
-        except Exception:
+        except Exception as exc:
+            logger.warning("voice_stt_failed pipeline=%s error_type=%s", self.config.pipeline, type(exc).__name__)
             await self.send({"type": "fatal", "message": "Speech provider disconnected. End the call and reconnect."})
 
     async def audio(self, pcm):
@@ -116,13 +135,37 @@ class VoicePipelineSession:
 
     async def end_audio(self):
         await self.upstream.send(json.dumps({"type": "flush"}))
+        if self.client_endpointing:
+            self.input_ended = True
+            self.schedule_endpoint()
+
+    def schedule_endpoint(self):
+        if self.endpoint_task:
+            self.endpoint_task.cancel()
+        self.endpoint_task = asyncio.create_task(self.finish_input())
+
+    async def finish_input(self):
+        # Collect recognition segments for one spoken turn. Flush replies can
+        # follow VAD finals; don't start a response to just the first fragment.
+        await asyncio.sleep(.45 if self.input_text else 6)
+        self.endpoint_task = None
+        text = " ".join(self.input_text).strip()
+        self.input_text.clear(); self.input_ended = False
+        if text:
+            await self.send({"type": "transcript", "role": "user", "text": text, "final": True})
+            await self.text(text)
+        else:
+            await self.send({"type": "error", "message": "I couldn't hear that clearly. Please say it again."})
 
     async def interrupt(self):
+        # Release the client immediately; provider cleanup can take seconds.
+        self.playback_busy = False; self.output_started = False
+        await self.send({"type": "interrupted"})
+        await cancel(self.endpoint_task); self.endpoint_task = None
+        self.input_text.clear(); self.input_ended = False
         await cancel(self.turn)
         self.turn = None
-        self.playback_busy = False; self.output_started = False
         await self.tts.close()  # discard old provider audio, including buffered chunks
-        await self.send({"type": "interrupted"})
 
     async def text(self, text):
         await self.interrupt()
@@ -147,7 +190,12 @@ class VoicePipelineSession:
             await self.meter("llm_calls", 1)
             if c.pipeline == 4:
                 # Conservative sandbox reservation; includes search/reasoning.
-                await self.meter("gemini_inr", 1)
+                from app.services.quota import QuotaExceeded
+                try:
+                    await self.meter("gemini_inr", 1)
+                except QuotaExceeded:
+                    c = c.model_copy(update={"pipeline": 1, "web_search": False, "thinking_budget": 0})
+                    await self.send({"type": "notice", "message": "The app's daily Gemini allowance is used. Scholar continues with the backup reply service, without web search."})
             self.history.append({"role": "user", "content": text})
             self.history = self.history[-16:]
 
@@ -169,7 +217,8 @@ class VoicePipelineSession:
             if c.pipeline == 4 and c.filler_phrases and (c.thinking_budget or c.web_search):
                 filler = asyncio.create_task(fill())
             pending = ""
-            async for token in self.tokens(c):
+            tokens = sarvam_tokens(c, self.history) if self.config.pipeline == 4 and c.pipeline == 1 else self.tokens(c)
+            async for token in tokens:
                 first.set()
                 response += token
                 pending += token
@@ -197,6 +246,8 @@ class VoicePipelineSession:
         except asyncio.CancelledError:
             raise
         except Exception as exc:
+            logger.warning("voice_reply_failed pipeline=%s error_type=%s code=%s", c.pipeline, type(exc).__name__, getattr(exc, "code", None))
+            self.playback_busy = False; self.output_started = False
             await self.tts.close()
             await self.send({"type": "interrupted"})
             await self.send({"type": "error", "message": provider_error(exc)})
@@ -205,6 +256,7 @@ class VoicePipelineSession:
             await cancel(speech)
 
     async def close(self):
+        await cancel(self.endpoint_task)
         await cancel(self.receiver)
         await cancel(self.turn)
         await self.tts.close()
@@ -227,6 +279,7 @@ class HybridSession(VoicePipelineSession):
 
 class GeminiNativeSession(VoicePipelineSession):
     async def start(self):
+        self.upstream_failure = None
         self.client = gemini_client()
         self.search_client = None
         self.search_tasks = {}
@@ -283,10 +336,15 @@ class GeminiNativeSession(VoicePipelineSession):
         except asyncio.CancelledError:
             raise
         except Exception as exc:
-            await self.send({"type": "fatal", "message": provider_error(exc)})
+            self.upstream_failure = exc
+            logger.warning("voice_native_receive_failed error_type=%s code=%s", type(exc).__name__, getattr(exc, "code", None))
+            await self.send({"type": "interrupted"})
+            await self.send({"type": "notice", "message": "The native voice connection was lost. Switching to the backup service."})
 
     async def audio(self, pcm):
         from google.genai import types
+        if getattr(self, "upstream_failure", None):
+            raise RuntimeError("Native voice connection is unavailable")
         if self.barge_enabled and not self.audio_started:
             self.input_prefix.extend(pcm)
             if len(self.input_prefix) > 8000:

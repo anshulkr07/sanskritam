@@ -37,7 +37,7 @@ export class VoiceInput {
           this.bargeGapMs += duration;
           if (this.bargeGapMs >= 200) this.bargeMs = 0;
         }
-        if (this.bargeMs >= 800) { bargeIn = this.preRoll.map(frame => frame.buffer as ArrayBuffer); this.resetBarge(); }
+        if (this.bargeMs >= 350) { bargeIn = this.preRoll.map(frame => frame.buffer as ArrayBuffer); this.resetBarge(); }
       } else this.resetBarge();
       pcm.fill(0);
     }

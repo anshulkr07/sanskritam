@@ -91,6 +91,7 @@ function harness({ permission = async () => {}, ticket = async () => ({ ticket: 
     lifecycle(value) { appState.currentState = value; lifecycle(value); },
     timeout() { assert.equal(timers.size, 1, "Startup must have a bounded wait"); const [id, timer] = [...timers][0]; timers.delete(id); timer.callback(); },
     echoCooldown() { const entry = [...timers].find(([, timer]) => timer.ms === 500); assert.ok(entry); timers.delete(entry[0]); entry[1].callback(); },
+    fire(ms) { const entry = [...timers].find(([, timer]) => timer.ms === ms); assert.ok(entry); timers.delete(entry[0]); entry[1].callback(); },
     buffer: data => buffers(data),
     get micStarts() { return micStarts; }, get micStops() { return micStops; },
     get timers() { return timers.size; },
@@ -229,12 +230,13 @@ console.log("Android voice startup: permission activity/resume, cancellation and
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value));
   h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
   assert.ok(h.sockets[0].messages.some(value => typeof value === "string" && JSON.parse(value).type === "playback" && JSON.parse(value).busy === true));
+  const beforeEcho = h.sockets[0].messages.length;
   h.buffer(buffer);
-  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Never stream the speaker echo");
+  assert.equal(h.sockets[0].messages.length, beforeEcho, "Never stream or charge speaker echo/silence");
   h.sockets[0].message({ type: "turn_complete" }); h.buffer(buffer);
-  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Server completion precedes playback completion");
+  assert.equal(h.sockets[0].messages.length, beforeEcho, "Server completion precedes playback completion");
   h.render().onPlaybackBusy(false); h.buffer(buffer);
-  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).every(value => value === 0), "Keep the mic gated through the echo tail");
+  assert.equal(h.sockets[0].messages.length, beforeEcho, "Keep the mic gated through the echo tail");
   h.echoCooldown(); h.buffer(buffer);
   assert.ok(h.sockets[0].messages.some(value => typeof value === "string" && JSON.parse(value).type === "playback" && JSON.parse(value).busy === false));
   assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value), "Resume real input after playback and echo tail");
@@ -257,7 +259,7 @@ console.log("Voice input: automatic turn finalization, speaker echo suppression,
   h.sockets[0].message({ type: "ready", capabilities: { playback_feedback: true, barge_in: true } }); await tick();
   const data = Int16Array.from({ length: 1600 }, (_, i) => Math.round(4000 * Math.sin(i * Math.PI / 20))).buffer;
   const voice = { data, sampleRate: 16000, channels: 1, echoCancelled: true };
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 3; i++) {
     h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
     h.buffer(voice);
   }
@@ -271,9 +273,9 @@ console.log("Voice input: automatic turn finalization, speaker echo suppression,
   h.render().onPlaybackBusy(true); // stale WebView event must not re-gate capture
   h.buffer(voice);
   h.sockets[0].message({ type: "barge_in_ready" });
-  const held = h.sockets[0].messages.filter(value => typeof value !== "string").slice(-9);
-  assert.equal(held.length, 9);
-  assert.ok(held.every(frame => new Int16Array(frame).some(value => value)), "Keep the first 800ms and speech while awaiting cancellation");
+  const held = h.sockets[0].messages.filter(value => typeof value !== "string").slice(-5);
+  assert.equal(held.length, 5);
+  assert.ok(held.every(frame => new Int16Array(frame).some(value => value)), "Keep the opening speech while awaiting cancellation");
   h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
   assert.equal(h.audio.filter(command => command.type === "audio").length, played);
   h.sockets[0].message({ type: "response_started" });
@@ -282,3 +284,34 @@ console.log("Voice input: automatic turn finalization, speaker echo suppression,
   h.render().stop();
 }
 console.log("Natural interruption: sustained speech, immediate playback stop, provider acknowledgement, pre-roll and stale-audio rejection passed.");
+
+// A failed acknowledgement cannot trap the microphone indefinitely, and old
+// response headers cannot revive audio while cancellation is pending.
+{
+  const h = harness(); await h.render().start(); h.sockets[0].open();
+  h.sockets[0].message({ type: "ready", capabilities: { barge_in: true } }); await tick();
+  h.sockets[0].message({ type: "response_started" });
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  h.render().interrupt();
+  assert.equal(h.audio.at(-1).type, "stop");
+  const before = h.audio.length;
+  h.sockets[0].message({ type: "response_started" });
+  h.sockets[0].message({ type: "audio", codec: "pcm", data: "AAAA" });
+  assert.equal(h.audio.length, before);
+  h.fire(5000);
+  assert.equal(h.render().state, "idle");
+  assert.match(h.render().error, /did not resume listening/);
+}
+// Recoverable server errors return to listening and clear the response wait.
+{
+  const h = harness(); await h.render().start(); h.sockets[0].open();
+  h.sockets[0].message({ type: "ready" }); await tick();
+  h.sockets[0].message({ type: "response_started" });
+  h.sockets[0].message({ type: "error", message: "Please say it again" });
+  assert.equal(h.render().thinking, false);
+  assert.equal(h.timers, 0);
+  h.buffer({ data: new Int16Array(1600).fill(4000).buffer, sampleRate: 16000, channels: 1 });
+  assert.ok(new Int16Array(h.sockets[0].messages.at(-1)).some(value => value));
+  h.render().stop();
+}
+console.log("Voice recovery: cancellation deadline, stale response headers and recoverable errors passed.");

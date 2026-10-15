@@ -16,16 +16,16 @@ const frame = (amplitude, echoCancelled = true) => ({
 const short = new exports.VoiceInput();
 for (let i = 0; i < 2; i++) assert.equal(short.process(frame(12000), true).bargeIn, null);
 for (let i = 0; i < 4; i++) assert.equal(short.process(frame(0), true).bargeIn, null);
-for (let i = 0; i < 5; i++) assert.equal(short.process(frame(4000), true).bargeIn, null);
-// Sustained speech qualifies only after 800ms; raw opening words are retained.
+for (let i = 0; i < 3; i++) assert.equal(short.process(frame(4000), true).bargeIn, null);
+// Sustained speech qualifies after 350ms; raw opening words are retained.
 const speech = new exports.VoiceInput();
-for (let i = 0; i < 7; i++) {
+for (let i = 0; i < 3; i++) {
   const result = speech.process(frame(4000), true);
   assert.equal(result.bargeIn, null);
   assert.ok(new Int16Array(result.pcm).every(value => value === 0));
 }
 const result = speech.process(frame(4000), true);
-assert.equal(result.bargeIn.length, 8);
+assert.equal(result.bargeIn.length, 4);
 assert.ok(result.bargeIn.every(data => new Int16Array(data).some(value => value !== 0)));
 // Unprocessed loudspeaker echo cannot enable automatic interruption.
 const unsafe = new exports.VoiceInput();
@@ -46,4 +46,4 @@ const records = patchRecords(fs.readFileSync(new URL("AudioRecords.kt", root), "
 assert.equal(patchRecords(records), records);
 assert.ok(records.includes("echoCancellation: Boolean = false"), "Other capture callers retain their original behavior");
 assert.throws(() => patchStream("changed SDK source"), /does not match/);
-console.log("Voice barge-in: transient noise rejection, 800ms speech, pre-roll, echo capability guard and Android patch checks passed.");
+console.log("Voice barge-in: transient noise rejection, 350ms speech, pre-roll, echo capability guard and Android patch checks passed.");
