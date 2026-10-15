@@ -42,19 +42,31 @@ function harness({ activate = true, failCapture = false, platform = "android" } 
     async requestRecordingPermissionsAsync() { return { granted: true }; },
   };
   const micExports = {};
-  vm.runInNewContext(micCode, { exports: micExports, require: name => name === "expo-audio" ? audio : callExports, Error });
-  return { events, manager, callExports, start: micExports.startMicrophone, emit: data => listener(data) };
+  vm.runInNewContext(micCode, { exports: micExports, require: name => name === "expo-audio" ? audio : name === "react-native" ? { Platform: { OS: platform } } : callExports, Error });
+  const sink = { startCapture: async callback => {
+    assert.equal(mode, "MODE_IN_COMMUNICATION", "Call routing must activate before processed capture");
+    events.push("duplex:start"); listener = callback;
+    if (failCapture) throw new Error("Capture failed");
+    return { stop() { events.push("duplex:stop"); } };
+  } };
+  return { events, manager, callExports, start: (callback, suppliedSink = sink) => micExports.startMicrophone(callback, suppliedSink), emit: data => listener(data) };
 }
 
 {
   const h = harness(), buffers = [];
   const mic = await h.start(buffer => buffers.push(buffer));
-  assert.deepEqual(h.events.slice(0, 6), ["expo:record", "role:communicator", "route:speaker", "call:start", "mic:create", "mic:start"]);
+  assert.deepEqual(h.events, ["expo:record", "role:communicator", "route:speaker", "call:start", "duplex:start"]);
   h.emit({ data: new ArrayBuffer(3200), sampleRate: 16000, channels: 1, echoCancelled: true });
   assert.equal(buffers[0].echoCancelled, true);
   mic.stop(); mic.stop();
-  assert.deepEqual(h.events.slice(-5), ["mic:unlisten", "mic:stop", "mic:release", "call:stop", "expo:restore"]);
+  assert.deepEqual(h.events.slice(-3), ["duplex:stop", "call:stop", "expo:restore"]);
   assert.equal(h.events.filter(e => e === "call:stop").length, 1);
+}
+{
+  const h = harness();
+  await assert.rejects(h.start(() => {}, {}), /Speakerphone audio is not ready/);
+  assert.ok(!h.events.includes("mic:create"), "Do not fall back to the broken split speaker/capture path");
+  assert.equal(h.events.at(-1), "expo:restore");
 }
 for (const options of [{ activate: false }, { failCapture: true }]) {
   const h = harness(options);
@@ -62,6 +74,17 @@ for (const options of [{ activate: false }, { failCapture: true }]) {
   assert.ok(h.events.includes("call:stop"), "Failed startup must release communication mode");
   assert.equal(h.events.at(-1), "expo:restore");
   if (options.activate === false) assert.ok(!h.events.includes("mic:create"));
+}
+{
+  const h = harness();
+  const mic = await h.start(() => {}, { startCapture: async callback => {
+    h.events.push("duplex:start");
+    return { stop() { h.events.push("duplex:stop"); } };
+  } });
+  assert.ok(h.events.includes("duplex:start"));
+  assert.ok(!h.events.includes("mic:create"), "Duplex must exclusively own capture; do not open a second raw recorder");
+  mic.stop();
+  assert.deepEqual(h.events.slice(-3), ["duplex:stop", "call:stop", "expo:restore"]);
 }
 {
   const h = harness({ platform: "ios" });

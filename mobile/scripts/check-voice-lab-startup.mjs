@@ -214,6 +214,7 @@ console.log("Voice Lab startup: permission focus, cancellation, timeouts, retry,
   const native = { AudioModule: {}, requestRecordingPermissionsAsync: async () => { permissionRequests++; return { granted: true }; } };
   vm.runInNewContext(code, { exports, require: name => {
     if (name === "./callAudio") return { startCallAudio: async () => () => {} };
+    if (name === "react-native") return { Platform: { OS: "android" } };
     assert.equal(name, "expo-audio"); return native;
   }, Error });
   await assert.rejects(exports.microphonePermission(), /Install a new app build/);

@@ -1,5 +1,10 @@
+import type { MicBuffer, Microphone } from "./microphone";
+
 export type AudioCommand = { type: string; data?: string; codec?: string; sample_rate?: number; pitch?: number; loudness?: number };
-export type AudioSinkHandle = { send: (command: AudioCommand) => void };
+export type AudioSinkHandle = {
+  send: (command: AudioCommand) => void;
+  startCapture?: (onBuffer: (buffer: MicBuffer) => void) => Promise<Microphone>;
+};
 
 // Shared Web Audio playback engine for browser and the native WebView.
 // Scheduling uses decoded duration including detune; interruption invalidates
@@ -11,6 +16,7 @@ function wake(){for(const resolve of waiters)resolve();waiters.clear();}
 function report(message){if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(JSON.stringify({error:message}));else parent.postMessage({voiceLabAudioError:message},'*');}
 function playback(){const value=!!(pending||sources.size);if(value===busy)return;busy=value;const message={voiceLabPlaybackBusy:value,generation};if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(JSON.stringify(message));else parent.postMessage(message,'*');}
 function init(){if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.connect(ctx.destination);}gain.gain.value=loudness;return ctx.resume();}
+window.voiceLabSetOutput=function(target){gain.disconnect();gain.connect(target||ctx.destination);};
 window.voiceLabCommand=function(m){
  if(m.type==='settings'){pitch=m.pitch||0;loudness=m.loudness||1;if(gain)gain.gain.value=loudness;return;}
  if(m.type==='stop'){generation++;for(const s of sources){try{s.stop();}catch{}}sources.clear();pending=0;playback();next=0;chain=Promise.resolve();wake();return;}

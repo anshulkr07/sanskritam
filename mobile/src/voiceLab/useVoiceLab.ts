@@ -187,7 +187,7 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
               // silence to STT or charge the learner while the AI is talking.
               if (!speakerActive.current && frame.pcm.byteLength) ws.send(frame.pcm);
               if (frame.endTurn) send({ type: "end_audio" });
-            });
+            }, sink.current);
             if (epoch === generation.current) {
               stream.current = mic; starting.current = false;
               if (startTimer.current !== null) clearTimeout(startTimer.current);

@@ -134,11 +134,11 @@ The client retains the initial words, stops local playback immediately, and boun
 the cancellation acknowledgement wait. Suppressed speaker audio is not sent to
 STT. Input quota is reserved in five-second blocks; unused credit is refunded.
 
-Android must acquire communication mode before creating the recorder and its
-AEC effect. Expo's default `setAudioModeAsync` selects media mode, even when
-`allowsRecording` is true. Voice Lab now starts the already shipped
-`StreamInCallManager` native session after Expo configuration, verifies
-`MODE_IN_COMMUNICATION`, and only then creates `AudioStream`. The SDK owns the
+Android acquires communication mode before opening voice capture. Expo's
+default `setAudioModeAsync` selects media mode, even when `allowsRecording`
+is true. Voice Lab starts the already shipped `StreamInCallManager` native
+session after Expo configuration and verifies `MODE_IN_COMMUNICATION`.
+The SDK owns the
 speaker/connected-device route and the Android communication-mode keep-alive.
 The public Stream `callManager.start()` only stores configuration until a Stream
 call joins; Voice Lab does not join a Stream call, so it uses the installed native
@@ -147,6 +147,28 @@ native API is added. `node scripts/check-voice-call-audio.mjs` verifies ordering
 asynchronous mode activation, cleanup and the iOS guard. The live mic meter is
 no longer forced to zero during playback. Unconfirmed AEC still does not enable
 automatic speakerphone interruption; this is distinct from microphone capture.
+
+Android speakerphone capture and playout now share the WebView's WebRTC audio
+engine. Two local peers connect without STUN/TURN or remote media servers:
+microphone -> WebRTC processing -> local receiving track -> mono 16 kHz PCM
+bridge, and TTS -> Web Audio media destination -> remote WebRTC audio element.
+This gives capture a remote-speaker reference, instead of depending on a vendor
+AudioRecord effect attached to a separate playback engine. The microphone remains
+running during AI output and interruption; stopping AI buffers does not close
+capture. Browser-reported echo processing and actual packet flow are required
+before startup completes. Capture timeout/failure is explicit, rather than silently
+falling back to the split Android capture path. iOS/browser capture is unchanged.
+The inline WebView uses the trusted HTTPS API base origin for media permission;
+Android's existing RECORD_AUDIO permission is granted before it requests capture.
+No new native dependency or app build is required.
+
+`node scripts/check-voice-duplex-browser.mjs` runs real headless Chromium with its
+synthetic microphone. It checks both local peers connect, 100 ms PCM packets,
+TTS energy on the remote playback track, capture during interruption, cleanup
+and a second call. It uses a separate temporary browser profile and no personal
+microphone. `check-voice-capture-bridge.mjs` checks byte integrity and stale/failed
+capture isolation. Browser integration does not certify acoustic echo rejection
+on the physical handset.
 
 App allowance failures are distinct from vendor quota failures. At the Gemini
 allowance, Friend and Scholar continue on the metered Sarvam service with an
