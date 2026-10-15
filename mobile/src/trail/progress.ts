@@ -1,17 +1,35 @@
-// Trail progress, derived from stores that already exist — nothing migrated:
-//   card lessons   → LearnV2 read-through marks (learnv2/progress.ts)
-//   grammar notes  → Grammar guide read marks, or opened from the trail
-//   tool stops     → opened from the trail (shabd.trail.v1.visited)
+// Trail progress: every lesson uses LearnV2 completion. Old grammar-note and
+// tool marks are imported once, so upgrades preserve historical progress.
 //   unit practice  → server feature mastery (GET /grammar/path)
 // Lessons inside a stage open in order; stages are all open.
 
 import { progressStorage as AsyncStorage } from "../services/progressStorage";
+import { loadGrammarProgress } from "../services/grammarGuide";
+import { loadLearnV2DoneMap, markLearnV2LessonDone } from "../learnv2/progress";
 
 import type { TrailStage, TrailStop, TrailUnit } from "./course";
-import { stageStops } from "./course";
+import { stageStops, TRAIL } from "./course";
 
 const VISITED_KEY = "shabd.trail.v1.visited";
 const STAGE_KEY = "shabd.trail.v1.stage";
+const CARD_MIGRATION_KEY = "shabd.trail.v2.cardsMigrated";
+
+/** Import old note/tool completion once. Subsequent decks have independent
+ * completion: two lessons using the same topic must not finish each other. */
+export async function loadTrailCardDoneMap(extraIds: string[] = []): Promise<Record<string, boolean>> {
+  const stops = TRAIL.flatMap(stageStops);
+  if (await AsyncStorage.getItem(CARD_MIGRATION_KEY) !== "1") {
+    const [grammar, visited] = await Promise.all([loadGrammarProgress(), loadVisited()]);
+    for (const { lesson } of stops) {
+      if (!(lesson.cards.startsWith("trail:") || lesson.tool)) continue;
+      if (visited.has(lesson.id) || (lesson.topics.length > 0 && lesson.topics.every(id => grammar.read.has(id)))) {
+        await markLearnV2LessonDone(lesson.cards);
+      }
+    }
+    await AsyncStorage.setItem(CARD_MIGRATION_KEY, "1").catch(() => {});
+  }
+  return loadLearnV2DoneMap([...stops.map(s => s.lesson.cards), ...extraIds]);
+}
 
 export async function loadVisited(): Promise<Set<string>> {
   try {
@@ -53,9 +71,7 @@ export type StopStatus = "done" | "current" | "upcoming";
 
 export function isStopDone(stop: TrailStop, f: TrailFacts): boolean {
   const l = stop.lesson;
-  if (l.cards) return !!f.cardsDone[l.cards];
-  if (f.visited.has(l.id)) return true;
-  return l.topics.length > 0 && l.topics.every((t) => f.topicsRead.has(t));
+  return !!f.cardsDone[l.cards];
 }
 
 /** Done stops stay done; the first stop not done is current; the rest wait. */

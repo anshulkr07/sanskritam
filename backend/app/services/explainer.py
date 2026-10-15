@@ -126,8 +126,9 @@ beauty and worth of life as the texts see it, and ask them to talk today to \
 someone close to them. Leave `caution` empty.
 
 Sanskrit terms: only well-known single words or short standard phrases, in \
-Devanagari. Never compose a Sanskrit sentence. Do not transliterate: the \
-server adds the roman.
+Devanagari, including sounds, endings and rules in English explanations: \
+write अ + इ → ए, never a + i → e. Never compose a Sanskrit sentence. Do not \
+transliterate: the server may add secondary roman support.
 
 Shape: title of at most 6 words; summary of one sentence; at most 3 \
 sections; at most 5 items each, one short sentence per item; at most 4 \

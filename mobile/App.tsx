@@ -199,7 +199,7 @@ function RootNavigator() {
             <Stack.Screen name="Story" component={StoryDeckScreen} options={{ title: "Introduction" }} />
             <Stack.Screen name="SandhiPractice" component={SandhiPracticeScreen} options={{ title: "Play with sandhi" }} />
             {/* Grammar guide: a topic page and the word lookup, stacked over the Grammar tab. */}
-            <Stack.Screen name="GrammarTopic" component={GrammarTopicScreen} options={{ title: "Grammar" }} />
+            <Stack.Screen name="GrammarTopic" component={GrammarTopicScreen} options={{ headerShown: false }} />
             <Stack.Screen name="GrammarChapter" component={GrammarChapterScreen} options={{ title: "Chapter" }} />
             <Stack.Screen name="WordLab" component={WordLabScreen} options={{ title: "Word Lab" }} />
             {/* Read fullscreen page: covers the tab bar. */}

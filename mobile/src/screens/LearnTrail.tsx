@@ -13,20 +13,18 @@ import { api, type LessonSummary } from "../api/client";
 import { useGrammarProgress, useGuideLang } from "../hooks/useGuide";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
-import { loadLearnV2DoneMap, setLearnV2LastLesson } from "../learnv2/progress";
+import { setLearnV2LastLesson } from "../learnv2/progress";
 import type { TabScreenProps } from "../navigation/types";
 import { fetchGuideIndex } from "../services/grammarGuide";
 import { haptics } from "../services/haptics";
 import { TRAIL, stageStops, type TrailStop, type TrailTool, type TrailUnit } from "../trail/course";
-import { loadStageId, loadVisited, markVisited, saveStageId, stageDoneCount, stageStatuses, type TrailFacts } from "../trail/progress";
+import { loadStageId, loadTrailCardDoneMap, loadVisited, saveStageId, stageDoneCount, stageStatuses, type TrailFacts } from "../trail/progress";
 import { LessonSheet, PracticeSheet, StageSheet } from "../trail/Sheets";
 import TrailList from "../trail/TrailList";
 import TrailMap from "../trail/TrailMap";
 import { T, ui } from "../trail/theme";
 import { IconButton, LangSwitch, Medallion } from "../trail/ui";
 import { dayStreak, localToday } from "../utils/streak";
-
-const CARD_IDS = TRAIL.flatMap((s) => s.units.flatMap((u) => u.lessons.flatMap((l) => (l.cards ? [l.cards] : []))));
 
 export default function LearnTrailScreen({ navigation }: TabScreenProps<"Learn">) {
   const { lang, setLang } = useGuideLang();
@@ -50,7 +48,7 @@ export default function LearnTrailScreen({ navigation }: TabScreenProps<"Learn">
 
   useFocusEffect(useCallback(() => {
     let alive = true;
-    Promise.all([loadLearnV2DoneMap(CARD_IDS), loadVisited(), firstLoad.current ? loadStageId() : Promise.resolve(null)])
+    Promise.all([loadTrailCardDoneMap(), loadVisited(), firstLoad.current ? loadStageId() : Promise.resolve(null)])
       .then(([done, seen, saved]) => {
         if (!alive) return;
         setCardsDone(done);
@@ -98,21 +96,12 @@ export default function LearnTrailScreen({ navigation }: TabScreenProps<"Learn">
   const startStop = (stop: TrailStop) => {
     const l = stop.lesson;
     setOpenStop(null);
-    if (l.cards) {
-      setLearnV2LastLesson(l.cards);
-      navigation.navigate("LearnV2Lesson", { lessonId: l.cards });
-    } else if (l.topics.length) {
-      markVisited(l.id);
-      navigation.navigate("GrammarTopic", { topicId: l.topics[0] });
-    } else if (l.tool) {
-      markVisited(l.id);
-      openTool(l.tool);
-    }
+    setLearnV2LastLesson(l.cards);
+    navigation.navigate("LearnV2Lesson", { lessonId: l.cards });
   };
 
   const openNotes = (stop: TrailStop) => {
     setOpenStop(null);
-    if (!stop.lesson.cards) markVisited(stop.lesson.id);
     if (stop.lesson.topics[0]) navigation.navigate("GrammarTopic", { topicId: stop.lesson.topics[0] });
   };
 

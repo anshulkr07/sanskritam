@@ -82,13 +82,13 @@ export function ReportSheet({ target, onClose }: { target: ReportTarget | null; 
       visible={!!target}
       onClose={onClose}
       title={done ? "Thank you" : `Report ${target?.label ?? ""}`}
-      sub={done ? undefined : "What is wrong? We read every report."}
+      sub={done ? undefined : "What is wrong with it?"}
     >
       {done ? (
         <>
           <Text style={styles.body}>
-            The report is with us. If it breaks the Saṅgha rules we will remove it. You can also block the learner so you
-            no longer see them.
+            The report is saved for the Sanskritam team to review. You can also block the learner so you no longer see
+            them.
           </Text>
           <Btn label="Done" onPress={onClose} style={{ marginTop: 16 }} />
         </>

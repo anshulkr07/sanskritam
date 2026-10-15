@@ -1,16 +1,43 @@
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useSyncExternalStore } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { audioTransport } from "../services/audioTransport";
 import { color } from "../theme";
 
+// A screen with its own controls where the bar would sit (Group chat's
+// composer) pins the bar just under its top chrome instead: `below` is where
+// that chrome ends, from the top of the screen. The owner token keeps a
+// screen that is leaving from unpinning the one that replaced it.
+let pin: { owner: object; below: number } | null = null;
+const pinListeners = new Set<() => void>();
+const emitPin = () => pinListeners.forEach(listener => listener());
+const subscribePin = (listener: () => void) => { pinListeners.add(listener); return () => { pinListeners.delete(listener); }; };
+const pinnedBelow = () => pin?.below ?? null;
+
+/** Pins the bar under the screen's top chrome while `below` is set; null releases it. */
+export function usePinAudioBarBelow(below: number | null) {
+  const [owner] = useState(() => ({}));
+  useEffect(() => {
+    if (below == null) return;
+    pin = { owner, below };
+    emitPin();
+    return () => {
+      if (pin?.owner !== owner) return;
+      pin = null;
+      emitPin();
+    };
+  }, [owner, below]);
+}
+
 export default function FloatingAudioBar({ inTabs = false, atTop = false }: { inTabs?: boolean; atTop?: boolean }) {
   const audio = useSyncExternalStore(audioTransport.subscribe, audioTransport.getSnapshot);
+  const below = useSyncExternalStore(subscribePin, pinnedBelow);
   const insets = useSafeAreaInsets();
   if (!audio) return null;
   const bottom = Math.max(insets.bottom, 8) + (inTabs ? 64 : 12);
-  return <View pointerEvents="box-none" style={[styles.anchor, atTop ? { top: insets.top + 52 } : { bottom }]}>
+  const place = atTop ? { top: insets.top + 52 } : below != null ? { top: below + 8 } : { bottom };
+  return <View pointerEvents="box-none" style={[styles.anchor, place]}>
     <View style={[styles.bar, audio.minimized && styles.compact]}>
       <Pressable onPress={() => audioTransport.toggle()} accessibilityRole="button"
         accessibilityLabel={audio.playing ? "Pause audio" : "Resume audio"} style={styles.button}>

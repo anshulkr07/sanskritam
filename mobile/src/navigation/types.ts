@@ -63,8 +63,8 @@ export type RootStackParamList = {
   // U15-1: the lesson is now a step player addressed by id; featureId stays
   // as the legacy entry (Path nodes that only know their feature).
   Lesson: { featureId: string; lessonId?: string };
-  // LearnV2 (additive Learn tab): static catalogue lessons. Reading progress
-  // is device-local (shabd.learnv2.*); nothing here writes mastery or XP.
+  // Shared card player: custom decks, trail lessons and full guide topics.
+  // Finishing records reading progress, XP and streak activity.
   LearnV2Lesson: { lessonId: string };
   Vocab: { topic?: string } | undefined;
   // U15-6: Piṅgala as binary — light/heavy enumeration, mātrāmeru.

@@ -67,7 +67,7 @@ export function LessonSheet({ stop, status, currentTitle, topics, lang, onStart,
   const words = cards
     ? [...new Set(cards.cards.flatMap((c) => (c.example ? [c.example.sa] : [])).filter((w) => !/[\s+→।]/.test(w)))].slice(0, 5)
     : [];
-  const primary = cards
+  const primary = lesson.cards
     ? (status === "done" ? (hi ? "फिर से पढ़ें" : "Go through it again") : (hi ? "पाठ शुरू करें" : "Start lesson"))
     : lesson.topics.length
       ? (hi ? "पाठ के नोट्स पढ़ें" : "Read the lesson notes")
@@ -87,7 +87,7 @@ export function LessonSheet({ stop, status, currentTitle, topics, lang, onStart,
           <Meta icon="time-outline" text={hi ? `${lesson.minutes} मिनट` : `${lesson.minutes} min`} />
           {cards ? <Meta icon="albums-outline" text={hi ? `${cards.cards.length} कार्ड` : `${cards.cards.length} cards`} /> : null}
           {checks ? <Meta icon="checkmark" text={hi ? `${checks} जाँच` : `${checks} ${checks === 1 ? "check" : "checks"}`} /> : null}
-          {!cards && lesson.topics.length ? <Meta icon="document-text-outline" text={hi ? "नोट्स" : "Notes"} /> : null}
+          {!cards ? <Meta icon="albums-outline" text={hi ? "कार्ड पाठ" : "Card lesson"} /> : null}
         </View>
         {words.length ? (
           <View style={{ gap: 6 }}>
@@ -103,8 +103,7 @@ export function LessonSheet({ stop, status, currentTitle, topics, lang, onStart,
           </Text>
         ) : null}
         {primary ? <PrimaryButton label={primary} onPress={onStart} disabled={locked} /> : null}
-        {cards && lesson.topics.length ? <TextButton label={hi ? "इसके बजाय व्याकरण नोट पढ़ें" : "Read the grammar note instead"} onPress={onNotes} /> : null}
-        {!cards && locked && lesson.topics.length ? <TextButton label={hi ? "नोट्स अभी पढ़ें" : "Read the notes now"} onPress={onNotes} /> : null}
+        {cards && lesson.topics.length ? <TextButton label={hi ? "इस विषय पर और पढ़ें" : "More on this topic"} onPress={onNotes} /> : null}
       </ScrollView>
     </Sheet>
   );

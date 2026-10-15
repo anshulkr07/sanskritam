@@ -4,7 +4,7 @@
 // Devanagari face and is announced as Hindi to screen readers.
 
 import React from "react";
-import { StyleSheet, Text, type StyleProp, type TextStyle } from "react-native";
+import { StyleSheet, Text, type StyleProp, type TextStyle, type TextProps } from "react-native";
 
 import type { GuideLang } from "../../api/client";
 import { color, script } from "../../theme";
@@ -37,11 +37,15 @@ export default function InlineText({
   lang,
   style,
   numberOfLines,
+  accessibilityRole,
+  selectable,
 }: {
   text: string;
   lang: GuideLang;
   style?: StyleProp<TextStyle>;
   numberOfLines?: number;
+  accessibilityRole?: TextProps["accessibilityRole"];
+  selectable?: boolean;
 }) {
   // The guide is authored with em dashes; the app never shows one.
   const parts = React.useMemo(() => parseInline(plain(text)), [text]);
@@ -51,6 +55,8 @@ export default function InlineText({
       style={[style, hindi && script("regular")]}
       accessibilityLanguage={hindi ? "hi-IN" : "en-IN"}
       numberOfLines={numberOfLines}
+      accessibilityRole={accessibilityRole}
+      selectable={selectable}
     >
       {parts.map((p, i) =>
         p.sanskrit ? (

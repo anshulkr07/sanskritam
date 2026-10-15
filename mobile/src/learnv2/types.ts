@@ -1,12 +1,12 @@
-// LearnV2 content contract — the additive Learn tab's static catalogue.
-//
-// Static by design (handover §"Additive architecture"): validated content
-// ships in the bundle; no backend fields/endpoints, no production-data
-// mutation. A lesson the reviewer has not verified never enters LEARNV2_LESSONS.
+// Shared card contract: reviewed custom decks ship in the catalogue, and
+// complete guide topics are adapted from their existing typed API content.
+// Display conversion never invents Sanskrit, translations or engine results.
 //
 // One point per card. No "A closer look", expandable note, disclosure or any
 // optional-detail control: essential qualifications live in `body` itself.
 // Swipe advances reading position only — never mastery, XP or reviews.
+
+import type { GuideBlock, GuideExample, GuideProof, GuideSanskrit } from "../api/client";
 
 export type LearnV2Lang = "en" | "hi";
 
@@ -24,7 +24,7 @@ export interface LearnV2Example {
   iast: string;
   /** Immediate meaning/reason — stays with the example on the same card. */
   gloss: LearnV2Text;
-  /** Optional boundary formula, e.g. "ā + a → ā". Native/SVG, not a bitmap. */
+  /** Devanagari boundary formula, e.g. "आ + अ → आ". Native text, not a bitmap. */
   formula?: string;
   /** Accessible equivalent of the visual (screen readers, inspection). */
   alt: LearnV2Text;
@@ -60,6 +60,15 @@ export interface LearnV2Card {
   assetIds?: string[];
   /** New technical term introduced on this card, with its plain explanation. */
   term?: { sa: string; iast: string; meaning: LearnV2Text };
+  /** Complete guide content, paginated without losing audio, word glosses or cells. */
+  guide?: {
+    topicId: string;
+    block?: Extract<GuideBlock, { kind: "table" }>;
+    example?: GuideExample;
+    sanskrit?: GuideSanskrit;
+    sounds?: GuideSanskrit[];
+    proof?: GuideProof;
+  };
 }
 
 export interface LearnV2Lesson {
@@ -79,6 +88,8 @@ export interface LearnV2Lesson {
   sourceLanguage?: "en" | "bilingual";
   sourceUrls?: string[];
   chapterId?: string;
+  /** Source topics marked read only when the complete deck is finished. */
+  topicIds?: string[];
 }
 
 export interface LearnV2Unit {

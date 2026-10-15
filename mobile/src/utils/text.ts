@@ -5,9 +5,11 @@
 // Not applied to API payloads wholesale: scansion data uses "—" as a
 // long-syllable mark (Shloka.tsx), and rewriting it would change the data.
 
+import { devanagariRules } from "./sanskritDisplay";
+
 export function plain(text: string | null | undefined): string {
   if (!text) return "";
-  return text
+  return devanagariRules(text)
     .replace(/^\s*[—–]\s*/gm, "") // a dash opening a line ("— source")
     .replace(/\s*[—–]\s*$/gm, "") // a dash closing a line ("Here it is —")
     .replace(/\s+[—–]\s+/g, ", ") // spaced dash between clauses

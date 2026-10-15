@@ -126,7 +126,37 @@ def test_privacy_policy_says_where_recitations_go(client):
 
 
 def test_privacy_policy_date_is_current(client):
-    assert "last updated 14 October 2026" in _flat(client)
+    assert "last updated 15 October 2026" in _flat(client)
+
+
+def test_privacy_policy_covers_group(client):
+    """Group (routers/community.py) stores message text, keeps photos and voice
+    notes 48 hours, shows presence, copies reported content, and runs voice on
+    Stream (services/community_audio.py); deletion follows
+    services/community_lifecycle.py. The page must say each, and both pages must
+    stop claiming that nothing identifying is kept."""
+    text = _flat(client)
+    for claim in (
+        "agree to the Saṅgha rules",
+        "Any learner can find your card",
+        "every 30 seconds",
+        "about 90 seconds after you leave the app",
+        "Everyone in a circle can read all of its messages, including ones sent before they joined",
+        "for 48 hours",
+        "they are deleted from storage",
+        "recording and transcription are turned off for every room and call",
+        "The copy stays even if the original is deleted",
+        "are not sent to any AI service",
+        "Stream (GetStream.io)",
+        "keeps Group photos and voice notes in private storage for 48 hours",
+        "your direct chats (both sides)",
+        "we don't ask Stream to delete the account ID and name it was given",
+    ):
+        assert claim in text, claim
+    deleted = _flat(client, "/delete-account")
+    assert "In Group: your learner card" in deleted
+    assert "a report another learner made keeps its copy" in deleted
+    assert "Nothing that identifies you" not in deleted
 
 
 def test_delete_page_lists_the_competition_and_recitation_data(client):

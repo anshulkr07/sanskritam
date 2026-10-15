@@ -71,8 +71,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
   };
 
   const openLesson = (l: TrailLesson) => {
-    if (l.cards) navigation.navigate("LearnV2Lesson", { lessonId: l.cards });
-    else if (l.topics[0]) navigation.navigate("GrammarTopic", { topicId: l.topics[0] });
+    navigation.navigate("LearnV2Lesson", { lessonId: l.cards });
   };
 
   const q = norm(query.trim());

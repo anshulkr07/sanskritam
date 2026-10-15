@@ -24,7 +24,7 @@ import Collapsible from "./Collapsible";
 import InlineText from "./InlineText";
 import { GUIDE_UI } from "./strings";
 
-function ProofBody({ proof, ctx }: { proof: GuideProof; ctx: GuideTextCtx }) {
+export function ProofBody({ proof, ctx }: { proof: GuideProof; ctx: GuideTextCtx }) {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const p = proof.params;
   switch (proof.type) {

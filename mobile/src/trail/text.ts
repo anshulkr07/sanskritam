@@ -28,7 +28,7 @@ export function stopMeta(stop: TrailStop, status: StopStatus, lang: GuideLang): 
   const min = hi ? `${stop.lesson.minutes} मिनट` : `${stop.lesson.minutes} min`;
   const cards = stop.lesson.cards ? getLearnV2Lesson(stop.lesson.cards)?.cards.length : undefined;
   if (cards) return hi ? `${min} · ${cards} कार्ड` : `${min} · ${cards} cards`;
-  if (stop.lesson.topics.length) return hi ? `${min} · नोट्स` : `${min} · notes`;
+  if (stop.lesson.cards) return hi ? `${min} · कार्ड पाठ` : `${min} · card lesson`;
   if (stop.lesson.tool) return hi ? `${toolName(stop.lesson.tool, lang)} के साथ` : `with ${toolName(stop.lesson.tool, lang)}`;
   return min;
 }

@@ -303,6 +303,32 @@ def test_delete_account_transfers_shared_group(group_api):
         assert db.get(Learner, a[0]) is None
 
 
+def test_delete_account_clears_circle_preview(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    group = post(c, "/groups", a[1], {"name": "Preview study"}).json()["id"]
+    post(c, f"/groups/{group}/join", b[1])
+    post(c, f"/groups/{group}/join", x[1])
+    for h, text, client_id in [
+        (x[1], "Chitra's words", "preview-x-123"),
+        (b[1], "my private words", "preview-b-123"),
+    ]:
+        r = post(
+            c,
+            f"/conversations/{group}/messages",
+            h,
+            {"content": text, "client_id": client_id},
+        )
+        assert r.status_code == 200, r.text
+    assert get(c, f"/conversations/{group}", a[1]).json()["last_text"] == (
+        "my private words"
+    )
+    assert c.delete("/me", headers=b[1]).status_code == 204
+    view = get(c, f"/conversations/{group}", a[1]).json()
+    assert view["last_text"] == "Chitra's words"
+    assert view["last_sender"] == "Chitra"
+
+
 def test_single_use_websocket_ticket_and_delivery(group_api, monkeypatch):
     c, users, sessions = group_api
     a = users[0]

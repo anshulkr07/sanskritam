@@ -37,16 +37,23 @@ def delete_account(db, uid):
             remaining[0].role = "admin"
             c.creator_id = remaining[0].user_id
     db.flush()
-    gone_ids = [
-        m.id
-        for m in db.query(Message).filter(
-            or_(Message.sender_id == uid, Message.conversation_id.in_(remove))
-        )
-    ]
+    gone = (
+        db.query(Message)
+        .filter(or_(Message.sender_id == uid, Message.conversation_id.in_(remove)))
+        .all()
+    )
+    gone_ids = [m.id for m in gone]
     db.query(Message).filter(Message.reply_to.in_(gone_ids)).update(
         {Message.reply_to: None}, synchronize_session=False
     )
     db.query(Message).filter(Message.id.in_(gone_ids)).delete(synchronize_session=False)
+    # A surviving circle's preview (last_text) must not keep the learner's words,
+    # including circles they had already left.
+    from app.routers.community import refresh_last_text
+
+    touched = {m.conversation_id for m in gone} - set(remove)
+    for c in db.query(Conversation).filter(Conversation.id.in_(touched)):
+        refresh_last_text(db, c)
     media = (
         db.query(Media)
         .filter(or_(Media.user_id == uid, Media.conversation_id.in_(remove)))

@@ -1,8 +1,8 @@
-// LearnV2 reading progress — device-local, versioned, separate from old state.
+// LearnV2 reading progress — versioned, persisted through progressStorage.
 //
 // Keys live under `shabd.learnv2.*` and never touch Path/Grammar/Story keys.
-// Reading completion (visited cards, last card) is NOT mastery: no XP, no
-// reviews, no server writes. Modelled on services/grammarGuide + storyProgress.
+// Swipes only save reading position. Finishing is recorded by the player,
+// which separately posts completion XP and streak activity to the server.
 
 import { progressStorage as AsyncStorage } from "../services/progressStorage";
 
@@ -93,8 +93,8 @@ export async function loadLearnV2Visited(lessonId: string, cardIds: string[]): P
   return out;
 }
 
-export function markLearnV2LessonDone(lessonId: string): void {
-  AsyncStorage.setItem(DONE_PREFIX + lessonId, "1").catch(() => {});
+export async function markLearnV2LessonDone(lessonId: string): Promise<void> {
+  await AsyncStorage.setItem(DONE_PREFIX + lessonId, "1").catch(() => {});
   notify();
 }
 

@@ -6,26 +6,32 @@
 // earns XP, every finish marks the day for the streak.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AccessibilityInfo, FlatList, Linking, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api } from "../api/client";
+import FetchError from "../components/FetchError";
+import { Skeleton } from "../components/Skeleton";
 import { useAskContext } from "../ask/AskProvider";
 import { useGuideLang } from "../hooks/useGuide";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
+import { useQuery } from "../hooks/useQuery";
 import LearnV2CardView from "../learnv2/LearnCard";
 import { getLearnV2Lesson } from "../learnv2/catalogue";
-import { getLearnV2LastCard, loadLearnV2DoneMap, loadLearnV2Visited, markLearnV2CardVisited, markLearnV2LessonDone, setLearnV2LastCard } from "../learnv2/progress";
+import { loadCardLesson } from "../learnv2/loadLesson";
+import type { LearnV2Lesson } from "../learnv2/types";
+import { getLearnV2LastCard, loadLearnV2Visited, markLearnV2CardVisited, markLearnV2LessonDone, setLearnV2LastCard, setLearnV2LastLesson } from "../learnv2/progress";
 import type { RootStackParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
-import { loadGrammarProgress } from "../services/grammarGuide";
+import { loadGrammarProgress, setLastTopic, setTopicRead } from "../services/grammarGuide";
 import { findStopByCards, stopAfter } from "../trail/course";
-import { isStopDone, loadVisited, markVisited } from "../trail/progress";
+import { isStopDone, loadTrailCardDoneMap, loadVisited } from "../trail/progress";
+import { toolName } from "../trail/text";
 import { T, sa, ui } from "../trail/theme";
-import { IconButton, PrimaryButton, Segments, TextButton } from "../trail/ui";
+import { IconButton, LangSwitch, PrimaryButton, Segments, TextButton } from "../trail/ui";
 import { dayStreak, localToday } from "../utils/streak";
 
 type Props = NativeStackScreenProps<RootStackParamList, "LearnV2Lesson">;
@@ -40,18 +46,40 @@ interface Finish {
 }
 
 export default function LearnV2LessonScreen({ route, navigation }: Props) {
-  const { lessonId } = route.params;
-  const lesson = getLearnV2Lesson(lessonId);
+  return <CardLessonScreen lessonId={route.params.lessonId} navigation={navigation} />;
+}
+
+type LessonNavigation = NativeStackNavigationProp<RootStackParamList>;
+
+/** Both the trail and every guide topic use this entry, including future topics. */
+export function CardLessonScreen({ lessonId, navigation }: { lessonId: string; navigation: LessonNavigation }) {
+  const { lang } = useGuideLang();
+  const authored = getLearnV2Lesson(lessonId);
+  const query = useQuery(`card-lesson:${lessonId}`, () => loadCardLesson(lessonId), { ttlMs: 30 * 60_000 });
+  const lesson = authored ?? query.data;
+  if (!lesson) return <SafeAreaView style={styles.safe}>
+    <View style={styles.topBar}><IconButton icon="close" label={lang === "hi" ? "बंद करें" : "Close"} onPress={() => navigation.goBack()} /></View>
+    <View style={styles.page}>
+      {query.failed ? <FetchError label={lang === "hi" ? "पाठ लोड नहीं हुआ।" : "Could not load this lesson."} retryLabel={lang === "hi" ? "फिर कोशिश करें" : "Try again"} onRetry={query.retry} />
+        : <View accessible accessibilityLabel={lang === "hi" ? "पाठ लोड हो रहा है" : "Loading lesson"} style={{ gap: 16 }}><Skeleton height={28} /><Skeleton height={180} /><Skeleton height={90} /></View>}
+    </View>
+  </SafeAreaView>;
+  return <LessonPlayer key={lessonId} lesson={lesson} navigation={navigation} />;
+}
+
+function LessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigation: LessonNavigation }) {
+  const lessonId = lesson.id;
   const stop = useMemo(() => findStopByCards(lessonId), [lessonId]);
   const next = stop ? stopAfter(stop) : undefined;
   const accent = stop?.stage.color ?? T.action;
-  const { lang } = useGuideLang();
+  const { lang, setLang } = useGuideLang();
   const hi = lang === "hi";
   const { sized } = useTypeScale();
   const reduced = useReducedMotion();
   const { width } = useWindowDimensions();
   const listRef = useRef<FlatList<number>>(null);
   const answers = useRef<Record<string, boolean>>({});
+  const completing = useRef(false);
 
   const [index, setIndex] = useState(0);
   const [resumed, setResumed] = useState(false);
@@ -62,6 +90,11 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
   const total = lesson?.cards.length ?? 0;
   const indices = useMemo(() => Array.from({ length: total }, (_, i) => i), [total]);
   const checks = lesson?.cards.filter((c) => c.practice).length ?? 0;
+
+  useEffect(() => {
+    setLearnV2LastLesson(lessonId);
+    if (lesson.topicIds?.[0]) void setLastTopic(lesson.topicIds[0]);
+  }, [lessonId, lesson.topicIds]);
 
   useEffect(() => {
     if (resumed || total === 0) return;
@@ -99,15 +132,20 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
   }, [lessonId, total]);
 
   const complete = useCallback(async () => {
+    if (completing.current) return;
+    completing.current = true;
     haptics.correct();
-    markLearnV2LessonDone(lessonId);
+    await loadTrailCardDoneMap();
+    await markLearnV2LessonDone(lessonId);
     setLearnV2LastCard(lessonId, 0);
+    // Opening or swiping never completes a lesson; finishing updates both views.
+    for (const topicId of lesson.topicIds ?? []) await setTopicRead(topicId, true);
     AccessibilityInfo.announceForAccessibility(hi ? "पाठ पूरा।" : "Lesson complete.");
     const right = Object.values(answers.current).filter(Boolean).length;
     // The finish screen shows at once from device data; XP and the streak
     // fill in when the server answers (never block on a slow network).
     const [cardsDone, visited, grammar] = await Promise.all([
-      loadLearnV2DoneMap(stop ? stop.unit.lessons.flatMap((l) => (l.cards ? [l.cards] : [])) : []),
+      loadTrailCardDoneMap(),
       loadVisited(),
       loadGrammarProgress(),
     ]);
@@ -125,26 +163,22 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
         streak: history ? dayStreak(history, localToday()) : 0,
       });
     }
-  }, [lessonId, hi, checks, stop]);
+  }, [lessonId, lesson.topicIds, hi, checks, stop]);
 
   const goNext = () => {
     if (!next) { navigation.goBack(); return; }
     const l = next.lesson;
-    if (l.cards) navigation.replace("LearnV2Lesson", { lessonId: l.cards });
-    else if (l.topics[0]) { markVisited(l.id); navigation.replace("GrammarTopic", { topicId: l.topics[0] }); }
-    else navigation.goBack();
+    navigation.replace("LearnV2Lesson", { lessonId: l.cards });
   };
 
-  if (!lesson) {
-    return (
-      <SafeAreaView style={styles.safe}>
-        <View style={{ padding: 16, gap: 16 }}>
-          <Text style={[ui("semibold"), { color: T.ink, fontSize: sized(17) }]}>{hi ? "यह पाठ उपलब्ध नहीं है।" : "This lesson is not available."}</Text>
-          <PrimaryButton label={hi ? "वापस" : "Back"} onPress={() => navigation.goBack()} />
-        </View>
-      </SafeAreaView>
-    );
-  }
+  const openActivity = () => {
+    const tool = stop?.lesson.tool;
+    if (!tool) return;
+    if (tool.kind === "book") navigation.navigate("Book", { bookKey: tool.bookKey });
+    else if (tool.kind === "paradigm") navigation.navigate("Paradigm", { kind: tool.of });
+    else if (tool.screen === "Vocab" || tool.screen === "WordOrder" || tool.screen === "WordLab") navigation.navigate(tool.screen, {});
+    else navigation.navigate(tool.screen);
+  };
 
   if (finish) {
     const right = Object.values(answers.current).filter(Boolean).length;
@@ -206,6 +240,7 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
           </View>
         </ScrollView>
         <View style={styles.bottom}>
+          {stop?.lesson.tool ? <PrimaryButton label={(hi ? "अभ्यास: " : "Practise: ") + toolName(stop.lesson.tool, lang)} onPress={openActivity} /> : null}
           {stop?.unit.graded.length ? <PrimaryButton label={hi ? "अभ्यास करें" : "Practise what you learned"}
             onPress={() => navigation.navigate("Challenge", { features: stop.unit.graded })} /> : null}
           {next ? <PrimaryButton label={(hi ? "आगे: " : "Next: ") + next.lesson.title[lang]} onPress={goNext} /> : null}
@@ -222,6 +257,10 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
         <IconButton icon="close" label={hi ? "पाठ बंद करें" : "Close lesson"} onPress={() => navigation.goBack()} />
         <Segments total={total} filled={index + 1} color={accent} />
         <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(13), minWidth: 40, textAlign: "right" }]}>{index + 1}/{total}</Text>
+      </View>
+      <View style={{ paddingHorizontal: 16, paddingBottom: 8, flexDirection: "row", alignItems: "center", gap: 12 }}>
+        <Text numberOfLines={1} style={[ui("semibold"), { flex: 1, color: T.ink2, fontSize: sized(14) }]}>{lesson.title[lang]}</Text>
+        <LangSwitch lang={lang} onChange={setLang} />
       </View>
 
       <FlatList

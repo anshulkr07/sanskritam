@@ -3,8 +3,8 @@
 // graded Path lesson is placed here or in the Library; scripts/check-trail.cjs
 // holds that line.
 //
-// A stop opens, in order of preference: its card lesson (`cards`, a LearnV2
-// catalogue id), else its Grammar guide note (`topics[0]`), else an app tool.
+// Every stop opens a card lesson. Without a custom deck, the player builds
+// cards from ALL of its guide topics. Tools remain practice after the lesson.
 // Unit practice is the old Path's server-graded lessons for `graded` features.
 
 export interface TrailText { en: string; hi: string }
@@ -18,11 +18,11 @@ export interface TrailLesson {
   id: string;
   title: TrailText;
   minutes: number;
-  /** LearnV2 catalogue lesson id: the card lesson this stop plays. */
-  cards?: string;
+  /** Custom catalogue id or trail:<id> for the full guide card adapter. */
+  cards: string;
   /** Grammar guide topic ids this lesson is built from (first = its note). */
   topics: string[];
-  /** Opened when there is neither a card lesson nor a note yet. */
+  /** Optional hands-on activity after the card lesson. */
   tool?: TrailTool;
 }
 
@@ -52,7 +52,7 @@ export interface TrailStage {
 }
 
 const lesson = (id: string, en: string, hi: string, topics: string[], more: Partial<TrailLesson> = {}): TrailLesson =>
-  ({ id, title: { en, hi }, minutes: 5, topics, ...more });
+  ({ id, title: { en, hi }, minutes: 5, topics, ...more, cards: more.cards ?? `trail:${id}` });
 
 const VARNAMALA: TrailTool = { kind: "screen", screen: "Varnamala" };
 const WRITING: TrailTool = { kind: "screen", screen: "Writing" };
@@ -68,7 +68,7 @@ export const TRAIL: TrailStage[] = [
         lessons: [
           lesson("unit-1-1", "Short and long vowels", "ह्रस्व और दीर्घ स्वर", ["vowels"]),
           lesson("unit-1-2", "ṛ, e, ai, o, au", "ऋ, ए, ऐ, ओ, औ", ["vowels"]),
-          lesson("unit-1-3", "Vowel signs on letters", "अक्षरों पर मात्राएँ", [], { tool: WRITING }),
+          lesson("unit-1-3", "Vowel signs on letters", "अक्षरों पर मात्राएँ", ["vowels"], { tool: WRITING }),
         ] },
       { id: "unit-2", n: 2, sa: "व्यञ्जनानि", art: "path:u1", graded: [], practiceTool: VARNAMALA,
         title: { en: "Consonants", hi: "व्यंजन" },
@@ -81,8 +81,8 @@ export const TRAIL: TrailStage[] = [
         title: { en: "Reading words", hi: "शब्द पढ़ना" },
         lessons: [
           lesson("unit-3-1", "Joined letters: क्ष त्र ज्ञ", "संयुक्ताक्षर: क्ष त्र ज्ञ", ["conjuncts"]),
-          lesson("unit-3-2", "Roman letters (IAST)", "रोमन लिपि (IAST)", ["reading-roman"]),
-          lesson("unit-3-3", "Read your first words", "पहले शब्द पढ़ें", [], { tool: VARNAMALA }),
+          lesson("unit-3-2", "Devanagari with IAST support", "देवनागरी और सहायक IAST", ["reading-roman"]),
+          lesson("unit-3-3", "Read your first words", "पहले शब्द पढ़ें", ["conjuncts"], { tool: VARNAMALA }),
         ] },
     ],
   },
@@ -270,7 +270,7 @@ export const TRAIL: TrailStage[] = [
         lessons: [
           lesson("unit-21-1", "Light and heavy syllables", "लघु और गुरु अक्षर", ["light-heavy"]),
           lesson("unit-21-2", "The śloka: four lines of eight", "श्लोक: आठ-आठ अक्षरों के चार चरण", ["shloka"]),
-          lesson("unit-21-3", "Read your first Gītā verse", "गीता का पहला श्लोक पढ़ें", [], { tool: { kind: "book", bookKey: "gita" } }),
+          lesson("unit-21-3", "Read your first Gītā verse", "गीता का पहला श्लोक पढ़ें", ["shloka"], { cards: "verse-04", tool: { kind: "book", bookKey: "gita" } }),
         ] },
     ],
   },

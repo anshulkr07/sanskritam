@@ -127,10 +127,11 @@ export function LangSwitch({ lang, onChange }: { lang: GuideLang; onChange: (l: 
 
 /** A small square progress run: n cells, the first `filled` in colour. */
 export function Segments({ total, filled, color }: { total: number; filled: number; color: string }) {
+  const segments = Math.min(total, 20);
   return (
     <View style={styles.segments} accessible accessibilityLabel={`${filled} of ${total}`}>
-      {Array.from({ length: total }, (_, i) => (
-        <View key={i} style={[styles.segment, { backgroundColor: i < filled ? color : T.line }]} />
+      {Array.from({ length: segments }, (_, i) => (
+        <View key={i} style={[styles.segment, { backgroundColor: (i + 1) / segments <= filled / total ? color : T.line }]} />
       ))}
     </View>
   );

@@ -187,7 +187,9 @@ short sections of up to 4 items, one sentence each.
 
 SHAPE
 - Every field in the language the final instruction names. Sanskrit stays in \
-Devanagari. Do not transliterate: the app adds the roman.
+Devanagari, including Sanskrit sounds, endings, terms and rules inside English \
+explanations. Write अ + इ → ए, never a + i → e. Do not transliterate: the app \
+may add smaller secondary roman support where space permits.
 - "title": at most 8 words. "title_sa": the topic's Sanskrit name in \
 Devanagari, or "".
 - "summary": the direct answer in one to three sentences (each kind keeps to \

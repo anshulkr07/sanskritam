@@ -30,6 +30,7 @@ import { useCommunity } from "../community/CommunityProvider";
 import { CREAM, CREAM_SOFT, T, dayLabel, fillFor, ui } from "../community/look";
 import { Avatar, Btn, CircleMark, Confirm, Empty, IconBtn, Notice, Sheet, SheetRow } from "../community/parts";
 import { ReportSheet, type ReportTarget } from "../community/sheets";
+import { usePinAudioBarBelow } from "../components/FloatingAudioBar";
 import type { RootStackParamList } from "../navigation/types";
 import { fill } from "../theme";
 import { useAuth } from "../store/auth";
@@ -75,6 +76,10 @@ export default function GroupChatScreen({ navigation, route }: Props) {
   const [reporting, setReporting] = useState<ReportTarget | null>(null);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState("");
+  // The audio bar would cover the composer, so it sits under the header,
+  // call bar and notices instead, wherever they end.
+  const [chromeEnd, setChromeEnd] = useState<number | null>(null);
+  usePinAudioBarBelow(focused ? chromeEnd : null);
   const seq = useRef(0);
   const paged = useRef(false);
   const lastRead = useRef(0);
@@ -289,18 +294,20 @@ export default function GroupChatScreen({ navigation, route }: Props) {
   const mine = !!p && p.sender.id === learner?.id;
   return (
     <View style={styles.page}>
-      {header}
-      {chat?.call_id ? (
-        <View style={styles.callBar}>
-          <View style={styles.callDot} />
-          <Text style={styles.callText} numberOfLines={1}>
-            {inThisCall ? "You are in this call" : "Audio call on now"}
-          </Text>
-          <Btn label={inThisCall ? "Open" : "Join"} kind="cream" small onPress={call} busy={busy} />
-        </View>
-      ) : null}
-      {failure ? <Notice text={failure} onRetry={() => void load()} /> : null}
-      {actionError ? <Notice text={actionError} /> : null}
+      <View onLayout={(e) => setChromeEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)}>
+        {header}
+        {chat?.call_id ? (
+          <View style={styles.callBar}>
+            <View style={styles.callDot} />
+            <Text style={styles.callText} numberOfLines={1}>
+              {inThisCall ? "You are in this call" : "Audio call on now"}
+            </Text>
+            <Btn label={inThisCall ? "Open" : "Join"} kind="cream" small onPress={call} busy={busy} />
+          </View>
+        ) : null}
+        {failure ? <Notice text={failure} onRetry={() => void load()} /> : null}
+        {actionError ? <Notice text={actionError} /> : null}
+      </View>
       <Animated.View style={[{ flex: 1 }, lift]}>
         {loading && !msgs.length ? (
           <View style={styles.center}>

@@ -3,8 +3,9 @@ import React, { useCallback, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { api } from "../api/client";
 import { progressStorage, subscribeProgress } from "../services/progressStorage";
-import { getLearnV2LastLesson, loadLearnV2DoneMap } from "../learnv2/progress";
+import { getLearnV2LastLesson } from "../learnv2/progress";
 import { TRAIL, stageStops } from "../trail/course";
+import { loadTrailCardDoneMap } from "../trail/progress";
 import { color } from "../theme";
 
 type Goal = "speak" | "read" | "recite";
@@ -22,13 +23,14 @@ export default function DailyLearningCard({ navigate }: { navigate: (route: stri
   useFocusEffect(useCallback(() => {
     let alive = true;
     const load = async () => {
-      const [raw, last, done, reading] = await Promise.all([
+      const [raw, last, reading] = await Promise.all([
         progressStorage.getItem("shabd.learning.goal"), getLearnV2LastLesson(),
-        loadLearnV2DoneMap(CARD_LESSONS.map(s => s.lesson.cards!)), progressStorage.getItem("shabd.read.resume"),
+        progressStorage.getItem("shabd.read.resume"),
       ]);
+      const done = await loadTrailCardDoneMap(last ? [last] : []);
       if (!alive) return;
       setGoal(GOALS.some(g => g.id === raw) ? raw as Goal : null);
-      setLessonId(last && !done[last] ? last : CARD_LESSONS.find(s => !done[s.lesson.cards!])?.lesson.cards);
+      setLessonId(last && !done[last] ? last : CARD_LESSONS.find(s => !done[s.lesson.cards])?.lesson.cards);
       try { const r = reading ? JSON.parse(reading) : null; setResume(typeof r?.bookKey === "string" ? r : null); }
       catch { setResume(null); }
     };

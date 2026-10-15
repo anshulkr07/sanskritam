@@ -15,6 +15,7 @@ function load(file) {
   cache.set(file, mod);
   const code = ts.transpileModule(fs.readFileSync(file, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React } }).outputText;
   const req = (name) => {
+    if (name === '../services/grammarGuide') return { loadGrammarProgress: async () => ({ read: new Set(), last: null }) };
     if (!name.startsWith('.')) return { default: {} };
     const base = path.resolve(path.dirname(file), name);
     for (const ext of ['.ts', '.tsx']) if (fs.existsSync(base + ext)) return load(base + ext);
@@ -37,6 +38,8 @@ assert.equal(new Set(TRAIL.flatMap((s) => s.units.map((u) => u.n))).size, 21, 'u
 for (const l of lessons) {
   assert.ok(l.title.en && l.title.hi, `${l.id} has English and Hindi titles`);
   assert.ok(l.cards || l.topics.length || l.tool, `${l.id} opens something`);
+  assert.ok(l.cards, `${l.id} must open the shared card player`);
+  if (l.cards.startsWith('trail:')) assert.ok(l.topics.length, `${l.id} has complete guide sources for its cards`);
 }
 
 // Every guide topic is on the trail or in the Library; nothing unknown.
@@ -53,7 +56,7 @@ assert.deepEqual(new Set(graded), new Set(inventory.path_crosswalk.map((p) => p.
 
 // Card lessons referenced exist; retired readings are gone from the catalogue.
 const ids = new Set(LEARNV2_LESSONS.map((l) => l.id));
-for (const id of [...lessons.flatMap((l) => (l.cards ? [l.cards] : [])), ...LIBRARY_CARD_LESSONS]) assert.ok(ids.has(id), `card lesson ${id} exists`);
+for (const id of [...lessons.map((l) => l.cards), ...LIBRARY_CARD_LESSONS]) assert.ok(ids.has(id) || lessons.some(l => l.cards === id && id.startsWith('trail:') && l.topics.length), `card lesson ${id} exists`);
 assert.ok(![...ids].some((id) => id.startsWith('guide-art-')), 'guide-art readings are off the catalogue');
 assert.equal(LEARNV2_UNITS.filter((u) => u.id.startsWith('verse-module-')).length, 12, 'the metre course stays in the Library');
 assert.equal(LEARNV2_UNITS.filter((u) => u.id.startsWith('verse-module-')).flatMap((u) => u.lessonIds).length, 48);
@@ -65,12 +68,15 @@ let st = progress.stageStatuses(s2, none);
 const stops = stageStops(s2);
 assert.equal(st.get(stops[0].lesson.id), 'current');
 assert.ok(stops.slice(1).every((s) => st.get(s.lesson.id) === 'upcoming'));
-st = progress.stageStatuses(s2, { ...none, visited: new Set([stops[0].lesson.id]), cardsDone: { 'verbs-number': true } });
+st = progress.stageStatuses(s2, { ...none, cardsDone: { 'trail:unit-4-1': true, 'verbs-number': true } });
 assert.equal(st.get(stops[0].lesson.id), 'done');
 assert.equal(st.get(stops[1].lesson.id), 'current');
 assert.equal(st.get('unit-5-1'), 'done', 'a finished card lesson is done wherever it sits');
 st = progress.stageStatuses(s2, { ...none, topicsRead: new Set(['how-it-works', 'stem-ending']) });
-assert.equal(st.get('unit-4-1'), 'done', 'a note lesson is done once its topics are read');
+assert.equal(st.get('unit-4-1'), 'current', 'source topic read marks cannot finish an independent card lesson');
+st = progress.stageStatuses(s2, { ...none, cardsDone: { 'trail:unit-4-1': true } });
+assert.equal(st.get('unit-4-1'), 'done', 'finishing a converted card deck completes its trail lesson');
+assert.equal(st.get('unit-4-2'), 'current', 'the next card lesson unlocks');
 assert.equal(progress.unitMastery(s2.units[0], { SG: 1, 'NOM.SG': 1, 'ACC.SG': 0.5, 'PRES.3SG': 0.5 }), 0.75);
 
 // Routes the trail and Library navigate to are registered.
@@ -80,6 +86,9 @@ for (const name of ['LearnLibrary', 'LearnV2Lesson', 'GrammarTopic', 'GrammarCha
 }
 const tabs = fs.readFileSync(path.join(root, 'src/navigation/MainTabs.tsx'), 'utf8');
 assert.ok(tabs.includes('component={LearnTrailScreen}'), 'the Learn tab is the trail');
+const guideScreen = fs.readFileSync(path.join(root, 'src/screens/GrammarTopic.tsx'), 'utf8');
+assert.ok(guideScreen.includes('CardLessonScreen'), 'all current and future guide topics use the card player');
+assert.ok(!guideScreen.includes('ScrollView'), 'guide links cannot return to the old page UI');
 
 // Square corners on every Learn surface (owner, 2026-10-13).
 for (const file of ['src/trail/ui.tsx', 'src/trail/TrailMap.tsx', 'src/trail/TrailList.tsx', 'src/trail/Sheets.tsx', 'src/screens/LearnTrail.tsx', 'src/screens/LearnLibrary.tsx', 'src/screens/LearnV2Lesson.tsx', 'src/learnv2/LearnCard.tsx', 'src/learnv2/TeachingArt.tsx']) {

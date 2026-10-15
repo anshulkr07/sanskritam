@@ -332,7 +332,7 @@ export default function VarnamalaScreen({ navigation }: Props) {
               />
               <RoundBtn
                 icon={attempting ? "hourglass" : recActive ? "stop" : "mic"}
-                label={recActive ? "Stop and check" : attempting ? "Checking" : `Say ${selectedChar?.iast ?? ""}`}
+                label={recActive ? "Stop and check" : attempting ? "Checking" : `Say ${selectedChar?.devanagari ?? ""}`}
                 on={recActive}
                 busy={attempting}
                 onPress={toggleMic}

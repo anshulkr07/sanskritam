@@ -13,7 +13,10 @@ import { useTypeScale } from "../hooks/useTypeScale";
 import { haptics } from "../services/haptics";
 import { T, sa, ui } from "../trail/theme";
 import { announce } from "../utils/announce";
-import { findSandhiArt, getLearnV2Asset } from "./assetMap";
+import { devanagariFormula } from "../utils/sanskritDisplay";
+import InlineText from "../components/grammar/InlineText";
+import GuideCardDetails from "./GuideCardDetails";
+import { findGuideArt, findSandhiArt, getLearnV2Asset } from "./assetMap";
 import { sceneHeightOf } from "./sceneCrop";
 import type { LearnV2Card } from "./types";
 
@@ -32,7 +35,8 @@ export function cardLabel(card: LearnV2Card, lang: "en" | "hi"): string {
 
 function artIds(card: LearnV2Card): string[] {
   const ex = card.example;
-  const matched = ex && card.id.startsWith("sandhi-") ? findSandhiArt(ex.sa, ex.iast) : undefined;
+  const matched = ex && card.guide ? findGuideArt(card.guide.topicId, ex.sa, ex.iast)
+    : ex && card.id.startsWith("sandhi-") ? findSandhiArt(ex.sa, ex.iast) : undefined;
   return (card.assetIds ?? (card.assetId ? [card.assetId] : matched ? [matched] : [])).filter((id) => !!getLearnV2Asset(id));
 }
 
@@ -61,11 +65,11 @@ function Example({ card }: { card: LearnV2Card }) {
   return (
     <View style={{ gap: 2 }}>
       <Text selectable style={[sa(sized(big ? 42 : 28, { sanskrit: true })), { color: T.ink }]}>{ex.sa}</Text>
-      <Text selectable style={[ui("regular"), { color: T.ink2, fontSize: sized(17) }]}>{ex.iast}</Text>
-      <Text style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26), marginTop: 2 }]}>{lang === "hi" ? ex.gloss.hi : ex.gloss.en}</Text>
+      <Text selectable numberOfLines={1} style={[ui("regular"), { color: T.ink2, fontSize: sized(14), flexShrink: 1 }]}>{ex.iast}</Text>
+      <InlineText text={lang === "hi" ? ex.gloss.hi : ex.gloss.en} lang={lang} style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26), marginTop: 2 }]} />
       {ex.formula ? (
-        <View style={styles.formula} accessible accessibilityLabel={ex.formula}>
-          <Text style={[ui("semibold"), { color: T.action, fontSize: sized(15) }]}>{ex.formula}</Text>
+        <View style={styles.formula} accessible accessibilityLabel={devanagariFormula(ex.formula)}>
+          <Text style={[sa(sized(22, { sanskrit: true })), { color: T.action }]}>{devanagariFormula(ex.formula)}</Text>
         </View>
       ) : null}
     </View>
@@ -127,7 +131,7 @@ function Term({ card }: { card: LearnV2Card }) {
 }
 
 /** A choice label like "पठति (paṭhati)" shows the Sanskrit large and the IAST small. */
-function ChoiceLabel({ text, color }: { text: string; color: string }) {
+function ChoiceLabel({ text, color, lang }: { text: string; color: string; lang: "en" | "hi" }) {
   const { sized } = useTypeScale();
   const m = /^(.+?)\s*\((.+)\)$/.exec(text);
   if (m && DEVANAGARI.test(m[1])) {
@@ -138,7 +142,8 @@ function ChoiceLabel({ text, color }: { text: string; color: string }) {
       </View>
     );
   }
-  return <Text style={[DEVANAGARI.test(text) ? sa(sized(22, { sanskrit: true })) : ui("medium"), { flex: 1, color, fontSize: DEVANAGARI.test(text) ? undefined : sized(16) }]}>{text}</Text>;
+  if (/^[\u0900-\u097f\s+→|/.,!?\d]+$/.test(text)) return <Text style={[sa(sized(24, { sanskrit: true })), { flex: 1, color }]}>{text}</Text>;
+  return <InlineText text={text} lang={lang} style={[ui("medium"), { flex: 1, color, fontSize: sized(16) }]} />;
 }
 
 /** Local check: immediate feedback; the first answer is reported to the player. */
@@ -152,7 +157,7 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
   const correct = answered && p.choices[picked].correct;
   return (
     <View style={{ gap: 8, marginTop: 4 }}>
-      <Text style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26) }]}>{lang === "hi" ? p.prompt.hi : p.prompt.en}</Text>
+      <InlineText text={lang === "hi" ? p.prompt.hi : p.prompt.en} lang={lang} style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26) }]} />
       {p.choices.map((c, i) => {
         const right = answered && c.correct;
         const wrong = answered && picked === i && !c.correct;
@@ -172,7 +177,7 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
             accessibilityState={{ disabled: answered, selected: picked === i }}
             style={[styles.choice, right && { borderColor: T.done, backgroundColor: T.doneBg }, wrong && { borderColor: T.wrong, backgroundColor: T.wrongBg }]}
           >
-            <ChoiceLabel text={label} color={T.ink} />
+            <ChoiceLabel text={label} color={T.ink} lang={lang} />
             {right ? <View style={[styles.badge, { backgroundColor: T.done }]}><Ionicons name="checkmark" size={16} color={T.white} /></View> : null}
             {wrong ? <View style={[styles.badge, { backgroundColor: T.wrong }]}><Ionicons name="close" size={16} color={T.white} /></View> : null}
           </Pressable>
@@ -181,7 +186,7 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
       {answered ? (
         <View style={[styles.feedback, { backgroundColor: correct ? T.doneBg : T.wrongBg }]} accessibilityLiveRegion="polite">
           <Text style={[ui("bold"), { color: correct ? T.doneInk : T.wrongInk, fontSize: sized(16) }]}>{correct ? (lang === "hi" ? "सही।" : "Right.") : lang === "hi" ? "अभी नहीं। कारण पढ़ें:" : "Not quite. Here is why:"}</Text>
-          <Text style={[ui("regular"), { color: T.ink, fontSize: sized(15.5), lineHeight: sized(22) }]}>{lang === "hi" ? p.explain.hi : p.explain.en}</Text>
+          <InlineText text={lang === "hi" ? p.explain.hi : p.explain.en} lang={lang} style={[ui("regular"), { color: T.ink, fontSize: sized(15.5), lineHeight: sized(22) }]} />
         </View>
       ) : null}
     </View>
@@ -195,15 +200,14 @@ export default function LearnV2CardView({ card, accent = T.action, onAnswer }: {
   return (
     <View style={{ gap: 14 }}>
       <Text style={[ui("bold"), { color: accent, fontSize: sized(12), letterSpacing: 1.4 }]}>{cardLabel(card, lang).toUpperCase()}</Text>
-      <Text accessibilityRole="header" style={[ui("bold"), { color: T.ink, fontSize: sized(23), lineHeight: sized(29), marginTop: -8 }]}>
-        {lang === "hi" ? card.title.hi : card.title.en}
-      </Text>
+      <InlineText accessibilityRole="header" text={lang === "hi" ? card.title.hi : card.title.en} lang={lang} style={[ui("bold"), { color: T.ink, fontSize: sized(23), lineHeight: sized(29), marginTop: -8 }]} />
       {ids.map((id) => <Scene key={id} id={id} />)}
       <Example card={card} />
       <Steps card={card} />
       <Rows card={card} />
-      <Text selectable style={[ui("regular"), { color: T.ink, fontSize: sized(17), lineHeight: sized(26) }]}>{lang === "hi" ? card.body.hi : card.body.en}</Text>
+      {(card.body.en || card.body.hi) ? <InlineText selectable text={lang === "hi" ? card.body.hi : card.body.en} lang={lang} style={[ui("regular"), { color: T.ink, fontSize: sized(17), lineHeight: sized(26) }]} /> : null}
       <Term card={card} />
+      <GuideCardDetails card={card} />
       <Practice card={card} onAnswer={onAnswer} />
     </View>
   );

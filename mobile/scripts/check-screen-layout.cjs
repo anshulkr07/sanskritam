@@ -45,7 +45,10 @@ for (const screen of navigator.children) {
     const component = screen.props.component;
     const file = component?.replace(/^\.\//, "") + ".tsx";
     assert.ok(fs.existsSync(path.join(root, file)), `Resolve ${name}'s component`);
-    assert.match(fs.readFileSync(path.join(root, file), "utf8"), /SafeAreaView|useSafeAreaInsets/, `${name} has no safe-area owner`);
+    const source = fs.readFileSync(path.join(root, file), "utf8");
+    if (source.includes('<CardLessonScreen')) {
+      assert.match(fs.readFileSync(path.join(root, 'src/screens/LearnV2Lesson.tsx'), 'utf8'), /SafeAreaView/, `${name}'s shared card player owns safe areas`);
+    } else assert.match(source, /SafeAreaView|useSafeAreaInsets/, `${name} has no safe-area owner`);
   }
 }
 const game = load("src/games/GameShell.tsx").default({ title: "Smriti", progress: 0, progressLabel: "0 of 8 pairs", score: 0, children: element("cards") });

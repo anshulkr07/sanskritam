@@ -27,8 +27,25 @@ Every claim is checked against the code, not borrowed boilerplate:
   the results (services/competitions.purge, competition_sets.entry_audio_keys); the camera summary is four ratios and an app
   version (the phone deletes each frame after the on-device face check,
   components/recite/EyesClosedTest.tsx); certificates are public pages;
+- Group (routers/community.py): a learner card (models CommunityProfile: level,
+  bio, last_seen) is needed to post, join, call or send a friend request, and
+  needs the Saṅgha rules agreed; the learner directory shows card holders to any
+  learner who is not blocked either way; the app posts /presence every 30 s while
+  open (community/CommunityProvider.tsx) and "online" means seen in the last 90 s;
+  message text is stored until the sender or a circle admin deletes it; photos and
+  voice notes go to the private R2 bucket under ephemeral-chat/, are served for 48
+  hours only (media_url), and the bucket rule that deletes them is applied by
+  scripts/community_retention.py --apply-lifecycle; the phone caches what it
+  opened (community/mediaCache.ts) and prunes expired copies on the next load;
+  reports copy the reported text into content_reports (surface "group");
+- live rooms and calls run on Stream (services/community_audio.py): Stream gets
+  the learner id, display name, call title and membership; video, screen sharing,
+  recording and transcription are off in every call's settings_override;
 - deletion covers every learner-owned table (routers/me.learner_owned_models),
-  and the private competition recordings.
+  the private competition recordings, and Group (services/community_lifecycle.py:
+  messages and media sent, direct chats, empty circles, hosted rooms; a circle
+  with members left passes to one of them). It does not touch Stream's user
+  record or reports other learners made.
 Change the code, change the page.
 """
 
@@ -41,7 +58,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "14 October 2026"
+UPDATED = "15 October 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -132,6 +149,41 @@ your eyes were closed, a second face was seen and your mouth was moving, with th
 best counted recording of each verse in private storage until 30 days after the results, so entries can be checked, then
 delete it; we may listen to it to check an entry. If you win a prize, we will ask you for the details needed
 to send it and use them only for that.</li>
+<li><strong>Group.</strong> Group is optional, and you can look around without joining in. To post, join a
+circle, start a room or a call, or send a friend request, you make a learner card and agree to the Saṅgha
+rules. In Group we keep:
+<ul>
+<li><strong>Your learner card:</strong> the name on your account, the level you choose and the line you
+write about yourself. Any learner can find your card, or search for it by name, unless one of you has
+blocked the other. While the app is open it tells our server every 30 seconds, so other learners see you as
+online until about 90 seconds after you leave the app, and the learners seen most recently are listed
+first.</li>
+<li><strong>Friends and blocks:</strong> the friend requests you send and answer, who your friends are, and
+who you have blocked. Once one of you blocks the other, you no longer see each other in the list of
+learners, your direct chat closes, and neither of you sees the other's messages.</li>
+<li><strong>Messages:</strong> what you write in a circle or a direct chat, who sent it and when, which
+circles you are in and which messages you have read. Direct chats are only between friends. Everyone in a
+circle can read all of its messages, including ones sent before they joined, and anyone can see who is in an
+open circle. A message stays until its sender or the circle's admin deletes it, or the sender deletes their
+account; leaving a circle doesn't remove what you wrote there.</li>
+<li><strong>Photos and voice notes:</strong> a photo you pick is made smaller on your phone (at most 1,280
+pixels on its longest side and 150 KB) before it is sent, and a voice note can be up to two minutes long.
+They are kept in private storage, and only the people in that chat can open them, for 48 hours. Then they
+expire: the app stops showing them and they are deleted from storage. A phone that opened one keeps a copy
+in the app's cache, which the app deletes after it expires, the next time it opens a photo or voice
+note.</li>
+<li><strong>Live rooms and calls:</strong> voice only, through Stream (see below). Your microphone starts
+off, and video, screen sharing, recording and transcription are turned off for every room and call. Anyone
+with a learner card can listen in a live room, and can speak when the host allows it; a call in a chat is
+only for the people in that chat. We keep a room's title, topic and level, who hosts it and when it
+started, and, for a call in a chat, who started it. The list of rooms shows how many people are in each and
+the names of up to four speakers.</li>
+<li><strong>Reports:</strong> when you report a message, a circle or a learner, we keep who reported it, the
+reason you give, and a copy of what was reported: a message's text; a circle's name, topic and description;
+or a learner's name and line. The copy stays even if the original is deleted, so the Sanskritam team can
+review it. Photos and voice notes are not copied.</li>
+</ul>
+Your Group messages, photos, voice notes and calls are not sent to any AI service.</li>
 <li><strong>Handwriting.</strong> Letters you draw on the screen are read on your device. Only the
 recognised letter and a confidence score reach us; the drawing never leaves your phone. If you choose to
 check a photo of your handwriting, the photo is sent to Sarvam AI to be read. We keep the letter it read
@@ -170,8 +222,11 @@ matching verses. Some questions go through Google's free Gemini service, whose t
 is sent and use it to improve its products. A request with birth or match details never uses that service.
 Please don't put personal details in a question, or attach a screen that shows them.</li>
 <li><strong>Google Cloud</strong> — runs our server in its Mumbai region.</li>
-<li><strong>Cloudflare</strong> — stores and delivers the lesson and chant audio files, and routes requests
-for this page.</li>
+<li><strong>Cloudflare</strong> — stores and delivers the lesson and chant audio files, keeps Group photos
+and voice notes in private storage for 48 hours, and routes requests for this page.</li>
+<li><strong>Stream (GetStream.io)</strong> — runs the live rooms and calls in Group and carries their sound
+between phones. It receives your account ID, the name on your account, the title of each room or call and
+whether you are in it. We turn off video, recording and transcription.</li>
 <li><strong>Supabase</strong> — hosts our database.</li>
 <li><strong>Google Sign-In and Sign in with Apple</strong> — only if you choose to sign in with them.</li>
 <li><strong>YouTube</strong> — lesson videos play in YouTube's embedded player. When you play one, YouTube's
@@ -183,11 +238,16 @@ during a competition recitation; its recognition models are downloaded from Goog
 
 <h2>How long we keep it, and deleting it</h2>
 <p>We keep your data while your account exists, except that a competition recording is deleted 30 days
-after the results. You can delete your account at any time in the app: open the side menu to reach
-<strong>Settings</strong> and tap <strong>Delete account</strong>. That removes your account and learning
-data, your recitation results, your competition entries, public name and certificates, and any competition
-recording we still hold, from our systems straight away; backup copies, if any, are overwritten within 30
-days. You can also ask us by email — see <a href="/delete-account">how to delete your account</a>.</p>
+after the results, and Group photos and voice notes expire after 48 hours. You can delete your account at
+any time in the app: open the side menu to reach <strong>Settings</strong> and tap
+<strong>Delete account</strong>. That removes your account and learning data, your recitation results,
+your competition entries, public name and certificates, any competition recording we still hold, and, in
+Group, your learner card, the messages, photos and voice notes you sent, your direct chats (both sides),
+the rooms you hosted, your friends, blocks and reports, and any circle with no one else left in it, from
+our systems straight away; backup copies, if any, are overwritten within 30 days. A circle you started that
+still has members passes to one of them, with its name and description. A report another learner made
+keeps its copy of what they reported, and we don't ask Stream to delete the account ID and name it was
+given. You can also ask us by email — see <a href="/delete-account">how to delete your account</a>.</p>
 
 <h2>Children</h2>
 <p>Sanskritam is not directed to children under 13, and we don't knowingly collect their data. If you
@@ -239,11 +299,17 @@ within 30 days and reply to confirm.</p>
 <li>Your competition entries, public name, confirmations, certificates, monthly-winner records, and any
 competition recording we still hold (a certificate page stops working)</li>
 <li>Your usage counts and device push tokens</li>
+<li>In Group: your learner card, every message, photo and voice note you sent, your direct chats (both
+sides), the rooms you hosted, your friends, blocks and the reports you made, and any circle with no one else
+left in it</li>
 </ul>
 
 <h2>What is kept</h2>
-<p>Nothing that identifies you. Anonymous content statistics (for example, where learners got stuck) lose
-any link to your account, and server error records contain no personal details. A general question and its
-answer stored for other learners carry no account details, so they stay. Backup copies, if any, are
-overwritten within 30 days.</p>
+<p>Anonymous content statistics (for example, where learners got stuck) lose any link to your account, and
+server error records contain no personal details. A general question and its answer stored for other
+learners carry no account details, so they stay. In Group, a circle you started that still has members
+passes to one of them and keeps its name and description; a report another learner made keeps its copy of
+what they reported (a message's text, or your name and line); and we don't ask Stream, which runs live
+rooms and calls, to delete the account ID and name it was given. Backup copies, if any, are overwritten
+within 30 days.</p>
 """)
