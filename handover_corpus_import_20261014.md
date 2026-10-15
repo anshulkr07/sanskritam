@@ -29,6 +29,7 @@ Result: **20 books built + imported** (~30.6k verse rows; local verified 30,640 
 | Saundarya Laharī | 98 | sa.wikisource (page repeats numbers 10 and 21; the repeats are dropped — the importer's ref/chapter check can't carry variants) |
 | Chāṇakya Nīti | 343 | sa.wikisource |
 | Śiva Tāṇḍava Stotra | 16 | sa.wikisource |
+| Sāmaveda (Kauthuma, sasvara) | 1,902 | sa.wikisource — accents removed per vedic policy; arika numbers restart per prapāthaka, stored as ordinals within the archika chapter (1.1–2.9); 1.4% over the traditional 1,875 |
 | Suśruta Saṃhitā | 7,582 | sa.wikisource (line-numbered sutra format) |
 
 Plus the 8 books already imported in earlier sessions (Gītā, Īśā, Aṣṭāvakra, Yoga Sūtra, Meghadūta, Nārada Bhakti, Rāmarakṣā, Āditya Hṛdayam, Bhaja Govindam, Māṇḍūkya).
@@ -86,7 +87,7 @@ These 7 build STOPPED with only residual page noise (counts are right or gated o
 |---|---|---|
 | Mahimna (37) | 1 bad verse | The "॥ २५ \|"-style marker mid-verse still doesn't split (rendered page, number split from its dandas). Debug `wiki_rendered_newline_nums` splitting on this page. |
 | Vetāla (2,610) | 4 bad verses | Unnumbered verse-end `। \|` markers merge neighbours; the digit chars ride along. Normalise `। \|` → `॥` in `split_numbered_verses`. |
-| Sāmaveda (1,902 vs 1,875) | 1 bad verse | One `अभ्यृ़३` length marker (़ = nukta between) slips the lookbehind. Add ़ (U+093C) to the vowel-sign class. Count is within 2%, passes once clean. |
+| ~~Sāmaveda~~ | ✅ imported 2026-10-15 | The one bad verse was `अभ्यृ़३` — nukta (U+093C) added to the vowel-sign lookbehind in clean.py; built 1,902 and imported to local + prod. |
 | Raghvaṃśa (1,678 vs 1,567) | 3 bad verses | Page numbers some verses "। । ३ २आ ।" (letter suffixes!). Decide: drop `आ`-suffixed markers as variants (extend the `*` rule) or renumber. 111 extra rows vs canonical — likely variants. |
 | Bhāgavata (10,414) | 13 bad verses | Wikisource transcription is incomplete (~10.4k of 14,067; skandhas 10-11 short) — reference gate already off. Bad verses: stray leading `६ ॥` fragments + one `\`. Treat leading orphan markers as structural junk. |
 | Śiva Purāṇa (28,481) | 20 bad verses | `chapter_per_page` + renumber works; blocks on `पतिः १ ॥`-style numbers (no opening danda → digit stays). Either accept (inverse-clean removes the digit) or add numberless-marker splitting. |

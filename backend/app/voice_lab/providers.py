@@ -96,12 +96,28 @@ async def grounded_search(query, client):
 
 
 async def sarvam_tokens(c, history):
+    version = "v1" if c.llm_model == "sarvam-105b-conversations" else "v2"
+    reasoning = c.llm_model in {"glm5.3", "deepseekv4.1-flash"}
+    system = instruction(c)
+    latest = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
+    if latest:
+        from app.services.tutor import sanskrit_health
+        health = sanskrit_health(latest)
+        if health.is_correct:
+            system += (" The learner's latest sentence has already been accepted by the grammar engine. "
+                       "Do not correct it, change its gender or number, or demand sandhi. "
+                       "Respond to what they said and continue the conversation.")
+        elif health.agreement:
+            system += " Grammar engine findings: " + health.as_prompt_fact()
+    payload = {"model": c.llm_model, "stream": True,
+               "messages": [{"role": "system", "content": system}, *history],
+               "temperature": c.temperature, "max_tokens": 2400 if reasoning or c.llm_model == "sarvam-105b" else 600}
+    if reasoning:
+        payload["reasoning_effort"] = "low"
     async with httpx.AsyncClient(timeout=60) as client:
-        async with client.stream("POST", "https://api.sarvam.ai/v1/chat/completions",
+        async with client.stream("POST", f"https://api.sarvam.ai/{version}/chat/completions",
                                  headers={"api-subscription-key": settings.sarvam_api_key},
-                                 json={"model": "sarvam-105b-conversations", "stream": True,
-                                       "messages": [{"role": "system", "content": instruction(c)}, *history],
-                                       "temperature": c.temperature, "max_tokens": 600}) as response:
+                                 json=payload) as response:
             response.raise_for_status()
             async for line in response.aiter_lines():
                 if not line.startswith("data:"):

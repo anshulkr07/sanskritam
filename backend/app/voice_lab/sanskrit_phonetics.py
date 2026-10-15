@@ -9,6 +9,10 @@ class SanskritPhoneticRouter:
     def transform(cls, text: str, target_language_code="te-IN", visarga_expansion=True,
                   prevent_hindi_schwa_deletion=True, transliterate_script=True) -> str:
         text = text.strip()
+        # Native Sanskrit beta reads the original text. Legacy hints are only
+        # for an explicitly selected non-Sanskrit experimental voice.
+        if target_language_code == "sa-IN":
+            return text
         if visarga_expansion:
             # Include dependent vowel signs (रामः, हरिः, गुरुः), not just vowels.
             boundary = r"(?=\s|[।॥,.?!]|$)"

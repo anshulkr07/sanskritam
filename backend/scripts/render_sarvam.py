@@ -8,13 +8,13 @@ local models — the app talks to Sarvam's cloud, nothing is self-hosted).
 Usage::
 
     python scripts/render_sarvam.py [--item-file path.json] [--out results/sarvam]
-                                    [--shard dialogue_nodes] [--sa-language hi-IN]
+                                    [--shard dialogue_nodes] [--sa-language sa-IN]
                                     [--dry-run]
 
 * ``--item-file``: JSON list of ``{id,text,lang}`` (build via
   ``scripts/build_render_items.py``).  ``sa`` items render with
-  ``--sa-language`` (default ``hi-IN`` — Bulbul has no ``sa-IN`` outside
-  beta; pass ``sa-IN`` once the account's beta is enabled).  ``hi`` items
+  ``--sa-language`` (default ``sa-IN`` — native Sanskrit beta is enabled
+  on this account). ``hi`` items
   render as ``hi-IN``; ``en`` items as ``en-IN``.
 * Measures wall-clock per item, prints the throughput table, writes
   ``{out}/manifest.json``.
@@ -112,7 +112,7 @@ def _lang_code(lang: str, sa_language: str) -> str:
 
 
 async def render_item(
-    client, item: dict, out_dir: Path, shard_id: str, sa_language: str = "hi-IN"
+    client, item: dict, out_dir: Path, shard_id: str, sa_language: str = "sa-IN"
 ) -> dict:
     """Render one {id,text,lang} item via Bulbul → result dict.
 
@@ -153,7 +153,7 @@ async def render_item(
 
 
 async def render_items(
-    client, items: list[dict], out_dir: Path, shard_id: str, sa_language: str = "hi-IN"
+    client, items: list[dict], out_dir: Path, shard_id: str, sa_language: str = "sa-IN"
 ) -> list[dict]:
     """Render items sequentially (turn-taking pacing; no parallel bursts)."""
     out: list[dict] = []
@@ -169,8 +169,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--item-file", default=None, help="JSON list of {id,text,lang} items")
     p.add_argument("--out", default="results/sarvam", help="output dir (default results/sarvam)")
     p.add_argument("--shard", default="dialogue_nodes", help="shard id (default dialogue_nodes)")
-    p.add_argument("--sa-language", default="hi-IN",
-                   help="language_code used for sa items (hi-IN default; sa-IN once beta enabled)")
+    p.add_argument("--sa-language", default="sa-IN",
+                   help="language_code used for sa items (sa-IN default, native Sanskrit beta)")
     p.add_argument("--dry-run", action="store_true", help="validate the shard plan without network calls")
     return p
 

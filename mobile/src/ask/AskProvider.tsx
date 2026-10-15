@@ -27,6 +27,7 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 import { Pressable, StyleSheet, View, useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -42,6 +43,8 @@ import AskSheet, { type AskContext } from "../components/AskSheet";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
+import FloatingAudioBar from "../components/FloatingAudioBar";
+import { audioTransport } from "../services/audioTransport";
 import { color, shadow } from "../theme";
 
 export type { AskContext };
@@ -92,7 +95,14 @@ export function useAskContext(surface: string, subject: string): void {
 
 /** Screens that own the bottom of the display; the bubble would cover them. */
 const HIDDEN_ROUTES = new Set([
+  // Group and its screens: chat composers, forms and people, not reading.
   "Group",
+  "GroupChat",
+  "GroupInfo",
+  "GroupCircles",
+  "GroupPeople",
+  "GroupCard",
+  "GroupNew",
   "Conversation",
   "Writing",
   "DailyWord",
@@ -161,6 +171,7 @@ export function AskProvider({
       </View>
       {showBubble ? <AskBubble onPress={() => openSheet()} /> : null}
       <AskSheet visible={open} context={sheet} onClose={close} contentRef={contentRef} />
+      <FloatingAudioBar atTop={open} inTabs={["Home", "Learn", "Conversation", "Play", "Read", "VoiceLab", "Group"].includes(routeName || "")} />
     </AskContext_.Provider>
   );
 }
@@ -173,6 +184,7 @@ function clamp(v: number, lo: number, hi: number): number {
 }
 
 function AskBubble({ onPress }: { onPress: () => void }) {
+  const audio = useSyncExternalStore(audioTransport.subscribe, audioTransport.getSnapshot);
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const reduced = useReducedMotion();
@@ -180,7 +192,7 @@ function AskBubble({ onPress }: { onPress: () => void }) {
   // The bubble's top edge stays between the header area and just above the
   // tab bar (about 64dp) plus its own height.
   const minY = insets.top + 72;
-  const maxY = Math.max(minY, height - insets.bottom - 64 - 72);
+  const maxY = Math.max(minY, height - insets.bottom - 64 - 72 - (audio ? 72 : 0));
   const leftX = MARGIN;
   const rightX = width - BUBBLE - MARGIN;
 

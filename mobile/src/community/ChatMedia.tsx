@@ -1,48 +1,73 @@
+import Modal from "../components/AudioModal";
 import { useIsFocused } from "@react-navigation/native";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import {
   View,
   Text,
   TextInput,
   Pressable,
   Image,
-  Modal,
-  ScrollView,
   StyleSheet,
   Platform,
   AppState,
+  ActivityIndicator,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 import {
   useAudioRecorder,
   useAudioRecorderState,
   RecordingPresets,
   requestRecordingPermissionsAsync,
   setAudioModeAsync,
-  useAudioPlayer,
   useAudioPlayerStatus,
 } from "expo-audio";
 import * as ImagePicker from "expo-image-picker";
 import { ImageManipulator, SaveFormat } from "expo-image-manipulator";
-import { get, post, uploadMedia, Message, clientId } from "./api";
-import { Action, useCommunity } from "./CommunityProvider";
-import { color } from "../theme";
+import { post, uploadMedia, Message, clientId, friendly, NEEDS_CARD } from "./api";
+import { useCommunity } from "./CommunityProvider";
+import { CREAM, CREAM_FAINT, CREAM_SOFT, T, ui } from "./look";
+import { IconBtn } from "./parts";
 import { cachedMedia, removeCachedMedia } from "./mediaCache";
 import { settledRecordingUri } from "../utils/recording";
-export function ExpiredMediaPlaceholder({ kind }: { kind: string }) {
+import { createManagedAudioPlayer } from "../services/managedAudio";
+export function ExpiredMediaPlaceholder({ kind, own = false }: { kind: string; own?: boolean }) {
   return (
-    <View style={s.expired}>
-      <Text style={s.note}>
-        {kind === "image" ? "Photo" : "Voice note"} expired · Kept for 48h
+    <View style={[s.expired, own && { borderColor: CREAM_FAINT }]}>
+      <Ionicons
+        name={kind === "image" ? "image-outline" : "mic-outline"}
+        size={16}
+        color={own ? CREAM_SOFT : T.ink3}
+      />
+      <Text style={[s.expiredText, own && { color: CREAM_SOFT }]}>
+        {kind === "image" ? "Photo" : "Voice note"} gone · kept for 48 hours
       </Text>
     </View>
   );
 }
-export function EphemeralMedia({ message }: { message: Message }) {
+/** "Disappears in 31 h" / "in 40 min", for the line under a photo or note. */
+function leftOf(expires: string | null) {
+  const ms = expires ? Date.parse(expires) - Date.now() : 0;
+  if (!(ms > 0)) return "";
+  const h = Math.floor(ms / 3_600_000);
+  return h >= 1
+    ? `Disappears in ${h} h`
+    : `Disappears in ${Math.max(1, Math.round(ms / 60000))} min`;
+}
+export function EphemeralMedia({
+  message,
+  own = false,
+}: {
+  message: Message;
+  /** On your own (deep) bubble: cream controls. */
+  own?: boolean;
+}) {
   const [url, setUrl] = useState(""),
     [expired, setExpired] = useState(false),
     [failure, setFailure] = useState(""),
     [zoom, setZoom] = useState(false),
     [attempt, setAttempt] = useState(0);
+  const insets = useSafeAreaInsets();
   useEffect(() => {
     let alive = true;
     setUrl("");
@@ -70,32 +95,44 @@ export function EphemeralMedia({ message }: { message: Message }) {
         if (!alive) return;
         if (e.status === 404 || e.status === 410 || e.message === "expired")
           setExpired(true);
-        else setFailure("Could not load attachment.");
+        else setFailure("Could not load the attachment.");
       });
     return () => {
       alive = false;
       clearTimeout(timer);
     };
   }, [message.id, message.expires_at, attempt]);
-  if (expired) return <ExpiredMediaPlaceholder kind={message.kind} />;
+  if (expired) return <ExpiredMediaPlaceholder kind={message.kind} own={own} />;
+  const ink = own ? CREAM : T.ink;
   if (failure)
     return (
-      <View>
-        <Text style={s.note}>{failure}</Text>
-        <Action
-          label="Retry attachment"
-          onPress={() => setAttempt((v) => v + 1)}
-        />
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => setAttempt((v) => v + 1)}
+        style={[s.loading, own && s.loadingOwn]}
+      >
+        <Ionicons name="refresh" size={16} color={ink} />
+        <Text style={[s.loadingText, { color: ink }]}>
+          {failure} Tap to try again.
+        </Text>
+      </Pressable>
+    );
+  if (!url)
+    return (
+      <View style={[s.loading, own && s.loadingOwn]}>
+        <ActivityIndicator size="small" color={ink} />
+        <Text style={[s.loadingText, { color: ink }]}>
+          Loading the {message.kind === "image" ? "photo" : "voice note"}…
+        </Text>
       </View>
     );
-  if (!url) return <Text style={s.note}>Loading attachment…</Text>;
   return (
-    <View style={{ gap: 6 }}>
+    <View style={{ gap: 4 }}>
       {message.kind === "image" ? (
         <>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Enlarge photo"
+            accessibilityLabel="Open the photo"
             onPress={() => setZoom(true)}
           >
             <Image
@@ -108,10 +145,24 @@ export function EphemeralMedia({ message }: { message: Message }) {
           <Modal
             visible={zoom}
             transparent
+            animationType="fade"
             onRequestClose={() => setZoom(false)}
+            statusBarTranslucent
           >
-            <View style={s.lightbox}>
-              <Action label="Close photo" onPress={() => setZoom(false)} />
+            <View
+              style={[
+                s.lightbox,
+                { paddingTop: insets.top + 8, paddingBottom: insets.bottom + 16 },
+              ]}
+            >
+              <View style={s.lightboxTop}>
+                <IconBtn
+                  icon="close"
+                  label="Close the photo"
+                  color={CREAM}
+                  onPress={() => setZoom(false)}
+                />
+              </View>
               <Image
                 source={{ uri: url }}
                 style={{ flex: 1, width: "100%" }}
@@ -122,23 +173,44 @@ export function EphemeralMedia({ message }: { message: Message }) {
           </Modal>
         </>
       ) : (
-        <VoicePlayback url={url} onError={() => setExpired(true)} />
+        <VoicePlayback url={url} own={own} onError={() => setExpired(true)} />
       )}
-      <Text style={s.note}>48h · Auto-deleting attachment</Text>
+      <Text style={[s.expiry, own && { color: CREAM_SOFT }]}>
+        {leftOf(message.expires_at)}
+      </Text>
     </View>
   );
 }
-function VoicePlayback({ url, onError }: { url: string; onError: () => void }) {
-  const player = useAudioPlayer(url),
+function VoicePlayback({
+  url,
+  own,
+  onError,
+}: {
+  url: string;
+  own: boolean;
+  onError: () => void;
+}) {
+  const player = useMemo(
+      () => createManagedAudioPlayer(url, undefined, "Voice note"),
+      [url],
+    ),
     status = useAudioPlayerStatus(player),
     [speed, setSpeed] = useState(1);
+  useEffect(() => () => player.remove(), [player]);
   useEffect(() => {
     if (status.error) onError();
   }, [status, onError]);
+  const ink = own ? CREAM : T.ink;
+  const pct = status.duration
+    ? Math.min(100, (status.currentTime / status.duration) * 100)
+    : 0;
   return (
-    <View style={s.row}>
-      <Action
-        label={status.playing ? "Pause" : "Play voice note"}
+    <View style={s.voice}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={
+          status.playing ? "Pause the voice note" : "Play the voice note"
+        }
         onPress={() => {
           if (status.playing) player.pause();
           else {
@@ -146,34 +218,47 @@ function VoicePlayback({ url, onError }: { url: string; onError: () => void }) {
             player.play();
           }
         }}
-      />
-      <View style={{ flex: 1, minWidth: 45 }}>
-        <View style={s.track}>
+        style={[
+          s.play,
+          { backgroundColor: own ? CREAM : T.action },
+        ]}
+      >
+        <Ionicons
+          name={status.playing ? "pause" : "play"}
+          size={20}
+          color={own ? T.ink : T.white}
+        />
+      </Pressable>
+      <View style={{ flex: 1, minWidth: 80, gap: 6 }}>
+        <View style={[s.track, own && { backgroundColor: CREAM_FAINT }]}>
           <View
             style={[
               s.progress,
-              {
-                width: `${status.duration ? Math.min(100, (status.currentTime / status.duration) * 100) : 0}%`,
-              },
+              { width: `${pct}%`, backgroundColor: own ? CREAM : T.action },
             ]}
           />
         </View>
-        <Text style={s.note}>
+        <Text style={[s.clock, { color: own ? CREAM_SOFT : T.ink3 }]}>
           {clock(status.currentTime)} / {clock(status.duration)}
         </Text>
       </View>
-      <Action
-        label={`${speed}×`}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Playback speed ${speed} times. Change it`}
         onPress={() => {
           const n = speed === 1 ? 1.5 : 1;
           setSpeed(n);
           player.setPlaybackRate(n);
         }}
-      />
+        style={[s.speed, { borderColor: own ? CREAM_FAINT : T.lineStrong }]}
+      >
+        <Text style={[s.speedText, { color: ink }]}>{speed}×</Text>
+      </Pressable>
     </View>
   );
 }
 function clock(sec: number) {
+  if (!Number.isFinite(sec) || sec < 0) sec = 0;
   return `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, "0")}`;
 }
 export function Composer({
@@ -181,13 +266,17 @@ export function Composer({
   reply,
   clearReply,
   onSent,
+  onNeedsCard,
 }: {
   cid: string;
   reply: Message | null;
   clearReply: () => void;
   onSent: () => void;
+  /** The server asked for a learner card first. */
+  onNeedsCard?: () => void;
 }) {
   const { active, setRecordingNote } = useCommunity();
+  const insets = useSafeAreaInsets();
   const focused = useIsFocused(),
     focusedRef = useRef(focused);
   focusedRef.current = focused;
@@ -256,8 +345,9 @@ export function Composer({
     setError("");
     void fn()
       .catch((e) => {
-        if (mounted.current)
-          setError(e.message || "Could not send. Try again.");
+        if (!mounted.current) return;
+        if (e?.status === NEEDS_CARD && onNeedsCard) onNeedsCard();
+        else setError(friendly(e, "Could not send. Try again."));
       })
       .finally(() => {
         if (mounted.current) setBusy(false);
@@ -338,7 +428,7 @@ export function Composer({
       try {
         const permission = await requestRecordingPermissionsAsync();
         if (!permission.granted)
-          throw Error("Microphone permission is needed for a voice note.");
+          throw Error("Allow the microphone to record a voice note.");
         await setAudioModeAsync({
           allowsRecording: true,
           playsInSilentMode: true,
@@ -357,7 +447,7 @@ export function Composer({
             void stop()
               .then(() =>
                 setError(
-                  "Two-minute limit reached. Tap Send note to share it.",
+                  "Two minutes is the limit. Send the note or record again.",
                 ),
               )
               .catch(() => {});
@@ -390,16 +480,32 @@ export function Composer({
       setHasNote(false);
     });
   return (
-    <View style={s.composer}>
+    <View
+      style={[s.composer, { paddingBottom: Math.max(insets.bottom, 8) + 4 }]}
+    >
       {reply && (
         <View style={s.reply}>
-          <View style={{ flex: 1 }}>
-            <Text style={s.name}>Reply to {reply.sender.name}</Text>
-            <Text numberOfLines={1} style={s.note}>
-              {reply.content || reply.kind}
+          <Ionicons name="return-up-back" size={18} color={T.action} />
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text style={s.replyName} numberOfLines={1}>
+              Replying to {reply.sender.name}
+            </Text>
+            <Text numberOfLines={1} style={s.replyText}>
+              {reply.content ||
+                (reply.kind === "image"
+                  ? "Photo"
+                  : reply.kind === "audio"
+                    ? "Voice note"
+                    : "Message")}
             </Text>
           </View>
-          <Action label="Cancel reply" onPress={clearReply} />
+          <IconBtn
+            icon="close"
+            label="Cancel the reply"
+            size={40}
+            color={T.ink2}
+            onPress={clearReply}
+          />
         </View>
       )}
       {!!error && (
@@ -409,12 +515,19 @@ export function Composer({
       )}
       {hasNote ? (
         <View style={s.row}>
-          <Text style={[s.note, { flex: 1 }]}>
-            {recording ? "● Recording" : "Voice note ready"}{" "}
-            {clock(rs.durationMillis / 1000)} / 2:00
-          </Text>
-          <Action
-            label="Cancel"
+          <View style={s.recording}>
+            <View
+              style={[s.recDot, !recording && { backgroundColor: T.ink3 }]}
+            />
+            <Text style={s.recText}>
+              {recording ? "Recording" : "Voice note ready"} ·{" "}
+              {clock(rs.durationMillis / 1000)} / 2:00
+            </Text>
+          </View>
+          <IconBtn
+            icon="trash-outline"
+            label="Discard the voice note"
+            color={T.ink2}
             disabled={busy}
             onPress={() =>
               run(async () => {
@@ -423,38 +536,53 @@ export function Composer({
               })
             }
           />
-          <Action
-            primary
-            label="Send note"
+          <IconBtn
+            icon={busy ? "hourglass-outline" : "send"}
+            label="Send the voice note"
+            filled
             disabled={busy}
             onPress={sendNote}
           />
         </View>
       ) : (
         <View style={s.row}>
-          <Action label="Photo" disabled={busy} onPress={photo} />
+          <IconBtn
+            icon="image-outline"
+            label="Send a photo"
+            color={T.ink2}
+            disabled={busy}
+            onPress={photo}
+          />
           <TextInput
             value={text}
             onChangeText={(v) => {
               setText(v);
               retryId.current = clientId();
             }}
-            accessibilityLabel="Message in Sanskrit or any language"
-            placeholder="नमस्ते…"
+            accessibilityLabel="Message"
+            placeholder="Write in Sanskrit or any language"
+            placeholderTextColor={T.ink3}
             multiline
             maxLength={4000}
             editable={!busy}
             style={s.input}
           />
           {text.trim() ? (
-            <Action
-              primary
-              label={busy ? "Sending…" : "Send"}
+            <IconBtn
+              icon={busy ? "hourglass-outline" : "send"}
+              label="Send"
+              filled
               disabled={busy}
               onPress={() => run(() => send())}
             />
           ) : (
-            <Action label="Mic" disabled={busy || !!active} onPress={start} />
+            <IconBtn
+              icon="mic-outline"
+              label="Record a voice note"
+              color={T.ink2}
+              disabled={busy || !!active}
+              onPress={start}
+            />
           )}
         </View>
       )}
@@ -462,61 +590,108 @@ export function Composer({
   );
 }
 const s = StyleSheet.create({
-  row: { flexDirection: "row", alignItems: "center", gap: 8 },
+  row: { flexDirection: "row", alignItems: "flex-end", gap: 6 },
   composer: {
-    padding: 12,
-    backgroundColor: color.bg,
+    paddingHorizontal: 8,
+    paddingTop: 8,
+    backgroundColor: T.paper,
     borderTopWidth: 1,
-    borderColor: color.border,
+    borderColor: T.line,
     gap: 8,
   },
   input: {
+    ...ui("regular"),
     flex: 1,
-    minHeight: 46,
-    maxHeight: 120,
-    padding: 12,
-    borderRadius: 14,
-    backgroundColor: color.surface,
-    fontSize: 17,
-    color: color.ink,
+    minHeight: 44,
+    maxHeight: 132,
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: T.surface,
+    borderWidth: 1.5,
+    borderColor: T.lineStrong,
+    fontSize: 16.5,
+    lineHeight: 24,
+    color: T.ink,
   },
   reply: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 10,
+    paddingLeft: 10,
     borderLeftWidth: 3,
-    borderColor: color.saffron,
-    padding: 8,
-    backgroundColor: color.surfaceMuted,
+    borderColor: T.action,
+    backgroundColor: T.surface,
   },
-  name: { fontFamily: "Nunito_700Bold", fontSize: 13, color: color.ink },
-  note: {
-    fontFamily: "Nunito_600SemiBold",
-    fontSize: 12,
-    color: color.inkSoft,
+  replyName: { ...ui("semibold"), fontSize: 13.5, color: T.ink },
+  replyText: { ...ui("regular"), fontSize: 13.5, color: T.ink2 },
+  error: {
+    ...ui("medium"),
+    color: T.wrongInk,
+    fontSize: 13.5,
+    lineHeight: 19,
+    paddingHorizontal: 6,
   },
-  error: { color: color.badText, fontSize: 13 },
-  image: { width: 220, height: 180, borderRadius: 14 },
+  recording: {
+    flex: 1,
+    minHeight: 44,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingHorizontal: 12,
+    backgroundColor: T.surface,
+    borderWidth: 1.5,
+    borderColor: T.lineStrong,
+  },
+  recDot: { width: 10, height: 10, backgroundColor: T.wrong },
+  recText: {
+    ...ui("medium"),
+    fontSize: 14.5,
+    color: T.ink,
+    fontVariant: ["tabular-nums"],
+  },
+  image: { width: 232, height: 186, backgroundColor: T.line },
   expired: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
     borderWidth: 1,
     borderStyle: "dashed",
-    borderColor: color.border,
-    padding: 12,
-    borderRadius: 12,
+    borderColor: T.lineStrong,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
-  track: {
-    height: 5,
-    backgroundColor: color.border,
-    borderRadius: 3,
-    overflow: "hidden",
+  expiredText: { ...ui("regular"), fontSize: 13, color: T.ink3 },
+  loading: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    minHeight: 44,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: T.line,
   },
-  progress: { height: 5, backgroundColor: color.saffron },
+  loadingOwn: { borderColor: CREAM_FAINT },
+  loadingText: { ...ui("regular"), fontSize: 13.5 },
+  expiry: { ...ui("regular"), fontSize: 11.5, color: T.ink3 },
+  voice: { flexDirection: "row", alignItems: "center", gap: 10, minWidth: 210 },
+  play: { width: 40, height: 40, alignItems: "center", justifyContent: "center" },
+  track: { height: 4, backgroundColor: T.line, overflow: "hidden" },
+  progress: { height: 4 },
+  clock: { ...ui("regular"), fontSize: 12, fontVariant: ["tabular-nums"] },
+  speed: {
+    minWidth: 40,
+    height: 32,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+  },
+  speedText: { ...ui("semibold"), fontSize: 13 },
   lightbox: {
     flex: 1,
     backgroundColor: "#17120F",
-    paddingTop: 50,
-    paddingBottom: 40,
-    paddingHorizontal: 20,
-    gap: 20,
+    paddingHorizontal: 12,
+    gap: 8,
   },
+  lightboxTop: { flexDirection: "row", justifyContent: "flex-end" },
 });

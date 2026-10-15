@@ -1,3 +1,4 @@
+import Modal from "../AudioModal";
 // GlossarySheet — Sanskrit grammar terms in plain language.
 //
 // One sheet serves both uses: a single key term tapped on a topic page, and
@@ -7,7 +8,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { FlatList, Modal, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { GuideGlossaryItem } from "../../api/client";

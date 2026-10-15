@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Settings — its own drawer screen (U8-1). Account, sound and haptics, reduced
 // motion, text size, about. No mascot, no streak, no gamification: it is where
 // things go to be configured, not celebrated.
@@ -11,7 +12,7 @@ import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Alert, Linking, Modal, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 

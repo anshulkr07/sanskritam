@@ -21,9 +21,14 @@ def delete_account(db, uid):
         .filter(or_(Conversation.id.in_(my_cids), Conversation.creator_id == uid))
         .all()
     ):
+        # Learners an admin removed are not members and cannot inherit a circle.
         remaining = (
             db.query(Member)
-            .filter(Member.conversation_id == c.id, Member.user_id != uid)
+            .filter(
+                Member.conversation_id == c.id,
+                Member.user_id != uid,
+                Member.role != "removed",
+            )
             .all()
         )
         if c.kind == "direct" or not remaining:

@@ -1,9 +1,10 @@
+import Modal from "../components/AudioModal";
 // The trail's three bottom sheets: a lesson's preview, the stage switcher and
 // a unit's graded practice. Square corners, one primary action each.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { Image, Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { GuideLang, GuideTopicSummary, LessonSummary } from "../api/client";

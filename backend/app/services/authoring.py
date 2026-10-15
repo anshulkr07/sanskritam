@@ -673,9 +673,8 @@ async def run_authoring(
 # ─── render pass ──────────────────────────────────────────────────────────
 
 _LANG_MAP = {"sa": "sa", "hi": "hi", "en": "en"}
-_SA_LANG_CODE = "hi-IN"
-"""Bulbul has no ``sa-IN`` outside beta — Sanskrit nodes render ``hi-IN`` until
-the account's beta is enabled (architecture.md §4.1; memory: 2026-08-29)."""
+_SA_LANG_CODE = "sa-IN"
+"""Native Sanskrit beta, enabled for this account on 2026-10-15."""
 _BULBUL_MODEL = "bulbul:v3"
 _BULBUL_SPEAKER = "aditya"
 _BULBUL_SAMPLE_RATE = 24000

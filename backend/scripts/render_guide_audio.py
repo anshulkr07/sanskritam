@@ -170,7 +170,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Grammar guide audio: plan, estimate, render")
     p.add_argument("--live", action="store_true", help="render, store and write the manifest (default: dry run)")
     p.add_argument("--dry-run", action="store_true", help="print plan + estimate, spend nothing")
-    p.add_argument("--sa-language", default="hi-IN", help="language_code for Sanskrit (hi-IN default, sa-IN beta)")
+    p.add_argument("--sa-language", default="sa-IN", help="language_code for Sanskrit (sa-IN default, native Sanskrit beta)")
     p.add_argument("--limit", type=int, default=None, help="render at most this many clips")
     p.add_argument("--pace", type=float, default=PACE_SECONDS, help="seconds between requests")
     args = p.parse_args(argv)

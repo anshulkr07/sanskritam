@@ -177,7 +177,7 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
                 ))}
               </View>
               <Text style={[ui("regular"), { color: T.ink, fontSize: sized(14.5) }]}>
-                {hi ? `${finish.unitDone.filter(Boolean).length} / ${stop.unit.lessons.length} पाठ पूरे।` : `${finish.unitDone.filter(Boolean).length} of ${stop.unit.lessons.length} lessons done.`}
+                {hi ? `${finish.unitDone.filter(Boolean).length} / ${stop.unit.lessons.length} पाठ पढ़े।` : `${finish.unitDone.filter(Boolean).length} of ${stop.unit.lessons.length} lessons read.`}
               </Text>
             </View>
           ) : null}
@@ -206,6 +206,8 @@ export default function LearnV2LessonScreen({ route, navigation }: Props) {
           </View>
         </ScrollView>
         <View style={styles.bottom}>
+          {stop?.unit.graded.length ? <PrimaryButton label={hi ? "अभ्यास करें" : "Practise what you learned"}
+            onPress={() => navigation.navigate("Challenge", { features: stop.unit.graded })} /> : null}
           {next ? <PrimaryButton label={(hi ? "आगे: " : "Next: ") + next.lesson.title[lang]} onPress={goNext} /> : null}
           <TextButton label={hi ? "मार्ग पर लौटें" : "Back to the trail"} onPress={() => navigation.goBack()} />
         </View>

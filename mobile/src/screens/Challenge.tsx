@@ -177,7 +177,7 @@ export default function ChallengeScreen({ navigation, route }: Props) {
     if (!challenge) return;
     haptics.tap();
     try {
-      await speak(challenge.prompt_l1, "hi");
+      await speak(challenge.prompt_l1, challenge.prompt_lang || "en");
     } catch {
       /* audio unavailable */
     }

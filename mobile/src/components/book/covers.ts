@@ -1,12 +1,51 @@
 // Painted cover map: literal requires only (Metro resolves only literals).
-// List exactly the files in mobile/assets/covers. Missing keys fall back to
-// the vector cover in CoverArt. Do not generate or edit cover images here.
+// List exactly the files in mobile/assets/covers. Unknown catalogue keys fall
+// back to the vector cover in CoverArt.
 
 import type { ImageSourcePropType } from "react-native";
 
-// Only gita.webp ships in this tree; the owner's 4K masters produce the rest
-// on release. Add a literal line per file when a new painted cover lands.
+// Watercolor covers for every reading shelf, bundled for offline use.
 export const PAINTED_COVERS: Record<string, ImageSourcePropType> = {
+  rigveda: require("../../../assets/covers/rigveda.webp"),
+  samaveda: require("../../../assets/covers/samaveda.webp"),
+  yajurveda: require("../../../assets/covers/yajurveda.webp"),
+  atharvaveda: require("../../../assets/covers/atharvaveda.webp"),
+  kena: require("../../../assets/covers/kena.webp"),
+  prashna: require("../../../assets/covers/prashna.webp"),
+  mandukya: require("../../../assets/covers/mandukya.webp"),
+  taittiriya: require("../../../assets/covers/taittiriya.webp"),
+  aitareya: require("../../../assets/covers/aitareya.webp"),
+  shvetashvatara: require("../../../assets/covers/shvetashvatara.webp"),
+  chandogya: require("../../../assets/covers/chandogya.webp"),
+  brihadaranyaka: require("../../../assets/covers/brihadaranyaka.webp"),
+  bhagavata: require("../../../assets/covers/bhagavata.webp"),
+  shivapurana: require("../../../assets/covers/shivapurana.webp"),
+  garuda: require("../../../assets/covers/garuda.webp"),
+  devimahatmya: require("../../../assets/covers/devimahatmya.webp"),
+  vishnusahasranama: require("../../../assets/covers/vishnusahasranama.webp"),
+  lalita: require("../../../assets/covers/lalita.webp"),
+  bhajagovindam: require("../../../assets/covers/bhajagovindam.webp"),
+  saundarya: require("../../../assets/covers/saundarya.webp"),
+  aditya: require("../../../assets/covers/aditya.webp"),
+  tandava: require("../../../assets/covers/tandava.webp"),
+  mahimna: require("../../../assets/covers/mahimna.webp"),
+  ramaraksha: require("../../../assets/covers/ramaraksha.webp"),
+  naradabhakti: require("../../../assets/covers/naradabhakti.webp"),
+  meghaduta: require("../../../assets/covers/meghaduta.webp"),
+  kumarasambhava: require("../../../assets/covers/kumarasambhava.webp"),
+  raghuvamsha: require("../../../assets/covers/raghuvamsha.webp"),
+  shakuntala: require("../../../assets/covers/shakuntala.webp"),
+  gitagovinda: require("../../../assets/covers/gitagovinda.webp"),
+  vetala: require("../../../assets/covers/vetala.webp"),
+  yogasutra: require("../../../assets/covers/yogasutra.webp"),
+  hathayoga: require("../../../assets/covers/hathayoga.webp"),
+  ashtavakra: require("../../../assets/covers/ashtavakra.webp"),
+  sushruta: require("../../../assets/covers/sushruta.webp"),
+  arthashastra: require("../../../assets/covers/arthashastra.webp"),
+  lilavati: require("../../../assets/covers/lilavati.webp"),
+  amarakosha: require("../../../assets/covers/amarakosha.webp"),
+  chanakya: require("../../../assets/covers/chanakya.webp"),
+
   gita: require("../../../assets/covers/gita.webp"),
   isha: require("../../../assets/covers/isha.webp"),
   katha: require("../../../assets/covers/katha.webp"),
@@ -34,9 +73,8 @@ export function paintedCover(key: string): ImageSourcePropType | null {
 // Ground colour of each painted cover (appendix C): the book's colour
 // everywhere else. Foreground is the title colour on it.
 //
-// Reading shelf 2026-10-09: the 39 paged books reuse the deep solid fills
-// (cream #FFF8EE passes 4.5:1 on all of them, so check-contrast holds). No
-// painted covers: the vector cover is the fallback.
+// The paged books retain their deep solid colours for surrounding UI and
+// native title text; their watercolor covers were completed on 2026-10-15.
 export const COVER_COLOURS: Record<string, { colour: string; foreground: string; titleSa: string }> = {
   gita: { colour: "#561722", foreground: "#F2C879", titleSa: "श्रीमद्भगवद्गीता" },
   isha: { colour: "#2F4677", foreground: "#F3D27A", titleSa: "ईशावास्योपनिषद्" },

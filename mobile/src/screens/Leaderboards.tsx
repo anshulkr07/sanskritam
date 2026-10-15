@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Leaderboards (design option B, owner-picked 2026-10-14): your standing
 // first, then the top of the board and the players around you.
 //
@@ -19,7 +20,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type Division } from "../api/client";
@@ -27,6 +28,8 @@ import { playApi, type Leaderboard, type LeaderRow } from "../games/v2/client";
 import { CREAM, CREAM_FAINT, GOLD, T, softOn, ui } from "../read/look";
 import { ProgressLine } from "../read/ui";
 import { haptics } from "../services/haptics";
+import PaintedBackground from "../components/artwork/PaintedBackground";
+import { hubArtwork } from "../components/artwork/hubs";
 
 type Track = "games" | "recitation";
 
@@ -282,6 +285,7 @@ function Standing({
     const left = data.frozen ? null : timeLeft(data.period_end);
     return (
       <View style={styles.card}>
+        <PaintedBackground source={hubArtwork("play:leaderboard")} banner denseText />
         <Text style={[styles.cardEyebrow, { color: GOLD }]}>{title}</Text>
         <Text style={styles.unranked}>
           {meRaw.participation} of {meRaw.of ?? 3} verses in. Recite all of them to get a rank.
@@ -300,6 +304,7 @@ function Standing({
 
   return (
     <View style={styles.card} accessibilityLabel={me ? `Your rank ${me.rank} of ${data.total}, ${me.score} points` : "Not ranked yet"}>
+      <PaintedBackground source={hubArtwork("play:leaderboard")} banner denseText />
       <View style={styles.cardTop}>
         <Text style={[styles.cardEyebrow, { color: GOLD }]}>{title}</Text>
         <Pressable onPress={onExplain} accessibilityRole="button" accessibilityState={{ expanded: explainOpen }} hitSlop={10}>
@@ -513,7 +518,7 @@ const styles = StyleSheet.create({
   stateBox: { alignItems: "center", gap: 8, paddingVertical: 28, paddingHorizontal: 24 },
   retry: { borderWidth: 1.5, borderColor: T.ink, minHeight: 44, paddingHorizontal: 20, justifyContent: "center" },
   retryText: { ...ui("semibold"), fontSize: 15, color: T.ink },
-  card: { backgroundColor: CARD, paddingHorizontal: 18, paddingTop: 14, paddingBottom: 18 },
+  card: { backgroundColor: CARD, paddingHorizontal: 18, paddingTop: 14, paddingBottom: 18, overflow: "hidden" },
   cardTop: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 12 },
   cardEyebrow: { ...ui("bold"), fontSize: 12, letterSpacing: 1.4, flexShrink: 1 },
   cardLink: { ...ui("semibold"), fontSize: 13, textDecorationLine: "underline" },

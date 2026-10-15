@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 import React, {
   createContext,
   useContext,
@@ -8,7 +9,6 @@ import React, {
 } from "react";
 import {
   AppState,
-  Modal,
   View,
   Text,
   Pressable,
@@ -18,9 +18,10 @@ import {
 } from "react-native";
 import { useAudioPlayer } from "expo-audio";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import { useAuth } from "../store/auth";
-import { color } from "../theme";
+import { fill } from "../theme";
+import { CREAM, CREAM_FAINT, CREAM_SOFT, GOLD, T, fillFor, initials, ui } from "./look";
 import { get, post, socketUrl, CallInfo, Status } from "./api";
 import {
   StreamVideoClient,
@@ -34,6 +35,8 @@ import {
 } from "./sdk";
 interface AudioContextValue {
   status: Status;
+  /** True once the first status has arrived for this sign-in. */
+  ready: boolean;
   revision: number;
   active: CallInfo | null;
   busy: boolean;
@@ -43,7 +46,8 @@ interface AudioContextValue {
   join: (info: CallInfo) => Promise<void>;
   leave: () => Promise<void>;
   expand: () => void;
-  refresh: () => Promise<void>;
+  /** Fetch the status; screens reload when it changed (always, unless `quiet`). */
+  refresh: (quiet?: boolean) => Promise<void>;
   recordingNote: boolean;
   setRecordingNote: (value: boolean) => void;
 }
@@ -51,6 +55,8 @@ const Context = createContext<AudioContextValue | null>(null);
 const empty: Status = {
   unread: 0,
   live: 0,
+  requests: 0,
+  card: false,
   incoming: [],
   audio_enabled: false,
 };
@@ -66,6 +72,7 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
     AppState.currentState === "active",
   );
   const [status, setStatus] = useState(empty),
+    [ready, setReady] = useState(false),
     [revision, setRevision] = useState(0);
   const [client, setClient] = useState<StreamVideoClient | null>(null),
     [call, setCall] = useState<Call | null>(null);
@@ -76,17 +83,27 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   const activeRef = useRef<CallInfo | null>(null),
     callRef = useRef<Call | null>(null),
     clientRef = useRef<StreamVideoClient | null>(null),
-    lock = useRef(false);
+    lock = useRef(false),
+    lastStatus = useRef("");
   const [ignored, setIgnored] = useState<string[]>([]);
   const generation = useRef(0);
   const cancelJoinRef = useRef<((message: string) => void) | null>(null);
   const [connectingTitle, setConnectingTitle] = useState<string | null>(null);
-  const refresh = useCallback(async () => {
-    if (!token) return;
-    const s = await get<Status>("/status");
-    setStatus(s);
-    setRevision((x) => x + 1);
-  }, [token]);
+  // A socket event or an action always reloads the open Group screen. The
+  // 30-second keep-alive is `quiet`: it reloads only when the status moved,
+  // so an idle screen is not refetched twice a minute for nothing.
+  const refresh = useCallback(
+    async (quiet = false) => {
+      if (!token) return;
+      const s = await get<Status>("/status");
+      const key = JSON.stringify(s);
+      setStatus(s);
+      setReady(true);
+      if (!quiet || key !== lastStatus.current) setRevision((x) => x + 1);
+      lastStatus.current = key;
+    },
+    [token],
+  );
   const leave = useCallback(async () => {
     const current = callRef.current,
       c = clientRef.current,
@@ -124,6 +141,8 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
     generation.current++;
     void leave().catch(() => {});
     setStatus(empty);
+    setReady(false);
+    lastStatus.current = "";
     setIgnored([]);
     if (!token) return;
     let cancelled = false,
@@ -155,7 +174,7 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
     const keep = setInterval(() => {
       if (AppState.currentState !== "background") {
         void post("/presence").catch(() => {});
-        void refresh().catch(() => {});
+        void refresh(true).catch(() => {});
       }
     }, 30000);
     const sub = AppState.addEventListener("change", (s) => {
@@ -293,6 +312,7 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
     recordingNote,
     setRecordingNote,
     status,
+    ready,
     revision,
     active,
     busy,
@@ -328,11 +348,12 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
       >
         <View style={styles.scrim}>
           <View style={styles.dialog}>
-            <ActivityIndicator color={color.saffron} />
-            <Text style={styles.title}>Connecting audio</Text>
-            <Text style={styles.text}>{connectingTitle}</Text>
+            <ActivityIndicator color={T.action} />
+            <Text style={styles.dialogTitle}>Connecting audio</Text>
+            <Text style={styles.dialogText}>{connectingTitle}</Text>
+            <Text style={styles.hint}>Your microphone starts off.</Text>
             <Action
-              label="Cancel connection"
+              label="Cancel"
               onPress={() => cancelJoinRef.current?.("Connection cancelled.")}
             />
           </View>
@@ -348,10 +369,18 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
       >
         <View style={styles.scrim}>
           <View style={styles.dialog}>
-            <Ionicons name="call" size={36} color={color.okText} />
-            <Text style={styles.title}>Incoming audio call</Text>
-            <Text style={styles.text}>{incoming?.title}</Text>
-            <Text style={styles.hint}>Microphone starts muted.</Text>
+            <View style={styles.ringRow}>
+              <View style={[styles.ringAvatar, { backgroundColor: fillFor(incoming?.conversation_id ?? "call") }]}>
+                <Text style={styles.ringInitials}>{initials(incoming?.title ?? "")}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.overline}>INCOMING AUDIO CALL</Text>
+                <Text style={styles.dialogTitle} numberOfLines={1}>
+                  {incoming?.title}
+                </Text>
+              </View>
+            </View>
+            <Text style={styles.hint}>Your microphone starts off.</Text>
             {!!error && <Text style={styles.error}>{error}</Text>}
             <View style={styles.row}>
               <Action
@@ -398,30 +427,48 @@ function CallWatcher({ leave }: { leave: () => Promise<void> }) {
   }, [state, leave]);
   return null;
 }
+/** A square button for the call surfaces (and older Group code). */
 export function Action({
   label,
   onPress,
   primary = false,
   disabled = false,
+  danger = false,
+  icon,
+  light = false,
 }: {
   label: string;
   onPress: () => void;
   primary?: boolean;
   disabled?: boolean;
+  danger?: boolean;
+  icon?: IoniconsIconName;
+  /** On a deep fill: cream outline and type. */
+  light?: boolean;
 }) {
+  const color = primary ? T.white : danger ? T.wrongInk : light ? CREAM : T.ink;
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={[
+      style={({ pressed }) => [
         styles.button,
-        primary && styles.primary,
+        primary
+          ? styles.primary
+          : danger
+            ? styles.danger
+            : light
+              ? styles.light
+              : styles.outline,
         disabled && { opacity: 0.45 },
+        pressed && !disabled && { opacity: 0.82 },
       ]}
     >
-      <Text style={[styles.buttonText, primary && { color: "white" }]}>
+      {icon ? <Ionicons name={icon} size={18} color={color} /> : null}
+      <Text style={[styles.buttonText, { color }]} numberOfLines={1}>
         {label}
       </Text>
     </Pressable>
@@ -462,29 +509,61 @@ function MiniControls() {
     <View style={styles.mini}>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Open audio room"
+        accessibilityLabel={`Open ${active?.title ?? "audio room"}`}
         onPress={expand}
-        style={{ flex: 1 }}
+        style={styles.miniInfo}
       >
-        <Text numberOfLines={1} style={styles.buttonText}>
-          ● {active?.title}
-        </Text>
-        <Text style={styles.hint}>
-          {error ||
-            `${participants.length} connected · ${isMute ? "Mic off" : "Mic on"}`}
-        </Text>
+        <View style={styles.miniLive} />
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text numberOfLines={1} style={styles.miniTitle}>
+            {active?.title}
+          </Text>
+          <Text numberOfLines={1} style={styles.miniSub}>
+            {error ||
+              `${participants.length} in the ${active?.kind === "audio_room" ? "room" : "call"} · ${isMute ? "Mic off" : "Mic on"}`}
+          </Text>
+        </View>
       </Pressable>
-      <Action
+      <MiniButton
+        icon={allowed ? (isMute ? "mic-off" : "mic") : "hand-left-outline"}
         label={allowed ? (isMute ? "Unmute" : "Mute") : "Raise hand"}
         disabled={working}
         onPress={action}
       />
-      <Action
+      <MiniButton
+        icon="exit-outline"
         label="Leave"
         disabled={working}
         onPress={() => void leave().catch(() => {})}
       />
     </View>
+  );
+}
+function MiniButton({
+  icon,
+  label,
+  onPress,
+  disabled,
+}: {
+  icon: IoniconsIconName;
+  label: string;
+  onPress: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.miniBtn,
+        disabled && { opacity: 0.45 },
+        pressed && { opacity: 0.8 },
+      ]}
+    >
+      <Ionicons name={icon} size={20} color={CREAM} />
+    </Pressable>
   );
 }
 function Stage({
@@ -555,52 +634,77 @@ function Stage({
       p.publishedTracks.includes(1),
   );
   const listeners = participants.filter((p) => !speakers.includes(p));
+  const room = info.kind === "audio_room";
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={minimize}>
       <View
         style={[
           styles.stage,
-          { paddingTop: insets.top + 16, paddingBottom: insets.bottom + 16 },
+          { paddingTop: insets.top + 8, paddingBottom: insets.bottom + 16 },
         ]}
       >
-        <View style={styles.row}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.hint}>संभाषणम् · AUDIO ONLY</Text>
-            <Text style={styles.title}>{info.title}</Text>
+        <View style={styles.stageTop}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Minimize"
+            onPress={minimize}
+            hitSlop={6}
+            style={styles.stageIcon}
+          >
+            <Ionicons name="chevron-down" size={24} color={CREAM} />
+          </Pressable>
+          <View style={styles.stageLive}>
+            <View style={styles.stageDot} />
+            <Text style={styles.stageLiveText}>
+              {room ? "LIVE ROOM · AUDIO ONLY" : "AUDIO CALL"}
+            </Text>
           </View>
-          <Action label="Minimize" onPress={minimize} />
         </View>
-        <Text style={styles.hint}>
+        <Text style={styles.stageTitle}>{info.title}</Text>
+        <Text style={styles.stageSub}>
           {state === CallingState.RECONNECTING
             ? "Reconnecting…"
-            : `${participants.length} connected · ${isMute ? "Your mic is muted" : "Your mic is on"}`}
+            : `${participants.length} connected · ${isMute ? "your mic is off" : "your mic is on"}`}
         </Text>
-        <ScrollView contentContainerStyle={{ gap: 20, paddingVertical: 24 }}>
-          <Text style={styles.section}>Stage</Text>
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={{ gap: 22, paddingVertical: 22 }}
+        >
+          <Text style={styles.section}>{room ? "On the stage" : "In the call"}</Text>
           <View style={styles.grid}>
             {speakers.map((p) => (
               <View key={p.sessionId} style={styles.person}>
-                <View style={[styles.avatar, p.isSpeaking && styles.speaking]}>
+                <View
+                  style={[
+                    styles.avatar,
+                    { backgroundColor: fillFor(p.userId) },
+                    p.isSpeaking && styles.speaking,
+                  ]}
+                >
                   <Text style={styles.avatarText}>
-                    {(p.name || p.userId).slice(0, 1).toUpperCase()}
+                    {initials(p.name || p.userId)}
                   </Text>
                 </View>
-                <Text style={styles.text} numberOfLines={1}>
-                  {p.name || "Learner"}
+                <Text style={styles.personName} numberOfLines={1}>
+                  {p.userId === learner?.id ? "You" : p.name || "Learner"}
                 </Text>
-                <Text style={styles.hint}>
+                <Text style={styles.personRole}>
                   {p.userId === info.host_id
                     ? "Host"
                     : p.publishedTracks.includes(1)
                       ? "Speaking"
-                      : "Muted"}
+                      : "Mic off"}
                 </Text>
-                {isHost && p.userId !== learner?.id && (
-                  <Action
-                    label="Move to audience"
+                {isHost && room && p.userId !== learner?.id && (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={`Move ${p.name || "learner"} to listeners`}
                     disabled={working}
                     onPress={() => answer(p.userId, false)}
-                  />
+                    style={styles.smallLink}
+                  >
+                    <Text style={styles.smallLinkText}>To listeners</Text>
+                  </Pressable>
                 )}
               </View>
             ))}
@@ -609,15 +713,20 @@ function Stage({
             <View style={styles.queue}>
               <Text style={styles.section}>Raised hands</Text>
               {hands.map((p) => (
-                <View key={p.id} style={styles.row}>
-                  <Text style={[styles.text, { flex: 1 }]}>{p.name}</Text>
+                <View key={p.id} style={styles.handRow}>
+                  <Ionicons name="hand-left" size={18} color={GOLD} />
+                  <Text style={[styles.dialogTextLight, { flex: 1 }]} numberOfLines={1}>
+                    {p.name}
+                  </Text>
                   <Action
-                    label="Allow mic"
+                    label="Let speak"
+                    primary
                     disabled={working}
                     onPress={() => answer(p.id, true)}
                   />
                   <Action
-                    label="Dismiss"
+                    label="Not now"
+                    light
                     disabled={working}
                     onPress={() => answer(p.id, false)}
                   />
@@ -631,12 +740,20 @@ function Stage({
               <View style={styles.grid}>
                 {listeners.map((p) => (
                   <View key={p.sessionId} style={styles.person}>
-                    <View style={styles.avatar}>
-                      <Text style={styles.avatarText}>
-                        {(p.name || "L").slice(0, 1)}
+                    <View
+                      style={[
+                        styles.avatar,
+                        styles.avatarSmall,
+                        { backgroundColor: fillFor(p.userId) },
+                      ]}
+                    >
+                      <Text style={[styles.avatarText, { fontSize: 18 }]}>
+                        {initials(p.name || "L")}
                       </Text>
                     </View>
-                    <Text style={styles.text}>{p.name || "Learner"}</Text>
+                    <Text style={styles.personName} numberOfLines={1}>
+                      {p.userId === learner?.id ? "You" : p.name || "Learner"}
+                    </Text>
                   </View>
                 ))}
               </View>
@@ -644,22 +761,24 @@ function Stage({
           )}
         </ScrollView>
         {!!error && (
-          <Text accessibilityRole="alert" style={styles.error}>
+          <Text accessibilityRole="alert" style={styles.stageError}>
             {error}
           </Text>
         )}
-        <View style={styles.row}>
+        <View style={styles.controls}>
           {canSpeak ? (
-            <Action
-              primary
+            <StageButton
+              icon={isMute ? "mic-off" : "mic"}
               label={isMute ? "Unmute" : "Mute"}
+              on={!isMute}
               disabled={working}
               onPress={() => run(() => microphone.toggle())}
             />
           ) : (
-            <Action
-              primary
-              label={asked ? "Hand raised" : "Raise hand · हस्तम् उत्थापयतु"}
+            <StageButton
+              icon="hand-left-outline"
+              label={asked ? "Hand raised" : "Raise hand"}
+              on={asked}
               disabled={working || asked}
               onPress={() =>
                 run(async () => {
@@ -671,8 +790,9 @@ function Stage({
               }
             />
           )}
-          {canSpeak && !isHost && info.kind === "audio_room" && (
-            <Action
+          {canSpeak && !isHost && room && (
+            <StageButton
+              icon="arrow-down-circle-outline"
               label="Step down"
               disabled={working}
               onPress={() =>
@@ -686,11 +806,17 @@ function Stage({
               }
             />
           )}
-          <Action label="Leave" disabled={working} onPress={() => run(leave)} />
+          <StageButton
+            icon="exit-outline"
+            label="Leave"
+            leave
+            disabled={working}
+            onPress={() => run(leave)}
+          />
         </View>
         {(isHost || info.kind === "default") && (
-          <Action
-            label={isHost ? "End room for everyone" : "End call for everyone"}
+          <Pressable
+            accessibilityRole="button"
             disabled={working}
             onPress={() =>
               run(async () => {
@@ -699,10 +825,50 @@ function Stage({
                 await leave();
               })
             }
-          />
+            style={styles.endAll}
+          >
+            <Text style={styles.endAllText}>
+              {isHost ? "End the room for everyone" : "End the call for everyone"}
+            </Text>
+          </Pressable>
         )}
       </View>
     </Modal>
+  );
+}
+function StageButton({
+  icon,
+  label,
+  onPress,
+  disabled,
+  on = false,
+  leave = false,
+}: {
+  icon: IoniconsIconName;
+  label: string;
+  onPress: () => void;
+  disabled?: boolean;
+  on?: boolean;
+  leave?: boolean;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityState={{ disabled, selected: on }}
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.stageBtn,
+        on && styles.stageBtnOn,
+        leave && styles.stageBtnLeave,
+        disabled && { opacity: 0.5 },
+        pressed && { opacity: 0.85 },
+      ]}
+    >
+      <Ionicons name={icon} size={24} color={on ? T.ink : CREAM} />
+      <Text style={[styles.stageBtnText, on && { color: T.ink }]}>{label}</Text>
+    </Pressable>
   );
 }
 // Shared bindings hook works for both adapters and does not initialize native code on web.
@@ -710,70 +876,113 @@ import {
   useCall as useJoinedCall,
   StreamCallProvider,
 } from "@stream-io/video-react-bindings";
+const STAGE = fill.teal;
 const styles = StyleSheet.create({
   scrim: {
     flex: 1,
-    backgroundColor: "#3B2E2580",
+    backgroundColor: T.scrim,
     justifyContent: "center",
     padding: 24,
   },
-  dialog: { backgroundColor: color.bg, borderRadius: 24, padding: 24, gap: 16 },
-  stage: { flex: 1, backgroundColor: color.bg, paddingHorizontal: 20, gap: 14 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontSize: 24, color: color.ink },
-  text: { fontFamily: "Nunito_600SemiBold", fontSize: 16, color: color.ink },
-  hint: {
-    fontFamily: "Nunito_600SemiBold",
-    fontSize: 12,
-    color: color.inkSoft,
+  dialog: {
+    backgroundColor: T.paper,
+    padding: 22,
+    gap: 14,
+    borderTopWidth: 4,
+    borderTopColor: T.action,
   },
-  section: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontSize: 18,
-    color: color.ink,
-  },
-  row: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap" },
-  grid: { flexDirection: "row", flexWrap: "wrap", gap: 18 },
-  person: { alignItems: "center", width: 95, gap: 6 },
-  avatar: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: color.surfaceMuted,
-    borderWidth: 3,
-    borderColor: color.border,
+  dialogTitle: { ...ui("bold"), fontSize: 21, lineHeight: 27, color: T.ink },
+  dialogText: { ...ui("medium"), fontSize: 16, lineHeight: 22, color: T.ink2 },
+  dialogTextLight: { ...ui("semibold"), fontSize: 16, color: CREAM },
+  overline: { ...ui("bold"), fontSize: 12, letterSpacing: 1.3, color: T.ink3 },
+  hint: { ...ui("regular"), fontSize: 13.5, lineHeight: 19, color: T.ink3 },
+  ringRow: { flexDirection: "row", alignItems: "center", gap: 14 },
+  ringAvatar: {
+    width: 56,
+    height: 56,
     alignItems: "center",
     justifyContent: "center",
   },
-  speaking: { borderColor: color.ok },
-  avatarText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontSize: 24,
-    color: color.ink,
-  },
-  queue: {
-    backgroundColor: color.surface,
-    padding: 12,
-    borderRadius: 18,
-    gap: 12,
-  },
+  ringInitials: { ...ui("bold"), fontSize: 22, color: CREAM },
+  row: { flexDirection: "row", alignItems: "center", gap: 10, flexWrap: "wrap" },
+  error: { ...ui("medium"), color: T.wrongInk, fontSize: 14, lineHeight: 20 },
   button: {
-    minHeight: 44,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    justifyContent: "center",
-    borderRadius: 14,
-    backgroundColor: color.surfaceMuted,
-  },
-  primary: { backgroundColor: color.saffronBtn },
-  buttonText: { fontFamily: "Nunito_700Bold", fontSize: 14, color: color.ink },
-  mini: {
-    backgroundColor: color.okBg,
-    padding: 10,
+    minHeight: 46,
+    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
-    borderTopWidth: 1,
-    borderColor: color.border,
+    justifyContent: "center",
+    gap: 6,
   },
-  error: { color: color.badText, fontSize: 14 },
+  primary: { backgroundColor: T.action },
+  outline: { borderWidth: 1.5, borderColor: T.ink },
+  danger: { borderWidth: 1.5, borderColor: T.wrong },
+  light: { borderWidth: 1.5, borderColor: CREAM },
+  buttonText: { ...ui("semibold"), fontSize: 15 },
+  mini: {
+    backgroundColor: STAGE,
+    paddingLeft: 12,
+    paddingRight: 4,
+    minHeight: 58,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  miniInfo: { flex: 1, flexDirection: "row", alignItems: "center", gap: 10, minHeight: 54 },
+  miniLive: { width: 9, height: 9, backgroundColor: "#7BD99A" },
+  miniTitle: { ...ui("semibold"), fontSize: 15, lineHeight: 20, color: CREAM },
+  miniSub: { ...ui("regular"), fontSize: 12.5, lineHeight: 17, color: CREAM_SOFT },
+  miniBtn: {
+    width: 46,
+    height: 46,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: CREAM_FAINT,
+    marginLeft: 4,
+  },
+  stage: { flex: 1, backgroundColor: STAGE, paddingHorizontal: 20 },
+  stageTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  stageIcon: { width: 44, height: 44, alignItems: "center", justifyContent: "center", marginLeft: -10 },
+  stageLive: { flexDirection: "row", alignItems: "center", gap: 7 },
+  stageDot: { width: 8, height: 8, backgroundColor: "#7BD99A" },
+  stageLiveText: { ...ui("bold"), fontSize: 12, letterSpacing: 1.3, color: GOLD },
+  stageTitle: { ...ui("bold"), fontSize: 26, lineHeight: 33, color: CREAM, marginTop: 10 },
+  stageSub: { ...ui("regular"), fontSize: 14.5, lineHeight: 20, color: CREAM_SOFT, marginTop: 2 },
+  section: { ...ui("bold"), fontSize: 13, letterSpacing: 1.2, color: GOLD, textTransform: "uppercase" },
+  grid: { flexDirection: "row", flexWrap: "wrap", gap: 18 },
+  person: { alignItems: "center", width: 88, gap: 4 },
+  avatar: {
+    width: 68,
+    height: 68,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 3,
+    borderColor: "transparent",
+  },
+  avatarSmall: { width: 52, height: 52 },
+  speaking: { borderColor: "#7BD99A" },
+  avatarText: { ...ui("bold"), fontSize: 24, color: CREAM },
+  personName: { ...ui("semibold"), fontSize: 14, color: CREAM, maxWidth: 88 },
+  personRole: { ...ui("regular"), fontSize: 12.5, color: CREAM_SOFT },
+  smallLink: { minHeight: 32, justifyContent: "center" },
+  smallLinkText: { ...ui("semibold"), fontSize: 12.5, color: GOLD, textDecorationLine: "underline" },
+  queue: { borderWidth: 1, borderColor: CREAM_FAINT, padding: 14, gap: 12 },
+  handRow: { flexDirection: "row", alignItems: "center", gap: 10, flexWrap: "wrap" },
+  stageError: { ...ui("medium"), fontSize: 14, lineHeight: 20, color: CREAM, backgroundColor: "rgba(179,38,30,0.85)", padding: 10 },
+  controls: { flexDirection: "row", gap: 10, paddingTop: 12 },
+  stageBtn: {
+    flex: 1,
+    minHeight: 68,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
+    borderWidth: 1.5,
+    borderColor: CREAM_FAINT,
+  },
+  stageBtnOn: { backgroundColor: CREAM, borderColor: CREAM },
+  stageBtnLeave: { backgroundColor: T.wrong, borderColor: T.wrong },
+  stageBtnText: { ...ui("semibold"), fontSize: 13.5, color: CREAM },
+  endAll: { minHeight: 44, alignItems: "center", justifyContent: "center", marginTop: 8 },
+  endAllText: { ...ui("semibold"), fontSize: 14, color: CREAM, textDecorationLine: "underline" },
 });

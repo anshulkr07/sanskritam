@@ -182,8 +182,8 @@ def test_render_sarvam_render_item_writes_wav_and_records_error(tmp_path, capsys
     assert pathlib.Path(ok1["path"]).exists()
     with wave.open(ok1["path"], "rb") as w:
         assert w.getframerate() == 24000 and w.getnchannels() == 1
-    # sa item routed through the sa_language flag (default hi-IN)
-    assert fake.calls[1]["language_code"] == "hi-IN"
+    # Native Sanskrit is now the default for Sanskrit content.
+    assert fake.calls[1]["language_code"] == "sa-IN"
     # the failing item is isolated, not fatal
     assert results[2]["ok"] is False and "boom" in results[2]["error"]
     # every successful call carried the persona speaker + bulbul:v3

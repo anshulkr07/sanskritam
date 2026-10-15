@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // CalendarSheet — "Your calendar": which tradition's date the Home card
 // shows, what it is written in, and the place it is worked out for. Opened
 // from Kāla (screens/Kala.tsx).
@@ -13,7 +14,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useState } from "react";
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import Animated, { Easing, FadeIn, FadeOut, SlideInDown, SlideOutDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 

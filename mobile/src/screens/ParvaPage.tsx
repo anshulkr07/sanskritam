@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Parva page: painting hero, deity of the day, muhurats, why, vidhi, vrat,
 // mantras & aartis, do-not, regions, ask, share card, remind. Series open on
 // the requested/today day with a dated day row. Sections hide when empty; a
@@ -11,7 +12,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import QRCode from "react-native-qrcode-svg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image, Linking, Modal, Pressable, ScrollView, Share, StyleSheet, Text, View, type ImageSourcePropType } from "react-native";
+import { Image, Linking, Pressable, ScrollView, Share, StyleSheet, Text, View, type ImageSourcePropType } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { useAsk, useAskContext } from "../ask/AskProvider";

@@ -5,7 +5,7 @@
 // deck): progress lives in AsyncStorage. Both languages arrive in one payload,
 // so a cached topic still switches between English and Hindi offline.
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { progressStorage as AsyncStorage, subscribeProgress } from "./progressStorage";
 
 import { api, type GuideIndex, type GuideTopic } from "../api/client";
 
@@ -18,6 +18,7 @@ type Listener = () => void;
 const listeners = new Set<Listener>();
 let readIds: Set<string> | null = null;
 let lastTopic: string | null = null;
+subscribeProgress(() => { readIds = null; lastTopic = null; notify(); });
 
 function notify(): void {
   for (const l of listeners) {

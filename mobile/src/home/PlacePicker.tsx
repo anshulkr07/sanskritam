@@ -1,6 +1,7 @@
+import Modal from "../components/AudioModal";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { Keyboard, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Keyboard, Pressable, StyleSheet, Text, View } from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import { SafeAreaView } from "react-native-safe-area-context";
 

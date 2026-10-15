@@ -525,9 +525,8 @@ def _last_tutor_turn(db: Session, session_id: str) -> Optional[ConversationTurn]
 def _bulbul_code(lang: str) -> str:
     """Sarvam TTS language code for a line we are about to speak.
 
-    Sanskrit renders through `settings.tts_sanskrit_code` — the Hindi voice
-    until the sa-IN beta is granted (architecture §4.1; still refused
-    2026-09-23). Everything else uses its OWN voice — this used to return
+    Sanskrit renders through `settings.tts_sanskrit_code` — native sa-IN,
+    enabled on this account's beta. Everything else uses its OWN voice — this used to return
     hi-IN for every non-English line, which meant an English explanation and
     a Kannada reply were both read aloud in Hindi.
     """

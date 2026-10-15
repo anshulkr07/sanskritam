@@ -64,6 +64,17 @@ try {
   await sleep(900);
   const energy = await evaluate("(async()=>{let energy=0;for(const s of (await duplex.near.getStats()).values())if(s.type==='inbound-rtp'&&s.kind==='audio')energy+=s.totalAudioEnergy||0;return energy;})()");
   assert.ok(energy > 0, "AI PCM must reach the remote WebRTC playout track");
+  await evaluate("window.voiceLabCommand({type:'pause'})");
+  await sleep(150);
+  const pausedAt = await evaluate("ctx.currentTime");
+  // Incoming streamed chunks must not silently resume a paused reply.
+  await evaluate(`window.voiceLabCommand({type:'audio',codec:'pcm',sample_rate:24000,data:'${pcm.subarray(0, 2400).toString("base64")}'})`);
+  await sleep(250);
+  assert.equal(await evaluate("ctx.state"), "suspended");
+  assert.ok(Math.abs(await evaluate("ctx.currentTime") - pausedAt) < .02, "Pause must preserve playback position");
+  await evaluate("window.voiceLabCommand({type:'resume'})");
+  await sleep(200);
+  assert.ok(await evaluate("ctx.currentTime") > pausedAt, "Resume must advance the same playback timeline");
   const before = await evaluate("window.messages.filter(m=>m.voiceLabCaptureFrame===1).length");
   await evaluate("window.voiceLabCommand({type:'stop'})"); await sleep(500);
   assert.ok(await evaluate("window.messages.filter(m=>m.voiceLabCaptureFrame===1).length") > before, "Stopping AI playback must keep the microphone running");

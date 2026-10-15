@@ -1922,7 +1922,7 @@ export const api = {
     ),
 
   // Speech
-  tts: (text: string, languageCode = "hi-IN", speaker = "aditya", pace = 1.0) =>
+  tts: (text: string, languageCode = "sa-IN", speaker = "aditya", pace = 1.0) =>
     request<TTSResponse>(
       "/speech/tts",
       {

@@ -42,7 +42,8 @@ function lessonArtwork(id?: string): ImageSourcePropType | undefined {
   const lesson = LEARNV2_LESSONS.find((l) => l.id === id);
   const card = lesson?.cards.find((c) => c.assetId || c.assetIds?.length);
   const assetId = card?.assetId ?? card?.assetIds?.[0];
-  return assetId ? getLearnV2Asset(assetId)?.source : undefined;
+  return (assetId ? getLearnV2Asset(assetId)?.source : undefined)
+    ?? hubArtwork(id?.startsWith("verse-") ? "learn:verse" : "learn:library");
 }
 const TOOL_ART: Record<string, string> = {
   Varnamala: "tool:sound-map", Writing: "tool:writing", WordLab: "tool:word-lab",
@@ -60,6 +61,10 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
   const verse = route.params?.section === "verse";
   const nav = navigation as unknown as { navigate: (r: string, p?: object) => void };
   const topics = guide.data?.topics ?? [];
+  const topicArtwork = (id: string) => {
+    const chapter = guide.data?.chapters.find((ch) => ch.topic_ids.includes(id));
+    return hubArtwork(chapter ? `grammar:${chapter.id}` : "learn:advanced");
+  };
   const topicTitle = (id: string) => {
     const tp = topics.find((x) => x.id === id);
     return tp ? t(tp.title) : LIBRARY_TOPIC_TITLES[id]?.[lang] ?? id;
@@ -127,14 +132,14 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                 {lessonHits.length ? <Overline text={hi ? "पाठ" : "Lessons"} /> : null}
                 {lessonHits.map((l) => <Row key={l.id} artwork={lessonArtwork(l.cards)} title={l.title[lang]} onPress={() => openLesson(l)} />)}
                 {topicHits.length ? <Overline text={hi ? "व्याकरण नोट्स" : "Grammar notes"} /> : null}
-                {topicHits.slice(0, 40).map((tp) => <Row key={tp.id} title={t(tp.title)} sub={tp.title_sa} onPress={() => navigation.navigate("GrammarTopic", { topicId: tp.id })} />)}
+                {topicHits.slice(0, 40).map((tp) => <Row key={tp.id} artwork={topicArtwork(tp.id)} title={t(tp.title)} sub={tp.title_sa} onPress={() => navigation.navigate("GrammarTopic", { topicId: tp.id })} />)}
                 {!lessonHits.length && !topicHits.length ? <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(15) }]}>{hi ? "कुछ नहीं मिला।" : "Nothing found."}</Text> : null}
               </View>
             ) : (
               <>
                 <View style={styles.section}>
                   <Overline text={hi ? "तालिकाएँ" : "Tables"} />
-                  {LIBRARY_TOPICS.tables.map((id) => <Row key={id} title={topicTitle(id)} onPress={() => navigation.navigate("GrammarTopic", { topicId: id })} />)}
+                  {LIBRARY_TOPICS.tables.map((id) => <Row key={id} artwork={hubArtwork("learn:tables")} title={topicTitle(id)} onPress={() => navigation.navigate("GrammarTopic", { topicId: id })} />)}
                 </View>
 
                 <View style={styles.section}>
@@ -147,7 +152,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
                   })}
                   {guide.loading && !guide.data ? <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(14) }]}>{hi ? "लोड हो रहा है…" : "Loading…"}</Text> : null}
                   {guide.failed && !guide.data ? <Row title={hi ? "लोड नहीं हुआ। फिर से कोशिश करें" : "Could not load. Retry"} onPress={guide.retry} /> : null}
-                  <Row title={hi ? "पूरा संदर्भ: स्तर, प्रश्नोत्तरी, शब्दकोश" : "The full reference: levels, quizzes, glossary"} onPress={() => navigation.navigate("Grammar")} />
+                  <Row artwork={hubArtwork("learn:library")} title={hi ? "पूरा संदर्भ: स्तर, प्रश्नोत्तरी, शब्दकोश" : "The full reference: levels, quizzes, glossary"} onPress={() => navigation.navigate("Grammar")} />
                 </View>
 
                 <View style={styles.section}>
@@ -165,7 +170,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
 
                 <View style={styles.section}>
                   <Overline text={hi ? "और गहराई में" : "Go deeper"} />
-                  <Row title={hi ? "छन्द और लय: पूरा पाठ्यक्रम" : "Metre and rhythm, the full course"} sub={hi ? "48 पठन · अंग्रेज़ी पांडुलिपि" : "48 readings · English manuscript"}
+                  <Row artwork={hubArtwork("learn:verse")} title={hi ? "छन्द और लय: पूरा पाठ्यक्रम" : "Metre and rhythm, the full course"} sub={hi ? "48 पठन · अंग्रेज़ी पांडुलिपि" : "48 readings · English manuscript"}
                     onPress={() => navigation.navigate("LearnLibrary", { section: "verse" })} />
                   {LIBRARY_CARD_LESSONS.map((id) => {
                     const l = LEARNV2_LESSONS.find((x) => x.id === id);
@@ -175,7 +180,7 @@ export default function LearnLibraryScreen({ navigation, route }: Props) {
 
                 <View style={styles.section}>
                   <Overline text={hi ? "उन्नत" : "Advanced"} />
-                  {LIBRARY_TOPICS.advanced.map((id) => <Row key={id} title={topicTitle(id)} onPress={() => navigation.navigate("GrammarTopic", { topicId: id })} />)}
+                  {LIBRARY_TOPICS.advanced.map((id) => <Row key={id} artwork={hubArtwork("learn:advanced")} title={topicTitle(id)} onPress={() => navigation.navigate("GrammarTopic", { topicId: id })} />)}
                 </View>
               </>
             )}

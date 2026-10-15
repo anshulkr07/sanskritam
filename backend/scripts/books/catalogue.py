@@ -99,6 +99,9 @@ BOOKS: dict[str, dict] = {
         # restart every adhyaya. Each adhyaya's first verse ends "। १ ॥" with
         # a single opening danda — handled by clean._DANDA (2026-10-14).
         "chapter_from_title": ["स्कन्धः", "अध्यायः"],
+        # Several verse ends print as "letter + number + danda" (opening
+        # danda lost) - inline_num_marker normalises them for the splitter.
+        "inline_num_marker": True,
         # The wikisource transcription is incomplete (~10.4k of the 14,067
         # canonical shlokas; skandhas 10-11 are the short ones) - the import
         # takes everything the source has. No count gate.
@@ -113,6 +116,9 @@ BOOKS: dict[str, dict] = {
         # ordinal within the page.
         "chapter_per_page": True,
         "renumber_per_chapter": True,
+        # Verse ends "…पतिः १ ॥" (opening danda lost) - see
+        # inline_num_marker in build.py.
+        "inline_num_marker": True,
         "reference_total": None, "planned": 0, "vedic": False,
     },
     "garuda": {

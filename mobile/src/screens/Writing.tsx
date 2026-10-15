@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // WritingScreen (U12-3) — feedback that abstains.
 //
 // §3.3 is the invariant this screen exists to honour: `unsure` is NEVER red,
@@ -23,7 +24,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";

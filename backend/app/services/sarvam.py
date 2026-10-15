@@ -63,7 +63,7 @@ class SarvamClient:
     async def text_to_speech(
         self,
         text: str,
-        language_code: str = "hi-IN",
+        language_code: str = "sa-IN",
         speaker: str = "aditya",
         model: str = "bulbul:v3",
         pace: float = 1.0,
@@ -82,9 +82,8 @@ class SarvamClient:
         2026-09-23: ``speech_sample_rate=16000`` returns a 16 kHz WAV. The
         default stays 22050 so learners hear exactly what they heard before.
 
-        Note: Bulbul has no ``sa-IN`` outside beta — Devanagari Sanskrit text
-        renders via ``settings.tts_sanskrit_code`` (``hi-IN``, Hindi-flavoured
-        pronunciation) until the sa-IN beta is enabled on the account.
+        Native Sanskrit uses ``sa-IN``, enabled on this account's beta.
+        Bridge-language explanations use their own language code.
         """
         import time as _time
         _t0 = _time.perf_counter()

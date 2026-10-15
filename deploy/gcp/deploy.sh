@@ -283,7 +283,7 @@ gcloud run deploy "$SERVICE" \
   --max-instances=2 \
   --timeout=660s \
   --allow-unauthenticated \
-  --update-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}${EXTRA_ENV}" \
+  --update-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false,TTS_SANSKRIT_CODE=sa-IN${AUDIO_ENV}${EXTRA_ENV}" \
   "${SECRET_FLAGS[@]}"
 
 # ── 3. Verify ────────────────────────────────────────────────────────────

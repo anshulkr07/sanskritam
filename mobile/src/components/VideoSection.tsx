@@ -26,12 +26,13 @@
 //   falls back to the same in-app browser, never to an external app.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import YoutubePlayer from "react-native-youtube-iframe";
 
 import type { VideoItem } from "../api/client";
+import { audioTransport } from "../services/audioTransport";
 import { color, font, radius, shadow, space } from "../theme";
 
 // How many rows show before the expander. U1's seven videos stay one tap
@@ -94,11 +95,27 @@ function EmbedRow({
 }: EmbedRowProps) {
   const [errored, setErrored] = useState(false);
   const [browserFailed, setBrowserFailed] = useState(false);
+  const transportId = useRef(0);
+  useEffect(() => {
+    if (active && playing && !errored) {
+      if (audioTransport.getSnapshot()?.id !== transportId.current) {
+        transportId.current = audioTransport.claim(video.title, {
+          pause: () => { onPlayingChange(false); audioTransport.update(transportId.current, { playing: false }); },
+          play: () => { onPlayingChange(true); audioTransport.update(transportId.current, { playing: true }); },
+        });
+      }
+    } else if (!active || errored) audioTransport.release(transportId.current);
+    else audioTransport.update(transportId.current, { playing: false });
+  }, [active, playing, errored, video.title, onPlayingChange]);
+  useEffect(() => () => audioTransport.release(transportId.current), []);
 
   const onStateChange = useCallback(
     (state: string) => {
       if (state === "playing") onPlayingChange(true);
-      else if (state === "paused" || state === "ended") onPlayingChange(false);
+      else if (state === "paused" || state === "ended") {
+        onPlayingChange(false);
+        if (state === "ended") audioTransport.release(transportId.current);
+      }
     },
     [onPlayingChange],
   );

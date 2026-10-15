@@ -6,6 +6,7 @@ import { AudioSinkHandle } from "./audioRuntime";
 import { LabConfig } from "./config";
 import { VoiceInput } from "./audioInput";
 import { Microphone, microphonePermission, startMicrophone } from "./microphone";
+import { audioTransport } from "../services/audioTransport";
 
 export type Transcript = { role: "user" | "assistant"; text: string };
 const START_TIMEOUT_MS = 30_000;
@@ -47,6 +48,8 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   const ignoreReplyAudio = useRef(false);
   const interruptionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const responseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const audioId = useRef(0);
+  const audioPaused = useRef(false);
   currentConfig.current = config;
 
   const send = useCallback((message: object) => {
@@ -64,6 +67,22 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
   }, [send]);
   const onPlaybackBusy = useCallback((busy: boolean) => {
     if (busy && ignoreReplyAudio.current) return;
+    if (busy && (!audioId.current || audioTransport.getSnapshot()?.id !== audioId.current)) {
+      audioPaused.current = false;
+      audioId.current = audioTransport.claim("Voice companion", {
+        pause: () => {
+          audioPaused.current = true;
+          sink.current?.send({ type: "pause" });
+          audioTransport.update(audioId.current, { playing: false });
+        },
+        play: () => {
+          audioPaused.current = false;
+          sink.current?.send({ type: "resume" });
+          audioTransport.update(audioId.current, { playing: true });
+        },
+      });
+    }
+    if (!busy) { audioTransport.release(audioId.current); audioId.current = 0; }
     playbackBusy.current = busy;
     if (busy) {
       if (echoTimer.current !== null) clearTimeout(echoTimer.current);
@@ -75,8 +94,9 @@ export function useVoiceLab(config: LabConfig, sink: React.RefObject<AudioSinkHa
         playbackReported.current = true; send({ type: "playback", busy: true });
       }
     } else releaseMicrophone();
-  }, [releaseMicrophone, send]);
+  }, [releaseMicrophone, send, sink]);
   const stop = useCallback(() => {
+    audioTransport.release(audioId.current); audioId.current = 0; audioPaused.current = false;
     generation.current++;
     starting.current = false;
     permissionPending.current = false;

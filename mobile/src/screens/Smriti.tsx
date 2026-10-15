@@ -16,7 +16,6 @@ import { loadRemembered, usePlaySession } from "../games/v2/useSession";
 import { GameTopBar, ResultSheetV2, SetupSheet, type SetupChoice } from "../games/v2/parts";
 import { color, fill, font, onFill, radius, script, space } from "../theme";
 import { haptics } from "../services/haptics";
-import { playLetter } from "../services/speech";
 import { resolveGameImage } from "../games/v2/gameImages";
 
 type Props = {
@@ -86,9 +85,6 @@ export default function SmritiScreen({ navigation, route }: Props) {
     setFaces((f) => ({ ...f, [id]: face }));
     const nextOpen = [...open, id];
     setOpen(nextOpen);
-    if (face.face === "sa") {
-      try { void playLetter(undefined, face.sa, "sa"); } catch { /* audio optional */ }
-    }
     if (nextOpen.length === 2) {
       await attemptPair(nextOpen, face.pair);
     }

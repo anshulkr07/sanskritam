@@ -15,7 +15,7 @@ export interface PlayerLike {
   pause(): void;
   seekTo(seconds: number): Promise<void> | void;
   setPlaybackRate?(rate: number, quality?: string): void;
-  addListener(event: "playbackStatusUpdate", fn: (st: { currentTime: number; didJustFinish?: boolean; isLoaded?: boolean }) => void): { remove(): void };
+  addListener(event: "playbackStatusUpdate", fn: (st: { currentTime: number; didJustFinish?: boolean; isLoaded?: boolean; playing?: boolean }) => void): { remove(): void };
   remove(): void;
 }
 
@@ -97,6 +97,7 @@ export class VersePlayer {
       }, 200);
       this.sub = p.addListener("playbackStatusUpdate", (st) => {
         if (my !== this.token) return;
+        if (typeof st.playing === "boolean") this.host.onPlaying(st.playing);
         if (st.currentTime * 1000 >= end || st.didJustFinish) {
           clearInterval(watch);
           this.clearSub();
@@ -141,6 +142,7 @@ export class VersePlayer {
       }, 200);
       this.sub = p.addListener("playbackStatusUpdate", (st) => {
         if (my !== this.token) return;
+        if (typeof st.playing === "boolean") this.host.onPlaying(st.playing);
         const ms = st.currentTime * 1000;
         const at = lineAt(this.lines, ms);
         if (at !== current) {

@@ -35,6 +35,9 @@ import { NavigationContainer, useNavigationContainerRef } from "@react-navigatio
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import AppErrorBoundary from "./src/components/AppErrorBoundary";
+import LearningProgressSync from "./src/components/LearningProgressSync";
+import DailyReviewScreen from "./src/screens/DailyReview";
+import OfflineLibraryScreen from "./src/screens/OfflineLibrary";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -50,6 +53,7 @@ import { AskProvider } from "./src/ask/AskProvider";
 import { CommunityProvider } from "./src/community/CommunityProvider";
 import MainTabs from "./src/navigation/AppDrawer";
 import { loadPrefs } from "./src/services/prefs";
+import { setSpeechRoute } from "./src/services/speech";
 import ChallengeScreen from "./src/screens/Challenge";
 import LoginScreen from "./src/screens/Login";
 import WordOrderScreen from "./src/screens/WordOrder";
@@ -83,6 +87,12 @@ import NumberBuilderScreen from "./src/screens/NumberBuilder";
 import LeaderboardsScreen from "./src/screens/Leaderboards";
 import FriendsScreen from "./src/screens/Friends";
 import RoomLobbyScreen from "./src/screens/RoomLobby";
+import GroupChatScreen from "./src/screens/GroupChat";
+import GroupInfoScreen from "./src/screens/GroupInfo";
+import GroupCirclesScreen from "./src/screens/GroupCircles";
+import GroupPeopleScreen from "./src/screens/GroupPeople";
+import GroupCardScreen from "./src/screens/GroupCard";
+import GroupNewScreen from "./src/screens/GroupNew";
 import CalibrationScreen from "./src/screens/Calibration";
 import KalaScreen from "./src/screens/Kala";
 import KalaChapterScreen from "./src/screens/KalaChapter";
@@ -153,6 +163,8 @@ function RootNavigator() {
       ) : <>{children}</>
     )}>
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="DailyReview" component={DailyReviewScreen} options={{ title: "Today's review" }} />
+      <Stack.Screen name="OfflineLibrary" component={OfflineLibraryScreen} options={{ title: "Saved reading" }} />
       <Stack.Screen name="Grammar" component={GrammarScreen} options={{ title: "Reference" }} />
       <Stack.Screen name="LearnLibrary" component={LearnLibraryScreen} options={{ headerShown: false }} />
       <Stack.Screen
@@ -208,6 +220,13 @@ function RootNavigator() {
             <Stack.Screen name="Leaderboards" component={LeaderboardsScreen} options={{ title: "Leaderboards" }} />
             <Stack.Screen name="Friends" component={FriendsScreen} options={{ title: "Friends" }} />
             <Stack.Screen name="RoomLobby" component={RoomLobbyScreen} options={{ title: "Play with others" }} />
+            {/* Group: chats, a circle's page, circles, people, your card, new circle/room. Own headers. */}
+            <Stack.Screen name="GroupChat" component={GroupChatScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GroupInfo" component={GroupInfoScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GroupCircles" component={GroupCirclesScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GroupPeople" component={GroupPeopleScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GroupCard" component={GroupCardScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="GroupNew" component={GroupNewScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
             {/* Parva: festivals and vrats. */}
             <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />
@@ -256,7 +275,10 @@ export default function App() {
   // own the bottom of the display (Talk, Writing, the daily word).
   const navRef = useNavigationContainerRef();
   const [routeName, setRouteName] = useState<string | undefined>(undefined);
-  const trackRoute = () => setRouteName(navRef.getCurrentRoute()?.name);
+  const trackRoute = () => {
+    const name = navRef.getCurrentRoute()?.name;
+    setRouteName(name); setSpeechRoute(name || "");
+  };
 
   if (!fontsLoaded) {
     return (
@@ -273,6 +295,7 @@ export default function App() {
           <PrefsLoader />
           <TypeScaleProvider>
             <AuthProvider>
+              <LearningProgressSync />
               <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
                 <CommunityProvider>

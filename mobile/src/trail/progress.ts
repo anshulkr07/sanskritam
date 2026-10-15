@@ -5,7 +5,7 @@
 //   unit practice  → server feature mastery (GET /grammar/path)
 // Lessons inside a stage open in order; stages are all open.
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { progressStorage as AsyncStorage } from "../services/progressStorage";
 
 import type { TrailStage, TrailStop, TrailUnit } from "./course";
 import { stageStops } from "./course";

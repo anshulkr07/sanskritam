@@ -2,7 +2,8 @@
 // Learn screen). Exposes the sounding line, whether audio is playing, the
 // speed, and play/stop actions. Released when the screen goes away.
 
-import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
+import { setAudioModeAsync } from "expo-audio";
+import { createManagedAudioPlayer } from "../services/managedAudio";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ChantLine } from "../api/client";
@@ -16,7 +17,7 @@ export function useVersePlayer(url: string | undefined, lines: ChantLine[]) {
   const vpRef = useRef<VersePlayer | null>(null);
   if (!vpRef.current) {
     vpRef.current = new VersePlayer({
-      create: (u) => createAudioPlayer(u) as unknown as PlayerLike,
+      create: (u) => createManagedAudioPlayer(u, undefined, "Verse practice") as unknown as PlayerLike,
       onLine: setLine,
       onPlaying: setPlaying,
     }, lines);

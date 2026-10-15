@@ -2,12 +2,19 @@
 // The recorder is hook-based and lives in the talking-agent screen; this
 // module owns `speak()` and mode setup that is callable from any component.
 
-import { clearPreloadedSource, createAudioPlayer, preload, setAudioModeAsync } from "expo-audio";
+import { clearPreloadedSource, preload, setAudioModeAsync } from "expo-audio";
+import { createManagedAudioPlayer } from "./managedAudio";
 import { Platform } from "react-native";
 
 import { TtsAudioCache } from "./ttsAudioCache";
 
 const IS_WEB = Platform.OS === "web";
+const GAME_ROUTES = new Set(["Smriti", "ShabdaRush", "VarnaJaal", "WordGroups", "PadaPath", "NumberBuilder", "RoomLobby"]);
+let speechRoute = "";
+let routeVersion = 0;
+export function setSpeechRoute(route: string): void {
+  if (speechRoute !== route) { speechRoute = route; routeVersion++; }
+}
 
 /**
  * A language this app can speak: Sanskrit, or any of Sarvam's ten bridge
@@ -20,13 +27,7 @@ export type SpeakLang =
 
 /** Sarvam TTS code for each. */
 const BULBUL: Record<SpeakLang, string> = {
-  // Sanskrit is sent AS Sanskrit and the server picks the voice
-  // (TTS_SANSKRIT_CODE): Bulbul has no sa-IN outside beta, so today that is
-  // the Hindi voice (architecture §4.1), and flipping it once the beta lands
-  // needs no app release. Needs a backend that maps sa-IN — deploy it first.
-  // Every OTHER language uses its own voice: this function used to be
-  // `lang === "en" ? "en-IN" : "hi-IN"`, which read a Kannada or Telugu reply
-  // aloud in Hindi.
+  // Native Sanskrit beta. Bridge-language text keeps its own language code.
   sa: "sa-IN",
   en: "en-IN",
   hi: "hi-IN",
@@ -42,7 +43,8 @@ const BULBUL: Record<SpeakLang, string> = {
 };
 
 export function bulbulLangCode(lang: string): string {
-  return BULBUL[lang as SpeakLang] ?? "hi-IN";
+  const code = lang.toLowerCase().split("-")[0];
+  return BULBUL[(code === "od" ? "or" : code) as SpeakLang] ?? "hi-IN";
 }
 
 export interface SpeakHandle {
@@ -102,7 +104,7 @@ function playSource(
 ): SpeakHandle {
   if (signal?.aborted) throw new Error("Playback cancelled");
   activePlayback?.();
-  const player = createAudioPlayer(src);
+  const player = createManagedAudioPlayer(src, undefined, "Spoken audio");
   // iOS transfers the preloaded source to the player; it can be warmed again.
   if (Platform.OS === "ios") preloadedClips.delete(src);
 
@@ -140,7 +142,8 @@ function playSource(
     }
     // A clip's duration is unknown at creation. Keep the backstop beyond its
     // actual remaining time instead of treating every verse as a 2-second clip.
-    if (st.isLoaded && st.duration > 0) {
+    if (!st.playing && timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+    if (st.playing && st.isLoaded && st.duration > 0) {
       armTimeout(Math.max(0, st.duration - st.currentTime));
     }
     if (st.didJustFinish) finish();
@@ -181,12 +184,16 @@ export async function speak(
   signal?: AbortSignal,
 ): Promise<SpeakHandle> {
   if (signal?.aborted) throw new Error("Playback cancelled");
+  const version = routeVersion;
+  const silent = () => { onComplete?.(); return { stop: async () => {}, durationHint: 0 }; };
+  if (GAME_ROUTES.has(speechRoute)) return silent();
   const language = bulbulLangCode(lang);
   const key = JSON.stringify([language, "aditya", pace, text]);
   const [, res] = await Promise.all([setPlaybackMode(), ttsCache.get(key, async () => {
     const { api } = await import("../api/client");
     return api.tts(text, language, "aditya", pace);
   })]);
+  if (version !== routeVersion || GAME_ROUTES.has(speechRoute)) return silent();
   return playSource(
     `data:audio/wav;base64,${res.audio_base64}`,
     res.duration_hint || hintFor(text),

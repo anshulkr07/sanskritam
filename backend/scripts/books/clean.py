@@ -91,6 +91,11 @@ def strip_wiki_markup(text: str) -> str:
         out = new
     out = _WIKILINK_PIPE.sub(r"\2", out)
     out = _WIKILINK.sub(r"\1", out)
+    # Notes/commentary blocks follow the poem on many pages (Bhagavata's
+    # Hindi footnotes "यह नायक श्रीकृष्ण-(१)…" and publisher colophons sit
+    # after </poem>): everything past the LAST poem block is not verse.
+    if "</poem>" in out:
+        out = out[:out.rfind("</poem>")]
     out = _HTML_TAG.sub("", out)
     out = out.replace(_BOLD3, "").replace(_BOLD2, "")
     out = _LINE_MARKUP.sub("", out)
@@ -135,7 +140,8 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     # Drop Bengali-script lines (the Chanakya page repeats titles in Bengali)
     # and Malayalam lines (the Lalita page carries an ml: interwiki echo).
     lines = [ln for ln in t.split("\n")
-             if not _BENGALI.search(ln) and not _MALAYALAM.search(ln)]
+             if not _BENGALI.search(ln) and not _MALAYALAM.search(ln)
+             and not re.fullmatch(r"\s*अध्यायः?\s*[०-९0-9]+\s*[।॥]?\s*", ln)]
     t = "\n".join(lines)
     if vedic:
         t = remove_vedic_marks(t)
@@ -174,7 +180,7 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     t = re.sub(r"(?<=[ऀ-ॿ])[०-९0-9०-९]+(?=[ऀ-ॿ])", "", t)
     # …and the marker can follow an anusvara/visarga ("प्रतीव्यां३", Sāmaveda)
     # or an avagraha ("रथ्याऽ३").
-    t = re.sub(r"(?<=[ािीुूृॄॢॣेैोौंःऽ])[०-९0-9०-९]+", "", t)
+    t = re.sub(r"(?<=[ािीुूृॄॢॣेैोौंँःऽ़्])[०-९0-9०-९]+", "", t)
     # Private-use-area characters ride along with font-encoded pages
     # (Sāmaveda U+F131); they are never text.
     t = re.sub(r"[\ue000-\uf8ff]", "", t)
@@ -200,6 +206,16 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     # "(श्लोकः)या सृष्टिः…" (Shakuntala): a short stage-direction prefix glued
     # to the verse's first line.
     t = re.sub(r"(?m)^\([^)]{1,40}\)\s*", "", t)
+    # Inline adhyaya references left in verse bodies ("अध्यायः १२ ।
+    # अध्यायः १४ ।" between two adhyayas on the Bhagavata pages).
+    t = re.sub(r"अध्यायः?\s*[०-९0-9]+", " ", t)
+    # Free-floating digit runs after a word ("॥ ऋ ३ ५३ ५ ६" page refs, the
+    # stray "२" in "कृत २ ंजलिः"): a verse's own number always follows a
+    # danda, so digits directly after a letter+space are page noise. The
+    # same is true at a line start ("७.१,२६.६" marker debris, "६ ॥" orphans)
+    # — no verse line opens with a digit.
+    t = re.sub(r"(?<=[ऀ-ॿ])\s+[०-९0-9]+(?:\.[०-९0-9]+)*", " ", t)
+    t = re.sub(r"(?m)^[०-९0-9][०-९0-9.,\s]*", "", t)
     # Whatever parentheses, brackets and quotation marks survive the
     # stage-direction and annotation drops are page noise; a stray apostrophe
     # likewise ("हार्द' ", Lalita). Braces ride in from templates
@@ -314,9 +330,11 @@ def split_numbered_verses(text: str) -> list[tuple[str, str]]:
     # are dropped before matching: the Shivatandava page hides a U+200D
     # inside the marker itself ("॥५॥"), which the end regex would otherwise
     # not recognise and two verses would merge into one chunk. A bare
-    # number on its own line is a page artefact, never a verse.
+    # number on its own line is a page artefact, never a verse — dandas or
+    # pipes around it ("६ ॥" orphans in Bhagavata, chanakya colophons)
+    # don't change that.
     t = (text or "").replace("।।", "॥").replace("‌", "").replace("‍", "").replace("​", "")
-    t = re.sub(r"(?m)^\s*[०-९0-9]{1,4}\s*$", "", t)
+    t = re.sub(r"(?m)^[॥।|\s]*[०-९0-9]{1,4}[॥।|\s]*$", "", t)
     # Line-end pipes act as closing dandas on rendered pages ("॥ २५ |").
     t = re.sub(r"\|\s*$", " ॥", t, flags=re.M)
     # Vetala prose numbers its verse insertions with pipes ("|११ |") —
@@ -377,6 +395,10 @@ def is_dropped_line(line: str) -> bool:
         # "विदूषकः - (निःश्वस्य) …" drama speaker label before prose.
         return True
     if _SPEAKER_LABEL2.match(line.strip()):
+        return True
+    if re.fullmatch(r"[ऀ-ॿ]{2,20}ः", line.strip().strip("।॥ \t")):
+        # A single word with a visarga between dandas ("। । वेदव्यासः । ।"
+        # on the Bhagavata pages) — author/speaker tag, never a verse.
         return True
     if _PAGE_ARTIFACT.match(line.strip()):
         return True

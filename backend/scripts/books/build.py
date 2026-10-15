@@ -457,7 +457,18 @@ def build_book(slug: str) -> dict:
                     page_ch = ".".join(parts_t) or None
                 elif spec.get("chapter_per_page"):
                     page_ch = str(pi + 1)
-                for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
+                body_w = body or ""
+                if spec.get("inline_num_marker"):
+                    # A verse end printed as "letter + number + danda" (the
+                    # opening danda lost on the page: "…पतिः १ ॥" in the
+                    # Siva Purana / Bhagavata pages). Numbers only follow
+                    # dandas in mula text, so normalise to "॥ N ॥" and let
+                    # the splitter cut the verse. An asterisk/footnote mark
+                    # can sit between word and number ("शस्तमुच्यते* ६२ ।").
+                    body_w = re.sub(
+                        r"(?<=[ऀ-ॿ*?])\s*([०-९0-9]+(?:\.[०-९0-9]+)*)\s*[।॥]",
+                        r" ॥\1॥", body_w)
+                for num_raw, cleaned in _wiki_numbered_verses(body_w, vedic=vedic):
                     if slug == "amarakosha" and any(
                             p in cleaned for p in
                             ("अत्र मूलश्लोकाः", "मू श्लो", "क्षे श्लो",
@@ -493,12 +504,12 @@ def build_book(slug: str) -> dict:
                 s_y = ln_y.strip()
                 if not s_y:
                     continue
-                if re.search(r"[0-9]", s_y) and "।" not in s_y and "॥" not in s_y:
-                    # Index/prakarana lines ("दर्शपूर्णमासयागः 2.1 2.28 …")
-                    # carry ASCII ranges and no dandas — structure, not text.
-                    continue
                 m_num = re.fullmatch(r"[0-9०-९]+\.([0-9०-९]+)", s_y)
                 if m_num:
+                    # Kandika header "1.1" — check BEFORE the index-line
+                    # filters: a pure N.M line is a header, and the ASCII
+                    # filter below would otherwise swallow every kandika
+                    # number (all verses then share ref .0 and dedupe away).
                     # flush a kandika that never closed with ॥
                     if cur_y:
                         text_y = _clean.verse_text("\n".join(cur_y), vedic=True)
@@ -506,6 +517,16 @@ def build_book(slug: str) -> dict:
                         if len(text_y) > 12:
                             raw_verses.append((str(pi_y), cur_num_y or "0", text_y))
                     cur_num_y = str(_clean.verse_number_of(m_num.group(1)))
+                    continue
+                if re.search(r"[0-9]", s_y) and "।" not in s_y and "॥" not in s_y:
+                    # Index/prakarana lines ("दर्शपूर्णमासयागः 2.1 2.28 …")
+                    # carry ASCII ranges and no dandas — structure, not text.
+                    continue
+                if re.search(r"[ऀ-ॿ]+\s+[०-९0-9]+\s+[०-९0-9]", s_y) and "॥" not in s_y:
+                    # A kandika-name index line ("अध्यायः ३ अग्न्याधानम् १ ८
+                    # अग्निहोत्रम् ९ १० …"): word + number range pairs never
+                    # occur in mantra text. The long index lines on adhyaya 3
+                    # carry a stray ॥ mid-line — require it absent.
                     continue
                 if re.fullmatch(r"अध्याय\s*[0-9०-९]+", s_y):
                     continue

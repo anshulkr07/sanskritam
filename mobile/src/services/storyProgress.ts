@@ -4,7 +4,7 @@
 // only thing persisted is the last-seen card index. It lives in AsyncStorage
 // on the device, never on the server — adaptive.py stays frozen.
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { progressStorage as AsyncStorage } from "./progressStorage";
 
 export const STORY_PROGRESS_KEY = "shabd.story.index";
 const STORY_COMPLETED_KEY = "shabd.story.completed";

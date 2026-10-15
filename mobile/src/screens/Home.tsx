@@ -31,6 +31,7 @@ import ParvaStrip from "../components/parva/ParvaStrip";
 import WordCard from "../words/WordCard";
 import FactCard from "../facts/FactCard";
 import DailyRashiCard from "../home/DailyRashiCard";
+import DailyLearningCard from "../home/DailyLearningCard";
 import PlacePicker from "../home/PlacePicker";
 import { useHomePlace } from "../home/useHomePlace";
 import { vocabularyForDate } from "../home/dailyVocabulary";
@@ -154,6 +155,8 @@ export default function HomeScreen({ navigation }: Props) {
           </View>
           <TodayGoal today={today} failed={todayFailed} onRetry={loadToday} />
         </View>
+
+        <DailyLearningCard navigate={(route, params) => (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate(route, params)} />
 
         {!!compLast && (
           <Pressable

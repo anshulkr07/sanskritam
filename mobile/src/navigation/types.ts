@@ -25,6 +25,8 @@ export type MainTabParamList = {
 };
 
 export type RootStackParamList = {
+  DailyReview: undefined;
+  OfflineLibrary: undefined;
   MainTabs: undefined;
   // The full Grammar guide browser, reached from Learn's Library.
   Grammar: undefined;
@@ -99,6 +101,16 @@ export type RootStackParamList = {
   Leaderboards: { period?: "daily" | "weekly" | "monthly"; board?: string; track?: "games" | "recitation"; division?: "standard" | "beginner" } | undefined;
   Friends: undefined;
   RoomLobby: { matchId?: string; code?: string; mode?: "friends" | "quick" } | undefined;
+  // Group (2026-10-15 overhaul): the tab is a hub; these stack over it.
+  // A chat (circle or friend), a circle's or friend's page, all circles,
+  // people, your learner card, and the form for a new circle or room (or
+  // editing a circle, with editId).
+  GroupChat: { id: string; name?: string };
+  GroupInfo: { id: string; name?: string };
+  GroupCircles: undefined;
+  GroupPeople: undefined;
+  GroupCard: { first?: boolean } | undefined;
+  GroupNew: { kind: "circle" | "room"; editId?: string };
   // Recitation calibration capture (dev builds only, brief §8).
   Calibration: undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };

@@ -36,22 +36,31 @@ def group_api():
 
     app = create_app()
     app.dependency_overrides[get_db] = db_dep
-    users = []
-    with sessions() as db:
-        for name in ["Anaya", "Bharat", "Chitra"]:
-            u = Learner(id=uuid.uuid4().hex[:16], display_name=name)
-            db.add(u)
-            db.flush()
-            t = Token(id=uuid.uuid4().hex, learner_id=u.id)
-            db.add(t)
-            users.append((u.id, {"Authorization": "Bearer " + t.id}))
-        db.commit()
-    yield TestClient(app), users, sessions
+    users = [new_learner(sessions, name) for name in ["Anaya", "Bharat", "Chitra"]]
+    client = TestClient(app)
+    # Everyone here has a learner card; test_learner_card_gate covers learners without one.
+    for _, h in users:
+        assert (
+            post(client, "/profile", h, {"rules": True}, method="put").status_code
+            == 200
+        )
+    yield client, users, sessions
     engine.dispose()
 
 
-def post(c, path, h, body=None):
-    return c.post("/community" + path, headers=h, json=body or {})
+def new_learner(sessions, name):
+    with sessions() as db:
+        u = Learner(id=uuid.uuid4().hex[:16], display_name=name)
+        db.add(u)
+        db.flush()
+        t = Token(id=uuid.uuid4().hex, learner_id=u.id)
+        db.add(t)
+        db.commit()
+        return u.id, {"Authorization": "Bearer " + t.id}
+
+
+def post(c, path, h, body=None, method="post"):
+    return getattr(c, method)("/community" + path, headers=h, json=body or {})
 
 
 def get(c, path, h):
@@ -362,3 +371,208 @@ def test_stream_token_is_scoped_to_one_call(monkeypatch):
     assert decoded["call_cids"] == ["default:private-call"]
     assert decoded["user_id"] == "learner"
     assert decoded["exp"] <= int(time.time()) + 3600
+
+
+def test_learner_card_gate(group_api, monkeypatch):
+    c, users, sessions = group_api
+    a = users[0]
+    d = new_learner(sessions, "Dev")
+    monkeypatch.setattr("app.services.community_audio.create", lambda *args: None)
+    me = get(c, "/profile", d[1]).json()
+    assert me["card"] is False and get(c, "/status", d[1]).json()["card"] is False
+    # Browsing needs no card.
+    public = post(c, "/groups", a[1], {"name": "Open circle"}).json()["id"]
+    assert get(c, "/conversations?discover=true", d[1]).status_code == 200
+    assert get(c, f"/conversations/{public}", d[1]).status_code == 200
+    # Joining, posting, rooms and friend requests do.
+    assert post(c, "/groups", d[1], {"name": "Mine"}).status_code == 428
+    assert post(c, f"/groups/{public}/join", d[1]).status_code == 428
+    assert post(c, "/rooms", d[1], {"title": "Room"}).status_code == 428
+    assert (
+        post(c, "/friends", d[1], {"user_id": a[0], "action": "request"}).status_code
+        == 428
+    )
+    # A card needs the rules agreed; editing one later does not.
+    assert (
+        post(c, "/profile", d[1], {"level": "advanced"}, method="put").status_code
+        == 422
+    )
+    made = post(
+        c, "/profile", d[1], {"rules": True, "bio": " Gita ch. 2 "}, method="put"
+    )
+    assert made.status_code == 200 and made.json()["card"] is True
+    assert made.json()["bio"] == "Gita ch. 2"
+    edited = post(c, "/profile", d[1], {"level": "advanced"}, method="put")
+    assert edited.json()["level"] == "advanced"
+    assert post(c, f"/groups/{public}/join", d[1]).status_code == 200
+    sent = post(
+        c,
+        f"/conversations/{public}/messages",
+        d[1],
+        {"content": "namaste", "client_id": "card-ok-1"},
+    )
+    assert sent.status_code == 200
+
+
+def test_circle_fields_preview_and_edit(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    r = post(
+        c,
+        "/groups",
+        a[1],
+        {"name": "  Gita circle  ", "topic": " Chapter 2 ", "description": " Slowly "},
+    )
+    assert r.status_code == 200
+    g = r.json()
+    assert (g["name"], g["topic"], g["description"]) == (
+        "Gita circle",
+        "Chapter 2",
+        "Slowly",
+    )
+    assert post(c, "/groups", a[1], {"name": "   "}).status_code == 422
+    # A public circle can be looked at, with its members, before joining.
+    preview = get(c, f"/conversations/{g['id']}", b[1]).json()
+    assert preview["joined"] is False
+    assert [m["name"] for m in preview["members"]] == ["Anaya"]
+    assert preview["members"][0]["role"] == "admin"
+    # Only the admin edits; making it private hides it from others.
+    body = {"name": "Gita reading", "public": False}
+    assert post(c, f"/groups/{g['id']}", b[1], body, method="put").status_code == 403
+    edited = post(c, f"/groups/{g['id']}", a[1], body, method="put").json()
+    assert edited["name"] == "Gita reading" and edited["public"] is False
+    assert get(c, f"/conversations/{g['id']}", b[1]).status_code == 404
+    assert get(c, "/conversations?discover=true", b[1]).json() == []
+
+
+def test_blocking_hides_messages_and_circles(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    g = post(c, "/groups", a[1], {"name": "Shared"}).json()["id"]
+    assert post(c, f"/groups/{g}/join", b[1]).status_code == 200
+    first = post(
+        c,
+        f"/conversations/{g}/messages",
+        a[1],
+        {"content": "one", "client_id": "block-msg-1"},
+    ).json()
+    post(c, "/friends", b[1], {"user_id": a[0], "action": "block"})
+    post(
+        c,
+        f"/conversations/{g}/messages",
+        a[1],
+        {"content": "two", "client_id": "block-msg-2", "reply_to": first["id"]},
+    )
+    seen = get(c, f"/conversations/{g}/messages", b[1]).json()
+    assert [m["content"] for m in seen] == ["", ""]
+    assert all(m["hidden"] for m in seen) and seen[1]["reply"] is None
+    assert get(c, "/status", b[1]).json()["unread"] == 0
+    mine = get(c, "/conversations", b[1]).json()[0]
+    assert mine["unread"] == 0
+    assert mine["last_text"] == "Message from a blocked learner"
+    # The sender still sees their own words.
+    own = get(c, f"/conversations/{g}/messages", a[1]).json()
+    assert [m["content"] for m in own] == ["one", "two"]
+    # A circle whose creator you blocked is not offered in Discover.
+    post(c, "/friends", x[1], {"user_id": a[0], "action": "block"})
+    assert get(c, "/conversations?discover=true", x[1]).json() == []
+
+
+def test_delete_message_and_last_text(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    g = post(c, "/groups", a[1], {"name": "Moderated"}).json()["id"]
+    post(c, f"/groups/{g}/join", b[1])
+    post(c, f"/groups/{g}/join", x[1])
+    send = lambda h, text, cid_: post(
+        c, f"/conversations/{g}/messages", h, {"content": text, "client_id": cid_}
+    ).json()
+    one = send(b[1], "first", "delete-msg-1")
+    two = send(b[1], "second", "delete-msg-2")
+    route = f"/conversations/{g}/messages"
+    # Another member cannot delete it; the sender and the admin can.
+    assert post(c, f"{route}/{two['id']}/delete", x[1]).status_code == 403
+    gone = post(c, f"{route}/{two['id']}/delete", b[1])
+    assert gone.status_code == 200
+    assert (gone.json()["kind"], gone.json()["content"]) == ("deleted", "")
+    assert get(c, f"/conversations/{g}", x[1]).json()["last_text"] == "first"
+    assert post(c, f"{route}/{one['id']}/delete", a[1]).status_code == 200
+    assert get(c, f"/conversations/{g}", x[1]).json()["last_text"] == ""
+    reply = post(
+        c,
+        route,
+        x[1],
+        {"content": "?", "client_id": "delete-msg-3", "reply_to": one["id"]},
+    ).json()
+    assert reply["reply"]["content"] == "Message deleted"
+    assert post(c, f"{route}/999/delete", a[1]).status_code == 404
+
+
+def test_admin_removes_learner_who_cannot_rejoin(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    g = post(c, "/groups", a[1], {"name": "Open"}).json()["id"]
+    post(c, f"/groups/{g}/join", b[1])
+    assert post(c, f"/groups/{g}/remove", b[1], {"user_id": a[0]}).status_code == 403
+    assert post(c, f"/groups/{g}/remove", a[1], {"user_id": a[0]}).status_code == 422
+    assert post(c, f"/groups/{g}/remove", a[1], {"user_id": b[0]}).status_code == 200
+    assert get(c, f"/conversations/{g}/messages", b[1]).status_code == 403
+    assert post(c, f"/groups/{g}/join", b[1]).status_code == 403
+    assert get(c, "/conversations?discover=true", b[1]).json() == []
+    assert get(c, f"/conversations/{g}", a[1]).json()["member_count"] == 1
+    # The admin's invitation lifts the removal.
+    direct_chat(c, users)
+    assert post(c, f"/groups/{g}/invite", a[1], {"user_id": b[0]}).status_code == 200
+    assert get(c, f"/conversations/{g}/messages", b[1]).status_code == 200
+    # Leaving hands the circle to a remaining learner, never a removed one.
+    post(c, f"/groups/{g}/join", x[1])
+    post(c, f"/groups/{g}/remove", a[1], {"user_id": x[0]})
+    assert post(c, f"/groups/{g}/leave", a[1]).status_code == 200
+    assert get(c, f"/conversations/{g}", b[1]).json()["role"] == "admin"
+
+
+def test_reports_copy_content_and_respect_access(group_api):
+    from app.models import ContentReport
+
+    c, users, sessions = group_api
+    a, b, x = users
+    secret = post(c, "/groups", a[1], {"name": "Private", "public": False}).json()["id"]
+    msg = post(
+        c,
+        f"/conversations/{secret}/messages",
+        a[1],
+        {"content": "rude words", "client_id": "report-msg-1"},
+    ).json()
+    mid = str(msg["id"])
+    # Only what you can see can be reported.
+    assert post(c, "/report", b[1], {"kind": "message", "id": mid}).status_code == 403
+    assert post(c, "/report", b[1], {"kind": "circle", "id": secret}).status_code == 404
+    assert post(c, "/report", b[1], {"kind": "learner", "id": b[0]}).status_code == 404
+    body = {"kind": "message", "id": mid, "reason": "Spam"}
+    assert post(c, "/report", a[1], body).status_code == 204
+    assert post(c, "/report", b[1], {"kind": "learner", "id": a[0]}).status_code == 204
+    with sessions() as db:
+        rows = db.query(ContentReport).order_by(ContentReport.id).all()
+        assert [r.surface for r in rows] == ["group", "group"]
+        assert rows[0].answer == "rude words" and rows[0].reason == "Spam"
+        assert rows[1].answer.startswith("Anaya")
+
+
+def test_friend_remove_and_status_counts(group_api):
+    c, users, _ = group_api
+    a, b, x = users
+    post(c, "/friends", a[1], {"user_id": b[0], "action": "request"})
+    post(c, "/friends", x[1], {"user_id": b[0], "action": "request"})
+    assert get(c, "/status", b[1]).json()["requests"] == 2
+    post(c, "/friends", b[1], {"user_id": x[0], "action": "block"})
+    assert get(c, "/status", b[1]).json()["requests"] == 1
+    cid = post(c, "/friends", b[1], {"user_id": a[0], "action": "accept"}).json()["id"]
+    assert get(c, "/status", b[1]).json()["requests"] == 0
+    assert (
+        post(c, "/friends", a[1], {"user_id": b[0], "action": "remove"}).status_code
+        == 200
+    )
+    assert get(c, "/friends", b[1]).json()["friends"] == []
+    assert get(c, f"/conversations/{cid}/messages", a[1]).status_code == 403
+    direct = [r for r in get(c, "/conversations", a[1]).json() if r["kind"] == "direct"]
+    assert direct == []

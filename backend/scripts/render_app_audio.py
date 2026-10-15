@@ -136,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--register", default=None, help="filter challenges by register (laukika|classical)")
     p.add_argument("--live", action="store_true", help="render, store, and write audio_url (default: dry-run)")
     p.add_argument("--dry-run", action="store_true", help="print plan + estimate, spend nothing")
-    p.add_argument("--sa-language", default="hi-IN", help="language_code for sa items (hi-IN default, sa-IN beta)")
+    p.add_argument("--sa-language", default="sa-IN", help="language_code for sa items (sa-IN default, native Sanskrit beta)")
     args = p.parse_args(argv)
 
     if args.sa_language not in ("hi-IN", "sa-IN"):

@@ -1,3 +1,4 @@
+import Modal from "./AudioModal";
 // AchievementReveal (U3-4) — the badge moment. A bottom sheet that springs up
 // with the motif word-mark, the Sanskrit name, and one Continue button.
 //
@@ -7,7 +8,7 @@
 // kalasha / conch art lands. Do NOT add generic trophy iconography.
 
 import React, { useEffect } from "react";
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,

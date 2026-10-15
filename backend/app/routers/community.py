@@ -2,6 +2,14 @@
 
 Database-backed invalidations keep websocket updates correct across workers.
 Only enrolled profiles appear in the community learner directory.
+
+The learner card (a community profile) is the way in: making one means
+agreeing to the Saṅgha rules, and posting, joining, calling and friend
+requests need one (428 without). Browsing does not. Moderation: anyone can
+report a message, circle or learner (stored as content reports, surface
+"group"); senders and circle admins can delete messages; admins can edit a
+circle and remove a learner, who then cannot rejoin; a blocked learner's
+messages are hidden from the learner who blocked them.
 """
 
 from __future__ import annotations
@@ -28,7 +36,7 @@ from sqlalchemy.orm import Session
 from starlette.concurrency import run_in_threadpool
 from app.auth import require_learner
 from app.db import get_db, SessionLocal
-from app.models import Learner, Friendship
+from app.models import Learner, Friendship, Block, ContentReport
 from app.community_models import (
     CommunityProfile as Profile,
     CommunityConversation as Conversation,
@@ -58,20 +66,45 @@ def notify(db, user_ids=None):
         db.add(Event(user_id=uid))
 
 
+# A learner removed from a circle keeps a member row with this role, so the
+# removal sticks: they are not a member, and cannot rejoin until invited.
+REMOVED = "removed"
+
+
 def audience(db, cid):
-    return [m.user_id for m in db.query(Member).filter_by(conversation_id=cid)]
+    return [
+        m.user_id
+        for m in db.query(Member).filter(
+            Member.conversation_id == cid, Member.role != REMOVED
+        )
+    ]
 
 
 def member(db, cid, uid):
     c = db.get(Conversation, cid)
     m = db.get(Member, (cid, uid))
     if not c or not m:
-        raise HTTPException(403, "Join this group before opening its chat.")
+        raise HTTPException(403, "Join this circle before opening its chat.")
+    if m.role == REMOVED:
+        raise HTTPException(403, "You were removed from this circle.")
     if c.kind == "direct":
         other = next((x for x in audience(db, cid) if x != uid), None)
         if not other or _blocked(db, uid, other) or not _are_friends(db, uid, other):
             raise HTTPException(403, "This chat requires an accepted friendship.")
     return c, m
+
+
+def blocked_ids(db, uid):
+    """Everyone this learner blocked or was blocked by."""
+    return {r.blocked_id for r in db.query(Block).filter_by(learner_id=uid)} | {
+        r.learner_id for r in db.query(Block).filter_by(blocked_id=uid)
+    }
+
+
+def require_card(db, uid):
+    """Posting, joining, calling and friend requests need a learner card."""
+    if not db.get(Profile, uid):
+        raise HTTPException(428, "Make your learner card first.")
 
 
 def profile_view(db, uid):
@@ -85,9 +118,15 @@ def profile_view(db, uid):
     }
 
 
+def own_view(db, uid):
+    return {**profile_view(db, uid), "card": db.get(Profile, uid) is not None}
+
+
 class ProfileBody(BaseModel):
     level: Level = "beginner"
     bio: str = Field(default="", max_length=280)
+    # Agreeing to the Saṅgha rules. Needed to make a card, not to edit one.
+    rules: bool = False
 
 
 @router.put("/profile")
@@ -96,17 +135,19 @@ def set_profile(
 ):
     p = db.get(Profile, u.id)
     if not p:
+        if not body.rules:
+            raise HTTPException(422, "Agree to the Saṅgha rules to make your card.")
         p = Profile(user_id=u.id)
         db.add(p)
     p.level, p.bio, p.last_seen = body.level, body.bio.strip(), now()
     notify(db)
     db.commit()
-    return profile_view(db, u.id)
+    return own_view(db, u.id)
 
 
 @router.get("/profile")
 def own_profile(u=Depends(require_learner), db: Session = Depends(get_db)):
-    return profile_view(db, u.id)
+    return own_view(db, u.id)
 
 
 @router.post("/presence")
@@ -122,6 +163,7 @@ def presence(u=Depends(require_learner), db: Session = Depends(get_db)):
 def learners(
     q: str = "",
     level: str = "all",
+    limit: int = Query(100, ge=1, le=100),
     u=Depends(require_learner),
     db: Session = Depends(get_db),
 ):
@@ -134,10 +176,11 @@ def learners(
         query = query.filter(Learner.display_name.ilike("%" + q.strip()[:80] + "%"))
     if level != "all":
         query = query.filter(Profile.level == level)
+    blocked = blocked_ids(db, u.id)
+    if blocked:
+        query = query.filter(Learner.id.notin_(blocked))
     result = []
-    for p, other in query.order_by(Profile.last_seen.desc()).limit(100):
-        if _blocked(db, u.id, other.id):
-            continue
+    for p, other in query.order_by(Profile.last_seen.desc()).limit(limit):
         edge = (
             db.query(Friendship).filter_by(learner_id=u.id, friend_id=other.id).first()
         )
@@ -178,7 +221,7 @@ def friends(u=Depends(require_learner), db: Session = Depends(get_db)):
 
 class FriendBody(BaseModel):
     user_id: str
-    action: Literal["request", "accept", "decline", "cancel", "block"]
+    action: Literal["request", "accept", "decline", "cancel", "block", "remove"]
 
 
 @router.post("/friends")
@@ -187,7 +230,11 @@ def friend_action(
 ):
     from app.services.play import social
 
-    if body.action == "cancel":
+    if body.action == "request":
+        require_card(db, u.id)
+    if body.action == "remove":
+        social.remove_friend(db, u, body.user_id)
+    elif body.action == "cancel":
         edge = (
             db.query(Friendship)
             .filter_by(
@@ -247,21 +294,46 @@ def direct(body: DirectBody, u=Depends(require_learner), db: Session = Depends(g
     return conversation_view(db, c, u.id)
 
 
-def conversation_view(db, c, uid):
-    mine = db.get(Member, (c.id, uid))
-    users = audience(db, c.id)
+def conversation_view(db, c, uid, blocked=None):
+    if blocked is None:
+        blocked = blocked_ids(db, uid)
+    rows = (
+        db.query(Member)
+        .filter(Member.conversation_id == c.id, Member.role != REMOVED)
+        .all()
+    )
+    mine = next((m for m in rows if m.user_id == uid), None)
+    users = [m.user_id for m in rows]
     peer = next((x for x in users if x != uid), uid)
-    unread = (
-        db.query(Message)
-        .filter(
+    unread = 0
+    last = None
+    if mine:
+        unseen = db.query(Message).filter(
             Message.conversation_id == c.id,
-            Message.id > (mine.last_read_id if mine else 0),
+            Message.id > mine.last_read_id,
             Message.sender_id != uid,
         )
-        .count()
-        if mine
-        else 0
-    )
+        if blocked:
+            unseen = unseen.filter(Message.sender_id.notin_(blocked))
+        unread = unseen.count()
+        # The preview is the latest message still there (refresh_last_text
+        # keeps last_text in step when one is deleted).
+        last = (
+            db.query(Message)
+            .filter(Message.conversation_id == c.id, Message.kind != "deleted")
+            .order_by(Message.id.desc())
+            .first()
+        )
+    # Public circles show who is in them; private ones only to members.
+    show_members = bool(mine) or (c.kind == "group" and c.public)
+    last_sender = ""
+    last_text = c.last_text if mine else ""
+    if last:
+        if last.sender_id in blocked:
+            last_text = "Message from a blocked learner"
+        last_sender = (
+            "You" if last.sender_id == uid else profile_view(db, last.sender_id)["name"]
+        )
     return {
         "id": c.id,
         "kind": c.kind,
@@ -272,9 +344,14 @@ def conversation_view(db, c, uid):
         "public": c.public,
         "joined": bool(mine),
         "role": mine.role if mine else None,
-        "members": [profile_view(db, x) for x in users] if mine else [],
+        "members": (
+            [{**profile_view(db, m.user_id), "role": m.role} for m in rows]
+            if show_members
+            else []
+        ),
         "member_count": len(users),
-        "last_text": c.last_text if mine else "",
+        "last_text": last_text,
+        "last_sender": last_sender,
         "updated_at": iso(c.updated_at),
         "unread": unread,
         "call_id": (
@@ -293,27 +370,58 @@ def conversation_view(db, c, uid):
 def conversations(
     discover: bool = False,
     q: str = "",
+    limit: int = Query(100, ge=1, le=100),
     u=Depends(require_learner),
     db: Session = Depends(get_db),
 ):
+    blocked = blocked_ids(db, u.id)
     query = db.query(Conversation)
     if discover:
         query = query.filter_by(kind="group", public=True)
+        # Circles you cannot join stay out of the list: their creator and you
+        # have blocked each other, or the admin removed you.
+        if blocked:
+            query = query.filter(Conversation.creator_id.notin_(blocked))
+        removed = db.query(Member.conversation_id).filter(
+            Member.user_id == u.id, Member.role == REMOVED
+        )
+        query = query.filter(Conversation.id.notin_(removed))
     else:
         query = query.join(Member, Member.conversation_id == Conversation.id).filter(
-            Member.user_id == u.id
+            Member.user_id == u.id, Member.role != REMOVED
         )
     if q.strip():
         query = query.filter(Conversation.name.ilike("%" + q.strip()[:80] + "%"))
     rows = []
-    for c in query.order_by(Conversation.updated_at.desc()).limit(100):
+    for c in query.order_by(Conversation.updated_at.desc()).limit(limit):
         if c.kind == "direct":
             try:
                 member(db, c.id, u.id)
             except HTTPException:
                 continue
-        rows.append(conversation_view(db, c, u.id))
+        rows.append(conversation_view(db, c, u.id, blocked))
     return rows
+
+
+@router.get("/conversations/{cid}")
+def one_conversation(
+    cid: str, u=Depends(require_learner), db: Session = Depends(get_db)
+):
+    c = db.get(Conversation, cid)
+    mine = db.get(Member, (cid, u.id)) if c else None
+    if c and mine and mine.role != REMOVED:
+        member(db, cid, u.id)
+        return conversation_view(db, c, u.id)
+    # A public circle can be looked at before joining.
+    if (
+        c
+        and c.kind == "group"
+        and c.public
+        and not mine
+        and not _blocked(db, u.id, c.creator_id)
+    ):
+        return conversation_view(db, c, u.id)
+    raise HTTPException(404, "This circle is private or no longer exists.")
 
 
 class GroupBody(BaseModel):
@@ -324,15 +432,45 @@ class GroupBody(BaseModel):
     public: bool = True
 
 
+def group_fields(body: GroupBody):
+    name = body.name.strip()
+    if not name:
+        raise HTTPException(422, "Give the circle a name.")
+    return {
+        "name": name,
+        "description": body.description.strip(),
+        "topic": body.topic.strip(),
+        "level": body.level,
+        "public": body.public,
+    }
+
+
 @router.post("/groups")
 def group(body: GroupBody, u=Depends(require_learner), db: Session = Depends(get_db)):
-    if not body.name.strip():
-        raise HTTPException(422, "Give the group a name.")
-    c = Conversation(kind="group", creator_id=u.id, **body.model_dump())
+    fields = group_fields(body)
+    require_card(db, u.id)
+    c = Conversation(kind="group", creator_id=u.id, **fields)
     db.add(c)
     db.flush()
     db.add(Member(conversation_id=c.id, user_id=u.id, role="admin"))
-    notify(db)
+    # Everyone's Discover list changes for an open circle; only yours otherwise.
+    notify(db, None if c.public else [u.id])
+    db.commit()
+    return conversation_view(db, c, u.id)
+
+
+@router.put("/groups/{cid}")
+def edit_group(
+    cid: str, body: GroupBody, u=Depends(require_learner), db: Session = Depends(get_db)
+):
+    c, m = member(db, cid, u.id)
+    if c.kind != "group" or m.role != "admin":
+        raise HTTPException(403, "Only the circle admin can edit it.")
+    fields = group_fields(body)
+    was_public = c.public
+    for key, value in fields.items():
+        setattr(c, key, value)
+    notify(db, None if (was_public or c.public) else audience(db, cid))
     db.commit()
     return conversation_view(db, c, u.id)
 
@@ -341,16 +479,20 @@ def group(body: GroupBody, u=Depends(require_learner), db: Session = Depends(get
 def join_group(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
     c = db.get(Conversation, cid)
     if not c or c.kind != "group" or not c.public:
-        raise HTTPException(403, "This group requires an invitation.")
+        raise HTTPException(403, "This circle is invite only.")
     if _blocked(db, u.id, c.creator_id):
-        raise HTTPException(403, "Cannot join this group.")
-    if not db.get(Member, (cid, u.id)):
+        raise HTTPException(403, "You cannot join this circle.")
+    existing = db.get(Member, (cid, u.id))
+    if existing and existing.role == REMOVED:
+        raise HTTPException(403, "The circle admin removed you from this circle.")
+    require_card(db, u.id)
+    if not existing:
         db.add(Member(conversation_id=cid, user_id=u.id))
         try:
             db.commit()
         except IntegrityError:
             db.rollback()
-    notify(db)
+    notify(db, audience(db, cid) + [u.id])
     db.commit()
     return conversation_view(db, c, u.id)
 
@@ -368,12 +510,38 @@ def invite(
 ):
     c, m = member(db, cid, u.id)
     if c.kind != "group" or m.role != "admin":
-        raise HTTPException(403, "Only the group owner can invite friends.")
+        raise HTTPException(403, "Only the circle admin can invite friends.")
+    require_card(db, u.id)
     if not _are_friends(db, u.id, body.user_id) or _blocked(db, u.id, body.user_id):
         raise HTTPException(403, "Invite an accepted friend.")
-    if not db.get(Member, (cid, body.user_id)):
+    existing = db.get(Member, (cid, body.user_id))
+    if not existing:
         db.add(Member(conversation_id=cid, user_id=body.user_id))
+    elif existing.role == REMOVED:
+        # The admin's invitation lifts an earlier removal.
+        existing.role = "member"
     notify(db, audience(db, cid) + [body.user_id])
+    db.commit()
+    return {"ok": True}
+
+
+@router.post("/groups/{cid}/remove")
+def remove_member(
+    cid: str,
+    body: InviteBody,
+    u=Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    c, m = member(db, cid, u.id)
+    if c.kind != "group" or m.role != "admin":
+        raise HTTPException(403, "Only the circle admin can remove learners.")
+    if body.user_id == u.id:
+        raise HTTPException(422, "Use Leave circle to leave your own circle.")
+    target = db.get(Member, (cid, body.user_id))
+    if not target or target.role == REMOVED:
+        raise HTTPException(404, "That learner is not in this circle.")
+    notify(db, audience(db, cid))
+    target.role = REMOVED
     db.commit()
     return {"ok": True}
 
@@ -386,7 +554,11 @@ def leave_group(cid: str, u=Depends(require_learner), db: Session = Depends(get_
     if m.role == "admin":
         replacement = (
             db.query(Member)
-            .filter(Member.conversation_id == cid, Member.user_id != u.id)
+            .filter(
+                Member.conversation_id == cid,
+                Member.user_id != u.id,
+                Member.role != REMOVED,
+            )
             .first()
         )
         if replacement:
@@ -415,6 +587,7 @@ def send(
     db: Session = Depends(get_db),
 ):
     c, m = member(db, cid, u.id)
+    require_card(db, u.id)
     existing = (
         db.query(Message).filter_by(sender_id=u.id, client_id=body.client_id).first()
     )
@@ -482,16 +655,31 @@ def send(
     return message_view(db, msg)
 
 
-def message_view(db, msg):
-    media = db.get(Media, msg.media_id) if msg.media_id else None
-    reply = db.get(Message, msg.reply_to) if msg.reply_to else None
+def message_view(db, msg, blocked=frozenset()):
+    # A blocked learner's message keeps its place but none of its content.
+    hidden = msg.sender_id in blocked
+    media = db.get(Media, msg.media_id) if msg.media_id and not hidden else None
+    reply = db.get(Message, msg.reply_to) if msg.reply_to and not hidden else None
+    quote = ""
+    if reply:
+        quote = (
+            "Message from a blocked learner"
+            if reply.sender_id in blocked
+            else (
+                "Message deleted"
+                if reply.kind == "deleted"
+                else reply.content[:160]
+                or ("Photo" if reply.kind == "image" else "Voice note")
+            )
+        )
     return {
         "id": msg.id,
         "sender": profile_view(db, msg.sender_id),
         "kind": msg.kind,
-        "content": msg.content,
+        "content": "" if hidden else msg.content,
+        "hidden": hidden,
         "created_at": iso(msg.created_at),
-        "media_id": msg.media_id,
+        "media_id": media.id if media else None,
         "expires_at": iso(media.expires_at) if media else None,
         "duration": media.duration if media else 0,
         "client_id": msg.client_id,
@@ -499,7 +687,7 @@ def message_view(db, msg):
             {
                 "id": reply.id,
                 "name": profile_view(db, reply.sender_id)["name"],
-                "content": reply.content[:160] or reply.kind,
+                "content": quote,
             }
             if reply
             else None
@@ -519,7 +707,115 @@ def messages(
     if before:
         query = query.filter(Message.id < before)
     rows = query.order_by(Message.id.desc()).limit(50).all()
-    return [message_view(db, x) for x in reversed(rows)]
+    blocked = blocked_ids(db, u.id)
+    return [message_view(db, x, blocked) for x in reversed(rows)]
+
+
+def refresh_last_text(db, c):
+    last = (
+        db.query(Message)
+        .filter(Message.conversation_id == c.id, Message.kind != "deleted")
+        .order_by(Message.id.desc())
+        .first()
+    )
+    c.last_text = (
+        ""
+        if not last
+        else (
+            last.content[:160]
+            if last.kind == "text"
+            else ("Photo" if last.kind == "image" else "Voice note")
+        )
+    )
+
+
+@router.post("/conversations/{cid}/messages/{mid}/delete")
+def delete_message(
+    cid: str, mid: int, u=Depends(require_learner), db: Session = Depends(get_db)
+):
+    c, m = member(db, cid, u.id)
+    msg = db.get(Message, mid)
+    if not msg or msg.conversation_id != cid:
+        raise HTTPException(404, "Message not found.")
+    if msg.sender_id != u.id and not (c.kind == "group" and m.role == "admin"):
+        raise HTTPException(
+            403, "Only the sender or the circle admin can delete this message."
+        )
+    if msg.kind != "deleted":
+        media = db.get(Media, msg.media_id) if msg.media_id else None
+        msg.kind, msg.content, msg.media_id = "deleted", "", None
+        db.flush()
+        if media:
+            key = media.key
+            db.delete(media)
+            try:
+                store, bucket = object_store()
+                store.delete_object(Bucket=bucket, Key=key)
+            except Exception:
+                # The bucket's two-day lifecycle rule removes it anyway.
+                pass
+        refresh_last_text(db, c)
+        notify(db, audience(db, cid))
+        db.commit()
+    return message_view(db, msg)
+
+
+class ReportBody(BaseModel):
+    kind: Literal["message", "circle", "learner"]
+    id: str = Field(min_length=1, max_length=64)
+    reason: str = Field(default="", max_length=500)
+
+
+@router.post("/report", status_code=204)
+def report(body: ReportBody, u=Depends(require_learner), db: Session = Depends(get_db)):
+    """Flag a message, circle or learner for review. The server copies what
+    is reported, so a moderator sees it even if it is deleted later."""
+    from app.routers.feedback import REPORTS_PER_DAY, MAX_FIELD
+
+    day_start = now().replace(hour=0, minute=0, second=0, microsecond=0)
+    today = (
+        db.query(func.count(ContentReport.id))
+        .filter(ContentReport.learner_id == u.id, ContentReport.created_at >= day_start)
+        .scalar()
+        or 0
+    )
+    if today >= REPORTS_PER_DAY:
+        raise HTTPException(429, "Report limit reached. Try again tomorrow.")
+    if body.kind == "message":
+        msg = db.get(Message, int(body.id)) if body.id.isdigit() else None
+        if not msg:
+            raise HTTPException(404, "Message not found.")
+        member(db, msg.conversation_id, u.id)
+        subject = (
+            f"group message {msg.id} in {msg.conversation_id} by {msg.sender_id}"
+            + (f" (media {msg.media_id})" if msg.media_id else "")
+        )
+        content = msg.content or f"[{msg.kind}]"
+    elif body.kind == "circle":
+        c = db.get(Conversation, body.id)
+        mine = db.get(Member, (body.id, u.id)) if c else None
+        if not c or c.kind != "group" or not (c.public or mine):
+            raise HTTPException(404, "Circle not found.")
+        subject = f"group circle {c.id} by {c.creator_id}"
+        content = "\n".join(x for x in (c.name, c.topic, c.description) if x)
+    else:
+        other = db.get(Learner, body.id)
+        if not other or other.id == u.id:
+            raise HTTPException(404, "Learner not found.")
+        p = db.get(Profile, other.id)
+        subject = f"group learner {other.id}"
+        content = "\n".join(x for x in (other.display_name, p.bio if p else "") if x)
+    db.add(
+        ContentReport(
+            learner_id=u.id,
+            surface="group",
+            question=subject[:MAX_FIELD],
+            answer=content[:MAX_FIELD],
+            reason=body.reason.strip()[:MAX_FIELD],
+        )
+    )
+    db.commit()
+    return None
 
 
 class ReadBody(BaseModel):
@@ -559,6 +855,7 @@ async def upload(
     db: Session = Depends(get_db),
 ):
     member(db, cid, u.id)
+    require_card(db, u.id)
     uploads = (
         db.query(Media).filter(Media.user_id == u.id, Media.expires_at > now()).count()
     )
@@ -679,10 +976,11 @@ def create_room(
 ):
     if not body.title.strip():
         raise HTTPException(422, "Give the room a title.")
+    require_card(db, u.id)
     r = Room(
         id=uuid.uuid4().hex,
         title=body.title.strip(),
-        topic=body.topic,
+        topic=body.topic.strip(),
         level=body.level,
         host_id=u.id,
     )
@@ -749,6 +1047,7 @@ def end_room(rid: str, u=Depends(require_learner), db: Session = Depends(get_db)
 @router.post("/conversations/{cid}/call")
 def start_call(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
     c, m = member(db, cid, u.id)
+    require_card(db, u.id)
     # Serialize call creation with a row lock on Postgres.
     c = db.query(Conversation).filter_by(id=cid).with_for_update().one()
     if (
@@ -831,6 +1130,9 @@ def stream_token(
             or _blocked(db, u.id, r.host_id)
         ):
             raise HTTPException(404, "This room has ended.")
+        # Anyone in a room can raise a hand and speak. Answering a friend's
+        # call needs no card; a card is needed to place one.
+        require_card(db, u.id)
     else:
         c, m = member(db, body.conversation_id, u.id)
         if c.call_id != body.id:
@@ -841,11 +1143,7 @@ def stream_token(
 
 @router.get("/status")
 def status(u=Depends(require_learner), db: Session = Depends(get_db)):
-    from app.models import Block
-
-    blocked = {r.blocked_id for r in db.query(Block).filter_by(learner_id=u.id)} | {
-        r.learner_id for r in db.query(Block).filter_by(blocked_id=u.id)
-    }
+    blocked = blocked_ids(db, u.id)
     accepted = {
         r.friend_id
         for r in db.query(Friendship).filter_by(learner_id=u.id, status="accepted")
@@ -853,14 +1151,15 @@ def status(u=Depends(require_learner), db: Session = Depends(get_db)):
     memberships = (
         db.query(Member, Conversation)
         .join(Conversation, Member.conversation_id == Conversation.id)
-        .filter(Member.user_id == u.id)
+        .filter(Member.user_id == u.id, Member.role != REMOVED)
         .all()
     )
     valid = []
     incoming = []
     member_ids = {}
     for row in db.query(Member).filter(
-        Member.conversation_id.in_([c.id for _, c in memberships])
+        Member.conversation_id.in_([c.id for _, c in memberships]),
+        Member.role != REMOVED,
     ):
         member_ids.setdefault(row.conversation_id, set()).add(row.user_id)
     for m, c in memberships:
@@ -886,7 +1185,7 @@ def status(u=Depends(require_learner), db: Session = Depends(get_db)):
                     "expires_at": iso(c.call_started_at + timedelta(seconds=45)),
                 }
             )
-    unread = (
+    unseen = (
         db.query(func.count(Message.id))
         .join(Member, Member.conversation_id == Message.conversation_id)
         .filter(
@@ -895,9 +1194,10 @@ def status(u=Depends(require_learner), db: Session = Depends(get_db)):
             Message.id > Member.last_read_id,
             Message.sender_id != u.id,
         )
-        .scalar()
-        or 0
     )
+    if blocked:
+        unseen = unseen.filter(Message.sender_id.notin_(blocked))
+    unread = unseen.scalar() or 0
     live = (
         db.query(Room)
         .filter(
@@ -907,9 +1207,18 @@ def status(u=Depends(require_learner), db: Session = Depends(get_db)):
         )
         .count()
     )
+    requests = db.query(Friendship).filter(
+        Friendship.friend_id == u.id,
+        Friendship.status == "pending",
+        Friendship.requested_by != u.id,
+    )
+    if blocked:
+        requests = requests.filter(Friendship.learner_id.notin_(blocked))
     return {
         "unread": unread,
         "live": live,
+        "requests": requests.count(),
+        "card": db.get(Profile, u.id) is not None,
         "incoming": incoming,
         "audio_enabled": audio.enabled(),
     }

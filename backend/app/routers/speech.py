@@ -89,7 +89,7 @@ async def text_to_speech(
     no Sarvam call, so no quota and no spend.
 
     ``sa-IN`` is accepted and spoken with ``settings.tts_sanskrit_code`` —
-    the Hindi voice until Sarvam grants the sa-IN beta. The app says what the
+    native Sanskrit beta on this account. The app says what the
     text IS; the server decides which voice reads it, so switching Sanskrit to
     its own voice is a config change rather than an app release.
     """

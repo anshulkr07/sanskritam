@@ -87,6 +87,8 @@ class Learner(Base):
     # {varna_id: {reps, last_ts}} — coverage only, no verdict (ship the
     # drill, ship no scoring). Same homogeneous-dict rule as writing_mastery.
     varna_progress = Column(JSON, default=dict)
+    # Per-learner bookmarks/read marks/preferences. This never awards mastery.
+    learning_state = Column(JSON, default=dict, nullable=True)
     created_at = Column(DateTime, default=_utcnow)
 
     tokens = relationship("Token", back_populates="learner", cascade="all, delete-orphan")

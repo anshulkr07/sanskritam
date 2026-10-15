@@ -211,7 +211,8 @@ class VoicePipelineSession:
                 try:
                     await asyncio.wait_for(first.wait(), 0.35)
                 except asyncio.TimeoutError:
-                    await queue.put("एकं क्षणम्, अहं विचारयामि।")
+                    if not first.is_set():
+                        await queue.put("एकं क्षणम्, अहं विचारयामि।")
 
             speech = asyncio.create_task(speak())
             if c.pipeline == 4 and c.filler_phrases and (c.thinking_budget or c.web_search):
@@ -219,7 +220,9 @@ class VoicePipelineSession:
             pending = ""
             tokens = sarvam_tokens(c, self.history) if self.config.pipeline == 4 and c.pipeline == 1 else self.tokens(c)
             async for token in tokens:
-                first.set()
+                if not first.is_set():
+                    first.set()
+                    await cancel(filler)
                 response += token
                 pending += token
                 await self.send({"type": "transcript", "role": "assistant", "text": token, "final": False})

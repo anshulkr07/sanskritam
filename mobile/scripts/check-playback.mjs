@@ -20,15 +20,15 @@ const modules = {
     clearPreloadedSource: async (src) => { clearedSources.push(src); },
     createAudioPlayer(src) {
       const player = {
-        src, playing: false, removed: false, listener: null,
+        src, playing: false, removed: false, listener: null, listeners: new Set(),
         play() { this.playing = true; },
         pause() { this.playing = false; },
         remove() { this.removed = true; },
         addListener(_event, cb) {
-          this.listener = cb;
-          return { remove: () => { this.listener = null; } };
+          this.listeners.add(cb); this.listener = cb;
+          return { remove: () => { this.listeners.delete(cb); this.listener = [...this.listeners].at(-1) ?? null; } };
         },
-        tick(status) { this.listener?.(status); },
+        tick(status) { for (const cb of [...this.listeners]) cb(status); },
       };
       players.push(player);
       return player;
@@ -53,8 +53,12 @@ function load(file) {
 }
 const { SinglePlayback } = load("../src/services/singlePlayback.ts");
 modules["./ttsAudioCache"] = load("../src/services/ttsAudioCache.ts");
+modules["./audioTransport"] = load("../src/services/audioTransport.ts");
+modules["./offlineBooks"] = { offlineAudioUrl: url => url };
+modules["./managedAudio"] = load("../src/services/managedAudio.ts");
 const { TtsAudioCache } = modules["./ttsAudioCache"];
 const speech = load("../src/services/speech.ts");
+const { audioTransport } = modules["./audioTransport"];
 const deferred = () => {
   let resolve;
   const promise = new Promise((r) => { resolve = r; });
@@ -62,6 +66,48 @@ const deferred = () => {
 };
 const flush = async () => { for (let i = 0; i < 16; i++) await Promise.resolve(); };
 const finish = (p) => p.tick({ isLoaded: true, playing: false, currentTime: 20, duration: 20, didJustFinish: true });
+assert.equal(speech.bulbulLangCode("sa"), "sa-IN");
+assert.equal(speech.bulbulLangCode("sa-IN"), "sa-IN");
+assert.equal(speech.bulbulLangCode("kn-IN"), "kn-IN");
+assert.equal(speech.bulbulLangCode("od-IN"), "od-IN");
+
+// Every game route blocks accidental TTS without synthesizing or hanging callers.
+for (const route of ["Smriti", "ShabdaRush", "VarnaJaal", "WordGroups", "PadaPath", "NumberBuilder", "RoomLobby"]) {
+  speech.setSpeechRoute(route);
+  const before = ttsCalls;
+  let completed = false;
+  const handle = await speech.speak("रामः", "sa", 1, () => { completed = true; });
+  await flush();
+  assert.equal(ttsCalls, before, `${route} must not request TTS`);
+  assert.equal(completed, true);
+  await handle.stop();
+}
+speech.setSpeechRoute("Home");
+
+// The app-wide transport preserves a paused source, minimizes independently,
+// hands focus to new audio, and ignores late completion from the old source.
+{
+  const { createManagedAudioPlayer } = modules["./managedAudio"];
+  const first = createManagedAudioPlayer("first.wav", undefined, "First");
+  first.play();
+  const oldId = audioTransport.getSnapshot().id;
+  audioTransport.toggle();
+  assert.equal(audioTransport.getSnapshot().playing, false);
+  assert.equal(players.at(-1).playing, false);
+  audioTransport.minimize();
+  assert.equal(audioTransport.getSnapshot().minimized, true);
+  audioTransport.toggle();
+  assert.equal(players.at(-1).playing, true);
+  const second = createManagedAudioPlayer("second.wav", undefined, "Second");
+  second.play();
+  audioTransport.release(oldId);
+  assert.equal(audioTransport.getSnapshot().title, "Second");
+  first.remove();
+  assert.equal(audioTransport.getSnapshot().title, "Second");
+  second.remove();
+  assert.equal(audioTransport.getSnapshot(), null);
+  players.length = 0;
+}
 
 // Four taps before native mode setup completes produce one player; taps during
 // audible playback remain guarded until the actual completion event.

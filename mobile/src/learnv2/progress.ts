@@ -4,7 +4,7 @@
 // Reading completion (visited cards, last card) is NOT mastery: no XP, no
 // reviews, no server writes. Modelled on services/grammarGuide + storyProgress.
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { progressStorage as AsyncStorage } from "../services/progressStorage";
 
 const LAST_LESSON_KEY = "shabd.learnv2.lastLesson";
 const LAST_CARD_PREFIX = "shabd.learnv2.lastCard.";

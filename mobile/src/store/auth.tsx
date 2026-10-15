@@ -15,12 +15,14 @@ import { api, ApiError, setAuthToken, type DevLoginResponse, type LearnerProfile
 import { DEFAULT_LEARNER_NAME } from "../config";
 import { invalidateCache } from "../services/apiCache";
 import { registerPushToken } from "../services/push";
+import { setProgressOwner } from "../services/progressStorage";
 
 const TOKEN_KEY = "shabd.token";
 const NAME_KEY = "shabd.displayName";
 const INSTALL_ID_KEY = "shabd.installId";
 const ONBOARDED_KEY = "shabd.onboarded";
 const BRIDGE_KEY = "shabd.bridgeLangs";
+const PROFILE_KEY = "shabd.cachedProfile";
 
 /**
  * U10-1: the dev-login auto-login path must be UNREACHABLE in a release
@@ -97,7 +99,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       streak: res.learner.streak ?? 0,
       voice_minutes_used: res.learner.voice_minutes_used ?? 0,
     };
+    setProgressOwner(profile.id);
     setLearner(profile);
+    await AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
     await AsyncStorage.setItem(TOKEN_KEY, res.token);
     // P13: best-effort push registration — never blocks the session. No-ops
     // until expo-notifications is installed (P13 sits behind P8).
@@ -160,7 +164,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const setting =
       me.learner.sanskrit_ratio_setting ?? me.model?.sanskrit_ratio_setting ?? me.learner.sanskrit_ratio;
     const merged: LearnerProfile = { ...me.learner, sanskrit_ratio_setting: setting };
+    setProgressOwner(merged.id);
     setLearner(merged);
+    void AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(merged));
     return merged;
   }, []);
 
@@ -173,6 +179,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (tok) {
           setAuthToken(tok);
           setToken(tok);
+          const saved = await AsyncStorage.getItem(PROFILE_KEY);
+          if (saved) {
+            try {
+              const profile = JSON.parse(saved) as LearnerProfile;
+              if (typeof profile.id === "string") { setProgressOwner(profile.id); setLearner(profile); }
+            } catch { /* ignore an invalid cached profile */ }
+          }
           try {
             const me = await api.me();
             mergeMe(me);
@@ -184,15 +197,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               // otherwise the user is stranded in MainTabs where every
               // screen 401s and reports "check your connection". Any other
               // failure (offline, 5xx) keeps local state so a retry works.
-              await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY]);
+              await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY, PROFILE_KEY]);
+              setProgressOwner(null); setLearner(null);
               setAuthToken(null);
               setToken(null);
               setOnboarded(false);
-            } else {
-              await AsyncStorage.multiRemove([TOKEN_KEY]);
-              setAuthToken(null);
-              setToken(null);
-            }
+            } // Network failures preserve the authenticated offline session.
           }
         }
         // Check onboarding status
@@ -214,7 +224,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const logout = useCallback(async () => {
-    await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY]);
+    await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY, PROFILE_KEY]);
+    setProgressOwner(null);
+    invalidateCache();
     setAuthToken(null);
     setToken(null);
     setLearner(null);
@@ -227,6 +239,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // unlinked learner. If the server call fails, nothing local is touched.
   const deleteAccount = useCallback(async () => {
     await api.deleteMe();
+    setProgressOwner(null);
     invalidateCache();
     await AsyncStorage.clear();
     setAuthToken(null);

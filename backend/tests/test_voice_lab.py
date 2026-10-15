@@ -17,6 +17,34 @@ from app.voice_lab.session import VoicePipelineSession
 import app.voice_lab.router as routes
 
 
+@pytest.mark.parametrize("model,version", [("sarvam-105b-conversations", "v1"), ("deepseekv4.1-flash", "v2")])
+def test_streaming_reply_preserves_grammar_context_and_speaks_only_content(monkeypatch, model, version):
+    from types import SimpleNamespace
+    from app.voice_lab import providers
+    import app.services.tutor as tutor
+    monkeypatch.setattr(tutor, "sanskrit_health", lambda text: SimpleNamespace(is_correct=True))
+    calls = []
+    class Context:
+        async def __aenter__(self): return self
+        async def __aexit__(self, *args): pass
+        def raise_for_status(self): pass
+        async def aiter_lines(self):
+            yield 'data: {"choices":[{"delta":{"reasoning_content":"private reasoning"}}]}'
+            yield 'data: {"choices":[{"delta":{"content":"spoken answer"}}]}'
+            yield 'data: [DONE]'
+        def stream(self, method, url, **kwargs):
+            calls.append((url, kwargs["json"]))
+            return self
+    monkeypatch.setattr(providers.httpx, "AsyncClient", lambda **kwargs: Context())
+    async def run():
+        return [token async for token in providers.sarvam_tokens(LabConfig(llm_model=model), [{"role": "user", "content": "accepted learner line"}])]
+    assert asyncio.run(run()) == ["spoken answer"]
+    url, payload = calls[0]
+    assert f"/{version}/chat/completions" in url
+    assert "Do not correct it" in payload["messages"][0]["content"]
+    if version == "v2": assert payload["reasoning_effort"] == "low"
+
+
 @pytest.mark.parametrize("field,value", [("pipeline", 5), ("pitch", 13), ("pace", 0.1), ("thinking_budget", 5000), ("language", "en-IN")])
 def test_bad_settings(field, value):
     with pytest.raises(ValidationError):
@@ -281,7 +309,8 @@ def test_sarvam_tts_protocol_and_completion(monkeypatch):
         await output.speak("राम।", LabConfig(), send)
         assert [m["type"] for m in messages] == ["config", "text", "flush"]
         assert messages[0]["data"]["output_audio_codec"] == "wav"
-        assert messages[1]["data"]["text"] == "రామ."
+        assert messages[0]["data"]["language_code"] == "sa-IN"
+        assert messages[1]["data"]["text"] == "राम।"
         assert sent[0]["codec"] == "pcm"
         assert base64.b64decode(sent[0]["data"]) == b"\x01\x00" * 160
         await output.close()
@@ -645,7 +674,9 @@ def test_hybrid_filler_order_and_unmodified_transcript():
         session = Delayed(LabConfig(pipeline=4, thinking_budget=128), send, meter)
         session.tts = Output()
         await session.respond("कुत्र गच्छति?")
-        assert spoken == ["एकं क्षणम्, अहं विचारयामि।", "रामः वनं गच्छति।"]
+        # Both timers can become ready together under a loaded event loop.
+        # A filler may be skipped, but must never follow the actual answer.
+        assert spoken in (["रामः वनं गच्छति।"], ["एकं क्षणम्, अहं विचारयामि।", "रामः वनं गच्छति।"])
         assert "".join(m["text"] for m in sent if m["type"] == "transcript") == "रामः वनं गच्छति।"
         assert sent[-1]["type"] == "turn_complete"
     asyncio.run(run())

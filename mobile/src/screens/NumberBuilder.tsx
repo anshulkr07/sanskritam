@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Number Builder (सङ्ख्या-रचना): compose the spoken number phrase through
 // dropdowns — never a four-option quiz. Each slot opens a bottom selection
 // sheet with 4-8 plausible choices; nothing is marked correct. After a
@@ -6,7 +7,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CatalogGame, playApi, type NumberPack, type NumberSlot } from "../games/v2/client";
@@ -57,15 +58,6 @@ export default function NumberBuilderScreen({ navigation }: Props) {
     if (!pack) return;
     if (at + 1 >= pack.prompts.length) void finish();
     else setAt(at + 1);
-  };
-
-  const hearIt = async () => {
-    if (!feedback) return;
-    try {
-      const { api } = await import("../api/client");
-      const res = await api.tts(session?.answer_lang === "en" ? stripDevanagari(feedback.reading) : feedback.reading, "sa-IN");
-      void res;
-    } catch { /* audio optional */ }
   };
 
   if (!session) {
@@ -130,11 +122,6 @@ export default function NumberBuilderScreen({ navigation }: Props) {
                 <Text style={[styles.readingValue, script("regular")]}>{feedback.alternative}</Text>
               </View>
             )}
-            <Pressable onPress={() => void hearIt()} accessibilityRole="button" accessibilityLabel="Hear the number"
-              style={styles.hearBtn}>
-              <Ionicons name="volume-high" size={18} color={color.ink} />
-              <Text style={styles.hearText}>Hear the number</Text>
-            </Pressable>
           </View>
         )}
       </ScrollView>
@@ -160,10 +147,6 @@ export default function NumberBuilderScreen({ navigation }: Props) {
         onClose={() => setOpen(null)} />
     </SafeAreaView>
   );
-}
-
-function stripDevanagari(t: string): string {
-  return t;
 }
 
 function Bar({ label, v, w }: { label: string; v: number; w: number }) {

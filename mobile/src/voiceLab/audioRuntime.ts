@@ -10,17 +10,18 @@ export type AudioSinkHandle = {
 // Scheduling uses decoded duration including detune; interruption invalidates
 // pending decodes as well as stopping already scheduled AudioBufferSources.
 export const AUDIO_HTML = `<!doctype html><html><meta name="viewport" content="width=device-width"><body><script>
-let ctx, gain, next=0, generation=0, pending=0, busy=false, pitch=0, loudness=1, chain=Promise.resolve();
+let ctx, gain, next=0, generation=0, pending=0, busy=false, paused=false, pitch=0, loudness=1, chain=Promise.resolve();
 const sources=new Set(), waiters=new Set();
 function wake(){for(const resolve of waiters)resolve();waiters.clear();}
 function report(message){if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(JSON.stringify({error:message}));else parent.postMessage({voiceLabAudioError:message},'*');}
 function playback(){const value=!!(pending||sources.size);if(value===busy)return;busy=value;const message={voiceLabPlaybackBusy:value,generation};if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(JSON.stringify(message));else parent.postMessage(message,'*');}
-function init(){if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.connect(ctx.destination);}gain.gain.value=loudness;return ctx.resume();}
+function init(){if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.connect(ctx.destination);}gain.gain.value=loudness;return paused?Promise.resolve():ctx.resume();}
 window.voiceLabSetOutput=function(target){gain.disconnect();gain.connect(target||ctx.destination);};
 window.voiceLabCommand=function(m){
  if(m.type==='settings'){pitch=m.pitch||0;loudness=m.loudness||1;if(gain)gain.gain.value=loudness;return;}
- if(m.type==='stop'){generation++;for(const s of sources){try{s.stop();}catch{}}sources.clear();pending=0;playback();next=0;chain=Promise.resolve();wake();return;}
- if(m.type==='resume'){init().catch(e=>report(e.message));return;}
+ if(m.type==='stop'){paused=false;if(ctx&&ctx.state==='suspended')ctx.resume().catch(e=>report(e.message));generation++;for(const s of sources){try{s.stop();}catch{}}sources.clear();pending=0;playback();next=0;chain=Promise.resolve();wake();return;}
+ if(m.type==='pause'){paused=true;if(ctx)ctx.suspend().catch(e=>report(e.message));return;}
+ if(m.type==='resume'){paused=false;init().then(wake).catch(e=>report(e.message));return;}
  if(m.type!=='audio')return;
  const epoch=generation;
  pending++;playback();

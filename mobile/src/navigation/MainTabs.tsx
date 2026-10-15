@@ -122,12 +122,15 @@ export default function MainTabs() {
         component={GroupScreen}
         options={{
           tabBarLabel: LABEL.Group,
+          // Unread messages and friend requests waiting; a dot when only a
+          // room is live.
           tabBarBadge:
-            status.unread > 0
-              ? status.unread
+            status.unread + (status.requests ?? 0) > 0
+              ? Math.min(99, status.unread + (status.requests ?? 0))
               : status.live > 0
                 ? "•"
                 : undefined,
+          tabBarBadgeStyle: { backgroundColor: color.saffronBtn, fontFamily: "Nunito_700Bold" },
         }}
       />
     </Tab.Navigator>

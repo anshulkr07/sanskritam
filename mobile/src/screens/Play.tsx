@@ -16,7 +16,7 @@ import { useCatalog } from "../games/v2/useCatalog";
 import { haptics } from "../services/haptics";
 import { color, fill, font, onFill, radius, script, shadow, space } from "../theme";
 import { GAMES_TINT_FALLBACK } from "./playTheme";
-import PaintedBackground from "../components/artwork/PaintedBackground";
+import PaintedBackground, { PaintedThumbnail } from "../components/artwork/PaintedBackground";
 import { gameArtwork, hubArtwork } from "../components/artwork/hubs";
 
 type Props = TabScreenProps<"Play">;
@@ -64,6 +64,7 @@ export default function PlayScreen({ navigation }: Props) {
 
         {/* 1. Your rank today — never a fabricated position */}
         <View style={styles.rankCard}>
+          <PaintedBackground source={hubArtwork("play:leaderboard")} banner denseText />
           <Text style={styles.rankLabel}>Your rank today</Text>
           {rank?.unranked_yet ? (
             <Text style={styles.rankBody}>Play a ranked round to get your rank.</Text>
@@ -91,7 +92,7 @@ export default function PlayScreen({ navigation }: Props) {
         {/* 2. Personal goal (separate from ranked points) */}
         <View style={styles.goalCard}>
           <View style={styles.goalRow}>
-            <Ionicons name="flag" size={16} color={color.saffronText} />
+            <PaintedThumbnail source={hubArtwork("play:challenge")} wide />
             <Text style={styles.goalText}>{summary?.goal.label ?? "Complete 3 rounds"}</Text>
             <Text style={styles.goalCount}>{summary?.goal.done ?? 0}/{summary?.goal.target ?? 3}</Text>
           </View>
@@ -106,12 +107,12 @@ export default function PlayScreen({ navigation }: Props) {
         <View style={styles.socialRow}>
           <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "friends" })} accessibilityRole="button"
             accessibilityLabel="Play with friends" style={[styles.socialBtn, { backgroundColor: fill.teal }]}>
-            <Ionicons name="people" size={22} color={onFill.text} />
+            <PaintedBackground source={hubArtwork("play:friends")} />
             <Text style={styles.socialText}>Play with friends</Text>
           </Pressable>
           <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "quick" })} accessibilityRole="button"
             accessibilityLabel="Quick match" style={[styles.socialBtn, { backgroundColor: fill.rose }]}>
-            <Ionicons name="flash" size={22} color={onFill.text} />
+            <PaintedBackground source={hubArtwork("play:quick")} />
             <Text style={styles.socialText}>Quick match</Text>
           </Pressable>
         </View>
@@ -136,7 +137,7 @@ export default function PlayScreen({ navigation }: Props) {
         {summary?.friend_goal && (
           <View style={styles.friendGoal}>
             <View style={styles.goalRow}>
-              <Ionicons name="hand-left" size={16} color={onFill.gold} />
+              <PaintedThumbnail source={hubArtwork("play:friends")} />
               <Text style={styles.friendGoalText}>
                 Weekly goal with {summary.friend_goal.partner.name}: {summary.friend_goal.total}/{summary.friend_goal.target} rounds
               </Text>
@@ -165,6 +166,7 @@ export default function PlayScreen({ navigation }: Props) {
         {/* Discovery links for specialised practice in Learn/Practice */}
         <Text style={styles.section}>More practice</Text>
         <View style={styles.moreCard}>
+          <PaintedThumbnail source={hubArtwork("learn:library")} />
           <Text style={styles.moreText}>
             Grammar drills — word order, sandhi, paradigms, metre — live in Learn › Practice.
           </Text>
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
   rankSub: { color: onFill.soft, fontSize: font.sizes.xs },
   rankLink: { flexDirection: "row", alignItems: "center", gap: 2, alignSelf: "flex-start", minHeight: 32 },
   rankLinkText: { color: onFill.gold, fontWeight: "800", fontSize: font.sizes.sm },
-  rankIst: { color: onFill.faint, fontSize: font.sizes.xs },
+  rankIst: { color: onFill.soft, fontSize: font.sizes.xs },
   goalCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 8, ...shadow.card },
   goalRow: { flexDirection: "row", alignItems: "center", gap: 6 },
   goalText: { flex: 1, fontWeight: "700", color: color.ink },
@@ -232,7 +234,7 @@ const styles = StyleSheet.create({
   goalFill: { height: 6, backgroundColor: color.saffronBtn },
   goalFillGold: { height: 6, backgroundColor: color.gold },
   socialRow: { flexDirection: "row", gap: space.sm },
-  socialBtn: { flex: 1, borderRadius: radius.lg, padding: space.md, gap: 6, minHeight: 84, justifyContent: "center" },
+  socialBtn: { flex: 1, borderRadius: radius.lg, padding: space.md, gap: 6, minHeight: 144, justifyContent: "flex-end", overflow: "hidden" },
   socialText: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.base },
   compCard: {
     flexDirection: "row", alignItems: "center", gap: space.md, backgroundColor: fill.maroon,
@@ -248,7 +250,7 @@ const styles = StyleSheet.create({
   tile: { width: "47.6%", borderRadius: radius.lg, padding: space.md, minHeight: 216, justifyContent: "flex-end", overflow: "hidden", gap: 2 },
   tileTitle: { color: onFill.text, fontWeight: "800", fontSize: font.sizes.md },
   tileSa: { color: onFill.soft, fontSize: font.sizes.sm, lineHeight: 22 },
-  tileSub: { color: onFill.faint, fontSize: font.sizes.xs, marginTop: 2 },
+  tileSub: { color: onFill.soft, fontSize: font.sizes.xs, marginTop: 2 },
   moreCard: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, gap: 8, ...shadow.card },
   moreText: { color: color.inkSoft, fontSize: font.sizes.sm },
   moreBtn: { flexDirection: "row", alignItems: "center", gap: 2, alignSelf: "flex-start", minHeight: 36 },

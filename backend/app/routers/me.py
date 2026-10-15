@@ -7,8 +7,40 @@ from app.auth import require_learner
 from app.db import get_db
 from app.models import Learner
 from app.schemas import MeResponse, UpdateMeRequest, LearnerProfile
+from pydantic import BaseModel, Field
+from fastapi import HTTPException
+from app.services import learning_state
 
 router = APIRouter()
+
+
+class StateEntry(BaseModel):
+    value: str = Field(max_length=32000)
+    updated_ms: int = Field(ge=0)
+
+
+class LearningStateRequest(BaseModel):
+    entries: dict[str, StateEntry] = Field(default_factory=dict, max_length=2500)
+
+
+@router.get("/me/learning-state")
+def get_learning_state(learner: Learner = Depends(require_learner)):
+    return {"entries": learner.learning_state or {}}
+
+
+@router.put("/me/learning-state")
+def save_learning_state(req: LearningStateRequest,
+                        learner: Learner = Depends(require_learner),
+                        db: Session = Depends(get_db)):
+    # Serialize updates to the same learner across devices on PostgreSQL.
+    current = db.query(Learner).filter(Learner.id == learner.id).with_for_update().populate_existing().one()
+    try:
+        current.learning_state = learning_state.merge(current.learning_state,
+            {key: value.model_dump() for key, value in req.entries.items()})
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    db.commit()
+    return {"entries": current.learning_state}
 
 
 def _profile(learner: Learner) -> LearnerProfile:

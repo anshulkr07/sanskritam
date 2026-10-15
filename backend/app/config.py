@@ -69,13 +69,8 @@ class Settings(BaseSettings):
     sarvam_stt_model: str = "saaras:v4"
     # Realtime STT websocket endpoint (re-verify against current docs at deploy).
     sarvam_realtime_url: str = ""
-    # Bulbul language code for Sanskrit lines. Bulbul v3 has no public sa-IN:
-    # probed 2026-09-23 it still answers 400 "Please request beta access to
-    # sa-IN". Until Sarvam support enables it, Sanskrit reads through the Hindi
-    # voice. Once granted, setting TTS_SANSKRIT_CODE=sa-IN switches every live
-    # Sanskrit line — the app sends sa-IN and the server maps it here, so no
-    # app release is needed.
-    tts_sanskrit_code: str = "hi-IN"
+    # Native Sanskrit beta is enabled. Bridge speech retains its own language.
+    tts_sanskrit_code: str = "sa-IN"
     # OpenRouter — carries the Gemini route for dual-number content (§2.6:
     # Sarvam false-accuses ~50% of dual-bearing sentences, so duals must not
     # go to Sarvam). Owner chose OpenRouter over a direct Gemini key,

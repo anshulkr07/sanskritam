@@ -15,7 +15,8 @@
 // Hiding the mini player is a preference about this session, not playback —
 // the chant goes on, and binding a different session brings the bar back.
 
-import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
+import { setAudioModeAsync } from "expo-audio";
+import { createManagedAudioPlayer } from "./managedAudio";
 import { useSyncExternalStore } from "react";
 
 import type { Shloka } from "../api/client";
@@ -108,7 +109,7 @@ const chant = new ChantController({
     if (!baseUrl.current) baseUrl.current = (await import("../config")).BASE_URL;
   },
   resolve: (u) => (u.startsWith("http") ? u : `${baseUrl.current}${u}`),
-  createPlayer: (url) => createAudioPlayer(url, { updateInterval: 100 }) as unknown as PlayerLike,
+  createPlayer: (url) => createManagedAudioPlayer(url, { updateInterval: 100 }, state.session?.title || "Reading") as unknown as PlayerLike,
   prepareAudio: () =>
     setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }),
   pages: () => state.session?.pages ?? [],

@@ -3,7 +3,7 @@
 // throwaway expo-audio player, seek to the line, stop a beat after it ends.
 // The caller owns stopping the previous segment (stop() the returned handle).
 
-import { createAudioPlayer } from "expo-audio";
+import { createManagedAudioPlayer } from "../services/managedAudio";
 
 export interface ChantSegment {
   start_ms: number;
@@ -22,7 +22,7 @@ export async function playChantSegment(
 ): Promise<SegmentHandle> {
   const url = await resolveUrl(chantUrl);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const p = createAudioPlayer(url) as any;
+  const p = createManagedAudioPlayer(url, undefined, "Recitation line") as any;
   await p.seekTo(seg.start_ms / 1000);
   try {
     p.setPlaybackRate?.(speed, "high");

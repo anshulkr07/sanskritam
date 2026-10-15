@@ -8,7 +8,8 @@
 // progress as a line along its top edge.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React from "react";
+import React, { useSyncExternalStore } from "react";
+import { audioTransport } from "../../services/audioTransport";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { COVER_COLOURS } from "../book/covers";
@@ -28,8 +29,9 @@ export default function MiniPlayer({
   onOpen: (bookKey: string, chapter: string | null, index: number) => void;
 }) {
   const bus = useListenBus();
+  const audio = useSyncExternalStore(audioTransport.subscribe, audioTransport.getSnapshot);
   const session = bus.session;
-  if (!session || session.pages.length === 0 || bus.miniHiddenFor === session.id) return null;
+  if (audio || !session || session.pages.length === 0 || bus.miniHiddenFor === session.id) return null;
 
   const cur =
     session.pages.find((p) => p.id === bus.playingId) ?? session.pages[bus.at] ?? session.pages[0];

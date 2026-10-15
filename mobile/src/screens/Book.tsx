@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Book: the fullscreen reading page (HANDOVER 7.4).
 // A root-stack screen covering the tab bar. Swipe turns pages, edge taps turn,
 // middle tap toggles controls. Themes Light/Sepia/Dark, five sizes, Roman switch.
@@ -8,7 +9,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { setAudioModeAsync } from "expo-audio";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -28,6 +29,7 @@ import { useAsk } from "../ask/AskProvider";
 import { READER_THEMES, READER_SIZES, type ReaderThemeName } from "./readerTheme";
 import { color, font, sanskritText, script, space } from "../theme";
 import { plain } from "../utils/text";
+import { downloadBookAudio, saveOfflineBook } from "../services/offlineBooks";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Book">;
 
@@ -48,6 +50,8 @@ export default function BookScreen({ navigation, route }: Props) {
   const { sized } = useTypeScale();
   const ask = useAsk();
   const [controls, setControls] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState("");
+  const [downloading, setDownloading] = useState(false);
   const [aaOpen, setAaOpen] = useState(false);
   const [themeName, setThemeName] = useState<ReaderThemeName>("light");
   const [sizeStep, setSizeStep] = useState(1);
@@ -74,6 +78,16 @@ export default function BookScreen({ navigation, route }: Props) {
   // The same queries the Reader's contents page reads, so `index` (a position
   // in that list) opens the same verse here (shared with Listen).
   const { pages, pagedText, pagedChapter, title: bookTitle, persistAt } = useBookPages(bookKey, chapter ?? null);
+  const saveOffline = async (withAudio: boolean) => {
+    if (downloading) return;
+    setDownloading(true); setDownloadStatus("Saving chapter…");
+    try {
+      await saveOfflineBook(bookKey, pagedChapter, bookTitle, pages);
+      if (withAudio) { const count = await downloadBookAudio(pages); setDownloadStatus(`Text and ${count} audio clips saved offline.`); }
+      else setDownloadStatus("Chapter saved for offline reading.");
+    } catch (e) { setDownloadStatus(e instanceof Error ? e.message : "Couldn't save the chapter. Retry."); }
+    finally { setDownloading(false); }
+  };
 
   const theme = READER_THEMES[themeName];
   const readerScale = READER_SIZES[sizeStep] ?? 1;
@@ -185,6 +199,11 @@ export default function BookScreen({ navigation, route }: Props) {
             >
               <Ionicons name="chatbubble-ellipses-outline" size={22} color={theme.text} />
             </Pressable>
+          </View>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", paddingHorizontal: 16, gap: 16 }}>
+            <Pressable onPress={() => void saveOffline(false)} disabled={downloading} accessibilityRole="button" accessibilityLabel="Save chapter text offline" style={{ minHeight: 44, justifyContent: "center" }}><Text style={{ color: theme.text }}>Save text offline</Text></Pressable>
+            {hasChant && <Pressable onPress={() => void saveOffline(true)} disabled={downloading} accessibilityRole="button" accessibilityLabel="Download prepared chapter audio" style={{ minHeight: 44, justifyContent: "center" }}><Text style={{ color: theme.text }}>Download audio</Text></Pressable>}
+            {!!downloadStatus && <Text accessibilityLiveRegion="polite" style={{ color: theme.soft }}>{downloadStatus}</Text>}
           </View>
           {hasChant && (
             <View style={styles.modeSwitch}>

@@ -23,6 +23,7 @@ export interface ChantVerse {
 }
 
 export interface PlayerStatus {
+  playing?: boolean;
   isLoaded: boolean;
   currentTime: number; // seconds
   duration: number; // seconds
@@ -138,6 +139,7 @@ export class ChantController {
     let lastStep = -1;
     this.sub = p.addListener("playbackStatusUpdate", (st) => {
       if (token !== this.token || !st.isLoaded) return;
+      if (typeof st.playing === "boolean" && !st.didJustFinish) this.setPlaying(st.playing);
       const tMs = st.currentTime * 1000;
       const line = lineAt(v.chant?.lines ?? [], tMs);
       this.host.onLine(line);

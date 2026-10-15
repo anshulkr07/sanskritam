@@ -1,3 +1,4 @@
+import Modal from "./AudioModal";
 // Dropdown — a field that opens a sheet of options, in JavaScript.
 //
 // A native date picker would need a new Play build, and the birth details
@@ -9,7 +10,7 @@
 // Reduce Motion.
 
 import React, { useState } from "react";
-import { FlatList, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 import { haptics } from "../services/haptics";

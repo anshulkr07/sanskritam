@@ -1,3 +1,4 @@
+import Modal from "../components/AudioModal";
 // Listen: the audiobook player (design option A, owner-picked 2026-10-14).
 //
 // The whole screen takes the book's cover colour, and everything on it is
@@ -19,7 +20,6 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   FlatList,
-  Modal,
   Pressable,
   ScrollView,
   StyleSheet,

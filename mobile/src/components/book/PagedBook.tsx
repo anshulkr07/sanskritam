@@ -1,3 +1,4 @@
+import Modal from "../AudioModal";
 // Paged books (handover_reading_shelf.md 7.4-7.7): contents, chapter reader,
 // Plus preview sheet. Classic books are untouched; these components only
 // render paged rows from GET /canon?include=paged.
@@ -5,7 +6,6 @@
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  Modal,
   Pressable,
   SectionList,
   StyleSheet,

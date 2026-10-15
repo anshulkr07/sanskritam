@@ -90,6 +90,7 @@ export default function VoiceLabTab() {
         <Text style={styles.body}>Changes apply during the call. Provider connection settings may briefly reconnect upstream.</Text>
         {!!lab.settingsStatus && <Text accessibilityLiveRegion="polite" style={styles.note}>{lab.settingsStatus}</Text>}
         <Choices label="Pipeline" values={PIPELINES.map((p, i) => `${i + 1}. ${p}`)} selected={`${config.pipeline}. ${PIPELINES[config.pipeline - 1]}`} onChange={value => selectPipeline(Number(value[0]) as LabConfig["pipeline"])} />
+        {(config.pipeline === 1 || config.pipeline === 2) && <Choices label="Reply model" values={["sarvam-105b-conversations", "sarvam-105b", "gemma4", "deepseekv4.1-flash", "glm5.3"]} selected={config.llm_model} onChange={value => patch({ llm_model: value as LabConfig["llm_model"] })} />}
         {config.pipeline === 2 && <Choices label="Open TTS provider" values={["edge_tts_prosody", "ai4bharat_indic_parler"]} selected={config.open_provider} onChange={value => {
           const next = { ...config, open_provider: value as LabConfig["open_provider"] };
           next.speaker = voices(next)[0]; next.language = "hi-IN"; patch(next);
@@ -104,7 +105,7 @@ export default function VoiceLabTab() {
         }} />
         <Text style={styles.note}>Custom speaker ID (use a voice supported by the selected model)</Text>
         <TextInput accessibilityLabel="Custom speaker ID" style={styles.input} value={config.speaker} onChangeText={speaker => patch({ speaker })} autoCapitalize="none" />
-        {config.pipeline !== 3 && <Choices label="TTS script / language" values={["hi-IN", "te-IN", "kn-IN", "mr-IN"]} selected={config.language} onChange={language => patch({ language: language as LabConfig["language"] })} />}
+        {config.pipeline !== 3 && <Choices label="Speech language" values={config.pipeline === 2 ? ["hi-IN", "te-IN", "kn-IN", "mr-IN"] : ["sa-IN", "hi-IN", "te-IN", "kn-IN", "mr-IN"]} selected={config.language} onChange={language => patch({ language: language as LabConfig["language"] })} />}
         {numeric("Speed / pace", "pace", 0.5, 2, 0.05)}
         {numeric("Pitch (semitones)", "pitch", -12, 12, 1)}
         {numeric("Loudness", "loudness", 0.3, 2, 0.1)}
@@ -117,7 +118,7 @@ export default function VoiceLabTab() {
           {toggle("Web search grounding", "web_search")}
         </>}
         {config.pipeline === 4 && toggle("Filler while thinking", "filler_phrases")}
-        {config.pipeline !== 3 && <>{toggle("Transliterate for target voice", "transliterate")}{toggle("Expand visarga for clarity", "visarga_expansion")}{toggle("Hindi final-vowel hint", "schwa_fix")}</>}
+        {config.pipeline !== 3 && config.language !== "sa-IN" && <>{toggle("Transliterate for target voice", "transliterate")}{toggle("Expand visarga for clarity", "visarga_expansion")}{toggle("Hindi final-vowel hint", "schwa_fix")}</>}
         <Text style={styles.note}>Pitch and loudness also adjust playback. Pitch changes playback duration. Hindi vowel hints are experimental; Telugu and Kannada are recommended for Sanskrit pronunciation.</Text>
         {config.pipeline === 2 && config.open_provider === "ai4bharat_indic_parler" && <Text style={styles.note}>Indic-Parler uses the backend’s Hugging Face Space or inference endpoint. Shared GPU queues can add delay; your daily allowance counts synthesis processing time.</Text>}
       </View>}

@@ -47,3 +47,8 @@ backend/vidyut-data
 # Never bake secrets
 .env
 .env.local
+.env.deploy
+.env.deploy.bak-*
+vertex_credentials.json
+*credentials*.json
+service-account-key.json

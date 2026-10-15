@@ -75,8 +75,11 @@ class LLMResponse:
 PRICING_INR_PER_1M: dict[str, tuple[float, float]] = {
     # Sarvam pricing page, read 2026-09-23 (effective 2026-08-05). Cached
     # input is ₹10.98.
-    "sarvam-105b": (29.28, 73.2),
-    "sarvam-105b-conversations": (29.28, 73.2),
+    "sarvam-105b": (15.0, 60.0),
+    "sarvam-105b-conversations": (15.0, 60.0),
+    "gemma4": (35.0, 90.0),
+    "deepseekv4.1-flash": (25.0, 105.0),
+    "glm5.3": (126.0, 390.0),
     # Retired by Sarvam 2026-08-18 — the API refuses it. Kept only so eval
     # reports cached before then still price.
     "sarvam-30b": (10.0, 30.0),
@@ -86,6 +89,7 @@ PRICING_INR_PER_1M: dict[str, tuple[float, float]] = {
     "google/gemini-3.7-flash": (26.0, 210.0),
     # $0.75 / $3.75 per 1M (Google's page, 2026-10-02) at ₹100 to the dollar.
     "gemini-3.8-flash": (75.0, 375.0),
+    "gemini-3.7-flash": (75.0, 375.0),
     "gpt-4o": (210.0, 840.0),
     "gpt-4o-mini": (13.0, 50.0),
     "claude-sonnet-4-5": (250.0, 1250.0),
@@ -140,6 +144,13 @@ REGISTRY: dict[str, ProviderSpec] = {
         env_key="SARVAM_API_KEY",
         default_model="sarvam-105b",
         auth="sarvam",
+    ),
+    "sarvam_v2": ProviderSpec(
+        base_url="https://api.sarvam.ai/v2",
+        env_key="SARVAM_API_KEY",
+        default_model="sarvam-105b",
+        auth="sarvam",
+        kind="sarvam_v2",
     ),
     "gemini": ProviderSpec(
         base_url="https://generativelanguage.googleapis.com/v1beta/openai",
@@ -332,6 +343,16 @@ class Provider:
                                error=f"{type(e).__name__}: {e}")
 
 
+class SarvamV2Provider(Provider):
+    """Opt-in V2 route; preserve the existing conversational V1 baseline."""
+
+    def _payload(self, system, user, temperature, max_tokens, json_mode):
+        payload = super()._payload(system, user, temperature, max_tokens, json_mode)
+        if self.model in {"glm5.3", "deepseekv4.1-flash"}:
+            payload["reasoning_effort"] = "low"
+        return payload
+
+
 class AnthropicProvider(Provider):
     """Anthropic /v1/messages — different envelope, same interface."""
 
@@ -389,7 +410,7 @@ def build_provider(
 
         cls = VertexProvider
     else:
-        cls = AnthropicProvider if spec.kind == "anthropic" else Provider
+        cls = {"anthropic": AnthropicProvider, "sarvam_v2": SarvamV2Provider}.get(spec.kind, Provider)
     kwargs: dict = {"model": model.strip() or None, "api_key": api_key}
     if timeout is not None:
         kwargs["timeout"] = timeout
