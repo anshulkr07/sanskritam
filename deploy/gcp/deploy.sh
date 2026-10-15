@@ -271,11 +271,11 @@ gcloud run deploy "$SERVICE" \
   --region="$REGION" \
   --source=. \
   --port=8000 \
-  --memory=1Gi \
+  --memory=2Gi \
   --cpu=1 \
   --min-instances=1 \
   --max-instances=2 \
-  --timeout=120s \
+  --timeout=660s \
   --allow-unauthenticated \
   --update-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false${AUDIO_ENV}${EXTRA_ENV}" \
   "${SECRET_FLAGS[@]}"
