@@ -71,7 +71,9 @@ fi
 if [ -f "$ENV_FILE" ]; then
   set -a
   # shellcheck disable=SC1090
-  source "$ENV_FILE"
+  # Windows editors can save the ignored env file with CRLF even though the
+  # shell script uses LF. Strip only end-of-line CRs before Bash reads it.
+  source <(sed 's/\r$//' "$ENV_FILE")
   set +a
 fi
 
@@ -110,29 +112,43 @@ if [ -z "$DATABASE_URL" ]; then
   exit 1
 fi
 
-# Test the exact selected credentials before any cloud writes. Use an
-# isolated temporary Python environment if psycopg is absent.
+# Reuse an installed driver, including the Windows backend environment when
+# invoked through WSL. Cloud Shell can fall back to a temporary environment.
 if [ -n "$DATABASE_URL" ]; then
-  DB_CHECK_PYTHON=python3
-  if ! "$DB_CHECK_PYTHON" -c 'import psycopg' >/dev/null 2>&1; then
+  DB_CHECK_PYTHON=""
+  for candidate in backend/.venv/bin/python backend/.venv/Scripts/python.exe python3; do
+    if "$candidate" -c 'import psycopg' >/dev/null 2>&1; then
+      DB_CHECK_PYTHON="$candidate"
+      break
+    fi
+  done
+  if [ -z "$DB_CHECK_PYTHON" ]; then
     DB_CHECK_DIR=$(mktemp -d)
     trap 'rm -rf -- "$DB_CHECK_DIR"' EXIT
-    python3 -m venv "$DB_CHECK_DIR"
+    if ! python3 -m venv "$DB_CHECK_DIR"; then
+      echo "Database check needs psycopg. Install python3-venv (sudo apt install python3-venv), or restore backend/.venv with psycopg installed, then retry. No secrets uploaded." >&2
+      exit 1
+    fi
     DB_CHECK_PYTHON="$DB_CHECK_DIR/bin/python"
     "$DB_CHECK_PYTHON" -m pip install --quiet 'psycopg[binary]>=3.1,<4'
   fi
-  export DATABASE_URL
-  DATABASE_URL=$("$DB_CHECK_PYTHON" deploy/gcp/check_database.py)
+  # stdin crosses WSL/Windows without relying on WSLENV or exposing secrets
+  # in process arguments. Windows Python emits CRLF; remove its trailing CR.
+  DATABASE_URL=$(printf '%s' "$DATABASE_URL" | "$DB_CHECK_PYTHON" deploy/gcp/check_database.py --stdin)
+  DATABASE_URL="${DATABASE_URL%$'\r'}"
   export DATABASE_URL
 fi
 
-# ── 1. Upload secrets (idempotent: overwrite existing versions) ──────────
+# ── 1. Sync secrets (reuse matching versions; add only changed values) ──────────
 #       Only secrets with a value are uploaded AND mounted. Mounting a
 #       referenced-but-nonexistent secret (e.g. apple-client-id when
 #       APPLE_CLIENT_ID is omitted, which the header documents as "omit to
 #       disable") fails the revision with SecretsAccessCheckFailed while
 #       traffic silently stays on the previous revision (2026-09-09: Path,
 #       Words and Reader 404ing on stale code with a green deploy log).
+# Accept the original proposal's key spelling as well as the backend's name.
+# Stream credentials belong to Cloud Run; never forward the secret to Expo.
+STREAM_API_KEY="${STREAM_API_KEY:-${NEXT_PUBLIC_STREAM_API_KEY:-}}"
 declare -A SECRETS=(
   [sarvam-api-key]=SARVAM_API_KEY
   [openrouter-api-key]=OPENROUTER_API_KEY
@@ -140,9 +156,11 @@ declare -A SECRETS=(
   [google-client-id]=GOOGLE_CLIENT_ID
   [apple-client-id]=APPLE_CLIENT_ID
   [gemini-api-keys]=GEMINI_API_KEYS
+  [stream-api-key]=STREAM_API_KEY
+  [stream-api-secret]=STREAM_API_SECRET
 )
 SECRET_MOUNTS=()
-# Only an explicit rotation creates a new database secret version.
+# Only an explicit rotation considers the local database URL; unchanged values reuse a version.
 if [ "$ROTATE_DATABASE_URL" = true ]; then
   SECRETS[shabd-database-url]=DATABASE_URL
 else
@@ -152,13 +170,7 @@ for name in "${!SECRETS[@]}"; do
   var="${SECRETS[$name]}"
   val="${!var:-}"
   [ -z "$val" ] && continue
-  if gcloud secrets describe "$name" --project="$PROJECT_ID" >/dev/null 2>&1; then
-    version_path=$(printf '%s' "$val" | gcloud secrets versions add "$name" --project="$PROJECT_ID" --data-file=- --format='value(name)')
-  else
-    gcloud secrets create "$name" --project="$PROJECT_ID"
-    version_path=$(printf '%s' "$val" | gcloud secrets versions add "$name" --project="$PROJECT_ID" --data-file=- --format='value(name)')
-  fi
-  version="${version_path##*/}"
+  version=$(printf '%s' "$val" | python3 deploy/gcp/sync_secret.py "$PROJECT_ID" "$name")
   [[ "$version" =~ ^[0-9]+$ ]] || { echo "No secret version returned for $name" >&2; exit 1; }
   SECRET_MOUNTS+=("${var}=${name}:${version}")
 done
@@ -168,13 +180,7 @@ done
 # key is for the project that runs the batch jobs, which need not be this one.
 VERTEX_CREDENTIALS_FILE="${VERTEX_CREDENTIALS_FILE:-vertex_credentials.json}"
 if [ -f "$VERTEX_CREDENTIALS_FILE" ]; then
-  if gcloud secrets describe vertex-credentials --project="$PROJECT_ID" >/dev/null 2>&1; then
-    version_path=$(gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE" --format='value(name)')
-  else
-    gcloud secrets create vertex-credentials --project="$PROJECT_ID"
-    version_path=$(gcloud secrets versions add vertex-credentials --project="$PROJECT_ID" --data-file="$VERTEX_CREDENTIALS_FILE" --format='value(name)')
-  fi
-  version="${version_path##*/}"
+  version=$(python3 deploy/gcp/sync_secret.py "$PROJECT_ID" vertex-credentials --file "$VERTEX_CREDENTIALS_FILE")
   [[ "$version" =~ ^[0-9]+$ ]] || { echo "No secret version returned for vertex-credentials" >&2; exit 1; }
   SECRET_MOUNTS+=("VERTEX_CREDENTIALS_JSON=vertex-credentials:${version}")
 fi

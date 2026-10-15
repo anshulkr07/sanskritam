@@ -9,6 +9,15 @@ from check_database import connection_failure_reason, main, normalize_url, verif
 
 
 class DatabasePreflightTests(unittest.TestCase):
+    def test_stdin_url_works_without_environment_forwarding(self):
+        stdout = io.StringIO()
+        with patch("sys.stdin", io.StringIO("postgresql://u:p@db/app")), \
+                patch("check_database.verify_connection") as verify, \
+                contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(main(["--stdin"]), 0)
+        self.assertEqual(stdout.getvalue().strip(), "postgresql://u:p@db/app")
+        self.assertEqual(verify.call_args.args[0], "postgresql://u:p@db/app")
+
     def test_failure_categories_are_specific_and_redacted(self):
         for message, expected in [
             ("password authentication failed URL=privatepassword", "rejected the selected credentials"),

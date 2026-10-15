@@ -1,5 +1,6 @@
 """Validate deployment DB credentials before uploading secrets. Never log URLs."""
 
+import argparse
 import os
 import sys
 from urllib.parse import quote, unquote, urlsplit
@@ -57,13 +58,17 @@ def connection_failure_reason(exc: Exception) -> str:
     return "Database connection check failed; check connection settings and database availability."
 
 
-def main() -> int:
+def main(argv=()) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--stdin", action="store_true", help="Read URL from stdin for WSL/Windows interoperability.")
+    args = parser.parse_args(argv)
     try:
         import psycopg
     except ImportError:
         return fail("Python dependency psycopg is missing; run through deploy.sh to install it.")
     try:
-        normalized = normalize_url(os.environ.get("DATABASE_URL", ""))
+        value = sys.stdin.read() if args.stdin else os.environ.get("DATABASE_URL", "")
+        normalized = normalize_url(value)
     except Exception:
         return fail("Selected DATABASE_URL is missing or malformed.")
     try:
@@ -76,4 +81,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))
