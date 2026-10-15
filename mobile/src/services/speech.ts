@@ -81,7 +81,7 @@ export async function preloadClip(url?: string): Promise<void> {
 export async function setPlaybackMode(): Promise<void> {
   if (IS_WEB) return;
   try {
-    await setAudioModeAsync({ playsInSilentMode: true });
+    await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false, shouldPlayInBackground: true, interruptionMode: "doNotMix" });
   } catch {
     /* non-fatal */
   }

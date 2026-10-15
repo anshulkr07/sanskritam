@@ -29,7 +29,7 @@ export function useVersePlayer(url: string | undefined, lines: ChantLine[]) {
   const src = useMemo(() => (url ? (url.startsWith("http") || url.startsWith("file:") ? url : `${BASE_URL}${url}`) : ""), [url]);
 
   const prepare = useCallback(async () => {
-    try { await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false }); } catch { /* keep */ }
+    try { await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false, shouldPlayInBackground: true, interruptionMode: "doNotMix" }); } catch { /* keep */ }
   }, []);
 
   const playLine = useCallback(async (i: number) => {

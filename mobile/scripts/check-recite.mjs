@@ -180,7 +180,7 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
     const players = [];
     const timers = [];
     const gates = [];
-    const st = { repeat: "off", speed: 1, follow: true, pages, playing: false, verse: -1, line: -9, scrolls: [], gated: false };
+    const st = { repeat: "off", speed: 1, follow: true, pages, playing: false, verse: -1, line: -9, scrolls: [], gated: false, background: false };
     const host = {
       async ready() {},
       resolve: (u) => "http://x" + u,
@@ -203,6 +203,7 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
       },
       pages: () => st.pages, repeat: () => st.repeat, speed: () => st.speed, follow: () => st.follow,
       bookTitle: () => "Gita",
+      isBackground: () => st.background,
       setTimer(fn, ms) { const t = { fn, ms, cleared: false, ran: false }; timers.push(t); return t; },
       clearTimer(t) { t.cleared = true; },
       onVerse(i) { st.verse = i; }, onLine(l) { st.line = l; }, onPlaying(on) { st.playing = on; },
@@ -215,6 +216,38 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
     return { ctl, st, players, timers, gates, tick, runTimers };
   };
   const pages = [verse("v0", true), verse("v1", false), verse("v2", true), verse("v3", true)];
+
+  // A background chapter reuses its registered native player and never waits
+  // for a JS gap timer (which the OS can suspend after audio ends).
+  {
+    const r = rig(pages);
+    await r.ctl.start(0); await flush();
+    const p = r.players[0];
+    p.replace = url => { p.url = url; };
+    r.st.background = true;
+    r.tick(p, 6, 6, true); await flush();
+    check(r.timers.length === 0, "background autoplay has no suspended gap timer");
+    check(r.players.length === 1 && !p.removed && p.played === 2 && p.url.endsWith("v2.m4a"), "background autoplay retains its native media session");
+    check(p.lock.every(([active]) => active), "media notification is not removed between background verses");
+    r.ctl.pause();
+    r.ctl.continueInBackground(); await flush();
+    check(!r.st.playing && p.played === 2, "background transition never overrides an explicit pause");
+    r.ctl.stop();
+    check(p.removed && p.lock.at(-1)[0] === false, "stopping releases background media controls");
+  }
+  {
+    const r = rig(pages);
+    await r.ctl.start(0); await flush();
+    const p = r.players[0];
+    p.replace = url => { p.url = url; };
+    r.tick(p, 6, 6, true);
+    r.st.background = true;
+    r.ctl.continueInBackground(); await flush();
+    check(r.timers.every(t => t.cleared) && r.st.verse === 2, "backgrounding during the gap starts the waiting verse");
+    r.runTimers(); await flush();
+    check(p.played === 2, "the old foreground gap cannot start a duplicate verse");
+    r.ctl.dispose();
+  }
 
   // Plays a verse, lights its lines, shows it on the lock screen, follows it.
   {

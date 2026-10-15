@@ -68,6 +68,12 @@ implementation, launch economics, and the work deliberately reserved for later.
   for the audio bar. The older chant mini-player does not duplicate the new bar.
 - Native dialogs use a shared modal wrapper with their own audio controls, since
   an app-root overlay cannot appear above a separate native modal window.
+- Background audiobook autoplay preserves the native player/media session across
+  verse changes, advances without a JavaScript gap timer while backgrounded,
+  and flushes an already scheduled gap when the app leaves the foreground.
+  An explicit pause still stops advancement. Playback paths enable background
+  audio, leave microphone mode, and register Android media/lock-screen controls.
+  The existing native build already enables the background playback service.
 - Community calls retain their existing call controls; a call is not a replayable
   recording. Brief notification rings and UI/recitation cues remain effects.
 - Native handset audio, Bluetooth, background interruption, and layout still need

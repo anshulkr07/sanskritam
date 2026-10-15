@@ -20,7 +20,9 @@ const modules = {
     clearPreloadedSource: async (src) => { clearedSources.push(src); },
     createAudioPlayer(src) {
       const player = {
-        src, playing: false, removed: false, listener: null, listeners: new Set(),
+        src, playing: false, removed: false, listener: null, listeners: new Set(), lock: [],
+        setActiveForLockScreen(active, metadata) { this.lock.push([active, metadata]); },
+        replace(source) { this.src = source; },
         play() { this.playing = true; },
         pause() { this.playing = false; },
         remove() { this.removed = true; },
@@ -90,6 +92,7 @@ speech.setSpeechRoute("Home");
   const { createManagedAudioPlayer } = modules["./managedAudio"];
   const first = createManagedAudioPlayer("first.wav", undefined, "First");
   first.play();
+  assert.equal(players.at(-1).lock.at(-1)[0], true, "Playback registers Android media controls before starting");
   const oldId = audioTransport.getSnapshot().id;
   audioTransport.toggle();
   assert.equal(audioTransport.getSnapshot().playing, false);
@@ -100,6 +103,7 @@ speech.setSpeechRoute("Home");
   assert.equal(players.at(-1).playing, true);
   const second = createManagedAudioPlayer("second.wav", undefined, "Second");
   second.play();
+  assert.equal(players.at(-2).lock.at(-1)[0], false, "Focus handoff unregisters old media controls");
   audioTransport.release(oldId);
   assert.equal(audioTransport.getSnapshot().title, "Second");
   first.remove();

@@ -26,4 +26,26 @@ pending artwork, community and corpus changes already in this checkout.
   startup. No database credential rotation is requested.
 - Credential JSONs and local env files are excluded from deployment uploads.
 
+## Background autoplay added to the release
+
+The owner additionally requested background autoplay before OTA publication.
+Playback modes now explicitly enable background audio and leave recording mode.
+Managed native players register media controls before playing and hand those
+controls over without letting stale player cleanup unregister the new owner.
+
+Background reading reuses its existing player with `replace`, preserving the
+Android media service across verses. It skips the foreground-only 800 ms gap;
+an AppState transition flushes any waiting gap before timers can be suspended.
+Explicit pause, stop, repeat and end-of-chapter behavior are retained.
+
+TypeScript and playback regressions passed; recitation now passes 117 checks,
+including background handoff without new players, timer-free advancement, pause
+preservation, stop cleanup, and backgrounding during an existing foreground gap.
+No connected Android device was available for a physical screen-lock check.
+
+[Expo SDK 57 background audio requirements](https://docs.expo.dev/versions/v57.0.0/sdk/audio/#playing-audio-in-the-background)
+were checked against the installed package. The native plugin/dependencies did
+not change; this fix can use the existing Android runtime 1.4.1 OTA channel.
+
+Application commit `67aeab9` was pushed to `origin/main` before this added fix.
 Publication identifiers and health checks will be appended after completion.

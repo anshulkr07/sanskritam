@@ -18,6 +18,7 @@
 import { setAudioModeAsync } from "expo-audio";
 import { createManagedAudioPlayer } from "./managedAudio";
 import { useSyncExternalStore } from "react";
+import { AppState } from "react-native";
 
 import type { Shloka } from "../api/client";
 import { REPEAT_ORDER, type RepeatMode } from "../recite/chantClock";
@@ -109,9 +110,10 @@ const chant = new ChantController({
     if (!baseUrl.current) baseUrl.current = (await import("../config")).BASE_URL;
   },
   resolve: (u) => (u.startsWith("http") ? u : `${baseUrl.current}${u}`),
-  createPlayer: (url) => createManagedAudioPlayer(url, { updateInterval: 100 }, state.session?.title || "Reading") as unknown as PlayerLike,
+  createPlayer: (url) => createManagedAudioPlayer(url, { updateInterval: 100 }, state.session?.title || "Reading", true) as unknown as PlayerLike,
   prepareAudio: () =>
-    setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }),
+    setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false, shouldPlayInBackground: true, interruptionMode: "doNotMix" }),
+  isBackground: () => AppState.currentState !== "active",
   pages: () => state.session?.pages ?? [],
   repeat: () => state.repeat,
   speed: () => state.speed,
@@ -137,6 +139,10 @@ const chant = new ChantController({
       /* a card not drawn yet: onScrollToIndexFailed estimates */
     }
   },
+});
+
+AppState.addEventListener("change", next => {
+  if (next !== "active") chant.continueInBackground();
 });
 
 function setAt(i: number): void {

@@ -34,6 +34,7 @@ export interface PlayerLike {
   play(): void;
   pause(): void;
   seekTo(seconds: number): Promise<void> | void;
+  replace?(url: string): void;
   setPlaybackRate?(rate: number, quality?: string): void;
   addListener(event: "playbackStatusUpdate", cb: (st: PlayerStatus) => void): { remove(): void };
   setActiveForLockScreen?(active: boolean, metadata?: { title: string; artist: string }): void;
@@ -54,6 +55,8 @@ export interface ChantHost {
   /** Audiobook autoplay: when false (and Repeat off) the queue stops after
    *  the current verse. Absent on older hosts = true. */
   autoplay?(): boolean;
+  /** Avoid background timer suspension and keep the native media service alive. */
+  isBackground?(): boolean;
   bookTitle(): string;
   setTimer(fn: () => void, ms: number): unknown;
   clearTimer(handle: unknown): void;
@@ -107,7 +110,8 @@ export class ChantController {
       return;
     }
     // The next verse's player was built at 70% of this one: use it if this is that verse.
-    const pre = this.ahead && this.ahead.idx === idx ? this.ahead.player : null;
+    const retained = this.host.isBackground?.() && this.player?.replace ? this.player : null;
+    const pre = retained ?? (this.ahead && this.ahead.idx === idx ? this.ahead.player : null);
     this.release(pre);
     if (pre) this.player = pre;
     const token = this.token;
@@ -118,6 +122,7 @@ export class ChantController {
 
     await this.host.ready();
     if (token !== this.token) return;
+    if (retained) retained.replace!(this.host.resolve(v.chant.url));
     const p = pre ?? this.host.createPlayer(this.host.resolve(v.chant.url));
     this.player = p;
     try {
@@ -177,11 +182,11 @@ export class ChantController {
         this.finish(idx);
       }
     });
-    p.play();
-    this.setPlaying(true);
     try {
       p.setActiveForLockScreen?.(true, { title: v.source_ref, artist: this.host.bookTitle() });
     } catch { /* keep */ }
+    p.play();
+    this.setPlaying(true);
     if (this.host.follow()) {
       try { this.host.scrollTo(idx); } catch { /* keep */ }
     }
@@ -192,6 +197,15 @@ export class ChantController {
     this.clearTimer();
     try { this.player?.pause(); } catch { /* keep */ }
     this.setPlaying(false);
+  }
+
+  /** Flush a scheduled inter-verse gap before the OS can suspend JS timers. */
+  continueInBackground(): void {
+    if (!this.playing || this.pending === null) return;
+    const next = this.pending;
+    this.pending = null;
+    this.clearTimer();
+    void this.start(next);
   }
 
   /** Play after a pause, or from nothing. `from` is the verse the page is on. */
@@ -256,6 +270,10 @@ export class ChantController {
     } else if (plan.kind === "next") {
       this.pending = plan.index;
       this.clearTimer();
+      if (this.host.isBackground?.()) {
+        this.continueInBackground();
+        return;
+      }
       this.timer = this.host.setTimer(() => {
         this.timer = null;
         const n = this.pending;
@@ -265,10 +283,12 @@ export class ChantController {
     } else {
       this.ended = true;
       this.setPlaying(false);
+      try { this.player?.setActiveForLockScreen?.(false); } catch { /* gone */ }
     }
   }
 
   private buildAhead(idx: number): void {
+    if (this.host.isBackground?.() && this.player?.replace) return;
     const pages = this.host.pages();
     const n = nextChantIndex(pages, idx, 1);
     const url = n >= 0 && this.willContinue() ? pages[n]?.chant?.url : undefined;
