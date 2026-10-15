@@ -148,4 +148,6 @@ Do not describe the entire repository as passing. Physical Android/iOS,
 Bluetooth, background interruptions, store purchases, managed Voice Agents and
 human pronunciation evaluation remain future release checks. The backend's new
 `20261015_learning_state` migration must be applied through the normal deployment
-before relying on cross-device sync. Nothing was deployed or committed here.
+before relying on cross-device sync. This initial evaluation stopped before
+publication; the subsequent owner-authorized deployment, migration and OTA are
+recorded in [the release record](production-release-20261015.md).
