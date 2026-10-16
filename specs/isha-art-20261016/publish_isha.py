@@ -1,5 +1,5 @@
 """Derive both delivery sizes from each single master; publish immutable R2 objects."""
-import argparse,concurrent.futures,hashlib,json,mimetypes,os
+import argparse,concurrent.futures,hashlib,json,mimetypes,os,sys
 from pathlib import Path
 import boto3,requests
 from botocore.config import Config
@@ -8,6 +8,8 @@ from PIL import Image,ImageDraw,ImageFont
 from migrate_artwork import http,mime_for
 
 ROOT=Path(__file__).resolve().parents[2];OUT=Path(__file__).resolve().parent
+sys.path.insert(0,str(ROOT/'specs/artwork'))
+from remove_generated_masters import discard_local, verify_variant, save
 DEST=ROOT/'results/isha-art-20261016';DELIVERY=DEST/'delivery'
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--upload',action='store_true');args=parser.parse_args()
@@ -16,18 +18,23 @@ def main():
  entries={};uploads=[];summary=[]
  sheet=Image.new('RGB',(1500,6*290),'#fff8ee');draw=ImageDraw.Draw(sheet)
  for index,job in enumerate(jobs):
-  n=job['verse'];master=ROOT/job['master'];assert master.exists(),f'Missing verse {n} master'
+  n=job['verse'];master=ROOT/job['master']
+  if not master.exists():
+   manifest=json.loads((OUT/'artwork-manifest.json').read_text(encoding='utf-8'))
+   assert all(row.get('master_retained') is False for row in manifest),'Missing unpublished master'
+   for row in manifest:
+    for name in ['phone','tablet']:verify_variant(row[name])
+   print('Already published; originals intentionally discarded. Reading files verified.');return
   im=Image.open(master).convert('RGB');assert im.width==im.height
   image=im.copy();image.thumbnail((240,240));x=(index%6)*250;y=(index//6)*290
   sheet.paste(image,(x+(250-image.width)//2,y));draw.text((x+12,y+249),f'Isha {n:02d}',fill='#3b2e25')
   row={'source_ref':job['source_ref'],'focalPoint':job['focal_point'],'safeRegion':job['safe_region'],'alt':job['scene'],'variants':{}}
-  masterkey=f"art/masters/isha/{n:02d}-{hashlib.sha256(master.read_bytes()).hexdigest()[:16]}.png";uploads.append((master,masterkey))
   for variant,edge,quality in [('phone',768,80),('tablet',1536,88)]:
    copy=im.copy();copy.thumbnail((edge,edge));path=DELIVERY/f'verse-{n:02d}-{variant}.webp';copy.save(path,'WEBP',quality=quality,method=6)
    digest=hashlib.sha256(path.read_bytes()).hexdigest();key=f'art/verses/v1/{digest[:24]}.webp'
    row['variants'][variant]={'uri':base+'/'+key,'width':copy.width,'height':copy.height,'bytes':path.stat().st_size};uploads.append((path,key))
   entries[job['source_ref']]=row
-  summary.append({'verse':n,'master':job['master'],'masterDimensions':[im.width,im.height],'masterUrl':base+'/'+masterkey,'phone':row['variants']['phone'],'tablet':row['variants']['tablet']})
+  summary.append({'verse':n,'master':job['master'],'masterDimensions':[im.width,im.height],'phone':row['variants']['phone'],'tablet':row['variants']['tablet']})
  sheet.crop((0,0,1500,3*290)).save(OUT/'contact-sheet.jpg',quality=90)
  (OUT/'artwork-manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
  if args.upload:
@@ -41,7 +48,13 @@ def main():
   registry.update(entries)
   temporary=registry_path.with_suffix('.json.tmp')
   temporary.write_text(json.dumps(registry,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temporary.replace(registry_path)
-  print('Published and verified',len(uploads),'objects; 18 masters, 36 delivery files.')
- print('Phone bytes',sum(e['variants']['phone']['bytes'] for e in entries.values()),'Tablet bytes',sum(e['variants']['tablet']['bytes'] for e in entries.values()),'Master bytes',sum((ROOT/j['master']).stat().st_size for j in jobs))
+  for row in summary:
+   for name in ['phone','tablet']:verify_variant(row[name])
+  for job,row in zip(jobs,summary):
+   path=OUT/'deliveries'/f"verse-{job['verse']:02d}.json";record=json.loads(path.read_text(encoding='utf-8'))
+   discard_local(record);save(path,record);row['master_retained']=False
+  save(OUT/'artwork-manifest.json',summary)
+  print('Published and verified',len(uploads),'reading files; originals discarded.')
+ print('Phone bytes',sum(e['variants']['phone']['bytes'] for e in entries.values()),'Tablet bytes',sum(e['variants']['tablet']['bytes'] for e in entries.values()))
 
 if __name__=='__main__':main()
