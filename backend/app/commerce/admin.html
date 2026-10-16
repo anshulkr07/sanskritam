@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sanskritam · Commerce administration</title>
+<style>
+:root{color-scheme:light;font:15px system-ui;color:#30271f;background:#fff8f0}body{max-width:1200px;margin:36px auto;padding:0 24px}h1{font-size:30px}h2{font-size:19px}section{padding:22px;background:white;border:1px solid #e9d8c5;border-radius:16px;margin:18px 0}input,select,textarea,button{font:inherit;padding:10px;border-radius:8px;border:1px solid #d9c1aa;margin:5px;max-width:96%;box-sizing:border-box}button{background:#b65322;color:white;cursor:pointer}textarea{display:block;width:98%;min-height:130px;font:13px ui-monospace,monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:450px;overflow:auto}label{display:block;margin:8px 0}.status{padding:14px;border-radius:10px;background:#f3dfc7}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #eee;padding:10px;text-align:left}small{color:#685e54}
+</style>
+<h1>Commerce administration</h1><p>Memberships, credits, fulfilment, and the cost of delivering them.</p>
+<section><label>Administrator token <input id="token" type="password" autocomplete="off"></label><button id="connect">Load dashboard</button><small>The token remains in this page's memory. It is never saved in browser storage.</small></section>
+<p id="status" class="status" role="status">Enter your administrator credentials.</p>
+<section><h2>Overview</h2><div id="summary"></div><pre id="overview"></pre></section>
+<section><h2>Catalogue</h2><label>Title id <input id="titleId" placeholder="gita:book"></label><textarea id="titleBody">{"slug":"gita","medium":"book","name":"Bhagavad Gita","credits":80,"published":false,"metadata":{"size":"standard","affiliates":[]}}</textarea><button data-action="title">Save title</button><pre id="titles"></pre></section>
+<section><h2>Configuration and verified AI costs</h2><select id="settingKey"><option>ai_costs</option><option>skip_credits</option><option>reward_countries</option><option>media_origins</option><option>prize_budget</option><option>marketing</option></select><textarea id="settingBody">{"ask":{"bound_inr":0.2,"verified_at":"","evidence":""},"voice":{"bound_inr":2,"verified_at":"","evidence":""}}</textarea><button data-action="setting">Save configuration</button><p><small>Cost evidence and verification date must be present before paid AI is enabled. Reward countries require an actual fulfilment route. Monthly prize default: ₹5,000 including delivery.</small></p><pre id="settings"></pre></section>
+<section><h2>Credit grants and audited corrections</h2><textarea id="grantBody">{"learner_id":"","amount":0,"reason":"","request_id":""}</textarea><button data-action="grant">Record grant or correction</button></section>
+<section><h2>Store settlements</h2><input id="purchaseId" placeholder="Purchase id"><textarea id="settlementBody">{"net_minor":0,"inr_paise":0,"currency":"INR","evidence":""}</textarea><button data-action="settlement">Record verified settlement</button><pre id="purchases"></pre></section>
+<section><h2>Referral fulfilment</h2><input id="rewardId" placeholder="Reward id"><textarea id="rewardBody">{"method":"gift","evidence":"","fees_minor":0,"currency":"INR","identity_reviewed":true,"duplicate_payment_reviewed":true}</textarea><button data-action="reward">Record completed fulfilment</button><small>Use only after the payment or gift has actually been delivered. A hold, threshold, and country-route check are enforced.</small><pre id="rewards"></pre></section>
+<section><h2>Organizer and prize review</h2><input id="eventId" placeholder="Event id"><textarea id="eventBody">{"state":"approved","evidence":"","hosting_purchase_id":null,"fulfilment":{}}</textarea><button data-action="event">Record review</button><pre id="events"></pre></section>
+<section><h2>Credit ledger and audit trail</h2><pre id="ledger"></pre><pre id="audit"></pre></section>
+<section><h2>Batch payout requests</h2><pre id="payouts"></pre><input id="payoutId" placeholder="Payout request id"><button data-action="payout">Fulfil selected batch using referral fulfilment details above</button></section>
+<section><h2>Judge submitted entries</h2><pre id="entries"></pre><input id="entryId" placeholder="Entry id"><textarea id="judgeBody">{"score":0,"state":"reviewed","rubric":"","integrity_reviewed":true}</textarea><button data-action="judge">Record judging</button><button id="listenEntry">Listen to private recording</button><audio id="entryPlayer" controls></audio></section>
+<section><h2>Allocate a funded prize</h2><textarea id="prizeBody">{"event_id":"","learner_id":"","cost_inr_paise":0,"sponsor_inr_paise":0,"evidence":"","integrity_reviewed":true}</textarea><button data-action="prize">Allocate prize against monthly budget</button><pre id="prizes"></pre><input id="prizeId" placeholder="Prize case id"><button data-action="prizeFulfil">Record prize delivery using fulfilment details above</button></section>
+<script>
+const $=id=>document.getElementById(id);let credential='';
+async function api(path,method='GET',body){const response=await fetch('/commerce/admin/'+path,{method,headers:{'X-Admin-Token':credential,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const value=await response.json();if(!response.ok)throw Error(JSON.stringify(value.detail));return value;}
+async function load(){const data=await api('data');$('summary').textContent='Role: '+data.role;$('overview').textContent=JSON.stringify(data.report||{},null,2);for(const name of ['titles','settings','purchases','rewards','events','ledger','audit','payouts','entries','prizes'])$(name).textContent=JSON.stringify(data[name]||[],null,2);$('status').textContent='Dashboard loaded.';}
+$('connect').onclick=async()=>{credential=$('token').value;$('token').value='';try{await load();}catch(error){$('status').textContent=error.message;}};
+document.querySelectorAll('[data-action]').forEach(button=>button.onclick=async()=>{try{const action=button.dataset.action;let path,method='POST',body;
+if(action==='title'){path='titles/'+encodeURIComponent($('titleId').value);method='PUT';body=JSON.parse($('titleBody').value);}
+if(action==='setting'){path='settings/'+$('settingKey').value;method='PUT';body={value:JSON.parse($('settingBody').value)};}
+if(action==='grant'){path='grants';body=JSON.parse($('grantBody').value);if(!body.request_id)body.request_id=crypto.randomUUID();}
+if(action==='settlement'){path='purchases/'+encodeURIComponent($('purchaseId').value)+'/settlement';body=JSON.parse($('settlementBody').value);}
+if(action==='reward'){path='rewards/'+encodeURIComponent($('rewardId').value)+'/fulfil';body=JSON.parse($('rewardBody').value);}
+if(action==='event'){path='events/'+encodeURIComponent($('eventId').value)+'/review';body=JSON.parse($('eventBody').value);}
+if(action==='payout'){path='payouts/'+encodeURIComponent($('payoutId').value)+'/fulfil';body=JSON.parse($('rewardBody').value);}
+if(action==='judge'){path='entries/'+encodeURIComponent($('entryId').value)+'/judge';body=JSON.parse($('judgeBody').value);}
+if(action==='prize'){path='prizes';body=JSON.parse($('prizeBody').value);}
+if(action==='prizeFulfil'){path='prizes/'+encodeURIComponent($('prizeId').value)+'/fulfil';body=JSON.parse($('rewardBody').value);}
+await api(path,method,body);await load();}catch(error){$('status').textContent=error.message;}});
+const productOption=document.createElement('option');productOption.textContent='products';$('settingKey').append(productOption);
+$('listenEntry').onclick=async()=>{try{const response=await fetch('/commerce/admin/entries/'+encodeURIComponent($('entryId').value)+'/audio',{headers:{'X-Admin-Token':credential}});if(!response.ok)throw Error('Recording unavailable');$('entryPlayer').src=URL.createObjectURL(await response.blob());await $('entryPlayer').play();}catch(error){$('status').textContent=error.message;}};
+</script></html>

@@ -6,7 +6,8 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CatalogGame, playApi, type RushPack } from "../games/v2/client";

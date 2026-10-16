@@ -14,7 +14,7 @@
 import React from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
-import { cachedGet, peekCache } from "../services/apiCache";
+import { cachedGet, peekCache, subscribeInvalidation } from "../services/apiCache";
 
 export interface QueryResult<T> {
   data: T | null;
@@ -36,6 +36,9 @@ export function useQuery<T>(
     key, data: cached ?? null, loading: cached === undefined, failed: false,
   }));
   const [nonce, setNonce] = React.useState(0);
+  React.useEffect(() => subscribeInvalidation(prefix => {
+    if (!prefix || key.startsWith(prefix)) setNonce(n => n + 1);
+  }), [key]);
   const fetcherRef = React.useRef(fetcher);
   fetcherRef.current = fetcher;
 

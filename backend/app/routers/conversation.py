@@ -43,7 +43,8 @@ from app.services.tutor import (
 
 logger = logging.getLogger("shabd.conversation")
 
-router = APIRouter()
+from app.commerce.metering import CommerceRoute
+router = APIRouter(route_class=CommerceRoute)
 
 
 # ─── Pydantic schemas ────────────────────────────────────────────────────

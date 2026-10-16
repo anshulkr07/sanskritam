@@ -46,7 +46,8 @@ from app.services.verse_study import load_answer, save_answer
 
 logger = logging.getLogger("shabd.ask_talk")
 
-router = APIRouter(prefix="/ask")
+from app.commerce.metering import CommerceRoute
+router = APIRouter(prefix="/ask", route_class=CommerceRoute)
 
 #: The ask_answers rows this route keeps are filed under this subject.
 STORE_SUBJECT = "__ask__"

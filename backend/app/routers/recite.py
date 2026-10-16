@@ -106,6 +106,8 @@ async def score_recite(
     # 3. Daily cap.
     day = local_date_of(datetime.now(timezone.utc), getattr(learner, "timezone", None))
     secs = estimate_seconds(data)
+    from app.commerce.access import require_practice
+    require_practice(db, learner, shloka, secs)
     dur_ms = int(secs * 1000)
     # Sum today's duration.
     from sqlalchemy import func as _func

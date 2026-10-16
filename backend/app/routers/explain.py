@@ -48,7 +48,8 @@ from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 
 logger = logging.getLogger("shabd.ask")
 
-router = APIRouter(prefix="/explain")
+from app.commerce.metering import CommerceRoute
+router = APIRouter(prefix="/explain", route_class=CommerceRoute)
 
 
 class AskPlace(BaseModel):

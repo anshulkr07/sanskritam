@@ -7,7 +7,8 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CatalogGame, playApi, type SmritiPackView } from "../games/v2/client";

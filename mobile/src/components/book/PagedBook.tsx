@@ -1,10 +1,13 @@
 import Modal from "../AudioModal";
-// Paged books (handover_reading_shelf.md 7.4-7.7): contents, chapter reader,
-// Plus preview sheet. Classic books are untouched; these components only
-// render paged rows from GET /canon?include=paged.
+// Paged books (handover_reading_shelf.md 7.4-7.7): the contents page, built in
+// the same shape as a classic book's (read/BookContents) — cover, what the
+// book is, how far in you are, Continue, then chapters that open onto their
+// verses. Tapping a verse opens the fullscreen Book reader; that is the one
+// reading screen for every book. Plus preview sheet for locked chapters.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { CommonActions, useNavigation } from "@react-navigation/native";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Pressable,
   SectionList,
@@ -13,33 +16,21 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Animated, { FadeIn } from "react-native-reanimated";
 
-import { api, type CanonText, type PagedChapters, type Shloka } from "../../api/client";
+import { api, type CanonText, type PagedChapter, type Shloka } from "../../api/client";
+import { useQuery } from "../../hooks/useQuery";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
-import {
-  getReadingChapter,
-  getReadingPosition,
-  setReadingChapter,
-  setReadingPosition,
-} from "../../services/readingProgress";
-import { color, font, space } from "../../theme";
+import { getReadingChapter, getReadingPosition } from "../../services/readingProgress";
+import { color, space } from "../../theme";
 import { plain } from "../../utils/text";
-import {
-  nextChapter,
-  positionKey,
-  prevChapter,
-  sectionsOf,
-} from "../../utils/paged";
-import BookCover from "./BookCover";
+import { firstLine, parseRef } from "../../utils/verses";
+import { positionKey, sectionsOf } from "../../utils/paged";
 import CoverArt from "./CoverArt";
-import PageCurlBook from "./PageCurlBook";
-import ReaderSlider from "../ReaderSlider";
 import { Button, EmptyState } from "../ui";
 import { T, sa, ui } from "../../read/look";
-import { NumBox, SectionHead, SquareButton } from "../../read/ui";
+import { NumBox, ProgressLine, SectionHead, SquareButton } from "../../read/ui";
 
 export function PlusSheet({
   visible,
@@ -49,6 +40,7 @@ export function PlusSheet({
   onClose: () => void;
 }) {
   const reduced = useReducedMotion();
+  const membershipNavigation = useNavigation();
   return (
     <Modal
       visible={visible}
@@ -58,8 +50,11 @@ export function PlusSheet({
     >
       <View style={styles.sheetWrap}>
         <View style={styles.sheet}>
-          <Text style={styles.sheetTitle}>Part of Plus</Text>
-          <Text style={styles.sheetLine}>This chapter opens with Plus.</Text>
+          <Text style={styles.sheetTitle}>Unlock with credits</Text>
+          <Text style={styles.sheetLine}>Unlock this title from Membership &amp; credits. Membership adds offline access, background audio and more active slots.</Text>
+          <Pressable style={styles.sheetBtn} accessibilityRole="button" onPress={() => {
+            onClose(); membershipNavigation.dispatch(CommonActions.navigate("MainTabs", { screen: "Membership" }));
+          }}><Text style={styles.sheetBtnText}>Membership &amp; credits</Text></Pressable>
           <Pressable
             onPress={onClose}
             style={styles.sheetBtn}
@@ -74,6 +69,28 @@ export function PlusSheet({
   );
 }
 
+const DEPTH_LABEL: Record<string, string> = {
+  full: "Full text",
+  studied: "Selected verses",
+  index: "Catalogue selections",
+};
+
+/** One item of the flattened contents: a chapter head, one of its verses, or
+ *  the row shown while a chapter's verses load (or after they failed). */
+type Row =
+  | { kind: "chapter"; c: PagedChapter }
+  | { kind: "verse"; chapter: string; v: Shloka; at: number }
+  | { kind: "status"; chapter: string };
+
+interface IndexSection {
+  key: string;
+  /** This chapter is the first of its section: draw the "Part X" label. */
+  partFirst: boolean;
+  label: string;
+  chapter: PagedChapter;
+  data: Row[];
+}
+
 export function PagedBookIndex({
   text,
   onBack,
@@ -84,48 +101,119 @@ export function PagedBookIndex({
   onOpenChapter: (chapter: string, index: number) => void;
 }) {
   const { sized } = useTypeScale();
-  const [data, setData] = useState<PagedChapters | null>(null);
-  const [failed, setFailed] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const q = useQuery(`paged-index-${text.slug}`, () => api.canonChapters(text.slug));
+  const data = q.data;
   const [plusOpen, setPlusOpen] = useState(false);
   const [resume, setResume] = useState<{ chapter: string; index: number } | null>(null);
+  // The chapter open on its verses (a one-chapter book is always open).
+  const [openCh, setOpenCh] = useState<string | null>(null);
+  // Chapter verses load the first time a chapter opens, and stay.
+  const [verses, setVerses] = useState<Record<string, Shloka[]>>({});
+  const [vLoading, setVLoading] = useState<Record<string, boolean>>({});
+  const [vFailed, setVFailed] = useState<Record<string, boolean>>({});
+  const got = useRef(new Set<string>());
+  const busy = useRef(new Set<string>());
 
-  const load = useCallback(() => {
-    setLoading(true);
-    setFailed(false);
-    api
-      .canonChapters(text.slug)
-      .then(async (d) => {
-        setData(d);
-        // Continue: saved chapter and verse, when the chapter still exists.
-        try {
-          const ch = await getReadingChapter(text.slug);
-          const chapters = d.chapters.map((c) => c.chapter);
-          const at = ch && chapters.includes(ch) ? ch : d.preview.chapter;
-          const pos = await getReadingPosition(positionKey(text.slug, at));
-          setResume({ chapter: at, index: Number.isFinite(pos) ? pos : 0 });
-        } catch {
-          setResume({ chapter: d.preview.chapter, index: 0 });
-        }
-      })
-      .catch(() => setFailed(true))
-      .finally(() => setLoading(false));
-  }, [text.slug]);
-
+  // Continue: the saved chapter and verse, when the chapter still exists.
   useEffect(() => {
-    load();
-  }, [load]);
+    if (!data) return;
+    let alive = true;
+    (async () => {
+      let at = data.preview.chapter;
+      let pos = 0;
+      try {
+        const ch = await getReadingChapter(text.slug);
+        const chapters = data.chapters.map((c) => c.chapter);
+        at = ch && chapters.includes(ch) ? ch : data.preview.chapter;
+        pos = await getReadingPosition(positionKey(text.slug, at));
+      } catch {
+        /* no saved spot: the book opens at its beginning */
+      }
+      if (!alive) return;
+      setResume({ chapter: at, index: Number.isFinite(pos) && pos > 0 ? Math.floor(pos) : 0 });
+      setOpenCh(at);
+    })();
+    return () => { alive = false; };
+  }, [data, text.slug]);
 
-  const sections = useMemo(
-    () => sectionsOf(data?.chapters ?? []),
-    [data],
+  const loadVerses = useCallback(
+    (chapter: string) => {
+      if (got.current.has(chapter) || busy.current.has(chapter)) return;
+      busy.current.add(chapter);
+      setVLoading((l) => ({ ...l, [chapter]: true }));
+      setVFailed((f) => ({ ...f, [chapter]: false }));
+      api
+        .canonVerses(text.slug, chapter)
+        .then((d) => {
+          got.current.add(chapter);
+          setVerses((v) => ({ ...v, [chapter]: d.verses }));
+        })
+        .catch(() => setVFailed((f) => ({ ...f, [chapter]: true })))
+        .finally(() => {
+          busy.current.delete(chapter);
+          setVLoading((l) => ({ ...l, [chapter]: false }));
+        });
+    },
+    [text.slug],
   );
 
-  if (loading) {
+  const chapters = useMemo(() => data?.chapters ?? [], [data]);
+  const many = chapters.length > 1;
+
+  // The chapter you are inside opens by default (Īśopaniṣad-style one-chapter
+  // books simply list their verses).
+  useEffect(() => {
+    if (!data) return;
+    if (chapters.length === 1) loadVerses(chapters[0].chapter);
+    else if (openCh !== null) loadVerses(openCh);
+  }, [data, chapters, openCh, loadVerses]);
+
+  const order = useMemo(() => chapters.map((c) => c.chapter), [chapters]);
+  const total = useMemo(() => chapters.reduce((a, c) => a + c.count, 0), [chapters]);
+  const nowAt = resume ? order.indexOf(resume.chapter) : -1;
+  // Where in the whole book the saved spot is, counts + verse index.
+  const position = useMemo(() => {
+    if (!resume || nowAt < 0) return 0;
+    let before = 0;
+    for (let i = 0; i < nowAt; i++) before += chapters[i]?.count ?? 0;
+    return before + Math.max(0, resume.index);
+  }, [chapters, nowAt, resume]);
+  const started = position > 0;
+
+  const rowsOf = useCallback(
+    (c: PagedChapter): Row[] => {
+      const list = verses[c.chapter];
+      const verseRows = list?.map((v, at) => ({ kind: "verse" as const, chapter: c.chapter, v, at }));
+      if (verseRows) return many ? [{ kind: "chapter", c }, ...verseRows] : verseRows;
+      const status: Row[] = [{ kind: "status", chapter: c.chapter }];
+      if (!many) return status;
+      // A collapsed chapter shows only its head.
+      return openCh === c.chapter ? [{ kind: "chapter", c }, ...status] : [{ kind: "chapter", c }];
+    },
+    [many, openCh, verses],
+  );
+
+  const sections = useMemo<IndexSection[]>(() => {
+    const out: IndexSection[] = [];
+    for (const s of sectionsOf(chapters)) {
+      s.chapters.forEach((c, i) => {
+        out.push({
+          key: c.chapter || "one",
+          partFirst: i === 0 && !!s.section,
+          label: s.section ? `Part ${s.section}` : "",
+          chapter: c,
+          data: rowsOf(c),
+        });
+      });
+    }
+    return out;
+  }, [chapters, rowsOf]);
+
+  if (q.loading && !data) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.body}>
-          <Text style={[styles.title, { fontSize: sized(font.sizes.xl) }]}>
+          <Text style={[styles.title, { fontSize: sized(25) }]}>
             {plain(text.title_en)}
           </Text>
           <Text style={styles.hint}>Loading chapters.</Text>
@@ -134,7 +222,7 @@ export function PagedBookIndex({
     );
   }
 
-  if (failed || !data) {
+  if (!data) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <View style={styles.center}>
@@ -142,7 +230,7 @@ export function PagedBookIndex({
             title="Couldn't load this book. Try again."
             hint=""
           />
-          <Button label="Try again" tone="primary" onPress={load} style={{ marginTop: space.md }} />
+          <Button label="Try again" tone="primary" onPress={q.retry} style={{ marginTop: space.md }} />
           <Pressable
             onPress={onBack}
             style={styles.backRow}
@@ -157,24 +245,21 @@ export function PagedBookIndex({
     );
   }
 
-  const started = (resume?.index ?? 0) > 0;
-  const totalVerses = data.chapters.reduce((a, c) => a + c.count, 0);
-  const order = data.chapters.map((c) => c.chapter);
-  const nowAt = resume ? order.indexOf(resume.chapter) : -1;
-  const many = data.chapters.length > 1;
-  const open = () => {
-    if (resume) onOpenChapter(resume.chapter, resume.index);
-  };
+  const facts: string[] = [];
+  facts.push(many ? `${chapters.length} chapters · ${total} verses` : `${total} verses`);
+  if (text.verses_planned && text.verses_planned > total) facts[0] += ` of ${text.verses_planned}`;
+  if (text.depth && DEPTH_LABEL[text.depth]) facts.push(DEPTH_LABEL[text.depth]);
+
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
-      <SectionList
-        sections={sections.map((s) => ({
-          title: s.section ? `Part ${s.section}` : "",
-          data: s.chapters,
-        }))}
-        keyExtractor={(c) => (c as { chapter: string }).chapter || "one"}
+      <SectionList<Row, IndexSection>
+        sections={sections}
+        keyExtractor={(item) =>
+          item.kind === "chapter" ? `c-${item.c.chapter || "one"}` : item.kind === "verse" ? `v-${item.v.id}` : `s-${item.chapter}`
+        }
         contentContainerStyle={styles.body}
         stickySectionHeadersEnabled={false}
+        initialNumToRender={20}
         ListHeaderComponent={
           <View>
             <Pressable onPress={onBack} style={styles.backRow} accessibilityRole="button" accessibilityLabel="Back to Books">
@@ -188,284 +273,136 @@ export function PagedBookIndex({
                   {plain(text.title_en)}
                 </Text>
                 {!!text.title_sa && <Text style={[sa(18), { color: T.ink2 }]}>{text.title_sa}</Text>}
-                <Text style={styles.fact}>
-                  {many ? `${data.chapters.length} chapters · ${totalVerses} verses` : `${totalVerses} verses`}
-                </Text>
-                {text.locked ? <Text style={styles.fact}>Opening chapters free · rest with Plus</Text> : null}
+                <View style={styles.facts}>
+                  {facts.map((f) => (
+                    <Text key={f} style={styles.fact}>
+                      {f}
+                    </Text>
+                  ))}
+                  {text.locked ? <Text style={styles.fact}>Opening chapters free · rest with Plus</Text> : null}
+                </View>
               </View>
             </View>
+
+            {started && (
+              <View style={styles.progress}>
+                <View style={styles.progressRow}>
+                  <Text style={styles.progressPct}>{Math.round((position / Math.max(1, total)) * 100)}% read</Text>
+                  {many && nowAt >= 0 && (
+                    <Text style={styles.progressWhere}>
+                      Chapter {nowAt + 1} of {chapters.length}
+                    </Text>
+                  )}
+                </View>
+                <ProgressLine frac={position / Math.max(1, total)} />
+              </View>
+            )}
+
             <View style={styles.actions}>
               <SquareButton
                 label={started && resume ? `Continue${resume.chapter ? ` · chapter ${resume.chapter}` : ""}` : "Start reading"}
                 icon="play"
-                onPress={open}
+                onPress={() => resume && onOpenChapter(resume.chapter, resume.index)}
                 style={{ flex: 1 }}
               />
             </View>
-            <SectionHead title={many ? "Chapters" : "Verses"} right={many ? `${data.chapters.length}` : undefined} style={styles.listHead} />
+
+            <SectionHead
+              title={many ? "Chapters" : "Verses"}
+              right={`${many ? chapters.length : total}`}
+              style={styles.listHead}
+            />
             <View style={styles.rule} />
           </View>
         }
-        renderSectionHeader={({ section }) =>
-          section.title ? <Text style={styles.sectionLabel}>{section.title}</Text> : null
-        }
-        renderItem={({ item }) => {
-          const c = item as { chapter: string; count: number; locked: boolean; first_ref: string };
+        renderSectionHeader={({ section }) => {
+          const c = section.chapter;
+          if (!many) return section.partFirst ? <Text style={styles.sectionLabel}>{section.label}</Text> : null;
           const label = c.chapter ? `Chapter ${c.chapter}` : "Verses";
           const i = order.indexOf(c.chapter);
           const state = !started || nowAt < 0 ? "ahead" : i < nowAt ? "done" : i === nowAt ? "now" : "ahead";
+          const isOpen = openCh === c.chapter;
+          return (
+            <>
+              {section.partFirst ? <Text style={styles.sectionLabel}>{section.label}</Text> : null}
+              <Pressable
+                onPress={() => {
+                  haptics.tap();
+                  if (c.locked) {
+                    setPlusOpen(true);
+                    return;
+                  }
+                  setOpenCh((cur) => (cur === c.chapter ? null : c.chapter));
+                }}
+                style={styles.chapter}
+                accessibilityRole="button"
+                accessibilityState={{ expanded: isOpen && !c.locked }}
+                accessibilityLabel={c.locked ? `${label}, Plus` : `${label}. ${c.count} verses.`}
+              >
+                <NumBox state={state} label={c.chapter || "1"} />
+                <View style={styles.rowText}>
+                  <Text style={styles.rowTitle}>{label}</Text>
+                  <Text style={[styles.rowSub, state === "now" && styles.rowSubNow]}>
+                    {state === "now" && resume ? `You are at verse ${resume.index + 1} of ${c.count}` : `${c.count} verses`}
+                    {c.locked ? " · Plus" : ""}
+                  </Text>
+                </View>
+                {c.locked ? (
+                  <Ionicons name="lock-closed" size={18} color={T.ink3} />
+                ) : (
+                  <Ionicons name={isOpen ? "chevron-up" : "chevron-down"} size={16} color={T.ink3} />
+                )}
+              </Pressable>
+            </>
+          );
+        }}
+        renderItem={({ item }) => {
+          if (item.kind === "chapter") return <View />;
+          if (item.kind === "status") {
+            const failedHere = vFailed[item.chapter];
+            const loadingHere = vLoading[item.chapter];
+            return (
+              <Pressable
+                onPress={() => loadVerses(item.chapter)}
+                disabled={!failedHere}
+                accessibilityRole={failedHere ? "button" : undefined}
+                accessibilityLabel={failedHere ? "Couldn't load these verses. Tap to try again." : undefined}
+                style={[styles.verse, { marginLeft: many ? 48 : 0 }]}
+              >
+                <Text style={styles.statusLine}>
+                  {failedHere ? "Couldn't load these verses. Tap to retry." : loadingHere ? "Loading verses…" : "No verses shown here."}
+                </Text>
+              </Pressable>
+            );
+          }
+          const here = started && item.chapter === resume?.chapter && item.at === resume.index;
+          const { nums } = parseRef(item.v.source_ref);
+          const num = nums.length > 0 ? nums[nums.length - 1] : item.at + 1;
           return (
             <Pressable
               onPress={() => {
                 haptics.tap();
-                if (c.locked) {
-                  setPlusOpen(true);
-                  return;
-                }
-                onOpenChapter(c.chapter, i === nowAt && resume ? resume.index : 0);
+                onOpenChapter(item.chapter, item.at);
               }}
-              style={styles.row}
               accessibilityRole="button"
-              accessibilityLabel={c.locked ? `${label}, Plus` : `${label}. ${c.count} verses.`}
+              accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}`}
+              style={[styles.verse, { marginLeft: (many ? 48 : 0) - (here ? 8 : 0) }, here && styles.verseHere]}
             >
-              <NumBox state={state} label={c.chapter || "1"} />
-              <View style={styles.rowText}>
-                <Text style={styles.rowTitle}>{label}</Text>
-                <Text style={[styles.rowSub, state === "now" && styles.rowSubNow]}>
-                  {state === "now" && resume ? `You are at verse ${resume.index + 1} of ${c.count}` : `${c.count} verses`}
-                  {c.locked ? " · Plus" : ""}
-                </Text>
-              </View>
-              {c.locked ? (
-                <Ionicons name="lock-closed" size={18} color={T.ink3} />
-              ) : (
-                <Ionicons name="chevron-forward" size={16} color={T.ink3} />
+              <Text style={[styles.verseNum, here && { color: T.action }]}>{num}</Text>
+              <Text style={[sa(16), styles.verseLine]} numberOfLines={1}>
+                {firstLine(item.v.devanagari)}
+              </Text>
+              {here && (
+                <View style={styles.hereTag}>
+                  <Ionicons name="bookmark" size={12} color={T.action} />
+                  <Text style={styles.hereText}>Here</Text>
+                </View>
               )}
             </Pressable>
           );
         }}
+        renderSectionFooter={({ section }) => (many ? <View style={styles.rule} key={section.key} /> : null)}
       />
-      <PlusSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
-    </SafeAreaView>
-  );
-}
-
-export function PagedChapterReader({
-  text,
-  chapter,
-  startIndex,
-  onBack,
-  onChapter,
-  renderVerse,
-  onChant,
-}: {
-  text: CanonText;
-  chapter: string;
-  startIndex: number;
-  onBack: () => void;
-  onChapter: (chapter: string) => void;
-  /** One verse as a page. The Reader passes its own page (tappable words,
-   *  meanings, Ask) so a paged book reads exactly like a classic one. */
-  renderVerse: (verse: Shloka, previous: Shloka | null, position: number, total: number) => React.ReactNode;
-  /** Opens this chapter in Chant mode at the given verse; offered only once a verse of it has a chant. */
-  onChant?: (index: number) => void;
-}) {
-  const reduced = useReducedMotion();
-  const [verses, setVerses] = useState<Shloka[]>([]);
-  const [lockedAfter, setLockedAfter] = useState<number | null>(null);
-  const [failed, setFailed] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [at, setAt] = useState(startIndex);
-  const [plusOpen, setPlusOpen] = useState(false);
-  const [chapters, setChapters] = useState<PagedChapters | null>(null);
-
-  const load = useCallback(() => {
-    setLoading(true);
-    setFailed(false);
-    api
-      .canonChapters(text.slug)
-      .then((d) => setChapters(d))
-      .catch(() => {});
-    api
-      .canonVerses(text.slug, chapter)
-      .then((d) => {
-        setVerses(d.verses);
-        setLockedAfter(d.locked_after ?? null);
-        if ((d.locked_after ?? null) !== null) setPlusOpen(false);
-      })
-      .catch(() => setFailed(true))
-      .finally(() => setLoading(false));
-  }, [text.slug, chapter]);
-
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  useEffect(() => {
-    setAt(startIndex);
-  }, [startIndex, chapter]);
-
-  if (loading) {
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        <View style={styles.body}>
-          <Text style={styles.hint}>Loading chapter.</Text>
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  if (failed) {
-    return (
-      <SafeAreaView style={styles.safe} edges={["top"]}>
-        <View style={styles.center}>
-          <EmptyState title="Couldn't load this chapter. Try again." hint="" />
-          <Button label="Try again" tone="primary" onPress={load} style={{ marginTop: space.md }} />
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  const next = chapters ? nextChapter(chapters.chapters, chapter) : null;
-  const prev = chapters ? prevChapter(chapters.chapters, chapter) : null;
-  // Pages: verses, then a Next chapter page after the last verse.
-  const count = verses.length + (next ? 1 : 0);
-  const safe = Math.max(0, Math.min(at, Math.max(0, count - 1)));
-
-  const turnTo = (i: number) => {
-    if (lockedAfter !== null && i >= lockedAfter) {
-      setPlusOpen(true);
-      return;
-    }
-    const clamped = Math.max(0, Math.min(count - 1, i));
-    setAt(clamped);
-    if (clamped < verses.length) {
-      setReadingPosition(positionKey(text.slug, chapter), clamped);
-      setReadingChapter(text.slug, chapter);
-    }
-  };
-
-  return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
-      <View style={styles.readHeader}>
-        <Pressable
-          onPress={onBack}
-          style={styles.headerBtn}
-          accessibilityRole="button"
-          accessibilityLabel={`Back to ${plain(text.title_en)} contents`}
-        >
-          <Ionicons name="arrow-back" size={20} color={color.saffron} />
-          <Text style={styles.headerBtnText}>Contents</Text>
-        </Pressable>
-        <Text style={styles.readPos} numberOfLines={1}>
-          {safe + 1} / {count}
-        </Text>
-        {onChant && verses.some((v) => !!v.chant) ? (
-          <Pressable
-            onPress={() => onChant(Math.min(safe, Math.max(0, verses.length - 1)))}
-            style={styles.headerBtnRight}
-            accessibilityRole="button"
-            accessibilityLabel={`Chant ${plain(text.title_en)}${chapter ? ` chapter ${chapter}` : ""}`}
-          >
-            <Text style={styles.headerBtnText}>Chant</Text>
-          </Pressable>
-        ) : (
-          <View style={styles.headerBtnRight} />
-        )}
-      </View>
-      <View style={{ flex: 1, paddingHorizontal: space.md, paddingBottom: space.xs }}>
-        <PageCurlBook
-          key={`${text.slug}#${chapter}`}
-          index={safe}
-          count={count}
-          onIndexChange={turnTo}
-          renderPage={(i) => {
-            if (i < verses.length) {
-              const v = verses[i];
-              return v ? (
-                <React.Fragment key={v.id}>
-                  {renderVerse(v, verses[i - 1] ?? null, i, verses.length)}
-                </React.Fragment>
-              ) : (
-                <View style={styles.page} />
-              );
-            }
-            return (
-              <View style={styles.page}>
-                <Text style={styles.pageSource}>Next</Text>
-                <Text style={[styles.verse, { fontSize: 20 }]}>
-                  {next ? `Next chapter${next.chapter ? ` ${next.chapter}` : ""}` : ""}
-                </Text>
-                <Pressable
-                  onPress={() => next && onChapter(next.chapter)}
-                  style={styles.nextBtn}
-                  accessibilityRole="button"
-                  accessibilityLabel={next ? `Next chapter${next.chapter ? ` ${next.chapter}` : ""}` : "Next chapter"}
-                >
-                  <Text style={styles.nextText}>Next chapter</Text>
-                </Pressable>
-              </View>
-            );
-          }}
-          cover={
-            <BookCover
-              variant="full"
-              titleSa={text.title_sa}
-              titleEn={plain(text.title_en)}
-              caption={`${verses.length} verses`}
-            />
-          }
-          labelFor={(i) => verses[i]?.source_ref ?? ""}
-          reducedMotion={reduced}
-        />
-      </View>
-      <ReaderSlider
-        index={safe}
-        count={count}
-        labelFor={(i) => verses[i]?.source_ref ?? ""}
-        onScrubEnd={(i) => turnTo(i)}
-      />
-      <View style={styles.turnRow}>
-        <Pressable
-          onPress={() => {
-            if (safe <= 0 && prev) onChapter(prev.chapter);
-            else turnTo(safe - 1);
-          }}
-          disabled={safe <= 0 && !prev}
-          style={styles.turnBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Previous chapter or verse"
-        >
-          <Ionicons name="chevron-back" size={22} color={color.saffron} />
-          <Text style={styles.turnText}>Previous</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            if (safe >= count - 1) return;
-            if (safe + 1 >= verses.length && next) onChapter(next.chapter);
-            else turnTo(safe + 1);
-          }}
-          disabled={safe >= count - 1}
-          style={styles.turnBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Next chapter or verse"
-        >
-          <Text style={styles.turnText}>Next</Text>
-          <Ionicons name="chevron-forward" size={22} color={color.saffron} />
-        </Pressable>
-      </View>
-      {prev && safe === 0 ? (
-        <Animated.View entering={reduced ? undefined : FadeIn.duration(120)}>
-          <Pressable
-            onPress={() => prev && onChapter(prev.chapter)}
-            style={styles.edgeBtn}
-            accessibilityRole="button"
-            accessibilityLabel={`Previous chapter${prev.chapter ? ` ${prev.chapter}` : ""}`}
-          >
-            <Text style={styles.edgeText}>Previous chapter</Text>
-          </Pressable>
-        </Animated.View>
-      ) : null}
       <PlusSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
     </SafeAreaView>
   );
@@ -479,83 +416,37 @@ const styles = StyleSheet.create({
   hint: { color: color.inkSoft, marginTop: 8 },
   backRow: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 48, alignSelf: "flex-start" },
   backText: { ...ui("semibold"), fontSize: 15, color: T.ink },
-  sectionLabel: { ...ui("bold"), fontSize: 12, letterSpacing: 1.4, color: T.ink3, marginTop: 16, marginBottom: 2 },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 14,
-    minHeight: 62,
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: T.line,
-  },
-  rowText: { flex: 1, minWidth: 0 },
-  rowSubNow: { ...ui("semibold"), color: T.action },
   hero: { flexDirection: "row", gap: 16, marginTop: 2 },
-  heroText: { flex: 1, minWidth: 0, paddingTop: 2, gap: 2 },
-  fact: { ...ui("regular"), fontSize: 14, color: T.ink2, marginTop: 6 },
-  actions: { flexDirection: "row", marginTop: 18 },
+  heroText: { flex: 1, minWidth: 0, paddingTop: 2 },
+  facts: { marginTop: 10, gap: 3 },
+  fact: { ...ui("regular"), fontSize: 14, color: T.ink2 },
+  progress: { marginTop: 18, gap: 7 },
+  progressRow: { flexDirection: "row", justifyContent: "space-between" },
+  progressPct: { ...ui("semibold"), fontSize: 13.5, color: T.ink },
+  progressWhere: { ...ui("regular"), fontSize: 13.5, color: T.ink3 },
+  actions: { flexDirection: "row", gap: 10, marginTop: 16 },
   listHead: { marginTop: 26, marginBottom: 8 },
   rule: { height: 1, backgroundColor: T.line },
+  sectionLabel: { ...ui("bold"), fontSize: 12, letterSpacing: 1.4, color: T.ink3, marginTop: 16, marginBottom: 2 },
+  chapter: { flexDirection: "row", alignItems: "center", gap: 14, minHeight: 62, paddingVertical: 8 },
+  rowText: { flex: 1, minWidth: 0 },
   rowTitle: { ...ui("semibold"), fontSize: 16, lineHeight: 21, color: T.ink },
   rowSub: { ...ui("regular"), color: T.ink3, fontSize: 13 },
-  readHeader: {
+  rowSubNow: { ...ui("semibold"), color: T.action },
+  verse: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: space.lg,
-    paddingTop: 8,
-    paddingBottom: 4,
+    gap: 10,
+    minHeight: 46,
+    borderTopWidth: 1,
+    borderTopColor: "#EFE6D6",
   },
-  headerBtn: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 44, minWidth: 64 },
-  headerBtnText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm },
-  headerBtnRight: { minHeight: 44, minWidth: 64 },
-  readPos: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft, flex: 1, textAlign: "center" },
-  page: {
-    flex: 1,
-    backgroundColor: "#FFFDF7",
-    borderTopLeftRadius: 3,
-    borderBottomLeftRadius: 3,
-    borderTopRightRadius: 8,
-    borderBottomRightRadius: 8,
-    paddingHorizontal: 12,
-    overflow: "hidden",
-  },
-  pageSource: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: 12,
-    color: color.saffron,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    paddingTop: 12,
-  },
-  verse: { color: color.ink, lineHeight: 46, marginTop: 8 },
-  turnRow: { flexDirection: "row", justifyContent: "space-between", paddingHorizontal: space.lg, paddingVertical: 8, gap: 12 },
-  turnBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    backgroundColor: color.surface,
-    borderRadius: 12,
-    paddingHorizontal: 20,
-    minHeight: 52,
-    flex: 1,
-    justifyContent: "center",
-  },
-  turnText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base },
-  nextBtn: {
-    marginTop: 12,
-    minHeight: 52,
-    borderRadius: 12,
-    backgroundColor: color.saffronBtn,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
-  nextText: { color: "#FFFFFF", fontWeight: "800", fontSize: 16 },
-  edgeBtn: { alignItems: "center", paddingVertical: 8, minHeight: 44, justifyContent: "center" },
-  edgeText: { color: color.saffronText, fontWeight: "700" },
+  verseHere: { backgroundColor: T.surface, paddingHorizontal: 8, marginRight: -8 },
+  verseNum: { ...ui("semibold"), width: 30, fontSize: 13.5, color: T.ink3, fontVariant: ["tabular-nums"] },
+  verseLine: { flex: 1, minWidth: 0, color: T.ink },
+  hereTag: { flexDirection: "row", alignItems: "center", gap: 4 },
+  hereText: { ...ui("bold"), fontSize: 12, color: T.action },
+  statusLine: { ...ui("regular"), fontSize: 13.5, color: T.ink3, paddingLeft: 34, paddingVertical: 12 },
   sheetWrap: { flex: 1, backgroundColor: "rgba(0,0,0,0.4)", alignItems: "center", justifyContent: "center", padding: 24 },
   sheet: { backgroundColor: color.bg, borderRadius: 16, padding: 20, width: "100%", gap: 8 },
   sheetTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 18, color: color.ink },
@@ -564,4 +455,4 @@ const styles = StyleSheet.create({
   sheetBtnText: { color: "#FFFFFF", fontWeight: "800", fontSize: 16 },
 });
 
-export default { PagedBookIndex, PagedChapterReader, PlusSheet };
+export default { PagedBookIndex, PlusSheet };

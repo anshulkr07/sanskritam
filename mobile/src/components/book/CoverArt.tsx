@@ -1,9 +1,10 @@
+import { ArtworkImage as Image } from "../artwork/ArtworkImage";
 // CoverArt: a painted cover when the book has one, otherwise a vector cover.
 // Painted covers exist as 600x900 webp in assets/covers (2:3). The frame ends
 // at 71% height; the lower 29% is empty ground carrying the Devanagari title.
 
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Svg, { Circle, Line, Path, Rect } from "react-native-svg";
 
 import { coverColour, coverForeground, paintedCover } from "./covers";

@@ -77,7 +77,7 @@ export default function ListenScreen({ navigation, route }: Props) {
   const insets = useSafeAreaInsets();
   const { height, width } = useWindowDimensions();
   const { sized } = useTypeScale();
-  const { pages, title, titleSa, persistAt } = useBookPages(bookKey, chapter ?? null);
+  const { pages, title, titleSa, persistAt } = useBookPages(bookKey, chapter ?? null, "audio");
 
   const fill = coverColour(bookKey);
   const soft = softOn(fill);

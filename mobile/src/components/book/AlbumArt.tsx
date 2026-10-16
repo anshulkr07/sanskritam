@@ -1,3 +1,4 @@
+import { ArtworkImage as Image } from "../artwork/ArtworkImage";
 // AlbumArt: a book's square face on the Audio side. A painted cover is
 // cropped to its painting (the gold frame and the empty ground fall away);
 // a book without one gets its cover colour with the Devanagari title.
@@ -7,7 +8,7 @@
 // the middle of the painting in view.
 
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { coverColour, paintedCover } from "./covers";
 import { CREAM, sa } from "../../read/look";

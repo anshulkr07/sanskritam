@@ -14,7 +14,7 @@ export default function OfflineLibrary({ navigation }: { navigation: { navigate(
       {!packs && <Text style={{ color: color.ink }}>{error ? "Couldn't load saved reading. Reopen this screen to retry." : "Loading saved chapters…"}</Text>}
       {packs?.length === 0 && <Text style={{ color: color.ink }}>Open a text and choose Save text offline.</Text>}
       {packs?.map(p => <Pressable key={`${p.book}:${p.chapter}`} accessibilityRole="button" accessibilityLabel={`Read ${p.title}${p.chapter ? ` chapter ${p.chapter}` : ""} offline`}
-        onPress={() => navigation.navigate("Book", { bookKey: p.book, chapter: p.chapter ?? undefined })}
+        onPress={() => navigation.navigate(p.medium === "audio" ? "Listen" : "Book", { bookKey: p.book, chapter: p.chapter ?? undefined })}
         style={{ minHeight: 64, borderBottomWidth: 1, borderBottomColor: color.border, justifyContent: "center", gap: 4 }}>
         <Text style={{ fontFamily: "Nunito_700Bold", fontSize: 18, color: color.ink }}>{p.title}{p.chapter ? ` · ${p.chapter}` : ""}</Text>
         <Text style={{ color: color.inkSoft }}>{p.pages.length} passages saved</Text>

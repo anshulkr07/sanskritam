@@ -340,6 +340,8 @@ def delete_me(
     delete_account(db, learner.id)
 
     # Finally delete the learner itself
+    from app.commerce.privacy import delete_personal_data
+    delete_personal_data(db, learner.id)
     db.delete(learner)
     db.commit()
 

@@ -36,6 +36,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import AppErrorBoundary from "./src/components/AppErrorBoundary";
 import LearningProgressSync from "./src/components/LearningProgressSync";
+import CommerceSessionSync from "./src/components/CommerceSessionSync";
 import DailyReviewScreen from "./src/screens/DailyReview";
 import OfflineLibraryScreen from "./src/screens/OfflineLibrary";
 import React, { useEffect, useState } from "react";
@@ -295,6 +296,7 @@ export default function App() {
           <PrefsLoader />
           <TypeScaleProvider>
             <AuthProvider>
+              <CommerceSessionSync />
               <LearningProgressSync />
               <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>

@@ -1,6 +1,8 @@
 import { createAudioPlayer } from "expo-audio";
 import { audioTransport, type AudioKind } from "./audioTransport";
 import { offlineAudioUrl } from "./offlineBooks";
+import { AppState } from "react-native";
+import { canPlayInBackground } from "./commerce";
 
 let lockOwner: { clear(): void } | null = null;
 
@@ -20,6 +22,7 @@ export function createManagedAudioPlayer(
   let lockActive = false;
   const owner = { clear: () => setLock(false) };
   const setLock = (active: boolean, metadata?: Parameters<typeof player.setActiveForLockScreen>[1], lockOptions?: Parameters<typeof player.setActiveForLockScreen>[2]) => {
+    if (active && !canPlayInBackground()) return;
     if (active && lockOwner && lockOwner !== owner) lockOwner.clear();
     if (!active && !lockActive) return;
     try {
@@ -31,6 +34,7 @@ export function createManagedAudioPlayer(
   };
   const play = () => {
     if (removed) return;
+    if (AppState.currentState !== "active" && !canPlayInBackground()) return;
     if (!id || audioTransport.getSnapshot()?.id !== id) {
       id = audioTransport.claim(title, { play, pause }, kind);
     }
@@ -39,6 +43,23 @@ export function createManagedAudioPlayer(
       player.play(); audioTransport.update(id, { playing: true });
     }
     catch (error) { setLock(false); audioTransport.release(id); throw error; }
+  };
+  let renewing = false;
+  let currentSource = typeof source === "string" ? source : "";
+  const authorizedPlay = () => {
+    if (!currentSource.includes("/commerce/media?ticket=")) { play(); return; }
+    if (renewing || removed) return;
+    const local = offlineAudioUrl(currentSource);
+    if (local !== currentSource) { player.replace(local); play(); return; }
+    renewing = true;
+    const ticket = currentSource.split("ticket=")[1];
+    void import("../api/client").then(async ({ request }) => {
+      const { BASE_URL } = await import("../config");
+      const result = await request<{ url: string }>("/commerce/media/renew", { method: "POST", body: JSON.stringify({ ticket }) }, true);
+      if (!result.url || removed) return;
+      player.replace(result.url.startsWith("http") ? result.url : BASE_URL + result.url);
+      play();
+    }).catch(() => { pause(); }).finally(() => { renewing = false; });
   };
   const pause = () => {
     if (removed) return;
@@ -55,17 +76,23 @@ export function createManagedAudioPlayer(
       duration: Math.floor(status.duration || 0),
     });
   });
+  const appSubscription = AppState.addEventListener("change", state => {
+    if (state !== "active" && !canPlayInBackground()) { pause(); setLock(false); }
+  });
+  const entitlementTimer = setInterval(() => {
+    if (AppState.currentState !== "active" && !canPlayInBackground()) { pause(); setLock(false); }
+  }, 1000);
   const remove = () => {
     if (removed) return;
-    removed = true; subscription.remove(); setLock(false); audioTransport.release(id); player.remove();
+    removed = true; clearInterval(entitlementTimer); subscription.remove(); appSubscription.remove(); setLock(false); audioTransport.release(id); player.remove();
   };
   return new Proxy(player, {
     get(target, property) {
-      if (property === "play") return play;
+      if (property === "play") return authorizedPlay;
       if (property === "pause") return pause;
       if (property === "remove" || property === "release") return remove;
       if (property === "setActiveForLockScreen") return setLock;
-      if (property === "replace") return (next: Parameters<typeof player.replace>[0]) => player.replace(typeof next === "string" ? offlineAudioUrl(next) : next);
+      if (property === "replace") return (next: Parameters<typeof player.replace>[0]) => { currentSource = typeof next === "string" ? next : ""; return player.replace(typeof next === "string" ? offlineAudioUrl(next) : next); };
       const value = Reflect.get(target, property, target);
       return typeof value === "function" ? value.bind(target) : value;
     },

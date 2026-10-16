@@ -19,7 +19,8 @@ from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
 
 logger = logging.getLogger("shabd.speech")
 
-router = APIRouter(prefix="/speech")
+from app.commerce.metering import CommerceRoute
+router = APIRouter(prefix="/speech", route_class=CommerceRoute)
 
 # Recent TTS audio, newest last. Bulbul is billed per character and the app
 # asks for the same text again and again: every learner who taps the verse of

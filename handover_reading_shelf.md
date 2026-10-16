@@ -668,6 +668,12 @@ chapter?: string }` in `navigation/types.ts`). After the last verse of a chapter
 moves within the chapter. A chapter load that fails shows "Couldn't load this chapter. Try again."
 Everything else about the page (word chips, Ask button, curl, Reduce Motion) is unchanged.
 
+> Note (2026-10-16): the in-tab chapter reader was retired. Every book — paged included — now
+> reads in the fullscreen `Book.tsx`; `Reader.tsx` keeps only the contents (`PagedBookIndex` for
+> paged books), whose verse rows open `Book` with `{ bookKey, chapter, index }`. `Book` itself
+> draws the "Next chapter" page and the "Previous chapter" way back, and its slider spans the
+> chapter (plus that end page).
+
 ### 7.6 Locked chapters and the preview
 
 Tapping a locked chapter, or reaching `locked_after`, opens a sheet: title "Part of Plus", one line

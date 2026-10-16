@@ -8,6 +8,7 @@ from sqlalchemy import Column, Float, ForeignKey, Integer, LargeBinary, String, 
 from sqlalchemy.orm import relationship
 
 from app.db import Base
+from app.commerce import models as commerce_models  # noqa: F401 — register commerce metadata
 
 
 def _uuid() -> str:

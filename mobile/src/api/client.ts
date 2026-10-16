@@ -1405,6 +1405,7 @@ let authToken: string | null = null;
 
 export function setAuthToken(token: string | null): void {
   authToken = token;
+  void import("../services/commerce").then(m => m.resetCommerce());
 }
 
 export function getAuthToken(): string | null {
@@ -1427,6 +1428,9 @@ export async function request<T>(path: string, init: RequestInit = {}, withAuth 
   if (withAuth && authToken) {
     headers.Authorization = `Bearer ${authToken}`;
   }
+  if (withAuth && ["/ask/talk", "/explain", "/conversation/explain", "/conversation/start", "/conversation/turn", "/speech/tts"].includes(path)) {
+    Object.assign(headers, await (await import("../services/commerce")).paidHeaders(path));
+  }
   let res: Response;
   try {
     res = await fetch(`${BASE_URL}${path}`, { ...init, headers });
@@ -1437,7 +1441,8 @@ export async function request<T>(path: string, init: RequestInit = {}, withAuth 
     let detail = res.statusText;
     try {
       const body = await res.json();
-      detail = (body as { detail?: string }).detail ?? detail;
+      const value = (body as { detail?: unknown }).detail;
+      detail = typeof value === "string" ? value : value ? JSON.stringify(value) : detail;
     } catch {
       /* non-JSON error body — keep statusText */
     }
@@ -1993,6 +1998,7 @@ export const api = {
       Accept: "text/event-stream",
     };
     if (authToken) headers.Authorization = `Bearer ${authToken}`;
+    Object.assign(headers, await (await import("../services/commerce")).paidHeaders("/ask/talk/stream"));
     let res: Awaited<ReturnType<typeof streamFetch>>;
     try {
       res = await streamFetch(`${BASE_URL}/ask/talk/stream`, {

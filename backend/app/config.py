@@ -421,6 +421,26 @@ class Settings(BaseSettings):
     )
     stream_api_secret: str = ""
 
+    # Independently staged; live charges require verified store configuration.
+    commerce_enabled: bool = False
+    commerce_sales_enabled: bool = False
+    commerce_ads_enabled: bool = False
+    commerce_rewards_enabled: bool = False
+    commerce_hosting_enabled: bool = False
+    commerce_signing_key: str = ""
+    commerce_admin_keys_json: str = "{}"  # SHA256(token) -> owner|finance|catalogue|moderator
+    commerce_store_environment: str = "Sandbox"
+    commerce_apple_root_paths: str = "[]"
+    commerce_apple_app_id: int = 0
+    commerce_apple_key_id: str = ""
+    commerce_apple_issuer_id: str = ""
+    commerce_apple_private_key_path: str = ""
+    commerce_google_credentials_path: str = ""
+    commerce_google_notification_audience: str = ""
+    commerce_google_notification_email: str = ""
+    commerce_bundle_id: str = "com.sanskritam.app"
+    commerce_admob_units: str = "[]"
+
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 
     @property

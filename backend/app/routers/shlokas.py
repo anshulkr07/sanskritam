@@ -140,10 +140,12 @@ def list_shlokas(
         .order_by(Shloka.date.asc(), Shloka.id.asc())
         .all()
     )
+    from app.commerce.access import filter_reading, protect_audio
+    rows = filter_reading(db, learner, rows)
     from app.services.chant_text import verse_uid as _uid
     uids = [(getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")) for s in rows]
     cmap = _chant_map(db, uids)
-    return [_shloka_response(s, cmap) for s in rows]
+    return [protect_audio(db, learner, s, _shloka_response(s, cmap)) for s in rows]
 
 
 @router.get("/shlokas/uid/{verse_uid}", response_model=ShlokaResponse)
@@ -158,7 +160,19 @@ def get_shloka_by_uid(
     row = db.query(Shloka).filter(Shloka.verse_uid == verse_uid).first()
     if row is None:
         raise HTTPException(status_code=404, detail="No such verse.")
-    return _shloka_response(row, _chant_map(db, [verse_uid]))
+    from app.commerce.access import filter_reading, protect_audio
+    if not filter_reading(db, learner, [row]):
+        from app.models import Competition
+        from app.commerce.service import now
+        eligible = db.query(Competition).filter(Competition.opens_at <= now(), Competition.closes_at >= now()).all()
+        def contains(value):
+            if isinstance(value, dict):
+                return value.get("verse_uid") == verse_uid or any(contains(v) for v in value.values())
+            return isinstance(value, list) and any(contains(v) for v in value)
+        if not any(contains(c.pieces) for c in eligible):
+            raise HTTPException(403, "Unlock the written title to read this verse")
+        return protect_audio(db, learner, row, _shloka_response(row, _chant_map(db, [verse_uid])), free_daily=True)
+    return protect_audio(db, learner, row, _shloka_response(row, _chant_map(db, [verse_uid])))
 
 
 @router.get("/shlokas/today", response_model=ShlokaResponse)
@@ -180,7 +194,8 @@ def get_today_shloka(
 
     from app.services.chant_text import verse_uid as _uid
     uid = getattr(shloka, "verse_uid", "") or _uid(shloka.source_ref or "", shloka.devanagari or "")
-    return _shloka_response(shloka, _chant_map(db, [uid]))
+    from app.commerce.access import protect_audio
+    return protect_audio(db, learner, shloka, _shloka_response(shloka, _chant_map(db, [uid])), free_daily=True)
 
 
 class ShlokaMeaning(BaseModel):

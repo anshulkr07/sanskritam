@@ -79,9 +79,10 @@ export type RootStackParamList = {
   GrammarTopic: { topicId: string };
   GrammarChapter: { chapterId: string };
   WordLab: { word?: string } | undefined;
-  // Read fullscreen page (HANDOVER 7.4): covers the tab bar.
-  // Paged books read one chapter at a time: chapter names the chapter.
-  // mode "chant" opens it in Chant mode (a paged chapter's Chant button).
+  // Read fullscreen page (HANDOVER 7.4): covers the tab bar — the one
+  // reading screen for every book. A paged book reads one chapter at a
+  // time: `chapter` names the chapter; its last page turns on to the next.
+  // mode "chant" opens it in Chant mode (it wins over the saved choice).
   Book: { bookKey: string; index?: number; chapter?: string; mode?: "chant" };
   // Listen: the player-first chant screen — same chapter, transport on top.
   // Reuses Book's player (useChant), reached from the chant player bar.

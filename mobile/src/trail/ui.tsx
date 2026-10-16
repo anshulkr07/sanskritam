@@ -1,9 +1,10 @@
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 // Learn's small parts: square everything (owner, 2026-10-13: "pointed and
 // sharp with zero rounding"), one action colour, Mukta for the interface.
 
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { Image, Pressable, StyleSheet, Text, View, type ImageSourcePropType, type StyleProp, type ViewStyle } from "react-native";
+import { Pressable, StyleSheet, Text, View, type ImageSourcePropType, type StyleProp, type ViewStyle } from "react-native";
 
 import { hubArtwork } from "../components/artwork/hubs";
 import { unitArtwork } from "../components/path/artwork";

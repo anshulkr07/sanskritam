@@ -4,7 +4,7 @@
 // forwards only the two Play-required pages and renders a tiny landing at /.
 
 const ORIGIN = "https://shabd-api-829757572630.asia-south1.run.app";
-const ALLOWED = new Set(["/privacy", "/delete-account"]);
+const ALLOWED = new Set(["/privacy", "/delete-account", "/commerce/terms"]);
 
 // The zone has no "Always Use HTTPS" toggle reachable with our token, so the
 // worker enforces it at the edge: any plain-http request is 301'd to https.
@@ -33,6 +33,7 @@ a{color:#B5441A;display:block;margin:.5rem 0;font-size:1.1rem}</style>
 <p>Legal information for the Sanskritam app.</p>
 <a href="/privacy">Privacy Policy</a>
 <a href="/delete-account">Delete your account</a>
+<a href="/commerce/terms">Memberships, credits and purchase terms</a>
 </main></body></html>`;
 
 export default {

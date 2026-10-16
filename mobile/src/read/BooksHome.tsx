@@ -3,6 +3,7 @@
 // "Coming soon" row at the end instead of greying out every shelf.
 
 import React, { useMemo } from "react";
+import NativeSponsor from "../components/NativeSponsor";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { CanonText, Shloka } from "../api/client";
@@ -32,7 +33,7 @@ function metaOf(b: ShelfBook): string {
   if (b.count === null) return "Graded passages";
   const n = b.count;
   const base = b.depth === "studied" ? `${n} selected` : b.depth === "index" ? `${n} indexed` : `${n} verse${n === 1 ? "" : "s"}`;
-  return b.locked ? `${base} · Plus` : base;
+  return b.locked ? `${base} · Preview` : base;
 }
 
 export default function BooksHome({
@@ -112,6 +113,7 @@ export default function BooksHome({
         <View style={{ gap: 18, marginBottom: 6 }}>
           <ReadHeader media={media} onMedia={onMedia} />
           <ContinueReading groups={groups} allVerses={allVerses} positions={positions} onResume={onResume} onContents={onOpen} />
+          <NativeSponsor />
         </View>
       }
       initialNumToRender={3}

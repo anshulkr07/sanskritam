@@ -1,10 +1,11 @@
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 // Parva list: by month, next 60 days then Load more to 120.
 // Filters: All, Vrats, Festivals. Every row opens a useful destination:
 // the rich page when published, else the basic verified-dates page.
 
 import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useAskContext } from "../ask/AskProvider";
 import { getLang, subscribeLang, t, useLang } from "../i18n";

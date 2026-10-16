@@ -1,9 +1,10 @@
+import { ArtworkImage as Image } from "../artwork/ArtworkImage";
 // Home strip, directly under TithiCard. Hidden entirely when the calendar
 // is null (404 or offline and empty). No skeleton flash after first load.
 
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { AppState, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { AppState, Pressable, StyleSheet, Text, View } from "react-native";
 import { festivalArtwork, festivalDayArtwork } from "../artwork/festivals";
 
 import { getLang, subscribeLang, t, useLang } from "../../i18n";

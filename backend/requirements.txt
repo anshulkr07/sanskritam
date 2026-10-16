@@ -10,6 +10,9 @@ pydantic-settings>=2.2
 # PyJWT verifies the RS256 (Google) / ES256 (Apple) signatures via the
 # vendors' public keys; cryptography is the JOSE backend for both.
 PyJWT>=2.8
+app-store-server-library>=1.9,<3
+google-auth>=2.35
+requests>=2.32
 cryptography>=42.0
 vidyut==0.4.0
 httpx>=0.27

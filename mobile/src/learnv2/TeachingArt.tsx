@@ -1,5 +1,6 @@
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useGuideLang } from "../hooks/useGuide";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { getLearnV2Asset } from "./assetMap";

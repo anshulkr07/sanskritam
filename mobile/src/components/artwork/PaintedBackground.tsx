@@ -1,5 +1,6 @@
+import { ArtworkImage as Image } from "./ArtworkImage";
 import React, { useState } from "react";
-import { Image, StyleSheet, View, type ImageSourcePropType } from "react-native";
+import { StyleSheet, View, type ImageSourcePropType } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 // Decorative paintings never take touches or duplicate a card's accessible label.

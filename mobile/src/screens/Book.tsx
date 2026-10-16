@@ -1,5 +1,8 @@
 import Modal from "../components/AudioModal";
-// Book: the fullscreen reading page (HANDOVER 7.4).
+// Book: the fullscreen reading page (HANDOVER 7.4) — the one reading screen
+// for every book, classic or paged. A paged book reads one chapter at a time;
+// its last page turns on to the next chapter, and its first page offers the
+// previous one.
 // A root-stack screen covering the tab bar. Swipe turns pages, edge taps turn,
 // middle tap toggles controls. Themes Light/Sepia/Dark, five sizes, Roman switch.
 
@@ -9,13 +12,13 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { setAudioModeAsync } from "expo-audio";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { RootStackParamList } from "../navigation/types";
 import type { Shloka } from "../api/client";
-import PageCurlBook from "../components/book/PageCurlBook";
+import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import BookCover from "../components/book/BookCover";
 import CoverArt from "../components/book/CoverArt";
 import ReaderSlider from "../components/ReaderSlider";
@@ -29,7 +32,14 @@ import { useAsk } from "../ask/AskProvider";
 import { READER_THEMES, READER_SIZES, type ReaderThemeName } from "./readerTheme";
 import { color, font, sanskritText, script, space } from "../theme";
 import { plain } from "../utils/text";
+import { nextChapter, prevChapter } from "../utils/paged";
 import { downloadBookAudio, saveOfflineBook } from "../services/offlineBooks";
+import CommerceAccess from "../components/CommerceAccess";
+import VerseArtworkBackground from "../components/artwork/VerseArtworkBackground";
+import ReadingAppearanceSettings from "../components/artwork/ReadingAppearanceSettings";
+import { verseArtworkFor } from "../components/artwork/verseArtwork";
+import { prefetchArtwork } from "../services/artworkCache";
+import { useReadingAppearance, type ReadingAppearance } from "../services/readingAppearance";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Book">;
 
@@ -56,6 +66,7 @@ export default function BookScreen({ navigation, route }: Props) {
   const [themeName, setThemeName] = useState<ReaderThemeName>("light");
   const [sizeStep, setSizeStep] = useState(1);
   const [roman, setRoman] = useState(true);
+  const { appearance, updateAppearance } = useReadingAppearance();
   const [wordOpen, setWordOpen] = useState(false);
   const [mode, setMode] = useState<ReadMode>(startMode ?? "read");
   // Focused previous/current/next view instead of the whole chapter list.
@@ -76,14 +87,28 @@ export default function BookScreen({ navigation, route }: Props) {
   }, []);
 
   // The same queries the Reader's contents page reads, so `index` (a position
-  // in that list) opens the same verse here (shared with Listen).
-  const { pages, pagedText, pagedChapter, title: bookTitle, persistAt } = useBookPages(bookKey, chapter ?? null);
+  // in that list) opens the same verse here (shared with Listen). A paged
+  // book also brings its chapter list: the last page turns on to the next
+  // chapter, and the first page offers the one before.
+  const {
+    pages,
+    chapters,
+    pagedChapter,
+    chapterLoading,
+    chapterFailed,
+    chapterRetry,
+    title: bookTitle,
+    persistAt,
+  } = useBookPages(bookKey, chapter ?? null);
+  const nextCh = pagedChapter !== null ? nextChapter(chapters ?? [], pagedChapter) : null;
+  const prevCh = pagedChapter !== null ? prevChapter(chapters ?? [], pagedChapter) : null;
+  const pageCount = pages.length + (nextCh ? 1 : 0);
   const saveOffline = async (withAudio: boolean) => {
     if (downloading) return;
     setDownloading(true); setDownloadStatus("Saving chapter…");
     try {
       await saveOfflineBook(bookKey, pagedChapter, bookTitle, pages);
-      if (withAudio) { const count = await downloadBookAudio(pages); setDownloadStatus(`Text and ${count} audio clips saved offline.`); }
+      if (withAudio) { const count = await downloadBookAudio(pages, bookKey); setDownloadStatus(`Text and ${count} audio clips saved offline.`); }
       else setDownloadStatus("Chapter saved for offline reading.");
     } catch (e) { setDownloadStatus(e instanceof Error ? e.message : "Couldn't save the chapter. Retry."); }
     finally { setDownloading(false); }
@@ -140,13 +165,45 @@ export default function BookScreen({ navigation, route }: Props) {
   } = useChant(pages, bookTitle, {
     initialIndex: index ?? 0,
     navigate,
-    onAt: persistAt,
+    // Every verse turn persists; the end page (one past the last verse) is
+    // a doorway to the next chapter, not a reading position.
+    onAt: (i) => {
+      if (i < pages.length) persistAt(i);
+    },
     scrollToList: !focus,
     // Name the session so the shelf mini player can reopen this book.
     sessionKey: `chant:${bookKey}:${chapter ?? "*"}`,
     bookKey,
     chapter: chapter ?? null,
   });
+
+  // Opening and switching both start where the params say: on the first
+  // commit the bus still holds the previous session's `at`, and a chapter
+  // switch rebinds it one render late. Trust the params until it catches up.
+  const [bound, setBound] = useState(false);
+  useEffect(() => setBound(true), []);
+  const [liveChapter, setLiveChapter] = useState(pagedChapter);
+  useEffect(() => setLiveChapter(pagedChapter), [pagedChapter]);
+  const showAt = !bound ? index ?? 0 : liveChapter === pagedChapter ? at : 0;
+  const window = useWindowDimensions();
+  const tabletArtwork = Math.min(window.width, window.height) >= 600;
+  useEffect(() => {
+    if (!appearance.illustrated) return;
+    const uris = pages.slice(Math.max(0, showAt), showAt + 3).flatMap(page => {
+      const art = verseArtworkFor(page.source_ref);
+      return art ? [art.variants[tabletArtwork ? "tablet" : "phone"].uri] : [];
+    });
+    prefetchArtwork(uris);
+  }, [pages, showAt, appearance.illustrated, tabletArtwork]);
+
+  // Turn onto another chapter of the same book — params, not a push, so Back
+  // still returns to the index.
+  const openChapter = useCallback(
+    (ch: string) => {
+      navigation.setParams({ chapter: ch, index: 0 });
+    },
+    [navigation],
+  );
 
   const saveMode = (m: ReadMode) => {
     setMode(m);
@@ -178,13 +235,14 @@ export default function BookScreen({ navigation, route }: Props) {
   return (
     <View style={[styles.root, { backgroundColor: theme.page, paddingTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }]}>
       <StatusBar style={themeName === "dark" ? "light" : "dark"} />
+      <CommerceAccess slug={bookKey} medium={mode === "chant" ? "audio" : "book"} chapter={pagedChapter ?? ""} />
       {controls && (
         <View>
           <View style={[styles.topBar, { backgroundColor: theme.bar }]}>
             <Pressable onPress={() => navigation.goBack()} accessibilityRole="button" accessibilityLabel="Back to contents" style={styles.iconBtn}>
               <Ionicons name="arrow-back" size={22} color={theme.text} />
             </Pressable>
-            <Text style={[styles.topTitle, { color: theme.text }]} numberOfLines={1}>{bookKey}</Text>
+            <Text style={[styles.topTitle, { color: theme.text }]} numberOfLines={1}>{plain(bookTitle)}</Text>
             <Pressable onPress={() => setAaOpen(true)} accessibilityRole="button" accessibilityLabel="Text size and theme" style={styles.iconBtn}>
               <Text style={{ color: theme.text, fontWeight: "800" }}>Aa</Text>
             </Pressable>
@@ -250,44 +308,94 @@ export default function BookScreen({ navigation, route }: Props) {
           listRef={listRef}
           onUserScroll={() => setFollow(false)}
         />
+      ) : chapterLoading && pages.length === 0 ? (
+        <View style={styles.center}>
+          <Text style={[styles.notice, { color: theme.soft }]}>Loading chapter…</Text>
+        </View>
+      ) : chapterFailed && pages.length === 0 ? (
+        <View style={styles.center}>
+          <Text style={[styles.notice, { color: theme.text }]}>Couldn't load this chapter.</Text>
+          <Pressable onPress={chapterRetry} accessibilityRole="button" accessibilityLabel="Try again" style={styles.retryBtn}>
+            <Text style={[styles.retryText, { color: theme.accent }]}>Try again</Text>
+          </Pressable>
+        </View>
+      ) : pagedChapter !== null && pages.length === 0 ? (
+        <View style={styles.center}>
+          <Text style={[styles.notice, { color: theme.soft }]}>No verses here yet.</Text>
+        </View>
       ) : (
         <PageCurlBook
-          index={at}
-          count={Math.max(1, pages.length)}
+          // A chapter switch remounts the book on its first page.
+          key={pagedChapter ?? "book"}
+          index={showAt}
+          count={Math.max(1, pageCount)}
           onIndexChange={setAt}
           reducedMotion={reduced}
-          renderPage={(i) => (
-            <ReaderPageView
-              verse={pages[i]}
-              themeName={themeName}
-              readerScale={readerScale}
-              roman={roman}
-              onWordByWord={() => setWordOpen(true)}
-              onLearn={() => {
-                const v = pages[i];
-                if (v) {
-                  (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
-                    verseUid: v.verse_uid ?? v.id, start: "listen",
-                  });
-                }
-              }}
-            />
-          )}
+          labelFor={(i) => pages[i]?.source_ref ?? (nextCh ? "Next chapter" : "")}
+          renderPage={(i) => {
+            if (i >= pages.length && nextCh) {
+              return (
+                <NextChapterPage
+                  themeName={themeName}
+                  bookTitle={plain(bookTitle)}
+                  label={`Chapter ${nextCh.chapter}`}
+                  verses={nextCh.count}
+                  onOpen={() => openChapter(nextCh.chapter)}
+                />
+              );
+            }
+            return (
+              <ReaderPageView
+                verse={pages[i]}
+                themeName={themeName}
+                readerScale={readerScale}
+                roman={roman}
+                appearance={appearance}
+                onWordByWord={() => setWordOpen(true)}
+                onLearn={() => {
+                  const v = pages[i];
+                  if (v) {
+                    (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("Recite", {
+                      verseUid: v.verse_uid ?? v.id, start: "listen",
+                    });
+                  }
+                }}
+              />
+            );
+          }}
         />
       )}
       {/* Folio + progress */}
       <View style={[styles.folio, { borderColor: theme.line }]}>
+        {/* Back a chapter, offered on its first page (a swipe back inside a
+            chapter stays inside it). Floats over the page's foot: showing it
+            must not resize the book mid-turn. */}
+        {!chantOn && showAt === 0 && prevCh && (
+          <Pressable
+            onPress={() => openChapter(prevCh.chapter)}
+            accessibilityRole="button"
+            accessibilityLabel={`Previous chapter, chapter ${prevCh.chapter}`}
+            style={styles.prevCh}
+          >
+            <Ionicons name="arrow-back" size={14} color={theme.soft} />
+            <Text style={[styles.prevChText, { color: theme.soft }]}>Previous chapter</Text>
+          </Pressable>
+        )}
         <Text style={[styles.folioText, { color: theme.soft }]}>
-          {verse ? `${verse.source_ref} · ${at + 1} of ${pages.length}` : ""}
+          {pages.length > 0 && showAt >= pages.length && nextCh
+            ? `Next chapter · ${nextCh.chapter}`
+            : pages[showAt]
+              ? `${pages[showAt].source_ref} · ${showAt + 1} of ${pages.length}`
+              : ""}
         </Text>
         <View style={[styles.progress, { backgroundColor: theme.line }]}>
-          <View style={[styles.progressBar, { width: `${pages.length ? ((at + 1) / pages.length) * 100 : 0}%`, backgroundColor: theme.accent }]} />
+          <View style={[styles.progressBar, { width: `${pageCount ? Math.min(100, ((showAt + 1) / pageCount) * 100) : 0}%`, backgroundColor: theme.accent }]} />
         </View>
       </View>
       {controls && !chantOn && (
         <View style={[styles.bottomBar, { backgroundColor: theme.bar }]}>
-          <ReaderSlider index={at} count={pages.length} labelFor={(i) => pages[i]?.source_ref ?? `Page ${i + 1}`} onScrubEnd={setAt} />
-          <Text style={[styles.posText, { color: theme.soft }]}>{`${at + 1} of ${pages.length}`}</Text>
+          <ReaderSlider index={showAt} count={Math.max(1, pageCount)} labelFor={(i) => pages[i]?.source_ref ?? (nextCh ? "Next chapter" : `Page ${i + 1}`)} onScrubEnd={setAt} />
+          <Text style={[styles.posText, { color: theme.soft }]}>{`${showAt + 1} of ${pageCount}`}</Text>
         </View>
       )}
       {chantOn && (
@@ -328,7 +436,7 @@ export default function BookScreen({ navigation, route }: Props) {
       />
       <Modal visible={aaOpen} transparent animationType="fade" onRequestClose={() => setAaOpen(false)}>
         <Pressable style={styles.scrim} onPress={() => setAaOpen(false)} accessibilityRole="button" accessibilityLabel="Close text settings" />
-        <View style={[styles.aaPanel, { backgroundColor: theme.bar, paddingBottom: 16 + insets.bottom, paddingLeft: 16 + insets.left, paddingRight: 16 + insets.right }]}>
+        <ScrollView style={[styles.aaPanel, { maxHeight: "85%", backgroundColor: theme.bar, paddingBottom: 16 + insets.bottom, paddingLeft: 16 + insets.left, paddingRight: 16 + insets.right }]} contentContainerStyle={{ gap: 12 }} keyboardShouldPersistTaps="handled">
           <Text style={[styles.aaTitle, { color: theme.text }]}>Text</Text>
           <View style={styles.aaRow}>
             {(["light", "sepia", "dark"] as ReaderThemeName[]).map((t) => (
@@ -348,7 +456,8 @@ export default function BookScreen({ navigation, route }: Props) {
             <Text style={{ color: theme.text }}>Roman</Text>
             <Text style={{ color: theme.soft }}>{roman ? "On" : "Off"}</Text>
           </Pressable>
-        </View>
+          <ReadingAppearanceSettings value={appearance} onChange={updateAppearance} theme={theme} />
+        </ScrollView>
       </Modal>
       <Modal visible={wordOpen} transparent animationType="slide" onRequestClose={() => setWordOpen(false)}>
         <Pressable style={styles.scrim} onPress={() => setWordOpen(false)} accessibilityRole="button" accessibilityLabel="Close word by word" />
@@ -383,6 +492,7 @@ function ReaderPageView({
   themeName,
   readerScale,
   roman,
+  appearance,
   onWordByWord,
   onLearn,
 }: {
@@ -390,10 +500,13 @@ function ReaderPageView({
   themeName: ReaderThemeName;
   readerScale: number;
   roman: boolean;
+  appearance: ReadingAppearance;
   onWordByWord: () => void;
   onLearn: () => void;
 }) {
   const theme = READER_THEMES[themeName];
+  const { invalidate } = useBookPage();
+  useEffect(() => { invalidate(); }, [invalidate, appearance, roman, readerScale, themeName]);
   if (!verse) {
     return (
       <View style={styles.page}>
@@ -402,29 +515,76 @@ function ReaderPageView({
     );
   }
   const lines = breakVerse(verse.devanagari);
+  const words = verse.word_breakdown ?? [];
+  const textColor = appearance.textColor ?? theme.text;
+  const softColor = appearance.textColor ?? theme.soft;
   return (
-    <ScrollView contentContainerStyle={[styles.page, { backgroundColor: theme.page, flexGrow: 1, justifyContent: "center" }]}>
-      <Text style={[styles.runningHead, { color: theme.soft }]}>{verse.source_ref}</Text>
+    <View style={{ flex: 1, backgroundColor: theme.page }}>
+    {appearance.illustrated && <VerseArtworkBackground sourceRef={verse.source_ref} opacity={appearance.imageOpacity} onReady={invalidate} />}
+    <ScrollView contentContainerStyle={[styles.page, { flexGrow: 1, justifyContent: "center" }]}>
+      <Text style={[styles.runningHead, { color: softColor, opacity: appearance.textOpacity }]}>{verse.source_ref}</Text>
       <View style={styles.verseBlock}>
         {lines.map((l, i) => (
-          <Text key={i} style={[sanskritText(Math.round(22 * readerScale)), { color: theme.text, textAlign: "center" }]}>
+          <Text key={i} style={[sanskritText(Math.round(22 * readerScale)), { color: textColor, opacity: appearance.textOpacity, textAlign: "center" }]}>
             {l}
           </Text>
         ))}
       </View>
       {roman && !!verse.iast && (
-        <Text style={[styles.roman, { color: theme.soft }]}>{verse.iast}</Text>
+        <Text style={[styles.roman, { color: softColor, opacity: appearance.textOpacity }]}>{verse.iast}</Text>
       )}
       <View style={[styles.rule, { backgroundColor: theme.accent }]} />
-      {!!verse.translation_en && <Text style={[styles.trans, { color: theme.text }]}>{plain(verse.translation_en)}</Text>}
+      {!!verse.translation_en && <Text style={[styles.trans, { color: textColor, opacity: appearance.textOpacity }]}>{plain(verse.translation_en)}</Text>}
       {!!(verse as { translation_hi?: string }).translation_hi && (
-        <Text style={[styles.transHi, { color: theme.soft }]}>{plain((verse as { translation_hi?: string }).translation_hi ?? "")}</Text>
+        <Text style={[styles.transHi, { color: softColor, opacity: appearance.textOpacity }]}>{plain((verse as { translation_hi?: string }).translation_hi ?? "")}</Text>
       )}
-      <Pressable onPress={onWordByWord} accessibilityRole="button" accessibilityLabel="Word by word" style={styles.wbw}>
-        <Text style={[styles.wbwText, { color: theme.soft }]}>Word by word ^</Text>
-      </Pressable>
+      {words.length > 0 && (
+        <Pressable onPress={onWordByWord} accessibilityRole="button" accessibilityLabel="Word by word" style={styles.wbw}>
+          <Text style={[styles.wbwText, { color: theme.soft }]}>Word by word ^</Text>
+        </Pressable>
+      )}
       <Pressable onPress={onLearn} accessibilityRole="button" accessibilityLabel="Learn this verse" style={styles.wbw}>
         <Text style={[styles.wbwText, { color: theme.soft }]}>Learn</Text>
+      </Pressable>
+    </ScrollView>
+    </View>
+  );
+}
+
+// The page after a paged chapter's last verse: the way on to the next
+// chapter. The button sits low on the page — the middle band belongs to the
+// controls tap.
+function NextChapterPage({
+  themeName,
+  bookTitle,
+  label,
+  verses,
+  onOpen,
+}: {
+  themeName: ReaderThemeName;
+  bookTitle: string;
+  label: string;
+  verses: number;
+  onOpen: () => void;
+}) {
+  const theme = READER_THEMES[themeName];
+  return (
+    <ScrollView contentContainerStyle={[styles.endPage, { backgroundColor: theme.page }]}>
+      <View style={styles.endMid}>
+        <Text style={[styles.runningHead, { color: theme.soft }]}>{bookTitle}</Text>
+        <Text style={[styles.endDone, { color: theme.soft }]}>Chapter complete</Text>
+        <Text style={[styles.endNext, { color: theme.text }]} accessibilityRole="header">
+          {label}
+        </Text>
+        <Text style={[styles.roman, { color: theme.soft }]}>{verses} verses</Text>
+      </View>
+      <Pressable
+        onPress={onOpen}
+        accessibilityRole="button"
+        accessibilityLabel={`Continue to ${label}`}
+        style={styles.endBtn}
+      >
+        <Text style={[styles.endBtnText, { color: theme.accent }]}>Next chapter →</Text>
       </Pressable>
     </ScrollView>
   );
@@ -432,6 +592,10 @@ function ReaderPageView({
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
+  center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 10, padding: 24 },
+  notice: { fontSize: 15 },
+  retryBtn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 16 },
+  retryText: { fontWeight: "700", fontSize: 15 },
   page: { paddingHorizontal: 16, paddingVertical: 24, alignItems: "center", gap: 8 },
   runningHead: { fontSize: 12, textAlign: "center" },
   verseBlock: { gap: 2, alignItems: "center" },
@@ -441,7 +605,15 @@ const styles = StyleSheet.create({
   transHi: { fontSize: 15, lineHeight: 23, textAlign: "center" },
   wbw: { minHeight: 44, justifyContent: "center", paddingHorizontal: 16 },
   wbwText: { fontSize: 14, textAlign: "center" },
+  endPage: { flexGrow: 1, justifyContent: "space-between", alignItems: "center", paddingHorizontal: 16, paddingTop: 24, paddingBottom: 32 },
+  endMid: { alignItems: "center", gap: 6, marginTop: 56 },
+  endDone: { fontSize: 12, fontWeight: "700", letterSpacing: 1, textTransform: "uppercase" },
+  endNext: { fontSize: 24, fontWeight: "800", textAlign: "center" },
+  endBtn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 20 },
+  endBtnText: { fontSize: 16, fontWeight: "700" },
   folio: { paddingVertical: 6, alignItems: "center", borderTopWidth: 1 },
+  prevCh: { position: "absolute", top: -44, left: 0, right: 0, height: 44, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
+  prevChText: { fontSize: 12, fontWeight: "600" },
   folioText: { fontSize: 12 },
   progress: { height: 3, width: "100%", marginTop: 4 },
   progressBar: { height: 3 },

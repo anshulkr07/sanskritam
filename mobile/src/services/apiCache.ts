@@ -19,6 +19,11 @@ interface Entry {
 
 const cache = new Map<string, Entry>();
 const inflight = new Map<string, Promise<unknown>>();
+const invalidationListeners = new Set<(prefix?: string) => void>();
+export function subscribeInvalidation(listener: (prefix?: string) => void) {
+  invalidationListeners.add(listener);
+  return () => { invalidationListeners.delete(listener); };
+}
 
 export const API_CACHE_TTL_MS = 60_000;
 
@@ -60,9 +65,11 @@ export function peekCache<T>(key: string, ttlMs: number = API_CACHE_TTL_MS): T |
 export function invalidateCache(prefix?: string): void {
   if (!prefix) {
     cache.clear();
+    invalidationListeners.forEach(listener => listener());
     return;
   }
   for (const key of cache.keys()) {
     if (key.startsWith(prefix)) cache.delete(key);
   }
+  invalidationListeners.forEach(listener => listener(prefix));
 }

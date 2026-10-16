@@ -82,6 +82,10 @@ def _contact() -> str:
 
 
 def _page(title: str, body: str) -> HTMLResponse:
+    if settings.commerce_enabled:
+        body += """<h2>Purchases, credits and optional advertising</h2>
+<p>Store-verified purchases, credit transactions, title entitlements, referral liabilities and financial audit records are kept to deliver and account for paid services. Optional ads use Google AdMob with consent controls. Reward delivery instructions are encrypted and restricted to finance administrators. Organizer recordings stay private for judging and are normally deleted 30 days after an event ends.</p>
+<p>Deleting an account removes its personal commerce profile and payout instructions; pseudonymous financial records may remain for accounting, fraud and legal obligations. Account deletion does not cancel a store subscription. <a href="/commerce/terms">Read the full membership, credit, reward and purchase terms</a>.</p>"""
     return HTMLResponse(
         f"""<!doctype html>
 <html lang="en">

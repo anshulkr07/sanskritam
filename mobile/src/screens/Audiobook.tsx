@@ -14,6 +14,9 @@ import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import AlbumArt from "../components/book/AlbumArt";
+import CommerceAccess from "../components/CommerceAccess";
+import { downloadBookAudio } from "../services/offlineBooks";
+import { Alert } from "react-native";
 import { coverColour } from "../components/book/covers";
 import { useBookPages } from "../hooks/useBookPages";
 import type { RootStackParamList } from "../navigation/types";
@@ -36,7 +39,7 @@ function voiceName(voice: string | undefined): string {
 export default function AudiobookScreen({ navigation, route }: Props) {
   const { bookKey } = route.params;
   const insets = useSafeAreaInsets();
-  const { pages, title, titleSa } = useBookPages(bookKey, null);
+  const { pages, title, titleSa } = useBookPages(bookKey, null, "audio");
   const fill = coverColour(bookKey);
   const soft = softOn(fill);
 
@@ -78,6 +81,10 @@ export default function AudiobookScreen({ navigation, route }: Props) {
 
   const header = (
     <View>
+      <CommerceAccess slug={bookKey} medium="audio" />
+      <Pressable accessibilityRole="button" onPress={() => {
+        void downloadBookAudio(pages, bookKey).then(() => Alert.alert("Saved", "The audiobook is saved with a renewable offline licence.")).catch(e => Alert.alert("Download unavailable", e.message));
+      }} style={{ padding: 12 }}><Text style={{ color: "#9e481b", fontWeight: "700" }}>Save audiobook offline · membership required</Text></Pressable>
       <View style={[styles.head, { backgroundColor: fill, paddingTop: insets.top }]}>
         <View style={styles.headBar}>
           <Pressable onPress={() => navigation.goBack()} accessibilityRole="button" accessibilityLabel="Back to Audio" style={styles.icon}>

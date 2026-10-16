@@ -1,3 +1,4 @@
+import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 // One lesson card in Learn's look (owner-approved 2026-10-13): a labelled card
 // type, square corners, Sanskrit in Tiro Devanagari Sanskrit as the largest
 // thing, everything else in Mukta. One idea per card. The picture's baked
@@ -6,7 +7,7 @@
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useGuideLang } from "../hooks/useGuide";
 import { useTypeScale } from "../hooks/useTypeScale";

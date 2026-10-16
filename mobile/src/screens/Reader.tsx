@@ -1,18 +1,17 @@
 // Read — the canon as books and as audiobooks (the Read tab).
 //
-// Three postures, one screen:
+// Two postures, one screen:
 //   • HOME — two shelves under Books | Audio tabs (the choice is
 //     remembered). Books: a Continue reading card and rows of painted
 //     covers (read/BooksHome). Audio: the listening side in each book's own
 //     colour (read/AudioHome); its books open the Audiobook page.
 //   • CONTENTS — one book: what it is, how far in, Continue and Listen, and
 //     its chapters with their first lines (read/BookContents; paged books
-//     use PagedBookIndex).
-//   • A paged book's chapter reads in place (PagedChapterReader); a classic
-//     book's pages open the fullscreen Book screen over the tab bar.
+//     use PagedBookIndex). Every book's pages — classic or paged — then open
+//     the fullscreen Book screen over the tab bar, the one reading screen.
 //
-// The Read tab button always comes back to HOME; Android back steps from a
-// chapter to its contents and from contents to HOME.
+// The Read tab button always comes back to HOME; Android back steps from
+// contents to HOME.
 //
 // Reading, not drilling (U13-3): no verdict, no streak, no score here.
 //
@@ -24,37 +23,31 @@
 //     counts, so shelf numbers and contents always agree.
 //   - Words render from word_breakdown, NOT split from the verse text.
 //   - Every text that may hold Sanskrit uses a Devanagari face.
-//   - An open chapter owns horizontal drags (the drawer's edge swipe is off).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
-import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { BackHandler, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
-import { api, type CanonText, type Shloka, type WordBreakdown } from "../api/client";
+import { api, type CanonText, type Shloka } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
 import { useTypeScale } from "../hooks/useTypeScale";
-import { useAsk, useAskContext } from "../ask/AskProvider";
+import { useAskContext } from "../ask/AskProvider";
 import { EmptyState, Button } from "../components/ui";
 import { Skeleton, SkeletonGroup } from "../components/Skeleton";
-import { useBookPage } from "../components/book/PageCurlBook";
-import { PagedBookIndex, PagedChapterReader } from "../components/book/PagedBook";
+import { PagedBookIndex } from "../components/book/PagedBook";
 import { isPaged } from "../utils/paged";
 import MiniPlayer from "../components/chant/MiniPlayer";
-import type { DrawerParamList } from "../navigation/AppDrawer";
 import type { MainTabParamList } from "../navigation/types";
 import { haptics } from "../services/haptics";
 import { useMiniPlayerUp } from "../services/listenBus";
 import { getReadingPosition, getReadingPositions } from "../services/readingProgress";
 import { getLastListen, getListenPosition, type ListenPosition } from "../services/audioProgress";
-import { groupByBook, makeBookOf, parseRef, sortVerses, tierVerses } from "../utils/verses";
-import { color, font, radius, script, space } from "../theme";
-import { plain } from "../utils/text";
+import { groupByBook, makeBookOf, sortVerses, tierVerses } from "../utils/verses";
+import { space } from "../theme";
 import AudioHome from "../read/AudioHome";
 import BookContents, { type ContentsBook } from "../read/BookContents";
 import BooksHome from "../read/BooksHome";
@@ -90,9 +83,6 @@ export default function ReaderScreen() {
   const { sized } = useTypeScale();
   // null = HOME; set = inside a book.
   const [bookKey, setBookKey] = useState<string | null>(null);
-  // Paged books: which chapter is open (null = contents).
-  const [pagedChapter, setPagedChapter] = useState<string | null>(null);
-  const [pagedIndex, setPagedIndex] = useState(0);
   // Restored "continue" positions: { [bookKey]: index }.
   const [positions, setPositions] = useState<Record<string, number>>({});
   // Which shelf is showing: paper books or audio books (remembered).
@@ -103,18 +93,8 @@ export default function ReaderScreen() {
   const nav = navigation as unknown as { navigate: (r: string, p: object) => void };
   // Subscribe on every render, including loading and book contents.
   const miniUp = useMiniPlayerUp();
-  const reading = bookKey !== null && pagedChapter !== null;
   // "This screen" in Ask reads what is registered here plus on-device OCR.
   useAskContext("read", bookKey ?? "");
-
-  // An open chapter owns horizontal drags: the drawer's edge swipe would steal
-  // a page turned back from the spine. Given back the moment it closes.
-  useEffect(() => {
-    if (!reading) return;
-    const drawer = navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
-    drawer?.setOptions({ swipeEnabled: false });
-    return () => drawer?.setOptions({ swipeEnabled: true });
-  }, [reading, navigation]);
 
   // Corpus (Track C4): cached 60s, deduped, never setState after unmount.
   const versesQ = useQuery<Shloka[]>("reader-verses", api.listShlokas);
@@ -219,7 +199,6 @@ export default function ReaderScreen() {
 
   const goHome = useCallback(() => {
     setBookKey(null);
-    setPagedChapter(null);
     setTierTier(null);
     setTierRows(null);
   }, []);
@@ -237,16 +216,16 @@ export default function ReaderScreen() {
     return tabs.addListener("tabPress", goHome);
   }, [navigation, goHome]);
 
-  // Android back: a chapter closes onto its contents, contents onto HOME.
+  // Android back: contents close onto HOME. (A book's pages live in the
+  // fullscreen Book screen, which handles its own back.)
   useEffect(() => {
     if (bookKey === null) return;
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
-      if (pagedChapter !== null) setPagedChapter(null);
-      else goHome();
+      goHome();
       return true;
     });
     return () => sub.remove();
-  }, [bookKey, pagedChapter, goHome]);
+  }, [bookKey, goHome]);
 
   const enterBook = useCallback(
     async (key: string) => {
@@ -254,7 +233,6 @@ export default function ReaderScreen() {
         const tier = parseInt(key.slice("graded-".length), 10);
         if (tierTier !== tier || !tierRows) loadTier(tier);
       }
-      setPagedChapter(null);
       const pos = await getReadingPosition(key).catch(() => 0);
       setBookKey(key);
       setPositions((p) => ({ ...p, [key]: Number.isFinite(pos) ? pos : 0 }));
@@ -330,41 +308,16 @@ export default function ReaderScreen() {
   }
 
   // ── CONTENTS ─────────────────────────────────────────────────────
-  // Paged books first: contents and chapter reader from /canon chapters.
+  // Paged books first: contents from /canon chapters. A verse row opens the
+  // fullscreen Book screen (the one reading screen for every book).
   const pagedText = bookKey ? canon.find((c) => c.slug === bookKey && isPaged(c)) ?? null : null;
   if (bookKey && pagedText) {
-    if (pagedChapter !== null) {
-      return (
-        <PagedChapterReader
-          text={pagedText}
-          chapter={pagedChapter}
-          startIndex={pagedIndex}
-          onBack={() => setPagedChapter(null)}
-          onChapter={(ch) => {
-            setPagedChapter(ch);
-            setPagedIndex(0);
-          }}
-          onChant={(i) => nav.navigate("Book", { bookKey: pagedText.slug, chapter: pagedChapter, index: i, mode: "chant" })}
-          renderVerse={(v, previous, i, total) => (
-            <ReaderPage
-              verse={v}
-              previous={previous}
-              runningTitle={plain(pagedText.title_en)}
-              position={i}
-              total={total}
-              pagedChapter={pagedChapter}
-            />
-          )}
-        />
-      );
-    }
     return (
       <PagedBookIndex
         text={pagedText}
         onBack={openShelf}
         onOpenChapter={(ch, idx) => {
-          setPagedChapter(ch);
-          setPagedIndex(idx);
+          nav.navigate("Book", { bookKey: pagedText.slug, chapter: ch, index: idx });
         }}
       />
     );
@@ -446,175 +399,6 @@ export default function ReaderScreen() {
   );
 }
 
-// ─── The page ───────────────────────────────────────────────────────
-// Owns its selected word: a tap shows the gloss inline. The Ask sheet opens
-// ONLY from the explicit button — a word tap that summons a modal is the
-// "verse loads nothing" bug wearing a costume.
-
-function ReaderPage({
-  verse,
-  previous,
-  runningTitle,
-  position,
-  total,
-  pagedChapter,
-}: {
-  verse: Shloka;
-  /** The verse on the page before — a new chapter starts where they differ. */
-  previous: Shloka | null;
-  runningTitle: string;
-  position: number;
-  total: number;
-  /** A paged book's chapter id as the server names it ("3.62"; "" for a book
-   *  with one chapter). Absent for a classic book, whose chapter is read off
-   *  the verse reference. */
-  pagedChapter?: string;
-}) {
-  const { sized } = useTypeScale();
-  const [selected, setSelected] = useState<WordBreakdown | null>(null);
-  const { open } = useAsk();
-  const { invalidate } = useBookPage();
-  const words = verse.word_breakdown ?? [];
-  const ref = parseRef(verse.source_ref);
-  const inPagedBook = pagedChapter !== undefined;
-  const chapter: string | number | null = inPagedBook
-    ? pagedChapter || null
-    : ref.nums.length > 1
-      ? ref.nums[0]
-      : null;
-  const before = previous ? parseRef(previous.source_ref) : null;
-  const opensChapter = inPagedBook
-    ? chapter !== null && position === 0
-    : chapter !== null && (!before || before.book !== ref.book || before.nums[0] !== chapter);
-
-  // Whatever this page shows now is what its sheet must show when it turns.
-  useEffect(() => {
-    invalidate();
-  });
-
-  if (!verse) return <View style={styles.page} />;
-
-  return (
-    <View style={styles.page}>
-      {/* The running head, as a printed book has. */}
-      <View style={styles.runningHead}>
-        <Text style={styles.runningHeadText} numberOfLines={1}>
-          {runningTitle}
-        </Text>
-        {chapter !== null ? <Text style={styles.runningHeadText}>Chapter {chapter}</Text> : null}
-      </View>
-      <ScrollView
-        style={styles.pageScroll}
-        contentContainerStyle={styles.pageBody}
-        onScrollEndDrag={invalidate}
-        onMomentumScrollEnd={invalidate}
-      >
-        {opensChapter ? (
-          <View style={styles.chapterOpen} accessibilityRole="header">
-            <View style={styles.chapterRule} />
-            <Text style={styles.chapterOpenText}>Chapter {chapter}</Text>
-            <View style={styles.chapterRule} />
-          </View>
-        ) : null}
-        <Text style={styles.pageSource} numberOfLines={1}>
-          {verse.source_ref}
-        </Text>
-        {words.length > 0 ? (
-          <View style={styles.wordWrap}>
-            {words.map((w, i) => {
-              const active = selected?.word === w.word && selected?.meaning === w.meaning;
-              return (
-                <Pressable
-                  key={`${w.word}-${i}`}
-                  onPress={() => {
-                    haptics.tap();
-                    setSelected(active ? null : w);
-                  }}
-                  style={[styles.wordChip, active && styles.wordChipActive]}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${w.word}. ${plain(w.meaning)}`}
-                  accessibilityState={{ selected: active }}
-                >
-                  <Text
-                    style={[
-                      styles.wordText,
-                      script("bold"),
-                      { fontSize: sized(font.sizes.xl, { sanskrit: true }) },
-                      active && styles.wordTextActive,
-                    ]}
-                  >
-                    {w.word}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        ) : (
-          <Text style={[styles.verse, script("bold"), { fontSize: sized(font.sizes.xl, { sanskrit: true }) }]}>
-            {verse.devanagari}
-          </Text>
-        )}
-        <Text style={[styles.iast, { fontSize: sized(font.sizes.base) }]}>{verse.iast}</Text>
-
-        {verse.translation_hi ? (
-          <View style={styles.gloss}>
-            <Text style={[styles.glossWord, script("bold")]} accessibilityRole="header">हिन्दी अर्थ</Text>
-            <Text style={[styles.glossMeaning, script("regular"), { fontSize: sized(font.sizes.base, { sanskrit: true }) }]}>
-              {plain(verse.translation_hi)}
-            </Text>
-          </View>
-        ) : null}
-        {verse.translation_en ? (
-          <View style={styles.gloss}>
-            <Text style={styles.glossWord} accessibilityRole="header">English meaning</Text>
-            <Text style={[styles.glossMeaning, { fontSize: sized(font.sizes.base) }]}>
-              {plain(verse.translation_en)}
-            </Text>
-          </View>
-        ) : null}
-
-        {selected && (
-          <Animated.View
-            entering={FadeIn.duration(160)}
-            exiting={FadeOut.duration(120)}
-            style={styles.gloss}
-          >
-            <Text style={[styles.glossWord, script("bold")]}>{selected.word}</Text>
-            {selected.meaning ? (
-              <Text style={styles.glossMeaning}>
-                {/[ऀ-ॿ]/.test(selected.meaning) ? `Stem: ${selected.meaning}` : plain(selected.meaning)}
-              </Text>
-            ) : null}
-            {selected.features && selected.features.length > 0 ? (
-              <View style={styles.featRow}>
-                {selected.features.map((f) => (
-                  <View key={f} style={styles.featChip}>
-                    <Text style={styles.featText}>{f}</Text>
-                  </View>
-                ))}
-              </View>
-            ) : null}
-          </Animated.View>
-        )}
-
-        <Pressable
-          onPress={() => open({ surface: "shloka", subject: verse.devanagari })}
-          style={styles.askVerse}
-          accessibilityRole="button"
-          accessibilityLabel="Ask about this whole verse"
-        >
-          <Ionicons name="help-circle-outline" size={16} color={color.saffronText} />
-          <Text style={styles.askVerseText}>Ask about this verse</Text>
-        </Pressable>
-      </ScrollView>
-      <Text style={styles.folio}>
-        {ref.nums.length > 0 ? `${ref.nums.join(".")} · ` : ""}
-        {position + 1} / {total}
-      </Text>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: T.paper },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: space.lg },
@@ -622,127 +406,4 @@ const styles = StyleSheet.create({
   back: { flexDirection: "row", alignItems: "center", gap: 6, minHeight: 48, alignSelf: "flex-start" },
   backText: { ...ui("semibold"), fontSize: 15, color: T.ink },
   gradedTitle: { ...ui("bold"), color: T.ink, marginBottom: space.md },
-
-  // The page of a paged book's chapter (PagedChapterReader draws the board).
-  page: {
-    flex: 1,
-    backgroundColor: "#FFFDF7",
-    borderTopLeftRadius: 3,
-    borderBottomLeftRadius: 3,
-    borderTopRightRadius: radius.md,
-    borderBottomRightRadius: radius.md,
-    paddingHorizontal: space.md,
-    overflow: "hidden",
-  },
-  runningHead: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    gap: space.sm,
-    paddingTop: space.sm,
-    paddingBottom: 6,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: color.border,
-  },
-  runningHeadText: {
-    flexShrink: 1,
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.xs,
-    color: color.inkSoft,
-    textTransform: "uppercase",
-    letterSpacing: 0.6,
-  },
-  pageScroll: { flex: 1 },
-  pageBody: { paddingBottom: space.xl },
-  chapterOpen: { flexDirection: "row", alignItems: "center", gap: space.sm, marginTop: space.md },
-  chapterRule: { flex: 1, height: 1, backgroundColor: color.saffronLight },
-  chapterOpenText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.sm,
-    color: color.saffronText,
-    textTransform: "uppercase",
-    letterSpacing: 1,
-  },
-  pageSource: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontWeight: "800",
-    fontSize: font.sizes.xs,
-    color: color.saffron,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    paddingTop: space.md,
-  },
-  wordWrap: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
-  wordChip: {
-    backgroundColor: "rgba(232,91,37,0.07)",
-    borderRadius: radius.sm,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    minHeight: 44,
-    justifyContent: "center",
-  },
-  wordChipActive: { backgroundColor: color.saffronLight },
-  wordText: { color: color.ink, lineHeight: 34 },
-  wordTextActive: { color: color.saffronDeep },
-  verse: { color: color.ink, lineHeight: 46, marginTop: space.sm },
-  iast: {
-    fontFamily: "Nunito_500Medium",
-    fontWeight: "500",
-    color: color.inkSoft,
-    marginTop: space.md,
-    lineHeight: 22,
-  },
-  gloss: {
-    marginTop: space.md,
-    backgroundColor: color.bg,
-    borderRadius: radius.md,
-    padding: space.md,
-    borderLeftWidth: 3,
-    borderLeftColor: color.saffron,
-  },
-  glossWord: { fontSize: font.sizes.lg, color: color.ink },
-  glossMeaning: {
-    fontFamily: "Nunito_400Regular",
-    fontWeight: "400",
-    fontSize: font.sizes.base,
-    color: color.ink,
-    marginTop: 4,
-    lineHeight: 22,
-  },
-  featRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: space.sm },
-  featChip: {
-    backgroundColor: color.surfaceMuted,
-    borderRadius: radius.pill,
-    paddingHorizontal: space.sm,
-    paddingVertical: 3,
-  },
-  featText: {
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.xs,
-    color: color.inkSoft,
-  },
-  askVerse: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    marginTop: space.sm,
-    minHeight: 44,
-    alignSelf: "flex-start",
-  },
-  askVerseText: {
-    color: color.saffronText,
-    fontFamily: "Nunito_700Bold",
-    fontWeight: "700",
-    fontSize: font.sizes.sm,
-  },
-  folio: {
-    textAlign: "center",
-    paddingVertical: 6,
-    fontFamily: "Nunito_600SemiBold",
-    fontWeight: "600",
-    fontSize: font.sizes.xs,
-    color: color.inkFaint,
-  },
 });

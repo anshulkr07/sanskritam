@@ -19,6 +19,9 @@ from app.services.entitlement import has_entitlement
 
 def plus_locked(db: Session | None, learner: Learner | None, text: CanonText) -> bool:
     """True when this learner may read only the preview of this book."""
+    if settings.commerce_enabled:
+        from app.commerce.service import title_access
+        return not (db is not None and learner is not None and title_access(db, learner.id, text.slug + ":book"))
     if not settings.canon_plus_gate:
         return False
     if (text.tier or "free") != "plus":
@@ -55,6 +58,9 @@ def preview_chapter(db: Session, text: CanonText) -> str:
 def verse_open(db: Session, learner: Learner | None, text: CanonText, shloka: Shloka) -> bool:
     """Open when not locked, or in the preview chapter, or (one-chapter book)
     among the first 5 by seq."""
+    if settings.commerce_enabled:
+        from app.commerce.access import reading_open
+        return learner is not None and reading_open(db, learner, text, shloka)
     if not plus_locked(db, learner, text):
         return True
     preview = preview_chapter(db, text)

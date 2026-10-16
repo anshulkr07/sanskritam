@@ -163,6 +163,8 @@ def create_app() -> FastAPI:
     from app.routers.recite_calibration import router as recite_calibration_router
 
     app.include_router(health_router, tags=["Health"])
+    from app.commerce.router import router as commerce_router
+    app.include_router(commerce_router)
     app.include_router(auth_router, tags=["Auth"])
     app.include_router(me_router, tags=["Learner"])
     app.include_router(challenges_router, tags=["Challenges"])

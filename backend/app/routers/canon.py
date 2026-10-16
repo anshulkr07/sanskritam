@@ -187,6 +187,10 @@ def get_canon_chapters(
         verses = sorted(by_chapter[ch], key=lambda r: int(r.seq or 0))
         first = verses[0] if verses else None
         ch_locked = locked_book and (ch != preview)
+        from app.config import settings
+        if settings.commerce_enabled and first:
+            first_verse = db.query(Shloka).filter_by(book=slug, chapter=ch, in_daily=False).order_by(Shloka.seq).first()
+            ch_locked = not (first_verse and _access.verse_open(db, learner, text, first_verse))
         chapters.append({
             "chapter": ch,
             "section": _section_of(ch),
@@ -205,7 +209,7 @@ def get_canon_chapters(
     }
 
 
-def _verse_responses(db: Session, rows: list) -> list:
+def _verse_responses(db: Session, rows: list, learner=None) -> list:
     """The same verse shape GET /shlokas returns: verse_uid for Learn, and the
     chant (audio, line times) when one has been imported for the verse."""
     from app.routers.shlokas import _chant_map, _shloka_response
@@ -213,7 +217,8 @@ def _verse_responses(db: Session, rows: list) -> list:
 
     uids = [(getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")) for s in rows]
     chants = _chant_map(db, uids)
-    return [_shloka_response(s, chants) for s in rows]
+    from app.commerce.access import protect_audio
+    return [protect_audio(db, learner, s, _shloka_response(s, chants)) if learner else _shloka_response(s, chants) for s in rows]
 
 
 @router.get("/canon/{slug}/verses")
@@ -247,6 +252,12 @@ def get_canon_verses(
             raise HTTPException(status_code=404, detail="No such chapter")
     locked_book = _access.plus_locked(db, learner, text)
     preview = _access.preview_chapter(db, text)
+    from app.config import settings
+    if settings.commerce_enabled:
+        verses = [r for r in rows if _access.verse_open(db, learner, text, r)]
+        return {"slug": slug, "chapter": want, "locked": len(verses) < len(rows),
+                "locked_after": len(verses) if len(verses) < len(rows) else None,
+                "verses": _verse_responses(db, verses, learner)}
     # Is this a one-chapter book?
     known_all = [
         r[0] or ""

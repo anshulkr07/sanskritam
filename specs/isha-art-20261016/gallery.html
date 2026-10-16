@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Īśopaniṣad · Illustrated reader</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f0e5;color:#3b2e25;font-family:system-ui,sans-serif}header{padding:22px 28px;border-bottom:1px solid #d9c9ae}h1{font-family:'Tiro Devanagari Sanskrit',serif;font-size:28px;font-weight:400;margin:0}header p{margin:5px 0 0;font-size:13px;color:#7a6a5c}.layout{display:grid;grid-template-columns:minmax(320px,1fr) minmax(340px,1fr);gap:28px;padding:28px;max-width:1360px;margin:auto}.viewer{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;font-size:13px}.controls label{display:flex;gap:6px;align-items:center}button,select,input{font:inherit}button,select{min-height:40px;padding:7px 12px;background:#fffdf7;border:1px solid #d9c9ae;color:#3b2e25;border-radius:0;cursor:pointer}input[type=range]{width:100px;accent-color:#b23d10}.page{--paper:#fffdf7;--ink:#3b2e25;--soft:#7a6a5c;position:relative;isolation:isolate;width:100%;max-width:393px;min-height:700px;background:var(--paper);color:var(--ink);padding:32px 16px;text-align:center;display:flex;align-items:center;justify-content:center;box-shadow:2px 3px 0 #d9c9ae;overflow:hidden}.page.landscape{max-width:720px;min-height:390px}.page>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.22;z-index:-1}.text{display:flex;flex-direction:column;gap:8px;align-items:center;width:100%}.ref{font-size:12px;color:var(--soft)}.sa{font-family:'Tiro Devanagari Sanskrit',serif;font-size:22px;line-height:39px;width:100%;overflow-wrap:break-word}.sa p{margin:0}.roman{font-size:14px;font-style:italic;color:var(--soft)}.rule{width:48px;height:2px;background:#e85b25;margin:8px}.meaning{font-size:16px;line-height:24px}.text p{margin:0}.learn{font-size:14px;color:var(--soft);padding:18px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:start}.thumb{padding:0;border:2px solid transparent;background:transparent;text-align:left;min-width:0}.thumb[aria-pressed=true]{border-color:#b23d10}.thumb img{display:block;width:100%;aspect-ratio:1;object-fit:contain}.thumb span{display:block;font-size:12px;padding:7px}.download{font-size:13px;color:#a43d1b}.stats{font-size:12px;color:#7a6a5c} @media(max-width:850px){.layout{grid-template-columns:1fr;padding:18px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.page.landscape{min-height:390px}} @media(max-width:360px){header{padding:16px}.layout{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head><body>
+<header><h1 lang="sa">ईशोपनिषद्</h1><p>18 verses · One master painting per verse · Phone and tablet editions</p></header>
+<main class="layout"><section class="viewer" aria-label="Reader preview">
+<div class="controls"><label>Verse <select id="verse"></select></label><label>Theme <select id="theme"><option value="light">Light</option><option value="sepia">Sepia</option><option value="dark">Dark</option></select></label><button id="orientation">Landscape</button></div>
+<div class="controls"><label><input type="checkbox" id="illustrated" checked>Illustration</label><label>Opacity <input id="opacity" type="range" min="0" max="100" value="22"><output id="opacity-value">22%</output></label><label><input type="checkbox" id="show-roman" checked>Roman</label></div>
+<article class="page" id="page"><img id="painting" alt=""><div class="text"><div class="ref" id="ref"></div><div class="sa" id="sanskrit" lang="sa"></div><p class="roman" id="roman"></p><div class="rule"></div><p class="meaning" id="meaning"></p><div class="learn">Learn</div></div></article>
+<a id="master" class="download" target="_blank" rel="noopener">View original master</a><div class="stats" id="stats"></div>
+</section><section class="grid" id="grid" aria-label="All 18 verse illustrations"></section></main>
+<script type="application/json" id="source">[
+  {
+    "verse_uid": "72480972a48484dc",
+    "source_ref": "Īśopaniṣad 1",
+    "devanagari": "ॐ ईशावास्यमिदँ सर्वं यत्किञ्च जगत्यां जगत्। तेन त्यक्तेन भुञ्जीथाः मा गृधः कस्यस्विद्धनम्।",
+    "iast": "oṃ īśāvāsyamidam̐ sarvaṃ yatkiñca jagatyāṃ jagat. tena tyaktena bhuñjīthāḥ mā gṛdhaḥ kasyasviddhanam.",
+    "translation_en": "All this, whatsoever moves on earth, is to be hidden in the Lord (the Self). When thou hast surrendered all this, then thou mayest enjoy. Do not covet the wealth of any man!",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "f07bdec970afb525",
+    "source_ref": "Īśopaniṣad 2",
+    "devanagari": "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतँ समाः। एवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे।",
+    "iast": "kurvanneveha karmāṇi jijīviṣecchatam̐ samāḥ. evaṃ tvayi nānyatheto'sti na karma lipyate nare.",
+    "translation_en": "Though a man may wish to live a hundred years, performing works, it will be thus with him; but not in any other way: work will thus not cling to a man.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "d0d8f486c65bfc83",
+    "source_ref": "Īśopaniṣad 3",
+    "devanagari": "असूर्या नाम ते लोका अन्धेन तमसाऽऽवृताः। ताँस्ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः।",
+    "iast": "asūryā nāma te lokā andhena tamasā''vṛtāḥ. tām̐ste pretyābhigacchanti ye ke cātmahano janāḥ.",
+    "translation_en": "There are the worlds of the Asuras covered with blind darkness. Those who have destroyed their self (who perform works, without having arrived at a knowledge of the true Self), go after death to those worlds.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "9a2795d66da4966e",
+    "source_ref": "Īśopaniṣad 4",
+    "devanagari": "अनेजदेकं मनसो जवीयो नैनद्देवा आप्नुवन्पूर्वमर्षत्। तद्धावतोऽन्यानत्येति तिष्ठत्तस्मिन्नपो मातरिश्वा दधाति।",
+    "iast": "anejadekaṃ manaso javīyo nainaddevā āpnuvanpūrvamarṣat. taddhāvato'nyānatyeti tiṣṭhattasminnapo mātariśvā dadhāti.",
+    "translation_en": "That one (the Self), though never stirring, is swifter than thought. The Devas (senses) never reached it, it walked before them. Though standing still, it overtakes the others who are running. Matarisvan (the wind, the moving spirit) bestows powers on it.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "4fa6d5f7d4639603",
+    "source_ref": "Īśopaniṣad 5",
+    "devanagari": "तदेजति तन्नैजति तद्दूरे तद्वन्तिके। तदन्तरस्य सर्वस्य तदु सर्वस्यास्य बाह्यतः।",
+    "iast": "tadejati tannaijati taddūre tadvantike. tadantarasya sarvasya tadu sarvasyāsya bāhyataḥ.",
+    "translation_en": "It stirs and it stirs not; it is far, and likewise near. It is inside of all this, and it is outside of all this.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "49d92e6ad856a9dd",
+    "source_ref": "Īśopaniṣad 6",
+    "devanagari": "यस्तु सर्वाणि भूतान्यात्मन्येवानुपश्यति। सर्वभूतेषु चात्मानं ततो न विजुगुप्सते।",
+    "iast": "yastu sarvāṇi bhūtānyātmanyevānupaśyati. sarvabhūteṣu cātmānaṃ tato na vijugupsate.",
+    "translation_en": "And he who beholds all beings in the Self, and the Self in all beings, he never turns away from it.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "b6f4686375a23496",
+    "source_ref": "Īśopaniṣad 7",
+    "devanagari": "यस्मिन्सर्वाणि भूतान्यात्मैवाभूद्विजानतः। तत्र को मोहः कः शोक एकत्वमनुपश्यतः।",
+    "iast": "yasminsarvāṇi bhūtānyātmaivābhūdvijānataḥ. tatra ko mohaḥ kaḥ śoka ekatvamanupaśyataḥ.",
+    "translation_en": "When to a man who understands, the Self has become all things, what sorrow, what trouble can there be to him who once beheld that unity?",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "2c8fdbe631683aab",
+    "source_ref": "Īśopaniṣad 8",
+    "devanagari": "स पर्यगाच्छुक्रमकायमव्रणम् अस्नाविरँ शुद्धमपापविद्धम्। कविर्मनीषी परिभूः स्वयम्भूर्याथातथ्यतोऽर्थान् व्यदधाच्छाश्वतीभ्यः समाभ्यः।",
+    "iast": "sa paryagācchukramakāyamavraṇam asnāviram̐ śuddhamapāpaviddham. kavirmanīṣī paribhūḥ svayambhūryāthātathyato'rthān vyadadhācchāśvatībhyaḥ samābhyaḥ.",
+    "translation_en": "He (the Self) encircled all, bright, incorporeal, scatheless, without muscles, pure, untouched by evil; a seer, wise, omnipresent, self-existent, he disposed all things rightly for eternal years.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "8a6f64d035200e7f",
+    "source_ref": "Īśopaniṣad 9",
+    "devanagari": "अन्धं तमः प्रविशन्ति येऽविद्यामुपासते। ततो भूय इव ते तमो य उ विद्यायाँ रताः।",
+    "iast": "andhaṃ tamaḥ praviśanti ye'vidyāmupāsate. tato bhūya iva te tamo ya u vidyāyām̐ ratāḥ.",
+    "translation_en": "All who worship what is not real knowledge (good works), enter into blind darkness: those who delight in real knowledge, enter, as it were, into greater darkness.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "f574bf8c2e2b6a95",
+    "source_ref": "Īśopaniṣad 10",
+    "devanagari": "अन्यदेवाहुर्विद्ययाऽन्यदाहुरविद्यया। इति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे।",
+    "iast": "anyadevāhurvidyayā'nyadāhuravidyayā. iti śuśruma dhīrāṇāṃ ye nastadvicacakṣire.",
+    "translation_en": "One thing, they say, is obtained from real knowledge; another, they say, from what is not knowledge. Thus we have heard from the wise who taught us this.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "bc54f817f9d176b5",
+    "source_ref": "Īśopaniṣad 11",
+    "devanagari": "विद्यां चाविद्यां च यस्तद्वेदोभयँ सह। अविद्यया मृत्युं तीर्त्वा विद्ययाऽमृतमश्नुते।",
+    "iast": "vidyāṃ cāvidyāṃ ca yastadvedobhayam̐ saha. avidyayā mṛtyuṃ tīrtvā vidyayā'mṛtamaśnute.",
+    "translation_en": "He who knows at the same time both knowledge and not-knowledge, overcomes death through not-knowledge, and obtains immortality through knowledge.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "e07a1e1241f911c8",
+    "source_ref": "Īśopaniṣad 12",
+    "devanagari": "अन्धं तमः प्रविशन्ति येऽसम्भूतिमुपासते। ततो भूय इव ते तमो य उ सम्भूत्याँ रताः।",
+    "iast": "andhaṃ tamaḥ praviśanti ye'sambhūtimupāsate. tato bhūya iva te tamo ya u sambhūtyām̐ ratāḥ.",
+    "translation_en": "All who worship what is not the true cause, enter into blind darkness: those who delight in the true cause, enter, as it were, into greater darkness.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "70d9d55bc4d03813",
+    "source_ref": "Īśopaniṣad 13",
+    "devanagari": "अन्यदेवाहुः सम्भवादन्यदाहुरसम्भवात्। इति शुश्रुम धीराणां ये नस्तद्विचचक्षिरे।",
+    "iast": "anyadevāhuḥ sambhavādanyadāhurasambhavāt. iti śuśruma dhīrāṇāṃ ye nastadvicacakṣire.",
+    "translation_en": "One thing, they say, is obtained from (knowledge of) the cause; another, they say, from (knowledge of) what is not the cause. Thus we have heard from the wise who taught us this.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "fa2acd65edb1c620",
+    "source_ref": "Īśopaniṣad 14",
+    "devanagari": "सम्भूतिं च विनाशं च यस्तद्वेदोभयँ सह। विनाशेन मृत्युं तीर्त्वा सम्भूत्याऽमृतमश्नुते।",
+    "iast": "sambhūtiṃ ca vināśaṃ ca yastadvedobhayam̐ saha. vināśena mṛtyuṃ tīrtvā sambhūtyā'mṛtamaśnute.",
+    "translation_en": "He who knows at the same time both the cause and the destruction (the perishable body), overcomes death by destruction (the perishable body), and obtains immortality through (knowledge of) the true cause.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "ee097fb8870d00de",
+    "source_ref": "Īśopaniṣad 15",
+    "devanagari": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम्। तत्त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये।",
+    "iast": "hiraṇmayena pātreṇa satyasyāpihitaṃ mukham. tattvaṃ pūṣannapāvṛṇu satyadharmāya dṛṣṭaye.",
+    "translation_en": "The door of the True is covered with a golden disk. Open that, O Pushan, that we may see the nature of the True.",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "e17700afe7dc3670",
+    "source_ref": "Īśopaniṣad 16",
+    "devanagari": "पूषन्नेकर्षे यम सूर्य प्राजापत्य व्यूह रश्मीन् समूह। तेजो यत्ते रूपं कल्याणतमं तत्ते पश्यामि योऽसावसौ पुरुषः सोऽहमस्मि।",
+    "iast": "pūṣannekarṣe yama sūrya prājāpatya vyūha raśmīn samūha. tejo yatte rūpaṃ kalyāṇatamaṃ tatte paśyāmi yo'sāvasau puruṣaḥ so'hamasmi.",
+    "translation_en": "O Pushan, only seer, Yama (judge), Surya (sun), son of Pragapati, spread thy rays and gather them! The light which is thy fairest form, I see it. I am what He is (viz. the person in the sun).",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "9aeeb517fa8d8b4f",
+    "source_ref": "Īśopaniṣad 17",
+    "devanagari": "वायुरनिलममृतमथेदं भस्मान्तँ शरीरम्। ॐ क्रतो स्मर कृतँ स्मर क्रतो स्मर कृतँ स्मर।",
+    "iast": "vāyuranilamamṛtamathedaṃ bhasmāntam̐ śarīram. oṃ krato smara kṛtam̐ smara krato smara kṛtam̐ smara.",
+    "translation_en": "Breath to air, and to the immortal! Then this my body ends in ashes. Om! Mind, remember! Remember thy deeds! Mind, remember! Remember thy deeds!",
+    "translation_hi": ""
+  },
+  {
+    "verse_uid": "f359d0adefe84c0b",
+    "source_ref": "Īśopaniṣad 18",
+    "devanagari": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान्। युयोध्यस्मज्जुहुराणमेनो भूयिष्ठां ते नम उक्तिं विधेम।",
+    "iast": "agne naya supathā rāye asmān viśvāni deva vayunāni vidvān. yuyodhyasmajjuhurāṇameno bhūyiṣṭhāṃ te nama uktiṃ vidhema.",
+    "translation_en": "Agni, lead us on to wealth (beatitude) by a good path, thou, O God, who knowest all things! Keep far from us crooked evil, and we shall offer thee the fullest praise!",
+    "translation_hi": ""
+  }
+]</script><script type="application/json" id="assets">[
+  {
+    "verse": 1,
+    "master": "results/isha-art-20261016/masters/verse-01.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/01-870bcecd213f20d4.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/64a33a6b9ff320037addab53.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 152482
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/f29d6456116cb5ef34ce67e2.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 514246
+    }
+  },
+  {
+    "verse": 2,
+    "master": "results/isha-art-20261016/masters/verse-02.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/02-3a87de1ab11c81b8.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/f560b70c5db764d4e7f5c124.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 121696
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/db42273f46ea0f36b4d02abd.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 424918
+    }
+  },
+  {
+    "verse": 3,
+    "master": "results/isha-art-20261016/masters/verse-03.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/03-dc910e3a1ecee974.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/cf5005be9e81f705f0b4eee5.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 92440
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/102920a49f5d61e8b182885e.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 398366
+    }
+  },
+  {
+    "verse": 4,
+    "master": "results/isha-art-20261016/masters/verse-04.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/04-08ec4f3834575f7e.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/42655a002eb5634dd05703a9.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 140672
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/3a3ef0218a9f305130a4f21b.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 490852
+    }
+  },
+  {
+    "verse": 5,
+    "master": "results/isha-art-20261016/masters/verse-05.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/05-5d0d7457a084eb1b.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/f85dea0ec37fe718d9d3e30f.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 115058
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/8c06c79d4705a50866013e50.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 393848
+    }
+  },
+  {
+    "verse": 6,
+    "master": "results/isha-art-20261016/masters/verse-06.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/06-acd4db7b426583f1.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/9a02a7a91a90dda419352240.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 151932
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/26bb97649ca4d5792100fbfa.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 508436
+    }
+  },
+  {
+    "verse": 7,
+    "master": "results/isha-art-20261016/masters/verse-07.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/07-70aa54a0af977dec.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/5766cabd7acef050bd5c6d2f.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 141038
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/4fac219882042bfc24a6167a.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 491930
+    }
+  },
+  {
+    "verse": 8,
+    "master": "results/isha-art-20261016/masters/verse-08.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/08-0209a58f6792f36b.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/214eabddc8ed13eab02096f8.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 114162
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/a5a811c623431603d6ab3b64.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 409990
+    }
+  },
+  {
+    "verse": 9,
+    "master": "results/isha-art-20261016/masters/verse-09.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/09-12dede56a7c76206.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/66d1af56a6f2b71d19be3bea.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 141652
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/05488174f8b6b04fc303f080.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 496464
+    }
+  },
+  {
+    "verse": 10,
+    "master": "results/isha-art-20261016/masters/verse-10.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/10-4b5d4307347d503d.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/378f96233f9e89cee83ead78.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 128368
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/adf08f6e9c2f9430c78a417a.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 452090
+    }
+  },
+  {
+    "verse": 11,
+    "master": "results/isha-art-20261016/masters/verse-11.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/11-8678ad90b9d8ea49.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/7847515cd1adb63812acc357.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 136580
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/609692cfe7ea0d9075663cae.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 458604
+    }
+  },
+  {
+    "verse": 12,
+    "master": "results/isha-art-20261016/masters/verse-12.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/12-7bb9ca35cc0a6cf9.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/5b78ceebfd2c1a3b3bf2bde0.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 127900
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/c3503eaeb936f43d5eb449a8.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 455884
+    }
+  },
+  {
+    "verse": 13,
+    "master": "results/isha-art-20261016/masters/verse-13.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/13-89eadb7e9d6c0333.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/4e66994e7125441534836423.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 123494
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/3a5d91cfce3fe370e5cf7c4d.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 407558
+    }
+  },
+  {
+    "verse": 14,
+    "master": "results/isha-art-20261016/masters/verse-14.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/14-63402416d00ad67c.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/10008cb23ff3b904d25b22c9.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 125006
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/b4ea0c0300e99fcbbc026d9c.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 472728
+    }
+  },
+  {
+    "verse": 15,
+    "master": "results/isha-art-20261016/masters/verse-15.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/15-d9db0c11e08a61b5.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/096d4e49bd21689afb8c5d1d.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 102958
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/49d8d8b262fd01f02b5de3f8.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 375344
+    }
+  },
+  {
+    "verse": 16,
+    "master": "results/isha-art-20261016/masters/verse-16.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/16-e6459cdb3b817393.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/7b7acbcc7a1bec7129c26660.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 109734
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/4d228a08d96914c056cabf47.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 378062
+    }
+  },
+  {
+    "verse": 17,
+    "master": "results/isha-art-20261016/masters/verse-17.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/17-f85a9a4367471e83.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/511391ab8ccebf0f783a022d.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 101986
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/75cbaf0e811a9f3da1ea9ab7.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 355374
+    }
+  },
+  {
+    "verse": 18,
+    "master": "results/isha-art-20261016/masters/verse-18.png",
+    "masterDimensions": [
+      1254,
+      1254
+    ],
+    "masterUrl": "https://cdn.vedicvalor.com/art/masters/isha/18-6814ac774836dbe7.png",
+    "phone": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/4be534426eee44174f878edf.webp",
+      "width": 768,
+      "height": 768,
+      "bytes": 132926
+    },
+    "tablet": {
+      "uri": "https://cdn.vedicvalor.com/art/verses/v1/f4caff133312120bf080549b.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 472358
+    }
+  }
+]</script>
+<script>
+const source=JSON.parse(document.getElementById('source').textContent),assets=JSON.parse(document.getElementById('assets').textContent);const byId=id=>document.getElementById(id);let selected=0;
+source.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=i+1;byId('verse').append(o);const b=document.createElement('button');b.className='thumb';b.setAttribute('aria-label',v.source_ref);b.innerHTML='<img loading="lazy" src="'+assets[i].phone.uri+'" alt=""><span>Verse '+(i+1)+'</span>';b.onclick=()=>{selected=i;byId('verse').value=i;render()};byId('grid').append(b)});
+function render(){const v=source[selected],art=assets[selected];byId('painting').src=art.tablet.uri;byId('painting').hidden=!byId('illustrated').checked;byId('painting').style.opacity=byId('opacity').value/100;byId('opacity-value').value=byId('opacity').value+'%';byId('ref').textContent=v.source_ref;byId('sanskrit').replaceChildren(...v.devanagari.split(/(?<=[।॥])/).map(s=>s.trim()).filter(Boolean).map(s=>{const p=document.createElement('p');p.textContent=s;return p}));byId('roman').textContent=v.iast;byId('roman').hidden=!byId('show-roman').checked;byId('meaning').textContent=v.translation_en;byId('master').href=art.masterUrl;byId('stats').textContent='Phone: '+Math.round(art.phone.bytes/1000)+' KB · Tablet: '+Math.round(art.tablet.bytes/1000)+' KB · Master: '+art.masterDimensions.join(' × ');const themes={light:['#fffdf7','#3b2e25','#7a6a5c'],sepia:['#f1e3c6','#4a3a28','#6b5842'],dark:['#1b1714','#ede3d3','#a89b8a']};const t=themes[byId('theme').value];['--paper','--ink','--soft'].forEach((k,i)=>byId('page').style.setProperty(k,t[i]));[...byId('grid').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selected)));}
+byId('verse').onchange=()=>{selected=Number(byId('verse').value);render()};['theme','illustrated','opacity','show-roman'].forEach(id=>byId(id).addEventListener('input',render));byId('orientation').onclick=()=>{byId('page').classList.toggle('landscape');byId('orientation').textContent=byId('page').classList.contains('landscape')?'Portrait':'Landscape'};render();
+</script></body></html>
