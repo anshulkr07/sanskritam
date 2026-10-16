@@ -47,6 +47,7 @@ import { captureRef } from "react-native-view-shot";
 import {
   ApiError,
   api,
+  request,
   type AskEngineBlock,
   type AskPlace,
   type AskResponse,
@@ -64,6 +65,7 @@ import { useVoiceInput } from "../hooks/useVoiceInput";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { color, fill, font, onFill, outline, radius, script, space } from "../theme";
 import { plain } from "../utils/text";
+import { commerceSnapshot } from "../services/commerce";
 
 export interface AskContext {
   /** The screen the learner is on, sent to the backend router. */
@@ -131,7 +133,9 @@ async function send(
   question: string,
   screenText: string,
   place: AskPlace | null,
+  detailed = false,
 ): Promise<AskResponse> {
+  if (detailed) return request<AskResponse>("/explain/analysis", { method: "POST", body: JSON.stringify({ surface, subject, question, screen_text: screenText, place, cards: true, tradition: getKalaPrefs().tradition }) }, true);
   const opts = {
     ...(screenText ? { screenText } : {}),
     ...(place ? { place } : {}),
@@ -176,6 +180,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
   const [phase, setPhase] = useState<Phase>({ kind: "idle" });
   const [question, setQuestion] = useState("");
   const [useSubject, setUseSubject] = useState(true);
+  const [detailed, setDetailed] = useState(false);
   const [attach, setAttach] = useState<Attachment | null>(null);
   const [attaching, setAttaching] = useState(false);
   const [attachNote, setAttachNote] = useState("");
@@ -204,6 +209,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
       setPhase({ kind: "idle" });
       setQuestion("");
       setUseSubject(true);
+      setDetailed(false);
       setChoosingPlace(false);
       setVoiceError("");
       setAttachNote("");
@@ -238,7 +244,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
       setPhase({ kind: "loading", question: display?.trim() || q });
       try {
         const place = placeOverride ?? (await getPlace());
-        const data = await send(surface, subject, q, attach?.text ?? "", place);
+        const data = await send(surface, subject, q, attach?.text ?? "", place, detailed);
         setPhase({
           kind: "answer",
           data,
@@ -249,7 +255,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
         setPhase({ kind: "error", message: errorMessage(e), question: display?.trim() || q });
       }
     },
-    [surface, subject, attach],
+    [surface, subject, attach, detailed],
   );
 
   const again = useCallback(() => {
@@ -502,6 +508,9 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
 
               {!!voiceError && <Text style={styles.note}>{voiceError}</Text>}
 
+              {!!commerceSnapshot()?.enabled && <Pressable accessibilityRole="switch" accessibilityState={{ checked: detailed }} disabled={phase.kind === "loading"} onPress={() => setDetailed(value => !value)} style={{ paddingVertical: 10 }}>
+                <Text style={{ color: color.inkSoft, fontSize: 13 }}>{detailed ? "✓ Detailed analysis" : "Standard answer · tap for detailed analysis"} · credit quote before sending</Text>
+              </Pressable>}
               <View style={styles.inputRow}>
                 <Pressable
                   onPress={attachScreen}

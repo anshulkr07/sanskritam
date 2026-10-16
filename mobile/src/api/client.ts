@@ -1428,7 +1428,7 @@ export async function request<T>(path: string, init: RequestInit = {}, withAuth 
   if (withAuth && authToken) {
     headers.Authorization = `Bearer ${authToken}`;
   }
-  if (withAuth && ["/ask/talk", "/explain", "/conversation/explain", "/conversation/start", "/conversation/turn", "/speech/tts"].includes(path)) {
+  if (withAuth && ["/ask/talk", "/explain", "/explain/analysis", "/conversation/explain", "/conversation/start", "/conversation/turn", "/speech/tts"].includes(path)) {
     Object.assign(headers, await (await import("../services/commerce")).paidHeaders(path));
   }
   let res: Response;

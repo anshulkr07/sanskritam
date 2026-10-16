@@ -36,6 +36,7 @@ export function loadOfflineAudio(): Promise<void> {
     const directory = new Directory(Paths.document, "reading-audio");
     if (!directory.exists) return;
     for (const file of directory.list()) {
+      if (commerceSnapshot()?.enabled && file instanceof File && file.name.endsWith(".audio")) { file.delete(); continue; }
       if (!(file instanceof File) || !file.name.endsWith(".encrypted")) continue;
       const value = JSON.parse(await file.text());
       const original = value.sealed;
@@ -100,6 +101,7 @@ export async function downloadBookAudio(pages: Shloka[], book?: string): Promise
   await loadOfflineAudio();
   const state = await ensureCommerce();
   if (state.enabled && !book) throw new Error("Choose a licensed audiobook before downloading.");
+  if (state.enabled && !state.offline) throw new Error("An active membership is required for audio downloads.");
   const { BASE_URL } = await import("../config");
   const urls = [...new Set(pages.flatMap(p => [p.chant?.url, p.audio_url].filter((u): u is string => !!u)))];
   if (!urls.length) throw new Error("This chapter has no prepared audio yet.");
@@ -117,22 +119,28 @@ export async function downloadBookAudio(pages: Shloka[], book?: string): Promise
     // A stable filename without provider URLs, credentials or user details.
     let hash = 2166136261;
     for (let i = 0; i < src.length; i++) hash = Math.imul(hash ^ src.charCodeAt(i), 16777619);
-    const destination = new File(directory, `${(hash >>> 0).toString(16)}-${src.length}.audio`);
-    const file = await File.downloadFileAsync(src, destination, { idempotent: true });
+    const destination = new File(state.enabled ? Paths.cache : directory, `${(hash >>> 0).toString(16)}-${src.length}.audio`);
     if (state.enabled) {
-      const bytes = await file.bytes();
-      const encrypted = await seal({ bytes: Array.from(bytes), urls: [url, src] }, book + ":audio");
-      const encryptedFile = new File(directory, destination.name + ".encrypted");
-      encryptedFile.write(JSON.stringify(encrypted));
-      file.delete();
+      let downloaded: Uint8Array;
+      try {
+        const file = await File.downloadFileAsync(src, destination, { idempotent: true });
+        downloaded = await file.bytes();
+        const encrypted = await seal({ bytes: Array.from(downloaded), urls: [url, src] }, book + ":audio");
+        const encryptedFile = new File(directory, destination.name + ".encrypted");
+        encryptedFile.write(JSON.stringify(encrypted));
+      } finally {
+        // Failed licensing/encryption must never leave durable plaintext media.
+        if (destination.exists) destination.delete();
+      }
       // Plain playback files live only in the disposable cache.
       const temporary = new File(Paths.cache, destination.name);
-      temporary.write(bytes);
+      temporary.write(downloaded!);
       audio[url] = temporary.uri; audio[src] = temporary.uri;
       temporaryFiles.add(temporary.uri);
       const identity = mediaIdentity(url); audio[identity] = temporary.uri;
       audioExpiry[identity] = Math.min(Date.now() + 7 * 86400000, Date.parse(state.member_until! + "Z"));
     } else {
+      const file = await File.downloadFileAsync(src, destination, { idempotent: true });
       audio[url] = file.uri; audio[src] = file.uri;
     }
     if (!state.enabled) await AsyncStorage.setItem(AUDIO_KEY, JSON.stringify(audio));

@@ -223,7 +223,8 @@ def create_app() -> FastAPI:
     # P17-3). Mount only when the directory exists.
     _audio_dir = Path("storage/audio")
     if _audio_dir.is_dir():
-        app.mount("/audio", StaticFiles(directory=str(_audio_dir)), name="audio")
+        from app.commerce.static_audio import ProtectedAudioFiles
+        app.mount("/audio", ProtectedAudioFiles(directory=str(_audio_dir)), name="audio")
 
     # Serve the web console (frontend/) from the API's own origin when the
     # directory is present.  Kill CORS entirely for the console and give the

@@ -43,6 +43,9 @@ def normalize_apple(tx, learner_id=None):
         raise HTTPException(422, "Unexpected Apple application or product")
     if learner_id and str(tx.appAccountToken or "").lower() != account_token(learner_id):
         raise HTTPException(409, "Apple purchase account does not match")
+    discount = getattr(tx, "offerDiscountType", None)
+    if str(getattr(discount, "value", discount)) == "FREE_TRIAL":
+        raise HTTPException(409, "Credits are granted only for a paid subscription period")
     return {"provider": "apple", "transaction_id": tx.transactionId,
         "original_id": tx.originalTransactionId, "product_id": tx.productId,
         "paid_at": ms(tx.purchaseDate), "paid_until": ms(tx.expiresDate) if tx.expiresDate else None,
@@ -50,10 +53,34 @@ def normalize_apple(tx, learner_id=None):
         "evidence": {"account_token": str(tx.appAccountToken or ""), "environment": str(tx.environment)}}
 
 
-def verify_apple(signed_transaction, learner_id=None):
+def apple_client():
+    from appstoreserverlibrary.api_client import AppStoreServerAPIClient
+    from appstoreserverlibrary.models.Environment import Environment
+    if not settings.commerce_apple_private_key_path:
+        raise HTTPException(503, "Apple server API credentials are not configured")
+    env = Environment.PRODUCTION if settings.commerce_store_environment == "Production" else Environment.SANDBOX
+    return AppStoreServerAPIClient(Path(settings.commerce_apple_private_key_path).read_bytes(),
+        settings.commerce_apple_key_id, settings.commerce_apple_issuer_id, settings.commerce_bundle_id, env)
+
+
+def verify_apple(signed_transaction, learner_id=None, refresh=False):
     try:
-        tx = apple_verifier().verify_and_decode_signed_transaction(signed_transaction)
-        return normalize_apple(tx, learner_id)
+        verifier = apple_verifier()
+        tx = verifier.verify_and_decode_signed_transaction(signed_transaction)
+        value = normalize_apple(tx, learner_id)
+        if refresh:
+            # A valid old JWS can predate a refund. Never grant from that snapshot.
+            try:
+                current = apple_client().get_transaction_info(tx.transactionId)
+            except HTTPException:
+                raise
+            except Exception as exc:
+                raise HTTPException(503, "Apple purchase status is temporarily unavailable") from exc
+            fresh = verifier.verify_and_decode_signed_transaction(current.signedTransactionInfo)
+            if fresh.transactionId != tx.transactionId or fresh.originalTransactionId != tx.originalTransactionId:
+                raise HTTPException(422, "Apple transaction identity changed")
+            value = normalize_apple(fresh, learner_id)
+        return value
     except HTTPException:
         raise
     except Exception as exc:
@@ -120,7 +147,14 @@ async def verify_google(product_id, token, learner_id=None):
     order = await google_request("orders/" + quote(tx, safe=""))
     if order.get("state") not in {"PROCESSED", "PARTIALLY_REFUNDED", "REFUNDED"}:
         raise HTTPException(409, "The order is not a completed payment")
-    paid_at = iso(order["createTime"])
+    if order.get("purchaseToken") and order["purchaseToken"] != token:
+        raise HTTPException(422, "Google order does not match the purchase token")
+    if order.get("lineItems") and not any(i.get("productId") == product_id for i in order["lineItems"]):
+        raise HTTPException(422, "Google order does not match the purchased product")
+    total = order.get("total")
+    if total is not None and int(total.get("units", 0)) * 1000000000 + int(total.get("nanos", 0)) <= 0:
+        raise HTTPException(409, "Credits are granted only for a paid order")
+    paid_at = iso(order.get("orderHistory", {}).get("processedEvent", {}).get("eventTime") or order["createTime"])
     return {"provider": "google", "transaction_id": tx, "original_id": hashlib.sha256(token.encode()).hexdigest(),
             "product_id": product_id, "paid_at": paid_at, "paid_until": until,
             "state": state, "revoked": order.get("state") == "REFUNDED",
@@ -128,6 +162,7 @@ async def verify_google(product_id, token, learner_id=None):
                          "environment": "Sandbox" if "testPurchase" in data or data.get("purchaseType") == 0 else "Production",
                          "linked_token_hash": hashlib.sha256(data["linkedPurchaseToken"].encode()).hexdigest() if data.get("linkedPurchaseToken") else None,
                          "acknowledged": data.get("acknowledgementState"),
+                         "consumed": data.get("consumptionState") == 1,
                          "order_time": order["createTime"]}}
 
 
@@ -142,15 +177,27 @@ async def finish_google(product_id, token):
 
 
 def current_apple_transactions(transaction_id, learner_id):
-    from appstoreserverlibrary.api_client import AppStoreServerAPIClient
-    from appstoreserverlibrary.models.Environment import Environment
-    if not settings.commerce_apple_private_key_path:
-        raise HTTPException(503, "Apple server API credentials are not configured")
-    env = Environment.PRODUCTION if settings.commerce_store_environment == "Production" else Environment.SANDBOX
-    client = AppStoreServerAPIClient(Path(settings.commerce_apple_private_key_path).read_bytes(),
-        settings.commerce_apple_key_id, settings.commerce_apple_issuer_id, settings.commerce_bundle_id, env)
+    from appstoreserverlibrary.api_client import GetTransactionHistoryVersion
+    from appstoreserverlibrary.models.TransactionHistoryRequest import TransactionHistoryRequest
+    client, result, revision, seen = apple_client(), {}, None, set()
+    request = TransactionHistoryRequest(productIds=[key for key, product in PRODUCTS.items() if product["kind"] == "subscription"])
+    while True:
+        history = client.get_transaction_history(transaction_id, revision, request, GetTransactionHistoryVersion.V2)
+        for signed in history.signedTransactions or []:
+            try:
+                value = verify_apple(signed, learner_id)
+            except HTTPException as exc:
+                if exc.status_code == 409 and "paid subscription period" in str(exc.detail):
+                    continue  # Free trials never create a paid credit grant.
+                raise
+            result[value["transaction_id"]] = value
+        if not history.hasMore:
+            break
+        if not history.revision or history.revision in seen:
+            raise HTTPException(503, "Apple history pagination did not advance")
+        revision = history.revision
+        seen.add(revision)
     response = client.get_all_subscription_statuses(transaction_id)
-    result = []
     for group in response.data or []:
         for item in group.lastTransactions or []:
             value = verify_apple(item.signedTransactionInfo, learner_id)
@@ -158,8 +205,52 @@ def current_apple_transactions(transaction_id, learner_id):
                 renewal = apple_verifier().verify_and_decode_renewal_info(item.signedRenewalInfo)
                 if renewal.gracePeriodExpiresDate and ms(renewal.gracePeriodExpiresDate) > datetime.utcnow():
                     value["state"], value["paid_until"] = "grace", ms(renewal.gracePeriodExpiresDate)
-            result.append(value)
-    return result
+            result[value["transaction_id"]] = value
+    return sorted(result.values(), key=lambda value: value["paid_at"])
+
+
+async def google_subscription_history(token, latest, known_transactions=()):
+    """Backfill missing paid orders; guessed IDs never establish a payment.
+
+    Candidate renewal suffixes are checked individually with Google's Orders
+    API, including its actual product, token and funded service period. Unknown
+    order-ID formats require reconciliation review rather than inferred grants.
+    """
+    import re
+    from urllib.parse import quote
+    match = re.fullmatch(r"(.+)\.\.(\d+)", latest["transaction_id"])
+    if not match:
+        return []  # An initial unsuffixed order has no earlier renewal suffix.
+    number = int(match[2])
+    if number > 120:
+        raise HTTPException(409, "Extended Google order history requires a reviewed import")
+    result = []
+    candidates = [match[1]] + [match[1] + ".." + str(index) for index in range(number)]
+    for order_id in candidates:
+        if order_id in known_transactions:
+            continue
+        order = await google_request("orders/" + quote(order_id, safe=""))
+        if order.get("state") not in {"PROCESSED", "PARTIALLY_REFUNDED", "REFUNDED"}:
+            continue
+        if order.get("orderId") != order_id or order.get("purchaseToken") != token:
+            raise HTTPException(422, "Historical Google order identity does not match")
+        items = [i for i in order.get("lineItems", []) if PRODUCTS.get(i.get("productId"), {}).get("kind") == "subscription"]
+        if len(items) != 1:
+            raise HTTPException(422, "Historical Google subscription product is ambiguous")
+        item = items[0]
+        period = item.get("subscriptionDetails", {})
+        if period.get("offerPhase") == "FREE_TRIAL" or "freeTrialDetails" in period.get("offerPhaseDetails", {}):
+            continue
+        if not period.get("servicePeriodStartTime") or not period.get("servicePeriodEndTime"):
+            raise HTTPException(409, "Google billing-period evidence is missing")
+        value = {**latest, "transaction_id": order_id, "product_id": item["productId"],
+                 "paid_at": iso(order.get("orderHistory", {}).get("processedEvent", {}).get("eventTime") or order["createTime"]),
+                 "paid_until": iso(period["servicePeriodEndTime"]), "state": "expired", "revoked": order["state"] == "REFUNDED",
+                 "evidence": {**latest.get("evidence", {}), "billing_period": iso(period["servicePeriodStartTime"]).isoformat(), "history_verified": True}}
+        # A historical period must not inherit the latest upgrade's linked token.
+        value["evidence"].pop("linked_token_hash", None)
+        result.append(value)
+    return sorted(result, key=lambda value: value["paid_at"])
 
 
 def verify_google_notification(authorization):

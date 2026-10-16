@@ -91,15 +91,16 @@ export default function Membership() {
       <Text style={styles.body}>{catalogue?.titles.find(t => t.id === u.title_id)?.name ?? u.title_id}</Text>
       <Text style={styles.small}>Access until {new Date(u.expires_at + "Z").toLocaleDateString()}</Text>
       {button("Surrender remaining access", async () => {
-        if (await confirmSpend("Surrender title", "Remaining access is permanently lost, without a credit refund. A non-member slot takes 7 days to become reusable; skipping the wait costs 25 credits."))
+        if (await confirmSpend("Surrender title", `Remaining access is permanently lost, without a credit refund. ${wallet.tier === "free" ? `This slot takes 7 days to become reusable; skipping the wait costs ${catalogue?.terms.skip_credits ?? 25} credits.` : "Your member slot can be replaced immediately. The next title costs additional credits."}`))
           await request(`/commerce/unlocks/${u.id}/surrender`, { method: "POST", body: JSON.stringify({ confirmed: true }) }, true);
       })}
     </View>)}
     {wallet?.cooldowns.map(c => <View key={c.id} style={styles.card}>
       <Text style={styles.body}>Slot available {new Date(c.until + "Z").toLocaleString()}</Text>
-      {button("Release slot now · 25 credits", async () => {
-        if (await confirmSpend("Skip cooldown", "Spend 25 credits to release this slot now? The next title costs additional credits."))
-          await request(`/commerce/cooldowns/${c.id}/skip`, { method: "POST", body: JSON.stringify({ confirmed: true }) }, true);
+      {button(`Release slot now · ${catalogue?.terms.skip_credits ?? 25} credits`, async () => {
+        const cost = catalogue?.terms.skip_credits ?? 25;
+        if (await confirmSpend("Skip cooldown", `Spend ${cost} credits to release this slot now? The next title costs additional credits.`))
+          await request(`/commerce/cooldowns/${c.id}/skip`, { method: "POST", body: JSON.stringify({ confirmed: true, expected_credits: cost }) }, true);
       })}
     </View>)}
     <Text style={styles.heading}>Unlock books & audio</Text>

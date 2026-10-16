@@ -62,6 +62,57 @@ def test_purchase_cannot_be_restored_to_other_account(db):
     assert exc.value.status_code == 409
 
 
+def test_linked_google_upgrade_uses_actual_period_and_configured_grants(db):
+    start = svc.now() - timedelta(days=14)
+    end = start + timedelta(days=28)
+    db.add(Setting(key="products", value={PREFIX + "lite.monthly": {"credits": 180}, PREFIX + "plus.monthly": {"credits": 600}}))
+    first = purchase("initial", "lite.monthly", end)
+    first.update(provider="google", original_id="old-token", paid_at=start)
+    svc.apply_purchase(db, "u", first); db.commit()
+    upgrade = purchase("upgrade", "plus.monthly", end)
+    upgrade.update(provider="google", original_id="new-token", paid_at=start + timedelta(days=14), evidence={"linked_token_hash": "old-token"})
+    row = svc.apply_purchase(db, "u", upgrade); db.commit()
+    assert row.credits == 210  # (600 - 180) * 14 / 28
+    assert row.evidence["billing_period"] == start.isoformat()
+    assert db.get(Wallet, "u").balance == 390
+    assert svc.membership(db, "u").tier == "plus"
+    svc.apply_purchase(db, "u", upgrade); db.commit()
+    assert db.get(Wallet, "u").balance == 390
+
+
+def test_delayed_older_tier_cannot_downgrade_newer_period(db):
+    end = svc.now() + timedelta(days=20)
+    recent = purchase("new", "pro.monthly", end)
+    recent["paid_at"] = svc.now() - timedelta(days=1)
+    svc.apply_purchase(db, "u", recent); db.commit()
+    old = purchase("old", "lite.monthly", end)
+    old["paid_at"] = svc.now() - timedelta(days=20)
+    svc.apply_purchase(db, "u", old); db.commit()
+    assert svc.membership(db, "u").tier == "pro"
+    assert db.get(Wallet, "u").balance == 1920
+
+
+def test_restore_of_refunded_purchase_does_not_reactivate_membership(db):
+    value = purchase()
+    row = svc.apply_purchase(db, "u", value); db.commit()
+    svc.refund_purchase(db, row); db.commit()
+    value["state"] = "active"
+    svc.apply_purchase(db, "u", value); db.commit()
+    assert not svc.membership(db, "u")
+    assert db.get(Wallet, "u").balance == 0
+
+
+def test_stale_title_confirmation_never_charges_a_changed_price(db):
+    grant(db, amount=100)
+    tid = title(db, "price-test", credits=80)
+    with pytest.raises(HTTPException) as exc:
+        svc.unlock_title(db, "u", tid, "stale-price-request", expected_credits=30)
+    assert exc.value.status_code == 409
+    db.rollback()
+    assert db.get(Wallet, "u").balance == 100
+    assert not svc.title_access(db, "u", tid)
+
+
 def test_refund_deficit_preserves_unrelated_title(db):
     p = svc.apply_purchase(db, "u", purchase(product="credits.small"))
     db.commit()

@@ -56,11 +56,12 @@
 
 ```powershell
 # From backend/
-.venv/Scripts/python.exe -m pytest tests/test_commerce_api.py tests/test_commerce.py tests/test_paged_books.py tests/test_p21_canon.py tests/test_p14_entitlement.py tests/test_account_deletion.py tests/test_ask_live.py tests/test_ask_route.py -q
+.venv/Scripts/python.exe -m pytest tests/test_commerce_api.py tests/test_commerce.py tests/test_commerce_stores.py tests/test_commerce_migration.py tests/test_paged_books.py tests/test_p21_canon.py tests/test_p14_entitlement.py tests/test_account_deletion.py tests/test_ask_live.py tests/test_ask_route.py tests/test_legal_pages.py tests/test_p19_explain.py tests/test_competitions.py tests/test_competition_sets.py tests/test_tts_cache.py -q
 
 # From mobile/
 npx tsc --noEmit
 npx expo prebuild --platform android --no-install
+npx expo export --platform web --output-dir ../results/commerce/web-check
 ```
 
 Repository tests use isolated databases and mocked store/provider responses. They do not replace Apple/Google sandbox purchase tests or physical-device verification. The development host is Windows, so an iOS native build must run on macOS/EAS.

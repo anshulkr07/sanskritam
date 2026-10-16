@@ -6,7 +6,7 @@ import { BASE_URL } from "../config";
 import { buyProduct } from "../services/storePurchases";
 import { color } from "../theme";
 
-interface Event { id: string; state: string; details: { title: string; kind: string; rules: string; judging: string; reward: string; countries: string[]; starts_at: string; ends_at: string; entry_fee: number } }
+interface Event { id: string; state: string; details: { title: string; kind: string; rules: string; judging: string; tie_breaks: string; verification: string; moderation: string; sponsorship: string; fulfilment: string; reward: string; countries: string[]; starts_at: string; ends_at: string; entry_fee: number } }
 export default function CommunityEvents() {
   const [events, setEvents] = useState<Event[]>([]);
   const [message, setMessage] = useState("");
@@ -17,7 +17,7 @@ export default function CommunityEvents() {
   const [audio, setAudio] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
-  const [draft, setDraft] = useState({ title: "", kind: "poetry", rules: "", judging: "", countries: "", reward: "", fulfilment: "", funding: "", starts_at: new Date().toISOString(), ends_at: new Date(Date.now() + 7 * 86400000).toISOString() });
+  const [draft, setDraft] = useState({ title: "", kind: "poetry", rules: "", judging: "", tie_breaks: "", verification: "", moderation: "", sponsorship: "Sanskritam administers this event. Apple and Google do not sponsor it.", countries: "", reward: "", fulfilment: "", funding: "", starts_at: new Date().toISOString(), ends_at: new Date(Date.now() + 7 * 86400000).toISOString() });
   const load = () => request<Event[]>("/commerce/events", {}, true).then(setEvents);
   useEffect(() => { void load().catch(e => setMessage(e.message)); }, []);
   useEffect(() => () => { if (recorder.isRecording) void recorder.stop(); }, [recorder]);
@@ -42,9 +42,11 @@ export default function CommunityEvents() {
       <Text style={styles.body}>{event.details.reward}</Text>
       <Text style={styles.small}>Countries: {event.details.countries.join(", ")} · closes {new Date(event.details.ends_at).toLocaleString()}</Text>
       <Text style={styles.body}>{event.details.rules}</Text><Text style={styles.small}>Judging: {event.details.judging}</Text>
+      <Text style={styles.small}>Tie-breaks: {event.details.tie_breaks}{"\n"}Verification: {event.details.verification}{"\n"}Moderation: {event.details.moderation}{"\n"}Delivery: {event.details.fulfilment}{"\n"}{event.details.sponsorship}</Text>
       {event.state === "published" && button("Prepare a free entry", async () => { setSelected(event); setText(""); setAudio(null); })}
       {event.state === "approved" && button("Purchase approved event hosting", () => buyProduct("com.sanskritam.app.hosting"))}
       {["results_review", "fulfilled", "appeal"].includes(event.state) && button("View reviewed results", async () => {
+        setSelected(event); setText(""); setAudio(null);
         const result = await request<{ results: { rank: number; name: string; score: number }[] }>(`/commerce/events/${event.id}/results`, {}, true);
         setMessage(result.results.map(r => `${r.rank}. ${r.name} · ${r.score}/100`).join("\n") || "Results are being reviewed.");
       })}

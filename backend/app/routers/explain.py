@@ -307,6 +307,19 @@ def _render_engine_answer(ans: dict) -> str:
 
 # ── the endpoint ─────────────────────────────────────────────────────────────
 
+@router.post("/analysis", response_model=AskResponse)
+async def detailed_analysis(req: AskRequest, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    from app.config import settings
+    if not settings.commerce_enabled:
+        raise HTTPException(503, "Detailed credit analysis is not enabled")
+    # Keep the standard question's cache separate and use the existing bounded
+    # card response path, with its source/fallback and Sanskrit safeguards.
+    detailed = req.model_copy(update={"cards": True, "subject": "",
+        "screen_text": (req.screen_text or req.subject)[:2000],
+        "question": "Give a detailed, source-grounded analysis, explaining the reasoning and qualifications. " + req.question})
+    return await ask_explain(detailed, learner, db)
+
+
 @router.post("", response_model=AskResponse)
 async def ask_explain(
     req: AskRequest,

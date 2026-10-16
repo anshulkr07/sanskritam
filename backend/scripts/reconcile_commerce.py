@@ -36,6 +36,21 @@ async def run(apply):
                     token = decrypt_proof(token)
                     value = await stores.verify_google(row.product_id, token, row.learner_id)
                     value["evidence"]["encrypted_token"] = encrypt_proof(token)
+                    # Check this historical order for a missed refund independently
+                    # of the current subscription's latest successful order.
+                    if row.transaction_id != value["transaction_id"]:
+                        from urllib.parse import quote
+                        old_order = await stores.google_request("orders/" + quote(row.transaction_id, safe=""))
+                        if old_order.get("state") == "REFUNDED" and apply:
+                            svc.refund_purchase(db, row)
+                            db.commit()
+                    if PRODUCTS[row.product_id]["kind"] == "subscription":
+                        known = {p.transaction_id for p in db.query(Purchase).filter_by(provider="google", original_id=row.original_id)}
+                        history = await stores.google_subscription_history(token, value, known)
+                        for period in history:
+                            if apply and not period.get("revoked"):
+                                svc.apply_purchase(db, row.learner_id, period)
+                                db.commit()
                 else:
                     if PRODUCTS.get(row.product_id, {}).get("kind") == "subscription":
                         values = await asyncio.to_thread(stores.current_apple_transactions, row.original_id, row.learner_id)

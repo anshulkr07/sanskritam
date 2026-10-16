@@ -101,7 +101,7 @@ def snapshot(db, learner_id):
             "cooldowns": [{"id": r.id, "until": r.until} for r in cooldowns]}
 
 
-def unlock_title(db, learner_id, title_id, request_id):
+def unlock_title(db, learner_id, title_id, request_id, expected_credits=None):
     wallet = lock_wallet(db, learner_id)
     expire_reservations(db, wallet)
     key = f"unlock:{learner_id}:{request_id}"
@@ -116,6 +116,8 @@ def unlock_title(db, learner_id, title_id, request_id):
     existing = title_access(db, learner_id, title_id)
     if existing:
         return existing
+    if expected_credits is not None and title.credits != expected_credits:
+        raise HTTPException(409, {"code": "price_changed", "credits": title.credits})
     member = membership(db, learner_id)
     limit = TIERS[member.tier if member else "free"]["slots"]
     used = len(active_unlocks(db, learner_id))
@@ -144,14 +146,17 @@ def surrender(db, learner_id, unlock_id):
         db.add(Cooldown(learner_id=learner_id, unlock_id=row.id, until=now() + timedelta(days=7)))
 
 
-def skip_cooldown(db, learner_id, cooldown_id):
+def skip_cooldown(db, learner_id, cooldown_id, expected_credits=None):
     wallet = lock_wallet(db, learner_id)
     row = db.get(Cooldown, cooldown_id)
     if not row or row.learner_id != learner_id:
         raise HTTPException(404, "Unknown slot")
     if row.skipped or row.until <= now() or membership(db, learner_id):
         return
-    journal(db, wallet, -int(setting(db, "skip_credits", 25)), f"skip:{row.id}", "cooldown_skip")
+    cost = int(setting(db, "skip_credits", 25))
+    if expected_credits is not None and cost != expected_credits:
+        raise HTTPException(409, {"code": "price_changed", "credits": cost})
+    journal(db, wallet, -cost, f"skip:{row.id}", "cooldown_skip")
     row.skipped = True
 
 
@@ -224,7 +229,7 @@ def apply_purchase(db, learner_id, verified):
             raise HTTPException(409, "Purchase belongs to another account")
         member = db.query(Membership).filter_by(provider=provider, original_id=verified["original_id"]).first()
         latest = db.query(Purchase).filter_by(provider=provider, original_id=verified["original_id"]).order_by(Purchase.paid_at.desc()).first()
-        if member and latest.id == old.id and member.state != "deleted" and verified.get("state"):
+        if member and old.state == "paid" and latest.id == old.id and member.state != "deleted" and verified.get("state"):
             member.state, member.paid_until = verified["state"], verified["paid_until"]
         return old
     product = product_catalogue(db).get(verified["product_id"])
@@ -234,17 +239,28 @@ def apply_purchase(db, learner_id, verified):
     if verified.get("revoked"):
         raise HTTPException(409, "Purchase was revoked")
     previous_membership = None
+    evidence = dict(verified.get("evidence", {}))
     if product["kind"] == "subscription":
-        linked = verified.get("evidence", {}).get("linked_token_hash")
+        evidence["tier_credits"] = product["credits"]
+        linked = evidence.get("linked_token_hash")
         if linked and not verified.get("upgrade_from"):
             prior_member = db.query(Membership).filter_by(provider=provider, original_id=linked).first()
             if prior_member:
                 if prior_member.learner_id != learner_id:
                     raise HTTPException(409, "Linked purchase belongs to another account")
                 if prior_member.paid_until > verified["paid_at"] and prior_member.tier != product["tier"]:
-                    old_credits = TIERS[prior_member.tier]["credits"]
-                    remaining = min(1, max(0, (prior_member.paid_until - verified["paid_at"]).total_seconds() / (30 * 86400)))
-                    credits = max(0, math.floor((credits - old_credits) * remaining))
+                    prior = db.query(Purchase).filter_by(provider=provider, original_id=linked).order_by(Purchase.paid_at.desc()).first()
+                    if not prior:
+                        raise HTTPException(409, "Upgrade requires the previous verified payment period")
+                    period_start = datetime.fromisoformat(prior.evidence.get("billing_period", prior.paid_at.isoformat()))
+                    period = max(1, (prior_member.paid_until - period_start).total_seconds())
+                    remaining = min(1, max(0, (prior_member.paid_until - verified["paid_at"]).total_seconds() / period))
+                    # Charge-prorated-price keeps the billing boundary. A new full
+                    # paid period instead receives its normal grant.
+                    if verified["paid_until"] <= prior_member.paid_until + timedelta(minutes=2):
+                        old_credits = prior.evidence.get("tier_credits", PRODUCTS[prior.product_id]["credits"])
+                        credits = max(0, math.floor((credits - old_credits) * remaining))
+                        evidence.update(is_upgrade=True, billing_period=period_start.isoformat())
                     prior_member.paid_until = verified["paid_at"]
                     prior_member.state = "replaced"
         previous_membership = db.query(Membership).filter_by(provider=provider, original_id=verified["original_id"]).first()
@@ -252,12 +268,13 @@ def apply_purchase(db, learner_id, verified):
             raise HTTPException(409, "Subscription belongs to another account")
         if previous_membership and previous_membership.tier != product["tier"] and previous_membership.paid_until > verified["paid_at"] and not verified.get("upgrade_from"):
             prior = db.query(Purchase).filter_by(provider=provider, original_id=verified["original_id"]).order_by(Purchase.paid_at.desc()).first()
-            if prior:
-                period = max(1, (previous_membership.paid_until - prior.paid_at).total_seconds())
+            if prior and prior.paid_at <= verified["paid_at"]:
+                period_start = datetime.fromisoformat(prior.evidence.get("billing_period", prior.paid_at.isoformat()))
+                period = max(1, (previous_membership.paid_until - period_start).total_seconds())
                 fraction = min(1, max(0, (previous_membership.paid_until - verified["paid_at"]).total_seconds() / period))
-                credits = max(0, math.floor((credits - TIERS[previous_membership.tier]["credits"]) * fraction))
-                verified["evidence"] = {**verified.get("evidence", {}), "is_upgrade": True,
-                                        "billing_period": prior.evidence.get("billing_period", prior.paid_at.isoformat())}
+                old_credits = prior.evidence.get("tier_credits", PRODUCTS[prior.product_id]["credits"])
+                credits = max(0, math.floor((credits - old_credits) * fraction))
+                evidence.update(is_upgrade=True, billing_period=period_start.isoformat())
         if verified.get("upgrade_from"):
             prior = db.query(Purchase).filter_by(provider=provider, transaction_id=verified["upgrade_from"]).first()
             if not prior or prior.learner_id != learner_id:
@@ -270,15 +287,16 @@ def apply_purchase(db, learner_id, verified):
                 original_id=verified["original_id"], tier=product["tier"], paid_until=paid_until)
             db.add(previous_membership)
         # Delayed events cannot downgrade a newer period.
-        if previous_membership.paid_until <= paid_until:
+        latest = db.query(Purchase).filter_by(provider=provider, original_id=verified["original_id"]).order_by(Purchase.paid_at.desc()).first()
+        if previous_membership.paid_until <= paid_until and (not latest or latest.paid_at <= verified["paid_at"]):
             previous_membership.tier = product["tier"]
             previous_membership.paid_until = paid_until
             previous_membership.state = verified.get("state", "active")
             previous_membership.updated_at = now()
-        extend_titles(db, learner_id, paid_until)
+        extend_titles(db, learner_id, paid_until, eligible_at=verified["paid_at"])
     row = Purchase(learner_id=learner_id, provider=provider, transaction_id=tx,
                    original_id=verified["original_id"], product_id=verified["product_id"],
-                   credits=credits, paid_at=verified["paid_at"], evidence={"billing_period": verified["paid_at"].isoformat(), **verified.get("evidence", {})})
+                   credits=credits, paid_at=verified["paid_at"], evidence={"billing_period": verified["paid_at"].isoformat(), **evidence})
     db.add(row)
     journal(db, wallet, credits, f"store:{provider}:{tx}", "store_" + product["kind"], {"product_id": row.product_id})
     db.flush()

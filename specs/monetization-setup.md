@@ -38,6 +38,8 @@ Membership overrides, in Lite / Plus / Pro order:
 
 The app renders store-localized prices. The INR amounts in the catalogue are labelled reference values and cannot be used to bypass store checkout. Do not create a separately purchasable product for every book: users purchase credits, and the server records the time-limited title unlock.
 
+Initially configure single-quantity purchases and paid monthly plans without free trials. Trial transactions do not qualify for paid credit grants. Validate immediate, prorated upgrades and deferred downgrades in each store's sandbox before offering plan changes publicly.
+
 ## 3. Backend configuration and secrets
 
 Deploy the new Alembic head `20261016_commerce` before releasing the new client. The migration is additive and supports SQLite and PostgreSQL; run backups and a staging migration first. It adds the wallet, ledger, purchases, membership periods, titles, unlocks, cooldowns, reservations, profiles, ad grants, referrals, payouts, hosted entries, prize cases, settings and audit tables.
@@ -67,6 +69,8 @@ COMMERCE_ADMIN_KEYS_JSON={"<sha256 of a random administrator token>":"owner"}
 
 Download Apple trust anchors from Apple's certificate authority, not from an incoming transaction. The official Apple server library validates its certificate chain, application, environment and signature. Production requires the numeric app ID and `COMMERCE_STORE_ENVIRONMENT=Production`.
 
+Apple verification also fetches current transaction information through the server API before granting credits, so the `.p8` server key is required even when the phone supplies a valid signed receipt. A stale receipt cannot establish that a purchase remains unrefunded. An unavailable lookup leaves the transaction unfinished for retry.
+
 Create separate administrator tokens for `finance`, `catalogue` and `moderator`; use the same SHA-256-token-to-role mapping. `owner` can perform all actions. Store a strong original token securely; the web interface only keeps a typed token in memory. The existing non-default backend `ADMIN_TOKEN` is also recognized as an owner token. Do not use `dev-admin` in production.
 
 Configure notifications:
@@ -89,11 +93,17 @@ Example title configuration:
 
 Affiliate entries require HTTPS URLs, labels and explicit disclosures. Product credit grants can be changed in the `products` configuration; existing ledger grants do not change retroactively. Skip cost, AI cost evidence, monthly prize budget, fixed operating costs and country reward routes have dedicated configuration entries.
 
+Country routes use an explicit reviewed record, for example `{"IN":{"method":"locally redeemable gift","reviewed":true}}`. Remove a country to disable its route. Catalogue administrators cannot read financial settings, entrant recordings, or private payout details. Organizer publication requires completed identity, rules, funding and moderation reviews, plus published tie-breaks, verification, sponsorship and delivery terms. A hosting purchase can serve only one event.
+
 Member title access extends until the last verified membership end plus 365 days. Surrender is permanent. Over-limit accounts retain existing access but cannot acquire another title until their cap allows it. Every grant and debit has an idempotency key.
+
+Reconciliation reads paginated Apple transaction history, rather than granting only the latest renewal. Google recovery verifies missing renewal-order candidates against the Orders API and its product/token/service-period evidence; historical refunds are checked independently. Extended Google histories above 120 renewal suffixes, unavailable history, or unfamiliar renewal identifiers require reviewed recovery instead of inferred credit grants. Schedule reconciliation regularly and alert on its reported errors.
 
 ## 5. Media, offline access and app builds
 
 Full audio delivery uses five-minute account-bound tickets; the app renews them before playback. Preview bytes are clipped on the server. The Docker image already installs ffmpeg. Make protected audio objects private before enabling commerce: returning a protected API response cannot revoke an old publicly cached GCS/CDN URL.
+
+When commerce is enabled, the legacy local `/audio` mount permits only the free `varnamala`, `dialogue`, `challenge`, `grammar`, and `parva-art` namespaces. Book and chant recordings must use signed delivery. Keep protected book recordings outside those free namespaces, including on CDN origins. Downloads persist as encrypted files; temporary playback plaintext uses the disposable app cache.
 
 For GCS, grant the backend identity read access to private audio objects. For a different origin, configure `media_origins` as an HTTPS-host allow-list and ensure the origin cannot be accessed publicly. Do not allow metadata or loopback hosts. Keep non-book instructional media available through its intended delivery path when changing bucket ACLs.
 
@@ -125,6 +135,8 @@ backend/.venv/Scripts/python.exe backend/scripts/commerce_readiness.py --usage-d
 ```
 
 Before paid AI activation, measure bounded inputs/output sizes, synthesis, recognition passes, fallbacks and retry paths on staging. Record evidence and a positive worst-case rupee bound per action in admin `ai_costs`. Voice bounds are per minute; other bounds are per action. The server chooses the larger of the starting rate and `ceil(bound / ₹0.10)`, rounding voice rates to four-credit multiples. It refuses unverified actions. A quote is accepted before execution; rate changes require a new quote. Free cached/local results release reservations.
+
+Voice replies currently use a selected 30- or 60-second allowance per response. PCM WAV output is trimmed to that allowance before delivery; unmeasurable output and over-limit unsupported containers fail without charging. Complete native audio interruption and disconnect tests before activation. Catalogue title unlocks and cooldown skips include the user's accepted credit price; a changed price requires a fresh confirmation.
 
 Illustration only: three STT passes, 1,000 synthesized characters/minute and eight ₹0.10 model calls total ₹5.30/minute at the sample rates, requiring **56 credits/minute**, rather than the starting 20. Validate real costs; the starting rates are not a promise of unlimited subsidized service.
 

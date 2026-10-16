@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import base64
+import asyncio
 import hashlib
 import json
+import math
 import secrets
 from datetime import timedelta
 from pathlib import Path
@@ -48,9 +50,9 @@ def sign(payload):
     return jwt.encode(payload, settings.commerce_signing_key, algorithm="HS256")
 
 
-def decode(token, scope):
+def decode(token, scope, allow_expired=False):
     try:
-        value = jwt.decode(token, settings.commerce_signing_key, algorithms=["HS256"], options={"require": ["exp", "scope"]})
+        value = jwt.decode(token, settings.commerce_signing_key, algorithms=["HS256"], options={"require": ["exp", "scope"], "verify_exp": not allow_expired})
         if value["scope"] != scope:
             raise ValueError("Wrong scope")
         return value
@@ -124,7 +126,8 @@ async def verify_purchase(body: VerifyBody, learner: Learner = Depends(require_l
         raise HTTPException(503, "Store sales are not enabled")
     if not learner.google_sub and not learner.apple_sub:
         raise HTTPException(409, "Link a verified Google or Apple sign-in before purchasing")
-    verified = stores.verify_apple(body.proof, learner.id) if body.provider == "apple" else await stores.verify_google(body.product_id, body.proof, learner.id)
+    verified = (await asyncio.to_thread(stores.verify_apple, body.proof, learner.id, True)
+                if body.provider == "apple" else await stores.verify_google(body.product_id, body.proof, learner.id))
     if verified["product_id"] != body.product_id:
         raise HTTPException(422, "Product does not match verified purchase")
     if verified.get("revoked"):
@@ -137,8 +140,9 @@ async def verify_purchase(body: VerifyBody, learner: Learner = Depends(require_l
         verified["evidence"]["encrypted_token"] = encrypt_proof(body.proof)
     purchase = svc.apply_purchase(db, learner.id, verified)
     db.commit()
-    store_finished = False
-    if body.provider == "google":
+    store_finished = body.provider == "google" and (verified["evidence"].get("consumed") is True or
+        verified["evidence"].get("acknowledged") in {1, "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"})
+    if body.provider == "google" and not store_finished:
         try:
             await stores.finish_google(body.product_id, body.proof)
             store_finished = True
@@ -191,12 +195,13 @@ def link_account(body: LinkBody, learner: Learner = Depends(require_learner), db
 class UnlockBody(BaseModel):
     title_id: str = Field(max_length=160)
     request_id: str = Field(min_length=8, max_length=80)
+    expected_credits: int = Field(ge=0, le=100000)
 
 
 @router.post("/titles/unlock")
 def unlock(body: UnlockBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
-    row = svc.unlock_title(db, learner.id, body.title_id, body.request_id)
+    row = svc.unlock_title(db, learner.id, body.title_id, body.request_id, body.expected_credits)
     result = {"id": row.id, "title_id": row.title_id, "expires_at": row.expires_at}
     db.commit()
     return result
@@ -204,6 +209,10 @@ def unlock(body: UnlockBody, learner: Learner = Depends(require_learner), db: Se
 
 class ConfirmBody(BaseModel):
     confirmed: Literal[True]
+
+
+class SkipBody(ConfirmBody):
+    expected_credits: int = Field(ge=0, le=100000)
 
 
 @router.post("/unlocks/{unlock_id}/surrender")
@@ -215,9 +224,9 @@ def surrender(unlock_id: str, body: ConfirmBody, learner: Learner = Depends(requ
 
 
 @router.post("/cooldowns/{cooldown_id}/skip")
-def skip(cooldown_id: str, body: ConfirmBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+def skip(cooldown_id: str, body: SkipBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
-    svc.skip_cooldown(db, learner.id, cooldown_id)
+    svc.skip_cooldown(db, learner.id, cooldown_id, body.expected_credits)
     db.commit()
     return {"ok": True}
 
@@ -409,7 +418,8 @@ def ad_ticket(body: AdBody, learner: Learner = Depends(require_learner), db: Ses
     query = db.query(AdGrant).filter_by(learner_id=learner.id).filter(AdGrant.created_at >= midnight)
     query = query.filter(AdGrant.kind == "native") if body.kind == "native" else query.filter(AdGrant.kind != "native")
     from sqlalchemy import or_
-    query = query.filter(or_(AdGrant.transaction_id.isnot(None), AdGrant.expires_at > svc.now()))
+    if body.kind != "native":
+        query = query.filter(or_(AdGrant.transaction_id.isnot(None), AdGrant.expires_at > svc.now()))
     # Count issued tickets too: concurrent ad requests cannot bypass the cap.
     if query.count() >= (2 if body.kind == "native" else 3):
         raise HTTPException(429, "Daily advertising limit reached")
@@ -426,7 +436,9 @@ def ad_ticket(body: AdBody, learner: Learner = Depends(require_learner), db: Ses
 async def ad_callback(request: Request, db: Session = Depends(get_db)):
     from app.commerce.ads import verify_callback
     data = await verify_callback(request.url.query)
-    payload = decode(data["custom_data"], "ad")
+    # A signed retry remains idempotent after the ticket's initial 15-minute window.
+    # Expiry below still prevents a late callback from granting a new extension.
+    payload = decode(data["custom_data"], "ad", allow_expired=True)
     svc.lock_wallet(db, payload["sub"])
     row = db.get(AdGrant, payload["id"])
     if not row or row.learner_id != payload["sub"] or row.kind == "native":
@@ -437,6 +449,8 @@ async def ad_callback(request: Request, db: Session = Depends(get_db)):
         return {"ok": True}
     if row.expires_at <= svc.now():
         raise HTTPException(410, "Reward ticket expired")
+    if db.query(AdGrant).filter_by(transaction_id=data["transaction_id"]).first():
+        raise HTTPException(409, "Ad transaction already used for another reward")
     row.transaction_id = data["transaction_id"]
     row.expires_at = svc.now() + timedelta(hours=24)
     db.commit()
@@ -456,6 +470,10 @@ class EventBody(BaseModel):
     kind: Literal["poetry", "singing", "recitation", "game"]
     rules: str = Field(min_length=30, max_length=12000)
     judging: str = Field(min_length=20, max_length=6000)
+    tie_breaks: str = Field(min_length=10, max_length=2000)
+    verification: str = Field(min_length=10, max_length=2000)
+    moderation: str = Field(min_length=10, max_length=2000)
+    sponsorship: str = Field(min_length=10, max_length=2000)
     countries: list[str] = Field(min_length=1, max_length=250)
     reward: str = Field(min_length=3, max_length=1000)
     fulfilment: str = Field(min_length=20, max_length=4000)
@@ -470,8 +488,14 @@ def create_event(body: EventBody, learner: Learner = Depends(require_learner), d
     profile = db.get(Profile, learner.id)
     if not profile or not profile.adult:
         raise HTTPException(403, "An adult organizer profile is required")
-    if stores.iso(body.ends_at) <= stores.iso(body.starts_at):
+    try:
+        start, end = stores.iso(body.starts_at), stores.iso(body.ends_at)
+    except (ValueError, TypeError):
+        raise HTTPException(422, "Use ISO 8601 event dates with a timezone")
+    if end <= start:
         raise HTTPException(422, "Event must end after it begins")
+    if any(len(c) != 2 or not c.isascii() or not c.isupper() or not c.isalpha() for c in body.countries):
+        raise HTTPException(422, "Use two-letter country codes")
     row = HostedEvent(organizer_id=learner.id, details={**body.model_dump(), "entry_fee": 0,
         "store_disclaimer": "Apple and Google do not sponsor or administer this competition."})
     db.add(row)
@@ -481,8 +505,9 @@ def create_event(body: EventBody, learner: Learner = Depends(require_learner), d
 
 @router.get("/events")
 def list_events(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    rows = db.query(HostedEvent).filter((HostedEvent.organizer_id == learner.id) | (HostedEvent.state == "published")).all()
-    return [{"id": r.id, "state": r.state, "details": {k: v for k, v in r.details.items() if k not in {"recipient", "delivery", "identity", "funding_evidence"}}} for r in rows]
+    rows = db.query(HostedEvent).filter((HostedEvent.organizer_id == learner.id) | HostedEvent.state.in_(["published", "results_review", "fulfilled", "appeal"])).all()
+    public_fields = set(EventBody.model_fields) | {"entry_fee", "store_disclaimer"}
+    return [{"id": r.id, "state": r.state, "details": {k: v for k, v in r.details.items() if k in public_fields}} for r in rows]
 
 
 @router.get("/admin", response_class=HTMLResponse)
@@ -496,8 +521,11 @@ def admin_data(actor=Depends(admin_role), db: Session = Depends(get_db)):
     def rows(model):
         values = db.query(model).limit(200).all()
         return [{c.name: getattr(row, c.name) for c in row.__table__.columns if c.name != "evidence"} for row in values]
-    result = {"role": actor["role"], "titles": rows(Title), "events": rows(HostedEvent), "settings": rows(Setting)}
-    result["entries"] = rows(EventEntry)
+    result = {"role": actor["role"], "titles": rows(Title), "events": rows(HostedEvent)}
+    # Cleanup jobs and accounting settings may include private metadata.
+    result["settings"] = rows(Setting) if actor["role"] == "owner" else []
+    if actor["role"] in {"owner", "moderator"}:
+        result["entries"] = rows(EventEntry)
     for event in result["events"]:
         event["details"] = {k: v for k, v in event["details"].items() if k not in {"recipient", "delivery", "identity"}}
     if actor["role"] in {"owner", "finance"}:
@@ -553,6 +581,29 @@ def update_setting(key: str, body: SettingBody, actor=Depends(admin_role), db: S
         if not isinstance(body.value, dict) or any(k not in PRODUCTS or not isinstance(v, dict) or
             not isinstance(v.get("credits"), int) or not 0 <= v["credits"] <= 100000 for k, v in body.value.items()):
             raise HTTPException(422, "Products require a valid product id and nonnegative credit grant")
+    if key in {"ai_costs", "reward_countries", "prize_budget", "marketing"} and not isinstance(body.value, dict):
+        raise HTTPException(422, "This setting requires an object")
+    if key == "ai_costs":
+        for action, cost in body.value.items():
+            if action not in {"ask", "analysis", "voice", "recitation"} or not isinstance(cost, dict):
+                raise HTTPException(422, "Unknown AI action or invalid cost record")
+            bound = cost.get("bound_inr", 0)
+            if type(bound) not in {int, float} or not math.isfinite(bound) or bound < 0:
+                raise HTTPException(422, "AI costs require finite nonnegative rupee bounds")
+            if cost.get("verified_at") and (bound <= 0 or len(str(cost.get("evidence", ""))) < 20):
+                raise HTTPException(422, "Verified costs need a positive bound and measured evidence")
+    if key == "reward_countries":
+        for country, route in body.value.items():
+            if len(country) != 2 or not country.isascii() or not country.isupper() or not country.isalpha() or not isinstance(route, dict) or route.get("reviewed") is not True or not route.get("method"):
+                raise HTTPException(422, "Country routes require two-letter codes, a delivery method and completed review")
+    if key == "prize_budget" and (type(body.value.get("monthly_inr_paise")) is not int or body.value["monthly_inr_paise"] < 0):
+        raise HTTPException(422, "Prize budget requires nonnegative monthly_inr_paise")
+    if key == "marketing" and body.value.get("fixed_costs_inr_paise") is not None and (type(body.value["fixed_costs_inr_paise"]) is not int or body.value["fixed_costs_inr_paise"] < 0):
+        raise HTTPException(422, "Fixed costs must be nonnegative integer paise")
+    if key == "media_origins":
+        from urllib.parse import urlparse
+        if not isinstance(body.value, list) or any(not isinstance(v, str) or urlparse("https://" + v).hostname != v or "/" in v or ":" in v for v in body.value):
+            raise HTTPException(422, "Media origins require a list of HTTPS hostnames")
     audit(db, actor, "setting.update", {"key": key, "value": body.value}, set())
     row = db.get(Setting, key)
     if row:
@@ -635,6 +686,10 @@ class EventReview(BaseModel):
     evidence: str = Field(min_length=20, max_length=12000)
     hosting_purchase_id: str | None = None
     fulfilment: dict = Field(default_factory=dict)
+    identity_reviewed: bool = False
+    rules_reviewed: bool = False
+    funding_reviewed: bool = False
+    moderation_reviewed: bool = False
 
 
 @router.post("/admin/events/{event_id}/review")
@@ -650,6 +705,15 @@ def review_event(event_id: str, body: EventReview, actor=Depends(admin_role), db
         purchase = db.get(Purchase, body.hosting_purchase_id or "")
         if not purchase or purchase.learner_id != event.organizer_id or purchase.state != "paid" or PRODUCTS[purchase.product_id]["kind"] != "hosting":
             raise HTTPException(409, "An unused verified hosting purchase is required")
+        used = db.query(HostedEvent).filter_by(hosting_purchase_id=purchase.id).first()
+        if used and used.id != event.id:
+            raise HTTPException(409, "This hosting purchase already belongs to another event")
+        if event.state not in {"approved", "published"}:
+            raise HTTPException(409, "Approve the organizer proposal before publication")
+        if not all([body.identity_reviewed, body.rules_reviewed, body.funding_reviewed, body.moderation_reviewed]):
+            raise HTTPException(409, "Identity, rules, funding and moderation reviews are required")
+        if not all(event.details.get(k) for k in ["tie_breaks", "verification", "moderation", "sponsorship"]):
+            raise HTTPException(409, "Publish tie-breaks, verification, moderation and sponsorship rules first")
         routes = svc.setting(db, "reward_countries", {})
         if not all(routes.get(c) for c in event.details.get("countries", [])):
             raise HTTPException(409, "Every advertised country needs reviewed reward fulfilment")
@@ -657,7 +721,8 @@ def review_event(event_id: str, body: EventReview, actor=Depends(admin_role), db
             raise HTTPException(409, "Prize funding must be verified")
         event.hosting_purchase_id = purchase.id
     event.state = body.state
-    event.details = {**event.details, "review_evidence": body.evidence, "delivery": body.fulfilment}
+    event.details = {**event.details, "review_evidence": body.evidence, "delivery": body.fulfilment,
+                     "reviews": {k: getattr(body, k) for k in ["identity_reviewed", "rules_reviewed", "funding_reviewed", "moderation_reviewed"]}}
     db.commit()
     return {"ok": True, "hosting_refund_required": body.state == "cancelled" and bool(event.hosting_purchase_id)}
 
@@ -669,7 +734,7 @@ async def apple_notification(request: Request, db: Session = Depends(get_db)):
         envelope = stores.apple_verifier().verify_and_decode_notification(data["signedPayload"])
         if not envelope.data and str(getattr(envelope.notificationType, "value", envelope.notificationType)) == "TEST":
             return {"ok": True}
-        value = stores.verify_apple(envelope.data.signedTransactionInfo)
+        value = await asyncio.to_thread(stores.verify_apple, envelope.data.signedTransactionInfo, None, True)
     except HTTPException:
         raise
     except Exception as exc:
@@ -683,7 +748,8 @@ async def apple_notification(request: Request, db: Session = Depends(get_db)):
             existing.paid_until, existing.state = svc.now(), "revoked"
     elif existing and db.get(Learner, existing.learner_id):
         svc.apply_purchase(db, existing.learner_id, value)
-        if envelope.data.signedRenewalInfo:
+        latest = db.query(Purchase).filter_by(provider="apple", original_id=value["original_id"]).order_by(Purchase.paid_at.desc()).first()
+        if envelope.data.signedRenewalInfo and latest and latest.transaction_id == value["transaction_id"] and latest.state == "paid":
             renewal = stores.apple_verifier().verify_and_decode_renewal_info(envelope.data.signedRenewalInfo)
             if renewal.gracePeriodExpiresDate and stores.ms(renewal.gracePeriodExpiresDate) > svc.now():
                 existing.state, existing.paid_until = "grace", stores.ms(renewal.gracePeriodExpiresDate)
@@ -698,7 +764,7 @@ async def apple_notification(request: Request, db: Session = Depends(get_db)):
 
 @router.post("/notifications/google")
 async def google_notification(request: Request, db: Session = Depends(get_db)):
-    stores.verify_google_notification(request.headers.get("authorization", ""))
+    await asyncio.to_thread(stores.verify_google_notification, request.headers.get("authorization", ""))
     payload = await request.json()
     try:
         data = json.loads(base64.b64decode(payload["message"]["data"]))

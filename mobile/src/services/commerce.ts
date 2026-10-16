@@ -13,6 +13,7 @@ export interface CommerceCatalogue {
   enabled: boolean; sales_enabled: boolean; ads_enabled: boolean; account_token: string; google_account: string;
   products: { id: string; kind: string; credits: number; inr: number; tier?: string }[]; titles: CommerceTitle[];
   account_verified: boolean;
+  terms: { skip_credits: number };
 }
 let cached: Wallet | null = null;
 let owner: string | null = null;
@@ -62,23 +63,38 @@ export async function unlockTitle(title: CommerceTitle) {
   const state = await ensureCommerce();
   const message = `${title.name}: ${title.credits} credits. Uses one ${title.medium === "audio" ? "audiobook" : "book"} slot. Access lasts ${state.tier === "free" ? "365 days" : "through membership, then 365 days"}. ${state.offline ? "Offline access is available while subscribed." : "Streaming/online access only; foreground audio only."}`;
   if (!await confirmSpend("Unlock title", message)) return false;
-  await request("/commerce/titles/unlock", { method: "POST", body: JSON.stringify({ title_id: title.id, request_id: newRequestId() }) }, true);
+  await request("/commerce/titles/unlock", { method: "POST", body: JSON.stringify({ title_id: title.id, expected_credits: title.credits, request_id: newRequestId() }) }, true);
   await refreshCommerce();
   return true;
 }
 
 export async function paidHeaders(path: string): Promise<Record<string, string>> {
-  const action = path === "/ask/talk" || path === "/ask/talk/stream" || path === "/explain" || path === "/conversation/explain" ? "ask"
+  const action = path === "/explain/analysis" ? "analysis" : path === "/ask/talk" || path === "/ask/talk/stream" || path === "/explain" || path === "/conversation/explain" ? "ask"
     : path === "/conversation/start" || path === "/conversation/turn" || path === "/speech/tts" ? "voice" : null;
   if (!action || !getAuthToken()) return {};
   const state = await ensureCommerce();
   if (!state.enabled) return {};
-  const quote = await request<{ token: string; credits: number; rate: number }>("/commerce/quotes", {
+  let quote = await request<{ token: string; credits: number; rate: number }>("/commerce/quotes", {
     method: "POST", body: JSON.stringify({ action, seconds: action === "voice" ? 60 : 0 }),
   }, true);
-  const message = action === "voice" ? `AI audio costs ${quote.rate} credits per minute in completed 15-second intervals. Reserve up to ${quote.credits} credits for this response. Unused credits are released.`
-    : `A fresh AI answer costs up to ${quote.credits} credits. Cached and local answers are free. Failed answers are not charged.`;
-  if (!await confirmSpend("Use credits", message)) throw new Error("Credit purchase cancelled");
+  if (action === "voice") {
+    const message = `AI audio costs ${quote.rate} credits/minute, charged in completed 15-second intervals. Choose this reply’s maximum. Unused credits are released.`;
+    const seconds = Platform.OS === "web"
+      ? Number(globalThis.prompt(message + " Enter 30 or 60 seconds.", "30") || 0)
+      : await new Promise<number>(resolve => Alert.alert("Voice reply allowance", message, [
+          { text: "Cancel", style: "cancel", onPress: () => resolve(0) },
+          { text: `30s · up to ${quote.rate / 2} credits`, onPress: () => resolve(30) },
+          { text: `60s · up to ${quote.credits} credits`, onPress: () => resolve(60) },
+        ], { cancelable: true, onDismiss: () => resolve(0) }));
+    if (seconds !== 30 && seconds !== 60) throw new Error("Voice allowance cancelled");
+    if (seconds !== 60) {
+      const selected = await request<typeof quote>("/commerce/quotes", { method: "POST", body: JSON.stringify({ action, seconds }) }, true);
+      if (selected.rate !== quote.rate && !await confirmSpend("Voice rate changed", `This reply now reserves up to ${selected.credits} credits at ${selected.rate} credits/minute.`)) throw new Error("Voice allowance cancelled");
+      quote = selected;
+    }
+  } else if (!await confirmSpend("Use credits", `A fresh ${action === "analysis" ? "detailed analysis" : "AI answer"} costs up to ${quote.credits} credits. Cached and local answers are free. Failed answers are not charged.`)) {
+    throw new Error("Credit purchase cancelled");
+  }
   return { "X-Credit-Quote": quote.token, "X-Credit-Request": newRequestId() };
 }
 
