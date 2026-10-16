@@ -23,6 +23,10 @@ const modules = {
   "expo-file-system": { File, Directory, Paths: { document: "document" } },
   "react-native": { Platform: { OS: "android" } },
   "../config": { BASE_URL: "https://test.invalid" },
+  // Commerce disabled: chapters and their audio stay plain JSON, which is the path
+  // this check exercises. Licensed downloads seal packs through ./offlineVault.
+  "./commerce": { ensureCommerce: async () => ({ enabled: false }), commerceSnapshot: () => ({ enabled: false }) },
+  "./offlineVault": { seal: async value => value, open: async value => value, openWithLicence: async value => value },
 };
 function load() {
   const source = readFileSync(new URL("../src/services/offlineBooks.ts", import.meta.url), "utf8");

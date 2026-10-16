@@ -36,7 +36,7 @@ const modules = {
       return player;
     },
   },
-  "react-native": { Platform: { OS: "ios" } },
+  "react-native": { Platform: { OS: "ios" }, AppState: { currentState: "active", addEventListener: () => ({ remove() {} }) } },
   "../config": { BASE_URL: "https://test.invalid" },
   "../api/client": { api: { tts() { ttsCalls++; return ttsGate; } } },
 };
@@ -57,6 +57,8 @@ const { SinglePlayback } = load("../src/services/singlePlayback.ts");
 modules["./ttsAudioCache"] = load("../src/services/ttsAudioCache.ts");
 modules["./audioTransport"] = load("../src/services/audioTransport.ts");
 modules["./offlineBooks"] = { offlineAudioUrl: url => url };
+// Entitled background playback keeps the media-control assertions meaningful.
+modules["./commerce"] = { canPlayInBackground: () => true };
 modules["./managedAudio"] = load("../src/services/managedAudio.ts");
 const { TtsAudioCache } = modules["./ttsAudioCache"];
 const speech = load("../src/services/speech.ts");

@@ -7,7 +7,7 @@ const ts = require("typescript");
 const root = path.resolve(__dirname, "..");
 const element = (type, props, ...children) => ({ type, props: props ?? {}, children: children.flat().filter(Boolean) });
 const React = { createElement: element, useEffect() {}, useCallback: f => f, useMemo: f => f(), useState: v => [v, () => {}] };
-const native = { StyleSheet: { create: v => v }, View: "View", ScrollView: "ScrollView", Text: "Text", Pressable: "Pressable", Modal: "Modal" };
+const native = { StyleSheet: { create: v => v }, View: "View", ScrollView: "ScrollView", Text: "Text", Pressable: "Pressable", Modal: "Modal", useWindowDimensions: () => ({ width: 390, height: 844 }) };
 const theme = { color: {}, font: { sizes: {} }, radius: {}, space: {}, shadow: {}, script: () => ({}) };
 function load(file, overrides = {}, extra = "") {
   const code = ts.transpileModule(fs.readFileSync(path.join(root, file), "utf8") + extra, {
@@ -48,6 +48,10 @@ for (const screen of navigator.children) {
     const source = fs.readFileSync(path.join(root, file), "utf8");
     if (source.includes('<CardLessonScreen')) {
       assert.match(fs.readFileSync(path.join(root, 'src/screens/LearnV2Lesson.tsx'), 'utf8'), /SafeAreaView/, `${name}'s shared card player owns safe areas`);
+    } else if (source.includes('<ScreenHeader')) {
+      // The Group* family delegates its top inset to the shared bar; keep that
+      // delegation honest instead of demanding a second owner in each screen.
+      assert.match(fs.readFileSync(path.join(root, 'src/community/parts.tsx'), 'utf8'), /useSafeAreaInsets/, `${name}'s shared header owns the status-bar inset`);
     } else assert.match(source, /SafeAreaView|useSafeAreaInsets/, `${name} has no safe-area owner`);
   }
 }
@@ -56,6 +60,11 @@ assert.equal(game.children.at(-1).type, "ScrollView", "A short screen must scrol
 assert.equal(game.children.at(-1).props.contentContainerStyle.flexGrow, 1);
 
 const readerTheme = load("src/screens/readerTheme.ts");
+// The reader's appearance hook would run useState/useEffect of its own; the check
+// pins the documented defaults instead, keeping the first-useState slot for `controls`.
+const readingAppearance = load("src/services/readingAppearance.ts", {
+  "@react-native-async-storage/async-storage": { __esModule: true, default: { getItem: async () => null, setItem: async () => {} } },
+});
 const verse = { id: "v1", source_ref: "Gītā 1.1", devanagari: "धर्मक्षेत्रे", word_breakdown: [] };
 const flattenStyle = style => Object.assign({}, ...(Array.isArray(style) ? style : [style]).filter(Boolean));
 for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, bottom: 24, left: 0, right: 0 }, { top: 59, bottom: 34, left: 12, right: 12 }]) {
@@ -65,12 +74,17 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
       react: { ...React, useState: initial => [stateIndex++ === 0 ? controls : initial, () => {}] },
       "react-native-safe-area-context": { useSafeAreaInsets: () => insets },
       "react-native-gesture-handler": { Gesture: { Tap: () => ({ onEnd() { return this; } }) } },
-      "../hooks/useBookPages": { useBookPages: () => ({ pages: [verse], title: "Gītā" }) },
+      "../hooks/useBookPages": { useBookPages: () => ({ pages: [verse], title: "Gītā", chapters: [], pagedChapter: null }) },
       "../hooks/useChant": { useChant: () => ({ at: 0, verse, hasChant: true }) },
       "../hooks/useReducedMotion": { useReducedMotion: () => true },
       "../hooks/useTypeScale": { useTypeScale: () => ({ sized: n => n }) },
       "../ask/AskProvider": { useAsk: () => ({}) },
+      // Copy rewriting is not what this check is about; plain() only needs to return text.
+      "../utils/text": { plain: t => t ?? "" },
       "./readerTheme": readerTheme,
+      "../services/readingAppearance": {
+        useReadingAppearance: () => ({ appearance: readingAppearance.DEFAULT_READING_APPEARANCE, updateAppearance: () => {} }),
+      },
     }).default;
     const page = Book({ navigation: {}, route: { params: { bookKey: "gita", mode } } });
     const style = flattenStyle(page.props.style);

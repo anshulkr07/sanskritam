@@ -13,6 +13,12 @@ const inputModule = { exports: {} };
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/audioInput.ts", import.meta.url), "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText, { exports: inputModule.exports });
+// The hook claims the shared transport while a call is live; the real module is
+// dependency-free, so it runs in the sandbox as-is.
+const transportModule = { exports: {} };
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(new URL("../src/services/audioTransport.ts", import.meta.url), "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+}).outputText, { exports: transportModule.exports });
 function deferred() {
   let resolve, reject;
   const promise = new Promise((a, b) => { resolve = a; reject = b; });
@@ -62,6 +68,7 @@ function harness({ permission = async () => {}, ticket = async () => ({ ticket: 
     "../api/client": { request: async (...args) => { requests.push(args); return ticket(...args); } },
     "../config": { BASE_URL: "http://localhost:8001" },
     "./audioInput": inputModule.exports,
+    "../services/audioTransport": transportModule.exports,
     "./microphone": {
       microphonePermission: permission,
       startMicrophone: async onBuffer => {
