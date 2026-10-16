@@ -38,6 +38,7 @@ def contact(chapter):
   x=(index%cols)*200;y=(index//cols)*225;sheet.paste(im,(x+(200-im.width)//2,y));draw.text((x+9,y+195),d['key'],fill='#3b2e25')
  target=OUT/'contact-sheets';target.mkdir(exist_ok=True)
  sheet.save(target/f'chapter-{chapter:02d}.jpg',quality=92)
+ (target/f'chapter-{chapter:02d}.json').write_text(json.dumps([{'key':d['key'],'sha256':d['sha256']} for d in ds],indent=2),encoding='utf-8')
 
 def publish():
  ds=deliveries();cfg={**dotenv_values(ROOT/'.env'),**dotenv_values(ROOT/'.env.deploy'),**os.environ};base=cfg['R2_BASE_URL'].rstrip('/')
@@ -80,12 +81,21 @@ def publish():
  status()
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--status',action='store_true');p.add_argument('--contact',type=int);p.add_argument('--reviewed',type=int);p.add_argument('--publish',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--status',action='store_true');p.add_argument('--contact',type=int);p.add_argument('--reviewed',type=int);p.add_argument('--reviewed-sheet',type=int);p.add_argument('--exclude',default='');p.add_argument('--publish',action='store_true');a=p.parse_args()
  if a.contact:contact(a.contact)
- if a.reviewed:
-  expected=json.loads((OUT/'chapter-counts.json').read_text())[str(a.reviewed)]
-  matches=[d for d in deliveries().values() if int(d['key'].split('-')[0])==a.reviewed]
-  assert len(matches)==expected,'Only mark a complete, visually inspected chapter reviewed'
+ assert not (a.reviewed and a.reviewed_sheet),'Choose one review mode'
+ assert not a.exclude or a.reviewed_sheet,'Exclusions require a specific contact-sheet snapshot'
+ if a.reviewed or a.reviewed_sheet:
+  if a.reviewed:
+   expected=json.loads((OUT/'chapter-counts.json').read_text())[str(a.reviewed)]
+   matches=[d for d in deliveries().values() if int(d['key'].split('-')[0])==a.reviewed]
+   assert len(matches)==expected,'Only mark a complete, visually inspected chapter reviewed'
+  else:
+   snapshot=json.loads((OUT/'contact-sheets'/f'chapter-{a.reviewed_sheet:02d}.json').read_text(encoding='utf-8'));current=deliveries();excluded=set(filter(None,a.exclude.split(',')));matches=[]
+   assert excluded<={d['key'] for d in snapshot},'Excluded key is absent from the inspected sheet'
+   for item in snapshot:
+    d=current[item['key']];assert d['sha256']==item['sha256'],'Master changed after the contact sheet was made'
+    if d['key'] not in excluded:matches.append(d)
   for d in matches:
    d['reviewed']=True
    # Preserve the whole painted scene across all aspect ratios. Tightening this

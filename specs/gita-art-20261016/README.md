@@ -35,7 +35,7 @@ already saved masters. Do not generate a second image for an existing delivery.
 Do not rerun `prepare.py` or edit the frozen job prompts during production.
 The delivery's prompt and checksum must continue to describe the actual call.
 `plan_batch.py` and `builtin-batch.js` bound each resumable production run to 32
-missing masters with eight built-in calls in flight. Run the JavaScript only
+missing masters with four built-in calls in flight. Run the JavaScript only
 inside Codex `functions.exec`, where `tools.image_gen__imagegen` is available;
 it is not a standalone Node program or a paid API fallback. Inspect the source,
 read it via `exec_command`, and `await eval(result.output)`. Repeat after a run
@@ -54,6 +54,8 @@ python specs/gita-art-20261016/process.py --publish
 python specs/gita-art-20261016/audit.py
 # Require all 700 generated, reviewed and published at final handoff:
 python specs/gita-art-20261016/audit.py --complete
+python specs/gita-art-20261016/verify_live_sources.py
+python specs/gita-art-20261016/storage_report.py
 ```
 
 Reviewed Gita deliveries conservatively preserve the full master rectangle.

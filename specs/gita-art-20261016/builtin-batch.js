@@ -48,7 +48,7 @@
       }
     }
   }
-  await Promise.all(Array.from({length:8},()=>worker()));
+  await Promise.all(Array.from({length:4},()=>worker()));
   text({batch_saved:completed,generated:plan.existing+completed,failed,stopped});
   text(await runCommand('python specs/gita-art-20261016/process.py --status',1200));
 })()
