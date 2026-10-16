@@ -8,9 +8,9 @@ import { Pressable, Text, View } from "react-native";
 import DailyLearningCard from "../src/home/DailyLearningCard";
 import FloatingAudioBar from "../src/components/FloatingAudioBar";
 import AudioModal from "../src/components/AudioModal";
-import { audioTransport } from "../src/services/audioTransport";
+import { bindSession, listenBus } from "../src/services/listenBus";
 import { setProgressOwner } from "../src/services/progressStorage";
-import { api } from "../src/api/client";
+import { api, type Shloka } from "../src/api/client";
 
 api.reviewDue = async () => ({ due_count: 3, items: [] });
 const originalFetch = globalThis.fetch;
@@ -19,23 +19,29 @@ globalThis.fetch = async (input, init) => {
   return originalFetch(input, init);
 };
 setProgressOwner("daily-loop-browser-qa");
+// A real chant session over a local silent clip: the floating bar is then the
+// app's own MiniPlayer on the shared listen transport, driven by a sounding
+// verse instead of a hand-rolled transport claim. public/qa-silence.wav is the
+// fixture clip (12 s of silence; the transport is released when a clip ends, so
+// the browser check keeps its playback windows short); the URL is absolute so
+// listenBus.resolve passes it through instead of prefixing the API base.
+const qaClip = new URL("qa-silence.wav", location.origin).href;
+const qaVerse = {
+  id: "qa-verse-1",
+  source_ref: "QA fixture",
+  audio_url: "",
+  chant: { url: qaClip, lines: [] },
+} as unknown as Shloka;
+bindSession({ id: "daily-loop-browser-qa", bookKey: "", chapter: null, title: "Sanskrit reading", pages: [qaVerse] }, 0);
 const Stack = createNativeStackNavigator();
 function Screen() {
   const [destination, setDestination] = useState("Choose your goal");
   const [dialog, setDialog] = useState(false);
-  const sample = () => {
-    let id = 0;
-    id = audioTransport.claim("Sanskrit reading", {
-      pause: () => audioTransport.update(id, { playing: false }),
-      play: () => audioTransport.update(id, { playing: true }),
-    });
-    audioTransport.update(id, { duration: 30, position: 8 });
-  };
   return <View style={{ flex: 1, backgroundColor: "#FFF8EE", padding: 16, gap: 24 }}>
     <Text style={{ fontSize: 28, fontWeight: "800", color: "#3B2E25" }}>Today's learning</Text>
     <DailyLearningCard navigate={route => setDestination(route)} />
     <Text accessibilityLabel="Preview destination">{destination}</Text>
-    <Pressable onPress={sample} accessibilityRole="button" accessibilityLabel="Preview audio controls" style={{ minHeight: 48, justifyContent: "center" }}><Text>Preview audio controls</Text></Pressable>
+    <Pressable onPress={() => listenBus.startAt(0)} accessibilityRole="button" accessibilityLabel="Preview audio controls" style={{ minHeight: 48, justifyContent: "center" }}><Text>Preview audio controls</Text></Pressable>
     <Pressable onPress={() => setDialog(true)} accessibilityRole="button" accessibilityLabel="Preview native dialog"><Text>Preview native dialog</Text></Pressable>
     <FloatingAudioBar />
     <AudioModal visible={dialog} transparent onRequestClose={() => setDialog(false)}>

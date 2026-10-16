@@ -8,6 +8,38 @@ import http from "node:http";
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url), ts = require("typescript");
+// Resolve a Chromium binary per platform: no machine-specific path is baked in,
+// so the same script runs on Windows dev machines, macOS and CI Linux runners.
+function firstExisting(candidates) {
+  return candidates.find(candidate => { try { return fs.statSync(candidate).isFile(); } catch { return false; } });
+}
+function getChromePath() {
+  if (process.env.VOICE_QA_CHROME) return process.env.VOICE_QA_CHROME;
+  if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
+  const names = ["google-chrome", "google-chrome-stable", "chrome", "chromium", "chromium-browser"];
+  const scanPath = () => firstExisting((process.env.PATH || "").split(path.delimiter).filter(Boolean)
+    .flatMap(dir => names.map(name => path.join(dir, name))));
+  if (process.platform === "win32") {
+    const dirs = [process.env.ProgramFiles, process.env["ProgramFiles(x86)"], process.env.LOCALAPPDATA].filter(Boolean);
+    return firstExisting([
+      ...dirs.map(dir => path.join(dir, "Google", "Chrome", "Application", "chrome.exe")),
+      ...dirs.map(dir => path.join(dir, "Microsoft", "Edge", "Application", "msedge.exe")),
+    ]) ?? null;
+  }
+  if (process.platform === "darwin") {
+    return firstExisting([
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    ]) ?? scanPath() ?? null;
+  }
+  const dirs = ["/usr/bin", "/usr/local/bin", "/snap/bin", "/opt/google/chrome", path.join(os.homedir(), ".local", "bin")];
+  return firstExisting(dirs.flatMap(dir => names.map(name => path.join(dir, name)))) ?? scanPath() ?? null;
+}
+const chrome = getChromePath();
+if (!chrome || (path.isAbsolute(chrome) && !fs.existsSync(chrome))) {
+  console.log(`Chrome/Chromium not found (${chrome || "no known install location"}); set VOICE_QA_CHROME to a browser binary to run the duplex browser QA. Skipping.`);
+  process.exit(0);
+}
 function readModule(file, mocks = {}) {
   const exports = {};
   const code = ts.transpileModule(fs.readFileSync(new URL(file, import.meta.url), "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
@@ -21,8 +53,23 @@ const html = DUPLEX_HTML.replace("<script>", "<script>window.messages=[];window.
 const server = http.createServer((req, res) => { res.setHeader("Content-Type", "text/html"); res.end(html); });
 await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), "voice-duplex-qa-"));
-const chrome = process.env.VOICE_QA_CHROME || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-const browser = spawn(chrome, ["--headless=new", "--no-first-run", "--no-default-browser-check", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream", "--autoplay-policy=no-user-gesture-required", "about:blank"], { windowsHide: true, stdio: "ignore" });
+const browser = spawn(chrome, [
+  "--headless=new",
+  "--no-sandbox",
+  "--disable-gpu",
+  "--disable-dev-shm-usage",
+  "--no-first-run",
+  "--no-default-browser-check",
+  "--remote-debugging-port=0",
+  `--user-data-dir=${profile}`,
+  "--use-fake-device-for-media-stream",
+  "--use-fake-ui-for-media-stream",
+  "--autoplay-policy=no-user-gesture-required",
+  "about:blank",
+], { windowsHide: true, stdio: "ignore" });
+browser.on("error", err => {
+  console.warn(`Browser process error (${chrome}):`, err.message);
+});
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 let socket;
 try {
