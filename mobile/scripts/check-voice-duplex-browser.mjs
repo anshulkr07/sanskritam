@@ -8,6 +8,9 @@ import http from "node:http";
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url), ts = require("typescript");
+// Node 20 (the CI runner) has no global WebSocket; Chromium's DevTools endpoint
+// needs one. Metro already ships ws, so fall back to it when the global is absent.
+const WebSocketImpl = globalThis.WebSocket ?? require("ws");
 // Resolve a Chromium binary per platform: no machine-specific path is baked in,
 // so the same script runs on Windows dev machines, macOS and CI Linux runners.
 function firstExisting(candidates) {
@@ -78,7 +81,7 @@ try {
   assert.ok(fs.existsSync(portFile), "Chromium must start its test debug endpoint");
   const port = fs.readFileSync(portFile, "utf8").split("\n")[0];
   const tab = await (await fetch(`http://127.0.0.1:${port}/json/new?${encodeURIComponent(`http://127.0.0.1:${server.address().port}/`)}`, { method: "PUT" })).json();
-  socket = new WebSocket(tab.webSocketDebuggerUrl);
+  socket = new WebSocketImpl(tab.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject; });
   let nextId = 0; const requests = new Map();
   socket.onmessage = event => {
@@ -144,7 +147,7 @@ try {
   assert.ok(cancelled, "Cancelling delayed microphone permission must release the late stream");
   console.log(`Chromium duplex PASS: local peers connected, processed PCM (${frames.length} packets), AI playout energy, interruption without capture loss, cleanup and restart.`);
 } finally {
-  if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ id: 999999, method: "Browser.close" }));
+  if (socket?.readyState === WebSocketImpl.OPEN) socket.send(JSON.stringify({ id: 999999, method: "Browser.close" }));
   await Promise.race([new Promise(resolve => browser.once("exit", resolve)), sleep(2000)]);
   socket?.close(); if (browser.exitCode === null) browser.kill(); server.close();
 }

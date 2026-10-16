@@ -4,6 +4,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { spawn } from "node:child_process";
+import { createRequire } from "node:module";
+
+// Node 20 (the CI runner) has no global WebSocket; Chromium's DevTools endpoint
+// needs one. Metro already ships ws, so fall back to it when the global is absent.
+const WebSocketImpl = globalThis.WebSocket ?? createRequire(import.meta.url)("ws");
 
 // Resolve a Chromium binary per platform: no machine-specific path is baked in,
 // so the same script runs on Windows dev machines, macOS and CI Linux runners.
@@ -75,7 +80,7 @@ try {
   assert.ok(fs.existsSync(portFile), "Headless browser must start");
   const port = fs.readFileSync(portFile, "utf8").split("\n")[0];
   const target = await fetch(`http://127.0.0.1:${port}/json/new?about:blank`, { method: "PUT" }).then(r => r.json());
-  socket = new WebSocket(target.webSocketDebuggerUrl);
+  socket = new WebSocketImpl(target.webSocketDebuggerUrl);
   await new Promise(resolve => socket.addEventListener("open", resolve, { once: true }));
   let id = 0;
   const pending = new Map();
