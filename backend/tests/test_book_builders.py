@@ -14,7 +14,15 @@ def test_clean_nfc_and_zero_width():
 
 
 def test_clean_wiki_markup():
-    t = C.verse_text("{{template}}[[File:x.jpg]] [[a|b]] [[c]] '''x'' <poem>रामः</poem>")
+    raw = "{{template}}[[File:x.jpg]] [[a|b]] [[c]] '''x'' <poem>रामः</poem>"
+    # The markup stage keeps a piped link's display text ("b") and drops the
+    # template, the file link, the bold ticks and the tags.
+    stripped = C.strip_wiki_markup(raw)
+    assert "{{" not in stripped and "[[" not in stripped and "<" not in stripped
+    assert "b" in stripped and "राम" in stripped
+    # verse_text must not eat the link's display text either: Latin letters
+    # are left for char_check to report (5.3), never dropped in silence.
+    t = C.verse_text(raw)
     assert "{{" not in t and "[[" not in t and "<" not in t
     assert "b" in t and "राम" in t
 

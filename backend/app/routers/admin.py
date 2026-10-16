@@ -79,7 +79,7 @@ async def create_challenge(
         target_iast=req.target_iast or iast.to_iast(req.target_sanskrit),
         features=req.features,
         accepted_parses=req.accepted_parses if req.accepted_parses else [],
-        register=req.register,
+        register=req.linguistic_register,
         audio_url=req.audio_url,
     )
     db.add(challenge)

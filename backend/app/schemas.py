@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Any, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # ─── Auth ───
@@ -82,6 +82,11 @@ class MeResponse(BaseModel):
 # ─── Challenges ───
 
 class ChallengeResponse(BaseModel):
+    # The linguistic register (laukika/classical/…). The JSON key stays
+    # "register" (the mobile client reads it); the Python name avoids
+    # shadowing BaseModel.register, which Pydantic warns about.
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str
     prompt_l1: str
     prompt_lang: str
@@ -89,7 +94,7 @@ class ChallengeResponse(BaseModel):
     target_iast: str
     features: list[str]
     audio_url: str
-    register: str
+    linguistic_register: str = Field(..., alias="register")
 
 
 # ─── Attempts ───
@@ -293,6 +298,8 @@ class LessonExample(BaseModel):
 
 
 class LessonResponse(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str = ""
     feature_id: str
     features: list[str] = []
@@ -305,7 +312,7 @@ class LessonResponse(BaseModel):
     visual_type: str  # grid | tree | state_machine | none
     visual_data: dict[str, Any]
     audio_url: str = ""
-    register: str
+    linguistic_register: str = Field(..., alias="register")
     attribution: str = ""  # P23-4a registry key — the join, not free text
 
 
@@ -327,6 +334,8 @@ class VocabWordResponse(BaseModel):
 
 
 class ReaderPassageResponse(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     tier: int
     sort_order: int
     devanagari: str
@@ -334,12 +343,14 @@ class ReaderPassageResponse(BaseModel):
     word_breakdown: list[dict[str, Any]]
     parse: list[dict[str, Any]]
     features: list[str]
-    register: str
+    linguistic_register: str = Field(..., alias="register")
 
 
 # ─── Curriculum spine as data (P23) ───
 
 class LessonSummary(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str
     feature_id: str
     features: list[str] = []
@@ -347,7 +358,7 @@ class LessonSummary(BaseModel):
     rank: int
     title_en: str
     title_hi: str
-    register: str = "laukika"
+    linguistic_register: str = Field("laukika", alias="register")
     step_count: int = 0
     attribution: str = ""
 
@@ -615,13 +626,15 @@ class FactsResponse(BaseModel):
 # ─── Admin ───
 
 class CreateChallengeRequest(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     prompt_l1: str
     prompt_lang: str = "en"
     target_sanskrit: str
     target_iast: str = ""
     features: list[str] = []
     accepted_parses: list[dict[str, str]] = []
-    register: str = "laukika"
+    linguistic_register: str = Field("laukika", alias="register")
     audio_url: str = ""
 
 

@@ -64,6 +64,11 @@ _PAGE_ARTIFACT = re.compile(r"^\d+\(\d+\)$")
 _ANUVAKA_COUNT = re.compile(r"^\s*॥?\s*इति\s+श्री")
 
 _ALLOWED_EXTRA = set("॥।ऽ \n")
+# Devanagari characters that can sit *inside* a word: letters, vowel signs
+# and the other signs up to U+0963, plus U+0970-U+097F. Excludes the digits
+# U+0966-U+096F (which can be Vedic length markers) and the dandas
+# U+0964-U+0965 (which close a verse and introduce its number).
+_DEVA_IN_WORD = r"[ऀ-ॣ॰-ॿ]"
 
 
 def _is_devanagari_letter(ch: str) -> bool:
@@ -160,11 +165,11 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     # Ambuda TEI line-break hyphens (Bhaja Govindam: "सक्त-\nस्ताव"): a hyphen
     # at the end of a line splits one word across lines; join it. Ramaraksa
     # has the same split with a space ("स्पृशा- वक्ष"): join any hyphen
-    # between two Devanagari letters.
+    # between two characters inside a word.
     t = re.sub(r"-\s*\n\s*", "", t)
     # Letters and signs only: a hyphen between digits ("१८-९५") is the verse
     # number's own separator and must stay, or chapter 18 verse 95 reads as 1895.
-    t = re.sub(r"(?<=[ऀ-॥॰-ॿ])-\s*(?=[ऀ-॥॰-ॿ])", "", t)
+    t = re.sub(r"(?<=" + _DEVA_IN_WORD + r")-\s*(?=" + _DEVA_IN_WORD + r")", "", t)
     # Kena page uses "|" as a danda ("चक्षुः |"): a pipe surrounded by space
     # or at the end of a line is a danda typo. Fullwidth and box-drawing
     # pipes appear on the same pages as the ASCII one.
@@ -172,12 +177,13 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     t = re.sub(r"\s+\|\s*", " । ", t)
     t = re.sub(r"\|\s*$", " ।", t, flags=re.M)
     # Vedic vowel-length notation sits inside a word ("व्यद्युतदा३इतीन्" in
-    # Kena): a digit run between two Devanagari letters is a scholarly length
-    # marker, never part of the text. Verse numbers always carry a danda or
-    # space around them, so they are untouched. The marker can also close a
-    # word ("न्यमीमिषदा३"), so a digit run directly after a vowel sign goes
-    # too. The Sāmaveda page writes the same notation in ASCII ("न्य3ऽत्रिणम्").
-    t = re.sub(r"(?<=[ऀ-ॿ])[०-९0-9०-९]+(?=[ऀ-ॿ])", "", t)
+    # Kena): a digit run between two characters inside a word is a scholarly
+    # length marker, never part of the text. A verse number instead follows a
+    # danda and may itself contain digits ("॥१८-९५॥"), so dandas and digits
+    # never count as its neighbours. The marker can also close a word
+    # ("न्यमीमिषदा३"), so a digit run directly after a vowel sign goes too.
+    # The Sāmaveda page writes the same notation in ASCII ("न्य3ऽत्रिणम्").
+    t = re.sub(r"(?<=" + _DEVA_IN_WORD + r")[०-९0-9०-९]+(?=" + _DEVA_IN_WORD + r")", "", t)
     # …and the marker can follow an anusvara/visarga ("प्रतीव्यां३", Sāmaveda)
     # or an avagraha ("रथ्याऽ३").
     t = re.sub(r"(?<=[ािीुूृॄॢॣेैोौंँःऽ़्])[०-९0-9०-९]+", "", t)
@@ -199,7 +205,8 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     t = t.replace("--", " ")
     # "चिदग्रि – कुण्ड" (Lalita), "उद्भानु -सहस्राभा": dashes as compound
     # separators; "कुशल:" (Saundarya) is a visarga typed as an ASCII colon.
-    t = re.sub(r"(?<=[ऀ-ॿ])\s*[-–]\s*(?=[ऀ-ॿ])", " ", t)
+    # A dash between digits ("१८-९५") is the verse number, not a separator.
+    t = re.sub(r"(?<=" + _DEVA_IN_WORD + r")\s*[-–]\s*(?=" + _DEVA_IN_WORD + r")", " ", t)
     t = re.sub(r"(?<=[ऀ-ॿ]):", "ः", t)
     t = re.sub(r"\s+-\s+", " ", t)
     t = re.sub(r"(?<![0-9०-९])[.,!?;]|[,!?;](?![0-9०-९])", " ", t)
@@ -211,27 +218,30 @@ def verse_text(raw: str, *, vedic: bool = False) -> str:
     t = re.sub(r"अध्यायः?\s*[०-९0-9]+", " ", t)
     # Free-floating digit runs after a word ("॥ ऋ ३ ५३ ५ ६" page refs, the
     # stray "२" in "कृत २ ंजलिः"): a verse's own number always follows a
-    # danda, so digits directly after a letter+space are page noise. The
+    # danda, so digits directly after a letter+space are page noise — but
+    # digits after the danda itself are that verse's number and stay. The
     # same is true at a line start ("७.१,२६.६" marker debris, "६ ॥" orphans)
     # — no verse line opens with a digit.
-    t = re.sub(r"(?<=[ऀ-ॿ])\s+[०-९0-9]+(?:\.[०-९0-9]+)*", " ", t)
+    t = re.sub(r"(?<=[ऀ-ॿ])(?<![।॥])\s+[०-९0-9]+(?:\.[०-९0-9]+)*", " ", t)
     t = re.sub(r"(?m)^[०-९0-9][०-९0-9.,\s]*", "", t)
     # Whatever parentheses, brackets and quotation marks survive the
     # stage-direction and annotation drops are page noise; a stray apostrophe
     # likewise ("हार्द' ", Lalita). Braces ride in from templates
-    # ("{श्रीमद्भागवतपुराणम्स्कन्धः}"), an ASCII letter from a typo
-    # ("ज्ञात्वागाt "), "…" from drama stage chatter.
+    # ("{श्रीमद्भागवतपुराणम्स्कन्धः}"), "…" from drama stage chatter. ASCII
+    # letters stay: 5.3 wants the character check to report them and stop the
+    # book ("Rama ॥ १"), not have them disappear silently here.
     t = re.sub(r"[()\[\]{}“”‘’\"']", " ", t)
-    t = re.sub(r"[a-zA-Z]+", " ", t)
     t = t.replace("…", " ")
     # A final catch-all: any hyphen or en-dash left near the text is
-    # typography, never Sanskrit.
-    t = t.replace("-", " ").replace("–", " ")
-    # Keep only Devanagari, dandas and whitespace: every other codepoint
-    # that survived the line-level drops (Latin letters like the "ë" in
-    # Raghuvamsha, backslashes, %, math signs, leftover digits) is page
-    # noise by definition. The character check below enforces the same set.
-    t = re.sub(r"[^\u0900-\u097F॥। \n]+", " ", t)
+    # typography, never Sanskrit — except between two digits, where it is
+    # the verse number's own separator ("॥१८-९५॥").
+    t = re.sub(r"(?<![0-9०-९])[-–]|[-–](?![0-9०-९])", " ", t)
+    # Keep Devanagari, dandas, whitespace and the number separators
+    # (".", ",", "-" between digits): every other codepoint that survived the
+    # line-level drops (the "ë" in Raghuvamsha, backslashes, %, math signs,
+    # leftover digits) is page noise by definition. ASCII letters are kept on
+    # purpose — the character check (5.3) must be able to report them.
+    t = re.sub(r"[^\u0900-\u097F॥। \nA-Za-z.,\-–]+", " ", t)
     t = re.sub(r"[ \t]+", " ", t)
     # Collapse whitespace; keep one line break between half-verses.
     parts = [re.sub(r"[ \t\u00a0]+", " ", p).strip() for p in t.split("\n")]

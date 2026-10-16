@@ -10,7 +10,7 @@ import time
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 
 from app.auth import require_learner
@@ -128,10 +128,13 @@ class TalkOut(BaseModel):
 
 
 class ScenarioOut(BaseModel):
+    # JSON key stays "register"; see ChallengeResponse in app/schemas.py.
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str
     title: str
     description: str = ""
-    register: str = ""
+    linguistic_register: str = Field("", alias="register")
     est_minutes: int = 5
     node_count: int = 0
 

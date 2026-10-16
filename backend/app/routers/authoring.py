@@ -20,7 +20,7 @@ import logging
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
@@ -47,8 +47,12 @@ router = APIRouter(prefix="/authoring")
 class DraftBrief(BaseModel):
     """Brief for one authored scenario (title, register, band, bridge, topic)."""
 
+    # JSON key stays "register" (services read the dumped dict by that name);
+    # see ChallengeResponse in app/schemas.py for the shadowing note.
+    model_config = ConfigDict(populate_by_name=True)
+
     title: str = Field(..., min_length=1, max_length=256)
-    register: str = "laukika"
+    linguistic_register: str = Field("laukika", alias="register")
     ratio_band: Optional[dict[str, float] | list[float]] = None  # {min,max} or [min,max]
     bridge_lang: str = "hi"
     topic: str = ""
@@ -111,7 +115,7 @@ async def authoring_draft(
     """
     try:
         return await run_authoring(
-            req.brief.model_dump(),
+            req.brief.model_dump(by_alias=True),
             req.n_turns,
             with_dual=req.with_dual,
             dry_run=True,
@@ -134,7 +138,7 @@ async def authoring_scenario(
     """
     try:
         return await run_authoring(
-            req.brief.model_dump(),
+            req.brief.model_dump(by_alias=True),
             req.n_turns,
             with_dual=req.with_dual,
             dry_run=False,

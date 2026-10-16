@@ -264,6 +264,20 @@ def _strip_html(html: str) -> str:
     return "\n".join(kept)
 
 
+def _strip_verse_marker(cleaned: str) -> str:
+    """Drop the printed verse marker from a split body's cleaned text.
+
+    ``clean.verse_text`` keeps a trailing marker ("… ॥ १.१ ॥") so callers
+    that treat a verse as a unit see it; a splitter has already taken the
+    number into the ref, so the reading text must not repeat it. The closing
+    danda stays.
+    """
+    body = _clean.strip_verse_number(cleaned)
+    if body and not body.endswith(("॥", "।")):
+        body = body.rstrip() + " ॥"
+    return body
+
+
 def _wiki_numbered_verses(wikitext: str, *, vedic: bool) -> list[tuple[str, str]]:
     parts = _clean.split_numbered_verses(wikitext)
     out = []
@@ -277,7 +291,7 @@ def _wiki_numbered_verses(wikitext: str, *, vedic: bool) -> list[tuple[str, str]
         if not nums:
             continue
         body2 = _clean.drop_leading_junk(body)
-        cleaned = _clean.verse_text(body2, vedic=vedic)
+        cleaned = _strip_verse_marker(_clean.verse_text(body2, vedic=vedic))
         out.append((num_raw, cleaned))
     return out
 
@@ -755,12 +769,13 @@ def build_book(slug: str) -> dict:
             splits = _clean.split_numbered_verses(body or "")
             if len(splits) >= 2:
                 for s_num, s_body in splits:
-                    cleaned = _clean.verse_text(
+                    cleaned = _strip_verse_marker(_clean.verse_text(
                         _clean.drop_leading_junk(s_body),
-                        vedic=bool(spec.get("vedic")))
+                        vedic=bool(spec.get("vedic"))))
                     raw_verses.append(("", s_num, cleaned))
             else:
-                cleaned = _clean.verse_text(body, vedic=bool(spec.get("vedic")))
+                cleaned = _strip_verse_marker(
+                    _clean.verse_text(body, vedic=bool(spec.get("vedic"))))
                 raw_verses.append(("", n_raw, cleaned))
     elif kind in ("dcs", "dcs_cantos_1_8"):
         files = _fetch.dcs_list_files(spec["dcs_text"])
@@ -795,13 +810,13 @@ def build_book(slug: str) -> dict:
                 pass
             parts = _clean.split_numbered_verses(body.replace("/", " ॥ "))
             for num_raw, verse_body in parts:
-                cleaned = _clean.verse_text(verse_body, vedic=vedic)
+                cleaned = _strip_verse_marker(_clean.verse_text(verse_body, vedic=vedic))
                 raw_verses.append(("", num_raw, cleaned))
         else:
             # Normalise GRETIL slashes then split at numbers.
             norm = body.replace(" // ", " ॥ ").replace(" / ", " । ")
             for num_raw, verse_body in _clean.split_numbered_verses(norm):
-                cleaned = _clean.verse_text(verse_body, vedic=vedic)
+                cleaned = _strip_verse_marker(_clean.verse_text(verse_body, vedic=vedic))
                 # Chapter B.C: derive from the number parts (first=book).
                 nums = _clean.number_parts(num_raw)
                 ch = ".".join(str(p) for p in nums[:-1]) if len(nums) > 1 else ""

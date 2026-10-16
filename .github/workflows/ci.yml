@@ -27,6 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # The recite-audio tests encode and decode real recordings through
+      # ffmpeg (services/recite_audio.py, audio_meta.py). The runner image
+      # does not ship it.
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Run tests
         run: python -m pytest -q --tb=short
 
