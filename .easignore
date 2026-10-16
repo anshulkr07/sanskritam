@@ -1,6 +1,12 @@
 # EAS Build ignore list — prevents node_modules and other unneeded files
 # from bloating the upload archive. This is at the monorepo root.
 
+# The Expo app and its local native module are self-contained in mobile/.
+# Exclude all other root files/directories, including local storage, research,
+# generated media and private operational material, from the remote builder.
+/*
+!/mobile
+
 # dependencies (huge)
 node_modules/
 

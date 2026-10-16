@@ -1,7 +1,7 @@
 import { remoteArtwork } from "../artwork/remoteArtwork";
 import type { ImageSourcePropType } from "react-native";
 
-// Static requires bundle all released unit and topic paintings for offline use.
+// Released unit/topic paintings are served remotely and cached on demand.
 // Match stable curriculum IDs, so reordering a rail never changes its artwork.
 const units: Record<string, ImageSourcePropType> = {
   "u1": remoteArtwork("path/u1-varna-hero.webp"),

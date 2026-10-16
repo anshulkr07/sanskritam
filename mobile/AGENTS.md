@@ -17,3 +17,13 @@ and may be omitted where space is tight. Keep intentional transliteration
 instruction and input/search support functional. Do not change API identifiers,
 stored answer values, source quotations or transliteration fields to enforce a
 display preference.
+
+# Artwork and reader backgrounds
+
+Read [`../specs/artwork/ARTWORK.md`](../specs/artwork/ARTWORK.md) before generating
+or changing artwork or its integration. Use one master per verse, derive device
+delivery sizes from it, and preserve the narrative safe region across orientations.
+The default background image opacity is **48%**, with a persisted Plain option
+and independent text color/text opacity. Keep startup/tutor/fallback art bundled;
+larger paintings belong in R2 with device caching. Do not reintroduce static
+`require()` references to migrated paintings when regenerating asset registries.

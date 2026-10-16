@@ -17,7 +17,7 @@ import PlayScreen from "../screens/Play";
 import ReaderScreen from "../screens/Reader";
 import GroupScreen from "../screens/Group";
 import { AudioMiniPlayer, useCommunity } from "../community/CommunityProvider";
-import VoiceLabTab from "../screens/VoiceLabTab";
+import VoiceHub from "../screens/VoiceHub";
 import { haptics } from "../services/haptics";
 import { color, font } from "../theme";
 import type { MainTabParamList } from "./types";
@@ -114,7 +114,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="VoiceLab"
-        component={VoiceLabTab}
+        component={VoiceHub}
         options={{ tabBarLabel: LABEL.VoiceLab }}
       />
       <Tab.Screen

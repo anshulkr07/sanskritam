@@ -36,7 +36,11 @@ def main():
    path,key=item;data=path.read_bytes();client.put_object(Bucket=cfg['R2_BUCKET'],Key=key,Body=data,ContentType=mime_for(path.name),CacheControl='public, max-age=31536000, immutable',Metadata={'sha256':hashlib.sha256(data).hexdigest()})
    r=http().head(base+'/'+key,timeout=(15,30));assert r.status_code==200 and int(r.headers.get('Content-Length','-1'))==len(data),'Public verification failed: '+key
   with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:list(pool.map(publish,uploads))
-  (ROOT/'mobile/src/components/artwork/verseManifest.json').write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+  registry_path=ROOT/'mobile/src/components/artwork/verseManifest.json'
+  registry=json.loads(registry_path.read_text(encoding='utf-8')) if registry_path.exists() else {}
+  registry.update(entries)
+  temporary=registry_path.with_suffix('.json.tmp')
+  temporary.write_text(json.dumps(registry,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temporary.replace(registry_path)
   print('Published and verified',len(uploads),'objects; 18 masters, 36 delivery files.')
  print('Phone bytes',sum(e['variants']['phone']['bytes'] for e in entries.values()),'Tablet bytes',sum(e['variants']['tablet']['bytes'] for e in entries.values()),'Master bytes',sum((ROOT/j['master']).stat().st_size for j in jobs))
 

@@ -14,6 +14,9 @@ export const BASE_CONFIG: LabConfig = {
   thinking_budget: 0, web_search: false, filler_phrases: true, transliterate: false,
   visarga_expansion: false, schwa_fix: false, open_provider: "edge_tts_prosody", live_model: "gemini-3.8-live",
 };
+// The four server personas. Call-time settings for a named companion (voice,
+// pace, pitch, emotion) come from `voiceLab/companions.ts`; these presets stay
+// as the persona defaults the server documents.
 export const PRESETS: Record<LabConfig["persona"], LabConfig> = {
   guru: BASE_CONFIG,
   mother: { ...BASE_CONFIG, persona: "mother", speaker: "priya", pace: 0.95, pitch: 1, emotion: "warm, affectionate, gentle" },

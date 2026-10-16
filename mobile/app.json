@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sanskritam",
     "slug": "sanskritam",
-    "version": "1.4.1",
+    "version": "1.5.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -13,11 +13,6 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "scheme": "sanskritam",
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "backgroundColor": "#FFF6ED",
-      "resizeMode": "contain"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.sanskritam.app"
@@ -31,7 +26,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.sanskritam.app",
-      "versionCode": 8,
+      "versionCode": 10,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
@@ -51,6 +46,14 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "backgroundColor": "#FFF6ED",
+          "resizeMode": "contain"
+        }
+      ],
       [
         "expo-location",
         {

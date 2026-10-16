@@ -2,13 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState } from "react";
 
 export type ReadingAppearance = { illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null };
-export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { illustrated: true, imageOpacity: 0.22, textOpacity: 1, textColor: null };
+export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null };
 const KEY = "shabd.read.appearance.v1";
 export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | null): ReadingAppearance {
   const number = (n: unknown, fallback: number, min: number) => typeof n === "number" && Number.isFinite(n) ? Math.max(min, Math.min(1, n)) : fallback;
   return {
     illustrated: typeof value?.illustrated === "boolean" ? value.illustrated : true,
-    imageOpacity: number(value?.imageOpacity, 0.22, 0),
+    imageOpacity: number(value?.imageOpacity, 0.48, 0),
     textOpacity: number(value?.textOpacity, 1, 0.5),
     textColor: typeof value?.textColor === "string" && /^#[a-f\d]{6}$/i.test(value.textColor) ? value.textColor : null,
   };

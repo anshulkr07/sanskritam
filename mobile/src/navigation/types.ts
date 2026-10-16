@@ -14,6 +14,8 @@ import type { CompositeScreenProps } from "@react-navigation/native";
 import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
+import type { VoiceCategoryId } from "../voiceLab/companions";
+
 export type MainTabParamList = {
   Home: undefined;
   Conversation: undefined;
@@ -112,6 +114,12 @@ export type RootStackParamList = {
   GroupPeople: undefined;
   GroupCard: { first?: boolean } | undefined;
   GroupNew: { kind: "circle" | "room"; editId?: string };
+  // Voice Lab (2026-10-16): the tab is now a hub of groups (Guru, Friend,
+  // Family, Yoga, Āyurveda, Jyotiṣa, Itihāsa, Kathā). A group opens its
+  // companions, and one companion opens the live call — the screen the tab
+  // used to be. `category` is a voiceLab/companions.ts id.
+  VoiceCompanions: { category: VoiceCategoryId };
+  VoiceSession: { companionId: string };
   // Recitation calibration capture (dev builds only, brief §8).
   Calibration: undefined;
   PracticeRound: { kind: string; title: string; daily?: boolean };

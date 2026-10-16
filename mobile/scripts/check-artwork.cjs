@@ -22,6 +22,8 @@ const uri=n=>'https://art.example/art/v1/'+String(n).padStart(24,'0')+'.webp';
 (async()=>{
  const [a,b]=await Promise.all([cache.cachedArtworkUri(uri(1)),cache.cachedArtworkUri(uri(1))]);assert.equal(a,b);assert.equal(calls,1);assert.ok(new File(a).exists,'Moving a temporary file must retain the completed image');
  await cache.cachedArtworkUri(uri(1));assert.equal(calls,1,'Cached artwork avoids network');
+ const restarted=load('services/artworkCache.ts',{'expo-file-system':{Directory,File,Paths:{cache:'cache'}},'react-native':{Platform:platform},'../components/artwork/remoteArtwork':{artworkOrigin:'https://art.example'}});
+ await restarted.cachedArtworkUri(uri(1));assert.equal(calls,1,'Disk cache is reused after a module/app restart');
  await Promise.all(Array.from({length:9},(_,i)=>cache.cachedArtworkUri(uri(i+2))));assert.ok(peak<=3,'Downloads are bounded');
  fail=true;await assert.rejects(cache.cachedArtworkUri(uri(20)));assert.ok(![...files.keys()].some(k=>k.endsWith('.part')),'Partial failures are removed');fail=false;await cache.cachedArtworkUri(uri(20));
  new File(a).delete();const before=calls;await cache.cachedArtworkUri(uri(1));assert.equal(calls,before+1,'OS-evicted files redownload');
@@ -35,5 +37,7 @@ const uri=n=>'https://art.example/art/v1/'+String(n).padStart(24,'0')+'.webp';
  assert.equal(art.artworkFit(1024,400,1254,1254,safe),'contain','Wide landscape preserves entire scene');
  const appearance=load('services/readingAppearance.ts',{'@react-native-async-storage/async-storage':{},react:{}});
  assert.deepEqual(appearance.normalizeReadingAppearance({illustrated:false,imageOpacity:4,textOpacity:-1,textColor:'bad'}),{illustrated:false,imageOpacity:1,textOpacity:.5,textColor:null});
+ assert.equal(appearance.normalizeReadingAppearance(null).imageOpacity,.48,'New readers start with 48% image opacity');
+ assert.equal(appearance.normalizeReadingAppearance({imageOpacity:.6}).imageOpacity,.6,'Saved opacity survives a default change');
  console.log('Artwork PASS: download deduplication, bounded concurrency, partial-file cleanup, restart/eviction fallback, cache cap, private URL exclusion, responsive safe crops and saved preference validation.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

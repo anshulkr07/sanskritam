@@ -1,5 +1,7 @@
 # Monetization implementation status — 16 October 2026
 
+Current launch scope: **Android first; iOS deferred**. Follow [android-monetization-next-steps.md](android-monetization-next-steps.md) for the Android setup order. Apple setup and iOS device tests apply to the later iOS release.
+
 The implementation is staged behind separate commerce, sales, ads, reward and organizer-hosting switches. All default to disabled. No live store products, banking details, campaigns, payouts or deployment were created by this work.
 
 ## Implemented in the repository
@@ -23,6 +25,7 @@ The continuation review added fresh Apple transaction lookups to reject stale pr
 | TypeScript, `npx tsc --noEmit` | Passed |
 | Expo production web export | Passed; local artifact under `results/commerce/web-final-check` |
 | Android Expo prebuild | Passed during initial integration; this is not an APK compilation |
+| Android EAS native build | **Passed**: signed app bundle 1.5.0 (10), build `5acb0695-073d-48ba-914f-b449a0d3ea6e`; see `android-eas-build-20261016.md` |
 | SQLite migration | Fresh application migration and isolated commerce upgrade/downgrade passed |
 | PostgreSQL migration SQL | Upgrade/downgrade SQL compilation passed |
 | Whitespace check | `git diff --check` passed |
@@ -34,7 +37,7 @@ Tests use isolated databases and mocked payment/provider responses. Signature te
 1. Complete store payment agreements, bank/tax setup, products and regional prices; provision server verification keys and authenticated notifications.
 2. Validate real sandbox purchases, restores, interrupted payments, renewals, prorated upgrades, deferred downgrades and full/partial refunds on Android and iOS. Partial-refund behaviour is not certified for launch.
 3. Execute migrations and concurrency tests against a running PostgreSQL server. Docker CLI exists locally, but the Docker engine was stopped; SQL compilation alone does not close this gate.
-4. Build native binaries and test purchases, licences, account switching, offline expiry, background audio and interruptions on physical devices. Java was unavailable on this host; iOS builds require macOS/EAS.
+4. Android native bundle 1.5.0 (10) has been built successfully on EAS. Test purchases, licences, account switching, offline expiry, background audio and interruptions on physical Android devices. iOS builds and tests are deferred to the later iOS release.
 5. Measure and review bounded provider costs for every enabled paid AI action. `results/commerce/readiness.json` contains historical aggregate usage and redemption sensitivity, with **no certified live action bounds** and `live_sales_ready=false`.
 6. Make protected origin objects private, configure preview encoding, AdMob consent/units/SSV, and reviewed funded reward routes for advertised countries.
 

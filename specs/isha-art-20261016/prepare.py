@@ -39,6 +39,6 @@ common=('Use case: illustration-story. One original high-resolution master paint
  'Do not draw any Sanskrit, Roman text, verse numbers, typography, frame, border, watermark, infographic, UI, or page decoration. Do not portray a formless teaching as a specific deity unless the verse explicitly invokes that deity. Interpretive devotional illustration, not a literal historical reconstruction. ')
 jobs=[]
 for n,(v,scene) in enumerate(zip(verses,scenes),1):
- jobs.append({'verse':n,'source_ref':v['source_ref'],'verse_uid':v['verse_uid'],'source_devanagari':v['devanagari'],'source_translation_en':v['translation_en'],'scene':scene,'prompt':common+'Verse-specific source meaning from the app: '+v['translation_en']+' Illustration: '+scene,'master':f'results/isha-art-20261016/masters/verse-{n:02d}.png','focal_point':[.5,.5],'safe_region':{'x':.2,'y':.25,'width':.6,'height':.5}})
+ jobs.append({'verse':n,'source_ref':v['source_ref'],'verse_uid':v['verse_uid'],'source_devanagari':v['devanagari'],'source_translation_en':v['translation_en'],'scene':scene,'prompt':common+'Verse-specific source meaning from the app: '+v['translation_en']+' Illustration: '+scene,'master':f'results/isha-art-20261016/masters/verse-{n:02d}.png','focal_point':[.5,.5],'safe_region':{'x':.08,'y':.08,'width':.84,'height':.84}})
 (OUT/'generation-jobs.json').write_text(json.dumps(jobs,ensure_ascii=False,indent=2),encoding='utf-8')
 print('Prepared',len(jobs),'verse-specific generation jobs; duplicate verse 1 resolved by fullest text.')

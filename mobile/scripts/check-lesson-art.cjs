@@ -10,11 +10,12 @@ function load(file) {
   if (cache.has(file)) return cache.get(file).exports;
   const mod = { exports: {} }; cache.set(file, mod);
   const js = ts.transpileModule(fs.readFileSync(file, 'utf8'), { compilerOptions: {
-    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022,
+    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true,
   } }).outputText;
   new Function('require', 'module', 'exports', js)(name => {
     const resolved = path.resolve(path.dirname(file), name);
     if (/\.(png|webp)$/.test(name)) { assert.ok(fs.existsSync(resolved), `Missing ${resolved}`); return resolved; }
+    if (name.endsWith('.json')) return JSON.parse(fs.readFileSync(resolved, 'utf8'));
     return load(resolved + '.ts');
   }, mod, mod.exports);
   return mod.exports;

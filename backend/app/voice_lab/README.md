@@ -1,7 +1,9 @@
 # Live Voice Lab
 
-The mobile `VoiceLabTab` sits after Read. Its microphone, playback and settings
-are independent of Talk, Reader and Recite. No conversation or audio is written
+The mobile Voice tab sits after Read: `VoiceHub` chooses a group of companions,
+`VoiceCompanions` shows the people in that group, and `VoiceSession` is the live
+call with one of them. A call's microphone, playback and settings are independent
+of Talk, Reader and Recite. No conversation or audio is written
 to disk or the learner's conversation history. Existing usage counters apply.
 
 ## Run

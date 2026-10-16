@@ -109,7 +109,7 @@ For GCS, grant the backend identity read access to private audio objects. For a 
 
 Encrypted downloads use Expo Crypto AES-GCM and a per-account key in SecureStore. Offline licences are capped at seven days and the known membership end. Playback cache is private to the application; bookmarks and reading positions are stored separately. The app blocks non-member background playback.
 
-This update adds native modules. It needs a new binary; it cannot be shipped solely as an OTA update. `app.config.js` sets app version 1.5.0 and Android version code 9. Adjust upward if another release has already used those values.
+This update adds native modules. It needs a new binary; it cannot be shipped solely as an OTA update. `app.json` sets app version 1.5.0 and Android version code 10; `app.config.js` adds the native plugins. Adjust upward if another release has already used those values.
 
 Set build-time variables:
 

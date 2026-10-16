@@ -24,6 +24,11 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+*.pem
+
+# Server and submission credentials must never enter the mobile build archive.
+*credentials*.json
+service-account-key.json
 
 # local env files (EAS injects its own)
 .env

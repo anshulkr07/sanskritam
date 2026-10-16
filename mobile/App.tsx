@@ -110,6 +110,8 @@ import ContestResultsScreen from "./src/screens/ContestResults";
 import MasterBoardScreen from "./src/screens/MasterBoard";
 import CertificateScreen from "./src/screens/Certificate";
 import ContestRulesScreen from "./src/screens/ContestRules";
+import VoiceCompanionsScreen from "./src/screens/VoiceCompanions";
+import VoiceSessionScreen from "./src/screens/VoiceSession";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -229,6 +231,9 @@ function RootNavigator() {
             <Stack.Screen name="GroupCard" component={GroupCardScreen} options={{ headerShown: false }} />
             <Stack.Screen name="GroupNew" component={GroupNewScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
+            {/* Voice: the companions inside one group, and the live call with one of them. */}
+            <Stack.Screen name="VoiceCompanions" component={VoiceCompanionsScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="VoiceSession" component={VoiceSessionScreen} options={{ headerShown: false }} />
             {/* Parva: festivals and vrats. */}
             <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />
             <Stack.Screen name="ParvaPage" component={ParvaPageScreen} options={{ title: "Festival" }} />
