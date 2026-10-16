@@ -1,8 +1,10 @@
 // One transport for speech, recordings, chants and streaming voice. Ownership
 // tokens keep a late completion from hiding a newer player's controls.
 export type AudioControls = { pause(): void; play(): void };
+export type AudioKind = "audio" | "audiobook";
 export type AudioSnapshot = {
   id: number; title: string; playing: boolean; minimized: boolean;
+  kind: AudioKind;
   position: number; duration: number;
 } | null;
 
@@ -15,11 +17,11 @@ const emit = () => listeners.forEach(listener => listener());
 export const audioTransport = {
   subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; },
   getSnapshot: () => snapshot,
-  claim(title: string, next: AudioControls): number {
+  claim(title: string, next: AudioControls, kind: AudioKind = "audio"): number {
     try { controls?.pause(); } catch { /* an expired source must not block the next */ }
     const id = ++nextId;
     controls = next;
-    snapshot = { id, title, playing: true, minimized: false, position: 0, duration: 0 };
+    snapshot = { id, title, kind, playing: true, minimized: false, position: 0, duration: 0 };
     emit();
     return id;
   },

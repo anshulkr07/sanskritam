@@ -24,12 +24,13 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type Division } from "../api/client";
-import { playApi, type Leaderboard, type LeaderRow } from "../games/v2/client";
+import { playApi, socialApi, type Leaderboard, type LeaderRow, type PlayerCard } from "../games/v2/client";
 import { CREAM, CREAM_FAINT, GOLD, T, softOn, ui } from "../read/look";
 import { ProgressLine } from "../read/ui";
 import { haptics } from "../services/haptics";
 import PaintedBackground from "../components/artwork/PaintedBackground";
 import { hubArtwork } from "../components/artwork/hubs";
+import ProfileImage from "../components/ProfileImage";
 
 type Track = "games" | "recitation";
 
@@ -90,8 +91,15 @@ export default function LeaderboardsScreen({ route }: Props) {
   const [picker, setPicker] = useState<"board" | "scope" | "division" | null>(null);
   const [all, setAll] = useState(false);
   const [explain, setExplain] = useState(false);
+  const [profile, setProfile] = useState<LeaderRow | null>(null);
   const rec = track === "recitation";
   const periods = rec ? REC_PERIODS : PERIODS;
+
+  const profileMeta = (row: LeaderRow) => rec
+    ? period === "monthly"
+      ? `#${row.rank} · ${fmt(row.score)} monthly average`
+      : `#${row.rank} · ${fmt(row.score)} this week`
+    : `#${row.rank} · ${fmt(row.score)} points`;
 
   const load = useCallback(() => {
     setLoading(true);
@@ -204,7 +212,7 @@ export default function LeaderboardsScreen({ route }: Props) {
                 </Text>
               </View>
             ) : (
-              <Boards data={data} all={all} onAll={() => setAll((v) => !v)} />
+              <Boards data={data} all={all} onAll={() => setAll((v) => !v)} onOpen={setProfile} />
             )}
           </>
         )}
@@ -224,6 +232,8 @@ export default function LeaderboardsScreen({ route }: Props) {
         }}
         onClose={() => setPicker(null)}
       />
+
+      <ProfileSheet row={profile} meta={profile ? profileMeta(profile) : ""} onClose={() => setProfile(null)} />
     </SafeAreaView>
   );
 }
@@ -380,7 +390,7 @@ function Explain({ data, combined, rec }: { data: Leaderboard; combined: boolean
 }
 
 /** Top of the board (or the whole list) and the players around you. */
-function Boards({ data, all, onAll }: { data: Leaderboard; all: boolean; onAll: () => void }) {
+function Boards({ data, all, onAll, onOpen }: { data: Leaderboard; all: boolean; onAll: () => void; onOpen: (row: LeaderRow) => void }) {
   const meIdx = data.rows.findIndex((r) => r.is_me);
   const around = useMemo(() => {
     if (meIdx < 3) return [];
@@ -406,7 +416,7 @@ function Boards({ data, all, onAll }: { data: Leaderboard; all: boolean; onAll: 
         </View>
         <View style={styles.rule} />
         {top.map((r) => (
-          <Row key={r.learner_id} row={r} />
+          <Row key={r.learner_id} row={r} onPress={() => onOpen(r)} />
         ))}
       </View>
       {!all && around.length > 0 && (
@@ -416,7 +426,7 @@ function Boards({ data, all, onAll }: { data: Leaderboard; all: boolean; onAll: 
           </Text>
           <View style={styles.rule} />
           {around.map((r) => (
-            <Row key={r.learner_id} row={r} />
+            <Row key={r.learner_id} row={r} onPress={() => onOpen(r)} />
           ))}
         </View>
       )}
@@ -424,13 +434,17 @@ function Boards({ data, all, onAll }: { data: Leaderboard; all: boolean; onAll: 
   );
 }
 
-function Row({ row }: { row: LeaderRow }) {
+function Row({ row, onPress }: { row: LeaderRow; onPress: () => void }) {
   const medal = row.rank <= 3 ? MEDAL[row.rank - 1] : null;
   return (
-    <View
-      style={[styles.row, row.is_me && styles.rowMe]}
-      accessible
-      accessibilityLabel={`Rank ${row.rank}: ${row.is_me ? "you" : row.name}, ${row.score} points`}
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      style={({ pressed }) => [styles.row, row.is_me && styles.rowMe, pressed && styles.rowPressed]}
+      accessibilityRole="button"
+      accessibilityLabel={`Rank ${row.rank}: ${row.is_me ? "you" : row.name}, ${row.score} points. Open profile`}
     >
       {medal ? (
         <View style={[styles.medal, { backgroundColor: medal }]}>
@@ -443,7 +457,110 @@ function Row({ row }: { row: LeaderRow }) {
         {row.is_me ? "You" : row.name}
       </Text>
       <Text style={styles.score}>{fmt(row.score)}</Text>
-    </View>
+      <Ionicons name="chevron-forward" size={14} color={T.ink3} />
+    </Pressable>
+  );
+}
+
+/** The small profile behind a leaderboard tap: who they are, and the one
+ * action that makes sense — send, accept, or nothing at all. */
+function ProfileSheet({ row, meta, onClose }: { row: LeaderRow | null; meta: string; onClose: () => void }) {
+  const [card, setCard] = useState<PlayerCard | null>(null);
+  const [state, setState] = useState<"loading" | "ok" | "error">("loading");
+  const [busy, setBusy] = useState(false);
+  const id = row?.learner_id ?? null;
+  useEffect(() => {
+    if (!id) return;
+    setCard(null);
+    setState("loading");
+    let alive = true;
+    socialApi
+      .player(id)
+      .then((c) => {
+        if (alive) {
+          setCard(c);
+          setState("ok");
+        }
+      })
+      .catch(() => {
+        if (alive) setState("error");
+      });
+    return () => {
+      alive = false;
+    };
+  }, [id]);
+  if (!row) return null;
+  const name = row.is_me ? "You" : card?.name || row.name;
+  const act = async (kind: "request" | "accept") => {
+    if (!card || busy) return;
+    haptics.tap();
+    setBusy(true);
+    try {
+      if (kind === "request") {
+        const r = await socialApi.request(card.learner_id);
+        setCard({ ...card, relationship: r.status === "accepted" ? "friends" : "outgoing" });
+      } else {
+        await socialApi.respond(card.learner_id, true);
+        setCard({ ...card, relationship: "friends" });
+      }
+    } catch {
+      // The button stays as it was, so the learner can just tap again.
+    } finally {
+      setBusy(false);
+    }
+  };
+  const relationship = card?.relationship;
+  return (
+    <Modal visible transparent animationType="fade" onRequestClose={onClose}>
+      <Pressable style={styles.scrim} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close">
+        <Pressable style={styles.sheet} onPress={() => {}} accessible={false}>
+          <View style={styles.profileHead}>
+            <View style={styles.profileAvatar}>
+              <Text style={styles.profileInitial}>{name.charAt(0).toUpperCase() || "?"}</Text>
+              {state === "ok" && card?.avatar_url ? <ProfileImage uri={card.avatar_url} /> : null}
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.profileName} accessibilityRole="header" numberOfLines={1}>
+                {name}
+              </Text>
+              <Text style={styles.profileMeta}>{meta}</Text>
+            </View>
+          </View>
+          {state === "error" ? (
+            <Text style={styles.profileNote}>Couldn't load this profile. Close, then try again.</Text>
+          ) : state !== "ok" || !relationship ? (
+            <Text style={styles.profileNote}>Loading profile…</Text>
+          ) : relationship === "friends" ? (
+            <View style={styles.profileChip}>
+              <Ionicons name="people" size={16} color={T.ink} />
+              <Text style={styles.profileChipText}>Friends</Text>
+            </View>
+          ) : relationship === "outgoing" ? (
+            <View style={styles.profileChip}>
+              <Ionicons name="time-outline" size={16} color={T.ink} />
+              <Text style={styles.profileChipText}>Friend request sent</Text>
+            </View>
+          ) : relationship === "blocked" ? (
+            <Text style={styles.profileNote}>This player isn't available.</Text>
+          ) : relationship === "self" ? (
+            <Text style={styles.profileNote}>This is you.</Text>
+          ) : (
+            <Pressable
+              disabled={busy}
+              onPress={() => void act(relationship === "incoming" ? "accept" : "request")}
+              accessibilityRole="button"
+              accessibilityLabel={relationship === "incoming" ? `Accept friend request from ${name}` : `Send friend request to ${name}`}
+              style={[styles.profileBtn, busy && { opacity: 0.6 }]}
+            >
+              <Ionicons name={relationship === "incoming" ? "checkmark" : "person-add"} size={16} color={CREAM} />
+              <Text style={styles.profileBtnText}>
+                {busy ? "Sending…" : relationship === "incoming" ? "Accept friend request" : "Send friend request"}
+              </Text>
+            </Pressable>
+          )}
+        </Pressable>
+      </Pressable>
+    </Modal>
   );
 }
 
@@ -543,6 +660,7 @@ const styles = StyleSheet.create({
   rule: { height: 1, backgroundColor: T.line },
   row: { flexDirection: "row", alignItems: "center", gap: 12, minHeight: 50, borderBottomWidth: 1, borderBottomColor: T.line },
   rowMe: { borderWidth: 1.5, borderColor: T.ink, backgroundColor: T.surface, paddingHorizontal: 8, marginHorizontal: -8 },
+  rowPressed: { opacity: 0.7 },
   medal: { width: 28, height: 28, alignItems: "center", justifyContent: "center" },
   medalText: { ...ui("bold"), fontSize: 14, color: CREAM },
   rank: { ...ui("bold"), width: 28, textAlign: "center", fontSize: 15, color: T.ink2, fontVariant: ["tabular-nums"] },
@@ -555,4 +673,14 @@ const styles = StyleSheet.create({
   option: { minHeight: 50, flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottomWidth: 1, borderBottomColor: T.line },
   optionText: { ...ui("regular"), fontSize: 16, color: T.ink },
   optionTextOn: { ...ui("semibold"), color: T.action },
+  profileHead: { flexDirection: "row", alignItems: "center", gap: 14, marginTop: 6, marginBottom: 18 },
+  profileAvatar: { width: 56, height: 56, borderRadius: 28, overflow: "hidden", backgroundColor: CARD, alignItems: "center", justifyContent: "center" },
+  profileInitial: { ...ui("bold"), fontSize: 22, color: CREAM },
+  profileName: { ...ui("bold"), fontSize: 20, color: T.ink },
+  profileMeta: { ...ui("regular"), fontSize: 14, color: T.ink2, marginTop: 2 },
+  profileNote: { ...ui("regular"), fontSize: 14, color: T.ink2 },
+  profileChip: { flexDirection: "row", alignItems: "center", gap: 8, alignSelf: "flex-start", minHeight: 40, paddingHorizontal: 12, borderWidth: 1.5, borderColor: T.lineStrong },
+  profileChipText: { ...ui("semibold"), fontSize: 14, color: T.ink },
+  profileBtn: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, minHeight: 48, backgroundColor: T.action, paddingHorizontal: 16 },
+  profileBtnText: { ...ui("bold"), fontSize: 15, color: CREAM },
 });

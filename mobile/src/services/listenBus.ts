@@ -110,7 +110,7 @@ const chant = new ChantController({
     if (!baseUrl.current) baseUrl.current = (await import("../config")).BASE_URL;
   },
   resolve: (u) => (u.startsWith("http") ? u : `${baseUrl.current}${u}`),
-  createPlayer: (url) => createManagedAudioPlayer(url, { updateInterval: 100 }, state.session?.title || "Reading", true) as unknown as PlayerLike,
+  createPlayer: (url) => createManagedAudioPlayer(url, { updateInterval: 100 }, state.session?.title || "Reading", true, "audiobook") as unknown as PlayerLike,
   prepareAudio: () =>
     setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false, shouldPlayInBackground: true, interruptionMode: "doNotMix" }),
   isBackground: () => AppState.currentState !== "active",

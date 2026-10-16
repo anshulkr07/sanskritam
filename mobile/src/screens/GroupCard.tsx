@@ -3,6 +3,7 @@
 // other learners will see. Saving the first card is what lets you join
 // circles, write, call and add friends; the server checks it too.
 
+import ProfilePhotoEditor from "../components/ProfilePhotoEditor";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
@@ -103,6 +104,8 @@ export default function GroupCardScreen({ navigation }: Props) {
           </Text>
           <Text style={styles.nameNote}>Your name comes from your account.</Text>
         </View>
+
+        <ProfilePhotoEditor />
 
         <Choice
           label="Your Sanskrit level"

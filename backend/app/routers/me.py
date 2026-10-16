@@ -1,6 +1,9 @@
 """Learner profile endpoints: GET /me, PATCH /me, DELETE /me."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, UploadFile, File, Response
+from starlette.concurrency import run_in_threadpool
+from datetime import datetime, timedelta
+import uuid
 from sqlalchemy.orm import Session
 
 from app.auth import require_learner
@@ -10,8 +13,50 @@ from app.schemas import MeResponse, UpdateMeRequest, LearnerProfile
 from pydantic import BaseModel, Field
 from fastapi import HTTPException
 from app.services import learning_state
+from app.services import profile_photos as photos
+from app.services.storage import get_storage, PrivateStorageOff
 
 router = APIRouter()
+
+
+class LinkIdentityBody(BaseModel):
+    id_token: str = Field(min_length=20, max_length=16000)
+
+
+@router.post("/me/link/{provider}", response_model=MeResponse)
+async def link_identity(provider: str, body: LinkIdentityBody,
+                        learner=Depends(require_learner), db: Session = Depends(get_db)):
+    from app.config import settings
+    from app.routers.auth_router import _verify_google_id_token, _verify_apple_id_token
+    from sqlalchemy.exc import IntegrityError
+    if provider not in ("google", "apple"):
+        raise HTTPException(404, "Sign-in provider not found.")
+    if learner.community_suspended:
+        raise HTTPException(403, "Community access is suspended. Contact support for a review.")
+    audience = settings.google_client_id if provider == "google" else settings.apple_client_id
+    if not audience:
+        raise HTTPException(503, "Account sign-in is unavailable. Try later.")
+    verify = _verify_google_id_token if provider == "google" else _verify_apple_id_token
+    claims = await run_in_threadpool(verify, body.id_token, audience)
+    if not claims or not claims.get("sub"):
+        raise HTTPException(401, "Could not verify the sign-in token.")
+    field = f"{provider}_sub"
+    learner = db.query(Learner).filter_by(id=learner.id).with_for_update().populate_existing().one()
+    if learner.community_suspended:
+        raise HTTPException(403, "Community access is suspended. Contact support for a review.")
+    old_sub = getattr(learner, field)
+    if old_sub and old_sub != claims["sub"]:
+        raise HTTPException(409, "This learner is already linked to another account.")
+    existing = db.query(Learner).filter(getattr(Learner, field) == claims["sub"]).first()
+    if existing and existing.id != learner.id:
+        raise HTTPException(409, "This account already has a Sanskritam profile. Sign out in Settings and sign in to that account. These profiles cannot be merged automatically.")
+    setattr(learner, field, claims["sub"])
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(409, "This sign-in account is already linked to a learner.")
+    return MeResponse(learner=_profile(learner), model=_model(learner))
 
 
 class StateEntry(BaseModel):
@@ -51,6 +96,9 @@ def _profile(learner: Learner) -> LearnerProfile:
         setting = effective
     return LearnerProfile(
         id=learner.id,
+        avatar_url=photos.avatar_url(learner),
+        community_verified=photos.verified(learner),
+        community_suspended=bool(learner.community_suspended),
         display_name=learner.display_name,
         bridge_langs=learner.bridge_langs or [],
         sanskrit_ratio=effective,
@@ -82,6 +130,76 @@ def _model(learner: Learner) -> dict:
 def get_me(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     """Get current learner profile + adaptive model state."""
     return MeResponse(learner=_profile(learner), model=_model(learner))
+
+
+@router.post("/me/photo", response_model=MeResponse)
+async def upload_profile_photo(file: UploadFile = File(...),
+                               learner=Depends(require_learner), db: Session = Depends(get_db)):
+    photos.require_community_identity(learner)
+    if learner.avatar_updated_at and learner.avatar_updated_at > datetime.utcnow() - timedelta(minutes=1):
+        raise HTTPException(429, "Wait a minute before changing your picture again.")
+    data = await file.read(512 * 1024 + 1)
+    if not data or len(data) > 512 * 1024:
+        raise HTTPException(413, "Choose a profile picture under 512 KB.")
+    data = await run_in_threadpool(photos.normalize_image, data, (file.content_type or "").split(";")[0])
+    await photos.screen_image(db, learner, data)
+    # Re-check under a row lock after the remote moderation call: concurrent
+    # uploads must not overwrite each other or bypass a moderator suspension.
+    learner = db.query(Learner).filter_by(id=learner.id).with_for_update().populate_existing().one()
+    photos.require_community_identity(learner)
+    if learner.avatar_updated_at and learner.avatar_updated_at > datetime.utcnow() - timedelta(minutes=1):
+        raise HTTPException(429, "Wait a minute before changing your picture again.")
+    store = get_storage()
+    key = f"profile-photos/{learner.id}/{uuid.uuid4().hex}.jpg"
+    try:
+        await run_in_threadpool(store.store_private, data, key, "image/jpeg")
+    except PrivateStorageOff:
+        raise HTTPException(503, "Photo storage is unavailable. Try again later.")
+    old_key = learner.avatar_key
+    learner.avatar_key, learner.avatar_updated_at = key, datetime.utcnow()
+    from app.routers.community import notify
+    notify(db)
+    try:
+        db.commit()
+    except Exception:
+        db.rollback()
+        await run_in_threadpool(store.delete_private, key)
+        raise
+    if old_key:
+        try:
+            await run_in_threadpool(store.delete_private, old_key)
+        except Exception:
+            pass  # It is no longer reachable through the authenticated endpoint.
+    return MeResponse(learner=_profile(learner), model=_model(learner))
+
+
+@router.delete("/me/photo", response_model=MeResponse)
+def remove_profile_photo(learner=Depends(require_learner), db: Session = Depends(get_db)):
+    learner = db.query(Learner).filter_by(id=learner.id).with_for_update().populate_existing().one()
+    key, learner.avatar_key = learner.avatar_key, None
+    from app.routers.community import notify
+    notify(db)
+    db.commit()
+    if key:
+        try:
+            get_storage().delete_private(key)
+        except Exception:
+            pass
+    return MeResponse(learner=_profile(learner), model=_model(learner))
+
+
+@router.get("/people/{uid}/photo/{version}")
+@router.get("/people/{uid}/photo")
+def profile_photo(uid: str, version: str | None = None, learner=Depends(require_learner), db: Session = Depends(get_db)):
+    from app.services.play.social import _blocked
+    person = db.get(Learner, uid)
+    if not person or not photos.avatar_url(person) or (version and person.avatar_key.rsplit("/", 1)[-1] != version) or _blocked(db, learner.id, uid):
+        raise HTTPException(404, "Profile picture not found.")
+    try:
+        data = get_storage().read_private(person.avatar_key)
+    except Exception:
+        raise HTTPException(404, "Profile picture not found.")
+    return Response(data, media_type="image/jpeg", headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"})
 
 
 @router.patch("/me", response_model=MeResponse)
@@ -185,6 +303,11 @@ def delete_me(
         from app.models import CompetitionEntry
         from app.services.storage import get_storage
         _store = get_storage()
+        if learner.avatar_key:
+            try:
+                _store.delete_private(learner.avatar_key)
+            except Exception:
+                pass
         from app.services.competition_sets import entry_audio_keys
         for entry in db.query(CompetitionEntry).filter(
                 CompetitionEntry.learner_id == learner.id).all():

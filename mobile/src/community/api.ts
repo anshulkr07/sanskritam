@@ -39,6 +39,7 @@ export const levelHints: Record<string, string> = {
 };
 export interface Person {
   id: string;
+  avatar_url?: string | null;
   name: string;
   level: Level;
   bio: string;

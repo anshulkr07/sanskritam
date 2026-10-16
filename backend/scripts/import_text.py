@@ -35,6 +35,14 @@ Rules (§6 / §2.13 / §2.14 / §2.15):
   worse than no translation. ``--fix-existing`` replaces such a row's text
   with the incoming verse, in place, keeping its id and date so the daily
   schedule and the seed's (source_ref, date) key are untouched.
+- ``--replace-refs`` names, comma-separated, refs a review has decided to
+  rewrite even though the stored text scores as the same verse: a one-letter
+  typo sits above the 0.97 ratio, so ``--fix-existing`` never reaches it.
+  Listed refs take the same in-place replacement path; once their letters
+  match, they are duplicates again (the repair is idempotent). The corrected
+  text changes the row's ``verse_uid`` (models.py hashes source_ref +
+  devanagari on every write), so ``verse_audio`` chant rows and
+  ``recite_attempts`` history keyed by the old uid move with it.
 - ``--min-words 0`` keeps verses the analyzer reads fewer than two words of
   (Gītā 2.64 and 5.8). A scripture with holes is worse than a verse whose
   words carry no analysis.
@@ -55,9 +63,10 @@ if __package__ in (None, ""):  # allow `python scripts/import_text.py`
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.db import SessionLocal  # noqa: E402
-from app.models import Shloka  # noqa: E402
+from app.models import ReciteAttempt, Shloka, VerseAudio  # noqa: E402
 from app.services import iast  # noqa: E402
 from app.services.chandas import scan as chandas_scan  # noqa: E402
+from app.services.chant_text import verse_uid as verse_uid_of  # noqa: E402
 from app.grading.analyzer import analyze_sentence  # noqa: E402
 
 MIN_BREAKDOWN_WORDS = 2
@@ -331,7 +340,9 @@ def _run_paged_import(payload: dict, live: bool, min_words: int | None) -> dict:
 
 
 def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
-               min_words: int | None = None) -> dict:
+               min_words: int | None = None,
+               replace_refs: set[str] | None = None) -> dict:
+    replace_refs = replace_refs or set()
     # Paged import (handover_reading_shelf.md 6.3): a payload with "book".
     if payload.get("book"):
         return _run_paged_import(payload, live, min_words)
@@ -368,8 +379,10 @@ def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
             ref = v.get("ref", "")
             if ref in existing_refs:
                 incoming_text = v.get("devanagari", "")
+                force = ref in replace_refs
                 for existing in db.query(Shloka).filter_by(source_ref=ref).all():
-                    if same_verse(existing.devanagari, incoming_text):
+                    differs = _letters(existing.devanagari) != _letters(incoming_text)
+                    if not (force and differs) and same_verse(existing.devanagari, incoming_text):
                         # Preserve existing Sanskrit, IDs and authored meanings.
                         # Only fill translation gaps.
                         if live:
@@ -378,22 +391,40 @@ def run_import(payload: dict, live: bool, *, fix_existing: bool = False,
                                 if incoming and not (getattr(existing, field) or "").strip():
                                     setattr(existing, field, incoming)
                         continue
-                    # The stored text is not this verse. Its translation would
-                    # sit beside the wrong Sanskrit, so it is never filled.
-                    if not fix_existing:
+                    # The stored text is not this verse (or a review listed the
+                    # ref for replacement). Its translation would sit beside the
+                    # wrong Sanskrit, so it is never filled.
+                    if not fix_existing and not force:
                         mismatched.append(ref)
                         continue
                     replacement = build_row(incoming_text, ref, min_words)
                     if replacement is None:
                         mismatched.append(ref)
                         continue
+                    old_uid = (existing.verse_uid
+                               or verse_uid_of(existing.source_ref or "",
+                                               existing.devanagari or ""))
+                    new_uid = verse_uid_of(ref, replacement["devanagari"])
+                    uid_rows = 0
+                    if old_uid and new_uid and old_uid != new_uid:
+                        for model in (VerseAudio, ReciteAttempt):
+                            uid_rows += db.query(model).filter_by(verse_uid=old_uid).count()
                     fixed.append({"ref": ref, "id": existing.id, "date": existing.date,
-                                  "was": (existing.devanagari or "")[:80]})
+                                  "was": (existing.devanagari or "")[:80],
+                                  "uid_rows": uid_rows})
                     if live:
                         for field in ("devanagari", "iast", "metre", "word_breakdown", "features"):
                             setattr(existing, field, replacement[field])
                         existing.translation_hi = (v.get("translation_hi") or "").strip()
                         existing.translation_en = (v.get("translation_en") or "").strip()
+                        if uid_rows:
+                            # The before_update listener (models.py) will stamp
+                            # the new hash on flush; chant rows and recite
+                            # history are keyed by the old one and follow the
+                            # corrected text.
+                            for model in (VerseAudio, ReciteAttempt):
+                                db.query(model).filter_by(verse_uid=old_uid).update(
+                                    {"verse_uid": new_uid}, synchronize_session=False)
                 skipped_dup += 1
                 continue
             row = build_row(v.get("devanagari", ""), ref, min_words)
@@ -444,7 +475,9 @@ def print_report(report: dict, live: bool, min_words: int | None = MIN_BREAKDOWN
         verb = "replaced" if live else "would be replaced"
         print(f"[import] {len(report['fixed'])} existing row(s) {verb} with the incoming verse:")
         for f in report["fixed"]:
-            print(f"           {f['ref']}  ({f['date']})  was: {f['was']}")
+            extra = (f"  [{f['uid_rows']} chant/history row(s) follow the corrected text]"
+                     if f.get("uid_rows") else "")
+            print(f"           {f['ref']}  ({f['date']})  was: {f['was']}{extra}")
     if report["mismatched"]:
         print(f"[import] {len(report['mismatched'])} existing row(s) hold a different text than the "
               "incoming verse and were left alone (no translation filled; --fix-existing replaces them): "
@@ -464,14 +497,18 @@ def main(argv=None) -> int:
     p.add_argument("--min-words", type=int, default=None,
                    help="fewest confidently analysed words for a verse to be imported "
                         "(default 2 classic, 0 paged)")
+    p.add_argument("--replace-refs", default="",
+                   help="comma-separated refs to rewrite even when the stored text "
+                        "reads as the same verse (a reviewed typo repair)")
     args = p.parse_args(argv)
     payload = json.loads(Path(args.file).read_text(encoding="utf-8"))
     # Paged payloads set --min-words 0 themselves (6.3.5).
     min_words = args.min_words
     if min_words is None:
         min_words = 0 if payload.get("book") else MIN_BREAKDOWN_WORDS
+    replace_refs = {r.strip() for r in args.replace_refs.split(",") if r.strip()}
     report = run_import(payload, live=args.live, fix_existing=args.fix_existing,
-                        min_words=min_words)
+                        min_words=min_words, replace_refs=replace_refs)
     print_report(report, args.live, min_words)
     print(f"[import] licence: {report['licence']}")
     if args.live:

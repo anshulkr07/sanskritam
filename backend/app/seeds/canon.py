@@ -70,16 +70,16 @@ CANON_TEXTS = [
     },
     {
         "slug": "katha",
-        "title_en": "Kaṭhopaniṣad (selections)",
+        "title_en": "Kaṭhopaniṣad (complete)",
         "title_sa": "कठोपनिषद्",
-        "source": "Kṛṣṇa Yajurveda",
-        "licence": "Text: public domain (ancient)",
+        "source": "Kṛṣṇa Yajurveda; GRETIL (the 40 written rows) + Digital Corpus of Sanskrit, Oliver Hellwig (CC BY 4.0)",
+        "licence": "Text: public domain (ancient); transcription: GRETIL sa_kathopaniSad (the 40 existing rows) and Digital Corpus of Sanskrit, Oliver Hellwig (github.com/OliverHellwig/sanskrit, dcs/data/conllu/files/Kaṭhopaniṣad), CC BY 4.0, accessed 2026-10-09. Changes: IAST converted to Devanagari with vidyut.lipi; half-verses joined. Refs 1.2.16-1.2.25 follow the existing selection's numbering (DCS counts the 'ओम् इत्येतत्' formula as its own verse; it is kept inside 1.2.15 here). Existing refs keep the written rows (DCS word-splitting not applied); two transcription typos corrected: 1.3.11 पुरुशान् -> पुरुषान्, 2.2.13 तेषं -> तेषां.",
         "study_order": 5,
-        "depth": "studied",
+        "depth": "full",
         "tier": "free",
-        "verses_planned": 40,
+        "verses_planned": 119,
         "ref_prefixes": ["Kaṭh", "Katha"],
-        "notes": "Nachiketas dialogue: the most teachable Upaniṣad after Īśā. Not yet complete: a 120-verse completion from the Digital Corpus of Sanskrit was built 2026-10-09 but not imported, because 22 of the 40 rows here read differently from it (handover_reading_shelf_result.md). Which text stands is the owner's decision; until then this row stays 40 selections.",
+        "notes": "119 verses imported 2026-10-16 from the reviewed completion payload (results/imports/katha-complete-fixed.payload.json). The 22 historical mismatches were resolved by review (results/corpus/katha-completion-reconciliation.md): DCS 1.2.17-26 renumbered to 1.2.16-25 ('ओम् इत्येतत्' stays in 1.2.15), the 40 written rows kept their GRETIL text, two transcription typos repaired. Production's 'Kaṭha Upaniṣad 1.3.3/1.3.14' orphan rows stay untouched.",
     },
     {
         "slug": "ramayana",
@@ -135,16 +135,16 @@ CANON_TEXTS = [
     },
     {
         "slug": "mundaka",
-        "title_en": "Muṇḍaka Upaniṣad (selections)",
+        "title_en": "Muṇḍaka Upaniṣad (complete)",
         "title_sa": "मुण्डकोपनिषद्",
-        "source": "Atharvaveda",
-        "licence": "Text: public domain (ancient)",
+        "source": "Atharvaveda; sa.wikisource.org (CC BY-SA 4.0)",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"मुण्डकोपनिषत्\", revisions recorded in results/imports/books/mundaka.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md. Refs already carried by the selection keep the written rows; the chapter-opening chunks had the previous chapter's colophon and the next chapter's heading (and, at 1.1.1, the page title and śānti verses) glued in front by the wiki split — the front matter is dropped, the verse's opening ॐ and closing number stay. 3.1.6 has four rows since 2026-09 (two fragments, two complete), each with an approved chant; the payload's text is the complete row's and the fragment rows are left as written (completing them would move their chants onto the complete text).",
         "study_order": 10,
-        "depth": "studied",
+        "depth": "full",
         "tier": "free",
-        "verses_planned": 20,
+        "verses_planned": 64,
         "ref_prefixes": ["Mundaka", "Muṇḍaka"],
-        "notes": "Dvā suparṇā and friends: short, famous, teachable. Not yet complete: a 64-verse completion from sa.wikisource was built 2026-10-09 but not imported, because 3.1.1 and 3.1.6 read differently from the rows here (handover_reading_shelf_result.md). Which text stands is the owner's decision; until then this row stays selections.",
+        "notes": "64 verses imported 2026-10-16 from the reviewed completion payload (results/imports/mundaka-complete-fixed.payload.json). The 3.1.1 chunk carried the second Muṇḍaka's colophon and the third's heading (dropped in the fix payload); the five other chapter openings carried the same glued-in front matter, also dropped. 3.1.6 keeps its four rows since 2026-09 (two fragments with their own approved chants, two complete); the import leaves the fragment rows as written. The older selection's rows and translations are untouched.",
     },
     {
         "slug": "ayurveda",
@@ -275,13 +275,13 @@ CANON_TEXTS = [
         "title_en": "Śiva Mahimna Stotra",
         "title_sa": "शिवमहिम्नःस्तोत्रम्",
         "source": "sa.wikisource.org (CC BY-SA 4.0)",
-        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शिवमहिम्नःस्तोत्रम्\" and 0 more, revisions recorded in results/imports/books/mahimna.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"शिवमहिम्नःस्तोत्रम्\" and 0 more, revisions recorded in results/imports/books/mahimna.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered (page marker defects repaired) as described in handover_reading_shelf.md.",
         "study_order": 19,
         "depth": "full",
         "tier": "free",
-        "verses_planned": 31,
+        "verses_planned": 40,
         "ref_prefixes": ["Śiva Mahimna Stotra"],
-        "notes": "Transclusion of Brhat Stotra Ratnakara 1953 print (rendered text). Verse ends look like danda-1 with no closing mark; GRETIL critical text has 31, the printed popular version is longer: report.",
+        "notes": "Transclusion of Brhat Stotra Ratnakara 1953 print (rendered text). The print numbers its verses to ४०: the 31 GRETIL stotra verses plus nine phala verses. Four marker defects on the page (verse 12 printed ११ twice, verses 15 and 23 unnumbered, verse 25 with a stray dot) are repaired by the builder; imported 2026-10-16 as 40 rows.",
         "register": "classical",
         "paged": True,
         "source_key": "sa-wikisource",
@@ -663,13 +663,13 @@ CANON_TEXTS = [
         "title_en": "Vetāla Pañcaviṃśati (Somadeva)",
         "title_sa": "वेतालपञ्चविंशतिः",
         "source": "sa.wikisource.org, Kathasaritsagara 12.8-32 (CC BY-SA 4.0)",
-        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"वेतालपञ्चविंशति 00\" and 25 more, revisions recorded in results/imports/books/vetala.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered as described in handover_reading_shelf.md.",
+        "licence": "Text: public domain (ancient); transcription: sa.wikisource.org, pages \"वेतालपञ्चविंशति 00\" and 25 more, revisions recorded in results/imports/books/vetala.sources.json (CC BY-SA 4.0), accessed 2026-10-09. Changes: wiki markup removed, verses split and numbered (page duplicate recensions and editorial notes dropped; marker defects repaired) as described in handover_reading_shelf.md.",
         "study_order": 43,
         "depth": "full",
         "tier": "free",
-        "verses_planned": 2175,
+        "verses_planned": 2195,
         "ref_prefixes": ["Vetāla Pañcaviṃśati"],
-        "notes": "Stories 0-25 (0 is the frame story); T = story. Pages number two ways (59 and 12.8.60): take the last number. GRETIL Vetala file: 26 tarangas 2175 verses.",
+        "notes": "Stories 0-25 (0 is the frame story); page 00 is the कथामुख, pages 01-25 the 25 tales. Pages number two ways (59 and 12.8.60): take the last number. Re-split 2026-10-16 as 2195 rows: page 00 keeps the opening poem (1-20, || ends) plus its prose ०.८.२१-५८; pages 01, 16 and 18 print their taranga twice (joined sandhi, then a split-sandhi duplicate) and the duplicates' 138, 207 and 87 verses are excluded — 2195 = GRETIL's 2175 (tales plus कथामुख prose) + the 20-verse poem. Imported 2026-10-16 as 2195 rows.",
         "register": "classical",
         "paged": True,
         "source_key": "sa-wikisource",
@@ -871,12 +871,12 @@ def seed_canon(db) -> dict:
                 setattr(row, field, want[field])
                 retuned += 1
         want_key = want.get("source_key")
-        if slug == "mahabharata":
+        if slug in ("mahabharata", "katha"):
+            # Their completions came from the Digital Corpus of Sanskrit.
             want_key = "dcs"
-        elif slug in ("katha", "mundaka"):
-            # Their rows are the older selections; nothing from DCS or
-            # sa.wikisource is in them until a completion is imported.
-            want_key = "public-domain"
+        elif slug == "mundaka":
+            # Its completion came from sa.wikisource (CC BY-SA 4.0).
+            want_key = "sa-wikisource"
         elif slug == "ayurveda":
             want_key = row.source_key or "public-domain"
         if want_key and row.source_key != want_key:

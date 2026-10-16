@@ -148,3 +148,63 @@ def test_the_verse_number_keeps_its_separator():
     # Hyphen-split words still join (Bhaja Govindam, Rāmarakṣā).
     assert "सक्तस्ताव" in C.verse_text("सक्त-\nस्ताव ॥ २ ॥")
     assert "स्पृशावक्ष" in C.verse_text("स्पृशा- वक्ष ॥ १ ॥")
+
+
+def test_mahimna_page_marker_defects_repaired():
+    # Śiva Mahimna revid 320011: verse 12 is printed "११" a second time,
+    # verses 15 and 23 lost their numbers, verse 25's marker carries a
+    # stray dot ("॥ २५."), and some ends are jammed ("॥१३"). Without the
+    # repair the splitter merges those three pairs and _finalise_verses
+    # drops verse 12 as a repeated ref (40 printed verses become 36).
+    from scripts.books.build import _repair_mahimna_markers, _wiki_numbered_verses
+
+    page = ("मिदम् ॥ ११\nमुह्यति खलः ॥११\nअवनतिः ॥१३\n"
+            "पथ्य परिभवः ॥\nमुग्धा युवतयः ।।\nभवान् ॥ २५.\n")
+    fixed = _repair_mahimna_markers(page)
+    for want in ("मिदम् ॥ ११", "खलः ॥ १२", "अवनतिः ॥ १३",
+                 "परिभवः ॥ १५", "मुग्धा युवतयः ॥ २३", "भवान् ॥ २५"):
+        assert want in fixed, want
+    assert "खलः ॥११" not in fixed and "॥ २५." not in fixed
+    nums = [C.verse_number_of(num) for num, _ in
+            _wiki_numbered_verses(fixed, vedic=False)]
+    assert nums == [11, 12, 13, 15, 23, 25]
+    # The jammed end no longer mangles to "॥३ ॥" in the cleaned text.
+    row_13 = [cleaned for num, cleaned in _wiki_numbered_verses(fixed, vedic=False)
+              if C.verse_number_of(num) == 13][0]
+    assert row_13.endswith("अवनतिः ॥")
+
+
+def test_vetala_page_defects_repaired():
+    # Vetāla Pañcaviṃśati pages mix marker styles: page 00's poem closes
+    # verses with ASCII pipes, story pages jam the danda pair against the
+    # number ("॥४.११.१॥"), and page 01's taranga uses "।। ५९". Jammed,
+    # verse_text's digit rules only eat runs between Devanagari letters,
+    # so "०.८.२१" survived as "० ८ २" debris while char_check (which
+    # strips the whole tail as a verse number) saw nothing wrong. The
+    # pages also carry editorial <small> notes with external links (page
+    # 04) and print their taranga twice: joined sandhi and a split-sandhi
+    # duplicate separated by a bare "|" (page 01), "(सन्धिमुक्त पाठः)"
+    # (page 16) or "सन्धिविश्लिष्ट पाठः" (page 18) — keep the joined tale
+    # only. One marker is printed "।। ।५८" (stray danda).
+    from scripts.books.build import _repair_vetala_page, _wiki_numbered_verses
+
+    page = ("कथामुखम् सह ||१\nअथ कदाचित् ॥४.११.१॥\n"
+            "तमब्रवीत् ।। ।५८\nअविद्यमानम् ।। ५९\n"
+            "<small>तुलनीय - '''पाणौ मुद्रा''' - कथासरित्</small>"
+            " [https://example.org ९.३.९१]<br>\n"
+            "सन्धियुक्त पाठः\nप्रथमः ॥ १॥\n"
+            "|\nद्वितीयः ॥ २॥\n"
+            "सन्धिविश्लिष्ट पाठः\nतृतीयः ॥ ३॥\n"
+            "(सन्धिमुक्त पाठः)\nचतुर्थः ॥ ४॥\n")
+    fixed = " ".join(_repair_vetala_page(page).split())
+    assert "सह ॥ १ ॥" in fixed
+    assert "अथ कदाचित् ॥ ४.११.१ ॥" in fixed
+    assert "तमब्रवीत् ॥ ५८ ॥" in fixed
+    assert "अविद्यमानम् ॥ ५९ ॥" in fixed
+    assert "कथासरित्" not in fixed and "https" not in fixed
+    assert "सन्धियुक्त" not in fixed and "सन्धिविश्लिष्ट" not in fixed
+    assert "सन्धिमुक्त" not in fixed and "द्वितीयः" not in fixed
+    pairs = _wiki_numbered_verses(fixed, vedic=False)
+    assert [C.verse_number_of(num) for num, _ in pairs] == [1, 1, 58, 59, 1]
+    # No marker digits survive in the cleaned reading text.
+    assert all(not set(text) & set("०१२३४५६७८९") for _, text in pairs)

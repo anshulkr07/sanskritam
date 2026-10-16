@@ -367,16 +367,11 @@ def test_13_canon_seed_51_rows(client):
         if t.get("paged"):
             assert t.get("source_key") in keys, t["slug"]
     by_slug = {t["slug"]: t for t in CANON_TEXTS}
-    # Tier rule: new plus exactly for ambuda/dcs/sa-wikisource, free for gretil.
+    # The 2026-10-14 free-catalogue flip (commit 25a6fb3, recorded in
+    # specs/beta-model-results-20261015.md) made every row free; the gate now
+    # lives in settings, not the rows.
     for t in CANON_TEXTS:
-        if not t.get("paged"):
-            continue
-        if t["source_key"] == "gretil":
-            assert t["tier"] == "free", t["slug"]
-        elif t["source_key"] in ("ambuda", "dcs", "sa-wikisource"):
-            assert t["tier"] == "plus", t["slug"]
-    # Mixed atharvaveda rides as dcs (majority) and stays plus.
-    assert by_slug["atharvaveda"]["tier"] == "plus"
+        assert t["tier"] == "free", t["slug"]
     # The 12 old rows keep tier free.
     for slug in ("gita", "hito", "niti", "isha", "katha", "ramayana",
                  "mahabharata", "pancha", "subhashita", "mundaka",
@@ -411,28 +406,37 @@ def test_14_no_prefix_containment(client):
     assert ay["ref_prefixes"] == ["Caraka"]
 
 
-def test_15_katha_and_mundaka_do_not_claim_to_be_complete(client):
-    """Their completions were stopped (handover_reading_shelf_result.md), so the
-    rows say what is in them: the older selections, whatever an earlier seed
-    wrote. Re-applied on every boot, so an old database is put right too."""
-    from app.seeds.canon import seed_canon
+def test_15_canon_retunes_completed_texts(client):
+    """Katha's and Mundaka's completions were imported 2026-10-16, so their
+    rows say so; both are re-applied on every boot, so an old database is
+    put right too."""
+    from app.seeds.canon import CANON_TEXTS, seed_canon
 
+    by_slug = {t["slug"]: t for t in CANON_TEXTS}
     with SessionLocal() as db:
-        for slug in ("katha", "mundaka"):
-            row = db.query(CanonText).filter_by(slug=slug).one()
-            row.title_en = row.title_en.replace("(selections)", "(complete)")
-            row.depth, row.verses_planned, row.source_key = "full", 119, "dcs"
-            row.licence = "CC BY 4.0 text that is not in this row"
+        row = db.query(CanonText).filter_by(slug="katha").one()
+        row.title_en, row.depth, row.verses_planned, row.source_key = (
+            "Kaṭhopaniṣad (selections)", "studied", 40, "public-domain")
+        row.licence = "CC BY 4.0 text that is not in this row"
+        row = db.query(CanonText).filter_by(slug="mundaka").one()
+        row.title_en, row.depth, row.verses_planned, row.source_key = (
+            "Muṇḍaka Upaniṣad (selections)", "studied", 20, "public-domain")
+        row.licence = "Text: public domain (ancient)"
         db.commit()
 
         seed_canon(db)
-        for slug, planned in (("katha", 40), ("mundaka", 20)):
-            row = db.query(CanonText).filter_by(slug=slug).one()
-            assert "(selections)" in row.title_en and "complete" not in row.title_en.lower()
-            assert row.depth == "studied" and row.verses_planned == planned
-            assert row.source_key == "public-domain"
-            assert row.licence == "Text: public domain (ancient)"
-            assert row.tier == "free" and row.paged is False
+        katha = db.query(CanonText).filter_by(slug="katha").one()
+        assert katha.title_en == "Kaṭhopaniṣad (complete)"
+        assert katha.depth == "full" and katha.verses_planned == 119
+        assert katha.source_key == "dcs"
+        assert katha.licence == by_slug["katha"]["licence"]
+        assert katha.tier == "free" and katha.paged is False
+        mundaka = db.query(CanonText).filter_by(slug="mundaka").one()
+        assert mundaka.title_en == "Muṇḍaka Upaniṣad (complete)"
+        assert mundaka.depth == "full" and mundaka.verses_planned == 64
+        assert mundaka.source_key == "sa-wikisource"
+        assert mundaka.licence == by_slug["mundaka"]["licence"]
+        assert mundaka.tier == "free" and mundaka.paged is False
 
 
 def test_16_paged_import_refuses_without_a_licence(client):

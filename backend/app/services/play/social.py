@@ -65,6 +65,42 @@ def _blocked(db: Session, a: str, b: str) -> bool:
             .first() is not None)
 
 
+def player_card(db: Session, learner: Learner, target_id: str) -> dict:
+    """The small profile behind a leaderboard tap: name, picture and where
+    the learner stands with them, so the action button knows what to offer."""
+    target = db.query(Learner).filter(Learner.id == target_id).first()
+    if target is None:
+        raise SocialError(404, "Learner not found.")
+    if target.id == learner.id:
+        relationship = "self"
+    elif _blocked(db, learner.id, target.id):
+        relationship = "blocked"
+    elif _are_friends(db, learner.id, target.id):
+        relationship = "friends"
+    else:
+        forward = (db.query(Friendship)
+                   .filter(Friendship.learner_id == learner.id,
+                           Friendship.friend_id == target.id)
+                   .first())
+        reverse = (db.query(Friendship)
+                   .filter(Friendship.learner_id == target.id,
+                           Friendship.friend_id == learner.id)
+                   .first())
+        if forward is not None and forward.status == "pending":
+            relationship = "outgoing"
+        elif reverse is not None and reverse.status == "pending":
+            relationship = "incoming"
+        else:
+            relationship = "none"
+    from app.services.profile_photos import avatar_url
+    return {
+        "learner_id": target.id,
+        "name": target.display_name or "Learner",
+        "avatar_url": avatar_url(target),
+        "relationship": relationship,
+    }
+
+
 def friends_list(db: Session, learner: Learner) -> dict:
     edges = (db.query(Friendship)
              .filter(Friendship.learner_id == learner.id,

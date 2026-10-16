@@ -40,12 +40,18 @@ const fixture = JSON.parse(execFileSync(python, ['-c', 'from app.services.gramma
   cwd: backend, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024, env: { ...process.env, PYTHONIOENCODING: 'utf-8' },
 }));
 const vowels = topicCards(fixture.topics.vowels);
-const examples = [vowels[0], vowels.find(c => c.guide?.block), vowels.find(c => c.example),
+const example = (topic, sa) => topicCards(fixture.topics[topic]).find(c => c.example?.sa === sa);
+const examples = process.env.LESSON_ART_QA ? [
+  vowels[0], example('questions', 'तव नाम किम्'), example('questions', 'कः अस्ति'),
+  example('questions', 'अपि त्वं गच्छसि'), example('participle-clauses', 'गुरौ आगते शिष्याः उत्तिष्ठन्ति'),
+  example('numbers-1-10', 'त्रयाणाम्'), example('numbers-1-10', 'चतुर्षु'),
+  example('consonant-stems', 'वाचा'), example('feminine-suffixes', 'जानकी'), vowels.find(c => c.practice),
+] : [vowels[0], vowels.find(c => c.guide?.block), vowels.find(c => c.example),
   getLearnV2Lesson('sandhi-a-combinations').cards[0], vowels.find(c => c.practice)];
 const pages = [];
 for (const language of ['en', 'hi']) for (const card of examples) {
   lang = language;
-  pages.push(`<section class="phone" lang="${lang}"><header>${lang === 'hi' ? 'पाठ कार्ड' : 'Lesson cards'} <span>${pages.length + 1}/10</span></header><main>${renderToStaticMarkup(React.createElement(Card, { card }))}</main><footer><button onclick="move(-1)">‹</button><button onclick="move(1)">${lang === 'hi' ? 'आगे' : 'Continue'}</button></footer></section>`);
+  pages.push(`<section class="phone" lang="${lang}"><header>${lang === 'hi' ? 'पाठ कार्ड' : 'Lesson cards'} <span>${pages.length + 1}/${examples.length * 2}</span></header><main>${renderToStaticMarkup(React.createElement(Card, { card }))}</main><footer><button onclick="move(-1)">‹</button><button onclick="move(1)">${lang === 'hi' ? 'आगे' : 'Continue'}</button></footer></section>`);
 }
 AppRegistry.registerComponent('CardsQA', () => () => null);
 const { getStyleElement } = AppRegistry.getApplication('CardsQA');

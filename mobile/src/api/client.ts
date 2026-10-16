@@ -11,6 +11,9 @@ export type BridgeLangs = string[];
 
 export interface LearnerProfile {
   id: string;
+  avatar_url?: string | null;
+  community_verified?: boolean;
+  community_suspended?: boolean;
   display_name: string;
   bridge_langs: BridgeLangs;
   sanskrit_ratio: number;
@@ -23,17 +26,7 @@ export interface LearnerProfile {
 
 export interface DevLoginResponse {
   token: string;
-  learner: {
-    id: string;
-    display_name: string;
-    bridge_langs: BridgeLangs;
-    sanskrit_ratio: number;
-    sanskrit_ratio_setting?: number;
-    script_ratio: number;
-    feature_mastery: Record<string, number>;
-    streak: number;
-    voice_minutes_used: number;
-  };
+  learner: LearnerProfile;
 }
 
 // ─── Learner ──────────────────────────────────────────────────────────────

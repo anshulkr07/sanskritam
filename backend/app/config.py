@@ -58,6 +58,7 @@ class Settings(BaseSettings):
     cors_origins: str = "*"
     sarvam_api_key: str = ""  # Sarvam AI API subscription key (TTS/STT)
     gemini_api_key: str = ""
+    community_image_model: str = "gemini-3.8-flash"
     google_api_key: str = ""
     voice_lab_parler_url: str = ""  # POST {text, description, language}; returns audio/wav or audio/mpeg
     voice_lab_parler_space: str = ""  # Hugging Face owner/space-name (ZeroGPU Gradio API)

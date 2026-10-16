@@ -63,6 +63,8 @@ export interface LearnV2Card {
   /** Complete guide content, paginated without losing audio, word glosses or cells. */
   guide?: {
     topicId: string;
+    /** Decorative chapter artwork on the topic's opening card only. */
+    chapterId?: string;
     block?: Extract<GuideBlock, { kind: "table" }>;
     example?: GuideExample;
     sanskrit?: GuideSanskrit;

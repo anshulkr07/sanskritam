@@ -174,3 +174,67 @@ def test_import_reports_references_the_text_does_not_have(client):
     run_import(_payload([{"ref": "p21-orphan 99", "devanagari": "बालकः पठति।"}]), live=True)
     report = run_import(_payload([{"ref": "p21-orphan 1", "devanagari": "रामः लिखति।"}]), live=False)
     assert report["orphans"] == ["p21-orphan 99"]
+
+
+def test_replace_refs_repairs_a_typo_the_fuzzy_match_cannot_reach(client):
+    from app.db import SessionLocal
+    from app.models import Shloka
+
+    ref = "p21-replace-refs-test"
+    wrong = "कर्मण्येवाधिकारस्ते मा फलेषु कदाशन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥"
+    right = "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥"
+    run_import(_payload([{"ref": ref, "devanagari": wrong}]), live=True)
+    incoming = {"ref": ref, "devanagari": right, "translation_en": "Do your work."}
+
+    # One letter in ~50 stays above the 0.97 "same verse" ratio, so
+    # --fix-existing sees a duplicate and cannot touch it.
+    quiet = run_import(_payload([incoming]), live=True, fix_existing=True)
+    assert quiet["fixed"] == [] and quiet["skipped_dup"] == 1
+    with SessionLocal() as db:
+        assert db.query(Shloka).filter_by(source_ref=ref).one().devanagari == wrong
+
+    live = run_import(_payload([incoming]), live=True, replace_refs={ref})
+    assert [f["ref"] for f in live["fixed"]] == [ref] and live["added"] == 0
+    with SessionLocal() as db:
+        row = db.query(Shloka).filter_by(source_ref=ref).one()
+        assert row.devanagari == right and row.iast
+        assert row.translation_en == incoming["translation_en"]
+    again = run_import(_payload([incoming]), live=True, replace_refs={ref})
+    assert again["fixed"] == [] and again["skipped_dup"] == 1, \
+        "with equal letters the row is a duplicate again (idempotent)"
+
+
+def test_replace_refs_moves_chant_rows_with_the_corrected_text(client):
+    """models.py hashes verse_uid from the text on every write, so replacing a
+    typo moves the hash; chant rows and recite history keyed by the old hash
+    must follow, or the verse silently loses its audio (seen on Kaṭhopaniṣad
+    1.3.11/2.2.13, 2026-10-16)."""
+    from app.db import SessionLocal
+    from app.models import Shloka, VerseAudio
+    from app.services.chant_text import verse_uid as _uid
+
+    ref = "p21-uid-follow-test"
+    wrong = "कर्मण्येवाधिकारस्ते मा फलेषु कदाशन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥"
+    right = "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥"
+    run_import(_payload([{"ref": ref, "devanagari": wrong}]), live=True)
+    with SessionLocal() as db:
+        old_uid = db.query(Shloka).filter_by(source_ref=ref).one().verse_uid
+        assert old_uid == _uid(ref, wrong)
+        db.add(VerseAudio(verse_uid=old_uid, voice="p21-test-voice",
+                          url="https://example.invalid/a.mp3", qc_status="approved"))
+        db.commit()
+
+    dry = run_import(_payload([{"ref": ref, "devanagari": right}]), live=False,
+                     replace_refs={ref})
+    assert dry["fixed"][0]["uid_rows"] == 1, "the dry run reports what would move"
+
+    live = run_import(_payload([{"ref": ref, "devanagari": right}]), live=True,
+                      replace_refs={ref})
+    assert [f["ref"] for f in live["fixed"]] == [ref]
+    new_uid = _uid(ref, right)
+    with SessionLocal() as db:
+        assert db.query(Shloka).filter_by(source_ref=ref).one().verse_uid == new_uid
+        assert db.query(VerseAudio).filter_by(verse_uid=old_uid).count() == 0
+        moved = db.query(VerseAudio).filter_by(verse_uid=new_uid).one()
+        assert moved.url == "https://example.invalid/a.mp3"
+        assert moved.qc_status == "approved"

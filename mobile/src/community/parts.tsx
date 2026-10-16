@@ -20,6 +20,8 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import ProfileImage from "../components/ProfileImage";
+import { useAuth } from "../store/auth";
 import { haptics } from "../services/haptics";
 import { CREAM, CREAM_FAINT, T, fillFor, initials, sa, ui } from "./look";
 
@@ -147,12 +149,16 @@ export function Avatar({
   name,
   size = 44,
   online = false,
+  avatarUrl,
 }: {
   id: string;
   name: string;
   size?: number;
   online?: boolean;
+  avatarUrl?: string | null;
 }) {
+  const { learner } = useAuth();
+  const photo = id === learner?.id ? learner.avatar_url : avatarUrl;
   return (
     <View
       style={[styles.mark, { width: size, height: size, backgroundColor: fillFor(id) }]}
@@ -162,6 +168,7 @@ export function Avatar({
       <Text style={[styles.initials, { fontSize: Math.round(size * 0.38) }]} numberOfLines={1}>
         {initials(name)}
       </Text>
+      <ProfileImage uri={photo} />
       {online ? <View style={[styles.online, { width: Math.max(10, size * 0.26), height: Math.max(10, size * 0.26) }]} /> : null}
     </View>
   );

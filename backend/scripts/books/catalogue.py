@@ -56,9 +56,12 @@ BOOKS: dict[str, dict] = {
         "ref": "Śiva Mahimna Stotra", "tier": "free", "register": "classical",
         "source_key": "sa-wikisource", "kind": "wiki_rendered_newline_nums",
         "pages": ["शिवमहिम्नःस्तोत्रम्"],
-        # 2026-10-14: the page also prints the dhyana and phala-shraddhi
-        # verses around the 31 stotra verses — all 37 rows are kept.
-        "reference_total": 37, "planned": 37, "vedic": False,
+        # 2026-10-16: the print carries 40 verses — the 31 stotra verses plus
+        # nine phala verses (labels run to ४०). The 2026-10-14 reconnaissance
+        # read 37 because three marker defects on the page (verse 12 printed
+        # as "११" twice, 15 and 23 unnumbered, 25 with a stray dot) merged
+        # three verse pairs; repaired in build.py's mahimna branch.
+        "reference_total": 40, "planned": 40, "vedic": False,
     },
     "ramaraksha": {
         "ref": "Rāmarakṣā Stotra", "tier": "free", "register": "classical",
@@ -275,8 +278,16 @@ BOOKS: dict[str, dict] = {
         # inside a tale — store the reading ordinal within the tale.
         "renumber_per_chapter": True,
         "pages": [f"वेतालपञ्चविंशति {i:02d}" for i in range(0, 26)],
-        # 2175 was the handover estimate; the page carries 2610 ॥N॥ chunks.
-        "reference_total": 2610, "planned": 2610, "vedic": False,
+        # 2026-10-16: 2195 rows after the re-split repair
+        # (_repair_vetala_page). The old 2610 was the pre-repair chunk
+        # count: page 00's कथामुख poem (17 pipe ends + 3 danda ends)
+        # reached the build as 3 chunks (now +17 rows), and pages 01, 16
+        # and 18 print their taranga twice — joined sandhi and a
+        # split-sandhi duplicate (138, 207 and 87 verses) — which are now
+        # dropped; page 04's two editorial comparison notes are dropped
+        # too, which fixed its failing row. 2195 = GRETIL's 2175 (tales
+        # plus the कथामुख prose ०.८.२१-५८) + the 20-verse कथामुख poem.
+        "reference_total": 2195, "planned": 2195, "vedic": False,
     },
     # 4.6 Yoga, Ayurveda, sastra, wisdom
     "yogasutra": {

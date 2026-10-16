@@ -126,7 +126,15 @@ def test_privacy_policy_says_where_recitations_go(client):
 
 
 def test_privacy_policy_date_is_current(client):
-    assert "last updated 15 October 2026" in _flat(client)
+    assert "last updated 16 October 2026" in _flat(client)
+
+
+def test_profile_photo_storage_and_screening_are_disclosed(client):
+    page = _flat(client)
+    assert "Your profile picture" in page
+    assert "Gemini through Vertex AI to check for harmful content" in page
+    assert "do not use a face to verify identity" in page
+    assert "until you replace it, remove it or delete your account" in page
 
 
 def test_privacy_policy_covers_group(client):

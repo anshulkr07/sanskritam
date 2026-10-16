@@ -29,6 +29,45 @@ def test_friend_request_accept_flow(client):
         assert len(lst["friends"]) == 1 and not lst["requests"]
 
 
+def test_player_card_shows_the_standing(client):
+    from app.db import SessionLocal
+    from app.models import Learner
+
+    a = _login(client, "Card A")
+    b = _login(client, "Card B")
+    c = _login(client, "Card C")
+    a_id, b_id, c_id = _me(client, a), _me(client, b), _me(client, c)
+
+    card = client.get(f"/social/players/{b_id}", headers=a).json()
+    assert card["name"] == "Card B" and card["relationship"] == "none"
+    assert card["avatar_url"] is None                    # no picture set
+
+    client.post("/social/friends/request", json={"learner_id": b_id}, headers=a)
+    assert client.get(f"/social/players/{b_id}", headers=a).json()["relationship"] == "outgoing"
+    assert client.get(f"/social/players/{a_id}", headers=b).json()["relationship"] == "incoming"
+
+    client.post("/social/friends/respond", json={"learner_id": a_id, "accept": True}, headers=b)
+    assert client.get(f"/social/players/{b_id}", headers=a).json()["relationship"] == "friends"
+    assert client.get(f"/social/players/{a_id}", headers=a).json()["relationship"] == "self"
+
+    client.post(f"/social/friends/{c_id}/block", json={"reason": "test"}, headers=a)
+    assert client.get(f"/social/players/{c_id}", headers=a).json()["relationship"] == "blocked"
+    # the blocked one sees it from their side too, with no action to take
+    assert client.get(f"/social/players/{a_id}", headers=c).json()["relationship"] == "blocked"
+
+    assert client.get("/social/players/nobody", headers=a).status_code == 404
+
+    db = SessionLocal()
+    try:
+        row = db.query(Learner).filter(Learner.id == b_id).first()
+        row.avatar_key = f"{b_id}/abcd1234"
+        db.commit()
+    finally:
+        db.close()
+    card = client.get(f"/social/players/{b_id}", headers=a).json()
+    assert card["avatar_url"].endswith("/people/{}/photo/abcd1234".format(b_id))
+
+
 def test_block_removes_friendship(client):
     a = _login(client, "Friend C")
     b = _login(client, "Friend D")

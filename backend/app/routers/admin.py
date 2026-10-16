@@ -21,6 +21,44 @@ from app.services.retention import day2_return, p8_report
 router = APIRouter()
 
 
+from pydantic import BaseModel, Field
+
+
+class CommunityModerationBody(BaseModel):
+    suspended: bool
+    remove_photo: bool = False
+    reason: str = Field(min_length=5, max_length=1000)
+
+
+@router.put("/admin/community/learners/{uid}")
+def moderate_learner(uid: str, body: CommunityModerationBody,
+                     _auth: bool = Depends(require_admin), db: Session = Depends(get_db)):
+    from app.models import Learner, ContentReport
+    from app.routers.community import notify
+    from app.services.storage import get_storage
+    learner = db.query(Learner).filter_by(id=uid).with_for_update().one_or_none()
+    if not learner:
+        raise HTTPException(404, "Learner not found.")
+    if len(body.reason.strip()) < 5:
+        raise HTTPException(422, "Give a reason for the moderation decision.")
+    learner.community_suspended = body.suspended
+    key = learner.avatar_key if body.remove_photo else None
+    if key:
+        learner.avatar_key = None
+    db.add(ContentReport(learner_id=uid, surface="group_admin",
+                         question=f"Community access for {uid}",
+                         answer=f"suspended={body.suspended}; remove_photo={body.remove_photo}",
+                         reason=body.reason.strip()))
+    notify(db)
+    db.commit()
+    if key:
+        try:
+            get_storage().delete_private(key)
+        except Exception:
+            pass
+    return {"id": uid, "suspended": body.suspended, "photo_removed": bool(key)}
+
+
 @router.post("/admin/challenges", response_model=ChallengeResponse)
 async def create_challenge(
     req: CreateChallengeRequest,

@@ -89,6 +89,9 @@ class Learner(Base):
     varna_progress = Column(JSON, default=dict)
     # Per-learner bookmarks/read marks/preferences. This never awards mastery.
     learning_state = Column(JSON, default=dict, nullable=True)
+    avatar_key = Column(String(240), nullable=True)
+    avatar_updated_at = Column(DateTime, nullable=True)
+    community_suspended = Column(Boolean, nullable=False, default=False, server_default=sa.false())
     created_at = Column(DateTime, default=_utcnow)
 
     tokens = relationship("Token", back_populates="learner", cascade="all, delete-orphan")

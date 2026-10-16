@@ -24,6 +24,16 @@ def get_friends(learner: Learner = Depends(require_learner), db: Session = Depen
     return social.friends_list(db, learner)
 
 
+@router.get("/players/{learner_id}")
+def get_player(learner_id: str, learner: Learner = Depends(require_learner),
+               db: Session = Depends(get_db)):
+    """Who a leaderboard row is, and whether a friend request makes sense."""
+    try:
+        return social.player_card(db, learner, learner_id)
+    except SocialError as e:
+        raise _http(e)
+
+
 class RequestBody(BaseModel):
     learner_id: str
 

@@ -1,6 +1,8 @@
 // Generated from local ready deliveries. Static literal requires only.
+import { EXTRA_LESSON_ART, GUIDE_ART_MATCHES } from "./extraLessonArt";
 export interface LearnV2Asset { source: number; width: number; height: number; sceneHeight: number; captionColor: string; altEn: string; altHi: string; labels: { sa: string; iast: string }; topicId?: string; }
 export const LEARNV2_ASSETS = {
+...EXTRA_LESSON_ART,
 "verbs-reading-single": { source: require("../../assets/learn-v2/verbs-reading-single-v1.png"), "width": 1536, "height": 1024, "sceneHeight": 768, "captionColor": "#073E40", "altEn": "One learner reading an open book", "altHi": "एक विद्यार्थी खुली पुस्तक पढ़ता हुआ", "labels": {"sa": "पठति", "iast": "paṭhati"} },
 "verbs-reading-dual": { source: require("../../assets/learn-v2/verbs-reading-dual-v1.png"), "width": 1536, "height": 1024, "sceneHeight": 768, "captionColor": "#073E40", "altEn": "Exactly two learners reading books", "altHi": "दो विद्यार्थी पुस्तकें पढ़ते हुए", "labels": {"sa": "पठतः", "iast": "paṭhataḥ"} },
 "verbs-reading-plural": { source: require("../../assets/learn-v2/verbs-reading-plural-v1.png"), "width": 1536, "height": 1024, "sceneHeight": 768, "captionColor": "#073E40", "altEn": "A group of learners reading books", "altHi": "विद्यार्थियों का समूह पुस्तकें पढ़ता हुआ", "labels": {"sa": "पठन्ति", "iast": "paṭhanti"} },
@@ -213,5 +215,6 @@ export function findSandhiArt(sa: string, iast: string): string | undefined {
 }
 export function findGuideArt(topicId: string | undefined, sa: string, iast: string): string | undefined {
   if (!topicId) return undefined;
-  return Object.entries(LEARNV2_ASSETS).find(([, asset]) => (asset as LearnV2Asset).topicId === topicId && asset.labels.sa.normalize("NFC") === sa.normalize("NFC") && asset.labels.iast.normalize("NFC") === iast.normalize("NFC"))?.[0];
+  return Object.entries(LEARNV2_ASSETS).find(([, asset]) => (asset as LearnV2Asset).topicId === topicId && asset.labels.sa.normalize("NFC") === sa.normalize("NFC") && asset.labels.iast.normalize("NFC") === iast.normalize("NFC"))?.[0]
+    ?? GUIDE_ART_MATCHES[JSON.stringify([topicId, sa.normalize("NFC"), iast.normalize("NFC")])];
 }

@@ -234,7 +234,7 @@ export default function GroupChatScreen({ navigation, route }: Props) {
           group ? (
             <CircleMark id={chat.id} name={chat.name} size={38} />
           ) : (
-            <Avatar id={peer?.id ?? chat.id} name={chat.name} size={38} online={peer?.online} />
+            <Avatar avatarUrl={peer?.avatar_url} id={peer?.id ?? chat.id} name={chat.name} size={38} online={peer?.online} />
           )
         ) : (
           <View style={styles.headSkeleton} />
@@ -504,7 +504,7 @@ function Bubble({
   return (
     <View style={[styles.slot, own ? styles.slotOwn : null, { marginTop: head ? 10 : 3 }]}>
       {showAvatar ? (
-        <View style={styles.avatarSlot}>{tail ? <Avatar id={m.sender.id} name={m.sender.name} size={30} /> : null}</View>
+        <View style={styles.avatarSlot}>{tail ? <Avatar avatarUrl={m.sender.avatar_url} id={m.sender.id} name={m.sender.name} size={30} /> : null}</View>
       ) : null}
       <Pressable
         onLongPress={onLong}

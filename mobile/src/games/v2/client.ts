@@ -284,7 +284,17 @@ export const playApi = {
     request<{ rounds: Record<string, unknown>[] }>("/play/history", {}, true),
 };
 
+export interface PlayerCard {
+  learner_id: string;
+  name: string;
+  avatar_url: string | null;
+  relationship: "self" | "friends" | "outgoing" | "incoming" | "none" | "blocked";
+}
+
 export const socialApi = {
+  player: (learnerId: string) =>
+    request<PlayerCard>(`/social/players/${encodeURIComponent(learnerId)}`, {}, true),
+
   friends: () =>
     request<{ friends: { learner_id: string; name: string; alias: string }[]; requests: { learner_id: string; name: string }[] }>(
       "/social/friends", {}, true),

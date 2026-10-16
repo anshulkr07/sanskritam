@@ -69,15 +69,9 @@ def read_facts(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
-    """Facts dated on or before today, newest first."""
+    """The facts the most recent days have shown, newest day first."""
     day = local_date(learner.timezone)
-    query = (
-        db.query(FactCard)
-        .filter(FactCard.status == "approved", FactCard.scheduled_date <= day)
-    )
-    if query.filter(FactCard.made_by == "reviewed").first() is not None:
-        query = query.filter(FactCard.made_by == "reviewed")
-    rows = query.order_by(FactCard.scheduled_date.desc()).limit(6).all()
+    rows = svc.recent_facts(db, day)
     return FactsResponse(facts=[
         FactSummary(id=r.id, fact=r.fact or "", text_name=r.text_name or "",
                     ref=r.ref or "", scheduled_date=r.scheduled_date or "")

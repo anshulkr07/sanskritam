@@ -16,6 +16,7 @@ import { announce } from "../utils/announce";
 import { devanagariFormula } from "../utils/sanskritDisplay";
 import InlineText from "../components/grammar/InlineText";
 import GuideCardDetails from "./GuideCardDetails";
+import { hubArtwork } from "../components/artwork/hubs";
 import { findGuideArt, findSandhiArt, getLearnV2Asset } from "./assetMap";
 import { sceneHeightOf } from "./sceneCrop";
 import type { LearnV2Card } from "./types";
@@ -197,11 +198,14 @@ export default function LearnV2CardView({ card, accent = T.action, onAnswer }: {
   const { lang } = useGuideLang();
   const { sized } = useTypeScale();
   const ids = artIds(card);
+  const chapterArt = card.guide?.chapterId ? hubArtwork(`grammar:${card.guide.chapterId}`) : undefined;
   return (
     <View style={{ gap: 14 }}>
       <Text style={[ui("bold"), { color: accent, fontSize: sized(12), letterSpacing: 1.4 }]}>{cardLabel(card, lang).toUpperCase()}</Text>
       <InlineText accessibilityRole="header" text={lang === "hi" ? card.title.hi : card.title.en} lang={lang} style={[ui("bold"), { color: T.ink, fontSize: sized(23), lineHeight: sized(29), marginTop: -8 }]} />
       {ids.map((id) => <Scene key={id} id={id} />)}
+      {!ids.length && chapterArt && <Image source={chapterArt} resizeMode="contain" accessible={false}
+        style={{ width: "100%", height: 200, backgroundColor: T.surface }} />}
       <Example card={card} />
       <Steps card={card} />
       <Rows card={card} />

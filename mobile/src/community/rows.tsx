@@ -37,7 +37,7 @@ export function ConversationRow({ c, meId, onPress }: { c: Conversation; meId?: 
       {c.kind === "group" ? (
         <CircleMark id={c.id} name={c.name} size={48} />
       ) : (
-        <Avatar id={peer?.id ?? c.id} name={c.name} size={48} online={peer?.online} />
+        <Avatar avatarUrl={peer?.avatar_url} id={peer?.id ?? c.id} name={c.name} size={48} online={peer?.online} />
       )}
       <View style={styles.main}>
         <View style={styles.line}>
@@ -136,7 +136,7 @@ export function PersonRow({
         accessibilityLabel={`${p.name}. ${sub ?? levelShort[p.level] ?? ""}${p.online ? ". Online" : ""}`}
         style={({ pressed }) => [styles.rowMain, pressed && styles.pressed]}
       >
-        <Avatar id={p.id} name={p.name} size={44} online={p.online} />
+        <Avatar avatarUrl={p.avatar_url} id={p.id} name={p.name} size={44} online={p.online} />
         <View style={styles.main}>
           <Text style={styles.name} numberOfLines={1}>
             {p.name}
@@ -189,7 +189,7 @@ export function RoomCard({
         </Text>
       ) : null}
       <View style={styles.roomFoot}>
-        <Avatar id={r.host.id} name={r.host.name} size={30} />
+        <Avatar avatarUrl={r.host.avatar_url} id={r.host.id} name={r.host.name} size={30} />
         <Text style={styles.roomHost} numberOfLines={1}>
           {mine ? "You are hosting" : `Hosted by ${r.host.name}`}
           {count !== undefined ? ` · ${count} in the room` : ""}

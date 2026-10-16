@@ -461,6 +461,44 @@ def test_fact_for_day_takes_turns():
     assert svc.fact_for_day(Db([]), "2031-03-05") is None
 
 
+def test_facts_history_follows_the_daily_turns(db):
+    """History lists the cards the latest days actually show: a card dated
+    recently but whose turn has not come must not appear, and today's card
+    must. Regression: /facts used to order by scheduled_date instead."""
+    db.query(FactCard).delete()
+    for i, day in enumerate(("2031-03-01", "2031-03-02", "2031-03-03")):
+        db.add(FactCard(id=f"hist-{i}", status="approved", made_by="reviewed",
+                        scheduled_date=day, fact=f"fact {i}", text_name="Test",
+                        ref=f"1.{i}", ref_key=f"test:1.{i}", devanagari="क", iast="ka"))
+    db.commit()
+    rows = svc.recent_facts(db, "2031-03-05")
+    days = ("2031-03-05", "2031-03-04", "2031-03-03")
+    assert rows[0].id == svc.fact_for_day(db, days[0]).id  # today's card leads
+    assert [r.id for r in rows] == [svc.fact_for_day(db, d).id for d in days]
+    assert len({r.id for r in rows}) == 3                  # each card once
+
+
+def test_the_facts_history_endpoint_returns_the_shown_cards(client, db, monkeypatch):
+    db.query(FactCard).delete()
+    db.commit()
+    h = _auth(client, "histlearner")
+    for i, day in enumerate(("2031-02-26", "2031-02-27", "2031-02-28")):
+        db.add(FactCard(id=f"api-{i}", status="approved", made_by="reviewed",
+                        scheduled_date=day, fact=f"api fact {i}", text_name="Test",
+                        ref=f"2.{i}", ref_key=f"test:2.{i}", devanagari="क", iast="ka"))
+    db.commit()
+    import app.routers.daily_content as router
+
+    monkeypatch.setattr(router, "local_date", lambda tz=None: "2031-03-01")
+    listed = client.get("/facts", headers=h).json()["facts"]
+    expected: list[str] = []                     # distinct cards, newest day first
+    for d in ("2031-03-01", "2031-02-28", "2031-02-27"):
+        row = svc.fact_for_day(db, d)
+        if row.id not in expected:
+            expected.append(row.id)
+    assert [f["id"] for f in listed] == expected
+
+
 # ─── The run itself ─────────────────────────────────────────────────────────
 
 def test_nothing_runs_while_stock_is_full(db, monkeypatch):

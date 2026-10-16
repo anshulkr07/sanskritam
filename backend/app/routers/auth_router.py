@@ -7,6 +7,7 @@ from app.auth import create_token
 from app.db import get_db
 from app.models import Learner
 from app.schemas import AnonLoginRequest, AppleAuthRequest, DevLoginRequest, DevLoginResponse, GoogleAuthRequest
+from app.routers.me import _profile
 
 router = APIRouter()
 
@@ -23,6 +24,8 @@ async def dev_login(req: DevLoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Not found")
 
     existing = db.query(Learner).filter(Learner.display_name == req.display_name).first()
+    if existing and (existing.google_sub or existing.apple_sub):
+        raise HTTPException(status_code=403, detail="Use the linked Google or Apple account to sign in.")
     if existing:
         learner = existing
     else:
@@ -37,17 +40,7 @@ async def dev_login(req: DevLoginRequest, db: Session = Depends(get_db)):
     token = create_token(learner.id, db)
     return DevLoginResponse(
         token=token.id,
-        learner={
-            "id": learner.id,
-            "display_name": learner.display_name,
-            "bridge_langs": learner.bridge_langs,
-            "sanskrit_ratio": learner.sanskrit_ratio,
-            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
-            "script_ratio": learner.script_ratio,
-            "feature_mastery": learner.feature_mastery or {},
-            "streak": learner.streak or 0,
-            "voice_minutes_used": learner.voice_minutes_used or 0.0,
-        },
+        learner=_profile(learner).model_dump(),
     )
 
 
@@ -80,18 +73,7 @@ async def anon_login(req: AnonLoginRequest, db: Session = Depends(get_db)):
     token = create_token(learner.id, db)
     return DevLoginResponse(
         token=token.id,
-        learner={
-            "id": learner.id,
-            "display_name": learner.display_name,
-            "bridge_langs": learner.bridge_langs,
-            "sanskrit_ratio": learner.sanskrit_ratio,
-            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
-            "script_ratio": learner.script_ratio,
-            "feature_mastery": learner.feature_mastery or {},
-            "streak": learner.streak or 0,
-            "voice_minutes_used": learner.voice_minutes_used or 0.0,
-            "timezone": learner.timezone or "UTC",
-        },
+        learner=_profile(learner).model_dump(),
     )
 
 
@@ -154,18 +136,7 @@ async def google_login(req: GoogleAuthRequest, db: Session = Depends(get_db)):
     token = create_token(learner.id, db)
     return DevLoginResponse(
         token=token.id,
-        learner={
-            "id": learner.id,
-            "display_name": learner.display_name,
-            "bridge_langs": learner.bridge_langs,
-            "sanskrit_ratio": learner.sanskrit_ratio,
-            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
-            "script_ratio": learner.script_ratio,
-            "feature_mastery": learner.feature_mastery or {},
-            "streak": learner.streak or 0,
-            "voice_minutes_used": learner.voice_minutes_used or 0.0,
-            "timezone": learner.timezone or "UTC",
-        },
+        learner=_profile(learner).model_dump(),
     )
 
 
@@ -266,18 +237,7 @@ async def apple_login(req: AppleAuthRequest, db: Session = Depends(get_db)):
     token = create_token(learner.id, db)
     return DevLoginResponse(
         token=token.id,
-        learner={
-            "id": learner.id,
-            "display_name": learner.display_name,
-            "bridge_langs": learner.bridge_langs,
-            "sanskrit_ratio": learner.sanskrit_ratio,
-            "sanskrit_ratio_setting": learner.sanskrit_ratio_setting,
-            "script_ratio": learner.script_ratio,
-            "feature_mastery": learner.feature_mastery or {},
-            "streak": learner.streak or 0,
-            "voice_minutes_used": learner.voice_minutes_used or 0.0,
-            "timezone": learner.timezone or "UTC",
-        },
+        learner=_profile(learner).model_dump(),
     )
 
 

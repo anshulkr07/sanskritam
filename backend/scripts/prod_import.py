@@ -11,7 +11,9 @@ then imports. ``--restore <that file> --live`` puts the table back exactly.
 
 The connection string is ``DATABASE_URL`` when it is set, otherwise the newest
 version of the Secret Manager secret the Cloud Run service reads
-(``shabd-database-url``), fetched with gcloud. It is never printed.
+(``shabd-database-url``), fetched with gcloud from ``--project``
+(``gen-lang-client-0232760726`` by default, like scripts/books/tracker.py).
+It is never printed.
 
 This must be set BEFORE anything from ``app`` is imported: ``app.db`` builds
 its engine at import time, which is why this is a wrapper and not a flag on
@@ -36,7 +38,7 @@ FIELDS = ["id", "date", "source_ref", "devanagari", "iast", "metre", "word_break
           "book", "chapter", "seq", "in_daily"]
 
 
-def _database_url(secret: str) -> str:
+def _database_url(secret: str, project: str) -> str:
     url = (os.environ.get("DATABASE_URL") or "").strip()
     if url:
         return url
@@ -44,7 +46,8 @@ def _database_url(secret: str) -> str:
     if not gcloud:
         raise SystemExit("prod_import: DATABASE_URL is not set and gcloud is not on PATH.")
     out = subprocess.run(
-        [gcloud, "secrets", "versions", "access", "latest", f"--secret={secret}"],
+        [gcloud, "secrets", "versions", "access", "latest", f"--secret={secret}",
+         f"--project={project}"],
         capture_output=True, text=True, check=False,
     )
     url = (out.stdout or "").strip()
@@ -113,10 +116,14 @@ def main(argv=None) -> int:
     p.add_argument("--live", action="store_true", help="write (default is a dry run)")
     p.add_argument("--fix-existing", action="store_true",
                    help="replace an existing row's text when it is not the incoming verse")
+    p.add_argument("--replace-refs", default="",
+                   help="comma-separated refs to rewrite even when the stored text "
+                        "reads as the same verse (a reviewed typo repair)")
     p.add_argument("--min-words", type=int, default=None,
                    help="fewest confidently analysed words for a verse to be imported")
     p.add_argument("--restore", help="a backup written by this script, relative to backend/")
     p.add_argument("--secret", default="shabd-database-url")
+    p.add_argument("--project", default="gen-lang-client-0232760726")
     args = p.parse_args(argv)
     if bool(args.file) == bool(args.restore):
         p.error("give exactly one of --file and --restore")
@@ -126,7 +133,7 @@ def main(argv=None) -> int:
     if hasattr(sys.stdout, "buffer"):
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
-    url = _database_url(args.secret)
+    url = _database_url(args.secret, args.project)
     os.environ["DATABASE_URL"] = url
     try:
         from app.db import SessionLocal, engine
@@ -151,8 +158,9 @@ def main(argv=None) -> int:
             print("[before]", _counts(db, Shloka, books))
             if args.live:
                 _backup(db, Shloka)
+        replace_refs = {r.strip() for r in args.replace_refs.split(",") if r.strip()}
         report = run_import(payload, live=args.live, fix_existing=args.fix_existing,
-                            min_words=min_words)
+                            min_words=min_words, replace_refs=replace_refs)
         print_report(report, args.live, MIN_BREAKDOWN_WORDS if min_words is None else min_words)
         print(f"[import] licence: {report['licence']}")
         if args.live:

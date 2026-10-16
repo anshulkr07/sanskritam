@@ -1299,17 +1299,8 @@ def tick(
 
 # ─── Reading: the fact of the day ───────────────────────────────────────────
 
-def fact_for_day(db, day: str):
-    """The fact for a learner's local day: the one dated that day, else the
-    earlier ones in turn, so a day is never blank once any fact exists."""
-    from app.models import FactCard
-
-    rows = (
-        db.query(FactCard)
-        .filter(FactCard.status == "approved", FactCard.scheduled_date <= day)
-        .order_by(FactCard.scheduled_date)
-        .all()
-    )
+def _fact_of(rows: list, day: str):
+    """The one fact a day shows out of these rows (see fact_for_day)."""
     if not rows:
         return None
     reviewed = [row for row in rows if getattr(row, "made_by", "") == "reviewed"]
@@ -1325,6 +1316,52 @@ def fact_for_day(db, day: str):
     except ValueError:
         return rows[-1]
     return rows[offset % len(rows)]
+
+
+def fact_for_day(db, day: str):
+    """The fact for a learner's local day: the one dated that day, else the
+    earlier ones in turn, so a day is never blank once any fact exists."""
+    from app.models import FactCard
+
+    rows = (
+        db.query(FactCard)
+        .filter(FactCard.status == "approved", FactCard.scheduled_date <= day)
+        .order_by(FactCard.scheduled_date)
+        .all()
+    )
+    return _fact_of(rows, day)
+
+
+def recent_facts(db, day: str, limit: int = 6) -> list:
+    """The facts the most recent days have shown, newest day first, each card
+    once. History follows the same turn-taking as fact_for_day: ordering by
+    ``scheduled_date`` would list cards a day has not reached yet (or hide the
+    one today shows)."""
+    from app.models import FactCard
+
+    rows = (
+        db.query(FactCard)
+        .filter(FactCard.status == "approved", FactCard.scheduled_date <= day)
+        .order_by(FactCard.scheduled_date)
+        .all()
+    )
+    if not rows:
+        return []
+    out: list = []
+    seen: set[str] = set()
+    end = date.fromisoformat(day)
+    # One full turn of the rotation covers every card, and the extra days
+    # absorb the days whose own dated card takes the slot.
+    for back in range(len(rows) + limit):
+        earlier = (end - timedelta(days=back)).isoformat()
+        row = _fact_of([r for r in rows if (r.scheduled_date or "9999") <= earlier], earlier)
+        if row is None or row.id in seen:
+            continue
+        seen.add(row.id)
+        out.append(row)
+        if len(out) >= limit:
+            break
+    return out
 
 
 # ─── The owner's view ───────────────────────────────────────────────────────

@@ -58,6 +58,7 @@ def require_admin(
 ) -> bool:
     """FastAPI dependency: require admin token from env."""
     from app.config import settings
-    if x_admin_token != settings.admin_token:
+    import secrets
+    if not settings.admin_token or not secrets.compare_digest(x_admin_token, settings.admin_token):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid admin token")
     return True

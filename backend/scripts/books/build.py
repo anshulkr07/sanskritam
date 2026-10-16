@@ -107,13 +107,34 @@ def parse_dcs_conllu(body: str) -> list[tuple[int, str]]:
     return out
 
 
+_DCS_L = "\uFFB1"  # 'ﾱ'
+
+
+def _fix_dcs_l(iast_text: str) -> str:
+    """Recover the letter DCS writes as a halfwidth Hangul form ('ﾱ', U+FFB1).
+
+    It is not an accent: it is the Vedic l. After a vowel it is the retroflex
+    ḻ (īﾱe = ईळे, mṛﾱayantaḥ = मृळयन्तः); after a consonant it is the vocalic
+    ḷ (kﾱp = कॢप्, saṃkﾱptaye = संकॢप्तये). Both transliterate via vidyut.lipi;
+    the strip below then removes only genuine non-Sanskrit halfwidth junk.
+    """
+    vowels = "aāiīuūṛṝeaiou"
+    out: list[str] = []
+    prev = ""
+    for ch in iast_text:
+        if ch == _DCS_L:
+            out.append("ḻ" if prev in vowels else "ḷ")
+        else:
+            out.append(ch)
+        prev = ch
+    return "".join(out)
+
+
 def dcs_to_devanagari(iast_text: str) -> str:
     from vidyut.lipi import Scheme, transliterate
 
-    dev = transliterate(iast_text, Scheme.Iast, Scheme.Devanagari)
-    # DCS encodes the udatta accent as a halfwidth form ('ﾱ', U+FFB1; 386
-    # occurrences across 237 Rigveda files). The house rule is "Vedic accent
-    # marks removed", and nothing else in the halfwidth block is Sanskrit.
+    dev = transliterate(_fix_dcs_l(iast_text), Scheme.Iast, Scheme.Devanagari)
+    # Any remaining halfwidth forms are not Sanskrit text.
     dev = re.sub(r"[\uFF00-\uFFEF]", "", dev)
     # "_" separates parts of one verse in the DCS IAST ("सु कृतम् _ इति") —
     # a word joiner here, never content.
@@ -278,6 +299,80 @@ def _split_wiki_sections(wikitext: str) -> list[tuple[str, str]]:
     return out
 
 
+def _repair_mahimna_markers(body: str) -> str:
+    """Marker repairs for the Śiva Mahimna page (revid 320011, the Brhat
+    Stotra Ratnakara print). The page prints 40 verses (31 stotra + nine
+    phala verses, labels ३२-४०) with four marker defects:
+
+    1. verse 12's number is printed "११" a second time ("…मुह्यति खलः ॥११");
+    2. verse 15 lost its number ("…पथ्य परिभवः ॥" closes it);
+    3. verse 23 lost its number ("…युवतयः ।।" closes it);
+    4. verse 25's marker carries a stray full stop ("॥ २५.").
+
+    Jammed ends ("…अवनतिः ॥१३") are space-normalised too: the Vedic
+    length-marker rule in clean.verse_text would otherwise read the first
+    digit as a vowel-length mark and mangle the number. Without the
+    repairs the splitter merges three verse pairs and _finalise_verses
+    silently drops verse 12 as a repeated ref.
+    """
+    t = (body or "").replace("।।", "॥").replace(
+        "\u200c", "").replace("\u200d", "").replace("\u200b", "")
+    t = t.replace("पथ्य परिभवः ॥", "पथ्य परिभवः ॥ १५")
+    t = t.replace("मुग्धा युवतयः ॥", "मुग्धा युवतयः ॥ २३")
+    t = t.replace("खलः ॥११", "खलः ॥ १२")
+    t = t.replace("॥ २५.", "॥ २५")
+    return re.sub(r"॥(?=[०-९])", "॥ ", t)
+
+
+def _repair_vetala_page(body: str) -> str:
+    """Page repairs for sa.wikisource's Vetāla Pañcaviṃśati set.
+
+    The 26 pages mix two transcriptions of Kathāsaritsāgara lambaka 12
+    (शशाङ्कवती): the original taranga poems (pages 00, 01, 05, 16, 18, in
+    <poem> blocks, verses closed "।। N" — or, in page 00's कथामुख, "||N")
+    and a simple-Sanskrit serial (the other pages, verses closed
+    "॥ल.त.श॥"). Repairs:
+
+    1. Page 00's poem closes every verse with ASCII pipes ("सह ||१");
+       normalise to dandas so each verse splits.
+    2. Page 04 carries two editorial comparison notes in <small> spans
+       followed by external links ("… - कथासरित्</small> [url ९.३.९१]");
+       both are apparatus, not text, and their numbers failed the
+       character check.
+    3. Pages 01, 16 and 18 print their taranga twice: joined sandhi
+       (सन्धियुक्त पाठः, the tale) and split sandhi, an exact duplicate
+       with the same verses in split form. Page 01 separates them with a
+       bare "|" line and no heading, page 16 heads the duplicate
+       "(सन्धिमुक्त पाठः)", page 18 "सन्धिविश्लिष्ट पाठः" (87 duplicate
+       verses १८.२५.१-८७ after the colophon). Keep the joined tale,
+       drop the split recension.
+    4. Standalone recension labels ("सन्धियुक्त पाठः") are structure.
+    5. Every marker form is normalised to " ॥ N ॥": the pages jam the
+       danda pair against the number ("॥४.११.१॥", "पुरा।।१९"). Jammed,
+       verse_text would keep marker debris in the reading text — its
+       digit rules only eat runs between Devanagari letters, so "०.८.२१"
+       survived as "० ८ २" after cleaning while char_check (which strips
+       the whole tail as a verse number) saw nothing wrong.
+    """
+    t = body or ""
+    t = re.sub(r"<small>.*?</small>", "", t, flags=re.S)
+    t = re.sub(r"\[https?://[^\]]*\]", "", t)
+    for marker in ("सन्धिविश्लिष्ट पाठः", "सन्धिमुक्त पाठः"):
+        t = t.split(marker, 1)[0]
+    sep = None
+    for m in re.finditer(r"(?m)^\s*\|\s*$", t):
+        sep = m
+    if sep:
+        t = t[: sep.start()]
+    t = re.sub(r"(?m)^\s*सन्धियुक्त\s+पाठः\s*[-–—\s]*$", "", t)
+    # Page 18 prints verse 58's end as "।। ।५८" (a stray danda before the
+    # number) — drop it so the marker normalisation below sees "।। ५८".
+    t = re.sub(r"(।।|॥)\s*।\s*(?=[0-9०-९])", r"\1 ", t)
+    t = re.sub(r"\|\|\s*([0-9०-९]+(?:\.[0-9०-९]+)*)", r" ॥ \1 ॥", t)
+    t = re.sub(r"॥\s*([0-9०-९]+(?:\.[0-9०-९]+)*)\s*॥", r" ॥ \1 ॥", t)
+    return re.sub(r"।।\s*([0-9०-९]+(?:\.[0-9०-९]+)*)", r" ॥ \1 ॥", t)
+
+
 def build_book(slug: str) -> dict:
     """Fetch, clean, split and write payload+report+sources. Returns report."""
     if slug not in _cat.BOOKS:
@@ -433,6 +528,16 @@ def build_book(slug: str) -> dict:
                 # Each page is one prasna (P): chapter = page order.
                 for num_raw, cleaned in _wiki_numbered_verses(body or "", vedic=vedic):
                     raw_verses.append((str(pi + 1), num_raw, cleaned))
+            elif slug == "mahimna":
+                # The page's verse markers carry four print defects (see
+                # _repair_mahimna_markers); without the repair the splitter
+                # merges three verse pairs and drops verse 12 as a repeated
+                # ref. The page title line is structure, not verse (the
+                # tandava/kena pages drop theirs too).
+                body_m = _repair_mahimna_markers(body or "")
+                body_m = body_m.replace("॥ शिवमहिम्नःस्तोत्रम् ॥", "", 1)
+                for num_raw, cleaned in _wiki_numbered_verses(body_m, vedic=vedic):
+                    raw_verses.append((None, num_raw, cleaned))
             else:
                 # Page-order chapters (Shakuntala acts, Gitagovinda sargas,
                 # Vetala tales): verse numbers restart every page. Or chapters
@@ -458,6 +563,11 @@ def build_book(slug: str) -> dict:
                 elif spec.get("chapter_per_page"):
                     page_ch = str(pi + 1)
                 body_w = body or ""
+                if kind == "wiki_vetala":
+                    # Page repairs (pipe verse ends on page 00, editorial
+                    # <small> notes on page 04, page 18's duplicate
+                    # split-sandhi recension) — see _repair_vetala_page.
+                    body_w = _repair_vetala_page(body_w)
                 if spec.get("inline_num_marker"):
                     # A verse end printed as "letter + number + danda" (the
                     # opening danda lost on the page: "…पतिः १ ॥" in the

@@ -93,6 +93,7 @@ speech.setSpeechRoute("Home");
   const first = createManagedAudioPlayer("first.wav", undefined, "First");
   first.play();
   assert.equal(players.at(-1).lock.at(-1)[0], true, "Playback registers Android media controls before starting");
+  assert.equal(audioTransport.getSnapshot().kind, "audio", "Ordinary audio does not opt in to the floater");
   const oldId = audioTransport.getSnapshot().id;
   audioTransport.toggle();
   assert.equal(audioTransport.getSnapshot().playing, false);
@@ -101,8 +102,9 @@ speech.setSpeechRoute("Home");
   assert.equal(audioTransport.getSnapshot().minimized, true);
   audioTransport.toggle();
   assert.equal(players.at(-1).playing, true);
-  const second = createManagedAudioPlayer("second.wav", undefined, "Second");
+  const second = createManagedAudioPlayer("second.wav", undefined, "Second", true, "audiobook");
   second.play();
+  assert.equal(audioTransport.getSnapshot().kind, "audiobook", "Audiobooks opt in to the floater");
   assert.equal(players.at(-2).lock.at(-1)[0], false, "Focus handoff unregisters old media controls");
   audioTransport.release(oldId);
   assert.equal(audioTransport.getSnapshot().title, "Second");
@@ -110,6 +112,9 @@ speech.setSpeechRoute("Home");
   assert.equal(audioTransport.getSnapshot().title, "Second");
   second.remove();
   assert.equal(audioTransport.getSnapshot(), null);
+  const voiceId = audioTransport.claim("Voice companion", { play() {}, pause() {} });
+  assert.equal(audioTransport.getSnapshot().kind, "audio", "Direct voice/video sources do not opt in to the floater");
+  audioTransport.release(voiceId);
   players.length = 0;
 }
 

@@ -1,3 +1,4 @@
+import ProfileImage from "../components/ProfileImage";
 import Modal from "../components/AudioModal";
 import React, {
   createContext,
@@ -684,6 +685,7 @@ function Stage({
                   <Text style={styles.avatarText}>
                     {initials(p.name || p.userId)}
                   </Text>
+                  <ProfileImage uri={`/people/${p.userId}/photo`} />
                 </View>
                 <Text style={styles.personName} numberOfLines={1}>
                   {p.userId === learner?.id ? "You" : p.name || "Learner"}
@@ -750,6 +752,7 @@ function Stage({
                       <Text style={[styles.avatarText, { fontSize: 18 }]}>
                         {initials(p.name || "L")}
                       </Text>
+                      <ProfileImage uri={`/people/${p.userId}/photo`} />
                     </View>
                     <Text style={styles.personName} numberOfLines={1}>
                       {p.userId === learner?.id ? "You" : p.name || "Learner"}

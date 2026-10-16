@@ -1,9 +1,13 @@
-import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useState, useSyncExternalStore } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/types";
+import MiniPlayer from "./chant/MiniPlayer";
+import EdgeFloater from "./EdgeFloater";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { audioTransport } from "../services/audioTransport";
-import { color } from "../theme";
+import { useListenBus } from "../services/listenBus";
 
 // A screen with its own controls where the bar would sit (Group chat's
 // composer) pins the bar just under its top chrome instead: `below` is where
@@ -33,33 +37,21 @@ export function usePinAudioBarBelow(below: number | null) {
 export default function FloatingAudioBar({ inTabs = false, atTop = false }: { inTabs?: boolean; atTop?: boolean }) {
   const audio = useSyncExternalStore(audioTransport.subscribe, audioTransport.getSnapshot);
   const below = useSyncExternalStore(subscribePin, pinnedBelow);
+  const bus = useListenBus();
   const insets = useSafeAreaInsets();
-  if (!audio) return null;
+  const { height, width } = useWindowDimensions();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  if (audio?.kind !== "audiobook") return null;
+  // ✕ on the mini player hides the bar for this session; the floater around
+  // it must leave with the bar, not stay behind as an empty tuck tab.
+  if (!bus.session || bus.session.pages.length === 0 || bus.miniHiddenFor === bus.session.id) return null;
   const bottom = Math.max(insets.bottom, 8) + (inTabs ? 64 : 12);
-  const place = atTop ? { top: insets.top + 52 } : below != null ? { top: below + 8 } : { bottom };
-  return <View pointerEvents="box-none" style={[styles.anchor, place]}>
-    <View style={[styles.bar, audio.minimized && styles.compact]}>
-      <Pressable onPress={() => audioTransport.toggle()} accessibilityRole="button"
-        accessibilityLabel={audio.playing ? "Pause audio" : "Resume audio"} style={styles.button}>
-        <Ionicons name={audio.playing ? "pause" : "play"} size={23} color="#FFF8EE" />
-      </Pressable>
-      {!audio.minimized && <View style={styles.label}>
-        <Text numberOfLines={1} style={styles.title}>{audio.title}</Text>
-        <Text style={styles.status}>{audio.playing ? "Playing" : "Paused"}{audio.duration > 0 ? ` · ${audio.position}s / ${audio.duration}s` : ""}</Text>
-      </View>}
-      <Pressable onPress={() => audio.minimized ? audioTransport.expand() : audioTransport.minimize()}
-        accessibilityRole="button" accessibilityLabel={audio.minimized ? "Expand audio player" : "Minimize audio player"} style={styles.button}>
-        <Ionicons name={audio.minimized ? "chevron-back" : "chevron-forward"} size={20} color="#FFF8EE" />
-      </Pressable>
-    </View>
-  </View>;
+  const initialTop = atTop ? insets.top + 52 : below != null ? below + 8 : height - bottom - 88;
+  return <EdgeFloater storageKey="shabd.floater.audiobook" label="audiobook player" width={Math.min(420, width - 28)} height={88} initialTop={initialTop}>
+    <MiniPlayer floating style={styles.player}
+      onOpen={(bookKey, chapter, index) => navigation.navigate("Listen", { bookKey, chapter: chapter ?? undefined, index })} />
+  </EdgeFloater>;
 }
 const styles = StyleSheet.create({
-  anchor: { position: "absolute", left: 16, right: 16, alignItems: "flex-end", zIndex: 100 },
-  bar: { backgroundColor: "#293C35", borderRadius: 18, flexDirection: "row", alignItems: "center", width: "100%", padding: 4, borderWidth: 1, borderColor: color.border },
-  compact: { width: 100 },
-  button: { width: 44, height: 48, alignItems: "center", justifyContent: "center" },
-  label: { flex: 1, paddingHorizontal: 6 },
-  title: { color: "#FFF8EE", fontFamily: "Nunito_700Bold", fontSize: 14 },
-  status: { color: "#E3EADF", fontFamily: "Nunito_400Regular", fontSize: 12 },
+  player: { position: "relative", left: 0, right: 0, bottom: 0 },
 });

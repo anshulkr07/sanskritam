@@ -1,5 +1,5 @@
 import { createAudioPlayer } from "expo-audio";
-import { audioTransport } from "./audioTransport";
+import { audioTransport, type AudioKind } from "./audioTransport";
 import { offlineAudioUrl } from "./offlineBooks";
 
 let lockOwner: { clear(): void } | null = null;
@@ -11,6 +11,7 @@ export function createManagedAudioPlayer(
   options?: Parameters<typeof createAudioPlayer>[1],
   title = "Audio",
   retainLockScreenOnFinish = false,
+  kind: AudioKind = "audio",
 ): ReturnType<typeof createAudioPlayer> {
   const resolved = typeof source === "string" ? offlineAudioUrl(source) : source;
   const player = createAudioPlayer(resolved, options);
@@ -31,7 +32,7 @@ export function createManagedAudioPlayer(
   const play = () => {
     if (removed) return;
     if (!id || audioTransport.getSnapshot()?.id !== id) {
-      id = audioTransport.claim(title, { play, pause });
+      id = audioTransport.claim(title, { play, pause }, kind);
     }
     try {
       if (!lockActive) setLock(true);

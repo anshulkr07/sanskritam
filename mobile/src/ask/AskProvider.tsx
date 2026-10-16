@@ -16,35 +16,25 @@
 //  - NEVER a seventh tab (U8-1): it is an overlay affordance, not navigation.
 //  - Reduce Motion drops the spring on release; the bubble still snaps.
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { useFocusEffect } from "@react-navigation/native";
 import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
 } from "react";
 import { Pressable, StyleSheet, View, useWindowDimensions } from "react-native";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated";
+
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import AskSheet, { type AskContext } from "../components/AskSheet";
-import { useReducedMotion } from "../hooks/useReducedMotion";
+import EdgeFloater from "../components/EdgeFloater";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
 import FloatingAudioBar from "../components/FloatingAudioBar";
-import { audioTransport } from "../services/audioTransport";
 import { color, shadow } from "../theme";
 
 export type { AskContext };
@@ -115,8 +105,6 @@ const HIDDEN_ROUTES = new Set([
 ]);
 
 const BUBBLE = 56;
-const MARGIN = 12;
-const STORE_KEY = "shabd.ask.bubble";
 
 export function AskProvider({
   children,
@@ -178,108 +166,20 @@ export function AskProvider({
 
 // ─── The bubble ───────────────────────────────────────────────────────
 
-function clamp(v: number, lo: number, hi: number): number {
-  "worklet";
-  return Math.max(lo, Math.min(hi, v));
-}
-
 function AskBubble({ onPress }: { onPress: () => void }) {
-  const audio = useSyncExternalStore(audioTransport.subscribe, audioTransport.getSnapshot);
-  const { width, height } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const reduced = useReducedMotion();
-
-  // The bubble's top edge stays between the header area and just above the
-  // tab bar (about 64dp) plus its own height.
-  const minY = insets.top + 72;
-  const maxY = Math.max(minY, height - insets.bottom - 64 - 72 - (audio ? 72 : 0));
-  const leftX = MARGIN;
-  const rightX = width - BUBBLE - MARGIN;
-
-  const x = useSharedValue(rightX);
-  const y = useSharedValue(maxY);
-  const startX = useSharedValue(0);
-  const startY = useSharedValue(0);
-  const lifted = useSharedValue(0);
-
-  // Restore where the learner left it.
-  useEffect(() => {
-    let alive = true;
-    AsyncStorage.getItem(STORE_KEY)
-      .then((raw) => {
-        if (!alive || !raw) return;
-        const saved = JSON.parse(raw) as { side?: string; y?: number };
-        if (typeof saved.y === "number") y.value = Math.max(minY, Math.min(maxY, saved.y));
-        x.value = saved.side === "left" ? leftX : rightX;
-      })
-      .catch(() => {
-        /* storage unavailable: keep the default spot */
-      });
-    return () => {
-      alive = false;
-    };
-    // Restored once; later window changes are handled below.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Keep it on screen if the window changes (split screen, unfolding).
-  useEffect(() => {
-    y.value = Math.max(minY, Math.min(maxY, y.value));
-    x.value = x.value + BUBBLE / 2 > width / 2 ? rightX : leftX;
-  }, [width, height, minY, maxY, rightX, leftX, x, y]);
-
-  const persist = useCallback((side: "left" | "right", top: number) => {
-    AsyncStorage.setItem(STORE_KEY, JSON.stringify({ side, y: top })).catch(() => {});
-  }, []);
-
-  const pan = Gesture.Pan()
-    .minDistance(8)
-    .onStart(() => {
-      startX.value = x.value;
-      startY.value = y.value;
-      lifted.value = 1;
-    })
-    .onUpdate((e) => {
-      x.value = startX.value + e.translationX;
-      y.value = clamp(startY.value + e.translationY, minY, maxY);
-    })
-    .onEnd(() => {
-      const side = x.value + BUBBLE / 2 > width / 2 ? "right" : "left";
-      const target = side === "right" ? rightX : leftX;
-      x.value = reduced ? target : withSpring(target, { damping: 20, stiffness: 240 });
-      lifted.value = 0;
-      runOnJS(persist)(side, y.value);
-    });
-
-  const style = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: x.value },
-      { translateY: y.value },
-      { scale: 1 + lifted.value * 0.08 },
-    ],
-  }));
-
-  return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-      <GestureDetector gesture={pan}>
-        <Animated.View style={[styles.bubbleWrap, style]}>
-          <Pressable
-            onPress={onPress}
-            accessibilityRole="button"
-            accessibilityLabel="Ask a question"
-            accessibilityHint="Opens help about what is on screen"
-            style={styles.bubble}
-          >
-            <Ionicons name="chatbubble-ellipses" size={26} color={color.white} />
-          </Pressable>
-        </Animated.View>
-      </GestureDetector>
-    </View>
-  );
+  return <EdgeFloater storageKey="shabd.floater.ask" label="Ask" width={BUBBLE} height={80}
+    initialTop={height - insets.bottom - 240}>
+    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel="Ask a question"
+      accessibilityHint="Opens help about what is on screen. Drag to move. Use the chevron to tuck away."
+      style={styles.bubble}>
+      <Ionicons name="chatbubble-ellipses" size={26} color={color.white} />
+    </Pressable>
+  </EdgeFloater>;
 }
 
 const styles = StyleSheet.create({
-  bubbleWrap: { position: "absolute", left: 0, top: 0, width: BUBBLE, height: BUBBLE },
   bubble: {
     width: BUBBLE,
     height: BUBBLE,

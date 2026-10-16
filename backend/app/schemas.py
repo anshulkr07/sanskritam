@@ -52,6 +52,9 @@ class AppleAuthRequest(BaseModel):
 
 class LearnerProfile(BaseModel):
     id: str
+    avatar_url: Optional[str] = None
+    community_verified: bool = False
+    community_suspended: bool = False
     display_name: str
     bridge_langs: list[str]
     sanskrit_ratio: float

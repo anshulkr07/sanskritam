@@ -164,7 +164,7 @@ export function PersonSheet({
     <>
       <Sheet visible={!confirm && !reporting} onClose={onClose}>
         <View style={styles.personTop}>
-          <Avatar id={person.id} name={person.name} size={64} online={person.online} />
+          <Avatar avatarUrl={person.avatar_url} id={person.id} name={person.name} size={64} online={person.online} />
           <View style={{ flex: 1 }}>
             <Text style={styles.personName}>{person.name}</Text>
             <Text style={styles.personMeta}>

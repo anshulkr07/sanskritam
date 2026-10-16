@@ -58,7 +58,7 @@ from app.config import settings
 
 router = APIRouter()
 
-UPDATED = "15 October 2026"
+UPDATED = "16 October 2026"
 
 _STYLE = """
 body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -115,6 +115,14 @@ processes it for us, and how to delete it. Questions and requests: {contact}.</p
 device and an account linked to it. If you sign in with Google or Apple, we receive an account identifier
 and your name, which becomes your display name (if no name is shared, we use the part of your email
 address before the "@"). We don't store your email address.</li>
+<li><strong>Your profile picture.</strong> You can upload one picture for your account and Group.
+We crop and resize it, remove image metadata and keep the approved picture in private storage until
+you replace it, remove it or delete your account. Signed-in learners can see it in your profile and
+Group unless either of you has blocked the other. Your picture is optional.</li>
+<li><strong>Image checks.</strong> Profile pictures and photos shared in chats are sent to Google's
+Gemini through Vertex AI to check for harmful content before they are published. We do not use a face
+to verify identity or decide whether someone is trustworthy. If the check is unavailable or cannot
+approve a picture, it is not published. Avoid sharing identity documents or private contact details.</li>
 <li><strong>Your learning.</strong> Your answers, scores, lesson and review progress, streaks, daily
 activity, and settings such as your language mix and time zone, so the app can check your answers, adapt
 to you and keep your progress.</li>
@@ -150,8 +158,9 @@ best counted recording of each verse in private storage until 30 days after the 
 delete it; we may listen to it to check an entry. If you win a prize, we will ask you for the details needed
 to send it and use them only for that.</li>
 <li><strong>Group.</strong> Group is optional, and you can look around without joining in. To post, join a
-circle, start a room or a call, or send a friend request, you make a learner card and agree to the Saṅgha
-rules. In Group we keep:
+circle, start a room or a call, or send a friend request, you sign in with Google or Apple, make a learner
+card and agree to the Saṅgha rules. You can link a new sign-in account to your guest learning profile.
+Sign-in confirms control of that account; it does not establish that someone is safe. In Group we keep:
 <ul>
 <li><strong>Your learner card:</strong> the name on your account, the level you choose and the line you
 write about yourself. Any learner can find your card, or search for it by name, unless one of you has
@@ -180,8 +189,9 @@ started, and, for a call in a chat, who started it. The list of rooms shows how 
 the names of up to four speakers.</li>
 <li><strong>Reports:</strong> when you report a message, a circle or a learner, we keep who reported it, the
 reason you give, and a copy of what was reported: a message's text; a circle's name, topic and description;
-or a learner's name and line. The copy stays even if the original is deleted, so the Sanskritam team can
-review it. Photos and voice notes are not copied.</li>
+or a learner's name, line and profile-picture reference. The copy stays even if the original is deleted, so the Sanskritam team can
+review it. Photos and voice notes are not copied. Moderators can suspend community access and remove a
+profile picture after review. We keep a record of the moderation decision and its reason.</li>
 </ul>
 Your Group messages, photos, voice notes and calls are not sent to any AI service.</li>
 <li><strong>Handwriting.</strong> Letters you draw on the screen are read on your device. Only the

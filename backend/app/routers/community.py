@@ -51,10 +51,17 @@ from app.community_models import (
 from app.services.play.social import _are_friends, _blocked, friends_list, pair_key
 from app.services import community_audio as audio
 from app.config import settings
+from app.services import profile_photos as photos
 
 router = APIRouter(prefix="/community")
 Level = Literal["beginner", "intermediate", "advanced", "acharya"]
 GroupLevel = Literal["all", "beginner", "intermediate", "advanced", "acharya"]
+
+
+def require_group_learner(u=Depends(require_learner)):
+    if u.community_suspended:
+        raise HTTPException(403, "Your community access is suspended. Contact support for a review.")
+    return u
 
 
 def iso(d):
@@ -103,6 +110,7 @@ def blocked_ids(db, uid):
 
 def require_card(db, uid):
     """Posting, joining, calling and friend requests need a learner card."""
+    photos.require_community_identity(db.get(Learner, uid))
     if not db.get(Profile, uid):
         raise HTTPException(428, "Make your learner card first.")
 
@@ -111,6 +119,8 @@ def profile_view(db, uid):
     u, p = db.get(Learner, uid), db.get(Profile, uid)
     return {
         "id": uid,
+        "avatar_url": photos.avatar_url(u),
+        "verified": photos.verified(u) if u else False,
         "name": u.display_name if u else "Learner",
         "level": p.level if p else "beginner",
         "bio": p.bio if p else "",
@@ -131,8 +141,9 @@ class ProfileBody(BaseModel):
 
 @router.put("/profile")
 def set_profile(
-    body: ProfileBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    body: ProfileBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
+    photos.require_community_identity(u)
     p = db.get(Profile, u.id)
     if not p:
         if not body.rules:
@@ -146,12 +157,12 @@ def set_profile(
 
 
 @router.get("/profile")
-def own_profile(u=Depends(require_learner), db: Session = Depends(get_db)):
+def own_profile(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     return own_view(db, u.id)
 
 
 @router.post("/presence")
-def presence(u=Depends(require_learner), db: Session = Depends(get_db)):
+def presence(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     p = db.get(Profile, u.id)
     if p:
         p.last_seen = now()
@@ -164,7 +175,7 @@ def learners(
     q: str = "",
     level: str = "all",
     limit: int = Query(100, ge=1, le=100),
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     query = (
@@ -172,6 +183,7 @@ def learners(
         .join(Learner, Profile.user_id == Learner.id)
         .filter(Learner.id != u.id)
     )
+    query = query.filter(Learner.community_suspended.is_(False), or_(Learner.google_sub.isnot(None), Learner.apple_sub.isnot(None)))
     if q.strip():
         query = query.filter(Learner.display_name.ilike("%" + q.strip()[:80] + "%"))
     if level != "all":
@@ -201,7 +213,7 @@ def learners(
 
 
 @router.get("/friends")
-def friends(u=Depends(require_learner), db: Session = Depends(get_db)):
+def friends(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     data = friends_list(db, u)
     outgoing = (
         db.query(Friendship)
@@ -226,11 +238,11 @@ class FriendBody(BaseModel):
 
 @router.post("/friends")
 def friend_action(
-    body: FriendBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    body: FriendBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     from app.services.play import social
 
-    if body.action == "request":
+    if body.action in ("request", "accept"):
         require_card(db, u.id)
     if body.action == "remove":
         social.remove_friend(db, u, body.user_id)
@@ -270,7 +282,7 @@ class DirectBody(BaseModel):
 
 
 @router.post("/direct")
-def direct(body: DirectBody, u=Depends(require_learner), db: Session = Depends(get_db)):
+def direct(body: DirectBody, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     if not _are_friends(db, u.id, body.user_id) or _blocked(db, u.id, body.user_id):
         raise HTTPException(403, "Accept a friend request before chatting.")
     key = pair_key(u.id, body.user_id)
@@ -371,7 +383,7 @@ def conversations(
     discover: bool = False,
     q: str = "",
     limit: int = Query(100, ge=1, le=100),
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     blocked = blocked_ids(db, u.id)
@@ -405,7 +417,7 @@ def conversations(
 
 @router.get("/conversations/{cid}")
 def one_conversation(
-    cid: str, u=Depends(require_learner), db: Session = Depends(get_db)
+    cid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     c = db.get(Conversation, cid)
     mine = db.get(Member, (cid, u.id)) if c else None
@@ -446,7 +458,7 @@ def group_fields(body: GroupBody):
 
 
 @router.post("/groups")
-def group(body: GroupBody, u=Depends(require_learner), db: Session = Depends(get_db)):
+def group(body: GroupBody, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     fields = group_fields(body)
     require_card(db, u.id)
     c = Conversation(kind="group", creator_id=u.id, **fields)
@@ -461,7 +473,7 @@ def group(body: GroupBody, u=Depends(require_learner), db: Session = Depends(get
 
 @router.put("/groups/{cid}")
 def edit_group(
-    cid: str, body: GroupBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    cid: str, body: GroupBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     c, m = member(db, cid, u.id)
     if c.kind != "group" or m.role != "admin":
@@ -476,7 +488,7 @@ def edit_group(
 
 
 @router.post("/groups/{cid}/join")
-def join_group(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def join_group(cid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     c = db.get(Conversation, cid)
     if not c or c.kind != "group" or not c.public:
         raise HTTPException(403, "This circle is invite only.")
@@ -505,7 +517,7 @@ class InviteBody(BaseModel):
 def invite(
     cid: str,
     body: InviteBody,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     c, m = member(db, cid, u.id)
@@ -529,7 +541,7 @@ def invite(
 def remove_member(
     cid: str,
     body: InviteBody,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     c, m = member(db, cid, u.id)
@@ -547,7 +559,7 @@ def remove_member(
 
 
 @router.post("/groups/{cid}/leave")
-def leave_group(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def leave_group(cid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     c, m = member(db, cid, u.id)
     if c.kind != "group":
         raise HTTPException(422, "This is a direct chat.")
@@ -583,7 +595,7 @@ class MessageBody(BaseModel):
 def send(
     cid: str,
     body: MessageBody,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     c, m = member(db, cid, u.id)
@@ -699,7 +711,7 @@ def message_view(db, msg, blocked=frozenset()):
 def messages(
     cid: str,
     before: int | None = None,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     member(db, cid, u.id)
@@ -731,7 +743,7 @@ def refresh_last_text(db, c):
 
 @router.post("/conversations/{cid}/messages/{mid}/delete")
 def delete_message(
-    cid: str, mid: int, u=Depends(require_learner), db: Session = Depends(get_db)
+    cid: str, mid: int, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     c, m = member(db, cid, u.id)
     msg = db.get(Message, mid)
@@ -767,7 +779,7 @@ class ReportBody(BaseModel):
 
 
 @router.post("/report", status_code=204)
-def report(body: ReportBody, u=Depends(require_learner), db: Session = Depends(get_db)):
+def report(body: ReportBody, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     """Flag a message, circle or learner for review. The server copies what
     is reported, so a moderator sees it even if it is deleted later."""
     from app.routers.feedback import REPORTS_PER_DAY, MAX_FIELD
@@ -804,7 +816,7 @@ def report(body: ReportBody, u=Depends(require_learner), db: Session = Depends(g
             raise HTTPException(404, "Learner not found.")
         p = db.get(Profile, other.id)
         subject = f"group learner {other.id}"
-        content = "\n".join(x for x in (other.display_name, p.bio if p else "") if x)
+        content = "\n".join(x for x in (other.display_name, p.bio if p else "", photos.avatar_url(other)) if x)
     db.add(
         ContentReport(
             learner_id=u.id,
@@ -824,7 +836,7 @@ class ReadBody(BaseModel):
 
 @router.post("/conversations/{cid}/read")
 def read(
-    cid: str, body: ReadBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    cid: str, body: ReadBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     c, m = member(db, cid, u.id)
     maximum = (
@@ -851,7 +863,7 @@ async def upload(
     cid: str,
     file: UploadFile = File(...),
     duration: int = Form(0),
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     member(db, cid, u.id)
@@ -893,6 +905,10 @@ async def upload(
     )
     if not valid:
         raise HTTPException(422, "The file does not match its media type.")
+    if mime.startswith("image/"):
+        data = await run_in_threadpool(lambda: photos.normalize_image(data, mime, avatar=False))
+        await photos.screen_image(db, u, data)
+        mime = "image/jpeg"
     ext = {
         "image/webp": "webp",
         "image/jpeg": "jpg",
@@ -925,7 +941,7 @@ async def upload(
 
 
 @router.get("/media/{mid}")
-def media_url(mid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def media_url(mid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     row = db.get(Media, mid)
     if not row:
         raise HTTPException(404, "Media not found.")
@@ -947,7 +963,7 @@ class RoomBody(BaseModel):
 
 
 @router.get("/rooms")
-def rooms(u=Depends(require_learner), db: Session = Depends(get_db)):
+def rooms(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     rows = (
         db.query(Room)
         .filter(Room.status == "live", Room.heartbeat > now() - timedelta(minutes=2))
@@ -972,7 +988,7 @@ def rooms(u=Depends(require_learner), db: Session = Depends(get_db)):
 
 @router.post("/rooms")
 def create_room(
-    body: RoomBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    body: RoomBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     if not body.title.strip():
         raise HTTPException(422, "Give the room a title.")
@@ -998,7 +1014,7 @@ def create_room(
 
 
 @router.post("/rooms/{rid}/heartbeat")
-def heartbeat(rid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def heartbeat(rid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     r = db.get(Room, rid)
     if not r or r.host_id != u.id or r.status != "live":
         raise HTTPException(403, "Only the host can keep this room live.")
@@ -1016,7 +1032,7 @@ class PermissionBody(BaseModel):
 def permission(
     rid: str,
     body: PermissionBody,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     r = db.get(Room, rid)
@@ -1033,7 +1049,7 @@ def permission(
 
 
 @router.post("/rooms/{rid}/end")
-def end_room(rid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def end_room(rid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     r = db.get(Room, rid)
     if not r or r.host_id != u.id:
         raise HTTPException(403, "Only the host can end the room.")
@@ -1045,7 +1061,7 @@ def end_room(rid: str, u=Depends(require_learner), db: Session = Depends(get_db)
 
 
 @router.post("/conversations/{cid}/call")
-def start_call(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def start_call(cid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     c, m = member(db, cid, u.id)
     require_card(db, u.id)
     # Serialize call creation with a row lock on Postgres.
@@ -1086,7 +1102,7 @@ class DeclineBody(BaseModel):
 def decline_call(
     cid: str,
     body: DeclineBody,
-    u=Depends(require_learner),
+    u=Depends(require_group_learner),
     db: Session = Depends(get_db),
 ):
     c, m = member(db, cid, u.id)
@@ -1100,7 +1116,7 @@ def decline_call(
 
 
 @router.post("/conversations/{cid}/call/end")
-def end_call(cid: str, u=Depends(require_learner), db: Session = Depends(get_db)):
+def end_call(cid: str, u=Depends(require_group_learner), db: Session = Depends(get_db)):
     c, m = member(db, cid, u.id)
     if c.call_id:
         audio.end("default", c.call_id)
@@ -1119,7 +1135,7 @@ class TokenBody(BaseModel):
 
 @router.post("/stream-token")
 def stream_token(
-    body: TokenBody, u=Depends(require_learner), db: Session = Depends(get_db)
+    body: TokenBody, u=Depends(require_group_learner), db: Session = Depends(get_db)
 ):
     if body.kind == "audio_room":
         r = db.get(Room, body.id)
@@ -1142,7 +1158,7 @@ def stream_token(
 
 
 @router.get("/status")
-def status(u=Depends(require_learner), db: Session = Depends(get_db)):
+def status(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     blocked = blocked_ids(db, u.id)
     accepted = {
         r.friend_id
@@ -1225,7 +1241,7 @@ def status(u=Depends(require_learner), db: Session = Depends(get_db)):
 
 
 @router.post("/realtime-ticket")
-def ticket(u=Depends(require_learner), db: Session = Depends(get_db)):
+def ticket(u=Depends(require_group_learner), db: Session = Depends(get_db)):
     # Tickets are single-use, 30 seconds, separate from long-lived auth tokens.
     row = Ticket(
         id=secrets.token_urlsafe(32),
@@ -1267,7 +1283,8 @@ async def realtime(ws: WebSocket):
 
             def version():
                 with SessionLocal() as db:
-                    if not db.get(Learner, uid):
+                    learner = db.get(Learner, uid)
+                    if not learner or learner.community_suspended:
                         return None
                     return (
                         db.query(func.max(Event.id))

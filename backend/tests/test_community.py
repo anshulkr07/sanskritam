@@ -50,7 +50,7 @@ def group_api():
 
 def new_learner(sessions, name):
     with sessions() as db:
-        u = Learner(id=uuid.uuid4().hex[:16], display_name=name)
+        u = Learner(id=uuid.uuid4().hex[:16], display_name=name, google_sub=uuid.uuid4().hex)
         db.add(u)
         db.flush()
         t = Token(id=uuid.uuid4().hex, learner_id=u.id)
@@ -175,6 +175,15 @@ def test_expired_media_skips_storage(group_api, monkeypatch):
 
 
 def test_upload_validation_and_retention(group_api, monkeypatch):
+    import io
+    from PIL import Image
+    image_bytes = io.BytesIO()
+    Image.new("RGB", (32, 32), "orange").save(image_bytes, format="WEBP")
+
+    async def screen_ok(*args):
+        return None
+
+    monkeypatch.setattr("app.services.profile_photos.screen_image", screen_ok)
     c, users, sessions = group_api
     a, b, x = users
     cid = direct_chat(c, users)
@@ -217,7 +226,7 @@ def test_upload_validation_and_retention(group_api, monkeypatch):
     r = c.post(
         route,
         headers=a[1],
-        files={"file": ("x.webp", b"RIFFxxxxWEBPdata", "image/webp")},
+        files={"file": ("x.webp", image_bytes.getvalue(), "image/webp")},
     )
     assert r.status_code == 200, r.text
     assert writes[0]["Key"].startswith(f"ephemeral-chat/{now():%Y-%m-%d}/")

@@ -41,7 +41,7 @@ import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
-import { accent, color, fill, font, gradientOf, script, shadow, space, type AccentName } from "../theme";
+import { accent, color, fill, font, gradientOf, onFill, script, shadow, space, type AccentName } from "../theme";
 import { firstName } from "../utils/name";
 import { dayStreak, localToday } from "../utils/streak";
 import { plain } from "../utils/text";
@@ -153,21 +153,8 @@ export default function HomeScreen({ navigation }: Props) {
               <Skeleton height={26} width={120} style={{ marginTop: 4 }} />
             )}
           </View>
-          <TodayGoal today={today} failed={todayFailed} onRetry={loadToday} />
+          <TodayGoal today={today} failed={todayFailed} onRetry={loadToday} onOpenProgress={() => rootNav.navigate("Progress" as never)} />
         </View>
-
-        <DailyLearningCard navigate={(route, params) => (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate(route, params)} />
-
-        {!!compLast && (
-          <Pressable
-            onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("ContestResults", { id: compLast.competition.id })}
-            accessibilityRole="button"
-            accessibilityLabel={`Results are out, you came ${compLast.my_rank ?? ""}`}
-            style={styles.compCard}
-          >
-            <Text style={styles.compText}>Results are out: you came {compLast.my_rank ?? "-"}</Text>
-          </Pressable>
-        )}
 
         <Entrance index={0}>
           <Text style={styles.section}>Daily</Text>
@@ -175,6 +162,23 @@ export default function HomeScreen({ navigation }: Props) {
           <TithiCard calendarPlace={homePlace.place} />
           {/* Today's festivals only. */}
           <ParvaStrip calendarPlace={homePlace.place} />
+          {/* The learner's own daily things, under the day's festival. */}
+          <DailyLearningCard navigate={(route, params) => (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate(route, params)} />
+          {!!compLast && (
+            <Pressable
+              onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("ContestResults", { id: compLast.competition.id })}
+              accessibilityRole="button"
+              accessibilityLabel={compLast.my_rank ? `Results are out: you came ${ordinal(compLast.my_rank)}. See the standings` : "Results are out: see where you placed"}
+              style={({ pressed }) => [styles.compCard, pressed && styles.pressed]}
+            >
+              <View style={styles.compIcon}><Ionicons name="trophy-outline" size={17} color={onFill.text} /></View>
+              <View style={styles.compTextWrap}>
+                <Text style={styles.compTitle}>Results are out</Text>
+                <Text style={styles.compSub}>{compLast.my_rank ? `You came ${ordinal(compLast.my_rank)} · see the standings` : "See where you placed in the standings"}</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color={onFill.soft} />
+            </Pressable>
+          )}
           <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} showStory={!storyCompleted} />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />
@@ -247,14 +251,28 @@ function StreakChip({ days }: { days: number }) {
 // ─── Today's goal ─────────────────────────────────────────────────────
 // Sits at the right of the greeting: today's XP against the daily goal.
 
+// "1st", "2nd", "3rd", "4th"… for the competition result line.
+function ordinal(n: number): string {
+  const hundred = n % 100;
+  if (hundred >= 11 && hundred <= 13) return `${n}th`;
+  switch (n % 10) {
+    case 1: return `${n}st`;
+    case 2: return `${n}nd`;
+    case 3: return `${n}rd`;
+    default: return `${n}th`;
+  }
+}
+
 function TodayGoal({
   today,
   failed,
   onRetry,
+  onOpenProgress,
 }: {
   today: { daily: ProgressDaily } | null;
   failed: boolean;
   onRetry: () => void;
+  onOpenProgress: () => void;
 }) {
   if (!today) {
     return failed ? (
@@ -274,13 +292,13 @@ function TodayGoal({
   const { xp, goal_xp: goal, goal_met: met } = today.daily;
   const target = goal || 50;
   return (
-    <View style={styles.goal} accessible accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}`}>
+    <Pressable onPress={onOpenProgress} style={styles.goal} accessibilityRole="button" accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}. Open progress`}>
       <ProgressRing progress={xp / target} size={GOAL_RING} stroke={7} tint={met ? color.okText : color.saffron}>
         <Text style={styles.ringNum}>{xp}</Text>
         <Text style={styles.ringUnit}>/ {target} XP</Text>
       </ProgressRing>
       <Text style={[styles.goalLabel, met && { color: color.okText }]}>{met ? "Goal met" : "Today's goal"}</Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -419,8 +437,21 @@ const styles = StyleSheet.create({
   },
   streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
-  compCard: { minHeight: 56, justifyContent: "center", paddingHorizontal: space.md, borderRadius: 10, backgroundColor: "#17535C", marginBottom: space.sm },
-  compText: { color: "#FFF8EE", fontWeight: "800" },
+  compCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.sm,
+    minHeight: 56,
+    paddingHorizontal: space.md,
+    paddingVertical: space.sm,
+    borderRadius: 10,
+    backgroundColor: fill.gold,
+    marginBottom: space.sm,
+  },
+  compIcon: { width: 32, height: 32, borderRadius: 6, alignItems: "center", justifyContent: "center", backgroundColor: "rgba(255,248,238,0.14)" },
+  compTextWrap: { flex: 1 },
+  compTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: onFill.text },
+  compSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: onFill.soft, marginTop: 1 },
   greetText: { flex: 1 },
   hello: { fontSize: font.sizes.md, lineHeight: 26, color: color.inkSoft },
   name: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 28, color: color.ink, marginTop: -2 },

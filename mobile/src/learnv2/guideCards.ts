@@ -27,7 +27,8 @@ export function topicCards(topic: GuideTopic): LearnV2Card[] {
     cards.push({ id: `guide:${topic.id}:${key}`, ...card });
   };
   add("intro", { kind: "teach", title: topic.title, body: topic.summary,
-    ...(topic.term ? { term: topic.term, guide: { topicId: topic.id, sanskrit: topic.term } } : {}) });
+    ...(topic.term ? { term: topic.term } : {}),
+    guide: { topicId: topic.id, chapterId: topic.chapter.id, ...(topic.term ? { sanskrit: topic.term } : {}) } });
 
   const blockCards = (block: GuideBlock, key: string, heading: Loc) => {
     switch (block.kind) {

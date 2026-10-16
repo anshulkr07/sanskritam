@@ -88,6 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setAuthToken(res.token);
     setToken(res.token);
     const profile: LearnerProfile = {
+      ...res.learner,
       id: res.learner.id,
       display_name: res.learner.display_name,
       bridge_langs: res.learner.bridge_langs,

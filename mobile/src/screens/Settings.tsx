@@ -1,3 +1,5 @@
+import ProfilePhotoEditor from "../components/ProfilePhotoEditor";
+import ProfileImage from "../components/ProfileImage";
 import Modal from "../components/AudioModal";
 // Settings — its own drawer screen (U8-1). Account, sound and haptics, reduced
 // motion, text size, about. No mascot, no streak, no gamification: it is where
@@ -154,17 +156,19 @@ export default function SettingsScreen() {
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
         <Section title="Account">
           <View style={styles.who}>
-            <View style={styles.avatar}>
+            <View style={[styles.avatar, { overflow: "hidden" }]}>
               {name ? (
                 <Text style={styles.avatarLetter}>{name.charAt(0).toUpperCase()}</Text>
               ) : (
                 <Ionicons name="person" size={22} color={color.white} />
               )}
+              <ProfileImage uri={learner?.avatar_url} />
             </View>
             <Text style={styles.whoName} numberOfLines={1}>
               {name || "Friend"}
             </Text>
           </View>
+          <ProfilePhotoEditor />
           <LinkRow icon="log-out-outline" tone="rose" label="Sign out" onPress={() => void logout()} />
           <LinkRow
             icon="trash-outline"

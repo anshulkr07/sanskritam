@@ -232,7 +232,7 @@ export default function GroupInfoScreen({ navigation, route }: Props) {
         ) : peer ? (
           <>
             <View style={styles.top}>
-              <Avatar id={peer.id} name={peer.name} size={72} online={peer.online} />
+              <Avatar avatarUrl={peer.avatar_url} id={peer.id} name={peer.name} size={72} online={peer.online} />
               <View style={{ flex: 1, gap: 2 }}>
                 <Text style={styles.name}>{peer.name}</Text>
                 <Text style={groupStyles.meta}>
