@@ -127,7 +127,9 @@ UNIT_NOTES = {
                    "264 counts verses without them).",
     "amarakosha": "3,127 half-line units (kāṇḍa.varga.half-line), not whole "
                   "verses.",
-    "vetala": "Rows are ॥N॥ chunks; prose interleaves inside verse chunks.",
+    "vetala": "2,195 rows (GRETIL 2,175 = the 25 tales plus कथामुख prose); "
+              "pages 01, 16 and 18's split-sandhi duplicate recensions are "
+              "excluded and prose lead-ins stay with the following verse.",
     "devimahatmya": "588 rows vs 587 reference_by_chapter total (one extra "
                     "row in the built file); reconcile at audit (roadmap 3.4).",
     "chanakya": "343 numbered verses over 17 chapters; 15 chapter-colophon "
