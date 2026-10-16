@@ -23,7 +23,10 @@ class Handler(BaseHTTPRequestHandler):
    key=route.rsplit('/',1)[1][:-4]
    record=OUT/'deliveries'/f'{key}.json'
    if not record.exists():self.send_error(404);return
-   data=json.loads(record.read_text(encoding='utf-8'));p=(OUT.parents[1]/data['master']).resolve()
+   data=json.loads(record.read_text(encoding='utf-8'))
+   if not data.get('master_retained',True):
+    self.send_response(302);self.send_header('Location',data['entry']['variants']['tablet']['uri']);self.send_header('Cache-Control','no-store');self.end_headers();return
+   p=(OUT.parents[1]/data['master']).resolve()
    masters=(OUT.parents[1]/'results/gita-art-20261016/masters').resolve()
    if not p.is_relative_to(masters) or not p.exists():self.send_error(404);return
    body=p.read_bytes();kind='image/png'

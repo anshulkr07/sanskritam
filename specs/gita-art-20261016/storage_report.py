@@ -20,7 +20,7 @@ def main():
  for path in (OUT/'deliveries').glob('*.json'):
   d=json.loads(path.read_text(encoding='utf-8'))
   if d.get('published'):
-   expected.add(urlparse(d['masterUrl']).path.lstrip('/'))
+   if d.get('masterUrl'):expected.add(urlparse(d['masterUrl']).path.lstrip('/'))
    expected.update(urlparse(v['uri']).path.lstrip('/') for v in d['entry']['variants'].values())
  buckets={};found=set();gita_bytes=0
  for name in names:

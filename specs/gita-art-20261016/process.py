@@ -1,5 +1,5 @@
 """Contact sheets, reviewed delivery sizes, and resumable verified R2 publishing."""
-import argparse,concurrent.futures,hashlib,json,os,sys
+import argparse,concurrent.futures,hashlib,json,os,re,sys
 from pathlib import Path
 from datetime import datetime,timezone
 from PIL import Image,ImageDraw
@@ -11,6 +11,8 @@ from dotenv import dotenv_values
 ROOT=Path(__file__).resolve().parents[2];OUT=Path(__file__).resolve().parent
 sys.path.insert(0,str(ROOT/'specs/isha-art-20261016'))
 from migrate_artwork import http,mime_for
+sys.path.insert(0,str(ROOT/'specs/artwork'))
+from remove_generated_masters import discard_local, verify_variant
 
 def deliveries():
  return {p.stem:json.loads(p.read_text(encoding='utf-8')) for p in sorted((OUT/'deliveries').glob('*.json'))}
@@ -18,6 +20,17 @@ def deliveries():
 def save_delivery(value):
  path=OUT/'deliveries'/f"{value['key']}.json";temporary=path.with_suffix('.json.tmp')
  temporary.write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8');temporary.replace(path)
+
+def refresh_gallery_links():
+ # Embed current public reading URLs so even an already running read-only
+ # gallery server can show originals' replacements without a process restart.
+ links={d['key']:d['entry']['variants']['tablet']['uri'] for d in deliveries().values() if d.get('published')}
+ path=OUT/'progress.html';html=path.read_text(encoding='utf-8')
+ value='const readingImages=/*READING_URLS*/'+json.dumps(links,separators=(',',':'))+'/*END_READING_URLS*/;'
+ if '/*READING_URLS*/' in html:html=re.sub(r'const readingImages=/\*READING_URLS\*/.*?/\*END_READING_URLS\*/;',lambda _:value,html)
+ else:html=html.replace('<script>','<script>\n'+value,1)
+ html=html.replace("full.href='/master/'+j.key+'.png'", "full.href=readingImages[j.key]||('/master/'+j.key+'.png')")
+ path.write_text(html,encoding='utf-8')
 
 def status():
  ds=deliveries();counts={}
@@ -33,7 +46,8 @@ def contact(chapter):
  cols=8;width=1600;rows=(len(ds)+cols-1)//cols
  sheet=Image.new('RGB',(width,rows*225),'#fff8ee');draw=ImageDraw.Draw(sheet)
  for index,d in enumerate(ds):
-  with Image.open(ROOT/d['master']) as original:
+  preview=ROOT/d['master'] if d.get('master_retained',True) else ROOT/'results/gita-art-20261016/delivery'/f"{d['key']}-tablet.webp"
+  with Image.open(preview) as original:
    im=original.convert('RGB');im.thumbnail((190,190))
   x=(index%cols)*200;y=(index//cols)*225;sheet.paste(im,(x+(200-im.width)//2,y));draw.text((x+9,y+195),d['key'],fill='#3b2e25')
  target=OUT/'contact-sheets';target.mkdir(exist_ok=True)
@@ -57,7 +71,7 @@ def publish():
   assert response.status_code==200 and int(response.headers.get('Content-Length','-1'))==len(data),'Public artwork verification failed'
   return base+'/'+key
  def one(d):
-  job=jobs[d['key']];master=ROOT/d['master'];masterkey=f"art/masters/gita/{d['key']}-{d['sha256'][:16]}.png";masterurl=upload(master,masterkey)
+  job=jobs[d['key']];master=ROOT/d['master']
   variants={}
   with Image.open(master) as original:
    original=original.convert('RGB')
@@ -66,8 +80,13 @@ def publish():
     digest=hashlib.sha256(path.read_bytes()).hexdigest();url=upload(path,f'art/verses/v1/{digest[:24]}.webp')
     variants[name]={'uri':url,'width':im.width,'height':im.height,'bytes':path.stat().st_size}
   entry={'source_ref':d['source_ref'],'focalPoint':job['focal_point'],'safeRegion':d.get('safe_region',{'x':0,'y':0,'width':1,'height':1}),'alt':f"Interpretive watercolor for {d['source_ref']}: {job['source_translation_en']}",'variants':variants}
-  d.update({'published':True,'masterUrl':masterurl,'entry':entry})
+  d.update({'published':True,'entry':entry})
+  for variant in variants.values():verify_variant(variant)
+  discard_local(d)
   save_delivery(d)
+  for path in (OUT/'history').glob(d['key']+'-v*.json'):
+   old=json.loads(path.read_text(encoding='utf-8'));discard_local(old)
+   temporary=path.with_suffix('.json.tmp');temporary.write_text(json.dumps(old,ensure_ascii=False,indent=2),encoding='utf-8');temporary.replace(path)
   return d['source_ref']
  if pending:
   with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
@@ -78,6 +97,7 @@ def publish():
  for d in deliveries().values():
   if d.get('published'):registry[d['source_ref']]=d['entry']
  temporary=path.with_suffix('.json.tmp');temporary.write_text(json.dumps(registry,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temporary.replace(path)
+ refresh_gallery_links()
  status()
 
 def main():

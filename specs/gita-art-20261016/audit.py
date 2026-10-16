@@ -1,4 +1,4 @@
-"""Verify source mapping, original masters, derivatives and registry coverage."""
+"""Verify source mapping, retained deliveries and registry coverage."""
 import argparse,hashlib,json
 from pathlib import Path
 from PIL import Image
@@ -32,23 +32,32 @@ def main():
    if revision.get('mode')=='edit':
     assert delivery.get('generation_mode')=='edit' and delivery.get('reference_images')==revision['reference_images']
     for reference in revision['reference_images']:
-     assert hashlib.sha256((ROOT/reference['path']).read_bytes()).hexdigest()==reference['sha256']
+     refpath=ROOT/reference['path']
+     if refpath.exists():assert hashlib.sha256(refpath.read_bytes()).hexdigest()==reference['sha256']
+     else:
+      history=json.loads((OUT/'history'/f"{job['key']}-v1.json").read_text(encoding='utf-8'))
+      assert history.get('master_retained') is False and history['sha256']==reference['sha256']
   assert delivery['key']==job['key'] and delivery['source_ref']==job['source_ref']
   assert delivery['verse_uid']==job['verse_uid'] and delivery['master']==selected['master']
-  digest=hashlib.sha256(master.read_bytes()).hexdigest()
+  retained=delivery.get('master_retained',True)
+  digest=hashlib.sha256(master.read_bytes()).hexdigest() if retained else delivery['sha256']
   assert digest==delivery['sha256'] and digest not in digests,'A master is corrupt or duplicated'
   digests.add(digest)
   if delivery.get('reused_preview'):
    assert job['key'] in ['01-001','01-002','01-003'] and delivery['prompt'] is None
   else:assert delivery['prompt']==selected['prompt'] and delivery['prompt_sha256']==selected['prompt_sha256']
-  with Image.open(master) as im:
-   assert im.width==im.height and im.width>=1024
-   assert [im.width,im.height]==[delivery['width'],delivery['height']];im.verify()
+  if retained:
+   with Image.open(master) as im:
+    assert im.width==im.height and im.width>=1024
+    assert [im.width,im.height]==[delivery['width'],delivery['height']];im.verify()
+  else:
+   assert not master.exists() and delivery.get('published') and delivery.get('master_removed_at')
   assert (OUT/'thumbnails'/f"{job['key']}.webp").exists()
-  generated+=1;masterbytes+=master.stat().st_size;reviewed+=bool(delivery.get('reviewed'))
+  generated+=1;masterbytes+=master.stat().st_size if retained else 0;reviewed+=bool(delivery.get('reviewed'))
   if delivery.get('published'):
    assert delivery.get('reviewed') and registry[job['source_ref']]==delivery['entry']
-   assert delivery['masterUrl'].startswith('https://cdn.vedicvalor.com/art/masters/gita/')
+   if retained:assert delivery['masterUrl'].startswith('https://cdn.vedicvalor.com/art/masters/gita/')
+   else:assert not delivery.get('masterUrl')
    safe=delivery['entry']['safeRegion'];assert all(0<=safe[k]<=1 for k in ['x','y','width','height'])
    assert safe['x']+safe['width']<=1 and safe['y']+safe['height']<=1
    for name,edge in [('phone',768),('tablet',1536)]:

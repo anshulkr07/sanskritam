@@ -69,3 +69,28 @@ is retained in `history/`; the active delivery, thumbnail, contact sheet and
 full-resolution preview select the new master. Do not edit the original frozen
 prompt to pretend it produced a revised image. Verse 2.47 is an example: its
 second painting removes annotation crosses and lettering from the first draft.
+
+## Current production status
+
+Generation reached 463 of 700 selected masters before the built-in service
+returned HTTP 429 `usage_limit_reached`. The remaining 237 have prepared source
+jobs but **do not have generated artwork**. The reported reset is 2026-10-17
+13:53:34 UTC / 19:23:34 IST. No generation worker remains running after handoff.
+Check `progress.json`, `audit.json` and the actual deliveries before resuming.
+Resume with the built-in batch runner; it skips saved masters. Do not switch
+to CLI/API generation without the owner's explicit choice.
+
+For a partial chapter, `--contact N` saves both the sheet and a fingerprinted
+snapshot. After inspecting it, `--reviewed-sheet N` marks only those exact
+masters reviewed; `--exclude KEY,KEY` can withhold rejected pictures. The normal
+`--reviewed N` still requires a complete chapter. This prevents publishing an
+unseen replacement or a newly arrived image under an earlier review.
+
+
+## Owner storage update — 2026-10-17
+
+Original PNGs are temporary generation/conversion inputs only. Keep optimized phone and tablet WebPs; after visual review and verified publication, discard the original and its tool-output copy. Do not upload masters to R2 or keep master backups. Historical master paths, hashes, dimensions and prompts remain provenance records, not retained image files. The existing reading URLs and responsive fitting are unchanged. specs/artwork/master-removal-report.json records removal evidence.
+
+The Gita publisher follows this policy automatically for future verses. Contact sheets and full-size gallery previews use the retained tablet WebP after original removal.
+
+Removal verified: 481 R2 originals deleted (1,576,959,414 bytes), 962 reading WebPs retained (277,525,192 bytes). Local originals and matching tool-output copies removed: 974 files / 3,194,155,980 bytes, including superseded drafts. Account storage after removal: 700,135,024 bytes (approximately 700 MB). Gita source/delivery audit and artwork cache/fitting/settings checks pass.
