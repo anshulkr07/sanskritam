@@ -898,7 +898,7 @@ class CanonText(Base):
     title_en = Column(String(256), default="")
     title_sa = Column(String(256), default="")
     source = Column(String(256), default="")  # where the text comes from
-    licence = Column(String(512), default="")  # per-text licence (§6)
+    licence = Column(Text, default="")  # per-text licence (§6), verbatim: Kaṭha/Muṇḍaka run past 512
     # P23-4a: pointer into the licence registry — one registry, not two.
     # The per-text ``licence`` string stays (it is the verbatim record); this
     # key is the join that proves it is attributed.
