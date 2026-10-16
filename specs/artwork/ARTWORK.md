@@ -30,9 +30,13 @@ take precedence; update this policy when the owner changes a decision.
    app's corpus before authoring a prompt. Never choose generic unrelated art.
 2. Deduplicate canonical references before generation. The current corpus has
    duplicate Īśopaniṣad verse 1 rows; use the fullest text, as the reader does.
-3. Generate **one original master per verse**, not separate AI pictures for
+3. Generate **one temporary original per verse**, not separate AI pictures for
    phones, tablets, Android, iOS, portrait, or landscape. Multiple delivery
-   files are resizes/encodings of that same master.
+   files are resizes/encodings of that same original. Owner update 2026-10-17:
+   do not archive originals. After visual review and verified publication of
+   both phone/tablet WebPs, delete the temporary original and its tool-output
+   copy. Never upload original PNGs to R2. The generation service necessarily
+   returns an original; it is only an intermediate conversion input.
 4. Treat abstract philosophical scenes as interpretive illustrations. Do not
    invent a literal historical event or impose an anthropomorphic deity on a
    formless teaching. Let the actual verse guide any explicitly invoked deity.
@@ -98,9 +102,12 @@ take precedence; update this policy when the owner changes a decision.
 - Database/JSON registries hold URLs, dimensions, byte sizes, canonical verse
   references, focal points, safe regions and provenance. They must not contain
   base64 image payloads intended for the shipped app.
-- Retain masters locally under ignored `results/` as recovery copies and archive
-  them in R2. Keep prompts, sources, delivery manifest and decisions under
-  trackable `specs/`. Never store credentials in these artifacts or client code.
+- Retain only the optimized phone/tablet WebPs, both locally and in R2. Do not
+  retain master PNG backups. Preserve source text, prompts, original hashes and
+  dimensions, review/provenance metadata and delivery manifests under `specs/`.
+  Delete originals only after both delivery URLs pass byte/hash/dimension checks.
+  Mark provenance `master_retained: false`; old paths/hashes are historical,
+  not downloadable assets. Never store credentials in these artifacts or client code.
 - `ArtworkImage` adds a bounded 100 MiB device disk cache for managed public
   artwork; downloads are deduplicated with at most three in flight. Private
   user media must not enter this public-art cache. Cache is evictable and is
@@ -135,7 +142,7 @@ take precedence; update this policy when the owner changes a decision.
 
 ```powershell
 python specs/isha-art-20261016/prepare.py
-# Generate the 18 jobs with the built-in tool; preserve each original master.
+# Generate with the built-in tool; originals are temporary until verified delivery.
 python specs/isha-art-20261016/publish_isha.py --upload
 python specs/isha-art-20261016/migrate_artwork.py --upload --integrate
 cd mobile
