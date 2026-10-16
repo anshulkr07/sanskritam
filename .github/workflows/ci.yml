@@ -59,6 +59,23 @@ jobs:
       - name: TypeScript check
         run: npx tsc --noEmit
 
+      # check-card-lessons.cjs and check-lesson-art.cjs read the backend guide and
+      # its artwork through backend/.venv/bin/python, so the mobile job needs that
+      # interpreter: without it they die with spawnSync ENOENT.
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Create the backend virtualenv the card-lesson checks read
+        working-directory: ${{ github.workspace }}/backend
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+          .venv/bin/python -m pip install -r requirements.txt
+
       # The check-*.mjs scripts are the regression net for bugs that typecheck
       # cannot see: check-parva's guard on `page` derefs exists because an
       # unguarded one black-screened the app on 2026-10-12. They were only ever
