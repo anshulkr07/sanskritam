@@ -157,7 +157,7 @@ export default function VarnamalaScreen({ navigation }: Props) {
       setMicError(null);
       try {
         await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" });
         // Small delay to let the native side finalize the file.
         await new Promise((r) => setTimeout(r, 300));
         const uri = recorder.uri;
@@ -193,13 +193,13 @@ export default function VarnamalaScreen({ navigation }: Props) {
           setMicError("Microphone is off. Allow it in settings.");
           return;
         }
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" });
         await recorder.prepareToRecordAsync();
         recorder.record();
         setRecActive(true);
         setMicError(null);
       } catch {
-        void setAudioModeAsync({ allowsRecording: false });
+        void setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" });
         setMicError("Couldn't start the microphone. Try again.");
       }
     }
@@ -208,13 +208,13 @@ export default function VarnamalaScreen({ navigation }: Props) {
   useEffect(() => {
     const sub = AppState.addEventListener("change", (state) => {
       if (state !== "active" && recorder.isRecording) {
-        void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false }));
+        void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }));
         setRecActive(false);
       }
     });
     return () => {
       sub.remove();
-      if (recorder.isRecording) void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false }));
+      if (recorder.isRecording) void recorder.stop().finally(() => setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }));
     };
   }, [recorder]);
 

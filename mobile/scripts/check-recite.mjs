@@ -191,7 +191,7 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
           async seekTo(sec) { this.seek = sec; },
           setPlaybackRate(r) { this.rate = r; },
           addListener(_e, cb) { this.listener = cb; return { remove: () => { this.listener = null; } }; },
-          setActiveForLockScreen(a, m) { this.lock.push([a, m]); },
+          setActiveForLockScreen(a, m, options) { this.lock.push([a, m, options]); },
           remove() { this.removed = true; },
         };
         players.push(p);
@@ -203,6 +203,7 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
       },
       pages: () => st.pages, repeat: () => st.repeat, speed: () => st.speed, follow: () => st.follow,
       bookTitle: () => "Gita",
+      artworkUrl: () => "https://cdn.example/cover.webp",
       isBackground: () => st.background,
       setTimer(fn, ms) { const t = { fn, ms, cleared: false, ran: false }; timers.push(t); return t; },
       clearTimer(t) { t.cleared = true; },
@@ -256,7 +257,9 @@ const K = loadTs(resolve(here, "../src/recite/chantController.ts"));
     const p = r.players[0];
     check(p && p.url === "http://x/audio/v0.m4a" && p.played === 1, "plays the verse");
     check(r.st.playing && r.st.verse === 0 && r.st.scrolls.join() === "0", "reports it and follows it");
-    check(p.lock[0] && p.lock[0][0] === true && p.lock[0][1].title === "v0" && p.lock[0][1].artist === "Gita", "lock screen");
+    check(p.lock[0] && p.lock[0][0] === true && p.lock[0][1].title === "Gita" && p.lock[0][1].artist === "v0", "notification shows book title and current verse");
+    check(p.lock[0][1].albumTitle === "Sanskritam" && p.lock[0][1].artworkUrl === "https://cdn.example/cover.webp", "notification has brand and cover artwork");
+    check(p.lock[0][2].showSeekBackward && p.lock[0][2].showSeekForward, "notification exposes backward and forward seek controls");
     r.tick(p, 1.0); check(r.st.line === 0, "first line lit");
     r.tick(p, 3.0); check(r.st.line === 1, "second line lit");
   }

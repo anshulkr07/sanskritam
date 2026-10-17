@@ -5,6 +5,23 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
+// Android's native AudioMode record defaults omitted background flags to false.
+// A recorder cleanup or a mounted reader must not silently reset this global mode.
+for (const file of ["screens/Book.tsx", "screens/Varnamala.tsx", "recite/useLiveRecitation.ts", "recite/cues.ts", "recite/useVersePlayer.ts", "services/listenBus.ts", "services/speech.ts"]) {
+  const source = ts.createSourceFile(file, readFileSync(new URL(`../src/${file}`, import.meta.url), "utf8"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  function visit(node) {
+    if (ts.isCallExpression(node) && node.expression.getText(source) === "setAudioModeAsync") {
+      const options = node.arguments[0];
+      assert.ok(ts.isObjectLiteralExpression(options), `${file}: audio mode must be explicit`);
+      const fields = Object.fromEntries(options.properties.map(p => [p.name?.getText(source), p.initializer?.getText(source)]));
+      assert.equal(fields.shouldPlayInBackground, "true", `${file}: Android would pause on Home`);
+      assert.equal(fields.interruptionMode, '"doNotMix"', `${file}: media controls need exclusive audio focus`);
+      assert.notEqual(fields.allowsBackgroundRecording, "true", `${file}: microphone must not record in background`);
+    }
+    ts.forEachChild(node, visit);
+  }
+  visit(source);
+}
 const players = [];
 const timers = [];
 let modeGate = Promise.resolve();

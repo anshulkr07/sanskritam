@@ -209,7 +209,7 @@ export default function BookScreen({ navigation, route }: Props) {
     void AsyncStorage.setItem(MODE_KEY, m);
     if (m === "read") {
       stop();
-      try { void setAudioModeAsync({ playsInSilentMode: true }); } catch { /* keep */ }
+      try { void setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }); } catch { /* keep */ }
     }
   };
 

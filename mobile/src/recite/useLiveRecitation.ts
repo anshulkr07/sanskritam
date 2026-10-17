@@ -152,7 +152,7 @@ export function useLiveRecitation(opts: { captions: boolean }) {
     setCaptionParts([]);
     setSeconds(0);
     setLvl(0);
-    try { await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true }); } catch { /* keep */ }
+    try { await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }); } catch { /* keep */ }
     const Ctor = (AudioModule as unknown as { AudioStream?: new (o: object) => StreamLike }).AudioStream;
     if (Ctor) {
       try {

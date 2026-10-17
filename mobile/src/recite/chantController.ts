@@ -37,7 +37,7 @@ export interface PlayerLike {
   replace?(url: string): void;
   setPlaybackRate?(rate: number, quality?: string): void;
   addListener(event: "playbackStatusUpdate", cb: (st: PlayerStatus) => void): { remove(): void };
-  setActiveForLockScreen?(active: boolean, metadata?: { title: string; artist: string }): void;
+  setActiveForLockScreen?(active: boolean, metadata?: { title: string; artist: string; albumTitle?: string; artworkUrl?: string }, options?: { showSeekBackward?: boolean; showSeekForward?: boolean }): void;
   remove?(): void;
   release?(): void;
 }
@@ -58,6 +58,7 @@ export interface ChantHost {
   /** Avoid background timer suspension and keep the native media service alive. */
   isBackground?(): boolean;
   bookTitle(): string;
+  artworkUrl?(): string | undefined;
   setTimer(fn: () => void, ms: number): unknown;
   clearTimer(handle: unknown): void;
   /** The verse now playing (idx -1, id null: none). */
@@ -183,7 +184,12 @@ export class ChantController {
       }
     });
     try {
-      p.setActiveForLockScreen?.(true, { title: v.source_ref, artist: this.host.bookTitle() });
+      p.setActiveForLockScreen?.(true, {
+        title: this.host.bookTitle(),
+        artist: v.source_ref,
+        albumTitle: "Sanskritam",
+        artworkUrl: this.host.artworkUrl?.(),
+      }, { showSeekBackward: true, showSeekForward: true });
     } catch { /* keep */ }
     p.play();
     this.setPlaying(true);

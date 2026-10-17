@@ -131,3 +131,23 @@ deletion tasks are confirmed. Monitor retry errors and unresolved reports.
 
 Android Hermes SHA-256: ac6730474628d324aca04741692b6a67c5eebcca4782f53c66fc3a762ae7f615
 
+## Background playback follow-up
+
+The owner observed audio pausing on Home. Source inspection found partial
+`setAudioModeAsync` calls in the reader and recording flows. In the installed
+Expo Android implementation, omitted `shouldPlayInBackground` defaults to false;
+these calls could reset the shared session and cause Android to pause playback.
+All shipped audio-mode calls now explicitly preserve background playback and
+the interruption mode required by media controls. Background recording stays off.
+
+The media notification supplies the book title, current verse, Sanskritam label,
+existing public cover artwork and backward/forward seek controls. Android owns
+the final panel layout. Missing artwork must not prevent playback. The stale
+membership label on the free offline audiobook action was also removed.
+
+Playback regressions and 119 recitation checks passed, as did TypeScript.
+These changes are JavaScript only; the existing 1.6.0 (11) binary already has
+the media service and permissions. Keep runtime 1.6.0 for its production OTA.
+Physical-device Home/lock-screen playback and notification appearance still
+require confirmation before recording the Play declaration demonstration.
+

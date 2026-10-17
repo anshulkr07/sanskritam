@@ -18,7 +18,8 @@
 import { setAudioModeAsync } from "expo-audio";
 import { createManagedAudioPlayer } from "./managedAudio";
 import { useSyncExternalStore } from "react";
-import { AppState } from "react-native";
+import { AppState, Image } from "react-native";
+import { paintedCover } from "../components/book/covers";
 
 import type { Shloka } from "../api/client";
 import { REPEAT_ORDER, type RepeatMode } from "../recite/chantClock";
@@ -120,6 +121,10 @@ const chant = new ChantController({
   follow: () => state.follow,
   autoplay: () => state.autoplay,
   bookTitle: () => state.session?.title ?? "",
+  artworkUrl: () => {
+    const cover = paintedCover(state.session?.bookKey ?? "");
+    return cover ? Image.resolveAssetSource(cover)?.uri : undefined;
+  },
   setTimer: (fn, ms) => setTimeout(fn, ms),
   clearTimer: (h) => clearTimeout(h as ReturnType<typeof setTimeout>),
   onVerse: (idx, id) => {

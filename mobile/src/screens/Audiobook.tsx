@@ -82,7 +82,7 @@ export default function AudiobookScreen({ navigation, route }: Props) {
     <View>
       <Pressable accessibilityRole="button" onPress={() => {
         void downloadBookAudio(pages, bookKey).then(() => Alert.alert("Saved", "The audiobook is saved on this device.")).catch(e => Alert.alert("Download unavailable", e.message));
-      }} style={{ padding: 12 }}><Text style={{ color: "#9e481b", fontWeight: "700" }}>Save audiobook offline · membership required</Text></Pressable>
+      }} style={{ padding: 12 }}><Text style={{ color: "#9e481b", fontWeight: "700" }}>Save audiobook offline</Text></Pressable>
       <View style={[styles.head, { backgroundColor: fill, paddingTop: insets.top }]}>
         <View style={styles.headBar}>
           <Pressable onPress={() => navigation.goBack()} accessibilityRole="button" accessibilityLabel="Back to Audio" style={styles.icon}>

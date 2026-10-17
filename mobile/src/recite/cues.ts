@@ -50,7 +50,7 @@ export async function playCue(cue: Cue, maxMs = 5000): Promise<void> {
       p = createAudioPlayer(SOURCES[name]);
       players[name] = p;
     }
-    await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true }).catch(() => {});
+    await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true, shouldPlayInBackground: true, interruptionMode: "doNotMix" }).catch(() => {});
     await p.seekTo(0);
   } catch {
     return;
