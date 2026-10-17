@@ -151,3 +151,10 @@ the media service and permissions. Keep runtime 1.6.0 for its production OTA.
 Physical-device Home/lock-screen playback and notification appearance still
 require confirmation before recording the Play declaration demonstration.
 
+Android OTA published successfully to production for runtime 1.6.0:
+group `1ba1e969-e19c-4ac4-8385-f9de47657e5b`, update
+`01a148c6-44ca-7552-91eb-43143a3cdf54`, source commit `fe2e3a8`.
+On 1.6.0 (11), use Settings → Check for updates → Restart, then verify Home,
+screen lock, notification play/pause/seek, and the next verse transition.
+No replacement binary was started for this JavaScript-only follow-up.
+
