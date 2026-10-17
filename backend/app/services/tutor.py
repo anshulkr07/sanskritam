@@ -1011,7 +1011,9 @@ class ConversationTutor:
         fallback: Optional[TutorReply] = None
         fallback_problems: list[str] = []
         for attempt in (0, 1):
-            system = _SYSTEM_PROMPT if attempt == 0 else _SYSTEM_PROMPT + "\n\n" + nudge
+            from app.services.ai_safety import SAFETY_INSTRUCTIONS, check_input, check_output
+            check_input(transcript)
+            system = SAFETY_INSTRUCTIONS + (_SYSTEM_PROMPT if attempt == 0 else _SYSTEM_PROMPT + "\n\n" + nudge)
             raw = await self._complete(system, user)
             if raw is None:
                 if fallback is not None:
@@ -1021,6 +1023,7 @@ class ConversationTutor:
                     source="degraded",
                 )
 
+            check_output(raw)
             parsed = _parse_reply(raw)
             if parsed is None:
                 logger.warning("tutor reply was not JSON: %r", raw[:200])

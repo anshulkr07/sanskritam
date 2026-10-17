@@ -289,6 +289,8 @@ def delete_me(
     """
     import sqlalchemy as sa
     from app.models import ConversationSession, ConversationTurn
+    from app.services.quota import retain_deleted_spend
+    retain_deleted_spend(db, learner.id)
 
     # Nullify escape log references first (aggregate metrics are about content)
     db.execute(
@@ -344,5 +346,10 @@ def delete_me(
     delete_personal_data(db, learner.id)
     db.delete(learner)
     db.commit()
+
+    # Local deletion is durable even while a provider is unavailable. The
+    # minimal outbox is retried by the scheduled administrator endpoint.
+    from app.services.provider_deletion import process
+    process(db)
 
     return None

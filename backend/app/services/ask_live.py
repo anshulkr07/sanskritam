@@ -234,7 +234,8 @@ FROM THE APP'S BOOKS
 
 
 def system_prompt(books: str = "") -> str:
-    return SYSTEM_PROMPT + BOOKS_RULES if books else SYSTEM_PROMPT
+    from app.services.ai_safety import SAFETY_INSTRUCTIONS
+    return SAFETY_INSTRUCTIONS + (SYSTEM_PROMPT + BOOKS_RULES if books else SYSTEM_PROMPT)
 
 
 # ── the model ─────────────────────────────────────────────────────────────
@@ -425,6 +426,8 @@ def _reserve(db: Session, learner: Learner, system: str, user: str, max_tokens: 
     try:
         check_and_consume(db, learner, GEMINI_KIND, reserve, surface=surface)
     except QuotaExceeded as exc:
+        if exc.kind == "gemini_budget":
+            raise
         logger.info("Gemini limit reached (%s); Ask falls back", exc.kind)
         return None
     return reserve

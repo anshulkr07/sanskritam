@@ -11,7 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import type { TabScreenProps } from "../navigation/types";
 import { api } from "../api/client";
 import { useQuery } from "../hooks/useQuery";
-import { playApi, socialApi, type PlaySummary } from "../games/v2/client";
+import { playApi, type PlaySummary } from "../games/v2/client";
 import { useCatalog } from "../games/v2/useCatalog";
 import { haptics } from "../services/haptics";
 import { color, fill, font, onFill, radius, script, shadow, space } from "../theme";
@@ -81,11 +81,6 @@ export default function PlayScreen({ navigation }: Props) {
               </View>
             </View>
           )}
-          <Pressable onPress={() => nav.navigate("Leaderboards", { period: "daily" })}
-            accessibilityRole="button" accessibilityLabel="Open leaderboards" style={styles.rankLink}>
-            <Text style={styles.rankLinkText}>Leaderboards</Text>
-            <Ionicons name="chevron-forward" size={14} color={onFill.gold} />
-          </Pressable>
           <Text style={styles.rankIst}>{rank?.explain_ist}</Text>
         </View>
 
@@ -103,55 +98,13 @@ export default function PlayScreen({ navigation }: Props) {
           </View>
         </View>
 
-        {/* 3. Play with friends + quick match */}
-        <View style={styles.socialRow}>
-          <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "friends" })} accessibilityRole="button"
-            accessibilityLabel="Play with friends" style={[styles.socialBtn, { backgroundColor: fill.teal }]}>
-            <PaintedBackground source={hubArtwork("play:friends")} />
-            <Text style={styles.socialText}>Play with friends</Text>
-          </Pressable>
-          <Pressable onPress={() => nav.navigate("RoomLobby", { mode: "quick" })} accessibilityRole="button"
-            accessibilityLabel="Quick match" style={[styles.socialBtn, { backgroundColor: fill.rose }]}>
-            <PaintedBackground source={hubArtwork("play:quick")} />
-            <Text style={styles.socialText}>Quick match</Text>
-          </Pressable>
-        </View>
-
-        {/* 4. Recitation competition */}
-        <Pressable onPress={() => nav.navigate("Contest", {})} accessibilityRole="button"
-          accessibilityLabel="Open recitation competition" style={styles.compCard}>
-          <PaintedBackground source={hubArtwork("play:competition")} banner />
+        <Pressable onPress={() => nav.navigate("RecitePicker", {})} accessibilityRole="button"
+          accessibilityLabel="Open recitation practice" style={styles.compCard}>
           <Ionicons name="mic" size={22} color={onFill.gold} />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.compTitle}>Recitation competition</Text>
-            <Text style={styles.compSub}>
-              {summary?.competition
-                ? `${summary.competition.pieces} verse${summary.competition.pieces === 1 ? "" : "s"} · closes ${fmtTime(summary.competition.closes_at)}`
-                : "No competition open right now"}
-            </Text>
-          </View>
+          <View style={{ flex: 1 }}><Text style={styles.compTitle}>Recitation practice</Text>
+            <Text style={styles.compSub}>Listen, practise, and recite at your own pace.</Text></View>
           <Ionicons name="chevron-forward" size={18} color={onFill.text} />
         </Pressable>
-
-        {/* 5. Weekly friend goal — only after opting in */}
-        {summary?.friend_goal && (
-          <View style={styles.friendGoal}>
-            <View style={styles.goalRow}>
-              <PaintedThumbnail source={hubArtwork("play:friends")} />
-              <Text style={styles.friendGoalText}>
-                Weekly goal with {summary.friend_goal.partner.name}: {summary.friend_goal.total}/{summary.friend_goal.target} rounds
-              </Text>
-            </View>
-            <View style={styles.goalTrack}>
-              <View style={[styles.goalFillGold, {
-                width: `${Math.min(100, (summary.friend_goal.total / summary.friend_goal.target) * 100)}%`,
-              }]} />
-            </View>
-            <Text style={styles.friendGoalSub}>
-              You {summary.friend_goal.mine} · {summary.friend_goal.partner.name.split(" ")[0]} {summary.friend_goal.partner_rounds} · at least {summary.friend_goal.min_each} each. Earns a badge, never rank.
-            </Text>
-          </View>
-        )}
 
         {/* Game collection */}
         <Text style={styles.section}>Games</Text>
@@ -257,5 +210,3 @@ const styles = StyleSheet.create({
   moreBtnText: { color: color.saffronText, fontWeight: "800" },
   foot: { color: color.inkFaint, fontSize: font.sizes.xs, textAlign: "center" },
 });
-
-export { socialApi };

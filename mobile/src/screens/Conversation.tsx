@@ -216,7 +216,7 @@ function listenText(card: AskCard): string {
 }
 
 function askError(e: unknown): string {
-  if (e instanceof ApiError && e.status === 429) return "Today's questions are used up. Try again tomorrow.";
+  if (e instanceof ApiError && e.status === 429) return e.message || "Today's questions are used up. Try again tomorrow.";
   if (e instanceof ApiError && e.status === 422) return "Those birth details didn't work. Check the date and time.";
   return "I couldn't answer that just now. Try again.";
 }

@@ -64,7 +64,6 @@ export default function HomeScreen({ navigation }: Props) {
   // Today's XP and the day history the streak is computed from.
   const [today, setToday] = useState<{ daily: ProgressDaily; history: ProgressDay[] } | null>(null);
   const [todayFailed, setTodayFailed] = useState(false);
-  const [compLast, setCompLast] = useState<{ my_rank: number | null; competition: { id: string } } | null>(null);
 
   // The profile normally arrives with the session; fetch it only if missing.
   useEffect(() => {
@@ -107,10 +106,6 @@ export default function HomeScreen({ navigation }: Props) {
       loadToday();
       getStoryIndex().then((i) => alive && setStoryAt(i));
       getStoryCompleted().then((done) => alive && setStoryCompleted(done));
-      api.competitionCurrent().then((c) => {
-        if (alive && c.last) setCompLast(c.last as never);
-        else if (alive) setCompLast(null);
-      }).catch(() => {});
       return () => {
         alive = false;
       };
@@ -164,21 +159,6 @@ export default function HomeScreen({ navigation }: Props) {
           <ParvaStrip calendarPlace={homePlace.place} />
           {/* The learner's own daily things, under the day's festival. */}
           <DailyLearningCard navigate={(route, params) => (navigation as unknown as { navigate: (r: string, p?: object) => void }).navigate(route, params)} />
-          {!!compLast && (
-            <Pressable
-              onPress={() => (navigation as never as { navigate: (r: string, p?: object) => void }).navigate("ContestResults", { id: compLast.competition.id })}
-              accessibilityRole="button"
-              accessibilityLabel={compLast.my_rank ? `Results are out: you came ${ordinal(compLast.my_rank)}. See the standings` : "Results are out: see where you placed"}
-              style={({ pressed }) => [styles.compCard, pressed && styles.pressed]}
-            >
-              <View style={styles.compIcon}><Ionicons name="trophy-outline" size={17} color={onFill.text} /></View>
-              <View style={styles.compTextWrap}>
-                <Text style={styles.compTitle}>Results are out</Text>
-                <Text style={styles.compSub}>{compLast.my_rank ? `You came ${ordinal(compLast.my_rank)} · see the standings` : "See where you placed in the standings"}</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={16} color={onFill.soft} />
-            </Pressable>
-          )}
           <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} showStory={!storyCompleted} />
           {/* Today's word journey. Hides itself when there is nothing today. */}
           <WordCard />

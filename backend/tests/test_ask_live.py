@@ -385,18 +385,18 @@ class StreamingProvider(FakeProvider):
             usage.update(prompt_tokens=900, output_tokens=700)
 
 
-def test_the_stream_sends_partial_cards_then_the_checked_answer(client, monkeypatch):
+def test_the_stream_withholds_partial_cards_until_the_checked_answer(client, monkeypatch):
     fake = StreamingProvider()
     monkeypatch.setattr(ask_live, "_get_provider", lambda: fake)
     monkeypatch.setattr(ask_live, "_PARTIAL_EVERY_S", 0.0)
     _id, headers = _login(client)
     evs = _events(client, {"question": f"How is {_word()} kept?", "lang": "en"}, headers)
     kinds = [e["type"] for e in evs]
-    assert kinds[-1] == "final" and kinds.count("final") == 1 and "partial" in kinds
+    assert kinds[-1] == "final" and kinds.count("final") == 1 and "partial" not in kinds
     partials = [e["card"] for e in evs if e["type"] == "partial"]
     # Unchecked verses and links never travel in a partial card.
     assert all("verses" not in c and "sources" not in c for c in partials)
-    assert partials[-1]["title"] == "Dussehra puja vidhi"
+    assert partials == []  # unchecked fragments are withheld by the launch router
     final = evs[-1]["response"]
     assert final["routed_to"] == "llm" and final["card"]["sections"]
     assert len(fake.calls) == 1

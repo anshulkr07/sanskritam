@@ -30,6 +30,7 @@ import { BASE_CONFIG, PIPELINES, voices, type LabConfig } from "../voiceLab/conf
 import { DEFAULT_COMPANION_ID, categoryOf, companionById, presetFor } from "../voiceLab/companions";
 import { rememberCompanion } from "../voiceLab/recents";
 import { BackBar, Deva, Panel, SanskritBody, SectionLabel, SayingPill, labelOn } from "../voiceLab/ui";
+import ReportButton from "../components/ReportButton";
 import { useVoiceLab } from "../voiceLab/useVoiceLab";
 
 type Props = NativeStackScreenProps<RootStackParamList, "VoiceSession">;
@@ -359,6 +360,7 @@ export default function VoiceSession({ navigation, route }: Props) {
           <View key={index} style={styles.transcript}>
             <Text style={[styles.transcriptWho, { fontSize: sized(12.5) }]}>{turn.role === "user" ? "You" : companion.roman}</Text>
             <SanskritBody size={20}>{turn.text}</SanskritBody>
+            {turn.role !== "user" && <ReportButton surface="voice-lab" question={lab.transcripts.slice(0, index).filter(t => t.role === "user").slice(-1)[0]?.text ?? ""} answer={turn.text} />}
           </View>
         ))}
 

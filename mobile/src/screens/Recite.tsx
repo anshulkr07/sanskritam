@@ -27,7 +27,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import type { RootStackParamList } from "../navigation/types";
 import {
-  ApiError, api, uploadCompetitionAttempt, uploadRecite,
+  ApiError, api, uploadRecite,
   type ChantLine, type Division, type ReciteResult, type Shloka,
 } from "../api/client";
 import EyesClosedTest, { type EyesOutcome } from "../components/recite/EyesClosedTest";
@@ -71,7 +71,7 @@ const WHY_NOT: Record<string, string> = {
 
 function errorText(e: unknown): string {
   if (e instanceof ApiError) {
-    if (e.status === 403) return "Finish the competition entry steps first (name, age, rules, consent).";
+    if (e.status === 403) return "Sign in again and retry.";
     if (e.status === 429) return e.message || "Today's recitation allowance is used up. Try again tomorrow.";
     if (e.message) return e.message;
     if (e.status === 503) return "Scoring is busy. Try again.";
@@ -86,7 +86,7 @@ function lineTexts(verse: Shloka | undefined): ChantLine[] {
 }
 
 export default function ReciteScreen({ navigation, route }: Props) {
-  const { verseUid, competitionId, start, division } = route.params;
+  const { verseUid, start } = route.params;
   const { data: verses } = useQuery("reader-verses", api.listShlokas, { ttlMs: 30 * 60_000 });
   const listed: Shloka | undefined = useMemo(
     () => (verses ?? []).find((v) => v.verse_uid === verseUid || v.id === verseUid),
@@ -109,8 +109,8 @@ export default function ReciteScreen({ navigation, route }: Props) {
   const live = useLiveRecitation({ captions: true });
 
   useEffect(() => {
-    navigation.setOptions({ title: competitionId ? "Competition verse" : "Learn this verse" });
-  }, [navigation, competitionId]);
+    navigation.setOptions({ title: "Learn this verse" });
+  }, [navigation]);
 
   useEffect(() => {
     preloadCues();
@@ -154,11 +154,6 @@ export default function ReciteScreen({ navigation, route }: Props) {
     <ScrollView style={{ backgroundColor: T.paper }} contentContainerStyle={styles.page} keyboardShouldPersistTaps="handled"
       scrollEnabled={!live.recording}>
       <Text style={styles.ref}>{verse.source_ref}</Text>
-      {!!competitionId && (
-        <Text style={styles.banner}>
-          Competition{division ? ` · ${division === "beginner" ? "Beginner" : "Standard"} division` : ""}. Only the Recite step counts; practice never does.
-        </Text>
-      )}
       <View style={styles.tabs} accessibilityRole="tablist">
         {(["listen", "practise", "recite"] as const).map((s, i) => (
           <Pressable accessibilityLabel={s === "listen" ? "Step 1, listen" : s === "practise" ? "Step 2, practise" : "Step 3, recite"}
@@ -187,8 +182,6 @@ export default function ReciteScreen({ navigation, route }: Props) {
           lines={lines}
           player={player}
           live={live}
-          competitionId={competitionId}
-          division={division}
           onBack={() => navigation.goBack()}
         />
       )}
@@ -443,12 +436,12 @@ function PractiseStep({ verse, lines, player, live, onNext }: {
 
 type RecitePhase = "intro" | "rehearse" | "countdown" | "cue" | "recording" | "scoring" | "result";
 
-function ReciteStep({ verse, lines, player, live, competitionId, division, onBack }: {
+function ReciteStep({ verse, lines, player, live, onBack }: {
   verse: Shloka; lines: ChantLine[]; player: PlayerApi; live: LiveApi;
-  competitionId?: string; division?: Division; onBack: () => void;
+  onBack: () => void;
 }) {
   const reduced = useReducedMotion();
-  const ranked = !!competitionId;
+  const ranked = false;
   const [eyesWanted, setEyesWanted] = useState(ranked);
   const eyes = ranked || eyesWanted;
   const [faceReady, setFaceReady] = useState(false);
@@ -555,17 +548,7 @@ function ReciteStep({ verse, lines, player, live, competitionId, division, onBac
     }
     setMine(uri);
     try {
-      let res: ReciteResult;
-      if (ranked) {
-        res = await uploadCompetitionAttempt(competitionId as string, uri, {
-          verseUid: verse.verse_uid ?? verse.id,
-          camera: camResult?.json ?? "{}",
-          hidden: true,
-          division,
-        });
-      } else {
-        res = await uploadRecite(uri, { verseUid: verse.verse_uid ?? verse.id, unit: "verse", purpose: "recite", hideLevel: 3 });
-      }
+      const res = await uploadRecite(uri, { verseUid: verse.verse_uid ?? verse.id, unit: "verse", purpose: "recite", hideLevel: 3 });
       setResult(res);
       setPhase("result");
       if (!ranked && eyes && camResult && camResult.outcome !== "closed") {
@@ -613,7 +596,6 @@ function ReciteStep({ verse, lines, player, live, competitionId, division, onBac
           {!ranked && (
             <Toggle label="Eyes-closed check (camera stays on this phone)" value={eyesWanted} onChange={setEyesWanted} />
           )}
-          {ranked && <Text style={styles.small}>Competition rule: eyes closed, text hidden. The front camera checks your eyes on this phone; no photo is sent.</Text>}
         </>
       )}
 
@@ -645,20 +627,6 @@ function ReciteStep({ verse, lines, player, live, competitionId, division, onBac
 
       {phase === "result" && result && (
         <>
-          {ranked && (
-            <View style={[styles.verdict, result.counted ? styles.verdictOk : styles.verdictNo]}>
-              <Text style={styles.verdictTitle}>{result.counted ? "Counted for the competition" : "Not counted"}</Text>
-              {!result.counted && <Text style={styles.body}>{WHY_NOT[result.why_not ?? ""] ?? "This try did not count."}</Text>}
-              {result.counted && result.set_progress && (
-                <Text style={styles.body}>
-                  {result.piece_best ? "A new best for this verse. " : ""}
-                  {result.set_progress.submitted} of {result.set_progress.total} verses submitted
-                  {result.set_progress.complete ? ` · week total ${result.set_progress.provisional_total}` : " · the total counts once all are in"}
-                  {result.rank ? ` · rank ${result.rank}` : ""}
-                </Text>
-              )}
-            </View>
-          )}
           <RecitationResult
             result={result}
             expected={lines.map((l) => l.text)}
@@ -670,12 +638,7 @@ function ReciteStep({ verse, lines, player, live, competitionId, division, onBac
               accessibilityRole="button" style={[styles.secondary, { flex: 1 }]}>
               <Text style={styles.secondaryText}>Try again</Text>
             </Pressable>
-            {ranked && (
-              <Pressable accessibilityLabel="Back to the competition" onPress={onBack} accessibilityRole="button" style={[styles.primary, { flex: 1 }]}>
-                <Text style={styles.primaryText}>Back to the competition</Text>
-              </Pressable>
-            )}
-          </View>
+            </View>
         </>
       )}
     </View>

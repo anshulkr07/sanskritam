@@ -65,7 +65,6 @@ import { useVoiceInput } from "../hooks/useVoiceInput";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { color, fill, font, onFill, outline, radius, script, space } from "../theme";
 import { plain } from "../utils/text";
-import { commerceSnapshot } from "../services/commerce";
 
 export interface AskContext {
   /** The screen the learner is on, sent to the backend router. */
@@ -508,9 +507,6 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
 
               {!!voiceError && <Text style={styles.note}>{voiceError}</Text>}
 
-              {!!commerceSnapshot()?.enabled && <Pressable accessibilityRole="switch" accessibilityState={{ checked: detailed }} disabled={phase.kind === "loading"} onPress={() => setDetailed(value => !value)} style={{ paddingVertical: 10 }}>
-                <Text style={{ color: color.inkSoft, fontSize: 13 }}>{detailed ? "✓ Detailed analysis" : "Standard answer · tap for detailed analysis"} · credit quote before sending</Text>
-              </Pressable>}
               <View style={styles.inputRow}>
                 <Pressable
                   onPress={attachScreen}

@@ -7,7 +7,7 @@
 // (the word journey and Do you know), which a model also writes.
 
 import React, { useEffect, useRef, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 import { api } from "../api/client";
@@ -20,13 +20,16 @@ export default function ReportButton({
   answer,
   noun = "reply",
 }: {
-  surface: "talk" | "ask" | "fact" | "word";
+  surface: "talk" | "ask" | "fact" | "word" | "voice-lab";
   question: string;
   answer: string;
   /** What is being reported, for the wording: "reply" or "card". */
   noun?: string;
 }) {
   const [phase, setPhase] = useState<"idle" | "confirm" | "sent">("idle");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [reason, setReason] = useState("");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -48,31 +51,34 @@ export default function ReportButton({
   if (phase === "confirm") {
     return (
       <View style={styles.confirmRow}>
-        <Text style={styles.confirmText}>{`Report this ${noun}?`}</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.confirmText}>{`Report this ${noun}?`}</Text>
+          <TextInput value={reason} onChangeText={setReason} maxLength={1000} placeholder="Reason (optional)" accessibilityLabel="Report reason" style={{ color: color.ink, minHeight: 40 }} />
+          {!!error && <Text accessibilityRole="alert" style={{ color: color.badText }}>{error}</Text>}
+        </View>
         <Pressable
-          onPress={() => {
-            haptics.tap();
-            api
-              .reportContent({ surface, question, answer })
-              .catch(() => {
-                // A failed report is still acknowledged; the content stays
-                // on screen and the learner can try again on the next reply.
-              })
-              .finally(() => {
-                setPhase("sent");
-                if (timer.current) clearTimeout(timer.current);
-                timer.current = setTimeout(() => setPhase("idle"), 2000);
-              });
+          disabled={sending}
+          onPress={async () => {
+            if (sending) return;
+            haptics.tap(); setSending(true); setError("");
+            try {
+              await api.reportContent({ surface, question, answer, reason });
+              setPhase("sent"); setReason("");
+              timer.current = setTimeout(() => setPhase("idle"), 3000);
+            } catch {
+              setError("Report was not sent. Check your connection and retry, or contact sanskritam@vedicvalor.com.");
+            } finally { setSending(false); }
           }}
           style={styles.report}
           accessibilityRole="button"
           accessibilityLabel={`Report this ${noun}`}
           hitSlop={8}
         >
-          <Text style={styles.reportText}>Report</Text>
+          <Text style={styles.reportText}>{sending ? "Sending…" : "Report"}</Text>
         </Pressable>
         <Pressable
-          onPress={() => setPhase("idle")}
+          disabled={sending}
+          onPress={() => { setPhase("idle"); setError(""); }}
           style={styles.cancel}
           accessibilityRole="button"
           accessibilityLabel="Cancel reporting"

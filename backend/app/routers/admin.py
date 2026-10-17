@@ -192,14 +192,18 @@ def get_content_wells(
 @router.get("/admin/reports")
 def list_content_reports(
     limit: int = Query(50, ge=1, le=200),
+    status: str = Query("open", pattern="^(open|reviewing|actioned|dismissed|all)$"),
     _auth: bool = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
     """Learner-flagged AI replies, newest first — the Play policy queue."""
     from app.models import ContentReport
 
+    query = db.query(ContentReport)
+    if status != "all":
+        query = query.filter(ContentReport.status == status)
     rows = (
-        db.query(ContentReport)
+        query
         .order_by(ContentReport.created_at.desc(), ContentReport.id.desc())
         .limit(limit)
         .all()
@@ -215,10 +219,62 @@ def list_content_reports(
                 "answer": r.answer,
                 "reason": r.reason,
                 "created_at": r.created_at.isoformat() if r.created_at else None,
+                "status": r.status,
+                "review_notes": r.review_notes,
+                "reviewed_by": r.reviewed_by,
+                "reviewed_at": r.reviewed_at.isoformat() if r.reviewed_at else None,
             }
             for r in rows
         ],
     }
+
+
+class ReportReviewBody(BaseModel):
+    status: str = Field(pattern="^(reviewing|actioned|dismissed)$")
+    notes: str = Field(min_length=5, max_length=2000)
+    block_answer: bool = False
+    withdraw_kind: str = Field(default="", pattern="^(|fact|word|route)$")
+    withdraw_id: str = Field(default="", max_length=200)
+
+
+@router.put("/admin/reports/{report_id}")
+def review_report(report_id: int, body: ReportReviewBody,
+                  _auth: bool = Depends(require_admin), db: Session = Depends(get_db)):
+    from datetime import datetime, timezone
+    from app.config import settings
+    from app.models import ContentReport, SafetyBlock
+    from app.services.ai_safety import digest
+    report = db.query(ContentReport).filter_by(id=report_id).with_for_update().one_or_none()
+    if not report:
+        raise HTTPException(404, "Report not found")
+    if len(body.notes.strip()) < 5:
+        raise HTTPException(422, "Record the review decision and action taken")
+    if body.block_answer and report.answer:
+        db.merge(SafetyBlock(digest=digest(report.answer), reason=body.notes.strip()))
+    if body.withdraw_kind:
+        from app.services.daily_content import withdraw
+        if not body.withdraw_id or not withdraw(db, body.withdraw_kind, body.withdraw_id):
+            raise HTTPException(422, "Select an existing card to withdraw")
+    report.status = body.status
+    report.review_notes = body.notes.strip()
+    report.reviewed_by = settings.safety_reviewer_label
+    report.reviewed_at = datetime.now(timezone.utc)
+    db.commit()
+    return {"id": report.id, "status": report.status, "reviewed_by": report.reviewed_by}
+
+
+@router.get("/admin/report-queue", include_in_schema=False)
+def report_queue_page():
+    from fastapi.responses import HTMLResponse
+    from pathlib import Path
+    return HTMLResponse(Path(__file__).with_name("report_queue.html").read_text(encoding="utf-8"),
+                        headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"})
+
+
+@router.post("/admin/provider-deletions/run")
+def retry_provider_deletions(_auth: bool = Depends(require_admin), db: Session = Depends(get_db)):
+    from app.services.provider_deletion import process
+    return process(db)
 
 
 @router.get("/admin/errors")

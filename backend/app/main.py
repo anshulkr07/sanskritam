@@ -78,6 +78,24 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    from fastapi import HTTPException
+    from fastapi.responses import JSONResponse
+    from app.services.quota import QuotaExceeded, BUDGET_KIND, GEMINI_BUDGET_KIND, budget_message, budget_retry_after
+
+    @app.exception_handler(QuotaExceeded)
+    async def quota_exception(request, exc):
+        message = budget_message(exc.kind) if exc.kind in {BUDGET_KIND, GEMINI_BUDGET_KIND} else "Today's AI allowance is used up. Please try again tomorrow."
+        return JSONResponse({"detail": {"kind": exc.kind, "message": message, "retry_after_s": exc.retry_after_s}}, status_code=429, headers={"Retry-After": str(exc.retry_after_s)})
+
+    @app.exception_handler(HTTPException)
+    async def http_exception(request, exc):
+        detail = exc.detail
+        headers = dict(exc.headers or {})
+        if exc.status_code == 429 and isinstance(detail, dict) and detail.get("kind") in {BUDGET_KIND, GEMINI_BUDGET_KIND}:
+            detail = {**detail, "message": budget_message(detail["kind"]), "retry_after_s": budget_retry_after()}
+            headers["Retry-After"] = str(budget_retry_after())
+        return JSONResponse({"detail": detail}, status_code=exc.status_code, headers=headers)
+
     # CORS — wide open for dev
     origins = settings.cors_origins.split(",") if settings.cors_origins != "*" else ["*"]
     app.add_middleware(
@@ -112,11 +130,13 @@ def create_app() -> FastAPI:
         return response
 
     from app.routers.community import router as community_router
-    app.include_router(community_router, tags=["Group"])
+    if settings.deferred_features_enabled:
+        app.include_router(community_router, tags=["Group"])
 
     # Register routers
     from app.voice_lab.router import router as voice_lab_router
-    app.include_router(voice_lab_router, tags=["Voice Lab"])
+    if settings.deferred_features_enabled:
+        app.include_router(voice_lab_router, tags=["Voice Lab"])
     from app.routers.health import router as health_router
     from app.routers.auth_router import router as auth_router
     from app.routers.me import router as me_router
@@ -164,7 +184,8 @@ def create_app() -> FastAPI:
 
     app.include_router(health_router, tags=["Health"])
     from app.commerce.router import router as commerce_router
-    app.include_router(commerce_router)
+    if settings.deferred_features_enabled:
+        app.include_router(commerce_router)
     app.include_router(auth_router, tags=["Auth"])
     app.include_router(me_router, tags=["Learner"])
     app.include_router(challenges_router, tags=["Challenges"])
@@ -200,18 +221,23 @@ def create_app() -> FastAPI:
     app.include_router(feedback_router, tags=["Feedback"])
     app.include_router(games_router, tags=["Games"])
     app.include_router(recite_router, tags=["Recite"])
-    app.include_router(competitions_router, tags=["Competitions"])
-    app.include_router(certificates_router, tags=["Certificates"])
+    if settings.deferred_features_enabled:
+        app.include_router(competitions_router, tags=["Competitions"])
+    if settings.deferred_features_enabled:
+        app.include_router(certificates_router, tags=["Certificates"])
     app.include_router(parva_router, tags=["Parva"])
     app.include_router(play_router, tags=["Play"])
-    app.include_router(social_router, tags=["Social"])
-    app.include_router(matches_router, tags=["Matches"])
+    if settings.deferred_features_enabled:
+        app.include_router(social_router, tags=["Social"])
+    if settings.deferred_features_enabled:
+        app.include_router(matches_router, tags=["Matches"])
     app.include_router(share_router, tags=["Share"])
     app.include_router(recite_calibration_router, tags=["Recite calibration"])
     # Live match socket lives at /ws/matches/{ticket}, outside the router
     # prefix (the matches router prefix is for its REST half).
     from app.routers.matches import ws_matches
-    app.websocket("/ws/matches/{ticket}")(ws_matches)
+    if settings.deferred_features_enabled:
+        app.websocket("/ws/matches/{ticket}")(ws_matches)
     # Live recitation captions (§7): backend-proxied realtime STT.
     from app.services.recite_stream import recite_stream_ws
     app.websocket("/ws/recite/{ticket}")(recite_stream_ws)

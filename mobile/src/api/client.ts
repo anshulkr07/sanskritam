@@ -1405,7 +1405,7 @@ let authToken: string | null = null;
 
 export function setAuthToken(token: string | null): void {
   authToken = token;
-  void import("../services/commerce").then(m => m.resetCommerce());
+  void import("../services/offlineBooks").then(m => m.resetOfflineAudio());
 }
 
 export function getAuthToken(): string | null {
@@ -1420,6 +1420,17 @@ function toQuery(params: Record<string, unknown>): string {
   return parts.join("&");
 }
 
+export function apiErrorMessage(value: unknown, fallback = "Please try again."): string {
+  if (typeof value === "string") return value;
+  if (value && typeof value === "object") {
+    const d = value as { kind?: string; message?: unknown; detail?: unknown };
+    if (d.kind === "daily_budget" || d.kind === "gemini_budget") return typeof d.message === "string" ? d.message : "Today's shared AI allowance has been used up. Please wait until tomorrow (midnight India time). Reading and local exercises remain available.";
+    if (typeof d.message === "string") return d.message;
+    if (d.detail) return apiErrorMessage(d.detail, fallback);
+  }
+  return fallback;
+}
+
 export async function request<T>(path: string, init: RequestInit = {}, withAuth = false): Promise<T> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -1427,9 +1438,6 @@ export async function request<T>(path: string, init: RequestInit = {}, withAuth 
   };
   if (withAuth && authToken) {
     headers.Authorization = `Bearer ${authToken}`;
-  }
-  if (withAuth && ["/ask/talk", "/explain", "/explain/analysis", "/conversation/explain", "/conversation/start", "/conversation/turn", "/speech/tts"].includes(path)) {
-    Object.assign(headers, await (await import("../services/commerce")).paidHeaders(path));
   }
   let res: Response;
   try {
@@ -1442,7 +1450,7 @@ export async function request<T>(path: string, init: RequestInit = {}, withAuth 
     try {
       const body = await res.json();
       const value = (body as { detail?: unknown }).detail;
-      detail = typeof value === "string" ? value : value ? JSON.stringify(value) : detail;
+      detail = apiErrorMessage(value, detail);
     } catch {
       /* non-JSON error body — keep statusText */
     }
@@ -1562,7 +1570,7 @@ export async function uploadWritingPhoto(itemId: string, uri: string): Promise<W
   }
   let detail = `Upload failed with status ${res.status}`;
   try {
-    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
+    detail = apiErrorMessage(JSON.parse(res.body), detail);
   } catch {
     /* non-JSON error body: keep the status line */
   }
@@ -1662,7 +1670,7 @@ export async function uploadRecite(
   if (res.status >= 200 && res.status < 300) return JSON.parse(res.body) as ReciteResult;
   let detail = `Upload failed with status ${res.status}`;
   try {
-    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
+    detail = apiErrorMessage(JSON.parse(res.body), detail);
   } catch { /* keep */ }
   throw new ApiError(res.status, detail);
 }
@@ -1670,36 +1678,6 @@ export async function uploadRecite(
 /**
  * Upload a competition attempt (POST /competitions/{id}/attempts).
  */
-export async function uploadCompetitionAttempt(
-  competitionId: string,
-  audio: string,
-  opts: { verseUid: string; camera: string; hidden: boolean; division?: Division },
-): Promise<ReciteResult> {
-  const uploadUrl = `${BASE_URL}/competitions/${encodeURIComponent(competitionId)}/attempts`;
-  const headers: Record<string, string> = { Accept: "application/json" };
-  if (authToken) headers.Authorization = `Bearer ${authToken}`;
-  const FileSystem = require("expo-file-system/legacy");
-  const uploadType = FileSystem.FileSystemUploadType ? FileSystem.FileSystemUploadType.MULTIPART : 1;
-  const res = await FileSystem.uploadAsync(uploadUrl, audio, {
-    httpMethod: "POST",
-    uploadType,
-    fieldName: "file",
-    mimeType: audioMime(audio),
-    parameters: {
-      verse_uid: opts.verseUid,
-      camera: opts.camera,
-      hidden: opts.hidden ? "true" : "false",
-      division: opts.division ?? "standard",
-    },
-    headers,
-  });
-  if (res.status >= 200 && res.status < 300) return JSON.parse(res.body) as ReciteResult;
-  let detail = `Upload failed with status ${res.status}`;
-  try {
-    detail = (JSON.parse(res.body) as { detail?: string }).detail ?? detail;
-  } catch { /* keep */ }
-  throw new ApiError(res.status, detail);
-}
 
 export const api = {
   reportClientError: (body: { route: string; error_type: string; components: string[] }) =>
@@ -1998,7 +1976,6 @@ export const api = {
       Accept: "text/event-stream",
     };
     if (authToken) headers.Authorization = `Bearer ${authToken}`;
-    Object.assign(headers, await (await import("../services/commerce")).paidHeaders("/ask/talk/stream"));
     let res: Awaited<ReturnType<typeof streamFetch>>;
     try {
       res = await streamFetch(`${BASE_URL}/ask/talk/stream`, {
@@ -2012,7 +1989,7 @@ export const api = {
     if (!res.ok) {
       let detail = res.statusText;
       try {
-        detail = ((await res.json()) as { detail?: string }).detail ?? detail;
+        detail = apiErrorMessage(await res.json(), detail);
       } catch {
         /* keep statusText */
       }
@@ -2066,7 +2043,7 @@ export const api = {
    * 2000 characters. Returns 204. Rate limited to 20 a day per learner.
    */
   reportContent: (body: {
-    surface: "talk" | "ask" | "fact" | "word";
+    surface: "talk" | "ask" | "fact" | "word" | "voice-lab";
     question: string;
     answer: string;
     reason?: string;
@@ -2270,81 +2247,9 @@ export const api = {
       if (e instanceof ApiError && e.status === 404) return { items: [] };
       throw e;
     }),
-  competitionCurrent: () =>
-    request<{
-      open: Competition | null;
-      next: Competition | null;
-      last: { competition: Competition; my_rank: number | null; certificate_code: string | null } | null;
-    }>("/competitions/current", {}, true).catch((e) => {
-      if (e instanceof ApiError && e.status === 404) return { open: null, next: null, last: null };
-      throw e;
-    }),
   reciteStreamTicket: () =>
     request<{ ticket: string; max_seconds: number }>("/recite/stream-ticket", { method: "POST" }, true),
-  competitionLeaderboard: (id: string, limit = 50, division?: Division) =>
-    request<{
-      status: string;
-      division?: Division;
-      rows: { rank: number; public_name: string; percent: number; is_me?: boolean }[];
-      me: { rank: number | null; percent: number; submitted?: number; total?: number; complete?: boolean } | null;
-      ranked?: number;
-      provisional?: number;
-    }>(
-      `/competitions/${encodeURIComponent(id)}/leaderboard?limit=${limit}${division ? `&division=${division}` : ""}`, {}, true,
-    ),
-  competitionResults: (id: string, division?: Division) =>
-    request<{
-      rows: { rank: number; public_name: string; percent: number }[];
-      me: { rank: number | null; percent: number | null; certificate_code: string | null; division?: Division } | null;
-      division?: Division | null;
-      is_set?: boolean;
-    }>(
-      `/competitions/${encodeURIComponent(id)}/results${division ? `?division=${division}` : ""}`, {}, true,
-    ),
-  /** Recitation standings in the Leaderboards shape (weekly set or month). */
-  competitionStandings: (period: "weekly" | "monthly", division: Division) =>
-    request<{
-      period: string;
-      period_key: string;
-      board: string;
-      scope: string;
-      period_end: string;
-      rows: { rank: number; learner_id: string; name: string; score: number; participation: number; is_me: boolean; of?: number; pending?: number }[];
-      total: number;
-      me: { rank: number; learner_id: string; name: string; score: number; participation: number; is_me: boolean; of?: number; complete?: boolean; pending?: number } | null;
-      empty: boolean;
-      frozen?: boolean;
-    }>(`/competitions/standings?period=${period}&division=${division}`, {}, true),
-  competitionMaster: (month?: string) =>
-    request<{
-      month: string;
-      rows: { rank: number; public_name: string; wins: number; seconds: number; thirds: number }[];
-      me: { rank: number; public_name: string; wins: number; seconds: number; thirds: number } | null;
-      winner: { public_name: string; wins: number; claim_code: string } | null;
-    }>(`/competitions/master${month ? `?month=${encodeURIComponent(month)}` : ""}`, {}, true).catch((e) => {
-      if (e instanceof ApiError && e.status === 404) return { month: "", rows: [], me: null, winner: null };
-      throw e;
-    }),
-  competitionRules: () =>
-    request<{ version: string; rules: string[] }>("/competitions/rules", {}, true).catch(() => ({ version: "", rules: [] })),
-  publicProfile: () =>
-    request<{ public_name: string; age_confirmed: boolean; rules_version: string; recordings_consent: boolean }>(
-      "/me/public-profile", {}, true,
-    ).catch((e) => {
-      if (e instanceof ApiError && e.status === 404) return { public_name: "", age_confirmed: false, rules_version: "", recordings_consent: false };
-      throw e;
-    }),
-  savePublicProfile: (body: { public_name?: string; age_confirmed?: boolean; rules_version?: string; rules_accepted?: boolean; recordings_consent?: boolean }) =>
-    request<{ public_name: string; age_confirmed: boolean; rules_version: string; recordings_consent: boolean }>(
-      "/me/public-profile", { method: "PUT", body: JSON.stringify(body) }, true,
-    ),
-  myCertificates: () =>
-    request<{ certificates: { code: string; kind: string; rank: number; competition_id: string | null; month: string | null; piece_ref: string }[] }>(
-      "/me/certificates", {}, true,
-    ).catch((e) => {
-      if (e instanceof ApiError && e.status === 404) return { certificates: [] };
-      throw e;
-    }),
+
 };
 
 export default api;

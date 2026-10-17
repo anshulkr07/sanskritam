@@ -180,6 +180,10 @@ export default function SettingsScreen() {
           />
         </Section>
 
+        <Section title="Help and safety">
+          <Text style={styles.note}>Sanskritam is published by Vedic Valor. AI replies can be incorrect. Use the flag beside an answer to report harmful or inaccurate content. Our safety reviewer checks reports daily.</Text>
+          <LinkRow icon="mail-outline" tone="sage" label="Contact support and safety" onPress={() => void openExternal("mailto:sanskritam@vedicvalor.com")} />
+        </Section>
         <Section title="Sound and haptics">
           <ToggleRow
             icon="volume-high"

@@ -15,6 +15,8 @@ os.environ["ADMIN_TOKEN"] = "test-admin"
 # whole suite shares one database — left on, one test's seeded usage would 429
 # unrelated tests. test_daily_budget.py turns it on per test.
 os.environ["QUOTA_DAILY_BUDGET_INR"] = "0"
+os.environ["GEMINI_DAILY_BUDGET_USD"] = "0"
+os.environ["DEFERRED_FEATURES_ENABLED"] = "true"
 # Same for the Gemini ceiling; test_gemini_budget.py turns it on per test.
 os.environ["GEMINI_DAILY_BUDGET_INR"] = "0"
 # The TTS audio cache is one per process, and many tests speak the same word:

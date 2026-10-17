@@ -14,7 +14,7 @@ import type { CompositeScreenProps } from "@react-navigation/native";
 import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-import type { VoiceCategoryId } from "../voiceLab/companions";
+type VoiceCategoryId = string;
 
 export type MainTabParamList = {
   Home: undefined;

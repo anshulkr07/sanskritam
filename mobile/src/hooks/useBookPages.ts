@@ -52,19 +52,12 @@ export function useBookPages(bookKey: string, chapter?: string | null, medium: "
         : Promise.resolve(null),
   );
   const pagedVerses = pagedData?.verses ?? null;
-  const { data: audioData } = useQuery(
-    medium === "audio" ? `reader-audio-${bookKey}-${chapter ?? "all"}` : "reader-audio-none",
-    () => medium === "audio" ? request<{ verses: Shloka[] }>(`/commerce/titles/${encodeURIComponent(bookKey + ":audio")}/content${chapter != null ? `?chapter=${encodeURIComponent(chapter)}` : ""}`, {}, true).catch(() => null) : Promise.resolve(null),
-    { ttlMs: 4 * 60_000, refetchOnFocus: true },
-  );
-
   const pages: Shloka[] = useMemo(() => {
-    if (medium === "audio" && audioData?.verses) return audioData.verses;
     if (tier) return tierRows?.length ? tierVerses(tierRows) : offline?.pages ?? [];
     if (pagedText && pagedChapter !== null) return pagedVerses?.length ? pagedVerses : offline?.pages ?? [];
     const rows = bookVerses(bookKey, verses ?? [], canon?.texts ?? []);
     return rows?.length ? rows : offline?.pages ?? [];
-  }, [tier, tierRows, bookKey, verses, canon, pagedText, pagedChapter, pagedVerses, offline, medium, audioData]);
+  }, [tier, tierRows, bookKey, verses, canon, pagedText, pagedChapter, pagedVerses, offline, medium]);
 
   const title = useMemo(
     () => (canon?.texts ?? []).find((c) => c.slug === bookKey)?.title_en ?? offline?.title ?? bookKey,

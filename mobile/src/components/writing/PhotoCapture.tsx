@@ -62,6 +62,7 @@ export default function PhotoCapture({
       <View style={[styles.box, styles.center, { width: size, height: size }]}>
         <Ionicons name="camera-outline" size={40} color={color.inkSoft} />
         <Text style={styles.title}>Camera access is off</Text>
+        <Text>Handwriting photos are sent to Sarvam AI for recognition and are not retained by Sanskritam.</Text>
         <Button cornerRadius={4}
           label={blocked ? "Open settings" : "Allow camera"}
           tone="tonal"
@@ -74,6 +75,7 @@ export default function PhotoCapture({
 
   return (
     <View style={styles.wrap}>
+      <Text style={{ color: color.inkSoft, padding: 8 }}>This handwriting photo is sent to Sarvam AI for recognition. Sanskritam does not retain it.</Text>
       <View style={[styles.box, { width: size, height: size }]}>
         {thumbnail ? (
           <>

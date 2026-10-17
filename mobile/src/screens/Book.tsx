@@ -34,7 +34,6 @@ import { color, font, sanskritText, script, space } from "../theme";
 import { plain } from "../utils/text";
 import { nextChapter, prevChapter } from "../utils/paged";
 import { downloadBookAudio, saveOfflineBook } from "../services/offlineBooks";
-import CommerceAccess from "../components/CommerceAccess";
 import VerseArtworkBackground from "../components/artwork/VerseArtworkBackground";
 import ReadingAppearanceSettings from "../components/artwork/ReadingAppearanceSettings";
 import { verseArtworkFor } from "../components/artwork/verseArtwork";
@@ -235,7 +234,6 @@ export default function BookScreen({ navigation, route }: Props) {
   return (
     <View style={[styles.root, { backgroundColor: theme.page, paddingTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }]}>
       <StatusBar style={themeName === "dark" ? "light" : "dark"} />
-      <CommerceAccess slug={bookKey} medium={mode === "chant" ? "audio" : "book"} chapter={pagedChapter ?? ""} />
       {controls && (
         <View>
           <View style={[styles.topBar, { backgroundColor: theme.bar }]}>

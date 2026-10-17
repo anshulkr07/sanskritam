@@ -80,7 +80,6 @@ export default function DailyLearningCard({ navigate }: { navigate: (route: stri
           <Text style={styles.linkText}>{due === null ? "Review" : due > 0 ? `${due} due for review` : "Reviews complete"}</Text>
         </Pressable>
         <Pressable onPress={() => navigate("Challenge")} accessibilityRole="button" accessibilityLabel="Start a short practice session" style={styles.link}><Text style={styles.linkText}>Short practice</Text></Pressable>
-        <Pressable onPress={() => navigate("Friends")} accessibilityRole="button" accessibilityLabel="Practise with a friend" style={styles.link}><Text style={styles.linkText}>With a friend</Text></Pressable>
         <Pressable onPress={() => navigate("OfflineLibrary")} accessibilityRole="button" accessibilityLabel="Open saved reading offline" style={styles.link}><Text style={styles.linkText}>Saved reading</Text></Pressable>
       </View>
     </View>}

@@ -76,8 +76,8 @@ def _with_learner(lid, fn):
         db.close()
 
 
-def test_gemini_ceiling_ships_on_at_200():
-    assert Settings.model_fields["gemini_daily_budget_inr"].default == 200.0
+def test_gemini_ceiling_ships_on_at_one_usd():
+    assert Settings.model_fields["gemini_daily_budget_usd"].default == 1.0
     assert Settings.model_fields["quota_daily_budget_inr"].default == 300.0
 
 

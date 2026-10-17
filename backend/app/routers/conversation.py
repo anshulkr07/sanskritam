@@ -402,6 +402,8 @@ async def _start_llm(
         native_lang=seed_lang,
         opening=True,
     )
+    from app.services.ai_safety import check_tutor_reply
+    check_tutor_reply(reply, db)
     tutor_ms = (time.perf_counter() - t_tutor) * 1000
     if reply.source == "degraded":
         refund_quota(db, learner, "llm_calls", 1, surface="conversation",
@@ -786,6 +788,8 @@ async def _turn_llm(
         # for those); a typed line is always shown exactly as typed.
         want_heard=bool(stt_lang),
     )
+    from app.services.ai_safety import check_tutor_reply
+    check_tutor_reply(reply, db)
     tutor_ms = (time.perf_counter() - t_tutor) * 1000
     if reply.source == "degraded":
         refund_quota(db, learner, "llm_calls", 1, surface="conversation",

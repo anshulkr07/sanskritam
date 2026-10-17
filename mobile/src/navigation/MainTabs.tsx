@@ -15,9 +15,6 @@ import HomeScreen from "../screens/Home";
 import LearnTrailScreen from "../screens/LearnTrail";
 import PlayScreen from "../screens/Play";
 import ReaderScreen from "../screens/Reader";
-import GroupScreen from "../screens/Group";
-import { AudioMiniPlayer, useCommunity } from "../community/CommunityProvider";
-import VoiceHub from "../screens/VoiceHub";
 import { haptics } from "../services/haptics";
 import { color, font } from "../theme";
 import type { MainTabParamList } from "./types";
@@ -45,7 +42,6 @@ const LABEL: Record<keyof MainTabParamList, string> = {
   Group: "Group",
 };
 export default function MainTabs() {
-  const { status } = useCommunity();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const iconsOnly = width < 320 || PixelRatio.getFontScale() >= 1.4;
@@ -54,7 +50,6 @@ export default function MainTabs() {
     <Tab.Navigator
       tabBar={(props) => (
         <View>
-          <AudioMiniPlayer />
           <BottomTabBar {...props} />
         </View>
       )}
@@ -111,27 +106,6 @@ export default function MainTabs() {
         name="Read"
         component={ReaderScreen}
         options={{ tabBarLabel: LABEL.Read }}
-      />
-      <Tab.Screen
-        name="VoiceLab"
-        component={VoiceHub}
-        options={{ tabBarLabel: LABEL.VoiceLab }}
-      />
-      <Tab.Screen
-        name="Group"
-        component={GroupScreen}
-        options={{
-          tabBarLabel: LABEL.Group,
-          // Unread messages and friend requests waiting; a dot when only a
-          // room is live.
-          tabBarBadge:
-            status.unread + (status.requests ?? 0) > 0
-              ? Math.min(99, status.unread + (status.requests ?? 0))
-              : status.live > 0
-                ? "•"
-                : undefined,
-          tabBarBadgeStyle: { backgroundColor: color.saffronBtn, fontFamily: "Nunito_700Bold" },
-        }}
       />
     </Tab.Navigator>
   );

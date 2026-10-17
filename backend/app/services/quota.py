@@ -4,9 +4,9 @@ Two limits, checked together before each vendor call:
 
 - **Per learner** — a rolling-window allowance per kind (``tts_chars``,
   ``stt_seconds``, ``llm_calls``, ``doc_pages``, ``gemini_inr``).
-- **Per service** — a rolling-window rupee budget across ALL learners, one
+- **Per service** — a calendar-day budget across ALL learners, one
   per vendor: Sarvam (``settings.quota_daily_budget_inr``) and Gemini
-  (``settings.gemini_daily_budget_inr``). Per-learner limits alone do not
+  (``settings.gemini_daily_budget_usd``). Shared budgets reset at midnight IST. Per-learner limits alone do not
   bound spend: every new install is a new learner with a fresh allowance, so
   a crowd or a script is capped only by these. The two do not share money:
   a spent Gemini budget leaves Sarvam's untouched, and the other way round.
@@ -18,12 +18,14 @@ budget alone is disabled when its setting is 0.
 import logging
 from datetime import date, datetime, timedelta, timezone
 from typing import Optional
+from zoneinfo import ZoneInfo
+from threading import RLock
 
-from sqlalchemy import and_, case, func
+from sqlalchemy import and_, case, func, text
 from sqlalchemy.orm import Session
 
 from app.config import settings
-from app.models import Learner, UsageEvent
+from app.models import Learner, UsageEvent, BudgetCarry
 
 logger = logging.getLogger("shabd.quota")
 
@@ -111,10 +113,46 @@ def _limit(kind: str) -> float:
     return limits[kind]
 
 
+def budget_start() -> datetime:
+    now = datetime.now(timezone.utc).astimezone(ZoneInfo(settings.budget_timezone))
+    return now.replace(hour=0, minute=0, second=0, microsecond=0).astimezone(timezone.utc)
+
+def budget_retry_after() -> int:
+    next_day = budget_start() + timedelta(days=1)
+    return max(1, int((next_day - datetime.now(timezone.utc)).total_seconds()))
+
+def budget_message(kind: str) -> str:
+    vendor = "Gemini" if kind == GEMINI_BUDGET_KIND else "speech and tutor"
+    return f"Today's shared {vendor} allowance has been used up. Please wait until tomorrow (resets at midnight India time). Reading, saved audio and local exercises remain available."
+
+def gemini_budget_inr() -> float:
+    return settings.gemini_daily_budget_usd * settings.usd_inr if settings.gemini_daily_budget_usd > 0 else settings.gemini_daily_budget_inr
+
+_budget_locks = {"sarvam": RLock(), "gemini": RLock()}
+
+def check_and_consume(db, learner, kind, amount, surface="", vendor_amount=None):
+    # Postgres advisory transaction locks serialize ALL Cloud Run instances.
+    # The local lock also makes SQLite development/tests thread safe.
+    if not settings.quota_enabled:
+        return
+    _limit(kind)  # reject unknown kinds with the documented ValueError
+    pool = _POOL[kind]
+    with _budget_locks[pool]:
+        if settings.quota_enabled and db.bind.dialect.name == "postgresql":
+            db.execute(text("SELECT pg_advisory_xact_lock(:key)"), {"key": 7319001 if pool == "sarvam" else 7319002})
+        try:
+            result = _check_and_consume(db, learner, kind, amount, surface, vendor_amount)
+            db.info.setdefault("quota_reservations", {}).setdefault((learner.id, kind, surface, amount), []).append(result)
+            return None
+        except Exception:
+            db.rollback()
+            raise
+
+
 def _budget(pool: str) -> tuple[float, str]:
     """``(rupees, QuotaExceeded.kind)`` for one vendor's service budget."""
     if pool == _GEMINI:
-        return settings.gemini_daily_budget_inr, GEMINI_BUDGET_KIND
+        return gemini_budget_inr(), GEMINI_BUDGET_KIND
     return settings.quota_daily_budget_inr, BUDGET_KIND
 
 
@@ -161,13 +199,36 @@ def spend_since(db: Session, hours: int, pool: str = _SARVAM) -> float:
 
     Refund rows are negative, so a failed vendor call nets to zero here too.
     """
-    cutoff = _window_start(hours)
+    cutoff = budget_start()
     result = (
         db.query(func.coalesce(func.sum(_cost_inr(pool)), 0.0))
         .filter(UsageEvent.ts >= cutoff)
         .scalar()
     )
-    return float(result)
+    return float(result) + carried_spend(db, pool)
+
+
+def carried_spend(db, pool):
+    return float(db.query(BudgetCarry.amount).filter_by(day=budget_start().isoformat(), pool=pool).scalar() or 0)
+
+
+def retain_deleted_spend(db, learner_id):
+    """Erasing an account must not refill the owner's shared money pool.
+
+    Transfer its current-day total into an anonymous per-vendor aggregate in
+    the SAME transaction as deletion. There is no account key in this table.
+    """
+    from sqlalchemy.dialects.postgresql import insert as pg_insert
+    from sqlalchemy.dialects.sqlite import insert as sqlite_insert
+    for pool in (_SARVAM, _GEMINI):
+        if db.bind.dialect.name == "postgresql":
+            db.execute(text("SELECT pg_advisory_xact_lock(:key)"), {"key": 7319001 if pool == _SARVAM else 7319002})
+        amount = float(db.query(func.coalesce(func.sum(_cost_inr(pool)), 0.0)).filter(UsageEvent.learner_id == learner_id, UsageEvent.ts >= budget_start()).scalar())
+        if amount <= 0:
+            continue
+        insert = pg_insert if db.bind.dialect.name == "postgresql" else sqlite_insert
+        statement = insert(BudgetCarry).values(day=budget_start().isoformat(), pool=pool, amount=amount)
+        db.execute(statement.on_conflict_do_update(index_elements=["day", "pool"], set_={"amount": BudgetCarry.amount + amount}))
 
 
 def gemini_headroom_inr(db: Session) -> float:
@@ -176,7 +237,7 @@ def gemini_headroom_inr(db: Session) -> float:
     For work that spends on Gemini outside a learner's request (a scheduled
     batch job): check this before starting. ``inf`` when the ceiling is off.
     """
-    budget = settings.gemini_daily_budget_inr
+    budget = gemini_budget_inr()
     if not settings.quota_enabled or budget <= 0:
         return float("inf")
     return budget - spend_since(db, settings.quota_window_hours, _GEMINI)
@@ -190,22 +251,25 @@ def budget_status(db: Session) -> dict:
         "sarvam_spent_inr": round(spend_since(db, hours, _SARVAM), 2),
         "sarvam_budget_inr": settings.quota_daily_budget_inr,
         "gemini_spent_inr": round(spend_since(db, hours, _GEMINI), 2),
-        "gemini_budget_inr": settings.gemini_daily_budget_inr,
+        "gemini_budget_inr": gemini_budget_inr(),
+        "gemini_budget_usd": settings.gemini_daily_budget_usd,
+        "reset_timezone": settings.budget_timezone,
+        "retry_after_s": budget_retry_after(),
     }
 
 
-def _event(learner: Learner, kind: str, amount: float, surface: str, source: str) -> UsageEvent:
+def _event(learner: Learner, kind: str, amount: float, surface: str, source: str, timestamp=None) -> UsageEvent:
     return UsageEvent(
         learner_id=learner.id,
         kind=kind,
         amount=amount,
         surface=surface,
         source=source,
-        ts=datetime.now(timezone.utc),
+        ts=timestamp or datetime.now(timezone.utc),
     )
 
 
-def check_and_consume(
+def _check_and_consume(
     db: Session,
     learner: Learner,
     kind: str,
@@ -237,18 +301,18 @@ def check_and_consume(
         # Both sums in one statement: every extra round trip costs ~140 ms in
         # production, on every metered call.
         mine = case(
-            (and_(UsageEvent.learner_id == learner.id, UsageEvent.kind == kind), UsageEvent.amount),
+            (and_(UsageEvent.learner_id == learner.id, UsageEvent.kind == kind, UsageEvent.ts >= _window_start(window_hours)), UsageEvent.amount),
             else_=0.0,
         )
         used, spent = (
             db.query(
                 func.coalesce(func.sum(mine), 0.0),
-                func.coalesce(func.sum(_cost_inr(pool)), 0.0),
+                func.coalesce(func.sum(case((UsageEvent.ts >= budget_start(), _cost_inr(pool)), else_=0.0)), 0.0),
             )
-            .filter(UsageEvent.ts >= _window_start(window_hours))
+            .filter(UsageEvent.ts >= min(_window_start(window_hours), budget_start()))
             .one()
         )
-        used, spent = float(used), float(spent)
+        used, spent = float(used), float(spent) + carried_spend(db, pool)
     else:
         used, spent = usage_since(db, learner.id, kind, window_hours), 0.0
 
@@ -261,18 +325,20 @@ def check_and_consume(
 
     if budget > 0 and spent + (amount + extra) * _price_inr(kind) > budget:
         # Same simplification: the window rolls forward, so retry in an hour.
-        raise QuotaExceeded(kind=budget_kind, used=spent, limit=budget, retry_after_s=3600)
+        raise QuotaExceeded(kind=budget_kind, used=spent, limit=budget, retry_after_s=budget_retry_after())
 
     # Record usage
-    db.add(_event(learner, kind, amount, surface, "live"))
+    reserved_at = datetime.now(timezone.utc)
+    db.add(_event(learner, kind, amount, surface, "live", reserved_at))
     if extra > 0:
-        db.add(_event(learner, kind + _EXTRA, extra, surface, "live"))
+        db.add(_event(learner, kind + _EXTRA, extra, surface, "live", reserved_at))
 
     # Mirror onto the denormalized counter for STT
     if kind == "stt_seconds":
         learner.voice_minutes_used = (learner.voice_minutes_used or 0.0) + (amount / 60.0)
 
     db.commit()
+    return reserved_at
 
 
 def refund_quota(
@@ -304,10 +370,12 @@ def refund_quota(
     # The ledger column holds 16 characters; the reason goes to the log.
     source = reason if len(reason) <= _SOURCE_MAX else _REFUND_SOURCE
     logger.info("refund %s %.4f for learner %s: %s", kind, abs(amount), learner.id, reason)
-    db.add(_event(learner, kind, -abs(amount), surface, source))
+    reservations = db.info.get("quota_reservations", {}).get((learner.id, kind, surface, abs(amount)), [])
+    timestamp = reservations.pop() if reservations else None
+    db.add(_event(learner, kind, -abs(amount), surface, source, timestamp))
     extra = max(0.0, (vendor_amount or 0.0) - abs(amount))
     if extra > 0:
-        db.add(_event(learner, kind + _EXTRA, -extra, surface, source))
+        db.add(_event(learner, kind + _EXTRA, -extra, surface, source, timestamp))
     db.commit()
 
 
@@ -331,5 +399,7 @@ def settle_quota(
     delta = actual - reserved
     if abs(delta) < 1e-9:
         return
-    db.add(_event(learner, kind, delta, surface, "settle"))
+    reservations = db.info.get("quota_reservations", {}).get((learner.id, kind, surface, reserved), [])
+    timestamp = reservations.pop() if reservations else None
+    db.add(_event(learner, kind, delta, surface, "settle", timestamp))
     db.commit()

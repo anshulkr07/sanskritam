@@ -80,7 +80,7 @@ def report_client_error(
 
 
 class ReportRequest(BaseModel):
-    surface: str = Field(..., pattern="^(talk|ask|fact|word)$")
+    surface: str = Field(..., pattern="^(talk|ask|fact|word|voice-lab)$")
     question: str = ""
     answer: str = ""
     reason: str = ""
@@ -104,12 +104,14 @@ def report_content(
     ) or 0
     if today >= REPORTS_PER_DAY:
         raise HTTPException(status_code=429, detail="Report limit reached. Try again tomorrow.")
-    db.add(ContentReport(
+    report = ContentReport(
         learner_id=learner.id,
         surface=req.surface,
         question=(req.question or "")[:MAX_FIELD],
         answer=(req.answer or "")[:MAX_FIELD],
         reason=(req.reason or "")[:MAX_FIELD],
-    ))
+    )
+    db.add(report)
     db.commit()
+    logging.getLogger("shabd.safety").warning("safety_report_queued report_id=%s", report.id)
     return None

@@ -3,7 +3,6 @@
 // "Coming soon" row at the end instead of greying out every shelf.
 
 import React, { useMemo } from "react";
-import NativeSponsor from "../components/NativeSponsor";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { CanonText, Shloka } from "../api/client";
@@ -113,7 +112,6 @@ export default function BooksHome({
         <View style={{ gap: 18, marginBottom: 6 }}>
           <ReadHeader media={media} onMedia={onMedia} />
           <ContinueReading groups={groups} allVerses={allVerses} positions={positions} onResume={onResume} onContents={onOpen} />
-          <NativeSponsor />
         </View>
       }
       initialNumToRender={3}

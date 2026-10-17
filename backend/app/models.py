@@ -1149,6 +1149,35 @@ class ContentReport(Base):
     answer = Column(Text, default="")
     reason = Column(Text, default="")
     created_at = Column(DateTime, default=_utcnow, index=True)
+    status = Column(String(16), nullable=False, default="open", index=True)
+    review_notes = Column(Text, default="")
+    reviewed_by = Column(String(120), default="")
+    reviewed_at = Column(DateTime, nullable=True)
+
+
+class SafetyBlock(Base):
+    """Exact AI response hashes withdrawn by the safety reviewer."""
+    __tablename__ = "safety_blocks"
+    digest = Column(String(64), primary_key=True)
+    reason = Column(Text, default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class ProviderDeletion(Base):
+    """Minimal outbox that survives account deletion until a provider confirms."""
+    __tablename__ = "provider_deletions"
+    provider = Column(String(32), primary_key=True)
+    subject = Column(String(64), primary_key=True)
+    task_id = Column(String(128), default="")
+    created_at = Column(DateTime, default=_utcnow)
+
+
+class BudgetCarry(Base):
+    """Anonymous daily vendor spend retained when an account is deleted."""
+    __tablename__ = "budget_carry"
+    day = Column(String(40), primary_key=True)
+    pool = Column(String(16), primary_key=True)
+    amount = Column(Float, nullable=False, default=0)
 
 
 class AskAnswer(Base):

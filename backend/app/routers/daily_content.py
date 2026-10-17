@@ -101,6 +101,9 @@ def run_content_tick(
     db: Session = Depends(get_db),
 ):
     """Move the daily-content pipeline one step. Safe to call at any time."""
+    from app.config import settings
+    if not settings.content_generation_enabled:
+        return {"paused": True, "reason": "New batch generation is paused for the free launch; stored content remains available."}
     return svc.tick(db)
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../store/auth";
 import { chooseProfilePhoto, removeProfilePhoto, linkCommunityAccount } from "../services/profilePhoto";
-import { friendly } from "../community/api";
+const friendly = (e: unknown, fallback = "Please try again.") => e instanceof Error ? e.message : fallback;
 import ProfileImage from "./ProfileImage";
 import { color } from "../theme";
 
@@ -46,10 +46,10 @@ export default function ProfilePhotoEditor() {
         </Pressable>}
       </View>
     </View>
-    <Text style={styles.hint}>One picture for your account and Group. Images are checked for harmful content before sharing. Avoid contact details and identity documents.</Text>
-    {learner?.community_suspended ? <Text style={styles.error}>Community access is suspended. Contact support for a review.</Text> : !learner?.community_verified ?
+    <Text style={styles.hint}>Your optional account picture is checked for harmful content before it is saved. Avoid contact details and identity documents.</Text>
+    {learner?.community_suspended ? <Text style={styles.error}>Profile changes are restricted. Contact support for a review.</Text> : !learner?.community_verified ?
       <View style={{ gap: 10 }}>
-        <Text style={styles.hint}>Sign in to participate in Group and share a picture. Linking a new account keeps your current learning profile.</Text>
+        <Text style={styles.hint}>Sign in to add an account picture. Linking a new account keeps your current learning profile.</Text>
         {Platform.OS !== "web" ? <Pressable disabled={busy} style={styles.button} onPress={() => void link("google")} accessibilityRole="button">
           <Text style={styles.buttonText}>Continue with Google</Text>
         </Pressable> : <Text style={styles.hint}>Open the installed app to verify your sign-in.</Text>}

@@ -159,6 +159,8 @@ class Prepared:
 
 async def _prepare(req: TalkRequest) -> Prepared:
     question = (req.question or "").strip()
+    from app.services.ai_safety import check_input
+    check_input(question)
     if not question:
         raise HTTPException(status_code=422, detail="Ask a question.")
     code, how = await lang_detect.resolve_language(question, sticky=req.lang, stt_hint=req.stt_lang)
@@ -273,6 +275,8 @@ def _stored(db: Session, p: Prepared) -> Optional[TalkResponse]:
 
 async def _finish(db: Session, p: Prepared, card: dict, routed: str, provider: str) -> TalkResponse:
     """Check the answer's verses and links, keep it when it may be shared."""
+    from app.services.ai_safety import check_output
+    check_output(ask_live.flatten(card), db)
     ask_sources.mark_stored(db, card)
     book_search.restore_refs(card, p.book_hits)
     counts = await asyncio.to_thread(ask_sources.check_card, card)
@@ -297,8 +301,10 @@ async def _fallback(db: Session, learner: Learner, p: Prepared) -> Optional[dict
     """The old Sarvam card, metered as before, for when Gemini cannot answer."""
     try:
         check_and_consume(db, learner, "llm_calls", 1, surface="ask")
-    except QuotaExceeded:
-        raise HTTPException(status_code=429, detail="Today's questions are used up. Try again tomorrow.")
+    except QuotaExceeded as exc:
+        from app.services.quota import budget_message, BUDGET_KIND
+        message = budget_message(exc.kind) if exc.kind == BUDGET_KIND else "Today's questions are used up. Try again tomorrow."
+        raise HTTPException(status_code=429, detail={"kind": exc.kind, "message": message, "retry_after_s": exc.retry_after_s})
     old = await get_explainer().answer_card(p.question, language=p.language, facts=_context(p))
     if not old:
         refund_quota(db, learner, "llm_calls", 1, surface="ask", reason="downstream_failure")
@@ -314,6 +320,9 @@ async def ask_talk(
 ):
     p = await _prepare(req)
     hit = _stored(db, p)
+    if hit is not None:
+        from app.services.ai_safety import check_output
+        check_output(hit.explanation, db)
     if hit is not None:
         return hit
 
@@ -345,6 +354,9 @@ async def ask_talk_stream(
     """The same answer as /ask/talk, sent while it is written (text/event-stream)."""
     p = await _prepare(req)            # a bad request still fails with its own status
     hit = _stored(db, p)
+    if hit is not None:
+        from app.services.ai_safety import check_output
+        check_output(hit.explanation, db)
     learner_id = learner.id
 
     async def events():
@@ -362,7 +374,7 @@ async def ask_talk_stream(
                                                 facts=p.facts, chart=p.chart_text, match=p.match_text,
                                                 books=p.books, lane=p.lane, surface="ask"):
                 if ev["type"] == "partial":
-                    yield _event(ev)
+                    pass  # Deliver only the final answer after server safety checks.
                 elif ev["type"] == "done":
                     raw, provider = ev["data"], ev["provider"]
             card = ask_live.clip(raw) if raw else None
@@ -378,6 +390,11 @@ async def ask_talk_stream(
                 return
             resp = await _finish(own, p, card, routed, provider)
             yield _event({"type": "final", "response": resp.model_dump()})
+        except QuotaExceeded as exc:
+            from app.services.quota import budget_message
+            yield _event({"type": "error", "status": 429, "detail": budget_message(exc.kind)})
+        except HTTPException as exc:
+            yield _event({"type": "error", "status": exc.status_code, "detail": exc.detail})
         except Exception as exc:  # noqa: BLE001 — the phone gets an error event, not a cut stream
             logger.warning("ask stream broke: %s", type(exc).__name__)
             yield _event({"type": "error", "status": 500, "detail": "Something went wrong. Try again."})

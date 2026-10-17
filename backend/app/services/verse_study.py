@@ -351,6 +351,8 @@ async def _ask_model(db: Session, learner: Learner, system: str, user: str,
     try:
         check_and_consume(db, learner, GEMINI_KIND, reserve, surface="verse")
     except QuotaExceeded as exc:
+        if exc.kind == "gemini_budget":
+            raise
         logger.info("Gemini limit reached (%s), verse answer falls back", exc.kind)
         return None
 

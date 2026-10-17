@@ -14,6 +14,9 @@ from app.community_models import (
 
 
 def delete_account(db, uid):
+    from app.services.provider_deletion import enqueue_stream
+    if db.get(Profile, uid) is not None:
+        enqueue_stream(db, uid)
     my_cids = [x.conversation_id for x in db.query(Member).filter_by(user_id=uid)]
     remove = []
     for c in (

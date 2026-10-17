@@ -240,7 +240,13 @@ class Settings(BaseSettings):
     # learners in the same rolling window (owner decision 2026-10-02: ₹200).
     # 0 disables the ceiling. Every online Gemini call must go through
     # services/quota.py with kind "gemini_inr" so it counts here.
-    gemini_daily_budget_inr: float = 200.0
+    gemini_daily_budget_inr: float = 0.0  # legacy INR override, 0 uses the USD ceiling
+    gemini_daily_budget_usd: float = 1.0
+    budget_timezone: str = "Asia/Kolkata"
+    deferred_features_enabled: bool = False
+    content_generation_enabled: bool = False
+    safety_reviewer_label: str = "Vedic Valor"
+    safety_contact_email: str = "sanskritam@vedicvalor.com"
     # One learner's share of it, so a single account cannot drain the pool.
     quota_gemini_inr_per_day: float = 10.0
     # Gemini 3.8 Flash, global, USD per 1M tokens (input, output including
@@ -267,7 +273,7 @@ class Settings(BaseSettings):
     # gcloud.cmd -> cmd.exe, which splits any value containing a space and
     # aborts the deploy. Set a space-free name here or in a non-Windows deploy.
     legal_entity_name: str = "Vedic Valor"
-    legal_contact_email: str = ""
+    legal_contact_email: str = "sanskritam@vedicvalor.com"
 
     # Reading shelf Plus lock (owner decision 2026-10-09, turned on when
     # buying Plus works). Off by default, so with no environment change

@@ -36,7 +36,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import AppErrorBoundary from "./src/components/AppErrorBoundary";
 import LearningProgressSync from "./src/components/LearningProgressSync";
-import CommerceSessionSync from "./src/components/CommerceSessionSync";
 import DailyReviewScreen from "./src/screens/DailyReview";
 import OfflineLibraryScreen from "./src/screens/OfflineLibrary";
 import React, { useEffect, useState } from "react";
@@ -51,7 +50,6 @@ import UpdateBanner from "./src/components/UpdateBanner";import { AuthProvider, 
 import { TypeScaleProvider } from "./src/hooks/useTypeScale";
 import { AskProvider } from "./src/ask/AskProvider";
 
-import { CommunityProvider } from "./src/community/CommunityProvider";
 import MainTabs from "./src/navigation/AppDrawer";
 import { loadPrefs } from "./src/services/prefs";
 import { setSpeechRoute } from "./src/services/speech";
@@ -82,18 +80,8 @@ import SmritiScreen from "./src/screens/Smriti";
 import VarnaJaalScreen from "./src/screens/VarnaJaal";
 import PracticeRoundScreen from "./src/screens/PracticeRound";
 import WordGroupsScreen from "./src/screens/WordGroups";
-import { LinkNav } from "./src/games/v2/linkNav";
 import PadaPathScreen from "./src/screens/PadaPath";
 import NumberBuilderScreen from "./src/screens/NumberBuilder";
-import LeaderboardsScreen from "./src/screens/Leaderboards";
-import FriendsScreen from "./src/screens/Friends";
-import RoomLobbyScreen from "./src/screens/RoomLobby";
-import GroupChatScreen from "./src/screens/GroupChat";
-import GroupInfoScreen from "./src/screens/GroupInfo";
-import GroupCirclesScreen from "./src/screens/GroupCircles";
-import GroupPeopleScreen from "./src/screens/GroupPeople";
-import GroupCardScreen from "./src/screens/GroupCard";
-import GroupNewScreen from "./src/screens/GroupNew";
 import CalibrationScreen from "./src/screens/Calibration";
 import KalaScreen from "./src/screens/Kala";
 import KalaChapterScreen from "./src/screens/KalaChapter";
@@ -105,13 +93,6 @@ import WordJourneyScreen from "./src/screens/WordJourney";
 import DoYouKnowScreen from "./src/screens/DoYouKnow";
 import ReciteScreen from "./src/screens/Recite";
 import RecitePickerScreen from "./src/screens/RecitePicker";
-import ContestScreen from "./src/screens/Contest";
-import ContestResultsScreen from "./src/screens/ContestResults";
-import MasterBoardScreen from "./src/screens/MasterBoard";
-import CertificateScreen from "./src/screens/Certificate";
-import ContestRulesScreen from "./src/screens/ContestRules";
-import VoiceCompanionsScreen from "./src/screens/VoiceCompanions";
-import VoiceSessionScreen from "./src/screens/VoiceSession";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -220,20 +201,12 @@ function RootNavigator() {
             <Stack.Screen name="WordGroups" component={WordGroupsScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PadaPath" component={PadaPathScreen} options={{ headerShown: false }} />
             <Stack.Screen name="NumberBuilder" component={NumberBuilderScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="Leaderboards" component={LeaderboardsScreen} options={{ title: "Leaderboards" }} />
-            <Stack.Screen name="Friends" component={FriendsScreen} options={{ title: "Friends" }} />
-            <Stack.Screen name="RoomLobby" component={RoomLobbyScreen} options={{ title: "Play with others" }} />
+
             {/* Group: chats, a circle's page, circles, people, your card, new circle/room. Own headers. */}
-            <Stack.Screen name="GroupChat" component={GroupChatScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="GroupInfo" component={GroupInfoScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="GroupCircles" component={GroupCirclesScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="GroupPeople" component={GroupPeopleScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="GroupCard" component={GroupCardScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="GroupNew" component={GroupNewScreen} options={{ headerShown: false }} />
+
             <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
             {/* Voice: the companions inside one group, and the live call with one of them. */}
-            <Stack.Screen name="VoiceCompanions" component={VoiceCompanionsScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="VoiceSession" component={VoiceSessionScreen} options={{ headerShown: false }} />
+
             {/* Parva: festivals and vrats. */}
             <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />
             <Stack.Screen name="ParvaPage" component={ParvaPageScreen} options={{ title: "Festival" }} />
@@ -248,11 +221,8 @@ function RootNavigator() {
             {/* Recite + competitions */}
             <Stack.Screen name="Recite" component={ReciteScreen} options={{ title: "Learn" }} />
             <Stack.Screen name="RecitePicker" component={RecitePickerScreen} options={{ title: "Recite" }} />
-            <Stack.Screen name="Contest" component={ContestScreen} options={{ title: "Competition" }} />
-            <Stack.Screen name="ContestResults" component={ContestResultsScreen} options={{ title: "Results" }} />
-            <Stack.Screen name="MasterBoard" component={MasterBoardScreen} options={{ title: "Master board" }} />
-            <Stack.Screen name="Certificate" component={CertificateScreen} options={{ title: "Certificate" }} />
-            <Stack.Screen name="ContestRules" component={ContestRulesScreen} options={{ title: "Rules" }} />
+
+
             {/* U8-4: the daily word */}
             <Stack.Screen name="DailyWord" component={DailyWordScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
@@ -301,20 +271,20 @@ export default function App() {
           <PrefsLoader />
           <TypeScaleProvider>
             <AuthProvider>
-              <CommerceSessionSync />
+
               <LearningProgressSync />
               <AppErrorBoundary routeName={routeName}>
               <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
-                <CommunityProvider>
+
                 <AskProvider routeName={routeName}>
                   {/* Play share links (handover_games_daily_multiplayer §11). */}
-                  <LinkNav navRef={navRef} />
+
                   <ParvaNotifyNav />
                   <RootNavigator />
                   {/* OTA: the restart prompt when an update has downloaded. */}
                   <UpdateBanner />
                 </AskProvider>
-                </CommunityProvider>
+
               </NavigationContainer>
               </AppErrorBoundary>
               <StatusBar style="dark" />
