@@ -158,3 +158,13 @@ On 1.6.0 (11), use Settings → Check for updates → Restart, then verify Home,
 screen lock, notification play/pause/seek, and the next verse transition.
 No replacement binary was started for this JavaScript-only follow-up.
 
+The owner subsequently clarified that their phone still had the older paid-only
+build, rather than 1.6.0. The 1.6.0 OTA cannot update a different native runtime.
+An installable APK was therefore requested using the `production-apk` profile,
+which inherits production environment/channel and changes distribution to APK.
+Build `2c902bd1-cf05-4fc9-b3bb-07b914c0138a`, version 1.6.0 (11), contains the
+free launch plus background playback/notification follow-up from commit `c18fd23`.
+Build status/install: https://expo.dev/accounts/sanskritam/projects/sanskritam/builds/2c902bd1-cf05-4fc9-b3bb-07b914c0138a
+Install after completion, verify the behavior, and record the declaration video
+from this current release. The APK does not require Play review to install.
+
