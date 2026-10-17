@@ -89,6 +89,11 @@ deletion tasks are confirmed. Monitor retry errors and unresolved reports.
 
 ## Verified release evidence
 
+- EAS production Android build finished successfully: version 1.6.0 (11),
+  build ID `3207cc57-60d0-4376-b1b8-e4cdc86e3221`, source commit
+  `3c970c51ed4c17b9bff1813e09b9c46f962e840f`.
+  Build and AAB download: https://expo.dev/accounts/sanskritam/projects/sanskritam/builds/3207cc57-60d0-4376-b1b8-e4cdc86e3221
+  Successful build completion does not replace installation and Play checks below.
 - Focused backend suites: 335 passed (139 launch/budget/legal/reporting checks;
   196 tutor/conversation/commerce/configuration checks).
 - Mobile TypeScript, playback regressions, offline reading/download checks and
