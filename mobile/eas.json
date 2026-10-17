@@ -25,6 +25,14 @@
       "distribution": "store",
       "channel": "android-internal"
     },
+    "production-apk": {
+      "extends": "production",
+      "environment": "production",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "production": {
       "channel": "production",
       "android": {
