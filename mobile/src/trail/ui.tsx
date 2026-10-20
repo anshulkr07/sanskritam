@@ -1,43 +1,14 @@
-import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 // Learn's small parts: square everything (owner, 2026-10-13: "pointed and
 // sharp with zero rounding"), one action colour, Mukta for the interface.
 
 import { Ionicons, type IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import React from "react";
-import { Pressable, StyleSheet, Text, View, type ImageSourcePropType, type StyleProp, type ViewStyle } from "react-native";
+import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from "react-native";
 
-import { hubArtwork } from "../components/artwork/hubs";
-import { unitArtwork } from "../components/path/artwork";
 import type { GuideLang } from "../api/client";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { haptics } from "../services/haptics";
 import { T, ui } from "./theme";
-
-/** "path:u4" (2:1 Path hero, subject on the right) or "hub:grammar:x" (4:5 portrait). */
-export function trailArt(key: string): { source?: ImageSourcePropType; aspect: number } {
-  if (key.startsWith("path:")) return { source: unitArtwork(key.slice(5)), aspect: 2 };
-  if (key.startsWith("hub:")) return { source: hubArtwork(key.slice(4)), aspect: 0.8 };
-  return { aspect: 1 };
-}
-
-/** A square crop of a painting: the right-hand subject of a wide hero, the top of a portrait. */
-export function Medallion({ art, size, ring }: { art: string; size: number; ring?: string }) {
-  const { source, aspect } = trailArt(art);
-  const wide = aspect >= 1;
-  return (
-    <View style={[styles.medal, { width: size, height: size }, ring ? { borderWidth: 2, borderColor: ring } : null]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
-      {source ? (
-        <Image
-          source={source}
-          resizeMode="cover"
-          style={wide
-            ? { position: "absolute", top: 0, height: size, width: size * aspect, left: -size * (aspect - 1) * 0.85 }
-            : { position: "absolute", top: 0, left: 0, width: size, height: size / aspect }}
-        />
-      ) : null}
-    </View>
-  );
-}
 
 export function Overline({ text, color = T.ink2 }: { text: string; color?: string }) {
   const { sized } = useTypeScale();
@@ -66,22 +37,6 @@ export function PrimaryButton({ label, onPress, disabled, icon, accessibilityLab
     >
       {icon ? <Ionicons name={icon} size={18} color={disabled ? T.ink2 : T.white} /> : null}
       <Text style={[ui("bold"), { fontSize: sized(17), color: disabled ? T.ink2 : T.white }]}>{label}</Text>
-    </Pressable>
-  );
-}
-
-export function SecondaryButton({ label, onPress, disabled, icon, accessibilityLabel, style }: ButtonProps) {
-  const { sized } = useTypeScale();
-  return (
-    <Pressable
-      onPress={() => { haptics.tap(); onPress(); }}
-      disabled={disabled}
-      accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel ?? label}
-      style={({ pressed }) => [styles.secondary, pressed && { opacity: 0.8 }, style]}
-    >
-      {icon ? <Ionicons name={icon} size={18} color={T.action} /> : null}
-      <Text style={[ui("bold"), { fontSize: sized(16), color: T.action }]}>{label}</Text>
     </Pressable>
   );
 }
@@ -139,11 +94,9 @@ export function Segments({ total, filled, color }: { total: number; filled: numb
 }
 
 const styles = StyleSheet.create({
-  medal: { overflow: "hidden", backgroundColor: T.line },
   overline: { letterSpacing: 1.3 },
   primary: { minHeight: 52, flexDirection: "row", gap: 8, alignItems: "center", justifyContent: "center", paddingHorizontal: 16, backgroundColor: T.action },
   primaryOff: { backgroundColor: T.line },
-  secondary: { minHeight: 52, flexDirection: "row", gap: 8, alignItems: "center", justifyContent: "center", paddingHorizontal: 16, borderWidth: 1.5, borderColor: T.action, backgroundColor: T.surface },
   textBtn: { minHeight: 44, alignItems: "center", justifyContent: "center", paddingHorizontal: 8 },
   iconBtn: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
   lang: { flexDirection: "row", height: 32, borderWidth: 1, borderColor: T.line },

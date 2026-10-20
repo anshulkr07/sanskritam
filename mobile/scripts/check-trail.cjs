@@ -61,23 +61,13 @@ assert.ok(![...ids].some((id) => id.startsWith('guide-art-')), 'guide-art readin
 assert.equal(LEARNV2_UNITS.filter((u) => u.id.startsWith('verse-module-')).length, 12, 'the metre course stays in the Library');
 assert.equal(LEARNV2_UNITS.filter((u) => u.id.startsWith('verse-module-')).flatMap((u) => u.lessonIds).length, 48);
 
-// In-order stops: nothing done → first is current; done ones stay done.
+// A card lesson is done only by finishing its own deck (LearnV2Lesson reads this).
 const s2 = TRAIL.find((s) => s.id === 's2');
 const none = { cardsDone: {}, topicsRead: new Set(), visited: new Set(), mastery: {} };
-let st = progress.stageStatuses(s2, none);
-const stops = stageStops(s2);
-assert.equal(st.get(stops[0].lesson.id), 'current');
-assert.ok(stops.slice(1).every((s) => st.get(s.lesson.id) === 'upcoming'));
-st = progress.stageStatuses(s2, { ...none, cardsDone: { 'trail:unit-4-1': true, 'verbs-number': true } });
-assert.equal(st.get(stops[0].lesson.id), 'done');
-assert.equal(st.get(stops[1].lesson.id), 'current');
-assert.equal(st.get('unit-5-1'), 'done', 'a finished card lesson is done wherever it sits');
-st = progress.stageStatuses(s2, { ...none, topicsRead: new Set(['how-it-works', 'stem-ending']) });
-assert.equal(st.get('unit-4-1'), 'current', 'source topic read marks cannot finish an independent card lesson');
-st = progress.stageStatuses(s2, { ...none, cardsDone: { 'trail:unit-4-1': true } });
-assert.equal(st.get('unit-4-1'), 'done', 'finishing a converted card deck completes its trail lesson');
-assert.equal(st.get('unit-4-2'), 'current', 'the next card lesson unlocks');
-assert.equal(progress.unitMastery(s2.units[0], { SG: 1, 'NOM.SG': 1, 'ACC.SG': 0.5, 'PRES.3SG': 0.5 }), 0.75);
+const first = stageStops(s2).find((s) => s.lesson.id === 'unit-4-1');
+assert.equal(progress.isStopDone(first, none), false);
+assert.equal(progress.isStopDone(first, { ...none, topicsRead: new Set(['how-it-works', 'stem-ending']) }), false, 'source topic read marks cannot finish an independent card lesson');
+assert.equal(progress.isStopDone(first, { ...none, cardsDone: { 'trail:unit-4-1': true } }), true, 'finishing a converted card deck completes its lesson');
 
 // Routes the trail and Library navigate to are registered.
 const app = fs.readFileSync(path.join(root, 'App.tsx'), 'utf8');
@@ -94,7 +84,7 @@ assert.ok(guideScreen.includes('CardLessonScreen'), 'all current and future guid
 assert.ok(!guideScreen.includes('ScrollView'), 'guide links cannot return to the old page UI');
 
 // Square corners on every Learn surface (owner, 2026-10-13).
-for (const file of ['src/trail/ui.tsx', 'src/trail/TrailMap.tsx', 'src/trail/TrailList.tsx', 'src/trail/Sheets.tsx', 'src/screens/LearnTrail.tsx', 'src/screens/LearnLibrary.tsx', 'src/screens/LearnV2Lesson.tsx', 'src/learnv2/LearnCard.tsx', 'src/learnv2/TeachingArt.tsx']) {
+for (const file of ['src/trail/ui.tsx', 'src/screens/LearnLibrary.tsx', 'src/screens/LearnV2Lesson.tsx', 'src/learnv2/LearnCard.tsx', 'src/learnv2/TeachingArt.tsx']) {
   assert.ok(!/borderRadius|radius\./.test(fs.readFileSync(path.join(root, file), 'utf8')), `${file} has no rounded corners`);
 }
 
