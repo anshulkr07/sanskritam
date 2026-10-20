@@ -1,0 +1,633 @@
+{
+  "id": "reading-names-s1",
+  "where": "reading.names#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The temple library's arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "reading.names",
+    "template": "scene",
+    "title": {
+      "en": "The register of names",
+      "hi": "नामों का रजिस्टर"
+    },
+    "title_sa": "नामपत्रम्",
+    "minutes": 6,
+    "teaches": [
+      "read.words"
+    ],
+    "needs": [
+      "read.syllables",
+      "read.places",
+      "read.iast"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "A shadow in the doorway",
+          "hi": "द्वार पर एक छाया"
+        },
+        "image": {
+          "id": "reading-names-s1",
+          "brief": "The temple library's arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.",
+          "alt": {
+            "en": "A tall man in a dark coat watches from a library doorway as a grandmother reads a register",
+            "hi": "दरवाज़े से देखता गहरे कोट वाला आदमी, रजिस्टर पढ़ती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "mauni",
+            "lubdhaka"
+          ],
+          "place": "granthalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The register is open, names in long columns. Dādī reads the first aloud, and the second, and the third. In the arched doorway a tall man in a dark coat watches, rings on his fingers, a leather satchel on his shoulder. He says nothing. His eyes are on the glowing leaf.",
+          "hi": "रजिस्टर खुला है, लम्बे स्तम्भों में नाम। दादी पहला नाम ज़ोर से पढ़ती हैं, फिर दूसरा, फिर तीसरा। मेहराबदार द्वार पर गहरे कोट में एक लम्बा आदमी देख रहा है, उँगलियों में अँगूठियाँ, कंधे पर चमड़े का थैला। वह कुछ नहीं बोलता। उसकी नज़र चमकते पत्र पर है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Read it whole",
+          "hi": "पूरा पढ़िए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To read a word aloud, split it into syllables, check each sound's place, then say it smoothly. Try a column of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.",
+          "hi": "शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।"
+        },
+        "examples": [
+          {
+            "sa": "रामः",
+            "meaning": {
+              "en": "Rāma",
+              "hi": "राम"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "राम",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "सीता",
+            "meaning": {
+              "en": "Sītā",
+              "hi": "सीता"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "सीता",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "लक्ष्मणः",
+            "meaning": {
+              "en": "Lakṣmaṇa",
+              "hi": "लक्ष्मण"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "लक्ष्मण",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "भरतः",
+            "meaning": {
+              "en": "Bharata",
+              "hi": "भरत"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "भरत",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is “Sītā”?",
+          "hi": "कौन-सा शब्द “Sītā” है?"
+        },
+        "explain": {
+          "en": "{{सी}} with the long ī, then {{ता}}.",
+          "hi": "दीर्घ ई वाला {{सी}}, फिर {{ता}}।"
+        },
+        "options": [
+          {
+            "sa": "सीता",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "शीता",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सिता",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is “Lakṣmaṇa”?",
+          "hi": "इनमें से कौन-सा शब्द “Lakṣmaṇa” पढ़ा जाता है?"
+        },
+        "explain": {
+          "en": "{{ष्म}} joins {{ष्}} and {{म}}, and the last syllable has the curled {{ण}}.",
+          "hi": "{{ष्म}} में {{ष्}} और {{म}} जुड़े हैं, और अन्तिम अक्षर में मुड़ी जीभ वाला {{ण}} है।"
+        },
+        "options": [
+          {
+            "sa": "लक्षमणः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लक्ष्मणः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "लक्ष्मनः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every name in this column.",
+          "hi": "इस स्तम्भ के हर नाम को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामः",
+            "पत्रम्",
+            "सीता",
+            "फलम्",
+            "भरतः",
+            "वनम्"
+          ],
+          "targets": [
+            "रामः",
+            "सीता",
+            "भरतः"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each name to its first sound's place.",
+          "hi": "हर नाम को उसकी पहली ध्वनि के स्थान से जोड़िए।"
+        },
+        "explain": {
+          "en": "Place of the first sound: {{र}} roof, {{स}} teeth, {{भ}} lips, {{ग}} throat.",
+          "hi": "पहली ध्वनि का स्थान: {{र}} मूर्धा, {{स}} दन्त, {{भ}} ओष्ठ, {{ग}} कण्ठ।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रामः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "roof of the mouth",
+                "hi": "मूर्धा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सीता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "teeth",
+                "hi": "दन्त"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भरतः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "lips",
+                "hi": "ओष्ठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गङ्गा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "throat",
+                "hi": "कण्ठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "His name",
+          "hi": "उसका नाम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Read the silent spirit's name aloud: put {{मौ}} and {{नी}} in order.",
+          "hi": "चुप रहने वाले भूत का नाम ज़ोर से पढ़िए: {{मौ}} और {{नी}} को क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "{{मौ}} + {{नी}} = {{मौनी}}: the silent one.",
+          "hi": "{{मौ}} + {{नी}} = {{मौनी}}: चुप रहने वाला।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "मौ",
+          "नी"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“मौनी,” you read, and the pale-gold spirit's finger leaves his lips. “मौनी अस्मि,” he says, in a voice like old paper. “वदामि!”",
+            "hi": "“मौनी,” आप पढ़ते हैं, और सुनहरे भूत की उँगली होंठों से हट जाती है। “मौनी अस्मि,” वह पुराने कागज़ जैसी आवाज़ में कहता है। “वदामि!”"
+          },
+          "failure": {
+            "en": "His name will not settle. Two syllables: {{मौ}} first.",
+            "hi": "उसका नाम जमता नहीं। दो अक्षर: पहले {{मौ}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.words"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Why can Maunī speak now?",
+          "hi": "मौनी अब क्यों बोल सकता है?"
+        },
+        "explain": {
+          "en": "The ghost waited for his own name to be read.",
+          "hi": "भूत अपना नाम पढ़ा जाने की प्रतीक्षा कर रहा था।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Someone read his name aloud",
+              "hi": "किसी ने उसका नाम ज़ोर से पढ़ा"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The register was closed",
+              "hi": "रजिस्टर बन्द हो गया"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Reading names",
+          "hi": "नाम पढ़ना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Split into syllables, check the places, say it whole.",
+              "hi": "अक्षरों में बाँटिए, स्थान देखिए, पूरा बोलिए।"
+            }
+          },
+          {
+            "sa": "मौनी",
+            "text": {
+              "en": "Maunī, the silent one.",
+              "hi": "मौनी, चुप रहने वाला।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Act I's letters are now yours.",
+              "hi": "अंक I के अक्षर अब आपके हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "reading-names-s1",
+    "brief": "The temple library's arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.",
+    "alt": {
+      "en": "A tall man in a dark coat watches from a library doorway as a grandmother reads a register",
+      "hi": "दरवाज़े से देखता गहरे कोट वाला आदमी, रजिस्टर पढ़ती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "mauni",
+      "lubdhaka"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The temple library's arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-bec8b166-cfc4-456c-9d4e-be9bdbc35104.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "0ca9d5f30fa3cf9b674e10ae1ac6f403d7ed755aa2d4ce4f66f9207178e94057",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-names-s1-phone-5707af34.webp",
+      "key": "learn/reading-names-s1-phone-5707af34.webp",
+      "sha256": "5707af345067d69940f49116888148c9fa60e6195827aa39b64e6ed55ba97bd0",
+      "bytes": 88500,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-names-s1-phone-5707af34.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-names-s1-tablet-b1a2f370.webp",
+      "key": "learn/reading-names-s1-tablet-b1a2f370.webp",
+      "sha256": "b1a2f370b5c5bd8bc767249956d44a93e8f9bd187ed358cbe272553b57cb7598",
+      "bytes": 358914,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-names-s1-tablet-b1a2f370.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

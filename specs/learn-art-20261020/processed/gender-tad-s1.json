@@ -1,0 +1,1004 @@
+{
+  "id": "gender-tad-s1",
+  "where": "gender.tad#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Śuka on Dādī's shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer's wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "gender.tad",
+    "template": "scene",
+    "title": {
+      "en": "He, she, it: सः, सा, तत्",
+      "hi": "वह: सः, सा, तत्"
+    },
+    "title_sa": "सः सा तत्",
+    "minutes": 6,
+    "teaches": [
+      "pron.tad"
+    ],
+    "needs": [
+      "gen.three"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Who is that?",
+          "hi": "वह कौन है?"
+        },
+        "image": {
+          "id": "gender-tad-s1",
+          "brief": "Śuka on Dādī's shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer's wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.",
+          "alt": {
+            "en": "A parrot points at a king, a queen and a crown puppet in turn",
+            "hi": "राजा, रानी और मुकुट की कठपुतली की ओर बारी-बारी इशारा करता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "rangaka"
+          ],
+          "place": "utsava"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Śuka points at the puppets. “He!” “She!” “It!” The puppeteer's wife laughs and holds up the crown. Dādī says: “Instead of repeating a noun, use a short word that matches its gender. Sanskrit has one for each.”",
+          "hi": "शुक कठपुतलियों की ओर इशारा करता है। “वह!” “वह!” “वह!” कठपुतली वाले की पत्नी हँसकर मुकुट उठाती है। दादी कहती हैं, “संज्ञा दोहराने की जगह उसी के लिंग से मेल खाता छोटा शब्द बोलिए। संस्कृत में हर लिंग के लिए एक है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "He, she, it",
+          "hi": "वह (पुं.), वह (स्त्री.), वह (नपुं.)"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}} (that boy), {{सा बालिका}}, {{तत् फलम्}}.",
+          "hi": "{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "सः",
+            "gloss": {
+              "en": "he, that",
+              "hi": "वह"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "तद्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "सा",
+            "gloss": {
+              "en": "she, that",
+              "hi": "वह (स्त्री)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "तद्",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "तत्",
+            "gloss": {
+              "en": "it, that",
+              "hi": "वह (नपुं.)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "तद्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "सः, सा, तत् in three numbers",
+          "hi": "सः, सा, तत् तीनों वचनों में"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The pronoun “that, he, she, it”, nominative",
+          "hi": "सर्वनाम ‘वह’, प्रथमा"
+        },
+        "columns": [
+          {
+            "en": "Gender",
+            "hi": "लिंग"
+          },
+          {
+            "en": "One",
+            "hi": "एक"
+          },
+          {
+            "en": "Two",
+            "hi": "दो"
+          },
+          {
+            "en": "Many",
+            "hi": "अनेक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "masculine",
+                "hi": "पुंलिंग"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "feminine",
+                "hi": "स्त्रीलिंग"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "neuter",
+                "hi": "नपुंसक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तानि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Two forms are alike: {{ते}} is both the feminine and neuter dual, and the masculine plural. Context tells which.",
+          "hi": "कुछ रूप एक-से हैं: {{ते}} स्त्रीलिंग और नपुंसक का द्विवचन भी है और पुंलिंग का बहुवचन भी। प्रसंग बताता है कि कौन-सा।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Pronouns in sentences",
+          "hi": "वाक्यों में सर्वनाम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb does not change.",
+          "hi": "सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया नहीं बदलती।"
+        },
+        "examples": [
+          {
+            "sa": "सः पठति।",
+            "meaning": {
+              "en": "He reads.",
+              "hi": "वह पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सा लिखति।",
+            "meaning": {
+              "en": "She writes.",
+              "hi": "वह लिखती है।"
+            },
+            "words": [
+              {
+                "sa": "सा",
+                "gloss": {
+                  "en": "she",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "लिखति",
+                "gloss": {
+                  "en": "writes",
+                  "hi": "लिखती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "लिख्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "तत् फलम् अस्ति।",
+            "meaning": {
+              "en": "That is a fruit.",
+              "hi": "वह फल है।"
+            },
+            "words": [
+              {
+                "sa": "तत्",
+                "gloss": {
+                  "en": "it",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "You mean the queen. Which pronoun?",
+          "hi": "आपका आशय रानी से है। कौन-सा सर्वनाम?"
+        },
+        "explain": {
+          "en": "A feminine noun takes {{सा}}.",
+          "hi": "स्त्रीलिंग संज्ञा के लिए {{सा}}।"
+        },
+        "options": [
+          {
+            "sa": "सः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सा",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "तत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each pronoun to the noun it stands for.",
+          "hi": "हर सर्वनाम को उस संज्ञा से जोड़िए जिसकी जगह वह आता है।"
+        },
+        "explain": {
+          "en": "The pronoun takes the gender and number of its noun.",
+          "hi": "सर्वनाम अपनी संज्ञा का लिंग और वचन लेता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "सः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "फलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ताः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नद्यः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that means “he”, “she” or “it”.",
+          "hi": "‘वह’ अर्थ वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "सः",
+            "बालकः",
+            "सा",
+            "फलम्",
+            "तत्",
+            "नदी"
+          ],
+          "targets": [
+            "सः",
+            "सा",
+            "तत्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Point at the puppets",
+          "hi": "कठपुतलियों को दिखाइए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“That fruit is sweet.” Which pronoun?",
+          "hi": "‘वह फल मीठा है।’ कौन-सा सर्वनाम?"
+        },
+        "explain": {
+          "en": "{{फलम्}} is neuter: {{तत्}}.",
+          "hi": "{{फलम्}} नपुंसक है: {{तत्}}।"
+        },
+        "options": [
+          {
+            "sa": "सः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सः! सा! तत्!” You point at king, queen and crown in turn, and each puppet bows. A little round face with a painted smile pops over the curtain.",
+            "hi": "“सः! सा! तत्!” आप राजा, रानी और मुकुट की ओर बारी-बारी इशारा करते हैं और हर कठपुतली झुकती है। परदे के ऊपर चित्रित मुस्कान वाला एक नन्हा गोल चेहरा उभर आता है।"
+          },
+          "failure": {
+            "en": "The puppets stay still. The crown is neuter: {{तत्}}.",
+            "hi": "कठपुतलियाँ स्थिर रहती हैं। मुकुट नपुंसक है: {{तत्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "He, she, it",
+          "hi": "वह"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "सः · सा · तत्",
+            "text": {
+              "en": "Masculine, feminine, neuter.",
+              "hi": "पुंलिंग, स्त्रीलिंग, नपुंसक।"
+            }
+          },
+          {
+            "sa": "तौ · ते · ताः · ते · तानि",
+            "text": {
+              "en": "Two and many.",
+              "hi": "दो और अनेक।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The pronoun matches its noun.",
+              "hi": "सर्वनाम अपनी संज्ञा से मेल खाता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "gender-tad-s1",
+    "brief": "Śuka on Dādī's shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer's wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.",
+    "alt": {
+      "en": "A parrot points at a king, a queen and a crown puppet in turn",
+      "hi": "राजा, रानी और मुकुट की कठपुतली की ओर बारी-बारी इशारा करता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "rangaka"
+    ],
+    "place": "utsava"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Śuka on Dādī's shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer's wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2fa2ff9c-822d-4961-bbc0-e524a1c92530.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "df66139ec06090e0b38671c55d1b438361443d9e45defe1f083b34525e61e5b9",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-tad-s1-phone-661dc5d4.webp",
+      "key": "learn/gender-tad-s1-phone-661dc5d4.webp",
+      "sha256": "661dc5d4b56bbe7175929498504976601c771409481308609da4035b4ff1a148",
+      "bytes": 113320,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-tad-s1-phone-661dc5d4.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-tad-s1-tablet-019328d8.webp",
+      "key": "learn/gender-tad-s1-tablet-019328d8.webp",
+      "sha256": "019328d87aa2e860e799547f501a271c6580746f6e33c5fae407fe6cff4ac5e3",
+      "bytes": 445472,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-tad-s1-tablet-019328d8.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -1,0 +1,1083 @@
+{
+  "id": "for-purpose-s1",
+  "where": "for.purpose#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice in his palms.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndanaka: A round golden spirit holding out two cupped hands, with a smile as wide as a lamp's flame.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "for.purpose",
+    "template": "scene",
+    "title": {
+      "en": "For what?",
+      "hi": "किसलिए?"
+    },
+    "title_sa": "तादर्थ्यम्",
+    "minutes": 6,
+    "teaches": [
+      "case.dat-purpose"
+    ],
+    "needs": [
+      "case.dat"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Why have you come?",
+          "hi": "क्यों आए हो?"
+        },
+        "image": {
+          "id": "for-purpose-s1",
+          "brief": "The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice in his palms.",
+          "alt": {
+            "en": "An old teacher leads visitors through a school courtyard",
+            "hi": "पाठशाला के आँगन में अतिथियों को ले जाते वृद्ध आचार्य"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "danaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The Ācārya leads you into the school courtyard. “Why have you come, child? For what?” he asks. “For learning,” says Dādī on your behalf. “For the leaves,” you say. The old man's eyes light up. Dānaka, the golden spirit, trails behind with his tiny grain, working out what a gift is for.",
+          "hi": "आचार्य आपको पाठशाला के आँगन में ले जाते हैं। “क्यों आए हो, बच्चे? किसलिए?” वे पूछते हैं। “पढ़ने के लिए,” दादी आपकी ओर से कहती हैं। “पत्रों के लिए,” आप कहते हैं। बूढ़े की आँखें चमक उठती हैं। सुनहरा भूत दानक अपना नन्हा दाना लिए पीछे-पीछे चलता है, यह सोचता हुआ कि उपहार किसलिए होता है।"
+        },
+        "lines": [
+          {
+            "speaker": "acarya",
+            "sa": "किमर्थम् आगतः असि?",
+            "gloss": {
+              "en": "For what have you come?",
+              "hi": "किसलिए आए हो?"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "For the sake of",
+          "hi": "के लिए, के उद्देश्य से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय आगच्छति}} (he comes for a meal). It answers “for what?”.",
+          "hi": "चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः पठनाय गच्छति।",
+            "meaning": {
+              "en": "The boy goes for study.",
+              "hi": "बालक पढ़ने के लिए जाता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठनाय",
+                "gloss": {
+                  "en": "for study",
+                  "hi": "पढ़ने के लिए"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पठन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः भोजनाय आगच्छति।",
+            "meaning": {
+              "en": "He comes for a meal.",
+              "hi": "वह भोजन के लिए आता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "भोजनाय",
+                "gloss": {
+                  "en": "for a meal",
+                  "hi": "भोजन के लिए"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "भोजन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आगच्छति",
+                "gloss": {
+                  "en": "comes",
+                  "hi": "आता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "वयम् पत्रेभ्यः गच्छामः।",
+            "meaning": {
+              "en": "We go for the leaves.",
+              "hi": "हम पत्रों के लिए जाते हैं।"
+            },
+            "words": [
+              {
+                "sa": "वयम्",
+                "gloss": {
+                  "en": "we",
+                  "hi": "हम"
+                },
+                "check": null
+              },
+              {
+                "sa": "पत्रेभ्यः",
+                "gloss": {
+                  "en": "for the leaves",
+                  "hi": "पत्रों के लिए"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छामः",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The purpose in the fourth case",
+          "hi": "चतुर्थी में उद्देश्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Four purposes",
+          "hi": "चार उद्देश्य"
+        },
+        "columns": [
+          {
+            "en": "Purpose",
+            "hi": "उद्देश्य"
+          },
+          {
+            "en": "1st",
+            "hi": "प्रथमा"
+          },
+          {
+            "en": "4th: for",
+            "hi": "चतुर्थी: के लिए"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "study",
+                "hi": "पढ़ना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठनम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पठन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठनाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पठन",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "meal",
+                "hi": "भोजन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भोजनम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "भोजन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भोजनाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "भोजन",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "wealth",
+                "hi": "धन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "धनम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "धन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "धनाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "धन",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "happiness",
+                "hi": "सुख"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सुखम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "सुख",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सुखाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "सुख",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "A word of purpose is often a verbal noun in {{अन}}.",
+          "hi": "उद्देश्य बताने वाला शब्द प्रायः {{अन}} वाली क्रियावाचक संज्ञा होता है।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "What pleases whom",
+          "hi": "क्या किसे भाता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "With {{रुच्}} (to please), the person pleased is in the fourth case and the thing that pleases is the doer: {{बालकाय फलं रोचते}}, “the fruit pleases the boy”, that is, the boy likes fruit.",
+          "hi": "{{रुच्}} (भाना) के साथ जिसे कुछ भाता है वह चतुर्थी में आता है और जो भाता है वह कर्ता बनता है: {{बालकाय फलं रोचते}}, ‘बालक को फल भाता है’, यानी बालक को फल पसन्द है।"
+        },
+        "examples": [
+          {
+            "sa": "बालकाय फलम् रोचते।",
+            "meaning": {
+              "en": "The boy likes fruit (the fruit pleases the boy).",
+              "hi": "बालक को फल पसन्द है।"
+            },
+            "words": [
+              {
+                "sa": "बालकाय",
+                "gloss": {
+                  "en": "to the boy",
+                  "hi": "बालक को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "रोचते",
+                "gloss": {
+                  "en": "pleases",
+                  "hi": "भाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "रुच्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He goes for study.” Which word for “study”?",
+          "hi": "‘वह पढ़ने के लिए जाता है।’ ‘पढ़ना’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The purpose takes the fourth case: {{पठनाय}}.",
+          "hi": "उद्देश्य चतुर्थी लेता है: {{पठनाय}}।"
+        },
+        "options": [
+          {
+            "sa": "पठनम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठनेन",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठनाय",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each purpose to its meaning.",
+          "hi": "हर उद्देश्य को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{आय}} after the word of purpose.",
+          "hi": "उद्देश्य वाले शब्द के बाद {{आय}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "पठनाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "for study",
+                "hi": "पढ़ने के लिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भोजनाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "for a meal",
+                "hi": "भोजन के लिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "धनाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "for wealth",
+                "hi": "धन के लिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सुखाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "for happiness",
+                "hi": "सुख के लिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says what something is for.",
+          "hi": "‘किसलिए’ बताने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पठनाय",
+            "पठनम्",
+            "भोजनाय",
+            "भोजनम्",
+            "सुखाय",
+            "सुखम्"
+          ],
+          "targets": [
+            "पठनाय",
+            "भोजनाय",
+            "सुखाय"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "For what?",
+          "hi": "किसलिए?"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat-purpose"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “We go for the leaves.”",
+          "hi": "कहिए: ‘हम पत्रों के लिए जाते हैं।’"
+        },
+        "explain": {
+          "en": "{{वयं पत्रेभ्यः गच्छामः}}: the purpose is in the fourth case.",
+          "hi": "{{वयं पत्रेभ्यः गच्छामः}}: उद्देश्य चतुर्थी में है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "वयम्",
+          "पत्रेभ्यः",
+          "गच्छामः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“वयं पत्रेभ्यः गच्छामः,” you say, and the Ācārya stops walking. “Then you are who I have been waiting for.” At the end of the courtyard the school's door stands open. Dānaka sets his grain gently on the threshold: “नमः आचार्याय,” he whispers, and fades into golden light.",
+            "hi": "“वयं पत्रेभ्यः गच्छामः,” आप कहते हैं, और आचार्य चलना रोक देते हैं। “तब तुम वही हो जिसकी मैं प्रतीक्षा करता था।” आँगन के छोर पर पाठशाला का द्वार खुला है। दानक अपना दाना धीरे से देहली पर रखता है: “नमः आचार्याय,” वह फुसफुसाता है, और सुनहरी रोशनी में घुल जाता है।"
+          },
+          "failure": {
+            "en": "The Ācārya waits. The purpose, {{पत्रेभ्यः}}, takes the fourth case.",
+            "hi": "आचार्य प्रतीक्षा करते हैं। उद्देश्य {{पत्रेभ्यः}} चतुर्थी लेता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "For a purpose",
+          "hi": "किसी उद्देश्य से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पठनाय · भोजनाय",
+            "text": {
+              "en": "The purpose: the fourth case.",
+              "hi": "उद्देश्य: चतुर्थी।"
+            }
+          },
+          {
+            "sa": "बालकाय फलं रोचते",
+            "text": {
+              "en": "The one pleased: the fourth case.",
+              "hi": "जिसे भाता है: चतुर्थी।"
+            }
+          },
+          {
+            "sa": "आय · एभ्यः",
+            "text": {
+              "en": "Singular and plural endings.",
+              "hi": "एकवचन और बहुवचन प्रत्यय।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "for-purpose-s1",
+    "brief": "The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice in his palms.",
+    "alt": {
+      "en": "An old teacher leads visitors through a school courtyard",
+      "hi": "पाठशाला के आँगन में अतिथियों को ले जाते वृद्ध आचार्य"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "danaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice in his palms.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndanaka: A round golden spirit holding out two cupped hands, with a smile as wide as a lamp's flame.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-85866151-c1c4-49a4-8f59-34dfeb2c63bc.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "241df7349c66829c147a020ce5f0e127f637b8d7fa655590bc2057f5b972ccee",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\for-purpose-s1-phone-28d97aef.webp",
+      "key": "learn/for-purpose-s1-phone-28d97aef.webp",
+      "sha256": "28d97aef4d407a12861ce4537c22862df56e9d2ac961779f4a60a67b868ce3c3",
+      "bytes": 114520,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/for-purpose-s1-phone-28d97aef.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\for-purpose-s1-tablet-7b335ec3.webp",
+      "key": "learn/for-purpose-s1-tablet-7b335ec3.webp",
+      "sha256": "7b335ec3333b0eb10934f4e15eac33cd9aada429323f77657d0846838fb58964",
+      "bytes": 416944,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/for-purpose-s1-tablet-7b335ec3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

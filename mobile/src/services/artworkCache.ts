@@ -10,6 +10,7 @@ let directory: Directory | undefined;
 let sequence = 0;
 let running = 0;
 const waiting: (() => void)[] = [];
+const LEARN_ART_FILE = /^[a-z0-9]+(?:-[a-z0-9]+)*-(?:phone|tablet)-[a-f0-9]{8,64}\.webp$/i;
 
 function cacheDirectory(): Directory {
   directory ??= new Directory(Paths.cache, "public-artwork-v1");
@@ -18,13 +19,16 @@ function cacheDirectory(): Directory {
 }
 
 export function isManagedArtwork(uri: string): boolean {
-  return !!artworkOrigin && uri.startsWith(artworkOrigin + "/art/");
+  if (!artworkOrigin) return false;
+  if (uri.startsWith(artworkOrigin + "/art/")) return true;
+  const learnPrefix = artworkOrigin + "/learn/";
+  return uri.startsWith(learnPrefix) && LEARN_ART_FILE.test(uri.slice(learnPrefix.length));
 }
 
 function filename(uri: string): string {
   const name = uri.split("?")[0].split("/").pop() ?? "";
   // All generated manifests use content hashes. Reject arbitrary paths/URLs.
-  if (!/^[a-f0-9]{24}\.(webp|png|jpe?g|avif|gif|svg)$/i.test(name)) throw new Error("Invalid artwork cache key");
+  if (!/^[a-f0-9]{24}\.(webp|png|jpe?g|avif|gif|svg)$/i.test(name) && !LEARN_ART_FILE.test(name)) throw new Error("Invalid artwork cache key");
   return name;
 }
 

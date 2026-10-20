@@ -1,0 +1,1122 @@
+{
+  "id": "from-away-s1",
+  "where": "from.away#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvayuka: A swirling grey-green spirit made of wind and leaves, with a wide windblown smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "from.away",
+    "template": "scene",
+    "title": {
+      "en": "Away from",
+      "hi": "से दूर"
+    },
+    "title_sa": "अपादानम्",
+    "minutes": 6,
+    "teaches": [
+      "case.abl"
+    ],
+    "needs": [
+      "case.dat"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The storm",
+          "hi": "आँधी"
+        },
+        "image": {
+          "id": "from-away-s1",
+          "brief": "A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.",
+          "alt": {
+            "en": "A storm sweeps the riverbank as everyone runs for the school",
+            "hi": "नदी तट पर आँधी और पाठशाला की ओर भागते सब लोग"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "vayuka"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The sky turns the colour of slate. A roaring wind tears down the river: leaves rip from the neem trees, the boats strain at their ropes, children run for the school. The Ācārya shouts: “From the river! Come away from the river!” In the middle of the whirl dances a grey-green spirit made of leaves and wind.",
+          "hi": "आकाश स्लेटी रंग का हो जाता है। एक गर्जता पवन नदी पर टूट पड़ता है: नीम के पेड़ों से पत्ते टूटकर उड़ते हैं, नावें रस्सियों पर तनती हैं, बच्चे पाठशाला की ओर भागते हैं। आचार्य चिल्लाते हैं: “नदी से! नदी से दूर आओ!” भँवर के बीच पत्तों और हवा से बना एक धूसर-हरा भूत नाचता है।"
+        },
+        "lines": [
+          {
+            "speaker": "acarya",
+            "sa": "नद्याः आगच्छत!",
+            "gloss": {
+              "en": "Come away from the river!",
+              "hi": "नदी से दूर आओ!"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Away from: the fifth case",
+          "hi": "से दूर: पञ्चमी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [
+          "2.3.28",
+          "1.4.24"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).",
+          "hi": "जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है), {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।"
+        },
+        "examples": [
+          {
+            "sa": "वृक्षात् पत्रम् पतति।",
+            "meaning": {
+              "en": "A leaf falls from the tree.",
+              "hi": "पेड़ से पत्ता गिरता है।"
+            },
+            "words": [
+              {
+                "sa": "वृक्षात्",
+                "gloss": {
+                  "en": "from the tree",
+                  "hi": "पेड़ से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वृक्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पत्रम्",
+                "gloss": {
+                  "en": "leaf",
+                  "hi": "पत्ता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पतति",
+                "gloss": {
+                  "en": "falls",
+                  "hi": "गिरता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पत्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकः ग्रामात् आगच्छति।",
+            "meaning": {
+              "en": "The boy comes from the village.",
+              "hi": "बालक गाँव से आता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ग्रामात्",
+                "gloss": {
+                  "en": "from the village",
+                  "hi": "गाँव से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "ग्राम",
+                  "linga": "Pum",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आगच्छति",
+                "gloss": {
+                  "en": "comes",
+                  "hi": "आता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः नद्याः जलम् गृह्णाति।",
+            "meaning": {
+              "en": "He takes water from the river.",
+              "hi": "वह नदी से जल लेता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "नद्याः",
+                "gloss": {
+                  "en": "from the river",
+                  "hi": "नदी से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "जलम्",
+                "gloss": {
+                  "en": "water",
+                  "hi": "जल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृह्णाति",
+                "gloss": {
+                  "en": "takes",
+                  "hi": "लेता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "ग्रह्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "पञ्चमी",
+          "meaning": {
+            "en": "the fifth case: from",
+            "hi": "पाँचवीं विभक्ति: से (अलग होना)"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and fifth case",
+          "hi": "प्रथमा और पञ्चमी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same word as itself and as a starting point",
+          "hi": "वही शब्द स्वयं और आरम्भ-बिन्दु के रूप में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "1st: itself",
+            "hi": "प्रथमा: स्वयं"
+          },
+          {
+            "en": "5th: from",
+            "hi": "पञ्चमी: से"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "tree",
+                "hi": "पेड़"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वृक्षः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्ष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वृक्षात्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्ष",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "village",
+                "hi": "गाँव"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग्रामः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्राम",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ग्रामात्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्राम",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "house",
+                "hi": "घर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गृहम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गृहात्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "girl",
+                "hi": "बालिका"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिकायाः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine and neuter -अ: {{आत्}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}. Feminine fifth looks like the sixth case.",
+          "hi": "पुंलिंग और नपुंसक -अ में {{आत्}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}। स्त्रीलिंग पञ्चमी षष्ठी जैसी दिखती है।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The leaf falls from the tree.” Which word for “tree”?",
+          "hi": "‘पेड़ से पत्ता गिरता है।’ ‘पेड़’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The source takes the fifth case: {{वृक्षात्}}.",
+          "hi": "स्रोत पञ्चमी लेता है: {{वृक्षात्}}।"
+        },
+        "options": [
+          {
+            "sa": "वृक्षम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वृक्षेण",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वृक्षात्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each source to its meaning.",
+          "hi": "हर स्रोत को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{आत्}} and {{याः}}: the fifth-case endings.",
+          "hi": "{{आत्}} और {{याः}}: पञ्चमी के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "वृक्षात्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "from the tree",
+                "hi": "पेड़ से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ग्रामात्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "from the village",
+                "hi": "गाँव से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गृहात्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "from the house",
+                "hi": "घर से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नद्याः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "from the river",
+                "hi": "नदी से"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says “from”.",
+          "hi": "‘से’ बताने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "वृक्षात्",
+            "वृक्षः",
+            "ग्रामात्",
+            "ग्रामः",
+            "गृहात्",
+            "गृहम्"
+          ],
+          "targets": [
+            "वृक्षात्",
+            "ग्रामात्",
+            "गृहात्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Away from the river",
+          "hi": "नदी से दूर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Shout like the Ācārya: “The children come from the river!”",
+          "hi": "आचार्य की तरह पुकारिए: ‘बच्चे नदी से आते हैं!’"
+        },
+        "explain": {
+          "en": "{{बालकाः नद्याः आगच्छन्ति}}: the river is the source.",
+          "hi": "{{बालकाः नद्याः आगच्छन्ति}}: नदी स्रोत है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "बालकाः",
+          "नद्याः",
+          "आगच्छन्ति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“बालकाः नद्याः आगच्छन्ति!” you shout, and the last children dash up the bank into the school. The grey-green spirit whirls once around you, tugging at your hair, and the wind becomes a laugh.",
+            "hi": "“बालकाः नद्याः आगच्छन्ति!” आप चिल्लाते हैं, और आख़िरी बच्चे किनारे से दौड़कर पाठशाला में पहुँच जाते हैं। धूसर-हरा भूत एक बार आपके चारों ओर घूमकर आपके बाल खींचता है, और हवा हँसी बन जाती है।"
+          },
+          "failure": {
+            "en": "The wind pushes you back. The river is where they come from: put it in the fifth case.",
+            "hi": "हवा आपको पीछे धकेलती है। नदी वह है जहाँ से वे आते हैं: उसे पञ्चमी में रखिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's source",
+          "hi": "पाणिनि का अपादान"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.abl"
+        ],
+        "sutras": [
+          "1.4.24",
+          "2.3.28"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.24, {{ध्रुवमपायेऽपादानम्}}: when two things move apart, the fixed one is the source. A leaf falls from a tree; the tree stays. Sūtra 2.3.28 gives the source the fifth case.",
+          "hi": "सूत्र 1.4.24, {{ध्रुवमपायेऽपादानम्}}: जब दो वस्तुएँ अलग होती हैं तो स्थिर रहने वाली स्रोत है। पत्ता पेड़ से गिरता है; पेड़ वहीं रहता है। सूत्र 2.3.28 स्रोत को पञ्चमी देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अपादानम्",
+          "meaning": {
+            "en": "the fixed point things move away from",
+            "hi": "अपादान: स्थिर बिन्दु जिससे वस्तुएँ दूर होती हैं"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "From",
+          "hi": "से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "वृक्षात् · ग्रामात् · नद्याः",
+            "text": {
+              "en": "The fifth case: the source.",
+              "hi": "पञ्चमी: स्रोत।"
+            }
+          },
+          {
+            "sa": "आत् · आयाः · याः",
+            "text": {
+              "en": "The singular endings.",
+              "hi": "एकवचन प्रत्यय।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The source stays; the other thing moves.",
+              "hi": "स्रोत स्थिर रहता है; दूसरी वस्तु हटती है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "from-away-s1",
+    "brief": "A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.",
+    "alt": {
+      "en": "A storm sweeps the riverbank as everyone runs for the school",
+      "hi": "नदी तट पर आँधी और पाठशाला की ओर भागते सब लोग"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "vayuka"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvayuka: A swirling grey-green spirit made of wind and leaves, with a wide windblown smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-55290e09-540e-4840-90da-89fdff85cb48.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5204407184fd10f8e1a4b03c21eba89ecbaf5f867905ad565b51dd608847c051",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\from-away-s1-phone-e785544a.webp",
+      "key": "learn/from-away-s1-phone-e785544a.webp",
+      "sha256": "e785544a32eb51ab4813ab303594383842543750f5d65772f9b8fad6c9a52802",
+      "bytes": 144254,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/from-away-s1-phone-e785544a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\from-away-s1-tablet-bd4c6d8b.webp",
+      "key": "learn/from-away-s1-tablet-bd4c6d8b.webp",
+      "sha256": "bd4c6d8b957b5b0b83271bb2cb8cc2d7ceb22b439e62e8da1102fab201dbe66f",
+      "bytes": 552314,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/from-away-s1-tablet-bd4c6d8b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

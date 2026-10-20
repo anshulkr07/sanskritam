@@ -801,7 +801,8 @@ def test_every_language_is_listed_once_with_a_short_code():
 
 # ─── The owner's endpoints ──────────────────────────────────────────────────
 
-def test_the_tick_endpoint_needs_the_admin_token_and_sends_nothing_without_a_key(client):
+def test_the_tick_endpoint_needs_the_admin_token_and_sends_nothing_without_a_key(client, monkeypatch):
+    monkeypatch.setattr(settings, "content_generation_enabled", True)
     assert client.post("/admin/content/tick").status_code == 401
     r = client.post("/admin/content/tick", headers=ADMIN)
     assert r.status_code == 200, r.text
@@ -809,6 +810,16 @@ def test_the_tick_endpoint_needs_the_admin_token_and_sends_nothing_without_a_key
     assert body["facts"]["state"] == "not_configured"
     assert body["words"]["state"] in ("not_configured", "stocked")
     assert client.get("/admin/content/tick", headers=ADMIN).status_code in (404, 405)
+
+
+def test_paused_generation_does_not_start_a_batch(client, monkeypatch):
+    monkeypatch.setattr(settings, "content_generation_enabled", False)
+    def unexpected_tick(*args, **kwargs):
+        pytest.fail("Paused generation must never call the batch pipeline")
+    monkeypatch.setattr(svc, "tick", unexpected_tick)
+    response = client.post("/admin/content/tick", headers=ADMIN)
+    assert response.status_code == 200
+    assert response.json()["paused"] is True
 
 
 def test_status_and_withdraw(client, db, monkeypatch):

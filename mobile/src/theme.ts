@@ -1,10 +1,25 @@
 // Sanskritam design system tokens.
-// Light theme only (the product is light, see DECISIONS; the owner rejected
-// dark "AI" aesthetics). Warm paper background, saffron for action and the
-// brand, a calm ink for text, and an accent family (teal, sage, rose, gold,
-// slate) for categories and hero cards. Everything else derives from these.
+// Warm paper background, saffron for action and the brand, a calm ink for
+// text, and an accent family (teal, sage, rose, gold, slate) for categories
+// and hero cards. Everything else derives from these.
+//
+// Light and dark (owner, 2026-10-20: "an app wise dark mode for every
+// component and page"). The exported objects below are the live palette.
+// src/Boot.tsx reads the learner's choice and calls applyScheme() BEFORE
+// App.tsx and its screens are first required, so every module-level
+// StyleSheet already holds the right colours; changing the choice in
+// Settings restarts the JS (services/colorScheme.ts). Never cache a token in
+// a module that Boot imports, or it keeps the light value.
+//
+// Dark is the same warm family at night: brown-black paper (#17130F, the
+// Learn course's dark paper), cream ink, lighter accent text. The deep fills
+// with cream text keep their colour in both. Dark values were checked with
+// the WCAG formula: every text token is >= 4.5:1 on bg, surface and
+// surfaceMuted; every accent fg >= 4.5:1 on bg and on its own tile.
 
-export const color = {
+export type SchemeName = "light" | "dark";
+
+const LIGHT_COLOR = {
   // Paper + surface
   bg: "#FFF8EE", // warm paper
   surface: "#FFFFFF",
@@ -47,24 +62,78 @@ export const color = {
 
   // Misc
   gold: "#F2B33D", // streak flame / crowns
+  white: "#FFFFFF", // text and icons on fills; never a page or card ground
+};
+
+const DARK_COLOR: typeof LIGHT_COLOR = {
+  bg: "#17130F",
+  surface: "#221C17",
+  surfaceMuted: "#2B231D",
+  border: "#3A3029",
+  saffron: "#F07A45",
+  saffronBtn: "#D2461F",
+  saffronDeep: "#000000",
+  saffronLight: "#3A2418",
+  ink: "#F3EADB",
+  inkSoft: "#CDBFAA",
+  inkFaint: "#A89886",
+  ok: "#4E9E6C",
+  okBg: "#1C2A20",
+  warn: "#F0A01F",
+  warnBg: "#2E2410",
+  bad: "#E8594E",
+  badBg: "#331A17",
+  unsure: "#9C8DF2",
+  unsureBg: "#24203A",
+  okText: "#7CC79A",
+  warnText: "#E8B04A",
+  badText: "#F08A80",
+  unsureText: "#B3A6F7",
+  saffronText: "#F0956A",
+  goldText: "#E3B85C",
+  tutor: "#7E9DB8",
+  tutorText: "#A9C2D8",
+  tutorBg: "#1D2731",
+  learner: "#4E9E6C",
+  learnerBg: "#1C2A20",
+  gold: "#F2B33D",
   white: "#FFFFFF",
 };
+
+export const color = { ...LIGHT_COLOR };
 
 // ── Accent family ────────────────────────────────────────────────────────
 // One accent per card or category, never a rainbow inside one card.
 //   fg    text or icon on `bg` or on paper (>= 4.6:1 on both)
-//   bg    a pale tint for tiles
+//   bg    a pale tint for tiles (a dark tint in dark)
 //   from/to  a gradient for white text; BOTH stops are >= 4.5:1 against white,
 //            so text can sit anywhere on the card. Run scripts/check-contrast.mjs
 //            after touching any value here.
-export const accent = {
+type Accent = { fg: string; bg: string; from: string; to: string };
+const LIGHT_ACCENT = {
   saffron: { fg: "#B23D10", bg: "#FFE3D3", from: "#D2461F", to: "#B23D10" },
   teal: { fg: "#1F6E73", bg: "#DDEFEE", from: "#1F7A7C", to: "#17535C" },
   sage: { fg: "#44703F", bg: "#E5EEDC", from: "#4A7F44", to: "#35603C" },
   rose: { fg: "#AE3F5A", bg: "#F9E1E5", from: "#C04D6E", to: "#962F4E" },
   gold: { fg: "#8E6108", bg: "#FBEFD2", from: "#9F640D", to: "#8A5608" },
   slate: { fg: "#3C5A8E", bg: "#E3E9F4", from: "#4F6AA3", to: "#2F4677" },
-} as const;
+} satisfies Record<string, Accent>;
+const DARK_ACCENT: Record<keyof typeof LIGHT_ACCENT, Accent> = {
+  saffron: { fg: "#F0956A", bg: "#3A2418", from: "#D2461F", to: "#B23D10" },
+  teal: { fg: "#7CC4C4", bg: "#15302F", from: "#1F7A7C", to: "#17535C" },
+  sage: { fg: "#9CC48F", bg: "#1E2B1C", from: "#4A7F44", to: "#35603C" },
+  rose: { fg: "#E68DA3", bg: "#341A22", from: "#C04D6E", to: "#962F4E" },
+  gold: { fg: "#E3B85C", bg: "#33280F", from: "#9F640D", to: "#8A5608" },
+  slate: { fg: "#9DB2DD", bg: "#1C2436", from: "#4F6AA3", to: "#2F4677" },
+};
+export const accent: Record<keyof typeof LIGHT_ACCENT, Accent> = {
+  saffron: { ...LIGHT_ACCENT.saffron },
+  teal: { ...LIGHT_ACCENT.teal },
+  sage: { ...LIGHT_ACCENT.sage },
+  rose: { ...LIGHT_ACCENT.rose },
+  gold: { ...LIGHT_ACCENT.gold },
+  slate: { ...LIGHT_ACCENT.slate },
+};
 
 export type AccentName = keyof typeof accent;
 
@@ -76,7 +145,7 @@ export type AccentName = keyof typeof accent;
  * color.surfaceMuted as the background of a card, panel, bubble, tile, chip
  * or button. Plain content sits directly on the cream page.
  */
-export const fill = {
+const LIGHT_FILL = {
   saffron: "#B23D10",
   teal: "#17535C",
   sage: "#35603C",
@@ -87,7 +156,11 @@ export const fill = {
   maroon: "#5E2216",
   ok: "#25833E",
   bad: "#B3261E",
-} as const;
+};
+// Same fills at night, except ink: #3B2E25 is nearly the dark paper, so it
+// lifts a step (cream on it is still 11:1).
+const DARK_FILL: typeof LIGHT_FILL = { ...LIGHT_FILL, ink: "#40342B" };
+export const fill = { ...LIGHT_FILL };
 export type FillName = keyof typeof fill;
 export const FILL_CYCLE: FillName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
 export const fillAt = (i: number): FillName => FILL_CYCLE[((i % 6) + 6) % 6];
@@ -97,8 +170,8 @@ export const onFill = {
   faint: "rgba(255,248,238,0.20)", // watermark letters, progress tracks
   gold: "#F2C879", // small labels; NOT on saffron, gold or ok fills (see table)
 } as const;
-/** 1.5dp outline for inputs and outlined round buttons on paper. */
-export const outline = "#D9C9AE";
+/** 1.5dp outline for inputs and outlined buttons on paper. */
+export let outline = "#D9C9AE";
 
 /** Units take these in turn, so neighbours never share a colour. */
 export const ACCENT_CYCLE: AccentName[] = ["saffron", "teal", "sage", "rose", "gold", "slate"];
@@ -252,14 +325,14 @@ export const shadow = {
   // A soft lift under filled buttons. The old solid under-shadow (a hard
   // darker copy of the fill) read as template UI, so buttons are flat now.
   button: {
-    shadowColor: color.saffronDeep,
+    shadowColor: LIGHT_COLOR.saffronDeep,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.18,
     shadowRadius: 10,
     elevation: 3,
   },
   card: {
-    shadowColor: color.ink,
+    shadowColor: LIGHT_COLOR.ink,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 6,
@@ -268,5 +341,33 @@ export const shadow = {
 };
 
 export type Theme = typeof color;
+
+// ── Scheme ───────────────────────────────────────────────────────────────
+
+let current: SchemeName = "light";
+
+/** True when the app was started dark. Stable for the life of the JS. */
+export function isDarkScheme(): boolean {
+  return current === "dark";
+}
+
+/**
+ * Swap the live palette. Boot calls it once, before any screen module is
+ * required; calling it later changes inline styles only, never the
+ * StyleSheets already made, so the app restarts instead (colorScheme.ts).
+ */
+export function applyScheme(name: SchemeName): void {
+  current = name;
+  const dark = name === "dark";
+  Object.assign(color, dark ? DARK_COLOR : LIGHT_COLOR);
+  const accents = dark ? DARK_ACCENT : LIGHT_ACCENT;
+  for (const key of Object.keys(accent) as AccentName[]) Object.assign(accent[key], accents[key]);
+  Object.assign(fill, dark ? DARK_FILL : LIGHT_FILL);
+  outline = dark ? "#4A3E34" : "#D9C9AE";
+  shadow.button.shadowColor = dark ? "#000000" : LIGHT_COLOR.saffronDeep;
+  shadow.button.shadowOpacity = dark ? 0.35 : 0.18;
+  shadow.card.shadowColor = dark ? "#000000" : LIGHT_COLOR.ink;
+  shadow.card.shadowOpacity = dark ? 0.3 : 0.06;
+}
 
 export default { color, accent, space, radius, font, shadow, script, scriptFontFamily };

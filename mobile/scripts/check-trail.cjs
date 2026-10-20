@@ -85,7 +85,11 @@ for (const name of ['LearnLibrary', 'LearnV2Lesson', 'GrammarTopic', 'GrammarCha
   assert.ok(app.includes(`name="${name}"`), `route ${name} is registered`);
 }
 const tabs = fs.readFileSync(path.join(root, 'src/navigation/MainTabs.tsx'), 'utf8');
-assert.ok(tabs.includes('component={LearnTrailScreen}'), 'the Learn tab is the trail');
+// The Learn tab is the trail unless the story preview flag is on (A1 wiring); the flag ships off.
+assert.ok(/const storyEnabled = useStoryFlag\(\);/.test(tabs), 'the Learn tab reads the story preview flag');
+assert.ok(/component=\{storyEnabled \? StoryNavigation : LearnTrailScreen\}/.test(tabs), 'the Learn tab is the trail when the story flag is off');
+assert.equal((tabs.match(/LearnTrailScreen/g) || []).length, 2, 'the trail is imported once and used only as the flag-off Learn screen');
+assert.ok(/export const STORY_COURSE_DEFAULT = false;/.test(fs.readFileSync(path.join(root, 'src/story/flags.ts'), 'utf8')), 'the story preview flag defaults off, so the trail is the default');
 const guideScreen = fs.readFileSync(path.join(root, 'src/screens/GrammarTopic.tsx'), 'utf8');
 assert.ok(guideScreen.includes('CardLessonScreen'), 'all current and future guide topics use the card player');
 assert.ok(!guideScreen.includes('ScrollView'), 'guide links cannot return to the old page UI');

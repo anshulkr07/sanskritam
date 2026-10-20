@@ -77,7 +77,8 @@ export function useBookPages(bookKey: string, chapter?: string | null, medium: "
   // Reading position persists wherever the page goes (read scrub or chant).
   const persistAt = useCallback(
     (i: number) => {
-      void progressStorage.setItem("shabd.read.resume", JSON.stringify({ bookKey, chapter: pagedChapter ?? undefined, index: i }));
+      // `ref` lets Home's practice card name the verse ("Bhagavad Gītā 2.47").
+      void progressStorage.setItem("shabd.read.resume", JSON.stringify({ bookKey, chapter: pagedChapter ?? undefined, index: i, ref: pages[i]?.source_ref }));
       if (pagedChapter !== null) {
         void setReadingPosition(positionKey(bookKey, pagedChapter), i);
         void setReadingChapter(bookKey, pagedChapter);
@@ -85,7 +86,7 @@ export function useBookPages(bookKey: string, chapter?: string | null, medium: "
         void setReadingPosition(bookKey, i);
       }
     },
-    [bookKey, pagedChapter],
+    [bookKey, pagedChapter, pages],
   );
 
   return {

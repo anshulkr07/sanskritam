@@ -1,0 +1,918 @@
+{
+  "id": "gender-three-s1",
+  "where": "gender.three#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A riverside village fair: strings of paper flags, sweet sellers, a wooden wheel and a puppet booth with a red curtain where a puppeteer holds up a king, a queen and a golden crown puppet; you, Dādī and Śuka in the crowd, a small rainbow-coloured spirit peeping from behind the curtain.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "gender.three",
+    "template": "scene",
+    "title": {
+      "en": "Three genders",
+      "hi": "तीन लिंग"
+    },
+    "title_sa": "लिङ्गानि",
+    "minutes": 6,
+    "teaches": [
+      "gen.three"
+    ],
+    "needs": [
+      "verb.as"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fair",
+          "hi": "मेला"
+        },
+        "image": {
+          "id": "gender-three-s1",
+          "brief": "A riverside village fair: strings of paper flags, sweet sellers, a wooden wheel and a puppet booth with a red curtain where a puppeteer holds up a king, a queen and a golden crown puppet; you, Dādī and Śuka in the crowd, a small rainbow-coloured spirit peeping from behind the curtain.",
+          "alt": {
+            "en": "A puppet booth at a village fair with a king, a queen and a crown",
+            "hi": "मेले में राजा, रानी और मुकुट वाली कठपुतली मंडली"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "rangaka"
+          ],
+          "place": "utsava"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Downstream, the river bank is a festival: paper flags, sweet-sellers, a wooden wheel, a puppet booth with a red curtain. A puppeteer shows his cast: a king, a queen, a golden crown. Śuka insists the queen is a “he”. “Every Sanskrit word has a gender,” says Dādī, “and it is not always the one you expect.”",
+          "hi": "नदी के आगे का तट उत्सव बना है: काग़ज़ की झंडियाँ, मिठाई वाले, एक लकड़ी का चक्र, लाल परदे वाली कठपुतली की मंडली। कठपुतली वाला अपने पात्र दिखाता है: एक राजा, एक रानी, एक सुनहरा मुकुट। शुक अड़ा है कि रानी ‘पुल्लिंग’ है। दादी कहती हैं, “संस्कृत के हर शब्द का एक लिंग होता है, और वह हमेशा वैसा नहीं होता जैसा आप सोचें।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "उत्सवे जनाः सन्ति।",
+            "gloss": {
+              "en": "There are people at the fair.",
+              "hi": "मेले में लोग हैं।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Masculine, feminine, neuter",
+          "hi": "पुंलिंग, स्त्रीलिंग, नपुंसकलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Every noun is masculine ({{पुंलिङ्गम्}}), feminine ({{स्त्रीलिङ्गम्}}) or neuter ({{नपुंसकलिङ्गम्}}). The typical endings: {{बालकः}} (masculine), {{बालिका}} (feminine), {{फलम्}} (neuter). People follow their sex; things take whatever gender their word has.",
+          "hi": "हर संज्ञा पुंलिंग, स्त्रीलिंग या नपुंसकलिंग होती है। विशिष्ट प्रत्यय: {{बालकः}} (पुंलिंग), {{बालिका}} (स्त्रीलिंग), {{फलम्}} (नपुंसकलिंग)। मनुष्य अपने लिंग के अनुसार चलते हैं; वस्तुएँ अपने शब्द का लिंग लेती हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "लिङ्गम्",
+          "meaning": {
+            "en": "gender",
+            "hi": "लिंग"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Nine nouns, three genders",
+          "hi": "नौ संज्ञाएँ, तीन लिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Masculine, feminine and neuter, one per row",
+          "hi": "पुंलिंग, स्त्रीलिंग और नपुंसक, हर पंक्ति में एक-एक"
+        },
+        "columns": [
+          {
+            "en": "Masculine",
+            "hi": "पुंलिंग"
+          },
+          {
+            "en": "Feminine",
+            "hi": "स्त्रीलिंग"
+          },
+          {
+            "en": "Neuter",
+            "hi": "नपुंसक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वृक्षः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्ष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लता",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पुष्पम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पुष्प",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "पुरुषः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पुरुष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कन्या",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "कन्या",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गृहम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सूर्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "सूर्य",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "जल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine -{{अः}}; feminine -{{आ}} or -{{ई}}; neuter -{{अम्}}.",
+          "hi": "पुंलिंग -{{अः}}; स्त्रीलिंग -{{आ}} या -{{ई}}; नपुंसक -{{अम्}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Grammar gender, not nature",
+          "hi": "व्याकरण का लिंग, प्रकृति का नहीं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A river is feminine, a mountain masculine, water neuter, because of their words, not their nature. Even “wife” can be neuter ({{कलत्रम्}}) or plural masculine ({{दाराः}}). Learn the gender with each new noun.",
+          "hi": "नदी स्त्रीलिंग है, पर्वत पुंलिंग, जल नपुंसक, इसलिए कि उनके शब्द ऐसे हैं, उनका स्वभाव नहीं। ‘पत्नी’ भी नपुंसक ({{कलत्रम्}}) या बहुवचन पुंलिंग ({{दाराः}}) हो सकता है। हर नई संज्ञा के साथ उसका लिंग सीखिए।"
+        },
+        "examples": [
+          {
+            "sa": "नदी",
+            "meaning": {
+              "en": "a river: feminine",
+              "hi": "नदी: स्त्रीलिंग"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नदी",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "पर्वतः",
+            "meaning": {
+              "en": "a mountain: masculine",
+              "hi": "पर्वत: पुंलिंग"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "पर्वत",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "जलम्",
+            "meaning": {
+              "en": "water: neuter",
+              "hi": "जल: नपुंसक"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "जल",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its gender.",
+          "hi": "हर शब्द को उसके लिंग से जोड़िए।"
+        },
+        "explain": {
+          "en": "The ending gives the gender: {{अः}}, {{आ}}/{{ई}}, {{अम्}}.",
+          "hi": "प्रत्यय लिंग बताता है: {{अः}}, {{आ}}/{{ई}}, {{अम्}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "बालकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "masculine",
+                "hi": "पुंलिंग"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "feminine",
+                "hi": "स्त्रीलिंग"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "neuter",
+                "hi": "नपुंसक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नदी",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "feminine",
+                "hi": "स्त्रीलिंग"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is neuter?",
+          "hi": "नपुंसक शब्द कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{पुष्पम्}} ends in {{अम्}}: neuter.",
+          "hi": "{{पुष्पम्}} {{अम्}} पर समाप्त होता है: नपुंसक।"
+        },
+        "options": [
+          {
+            "sa": "वृक्षः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लता",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पुष्पम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every masculine word.",
+          "hi": "हर पुंलिंग शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "बालकः",
+            "लता",
+            "फलम्",
+            "पुरुषः",
+            "नदी",
+            "सूर्यः"
+          ],
+          "targets": [
+            "बालकः",
+            "पुरुषः",
+            "सूर्यः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The puppet cast",
+          "hi": "कठपुतली के पात्र"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.three"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "The puppeteer holds up the queen. Which word fits a feminine noun?",
+          "hi": "कठपुतली वाला रानी दिखाता है। स्त्रीलिंग संज्ञा के लिए कौन-सा रूप ठीक है?"
+        },
+        "explain": {
+          "en": "{{कन्या}}: a feminine word in -{{आ}}.",
+          "hi": "{{कन्या}}: -{{आ}} वाला स्त्रीलिंग शब्द।"
+        },
+        "options": [
+          {
+            "sa": "राजकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कन्या",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "गृहम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“कन्या,” you say, and the puppeteer lifts the queen high. A small multi-coloured face peeks out from behind the curtain, copies your word under its breath, and ducks back.",
+            "hi": "“कन्या,” आप कहते हैं, और कठपुतली वाला रानी को ऊँचा उठाता है। परदे के पीछे से एक नन्हा रंग-बिरंगा चेहरा झाँकता है, आपका शब्द धीमे से दोहराता है और फिर छिप जाता है।"
+          },
+          "failure": {
+            "en": "The queen does not rise. Feminine: look for an ending in {{आ}}.",
+            "hi": "रानी नहीं उठती। स्त्रीलिंग: {{आ}} पर समाप्त होने वाला रूप खोजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Three genders",
+          "hi": "तीन लिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "बालकः · बालिका · फलम्",
+            "text": {
+              "en": "Masculine, feminine, neuter.",
+              "hi": "पुंलिंग, स्त्रीलिंग, नपुंसक।"
+            }
+          },
+          {
+            "sa": "अः · आ · ई · अम्",
+            "text": {
+              "en": "The typical endings.",
+              "hi": "विशिष्ट प्रत्यय।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Gender follows the word, not nature.",
+              "hi": "लिंग शब्द के अनुसार है, प्रकृति के नहीं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "gender-three-s1",
+    "brief": "A riverside village fair: strings of paper flags, sweet sellers, a wooden wheel and a puppet booth with a red curtain where a puppeteer holds up a king, a queen and a golden crown puppet; you, Dādī and Śuka in the crowd, a small rainbow-coloured spirit peeping from behind the curtain.",
+    "alt": {
+      "en": "A puppet booth at a village fair with a king, a queen and a crown",
+      "hi": "मेले में राजा, रानी और मुकुट वाली कठपुतली मंडली"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "rangaka"
+    ],
+    "place": "utsava"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A riverside village fair: strings of paper flags, sweet sellers, a wooden wheel and a puppet booth with a red curtain where a puppeteer holds up a king, a queen and a golden crown puppet; you, Dādī and Śuka in the crowd, a small rainbow-coloured spirit peeping from behind the curtain.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-7537978b-6fd1-4054-8149-c19489635129.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f9b04ce3fcd04c9181b4fa2c76f8e79916a628917559485a1989bbb0a98bd4c3",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-three-s1-phone-3ce7c592.webp",
+      "key": "learn/gender-three-s1-phone-3ce7c592.webp",
+      "sha256": "3ce7c592d484310f95cec033d9fd5520d9af03493e97f694908900e0d8ab8703",
+      "bytes": 116944,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-three-s1-phone-3ce7c592.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-three-s1-tablet-55e77d3e.webp",
+      "key": "learn/gender-three-s1-tablet-55e77d3e.webp",
+      "sha256": "55e77d3ecd8db92221d46ba231e5c442052fd22e7fcb3028cc5594552036b8f1",
+      "bytes": 446602,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-three-s1-tablet-55e77d3e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

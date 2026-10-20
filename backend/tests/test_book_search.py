@@ -183,7 +183,9 @@ def test_block_numbers_the_verses_and_cited_maps_back(book):
 
 
 def test_rules_and_block_reach_the_model_only_with_verses():
-    assert ask_live.system_prompt("") == ask_live.SYSTEM_PROMPT
+    from app.services.ai_safety import SAFETY_INSTRUCTIONS
+    assert ask_live.system_prompt("") == SAFETY_INSTRUCTIONS + ask_live.SYSTEM_PROMPT
+    assert ask_live.system_prompt("FROM THE APP'S BOOKS ...").startswith(SAFETY_INSTRUCTIONS)
     assert ask_live.system_prompt("FROM THE APP'S BOOKS ...").endswith(ask_live.BOOKS_RULES)
     msg = ask_live.user_message("What is anger?", "English", books="FROM THE APP'S BOOKS\n[B1] X 1.1")
     assert msg.index("[B1] X 1.1") < msg.index("Learner asks: What is anger?")
