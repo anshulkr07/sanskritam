@@ -165,6 +165,90 @@ cards:
   note:
     en: 'Nineteen is {{नवदश}} or, more often, “one short of twenty”: {{ऊनविंशतिः}}.'
     hi: 'उन्नीस {{नवदश}} है या, अधिकतर, ‘बीस से एक कम’: {{ऊनविंशतिः}}।'
+  visuals:
+  - id: v-cue-counts
+    kind: matrix
+    title:
+      en: Count the groups and read the word
+      hi: समूह गिनें और शब्द पढ़ें
+    columns:
+    - en: Number
+      hi: संख्या
+    - en: Word
+      hi: शब्द
+    rows:
+    - - id: r0-c0
+        label:
+          en: '11'
+          hi: ११
+        diagram:
+          kind: count
+          quantity: 11
+      - id: r0-c1
+        sa: एकादश
+    - - id: r1-c0
+        label:
+          en: '12'
+          hi: १२
+        diagram:
+          kind: count
+          quantity: 12
+      - id: r1-c1
+        sa: द्वादश
+    - - id: r2-c0
+        label:
+          en: '13'
+          hi: १३
+        diagram:
+          kind: count
+          quantity: 13
+      - id: r2-c1
+        sa: त्रयोदश
+    - - id: r3-c0
+        label:
+          en: '14'
+          hi: १४
+        diagram:
+          kind: count
+          quantity: 14
+      - id: r3-c1
+        sa: चतुर्दश
+    - - id: r4-c0
+        label:
+          en: '15'
+          hi: १५
+        diagram:
+          kind: count
+          quantity: 15
+      - id: r4-c1
+        sa: पञ्चदश
+    - - id: r5-c0
+        label:
+          en: '16'
+          hi: १६
+        diagram:
+          kind: count
+          quantity: 16
+      - id: r5-c1
+        sa: षोडश
+    - - id: r6-c0
+        label:
+          en: '17'
+          hi: १७
+        diagram:
+          kind: count
+          quantity: 17
+      - id: r6-c1
+        sa: सप्तदश
+    - - id: r7-c0
+        label:
+          en: '18'
+          hi: १८
+        diagram:
+          kind: count
+          quantity: 18
+      - id: r7-c1
+        sa: अष्टादश
 - id: tb2
   kind: table
   title:
@@ -222,6 +306,108 @@ cards:
         en: '1000'
         hi: १०००
     - sa: सहस्रम्
+  visuals:
+  - id: v-cue-counts
+    kind: matrix
+    title:
+      en: Count the groups and read the word
+      hi: समूह गिनें और शब्द पढ़ें
+    columns:
+    - en: Number
+      hi: संख्या
+    - en: Word
+      hi: शब्द
+    rows:
+    - - id: r0-c0
+        label:
+          en: '20'
+          hi: २०
+        diagram:
+          kind: count
+          quantity: 20
+      - id: r0-c1
+        sa: विंशतिः
+    - - id: r1-c0
+        label:
+          en: '30'
+          hi: ३०
+        diagram:
+          kind: count
+          quantity: 30
+      - id: r1-c1
+        sa: त्रिंशत्
+    - - id: r2-c0
+        label:
+          en: '40'
+          hi: ४०
+        diagram:
+          kind: count
+          quantity: 40
+      - id: r2-c1
+        sa: चत्वारिंशत्
+    - - id: r3-c0
+        label:
+          en: '50'
+          hi: ५०
+        diagram:
+          kind: count
+          quantity: 50
+      - id: r3-c1
+        sa: पञ्चाशत्
+    - - id: r4-c0
+        label:
+          en: '60'
+          hi: ६०
+        diagram:
+          kind: count
+          quantity: 60
+      - id: r4-c1
+        sa: षष्टिः
+    - - id: r5-c0
+        label:
+          en: '70'
+          hi: ७०
+        diagram:
+          kind: count
+          quantity: 70
+      - id: r5-c1
+        sa: सप्ततिः
+    - - id: r6-c0
+        label:
+          en: '80'
+          hi: ८०
+        diagram:
+          kind: count
+          quantity: 80
+      - id: r6-c1
+        sa: अशीतिः
+    - - id: r7-c0
+        label:
+          en: '90'
+          hi: ९०
+        diagram:
+          kind: count
+          quantity: 90
+      - id: r7-c1
+        sa: नवतिः
+    - - id: r8-c0
+        label:
+          en: '100'
+          hi: १००
+        diagram:
+          kind: count
+          quantity: 100
+      - id: r8-c1
+        sa: शतम्
+    - - id: r9-c0
+        label:
+          en: '1000'
+          hi: १०००
+        diagram:
+          kind: count
+          quantity: 1000
+      - id: r9-c1
+        sa: सहस्रम्
 - id: t2
   kind: teach
   title:
@@ -401,6 +587,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: दिन
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1004,3 +1191,81 @@ cards:
     text:
       en: Today, tomorrow, yesterday.
       hi: आज, कल, कल।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: त्रीणि फलानि सन्ति।
+      meaning:
+        en: There are three fruits.
+        hi: तीन फल हैं।
+      words:
+      - sa: त्रीणि
+        gloss:
+          en: three
+          hi: तीन
+      - sa: फलानि
+        gloss:
+          en: fruits
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: सन्ति
+        gloss:
+          en: are
+          hi: हैं
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: अद्य सप्त दिनानि।
+      meaning:
+        en: Today it is seven days.
+        hi: आज सात दिन हो गए।
+      words:
+      - sa: अद्य
+        gloss:
+          en: today
+          hi: आज
+      - sa: सप्त
+        gloss:
+          en: seven
+          hi: सात
+      - sa: दिनानि
+        gloss:
+          en: days
+          hi: दिन
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+    - id: i2
+      sa: श्वः प्रातः।
+      meaning:
+        en: Tomorrow morning.
+        hi: कल सुबह।
+      words:
+      - sa: श्वः
+        gloss:
+          en: tomorrow
+          hi: कल
+      - sa: प्रातः
+        gloss:
+          en: morning
+          hi: सुबह

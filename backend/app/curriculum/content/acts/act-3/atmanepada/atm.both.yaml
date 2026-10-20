@@ -125,6 +125,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पच्
     - sa: पचते
       check:
         type: tinanta
@@ -133,6 +137,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{पच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पच्
   - - sa: यज्
     - sa: यजति
       check:
@@ -141,6 +149,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{यज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{यज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: यज्
     - sa: यजते
       check:
         type: tinanta
@@ -149,6 +161,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{यज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{यज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: यज्
   - - sa: कृ
     - sa: करोति
       check:
@@ -157,6 +173,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: कुरुते
       check:
         type: tinanta
@@ -165,6 +185,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
   - - sa: नी
     - sa: नयति
       check:
@@ -173,6 +197,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: नी
     - sa: नयते
       check:
         type: tinanta
@@ -181,6 +209,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: नी
   - - sa: वह्
     - sa: वहति
       check:
@@ -189,6 +221,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वह्
     - sa: वहते
       check:
         type: tinanta
@@ -197,6 +233,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{वह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वह्
   note:
     en: 'Left: {{-ति}}; right: {{-ते}}. The coloured forms are the ones for oneself.'
     hi: 'बाएँ: {{-ति}}; दाएँ: {{-ते}}। रंगीन रूप अपने लिए वाले हैं।'
@@ -317,6 +357,7 @@ cards:
       feature:
         en: 'Root: {{जि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{जि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: जि
     - id: rule
       label:
         en: Connect the form and the rule
@@ -411,6 +452,7 @@ cards:
       feature:
         en: 'Root: {{जि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{जि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: जि
     - id: rule
       label:
         en: Connect the form and the rule
@@ -781,3 +823,87 @@ cards:
   - text:
       en: The set says who gets the fruit.
       hi: समूह बताता है कि फल किसे मिलता है।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: सः ग्रामे वर्तते।
+      meaning:
+        en: He abides in the village.
+        hi: वह गाँव में रहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: ग्रामे
+        gloss:
+          en: in the village
+          hi: गाँव में
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वर्तते
+        gloss:
+          en: abides
+          hi: रहता है
+        check:
+          type: tinanta
+          dhatu: वृत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः विजयते।
+      meaning:
+        en: He is victorious.
+        hi: वह विजयी होता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: विजयते
+        gloss:
+          en: is victorious
+          hi: विजयी होता है
+        check:
+          type: tinanta
+          dhatu: जि
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - वि
+    - id: i2
+      sa: सः पराजयते।
+      meaning:
+        en: He is defeated.
+        hi: वह हारता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पराजयते
+        gloss:
+          en: is defeated
+          hi: हारता है
+        check:
+          type: tinanta
+          dhatu: जि
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - परा

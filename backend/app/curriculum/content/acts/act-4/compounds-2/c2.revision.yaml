@@ -27,6 +27,103 @@ cards:
     - 2.2.24
     tag: core
     taught_in: c2.bahuvrihi#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The one who has
+        hi: जिसके पास है
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: नीलकण्ठः
+          feature:
+            en: 'Stem: {{नीलकण्ठ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीलकण्ठ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीलकण्ठ
+        - id: r0-c1
+          sa: नीलः कण्ठः यस्य सः
+        - id: r0-c2
+          label:
+            en: the one whose throat is blue (Śiva)
+            hi: जिसका कण्ठ नीला है (शिव)
+      - - id: r1-c0
+          sa: पीताम्बरः
+          feature:
+            en: 'Stem: {{पीताम्बर}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पीताम्बर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पीताम्बर
+        - id: r1-c1
+          sa: पीतम् अम्बरम् यस्य सः
+        - id: r1-c2
+          label:
+            en: the one in yellow cloth (Viṣṇu)
+            hi: पीले वस्त्र वाला (विष्णु)
+      - - id: r2-c0
+          sa: दशाननः
+          feature:
+            en: 'Stem: {{दशानन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दशानन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दशानन
+        - id: r2-c1
+          sa: दश आननानि यस्य सः
+        - id: r2-c2
+          label:
+            en: the ten-faced one (Rāvaṇa)
+            hi: दस मुख वाला (रावण)
+      - - id: r3-c0
+          sa: चतुर्मुखः
+          feature:
+            en: 'Stem: {{चतुर्मुख}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{चतुर्मुख}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: चतुर्मुख
+        - id: r3-c1
+          sa: चत्वारि मुखानि यस्य सः
+        - id: r3-c2
+          label:
+            en: the four-faced one (Brahmā)
+            hi: चार मुख वाला (ब्रह्मा)
+      - - id: r4-c0
+          sa: कमलनयनः
+          feature:
+            en: 'Stem: {{कमलनयन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कमलनयन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कमलनयन
+        - id: r4-c1
+          sa: कमलम् इव नयने यस्य सः
+        - id: r4-c2
+          label:
+            en: the lotus-eyed one
+            hi: कमल-नेत्र वाला
+      - - id: r5-c0
+          sa: दीर्घबाहुः
+          feature:
+            en: 'Stem: {{दीर्घबाहु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घबाहु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घबाहु
+        - id: r5-c1
+          sa: दीर्घौ बाहू यस्य सः
+        - id: r5-c2
+          label:
+            en: the long-armed one
+            hi: लम्बी भुजाओं वाला
+      - - id: r6-c0
+          sa: चन्द्रमुखी
+          feature:
+            en: 'Stem: {{चन्द्रमुखी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{चन्द्रमुखी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r6-c1
+          sa: चन्द्रः इव मुखं यस्याः सा
+        - id: r6-c2
+          label:
+            en: the moon-faced woman
+            hi: चन्द्र-सा मुख वाली स्त्री
   - skill: sam.avyayibhava
     rule:
       en: 'Avyayībhāva: an adverb made by a compound: {{यथाशक्ति}}, {{प्रतिदिनम्}}, {{आमरणम्}}.'
@@ -37,6 +134,76 @@ cards:
     - 1.1.41
     tag: core
     taught_in: c2.avyayi#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The compound adverb
+        hi: समासित क्रियाविशेषण
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: यथाशक्ति
+        - id: r0-c1
+          sa: शक्तिम् अनतिक्रम्य
+        - id: r0-c2
+          label:
+            en: as far as one can
+            hi: जितनी शक्ति हो
+      - - id: r1-c0
+          sa: प्रतिदिनम्
+        - id: r1-c1
+          sa: दिने दिने
+        - id: r1-c2
+          label:
+            en: every day
+            hi: हर दिन
+      - - id: r2-c0
+          sa: आमरणम्
+        - id: r2-c1
+          sa: मरणात् आ
+        - id: r2-c2
+          label:
+            en: until death
+            hi: मृत्यु तक
+      - - id: r3-c0
+          sa: उपकृष्णम्
+        - id: r3-c1
+          sa: कृष्णस्य समीपे
+        - id: r3-c2
+          label:
+            en: near Kṛṣṇa
+            hi: कृष्ण के पास
+      - - id: r4-c0
+          sa: यावज्जीवम्
+        - id: r4-c1
+          sa: जीवनस्य अवधिः
+        - id: r4-c2
+          label:
+            en: as long as life lasts
+            hi: जब तक जीवन है
+      - - id: r5-c0
+          sa: निर्विघ्नम्
+        - id: r5-c1
+          sa: विघ्नस्य अभावः
+        - id: r5-c2
+          label:
+            en: without obstacle
+            hi: बिना विघ्न के
+      - - id: r6-c0
+          sa: अनुरूपम्
+        - id: r6-c1
+          sa: रूपस्य योग्यम्
+        - id: r6-c2
+          label:
+            en: according to form
+            hi: रूप के अनुसार
   - skill: sam.long
     rule:
       en: 'Long compound: read from the last member back, cut in halves, then decide each join.'
@@ -46,6 +213,49 @@ cards:
     - 2.2.30
     tag: core
     taught_in: c2.long#tb1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        label:
+          en: Take the last member
+          hi: अन्तिम सदस्य लीजिए
+        meaning:
+          en: 'आभासः: shining'
+          hi: 'आभासः: चमकने वाला'
+      - id: stage-1
+        label:
+          en: Cut the rest in two
+          hi: शेष को दो में काटिए
+        sa: सूर्यकोटिसम + आभासः
+      - id: stage-2
+        label:
+          en: Cut again
+          hi: फिर काटिए
+        sa: सूर्यकोटिः + सम + आभासः
+      - id: stage-3
+        label:
+          en: Cut the first part
+          hi: पहले भाग को काटिए
+        sa: सूर्य + कोटिः + सम + आभासः
+      - id: stage-4
+        label:
+          en: Decide the joins
+          hi: जोड़ तय कीजिए
+        meaning:
+          en: “whose brilliance is like ten million suns”
+          hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: 'The whole compound is a bahuvrīhi: it names the king.'
+          hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: conditions
   kind: revision
   title:
@@ -60,12 +270,180 @@ cards:
       hi: यदि समास अपने से बाहर किसी व्यक्ति या वस्तु का नाम बताए, तो वह बहुव्रीहि है।
     tag: good
     taught_in: c2.bahuvrihi#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is
+          blue”, is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and
+          takes the gender of the person it describes.'
+        hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+          है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+          है उसी का लिंग लेता है।'
+      items:
+      - id: i0
+        sa: बहुव्रीहिः
+      - id: i1
+        sa: नीलः कण्ठः यस्य सः
+      - id: i2
+        sa: नीलकण्ठः
+      - id: i3
+        sa: पीतम् अम्बरम् यस्य सः
+      - id: i4
+        sa: पीताम्बरः
   - skill: sam.avyayibhava
     rule:
       en: If it never takes an ending and means “as far as, every, until”, it is an avyayībhāva.
       hi: यदि वह कभी प्रत्यय नहीं लेता और उसका अर्थ ‘जितना, हर, तक’ है, तो वह अव्ययीभाव है।
     tag: good
     taught_in: c2.avyayi#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः यथाशक्ति कर्म करोति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He does the work as far as he can.
+          hi: वह यथाशक्ति कर्म करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: यथाशक्ति
+          gloss:
+            en: as far as he can
+            hi: जितनी शक्ति हो
+        - sa: कर्म
+          gloss:
+            en: work
+            hi: कर्म
+          check:
+            type: subanta
+            stem: कर्मन्
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: करोति
+          gloss:
+            en: does
+            hi: करता है
+          check:
+            type: tinanta
+            dhatu: कृ
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: यथाशक्ति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: as far as he can
+          hi: जितनी शक्ति हो
+      - id: i3
+        sa: कर्म
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: work
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: कर्मन्
+      - id: i4
+        sa: करोति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: does
+          hi: करता है
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: कृ
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives
+            {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}}
+            (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change.'
+          hi: '{{अव्ययीभावः}} में पहला शब्द अव्यय होता है, और पूरा भी अव्यय बन जाता है: {{यथा + शक्ति}} से {{यथाशक्ति}} (जितनी
+            शक्ति हो); {{प्रति + दिनम्}} से {{प्रतिदिनम्}} (हर दिन); {{आ + मरणम्}} से {{आमरणम्}} (मृत्यु तक); {{उप + कृष्णम्}}
+            से {{उपकृष्णम्}} (कृष्ण के पास)। ऐसे शब्द कभी नहीं बदलते।'
+      - id: i7
+        sa: सः यथाशक्ति कर्म करोति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He does the work as far as he can.
+          hi: वह यथाशक्ति कर्म करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: यथाशक्ति
+          gloss:
+            en: as far as he can
+            hi: जितनी शक्ति हो
+        - sa: कर्म
+          gloss:
+            en: work
+            hi: कर्म
+          check:
+            type: subanta
+            stem: कर्मन्
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: करोति
+          gloss:
+            en: does
+            hi: करता है
+          check:
+            type: tinanta
+            dhatu: कृ
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
 - id: exceptions
   kind: revision
   title:
@@ -239,6 +617,26 @@ cards:
     - 2.2.24
     tag: core
     taught_in: c2.bahuvrihi#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 2.2.23, {{शेषो बहुव्रीहिः}}, calls the remaining compounds {{बहुव्रीहिः}}, and 2.2.24, {{अनेकमन्यपदार्थे}},
+          says several words join in the sense of another word, someone outside the compound. The compound's own gender and
+          number come from the one it describes.
+        hi: सूत्र 2.2.23, {{शेषो बहुव्रीहिः}}, शेष समासों को {{बहुव्रीहिः}} कहता है, और 2.2.24, {{अनेकमन्यपदार्थे}}, कहता
+          है कि कई शब्द किसी अन्य पद के अर्थ में जुड़ते हैं, अर्थात् समास से बाहर कोई। समास का अपना लिंग और वचन उसी से आता
+          है जिसका वह वर्णन करता है।
+      items:
+      - id: i0
+        sa: शेषो बहुव्रीहिः
+      - id: i1
+        sa: बहुव्रीहिः
+      - id: i2
+        sa: अनेकमन्यपदार्थे
   - skill: sam.avyayibhava
     rule:
       en: '{{अव्ययीभावः}}: the compound that becomes indeclinable.'
@@ -247,6 +645,26 @@ cards:
     - 2.1.5
     tag: core
     taught_in: c2.avyayi#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 2.1.5, {{अव्ययीभावः}}, names the class, and 2.1.6, {{अव्ययं विभक्तिसमीपसमृद्धिव्यृद्ध्यर्थाभावात्ययासम्प्रतिशब्दप्रादुर्भावपश्चाद्यथानुपूर्व्ययौगपद्यसादृश्यसम्पत्तिसाकल्यान्तवचनेषु}},
+          lists the senses in which an indeclinable joins a word. The result is {{अव्यय}} by 1.1.41, {{अव्ययीभावश्च}}.
+        hi: सूत्र 2.1.5, {{अव्ययीभावः}}, वर्ग का नाम देता है, और 2.1.6 उन अर्थों की सूची देता है जिनमें अव्यय किसी शब्द से
+          जुड़ता है। परिणाम 1.1.41, {{अव्ययीभावश्च}}, से {{अव्यय}} है।
+      items:
+      - id: i0
+        sa: अव्ययीभावः
+      - id: i1
+        sa: अव्ययं विभक्तिसमीपसमृद्धिव्यृद्ध्यर्थाभावात्ययासम्प्रतिशब्दप्रादुर्भावपश्चाद्यथानुपूर्व्ययौगपद्यसादृश्यसम्पत्तिसाकल्यान्तवचनेषु
+      - id: i2
+        sa: अव्यय
+      - id: i3
+        sa: अव्ययीभावश्च
 - id: sheet
   kind: revision
   title:
@@ -262,6 +680,103 @@ cards:
       hi: वह जिसके पास है
     tag: core
     taught_in: c2.bahuvrihi#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The one who has
+        hi: जिसके पास है
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: नीलकण्ठः
+          feature:
+            en: 'Stem: {{नीलकण्ठ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीलकण्ठ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीलकण्ठ
+        - id: r0-c1
+          sa: नीलः कण्ठः यस्य सः
+        - id: r0-c2
+          label:
+            en: the one whose throat is blue (Śiva)
+            hi: जिसका कण्ठ नीला है (शिव)
+      - - id: r1-c0
+          sa: पीताम्बरः
+          feature:
+            en: 'Stem: {{पीताम्बर}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पीताम्बर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पीताम्बर
+        - id: r1-c1
+          sa: पीतम् अम्बरम् यस्य सः
+        - id: r1-c2
+          label:
+            en: the one in yellow cloth (Viṣṇu)
+            hi: पीले वस्त्र वाला (विष्णु)
+      - - id: r2-c0
+          sa: दशाननः
+          feature:
+            en: 'Stem: {{दशानन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दशानन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दशानन
+        - id: r2-c1
+          sa: दश आननानि यस्य सः
+        - id: r2-c2
+          label:
+            en: the ten-faced one (Rāvaṇa)
+            hi: दस मुख वाला (रावण)
+      - - id: r3-c0
+          sa: चतुर्मुखः
+          feature:
+            en: 'Stem: {{चतुर्मुख}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{चतुर्मुख}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: चतुर्मुख
+        - id: r3-c1
+          sa: चत्वारि मुखानि यस्य सः
+        - id: r3-c2
+          label:
+            en: the four-faced one (Brahmā)
+            hi: चार मुख वाला (ब्रह्मा)
+      - - id: r4-c0
+          sa: कमलनयनः
+          feature:
+            en: 'Stem: {{कमलनयन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कमलनयन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कमलनयन
+        - id: r4-c1
+          sa: कमलम् इव नयने यस्य सः
+        - id: r4-c2
+          label:
+            en: the lotus-eyed one
+            hi: कमल-नेत्र वाला
+      - - id: r5-c0
+          sa: दीर्घबाहुः
+          feature:
+            en: 'Stem: {{दीर्घबाहु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घबाहु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घबाहु
+        - id: r5-c1
+          sa: दीर्घौ बाहू यस्य सः
+        - id: r5-c2
+          label:
+            en: the long-armed one
+            hi: लम्बी भुजाओं वाला
+      - - id: r6-c0
+          sa: चन्द्रमुखी
+          feature:
+            en: 'Stem: {{चन्द्रमुखी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{चन्द्रमुखी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r6-c1
+          sa: चन्द्रः इव मुखं यस्याः सा
+        - id: r6-c2
+          label:
+            en: the moon-faced woman
+            hi: चन्द्र-सा मुख वाली स्त्री
   - skill: sam.avyayibhava
     formula: यथाशक्ति · प्रतिदिनम्
     rule:
@@ -269,6 +784,76 @@ cards:
       hi: समासित क्रियाविशेषण
     tag: core
     taught_in: c2.avyayi#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The compound adverb
+        hi: समासित क्रियाविशेषण
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: यथाशक्ति
+        - id: r0-c1
+          sa: शक्तिम् अनतिक्रम्य
+        - id: r0-c2
+          label:
+            en: as far as one can
+            hi: जितनी शक्ति हो
+      - - id: r1-c0
+          sa: प्रतिदिनम्
+        - id: r1-c1
+          sa: दिने दिने
+        - id: r1-c2
+          label:
+            en: every day
+            hi: हर दिन
+      - - id: r2-c0
+          sa: आमरणम्
+        - id: r2-c1
+          sa: मरणात् आ
+        - id: r2-c2
+          label:
+            en: until death
+            hi: मृत्यु तक
+      - - id: r3-c0
+          sa: उपकृष्णम्
+        - id: r3-c1
+          sa: कृष्णस्य समीपे
+        - id: r3-c2
+          label:
+            en: near Kṛṣṇa
+            hi: कृष्ण के पास
+      - - id: r4-c0
+          sa: यावज्जीवम्
+        - id: r4-c1
+          sa: जीवनस्य अवधिः
+        - id: r4-c2
+          label:
+            en: as long as life lasts
+            hi: जब तक जीवन है
+      - - id: r5-c0
+          sa: निर्विघ्नम्
+        - id: r5-c1
+          sa: विघ्नस्य अभावः
+        - id: r5-c2
+          label:
+            en: without obstacle
+            hi: बिना विघ्न के
+      - - id: r6-c0
+          sa: अनुरूपम्
+        - id: r6-c1
+          sa: रूपस्य योग्यम्
+        - id: r6-c2
+          label:
+            en: according to form
+            hi: रूप के अनुसार
   - skill: sam.long
     formula: सूर्यकोटिसमाभासः
     rule:
@@ -276,3 +861,46 @@ cards:
       hi: लम्बा समास
     tag: core
     taught_in: c2.long#tb1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        label:
+          en: Take the last member
+          hi: अन्तिम सदस्य लीजिए
+        meaning:
+          en: 'आभासः: shining'
+          hi: 'आभासः: चमकने वाला'
+      - id: stage-1
+        label:
+          en: Cut the rest in two
+          hi: शेष को दो में काटिए
+        sa: सूर्यकोटिसम + आभासः
+      - id: stage-2
+        label:
+          en: Cut again
+          hi: फिर काटिए
+        sa: सूर्यकोटिः + सम + आभासः
+      - id: stage-3
+        label:
+          en: Cut the first part
+          hi: पहले भाग को काटिए
+        sa: सूर्य + कोटिः + सम + आभासः
+      - id: stage-4
+        label:
+          en: Decide the joins
+          hi: जोड़ तय कीजिए
+        meaning:
+          en: “whose brilliance is like ten million suns”
+          hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: 'The whole compound is a bahuvrīhi: it names the king.'
+          hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'

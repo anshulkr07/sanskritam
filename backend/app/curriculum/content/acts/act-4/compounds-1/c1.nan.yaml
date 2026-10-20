@@ -142,6 +142,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{असत्य}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{असत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: असत्य
     - sa: न सत्यम्
     - text:
         en: untrue
@@ -154,6 +158,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{अधर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अधर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अधर्म
     - sa: न धर्मः
     - text:
         en: not-duty, wrong
@@ -166,6 +174,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{अनन्त}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अनन्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अनन्त
     - sa: न अन्तः
     - text:
         en: endless
@@ -178,6 +190,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{अज्ञान}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अज्ञान
     - sa: न ज्ञानम्
     - text:
         en: ignorance
@@ -190,6 +206,9 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{अहिंसा}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अहिंसा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: न हिंसा
     - text:
         en: non-violence
@@ -202,6 +221,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{कुम्भकार}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कुम्भकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कुम्भकार
     - sa: कुम्भं करोति
     - text:
         en: pot-maker
@@ -214,6 +237,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{ग्रन्थकार}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{ग्रन्थकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: ग्रन्थकार
     - sa: ग्रन्थं करोति
     - text:
         en: author, maker of a book
@@ -226,6 +253,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{शास्त्रज्ञ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शास्त्रज्ञ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: शास्त्रज्ञ
     - sa: शास्त्रं जानाति
     - text:
         en: knower of the śāstras
@@ -584,3 +615,28 @@ cards:
     text:
       en: Knower of the śāstras.
       hi: शास्त्रों का ज्ञाता।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: असत्यम् · अनन्तः
+      meaning:
+        en: Untrue; endless.
+        hi: असत्य; अनन्त।
+    - id: i1
+      sa: कुम्भकारः · ग्रन्थकारः
+      meaning:
+        en: Pot-maker; author.
+        hi: घड़ा बनाने वाला; लेखक।
+    - id: i2
+      sa: शास्त्रज्ञः
+      meaning:
+        en: Knower of the śāstras.
+        hi: शास्त्रों का ज्ञाता।

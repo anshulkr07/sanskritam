@@ -150,6 +150,62 @@ cards:
         purusha: Madhyama
         vacana: Eka
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i1
+      sa: वयम् पुस्तकम् पठिष्यामः।
+      meaning:
+        en: We will read the book.
+        hi: हम पुस्तक पढ़ेंगे।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठिष्यामः
+        gloss:
+          en: will read
+          hi: पढ़ेंगे
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Bahu
+      image:
+        id: teaching-reader-many
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Three boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -226,6 +282,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -243,6 +300,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -355,6 +413,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt:
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: []
+      compare_from: पुस्तक
     - id: i3
       sa: पठिष्यामः
       label:
@@ -372,6 +443,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -497,6 +569,7 @@ cards:
       feature:
         en: 'Root: {{कृ}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+      compare_from: कृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -572,6 +645,10 @@ cards:
         lakara: Lrt
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: करिष्यतः
       check:
         type: tinanta
@@ -579,6 +656,10 @@ cards:
         lakara: Lrt
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: करिष्यन्ति
       check:
         type: tinanta
@@ -586,6 +667,10 @@ cards:
         lakara: Lrt
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · प्रथमपुरुष'
+      compare_from: कृ
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -596,6 +681,10 @@ cards:
         lakara: Lrt
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+      compare_from: कृ
     - sa: करिष्यथः
       check:
         type: tinanta
@@ -603,6 +692,10 @@ cards:
         lakara: Lrt
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · मध्यमपुरुष'
+      compare_from: कृ
     - sa: करिष्यथ
       check:
         type: tinanta
@@ -610,6 +703,10 @@ cards:
         lakara: Lrt
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · मध्यमपुरुष'
+      compare_from: कृ
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -621,6 +718,10 @@ cards:
         purusha: Uttama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: कृ
     - sa: करिष्यावः
       check:
         type: tinanta
@@ -629,6 +730,10 @@ cards:
         purusha: Uttama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: कृ
     - sa: करिष्यामः
       check:
         type: tinanta
@@ -637,6 +742,10 @@ cards:
         purusha: Uttama
         vacana: Bahu
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: कृ
   note:
     en: 'Every person adds {{-इष्य-}} to {{कृ}}: {{करिष्यति}}.'
     hi: 'हर पुरुष {{कृ}} में {{-इष्य-}} जोड़ता है: {{करिष्यति}}।'
@@ -787,6 +896,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i4
       sa: गमिष्यामि
       label:
@@ -804,6 +914,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -916,6 +1027,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1047,6 +1159,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -1064,6 +1177,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1210,6 +1324,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -1227,6 +1342,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1390,6 +1506,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -1407,6 +1524,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1572,6 +1690,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -1589,6 +1708,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1747,6 +1867,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i4
       sa: दास्यामि
       label:
@@ -1764,6 +1885,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1831,3 +1953,101 @@ cards:
     text:
       en: What will you do?
       hi: तुम क्या करोगे?
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: किम् त्वम् करिष्यसि।
+      meaning:
+        en: What will you do?
+        hi: तुम क्या करोगे?
+      words:
+      - sa: किम्
+        gloss:
+          en: what
+          hi: क्या
+        check:
+          type: subanta
+          stem: किम्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: करिष्यसि
+        gloss:
+          en: will do
+          hi: करोगे
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: श्वः अहम् ग्रामम् गमिष्यामि।
+      meaning:
+        en: Tomorrow I will go to the village.
+        hi: कल मैं गाँव जाऊँगा।
+      words:
+      - sa: श्वः
+        gloss:
+          en: tomorrow
+          hi: कल
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: ग्रामम्
+        gloss:
+          en: village
+          hi: गाँव
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गमिष्यामि
+        gloss:
+          en: will go
+          hi: जाऊँगा
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i2
+      sa: पश्चात् वयम् पठिष्यामः।
+      meaning:
+        en: Afterwards we will read.
+        hi: बाद में हम पढ़ेंगे।
+      words:
+      - sa: पश्चात्
+        gloss:
+          en: afterwards
+          hi: बाद में
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठिष्यामः
+        gloss:
+          en: will read
+          hi: पढ़ेंगे
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Bahu

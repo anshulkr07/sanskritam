@@ -28,6 +28,88 @@ cards:
     - 1.3.13
     tag: core
     taught_in: pc.passive#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the passive'
+        hi: 'पठ्: कर्मवाच्य'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठ्यते
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठ्येते
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठ्यन्ते
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठ्यसे
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठ्येथे
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठ्यध्वे
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठ्ये
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठ्यावहे
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठ्यामहे
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.causative
     rule:
       en: 'Causative: {{-अय-}} after a strong root: {{पाठयति}}, {{कारयति}}, {{गमयति}}.'
@@ -38,6 +120,104 @@ cards:
     - 3.1.32
     tag: core
     taught_in: pc.cause#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The causative
+        hi: प्रेरणार्थक
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Causative
+        hi: प्रेरणार्थक
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: पठ्
+        - id: r0-c1
+          sa: पाठयति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          label:
+            en: teaches
+            hi: पढ़ाता है
+      - - id: r1-c0
+          sa: कृ
+        - id: r1-c1
+          sa: कारयति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r1-c2
+          label:
+            en: has done
+            hi: करवाता है
+      - - id: r2-c0
+          sa: गम्
+        - id: r2-c1
+          sa: गमयति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c2
+          label:
+            en: sends
+            hi: भेजता है
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: दर्शयति
+          feature:
+            en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दृश्
+        - id: r3-c2
+          label:
+            en: shows
+            hi: दिखाता है
+      - - id: r4-c0
+          sa: भुज्
+        - id: r4-c1
+          sa: भोजयति
+          feature:
+            en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भुज्
+        - id: r4-c2
+          label:
+            en: feeds
+            hi: खिलाता है
+      - - id: r5-c0
+          sa: श्रु
+        - id: r5-c1
+          sa: श्रावयति
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+        - id: r5-c2
+          label:
+            en: announces
+            hi: सुनवाता है
+      - - id: r6-c0
+          sa: स्था
+        - id: r6-c1
+          sa: स्थापयति
+          feature:
+            en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: स्था
+        - id: r6-c2
+          label:
+            en: sets up
+            hi: स्थापित करता है
   - skill: verb.desiderative
     rule:
       en: 'Desiderative: doubled root + {{-स-}}: {{पिपासति}}, {{पिपठिषति}}, {{जिगमिषति}}.'
@@ -48,6 +228,104 @@ cards:
     - 7.4.58
     tag: core
     taught_in: pc.want#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Wanting to
+        hi: चाहना
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Wants to
+        hi: चाहता है
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: पा
+        - id: r0-c1
+          sa: पिपासति
+          feature:
+            en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पा
+        - id: r0-c2
+          label:
+            en: wants to drink
+            hi: पीना चाहता है
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पिपठिषति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          label:
+            en: wants to read
+            hi: पढ़ना चाहता है
+      - - id: r2-c0
+          sa: गम्
+        - id: r2-c1
+          sa: जिगमिषति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c2
+          label:
+            en: wants to go
+            hi: जाना चाहता है
+      - - id: r3-c0
+          sa: भू
+        - id: r3-c1
+          sa: बुभूषति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r3-c2
+          label:
+            en: wants to be
+            hi: होना चाहता है
+      - - id: r4-c0
+          sa: भुज्
+        - id: r4-c1
+          sa: बुभुक्षति
+          feature:
+            en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भुज्
+        - id: r4-c2
+          label:
+            en: wants to eat
+            hi: खाना चाहता है
+      - - id: r5-c0
+          sa: ज्ञा
+        - id: r5-c1
+          sa: जिज्ञासते
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+        - id: r5-c2
+          label:
+            en: wants to know
+            hi: जानना चाहता है
+      - - id: r6-c0
+          sa: श्रु
+        - id: r6-c1
+          sa: शुश्रूषते
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+        - id: r6-c2
+          label:
+            en: wants to hear, serves
+            hi: सुनना चाहता है, सेवा करता है
 - id: conditions
   kind: revision
   title:
@@ -62,18 +340,204 @@ cards:
       hi: जब किया गया कार्य करने वाले से अधिक महत्त्वपूर्ण हो, तब कर्मवाच्य।
     tag: good
     taught_in: pc.passive#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: रामेण पुस्तकम् पठ्यते।
+        meaning:
+          en: The book is read by Rāma.
+          hi: पुस्तक राम द्वारा पढ़ी जाती है।
+        words:
+        - sa: रामेण
+          gloss:
+            en: by Rāma
+            hi: राम द्वारा
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: पुस्तकम्
+          gloss:
+            en: the book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठ्यते
+          gloss:
+            en: is read
+            hi: पढ़ी जाती है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prayoga: Karmani
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: verb.causative
     rule:
       en: 'Use the causative when someone gets another to act: {{गुरुः बालं पाठयति}}.'
       hi: 'जब कोई दूसरे से काम कराए, तब प्रेरणार्थक: {{गुरुः बालं पाठयति}}।'
     tag: good
     taught_in: pc.cause#t1
+    visuals:
+    - id: v-linked-1
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      items:
+      - id: i0
+        sa: गुरुः
+        meaning:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गुरु
+      - id: i1
+        sa: बालकम्
+        meaning:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: i2
+        sa: पाठम्
+        meaning:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: पाठ
+      - id: i3
+        sa: पाठयति
+        meaning:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      edges:
+      - source: i0
+        target: i3
+        label:
+          en: causes the reading
+          hi: पढ़वाता है
+      - source: i1
+        target: i3
+        label:
+          en: is made to read
+          hi: जिससे पढ़वाया जाता है
+      - source: i2
+        target: i3
+        label:
+          en: lesson read
+          hi: पढ़ा जाने वाला पाठ
   - skill: verb.desiderative
     rule:
       en: Use the desiderative when the subject wants to do the action.
       hi: जब कर्ता स्वयं काम करना चाहे, तब इच्छार्थक।
     tag: good
     taught_in: pc.want#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}}
+          (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives
+          {{बुभूषति}} (wants to be). It is called {{सन्}}.'
+        hi: 'इच्छार्थक रूप धातु को दुगुना करता है और {{-स-}} जोड़ता है (अनेक धातुओं में उससे पहले {{-इ-}}): {{पा}} से {{पिपासति}}
+          (पीना चाहता है), {{पठ्}} से {{पिपठिषति}} (पढ़ना चाहता है), {{गम्}} से {{जिगमिषति}} (जाना चाहता है), {{भू}} से {{बुभूषति}}
+          (होना चाहता है)। इसे {{सन्}} कहते हैं।'
+      items:
+      - id: i0
+        sa: -स-
+      - id: i1
+        sa: -इ-
+      - id: i2
+        sa: पा
+      - id: i3
+        sa: पिपासति
+      - id: i4
+        sa: पठ्
+      - id: i5
+        sa: पिपठिषति
+      - id: i6
+        sa: गम्
+      - id: i7
+        sa: जिगमिषति
+      - id: i8
+        sa: भू
+      - id: i9
+        sa: बुभूषति
+      - id: i10
+        sa: सन्
 - id: exceptions
   kind: revision
   title:
@@ -125,6 +589,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+        compare_from: गम्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -150,6 +615,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: verb.desiderative
     rule:
       en: 'A few desideratives change the root: {{दा}} gives {{दित्सति}}, {{हन्}} gives {{जिघांसति}}, {{पा}} gives {{पिपासति}}.'
@@ -195,6 +661,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: दा
       - id: rule
         label:
           en: Connect the form and the rule
@@ -221,6 +688,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: दा
 - id: mistakes
   kind: revision
   title:
@@ -259,6 +727,30 @@ cards:
     - 1.3.13
     tag: core
     taught_in: pc.passive#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, says the verb endings can state the object, or the action itself
+          for roots with no object. 3.1.67, {{सार्वधातुके यक्}}, adds {{यक्}}; and 1.3.13, {{भावकर्मणोः}}, gives the endings
+          for oneself: {{पठ्यते}}.'
+        hi: 'सूत्र 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, कहता है कि क्रिया-प्रत्यय कर्म को कह सकते हैं, या बिना कर्म
+          वाली धातुओं में क्रिया को ही। 3.1.67, {{सार्वधातुके यक्}}, {{यक्}} जोड़ता है; और 1.3.13, {{भावकर्मणोः}}, अपने लिए
+          वाले प्रत्यय देता है: {{पठ्यते}}।'
+      items:
+      - id: i0
+        sa: लः कर्मणि च भावे चाकर्मकेभ्यः
+      - id: i1
+        sa: सार्वधातुके यक्
+      - id: i2
+        sa: यक्
+      - id: i3
+        sa: भावकर्मणोः
+      - id: i4
+        sa: पठ्यते
   - skill: verb.causative
     rule:
       en: '{{हेतुमति च}} and {{अचो ञ्णिति}}: the causative.'
@@ -268,6 +760,33 @@ cards:
     - 7.2.115
     tag: core
     taught_in: pc.cause#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens
+          the root''s vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself
+          a root: {{पाठयति}}.'
+        hi: 'सूत्र 3.1.26, {{हेतुमति च}}, जब कोई क्रिया करवाए तब {{णिच्}} जोड़ता है। 7.2.115, {{अचो ञ्णिति}}, उससे पहले धातु
+          का स्वर दीर्घ करता है: {{पठ्}} से {{पाठ्}}। 3.1.32, {{सनाद्यन्ता धातवः}}, कहता है कि नया अंग स्वयं एक धातु है: {{पाठयति}}।'
+      items:
+      - id: i0
+        sa: हेतुमति च
+      - id: i1
+        sa: णिच्
+      - id: i2
+        sa: अचो ञ्णिति
+      - id: i3
+        sa: पठ्
+      - id: i4
+        sa: पाठ्
+      - id: i5
+        sa: सनाद्यन्ता धातवः
+      - id: i6
+        sa: पाठयति
   - skill: verb.desiderative
     rule:
       en: '{{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}: the desiderative.'
@@ -276,6 +795,32 @@ cards:
     - 3.1.7
     tag: core
     taught_in: pc.want#pn
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.1.7, {{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}, gives {{सन्}} to a root when the same person wants to
+          do the action. 6.1.9, {{सन्यङोः}}, orders the doubling, and 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the first half.
+          7.2.35 adds the {{इ}}: {{पिपठिषति}}.'
+        hi: 'सूत्र 3.1.7, {{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}, धातु को {{सन्}} देता है जब वही व्यक्ति काम करना चाहे।
+          6.1.9, {{सन्यङोः}}, द्वित्व का आदेश देता है, और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, पहले भाग को छोटा करता है। 7.2.35
+          {{इ}} जोड़ता है: {{पिपठिषति}}।'
+      items:
+      - id: i0
+        sa: धातोः कर्मणः समानकर्तृकादिच्छायां वा
+      - id: i1
+        sa: सन्
+      - id: i2
+        sa: सन्यङोः
+      - id: i3
+        sa: अत्र लोपोऽभ्यासस्य
+      - id: i4
+        sa: इ
+      - id: i5
+        sa: पिपठिषति
 - id: sheet
   kind: revision
   title:
@@ -291,6 +836,88 @@ cards:
       hi: कर्मवाच्य
     tag: core
     taught_in: pc.passive#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the passive'
+        hi: 'पठ्: कर्मवाच्य'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठ्यते
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठ्येते
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठ्यन्ते
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठ्यसे
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठ्येथे
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठ्यध्वे
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठ्ये
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठ्यावहे
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठ्यामहे
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.causative
     formula: पाठयति · कारयति
     rule:
@@ -298,6 +925,104 @@ cards:
       hi: प्रेरणार्थक
     tag: core
     taught_in: pc.cause#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The causative
+        hi: प्रेरणार्थक
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Causative
+        hi: प्रेरणार्थक
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: पठ्
+        - id: r0-c1
+          sa: पाठयति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          label:
+            en: teaches
+            hi: पढ़ाता है
+      - - id: r1-c0
+          sa: कृ
+        - id: r1-c1
+          sa: कारयति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r1-c2
+          label:
+            en: has done
+            hi: करवाता है
+      - - id: r2-c0
+          sa: गम्
+        - id: r2-c1
+          sa: गमयति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c2
+          label:
+            en: sends
+            hi: भेजता है
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: दर्शयति
+          feature:
+            en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दृश्
+        - id: r3-c2
+          label:
+            en: shows
+            hi: दिखाता है
+      - - id: r4-c0
+          sa: भुज्
+        - id: r4-c1
+          sa: भोजयति
+          feature:
+            en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भुज्
+        - id: r4-c2
+          label:
+            en: feeds
+            hi: खिलाता है
+      - - id: r5-c0
+          sa: श्रु
+        - id: r5-c1
+          sa: श्रावयति
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+        - id: r5-c2
+          label:
+            en: announces
+            hi: सुनवाता है
+      - - id: r6-c0
+          sa: स्था
+        - id: r6-c1
+          sa: स्थापयति
+          feature:
+            en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: स्था
+        - id: r6-c2
+          label:
+            en: sets up
+            hi: स्थापित करता है
   - skill: verb.desiderative
     formula: पिपासति · जिगमिषति
     rule:
@@ -305,3 +1030,101 @@ cards:
       hi: इच्छार्थक
     tag: core
     taught_in: pc.want#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Wanting to
+        hi: चाहना
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Wants to
+        hi: चाहता है
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: पा
+        - id: r0-c1
+          sa: पिपासति
+          feature:
+            en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पा
+        - id: r0-c2
+          label:
+            en: wants to drink
+            hi: पीना चाहता है
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पिपठिषति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          label:
+            en: wants to read
+            hi: पढ़ना चाहता है
+      - - id: r2-c0
+          sa: गम्
+        - id: r2-c1
+          sa: जिगमिषति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c2
+          label:
+            en: wants to go
+            hi: जाना चाहता है
+      - - id: r3-c0
+          sa: भू
+        - id: r3-c1
+          sa: बुभूषति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r3-c2
+          label:
+            en: wants to be
+            hi: होना चाहता है
+      - - id: r4-c0
+          sa: भुज्
+        - id: r4-c1
+          sa: बुभुक्षति
+          feature:
+            en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भुज्
+        - id: r4-c2
+          label:
+            en: wants to eat
+            hi: खाना चाहता है
+      - - id: r5-c0
+          sa: ज्ञा
+        - id: r5-c1
+          sa: जिज्ञासते
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+        - id: r5-c2
+          label:
+            en: wants to know
+            hi: जानना चाहता है
+      - - id: r6-c0
+          sa: श्रु
+        - id: r6-c1
+          sa: शुश्रूषते
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+        - id: r6-c2
+          label:
+            en: wants to hear, serves
+            hi: सुनना चाहता है, सेवा करता है

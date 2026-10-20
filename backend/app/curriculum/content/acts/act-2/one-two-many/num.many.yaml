@@ -95,6 +95,102 @@ cards:
       en: 'the plural: three or more'
       hi: 'बहुवचन: तीन या अधिक'
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: बालकाः
+      meaning:
+        en: boys
+        hi: बालक (अनेक)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      image:
+        id: teaching-reader-many
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Three boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+        - अ इ उ
+      compare_from: बालक
+    - id: i1
+      sa: नौकाः
+      meaning:
+        en: boats
+        hi: नावें
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      image:
+        id: teaching-boat-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+          wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt: &id001
+          en: Three separate boats on the river
+          hi: नदी पर तीन अलग-अलग नावें
+        ratio: '4:3'
+        text_in_image: &id002 []
+      compare_from: नौका
+    - id: i2
+      sa: फलानि
+      meaning:
+        en: fruits
+        hi: फल (अनेक)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt:
+          en: Three separate whole mangoes
+          hi: तीन अलग-अलग पूरे आम
+        ratio: '4:3'
+        text_in_image: []
+      compare_from: फल
   - id: v-source-example-0
     kind: worked
     title:
@@ -118,6 +214,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -144,6 +241,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
   - id: v-source-example-1
     kind: worked
     title:
@@ -167,6 +265,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नौका
     - id: rule
       label:
         en: Connect the form and the rule
@@ -193,6 +292,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नौका
   - id: v-source-example-2
     kind: worked
     title:
@@ -216,6 +316,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -242,6 +343,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
 - id: tb1
   kind: table
   title:
@@ -273,6 +375,22 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-boat-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+          wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt:
+          en: One boat on the river
+          hi: नदी पर एक नाव
+        ratio: '4:3'
+        text_in_image: []
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: नौके
       check:
         type: subanta
@@ -280,6 +398,23 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      image:
+        id: teaching-boat-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO small traditional
+          wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt:
+          en: Two separate boats on the river
+          hi: नदी पर दो अलग-अलग नावें
+        ratio: '4:3'
+        text_in_image: []
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नौका
     - sa: नौकाः
       check:
         type: subanta
@@ -288,6 +423,21 @@ cards:
         vibhakti: Prathama
         vacana: Bahu
       highlight: true
+      image:
+        id: teaching-boat-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+          wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नौका
   - - text:
         en: boatman
         hi: नाविक
@@ -298,6 +448,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: नाविक
     - sa: नाविकौ
       check:
         type: subanta
@@ -305,6 +459,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नाविक
     - sa: नाविकाः
       check:
         type: subanta
@@ -313,6 +471,10 @@ cards:
         vibhakti: Prathama
         vacana: Bahu
       highlight: true
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नाविक
   - - text:
         en: leaf
         hi: पत्र
@@ -323,6 +485,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - sa: पत्रे
       check:
         type: subanta
@@ -330,6 +496,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: पत्र
     - sa: पत्राणि
       check:
         type: subanta
@@ -338,6 +508,10 @@ cards:
         vibhakti: Prathama
         vacana: Bahu
       highlight: true
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: पत्र
   - - text:
         en: river
         hi: नदी
@@ -348,6 +522,21 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt:
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: []
     - sa: नद्यौ
       check:
         type: subanta
@@ -355,6 +544,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नद्यः
       check:
         type: subanta
@@ -363,6 +556,10 @@ cards:
         vibhakti: Prathama
         vacana: Bahu
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नदी
   note:
     en: 'Plural: {{आः}} for masculine and feminine -अ/-आ words, {{आनि}} for neuter, {{यः}} for -ई words.'
     hi: 'बहुवचन: पुंलिंग और स्त्रीलिंग -अ/-आ शब्दों में {{आः}}, नपुंसक में {{आनि}}, -ई शब्दों में {{यः}}।'
@@ -408,6 +605,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -434,6 +632,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
 - id: p2
   kind: practice
   depth: core
@@ -496,6 +695,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -522,6 +722,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
 - id: e1
   kind: explore
   depth: core
@@ -597,6 +798,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -623,6 +825,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
 - id: pn
   kind: teach
   title:
@@ -683,6 +886,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: rule
       label:
         en: Connect the form and the rule
@@ -709,6 +913,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: पत्र
   - id: v-source-example-1
     kind: worked
     title:
@@ -732,6 +937,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -758,6 +964,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
 - id: sum
   kind: summary
   title:

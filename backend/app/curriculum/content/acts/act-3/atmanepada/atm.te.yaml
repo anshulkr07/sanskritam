@@ -236,6 +236,7 @@ cards:
       feature:
         en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेवक
     - id: i2
       sa: गुरुम्
       label:
@@ -253,6 +254,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i3
       sa: सेवते
       label:
@@ -270,6 +272,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -382,6 +385,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: फलम्
       label:
@@ -399,6 +403,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: लभते
       label:
@@ -416,6 +421,7 @@ cards:
       feature:
         en: 'Root: {{लभ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लभ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लभ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -530,6 +536,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: वर्तते
       label:
@@ -547,6 +554,7 @@ cards:
       feature:
         en: 'Root: {{वृत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वृत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वृत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -623,6 +631,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - sa: सेवेते
       check:
         type: tinanta
@@ -630,6 +642,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{सेव्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - sa: सेवन्ते
       check:
         type: tinanta
@@ -637,6 +653,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{सेव्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -647,6 +667,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: सेव्
     - sa: सेवेथे
       check:
         type: tinanta
@@ -654,6 +678,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{सेव्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: सेव्
     - sa: सेवध्वे
       check:
         type: tinanta
@@ -661,6 +689,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{सेव्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: सेव्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -671,6 +703,10 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: सेव्
     - sa: सेवावहे
       check:
         type: tinanta
@@ -678,6 +714,10 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{सेव्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: सेव्
     - sa: सेवामहे
       check:
         type: tinanta
@@ -685,9 +725,194 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{सेव्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: सेव्
   note:
     en: The endings are {{-ते}}, {{-से}}, {{-ए}} in the singular.
     hi: एकवचन के प्रत्यय {{-ते}}, {{-से}}, {{-ए}} हैं।
+  visuals:
+  - id: v-cue-person-grid
+    kind: matrix
+    title:
+      en: Person and number together
+      hi: पुरुष और वचन साथ में
+    columns:
+    - en: Person
+      hi: पुरुष
+    - en: One
+      hi: एकवचन
+    - en: Two
+      hi: द्विवचन
+    - en: Many
+      hi: बहुवचन
+    rows:
+    - - id: r0-c0
+        label:
+          en: he, she, it
+          hi: वह (प्रथम पुरुष)
+      - id: r0-c1
+        sa: सेवते
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: referent
+          quantity: 1
+          plural: false
+      - id: r0-c2
+        sa: सेवेते
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{सेव्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: referent
+          quantity: 2
+          plural: false
+      - id: r0-c3
+        sa: सेवन्ते
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{सेव्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: referent
+          quantity: 3
+          plural: true
+    - - id: r1-c0
+        label:
+          en: you
+          hi: तुम (मध्यम पुरुष)
+      - id: r1-c1
+        sa: सेवसे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Eka
+        feature:
+          en: 'Root: {{सेव्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 1
+          plural: false
+      - id: r1-c2
+        sa: सेवेथे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{सेव्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 2
+          plural: false
+      - id: r1-c3
+        sa: सेवध्वे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{सेव्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 3
+          plural: true
+    - - id: r2-c0
+        label:
+          en: I, we
+          hi: मैं (उत्तम पुरुष)
+      - id: r2-c1
+        sa: सेवे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{सेव्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 1
+          plural: false
+      - id: r2-c2
+        sa: सेवावहे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{सेव्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 2
+          plural: false
+      - id: r2-c3
+        sa: सेवामहे
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{सेव्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{सेव्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: सेव्
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 3
+          plural: true
 - id: tb2
   kind: table
   title:
@@ -718,6 +943,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
   - - sa: लभ्
     - text:
         en: obtain
@@ -729,6 +958,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लभ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लभ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लभ्
   - - sa: वृत्
     - text:
         en: abide
@@ -740,6 +973,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वृत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वृत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वृत्
   - - sa: मुद्
     - text:
         en: rejoice
@@ -751,6 +988,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{मुद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{मुद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: मुद्
   - - sa: रुच्
     - text:
         en: please
@@ -762,6 +1003,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{रुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: रुच्
   - - sa: भाष्
     - text:
         en: speak
@@ -773,6 +1018,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{भाष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भाष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भाष्
   - - sa: ईक्ष्
     - text:
         en: look
@@ -784,6 +1033,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{ईक्ष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ईक्ष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ईक्ष्
   note:
     en: These roots never take {{-ति}}.
     hi: ये धातुएँ कभी {{-ति}} नहीं लेतीं।
@@ -868,6 +1121,7 @@ cards:
       feature:
         en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेवक
     - id: i2
       sa: गुरुम्
       label:
@@ -885,6 +1139,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i3
       sa: सेवते
       label:
@@ -902,6 +1157,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1035,6 +1291,7 @@ cards:
       feature:
         en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेवक
     - id: i2
       sa: गुरुम्
       label:
@@ -1052,6 +1309,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i3
       sa: सेवते
       label:
@@ -1069,6 +1327,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1212,6 +1471,7 @@ cards:
       feature:
         en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेवक
     - id: i2
       sa: गुरुम्
       label:
@@ -1229,6 +1489,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i3
       sa: सेवते
       label:
@@ -1246,6 +1507,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1414,6 +1676,7 @@ cards:
       feature:
         en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेवक
     - id: i2
       sa: गुरुम्
       label:
@@ -1431,6 +1694,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i3
       sa: सेवते
       label:
@@ -1448,6 +1712,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: सेव्
     - id: rule
       label:
         en: Connect the form and the rule

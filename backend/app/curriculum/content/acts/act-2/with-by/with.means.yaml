@@ -179,6 +179,107 @@ cards:
       en: 'the third case: by, with'
       hi: 'तीसरी विभक्ति: से, के द्वारा'
   visuals:
+  - id: v-scene-tool
+    kind: reading
+    title:
+      en: The pen is the means
+      hi: लेखनी साधन है
+    items:
+    - id: i0
+      sa: सा लेखन्या लिखति।
+      meaning:
+        en: She writes with a pen.
+        hi: वह कलम से लिखती है।
+      words:
+      - sa: सा
+        gloss:
+          en: she
+          hi: वह
+      - sa: लेखन्या
+        gloss:
+          en: with a pen
+          hi: कलम से
+        check:
+          type: subanta
+          stem: लेखनी
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-girl-writes
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+          actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+          "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+          hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+        alt:
+          en: A girl writes अ with a pen
+          hi: लेखनी से अ लिखती बालिका
+        ratio: '4:3'
+        text_in_image:
+        - अ
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: We go by boat.
+      hi: हम नाव से जाते हैं।
+    items:
+    - id: i0
+      sa: वयम्
+      meaning:
+        en: we
+        hi: हम
+    - id: i1
+      sa: नौकया
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
+    - id: i2
+      sa: गच्छामः
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
+    edges:
+    - source: i1
+      target: i2
+      label:
+        en: means used
+        hi: प्रयुक्त साधन
   - id: v-source-example-0
     kind: worked
     title:
@@ -243,6 +344,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
     - id: i3
       sa: गच्छामः
       label:
@@ -260,6 +362,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -365,6 +468,19 @@ cards:
       feature:
         en: 'Stem: {{लेखनी}} · feminine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      image:
+        id: teaching-pen
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One traditional reed writing pen resting beside a small plain black inkpot on an ivory surface. No
+          paper or writing. Show the pen tip and inkpot clearly.'
+        alt: &id003
+          en: A reed pen beside an inkpot
+          hi: दवात के पास लेखनी
+        ratio: '1:1'
+        text_in_image: &id004 []
+      compare_from: लेखनी
     - id: i3
       sa: लिखति
       label:
@@ -382,6 +498,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -495,6 +612,7 @@ cards:
       feature:
         en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: नाविक
     - id: i2
       sa: दण्डेन
       label:
@@ -512,6 +630,7 @@ cards:
       feature:
         en: 'Stem: {{दण्ड}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: दण्ड
     - id: i3
       sa: नौकाम्
       label:
@@ -529,6 +648,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: नौका
     - id: i4
       sa: नयति
       label:
@@ -546,6 +666,7 @@ cards:
       feature:
         en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: नी
     - id: rule
       label:
         en: Connect the form and the rule
@@ -632,6 +753,22 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-boat-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+          wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt: &id001
+          en: One boat on the river
+          hi: नदी पर एक नाव
+        ratio: '4:3'
+        text_in_image: &id002 []
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: नौकया
       check:
         type: subanta
@@ -640,6 +777,21 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-boat-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+          wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
   - - text:
         en: pole
         hi: डंडी
@@ -650,6 +802,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{दण्ड}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दण्ड
     - sa: दण्डेन
       check:
         type: subanta
@@ -658,6 +814,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{दण्ड}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: दण्ड
   - - text:
         en: hand
         hi: हाथ
@@ -668,6 +828,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{हस्त}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: हस्त
     - sa: हस्तेन
       check:
         type: subanta
@@ -676,6 +840,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{हस्त}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: हस्त
   - - text:
         en: pen
         hi: कलम
@@ -686,6 +854,19 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{लेखनी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-pen
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One traditional reed writing pen resting beside a small plain black inkpot on an ivory surface. No
+          paper or writing. Show the pen tip and inkpot clearly.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - sa: लेखन्या
       check:
         type: subanta
@@ -694,6 +875,20 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{लेखनी}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      image:
+        id: teaching-pen
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One traditional reed writing pen resting beside a small plain black inkpot on an ivory surface. No
+          paper or writing. Show the pen tip and inkpot clearly.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: लेखनी
   - - text:
         en: fruit
         hi: फल
@@ -704,6 +899,22 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id005
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: &id006 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलेन
       check:
         type: subanta
@@ -712,6 +923,20 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: फल
   note:
     en: 'Masculine and neuter -अ: {{एन}}. Feminine -आ: {{अया}}. Feminine -ई: {{ई}} → {{या}}.'
     hi: पुंलिंग और नपुंसक -अ में {{एन}}। स्त्रीलिंग -आ में {{अया}}। स्त्रीलिंग -ई में {{ई}} → {{या}}।
@@ -783,6 +1008,7 @@ cards:
       feature:
         en: 'Stem: {{सुख}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: सुख
     - id: rule
       label:
         en: Connect the form and the rule
@@ -809,6 +1035,7 @@ cards:
       feature:
         en: 'Stem: {{सुख}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: सुख
   - id: v-source-example-1
     kind: worked
     title:
@@ -832,6 +1059,7 @@ cards:
       feature:
         en: 'Stem: {{वेग}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{वेग}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: वेग
     - id: rule
       label:
         en: Connect the form and the rule
@@ -858,6 +1086,7 @@ cards:
       feature:
         en: 'Stem: {{वेग}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{वेग}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: वेग
   - id: v-source-example-2
     kind: worked
     title:
@@ -881,6 +1110,7 @@ cards:
       feature:
         en: 'Stem: {{नेत्र}} · neuter · {{तृतीया}} · dual'
         hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: नेत्र
     - id: rule
       label:
         en: Connect the form and the rule
@@ -907,6 +1137,7 @@ cards:
       feature:
         en: 'Stem: {{नेत्र}} · neuter · {{तृतीया}} · dual'
         hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: नेत्र
 - id: p1
   kind: practice
   depth: core
@@ -990,6 +1221,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
     - id: i3
       sa: गच्छामः
       label:
@@ -1007,6 +1239,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1151,6 +1384,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
     - id: i3
       sa: गच्छामः
       label:
@@ -1168,6 +1402,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1324,6 +1559,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: नौका
     - id: i3
       sa: गच्छामः
       label:
@@ -1341,6 +1577,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule

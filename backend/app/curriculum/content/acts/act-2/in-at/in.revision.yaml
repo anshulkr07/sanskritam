@@ -28,6 +28,63 @@ cards:
     - 1.4.45
     tag: core
     taught_in: in.where#t1
+    visuals:
+    - id: v-linked-0
+      kind: reading
+      title:
+        en: Follow the place expression
+        hi: स्थान के पद पर ध्यान दें
+      items:
+      - id: i0
+        sa: बालकः गृहे अस्ति।
+        meaning:
+          en: The boy is at the house.
+          hi: बालक घर पर है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गृहे
+          gloss:
+            en: 'house: location'
+            hi: 'घर: होने का स्थान'
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-at-house
+          brief: 'Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable
+            at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark.
+            Show exactly one school-age boy in an ochre kurta sitting peacefully at the open door of a single small traditional
+            cream house. He is stationary, hands resting on his knees, no book or writing. The house and child form one clear
+            central grouping on an empty plain courtyard ground. No other people, houses, motion marks, arrows, signs or lettering.
+            The scene teaches location: AT the house.'
+          alt:
+            en: One boy sits at the door of a house
+            hi: घर के द्वार पर बैठा एक बालक
+          ratio: '4:3'
+          text_in_image: []
   - skill: case.loc
     formula: गृहे · पाठशालायाम् · नद्याम्
     rule:
@@ -35,6 +92,142 @@ cards:
       hi: 'एकवचन प्रत्यय: {{ए}} (पुंलिंग, नपुंसक -अ), {{आयाम्}} (स्त्रीलिंग -आ), {{याम्}} (स्त्रीलिंग -ई)।'
     tag: core
     taught_in: in.where#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: First case and seventh case
+        hi: प्रथमा और सप्तमी
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: '1st: itself'
+        hi: 'प्रथमा: स्वयं'
+      - en: '7th: in, on, at'
+        hi: 'सप्तमी: में, पर'
+      rows:
+      - - id: r0-c0
+          label:
+            en: house
+            hi: घर
+        - id: r0-c1
+          sa: गृहम्
+          feature:
+            en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गृह
+        - id: r0-c2
+          sa: गृहे
+          feature:
+            en: 'Stem: {{गृह}} · neuter · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: गृह
+      - - id: r1-c0
+          label:
+            en: well
+            hi: कुआँ
+        - id: r1-c1
+          sa: कूपः
+          feature:
+            en: 'Stem: {{कूप}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कूप
+        - id: r1-c2
+          sa: कूपे
+          feature:
+            en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: कूप
+      - - id: r2-c0
+          label:
+            en: tree
+            hi: पेड़
+        - id: r2-c1
+          sa: वृक्षः
+          feature:
+            en: 'Stem: {{वृक्ष}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-tree
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One complete mature green banyan tree with visible trunk, spreading branches,
+              canopy and a small patch of ground. No people, animals, fruit, hanging objects or lettering.'
+            alt: &id001
+              en: One whole banyan tree
+              hi: एक पूरा बरगद का वृक्ष
+            ratio: '1:1'
+            text_in_image: &id002 []
+          compare_from: वृक्ष
+        - id: r2-c2
+          sa: वृक्षे
+          feature:
+            en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          image:
+            id: teaching-tree
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One complete mature green banyan tree with visible trunk, spreading branches,
+              canopy and a small patch of ground. No people, animals, fruit, hanging objects or lettering.'
+            alt: *id001
+            ratio: '1:1'
+            text_in_image: *id002
+          compare_from: वृक्ष
+      - - id: r3-c0
+          label:
+            en: school
+            hi: पाठशाला
+        - id: r3-c1
+          sa: पाठशाला
+          feature:
+            en: 'Stem: {{पाठशाला}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r3-c2
+          sa: पाठशालायाम्
+          feature:
+            en: 'Stem: {{पाठशाला}} · feminine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: पाठशाला
+      - - id: r4-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r4-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: &id003
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: &id004 []
+        - id: r4-c2
+          sa: नद्याम्
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: *id003
+            ratio: '1:1'
+            text_in_image: *id004
+          compare_from: नदी
   - skill: case.loc-time
     formula: प्रभाते · रात्रौ
     rule:
@@ -42,12 +235,248 @@ cards:
       hi: जब कुछ होता है वह समय भी सप्तमी लेता है।
     tag: core
     taught_in: in.when#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
+      - id: i1
+        sa: प्रभाते
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+          hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+        compare_from: प्रभात
+      - id: i2
+        sa: वयम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: we
+          hi: हम
+      - id: i3
+        sa: पठामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+            {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+          hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+            (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+      - id: i6
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
   - skill: case.loc-time
     rule:
       en: '{{कुत्र}} (where) and {{कदा}} (when) ask for this case.'
       hi: '{{कुत्र}} (कहाँ) और {{कदा}} (कब) इसी विभक्ति की माँग करते हैं।'
     tag: core
     taught_in: in.when#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Times of the day
+        hi: दिन के समय
+      columns:
+      - en: Time
+        hi: समय
+      - en: 1st
+        hi: प्रथमा
+      - en: '7th: at'
+        hi: 'सप्तमी: में'
+      rows:
+      - - id: r0-c0
+          label:
+            en: dawn
+            hi: भोर
+        - id: r0-c1
+          sa: प्रभातम्
+          feature:
+            en: 'Stem: {{प्रभात}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: प्रभात
+        - id: r0-c2
+          sa: प्रभाते
+          feature:
+            en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: प्रभात
+      - - id: r1-c0
+          label:
+            en: noon
+            hi: दोपहर
+        - id: r1-c1
+          sa: मध्याह्नः
+          feature:
+            en: 'Stem: {{मध्याह्न}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मध्याह्न}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मध्याह्न
+        - id: r1-c2
+          sa: मध्याह्ने
+          feature:
+            en: 'Stem: {{मध्याह्न}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{मध्याह्न}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: मध्याह्न
+      - - id: r2-c0
+          label:
+            en: night
+            hi: रात
+        - id: r2-c1
+          sa: रात्रिः
+          feature:
+            en: 'Stem: {{रात्रि}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: रात्रि
+        - id: r2-c2
+          sa: रात्रौ
+          feature:
+            en: 'Stem: {{रात्रि}} · feminine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: रात्रि
+      - - id: r3-c0
+          label:
+            en: day
+            hi: दिन
+        - id: r3-c1
+          sa: दिनम्
+          feature:
+            en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दिन
+        - id: r3-c2
+          sa: दिने
+          feature:
+            en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: दिन
+      - - id: r4-c0
+          label:
+            en: month
+            hi: महीना
+        - id: r4-c1
+          sa: मासः
+          feature:
+            en: 'Stem: {{मास}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मास
+        - id: r4-c2
+          sa: मासि
+          feature:
+            en: 'Stem: {{मास}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: मास
+      - - id: r5-c0
+          label:
+            en: year
+            hi: वर्ष
+        - id: r5-c1
+          sa: वर्षम्
+          feature:
+            en: 'Stem: {{वर्ष}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वर्ष}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वर्ष
+        - id: r5-c2
+          sa: वर्षे
+          feature:
+            en: 'Stem: {{वर्ष}} · neuter · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{वर्ष}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: वर्ष
 - id: conditions
   kind: revision
   title:
@@ -97,6 +526,7 @@ cards:
         feature:
           en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · plural'
           hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+        compare_from: वृक्ष
       - id: rule
         label:
           en: Connect the form and the rule
@@ -121,6 +551,7 @@ cards:
         feature:
           en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · plural'
           hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+        compare_from: वृक्ष
 - id: exceptions
   kind: revision
   title:
@@ -188,12 +619,195 @@ cards:
       hi: '‘में’ के लिए द्वितीया मत लगाइए: {{गृहे}}, {{गृहम्}} नहीं।'
     tag: core
     taught_in: in.where#t1
+    visuals:
+    - id: v-linked-0
+      kind: reading
+      title:
+        en: Follow the place expression
+        hi: स्थान के पद पर ध्यान दें
+      items:
+      - id: i0
+        sa: बालकः गृहे अस्ति।
+        meaning:
+          en: The boy is at the house.
+          hi: बालक घर पर है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गृहे
+          gloss:
+            en: 'house: location'
+            hi: 'घर: होने का स्थान'
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-at-house
+          brief: 'Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable
+            at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark.
+            Show exactly one school-age boy in an ochre kurta sitting peacefully at the open door of a single small traditional
+            cream house. He is stationary, hands resting on his knees, no book or writing. The house and child form one clear
+            central grouping on an empty plain courtyard ground. No other people, houses, motion marks, arrows, signs or lettering.
+            The scene teaches location: AT the house.'
+          alt:
+            en: One boy sits at the door of a house
+            hi: घर के द्वार पर बैठा एक बालक
+          ratio: '4:3'
+          text_in_image: []
   - skill: case.loc-time
     rule:
       en: 'Do not use the first case for “at night”: {{रात्रौ}}, not {{रात्रिः}}.'
       hi: '‘रात में’ के लिए प्रथमा मत लगाइए: {{रात्रौ}}, {{रात्रिः}} नहीं।'
     tag: core
     taught_in: in.when#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
+      - id: i1
+        sa: प्रभाते
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+          hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+        compare_from: प्रभात
+      - id: i2
+        sa: वयम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: we
+          hi: हम
+      - id: i3
+        sa: पठामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+            {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+          hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+            (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+      - id: i6
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
 - id: panini
   kind: revision
   title:
@@ -211,6 +825,21 @@ cards:
     - 2.3.36
     tag: core
     taught_in: in.where#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.4.45, {{आधारोऽधिकरणम्}}: the locus is the support. Sūtra 2.3.36, {{सप्तम्यधिकरणे च}}: it takes the seventh
+          case.'
+        hi: 'सूत्र 1.4.45, {{आधारोऽधिकरणम्}}: अधिकरण आधार है। सूत्र 2.3.36, {{सप्तम्यधिकरणे च}}: वह सप्तमी लेता है।'
+      items:
+      - id: i0
+        sa: आधारोऽधिकरणम्
+      - id: i1
+        sa: सप्तम्यधिकरणे च
 - id: sheet
   kind: revision
   title:
@@ -226,6 +855,142 @@ cards:
       hi: में, पर
     tag: core
     taught_in: in.where#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: First case and seventh case
+        hi: प्रथमा और सप्तमी
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: '1st: itself'
+        hi: 'प्रथमा: स्वयं'
+      - en: '7th: in, on, at'
+        hi: 'सप्तमी: में, पर'
+      rows:
+      - - id: r0-c0
+          label:
+            en: house
+            hi: घर
+        - id: r0-c1
+          sa: गृहम्
+          feature:
+            en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गृह
+        - id: r0-c2
+          sa: गृहे
+          feature:
+            en: 'Stem: {{गृह}} · neuter · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: गृह
+      - - id: r1-c0
+          label:
+            en: well
+            hi: कुआँ
+        - id: r1-c1
+          sa: कूपः
+          feature:
+            en: 'Stem: {{कूप}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कूप
+        - id: r1-c2
+          sa: कूपे
+          feature:
+            en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: कूप
+      - - id: r2-c0
+          label:
+            en: tree
+            hi: पेड़
+        - id: r2-c1
+          sa: वृक्षः
+          feature:
+            en: 'Stem: {{वृक्ष}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-tree
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One complete mature green banyan tree with visible trunk, spreading branches,
+              canopy and a small patch of ground. No people, animals, fruit, hanging objects or lettering.'
+            alt: &id005
+              en: One whole banyan tree
+              hi: एक पूरा बरगद का वृक्ष
+            ratio: '1:1'
+            text_in_image: &id006 []
+          compare_from: वृक्ष
+        - id: r2-c2
+          sa: वृक्षे
+          feature:
+            en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          image:
+            id: teaching-tree
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One complete mature green banyan tree with visible trunk, spreading branches,
+              canopy and a small patch of ground. No people, animals, fruit, hanging objects or lettering.'
+            alt: *id005
+            ratio: '1:1'
+            text_in_image: *id006
+          compare_from: वृक्ष
+      - - id: r3-c0
+          label:
+            en: school
+            hi: पाठशाला
+        - id: r3-c1
+          sa: पाठशाला
+          feature:
+            en: 'Stem: {{पाठशाला}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r3-c2
+          sa: पाठशालायाम्
+          feature:
+            en: 'Stem: {{पाठशाला}} · feminine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: पाठशाला
+      - - id: r4-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r4-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: &id007
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: &id008 []
+        - id: r4-c2
+          sa: नद्याम्
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: *id007
+            ratio: '1:1'
+            text_in_image: *id008
+          compare_from: नदी
   - skill: case.loc-time
     formula: प्रभाते · रात्रौ
     rule:
@@ -233,3 +998,129 @@ cards:
       hi: किसी समय
     tag: core
     taught_in: in.when#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
+      - id: i1
+        sa: प्रभाते
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+          hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+        compare_from: प्रभात
+      - id: i2
+        sa: वयम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: we
+          hi: हम
+      - id: i3
+        sa: पठामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+            {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+          hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+            (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+      - id: i6
+        sa: प्रभाते वयम् पठामः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: At dawn we read.
+          hi: भोर में हम पढ़ते हैं।
+        words:
+        - sa: प्रभाते
+          gloss:
+            en: at dawn
+            hi: भोर में
+          check:
+            type: subanta
+            stem: प्रभात
+            linga: Napumsaka
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पठामः
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu

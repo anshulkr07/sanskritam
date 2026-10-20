@@ -186,6 +186,134 @@ cards:
       en: 'the fifth case: from'
       hi: 'पाँचवीं विभक्ति: से (अलग होना)'
   visuals:
+  - id: v-semantic-house
+    kind: reading
+    title:
+      en: Follow the place expression
+      hi: स्थान के पद पर ध्यान दें
+    items:
+    - id: i0
+      sa: बालकः गृहात् गच्छति।
+      meaning:
+        en: The boy goes from the house.
+        hi: बालक घर से जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहात्
+        gloss:
+          en: 'house: source'
+          hi: 'घर: निकलने का स्थान'
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-from-house
+        brief: 'Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px
+          phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show
+          a single small traditional cream house with an open door on the LEFT. Exactly one school-age boy in an ochre kurta
+          is on the RIGHT walking farther to the RIGHT, away from that door. His face and toes point right, his back is toward
+          the house. Empty plain path. No other people, houses, writing, arrows, signs or letterlike markings. The scene teaches
+          source: coming FROM the house.'
+        alt:
+          en: One boy walks away from a house
+          hi: घर से दूर चलता एक बालक
+        ratio: '4:3'
+        text_in_image: []
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: A leaf falls from the tree.
+      hi: पेड़ से पत्ता गिरता है।
+    items:
+    - id: i0
+      sa: वृक्षात्
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: &id001
+          en: One whole banyan tree
+          hi: एक पूरा बरगद का वृक्ष
+        ratio: '1:1'
+        text_in_image: &id002 []
+      compare_from: वृक्ष
+    - id: i1
+      sa: पत्रम्
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
+    - id: i2
+      sa: पतति
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
+    edges:
+    - source: i0
+      target: i2
+      label:
+        en: source of movement
+        hi: जहाँ से गति शुरू होती है
   - id: v-source-example-0
     kind: worked
     title:
@@ -248,6 +376,17 @@ cards:
       feature:
         en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
     - id: i2
       sa: पत्रम्
       label:
@@ -265,6 +404,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - id: i3
       sa: पतति
       label:
@@ -282,6 +422,7 @@ cards:
       feature:
         en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -394,6 +535,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामात्
       label:
@@ -411,6 +553,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: आगच्छति
       label:
@@ -430,6 +573,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -554,6 +698,19 @@ cards:
       feature:
         en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id003
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id004 []
+      compare_from: नदी
     - id: i3
       sa: जलम्
       label:
@@ -571,6 +728,7 @@ cards:
       feature:
         en: 'Stem: {{जल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: जल
     - id: i4
       sa: गृह्णाति
       label:
@@ -588,6 +746,7 @@ cards:
       feature:
         en: 'Root: {{ग्रह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ग्रह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ग्रह्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -669,6 +828,20 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
     - sa: वृक्षात्
       check:
         type: subanta
@@ -677,6 +850,20 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
   - - text:
         en: village
         hi: गाँव
@@ -687,6 +874,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: ग्राम
     - sa: ग्रामात्
       check:
         type: subanta
@@ -695,6 +886,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: ग्राम
   - - text:
         en: house
         hi: घर
@@ -705,6 +900,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - sa: गृहात्
       check:
         type: subanta
@@ -713,6 +912,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: गृह
   - - text:
         en: girl
         hi: बालिका
@@ -723,6 +926,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: बालिकायाः
       check:
         type: subanta
@@ -731,6 +937,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: बालिका
   - - text:
         en: river
         hi: नदी
@@ -741,6 +951,19 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - sa: नद्याः
       check:
         type: subanta
@@ -749,6 +972,20 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: नदी
   note:
     en: 'Masculine and neuter -अ: {{आत्}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}. Feminine fifth looks like
       the sixth case.'
@@ -835,6 +1072,17 @@ cards:
       feature:
         en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
     - id: i2
       sa: पत्रम्
       label:
@@ -852,6 +1100,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - id: i3
       sa: पतति
       label:
@@ -869,6 +1118,7 @@ cards:
       feature:
         en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1018,6 +1268,17 @@ cards:
       feature:
         en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
     - id: i2
       sa: पत्रम्
       label:
@@ -1035,6 +1296,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - id: i3
       sa: पतति
       label:
@@ -1052,6 +1314,7 @@ cards:
       feature:
         en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1215,6 +1478,17 @@ cards:
       feature:
         en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: वृक्ष
     - id: i2
       sa: पत्रम्
       label:
@@ -1232,6 +1506,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - id: i3
       sa: पतति
       label:
@@ -1249,6 +1524,7 @@ cards:
       feature:
         en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
     - id: rule
       label:
         en: Connect the form and the rule

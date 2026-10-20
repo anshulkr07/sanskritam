@@ -27,6 +27,92 @@ cards:
     - 2.2.30
     tag: core
     taught_in: c1.dvandva#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The pair
+        hi: जोड़ी
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: रामलक्ष्मणौ
+          feature:
+            en: 'Stem: {{रामलक्ष्मण}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{रामलक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: रामलक्ष्मण
+        - id: r0-c1
+          sa: रामः च लक्ष्मणः च
+        - id: r0-c2
+          label:
+            en: Rāma and Lakṣmaṇa
+            hi: राम और लक्ष्मण
+      - - id: r1-c0
+          sa: मातापितरौ
+          feature:
+            en: 'Stem: {{मातापितृ}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{मातापितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: मातापितृ
+        - id: r1-c1
+          sa: माता च पिता च
+        - id: r1-c2
+          label:
+            en: mother and father
+            hi: माता और पिता
+      - - id: r2-c0
+          sa: गुरुशिष्यौ
+          feature:
+            en: 'Stem: {{गुरुशिष्य}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{गुरुशिष्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: गुरुशिष्य
+        - id: r2-c1
+          sa: गुरुः च शिष्यः च
+        - id: r2-c2
+          label:
+            en: teacher and pupil
+            hi: गुरु और शिष्य
+      - - id: r3-c0
+          sa: धर्मार्थकाममोक्षाः
+          feature:
+            en: 'Stem: {{धर्मार्थकाममोक्ष}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{धर्मार्थकाममोक्ष}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: धर्मार्थकाममोक्ष
+        - id: r3-c1
+          sa: धर्मः च अर्थः च कामः च मोक्षः च
+        - id: r3-c2
+          label:
+            en: duty, wealth, desire and freedom
+            hi: धर्म, अर्थ, काम और मोक्ष
+      - - id: r4-c0
+          sa: पाणिपादम्
+          feature:
+            en: 'Stem: {{पाणिपाद}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाणिपाद}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पाणिपाद
+        - id: r4-c1
+          sa: पाणी च पादौ च
+        - id: r4-c2
+          label:
+            en: hands and feet
+            hi: हाथ और पैर
+      - - id: r5-c0
+          sa: सुखदुःखे
+          feature:
+            en: 'Stem: {{सुखदुःख}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{सुखदुःख}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: सुखदुःख
+        - id: r5-c1
+          sa: सुखं च दुःखं च
+        - id: r5-c2
+          label:
+            en: pleasure and pain
+            hi: सुख और दुःख
   - skill: sam.tatpurusha
     rule:
       en: 'Tatpuruṣa: X''s Y, with a case hidden: {{राजपुरुषः}}, {{ग्रामगतः}}.'
@@ -37,6 +123,91 @@ cards:
     - 2.1.24
     tag: core
     taught_in: c1.tatpurusha#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: X's Y
+        hi: क का ख
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: राजपुरुषः
+          feature:
+            en: 'Stem: {{राजपुरुष}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{राजपुरुष}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: राजपुरुष
+        - id: r0-c1
+          sa: राज्ञः पुरुषः
+        - id: r0-c2
+          label:
+            en: the king's man (of)
+            hi: राजा का पुरुष (का)
+      - - id: r1-c0
+          sa: विद्यालयः
+          feature:
+            en: 'Stem: {{विद्यालय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{विद्यालय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: विद्यालय
+        - id: r1-c1
+          sa: विद्यायाः आलयः
+        - id: r1-c2
+          label:
+            en: a school, house of learning (of)
+            hi: विद्यालय, विद्या का घर (का)
+      - - id: r2-c0
+          sa: वृक्षमूलम्
+          feature:
+            en: 'Stem: {{वृक्षमूल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्षमूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वृक्षमूल
+        - id: r2-c1
+          sa: वृक्षस्य मूलम्
+        - id: r2-c2
+          label:
+            en: root of a tree (of)
+            hi: वृक्ष की जड़ (की)
+      - - id: r3-c0
+          sa: ग्रामगतः
+          feature:
+            en: 'Stem: {{ग्रामगत}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ग्रामगत}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ग्रामगत
+        - id: r3-c1
+          sa: ग्रामं गतः
+        - id: r3-c2
+          label:
+            en: gone to the village (to)
+            hi: गाँव गया हुआ (को)
+      - - id: r4-c0
+          sa: रामबाणः
+          feature:
+            en: 'Stem: {{रामबाण}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{रामबाण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: रामबाण
+        - id: r4-c1
+          sa: रामस्य बाणः
+        - id: r4-c2
+          label:
+            en: Rāma's arrow (of)
+            hi: राम का बाण (का)
+      - - id: r5-c0
+          sa: पर्णशाला
+          feature:
+            en: 'Stem: {{पर्णशाला}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पर्णशाला}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r5-c1
+          sa: पर्णैः निर्मिता शाला
+        - id: r5-c2
+          label:
+            en: a hut of leaves (by, with)
+            hi: पत्तों से बनी कुटिया (से)
   - skill: sam.karmadharaya
     rule:
       en: 'Karmadhāraya: describing: {{नीलोत्पलम्}}; dvigu: counting: {{त्रिलोकी}}.'
@@ -47,6 +218,113 @@ cards:
     - 2.1.52
     tag: core
     taught_in: c1.karmadharaya#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Describing and counting
+        hi: वर्णन और गिनती
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: नीलोत्पलम्
+          feature:
+            en: 'Stem: {{नीलोत्पल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीलोत्पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीलोत्पल
+        - id: r0-c1
+          sa: नीलम् उत्पलम्
+        - id: r0-c2
+          label:
+            en: a blue lotus
+            hi: नीला कमल
+      - - id: r1-c0
+          sa: महात्मा
+          feature:
+            en: 'Stem: {{महात्मन्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महात्मन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महात्मन्
+        - id: r1-c1
+          sa: महान् आत्मा
+        - id: r1-c2
+          label:
+            en: a great soul
+            hi: महान् आत्मा
+      - - id: r2-c0
+          sa: सज्जनः
+          feature:
+            en: 'Stem: {{सज्जन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सज्जन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सज्जन
+        - id: r2-c1
+          sa: सन् जनः
+        - id: r2-c2
+          label:
+            en: a good person
+            hi: भला मनुष्य
+      - - id: r3-c0
+          sa: कृष्णसर्पः
+          feature:
+            en: 'Stem: {{कृष्णसर्प}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कृष्णसर्प}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृष्णसर्प
+        - id: r3-c1
+          sa: कृष्णः सर्पः
+        - id: r3-c2
+          label:
+            en: a black snake
+            hi: काला साँप
+      - - id: r4-c0
+          sa: त्रिलोकी
+          feature:
+            en: 'Stem: {{त्रिलोकी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{त्रिलोकी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r4-c1
+          sa: त्रयाणां लोकानां समाहारः
+        - id: r4-c2
+          label:
+            en: the three worlds
+            hi: तीन लोक
+      - - id: r5-c0
+          sa: पञ्चवटी
+          feature:
+            en: 'Stem: {{पञ्चवटी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पञ्चवटी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r5-c1
+          sa: पञ्चानां वटानां समाहारः
+        - id: r5-c2
+          label:
+            en: the five banyan trees
+            hi: पाँच बरगद
+      - - id: r6-c0
+          sa: अष्टाध्यायी
+          feature:
+            en: 'Stem: {{अष्टाध्यायी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अष्टाध्यायी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r6-c1
+          sa: अष्टानाम् अध्यायानां समाहारः
+        - id: r6-c2
+          label:
+            en: the eight chapters
+            hi: आठ अध्याय
+      - - id: r7-c0
+          sa: त्रिभुवनम्
+          feature:
+            en: 'Stem: {{त्रिभुवन}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{त्रिभुवन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: त्रिभुवन
+        - id: r7-c1
+          sa: त्रयाणां भुवनानां समाहारः
+        - id: r7-c2
+          label:
+            en: the three worlds
+            hi: तीन भुवन
   - skill: sam.nan-upapada
     rule:
       en: 'Nañ: {{असत्यम्}}, {{अनन्तः}}; doer: {{कुम्भकारः}}.'
@@ -57,6 +335,115 @@ cards:
     - 3.2.1
     tag: core
     taught_in: c1.nan#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Not-X and X-maker
+        hi: क नहीं और क बनाने वाला
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: असत्यम्
+          feature:
+            en: 'Stem: {{असत्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{असत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: असत्य
+        - id: r0-c1
+          sa: न सत्यम्
+        - id: r0-c2
+          label:
+            en: untrue
+            hi: असत्य
+      - - id: r1-c0
+          sa: अधर्मः
+          feature:
+            en: 'Stem: {{अधर्म}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अधर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अधर्म
+        - id: r1-c1
+          sa: न धर्मः
+        - id: r1-c2
+          label:
+            en: not-duty, wrong
+            hi: अधर्म, अनुचित
+      - - id: r2-c0
+          sa: अनन्तः
+          feature:
+            en: 'Stem: {{अनन्त}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अनन्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अनन्त
+        - id: r2-c1
+          sa: न अन्तः
+        - id: r2-c2
+          label:
+            en: endless
+            hi: अनन्त
+      - - id: r3-c0
+          sa: अज्ञानम्
+          feature:
+            en: 'Stem: {{अज्ञान}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अज्ञान
+        - id: r3-c1
+          sa: न ज्ञानम्
+        - id: r3-c2
+          label:
+            en: ignorance
+            hi: अज्ञान
+      - - id: r4-c0
+          sa: अहिंसा
+          feature:
+            en: 'Stem: {{अहिंसा}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अहिंसा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r4-c1
+          sa: न हिंसा
+        - id: r4-c2
+          label:
+            en: non-violence
+            hi: अहिंसा
+      - - id: r5-c0
+          sa: कुम्भकारः
+          feature:
+            en: 'Stem: {{कुम्भकार}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुम्भकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुम्भकार
+        - id: r5-c1
+          sa: कुम्भं करोति
+        - id: r5-c2
+          label:
+            en: pot-maker
+            hi: घड़ा बनाने वाला
+      - - id: r6-c0
+          sa: ग्रन्थकारः
+          feature:
+            en: 'Stem: {{ग्रन्थकार}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ग्रन्थकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ग्रन्थकार
+        - id: r6-c1
+          sa: ग्रन्थं करोति
+        - id: r6-c2
+          label:
+            en: author, maker of a book
+            hi: लेखक, ग्रन्थ रचने वाला
+      - - id: r7-c0
+          sa: शास्त्रज्ञः
+          feature:
+            en: 'Stem: {{शास्त्रज्ञ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शास्त्रज्ञ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शास्त्रज्ञ
+        - id: r7-c1
+          sa: शास्त्रं जानाति
+        - id: r7-c2
+          label:
+            en: knower of the śāstras
+            hi: शास्त्रों का ज्ञाता
 - id: conditions
   kind: revision
   title:
@@ -71,18 +458,101 @@ cards:
       hi: 'पूछिए: क्या इसका अर्थ ‘और’ है? तब द्वन्द्व।'
     tag: good
     taught_in: c1.dvandva#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means
+          “and”: {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two,
+          plural for several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+        hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+          है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+          का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+      items:
+      - id: i0
+        sa: द्वन्द्वः
+      - id: i1
+        sa: रामः च लक्ष्मणः च
+      - id: i2
+        sa: रामलक्ष्मणौ
+      - id: i3
+        sa: पाणिपादम्
   - skill: sam.tatpurusha
     rule:
       en: 'Ask: is the first word “of”, “to”, “by” the second? Then a tatpuruṣa.'
       hi: 'पूछिए: क्या पहला शब्द दूसरे का ‘का’, ‘को’, ‘से’ है? तब तत्पुरुष।'
     tag: good
     taught_in: c1.tatpurusha#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king''s man”,
+          becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of
+          a tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.'
+        hi: '{{तत्पुरुषः}} में पहला शब्द दूसरे से वैसे सम्बन्धित होता है जैसे कोई विभक्ति: {{राज्ञः पुरुषः}}, ‘राजा का पुरुष’,
+          से {{राजपुरुषः}}। विभक्ति सात में से कोई भी हो सकती है: {{ग्रामगतः}} (गाँव गया हुआ), {{वृक्षमूलम्}} (वृक्ष की जड़),
+          {{विद्यालयः}} (विद्या का घर)। दूसरा शब्द लिंग और प्रत्यय देता है।'
+      items:
+      - id: i0
+        sa: तत्पुरुषः
+      - id: i1
+        sa: राज्ञः पुरुषः
+      - id: i2
+        sa: राजपुरुषः
+      - id: i3
+        sa: ग्रामगतः
+      - id: i4
+        sa: वृक्षमूलम्
+      - id: i5
+        sa: विद्यालयः
   - skill: sam.karmadharaya
     rule:
       en: 'Ask: does the first word describe or count the second? Then a karmadhāraya or dvigu.'
       hi: 'पूछिए: क्या पहला शब्द दूसरे का वर्णन या गिनती करता है? तब कर्मधारय या द्विगु।'
     tag: good
     taught_in: c1.karmadharaya#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus);
+          {{महान् आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}}
+          gives {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters,
+          Pāṇini''s book).'
+        hi: '{{कर्मधारयः}} में पहला शब्द दूसरे का वर्णन करता है: {{नीलम् उत्पलम्}} से {{नीलोत्पलम्}} (नीला कमल); {{महान् आत्मा}}
+          से {{महात्मा}} (महान् आत्मा)। {{द्विगुः}} में संख्या एक समूह गिनती है: {{त्रयाणां लोकानां समाहारः}} से {{त्रिलोकी}}
+          (तीन लोक), {{अष्टानाम् अध्यायानां समाहारः}} से {{अष्टाध्यायी}} (आठ अध्याय, पाणिनि की पुस्तक)।'
+      items:
+      - id: i0
+        sa: कर्मधारयः
+      - id: i1
+        sa: नीलम् उत्पलम्
+      - id: i2
+        sa: नीलोत्पलम्
+      - id: i3
+        sa: महान् आत्मा
+      - id: i4
+        sa: महात्मा
+      - id: i5
+        sa: द्विगुः
+      - id: i6
+        sa: त्रयाणां लोकानां समाहारः
+      - id: i7
+        sa: त्रिलोकी
+      - id: i8
+        sa: अष्टानाम् अध्यायानां समाहारः
+      - id: i9
+        sa: अष्टाध्यायी
 - id: exceptions
   kind: revision
   title:
@@ -264,6 +734,32 @@ cards:
     - 2.2.6
     tag: core
     taught_in: c1.dvandva#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}.
+          2.2.30, {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}},
+          say every compound is made by joining with the case endings.
+        hi: सूत्र 2.2.29, {{चार्थे द्वन्द्वः}}, कहता है कि {{च}} (और) के अर्थ में जुड़े शब्द {{द्वन्द्वः}} बनाते हैं। 2.2.30,
+          {{उपसर्जनं पूर्वम्}}, कहता है कि गौण शब्द पहले रखा जाता है; और 2.1.4, {{सह सुपा}}, कहता है कि हर समास विभक्ति-सहित
+          शब्दों को जोड़कर बनता है।
+      items:
+      - id: i0
+        sa: चार्थे द्वन्द्वः
+      - id: i1
+        sa: च
+      - id: i2
+        sa: द्वन्द्वः
+      - id: i3
+        sa: उपसर्जनं पूर्वम्
+      - id: i4
+        sa: तत्पुरुषः
+      - id: i5
+        sa: सह सुपा
 - id: sheet
   kind: revision
   title:
@@ -279,6 +775,92 @@ cards:
       hi: क और ख
     tag: core
     taught_in: c1.dvandva#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The pair
+        hi: जोड़ी
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: रामलक्ष्मणौ
+          feature:
+            en: 'Stem: {{रामलक्ष्मण}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{रामलक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: रामलक्ष्मण
+        - id: r0-c1
+          sa: रामः च लक्ष्मणः च
+        - id: r0-c2
+          label:
+            en: Rāma and Lakṣmaṇa
+            hi: राम और लक्ष्मण
+      - - id: r1-c0
+          sa: मातापितरौ
+          feature:
+            en: 'Stem: {{मातापितृ}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{मातापितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: मातापितृ
+        - id: r1-c1
+          sa: माता च पिता च
+        - id: r1-c2
+          label:
+            en: mother and father
+            hi: माता और पिता
+      - - id: r2-c0
+          sa: गुरुशिष्यौ
+          feature:
+            en: 'Stem: {{गुरुशिष्य}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{गुरुशिष्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: गुरुशिष्य
+        - id: r2-c1
+          sa: गुरुः च शिष्यः च
+        - id: r2-c2
+          label:
+            en: teacher and pupil
+            hi: गुरु और शिष्य
+      - - id: r3-c0
+          sa: धर्मार्थकाममोक्षाः
+          feature:
+            en: 'Stem: {{धर्मार्थकाममोक्ष}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{धर्मार्थकाममोक्ष}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: धर्मार्थकाममोक्ष
+        - id: r3-c1
+          sa: धर्मः च अर्थः च कामः च मोक्षः च
+        - id: r3-c2
+          label:
+            en: duty, wealth, desire and freedom
+            hi: धर्म, अर्थ, काम और मोक्ष
+      - - id: r4-c0
+          sa: पाणिपादम्
+          feature:
+            en: 'Stem: {{पाणिपाद}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाणिपाद}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पाणिपाद
+        - id: r4-c1
+          sa: पाणी च पादौ च
+        - id: r4-c2
+          label:
+            en: hands and feet
+            hi: हाथ और पैर
+      - - id: r5-c0
+          sa: सुखदुःखे
+          feature:
+            en: 'Stem: {{सुखदुःख}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{सुखदुःख}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: सुखदुःख
+        - id: r5-c1
+          sa: सुखं च दुःखं च
+        - id: r5-c2
+          label:
+            en: pleasure and pain
+            hi: सुख और दुःख
   - skill: sam.tatpurusha
     formula: राजपुरुषः
     rule:
@@ -286,6 +868,91 @@ cards:
       hi: क का ख
     tag: core
     taught_in: c1.tatpurusha#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: X's Y
+        hi: क का ख
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: राजपुरुषः
+          feature:
+            en: 'Stem: {{राजपुरुष}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{राजपुरुष}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: राजपुरुष
+        - id: r0-c1
+          sa: राज्ञः पुरुषः
+        - id: r0-c2
+          label:
+            en: the king's man (of)
+            hi: राजा का पुरुष (का)
+      - - id: r1-c0
+          sa: विद्यालयः
+          feature:
+            en: 'Stem: {{विद्यालय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{विद्यालय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: विद्यालय
+        - id: r1-c1
+          sa: विद्यायाः आलयः
+        - id: r1-c2
+          label:
+            en: a school, house of learning (of)
+            hi: विद्यालय, विद्या का घर (का)
+      - - id: r2-c0
+          sa: वृक्षमूलम्
+          feature:
+            en: 'Stem: {{वृक्षमूल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वृक्षमूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वृक्षमूल
+        - id: r2-c1
+          sa: वृक्षस्य मूलम्
+        - id: r2-c2
+          label:
+            en: root of a tree (of)
+            hi: वृक्ष की जड़ (की)
+      - - id: r3-c0
+          sa: ग्रामगतः
+          feature:
+            en: 'Stem: {{ग्रामगत}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ग्रामगत}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ग्रामगत
+        - id: r3-c1
+          sa: ग्रामं गतः
+        - id: r3-c2
+          label:
+            en: gone to the village (to)
+            hi: गाँव गया हुआ (को)
+      - - id: r4-c0
+          sa: रामबाणः
+          feature:
+            en: 'Stem: {{रामबाण}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{रामबाण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: रामबाण
+        - id: r4-c1
+          sa: रामस्य बाणः
+        - id: r4-c2
+          label:
+            en: Rāma's arrow (of)
+            hi: राम का बाण (का)
+      - - id: r5-c0
+          sa: पर्णशाला
+          feature:
+            en: 'Stem: {{पर्णशाला}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पर्णशाला}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r5-c1
+          sa: पर्णैः निर्मिता शाला
+        - id: r5-c2
+          label:
+            en: a hut of leaves (by, with)
+            hi: पत्तों से बनी कुटिया (से)
   - skill: sam.karmadharaya
     formula: नीलोत्पलम् · त्रिलोकी
     rule:
@@ -293,6 +960,113 @@ cards:
       hi: वर्णन, गिनती
     tag: core
     taught_in: c1.karmadharaya#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Describing and counting
+        hi: वर्णन और गिनती
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: नीलोत्पलम्
+          feature:
+            en: 'Stem: {{नीलोत्पल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीलोत्पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीलोत्पल
+        - id: r0-c1
+          sa: नीलम् उत्पलम्
+        - id: r0-c2
+          label:
+            en: a blue lotus
+            hi: नीला कमल
+      - - id: r1-c0
+          sa: महात्मा
+          feature:
+            en: 'Stem: {{महात्मन्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महात्मन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महात्मन्
+        - id: r1-c1
+          sa: महान् आत्मा
+        - id: r1-c2
+          label:
+            en: a great soul
+            hi: महान् आत्मा
+      - - id: r2-c0
+          sa: सज्जनः
+          feature:
+            en: 'Stem: {{सज्जन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सज्जन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सज्जन
+        - id: r2-c1
+          sa: सन् जनः
+        - id: r2-c2
+          label:
+            en: a good person
+            hi: भला मनुष्य
+      - - id: r3-c0
+          sa: कृष्णसर्पः
+          feature:
+            en: 'Stem: {{कृष्णसर्प}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कृष्णसर्प}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृष्णसर्प
+        - id: r3-c1
+          sa: कृष्णः सर्पः
+        - id: r3-c2
+          label:
+            en: a black snake
+            hi: काला साँप
+      - - id: r4-c0
+          sa: त्रिलोकी
+          feature:
+            en: 'Stem: {{त्रिलोकी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{त्रिलोकी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r4-c1
+          sa: त्रयाणां लोकानां समाहारः
+        - id: r4-c2
+          label:
+            en: the three worlds
+            hi: तीन लोक
+      - - id: r5-c0
+          sa: पञ्चवटी
+          feature:
+            en: 'Stem: {{पञ्चवटी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पञ्चवटी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r5-c1
+          sa: पञ्चानां वटानां समाहारः
+        - id: r5-c2
+          label:
+            en: the five banyan trees
+            hi: पाँच बरगद
+      - - id: r6-c0
+          sa: अष्टाध्यायी
+          feature:
+            en: 'Stem: {{अष्टाध्यायी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अष्टाध्यायी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r6-c1
+          sa: अष्टानाम् अध्यायानां समाहारः
+        - id: r6-c2
+          label:
+            en: the eight chapters
+            hi: आठ अध्याय
+      - - id: r7-c0
+          sa: त्रिभुवनम्
+          feature:
+            en: 'Stem: {{त्रिभुवन}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{त्रिभुवन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: त्रिभुवन
+        - id: r7-c1
+          sa: त्रयाणां भुवनानां समाहारः
+        - id: r7-c2
+          label:
+            en: the three worlds
+            hi: तीन भुवन
   - skill: sam.nan-upapada
     formula: असत्यम् · कुम्भकारः
     rule:
@@ -300,3 +1074,112 @@ cards:
       hi: न, बनाने वाला
     tag: core
     taught_in: c1.nan#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Not-X and X-maker
+        hi: क नहीं और क बनाने वाला
+      columns:
+      - en: Compound
+        hi: समास
+      - en: Unpacked
+        hi: विग्रह
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: असत्यम्
+          feature:
+            en: 'Stem: {{असत्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{असत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: असत्य
+        - id: r0-c1
+          sa: न सत्यम्
+        - id: r0-c2
+          label:
+            en: untrue
+            hi: असत्य
+      - - id: r1-c0
+          sa: अधर्मः
+          feature:
+            en: 'Stem: {{अधर्म}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अधर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अधर्म
+        - id: r1-c1
+          sa: न धर्मः
+        - id: r1-c2
+          label:
+            en: not-duty, wrong
+            hi: अधर्म, अनुचित
+      - - id: r2-c0
+          sa: अनन्तः
+          feature:
+            en: 'Stem: {{अनन्त}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अनन्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अनन्त
+        - id: r2-c1
+          sa: न अन्तः
+        - id: r2-c2
+          label:
+            en: endless
+            hi: अनन्त
+      - - id: r3-c0
+          sa: अज्ञानम्
+          feature:
+            en: 'Stem: {{अज्ञान}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: अज्ञान
+        - id: r3-c1
+          sa: न ज्ञानम्
+        - id: r3-c2
+          label:
+            en: ignorance
+            hi: अज्ञान
+      - - id: r4-c0
+          sa: अहिंसा
+          feature:
+            en: 'Stem: {{अहिंसा}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{अहिंसा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r4-c1
+          sa: न हिंसा
+        - id: r4-c2
+          label:
+            en: non-violence
+            hi: अहिंसा
+      - - id: r5-c0
+          sa: कुम्भकारः
+          feature:
+            en: 'Stem: {{कुम्भकार}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुम्भकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुम्भकार
+        - id: r5-c1
+          sa: कुम्भं करोति
+        - id: r5-c2
+          label:
+            en: pot-maker
+            hi: घड़ा बनाने वाला
+      - - id: r6-c0
+          sa: ग्रन्थकारः
+          feature:
+            en: 'Stem: {{ग्रन्थकार}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ग्रन्थकार}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ग्रन्थकार
+        - id: r6-c1
+          sa: ग्रन्थं करोति
+        - id: r6-c2
+          label:
+            en: author, maker of a book
+            hi: लेखक, ग्रन्थ रचने वाला
+      - - id: r7-c0
+          sa: शास्त्रज्ञः
+          feature:
+            en: 'Stem: {{शास्त्रज्ञ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शास्त्रज्ञ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शास्त्रज्ञ
+        - id: r7-c1
+          sa: शास्त्रं जानाति
+        - id: r7-c2
+          label:
+            en: knower of the śāstras
+            hi: शास्त्रों का ज्ञाता

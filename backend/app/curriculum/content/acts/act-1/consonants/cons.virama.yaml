@@ -75,6 +75,22 @@ cards:
       en: a consonant with no vowel
       hi: बिना स्वर का व्यंजन
   visuals:
+  - id: v-script-virama
+    kind: comparison
+    title:
+      en: Keep or remove the inherent vowel
+      hi: अन्तर्निहित स्वर रखें या हटाएँ
+    items:
+    - id: with
+      sa: क
+      meaning:
+        en: Consonant with अ.
+        hi: अ के साथ व्यञ्जन।
+    - id: without
+      sa: क्
+      meaning:
+        en: Virāma removes that vowel.
+        hi: हलन्त उस स्वर को हटाता है।
   - id: v-source-forms
     kind: comparison
     title:
@@ -154,6 +170,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
     - id: rule
       label:
         en: Connect the form and the rule
@@ -180,6 +197,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
   - id: v-source-example-1
     kind: worked
     title:
@@ -501,3 +519,55 @@ cards:
     text:
       en: Final {{अ}} is said aloud; some words end in a stroke.
       hi: अन्त का {{अ}} बोला जाता है; कुछ शब्द रेखा पर समाप्त होते हैं।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: सूर्यः
+      meaning:
+        en: 'the sun: dental {{स}}'
+        hi: 'सूर्य: दन्त्य {{स}}'
+      check:
+        type: subanta
+        stem: सूर्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सूर्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सूर्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: रामः
+      meaning:
+        en: 'Rāma: say the final {{अ}}'
+        hi: 'राम: अन्त का {{अ}} बोलिए'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: जगत्
+      meaning:
+        en: 'the world: ends in {{त्}}, no vowel'
+        hi: 'संसार: {{त्}} पर समाप्त, कोई स्वर नहीं'
+      check:
+        type: subanta
+        stem: जगत्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जगत्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जगत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'

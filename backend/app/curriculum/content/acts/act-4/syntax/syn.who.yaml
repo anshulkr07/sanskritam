@@ -171,6 +171,71 @@ cards:
         vibhakti: Prathama
         vacana: Eka
   visuals:
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: Who reads, he knows.
+      hi: जो पढ़ता है, वह जानता है।
+    items:
+    - id: i0
+      sa: यः
+      meaning:
+        en: who
+        hi: जो
+    - id: i1
+      sa: पठति
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
+    - id: i2
+      sa: सः
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: जानाति
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
+    edges:
+    - source: i0
+      target: i2
+      label:
+        en: the same referent in both clauses
+        hi: दोनों उपवाक्यों में वही व्यक्ति
+    - source: i0
+      target: i1
+      label:
+        en: who reads
+        hi: जो पढ़ता है
+    - source: i2
+      target: i3
+      label:
+        en: he knows
+        hi: वह जानता है
   - id: v-source-example-0
     kind: worked
     title:
@@ -239,6 +304,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -264,6 +330,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -380,6 +447,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: i3
       sa: सा
       label:
@@ -521,6 +589,7 @@ cards:
       feature:
         en: 'Stem: {{बुद्धि}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बुद्धि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बुद्धि
     - id: i3
       sa: तस्य
       label:
@@ -546,6 +615,7 @@ cards:
       feature:
         en: 'Stem: {{बल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -624,6 +694,10 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: सः
       check:
         type: subanta
@@ -631,6 +705,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -642,6 +720,10 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तम्
       check:
         type: subanta
@@ -649,6 +731,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -660,6 +746,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तेन
       check:
         type: subanta
@@ -667,6 +757,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -678,6 +772,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तस्मै
       check:
         type: subanta
@@ -685,6 +783,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -696,6 +798,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तस्मात्
       check:
         type: subanta
@@ -703,6 +809,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -714,6 +824,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तस्य
       check:
         type: subanta
@@ -721,6 +835,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -732,6 +850,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: यद्
     - sa: तस्मिन्
       check:
         type: subanta
@@ -739,6 +861,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: तद्
   note:
     en: Match the case of each half to its own clause.
     hi: हर भाग की विभक्ति उसके अपने वाक्यांश के अनुसार रखिए।
@@ -829,6 +955,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -854,6 +981,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1001,6 +1129,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -1026,6 +1155,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1182,6 +1312,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -1207,6 +1338,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1358,6 +1490,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -1383,6 +1516,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule

@@ -132,6 +132,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -158,6 +159,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
 - id: tb1
   kind: table
   title:
@@ -184,6 +186,25 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: &id001
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image: &id002
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: ः
     - text:
         en: the boy, who does
@@ -195,6 +216,22 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: म्
     - text:
         en: the boy, acted on
@@ -206,6 +243,26 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      image:
+        id: teaching-reader-two
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Two boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते दो बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: बालक
     - sa: औ
     - text:
         en: two boys
@@ -217,6 +274,27 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      image:
+        id: teaching-reader-many
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Three boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - sa: आः
     - text:
         en: many boys

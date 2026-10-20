@@ -184,6 +184,7 @@ cards:
       feature:
         en: 'Root: {{वच्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: वच्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -274,6 +275,7 @@ cards:
       feature:
         en: 'Root: {{वच्}} · plural · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वच्}} · {{बहुवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: वच्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -338,6 +340,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{वच्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: वच्
     - sa: ऊचतुः
       check:
         type: tinanta
@@ -345,6 +351,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{वच्}} · dual · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{द्विवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: वच्
     - sa: ऊचुः
       check:
         type: tinanta
@@ -352,6 +362,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{वच्}} · plural · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{बहुवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: वच्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -362,6 +376,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{वच्}} · singular · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: वच्
     - sa: ऊचथुः
       check:
         type: tinanta
@@ -369,6 +387,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{वच्}} · dual · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{द्विवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: वच्
     - sa: ऊच
       check:
         type: tinanta
@@ -376,6 +398,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{वच्}} · plural · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{बहुवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: वच्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -386,6 +412,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{वच्}} · singular · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: वच्
     - sa: ऊचिव
       check:
         type: tinanta
@@ -393,6 +423,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{वच्}} · dual · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{द्विवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: वच्
     - sa: ऊचिम
       check:
         type: tinanta
@@ -400,6 +434,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{वच्}} · plural · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{बहुवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: वच्
   note:
     en: '{{उवाच}} is the form to know: the {{व}} of the root joins the doubled {{व}} into {{उ}}.'
     hi: '{{उवाच}} जानने योग्य रूप है: धातु का {{व}} और द्वित्व का {{व}} मिलकर {{उ}} बन जाते हैं।'
@@ -515,6 +553,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -532,6 +571,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -661,6 +701,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -678,6 +719,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -825,6 +867,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -842,6 +885,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -990,6 +1034,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1007,6 +1052,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1149,6 +1195,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1166,6 +1213,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1229,3 +1277,93 @@ cards:
     text:
       en: The everyday “said”.
       hi: रोज़ का ‘कहा’।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: बालकः पुस्तकम् पपाठ।
+      meaning:
+        en: The boy read the book.
+        hi: बालक ने पुस्तक पढ़ी।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पपाठ
+        gloss:
+          en: read
+          hi: पढ़ी
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: काणभूतिः तम् उवाच।
+      meaning:
+        en: Kāṇabhūti said to him.
+        hi: काणभूति ने उससे कहा।
+      words:
+      - sa: काणभूतिः
+        gloss:
+          en: Kāṇabhūti
+          hi: काणभूति
+      - sa: तम्
+        gloss:
+          en: to him
+          hi: उससे
+      - sa: उवाच
+        gloss:
+          en: said
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i2
+      sa: ते ऊचुः।
+      meaning:
+        en: They said.
+        hi: वे बोले।
+      words:
+      - sa: ते
+        gloss:
+          en: they
+          hi: वे
+      - sa: ऊचुः
+        gloss:
+          en: said
+          hi: बोले
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Bahu

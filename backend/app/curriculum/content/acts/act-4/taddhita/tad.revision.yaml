@@ -27,6 +27,116 @@ cards:
     - 7.2.117
     tag: core
     taught_in: tad.son#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Son of
+        hi: का पुत्र
+      columns:
+      - en: Name
+        hi: नाम
+      - en: Descendant
+        hi: वंशज
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: रघु
+        - id: r0-c1
+          sa: राघवः
+          feature:
+            en: 'Stem: {{रघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{रघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: रघु
+        - id: r0-c2
+          label:
+            en: descendant of Raghu (Rāma)
+            hi: रघु का वंशज (राम)
+      - - id: r1-c0
+          sa: पाण्डु
+        - id: r1-c1
+          sa: पाण्डवः
+          feature:
+            en: 'Stem: {{पाण्डु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाण्डु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पाण्डु
+        - id: r1-c2
+          label:
+            en: son of Pāṇḍu
+            hi: पाण्डु का पुत्र
+      - - id: r2-c0
+          sa: कुरु
+        - id: r2-c1
+          sa: कौरवः
+          feature:
+            en: 'Stem: {{कुरु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुरु
+        - id: r2-c2
+          label:
+            en: descendant of Kuru
+            hi: कुरु का वंशज
+      - - id: r3-c0
+          sa: मनु
+        - id: r3-c1
+          sa: मानवः
+          feature:
+            en: 'Stem: {{मनु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनु
+        - id: r3-c2
+          label:
+            en: descendant of Manu, human
+            hi: मनु का वंशज, मनुष्य
+      - - id: r4-c0
+          sa: वसुदेव
+        - id: r4-c1
+          sa: वासुदेवः
+          feature:
+            en: 'Stem: {{वसुदेव}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वसुदेव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वसुदेव
+        - id: r4-c2
+          label:
+            en: son of Vasudeva (Kṛṣṇa)
+            hi: वसुदेव का पुत्र (कृष्ण)
+      - - id: r5-c0
+          sa: दशरथ
+        - id: r5-c1
+          sa: दाशरथिः
+          feature:
+            en: 'Stem: {{दशरथ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दशरथ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दशरथ
+        - id: r5-c2
+          label:
+            en: son of Daśaratha (Rāma)
+            hi: दशरथ का पुत्र (राम)
+      - - id: r6-c0
+          sa: कुन्ती
+        - id: r6-c1
+          sa: कौन्तेयः
+          feature:
+            en: 'Stem: {{कुन्ती}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुन्ती}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुन्ती
+        - id: r6-c2
+          label:
+            en: son of Kuntī
+            hi: कुन्ती का पुत्र
+      - - id: r7-c0
+          sa: गङ्गा
+        - id: r7-c1
+          sa: गाङ्गेयः
+          feature:
+            en: 'Stem: {{गङ्गा}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गङ्गा}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गङ्गा
+        - id: r7-c2
+          label:
+            en: son of Gaṅgā (Bhīṣma)
+            hi: गङ्गा का पुत्र (भीष्म)
   - skill: tad.tva-ta
     rule:
       en: '-ness: {{-त्वम्}} or {{-ता}}: {{मनुष्यत्वम्}}, {{देवता}}.'
@@ -35,6 +145,160 @@ cards:
     - 5.1.119
     tag: core
     taught_in: tad.ness#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The state of being
+        hi: होने की अवस्था
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: ending -tvam
+        hi: प्रत्यय -त्वम्
+      - en: ending -tā
+        hi: प्रत्यय -ता
+      rows:
+      - - id: r0-c0
+          sa: मनुष्य
+        - id: r0-c1
+          sa: मनुष्यत्वम्
+          feature:
+            en: 'Stem: {{मनुष्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनुष्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनुष्य
+        - id: r0-c2
+          sa: मनुष्यता
+          feature:
+            en: 'Stem: {{मनुष्य}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनुष्य}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनुष्य
+      - - id: r1-c0
+          sa: देव
+        - id: r1-c1
+          sa: देवत्वम्
+          feature:
+            en: 'Stem: {{देव}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{देव}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: देव
+        - id: r1-c2
+          sa: देवता
+          feature:
+            en: 'Stem: {{देव}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{देव}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: देव
+      - - id: r2-c0
+          sa: पुरुष
+        - id: r2-c1
+          sa: पुरुषत्वम्
+          feature:
+            en: 'Stem: {{पुरुष}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुरुष}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुरुष
+        - id: r2-c2
+          sa: पुरुषता
+          feature:
+            en: 'Stem: {{पुरुष}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुरुष}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुरुष
+      - - id: r3-c0
+          sa: कवि
+        - id: r3-c1
+          sa: कवित्वम्
+          feature:
+            en: 'Stem: {{कवि}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कवि}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कवि
+        - id: r3-c2
+          sa: कविता
+          feature:
+            en: 'Stem: {{कवि}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कवि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कवि
+      - - id: r4-c0
+          sa: गुरु
+        - id: r4-c1
+          sa: गुरुत्वम्
+          feature:
+            en: 'Stem: {{गुरु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुरु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुरु
+        - id: r4-c2
+          sa: गुरुता
+          feature:
+            en: 'Stem: {{गुरु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुरु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुरु
+      - - id: r5-c0
+          sa: लघु
+        - id: r5-c1
+          sa: लघुत्वम्
+          feature:
+            en: 'Stem: {{लघु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+        - id: r5-c2
+          sa: लघुता
+          feature:
+            en: 'Stem: {{लघु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+      - - id: r6-c0
+          sa: सुन्दर
+        - id: r6-c1
+          sa: सुन्दरत्वम्
+          feature:
+            en: 'Stem: {{सुन्दर}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सुन्दर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सुन्दर
+        - id: r6-c2
+          sa: सुन्दरता
+          feature:
+            en: 'Stem: {{सुन्दर}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सुन्दर}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सुन्दर
+      - - id: r7-c0
+          sa: वीर
+        - id: r7-c1
+          sa: वीरत्वम्
+          feature:
+            en: 'Stem: {{वीर}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वीर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वीर
+        - id: r7-c2
+          sa: वीरता
+          feature:
+            en: 'Stem: {{वीर}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वीर}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वीर
+      - - id: r8-c0
+          sa: सत्य
+        - id: r8-c1
+          sa: सत्यत्वम्
+          feature:
+            en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सत्य
+        - id: r8-c2
+          sa: सत्यता
+          feature:
+            en: 'Stem: {{सत्य}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सत्य}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सत्य
+      - - id: r9-c0
+          sa: महत्
+        - id: r9-c1
+          sa: महत्त्वम्
+          feature:
+            en: 'Stem: {{महत्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+        - id: r9-c2
+          sa: महत्ता
+          feature:
+            en: 'Stem: {{महत्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
   - skill: tad.matup
     rule:
       en: 'Having: {{-वत्}}, {{-मत्}}: {{धनवान्}}, {{बुद्धिमान्}}; feminine {{-वती}}, {{-मती}}.'
@@ -44,6 +308,146 @@ cards:
     - 8.2.9
     tag: core
     taught_in: tad.having#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Having
+        hi: वाला
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: Having (m)
+        hi: वाला (पुं.)
+      - en: Having (f)
+        hi: वाली (स्त्री.)
+      rows:
+      - - id: r0-c0
+          sa: धन
+        - id: r0-c1
+          sa: धनवान्
+          feature:
+            en: 'Stem: {{धन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धन
+        - id: r0-c2
+          sa: धनवती
+          feature:
+            en: 'Stem: {{धन}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धन}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धन
+      - - id: r1-c0
+          sa: गुण
+        - id: r1-c1
+          sa: गुणवान्
+          feature:
+            en: 'Stem: {{गुण}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुण
+        - id: r1-c2
+          sa: गुणवती
+          feature:
+            en: 'Stem: {{गुण}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुण}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुण
+      - - id: r2-c0
+          sa: बल
+        - id: r2-c1
+          sa: बलवान्
+          feature:
+            en: 'Stem: {{बल}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बल}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बल
+        - id: r2-c2
+          sa: बलवती
+          feature:
+            en: 'Stem: {{बल}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बल}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बल
+      - - id: r3-c0
+          sa: पुत्र
+        - id: r3-c1
+          sa: पुत्रवान्
+          feature:
+            en: 'Stem: {{पुत्र}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुत्र
+        - id: r3-c2
+          sa: पुत्रवती
+          feature:
+            en: 'Stem: {{पुत्र}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुत्र}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुत्र
+      - - id: r4-c0
+          sa: बुद्धि
+        - id: r4-c1
+          sa: बुद्धिमान्
+          feature:
+            en: 'Stem: {{बुद्धि}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बुद्धि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बुद्धि
+        - id: r4-c2
+          sa: बुद्धिमती
+          feature:
+            en: 'Stem: {{बुद्धि}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बुद्धि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बुद्धि
+      - - id: r5-c0
+          sa: श्री
+        - id: r5-c1
+          sa: श्रीमान्
+          feature:
+            en: 'Stem: {{श्री}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्री}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्री
+        - id: r5-c2
+          sa: श्रीमती
+          feature:
+            en: 'Stem: {{श्री}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्री}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्री
+      - - id: r6-c0
+          sa: शक्ति
+        - id: r6-c1
+          sa: शक्तिमान्
+          feature:
+            en: 'Stem: {{शक्ति}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शक्ति}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शक्ति
+        - id: r6-c2
+          sa: शक्तिमती
+          feature:
+            en: 'Stem: {{शक्ति}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शक्ति}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शक्ति
+      - - id: r7-c0
+          sa: धी
+        - id: r7-c1
+          sa: धीमान्
+          feature:
+            en: 'Stem: {{धी}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धी}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धी
+        - id: r7-c2
+          sa: धीमती
+          feature:
+            en: 'Stem: {{धी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धी
+      - - id: r8-c0
+          sa: हनु
+        - id: r8-c1
+          sa: हनुमान्
+          feature:
+            en: 'Stem: {{हनु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हनु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हनु
+        - id: r8-c2
+          sa: हनुमती
+          feature:
+            en: 'Stem: {{हनु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हनु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हनु
   - skill: tad.ika
     rule:
       en: 'Related to: {{-इक}}: {{धार्मिकः}}, {{दैनिकः}}.'
@@ -53,6 +457,116 @@ cards:
     - 7.3.50
     tag: core
     taught_in: tad.having#tb2
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Related to
+        hi: सम्बन्धी
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: Related to
+        hi: सम्बन्धी
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: धर्म
+        - id: r0-c1
+          sa: धार्मिकः
+          feature:
+            en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धर्म
+        - id: r0-c2
+          label:
+            en: righteous
+            hi: धार्मिक
+      - - id: r1-c0
+          sa: समाज
+        - id: r1-c1
+          sa: सामाजिकः
+          feature:
+            en: 'Stem: {{समाज}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{समाज}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: समाज
+        - id: r1-c2
+          label:
+            en: social
+            hi: सामाजिक
+      - - id: r2-c0
+          sa: लोक
+        - id: r2-c1
+          sa: लौकिकः
+          feature:
+            en: 'Stem: {{लोक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लोक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लोक
+        - id: r2-c2
+          label:
+            en: worldly
+            hi: लौकिक
+      - - id: r3-c0
+          sa: वेद
+        - id: r3-c1
+          sa: वैदिकः
+          feature:
+            en: 'Stem: {{वेद}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वेद}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वेद
+        - id: r3-c2
+          label:
+            en: Vedic
+            hi: वैदिक
+      - - id: r4-c0
+          sa: नीति
+        - id: r4-c1
+          sa: नैतिकः
+          feature:
+            en: 'Stem: {{नीति}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीति}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीति
+        - id: r4-c2
+          label:
+            en: moral
+            hi: नैतिक
+      - - id: r5-c0
+          sa: दिन
+        - id: r5-c1
+          sa: दैनिकः
+          feature:
+            en: 'Stem: {{दिन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दिन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दिन
+        - id: r5-c2
+          label:
+            en: daily
+            hi: दैनिक
+      - - id: r6-c0
+          sa: मास
+        - id: r6-c1
+          sa: मासिकः
+          feature:
+            en: 'Stem: {{मास}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मास
+        - id: r6-c2
+          label:
+            en: monthly
+            hi: मासिक
+      - - id: r7-c0
+          sa: इतिहास
+        - id: r7-c1
+          sa: ऐतिहासिकः
+          feature:
+            en: 'Stem: {{इतिहास}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{इतिहास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: इतिहास
+        - id: r7-c2
+          label:
+            en: historical
+            hi: ऐतिहासिक
   - skill: tad.comparison
     rule:
       en: 'More, most: {{-तर}}, {{-तम}}: {{लघुतरः}}, {{लघुतमः}}; old forms {{गरीयान्}}, {{गरिष्ठः}}.'
@@ -62,6 +576,90 @@ cards:
     - 5.3.55
     tag: core
     taught_in: tad.more#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: More and most
+        hi: अधिक और सबसे अधिक
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: More
+        hi: अधिक
+      - en: Most
+        hi: सबसे अधिक
+      rows:
+      - - id: r0-c0
+          sa: लघु
+        - id: r0-c1
+          sa: लघुतरः
+          feature:
+            en: 'Stem: {{लघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+        - id: r0-c2
+          sa: लघुतमः
+          feature:
+            en: 'Stem: {{लघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+      - - id: r1-c0
+          sa: उच्च
+        - id: r1-c1
+          sa: उच्चतरः
+          feature:
+            en: 'Stem: {{उच्च}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{उच्च}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: उच्च
+        - id: r1-c2
+          sa: उच्चतमः
+          feature:
+            en: 'Stem: {{उच्च}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{उच्च}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: उच्च
+      - - id: r2-c0
+          sa: दीर्घ
+        - id: r2-c1
+          sa: दीर्घतरः
+          feature:
+            en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घ
+        - id: r2-c2
+          sa: दीर्घतमः
+          feature:
+            en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घ
+      - - id: r3-c0
+          sa: महत्
+        - id: r3-c1
+          sa: महत्तरः
+          feature:
+            en: 'Stem: {{महत्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+        - id: r3-c2
+          sa: महत्तमः
+          feature:
+            en: 'Stem: {{महत्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+      - - id: r4-c0
+          sa: प्रिय
+        - id: r4-c1
+          sa: प्रियतरः
+          feature:
+            en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: प्रिय
+        - id: r4-c2
+          sa: प्रियतमः
+          feature:
+            en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: प्रिय
 - id: conditions
   kind: revision
   title:
@@ -76,18 +674,142 @@ cards:
       hi: '{{-त्वम्}} और {{-ता}} का अर्थ एक है; {{-ता}} स्त्रीलिंग और {{-त्वम्}} नपुंसक है।'
     tag: good
     taught_in: tad.ness#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: '{{-त्वम्}} (neuter) and {{-ता}} (feminine) make a word that names the state of being something: {{मनुष्य}} gives
+          {{मनुष्यत्वम्}} or {{मनुष्यता}}, “humanity”; {{देव}} gives {{देवत्वम्}} or {{देवता}}, “divinity”; {{गुरु}} gives
+          {{गुरुत्वम्}} or {{गुरुता}}, “weight, greatness”. Both mean the same.'
+        hi: '{{-त्वम्}} (नपुंसक) और {{-ता}} (स्त्रीलिंग) किसी शब्द से उसके होने की अवस्था का नाम बनाते हैं: {{मनुष्य}} से
+          {{मनुष्यत्वम्}} या {{मनुष्यता}}, ‘मनुष्यता’; {{देव}} से {{देवत्वम्}} या {{देवता}}, ‘देवत्व’; {{गुरु}} से {{गुरुत्वम्}}
+          या {{गुरुता}}, ‘भार, महत्ता’। दोनों का अर्थ एक है।'
+      items:
+      - id: i0
+        sa: -त्वम्
+      - id: i1
+        sa: -ता
+      - id: i2
+        sa: मनुष्य
+      - id: i3
+        sa: मनुष्यत्वम्
+      - id: i4
+        sa: मनुष्यता
+      - id: i5
+        sa: देव
+      - id: i6
+        sa: देवत्वम्
+      - id: i7
+        sa: देवता
+      - id: i8
+        sa: गुरु
+      - id: i9
+        sa: गुरुत्वम्
+      - id: i10
+        sa: गुरुता
   - skill: tad.matup
     rule:
       en: '{{-मत्}} after {{-इ}}, {{-उ}}, {{-ई}}; {{-वत्}} otherwise.'
       hi: '{{-इ}}, {{-उ}}, {{-ई}} के बाद {{-मत्}}; अन्यथा {{-वत्}}।'
     tag: good
     taught_in: tad.having#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+          the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+          means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+        hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+          स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+          का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+      items:
+      - id: i0
+        sa: -वत्
+      - id: i1
+        sa: -मत्
+      - id: i2
+        sa: धन
+      - id: i3
+        sa: धनवान्
+      - id: i4
+        sa: बुद्धि
+      - id: i5
+        sa: बुद्धिमान्
+      - id: i6
+        sa: -वती
+      - id: i7
+        sa: -मती
+      - id: i8
+        sa: -इ
+      - id: i9
+        sa: -ई
+      - id: i10
+        sa: -उ
+      - id: i11
+        sa: -इक
+      - id: i12
+        sa: धर्म
+      - id: i13
+        sa: धार्मिकः
+      - id: i14
+        sa: दिन
+      - id: i15
+        sa: दैनिकः
   - skill: tad.comparison
     rule:
       en: '{{-तर}} compares two; {{-तम}} picks from many.'
       hi: '{{-तर}} दो की तुलना करता है; {{-तम}} कई में से चुनता है।'
     tag: good
     taught_in: tad.more#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: '{{-तरः}} means “more”, for two things; {{-तमः}} means “most”, for many: {{लघु}} gives {{लघुतरः}}, {{लघुतमः}}.
+          A few adjectives have older forms: {{गुरु}} gives {{गरीयान्}} (heavier), {{गरिष्ठः}} (heaviest); {{प्रिय}} gives
+          {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} gives {{भूयान्}}, {{भूयिष्ठः}}.'
+        hi: '{{-तरः}} का अर्थ ‘अधिक’ है, दो वस्तुओं के लिए; {{-तमः}} का अर्थ ‘सबसे अधिक’ है, कई के लिए: {{लघु}} से {{लघुतरः}},
+          {{लघुतमः}}। कुछ विशेषणों के पुराने रूप हैं: {{गुरु}} से {{गरीयान्}} (अधिक भारी), {{गरिष्ठः}} (सबसे भारी); {{प्रिय}}
+          से {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} से {{भूयान्}}, {{भूयिष्ठः}}।'
+      items:
+      - id: i0
+        sa: -तरः
+      - id: i1
+        sa: -तमः
+      - id: i2
+        sa: लघु
+      - id: i3
+        sa: लघुतरः
+      - id: i4
+        sa: लघुतमः
+      - id: i5
+        sa: गुरु
+      - id: i6
+        sa: गरीयान्
+      - id: i7
+        sa: गरिष्ठः
+      - id: i8
+        sa: प्रिय
+      - id: i9
+        sa: प्रेयान्
+      - id: i10
+        sa: प्रेष्ठः
+      - id: i11
+        sa: बहु
+      - id: i12
+        sa: भूयान्
+      - id: i13
+        sa: भूयिष्ठः
 - id: exceptions
   kind: revision
   title:
@@ -139,6 +861,7 @@ cards:
         feature:
           en: 'Stem: {{भग}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{भग}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: भग
       - id: rule
         label:
           en: Connect the form and the rule
@@ -164,6 +887,7 @@ cards:
         feature:
           en: 'Stem: {{भग}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{भग}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: भग
   - skill: tad.comparison
     rule:
       en: 'Some comparatives are quite irregular: {{ज्यायान्}} (elder), {{श्रेयान्}} (better).'
@@ -207,6 +931,7 @@ cards:
         feature:
           en: 'Stem: {{प्रशस्य}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{प्रशस्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: प्रशस्य
       - id: rule
         label:
           en: Connect the form and the rule
@@ -232,6 +957,7 @@ cards:
         feature:
           en: 'Stem: {{प्रशस्य}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{प्रशस्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: प्रशस्य
 - id: mistakes
   kind: revision
   title:
@@ -270,6 +996,42 @@ cards:
     - 5.2.94
     tag: core
     taught_in: tad.son#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 4.1.92, {{तस्यापत्यम्}}, gives a taddhita for “his descendant”; 4.1.83, {{प्राग्दीव्यतोऽण्}}, makes {{अण्}}
+          the usual ending, and 7.2.117, {{तद्धितेष्वचामादेः}}, makes the first vowel grow. 4.1.95, {{अत इञ्}}, gives {{इञ्}}
+          after {{अ}}-ending names ({{दाशरथिः}}), and 4.1.120, {{स्त्रीभ्यो ढक्}}, {{ढक्}} after feminines ({{कौन्तेयः}}).
+        hi: सूत्र 4.1.92, {{तस्यापत्यम्}}, ‘उसका वंशज’ के लिए तद्धित देता है; 4.1.83, {{प्राग्दीव्यतोऽण्}}, {{अण्}} को सामान्य
+          प्रत्यय बनाता है, और 7.2.117, {{तद्धितेष्वचामादेः}}, पहले स्वर को बढ़ाता है। 4.1.95, {{अत इञ्}}, {{अ}}-अन्त नामों
+          के बाद {{इञ्}} देता है ({{दाशरथिः}}), और 4.1.120, {{स्त्रीभ्यो ढक्}}, स्त्रीलिंग शब्दों के बाद {{ढक्}} ({{कौन्तेयः}})।
+      items:
+      - id: i0
+        sa: तस्यापत्यम्
+      - id: i1
+        sa: प्राग्दीव्यतोऽण्
+      - id: i2
+        sa: अण्
+      - id: i3
+        sa: तद्धितेष्वचामादेः
+      - id: i4
+        sa: अत इञ्
+      - id: i5
+        sa: इञ्
+      - id: i6
+        sa: अ
+      - id: i7
+        sa: दाशरथिः
+      - id: i8
+        sa: स्त्रीभ्यो ढक्
+      - id: i9
+        sa: ढक्
+      - id: i10
+        sa: कौन्तेयः
   - skill: tad.comparison
     rule:
       en: '{{द्विवचनविभज्योपपदे तरबीयसुनौ}} and {{अतिशायने तमबिष्ठनौ}}: more and most.'
@@ -279,6 +1041,38 @@ cards:
     - 5.3.55
     tag: core
     taught_in: tad.more#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, gives {{तरप्}} and {{ईयसुन्}} when comparing two; 5.3.55, {{अतिशायने
+          तमबिष्ठनौ}}, gives {{तमप्}} and {{इष्ठन्}} for “most”. 6.4.157, {{प्रियस्थिरस्फिरोरुबहुलगुरुवृद्धतृप्रदीर्घवृन्दारकाणां
+          प्रस्थस्फवर्बंहिगर्वर्षित्रब्द्राघिवृन्दाः}}, replaces the stem of a few adjectives: {{गुरु}} becomes {{गर्}}.'
+        hi: 'सूत्र 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, दो की तुलना में {{तरप्}} और {{ईयसुन्}} देता है; 5.3.55, {{अतिशायने
+          तमबिष्ठनौ}}, ‘सबसे अधिक’ के लिए {{तमप्}} और {{इष्ठन्}} देता है। 6.4.157 कुछ विशेषणों का आधार बदल देता है: {{गुरु}}
+          का {{गर्}}।'
+      items:
+      - id: i0
+        sa: द्विवचनविभज्योपपदे तरबीयसुनौ
+      - id: i1
+        sa: तरप्
+      - id: i2
+        sa: ईयसुन्
+      - id: i3
+        sa: अतिशायने तमबिष्ठनौ
+      - id: i4
+        sa: तमप्
+      - id: i5
+        sa: इष्ठन्
+      - id: i6
+        sa: प्रियस्थिरस्फिरोरुबहुलगुरुवृद्धतृप्रदीर्घवृन्दारकाणां प्रस्थस्फवर्बंहिगर्वर्षित्रब्द्राघिवृन्दाः
+      - id: i7
+        sa: गुरु
+      - id: i8
+        sa: गर्
 - id: sheet
   kind: revision
   title:
@@ -294,6 +1088,116 @@ cards:
       hi: का पुत्र
     tag: core
     taught_in: tad.son#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Son of
+        hi: का पुत्र
+      columns:
+      - en: Name
+        hi: नाम
+      - en: Descendant
+        hi: वंशज
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: रघु
+        - id: r0-c1
+          sa: राघवः
+          feature:
+            en: 'Stem: {{रघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{रघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: रघु
+        - id: r0-c2
+          label:
+            en: descendant of Raghu (Rāma)
+            hi: रघु का वंशज (राम)
+      - - id: r1-c0
+          sa: पाण्डु
+        - id: r1-c1
+          sa: पाण्डवः
+          feature:
+            en: 'Stem: {{पाण्डु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पाण्डु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पाण्डु
+        - id: r1-c2
+          label:
+            en: son of Pāṇḍu
+            hi: पाण्डु का पुत्र
+      - - id: r2-c0
+          sa: कुरु
+        - id: r2-c1
+          sa: कौरवः
+          feature:
+            en: 'Stem: {{कुरु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुरु
+        - id: r2-c2
+          label:
+            en: descendant of Kuru
+            hi: कुरु का वंशज
+      - - id: r3-c0
+          sa: मनु
+        - id: r3-c1
+          sa: मानवः
+          feature:
+            en: 'Stem: {{मनु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनु
+        - id: r3-c2
+          label:
+            en: descendant of Manu, human
+            hi: मनु का वंशज, मनुष्य
+      - - id: r4-c0
+          sa: वसुदेव
+        - id: r4-c1
+          sa: वासुदेवः
+          feature:
+            en: 'Stem: {{वसुदेव}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वसुदेव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वसुदेव
+        - id: r4-c2
+          label:
+            en: son of Vasudeva (Kṛṣṇa)
+            hi: वसुदेव का पुत्र (कृष्ण)
+      - - id: r5-c0
+          sa: दशरथ
+        - id: r5-c1
+          sa: दाशरथिः
+          feature:
+            en: 'Stem: {{दशरथ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दशरथ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दशरथ
+        - id: r5-c2
+          label:
+            en: son of Daśaratha (Rāma)
+            hi: दशरथ का पुत्र (राम)
+      - - id: r6-c0
+          sa: कुन्ती
+        - id: r6-c1
+          sa: कौन्तेयः
+          feature:
+            en: 'Stem: {{कुन्ती}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कुन्ती}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कुन्ती
+        - id: r6-c2
+          label:
+            en: son of Kuntī
+            hi: कुन्ती का पुत्र
+      - - id: r7-c0
+          sa: गङ्गा
+        - id: r7-c1
+          sa: गाङ्गेयः
+          feature:
+            en: 'Stem: {{गङ्गा}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गङ्गा}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गङ्गा
+        - id: r7-c2
+          label:
+            en: son of Gaṅgā (Bhīṣma)
+            hi: गङ्गा का पुत्र (भीष्म)
   - skill: tad.tva-ta
     formula: मनुष्य → मनुष्यत्वम्
     rule:
@@ -301,6 +1205,160 @@ cards:
       hi: भाव
     tag: core
     taught_in: tad.ness#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The state of being
+        hi: होने की अवस्था
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: ending -tvam
+        hi: प्रत्यय -त्वम्
+      - en: ending -tā
+        hi: प्रत्यय -ता
+      rows:
+      - - id: r0-c0
+          sa: मनुष्य
+        - id: r0-c1
+          sa: मनुष्यत्वम्
+          feature:
+            en: 'Stem: {{मनुष्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनुष्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनुष्य
+        - id: r0-c2
+          sa: मनुष्यता
+          feature:
+            en: 'Stem: {{मनुष्य}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मनुष्य}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मनुष्य
+      - - id: r1-c0
+          sa: देव
+        - id: r1-c1
+          sa: देवत्वम्
+          feature:
+            en: 'Stem: {{देव}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{देव}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: देव
+        - id: r1-c2
+          sa: देवता
+          feature:
+            en: 'Stem: {{देव}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{देव}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: देव
+      - - id: r2-c0
+          sa: पुरुष
+        - id: r2-c1
+          sa: पुरुषत्वम्
+          feature:
+            en: 'Stem: {{पुरुष}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुरुष}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुरुष
+        - id: r2-c2
+          sa: पुरुषता
+          feature:
+            en: 'Stem: {{पुरुष}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुरुष}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुरुष
+      - - id: r3-c0
+          sa: कवि
+        - id: r3-c1
+          sa: कवित्वम्
+          feature:
+            en: 'Stem: {{कवि}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कवि}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कवि
+        - id: r3-c2
+          sa: कविता
+          feature:
+            en: 'Stem: {{कवि}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{कवि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कवि
+      - - id: r4-c0
+          sa: गुरु
+        - id: r4-c1
+          sa: गुरुत्वम्
+          feature:
+            en: 'Stem: {{गुरु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुरु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुरु
+        - id: r4-c2
+          sa: गुरुता
+          feature:
+            en: 'Stem: {{गुरु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुरु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुरु
+      - - id: r5-c0
+          sa: लघु
+        - id: r5-c1
+          sa: लघुत्वम्
+          feature:
+            en: 'Stem: {{लघु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+        - id: r5-c2
+          sa: लघुता
+          feature:
+            en: 'Stem: {{लघु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+      - - id: r6-c0
+          sa: सुन्दर
+        - id: r6-c1
+          sa: सुन्दरत्वम्
+          feature:
+            en: 'Stem: {{सुन्दर}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सुन्दर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सुन्दर
+        - id: r6-c2
+          sa: सुन्दरता
+          feature:
+            en: 'Stem: {{सुन्दर}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सुन्दर}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सुन्दर
+      - - id: r7-c0
+          sa: वीर
+        - id: r7-c1
+          sa: वीरत्वम्
+          feature:
+            en: 'Stem: {{वीर}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वीर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वीर
+        - id: r7-c2
+          sa: वीरता
+          feature:
+            en: 'Stem: {{वीर}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वीर}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वीर
+      - - id: r8-c0
+          sa: सत्य
+        - id: r8-c1
+          sa: सत्यत्वम्
+          feature:
+            en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सत्य
+        - id: r8-c2
+          sa: सत्यता
+          feature:
+            en: 'Stem: {{सत्य}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{सत्य}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: सत्य
+      - - id: r9-c0
+          sa: महत्
+        - id: r9-c1
+          sa: महत्त्वम्
+          feature:
+            en: 'Stem: {{महत्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+        - id: r9-c2
+          sa: महत्ता
+          feature:
+            en: 'Stem: {{महत्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
   - skill: tad.matup
     formula: धन → धनवान्
     rule:
@@ -308,6 +1366,146 @@ cards:
       hi: वाला
     tag: core
     taught_in: tad.having#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Having
+        hi: वाला
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: Having (m)
+        hi: वाला (पुं.)
+      - en: Having (f)
+        hi: वाली (स्त्री.)
+      rows:
+      - - id: r0-c0
+          sa: धन
+        - id: r0-c1
+          sa: धनवान्
+          feature:
+            en: 'Stem: {{धन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धन
+        - id: r0-c2
+          sa: धनवती
+          feature:
+            en: 'Stem: {{धन}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धन}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धन
+      - - id: r1-c0
+          sa: गुण
+        - id: r1-c1
+          sa: गुणवान्
+          feature:
+            en: 'Stem: {{गुण}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुण
+        - id: r1-c2
+          sa: गुणवती
+          feature:
+            en: 'Stem: {{गुण}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{गुण}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गुण
+      - - id: r2-c0
+          sa: बल
+        - id: r2-c1
+          sa: बलवान्
+          feature:
+            en: 'Stem: {{बल}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बल}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बल
+        - id: r2-c2
+          sa: बलवती
+          feature:
+            en: 'Stem: {{बल}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बल}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बल
+      - - id: r3-c0
+          sa: पुत्र
+        - id: r3-c1
+          sa: पुत्रवान्
+          feature:
+            en: 'Stem: {{पुत्र}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुत्र
+        - id: r3-c2
+          sa: पुत्रवती
+          feature:
+            en: 'Stem: {{पुत्र}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पुत्र}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पुत्र
+      - - id: r4-c0
+          sa: बुद्धि
+        - id: r4-c1
+          sa: बुद्धिमान्
+          feature:
+            en: 'Stem: {{बुद्धि}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बुद्धि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बुद्धि
+        - id: r4-c2
+          sa: बुद्धिमती
+          feature:
+            en: 'Stem: {{बुद्धि}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बुद्धि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बुद्धि
+      - - id: r5-c0
+          sa: श्री
+        - id: r5-c1
+          sa: श्रीमान्
+          feature:
+            en: 'Stem: {{श्री}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्री}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्री
+        - id: r5-c2
+          sa: श्रीमती
+          feature:
+            en: 'Stem: {{श्री}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्री}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्री
+      - - id: r6-c0
+          sa: शक्ति
+        - id: r6-c1
+          sa: शक्तिमान्
+          feature:
+            en: 'Stem: {{शक्ति}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शक्ति}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शक्ति
+        - id: r6-c2
+          sa: शक्तिमती
+          feature:
+            en: 'Stem: {{शक्ति}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{शक्ति}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: शक्ति
+      - - id: r7-c0
+          sa: धी
+        - id: r7-c1
+          sa: धीमान्
+          feature:
+            en: 'Stem: {{धी}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धी}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धी
+        - id: r7-c2
+          sa: धीमती
+          feature:
+            en: 'Stem: {{धी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धी
+      - - id: r8-c0
+          sa: हनु
+        - id: r8-c1
+          sa: हनुमान्
+          feature:
+            en: 'Stem: {{हनु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हनु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हनु
+        - id: r8-c2
+          sa: हनुमती
+          feature:
+            en: 'Stem: {{हनु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हनु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हनु
   - skill: tad.ika
     formula: धर्म → धार्मिकः
     rule:
@@ -315,6 +1513,116 @@ cards:
       hi: सम्बन्धी
     tag: core
     taught_in: tad.having#tb2
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Related to
+        hi: सम्बन्धी
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: Related to
+        hi: सम्बन्धी
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: धर्म
+        - id: r0-c1
+          sa: धार्मिकः
+          feature:
+            en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: धर्म
+        - id: r0-c2
+          label:
+            en: righteous
+            hi: धार्मिक
+      - - id: r1-c0
+          sa: समाज
+        - id: r1-c1
+          sa: सामाजिकः
+          feature:
+            en: 'Stem: {{समाज}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{समाज}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: समाज
+        - id: r1-c2
+          label:
+            en: social
+            hi: सामाजिक
+      - - id: r2-c0
+          sa: लोक
+        - id: r2-c1
+          sa: लौकिकः
+          feature:
+            en: 'Stem: {{लोक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लोक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लोक
+        - id: r2-c2
+          label:
+            en: worldly
+            hi: लौकिक
+      - - id: r3-c0
+          sa: वेद
+        - id: r3-c1
+          sa: वैदिकः
+          feature:
+            en: 'Stem: {{वेद}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{वेद}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वेद
+        - id: r3-c2
+          label:
+            en: Vedic
+            hi: वैदिक
+      - - id: r4-c0
+          sa: नीति
+        - id: r4-c1
+          sa: नैतिकः
+          feature:
+            en: 'Stem: {{नीति}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नीति}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नीति
+        - id: r4-c2
+          label:
+            en: moral
+            hi: नैतिक
+      - - id: r5-c0
+          sa: दिन
+        - id: r5-c1
+          sa: दैनिकः
+          feature:
+            en: 'Stem: {{दिन}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दिन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दिन
+        - id: r5-c2
+          label:
+            en: daily
+            hi: दैनिक
+      - - id: r6-c0
+          sa: मास
+        - id: r6-c1
+          sa: मासिकः
+          feature:
+            en: 'Stem: {{मास}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मास
+        - id: r6-c2
+          label:
+            en: monthly
+            hi: मासिक
+      - - id: r7-c0
+          sa: इतिहास
+        - id: r7-c1
+          sa: ऐतिहासिकः
+          feature:
+            en: 'Stem: {{इतिहास}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{इतिहास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: इतिहास
+        - id: r7-c2
+          label:
+            en: historical
+            hi: ऐतिहासिक
   - skill: tad.comparison
     formula: लघु → लघुतरः, लघुतमः
     rule:
@@ -322,3 +1630,87 @@ cards:
       hi: अधिक, सबसे अधिक
     tag: core
     taught_in: tad.more#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: More and most
+        hi: अधिक और सबसे अधिक
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: More
+        hi: अधिक
+      - en: Most
+        hi: सबसे अधिक
+      rows:
+      - - id: r0-c0
+          sa: लघु
+        - id: r0-c1
+          sa: लघुतरः
+          feature:
+            en: 'Stem: {{लघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+        - id: r0-c2
+          sa: लघुतमः
+          feature:
+            en: 'Stem: {{लघु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लघु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: लघु
+      - - id: r1-c0
+          sa: उच्च
+        - id: r1-c1
+          sa: उच्चतरः
+          feature:
+            en: 'Stem: {{उच्च}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{उच्च}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: उच्च
+        - id: r1-c2
+          sa: उच्चतमः
+          feature:
+            en: 'Stem: {{उच्च}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{उच्च}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: उच्च
+      - - id: r2-c0
+          sa: दीर्घ
+        - id: r2-c1
+          sa: दीर्घतरः
+          feature:
+            en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घ
+        - id: r2-c2
+          sa: दीर्घतमः
+          feature:
+            en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दीर्घ
+      - - id: r3-c0
+          sa: महत्
+        - id: r3-c1
+          sa: महत्तरः
+          feature:
+            en: 'Stem: {{महत्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+        - id: r3-c2
+          sa: महत्तमः
+          feature:
+            en: 'Stem: {{महत्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{महत्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: महत्
+      - - id: r4-c0
+          sa: प्रिय
+        - id: r4-c1
+          sa: प्रियतरः
+          feature:
+            en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: प्रिय
+        - id: r4-c2
+          sa: प्रियतमः
+          feature:
+            en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: प्रिय

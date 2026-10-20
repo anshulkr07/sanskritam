@@ -28,6 +28,92 @@ cards:
     - 6.1.78
     tag: core
     taught_in: vc1.bhu#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Class 1 roots
+        hi: गण 1 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: भू
+        - id: r0-c1
+          label:
+            en: be
+            hi: होना
+        - id: r0-c2
+          sa: भवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          sa: नी
+        - id: r1-c1
+          label:
+            en: lead
+            hi: ले जाना
+        - id: r1-c2
+          sa: नयति
+          feature:
+            en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नी
+      - - id: r2-c0
+          sa: जि
+        - id: r2-c1
+          label:
+            en: win
+            hi: जीतना
+        - id: r2-c2
+          sa: जयति
+          feature:
+            en: 'Root: {{जि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: जि
+      - - id: r3-c0
+          sa: शुच्
+        - id: r3-c1
+          label:
+            en: grieve
+            hi: शोक करना
+        - id: r3-c2
+          sa: शोचति
+          feature:
+            en: 'Root: {{शुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शुच्
+      - - id: r4-c0
+          sa: पठ्
+        - id: r4-c1
+          label:
+            en: read
+            hi: पढ़ना
+        - id: r4-c2
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r5-c0
+          sa: रक्ष्
+        - id: r5-c1
+          label:
+            en: guard
+            hi: रक्षा करना
+        - id: r5-c2
+          sa: रक्षति
+          feature:
+            en: 'Root: {{रक्ष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रक्ष्
   - skill: verb.class-4
     rule:
       en: 'Class 4: root + {{-य-}}: {{नृत्यति}}, {{कुप्यति}}, {{नश्यति}}.'
@@ -36,6 +122,104 @@ cards:
     - 3.1.69
     tag: core
     taught_in: vc1.div#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Class 4 roots
+        hi: गण 4 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: नृत्
+        - id: r0-c1
+          label:
+            en: dance
+            hi: नाचना
+        - id: r0-c2
+          sa: नृत्यति
+          feature:
+            en: 'Root: {{नृत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नृत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नृत्
+      - - id: r1-c0
+          sa: दिव्
+        - id: r1-c1
+          label:
+            en: play, gamble
+            hi: खेलना
+        - id: r1-c2
+          sa: दीव्यति
+          feature:
+            en: 'Root: {{दिव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दिव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दिव्
+      - - id: r2-c0
+          sa: नश्
+        - id: r2-c1
+          label:
+            en: be lost
+            hi: नष्ट होना
+        - id: r2-c2
+          sa: नश्यति
+          feature:
+            en: 'Root: {{नश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नश्
+      - - id: r3-c0
+          sa: कुप्
+        - id: r3-c1
+          label:
+            en: be angry
+            hi: कुपित होना
+        - id: r3-c2
+          sa: कुप्यति
+          feature:
+            en: 'Root: {{कुप्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कुप्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कुप्
+      - - id: r4-c0
+          sa: तुष्
+        - id: r4-c1
+          label:
+            en: be pleased
+            hi: प्रसन्न होना
+        - id: r4-c2
+          sa: तुष्यति
+          feature:
+            en: 'Root: {{तुष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तुष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तुष्
+      - - id: r5-c0
+          sa: मुह्
+        - id: r5-c1
+          label:
+            en: be confused
+            hi: मोहित होना
+        - id: r5-c2
+          sa: मुह्यति
+          feature:
+            en: 'Root: {{मुह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{मुह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: मुह्
+      - - id: r6-c0
+          sa: शम्
+        - id: r6-c1
+          label:
+            en: grow calm
+            hi: शान्त होना
+        - id: r6-c2
+          sa: शाम्यति
+          feature:
+            en: 'Root: {{शम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शम्
   - skill: verb.class-6
     rule:
       en: 'Class 6: root + {{-अ-}}, no strengthening: {{तुदति}}, {{लिखति}}, {{विशति}}.'
@@ -45,6 +229,104 @@ cards:
     - 1.1.5
     tag: core
     taught_in: vc1.tud#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Class 6 roots
+        hi: गण 6 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: तुद्
+        - id: r0-c1
+          label:
+            en: strike
+            hi: मारना
+        - id: r0-c2
+          sa: तुदति
+          feature:
+            en: 'Root: {{तुद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तुद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तुद्
+      - - id: r1-c0
+          sa: लिख्
+        - id: r1-c1
+          label:
+            en: write
+            hi: लिखना
+        - id: r1-c2
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+      - - id: r2-c0
+          sa: विश्
+        - id: r2-c1
+          label:
+            en: enter
+            hi: प्रवेश करना
+        - id: r2-c2
+          sa: विशति
+          feature:
+            en: 'Root: {{विश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{विश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: विश्
+      - - id: r3-c0
+          sa: स्पृश्
+        - id: r3-c1
+          label:
+            en: touch
+            hi: छूना
+        - id: r3-c2
+          sa: स्पृशति
+          feature:
+            en: 'Root: {{स्पृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{स्पृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: स्पृश्
+      - - id: r4-c0
+          sa: सृज्
+        - id: r4-c1
+          label:
+            en: create
+            hi: रचना
+        - id: r4-c2
+          sa: सृजति
+          feature:
+            en: 'Root: {{सृज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{सृज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: सृज्
+      - - id: r5-c0
+          sa: मुच्
+        - id: r5-c1
+          label:
+            en: free
+            hi: मुक्त करना
+        - id: r5-c2
+          sa: मुञ्चति
+          feature:
+            en: 'Root: {{मुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{मुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: मुच्
+      - - id: r6-c0
+          sa: इष्
+        - id: r6-c1
+          label:
+            en: want
+            hi: चाहना
+        - id: r6-c2
+          sa: इच्छति
+          feature:
+            en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: इष्
   - skill: verb.class-10
     rule:
       en: 'Class 10: root + {{-अय-}}: {{चोरयति}}, {{कथयति}}, {{पूजयति}}.'
@@ -54,6 +336,104 @@ cards:
     - 7.3.86
     tag: core
     taught_in: vc1.cur#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Class 10 roots
+        hi: गण 10 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: चुर्
+        - id: r0-c1
+          label:
+            en: steal
+            hi: चुराना
+        - id: r0-c2
+          sa: चोरयति
+          feature:
+            en: 'Root: {{चुर्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चुर्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चुर्
+      - - id: r1-c0
+          sa: कथ्
+        - id: r1-c1
+          label:
+            en: tell
+            hi: कहना
+        - id: r1-c2
+          sa: कथयति
+          feature:
+            en: 'Root: {{कथ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कथ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कथ्
+      - - id: r2-c0
+          sa: चिन्त्
+        - id: r2-c1
+          label:
+            en: think
+            hi: सोचना
+        - id: r2-c2
+          sa: चिन्तयति
+          feature:
+            en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चिन्त्
+      - - id: r3-c0
+          sa: पूज्
+        - id: r3-c1
+          label:
+            en: honour
+            hi: पूजना
+        - id: r3-c2
+          sa: पूजयति
+          feature:
+            en: 'Root: {{पूज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पूज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पूज्
+      - - id: r4-c0
+          sa: रच्
+        - id: r4-c1
+          label:
+            en: compose
+            hi: रचना
+        - id: r4-c2
+          sa: रचयति
+          feature:
+            en: 'Root: {{रच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रच्
+      - - id: r5-c0
+          sa: गण्
+        - id: r5-c1
+          label:
+            en: count
+            hi: गिनना
+        - id: r5-c2
+          sa: गणयति
+          feature:
+            en: 'Root: {{गण्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गण्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गण्
+      - - id: r6-c0
+          sa: पाल्
+        - id: r6-c1
+          label:
+            en: protect
+            hi: पालना
+        - id: r6-c2
+          sa: पालयति
+          feature:
+            en: 'Root: {{पाल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पाल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पाल्
 - id: conditions
   kind: revision
   title:
@@ -68,18 +448,152 @@ cards:
       hi: प्रत्यय से पहले {{-य-}} हो तो गण 4; {{-अय-}} हो तो गण 10।
     tag: good
     taught_in: vc1.div#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Class 4, {{दिवादि}}, puts {{-य-}} between the root and the ending, and the root keeps its own vowel: {{नृत्}}
+          gives {{नृत्यति}} (dances), {{दिव्}} gives {{दीव्यति}} (plays), {{नश्}} gives {{नश्यति}} (is lost), {{कुप्}} gives
+          {{कुप्यति}} (is angry). {{शम्}} lengthens: {{शाम्यति}}.'
+        hi: 'गण 4, {{दिवादि}}, धातु और प्रत्यय के बीच {{-य-}} रखता है, और धातु अपना स्वर रखती है: {{नृत्}} से {{नृत्यति}}
+          (नाचता है), {{दिव्}} से {{दीव्यति}} (खेलता है), {{नश्}} से {{नश्यति}} (नष्ट होता है), {{कुप्}} से {{कुप्यति}} (क्रोध
+          करता है)। {{शम्}} दीर्घ होता है: {{शाम्यति}}।'
+      items:
+      - id: i0
+        sa: दिवादि
+      - id: i1
+        sa: -य-
+      - id: i2
+        sa: नृत्
+      - id: i3
+        sa: नृत्यति
+      - id: i4
+        sa: दिव्
+      - id: i5
+        sa: दीव्यति
+      - id: i6
+        sa: नश्
+      - id: i7
+        sa: नश्यति
+      - id: i8
+        sa: कुप्
+      - id: i9
+        sa: कुप्यति
+      - id: i10
+        sa: शम्
+      - id: i11
+        sa: शाम्यति
   - skill: verb.class-6
     rule:
       en: 'A plain {{-अ-}}: class 1 if the vowel is strengthened ({{जयति}}), class 6 if not ({{लिखति}}).'
       hi: 'सादा {{-अ-}}: बल वाला स्वर हो तो गण 1 ({{जयति}}), न हो तो गण 6 ({{लिखति}})।'
     tag: good
     taught_in: vc1.tud#tb2
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Class 1 or class 6?
+        hi: गण 1 या गण 6?
+      columns:
+      - en: Class
+        hi: गण
+      - en: Root
+        hi: धातु
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          label:
+            en: class 1
+            hi: गण 1
+        - id: r0-c1
+          sa: जि
+        - id: r0-c2
+          sa: जयति
+          feature:
+            en: 'Root: {{जि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: जि
+      - - id: r1-c0
+          label:
+            en: class 6
+            hi: गण 6
+        - id: r1-c1
+          sa: विश्
+        - id: r1-c2
+          sa: विशति
+          feature:
+            en: 'Root: {{विश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{विश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: विश्
+      - - id: r2-c0
+          label:
+            en: class 1
+            hi: गण 1
+        - id: r2-c1
+          sa: नी
+        - id: r2-c2
+          sa: नयति
+          feature:
+            en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नी
+      - - id: r3-c0
+          label:
+            en: class 6
+            hi: गण 6
+        - id: r3-c1
+          sa: लिख्
+        - id: r3-c2
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
   - skill: verb.class-1
     rule:
       en: The dictionary lists the class with the root, so look it up when unsure.
       hi: कोश धातु के साथ गण लिखता है, इसलिए अनिश्चित हों तो देख लीजिए।
     tag: good
     taught_in: vc1.bhu#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root
+          and strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+          Most verbs you know are class 1.'
+        hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और
+          धातु का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}।
+          आपकी जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+      items:
+      - id: i0
+        sa: भ्वादि
+      - id: i1
+        sa: -अ-
+      - id: i2
+        sa: भू
+      - id: i3
+        sa: भवति
+      - id: i4
+        sa: नी
+      - id: i5
+        sa: नयति
+      - id: i6
+        sa: जि
+      - id: i7
+        sa: जयति
+      - id: i8
+        sa: शुच्
+      - id: i9
+        sa: शोचति
 - id: exceptions
   kind: revision
   title:
@@ -133,6 +647,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -160,6 +675,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: verb.class-10
     rule:
       en: 'A few class 10 roots also have a plain form: {{चिन्त्}} gives both {{चिन्तति}} and {{चिन्तयति}}.'
@@ -203,6 +719,7 @@ cards:
         feature:
           en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: चिन्त्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -228,6 +745,7 @@ cards:
         feature:
           en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: चिन्त्
 - id: mistakes
   kind: revision
   title:
@@ -267,6 +785,40 @@ cards:
     - 3.1.25
     tag: core
     taught_in: vc1.bhu#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84,
+          {{सार्वधातुकार्धधातुकयोः}}, strengthens the root''s last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}},
+          makes {{ओ}} before a vowel into {{अव्}}: {{भवति}}.'
+        hi: 'सूत्र 3.1.68, {{कर्तरि शप्}}, कर्ता कहा जाने पर धातु के बाद {{शप्}} (जिसमें {{अ}} बचता है) जोड़ता है। 7.3.84,
+          {{सार्वधातुकार्धधातुकयोः}}, धातु के अन्तिम स्वर को बलवान् करता है: {{भू}} से {{भो}}। फिर 6.1.78, {{एचोऽयवायावः}},
+          स्वर से पहले {{ओ}} को {{अव्}} कर देता है: {{भवति}}।'
+      items:
+      - id: i0
+        sa: कर्तरि शप्
+      - id: i1
+        sa: शप्
+      - id: i2
+        sa: अ
+      - id: i3
+        sa: सार्वधातुकार्धधातुकयोः
+      - id: i4
+        sa: भू
+      - id: i5
+        sa: भो
+      - id: i6
+        sa: एचोऽयवायावः
+      - id: i7
+        sa: ओ
+      - id: i8
+        sa: अव्
+      - id: i9
+        sa: भवति
   - skill: verb.class-6
     rule:
       en: '{{क्ङिति च}} stops the strengthening before the marked sign of class 6.'
@@ -275,6 +827,46 @@ cards:
     - 1.1.5
     tag: core
     taught_in: vc1.tud#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.1.77, {{तुदादिभ्यः शः}}, adds {{श}} after {{तुद्}} and its class. This sign is {{ङित्}}, “marked”, and
+          1.1.5, {{क्ङिति च}}, forbids the strengthening before a marked sign: {{तुदति}}. And 7.3.77, {{इषुगमियमां छः}}, turns
+          {{इष्}}, {{गम्}} and {{यम्}} into {{इच्छ्}}, {{गच्छ्}}, {{यच्छ्}}.'
+        hi: 'सूत्र 3.1.77, {{तुदादिभ्यः शः}}, {{तुद्}} आदि धातुओं के बाद {{श}} जोड़ता है। यह चिह्न {{ङित्}} है, ‘चिह्नित’,
+          और 1.1.5, {{क्ङिति च}}, चिह्नित प्रत्यय से पहले बलवान् करना रोकता है: {{तुदति}}। और 7.3.77, {{इषुगमियमां छः}}, {{इष्}},
+          {{गम्}} और {{यम्}} को {{इच्छ्}}, {{गच्छ्}}, {{यच्छ्}} बना देता है।'
+      items:
+      - id: i0
+        sa: तुदादिभ्यः शः
+      - id: i1
+        sa: श
+      - id: i2
+        sa: तुद्
+      - id: i3
+        sa: ङित्
+      - id: i4
+        sa: क्ङिति च
+      - id: i5
+        sa: तुदति
+      - id: i6
+        sa: इषुगमियमां छः
+      - id: i7
+        sa: इष्
+      - id: i8
+        sa: गम्
+      - id: i9
+        sa: यम्
+      - id: i10
+        sa: इच्छ्
+      - id: i11
+        sa: गच्छ्
+      - id: i12
+        sa: यच्छ्
 - id: sheet
   kind: revision
   title:
@@ -290,6 +882,92 @@ cards:
       hi: गण 1
     tag: core
     taught_in: vc1.bhu#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Class 1 roots
+        hi: गण 1 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: भू
+        - id: r0-c1
+          label:
+            en: be
+            hi: होना
+        - id: r0-c2
+          sa: भवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          sa: नी
+        - id: r1-c1
+          label:
+            en: lead
+            hi: ले जाना
+        - id: r1-c2
+          sa: नयति
+          feature:
+            en: 'Root: {{नी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नी
+      - - id: r2-c0
+          sa: जि
+        - id: r2-c1
+          label:
+            en: win
+            hi: जीतना
+        - id: r2-c2
+          sa: जयति
+          feature:
+            en: 'Root: {{जि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: जि
+      - - id: r3-c0
+          sa: शुच्
+        - id: r3-c1
+          label:
+            en: grieve
+            hi: शोक करना
+        - id: r3-c2
+          sa: शोचति
+          feature:
+            en: 'Root: {{शुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शुच्
+      - - id: r4-c0
+          sa: पठ्
+        - id: r4-c1
+          label:
+            en: read
+            hi: पढ़ना
+        - id: r4-c2
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r5-c0
+          sa: रक्ष्
+        - id: r5-c1
+          label:
+            en: guard
+            hi: रक्षा करना
+        - id: r5-c2
+          sa: रक्षति
+          feature:
+            en: 'Root: {{रक्ष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रक्ष्
   - skill: verb.class-4
     formula: नृत् → नृत्यति
     rule:
@@ -297,6 +975,104 @@ cards:
       hi: गण 4
     tag: core
     taught_in: vc1.div#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Class 4 roots
+        hi: गण 4 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: नृत्
+        - id: r0-c1
+          label:
+            en: dance
+            hi: नाचना
+        - id: r0-c2
+          sa: नृत्यति
+          feature:
+            en: 'Root: {{नृत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नृत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नृत्
+      - - id: r1-c0
+          sa: दिव्
+        - id: r1-c1
+          label:
+            en: play, gamble
+            hi: खेलना
+        - id: r1-c2
+          sa: दीव्यति
+          feature:
+            en: 'Root: {{दिव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दिव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दिव्
+      - - id: r2-c0
+          sa: नश्
+        - id: r2-c1
+          label:
+            en: be lost
+            hi: नष्ट होना
+        - id: r2-c2
+          sa: नश्यति
+          feature:
+            en: 'Root: {{नश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{नश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: नश्
+      - - id: r3-c0
+          sa: कुप्
+        - id: r3-c1
+          label:
+            en: be angry
+            hi: कुपित होना
+        - id: r3-c2
+          sa: कुप्यति
+          feature:
+            en: 'Root: {{कुप्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कुप्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कुप्
+      - - id: r4-c0
+          sa: तुष्
+        - id: r4-c1
+          label:
+            en: be pleased
+            hi: प्रसन्न होना
+        - id: r4-c2
+          sa: तुष्यति
+          feature:
+            en: 'Root: {{तुष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तुष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तुष्
+      - - id: r5-c0
+          sa: मुह्
+        - id: r5-c1
+          label:
+            en: be confused
+            hi: मोहित होना
+        - id: r5-c2
+          sa: मुह्यति
+          feature:
+            en: 'Root: {{मुह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{मुह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: मुह्
+      - - id: r6-c0
+          sa: शम्
+        - id: r6-c1
+          label:
+            en: grow calm
+            hi: शान्त होना
+        - id: r6-c2
+          sa: शाम्यति
+          feature:
+            en: 'Root: {{शम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शम्
   - skill: verb.class-6
     formula: तुद् → तुदति
     rule:
@@ -304,6 +1080,104 @@ cards:
       hi: गण 6
     tag: core
     taught_in: vc1.tud#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Class 6 roots
+        hi: गण 6 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: तुद्
+        - id: r0-c1
+          label:
+            en: strike
+            hi: मारना
+        - id: r0-c2
+          sa: तुदति
+          feature:
+            en: 'Root: {{तुद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तुद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तुद्
+      - - id: r1-c0
+          sa: लिख्
+        - id: r1-c1
+          label:
+            en: write
+            hi: लिखना
+        - id: r1-c2
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+      - - id: r2-c0
+          sa: विश्
+        - id: r2-c1
+          label:
+            en: enter
+            hi: प्रवेश करना
+        - id: r2-c2
+          sa: विशति
+          feature:
+            en: 'Root: {{विश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{विश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: विश्
+      - - id: r3-c0
+          sa: स्पृश्
+        - id: r3-c1
+          label:
+            en: touch
+            hi: छूना
+        - id: r3-c2
+          sa: स्पृशति
+          feature:
+            en: 'Root: {{स्पृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{स्पृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: स्पृश्
+      - - id: r4-c0
+          sa: सृज्
+        - id: r4-c1
+          label:
+            en: create
+            hi: रचना
+        - id: r4-c2
+          sa: सृजति
+          feature:
+            en: 'Root: {{सृज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{सृज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: सृज्
+      - - id: r5-c0
+          sa: मुच्
+        - id: r5-c1
+          label:
+            en: free
+            hi: मुक्त करना
+        - id: r5-c2
+          sa: मुञ्चति
+          feature:
+            en: 'Root: {{मुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{मुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: मुच्
+      - - id: r6-c0
+          sa: इष्
+        - id: r6-c1
+          label:
+            en: want
+            hi: चाहना
+        - id: r6-c2
+          sa: इच्छति
+          feature:
+            en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: इष्
   - skill: verb.class-10
     formula: चुर् → चोरयति
     rule:
@@ -311,3 +1185,101 @@ cards:
       hi: गण 10
     tag: core
     taught_in: vc1.cur#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Class 10 roots
+        hi: गण 10 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: चुर्
+        - id: r0-c1
+          label:
+            en: steal
+            hi: चुराना
+        - id: r0-c2
+          sa: चोरयति
+          feature:
+            en: 'Root: {{चुर्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चुर्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चुर्
+      - - id: r1-c0
+          sa: कथ्
+        - id: r1-c1
+          label:
+            en: tell
+            hi: कहना
+        - id: r1-c2
+          sa: कथयति
+          feature:
+            en: 'Root: {{कथ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कथ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कथ्
+      - - id: r2-c0
+          sa: चिन्त्
+        - id: r2-c1
+          label:
+            en: think
+            hi: सोचना
+        - id: r2-c2
+          sa: चिन्तयति
+          feature:
+            en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चिन्त्
+      - - id: r3-c0
+          sa: पूज्
+        - id: r3-c1
+          label:
+            en: honour
+            hi: पूजना
+        - id: r3-c2
+          sa: पूजयति
+          feature:
+            en: 'Root: {{पूज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पूज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पूज्
+      - - id: r4-c0
+          sa: रच्
+        - id: r4-c1
+          label:
+            en: compose
+            hi: रचना
+        - id: r4-c2
+          sa: रचयति
+          feature:
+            en: 'Root: {{रच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रच्
+      - - id: r5-c0
+          sa: गण्
+        - id: r5-c1
+          label:
+            en: count
+            hi: गिनना
+        - id: r5-c2
+          sa: गणयति
+          feature:
+            en: 'Root: {{गण्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गण्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गण्
+      - - id: r6-c0
+          sa: पाल्
+        - id: r6-c1
+          label:
+            en: protect
+            hi: पालना
+        - id: r6-c2
+          sa: पालयति
+          feature:
+            en: 'Root: {{पाल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पाल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पाल्

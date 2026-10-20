@@ -29,12 +29,146 @@ cards:
     - 3.4.92
     tag: core
     taught_in: cmd.go#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the command mood'
+        hi: 'पठ्: आज्ञा'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठतु
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठन्तु
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठ
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठानि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठाव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठाम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lot-polite
     rule:
       en: 'A polite request is the third person with {{भवान्}}: {{भवान् आगच्छतु}}. A wish is the third person: {{भवतु}}, {{जयतु}}.'
       hi: 'विनम्र प्रार्थना {{भवान्}} के साथ प्रथम पुरुष है: {{भवान् आगच्छतु}}। कामना प्रथम पुरुष है: {{भवतु}}, {{जयतु}}।'
     tag: core
     taught_in: cmd.wish#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Wishes in the third person
+        hi: प्रथम पुरुष में शुभकामनाएँ
+      columns:
+      - en: Wish
+        hi: शुभकामना
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: भवतु
+          feature:
+            en: 'Root: {{भू}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c1
+          label:
+            en: may it be
+            hi: हो
+      - - id: r1-c0
+          sa: जयतु
+          feature:
+            en: 'Root: {{जि}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जि}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: जि
+        - id: r1-c1
+          label:
+            en: victory to him
+            hi: उसकी जय हो
+      - - id: r2-c0
+          sa: जीवतु
+          feature:
+            en: 'Root: {{जीव्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जीव्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: जीव्
+        - id: r2-c1
+          label:
+            en: long life to him
+            hi: वह जिए
+      - - id: r3-c0
+          sa: अस्तु
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r3-c1
+          label:
+            en: so be it
+            hi: ऐसा ही हो
 - id: conditions
   kind: revision
   title:
@@ -49,18 +183,290 @@ cards:
       hi: 'एक को: गण-चिह्न सहित केवल धातु, {{गच्छ}}। कई को: {{-त}}, {{गच्छत}}।'
     tag: good
     taught_in: cmd.go#t2
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: सः पठतु।
+        meaning:
+          en: Let him read.
+          hi: वह पढ़े।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठतु
+          gloss:
+            en: let him read
+            hi: वह पढ़े
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lot
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+      - id: i2
+        sa: बालकाः पठत।
+        meaning:
+          en: Boys, read!
+          hi: बालको, पढ़ो!
+        words:
+        - sa: बालकाः
+          gloss:
+            en: boys!
+            hi: बालको!
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Sambodhana
+            vacana: Bahu
+        - sa: पठत
+          gloss:
+            en: read!
+            hi: पढ़ो!
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lot
+            purusha: Madhyama
+            vacana: Bahu
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
   - skill: verb.lot
     rule:
       en: '“Let me / let us” is the first person: {{पठानि}}, {{गच्छाम}}.'
       hi: '‘मैं करूँ / हम करें’ उत्तम पुरुष है: {{पठानि}}, {{गच्छाम}}।'
     tag: good
     taught_in: cmd.go#t2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: सः पठतु।
+        meaning:
+          en: Let him read.
+          hi: वह पढ़े।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठतु
+          gloss:
+            en: let him read
+            hi: वह पढ़े
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lot
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+      - id: i2
+        sa: बालकाः पठत।
+        meaning:
+          en: Boys, read!
+          hi: बालको, पढ़ो!
+        words:
+        - sa: बालकाः
+          gloss:
+            en: boys!
+            hi: बालको!
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Sambodhana
+            vacana: Bahu
+        - sa: पठत
+          gloss:
+            en: read!
+            hi: पढ़ो!
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lot
+            purusha: Madhyama
+            vacana: Bahu
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
   - skill: verb.lot-polite
     rule:
       en: To an honoured guest, ask in the third person instead of ordering in the second.
       hi: आदरणीय अतिथि को मध्यम पुरुष में आज्ञा देने के बजाय प्रथम पुरुष में अनुरोध कीजिए।
     tag: good
     taught_in: cmd.wish#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: भवान् आगच्छतु।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Please come.
+          hi: कृपया आइए।
+        words:
+        - sa: भवान्
+          gloss:
+            en: you (polite)
+            hi: आप
+        - sa: आगच्छतु
+          gloss:
+            en: please come
+            hi: पधारिए
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lot
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
+      - id: i1
+        sa: भवान्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: you (polite)
+          hi: आप
+      - id: i2
+        sa: आगच्छतु
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: please come
+          hi: पधारिए
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The third-person {{लोट्}} is also the polite request and the blessing: {{भवतु}} (let it be), {{जयतु}} (victory
+            to him), {{जीवतु}} (long life), {{अस्तु}} (so be it). To be polite to “you”, say {{भवान्}} (your honour, a word
+            for “you”) and put the verb in the third person: {{भवान् आगच्छतु}}, “please come”.'
+          hi: 'प्रथम पुरुष का {{लोट्}} विनम्र प्रार्थना और आशीर्वाद भी है: {{भवतु}} (हो), {{जयतु}} (उसकी जय हो), {{जीवतु}}
+            (दीर्घायु हो), {{अस्तु}} (ऐसा ही हो)। ‘आप’ के लिए विनम्र होने को {{भवान्}} (आप, ‘तुम’ का आदरसूचक शब्द) कहिए और
+            क्रिया प्रथम पुरुष में रखिए: {{भवान् आगच्छतु}}, ‘कृपया आइए’।'
+      - id: i5
+        sa: भवान् आगच्छतु।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Please come.
+          hi: कृपया आइए।
+        words:
+        - sa: भवान्
+          gloss:
+            en: you (polite)
+            hi: आप
+        - sa: आगच्छतु
+          gloss:
+            en: please come
+            hi: पधारिए
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lot
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
 - id: exceptions
   kind: revision
   title:
@@ -111,6 +517,7 @@ cards:
         feature:
           en: 'Root: {{अस्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
           hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+        compare_from: अस्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -137,6 +544,7 @@ cards:
         feature:
           en: 'Root: {{अस्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
           hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+        compare_from: अस्
   - skill: verb.lot
     rule:
       en: 'In the dual and plural the endings are plain: {{कुरुतम्}}, {{कुरुत}}; only the singular is odd.'
@@ -178,6 +586,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+        compare_from: कृ
       - id: rule
         label:
           en: Connect the form and the rule
@@ -202,6 +611,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+        compare_from: कृ
 - id: mistakes
   kind: revision
   title:
@@ -243,6 +653,47 @@ cards:
     - 3.4.92
     tag: core
     taught_in: cmd.go#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into
+          {{-तु}}: {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In
+          the first person 3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.'
+        hi: 'सूत्र 3.3.162, {{लोट् च}}, कहता है कि {{लोट्}} के प्रत्यय आज्ञा और प्रार्थना में आते हैं। प्रथम पुरुष में 3.4.86,
+          {{एरुः}}, {{-ति}} प्रत्यय को {{-तु}} कर देता है: {{पठति}} से {{पठतु}}। मध्यम पुरुष में {{हि}} आता है, और 6.4.105,
+          {{अतो हेः}}, ह्रस्व {{अ}} के बाद उसे हटा देता है: {{पठ}}। उत्तम पुरुष में 3.4.92, {{आडुत्तमस्य पिच्च}}, {{आ}} जोड़ता
+          है: {{पठानि}}।'
+      items:
+      - id: i0
+        sa: लोट् च
+      - id: i1
+        sa: लोट्
+      - id: i2
+        sa: एरुः
+      - id: i3
+        sa: -ति
+      - id: i4
+        sa: -तु
+      - id: i5
+        sa: पठतु
+      - id: i6
+        sa: हि
+      - id: i7
+        sa: अतो हेः
+      - id: i8
+        sa: अ
+      - id: i9
+        sa: पठ
+      - id: i10
+        sa: आडुत्तमस्य पिच्च
+      - id: i11
+        sa: आ
+      - id: i12
+        sa: पठानि
 - id: sheet
   kind: revision
   title:
@@ -258,6 +709,88 @@ cards:
       hi: आज्ञा
     tag: core
     taught_in: cmd.go#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the command mood'
+        hi: 'पठ्: आज्ञा'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठतु
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठन्तु
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठ
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठानि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठाव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठाम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lot-polite
     formula: भवतु · भवन्तु · भवान् आगच्छतु
     rule:
@@ -265,3 +798,55 @@ cards:
       hi: कामना और प्रार्थना
     tag: core
     taught_in: cmd.wish#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Wishes in the third person
+        hi: प्रथम पुरुष में शुभकामनाएँ
+      columns:
+      - en: Wish
+        hi: शुभकामना
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: भवतु
+          feature:
+            en: 'Root: {{भू}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c1
+          label:
+            en: may it be
+            hi: हो
+      - - id: r1-c0
+          sa: जयतु
+          feature:
+            en: 'Root: {{जि}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जि}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: जि
+        - id: r1-c1
+          label:
+            en: victory to him
+            hi: उसकी जय हो
+      - - id: r2-c0
+          sa: जीवतु
+          feature:
+            en: 'Root: {{जीव्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{जीव्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: जीव्
+        - id: r2-c1
+          label:
+            en: long life to him
+            hi: वह जिए
+      - - id: r3-c0
+          sa: अस्तु
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r3-c1
+          label:
+            en: so be it
+            hi: ऐसा ही हो

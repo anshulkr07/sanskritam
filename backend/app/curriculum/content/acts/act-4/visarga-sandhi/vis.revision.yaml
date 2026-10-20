@@ -27,6 +27,76 @@ cards:
     - 6.1.114
     tag: core
     taught_in: vis.o#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: -अः becomes -ओ
+        hi: -अः बनता है -ओ
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: रामः
+        - id: r0-c1
+          sa: अस्ति
+        - id: r0-c2
+          sa: रामोऽस्ति
+          compare_from: रामः अस्ति
+      - - id: r1-c0
+          sa: सः
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: सोऽपि
+          compare_from: सः अपि
+      - - id: r2-c0
+          sa: एषः
+        - id: r2-c1
+          sa: अपि
+        - id: r2-c2
+          sa: एषोऽपि
+          compare_from: एषः अपि
+      - - id: r3-c0
+          sa: रामः
+        - id: r3-c1
+          sa: गच्छति
+        - id: r3-c2
+          sa: रामो गच्छति
+          compare_from: रामः गच्छति
+      - - id: r4-c0
+          sa: देवः
+        - id: r4-c1
+          sa: भवति
+        - id: r4-c2
+          sa: देवो भवति
+          compare_from: देवः भवति
+      - - id: r5-c0
+          sa: बालकः
+        - id: r5-c1
+          sa: वदति
+        - id: r5-c2
+          sa: बालको वदति
+          compare_from: बालकः वदति
+      - - id: r6-c0
+          sa: तपः
+        - id: r6-c1
+          sa: वनम्
+        - id: r6-c2
+          sa: तपोवनम्
+          compare_from: तपः वनम्
+      - - id: r7-c0
+          sa: मनः
+        - id: r7-c1
+          sa: हरम्
+        - id: r7-c2
+          sa: मनोहरम्
+          compare_from: मनः हरम्
   - skill: sandhi.visarga-s
     rule:
       en: 'ः + च = श्च; ः + त = स्त; ः + ट = ष्ट; ः + क, प = ः: {{रामश्च}}, {{रामस्तत्र}}, {{रामः करोति}}.'
@@ -37,6 +107,80 @@ cards:
     - 8.4.41
     tag: core
     taught_in: vis.s#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The hiss
+        hi: फुफकार
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: रामः
+        - id: r0-c1
+          sa: च
+        - id: r0-c2
+          sa: रामश्च
+          compare_from: रामः च
+      - - id: r1-c0
+          sa: कविः
+        - id: r1-c1
+          sa: च
+        - id: r1-c2
+          sa: कविश्च
+          compare_from: कविः च
+      - - id: r2-c0
+          sa: पुनः
+        - id: r2-c1
+          sa: च
+        - id: r2-c2
+          sa: पुनश्च
+          compare_from: पुनः च
+      - - id: r3-c0
+          sa: रामः
+        - id: r3-c1
+          sa: तत्र
+        - id: r3-c2
+          sa: रामस्तत्र
+          compare_from: रामः तत्र
+      - - id: r4-c0
+          sa: कविः
+        - id: r4-c1
+          sa: तत्र
+        - id: r4-c2
+          sa: कविस्तत्र
+          compare_from: कविः तत्र
+      - - id: r5-c0
+          sa: रामः
+        - id: r5-c1
+          sa: टीकते
+        - id: r5-c2
+          sa: रामष्टीकते
+          compare_from: रामः टीकते
+      - - id: r6-c0
+          sa: रामः
+        - id: r6-c1
+          sa: करोति
+        - id: r6-c2
+          sa: रामः करोति
+      - - id: r7-c0
+          sa: बालकः
+        - id: r7-c1
+          sa: पठति
+        - id: r7-c2
+          sa: बालकः पठति
+      - - id: r8-c0
+          sa: रामः
+        - id: r8-c1
+          sa: शेते
+        - id: r8-c2
+          sa: रामः शेते
   - skill: sandhi.visarga-r
     rule:
       en: '-इः, -उः + vowel/soft = र्: {{कविरस्ति}}; -अः, -आः + other vowel: breath vanishes: {{राम इह}}; {{सः}} + consonant:
@@ -49,6 +193,97 @@ cards:
     - 6.1.132
     tag: core
     taught_in: vis.r#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: र् and the vanishing breath
+        hi: र् और लुप्त श्वास
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: कविः
+        - id: r0-c1
+          sa: अस्ति
+        - id: r0-c2
+          sa: कविरस्ति
+          compare_from: कविः अस्ति
+      - - id: r1-c0
+          sa: गुरुः
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: गुरुरपि
+          compare_from: गुरुः अपि
+      - - id: r2-c0
+          sa: मुनिः
+        - id: r2-c1
+          sa: गच्छति
+        - id: r2-c2
+          sa: मुनिर्गच्छति
+          compare_from: मुनिः गच्छति
+      - - id: r3-c0
+          sa: कविः
+        - id: r3-c1
+          sa: वदति
+        - id: r3-c2
+          sa: कविर्वदति
+          compare_from: कविः वदति
+      - - id: r4-c0
+          sa: गुरुः
+        - id: r4-c1
+          sa: ददाति
+        - id: r4-c2
+          sa: गुरुर्ददाति
+          compare_from: गुरुः ददाति
+      - - id: r5-c0
+          sa: रामः
+        - id: r5-c1
+          sa: इह
+        - id: r5-c2
+          sa: राम इह
+          compare_from: रामः इह
+      - - id: r6-c0
+          sa: रामाः
+        - id: r6-c1
+          sa: इह
+        - id: r6-c2
+          sa: रामा इह
+          compare_from: रामाः इह
+      - - id: r7-c0
+          sa: अतः
+        - id: r7-c1
+          sa: एव
+        - id: r7-c2
+          sa: अत एव
+          compare_from: अतः एव
+      - - id: r8-c0
+          sa: सः
+        - id: r8-c1
+          sa: गच्छति
+        - id: r8-c2
+          sa: स गच्छति
+          compare_from: सः गच्छति
+      - - id: r9-c0
+          sa: सः
+        - id: r9-c1
+          sa: बालकः
+        - id: r9-c2
+          sa: स बालकः
+          compare_from: सः बालकः
+      - - id: r10-c0
+          sa: एषः
+        - id: r10-c1
+          sa: दत्तः
+        - id: r10-c2
+          sa: एष दत्तः
+          compare_from: एषः दत्तः
 - id: conditions
   kind: revision
   title:
@@ -64,12 +299,100 @@ cards:
       hi: 'श्वास से पहले का स्वर देखिए: {{अः}} से {{ओ}}; {{इः}}/{{उः}} से {{र्}}; {{आः}} स्वर से पहले उसे गिरा देता है।'
     tag: good
     taught_in: vis.o#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel,
+          or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः
+          + अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+        hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल
+          व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से
+          {{रामोऽस्ति}}; {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+      items:
+      - id: i0
+        sa: ः
+      - id: i1
+        sa: विसर्गः
+      - id: i2
+        sa: रामः
+      - id: i3
+        sa: देवः
+      - id: i4
+        sa: सः
+      - id: i5
+        sa: -अः
+      - id: i6
+        sa: -ओ
+      - id: i7
+        sa: अ
+      - id: i8
+        sa: ऽ
+      - id: i9
+        sa: रामः + अस्ति
+      - id: i10
+        sa: रामोऽस्ति
+      - id: i11
+        sa: रामः + गच्छति
+      - id: i12
+        sa: रामो गच्छति
   - skill: sandhi.visarga-s
     rule:
       en: 'Look at the sound after: hard {{च}}, {{त}}, {{ट}} give a hiss; {{क}}, {{प}} keep the breath.'
       hi: 'बाद की ध्वनि देखिए: कठोर {{च}}, {{त}}, {{ट}} फुफकार देते हैं; {{क}}, {{प}} श्वास रखते हैं।'
     tag: good
     taught_in: vis.s#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}}
+          it is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+          + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+        hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+          {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+          से पहले विसर्ग रहता है।'
+      items:
+      - id: i0
+        sa: च
+      - id: i1
+        sa: छ
+      - id: i2
+        sa: श्
+      - id: i3
+        sa: त
+      - id: i4
+        sa: थ
+      - id: i5
+        sa: स्
+      - id: i6
+        sa: ट
+      - id: i7
+        sa: ठ
+      - id: i8
+        sa: ष्
+      - id: i9
+        sa: रामः + च
+      - id: i10
+        sa: रामश्च
+      - id: i11
+        sa: रामः + तत्र
+      - id: i12
+        sa: रामस्तत्र
+      - id: i13
+        sa: क
+      - id: i14
+        sa: ख
+      - id: i15
+        sa: प
+      - id: i16
+        sa: फ
 - id: exceptions
   kind: revision
   title:
@@ -284,6 +607,38 @@ cards:
     - 6.1.114
     tag: core
     taught_in: vis.o#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 8.2.66, {{ससजुषो रुः}}, turns a final {{स्}} into {{रु}}, and 8.3.15, {{खरवसानयोर्विसर्जनीयः}}, makes the
+          {{र्}} a visarga at a pause. But 6.1.113, {{अतो रोरप्लुतादप्लुते}}, makes {{रु}} after {{अ}} into {{उ}} before a
+          short {{अ}}, and 6.1.114, {{हशि च}}, does the same before a soft consonant.
+        hi: सूत्र 8.2.66, {{ससजुषो रुः}}, पद के अन्तिम {{स्}} को {{रु}} बनाता है, और 8.3.15, {{खरवसानयोर्विसर्जनीयः}}, विराम
+          पर {{र्}} को विसर्ग बनाता है। पर 6.1.113, {{अतो रोरप्लुतादप्लुते}}, {{अ}} के बाद ह्रस्व {{अ}} से पहले {{रु}} को
+          {{उ}} बनाता है, और 6.1.114, {{हशि च}}, कोमल व्यंजन से पहले भी यही करता है।
+      items:
+      - id: i0
+        sa: ससजुषो रुः
+      - id: i1
+        sa: स्
+      - id: i2
+        sa: रु
+      - id: i3
+        sa: खरवसानयोर्विसर्जनीयः
+      - id: i4
+        sa: र्
+      - id: i5
+        sa: अतो रोरप्लुतादप्लुते
+      - id: i6
+        sa: अ
+      - id: i7
+        sa: उ
+      - id: i8
+        sa: हशि च
   - skill: sandhi.visarga-s
     rule:
       en: '{{विसर्जनीयस्य सः}}, {{स्तोः श्चुना श्चुः}}, {{ष्टुना ष्टुः}}: the hiss takes the place of the next sound.'
@@ -294,6 +649,38 @@ cards:
     - 8.4.41
     tag: core
     taught_in: vis.s#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना
+          श्चुः}}, makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35,
+          {{शर्परे विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
+        hi: सूत्र 8.3.34, {{विसर्जनीयस्य सः}}, कठोर व्यंजन से पहले विसर्ग को {{स्}} बनाता है; 8.4.40, {{स्तोः श्चुना श्चुः}},
+          उस {{स्}} को {{च}} से पहले {{श्}} बनाता है; और 8.4.41, {{ष्टुना ष्टुः}}, {{ट}} से पहले {{ष्}}। 8.3.35, {{शर्परे
+          विसर्जनीयः}}, उसे तब रखता है जब कठोर व्यंजन के बाद फुफकार हो।
+      items:
+      - id: i0
+        sa: विसर्जनीयस्य सः
+      - id: i1
+        sa: स्
+      - id: i2
+        sa: स्तोः श्चुना श्चुः
+      - id: i3
+        sa: श्
+      - id: i4
+        sa: च
+      - id: i5
+        sa: ष्टुना ष्टुः
+      - id: i6
+        sa: ष्
+      - id: i7
+        sa: ट
+      - id: i8
+        sa: शर्परे विसर्जनीयः
 - id: sheet
   kind: revision
   title:
@@ -309,6 +696,76 @@ cards:
       hi: -अः से बनता है ओ
     tag: core
     taught_in: vis.o#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: -अः becomes -ओ
+        hi: -अः बनता है -ओ
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: रामः
+        - id: r0-c1
+          sa: अस्ति
+        - id: r0-c2
+          sa: रामोऽस्ति
+          compare_from: रामः अस्ति
+      - - id: r1-c0
+          sa: सः
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: सोऽपि
+          compare_from: सः अपि
+      - - id: r2-c0
+          sa: एषः
+        - id: r2-c1
+          sa: अपि
+        - id: r2-c2
+          sa: एषोऽपि
+          compare_from: एषः अपि
+      - - id: r3-c0
+          sa: रामः
+        - id: r3-c1
+          sa: गच्छति
+        - id: r3-c2
+          sa: रामो गच्छति
+          compare_from: रामः गच्छति
+      - - id: r4-c0
+          sa: देवः
+        - id: r4-c1
+          sa: भवति
+        - id: r4-c2
+          sa: देवो भवति
+          compare_from: देवः भवति
+      - - id: r5-c0
+          sa: बालकः
+        - id: r5-c1
+          sa: वदति
+        - id: r5-c2
+          sa: बालको वदति
+          compare_from: बालकः वदति
+      - - id: r6-c0
+          sa: तपः
+        - id: r6-c1
+          sa: वनम्
+        - id: r6-c2
+          sa: तपोवनम्
+          compare_from: तपः वनम्
+      - - id: r7-c0
+          sa: मनः
+        - id: r7-c1
+          sa: हरम्
+        - id: r7-c2
+          sa: मनोहरम्
+          compare_from: मनः हरम्
   - skill: sandhi.visarga-s
     formula: रामः + च = रामश्च
     rule:
@@ -316,6 +773,80 @@ cards:
       hi: श्वास बनता है फुफकार
     tag: core
     taught_in: vis.s#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The hiss
+        hi: फुफकार
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: रामः
+        - id: r0-c1
+          sa: च
+        - id: r0-c2
+          sa: रामश्च
+          compare_from: रामः च
+      - - id: r1-c0
+          sa: कविः
+        - id: r1-c1
+          sa: च
+        - id: r1-c2
+          sa: कविश्च
+          compare_from: कविः च
+      - - id: r2-c0
+          sa: पुनः
+        - id: r2-c1
+          sa: च
+        - id: r2-c2
+          sa: पुनश्च
+          compare_from: पुनः च
+      - - id: r3-c0
+          sa: रामः
+        - id: r3-c1
+          sa: तत्र
+        - id: r3-c2
+          sa: रामस्तत्र
+          compare_from: रामः तत्र
+      - - id: r4-c0
+          sa: कविः
+        - id: r4-c1
+          sa: तत्र
+        - id: r4-c2
+          sa: कविस्तत्र
+          compare_from: कविः तत्र
+      - - id: r5-c0
+          sa: रामः
+        - id: r5-c1
+          sa: टीकते
+        - id: r5-c2
+          sa: रामष्टीकते
+          compare_from: रामः टीकते
+      - - id: r6-c0
+          sa: रामः
+        - id: r6-c1
+          sa: करोति
+        - id: r6-c2
+          sa: रामः करोति
+      - - id: r7-c0
+          sa: बालकः
+        - id: r7-c1
+          sa: पठति
+        - id: r7-c2
+          sa: बालकः पठति
+      - - id: r8-c0
+          sa: रामः
+        - id: r8-c1
+          sa: शेते
+        - id: r8-c2
+          sa: रामः शेते
   - skill: sandhi.visarga-r
     formula: कविः + अस्ति = कविरस्ति
     rule:
@@ -323,3 +854,94 @@ cards:
       hi: श्वास बनता है र् या लुप्त हो जाता है
     tag: core
     taught_in: vis.r#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: र् and the vanishing breath
+        hi: र् और लुप्त श्वास
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: कविः
+        - id: r0-c1
+          sa: अस्ति
+        - id: r0-c2
+          sa: कविरस्ति
+          compare_from: कविः अस्ति
+      - - id: r1-c0
+          sa: गुरुः
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: गुरुरपि
+          compare_from: गुरुः अपि
+      - - id: r2-c0
+          sa: मुनिः
+        - id: r2-c1
+          sa: गच्छति
+        - id: r2-c2
+          sa: मुनिर्गच्छति
+          compare_from: मुनिः गच्छति
+      - - id: r3-c0
+          sa: कविः
+        - id: r3-c1
+          sa: वदति
+        - id: r3-c2
+          sa: कविर्वदति
+          compare_from: कविः वदति
+      - - id: r4-c0
+          sa: गुरुः
+        - id: r4-c1
+          sa: ददाति
+        - id: r4-c2
+          sa: गुरुर्ददाति
+          compare_from: गुरुः ददाति
+      - - id: r5-c0
+          sa: रामः
+        - id: r5-c1
+          sa: इह
+        - id: r5-c2
+          sa: राम इह
+          compare_from: रामः इह
+      - - id: r6-c0
+          sa: रामाः
+        - id: r6-c1
+          sa: इह
+        - id: r6-c2
+          sa: रामा इह
+          compare_from: रामाः इह
+      - - id: r7-c0
+          sa: अतः
+        - id: r7-c1
+          sa: एव
+        - id: r7-c2
+          sa: अत एव
+          compare_from: अतः एव
+      - - id: r8-c0
+          sa: सः
+        - id: r8-c1
+          sa: गच्छति
+        - id: r8-c2
+          sa: स गच्छति
+          compare_from: सः गच्छति
+      - - id: r9-c0
+          sa: सः
+        - id: r9-c1
+          sa: बालकः
+        - id: r9-c2
+          sa: स बालकः
+          compare_from: सः बालकः
+      - - id: r10-c0
+          sa: एषः
+        - id: r10-c1
+          sa: दत्तः
+        - id: r10-c2
+          sa: एष दत्तः
+          compare_from: एषः दत्तः

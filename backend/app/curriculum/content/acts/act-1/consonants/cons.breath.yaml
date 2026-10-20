@@ -357,6 +357,42 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i3
+      sa: फलम्
+      meaning:
+        en: a fruit (breathy {{फ}})
+        hi: फल (महाप्राण {{फ}})
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt:
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: []
+      compare_from: फल
   - id: v-source-example-0
     kind: worked
     title:
@@ -380,6 +416,7 @@ cards:
       feature:
         en: 'Stem: {{कर}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कर
     - id: rule
       label:
         en: Connect the form and the rule
@@ -405,6 +442,7 @@ cards:
       feature:
         en: 'Stem: {{कर}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कर
   - id: v-source-example-1
     kind: worked
     title:
@@ -428,6 +466,7 @@ cards:
       feature:
         en: 'Stem: {{खर}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{खर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: खर
     - id: rule
       label:
         en: Connect the form and the rule
@@ -453,6 +492,7 @@ cards:
       feature:
         en: 'Stem: {{खर}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{खर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: खर
   - id: v-source-example-2
     kind: worked
     title:
@@ -476,6 +516,7 @@ cards:
       feature:
         en: 'Stem: {{पल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -501,6 +542,7 @@ cards:
       feature:
         en: 'Stem: {{पल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पल
   - id: v-source-example-3
     kind: worked
     title:
@@ -524,6 +566,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -549,6 +592,48 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
+- id: e-sound
+  kind: explore
+  title:
+    en: Separate voice and breath
+    hi: घोष और प्राण को अलग पहचानें
+  skills:
+  - script.cons.voice
+  widget: mouth_map
+  roman: show
+  prompt:
+    en: Compare क ख ग घ ङ. Keep the place fixed and notice throat vibration, the puff of air, and nasal airflow. Replay each
+      recorded sound. The diagram is a schematic cue.
+    hi: क ख ग घ ङ की तुलना करें। स्थान वही रखें और गले का कम्पन, हवा का झोंका तथा नाक से आती हवा पहचानें। हर ध्वनि फिर सुनें।
+      चित्र सांकेतिक है।
+  params:
+    letters:
+    - क
+    - ख
+    - ग
+    - घ
+    - ङ
+    - च
+    - छ
+    - ज
+    - झ
+    - ञ
+    - ट
+    - ठ
+    - ड
+    - ढ
+    - ण
+    - त
+    - थ
+    - द
+    - ध
+    - न
+    - प
+    - फ
+    - ब
+    - भ
+    - म
 - id: e1
   kind: explore
   depth: core

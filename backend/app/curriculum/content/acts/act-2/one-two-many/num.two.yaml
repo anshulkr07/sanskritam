@@ -114,6 +114,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -140,6 +141,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
   - id: v-source-example-1
     kind: worked
     title:
@@ -163,6 +165,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: बक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -189,6 +192,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: बक
 - id: tb1
   kind: table
   title:
@@ -220,6 +224,25 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: बालकौ
       check:
         type: subanta
@@ -228,6 +251,26 @@ cards:
         vibhakti: Prathama
         vacana: Dvi
       highlight: true
+      image:
+        id: teaching-reader-two
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Two boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते दो बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: बालक
     - sa: बालकाः
       check:
         type: subanta
@@ -235,6 +278,27 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      image:
+        id: teaching-reader-many
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Three boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
   - - text:
         en: girl
         hi: बालिका
@@ -245,6 +309,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: बालिके
       check:
         type: subanta
@@ -253,6 +320,10 @@ cards:
         vibhakti: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: बालिका
     - sa: बालिकाः
       check:
         type: subanta
@@ -260,6 +331,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालिका
   - - text:
         en: fruit
         hi: फल
@@ -270,6 +345,22 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt:
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फले
       check:
         type: subanta
@@ -278,6 +369,22 @@ cards:
         vibhakti: Prathama
         vacana: Dvi
       highlight: true
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt:
+          en: Two separate whole mangoes
+          hi: दो अलग-अलग पूरे आम
+        ratio: '4:3'
+        text_in_image: []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलानि
       check:
         type: subanta
@@ -285,6 +392,22 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt:
+          en: Three separate whole mangoes
+          hi: तीन अलग-अलग पूरे आम
+        ratio: '4:3'
+        text_in_image: []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: river
         hi: नदी
@@ -295,6 +418,21 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt:
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: []
     - sa: नद्यौ
       check:
         type: subanta
@@ -303,6 +441,10 @@ cards:
         vibhakti: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नद्यः
       check:
         type: subanta
@@ -310,6 +452,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नदी
   note:
     en: The dual ends in {{औ}} (masculine) or {{ए}} (feminine and neuter -अ/-आ words).
     hi: द्विवचन {{औ}} (पुंलिंग) या {{ए}} (स्त्रीलिंग और नपुंसक -अ/-आ शब्द) पर समाप्त होता है।
@@ -389,6 +535,7 @@ cards:
       feature:
         en: 'Stem: {{नेत्र}} · neuter · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नेत्र
     - id: rule
       label:
         en: Connect the form and the rule
@@ -414,6 +561,7 @@ cards:
       feature:
         en: 'Stem: {{नेत्र}} · neuter · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नेत्र
   - id: v-source-example-1
     kind: worked
     title:
@@ -437,6 +585,7 @@ cards:
       feature:
         en: 'Stem: {{हस्त}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: हस्त
     - id: rule
       label:
         en: Connect the form and the rule
@@ -462,6 +611,7 @@ cards:
       feature:
         en: 'Stem: {{हस्त}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: हस्त
   - id: v-source-example-2
     kind: worked
     title:
@@ -485,6 +635,7 @@ cards:
       feature:
         en: 'Stem: {{पाद}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{पाद}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: पाद
     - id: rule
       label:
         en: Connect the form and the rule
@@ -510,6 +661,7 @@ cards:
       feature:
         en: 'Stem: {{पाद}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{पाद}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: पाद
   - id: v-source-example-3
     kind: worked
     title:
@@ -533,6 +685,7 @@ cards:
       feature:
         en: 'Stem: {{कर्ण}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{कर्ण}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: कर्ण
     - id: rule
       label:
         en: Connect the form and the rule
@@ -558,6 +711,7 @@ cards:
       feature:
         en: 'Stem: {{कर्ण}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{कर्ण}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: कर्ण
 - id: p1
   kind: practice
   depth: core
@@ -600,6 +754,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -626,6 +781,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
 - id: p2
   kind: practice
   depth: core
@@ -688,6 +844,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -714,6 +871,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
 - id: e1
   kind: explore
   depth: core
@@ -789,6 +947,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -815,6 +974,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
 - id: pn
   kind: teach
   title:

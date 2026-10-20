@@ -122,6 +122,25 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: &id003
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image: &id004
+        - अ इ उ
+      compare_from: पठ्
     - text:
         en: reads
         hi: पढ़ता है
@@ -133,6 +152,25 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-girl-writes
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+          actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+          "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+          hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+        alt: &id005
+          en: A girl writes अ with a pen
+          hi: लेखनी से अ लिखती बालिका
+        ratio: '4:3'
+        text_in_image: &id006
+        - अ
+      compare_from: लिख्
     - text:
         en: writes
         hi: लिखता है
@@ -144,6 +182,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - text:
         en: speaks
         hi: बोलता है
@@ -155,6 +197,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{हस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{हस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: हस्
     - text:
         en: laughs
         hi: हँसता है
@@ -166,6 +212,23 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-boy-walks
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward the right on
+          a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body shown. No house,
+          books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+        alt: &id001
+          en: A boy walks on a path
+          hi: राह पर चलता बालक
+        ratio: '4:3'
+        text_in_image: &id002 []
+      compare_from: चल्
     - text:
         en: moves, walks
         hi: चलता है
@@ -177,6 +240,23 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-boy-eats
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+          holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+          no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+        alt:
+          en: A boy eats one mango
+          hi: एक आम खाता बालक
+        ratio: '4:3'
+        text_in_image: []
+      compare_from: खाद्
     - text:
         en: eats
         hi: खाता है
@@ -188,6 +268,21 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-boy-walks
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward the right on
+          a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body shown. No house,
+          books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      compare_from: गम्
     - text:
         en: goes
         hi: जाता है
@@ -199,6 +294,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दृश्
     - text:
         en: sees
         hi: देखता है
@@ -210,6 +309,23 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-boy-drinks
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is drinking water from one plain
+          brass cup held to his lips. Show the drinking action clearly, with the cup tilted naturally, seated on a low stone
+          step. No jug, food, writing or symbols.'
+        alt:
+          en: A boy drinks from a cup
+          hi: प्याले से पीता बालक
+        ratio: '4:3'
+        text_in_image: []
+      compare_from: पा
     - text:
         en: drinks
         hi: पीता है
@@ -221,6 +337,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: स्था
     - text:
         en: stands
         hi: खड़ा है
@@ -342,6 +462,138 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-semantic-scenes
+    kind: comparison
+    title:
+      en: Action and sentence
+      hi: काम और वाक्य
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+    - id: i1
+      sa: बालिका लिखति।
+      meaning:
+        en: The girl writes.
+        hi: बालिका लिखती है।
+      words:
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-girl-writes
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+          actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+          "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+          hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -394,6 +646,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पठति
       label:
@@ -411,6 +664,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -516,6 +770,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -604,6 +859,7 @@ cards:
       feature:
         en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बक
     - id: i2
       sa: तिष्ठति
       label:
@@ -621,6 +877,7 @@ cards:
       feature:
         en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: स्था
     - id: rule
       label:
         en: Connect the form and the rule
@@ -726,6 +983,7 @@ cards:
       feature:
         en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: चल्
     - id: rule
       label:
         en: Connect the form and the rule

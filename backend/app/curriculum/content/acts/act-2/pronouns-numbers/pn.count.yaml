@@ -144,6 +144,74 @@ cards:
   note:
     en: 'Two takes the dual and agrees: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}.'
     hi: 'दो द्विवचन लेता है और मेल खाता है: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}।'
+  visuals:
+  - id: v-cue-counts
+    kind: matrix
+    title:
+      en: Count the groups and read the word
+      hi: समूह गिनें और शब्द पढ़ें
+    columns:
+    - en: Number
+      hi: संख्या
+    - en: Masculine
+      hi: पुंलिंग
+    - en: Feminine
+      hi: स्त्रीलिंग
+    - en: Neuter
+      hi: नपुंसक
+    rows:
+    - - id: r0-c0
+        label:
+          en: '1'
+          hi: १
+        diagram:
+          kind: count
+          quantity: 1
+      - id: r0-c1
+        sa: एकः
+      - id: r0-c2
+        sa: एका
+      - id: r0-c3
+        sa: एकम्
+    - - id: r1-c0
+        label:
+          en: '2'
+          hi: २
+        diagram:
+          kind: count
+          quantity: 2
+      - id: r1-c1
+        sa: द्वौ
+      - id: r1-c2
+        sa: द्वे
+      - id: r1-c3
+        sa: द्वे
+    - - id: r2-c0
+        label:
+          en: '3'
+          hi: ३
+        diagram:
+          kind: count
+          quantity: 3
+      - id: r2-c1
+        sa: त्रयः
+      - id: r2-c2
+        sa: तिस्रः
+      - id: r2-c3
+        sa: त्रीणि
+    - - id: r3-c0
+        label:
+          en: '4'
+          hi: ४
+        diagram:
+          kind: count
+          quantity: 4
+      - id: r3-c1
+        sa: चत्वारः
+      - id: r3-c2
+        sa: चतस्रः
+      - id: r3-c3
+        sa: चत्वारि
 - id: tb2
   kind: table
   title:
@@ -190,6 +258,72 @@ cards:
       is also {{अष्टौ}}.'
     hi: 'पाँच से आगे केवल बहुवचन, सभी लिंगों के लिए एक रूप: {{पञ्च बालकाः}}, {{षट् लताः}}, {{सप्त फलानि}}। {{अष्ट}} का {{अष्टौ}}
       भी है।'
+  visuals:
+  - id: v-cue-counts
+    kind: matrix
+    title:
+      en: Count the groups and read the word
+      hi: समूह गिनें और शब्द पढ़ें
+    columns:
+    - en: Number
+      hi: संख्या
+    - en: Word
+      hi: शब्द
+    rows:
+    - - id: r0-c0
+        label:
+          en: '5'
+          hi: ५
+        diagram:
+          kind: count
+          quantity: 5
+      - id: r0-c1
+        sa: पञ्च
+    - - id: r1-c0
+        label:
+          en: '6'
+          hi: ६
+        diagram:
+          kind: count
+          quantity: 6
+      - id: r1-c1
+        sa: षट्
+    - - id: r2-c0
+        label:
+          en: '7'
+          hi: ७
+        diagram:
+          kind: count
+          quantity: 7
+      - id: r2-c1
+        sa: सप्त
+    - - id: r3-c0
+        label:
+          en: '8'
+          hi: ८
+        diagram:
+          kind: count
+          quantity: 8
+      - id: r3-c1
+        sa: अष्ट
+    - - id: r4-c0
+        label:
+          en: '9'
+          hi: ९
+        diagram:
+          kind: count
+          quantity: 9
+      - id: r4-c1
+        sa: नव
+    - - id: r5-c0
+        label:
+          en: '10'
+          hi: १०
+        diagram:
+          kind: count
+          quantity: 10
+      - id: r5-c1
+        sa: दश
 - id: t2
   kind: teach
   title:
@@ -356,6 +490,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पठन्ति
       label:
@@ -373,6 +508,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -479,6 +615,7 @@ cards:
       feature:
         en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: लता
     - id: i3
       sa: स्तः
       label:
@@ -496,6 +633,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -602,6 +740,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
     - id: i3
       sa: सन्ति
       label:
@@ -619,6 +758,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule

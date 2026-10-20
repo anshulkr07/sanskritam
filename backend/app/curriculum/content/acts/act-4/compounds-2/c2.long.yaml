@@ -72,6 +72,26 @@ cards:
     meaning:
       en: unpacking a compound
       hi: समास को खोलना
+  visuals:
+  - id: v-foundation-concept
+    kind: comparison
+    title:
+      en: Read from the end
+      hi: अन्त से पढ़िए
+    items:
+    - id: i0
+      sa: समासविग्रहः
+      meaning:
+        en: unpacking a compound
+        hi: समास को खोलना
+    - id: explanation
+      meaning:
+        en: 'A long compound is built from the left, so read it from the right. First, the last member gives the ending and
+          gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide
+          each join: and, of, describing, whose.'
+        hi: 'लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास
+          को दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और,
+          का, वर्णन, जिसका।'
 - id: tb1
   kind: table
   title:
@@ -133,6 +153,49 @@ cards:
   note:
     en: 'The whole compound is a bahuvrīhi: it names the king.'
     hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
+  visuals:
+  - id: v-procedure
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: r1
   kind: reading
   title:
@@ -275,6 +338,49 @@ cards:
   - text:
       en: from the middle
       hi: बीच से
+  feedback_visuals:
+  - id: v-foundation-feedback
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: p2
   kind: practice
   depth: core
@@ -313,6 +419,49 @@ cards:
       text:
         en: shining with a full figure
         hi: भरे वक्ष से दीप्त
+  feedback_visuals:
+  - id: v-foundation-feedback
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: e1
   kind: explore
   depth: core
@@ -352,6 +501,49 @@ cards:
   - अन्तिमः
   - छेदः
   - निर्णयः
+  feedback_visuals:
+  - id: v-foundation-feedback
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: p4
   kind: practice
   title:
@@ -393,6 +585,49 @@ cards:
     text:
       en: feminine, describing a woman
       hi: स्त्रीलिंग, स्त्री का वर्णन करता
+  feedback_visuals:
+  - id: v-foundation-feedback
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: pn
   kind: teach
   title:
@@ -449,3 +684,65 @@ cards:
   - text:
       en: Cut in halves, then decide the joins.
       hi: दो-दो भागों में काटिए, फिर जोड़ तय कीजिए।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: सः प्रतिदिनम् पठति।
+      meaning:
+        en: He reads every day.
+        hi: वह प्रतिदिन पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: प्रतिदिनम्
+        gloss:
+          en: every day
+          hi: हर दिन
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः
+      meaning:
+        en: “Shining like ten million suns, radiant like the light of lightning.” (Vetālapañcaviṃśatikā, introduction)
+        hi: “करोड़ सूर्यों-सा चमकने वाला, बिजली की ज्योति-सी प्रभा वाला।” (वेतालपञ्चविंशतिका, भूमिका)
+      words:
+      - sa: सूर्यकोटिसमाभासः
+        gloss:
+          en: shining like ten million suns
+          hi: करोड़ सूर्यों-सा चमकने वाला
+      - sa: विद्युज्ज्योतिःसमप्रभः
+        gloss:
+          en: radiant like the light of lightning
+          hi: बिजली की ज्योति-सी प्रभा वाला
+    - id: i2
+      sa: मृणालनालललितभुजा पीनस्तनोज्ज्वला
+      meaning:
+        en: “Her arms graceful like lotus-stalks, shining with a full figure.” (Kathāsaritsāgara 1.4)
+        hi: “कमलनाल-सी सुकोमल भुजाओं वाली, भरे वक्ष से दीप्त।” (कथासरित्सागर 1.4)
+      words:
+      - sa: मृणालनालललितभुजा
+        gloss:
+          en: arms graceful as a lotus-stalk
+          hi: कमलनाल-सी सुकोमल भुजाओं वाली
+      - sa: पीनस्तनोज्ज्वला
+        gloss:
+          en: shining with a full figure
+          hi: भरे वक्ष से दीप्त

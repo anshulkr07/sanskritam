@@ -82,7 +82,7 @@ def walk(node, path: str = "") -> Iterator[tuple[str, object]]:
         yield path, node
 
 
-SA_FIELDS = {"sa", "formula", "title_sa", "name_sa"}
+SA_FIELDS = {"sa", "formula", "title_sa", "name_sa", "marker", "compare_from"}
 SA_LIST_FIELDS = {"answers", "tokens", "tiles"}
 #: Sanskrit inside widget params (and the checks they carry).
 PARAM_SA_FIELDS = {"bases", "signs", "halves", "targets", "letters", "stem", "dhatu",
@@ -146,6 +146,7 @@ class Checker:
         self.ready_units: set[str] = set()
         self.unit_of_lesson: dict[str, str] = {}
         self.image_ids: dict[str, str] = {}  # image id → where it is used
+        self.image_definitions: dict[str, dict] = {}
 
     def err(self, where: str, msg: str) -> None:
         self.issues.append(Issue("error", where, msg))
@@ -608,9 +609,12 @@ class Checker:
             self.warn(rw, f"taught in another unit ({there}); fine for a reminder, check it is intended")
 
     def _image(self, cw: str, img: ImageRef, strict: bool = False) -> None:
-        if img.id in self.image_ids:
-            self.err(cw, f"image id {img.id} also used at {self.image_ids[img.id]}")
-        self.image_ids[img.id] = cw
+        definition = img.model_dump()
+        if img.id in self.image_ids and self.image_definitions[img.id] != definition:
+            self.err(cw, f"image id {img.id} conflicts with its definition at {self.image_ids[img.id]}")
+        else:
+            self.image_ids.setdefault(img.id, cw)
+            self.image_definitions.setdefault(img.id, definition)
         for ch in img.cast:
             if ch not in self.characters:
                 self.err(cw, f"image cast {ch} is not in the bible")

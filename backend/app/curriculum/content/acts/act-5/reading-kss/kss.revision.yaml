@@ -24,6 +24,48 @@ cards:
       hi: जोड़ खोलिए, क्रिया खोजिए (या देखिए कि नहीं है), फिर कर्ता, कर्म और शेष।
     tag: core
     taught_in: kss.naming#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The boy's name is given
+        hi: बालक का नाम दिया गया
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: कामदेवावतारः
+        - id: r0-c1
+          sa: अयम्
+        - id: r0-c2
+          sa: कामदेवावतारोऽयम्
+          compare_from: कामदेवावतारः अयम्
+      - - id: r1-c0
+          sa: राजन्
+        - id: r1-c1
+          sa: जातः
+        - id: r1-c2
+          sa: राजञ्जातः
+          compare_from: राजन् जातः
+      - - id: r2-c0
+          sa: जातः
+        - id: r2-c1
+          sa: तव
+        - id: r2-c2
+          sa: जातस्तव
+          compare_from: जातः तव
+      - - id: r3-c0
+          sa: तव
+        - id: r3-c1
+          sa: आत्मजः
+        - id: r3-c2
+          sa: तवात्मजः
+          compare_from: तव आत्मजः
 - id: conditions
   kind: revision
   title:
@@ -38,6 +80,21 @@ cards:
       hi: 'क्रिया से पहले लम्बा समास एक नाम या विचार है: उसे खोलिए, फिर अंश पढ़िए।'
     tag: good
     taught_in: kss.naming#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Reading Somadeva
+        hi: सोमदेव को पढ़ना
+      items:
+      - id: explanation
+        meaning:
+          en: 'Somadeva writes in śloka, like the epics, but his sentences run long, and a compound can fill a quarter. Word
+            order is free, and “is” is often left out. Use your three steps: split the joins, find the verb or see there is
+            none, then the doer and the rest.'
+          hi: 'सोमदेव महाकाव्यों की तरह श्लोक में लिखते हैं, पर उनके वाक्य लम्बे होते हैं, और एक समास पूरा चरण भर सकता है।
+            शब्द-क्रम स्वतन्त्र है, और ‘है’ प्रायः छोड़ दिया जाता है। अपने तीन चरण लीजिए: जोड़ खोलिए, क्रिया खोजिए या देखिए
+            कि नहीं है, फिर कर्ता और शेष।'
 - id: exceptions
   kind: revision
   title:
@@ -66,6 +123,21 @@ cards:
       hi: 'पहले समास पर मत रुकिए: वह वाक्य की शुरुआत है, अन्त नहीं।'
     tag: core
     taught_in: kss.naming#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Reading Somadeva
+        hi: सोमदेव को पढ़ना
+      items:
+      - id: explanation
+        meaning:
+          en: 'Somadeva writes in śloka, like the epics, but his sentences run long, and a compound can fill a quarter. Word
+            order is free, and “is” is often left out. Use your three steps: split the joins, find the verb or see there is
+            none, then the doer and the rest.'
+          hi: 'सोमदेव महाकाव्यों की तरह श्लोक में लिखते हैं, पर उनके वाक्य लम्बे होते हैं, और एक समास पूरा चरण भर सकता है।
+            शब्द-क्रम स्वतन्त्र है, और ‘है’ प्रायः छोड़ दिया जाता है। अपने तीन चरण लीजिए: जोड़ खोलिए, क्रिया खोजिए या देखिए
+            कि नहीं है, फिर कर्ता और शेष।'
 - id: sheet
   kind: revision
   title:
@@ -81,3 +153,82 @@ cards:
       hi: नामकरण
     tag: core
     taught_in: kss.naming#r1
+    visuals:
+    - id: v-linked-0
+      kind: reading
+      title:
+        en: Follow the line word by word
+        hi: पंक्ति को शब्द-शब्द समझें
+      items:
+      - id: i0
+        sa: तत्रासूत च सा काले कुमारं कान्तदर्शनम्
+        label:
+          en: The complete line
+          hi: पूरी पंक्ति
+        meaning:
+          en: There, in due time, she bore a son lovely to see. (Somadeva, Kathāsaritsāgara 4.3)
+          hi: वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया। (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: तत्र
+          gloss:
+            en: there
+            hi: वहाँ
+        - sa: असूत
+          gloss:
+            en: bore
+            hi: जन्म दिया
+        - sa: च
+          gloss:
+            en: and
+            hi: और
+        - sa: सा
+          gloss:
+            en: she
+            hi: उसने
+        - sa: काले
+          gloss:
+            en: in due time
+            hi: समय पर
+        - sa: कुमारम्
+          gloss:
+            en: a son
+            hi: पुत्र को
+        - sa: कान्तदर्शनम्
+          gloss:
+            en: lovely to see
+            hi: सुन्दर दर्शन वाले
+      - id: i1
+        sa: तत्र
+        meaning:
+          en: there
+          hi: वहाँ
+      - id: i2
+        sa: असूत
+        meaning:
+          en: bore
+          hi: जन्म दिया
+      - id: i3
+        sa: च
+        meaning:
+          en: and
+          hi: और
+      - id: i4
+        sa: सा
+        meaning:
+          en: she
+          hi: उसने
+      - id: i5
+        sa: काले
+        meaning:
+          en: in due time
+          hi: समय पर
+      - id: i6
+        sa: कुमारम्
+        meaning:
+          en: a son
+          hi: पुत्र को
+      - id: i7
+        sa: कान्तदर्शनम्
+        meaning:
+          en: lovely to see
+          hi: सुन्दर दर्शन वाले

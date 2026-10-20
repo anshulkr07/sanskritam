@@ -87,6 +87,18 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: &id001
+          en: A creeper on a wooden support
+          hi: लकड़ी के सहारे पर लता
+        ratio: '1:1'
+        text_in_image: &id002 []
     - id: i2
       sa: लताम्
     - id: i3
@@ -130,6 +142,19 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - sa: लते
       check:
         type: subanta
@@ -137,6 +162,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताः
       check:
         type: subanta
@@ -144,6 +173,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -154,6 +187,20 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लते
       check:
         type: subanta
@@ -161,6 +208,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताः
       check:
         type: subanta
@@ -168,6 +219,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -178,6 +233,20 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लताभ्याम्
       check:
         type: subanta
@@ -185,6 +254,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताभिः
       check:
         type: subanta
@@ -192,6 +265,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -202,6 +279,20 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लताभ्याम्
       check:
         type: subanta
@@ -209,6 +300,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताभ्यः
       check:
         type: subanta
@@ -216,6 +311,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -226,6 +325,20 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लताभ्याम्
       check:
         type: subanta
@@ -233,6 +346,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताभ्यः
       check:
         type: subanta
@@ -240,6 +357,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -250,6 +371,20 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लतयोः
       check:
         type: subanta
@@ -257,6 +392,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लतानाम्
       check:
         type: subanta
@@ -264,6 +403,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -274,6 +417,20 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लतयोः
       check:
         type: subanta
@@ -281,6 +438,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लतासु
       check:
         type: subanta
@@ -288,6 +449,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: लता
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -298,6 +463,20 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: लता
     - sa: लते
       check:
         type: subanta
@@ -305,6 +484,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: लता
     - sa: लताः
       check:
         type: subanta
@@ -312,6 +495,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: लता
   note:
     en: 'The fifth and sixth singular are the same: {{लतायाः}}. The first and call differ: {{लता}}, {{हे लते}}.'
     hi: 'एकवचन में पञ्चमी और षष्ठी एक-सी हैं: {{लतायाः}}। प्रथमा और सम्बोधन अलग हैं: {{लता}}, {{हे लते}}।'
@@ -370,6 +557,43 @@ cards:
       vibhakti: Sasthi
       vacana: Bahu
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i1
+      sa: नौकाभिः
+      meaning:
+        en: by boats
+        hi: नावों से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      image:
+        id: teaching-boat-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+          wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and
+          clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings,
+          distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat
+          count is the teaching point. The river and bank are plain and unobtrusive.'
+        alt:
+          en: Three separate boats on the river
+          hi: नदी पर तीन अलग-अलग नावें
+        ratio: '4:3'
+        text_in_image: []
+      compare_from: नौका
   - id: v-source-example-0
     kind: worked
     title:
@@ -393,6 +617,7 @@ cards:
       feature:
         en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालिका
     - id: rule
       label:
         en: Connect the form and the rule
@@ -419,6 +644,7 @@ cards:
       feature:
         en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालिका
   - id: v-source-example-1
     kind: worked
     title:
@@ -442,6 +668,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: नौका
     - id: rule
       label:
         en: Connect the form and the rule
@@ -468,6 +695,7 @@ cards:
       feature:
         en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
         hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: नौका
   - id: v-source-example-2
     kind: worked
     title:
@@ -491,6 +719,7 @@ cards:
       feature:
         en: 'Stem: {{गङ्गा}} · feminine · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: गङ्गा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -517,6 +746,7 @@ cards:
       feature:
         en: 'Stem: {{गङ्गा}} · feminine · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: गङ्गा
   - id: v-source-example-3
     kind: worked
     title:
@@ -540,6 +770,7 @@ cards:
       feature:
         en: 'Stem: {{पाठशाला}} · feminine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: पाठशाला
     - id: rule
       label:
         en: Connect the form and the rule
@@ -566,6 +797,7 @@ cards:
       feature:
         en: 'Stem: {{पाठशाला}} · feminine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: पाठशाला
 - id: p1
   kind: practice
   depth: core
@@ -602,6 +834,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3
@@ -650,6 +892,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3
@@ -696,6 +948,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3
@@ -762,6 +1024,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3
@@ -844,6 +1116,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3
@@ -875,3 +1157,55 @@ cards:
     text:
       en: Thousands follow it.
       hi: हज़ारों इसी पर चलते हैं।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: नौकाभिः
+      meaning:
+        en: by boats
+        hi: नावों से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+    - id: i1
+      sa: गङ्गायाम्
+      meaning:
+        en: in the Gaṅgā
+        hi: गंगा में
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गङ्गा}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पाठशालानाम्
+      meaning:
+        en: of schools
+        hi: पाठशालाओं का
+      check:
+        type: subanta
+        stem: पाठशाला
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पाठशाला}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'

@@ -127,6 +127,51 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: He fears the tiger.
+      hi: वह बाघ से डरता है।
+    items:
+    - id: i0
+      sa: व्याघ्रात्
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: व्याघ्र
+    - id: i1
+      sa: बिभेति
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भी
+    edges:
+    - source: i0
+      target: i1
+      label:
+        en: what is feared in this example
+        hi: इस उदाहरण में जिससे डर है
   - id: v-source-example-0
     kind: worked
     title:
@@ -179,6 +224,7 @@ cards:
       feature:
         en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: व्याघ्र
     - id: i2
       sa: बिभेति
       label:
@@ -196,6 +242,7 @@ cards:
       feature:
         en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भी
     - id: rule
       label:
         en: Connect the form and the rule
@@ -308,6 +355,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: सर्पात्
       label:
@@ -325,6 +373,7 @@ cards:
       feature:
         en: 'Stem: {{सर्प}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{सर्प}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: सर्प
     - id: i4
       sa: रक्षति
       label:
@@ -342,6 +391,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -510,6 +560,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: श्यामः
       label:
@@ -527,6 +578,7 @@ cards:
       feature:
         en: 'Stem: {{श्याम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{श्याम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: श्याम
     - id: i3
       sa: दीर्घतरः
       label:
@@ -545,6 +597,7 @@ cards:
       feature:
         en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दीर्घ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -665,6 +718,7 @@ cards:
       feature:
         en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: व्याघ्र
     - id: i2
       sa: बिभेति
       label:
@@ -682,6 +736,7 @@ cards:
       feature:
         en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भी
     - id: rule
       label:
         en: Connect the form and the rule
@@ -811,6 +866,7 @@ cards:
       feature:
         en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: व्याघ्र
     - id: i2
       sa: बिभेति
       label:
@@ -828,6 +884,7 @@ cards:
       feature:
         en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भी
     - id: rule
       label:
         en: Connect the form and the rule
@@ -972,6 +1029,7 @@ cards:
       feature:
         en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
         hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: व्याघ्र
     - id: i2
       sa: बिभेति
       label:
@@ -989,6 +1047,7 @@ cards:
       feature:
         en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भी
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1046,3 +1105,116 @@ cards:
     text:
       en: What one compares with.
       hi: जिससे तुलना की जाए।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः बालकम् सर्पात् रक्षति।
+      meaning:
+        en: He protects the boy from the snake.
+        hi: वह बालक को साँप से बचाता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: बालकम्
+        gloss:
+          en: boy (object)
+          hi: बालक (कर्म)
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सर्पात्
+        gloss:
+          en: from the snake
+          hi: साँप से
+        check:
+          type: subanta
+          stem: सर्प
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: रक्षति
+        gloss:
+          en: protects
+          hi: बचाता है
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i2
+      sa: रामात् श्यामः दीर्घतरः।
+      meaning:
+        en: Śyāma is taller than Rāma.
+        hi: श्याम राम से लम्बा है।
+      words:
+      - sa: रामात्
+        gloss:
+          en: than Rāma
+          hi: राम से
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: श्यामः
+        gloss:
+          en: Śyāma
+          hi: श्याम
+        check:
+          type: subanta
+          stem: श्याम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: दीर्घतरः
+        gloss:
+          en: taller
+          hi: अधिक लम्बा
+        check:
+          type: taddhita
+          stem: दीर्घ
+          taddhita: tarap
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka

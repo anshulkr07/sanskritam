@@ -25,6 +25,33 @@ cards:
       hi: अक्षर में ठीक एक स्वर होता है; अक्षर गिनने के लिए स्वर गिनिए।
     tag: core
     taught_in: reading.syllables#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and
+          you have counted the syllables: {{रा}}-{{मः}} has two.'
+        hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+          हैं।'
+      items:
+      - id: i0
+        sa: रामः
+        meaning:
+          en: '{{रा}} {{मः}}: 2'
+          hi: '{{रा}} {{मः}}: 2 अक्षर'
+      - id: i1
+        sa: सीता
+        meaning:
+          en: '{{सी}} {{ता}}: 2'
+          hi: '{{सी}} {{ता}}: 2 अक्षर'
+      - id: i2
+        sa: लक्ष्मणः
+        meaning:
+          en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+          hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
   - skill: read.syllables
     formula: सत्-यम्
     rule:
@@ -32,6 +59,56 @@ cards:
       hi: संयुक्ताक्षर में स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता।
     tag: core
     taught_in: reading.syllables#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सत्यम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'truth: two syllables'
+          hi: 'सत्य: दो अक्षर'
+        check:
+          type: subanta
+          stem: सत्य
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: सत्य
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}.'
+          hi: 'संयुक्ताक्षर के भीतर स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता। {{सत्यम्}} में दो स्वर हैं, दो अक्षर: {{सत्}}-{{यम्}}।'
+      - id: i3
+        sa: सत्यम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'truth: two syllables'
+          hi: 'सत्य: दो अक्षर'
+        check:
+          type: subanta
+          stem: सत्य
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: सत्य
   - skill: read.places
     rule:
       en: Every sound has a place (throat, palate, roof, teeth, lips, nose) and an effort (open, almost touching, touching
@@ -40,12 +117,62 @@ cards:
         है।
     tag: core
     taught_in: reading.mouth#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Place and effort
+        hi: स्थान और प्रयत्न
+      items:
+      - id: i0
+        sa: प्रयत्नः
+        meaning:
+          en: 'effort: how closely the mouth works'
+          hi: 'प्रयत्न: मुँह कितना पास आता है'
+      - id: explanation
+        meaning:
+          en: Every sound has a place, where the tongue or lips work, and an effort, how closely they work. Vowels leave the
+            mouth open. Semivowels barely touch. Hisses almost touch. The five rows touch fully.
+          hi: हर ध्वनि का एक स्थान होता है, जहाँ जीभ या होंठ काम करते हैं, और एक प्रयत्न, यानी वे कितना पास आते हैं। स्वर
+            मुँह खुला रखते हैं। अन्तःस्थ बस छूते हैं। ऊष्म लगभग छूते हैं। पाँच वर्ग पूरी तरह छूते हैं।
   - skill: read.places
     rule:
       en: '{{ए}} {{ऐ}} use throat + palate; {{ओ}} {{औ}} throat + lips; {{व}} teeth + lips; nasals add the nose.'
       hi: '{{ए}} {{ऐ}} कण्ठ + तालु; {{ओ}} {{औ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ; नासिक्य नाक जोड़ते हैं।'
     tag: core
     taught_in: reading.mouth#t2
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal
+          uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.'
+        hi: 'कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य
+          नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।'
+      items:
+      - id: i0
+        sa: ए
+        meaning:
+          en: throat and palate
+          hi: कण्ठ और तालु
+      - id: i1
+        sa: ओ
+        meaning:
+          en: throat and lips
+          hi: कण्ठ और ओष्ठ
+      - id: i2
+        sa: व
+        meaning:
+          en: teeth and lips
+          hi: दन्त और ओष्ठ
+      - id: i3
+        sa: ङ
+        meaning:
+          en: throat and nose
+          hi: कण्ठ और नाक
   - skill: read.iast
     formula: ā ṭ ś ṣ ṃ ḥ
     rule:
@@ -53,12 +180,88 @@ cards:
       hi: 'IAST: हर देवनागरी ध्वनि के लिए एक रोमन चिह्न; रेखा दीर्घ के लिए, नीचे बिन्दु मूर्धन्य के लिए।'
     tag: core
     taught_in: reading.iast#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+          {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+        hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु
+          मूर्धन्य दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+      items:
+      - id: i0
+        sa: आ
+      - id: i1
+        sa: ट
+      - id: i2
+        sa: श
+      - id: i3
+        sa: ष
+      - id: i4
+        sa: ङ
+      - id: i5
+        sa: ञ
   - skill: read.words
     rule:
       en: Read a word by syllables, check each sound's place, then say it smoothly.
       hi: शब्द को अक्षरों में पढ़िए, हर ध्वनि का स्थान जाँचिए, फिर प्रवाह से बोलिए।
     tag: core
     taught_in: reading.names#t1
+    visuals:
+    - id: v-linked-5
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+            of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+          hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+            एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
 - id: conditions
   kind: revision
   title:
@@ -167,6 +370,38 @@ cards:
       hi: शास्त्रीय शिक्षक {{ह}} और साँस {{ः}} को कण्ठ्य, तथा गूँज को नासिक्य गिनते हैं।
     tag: good
     taught_in: reading.mouth#t2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal
+          uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.'
+        hi: 'कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य
+          नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।'
+      items:
+      - id: i0
+        sa: ए
+        meaning:
+          en: throat and palate
+          hi: कण्ठ और तालु
+      - id: i1
+        sa: ओ
+        meaning:
+          en: throat and lips
+          hi: कण्ठ और ओष्ठ
+      - id: i2
+        sa: व
+        meaning:
+          en: teeth and lips
+          hi: दन्त और ओष्ठ
+      - id: i3
+        sa: ङ
+        meaning:
+          en: throat and nose
+          hi: कण्ठ और नाक
 - id: mistakes
   kind: revision
   title:
@@ -181,18 +416,121 @@ cards:
       hi: 'रोमन अक्षरों को अंग्रेज़ी की तरह मत पढ़िए: ś का मतलब s नहीं, ṭ का मतलब t नहीं।'
     tag: core
     taught_in: reading.iast#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+          {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+        hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु
+          मूर्धन्य दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+      items:
+      - id: i0
+        sa: आ
+      - id: i1
+        sa: ट
+      - id: i2
+        sa: श
+      - id: i3
+        sa: ष
+      - id: i4
+        sa: ङ
+      - id: i5
+        sa: ञ
   - skill: read.syllables
     rule:
       en: 'Do not drop a final {{अ}} while counting: {{रामः}} has two syllables, not one.'
       hi: 'गिनते समय अन्त का {{अ}} मत छोड़िए: {{रामः}} में दो अक्षर हैं, एक नहीं।'
     tag: core
     taught_in: reading.syllables#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and
+          you have counted the syllables: {{रा}}-{{मः}} has two.'
+        hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+          हैं।'
+      items:
+      - id: i0
+        sa: रामः
+        meaning:
+          en: '{{रा}} {{मः}}: 2'
+          hi: '{{रा}} {{मः}}: 2 अक्षर'
+      - id: i1
+        sa: सीता
+        meaning:
+          en: '{{सी}} {{ता}}: 2'
+          hi: '{{सी}} {{ता}}: 2 अक्षर'
+      - id: i2
+        sa: लक्ष्मणः
+        meaning:
+          en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+          hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
   - skill: read.words
     rule:
       en: 'Do not guess a word from its first letters: read every syllable.'
       hi: 'पहले अक्षरों से शब्द का अनुमान मत लगाइए: हर अक्षर पढ़िए।'
     tag: core
     taught_in: reading.names#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+            of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+          hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+            एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
 - id: panini
   kind: revision
   title:
@@ -210,6 +548,28 @@ cards:
     - 1.1.9
     tag: core
     taught_in: reading.mouth#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.1.9 says sounds with the same place and the same effort are {{सवर्ण}}, of one kind: {{इ}} and {{ई}} differ
+          only in length; {{क}} and {{ख}} share a place but not an effort.'
+        hi: 'सूत्र 1.1.9 कहता है कि जिन ध्वनियों का स्थान और प्रयत्न एक हो, वे {{सवर्ण}} हैं: {{इ}} और {{ई}} केवल लम्बाई में
+          अलग हैं; {{क}} और {{ख}} का स्थान एक है, पर प्रयत्न नहीं।'
+      items:
+      - id: i0
+        sa: सवर्ण
+      - id: i1
+        sa: इ
+      - id: i2
+        sa: ई
+      - id: i3
+        sa: क
+      - id: i4
+        sa: ख
 - id: sheet
   kind: revision
   title:
@@ -225,6 +585,33 @@ cards:
       hi: अक्षर
     tag: core
     taught_in: reading.syllables#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and
+          you have counted the syllables: {{रा}}-{{मः}} has two.'
+        hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+          हैं।'
+      items:
+      - id: i0
+        sa: रामः
+        meaning:
+          en: '{{रा}} {{मः}}: 2'
+          hi: '{{रा}} {{मः}}: 2 अक्षर'
+      - id: i1
+        sa: सीता
+        meaning:
+          en: '{{सी}} {{ता}}: 2'
+          hi: '{{सी}} {{ता}}: 2 अक्षर'
+      - id: i2
+        sa: लक्ष्मणः
+        meaning:
+          en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+          hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
   - skill: read.places
     formula: कण्ठ तालु मूर्धा दन्त ओष्ठ
     rule:
@@ -232,6 +619,60 @@ cards:
       hi: स्थान और प्रयत्न
     tag: core
     taught_in: reading.mouth#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The four efforts
+        hi: चार प्रयत्न
+      columns:
+      - en: Group
+        hi: समूह
+      - en: The mouth
+        hi: मुँह
+      - en: Letters
+        hi: अक्षर
+      rows:
+      - - id: r0-c0
+          label:
+            en: vowels
+            hi: स्वर
+        - id: r0-c1
+          label:
+            en: open, nothing touches
+            hi: खुला, कुछ नहीं छूता
+        - id: r0-c2
+          sa: अ इ उ
+      - - id: r1-c0
+          label:
+            en: hisses
+            hi: ऊष्म
+        - id: r1-c1
+          label:
+            en: almost touches
+            hi: लगभग छूता
+        - id: r1-c2
+          sa: श ष स ह
+      - - id: r2-c0
+          label:
+            en: semivowels
+            hi: अन्तःस्थ
+        - id: r2-c1
+          label:
+            en: touches lightly
+            hi: हल्का छूता
+        - id: r2-c2
+          sa: य र ल व
+      - - id: r3-c0
+          label:
+            en: the five rows
+            hi: पाँच वर्ग
+        - id: r3-c1
+          label:
+            en: touches fully
+            hi: पूरा छूता
+        - id: r3-c2
+          sa: क च ट त प
   - skill: read.iast
     formula: ā ṭ ś ṣ ṃ ḥ
     rule:
@@ -239,6 +680,46 @@ cards:
       hi: रोमन सहायक
     tag: core
     taught_in: reading.iast#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Vowels with their Roman helper
+        hi: स्वर और उनका रोमन सहायक
+      columns:
+      - en: Short
+        hi: ह्रस्व
+      - en: Long
+        hi: दीर्घ
+      rows:
+      - - id: r0-c0
+          sa: अ
+        - id: r0-c1
+          sa: आ
+      - - id: r1-c0
+          sa: इ
+        - id: r1-c1
+          sa: ई
+      - - id: r2-c0
+          sa: उ
+        - id: r2-c1
+          sa: ऊ
+      - - id: r3-c0
+          sa: ऋ
+        - id: r3-c1
+          sa: ॠ
+      - - id: r4-c0
+          sa: ऌ
+        - id: r4-c1
+          sa: ॡ
+      - - id: r5-c0
+          sa: ए
+        - id: r5-c1
+          sa: ऐ
+      - - id: r6-c0
+          sa: ओ
+        - id: r6-c1
+          sa: औ
   - skill: read.words
     formula: अक्षर → स्थान → प्रवाह
     rule:
@@ -246,3 +727,55 @@ cards:
       hi: शब्द पढ़ना
     tag: core
     taught_in: reading.names#t1
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+            of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+          hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+            एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम

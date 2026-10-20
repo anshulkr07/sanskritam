@@ -81,6 +81,72 @@ cards:
       en: the desiderative stem
       hi: इच्छार्थक अंग
   visuals:
+  - id: v-scene-desire
+    kind: comparison
+    title:
+      en: Wanting and doing
+      hi: चाहना और करना
+    explanation:
+      en: The desire form expresses wanting. By itself it does not tell us that the desired action takes place.
+      hi: इच्छार्थक रूप चाहना बताता है। केवल इस रूप से यह नहीं कहा जाता कि चाहा गया काम हो रहा है।
+    items:
+    - id: i0
+      sa: पिपासति
+      meaning:
+        en: wants to drink
+        hi: पीना चाहता है
+      check:
+        type: tinanta
+        dhatu: पा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - San
+      feature:
+        en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-wants-drink
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+          no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+          people or letterlike marks. Exactly one school-age boy in an ochre kurta sitting at a low table, looking longingly
+          at one small plain brass cup of water on the table. One hand reaches toward the cup but does not touch it; mouth
+          closed, cup far away from lips. Make it clear that he wants to drink but is not drinking yet. No thought bubble,
+          icons, writing, extra vessels, food or people.'
+        alt:
+          en: A boy reaches toward a cup, before drinking
+          hi: पीने से पहले प्याले की ओर हाथ बढ़ाता बालक
+        ratio: '4:3'
+        text_in_image: []
+    - id: i1
+      sa: पिबति
+      meaning:
+        en: drinks
+        hi: पीता है
+      check:
+        type: tinanta
+        dhatu: पा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      image:
+        id: teaching-boy-drinks
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is drinking water from one plain
+          brass cup held to his lips. Show the drinking action clearly, with the cup tilted naturally, seated on a low stone
+          step. No jug, food, writing or symbols.'
+        alt:
+          en: A boy drinks from a cup
+          hi: प्याले से पीता बालक
+        ratio: '4:3'
+        text_in_image: []
   - id: v-source-terms
     kind: comparison
     title:
@@ -145,6 +211,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पा
     - text:
         en: wants to drink
         hi: पीना चाहता है
@@ -158,6 +228,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - text:
         en: wants to read
         hi: पढ़ना चाहता है
@@ -171,6 +245,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - text:
         en: wants to go
         hi: जाना चाहता है
@@ -184,6 +262,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भू
     - text:
         en: wants to be
         hi: होना चाहता है
@@ -197,6 +279,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भुज्
     - text:
         en: wants to eat
         hi: खाना चाहता है
@@ -210,6 +296,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - text:
         en: wants to know
         hi: जानना चाहता है
@@ -223,6 +313,10 @@ cards:
         vacana: Eka
         sanadi:
         - San
+      feature:
+        en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: श्रु
     - text:
         en: wants to hear, serves
         hi: सुनना चाहता है, सेवा करता है
@@ -613,3 +707,121 @@ cards:
     text:
       en: Thirst; curiosity.
       hi: प्यास; जिज्ञासा।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: न हन्यते हन्यमाने शरीरे
+      meaning:
+        en: “(The self) is not killed when the body is killed.” (Bhagavadgītā 2.20, read at GRETIL)
+        hi: “शरीर के मारे जाने पर (आत्मा) नहीं मारा जाता।” (भगवद्गीता 2.20, GRETIL में पढ़ा)
+      words:
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: हन्यते
+        gloss:
+          en: is killed
+          hi: मारा जाता है
+      - sa: हन्यमाने
+        gloss:
+          en: while being killed
+          hi: मारे जाते हुए
+      - sa: शरीरे
+        gloss:
+          en: in the body
+          hi: शरीर में
+    - id: i1
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i2
+      sa: माता बालम् भोजयति।
+      meaning:
+        en: The mother feeds the child.
+        hi: माता बच्चे को खिलाती है।
+      words:
+      - sa: माता
+        gloss:
+          en: the mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालम्
+        gloss:
+          en: the child
+          hi: बच्चे को
+        check:
+          type: subanta
+          stem: बाल
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: भोजयति
+        gloss:
+          en: feeds
+          hi: खिलाती है
+        check:
+          type: tinanta
+          dhatu: भुज्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic

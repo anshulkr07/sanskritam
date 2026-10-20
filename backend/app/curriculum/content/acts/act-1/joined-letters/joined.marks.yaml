@@ -177,6 +177,108 @@ cards:
   note:
     en: 'Numbers are written left to right like words: {{१०८}} is one hundred and eight.'
     hi: 'अंक शब्दों की तरह बाएँ से दाएँ लिखे जाते हैं: {{१०८}} यानी एक सौ आठ।'
+  visuals:
+  - id: v-cue-numerals
+    kind: matrix
+    title:
+      en: A numeral and its exact count
+      hi: अंक और उसकी ठीक संख्या
+    columns:
+    - en: Numeral
+      hi: अंक
+    - en: Number
+      hi: संख्या
+    rows:
+    - - id: r0-c0
+        sa: ०
+        diagram:
+          kind: count
+          quantity: 0
+      - id: r0-c1
+        label:
+          en: zero
+          hi: शून्य
+    - - id: r1-c0
+        sa: १
+        diagram:
+          kind: count
+          quantity: 1
+      - id: r1-c1
+        label:
+          en: one
+          hi: एक
+    - - id: r2-c0
+        sa: २
+        diagram:
+          kind: count
+          quantity: 2
+      - id: r2-c1
+        label:
+          en: two
+          hi: दो
+    - - id: r3-c0
+        sa: ३
+        diagram:
+          kind: count
+          quantity: 3
+      - id: r3-c1
+        label:
+          en: three
+          hi: तीन
+    - - id: r4-c0
+        sa: ४
+        diagram:
+          kind: count
+          quantity: 4
+      - id: r4-c1
+        label:
+          en: four
+          hi: चार
+    - - id: r5-c0
+        sa: ५
+        diagram:
+          kind: count
+          quantity: 5
+      - id: r5-c1
+        label:
+          en: five
+          hi: पाँच
+    - - id: r6-c0
+        sa: ६
+        diagram:
+          kind: count
+          quantity: 6
+      - id: r6-c1
+        label:
+          en: six
+          hi: छह
+    - - id: r7-c0
+        sa: ७
+        diagram:
+          kind: count
+          quantity: 7
+      - id: r7-c1
+        label:
+          en: seven
+          hi: सात
+    - - id: r8-c0
+        sa: ८
+        diagram:
+          kind: count
+          quantity: 8
+      - id: r8-c1
+        label:
+          en: eight
+          hi: आठ
+    - - id: r9-c0
+        sa: ९
+        diagram:
+          kind: count
+          quantity: 9
+      - id: r9-c1
+        label:
+          en: nine
+          hi: नौ
 - id: p1
   kind: practice
   depth: core
@@ -536,3 +638,46 @@ cards:
     text:
       en: The ten numerals.
       hi: दस अंक।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: संस्कृतम्
+      meaning:
+        en: 'Sanskrit: {{सं}} hums before {{स्}}'
+        hi: 'संस्कृत: {{स्}} से पहले {{सं}} गूँजता है'
+    - id: i1
+      sa: रामः
+      meaning:
+        en: 'Rāma: ends in a breath'
+        hi: 'राम: साँस पर समाप्त'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: नमः
+      meaning:
+        en: 'homage: {{नमः}}'
+        hi: 'नमन: {{नमः}}'
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'

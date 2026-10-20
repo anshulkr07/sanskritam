@@ -178,5 +178,1581 @@
       "sha256": "88709bda2541b02b71a2a1e90597795111203125c0f1a93aa9b5e793691eb37e",
       "passed": true
     }
+  },
+  {
+    "id": "teaching-reader-one",
+    "ratio": "4:3",
+    "expected": [
+      "अ इ उ"
+    ],
+    "prompt": "Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces, clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE SHORT LINE in very large, clean, exact Devanagari: \"अ इ उ\". These are exactly three characters अ, इ, उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the exact number of human figures unchanged.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-b8a93ae8-18bb-4e44-94c0-3bb6c6759a7b.png",
+    "history": [
+      {
+        "original": "C:/Users/AnshulKumar/.codex/generated_images/01a15763-ed53-7072-8dab-a3474e7644af/exec-6e4a5682-3201-447d-b65f-fe03d06766d0.png",
+        "prompt": "Use case: scientific-educational. Asset: one Sanskrit teaching illustration, 4:3 landscape. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo, matching a Sanskrit learning course. Show EXACTLY ONE school-age boy in a simple ochre kurta seated cross-legged reading one open manuscript at a low wooden desk. Plain quiet courtyard backdrop, no other people, reflections, portraits, animals or duplicated figures. Entire boy, desk and book clearly visible in a compact central grouping, simple silhouette readable on a 320px phone. This picture teaches singular versus dual and plural; the subject count must be unambiguous. No writing is needed in this picture: the complete Sanskrit sentence will be a live caption in the app. No labels, decorative border, symbols or watermark. This is a calm instructional scene, not a dramatic story panorama.",
+        "reason": "Rejected: tiny invented writing on books.",
+        "sha256": "e5237a25fecf362ded38470068012bc969a5c1a923ffda3f7f0607399a588b35",
+        "master_retained": false
+      }
+    ],
+    "review": {
+      "count": 1,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ इ उ"
+      ],
+      "notes": "Direct inspection of corrected master: exact requested reader count. Every book now says अ इ उ with no remaining tiny invented writing; complete figures and books preserved."
+    },
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "7280b9988c5d823a68f10b55fd4199deece04f27729f2277fd814fa3da10c167",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-one-phone-679a07a1.webp",
+        "key": "learn/teaching-reader-one-phone-679a07a1.webp",
+        "sha256": "679a07a1ec05704802ddf953cf0f314357e7108f28de864e947033990a32dfd0",
+        "bytes": 62040,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-one-phone-679a07a1.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-one-tablet-7cb21d4f.webp",
+        "key": "learn/teaching-reader-one-tablet-7cb21d4f.webp",
+        "sha256": "7cb21d4f8e9d05a22bd9fc718a8c879c60dffe5ad6e78912b1ae83d174ac1389",
+        "bytes": 223118,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-one-tablet-7cb21d4f.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "679a07a1ec05704802ddf953cf0f314357e7108f28de864e947033990a32dfd0",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-reader-two",
+    "ratio": "4:3",
+    "expected": [
+      "अ इ उ",
+      "अ इ उ"
+    ],
+    "prompt": "Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces, clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE SHORT LINE in very large, clean, exact Devanagari: \"अ इ उ\". These are exactly three characters अ, इ, उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the exact number of human figures unchanged.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-43c07fe2-b798-4961-b804-cf4c38f83136.png",
+    "history": [
+      {
+        "original": "C:/Users/AnshulKumar/.codex/generated_images/01a15763-ed53-7072-8dab-a3474e7644af/exec-596087a7-9c18-4cb1-a460-b62d4d1f1ef8.png",
+        "prompt": "Use case: scientific-educational. Asset: one Sanskrit teaching illustration, 4:3 landscape. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo. Show EXACTLY TWO school-age boys seated side by side, each cross-legged reading his own open manuscript at a low wooden desk. The boy on the left wears a simple ochre kurta, the boy on the right a muted indigo kurta. Plain quiet courtyard backdrop, no other people, reflections, portraits, animals or duplicated figures. Both complete boys, their desks and books clearly visible together in a compact central group, readable on a 320px phone. Exactly TWO human figures is essential: this teaches Sanskrit dual. No writing is needed: Sanskrit captions are live app text. No labels, decorative border, symbols or watermark.",
+        "reason": "Rejected: tiny invented writing on books.",
+        "sha256": "76eb182b8420dd9db4a8b044c3664ca97ffb914ac34e52ed62ce9eb02f5ececc",
+        "master_retained": false
+      }
+    ],
+    "review": {
+      "count": 2,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ इ उ",
+        "अ इ उ"
+      ],
+      "notes": "Direct inspection of corrected master: exact requested reader count. Every book now says अ इ उ with no remaining tiny invented writing; complete figures and books preserved."
+    },
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "8c8f44b4e18276ee1ac94ff933ffea6a324012df56521d1e78f85ae21bcd2d57",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-two-phone-59d83fe7.webp",
+        "key": "learn/teaching-reader-two-phone-59d83fe7.webp",
+        "sha256": "59d83fe71432a0f1def90302f858884c926943ae7bbd406ea87c0a35ad7a5f53",
+        "bytes": 57328,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-two-phone-59d83fe7.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-two-tablet-ec04d6fc.webp",
+        "key": "learn/teaching-reader-two-tablet-ec04d6fc.webp",
+        "sha256": "ec04d6fcba9be13a7ddd460447c3f4280b4bb26970d0e02f5d31eb90e1c1764f",
+        "bytes": 224890,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-two-tablet-ec04d6fc.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "59d83fe71432a0f1def90302f858884c926943ae7bbd406ea87c0a35ad7a5f53",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-reader-many",
+    "ratio": "4:3",
+    "expected": [
+      "अ इ उ",
+      "अ इ उ",
+      "अ इ उ"
+    ],
+    "prompt": "Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces, clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE SHORT LINE in very large, clean, exact Devanagari: \"अ इ उ\". These are exactly three characters अ, इ, उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the exact number of human figures unchanged.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-121b94f7-798b-4555-be17-a70d20bab01e.png",
+    "history": [
+      {
+        "original": "C:/Users/AnshulKumar/.codex/generated_images/01a15763-ed53-7072-8dab-a3474e7644af/exec-66e0427a-fc68-4eb6-ae50-3de9a58e9867.png",
+        "prompt": "Use case: scientific-educational. Asset: one Sanskrit teaching illustration, 4:3 landscape. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo. Show EXACTLY THREE school-age boys seated in one row, each cross-legged reading his own open manuscript at a low wooden desk. Left boy ochre kurta, middle boy indigo kurta, right boy sage kurta. Plain quiet courtyard backdrop, no other people, reflections, portraits, animals or duplicated figures. All THREE complete boys, desks and books clearly visible as a compact central group, readable on a 320px phone. Exactly THREE human figures is essential: this teaches Sanskrit plural of three or more. No writing is needed: Sanskrit captions are live app text. No labels, decorative border, symbols or watermark.",
+        "reason": "Rejected: tiny invented writing on books.",
+        "sha256": "0a2a0df328d9cbee8cd9d6a4103fd2ce91ee5db7a5d3e69e503c389ff2a5fa9d",
+        "master_retained": false
+      }
+    ],
+    "review": {
+      "count": 3,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ इ उ",
+        "अ इ उ",
+        "अ इ उ"
+      ],
+      "notes": "Direct inspection of corrected master: exact requested reader count. Every book now says अ इ उ with no remaining tiny invented writing; complete figures and books preserved."
+    },
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "d47d071d2564b3ef75c54cf2871f345df98ff91fa930677cf22df58a751c69c2",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-many-phone-3962075e.webp",
+        "key": "learn/teaching-reader-many-phone-3962075e.webp",
+        "sha256": "3962075eedadabf9bdd3de87fd5e637422444a5ce55fb775669cdafe41bb3580",
+        "bytes": 58522,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-many-phone-3962075e.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-reader-many-tablet-ab7b9104.webp",
+        "key": "learn/teaching-reader-many-tablet-ab7b9104.webp",
+        "sha256": "ab7b91046720203c2402d814e1cf52bcd92301a0da84253545794333b2e4bcf6",
+        "bytes": 211040,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-reader-many-tablet-ab7b9104.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "3962075eedadabf9bdd3de87fd5e637422444a5ce55fb775669cdafe41bb3580",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boat-one",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat count is the teaching point. The river and bank are plain and unobtrusive.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1d5db582-1187-4df8-af6b-fd8c911193cf.png",
+    "review": {
+      "count": 1,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct review: exactly the requested number of complete separated boats, no people or lettering. Reflections do not create an additional depicted boat."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "b752c133bf447662ec3dfe21d1d6947365b4905abd2e84610f27f566416a55c3",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-one-phone-d0a3d917.webp",
+        "key": "learn/teaching-boat-one-phone-d0a3d917.webp",
+        "sha256": "d0a3d917e55d65212186d9ef49631c719ac5078be3732e94ffd0ccf4ebf7096a",
+        "bytes": 64068,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-one-phone-d0a3d917.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-one-tablet-beccb206.webp",
+        "key": "learn/teaching-boat-one-tablet-beccb206.webp",
+        "sha256": "beccb206b5c3e6cccf4e5b6db5cc4ff3137d0fc6324e8e4ce45a9da2f78331a6",
+        "bytes": 305708,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-one-tablet-beccb206.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "d0a3d917e55d65212186d9ef49631c719ac5078be3732e94ffd0ccf4ebf7096a",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boat-two",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO small traditional wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat count is the teaching point. The river and bank are plain and unobtrusive.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-ce611755-b449-4947-a31d-90a4df779e5f.png",
+    "review": {
+      "count": 2,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct review: exactly the requested number of complete separated boats, no people or lettering. Reflections do not create an additional depicted boat."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "76891971889a3f8940be82e52d88d05311305224bbef45723b25947cc411b840",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-two-phone-6b1b0654.webp",
+        "key": "learn/teaching-boat-two-phone-6b1b0654.webp",
+        "sha256": "6b1b06547c22113d074f8f0c6676efba467010820fef2345c5fa2cfd95300025",
+        "bytes": 62584,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-two-phone-6b1b0654.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-two-tablet-4d993418.webp",
+        "key": "learn/teaching-boat-two-tablet-4d993418.webp",
+        "sha256": "4d993418735d9eb2ae7b16c273cba0556796ba3406bf215f0e67d93f3d9bc423",
+        "bytes": 298400,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-two-tablet-4d993418.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "6b1b06547c22113d074f8f0c6676efba467010820fef2345c5fa2cfd95300025",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boat-many",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats, buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The exact boat count is the teaching point. The river and bank are plain and unobtrusive.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2099c7fe-af7d-468c-ac14-2be919de6cfc.png",
+    "review": {
+      "count": 3,
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct review: exactly the requested number of complete separated boats, no people or lettering. Reflections do not create an additional depicted boat."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "cf2cf09071ef7c3d07a272633bb141fde999fd194dee431c57fecb447569a8a4",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-many-phone-3d66b352.webp",
+        "key": "learn/teaching-boat-many-phone-3d66b352.webp",
+        "sha256": "3d66b35248986fd6dcc5b36f63967265037c78410d9f41d2dcb755983becc5e0",
+        "bytes": 71922,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-many-phone-3d66b352.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boat-many-tablet-b3313d28.webp",
+        "key": "learn/teaching-boat-many-tablet-b3313d28.webp",
+        "sha256": "b3313d2875deacfc5d2cfa58345f98bd4db15f9a928eab3310c4b8ed463be44b",
+        "bytes": 319256,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boat-many-tablet-b3313d28.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "3d66b35248986fd6dcc5b36f63967265037c78410d9f41d2dcb755983becc5e0",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-toward-house",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show exactly one school-age boy in an ochre kurta on the LEFT, walking to the RIGHT toward the open door of a single small traditional cream house on the RIGHT. His face and toes point right, his front foot steps toward the door. Empty plain path. No other people, houses, writing, arrows, signs or letterlike markings. The scene teaches destination: going TO the house.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-e2fde869-0866-4fcd-afe2-0b4f007d3b9f.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct visual review: one child and one house; destination/source/stationary location matches the specified action, no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "0829e00e13463d3bdcbf871f6bb20d0af51bb5d7d46e4bbb40ba052f52b33d6d",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-toward-house-phone-eb857391.webp",
+        "key": "learn/teaching-toward-house-phone-eb857391.webp",
+        "sha256": "eb857391160118218c0e8110769ea5a23c246e3a7018a695a21ac8571346dac9",
+        "bytes": 69414,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-toward-house-phone-eb857391.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-toward-house-tablet-d203d520.webp",
+        "key": "learn/teaching-toward-house-tablet-d203d520.webp",
+        "sha256": "d203d52019f0804693e800058aada2249e82d4a4756bd4aa2becab441a0cd039",
+        "bytes": 308686,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-toward-house-tablet-d203d520.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "eb857391160118218c0e8110769ea5a23c246e3a7018a695a21ac8571346dac9",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-from-house",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show a single small traditional cream house with an open door on the LEFT. Exactly one school-age boy in an ochre kurta is on the RIGHT walking farther to the RIGHT, away from that door. His face and toes point right, his back is toward the house. Empty plain path. No other people, houses, writing, arrows, signs or letterlike markings. The scene teaches source: coming FROM the house.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-c408ae53-c8ff-4a77-8841-6adea211fd55.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct visual review: one child and one house; destination/source/stationary location matches the specified action, no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "8874bdbfbe86e18ab3e674323a8b3d316989151f91006a5b1a527cb2040cb4e5",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-from-house-phone-0f14c1f5.webp",
+        "key": "learn/teaching-from-house-phone-0f14c1f5.webp",
+        "sha256": "0f14c1f55a7364c8594c4f168859a99acea21b24b6568f035403947a382a455a",
+        "bytes": 59616,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-from-house-phone-0f14c1f5.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-from-house-tablet-4e654927.webp",
+        "key": "learn/teaching-from-house-tablet-4e654927.webp",
+        "sha256": "4e6549270e7ea9b7e05adb31dff3ccaf2f608f8f3cdf99e06f5cca3e0dd26b77",
+        "bytes": 261706,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-from-house-tablet-4e654927.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "0f14c1f55a7364c8594c4f168859a99acea21b24b6568f035403947a382a455a",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-at-house",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show exactly one school-age boy in an ochre kurta sitting peacefully at the open door of a single small traditional cream house. He is stationary, hands resting on his knees, no book or writing. The house and child form one clear central grouping on an empty plain courtyard ground. No other people, houses, motion marks, arrows, signs or lettering. The scene teaches location: AT the house.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-6e66fa4c-f2aa-4e7d-a2e5-04849046425a.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct visual review: one child and one house; destination/source/stationary location matches the specified action, no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "9eeba0a3b14cd54ffc437601673ca663fbbf98a951efd7908de333152e32a4d6",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-at-house-phone-b0b108ec.webp",
+        "key": "learn/teaching-at-house-phone-b0b108ec.webp",
+        "sha256": "b0b108ec34fdf114fde6acbeec273686e4dabf364983655e6ada7f39dbcc6b4c",
+        "bytes": 61458,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-at-house-phone-b0b108ec.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-at-house-tablet-b7c7508e.webp",
+        "key": "learn/teaching-at-house-tablet-b7c7508e.webp",
+        "sha256": "b7c7508e1545db9b4a9fc3382c4b7bdb1e05b1fe9ee75faa549e5024058a5446",
+        "bytes": 277594,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-at-house-tablet-b7c7508e.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "b0b108ec34fdf114fde6acbeec273686e4dabf364983655e6ada7f39dbcc6b4c",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-gift-teacher",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show exactly two people: a school-age boy in an ochre kurta on the LEFT giving exactly ONE ripe yellow mango to an older male teacher in a plain cream dhoti and shawl on the RIGHT. The boy's hands extend the fruit toward the teacher's outstretched receiving hands; the mango is clearly in transit between their hands. Both people complete and centrally grouped in a quiet empty courtyard. No books, extra fruit, other people, writing, arrows, signs or letterlike markings. This teaches giver, gift and recipient; distinguish them clearly.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2d8244e4-9c53-4f1b-b1de-f1a1e37ae866.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct visual review: one child offers one mango to one receiving older teacher; roles and transfer direction clear, no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "dec2b384be64faff4b7c958a4dce4b5f718d94e0b8cf196e19ff4fd629d53454",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-gift-teacher-phone-c523b1d0.webp",
+        "key": "learn/teaching-gift-teacher-phone-c523b1d0.webp",
+        "sha256": "c523b1d096de7555984f54e89f9ef986931bbb8d712281504ff79047d6f709ab",
+        "bytes": 56372,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-gift-teacher-phone-c523b1d0.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-gift-teacher-tablet-05c95479.webp",
+        "key": "learn/teaching-gift-teacher-tablet-05c95479.webp",
+        "sha256": "05c95479eb48fa2c082e49b7e545c1f3ff5ed36d5e94226fb204d2baabc4a89d",
+        "bytes": 240814,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-gift-teacher-tablet-05c95479.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "c523b1d096de7555984f54e89f9ef986931bbb8d712281504ff79047d6f709ab",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-girl-writes",
+    "expected": [
+      "अ"
+    ],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections, letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character \"अ\" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-eedaa34f-3579-4363-9e3a-7c76496ad40b.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ"
+      ],
+      "notes": "Direct inspection: one writing girl, pen and ink; exact single readable अ and no extra letters."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "de1dd20303f1cbae6389bc411d6a361efebe1a4ee6acfbde10a810141cb4272e",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-girl-writes-phone-bb9c6ba2.webp",
+        "key": "learn/teaching-girl-writes-phone-bb9c6ba2.webp",
+        "sha256": "bb9c6ba26b7dee5461aa7b90f8d97461846b6052fd5d88fdce7613ec609743dc",
+        "bytes": 65524,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-girl-writes-phone-bb9c6ba2.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-girl-writes-tablet-e909cb02.webp",
+        "key": "learn/teaching-girl-writes-tablet-e909cb02.webp",
+        "sha256": "e909cb02b77ef587b0ce33edc3cbe79e8068b4ccfc75591b39134ad52409f1fa",
+        "bytes": 258990,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-girl-writes-tablet-e909cb02.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "bb9c6ba26b7dee5461aa7b90f8d97461846b6052fd5d88fdce7613ec609743dc",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boy-eats",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango, holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit, no plate of additional food, no writing or symbols. The eating action must be unmistakable.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-c2730d48-726c-491d-a909-a42f314d79be.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "2309d6dbaa04609606c903a33482d3d481938e629e3d7a5ee8c88728149f823b",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-eats-phone-4e0a40e1.webp",
+        "key": "learn/teaching-boy-eats-phone-4e0a40e1.webp",
+        "sha256": "4e0a40e18bc2f74eb046ff481680026f0315539eec84783ab805e459b18d7033",
+        "bytes": 59052,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-eats-phone-4e0a40e1.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-eats-tablet-bae4ecd3.webp",
+        "key": "learn/teaching-boy-eats-tablet-bae4ecd3.webp",
+        "sha256": "bae4ecd34a8d0a486c1075550359ae3e66454fd08276237f46d68ac5db395f54",
+        "bytes": 254134,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-eats-tablet-bae4ecd3.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "4e0a40e18bc2f74eb046ff481680026f0315539eec84783ab805e459b18d7033",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boy-drinks",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta is drinking water from one plain brass cup held to his lips. Show the drinking action clearly, with the cup tilted naturally, seated on a low stone step. No jug, food, writing or symbols.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-3cfe3923-3dff-4e62-bb1e-be4a3a9b104e.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "e06b34e466c7a98ad31640b1aa2cb21ce3cbf85792b7fd3aa51f89ce15b45de6",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-drinks-phone-437be73d.webp",
+        "key": "learn/teaching-boy-drinks-phone-437be73d.webp",
+        "sha256": "437be73d8a1f54ca82cdd2fe20dbdf2c0e67023051a5703faa6ff1c9287a738c",
+        "bytes": 65488,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-drinks-phone-437be73d.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-drinks-tablet-9f1a28ce.webp",
+        "key": "learn/teaching-boy-drinks-tablet-9f1a28ce.webp",
+        "sha256": "9f1a28ce057375b552cba666a247b7ac48804e8082b1e8996c09514a19d44930",
+        "bytes": 281830,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-drinks-tablet-9f1a28ce.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "437be73d8a1f54ca82cdd2fe20dbdf2c0e67023051a5703faa6ff1c9287a738c",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-boy-walks",
+    "expected": [],
+    "ratio": "4:3",
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward the right on a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body shown. No house, books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-040ff67e-b612-4167-9a61-b8bd467310d2.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "f7ad666c715714fcd9c87d168257a5bca088ba1a26a350624abd27e19648200e",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-walks-phone-86122436.webp",
+        "key": "learn/teaching-boy-walks-phone-86122436.webp",
+        "sha256": "8612243654efd18f7cd697a66ae74c431831ead39f424b5ddbe2a79f71494c5d",
+        "bytes": 51750,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-walks-phone-86122436.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-boy-walks-tablet-d4bef9cb.webp",
+        "key": "learn/teaching-boy-walks-tablet-d4bef9cb.webp",
+        "sha256": "d4bef9cb0a802aeab6da9bf46202224545f1a2f15b99d8322514645479abadb9",
+        "bytes": 225652,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-boy-walks-tablet-d4bef9cb.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "8612243654efd18f7cd697a66ae74c431831ead39f424b5ddbe2a79f71494c5d",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-vine",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "लता",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-49ea481e-44d1-4eea-a8cc-9cc7dd46db79.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "e2f632c34c84a1fd07d254c6bb483e982346e5928917afcfcbb59087a3b2f165",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-vine-phone-9ce96dfa.webp",
+        "key": "learn/teaching-vine-phone-9ce96dfa.webp",
+        "sha256": "9ce96dfa29119dae587bf697df363e2e50081d22fb0f6fc4e9c97c3d1b17dfe7",
+        "bytes": 32900,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-vine-phone-9ce96dfa.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-vine-tablet-d51275a6.webp",
+        "key": "learn/teaching-vine-tablet-d51275a6.webp",
+        "sha256": "d51275a64703117edc66ec20c7ea56c4726ce87bdd99443b22da27d2858db4bf",
+        "bytes": 127262,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-vine-tablet-d51275a6.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "9ce96dfa29119dae587bf697df363e2e50081d22fb0f6fc4e9c97c3d1b17dfe7",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-river",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "नदी",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0e300d98-6f85-4f49-9218-7e5e662c5644.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "2fd649c6e0f1fa8ecf656a43d95e582a6c5c62b8673316140c0a0c1b8150d071",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-river-phone-64b742d1.webp",
+        "key": "learn/teaching-river-phone-64b742d1.webp",
+        "sha256": "64b742d1575344f8ccfa11810a43ecc3a19d43c7a881086aa39bf2ab0952a5e9",
+        "bytes": 151394,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-river-phone-64b742d1.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-river-tablet-b22c26b4.webp",
+        "key": "learn/teaching-river-tablet-b22c26b4.webp",
+        "sha256": "b22c26b44732359ce9dadf7f6392b089214f8a60e17c5ba94ea804c6c15e5c1a",
+        "bytes": 479024,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-river-tablet-b22c26b4.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "64b742d1575344f8ccfa11810a43ecc3a19d43c7a881086aa39bf2ab0952a5e9",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-tree",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "वृक्षः",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch of ground. No people, animals, fruit, hanging objects or lettering.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-ab097d07-51f8-45e7-8d41-f2d05ae9ed30.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "22cdfb6af8844e96bf8c73e586821bab4cdd517b12ad9e16ce63b3334d25037e",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-tree-phone-6b546d81.webp",
+        "key": "learn/teaching-tree-phone-6b546d81.webp",
+        "sha256": "6b546d81ba8f9e4555f9d97aaebe2199ebd41f0108031a0912bbf6f03a53b0d9",
+        "bytes": 153254,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-tree-phone-6b546d81.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-tree-tablet-aa8e414c.webp",
+        "key": "learn/teaching-tree-tablet-aa8e414c.webp",
+        "sha256": "aa8e414ca1ae6798596be29adb93870a447e1b380177dd1185d8191e7eb63748",
+        "bytes": 475240,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-tree-tablet-aa8e414c.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "6b546d81ba8f9e4555f9d97aaebe2199ebd41f0108031a0912bbf6f03a53b0d9",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-pen",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "लेखनी",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. One traditional reed writing pen resting beside a small plain black inkpot on an ivory surface. No paper or writing. Show the pen tip and inkpot clearly.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-88b6a0eb-f20e-4ab9-a3ef-27c50c46c9aa.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "a59f72495384602aa43b435569340a67cdfce24b3282b5190ab63c869acd50c8",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-pen-phone-12660e83.webp",
+        "key": "learn/teaching-pen-phone-12660e83.webp",
+        "sha256": "12660e83de2e9bc20f16c403118ef8c0aef9b3140dd74fd09c0d400932177947",
+        "bytes": 35164,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-pen-phone-12660e83.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-pen-tablet-008936ff.webp",
+        "key": "learn/teaching-pen-tablet-008936ff.webp",
+        "sha256": "008936ff87e9a18bb004e56bbe3fcc6f8a213d2134ecae31b5d0eaf2649e00c7",
+        "bytes": 174082,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-pen-tablet-008936ff.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "12660e83de2e9bc20f16c403118ef8c0aef9b3140dd74fd09c0d400932177947",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-book",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "पुस्तकम्",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed at a slight angle. No writing on the cover, spine or pages.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-3aa5ed59-8633-4221-b589-b417093bcc8a.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "0c24d96e16c922bfb3b5c2b3ef54b48ce9de196119d2e3ff041d1d6bca16e3fc",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-book-phone-0a681577.webp",
+        "key": "learn/teaching-book-phone-0a681577.webp",
+        "sha256": "0a681577fad16bd551ea3c33ae00402d603d26236b08983553473d08d4118357",
+        "bytes": 59764,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-book-phone-0a681577.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-book-tablet-ec7444e8.webp",
+        "key": "learn/teaching-book-tablet-ec7444e8.webp",
+        "sha256": "ec7444e8835f77ab73ff0fada41008a802d4d158fafdcea3d2e494f77b1c0f98",
+        "bytes": 275486,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-book-tablet-ec7444e8.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "0a681577fad16bd551ea3c33ae00402d603d26236b08983553473d08d4118357",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-cow",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "धेनुः",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete head, horns, tail and all four legs visible. No calf, other animals, people or lettering.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-3d8f5b70-a544-4055-a2d7-644597d8f8b5.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "e227e9127b87190272b85e279d58d6d309a2074dffb0671cd43ea27b0f7f1644",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-cow-phone-15a15db2.webp",
+        "key": "learn/teaching-cow-phone-15a15db2.webp",
+        "sha256": "15a15db215be83fa9d00996c0c19d3bb397871fa0885b60a62311109abe1375c",
+        "bytes": 45760,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-cow-phone-15a15db2.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-cow-tablet-814df1d0.webp",
+        "key": "learn/teaching-cow-tablet-814df1d0.webp",
+        "sha256": "814df1d05cc49913ec0213efd1f67657cb0a17a489cf5fc331d22d6c30945f30",
+        "bytes": 187364,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-cow-tablet-814df1d0.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "15a15db215be83fa9d00996c0c19d3bb397871fa0885b60a62311109abe1375c",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-rope",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "रज्जुः",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the rope texture, no other objects or lettering.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-9b2b23c0-ecc9-41c6-9aa6-aba943b3429f.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "abf00348036501904ee1dfea331df488c624ccb78e2af52aefbda8c8b6fc5a5e",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-rope-phone-98b053fb.webp",
+        "key": "learn/teaching-rope-phone-98b053fb.webp",
+        "sha256": "98b053fb713cfa74a0e560b971b99f0ad5bf95f7ae52f5514f6de525cd3c33ca",
+        "bytes": 71266,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-rope-phone-98b053fb.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-rope-tablet-5d7e52d6.webp",
+        "key": "learn/teaching-rope-tablet-5d7e52d6.webp",
+        "sha256": "5d7e52d650ba2ea35a6a96d0c4f920c13baa07242c7c36e5af1999878da89f42",
+        "bytes": 244898,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-rope-tablet-5d7e52d6.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "98b053fb713cfa74a0e560b971b99f0ad5bf95f7ae52f5514f6de525cd3c33ca",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-garland",
+    "ratio": "1:1",
+    "expected": [],
+    "word": "माला",
+    "prompt": "Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border or watermark. One circular garland made of small white jasmine flowers and a few muted orange marigold flowers, resting on a plain ivory surface. No deity, people, stand, labels or writing.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-ecc29152-7ef6-49e1-a4bb-b765756c43bf.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Direct inspection: requested subject/action and object counts match; whole subject recognizable; no lettering."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "e8afa6e36ae559060b024a43f6f83fe3391532b9e59c5cebe226041dbccc9179",
+    "width": 1254,
+    "height": 1254,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-garland-phone-8f36c318.webp",
+        "key": "learn/teaching-garland-phone-8f36c318.webp",
+        "sha256": "8f36c318bd4047a79267feb7eb2d5a7aadbc0514d9c44f0462e74213d890e92d",
+        "bytes": 49264,
+        "width": 768,
+        "height": 768,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-garland-phone-8f36c318.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-garland-tablet-884a46ca.webp",
+        "key": "learn/teaching-garland-tablet-884a46ca.webp",
+        "sha256": "884a46ca72af26954b4a7aacddd918e967603a871f7c9c4c38f484700701c087",
+        "bytes": 184152,
+        "width": 1254,
+        "height": 1254,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-garland-tablet-884a46ca.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "8f36c318bd4047a79267feb7eb2d5a7aadbc0514d9c44f0462e74213d890e92d",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-cause-reading",
+    "ratio": "4:3",
+    "expected": [
+      "अ इ उ"
+    ],
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects, no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra people or letterlike marks. Exactly two people: an older male teacher in plain cream clothes on the left actively teaching one school-age boy in an ochre kurta on the right to read. Both sit at one low desk, the teacher points with one finger to the boy’s open book and the boy follows the line aloud, eyes on the page. The book contains exactly the single large line \"अ इ उ\", clearly legible, no other writing. The teacher is causing the boy to read, rather than reading alone.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-786dfb51-ed82-4445-a628-eb4af27676ad.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ इ उ"
+      ],
+      "notes": "One teacher points at the boy’s book while the boy reads; exact visible अ इ उ and no other writing."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "0e1edcaf6d24a5db05f386484f0f96e5c9b6f95b03fbfdbbf44ebe7c35aed7cc",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-cause-reading-phone-55eda50b.webp",
+        "key": "learn/teaching-cause-reading-phone-55eda50b.webp",
+        "sha256": "55eda50b6ce4358bbb3aa7ec9eaf9021e3b5162ea5f161577b69152f7480769a",
+        "bytes": 73656,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-cause-reading-phone-55eda50b.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-cause-reading-tablet-87f8ca5a.webp",
+        "key": "learn/teaching-cause-reading-tablet-87f8ca5a.webp",
+        "sha256": "87f8ca5a1db23fb0c8895cb8836d916e51589274856f4a1ed5c16fe9d17f7c12",
+        "bytes": 288990,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-cause-reading-tablet-87f8ca5a.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "55eda50b6ce4358bbb3aa7ec9eaf9021e3b5162ea5f161577b69152f7480769a",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-walk-reading",
+    "ratio": "4:3",
+    "expected": [
+      "अ इ उ"
+    ],
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects, no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra people or letterlike marks. Exactly one school-age boy in an ochre kurta walking calmly toward the right while reading an open book held in both hands. One foot clearly steps forward and his eyes are on the book; show simultaneous walking and reading. On the book, the ONLY writing is the exact large line \"अ इ उ\". No additional letters anywhere. No teacher, signs or other people.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-4643e5fa-cdd3-4671-8f10-8768eb70f471.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [
+        "अ इ उ"
+      ],
+      "notes": "One boy is mid-step and reading simultaneously; exact visible अ इ उ; no other writing."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "6f96f851b18bd95c2742efce8c3f1ac6d40ed4e6b0e692665e15699eed358894",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-walk-reading-phone-9421cdae.webp",
+        "key": "learn/teaching-walk-reading-phone-9421cdae.webp",
+        "sha256": "9421cdae2fa0706675d602e077e68146d09eaf24dd5cbd03a84b1a100eae973c",
+        "bytes": 80744,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-walk-reading-phone-9421cdae.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-walk-reading-tablet-38461b0b.webp",
+        "key": "learn/teaching-walk-reading-tablet-38461b0b.webp",
+        "sha256": "38461b0b5c2b22fe1c7d0f4969f599f6af93c7c0001288dfd65cc4e531aa6b69",
+        "bytes": 341344,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-walk-reading-tablet-38461b0b.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "9421cdae2fa0706675d602e077e68146d09eaf24dd5cbd03a84b1a100eae973c",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-walk-friend",
+    "ratio": "4:3",
+    "expected": [],
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects, no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra people or letterlike marks. Exactly two school-age boys walking together side by side, both in profile toward the right, one in an ochre kurta and the friend in a muted indigo kurta. Both face and step right, relaxed friendly expressions. They are companions; neither pushes, pulls, carries or leads the other. No carried objects, writing, symbols or arrows.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-76f89971-bf19-438a-97e7-e04465adae8f.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "Exactly two boys walk side by side in the same direction, neither controlling the other; no writing."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "fc280d5a39e84cb46bceaeecde24cbe05a657dd2964cf2407f0a5e335124f22c",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-walk-friend-phone-8c616eb8.webp",
+        "key": "learn/teaching-walk-friend-phone-8c616eb8.webp",
+        "sha256": "8c616eb843a90ca4005c75907350ddea1011bab067adececf90214d49468d0ba",
+        "bytes": 86506,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-walk-friend-phone-8c616eb8.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-walk-friend-tablet-c6626668.webp",
+        "key": "learn/teaching-walk-friend-tablet-c6626668.webp",
+        "sha256": "c662666813a736bb1d5f242cd771ea873f560cc7b21e57318d60aabd42a60d5c",
+        "bytes": 361440,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-walk-friend-tablet-c6626668.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "8c616eb843a90ca4005c75907350ddea1011bab067adececf90214d49468d0ba",
+      "passed": true
+    }
+  },
+  {
+    "id": "teaching-wants-drink",
+    "ratio": "4:3",
+    "expected": [],
+    "prompt": "Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects, no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra people or letterlike marks. Exactly one school-age boy in an ochre kurta sitting at a low table, looking longingly at one small plain brass cup of water on the table. One hand reaches toward the cup but does not touch it; mouth closed, cup far away from lips. Make it clear that he wants to drink but is not drinking yet. No thought bubble, icons, writing, extra vessels, food or people.",
+    "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-03b5654d-76c5-4b78-8b31-d9535382a3fd.png",
+    "review": {
+      "count_verified": true,
+      "text_verified": true,
+      "visible_text": [],
+      "notes": "One boy reaches toward one cup, which remains on the table and away from his lips; he is not drinking; no writing."
+    },
+    "history": [],
+    "safe_rect": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "focal_point": [
+      0.5,
+      0.5
+    ],
+    "sha256": "00a2facb53c27d96d56d16259b9aeab3b5e01c26c5c584f9725375cd110572a1",
+    "width": 1448,
+    "height": 1086,
+    "text_verified": true,
+    "master_retained": false,
+    "variants": {
+      "phone": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-wants-drink-phone-2a6f5b8d.webp",
+        "key": "learn/teaching-wants-drink-phone-2a6f5b8d.webp",
+        "sha256": "2a6f5b8deed1a99618ebe4c8e1d17b5e137f5adde84da3846d66574952316543",
+        "bytes": 63388,
+        "width": 768,
+        "height": 576,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-wants-drink-phone-2a6f5b8d.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      },
+      "tablet": {
+        "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\teaching-course-plan\\implementation\\artwork\\delivery\\teaching-wants-drink-tablet-f833f0d0.webp",
+        "key": "learn/teaching-wants-drink-tablet-f833f0d0.webp",
+        "sha256": "f833f0d095aa57bedc51d6a1f2b7ae5ce2e0ba698a41f74c91e1542fbdbda53e",
+        "bytes": 273496,
+        "width": 1448,
+        "height": 1086,
+        "uri": "https://cdn.vedicvalor.com/learn/teaching-wants-drink-tablet-f833f0d0.webp",
+        "cdn_status": "HIT",
+        "verified": true
+      }
+    },
+    "phone_review": {
+      "method": "Direct inspection of optimized phone derivative",
+      "sha256": "2a6f5b8deed1a99618ebe4c8e1d17b5e137f5adde84da3846d66574952316543",
+      "passed": true
+    }
   }
 ]

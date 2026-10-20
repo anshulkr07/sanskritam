@@ -192,6 +192,344 @@ cards:
       en: the “having done” ending
       hi: ‘करके’ प्रत्यय
   visuals:
+  - id: v-scene-sequence
+    kind: sequence
+    title:
+      en: Same person, one action before another
+      hi: एक ही व्यक्ति, एक काम के बाद दूसरा
+    items:
+    - id: first
+      label:
+        en: 'First event: eating, completed before the main action'
+        hi: 'पहला काम: खाना, जो मुख्य क्रिया से पहले पूरा होता है'
+      sa: खादित्वा
+      image:
+        id: teaching-boy-eats
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+          holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+          no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+        alt:
+          en: A boy eats one mango
+          hi: एक आम खाता बालक
+        ratio: '4:3'
+        text_in_image: []
+      check:
+        type: krdanta
+        dhatu: खाद्
+        krt: ktvA
+    - id: next
+      label:
+        en: 'Main action: going'
+        hi: 'मुख्य क्रिया: जाना'
+      sa: गच्छति
+      image:
+        id: teaching-boy-walks
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward the right on
+          a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body shown. No house,
+          books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+        alt:
+          en: A boy walks on a path
+          hi: राह पर चलता बालक
+        ratio: '4:3'
+        text_in_image: []
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - id: i2
+      sa: सः फलम् खादित्वा गच्छति।
+      label:
+        en: Read the complete sequence
+        hi: पूरा क्रम पढ़ें
+      meaning:
+        en: Having eaten fruit, he goes.
+        hi: फल खाकर वह जाता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादित्वा
+        gloss:
+          en: having eaten
+          hi: खाकर
+        check:
+          type: krdanta
+          dhatu: खाद्
+          krt: ktvA
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-event-2
+    kind: reading
+    title:
+      en: Follow the events
+      hi: घटनाओं का क्रम समझें
+    items:
+    - id: i0
+      sa: सः आगत्य पठति।
+      meaning:
+        en: Having come, he reads.
+        hi: आकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: आगत्य
+        gloss:
+          en: having come
+          hi: आकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+          prefixes:
+          - आ
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      diagram:
+        kind: timeline
+        events:
+        - label:
+            en: '{{आगत्य}} — completed first'
+            hi: '{{आगत्य}} — पहले पूरा हुआ'
+          start: 0
+          end: 3
+        - label:
+            en: '{{पठति}} — main action follows'
+            hi: '{{पठति}} — फिर मुख्य क्रिया'
+          start: 5
+          end: 9
+    explanation:
+      en: The same subject performs both actions. The first is completed before the main action.
+      hi: दोनों काम एक ही कर्ता करता है। पहला काम मुख्य क्रिया से पहले पूरा होता है।
+  - id: v-event-1
+    kind: reading
+    title:
+      en: Follow the events
+      hi: घटनाओं का क्रम समझें
+    items:
+    - id: i0
+      sa: सः फलम् खादित्वा गच्छति।
+      meaning:
+        en: Having eaten fruit, he goes.
+        hi: फल खाकर वह जाता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादित्वा
+        gloss:
+          en: having eaten
+          hi: खाकर
+        check:
+          type: krdanta
+          dhatu: खाद्
+          krt: ktvA
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      diagram:
+        kind: timeline
+        events:
+        - label:
+            en: '{{खादित्वा}} — completed first'
+            hi: '{{खादित्वा}} — पहले पूरा हुआ'
+          start: 0
+          end: 3
+        - label:
+            en: '{{गच्छति}} — main action follows'
+            hi: '{{गच्छति}} — फिर मुख्य क्रिया'
+          start: 5
+          end: 9
+    explanation:
+      en: The same subject performs both actions. The first is completed before the main action.
+      hi: दोनों काम एक ही कर्ता करता है। पहला काम मुख्य क्रिया से पहले पूरा होता है।
+  - id: v-event-0
+    kind: reading
+    title:
+      en: Follow the events
+      hi: घटनाओं का क्रम समझें
+    items:
+    - id: i0
+      sa: सः गृहम् गत्वा पठति।
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      diagram:
+        kind: timeline
+        events:
+        - label:
+            en: '{{गत्वा}} — completed first'
+            hi: '{{गत्वा}} — पहले पूरा हुआ'
+          start: 0
+          end: 3
+        - label:
+            en: '{{पठति}} — main action follows'
+            hi: '{{पठति}} — फिर मुख्य क्रिया'
+          start: 5
+          end: 9
+    explanation:
+      en: The same subject performs both actions. The first is completed before the main action.
+      hi: दोनों काम एक ही कर्ता करता है। पहला काम मुख्य क्रिया से पहले पूरा होता है।
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: Having gone home, he reads.
+      hi: घर जाकर वह पढ़ता है।
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he
+        hi: वह
+    - id: i1
+      sa: गृहम्
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
+    - id: i2
+      sa: गत्वा
+      meaning:
+        en: having gone
+        hi: जाकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+      compare_from: गम्
+    - id: i3
+      sa: पठति
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
+    edges:
+    - source: i0
+      target: i2
+      label:
+        en: same person goes
+        hi: यही व्यक्ति जाता है
+    - source: i0
+      target: i3
+      label:
+        en: same person reads
+        hi: यही व्यक्ति पढ़ता है
+    - source: i2
+      target: i3
+      label:
+        en: having gone, then reads
+        hi: जाकर, फिर पढ़ता है
   - id: v-source-example-0
     kind: worked
     title:
@@ -264,6 +602,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -279,6 +618,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -296,6 +636,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -420,6 +761,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: खादित्वा
       label:
@@ -435,6 +777,7 @@ cards:
       feature:
         en: 'Root: {{खाद्}}'
         hi: 'धातु: {{खाद्}}'
+      compare_from: खाद्
     - id: i4
       sa: गच्छति
       label:
@@ -452,6 +795,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -568,6 +912,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -585,6 +930,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -654,6 +1000,10 @@ cards:
         type: krdanta
         dhatu: गम्
         krt: ktvA
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - sa: आगत्य
       check:
         type: krdanta
@@ -662,12 +1012,20 @@ cards:
         prefixes:
         - आ
       highlight: true
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+      compare_from: गम्
   - - sa: कृ
     - sa: कृत्वा
       check:
         type: krdanta
         dhatu: कृ
         krt: ktvA
+      feature:
+        en: 'Root: {{कृ}}'
+        hi: 'धातु: {{कृ}}'
+      compare_from: कृ
     - sa: संस्कृत्य
       check:
         type: krdanta
@@ -676,12 +1034,20 @@ cards:
         prefixes:
         - सम्
       highlight: true
+      feature:
+        en: 'Root: {{कृ}}'
+        hi: 'धातु: {{कृ}}'
+      compare_from: कृ
   - - sa: श्रु
     - sa: श्रुत्वा
       check:
         type: krdanta
         dhatu: श्रु
         krt: ktvA
+      feature:
+        en: 'Root: {{श्रु}}'
+        hi: 'धातु: {{श्रु}}'
+      compare_from: श्रु
     - sa: आश्रुत्य
       check:
         type: krdanta
@@ -690,12 +1056,20 @@ cards:
         prefixes:
         - आ
       highlight: true
+      feature:
+        en: 'Root: {{श्रु}}'
+        hi: 'धातु: {{श्रु}}'
+      compare_from: श्रु
   - - sa: दृश्
     - sa: दृष्ट्वा
       check:
         type: krdanta
         dhatu: दृश्
         krt: ktvA
+      feature:
+        en: 'Root: {{दृश्}}'
+        hi: 'धातु: {{दृश्}}'
+      compare_from: दृश्
     - sa: संदृश्य
       check:
         type: krdanta
@@ -704,12 +1078,20 @@ cards:
         prefixes:
         - सम्
       highlight: true
+      feature:
+        en: 'Root: {{दृश्}}'
+        hi: 'धातु: {{दृश्}}'
+      compare_from: दृश्
   - - sa: दा
     - sa: दत्त्वा
       check:
         type: krdanta
         dhatu: दा
         krt: ktvA
+      feature:
+        en: 'Root: {{दा}}'
+        hi: 'धातु: {{दा}}'
+      compare_from: दा
     - sa: प्रदाय
       check:
         type: krdanta
@@ -718,12 +1100,20 @@ cards:
         prefixes:
         - प्र
       highlight: true
+      feature:
+        en: 'Root: {{दा}}'
+        hi: 'धातु: {{दा}}'
+      compare_from: दा
   - - sa: नी
     - sa: नीत्वा
       check:
         type: krdanta
         dhatu: नी
         krt: ktvA
+      feature:
+        en: 'Root: {{नी}}'
+        hi: 'धातु: {{नी}}'
+      compare_from: नी
     - sa: आनीय
       check:
         type: krdanta
@@ -732,12 +1122,20 @@ cards:
         prefixes:
         - आ
       highlight: true
+      feature:
+        en: 'Root: {{नी}}'
+        hi: 'धातु: {{नी}}'
+      compare_from: नी
   - - sa: जि
     - sa: जित्वा
       check:
         type: krdanta
         dhatu: जि
         krt: ktvA
+      feature:
+        en: 'Root: {{जि}}'
+        hi: 'धातु: {{जि}}'
+      compare_from: जि
     - sa: विजित्य
       check:
         type: krdanta
@@ -746,6 +1144,10 @@ cards:
         prefixes:
         - वि
       highlight: true
+      feature:
+        en: 'Root: {{जि}}'
+        hi: 'धातु: {{जि}}'
+      compare_from: जि
   note:
     en: Without a prefix {{-त्वा}}; with a prefix {{-य}} (or {{-त्य}} after a short vowel).
     hi: उपसर्ग के बिना {{-त्वा}}; उपसर्ग हो तो {{-य}} (ह्रस्व स्वर के बाद {{-त्य}})।
@@ -840,6 +1242,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -855,6 +1258,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -872,6 +1276,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1017,6 +1422,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -1032,6 +1438,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -1049,6 +1456,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1204,6 +1612,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -1219,6 +1628,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -1236,6 +1646,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1434,6 +1845,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -1449,6 +1861,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -1466,6 +1879,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1623,6 +2037,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गत्वा
       label:
@@ -1638,6 +2053,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i4
       sa: पठति
       label:
@@ -1655,6 +2071,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule

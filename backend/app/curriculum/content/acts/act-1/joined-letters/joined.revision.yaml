@@ -25,6 +25,28 @@ cards:
       hi: बिना स्वर के मिलने वाले व्यंजन जुड़ते हैं; पहला अपना स्वर खो देता है।
     tag: core
     taught_in: joined.clusters#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: क्
+        meaning:
+          en: the first, with no vowel
+          hi: पहला, बिना स्वर
+      - id: i1
+        sa: ष
+        meaning:
+          en: the second keeps its vowel
+          hi: दूसरा अपना स्वर रखता है
+      - id: i2
+        sa: क्ष
+        meaning:
+          en: one joined letter
+          hi: एक संयुक्ताक्षर
   - skill: script.conjunct
     formula: क्ष त्र ज्ञ श्र
     rule:
@@ -32,6 +54,60 @@ cards:
       hi: '{{क्ष}} {{त्र}} {{ज्ञ}} {{श्र}} चार सामान्य संयोग हैं।'
     tag: core
     taught_in: joined.clusters#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Four famous joins
+        hi: चार प्रसिद्ध संयोग
+      columns:
+      - en: Joined
+        hi: संयुक्त
+      - en: Made of
+        hi: से बना
+      - en: In a word
+        hi: शब्द में
+      rows:
+      - - id: r0-c0
+          sa: क्ष
+        - id: r0-c1
+          sa: क् + ष
+        - id: r0-c2
+          sa: क्षत्रियः
+          feature:
+            en: 'Stem: {{क्षत्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{क्षत्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: क्षत्रिय
+      - - id: r1-c0
+          sa: त्र
+        - id: r1-c1
+          sa: त् + र
+        - id: r1-c2
+          sa: मित्रम्
+          feature:
+            en: 'Stem: {{मित्र}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मित्र
+      - - id: r2-c0
+          sa: ज्ञ
+        - id: r2-c1
+          sa: ज् + ञ
+        - id: r2-c2
+          sa: ज्ञानम्
+          feature:
+            en: 'Stem: {{ज्ञान}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ज्ञान
+      - - id: r3-c0
+          sa: श्र
+        - id: r3-c1
+          sa: श् + र
+        - id: r3-c2
+          sa: श्रमः
+          feature:
+            en: 'Stem: {{श्रम}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रम
   - skill: script.reph
     formula: र्म · प्र
     rule:
@@ -39,6 +115,28 @@ cards:
       hi: संयोग में {{र}} पहले हो तो ऊपर मोड़; दूसरा हो तो नीचे काँटा।
     tag: core
     taught_in: joined.ra#t1
+    visuals:
+    - id: v-linked-2
+      kind: sequence
+      title:
+        en: र् is spoken first
+        hi: र् पहले बोला जाता है
+      items:
+      - id: parts
+        sa: र् + म
+        meaning:
+          en: र् comes before म in sound order.
+          hi: बोलने में र्, म से पहले है।
+      - id: shape
+        sa: र्म
+        meaning:
+          en: The repha is written above. Read र् before म.
+          hi: रेफ ऊपर लिखा है। र् को म से पहले पढ़ें।
+      - id: word
+        sa: धर्मः
+        meaning:
+          en: Find that order inside the word.
+          hi: शब्द के भीतर वही क्रम पहचानें।
   - skill: script.anusvara
     formula: म् → ं
     rule:
@@ -48,6 +146,39 @@ cards:
     - 8.3.23
     tag: core
     taught_in: joined.hum-breath#t1
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गंगा
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+          hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it
+            stands for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after
+            it.'
+          hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+            का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+      - id: i3
+        sa: गंगा
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+          hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
   - skill: script.visarga
     formula: ः
     rule:
@@ -55,6 +186,58 @@ cards:
       hi: '{{ः}} स्वर के बाद हल्की साँस है।'
     tag: core
     taught_in: joined.hum-breath#t2
+    visuals:
+    - id: v-linked-4
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light
+            “ha”. It is never a letter of its own at the start of a word.'
+          hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’
+            पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
   - skill: script.signs
     formula: । ॥ ऽ ॐ
     rule:
@@ -62,6 +245,38 @@ cards:
       hi: '{{।}} पंक्ति; {{॥}} श्लोक; {{ऽ}} छूटा {{अ}}; {{ॐ}} पवित्र अक्षर।'
     tag: core
     taught_in: joined.marks#t1
+    visuals:
+    - id: v-linked-5
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}:
+          {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+        hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न
+          है: {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+      items:
+      - id: i0
+        sa: ।
+        meaning:
+          en: ends a line or sentence
+          hi: पंक्ति या वाक्य का अन्त
+      - id: i1
+        sa: ॥
+        meaning:
+          en: ends a verse
+          hi: श्लोक का अन्त
+      - id: i2
+        sa: ऽ
+        meaning:
+          en: a dropped {{अ}} (avagraha)
+          hi: छूटा हुआ {{अ}} (अवग्रह)
+      - id: i3
+        sa: ॐ
+        meaning:
+          en: the sacred syllable
+          hi: पवित्र अक्षर
   - skill: script.numerals
     formula: ० १ २ ३ ४ ५ ६ ७ ८ ९
     rule:
@@ -69,6 +284,78 @@ cards:
       hi: दस अंक, बाएँ से दाएँ लिखे जाते हैं।
     tag: core
     taught_in: joined.marks#tb1
+    visuals:
+    - id: v-linked-6
+      kind: matrix
+      title:
+        en: Numbers
+        hi: अंक
+      columns:
+      - en: Numeral
+        hi: अंक
+      - en: Number
+        hi: संख्या
+      rows:
+      - - id: r0-c0
+          sa: ०
+        - id: r0-c1
+          label:
+            en: zero
+            hi: शून्य
+      - - id: r1-c0
+          sa: १
+        - id: r1-c1
+          label:
+            en: one
+            hi: एक
+      - - id: r2-c0
+          sa: २
+        - id: r2-c1
+          label:
+            en: two
+            hi: दो
+      - - id: r3-c0
+          sa: ३
+        - id: r3-c1
+          label:
+            en: three
+            hi: तीन
+      - - id: r4-c0
+          sa: ४
+        - id: r4-c1
+          label:
+            en: four
+            hi: चार
+      - - id: r5-c0
+          sa: ५
+        - id: r5-c1
+          label:
+            en: five
+            hi: पाँच
+      - - id: r6-c0
+          sa: ६
+        - id: r6-c1
+          label:
+            en: six
+            hi: छह
+      - - id: r7-c0
+          sa: ७
+        - id: r7-c1
+          label:
+            en: seven
+            hi: सात
+      - - id: r8-c0
+          sa: ८
+        - id: r8-c1
+          label:
+            en: eight
+            hi: आठ
+      - - id: r9-c0
+          sa: ९
+        - id: r9-c1
+          label:
+            en: nine
+            hi: नौ
 - id: conditions
   kind: revision
   title:
@@ -180,6 +467,58 @@ cards:
       hi: '{{ट्र}} और {{ड्र}} {{र}} का काँटा नहीं लेते: उनमें दूसरा चिह्न लगता है।'
     tag: good
     taught_in: joined.ra#t3
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: राष्ट्रम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'a nation: {{ष्ट्र}}'
+          hi: 'राष्ट्र: {{ष्ट्र}}'
+        check:
+          type: subanta
+          stem: राष्ट्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राष्ट्र
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not
+            {{र}} with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.'
+          hi: '{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा
+            {{र}} नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।'
+      - id: i3
+        sa: राष्ट्रम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'a nation: {{ष्ट्र}}'
+          hi: 'राष्ट्र: {{ष्ट्र}}'
+        check:
+          type: subanta
+          stem: राष्ट्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राष्ट्र
   - skill: script.conjunct
     rule:
       en: Some print styles write {{क्त}} {{द्ध}} {{ङ्ग}} as stacked or ligature forms; they read the same.
@@ -271,6 +610,58 @@ cards:
       hi: कुछ व्यंजनों से पहले साँस {{ः}} दूसरी ध्वनि में बदल जाती है; यह सन्धि के अध्यायों में आएगा।
     tag: rare
     taught_in: joined.hum-breath#t2
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light
+            “ha”. It is never a letter of its own at the start of a word.'
+          hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’
+            पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
 - id: mistakes
   kind: revision
   title:
@@ -285,24 +676,174 @@ cards:
       hi: 'संयुक्ताक्षर को क्रम से पढ़िए: {{क्ष}} यानी {{क्}} फिर {{ष}}, कोई नया अक्षर नहीं।'
     tag: core
     taught_in: joined.clusters#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: क्
+        meaning:
+          en: the first, with no vowel
+          hi: पहला, बिना स्वर
+      - id: i1
+        sa: ष
+        meaning:
+          en: the second keeps its vowel
+          hi: दूसरा अपना स्वर रखता है
+      - id: i2
+        sa: क्ष
+        meaning:
+          en: one joined letter
+          hi: एक संयुक्ताक्षर
   - skill: script.conjunct
     rule:
       en: 'Do not read {{ज्ञ}} as “gya” in Sanskrit: it is {{ज्}} + {{ञ}}.'
       hi: 'संस्कृत में {{ज्ञ}} को ‘ग्य’ मत पढ़िए: यह {{ज्}} + {{ञ}} है।'
     tag: core
     taught_in: joined.clusters#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Four famous joins
+        hi: चार प्रसिद्ध संयोग
+      columns:
+      - en: Joined
+        hi: संयुक्त
+      - en: Made of
+        hi: से बना
+      - en: In a word
+        hi: शब्द में
+      rows:
+      - - id: r0-c0
+          sa: क्ष
+        - id: r0-c1
+          sa: क् + ष
+        - id: r0-c2
+          sa: क्षत्रियः
+          feature:
+            en: 'Stem: {{क्षत्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{क्षत्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: क्षत्रिय
+      - - id: r1-c0
+          sa: त्र
+        - id: r1-c1
+          sa: त् + र
+        - id: r1-c2
+          sa: मित्रम्
+          feature:
+            en: 'Stem: {{मित्र}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मित्र
+      - - id: r2-c0
+          sa: ज्ञ
+        - id: r2-c1
+          sa: ज् + ञ
+        - id: r2-c2
+          sa: ज्ञानम्
+          feature:
+            en: 'Stem: {{ज्ञान}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ज्ञान
+      - - id: r3-c0
+          sa: श्र
+        - id: r3-c1
+          sa: श् + र
+        - id: r3-c2
+          sa: श्रमः
+          feature:
+            en: 'Stem: {{श्रम}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रम
   - skill: script.reph
     rule:
       en: 'The curl is a {{र}} said first, not a sign that follows. {{धर्म}} is dha-rma: the {{र}} comes before {{म}}.'
       hi: मोड़ पहले बोला जाने वाला {{र}} है, बाद का चिह्न नहीं। {{धर्म}} में {{र}} {{म}} से पहले आता है।
     tag: core
     taught_in: joined.ra#t1
+    visuals:
+    - id: v-linked-2
+      kind: sequence
+      title:
+        en: र् is spoken first
+        hi: र् पहले बोला जाता है
+      items:
+      - id: parts
+        sa: र् + म
+        meaning:
+          en: र् comes before म in sound order.
+          hi: बोलने में र्, म से पहले है।
+      - id: shape
+        sa: र्म
+        meaning:
+          en: The repha is written above. Read र् before म.
+          hi: रेफ ऊपर लिखा है। र् को म से पहले पढ़ें।
+      - id: word
+        sa: धर्मः
+        meaning:
+          en: Find that order inside the word.
+          hi: शब्द के भीतर वही क्रम पहचानें।
   - skill: script.visarga
     rule:
       en: Do not read {{ः}} as a full {{ह}} with its own vowel; it is a short echo.
       hi: '{{ः}} को अपने स्वर वाले पूरे {{ह}} की तरह मत पढ़िए; यह छोटी प्रतिध्वनि है।'
     tag: core
     taught_in: joined.hum-breath#t2
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light
+            “ha”. It is never a letter of its own at the start of a word.'
+          hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’
+            पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
 - id: panini
   kind: revision
   title:
@@ -320,6 +861,28 @@ cards:
     - 8.3.23
     tag: core
     taught_in: joined.hum-breath#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is
+          written {{रामं नमति}}.'
+        hi: 'सूत्र 8.3.23, {{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} बिन्दु बन जाता है। इसलिए {{रामम्}} + {{नमति}} लिखा
+          जाता है {{रामं नमति}}।'
+      items:
+      - id: i0
+        sa: मोऽनुस्वारः
+      - id: i1
+        sa: म्
+      - id: i2
+        sa: रामम्
+      - id: i3
+        sa: नमति
+      - id: i4
+        sa: रामं नमति
 - id: sheet
   kind: revision
   title:
@@ -335,6 +898,60 @@ cards:
       hi: संयुक्ताक्षर
     tag: core
     taught_in: joined.clusters#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Four famous joins
+        hi: चार प्रसिद्ध संयोग
+      columns:
+      - en: Joined
+        hi: संयुक्त
+      - en: Made of
+        hi: से बना
+      - en: In a word
+        hi: शब्द में
+      rows:
+      - - id: r0-c0
+          sa: क्ष
+        - id: r0-c1
+          sa: क् + ष
+        - id: r0-c2
+          sa: क्षत्रियः
+          feature:
+            en: 'Stem: {{क्षत्रिय}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{क्षत्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: क्षत्रिय
+      - - id: r1-c0
+          sa: त्र
+        - id: r1-c1
+          sa: त् + र
+        - id: r1-c2
+          sa: मित्रम्
+          feature:
+            en: 'Stem: {{मित्र}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: मित्र
+      - - id: r2-c0
+          sa: ज्ञ
+        - id: r2-c1
+          sa: ज् + ञ
+        - id: r2-c2
+          sa: ज्ञानम्
+          feature:
+            en: 'Stem: {{ज्ञान}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{ज्ञान}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: ज्ञान
+      - - id: r3-c0
+          sa: श्र
+        - id: r3-c1
+          sa: श् + र
+        - id: r3-c2
+          sa: श्रमः
+          feature:
+            en: 'Stem: {{श्रम}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{श्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रम
   - skill: script.reph
     formula: र्म प्र
     rule:
@@ -342,6 +959,28 @@ cards:
       hi: ऊपर र, नीचे र
     tag: core
     taught_in: joined.ra#t1
+    visuals:
+    - id: v-linked-1
+      kind: sequence
+      title:
+        en: र् is spoken first
+        hi: र् पहले बोला जाता है
+      items:
+      - id: parts
+        sa: र् + म
+        meaning:
+          en: र् comes before म in sound order.
+          hi: बोलने में र्, म से पहले है।
+      - id: shape
+        sa: र्म
+        meaning:
+          en: The repha is written above. Read र् before म.
+          hi: रेफ ऊपर लिखा है। र् को म से पहले पढ़ें।
+      - id: word
+        sa: धर्मः
+        meaning:
+          en: Find that order inside the word.
+          hi: शब्द के भीतर वही क्रम पहचानें।
   - skill: script.anusvara
     formula: ं
     rule:
@@ -349,6 +988,39 @@ cards:
       hi: गूँज
     tag: core
     taught_in: joined.hum-breath#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गंगा
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+          hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it
+            stands for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after
+            it.'
+          hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+            का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+      - id: i3
+        sa: गंगा
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+          hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
   - skill: script.visarga
     formula: ः
     rule:
@@ -356,6 +1028,58 @@ cards:
       hi: साँस
     tag: core
     taught_in: joined.hum-breath#t2
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light
+            “ha”. It is never a letter of its own at the start of a word.'
+          hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’
+            पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma: ends in a breath'
+          hi: 'राम: साँस पर समाप्त'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
   - skill: script.signs
     formula: । ॥ ऽ ॐ
     rule:
@@ -363,6 +1087,38 @@ cards:
       hi: चिह्न
     tag: core
     taught_in: joined.marks#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}:
+          {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+        hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न
+          है: {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+      items:
+      - id: i0
+        sa: ।
+        meaning:
+          en: ends a line or sentence
+          hi: पंक्ति या वाक्य का अन्त
+      - id: i1
+        sa: ॥
+        meaning:
+          en: ends a verse
+          hi: श्लोक का अन्त
+      - id: i2
+        sa: ऽ
+        meaning:
+          en: a dropped {{अ}} (avagraha)
+          hi: छूटा हुआ {{अ}} (अवग्रह)
+      - id: i3
+        sa: ॐ
+        meaning:
+          en: the sacred syllable
+          hi: पवित्र अक्षर
   - skill: script.numerals
     formula: ० १ २ ३ ४ ५ ६ ७ ८ ९
     rule:
@@ -370,3 +1126,75 @@ cards:
       hi: अंक
     tag: core
     taught_in: joined.marks#tb1
+    visuals:
+    - id: v-linked-5
+      kind: matrix
+      title:
+        en: Numbers
+        hi: अंक
+      columns:
+      - en: Numeral
+        hi: अंक
+      - en: Number
+        hi: संख्या
+      rows:
+      - - id: r0-c0
+          sa: ०
+        - id: r0-c1
+          label:
+            en: zero
+            hi: शून्य
+      - - id: r1-c0
+          sa: १
+        - id: r1-c1
+          label:
+            en: one
+            hi: एक
+      - - id: r2-c0
+          sa: २
+        - id: r2-c1
+          label:
+            en: two
+            hi: दो
+      - - id: r3-c0
+          sa: ३
+        - id: r3-c1
+          label:
+            en: three
+            hi: तीन
+      - - id: r4-c0
+          sa: ४
+        - id: r4-c1
+          label:
+            en: four
+            hi: चार
+      - - id: r5-c0
+          sa: ५
+        - id: r5-c1
+          label:
+            en: five
+            hi: पाँच
+      - - id: r6-c0
+          sa: ६
+        - id: r6-c1
+          label:
+            en: six
+            hi: छह
+      - - id: r7-c0
+          sa: ७
+        - id: r7-c1
+          label:
+            en: seven
+            hi: सात
+      - - id: r8-c0
+          sa: ८
+        - id: r8-c1
+          label:
+            en: eight
+            hi: आठ
+      - - id: r9-c0
+          sa: ९
+        - id: r9-c1
+          label:
+            en: nine
+            hi: नौ

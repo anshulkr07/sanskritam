@@ -148,6 +148,44 @@ cards:
   note:
     en: 'The prose order is: doer, object, verb; a negative before the verb.'
     hi: 'गद्य का क्रम: कर्ता, कर्म, क्रिया; निषेध क्रिया से पहले।'
+  visuals:
+  - id: v-procedure
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Split the joins
+        hi: सन्धि खोलिए
+      sa: रिक्तपाणिः न पश्येत् राजानं भिषजं गुरुम्
+    - id: stage-1
+      label:
+        en: Find the verb
+        hi: क्रिया खोजिए
+      meaning:
+        en: पश्येत् (should see)
+        hi: पश्येत् (देखे)
+    - id: stage-2
+      label:
+        en: Find the doer
+        hi: कर्ता खोजिए
+      meaning:
+        en: रिक्तपाणिः (one empty-handed)
+        hi: रिक्तपाणिः (खाली हाथ वाला)
+    - id: stage-3
+      label:
+        en: Order the rest
+        hi: शेष को क्रम दीजिए
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The prose order is: doer, object, verb; a negative before the verb.'
+        hi: 'गद्य का क्रम: कर्ता, कर्म, क्रिया; निषेध क्रिया से पहले।'
 - id: p1
   kind: practice
   depth: core
@@ -459,3 +497,140 @@ cards:
   - text:
       en: Split first, then find the verb.
       hi: पहले सन्धि खोलिए, फिर क्रिया खोजिए।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि त्वम् वदिष्यसि तर्हि सः यास्यति।
+      meaning:
+        en: If you speak, then it will go.
+        hi: यदि तुम बोलोगे, तो वह जाएगा।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: वदिष्यसि
+        gloss:
+          en: speak
+          hi: बोलोगे
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: it
+          hi: वह
+      - sa: यास्यति
+        gloss:
+          en: will go
+          hi: जाएगा
+        check:
+          type: tinanta
+          dhatu: या
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+    - id: i2
+      sa: यदि सः पठेत् तर्हि सः जानीयात्।
+      meaning:
+        en: If he were to read, he would know.
+        hi: यदि वह पढ़े, तो जान जाए।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka

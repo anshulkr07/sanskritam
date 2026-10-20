@@ -162,11 +162,26 @@ def compute(card: ExploreCard) -> tuple[dict, list[str]]:
             syl = [s for ln in scanned.get("lines") or [] for s in ln.get("syllables", [])]
             if not syl:
                 problems.append(f"the engine could not scan {line}")
+            from vidyut.lipi import Scheme, transliterate
+            metre = scanned.get('metre')
+            reasons = []
+            for s in syl:
+                text = s['syllable_devanagari']
+                if s['weight'] == 'L':
+                    reasons.append({'en':'A short, open syllable in this scan.','hi':'इस पाठ में ह्रस्व और खुला अक्षर।'})
+                elif re.search('[आईऊॠॡाीूॄॣेैोौएऐओऔ]', text):
+                    reasons.append({'en':'Its vowel is long.','hi':'इसका स्वर दीर्घ है।'})
+                elif re.search('[ंः्]$', text):
+                    reasons.append({'en':'The syllable closes with a consonant, anusvāra or visarga.','hi':'अक्षर व्यञ्जन, अनुस्वार या विसर्ग से बन्द होता है।'})
+                else:
+                    reasons.append({'en':'Heavy in this scan: examine the following sounds and the line boundary.','hi':'इस पाठ में गुरु: अगली ध्वनियों और पंक्ति के अन्त को जाँचें।'})
             scans.append({
                 "line": line,
                 "syllables": [s["syllable_devanagari"] for s in syl],
                 "weights": "".join(s["weight"] for s in syl),
-                "metre": scanned.get("metre"),
+                "metre": metre,
+                "metre_sa": transliterate(metre, Scheme.Slp1, Scheme.Devanagari) if metre else None,
+                "reasons": reasons,
             })
         out["scan"] = scans
 

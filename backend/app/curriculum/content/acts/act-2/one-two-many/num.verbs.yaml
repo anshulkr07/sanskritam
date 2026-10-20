@@ -78,6 +78,78 @@ cards:
       en: many read
       hi: अनेक पढ़ते हैं
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+      image:
+        id: teaching-reader-two
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Two boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते दो बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
+      image:
+        id: teaching-reader-many
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: Three boys reading books with अ इ उ
+          hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+        - अ इ उ
+        - अ इ उ
   - id: v-source-forms
     kind: comparison
     title:
@@ -128,6 +200,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठतः
       check:
         type: tinanta
@@ -136,6 +212,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठन्ति
       check:
         type: tinanta
@@ -143,6 +223,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
   - - sa: लिख्
     - sa: लिखति
       check:
@@ -151,6 +235,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - sa: लिखतः
       check:
         type: tinanta
@@ -159,6 +247,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{लिख्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - sa: लिखन्ति
       check:
         type: tinanta
@@ -166,6 +258,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{लिख्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
   - - sa: हस्
     - sa: हसति
       check:
@@ -174,6 +270,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{हस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{हस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: हस्
     - sa: हसतः
       check:
         type: tinanta
@@ -182,6 +282,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{हस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{हस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: हस्
     - sa: हसन्ति
       check:
         type: tinanta
@@ -189,6 +293,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{हस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{हस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: हस्
   - - sa: चल्
     - sa: चलति
       check:
@@ -197,6 +305,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: चल्
     - sa: चलतः
       check:
         type: tinanta
@@ -205,6 +317,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{चल्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चल्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: चल्
     - sa: चलन्ति
       check:
         type: tinanta
@@ -212,6 +328,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{चल्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चल्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: चल्
   - - sa: वद्
     - sa: वदति
       check:
@@ -220,6 +340,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - sa: वदतः
       check:
         type: tinanta
@@ -228,6 +352,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
       highlight: true
+      feature:
+        en: 'Root: {{वद्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - sa: वदन्ति
       check:
         type: tinanta
@@ -235,6 +363,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{वद्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
   note:
     en: 'One {{ति}}, two {{तः}}, many {{न्ति}}: the same three endings for every verb you know.'
     hi: 'एक {{ति}}, दो {{तः}}, अनेक {{न्ति}}: हर परिचित क्रिया के लिए वही तीन प्रत्यय।'

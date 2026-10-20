@@ -24,12 +24,86 @@ cards:
       hi: जोड़ खोलिए, शब्दों को गद्य के क्रम में रखिए, फिर अर्थ कहिए।
     tag: core
     taught_in: rv.steps#tb1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        label:
+          en: As carved
+          hi: जैसा खुदा है
+        sa: विद्या ददाति विनयं विनयाद्याति पात्रताम्
+      - id: stage-1
+        label:
+          en: 'Stage: {{पदच्छेदः}}'
+          hi: 'चरण: {{पदच्छेदः}}'
+        sa: विद्या ददाति विनयम् विनयात् याति पात्रताम्
+      - id: stage-2
+        label:
+          en: 'Stage: {{अन्वयः}}'
+          hi: 'चरण: {{अन्वयः}}'
+        sa: विद्या विनयं ददाति; विनयात् पात्रतां याति
+      - id: stage-3
+        label:
+          en: 'Stage: {{अर्थः}}'
+          hi: 'चरण: {{अर्थः}}'
+        meaning:
+          en: Learning gives humility; from humility one reaches worthiness.
+          hi: विद्या विनय देती है; विनय से पात्रता मिलती है।
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: The knots are the joins; the meaning is last.
+          hi: गाँठें जोड़ हैं; अर्थ अन्त में आता है।
   - skill: verse.commentary
     rule:
       en: A commentary repeats a word, adds a word of the same meaning, and closes with {{इत्यर्थः}}.
       hi: टीका एक शब्द दोहराती है, उसी अर्थ का शब्द जोड़ती है, और {{इत्यर्थः}} पर बन्द करती है।
     tag: core
     taught_in: rv.tika#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Notes on the Īśā verse
+        hi: ईशा-श्लोक पर टिप्पणियाँ
+      columns:
+      - en: The verse says
+        hi: श्लोक में
+      - en: The commentary says
+        hi: टीका कहती है
+      - en: So it means
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: भुञ्जीथाः
+        - id: r0-c1
+          sa: पालयेथाः
+        - id: r0-c2
+          label:
+            en: you should protect
+            hi: आपको पालन करना चाहिए
+      - - id: r1-c0
+          sa: तेन त्यक्तेन
+        - id: r1-c1
+          sa: त्यागेनेत्यर्थः
+        - id: r1-c2
+          label:
+            en: by renunciation
+            hi: त्याग से
+      - - id: r2-c0
+          sa: मा गृधः
+        - id: r2-c1
+          sa: गृधिम् आकाङ्क्षां मा कार्षीः
+        - id: r2-c2
+          label:
+            en: do not make a longing
+            hi: लालसा मत कीजिए
 - id: conditions
   kind: revision
   title:
@@ -44,12 +118,56 @@ cards:
       hi: पहले क्रिया खोजिए, फिर कर्ता।
     tag: good
     taught_in: rv.steps#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: पदच्छेदः
+        meaning:
+          en: split the joins
+          hi: जोड़ खोलना
+      - id: i1
+        sa: अन्वयः
+        meaning:
+          en: prose order
+          hi: गद्य का क्रम
+      - id: i2
+        sa: अर्थः
+        meaning:
+          en: the meaning
+          hi: अर्थ
   - skill: verse.commentary
     rule:
       en: Read a commentary for the sense; the extra word is the commentator's.
       hi: टीका को अर्थ के लिए पढ़िए; अतिरिक्त शब्द टीकाकार का है।
     tag: good
     taught_in: rv.tika#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+          with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers
+          a second reading. Read it for the sense, not word for word.
+        hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+          है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+          उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+      items:
+      - id: i0
+        sa: टीका
+      - id: i1
+        sa: इत्यर्थः
+      - id: i2
+        sa: कस्मात्
+      - id: i3
+        sa: अथवा
 - id: exceptions
   kind: revision
   title:
@@ -64,6 +182,28 @@ cards:
       hi: '{{अथवा}} दूसरा पाठ देता है; दोनों सही हो सकते हैं।'
     tag: rare
     taught_in: rv.tika#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+          with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers
+          a second reading. Read it for the sense, not word for word.
+        hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+          है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+          उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+      items:
+      - id: i0
+        sa: टीका
+      - id: i1
+        sa: इत्यर्थः
+      - id: i2
+        sa: कस्मात्
+      - id: i3
+        sa: अथवा
 - id: mistakes
   kind: revision
   title:
@@ -99,6 +239,42 @@ cards:
       hi: तीन चरण
     tag: core
     taught_in: rv.steps#tb1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        label:
+          en: As carved
+          hi: जैसा खुदा है
+        sa: विद्या ददाति विनयं विनयाद्याति पात्रताम्
+      - id: stage-1
+        label:
+          en: 'Stage: {{पदच्छेदः}}'
+          hi: 'चरण: {{पदच्छेदः}}'
+        sa: विद्या ददाति विनयम् विनयात् याति पात्रताम्
+      - id: stage-2
+        label:
+          en: 'Stage: {{अन्वयः}}'
+          hi: 'चरण: {{अन्वयः}}'
+        sa: विद्या विनयं ददाति; विनयात् पात्रतां याति
+      - id: stage-3
+        label:
+          en: 'Stage: {{अर्थः}}'
+          hi: 'चरण: {{अर्थः}}'
+        meaning:
+          en: Learning gives humility; from humility one reaches worthiness.
+          hi: विद्या विनय देती है; विनय से पात्रता मिलती है।
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: The knots are the joins; the meaning is last.
+          hi: गाँठें जोड़ हैं; अर्थ अन्त में आता है।
   - skill: verse.commentary
     formula: इत्यर्थः
     rule:
@@ -106,3 +282,41 @@ cards:
       hi: यही अर्थ है
     tag: core
     taught_in: rv.tika#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Notes on the Īśā verse
+        hi: ईशा-श्लोक पर टिप्पणियाँ
+      columns:
+      - en: The verse says
+        hi: श्लोक में
+      - en: The commentary says
+        hi: टीका कहती है
+      - en: So it means
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: भुञ्जीथाः
+        - id: r0-c1
+          sa: पालयेथाः
+        - id: r0-c2
+          label:
+            en: you should protect
+            hi: आपको पालन करना चाहिए
+      - - id: r1-c0
+          sa: तेन त्यक्तेन
+        - id: r1-c1
+          sa: त्यागेनेत्यर्थः
+        - id: r1-c2
+          label:
+            en: by renunciation
+            hi: त्याग से
+      - - id: r2-c0
+          sa: मा गृधः
+        - id: r2-c1
+          sa: गृधिम् आकाङ्क्षां मा कार्षीः
+        - id: r2-c2
+          label:
+            en: do not make a longing
+            hi: लालसा मत कीजिए

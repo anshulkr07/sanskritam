@@ -134,6 +134,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i1
       sa: का
       meaning:
@@ -148,6 +149,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: किम्
       meaning:
@@ -273,6 +275,50 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: कः पठति?
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -327,6 +373,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -413,6 +460,7 @@ cards:
       feature:
         en: 'Root: {{दृश्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: दृश्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -499,6 +547,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -585,6 +634,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -661,6 +711,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i1
       sa: का
       meaning:
@@ -675,6 +726,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: किम्
       meaning:
@@ -773,6 +825,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i1
       sa: का
       meaning:
@@ -787,6 +840,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: किम्
       meaning:
@@ -900,6 +954,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i1
       sa: का
       meaning:
@@ -914,6 +969,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: किम्
       meaning:
@@ -995,6 +1051,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i1
       sa: का
       meaning:
@@ -1009,6 +1066,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: किम्
       meaning:

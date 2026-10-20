@@ -143,6 +143,7 @@ cards:
         second: अस्ति
         joined: कविरस्ति
       highlight: true
+      compare_from: कविः अस्ति
   - - sa: गुरुः
     - sa: अपि
     - sa: गुरुरपि
@@ -152,6 +153,7 @@ cards:
         second: अपि
         joined: गुरुरपि
       highlight: true
+      compare_from: गुरुः अपि
   - - sa: मुनिः
     - sa: गच्छति
     - sa: मुनिर्गच्छति
@@ -161,6 +163,7 @@ cards:
         second: गच्छति
         joined: मुनिर्गच्छति
       highlight: true
+      compare_from: मुनिः गच्छति
   - - sa: कविः
     - sa: वदति
     - sa: कविर्वदति
@@ -170,6 +173,7 @@ cards:
         second: वदति
         joined: कविर्वदति
       highlight: true
+      compare_from: कविः वदति
   - - sa: गुरुः
     - sa: ददाति
     - sa: गुरुर्ददाति
@@ -179,6 +183,7 @@ cards:
         second: ददाति
         joined: गुरुर्ददाति
       highlight: true
+      compare_from: गुरुः ददाति
   - - sa: रामः
     - sa: इह
     - sa: राम इह
@@ -188,6 +193,7 @@ cards:
         second: इह
         joined: राम इह
       highlight: true
+      compare_from: रामः इह
   - - sa: रामाः
     - sa: इह
     - sa: रामा इह
@@ -197,6 +203,7 @@ cards:
         second: इह
         joined: रामा इह
       highlight: true
+      compare_from: रामाः इह
   - - sa: अतः
     - sa: एव
     - sa: अत एव
@@ -206,6 +213,7 @@ cards:
         second: एव
         joined: अत एव
       highlight: true
+      compare_from: अतः एव
   - - sa: सः
     - sa: गच्छति
     - sa: स गच्छति
@@ -215,6 +223,7 @@ cards:
         second: गच्छति
         joined: स गच्छति
       highlight: true
+      compare_from: सः गच्छति
   - - sa: सः
     - sa: बालकः
     - sa: स बालकः
@@ -224,6 +233,7 @@ cards:
         second: बालकः
         joined: स बालकः
       highlight: true
+      compare_from: सः बालकः
   - - sa: एषः
     - sa: दत्तः
     - sa: एष दत्तः
@@ -233,6 +243,7 @@ cards:
         second: दत्तः
         joined: एष दत्तः
       highlight: true
+      compare_from: एषः दत्तः
   note:
     en: Only {{सः}} and {{एषः}} lose the visarga before a consonant. Other {{-अः}} words become {{-ओ}}.
     hi: केवल {{सः}} और {{एषः}} व्यंजन से पहले विसर्ग खोते हैं। अन्य {{-अः}} शब्द {{-ओ}} बनते हैं।
@@ -716,3 +727,28 @@ cards:
     text:
       en: सः loses its breath before a consonant.
       hi: सः व्यंजन से पहले श्वास खोता है।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: कविरस्ति
+      meaning:
+        en: 'After इः or उः: र्.'
+        hi: 'इः या उः के बाद: र्।'
+    - id: i1
+      sa: राम इह
+      meaning:
+        en: 'After अः before another vowel: gone.'
+        hi: 'अः के बाद अन्य स्वर से पहले: लुप्त।'
+    - id: i2
+      sa: स गच्छति
+      meaning:
+        en: सः loses its breath before a consonant.
+        hi: सः व्यंजन से पहले श्वास खोता है।

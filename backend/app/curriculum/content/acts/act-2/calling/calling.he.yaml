@@ -105,6 +105,44 @@ cards:
       en: 'the vocative: calling'
       hi: 'सम्बोधन: पुकारना'
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: O boy!
+        hi: हे बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: &id001
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image: &id002
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -281,6 +319,22 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: बालक
       check:
         type: subanta
@@ -289,6 +343,21 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
   - - text:
         en: girl
         hi: बालिका
@@ -299,6 +368,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: बालिके
       check:
         type: subanta
@@ -307,6 +379,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: बालिका
   - - text:
         en: river
         hi: नदी
@@ -317,6 +393,21 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id003
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id004 []
     - sa: नदि
       check:
         type: subanta
@@ -325,6 +416,20 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: नदी
   - - text:
         en: teacher
         hi: गुरु
@@ -335,6 +440,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरो
       check:
         type: subanta
@@ -343,6 +452,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: गुरु
   - - text:
         en: poet
         hi: कवि
@@ -353,6 +466,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कवे
       check:
         type: subanta
@@ -361,6 +478,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: कवि
   - - text:
         en: father
         hi: पिता
@@ -371,6 +492,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पितृ
     - sa: पितः
       check:
         type: subanta
@@ -379,6 +504,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: पितृ
   - - text:
         en: mother
         hi: माता
@@ -389,6 +518,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मातृ
     - sa: मातः
       check:
         type: subanta
@@ -397,6 +530,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: मातृ
   note:
     en: 'Most words call with their stem. The changes: -आ → {{ए}} ({{बालिके}}), -ई → {{इ}} ({{नदि}}), -इ → {{ए}} ({{कवे}}),
       -उ → {{ओ}} ({{गुरो}}), -ऋ → {{अः}} ({{पितः}}).'
@@ -590,6 +727,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -706,6 +844,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · plural'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: बालक
     - id: i3
       sa: आगच्छथ
       label:
@@ -725,6 +864,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule

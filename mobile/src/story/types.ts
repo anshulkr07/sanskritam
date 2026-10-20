@@ -215,17 +215,24 @@ export interface VisualItem {
   image?: Picture;
   words: Word[];
   feature?: Bi;
+  compare_from?: string;
+  compare_from_iast?: string;
   weights?: string;
+  marker?: string;
+  marker_iast?: string;
+  duration?: 1|2|3;
+  diagram?: {kind:'count';quantity:number}|{kind:'conversation';role:'speaker'|'listener'|'referent';quantity:1|2|3;plural?:boolean}|{kind:'position';relation:'near'|'far'|'toward'|'from'|'at'}|{kind:'timeline';events:{label:Bi;start:number;end:number}[];anchor?:number};
 }
 export interface TeachingVisual {
   id: string;
-  kind: 'figures'|'comparison'|'sequence'|'matrix'|'relations'|'worked'|'reading'|'beats';
+  kind: 'figures'|'comparison'|'sequence'|'matrix'|'relations'|'worked'|'reading'|'beats'|'sound_range';
   title: Bi;
   explanation?: Bi;
   items: VisualItem[];
   edges: {source:string;target:string;label:Bi}[];
   columns: Bi[];
   rows: VisualItem[][];
+  selections?: VisualItem[];
   source?: string;
   placement: 'before'|'after';
 }
@@ -275,6 +282,10 @@ export interface Cell {
   iast?: string;
   text?: Bi;
   highlight: boolean;
+  image?: Picture;
+  feature?: Bi;
+  compare_from?: string;
+  compare_from_iast?: string;
 }
 
 export interface TableCard extends CardBase {
@@ -433,7 +444,7 @@ export interface MarkWordsBuilt extends WidgetBase {
 
 export interface RhythmTapperBuilt extends WidgetBase {
   lines: string[];
-  scan: { line: string; syllables: string[]; weights: string; metre: string | null }[]; // weights: "L"/"G" per syllable
+  scan: { line: string; syllables: string[]; weights: string; metre: string | null; metre_sa?:string|null; reasons?:Bi[] }[]; // weights: "L"/"G" per syllable
 }
 
 export interface DerivationStepperBuilt extends WidgetBase {

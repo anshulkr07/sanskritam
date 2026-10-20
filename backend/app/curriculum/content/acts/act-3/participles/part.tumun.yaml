@@ -261,6 +261,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: &id001
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: &id002 []
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -276,6 +289,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -294,6 +308,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -419,6 +434,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i3
       sa: द्रष्टुम्
       label:
@@ -434,6 +450,7 @@ cards:
       feature:
         en: 'Root: {{दृश्}}'
         hi: 'धातु: {{दृश्}}'
+      compare_from: दृश्
     - id: i4
       sa: गच्छामि
       label:
@@ -451,6 +468,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -564,6 +582,7 @@ cards:
       feature:
         en: 'Root: {{गम्}}'
         hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - id: i3
       sa: शक्नोति
       label:
@@ -582,6 +601,7 @@ cards:
       feature:
         en: 'Root: {{शक्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{शक्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: शक्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -650,6 +670,10 @@ cards:
         type: krdanta
         dhatu: गम्
         krt: tumun
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+      compare_from: गम्
     - text:
         en: to go
         hi: जाने के लिए
@@ -659,6 +683,10 @@ cards:
         type: krdanta
         dhatu: पठ्
         krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - text:
         en: to read
         hi: पढ़ने के लिए
@@ -668,6 +696,10 @@ cards:
         type: krdanta
         dhatu: कृ
         krt: tumun
+      feature:
+        en: 'Root: {{कृ}}'
+        hi: 'धातु: {{कृ}}'
+      compare_from: कृ
     - text:
         en: to do
         hi: करने के लिए
@@ -677,6 +709,10 @@ cards:
         type: krdanta
         dhatu: दृश्
         krt: tumun
+      feature:
+        en: 'Root: {{दृश्}}'
+        hi: 'धातु: {{दृश्}}'
+      compare_from: दृश्
     - text:
         en: to see
         hi: देखने के लिए
@@ -686,6 +722,10 @@ cards:
         type: krdanta
         dhatu: श्रु
         krt: tumun
+      feature:
+        en: 'Root: {{श्रु}}'
+        hi: 'धातु: {{श्रु}}'
+      compare_from: श्रु
     - text:
         en: to hear
         hi: सुनने के लिए
@@ -695,6 +735,10 @@ cards:
         type: krdanta
         dhatu: दा
         krt: tumun
+      feature:
+        en: 'Root: {{दा}}'
+        hi: 'धातु: {{दा}}'
+      compare_from: दा
     - text:
         en: to give
         hi: देने के लिए
@@ -704,6 +748,10 @@ cards:
         type: krdanta
         dhatu: भू
         krt: tumun
+      feature:
+        en: 'Root: {{भू}}'
+        hi: 'धातु: {{भू}}'
+      compare_from: भू
     - text:
         en: to be
         hi: होने के लिए
@@ -802,6 +850,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -817,6 +876,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -835,6 +895,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -982,6 +1043,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -997,6 +1069,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -1015,6 +1088,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1172,6 +1246,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -1187,6 +1272,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -1205,6 +1291,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1408,6 +1495,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -1423,6 +1521,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -1441,6 +1540,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1601,6 +1701,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: पुस्तक
     - id: i3
       sa: पठितुम्
       label:
@@ -1616,6 +1727,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}}'
         hi: 'धातु: {{पठ्}}'
+      compare_from: पठ्
     - id: i4
       sa: इच्छति
       label:
@@ -1634,6 +1746,7 @@ cards:
       feature:
         en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: इष्
     - id: rule
       label:
         en: Connect the form and the rule

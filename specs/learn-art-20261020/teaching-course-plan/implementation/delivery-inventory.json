@@ -1,0 +1,3933 @@
+{
+  "counts": {
+    "cards": 2099,
+    "teach_cards": 279,
+    "live_tables": 158,
+    "practice_cards": 932,
+    "teaching_figures": 1259,
+    "feedback_cards": 932,
+    "core_teach_with_figures": 188,
+    "depth_teach_with_figures": 91,
+    "reading_cards": 15,
+    "unit_lessons": 230,
+    "canonical_lesson_images": 176,
+    "new_delivered_images": 29
+  },
+  "source_preservation": {
+    "original_cards_retained": true,
+    "changed_original_fields": [
+      "vowels.check#c1.depth [missing]",
+      "vowels.check#c2.depth [missing]",
+      "vowels.check#c2.roman [missing]",
+      "vowels.check#c3.depth [missing]",
+      "vowels.check#c4.depth [missing]",
+      "vowels.check#c5.depth [missing]",
+      "vowels.check#c6.depth [missing]",
+      "vowels.check#c7.depth [missing]",
+      "vowels.check#c8.depth [missing]",
+      "vowels.check#c8.roman [missing]",
+      "vowels.check#c9.depth [missing]",
+      "vowels.compound#s1.depth [missing]",
+      "vowels.compound#t1.depth [missing]",
+      "vowels.compound#e1.depth [missing]",
+      "vowels.compound#e1.roman [missing]",
+      "vowels.compound#p1.depth [missing]",
+      "vowels.compound#p2.depth [missing]",
+      "vowels.compound#t2.depth [missing]",
+      "vowels.compound#t3.depth [missing]",
+      "vowels.compound#p3.depth [missing]",
+      "vowels.compound#p4.depth [missing]",
+      "vowels.compound#e2.depth [missing]",
+      "vowels.compound#sum.depth [missing]",
+      "vowels.long#s1.depth [missing]",
+      "vowels.long#t1.depth [missing]",
+      "vowels.long#e1.depth [missing]",
+      "vowels.long#e1.roman [missing]",
+      "vowels.long#p1.depth [missing]",
+      "vowels.long#t2.depth [missing]",
+      "vowels.long#p2.depth [missing]",
+      "vowels.long#p2.roman [missing]",
+      "vowels.long#p3.depth [missing]",
+      "vowels.long#e2.depth [missing]",
+      "vowels.long#e2.roman [missing]",
+      "vowels.long#p4.depth [missing]",
+      "vowels.long#p4.roman [missing]",
+      "vowels.long#sum.depth [missing]",
+      "vowels.revision#core.depth [missing]",
+      "vowels.revision#core.rows[0].tag [missing]",
+      "vowels.revision#core.rows[1].tag [missing]",
+      "vowels.revision#core.rows[2].tag [missing]",
+      "vowels.revision#core.rows[3].tag [missing]",
+      "vowels.revision#core.rows[4].tag [missing]",
+      "vowels.revision#core.rows[5].tag [missing]",
+      "vowels.revision#core.rows[6].tag [missing]",
+      "vowels.revision#core.rows[7].tag [missing]",
+      "vowels.revision#core.rows[8].tag [missing]",
+      "vowels.revision#conditions.depth [missing]",
+      "vowels.revision#conditions.rows[0].tag [missing]",
+      "vowels.revision#exceptions.depth [missing]",
+      "vowels.revision#exceptions.rows[0].tag [missing]",
+      "vowels.revision#mistakes.depth [missing]",
+      "vowels.revision#mistakes.rows[0].tag [missing]",
+      "vowels.revision#mistakes.rows[1].tag [missing]",
+      "vowels.revision#mistakes.rows[2].tag [missing]",
+      "vowels.revision#mistakes.rows[3].tag [missing]",
+      "vowels.revision#mistakes.rows[4].tag [missing]",
+      "vowels.revision#panini.rows[0].tag [missing]",
+      "vowels.revision#panini.rows[1].tag [missing]",
+      "vowels.revision#panini.rows[2].tag [missing]",
+      "vowels.revision#panini.rows[3].tag [missing]",
+      "vowels.revision#sheet.depth [missing]",
+      "vowels.revision#sheet.rows[0].tag [missing]",
+      "vowels.revision#sheet.rows[1].tag [missing]",
+      "vowels.revision#sheet.rows[2].tag [missing]",
+      "vowels.revision#sheet.rows[3].tag [missing]",
+      "vowels.revision#sheet.rows[4].tag [missing]",
+      "vowels.short#s1.depth [missing]",
+      "vowels.short#s2.depth [missing]",
+      "vowels.short#t1.depth [missing]",
+      "vowels.short#e1.depth [missing]",
+      "vowels.short#e1.roman [missing]",
+      "vowels.short#p1.depth [missing]",
+      "vowels.short#t2.depth [missing]",
+      "vowels.short#p2.depth [missing]",
+      "vowels.short#e2.depth [missing]",
+      "vowels.short#p3.depth [missing]",
+      "vowels.short#p4.depth [missing]",
+      "vowels.short#sum.depth [missing]",
+      "vowels.signs#s1.depth [missing]",
+      "vowels.signs#t1.depth [missing]",
+      "vowels.signs#t2.depth [missing]",
+      "vowels.signs#e1.depth [missing]",
+      "vowels.signs#e1.roman [missing]",
+      "vowels.signs#p1.depth [missing]",
+      "vowels.signs#t3.depth [missing]",
+      "vowels.signs#p2.depth [missing]",
+      "vowels.signs#p3.depth [missing]",
+      "vowels.signs#e2.depth [missing]",
+      "vowels.signs#p4.depth [missing]",
+      "vowels.signs#sum.depth [missing]",
+      "nf1.deva#p6.roman [missing]",
+      "num.reading#r1.depth [missing]",
+      "num.reading#p1.depth [missing]",
+      "num.reading#p1.roman [missing]",
+      "num.reading#r2.depth [missing]",
+      "num.reading#p2.depth [missing]",
+      "num.reading#p2.roman [missing]",
+      "num.reading#end.depth [missing]",
+      "pn.revision#conditions.rows[1].rule.en",
+      "pn.revision#conditions.rows[1].rule.hi",
+      "pn.who#t2.body.en",
+      "pn.who#t2.body.hi",
+      "who.reading#r1.depth [missing]",
+      "who.reading#p1.depth [missing]",
+      "who.reading#p1.roman [missing]",
+      "who.reading#r2.depth [missing]",
+      "who.reading#p2.depth [missing]",
+      "who.reading#p2.roman [missing]",
+      "who.reading#end.depth [missing]",
+      "past.reading#r1.depth [missing]",
+      "past.reading#p1.depth [missing]",
+      "past.reading#p1.roman [missing]",
+      "past.reading#r2.depth [missing]",
+      "past.reading#p2.depth [missing]",
+      "past.reading#p2.roman [missing]",
+      "past.reading#end.depth [missing]",
+      "vs.guna#p6.roman [missing]",
+      "kss.reading#r1.depth [missing]",
+      "kss.reading#p1.depth [missing]",
+      "kss.reading#p1.roman [missing]",
+      "kss.reading#r2.depth [missing]",
+      "kss.reading#p2.depth [missing]",
+      "kss.reading#p2.roman [missing]",
+      "kss.reading#end.depth [missing]"
+    ],
+    "unexpected_original_changes": [
+      "vowels.check#c1.depth [missing]",
+      "vowels.check#c2.depth [missing]",
+      "vowels.check#c2.roman [missing]",
+      "vowels.check#c3.depth [missing]",
+      "vowels.check#c4.depth [missing]",
+      "vowels.check#c5.depth [missing]",
+      "vowels.check#c6.depth [missing]",
+      "vowels.check#c7.depth [missing]",
+      "vowels.check#c8.depth [missing]",
+      "vowels.check#c8.roman [missing]",
+      "vowels.check#c9.depth [missing]",
+      "vowels.compound#s1.depth [missing]",
+      "vowels.compound#t1.depth [missing]",
+      "vowels.compound#e1.depth [missing]",
+      "vowels.compound#e1.roman [missing]",
+      "vowels.compound#p1.depth [missing]",
+      "vowels.compound#p2.depth [missing]",
+      "vowels.compound#t2.depth [missing]",
+      "vowels.compound#t3.depth [missing]",
+      "vowels.compound#p3.depth [missing]",
+      "vowels.compound#p4.depth [missing]",
+      "vowels.compound#e2.depth [missing]",
+      "vowels.compound#sum.depth [missing]",
+      "vowels.long#s1.depth [missing]",
+      "vowels.long#t1.depth [missing]",
+      "vowels.long#e1.depth [missing]",
+      "vowels.long#e1.roman [missing]",
+      "vowels.long#p1.depth [missing]",
+      "vowels.long#t2.depth [missing]",
+      "vowels.long#p2.depth [missing]",
+      "vowels.long#p2.roman [missing]",
+      "vowels.long#p3.depth [missing]",
+      "vowels.long#e2.depth [missing]",
+      "vowels.long#e2.roman [missing]",
+      "vowels.long#p4.depth [missing]",
+      "vowels.long#p4.roman [missing]",
+      "vowels.long#sum.depth [missing]",
+      "vowels.revision#core.depth [missing]",
+      "vowels.revision#core.rows[0].tag [missing]",
+      "vowels.revision#core.rows[1].tag [missing]",
+      "vowels.revision#core.rows[2].tag [missing]",
+      "vowels.revision#core.rows[3].tag [missing]",
+      "vowels.revision#core.rows[4].tag [missing]",
+      "vowels.revision#core.rows[5].tag [missing]",
+      "vowels.revision#core.rows[6].tag [missing]",
+      "vowels.revision#core.rows[7].tag [missing]",
+      "vowels.revision#core.rows[8].tag [missing]",
+      "vowels.revision#conditions.depth [missing]",
+      "vowels.revision#conditions.rows[0].tag [missing]",
+      "vowels.revision#exceptions.depth [missing]",
+      "vowels.revision#exceptions.rows[0].tag [missing]",
+      "vowels.revision#mistakes.depth [missing]",
+      "vowels.revision#mistakes.rows[0].tag [missing]",
+      "vowels.revision#mistakes.rows[1].tag [missing]",
+      "vowels.revision#mistakes.rows[2].tag [missing]",
+      "vowels.revision#mistakes.rows[3].tag [missing]",
+      "vowels.revision#mistakes.rows[4].tag [missing]",
+      "vowels.revision#panini.rows[0].tag [missing]",
+      "vowels.revision#panini.rows[1].tag [missing]",
+      "vowels.revision#panini.rows[2].tag [missing]",
+      "vowels.revision#panini.rows[3].tag [missing]",
+      "vowels.revision#sheet.depth [missing]",
+      "vowels.revision#sheet.rows[0].tag [missing]",
+      "vowels.revision#sheet.rows[1].tag [missing]",
+      "vowels.revision#sheet.rows[2].tag [missing]",
+      "vowels.revision#sheet.rows[3].tag [missing]",
+      "vowels.revision#sheet.rows[4].tag [missing]",
+      "vowels.short#s1.depth [missing]",
+      "vowels.short#s2.depth [missing]",
+      "vowels.short#t1.depth [missing]",
+      "vowels.short#e1.depth [missing]",
+      "vowels.short#e1.roman [missing]",
+      "vowels.short#p1.depth [missing]",
+      "vowels.short#t2.depth [missing]",
+      "vowels.short#p2.depth [missing]",
+      "vowels.short#e2.depth [missing]",
+      "vowels.short#p3.depth [missing]",
+      "vowels.short#p4.depth [missing]",
+      "vowels.short#sum.depth [missing]",
+      "vowels.signs#s1.depth [missing]",
+      "vowels.signs#t1.depth [missing]",
+      "vowels.signs#t2.depth [missing]",
+      "vowels.signs#e1.depth [missing]",
+      "vowels.signs#e1.roman [missing]",
+      "vowels.signs#p1.depth [missing]",
+      "vowels.signs#t3.depth [missing]",
+      "vowels.signs#p2.depth [missing]",
+      "vowels.signs#p3.depth [missing]",
+      "vowels.signs#e2.depth [missing]",
+      "vowels.signs#p4.depth [missing]",
+      "vowels.signs#sum.depth [missing]",
+      "nf1.deva#p6.roman [missing]",
+      "num.reading#r1.depth [missing]",
+      "num.reading#p1.depth [missing]",
+      "num.reading#p1.roman [missing]",
+      "num.reading#r2.depth [missing]",
+      "num.reading#p2.depth [missing]",
+      "num.reading#p2.roman [missing]",
+      "num.reading#end.depth [missing]",
+      "who.reading#r1.depth [missing]",
+      "who.reading#p1.depth [missing]",
+      "who.reading#p1.roman [missing]",
+      "who.reading#r2.depth [missing]",
+      "who.reading#p2.depth [missing]",
+      "who.reading#p2.roman [missing]",
+      "who.reading#end.depth [missing]",
+      "past.reading#r1.depth [missing]",
+      "past.reading#p1.depth [missing]",
+      "past.reading#p1.roman [missing]",
+      "past.reading#r2.depth [missing]",
+      "past.reading#p2.depth [missing]",
+      "past.reading#p2.roman [missing]",
+      "past.reading#end.depth [missing]",
+      "vs.guna#p6.roman [missing]",
+      "kss.reading#r1.depth [missing]",
+      "kss.reading#p1.depth [missing]",
+      "kss.reading#p1.roman [missing]",
+      "kss.reading#r2.depth [missing]",
+      "kss.reading#p2.depth [missing]",
+      "kss.reading#p2.roman [missing]",
+      "kss.reading#end.depth [missing]"
+    ],
+    "new_cards": [
+      "cons.breath#e-sound"
+    ]
+  },
+  "lessons": [
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.breath",
+      "title": "Breath and voice: क ख ग घ ङ",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "cons-breath-s1",
+        "teaching-fruit-one"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.check",
+      "title": "Read her name",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.grid",
+      "title": "Five rows on the carved door",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "cons-grid-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.revision",
+      "title": "Everything about consonants",
+      "template": "revision",
+      "figures": {
+        "comparison": 14,
+        "matrix": 3,
+        "worked": 4
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-fruit-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.semivowels",
+      "title": "The in-between sounds: य र ल व",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "cons-semivowels-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.sibilants",
+      "title": "Three hisses and a breath",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "cons-sibilants-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-1",
+      "unit": "consonants",
+      "lesson": "cons.virama",
+      "title": "The silent stroke",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "cons-virama-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.check",
+      "title": "Wake the pillar",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.clusters",
+      "title": "Letters that hold hands",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "joined-clusters-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.hum-breath",
+      "title": "The hum and the breath",
+      "template": "scene",
+      "figures": {
+        "worked": 4,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "joined-hum-breath-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.marks",
+      "title": "Marks and numbers on the pillar",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "matrix": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "joined-marks-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.ra",
+      "title": "The many shapes of र",
+      "template": "scene",
+      "figures": {
+        "sequence": 2,
+        "worked": 5
+      },
+      "unique_images": 1,
+      "images": [
+        "joined-ra-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-1",
+      "unit": "joined-letters",
+      "lesson": "joined.revision",
+      "title": "Everything about joined letters",
+      "template": "revision",
+      "figures": {
+        "comparison": 5,
+        "matrix": 5,
+        "sequence": 3,
+        "worked": 11
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.check",
+      "title": "Read his name",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.iast",
+      "title": "Roman letters as a helper",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "reading-iast-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.mouth",
+      "title": "Where every sound is made",
+      "template": "scene",
+      "figures": {
+        "comparison": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "reading-mouth-s1"
+      ],
+      "feedback_cards": 2
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.names",
+      "title": "The register of names",
+      "template": "scene",
+      "figures": {
+        "worked": 4,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "reading-names-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.revision",
+      "title": "Everything about reading words",
+      "template": "revision",
+      "figures": {
+        "comparison": 9,
+        "worked": 6,
+        "matrix": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-1",
+      "unit": "reading",
+      "lesson": "reading.syllables",
+      "title": "One vowel, one syllable",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "reading-syllables-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.check",
+      "title": "Read the first line",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.compound",
+      "title": "The last two groups",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "vowels-compound-end",
+        "vowels-compound-lamp"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.long",
+      "title": "Śuka's long words",
+      "template": "scene",
+      "figures": {
+        "matrix": 1,
+        "comparison": 2,
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "vowels-long-pairs",
+        "vowels-long-shuka"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.revision",
+      "title": "Everything about vowels",
+      "template": "revision",
+      "figures": {
+        "comparison": 14,
+        "matrix": 5,
+        "worked": 9,
+        "sequence": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.short",
+      "title": "The smoke that could not speak",
+      "template": "scene",
+      "figures": {
+        "comparison": 5,
+        "worked": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "vowels-short-aiu",
+        "vowels-short-line",
+        "vowels-short-smoke"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-1",
+      "unit": "vowels",
+      "lesson": "vowels.signs",
+      "title": "The second line",
+      "template": "scene",
+      "figures": {
+        "sequence": 2,
+        "comparison": 1,
+        "worked": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "vowels-signs-second-line"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "calling",
+      "lesson": "calling.check",
+      "title": "Call and name",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "calling",
+      "lesson": "calling.eight",
+      "title": "The eight cases at a glance",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "calling-eight-s1",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "calling",
+      "lesson": "calling.he",
+      "title": "Calling by name",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 5
+      },
+      "unique_images": 3,
+      "images": [
+        "calling-he-s1",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "calling",
+      "lesson": "calling.revision",
+      "title": "Everything about calling and the eight cases",
+      "template": "revision",
+      "figures": {
+        "comparison": 5,
+        "matrix": 5,
+        "worked": 3
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "for-to",
+      "lesson": "for.check",
+      "title": "A gift for the teacher",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "for-to",
+      "lesson": "for.giving",
+      "title": "Giving to someone",
+      "template": "scene",
+      "figures": {
+        "reading": 1,
+        "relations": 1,
+        "worked": 5,
+        "comparison": 1
+      },
+      "unique_images": 6,
+      "images": [
+        "for-giving-s1",
+        "teaching-book",
+        "teaching-fruit-one",
+        "teaching-gift-teacher",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "for-to",
+      "lesson": "for.purpose",
+      "title": "For what?",
+      "template": "scene",
+      "figures": {
+        "worked": 4,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "for-purpose-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "for-to",
+      "lesson": "for.revision",
+      "title": "Everything about to and for",
+      "template": "revision",
+      "figures": {
+        "reading": 2,
+        "matrix": 2,
+        "worked": 7,
+        "comparison": 1
+      },
+      "unique_images": 4,
+      "images": [
+        "teaching-fruit-one",
+        "teaching-gift-teacher",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "from",
+      "lesson": "from.away",
+      "title": "Away from",
+      "template": "scene",
+      "figures": {
+        "reading": 1,
+        "relations": 1,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 4,
+      "images": [
+        "from-away-s1",
+        "teaching-from-house",
+        "teaching-river",
+        "teaching-tree"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "from",
+      "lesson": "from.check",
+      "title": "Away from the storm",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-tree"
+      ],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "from",
+      "lesson": "from.fear",
+      "title": "Afraid of, better than",
+      "template": "scene",
+      "figures": {
+        "relations": 1,
+        "worked": 3,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "from-fear-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "from",
+      "lesson": "from.revision",
+      "title": "Everything about from",
+      "template": "revision",
+      "figures": {
+        "reading": 2,
+        "matrix": 3,
+        "relations": 3,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "teaching-from-house",
+        "teaching-river",
+        "teaching-tree"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.agree",
+      "title": "Words that agree",
+      "template": "scene",
+      "figures": {
+        "worked": 6
+      },
+      "unique_images": 1,
+      "images": [
+        "gender-agree-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.check",
+      "title": "Name the puppets",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-vine"
+      ],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.lata",
+      "title": "Feminines like लता",
+      "template": "scene",
+      "figures": {
+        "worked": 6,
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 5,
+      "images": [
+        "gender-lata-s1",
+        "teaching-garland",
+        "teaching-reader-one",
+        "teaching-river",
+        "teaching-vine"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.revision",
+      "title": "Everything about gender",
+      "template": "revision",
+      "figures": {
+        "matrix": 7,
+        "comparison": 5,
+        "worked": 8
+      },
+      "unique_images": 5,
+      "images": [
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river",
+        "teaching-tree",
+        "teaching-vine"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.tad",
+      "title": "He, she, it: सः, सा, तत्",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 3
+      },
+      "unique_images": 2,
+      "images": [
+        "gender-tad-s1",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.this",
+      "title": "This one: एषः, एषा, एतत्",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "matrix": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "gender-this-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "he-she-it",
+      "lesson": "gender.three",
+      "title": "Three genders",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 3
+      },
+      "unique_images": 6,
+      "images": [
+        "gender-three-s1",
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river",
+        "teaching-tree",
+        "teaching-vine"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.be",
+      "title": "I am, you are",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "matrix": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "you-be-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.check",
+      "title": "Say who is who",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.grid",
+      "title": "The nine forms",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "matrix": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "you-grid-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.i",
+      "title": "I and we",
+      "template": "scene",
+      "figures": {
+        "comparison": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "you-i-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.polite",
+      "title": "Speaking to elders",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-reader-one",
+        "you-polite-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.revision",
+      "title": "Everything about I and you",
+      "template": "revision",
+      "figures": {
+        "comparison": 9,
+        "matrix": 3,
+        "worked": 6
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "i-and-you",
+      "lesson": "you.you",
+      "title": "You",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "you-you-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "in-at",
+      "lesson": "in.check",
+      "title": "Where and when",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "in-at",
+      "lesson": "in.revision",
+      "title": "Everything about in and at",
+      "template": "revision",
+      "figures": {
+        "reading": 2,
+        "matrix": 3,
+        "worked": 5,
+        "comparison": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "teaching-at-house",
+        "teaching-river",
+        "teaching-tree"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "in-at",
+      "lesson": "in.when",
+      "title": "At night, in the morning",
+      "template": "scene",
+      "figures": {
+        "worked": 4,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "in-when-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "in-at",
+      "lesson": "in.where",
+      "title": "In, on, at",
+      "template": "scene",
+      "figures": {
+        "reading": 1,
+        "relations": 1,
+        "worked": 4,
+        "comparison": 1
+      },
+      "unique_images": 4,
+      "images": [
+        "in-where-s1",
+        "teaching-at-house",
+        "teaching-river",
+        "teaching-tree"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-1",
+      "lesson": "nf1.check",
+      "title": "Name the family",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-vine"
+      ],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-1",
+      "lesson": "nf1.deva",
+      "title": "The देव family",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 4
+      },
+      "unique_images": 1,
+      "images": [
+        "nf1-deva-s1"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-1",
+      "lesson": "nf1.lata",
+      "title": "The लता family",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 4,
+        "reading": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "nf1-lata-s1",
+        "teaching-boat-many",
+        "teaching-vine"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-1",
+      "lesson": "nf1.phala",
+      "title": "The फल family",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 2
+      },
+      "unique_images": 4,
+      "images": [
+        "nf1-phala-s1",
+        "teaching-fruit-many",
+        "teaching-fruit-one",
+        "teaching-fruit-two"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-1",
+      "lesson": "nf1.revision",
+      "title": "Everything about the first three families",
+      "template": "revision",
+      "figures": {
+        "matrix": 10,
+        "worked": 2,
+        "comparison": 6
+      },
+      "unique_images": 4,
+      "images": [
+        "teaching-fruit-many",
+        "teaching-fruit-one",
+        "teaching-fruit-two",
+        "teaching-vine"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.check",
+      "title": "Name the families",
+      "template": "check",
+      "figures": {},
+      "unique_images": 4,
+      "images": [
+        "teaching-cow",
+        "teaching-river",
+        "teaching-rope",
+        "teaching-vine"
+      ],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.i",
+      "title": "कवि and मति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 2,
+      "images": [
+        "nf2-i-s1",
+        "teaching-vine"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.nadi",
+      "title": "नदी and वधू",
+      "template": "scene",
+      "figures": {
+        "comparison": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "nf2-nadi-s1",
+        "teaching-river"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.pitr",
+      "title": "पितृ and मातृ",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "nf2-pitr-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.revision",
+      "title": "Everything about these families",
+      "template": "revision",
+      "figures": {
+        "matrix": 14,
+        "worked": 3,
+        "comparison": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "noun-families-2",
+      "lesson": "nf2.u",
+      "title": "Teacher, cow, honey",
+      "template": "scene",
+      "figures": {
+        "comparison": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "nf2-u-s1",
+        "teaching-cow",
+        "teaching-rope"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.ask",
+      "title": "Asking questions",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "object-ask-s1",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.check",
+      "title": "Open the chest",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.no",
+      "title": "Saying no",
+      "template": "scene",
+      "figures": {
+        "worked": 5,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "object-no-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.revision",
+      "title": "Everything about the object",
+      "template": "revision",
+      "figures": {
+        "comparison": 7,
+        "matrix": 2,
+        "reading": 3,
+        "worked": 6
+      },
+      "unique_images": 4,
+      "images": [
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river",
+        "teaching-toward-house"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.what",
+      "title": "What is eaten, read, seen",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "relations": 1,
+        "worked": 3
+      },
+      "unique_images": 5,
+      "images": [
+        "object-what-s1",
+        "teaching-book",
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "object",
+      "lesson": "object.where-to",
+      "title": "Where to?",
+      "template": "scene",
+      "figures": {
+        "reading": 1,
+        "relations": 1,
+        "worked": 3
+      },
+      "unique_images": 3,
+      "images": [
+        "object-where-to-s1",
+        "teaching-river",
+        "teaching-toward-house"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "of",
+      "lesson": "of.check",
+      "title": "Whose is it?",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "of",
+      "lesson": "of.family",
+      "title": "The family tree",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 3,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "of-family-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "of",
+      "lesson": "of.revision",
+      "title": "Everything about of",
+      "template": "revision",
+      "figures": {
+        "relations": 3,
+        "matrix": 4,
+        "comparison": 4,
+        "worked": 4
+      },
+      "unique_images": 4,
+      "images": [
+        "teaching-book",
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "of",
+      "lesson": "of.whose",
+      "title": "Whose is it?",
+      "template": "scene",
+      "figures": {
+        "relations": 2,
+        "worked": 6,
+        "comparison": 1
+      },
+      "unique_images": 6,
+      "images": [
+        "of-whose-s1",
+        "teaching-book",
+        "teaching-fruit-one",
+        "teaching-reader-one",
+        "teaching-river",
+        "teaching-tree"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.agree",
+      "title": "The verb counts too",
+      "template": "scene",
+      "figures": {
+        "comparison": 4,
+        "relations": 4,
+        "worked": 4,
+        "reading": 1
+      },
+      "unique_images": 7,
+      "images": [
+        "num-agree-s1",
+        "teaching-boat-many",
+        "teaching-boat-one",
+        "teaching-boat-two",
+        "teaching-reader-many",
+        "teaching-reader-one",
+        "teaching-reader-two"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.check",
+      "title": "Count the herons",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.many",
+      "title": "Many",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 5
+      },
+      "unique_images": 7,
+      "images": [
+        "num-many-s1",
+        "teaching-boat-many",
+        "teaching-boat-one",
+        "teaching-boat-two",
+        "teaching-fruit-many",
+        "teaching-reader-many",
+        "teaching-river"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.reading",
+      "title": "Read one, two and many",
+      "template": "episode",
+      "figures": {
+        "reading": 4
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 2
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.revision",
+      "title": "Everything about number",
+      "template": "revision",
+      "figures": {
+        "worked": 7,
+        "matrix": 6,
+        "comparison": 6
+      },
+      "unique_images": 10,
+      "images": [
+        "teaching-boat-many",
+        "teaching-boat-one",
+        "teaching-boat-two",
+        "teaching-fruit-many",
+        "teaching-fruit-one",
+        "teaching-fruit-two",
+        "teaching-reader-many",
+        "teaching-reader-one",
+        "teaching-reader-two",
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.two",
+      "title": "Two of anything",
+      "template": "scene",
+      "figures": {
+        "worked": 6,
+        "comparison": 1
+      },
+      "unique_images": 8,
+      "images": [
+        "num-two-s1",
+        "teaching-fruit-many",
+        "teaching-fruit-one",
+        "teaching-fruit-two",
+        "teaching-reader-many",
+        "teaching-reader-one",
+        "teaching-reader-two",
+        "teaching-river"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "one-two-many",
+      "lesson": "num.verbs",
+      "title": "One, two and many readers",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 4,
+      "images": [
+        "num-verbs-s1",
+        "teaching-reader-many",
+        "teaching-reader-one",
+        "teaching-reader-two"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.check",
+      "title": "Count, ask and point",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.count",
+      "title": "Counting to ten",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "matrix": 2,
+        "worked": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "pn-count-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.revision",
+      "title": "Everything about pronouns and numbers",
+      "template": "revision",
+      "figures": {
+        "matrix": 8,
+        "comparison": 4,
+        "relations": 1,
+        "worked": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.tad",
+      "title": "That one, in every case",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "pn-tad-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.time",
+      "title": "Big numbers and the time",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "matrix": 2,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "pn-time-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "pronouns-numbers",
+      "lesson": "pn.who",
+      "title": "Who and which",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 5,
+        "relations": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "pn-who-s1",
+        "teaching-book",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.check",
+      "title": "Describe the ghat",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.doer",
+      "title": "Who does it",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 3
+      },
+      "unique_images": 3,
+      "images": [
+        "teaching-reader-one",
+        "teaching-river",
+        "who-doer-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.does",
+      "title": "What he does: पठति",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "worked": 4
+      },
+      "unique_images": 6,
+      "images": [
+        "teaching-boy-drinks",
+        "teaching-boy-eats",
+        "teaching-boy-walks",
+        "teaching-girl-writes",
+        "teaching-reader-one",
+        "who-does-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.endings",
+      "title": "Endings do the work",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 1
+      },
+      "unique_images": 4,
+      "images": [
+        "teaching-reader-many",
+        "teaching-reader-one",
+        "teaching-reader-two",
+        "who-endings-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.is",
+      "title": "No word for “is”",
+      "template": "scene",
+      "figures": {
+        "worked": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-river",
+        "who-is-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.order",
+      "title": "Shuffle the words",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-reader-one",
+        "who-order-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.reading",
+      "title": "Read the ghat scene",
+      "template": "episode",
+      "figures": {
+        "reading": 4
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 2
+    },
+    {
+      "act": "act-2",
+      "unit": "who-does",
+      "lesson": "who.revision",
+      "title": "Everything about who does what",
+      "template": "revision",
+      "figures": {
+        "comparison": 13,
+        "matrix": 3,
+        "worked": 5
+      },
+      "unique_images": 6,
+      "images": [
+        "teaching-boy-drinks",
+        "teaching-boy-eats",
+        "teaching-boy-walks",
+        "teaching-girl-writes",
+        "teaching-reader-one",
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "with-by",
+      "lesson": "with.check",
+      "title": "How and with whom",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-2",
+      "unit": "with-by",
+      "lesson": "with.means",
+      "title": "By boat, with a pen",
+      "template": "scene",
+      "figures": {
+        "reading": 1,
+        "relations": 1,
+        "worked": 6,
+        "comparison": 1
+      },
+      "unique_images": 5,
+      "images": [
+        "teaching-boat-one",
+        "teaching-fruit-one",
+        "teaching-girl-writes",
+        "teaching-pen",
+        "with-means-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-2",
+      "unit": "with-by",
+      "lesson": "with.revision",
+      "title": "Everything about by and with",
+      "template": "revision",
+      "figures": {
+        "relations": 5,
+        "matrix": 2,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "teaching-boat-one",
+        "teaching-fruit-one",
+        "teaching-pen"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-2",
+      "unit": "with-by",
+      "lesson": "with.together",
+      "title": "Together with",
+      "template": "scene",
+      "figures": {
+        "reading": 2,
+        "relations": 1,
+        "worked": 5
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-walk-friend",
+        "with-together-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-3",
+      "unit": "aorist-rare",
+      "lesson": "aor.abhut",
+      "title": "The aorist",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "aor-abhut-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "aorist-rare",
+      "lesson": "aor.check",
+      "title": "Spot the rare forms",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "aorist-rare",
+      "lesson": "aor.four",
+      "title": "The rare four",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 3,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "aor-four-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "aorist-rare",
+      "lesson": "aor.ma",
+      "title": "Do not grieve",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "aor-ma-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "aorist-rare",
+      "lesson": "aor.revision",
+      "title": "Everything about the aorist and the rare four",
+      "template": "revision",
+      "figures": {
+        "matrix": 6,
+        "worked": 5,
+        "comparison": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "atmanepada",
+      "lesson": "atm.both",
+      "title": "Verbs with both sets",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "atm-both-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "atmanepada",
+      "lesson": "atm.check",
+      "title": "For oneself or for another",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "atmanepada",
+      "lesson": "atm.revision",
+      "title": "Everything about the two sets",
+      "template": "revision",
+      "figures": {
+        "matrix": 5,
+        "comparison": 3,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "atmanepada",
+      "lesson": "atm.te",
+      "title": "Acting for oneself",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "matrix": 1,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "atm-te-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "commands",
+      "lesson": "cmd.check",
+      "title": "Obey the orderer",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "commands",
+      "lesson": "cmd.go",
+      "title": "Go! Read!",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "worked": 6
+      },
+      "unique_images": 4,
+      "images": [
+        "cmd-go-s1",
+        "teaching-book",
+        "teaching-reader-many",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "commands",
+      "lesson": "cmd.revision",
+      "title": "Everything about commands",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "comparison": 3,
+        "worked": 3
+      },
+      "unique_images": 2,
+      "images": [
+        "teaching-reader-many",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "commands",
+      "lesson": "cmd.wish",
+      "title": "May they be happy",
+      "template": "scene",
+      "figures": {
+        "worked": 5,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "cmd-wish-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "future",
+      "lesson": "future.check",
+      "title": "Say what will happen",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "future",
+      "lesson": "future.plans",
+      "title": "Plans and promises",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 5,
+        "reading": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "future-plans-s1",
+        "teaching-book",
+        "teaching-reader-many"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "future",
+      "lesson": "future.revision",
+      "title": "Everything about the future",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "comparison": 3,
+        "worked": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-many"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "future",
+      "lesson": "future.sya",
+      "title": "Will read: पठिष्यति",
+      "template": "scene",
+      "figures": {
+        "reading": 3,
+        "comparison": 2,
+        "worked": 3
+      },
+      "unique_images": 3,
+      "images": [
+        "future-sya-s1",
+        "teaching-book",
+        "teaching-reader-many"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "indeclinables",
+      "lesson": "avy.check",
+      "title": "Round the stone",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-book"
+      ],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "indeclinables",
+      "lesson": "avy.iti",
+      "title": "इति: quotes and thoughts",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "avy-iti-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "indeclinables",
+      "lesson": "avy.revision",
+      "title": "Everything about small words",
+      "template": "revision",
+      "figures": {
+        "matrix": 5,
+        "worked": 6,
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-book"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "indeclinables",
+      "lesson": "avy.small",
+      "title": "Small words",
+      "template": "scene",
+      "figures": {
+        "worked": 5,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "avy-small-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "indeclinables",
+      "lesson": "avy.where",
+      "title": "Here, there, then",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "avy-where-s1",
+        "teaching-book"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.check",
+      "title": "Open the folds",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-book"
+      ],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.krtya",
+      "title": "Must be done",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "part-krtya-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.kta",
+      "title": "Gone, has gone",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "part-kta-s1",
+        "teaching-book"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.ktva",
+      "title": "Having gone",
+      "template": "scene",
+      "figures": {
+        "sequence": 1,
+        "reading": 3,
+        "relations": 1,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "part-ktva-s1",
+        "teaching-boy-eats",
+        "teaching-boy-walks"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.revision",
+      "title": "Everything about words made from verbs",
+      "template": "revision",
+      "figures": {
+        "matrix": 10,
+        "relations": 1,
+        "worked": 4,
+        "comparison": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.shatr",
+      "title": "While going",
+      "template": "scene",
+      "figures": {
+        "reading": 3,
+        "relations": 1,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "part-shatr-s1",
+        "teaching-walk-reading"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "participles",
+      "lesson": "part.tumun",
+      "title": "To go",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "part-tumun-s1",
+        "teaching-book"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "passive-causative",
+      "lesson": "pc.cause",
+      "title": "Makes someone read",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "relations": 1,
+        "worked": 2
+      },
+      "unique_images": 3,
+      "images": [
+        "pc-cause-s1",
+        "teaching-cause-reading",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "passive-causative",
+      "lesson": "pc.check",
+      "title": "Three kinds of verbs",
+      "template": "check",
+      "figures": {},
+      "unique_images": 1,
+      "images": [
+        "teaching-book"
+      ],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "passive-causative",
+      "lesson": "pc.passive",
+      "title": "Is read by",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "relations": 1,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 5,
+      "images": [
+        "pc-passive-r1",
+        "pc-passive-s1",
+        "teaching-book",
+        "teaching-boy-eats",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "passive-causative",
+      "lesson": "pc.revision",
+      "title": "Everything about the passive, causative and desiderative",
+      "template": "revision",
+      "figures": {
+        "matrix": 6,
+        "comparison": 5,
+        "relations": 1,
+        "worked": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "passive-causative",
+      "lesson": "pc.want",
+      "title": "Wants to drink",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "reading": 1
+      },
+      "unique_images": 3,
+      "images": [
+        "pc-want-s1",
+        "teaching-boy-drinks",
+        "teaching-wants-drink"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "past",
+      "lesson": "past.augment",
+      "title": "The augment अ-",
+      "template": "scene",
+      "figures": {
+        "reading": 4,
+        "comparison": 2,
+        "worked": 4
+      },
+      "unique_images": 3,
+      "images": [
+        "past-augment-s1",
+        "teaching-book",
+        "teaching-reader-many"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "past",
+      "lesson": "past.check",
+      "title": "Tell what happened",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "past",
+      "lesson": "past.reading",
+      "title": "Read the Vetāla's opening",
+      "template": "episode",
+      "figures": {
+        "reading": 6
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-tree"
+      ],
+      "feedback_cards": 2
+    },
+    {
+      "act": "act-3",
+      "unit": "past",
+      "lesson": "past.revision",
+      "title": "Everything about the past",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "comparison": 2,
+        "worked": 5
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-many"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "past",
+      "lesson": "past.tell",
+      "title": "What happened yesterday",
+      "template": "scene",
+      "figures": {
+        "worked": 2,
+        "reading": 7
+      },
+      "unique_images": 3,
+      "images": [
+        "past-tell-r1",
+        "past-tell-s1",
+        "teaching-tree"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "prefixes",
+      "lesson": "pre.check",
+      "title": "Fit the beads",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "prefixes",
+      "lesson": "pre.come",
+      "title": "Going becomes coming",
+      "template": "scene",
+      "figures": {
+        "worked": 2,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "pre-come-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "prefixes",
+      "lesson": "pre.list",
+      "title": "All twenty-two",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "pre-list-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "prefixes",
+      "lesson": "pre.revision",
+      "title": "Everything about prefixes",
+      "template": "revision",
+      "figures": {
+        "matrix": 5,
+        "worked": 4,
+        "comparison": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "should",
+      "lesson": "should.advice",
+      "title": "He should read",
+      "template": "scene",
+      "figures": {
+        "worked": 5,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "should-advice-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "should",
+      "lesson": "should.check",
+      "title": "Say the rule",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "should",
+      "lesson": "should.revision",
+      "title": "Everything about “should”",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "worked": 4,
+        "comparison": 1
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "should",
+      "lesson": "should.rules",
+      "title": "Rules and possibilities",
+      "template": "scene",
+      "figures": {
+        "worked": 5,
+        "reading": 3
+      },
+      "unique_images": 2,
+      "images": [
+        "should-rules-r1",
+        "should-rules-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "story-past",
+      "lesson": "lit.check",
+      "title": "Begin the tale",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "story-past",
+      "lesson": "lit.double",
+      "title": "Doubling the root",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 3
+      },
+      "unique_images": 3,
+      "images": [
+        "lit-double-s1",
+        "teaching-book",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "story-past",
+      "lesson": "lit.revision",
+      "title": "Everything about the story past",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "comparison": 4,
+        "worked": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "story-past",
+      "lesson": "lit.said",
+      "title": "उवाच: he said",
+      "template": "scene",
+      "figures": {
+        "worked": 2,
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "lit-said-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.bhu",
+      "title": "Class 1: भवति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc1-bhu-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.check",
+      "title": "Open the drawers",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.cur",
+      "title": "Class 10: चोरयति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "vc1-cur-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.div",
+      "title": "Class 4: नृत्यति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc1-div-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.revision",
+      "title": "Everything about classes 1, 4, 6 and 10",
+      "template": "revision",
+      "figures": {
+        "matrix": 9,
+        "comparison": 4,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-1",
+      "lesson": "vc1.tud",
+      "title": "Class 6: तुदति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc1-tud-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.as",
+      "title": "Class 2: अस्ति, एति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc2-as-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.check",
+      "title": "Name the odd ones",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.da",
+      "title": "Class 3: ददाति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc2-da-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.jna",
+      "title": "Classes 7 and 9: रुणद्धि, जानाति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "vc2-jna-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.kr",
+      "title": "Classes 5 and 8: शृणोति, करोति",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vc2-kr-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-3",
+      "unit": "verb-classes-2",
+      "lesson": "vc2.revision",
+      "title": "Everything about the odd classes",
+      "template": "revision",
+      "figures": {
+        "matrix": 8,
+        "comparison": 6,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.check",
+      "title": "Unpack the names",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.dvandva",
+      "title": "X and Y",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "c1-dvandva-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.karmadharaya",
+      "title": "Blue lotus, three worlds",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "c1-karmadharaya-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.nan",
+      "title": "Untrue, pot-maker",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "c1-nan-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.revision",
+      "title": "Everything about compounds I",
+      "template": "revision",
+      "figures": {
+        "matrix": 8,
+        "comparison": 4,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-1",
+      "lesson": "c1.tatpurusha",
+      "title": "X's Y",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "c1-tatpurusha-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-2",
+      "lesson": "c2.avyayi",
+      "title": "As far as possible, every day",
+      "template": "scene",
+      "figures": {
+        "worked": 2,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "c2-avyayi-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-2",
+      "lesson": "c2.bahuvrihi",
+      "title": "The one who has",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "c2-bahuvrihi-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-2",
+      "lesson": "c2.check",
+      "title": "Read the garland",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-2",
+      "lesson": "c2.long",
+      "title": "Long compounds",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 1,
+        "reading": 3
+      },
+      "unique_images": 2,
+      "images": [
+        "c2-long-r1",
+        "c2-long-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "compounds-2",
+      "lesson": "c2.revision",
+      "title": "Everything about compounds II",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "worked": 5,
+        "comparison": 3
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "consonant-sandhi",
+      "lesson": "cs.check",
+      "title": "Match each sound to its neighbour",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-4",
+      "unit": "consonant-sandhi",
+      "lesson": "cs.nasal",
+      "title": "The nose takes over",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "cs-nasal-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "consonant-sandhi",
+      "lesson": "cs.place",
+      "title": "Place spreads",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "cs-place-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "consonant-sandhi",
+      "lesson": "cs.revision",
+      "title": "Everything about consonant sandhi",
+      "template": "revision",
+      "figures": {
+        "matrix": 6,
+        "comparison": 6,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "consonant-sandhi",
+      "lesson": "cs.voice",
+      "title": "Voice spreads",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "cs-voice-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-1",
+      "lesson": "m1.check",
+      "title": "Beat the verse",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-1",
+      "lesson": "m1.revision",
+      "title": "Everything about the śloka's rhythm",
+      "template": "revision",
+      "figures": {
+        "matrix": 5,
+        "comparison": 3
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-river"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-1",
+      "lesson": "m1.shloka",
+      "title": "Four quarters of eight",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "m1-shloka-s1"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-1",
+      "lesson": "m1.weight",
+      "title": "Light and heavy",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 2,
+      "images": [
+        "m1-weight-s1",
+        "teaching-river"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-2",
+      "lesson": "m2.arya",
+      "title": "Counting time",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "m2-arya-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-2",
+      "lesson": "m2.check",
+      "title": "Name the metre",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-2",
+      "lesson": "m2.revision",
+      "title": "Everything about the great metres",
+      "template": "revision",
+      "figures": {
+        "matrix": 4,
+        "comparison": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "metre-2",
+      "lesson": "m2.vrtta",
+      "title": "The great metres",
+      "template": "scene",
+      "figures": {
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "m2-vrtta-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "reading-verse",
+      "lesson": "rv.check",
+      "title": "Untie the verse",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 9
+    },
+    {
+      "act": "act-4",
+      "unit": "reading-verse",
+      "lesson": "rv.revision",
+      "title": "Everything about reading a verse",
+      "template": "revision",
+      "figures": {
+        "worked": 2,
+        "matrix": 2,
+        "comparison": 3
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "reading-verse",
+      "lesson": "rv.steps",
+      "title": "Split, order, understand",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "worked": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "rv-steps-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "reading-verse",
+      "lesson": "rv.tika",
+      "title": "With a commentary",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "reading": 5
+      },
+      "unique_images": 1,
+      "images": [
+        "rv-tika-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "splitting",
+      "lesson": "split.back",
+      "title": "Working backwards",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "split-back-s1"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-4",
+      "unit": "splitting",
+      "lesson": "split.check",
+      "title": "Take the words apart",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-4",
+      "unit": "splitting",
+      "lesson": "split.line",
+      "title": "A whole line, word by word",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 4
+      },
+      "unique_images": 2,
+      "images": [
+        "split-line-r1",
+        "split-line-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "splitting",
+      "lesson": "split.revision",
+      "title": "Everything about splitting",
+      "template": "revision",
+      "figures": {
+        "matrix": 2,
+        "comparison": 6,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.check",
+      "title": "Put the sentence in order",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.if",
+      "title": "If… then",
+      "template": "scene",
+      "figures": {
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "syn-if-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.order",
+      "title": "Prose order",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "syn-order-s1"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.revision",
+      "title": "Everything about longer sentences",
+      "template": "revision",
+      "figures": {
+        "matrix": 6,
+        "worked": 5,
+        "relations": 2,
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.when",
+      "title": "When he had gone",
+      "template": "scene",
+      "figures": {
+        "reading": 2,
+        "relations": 1,
+        "worked": 2,
+        "comparison": 1
+      },
+      "unique_images": 2,
+      "images": [
+        "syn-when-s1",
+        "teaching-reader-one"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "syntax",
+      "lesson": "syn.who",
+      "title": "Who… he",
+      "template": "scene",
+      "figures": {
+        "relations": 1,
+        "worked": 3,
+        "comparison": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "syn-who-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.check",
+      "title": "Name the suffixes",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 7
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.having",
+      "title": "Having and related",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "tad-having-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.more",
+      "title": "More and most",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "tad-more-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.ness",
+      "title": "-ness: -त्व and -ता",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "tad-ness-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.revision",
+      "title": "Everything about suffixes",
+      "template": "revision",
+      "figures": {
+        "matrix": 10,
+        "comparison": 5,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "taddhita",
+      "lesson": "tad.son",
+      "title": "Son of",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "tad-son-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-4",
+      "unit": "visarga-sandhi",
+      "lesson": "vis.check",
+      "title": "Give each breath its sound",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-4",
+      "unit": "visarga-sandhi",
+      "lesson": "vis.o",
+      "title": "When -aḥ becomes -o",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vis-o-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "visarga-sandhi",
+      "lesson": "vis.r",
+      "title": "र् and the vanishing breath",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "vis-r-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "visarga-sandhi",
+      "lesson": "vis.revision",
+      "title": "Everything about the visarga",
+      "template": "revision",
+      "figures": {
+        "matrix": 6,
+        "comparison": 4,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "visarga-sandhi",
+      "lesson": "vis.s",
+      "title": "The hiss returns",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vis-s-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.check",
+      "title": "Say what the statues say",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.e-o",
+      "title": "The special ए and ओ",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-e-o-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.glide",
+      "title": "A vowel becomes a glide",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-glide-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.guna",
+      "title": "When अ meets इ or उ",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-guna-s1"
+      ],
+      "feedback_cards": 6
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.like",
+      "title": "Two vowels of one family",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-like-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.revision",
+      "title": "Everything about vowel sandhi",
+      "template": "revision",
+      "figures": {
+        "matrix": 12,
+        "comparison": 4,
+        "worked": 2
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.stop",
+      "title": "When the rule stops",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-stop-s1"
+      ],
+      "feedback_cards": 3
+    },
+    {
+      "act": "act-4",
+      "unit": "vowel-sandhi",
+      "lesson": "vs.vrddhi",
+      "title": "When अ meets ए or ओ",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "vs-vrddhi-s1"
+      ],
+      "feedback_cards": 5
+    },
+    {
+      "act": "act-5",
+      "unit": "panini-gateway",
+      "lesson": "pg.check",
+      "title": "Open the last alcove",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-5",
+      "unit": "panini-gateway",
+      "lesson": "pg.it",
+      "title": "Letters that vanish",
+      "template": "scene",
+      "figures": {
+        "comparison": 2
+      },
+      "unique_images": 1,
+      "images": [
+        "pg-it-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-5",
+      "unit": "panini-gateway",
+      "lesson": "pg.prakriya",
+      "title": "Building a word",
+      "template": "scene",
+      "figures": {
+        "comparison": 2,
+        "worked": 1,
+        "reading": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "pg-prakriya-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-5",
+      "unit": "panini-gateway",
+      "lesson": "pg.revision",
+      "title": "Everything about Pāṇini's grammar",
+      "template": "revision",
+      "figures": {
+        "matrix": 5,
+        "worked": 2,
+        "sound_range": 1,
+        "comparison": 4
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    },
+    {
+      "act": "act-5",
+      "unit": "panini-gateway",
+      "lesson": "pg.shiva",
+      "title": "Fourteen lines of sound",
+      "template": "scene",
+      "figures": {
+        "comparison": 3,
+        "sound_range": 1
+      },
+      "unique_images": 1,
+      "images": [
+        "pg-shiva-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-5",
+      "unit": "reading-kss",
+      "lesson": "kss.check",
+      "title": "The naming",
+      "template": "check",
+      "figures": {},
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 8
+    },
+    {
+      "act": "act-5",
+      "unit": "reading-kss",
+      "lesson": "kss.naming",
+      "title": "The child named Naravāhanadatta",
+      "template": "scene",
+      "figures": {
+        "comparison": 1,
+        "reading": 6
+      },
+      "unique_images": 1,
+      "images": [
+        "kss-naming-s1"
+      ],
+      "feedback_cards": 4
+    },
+    {
+      "act": "act-5",
+      "unit": "reading-kss",
+      "lesson": "kss.reading",
+      "title": "Read Naravāhanadatta's naming",
+      "template": "episode",
+      "figures": {
+        "reading": 5
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 2
+    },
+    {
+      "act": "act-5",
+      "unit": "reading-kss",
+      "lesson": "kss.revision",
+      "title": "Everything about reading Somadeva",
+      "template": "revision",
+      "figures": {
+        "matrix": 1,
+        "comparison": 2,
+        "reading": 1
+      },
+      "unique_images": 0,
+      "images": [],
+      "feedback_cards": 0
+    }
+  ],
+  "scope_note": "Counts of implemented figures are not a claim that all 574 proposed teaching jobs have been independently checked."
+}

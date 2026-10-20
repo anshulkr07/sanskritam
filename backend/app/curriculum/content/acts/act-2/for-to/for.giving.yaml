@@ -205,6 +205,137 @@ cards:
       en: 'the fourth case: to, for'
       hi: 'चौथी विभक्ति: को, के लिए'
   visuals:
+  - id: v-semantic-gift
+    kind: reading
+    title:
+      en: Giver, gift, recipient
+      hi: देने वाला, दिया फल, पाने वाला
+    items:
+    - id: i0
+      sa: अहम् आचार्याय फलम् ददामि।
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      image:
+        id: teaching-gift-teacher
+        brief: 'Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px
+          phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show
+          exactly two people: a school-age boy in an ochre kurta on the LEFT giving exactly ONE ripe yellow mango to an older
+          male teacher in a plain cream dhoti and shawl on the RIGHT. The boy''s hands extend the fruit toward the teacher''s
+          outstretched receiving hands; the mango is clearly in transit between their hands. Both people complete and centrally
+          grouped in a quiet empty courtyard. No books, extra fruit, other people, writing, arrows, signs or letterlike markings.
+          This teaches giver, gift and recipient; distinguish them clearly.'
+        alt:
+          en: A boy offers one fruit to a teacher
+          hi: गुरु को एक फल देता बालक
+        ratio: '4:3'
+        text_in_image: []
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: I give fruit to the teacher.
+      hi: मैं आचार्य को फल देता हूँ।
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+    - id: i1
+      sa: आचार्याय
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
+    - id: i2
+      sa: फलम्
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
+    - id: i3
+      sa: ददामि
+      meaning:
+        en: give
+        hi: देता हूँ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दा
+    edges:
+    - source: i1
+      target: i3
+      label:
+        en: recipient of the gift
+        hi: जिसे उपहार मिलता है
+    - source: i2
+      target: i3
+      label:
+        en: gift being given
+        hi: दिया जाने वाला उपहार
   - id: v-source-example-0
     kind: worked
     title:
@@ -279,6 +410,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i3
       sa: फलम्
       label:
@@ -296,6 +428,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i4
       sa: ददामि
       label:
@@ -313,6 +446,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -453,6 +587,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पुस्तकम्
       label:
@@ -470,6 +605,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt:
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: []
+      compare_from: पुस्तक
     - id: i4
       sa: ददाति
       label:
@@ -487,6 +635,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -616,6 +765,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: बालिकायै
       label:
@@ -633,6 +783,7 @@ cards:
       feature:
         en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालिका
     - id: i3
       sa: जलम्
       label:
@@ -650,6 +801,7 @@ cards:
       feature:
         en: 'Stem: {{जल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: जल
     - id: i4
       sa: ददाति
       label:
@@ -667,6 +819,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -753,6 +906,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: आचार्य
     - sa: आचार्याय
       check:
         type: subanta
@@ -761,6 +918,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
   - - text:
         en: boy
         hi: बालक
@@ -771,6 +932,25 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: &id001
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image: &id002
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: बालकाय
       check:
         type: subanta
@@ -779,6 +959,22 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालक
   - - text:
         en: girl
         hi: बालिका
@@ -789,6 +985,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: बालिकायै
       check:
         type: subanta
@@ -797,6 +996,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालिका
   - - text:
         en: fruit
         hi: फल
@@ -807,6 +1010,22 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id003
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: &id004 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलाय
       check:
         type: subanta
@@ -815,6 +1034,20 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: फल
   - - text:
         en: river
         hi: नदी
@@ -825,6 +1058,21 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id005
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id006 []
     - sa: नद्यै
       check:
         type: subanta
@@ -833,6 +1081,20 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
+      compare_from: नदी
   note:
     en: 'Masculine and neuter -अ: {{आय}}. Feminine -आ: {{आयै}}. Feminine -ई: {{ई}} → {{यै}}.'
     hi: पुंलिंग और नपुंसक -अ में {{आय}}। स्त्रीलिंग -आ में {{आयै}}। स्त्रीलिंग -ई में {{ई}} → {{यै}}।
@@ -947,6 +1209,7 @@ cards:
       feature:
         en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: नमस्
     - id: i2
       sa: आचार्याय
       label:
@@ -964,6 +1227,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1056,6 +1320,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1181,6 +1446,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i3
       sa: फलम्
       label:
@@ -1198,6 +1464,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i4
       sa: ददामि
       label:
@@ -1215,6 +1482,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1379,6 +1647,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i3
       sa: फलम्
       label:
@@ -1396,6 +1665,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i4
       sa: ददामि
       label:
@@ -1413,6 +1683,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1592,6 +1863,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i3
       sa: फलम्
       label:
@@ -1609,6 +1881,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i4
       sa: ददामि
       label:
@@ -1626,6 +1899,7 @@ cards:
       feature:
         en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दा
     - id: rule
       label:
         en: Connect the form and the rule

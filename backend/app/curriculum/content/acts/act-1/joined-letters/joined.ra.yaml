@@ -84,6 +84,27 @@ cards:
       en: the curl for r at the start of a join
       hi: संयोग के आरम्भ के र का मोड़
   visuals:
+  - id: v-script-repha
+    kind: sequence
+    title:
+      en: र् is spoken first
+      hi: र् पहले बोला जाता है
+    items:
+    - id: parts
+      sa: र् + म
+      meaning:
+        en: र् comes before म in sound order.
+        hi: बोलने में र्, म से पहले है।
+    - id: shape
+      sa: र्म
+      meaning:
+        en: The repha is written above. Read र् before म.
+        hi: रेफ ऊपर लिखा है। र् को म से पहले पढ़ें।
+    - id: word
+      sa: धर्मः
+      meaning:
+        en: Find that order inside the word.
+        hi: शब्द के भीतर वही क्रम पहचानें।
   - id: v-source-example-0
     kind: worked
     title:
@@ -107,6 +128,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
     - id: rule
       label:
         en: Connect the form and the rule
@@ -133,6 +155,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
   - id: v-source-example-1
     kind: worked
     title:
@@ -156,6 +179,7 @@ cards:
       feature:
         en: 'Stem: {{कर्मन्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कर्मन्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -182,6 +206,7 @@ cards:
       feature:
         en: 'Stem: {{कर्मन्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कर्मन्
 - id: t2
   kind: teach
   title:
@@ -217,6 +242,27 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-script-rakara
+    kind: sequence
+    title:
+      en: र follows the first consonant
+      hi: र पहले व्यञ्जन के बाद
+    items:
+    - id: parts
+      sa: प् + र
+      meaning:
+        en: The first consonant is प्.
+        hi: पहला व्यञ्जन प् है।
+    - id: shape
+      sa: प्र
+      meaning:
+        en: The hook below writes the following र.
+        hi: नीचे का चिह्न बाद में आने वाले र को लिखता है।
+    - id: word
+      sa: प्रियः
+      meaning:
+        en: Read the consonants in that order.
+        hi: उसी क्रम में व्यञ्जन पढ़ें।
   - id: v-source-example-0
     kind: worked
     title:
@@ -240,6 +286,7 @@ cards:
       feature:
         en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: प्रिय
     - id: rule
       label:
         en: Connect the form and the rule
@@ -266,6 +313,7 @@ cards:
       feature:
         en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: प्रिय
   - id: v-source-example-1
     kind: worked
     title:
@@ -289,6 +337,7 @@ cards:
       feature:
         en: 'Stem: {{क्रम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{क्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: क्रम
     - id: rule
       label:
         en: Connect the form and the rule
@@ -315,6 +364,7 @@ cards:
       feature:
         en: 'Stem: {{क्रम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{क्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: क्रम
 - id: e1
   kind: explore
   depth: core
@@ -406,6 +456,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
     - id: rule
       label:
         en: Connect the form and the rule
@@ -432,6 +483,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
 - id: e2
   kind: explore
   depth: core
@@ -496,6 +548,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
     - id: rule
       label:
         en: Connect the form and the rule
@@ -522,6 +575,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
 - id: p3
   kind: practice
   title:
@@ -577,6 +631,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
     - id: rule
       label:
         en: Connect the form and the rule
@@ -603,6 +658,7 @@ cards:
       feature:
         en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धर्म
 - id: t3
   kind: teach
   title:
@@ -651,6 +707,7 @@ cards:
       feature:
         en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राष्ट्र
     - id: rule
       label:
         en: Connect the form and the rule
@@ -677,6 +734,7 @@ cards:
       feature:
         en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राष्ट्र
 - id: sum
   kind: summary
   title:

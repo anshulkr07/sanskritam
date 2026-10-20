@@ -183,6 +183,7 @@ cards:
       feature:
         en: 'Root: {{ब्रू}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: ब्रू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -269,6 +270,7 @@ cards:
       feature:
         en: 'Root: {{नम्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{नम्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: नम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -367,6 +369,7 @@ cards:
       feature:
         en: 'Root: {{ब्रू}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: ब्रू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -863,6 +866,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i4
       sa: तर्हि
       label:
@@ -896,6 +900,7 @@ cards:
       feature:
         en: 'Root: {{ज्ञा}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: ज्ञा
     - id: rule
       label:
         en: Connect the form and the rule
@@ -981,6 +986,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: अस्
     - sa: स्याताम्
       check:
         type: tinanta
@@ -988,6 +997,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: अस्
     - sa: स्युः
       check:
         type: tinanta
@@ -995,6 +1008,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: अस्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -1005,6 +1022,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: अस्
     - sa: स्यातम्
       check:
         type: tinanta
@@ -1012,6 +1033,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: अस्
     - sa: स्यात
       check:
         type: tinanta
@@ -1019,6 +1044,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: अस्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -1029,6 +1058,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: अस्
     - sa: स्याव
       check:
         type: tinanta
@@ -1036,6 +1069,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: अस्
     - sa: स्याम
       check:
         type: tinanta
@@ -1043,6 +1080,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: अस्
   note:
     en: '{{स्यात्}}, {{स्याताम्}}, {{स्युः}}: the root {{अस्}} shrinks to {{स्}}.'
     hi: '{{स्यात्}}, {{स्याताम्}}, {{स्युः}}: धातु {{अस्}} घटकर {{स्}} रह जाती है।'
@@ -1127,6 +1168,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1144,6 +1186,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1161,6 +1204,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1310,6 +1354,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1327,6 +1372,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1344,6 +1390,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1494,6 +1541,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1511,6 +1559,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1528,6 +1577,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1672,6 +1722,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1689,6 +1740,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1706,6 +1758,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1773,3 +1826,103 @@ cards:
     text:
       en: It may be; they may be.
       hi: हो सकता है; वे हो सकते हैं।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: दैवज्ञं पुत्रकं मित्रं फलेन फलम् आदिशेत्
+      meaning:
+        en: '“Nor an astrologer, a son or a friend: with a fruit one should ask for fruit.” (the same verse)'
+        hi: '“न ज्योतिषी, पुत्र या मित्र से: फल के साथ फल माँगना चाहिए।” (वही श्लोक)'
+      words:
+      - sa: दैवज्ञम्
+        gloss:
+          en: an astrologer
+          hi: ज्योतिषी को
+      - sa: पुत्रकम्
+        gloss:
+          en: a son
+          hi: पुत्र को
+      - sa: मित्रम्
+        gloss:
+          en: a friend
+          hi: मित्र को
+      - sa: फलेन
+        gloss:
+          en: with a fruit
+          hi: फल के साथ
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+      - sa: आदिशेत्
+        gloss:
+          en: should ask for
+          hi: माँगे
+    - id: i1
+      sa: स्यात् सः पण्डितः।
+      meaning:
+        en: Perhaps he is a scholar.
+        hi: शायद वह विद्वान् है।
+      words:
+      - sa: स्यात्
+        gloss:
+          en: perhaps
+          hi: शायद
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पण्डितः
+        gloss:
+          en: a scholar
+          hi: विद्वान्
+    - id: i2
+      sa: यदि सः पठेत् तर्हि सः जानीयात्।
+      meaning:
+        en: If he were to read, he would know.
+        hi: अगर वह पढ़े तो वह जान जाए।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka

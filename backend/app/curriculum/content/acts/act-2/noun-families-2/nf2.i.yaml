@@ -106,6 +106,18 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: &id001
+          en: A creeper on a wooden support
+          hi: लकड़ी के सहारे पर लता
+        ratio: '1:1'
+        text_in_image: &id002 []
     - id: i9
       sa: ए
     - id: i10
@@ -141,6 +153,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कवी
       check:
         type: subanta
@@ -148,6 +164,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कवयः
       check:
         type: subanta
@@ -155,6 +175,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -165,6 +189,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कवी
       check:
         type: subanta
@@ -172,6 +200,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कवीन्
       check:
         type: subanta
@@ -179,6 +211,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -189,6 +225,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कविभ्याम्
       check:
         type: subanta
@@ -196,6 +236,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कविभिः
       check:
         type: subanta
@@ -203,6 +247,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -213,6 +261,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कविभ्याम्
       check:
         type: subanta
@@ -220,6 +272,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कविभ्यः
       check:
         type: subanta
@@ -227,6 +283,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -237,6 +297,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कविभ्याम्
       check:
         type: subanta
@@ -244,6 +308,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कविभ्यः
       check:
         type: subanta
@@ -251,6 +319,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -261,6 +333,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कव्योः
       check:
         type: subanta
@@ -268,6 +344,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कवीनाम्
       check:
         type: subanta
@@ -275,6 +355,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -285,6 +369,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कव्योः
       check:
         type: subanta
@@ -292,6 +380,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कविषु
       check:
         type: subanta
@@ -299,6 +391,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: कवि
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -309,6 +405,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: कवि
     - sa: कवी
       check:
         type: subanta
@@ -316,6 +416,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: कवि
     - sa: कवयः
       check:
         type: subanta
@@ -323,6 +427,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{कवि}} · masculine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{कवि}} · {{पुंलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: कवि
   note:
     en: 'The {{इ}} becomes {{ए}} or {{अय्}} before many endings: {{कवये}}, {{कवयः}}, {{हे कवे}}.'
     hi: 'कई प्रत्ययों से पहले {{इ}} {{ए}} या {{अय्}} बन जाता है: {{कवये}}, {{कवयः}}, {{हे कवे}}।'
@@ -357,6 +465,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मती
       check:
         type: subanta
@@ -364,6 +476,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतयः
       check:
         type: subanta
@@ -371,6 +487,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -381,6 +501,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मती
       check:
         type: subanta
@@ -388,6 +512,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतीः
       check:
         type: subanta
@@ -395,6 +523,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -405,6 +537,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मतिभ्याम्
       check:
         type: subanta
@@ -412,6 +548,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतिभिः
       check:
         type: subanta
@@ -419,6 +559,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -429,6 +573,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मतिभ्याम्
       check:
         type: subanta
@@ -436,6 +584,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतिभ्यः
       check:
         type: subanta
@@ -443,6 +595,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -453,6 +609,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मतिभ्याम्
       check:
         type: subanta
@@ -460,6 +620,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतिभ्यः
       check:
         type: subanta
@@ -467,6 +631,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -477,6 +645,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मत्योः
       check:
         type: subanta
@@ -484,6 +656,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतीनाम्
       check:
         type: subanta
@@ -491,6 +667,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -501,6 +681,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मत्योः
       check:
         type: subanta
@@ -508,6 +692,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतिषु
       check:
         type: subanta
@@ -515,6 +703,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: मति
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -525,6 +717,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: मति
     - sa: मती
       check:
         type: subanta
@@ -532,6 +728,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: मति
     - sa: मतयः
       check:
         type: subanta
@@ -539,6 +739,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मति}} · feminine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{मति}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: मति
   note:
     en: 'The feminine has optional forms in the singular: {{मतये}} or {{मत्यै}}, {{मतेः}} or {{मत्याः}}, {{मतौ}} or {{मत्याम्}}.
       The first of each is shown.'
@@ -595,6 +799,16 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i9
       sa: ए
     - id: i10
@@ -650,6 +864,16 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i9
       sa: ए
     - id: i10
@@ -703,6 +927,16 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i9
       sa: ए
     - id: i10
@@ -776,6 +1010,16 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i9
       sa: ए
     - id: i10
@@ -863,6 +1107,16 @@ cards:
       sa: देव
     - id: i8
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i9
       sa: ए
     - id: i10

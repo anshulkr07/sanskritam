@@ -163,6 +163,9 @@ class Cell(Strict):
     text: Optional[Text] = None
     highlight: bool = False
     check: Optional[Check] = None
+    image: Optional["ImageRef"] = None
+    feature: Optional[Text] = None
+    compare_from: Optional[str] = None
 
 
 class ImageRef(Identified):
@@ -198,6 +201,45 @@ ALLOWED_LICENCES = {
 
 # Structured teaching figures. Sanskrit stays live; pictures are optional parts
 # of an explanation, not a replacement for the source table or sentence.
+class CountDiagram(Strict):
+    kind: Literal['count']
+    quantity: int = Field(ge=0, le=1000)
+
+
+class ConversationDiagram(Strict):
+    kind: Literal['conversation']
+    role: Literal['speaker', 'listener', 'referent']
+    quantity: Literal[1, 2, 3]
+    #: Three figures stand for a plural group, not an exactly-three claim.
+    plural: bool = False
+
+
+class PositionDiagram(Strict):
+    kind: Literal['position']
+    relation: Literal['near', 'far', 'toward', 'from', 'at']
+
+
+class TimelineEvent(Strict):
+    label: Text
+    start: int = Field(ge=0, le=10)
+    end: int = Field(ge=0, le=10)
+
+    @model_validator(mode='after')
+    def forward_interval(self):
+        if self.end <= self.start:
+            raise ValueError('a timeline event must end after it starts')
+        return self
+
+
+class TimelineDiagram(Strict):
+    kind: Literal['timeline']
+    events: list[TimelineEvent] = Field(min_length=1, max_length=5)
+    anchor: Optional[int] = Field(default=None, ge=0, le=10)
+
+
+Diagram = Annotated[Union[CountDiagram, ConversationDiagram, PositionDiagram, TimelineDiagram], Field(discriminator='kind')]
+
+
 class VisualItem(Identified):
     label: Optional[Text] = None
     sa: Optional[str] = None
@@ -209,6 +251,11 @@ class VisualItem(Identified):
     feature: Optional[Text] = None
     #: L/G weights only when supplied by a checked metrical scan.
     weights: Optional[str] = None
+    marker: Optional[str] = None
+    duration: Optional[Literal[1, 2, 3]] = None
+    #: Literal spelling comparison; it does not assert derivational stages.
+    compare_from: Optional[str] = None
+    diagram: Optional[Diagram] = None
 
 
 class VisualEdge(Strict):
@@ -218,13 +265,14 @@ class VisualEdge(Strict):
 
 
 class TeachingVisual(Identified):
-    kind: Literal["figures", "comparison", "sequence", "matrix", "relations", "worked", "reading", "beats"]
+    kind: Literal["figures", "comparison", "sequence", "matrix", "relations", "worked", "reading", "beats", "sound_range"]
     title: Text
     explanation: Optional[Text] = None
     items: list[VisualItem] = []
     edges: list[VisualEdge] = []
     columns: list[Text] = []
     rows: list[list[VisualItem]] = []
+    selections: list[VisualItem] = []
     source: Optional[str] = None
     placement: Literal["before", "after"] = "after"
 
@@ -246,10 +294,17 @@ class TeachingVisual(Identified):
         if any(edge.source not in ids or edge.target not in ids for edge in self.edges):
             raise ValueError("teaching visual edge must name existing items")
         for item in nodes:
-            if not any((item.sa, item.label, item.meaning, item.image, item.words)):
+            if not any((item.sa, item.label, item.meaning, item.image, item.words, item.diagram)):
                 raise ValueError("a teaching visual item cannot be empty")
             if item.weights and (not item.sa or any(w not in "LG" for w in item.weights)):
                 raise ValueError("metrical weights require Sanskrit and only L/G")
+        if self.kind == "sound_range":
+            if not self.selections or any(not item.marker for item in self.items):
+                raise ValueError("sound ranges need row markers and named selections")
+            sounds = {sound for item in self.items for sound in (item.sa or '').split()}
+            for selection in self.selections:
+                if not selection.words or any(word.sa not in sounds for word in selection.words):
+                    raise ValueError("sound range contains a sound outside its source rows")
         return self
 
 

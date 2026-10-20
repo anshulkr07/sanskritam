@@ -127,6 +127,21 @@ cards:
     - उ
     ratio: '4:3'
   visuals:
+  - id: v-script-short-duration
+    kind: comparison
+    title:
+      en: One short beat
+      hi: एक छोटी मात्रा
+    items:
+    - id: v0
+      sa: अ
+      duration: 1
+    - id: v1
+      sa: इ
+      duration: 1
+    - id: v2
+      sa: उ
+      duration: 1
   - id: v-source-compare
     kind: comparison
     title:
@@ -255,6 +270,18 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-script-rl-duration
+    kind: comparison
+    title:
+      en: Each vowel carries one syllable
+      hi: हर स्वर एक अक्षर का आधार
+    items:
+    - id: v0
+      sa: ऋ
+      duration: 1
+    - id: v1
+      sa: ऌ
+      duration: 1
   - id: v-source-compare
     kind: comparison
     title:
@@ -300,6 +327,7 @@ cards:
       feature:
         en: 'Stem: {{ऋषि}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{ऋषि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: ऋषि
     - id: rule
       label:
         en: Connect the form and the rule
@@ -328,6 +356,7 @@ cards:
       feature:
         en: 'Stem: {{ऋषि}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{ऋषि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: ऋषि
 - id: p2
   kind: practice
   mode: match

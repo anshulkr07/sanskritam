@@ -95,6 +95,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: लक्ष्मणः
       label:
@@ -112,6 +113,7 @@ cards:
       feature:
         en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लक्ष्मण
     - id: i3
       sa: च
       label:
@@ -137,6 +139,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -275,6 +278,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: लक्ष्मणः
       label:
@@ -292,6 +296,7 @@ cards:
       feature:
         en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लक्ष्मण
     - id: i3
       sa: च
       label:
@@ -317,6 +322,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -469,6 +475,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: i4
       sa: इति
       label:
@@ -494,6 +501,7 @@ cards:
       feature:
         en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -646,6 +654,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: i4
       sa: इति
       label:
@@ -671,6 +680,7 @@ cards:
       feature:
         en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -791,6 +801,18 @@ cards:
       meaning:
         en: a book
         hi: पुस्तक
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: &id001
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: &id002 []
     - id: i3
       sa: अस्ति
       label:
@@ -808,6 +830,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -934,6 +957,16 @@ cards:
       meaning:
         en: a book
         hi: पुस्तक
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i3
       sa: अस्ति
       label:
@@ -951,6 +984,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1090,6 +1124,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: लक्ष्मणः
       label:
@@ -1107,6 +1142,7 @@ cards:
       feature:
         en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लक्ष्मण
     - id: i3
       sa: च
       label:
@@ -1132,6 +1168,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule

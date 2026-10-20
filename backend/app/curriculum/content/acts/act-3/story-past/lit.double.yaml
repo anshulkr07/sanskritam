@@ -174,6 +174,66 @@ cards:
       en: the story past
       hi: कथा का भूतकाल
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i2
+      sa: बालकः पुस्तकम् पपाठ।
+      meaning:
+        en: The boy read the book.
+        hi: बालक ने पुस्तक पढ़ी।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पपाठ
+        gloss:
+          en: read
+          hi: पढ़ी
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -238,6 +298,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -255,6 +316,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -363,6 +425,7 @@ cards:
       feature:
         en: 'Stem: {{वन}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{वन}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: वन
     - id: i3
       sa: जगाम
       label:
@@ -380,6 +443,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -486,6 +550,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पुस्तकम्
       label:
@@ -503,6 +568,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt:
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: []
+      compare_from: पुस्तक
     - id: i3
       sa: पपाठ
       label:
@@ -520,6 +598,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -602,6 +681,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - sa: बभूवतुः
       check:
         type: tinanta
@@ -609,6 +692,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - sa: बभूवुः
       check:
         type: tinanta
@@ -616,6 +703,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -626,6 +717,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: भू
     - sa: बभूवथुः
       check:
         type: tinanta
@@ -633,6 +728,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: भू
     - sa: बभूव
       check:
         type: tinanta
@@ -640,6 +739,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: भू
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -650,6 +753,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: भू
     - sa: बभूविव
       check:
         type: tinanta
@@ -657,6 +764,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: भू
     - sa: बभूविम
       check:
         type: tinanta
@@ -664,6 +775,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: भू
   note:
     en: The ending is {{-अ}} for “he”, {{-उः}} for “they”. The doubled {{ब}} is the sign.
     hi: ‘वह’ के लिए प्रत्यय {{-अ}} है, ‘वे’ के लिए {{-उः}}। दुगुना {{ब}} चिह्न है।
@@ -699,6 +814,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - sa: जग्मतुः
       check:
         type: tinanta
@@ -706,6 +825,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - sa: जग्मुः
       check:
         type: tinanta
@@ -713,6 +836,10 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: गम्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -723,6 +850,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: गम्
     - sa: जग्मथुः
       check:
         type: tinanta
@@ -730,6 +861,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: गम्
     - sa: जग्म
       check:
         type: tinanta
@@ -737,6 +872,10 @@ cards:
         lakara: Lit
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लिट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लिट्}} · मध्यमपुरुष'
+      compare_from: गम्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -747,6 +886,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - sa: जग्मिव
       check:
         type: tinanta
@@ -754,6 +897,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - sa: जग्मिम
       check:
         type: tinanta
@@ -761,6 +908,10 @@ cards:
         lakara: Lit
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लिट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लिट्}} · उत्तमपुरुष'
+      compare_from: गम्
   note:
     en: 'Doubling turns a {{ग}} into {{ज}}: {{ज-गाम}}.'
     hi: 'द्वित्व में {{ग}} {{ज}} बन जाता है: {{ज-गाम}}।'
@@ -847,6 +998,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -864,6 +1016,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -993,6 +1146,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1010,6 +1164,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1149,6 +1304,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1166,6 +1322,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1314,6 +1471,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1331,6 +1489,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1473,6 +1632,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i3
       sa: बभूव
       label:
@@ -1490,6 +1650,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule

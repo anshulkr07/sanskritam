@@ -207,6 +207,7 @@ cards:
       feature:
         en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: कर्मन्
     - id: i4
       sa: करोति
       label:
@@ -224,6 +225,7 @@ cards:
       feature:
         en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -373,6 +375,7 @@ cards:
       feature:
         en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: कर्मन्
     - id: i4
       sa: करोति
       label:
@@ -390,6 +393,7 @@ cards:
       feature:
         en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -462,6 +466,49 @@ cards:
   - text:
       en: the middle
       hi: बीच से
+  feedback_visuals:
+  - id: v-foundation-feedback
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+      meaning:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+    - id: stage-1
+      label:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+      sa: सूर्यकोटिसम + आभासः
+    - id: stage-2
+      label:
+        en: Cut again
+        hi: फिर काटिए
+      sa: सूर्यकोटिः + सम + आभासः
+    - id: stage-3
+      label:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+      sa: सूर्य + कोटिः + सम + आभासः
+    - id: stage-4
+      label:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+      meaning:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: 'The whole compound is a bahuvrīhi: it names the king.'
+        hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: p6
   kind: practice
   depth: core

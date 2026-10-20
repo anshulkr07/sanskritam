@@ -29,6 +29,88 @@ cards:
     - 7.2.1
     tag: core
     taught_in: aor.abhut#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'भू: the aorist'
+        hi: 'भू: लुङ्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अभूत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c2
+          sa: अभूताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c3
+          sa: अभूवन्
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: अभूः
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: अभूतम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+        - id: r1-c3
+          sa: अभूत
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अभूवम्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
+        - id: r2-c2
+          sa: अभूव
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
+        - id: r2-c3
+          sa: अभूम
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
   - skill: verb.ma
     rule:
       en: '{{मा}} + the aorist without {{अ}}: {{मा गमः}}, {{मा भूत्}}, {{मा भैषीः}}.'
@@ -38,6 +120,68 @@ cards:
     - 6.4.74
     tag: core
     taught_in: aor.ma#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: With and without the augment
+        hi: आगम सहित और रहित
+      columns:
+      - en: Verb
+        hi: क्रिया
+      - en: Aorist
+        hi: लुङ्
+      - en: With मा
+        hi: मा के साथ
+      rows:
+      - - id: r0-c0
+          label:
+            en: go
+            hi: जाना
+        - id: r0-c1
+          sa: अगमः
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: गम्
+        - id: r0-c2
+          sa: मा गमः
+      - - id: r1-c0
+          label:
+            en: be
+            hi: होना
+        - id: r1-c1
+          sa: अभूत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: मा भूत्
+      - - id: r2-c0
+          label:
+            en: do
+            hi: करना
+        - id: r2-c1
+          sa: अकार्षीः
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r2-c2
+          sa: मा कार्षीः
+      - - id: r3-c0
+          label:
+            en: fear
+            hi: डरना
+        - id: r3-c1
+          sa: अभैषीः
+          feature:
+            en: 'Root: {{भी}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भी}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भी
+        - id: r3-c2
+          sa: मा भैषीः
   - skill: verb.rare-four
     rule:
       en: '{{लुट्}} {{भविता}}; {{आशीर्लिङ्}} {{भूयात्}}; {{लृङ्}} {{अभविष्यत्}}.'
@@ -48,6 +192,88 @@ cards:
     - 3.3.139
     tag: core
     taught_in: aor.four#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Three rare tenses of भू
+        hi: भू के तीन दुर्लभ काल
+      columns:
+      - en: Form
+        hi: रूप
+      - en: He
+        hi: वह
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: '{{लुट्}}: far future'
+            hi: '{{लुट्}}: दूर का भविष्य'
+        - id: r0-c1
+          sa: भविता
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c2
+          sa: भवितारौ
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c3
+          sa: भवितारः
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          label:
+            en: '{{आशीर्लिङ्}}: blessing'
+            hi: '{{आशीर्लिङ्}}: आशीर्वाद'
+        - id: r1-c1
+          sa: भूयात्
+          feature:
+            en: 'Root: {{भू}} · singular · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: भूयास्ताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c3
+          sa: भूयासुः
+          feature:
+            en: 'Root: {{भू}} · plural · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          label:
+            en: '{{लृङ्}}: would have'
+            hi: '{{लृङ्}}: होता'
+        - id: r2-c1
+          sa: अभविष्यत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r2-c2
+          sa: अभविष्यताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r2-c3
+          sa: अभविष्यन्
+          feature:
+            en: 'Root: {{भू}} · plural · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू
 - id: conditions
   kind: revision
   title:
@@ -62,18 +288,280 @@ cards:
       hi: जो अभी हुआ, उसके लिए {{लुङ्}}; सामान्य संस्कृत गद्य में {{लङ्}} अधिक चलता है।
     tag: good
     taught_in: aor.abhut#t1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: प्रकाशः अभूत्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: The light has come to be.
+          hi: प्रकाश हो गया।
+        words:
+        - sa: प्रकाशः
+          gloss:
+            en: light
+            hi: प्रकाश
+        - sa: अभूत्
+          gloss:
+            en: has come to be
+            hi: हो गया
+          check:
+            type: tinanta
+            dhatu: भू
+            lakara: Lun
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: प्रकाशः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: light
+          hi: प्रकाश
+      - id: i2
+        sa: अभूत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: has come to be
+          hi: हो गया
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lun
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+        compare_from: भू
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{लुङ्}} is the aorist, a past that says something has come to be, a done event. It wears the augment {{अ}},
+            like {{लङ्}}, but the middle is different: {{अभूत्}} (it became), {{अकार्षीत्}} (he did), {{अगमत्}} (he went).
+            The forms vary by root, so learn them as they come.'
+          hi: '{{लुङ्}} (आशुभूत) भूतकाल है जो बताता है कि कुछ हो चुका है, पूरी हुई घटना। वह {{लङ्}} की तरह आगम {{अ}} पहनता
+            है, पर बीच का भाग अलग है: {{अभूत्}} (हुआ), {{अकार्षीत्}} (उसने किया), {{अगमत्}} (वह गया)। रूप धातु के अनुसार बदलते
+            हैं, इसलिए जैसे-जैसे आएँ सीखिए।'
+      - id: i5
+        sa: प्रकाशः अभूत्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: The light has come to be.
+          hi: प्रकाश हो गया।
+        words:
+        - sa: प्रकाशः
+          gloss:
+            en: light
+            hi: प्रकाश
+        - sa: अभूत्
+          gloss:
+            en: has come to be
+            hi: हो गया
+          check:
+            type: tinanta
+            dhatu: भू
+            lakara: Lun
+            purusha: Prathama
+            vacana: Eka
   - skill: verb.ma
     rule:
       en: To forbid, use {{मा}} with the bare aorist, not {{न}} with a command.
       hi: मना करने के लिए {{मा}} के साथ बिना आगम का लुङ् लीजिए, आज्ञा के साथ {{न}} नहीं।
     tag: good
     taught_in: aor.ma#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मा गमः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Do not go.
+          hi: मत जाओ।
+        words:
+        - sa: मा
+          gloss:
+            en: do not
+            hi: मत
+        - sa: गमः
+          gloss:
+            en: go
+            hi: जाओ
+      - id: i1
+        sa: मा
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: do not
+          hi: मत
+      - id: i2
+        sa: गमः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: go
+          hi: जाओ
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'To say “do not …” use {{मा}} with the aorist, and drop the augment {{अ}}: {{अगमः}} (you went) becomes {{मा
+            गमः}} (do not go); {{अभूत्}} becomes {{मा भूत्}} (let it not be); {{अभैषीः}} becomes {{मा भैषीः}} (do not fear).
+            {{मा शुचः}}, “do not grieve”, is the same kind of form.'
+          hi: '‘मत …’ कहने के लिए {{मा}} के साथ लुङ् लीजिए और आगम {{अ}} हटा दीजिए: {{अगमः}} (तुम गए) से {{मा गमः}} (मत जाओ);
+            {{अभूत्}} से {{मा भूत्}} (न हो); {{अभैषीः}} से {{मा भैषीः}} (मत डरो)। {{मा शुचः}}, ‘शोक मत करो’, इसी प्रकार का
+            रूप है।'
+      - id: i5
+        sa: मा गमः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Do not go.
+          hi: मत जाओ।
+        words:
+        - sa: मा
+          gloss:
+            en: do not
+            hi: मत
+        - sa: गमः
+          gloss:
+            en: go
+            hi: जाओ
   - skill: verb.rare-four
     rule:
       en: For “had … would have …”, both halves take {{लृङ्}}.
       hi: ‘यदि … तो …’ (जो हुआ नहीं) में दोनों भाग {{लृङ्}} लेते हैं।
     tag: good
     taught_in: aor.four#t2
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: श्वः सः गन्ता।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Tomorrow or later he will go.
+          hi: कल या बाद में वह जाएगा।
+        words:
+        - sa: श्वः
+          gloss:
+            en: tomorrow
+            hi: कल
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: गन्ता
+          gloss:
+            en: will go (far future)
+            hi: जाएगा (दूर का भविष्य)
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lut
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: श्वः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: tomorrow
+          hi: कल
+      - id: i2
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i3
+        sa: गन्ता
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: will go (far future)
+          hi: जाएगा (दूर का भविष्य)
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lut
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}},
+            while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+          hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है,
+            जबकि {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+      - id: i6
+        sa: श्वः सः गन्ता।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Tomorrow or later he will go.
+          hi: कल या बाद में वह जाएगा।
+        words:
+        - sa: श्वः
+          gloss:
+            en: tomorrow
+            hi: कल
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: गन्ता
+          gloss:
+            en: will go (far future)
+            hi: जाएगा (दूर का भविष्य)
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lut
+            purusha: Prathama
+            vacana: Eka
 - id: exceptions
   kind: revision
   title:
@@ -125,6 +613,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+        compare_from: दा
       - id: rule
         label:
           en: Connect the form and the rule
@@ -151,6 +640,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+        compare_from: दा
   - skill: verb.rare-four
     rule:
       en: 'In the Veda, a fifth form {{लेट्}} (the subjunctive) appears: you will only meet it in the Ṛgveda.'
@@ -192,6 +682,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+        compare_from: कृ
       - id: rule
         label:
           en: Connect the form and the rule
@@ -216,6 +707,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+        compare_from: कृ
 - id: mistakes
   kind: revision
   title:
@@ -256,6 +748,38 @@ cards:
     - 7.2.1
     tag: core
     taught_in: aor.abhut#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.2.110, {{लुङ्}}, gives the aorist for what is past. 3.1.43, {{च्लि लुङि}}, puts {{च्लि}} before it, and
+          3.1.44, {{च्लेः सिच्}}, turns it into {{सिच्}}. 7.2.1, {{सिचि वृद्धिः परस्मैपदेषु}}, lengthens the root vowel, so
+          {{कृ}} becomes {{कार्}}: {{अकार्षीत्}}.'
+        hi: 'सूत्र 3.2.110, {{लुङ्}}, भूतकाल में आशुभूत देता है। 3.1.43, {{च्लि लुङि}}, उसके आगे {{च्लि}} रखता है और 3.1.44,
+          {{च्लेः सिच्}}, उसे {{सिच्}} बना देता है। 7.2.1, {{सिचि वृद्धिः परस्मैपदेषु}}, धातु का स्वर दीर्घ-वृद्धि करता है,
+          इसलिए {{कृ}} से {{कार्}}: {{अकार्षीत्}}।'
+      items:
+      - id: i0
+        sa: लुङ्
+      - id: i1
+        sa: च्लि लुङि
+      - id: i2
+        sa: च्लि
+      - id: i3
+        sa: च्लेः सिच्
+      - id: i4
+        sa: सिच्
+      - id: i5
+        sa: सिचि वृद्धिः परस्मैपदेषु
+      - id: i6
+        sa: कृ
+      - id: i7
+        sa: कार्
+      - id: i8
+        sa: अकार्षीत्
   - skill: verb.ma
     rule:
       en: '{{माङि लुङ्}} and {{न माङ्योगे}}: {{लुङ्}} after {{मा}}, with no augment.'
@@ -265,6 +789,32 @@ cards:
     - 6.4.74
     tag: core
     taught_in: aor.ma#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 3.3.175, {{माङि लुङ्}}, says that after {{मा}} the {{लुङ्}} is used. And 6.4.74, {{न माङ्योगे}}, says the
+          augment {{अ}} does not appear when {{मा}} is attached. So {{अगमः}} becomes {{मा गमः}}.
+        hi: सूत्र 3.3.175, {{माङि लुङ्}}, कहता है कि {{मा}} के साथ {{लुङ्}} आता है। और 6.4.74, {{न माङ्योगे}}, कहता है कि
+          {{मा}} जुड़ा हो तो आगम {{अ}} नहीं आता। इसलिए {{अगमः}} से {{मा गमः}} बनता है।
+      items:
+      - id: i0
+        sa: माङि लुङ्
+      - id: i1
+        sa: मा
+      - id: i2
+        sa: लुङ्
+      - id: i3
+        sa: न माङ्योगे
+      - id: i4
+        sa: अ
+      - id: i5
+        sa: अगमः
+      - id: i6
+        sa: मा गमः
 - id: sheet
   kind: revision
   title:
@@ -280,6 +830,88 @@ cards:
       hi: लुङ्
     tag: core
     taught_in: aor.abhut#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'भू: the aorist'
+        hi: 'भू: लुङ्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अभूत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c2
+          sa: अभूताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c3
+          sa: अभूवन्
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: अभूः
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: अभूतम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+        - id: r1-c3
+          sa: अभूत
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अभूवम्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
+        - id: r2-c2
+          sa: अभूव
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
+        - id: r2-c3
+          sa: अभूम
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · उत्तमपुरुष'
+          compare_from: भू
   - skill: verb.ma
     formula: मा गमः · मा भूत् · मा भैषीः
     rule:
@@ -287,6 +919,68 @@ cards:
       hi: मत
     tag: core
     taught_in: aor.ma#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: With and without the augment
+        hi: आगम सहित और रहित
+      columns:
+      - en: Verb
+        hi: क्रिया
+      - en: Aorist
+        hi: लुङ्
+      - en: With मा
+        hi: मा के साथ
+      rows:
+      - - id: r0-c0
+          label:
+            en: go
+            hi: जाना
+        - id: r0-c1
+          sa: अगमः
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: गम्
+        - id: r0-c2
+          sa: मा गमः
+      - - id: r1-c0
+          label:
+            en: be
+            hi: होना
+        - id: r1-c1
+          sa: अभूत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: मा भूत्
+      - - id: r2-c0
+          label:
+            en: do
+            hi: करना
+        - id: r2-c1
+          sa: अकार्षीः
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r2-c2
+          sa: मा कार्षीः
+      - - id: r3-c0
+          label:
+            en: fear
+            hi: डरना
+        - id: r3-c1
+          sa: अभैषीः
+          feature:
+            en: 'Root: {{भी}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{भी}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+          compare_from: भी
+        - id: r3-c2
+          sa: मा भैषीः
   - skill: verb.rare-four
     formula: भविता · भूयात् · अभविष्यत्
     rule:
@@ -294,3 +988,85 @@ cards:
       hi: दूर का भविष्य, आशीर्वाद, होता
     tag: core
     taught_in: aor.four#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Three rare tenses of भू
+        hi: भू के तीन दुर्लभ काल
+      columns:
+      - en: Form
+        hi: रूप
+      - en: He
+        hi: वह
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: '{{लुट्}}: far future'
+            hi: '{{लुट्}}: दूर का भविष्य'
+        - id: r0-c1
+          sa: भविता
+          feature:
+            en: 'Root: {{भू}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c2
+          sa: भवितारौ
+          feature:
+            en: 'Root: {{भू}} · dual · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r0-c3
+          sa: भवितारः
+          feature:
+            en: 'Root: {{भू}} · plural · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r1-c0
+          label:
+            en: '{{आशीर्लिङ्}}: blessing'
+            hi: '{{आशीर्लिङ्}}: आशीर्वाद'
+        - id: r1-c1
+          sa: भूयात्
+          feature:
+            en: 'Root: {{भू}} · singular · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c2
+          sa: भूयास्ताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r1-c3
+          sa: भूयासुः
+          feature:
+            en: 'Root: {{भू}} · plural · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          label:
+            en: '{{लृङ्}}: would have'
+            hi: '{{लृङ्}}: होता'
+        - id: r2-c1
+          sa: अभविष्यत्
+          feature:
+            en: 'Root: {{भू}} · singular · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r2-c2
+          sa: अभविष्यताम्
+          feature:
+            en: 'Root: {{भू}} · dual · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू
+        - id: r2-c3
+          sa: अभविष्यन्
+          feature:
+            en: 'Root: {{भू}} · plural · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लृङ्}} · प्रथमपुरुष'
+          compare_from: भू

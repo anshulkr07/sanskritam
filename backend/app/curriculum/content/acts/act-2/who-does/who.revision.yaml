@@ -25,6 +25,28 @@ cards:
       hi: शब्द = मूल + प्रत्यय; प्रत्यय काम और संख्या बताता है।
     tag: core
     taught_in: who.endings#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: बालक
+        meaning:
+          en: 'stem: boy'
+          hi: 'मूल रूप: बालक'
+      - id: i1
+        sa: ः
+        meaning:
+          en: 'ending: the doer'
+          hi: 'प्रत्यय: कर्ता'
+      - id: i2
+        sa: बालकः
+        meaning:
+          en: 'word: the boy (who does)'
+          hi: 'शब्द: बालक (जो करता है)'
   - skill: sent.nom-sg
     formula: बालकः · बालिका · नदी
     rule:
@@ -32,6 +54,115 @@ cards:
       hi: कर्ता प्रथमा में खड़ा होता है; पुंलिंग -अ शब्दों में {{ः}} लगता है, स्त्रीलिंग -आ और -ई वैसे ही दिखते हैं।
     tag: core
     taught_in: who.doer#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Doers
+        hi: कर्ता
+      columns:
+      - en: Stem
+        hi: मूल रूप
+      - en: Doer
+        hi: कर्ता
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: बालक
+        - id: r0-c1
+          sa: बालकः
+          image:
+            id: teaching-reader-one
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: One boy reading a book with अ इ उ
+              hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बालक
+        - id: r0-c2
+          label:
+            en: boy
+            hi: बालक
+      - - id: r1-c0
+          sa: बालिका
+        - id: r1-c1
+          sa: बालिका
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r1-c2
+          label:
+            en: girl
+            hi: बालिका
+      - - id: r2-c0
+          sa: नाविक
+        - id: r2-c1
+          sa: नाविकः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नाविक
+        - id: r2-c2
+          label:
+            en: boatman
+            hi: नाविक
+      - - id: r3-c0
+          sa: बक
+        - id: r3-c1
+          sa: बकः
+          feature:
+            en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बक
+        - id: r3-c2
+          label:
+            en: heron
+            hi: बगुला
+      - - id: r4-c0
+          sa: नदी
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: &id001
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: &id002 []
+        - id: r4-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: *id001
+            ratio: '1:1'
+            text_in_image: *id002
+        - id: r4-c2
+          label:
+            en: river
+            hi: नदी
   - skill: verb.pres-3sg
     formula: पठ् → पठति
     rule:
@@ -41,6 +172,28 @@ cards:
     - 3.2.123
     tag: core
     taught_in: who.does#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: पठ्
+        meaning:
+          en: 'root: read'
+          hi: 'धातु: पढ़ना'
+      - id: i1
+        sa: पठ
+        meaning:
+          en: with the joining vowel {{अ}}
+          hi: जोड़ने वाले स्वर {{अ}} के साथ
+      - id: i2
+        sa: पठति
+        meaning:
+          en: '+ {{ति}}: he, she, it reads'
+          hi: '+ {{ति}}: वह पढ़ता है'
   - skill: verb.pres-3sg
     formula: बालकः पठति · बालिका पठति
     rule:
@@ -48,6 +201,95 @@ cards:
       hi: बालक, बालिका और नाव, तीनों के लिए एक ही क्रिया-रूप चलता है।
     tag: core
     taught_in: who.does#t2
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+      - id: i1
+        sa: बालिका लिखति।
+        meaning:
+          en: The girl writes.
+          hi: बालिका लिखती है।
+        words:
+        - sa: बालिका
+          gloss:
+            en: girl
+            hi: बालिका
+          check:
+            type: subanta
+            stem: बालिका
+            linga: Stri
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: लिखति
+          gloss:
+            en: writes
+            hi: लिखती है
+          check:
+            type: tinanta
+            dhatu: लिख्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-girl-writes
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+            actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+            "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+            hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+          alt:
+            en: A girl writes अ with a pen
+            hi: लेखनी से अ लिखती बालिका
+          ratio: '4:3'
+          text_in_image:
+          - अ
   - skill: sent.no-verb-to-be
     formula: सीता बालिका
     rule:
@@ -55,6 +297,116 @@ cards:
       hi: '‘है’ छोड़ दिया जाता है: दो प्रथमा शब्द साथ-साथ। {{अस्ति}} का अर्थ ‘विद्यमान है’।'
     tag: core
     taught_in: who.is#t1
+    visuals:
+    - id: v-linked-4
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः बालकः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+      - id: i1
+        sa: रामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: i2
+        sa: बालकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is
+            needed. The verb {{अस्ति}} means “exists”, “there is”.
+          hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+            {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+      - id: i5
+        sa: रामः बालकः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
   - skill: sent.word-order
     formula: बालकः पठति = पठति बालकः
     rule:
@@ -62,6 +414,92 @@ cards:
       hi: शब्द-क्रम स्वतन्त्र है; भूमिकाएँ प्रत्ययों में हैं।
     tag: core
     taught_in: who.order#t1
+    visuals:
+    - id: v-linked-5
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: &id003
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image: &id004
+          - अ इ उ
+      - id: i1
+        sa: पठति बालकः।
+        meaning:
+          en: The boy reads, the same.
+          hi: बालक पढ़ता है, वही अर्थ।
+        words:
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: *id003
+          ratio: '4:3'
+          text_in_image: *id004
 - id: conditions
   kind: revision
   title:
@@ -117,6 +555,95 @@ cards:
       hi: एक कर्ता (वह) के लिए क्रिया में {{ति}} लगता है; दो या अनेक के लिए बदल जाता है (अगला अध्याय)।
     tag: core
     taught_in: who.does#t2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+      - id: i1
+        sa: बालिका लिखति।
+        meaning:
+          en: The girl writes.
+          hi: बालिका लिखती है।
+        words:
+        - sa: बालिका
+          gloss:
+            en: girl
+            hi: बालिका
+          check:
+            type: subanta
+            stem: बालिका
+            linga: Stri
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: लिखति
+          gloss:
+            en: writes
+            hi: लिखती है
+          check:
+            type: tinanta
+            dhatu: लिख्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-girl-writes
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+            actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+            "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+            hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+          alt:
+            en: A girl writes अ with a pen
+            hi: लेखनी से अ लिखती बालिका
+          ratio: '4:3'
+          text_in_image:
+          - अ
 - id: exceptions
   kind: revision
   title:
@@ -134,6 +661,221 @@ cards:
         रूप लेती है।'
     tag: good
     taught_in: who.does#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Ten everyday verbs
+        hi: दस रोज़ के क्रियापद
+      columns:
+      - en: Root
+        hi: धातु
+      - en: He does
+        hi: वह करता है
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: पठ्
+        - id: r0-c1
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-reader-one
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: One boy reading a book with अ इ उ
+              hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+          compare_from: पठ्
+        - id: r0-c2
+          label:
+            en: reads
+            hi: पढ़ता है
+      - - id: r1-c0
+          sa: लिख्
+        - id: r1-c1
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-girl-writes
+            brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person,
+              compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people,
+              reflections, letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits
+              at a low desk actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact
+              Devanagari character "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters
+              or marks anywhere. The hand, pen, inkpot, page and character must be clear. This teaches writing and the use
+              of a pen.'
+            alt:
+              en: A girl writes अ with a pen
+              hi: लेखनी से अ लिखती बालिका
+            ratio: '4:3'
+            text_in_image:
+            - अ
+          compare_from: लिख्
+        - id: r1-c2
+          label:
+            en: writes
+            hi: लिखता है
+      - - id: r2-c0
+          sa: वद्
+        - id: r2-c1
+          sa: वदति
+          feature:
+            en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
+        - id: r2-c2
+          label:
+            en: speaks
+            hi: बोलता है
+      - - id: r3-c0
+          sa: हस्
+        - id: r3-c1
+          sa: हसति
+          feature:
+            en: 'Root: {{हस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+        - id: r3-c2
+          label:
+            en: laughs
+            hi: हँसता है
+      - - id: r4-c0
+          sa: चल्
+        - id: r4-c1
+          sa: चलति
+          feature:
+            en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-boy-walks
+            brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person,
+              compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people,
+              reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward
+              the right on a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body
+              shown. No house, books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+            alt: &id005
+              en: A boy walks on a path
+              hi: राह पर चलता बालक
+            ratio: '4:3'
+            text_in_image: &id006 []
+          compare_from: चल्
+        - id: r4-c2
+          label:
+            en: moves, walks
+            hi: चलता है
+      - - id: r5-c0
+          sa: खाद्
+        - id: r5-c1
+          sa: खादति
+          feature:
+            en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-boy-eats
+            brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person,
+              compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people,
+              reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe
+              yellow mango, holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee.
+              Exactly one fruit, no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+            alt:
+              en: A boy eats one mango
+              hi: एक आम खाता बालक
+            ratio: '4:3'
+            text_in_image: []
+          compare_from: खाद्
+        - id: r5-c2
+          label:
+            en: eats
+            hi: खाता है
+      - - id: r6-c0
+          sa: गम्
+        - id: r6-c1
+          sa: गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-boy-walks
+            brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person,
+              compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people,
+              reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward
+              the right on a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body
+              shown. No house, books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+            alt: *id005
+            ratio: '4:3'
+            text_in_image: *id006
+          compare_from: गम्
+        - id: r6-c2
+          label:
+            en: goes
+            hi: जाता है
+      - - id: r7-c0
+          sa: दृश्
+        - id: r7-c1
+          sa: पश्यति
+          feature:
+            en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दृश्
+        - id: r7-c2
+          label:
+            en: sees
+            hi: देखता है
+      - - id: r8-c0
+          sa: पा
+        - id: r8-c1
+          sa: पिबति
+          feature:
+            en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          image:
+            id: teaching-boy-drinks
+            brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person,
+              compact central grouping readable at 320px phone width, very simple quiet courtyard background. No other people,
+              reflections, letterlike decoration, border or watermark. A school-age boy in an ochre kurta is drinking water
+              from one plain brass cup held to his lips. Show the drinking action clearly, with the cup tilted naturally,
+              seated on a low stone step. No jug, food, writing or symbols.'
+            alt:
+              en: A boy drinks from a cup
+              hi: प्याले से पीता बालक
+            ratio: '4:3'
+            text_in_image: []
+          compare_from: पा
+        - id: r8-c2
+          label:
+            en: drinks
+            hi: पीता है
+      - - id: r9-c0
+          sa: स्था
+        - id: r9-c1
+          sa: तिष्ठति
+          feature:
+            en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: स्था
+        - id: r9-c2
+          label:
+            en: stands
+            hi: खड़ा है
   - skill: verb.pres-3sg
     formula: वदति · वदते
     rule:
@@ -191,18 +933,242 @@ cards:
       hi: 'केवल मूल रूप को शब्द की तरह मत लगाइए: {{बालकः}} लिखिए, {{बालक}} नहीं।'
     tag: core
     taught_in: who.endings#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending
+          ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
+        hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो।
+          इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
+      items:
+      - id: i0
+        sa: सुप्तिङन्तं पदम्
+      - id: i1
+        sa: पदम्
+      - id: i2
+        sa: सुप्
+      - id: i3
+        sa: तिङ्
+      - id: i4
+        sa: बालकः
+      - id: i5
+        sa: पठति
+      - id: i6
+        sa: बालक
+      - id: i7
+        sa: पठ्
   - skill: sent.no-verb-to-be
     rule:
       en: 'Do not add a verb for “is”: {{रामः बालकः}}, not {{रामः अस्ति बालकः}}.'
       hi: '‘है’ के लिए क्रिया मत जोड़िए: {{रामः बालकः}}, न कि {{रामः अस्ति बालकः}}।'
     tag: core
     taught_in: who.is#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः बालकः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+      - id: i1
+        sa: रामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: i2
+        sa: बालकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is
+            needed. The verb {{अस्ति}} means “exists”, “there is”.
+          hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+            {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+      - id: i5
+        sa: रामः बालकः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
   - skill: sent.word-order
     rule:
       en: 'Do not read meaning from place: the ending {{ः}} marks the doer wherever it stands.'
       hi: 'अर्थ स्थान से मत निकालिए: प्रत्यय {{ः}} कर्ता को हर जगह बताता है।'
     tag: core
     taught_in: who.order#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: &id007
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image: &id008
+          - अ इ उ
+      - id: i1
+        sa: पठति बालकः।
+        meaning:
+          en: The boy reads, the same.
+          hi: बालक पढ़ता है, वही अर्थ।
+        words:
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: *id007
+          ratio: '4:3'
+          text_in_image: *id008
 - id: panini
   kind: revision
   title:
@@ -219,6 +1185,34 @@ cards:
     - 1.4.14
     tag: core
     taught_in: who.endings#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending
+          ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
+        hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो।
+          इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
+      items:
+      - id: i0
+        sa: सुप्तिङन्तं पदम्
+      - id: i1
+        sa: पदम्
+      - id: i2
+        sa: सुप्
+      - id: i3
+        sa: तिङ्
+      - id: i4
+        sa: बालकः
+      - id: i5
+        sa: पठति
+      - id: i6
+        sa: बालक
+      - id: i7
+        sa: पठ्
   - skill: sent.nom-sg
     rule:
       en: '{{स्वतन्त्रः कर्ता}}: the doer is the independent one; the first case shows the bare meaning.'
@@ -228,6 +1222,20 @@ cards:
     - 2.3.46
     tag: core
     taught_in: who.doer#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46
+          says the first case shows the bare meaning of the word.'
+        hi: 'सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता
+          है कि प्रथमा शब्द का केवल अर्थ बताती है।'
+      items:
+      - id: i0
+        sa: स्वतन्त्रः कर्ता
   - skill: verb.pres-3sg
     rule:
       en: '{{वर्तमाने लट्}}: the present is {{लट्}}.'
@@ -236,6 +1244,28 @@ cards:
     - 3.2.123
     tag: core
     taught_in: who.does#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: पठ्
+        meaning:
+          en: 'root: read'
+          hi: 'धातु: पढ़ना'
+      - id: i1
+        sa: पठ
+        meaning:
+          en: with the joining vowel {{अ}}
+          hi: जोड़ने वाले स्वर {{अ}} के साथ
+      - id: i2
+        sa: पठति
+        meaning:
+          en: '+ {{ति}}: he, she, it reads'
+          hi: '+ {{ति}}: वह पढ़ता है'
 - id: sheet
   kind: revision
   title:
@@ -251,6 +1281,28 @@ cards:
       hi: मूल + प्रत्यय
     tag: core
     taught_in: who.endings#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: बालक
+        meaning:
+          en: 'stem: boy'
+          hi: 'मूल रूप: बालक'
+      - id: i1
+        sa: ः
+        meaning:
+          en: 'ending: the doer'
+          hi: 'प्रत्यय: कर्ता'
+      - id: i2
+        sa: बालकः
+        meaning:
+          en: 'word: the boy (who does)'
+          hi: 'शब्द: बालक (जो करता है)'
   - skill: sent.nom-sg
     formula: बालकः · बालिका
     rule:
@@ -258,6 +1310,115 @@ cards:
       hi: कर्ता, प्रथमा
     tag: core
     taught_in: who.doer#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Doers
+        hi: कर्ता
+      columns:
+      - en: Stem
+        hi: मूल रूप
+      - en: Doer
+        hi: कर्ता
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: बालक
+        - id: r0-c1
+          sa: बालकः
+          image:
+            id: teaching-reader-one
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: One boy reading a book with अ इ उ
+              hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बालक
+        - id: r0-c2
+          label:
+            en: boy
+            hi: बालक
+      - - id: r1-c0
+          sa: बालिका
+        - id: r1-c1
+          sa: बालिका
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r1-c2
+          label:
+            en: girl
+            hi: बालिका
+      - - id: r2-c0
+          sa: नाविक
+        - id: r2-c1
+          sa: नाविकः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नाविक
+        - id: r2-c2
+          label:
+            en: boatman
+            hi: नाविक
+      - - id: r3-c0
+          sa: बक
+        - id: r3-c1
+          sa: बकः
+          feature:
+            en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बक
+        - id: r3-c2
+          label:
+            en: heron
+            hi: बगुला
+      - - id: r4-c0
+          sa: नदी
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: &id009
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: &id010 []
+        - id: r4-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt: *id009
+            ratio: '1:1'
+            text_in_image: *id010
+        - id: r4-c2
+          label:
+            en: river
+            hi: नदी
   - skill: verb.pres-3sg
     formula: धातु + ति
     rule:
@@ -265,6 +1426,28 @@ cards:
       hi: वह करता है
     tag: core
     taught_in: who.does#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Follow the forms
+        hi: रूपों पर ध्यान दें
+      items:
+      - id: i0
+        sa: पठ्
+        meaning:
+          en: 'root: read'
+          hi: 'धातु: पढ़ना'
+      - id: i1
+        sa: पठ
+        meaning:
+          en: with the joining vowel {{अ}}
+          hi: जोड़ने वाले स्वर {{अ}} के साथ
+      - id: i2
+        sa: पठति
+        meaning:
+          en: '+ {{ति}}: he, she, it reads'
+          hi: '+ {{ति}}: वह पढ़ता है'
   - skill: sent.no-verb-to-be
     formula: रामः बालकः
     rule:
@@ -272,6 +1455,116 @@ cards:
       hi: ‘है’ नहीं
     tag: core
     taught_in: who.is#t1
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः बालकः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+      - id: i1
+        sa: रामः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: i2
+        sa: बालकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is
+            needed. The verb {{अस्ति}} means “exists”, “there is”.
+          hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+            {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+      - id: i5
+        sa: रामः बालकः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma is a boy.
+          hi: राम बालक है।
+        words:
+        - sa: रामः
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
   - skill: sent.word-order
     formula: बालकः पठति = पठति बालकः
     rule:
@@ -279,3 +1572,89 @@ cards:
       hi: कोई भी क्रम
     tag: core
     taught_in: who.order#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: &id011
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image: &id012
+          - अ इ उ
+      - id: i1
+        sa: पठति बालकः।
+        meaning:
+          en: The boy reads, the same.
+          hi: बालक पढ़ता है, वही अर्थ।
+        words:
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt: *id011
+          ratio: '4:3'
+          text_in_image: *id012

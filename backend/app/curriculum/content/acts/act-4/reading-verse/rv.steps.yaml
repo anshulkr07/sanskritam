@@ -140,6 +140,42 @@ cards:
   note:
     en: The knots are the joins; the meaning is last.
     hi: गाँठें जोड़ हैं; अर्थ अन्त में आता है।
+  visuals:
+  - id: v-procedure
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      label:
+        en: As carved
+        hi: जैसा खुदा है
+      sa: विद्या ददाति विनयं विनयाद्याति पात्रताम्
+    - id: stage-1
+      label:
+        en: 'Stage: {{पदच्छेदः}}'
+        hi: 'चरण: {{पदच्छेदः}}'
+      sa: विद्या ददाति विनयम् विनयात् याति पात्रताम्
+    - id: stage-2
+      label:
+        en: 'Stage: {{अन्वयः}}'
+        hi: 'चरण: {{अन्वयः}}'
+      sa: विद्या विनयं ददाति; विनयात् पात्रतां याति
+    - id: stage-3
+      label:
+        en: 'Stage: {{अर्थः}}'
+        hi: 'चरण: {{अर्थः}}'
+      meaning:
+        en: Learning gives humility; from humility one reaches worthiness.
+        hi: विद्या विनय देती है; विनय से पात्रता मिलती है।
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: The knots are the joins; the meaning is last.
+        hi: गाँठें जोड़ हैं; अर्थ अन्त में आता है।
 - id: tb2
   kind: table
   title:
@@ -168,6 +204,7 @@ cards:
         second: याति
         joined: विनयाद्याति
       highlight: true
+      compare_from: विनयात् याति
   - - sa: पात्रत्वात्
     - sa: धनम्
     - sa: पात्रत्वाद्धनम्
@@ -177,6 +214,7 @@ cards:
         second: धनम्
         joined: पात्रत्वाद्धनम्
       highlight: true
+      compare_from: पात्रत्वात् धनम्
   - - sa: धनात्
     - sa: धर्मम्
     - sa: धनाद्धर्मम्
@@ -186,6 +224,7 @@ cards:
         second: धर्मम्
         joined: धनाद्धर्मम्
       highlight: true
+      compare_from: धनात् धर्मम्
   note:
     en: Each join is a sandhi you already know.
     hi: हर जोड़ वह सन्धि है जिसे आप पहले से जानते हैं।

@@ -27,6 +27,88 @@ cards:
     - 1.4.80
     tag: core
     taught_in: pre.come#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: गम् with prefixes
+        hi: उपसर्गों के साथ गम्
+      columns:
+      - en: Verb
+        hi: क्रिया
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: आगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r0-c1
+          label:
+            en: comes
+            hi: आता है
+      - - id: r1-c0
+          sa: निर्गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r1-c1
+          label:
+            en: goes out
+            hi: बाहर जाता है
+      - - id: r2-c0
+          sa: उपगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c1
+          label:
+            en: approaches
+            hi: पास जाता है
+      - - id: r3-c0
+          sa: अवगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r3-c1
+          label:
+            en: understands
+            hi: समझता है
+      - - id: r4-c0
+          sa: अधिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r4-c1
+          label:
+            en: obtains
+            hi: पाता है
+      - - id: r5-c0
+          sa: अनुगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r5-c1
+          label:
+            en: follows
+            hi: पीछे चलता है
+      - - id: r6-c0
+          sa: प्रतिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r6-c1
+          label:
+            en: goes back
+            hi: लौटता है
   - skill: verb.upasarga-list
     rule:
       en: 'The twenty-two: {{प्र परा अप सम् अनु अव निस् निर् दुस् दुर् वि आ नि अधि अपि अति सु उत् अभि प्रति परि उप}}.'
@@ -35,6 +117,148 @@ cards:
     - 1.4.58
     tag: core
     taught_in: pre.list#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Prefixes, first half
+        hi: उपसर्ग, पहला भाग
+      columns:
+      - en: Prefix
+        hi: उपसर्ग
+      - en: Meaning
+        hi: अर्थ
+      - en: With गम् or another root
+        hi: गम् या अन्य धातु के साथ
+      rows:
+      - - id: r0-c0
+          sa: प्र
+        - id: r0-c1
+          label:
+            en: forth, forward
+            hi: आगे
+        - id: r0-c2
+          sa: प्रगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: परा
+        - id: r1-c1
+          label:
+            en: away, back
+            hi: दूर, उलटा
+        - id: r1-c2
+          sa: पराभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          sa: अप
+        - id: r2-c1
+          label:
+            en: away, off
+            hi: दूर, हटकर
+        - id: r2-c2
+          sa: अपगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r3-c0
+          sa: सम्
+        - id: r3-c1
+          label:
+            en: together
+            hi: साथ
+        - id: r3-c2
+          sa: संभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r4-c0
+          sa: अनु
+        - id: r4-c1
+          label:
+            en: after, along
+            hi: पीछे, साथ-साथ
+        - id: r4-c2
+          sa: अनुभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r5-c0
+          sa: अव
+        - id: r5-c1
+          label:
+            en: down, off
+            hi: नीचे, हटकर
+        - id: r5-c2
+          sa: अवगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r6-c0
+          sa: निस् / निर्
+        - id: r6-c1
+          label:
+            en: out
+            hi: बाहर
+        - id: r6-c2
+          sa: निर्गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r7-c0
+          sa: दुस् / दुर्
+        - id: r7-c1
+          label:
+            en: bad, hard
+            hi: बुरा, कठिन
+        - id: r7-c2
+          sa: दुर्गमः
+      - - id: r8-c0
+          sa: वि
+        - id: r8-c1
+          label:
+            en: apart, special
+            hi: अलग, विशेष
+        - id: r8-c2
+          sa: विजानाति
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+      - - id: r9-c0
+          sa: आ
+        - id: r9-c1
+          label:
+            en: towards, up to
+            hi: की ओर, तक
+        - id: r9-c2
+          sa: आगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r10-c0
+          sa: नि
+        - id: r10-c1
+          label:
+            en: down, in
+            hi: नीचे, भीतर
+        - id: r10-c2
+          sa: निपतति
+          feature:
+            en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पत्
 - id: conditions
   kind: revision
   title:
@@ -49,12 +273,188 @@ cards:
       hi: 'पूरे शब्द का अर्थ देखिए, केवल धातु का नहीं: {{अवजानाति}} का अर्थ ‘तिरस्कार करता है’।'
     tag: good
     taught_in: pre.list#t2
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः अवजानाति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He despises.
+          hi: वह तिरस्कार करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: अवजानाति
+          gloss:
+            en: despises
+            hi: तिरस्कार करता है
+          check:
+            type: tinanta
+            dhatu: ज्ञा
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - अव
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: अवजानाति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: despises
+          hi: तिरस्कार करता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - अव
+        feature:
+          en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: ज्ञा
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix can turn a meaning around: {{जानाति}} (knows) but {{अवजानाति}} (despises); {{भवति}} (is) but {{पराभवति}}
+            (is defeated); {{नयति}} (leads) but {{विनयति}} (trains). Always check the meaning of the whole word.'
+          hi: 'उपसर्ग अर्थ पलट सकता है: {{जानाति}} (जानता है) पर {{अवजानाति}} (तिरस्कार करता है); {{भवति}} (होता है) पर {{पराभवति}}
+            (हारता है); {{नयति}} (ले जाता है) पर {{विनयति}} (सिखाता है)। हमेशा पूरे शब्द का अर्थ देखिए।'
+      - id: i5
+        sa: सः अवजानाति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He despises.
+          hi: वह तिरस्कार करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: अवजानाति
+          gloss:
+            en: despises
+            hi: तिरस्कार करता है
+          check:
+            type: tinanta
+            dhatu: ज्ञा
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - अव
   - skill: verb.upasarga-list
     rule:
       en: '{{दुस्}}/{{दुर्}} and {{निस्}}/{{निर्}} are the same prefix; the form depends on the next sound.'
       hi: '{{दुस्}}/{{दुर्}} और {{निस्}}/{{निर्}} एक ही उपसर्ग हैं; रूप अगली ध्वनि पर निर्भर है।'
     tag: good
     taught_in: pre.come#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: गम् with prefixes
+        hi: उपसर्गों के साथ गम्
+      columns:
+      - en: Verb
+        hi: क्रिया
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: आगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r0-c1
+          label:
+            en: comes
+            hi: आता है
+      - - id: r1-c0
+          sa: निर्गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r1-c1
+          label:
+            en: goes out
+            hi: बाहर जाता है
+      - - id: r2-c0
+          sa: उपगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c1
+          label:
+            en: approaches
+            hi: पास जाता है
+      - - id: r3-c0
+          sa: अवगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r3-c1
+          label:
+            en: understands
+            hi: समझता है
+      - - id: r4-c0
+          sa: अधिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r4-c1
+          label:
+            en: obtains
+            hi: पाता है
+      - - id: r5-c0
+          sa: अनुगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r5-c1
+          label:
+            en: follows
+            hi: पीछे चलता है
+      - - id: r6-c0
+          sa: प्रतिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r6-c1
+          label:
+            en: goes back
+            hi: लौटता है
 - id: exceptions
   kind: revision
   title:
@@ -108,6 +508,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -134,6 +535,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: verb.upasarga-list
     rule:
       en: 'Some prefixes join in sandhi: {{उत्}} + {{गच्छति}} gives {{उद्गच्छति}}.'
@@ -179,6 +581,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -205,6 +608,7 @@ cards:
         feature:
           en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
 - id: mistakes
   kind: revision
   title:
@@ -225,6 +629,100 @@ cards:
       hi: 'उपसर्ग वाली क्रिया का शब्द-दर-शब्द अनुवाद मत कीजिए: {{पराभवति}} ‘दूर + होता है’ नहीं है।'
     tag: core
     taught_in: pre.list#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः अवजानाति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He despises.
+          hi: वह तिरस्कार करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: अवजानाति
+          gloss:
+            en: despises
+            hi: तिरस्कार करता है
+          check:
+            type: tinanta
+            dhatu: ज्ञा
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - अव
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: अवजानाति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: despises
+          hi: तिरस्कार करता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - अव
+        feature:
+          en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: ज्ञा
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix can turn a meaning around: {{जानाति}} (knows) but {{अवजानाति}} (despises); {{भवति}} (is) but {{पराभवति}}
+            (is defeated); {{नयति}} (leads) but {{विनयति}} (trains). Always check the meaning of the whole word.'
+          hi: 'उपसर्ग अर्थ पलट सकता है: {{जानाति}} (जानता है) पर {{अवजानाति}} (तिरस्कार करता है); {{भवति}} (होता है) पर {{पराभवति}}
+            (हारता है); {{नयति}} (ले जाता है) पर {{विनयति}} (सिखाता है)। हमेशा पूरे शब्द का अर्थ देखिए।'
+      - id: i5
+        sa: सः अवजानाति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He despises.
+          hi: वह तिरस्कार करता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: अवजानाति
+          gloss:
+            en: despises
+            hi: तिरस्कार करता है
+          check:
+            type: tinanta
+            dhatu: ज्ञा
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - अव
 - id: panini
   kind: revision
   title:
@@ -242,6 +740,33 @@ cards:
     - 1.4.80
     tag: core
     taught_in: pre.come#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 1.4.59, {{उपसर्गाः क्रियायोगे}}, names words like {{प्र}} and {{परा}} as {{उपसर्ग}} when they join a verb.
+          1.4.80, {{ते प्राग्धातोः}}, says they stand before the root. Together they give {{आ + गच्छति}} = {{आगच्छति}}.
+        hi: सूत्र 1.4.59, {{उपसर्गाः क्रियायोगे}}, {{प्र}}, {{परा}} जैसे शब्दों को {{उपसर्ग}} नाम देता है जब वे क्रिया से
+          जुड़ें। 1.4.80, {{ते प्राग्धातोः}}, कहता है कि वे धातु से पहले रहते हैं। दोनों मिलकर {{आ + गच्छति}} = {{आगच्छति}}
+          देते हैं।
+      items:
+      - id: i0
+        sa: उपसर्गाः क्रियायोगे
+      - id: i1
+        sa: प्र
+      - id: i2
+        sa: परा
+      - id: i3
+        sa: उपसर्ग
+      - id: i4
+        sa: ते प्राग्धातोः
+      - id: i5
+        sa: आ + गच्छति
+      - id: i6
+        sa: आगच्छति
   - skill: verb.upasarga-list
     rule:
       en: '{{प्रादयः}} gives the list.'
@@ -250,6 +775,26 @@ cards:
     - 1.4.58
     tag: core
     taught_in: pre.list#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 1.4.58, {{प्रादयः}}, gives the list {{प्र}} onwards, and 1.4.59, {{उपसर्गाः क्रियायोगे}}, names those that
+          join a verb {{उपसर्ग}}. The list of twenty-two is a tradition from the grammarians and is memorised as a verse.
+        hi: सूत्र 1.4.58, {{प्रादयः}}, {{प्र}} से आगे की सूची देता है, और 1.4.59, {{उपसर्गाः क्रियायोगे}}, उनमें से क्रिया
+          से जुड़ने वालों को {{उपसर्ग}} कहता है। बाईस की गिनती वैयाकरणों की परम्परा है और श्लोक की तरह याद की जाती है।
+      items:
+      - id: i0
+        sa: प्रादयः
+      - id: i1
+        sa: प्र
+      - id: i2
+        sa: उपसर्गाः क्रियायोगे
+      - id: i3
+        sa: उपसर्ग
 - id: sheet
   kind: revision
   title:
@@ -265,6 +810,88 @@ cards:
       hi: उपसर्ग + धातु
     tag: core
     taught_in: pre.come#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: गम् with prefixes
+        hi: उपसर्गों के साथ गम्
+      columns:
+      - en: Verb
+        hi: क्रिया
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: आगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r0-c1
+          label:
+            en: comes
+            hi: आता है
+      - - id: r1-c0
+          sa: निर्गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r1-c1
+          label:
+            en: goes out
+            hi: बाहर जाता है
+      - - id: r2-c0
+          sa: उपगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r2-c1
+          label:
+            en: approaches
+            hi: पास जाता है
+      - - id: r3-c0
+          sa: अवगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r3-c1
+          label:
+            en: understands
+            hi: समझता है
+      - - id: r4-c0
+          sa: अधिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r4-c1
+          label:
+            en: obtains
+            hi: पाता है
+      - - id: r5-c0
+          sa: अनुगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r5-c1
+          label:
+            en: follows
+            hi: पीछे चलता है
+      - - id: r6-c0
+          sa: प्रतिगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+        - id: r6-c1
+          label:
+            en: goes back
+            hi: लौटता है
   - skill: verb.upasarga-list
     formula: प्र परा अप सम् अनु अव …
     rule:
@@ -272,3 +899,145 @@ cards:
       hi: बाईस
     tag: core
     taught_in: pre.list#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Prefixes, first half
+        hi: उपसर्ग, पहला भाग
+      columns:
+      - en: Prefix
+        hi: उपसर्ग
+      - en: Meaning
+        hi: अर्थ
+      - en: With गम् or another root
+        hi: गम् या अन्य धातु के साथ
+      rows:
+      - - id: r0-c0
+          sa: प्र
+        - id: r0-c1
+          label:
+            en: forth, forward
+            hi: आगे
+        - id: r0-c2
+          sa: प्रगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: परा
+        - id: r1-c1
+          label:
+            en: away, back
+            hi: दूर, उलटा
+        - id: r1-c2
+          sa: पराभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r2-c0
+          sa: अप
+        - id: r2-c1
+          label:
+            en: away, off
+            hi: दूर, हटकर
+        - id: r2-c2
+          sa: अपगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r3-c0
+          sa: सम्
+        - id: r3-c1
+          label:
+            en: together
+            hi: साथ
+        - id: r3-c2
+          sa: संभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r4-c0
+          sa: अनु
+        - id: r4-c1
+          label:
+            en: after, along
+            hi: पीछे, साथ-साथ
+        - id: r4-c2
+          sa: अनुभवति
+          feature:
+            en: 'Root: {{भू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भू
+      - - id: r5-c0
+          sa: अव
+        - id: r5-c1
+          label:
+            en: down, off
+            hi: नीचे, हटकर
+        - id: r5-c2
+          sa: अवगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r6-c0
+          sa: निस् / निर्
+        - id: r6-c1
+          label:
+            en: out
+            hi: बाहर
+        - id: r6-c2
+          sa: निर्गच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r7-c0
+          sa: दुस् / दुर्
+        - id: r7-c1
+          label:
+            en: bad, hard
+            hi: बुरा, कठिन
+        - id: r7-c2
+          sa: दुर्गमः
+      - - id: r8-c0
+          sa: वि
+        - id: r8-c1
+          label:
+            en: apart, special
+            hi: अलग, विशेष
+        - id: r8-c2
+          sa: विजानाति
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+      - - id: r9-c0
+          sa: आ
+        - id: r9-c1
+          label:
+            en: towards, up to
+            hi: की ओर, तक
+        - id: r9-c2
+          sa: आगच्छति
+          feature:
+            en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: गम्
+      - - id: r10-c0
+          sa: नि
+        - id: r10-c1
+          label:
+            en: down, in
+            hi: नीचे, भीतर
+        - id: r10-c2
+          sa: निपतति
+          feature:
+            en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पत्

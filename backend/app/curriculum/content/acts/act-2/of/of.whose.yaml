@@ -174,6 +174,51 @@ cards:
       en: 'the sixth case: of'
       hi: 'छठी विभक्ति: का, की, के'
   visuals:
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: the teacher's house
+      hi: आचार्य का घर
+    items:
+    - id: i0
+      sa: आचार्यस्य
+      meaning:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
+    - id: i1
+      sa: गृहम्
+      meaning:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
+    edges:
+    - source: i0
+      target: i1
+      label:
+        en: 'related noun: belonging to'
+        hi: 'सम्बन्धित संज्ञा: जिसका है'
   - id: v-source-example-0
     kind: worked
     title:
@@ -226,6 +271,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i2
       sa: गृहम्
       label:
@@ -243,6 +289,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - id: rule
       label:
         en: Connect the form and the rule
@@ -333,6 +380,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -350,6 +398,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: &id007
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: &id008 []
+      compare_from: पुस्तक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -440,6 +501,19 @@ cards:
       feature:
         en: 'Stem: {{वृक्ष}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-tree
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One complete mature green banyan tree with visible trunk, spreading branches, canopy and a small patch
+          of ground. No people, animals, fruit, hanging objects or lettering.'
+        alt:
+          en: One whole banyan tree
+          hi: एक पूरा बरगद का वृक्ष
+        ratio: '1:1'
+        text_in_image: []
+      compare_from: वृक्ष
     - id: i2
       sa: पत्रम्
       label:
@@ -457,6 +531,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पत्र
     - id: rule
       label:
         en: Connect the form and the rule
@@ -547,6 +622,19 @@ cards:
       feature:
         en: 'Stem: {{नदी}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id005
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id006 []
+      compare_from: नदी
     - id: i2
       sa: जलम्
       label:
@@ -564,6 +652,7 @@ cards:
       feature:
         en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: जल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -631,6 +720,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: आचार्य
     - sa: आचार्यस्य
       check:
         type: subanta
@@ -639,6 +732,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
   - - text:
         en: boy
         hi: बालक
@@ -649,6 +746,25 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: &id001
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image: &id002
+        - अ इ उ
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - sa: बालकस्य
       check:
         type: subanta
@@ -657,6 +773,22 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: बालक
   - - text:
         en: fruit
         hi: फल
@@ -667,6 +799,22 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id003
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: &id004 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलस्य
       check:
         type: subanta
@@ -675,6 +823,20 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: फल
   - - text:
         en: girl
         hi: बालिका
@@ -685,6 +847,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: बालिकायाः
       check:
         type: subanta
@@ -693,6 +858,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: बालिका
   - - text:
         en: river
         hi: नदी
@@ -703,6 +872,19 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - sa: नद्याः
       check:
         type: subanta
@@ -711,6 +893,20 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
+      compare_from: नदी
   note:
     en: 'Masculine and neuter -अ: {{अस्य}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}.'
     hi: पुंलिंग और नपुंसक -अ में {{स्य}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}।
@@ -779,6 +975,61 @@ cards:
         vibhakti: Prathama
         vacana: Eka
   visuals:
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: Whose book?
+      hi: किसकी पुस्तक?
+    items:
+    - id: i0
+      sa: कस्य
+      meaning:
+        en: whose?
+        hi: किसका?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: किम्
+    - id: i1
+      sa: पुस्तकम्
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id007
+        ratio: '1:1'
+        text_in_image: *id008
+      compare_from: पुस्तक
+    edges:
+    - source: i0
+      target: i1
+      label:
+        en: 'related noun: belonging to'
+        hi: 'सम्बन्धित संज्ञा: जिसका है'
   - id: v-source-example-0
     kind: worked
     title:
@@ -831,6 +1082,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पुस्तकम्
       label:
@@ -848,6 +1100,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id007
+        ratio: '1:1'
+        text_in_image: *id008
+      compare_from: पुस्तक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -938,6 +1201,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: गृहम्
       label:
@@ -955,6 +1219,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1064,6 +1329,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i2
       sa: गृहम्
       label:
@@ -1081,6 +1347,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1210,6 +1477,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i2
       sa: गृहम्
       label:
@@ -1227,6 +1495,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1369,6 +1638,7 @@ cards:
       feature:
         en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: आचार्य
     - id: i2
       sa: गृहम्
       label:
@@ -1386,6 +1656,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - id: rule
       label:
         en: Connect the form and the rule

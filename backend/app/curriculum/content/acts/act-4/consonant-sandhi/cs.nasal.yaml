@@ -144,6 +144,7 @@ cards:
         second: मात्रम्
         joined: तन्मात्रम्
       highlight: true
+      compare_from: तत् मात्रम्
   - - sa: सत्
     - sa: मार्गः
     - sa: सन्मार्गः
@@ -153,6 +154,7 @@ cards:
         second: मार्गः
         joined: सन्मार्गः
       highlight: true
+      compare_from: सत् मार्गः
   - - sa: जगत्
     - sa: नाथः
     - sa: जगन्नाथः
@@ -162,6 +164,7 @@ cards:
         second: नाथः
         joined: जगन्नाथः
       highlight: true
+      compare_from: जगत् नाथः
   - - sa: वाक्
     - sa: मयम्
     - sa: वाङ्मयम्
@@ -171,6 +174,7 @@ cards:
         second: मयम्
         joined: वाङ्मयम्
       highlight: true
+      compare_from: वाक् मयम्
   - - sa: त्वम्
     - sa: गच्छसि
     - sa: त्वं गच्छसि
@@ -180,6 +184,7 @@ cards:
         second: गच्छसि
         joined: त्वं गच्छसि
       highlight: true
+      compare_from: त्वम् गच्छसि
   - - sa: वृक्षम्
     - sa: पश्यति
     - sa: वृक्षं पश्यति
@@ -189,6 +194,7 @@ cards:
         second: पश्यति
         joined: वृक्षं पश्यति
       highlight: true
+      compare_from: वृक्षम् पश्यति
   - - sa: सम्
     - sa: सारः
     - sa: संसारः
@@ -198,6 +204,7 @@ cards:
         second: सारः
         joined: संसारः
       highlight: true
+      compare_from: सम् सारः
   - - sa: सम्
     - sa: स्कृतम्
     - sa: संस्कृतम्
@@ -207,6 +214,7 @@ cards:
         second: स्कृतम्
         joined: संस्कृतम्
       highlight: true
+      compare_from: सम् स्कृतम्
   - - sa: अहम्
     - sa: अपि
     - sa: अहमपि
@@ -216,6 +224,7 @@ cards:
         second: अपि
         joined: अहमपि
       highlight: true
+      compare_from: अहम् अपि
   note:
     en: The last shows {{म्}} staying before a vowel.
     hi: अन्तिम में {{म्}} स्वर से पहले रहता है।
@@ -658,3 +667,28 @@ cards:
     text:
       en: अहमपि.
       hi: अहमपि।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: त् + म = न्म
+      meaning:
+        en: सन्मार्गः, तन्मात्रम्.
+        hi: सन्मार्गः, तन्मात्रम्।
+    - id: i1
+      sa: म् + व्यंजन = ं
+      meaning:
+        en: संसारः, त्वं गच्छसि.
+        hi: संसारः, त्वं गच्छसि।
+    - id: i2
+      sa: म् + स्वर = म्
+      meaning:
+        en: अहमपि.
+        hi: अहमपि।

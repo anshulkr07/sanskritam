@@ -166,6 +166,207 @@ cards:
       en: the causative stem
       hi: प्रेरणार्थक अंग
   visuals:
+  - id: v-scene-cause
+    kind: comparison
+    title:
+      en: Reading and causing reading
+      hi: पढ़ना और पढ़वाना
+    explanation:
+      en: The teacher is the causer; the boy still performs the reading. The lesson is what is read.
+      hi: गुरु प्रेरक हैं; पढ़ने वाला अब भी बालक है। पाठ पढ़ी जाने वाली वस्तु है।
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+    - id: i1
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+      image:
+        id: teaching-cause-reading
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+          no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+          people or letterlike marks. Exactly two people: an older male teacher in plain cream clothes on the left actively
+          teaching one school-age boy in an ochre kurta on the right to read. Both sit at one low desk, the teacher points
+          with one finger to the boy’s open book and the boy follows the line aloud, eyes on the page. The book contains exactly
+          the single large line "अ इ उ", clearly legible, no other writing. The teacher is causing the boy to read, rather
+          than reading alone.'
+        alt:
+          en: A teacher makes a boy read अ इ उ
+          hi: बालक को अ इ उ पढ़वाते गुरु
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: The teacher makes the boy read the lesson.
+      hi: गुरु बालक को पाठ पढ़ाता है।
+    items:
+    - id: i0
+      sa: गुरुः
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
+    - id: i1
+      sa: बालकम्
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
+    - id: i2
+      sa: पाठम्
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
+    - id: i3
+      sa: पाठयति
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
+    edges:
+    - source: i0
+      target: i3
+      label:
+        en: causes the reading
+        hi: पढ़वाता है
+    - source: i1
+      target: i3
+      label:
+        en: is made to read
+        hi: जिससे पढ़वाया जाता है
+    - source: i2
+      target: i3
+      label:
+        en: lesson read
+        hi: पढ़ा जाने वाला पाठ
   - id: v-source-example-0
     kind: worked
     title:
@@ -240,6 +441,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -257,6 +459,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -274,6 +477,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -293,6 +497,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -419,6 +624,7 @@ cards:
       feature:
         en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मातृ
     - id: i2
       sa: बालम्
       label:
@@ -436,6 +642,7 @@ cards:
       feature:
         en: 'Stem: {{बाल}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बाल}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बाल
     - id: i3
       sa: भोजयति
       label:
@@ -455,6 +662,7 @@ cards:
       feature:
         en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भुज्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -536,6 +744,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - text:
         en: teaches
         hi: पढ़ाता है
@@ -549,6 +761,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - text:
         en: has done
         hi: करवाता है
@@ -562,6 +778,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - text:
         en: sends
         hi: भेजता है
@@ -575,6 +795,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दृश्
     - text:
         en: shows
         hi: दिखाता है
@@ -588,6 +812,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: भुज्
     - text:
         en: feeds
         hi: खिलाता है
@@ -601,6 +829,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: श्रु
     - text:
         en: announces
         hi: सुनवाता है
@@ -614,6 +846,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: स्था
     - text:
         en: sets up
         hi: स्थापित करता है
@@ -654,6 +890,10 @@ cards:
         sanadi:
         - Nic
       highlight: true
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पाठयतः
       check:
         type: tinanta
@@ -663,6 +903,10 @@ cards:
         vacana: Dvi
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पाठयन्ति
       check:
         type: tinanta
@@ -672,6 +916,10 @@ cards:
         vacana: Bahu
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -684,6 +932,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पाठयथः
       check:
         type: tinanta
@@ -693,6 +945,10 @@ cards:
         vacana: Dvi
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पाठयथ
       check:
         type: tinanta
@@ -702,6 +958,10 @@ cards:
         vacana: Bahu
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -714,6 +974,10 @@ cards:
         vacana: Eka
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पाठयावः
       check:
         type: tinanta
@@ -723,6 +987,10 @@ cards:
         vacana: Dvi
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पाठयामः
       check:
         type: tinanta
@@ -732,6 +1000,10 @@ cards:
         vacana: Bahu
         sanadi:
         - Nic
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
 - id: p1
   kind: practice
   depth: core
@@ -825,6 +1097,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -842,6 +1115,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -859,6 +1133,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -878,6 +1153,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1035,6 +1311,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -1052,6 +1329,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -1069,6 +1347,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -1088,6 +1367,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1255,6 +1535,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -1272,6 +1553,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -1289,6 +1571,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -1308,6 +1591,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1484,6 +1768,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -1501,6 +1786,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -1518,6 +1804,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -1537,6 +1824,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1707,6 +1995,7 @@ cards:
       feature:
         en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - id: i2
       sa: बालकम्
       label:
@@ -1724,6 +2013,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i3
       sa: पाठम्
       label:
@@ -1741,6 +2031,7 @@ cards:
       feature:
         en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: पाठ
     - id: i4
       sa: पाठयति
       label:
@@ -1760,6 +2051,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule

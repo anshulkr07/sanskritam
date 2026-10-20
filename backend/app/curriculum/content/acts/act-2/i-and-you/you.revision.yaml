@@ -25,6 +25,63 @@ cards:
       hi: 'मैं, हम दोनों, हम: {{अहम्}}, {{आवाम्}}, {{वयम्}}।'
     tag: core
     taught_in: you.i#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: अस्मद्
+      - id: i1
+        sa: आवाम्
+        meaning:
+          en: we two
+          hi: हम दोनों
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: अस्मद्
+      - id: i2
+        sa: वयम्
+        meaning:
+          en: we (many)
+          hi: हम (अनेक)
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: अस्मद्
   - skill: pron.you
     formula: त्वम् · युवाम् · यूयम्
     rule:
@@ -32,6 +89,63 @@ cards:
       hi: 'तुम, तुम दोनों, तुम सब: {{त्वम्}}, {{युवाम्}}, {{यूयम्}}।'
     tag: core
     taught_in: you.you#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+          पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+        hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+          है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+      items:
+      - id: i0
+        sa: त्वम्
+        meaning:
+          en: you
+          hi: तुम
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: युष्मद्
+      - id: i1
+        sa: युवाम्
+        meaning:
+          en: you two
+          hi: तुम दोनों
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: युष्मद्
+      - id: i2
+        sa: यूयम्
+        meaning:
+          en: you all
+          hi: तुम सब
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: युष्मद्
   - skill: verb.persons
     formula: पठति पठसि पठामि
     rule:
@@ -41,6 +155,88 @@ cards:
     - 3.4.78
     tag: core
     taught_in: you.grid#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: 'The grid: पठ्'
+        hi: 'तालिका: पठ्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठतः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठन्ति
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठसि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठथः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठथ
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठामि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठावः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठामः
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: pron.polite
     formula: भवान् पठति
     rule:
@@ -48,6 +244,51 @@ cards:
       hi: बड़ों से {{भवान्}} या {{भवती}} कहिए, क्रिया प्रथम पुरुष की।
     tag: core
     taught_in: you.polite#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: भवान् पठति।
+        meaning:
+          en: You (sir) read.
+          hi: आप पढ़ते हैं।
+        words:
+        - sa: भवान्
+          gloss:
+            en: you (to a man, polite)
+            hi: आप (पुरुष से, आदरार्थ)
+        - sa: पठति
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: verb.as
     formula: अस्मि असि अस्ति
     rule:
@@ -55,6 +296,88 @@ cards:
       hi: '{{अस्मि}} (मैं हूँ), {{असि}} (तुम हो), {{अस्ति}} (वह है)।'
     tag: core
     taught_in: you.be#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: The nine forms of अस्
+        hi: अस् के नौ रूप
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अस्ति
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्तः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: सन्ति
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: असि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्थः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्थ
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अस्मि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्वः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्मः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
 - id: conditions
   kind: revision
   title:
@@ -112,6 +435,132 @@ cards:
       hi: सर्वनाम के साथ {{अस्}} का खुलकर प्रयोग होता है; दो संज्ञाओं के बीच प्रायः छोड़ दिया जाता है।
     tag: core
     taught_in: you.be#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: अहम् छात्रः अस्मि।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: I am a student.
+          hi: मैं छात्र हूँ।
+        words:
+        - sa: अहम्
+          gloss:
+            en: I
+            hi: मैं
+        - sa: छात्रः
+          gloss:
+            en: student
+            hi: छात्र
+          check:
+            type: subanta
+            stem: छात्र
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: अस्मि
+          gloss:
+            en: am
+            hi: हूँ
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
+      - id: i1
+        sa: अहम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: I
+          hi: मैं
+      - id: i2
+        sa: छात्रः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: student
+          hi: छात्र
+        check:
+          type: subanta
+          stem: छात्र
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{छात्र}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{छात्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: छात्र
+      - id: i3
+        sa: अस्मि
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: am
+          hi: हूँ
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: अस्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The verb {{अस्}}, “to be”, has the three singular forms {{अस्मि}} (I am), {{असि}} (you are), {{अस्ति}} (he,
+            she, it is). With {{अहम्}} and {{त्वम्}} it is used freely: {{अहं छात्रः अस्मि}}.'
+          hi: 'क्रिया {{अस्}}, ‘होना’, के तीन एकवचन रूप हैं: {{अस्मि}} (मैं हूँ), {{असि}} (तुम हो), {{अस्ति}} (वह है)। {{अहम्}}
+            और {{त्वम्}} के साथ इसका खुलकर प्रयोग होता है: {{अहं छात्रः अस्मि}}।'
+      - id: i6
+        sa: अहम् छात्रः अस्मि।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: I am a student.
+          hi: मैं छात्र हूँ।
+        words:
+        - sa: अहम्
+          gloss:
+            en: I
+            hi: मैं
+        - sa: छात्रः
+          gloss:
+            en: student
+            hi: छात्र
+          check:
+            type: subanta
+            stem: छात्र
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: अस्मि
+          gloss:
+            en: am
+            hi: हूँ
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
 - id: exceptions
   kind: revision
   title:
@@ -126,6 +575,58 @@ cards:
       hi: '{{वः}} और {{मः}} से पहले अन्त का {{अ}} दीर्घ होता है: {{पठावः}}, {{पठामः}}, और {{पठामि}} में भी {{आ}} दीर्घ है।'
     tag: good
     taught_in: you.grid#t1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गच्छति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+            are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+          hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+            {{सि थः थ}}, {{मि वः मः}}।'
+      - id: i3
+        sa: गच्छति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: pron.polite
     rule:
       en: Older speakers also use {{आर्य}} (sir) and {{देवि}} (madam) as polite address in speech.
@@ -181,12 +682,114 @@ cards:
       hi: 'बड़ों के लिए {{त्वम्}} मत कहिए, और {{भवान्}} को ‘तुम’ की क्रिया मत दीजिए: {{भवान् पठति}}, न कि {{भवान् पठसि}}।'
     tag: core
     taught_in: you.polite#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: भवान् पठति।
+        meaning:
+          en: You (sir) read.
+          hi: आप पढ़ते हैं।
+        words:
+        - sa: भवान्
+          gloss:
+            en: you (to a man, polite)
+            hi: आप (पुरुष से, आदरार्थ)
+        - sa: पठति
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: pron.i-we
     rule:
       en: 'Do not mix {{अहम्}} and {{वयम्}}: one is “I”, the other “we”.'
       hi: '{{अहम्}} और {{वयम्}} को मत मिलाइए: एक ‘मैं’, दूसरा ‘हम’।'
     tag: core
     taught_in: you.i#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: अस्मद्
+      - id: i1
+        sa: आवाम्
+        meaning:
+          en: we two
+          hi: हम दोनों
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: अस्मद्
+      - id: i2
+        sa: वयम्
+        meaning:
+          en: we (many)
+          hi: हम (अनेक)
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: अस्मद्
 - id: panini
   kind: revision
   title:
@@ -203,6 +806,58 @@ cards:
     - 3.4.78
     tag: core
     taught_in: you.grid#t1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गच्छति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+            are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+          hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+            {{सि थः थ}}, {{मि वः मः}}।'
+      - id: i3
+        sa: गच्छति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: pron.i-we
     rule:
       en: '{{उत्तमः}} is the “I” person, {{मध्यमः}} “you”, {{प्रथमः}} “he, she, it”.'
@@ -213,6 +868,24 @@ cards:
     - 1.4.101
     tag: core
     taught_in: you.i#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Pāṇini calls the “I” person {{उत्तमः}}, “the highest”, and the “you” person {{मध्यमः}}, “the middle”. The “he,
+          she, it” person, which you know already, is {{प्रथमः}}, “the first”. The names go in an order opposite to Hindi's.
+        hi: पाणिनि ‘मैं’ वाले पुरुष को {{उत्तमः}}, ‘तुम’ वाले को {{मध्यमः}} और ‘वह’ वाले को, जो आप जानते हैं, {{प्रथमः}} कहते
+          हैं। नामों का क्रम हिन्दी के क्रम से उलटा है।
+      items:
+      - id: i0
+        sa: उत्तमः
+      - id: i1
+        sa: मध्यमः
+      - id: i2
+        sa: प्रथमः
 - id: sheet
   kind: revision
   title:
@@ -228,6 +901,63 @@ cards:
       hi: मैं, हम दोनों, हम
     tag: core
     taught_in: you.i#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: अस्मद्
+      - id: i1
+        sa: आवाम्
+        meaning:
+          en: we two
+          hi: हम दोनों
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: अस्मद्
+      - id: i2
+        sa: वयम्
+        meaning:
+          en: we (many)
+          hi: हम (अनेक)
+        check:
+          type: subanta
+          stem: अस्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: अस्मद्
   - skill: pron.you
     formula: त्वम् युवाम् यूयम्
     rule:
@@ -235,6 +965,63 @@ cards:
       hi: तुम, तुम दोनों, तुम सब
     tag: core
     taught_in: you.you#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+          पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+        hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+          है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+      items:
+      - id: i0
+        sa: त्वम्
+        meaning:
+          en: you
+          hi: तुम
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: युष्मद्
+      - id: i1
+        sa: युवाम्
+        meaning:
+          en: you two
+          hi: तुम दोनों
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: युष्मद्
+      - id: i2
+        sa: यूयम्
+        meaning:
+          en: you all
+          hi: तुम सब
+        check:
+          type: subanta
+          stem: युष्मद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: युष्मद्
   - skill: verb.persons
     formula: ति तः न्ति · सि थः थ · मि वः मः
     rule:
@@ -242,6 +1029,58 @@ cards:
       hi: नौ रूप
     tag: core
     taught_in: you.grid#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गच्छति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+            are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+          hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+            {{सि थः थ}}, {{मि वः मः}}।'
+      - id: i3
+        sa: गच्छति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he goes
+          hi: वह जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
   - skill: pron.polite
     formula: भवान् भवती
     rule:
@@ -249,6 +1088,51 @@ cards:
       hi: आदर से ‘आप’
     tag: core
     taught_in: you.polite#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: भवान् पठति।
+        meaning:
+          en: You (sir) read.
+          hi: आप पढ़ते हैं।
+        words:
+        - sa: भवान्
+          gloss:
+            en: you (to a man, polite)
+            hi: आप (पुरुष से, आदरार्थ)
+        - sa: पठति
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: verb.as
     formula: अस्मि असि अस्ति
     rule:
@@ -256,3 +1140,85 @@ cards:
       hi: होना
     tag: core
     taught_in: you.be#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: The nine forms of अस्
+        hi: अस् के नौ रूप
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अस्ति
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्तः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: सन्ति
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: असि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्थः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्थ
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अस्मि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्वः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्मः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्

@@ -29,12 +29,41 @@ cards:
     - SS.1
     - SS.2
     taught_in: vowels.short#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: One short beat
+        hi: एक छोटी मात्रा
+      items:
+      - id: v0
+        sa: अ
+        duration: 1
+      - id: v1
+        sa: इ
+        duration: 1
+      - id: v2
+        sa: उ
+        duration: 1
   - skill: script.vowel.short
     formula: ऋ ऌ
     rule:
       en: '{{ऋ}} and {{ऌ}} are vowels: r and l that carry the syllable.'
       hi: '{{ऋ}} और {{ऌ}} स्वर हैं: ‘र’ और ‘ल’ जो स्वयं अक्षर बनते हैं।'
     taught_in: vowels.short#t2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Each vowel carries one syllable
+        hi: हर स्वर एक अक्षर का आधार
+      items:
+      - id: v0
+        sa: ऋ
+        duration: 1
+      - id: v1
+        sa: ऌ
+        duration: 1
   - skill: script.vowel.long
     formula: आ ई ऊ ॠ
     rule:
@@ -43,6 +72,42 @@ cards:
     sutras:
     - 1.2.27
     taught_in: vowels.long#t1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Same place, different duration
+        hi: वही स्थान, अलग अवधि
+      columns:
+      - en: Short
+        hi: ह्रस्व
+      - en: Long
+        hi: दीर्घ
+      rows:
+      - - id: s0
+          sa: अ
+          duration: 1
+        - id: l0
+          sa: आ
+          duration: 2
+      - - id: s1
+          sa: इ
+          duration: 1
+        - id: l1
+          sa: ई
+          duration: 2
+      - - id: s2
+          sa: उ
+          duration: 1
+        - id: l2
+          sa: ऊ
+          duration: 2
+      - - id: s3
+          sa: ऋ
+          duration: 1
+        - id: l3
+          sa: ॠ
+          duration: 2
   - skill: script.vowel.long
     rule:
       en: Length changes the word.
@@ -59,6 +124,59 @@ cards:
         vibhakti: Prathama
         vacana: Eka
     taught_in: vowels.long#t2
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दिनम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: a day (short {{इ}})
+          hi: दिन (ह्रस्व इ)
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: दिन
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+            vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+            For now, compare the Roman letters.
+          hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर
+            की लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+      - id: i3
+        sa: दिनम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: a day (short {{इ}})
+          hi: दिन (ह्रस्व इ)
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: दिन
   - skill: script.vowel.compound
     formula: अ + इ → ए · अ + उ → ओ
     rule:
@@ -67,6 +185,38 @@ cards:
     sutras:
     - SS.3
     taught_in: vowels.compound#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}:
+          o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”.'
+        hi: 'जब {{अ}} और {{इ}} मिलते हैं, तो वे एक चिकनी ध्वनि {{ए}} बन जाते हैं। {{अ}} और {{उ}} मिलकर {{ओ}} बनते हैं। {{ऐ}}
+          और {{औ}} फिसलते हुए बोले जाते हैं: ‘अ’ से ‘इ’ की ओर, और ‘अ’ से ‘उ’ की ओर।'
+      items:
+      - id: i0
+        sa: अ + इ → ए
+        meaning:
+          en: e, as in “they”
+          hi: ए, जैसे ‘एक’ में
+      - id: i1
+        sa: अ + उ → ओ
+        meaning:
+          en: o, as in “go”
+          hi: ओ, जैसे ‘ओस’ में
+      - id: i2
+        sa: ऐ
+        meaning:
+          en: ai, a glide, as in “aisle”
+          hi: ऐ, ‘अ’ से ‘इ’ की ओर फिसलता
+      - id: i3
+        sa: औ
+        meaning:
+          en: au, a glide, as in “out”
+          hi: औ, ‘अ’ से ‘उ’ की ओर फिसलता
   - skill: script.vowel.compound
     formula: ऐ औ
     rule:
@@ -75,6 +225,38 @@ cards:
     sutras:
     - SS.4
     taught_in: vowels.compound#t1
+    visuals:
+    - id: v-linked-5
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}:
+          o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”.'
+        hi: 'जब {{अ}} और {{इ}} मिलते हैं, तो वे एक चिकनी ध्वनि {{ए}} बन जाते हैं। {{अ}} और {{उ}} मिलकर {{ओ}} बनते हैं। {{ऐ}}
+          और {{औ}} फिसलते हुए बोले जाते हैं: ‘अ’ से ‘इ’ की ओर, और ‘अ’ से ‘उ’ की ओर।'
+      items:
+      - id: i0
+        sa: अ + इ → ए
+        meaning:
+          en: e, as in “they”
+          hi: ए, जैसे ‘एक’ में
+      - id: i1
+        sa: अ + उ → ओ
+        meaning:
+          en: o, as in “go”
+          hi: ओ, जैसे ‘ओस’ में
+      - id: i2
+        sa: ऐ
+        meaning:
+          en: ai, a glide, as in “aisle”
+          hi: ऐ, ‘अ’ से ‘इ’ की ओर फिसलता
+      - id: i3
+        sa: औ
+        meaning:
+          en: au, a glide, as in “out”
+          hi: औ, ‘अ’ से ‘उ’ की ओर फिसलता
   - skill: script.vowel.compound
     rule:
       en: All four joined vowels are always long.
@@ -91,18 +273,192 @@ cards:
         vibhakti: Prathama
         vacana: Eka
     taught_in: vowels.compound#t2
+    visuals:
+    - id: v-linked-6
+      kind: comparison
+      title:
+        en: Each lasts two mātrās
+        hi: हर एक की अवधि दो मात्राएँ
+      items:
+      - id: v0
+        sa: ए
+        duration: 2
+      - id: v1
+        sa: ओ
+        duration: 2
+      - id: v2
+        sa: ऐ
+        duration: 2
+      - id: v3
+        sa: औ
+        duration: 2
   - skill: script.matra
     formula: क का कि की कु कू कृ के कै को कौ
     rule:
       en: Inside a word a vowel is a sign on the letter before it; {{अ}} has no sign.
       hi: शब्द के भीतर स्वर पहले वाले अक्षर पर मात्रा बनता है; {{अ}} की कोई मात्रा नहीं।
     taught_in: vowels.signs#t2
+    visuals:
+    - id: v-linked-7
+      kind: matrix
+      title:
+        en: Every vowel on {{क}}
+        hi: '{{क}} पर हर स्वर'
+      columns:
+      - en: Vowel
+        hi: स्वर
+      - en: Sign
+        hi: मात्रा
+      - en: On {{क}}
+        hi: '{{क}} पर'
+      - en: Where it sits
+        hi: कहाँ लगती है
+      rows:
+      - - id: r0-c0
+          sa: अ
+        - id: r0-c1
+          label:
+            en: no sign
+            hi: मात्रा नहीं
+        - id: r0-c2
+          sa: क
+        - id: r0-c3
+          label:
+            en: nothing is added
+            hi: कुछ नहीं जुड़ता
+      - - id: r1-c0
+          sa: आ
+        - id: r1-c1
+          sa: ा
+        - id: r1-c2
+          sa: का
+        - id: r1-c3
+          label:
+            en: after
+            hi: बाद में
+      - - id: r2-c0
+          sa: इ
+        - id: r2-c1
+          sa: ि
+        - id: r2-c2
+          sa: कि
+        - id: r2-c3
+          label:
+            en: before, but said after
+            hi: पहले, पर बोली बाद में
+      - - id: r3-c0
+          sa: ई
+        - id: r3-c1
+          sa: ी
+        - id: r3-c2
+          sa: की
+        - id: r3-c3
+          label:
+            en: after
+            hi: बाद में
+      - - id: r4-c0
+          sa: उ
+        - id: r4-c1
+          sa: ु
+        - id: r4-c2
+          sa: कु
+        - id: r4-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r5-c0
+          sa: ऊ
+        - id: r5-c1
+          sa: ू
+        - id: r5-c2
+          sa: कू
+        - id: r5-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r6-c0
+          sa: ऋ
+        - id: r6-c1
+          sa: ृ
+        - id: r6-c2
+          sa: कृ
+        - id: r6-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r7-c0
+          sa: ए
+        - id: r7-c1
+          sa: े
+        - id: r7-c2
+          sa: के
+        - id: r7-c3
+          label:
+            en: above
+            hi: ऊपर
+      - - id: r8-c0
+          sa: ऐ
+        - id: r8-c1
+          sa: ै
+        - id: r8-c2
+          sa: कै
+        - id: r8-c3
+          label:
+            en: above
+            hi: ऊपर
+      - - id: r9-c0
+          sa: ओ
+        - id: r9-c1
+          sa: ो
+        - id: r9-c2
+          sa: को
+        - id: r9-c3
+          label:
+            en: after, with a stroke above
+            hi: बाद में, ऊपर रेखा के साथ
+      - - id: r10-c0
+          sa: औ
+        - id: r10-c1
+          sa: ौ
+        - id: r10-c2
+          sa: कौ
+        - id: r10-c3
+          label:
+            en: after, with a stroke above
+            hi: बाद में, ऊपर रेखा के साथ
   - skill: script.matra
     formula: ि
     rule:
       en: Written before the letter, said after it.
       hi: अक्षर से पहले लिखी जाती है, बाद में बोली जाती है।
     taught_in: vowels.signs#t3
+    visuals:
+    - id: v-linked-8
+      kind: sequence
+      title:
+        en: Written position and spoken order
+        hi: लिखने का स्थान और बोलने का क्रम
+      items:
+      - id: whole
+        sa: कि
+        meaning:
+          en: See the sign to the left of the consonant.
+          hi: व्यञ्जन के बाईं ओर मात्रा देखें।
+      - id: first
+        sa: क्
+        meaning:
+          en: Say the consonant first.
+          hi: पहले व्यञ्जन बोलें।
+      - id: next
+        sa: इ
+        meaning:
+          en: Say its vowel next.
+          hi: फिर उसका स्वर बोलें।
+      - id: blend
+        sa: कि
+        meaning:
+          en: Blend them into one syllable.
+          hi: दोनों को मिलाकर एक अक्षर बोलें।
 - id: conditions
   kind: revision
   section: conditions
@@ -198,6 +554,7 @@ cards:
         feature:
           en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गुरु
       - id: rule
         label:
           en: Connect the form and the rule
@@ -222,6 +579,7 @@ cards:
         feature:
           en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गुरु
   - skill: script.matra
     tag: good
     rule:
@@ -263,6 +621,7 @@ cards:
         feature:
           en: 'Stem: {{हृदय}} · neuter · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{हृदय}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: हृदय
       - id: rule
         label:
           en: Connect the form and the rule
@@ -287,6 +646,7 @@ cards:
         feature:
           en: 'Stem: {{हृदय}} · neuter · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{हृदय}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: हृदय
   - skill: script.vowel.long
     tag: rare
     formula: ॠ
@@ -307,6 +667,42 @@ cards:
         vibhakti: Dvitiya
         vacana: Bahu
     taught_in: vowels.long#t1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Same place, different duration
+        hi: वही स्थान, अलग अवधि
+      columns:
+      - en: Short
+        hi: ह्रस्व
+      - en: Long
+        hi: दीर्घ
+      rows:
+      - - id: s0
+          sa: अ
+          duration: 1
+        - id: l0
+          sa: आ
+          duration: 2
+      - - id: s1
+          sa: इ
+          duration: 1
+        - id: l1
+          sa: ई
+          duration: 2
+      - - id: s2
+          sa: उ
+          duration: 1
+        - id: l2
+          sa: ऊ
+          duration: 2
+      - - id: s3
+          sa: ऋ
+          duration: 1
+        - id: l3
+          sa: ॠ
+          duration: 2
   - skill: script.vowel.short
     tag: rare
     formula: ऌ
@@ -328,6 +724,19 @@ cards:
         vibhakti: Prathama
         vacana: Eka
     taught_in: vowels.short#t2
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Each vowel carries one syllable
+        hi: हर स्वर एक अक्षर का आधार
+      items:
+      - id: v0
+        sa: ऋ
+        duration: 1
+      - id: v1
+        sa: ऌ
+        duration: 1
   - skill: script.vowel.long
     tag: rare
     formula: ॡ
@@ -382,16 +791,101 @@ cards:
       en: '{{ऋ}} is one vowel, not {{र}} + {{इ}}. Never write {{रिषिः}} for {{ऋषिः}}.'
       hi: '{{ऋ}} एक स्वर है, {{र}} + {{इ}} नहीं। {{ऋषिः}} को {{रिषिः}} मत लिखिए।'
     taught_in: vowels.short#t2
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Each vowel carries one syllable
+        hi: हर स्वर एक अक्षर का आधार
+      items:
+      - id: v0
+        sa: ऋ
+        duration: 1
+      - id: v1
+        sa: ऌ
+        duration: 1
   - skill: script.vowel.long
     rule:
       en: 'Check the length before you write: {{दिनम्}} a day, {{दीनः}} a poor person.'
       hi: 'लिखने से पहले लम्बाई देखिए: {{दिनम्}} दिन, {{दीनः}} दीन।'
     taught_in: vowels.long#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दिनम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: a day (short {{इ}})
+          hi: दिन (ह्रस्व इ)
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: दिन
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+            vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+            For now, compare the Roman letters.
+          hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर
+            की लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+      - id: i3
+        sa: दिनम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: a day (short {{इ}})
+          hi: दिन (ह्रस्व इ)
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: दिन
   - skill: script.vowel.compound
     rule:
       en: 'Don''t clip {{ए}} and {{ओ}}: they last two beats, like {{आ}}.'
       hi: '{{ए}} और {{ओ}} को छोटा मत कीजिए: ये {{आ}} की तरह दो मात्रा के हैं।'
     taught_in: vowels.compound#t2
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Each lasts two mātrās
+        hi: हर एक की अवधि दो मात्राएँ
+      items:
+      - id: v0
+        sa: ए
+        duration: 2
+      - id: v1
+        sa: ओ
+        duration: 2
+      - id: v2
+        sa: ऐ
+        duration: 2
+      - id: v3
+        sa: औ
+        duration: 2
   - skill: script.vowel.compound
     rule:
       en: Let {{ऐ}} and {{औ}} glide; Hindi often says them flat.
@@ -408,11 +902,92 @@ cards:
         vibhakti: Prathama
         vacana: Eka
     taught_in: vowels.compound#t3
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: तैलम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: oil
+          hi: तेल
+        check:
+          type: subanta
+          stem: तैल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तैल}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तैल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तैल
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In Hindi, {{ऐ}} and {{औ}} are often said flat, as in है and और. In Sanskrit they glide: start at {{अ}} and
+            slide to {{इ}} or {{उ}}, in one syllable. Dādī fills the lamp with {{तैलम्}}, oil: “tai-lam”, as in “aisle”. A
+            cow is {{गौः}}: “gau”, as in “now”.'
+          hi: 'हिन्दी में {{ऐ}} और {{औ}} अक्सर सपाट बोले जाते हैं, जैसे ‘है’ और ‘और’ में। संस्कृत में ये फिसलते हैं: ‘अ’ से
+            शुरू होकर ‘इ’ या ‘उ’ तक, एक ही अक्षर में। दादी दीपक में {{तैलम्}} (तेल) भरती हैं: ‘तइ-लम्’ जैसा। गाय है {{गौः}}:
+            ‘गउः’ जैसा।'
+      - id: i3
+        sa: तैलम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: oil
+          hi: तेल
+        check:
+          type: subanta
+          stem: तैल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तैल}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तैल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तैल
   - skill: script.matra
     rule:
       en: '{{ि}} comes first on the page, last in the mouth.'
       hi: '{{ि}} पन्ने पर पहले, मुँह में बाद में।'
     taught_in: vowels.signs#t3
+    visuals:
+    - id: v-linked-4
+      kind: sequence
+      title:
+        en: Written position and spoken order
+        hi: लिखने का स्थान और बोलने का क्रम
+      items:
+      - id: whole
+        sa: कि
+        meaning:
+          en: See the sign to the left of the consonant.
+          hi: व्यञ्जन के बाईं ओर मात्रा देखें।
+      - id: first
+        sa: क्
+        meaning:
+          en: Say the consonant first.
+          hi: पहले व्यञ्जन बोलें।
+      - id: next
+        sa: इ
+        meaning:
+          en: Say its vowel next.
+          hi: फिर उसका स्वर बोलें।
+      - id: blend
+        sa: कि
+        meaning:
+          en: Blend them into one syllable.
+          hi: दोनों को मिलाकर एक अक्षर बोलें।
 - id: panini
   kind: revision
   section: panini
@@ -428,6 +1003,30 @@ cards:
     sutras:
     - 1.2.27
     taught_in: vowels.short#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short;
+          as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups
+          are {{ह्रस्वः}}.
+        hi: पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है,
+          जो {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर
+          {{ह्रस्वः}} हैं।
+      items:
+      - id: i0
+        sa: उ
+      - id: i1
+        sa: ह्रस्वः
+      - id: i2
+        sa: ऊ
+      - id: i3
+        sa: दीर्घः
+      - id: i4
+        sa: प्लुतः
   - skill: script.vowel.long
     rule:
       en: '{{सवर्ण}}: one place, one effort. A short vowel and its long twin are {{सवर्ण}}.'
@@ -435,6 +1034,34 @@ cards:
     sutras:
     - 1.1.9
     taught_in: vowels.long#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}.
+          By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini''s list, writes only
+          {{अ}} {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.'
+        hi: 'सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र
+          1.1.69 के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह,
+          केवल {{अ}} {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।'
+      items:
+      - id: i0
+        sa: सवर्ण
+      - id: i1
+        sa: इ
+      - id: i2
+        sa: ई
+      - id: i3
+        sa: अ
+      - id: i4
+        sa: उ
+      - id: i5
+        sa: आ
+      - id: i6
+        sa: ऊ
   - skill: script.vowel.long
     rule:
       en: In a rule, a vowel letter stands for its twins too; so the Śiva sūtras list only {{अ}} {{इ}} {{उ}}.
@@ -442,6 +1069,34 @@ cards:
     sutras:
     - 1.1.69
     taught_in: vowels.long#pn
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}.
+          By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini''s list, writes only
+          {{अ}} {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.'
+        hi: 'सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र
+          1.1.69 के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह,
+          केवल {{अ}} {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।'
+      items:
+      - id: i0
+        sa: सवर्ण
+      - id: i1
+        sa: इ
+      - id: i2
+        sa: ई
+      - id: i3
+        sa: अ
+      - id: i4
+        sa: उ
+      - id: i5
+        sa: आ
+      - id: i6
+        sa: ऊ
   - skill: script.vowel.compound
     rule:
       en: '{{आ}} {{ऐ}} {{औ}} are named {{वृद्धि}}; {{अ}} {{ए}} {{ओ}} are named {{गुण}}.'
@@ -450,6 +1105,36 @@ cards:
     - 1.1.1
     - 1.1.2
     taught_in: vowels.compound#pn
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: The first two sūtras of the Aṣṭādhyāyī name vowels you now know. {{आ}} {{ऐ}} {{औ}} are {{वृद्धि}} (1.1.1); {{अ}}
+          {{ए}} {{ओ}} are {{गुण}} (1.1.2). Many later rules say “becomes guṇa” or “becomes vṛddhi”, and when words join you
+          will watch these vowels appear.
+        hi: अष्टाध्यायी के पहले दो सूत्र उन्हीं स्वरों को नाम देते हैं जिन्हें आप अब जानते हैं। {{आ}} {{ऐ}} {{औ}} {{वृद्धि}}
+          हैं (1.1.1); {{अ}} {{ए}} {{ओ}} {{गुण}} हैं (1.1.2)। आगे के बहुत-से नियम कहते हैं “गुण होता है” या “वृद्धि होती है”,
+          और शब्दों के मिलने पर आप इन्हीं स्वरों को प्रकट होते देखेंगे।
+      items:
+      - id: i0
+        sa: आ
+      - id: i1
+        sa: ऐ
+      - id: i2
+        sa: औ
+      - id: i3
+        sa: वृद्धि
+      - id: i4
+        sa: अ
+      - id: i5
+        sa: ए
+      - id: i6
+        sa: ओ
+      - id: i7
+        sa: गुण
   - skill: script.vowel.short
     tag: rare
     rule:
@@ -555,24 +1240,236 @@ cards:
       en: short · one beat
       hi: ह्रस्व · एक मात्रा
     taught_in: vowels.short#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: One short beat
+        hi: एक छोटी मात्रा
+      items:
+      - id: v0
+        sa: अ
+        duration: 1
+      - id: v1
+        sa: इ
+        duration: 1
+      - id: v2
+        sa: उ
+        duration: 1
   - skill: script.vowel.long
     formula: आ ई ऊ ॠ
     rule:
       en: long · two beats
       hi: दीर्घ · दो मात्राएँ
     taught_in: vowels.long#t1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Same place, different duration
+        hi: वही स्थान, अलग अवधि
+      columns:
+      - en: Short
+        hi: ह्रस्व
+      - en: Long
+        hi: दीर्घ
+      rows:
+      - - id: s0
+          sa: अ
+          duration: 1
+        - id: l0
+          sa: आ
+          duration: 2
+      - - id: s1
+          sa: इ
+          duration: 1
+        - id: l1
+          sa: ई
+          duration: 2
+      - - id: s2
+          sa: उ
+          duration: 1
+        - id: l2
+          sa: ऊ
+          duration: 2
+      - - id: s3
+          sa: ऋ
+          duration: 1
+        - id: l3
+          sa: ॠ
+          duration: 2
   - skill: script.vowel.compound
     formula: ए ऐ ओ औ
     rule:
       en: joined · always two beats
       hi: संयुक्त · सदा दो मात्राएँ
     taught_in: vowels.compound#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}:
+          o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”.'
+        hi: 'जब {{अ}} और {{इ}} मिलते हैं, तो वे एक चिकनी ध्वनि {{ए}} बन जाते हैं। {{अ}} और {{उ}} मिलकर {{ओ}} बनते हैं। {{ऐ}}
+          और {{औ}} फिसलते हुए बोले जाते हैं: ‘अ’ से ‘इ’ की ओर, और ‘अ’ से ‘उ’ की ओर।'
+      items:
+      - id: i0
+        sa: अ + इ → ए
+        meaning:
+          en: e, as in “they”
+          hi: ए, जैसे ‘एक’ में
+      - id: i1
+        sa: अ + उ → ओ
+        meaning:
+          en: o, as in “go”
+          hi: ओ, जैसे ‘ओस’ में
+      - id: i2
+        sa: ऐ
+        meaning:
+          en: ai, a glide, as in “aisle”
+          hi: ऐ, ‘अ’ से ‘इ’ की ओर फिसलता
+      - id: i3
+        sa: औ
+        meaning:
+          en: au, a glide, as in “out”
+          hi: औ, ‘अ’ से ‘उ’ की ओर फिसलता
   - skill: script.matra
     formula: ा ि ी ु ू ृ े ै ो ौ
     rule:
       en: signs on a letter; {{ि}} is written first
       hi: अक्षर पर मात्राएँ; {{ि}} पहले लिखी जाती है
     taught_in: vowels.signs#t2
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Every vowel on {{क}}
+        hi: '{{क}} पर हर स्वर'
+      columns:
+      - en: Vowel
+        hi: स्वर
+      - en: Sign
+        hi: मात्रा
+      - en: On {{क}}
+        hi: '{{क}} पर'
+      - en: Where it sits
+        hi: कहाँ लगती है
+      rows:
+      - - id: r0-c0
+          sa: अ
+        - id: r0-c1
+          label:
+            en: no sign
+            hi: मात्रा नहीं
+        - id: r0-c2
+          sa: क
+        - id: r0-c3
+          label:
+            en: nothing is added
+            hi: कुछ नहीं जुड़ता
+      - - id: r1-c0
+          sa: आ
+        - id: r1-c1
+          sa: ा
+        - id: r1-c2
+          sa: का
+        - id: r1-c3
+          label:
+            en: after
+            hi: बाद में
+      - - id: r2-c0
+          sa: इ
+        - id: r2-c1
+          sa: ि
+        - id: r2-c2
+          sa: कि
+        - id: r2-c3
+          label:
+            en: before, but said after
+            hi: पहले, पर बोली बाद में
+      - - id: r3-c0
+          sa: ई
+        - id: r3-c1
+          sa: ी
+        - id: r3-c2
+          sa: की
+        - id: r3-c3
+          label:
+            en: after
+            hi: बाद में
+      - - id: r4-c0
+          sa: उ
+        - id: r4-c1
+          sa: ु
+        - id: r4-c2
+          sa: कु
+        - id: r4-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r5-c0
+          sa: ऊ
+        - id: r5-c1
+          sa: ू
+        - id: r5-c2
+          sa: कू
+        - id: r5-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r6-c0
+          sa: ऋ
+        - id: r6-c1
+          sa: ृ
+        - id: r6-c2
+          sa: कृ
+        - id: r6-c3
+          label:
+            en: below
+            hi: नीचे
+      - - id: r7-c0
+          sa: ए
+        - id: r7-c1
+          sa: े
+        - id: r7-c2
+          sa: के
+        - id: r7-c3
+          label:
+            en: above
+            hi: ऊपर
+      - - id: r8-c0
+          sa: ऐ
+        - id: r8-c1
+          sa: ै
+        - id: r8-c2
+          sa: कै
+        - id: r8-c3
+          label:
+            en: above
+            hi: ऊपर
+      - - id: r9-c0
+          sa: ओ
+        - id: r9-c1
+          sa: ो
+        - id: r9-c2
+          sa: को
+        - id: r9-c3
+          label:
+            en: after, with a stroke above
+            hi: बाद में, ऊपर रेखा के साथ
+      - - id: r10-c0
+          sa: औ
+        - id: r10-c1
+          sa: ौ
+        - id: r10-c2
+          sa: कौ
+        - id: r10-c3
+          label:
+            en: after, with a stroke above
+            hi: बाद में, ऊपर रेखा के साथ
   - skill: script.vowel.compound
     formula: अ इ उ · ऋ ऌ · ए ओ · ऐ औ
     rule:

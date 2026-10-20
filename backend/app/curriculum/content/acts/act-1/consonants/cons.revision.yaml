@@ -25,6 +25,45 @@ cards:
       hi: 'पच्चीस व्यंजन स्थान के अनुसार पाँच पंक्तियों में हैं: कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ।'
     tag: core
     taught_in: cons.grid#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door''s five rows follow your
+          mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel
+          the sound move forward.'
+        hi: 'व्यंजन ({{व्यञ्जनम्}}) वह ध्वनि है जो मुँह को बन्द या तंग करके बनती है। द्वार की पाँच पंक्तियाँ मुँह के पिछले
+          भाग से अगले भाग तक चलती हैं: कण्ठ, तालु, मूर्धा, दाँत, होंठ। {{क}} {{च}} {{ट}} {{त}} {{प}} बोलिए और ध्वनि को आगे
+          बढ़ते महसूस कीजिए।'
+      items:
+      - id: i0
+        sa: क
+        meaning:
+          en: throat (कण्ठ)
+          hi: कण्ठ (गला)
+      - id: i1
+        sa: च
+        meaning:
+          en: palate (तालु)
+          hi: तालु
+      - id: i2
+        sa: ट
+        meaning:
+          en: roof of the mouth, tongue curled back (मूर्धा)
+          hi: मूर्धा, जीभ मुड़ी हुई
+      - id: i3
+        sa: त
+        meaning:
+          en: teeth (दन्त)
+          hi: दन्त (दाँत)
+      - id: i4
+        sa: प
+        meaning:
+          en: lips (ओष्ठ)
+          hi: ओष्ठ (होंठ)
   - skill: script.cons.voice
     formula: क ख ग घ ङ
     rule:
@@ -32,12 +71,117 @@ cards:
       hi: 'हर पंक्ति का क्रम: सादा, महाप्राण, घोष, घोष-महाप्राण, नासिक्य।'
     tag: core
     taught_in: cons.breath#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+          mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+        hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए:
+          {{ख}} यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+      items:
+      - id: i0
+        sa: क
+        meaning:
+          en: 'plain: k in “skin”, no buzz, no puff'
+          hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+      - id: i1
+        sa: ख
+        meaning:
+          en: 'breathy: {{क}} with a puff of air'
+          hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+      - id: i2
+        sa: ग
+        meaning:
+          en: 'voiced: g in “go”, the throat buzzes'
+          hi: 'अल्पप्राण, घोष: गले में गूँज'
+      - id: i3
+        sa: घ
+        meaning:
+          en: 'voiced and breathy: {{ग}} with a puff'
+          hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+      - id: i4
+        sa: ङ
+        meaning:
+          en: 'nasal: ng in “sing”'
+          hi: 'नासिक्य: नाक से'
   - skill: script.cons.voice
     rule:
       en: The 2nd and 4th letters carry a puff of air; the 3rd, 4th and 5th buzz in the throat.
       hi: दूसरे और चौथे अक्षर में साँस का झोंका है; तीसरे, चौथे और पाँचवें में गले की गूँज है।
     tag: core
     taught_in: cons.breath#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Reading the grid
+        hi: तालिका पढ़ना
+      columns:
+      - en: Plain
+        hi: सादा
+      - en: Breathy
+        hi: महाप्राण
+      - en: Voiced
+        hi: घोष
+      - en: Voiced + breath
+        hi: घोष-महाप्राण
+      - en: Nasal
+        hi: नासिक्य
+      rows:
+      - - id: r0-c0
+          sa: क
+        - id: r0-c1
+          sa: ख
+        - id: r0-c2
+          sa: ग
+        - id: r0-c3
+          sa: घ
+        - id: r0-c4
+          sa: ङ
+      - - id: r1-c0
+          sa: च
+        - id: r1-c1
+          sa: छ
+        - id: r1-c2
+          sa: ज
+        - id: r1-c3
+          sa: झ
+        - id: r1-c4
+          sa: ञ
+      - - id: r2-c0
+          sa: ट
+        - id: r2-c1
+          sa: ठ
+        - id: r2-c2
+          sa: ड
+        - id: r2-c3
+          sa: ढ
+        - id: r2-c4
+          sa: ण
+      - - id: r3-c0
+          sa: त
+        - id: r3-c1
+          sa: थ
+        - id: r3-c2
+          sa: द
+        - id: r3-c3
+          sa: ध
+        - id: r3-c4
+          sa: न
+      - - id: r4-c0
+          sa: प
+        - id: r4-c1
+          sa: फ
+        - id: r4-c2
+          sa: ब
+        - id: r4-c3
+          sa: भ
+        - id: r4-c4
+          sa: म
   - skill: script.cons.semivowels
     formula: इ→य · ऋ→र · ऌ→ल · उ→व
     rule:
@@ -48,6 +192,38 @@ cards:
     - SS.6
     tag: core
     taught_in: cons.semivowels#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+          Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+        hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}}
+          बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+      items:
+      - id: i0
+        sa: य
+        meaning:
+          en: 'y in “yes”: palate, like {{इ}}'
+          hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+      - id: i1
+        sa: र
+        meaning:
+          en: 'tapped r: roof of the mouth, like {{ऋ}}'
+          hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+      - id: i2
+        sa: ल
+        meaning:
+          en: 'l: teeth, like {{ऌ}}'
+          hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+      - id: i3
+        sa: व
+        meaning:
+          en: 'between v and w: teeth and lips, like {{उ}}'
+          hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
   - skill: script.cons.sibilants
     formula: श ष स ह
     rule:
@@ -58,6 +234,38 @@ cards:
     - SS.14
     tag: core
     taught_in: cons.sibilants#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+          the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+        hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों
+          वाला ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+      items:
+      - id: i0
+        sa: श
+        meaning:
+          en: palate, “sh” in “ship”
+          hi: तालु, ‘श’
+      - id: i1
+        sa: ष
+        meaning:
+          en: roof, tongue curled back
+          hi: मूर्धा, जीभ मुड़ी हुई
+      - id: i2
+        sa: स
+        meaning:
+          en: teeth, “s” in “sun”
+          hi: दन्त, ‘स’
+      - id: i3
+        sa: ह
+        meaning:
+          en: throat, a breath
+          hi: कण्ठ, साँस
   - skill: script.cons.inherent-a
     formula: क → क्
     rule:
@@ -65,6 +273,23 @@ cards:
       hi: अकेला व्यंजन {{अ}} साथ रखता है; रेखा {{्}} उसे हटा देती है।
     tag: core
     taught_in: cons.virama#t1
+    visuals:
+    - id: v-linked-5
+      kind: comparison
+      title:
+        en: Keep or remove the inherent vowel
+        hi: अन्तर्निहित स्वर रखें या हटाएँ
+      items:
+      - id: with
+        sa: क
+        meaning:
+          en: Consonant with अ.
+          hi: अ के साथ व्यञ्जन।
+      - id: without
+        sa: क्
+        meaning:
+          en: Virāma removes that vowel.
+          hi: हलन्त उस स्वर को हटाता है।
 - id: conditions
   kind: revision
   title:
@@ -178,6 +403,43 @@ cards:
         ध्वनि नहीं।
     tag: good
     taught_in: cons.breath#t2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i3
+        sa: फलम्
+        meaning:
+          en: a fruit (breathy {{फ}})
+          hi: फल (महाप्राण {{फ}})
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        image:
+          id: teaching-fruit-one
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+            with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+            ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough
+            for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The
+            exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+          alt:
+            en: One whole mango
+            hi: एक पूरा आम
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: फल
 - id: mistakes
   kind: revision
   title:
@@ -192,24 +454,197 @@ cards:
       hi: 'झोंका मत छोड़िए: {{खरः}} (गधा) {{करः}} (हाथ) नहीं है, {{फलम्}} (फल) {{पलम्}} (क्षण) नहीं है।'
     tag: core
     taught_in: cons.breath#t2
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i3
+        sa: फलम्
+        meaning:
+          en: a fruit (breathy {{फ}})
+          hi: फल (महाप्राण {{फ}})
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        image:
+          id: teaching-fruit-one
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+            with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+            ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough
+            for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The
+            exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+          alt:
+            en: One whole mango
+            hi: एक पूरा आम
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: फल
   - skill: script.cons.sibilants
     rule:
       en: 'Do not say {{ष}} like {{श}}: curl the tongue back. {{विष्णुः}} is not {{विश्णुः}}.'
       hi: '{{ष}} को {{श}} की तरह मत बोलिए: जीभ मोड़िए। {{विष्णुः}} {{विश्णुः}} नहीं है।'
     tag: core
     taught_in: cons.sibilants#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: शिवः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Śiva: palatal {{श}}'
+          hi: 'शिव: तालव्य {{श}}'
+        check:
+          type: subanta
+          stem: शिव
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{शिव}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{शिव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: शिव
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts
+            with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+          hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता
+            है। हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+      - id: i3
+        sa: शिवः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Śiva: palatal {{श}}'
+          hi: 'शिव: तालव्य {{श}}'
+        check:
+          type: subanta
+          stem: शिव
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{शिव}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{शिव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: शिव
   - skill: script.cons.semivowels
     rule:
       en: '{{व}} is not {{ब}}: the lower lip touches the upper teeth lightly, with no closure.'
       hi: '{{व}} {{ब}} नहीं है: निचला होंठ ऊपरी दाँतों को हल्के से छूता है, बन्द नहीं होता।'
     tag: core
     taught_in: cons.semivowels#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+          Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+        hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}}
+          बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+      items:
+      - id: i0
+        sa: य
+        meaning:
+          en: 'y in “yes”: palate, like {{इ}}'
+          hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+      - id: i1
+        sa: र
+        meaning:
+          en: 'tapped r: roof of the mouth, like {{ऋ}}'
+          hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+      - id: i2
+        sa: ल
+        meaning:
+          en: 'l: teeth, like {{ऌ}}'
+          hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+      - id: i3
+        sa: व
+        meaning:
+          en: 'between v and w: teeth and lips, like {{उ}}'
+          hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
   - skill: script.cons.inherent-a
     rule:
       en: Say the final {{अ}} of words like {{राम}}; modern Hindi drops it, Sanskrit does not.
       hi: '{{राम}} जैसे शब्दों का अन्त का {{अ}} बोलिए; आधुनिक हिन्दी उसे छोड़ती है, संस्कृत नहीं।'
     tag: core
     taught_in: cons.virama#t2
+    visuals:
+    - id: v-linked-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma: say the final {{अ}}'
+          hi: 'राम: अन्त का {{अ}} बोलिए'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in
+            plain {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
+          hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}}
+            वाले शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
+      - id: i3
+        sa: रामः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma: say the final {{अ}}'
+          hi: 'राम: अन्त का {{अ}} बोलिए'
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राम
 - id: panini
   kind: revision
   title:
@@ -227,6 +662,31 @@ cards:
     - 1.1.69
     tag: core
     taught_in: cons.grid#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Pāṇini names each row by its first letter plus {{उ}}: {{कु}} is the throat row, {{चु}} the palate row, {{टु}}
+          the roof row, {{तु}} the teeth row, {{पु}} the lip row. By sūtra 1.1.69 a letter with {{उ}} stands for its whole
+          row.'
+        hi: 'पाणिनि हर पंक्ति को उसके पहले अक्षर और {{उ}} से नाम देते हैं: {{कु}} कण्ठ की पंक्ति, {{चु}} तालु की, {{टु}} मूर्धा
+          की, {{तु}} दन्त की, {{पु}} ओष्ठ की। सूत्र 1.1.69 के अनुसार {{उ}} लगा अक्षर अपनी पूरी पंक्ति का बोध कराता है।'
+      items:
+      - id: i0
+        sa: उ
+      - id: i1
+        sa: कु
+      - id: i2
+        sa: चु
+      - id: i3
+        sa: टु
+      - id: i4
+        sa: तु
+      - id: i5
+        sa: पु
   - skill: script.cons.semivowels
     formula: हयवरट् · लण् → यण्
     rule:
@@ -237,6 +697,36 @@ cards:
     - SS.6
     tag: core
     taught_in: cons.semivowels#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Pāṇini''s Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}}
+          {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.'
+        hi: 'पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}}
+          बचते हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।'
+      items:
+      - id: i0
+        sa: हयवरट्
+      - id: i1
+        sa: लण्
+      - id: i2
+        sa: ट्
+      - id: i3
+        sa: ण्
+      - id: i4
+        sa: य
+      - id: i5
+        sa: व
+      - id: i6
+        sa: र
+      - id: i7
+        sa: ल
+      - id: i8
+        sa: यण्
   - skill: script.cons.sibilants
     formula: शषसर् · हल्
     rule:
@@ -247,6 +737,36 @@ cards:
     - SS.14
     tag: core
     taught_in: cons.sibilants#pn
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}}
+          Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
+        hi: शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह
+          {{शल्}} ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।
+      items:
+      - id: i0
+        sa: शषसर्
+      - id: i1
+        sa: र्
+      - id: i2
+        sa: हल्
+      - id: i3
+        sa: ल्
+      - id: i4
+        sa: श
+      - id: i5
+        sa: शल्
+      - id: i6
+        sa: ष
+      - id: i7
+        sa: स
+      - id: i8
+        sa: ह
 - id: sheet
   kind: revision
   title:
@@ -262,6 +782,96 @@ cards:
       hi: स्थान के अनुसार पाँच पंक्तियाँ
     tag: core
     taught_in: cons.grid#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The whole door
+        hi: पूरा द्वार
+      columns:
+      - en: Where
+        hi: स्थान
+      - en: '1'
+        hi: १
+      - en: '2'
+        hi: २
+      - en: '3'
+        hi: ३
+      - en: '4'
+        hi: ४
+      - en: '5'
+        hi: ५
+      rows:
+      - - id: r0-c0
+          label:
+            en: throat
+            hi: कण्ठ
+        - id: r0-c1
+          sa: क
+        - id: r0-c2
+          sa: ख
+        - id: r0-c3
+          sa: ग
+        - id: r0-c4
+          sa: घ
+        - id: r0-c5
+          sa: ङ
+      - - id: r1-c0
+          label:
+            en: palate
+            hi: तालु
+        - id: r1-c1
+          sa: च
+        - id: r1-c2
+          sa: छ
+        - id: r1-c3
+          sa: ज
+        - id: r1-c4
+          sa: झ
+        - id: r1-c5
+          sa: ञ
+      - - id: r2-c0
+          label:
+            en: roof
+            hi: मूर्धा
+        - id: r2-c1
+          sa: ट
+        - id: r2-c2
+          sa: ठ
+        - id: r2-c3
+          sa: ड
+        - id: r2-c4
+          sa: ढ
+        - id: r2-c5
+          sa: ण
+      - - id: r3-c0
+          label:
+            en: teeth
+            hi: दन्त
+        - id: r3-c1
+          sa: त
+        - id: r3-c2
+          sa: थ
+        - id: r3-c3
+          sa: द
+        - id: r3-c4
+          sa: ध
+        - id: r3-c5
+          sa: न
+      - - id: r4-c0
+          label:
+            en: lips
+            hi: ओष्ठ
+        - id: r4-c1
+          sa: प
+        - id: r4-c2
+          sa: फ
+        - id: r4-c3
+          sa: ब
+        - id: r4-c4
+          sa: भ
+        - id: r4-c5
+          sa: म
   - skill: script.cons.voice
     formula: 1 · 2 · 3 · 4 · 5
     rule:
@@ -269,6 +879,74 @@ cards:
       hi: सादा, महाप्राण, घोष, घोष-महाप्राण, नासिक्य
     tag: core
     taught_in: cons.breath#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Reading the grid
+        hi: तालिका पढ़ना
+      columns:
+      - en: Plain
+        hi: सादा
+      - en: Breathy
+        hi: महाप्राण
+      - en: Voiced
+        hi: घोष
+      - en: Voiced + breath
+        hi: घोष-महाप्राण
+      - en: Nasal
+        hi: नासिक्य
+      rows:
+      - - id: r0-c0
+          sa: क
+        - id: r0-c1
+          sa: ख
+        - id: r0-c2
+          sa: ग
+        - id: r0-c3
+          sa: घ
+        - id: r0-c4
+          sa: ङ
+      - - id: r1-c0
+          sa: च
+        - id: r1-c1
+          sa: छ
+        - id: r1-c2
+          sa: ज
+        - id: r1-c3
+          sa: झ
+        - id: r1-c4
+          sa: ञ
+      - - id: r2-c0
+          sa: ट
+        - id: r2-c1
+          sa: ठ
+        - id: r2-c2
+          sa: ड
+        - id: r2-c3
+          sa: ढ
+        - id: r2-c4
+          sa: ण
+      - - id: r3-c0
+          sa: त
+        - id: r3-c1
+          sa: थ
+        - id: r3-c2
+          sa: द
+        - id: r3-c3
+          sa: ध
+        - id: r3-c4
+          sa: न
+      - - id: r4-c0
+          sa: प
+        - id: r4-c1
+          sa: फ
+        - id: r4-c2
+          sa: ब
+        - id: r4-c3
+          sa: भ
+        - id: r4-c4
+          sa: म
   - skill: script.cons.semivowels
     formula: य र ल व
     rule:
@@ -276,6 +954,38 @@ cards:
       hi: अन्तःस्थ
     tag: core
     taught_in: cons.semivowels#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+          Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+        hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}}
+          बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+      items:
+      - id: i0
+        sa: य
+        meaning:
+          en: 'y in “yes”: palate, like {{इ}}'
+          hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+      - id: i1
+        sa: र
+        meaning:
+          en: 'tapped r: roof of the mouth, like {{ऋ}}'
+          hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+      - id: i2
+        sa: ल
+        meaning:
+          en: 'l: teeth, like {{ऌ}}'
+          hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+      - id: i3
+        sa: व
+        meaning:
+          en: 'between v and w: teeth and lips, like {{उ}}'
+          hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
   - skill: script.cons.sibilants
     formula: श ष स ह
     rule:
@@ -283,6 +993,38 @@ cards:
       hi: ऊष्म और साँस
     tag: core
     taught_in: cons.sibilants#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Compare the examples
+        hi: उदाहरणों की तुलना करें
+      explanation:
+        en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+          the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+        hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों
+          वाला ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+      items:
+      - id: i0
+        sa: श
+        meaning:
+          en: palate, “sh” in “ship”
+          hi: तालु, ‘श’
+      - id: i1
+        sa: ष
+        meaning:
+          en: roof, tongue curled back
+          hi: मूर्धा, जीभ मुड़ी हुई
+      - id: i2
+        sa: स
+        meaning:
+          en: teeth, “s” in “sun”
+          hi: दन्त, ‘स’
+      - id: i3
+        sa: ह
+        meaning:
+          en: throat, a breath
+          hi: कण्ठ, साँस
   - skill: script.cons.inherent-a
     formula: क्
     rule:
@@ -290,3 +1032,20 @@ cards:
       hi: बिना स्वर
     tag: core
     taught_in: cons.virama#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Keep or remove the inherent vowel
+        hi: अन्तर्निहित स्वर रखें या हटाएँ
+      items:
+      - id: with
+        sa: क
+        meaning:
+          en: Consonant with अ.
+          hi: अ के साथ व्यञ्जन।
+      - id: without
+        sa: क्
+        meaning:
+          en: Virāma removes that vowel.
+          hi: हलन्त उस स्वर को हटाता है।

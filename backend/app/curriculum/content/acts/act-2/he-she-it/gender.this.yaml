@@ -110,6 +110,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i1
       sa: एषा
       meaning:
@@ -124,6 +125,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i2
       sa: एतत्
       meaning:
@@ -138,6 +140,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
 - id: tb1
   kind: table
   title:
@@ -167,6 +170,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - sa: सः
       check:
         type: subanta
@@ -174,6 +181,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: feminine
         hi: स्त्रीलिंग
@@ -184,6 +195,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - sa: सा
       check:
         type: subanta
@@ -191,6 +206,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
   - - text:
         en: neuter
         hi: नपुंसक
@@ -201,6 +220,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - sa: तत्
       check:
         type: subanta
@@ -208,9 +231,134 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
   note:
     en: 'Dual and plural follow the same pattern: {{एतौ एते}}, {{एते एताः}}, {{एते एतानि}}.'
     hi: 'द्विवचन और बहुवचन भी इसी ढंग के हैं: {{एतौ एते}}, {{एते एताः}}, {{एते एतानि}}।'
+  visuals:
+  - id: v-cue-distance
+    kind: matrix
+    title:
+      en: Distance from the current speaker
+      hi: अभी बोलने वाले से दूरी
+    columns:
+    - en: Gender
+      hi: लिंग
+    - en: This
+      hi: यह
+    - en: That
+      hi: वह
+    rows:
+    - - id: r0-c0
+        label:
+          en: masculine
+          hi: पुंलिंग
+      - id: r0-c1
+        sa: एषः
+        check:
+          type: subanta
+          stem: एतद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: एतद्
+        diagram:
+          kind: position
+          relation: near
+      - id: r0-c2
+        sa: सः
+        check:
+          type: subanta
+          stem: तद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तद्
+        diagram:
+          kind: position
+          relation: far
+    - - id: r1-c0
+        label:
+          en: feminine
+          hi: स्त्रीलिंग
+      - id: r1-c1
+        sa: एषा
+        check:
+          type: subanta
+          stem: एतद्
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: एतद्
+        diagram:
+          kind: position
+          relation: near
+      - id: r1-c2
+        sa: सा
+        check:
+          type: subanta
+          stem: तद्
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तद्
+        diagram:
+          kind: position
+          relation: far
+    - - id: r2-c0
+        label:
+          en: neuter
+          hi: नपुंसक
+      - id: r2-c1
+        sa: एतत्
+        check:
+          type: subanta
+          stem: एतद्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: एतद्
+        diagram:
+          kind: position
+          relation: near
+      - id: r2-c2
+        sa: तत्
+        check:
+          type: subanta
+          stem: तद्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तद्
+        diagram:
+          kind: position
+          relation: far
+    explanation:
+      en: This diagram illustrates physical near/far reference. A pronoun can also refer back to something already mentioned;
+        distance alone does not explain every use.
+      hi: यह चित्र पास-दूर का भौतिक सम्बन्ध दिखाता है। सर्वनाम पहले कही वस्तु का भी संकेत कर सकता है; केवल दूरी से हर प्रयोग
+        नहीं समझाया जा सकता।
 - id: p1
   kind: practice
   depth: core
@@ -255,6 +403,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i1
       sa: एषा
       meaning:
@@ -269,6 +418,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i2
       sa: एतत्
       meaning:
@@ -283,6 +433,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
 - id: p2
   kind: practice
   depth: core
@@ -347,6 +498,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i1
       sa: एषा
       meaning:
@@ -361,6 +513,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i2
       sa: एतत्
       meaning:
@@ -375,6 +528,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
 - id: e1
   kind: explore
   depth: core
@@ -452,6 +606,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i1
       sa: एषा
       meaning:
@@ -466,6 +621,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
     - id: i2
       sa: एतत्
       meaning:
@@ -480,6 +636,7 @@ cards:
       feature:
         en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: एतद्
 - id: sum
   kind: summary
   title:

@@ -28,12 +28,176 @@ cards:
     - 3.4.100
     tag: core
     taught_in: past.augment#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the past'
+        hi: 'पठ्: भूतकाल'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अपठत्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: अपठताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: अपठन्
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: अपठः
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: अपठतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: अपठत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अपठम्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: अपठाव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: अपठाम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lan
     rule:
       en: '{{अस्}} in {{लङ्}}: {{आसीत् आस्ताम् आसन्}}, {{आसीः आस्तम् आस्त}}, {{आसम् आस्व आस्म}}.'
       hi: '{{अस्}} का {{लङ्}}: {{आसीत् आस्ताम् आसन्}}, {{आसीः आस्तम् आस्त}}, {{आसम् आस्व आस्म}}।'
     tag: core
     taught_in: past.tell#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'अस्: the past'
+        hi: 'अस्: भूतकाल'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: आसीत्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: आस्ताम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: आसन्
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: आसीः
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: आस्तम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: आस्त
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: आसम्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: आस्व
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: आस्म
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्
 - id: conditions
   kind: revision
   title:
@@ -48,18 +212,317 @@ cards:
       hi: आज से पहले की घटना के लिए {{लङ्}} का प्रयोग कीजिए; {{ह्यः}} या {{पुरा}} जैसे समय-शब्द के साथ।
     tag: good
     taught_in: past.augment#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i1
+        sa: बालकाः पुस्तकम् अपठन्।
+        meaning:
+          en: The boys read the book.
+          hi: बालकों ने पुस्तक पढ़ी।
+        words:
+        - sa: बालकाः
+          gloss:
+            en: boys
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Bahu
+        - sa: पुस्तकम्
+          gloss:
+            en: book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: अपठन्
+          gloss:
+            en: read
+            hi: पढ़ा
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Bahu
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
   - skill: verb.lan
     rule:
       en: 'With a prefix the augment sits between prefix and root: {{आगच्छत्}}.'
       hi: 'उपसर्ग हो तो आगम उपसर्ग और धातु के बीच आता है: {{आगच्छत्}}।'
     tag: good
     taught_in: past.augment#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः आगच्छत्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He came.
+          hi: वह आया।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: आगच्छत्
+          gloss:
+            en: came
+            hi: आया
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: आगच्छत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: came
+          hi: आया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its
+            past is {{आगच्छत्}}, “he came”.'
+          hi: 'उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल
+            {{आगच्छत्}} है, ‘वह आया’।'
+      - id: i5
+        sa: सः आगच्छत्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He came.
+          hi: वह आया।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: आगच्छत्
+          gloss:
+            en: came
+            hi: आया
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
   - skill: verb.lan
     rule:
       en: 'Tales begin {{आसीत्}}: “there was”.'
       hi: 'कथाएँ {{आसीत्}} से शुरू होती हैं: ‘था’।'
     tag: good
     taught_in: past.tell#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पुरा एकः राजा आसीत्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Long ago there was a king.
+          hi: पुराने समय में एक राजा था।
+        words:
+        - sa: पुरा
+          gloss:
+            en: long ago
+            hi: पुराने समय में
+        - sa: एकः
+          gloss:
+            en: a
+            hi: एक
+        - sa: राजा
+          gloss:
+            en: king
+            hi: राजा
+          check:
+            type: subanta
+            stem: राजन्
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: आसीत्
+          gloss:
+            en: was
+            hi: था
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: पुरा
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: long ago
+          hi: पुराने समय में
+      - id: i2
+        sa: एकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: a
+          hi: एक
+      - id: i3
+        sa: राजा
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: राजन्
+      - id: i4
+        sa: आसीत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: was
+          hi: था
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: अस्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there
+            was a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
+          hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’।
+            अन्य रूप: {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
+      - id: i7
+        sa: पुरा एकः राजा आसीत्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Long ago there was a king.
+          hi: पुराने समय में एक राजा था।
+        words:
+        - sa: पुरा
+          gloss:
+            en: long ago
+            hi: पुराने समय में
+        - sa: एकः
+          gloss:
+            en: a
+            hi: एक
+        - sa: राजा
+          gloss:
+            en: king
+            hi: राजा
+          check:
+            type: subanta
+            stem: राजन्
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: आसीत्
+          gloss:
+            en: was
+            hi: था
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
 - id: exceptions
   kind: revision
   title:
@@ -109,6 +572,7 @@ cards:
         feature:
           en: 'Root: {{अद्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{अद्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: अद्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -133,6 +597,7 @@ cards:
         feature:
           en: 'Root: {{अद्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{अद्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: अद्
   - skill: verb.lan
     rule:
       en: '{{कृ}} (do) and {{दा}} (give) have odd roots in the past: {{अकरोत्}}, {{अददात्}}.'
@@ -174,6 +639,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: दा
       - id: rule
         label:
           en: Connect the form and the rule
@@ -198,6 +664,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: दा
 - id: mistakes
   kind: revision
   title:
@@ -218,6 +685,100 @@ cards:
       hi: '{{अ}} को उपसर्ग के आगे मत रखिए: {{आगच्छत्}}, {{अआगच्छत्}} नहीं।'
     tag: core
     taught_in: past.augment#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः आगच्छत्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He came.
+          hi: वह आया।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: आगच्छत्
+          gloss:
+            en: came
+            hi: आया
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: आगच्छत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: came
+          hi: आया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its
+            past is {{आगच्छत्}}, “he came”.'
+          hi: 'उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल
+            {{आगच्छत्}} है, ‘वह आया’।'
+      - id: i5
+        sa: सः आगच्छत्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He came.
+          hi: वह आया।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: आगच्छत्
+          gloss:
+            en: came
+            hi: आया
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
 - id: panini
   kind: revision
   title:
@@ -236,6 +797,38 @@ cards:
     - 3.4.100
     tag: core
     taught_in: past.augment#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.2.111, {{अनद्यतने लङ्}}, gives {{लङ्}} for a past not of today. 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}},
+          adds the augment {{अ}}. Then 3.4.100, {{इतश्च}}, drops the final {{-इ}} of the ending {{-ति}}, so {{-ति}} becomes
+          {{-त्}}: {{अपठत्}}.'
+        hi: 'सूत्र 3.2.111, {{अनद्यतने लङ्}}, आज से पहले के भूत के लिए {{लङ्}} देता है। 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}},
+          आगम {{अ}} जोड़ता है। फिर 3.4.100, {{इतश्च}}, {{-ति}} प्रत्यय का अन्तिम {{-इ}} हटा देता है, इसलिए {{-ति}} {{-त्}}
+          बनता है: {{अपठत्}}।'
+      items:
+      - id: i0
+        sa: अनद्यतने लङ्
+      - id: i1
+        sa: लङ्
+      - id: i2
+        sa: लुङ्लङ्लृङ्क्ष्वडुदात्तः
+      - id: i3
+        sa: अ
+      - id: i4
+        sa: इतश्च
+      - id: i5
+        sa: -इ
+      - id: i6
+        sa: -ति
+      - id: i7
+        sa: -त्
+      - id: i8
+        sa: अपठत्
 - id: sheet
   kind: revision
   title:
@@ -251,6 +844,88 @@ cards:
       hi: भूतकाल
     tag: core
     taught_in: past.augment#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the past'
+        hi: 'पठ्: भूतकाल'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अपठत्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: अपठताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: अपठन्
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: अपठः
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: अपठतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: अपठत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अपठम्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: अपठाव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: अपठाम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lan
     formula: आसीत् · आसन् · आसम्
     rule:
@@ -258,3 +933,85 @@ cards:
       hi: था
     tag: core
     taught_in: past.tell#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'अस्: the past'
+        hi: 'अस्: भूतकाल'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: आसीत्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: आस्ताम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: आसन्
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: आसीः
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: आस्तम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: आस्त
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: आसम्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: आस्व
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: आस्म
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लङ्}} · उत्तमपुरुष'
+          compare_from: अस्

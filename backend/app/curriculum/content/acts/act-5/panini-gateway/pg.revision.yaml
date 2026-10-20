@@ -26,6 +26,62 @@ cards:
     - 1.1.71
     tag: core
     taught_in: pg.shiva#tb2
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Names made from the lines
+        hi: पंक्तियों से बने नाम
+      columns:
+      - en: Name
+        hi: नाम
+      - en: From … to
+        hi: से … तक
+      - en: Sounds
+        hi: ध्वनियाँ
+      rows:
+      - - id: r0-c0
+          sa: अच्
+        - id: r0-c1
+          sa: अ … च्
+        - id: r0-c2
+          sa: अ इ उ ऋ ऌ ए ओ ऐ औ
+      - - id: r1-c0
+          sa: इक्
+        - id: r1-c1
+          sa: इ … क्
+        - id: r1-c2
+          sa: इ उ ऋ ऌ
+      - - id: r2-c0
+          sa: एच्
+        - id: r2-c1
+          sa: ए … च्
+        - id: r2-c2
+          sa: ए ओ ऐ औ
+      - - id: r3-c0
+          sa: यण्
+        - id: r3-c1
+          sa: य … ण्
+        - id: r3-c2
+          sa: य व र ल
+      - - id: r4-c0
+          sa: जश्
+        - id: r4-c1
+          sa: ज … श्
+        - id: r4-c2
+          sa: ज ब ग ड द
+      - - id: r5-c0
+          sa: शल्
+        - id: r5-c1
+          sa: श … ल्
+        - id: r5-c2
+          sa: श ष स ह
+      - - id: r6-c0
+          sa: हल्
+        - id: r6-c1
+          sa: ह … ल्
+        - id: r6-c2
+          sa: ह य व र ल ञ म ङ ण न झ भ घ ढ ध ज ब ग ड द ख फ छ ठ थ च ट त क प श ष स
   - skill: panini.it
     rule:
       en: 'A marker ({{इत्}}) does its job and is dropped: {{तिप्}} → {{ति}}.'
@@ -36,6 +92,44 @@ cards:
     - 1.3.9
     tag: core
     taught_in: pg.it#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Markers at work
+        hi: संकेत काम करते हुए
+      columns:
+      - en: As taught
+        hi: जैसा सिखाया
+      - en: Marker
+        hi: इत्
+      - en: What remains
+        hi: जो बचा
+      rows:
+      - - id: r0-c0
+          sa: लँट्
+        - id: r0-c1
+          sa: ँ ट्
+        - id: r0-c2
+          sa: ल्
+      - - id: r1-c0
+          sa: तिप्
+        - id: r1-c1
+          sa: प्
+        - id: r1-c2
+          sa: ति
+      - - id: r2-c0
+          sa: शप्
+        - id: r2-c1
+          sa: श् प्
+        - id: r2-c2
+          sa: अ
+      - - id: r3-c0
+          sa: सुँ
+        - id: r3-c1
+          sa: ँ
+        - id: r3-c2
+          sa: स्
   - skill: panini.prakriya
     rule:
       en: A word is built one rule at a time, in order, each with its sūtra number.
@@ -46,6 +140,68 @@ cards:
     - 3.1.68
     tag: core
     taught_in: pg.prakriya#tb1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        sa: भू
+        label:
+          en: names it a root
+          hi: उसे धातु कहता है
+        feature:
+          en: 'Rule: {{भूवादयो धातवः}}'
+          hi: 'सूत्र: {{भूवादयो धातवः}}'
+      - id: stage-1
+        sa: भू + ल्
+        label:
+          en: the present tense
+          hi: वर्तमान काल
+        feature:
+          en: 'Rule: {{वर्तमाने लट्}}'
+          hi: 'सूत्र: {{वर्तमाने लट्}}'
+      - id: stage-2
+        sa: भू + ति
+        label:
+          en: the ending for “he” takes the place of {{ल्}}
+          hi: ‘वह’ का प्रत्यय {{ल्}} का स्थान लेता है
+        feature:
+          en: 'Rule: {{तिप्तस्झि …}}'
+          hi: 'सूत्र: {{तिप्तस्झि …}}'
+      - id: stage-3
+        sa: भू + अ + ति
+        label:
+          en: the joining {{अ}}
+          hi: जोड़ने वाला {{अ}}
+        feature:
+          en: 'Rule: {{कर्तरि शप्}}'
+          hi: 'सूत्र: {{कर्तरि शप्}}'
+      - id: stage-4
+        sa: भो + अ + ति
+        label:
+          en: strengthens the vowel
+          hi: स्वर को गुण करता है
+        feature:
+          en: 'Rule: {{सार्वधातुकार्धधातुकयोः}}'
+          hi: 'सूत्र: {{सार्वधातुकार्धधातुकयोः}}'
+      - id: stage-5
+        sa: भव् + अ + ति
+        label:
+          en: '{{ओ}} + {{अ}} becomes {{अव्}} + {{अ}}'
+          hi: '{{ओ}} + {{अ}} से {{अव्}} + {{अ}} बनता है'
+        feature:
+          en: 'Rule: {{एचोऽयवायावः}}'
+          hi: 'सूत्र: {{एचोऽयवायावः}}'
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: The engine's full list has twenty steps; these are the ones that change the word.
+          hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।
 - id: conditions
   kind: revision
   title:
@@ -60,12 +216,382 @@ cards:
       hi: 'पहला अक्षर खोजिए, फिर नाम को समाप्त करने वाला संकेत: बीच का सब कुछ उसमें है।'
     tag: good
     taught_in: pg.shiva#t2
+    visuals:
+    - id: v-linked-0
+      kind: sound_range
+      title:
+        en: Select a sound range
+        hi: ध्वनि-समूह चुनें
+      items:
+      - id: line-0
+        sa: अ इ उ
+        marker: ण्
+      - id: line-1
+        sa: ऋ ऌ
+        marker: क्
+      - id: line-2
+        sa: ए ओ
+        marker: ङ्
+      - id: line-3
+        sa: ऐ औ
+        marker: च्
+      - id: line-4
+        sa: ह य व र
+        marker: ट्
+      - id: line-5
+        sa: ल
+        marker: ण्
+      - id: line-6
+        sa: ञ म ङ ण न
+        marker: म्
+      - id: line-7
+        sa: झ भ
+        marker: ञ्
+      - id: line-8
+        sa: घ ढ ध
+        marker: ष्
+      - id: line-9
+        sa: ज ब ग ड द
+        marker: श्
+      - id: line-10
+        sa: ख फ छ ठ थ च ट त
+        marker: व्
+      - id: line-11
+        sa: क प
+        marker: य्
+      - id: line-12
+        sa: श ष स
+        marker: र्
+      - id: line-13
+        sa: ह
+        marker: ल्
+      selections:
+      - id: range-0
+        sa: अच्
+        meaning:
+          en: Read from {{अ … च्}}, leaving out all markers.
+          hi: '{{अ … च्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: अ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: इ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: उ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऋ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऌ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ए
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ओ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऐ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: औ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-1
+        sa: इक्
+        meaning:
+          en: Read from {{इ … क्}}, leaving out all markers.
+          hi: '{{इ … क्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: इ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: उ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऋ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऌ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-2
+        sa: एच्
+        meaning:
+          en: Read from {{ए … च्}}, leaving out all markers.
+          hi: '{{ए … च्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: ए
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ओ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ऐ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: औ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-3
+        sa: यण्
+        meaning:
+          en: Read from {{य … ण्}}, leaving out all markers.
+          hi: '{{य … ण्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: य
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: व
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: र
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ल
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-4
+        sa: जश्
+        meaning:
+          en: Read from {{ज … श्}}, leaving out all markers.
+          hi: '{{ज … श्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: ज
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ब
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ग
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ड
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: द
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-5
+        sa: शल्
+        meaning:
+          en: Read from {{श … ल्}}, leaving out all markers.
+          hi: '{{श … ल्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: श
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ष
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: स
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ह
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+      - id: range-6
+        sa: हल्
+        meaning:
+          en: Read from {{ह … ल्}}, leaving out all markers.
+          hi: '{{ह … ल्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+        words:
+        - sa: ह
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: य
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: व
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: र
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ल
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ञ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: म
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ङ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ण
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: न
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: झ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: भ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: घ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ढ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ध
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ज
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ब
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ग
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ड
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: द
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ख
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: फ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: छ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ठ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: थ
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: च
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ट
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: त
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: क
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: प
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: श
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: ष
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
+        - sa: स
+          gloss:
+            en: included sound
+            hi: शामिल ध्वनि
   - skill: panini.it
     rule:
       en: A last consonant of a suffix as taught is a marker.
       hi: सिखाए गए प्रत्यय का अन्तिम व्यञ्जन संकेत है।
     tag: good
     taught_in: pg.it#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original
+          teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}}
+          becomes {{ल्}}.'
+        hi: 'इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर
+          इत् है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}}
+          बनता है।'
+      items:
+      - id: i0
+        sa: इत्
+      - id: i1
+        sa: लोपः
+      - id: i2
+        sa: तिप्
+      - id: i3
+        sa: ति
+      - id: i4
+        sa: लँट्
+      - id: i5
+        sa: ल्
 - id: exceptions
   kind: revision
   title:
@@ -85,6 +611,31 @@ cards:
     - 1.3.8
     tag: rare
     taught_in: pg.it#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Other sūtras name markers at the start of a suffix: 1.3.6 {{षः प्रत्ययस्य}}, an initial {{ष्}}; 1.3.7 {{चुटू}},
+          an initial palatal or retroflex stop; 1.3.8 {{लशक्वतद्धिते}}, an initial {{ल्}}, {{श्}} or velar of a suffix that
+          is not a taddhita.'
+        hi: 'अन्य सूत्र प्रत्यय के आरम्भ के संकेत बताते हैं: 1.3.6 {{षः प्रत्ययस्य}}, आदि का {{ष्}}; 1.3.7 {{चुटू}}, आदि का
+          तालव्य या मूर्धन्य स्पर्श; 1.3.8 {{लशक्वतद्धिते}}, तद्धित से भिन्न प्रत्यय के आदि का {{ल्}}, {{श्}} या कवर्ग।'
+      items:
+      - id: i0
+        sa: षः प्रत्ययस्य
+      - id: i1
+        sa: ष्
+      - id: i2
+        sa: चुटू
+      - id: i3
+        sa: लशक्वतद्धिते
+      - id: i4
+        sa: ल्
+      - id: i5
+        sa: श्
 - id: mistakes
   kind: revision
   title:
@@ -121,6 +672,21 @@ cards:
     - 1.1.71
     tag: core
     taught_in: pg.shiva#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.1.71, {{आदिरन्त्येन सहेता}}, makes these names: a first letter, together with the last marker, stands
+          for itself and the letters between. And 1.1.69, which you met with the vowels, lets each letter stand for its twins
+          as well.'
+        hi: 'सूत्र 1.1.71, {{आदिरन्त्येन सहेता}}, ये नाम बनाता है: पहला अक्षर, अन्तिम संकेत के साथ, अपना और बीच के अक्षरों
+          का बोध कराता है। और 1.1.69, जो आप स्वरों के साथ मिल चुके हैं, हर अक्षर को उसके जुड़वाँ रूपों का भी बोधक बनाता है।'
+      items:
+      - id: i0
+        sa: आदिरन्त्येन सहेता
   - skill: panini.it
     rule:
       en: '{{उपदेशेऽजनुनासिक इत्}}, {{हलन्त्यम्}}, {{तस्य लोपः}}.'
@@ -131,6 +697,44 @@ cards:
     - 1.3.9
     tag: core
     taught_in: pg.it#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Markers at work
+        hi: संकेत काम करते हुए
+      columns:
+      - en: As taught
+        hi: जैसा सिखाया
+      - en: Marker
+        hi: इत्
+      - en: What remains
+        hi: जो बचा
+      rows:
+      - - id: r0-c0
+          sa: लँट्
+        - id: r0-c1
+          sa: ँ ट्
+        - id: r0-c2
+          sa: ल्
+      - - id: r1-c0
+          sa: तिप्
+        - id: r1-c1
+          sa: प्
+        - id: r1-c2
+          sa: ति
+      - - id: r2-c0
+          sa: शप्
+        - id: r2-c1
+          sa: श् प्
+        - id: r2-c2
+          sa: अ
+      - - id: r3-c0
+          sa: सुँ
+        - id: r3-c1
+          sa: ँ
+        - id: r3-c2
+          sa: स्
   - skill: panini.prakriya
     rule:
       en: '{{पूर्वत्रासिद्धम्}}: the last three quarters wait.'
@@ -139,6 +743,22 @@ cards:
     - 8.2.1
     tag: core
     taught_in: pg.prakriya#pn
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 8.2.1, {{पूर्वत्रासिद्धम्}}, opens the last three quarters of the Aṣṭādhyāyī. From there, each rule counts
+          as not yet applied when an earlier rule looks at the word, and when a rule before it in that part does. So the sound
+          changes there wait until the end, and the order of the rules decides the word.
+        hi: सूत्र 8.2.1, {{पूर्वत्रासिद्धम्}}, अष्टाध्यायी के अन्तिम तीन पादों को खोलता है। वहाँ से हर नियम पहले के नियम के
+          लिए, और उस भाग में अपने से पहले के नियम के लिए, अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन अन्त तक रुके
+          रहते हैं, और नियमों का क्रम शब्द तय करता है।
+      items:
+      - id: i0
+        sa: पूर्वत्रासिद्धम्
 - id: sheet
   kind: revision
   title:
@@ -154,6 +774,62 @@ cards:
       hi: सब स्वर
     tag: core
     taught_in: pg.shiva#tb2
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Names made from the lines
+        hi: पंक्तियों से बने नाम
+      columns:
+      - en: Name
+        hi: नाम
+      - en: From … to
+        hi: से … तक
+      - en: Sounds
+        hi: ध्वनियाँ
+      rows:
+      - - id: r0-c0
+          sa: अच्
+        - id: r0-c1
+          sa: अ … च्
+        - id: r0-c2
+          sa: अ इ उ ऋ ऌ ए ओ ऐ औ
+      - - id: r1-c0
+          sa: इक्
+        - id: r1-c1
+          sa: इ … क्
+        - id: r1-c2
+          sa: इ उ ऋ ऌ
+      - - id: r2-c0
+          sa: एच्
+        - id: r2-c1
+          sa: ए … च्
+        - id: r2-c2
+          sa: ए ओ ऐ औ
+      - - id: r3-c0
+          sa: यण्
+        - id: r3-c1
+          sa: य … ण्
+        - id: r3-c2
+          sa: य व र ल
+      - - id: r4-c0
+          sa: जश्
+        - id: r4-c1
+          sa: ज … श्
+        - id: r4-c2
+          sa: ज ब ग ड द
+      - - id: r5-c0
+          sa: शल्
+        - id: r5-c1
+          sa: श … ल्
+        - id: r5-c2
+          sa: श ष स ह
+      - - id: r6-c0
+          sa: हल्
+        - id: r6-c1
+          sa: ह … ल्
+        - id: r6-c2
+          sa: ह य व र ल ञ म ङ ण न झ भ घ ढ ध ज ब ग ड द ख फ छ ठ थ च ट त क प श ष स
   - skill: panini.it
     formula: तिप् → ति
     rule:
@@ -161,6 +837,44 @@ cards:
       hi: प्रत्यय, संकेत हटे
     tag: core
     taught_in: pg.it#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Markers at work
+        hi: संकेत काम करते हुए
+      columns:
+      - en: As taught
+        hi: जैसा सिखाया
+      - en: Marker
+        hi: इत्
+      - en: What remains
+        hi: जो बचा
+      rows:
+      - - id: r0-c0
+          sa: लँट्
+        - id: r0-c1
+          sa: ँ ट्
+        - id: r0-c2
+          sa: ल्
+      - - id: r1-c0
+          sa: तिप्
+        - id: r1-c1
+          sa: प्
+        - id: r1-c2
+          sa: ति
+      - - id: r2-c0
+          sa: शप्
+        - id: r2-c1
+          sa: श् प्
+        - id: r2-c2
+          sa: अ
+      - - id: r3-c0
+          sa: सुँ
+        - id: r3-c1
+          sa: ँ
+        - id: r3-c2
+          sa: स्
   - skill: panini.prakriya
     formula: भू → भवति
     rule:
@@ -168,3 +882,65 @@ cards:
       hi: बना हुआ शब्द
     tag: core
     taught_in: pg.prakriya#tb1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        sa: भू
+        label:
+          en: names it a root
+          hi: उसे धातु कहता है
+        feature:
+          en: 'Rule: {{भूवादयो धातवः}}'
+          hi: 'सूत्र: {{भूवादयो धातवः}}'
+      - id: stage-1
+        sa: भू + ल्
+        label:
+          en: the present tense
+          hi: वर्तमान काल
+        feature:
+          en: 'Rule: {{वर्तमाने लट्}}'
+          hi: 'सूत्र: {{वर्तमाने लट्}}'
+      - id: stage-2
+        sa: भू + ति
+        label:
+          en: the ending for “he” takes the place of {{ल्}}
+          hi: ‘वह’ का प्रत्यय {{ल्}} का स्थान लेता है
+        feature:
+          en: 'Rule: {{तिप्तस्झि …}}'
+          hi: 'सूत्र: {{तिप्तस्झि …}}'
+      - id: stage-3
+        sa: भू + अ + ति
+        label:
+          en: the joining {{अ}}
+          hi: जोड़ने वाला {{अ}}
+        feature:
+          en: 'Rule: {{कर्तरि शप्}}'
+          hi: 'सूत्र: {{कर्तरि शप्}}'
+      - id: stage-4
+        sa: भो + अ + ति
+        label:
+          en: strengthens the vowel
+          hi: स्वर को गुण करता है
+        feature:
+          en: 'Rule: {{सार्वधातुकार्धधातुकयोः}}'
+          hi: 'सूत्र: {{सार्वधातुकार्धधातुकयोः}}'
+      - id: stage-5
+        sa: भव् + अ + ति
+        label:
+          en: '{{ओ}} + {{अ}} becomes {{अव्}} + {{अ}}'
+          hi: '{{ओ}} + {{अ}} से {{अव्}} + {{अ}} बनता है'
+        feature:
+          en: 'Rule: {{एचोऽयवायावः}}'
+          hi: 'सूत्र: {{एचोऽयवायावः}}'
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: The engine's full list has twenty steps; these are the ones that change the word.
+          hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।

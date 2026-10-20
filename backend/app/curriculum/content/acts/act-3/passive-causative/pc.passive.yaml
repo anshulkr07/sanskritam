@@ -154,6 +154,253 @@ cards:
       en: the passive voice
       hi: कर्मवाच्य
   visuals:
+  - id: v-scene-voice
+    kind: comparison
+    title:
+      en: One event, two descriptions
+      hi: एक घटना के दो वर्णन
+    explanation:
+      en: The boy eats in both pictures. In the passive description, फलम् agrees with खाद्यते; बालकेन identifies the actual
+        eater.
+      hi: दोनों चित्रों में खाने वाला बालक ही है। कर्मवाच्य में फलम् का खाद्यते से अन्वय है; बालकेन वास्तविक खाने वाले को
+        बताता है।
+    items:
+    - id: i0
+      sa: बालकः फलम् खादति।
+      meaning:
+        en: The boy eats a fruit.
+        hi: बालक फल खाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-boy-eats
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+          holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+          no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+        alt: &id001
+          en: A boy eats one mango
+          hi: एक आम खाता बालक
+        ratio: '4:3'
+        text_in_image: &id002 []
+    - id: i1
+      sa: बालकेन फलम् खाद्यते।
+      meaning:
+        en: The fruit is eaten by the boy.
+        hi: फल बालक द्वारा खाया जाता है।
+      words:
+      - sa: बालकेन
+        gloss:
+          en: by the boy
+          hi: बालक द्वारा
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: the fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: खाद्यते
+        gloss:
+          en: is eaten
+          hi: खाया जाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+      image:
+        id: teaching-boy-eats
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+          central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+          letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+          holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+          no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: रामेण पुस्तकम् पठ्यते।
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: The book is read by Rāma.
+      hi: पुस्तक राम द्वारा पढ़ी जाती है।
+    items:
+    - id: i0
+      sa: रामेण
+      meaning:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
+    - id: i1
+      sa: पुस्तकम्
+      meaning:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: &id003
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: &id004 []
+      compare_from: पुस्तक
+    - id: i2
+      sa: पठ्यते
+      meaning:
+        en: is read
+        hi: पढ़ी जाती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
+    edges:
+    - source: i0
+      target: i2
+      label:
+        en: actual reader, expressed as agent
+        hi: वास्तविक पढ़ने वाला, व्यक्त कर्ता
+    - source: i1
+      target: i2
+      label:
+        en: book described by the passive verb
+        hi: कर्मवाच्य क्रिया का उद्देश्य, पुस्तक
   - id: v-source-example-0
     kind: worked
     title:
@@ -217,6 +464,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -234,6 +482,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -252,6 +511,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -366,6 +626,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: फलम्
       label:
@@ -383,6 +644,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: खाद्यते
       label:
@@ -401,6 +663,7 @@ cards:
       feature:
         en: 'Root: {{खाद्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: खाद्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -485,6 +748,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठ्येते
       check:
         type: tinanta
@@ -493,6 +760,10 @@ cards:
         purusha: Prathama
         vacana: Dvi
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठ्यन्ते
       check:
         type: tinanta
@@ -501,6 +772,10 @@ cards:
         purusha: Prathama
         vacana: Bahu
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -512,6 +787,10 @@ cards:
         purusha: Madhyama
         vacana: Eka
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पठ्येथे
       check:
         type: tinanta
@@ -520,6 +799,10 @@ cards:
         purusha: Madhyama
         vacana: Dvi
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पठ्यध्वे
       check:
         type: tinanta
@@ -528,6 +811,10 @@ cards:
         purusha: Madhyama
         vacana: Bahu
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · मध्यमपुरुष'
+      compare_from: पठ्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -539,6 +826,10 @@ cards:
         purusha: Uttama
         vacana: Eka
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पठ्यावहे
       check:
         type: tinanta
@@ -547,6 +838,10 @@ cards:
         purusha: Uttama
         vacana: Dvi
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पठ्यामहे
       check:
         type: tinanta
@@ -555,6 +850,10 @@ cards:
         purusha: Uttama
         vacana: Bahu
         prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · {{कर्मणि}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · {{कर्मणि}} · उत्तमपुरुष'
+      compare_from: पठ्
   note:
     en: Most often you will meet the third person.
     hi: अधिकतर आपको प्रथम पुरुष मिलेगा।
@@ -585,6 +884,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - sa: गम्यते
       check:
         type: tinanta
@@ -594,6 +897,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: गम्
   - - sa: कृ
     - sa: करोति
       check:
@@ -602,6 +909,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: क्रियते
       check:
         type: tinanta
@@ -611,6 +922,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: कृ
   - - sa: दा
     - sa: ददाति
       check:
@@ -619,6 +934,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दा
     - sa: दीयते
       check:
         type: tinanta
@@ -628,6 +947,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: दा
   - - sa: श्रु
     - sa: शृणोति
       check:
@@ -636,6 +959,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: श्रु
     - sa: श्रूयते
       check:
         type: tinanta
@@ -645,6 +972,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{श्रु}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: श्रु
   - - sa: दृश्
     - sa: पश्यति
       check:
@@ -653,6 +984,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: दृश्
     - sa: दृश्यते
       check:
         type: tinanta
@@ -662,6 +997,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: दृश्
   - - sa: वद्
     - sa: वदति
       check:
@@ -670,6 +1009,10 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - sa: उद्यते
       check:
         type: tinanta
@@ -679,6 +1022,10 @@ cards:
         vacana: Eka
         prayoga: Karmani
       highlight: true
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: वद्
   note:
     en: 'Some roots change: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}.'
     hi: 'कुछ धातुएँ बदलती हैं: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}।'
@@ -857,6 +1204,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -874,6 +1222,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -892,6 +1251,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1027,6 +1387,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -1044,6 +1405,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -1062,6 +1434,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1207,6 +1580,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -1224,6 +1598,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -1242,6 +1627,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1396,6 +1782,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -1413,6 +1800,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -1431,6 +1829,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1579,6 +1978,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: पुस्तकम्
       label:
@@ -1596,6 +1996,17 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
+      compare_from: पुस्तक
     - id: i3
       sa: पठ्यते
       label:
@@ -1614,6 +2025,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule

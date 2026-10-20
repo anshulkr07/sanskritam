@@ -31,7 +31,7 @@ from .schema import ExploreCard, ImageRef, Lesson, PracticeCard
 from .validate import sutra_table
 
 #: Sanskrit key → the key its IAST is shipped under.
-SA_KEYS = {"sa": "iast", "title_sa": "title_iast", "name_sa": "name_iast", "formula": "formula_iast"}
+SA_KEYS = {"sa": "iast", "title_sa": "title_iast", "name_sa": "name_iast", "formula": "formula_iast", "marker": "marker_iast", "compare_from": "compare_from_iast"}
 SA_LIST_KEYS = ("answers", "tokens", "tiles")
 
 

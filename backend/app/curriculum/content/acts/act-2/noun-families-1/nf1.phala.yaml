@@ -124,6 +124,22 @@ cards:
         vibhakti: Prathama
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id001
+          en: One whole mango
+          hi: एक पूरा आम
+        ratio: '4:3'
+        text_in_image: &id002 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फले
       check:
         type: subanta
@@ -132,6 +148,22 @@ cards:
         vibhakti: Prathama
         vacana: Dvi
       highlight: true
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id003
+          en: Two separate whole mangoes
+          hi: दो अलग-अलग पूरे आम
+        ratio: '4:3'
+        text_in_image: &id004 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलानि
       check:
         type: subanta
@@ -140,6 +172,22 @@ cards:
         vibhakti: Prathama
         vacana: Bahu
       highlight: true
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: &id005
+          en: Three separate whole mangoes
+          hi: तीन अलग-अलग पूरे आम
+        ratio: '4:3'
+        text_in_image: &id006 []
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -151,6 +199,20 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फले
       check:
         type: subanta
@@ -159,6 +221,20 @@ cards:
         vibhakti: Dvitiya
         vacana: Dvi
       highlight: true
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलानि
       check:
         type: subanta
@@ -167,6 +243,20 @@ cards:
         vibhakti: Dvitiya
         vacana: Bahu
       highlight: true
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -177,6 +267,20 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलाभ्याम्
       check:
         type: subanta
@@ -184,6 +288,20 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Dvi
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलैः
       check:
         type: subanta
@@ -191,6 +309,20 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -201,6 +333,20 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलाभ्याम्
       check:
         type: subanta
@@ -208,6 +354,20 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Dvi
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलेभ्यः
       check:
         type: subanta
@@ -215,6 +375,20 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -225,6 +399,20 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलाभ्याम्
       check:
         type: subanta
@@ -232,6 +420,20 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Dvi
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलेभ्यः
       check:
         type: subanta
@@ -239,6 +441,20 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -249,6 +465,20 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलयोः
       check:
         type: subanta
@@ -256,6 +486,20 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Dvi
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलानाम्
       check:
         type: subanta
@@ -263,6 +507,20 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -273,6 +531,20 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Eka
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: फल
     - sa: फलयोः
       check:
         type: subanta
@@ -280,6 +552,20 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Dvi
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलेषु
       check:
         type: subanta
@@ -287,6 +573,20 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Bahu
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: फल
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -298,6 +598,19 @@ cards:
         vibhakti: Sambodhana
         vacana: Eka
       highlight: true
+      image:
+        id: teaching-fruit-one
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow mango
+          with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache, quiet
+          ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large enough for
+          a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects. The exact
+          fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id001
+        ratio: '4:3'
+        text_in_image: *id002
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
     - sa: फले
       check:
         type: subanta
@@ -306,6 +619,20 @@ cards:
         vibhakti: Sambodhana
         vacana: Dvi
       highlight: true
+      image:
+        id: teaching-fruit-two
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe yellow
+          mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id003
+        ratio: '4:3'
+        text_in_image: *id004
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: फल
     - sa: फलानि
       check:
         type: subanta
@@ -314,6 +641,20 @@ cards:
         vibhakti: Sambodhana
         vacana: Bahu
       highlight: true
+      image:
+        id: teaching-fruit-many
+        brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+          yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+          gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+          large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+          The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+        alt: *id005
+        ratio: '4:3'
+        text_in_image: *id006
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: फल
   note:
     en: 'The highlighted cells are the three that differ from {{देव}}: first, second and the call share one form in each number.'
     hi: 'रंगीन खाने वे हैं जो {{देव}} से अलग हैं: हर वचन में प्रथमा, द्वितीया और सम्बोधन का एक ही रूप।'
@@ -444,6 +785,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - id: i2
       sa: पतति
       label:
@@ -461,6 +803,7 @@ cards:
       feature:
         en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -561,6 +904,7 @@ cards:
       feature:
         en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राम
     - id: i2
       sa: फलम्
       label:
@@ -578,6 +922,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: खादति
       label:
@@ -595,6 +940,7 @@ cards:
       feature:
         en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: खाद्
     - id: rule
       label:
         en: Connect the form and the rule

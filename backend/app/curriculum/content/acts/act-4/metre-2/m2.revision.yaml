@@ -24,12 +24,120 @@ cards:
       hi: '{{वृत्तम्}} अक्षर गिनता है: हर चरण में संख्या बराबर, ढाँचा वही।'
     tag: core
     taught_in: m2.vrtta#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The great metres
+        hi: प्रमुख छन्द
+      columns:
+      - en: Metre
+        hi: छन्द
+      - en: Syllables
+        hi: अक्षर
+      - en: Pattern
+        hi: ढाँचा
+      rows:
+      - - id: r0-c0
+          sa: इन्द्रवज्रा
+        - id: r0-c1
+          label:
+            en: '11'
+            hi: ११
+        - id: r0-c2
+          sa: ग ग ल ग ग ल ल ग ल ग ग
+      - - id: r1-c0
+          sa: उपेन्द्रवज्रा
+        - id: r1-c1
+          label:
+            en: '11'
+            hi: ११
+        - id: r1-c2
+          sa: ल ग ल ग ग ल ल ग ल ग ग
+      - - id: r2-c0
+          sa: वसन्ततिलका
+        - id: r2-c1
+          label:
+            en: '14'
+            hi: १४
+        - id: r2-c2
+          sa: ग ग ल ग ल ल ल ग ल ल ग ल ग ग
+      - - id: r3-c0
+          sa: मन्दाक्रान्ता
+        - id: r3-c1
+          label:
+            en: '17'
+            hi: १७
+        - id: r3-c2
+          sa: ग ग ग ग ल ल ल ल ल ग ग ल ग ग ल ग ग
+      - - id: r4-c0
+          sa: शार्दूलविक्रीडित
+        - id: r4-c1
+          label:
+            en: '19'
+            hi: १९
+        - id: r4-c2
+          sa: ग ग ग ल ल ग ल ग ल ल ल ग ग ग ल ग ग ल ग
   - skill: chandas.arya
     rule:
       en: 'A {{जाति}} counts time: light 1, heavy 2. {{आर्या}}: 12, 18, 12, 15.'
       hi: '{{जाति}} समय गिनता है: लघु 1, गुरु 2। {{आर्या}}: 12, 18, 12, 15।'
     tag: core
     taught_in: m2.arya#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The verse weighed
+        hi: श्लोक का तौल
+      columns:
+      - en: Quarter
+        hi: चरण
+      - en: Text
+        hi: पाठ
+      - en: Mātrās
+        hi: मात्राएँ
+      rows:
+      - - id: r0-c0
+          label:
+            en: '1'
+            hi: १
+        - id: r0-c1
+          sa: दानं भोगो नाशस्
+        - id: r0-c2
+          label:
+            en: '12'
+            hi: १२
+      - - id: r1-c0
+          label:
+            en: '2'
+            hi: २
+        - id: r1-c1
+          sa: तिस्रो गतयो भवन्ति वित्तस्य
+        - id: r1-c2
+          label:
+            en: '18'
+            hi: १८
+      - - id: r2-c0
+          label:
+            en: '3'
+            hi: ३
+        - id: r2-c1
+          sa: यो न ददाति न भुङ्क्ते
+        - id: r2-c2
+          label:
+            en: '12'
+            hi: १२
+      - - id: r3-c0
+          label:
+            en: '4'
+            hi: ४
+        - id: r3-c1
+          sa: तस्य तृतीया गतिर्भवति
+        - id: r3-c2
+          label:
+            en: '15'
+            hi: १५
 - id: conditions
   kind: revision
   title:
@@ -44,12 +152,56 @@ cards:
       hi: 'एक चरण के अक्षर गिनिए: 11, 14, 17 या 19।'
     tag: good
     taught_in: m2.vrtta#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'A {{वृत्तम्}} is a metre counted in syllables: all four quarters have the same number, in the same pattern. Count
+          one quarter. Eleven: {{इन्द्रवज्रा}} or {{उपेन्द्रवज्रा}}. Fourteen: {{वसन्ततिलका}}. Seventeen: {{मन्दाक्रान्ता}}.
+          Nineteen: {{शार्दूलविक्रीडित}}.'
+        hi: '{{वृत्तम्}} अक्षरों से गिना जाने वाला छन्द है: चारों चरणों में संख्या बराबर और ढाँचा वही। एक चरण गिनिए। ग्यारह:
+          {{इन्द्रवज्रा}} या {{उपेन्द्रवज्रा}}। चौदह: {{वसन्ततिलका}}। सत्रह: {{मन्दाक्रान्ता}}। उन्नीस: {{शार्दूलविक्रीडित}}।'
+      items:
+      - id: i0
+        sa: वृत्तम्
+      - id: i1
+        sa: इन्द्रवज्रा
+      - id: i2
+        sa: उपेन्द्रवज्रा
+      - id: i3
+        sa: वसन्ततिलका
+      - id: i4
+        sa: मन्दाक्रान्ता
+      - id: i5
+        sa: शार्दूलविक्रीडित
   - skill: chandas.arya
     rule:
       en: Add the beats of each quarter; the sums 12, 18, 12, 15 mean Āryā.
       hi: हर चरण की ताल जोड़िए; योग 12, 18, 12, 15 हो तो आर्या।
     tag: good
     taught_in: m2.arya#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Some metres count time, not syllables: a light syllable is one {{मात्रा}}, a heavy one two. These are called
+          {{जाति}}. In the {{आर्या}} the four quarters have 12, 18, 12 and 15 mātrās. The last syllable of a quarter may be
+          counted heavy to make the sum.'
+        hi: 'कुछ छन्द अक्षर नहीं, समय गिनते हैं: लघु अक्षर एक {{मात्रा}}, गुरु दो। इन्हें {{जाति}} कहते हैं। {{आर्या}} के
+          चार चरणों में 12, 18, 12 और 15 मात्राएँ होती हैं। योग पूरा करने के लिए चरण का अन्तिम अक्षर गुरु गिना जा सकता है।'
+      items:
+      - id: i0
+        sa: मात्रा
+      - id: i1
+        sa: जाति
+      - id: i2
+        sa: आर्या
 - id: exceptions
   kind: revision
   title:
@@ -99,6 +251,60 @@ cards:
       hi: चरण में अक्षर
     tag: core
     taught_in: m2.vrtta#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: The great metres
+        hi: प्रमुख छन्द
+      columns:
+      - en: Metre
+        hi: छन्द
+      - en: Syllables
+        hi: अक्षर
+      - en: Pattern
+        hi: ढाँचा
+      rows:
+      - - id: r0-c0
+          sa: इन्द्रवज्रा
+        - id: r0-c1
+          label:
+            en: '11'
+            hi: ११
+        - id: r0-c2
+          sa: ग ग ल ग ग ल ल ग ल ग ग
+      - - id: r1-c0
+          sa: उपेन्द्रवज्रा
+        - id: r1-c1
+          label:
+            en: '11'
+            hi: ११
+        - id: r1-c2
+          sa: ल ग ल ग ग ल ल ग ल ग ग
+      - - id: r2-c0
+          sa: वसन्ततिलका
+        - id: r2-c1
+          label:
+            en: '14'
+            hi: १४
+        - id: r2-c2
+          sa: ग ग ल ग ल ल ल ग ल ल ग ल ग ग
+      - - id: r3-c0
+          sa: मन्दाक्रान्ता
+        - id: r3-c1
+          label:
+            en: '17'
+            hi: १७
+        - id: r3-c2
+          sa: ग ग ग ग ल ल ल ल ल ग ग ल ग ग ल ग ग
+      - - id: r4-c0
+          sa: शार्दूलविक्रीडित
+        - id: r4-c1
+          label:
+            en: '19'
+            hi: १९
+        - id: r4-c2
+          sa: ग ग ग ल ल ग ल ग ल ल ल ग ग ग ल ग ग ल ग
   - skill: chandas.arya
     formula: १२ · १८ · १२ · १५
     rule:
@@ -106,3 +312,57 @@ cards:
       hi: आर्या की मात्राएँ
     tag: core
     taught_in: m2.arya#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: The verse weighed
+        hi: श्लोक का तौल
+      columns:
+      - en: Quarter
+        hi: चरण
+      - en: Text
+        hi: पाठ
+      - en: Mātrās
+        hi: मात्राएँ
+      rows:
+      - - id: r0-c0
+          label:
+            en: '1'
+            hi: १
+        - id: r0-c1
+          sa: दानं भोगो नाशस्
+        - id: r0-c2
+          label:
+            en: '12'
+            hi: १२
+      - - id: r1-c0
+          label:
+            en: '2'
+            hi: २
+        - id: r1-c1
+          sa: तिस्रो गतयो भवन्ति वित्तस्य
+        - id: r1-c2
+          label:
+            en: '18'
+            hi: १८
+      - - id: r2-c0
+          label:
+            en: '3'
+            hi: ३
+        - id: r2-c1
+          sa: यो न ददाति न भुङ्क्ते
+        - id: r2-c2
+          label:
+            en: '12'
+            hi: १२
+      - - id: r3-c0
+          label:
+            en: '4'
+            hi: ४
+        - id: r3-c1
+          sa: तस्य तृतीया गतिर्भवति
+        - id: r3-c2
+          label:
+            en: '15'
+            hi: १५

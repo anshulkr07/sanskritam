@@ -221,6 +221,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पठनाय
       label:
@@ -238,6 +239,7 @@ cards:
       feature:
         en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: पठन
     - id: i3
       sa: गच्छति
       label:
@@ -255,6 +257,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -369,6 +372,7 @@ cards:
       feature:
         en: 'Stem: {{भोजन}} · neuter · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{भोजन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: भोजन
     - id: i3
       sa: आगच्छति
       label:
@@ -388,6 +392,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -496,6 +501,7 @@ cards:
       feature:
         en: 'Stem: {{पत्र}} · neuter · {{चतुर्थी}} · plural'
         hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: पत्र
     - id: i3
       sa: गच्छामः
       label:
@@ -513,6 +519,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -584,6 +591,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पठन
     - sa: पठनाय
       check:
         type: subanta
@@ -592,6 +603,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: पठन
   - - text:
         en: meal
         hi: भोजन
@@ -602,6 +617,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{भोजन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भोजन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: भोजन
     - sa: भोजनाय
       check:
         type: subanta
@@ -610,6 +629,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{भोजन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{भोजन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: भोजन
   - - text:
         en: wealth
         hi: धन
@@ -620,6 +643,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{धन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: धन
     - sa: धनाय
       check:
         type: subanta
@@ -628,6 +655,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{धन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{धन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: धन
   - - text:
         en: happiness
         hi: सुख
@@ -638,6 +669,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{सुख}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सुख
     - sa: सुखाय
       check:
         type: subanta
@@ -646,6 +681,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{सुख}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: सुख
   note:
     en: A word of purpose is often a verbal noun in {{अन}}.
     hi: उद्देश्य बताने वाला शब्द प्रायः {{अन}} वाली क्रियावाचक संज्ञा होता है।
@@ -761,6 +800,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: फलम्
       label:
@@ -778,6 +818,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: रोचते
       label:
@@ -795,6 +836,7 @@ cards:
       feature:
         en: 'Root: {{रुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: रुच्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -924,6 +966,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पठनाय
       label:
@@ -941,6 +984,7 @@ cards:
       feature:
         en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: पठन
     - id: i3
       sa: गच्छति
       label:
@@ -958,6 +1002,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1107,6 +1152,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पठनाय
       label:
@@ -1124,6 +1170,7 @@ cards:
       feature:
         en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: पठन
     - id: i3
       sa: गच्छति
       label:
@@ -1141,6 +1188,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1306,6 +1354,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: पठनाय
       label:
@@ -1323,6 +1372,7 @@ cards:
       feature:
         en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
         hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: पठन
     - id: i3
       sa: गच्छति
       label:
@@ -1340,6 +1390,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1407,3 +1458,111 @@ cards:
     text:
       en: Singular and plural endings.
       hi: एकवचन और बहुवचन प्रत्यय।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: सः भोजनाय आगच्छति।
+      meaning:
+        en: He comes for a meal.
+        hi: वह भोजन के लिए आता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: भोजनाय
+        gloss:
+          en: for a meal
+          hi: भोजन के लिए
+        check:
+          type: subanta
+          stem: भोजन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: वयम् पत्रेभ्यः गच्छामः।
+      meaning:
+        en: We go for the leaves.
+        hi: हम पत्रों के लिए जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पत्रेभ्यः
+        gloss:
+          en: for the leaves
+          hi: पत्रों के लिए
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Bahu
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i2
+      sa: बालकाय फलम् रोचते।
+      meaning:
+        en: The boy likes fruit (the fruit pleases the boy).
+        hi: बालक को फल पसन्द है।
+      words:
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: रोचते
+        gloss:
+          en: pleases
+          hi: भाता है
+        check:
+          type: tinanta
+          dhatu: रुच्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

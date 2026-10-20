@@ -56,10 +56,19 @@ def test_release_gate_blocks_unreviewed_lessons_and_missing_pictures(data):
     assert "not delivered" in msgs
 
 
-def test_current_owner_approved_content_passes_release_gates(data):
+def test_release_gate_tracks_explicit_pending_linguistic_review(data):
+    # Corrections must not inherit a scholar's earlier approval. Keep the
+    # release gate effective while local, source-cited improvements are reviewed.
+    from pathlib import Path
+    report = json.loads((Path(__file__).resolve().parents[2] /
+        "specs/learn-art-20261020/teaching-course-plan/implementation/grammar-review.json").read_text(encoding="utf-8"))
+    pending = set(report["changed_lessons"])
+    assert {lid for lid, loc in data.lessons.items() if loc.obj.review != "scholar_ok"} == pending
+    assert all(data.lessons[lid].obj.review == "engine_ok" for lid in pending)
     bad = errors(validate(data, release=True))
-    assert not bad, "\n".join(_messages(bad))
-    assert all(loc.obj.review == "scholar_ok" for loc in data.lessons.values())
+    assert len(bad) == len(pending), "\n".join(_messages(bad))
+    assert all("a release needs scholar_ok" in issue.message for issue in bad)
+    assert all(any(lid in str(issue.where) for issue in bad) for lid in pending)
 
 
 def _broken_copy(tmp_path, lesson_rel: str, edit) -> object:

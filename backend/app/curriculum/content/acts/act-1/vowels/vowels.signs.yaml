@@ -74,6 +74,27 @@ cards:
       en: '{{क्}} + {{आ}} = {{का}}, kā'
       hi: क् + आ = का
   visuals:
+  - id: v-script-inherent
+    kind: sequence
+    title:
+      en: A consonant and its vowel
+      hi: व्यञ्जन और उसका स्वर
+    items:
+    - id: consonant
+      sa: क्
+      meaning:
+        en: The consonant without a vowel.
+        hi: स्वर के बिना व्यञ्जन।
+    - id: inherent
+      sa: क् + अ → क
+      meaning:
+        en: The plain letter carries अ.
+        hi: साधारण अक्षर में अ है।
+    - id: replace
+      sa: क् + आ → का
+      meaning:
+        en: The sign supplies आ in place of the inherent अ.
+        hi: मात्रा अन्तर्निहित अ की जगह आ देती है।
   - id: v-source-forms
     kind: comparison
     title:
@@ -289,6 +310,32 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-script-i-order
+    kind: sequence
+    title:
+      en: Written position and spoken order
+      hi: लिखने का स्थान और बोलने का क्रम
+    items:
+    - id: whole
+      sa: कि
+      meaning:
+        en: See the sign to the left of the consonant.
+        hi: व्यञ्जन के बाईं ओर मात्रा देखें।
+    - id: first
+      sa: क्
+      meaning:
+        en: Say the consonant first.
+        hi: पहले व्यञ्जन बोलें।
+    - id: next
+      sa: इ
+      meaning:
+        en: Say its vowel next.
+        hi: फिर उसका स्वर बोलें।
+    - id: blend
+      sa: कि
+      meaning:
+        en: Blend them into one syllable.
+        hi: दोनों को मिलाकर एक अक्षर बोलें।
   - id: v-source-example-0
     kind: worked
     title:
@@ -312,6 +359,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दिन
     - id: rule
       label:
         en: Connect the form and the rule
@@ -340,6 +388,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दिन
 - id: p2
   kind: practice
   mode: type
@@ -540,3 +589,55 @@ cards:
   - text:
       en: '{{ु}} {{ू}} {{ृ}} sit below; {{े}} {{ै}} above; {{ा}} {{ी}} {{ो}} {{ौ}} after.'
       hi: '{{ु}} {{ू}} {{ृ}} नीचे; {{े}} {{ै}} ऊपर; {{ा}} {{ी}} {{ो}} {{ौ}} बाद में।'
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: लोकः
+      meaning:
+        en: a world
+        hi: लोक, संसार
+      check:
+        type: subanta
+        stem: लोक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लोक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लोक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: तैलम्
+      meaning:
+        en: oil
+        hi: तेल
+      check:
+        type: subanta
+        stem: तैल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तैल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तैल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गौः
+      meaning:
+        en: a cow
+        hi: गाय
+      check:
+        type: subanta
+        stem: गो
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गो}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गो}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'

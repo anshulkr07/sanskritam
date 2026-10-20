@@ -26,6 +26,69 @@ cards:
     - 6.1.101
     tag: core
     taught_in: vs.like#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Like vowels
+        hi: एक-से स्वर
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: विद्या
+        - id: r0-c1
+          sa: आलयः
+        - id: r0-c2
+          sa: विद्यालयः
+          compare_from: विद्या आलयः
+      - - id: r1-c0
+          sa: हिम
+        - id: r1-c1
+          sa: आलयः
+        - id: r1-c2
+          sa: हिमालयः
+          compare_from: हिम आलयः
+      - - id: r2-c0
+          sa: महा
+        - id: r2-c1
+          sa: आत्मा
+        - id: r2-c2
+          sa: महात्मा
+          compare_from: महा आत्मा
+      - - id: r3-c0
+          sa: कवि
+        - id: r3-c1
+          sa: इन्द्रः
+        - id: r3-c2
+          sa: कवीन्द्रः
+          compare_from: कवि इन्द्रः
+      - - id: r4-c0
+          sa: सु
+        - id: r4-c1
+          sa: उक्तम्
+        - id: r4-c2
+          sa: सूक्तम्
+          compare_from: सु उक्तम्
+      - - id: r5-c0
+          sa: गुरु
+        - id: r5-c1
+          sa: उपदेशः
+        - id: r5-c2
+          sa: गुरूपदेशः
+          compare_from: गुरु उपदेशः
+      - - id: r6-c0
+          sa: न
+        - id: r6-c1
+          sa: अस्ति
+        - id: r6-c2
+          sa: नास्ति
+          compare_from: न अस्ति
   - skill: sandhi.guna
     rule:
       en: '{{अ}} + {{इ}} = {{ए}}, {{अ}} + {{उ}} = {{ओ}}, {{अ}} + {{ऋ}} = {{अर्}}: {{गणेशः}}, {{महोत्सवः}}, {{देवर्षिः}}.'
@@ -34,6 +97,69 @@ cards:
     - 6.1.87
     tag: core
     taught_in: vs.guna#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Guṇa
+        hi: गुण
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: उप
+        - id: r0-c1
+          sa: इन्द्रः
+        - id: r0-c2
+          sa: उपेन्द्रः
+          compare_from: उप इन्द्रः
+      - - id: r1-c0
+          sa: महा
+        - id: r1-c1
+          sa: ईश्वरः
+        - id: r1-c2
+          sa: महेश्वरः
+          compare_from: महा ईश्वरः
+      - - id: r2-c0
+          sa: गण
+        - id: r2-c1
+          sa: ईशः
+        - id: r2-c2
+          sa: गणेशः
+          compare_from: गण ईशः
+      - - id: r3-c0
+          sa: सूर्य
+        - id: r3-c1
+          sa: उदयः
+        - id: r3-c2
+          sa: सूर्योदयः
+          compare_from: सूर्य उदयः
+      - - id: r4-c0
+          sa: महा
+        - id: r4-c1
+          sa: उत्सवः
+        - id: r4-c2
+          sa: महोत्सवः
+          compare_from: महा उत्सवः
+      - - id: r5-c0
+          sa: देव
+        - id: r5-c1
+          sa: ऋषिः
+        - id: r5-c2
+          sa: देवर्षिः
+          compare_from: देव ऋषिः
+      - - id: r6-c0
+          sa: सप्त
+        - id: r6-c1
+          sa: ऋषयः
+        - id: r6-c2
+          sa: सप्तर्षयः
+          compare_from: सप्त ऋषयः
   - skill: sandhi.vrddhi
     rule:
       en: '{{अ}} + {{ए}} = {{ऐ}}, {{अ}} + {{ओ}} = {{औ}}: {{सदैव}}, {{जलौघः}}.'
@@ -42,6 +168,62 @@ cards:
     - 6.1.88
     tag: core
     taught_in: vs.vrddhi#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Vṛddhi
+        hi: वृद्धि
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: एक
+        - id: r0-c1
+          sa: एकम्
+        - id: r0-c2
+          sa: एकैकम्
+          compare_from: एक एकम्
+      - - id: r1-c0
+          sa: सदा
+        - id: r1-c1
+          sa: एव
+        - id: r1-c2
+          sa: सदैव
+          compare_from: सदा एव
+      - - id: r2-c0
+          sa: तथा
+        - id: r2-c1
+          sa: एव
+        - id: r2-c2
+          sa: तथैव
+          compare_from: तथा एव
+      - - id: r3-c0
+          sa: महा
+        - id: r3-c1
+          sa: ऐश्वर्यम्
+        - id: r3-c2
+          sa: महैश्वर्यम्
+          compare_from: महा ऐश्वर्यम्
+      - - id: r4-c0
+          sa: जल
+        - id: r4-c1
+          sa: ओघः
+        - id: r4-c2
+          sa: जलौघः
+          compare_from: जल ओघः
+      - - id: r5-c0
+          sa: वन
+        - id: r5-c1
+          sa: औषधिः
+        - id: r5-c2
+          sa: वनौषधिः
+          compare_from: वन औषधिः
   - skill: sandhi.yan
     rule:
       en: '{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}} before a different vowel: {{इत्यादि}}, {{स्वागतम्}}.'
@@ -50,6 +232,76 @@ cards:
     - 6.1.77
     tag: core
     taught_in: vs.glide#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Glides
+        hi: अर्धस्वर
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: इति
+        - id: r0-c1
+          sa: आदि
+        - id: r0-c2
+          sa: इत्यादि
+          compare_from: इति आदि
+      - - id: r1-c0
+          sa: यदि
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: यद्यपि
+          compare_from: यदि अपि
+      - - id: r2-c0
+          sa: अति
+        - id: r2-c1
+          sa: अधिकम्
+        - id: r2-c2
+          sa: अत्यधिकम्
+          compare_from: अति अधिकम्
+      - - id: r3-c0
+          sa: प्रति
+        - id: r3-c1
+          sa: एकम्
+        - id: r3-c2
+          sa: प्रत्येकम्
+          compare_from: प्रति एकम्
+      - - id: r4-c0
+          sa: सु
+        - id: r4-c1
+          sa: आगतम्
+        - id: r4-c2
+          sa: स्वागतम्
+          compare_from: सु आगतम्
+      - - id: r5-c0
+          sa: मधु
+        - id: r5-c1
+          sa: अरिः
+        - id: r5-c2
+          sa: मध्वरिः
+          compare_from: मधु अरिः
+      - - id: r6-c0
+          sa: पितृ
+        - id: r6-c1
+          sa: आज्ञा
+        - id: r6-c2
+          sa: पित्राज्ञा
+          compare_from: पितृ आज्ञा
+      - - id: r7-c0
+          sa: वधू
+        - id: r7-c1
+          sa: आगमः
+        - id: r7-c2
+          sa: वध्वागमः
+          compare_from: वधू आगमः
   - skill: sandhi.ayadi
     rule:
       en: '{{औ}} → {{आव्}}, {{ऐ}} → {{आय्}}, {{ए}} → {{अय्}}/{{अ}}; {{ए}} + {{अ}} = {{एऽ}}: {{नाविकः}}, {{वनेऽस्ति}}.'
@@ -59,6 +311,62 @@ cards:
     - 6.1.109
     tag: core
     taught_in: vs.e-o#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: ए, ओ, ऐ, औ and ऽ
+        hi: ए, ओ, ऐ, औ और ऽ
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: नौ
+        - id: r0-c1
+          sa: इकः
+        - id: r0-c2
+          sa: नाविकः
+          compare_from: नौ इकः
+      - - id: r1-c0
+          sa: पौ
+        - id: r1-c1
+          sa: अकः
+        - id: r1-c2
+          sa: पावकः
+          compare_from: पौ अकः
+      - - id: r2-c0
+          sa: तस्मै
+        - id: r2-c1
+          sa: इदम्
+        - id: r2-c2
+          sa: तस्मा इदम्
+          compare_from: तस्मै इदम्
+      - - id: r3-c0
+          sa: हरे
+        - id: r3-c1
+          sa: इह
+        - id: r3-c2
+          sa: हर इह
+          compare_from: हरे इह
+      - - id: r4-c0
+          sa: वने
+        - id: r4-c1
+          sa: अस्ति
+        - id: r4-c2
+          sa: वनेऽस्ति
+          compare_from: वने अस्ति
+      - - id: r5-c0
+          sa: हरे
+        - id: r5-c1
+          sa: अव
+        - id: r5-c2
+          sa: हरेऽव
+          compare_from: हरे अव
 - id: conditions
   kind: revision
   title:
@@ -75,12 +383,92 @@ cards:
         साथ अन्य स्वर: अर्धस्वर।'
     tag: good
     taught_in: vs.like#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+          When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel:
+          {{विद्या + आलयः}} gives {{विद्यालयः}}.'
+        hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही
+          कुल के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या
+          + आलयः}} से {{विद्यालयः}}।'
+      items:
+      - id: i0
+        sa: सन्धिः
+      - id: i1
+        sa: अ
+      - id: i2
+        sa: आ
+      - id: i3
+        sa: इ
+      - id: i4
+        sa: ई
+      - id: i5
+        sa: उ
+      - id: i6
+        sa: ऊ
+      - id: i7
+        sa: विद्या + आलयः
+      - id: i8
+        sa: विद्यालयः
   - skill: sandhi.ayadi
     rule:
       en: '{{ऽ}} shows a lost {{अ}} after {{ए}} or {{ओ}}.'
       hi: '{{ऽ}} {{ए}} या {{ओ}} के बाद लुप्त {{अ}} को दिखाता है।'
     tag: good
     taught_in: vs.e-o#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+          before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}}
+          gives {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+        hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर
+          {{आ}} लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे
+          + इह}} से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+      items:
+      - id: i0
+        sa: औ
+      - id: i1
+        sa: आव्
+      - id: i2
+        sa: नौ + इकः
+      - id: i3
+        sa: नाविकः
+      - id: i4
+        sa: ऐ
+      - id: i5
+        sa: आय्
+      - id: i6
+        sa: आ
+      - id: i7
+        sa: तस्मै + इदम्
+      - id: i8
+        sa: तस्मा इदम्
+      - id: i9
+        sa: ए
+      - id: i10
+        sa: इ
+      - id: i11
+        sa: अ
+      - id: i12
+        sa: हरे + इह
+      - id: i13
+        sa: हर इह
+      - id: i14
+        sa: ऽ
+      - id: i15
+        sa: वने + अस्ति
+      - id: i16
+        sa: वनेऽस्ति
 - id: exceptions
   kind: revision
   title:
@@ -256,6 +644,72 @@ cards:
     - 6.1.125
     tag: core
     taught_in: vs.stop#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Words that do not join
+        hi: जो नहीं जुड़ते
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Stays
+        hi: रहता है
+      - en: Why
+        hi: क्यों
+      rows:
+      - - id: r0-c0
+          sa: हरी
+        - id: r0-c1
+          sa: एतौ
+        - id: r0-c2
+          sa: हरी एतौ
+        - id: r0-c3
+          label:
+            en: dual in -ई
+            hi: -ई वाला द्विवचन
+      - - id: r1-c0
+          sa: मुनी
+        - id: r1-c1
+          sa: इमौ
+        - id: r1-c2
+          sa: मुनी इमौ
+        - id: r1-c3
+          label:
+            en: dual in -ई
+            hi: -ई वाला द्विवचन
+      - - id: r2-c0
+          sa: साधू
+        - id: r2-c1
+          sa: आगतौ
+        - id: r2-c2
+          sa: साधू आगतौ
+        - id: r2-c3
+          label:
+            en: dual in -ऊ
+            hi: -ऊ वाला द्विवचन
+      - - id: r3-c0
+          sa: ते
+        - id: r3-c1
+          sa: अत्र
+        - id: r3-c2
+          sa: ते अत्र
+        - id: r3-c3
+          label:
+            en: dual in -ए
+            hi: -ए वाला द्विवचन
+      - - id: r4-c0
+          sa: लते
+        - id: r4-c1
+          sa: एते
+        - id: r4-c2
+          sa: लते एते
+        - id: r4-c3
+          label:
+            en: dual in -ए
+            hi: -ए वाला द्विवचन
 - id: mistakes
   kind: revision
   title:
@@ -296,6 +750,32 @@ cards:
     - 6.1.78
     tag: core
     taught_in: vs.like#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel
+          of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds
+          made in the same place with the same effort.'
+        hi: 'सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के
+          स्वर से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा
+          देता है: एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।'
+      items:
+      - id: i0
+        sa: अकः सवर्णे दीर्घः
+      - id: i1
+        sa: अ
+      - id: i2
+        sa: इ
+      - id: i3
+        sa: उ
+      - id: i4
+        sa: ऋ
+      - id: i5
+        sa: तुल्यास्यप्रयत्नं सवर्णम्
   - skill: sandhi.blocked
     rule:
       en: '{{प्लुतप्रगृह्या अचि नित्यम्}} blocks them.'
@@ -304,6 +784,31 @@ cards:
     - 6.1.125
     tag: core
     taught_in: vs.stop#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}.
+          And 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
+        hi: सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम
+          देता है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है।
+          इसलिए सन्धि नहीं होती।
+      items:
+      - id: i0
+        sa: ईदूदेद्द्विवचनं प्रगृह्यम्
+      - id: i1
+        sa: ई
+      - id: i2
+        sa: ऊ
+      - id: i3
+        sa: ए
+      - id: i4
+        sa: प्रगृह्य
+      - id: i5
+        sa: प्लुतप्रगृह्या अचि नित्यम्
 - id: sheet
   kind: revision
   title:
@@ -319,6 +824,69 @@ cards:
       hi: एक-से स्वर
     tag: core
     taught_in: vs.like#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Like vowels
+        hi: एक-से स्वर
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: विद्या
+        - id: r0-c1
+          sa: आलयः
+        - id: r0-c2
+          sa: विद्यालयः
+          compare_from: विद्या आलयः
+      - - id: r1-c0
+          sa: हिम
+        - id: r1-c1
+          sa: आलयः
+        - id: r1-c2
+          sa: हिमालयः
+          compare_from: हिम आलयः
+      - - id: r2-c0
+          sa: महा
+        - id: r2-c1
+          sa: आत्मा
+        - id: r2-c2
+          sa: महात्मा
+          compare_from: महा आत्मा
+      - - id: r3-c0
+          sa: कवि
+        - id: r3-c1
+          sa: इन्द्रः
+        - id: r3-c2
+          sa: कवीन्द्रः
+          compare_from: कवि इन्द्रः
+      - - id: r4-c0
+          sa: सु
+        - id: r4-c1
+          sa: उक्तम्
+        - id: r4-c2
+          sa: सूक्तम्
+          compare_from: सु उक्तम्
+      - - id: r5-c0
+          sa: गुरु
+        - id: r5-c1
+          sa: उपदेशः
+        - id: r5-c2
+          sa: गुरूपदेशः
+          compare_from: गुरु उपदेशः
+      - - id: r6-c0
+          sa: न
+        - id: r6-c1
+          sa: अस्ति
+        - id: r6-c2
+          sa: नास्ति
+          compare_from: न अस्ति
   - skill: sandhi.guna
     formula: गण + ईशः = गणेशः
     rule:
@@ -326,6 +894,69 @@ cards:
       hi: गुण
     tag: core
     taught_in: vs.guna#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Guṇa
+        hi: गुण
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: उप
+        - id: r0-c1
+          sa: इन्द्रः
+        - id: r0-c2
+          sa: उपेन्द्रः
+          compare_from: उप इन्द्रः
+      - - id: r1-c0
+          sa: महा
+        - id: r1-c1
+          sa: ईश्वरः
+        - id: r1-c2
+          sa: महेश्वरः
+          compare_from: महा ईश्वरः
+      - - id: r2-c0
+          sa: गण
+        - id: r2-c1
+          sa: ईशः
+        - id: r2-c2
+          sa: गणेशः
+          compare_from: गण ईशः
+      - - id: r3-c0
+          sa: सूर्य
+        - id: r3-c1
+          sa: उदयः
+        - id: r3-c2
+          sa: सूर्योदयः
+          compare_from: सूर्य उदयः
+      - - id: r4-c0
+          sa: महा
+        - id: r4-c1
+          sa: उत्सवः
+        - id: r4-c2
+          sa: महोत्सवः
+          compare_from: महा उत्सवः
+      - - id: r5-c0
+          sa: देव
+        - id: r5-c1
+          sa: ऋषिः
+        - id: r5-c2
+          sa: देवर्षिः
+          compare_from: देव ऋषिः
+      - - id: r6-c0
+          sa: सप्त
+        - id: r6-c1
+          sa: ऋषयः
+        - id: r6-c2
+          sa: सप्तर्षयः
+          compare_from: सप्त ऋषयः
   - skill: sandhi.vrddhi
     formula: सदा + एव = सदैव
     rule:
@@ -333,6 +964,62 @@ cards:
       hi: वृद्धि
     tag: core
     taught_in: vs.vrddhi#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Vṛddhi
+        hi: वृद्धि
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: एक
+        - id: r0-c1
+          sa: एकम्
+        - id: r0-c2
+          sa: एकैकम्
+          compare_from: एक एकम्
+      - - id: r1-c0
+          sa: सदा
+        - id: r1-c1
+          sa: एव
+        - id: r1-c2
+          sa: सदैव
+          compare_from: सदा एव
+      - - id: r2-c0
+          sa: तथा
+        - id: r2-c1
+          sa: एव
+        - id: r2-c2
+          sa: तथैव
+          compare_from: तथा एव
+      - - id: r3-c0
+          sa: महा
+        - id: r3-c1
+          sa: ऐश्वर्यम्
+        - id: r3-c2
+          sa: महैश्वर्यम्
+          compare_from: महा ऐश्वर्यम्
+      - - id: r4-c0
+          sa: जल
+        - id: r4-c1
+          sa: ओघः
+        - id: r4-c2
+          sa: जलौघः
+          compare_from: जल ओघः
+      - - id: r5-c0
+          sa: वन
+        - id: r5-c1
+          sa: औषधिः
+        - id: r5-c2
+          sa: वनौषधिः
+          compare_from: वन औषधिः
   - skill: sandhi.yan
     formula: इति + आदि = इत्यादि
     rule:
@@ -340,6 +1027,76 @@ cards:
       hi: अर्धस्वर
     tag: core
     taught_in: vs.glide#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Glides
+        hi: अर्धस्वर
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: इति
+        - id: r0-c1
+          sa: आदि
+        - id: r0-c2
+          sa: इत्यादि
+          compare_from: इति आदि
+      - - id: r1-c0
+          sa: यदि
+        - id: r1-c1
+          sa: अपि
+        - id: r1-c2
+          sa: यद्यपि
+          compare_from: यदि अपि
+      - - id: r2-c0
+          sa: अति
+        - id: r2-c1
+          sa: अधिकम्
+        - id: r2-c2
+          sa: अत्यधिकम्
+          compare_from: अति अधिकम्
+      - - id: r3-c0
+          sa: प्रति
+        - id: r3-c1
+          sa: एकम्
+        - id: r3-c2
+          sa: प्रत्येकम्
+          compare_from: प्रति एकम्
+      - - id: r4-c0
+          sa: सु
+        - id: r4-c1
+          sa: आगतम्
+        - id: r4-c2
+          sa: स्वागतम्
+          compare_from: सु आगतम्
+      - - id: r5-c0
+          sa: मधु
+        - id: r5-c1
+          sa: अरिः
+        - id: r5-c2
+          sa: मध्वरिः
+          compare_from: मधु अरिः
+      - - id: r6-c0
+          sa: पितृ
+        - id: r6-c1
+          sa: आज्ञा
+        - id: r6-c2
+          sa: पित्राज्ञा
+          compare_from: पितृ आज्ञा
+      - - id: r7-c0
+          sa: वधू
+        - id: r7-c1
+          sa: आगमः
+        - id: r7-c2
+          sa: वध्वागमः
+          compare_from: वधू आगमः
   - skill: sandhi.ayadi
     formula: नौ + इकः = नाविकः · वने + अस्ति = वनेऽस्ति
     rule:
@@ -347,6 +1104,62 @@ cards:
       hi: अय्, अव्, ऽ
     tag: core
     taught_in: vs.e-o#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: ए, ओ, ऐ, औ and ऽ
+        hi: ए, ओ, ऐ, औ और ऽ
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Joined
+        hi: जुड़ा हुआ
+      rows:
+      - - id: r0-c0
+          sa: नौ
+        - id: r0-c1
+          sa: इकः
+        - id: r0-c2
+          sa: नाविकः
+          compare_from: नौ इकः
+      - - id: r1-c0
+          sa: पौ
+        - id: r1-c1
+          sa: अकः
+        - id: r1-c2
+          sa: पावकः
+          compare_from: पौ अकः
+      - - id: r2-c0
+          sa: तस्मै
+        - id: r2-c1
+          sa: इदम्
+        - id: r2-c2
+          sa: तस्मा इदम्
+          compare_from: तस्मै इदम्
+      - - id: r3-c0
+          sa: हरे
+        - id: r3-c1
+          sa: इह
+        - id: r3-c2
+          sa: हर इह
+          compare_from: हरे इह
+      - - id: r4-c0
+          sa: वने
+        - id: r4-c1
+          sa: अस्ति
+        - id: r4-c2
+          sa: वनेऽस्ति
+          compare_from: वने अस्ति
+      - - id: r5-c0
+          sa: हरे
+        - id: r5-c1
+          sa: अव
+        - id: r5-c2
+          sa: हरेऽव
+          compare_from: हरे अव
   - skill: sandhi.blocked
     formula: हरी एतौ
     rule:
@@ -354,3 +1167,69 @@ cards:
       hi: नहीं जुड़ता
     tag: core
     taught_in: vs.stop#tb1
+    visuals:
+    - id: v-linked-5
+      kind: matrix
+      title:
+        en: Words that do not join
+        hi: जो नहीं जुड़ते
+      columns:
+      - en: First word
+        hi: पहला शब्द
+      - en: Second word
+        hi: दूसरा शब्द
+      - en: Stays
+        hi: रहता है
+      - en: Why
+        hi: क्यों
+      rows:
+      - - id: r0-c0
+          sa: हरी
+        - id: r0-c1
+          sa: एतौ
+        - id: r0-c2
+          sa: हरी एतौ
+        - id: r0-c3
+          label:
+            en: dual in -ई
+            hi: -ई वाला द्विवचन
+      - - id: r1-c0
+          sa: मुनी
+        - id: r1-c1
+          sa: इमौ
+        - id: r1-c2
+          sa: मुनी इमौ
+        - id: r1-c3
+          label:
+            en: dual in -ई
+            hi: -ई वाला द्विवचन
+      - - id: r2-c0
+          sa: साधू
+        - id: r2-c1
+          sa: आगतौ
+        - id: r2-c2
+          sa: साधू आगतौ
+        - id: r2-c3
+          label:
+            en: dual in -ऊ
+            hi: -ऊ वाला द्विवचन
+      - - id: r3-c0
+          sa: ते
+        - id: r3-c1
+          sa: अत्र
+        - id: r3-c2
+          sa: ते अत्र
+        - id: r3-c3
+          label:
+            en: dual in -ए
+            hi: -ए वाला द्विवचन
+      - - id: r4-c0
+          sa: लते
+        - id: r4-c1
+          sa: एते
+        - id: r4-c2
+          sa: लते एते
+        - id: r4-c3
+          label:
+            en: dual in -ए
+            hi: -ए वाला द्विवचन

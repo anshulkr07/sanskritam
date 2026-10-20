@@ -109,6 +109,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i1
       sa: सा
       meaning:
@@ -123,6 +124,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i2
       sa: तत्
       meaning:
@@ -137,6 +139,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
 - id: tb1
   kind: table
   title:
@@ -168,6 +171,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: तौ
       check:
         type: subanta
@@ -175,6 +182,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: तद्
     - sa: ते
       check:
         type: subanta
@@ -182,6 +193,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: तद्
   - - text:
         en: feminine
         hi: स्त्रीलिंग
@@ -192,6 +207,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: ते
       check:
         type: subanta
@@ -199,6 +218,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: तद्
     - sa: ताः
       check:
         type: subanta
@@ -206,6 +229,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: तद्
   - - text:
         en: neuter
         hi: नपुंसक
@@ -216,6 +243,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: ते
       check:
         type: subanta
@@ -223,6 +254,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: तद्
     - sa: तानि
       check:
         type: subanta
@@ -230,6 +265,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: तद्
   note:
     en: 'Two forms are alike: {{ते}} is both the feminine and neuter dual, and the masculine plural. Context tells which.'
     hi: 'कुछ रूप एक-से हैं: {{ते}} स्त्रीलिंग और नपुंसक का द्विवचन भी है और पुंलिंग का बहुवचन भी। प्रसंग बताता है कि कौन-सा।'
@@ -315,6 +354,50 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: सः पठति।
+      meaning:
+        en: He reads.
+        hi: वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -369,6 +452,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -455,6 +539,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -551,6 +636,7 @@ cards:
       feature:
         en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: फल
     - id: i3
       sa: अस्ति
       label:
@@ -568,6 +654,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -654,6 +741,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i1
       sa: सा
       meaning:
@@ -668,6 +756,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i2
       sa: तत्
       meaning:
@@ -682,6 +771,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
 - id: p2
   kind: practice
   depth: core
@@ -738,6 +828,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i1
       sa: सा
       meaning:
@@ -752,6 +843,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i2
       sa: तत्
       meaning:
@@ -766,6 +858,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
 - id: e1
   kind: explore
   depth: core
@@ -845,6 +938,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i1
       sa: सा
       meaning:
@@ -859,6 +953,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i2
       sa: तत्
       meaning:
@@ -873,6 +968,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
 - id: sum
   kind: summary
   title:

@@ -283,6 +283,24 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-script-joined-duration
+    kind: comparison
+    title:
+      en: Each lasts two mātrās
+      hi: हर एक की अवधि दो मात्राएँ
+    items:
+    - id: v0
+      sa: ए
+      duration: 2
+    - id: v1
+      sa: ओ
+      duration: 2
+    - id: v2
+      sa: ऐ
+      duration: 2
+    - id: v3
+      sa: औ
+      duration: 2
   - id: v-source-example-0
     kind: worked
     title:
@@ -306,6 +324,7 @@ cards:
       feature:
         en: 'Stem: {{देव}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{देव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: देव
     - id: rule
       label:
         en: Connect the form and the rule
@@ -332,6 +351,7 @@ cards:
       feature:
         en: 'Stem: {{देव}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{देव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: देव
   - id: v-source-example-1
     kind: worked
     title:
@@ -355,6 +375,7 @@ cards:
       feature:
         en: 'Stem: {{लोक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{लोक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लोक
     - id: rule
       label:
         en: Connect the form and the rule
@@ -381,6 +402,7 @@ cards:
       feature:
         en: 'Stem: {{लोक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{लोक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लोक
 - id: t3
   kind: teach
   title:
@@ -452,6 +474,7 @@ cards:
       feature:
         en: 'Stem: {{तैल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तैल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तैल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -480,6 +503,7 @@ cards:
       feature:
         en: 'Stem: {{तैल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{तैल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तैल
   - id: v-source-example-1
     kind: worked
     title:
@@ -503,6 +527,7 @@ cards:
       feature:
         en: 'Stem: {{गो}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गो}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गो
     - id: rule
       label:
         en: Connect the form and the rule
@@ -531,6 +556,7 @@ cards:
       feature:
         en: 'Stem: {{गो}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{गो}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गो
 - id: p3
   kind: practice
   mode: order

@@ -100,6 +100,69 @@ cards:
       en: 'first person: I, we'
       hi: 'उत्तम पुरुष: मैं, हम'
   visuals:
+  - id: v-cue-conversation
+    kind: comparison
+    title:
+      en: Whose viewpoint? How many?
+      hi: किसका दृष्टिकोण? कितने?
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      diagram:
+        kind: conversation
+        role: speaker
+        quantity: 1
+        plural: false
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      diagram:
+        kind: conversation
+        role: speaker
+        quantity: 2
+        plural: false
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      diagram:
+        kind: conversation
+        role: speaker
+        quantity: 3
+        plural: true
   - id: v-source-compare
     kind: comparison
     title:
@@ -125,6 +188,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: आवाम्
       meaning:
@@ -139,6 +203,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - id: i2
       sa: वयम्
       meaning:
@@ -153,6 +218,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
 - id: tb1
   kind: table
   title:
@@ -182,6 +248,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - sa: पठामि
       check:
         type: tinanta
@@ -189,6 +259,10 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
   - - text:
         en: we two
         hi: हम दोनों
@@ -199,6 +273,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - sa: पठावः
       check:
         type: tinanta
@@ -206,6 +284,10 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
   - - text:
         en: we
         hi: हम
@@ -216,6 +298,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
     - sa: पठामः
       check:
         type: tinanta
@@ -223,6 +309,10 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
   note:
     en: 'The verb ending already says “I” or “we”, so the pronoun is often left out: {{पठामि}} alone means “I read”.'
     hi: 'क्रिया का प्रत्यय ही ‘मैं’ या ‘हम’ बता देता है, इसलिए सर्वनाम अक्सर छोड़ दिया जाता है: अकेला {{पठामि}} का अर्थ ‘मैं
@@ -271,6 +361,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: आवाम्
       meaning:
@@ -285,6 +376,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - id: i2
       sa: वयम्
       meaning:
@@ -299,6 +391,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
 - id: p2
   kind: practice
   depth: core
@@ -357,6 +450,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: आवाम्
       meaning:
@@ -371,6 +465,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - id: i2
       sa: वयम्
       meaning:
@@ -385,6 +480,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
 - id: p3
   kind: practice
   depth: core
@@ -431,6 +527,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: आवाम्
       meaning:
@@ -445,6 +542,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - id: i2
       sa: वयम्
       meaning:
@@ -459,6 +557,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
 - id: e1
   kind: explore
   depth: core
@@ -538,6 +637,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: आवाम्
       meaning:
@@ -552,6 +652,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: अस्मद्
     - id: i2
       sa: वयम्
       meaning:
@@ -566,6 +667,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: अस्मद्
 - id: pn
   kind: teach
   title:

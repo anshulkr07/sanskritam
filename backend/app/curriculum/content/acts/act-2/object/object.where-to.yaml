@@ -167,6 +167,127 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-semantic-house
+    kind: reading
+    title:
+      en: Follow the place expression
+      hi: स्थान के पद पर ध्यान दें
+    items:
+    - id: i0
+      sa: बालकः गृहम् गच्छति।
+      meaning:
+        en: The boy goes to the house.
+        hi: बालक घर जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: 'house: destination'
+          hi: 'घर: जाने का स्थान'
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-toward-house
+        brief: 'Use case: scientific-educational. A single 4:3 Sanskrit teaching illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Compact central action readable at 320px
+          phone width. Complete figures and objects with quiet margins, no cropping, no decorative border or watermark. Show
+          exactly one school-age boy in an ochre kurta on the LEFT, walking to the RIGHT toward the open door of a single
+          small traditional cream house on the RIGHT. His face and toes point right, his front foot steps toward the door.
+          Empty plain path. No other people, houses, writing, arrows, signs or letterlike markings. The scene teaches destination:
+          going TO the house.'
+        alt:
+          en: One boy walks toward a house
+          hi: घर की ओर चलता एक बालक
+        ratio: '4:3'
+        text_in_image: []
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: The boy goes to the village.
+      hi: बालक गाँव जाता है।
+    items:
+    - id: i0
+      sa: बालकः
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
+    - id: i1
+      sa: ग्रामम्
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
+    - id: i2
+      sa: गच्छति
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
+    edges:
+    - source: i0
+      target: i2
+      label:
+        en: one who goes
+        hi: जाने वाला
+    - source: i1
+      target: i2
+      label:
+        en: destination
+        hi: जहाँ जाना है
   - id: v-source-example-0
     kind: worked
     title:
@@ -229,6 +350,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामम्
       label:
@@ -246,6 +368,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: गच्छति
       label:
@@ -263,6 +386,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -390,6 +514,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गच्छति
       label:
@@ -407,6 +532,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -517,6 +643,7 @@ cards:
       feature:
         en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: नाविक
     - id: i2
       sa: नगरम्
       label:
@@ -534,6 +661,7 @@ cards:
       feature:
         en: 'Stem: {{नगर}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{नगर}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: नगर
     - id: i3
       sa: गच्छति
       label:
@@ -551,6 +679,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -628,6 +757,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: ग्राम
     - sa: ग्रामम्
       check:
         type: subanta
@@ -636,6 +769,10 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
   - - text:
         en: town
         hi: नगर
@@ -646,6 +783,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नगर}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नगर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: नगर
     - sa: नगरम्
       check:
         type: subanta
@@ -654,6 +795,10 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नगर}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{नगर}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: नगर
   - - text:
         en: house
         hi: घर
@@ -664,6 +809,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गृह
     - sa: गृहम्
       check:
         type: subanta
@@ -672,6 +821,10 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
   - - text:
         en: river
         hi: नदी
@@ -682,6 +835,21 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id001
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id002 []
     - sa: नदीम्
       check:
         type: subanta
@@ -690,6 +858,20 @@ cards:
         vibhakti: Dvitiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
 - id: p1
   kind: practice
   depth: core
@@ -771,6 +953,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामम्
       label:
@@ -788,6 +971,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: गच्छति
       label:
@@ -805,6 +989,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -954,6 +1139,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामम्
       label:
@@ -971,6 +1157,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: गच्छति
       label:
@@ -988,6 +1175,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1117,6 +1305,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामम्
       label:
@@ -1134,6 +1323,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: गच्छति
       label:
@@ -1151,6 +1341,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1292,6 +1483,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: ग्रामम्
       label:
@@ -1309,6 +1501,7 @@ cards:
       feature:
         en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: ग्राम
     - id: i3
       sa: गच्छति
       label:
@@ -1326,6 +1519,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule

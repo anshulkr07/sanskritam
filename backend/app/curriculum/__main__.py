@@ -19,7 +19,8 @@ import sys
 from pathlib import Path
 
 from .loader import CONTENT_DIR, load
-from .schema import Bible, ExploreCard, Lesson, PracticeCard, Unit
+from .schema import Bible, ExploreCard, ImageRef, Lesson, PracticeCard, Unit
+from .validate import walk
 from .validate import errors, validate
 
 
@@ -75,7 +76,9 @@ def _stats(_args) -> int:
 
 def all_images(data):
     """(where, ImageRef) for every picture in the course: cards, portraits,
-    freed ghosts, leaves and map backdrops."""
+    freed ghosts, leaves and map backdrops. Shared instructional pictures occur
+    once in the canonical generation inventory, including nested figure/cell art."""
+    seen = set()
     b: Bible | None = data.bible
     if b:
         for c in b.characters:
@@ -92,8 +95,10 @@ def all_images(data):
             yield f"map:{act_id}", loc.obj.map
     for lid, loc in data.lessons.items():
         for card in loc.obj.cards:
-            if card.image is not None:
-                yield f"{lid}#{card.id}", card.image
+            for relative, value in walk(card):
+                if isinstance(value, ImageRef) and value.id not in seen:
+                    seen.add(value.id)
+                    yield f"{lid}#{card.id}{'.'+relative if relative else ''}", value
 
 
 def _images(args) -> int:

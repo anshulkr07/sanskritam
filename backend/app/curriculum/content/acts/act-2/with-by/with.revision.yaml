@@ -28,6 +28,57 @@ cards:
     - 1.4.42
     tag: core
     taught_in: with.means#t1
+    visuals:
+    - id: v-linked-0
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      items:
+      - id: i0
+        sa: वयम्
+        meaning:
+          en: we
+          hi: हम
+      - id: i1
+        sa: नौकया
+        meaning:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: नौका
+      - id: i2
+        sa: गच्छामः
+        meaning:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: गम्
+      edges:
+      - source: i1
+        target: i2
+        label:
+          en: means used
+          hi: प्रयुक्त साधन
   - skill: case.inst
     formula: बालकेन · बालिकया · नद्या
     rule:
@@ -35,6 +86,166 @@ cards:
       hi: 'एकवचन प्रत्यय: {{एन}} (पुंलिंग, नपुंसक -अ), {{अया}} (स्त्रीलिंग -आ), {{या}} (स्त्रीलिंग -ई)।'
     tag: core
     taught_in: with.means#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: First case and third case
+        hi: प्रथमा और तृतीया
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: '1st: itself'
+        hi: 'प्रथमा: स्वयं'
+      - en: '3rd: by means of'
+        hi: 'तृतीया: साधन से'
+      rows:
+      - - id: r0-c0
+          label:
+            en: boat
+            hi: नाव
+        - id: r0-c1
+          sa: नौका
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt: &id001
+              en: One boat on the river
+              hi: नदी पर एक नाव
+            ratio: '4:3'
+            text_in_image: &id002 []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r0-c2
+          sa: नौकया
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt: *id001
+            ratio: '4:3'
+            text_in_image: *id002
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: नौका
+      - - id: r1-c0
+          label:
+            en: pole
+            hi: डंडी
+        - id: r1-c1
+          sa: दण्डः
+          feature:
+            en: 'Stem: {{दण्ड}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दण्ड
+        - id: r1-c2
+          sa: दण्डेन
+          feature:
+            en: 'Stem: {{दण्ड}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: दण्ड
+      - - id: r2-c0
+          label:
+            en: hand
+            hi: हाथ
+        - id: r2-c1
+          sa: हस्तः
+          feature:
+            en: 'Stem: {{हस्त}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हस्त
+        - id: r2-c2
+          sa: हस्तेन
+          feature:
+            en: 'Stem: {{हस्त}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: हस्त
+      - - id: r3-c0
+          label:
+            en: pen
+            hi: कलम
+        - id: r3-c1
+          sa: लेखनी
+          feature:
+            en: 'Stem: {{लेखनी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-pen
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One traditional reed writing pen resting beside a small plain black inkpot on
+              an ivory surface. No paper or writing. Show the pen tip and inkpot clearly.'
+            alt: &id003
+              en: A reed pen beside an inkpot
+              hi: दवात के पास लेखनी
+            ratio: '1:1'
+            text_in_image: &id004 []
+        - id: r3-c2
+          sa: लेखन्या
+          feature:
+            en: 'Stem: {{लेखनी}} · feminine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          image:
+            id: teaching-pen
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One traditional reed writing pen resting beside a small plain black inkpot on
+              an ivory surface. No paper or writing. Show the pen tip and inkpot clearly.'
+            alt: *id003
+            ratio: '1:1'
+            text_in_image: *id004
+          compare_from: लेखनी
+      - - id: r4-c0
+          label:
+            en: fruit
+            hi: फल
+        - id: r4-c1
+          sa: फलम्
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt: &id005
+              en: One whole mango
+              hi: एक पूरा आम
+            ratio: '4:3'
+            text_in_image: &id006 []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: फल
+        - id: r4-c2
+          sa: फलेन
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt: *id005
+            ratio: '4:3'
+            text_in_image: *id006
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: फल
   - skill: case.inst-saha
     formula: मित्रेण सह
     rule:
@@ -42,6 +253,62 @@ cards:
       hi: ‘के साथ’ तृतीया और {{सह}} से बनता है।
     tag: core
     taught_in: with.together#t1
+    visuals:
+    - id: v-linked-2
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+      - id: i1
+        sa: मित्रेण
+        meaning:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: मित्र
+      - id: i2
+        sa: सह
+        meaning:
+          en: together with
+          hi: साथ
+      - id: i3
+        sa: गच्छामि
+        meaning:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: गम्
+      edges:
+      - source: i1
+        target: i3
+        label:
+          en: companion, with सह
+          hi: सह के साथ साथी
   - skill: case.inst-saha
     formula: मित्रैः सह
     rule:
@@ -84,6 +351,7 @@ cards:
         feature:
           en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · plural'
           hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+        compare_from: मित्र
       - id: rule
         label:
           en: Connect the form and the rule
@@ -108,6 +376,7 @@ cards:
         feature:
           en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · plural'
           hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+        compare_from: मित्र
 - id: conditions
   kind: revision
   title:
@@ -122,6 +391,58 @@ cards:
       hi: 'जोड़े द्विवचन में चलते हैं: {{नेत्राभ्याम्}}, {{हस्ताभ्याम्}}; तीनों लिंगों में वही प्रत्यय {{आभ्याम्}}।'
     tag: good
     taught_in: with.means#t2
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सुखेन
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: happily, in comfort
+          hi: सुख से
+        check:
+          type: subanta
+          stem: सुख
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{सुख}} · neuter · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: सुख
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The third case also says how, in what manner: {{सुखेन}} (happily), {{वेगेन}} (swiftly). And with the eyes,
+            ears, hands in pairs it goes dual: {{नेत्राभ्याम्}} (with the two eyes).'
+          hi: 'तृतीया यह भी बताती है कि कैसे, किस ढंग से: {{सुखेन}} (सुख से), {{वेगेन}} (वेग से)। और आँखों, कानों, हाथों की
+            जोड़ी के साथ वह द्विवचन हो जाती है: {{नेत्राभ्याम्}} (दोनों आँखों से)।'
+      - id: i3
+        sa: सुखेन
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: happily, in comfort
+          hi: सुख से
+        check:
+          type: subanta
+          stem: सुख
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{सुख}} · neuter · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{सुख}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: सुख
 - id: exceptions
   kind: revision
   title:
@@ -171,6 +492,7 @@ cards:
         feature:
           en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
           hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: राम
       - id: rule
         label:
           en: Connect the form and the rule
@@ -195,6 +517,7 @@ cards:
         feature:
           en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
           hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: राम
 - id: mistakes
   kind: revision
   title:
@@ -209,12 +532,119 @@ cards:
       hi: 'साथी को प्रथमा में मत रखिए: {{मित्रेण सह}}, {{मित्रः सह}} नहीं।'
     tag: core
     taught_in: with.together#t1
+    visuals:
+    - id: v-linked-0
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+      - id: i1
+        sa: मित्रेण
+        meaning:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: मित्र
+      - id: i2
+        sa: सह
+        meaning:
+          en: together with
+          hi: साथ
+      - id: i3
+        sa: गच्छामि
+        meaning:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: गम्
+      edges:
+      - source: i1
+        target: i3
+        label:
+          en: companion, with सह
+          hi: सह के साथ साथी
   - skill: case.inst
     rule:
       en: 'Do not look for a word for “by” or “with”: the ending {{एन}}/{{अया}} already says it.'
       hi: '‘से’ या ‘के द्वारा’ के लिए शब्द मत खोजिए: प्रत्यय {{एन}}/{{अया}} वही कहता है।'
     tag: core
     taught_in: with.means#t1
+    visuals:
+    - id: v-linked-1
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      items:
+      - id: i0
+        sa: वयम्
+        meaning:
+          en: we
+          hi: हम
+      - id: i1
+        sa: नौकया
+        meaning:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: नौका
+      - id: i2
+        sa: गच्छामः
+        meaning:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: गम्
+      edges:
+      - source: i1
+        target: i2
+        label:
+          en: means used
+          hi: प्रयुक्त साधन
 - id: panini
   kind: revision
   title:
@@ -232,6 +662,20 @@ cards:
     - 2.3.18
     tag: core
     taught_in: with.means#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 1.4.42, {{साधकतमं करणम्}}, calls the tool “the most effective means” of an action. Sūtra 2.3.18 puts the
+          tool, and the doer of a passive verb, in the third case.
+        hi: सूत्र 1.4.42, {{साधकतमं करणम्}}, उपकरण को क्रिया का ‘सबसे प्रभावी साधन’ कहता है। सूत्र 2.3.18 साधन को, और कर्मवाच्य
+          के कर्ता को, तृतीया में रखता है।
+      items:
+      - id: i0
+        sa: साधकतमं करणम्
 - id: sheet
   kind: revision
   title:
@@ -247,6 +691,166 @@ cards:
       hi: साधन से
     tag: core
     taught_in: with.means#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: First case and third case
+        hi: प्रथमा और तृतीया
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: '1st: itself'
+        hi: 'प्रथमा: स्वयं'
+      - en: '3rd: by means of'
+        hi: 'तृतीया: साधन से'
+      rows:
+      - - id: r0-c0
+          label:
+            en: boat
+            hi: नाव
+        - id: r0-c1
+          sa: नौका
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt: &id007
+              en: One boat on the river
+              hi: नदी पर एक नाव
+            ratio: '4:3'
+            text_in_image: &id008 []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r0-c2
+          sa: नौकया
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt: *id007
+            ratio: '4:3'
+            text_in_image: *id008
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: नौका
+      - - id: r1-c0
+          label:
+            en: pole
+            hi: डंडी
+        - id: r1-c1
+          sa: दण्डः
+          feature:
+            en: 'Stem: {{दण्ड}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दण्ड
+        - id: r1-c2
+          sa: दण्डेन
+          feature:
+            en: 'Stem: {{दण्ड}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{दण्ड}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: दण्ड
+      - - id: r2-c0
+          label:
+            en: hand
+            hi: हाथ
+        - id: r2-c1
+          sa: हस्तः
+          feature:
+            en: 'Stem: {{हस्त}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: हस्त
+        - id: r2-c2
+          sa: हस्तेन
+          feature:
+            en: 'Stem: {{हस्त}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{हस्त}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: हस्त
+      - - id: r3-c0
+          label:
+            en: pen
+            hi: कलम
+        - id: r3-c1
+          sa: लेखनी
+          feature:
+            en: 'Stem: {{लेखनी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-pen
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One traditional reed writing pen resting beside a small plain black inkpot on
+              an ivory surface. No paper or writing. Show the pen tip and inkpot clearly.'
+            alt: &id009
+              en: A reed pen beside an inkpot
+              hi: दवात के पास लेखनी
+            ratio: '1:1'
+            text_in_image: &id010 []
+        - id: r3-c2
+          sa: लेखन्या
+          feature:
+            en: 'Stem: {{लेखनी}} · feminine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{लेखनी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          image:
+            id: teaching-pen
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. One traditional reed writing pen resting beside a small plain black inkpot on
+              an ivory surface. No paper or writing. Show the pen tip and inkpot clearly.'
+            alt: *id009
+            ratio: '1:1'
+            text_in_image: *id010
+          compare_from: लेखनी
+      - - id: r4-c0
+          label:
+            en: fruit
+            hi: फल
+        - id: r4-c1
+          sa: फलम्
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt: &id011
+              en: One whole mango
+              hi: एक पूरा आम
+            ratio: '4:3'
+            text_in_image: &id012 []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: फल
+        - id: r4-c2
+          sa: फलेन
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt: *id011
+            ratio: '4:3'
+            text_in_image: *id012
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: फल
   - skill: case.inst-saha
     formula: मित्रेण सह
     rule:
@@ -254,3 +858,59 @@ cards:
       hi: के साथ
     tag: core
     taught_in: with.together#t1
+    visuals:
+    - id: v-linked-1
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      items:
+      - id: i0
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+      - id: i1
+        sa: मित्रेण
+        meaning:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: मित्र
+      - id: i2
+        sa: सह
+        meaning:
+          en: together with
+          hi: साथ
+      - id: i3
+        sa: गच्छामि
+        meaning:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: गम्
+      edges:
+      - source: i1
+        target: i3
+        label:
+          en: companion, with सह
+          hi: सह के साथ साथी

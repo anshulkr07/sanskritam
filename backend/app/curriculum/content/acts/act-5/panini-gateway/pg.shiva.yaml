@@ -87,6 +87,21 @@ cards:
     hi: 'शिवसूत्र संस्कृत की हर ध्वनि को चौदह छोटी पंक्तियों में गिनाते हैं; परम्परा उन्हें शिव से जोड़ती है। हर पंक्ति एक
       संकेत पर समाप्त होती है, एक ऐसा अक्षर जो स्वयं ध्वनि नहीं है: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्। वे पाणिनि की
       वर्णमाला हैं, इस क्रम में कि ध्वनियों के समूह साथ-साथ आएँ।'
+  visuals:
+  - id: v-foundation-concept
+    kind: comparison
+    title:
+      en: Fourteen lines
+      hi: चौदह पंक्तियाँ
+    items:
+    - id: explanation
+      meaning:
+        en: 'The Śiva sūtras list every sound of Sanskrit in fourteen short lines; tradition ascribes them to Śiva. Each line
+          ends with a marker, a letter that is not itself a sound: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्. They are Pāṇini''s
+          alphabet, arranged so that groups of sounds stand side by side.'
+        hi: 'शिवसूत्र संस्कृत की हर ध्वनि को चौदह छोटी पंक्तियों में गिनाते हैं; परम्परा उन्हें शिव से जोड़ती है। हर पंक्ति
+          एक संकेत पर समाप्त होती है, एक ऐसा अक्षर जो स्वयं ध्वनि नहीं है: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्। वे पाणिनि
+          की वर्णमाला हैं, इस क्रम में कि ध्वनियों के समूह साथ-साथ आएँ।'
 - id: tb1
   kind: table
   title:
@@ -202,6 +217,349 @@ cards:
       en: a short name for a group of sounds
       hi: ध्वनि-समूह का संक्षिप्त नाम
   visuals:
+  - id: v-sound-ranges
+    kind: sound_range
+    title:
+      en: Select a sound range
+      hi: ध्वनि-समूह चुनें
+    items:
+    - id: line-0
+      sa: अ इ उ
+      marker: ण्
+    - id: line-1
+      sa: ऋ ऌ
+      marker: क्
+    - id: line-2
+      sa: ए ओ
+      marker: ङ्
+    - id: line-3
+      sa: ऐ औ
+      marker: च्
+    - id: line-4
+      sa: ह य व र
+      marker: ट्
+    - id: line-5
+      sa: ल
+      marker: ण्
+    - id: line-6
+      sa: ञ म ङ ण न
+      marker: म्
+    - id: line-7
+      sa: झ भ
+      marker: ञ्
+    - id: line-8
+      sa: घ ढ ध
+      marker: ष्
+    - id: line-9
+      sa: ज ब ग ड द
+      marker: श्
+    - id: line-10
+      sa: ख फ छ ठ थ च ट त
+      marker: व्
+    - id: line-11
+      sa: क प
+      marker: य्
+    - id: line-12
+      sa: श ष स
+      marker: र्
+    - id: line-13
+      sa: ह
+      marker: ल्
+    selections:
+    - id: range-0
+      sa: अच्
+      meaning:
+        en: Read from {{अ … च्}}, leaving out all markers.
+        hi: '{{अ … च्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: अ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: इ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: उ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऋ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऌ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ए
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ओ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऐ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: औ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-1
+      sa: इक्
+      meaning:
+        en: Read from {{इ … क्}}, leaving out all markers.
+        hi: '{{इ … क्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: इ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: उ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऋ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऌ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-2
+      sa: एच्
+      meaning:
+        en: Read from {{ए … च्}}, leaving out all markers.
+        hi: '{{ए … च्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: ए
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ओ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ऐ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: औ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-3
+      sa: यण्
+      meaning:
+        en: Read from {{य … ण्}}, leaving out all markers.
+        hi: '{{य … ण्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: य
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: व
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: र
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ल
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-4
+      sa: जश्
+      meaning:
+        en: Read from {{ज … श्}}, leaving out all markers.
+        hi: '{{ज … श्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: ज
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ब
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ग
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ड
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: द
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-5
+      sa: शल्
+      meaning:
+        en: Read from {{श … ल्}}, leaving out all markers.
+        hi: '{{श … ल्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: श
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ष
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: स
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ह
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+    - id: range-6
+      sa: हल्
+      meaning:
+        en: Read from {{ह … ल्}}, leaving out all markers.
+        hi: '{{ह … ल्}} तक पढ़ें, सभी अन्तिम संकेत छोड़कर।'
+      words:
+      - sa: ह
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: य
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: व
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: र
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ल
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ञ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: म
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ङ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ण
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: न
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: झ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: भ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: घ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ढ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ध
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ज
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ब
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ग
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ड
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: द
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ख
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: फ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: छ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ठ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: थ
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: च
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ट
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: त
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: क
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: प
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: श
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: ष
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
+      - sa: स
+        gloss:
+          en: included sound
+          hi: शामिल ध्वनि
   - id: v-source-terms
     kind: comparison
     title:

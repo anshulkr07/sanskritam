@@ -27,6 +27,118 @@ cards:
     - 7.1.37
     tag: core
     taught_in: part.ktva#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Having done
+        hi: करके
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Having …
+        hi: … करके
+      - en: With a prefix
+        hi: उपसर्ग सहित
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गत्वा
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: आगत्य
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: कृ
+        - id: r1-c1
+          sa: कृत्वा
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+        - id: r1-c2
+          sa: संस्कृत्य
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+      - - id: r2-c0
+          sa: श्रु
+        - id: r2-c1
+          sa: श्रुत्वा
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+        - id: r2-c2
+          sa: आश्रुत्य
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: दृष्ट्वा
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+        - id: r3-c2
+          sa: संदृश्य
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+      - - id: r4-c0
+          sa: दा
+        - id: r4-c1
+          sa: दत्त्वा
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+        - id: r4-c2
+          sa: प्रदाय
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+      - - id: r5-c0
+          sa: नी
+        - id: r5-c1
+          sa: नीत्वा
+          feature:
+            en: 'Root: {{नी}}'
+            hi: 'धातु: {{नी}}'
+          compare_from: नी
+        - id: r5-c2
+          sa: आनीय
+          feature:
+            en: 'Root: {{नी}}'
+            hi: 'धातु: {{नी}}'
+          compare_from: नी
+      - - id: r6-c0
+          sa: जि
+        - id: r6-c1
+          sa: जित्वा
+          feature:
+            en: 'Root: {{जि}}'
+            hi: 'धातु: {{जि}}'
+          compare_from: जि
+        - id: r6-c2
+          sa: विजित्य
+          feature:
+            en: 'Root: {{जि}}'
+            hi: 'धातु: {{जि}}'
+          compare_from: जि
   - skill: krt.tumun
     rule:
       en: '{{-तुम्}}: to do: {{गन्तुम्}}, {{पठितुम्}}, {{द्रष्टुम्}}.'
@@ -36,6 +148,104 @@ cards:
     - 3.3.158
     tag: core
     taught_in: part.tumun#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: In order to
+        hi: के लिए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: To …
+        hi: … के लिए
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गन्तुम्
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+        - id: r0-c2
+          label:
+            en: to go
+            hi: जाने के लिए
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठितुम्
+          feature:
+            en: 'Root: {{पठ्}}'
+            hi: 'धातु: {{पठ्}}'
+          compare_from: पठ्
+        - id: r1-c2
+          label:
+            en: to read
+            hi: पढ़ने के लिए
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कर्तुम्
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+        - id: r2-c2
+          label:
+            en: to do
+            hi: करने के लिए
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: द्रष्टुम्
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+        - id: r3-c2
+          label:
+            en: to see
+            hi: देखने के लिए
+      - - id: r4-c0
+          sa: श्रु
+        - id: r4-c1
+          sa: श्रोतुम्
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+        - id: r4-c2
+          label:
+            en: to hear
+            hi: सुनने के लिए
+      - - id: r5-c0
+          sa: दा
+        - id: r5-c1
+          sa: दातुम्
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+        - id: r5-c2
+          label:
+            en: to give
+            hi: देने के लिए
+      - - id: r6-c0
+          sa: भू
+        - id: r6-c1
+          sa: भवितुम्
+          feature:
+            en: 'Root: {{भू}}'
+            hi: 'धातु: {{भू}}'
+          compare_from: भू
+        - id: r6-c2
+          label:
+            en: to be
+            hi: होने के लिए
   - skill: krt.kta
     rule:
       en: '{{-त}} / {{-तवत्}}: done / has done: {{गतः}}, {{गतवान्}}.'
@@ -45,6 +255,142 @@ cards:
     - 3.2.102
     tag: core
     taught_in: part.kta#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Gone
+        hi: गया हुआ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गतः
+          feature:
+            en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: गता
+          feature:
+            en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c3
+          sa: गतम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठितः
+          feature:
+            en: 'Root: {{पठ्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठिता
+          feature:
+            en: 'Root: {{पठ्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठितम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कृतः
+          feature:
+            en: 'Root: {{कृ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c2
+          sa: कृता
+          feature:
+            en: 'Root: {{कृ}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c3
+          sa: कृतम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: श्रुतः
+          feature:
+            en: 'Root: {{श्रु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: श्रुता
+          feature:
+            en: 'Root: {{श्रु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: श्रुतम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: दृश्
+        - id: r4-c1
+          sa: दृष्टः
+          feature:
+            en: 'Root: {{दृश्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+        - id: r4-c2
+          sa: दृष्टा
+          feature:
+            en: 'Root: {{दृश्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+        - id: r4-c3
+          sa: दृष्टम्
+          feature:
+            en: 'Root: {{दृश्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+      - - id: r5-c0
+          sa: दा
+        - id: r5-c1
+          sa: दत्तः
+          feature:
+            en: 'Root: {{दा}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r5-c2
+          sa: दत्ता
+          feature:
+            en: 'Root: {{दा}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r5-c3
+          sa: दत्तम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
   - skill: krt.shatr
     rule:
       en: '{{-अत्}} / {{-मान}}: while doing: {{गच्छन्}}, {{सेवमानः}}.'
@@ -53,6 +399,102 @@ cards:
     - 3.2.124
     tag: core
     taught_in: part.shatr#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: While doing
+        hi: करते हुए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गच्छन्
+          feature:
+            en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: गच्छन्ती
+          feature:
+            en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c3
+          sa: गच्छत्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठन्
+          feature:
+            en: 'Root: {{पठ्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठन्ती
+          feature:
+            en: 'Root: {{पठ्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठत्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कुर्वन्
+          feature:
+            en: 'Root: {{कृ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c2
+          sa: कुर्वती
+          feature:
+            en: 'Root: {{कृ}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c3
+          sa: कुर्वत्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: शृण्वन्
+          feature:
+            en: 'Root: {{श्रु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: शृण्वती
+          feature:
+            en: 'Root: {{श्रु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: शृण्वत्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
   - skill: krt.krtya
     rule:
       en: '{{-तव्य}} / {{-अनीय}} / {{-य}}: must be done: {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}.'
@@ -62,6 +504,142 @@ cards:
     - 3.1.97
     tag: core
     taught_in: part.krtya#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: Must be done
+        hi: करना चाहिए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: ending -tavya
+        hi: प्रत्यय -तव्य
+      - en: ending -anīya
+        hi: प्रत्यय -अनीय
+      - en: ending -ya
+        hi: प्रत्यय -य
+      rows:
+      - - id: r0-c0
+          sa: कृ
+        - id: r0-c1
+          sa: कर्तव्यम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r0-c2
+          sa: करणीयम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r0-c3
+          sa: कार्यम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r1-c0
+          sa: गम्
+        - id: r1-c1
+          sa: गन्तव्यम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r1-c2
+          sa: गमनीयम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r1-c3
+          sa: गम्यम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r2-c0
+          sa: दा
+        - id: r2-c1
+          sa: दातव्यम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r2-c2
+          sa: दानीयम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r2-c3
+          sa: देयम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: श्रोतव्यम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: श्रवणीयम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: श्राव्यम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: वच्
+        - id: r4-c1
+          sa: वक्तव्यम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+        - id: r4-c2
+          sa: वचनीयम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+        - id: r4-c3
+          sa: वाक्यम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+      - - id: r5-c0
+          sa: पठ्
+        - id: r5-c1
+          sa: पठितव्यम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r5-c2
+          sa: पठनीयम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r5-c3
+          sa: पाठ्यम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
 - id: conditions
   kind: revision
   title:
@@ -76,18 +654,300 @@ cards:
       hi: '{{-त्वा}} / {{-य}} और {{-तुम्}} कभी नहीं बदलते; बाक़ी संज्ञा से मेल खाते हैं।'
     tag: good
     taught_in: part.ktva#t1
+    visuals:
+    - id: v-linked-0
+      kind: relations
+      title:
+        en: How the words are connected
+        hi: शब्द कैसे जुड़े हैं
+      explanation:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      items:
+      - id: i0
+        sa: सः
+        meaning:
+          en: he
+          hi: वह
+      - id: i1
+        sa: गृहम्
+        meaning:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: गृह
+      - id: i2
+        sa: गत्वा
+        meaning:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+        feature:
+          en: 'Root: {{गम्}}'
+          hi: 'धातु: {{गम्}}'
+        compare_from: गम्
+      - id: i3
+        sa: पठति
+        meaning:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      edges:
+      - source: i0
+        target: i2
+        label:
+          en: same person goes
+          hi: यही व्यक्ति जाता है
+      - source: i0
+        target: i3
+        label:
+          en: same person reads
+          hi: यही व्यक्ति पढ़ता है
+      - source: i2
+        target: i3
+        label:
+          en: having gone, then reads
+          hi: जाकर, फिर पढ़ता है
   - skill: krt.kta
     rule:
       en: '{{-त}} for the object or the bare action, {{-तवत्}} for the doer.'
       hi: कर्म या केवल क्रिया के लिए {{-त}}, कर्ता के लिए {{-तवत्}}।
     tag: good
     taught_in: part.kta#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: बालकः गतः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: The boy has gone.
+          hi: बालक गया।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गतः
+          gloss:
+            en: gone
+            hi: गया
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: kta
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+      - id: i1
+        sa: बालकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: i2
+        sa: गतः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: gone
+          hi: गया
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{-त}} makes “done”, an adjective: {{गतः}} (gone), {{कृतः}} (done), {{उक्तः}} (said), {{श्रुतः}} (heard). It
+            often has a passive sense: {{रामेण पुस्तकं पठितम्}}, “the book was read by Rāma”. {{-तवत्}} makes the active “has
+            done”: {{रामः पुस्तकं पठितवान्}}.'
+          hi: '{{-त}} ‘किया हुआ’ बनाता है, एक विशेषण: {{गतः}} (गया हुआ), {{कृतः}} (किया हुआ), {{उक्तः}} (कहा हुआ), {{श्रुतः}}
+            (सुना हुआ)। उसमें अक्सर कर्मवाच्य का भाव होता है: {{रामेण पुस्तकं पठितम्}}, ‘पुस्तक राम द्वारा पढ़ी गई’। {{-तवत्}}
+            कर्तृवाची ‘कर चुका’ बनाता है: {{रामः पुस्तकं पठितवान्}}।'
+      - id: i5
+        sa: बालकः गतः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: The boy has gone.
+          hi: बालक गया।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गतः
+          gloss:
+            en: gone
+            hi: गया
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: kta
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
   - skill: krt.krtya
     rule:
       en: With a “must” word, the doer is in the third case.
       hi: ‘चाहिए’ वाले शब्द के साथ कर्ता तृतीया में रहता है।
     tag: good
     taught_in: part.krtya#t1
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मया गन्तव्यम्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: I must go.
+          hi: मुझे जाना है।
+        words:
+        - sa: मया
+          gloss:
+            en: by me
+            hi: मेरे द्वारा
+        - sa: गन्तव्यम्
+          gloss:
+            en: must be gone
+            hi: जाना है
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: tavya
+            linga: Napumsaka
+            vibhakti: Prathama
+            vacana: Eka
+      - id: i1
+        sa: मया
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: by me
+          hi: मेरे द्वारा
+      - id: i2
+        sa: गन्तव्यम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+          hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+            {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case:
+            {{मया गन्तव्यम्}}, “I must go”.'
+          hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+            {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+            ‘मुझे जाना है’।'
+      - id: i5
+        sa: मया गन्तव्यम्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: I must go.
+          hi: मुझे जाना है।
+        words:
+        - sa: मया
+          gloss:
+            en: by me
+            hi: मेरे द्वारा
+        - sa: गन्तव्यम्
+          gloss:
+            en: must be gone
+            hi: जाना है
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: tavya
+            linga: Napumsaka
+            vibhakti: Prathama
+            vacana: Eka
 - id: exceptions
   kind: revision
   title:
@@ -133,6 +993,7 @@ cards:
         feature:
           en: 'Root: {{दृश्}}'
           hi: 'धातु: {{दृश्}}'
+        compare_from: दृश्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -155,6 +1016,7 @@ cards:
         feature:
           en: 'Root: {{दृश्}}'
           hi: 'धातु: {{दृश्}}'
+        compare_from: दृश्
   - skill: krt.kta
     rule:
       en: 'Some {{-त}} words are quite irregular: {{पच्}} gives {{पक्वः}}, {{धा}} gives {{हितः}}.'
@@ -198,6 +1060,7 @@ cards:
         feature:
           en: 'Root: {{पच्}} · masculine · {{प्रथमा}} · singular'
           hi: 'धातु: {{पच्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: पच्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -223,6 +1086,7 @@ cards:
         feature:
           en: 'Root: {{पच्}} · masculine · {{प्रथमा}} · singular'
           hi: 'धातु: {{पच्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: पच्
 - id: mistakes
   kind: revision
   title:
@@ -260,6 +1124,32 @@ cards:
     - 7.1.37
     tag: core
     taught_in: part.ktva#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, gives {{क्त्वा}} for an earlier action by the same doer. 7.1.37, {{समासेऽनञ्पूर्वे
+          क्त्वो ल्यप्}}, turns {{क्त्वा}} into {{ल्यप्}}, that is {{-य}}, after a prefix. 1.1.40, {{क्त्वातोसुन्कसुनः}},
+          says these endings are indeclinable.
+        hi: सूत्र 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, उसी कर्ता की पहले हुई क्रिया के लिए {{क्त्वा}} देता है। 7.1.37, {{समासेऽनञ्पूर्वे
+          क्त्वो ल्यप्}}, उपसर्ग के बाद {{क्त्वा}} को {{ल्यप्}}, अर्थात् {{-य}}, बना देता है। 1.1.40, {{क्त्वातोसुन्कसुनः}},
+          कहता है कि ये प्रत्यय अव्यय हैं।
+      items:
+      - id: i0
+        sa: समानकर्तृकयोः पूर्वकाले
+      - id: i1
+        sa: क्त्वा
+      - id: i2
+        sa: समासेऽनञ्पूर्वे क्त्वो ल्यप्
+      - id: i3
+        sa: ल्यप्
+      - id: i4
+        sa: -य
+      - id: i5
+        sa: क्त्वातोसुन्कसुनः
   - skill: krt.krtya
     rule:
       en: '{{तव्यत्तव्यानीयरः}}, {{अचो यत्}}, {{ऋहलोर्ण्यत्}}: the three “must” endings.'
@@ -270,6 +1160,38 @@ cards:
     - 3.1.124
     tag: core
     taught_in: part.krtya#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 3.1.96, {{तव्यत्तव्यानीयरः}}, gives {{तव्यत्}}, {{तव्य}} and {{अनीयर्}}; 3.1.97, {{अचो यत्}}, gives {{यत्}}
+          after a root ending in a vowel, and 3.1.124, {{ऋहलोर्ण्यत्}}, gives {{ण्यत्}}. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}},
+          says the “must” words state the object or the bare action.
+        hi: सूत्र 3.1.96, {{तव्यत्तव्यानीयरः}}, {{तव्यत्}}, {{तव्य}} और {{अनीयर्}} देता है; 3.1.97, {{अचो यत्}}, स्वरान्त
+          धातु के बाद {{यत्}} देता है, और 3.1.124, {{ऋहलोर्ण्यत्}}, {{ण्यत्}} देता है। 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}},
+          कहता है कि ‘चाहिए’ वाले शब्द कर्म या केवल क्रिया को कहते हैं।
+      items:
+      - id: i0
+        sa: तव्यत्तव्यानीयरः
+      - id: i1
+        sa: तव्यत्
+      - id: i2
+        sa: तव्य
+      - id: i3
+        sa: अनीयर्
+      - id: i4
+        sa: अचो यत्
+      - id: i5
+        sa: यत्
+      - id: i6
+        sa: ऋहलोर्ण्यत्
+      - id: i7
+        sa: ण्यत्
+      - id: i8
+        sa: तयोरेव कृत्यक्तखलर्थाः
 - id: sheet
   kind: revision
   title:
@@ -285,6 +1207,118 @@ cards:
       hi: करके
     tag: core
     taught_in: part.ktva#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Having done
+        hi: करके
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Having …
+        hi: … करके
+      - en: With a prefix
+        hi: उपसर्ग सहित
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गत्वा
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: आगत्य
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: कृ
+        - id: r1-c1
+          sa: कृत्वा
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+        - id: r1-c2
+          sa: संस्कृत्य
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+      - - id: r2-c0
+          sa: श्रु
+        - id: r2-c1
+          sa: श्रुत्वा
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+        - id: r2-c2
+          sa: आश्रुत्य
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: दृष्ट्वा
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+        - id: r3-c2
+          sa: संदृश्य
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+      - - id: r4-c0
+          sa: दा
+        - id: r4-c1
+          sa: दत्त्वा
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+        - id: r4-c2
+          sa: प्रदाय
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+      - - id: r5-c0
+          sa: नी
+        - id: r5-c1
+          sa: नीत्वा
+          feature:
+            en: 'Root: {{नी}}'
+            hi: 'धातु: {{नी}}'
+          compare_from: नी
+        - id: r5-c2
+          sa: आनीय
+          feature:
+            en: 'Root: {{नी}}'
+            hi: 'धातु: {{नी}}'
+          compare_from: नी
+      - - id: r6-c0
+          sa: जि
+        - id: r6-c1
+          sa: जित्वा
+          feature:
+            en: 'Root: {{जि}}'
+            hi: 'धातु: {{जि}}'
+          compare_from: जि
+        - id: r6-c2
+          sa: विजित्य
+          feature:
+            en: 'Root: {{जि}}'
+            hi: 'धातु: {{जि}}'
+          compare_from: जि
   - skill: krt.tumun
     formula: गन्तुम् · कर्तुम्
     rule:
@@ -292,6 +1326,104 @@ cards:
       hi: करने के लिए
     tag: core
     taught_in: part.tumun#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: In order to
+        hi: के लिए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: To …
+        hi: … के लिए
+      - en: Meaning
+        hi: अर्थ
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गन्तुम्
+          feature:
+            en: 'Root: {{गम्}}'
+            hi: 'धातु: {{गम्}}'
+          compare_from: गम्
+        - id: r0-c2
+          label:
+            en: to go
+            hi: जाने के लिए
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठितुम्
+          feature:
+            en: 'Root: {{पठ्}}'
+            hi: 'धातु: {{पठ्}}'
+          compare_from: पठ्
+        - id: r1-c2
+          label:
+            en: to read
+            hi: पढ़ने के लिए
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कर्तुम्
+          feature:
+            en: 'Root: {{कृ}}'
+            hi: 'धातु: {{कृ}}'
+          compare_from: कृ
+        - id: r2-c2
+          label:
+            en: to do
+            hi: करने के लिए
+      - - id: r3-c0
+          sa: दृश्
+        - id: r3-c1
+          sa: द्रष्टुम्
+          feature:
+            en: 'Root: {{दृश्}}'
+            hi: 'धातु: {{दृश्}}'
+          compare_from: दृश्
+        - id: r3-c2
+          label:
+            en: to see
+            hi: देखने के लिए
+      - - id: r4-c0
+          sa: श्रु
+        - id: r4-c1
+          sa: श्रोतुम्
+          feature:
+            en: 'Root: {{श्रु}}'
+            hi: 'धातु: {{श्रु}}'
+          compare_from: श्रु
+        - id: r4-c2
+          label:
+            en: to hear
+            hi: सुनने के लिए
+      - - id: r5-c0
+          sa: दा
+        - id: r5-c1
+          sa: दातुम्
+          feature:
+            en: 'Root: {{दा}}'
+            hi: 'धातु: {{दा}}'
+          compare_from: दा
+        - id: r5-c2
+          label:
+            en: to give
+            hi: देने के लिए
+      - - id: r6-c0
+          sa: भू
+        - id: r6-c1
+          sa: भवितुम्
+          feature:
+            en: 'Root: {{भू}}'
+            hi: 'धातु: {{भू}}'
+          compare_from: भू
+        - id: r6-c2
+          label:
+            en: to be
+            hi: होने के लिए
   - skill: krt.kta
     formula: गतः · गता · गतम् · गतवान्
     rule:
@@ -299,6 +1431,142 @@ cards:
       hi: किया हुआ
     tag: core
     taught_in: part.kta#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Gone
+        hi: गया हुआ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गतः
+          feature:
+            en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: गता
+          feature:
+            en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c3
+          sa: गतम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठितः
+          feature:
+            en: 'Root: {{पठ्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठिता
+          feature:
+            en: 'Root: {{पठ्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठितम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कृतः
+          feature:
+            en: 'Root: {{कृ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c2
+          sa: कृता
+          feature:
+            en: 'Root: {{कृ}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c3
+          sa: कृतम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: श्रुतः
+          feature:
+            en: 'Root: {{श्रु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: श्रुता
+          feature:
+            en: 'Root: {{श्रु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: श्रुतम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: दृश्
+        - id: r4-c1
+          sa: दृष्टः
+          feature:
+            en: 'Root: {{दृश्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+        - id: r4-c2
+          sa: दृष्टा
+          feature:
+            en: 'Root: {{दृश्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+        - id: r4-c3
+          sa: दृष्टम्
+          feature:
+            en: 'Root: {{दृश्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दृश्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दृश्
+      - - id: r5-c0
+          sa: दा
+        - id: r5-c1
+          sa: दत्तः
+          feature:
+            en: 'Root: {{दा}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r5-c2
+          sa: दत्ता
+          feature:
+            en: 'Root: {{दा}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r5-c3
+          sa: दत्तम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
   - skill: krt.shatr
     formula: गच्छन् · गच्छन्ती · सेवमानः
     rule:
@@ -306,6 +1574,102 @@ cards:
       hi: करते हुए
     tag: core
     taught_in: part.shatr#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: While doing
+        hi: करते हुए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          sa: गम्
+        - id: r0-c1
+          sa: गच्छन्
+          feature:
+            en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c2
+          sa: गच्छन्ती
+          feature:
+            en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r0-c3
+          sa: गच्छत्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r1-c0
+          sa: पठ्
+        - id: r1-c1
+          sa: पठन्
+          feature:
+            en: 'Root: {{पठ्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठन्ती
+          feature:
+            en: 'Root: {{पठ्}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठत्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+      - - id: r2-c0
+          sa: कृ
+        - id: r2-c1
+          sa: कुर्वन्
+          feature:
+            en: 'Root: {{कृ}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c2
+          sa: कुर्वती
+          feature:
+            en: 'Root: {{कृ}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r2-c3
+          sa: कुर्वत्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: शृण्वन्
+          feature:
+            en: 'Root: {{श्रु}} · masculine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: शृण्वती
+          feature:
+            en: 'Root: {{श्रु}} · feminine · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: शृण्वत्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
   - skill: krt.krtya
     formula: कर्तव्यम् · करणीयम् · कार्यम्
     rule:
@@ -313,3 +1677,139 @@ cards:
       hi: करना चाहिए
     tag: core
     taught_in: part.krtya#tb1
+    visuals:
+    - id: v-linked-4
+      kind: matrix
+      title:
+        en: Must be done
+        hi: करना चाहिए
+      columns:
+      - en: Root
+        hi: धातु
+      - en: ending -tavya
+        hi: प्रत्यय -तव्य
+      - en: ending -anīya
+        hi: प्रत्यय -अनीय
+      - en: ending -ya
+        hi: प्रत्यय -य
+      rows:
+      - - id: r0-c0
+          sa: कृ
+        - id: r0-c1
+          sa: कर्तव्यम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r0-c2
+          sa: करणीयम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+        - id: r0-c3
+          sa: कार्यम्
+          feature:
+            en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: कृ
+      - - id: r1-c0
+          sa: गम्
+        - id: r1-c1
+          sa: गन्तव्यम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r1-c2
+          sa: गमनीयम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+        - id: r1-c3
+          sa: गम्यम्
+          feature:
+            en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: गम्
+      - - id: r2-c0
+          sa: दा
+        - id: r2-c1
+          sa: दातव्यम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r2-c2
+          sa: दानीयम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+        - id: r2-c3
+          sa: देयम्
+          feature:
+            en: 'Root: {{दा}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{दा}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: दा
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          sa: श्रोतव्यम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c2
+          sa: श्रवणीयम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+        - id: r3-c3
+          sa: श्राव्यम्
+          feature:
+            en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: वच्
+        - id: r4-c1
+          sa: वक्तव्यम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+        - id: r4-c2
+          sa: वचनीयम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+        - id: r4-c3
+          sa: वाक्यम्
+          feature:
+            en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: वच्
+      - - id: r5-c0
+          sa: पठ्
+        - id: r5-c1
+          sa: पठितव्यम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r5-c2
+          sa: पठनीयम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्
+        - id: r5-c3
+          sa: पाठ्यम्
+          feature:
+            en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+            hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पठ्

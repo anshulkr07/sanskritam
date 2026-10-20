@@ -194,6 +194,250 @@ cards:
       en: the “while doing” endings
       hi: ‘करते हुए’ प्रत्यय
   visuals:
+  - id: v-scene-simultaneous
+    kind: reading
+    title:
+      en: Both actions at once
+      hi: दोनों काम एक साथ
+    items:
+    - id: i0
+      sa: बालकः गच्छन् पठति।
+      meaning:
+        en: The boy reads while going.
+        hi: बालक जाते हुए पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छन्
+        gloss:
+          en: going
+          hi: जाता हुआ
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-walk-reading
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+          no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+          people or letterlike marks. Exactly one school-age boy in an ochre kurta walking calmly toward the right while reading
+          an open book held in both hands. One foot clearly steps forward and his eyes are on the book; show simultaneous
+          walking and reading. On the book, the ONLY writing is the exact large line "अ इ उ". No additional letters anywhere.
+          No teacher, signs or other people.'
+        alt:
+          en: One boy reads अ इ उ while walking
+          hi: चलते हुए अ इ उ पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
+  - id: v-event-1
+    kind: reading
+    title:
+      en: Follow the events
+      hi: घटनाओं का क्रम समझें
+    items:
+    - id: i0
+      sa: बालिका गच्छन्ती पठति।
+      meaning:
+        en: The girl reads while going.
+        hi: बालिका जाते हुए पढ़ती है।
+      words:
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छन्ती
+        gloss:
+          en: going
+          hi: जाती हुई
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      diagram:
+        kind: timeline
+        events:
+        - label:
+            en: '{{गच्छन्ती}} — ongoing circumstance'
+            hi: '{{गच्छन्ती}} — साथ चल रही क्रिया'
+          start: 0
+          end: 9
+        - label:
+            en: '{{पठति}} — main action'
+            hi: '{{पठति}} — मुख्य क्रिया'
+          start: 2
+          end: 7
+    explanation:
+      en: These actions overlap and describe the same participant. Compare the completed-first construction in the earlier
+        lesson.
+      hi: ये काम साथ होते हैं और एक ही व्यक्ति के हैं। पहले पाठ की पहले-समाप्त क्रिया से तुलना करें।
+  - id: v-event-0
+    kind: reading
+    title:
+      en: Follow the events
+      hi: घटनाओं का क्रम समझें
+    items:
+    - id: i0
+      sa: बालकः गच्छन् पठति।
+      meaning:
+        en: The boy reads while going.
+        hi: बालक जाते हुए पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छन्
+        gloss:
+          en: going
+          hi: जाता हुआ
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      diagram:
+        kind: timeline
+        events:
+        - label:
+            en: '{{गच्छन्}} — ongoing circumstance'
+            hi: '{{गच्छन्}} — साथ चल रही क्रिया'
+          start: 0
+          end: 9
+        - label:
+            en: '{{पठति}} — main action'
+            hi: '{{पठति}} — मुख्य क्रिया'
+          start: 2
+          end: 7
+    explanation:
+      en: These actions overlap and describe the same participant. Compare the completed-first construction in the earlier
+        lesson.
+      hi: ये काम साथ होते हैं और एक ही व्यक्ति के हैं। पहले पाठ की पहले-समाप्त क्रिया से तुलना करें।
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: The boy reads while going.
+      hi: बालक जाते हुए पढ़ता है।
+    items:
+    - id: i0
+      sa: बालकः
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
+    - id: i1
+      sa: गच्छन्
+      meaning:
+        en: going
+        hi: जाता हुआ
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
+    - id: i2
+      sa: पठति
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
+    edges:
+    - source: i1
+      target: i0
+      label:
+        en: describes the boy while going
+        hi: जाते हुए बालक का विशेषण
+    - source: i1
+      target: i2
+      label:
+        en: actions overlap
+        hi: दोनों क्रियाएँ साथ होती हैं
   - id: v-source-example-0
     kind: worked
     title:
@@ -257,6 +501,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -275,6 +520,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -292,6 +538,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -424,6 +671,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -441,6 +689,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -555,6 +804,7 @@ cards:
       feature:
         en: 'Stem: {{शिष्य}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{शिष्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: शिष्य
     - id: i2
       sa: सेवमानः
       label:
@@ -573,6 +823,7 @@ cards:
       feature:
         en: 'Root: {{सेव्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{सेव्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेव्
     - id: i3
       sa: वर्तते
       label:
@@ -590,6 +841,7 @@ cards:
       feature:
         en: 'Root: {{वृत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वृत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वृत्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -671,6 +923,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - sa: गच्छन्ती
       check:
         type: krdanta
@@ -679,6 +935,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - sa: गच्छत्
       check:
         type: krdanta
@@ -687,6 +947,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
   - - sa: पठ्
     - sa: पठन्
       check:
@@ -696,6 +960,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{पठ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पठ्
     - sa: पठन्ती
       check:
         type: krdanta
@@ -704,6 +972,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{पठ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पठ्
     - sa: पठत्
       check:
         type: krdanta
@@ -712,6 +984,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{पठ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पठ्
   - - sa: कृ
     - sa: कुर्वन्
       check:
@@ -721,6 +997,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{कृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कृ
     - sa: कुर्वती
       check:
         type: krdanta
@@ -729,6 +1009,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{कृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कृ
     - sa: कुर्वत्
       check:
         type: krdanta
@@ -737,6 +1021,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कृ
   - - sa: श्रु
     - sa: शृण्वन्
       check:
@@ -746,6 +1034,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{श्रु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{श्रु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: श्रु
     - sa: शृण्वती
       check:
         type: krdanta
@@ -754,6 +1046,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{श्रु}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{श्रु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: श्रु
     - sa: शृण्वत्
       check:
         type: krdanta
@@ -762,6 +1058,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{श्रु}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{श्रु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: श्रु
   note:
     en: The masculine ends in {{-न्}}, the feminine in {{-न्ती}}, the neuter in {{-त्}}.
     hi: पुंलिंग {{-न्}} पर, स्त्रीलिंग {{-न्ती}} पर, नपुंसक {{-त्}} पर समाप्त होता है।
@@ -795,6 +1095,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{सेव्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेव्
     - sa: सेवमाना
       check:
         type: krdanta
@@ -803,6 +1107,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{सेव्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेव्
     - sa: सेवमानम्
       check:
         type: krdanta
@@ -811,6 +1119,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{सेव्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: सेव्
   - - sa: वृत्
     - sa: वर्तमानः
       check:
@@ -820,6 +1132,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वृत्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{वृत्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: वृत्
     - sa: वर्तमाना
       check:
         type: krdanta
@@ -828,6 +1144,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वृत्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{वृत्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: वृत्
     - sa: वर्तमानम्
       check:
         type: krdanta
@@ -836,6 +1156,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{वृत्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{वृत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: वृत्
   - - sa: लभ्
     - sa: लभमानः
       check:
@@ -845,6 +1169,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लभ्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{लभ्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लभ्
     - sa: लभमाना
       check:
         type: krdanta
@@ -853,6 +1181,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लभ्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{लभ्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लभ्
     - sa: लभमानम्
       check:
         type: krdanta
@@ -861,6 +1193,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Root: {{लभ्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{लभ्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: लभ्
   note:
     en: '{{-मानः}}, {{-माना}}, {{-मानम्}}: like {{देव}}, {{लता}}, {{फल}}.'
     hi: '{{-मानः}}, {{-माना}}, {{-मानम्}}: {{देव}}, {{लता}}, {{फल}} की तरह।'
@@ -946,6 +1282,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -964,6 +1301,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -981,6 +1319,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1116,6 +1455,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -1134,6 +1474,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -1151,6 +1492,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1296,6 +1638,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -1314,6 +1657,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -1331,6 +1675,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1518,6 +1863,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -1536,6 +1882,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -1553,6 +1900,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1701,6 +2049,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i2
       sa: गच्छन्
       label:
@@ -1719,6 +2068,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गम्
     - id: i3
       sa: पठति
       label:
@@ -1736,6 +2086,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule

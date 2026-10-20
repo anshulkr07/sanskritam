@@ -5,10 +5,14 @@ title:
   hi: सर्वनामों और संख्याओं के बारे में सब कुछ
 title_sa: सर्वनामसङ्ख्यासङ्ग्रहः
 minutes: 6
-review: scholar_ok
+review: engine_ok
 sources:
 - title: Lesson text and story
   licence: original
+- title: Whitney, Sanskrit Grammar, §§508–512 (relative pronouns)
+  url: https://en.wikisource.org/wiki/Sanskrit_Grammar/Chapter_VII#512
+  licence: public domain
+  note: Case distinction supported by the relative/correlative examples in §512a; teaching prose and new example are original.
 cards:
 - id: core
   kind: revision
@@ -32,6 +36,176 @@ cards:
     - 7.1.52
     tag: core
     taught_in: pn.tad#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: तद् masculine
+        hi: तद् पुंलिंग
+      columns:
+      - en: Case
+        hi: विभक्ति
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: 1 · 1st (doer)
+            hi: 1 · प्रथमा
+        - id: r0-c1
+          sa: सः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r0-c2
+          sa: तौ
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r0-c3
+          sa: ते
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r1-c0
+          label:
+            en: 2 · 2nd (object)
+            hi: 2 · द्वितीया
+        - id: r1-c1
+          sa: तम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r1-c2
+          sa: तौ
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r1-c3
+          sa: तान्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r2-c0
+          label:
+            en: 3 · 3rd (by, with)
+            hi: 3 · तृतीया
+        - id: r2-c1
+          sa: तेन
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r2-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r2-c3
+          sa: तैः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r3-c0
+          label:
+            en: 4 · 4th (to, for)
+            hi: 4 · चतुर्थी
+        - id: r3-c1
+          sa: तस्मै
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r3-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r3-c3
+          sa: तेभ्यः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r4-c0
+          label:
+            en: 5 · 5th (from)
+            hi: 5 · पञ्चमी
+        - id: r4-c1
+          sa: तस्मात्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r4-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r4-c3
+          sa: तेभ्यः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r5-c0
+          label:
+            en: 6 · 6th (of)
+            hi: 6 · षष्ठी
+        - id: r5-c1
+          sa: तस्य
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r5-c2
+          sa: तयोः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r5-c3
+          sa: तेषाम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r6-c0
+          label:
+            en: 7 · 7th (in, at)
+            hi: 7 · सप्तमी
+        - id: r6-c1
+          sa: तस्मिन्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r6-c2
+          sa: तयोः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r6-c3
+          sa: तेषु
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+          compare_from: तद्
   - skill: pron.kim-yad
     rule:
       en: '{{किम्}} and {{यद्}} follow {{तद्}}: {{कः का किम्}}, {{कस्मै}}, {{कस्मात्}}, {{कस्मिन्}}; {{यः या यत्}}, {{यस्मै}},
@@ -40,6 +214,176 @@ cards:
         {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}}।'
     tag: core
     taught_in: pn.who#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'तद्, किम्, यद्: side by side'
+        hi: 'तद्, किम्, यद्: साथ-साथ'
+      columns:
+      - en: Case
+        hi: विभक्ति
+      - en: That
+        hi: वह
+      - en: Who
+        hi: कौन
+      - en: Who, which
+        hi: जो
+      rows:
+      - - id: r0-c0
+          label:
+            en: 1 · 1st (doer)
+            hi: 1 · प्रथमा
+        - id: r0-c1
+          sa: सः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r0-c2
+          sa: कः
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r0-c3
+          sa: यः
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r1-c0
+          label:
+            en: 2 · 2nd (object)
+            hi: 2 · द्वितीया
+        - id: r1-c1
+          sa: तम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r1-c2
+          sa: कम्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r1-c3
+          sa: यम्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r2-c0
+          label:
+            en: 3 · 3rd (by, with)
+            hi: 3 · तृतीया
+        - id: r2-c1
+          sa: तेन
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r2-c2
+          sa: केन
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r2-c3
+          sa: येन
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r3-c0
+          label:
+            en: 4 · 4th (to, for)
+            hi: 4 · चतुर्थी
+        - id: r3-c1
+          sa: तस्मै
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r3-c2
+          sa: कस्मै
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r3-c3
+          sa: यस्मै
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r4-c0
+          label:
+            en: 5 · 5th (from)
+            hi: 5 · पञ्चमी
+        - id: r4-c1
+          sa: तस्मात्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r4-c2
+          sa: कस्मात्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r4-c3
+          sa: यस्मात्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r5-c0
+          label:
+            en: 6 · 6th (of)
+            hi: 6 · षष्ठी
+        - id: r5-c1
+          sa: तस्य
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r5-c2
+          sa: कस्य
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r5-c3
+          sa: यस्य
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r6-c0
+          label:
+            en: 7 · 7th (in, at)
+            hi: 7 · सप्तमी
+        - id: r6-c1
+          sa: तस्मिन्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r6-c2
+          sa: कस्मिन्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r6-c3
+          sa: यस्मिन्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: यद्
   - skill: num.one-ten
     rule:
       en: 'One to four agree: {{एकः एका एकम्}}, {{द्वौ द्वे द्वे}}, {{त्रयः तिस्रः त्रीणि}}, {{चत्वारः चतस्रः चत्वारि}}. Five
@@ -48,6 +392,62 @@ cards:
         पाँच से दस नहीं बदलते: {{पञ्च षट् सप्त अष्ट नव दश}}।'
     tag: core
     taught_in: pn.count#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: 1 to 4 by gender
+        hi: 1 से 4 लिंग के अनुसार
+      columns:
+      - en: Number
+        hi: संख्या
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          label:
+            en: '1'
+            hi: १
+        - id: r0-c1
+          sa: एकः
+        - id: r0-c2
+          sa: एका
+        - id: r0-c3
+          sa: एकम्
+      - - id: r1-c0
+          label:
+            en: '2'
+            hi: २
+        - id: r1-c1
+          sa: द्वौ
+        - id: r1-c2
+          sa: द्वे
+        - id: r1-c3
+          sa: द्वे
+      - - id: r2-c0
+          label:
+            en: '3'
+            hi: ३
+        - id: r2-c1
+          sa: त्रयः
+        - id: r2-c2
+          sa: तिस्रः
+        - id: r2-c3
+          sa: त्रीणि
+      - - id: r3-c0
+          label:
+            en: '4'
+            hi: ४
+        - id: r3-c1
+          sa: चत्वारः
+        - id: r3-c2
+          sa: चतस्रः
+        - id: r3-c3
+          sa: चत्वारि
   - skill: num.big-time
     rule:
       en: '{{एकादश}} … {{अष्टादश}}; {{विंशतिः}}, {{त्रिंशत्}}, {{चत्वारिंशत्}}, {{पञ्चाशत्}}, {{षष्टिः}}, {{सप्ततिः}}, {{अशीतिः}},
@@ -56,6 +456,66 @@ cards:
         {{नवतिः}}, {{शतम्}}, {{सहस्रम्}}। क्रमवाचक: {{प्रथमः}}, {{द्वितीयः}}, {{तृतीयः}} … {{दशमः}}।'
     tag: core
     taught_in: pn.time#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Eleven to nineteen
+        hi: ग्यारह से उन्नीस
+      columns:
+      - en: Number
+        hi: संख्या
+      - en: Word
+        hi: शब्द
+      rows:
+      - - id: r0-c0
+          label:
+            en: '11'
+            hi: ११
+        - id: r0-c1
+          sa: एकादश
+      - - id: r1-c0
+          label:
+            en: '12'
+            hi: १२
+        - id: r1-c1
+          sa: द्वादश
+      - - id: r2-c0
+          label:
+            en: '13'
+            hi: १३
+        - id: r2-c1
+          sa: त्रयोदश
+      - - id: r3-c0
+          label:
+            en: '14'
+            hi: १४
+        - id: r3-c1
+          sa: चतुर्दश
+      - - id: r4-c0
+          label:
+            en: '15'
+            hi: १५
+        - id: r4-c1
+          sa: पञ्चदश
+      - - id: r5-c0
+          label:
+            en: '16'
+            hi: १६
+        - id: r5-c1
+          sa: षोडश
+      - - id: r6-c0
+          label:
+            en: '17'
+            hi: १७
+        - id: r6-c1
+          sa: सप्तदश
+      - - id: r7-c0
+          label:
+            en: '18'
+            hi: १८
+        - id: r7-c1
+          sa: अष्टादश
 - id: conditions
   kind: revision
   title:
@@ -70,19 +530,276 @@ cards:
       hi: '{{तद्}} दूर का ‘वह’ या कथा का ‘वह (पुं., स्त्री., नपुं.)’ है; {{एतद्}} पास का ‘यह’; {{इदम्}} भी ‘यह’ है।'
     tag: good
     taught_in: pn.tad#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also
+          borrow odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine,
+          {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.'
+        hi: 'केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र
+          प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग
+          में {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।'
+      items:
+      - id: i0
+        sa: सः
+      - id: i1
+        sa: सा
+      - id: i2
+        sa: स्
+      - id: i3
+        sa: त्
+      - id: i4
+        sa: तस्मै
+      - id: i5
+        sa: तस्मात्
+      - id: i6
+        sa: तस्मिन्
+      - id: i7
+        sa: तस्यै
+      - id: i8
+        sa: तस्याः
+      - id: i9
+        sa: तस्याम्
+      - id: i10
+        sa: तेषाम्
+      - id: i11
+        sa: तासाम्
   - skill: pron.kim-yad
     rule:
-      en: '{{यद्}}-clauses come with {{तद्}}-clauses: {{यः … सः}}, {{या … सा}}, {{यत् … तत्}}, in the same case in both halves.'
-      hi: '{{यद्}}-वाक्यांश {{तद्}}-वाक्यांश के साथ आते हैं: {{यः … सः}}, {{या … सा}}, {{यत् … तत्}}, दोनों भागों में एक ही
-        विभक्ति।'
+      en: '{{यद्}} and {{तद्}} can refer to the same person or thing. They agree in gender and number; each takes the case
+        required in its own clause, so their cases can differ.'
+      hi: '{{यद्}} और {{तद्}} उसी व्यक्ति या वस्तु को बता सकते हैं। लिंग और वचन में मेल रहता है; हर सर्वनाम की विभक्ति उसके
+        अपने उपवाक्य से तय होती है, इसलिए विभक्तियाँ अलग हो सकती हैं।'
     tag: good
     taught_in: pn.who#t2
+    visuals:
+    - id: v-linked-1
+      kind: relations
+      title:
+        en: Same person, different grammatical jobs
+        hi: वही व्यक्ति, अलग व्याकरणिक काम
+      explanation:
+        en: The one whom I see reads.
+        hi: जिसे मैं देखता हूँ, वह पढ़ता है।
+      items:
+      - id: i0
+        sa: यम्
+        meaning:
+          en: whom
+          hi: जिसे
+        check:
+          type: subanta
+          stem: यद्
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: यद्
+      - id: i1
+        sa: अहम्
+        meaning:
+          en: I
+          hi: मैं
+      - id: i2
+        sa: पश्यामि
+        meaning:
+          en: see
+          hi: देखता हूँ
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दृश्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: दृश्
+      - id: i3
+        sa: सः
+        meaning:
+          en: he, the same person
+          hi: वह, वही व्यक्ति
+        check:
+          type: subanta
+          stem: तद्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: तद्
+      - id: i4
+        sa: पठति
+        meaning:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      edges:
+      - source: i0
+        target: i3
+        label:
+          en: same referent; case can differ
+          hi: वही व्यक्ति; विभक्ति अलग हो सकती है
+      - source: i0
+        target: i2
+        label:
+          en: 'object of seeing: द्वितीया'
+          hi: 'देखने का कर्म: द्वितीया'
+      - source: i3
+        target: i4
+        label:
+          en: 'doer of reading: प्रथमा'
+          hi: 'पढ़ने का कर्ता: प्रथमा'
   - skill: num.one-ten
     rule:
       en: Two takes the dual; three to four the plural; five to ten the plural and never change.
       hi: दो द्विवचन लेता है; तीन-चार बहुवचन; पाँच से दस बहुवचन और कभी नहीं बदलते।
     tag: good
     taught_in: pn.count#t2
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पञ्च बालकाः पठन्ति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Five boys read.
+          hi: पाँच बालक पढ़ते हैं।
+        words:
+        - sa: पञ्च
+          gloss:
+            en: five
+            hi: पाँच
+        - sa: बालकाः
+          gloss:
+            en: boys
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Bahu
+        - sa: पठन्ति
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Bahu
+      - id: i1
+        sa: पञ्च
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: five
+          hi: पाँच
+      - id: i2
+        sa: बालकाः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boys
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: बालक
+      - id: i3
+        sa: पठन्ति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The number comes before the noun, in the same case: {{पञ्च बालकाः}} (five boys), {{द्वे लते}} (two vines),
+            {{त्रीणि फलानि}} (three fruits). In the instrumental or genitive the number changes too: {{त्रिभिः बालकैः}}, {{त्रयाणां
+            बालकानाम्}}.'
+          hi: 'संख्या संज्ञा से पहले आती है, उसी विभक्ति में: {{पञ्च बालकाः}} (पाँच बालक), {{द्वे लते}} (दो लताएँ), {{त्रीणि
+            फलानि}} (तीन फल)। तृतीया या षष्ठी में संख्या भी बदलती है: {{त्रिभिः बालकैः}}, {{त्रयाणां बालकानाम्}}।'
+      - id: i6
+        sa: पञ्च बालकाः पठन्ति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Five boys read.
+          hi: पाँच बालक पढ़ते हैं।
+        words:
+        - sa: पञ्च
+          gloss:
+            en: five
+            hi: पाँच
+        - sa: बालकाः
+          gloss:
+            en: boys
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Bahu
+        - sa: पठन्ति
+          gloss:
+            en: read
+            hi: पढ़ते हैं
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Bahu
 - id: exceptions
   kind: revision
   title:
@@ -132,6 +849,7 @@ cards:
         feature:
           en: 'Stem: {{इदम्}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{इदम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: इदम्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -156,6 +874,7 @@ cards:
         feature:
           en: 'Stem: {{इदम्}} · masculine · {{प्रथमा}} · singular'
           hi: 'प्रातिपदिक: {{इदम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: इदम्
   - skill: num.one-ten
     rule:
       en: '{{अष्ट}} is also {{अष्टौ}}; {{षष्}} becomes {{षट्}}; {{एक}} has a plural: {{एके}}, “some”.'
@@ -197,6 +916,7 @@ cards:
         feature:
           en: 'Stem: {{एक}} · masculine · {{प्रथमा}} · plural'
           hi: 'प्रातिपदिक: {{एक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: एक
       - id: rule
         label:
           en: Connect the form and the rule
@@ -221,6 +941,7 @@ cards:
         feature:
           en: 'Stem: {{एक}} · masculine · {{प्रथमा}} · plural'
           hi: 'प्रातिपदिक: {{एक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: एक
 - id: mistakes
   kind: revision
   title:
@@ -264,6 +985,54 @@ cards:
     - 7.1.15
     tag: core
     taught_in: pn.tad#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 7.2.102, {{त्यदादीनामः}}, makes the stem {{तद्}} end in {{अ}}; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, turns
+          its {{त्}} into {{स्}} before the first-case ending, giving {{सः}}. Then 7.1.14, {{सर्वनाम्नः स्मै}}, gives {{तस्मै}};
+          7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, gives {{तस्मात्}} and {{तस्मिन्}}; 7.1.17, {{जसः शी}}, gives {{ते}}; and 7.1.52,
+          {{आमि सर्वनाम्नः सुट्}}, gives {{तेषाम्}}.
+        hi: सूत्र 7.2.102, {{त्यदादीनामः}}, {{तद्}} को {{अ}}-अन्त बनाता है; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, प्रथमा के प्रत्यय
+          से पहले उसके {{त्}} को {{स्}} कर देता है, जिससे {{सः}} बनता है। फिर 7.1.14, {{सर्वनाम्नः स्मै}}, {{तस्मै}} देता
+          है; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, {{तस्मात्}} और {{तस्मिन्}} देता है; 7.1.17, {{जसः शी}}, {{ते}} देता है; और
+          7.1.52, {{आमि सर्वनाम्नः सुट्}}, {{तेषाम्}} देता है।
+      items:
+      - id: i0
+        sa: त्यदादीनामः
+      - id: i1
+        sa: तद्
+      - id: i2
+        sa: अ
+      - id: i3
+        sa: तदोः सः सावनन्त्ययोः
+      - id: i4
+        sa: त्
+      - id: i5
+        sa: स्
+      - id: i6
+        sa: सः
+      - id: i7
+        sa: सर्वनाम्नः स्मै
+      - id: i8
+        sa: तस्मै
+      - id: i9
+        sa: ङसिङ्योः स्मात्स्मिनौ
+      - id: i10
+        sa: तस्मात्
+      - id: i11
+        sa: तस्मिन्
+      - id: i12
+        sa: जसः शी
+      - id: i13
+        sa: ते
+      - id: i14
+        sa: आमि सर्वनाम्नः सुट्
+      - id: i15
+        sa: तेषाम्
   - skill: pron.tad-full
     rule:
       en: '{{आमि सर्वनाम्नः सुट्}}: the plural genitive {{तेषाम्}}, {{तासाम्}}.'
@@ -272,6 +1041,54 @@ cards:
     - 7.1.52
     tag: core
     taught_in: pn.tad#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: Sūtra 7.2.102, {{त्यदादीनामः}}, makes the stem {{तद्}} end in {{अ}}; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, turns
+          its {{त्}} into {{स्}} before the first-case ending, giving {{सः}}. Then 7.1.14, {{सर्वनाम्नः स्मै}}, gives {{तस्मै}};
+          7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, gives {{तस्मात्}} and {{तस्मिन्}}; 7.1.17, {{जसः शी}}, gives {{ते}}; and 7.1.52,
+          {{आमि सर्वनाम्नः सुट्}}, gives {{तेषाम्}}.
+        hi: सूत्र 7.2.102, {{त्यदादीनामः}}, {{तद्}} को {{अ}}-अन्त बनाता है; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, प्रथमा के प्रत्यय
+          से पहले उसके {{त्}} को {{स्}} कर देता है, जिससे {{सः}} बनता है। फिर 7.1.14, {{सर्वनाम्नः स्मै}}, {{तस्मै}} देता
+          है; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, {{तस्मात्}} और {{तस्मिन्}} देता है; 7.1.17, {{जसः शी}}, {{ते}} देता है; और
+          7.1.52, {{आमि सर्वनाम्नः सुट्}}, {{तेषाम्}} देता है।
+      items:
+      - id: i0
+        sa: त्यदादीनामः
+      - id: i1
+        sa: तद्
+      - id: i2
+        sa: अ
+      - id: i3
+        sa: तदोः सः सावनन्त्ययोः
+      - id: i4
+        sa: त्
+      - id: i5
+        sa: स्
+      - id: i6
+        sa: सः
+      - id: i7
+        sa: सर्वनाम्नः स्मै
+      - id: i8
+        sa: तस्मै
+      - id: i9
+        sa: ङसिङ्योः स्मात्स्मिनौ
+      - id: i10
+        sa: तस्मात्
+      - id: i11
+        sa: तस्मिन्
+      - id: i12
+        sa: जसः शी
+      - id: i13
+        sa: ते
+      - id: i14
+        sa: आमि सर्वनाम्नः सुट्
+      - id: i15
+        sa: तेषाम्
   - skill: pron.kim-yad
     rule:
       en: '{{किमः कः}} makes {{किम्}} into {{क-}} before most endings: {{कः}}, {{कस्मै}}.'
@@ -280,6 +1097,57 @@ cards:
     - 7.2.103
     tag: core
     taught_in: pn.who#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: कः पठति।
+        meaning:
+          en: Who reads?
+          hi: कौन पढ़ता है?
+        words:
+        - sa: कः
+          gloss:
+            en: who
+            hi: कौन
+          check:
+            type: subanta
+            stem: किम्
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
 - id: sheet
   kind: revision
   title:
@@ -295,6 +1163,176 @@ cards:
       hi: वह
     tag: core
     taught_in: pn.tad#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: तद् masculine
+        hi: तद् पुंलिंग
+      columns:
+      - en: Case
+        hi: विभक्ति
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: 1 · 1st (doer)
+            hi: 1 · प्रथमा
+        - id: r0-c1
+          sa: सः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r0-c2
+          sa: तौ
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r0-c3
+          sa: ते
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r1-c0
+          label:
+            en: 2 · 2nd (object)
+            hi: 2 · द्वितीया
+        - id: r1-c1
+          sa: तम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r1-c2
+          sa: तौ
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r1-c3
+          sa: तान्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r2-c0
+          label:
+            en: 3 · 3rd (by, with)
+            hi: 3 · तृतीया
+        - id: r2-c1
+          sa: तेन
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r2-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r2-c3
+          sa: तैः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r3-c0
+          label:
+            en: 4 · 4th (to, for)
+            hi: 4 · चतुर्थी
+        - id: r3-c1
+          sa: तस्मै
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r3-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r3-c3
+          sa: तेभ्यः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r4-c0
+          label:
+            en: 5 · 5th (from)
+            hi: 5 · पञ्चमी
+        - id: r4-c1
+          sa: तस्मात्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r4-c2
+          sa: ताभ्याम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r4-c3
+          sa: तेभ्यः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r5-c0
+          label:
+            en: 6 · 6th (of)
+            hi: 6 · षष्ठी
+        - id: r5-c1
+          sa: तस्य
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r5-c2
+          sa: तयोः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r5-c3
+          sa: तेषाम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+          compare_from: तद्
+      - - id: r6-c0
+          label:
+            en: 7 · 7th (in, at)
+            hi: 7 · सप्तमी
+        - id: r6-c1
+          sa: तस्मिन्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r6-c2
+          sa: तयोः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · dual'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+          compare_from: तद्
+        - id: r6-c3
+          sa: तेषु
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · plural'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+          compare_from: तद्
   - skill: pron.kim-yad
     formula: कः का किम् · यः या यत्
     rule:
@@ -302,6 +1340,176 @@ cards:
       hi: कौन, जो
     tag: core
     taught_in: pn.who#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'तद्, किम्, यद्: side by side'
+        hi: 'तद्, किम्, यद्: साथ-साथ'
+      columns:
+      - en: Case
+        hi: विभक्ति
+      - en: That
+        hi: वह
+      - en: Who
+        hi: कौन
+      - en: Who, which
+        hi: जो
+      rows:
+      - - id: r0-c0
+          label:
+            en: 1 · 1st (doer)
+            hi: 1 · प्रथमा
+        - id: r0-c1
+          sa: सः
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r0-c2
+          sa: कः
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r0-c3
+          sa: यः
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r1-c0
+          label:
+            en: 2 · 2nd (object)
+            hi: 2 · द्वितीया
+        - id: r1-c1
+          sa: तम्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r1-c2
+          sa: कम्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r1-c3
+          sa: यम्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r2-c0
+          label:
+            en: 3 · 3rd (by, with)
+            hi: 3 · तृतीया
+        - id: r2-c1
+          sa: तेन
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r2-c2
+          sa: केन
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r2-c3
+          sa: येन
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{तृतीया}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r3-c0
+          label:
+            en: 4 · 4th (to, for)
+            hi: 4 · चतुर्थी
+        - id: r3-c1
+          sa: तस्मै
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r3-c2
+          sa: कस्मै
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r3-c3
+          sa: यस्मै
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{चतुर्थी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r4-c0
+          label:
+            en: 5 · 5th (from)
+            hi: 5 · पञ्चमी
+        - id: r4-c1
+          sa: तस्मात्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r4-c2
+          sa: कस्मात्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r4-c3
+          sa: यस्मात्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{पञ्चमी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r5-c0
+          label:
+            en: 6 · 6th (of)
+            hi: 6 · षष्ठी
+        - id: r5-c1
+          sa: तस्य
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r5-c2
+          sa: कस्य
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r5-c3
+          sa: यस्य
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{षष्ठी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+          compare_from: यद्
+      - - id: r6-c0
+          label:
+            en: 7 · 7th (in, at)
+            hi: 7 · सप्तमी
+        - id: r6-c1
+          sa: तस्मिन्
+          feature:
+            en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: तद्
+        - id: r6-c2
+          sa: कस्मिन्
+          feature:
+            en: 'Stem: {{किम्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: किम्
+        - id: r6-c3
+          sa: यस्मिन्
+          feature:
+            en: 'Stem: {{यद्}} · masculine · {{सप्तमी}} · singular'
+            hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+          compare_from: यद्
   - skill: num.one-ten
     formula: एकः द्वौ त्रयः चत्वारः पञ्च … दश
     rule:
@@ -309,6 +1517,62 @@ cards:
       hi: एक से दस
     tag: core
     taught_in: pn.count#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: 1 to 4 by gender
+        hi: 1 से 4 लिंग के अनुसार
+      columns:
+      - en: Number
+        hi: संख्या
+      - en: Masculine
+        hi: पुंलिंग
+      - en: Feminine
+        hi: स्त्रीलिंग
+      - en: Neuter
+        hi: नपुंसक
+      rows:
+      - - id: r0-c0
+          label:
+            en: '1'
+            hi: १
+        - id: r0-c1
+          sa: एकः
+        - id: r0-c2
+          sa: एका
+        - id: r0-c3
+          sa: एकम्
+      - - id: r1-c0
+          label:
+            en: '2'
+            hi: २
+        - id: r1-c1
+          sa: द्वौ
+        - id: r1-c2
+          sa: द्वे
+        - id: r1-c3
+          sa: द्वे
+      - - id: r2-c0
+          label:
+            en: '3'
+            hi: ३
+        - id: r2-c1
+          sa: त्रयः
+        - id: r2-c2
+          sa: तिस्रः
+        - id: r2-c3
+          sa: त्रीणि
+      - - id: r3-c0
+          label:
+            en: '4'
+            hi: ४
+        - id: r3-c1
+          sa: चत्वारः
+        - id: r3-c2
+          sa: चतस्रः
+        - id: r3-c3
+          sa: चत्वारि
   - skill: num.big-time
     formula: एकादश · विंशतिः · शतम् · प्रथमः · अद्य श्वः ह्यः
     rule:
@@ -316,3 +1580,63 @@ cards:
       hi: बड़ी संख्याएँ, क्रमवाचक, समय
     tag: core
     taught_in: pn.time#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Eleven to nineteen
+        hi: ग्यारह से उन्नीस
+      columns:
+      - en: Number
+        hi: संख्या
+      - en: Word
+        hi: शब्द
+      rows:
+      - - id: r0-c0
+          label:
+            en: '11'
+            hi: ११
+        - id: r0-c1
+          sa: एकादश
+      - - id: r1-c0
+          label:
+            en: '12'
+            hi: १२
+        - id: r1-c1
+          sa: द्वादश
+      - - id: r2-c0
+          label:
+            en: '13'
+            hi: १३
+        - id: r2-c1
+          sa: त्रयोदश
+      - - id: r3-c0
+          label:
+            en: '14'
+            hi: १४
+        - id: r3-c1
+          sa: चतुर्दश
+      - - id: r4-c0
+          label:
+            en: '15'
+            hi: १५
+        - id: r4-c1
+          sa: पञ्चदश
+      - - id: r5-c0
+          label:
+            en: '16'
+            hi: १६
+        - id: r5-c1
+          sa: षोडश
+      - - id: r6-c0
+          label:
+            en: '17'
+            hi: १७
+        - id: r6-c1
+          sa: सप्तदश
+      - - id: r7-c0
+          label:
+            en: '18'
+            hi: १८
+        - id: r7-c1
+          sa: अष्टादश

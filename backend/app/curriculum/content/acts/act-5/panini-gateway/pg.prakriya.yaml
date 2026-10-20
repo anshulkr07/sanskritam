@@ -203,6 +203,68 @@ cards:
   note:
     en: The engine's full list has twenty steps; these are the ones that change the word.
     hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।
+  visuals:
+  - id: v-procedure
+    kind: worked
+    title:
+      en: Work through the example
+      hi: उदाहरण को चरण-चरण समझें
+    items:
+    - id: stage-0
+      sa: भू
+      label:
+        en: names it a root
+        hi: उसे धातु कहता है
+      feature:
+        en: 'Rule: {{भूवादयो धातवः}}'
+        hi: 'सूत्र: {{भूवादयो धातवः}}'
+    - id: stage-1
+      sa: भू + ल्
+      label:
+        en: the present tense
+        hi: वर्तमान काल
+      feature:
+        en: 'Rule: {{वर्तमाने लट्}}'
+        hi: 'सूत्र: {{वर्तमाने लट्}}'
+    - id: stage-2
+      sa: भू + ति
+      label:
+        en: the ending for “he” takes the place of {{ल्}}
+        hi: ‘वह’ का प्रत्यय {{ल्}} का स्थान लेता है
+      feature:
+        en: 'Rule: {{तिप्तस्झि …}}'
+        hi: 'सूत्र: {{तिप्तस्झि …}}'
+    - id: stage-3
+      sa: भू + अ + ति
+      label:
+        en: the joining {{अ}}
+        hi: जोड़ने वाला {{अ}}
+      feature:
+        en: 'Rule: {{कर्तरि शप्}}'
+        hi: 'सूत्र: {{कर्तरि शप्}}'
+    - id: stage-4
+      sa: भो + अ + ति
+      label:
+        en: strengthens the vowel
+        hi: स्वर को गुण करता है
+      feature:
+        en: 'Rule: {{सार्वधातुकार्धधातुकयोः}}'
+        hi: 'सूत्र: {{सार्वधातुकार्धधातुकयोः}}'
+    - id: stage-5
+      sa: भव् + अ + ति
+      label:
+        en: '{{ओ}} + {{अ}} becomes {{अव्}} + {{अ}}'
+        hi: '{{ओ}} + {{अ}} से {{अव्}} + {{अ}} बनता है'
+      feature:
+        en: 'Rule: {{एचोऽयवायावः}}'
+        hi: 'सूत्र: {{एचोऽयवायावः}}'
+    - id: conclusion
+      label:
+        en: What the steps show
+        hi: इन चरणों से क्या समझें
+      meaning:
+        en: The engine's full list has twenty steps; these are the ones that change the word.
+        hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।
 - id: e1
   kind: explore
   depth: core
@@ -568,3 +630,28 @@ cards:
     text:
       en: '8.2.1: the last rules wait.'
       hi: '8.2.1: अन्तिम नियम प्रतीक्षा करते हैं।'
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: तिप् → ति
+      meaning:
+        en: What remains.
+        hi: जो बचता है।
+    - id: i1
+      sa: भू → भवति
+      meaning:
+        en: Root, tense, ending, joining {{अ}}, two sound changes.
+        hi: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, दो ध्वनि-परिवर्तन।
+    - id: i2
+      sa: पूर्वत्रासिद्धम्
+      meaning:
+        en: '8.2.1: the last rules wait.'
+        hi: '8.2.1: अन्तिम नियम प्रतीक्षा करते हैं।'

@@ -222,6 +222,7 @@ cards:
       feature:
         en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: प्रभात
     - id: i2
       sa: वयम्
       label:
@@ -247,6 +248,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -345,6 +347,7 @@ cards:
       feature:
         en: 'Stem: {{रात्रि}} · feminine · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: रात्रि
     - id: i2
       sa: अहम्
       label:
@@ -370,6 +373,7 @@ cards:
       feature:
         en: 'Root: {{स्वप्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{स्वप्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: स्वप्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -484,6 +488,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: दिन
     - id: i2
       sa: दिने
       label:
@@ -501,6 +506,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: दिन
     - id: i3
       sa: शुकः
       label:
@@ -518,6 +524,7 @@ cards:
       feature:
         en: 'Stem: {{शुक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: शुक
     - id: i4
       sa: वदति
       label:
@@ -535,6 +542,7 @@ cards:
       feature:
         en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: वद्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -622,6 +630,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: प्रभात
     - sa: प्रभाते
       check:
         type: subanta
@@ -630,6 +642,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: प्रभात
   - - text:
         en: noon
         hi: दोपहर
@@ -640,6 +656,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मध्याह्न}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मध्याह्न}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मध्याह्न
     - sa: मध्याह्ने
       check:
         type: subanta
@@ -648,6 +668,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{मध्याह्न}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{मध्याह्न}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: मध्याह्न
   - - text:
         en: night
         hi: रात
@@ -658,6 +682,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{रात्रि}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: रात्रि
     - sa: रात्रौ
       check:
         type: subanta
@@ -666,6 +694,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{रात्रि}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: रात्रि
   - - text:
         en: day
         hi: दिन
@@ -676,6 +708,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दिन
     - sa: दिने
       check:
         type: subanta
@@ -684,6 +720,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: दिन
   - - text:
         en: month
         hi: महीना
@@ -694,6 +734,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मास}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मास
     - sa: मासि
       check:
         type: subanta
@@ -702,6 +746,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{मास}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{मास}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: मास
   - - text:
         en: year
         hi: वर्ष
@@ -712,6 +760,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{वर्ष}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{वर्ष}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: वर्ष
     - sa: वर्षे
       check:
         type: subanta
@@ -720,6 +772,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{वर्ष}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{वर्ष}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: वर्ष
   note:
     en: '{{रात्रि}}, an -इ word, makes {{रात्रौ}} in the seventh case; you will meet its family later.'
     hi: -इ वाला {{रात्रि}} सप्तमी में {{रात्रौ}} बनाता है; इसका कुल आगे मिलेगा।
@@ -798,6 +854,7 @@ cards:
       feature:
         en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: प्रभात
     - id: i2
       sa: वयम्
       label:
@@ -823,6 +880,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -960,6 +1018,7 @@ cards:
       feature:
         en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: प्रभात
     - id: i2
       sa: वयम्
       label:
@@ -985,6 +1044,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1136,6 +1196,7 @@ cards:
       feature:
         en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
         hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: प्रभात
     - id: i2
       sa: वयम्
       label:
@@ -1161,6 +1222,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1269,3 +1331,119 @@ cards:
   - text:
       en: One case for place and time.
       hi: स्थान और समय के लिए एक विभक्ति।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: रात्रौ अहम् स्वपिमि।
+      meaning:
+        en: At night I sleep.
+        hi: रात में मैं सोता हूँ।
+      words:
+      - sa: रात्रौ
+        gloss:
+          en: at night
+          hi: रात में
+        check:
+          type: subanta
+          stem: रात्रि
+          linga: Stri
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: स्वपिमि
+        gloss:
+          en: sleep
+          hi: सोता हूँ
+        check:
+          type: tinanta
+          dhatu: स्वप्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i2
+      sa: दिने दिने शुकः वदति।
+      meaning:
+        en: Day by day the parrot speaks.
+        hi: दिन-दिन तोता बोलता है।
+      words:
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: शुकः
+        gloss:
+          en: parrot
+          hi: तोता
+        check:
+          type: subanta
+          stem: शुक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: वदति
+        gloss:
+          en: speaks
+          hi: बोलता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

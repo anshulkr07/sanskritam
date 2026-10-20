@@ -168,6 +168,120 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-scene-companion
+    kind: reading
+    title:
+      en: A companion is not a tool
+      hi: साथी और साधन अलग सम्बन्ध हैं
+    explanation:
+      en: Imagine the boy in ochre saying this. सह includes the companion; it does not turn the first-person singular verb
+        into a plural.
+      hi: मान लें कि केसरिया कपड़े वाला बालक यह कह रहा है। सह साथी को जोड़ता है; इससे उत्तमपुरुष एकवचन की क्रिया बहुवचन नहीं
+        हो जाती।
+    items:
+    - id: i0
+      sa: अहम् मित्रेण सह गच्छामि।
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      image:
+        id: teaching-walk-friend
+        brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+          with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+          no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+          people or letterlike marks. Exactly two school-age boys walking together side by side, both in profile toward the
+          right, one in an ochre kurta and the friend in a muted indigo kurta. Both face and step right, relaxed friendly
+          expressions. They are companions; neither pushes, pulls, carries or leads the other. No carried objects, writing,
+          symbols or arrows.'
+        alt:
+          en: Two friends walk together
+          hi: साथ चलते दो मित्र
+        ratio: '4:3'
+        text_in_image: []
+  - id: v-links-0
+    kind: relations
+    title:
+      en: How the words are connected
+      hi: शब्द कैसे जुड़े हैं
+    explanation:
+      en: I go together with a friend.
+      hi: मैं मित्र के साथ जाता हूँ।
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+    - id: i1
+      sa: मित्रेण
+      meaning:
+        en: with a friend
+        hi: मित्र के साथ
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
+    - id: i2
+      sa: सह
+      meaning:
+        en: together with
+        hi: साथ
+    - id: i3
+      sa: गच्छामि
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
+    edges:
+    - source: i1
+      target: i3
+      label:
+        en: companion, with सह
+        hi: सह के साथ साथी
   - id: v-source-example-0
     kind: worked
     title:
@@ -236,6 +350,7 @@ cards:
       feature:
         en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
     - id: i3
       sa: सह
       label:
@@ -261,6 +376,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -390,6 +506,7 @@ cards:
       feature:
         en: 'Stem: {{शुक}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: शुक
     - id: i3
       sa: सह
       label:
@@ -415,6 +532,7 @@ cards:
       feature:
         en: 'Root: {{क्रीड्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{क्रीड्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: क्रीड्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -533,6 +651,7 @@ cards:
       feature:
         en: 'Stem: {{शुक}} · masculine · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: शुक
     - id: i2
       sa: सह
       label:
@@ -558,6 +677,7 @@ cards:
       feature:
         en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: बालक
     - id: i4
       sa: गच्छति
       label:
@@ -575,6 +695,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -656,6 +777,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मित्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मित्र
     - sa: मित्रेण
       check:
         type: subanta
@@ -664,6 +789,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
   - - text:
         en: parrot
         hi: तोता
@@ -674,6 +803,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{शुक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: शुक
     - sa: शुकेन
       check:
         type: subanta
@@ -682,6 +815,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{शुक}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: शुक
   - - text:
         en: teacher
         hi: आचार्य
@@ -692,6 +829,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: आचार्य
     - sa: आचार्येण
       check:
         type: subanta
@@ -700,6 +841,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: आचार्य
   - - text:
         en: mother
         hi: माता
@@ -710,6 +855,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{माता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{माता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: मातया
       check:
         type: subanta
@@ -718,6 +866,10 @@ cards:
         vibhakti: Trtiya
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{माता}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{माता}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: माता
   note:
     en: 'Plural companions: {{मित्रैः सह}}, {{शुकैः सह}}.'
     hi: 'अनेक साथी: {{मित्रैः सह}}, {{शुकैः सह}}।'
@@ -808,6 +960,7 @@ cards:
       feature:
         en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
     - id: i3
       sa: सह
       label:
@@ -833,6 +986,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -986,6 +1140,7 @@ cards:
       feature:
         en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
     - id: i3
       sa: सह
       label:
@@ -1011,6 +1166,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1175,6 +1331,7 @@ cards:
       feature:
         en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
         hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मित्र
     - id: i3
       sa: सह
       label:
@@ -1200,6 +1357,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1349,3 +1507,127 @@ cards:
   - text:
       en: '{{सह}} follows its noun.'
       hi: '{{सह}} अपने शब्द के बाद आता है।'
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: अहम् मित्रेण सह गच्छामि।
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: बालिका शुकेन सह क्रीडति।
+      meaning:
+        en: The girl plays with the parrot.
+        hi: बालिका तोते के साथ खेलती है।
+      words:
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: शुकेन
+        gloss:
+          en: with the parrot
+          hi: तोते के साथ
+        check:
+          type: subanta
+          stem: शुक
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: क्रीडति
+        gloss:
+          en: plays
+          hi: खेलती है
+        check:
+          type: tinanta
+          dhatu: क्रीड्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i2
+      sa: शुकेन सह बालकः गच्छति।
+      meaning:
+        en: The boy goes with the parrot.
+        hi: बालक तोते के साथ जाता है।
+      words:
+      - sa: शुकेन
+        gloss:
+          en: with the parrot
+          hi: तोते के साथ
+        check:
+          type: subanta
+          stem: शुक
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

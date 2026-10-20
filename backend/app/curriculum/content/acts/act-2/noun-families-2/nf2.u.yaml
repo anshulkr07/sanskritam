@@ -95,8 +95,32 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: &id003
+          en: One standing cow
+          hi: खड़ी हुई एक गाय
+        ratio: '1:1'
+        text_in_image: &id004 []
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: &id005
+          en: One coiled rope
+          hi: लिपटी हुई एक रस्सी
+        ratio: '1:1'
+        text_in_image: &id006 []
     - id: i6
       sa: मधु
     - id: i7
@@ -140,6 +164,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरू
       check:
         type: subanta
@@ -147,6 +175,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरवः
       check:
         type: subanta
@@ -154,6 +186,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -164,6 +200,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरू
       check:
         type: subanta
@@ -171,6 +211,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरून्
       check:
         type: subanta
@@ -178,6 +222,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -188,6 +236,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरुभ्याम्
       check:
         type: subanta
@@ -195,6 +247,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरुभिः
       check:
         type: subanta
@@ -202,6 +258,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -212,6 +272,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरुभ्याम्
       check:
         type: subanta
@@ -219,6 +283,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरुभ्यः
       check:
         type: subanta
@@ -226,6 +294,10 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -236,6 +308,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरुभ्याम्
       check:
         type: subanta
@@ -243,6 +319,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरुभ्यः
       check:
         type: subanta
@@ -250,6 +330,10 @@ cards:
         linga: Pum
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -260,6 +344,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुर्वोः
       check:
         type: subanta
@@ -267,6 +355,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरूणाम्
       check:
         type: subanta
@@ -274,6 +366,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -284,6 +380,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुर्वोः
       check:
         type: subanta
@@ -291,6 +391,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरुषु
       check:
         type: subanta
@@ -298,6 +402,10 @@ cards:
         linga: Pum
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: गुरु
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -308,6 +416,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: गुरु
     - sa: गुरू
       check:
         type: subanta
@@ -315,6 +427,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: गुरु
     - sa: गुरवः
       check:
         type: subanta
@@ -322,6 +438,10 @@ cards:
         linga: Pum
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: गुरु
 - id: tb2
   kind: table
   title:
@@ -353,6 +473,22 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: &id001
+          en: One standing cow
+          hi: खड़ी हुई एक गाय
+        ratio: '1:1'
+        text_in_image: &id002 []
+      compare_from: धेनु
     - sa: धेनू
       check:
         type: subanta
@@ -360,6 +496,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनवः
       check:
         type: subanta
@@ -367,6 +507,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -377,6 +521,20 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेनू
       check:
         type: subanta
@@ -384,6 +542,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनूः
       check:
         type: subanta
@@ -391,6 +553,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -401,6 +567,20 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेनुभ्याम्
       check:
         type: subanta
@@ -408,6 +588,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनुभिः
       check:
         type: subanta
@@ -415,6 +599,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -425,6 +613,20 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेनुभ्याम्
       check:
         type: subanta
@@ -432,6 +634,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनुभ्यः
       check:
         type: subanta
@@ -439,6 +645,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -449,6 +659,20 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेनुभ्याम्
       check:
         type: subanta
@@ -456,6 +680,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनुभ्यः
       check:
         type: subanta
@@ -463,6 +691,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -473,6 +705,20 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेन्वोः
       check:
         type: subanta
@@ -480,6 +726,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनूनाम्
       check:
         type: subanta
@@ -487,6 +737,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -497,6 +751,20 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेन्वोः
       check:
         type: subanta
@@ -504,6 +772,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनुषु
       check:
         type: subanta
@@ -511,6 +783,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: धेनु
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -521,6 +797,20 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: धेनु
     - sa: धेनू
       check:
         type: subanta
@@ -528,6 +818,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: धेनु
     - sa: धेनवः
       check:
         type: subanta
@@ -535,6 +829,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{धेनु}} · feminine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{धेनु}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: धेनु
   note:
     en: 'Like {{मति}}, {{धेनु}} has optional singular forms: {{धेनवे}} or {{धेन्वै}}, {{धेनोः}} or {{धेन्वाः}}, {{धेनौ}} or
       {{धेन्वाम्}}.'
@@ -571,6 +869,9 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: मधुनी
       check:
         type: subanta
@@ -578,6 +879,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधूनि
       check:
         type: subanta
@@ -585,6 +890,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -595,6 +904,9 @@ cards:
         linga: Napumsaka
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
     - sa: मधुनी
       check:
         type: subanta
@@ -602,6 +914,10 @@ cards:
         linga: Napumsaka
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधूनि
       check:
         type: subanta
@@ -609,6 +925,10 @@ cards:
         linga: Napumsaka
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -619,6 +939,10 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: मधु
     - sa: मधुभ्याम्
       check:
         type: subanta
@@ -626,6 +950,10 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधुभिः
       check:
         type: subanta
@@ -633,6 +961,10 @@ cards:
         linga: Napumsaka
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -643,6 +975,10 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: मधु
     - sa: मधुभ्याम्
       check:
         type: subanta
@@ -650,6 +986,10 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधुभ्यः
       check:
         type: subanta
@@ -657,6 +997,10 @@ cards:
         linga: Napumsaka
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -667,6 +1011,10 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: मधु
     - sa: मधुभ्याम्
       check:
         type: subanta
@@ -674,6 +1022,10 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधुभ्यः
       check:
         type: subanta
@@ -681,6 +1033,10 @@ cards:
         linga: Napumsaka
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -691,6 +1047,10 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: मधु
     - sa: मधुनोः
       check:
         type: subanta
@@ -698,6 +1058,10 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधूनाम्
       check:
         type: subanta
@@ -705,6 +1069,10 @@ cards:
         linga: Napumsaka
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -715,6 +1083,10 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: मधु
     - sa: मधुनोः
       check:
         type: subanta
@@ -722,6 +1094,10 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधुषु
       check:
         type: subanta
@@ -729,6 +1105,10 @@ cards:
         linga: Napumsaka
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: मधु
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -739,6 +1119,9 @@ cards:
         linga: Napumsaka
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
     - sa: मधुनी
       check:
         type: subanta
@@ -746,6 +1129,10 @@ cards:
         linga: Napumsaka
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: मधु
     - sa: मधूनि
       check:
         type: subanta
@@ -753,6 +1140,10 @@ cards:
         linga: Napumsaka
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{मधु}} · neuter · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{मधु}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: मधु
   note:
     en: 'The neuter takes {{नी}}, {{नि}} and {{नू}} forms: {{मधुनी}}, {{मधूनि}}.'
     hi: 'नपुंसक {{नी}}, {{नि}} और {{नू}} वाले रूप लेता है: {{मधुनी}}, {{मधूनि}}।'
@@ -799,8 +1190,28 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - id: i6
       sa: मधु
     - id: i7
@@ -856,8 +1267,28 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - id: i6
       sa: मधु
     - id: i7
@@ -911,8 +1342,28 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - id: i6
       sa: मधु
     - id: i7
@@ -986,8 +1437,28 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - id: i6
       sa: मधु
     - id: i7
@@ -1075,8 +1546,28 @@ cards:
       sa: भानु
     - id: i4
       sa: धेनु
+      image:
+        id: teaching-cow
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass, complete
+          head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+        alt: *id003
+        ratio: '1:1'
+        text_in_image: *id004
     - id: i5
       sa: रज्जु
+      image:
+        id: teaching-rope
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface. Show the
+          rope texture, no other objects or lettering.'
+        alt: *id005
+        ratio: '1:1'
+        text_in_image: *id006
     - id: i6
       sa: मधु
     - id: i7

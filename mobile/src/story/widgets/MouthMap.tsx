@@ -24,7 +24,7 @@ export default function MouthMap({params,onInteracted}: {params:MouthMapBuilt;on
  const c=useStoryTheme(),{lang}=useGuideLang(),speak=useSpeakText(); const [letter,setLetter]=useState<string|null>(null),[place,setPlace]=useState<PlaceId|null>(null);
  const active=place?[place]:letter?params.places[letter]??[]:[];
  const tongue=tongues[active[0]],stop=letter?stopRows.find(row=>row.includes(letter)):undefined,column=stop&&letter?stop.indexOf(letter):-1;
- const voiced=column>=2,aspirated=column===1||column===3,nasal=column===4||letter==='ं';
+ const voiced=column>=2,aspirated=column===1||column===3,nasal=column===4||letter==='ं'||place==='nasika';
  const pickPlace=(id:PlaceId)=>{setPlace(id);setLetter(null);onInteracted();};
  return <View style={{gap:12}}><View style={{width:'100%',aspectRatio:1.2,backgroundColor:c.surface}}><Svg width="100%" height="100%" viewBox="0 0 300 250" accessibilityLabel={lang==='hi'?'मुँह का पार्श्व चित्र':'Side view of the mouth'}>
  <Path d="M65 232 L66 164 C28 117 51 37 113 24 C169 11 209 40 209 76 L232 110 L217 119 L230 137 L220 149 L226 163 C220 182 197 186 175 183 L174 232" fill={c.paper} stroke={c.ink2} strokeWidth={3}/>

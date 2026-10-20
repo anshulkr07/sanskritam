@@ -29,12 +29,176 @@ cards:
     - 6.1.87
     tag: core
     taught_in: should.advice#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: “should read”'
+        hi: 'पठ्: ‘पढ़ना चाहिए’'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठेत्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठेताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठेयुः
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठेः
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठेतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठेत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठेयम्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठेव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठेम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.vidhilin
     rule:
       en: '{{अस्}}: {{स्यात् स्याताम् स्युः}}; {{ब्रू}}: {{ब्रूयात्}}.'
       hi: '{{अस्}}: {{स्यात् स्याताम् स्युः}}; {{ब्रू}}: {{ब्रूयात्}}।'
     tag: core
     taught_in: should.rules#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'अस्: “may be”'
+        hi: 'अस्: ‘हो सकता है’'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: स्यात्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्याताम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: स्युः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: स्याः
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्यातम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्यात
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: स्याम्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्याव
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्याम
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्
 - id: conditions
   kind: revision
   title:
@@ -49,12 +213,182 @@ cards:
       hi: 'सलाह और कर्तव्य के लिए: {{पठेत्}}; {{न}} के साथ: ‘नहीं चाहिए’।'
     tag: good
     taught_in: should.rules#t1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सत्यम् ब्रूयात्।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: One should speak the truth.
+          hi: सत्य बोलना चाहिए।
+        words:
+        - sa: सत्यम्
+          gloss:
+            en: truth
+            hi: सत्य
+        - sa: ब्रूयात्
+          gloss:
+            en: should speak
+            hi: बोले
+          check:
+            type: tinanta
+            dhatu: ब्रू
+            lakara: VidhiLin
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: सत्यम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: truth
+          hi: सत्य
+      - id: i2
+        sa: ब्रूयात्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: should speak
+          hi: बोले
+        check:
+          type: tinanta
+          dhatu: ब्रू
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{ब्रू}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+        compare_from: ब्रू
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The old law-books state duties with {{विधिलिङ्}}: {{ब्रूयात्}} (one should speak), {{न ब्रूयात्}} (one should
+            not speak). Add {{न}} to say “should not”. {{ब्रू}} is “say”, and its {{लिङ्}} is {{ब्रूयात्}}.'
+          hi: 'प्राचीन धर्मशास्त्र कर्तव्य {{विधिलिङ्}} से बताते हैं: {{ब्रूयात्}} (बोलना चाहिए), {{न ब्रूयात्}} (नहीं बोलना
+            चाहिए)। ‘नहीं चाहिए’ के लिए {{न}} जोड़िए। {{ब्रू}} का अर्थ ‘कहना’ है, और उसका {{लिङ्}} {{ब्रूयात्}} है।'
+      - id: i5
+        sa: सत्यम् ब्रूयात्।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: One should speak the truth.
+          hi: सत्य बोलना चाहिए।
+        words:
+        - sa: सत्यम्
+          gloss:
+            en: truth
+            hi: सत्य
+        - sa: ब्रूयात्
+          gloss:
+            en: should speak
+            hi: बोले
+          check:
+            type: tinanta
+            dhatu: ब्रू
+            lakara: VidhiLin
+            purusha: Prathama
+            vacana: Eka
   - skill: verb.vidhilin
     rule:
       en: For “perhaps” use {{स्यात्}}; for “if … then …” both halves take {{लिङ्}}.
       hi: ‘शायद’ के लिए {{स्यात्}}; ‘यदि … तो …’ में दोनों भाग {{लिङ्}} लेते हैं।
     tag: good
     taught_in: should.rules#t2
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: स्यात् सः पण्डितः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Perhaps he is a scholar.
+          hi: शायद वह विद्वान् है।
+        words:
+        - sa: स्यात्
+          gloss:
+            en: perhaps
+            hi: शायद
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पण्डितः
+          gloss:
+            en: a scholar
+            hi: विद्वान्
+      - id: i1
+        sa: स्यात्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: perhaps
+          hi: शायद
+      - id: i2
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i3
+        sa: पण्डितः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: a scholar
+          hi: विद्वान्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{स्यात्}} is the {{लिङ्}} of {{अस्}}: “it may be, perhaps”. {{स्युः}} is “they may be”. Often with {{यदि}}
+            (if): {{यदि सः पठेत् तर्हि जानीयात्}}, “if he were to read, he would know”.'
+          hi: '{{स्यात्}} {{अस्}} का {{लिङ्}} है: ‘हो सकता है, शायद’। {{स्युः}} का अर्थ ‘वे हो सकते हैं’। अक्सर {{यदि}} (अगर)
+            के साथ: {{यदि सः पठेत् तर्हि जानीयात्}}, ‘अगर वह पढ़े तो जान जाए’।'
+      - id: i6
+        sa: स्यात् सः पण्डितः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Perhaps he is a scholar.
+          hi: शायद वह विद्वान् है।
+        words:
+        - sa: स्यात्
+          gloss:
+            en: perhaps
+            hi: शायद
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पण्डितः
+          gloss:
+            en: a scholar
+            hi: विद्वान्
 - id: exceptions
   kind: revision
   title:
@@ -106,6 +440,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+        compare_from: कृ
       - id: rule
         label:
           en: Connect the form and the rule
@@ -132,6 +467,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+        compare_from: कृ
   - skill: verb.vidhilin
     rule:
       en: 'For verbs of the “for oneself” kind the endings change: {{सेवेत}}, {{कुर्वीत}}. You will meet these in the ātmanepada
@@ -174,6 +510,7 @@ cards:
         feature:
           en: 'Root: {{सेव्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+        compare_from: सेव्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -199,6 +536,7 @@ cards:
         feature:
           en: 'Root: {{सेव्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+        compare_from: सेव्
 - id: mistakes
   kind: revision
   title:
@@ -240,6 +578,42 @@ cards:
     - 6.1.87
     tag: core
     taught_in: should.advice#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, gives {{लिङ्}} for advice, invitation
+          and request. 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, adds {{यास्}}; 7.2.80, {{अतो येयः}}, makes {{या}} into
+          {{इय्}}; 6.1.87, {{आद्गुणः}}, joins {{अ + इ}} into {{ए}}: {{पठेत्}}.'
+        hi: 'सूत्र 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, सलाह, निमन्त्रण और प्रार्थना के लिए {{लिङ्}}
+          देता है। 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, {{यास्}} जोड़ता है; 7.2.80, {{अतो येयः}}, {{या}} को {{इय्}}
+          कर देता है; 6.1.87, {{आद्गुणः}}, {{अ + इ}} को {{ए}} बना देता है: {{पठेत्}}।'
+      items:
+      - id: i0
+        sa: विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्
+      - id: i1
+        sa: लिङ्
+      - id: i2
+        sa: यासुट् परस्मैपदेषूदात्तो ङिच्च
+      - id: i3
+        sa: यास्
+      - id: i4
+        sa: अतो येयः
+      - id: i5
+        sa: या
+      - id: i6
+        sa: इय्
+      - id: i7
+        sa: आद्गुणः
+      - id: i8
+        sa: अ + इ
+      - id: i9
+        sa: ए
+      - id: i10
+        sa: पठेत्
 - id: sheet
   kind: revision
   title:
@@ -255,6 +629,88 @@ cards:
       hi: चाहिए
     tag: core
     taught_in: should.advice#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: “should read”'
+        hi: 'पठ्: ‘पढ़ना चाहिए’'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठेत्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठेताम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठेयुः
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठेः
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठेतम्
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठेत
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठेयम्
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठेव
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठेम
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.vidhilin
     formula: सत्यं ब्रूयात् · न ब्रूयात् · स्यात्
     rule:
@@ -262,3 +718,85 @@ cards:
       hi: नियम और शायद
     tag: core
     taught_in: should.rules#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'अस्: “may be”'
+        hi: 'अस्: ‘हो सकता है’'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: स्यात्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्याताम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: स्युः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: स्याः
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्यातम्
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्यात
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: स्याम्
+          feature:
+            en: 'Root: {{अस्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्याव
+          feature:
+            en: 'Root: {{अस्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्याम
+          feature:
+            en: 'Root: {{अस्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+          compare_from: अस्

@@ -196,6 +196,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -294,6 +295,7 @@ cards:
       feature:
         en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: कर्मन्
     - id: i3
       sa: अकार्षीत्
       label:
@@ -311,6 +313,7 @@ cards:
       feature:
         en: 'Root: {{कृ}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: कृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -409,6 +412,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · plural · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -475,6 +479,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - sa: अभूताम्
       check:
         type: tinanta
@@ -482,6 +490,10 @@ cards:
         lakara: Lun
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - sa: अभूवन्
       check:
         type: tinanta
@@ -489,6 +501,10 @@ cards:
         lakara: Lun
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -499,6 +515,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: भू
     - sa: अभूतम्
       check:
         type: tinanta
@@ -506,6 +526,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: भू
     - sa: अभूत
       check:
         type: tinanta
@@ -513,6 +537,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: भू
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -523,6 +551,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: भू
     - sa: अभूव
       check:
         type: tinanta
@@ -530,6 +562,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{भू}} · dual · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{द्विवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: भू
     - sa: अभूम
       check:
         type: tinanta
@@ -537,6 +573,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{भू}} · plural · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{बहुवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: भू
   note:
     en: '{{अभूत्}} is {{अ}} + {{भू}} + {{त्}}; the plural is {{अभूवन्}}.'
     hi: '{{अभूत्}} में {{अ}} + {{भू}} + {{त्}} है; बहुवचन {{अभूवन्}} है।'
@@ -572,6 +612,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: अकार्ष्टाम्
       check:
         type: tinanta
@@ -579,6 +623,10 @@ cards:
         lakara: Lun
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: कृ
     - sa: अकार्षुः
       check:
         type: tinanta
@@ -586,6 +634,10 @@ cards:
         lakara: Lun
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: कृ
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -596,6 +648,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: कृ
     - sa: अकार्ष्टम्
       check:
         type: tinanta
@@ -603,6 +659,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: कृ
     - sa: अकार्ष्ट
       check:
         type: tinanta
@@ -610,6 +670,10 @@ cards:
         lakara: Lun
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लुङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लुङ्}} · मध्यमपुरुष'
+      compare_from: कृ
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -620,6 +684,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: कृ
     - sa: अकार्ष्व
       check:
         type: tinanta
@@ -627,6 +695,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{कृ}} · dual · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: कृ
     - sa: अकार्ष्म
       check:
         type: tinanta
@@ -634,6 +706,10 @@ cards:
         lakara: Lun
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{कृ}} · plural · {{लुङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लुङ्}} · उत्तमपुरुष'
+      compare_from: कृ
   note:
     en: 'The {{ऋ}} grows to {{आर्}} and {{ष}} appears: {{अकार्षीत्}}.'
     hi: '{{ऋ}} बढ़कर {{आर्}} होता है और {{ष}} आता है: {{अकार्षीत्}}।'
@@ -710,6 +786,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -819,6 +896,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -938,6 +1016,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1065,6 +1144,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1187,6 +1267,7 @@ cards:
       feature:
         en: 'Root: {{भू}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{भू}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      compare_from: भू
     - id: rule
       label:
         en: Connect the form and the rule

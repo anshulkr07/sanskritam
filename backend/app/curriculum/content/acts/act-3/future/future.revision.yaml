@@ -29,12 +29,176 @@ cards:
     - 8.3.59
     tag: core
     taught_in: future.sya#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the future'
+        hi: 'पठ्: भविष्यत्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठिष्यति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठिष्यतः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठिष्यन्ति
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठिष्यसि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठिष्यथः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठिष्यथ
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठिष्यामि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठिष्यावः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठिष्यामः
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lrt
     rule:
       en: '{{कृ}}: {{करिष्यति}}, {{करिष्यसि}}, {{करिष्यामि}}; {{भू}}: {{भविष्यति}}.'
       hi: '{{कृ}}: {{करिष्यति}}, {{करिष्यसि}}, {{करिष्यामि}}; {{भू}}: {{भविष्यति}}।'
     tag: core
     taught_in: future.plans#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'कृ: the future'
+        hi: 'कृ: भविष्यत्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: करिष्यति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r0-c2
+          sa: करिष्यतः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r0-c3
+          sa: करिष्यन्ति
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: करिष्यसि
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r1-c2
+          sa: करिष्यथः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r1-c3
+          sa: करिष्यथ
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: करिष्यामि
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ
+        - id: r2-c2
+          sa: करिष्यावः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ
+        - id: r2-c3
+          sa: करिष्यामः
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ
 - id: conditions
   kind: revision
   title:
@@ -49,12 +213,132 @@ cards:
       hi: 'जो होगा, उसके लिए {{लृट्}}; समय-शब्द सहायक हैं: {{श्वः}}, {{पश्चात्}}।'
     tag: good
     taught_in: future.sya#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i1
+        sa: बालकाः पुस्तकम् पठिष्यन्ति।
+        meaning:
+          en: The boys will read the book.
+          hi: बालक पुस्तक पढ़ेंगे।
+        words:
+        - sa: बालकाः
+          gloss:
+            en: boys
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Bahu
+        - sa: पुस्तकम्
+          gloss:
+            en: book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पठिष्यन्ति
+          gloss:
+            en: will read
+            hi: पढ़ेंगे
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lrt
+            purusha: Prathama
+            vacana: Bahu
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
   - skill: verb.lrt
     rule:
       en: '{{न}} + future is a promise to refuse: {{न दास्यामि}}.'
       hi: '{{न}} + भविष्यत् मना करने का वचन है: {{न दास्यामि}}।'
     tag: good
     taught_in: future.plans#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i1
+        sa: वयम् पुस्तकम् पठिष्यामः।
+        meaning:
+          en: We will read the book.
+          hi: हम पुस्तक पढ़ेंगे।
+        words:
+        - sa: वयम्
+          gloss:
+            en: we
+            hi: हम
+        - sa: पुस्तकम्
+          gloss:
+            en: book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पठिष्यामः
+          gloss:
+            en: will read
+            hi: पढ़ेंगे
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lrt
+            purusha: Uttama
+            vacana: Bahu
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
 - id: exceptions
   kind: revision
   title:
@@ -104,6 +388,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+        compare_from: दा
       - id: rule
         label:
           en: Connect the form and the rule
@@ -129,6 +414,7 @@ cards:
         feature:
           en: 'Root: {{दा}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+        compare_from: दा
   - skill: verb.lrt
     rule:
       en: 'Some roots change their middle: {{दृश्}} gives {{द्रक्ष्यति}}, {{श्रु}} gives {{श्रोष्यति}}, {{वच्}} gives {{वक्ष्यति}}.'
@@ -170,6 +456,7 @@ cards:
         feature:
           en: 'Root: {{दृश्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+        compare_from: दृश्
       - id: rule
         label:
           en: Connect the form and the rule
@@ -195,6 +482,7 @@ cards:
         feature:
           en: 'Root: {{दृश्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+        compare_from: दृश्
 - id: mistakes
   kind: revision
   title:
@@ -236,6 +524,42 @@ cards:
     - 8.3.59
     tag: core
     taught_in: future.sya#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.3.13, {{लृट् शेषे च}}, gives {{लृट्}} for what will happen. 3.1.33, {{स्यतासी लृलुटोः}}, adds {{स्य}}.
+          7.2.35, {{आर्धधातुकस्येड् वलादेः}}, adds {{इ}} before a consonant, so {{पठ् + इ + स्य}}; and 8.3.59, {{आदेशप्रत्यययोः}},
+          turns {{स्}} into {{ष्}} after {{इ}}: {{पठिष्यति}}.'
+        hi: 'सूत्र 3.3.13, {{लृट् शेषे च}}, जो होगा उसके लिए {{लृट्}} देता है। 3.1.33, {{स्यतासी लृलुटोः}}, {{स्य}} जोड़ता
+          है। 7.2.35, {{आर्धधातुकस्येड् वलादेः}}, व्यंजन से पहले {{इ}} जोड़ता है, इसलिए {{पठ् + इ + स्य}}; और 8.3.59, {{आदेशप्रत्यययोः}},
+          {{इ}} के बाद {{स्}} को {{ष्}} कर देता है: {{पठिष्यति}}।'
+      items:
+      - id: i0
+        sa: लृट् शेषे च
+      - id: i1
+        sa: लृट्
+      - id: i2
+        sa: स्यतासी लृलुटोः
+      - id: i3
+        sa: स्य
+      - id: i4
+        sa: आर्धधातुकस्येड् वलादेः
+      - id: i5
+        sa: इ
+      - id: i6
+        sa: पठ् + इ + स्य
+      - id: i7
+        sa: आदेशप्रत्यययोः
+      - id: i8
+        sa: स्
+      - id: i9
+        sa: ष्
+      - id: i10
+        sa: पठिष्यति
 - id: sheet
   kind: revision
   title:
@@ -251,6 +575,88 @@ cards:
       hi: भविष्यत्
     tag: core
     taught_in: future.sya#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'पठ्: the future'
+        hi: 'पठ्: भविष्यत्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: पठिष्यति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठिष्यतः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठिष्यन्ति
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: पठिष्यसि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c2
+          sa: पठिष्यथः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+        - id: r1-c3
+          sa: पठिष्यथ
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: पठ्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: पठिष्यामि
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c2
+          sa: पठिष्यावः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
+        - id: r2-c3
+          sa: पठिष्यामः
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: पठ्
   - skill: verb.lrt
     formula: करिष्यामि · करिष्यामः · न दास्यामि
     rule:
@@ -258,3 +664,85 @@ cards:
       hi: मैं, हम
     tag: core
     taught_in: future.plans#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: 'कृ: the future'
+        hi: 'कृ: भविष्यत्'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: करिष्यति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r0-c2
+          sa: करिष्यतः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+        - id: r0-c3
+          sa: करिष्यन्ति
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · प्रथमपुरुष'
+          compare_from: कृ
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: करिष्यसि
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r1-c2
+          sa: करिष्यथः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+        - id: r1-c3
+          sa: करिष्यथ
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · मध्यमपुरुष'
+          compare_from: कृ
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: करिष्यामि
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ
+        - id: r2-c2
+          sa: करिष्यावः
+          feature:
+            en: 'Root: {{कृ}} · dual · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{द्विवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ
+        - id: r2-c3
+          sa: करिष्यामः
+          feature:
+            en: 'Root: {{कृ}} · plural · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लृट्}} · उत्तमपुरुष'
+          compare_from: कृ

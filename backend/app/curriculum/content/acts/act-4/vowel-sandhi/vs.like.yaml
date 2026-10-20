@@ -139,6 +139,7 @@ cards:
         second: आलयः
         joined: विद्यालयः
       highlight: true
+      compare_from: विद्या आलयः
   - - sa: हिम
     - sa: आलयः
     - sa: हिमालयः
@@ -148,6 +149,7 @@ cards:
         second: आलयः
         joined: हिमालयः
       highlight: true
+      compare_from: हिम आलयः
   - - sa: महा
     - sa: आत्मा
     - sa: महात्मा
@@ -157,6 +159,7 @@ cards:
         second: आत्मा
         joined: महात्मा
       highlight: true
+      compare_from: महा आत्मा
   - - sa: कवि
     - sa: इन्द्रः
     - sa: कवीन्द्रः
@@ -166,6 +169,7 @@ cards:
         second: इन्द्रः
         joined: कवीन्द्रः
       highlight: true
+      compare_from: कवि इन्द्रः
   - - sa: सु
     - sa: उक्तम्
     - sa: सूक्तम्
@@ -175,6 +179,7 @@ cards:
         second: उक्तम्
         joined: सूक्तम्
       highlight: true
+      compare_from: सु उक्तम्
   - - sa: गुरु
     - sa: उपदेशः
     - sa: गुरूपदेशः
@@ -184,6 +189,7 @@ cards:
         second: उपदेशः
         joined: गुरूपदेशः
       highlight: true
+      compare_from: गुरु उपदेशः
   - - sa: न
     - sa: अस्ति
     - sa: नास्ति
@@ -193,6 +199,7 @@ cards:
         second: अस्ति
         joined: नास्ति
       highlight: true
+      compare_from: न अस्ति
   note:
     en: '{{आ}} + {{आ}} gives {{आ}}; {{अ}} + {{आ}} gives {{आ}}; {{इ}} + {{इ}} gives {{ई}}; {{उ}} + {{उ}} gives {{ऊ}}.'
     hi: '{{आ}} + {{आ}} से {{आ}}; {{अ}} + {{आ}} से {{आ}}; {{इ}} + {{इ}} से {{ई}}; {{उ}} + {{उ}} से {{ऊ}}।'

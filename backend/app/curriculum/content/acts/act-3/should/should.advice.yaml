@@ -228,6 +228,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -245,6 +246,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -262,6 +264,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -374,6 +377,7 @@ cards:
       feature:
         en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: गृह
     - id: i3
       sa: गच्छेः
       label:
@@ -391,6 +395,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -497,6 +502,7 @@ cards:
       feature:
         en: 'Stem: {{सत्य}} · neuter · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: सत्य
     - id: i3
       sa: वदेम
       label:
@@ -514,6 +520,7 @@ cards:
       feature:
         en: 'Root: {{वद्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{वद्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: वद्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -588,6 +595,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठेताम्
       check:
         type: tinanta
@@ -595,6 +606,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - sa: पठेयुः
       check:
         type: tinanta
@@ -602,6 +617,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: पठ्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -612,6 +631,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पठेतम्
       check:
         type: tinanta
@@ -619,6 +642,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: पठ्
     - sa: पठेत
       check:
         type: tinanta
@@ -626,6 +653,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: पठ्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -636,6 +667,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पठेव
       check:
         type: tinanta
@@ -643,6 +678,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: पठ्
     - sa: पठेम
       check:
         type: tinanta
@@ -650,6 +689,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: पठ्
   note:
     en: Third person ends {{-एत्}}, {{-एताम्}}, {{-एयुः}}; second {{-एः}}, {{-एतम्}}, {{-एत}}; first {{-एयम्}}, {{-एव}}, {{-एम}}.
     hi: प्रथम पुरुष {{-एत्}}, {{-एताम्}}, {{-एयुः}}; मध्यम {{-एः}}, {{-एतम्}}, {{-एत}}; उत्तम {{-एयम्}}, {{-एव}}, {{-एम}}।
@@ -685,6 +728,10 @@ cards:
         purusha: Prathama
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: गम्
     - sa: गच्छेताम्
       check:
         type: tinanta
@@ -692,6 +739,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: गम्
     - sa: गच्छेयुः
       check:
         type: tinanta
@@ -699,6 +750,10 @@ cards:
         lakara: VidhiLin
         purusha: Prathama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: गम्
   - - text:
         en: you
         hi: तुम (मध्यम पुरुष)
@@ -709,6 +764,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: गम्
     - sa: गच्छेतम्
       check:
         type: tinanta
@@ -716,6 +775,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: गम्
     - sa: गच्छेत
       check:
         type: tinanta
@@ -723,6 +786,10 @@ cards:
         lakara: VidhiLin
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{विधिलिङ्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{विधिलिङ्}} · मध्यमपुरुष'
+      compare_from: गम्
   - - text:
         en: I, we
         hi: मैं (उत्तम पुरुष)
@@ -733,6 +800,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: गम्
     - sa: गच्छेव
       check:
         type: tinanta
@@ -740,6 +811,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: गम्
     - sa: गच्छेम
       check:
         type: tinanta
@@ -747,6 +822,10 @@ cards:
         lakara: VidhiLin
         purusha: Uttama
         vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: गम्
 - id: t2
   kind: teach
   title:
@@ -864,6 +943,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -964,6 +1044,7 @@ cards:
       feature:
         en: 'Root: {{गम्}} · singular · {{विधिलिङ्}} · First person ({{उत्तमपुरुष}})'
         hi: 'धातु: {{गम्}} · {{एकवचन}} · {{विधिलिङ्}} · उत्तमपुरुष'
+      compare_from: गम्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1081,6 +1162,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1098,6 +1180,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1115,6 +1198,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1246,6 +1330,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1263,6 +1348,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1280,6 +1366,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1429,6 +1516,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1446,6 +1534,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1463,6 +1552,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1613,6 +1703,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1630,6 +1721,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1647,6 +1739,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1791,6 +1884,7 @@ cards:
       feature:
         en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: राजन्
     - id: i2
       sa: प्रजाम्
       label:
@@ -1808,6 +1902,7 @@ cards:
       feature:
         en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
         hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: प्रजा
     - id: i3
       sa: रक्षेत्
       label:
@@ -1825,6 +1920,7 @@ cards:
       feature:
         en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+      compare_from: रक्ष्
     - id: rule
       label:
         en: Connect the form and the rule

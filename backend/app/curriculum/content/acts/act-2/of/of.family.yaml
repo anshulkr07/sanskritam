@@ -150,6 +150,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: तव
       meaning:
@@ -164,6 +165,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: तस्य
       meaning:
@@ -178,6 +180,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i3
       sa: तस्याः
       meaning:
@@ -192,6 +195,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i4
       sa: अस्माकम्
       meaning:
@@ -206,6 +210,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
       meaning:
@@ -220,6 +225,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: tb1
   kind: table
   title:
@@ -249,6 +255,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पितृ
     - sa: पितुः
       check:
         type: subanta
@@ -257,6 +267,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: पितृ
   - - text:
         en: mother
         hi: माता
@@ -267,6 +281,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मातृ
     - sa: मातुः
       check:
         type: subanta
@@ -275,6 +293,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: मातृ
   - - text:
         en: brother
         hi: भाई
@@ -285,6 +307,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{भ्रातृ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भ्रातृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: भ्रातृ
     - sa: भ्रातुः
       check:
         type: subanta
@@ -293,6 +319,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{भ्रातृ}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{भ्रातृ}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: भ्रातृ
   - - text:
         en: sister
         hi: बहन
@@ -303,6 +333,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{भगिनी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भगिनी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: भगिन्याः
       check:
         type: subanta
@@ -311,6 +344,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{भगिनी}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{भगिनी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: भगिनी
   - - text:
         en: son
         hi: पुत्र
@@ -321,6 +358,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पुत्र}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पुत्र
     - sa: पुत्रस्य
       check:
         type: subanta
@@ -329,6 +370,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{पुत्र}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: पुत्र
   - - text:
         en: grandmother
         hi: दादी
@@ -339,6 +384,9 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{पितामही}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पितामही}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: पितामह्याः
       check:
         type: subanta
@@ -347,6 +395,10 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{पितामही}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{पितामही}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: पितामही
   note:
     en: 'Words in -ऋ make the sixth case in {{उः}}: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}.'
     hi: '-ऋ वाले शब्द षष्ठी में {{उः}} लेते हैं: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}।'
@@ -488,6 +540,7 @@ cards:
       feature:
         en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मातृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -572,6 +625,7 @@ cards:
       feature:
         en: 'Stem: {{पितृ}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: पितृ
     - id: i2
       sa: माता
       label:
@@ -589,6 +643,7 @@ cards:
       feature:
         en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: मातृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -679,6 +734,7 @@ cards:
       feature:
         en: 'Stem: {{मातृ}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: मातृ
     - id: i2
       sa: पिता
       label:
@@ -696,6 +752,7 @@ cards:
       feature:
         en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पितृ
     - id: rule
       label:
         en: Connect the form and the rule
@@ -778,6 +835,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: तव
       meaning:
@@ -792,6 +850,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: तस्य
       meaning:
@@ -806,6 +865,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i3
       sa: तस्याः
       meaning:
@@ -820,6 +880,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i4
       sa: अस्माकम्
       meaning:
@@ -834,6 +895,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
       meaning:
@@ -848,6 +910,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: p2
   kind: practice
   depth: core
@@ -912,6 +975,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: तव
       meaning:
@@ -926,6 +990,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: तस्य
       meaning:
@@ -940,6 +1005,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i3
       sa: तस्याः
       meaning:
@@ -954,6 +1020,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i4
       sa: अस्माकम्
       meaning:
@@ -968,6 +1035,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
       meaning:
@@ -982,6 +1050,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: e1
   kind: explore
   depth: core
@@ -1061,6 +1130,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: अस्मद्
     - id: i1
       sa: तव
       meaning:
@@ -1075,6 +1145,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: तस्य
       meaning:
@@ -1089,6 +1160,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i3
       sa: तस्याः
       meaning:
@@ -1103,6 +1175,7 @@ cards:
       feature:
         en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
         hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - id: i4
       sa: अस्माकम्
       meaning:
@@ -1117,6 +1190,7 @@ cards:
       feature:
         en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
       meaning:
@@ -1131,6 +1205,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: sum
   kind: summary
   title:
@@ -1150,3 +1225,85 @@ cards:
     text:
       en: Link names with the sixth case.
       hi: नामों को षष्ठी से जोड़िए।
+  visuals:
+  - id: v-unit-reread
+    kind: reading
+    title:
+      en: Read again with the help closed
+      hi: सहायता बन्द रखकर फिर पढ़ें
+    explanation:
+      en: Read aloud and explain each form or line. Then open the meaning and compare. These are examples from this unit.
+      hi: ज़ोर से पढ़ें और हर रूप या पंक्ति समझाएँ। फिर अर्थ खोलकर मिलाएँ। ये इसी अध्याय के उदाहरण हैं।
+    items:
+    - id: i0
+      sa: मम माता।
+      meaning:
+        en: my mother
+        hi: मेरी माता
+      words:
+      - sa: मम
+        gloss:
+          en: my
+          hi: मेरी
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पितुः माता।
+      meaning:
+        en: 'the father''s mother: grandmother'
+        hi: 'पिता की माता: दादी'
+      words:
+      - sa: पितुः
+        gloss:
+          en: of the father
+          hi: पिता की
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i2
+      sa: मातुः पिता।
+      meaning:
+        en: 'the mother''s father: maternal grandfather'
+        hi: 'माता के पिता: नाना'
+      words:
+      - sa: मातुः
+        gloss:
+          en: of the mother
+          hi: माता का
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: पिता
+        gloss:
+          en: father
+          hi: पिता
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka

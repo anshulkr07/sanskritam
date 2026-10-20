@@ -28,6 +28,58 @@ cards:
     - 1.4.22
     tag: core
     taught_in: num.two#t1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: बकः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: one heron
+          hi: एक बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बक
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word
+            in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+          hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त
+            होता है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+      - id: i3
+        sa: बकः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: one heron
+          hi: एक बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बक
   - skill: num.dual
     formula: बकौ · बालिके · फले · नद्यौ
     rule:
@@ -35,6 +87,204 @@ cards:
       hi: 'प्रथमा द्विवचन: पुंलिंग -अ में {{औ}}, स्त्रीलिंग -आ और नपुंसक -अ में {{ए}}, -ई शब्दों में {{औ}}।'
     tag: core
     taught_in: num.two#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Dual, in every gender
+        hi: हर लिंग में द्विवचन
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: boy
+            hi: बालक
+        - id: r0-c1
+          sa: बालकः
+          image:
+            id: teaching-reader-one
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: One boy reading a book with अ इ उ
+              hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बालक
+        - id: r0-c2
+          sa: बालकौ
+          image:
+            id: teaching-reader-two
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: Two boys reading books with अ इ उ
+              hi: अ इ उ वाली पुस्तकें पढ़ते दो बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: बालक
+        - id: r0-c3
+          sa: बालकाः
+          image:
+            id: teaching-reader-many
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: Three boys reading books with अ इ उ
+              hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+            - अ इ उ
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: बालक
+      - - id: r1-c0
+          label:
+            en: girl
+            hi: बालिका
+        - id: r1-c1
+          sa: बालिका
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r1-c2
+          sa: बालिके
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: बालिका
+        - id: r1-c3
+          sa: बालिकाः
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: बालिका
+      - - id: r2-c0
+          label:
+            en: fruit
+            hi: फल
+        - id: r2-c1
+          sa: फलम्
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: One whole mango
+              hi: एक पूरा आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: फल
+        - id: r2-c2
+          sa: फले
+          image:
+            id: teaching-fruit-two
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe
+              yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and
+              restrained gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally
+              grouped and large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit
+              or extra objects. The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: Two separate whole mangoes
+              hi: दो अलग-अलग पूरे आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: फल
+        - id: r2-c3
+          sa: फलानि
+          image:
+            id: teaching-fruit-many
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate
+              ripe yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor
+              and restrained gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally
+              grouped and large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit
+              or extra objects. The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: Three separate whole mangoes
+              hi: तीन अलग-अलग पूरे आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: फल
+      - - id: r3-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r3-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt:
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: []
+        - id: r3-c2
+          sa: नद्यौ
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नदी
+        - id: r3-c3
+          sa: नद्यः
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नदी
   - skill: num.plural
     formula: बालकाः · नौकाः · फलानि · नद्यः
     rule:
@@ -42,6 +292,159 @@ cards:
       hi: 'प्रथमा बहुवचन: पुंलिंग और स्त्रीलिंग -अ/-आ में {{आः}}, नपुंसक में {{आनि}}, -ई शब्दों में {{यः}}।'
     tag: core
     taught_in: num.many#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: One, two, many
+        hi: एक, दो, अनेक
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: boat
+            hi: नौका
+        - id: r0-c1
+          sa: नौका
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: One boat on the river
+              hi: नदी पर एक नाव
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r0-c2
+          sa: नौके
+          image:
+            id: teaching-boat-two
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO small traditional
+              wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: Two separate boats on the river
+              hi: नदी पर दो अलग-अलग नावें
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नौका
+        - id: r0-c3
+          sa: नौकाः
+          image:
+            id: teaching-boat-many
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+              wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: Three separate boats on the river
+              hi: नदी पर तीन अलग-अलग नावें
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नौका
+      - - id: r1-c0
+          label:
+            en: boatman
+            hi: नाविक
+        - id: r1-c1
+          sa: नाविकः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नाविक
+        - id: r1-c2
+          sa: नाविकौ
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नाविक
+        - id: r1-c3
+          sa: नाविकाः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नाविक
+      - - id: r2-c0
+          label:
+            en: leaf
+            hi: पत्र
+        - id: r2-c1
+          sa: पत्रम्
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पत्र
+        - id: r2-c2
+          sa: पत्रे
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: पत्र
+        - id: r2-c3
+          sa: पत्राणि
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: पत्र
+      - - id: r3-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r3-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt:
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: []
+        - id: r3-c2
+          sa: नद्यौ
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नदी
+        - id: r3-c3
+          sa: नद्यः
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नदी
   - skill: verb.pres-3-du-pl
     formula: पठति · पठतः · पठन्ति
     rule:
@@ -51,6 +454,122 @@ cards:
     - 3.4.78
     tag: core
     taught_in: num.verbs#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Three verbs, three numbers
+        hi: तीन क्रियाएँ, तीन वचन
+      columns:
+      - en: Root
+        hi: धातु
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          sa: पठ्
+        - id: r0-c1
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठतः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठन्ति
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          sa: लिख्
+        - id: r1-c1
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+        - id: r1-c2
+          sa: लिखतः
+          feature:
+            en: 'Root: {{लिख्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+        - id: r1-c3
+          sa: लिखन्ति
+          feature:
+            en: 'Root: {{लिख्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+      - - id: r2-c0
+          sa: हस्
+        - id: r2-c1
+          sa: हसति
+          feature:
+            en: 'Root: {{हस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+        - id: r2-c2
+          sa: हसतः
+          feature:
+            en: 'Root: {{हस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+        - id: r2-c3
+          sa: हसन्ति
+          feature:
+            en: 'Root: {{हस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+      - - id: r3-c0
+          sa: चल्
+        - id: r3-c1
+          sa: चलति
+          feature:
+            en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+        - id: r3-c2
+          sa: चलतः
+          feature:
+            en: 'Root: {{चल्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+        - id: r3-c3
+          sa: चलन्ति
+          feature:
+            en: 'Root: {{चल्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+      - - id: r4-c0
+          sa: वद्
+        - id: r4-c1
+          sa: वदति
+          feature:
+            en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
+        - id: r4-c2
+          sa: वदतः
+          feature:
+            en: 'Root: {{वद्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
+        - id: r4-c3
+          sa: वदन्ति
+          feature:
+            en: 'Root: {{वद्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
   - skill: sent.agree-number
     formula: बालकौ पठतः
     rule:
@@ -58,6 +577,54 @@ cards:
       hi: क्रिया कर्ता की संख्या से मेल खाती है।
     tag: core
     taught_in: num.agree#t1
+    visuals:
+    - id: v-linked-4
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: sent.agree-number
     formula: अस्ति · स्तः · सन्ति
     rule:
@@ -65,6 +632,100 @@ cards:
       hi: '{{अस्ति}} (एक), {{स्तः}} (दो), {{सन्ति}} (अनेक)।'
     tag: core
     taught_in: num.agree#t2
+    visuals:
+    - id: v-linked-5
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: अस्ति
+        meaning:
+          en: 'one: there is'
+          hi: 'एक: है'
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        image:
+          id: teaching-boat-one
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+            wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+            restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+            and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+            buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The
+            exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+          alt:
+            en: One boat on the river
+            hi: नदी पर एक नाव
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: अस्
+      - id: i1
+        sa: स्तः
+        meaning:
+          en: 'two: there are'
+          hi: 'दो: हैं'
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+        image:
+          id: teaching-boat-two
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO small traditional
+            wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+            restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+            and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+            buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The
+            exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+          alt:
+            en: Two separate boats on the river
+            hi: नदी पर दो अलग-अलग नावें
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: अस्
+      - id: i2
+        sa: सन्ति
+        meaning:
+          en: 'many: there are'
+          hi: 'अनेक: हैं'
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+        image:
+          id: teaching-boat-many
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+            wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+            restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+            and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+            buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The
+            exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+          alt:
+            en: Three separate boats on the river
+            hi: नदी पर तीन अलग-अलग नावें
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: अस्
 - id: conditions
   kind: revision
   title:
@@ -79,6 +740,58 @@ cards:
       hi: द्विवचन केवल ठीक दो के लिए। स्वाभाविक जोड़े (आँखें, हाथ, माता-पिता) लगभग हमेशा द्विवचन में आते हैं।
     tag: good
     taught_in: num.two#t2
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: नेत्रे
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: two eyes
+          hi: दो आँखें
+        check:
+          type: subanta
+          stem: नेत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{नेत्र}} · neuter · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: नेत्र
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The dual is most at home with things that come in twos: eyes, hands, feet, ears, parents. These you will meet
+            often.'
+          hi: 'द्विवचन उन चीज़ों के साथ सबसे सहज है जो जोड़े में आती हैं: आँखें, हाथ, पाँव, कान, माता-पिता। ये आपको अक्सर
+            मिलेंगे।'
+      - id: i3
+        sa: नेत्रे
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: two eyes
+          hi: दो आँखें
+        check:
+          type: subanta
+          stem: नेत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{नेत्र}} · neuter · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{नेत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+        compare_from: नेत्र
   - skill: sent.agree-number
     rule:
       en: Two or more doers joined by {{च}} (and) take the dual or the plural verb, by their total.
@@ -136,6 +849,58 @@ cards:
     - 8.4.1
     tag: good
     taught_in: num.many#pn
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पत्राणि
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'leaves: {{ण}} after {{र}}'
+          hi: 'पत्र: {{र}} के बाद {{ण}}'
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: पत्र
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: After {{र}}, {{ऋ}} or {{ष}}, a following {{न}} becomes {{ण}}, even across vowels. That is why {{पत्र}} has {{पत्राणि}}
+            but {{फल}} has {{फलानि}}. You will meet this again in the sandhi chapters.
+          hi: '{{र}}, {{ऋ}} या {{ष}} के बाद आने वाला {{न}} {{ण}} बन जाता है, बीच में स्वर हों तब भी। इसीलिए {{पत्र}} का {{पत्राणि}}
+            है और {{फल}} का {{फलानि}}। सन्धि के अध्यायों में यह फिर मिलेगा।'
+      - id: i3
+        sa: पत्राणि
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'leaves: {{ण}} after {{र}}'
+          hi: 'पत्र: {{र}} के बाद {{ण}}'
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: पत्र
   - skill: num.dual
     rule:
       en: 'Some words are always plural in meaning (water, rice-grains, “the lots”): {{दाराः}} (wife). Their number does not
@@ -193,18 +958,170 @@ cards:
       hi: 'वचन मत मिलाइए: {{बालकौ पठति}} ग़लत है; {{बालकौ पठतः}} लिखिए।'
     tag: core
     taught_in: num.agree#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: num.dual
     rule:
       en: 'Do not use the plural for two: two herons are {{बकौ}}, not {{बकाः}}.'
       hi: 'दो के लिए बहुवचन मत लगाइए: दो बगुले {{बकौ}} हैं, {{बकाः}} नहीं।'
     tag: core
     taught_in: num.two#t1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: बकः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: one heron
+          hi: एक बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बक
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word
+            in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+          hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त
+            होता है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+      - id: i3
+        sa: बकः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: one heron
+          hi: एक बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बक
   - skill: num.plural
     rule:
       en: 'Do not write {{पत्रानि}}: it is {{पत्राणि}}.'
       hi: '{{पत्रानि}} मत लिखिए: सही {{पत्राणि}} है।'
     tag: core
     taught_in: num.many#pn
+    visuals:
+    - id: v-linked-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पत्राणि
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'leaves: {{ण}} after {{र}}'
+          hi: 'पत्र: {{र}} के बाद {{ण}}'
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: पत्र
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: After {{र}}, {{ऋ}} or {{ष}}, a following {{न}} becomes {{ण}}, even across vowels. That is why {{पत्र}} has {{पत्राणि}}
+            but {{फल}} has {{फलानि}}. You will meet this again in the sandhi chapters.
+          hi: '{{र}}, {{ऋ}} या {{ष}} के बाद आने वाला {{न}} {{ण}} बन जाता है, बीच में स्वर हों तब भी। इसीलिए {{पत्र}} का {{पत्राणि}}
+            है और {{फल}} का {{फलानि}}। सन्धि के अध्यायों में यह फिर मिलेगा।'
+      - id: i3
+        sa: पत्राणि
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'leaves: {{ण}} after {{र}}'
+          hi: 'पत्र: {{र}} के बाद {{ण}}'
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        compare_from: पत्र
 - id: panini
   kind: revision
   title:
@@ -221,6 +1138,20 @@ cards:
     - 1.4.22
     tag: core
     taught_in: num.two#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 1.4.22, {{द्व्येकयोर्द्विवचनैकवचने}}: the dual ending goes with two things, the singular with one. Number
+          is a feature of the ending, not of the stem.'
+        hi: 'सूत्र 1.4.22, {{द्व्येकयोर्द्विवचनैकवचने}}: दो के लिए द्विवचन का प्रत्यय, एक के लिए एकवचन का। संख्या प्रत्यय
+          की विशेषता है, मूल की नहीं।'
+      items:
+      - id: i0
+        sa: द्व्येकयोर्द्विवचनैकवचने
   - skill: num.plural
     rule:
       en: '{{बहुषु बहुवचनम्}}: the plural for many.'
@@ -229,6 +1160,103 @@ cards:
     - 1.4.21
     tag: core
     taught_in: num.many#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: See the meaning; read the form
+        hi: अर्थ देखें, रूप पढ़ें
+      explanation:
+        en: Compare the pictures with the live Sanskrit captions.
+        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+      items:
+      - id: i0
+        sa: बालकाः
+        meaning:
+          en: boys
+          hi: बालक (अनेक)
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        image:
+          id: teaching-reader-many
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: Three boys reading books with अ इ उ
+            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
+          - अ इ उ
+          - अ इ उ
+        compare_from: बालक
+      - id: i1
+        sa: नौकाः
+        meaning:
+          en: boats
+          hi: नावें
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        image:
+          id: teaching-boat-many
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+            wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor and
+            restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+            and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+            buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark. The
+            exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+          alt:
+            en: Three separate boats on the river
+            hi: नदी पर तीन अलग-अलग नावें
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: नौका
+      - id: i2
+        sa: फलानि
+        meaning:
+          en: fruits
+          hi: फल (अनेक)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+        image:
+          id: teaching-fruit-many
+          brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate ripe
+            yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained
+            gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and
+            large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra
+            objects. The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+          alt:
+            en: Three separate whole mangoes
+            hi: तीन अलग-अलग पूरे आम
+          ratio: '4:3'
+          text_in_image: []
+        compare_from: फल
 - id: sheet
   kind: revision
   title:
@@ -244,6 +1272,204 @@ cards:
       hi: द्विवचन प्रथमा
     tag: core
     taught_in: num.two#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: Dual, in every gender
+        hi: हर लिंग में द्विवचन
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: boy
+            hi: बालक
+        - id: r0-c1
+          sa: बालकः
+          image:
+            id: teaching-reader-one
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: One boy reading a book with अ इ उ
+              hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: बालक
+        - id: r0-c2
+          sa: बालकौ
+          image:
+            id: teaching-reader-two
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: Two boys reading books with अ इ उ
+              hi: अ इ उ वाली पुस्तकें पढ़ते दो बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: बालक
+        - id: r0-c3
+          sa: बालकाः
+          image:
+            id: teaching-reader-many
+            brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+              clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+              open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+              SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ,
+              उ, separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+              unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at
+              phone size. Keep the exact number of human figures unchanged.'
+            alt:
+              en: Three boys reading books with अ इ उ
+              hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
+            ratio: '4:3'
+            text_in_image:
+            - अ इ उ
+            - अ इ उ
+            - अ इ उ
+          feature:
+            en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: बालक
+      - - id: r1-c0
+          label:
+            en: girl
+            hi: बालिका
+        - id: r1-c1
+          sa: बालिका
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r1-c2
+          sa: बालिके
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: बालिका
+        - id: r1-c3
+          sa: बालिकाः
+          feature:
+            en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: बालिका
+      - - id: r2-c0
+          label:
+            en: fruit
+            hi: फल
+        - id: r2-c1
+          sa: फलम्
+          image:
+            id: teaching-fruit-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE ripe yellow
+              mango with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and restrained gouache,
+              quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally grouped and large
+              enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit or extra objects.
+              The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: One whole mango
+              hi: एक पूरा आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: फल
+        - id: r2-c2
+          sa: फले
+          image:
+            id: teaching-fruit-two
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO separate ripe
+              yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor and
+              restrained gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally
+              grouped and large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit
+              or extra objects. The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: Two separate whole mangoes
+              hi: दो अलग-अलग पूरे आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: फल
+        - id: r2-c3
+          sa: फलानि
+          image:
+            id: teaching-fruit-many
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE separate
+              ripe yellow mangoes, each with a green leaf, resting on a plain warm ivory surface. Refined Indian watercolor
+              and restrained gouache, quiet ochre and sage, soft natural light. All fruits complete, clearly separated, centrally
+              grouped and large enough for a 320px phone. No basket, bowl, tree, background fruits, cut fruit, reflected fruit
+              or extra objects. The exact fruit count is the teaching point. No lettering, symbols, border or watermark.'
+            alt:
+              en: Three separate whole mangoes
+              hi: तीन अलग-अलग पूरे आम
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: फल
+      - - id: r3-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r3-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt:
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: []
+        - id: r3-c2
+          sa: नद्यौ
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नदी
+        - id: r3-c3
+          sa: नद्यः
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नदी
   - skill: num.plural
     formula: बालकाः · नौकाः · फलानि
     rule:
@@ -251,6 +1477,159 @@ cards:
       hi: बहुवचन प्रथमा
     tag: core
     taught_in: num.many#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: One, two, many
+        hi: एक, दो, अनेक
+      columns:
+      - en: Word
+        hi: शब्द
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          label:
+            en: boat
+            hi: नौका
+        - id: r0-c1
+          sa: नौका
+          image:
+            id: teaching-boat-one
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY ONE small traditional
+              wooden rowboat floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: One boat on the river
+              hi: नदी पर एक नाव
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        - id: r0-c2
+          sa: नौके
+          image:
+            id: teaching-boat-two
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY TWO small traditional
+              wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: Two separate boats on the river
+              hi: नदी पर दो अलग-अलग नावें
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नौका
+        - id: r0-c3
+          sa: नौकाः
+          image:
+            id: teaching-boat-many
+            brief: 'Use case: scientific-educational. Sanskrit teaching asset, 4:3 landscape. Show EXACTLY THREE small traditional
+              wooden rowboats floating on a calm pale sage-blue river beside a quiet sandy bank. Refined Indian watercolor
+              and restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. Every boat complete
+              and clearly separate, centrally grouped, recognizable at 320px phone width. No people, oars outside the boats,
+              buildings, distant boats, reflections that duplicate boats, lettering, flags, symbols, border or watermark.
+              The exact boat count is the teaching point. The river and bank are plain and unobtrusive.'
+            alt:
+              en: Three separate boats on the river
+              hi: नदी पर तीन अलग-अलग नावें
+            ratio: '4:3'
+            text_in_image: []
+          feature:
+            en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नौका
+      - - id: r1-c0
+          label:
+            en: boatman
+            hi: नाविक
+        - id: r1-c1
+          sa: नाविकः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: नाविक
+        - id: r1-c2
+          sa: नाविकौ
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नाविक
+        - id: r1-c3
+          sa: नाविकाः
+          feature:
+            en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नाविक
+      - - id: r2-c0
+          label:
+            en: leaf
+            hi: पत्र
+        - id: r2-c1
+          sa: पत्रम्
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          compare_from: पत्र
+        - id: r2-c2
+          sa: पत्रे
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: पत्र
+        - id: r2-c3
+          sa: पत्राणि
+          feature:
+            en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: पत्र
+      - - id: r3-c0
+          label:
+            en: river
+            hi: नदी
+        - id: r3-c1
+          sa: नदी
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+          image:
+            id: teaching-river
+            brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+              with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+              subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols,
+              decorative border or watermark. A clear gently flowing river winding between two green grassy banks in a quiet
+              Indian landscape. The watercourse is the central subject. No boats, buildings, people, animals or writing.'
+            alt:
+              en: A flowing river between two banks
+              hi: दो तटों के बीच बहती नदी
+            ratio: '1:1'
+            text_in_image: []
+        - id: r3-c2
+          sa: नद्यौ
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+          compare_from: नदी
+        - id: r3-c3
+          sa: नद्यः
+          feature:
+            en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+            hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+          compare_from: नदी
   - skill: verb.pres-3-du-pl
     formula: ति · तः · न्ति
     rule:
@@ -258,6 +1637,122 @@ cards:
       hi: क्रिया के वचन
     tag: core
     taught_in: num.verbs#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Three verbs, three numbers
+        hi: तीन क्रियाएँ, तीन वचन
+      columns:
+      - en: Root
+        hi: धातु
+      - en: One
+        hi: एक
+      - en: Two
+        hi: दो
+      - en: Many
+        hi: अनेक
+      rows:
+      - - id: r0-c0
+          sa: पठ्
+        - id: r0-c1
+          sa: पठति
+          feature:
+            en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c2
+          sa: पठतः
+          feature:
+            en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+        - id: r0-c3
+          sa: पठन्ति
+          feature:
+            en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: पठ्
+      - - id: r1-c0
+          sa: लिख्
+        - id: r1-c1
+          sa: लिखति
+          feature:
+            en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+        - id: r1-c2
+          sa: लिखतः
+          feature:
+            en: 'Root: {{लिख्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+        - id: r1-c3
+          sa: लिखन्ति
+          feature:
+            en: 'Root: {{लिख्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{लिख्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: लिख्
+      - - id: r2-c0
+          sa: हस्
+        - id: r2-c1
+          sa: हसति
+          feature:
+            en: 'Root: {{हस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+        - id: r2-c2
+          sa: हसतः
+          feature:
+            en: 'Root: {{हस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+        - id: r2-c3
+          sa: हसन्ति
+          feature:
+            en: 'Root: {{हस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हस्
+      - - id: r3-c0
+          sa: चल्
+        - id: r3-c1
+          sa: चलति
+          feature:
+            en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+        - id: r3-c2
+          sa: चलतः
+          feature:
+            en: 'Root: {{चल्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+        - id: r3-c3
+          sa: चलन्ति
+          feature:
+            en: 'Root: {{चल्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चल्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चल्
+      - - id: r4-c0
+          sa: वद्
+        - id: r4-c1
+          sa: वदति
+          feature:
+            en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
+        - id: r4-c2
+          sa: वदतः
+          feature:
+            en: 'Root: {{वद्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
+        - id: r4-c3
+          sa: वदन्ति
+          feature:
+            en: 'Root: {{वद्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{वद्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: वद्
   - skill: sent.agree-number
     formula: बालकौ पठतः
     rule:
@@ -265,3 +1760,51 @@ cards:
       hi: मेल
     tag: core
     taught_in: num.agree#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Action and sentence
+        hi: काम और वाक्य
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-reader-one
+          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
+            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
+            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
+            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
+            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
+            size. Keep the exact number of human figures unchanged.'
+          alt:
+            en: One boy reading a book with अ इ उ
+            hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ

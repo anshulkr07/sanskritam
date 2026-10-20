@@ -8,6 +8,7 @@ import {Button,Label,Panel} from '../ui';
 import {LAKARA_LABELS,PURUSHA_LABELS,VACANA_LABELS,VIBHAKTI_LABELS,pick} from './labels';
 import {splitEnding} from './logic';
 import type {FormExplorerBuilt} from '../types';
+import FormChange from '../cards/FormChange';
 type Paradigm=FormExplorerBuilt['paradigms'][number];
 const isNoun=(p:Paradigm):p is Extract<Paradigm,{stem:string}>=>'stem' in p;
 /** Pick a case or person and a number in the engine's grid and read the form it gives. */
@@ -27,11 +28,12 @@ export default function FormExplorer({params,onInteracted}:{params:FormExplorerB
   <Panel>
    <Label>{rowName(row)} · {columns[Math.min(columnIndex,columns.length-1)]}</Label>
    {cell.form?<Sa sa={cell.form} iast={params.iast[cell.form]} size={40}/>:<Label>{hi?'यह रूप उपलब्ध नहीं है':'No form available'}</Label>}
-   {split&&split.tail?<View style={{flexDirection:'row',alignItems:'baseline',gap:6}} accessibilityLabel={(hi?'मूल ':'stem ')+base+(hi?', प्रत्यय ':', ending ')+split.tail}>
+   {split&&split.tail?<View style={{flexDirection:'row',alignItems:'baseline',gap:6}} accessibilityLabel={(hi?'मूल ':'stem ')+base+(hi?', लिखावट में जुड़ा अंश ':', written extension ')+split.tail}>
     <Text style={{fontFamily:'TiroDevanagariSanskrit_400Regular',fontSize:sized(24),color:c.ink2}}>{base}</Text>
     <Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(18),color:c.ink3}}>+</Text>
     <Text style={{fontFamily:'TiroDevanagariSanskrit_400Regular',fontSize:sized(24),color:c.actionText}}>{split.shown}</Text>
-    <Label>{hi?'प्रत्यय':'ending'}</Label></View>:null}
+    <Label>{hi?'लिखावट में जुड़ा अंश':'written extension'}</Label></View>:null}
+   {cell.form?<><Label>{hi?'मूल और रूप की लिखावट की तुलना; यह पूरी व्युत्पत्ति नहीं है।':'Compare base and form spelling; this is not a full derivation.'}</Label><FormChange before={base} after={cell.form}/></>:null}
   </Panel>
   <View style={{gap:6}} accessibilityRole="summary">
    <View style={{flexDirection:'row',gap:6}}><View style={{width:76}}/>{columns.map((heading,i)=><View key={i} style={{flex:1,minWidth:0}}><Label>{heading}</Label></View>)}</View>

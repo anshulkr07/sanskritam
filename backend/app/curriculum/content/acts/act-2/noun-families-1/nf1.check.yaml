@@ -198,6 +198,18 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: &id001
+          en: A creeper on a wooden support
+          hi: लकड़ी के सहारे पर लता
+        ratio: '1:1'
+        text_in_image: &id002 []
     - id: i2
       sa: लताम्
     - id: i3
@@ -244,6 +256,16 @@ cards:
       sa: आ
     - id: i1
       sa: लता
+      image:
+        id: teaching-vine
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A single slender green flowering creeper vine winding around one simple wooden support, with leaves
+          and a few small white flowers. Show the entire vine including its base, make it distinct from a tree.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: लताम्
     - id: i3

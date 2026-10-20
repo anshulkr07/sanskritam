@@ -63,3 +63,41 @@ def test_revision_figures_use_existing_recordings():
     assert ("sentence", "बालकः") in card_sources(card)
     mapping = attach([card], {clip_key("बालकौ"): {"url": "https://clips.example/two.mp3"}})
     assert card["audio"] == [mapping["बालकौ"]]
+
+
+def test_shared_images_reuse_one_definition_but_conflicts_are_rejected():
+    import copy
+    from app.curriculum.schema import ImageRef
+    from app.curriculum.validate import Checker, errors
+    checker = Checker(CourseData(root=Path('.')))
+    image = ImageRef(id='shared-reader', brief='One boy reads one open book in a quiet plain courtyard.', alt={'en':'One reader','hi':'पढ़ता एक बालक'})
+    checker._image('first', image)
+    checker._image('second', copy.deepcopy(image))
+    assert not errors(checker.issues)
+    conflicting = copy.deepcopy(image)
+    conflicting.alt.en = 'Two readers'
+    checker._image('conflicting', conflicting)
+    assert any('conflicts with its definition' in i.message for i in errors(checker.issues))
+
+
+@pytest.mark.parametrize('diagram', [
+    {'kind':'count','quantity':-1}, {'kind':'count','quantity':1001},
+    {'kind':'conversation','role':'speaker','quantity':4},
+    {'kind':'position','relation':'somewhere'},
+])
+def test_semantic_diagrams_reject_ambiguous_values(diagram):
+    with pytest.raises(ValidationError):
+        TeachingVisual.model_validate(visual(items=[{'id':'cue','diagram':diagram}]))
+
+
+def test_live_comparison_and_nested_table_picture_ship_without_private_claims():
+    lesson = Lesson.model_validate({'id':'test.matrix','template':'scene','title':{'en':'Forms'},
+      'cards':[{'id':'tb1','kind':'table','caption':{'en':'Compare'},'columns':[{'en':'Form'}],
+       'rows':[[{'sa':'देवेन','compare_from':'देव','check':{'type':'subanta','stem':'देव'},
+                 'image':{'id':'deva','brief':'Private image authoring notes never enter the public lesson payload.','alt':{'en':'A deity'}}}]]}]})
+    data=CourseData(root=Path('.'))
+    data.deliveries['deva']=SimpleNamespace(phone='https://cdn.example/deva.webp',tablet='https://cdn.example/deva-large.webp',width=1000,height=750)
+    cell=lesson_payload(lesson,data)['cards'][0]['rows'][0][0]
+    assert cell['compare_from_iast']=='deva'
+    assert cell['image']['delivered'] and 'brief' not in cell['image']
+    assert 'check' not in cell

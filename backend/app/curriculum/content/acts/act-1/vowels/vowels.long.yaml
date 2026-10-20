@@ -84,6 +84,41 @@ cards:
       en: ṛ → ṝ, held longer (rare)
       hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
   visuals:
+  - id: v-script-duration-pairs
+    kind: matrix
+    title:
+      en: Same place, different duration
+      hi: वही स्थान, अलग अवधि
+    columns:
+    - en: Short
+      hi: ह्रस्व
+    - en: Long
+      hi: दीर्घ
+    rows:
+    - - id: s0
+        sa: अ
+        duration: 1
+      - id: l0
+        sa: आ
+        duration: 2
+    - - id: s1
+        sa: इ
+        duration: 1
+      - id: l1
+        sa: ई
+        duration: 2
+    - - id: s2
+        sa: उ
+        duration: 1
+      - id: l2
+        sa: ऊ
+        duration: 2
+    - - id: s3
+        sa: ऋ
+        duration: 1
+      - id: l3
+        sa: ॠ
+        duration: 2
   - id: v-source-compare
     kind: comparison
     title:
@@ -280,6 +315,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दिन
     - id: rule
       label:
         en: Connect the form and the rule
@@ -307,6 +343,7 @@ cards:
       feature:
         en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दिन
   - id: v-source-example-1
     kind: worked
     title:
@@ -330,6 +367,7 @@ cards:
       feature:
         en: 'Stem: {{दीन}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दीन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दीन
     - id: rule
       label:
         en: Connect the form and the rule
@@ -357,6 +395,7 @@ cards:
       feature:
         en: 'Stem: {{दीन}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{दीन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: दीन
   - id: v-source-example-2
     kind: worked
     title:
@@ -380,6 +419,7 @@ cards:
       feature:
         en: 'Stem: {{कुल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कुल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कुल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -407,6 +447,7 @@ cards:
       feature:
         en: 'Stem: {{कुल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कुल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कुल
   - id: v-source-example-3
     kind: worked
     title:
@@ -430,6 +471,7 @@ cards:
       feature:
         en: 'Stem: {{कूल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कूल
     - id: rule
       label:
         en: Connect the form and the rule
@@ -457,6 +499,7 @@ cards:
       feature:
         en: 'Stem: {{कूल}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{कूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: कूल
 - id: p2
   kind: practice
   mode: choice

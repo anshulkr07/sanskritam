@@ -88,6 +88,18 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: &id001
+          en: A flowing river between two banks
+          hi: दो तटों के बीच बहती नदी
+        ratio: '1:1'
+        text_in_image: &id002 []
     - id: i2
       sa: देवी
     - id: i3
@@ -141,6 +153,19 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - sa: नद्यौ
       check:
         type: subanta
@@ -148,6 +173,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नद्यः
       check:
         type: subanta
@@ -155,6 +184,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -165,6 +198,20 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नद्यौ
       check:
         type: subanta
@@ -172,6 +219,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीः
       check:
         type: subanta
@@ -179,6 +230,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -189,6 +244,20 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नदीभ्याम्
       check:
         type: subanta
@@ -196,6 +265,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीभिः
       check:
         type: subanta
@@ -203,6 +276,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -213,6 +290,20 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नदीभ्याम्
       check:
         type: subanta
@@ -220,6 +311,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीभ्यः
       check:
         type: subanta
@@ -227,6 +322,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -237,6 +336,20 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नदीभ्याम्
       check:
         type: subanta
@@ -244,6 +357,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीभ्यः
       check:
         type: subanta
@@ -251,6 +368,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -261,6 +382,20 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नद्योः
       check:
         type: subanta
@@ -268,6 +403,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीनाम्
       check:
         type: subanta
@@ -275,6 +414,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -285,6 +428,20 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नद्योः
       check:
         type: subanta
@@ -292,6 +449,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नदीषु
       check:
         type: subanta
@@ -299,6 +460,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: नदी
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -309,6 +474,20 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
+      compare_from: नदी
     - sa: नद्यौ
       check:
         type: subanta
@@ -316,6 +495,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: नदी
     - sa: नद्यः
       check:
         type: subanta
@@ -323,6 +506,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: नदी
   note:
     en: 'The call is short: {{हे नदि}}. {{नद्याः}} serves both the fifth and the sixth singular.'
     hi: 'पुकार छोटी है: {{हे नदि}}। {{नद्याः}} एकवचन पञ्चमी और षष्ठी दोनों का काम करता है।'
@@ -357,6 +544,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वध्वौ
       check:
         type: subanta
@@ -364,6 +555,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वध्वः
       check:
         type: subanta
@@ -371,6 +566,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -381,6 +580,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वध्वौ
       check:
         type: subanta
@@ -388,6 +591,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{द्वितीया}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूः
       check:
         type: subanta
@@ -395,6 +602,10 @@ cards:
         linga: Stri
         vibhakti: Dvitiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -405,6 +616,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वधूभ्याम्
       check:
         type: subanta
@@ -412,6 +627,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{तृतीया}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूभिः
       check:
         type: subanta
@@ -419,6 +638,10 @@ cards:
         linga: Stri
         vibhakti: Trtiya
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -429,6 +652,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वधूभ्याम्
       check:
         type: subanta
@@ -436,6 +663,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{चतुर्थी}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूभ्यः
       check:
         type: subanta
@@ -443,6 +674,10 @@ cards:
         linga: Stri
         vibhakti: Caturthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -453,6 +688,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वधूभ्याम्
       check:
         type: subanta
@@ -460,6 +699,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{पञ्चमी}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूभ्यः
       check:
         type: subanta
@@ -467,6 +710,10 @@ cards:
         linga: Stri
         vibhakti: Panchami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{पञ्चमी}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -477,6 +724,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वध्वोः
       check:
         type: subanta
@@ -484,6 +735,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूनाम्
       check:
         type: subanta
@@ -491,6 +746,10 @@ cards:
         linga: Stri
         vibhakti: Sasthi
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -501,6 +760,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वध्वोः
       check:
         type: subanta
@@ -508,6 +771,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सप्तमी}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वधूषु
       check:
         type: subanta
@@ -515,6 +782,10 @@ cards:
         linga: Stri
         vibhakti: Saptami
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      compare_from: वधू
   - - text:
         en: 8 · calling
         hi: 8 · सम्बोधन
@@ -525,6 +796,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Eka
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      compare_from: वधू
     - sa: वध्वौ
       check:
         type: subanta
@@ -532,6 +807,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Dvi
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सम्बोधन}} · dual'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{द्विवचन}}'
+      compare_from: वधू
     - sa: वध्वः
       check:
         type: subanta
@@ -539,6 +818,10 @@ cards:
         linga: Stri
         vibhakti: Sambodhana
         vacana: Bahu
+      feature:
+        en: 'Stem: {{वधू}} · feminine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{वधू}} · {{स्त्रीलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+      compare_from: वधू
   note:
     en: 'The {{ऊ}} turns to {{व्}} before vowels: {{वध्वौ}}, {{वध्वाः}}. The call is {{हे वधु}}.'
     hi: 'स्वर से पहले {{ऊ}} {{व्}} बन जाता है: {{वध्वौ}}, {{वध्वाः}}। पुकार है {{हे वधु}}।'
@@ -580,6 +863,16 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: देवी
     - id: i3
@@ -640,6 +933,16 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: देवी
     - id: i3
@@ -698,6 +1001,16 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: देवी
     - id: i3
@@ -776,6 +1089,16 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: देवी
     - id: i3
@@ -869,6 +1192,16 @@ cards:
       sa: ई
     - id: i1
       sa: नदी
+      image:
+        id: teaching-river
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. A clear gently flowing river winding between two green grassy banks in a quiet Indian landscape. The
+          watercourse is the central subject. No boats, buildings, people, animals or writing.'
+        alt: *id001
+        ratio: '1:1'
+        text_in_image: *id002
     - id: i2
       sa: देवी
     - id: i3

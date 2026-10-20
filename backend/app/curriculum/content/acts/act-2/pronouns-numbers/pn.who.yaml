@@ -10,10 +10,14 @@ teaches:
 needs:
 - pron.tad-full
 - sent.questions
-review: scholar_ok
+review: engine_ok
 sources:
 - title: Lesson text and story
   licence: original
+- title: Whitney, Sanskrit Grammar, §§508–512 (relative pronouns)
+  url: https://en.wikisource.org/wiki/Sanskrit_Grammar/Chapter_VII#512
+  licence: public domain
+  note: Case distinction supported by the relative/correlative examples in §512a; teaching prose and new example are original.
 cards:
 - id: s1
   kind: story
@@ -147,6 +151,56 @@ cards:
         purusha: Prathama
         vacana: Eka
   visuals:
+  - id: v-picture-examples
+    kind: comparison
+    title:
+      en: See the meaning; read the form
+      hi: अर्थ देखें, रूप पढ़ें
+    explanation:
+      en: Compare the pictures with the live Sanskrit captions.
+      hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+    items:
+    - id: i0
+      sa: कः पठति।
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      image:
+        id: teaching-reader-one
+        brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
+          clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL open
+          books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME SINGLE
+          SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ, separated
+          by spaces. Put this line prominently on one page of every book; every other page area must be clean unmarked ivory
+          paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone size. Keep the
+          exact number of human figures unchanged.'
+        alt:
+          en: One boy reading a book with अ इ उ
+          hi: अ इ उ वाली पुस्तक पढ़ता एक बालक
+        ratio: '4:3'
+        text_in_image:
+        - अ इ उ
   - id: v-source-example-0
     kind: worked
     title:
@@ -199,6 +253,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -216,6 +271,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -308,6 +364,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: लिखति
       label:
@@ -325,6 +382,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -444,6 +502,19 @@ cards:
       feature:
         en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-book
+        brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor with
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central subject,
+          whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative border
+          or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges, viewed
+          at a slight angle. No writing on the cover, spine or pages.'
+        alt:
+          en: One closed book with a plain cover
+          hi: सादे आवरण की एक बन्द पुस्तक
+        ratio: '1:1'
+        text_in_image: []
+      compare_from: पुस्तक
     - id: i3
       sa: अस्ति
       label:
@@ -461,6 +532,7 @@ cards:
       feature:
         en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: अस्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -542,6 +614,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कः
       check:
         type: subanta
@@ -549,6 +625,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यः
       check:
         type: subanta
@@ -556,6 +636,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 2 · 2nd (object)
         hi: 2 · द्वितीया
@@ -566,6 +650,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कम्
       check:
         type: subanta
@@ -573,6 +661,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यम्
       check:
         type: subanta
@@ -580,6 +672,10 @@ cards:
         linga: Pum
         vibhakti: Dvitiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 3 · 3rd (by, with)
         hi: 3 · तृतीया
@@ -590,6 +686,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: केन
       check:
         type: subanta
@@ -597,6 +697,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: येन
       check:
         type: subanta
@@ -604,6 +708,10 @@ cards:
         linga: Pum
         vibhakti: Trtiya
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 4 · 4th (to, for)
         hi: 4 · चतुर्थी
@@ -615,6 +723,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कस्मै
       check:
         type: subanta
@@ -623,6 +735,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यस्मै
       check:
         type: subanta
@@ -631,6 +747,10 @@ cards:
         vibhakti: Caturthi
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 5 · 5th (from)
         hi: 5 · पञ्चमी
@@ -642,6 +762,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कस्मात्
       check:
         type: subanta
@@ -650,6 +774,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यस्मात्
       check:
         type: subanta
@@ -658,6 +786,10 @@ cards:
         vibhakti: Panchami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 6 · 6th (of)
         hi: 6 · षष्ठी
@@ -668,6 +800,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कस्य
       check:
         type: subanta
@@ -675,6 +811,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यस्य
       check:
         type: subanta
@@ -682,6 +822,10 @@ cards:
         linga: Pum
         vibhakti: Sasthi
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: 7 · 7th (in, at)
         hi: 7 · सप्तमी
@@ -693,6 +837,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: तद्
     - sa: कस्मिन्
       check:
         type: subanta
@@ -701,6 +849,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यस्मिन्
       check:
         type: subanta
@@ -709,6 +861,10 @@ cards:
         vibhakti: Saptami
         vacana: Eka
       highlight: true
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+      compare_from: यद्
   note:
     en: 'The odd endings (coloured) are the same in all three: {{-स्मै}}, {{-स्मात्}}, {{-स्मिन्}}.'
     hi: 'विचित्र प्रत्यय (रंगीन) तीनों में एक-से हैं: {{-स्मै}}, {{-स्मात्}}, {{-स्मिन्}}।'
@@ -741,6 +897,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: यः
       check:
         type: subanta
@@ -748,6 +908,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: feminine
         hi: स्त्रीलिंग
@@ -758,6 +922,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - sa: या
       check:
         type: subanta
@@ -765,6 +933,10 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: यद्
   - - text:
         en: neuter
         hi: नपुंसक
@@ -775,6 +947,9 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
     - sa: यत्
       check:
         type: subanta
@@ -782,6 +957,10 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: यद्
   note:
     en: '{{किम्}} for the neuter, {{यत्}} for the neuter; the others follow {{तद्}}.'
     hi: नपुंसक में {{किम्}} और {{यत्}}; बाक़ी {{तद्}} जैसे हैं।
@@ -794,10 +973,12 @@ cards:
   skills:
   - pron.kim-yad
   body:
-    en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः पण्डितः}}, “who reads, he is learned”. The
-      feminine is {{या … सा}} and the neuter {{यत् … तत्}}. The same pronoun, in any case, in both halves: {{यस्मै … तस्मै}}.'
-    hi: '{{यः}} (जो) वाला वाक्य {{सः}} (वह) से पूरा होता है: {{यः पठति सः पण्डितः}}, ‘जो पढ़ता है, वह विद्वान् है’। स्त्रीलिंग
-      {{या … सा}} और नपुंसक {{यत् … तत्}}। दोनों भागों में एक ही सर्वनाम, किसी भी विभक्ति में: {{यस्मै … तस्मै}}।'
+    en: 'A {{यः}} clause is paired with {{सः}}: {{यः पठति सः पण्डितः}}. They refer to the same person or thing and agree in
+      gender and number. Each takes the case needed in its own clause; the cases need not match. {{यम् अहं पश्यामि सः पठति}}:
+      the one whom I see reads.'
+    hi: '{{यः}} वाले उपवाक्य का सम्बन्ध {{सः}} वाले उपवाक्य से है: {{यः पठति सः पण्डितः}}। दोनों उसी व्यक्ति या वस्तु को बताते
+      हैं और लिंग-वचन में मेल खाते हैं। हर सर्वनाम की विभक्ति उसके अपने उपवाक्य में काम से तय होती है; दोनों की विभक्ति अलग
+      हो सकती है। {{यम् अहं पश्यामि सः पठति}}: जिसे मैं देखता हूँ, वह पढ़ता है।'
   examples:
   - sa: यः पठति सः पण्डितः।
     meaning:
@@ -865,7 +1046,144 @@ cards:
         linga: Stri
         vibhakti: Prathama
         vacana: Eka
+  - sa: यम् अहम् पश्यामि सः पठति।
+    meaning: &id001
+      en: The one whom I see reads.
+      hi: जिसे मैं देखता हूँ, वह पढ़ता है।
+    words:
+    - sa: यम्
+      gloss:
+        en: whom
+        hi: जिसे
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: पश्यामि
+      gloss:
+        en: see
+        hi: देखता हूँ
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+    - sa: सः
+      gloss:
+        en: he, the same person
+        hi: वह, वही व्यक्ति
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
   visuals:
+  - id: v-relative-cases
+    kind: relations
+    title:
+      en: Same person, different grammatical jobs
+      hi: वही व्यक्ति, अलग व्याकरणिक काम
+    explanation: *id001
+    items:
+    - id: i0
+      sa: यम्
+      meaning:
+        en: whom
+        hi: जिसे
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{यद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{यद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+      compare_from: यद्
+    - id: i1
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: पश्यामि
+      meaning:
+        en: see
+        hi: देखता हूँ
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+      compare_from: दृश्
+    - id: i3
+      sa: सः
+      meaning:
+        en: he, the same person
+        hi: वह, वही व्यक्ति
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: तद्
+    - id: i4
+      sa: पठति
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
+    edges:
+    - source: i0
+      target: i3
+      label:
+        en: same referent; case can differ
+        hi: वही व्यक्ति; विभक्ति अलग हो सकती है
+    - source: i0
+      target: i2
+      label:
+        en: 'object of seeing: द्वितीया'
+        hi: 'देखने का कर्म: द्वितीया'
+    - source: i3
+      target: i4
+      label:
+        en: 'doer of reading: प्रथमा'
+        hi: 'पढ़ने का कर्ता: प्रथमा'
   - id: v-source-example-0
     kind: worked
     title:
@@ -934,6 +1252,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: i3
       sa: सः
       label:
@@ -959,16 +1278,18 @@ cards:
       feature:
         en: 'Stem: {{पण्डित}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{पण्डित}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: पण्डित
     - id: rule
       label:
         en: Connect the form and the rule
         hi: रूप को नियम से जोड़ें
       meaning:
-        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः पण्डितः}}, “who reads, he is learned”.
-          The feminine is {{या … सा}} and the neuter {{यत् … तत्}}. The same pronoun, in any case, in both halves: {{यस्मै
-          … तस्मै}}.'
-        hi: '{{यः}} (जो) वाला वाक्य {{सः}} (वह) से पूरा होता है: {{यः पठति सः पण्डितः}}, ‘जो पढ़ता है, वह विद्वान् है’। स्त्रीलिंग
-          {{या … सा}} और नपुंसक {{यत् … तत्}}। दोनों भागों में एक ही सर्वनाम, किसी भी विभक्ति में: {{यस्मै … तस्मै}}।'
+        en: 'A {{यः}} clause is paired with {{सः}}: {{यः पठति सः पण्डितः}}. They refer to the same person or thing and agree
+          in gender and number. Each takes the case needed in its own clause; the cases need not match. {{यम् अहं पश्यामि
+          सः पठति}}: the one whom I see reads.'
+        hi: '{{यः}} वाले उपवाक्य का सम्बन्ध {{सः}} वाले उपवाक्य से है: {{यः पठति सः पण्डितः}}। दोनों उसी व्यक्ति या वस्तु
+          को बताते हैं और लिंग-वचन में मेल खाते हैं। हर सर्वनाम की विभक्ति उसके अपने उपवाक्य में काम से तय होती है; दोनों
+          की विभक्ति अलग हो सकती है। {{यम् अहं पश्यामि सः पठति}}: जिसे मैं देखता हूँ, वह पढ़ता है।'
     - id: i7
       sa: यः पठति सः पण्डितः।
       label:
@@ -1074,6 +1395,7 @@ cards:
       feature:
         en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: लिख्
     - id: i3
       sa: सा
       label:
@@ -1104,11 +1426,12 @@ cards:
         en: Connect the form and the rule
         hi: रूप को नियम से जोड़ें
       meaning:
-        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः पण्डितः}}, “who reads, he is learned”.
-          The feminine is {{या … सा}} and the neuter {{यत् … तत्}}. The same pronoun, in any case, in both halves: {{यस्मै
-          … तस्मै}}.'
-        hi: '{{यः}} (जो) वाला वाक्य {{सः}} (वह) से पूरा होता है: {{यः पठति सः पण्डितः}}, ‘जो पढ़ता है, वह विद्वान् है’। स्त्रीलिंग
-          {{या … सा}} और नपुंसक {{यत् … तत्}}। दोनों भागों में एक ही सर्वनाम, किसी भी विभक्ति में: {{यस्मै … तस्मै}}।'
+        en: 'A {{यः}} clause is paired with {{सः}}: {{यः पठति सः पण्डितः}}. They refer to the same person or thing and agree
+          in gender and number. Each takes the case needed in its own clause; the cases need not match. {{यम् अहं पश्यामि
+          सः पठति}}: the one whom I see reads.'
+        hi: '{{यः}} वाले उपवाक्य का सम्बन्ध {{सः}} वाले उपवाक्य से है: {{यः पठति सः पण्डितः}}। दोनों उसी व्यक्ति या वस्तु
+          को बताते हैं और लिंग-वचन में मेल खाते हैं। हर सर्वनाम की विभक्ति उसके अपने उपवाक्य में काम से तय होती है; दोनों
+          की विभक्ति अलग हो सकती है। {{यम् अहं पश्यामि सः पठति}}: जिसे मैं देखता हूँ, वह पढ़ता है।'
     - id: i7
       sa: या लिखति सा कन्या।
       label:
@@ -1219,6 +1542,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -1236,6 +1560,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1349,6 +1674,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -1366,6 +1692,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1477,6 +1804,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -1494,6 +1822,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1625,6 +1954,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -1642,6 +1972,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule
@@ -1788,6 +2119,7 @@ cards:
       feature:
         en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: किम्
     - id: i2
       sa: पठति
       label:
@@ -1805,6 +2137,7 @@ cards:
       feature:
         en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
         hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      compare_from: पठ्
     - id: rule
       label:
         en: Connect the form and the rule

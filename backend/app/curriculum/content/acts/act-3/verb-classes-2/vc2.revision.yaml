@@ -27,6 +27,88 @@ cards:
     - 6.4.111
     tag: core
     taught_in: vc2.as#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'अस्: to be'
+        hi: 'अस्: होना'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अस्ति
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्तः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: सन्ति
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: असि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्थः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्थ
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अस्मि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्वः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्मः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
   - skill: verb.class-3
     rule:
       en: 'Class 3: the root is doubled: {{ददाति}}, {{दधाति}}, {{जुहोति}}, {{बिभेति}}.'
@@ -37,6 +119,80 @@ cards:
     - 7.4.58
     tag: core
     taught_in: vc2.da#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Class 3 roots
+        hi: गण 3 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: दा
+        - id: r0-c1
+          label:
+            en: give
+            hi: देना
+        - id: r0-c2
+          sa: ददाति
+          feature:
+            en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दा
+      - - id: r1-c0
+          sa: धा
+        - id: r1-c1
+          label:
+            en: place
+            hi: रखना
+        - id: r1-c2
+          sa: दधाति
+          feature:
+            en: 'Root: {{धा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{धा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: धा
+      - - id: r2-c0
+          sa: हु
+        - id: r2-c1
+          label:
+            en: offer
+            hi: हवन करना
+        - id: r2-c2
+          sa: जुहोति
+          feature:
+            en: 'Root: {{हु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हु
+      - - id: r3-c0
+          sa: भी
+        - id: r3-c1
+          label:
+            en: fear
+            hi: डरना
+        - id: r3-c2
+          sa: बिभेति
+          feature:
+            en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भी
+      - - id: r4-c0
+          sa: भृ
+        - id: r4-c1
+          label:
+            en: carry
+            hi: धारण करना
+        - id: r4-c2
+          sa: बिभर्ति
+          feature:
+            en: 'Root: {{भृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भृ
   - skill: verb.class-5-8
     rule:
       en: 'Class 5: {{-नु-}}/{{-नो-}}: {{शृणोति}}, {{आप्नोति}}. Class 8: {{-उ-}}/{{-ओ-}}: {{करोति}}, {{तनोति}}.'
@@ -47,6 +203,92 @@ cards:
     - 3.1.74
     tag: core
     taught_in: vc2.kr#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Class 5 and 8 roots
+        hi: गण 5 और 8 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: आप्
+        - id: r0-c1
+          label:
+            en: get
+            hi: पाना
+        - id: r0-c2
+          sa: आप्नोति
+          feature:
+            en: 'Root: {{आप्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{आप्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: आप्
+      - - id: r1-c0
+          sa: चि
+        - id: r1-c1
+          label:
+            en: gather
+            hi: चुनना
+        - id: r1-c2
+          sa: चिनोति
+          feature:
+            en: 'Root: {{चि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चि
+      - - id: r2-c0
+          sa: शक्
+        - id: r2-c1
+          label:
+            en: be able
+            hi: समर्थ होना
+        - id: r2-c2
+          sa: शक्नोति
+          feature:
+            en: 'Root: {{शक्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शक्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शक्
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          label:
+            en: hear
+            hi: सुनना
+        - id: r3-c2
+          sa: शृणोति
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: कृ
+        - id: r4-c1
+          label:
+            en: do
+            hi: करना
+        - id: r4-c2
+          sa: करोति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कृ
+      - - id: r5-c0
+          sa: तन्
+        - id: r5-c1
+          label:
+            en: stretch
+            hi: फैलाना
+        - id: r5-c2
+          sa: तनोति
+          feature:
+            en: 'Root: {{तन्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तन्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तन्
   - skill: verb.class-7-9
     rule:
       en: 'Class 7: a nasal inside: {{रुणद्धि}}, {{छिनत्ति}}. Class 9: {{-ना-}}: {{जानाति}}, {{गृह्णाति}}.'
@@ -57,6 +299,104 @@ cards:
     - 6.4.112
     tag: core
     taught_in: vc2.jna#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Class 7 and 9 roots
+        hi: गण 7 और 9 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: रुध्
+        - id: r0-c1
+          label:
+            en: block
+            hi: रोकना
+        - id: r0-c2
+          sa: रुणद्धि
+          feature:
+            en: 'Root: {{रुध्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रुध्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रुध्
+      - - id: r1-c0
+          sa: भिद्
+        - id: r1-c1
+          label:
+            en: split
+            hi: तोड़ना
+        - id: r1-c2
+          sa: भिनत्ति
+          feature:
+            en: 'Root: {{भिद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भिद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भिद्
+      - - id: r2-c0
+          sa: छिद्
+        - id: r2-c1
+          label:
+            en: cut
+            hi: काटना
+        - id: r2-c2
+          sa: छिनत्ति
+          feature:
+            en: 'Root: {{छिद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{छिद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: छिद्
+      - - id: r3-c0
+          sa: युज्
+        - id: r3-c1
+          label:
+            en: join
+            hi: जोड़ना
+        - id: r3-c2
+          sa: युनक्ति
+          feature:
+            en: 'Root: {{युज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{युज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: युज्
+      - - id: r4-c0
+          sa: ज्ञा
+        - id: r4-c1
+          label:
+            en: know
+            hi: जानना
+        - id: r4-c2
+          sa: जानाति
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+      - - id: r5-c0
+          sa: ग्रह्
+        - id: r5-c1
+          label:
+            en: take
+            hi: लेना
+        - id: r5-c2
+          sa: गृह्णाति
+          feature:
+            en: 'Root: {{ग्रह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ग्रह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ग्रह्
+      - - id: r6-c0
+          sa: क्री
+        - id: r6-c1
+          label:
+            en: buy
+            hi: ख़रीदना
+        - id: r6-c2
+          sa: क्रीणाति
+          feature:
+            en: 'Root: {{क्री}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{क्री}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: क्री
 - id: conditions
   kind: revision
   title:
@@ -71,24 +411,201 @@ cards:
       hi: प्रत्यय सीधे धातु से जुड़े तो गण 2 सोचिए।
     tag: good
     taught_in: vc2.as#t1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}}
+          gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives
+          {{ब्रवीति}}.'
+        hi: 'गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}}
+          से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।'
+      items:
+      - id: i0
+        sa: अदादि
+      - id: i1
+        sa: अस्
+      - id: i2
+        sa: अस्ति
+      - id: i3
+        sa: स्तः
+      - id: i4
+        sa: सन्ति
+      - id: i5
+        sa: इ
+      - id: i6
+        sa: एति
+      - id: i7
+        sa: इतः
+      - id: i8
+        sa: यन्ति
+      - id: i9
+        sa: या
+      - id: i10
+        sa: याति
+      - id: i11
+        sa: ब्रू
+      - id: i12
+        sa: ब्रवीति
   - skill: verb.class-3
     rule:
       en: A doubled first syllable means class 3.
       hi: दुगुना पहला अक्षर हो तो गण 3।
     tag: good
     taught_in: vc2.da#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+          (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries).
+          The plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+        hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+          है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+          दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+      items:
+      - id: i0
+        sa: जुहोत्यादि
+      - id: i1
+        sa: दा
+      - id: i2
+        sa: ददाति
+      - id: i3
+        sa: धा
+      - id: i4
+        sa: दधाति
+      - id: i5
+        sa: हु
+      - id: i6
+        sa: जुहोति
+      - id: i7
+        sa: भी
+      - id: i8
+        sa: बिभेति
+      - id: i9
+        sa: भृ
+      - id: i10
+        sa: बिभर्ति
+      - id: i11
+        sa: -ति
+      - id: i12
+        sa: ददति
   - skill: verb.class-5-8
     rule:
       en: '{{-ओति}} or {{-नोति}}: class 5 or 8.'
       hi: '{{-ओति}} या {{-नोति}}: गण 5 या 8।'
     tag: good
     taught_in: vc2.kr#t1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+          (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+          adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+        hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+          (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+          {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+      items:
+      - id: i0
+        sa: स्वादि
+      - id: i1
+        sa: -नु-
+      - id: i2
+        sa: -नो-
+      - id: i3
+        sa: आप्
+      - id: i4
+        sa: आप्नोति
+      - id: i5
+        sa: चि
+      - id: i6
+        sa: चिनोति
+      - id: i7
+        sa: शक्
+      - id: i8
+        sa: शक्नोति
+      - id: i9
+        sa: श्रु
+      - id: i10
+        sa: शृणोति
+      - id: i11
+        sa: तनादि
+      - id: i12
+        sa: -उ-
+      - id: i13
+        sa: -ओ-
+      - id: i14
+        sa: कृ
+      - id: i15
+        sa: करोति
+      - id: i16
+        sa: तन्
+      - id: i17
+        sa: तनोति
   - skill: verb.class-7-9
     rule:
       en: 'A nasal in the middle of the root: class 7; {{-नाति}}: class 9.'
       hi: 'धातु के बीच नासिक्य: गण 7; {{-नाति}}: गण 9।'
     tag: good
     taught_in: vc2.jna#t1
+    visuals:
+    - id: v-linked-3
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Class 7, {{रुधादि}}, puts a nasal inside the root before its last letter: {{रुध्}} gives {{रुणद्धि}} (blocks),
+          {{भिद्}} gives {{भिनत्ति}} (splits), {{छिद्}} gives {{छिनत्ति}} (cuts), {{युज्}} gives {{युनक्ति}} (joins). Class
+          9, {{क्र्यादि}}, adds {{-ना-}}: {{ज्ञा}} gives {{जानाति}}, {{ग्रह्}} gives {{गृह्णाति}}, {{क्री}} gives {{क्रीणाति}}.'
+        hi: 'गण 7, {{रुधादि}}, धातु के अन्तिम अक्षर से पहले भीतर एक नासिक्य रखता है: {{रुध्}} से {{रुणद्धि}} (रोकता है), {{भिद्}}
+          से {{भिनत्ति}} (तोड़ता है), {{छिद्}} से {{छिनत्ति}} (काटता है), {{युज्}} से {{युनक्ति}} (जोड़ता है)। गण 9, {{क्र्यादि}},
+          {{-ना-}} जोड़ता है: {{ज्ञा}} से {{जानाति}}, {{ग्रह्}} से {{गृह्णाति}}, {{क्री}} से {{क्रीणाति}}।'
+      items:
+      - id: i0
+        sa: रुधादि
+      - id: i1
+        sa: रुध्
+      - id: i2
+        sa: रुणद्धि
+      - id: i3
+        sa: भिद्
+      - id: i4
+        sa: भिनत्ति
+      - id: i5
+        sa: छिद्
+      - id: i6
+        sa: छिनत्ति
+      - id: i7
+        sa: युज्
+      - id: i8
+        sa: युनक्ति
+      - id: i9
+        sa: क्र्यादि
+      - id: i10
+        sa: -ना-
+      - id: i11
+        sa: ज्ञा
+      - id: i12
+        sa: जानाति
+      - id: i13
+        sa: ग्रह्
+      - id: i14
+        sa: गृह्णाति
+      - id: i15
+        sa: क्री
+      - id: i16
+        sa: क्रीणाति
 - id: exceptions
   kind: revision
   title:
@@ -140,6 +657,7 @@ cards:
         feature:
           en: 'Root: {{ब्रू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: ब्रू
       - id: rule
         label:
           en: Connect the form and the rule
@@ -165,6 +683,7 @@ cards:
         feature:
           en: 'Root: {{ब्रू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: ब्रू
   - skill: verb.class-5-8
     rule:
       en: '{{कृ}} has a short weak stem {{कुर्-}} in some forms: {{कुर्वः}}, {{कुर्मः}}.'
@@ -208,6 +727,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: कृ
       - id: rule
         label:
           en: Connect the form and the rule
@@ -233,6 +753,7 @@ cards:
         feature:
           en: 'Root: {{कृ}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
           hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+        compare_from: कृ
 - id: mistakes
   kind: revision
   title:
@@ -270,6 +791,35 @@ cards:
     - 2.4.75
     tag: core
     taught_in: vc2.as#pn
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, deletes the sign {{शप्}} after {{अद्}} and its class, so the ending joins
+          the root. 6.4.111, {{श्नसोरल्लोपः}}, drops the {{अ}} of {{अस्}} before a weak ending: {{स्तः}}, {{सन्ति}}.'
+        hi: 'सूत्र 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, {{अद्}} आदि धातुओं के बाद चिह्न {{शप्}} का लोप कर देता है, इसलिए प्रत्यय
+          धातु से सीधे जुड़ता है। 6.4.111, {{श्नसोरल्लोपः}}, निर्बल प्रत्यय से पहले {{अस्}} का {{अ}} हटा देता है: {{स्तः}},
+          {{सन्ति}}।'
+      items:
+      - id: i0
+        sa: अदिप्रभृतिभ्यः शपः
+      - id: i1
+        sa: शप्
+      - id: i2
+        sa: अद्
+      - id: i3
+        sa: श्नसोरल्लोपः
+      - id: i4
+        sa: अ
+      - id: i5
+        sa: अस्
+      - id: i6
+        sa: स्तः
+      - id: i7
+        sa: सन्ति
   - skill: verb.class-7-9
     rule:
       en: '{{रुधादिभ्यः श्नम्}} and {{क्र्यादिभ्यः श्ना}} give the nasal and {{-ना-}}.'
@@ -279,6 +829,38 @@ cards:
     - 3.1.81
     tag: core
     taught_in: vc2.jna#pn
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Read the forms in the explanation
+        hi: व्याख्या के रूप पढ़ें
+      explanation:
+        en: 'Sūtra 3.1.78, {{रुधादिभ्यः श्नम्}}, puts the infix {{श्नम्}} inside the root of class 7: {{रुध् + न + ध्}}. 3.1.81,
+          {{क्र्यादिभ्यः श्ना}}, adds {{श्ना}} to class 9, which gives {{-ना-}}; and 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, drops
+          its {{आ}} before a weak ending: {{जानीतः}}.'
+        hi: 'सूत्र 3.1.78, {{रुधादिभ्यः श्नम्}}, गण 7 की धातु के भीतर {{श्नम्}} रखता है: {{रुध् + न + ध्}}। 3.1.81, {{क्र्यादिभ्यः
+          श्ना}}, गण 9 में {{श्ना}} जोड़ता है, जिससे {{-ना-}} बनता है; और 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, निर्बल प्रत्यय से
+          पहले उसका {{आ}} हटा देता है: {{जानीतः}}।'
+      items:
+      - id: i0
+        sa: रुधादिभ्यः श्नम्
+      - id: i1
+        sa: श्नम्
+      - id: i2
+        sa: रुध् + न + ध्
+      - id: i3
+        sa: क्र्यादिभ्यः श्ना
+      - id: i4
+        sa: श्ना
+      - id: i5
+        sa: -ना-
+      - id: i6
+        sa: श्नाऽभ्यस्तयोरातः
+      - id: i7
+        sa: आ
+      - id: i8
+        sa: जानीतः
 - id: sheet
   kind: revision
   title:
@@ -294,6 +876,88 @@ cards:
       hi: गण 2
     tag: core
     taught_in: vc2.as#tb1
+    visuals:
+    - id: v-linked-0
+      kind: matrix
+      title:
+        en: 'अस्: to be'
+        hi: 'अस्: होना'
+      columns:
+      - en: Person
+        hi: पुरुष
+      - en: One
+        hi: एकवचन
+      - en: Two
+        hi: द्विवचन
+      - en: Many
+        hi: बहुवचन
+      rows:
+      - - id: r0-c0
+          label:
+            en: he, she, it
+            hi: वह (प्रथम पुरुष)
+        - id: r0-c1
+          sa: अस्ति
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c2
+          sa: स्तः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+        - id: r0-c3
+          sa: सन्ति
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: अस्
+      - - id: r1-c0
+          label:
+            en: you
+            hi: तुम (मध्यम पुरुष)
+        - id: r1-c1
+          sa: असि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c2
+          sa: स्थः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+        - id: r1-c3
+          sa: स्थ
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+          compare_from: अस्
+      - - id: r2-c0
+          label:
+            en: I, we
+            hi: मैं (उत्तम पुरुष)
+        - id: r2-c1
+          sa: अस्मि
+          feature:
+            en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c2
+          sa: स्वः
+          feature:
+            en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
+        - id: r2-c3
+          sa: स्मः
+          feature:
+            en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+            hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+          compare_from: अस्
   - skill: verb.class-3
     formula: ददाति · जुहोति · बिभेति
     rule:
@@ -301,6 +965,80 @@ cards:
       hi: गण 3
     tag: core
     taught_in: vc2.da#tb1
+    visuals:
+    - id: v-linked-1
+      kind: matrix
+      title:
+        en: Class 3 roots
+        hi: गण 3 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: दा
+        - id: r0-c1
+          label:
+            en: give
+            hi: देना
+        - id: r0-c2
+          sa: ददाति
+          feature:
+            en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: दा
+      - - id: r1-c0
+          sa: धा
+        - id: r1-c1
+          label:
+            en: place
+            hi: रखना
+        - id: r1-c2
+          sa: दधाति
+          feature:
+            en: 'Root: {{धा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{धा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: धा
+      - - id: r2-c0
+          sa: हु
+        - id: r2-c1
+          label:
+            en: offer
+            hi: हवन करना
+        - id: r2-c2
+          sa: जुहोति
+          feature:
+            en: 'Root: {{हु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{हु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: हु
+      - - id: r3-c0
+          sa: भी
+        - id: r3-c1
+          label:
+            en: fear
+            hi: डरना
+        - id: r3-c2
+          sa: बिभेति
+          feature:
+            en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भी
+      - - id: r4-c0
+          sa: भृ
+        - id: r4-c1
+          label:
+            en: carry
+            hi: धारण करना
+        - id: r4-c2
+          sa: बिभर्ति
+          feature:
+            en: 'Root: {{भृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भृ
   - skill: verb.class-5-8
     formula: शृणोति · करोति
     rule:
@@ -308,6 +1046,92 @@ cards:
       hi: गण 5 और 8
     tag: core
     taught_in: vc2.kr#tb1
+    visuals:
+    - id: v-linked-2
+      kind: matrix
+      title:
+        en: Class 5 and 8 roots
+        hi: गण 5 और 8 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: आप्
+        - id: r0-c1
+          label:
+            en: get
+            hi: पाना
+        - id: r0-c2
+          sa: आप्नोति
+          feature:
+            en: 'Root: {{आप्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{आप्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: आप्
+      - - id: r1-c0
+          sa: चि
+        - id: r1-c1
+          label:
+            en: gather
+            hi: चुनना
+        - id: r1-c2
+          sa: चिनोति
+          feature:
+            en: 'Root: {{चि}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{चि}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: चि
+      - - id: r2-c0
+          sa: शक्
+        - id: r2-c1
+          label:
+            en: be able
+            hi: समर्थ होना
+        - id: r2-c2
+          sa: शक्नोति
+          feature:
+            en: 'Root: {{शक्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{शक्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: शक्
+      - - id: r3-c0
+          sa: श्रु
+        - id: r3-c1
+          label:
+            en: hear
+            hi: सुनना
+        - id: r3-c2
+          sa: शृणोति
+          feature:
+            en: 'Root: {{श्रु}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{श्रु}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: श्रु
+      - - id: r4-c0
+          sa: कृ
+        - id: r4-c1
+          label:
+            en: do
+            hi: करना
+        - id: r4-c2
+          sa: करोति
+          feature:
+            en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: कृ
+      - - id: r5-c0
+          sa: तन्
+        - id: r5-c1
+          label:
+            en: stretch
+            hi: फैलाना
+        - id: r5-c2
+          sa: तनोति
+          feature:
+            en: 'Root: {{तन्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{तन्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: तन्
   - skill: verb.class-7-9
     formula: रुणद्धि · जानाति · गृह्णाति
     rule:
@@ -315,3 +1139,101 @@ cards:
       hi: गण 7 और 9
     tag: core
     taught_in: vc2.jna#tb1
+    visuals:
+    - id: v-linked-3
+      kind: matrix
+      title:
+        en: Class 7 and 9 roots
+        hi: गण 7 और 9 की धातुएँ
+      columns:
+      - en: Root
+        hi: धातु
+      - en: Meaning
+        hi: अर्थ
+      - en: He
+        hi: वह
+      rows:
+      - - id: r0-c0
+          sa: रुध्
+        - id: r0-c1
+          label:
+            en: block
+            hi: रोकना
+        - id: r0-c2
+          sa: रुणद्धि
+          feature:
+            en: 'Root: {{रुध्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{रुध्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: रुध्
+      - - id: r1-c0
+          sa: भिद्
+        - id: r1-c1
+          label:
+            en: split
+            hi: तोड़ना
+        - id: r1-c2
+          sa: भिनत्ति
+          feature:
+            en: 'Root: {{भिद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{भिद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: भिद्
+      - - id: r2-c0
+          sa: छिद्
+        - id: r2-c1
+          label:
+            en: cut
+            hi: काटना
+        - id: r2-c2
+          sa: छिनत्ति
+          feature:
+            en: 'Root: {{छिद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{छिद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: छिद्
+      - - id: r3-c0
+          sa: युज्
+        - id: r3-c1
+          label:
+            en: join
+            hi: जोड़ना
+        - id: r3-c2
+          sa: युनक्ति
+          feature:
+            en: 'Root: {{युज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{युज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: युज्
+      - - id: r4-c0
+          sa: ज्ञा
+        - id: r4-c1
+          label:
+            en: know
+            hi: जानना
+        - id: r4-c2
+          sa: जानाति
+          feature:
+            en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ज्ञा
+      - - id: r5-c0
+          sa: ग्रह्
+        - id: r5-c1
+          label:
+            en: take
+            hi: लेना
+        - id: r5-c2
+          sa: गृह्णाति
+          feature:
+            en: 'Root: {{ग्रह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{ग्रह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: ग्रह्
+      - - id: r6-c0
+          sa: क्री
+        - id: r6-c1
+          label:
+            en: buy
+            hi: ख़रीदना
+        - id: r6-c2
+          sa: क्रीणाति
+          feature:
+            en: 'Root: {{क्री}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+            hi: 'धातु: {{क्री}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+          compare_from: क्री

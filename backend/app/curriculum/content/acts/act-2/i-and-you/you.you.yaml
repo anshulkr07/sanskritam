@@ -97,6 +97,69 @@ cards:
       en: 'second person: you'
       hi: 'मध्यम पुरुष: तुम'
   visuals:
+  - id: v-cue-conversation
+    kind: comparison
+    title:
+      en: Whose viewpoint? How many?
+      hi: किसका दृष्टिकोण? कितने?
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      diagram:
+        kind: conversation
+        role: listener
+        quantity: 1
+        plural: false
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      diagram:
+        kind: conversation
+        role: listener
+        quantity: 2
+        plural: false
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      diagram:
+        kind: conversation
+        role: listener
+        quantity: 3
+        plural: true
   - id: v-source-compare
     kind: comparison
     title:
@@ -122,6 +185,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i1
       sa: युवाम्
       meaning:
@@ -136,6 +200,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: यूयम्
       meaning:
@@ -150,6 +215,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: tb1
   kind: table
   title:
@@ -179,6 +245,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - sa: पठसि
       check:
         type: tinanta
@@ -186,6 +256,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
   - - text:
         en: you two
         hi: तुम दोनों
@@ -196,6 +270,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - sa: पठथः
       check:
         type: tinanta
@@ -203,6 +281,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
   - - text:
         en: you all
         hi: तुम सब
@@ -213,6 +295,10 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
     - sa: पठथ
       check:
         type: tinanta
@@ -220,6 +306,10 @@ cards:
         lakara: Lat
         purusha: Madhyama
         vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
+      compare_from: पठ्
 - id: p1
   kind: practice
   depth: core
@@ -264,6 +354,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i1
       sa: युवाम्
       meaning:
@@ -278,6 +369,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: यूयम्
       meaning:
@@ -292,6 +384,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: p2
   kind: practice
   depth: core
@@ -356,6 +449,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i1
       sa: युवाम्
       meaning:
@@ -370,6 +464,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: यूयम्
       meaning:
@@ -384,6 +479,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: e1
   kind: explore
   depth: core
@@ -450,6 +546,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i1
       sa: युवाम्
       meaning:
@@ -464,6 +561,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: यूयम्
       meaning:
@@ -478,6 +576,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: p4
   kind: practice
   title:
@@ -534,6 +633,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      compare_from: युष्मद्
     - id: i1
       sa: युवाम्
       meaning:
@@ -548,6 +648,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      compare_from: युष्मद्
     - id: i2
       sa: यूयम्
       meaning:
@@ -562,6 +663,7 @@ cards:
       feature:
         en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
         hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+      compare_from: युष्मद्
 - id: sum
   kind: summary
   title:
