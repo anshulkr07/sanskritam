@@ -1,0 +1,623 @@
+{
+  "id": "cons-sibilants-s1",
+  "where": "cons.sibilants#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at the letters, a lavender shadow laughing in the open, no longer hiding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "cons.sibilants",
+    "template": "scene",
+    "title": {
+      "en": "Three hisses and a breath",
+      "hi": "तीन ऊष्म और एक साँस"
+    },
+    "title_sa": "ऊष्माणः",
+    "minutes": 6,
+    "teaches": [
+      "script.cons.sibilants"
+    ],
+    "needs": [
+      "script.cons.grid",
+      "script.cons.semivowels"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The hissing carvings",
+          "hi": "फुफकारती नक्काशी"
+        },
+        "image": {
+          "id": "cons-sibilants-s1",
+          "brief": "The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at the letters, a lavender shadow laughing in the open, no longer hiding.",
+          "alt": {
+            "en": "A parrot hissing at four carved letters while a shy shadow laughs",
+            "hi": "चार खुदे अक्षरों पर फुफकारता तोता, खुलकर हँसती छाया"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "chayika"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "On the door's last line Śuka starts to hiss. Four letters hiss or sigh: three like a snake, one like a breath. He tries each one and gets them all wrong. Chāyikā forgets to hide and laughs out loud.",
+          "hi": "द्वार की आख़िरी पंक्ति पर शुक फुफकारने लगता है। चार अक्षर फुफकारते या साँस छोड़ते हैं: तीन साँप की तरह, एक साँस की तरह। वह हर एक आज़माता है और सब ग़लत बोलता है। छायिका छिपना भूलकर ज़ोर से हँस पड़ती है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Hiss and breath",
+          "hi": "फुफकार और साँस"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.",
+          "hi": "{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "श",
+            "gloss": {
+              "en": "palate, “sh” in “ship”",
+              "hi": "तालु, ‘श’"
+            },
+            "check": null
+          },
+          {
+            "sa": "ष",
+            "gloss": {
+              "en": "roof, tongue curled back",
+              "hi": "मूर्धा, जीभ मुड़ी हुई"
+            },
+            "check": null
+          },
+          {
+            "sa": "स",
+            "gloss": {
+              "en": "teeth, “s” in “sun”",
+              "hi": "दन्त, ‘स’"
+            },
+            "check": null
+          },
+          {
+            "sa": "ह",
+            "gloss": {
+              "en": "throat, a breath",
+              "hi": "कण्ठ, साँस"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mouth_map",
+        "prompt": {
+          "en": "Tap each hiss and see where it is made.",
+          "hi": "हर फुफकार को छुइए और देखिए कि वह कहाँ बनती है।"
+        },
+        "params": {
+          "letters": [
+            "श",
+            "ष",
+            "स",
+            "ह"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each letter to its place.",
+          "hi": "हर अक्षर को उसके स्थान से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{श}} palate, {{ष}} roof, {{स}} teeth, {{ह}} throat.",
+          "hi": "{{श}} तालु, {{ष}} मूर्धा, {{स}} दन्त, {{ह}} कण्ठ।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "श",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "palate",
+                "hi": "तालु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ष",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "roof of the mouth",
+                "hi": "मूर्धा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "स",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "teeth",
+                "hi": "दन्त"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ह",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "throat",
+                "hi": "कण्ठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Same hiss, three places",
+          "hi": "एक फुफकार, तीन स्थान"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.",
+          "hi": "देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है। हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।"
+        },
+        "examples": [
+          {
+            "sa": "शिवः",
+            "meaning": {
+              "en": "Śiva: palatal {{श}}",
+              "hi": "शिव: तालव्य {{श}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "शिव",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "विष्णुः",
+            "meaning": {
+              "en": "Viṣṇu: curled {{ष}}",
+              "hi": "विष्णु: मूर्धन्य {{ष}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "विष्णु",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "सूर्यः",
+            "meaning": {
+              "en": "the sun: dental {{स}}",
+              "hi": "सूर्य: दन्त्य {{स}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "सूर्य",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that has a curled {{ष}}.",
+          "hi": "हर उस शब्द को छुइए जिसमें मुड़ी जीभ वाला {{ष}} है।"
+        },
+        "params": {
+          "passage": [
+            "शिवः",
+            "षट्",
+            "सुखम्",
+            "कृष्णः",
+            "विष्णुः",
+            "शान्तिः"
+          ],
+          "targets": [
+            "षट्",
+            "कृष्णः",
+            "विष्णुः"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which letter is a plain breath, made in the throat?",
+          "hi": "कौन-सा अक्षर गले से निकलती साफ़ साँस है?"
+        },
+        "explain": {
+          "en": "{{ह}} is a breath from the throat; the other two hiss.",
+          "hi": "{{ह}} गले की साँस है; बाकी दो फुफकारते हैं।"
+        },
+        "options": [
+          {
+            "sa": "श",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ह",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The last line",
+          "hi": "आख़िरी पंक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Put the four in the door's order: three hisses, then the breath.",
+          "hi": "चारों को द्वार के क्रम में लगाइए: तीन फुफकारें, फिर साँस।"
+        },
+        "explain": {
+          "en": "{{श}} {{ष}} {{स}} {{ह}}: the last line of the door.",
+          "hi": "{{श}} {{ष}} {{स}} {{ह}}: द्वार की आख़िरी पंक्ति।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "श",
+          "ष",
+          "स",
+          "ह"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "The last line glows. Chāyikā steps halfway out of the carving: a slim lavender shadow with a gold thread in her hair. She still cannot say her name.",
+            "hi": "आख़िरी पंक्ति चमक उठती है। छायिका आधी नक्काशी से बाहर आ जाती है: बालों में सुनहरे धागे वाली दुबली बैंगनी छाया। फिर भी वह अपना नाम नहीं बोल पाती।"
+          },
+          "failure": {
+            "en": "The letters flicker. Hiss, hiss, hiss, then the breath.",
+            "hi": "अक्षर टिमटिमाते हैं। फुफकार, फुफकार, फुफकार, फिर साँस।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's names",
+          "hi": "पाणिनि के नाम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "script.cons.sibilants"
+        ],
+        "sutras": [
+          "SS.13",
+          "SS.14"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}} Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.",
+          "hi": "शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह {{शल्}} ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "शल्",
+          "meaning": {
+            "en": "the hissing group {{श}} {{ष}} {{स}} {{ह}}",
+            "hi": "ऊष्म समूह {{श}} {{ष}} {{स}} {{ह}}"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Hisses and the breath",
+          "hi": "फुफकारें और साँस"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "श ष स",
+            "text": {
+              "en": "Three hisses: palate, roof, teeth.",
+              "hi": "तीन फुफकारें: तालु, मूर्धा, दन्त।"
+            }
+          },
+          {
+            "sa": "ह",
+            "text": {
+              "en": "A breath from the throat.",
+              "hi": "गले की साँस।"
+            }
+          },
+          {
+            "sa": "शल्",
+            "text": {
+              "en": "Pāṇini's name for the four.",
+              "hi": "चारों का पाणिनि-नाम।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cons-sibilants-s1",
+    "brief": "The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at the letters, a lavender shadow laughing in the open, no longer hiding.",
+    "alt": {
+      "en": "A parrot hissing at four carved letters while a shy shadow laughs",
+      "hi": "चार खुदे अक्षरों पर फुफकारता तोता, खुलकर हँसती छाया"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "chayika"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-69bb8108-179e-4e2f-84e5-ab0df036df9b.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "e0ea0e7e54d86893463f02780592cd399bb03f47d8c3d9481e05059ce338d9a5",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-sibilants-s1-phone-5ea3b68a.webp",
+      "key": "learn/cons-sibilants-s1-phone-5ea3b68a.webp",
+      "sha256": "5ea3b68a1077c245d54ec934dcc51ab43d84cbcb0efedb5a974faf48ba855eea",
+      "bytes": 105220,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-sibilants-s1-phone-5ea3b68a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-sibilants-s1-tablet-2e7099e6.webp",
+      "key": "learn/cons-sibilants-s1-tablet-2e7099e6.webp",
+      "sha256": "2e7099e6c3f18446cb128a485624b26b9fa8a5263672a7a2c8ed727c2759f05f",
+      "bytes": 420032,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-sibilants-s1-tablet-2e7099e6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

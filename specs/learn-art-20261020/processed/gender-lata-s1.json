@@ -1,0 +1,936 @@
+{
+  "id": "gender-lata-s1",
+  "where": "gender.lata#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A garland-maker sitting under a banyan tree at the fair with a basket of flowers, a trailing white jasmine vine and her small daughter pointing at the river; Śuka tugging at a flower; the rainbow-coloured spirit hiding in the basket.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "gender.lata",
+    "template": "scene",
+    "title": {
+      "en": "Feminines like लता",
+      "hi": "लता जैसे स्त्रीलिंग"
+    },
+    "title_sa": "स्त्रीप्रत्ययाः",
+    "minutes": 6,
+    "teaches": [
+      "gen.feminine-a"
+    ],
+    "needs": [
+      "gen.agreement"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The garland-maker",
+          "hi": "माला वाली"
+        },
+        "image": {
+          "id": "gender-lata-s1",
+          "brief": "A garland-maker sitting under a banyan tree at the fair with a basket of flowers, a trailing white jasmine vine and her small daughter pointing at the river; Śuka tugging at a flower; the rainbow-coloured spirit hiding in the basket.",
+          "alt": {
+            "en": "A garland-maker under a banyan tree with her small daughter",
+            "hi": "बरगद के नीचे माला वाली और उसकी छोटी बेटी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "rangaka"
+          ],
+          "place": "utsava"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Under a banyan tree sits a garland-maker with a basket of flowers and a vine of white jasmine. “लता,” she says, holding up a trailing creeper. “कन्या,” she says, of her small daughter. “नदी,” says her daughter, pointing at the river. The three words end differently from the boys' words, but alike with each other.",
+          "hi": "बरगद के नीचे माला वाली बैठी है, उसके पास फूलों की टोकरी और सफ़ेद चमेली की एक बेल है। “लता,” वह फैलती हुई लता उठाकर कहती है। “कन्या,” वह अपनी छोटी बेटी के लिए कहती है। “नदी,” बेटी नदी की ओर इशारा करके कहती है। ये तीनों शब्द बालकों के शब्दों से अलग समाप्त होते हैं, पर आपस में एक-से हैं।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Feminine in -आ",
+          "hi": "-आ वाले स्त्रीलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [
+          "4.1.4"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Many feminine words end in {{आ}}: {{लता}} (creeper), {{कन्या}} (girl), {{बालिका}}, {{माला}} (garland). You can make a feminine from a masculine by adding {{आ}}: {{छात्रः}} → {{छात्रा}}.",
+          "hi": "अनेक स्त्रीलिंग शब्द {{आ}} पर समाप्त होते हैं: {{लता}}, {{कन्या}}, {{बालिका}}, {{माला}}। पुंलिंग में {{आ}} जोड़कर स्त्रीलिंग बनाया जा सकता है: {{छात्रः}} → {{छात्रा}}।"
+        },
+        "examples": [
+          {
+            "sa": "लता",
+            "meaning": {
+              "en": "a creeper",
+              "hi": "लता"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "लता",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "छात्रा",
+            "meaning": {
+              "en": "a girl student, from {{छात्रः}}",
+              "hi": "छात्रा, {{छात्रः}} से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "छात्रा",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "माला",
+            "meaning": {
+              "en": "a garland",
+              "hi": "माला"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "माला",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Feminine in -ई",
+          "hi": "-ई वाले स्त्रीलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [
+          "4.1.5"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Others end in {{ई}}: {{नदी}} (river), {{देवी}} (goddess), {{सुन्दरी}} (beautiful woman). A masculine in -अ can make an {{ई}} feminine too: {{देवः}} → {{देवी}}.",
+          "hi": "दूसरे {{ई}} पर समाप्त होते हैं: {{नदी}}, {{देवी}}, {{सुन्दरी}}। -अ वाले पुंलिंग से भी {{ई}} वाला स्त्रीलिंग बनता है: {{देवः}} → {{देवी}}।"
+        },
+        "examples": [
+          {
+            "sa": "नदी",
+            "meaning": {
+              "en": "a river",
+              "hi": "नदी"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नदी",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "देवी",
+            "meaning": {
+              "en": "a goddess, from {{देवः}}",
+              "hi": "देवी, {{देवः}} से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "देवी",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "सुन्दरी",
+            "meaning": {
+              "en": "a beautiful woman",
+              "hi": "सुन्दरी"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "सुन्दरी",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Masculine and feminine pairs",
+          "hi": "पुंलिंग और स्त्रीलिंग जोड़े"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "How a feminine is made",
+          "hi": "स्त्रीलिंग कैसे बनता है"
+        },
+        "columns": [
+          {
+            "en": "Masculine",
+            "hi": "पुंलिंग"
+          },
+          {
+            "en": "Feminine",
+            "hi": "स्त्रीलिंग"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "छात्रः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "छात्र",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "छात्रा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "छात्रा",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "student",
+                "hi": "छात्र"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "child",
+                "hi": "बच्चा"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "देवः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देवी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "god, goddess",
+                "hi": "देवता, देवी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "शिष्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "शिष्य",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "शिष्या",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "शिष्या",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "pupil",
+                "hi": "शिष्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is feminine?",
+          "hi": "स्त्रीलिंग शब्द कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{माला}} ends in {{आ}}.",
+          "hi": "{{माला}} {{आ}} पर समाप्त होता है।"
+        },
+        "options": [
+          {
+            "sa": "गृहम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "माला",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "वृक्षः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each masculine to its feminine.",
+          "hi": "हर पुंलिंग को उसके स्त्रीलिंग से जोड़िए।"
+        },
+        "explain": {
+          "en": "Add {{आ}} or {{ई}} to make a feminine.",
+          "hi": "स्त्रीलिंग बनाने के लिए {{आ}} या {{ई}} जोड़िए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "छात्रः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "छात्रा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "देवः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "देवी",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शिष्यः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "शिष्या",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every feminine word.",
+          "hi": "हर स्त्रीलिंग शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "लता",
+            "वृक्षः",
+            "कन्या",
+            "फलम्",
+            "नदी",
+            "माला"
+          ],
+          "targets": [
+            "लता",
+            "कन्या",
+            "नदी",
+            "माला"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Girl and student",
+          "hi": "कन्या और छात्रा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The girl is a student.”",
+          "hi": "कहिए: ‘कन्या छात्रा है।’"
+        },
+        "explain": {
+          "en": "{{कन्या छात्रा}}: both feminine, both first case.",
+          "hi": "{{कन्या छात्रा}}: दोनों स्त्रीलिंग, दोनों प्रथमा।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "कन्या",
+          "छात्रा"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“कन्या छात्रा,” you say. The garland-maker's daughter claps. The multi-coloured spirit leaps from the basket, no longer hiding, one colour at last: gold. He bows to the garland-maker: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।”",
+            "hi": "“कन्या छात्रा,” आप कहते हैं। माला वाली की बेटी ताली बजाती है। इन्द्रधनुषी भूत टोकरी से कूदता है, अब छिपा नहीं, आख़िर एक रंग का: सुनहरा। वह माला वाली को प्रणाम करता है: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।”"
+          },
+          "failure": {
+            "en": "The basket stays shut. Both words are feminine: both end in {{आ}}.",
+            "hi": "टोकरी बन्द रहती है। दोनों शब्द स्त्रीलिंग हैं: दोनों {{आ}} पर समाप्त होते हैं।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's feminine makers",
+          "hi": "पाणिनि के स्त्रीप्रत्यय"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "gen.feminine-a"
+        ],
+        "sutras": [
+          "4.1.4",
+          "4.1.5"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 4.1.4 says a word ending in {{अ}} makes its feminine with {{टाप्}}, which shows up as {{आ}}. Sūtra 4.1.5 gives {{ङीप्}}, which shows up as {{ई}}, to words in {{ऋ}} and {{न्}} and others.",
+          "hi": "सूत्र 4.1.4 कहता है कि -{{अ}} वाला शब्द {{टाप्}} से स्त्रीलिंग बनाता है, जो {{आ}} के रूप में दिखता है। सूत्र 4.1.5 {{ऋ}} और {{न्}} आदि वाले शब्दों को {{ङीप्}} देता है, जो {{ई}} के रूप में दिखता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "टाप्",
+          "meaning": {
+            "en": "the suffix that gives -आ",
+            "hi": "-आ देने वाला प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Feminines",
+          "hi": "स्त्रीलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "लता · कन्या · माला",
+            "text": {
+              "en": "Feminine words in -आ.",
+              "hi": "-आ वाले स्त्रीलिंग शब्द।"
+            }
+          },
+          {
+            "sa": "नदी · देवी",
+            "text": {
+              "en": "Feminine words in -ई.",
+              "hi": "-ई वाले स्त्रीलिंग शब्द।"
+            }
+          },
+          {
+            "sa": "छात्रः → छात्रा · देवः → देवी",
+            "text": {
+              "en": "A masculine makes a feminine with {{आ}} or {{ई}}.",
+              "hi": "पुंलिंग {{आ}} या {{ई}} से स्त्रीलिंग बनाता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "gender-lata-s1",
+    "brief": "A garland-maker sitting under a banyan tree at the fair with a basket of flowers, a trailing white jasmine vine and her small daughter pointing at the river; Śuka tugging at a flower; the rainbow-coloured spirit hiding in the basket.",
+    "alt": {
+      "en": "A garland-maker under a banyan tree with her small daughter",
+      "hi": "बरगद के नीचे माला वाली और उसकी छोटी बेटी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "rangaka"
+    ],
+    "place": "utsava"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A garland-maker sitting under a banyan tree at the fair with a basket of flowers, a trailing white jasmine vine and her small daughter pointing at the river; Śuka tugging at a flower; the rainbow-coloured spirit hiding in the basket.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-15535882-47d3-4f71-9c37-f56b3c13a6ca.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "7abcf7a82f21266fd3a07e929d35ae8a4d1210c5812ac9656fd065c49e4b0807",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-lata-s1-phone-d03174b8.webp",
+      "key": "learn/gender-lata-s1-phone-d03174b8.webp",
+      "sha256": "d03174b8f5e4f161615b2417fb4973024f6d53c7693f588a8529981c379aae3e",
+      "bytes": 128478,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-lata-s1-phone-d03174b8.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-lata-s1-tablet-885eead2.webp",
+      "key": "learn/gender-lata-s1-tablet-885eead2.webp",
+      "sha256": "885eead22575677948ae66f873c9b8c2795c51a2984916fbb14d880b8cbf42ea",
+      "bytes": 478598,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-lata-s1-tablet-885eead2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

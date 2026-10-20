@@ -3,7 +3,12 @@ export function unitContexts(index:StoryIndex) {
  return index.acts.flatMap(act=>act.parts.flatMap((part,partIndex)=>part.units.map((unit,unitIndex)=>({act,part,partIndex,unit,unitIndex,unitNumber:act.parts.flatMap(p=>p.units).findIndex(u=>u.id===unit.id)+1,unitTotal:act.parts.reduce((n,p)=>n+p.units.length,0)}))));
 }
 export function findUnit(index:StoryIndex,id?:string|null){return unitContexts(index).find(context=>context.unit.id===id);}
-export function currentContext(index:StoryIndex,state:StoryState){return findUnit(index,state.current?.unit_id??state.coming_soon)??unitContexts(index)[0];}
+/** Every unit is ready and finished: derive() then has no current stop and no planned unit to stop at. */
+export function courseComplete(index:StoryIndex,state:StoryState){const units=unitContexts(index);return units.length>0&&!state.current&&!state.coming_soon&&units.every(c=>c.unit.status==='ready'&&!!state.units[c.unit.id]?.done);}
+/** The unit the road is on; the first unit during the prologue, and none once the course is complete. */
+export function currentContext(index:StoryIndex,state:StoryState){return findUnit(index,state.current?.unit_id??state.coming_soon)??(courseComplete(index,state)?undefined:unitContexts(index)[0]);}
+/** The Home button that skips ahead to a unit's check; only Act I is about letters. */
+export function testOutLabel(actNumber:number|undefined):{en:string;hi:string}{return actNumber===1?{en:'I know these letters: take the unit check',hi:'ये अक्षर आते हैं: इकाई की जाँच दें'}:{en:'I know this unit: take the unit check',hi:'यह इकाई आती है: इकाई की जाँच दें'};}
 export function unitStops(unit:UnitSummary):LessonSummary[]{return [...unit.lessons,...(unit.check?[unit.check]:[])];}
 export function allLeaves(index:StoryIndex):LeafInfo[]{return [...new Map([...index.acts.flatMap(a=>a.parts.flatMap(p=>p.leaf?[p.leaf]:[])),...index.finale_leaves].map(leaf=>[leaf.id,leaf])).values()].sort((a,b)=>a.n-b.n);}
 export function recovered(index:StoryIndex,state:StoryState,id:string){const leaf=state.leaves.find(l=>l.id===id);return leaf?.recovered??(index.finale_leaves.some(l=>l.id===id)&&Object.values(state.units).every(u=>u.done));}

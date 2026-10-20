@@ -28,6 +28,9 @@ interface ReaderSliderProps {
   trackColor?: string;
   thumbColor?: string;
   textColor?: string;
+  /** Tooltip ground and text while scrubbing. */
+  tipColor?: string;
+  tipTextColor?: string;
   index: number;
   count: number;
   /** Short label per page, e.g. the source_ref ("Bhagavad Gītā 2.47"). */
@@ -49,6 +52,8 @@ export default function ReaderSlider({
   trackColor = color.border,
   thumbColor = color.surface,
   textColor = color.inkSoft,
+  tipColor = color.ink,
+  tipTextColor = color.bg,
   index,
   count,
   labelFor,
@@ -154,15 +159,15 @@ export default function ReaderSlider({
     <View style={[styles.wrap, compact && { paddingTop: 0, width: "100%" }]}>
       {/* Tooltip: what the thumb is on, while held. */}
       {preview !== null && (
-        <View style={styles.tip} pointerEvents="none">
-          <Text style={styles.tipText} numberOfLines={1}>
+        <View style={[styles.tip, { backgroundColor: tipColor }, compact && styles.tipCompact]} pointerEvents="none">
+          <Text style={[styles.tipText, { color: tipTextColor }]} numberOfLines={1}>
             {labelFor(safeShown)} · {safeShown + 1}/{count}
           </Text>
         </View>
       )}
       <GestureDetector gesture={composed}>
         <View
-          style={styles.hit}
+          style={[styles.hit, compact && { height: 36 }]}
           onLayout={(e) => {
             const w = e.nativeEvent.layout.width;
             setWidth(w);
@@ -178,11 +183,13 @@ export default function ReaderSlider({
             else commit(safeShown - 1);
           }}
         >
-          <View style={[styles.track, { backgroundColor: trackColor }, compact && { height: 4 }]} accessibilityRole="none">
-            <View style={[styles.fill, { width: `${safeFrac * 100}%`, backgroundColor: accentColor }]} />
+          {/* compact: the reader's hairline (owner's pick, 2026-10-20), a
+              2dp line and a square thumb. */}
+          <View style={[styles.track, { backgroundColor: trackColor }, compact && styles.trackHair]} accessibilityRole="none">
+            <View style={[styles.fill, { width: `${safeFrac * 100}%`, backgroundColor: accentColor }, compact && styles.trackHair]} />
           </View>
-          <Animated.View style={[styles.thumbAnchor, compact && { left: -8, width: 16 }, thumbStyle]} pointerEvents="none">
-            <View style={[styles.thumb, { backgroundColor: thumbColor, borderColor: accentColor }, compact && { width: 16, height: 16, borderRadius: 8, borderWidth: 2 }]} />
+          <Animated.View style={[styles.thumbAnchor, compact && { left: -6, width: 12 }, thumbStyle]} pointerEvents="none">
+            <View style={[styles.thumb, { backgroundColor: thumbColor, borderColor: accentColor }, compact && { width: 12, height: 12, borderRadius: 0, borderWidth: 0, backgroundColor: accentColor }]} />
           </Animated.View>
         </View>
       </GestureDetector>
@@ -205,7 +212,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     maxWidth: "90%",
   },
-  tipText: { color: color.white, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs },
+  tipCompact: { bottom: 40, borderRadius: 0 },
+  tipText: { color: color.bg, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs },
   hit: { height: 44, justifyContent: "center" },
   track: {
     height: 8,
@@ -214,6 +222,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   fill: { height: 8, borderRadius: 4, backgroundColor: color.saffron },
+  trackHair: { height: 2, borderRadius: 0 },
   thumbAnchor: { position: "absolute", left: -11, top: 0, bottom: 0, justifyContent: "center", width: 22 },
   thumb: {
     width: 22,

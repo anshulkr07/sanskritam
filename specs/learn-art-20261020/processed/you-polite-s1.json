@@ -1,0 +1,766 @@
+{
+  "id": "you-polite-s1",
+  "where": "you.polite#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "you.polite",
+    "template": "scene",
+    "title": {
+      "en": "Speaking to elders",
+      "hi": "बड़ों से बात"
+    },
+    "title_sa": "भवान्",
+    "minutes": 6,
+    "teaches": [
+      "pron.polite"
+    ],
+    "needs": [
+      "pron.you"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "An elder on board",
+          "hi": "नाव पर एक बुज़ुर्ग"
+        },
+        "image": {
+          "id": "you-polite-s1",
+          "brief": "A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.",
+          "alt": {
+            "en": "An old man is helped into the boat while Dādī whispers advice",
+            "hi": "बुज़ुर्ग को नाव में चढ़ाते नाविक और कान में सलाह देती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "navika",
+            "pratibimbaka"
+          ],
+          "place": "nauka"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "At a bend a white-bearded old man asks for a lift. The boatman helps him in. “Do not say त्वम् to him,” whispers Dādī. “Say भवान्, ‘your honour’. It looks like ‘you’, but it takes the verb for ‘he’.” The old man smiles into his beard.",
+          "hi": "एक मोड़ पर सफ़ेद दाढ़ी वाले एक बुज़ुर्ग नाव में बैठने के लिए पूछते हैं। नाविक उन्हें चढ़ाता है। दादी फुसफुसाती हैं, “उनसे त्वम् मत कहना। कहो भवान्, ‘आप’। यह ‘तुम’ जैसा दिखता है, पर इसके साथ ‘वह’ की क्रिया लगती है।” बुज़ुर्ग दाढ़ी में मुस्कुराते हैं।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "{{भवान्}}: your honour",
+          "hi": "{{भवान्}}: आप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”, but the verb is the third person: {{भवान् पठति}}.",
+          "hi": "जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है, पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।"
+        },
+        "examples": [
+          {
+            "sa": "भवान् पठति।",
+            "meaning": {
+              "en": "You (sir) read.",
+              "hi": "आप पढ़ते हैं।"
+            },
+            "words": [
+              {
+                "sa": "भवान्",
+                "gloss": {
+                  "en": "you (to a man, polite)",
+                  "hi": "आप (पुरुष से, आदरार्थ)"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "read",
+                  "hi": "पढ़ते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "भवती गच्छति।",
+            "meaning": {
+              "en": "You (madam) go.",
+              "hi": "आप जाती हैं।"
+            },
+            "words": [
+              {
+                "sa": "भवती",
+                "gloss": {
+                  "en": "you (to a woman, polite)",
+                  "hi": "आप (स्त्री से, आदरार्थ)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "भवती",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाती हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "भवान्",
+          "meaning": {
+            "en": "“your honour”: polite you",
+            "hi": "‘आप’: आदरपूर्ण तुम"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Plain and polite",
+          "hi": "सामान्य और आदरपूर्ण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Two ways to say “you read”",
+          "hi": "‘तुम पढ़ते हो’ कहने के दो ढंग"
+        },
+        "columns": [
+          {
+            "en": "To whom",
+            "hi": "किससे"
+          },
+          {
+            "en": "Pronoun",
+            "hi": "सर्वनाम"
+          },
+          {
+            "en": "Verb",
+            "hi": "क्रिया"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "a friend or child",
+                "hi": "मित्र या बच्चा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्वम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठसि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "an elder, a man",
+                "hi": "बड़ा, पुरुष"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भवान्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "an elder, a woman",
+                "hi": "बड़ी, स्त्री"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भवती",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{भवान्}} and {{भवती}} take the same verb as {{सः}} and {{सा}}.",
+          "hi": "{{भवान्}} और {{भवती}} वही क्रिया लेते हैं जो {{सः}} और {{सा}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "You speak to your teacher. Which pronoun?",
+          "hi": "आप अपने गुरु से बोलते हैं। कौन-सा सर्वनाम?"
+        },
+        "explain": {
+          "en": "{{भवान्}}: the polite “you”.",
+          "hi": "{{भवान्}}: आदरपूर्ण ‘आप’।"
+        },
+        "options": [
+          {
+            "sa": "त्वम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "भवान्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "अहम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which verb goes with {{भवान्}}?",
+          "hi": "{{भवान्}} के साथ कौन-सी क्रिया?"
+        },
+        "explain": {
+          "en": "{{भवान्}} takes the third-person verb: {{पठति}}.",
+          "hi": "{{भवान्}} प्रथम पुरुष की क्रिया लेता है: {{पठति}}।"
+        },
+        "options": [
+          {
+            "sa": "पठसि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "पठामि",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each situation to the word you say.",
+          "hi": "हर स्थिति को उस शब्द से जोड़िए जो आप कहेंगे।"
+        },
+        "explain": {
+          "en": "Respect: {{भवान्}} or {{भवती}}. Friends: {{त्वम्}}.",
+          "hi": "आदर: {{भवान्}} या {{भवती}}। मित्र: {{त्वम्}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "a friend",
+                "hi": "मित्र"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "त्वम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "an old man",
+                "hi": "एक बूढ़ा"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "भवान्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "an old woman",
+                "hi": "एक बूढ़ी"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "भवती",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Say it politely",
+          "hi": "आदर से कहिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say to the old man: “Does your honour go?” as a statement: “Your honour goes.”",
+          "hi": "बुज़ुर्ग से कहिए: ‘आप जाते हैं।’"
+        },
+        "explain": {
+          "en": "{{भवान् गच्छति}}: polite “you”, third-person verb.",
+          "hi": "{{भवान् गच्छति}}: आदरपूर्ण ‘आप’, प्रथम पुरुष की क्रिया।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "भवान्",
+          "गच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“भवान् गच्छति,” you say, bowing a little. The old man laughs and lays a hand on your head. Behind you the silver spirit bows too, copying you exactly, and a little too low.",
+            "hi": "“भवान् गच्छति,” आप थोड़ा झुककर कहते हैं। बुज़ुर्ग हँसकर आपके सिर पर हाथ रखते हैं। आपके पीछे चाँदी-सा भूत भी झुकता है, ठीक आपकी नक़ल में, थोड़ा ज़्यादा नीचे।"
+          },
+          "failure": {
+            "en": "He frowns kindly. {{भवान्}} takes the verb for “he”.",
+            "hi": "वे प्रेम से भौंहें सिकोड़ते हैं। {{भवान्}} के साथ ‘वह’ की क्रिया लगती है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "A word of greeting",
+          "hi": "अभिवादन का शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.polite"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn why the two words melt together in the sandhi chapters.",
+          "hi": "{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द क्यों मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।"
+        },
+        "examples": [
+          {
+            "sa": "नमः",
+            "meaning": {
+              "en": "{{नमः}}: homage",
+              "hi": "{{नमः}}: प्रणाम"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नमस्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नमस्ते",
+            "meaning": {
+              "en": "homage to you: the everyday greeting",
+              "hi": "तुम्हें प्रणाम: रोज़ का अभिवादन"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Polite “you”",
+          "hi": "आदरपूर्ण ‘आप’"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "भवान् · भवती",
+            "text": {
+              "en": "“Your honour”: polite you.",
+              "hi": "‘आप’: आदरपूर्ण तुम।"
+            }
+          },
+          {
+            "sa": "भवान् पठति",
+            "text": {
+              "en": "It takes the verb for “he”.",
+              "hi": "इसके साथ ‘वह’ की क्रिया लगती है।"
+            }
+          },
+          {
+            "sa": "नमस्ते",
+            "text": {
+              "en": "Homage to you.",
+              "hi": "तुम्हें प्रणाम।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "you-polite-s1",
+    "brief": "A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.",
+    "alt": {
+      "en": "An old man is helped into the boat while Dādī whispers advice",
+      "hi": "बुज़ुर्ग को नाव में चढ़ाते नाविक और कान में सलाह देती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "navika",
+      "pratibimbaka"
+    ],
+    "place": "nauka"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-df8b7491-3071-4a3e-a315-d6312b8568d2.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "b595db2a88374222b9e07d17cfb2371bd7d65093d8d664ff7d3d7227ae316375",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-polite-s1-phone-5a5ee0a6.webp",
+      "key": "learn/you-polite-s1-phone-5a5ee0a6.webp",
+      "sha256": "5a5ee0a6137d29f25c44dd2b27d09eccc504742ef645cf9a710ea2fbec16586e",
+      "bytes": 108572,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/you-polite-s1-phone-5a5ee0a6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-polite-s1-tablet-d4839ae2.webp",
+      "key": "learn/you-polite-s1-tablet-d4839ae2.webp",
+      "sha256": "d4839ae24987a460f63d1b0fe3adbc516388ceb3dc2fd1a3a652ddf479d576a2",
+      "bytes": 421372,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/you-polite-s1-tablet-d4839ae2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

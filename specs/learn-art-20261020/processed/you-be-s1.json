@@ -1,0 +1,1001 @@
+{
+  "id": "you-be-s1",
+  "where": "you.be#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The boat on the open river with five aboard: you, Dādī, Śuka, the boatman at the pole, the white-bearded old man, and the silvery spirit sitting on the gunwale, all turned toward one another as if introducing themselves; soft morning light on the water.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "you.be",
+    "template": "scene",
+    "title": {
+      "en": "I am, you are",
+      "hi": "मैं हूँ, तुम हो"
+    },
+    "title_sa": "अस्मि असि अस्ति",
+    "minutes": 6,
+    "teaches": [
+      "verb.as"
+    ],
+    "needs": [
+      "verb.persons",
+      "sent.no-verb-to-be"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Who is aboard",
+          "hi": "नाव पर कौन है"
+        },
+        "image": {
+          "id": "you-be-s1",
+          "brief": "The boat on the open river with five aboard: you, Dādī, Śuka, the boatman at the pole, the white-bearded old man, and the silvery spirit sitting on the gunwale, all turned toward one another as if introducing themselves; soft morning light on the water.",
+          "alt": {
+            "en": "Passengers introducing themselves aboard a river boat",
+            "hi": "नदी की नाव में अपना परिचय देते सवार"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "navika",
+            "pratibimbaka"
+          ],
+          "place": "nauka"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The boat settles into the current. One by one, everybody says who they are, using the little verb that means “am, are, is”. The old man: “I am a teacher.” The boatman: “I am a boatman.” You: your turn. The spirit's voice breaks: “I… am?”",
+          "hi": "नाव धारा में स्थिर हो जाती है। एक-एक करके सब बताते हैं कि वे कौन हैं, ‘हूँ, हो, है’ वाली छोटी क्रिया के साथ। बुज़ुर्ग: “मैं शिक्षक हूँ।” नाविक: “मैं नाविक हूँ।” अब आपकी बारी। भूत की आवाज़ टूटती है: “मैं… हूँ?”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Am, are, is",
+          "hi": "हूँ, हो, है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The verb {{अस्}}, “to be”, has the three singular forms {{अस्मि}} (I am), {{असि}} (you are), {{अस्ति}} (he, she, it is). With {{अहम्}} and {{त्वम्}} it is used freely: {{अहं छात्रः अस्मि}}.",
+          "hi": "क्रिया {{अस्}}, ‘होना’, के तीन एकवचन रूप हैं: {{अस्मि}} (मैं हूँ), {{असि}} (तुम हो), {{अस्ति}} (वह है)। {{अहम्}} और {{त्वम्}} के साथ इसका खुलकर प्रयोग होता है: {{अहं छात्रः अस्मि}}।"
+        },
+        "examples": [
+          {
+            "sa": "अहम् छात्रः अस्मि।",
+            "meaning": {
+              "en": "I am a student.",
+              "hi": "मैं छात्र हूँ।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "छात्रः",
+                "gloss": {
+                  "en": "student",
+                  "hi": "छात्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "छात्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्मि",
+                "gloss": {
+                  "en": "am",
+                  "hi": "हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "त्वम् छात्रः असि।",
+            "meaning": {
+              "en": "You are a student.",
+              "hi": "तुम छात्र हो।"
+            },
+            "words": [
+              {
+                "sa": "त्वम्",
+                "gloss": {
+                  "en": "you",
+                  "hi": "तुम"
+                },
+                "check": null
+              },
+              {
+                "sa": "छात्रः",
+                "gloss": {
+                  "en": "student",
+                  "hi": "छात्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "छात्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "असि",
+                "gloss": {
+                  "en": "are",
+                  "hi": "हो"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः छात्रः अस्ति।",
+            "meaning": {
+              "en": "He is a student.",
+              "hi": "वह छात्र है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "छात्रः",
+                "gloss": {
+                  "en": "student",
+                  "hi": "छात्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "छात्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The nine forms of अस्",
+          "hi": "अस् के नौ रूप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "To be, in the present",
+          "hi": "होना, वर्तमान में"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एक"
+          },
+          {
+            "en": "Two",
+            "hi": "दो"
+          },
+          {
+            "en": "Many",
+            "hi": "अनेक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्तः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "असि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्थः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्थ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्मि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्वः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्मः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Row 1 {{अस्ति स्तः सन्ति}}, row 2 {{असि स्थः स्थ}}, row 3 {{अस्मि स्वः स्मः}}.",
+          "hi": "पंक्ति 1 {{अस्ति स्तः सन्ति}}, पंक्ति 2 {{असि स्थः स्थ}}, पंक्ति 3 {{अस्मि स्वः स्मः}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "You say “I am”. Which form?",
+          "hi": "आप ‘मैं हूँ’ कहते हैं। कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{अस्मि}}: I am.",
+          "hi": "{{अस्मि}}: मैं हूँ।"
+        },
+        "options": [
+          {
+            "sa": "असि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अस्मि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its meaning.",
+          "hi": "हर रूप को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The forms follow the grid.",
+          "hi": "रूप तालिका के अनुसार हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "अस्मि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "I am",
+                "hi": "मैं हूँ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "असि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "you are",
+                "hi": "तुम हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he is",
+                "hi": "वह है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "स्मः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "we are",
+                "hi": "हम हैं"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every form of “to be”.",
+          "hi": "‘होना’ के हर रूप को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "अस्मि",
+            "पठति",
+            "असि",
+            "अस्ति",
+            "गच्छावः",
+            "सन्ति"
+          ],
+          "targets": [
+            "अस्मि",
+            "असि",
+            "अस्ति",
+            "सन्ति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Say who you are",
+          "hi": "बताइए कि आप कौन हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say who you are: “I am a student.”",
+          "hi": "बताइए कि आप कौन हैं: ‘मैं छात्र हूँ।’"
+        },
+        "explain": {
+          "en": "{{अहं छात्रः अस्मि}}: I am a student.",
+          "hi": "{{अहं छात्रः अस्मि}}: मैं छात्र हूँ।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "अहम्",
+          "छात्रः",
+          "अस्मि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अहं छात्रः अस्मि,” you say. The spirit listens, wide-eyed, and then, very softly: “अहम्… अस्मि.” His edges stop shimmering. He is one thing, himself.",
+            "hi": "“अहं छात्रः अस्मि,” आप कहते हैं। भूत विस्मय से सुनता है, और फिर बहुत धीरे से: “अहम्… अस्मि।” उसके किनारों की झिलमिल थम जाती है। वह एक वस्तु है, स्वयं।"
+          },
+          "failure": {
+            "en": "The spirit is still unsure. Start with {{अहम्}}, end with {{अस्मि}}.",
+            "hi": "भूत अब भी असमंजस में है। {{अहम्}} से शुरू कीजिए, {{अस्मि}} पर ख़त्म।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.as"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which sentence is correct for “you are a friend”?",
+          "hi": "‘तुम मित्र हो’ के लिए कौन-सा वाक्य सही है?"
+        },
+        "explain": {
+          "en": "With {{त्वम्}}: {{असि}}.",
+          "hi": "{{त्वम्}} के साथ: {{असि}}।"
+        },
+        "options": [
+          {
+            "sa": "त्वं मित्रम् असि",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "त्वं मित्रम् अस्मि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "त्वं मित्रम् अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "To be",
+          "hi": "होना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अस्मि · असि · अस्ति",
+            "text": {
+              "en": "I am, you are, he is.",
+              "hi": "मैं हूँ, तुम हो, वह है।"
+            }
+          },
+          {
+            "sa": "स्वः · स्थः · स्तः",
+            "text": {
+              "en": "The dual.",
+              "hi": "द्विवचन।"
+            }
+          },
+          {
+            "sa": "स्मः · स्थ · सन्ति",
+            "text": {
+              "en": "The plural.",
+              "hi": "बहुवचन।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "you-be-s1",
+    "brief": "The boat on the open river with five aboard: you, Dādī, Śuka, the boatman at the pole, the white-bearded old man, and the silvery spirit sitting on the gunwale, all turned toward one another as if introducing themselves; soft morning light on the water.",
+    "alt": {
+      "en": "Passengers introducing themselves aboard a river boat",
+      "hi": "नदी की नाव में अपना परिचय देते सवार"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "navika",
+      "pratibimbaka"
+    ],
+    "place": "nauka"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The boat on the open river with five aboard: you, Dādī, Śuka, the boatman at the pole, the white-bearded old man, and the silvery spirit sitting on the gunwale, all turned toward one another as if introducing themselves; soft morning light on the water.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f159b7bb-0b09-4e5b-a30e-d29a20c3dc67.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "8536508f0b138fa9b04557a43760146d47761364462840f77ef7d97a82e8e678",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-be-s1-phone-3e44fe3f.webp",
+      "key": "learn/you-be-s1-phone-3e44fe3f.webp",
+      "sha256": "3e44fe3f872506bb65d080c948c105f0d2ffed35f368626a31ebcb053abf4913",
+      "bytes": 104408,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/you-be-s1-phone-3e44fe3f.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-be-s1-tablet-8c85bd6a.webp",
+      "key": "learn/you-be-s1-tablet-8c85bd6a.webp",
+      "sha256": "8c85bd6a1b53c1f9f7f8127719ccc6ae5cdf2578d80e083ef5154060e4dab945",
+      "bytes": 412290,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/you-be-s1-tablet-8c85bd6a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

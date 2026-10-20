@@ -1,0 +1,549 @@
+{
+  "id": "cons-semivowels-s1",
+  "where": "cons.semivowels#s1",
+  "ratio": "4:3",
+  "expected": [
+    "य र ल व"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī's finger pointing.\nCharacter appearances:\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nय र ल व",
+  "source": {
+    "id": "cons.semivowels",
+    "template": "scene",
+    "title": {
+      "en": "The in-between sounds: य र ल व",
+      "hi": "बीच की ध्वनियाँ: य र ल व"
+    },
+    "title_sa": "अन्तःस्थाः",
+    "minutes": 6,
+    "teaches": [
+      "script.cons.semivowels"
+    ],
+    "needs": [
+      "script.cons.grid",
+      "script.cons.voice"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Between the rows",
+          "hi": "पंक्तियों के बीच"
+        },
+        "image": {
+          "id": "cons-semivowels-s1",
+          "brief": "Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī's finger pointing.",
+          "alt": {
+            "en": "A line of four carved letters under five rows, with two eyes glinting beside them",
+            "hi": "पाँच पंक्तियों के नीचे चार खुदे अक्षर, पास में चमकती दो आँखें"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "dadi",
+            "chayika"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Under the five rows, the door has one more line of four letters that fit no row. Chāyikā's eyes glint between them. “These stand in between,” says Dādī. “Half vowel, half consonant. The old name is {{अन्तःस्थाः}}, the ones that stand within.”",
+          "hi": "पाँच पंक्तियों के नीचे द्वार पर चार अक्षरों की एक और पंक्ति है जो किसी वर्ग में नहीं आती। उनके बीच छायिका की आँखें चमकती हैं। दादी कहती हैं, “ये बीच में खड़े हैं। आधे स्वर, आधे व्यंजन। पुराना नाम {{अन्तःस्थाः}} है, यानी भीतर खड़े होने वाले।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Half vowel, half consonant",
+          "hi": "आधा स्वर, आधा व्यंजन"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly. Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.",
+          "hi": "{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "य",
+            "gloss": {
+              "en": "y in “yes”: palate, like {{इ}}",
+              "hi": "यश के ‘य’ जैसा: तालु, {{इ}} की तरह"
+            },
+            "check": null
+          },
+          {
+            "sa": "र",
+            "gloss": {
+              "en": "tapped r: roof of the mouth, like {{ऋ}}",
+              "hi": "जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह"
+            },
+            "check": null
+          },
+          {
+            "sa": "ल",
+            "gloss": {
+              "en": "l: teeth, like {{ऌ}}",
+              "hi": "‘ल’: दन्त, {{ऌ}} की तरह"
+            },
+            "check": null
+          },
+          {
+            "sa": "व",
+            "gloss": {
+              "en": "between v and w: teeth and lips, like {{उ}}",
+              "hi": "‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mouth_map",
+        "prompt": {
+          "en": "Tap each in-between letter and see where it is made.",
+          "hi": "हर बीच के अक्षर को छुइए और देखिए कि वह कहाँ बनता है।"
+        },
+        "params": {
+          "letters": [
+            "य",
+            "र",
+            "ल",
+            "व"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each vowel to the in-between letter that grows from it.",
+          "hi": "हर स्वर को उस बीच के अक्षर से जोड़िए जो उससे बनता है।"
+        },
+        "explain": {
+          "en": "{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: you will see this again when words join.",
+          "hi": "{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: शब्दों के जुड़ने पर यह फिर दिखेगा।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "इ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "य",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ऋ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "र",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ऌ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "ल",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "उ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "व",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which of these is one of the in-between letters?",
+          "hi": "इनमें बीच का अक्षर कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{र}} is in the line {{य}} {{र}} {{ल}} {{व}}.",
+          "hi": "{{र}} पंक्ति {{य}} {{र}} {{ल}} {{व}} में है।"
+        },
+        "options": [
+          {
+            "sa": "क",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "र",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "म",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that begins with an in-between letter.",
+          "hi": "हर उस शब्द को छुइए जो बीच के अक्षर से शुरू होता है।"
+        },
+        "params": {
+          "passage": [
+            "यवः",
+            "रथः",
+            "लता",
+            "वनम्",
+            "कमलम्",
+            "नगरम्",
+            "सूर्यः"
+          ],
+          "targets": [
+            "यवः",
+            "रथः",
+            "लता",
+            "वनम्"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Open the line",
+          "hi": "पंक्ति खोलिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Chāyikā's eyes blink. Put the four in-between letters in the order of the door.",
+          "hi": "छायिका की आँखें झपकती हैं। चारों अक्षरों को द्वार के क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "{{य}} {{र}} {{ल}} {{व}}: the order of the door, and of Pāṇini's list.",
+          "hi": "{{य}} {{र}} {{ल}} {{व}}: यही द्वार का क्रम है, और पाणिनि की सूची का भी।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "य",
+          "र",
+          "ल",
+          "व"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "The four letters glow. A shy lavender hand slips out of the carving and touches the letter {{य}}, then pulls back.",
+            "hi": "चारों अक्षर चमकते हैं। नक्काशी से एक शर्मीला बैंगनी हाथ निकलकर {{य}} को छूता है और फिर पीछे हट जाता है।"
+          },
+          "failure": {
+            "en": "The letters dim. Say them with your mouth: palate, roof, teeth, lips.",
+            "hi": "अक्षर मद्धम हो जाते हैं। मुँह से बोलकर देखिए: तालु, मूर्धा, दन्त, ओष्ठ।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What is the old name of {{य}} {{र}} {{ल}} {{व}}?",
+          "hi": "{{य}} {{र}} {{ल}} {{व}} का पुराना नाम क्या है?"
+        },
+        "explain": {
+          "en": "{{अन्तःस्थाः}}: they stand between the vowels and the consonants.",
+          "hi": "{{अन्तःस्थाः}}: ये स्वरों और व्यंजनों के बीच खड़े हैं।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "{{अन्तःस्थाः}}: the ones that stand within",
+              "hi": "{{अन्तःस्थाः}}: भीतर खड़े होने वाले"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "{{वर्गाः}}: the rows",
+              "hi": "{{वर्गाः}}: पंक्तियाँ"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's name for them",
+          "hi": "पाणिनि का नाम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "script.cons.semivowels"
+        ],
+        "sutras": [
+          "SS.5",
+          "SS.6"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini's Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}} {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.",
+          "hi": "पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}} बचते हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "यण्",
+          "meaning": {
+            "en": "the four semivowels",
+            "hi": "चारों अन्तःस्थ"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The in-between sounds",
+          "hi": "बीच की ध्वनियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "य र ल व",
+            "text": {
+              "en": "The semivowels: half vowel, half consonant.",
+              "hi": "अन्तःस्थ: आधे स्वर, आधे व्यंजन।"
+            }
+          },
+          {
+            "sa": "इ→य · ऋ→र · ऌ→ल · उ→व",
+            "text": {
+              "en": "Each grows from a vowel.",
+              "hi": "हर एक किसी स्वर से बनता है।"
+            }
+          },
+          {
+            "sa": "यण्",
+            "text": {
+              "en": "Pāṇini's name for the group.",
+              "hi": "इस समूह का पाणिनि-नाम।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cons-semivowels-s1",
+    "brief": "Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī's finger pointing.",
+    "alt": {
+      "en": "A line of four carved letters under five rows, with two eyes glinting beside them",
+      "hi": "पाँच पंक्तियों के नीचे चार खुदे अक्षर, पास में चमकती दो आँखें"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "dadi",
+      "chayika"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī's finger pointing.\nCharacter appearances:\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-759639f0-6df2-4c80-ba18-04eceafcb6f0.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5379ba06b4fc8b80fd601a9d81f862271d46c9c7144faf6c279343bff7def866",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-semivowels-s1-phone-934c95f4.webp",
+      "key": "learn/cons-semivowels-s1-phone-934c95f4.webp",
+      "sha256": "934c95f4e3a900bba2a13133211a21fa3d1f7e327edbe1bdb6824ad2a13eeeb8",
+      "bytes": 115952,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-semivowels-s1-phone-934c95f4.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-semivowels-s1-tablet-af52de47.webp",
+      "key": "learn/cons-semivowels-s1-tablet-af52de47.webp",
+      "sha256": "af52de4792e9ea2f00e7636a4ceed342f4622a29482360cf02b9bfa1da3e35af",
+      "bytes": 484974,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-semivowels-s1-tablet-af52de47.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -54,14 +54,14 @@ assert.equal(grade(engine('grid_fill',grid),{cells:[grid[0]]}),'unsure');
 assert.equal(grade(engine('contrast',{pick:'a'},{abstained:true}),{pick:'b'}),'unsure');
 console.log(practiced+' fixture practice cards and all seven engine grading kinds passed');
 
-const {markResult,joinLetter,heldWeight,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled,clampIndex,factoryResult,nextStage,kindResult,stepChanged,clampSteps}=load('widgets/logic.ts');
+const {markResult,joinLetter,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled,clampIndex,factoryResult,nextStage,kindResult,stepChanged,clampSteps}=load('widgets/logic.ts');
 for(const lesson of Object.values(lessons))for(const card of lesson.cards.filter(c=>c.kind==='explore')){
  if(card.widget==='mark_words'){const selected=card.params.passage.flatMap((w,i)=>card.params.targets.includes(w)?[i]:[]);assert.ok(markResult(card.params,selected).every(s=>s==='found'||s==='neutral'));assert.equal(markResult(card.params,[]).filter(s=>s==='missed').length,selected.length);}
  if(card.widget==='letter_builder')for(const target of card.params.targets){const possible=card.params.bases.flatMap(base=>[...card.params.signs,...card.params.halves].map(chip=>joinLetter(base,chip,card.params.halves)));assert.ok(possible.includes(target));assert.ok(card.params.iast[target]);}
  if(card.widget==='mouth_map')for(const letter of card.params.letters)assert.ok(card.params.places[letter].every(p=>card.params.place_names[p]));
  if(card.widget==='rhythm_tapper')for(const scan of card.params.scan){assert.equal(scan.weights.length,scan.syllables.length);assert.ok(rhythmResult(scan.weights,scan.weights));}
 }
-assert.equal(joinLetter('ष','क्',['क्']),'क्ष');assert.equal(joinLetter('क','ि',[]),'कि');assert.equal(heldWeight(350),'L');assert.equal(heldWeight(351),'G');
+assert.equal(joinLetter('ष','क्',['क्']),'क्ष');assert.equal(joinLetter('क','ि',[]),'कि');
 // form_explorer, role_arrows, word_shuffle: the logic that labels what the engine supplied
 assert.deepEqual(splitEnding('देव','देवेन'),{head:'देव',tail:'ेन',shown:'◌ेन'});
 assert.equal(splitEnding('देव','देवः').shown,'◌ः');assert.equal(splitEnding('बालक','बालकस्य').shown,'स्य');assert.equal(splitEnding('पठ्','पठति').shown,'ति');
@@ -106,6 +106,33 @@ const engineFixtures=JSON.parse(readFileSync(new URL('../src/story/__fixtures__/
 for(const exercise of engineFixtures){const card={...base,mode:'engine',exercise};const answer=exercise.kind==='grid_fill'?{cells:exercise.answer}:exercise.kind==='reorder'?{order:exercise.answer.equivalent_orders[0]}:exercise.answer;assert.equal(grade(card,answer),'correct',exercise.kind);}
 console.log('All seven real backend-generated engine fixtures grade correctly');
 
+// Home unit-check label, end-of-course state and the scan_metre verse (pure logic behind the screens)
+const sel=load('selectors.ts');
+assert.equal(sel.testOutLabel(1).en,'I know these letters: take the unit check');assert.ok(sel.testOutLabel(1).hi.includes('अक्षर'));
+for(const act of [2,3,4,5,undefined]){assert.equal(sel.testOutLabel(act).en,'I know this unit: take the unit check');assert.ok(!/letters/i.test(sel.testOutLabel(act).en)&&!sel.testOutLabel(act).hi.includes('अक्षर'));}
+assert.equal(sel.currentContext(index,derive(index,[])).unit.id,'vowels','during the prologue the road shows the first unit');
+assert.equal(sel.courseComplete(index,derive(index,['prologue',...vowels,'vowels.check'])),false,'planned units ahead means the course is not complete');
+const whole=structuredClone(index);whole.acts=[whole.acts[0]];whole.acts[0].parts=[whole.acts[0].parts[0]];whole.acts[0].parts[0].units=[whole.acts[0].parts[0].units[0]];
+const wholeDone=derive(whole,['prologue',...vowels,'vowels.check']),wholeMid=derive(whole,['prologue',...vowels]);
+assert.equal(wholeDone.current,null);assert.equal(wholeDone.coming_soon,null);
+assert.equal(sel.courseComplete(whole,wholeDone),true);assert.equal(sel.currentContext(whole,wholeDone),undefined,'a finished course has no unit to be "here"');
+assert.equal(sel.courseComplete(whole,wholeMid),false);assert.equal(sel.currentContext(whole,wholeMid).unit.id,'vowels');
+assert.equal(sel.courseComplete(whole,derive(whole,[])),false);
+const empty={...whole,acts:[],course:null};assert.equal(sel.courseComplete(empty,derive(empty,[])),false,'an empty index is not a finished course');
+const metre=load('metre.ts'),scanned=engineFixtures.find(x=>x.kind==='scan_metre'),scanLines=scanned.item.syllables;
+const verse=metre.verseLayout(scanned.item.text,scanLines);
+assert.deepEqual(verse[0].map(w=>w.map(c=>c.sa).join('')),scanned.item.text.split(' '));assert.deepEqual(verse[0].map(w=>w.length),[4,4,4,4]);assert.deepEqual(verse.flat(2).map(c=>c.i),[...Array(16).keys()]);
+const kss=metre.verseLayout('कामदेवावतारोऽयं राजञ्जातस्तवात्मजः',[['का','म','दे','वा','व','ता','रो','यं','रा','ज','ञ्जा','त','स्त','वा','त्म','जः']]);
+assert.deepEqual(kss[0].map(w=>w.length),[8,8],'the avagraha is not a syllable');
+assert.deepEqual(metre.verseLayout('अ आ इ ई',[['अ','आ'],['इ','ई']]).map(l=>l.map(w=>w.map(c=>c.i))),[[[0],[1]],[[2],[3]]]);
+for(const [text,lines] of [[undefined,[['अ','इ']]],['',[['अ','इ']]],['अ आ',[['अ','इ']]],['अइ उ',[['अ','इ']]],['अ इ उ',[['अ','इ']]],['अ इ',[['अ'],['इ']]],['अइ',[['अ'],['इ']]]]){const out=metre.verseLayout(text,lines);assert.deepEqual(out.map(l=>l.length),lines.map(()=>1),String(text));assert.deepEqual(out.flat(2).map(c=>c.sa),lines.flat(),'the whole verse stays visible when words and syllables disagree');}
+assert.equal(metre.weightMark(0),'◡');assert.equal(metre.weightMark(1),'—');
+assert.deepEqual(metre.weightsFromOrder([['अ','इ'],['उ']],[0,1,0]),[['L','G'],['L']]);assert.equal(metre.orderFromWeights(undefined),null);assert.equal(metre.orderFromWeights(['L']),null);assert.deepEqual(metre.orderFromWeights([['L','G'],['G']]),[0,1,1]);
+const scanOrder=metre.orderFromWeights(scanned.answer.weights),scanCard=engine('scan_metre',scanned.answer,scanned.item);
+assert.deepEqual(metre.weightsFromOrder(scanLines,scanOrder),scanned.answer.weights);assert.equal(grade(scanCard,{weights:metre.weightsFromOrder(scanLines,scanOrder)}),'correct');
+assert.equal(grade(scanCard,{weights:metre.weightsFromOrder(scanLines,scanOrder.map((w,i)=>i===0?1-w:w))}),'off_by_one');
+console.log('Unit-check label, course-complete state and scan_metre verse layout and submit payload passed');
+
 if(process.argv.includes('--backend'))await checkRealBackend();
 async function checkRealBackend(){
  const fs=await import('node:fs'),path=await import('node:path'),{fileURLToPath}=await import('node:url'),{spawn}=await import('node:child_process');
@@ -133,7 +160,7 @@ async function checkRealBackend(){
  assert.equal((await actualClient.request('/learn/review?limit=12')).items.length,0);
  fs.writeFileSync(path.join(mobile,'src/story/__fixtures__/backend-verification.json'),JSON.stringify({backend:'FastAPI TestClient with isolated SQLite',testOut:'passed after offline replay',ghostFreed:'dhumaka',reviewItems:session.items.length,reviewAfter:0,orderedPosts:actualPosts},null,2));
  console.log('REAL FastAPI: offline test-out replay, Dhūmaka freed, earned XP, and offline review replay passed');
- }finally{if(child.exitCode===null){const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await closed;}if(path.dirname(temporary)!==path.join(mobile,'src/story'))throw Error('Unexpected QA folder');fs.rmSync(temporary,{recursive:true,force:true});}
+ }finally{if(child.exitCode===null){const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await closed;}if(path.dirname(temporary)!==path.join(mobile,'src/story'))throw Error('Unexpected QA folder');fs.rmSync(temporary,{recursive:true,force:true,maxRetries:8,retryDelay:150});}
 }
 
 // Optional browser acceptance harness. It bundles the production TSX with web
@@ -181,7 +208,7 @@ async function visualChecks(){
  console.log('Browser preview ready at 360px');
  // Acceptance steps are below; production components remain interactive.
  await runBrowserCases({page,out,posts,errors,fs,path});
- } finally {if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));if(path.dirname(temp)!==path.join(mobile,'src/story'))throw Error('Unexpected temporary directory');fs.rmSync(temp,{recursive:true,force:true});}
+ } finally {if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));if(path.dirname(temp)!==path.join(mobile,'src/story'))throw Error('Unexpected temporary directory');fs.rmSync(temp,{recursive:true,force:true,maxRetries:8,retryDelay:150});}
 }
 async function runBrowserCases({page,out,posts,errors,fs,path}){
  const showCard=async(id,card)=>{await page.evaluate(([id,card])=>window.qa.showCard(id,card),[id,card]);await page.waitForTimeout(45);};

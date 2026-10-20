@@ -1,0 +1,1315 @@
+{
+  "id": "for-giving-s1",
+  "where": "for.giving#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and a length of cloth; a small golden spirit with cupped hands following.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndanaka: A round golden spirit holding out two cupped hands, with a smile as wide as a lamp's flame.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "for.giving",
+    "template": "scene",
+    "title": {
+      "en": "Giving to someone",
+      "hi": "किसी को देना"
+    },
+    "title_sa": "सम्प्रदानम्",
+    "minutes": 6,
+    "teaches": [
+      "case.dat"
+    ],
+    "needs": [
+      "case.inst"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The teacher's ghat",
+          "hi": "आचार्य का घाट"
+        },
+        "image": {
+          "id": "for-giving-s1",
+          "brief": "A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and a length of cloth; a small golden spirit with cupped hands following.",
+          "alt": {
+            "en": "Arriving at a village school where an old scholar waits at the gate",
+            "hi": "गाँव की पाठशाला पर पहुँचना, फाटक पर प्रतीक्षा करते बूढ़े आचार्य"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "danaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The boat bumps against the steps of a small village ghat. Above it, among neem trees, stands a whitewashed school, and at its gate waits a very old scholar with a white beard and a palm-leaf book under his arm: the Ācārya, Dādī's teacher. You have brought gifts: fruit, a lamp, a length of cloth. Dānaka, a small golden spirit, has followed you ashore, hands cupped, hoping.",
+          "hi": "नाव एक छोटे गाँव के घाट की सीढ़ियों से टकराती है। ऊपर नीम के पेड़ों के बीच चूने से पुती एक पाठशाला खड़ी है, और उसके फाटक पर बहुत बूढ़े, सफ़ेद दाढ़ी वाले एक विद्वान प्रतीक्षा करते हैं, बग़ल में ताड़पत्र की पुस्तक दबाए: आचार्य, दादी के गुरु। आप उपहार लाए हैं: फल, दीपक, कपड़े का एक थान। दानक, एक नन्हा सुनहरा भूत, हाथ फैलाए, आशा में, आपके पीछे किनारे तक आ गया है।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "आचार्याय फलं ददामि।",
+            "gloss": {
+              "en": "I give fruit to the teacher.",
+              "hi": "मैं आचार्य को फल देता हूँ।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The one who receives: the fourth case",
+          "hi": "पाने वाला: चतुर्थी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [
+          "2.3.13",
+          "1.4.32"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं ददाति}} (he gives fruit to the teacher).",
+          "hi": "जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।"
+        },
+        "examples": [
+          {
+            "sa": "अहम् आचार्याय फलम् ददामि।",
+            "meaning": {
+              "en": "I give fruit to the teacher.",
+              "hi": "मैं आचार्य को फल देता हूँ।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "आचार्याय",
+                "gloss": {
+                  "en": "to the teacher",
+                  "hi": "आचार्य को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "आचार्य",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ददामि",
+                "gloss": {
+                  "en": "give",
+                  "hi": "देता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दा",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "माता बालकाय पुस्तकम् ददाति।",
+            "meaning": {
+              "en": "The mother gives the boy a book.",
+              "hi": "माता बालक को पुस्तक देती है।"
+            },
+            "words": [
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "माता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "बालकाय",
+                "gloss": {
+                  "en": "to the boy",
+                  "hi": "बालक को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ददाति",
+                "gloss": {
+                  "en": "gives",
+                  "hi": "देती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दा",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकः बालिकायै जलम् ददाति।",
+            "meaning": {
+              "en": "The boy gives the girl water.",
+              "hi": "बालक बालिका को जल देता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "बालिकायै",
+                "gloss": {
+                  "en": "to the girl",
+                  "hi": "बालिका को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालिका",
+                  "linga": "Stri",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "जलम्",
+                "gloss": {
+                  "en": "water",
+                  "hi": "जल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ददाति",
+                "gloss": {
+                  "en": "gives",
+                  "hi": "देता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दा",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "चतुर्थी",
+          "meaning": {
+            "en": "the fourth case: to, for",
+            "hi": "चौथी विभक्ति: को, के लिए"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and fourth case",
+          "hi": "प्रथमा और चतुर्थी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same word as itself and as a recipient",
+          "hi": "वही शब्द स्वयं और पाने वाले के रूप में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "1st: itself",
+            "hi": "प्रथमा: स्वयं"
+          },
+          {
+            "en": "4th: to, for",
+            "hi": "चतुर्थी: को, के लिए"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "teacher",
+                "hi": "आचार्य"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आचार्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "आचार्य",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आचार्याय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "आचार्य",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boy",
+                "hi": "बालक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालकाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "girl",
+                "hi": "बालिका"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिकायै",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "fruit",
+                "hi": "फल"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्यै",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine and neuter -अ: {{आय}}. Feminine -आ: {{आयै}}. Feminine -ई: {{ई}} → {{यै}}.",
+          "hi": "पुंलिंग और नपुंसक -अ में {{आय}}। स्त्रीलिंग -आ में {{आयै}}। स्त्रीलिंग -ई में {{ई}} → {{यै}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Homage and good wishes",
+          "hi": "प्रणाम और शुभकामना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Some words ask for the fourth case: {{नमः}} (homage) and {{स्वस्ति}} (well-being). {{नमः आचार्याय}}: homage to the teacher. {{स्वस्ति बालकाय}}: blessings on the boy.",
+          "hi": "कुछ शब्द चतुर्थी माँगते हैं: {{नमः}} (प्रणाम) और {{स्वस्ति}} (कल्याण)। {{नमः आचार्याय}}: आचार्य को प्रणाम। {{स्वस्ति बालकाय}}: बालक का कल्याण हो।"
+        },
+        "examples": [
+          {
+            "sa": "नमः आचार्याय।",
+            "meaning": {
+              "en": "Homage to the teacher.",
+              "hi": "आचार्य को प्रणाम।"
+            },
+            "words": [
+              {
+                "sa": "नमः",
+                "gloss": {
+                  "en": "homage",
+                  "hi": "प्रणाम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नमस्",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आचार्याय",
+                "gloss": {
+                  "en": "to the teacher",
+                  "hi": "आचार्य को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "आचार्य",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "स्वस्ति बालकाय।",
+            "meaning": {
+              "en": "Blessings on the boy.",
+              "hi": "बालक का कल्याण हो।"
+            },
+            "words": [
+              {
+                "sa": "स्वस्ति",
+                "gloss": {
+                  "en": "well-being",
+                  "hi": "कल्याण"
+                },
+                "check": null
+              },
+              {
+                "sa": "बालकाय",
+                "gloss": {
+                  "en": "to the boy",
+                  "hi": "बालक को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“I give fruit to the teacher.” Which word for “teacher”?",
+          "hi": "‘मैं आचार्य को फल देता हूँ।’ ‘आचार्य’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The recipient takes the fourth case: {{आचार्याय}}.",
+          "hi": "पाने वाला चतुर्थी लेता है: {{आचार्याय}}।"
+        },
+        "options": [
+          {
+            "sa": "आचार्यम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "आचार्येण",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "आचार्याय",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each recipient to its meaning.",
+          "hi": "हर पाने वाले को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{आय}}, {{आयै}}, {{यै}}: the fourth-case endings.",
+          "hi": "{{आय}}, {{आयै}}, {{यै}}: चतुर्थी के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "बालकाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the boy",
+                "hi": "बालक को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालिकायै",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the girl",
+                "hi": "बालिका को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मित्राय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the friend",
+                "hi": "मित्र को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नद्यै",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the river",
+                "hi": "नदी को"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that names a recipient (fourth case).",
+          "hi": "पाने वाले को बताने वाले हर शब्द (चतुर्थी) को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "आचार्याय",
+            "आचार्यः",
+            "बालकाय",
+            "बालकः",
+            "बालिकायै",
+            "बालिका"
+          ],
+          "targets": [
+            "आचार्याय",
+            "बालकाय",
+            "बालिकायै"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "A gift",
+          "hi": "एक उपहार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “I give a lamp to the teacher.”",
+          "hi": "कहिए: ‘मैं आचार्य को दीपक देता हूँ।’"
+        },
+        "explain": {
+          "en": "{{अहम् आचार्याय दीपं ददामि}}: the teacher receives.",
+          "hi": "{{अहम् आचार्याय दीपं ददामि}}: आचार्य पाता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "अहम्",
+          "आचार्याय",
+          "दीपम्",
+          "ददामि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“आचार्याय दीपं ददामि,” you say, and the old scholar takes the little lamp with both hands. Beside you Dānaka makes a soft sound of longing. The Ācārya notices him, and lays a single grain of rice in the spirit's cupped palms.",
+            "hi": "“आचार्याय दीपं ददामि,” आप कहते हैं, और बूढ़े विद्वान दोनों हाथों से छोटा दीपक लेते हैं। आपके पास दानक ललक की धीमी ध्वनि निकालता है। आचार्य उसे देख लेते हैं और भूत की फैली हथेलियों में चावल का एक दाना रख देते हैं।"
+          },
+          "failure": {
+            "en": "The Ācārya waits. The one who receives, {{आचार्याय}}, comes before the thing given.",
+            "hi": "आचार्य प्रतीक्षा करते हैं। पाने वाला {{आचार्याय}} दी जाने वाली वस्तु से पहले आता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's recipient",
+          "hi": "पाणिनि का सम्प्रदान"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.dat"
+        ],
+        "sutras": [
+          "1.4.32",
+          "2.3.13"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: the recipient is the one the doer aims at with the object. Sūtra 2.3.13 gives it the fourth case.",
+          "hi": "सूत्र 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: सम्प्रदान वह है जिसे कर्ता कर्म के द्वारा पाना चाहता है। सूत्र 2.3.13 उसे चतुर्थी देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सम्प्रदानम्",
+          "meaning": {
+            "en": "the recipient",
+            "hi": "सम्प्रदान: पाने वाला"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The recipient",
+          "hi": "पाने वाला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "आचार्याय · बालकाय · बालिकायै",
+            "text": {
+              "en": "The fourth case: who receives.",
+              "hi": "चतुर्थी: जो पाता है।"
+            }
+          },
+          {
+            "sa": "नमः आचार्याय",
+            "text": {
+              "en": "Homage takes the fourth case.",
+              "hi": "प्रणाम चतुर्थी लेता है।"
+            }
+          },
+          {
+            "sa": "आय · आयै · यै",
+            "text": {
+              "en": "The singular endings.",
+              "hi": "एकवचन प्रत्यय।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "for-giving-s1",
+    "brief": "A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and a length of cloth; a small golden spirit with cupped hands following.",
+    "alt": {
+      "en": "Arriving at a village school where an old scholar waits at the gate",
+      "hi": "गाँव की पाठशाला पर पहुँचना, फाटक पर प्रतीक्षा करते बूढ़े आचार्य"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "danaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and a length of cloth; a small golden spirit with cupped hands following.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndanaka: A round golden spirit holding out two cupped hands, with a smile as wide as a lamp's flame.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1faef98f-e447-4915-be1c-d023b3ac2139.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "05ecdfb766e64918e501bc103a8ea6129d9179e907fb6772d5b14b20ee18370b",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\for-giving-s1-phone-3ca26ad9.webp",
+      "key": "learn/for-giving-s1-phone-3ca26ad9.webp",
+      "sha256": "3ca26ad967667ef19be334bd4f85ef536693357cbb7a477380454ff7be59a963",
+      "bytes": 122564,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/for-giving-s1-phone-3ca26ad9.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\for-giving-s1-tablet-9086b67a.webp",
+      "key": "learn/for-giving-s1-tablet-9086b67a.webp",
+      "sha256": "9086b67a16a6528011dae746e2de68f9d2f39d5f617e1b4346139da0052b9147",
+      "bytes": 468548,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/for-giving-s1-tablet-9086b67a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -1,0 +1,653 @@
+{
+  "requested_scenes": 168,
+  "audit": "Every canonical scene brief read; explicit writing, name tags, named branches, ledgers, reading leaves, carved lines and inscriptions included.",
+  "text_required": [
+    {
+      "id": "cons-grid-s1",
+      "where": "cons.grid#s1",
+      "expected": [
+        "क ख ग घ ङ",
+        "च छ ज झ ञ",
+        "ट ठ ड ढ ण",
+        "त थ द ध न",
+        "प फ ब भ म"
+      ]
+    },
+    {
+      "id": "cons-semivowels-s1",
+      "where": "cons.semivowels#s1",
+      "expected": [
+        "य र ल व"
+      ]
+    },
+    {
+      "id": "cons-sibilants-s1",
+      "where": "cons.sibilants#s1",
+      "expected": [
+        "श ष स ह"
+      ]
+    },
+    {
+      "id": "cons-virama-s1",
+      "where": "cons.virama#s1",
+      "expected": [
+        "क्"
+      ]
+    },
+    {
+      "id": "joined-clusters-s1",
+      "where": "joined.clusters#s1",
+      "expected": [
+        "क्ष त्र ज्ञ श्र"
+      ]
+    },
+    {
+      "id": "joined-hum-breath-s1",
+      "where": "joined.hum-breath#s1",
+      "expected": [
+        "गंगा",
+        "रामः"
+      ]
+    },
+    {
+      "id": "joined-marks-s1",
+      "where": "joined.marks#s1",
+      "expected": [
+        "ऽ",
+        "।",
+        "॥",
+        "ॐ",
+        "० १ २ ३ ४ ५ ६ ७ ८ ९"
+      ]
+    },
+    {
+      "id": "joined-ra-s1",
+      "where": "joined.ra#s1",
+      "expected": [
+        "धर्मः",
+        "प्रियः",
+        "क्रमः"
+      ]
+    },
+    {
+      "id": "reading-iast-s1",
+      "where": "reading.iast#s1",
+      "expected": [
+        "ā ś ṣ ṭ ṃ ḥ"
+      ]
+    },
+    {
+      "id": "reading-names-s1",
+      "where": "reading.names#s1",
+      "expected": [
+        "रामः",
+        "सीता",
+        "लक्ष्मणः"
+      ]
+    },
+    {
+      "id": "reading-syllables-s1",
+      "where": "reading.syllables#s1",
+      "expected": [
+        "मौनी"
+      ]
+    },
+    {
+      "id": "you-grid-s1",
+      "where": "you.grid#s1",
+      "expected": [
+        "पठति पठतः पठन्ति",
+        "पठसि पठथः पठथ",
+        "पठामि पठावः पठामः"
+      ]
+    },
+    {
+      "id": "nf1-deva-s1",
+      "where": "nf1.deva#s1",
+      "expected": [
+        "देवः",
+        "देवौ",
+        "देवाः"
+      ]
+    },
+    {
+      "id": "nf1-lata-s1",
+      "where": "nf1.lata#s1",
+      "expected": [
+        "लता",
+        "लते",
+        "लताः"
+      ]
+    },
+    {
+      "id": "nf1-phala-s1",
+      "where": "nf1.phala#s1",
+      "expected": [
+        "फलम्",
+        "फले",
+        "फलानि"
+      ]
+    },
+    {
+      "id": "nf2-i-s1",
+      "where": "nf2.i#s1",
+      "expected": [
+        "कविः कवी कवयः।"
+      ]
+    },
+    {
+      "id": "of-family-s1",
+      "where": "of.family#s1",
+      "expected": [
+        "पिता",
+        "माता",
+        "भ्राता",
+        "भगिनी",
+        "पुत्रः",
+        "पितामही"
+      ]
+    },
+    {
+      "id": "num-agree-s1",
+      "where": "num.agree#s1",
+      "expected": [
+        "बालकः पठति।",
+        "बालकौ पठतः।",
+        "बालकाः पठन्ति।"
+      ]
+    },
+    {
+      "id": "num-verbs-s1",
+      "where": "num.verbs#s1",
+      "expected": [
+        "पठति",
+        "पठतः",
+        "पठन्ति"
+      ]
+    },
+    {
+      "id": "pn-time-s1",
+      "where": "pn.time#s1",
+      "expected": [
+        "एकादश",
+        "द्वादश",
+        "त्रयोदश"
+      ]
+    },
+    {
+      "id": "pn-who-s1",
+      "where": "pn.who#s1",
+      "expected": [
+        "?"
+      ]
+    },
+    {
+      "id": "who-does-s1",
+      "where": "who.does#s1",
+      "expected": [
+        "लिखति"
+      ]
+    },
+    {
+      "id": "who-order-s1",
+      "where": "who.order#s1",
+      "expected": [
+        "बालकः",
+        "पठति"
+      ]
+    },
+    {
+      "id": "with-means-s1",
+      "where": "with.means#s1",
+      "expected": [
+        "सा लेखन्या लिखति।"
+      ]
+    },
+    {
+      "id": "avy-iti-s1",
+      "where": "avy.iti#s1",
+      "expected": [
+        "इति"
+      ]
+    },
+    {
+      "id": "avy-where-s1",
+      "where": "avy.where#s1",
+      "expected": [
+        "अत्र",
+        "तत्र",
+        "कुत्र"
+      ]
+    },
+    {
+      "id": "part-krtya-s1",
+      "where": "part.krtya#s1",
+      "expected": [
+        "कर्तव्यम्",
+        "करणीयम्",
+        "कार्यम्"
+      ]
+    },
+    {
+      "id": "part-kta-s1",
+      "where": "part.kta#s1",
+      "expected": [
+        "गतः",
+        "पठितम्",
+        "कृतम्"
+      ]
+    },
+    {
+      "id": "part-ktva-s1",
+      "where": "part.ktva#s1",
+      "expected": [
+        "गत्वा",
+        "कृत्वा",
+        "श्रुत्वा"
+      ]
+    },
+    {
+      "id": "part-tumun-s1",
+      "where": "part.tumun#s1",
+      "expected": [
+        "पठितुम्"
+      ]
+    },
+    {
+      "id": "pre-come-s1",
+      "where": "pre.come#s1",
+      "expected": [
+        "गम्"
+      ]
+    },
+    {
+      "id": "should-rules-s1",
+      "where": "should.rules#s1",
+      "expected": [
+        "सत्यं ब्रूयात् प्रियं ब्रूयान्",
+        "न ब्रूयात् सत्यम् अप्रियम्"
+      ]
+    },
+    {
+      "id": "should-rules-r1",
+      "where": "should.rules#r1",
+      "expected": [
+        "सत्यम् ब्रूयात्।"
+      ]
+    },
+    {
+      "id": "vc1-bhu-s1",
+      "where": "vc1.bhu#s1",
+      "expected": [
+        "भू",
+        "भवति",
+        "नी",
+        "नयति",
+        "जि",
+        "जयति"
+      ]
+    },
+    {
+      "id": "vc2-da-s1",
+      "where": "vc2.da#s1",
+      "expected": [
+        "दा",
+        "ददाति",
+        "धा",
+        "दधाति"
+      ]
+    },
+    {
+      "id": "vc2-jna-s1",
+      "where": "vc2.jna#s1",
+      "expected": [
+        "छिद्",
+        "छिनत्ति",
+        "क्री",
+        "क्रीणाति"
+      ]
+    },
+    {
+      "id": "vc2-kr-s1",
+      "where": "vc2.kr#s1",
+      "expected": [
+        "श्रु",
+        "शृणोति",
+        "कृ",
+        "करोति"
+      ]
+    },
+    {
+      "id": "c1-dvandva-s1",
+      "where": "c1.dvandva#s1",
+      "expected": [
+        "रामलक्ष्मणौ"
+      ]
+    },
+    {
+      "id": "c1-nan-s1",
+      "where": "c1.nan#s1",
+      "expected": [
+        "असत्यम्",
+        "अधर्मः",
+        "अनन्तः"
+      ]
+    },
+    {
+      "id": "c1-tatpurusha-s1",
+      "where": "c1.tatpurusha#s1",
+      "expected": [
+        "राजपुरुषः"
+      ]
+    },
+    {
+      "id": "c2-avyayi-s1",
+      "where": "c2.avyayi#s1",
+      "expected": [
+        "यथाशक्ति",
+        "प्रतिदिनम्",
+        "आमरणम्"
+      ]
+    },
+    {
+      "id": "c2-bahuvrihi-s1",
+      "where": "c2.bahuvrihi#s1",
+      "expected": [
+        "नीलकण्ठः"
+      ]
+    },
+    {
+      "id": "c2-long-r1",
+      "where": "c2.long#r1",
+      "expected": [
+        "सूर्य",
+        "कोटिः",
+        "सम",
+        "आभासः"
+      ]
+    },
+    {
+      "id": "cs-place-s1",
+      "where": "cs.place#s1",
+      "expected": [
+        "च"
+      ]
+    },
+    {
+      "id": "cs-voice-s1",
+      "where": "cs.voice#s1",
+      "expected": [
+        "तदस्ति"
+      ]
+    },
+    {
+      "id": "m1-weight-s1",
+      "where": "m1.weight#s1",
+      "expected": [
+        "धर्मक्षेत्रे कुरुक्षेत्रे"
+      ]
+    },
+    {
+      "id": "m2-arya-s1",
+      "where": "m2.arya#s1",
+      "expected": [
+        "दानं भोगो नाशस्",
+        "तिस्रो गतयो भवन्ति वित्तस्य",
+        "यो न ददाति न भुङ्क्ते",
+        "तस्य तृतीया गतिर्भवति"
+      ]
+    },
+    {
+      "id": "rv-steps-s1",
+      "where": "rv.steps#s1",
+      "expected": [
+        "विद्याददातिविनयंविनयाद्यातिपात्रताम्"
+      ]
+    },
+    {
+      "id": "rv-tika-s1",
+      "where": "rv.tika#s1",
+      "expected": [
+        "ईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत्",
+        "तेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्",
+        "तेन त्यक्तेन",
+        "त्यागेनेत्यर्थः"
+      ]
+    },
+    {
+      "id": "split-back-s1",
+      "where": "split.back#s1",
+      "expected": [
+        "विद्यालयः"
+      ]
+    },
+    {
+      "id": "split-line-s1",
+      "where": "split.line#s1",
+      "expected": [
+        "काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्"
+      ]
+    },
+    {
+      "id": "split-line-r1",
+      "where": "split.line#r1",
+      "expected": [
+        "काव्यशास्त्रविनोदेन",
+        "कालः गच्छति धीमताम्",
+        "तदा राजा साश्चर्यो बभूव"
+      ]
+    },
+    {
+      "id": "syn-order-s1",
+      "where": "syn.order#s1",
+      "expected": [
+        "रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्"
+      ]
+    },
+    {
+      "id": "syn-who-s1",
+      "where": "syn.who#s1",
+      "expected": [
+        "यः पठति सः जानाति।"
+      ]
+    },
+    {
+      "id": "tad-son-s1",
+      "where": "tad.son#s1",
+      "expected": [
+        "राघवः",
+        "पाण्डवः",
+        "कौरवः"
+      ]
+    },
+    {
+      "id": "vis-s-s1",
+      "where": "vis.s#s1",
+      "expected": [
+        "रामश्च",
+        "रामस्तत्र",
+        "रामष्टीकते"
+      ]
+    },
+    {
+      "id": "vs-e-o-s1",
+      "where": "vs.e-o#s1",
+      "expected": [
+        "वनेऽस्ति"
+      ]
+    },
+    {
+      "id": "vs-stop-s1",
+      "where": "vs.stop#s1",
+      "expected": [
+        "हरी एतौ"
+      ]
+    },
+    {
+      "id": "pg-it-s1",
+      "where": "pg.it#s1",
+      "expected": [
+        "तिप्"
+      ]
+    },
+    {
+      "id": "pg-prakriya-s1",
+      "where": "pg.prakriya#s1",
+      "expected": [
+        "भू"
+      ]
+    },
+    {
+      "id": "pg-shiva-s1",
+      "where": "pg.shiva#s1",
+      "expected": [
+        "अइउण्",
+        "ऋऌक्",
+        "एओङ्",
+        "ऐऔच्",
+        "हयवरट्",
+        "लण्",
+        "ञमङणनम्",
+        "झभञ्",
+        "घढधष्",
+        "जबगडदश्",
+        "खफछठथचटतव्",
+        "कपय्",
+        "शषसर्",
+        "हल्"
+      ]
+    },
+    {
+      "id": "kss-naming-s1",
+      "where": "kss.naming#s1",
+      "expected": [
+        "तत्रासूत च सा काले कुमारं कान्तदर्शनम्",
+        "गगनाद् उच्चचारैवं काले तस्मिन् सरस्वती"
+      ]
+    },
+    {
+      "id": "tale-leaf-1-r1",
+      "where": "tale.leaf-1#r1",
+      "expected": [
+        "अ आ इ ई"
+      ]
+    },
+    {
+      "id": "tale-leaf-3-r2",
+      "where": "tale.leaf-3#r2",
+      "expected": [
+        "एष श्रुतधरो जातो विद्यां वर्षादवाप्स्यति",
+        "किंच व्याकरणं लोके प्रतिष्ठां प्रापयिष्यति"
+      ]
+    },
+    {
+      "id": "tale-leaf-4-r3",
+      "where": "tale.leaf-4#r3",
+      "expected": [
+        "व्याकरणम्"
+      ]
+    },
+    {
+      "id": "tale-leaf-6-r1",
+      "where": "tale.leaf-6#r1",
+      "expected": [
+        "बृहत्कथा"
+      ]
+    },
+    {
+      "id": "tale-leaf-6-r2",
+      "where": "tale.leaf-6#r2",
+      "expected": [
+        "बृहत्कथा"
+      ]
+    },
+    {
+      "id": "tale-leaf-6-r3",
+      "where": "tale.leaf-6#r3",
+      "expected": [
+        "बृहत्कथा"
+      ]
+    },
+    {
+      "id": "portrait-you",
+      "where": "portrait:you",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ]
+    },
+    {
+      "id": "freed-dhumaka",
+      "where": "freed:dhumaka",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ]
+    },
+    {
+      "id": "vowels-long-shuka",
+      "where": "vowels.long#s1",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ]
+    },
+    {
+      "id": "vowels-short-smoke",
+      "where": "vowels.short#s1",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ]
+    },
+    {
+      "id": "vowels-signs-second-line",
+      "where": "vowels.signs#s1",
+      "expected": [
+        "का कि की कु कू कृ के कै को कौ"
+      ]
+    },
+    {
+      "id": "prologue-1",
+      "where": "prologue#p1",
+      "expected": [
+        "बृहत्कथा"
+      ]
+    },
+    {
+      "id": "prologue-3",
+      "where": "prologue#p3",
+      "expected": [
+        "बृहत्कथा"
+      ]
+    },
+    {
+      "id": "prologue-4",
+      "where": "prologue#p4",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ]
+    }
+  ],
+  "queued_existing_replacements": [
+    "nf1-deva-s1",
+    "nf1-lata-s1",
+    "nf1-phala-s1",
+    "of-family-s1",
+    "num-verbs-s1",
+    "pn-time-s1",
+    "pn-who-s1"
+  ],
+  "queue_count": 101
+}

@@ -12,7 +12,7 @@ import {useCourse,refreshCourse} from '../course';
 import {getLesson,lessonSummaries} from '../api';
 import {useStoryTheme} from '../theme';
 import {usePanini} from '../preferences';
-import {Button,Label} from '../ui';
+import {Button,Label,Panel} from '../ui';
 import {Bi} from '../text';
 import type {StoryLesson as Lesson} from '../types';
 import StoryCardView from '../cards';
@@ -28,11 +28,14 @@ export default function StoryLessonScreen({route,navigation}:NativeStackScreenPr
 export function StoryLessonPlayer({lesson,characters=[],sceneNumber=()=>null,onClose,onScene=()=>{},onComplete,onFinished,testOutUnitId}:{lesson:Lesson;characters?:import('../types').Character[];sceneNumber?:(id:string)=>number|null;onClose:()=>void;onScene?:(id:string,cardId:string)=>void;onComplete?:(progress:Record<string,PracticeProgress>)=>Promise<void>;onFinished?:(result:FinishResult)=>void;testOutUnitId?:string}){
  const c=useStoryTheme(),panini=usePanini(),{lang,setLang}=useGuideLang(); const cards=lesson.cards.filter(c=>panini||c.depth!=='panini');
  const [progress,setProgress]=useState<Record<string,PracticeProgress>>({}),[busy,setBusy]=useState(false),[saveError,setSaveError]=useState(false);
+ const course=useCourse();
+ const skillTitles=new Map(course.index?.acts.flatMap(a=>a.parts.flatMap(p=>p.units.flatMap(u=>u.skills.map(s=>[s.id,s.title] as const))))??[]);
+ const needs=lesson.needs.flatMap(id=>{const title=skillTitles.get(id);return title?[{id,title}]:[];}),teaches=lesson.teaches.flatMap(id=>{const title=skillTitles.get(id);return title?[{id,title}]:[];});
  const [index,setIndex]=useState(()=>Math.max(0,cards.findIndex(c=>c.id===startCards.get(lesson.id))));
  useEffect(()=>{startCards.delete(lesson.id);},[lesson.id]);
  const canAdvance=(i:number)=>{const card=cards[i];return card.kind!=='practice'||!!progress[card.id]&&(!card.gate||progress[card.id].solved||progress[card.id].latest==='unsure');};
  const complete=async()=>{if(busy||cards.some((_,i)=>!canAdvance(i)))return;setBusy(true);setSaveError(false);try{if(onComplete){await onComplete(progress);onClose();}else{const result=await finishLesson(lesson.id,progress,testOutUnitId);onFinished?onFinished(result):onClose();}}catch{setSaveError(true);setBusy(false);}};
  return <LessonPlayer busy={busy} title={lesson.title[lang]} index={Math.min(index,cards.length-1)} total={cards.length} onIndexChange={setIndex} onFinish={()=>{void complete();}} onClose={onClose} hi={lang==='hi'} palette={c} canAdvance={canAdvance}
  header={<View style={{gap:4}}><Button label={lang==='hi'?'English':'हिन्दी'} onPress={()=>setLang(lang==='hi'?'en':'hi')}/>{lesson.template==='scene' && index<cards.findIndex(c=>c.kind==='practice')?<Button label={lang==='hi'?'यह जानता हूँ':'I know this'} onPress={()=>setIndex(cards.findIndex(c=>c.kind==='practice'))}/>:null}</View>}
- renderCard={i=><><RomanContext.Provider value={cards[i].kind!=='practice'||cards[i].roman==='show'||!!progress[cards[i].id]}><StoryCardView key={cards[i].id} card={cards[i]} characters={characters} sceneNumber={sceneNumber} onScene={onScene} progress={progress[cards[i].id]} onAnswer={verdict=>setProgress(previous=>{const old=previous[cards[i].id];return {...previous,[cards[i].id]:{first:old?.first??verdict,latest:verdict,solved:old?.solved||verdict==='correct'}};})}/></RomanContext.Provider>{saveError?<Label>{lang==='hi'?'सहेजा नहीं गया। फिर कोशिश करें।':'Could not save. Please try again.'}</Label>:null}{i===cards.length-1?<View style={{gap:4,marginTop:16}}><Label>{lang==='hi'?'स्रोत':'Sources'}</Label>{lesson.sources.map((s,i)=><Label key={i}>{s.title} · {s.licence}</Label>)}</View>:null}</>}/>;
+ renderCard={i=><>{i===0&&(needs.length>0||teaches.length>0)?<Panel>{needs.length>0?<><Label>{lang==='hi'?'पहले सीखा':'BUILDS ON'}</Label>{needs.map(s=><Bi key={s.id} value={s.title} size={15}/>)}</>:null}{teaches.length>0?<><Label>{lang==='hi'?'इस पाठ में सीखेंगे':'IN THIS LESSON'}</Label>{teaches.map(s=><Bi key={s.id} value={s.title} size={15}/>)}</>:null}</Panel>:null}<RomanContext.Provider value={cards[i].kind!=='practice'||cards[i].roman==='show'||!!progress[cards[i].id]}><StoryCardView key={cards[i].id} card={cards[i]} characters={characters} sceneNumber={sceneNumber} onScene={onScene} progress={progress[cards[i].id]} onAnswer={verdict=>setProgress(previous=>{const old=previous[cards[i].id];return {...previous,[cards[i].id]:{first:old?.first??verdict,latest:verdict,solved:old?.solved||verdict==='correct'}};})}/></RomanContext.Provider>{saveError?<Label>{lang==='hi'?'सहेजा नहीं गया। फिर कोशिश करें।':'Could not save. Please try again.'}</Label>:null}{i===cards.length-1?<View style={{gap:4,marginTop:16}}><Label>{lang==='hi'?'स्रोत':'Sources'}</Label>{lesson.sources.map((s,i)=><Label key={i}>{s.title} · {s.licence}</Label>)}</View>:null}</>}/>;
 }

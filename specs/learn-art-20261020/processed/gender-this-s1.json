@@ -1,0 +1,725 @@
+{
+  "id": "gender-this-s1",
+  "where": "gender.this#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "gender.this",
+    "template": "scene",
+    "title": {
+      "en": "This one: एषः, एषा, एतत्",
+      "hi": "यह: एषः, एषा, एतत्"
+    },
+    "title_sa": "एषः एषा एतत्",
+    "minutes": 6,
+    "teaches": [
+      "pron.etad"
+    ],
+    "needs": [
+      "pron.tad"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Which one?",
+          "hi": "कौन-सा?"
+        },
+        "image": {
+          "id": "gender-this-s1",
+          "brief": "A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.",
+          "alt": {
+            "en": "People at a sweet stall pointing at different sweets, near and far",
+            "hi": "मिठाई की थाली पर पास और दूर की अलग-अलग चीज़ें दिखाते लोग"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "rangaka"
+          ],
+          "place": "utsava"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "At a sweet-seller's tray the boatman, the old man and Dādī all point at different things. “That one!” “This one!” Dādī taps the tray. “For something right here in front of you, Sanskrit says एषः, एषा, एतत्. For something over there, सः, सा, तत्.”",
+          "hi": "मिठाई वाले की थाली पर नाविक, बुज़ुर्ग और दादी अलग-अलग चीज़ों की ओर इशारा करते हैं। “वह वाली!” “यह वाली!” दादी थाली थपथपाती हैं। “जो ठीक सामने है, उसके लिए संस्कृत कहती है एषः, एषा, एतत्। जो वहाँ दूर है, उसके लिए सः, सा, तत्।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "This, here",
+          "hi": "यह, यहाँ का"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something farther off, or already mentioned.",
+          "hi": "{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका है, उसके लिए {{सः सा तत्}}।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "एषः",
+            "gloss": {
+              "en": "this (m)",
+              "hi": "यह (पुं.)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "एतद्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "एषा",
+            "gloss": {
+              "en": "this (f)",
+              "hi": "यह (स्त्री.)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "एतद्",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "एतत्",
+            "gloss": {
+              "en": "this (n)",
+              "hi": "यह (नपुं.)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "एतद्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Near and far",
+          "hi": "पास और दूर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“This” and “that” in the nominative",
+          "hi": "‘यह’ और ‘वह’ प्रथमा में"
+        },
+        "columns": [
+          {
+            "en": "Gender",
+            "hi": "लिंग"
+          },
+          {
+            "en": "This",
+            "hi": "यह"
+          },
+          {
+            "en": "That",
+            "hi": "वह"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "masculine",
+                "hi": "पुंलिंग"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एषः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "एतद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "feminine",
+                "hi": "स्त्रीलिंग"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एषा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "एतद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "neuter",
+                "hi": "नपुंसक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एतत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "एतद्",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Dual and plural follow the same pattern: {{एतौ एते}}, {{एते एताः}}, {{एते एतानि}}.",
+          "hi": "द्विवचन और बहुवचन भी इसी ढंग के हैं: {{एतौ एते}}, {{एते एताः}}, {{एते एतानि}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Dādī taps the sweet right in front of her. Which pronoun?",
+          "hi": "दादी अपने सामने की मिठाई पर उँगली रखती हैं। कौन-सा सर्वनाम?"
+        },
+        "explain": {
+          "en": "A neuter thing close by: {{एतत्}}.",
+          "hi": "पास की नपुंसक वस्तु: {{एतत्}}।"
+        },
+        "options": [
+          {
+            "sa": "तत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "एतत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each pronoun to its meaning.",
+          "hi": "हर सर्वनाम को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{एष-}} starts the “this” forms.",
+          "hi": "{{एष-}} से ‘यह’ के रूप शुरू होते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "एषः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "this one (m)",
+                "hi": "यह (पुं.)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "एषा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "this one (f)",
+                "hi": "यह (स्त्री.)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "that one (m)",
+                "hi": "वह (पुं.)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "that (n)",
+                "hi": "वह (नपुं.)"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “this” word.",
+          "hi": "हर ‘यह’ वाले शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "एषः",
+            "सः",
+            "एषा",
+            "सा",
+            "एतत्",
+            "तत्"
+          ],
+          "targets": [
+            "एषः",
+            "एषा",
+            "एतत्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "This sweet",
+          "hi": "यह मिठाई"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.etad"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “This is a fruit.”",
+          "hi": "कहिए: ‘यह फल है।’"
+        },
+        "explain": {
+          "en": "{{एतत् फलम्}}: this is a fruit.",
+          "hi": "{{एतत् फलम्}}: यह फल है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "एतत्",
+          "फलम्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“एतत् फलम्,” you say, taking one from the tray. The seller beams. The multi-coloured spirit, hiding in the shadow of the tray, whispers: “एषः… एषा… एतत्…” as if counting himself.",
+            "hi": "“एतत् फलम्,” आप थाली से एक उठाते हैं। विक्रेता खिल उठता है। थाली की छाया में छिपा रंग-बिरंगा भूत फुसफुसाता है: “एषः… एषा… एतत्…” मानो ख़ुद को गिन रहा हो।"
+          },
+          "failure": {
+            "en": "The seller shrugs. For a neuter thing close by: {{एतत्}}.",
+            "hi": "विक्रेता कंधे उचकाता है। पास की नपुंसक वस्तु के लिए: {{एतत्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "This one",
+          "hi": "यह"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "एषः · एषा · एतत्",
+            "text": {
+              "en": "“This”, close by.",
+              "hi": "‘यह’, पास का।"
+            }
+          },
+          {
+            "sa": "सः · सा · तत्",
+            "text": {
+              "en": "“That”, far off.",
+              "hi": "‘वह’, दूर का।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Both match gender and number.",
+              "hi": "दोनों लिंग और वचन से मेल खाते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "gender-this-s1",
+    "brief": "A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.",
+    "alt": {
+      "en": "People at a sweet stall pointing at different sweets, near and far",
+      "hi": "मिठाई की थाली पर पास और दूर की अलग-अलग चीज़ें दिखाते लोग"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "rangaka"
+    ],
+    "place": "utsava"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nrangaka: A small spirit that changes colour from red to gold to green, with a painted-clay face and a tiny paper hat.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-a51156df-4305-40fb-aea8-22ed561c87cc.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "eede621f316ba717ad3c0e5042608bf5556d94548189339bb580cbe8b1a27d17",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-this-s1-phone-48ca552c.webp",
+      "key": "learn/gender-this-s1-phone-48ca552c.webp",
+      "sha256": "48ca552c856448d81b63316060eaea2546e698763ed01eafddee3f0db10f7bbe",
+      "bytes": 114462,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-this-s1-phone-48ca552c.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\gender-this-s1-tablet-6fd1306a.webp",
+      "key": "learn/gender-this-s1-tablet-6fd1306a.webp",
+      "sha256": "6fd1306aa51cbad903c56410a51313790b29f5ea0ac221e006398344731acaae",
+      "bytes": 421914,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/gender-this-s1-tablet-6fd1306a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

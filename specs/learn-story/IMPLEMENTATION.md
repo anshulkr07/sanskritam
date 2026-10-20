@@ -26,9 +26,9 @@ code or at the source; **not verified** = not checked.
 | App screens, widgets, theme | **not built** | see HANDOVER.md |
 | Pictures | **none generated**; 183 requests ready as written briefs (`python -m app.curriculum images`); the app shows a placeholder until delivered; `check --release` fails on every undelivered image | run |
 | Scholar review of any Sanskrit | **none yet**; `check --release` fails on all 234 lessons (`review is engine_ok; a release needs scholar_ok`) | run |
-| Backend deploy, app build, OTA | **not done** (owner only) | — |
+| Commit, backend deploy, app build, OTA | committed by the owner in `c00d1bc` and `68a8514` (branch in sync with origin); the production backend serves the same pack version as the working tree (`GET /learn/index` 200, ETag `learn-036d091ca4c6`, 2026-10-20, run); app build / OTA: no record after those commits, **not verified**; the story flag still defaults to off | run: git log, curl |
 
-Nothing here is committed. Nothing is live.
+The story course is committed and its API is live; the app screens are behind the Settings flag (default off).
 
 ---
 

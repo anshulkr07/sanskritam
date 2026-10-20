@@ -1,0 +1,599 @@
+{
+  "id": "cons-virama-s1",
+  "where": "cons.virama#s1",
+  "ratio": "4:3",
+  "expected": [
+    "क्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nक्",
+  "source": {
+    "id": "cons.virama",
+    "template": "scene",
+    "title": {
+      "en": "The silent stroke",
+      "hi": "मौन रेखा"
+    },
+    "title_sa": "हलन्तः",
+    "minutes": 6,
+    "teaches": [
+      "script.cons.inherent-a"
+    ],
+    "needs": [
+      "script.cons.grid",
+      "script.cons.semivowels",
+      "script.cons.sibilants"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "A stroke at the foot",
+          "hi": "पाँव पर एक रेखा"
+        },
+        "image": {
+          "id": "cons-virama-s1",
+          "brief": "Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.",
+          "alt": {
+            "en": "A grandmother's finger on a carved letter with a stroke at its foot, beside a nodding shadow",
+            "hi": "पाँव पर रेखा वाले खुदे अक्षर पर दादी की उँगली"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "chayika"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Some carved letters wear a small slanted stroke at their foot. Dādī lays a finger on one. “Every consonant carries a hidden {{अ}}. This stroke tells the {{अ}} to be quiet.” Chāyikā, now standing in the open, nods.",
+          "hi": "कुछ खुदे अक्षरों के पाँव पर एक छोटी तिरछी रेखा है। दादी एक पर उँगली रखती हैं, “हर व्यंजन में एक छिपा {{अ}} रहता है। यह रेखा उस {{अ}} को चुप करा देती है।” अब खुले में खड़ी छायिका सिर हिलाती है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "A hidden {{अ}}",
+          "hi": "छिपा हुआ {{अ}}"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Write {{क}} and you say ka: the consonant carries {{अ}}. To take the {{अ}} away, add the stroke {{्}}, the {{हलन्तः}} or virāma: {{क्}} is just k.",
+          "hi": "{{क}} लिखिए तो बोला जाता है क + अ: व्यंजन में {{अ}} रहता है। {{अ}} हटाने के लिए रेखा {{्}} लगाइए, इसे {{हलन्तः}} या विराम कहते हैं: {{क्}} केवल ‘क्’ है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [
+          {
+            "sa": "क्",
+            "label": {
+              "en": "k alone: the stroke removes {{अ}}",
+              "hi": "अकेला क्: रेखा {{अ}} हटा देती है"
+            }
+          },
+          {
+            "sa": "क",
+            "label": {
+              "en": "k + a = ka",
+              "hi": "क् + अ = क"
+            }
+          },
+          {
+            "sa": "का",
+            "label": {
+              "en": "k + ā = kā",
+              "hi": "क् + आ = का"
+            }
+          }
+        ],
+        "formula": null,
+        "term": {
+          "sa": "हलन्तः",
+          "meaning": {
+            "en": "a consonant with no vowel",
+            "hi": "बिना स्वर का व्यंजन"
+          }
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "The final sound counts",
+          "hi": "अन्त की ध्वनि गिनी जाती है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.",
+          "hi": "संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।"
+        },
+        "examples": [
+          {
+            "sa": "रामः",
+            "meaning": {
+              "en": "Rāma: say the final {{अ}}",
+              "hi": "राम: अन्त का {{अ}} बोलिए"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "राम",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "जगत्",
+            "meaning": {
+              "en": "the world: ends in {{त्}}, no vowel",
+              "hi": "संसार: {{त्}} पर समाप्त, कोई स्वर नहीं"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "जगत्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which one is k alone, with no vowel?",
+          "hi": "कौन-सा अकेला ‘क्’ है, बिना स्वर के?"
+        },
+        "explain": {
+          "en": "The stroke {{्}} takes the {{अ}} away: {{क्}}.",
+          "hi": "रेखा {{्}} {{अ}} हटा देती है: {{क्}}।"
+        },
+        "options": [
+          {
+            "sa": "क",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "क्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "का",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Make {{त्}}: take the vowel away from {{त}}.",
+          "hi": "{{त्}} बनाइए: {{त}} से स्वर हटाइए।"
+        },
+        "explain": {
+          "en": "{{त}} plus the stroke {{्}} is {{त्}}.",
+          "hi": "{{त}} और रेखा {{्}} मिलकर {{त्}} बनते हैं।"
+        },
+        "options": [],
+        "answers": [
+          "त्"
+        ],
+        "tiles": [
+          "त",
+          "्",
+          "ा",
+          "ि"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each written form to how it is said.",
+          "hi": "हर लिखे रूप को उसके बोले जाने से जोड़िए।"
+        },
+        "explain": {
+          "en": "The stroke removes {{अ}}; a sign {{ा}} replaces it with another vowel.",
+          "hi": "रेखा {{अ}} हटाती है; मात्रा {{ा}} उसकी जगह दूसरा स्वर रखती है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "म",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ma",
+                "hi": "म + अ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "म्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "m, no vowel",
+                "hi": "केवल म्"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "mā",
+                "hi": "म + आ"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that ends in a consonant with the stroke.",
+          "hi": "हर उस शब्द को छुइए जो रेखा वाले व्यंजन पर समाप्त होता है।"
+        },
+        "params": {
+          "passage": [
+            "जगत्",
+            "रामः",
+            "तत्",
+            "फलम्",
+            "मरुत्",
+            "लता"
+          ],
+          "targets": [
+            "जगत्",
+            "तत्",
+            "मरुत्"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Her name",
+          "hi": "उसका नाम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Read her name. Put Chāyikā's carved name in order: {{छा}} {{यि}} {{का}}.",
+          "hi": "उसका नाम पढ़िए। छायिका का खुदा नाम क्रम में लगाइए: {{छा}} {{यि}} {{का}}।"
+        },
+        "explain": {
+          "en": "{{छा}} + {{यि}} + {{का}} = {{छायिका}}.",
+          "hi": "{{छा}} + {{यि}} + {{का}} = {{छायिका}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "छा",
+          "यि",
+          "का"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "Chāyikā hears her own name read aloud. The gold thread in her hair blazes. “छायिका!” she whispers. It is a very small, very happy sound.",
+            "hi": "छायिका अपना नाम ज़ोर से पढ़ा जाता सुनती है। उसके बालों का सुनहरा धागा दमक उठता है। “छायिका!” वह फुसफुसाती है। बहुत छोटी, बहुत ख़ुश आवाज़।"
+          },
+          "failure": {
+            "en": "The name will not settle. Read the pieces left to right: {{छा}} first.",
+            "hi": "नाम जमता नहीं। टुकड़ों को बाएँ से दाएँ पढ़िए: पहले {{छा}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.inherent-a"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How is the final {{म}} of {{राम}} said in Sanskrit?",
+          "hi": "संस्कृत में {{राम}} का अन्तिम {{म}} कैसे बोला जाता है?"
+        },
+        "explain": {
+          "en": "Sanskrit says the final {{अ}} aloud, unlike modern Hindi.",
+          "hi": "आधुनिक हिन्दी के विपरीत संस्कृत अन्त का {{अ}} बोलती है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "{{म्}}: with no vowel",
+              "hi": "{{म्}}: बिना स्वर के"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "{{म}} with its {{अ}}, aloud",
+              "hi": "अपने {{अ}} के साथ, सुनाई देता हुआ"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The silent stroke",
+          "hi": "मौन रेखा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "क्",
+            "text": {
+              "en": "The stroke {{्}} takes the {{अ}} away.",
+              "hi": "रेखा {{्}} {{अ}} हटाती है।"
+            }
+          },
+          {
+            "sa": "क → क्",
+            "text": {
+              "en": "Every bare consonant carries {{अ}}.",
+              "hi": "हर अकेला व्यंजन {{अ}} साथ रखता है।"
+            }
+          },
+          {
+            "sa": "राम · जगत्",
+            "text": {
+              "en": "Final {{अ}} is said aloud; some words end in a stroke.",
+              "hi": "अन्त का {{अ}} बोला जाता है; कुछ शब्द रेखा पर समाप्त होते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cons-virama-s1",
+    "brief": "Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.",
+    "alt": {
+      "en": "A grandmother's finger on a carved letter with a stroke at its foot, beside a nodding shadow",
+      "hi": "पाँव पर रेखा वाले खुदे अक्षर पर दादी की उँगली"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "chayika"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-e81e7740-9745-427e-8d6d-69202d96620a.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "e18b563da9c18dba055156af5364076712529508ede657fbb5438ed972f5a8d0",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-virama-s1-phone-5deb0018.webp",
+      "key": "learn/cons-virama-s1-phone-5deb0018.webp",
+      "sha256": "5deb00182dc31787b2781c09d2a009f8880ad20d60e7b3478a72052069571b7c",
+      "bytes": 109550,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-virama-s1-phone-5deb0018.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-virama-s1-tablet-8a4084d0.webp",
+      "key": "learn/cons-virama-s1-tablet-8a4084d0.webp",
+      "sha256": "8a4084d04635d459744d047e523f061d00931d15f2304e1d21021ef1ff2c87cc",
+      "bytes": 438112,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-virama-s1-tablet-8a4084d0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}
