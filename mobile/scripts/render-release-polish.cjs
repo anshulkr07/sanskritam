@@ -22,7 +22,7 @@ const stubs={
  'services/scriptFonts':{isScriptLoaded:()=>true,ensureScriptFont:async()=>{}},
  'components/artwork/ArtworkImage':{ArtworkImage:RN.Image},
  'components/book/PageCurlBook':{...emptyComponent,useBookPage:()=>({invalidate:noop})},
- 'components/AudioModal':emptyComponent,'components/ProfilePhotoEditor':emptyComponent,'components/ProfileImage':emptyComponent,'components/AchievementReveal':emptyComponent,'facts/InsightProof':emptyComponent,'components/ReportButton':emptyComponent,
+ 'components/AudioModal':emptyComponent,'components/ProfilePhotoEditor':emptyComponent,'components/ProfileImage':emptyComponent,'components/AchievementReveal':emptyComponent,'components/ReportButton':emptyComponent,
 };
 function load(file){if(cache.has(file))return cache.get(file).exports;const m={exports:{}};cache.set(file,m);const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.React,esModuleInterop:true}}).outputText;
  function req(name){

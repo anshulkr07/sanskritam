@@ -22,7 +22,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { captureRef } from "react-native-view-shot";
 import { LinearGradient } from "expo-linear-gradient";
 import QRCode from "react-native-qrcode-svg";
-import InsightProof from "../facts/InsightProof";
 
 import { api, type Fact, type FactToday } from "../api/client";
 import { useAskContext } from "../ask/AskProvider";
@@ -140,7 +139,6 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
                 {body}
               </Text>
             </Panel>
-            <InsightProof id={fact.id ?? ""} />
 
             {lines.length > 0 && (
               <>
