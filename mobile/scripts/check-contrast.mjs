@@ -90,10 +90,14 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const themeSrc = readFileSync(fileURLToPath(new URL("../src/theme.ts", import.meta.url)), "utf8");
-const block = themeSrc.match(/export const accent = \{([\s\S]*?)\} as const;/);
+// The palette is split into LIGHT_* and DARK_* tables (theme.ts applyScheme).
+const table = (name) => themeSrc.match(new RegExp(`const ${name}[^=]*= \\{([\\s\\S]*?)\\n\\}`))?.[1] ?? "";
+const readAccents = (src) => [...src.matchAll(
+  /(\w+):\s*\{\s*fg:\s*"(#\w{6})",\s*bg:\s*"(#\w{6})",\s*from:\s*"(#\w{6})",\s*to:\s*"(#\w{6})"/g,
+)].map((m) => ({ name: m[1], fg: m[2], bg: m[3], from: m[4], to: m[5] }));
 const ACCENTS = [];
-if (block) {
-  for (const m of block[1].matchAll(
+{
+  for (const m of table("LIGHT_ACCENT").matchAll(
     /(\w+):\s*\{\s*fg:\s*"(#\w{6})",\s*bg:\s*"(#\w{6})",\s*from:\s*"(#\w{6})",\s*to:\s*"(#\w{6})"/g,
   )) {
     ACCENTS.push({ name: m[1], fg: m[2], bg: m[3], from: m[4], to: m[5] });
@@ -138,7 +142,7 @@ const ON_GOLD = "#F2C879";
 // bad is excluded too: gold on #B3261E measures 4.14:1, below the 4.5 bar,
 // so small labels on a bad fill are cream, not gold.
 const GOLD_EXCLUDED = new Set(["saffron", "gold", "ok", "bad"]);
-const fillBlock = themeSrc.match(/export const fill = \{([\s\S]*?)\} as const;/);
+const fillBlock = [null, table("LIGHT_FILL")];
 const FILLS = [];
 if (fillBlock) {
   for (const m of fillBlock[1].matchAll(/(\w+):\s*"(#\w{6})"/g)) {
@@ -165,6 +169,32 @@ for (const f of FILLS) {
   }
   const goldTxt = GOLD_EXCLUDED.has(f.name) ? "   n/a " : rg.toFixed(2).padStart(7);
   console.log(`  ${f.name.padEnd(10)} ${rc.toFixed(2).padStart(5)}:1  ${goldTxt}   ${mark}`);
+}
+
+// ── Dark scheme (theme.ts DARK_COLOR / DARK_ACCENT) ─────────────────────
+// Every text token >= 4.5:1 on the dark bg, surface and surfaceMuted; every
+// accent fg >= 4.5:1 on the dark bg and on its own dark tile.
+const darkSrc = table("DARK_COLOR");
+const dark = Object.fromEntries([...darkSrc.matchAll(/(\w+):\s*"(#\w{6})"/g)].map((m) => [m[1], m[2]]));
+const DARK_TEXT = ["ink", "inkSoft", "inkFaint", "okText", "warnText", "badText", "unsureText", "saffronText", "goldText", "tutorText"];
+if (!dark.bg) {
+  console.error("  Could not read DARK_COLOR from src/theme.ts.\n");
+  process.exit(1);
+}
+console.log("\n  Dark scheme text (4.5:1 on bg / surface / surfaceMuted)");
+console.log("  " + "-".repeat(52));
+for (const name of DARK_TEXT) {
+  const checks = [dark.bg, dark.surface, dark.surfaceMuted].map((g) => ratio(dark[name], g));
+  const bad = checks.filter((r) => r < 4.5).length;
+  failed += bad;
+  console.log(`  ${name.padEnd(12)} ${dark[name]}  ${checks.map((r) => r.toFixed(2).padStart(6)).join("  ")}   ${bad ? "FAIL" : "ok"}`);
+}
+console.log("\n  Dark accents (fg on bg, fg on its tile)");
+for (const a of readAccents(table("DARK_ACCENT"))) {
+  const checks = [ratio(a.fg, dark.bg), ratio(a.fg, a.bg)];
+  const bad = checks.filter((r) => r < 4.5).length;
+  failed += bad;
+  console.log(`  ${a.name.padEnd(9)} ${checks.map((r) => r.toFixed(2).padStart(7)).join("   ")}   ${bad ? "FAIL" : "ok"}`);
 }
 
 console.log("");

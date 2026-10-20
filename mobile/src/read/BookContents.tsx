@@ -199,7 +199,7 @@ export default function BookContents({
               }}
               accessibilityRole="button"
               accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}${mark?.read ? ". Already read." : ""}${mark?.bookmarked ? ". Bookmarked." : ""}`}
-              style={[styles.verse, { marginLeft: (flat ? 0 : 48) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: "#EAF0E8", borderRadius: 8 }]}
+              style={[styles.verse, { marginLeft: (flat ? 0 : 48) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: T.doneBg, borderRadius: 8 }]}
             >
               <Text style={[styles.verseNum, here && { color: T.action }]}>{num}</Text>
               <Text style={[sa(16), styles.verseLine]} numberOfLines={1}>
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     gap: 10,
     minHeight: 46,
     borderTopWidth: 1,
-    borderTopColor: "#EFE6D6",
+    borderTopColor: T.line,
   },
   verseHere: { backgroundColor: T.surface, paddingHorizontal: 8, marginRight: -8 },
   verseNum: { ...ui("semibold"), width: 30, fontSize: 13.5, color: T.ink3, fontVariant: ["tabular-nums"] },

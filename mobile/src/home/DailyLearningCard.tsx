@@ -1,109 +1,164 @@
-import { useFocusEffect } from "@react-navigation/native";
+// Home's daily practice (owner's pick, 2026-10-20, option P3): two tiles in
+// the Daily tiles' own shape (Next lesson, Review), and under them one bar
+// back into the verse last read. What each shows comes from dailyPractice.ts,
+// for whichever Learn the learner has on: the story course or the trail.
+
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import React, { useCallback, useState } from "react";
+import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { api } from "../api/client";
-import { progressStorage, subscribeProgress } from "../services/progressStorage";
-import { getLearnV2LastLesson } from "../learnv2/progress";
-import { TRAIL, stageStops } from "../trail/course";
-import { loadTrailCardDoneMap } from "../trail/progress";
-import { color, fill, font, onFill, radius, space } from "../theme";
 
-type Goal = "speak" | "read" | "recite";
-const GOALS: { id: Goal; label: string }[] = [
-  { id: "speak", label: "Speak Sanskrit" }, { id: "read", label: "Read texts" }, { id: "recite", label: "Recite" },
-];
-const CARD_LESSONS = TRAIL.flatMap(s => stageStops(s)).filter(s => s.lesson.cards);
+import { Skeleton } from "../components/Skeleton";
+import { haptics } from "../services/haptics";
+import { useStoryFlag } from "../story/flags";
+import { fill, font, onFill, sanskritText, space } from "../theme";
+import { useStoryPractice, useTrailPractice, type PracticeData } from "./dailyPractice";
 
-export default function DailyLearningCard({ navigate }: { navigate: (route: string, params?: object) => void }) {
-  const [goal, setGoal] = useState<Goal | null>(null);
-  const [choosing, setChoosing] = useState(false);
-  const [lessonId, setLessonId] = useState<string>();
-  const [due, setDue] = useState<number | null>(null);
-  const [resume, setResume] = useState<{ bookKey: string; chapter?: string; index?: number } | null>(null);
-  useFocusEffect(useCallback(() => {
-    let alive = true;
-    const load = async () => {
-      const [raw, last, reading] = await Promise.all([
-        progressStorage.getItem("shabd.learning.goal"), getLearnV2LastLesson(),
-        progressStorage.getItem("shabd.read.resume"),
-      ]);
-      const done = await loadTrailCardDoneMap(last ? [last] : []);
-      if (!alive) return;
-      setGoal(GOALS.some(g => g.id === raw) ? raw as Goal : null);
-      setLessonId(last && !done[last] ? last : CARD_LESSONS.find(s => !done[s.lesson.cards])?.lesson.cards);
-      try { const r = reading ? JSON.parse(reading) : null; setResume(typeof r?.bookKey === "string" ? r : null); }
-      catch { setResume(null); }
-    };
-    void load();
-    const unsubscribe = subscribeProgress(() => { void load(); });
-    api.reviewDue(1).then(r => { if (alive) setDue(r.due_count); }).catch(() => { if (alive) setDue(null); });
-    return () => { alive = false; unsubscribe(); };
-  }, []));
-  const choose = async (next: Goal) => {
-    setGoal(next); setChoosing(false);
-    await progressStorage.setItem("shabd.learning.goal", next);
-  };
-  const continueLearning = () => {
-    if (goal === "read") navigate(resume ? "Book" : "Read", resume ?? undefined);
-    else if (goal === "recite") navigate("RecitePicker");
-    else if (lessonId) navigate("LearnV2Lesson", { lessonId });
-    else navigate("Learn");
-  };
-  return <View style={styles.card}>
-    <View style={styles.heading}>
-      <View style={styles.icon}><Ionicons name="flash-outline" size={17} color={onFill.text} /></View>
-      <View style={styles.headingText}>
-        <Text style={styles.title}>Your daily practice</Text>
-        <Text style={styles.subtitle}>{goal ? `${GOALS.find(g => g.id === goal)?.label} · a little every day` : "Speak, read or recite"}</Text>
-      </View>
-      {!!goal && <Pressable onPress={() => setChoosing(v => !v)} accessibilityRole="button" accessibilityLabel="Change learning goal" style={styles.edit}>
-        <Text style={styles.editText}>{choosing ? "Close" : "Change"}</Text>
-      </Pressable>}
-    </View>
-    {!goal || choosing ? <View style={styles.body}>
-      <Text style={styles.copy}>What would you like to do first?</Text>
-      <View style={styles.choices}>
-        {GOALS.map(g => <Pressable key={g.id} onPress={() => void choose(g.id)} accessibilityRole="button"
-          accessibilityState={{ selected: goal === g.id }} accessibilityLabel={g.label}
-          style={[styles.choice, goal === g.id && styles.choiceOn]}>
-          <Text style={styles.choiceText}>{g.label}</Text>
-        </Pressable>)}
-      </View>
-    </View> : <View style={styles.body}>
-      <Pressable onPress={continueLearning} accessibilityRole="button" accessibilityLabel="Continue your learning" style={styles.primary}>
-        <Text style={styles.primaryText}>{goal === "read" ? resume ? "Continue reading" : "Choose a text" : goal === "recite" ? "Practise a verse" : "Continue learning"}</Text>
-        <Ionicons name="arrow-forward" size={16} color={onFill.text} />
-      </Pressable>
-      <View style={styles.links}>
-        <Pressable onPress={() => navigate("DailyReview")} accessibilityRole="button" accessibilityLabel={due === null ? "Open reviews" : `${due} reviews due`} style={styles.link}>
-          <View style={styles.quickLabel}><Ionicons name="checkmark-circle-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>{due === null ? "Review" : due > 0 ? `${due} due for review` : "Reviews complete"}</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} />
-        </Pressable>
-        <Pressable onPress={() => navigate("Challenge")} accessibilityRole="button" accessibilityLabel="Start a short practice session" style={styles.link}><View style={styles.quickLabel}><Ionicons name="flash-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>Short practice</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} /></Pressable>
-        <Pressable onPress={() => navigate("OfflineLibrary")} accessibilityRole="button" accessibilityLabel="Open saved reading offline" style={styles.link}><View style={styles.quickLabel}><Ionicons name="bookmark-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>Saved reading</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} /></Pressable>
-      </View>
-    </View>}
-  </View>;
+type Navigate = (route: string, params?: object) => void;
+
+export default function DailyLearningCard({ navigate }: { navigate: Navigate }) {
+  return useStoryFlag() ? <StoryPractice navigate={navigate} /> : <TrailPractice navigate={navigate} />;
 }
+
+function StoryPractice({ navigate }: { navigate: Navigate }) {
+  return <PracticeTiles data={useStoryPractice(navigate)} />;
+}
+
+function TrailPractice({ navigate }: { navigate: Navigate }) {
+  return <PracticeTiles data={useTrailPractice(navigate)} />;
+}
+
+function PracticeTiles({ data }: { data: PracticeData }) {
+  const { state, lesson, due, reading } = data;
+  const lessonLabel =
+    state === "ready" && lesson ? `Next lesson: ${lesson.title}. ${lesson.meta}`
+      : state === "complete" ? "Course complete. Open Learn"
+        : state === "error" ? "Couldn't load your lesson. Open Learn"
+          : "Next lesson";
+  const reviewLabel = due === null ? "Open reviews" : due > 0 ? `${due} ${due === 1 ? "card" : "cards"} due for review` : "Reviews done for today";
+  return (
+    <View style={styles.wrap}>
+      <View style={styles.pair}>
+        <Tile
+          tone={fill.sage}
+          icon="book-outline"
+          label="Next lesson"
+          a11y={lessonLabel}
+          onPress={state === "ready" && lesson ? lesson.open : data.openLearn}
+        >
+          {state === "loading" ? (
+            <Skeleton height={44} />
+          ) : state === "ready" && lesson ? (
+            <>
+              {!!lesson.titleSa && (
+                <Text style={[sanskritText(20), styles.sa]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+                  {lesson.titleSa}
+                </Text>
+              )}
+              <Text style={styles.title} numberOfLines={2}>{lesson.title}</Text>
+              {!!lesson.meta && <Text style={styles.meta} numberOfLines={2}>{lesson.meta}</Text>}
+            </>
+          ) : (
+            <>
+              <Text style={styles.title}>{state === "complete" ? "Course complete" : "Couldn't load"}</Text>
+              <Text style={styles.meta}>{state === "complete" ? "Revisit any lesson in Learn" : "Tap to open Learn"}</Text>
+            </>
+          )}
+        </Tile>
+        <Tile tone={fill.teal} icon="refresh" label="Review" a11y={reviewLabel} onPress={data.openReview}>
+          {due === null ? (
+            <Text style={styles.title}>Open reviews</Text>
+          ) : due > 0 ? (
+            <>
+              <Text style={styles.count}>{due}</Text>
+              <Text style={styles.title}>{due === 1 ? "card due today" : "cards due today"}</Text>
+            </>
+          ) : (
+            <>
+              <Ionicons name="checkmark" size={28} color={onFill.text} />
+              <Text style={styles.title}>Nothing due today</Text>
+            </>
+          )}
+        </Tile>
+      </View>
+      {reading && (
+        <Pressable
+          onPress={() => {
+            haptics.tap();
+            reading.open();
+          }}
+          style={({ pressed }) => [styles.bar, pressed && styles.pressed]}
+          accessibilityRole="button"
+          accessibilityLabel={reading.label}
+        >
+          <Ionicons name="bookmark-outline" size={18} color={onFill.gold} />
+          <Text style={styles.barText} numberOfLines={1}>{reading.label}</Text>
+          <Ionicons name="chevron-forward" size={16} color={onFill.text} />
+        </Pressable>
+      )}
+    </View>
+  );
+}
+
+function Tile({
+  tone,
+  icon,
+  label,
+  a11y,
+  onPress,
+  children,
+}: {
+  tone: string;
+  icon: IoniconsIconName;
+  label: string;
+  a11y: string;
+  onPress: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Pressable
+      onPress={() => {
+        haptics.tap();
+        onPress();
+      }}
+      style={({ pressed }) => [styles.tile, { backgroundColor: tone }, pressed && styles.pressed]}
+      accessibilityRole="button"
+      accessibilityLabel={a11y}
+    >
+      <View style={styles.head}>
+        <View style={styles.icon}>
+          <Ionicons name={icon} size={14} color={onFill.text} />
+        </View>
+        <Text style={styles.label}>{label}</Text>
+      </View>
+      <View style={styles.body}>{children}</View>
+    </Pressable>
+  );
+}
+
+// Matches Home's Daily tiles (styles.dailyTile and friends in Home.tsx).
 const styles = StyleSheet.create({
-  card: { borderRadius: 0, overflow: "hidden", backgroundColor: fill.sage, marginBottom: space.md },
-  heading: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.md, paddingVertical: space.md, borderBottomWidth: 1, borderColor: onFill.faint },
-  icon: { width: 44, height: 44, borderRadius: 22, alignItems: "center", justifyContent: "center", backgroundColor: "rgba(255,248,238,0.14)" },
-  headingText: { flex: 1 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 20, color: onFill.text },
-  subtitle: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: onFill.soft, marginTop: 1 },
-  edit: { minWidth: 44, minHeight: 44, justifyContent: "center", alignItems: "center" },
-  editText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
-  body: { padding: space.md },
-  copy: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: onFill.soft },
-  choices: { flexDirection: "row", flexWrap: "wrap", gap: space.xs, marginTop: space.sm },
-  choice: { minHeight: 40, justifyContent: "center", borderRadius: 8, borderWidth: 1, borderColor: "rgba(255,248,238,0.55)", paddingHorizontal: space.sm },
-  choiceOn: { backgroundColor: "rgba(255,248,238,0.14)", borderColor: onFill.text },
-  choiceText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: onFill.text, fontSize: font.sizes.sm },
-  primary: { minHeight: 52, borderRadius: 0, backgroundColor: fill.ink, flexDirection: "row", gap: space.xs, justifyContent: "center", alignItems: "center", paddingHorizontal: space.md },
-  primaryText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: onFill.text, fontSize: font.sizes.base },
-  links: { marginTop: space.sm },
-  link: { minHeight: 48, justifyContent: "space-between", flexDirection: "row", alignItems: "center", borderBottomWidth: 1, borderBottomColor: onFill.faint },
-  quickLabel: { flexDirection: "row", alignItems: "center", gap: 10 },
-  linkText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: onFill.text },
+  wrap: { marginBottom: space.md },
+  pair: { flexDirection: "row", gap: space.sm },
+  tile: { flex: 1, borderRadius: 10, padding: space.md, minHeight: 150 },
+  head: { flexDirection: "row", alignItems: "center", gap: 6 },
+  icon: { width: 24, height: 24, borderRadius: 5, alignItems: "center", justifyContent: "center", backgroundColor: fill.ink },
+  label: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.gold },
+  body: { flex: 1, justifyContent: "flex-end", marginTop: space.sm },
+  sa: { color: onFill.text },
+  title: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13, lineHeight: 18, color: onFill.text },
+  meta: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, lineHeight: 16, color: onFill.soft, marginTop: 2 },
+  count: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 32, lineHeight: 36, color: onFill.text },
+  bar: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    minHeight: 48,
+    marginTop: space.sm,
+    paddingHorizontal: space.md,
+    borderRadius: 10,
+    backgroundColor: fill.ink,
+  },
+  barText: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: onFill.text },
+  pressed: { opacity: 0.9, transform: [{ scale: 0.985 }] },
 });

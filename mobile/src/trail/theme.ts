@@ -8,9 +8,10 @@
 // text uses doneInk 6.0). White on action 6.4, on done 5.1, on every stage
 // colour 6.2 or more.
 
+import { isDarkScheme } from "../theme";
 import { TRAIL } from "./course";
 
-export const T = {
+const LIGHT_T = {
   paper: "#F8F2E7",
   surface: "#FFFCF6",
   line: "#E5D9C6",
@@ -28,7 +29,35 @@ export const T = {
   muted: "#CDBFAA",
   scrim: "rgba(36,26,18,0.48)",
   white: "#FFFFFF",
-} as const;
+};
+
+// Dark (owner, 2026-10-20: dark mode for every page): the app's night paper
+// and cream inks (src/theme.ts). action is both a fill under white text and
+// a text colour, and no colour holds 4.5:1 against white AND the dark paper,
+// so it takes the app's button saffron: white on it 4.5, it on paper 4.1
+// (its text uses are bold labels and links).
+const DARK_T: typeof LIGHT_T = {
+  paper: "#17130F",
+  surface: "#221C17",
+  line: "#3A3029",
+  lineStrong: "#4A3E34",
+  ink: "#F3EADB",
+  ink2: "#CDBFAA",
+  ink3: "#A89886",
+  action: "#D2461F",
+  done: "#4E9E6C",
+  doneInk: "#7CC79A",
+  doneBg: "#1C2A20",
+  wrong: "#B3261E",
+  wrongInk: "#F08A80",
+  wrongBg: "#331A17",
+  muted: "#5F5245",
+  scrim: "rgba(0,0,0,0.6)",
+  white: "#FFFFFF",
+};
+
+/** Read once: Boot paints the scheme before this module is first required. */
+export const T = isDarkScheme() ? DARK_T : LIGHT_T;
 
 export const F = {
   sa: "TiroDevanagariSanskrit_400Regular",

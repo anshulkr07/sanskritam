@@ -36,6 +36,7 @@ import { useQuery } from "../hooks/useQuery";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useLang } from "../i18n";
 import { T, sa, ui } from "../read/look";
+import { isDarkScheme } from "../theme";
 import { playCue, preloadCues } from "../recite/cues";
 import { mask } from "../recite/hide";
 import { useLiveRecitation } from "../recite/useLiveRecitation";
@@ -713,7 +714,7 @@ const styles = StyleSheet.create({
   label: { ...ui("bold"), fontSize: 12, letterSpacing: 1.2, color: T.ink3, marginTop: 4 },
   verseCard: { backgroundColor: T.surface, borderWidth: 1, borderColor: T.line, padding: 12, gap: 4 },
   lineRow: { minHeight: 48, justifyContent: "center", paddingHorizontal: 8, borderLeftWidth: 3, borderLeftColor: "transparent" },
-  lineOn: { borderLeftColor: T.action, backgroundColor: "#FBEFE3" },
+  lineOn: { borderLeftColor: T.action, backgroundColor: isDarkScheme() ? "#3A2418" : "#FBEFE3" },
   roman: { ...ui("regular"), fontSize: 15, lineHeight: 22, fontStyle: "italic", color: T.ink2, marginTop: 6 },
   meaning: { ...ui("regular"), fontSize: 15, lineHeight: 22, color: T.ink2, marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: T.line },
   hiddenNote: { ...ui("medium"), fontSize: 15, color: T.ink3, textAlign: "center", paddingVertical: 24 },

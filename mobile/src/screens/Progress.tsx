@@ -1,12 +1,18 @@
-// Progress — the learner's stats: day streak, today's XP, the last five weeks,
-// the tutor's Sanskrit mix, topic mastery and achievements. (U8-6: renamed from
-// Profile. The Sanskrit-mix dial stays HERE, never in the drawer: it is the
-// product's most distinctive idea, U4-3.)
+// Progress — the learner's stats: a month of practice, day streak, today's
+// XP, the tutor's Sanskrit mix, topic mastery and achievements. (U8-6: renamed
+// from Profile. The Sanskrit-mix dial stays HERE, never in the drawer: it is
+// the product's most distinctive idea, U4-3.)
+//
+// Owner's pick (2026-10-20): option R3, the month calendar first and the
+// numbers as a plain ledger under it; achievements as option R1's rows, each
+// with a trophy on its shelf (owner: "instead of just name boxes there, lets
+// have some trophies"). Hairline rules and square shapes, no cards.
 //
 // Lives in the left drawer: consulted, not lived in. Takes no navigation props.
 //
 // Every number is real and says what it is:
-//   • The DAY streak and the calendar come from GET /progress/history. The
+//   • The DAY streak and the calendar come from GET /progress/history (the
+//     last 90 days, so the calendar steps back as far as that reaches). The
 //     `streak` field on /me and /progress/streak is a run of correct answers
 //     (adaptive.py), not days, so it is not shown as one.
 //   • Today's XP comes from GET /progress/daily.
@@ -18,11 +24,11 @@ import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Path, Rect } from "react-native-svg";
 
-import { api, type Feature } from "../api/client";
+import { api, type Feature, type ProgressDay } from "../api/client";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
-import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import { useDayStats } from "../hooks/useDayStats";
@@ -30,15 +36,42 @@ import { cachedGet } from "../services/apiCache";
 import { ACHIEVEMENTS, SPARSHA_25, getSparshaCoverage, getUnlocked } from "../services/achievements";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
-import { accent, accentAt, fill, onFill, color, font, radius, script, shadow, space, type AccentName } from "../theme";
-import { weekGrid } from "../utils/streak";
-import { plain } from "../utils/text";
+import { color, fill, fillAt, font, onFill, outline, script, space } from "../theme";
+import { isActiveDay, shiftDay } from "../utils/streak";
 
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** GET /progress/history is read for this many days. */
+const HISTORY_DAYS = 90;
 
-/** A readable name for a feature id the taxonomy did not return. */
-function humanise(id: string): string {
-  return id.replace(/[_.]/g, " ").replace(/\s+/g, " ").trim();
+interface MonthCell {
+  key: string;
+  /** 0 for the blanks before the 1st and after the last day. */
+  day: number;
+  active: boolean;
+  goal: boolean;
+  isToday: boolean;
+  future: boolean;
+}
+
+/** The month `back` months before today's, Sunday-first, padded to whole weeks. */
+function monthGrid(history: ProgressDay[], today: string, back: number): { title: string; cells: MonthCell[] } {
+  const [ty, tm] = today.split("-").map(Number);
+  const first = new Date(Date.UTC(ty, tm - 1 - back, 1));
+  const y = first.getUTCFullYear();
+  const m = first.getUTCMonth();
+  const days = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+  const byDate = new Map(history.map((d) => [d.date, d]));
+  const cells: MonthCell[] = [];
+  const blank = (i: number): MonthCell => ({ key: `blank-${i}`, day: 0, active: false, goal: false, isToday: false, future: false });
+  for (let i = 0; i < first.getUTCDay(); i++) cells.push(blank(i));
+  for (let d = 1; d <= days; d++) {
+    const key = `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const rec = byDate.get(key);
+    cells.push({ key, day: d, active: isActiveDay(rec), goal: !!rec?.goal_met, isToday: key === today, future: key > today });
+  }
+  while (cells.length % 7) cells.push(blank(cells.length));
+  return { title: `${MONTHS[m]} ${y}`, cells };
 }
 
 export default function ProgressScreen() {
@@ -46,6 +79,7 @@ export default function ProgressScreen() {
   const { stats, failed, refresh: refreshStats } = useDayStats();
   const [features, setFeatures] = useState<Feature[] | null>(null);
   const [bumping, setBumping] = useState(false);
+  const [back, setBack] = useState(0);
   // U3-4: achievements live here, the trophy shelf, not a tab.
   const [unlocked, setUnlocked] = useState<Record<string, string>>({});
   const [sparshaCount, setSparshaCount] = useState(0);
@@ -84,31 +118,26 @@ export default function ProgressScreen() {
   }, [streakDays]);
 
   // Mastery by topic: average per feature kind (case, number, tense, ...).
-  const { topics, top } = useMemo(() => {
+  const topics = useMemo(() => {
     const mastery = learner?.feature_mastery ?? {};
     const byId = new Map((features ?? []).map((f) => [f.id, f] as const));
     const groups: Record<string, number[]> = {};
-    const rows: { id: string; label: string; score: number }[] = [];
     for (const [id, raw] of Object.entries(mastery)) {
-      const score = typeof raw === "number" ? raw : 0;
-      const f = byId.get(id);
-      const kind = f?.kind ?? "other";
-      (groups[kind] ??= []).push(score);
-      rows.push({ id, label: plain(f?.label_en) || humanise(id), score });
+      const kind = byId.get(id)?.kind ?? "other";
+      (groups[kind] ??= []).push(typeof raw === "number" ? raw : 0);
     }
-    const topics = Object.entries(groups).map(([kind, scores]) => ({
-      kind,
-      label: kind.charAt(0).toUpperCase() + kind.slice(1),
-      score: scores.reduce((a, b) => a + b, 0) / scores.length,
-    }));
-    rows.sort((a, b) => b.score - a.score);
-    return { topics, top: rows.slice(0, 6) };
+    return Object.entries(groups)
+      .map(([kind, scores]) => ({
+        kind,
+        label: kind.charAt(0).toUpperCase() + kind.slice(1),
+        score: scores.reduce((a, b) => a + b, 0) / scores.length,
+      }))
+      .sort((a, b) => b.score - a.score);
   }, [learner?.feature_mastery, features]);
 
-  const cells = useMemo(
-    () => (stats ? weekGrid(stats.history, stats.daily.date, 5) : []),
-    [stats],
-  );
+  const month = useMemo(() => (stats ? monthGrid(stats.history, stats.daily.date, back) : null), [stats, back]);
+  // Back only as far as the history reaches.
+  const canBack = !!stats && !!month && month.cells.find((c) => c.day === 1)!.key > shiftDay(stats.daily.date, -(HISTORY_DAYS - 1));
 
   if (!learner) {
     return (
@@ -138,213 +167,193 @@ export default function ProgressScreen() {
 
   const daily = stats?.daily;
   const goal = daily?.goal_xp || 50;
+  const earned = ACHIEVEMENTS.filter((a) => unlocked[a.id]).length;
+  const nextUp = ACHIEVEMENTS.find((a) => !unlocked[a.id]);
 
   return (
     <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-        <View style={styles.intro}><Text style={styles.eyebrow}>YOUR PRACTICE, TAKING ROOT</Text><Text style={styles.introTitle}>Every day adds up.</Text><Text style={styles.introCopy}>A little Sanskrit, a growing journey.</Text></View>
-        {/* the three numbers that matter */}
-        <View style={styles.tiles}>
-          <Tile tone="saffron" label="Day streak">
-            {stats ? (
-              <View style={styles.tileValueRow}>
-                <Ionicons name="flame" size={22} color={accent.saffron.fg} />
-                <Text style={[styles.tileValue, { color: accent.saffron.fg }]}>{stats.streak}</Text>
-              </View>
-            ) : (
-              <Skeleton height={28} width={44} />
-            )}
-          </Tile>
-          <Tile tone="teal" label="Today">
-            {daily ? (
-              <ProgressRing progress={daily.xp / goal} size={52} stroke={6} tint={daily.goal_met ? color.okText : accent.teal.fg} track="#FFFFFF">
-                <Text style={[styles.ringNum, { color: accent.teal.fg }]}>{daily.xp}</Text>
-              </ProgressRing>
-            ) : (
-              <Skeleton width={52} height={52} radius={26} />
-            )}
-          </Tile>
-          <Tile tone="sage" label="Days practised">
-            {stats ? (
-              <Text style={[styles.tileValue, { color: accent.sage.fg }]}>{stats.practised}</Text>
-            ) : (
-              <Skeleton height={28} width={44} />
-            )}
-          </Tile>
-        </View>
-        {daily ? (
-          <Text style={styles.goalLine} accessibilityLabel={`${daily.xp} of ${goal} XP today`}>
-            {daily.xp} of {goal} XP today{daily.goal_met ? ", goal met" : ""}
-          </Text>
-        ) : null}
-
-        {/* the last five weeks */}
-        <Text style={styles.sectionTitle}>Last 5 weeks</Text>
+        {/* the month */}
         {failed && !stats ? (
-          <View style={styles.card}>
-            <FetchError label="Couldn't load your days." onRetry={load} />
-          </View>
-        ) : !stats ? (
-          <Skeleton height={190} radius={radius.lg} />
+          <FetchError label="Couldn't load your days." onRetry={load} />
+        ) : !stats || !month ? (
+          <Skeleton height={320} radius={0} />
         ) : (
-          <View style={styles.card}>
-            <View style={styles.weekHead}>
-              {WEEKDAYS.map((d, i) => (
-                <Text key={i} style={styles.weekHeadText}>
-                  {d}
-                </Text>
-              ))}
+          <>
+            <View style={styles.monthHead}>
+              <Pressable
+                onPress={() => setBack((b) => b + 1)}
+                disabled={!canBack}
+                style={[styles.monthStep, !canBack && styles.disabled]}
+                accessibilityRole="button"
+                accessibilityLabel="Previous month"
+                accessibilityState={{ disabled: !canBack }}
+              >
+                <Ionicons name="chevron-back" size={16} color={color.ink} />
+              </Pressable>
+              <Text style={styles.monthTitle} accessibilityRole="header">{month.title}</Text>
+              <Pressable
+                onPress={() => setBack((b) => Math.max(0, b - 1))}
+                disabled={back === 0}
+                style={[styles.monthStep, back === 0 && styles.disabled]}
+                accessibilityRole="button"
+                accessibilityLabel="Next month"
+                accessibilityState={{ disabled: back === 0 }}
+              >
+                <Ionicons name="chevron-forward" size={16} color={color.ink} />
+              </Pressable>
             </View>
             <View style={styles.grid}>
-              {cells.map((c) => (
+              {WEEKDAYS.map((d, i) => (
+                <Text key={`h${i}`} style={styles.weekHead}>{d}</Text>
+              ))}
+              {month.cells.map((c) => (
                 <View
                   key={c.key}
-                  style={styles.cell}
-                  accessible
+                  style={[styles.cell, c.active && !c.future && { backgroundColor: fill.sage }, c.isToday && styles.today]}
+                  accessible={c.day > 0}
                   accessibilityLabel={
-                    c.future
-                      ? c.key
-                      : `${c.key}${c.isToday ? ", today" : ""}, ${c.active ? (c.goal ? "goal met" : "practised") : "no practice"}`
+                    c.day === 0 ? undefined
+                      : c.future ? c.key
+                        : `${c.key}${c.isToday ? ", today" : ""}, ${c.active ? (c.goal ? "goal met" : "practised") : "no practice"}`
                   }
                 >
-                  <View style={[styles.dot, c.future && styles.dotFuture, c.active && styles.dotOn, c.goal && styles.dotGoal]}>
-                    <Text
-                      style={[
-                        styles.cellText,
-                        c.active && styles.cellTextOn,
-                        c.isToday && styles.cellTextToday,
-                        c.future && styles.cellTextFuture,
-                      ]}
-                    >
-                      {c.day}
-                    </Text>
-                  </View>
+                  {c.day > 0 && (
+                    <>
+                      <Text style={[styles.cellText, c.active && !c.future && styles.cellTextOn, c.future && styles.cellTextFuture, c.isToday && styles.cellTextToday]}>
+                        {c.day}
+                      </Text>
+                      <View style={[styles.goalMark, c.goal && c.active && { backgroundColor: onFill.gold }]} />
+                    </>
+                  )}
                 </View>
               ))}
             </View>
             <View style={styles.legend}>
               <View style={styles.legendItem}>
-                <View style={[styles.legendDot, { backgroundColor: accent.sage.from }]} />
+                <View style={[styles.legendSwatch, { backgroundColor: fill.sage }]} />
                 <Text style={styles.legendText}>Practised</Text>
               </View>
               <View style={styles.legendItem}>
-                <View style={[styles.legendDot, styles.legendGoal]} />
+                <View style={[styles.legendSwatch, { backgroundColor: fill.sage, justifyContent: "flex-end", alignItems: "center", paddingBottom: 2 }]}>
+                  <View style={{ width: 8, height: 2, backgroundColor: onFill.gold }} />
+                </View>
                 <Text style={styles.legendText}>Goal met</Text>
               </View>
-            </View>
-          </View>
-        )}
-
-        {/* the tutor's language mix */}
-        <Text style={styles.sectionTitle}>Language</Text>
-        <View style={styles.card}>
-          <View style={styles.mixHead}>
-            <Text style={styles.mixTitle}>Tutor's Sanskrit mix</Text>
-            <Text style={[styles.mixPct, { color: accent.slate.fg }]}>{Math.round(mix * 100)}%</Text>
-          </View>
-          <View
-            style={styles.track}
-            accessible
-            accessibilityRole="progressbar"
-            accessibilityLabel={`Tutor's Sanskrit mix ${Math.round(mix * 100)} percent, up to ${Math.round(ceiling * 100)} percent`}
-          >
-            <View style={[styles.fill, { width: `${Math.round(mix * 100)}%`, backgroundColor: accent.slate.from }]} />
-            <View style={[styles.marker, { left: `${Math.round(ceiling * 100)}%` }]} />
-          </View>
-          <Text style={styles.subLabel}>Up to {Math.round(ceiling * 100)}%</Text>
-
-          <View style={[styles.mixHead, { marginTop: space.md }]}>
-            <Text style={styles.mixTitle}>Devanagari in lessons</Text>
-            <Text style={[styles.mixPct, { color: accent.sage.fg }]}>{Math.round(script_ * 100)}%</Text>
-          </View>
-          <View style={styles.track}>
-            <View style={[styles.fill, { width: `${Math.round(script_ * 100)}%`, backgroundColor: accent.sage.from }]} />
-          </View>
-          <Pressable
-            onPress={bumpScript}
-            disabled={bumping || script_ >= 1}
-            style={[styles.more, (bumping || script_ >= 1) && { opacity: 0.5 }]}
-            accessibilityRole="button"
-            accessibilityLabel="Show 10 percent more Devanagari"
-            accessibilityState={{ disabled: bumping || script_ >= 1, busy: bumping }}
-          >
-            <Ionicons name="add" size={16} color={accent.sage.fg} />
-            <Text style={styles.moreText}>{bumping ? "Adding…" : "More Devanagari"}</Text>
-          </Pressable>
-        </View>
-
-        {/* mastery by topic */}
-        <Text style={styles.sectionTitle}>Topics</Text>
-        {topics.length === 0 ? (
-          <Text style={styles.muted}>No topics yet.</Text>
-        ) : (
-          <>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.rings}>
-              {topics.map((t, i) => {
-                const tone = accentAt(i);
-                return (
-                  <View key={t.kind} style={styles.ringItem} accessible accessibilityLabel={`${t.label}, ${Math.round(t.score * 100)} percent`}>
-                    <ProgressRing progress={t.score} size={64} stroke={7} tint={accent[tone].from}>
-                      <Text style={[styles.ringNum, { color: accent[tone].fg }]}>{Math.round(t.score * 100)}</Text>
-                    </ProgressRing>
-                    <Text style={styles.ringLabel} numberOfLines={1}>
-                      {t.label}
-                    </Text>
-                  </View>
-                );
-              })}
-            </ScrollView>
-            <View style={styles.card}>
-              {top.map((r, i) => (
-                <View key={r.id} style={styles.topRow}>
-                  <Text style={styles.topLabel} numberOfLines={1}>
-                    {r.label}
-                  </Text>
-                  <View style={styles.topTrack}>
-                    <View style={{ width: `${Math.round(r.score * 100)}%`, height: 8, borderRadius: 4, backgroundColor: accent[accentAt(i)].from }} />
-                  </View>
-                  <Text style={styles.topScore}>{Math.round(r.score * 100)}</Text>
-                </View>
-              ))}
             </View>
           </>
         )}
 
-        {/* achievements (U3-4): Sanskrit motifs, never generic trophies */}
-        <Text style={styles.sectionTitle}>Achievements</Text>
-        <View style={styles.achGrid}>
-          {ACHIEVEMENTS.map((a, i) => {
-            const isOut = !!unlocked[a.id];
-            const tone: AccentName = accentAt(i + 1);
-            const sub =
-              a.id === "sparsha-pancaka" && !isOut ? `${sparshaCount} / ${SPARSHA_25.length} sounds tried` : a.hint;
-            return (
-              <View
-                key={a.id}
-                style={[styles.achTile, isOut ? { backgroundColor: color.bg, borderColor: color.border, borderWidth: 1 } : styles.achLocked]}
-                accessible
-                accessibilityRole="text"
-                accessibilityLabel={`${a.sa}. ${a.en}. ${isOut ? "Earned" : `Locked. ${sub}`}`}
-              >
-                <Text style={[styles.achMotif, script("bold"), { color: isOut ? accent[tone].fg : color.inkFaint }]}>{a.motif}</Text>
-                <Text style={[styles.achSa, script("bold"), !isOut && { color: color.inkSoft }]}>{a.sa}</Text>
-                {/* Earned: what it means. Locked: how to earn it. One line each. */}
-                <Text style={isOut ? styles.achEn : styles.achHint}>{isOut ? a.en : sub}</Text>
-              </View>
-            );
-          })}
+        {/* the ledger */}
+        <View style={styles.ledger}>
+          <LedgerRow label="Day streak" value={stats ? `${stats.streak} ${stats.streak === 1 ? "day" : "days"}` : null} />
+          <LedgerRow label="Today" value={daily ? `${daily.xp} of ${goal} XP${daily.goal_met ? ", goal met" : ""}` : null} />
+          <LedgerRow label={`Days practised, last ${HISTORY_DAYS}`} value={stats ? String(stats.practised) : null} />
+          <LedgerRow
+            label="Tutor's Sanskrit mix"
+            value={`${Math.round(mix * 100)}%`}
+            sub={`of ${Math.round(ceiling * 100)}%`}
+            a11y={`Tutor's Sanskrit mix ${Math.round(mix * 100)} percent, up to ${Math.round(ceiling * 100)} percent`}
+          />
+          <View style={styles.ledgerRow}>
+            <Text style={styles.ledgerLabel}>Devanagari in lessons</Text>
+            <Text style={styles.ledgerValue}>{Math.round(script_ * 100)}%</Text>
+            <Pressable
+              onPress={bumpScript}
+              disabled={bumping || script_ >= 1}
+              style={({ pressed }) => [styles.more, (bumping || script_ >= 1) && styles.disabled, pressed && { backgroundColor: color.surfaceMuted }]}
+              accessibilityRole="button"
+              accessibilityLabel="Show 10 percent more Devanagari"
+              accessibilityState={{ disabled: bumping || script_ >= 1, busy: bumping }}
+            >
+              <Text style={styles.moreText}>{bumping ? "Adding…" : "More"}</Text>
+            </Pressable>
+          </View>
         </View>
+
+        {/* mastery by topic */}
+        <Text style={styles.sectionTitle} accessibilityRole="header">Topics</Text>
+        {topics.length === 0 ? (
+          <Text style={styles.muted}>No topics yet. Lessons fill these in.</Text>
+        ) : (
+          topics.map((t, i) => (
+            <View key={t.kind} style={styles.topicRow} accessible accessibilityLabel={`${t.label}, ${Math.round(t.score * 100)} percent`}>
+              <Text style={styles.topicLabel} numberOfLines={1}>{t.label}</Text>
+              <View style={styles.topicTrack}>
+                <View style={{ width: `${Math.round(t.score * 100)}%`, height: 4, backgroundColor: fill[fillAt(i)] }} />
+              </View>
+              <Text style={styles.topicPct}>{Math.round(t.score * 100)}</Text>
+            </View>
+          ))
+        )}
+
+        {/* achievements (U3-4): each one a trophy on the shelf */}
+        <Text style={styles.sectionTitle} accessibilityRole="header">
+          Achievements · {earned} of {ACHIEVEMENTS.length}
+        </Text>
+        {ACHIEVEMENTS.map((a, i) => {
+          const isOut = !!unlocked[a.id];
+          const line = isOut ? a.en
+            : a.id === "sparsha-pancaka" ? `${sparshaCount} / ${SPARSHA_25.length} sounds tried`
+              : a.hint;
+          return (
+            <View
+              key={a.id}
+              style={styles.achRow}
+              accessible
+              accessibilityRole="text"
+              accessibilityLabel={`${a.sa}. ${a.en}. ${isOut ? "Earned" : `Locked. ${line}`}`}
+            >
+              <Trophy earned={isOut} tone={fill[fillAt(i)]} />
+              <View style={styles.achText}>
+                <Text style={[styles.achSa, script("bold"), !isOut && { color: color.inkSoft }]}>{a.sa}</Text>
+                <Text style={styles.achLine}>{line}</Text>
+              </View>
+              <Text style={[styles.achState, { color: isOut ? color.okText : color.inkSoft }]}>{isOut ? "EARNED" : "LOCKED"}</Text>
+            </View>
+          );
+        })}
+        {!!nextUp && earned > 0 && <Text style={styles.note}>Next: {nextUp.sa}, {nextUp.hint.charAt(0).toLowerCase() + nextUp.hint.slice(1)}.</Text>}
       </ScrollView>
       <AchievementReveal queue={achQueue} onDone={dismissAch} />
     </SafeAreaView>
   );
 }
 
-function Tile({ tone, label, children }: { tone: AccentName; label: string; children: React.ReactNode }) {
+function LedgerRow({ label, value, sub, a11y }: { label: string; value: string | null; sub?: string; a11y?: string }) {
   return (
-    <View style={[styles.tile, { backgroundColor: color.bg, borderColor: color.border, borderWidth: 1 }]}>
-      <View style={styles.tileBody}>{children}</View>
-      <Text style={[styles.tileLabel, { color: accent[tone].fg }]}>{label}</Text>
+    <View style={styles.ledgerRow} accessible accessibilityLabel={a11y ?? (value ? `${label}, ${value}` : label)}>
+      <Text style={styles.ledgerLabel}>{label}</Text>
+      {value === null ? (
+        <Skeleton width={56} height={16} radius={0} />
+      ) : (
+        <Text style={styles.ledgerValue}>
+          {value}
+          {!!sub && <Text style={styles.ledgerSub}> {sub}</Text>}
+        </Text>
+      )}
+    </View>
+  );
+}
+
+/**
+ * A trophy in a square case. Earned: the cup in the achievement's colour with
+ * a gold rim. Locked: the outline only.
+ */
+function Trophy({ earned, tone }: { earned: boolean; tone: string }) {
+  const rim = earned ? color.gold : outline;
+  const body = earned ? tone : "none";
+  return (
+    <View style={[styles.trophyCase, { borderColor: earned ? color.gold : color.border }]}>
+      <Svg width={34} height={34} viewBox="0 0 24 24">
+        {/* handles */}
+        <Path d="M7 5H4.5v1.5A3.5 3.5 0 0 0 8 10M17 5h2.5v1.5A3.5 3.5 0 0 1 16 10" fill="none" stroke={rim} strokeWidth={1.4} />
+        {/* cup */}
+        <Path d="M7 3.5h10V8a5 5 0 0 1-10 0z" fill={body} stroke={rim} strokeWidth={1.4} strokeLinejoin="round" />
+        {/* stem and base */}
+        <Path d="M11 13h2v3.5h-2z" fill={earned ? rim : "none"} stroke={rim} strokeWidth={1.2} />
+        <Rect x={7.5} y={16.5} width={9} height={3.5} fill={earned ? fill.ink : "none"} stroke={rim} strokeWidth={1.2} />
+      </Svg>
     </View>
   );
 }
@@ -352,65 +361,76 @@ function Tile({ tone, label, children }: { tone: AccentName; label: string; chil
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
-  muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
-  // 120 at the bottom: the Ask bubble floats over the last tiles.
-  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
-  intro: { backgroundColor: fill.teal, padding: 24, marginBottom: 20, gap: 8 },
-  eyebrow: { fontFamily: "Nunito_800ExtraBold", fontSize: 10, letterSpacing: 1.2, color: onFill.gold },
-  introTitle: { fontFamily: "Nunito_800ExtraBold", fontSize: 28, lineHeight: 36, color: onFill.text },
-  introCopy: { fontFamily: "Nunito_600SemiBold", fontSize: 14, color: onFill.soft },
-  tiles: { flexDirection: "row", gap: space.sm },
-  tile: { flex: 1, borderRadius: radius.lg, paddingVertical: space.md, paddingHorizontal: space.sm, alignItems: "center", gap: space.xs },
-  tileBody: { minHeight: 52, alignItems: "center", justifyContent: "center" },
-  tileValueRow: { flexDirection: "row", alignItems: "center", gap: 4 },
-  tileValue: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 34, lineHeight: 42 },
-  tileLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, textAlign: "center" },
-  ringNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
-  goalLine: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, textAlign: "center", marginTop: space.sm },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 1.1, textTransform: "uppercase", color: color.inkSoft, marginTop: 32, marginBottom: space.sm },
-  card: { backgroundColor: color.bg, borderWidth: 1, borderColor: color.border, borderRadius: 16, padding: 20 },
-  // ── calendar ──
-  weekHead: { flexDirection: "row", marginBottom: 6 },
-  weekHeadText: { width: `${100 / 7}%`, textAlign: "center", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
-  grid: { flexDirection: "row", flexWrap: "wrap" },
-  cell: { width: `${100 / 7}%`, aspectRatio: 1, padding: 2 },
-  dot: { flex: 1, borderRadius: 999, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },
-  dotFuture: { backgroundColor: "transparent" },
-  dotOn: { backgroundColor: accent.sage.from },
-  dotGoal: { borderWidth: 3, borderColor: color.saffronBtn },
-  cellText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
-  cellTextOn: { color: color.white },
-  cellTextToday: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: color.ink, textDecorationLine: "underline" },
-  cellTextFuture: { opacity: 0.35 },
-  legend: { flexDirection: "row", gap: space.md, marginTop: space.sm },
+  muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, paddingVertical: space.xs },
+  // 120 at the bottom: the Ask bubble floats over the last rows.
+  body: { paddingHorizontal: 20, paddingTop: space.xs, paddingBottom: 120 },
+  // ── month ──
+  monthHead: { flexDirection: "row", alignItems: "center", minHeight: 48 },
+  monthStep: { width: 40, height: 40, borderWidth: 1, borderColor: color.border, alignItems: "center", justifyContent: "center" },
+  monthTitle: { flex: 1, textAlign: "center", fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 17, color: color.ink },
+  disabled: { opacity: 0.35 },
+  grid: { flexDirection: "row", flexWrap: "wrap", marginTop: space.xs, borderTopWidth: 1, borderLeftWidth: 1, borderColor: color.border },
+  weekHead: {
+    width: `${100 / 7}%`,
+    textAlign: "center",
+    paddingVertical: 6,
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 11,
+    color: color.inkSoft,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: color.border,
+  },
+  cell: {
+    width: `${100 / 7}%`,
+    height: 44,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 3,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: color.border,
+  },
+  today: { borderWidth: 2, borderColor: color.ink },
+  cellText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13, color: color.inkSoft },
+  cellTextOn: { color: onFill.text },
+  cellTextFuture: { opacity: 0.45 },
+  cellTextToday: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800" },
+  goalMark: { width: 14, height: 3 },
+  legend: { flexDirection: "row", gap: space.md, marginTop: 10 },
   legendItem: { flexDirection: "row", alignItems: "center", gap: 6 },
-  legendDot: { width: 12, height: 12, borderRadius: 6 },
-  legendGoal: { borderWidth: 2, borderColor: color.saffronBtn, backgroundColor: "transparent" },
+  legendSwatch: { width: 12, height: 12 },
   legendText: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft },
-  // ── language ──
-  mixHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.xs },
-  mixTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.ink },
-  mixPct: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base },
-  track: { height: 12, borderRadius: 6, backgroundColor: color.border, overflow: "visible", justifyContent: "center" },
-  fill: { position: "absolute", left: 0, top: 0, height: 12, borderRadius: 6 },
-  marker: { position: "absolute", top: -4, width: 3, height: 20, borderRadius: 1.5, backgroundColor: color.ink },
-  subLabel: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 6 },
-  more: { alignSelf: "flex-start", flexDirection: "row", alignItems: "center", gap: 4, minHeight: 44, paddingHorizontal: space.md, borderRadius: radius.md, backgroundColor: accent.sage.bg, marginTop: space.sm },
-  moreText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: accent.sage.fg },
+  // ── ledger ──
+  ledger: { marginTop: space.lg, borderTopWidth: 1, borderTopColor: color.border },
+  ledgerRow: { flexDirection: "row", alignItems: "center", gap: 10, minHeight: 44, borderBottomWidth: 1, borderBottomColor: color.border },
+  ledgerLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 15, color: color.ink },
+  ledgerValue: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 15, color: color.ink },
+  ledgerSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12, color: color.inkSoft },
+  more: { height: 30, paddingHorizontal: 10, borderWidth: 1, borderColor: color.ink, justifyContent: "center" },
+  moreText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12, color: color.ink },
+  sectionTitle: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 11,
+    letterSpacing: 1.1,
+    textTransform: "uppercase",
+    color: color.inkSoft,
+    marginTop: 28,
+    marginBottom: 4,
+  },
   // ── topics ──
-  rings: { gap: space.md, paddingVertical: space.xs, paddingRight: space.lg },
-  ringItem: { alignItems: "center", width: 72 },
-  ringLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 4 },
-  topRow: { flexDirection: "row", alignItems: "center", marginVertical: 6 },
-  topLabel: { width: "38%", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
-  topTrack: { flex: 1, height: 8, borderRadius: 4, backgroundColor: color.border, overflow: "hidden", marginHorizontal: space.sm },
-  topScore: { width: 28, textAlign: "right", fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.inkSoft },
+  topicRow: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 40, borderBottomWidth: 1, borderBottomColor: color.border },
+  topicLabel: { width: 96, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
+  topicTrack: { flex: 1, height: 4, backgroundColor: color.border },
+  topicPct: { width: 32, textAlign: "right", fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 13, color: color.inkSoft },
   // ── achievements ──
-  achGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
-  achTile: { flexGrow: 1, flexBasis: "46%", borderRadius: radius.lg, padding: space.md, alignItems: "center" },
-  achLocked: { backgroundColor: color.surfaceMuted },
-  achMotif: { fontSize: font.sizes.xl, lineHeight: 42 },
-  achSa: { fontSize: font.sizes.base, color: color.ink, marginTop: 4, textAlign: "center" },
-  achEn: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 2, textAlign: "center" },
-  achHint: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkFaint, marginTop: 4, textAlign: "center" },
+  achRow: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 68, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: color.border },
+  trophyCase: { width: 52, height: 52, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+  achText: { flex: 1 },
+  achSa: { fontSize: 16, lineHeight: 22, color: color.ink },
+  achLine: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12.5, lineHeight: 18, color: color.inkSoft },
+  achState: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 11, letterSpacing: 0.6 },
+  note: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12.5, lineHeight: 19, color: color.inkSoft, marginTop: space.xs },
 });

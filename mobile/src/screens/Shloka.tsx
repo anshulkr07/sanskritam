@@ -29,7 +29,7 @@ import { useAchievementReveal } from "../hooks/useAchievementReveal";
 import AchievementReveal from "../components/AchievementReveal";
 import FetchError from "../components/FetchError";
 import ReportButton from "../components/ReportButton";
-import { color, font, script, shadow, space } from "../theme";
+import { color, font, outline, script, shadow, space } from "../theme";
 import { duration, easing as easingCfg } from "../motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EmptyState } from "../components/ui";
@@ -399,7 +399,7 @@ const styles = StyleSheet.create({
   lineRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: space.md },
   topBtns: { flexDirection: "row", alignItems: "center", gap: 8 },
-  learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: "#D9C9AE", borderRadius: 0 },
+  learnBtn: { minHeight: 44, paddingHorizontal: 16, justifyContent: "center", borderWidth: 1.5, borderColor: outline, borderRadius: 0 },
   learnText: { fontWeight: "700", color: color.ink },
   source: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.saffron, textTransform: "uppercase", letterSpacing: 0.5 },
   playBtn: { width: 48, height: 48, borderRadius: 0, backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },

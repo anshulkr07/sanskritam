@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useSyncExternalStore } from 'react';
+import { isDarkScheme } from '../theme';
+import { setSchemePref } from '../services/colorScheme';
 export const light = {
  paper:'#F8F2E7', surface:'#FFFCF6', line:'#E5D9C6', lineStrong:'#D9CCB6',
  ink:'#2A2019', ink2:'#5F5245', ink3:'#75665A', action:'#A63D17', actionText:'#A63D17',
@@ -12,12 +12,12 @@ export const dark: typeof light = {
 };
 export type StoryTheme = typeof light;
 export type Appearance = 'light' | 'dark';
-let appearance: Appearance = 'light';
-const listeners = new Set<() => void>();
-let loaded: Promise<void> | undefined;
-export function loadAppearance() { return loaded ??= AsyncStorage.getItem('story.appearance.v1').then(value=> { appearance=value==='dark'?'dark':'light'; listeners.forEach(fn=>fn()); }).catch(()=>{}); }
-export async function setStoryAppearance(value: Appearance) { await loadAppearance(); await AsyncStorage.setItem('story.appearance.v1',value); appearance=value; listeners.forEach(fn=>fn()); }
+// The course follows the app's own Light / Dark (Settings > Appearance), read
+// once at boot; a change there restarts the JS. Its old separate switch
+// (story.appearance.v1) is retired so the two can never disagree.
+const appearance = (): Appearance => (isDarkScheme() ? 'dark' : 'light');
+export function loadAppearance() { return Promise.resolve(); }
+export async function setStoryAppearance(value: Appearance) { await setSchemePref(value); }
 export function useStoryTheme(): StoryTheme {
- useEffect(()=> { void loadAppearance(); },[]);
- return useSyncExternalStore(fn=> {listeners.add(fn); return ()=>{listeners.delete(fn);};},()=>appearance==='dark'?dark:light,()=>light);
+ return appearance()==='dark'?dark:light;
 }

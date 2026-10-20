@@ -392,7 +392,7 @@ export function PagedBookIndex({
               }}
               accessibilityRole="button"
               accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}${mark?.read ? ". Already read." : ""}${mark?.bookmarked ? ". Bookmarked." : ""}`}
-              style={[styles.verse, { marginLeft: (many ? 48 : 0) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: "#EAF0E8", borderRadius: 8 }]}
+              style={[styles.verse, { marginLeft: (many ? 48 : 0) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: T.doneBg, borderRadius: 8 }]}
             >
               <Text style={[styles.verseNum, here && { color: T.action }]}>{num}</Text>
               <Text style={[sa(16), styles.verseLine]} numberOfLines={1}>

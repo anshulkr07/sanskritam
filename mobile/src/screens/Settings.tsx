@@ -1,21 +1,23 @@
-import StorySettings from "../story/Settings";
 import ProfilePhotoEditor from "../components/ProfilePhotoEditor";
-import ProfileImage from "../components/ProfileImage";
 import Modal from "../components/AudioModal";
-// Settings — its own drawer screen (U8-1). Account, sound and haptics, reduced
-// motion, text size, about. No mascot, no streak, no gamification: it is where
-// things go to be configured, not celebrated.
+// Settings — its own drawer screen (U8-1). Account, appearance, Learn, sound
+// and motion, calendar, help. No mascot, no streak, no gamification: it is
+// where things go to be configured, not celebrated.
+//
+// Owner's pick (2026-10-20, option S1): one plain list on the page, small
+// square controls inline, hairline rules between rows, no cards and no
+// rounded badges. Appearance opens its own page of square radio rows
+// (option S3's Appearance page): Theme, Text size, App language.
 //
 // The sound, haptics and reduced-motion preferences persist to AsyncStorage so
 // the screen is honest: a toggle here changes real behaviour (services/prefs).
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 
@@ -29,19 +31,33 @@ import {
   setHapticsEnabled,
   setReducedMotionOverride,
 } from "../services/prefs";
-import { accent, color, fill, font, onFill, radius, shadow, space, type AccentName } from "../theme";
+import { getSchemePref, setSchemePref, type SchemePref } from "../services/colorScheme";
+import { color, font, outline, space } from "../theme";
 import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
-import { firstName } from "../utils/name";
 import PlaceChooser from "../components/PlaceChooser";
 import { getPlace, type Place } from "../services/place";
 import { getLang, setLang, t } from "../i18n";
 import { ensurePermission, isRemindUnavailable } from "../parva/reminders";
 import { applyAppUpdate, checkForAppUpdate } from "../services/ota";
 import { useFocusEffect } from "@react-navigation/native";
+import { useStoryFlag, setStoryFlag } from "../story/flags";
+import { usePanini, setPanini } from "../story/preferences";
 
 const SOUND_KEY = "shabd.pref.sound";
 const HAPTICS_KEY = "shabd.pref.haptics";
 const MOTION_KEY = "shabd.pref.reducedMotion";
+
+const SCHEMES: { id: SchemePref; label: string }[] = [
+  { id: "light", label: "Light" },
+  { id: "dark", label: "Dark" },
+  { id: "system", label: "Match phone" },
+];
+const SIZES: { id: TextSize; label: string; size: number }[] = [
+  { id: "S", label: "Small", size: 13 },
+  { id: "M", label: "Medium", size: 15 },
+  { id: "L", label: "Large", size: 17 },
+  { id: "XL", label: "Extra large", size: 19 },
+];
 
 function pref(key: string): Promise<boolean> {
   return AsyncStorage.getItem(key).then((v) => v !== "false");
@@ -68,18 +84,22 @@ async function openExternal(url: string): Promise<void> {
 }
 
 export default function SettingsScreen() {
-  const { learner, logout, deleteAccount, displayName } = useAuth();
+  const { logout, deleteAccount } = useAuth();
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
   const { textSize, setTextSize } = useTypeScale();
+  const storyOn = useStoryFlag();
+  const panini = usePanini();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [place, setPlaceState] = useState<Place | null>(null);
   const [placeOpen, setPlaceOpen] = useState(false);
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
   const [checkingUpdate, setCheckingUpdate] = useState(false);
   const [updateStatus, setUpdateStatus] = useState<string | null>(null);
   const [lang, setLangState] = useState<"en" | "hi">(getLang());
+  const [scheme, setScheme] = useState<SchemePref>(getSchemePref());
   const [remindOff, setRemindOff] = useState(false);
 
   useEffect(() => {
@@ -98,8 +118,6 @@ export default function SettingsScreen() {
       return () => {};
     }, []),
   );
-
-  const name = firstName(learner?.display_name || displayName);
 
   // Google Play requires account deletion inside the app. It cannot be
   // undone, so it asks first; on success the auth store resets to Login.
@@ -126,7 +144,6 @@ export default function SettingsScreen() {
   const openLicences = () => navigation.navigate("Licences");
   const openPrivacy = () => navigation.navigate("Privacy");
 
-  // Calibration capture: dev builds only — the recitation-rubric study (§8).
   // Calibration lives on the root stack (dev builds only, §8).
   const openCalibration = () =>
     (navigation as never as { navigate: (r: string) => void }).navigate("Calibration");
@@ -152,206 +169,160 @@ export default function SettingsScreen() {
     });
   };
 
+  const chooseScheme = (next: SchemePref) => {
+    setScheme(next);
+    // Restarts into the new palette when what is on screen changes.
+    void setSchemePref(next);
+  };
+
+  const appearanceSummary = [
+    SCHEMES.find((s) => s.id === scheme)?.label,
+    SIZES.find((s) => s.id === textSize)?.label,
+    lang === "en" ? "English" : "हिन्दी",
+  ].filter(Boolean).join(" · ");
+
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-        <View style={styles.intro}><Ionicons name="options-outline" size={28} color={onFill.gold} /><Text style={styles.introTitle}>Your space</Text><Text style={styles.introCopy}>Make Sanskritam feel right for you.</Text></View>
-        <StorySettings />
-        <Section title="Account">
-          <View style={styles.who}>
-            <View style={[styles.avatar, { overflow: "hidden" }]}>
-              {name ? (
-                <Text style={styles.avatarLetter}>{name.charAt(0).toUpperCase()}</Text>
-              ) : (
-                <Ionicons name="person" size={22} color={color.white} />
-              )}
-              <ProfileImage uri={learner?.avatar_url} />
-            </View>
-            <Text style={styles.whoName} numberOfLines={1}>
-              {name || "Friend"}
-            </Text>
+        <ProfilePhotoEditor />
+
+        <Heading>Appearance</Heading>
+        <LinkRow label="Theme, text size, language" value={appearanceSummary} onPress={() => setAppearanceOpen(true)} />
+
+        <Heading>Learn</Heading>
+        <ToggleRow label="New Learn course (preview)" value={storyOn} onChange={(v) => void setStoryFlag(v)} />
+        <ToggleRow label="Pāṇini depth" value={panini} onChange={(v) => void setPanini(v)} />
+
+        <Heading>Sound and motion</Heading>
+        <ToggleRow
+          label="Sound effects"
+          value={sound}
+          onChange={(v) => {
+            setSound(v);
+            setSoundEffectsEnabled(v); // U6-2: immediate, respects the toggle
+            void setPref(SOUND_KEY, v);
+          }}
+        />
+        <ToggleRow
+          label="Haptics"
+          value={hapticsOn}
+          onChange={(v) => {
+            setHapticsOn(v);
+            setHapticsEnabled(v);
+            void setPref(HAPTICS_KEY, v);
+          }}
+        />
+        <ToggleRow
+          label="Reduce motion"
+          value={reduced}
+          onChange={(v) => {
+            setReduced(v);
+            setReducedMotionOverride(v);
+            void setPref(MOTION_KEY, v);
+          }}
+        />
+
+        <Heading>Calendar</Heading>
+        <LinkRow label="Place" value={place ? place.label : "Not set"} onPress={() => setPlaceOpen(true)} />
+        {!remindOff && (
+          <LinkRow label={t("parva.remindersRow")} onPress={() => void ensurePermission().then((ok) => setRemindOff(!ok))} />
+        )}
+        <Text style={styles.note}>Used only for tithi and festival dates. Approximate, kept on this phone.</Text>
+
+        <Heading>Help and about</Heading>
+        <LinkRow label="Contact support and safety" onPress={() => void openExternal("mailto:sanskritam@vedicvalor.com")} />
+        <LinkRow label="Licences and credits" onPress={openLicences} />
+        <LinkRow label="Privacy policy" onPress={openPrivacy} />
+        {/* P24: YouTube API Services Developer Policies III.A.1: clients must
+            display a link to YouTube's Terms and bind their users to them.
+            Lesson videos play in YouTube's own player. */}
+        <LinkRow label="YouTube Terms of Service" onPress={() => void openExternal("https://www.youtube.com/t/terms")} />
+        <LinkRow
+          label={checkingUpdate ? "Checking for updates…" : "Check for updates"}
+          value={updateStatus ?? undefined}
+          disabled={checkingUpdate}
+          chevron={false}
+          onPress={checkUpdate}
+        />
+        {__DEV__ && <LinkRow label="Calibration capture (dev)" onPress={openCalibration} />}
+        <Text style={styles.note}>
+          Sanskritam is published by Vedic Valor. AI replies can be incorrect: use the flag beside an answer to report harmful or
+          inaccurate content. Videos play on YouTube under YouTube's Terms of Service.
+        </Text>
+
+        <Heading>Account</Heading>
+        <LinkRow label="Sign out" chevron={false} onPress={() => void logout()} />
+        <LinkRow
+          label={deleting ? "Deleting…" : "Delete account"}
+          danger
+          chevron={false}
+          disabled={deleting}
+          onPress={confirmDelete}
+        />
+      </ScrollView>
+
+      {/* Appearance: option S3's page of square radio rows. */}
+      <Modal visible={appearanceOpen} animationType="slide" onRequestClose={() => setAppearanceOpen(false)}>
+        <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+          <View style={styles.pageHead}>
+            <Pressable
+              onPress={() => setAppearanceOpen(false)}
+              accessibilityRole="button"
+              accessibilityLabel="Back to settings"
+              style={styles.pageBack}
+            >
+              <Ionicons name="arrow-back" size={22} color={color.ink} />
+            </Pressable>
+            <Text style={styles.pageTitle}>Appearance</Text>
           </View>
-          <ProfilePhotoEditor />
-          <LinkRow icon="log-out-outline" tone="rose" label="Sign out" onPress={() => void logout()} />
-          <LinkRow
-            icon="trash-outline"
-            tone="rose"
-            label={deleting ? "Deleting…" : "Delete account"}
-            danger
-            disabled={deleting}
-            onPress={confirmDelete}
-          />
-        </Section>
+          <ScrollView contentContainerStyle={styles.pageBody}>
+            <Heading first>Theme</Heading>
+            {SCHEMES.map((s) => (
+              <RadioRow key={s.id} label={s.label} on={scheme === s.id} onPress={() => chooseScheme(s.id)} />
+            ))}
+            <Text style={styles.note}>The app restarts to change its colours. Match phone follows your phone's setting.</Text>
 
-        <Section title="Help and safety">
-          <Text style={styles.note}>Sanskritam is published by Vedic Valor. AI replies can be incorrect. Use the flag beside an answer to report harmful or inaccurate content. Our safety reviewer checks reports daily.</Text>
-          <LinkRow icon="mail-outline" tone="sage" label="Contact support and safety" onPress={() => void openExternal("mailto:sanskritam@vedicvalor.com")} />
-        </Section>
-        <Section title="Sound and haptics">
-          <ToggleRow
-            icon="volume-high"
-            tone="teal"
-            label="Sound effects"
-            value={sound}
-            onChange={(v) => {
-              setSound(v);
-              setSoundEffectsEnabled(v); // U6-2: immediate, respects the toggle
-              void setPref(SOUND_KEY, v);
-            }}
-          />
-          <ToggleRow
-            icon="phone-portrait"
-            tone="sage"
-            label="Haptics"
-            value={hapticsOn}
-            onChange={(v) => {
-              setHapticsOn(v);
-              setHapticsEnabled(v);
-              void setPref(HAPTICS_KEY, v);
-            }}
-          />
-        </Section>
+            <Heading>Text size</Heading>
+            {SIZES.map((s) => (
+              <RadioRow
+                key={s.id}
+                label={s.label}
+                size={s.size}
+                sample="नमस्ते"
+                on={textSize === s.id}
+                onPress={() => setTextSize(s.id)}
+              />
+            ))}
 
-        <Section title="Motion">
-          <ToggleRow
-            icon="accessibility"
-            tone="slate"
-            label="Reduce motion"
-            value={reduced}
-            onChange={(v) => {
-              setReduced(v);
-              setReducedMotionOverride(v);
-              void setPref(MOTION_KEY, v);
-            }}
-          />
-        </Section>
-
-        {/* Text size (U5-2): scales the app's own type ramp independently of
-            the OS; XL targets elder mode. */}
-        <Section title="Text size">
-          <View style={styles.sizerRow}>
-            {(["S", "M", "L", "XL"] as const).map((s) => {
-              const on = textSize === s;
-              return (
-                <Pressable
-                  key={s}
-                  onPress={() => setTextSize(s as TextSize)}
-                  style={[styles.sizer, on && styles.sizerOn]}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Text size ${s}`}
-                  accessibilityState={{ selected: on }}
-                >
-                  <Text style={[styles.sizerText, on && styles.sizerTextOn]}>{s}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </Section>
-
-        <Section title={t("parva.language")}>
-          <View style={styles.row}>
-            <Text style={styles.rowLabel}>{t("parva.language")}</Text>
+            <Heading>{t("parva.language")}</Heading>
             {(["en", "hi"] as const).map((l) => (
-              <Pressable
+              <RadioRow
                 key={l}
+                label={l === "en" ? "English" : "हिन्दी"}
+                on={lang === l}
                 onPress={() => {
                   setLang(l);
                   setLangState(l);
                 }}
-                style={[styles.sizer, lang === l && styles.sizerOn]}
-                accessibilityRole="button"
-                accessibilityLabel={l === "en" ? "English" : "हिन्दी"}
-                accessibilityState={{ selected: lang === l }}
-              >
-                <Text style={[styles.sizerText, lang === l && styles.sizerTextOn]}>{l === "en" ? "English" : "हिन्दी"}</Text>
-              </Pressable>
+              />
             ))}
-          </View>
-          <Text style={styles.note}>{t("parva.languageNote")}</Text>
-          {!remindOff && (
-            <Pressable
-              onPress={() => void ensurePermission().then((ok) => setRemindOff(!ok))}
-              style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
-              accessibilityRole="button"
-              accessibilityLabel={t("parva.remindersRow")}
-            >
-              <Text style={styles.rowLabel}>{t("parva.remindersRow")}</Text>
-              <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
-            </Pressable>
-          )}
-        </Section>
-
-        <Section title="Place">
-          <Pressable
-            onPress={() => setPlaceOpen(true)}
-            style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
-            accessibilityRole="button"
-            accessibilityLabel={`Place. ${place ? place.label : "Not set"}`}
-          >
-            <View style={[styles.badge, { backgroundColor: accent.teal.bg }]}>
-              <Ionicons name="location-outline" size={18} color={accent.teal.fg} />
-            </View>
-            <Text style={styles.rowLabel}>Place</Text>
-            <Text style={styles.placeValue} numberOfLines={1}>
-              {place ? place.label : "Not set"}
-            </Text>
-            <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />
-          </Pressable>
-          <Text style={styles.note}>Used only for tithi and festival dates. Approximate, kept on this phone.</Text>
-        </Section>
-
-        <Section title="About">
-          <LinkRow icon="document-text-outline" tone="gold" label="Licences and credits" chevron onPress={openLicences} />
-          <LinkRow
-            icon="cloud-download-outline"
-            tone="slate"
-            label={checkingUpdate ? "Checking for updates…" : "Check for updates"}
-            disabled={checkingUpdate}
-            onPress={checkUpdate}
-          />
-          {!!updateStatus && <Text style={styles.note}>{updateStatus}</Text>}
-          <LinkRow
-            icon="shield-checkmark-outline"
-            tone="teal"
-            label="Privacy policy"
-            chevron
-            onPress={openPrivacy}
-          />
-          {__DEV__ && (
-            <LinkRow
-              icon="mic-outline"
-              tone="sage"
-              label="Calibration capture (dev)"
-              chevron
-              onPress={openCalibration}
-            />
-          )}
-          {/* P24: YouTube API Services Developer Policies III.A.1: clients must
-              display a link to YouTube's Terms and bind their users to them.
-              Lesson videos play in YouTube's own player. */}
-          <LinkRow
-            icon="logo-youtube"
-            tone="rose"
-            label="YouTube Terms of Service"
-            chevron
-            onPress={() => void openExternal("https://www.youtube.com/t/terms")}
-          />
-          <Text style={styles.note}>Videos play on YouTube under YouTube's Terms of Service.</Text>
-        </Section>
-      </ScrollView>
+            <Text style={styles.note}>{t("parva.languageNote")}</Text>
+          </ScrollView>
+        </SafeAreaView>
+      </Modal>
 
       <Modal visible={placeOpen} animationType="slide" onRequestClose={() => setPlaceOpen(false)}>
         <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
-          <View style={styles.placeHead}>
+          <View style={styles.pageHead}>
             <Pressable
               onPress={() => setPlaceOpen(false)}
               accessibilityRole="button"
               accessibilityLabel="Close place chooser"
-              style={styles.placeClose}
+              style={styles.pageBack}
             >
               <Ionicons name="close" size={24} color={color.ink} />
             </Pressable>
-            <Text style={styles.placeTitle}>Choose your place</Text>
+            <Text style={styles.pageTitle}>Choose your place</Text>
           </View>
           <View style={styles.placeBody}>
             <PlaceChooser
@@ -369,65 +340,42 @@ export default function SettingsScreen() {
 
 // ── Pieces ────────────────────────────────────────────────────────────
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Heading({ children, first = false }: { children: React.ReactNode; first?: boolean }) {
   return (
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle} accessibilityRole="header">
-        {title}
-      </Text>
-      <View style={styles.card}>{children}</View>
-    </View>
+    <Text style={[styles.heading, first && { marginTop: space.xs }]} accessibilityRole="header">
+      {children}
+    </Text>
   );
 }
 
-function IconBadge({ icon, tone }: { icon: IoniconsIconName; tone: AccentName }) {
+/** A square switch: a 40×22 block with a square knob. */
+function ToggleRow({ label, value, onChange }: { label: string; value: boolean; onChange: (v: boolean) => void }) {
   return (
-    <View style={[styles.badge, { backgroundColor: accent[tone].bg }]}>
-      <Ionicons name={icon} size={18} color={accent[tone].fg} />
-    </View>
-  );
-}
-
-function ToggleRow({
-  icon,
-  tone,
-  label,
-  value,
-  onChange,
-}: {
-  icon: IoniconsIconName;
-  tone: AccentName;
-  label: string;
-  value: boolean;
-  onChange: (v: boolean) => void;
-}) {
-  return (
-    <View style={styles.row}>
-      <IconBadge icon={icon} tone={tone} />
+    <Pressable
+      onPress={() => onChange(!value)}
+      style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+      accessibilityRole="switch"
+      accessibilityLabel={label}
+      accessibilityState={{ checked: value }}
+    >
       <Text style={styles.rowLabel}>{label}</Text>
-      <Switch
-        value={value}
-        onValueChange={onChange}
-        trackColor={{ true: color.saffronBtn, false: color.border }}
-        thumbColor={color.white}
-        accessibilityLabel={label}
-      />
-    </View>
+      <View style={[styles.switch, { backgroundColor: value ? color.saffronBtn : outline, alignItems: value ? "flex-end" : "flex-start" }]}>
+        <View style={styles.knob} />
+      </View>
+    </Pressable>
   );
 }
 
 function LinkRow({
-  icon,
-  tone,
   label,
+  value,
   onPress,
-  chevron = false,
+  chevron = true,
   danger = false,
   disabled = false,
 }: {
-  icon: IoniconsIconName;
-  tone: AccentName;
   label: string;
+  value?: string;
   onPress: () => void;
   chevron?: boolean;
   danger?: boolean;
@@ -437,43 +385,78 @@ function LinkRow({
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={({ pressed }) => [styles.row, pressed && { opacity: 0.85 }]}
+      style={({ pressed }) => [styles.row, pressed && styles.pressed]}
       accessibilityRole="button"
-      accessibilityLabel={label}
+      accessibilityLabel={value ? `${label}. ${value}` : label}
       accessibilityState={{ disabled }}
     >
-      <IconBadge icon={icon} tone={tone} />
       <Text style={[styles.rowLabel, danger && { color: color.badText }]}>{label}</Text>
-      {chevron && <Ionicons name="chevron-forward" size={18} color={color.inkFaint} />}
+      {!!value && (
+        <Text style={styles.rowValue} numberOfLines={1}>
+          {value}
+        </Text>
+      )}
+      {chevron && <Ionicons name="chevron-forward" size={16} color={color.inkSoft} />}
+    </Pressable>
+  );
+}
+
+/** A square radio: a 16dp outline, filled with an 8dp square when on. */
+function RadioRow({
+  label,
+  on,
+  onPress,
+  size,
+  sample,
+}: {
+  label: string;
+  on: boolean;
+  onPress: () => void;
+  size?: number;
+  sample?: string;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.radioRow, pressed && styles.pressed]}
+      accessibilityRole="radio"
+      accessibilityLabel={label}
+      accessibilityState={{ checked: on }}
+    >
+      <View style={[styles.radio, { borderColor: on ? color.ink : color.inkSoft }]}>{on && <View style={styles.radioDot} />}</View>
+      <Text style={[styles.rowLabel, size ? { fontSize: size } : null]}>{label}</Text>
+      {!!sample && <Text style={[styles.sample, size ? { fontSize: size + 3, lineHeight: Math.round((size + 3) * 1.5) } : null]}>{sample}</Text>}
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
-  intro: { backgroundColor: fill.ink, padding: 24, marginBottom: 28, gap: 8 },
-  introTitle: { color: onFill.text, fontFamily: "Nunito_800ExtraBold", fontSize: 28 },
-  introCopy: { color: onFill.soft, fontFamily: "Nunito_600SemiBold", fontSize: 14, lineHeight: 22 },
-  section: { marginBottom: 28 },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 1.2, textTransform: "uppercase", color: color.inkSoft, marginBottom: space.sm },
-  card: { backgroundColor: color.bg, borderWidth: 1, borderColor: color.border, borderRadius: 16, paddingHorizontal: space.md, paddingVertical: space.xs },
-  who: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: space.sm },
-  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
-  avatarLetter: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
-  whoName: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
-  row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 64 },
-  rowLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
-  placeValue: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, maxWidth: 140, textAlign: "right" },
-  placeHead: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.lg, paddingVertical: space.sm },
-  placeClose: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
-  placeTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  body: { paddingHorizontal: 20, paddingTop: space.xs, paddingBottom: 120 },
+  heading: {
+    fontFamily: "Nunito_800ExtraBold",
+    fontWeight: "800",
+    fontSize: 11,
+    letterSpacing: 1.1,
+    textTransform: "uppercase",
+    color: color.inkSoft,
+    marginTop: space.lg,
+    marginBottom: 4,
+  },
+  row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 52, borderBottomWidth: 1, borderBottomColor: color.border },
+  rowLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 15, color: color.ink },
+  rowValue: { maxWidth: "55%", fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 13, color: color.inkSoft, textAlign: "right" },
+  pressed: { backgroundColor: color.surfaceMuted },
+  switch: { width: 40, height: 22, padding: 2, justifyContent: "center" },
+  knob: { width: 18, height: 18, backgroundColor: color.white },
+  radioRow: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 48, borderBottomWidth: 1, borderBottomColor: color.border },
+  radio: { width: 16, height: 16, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
+  radioDot: { width: 8, height: 8, backgroundColor: color.ink },
+  sample: { fontFamily: "Baloo2_500Medium", fontSize: font.sizes.md, color: color.inkSoft },
+  note: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12.5, lineHeight: 19, color: color.inkSoft, paddingTop: space.xs },
+  pageHead: { flexDirection: "row", alignItems: "center", gap: space.xs, height: 52, paddingHorizontal: space.xs },
+  pageBack: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
+  pageTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
+  pageBody: { paddingHorizontal: 20, paddingBottom: 40 },
   placeBody: { flex: 1, paddingHorizontal: space.lg },
-  badge: { width: 36, height: 36, borderRadius: 12, alignItems: "center", justifyContent: "center" },
-  sizerRow: { flexDirection: "row", gap: space.xs, paddingVertical: space.sm },
-  sizer: { flex: 1, minHeight: 48, borderRadius: radius.md, borderWidth: 1, borderColor: color.border, backgroundColor: color.bg, alignItems: "center", justifyContent: "center" },
-  sizerOn: { backgroundColor: fill.ink, borderColor: fill.ink },
-  sizerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.inkSoft },
-  sizerTextOn: { color: color.white },
-  note: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: 13, lineHeight: 21, color: color.inkSoft, paddingTop: 4, paddingBottom: space.sm },
 });

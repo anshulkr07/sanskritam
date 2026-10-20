@@ -31,24 +31,26 @@ export default function ProfilePhotoEditor() {
         setError(friendly(e, "Could not verify sign-in. Try again."));
     } finally { setBusy(false); }
   };
+  // Settings' first row (option S1): a square picture, the name, and the
+  // picture action as a text link. Sign-in links and notes sit under it.
+  const verified = !learner?.community_suspended && !!learner?.community_verified;
   return <View style={styles.wrap}>
     <View style={styles.row}>
       <View style={styles.avatar}>
         <Text style={styles.initial}>{learner?.display_name?.charAt(0).toUpperCase() || "?"}</Text>
         <ProfileImage uri={learner?.avatar_url} />
       </View>
-      <View style={{ flex: 1, gap: 10 }}>
-        <Pressable disabled={busy} onPress={() => void change()} accessibilityRole="button" style={styles.button}>
-          <Text style={styles.buttonText}>{busy ? "Checking picture…" : learner?.avatar_url ? "Change profile picture" : "Upload profile picture"}</Text>
-        </Pressable>
-        {!!learner?.avatar_url && <Pressable disabled={busy} onPress={() => void change(true)} accessibilityRole="button" style={styles.remove}>
-          <Text style={styles.removeText}>Remove picture</Text>
-        </Pressable>}
-      </View>
+      <Text style={styles.name} numberOfLines={1}>{learner?.display_name || "Friend"}</Text>
+      {verified && <Pressable disabled={busy} onPress={() => void change()} accessibilityRole="button" style={styles.link}>
+        <Text style={styles.linkText}>{busy ? "Checking…" : learner?.avatar_url ? "Change photo" : "Add photo"}</Text>
+      </Pressable>}
     </View>
-    <Text style={styles.hint}>Your optional account picture is checked for harmful content before it is saved. Avoid contact details and identity documents.</Text>
+    {verified && !!learner?.avatar_url && <Pressable disabled={busy} onPress={() => void change(true)} accessibilityRole="button" style={styles.remove}>
+      <Text style={styles.removeText}>Remove picture</Text>
+    </Pressable>}
+    {verified && <Text style={styles.hint}>Pictures are checked for harmful content before they are saved. Avoid contact details and identity documents.</Text>}
     {learner?.community_suspended ? <Text style={styles.error}>Profile changes are restricted. Contact support for a review.</Text> : !learner?.community_verified ?
-      <View style={{ gap: 10 }}>
+      <View style={{ gap: 8 }}>
         <Text style={styles.hint}>Sign in to add an account picture. Linking a new account keeps your current learning profile.</Text>
         {Platform.OS !== "web" ? <Pressable disabled={busy} style={styles.button} onPress={() => void link("google")} accessibilityRole="button">
           <Text style={styles.buttonText}>Continue with Google</Text>
@@ -62,12 +64,16 @@ export default function ProfilePhotoEditor() {
 }
 
 const styles = StyleSheet.create({
-  wrap: { gap: 12, paddingVertical: 12 }, row: { flexDirection: "row", gap: 16, alignItems: "center" },
-  avatar: { width: 64, height: 64, borderRadius: 32, overflow: "hidden", backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
-  initial: { color: color.white, fontSize: 24, fontFamily: "Nunito_700Bold" },
-  button: { backgroundColor: color.saffronBtn, paddingHorizontal: 14, minHeight: 44, justifyContent: "center", borderRadius: 10 },
-  buttonText: { color: color.white, fontFamily: "Nunito_700Bold", fontSize: 14 },
-  remove: { minHeight: 44, justifyContent: "center" }, removeText: { color: color.inkSoft, fontFamily: "Nunito_700Bold", fontSize: 14 },
-  hint: { color: color.inkSoft, fontFamily: "Nunito_400Regular", fontSize: 13, lineHeight: 19 },
+  wrap: { gap: 8, paddingTop: 8, paddingBottom: 16, borderBottomWidth: 1, borderBottomColor: color.border },
+  row: { flexDirection: "row", gap: 12, alignItems: "center" },
+  avatar: { width: 40, height: 40, overflow: "hidden", backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
+  initial: { color: color.white, fontSize: 18, fontFamily: "Nunito_800ExtraBold" },
+  name: { flex: 1, color: color.ink, fontSize: 16, fontFamily: "Nunito_800ExtraBold", fontWeight: "800" },
+  link: { minHeight: 44, justifyContent: "center" },
+  linkText: { color: color.saffronText, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13 },
+  button: { alignSelf: "flex-start", borderWidth: 1, borderColor: color.ink, paddingHorizontal: 14, height: 40, justifyContent: "center" },
+  buttonText: { color: color.ink, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 14 },
+  remove: { alignSelf: "flex-start", minHeight: 36, justifyContent: "center" }, removeText: { color: color.inkSoft, fontFamily: "Nunito_700Bold", fontSize: 13 },
+  hint: { color: color.inkSoft, fontFamily: "Nunito_600SemiBold", fontSize: 12.5, lineHeight: 19 },
   error: { color: color.badText, fontFamily: "Nunito_700Bold", fontSize: 13, lineHeight: 19 },
 });
