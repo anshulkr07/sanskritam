@@ -1,4 +1,4 @@
-"""Spec E — varnamala drill endpoints (build order step 5).
+r"""Spec E — varnamala drill endpoints (build order step 5).
 
 ``GET  /varnamala`` — full grid with ids, examples, ``minimal_pairs``,
 serve-time ``audio_url``\ s, plus ``contrast_groups``. ``GET

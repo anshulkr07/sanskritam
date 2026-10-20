@@ -49,13 +49,18 @@ async def rubric_v2(reference: list[str], res: dict, audio: bytes):
     and pace from voiced spans measured in the audio. None when it cannot
     be computed; the old percent still stands then."""
     import asyncio
+    import logging
 
     from app.services.recite_scoring_v2 import score_recording
     from app.services.recite_timing import voiced_spans
     try:
-        spans = await asyncio.to_thread(voiced_spans, audio)
+        try:
+            spans = await asyncio.to_thread(voiced_spans, audio)
+        except Exception:
+            spans = voiced_spans(audio)
         return score_recording(reference, res.get("heard", "") or "", spans)
-    except Exception:
+    except Exception as exc:
+        logging.getLogger("shabd.recite").warning("rubric_v2 calculation failed: %s", exc)
         return None
 
 

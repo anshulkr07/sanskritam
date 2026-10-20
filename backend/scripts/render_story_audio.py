@@ -13,7 +13,7 @@ default is a dry run that spends nothing; ``--live`` renders.
 
 Rate limits: Starter is 30 requests a minute on bulbul:v3 (docs.sarvam.ai), and
 the grammar-guide run was once refused after a few hundred back-to-back requests
-(2026-09-15). Requests are paced (2.1 s), a 429 or 5xx is retried with backoff,
+(2026-09-15). Requests are paced (2.2 s between request starts), a 429 or 5xx is retried with backoff,
 and a limit that outlasts every retry stops the run instead of failing the rest
 one by one.
 
@@ -46,7 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from app.curriculum import audio  # noqa: E402
 
 COST_PER_CHAR = 0.003  # ₹3 per 1,000 characters
-PACE_SECONDS = 2.1  # under 30 requests a minute
+PACE_SECONDS = 2.2  # between request STARTS: 27 a minute, under the 30 a minute limit
 RETRY_DELAYS = (5, 15, 30, 60, 120)  # seconds, after each failed attempt
 SAVE_EVERY = 20
 
@@ -119,10 +119,14 @@ async def render(items: list[dict], clips: dict[str, dict], *, client, storage, 
     """Render, check, upload and record each clip. Returns ``{rendered, failures, stopped, seconds}``."""
     summary: dict = {"rendered": 0, "failures": [], "stopped": None, "seconds": 0.0}
     started = time.time()
+    last_start: Optional[float] = None
     try:
         for i, item in enumerate(items, 1):
-            if i > 1 and pace:
-                await sleep(pace)
+            if last_start is not None and pace:  # pace the starts, so a slow answer does not stretch the gap
+                wait = pace - (time.monotonic() - last_start)
+                if wait > 0:
+                    await sleep(wait)
+            last_start = time.monotonic()
             try:
                 data = base64.b64decode(await tts_with_retry(client, item, sleep=sleep))
                 why = check_clip(data, item["speak"])

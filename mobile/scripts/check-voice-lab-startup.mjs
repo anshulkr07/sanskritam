@@ -5,12 +5,25 @@ import vm from "node:vm";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
-const compiled = ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/useVoiceLab.ts", import.meta.url), "utf8"), {
+function resolveVoice(file) {
+  const local = new URL(file, import.meta.url);
+  if (fs.existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (fs.existsSync(deferred)) return deferred;
+  return null;
+}
+const useVoiceLabFile = resolveVoice("../src/voiceLab/useVoiceLab.ts");
+const audioInputFile = resolveVoice("../src/voiceLab/audioInput.ts");
+if (!useVoiceLabFile || !audioInputFile) {
+  console.log("Voice module not present (deferred); skipping voice lab startup check.");
+  process.exit(0);
+}
+const compiled = ts.transpileModule(fs.readFileSync(useVoiceLabFile, "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText;
 const tick = () => new Promise(resolve => setImmediate(resolve));
 const inputModule = { exports: {} };
-vm.runInNewContext(ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/audioInput.ts", import.meta.url), "utf8"), {
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(audioInputFile, "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText, { exports: inputModule.exports });
 // The hook claims the shared transport while a call is live; the real module is

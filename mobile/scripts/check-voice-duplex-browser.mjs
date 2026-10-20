@@ -43,9 +43,21 @@ if (!chrome || (path.isAbsolute(chrome) && !fs.existsSync(chrome))) {
   console.log(`Chrome/Chromium not found (${chrome || "no known install location"}); set VOICE_QA_CHROME to a browser binary to run the duplex browser QA. Skipping.`);
   process.exit(0);
 }
+function resolveVoice(file) {
+  const local = new URL(file, import.meta.url);
+  if (fs.existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (fs.existsSync(deferred)) return deferred;
+  return null;
+}
 function readModule(file, mocks = {}) {
+  const target = resolveVoice(file);
+  if (!target) {
+    console.log(`Voice module ${file} not present (deferred); skipping voice duplex browser QA.`);
+    process.exit(0);
+  }
   const exports = {};
-  const code = ts.transpileModule(fs.readFileSync(new URL(file, import.meta.url), "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
+  const code = ts.transpileModule(fs.readFileSync(target, "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
   // Only load the self-contained HTML builders; no application/browser state.
   new Function("exports", "require", code)(exports, name => mocks[name]);
   return exports;

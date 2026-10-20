@@ -6,11 +6,24 @@ import vm from "node:vm";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
-const compile = file => ts.transpileModule(fs.readFileSync(new URL(file, import.meta.url), "utf8"), {
+function resolveVoice(file) {
+  const local = new URL(file, import.meta.url);
+  if (fs.existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (fs.existsSync(deferred)) return deferred;
+  return null;
+}
+const callAudioFile = resolveVoice("../src/voiceLab/callAudio.ts");
+const micFile = resolveVoice("../src/voiceLab/microphone.ts");
+if (!callAudioFile || !micFile) {
+  console.log("Voice module not present (deferred); skipping voice call audio check.");
+  process.exit(0);
+}
+const compile = file => ts.transpileModule(fs.readFileSync(file, "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText;
-const callCode = compile("../src/voiceLab/callAudio.ts");
-const micCode = compile("../src/voiceLab/microphone.ts");
+const callCode = compile(callAudioFile);
+const micCode = compile(micFile);
 
 function harness({ activate = true, failCapture = false, platform = "android" } = {}) {
   const events = [];

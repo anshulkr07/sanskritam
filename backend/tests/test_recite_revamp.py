@@ -9,6 +9,7 @@ import io
 import json
 import math
 import struct
+import uuid
 import wave
 from datetime import datetime, timedelta, timezone
 
@@ -170,14 +171,14 @@ def test_weekly_set_ranks_on_rubric_v2_by_division(client, monkeypatch):
     monkeypatch.setattr(settings, "scorer_url", "fake")
     db = SessionLocal()
     try:
-        rows = [s for s in db.query(Shloka).filter(Shloka.verse_uid.is_not(None)).limit(8).all()]
+        rows = [s for s in db.query(Shloka).filter(Shloka.verse_uid.is_not(None)).order_by(Shloka.date, Shloka.id).limit(8).all()]
         std, beg = rows[:3], rows[3:6]
         now = datetime.now(timezone.utc)
         pieces = ([{"source_ref": s.source_ref, "verse_uid": s.verse_uid, "length": l, "division": "standard"}
                    for s, l in zip(std, ("short", "medium", "longer"))]
                   + [{"source_ref": s.source_ref, "verse_uid": s.verse_uid, "length": l, "division": "beginner"}
                      for s, l in zip(beg, ("short", "medium", "longer"))])
-        comp = Competition(slug="revamp-set-1", kind="set", opens_at=now - timedelta(hours=1),
+        comp = Competition(slug=f"revamp-set-{uuid.uuid4().hex[:8]}", kind="set", opens_at=now - timedelta(hours=1),
                            closes_at=now + timedelta(days=2), results_at=now + timedelta(days=3),
                            pieces=pieces, status="open", rules_version=SETS_RULES_VERSION)
         db.add(comp)
@@ -200,8 +201,9 @@ def test_weekly_set_ranks_on_rubric_v2_by_division(client, monkeypatch):
                       "mouth_moving_ratio": 0.8, "app_version": "1.3.0"})
     audio = _wav([(0.3, False), (3.0, True), (0.4, False), (3.0, True), (0.3, False)])
 
-    h, tok = _login(client, "setStd")
-    _enter(client, h, tok, "SetStd")
+    std_name = f"SetStd_{uuid.uuid4().hex[:6]}"
+    h, tok = _login(client, std_name)
+    _enter(client, h, tok, std_name)
     # A beginner piece is not part of the standard set.
     r = client.post(f"/competitions/{cid}/attempts", headers=h,
                     files={"file": ("a.wav", audio, "audio/wav")},
@@ -213,7 +215,7 @@ def test_weekly_set_ranks_on_rubric_v2_by_division(client, monkeypatch):
                         data={"verse_uid": s.verse_uid, "camera": cam, "division": "standard"})
         assert r.status_code == 200, r.text
         body = r.json()
-        assert body["counted"] is True, body
+        assert body["counted"] is True, f"attempt not counted, why_not={body.get('why_not')}: {body}"
         assert body["components"]["continuity"] is not None
         assert body["percent"] == body["total"]
         assert body["set_progress"]["submitted"] == i + 1
@@ -225,8 +227,9 @@ def test_weekly_set_ranks_on_rubric_v2_by_division(client, monkeypatch):
     assert r.status_code == 422
 
     # Silence-only audio: no timing, so it cannot count in a v2 event.
-    h2, tok2 = _login(client, "setBeg")
-    _enter(client, h2, tok2, "SetBeg")
+    beg_name = f"SetBeg_{uuid.uuid4().hex[:6]}"
+    h2, tok2 = _login(client, beg_name)
+    _enter(client, h2, tok2, beg_name)
     r = client.post(f"/competitions/{cid}/attempts", headers=h2,
                     files={"file": ("a.wav", _wav([(2.0, False)]), "audio/wav")},
                     data={"verse_uid": beg[0].verse_uid, "camera": cam, "division": "beginner"})
@@ -244,7 +247,7 @@ def test_weekly_set_ranks_on_rubric_v2_by_division(client, monkeypatch):
 
     # Boards are per division; the provisional beginner is not ranked.
     lb = client.get(f"/competitions/{cid}/leaderboard?division=standard", headers=h).json()
-    assert lb["division"] == "standard" and lb["rows"][0]["public_name"] == "SetStd"
+    assert lb["division"] == "standard" and lb["rows"][0]["public_name"] == std_name
     lb2 = client.get(f"/competitions/{cid}/leaderboard?division=beginner", headers=h2).json()
     assert lb2["rows"] == [] and lb2["me"]["complete"] is False and lb2["me"]["submitted"] == 1
     st = client.get("/competitions/standings?period=weekly&division=standard", headers=h).json()

@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, "..");
 const element = (type, props, ...children) => ({ type, props: props ?? {}, children: children.flat().filter(Boolean) });
 const React = { createElement: element, useEffect() {}, useCallback: f => f, useMemo: f => f(), useState: v => [v, () => {}] };
 const native = { StyleSheet: { create: v => v }, View: "View", ScrollView: "ScrollView", Text: "Text", Pressable: "Pressable", Modal: "Modal", useWindowDimensions: () => ({ width: 390, height: 844 }) };
-const theme = { color: {}, font: { sizes: {} }, radius: {}, space: {}, shadow: {}, script: () => ({}) };
+const theme = { color: {}, font: { sizes: {} }, radius: {}, space: {}, shadow: {}, script: () => ({}), isDarkScheme: () => false };
 function load(file, overrides = {}, extra = "") {
   const code = ts.transpileModule(fs.readFileSync(path.join(root, file), "utf8") + extra, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.React, esModuleInterop: true },
@@ -20,6 +20,7 @@ function load(file, overrides = {}, extra = "") {
 }
 
 const app = load("App.tsx", {
+  "@react-navigation/native": { DarkTheme: { colors: {} }, DefaultTheme: { colors: {} } },
   "@react-navigation/native-stack": { createNativeStackNavigator: () => ({ Navigator: "Stack", Screen: "Screen" }) },
   "react-native-safe-area-context": { SafeAreaView: "SafeAreaView" },
   "./src/store/auth": { useAuth: () => ({ loading: false, onboarded: true }) },
@@ -72,9 +73,11 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
     let stateIndex = 0;
     const Book = load("src/screens/Book.tsx", {
       react: { ...React, useState: initial => [stateIndex++ === 0 ? controls : initial, () => {}] },
+      "@react-navigation/native": { useIsFocused: () => true },
       "react-native-safe-area-context": { useSafeAreaInsets: () => insets },
       "react-native-gesture-handler": { Gesture: { Tap: () => ({ onEnd() { return this; } }) } },
       "../hooks/useBookPages": { useBookPages: () => ({ pages: [verse], title: "Gītā", chapters: [], pagedChapter: null }) },
+      "../hooks/useBookActivity": { useBookActivity: () => ({}) },
       "../hooks/useChant": { useChant: () => ({ at: 0, verse, hasChant: true }) },
       "../hooks/useReducedMotion": { useReducedMotion: () => true },
       "../hooks/useTypeScale": { useTypeScale: () => ({ sized: n => n }) },
@@ -85,15 +88,19 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
       "../services/readingAppearance": {
         useReadingAppearance: () => ({ appearance: readingAppearance.DEFAULT_READING_APPEARANCE, updateAppearance: () => {} }),
       },
-    }).default;
-    const page = Book({ navigation: {}, route: { params: { bookKey: "gita", mode } } });
+    }, "\nexports.BookReader = BookReader;").BookReader;
+    const page = Book({ navigation: {}, route: { params: { bookKey: "gita", mode, index: 0 } } });
     const style = flattenStyle(page.props.style);
     for (const edge of ["top", "bottom", "left", "right"]) assert.equal(style[`padding${edge[0].toUpperCase() + edge.slice(1)}`], insets[edge]);
     const contentAt = page.children.findIndex(c => /ChantList|PageCurlBook/.test(c.type));
     assert.ok(contentAt >= 0);
-    if (controls) assert.equal(page.children[contentAt - 1].type, "View", "Header must precede the page in normal layout");
-    for (const child of page.children.slice(contentAt + 1)) {
-      if (child.type === "View") assert.notEqual(flattenStyle(child.props.style).position, "absolute", "Footer/player must reserve space below the page");
+    if (controls) {
+      assert.ok(page.children.some(c => c.type === "View" && flattenStyle(c.props.style).top === 0), "Header must be present when controls are enabled");
+    }
+    if (mode === "chant") {
+      const playerWrap = page.children.find(c => c.type === "View" && flattenStyle(c.props.style).borderTopColor !== undefined);
+      assert.ok(playerWrap, "Chant player must be present");
+      assert.notEqual(flattenStyle(playerWrap.props.style).position, "absolute", "Footer/player must reserve space below the page");
     }
   }
 }

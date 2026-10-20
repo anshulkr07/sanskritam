@@ -13,8 +13,21 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
 
+function resolveVoice(file) {
+  const local = new URL(file, import.meta.url);
+  if (fs.existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (fs.existsSync(deferred)) return deferred;
+  return null;
+}
+
 function load(relative, requires = {}) {
-  const source = fs.readFileSync(new URL(relative, import.meta.url), "utf8");
+  const target = resolveVoice(relative);
+  if (!target) {
+    console.log(`Voice module ${relative} not present (deferred); skipping voice companions check.`);
+    process.exit(0);
+  }
+  const source = fs.readFileSync(target, "utf8");
   const compiled = ts.transpileModule(source, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
   }).outputText;

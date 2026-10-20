@@ -5,7 +5,19 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
 const exports = {};
-vm.runInNewContext(ts.transpileModule(fs.readFileSync(new URL("../src/voiceLab/audioInput.ts", import.meta.url), "utf8"), {
+function resolveVoice(file) {
+  const local = new URL(file, import.meta.url);
+  if (fs.existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (fs.existsSync(deferred)) return deferred;
+  return null;
+}
+const audioInputFile = resolveVoice("../src/voiceLab/audioInput.ts");
+if (!audioInputFile) {
+  console.log("Voice module not present (deferred); skipping voice barge check.");
+  process.exit(0);
+}
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(audioInputFile, "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
 }).outputText, { exports });
 const frame = (amplitude, echoCancelled = true) => ({
