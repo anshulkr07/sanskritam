@@ -17,6 +17,7 @@ import { cachedGet } from "../services/apiCache";
 import { progressStorage, subscribeProgress } from "../services/progressStorage";
 import { getReview, lessonSummaries } from "../story/api";
 import { useCourse } from "../story/course";
+import { useLearnMode } from "../story/mode";
 import { courseComplete, currentContext } from "../story/selectors";
 import { TRAIL, findStopByCards, stageStops } from "../trail/course";
 import { loadTrailCardDoneMap } from "../trail/progress";
@@ -87,7 +88,9 @@ function useReading(navigate: Navigate): PracticeData["reading"] {
 // ── The story course ────────────────────────────────────────────────────
 
 export function useStoryPractice(navigate: Navigate): PracticeData {
-  const { index, state, error } = useCourse();
+  // Story or Simple, whichever the learner chose at the top of Learn.
+  const track = useLearnMode();
+  const { index, state, error } = useCourse(track);
   const { lang } = useGuideLang();
   const [due, setDue] = useState<number | null>(null);
   const reading = useReading(navigate);
@@ -109,7 +112,7 @@ export function useStoryPractice(navigate: Navigate): PracticeData {
   const scene = unit.lessons.findIndex((l) => l.id === summary.id);
   const where = summary.template === "prologue" ? "Prologue"
     : summary.template === "check" ? "Unit check"
-      : scene >= 0 ? `Lesson ${scene + 1} of ${unit.lessons.length}` : "Revision";
+      : scene >= 0 ? `${track === "simple" ? "Lesson" : "Scene"} ${scene + 1} of ${unit.lessons.length}` : "Revision";
   const progress = state.units[unit.id];
   return {
     ...base,
@@ -120,7 +123,7 @@ export function useStoryPractice(navigate: Navigate): PracticeData {
       meta: `${unit.title[lang] || unit.title.en} · ${where} · ${summary.minutes} min`,
       done: progress?.finished ?? 0,
       total: progress?.total ?? unit.lessons.length,
-      open: () => navigate("Learn", { screen: "StoryLesson", params: { lessonId: summary.id }, initial: false }),
+      open: () => navigate("Learn", { screen: "StoryLesson", params: { lessonId: summary.id, track }, initial: false }),
     },
   };
 }

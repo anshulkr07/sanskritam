@@ -281,6 +281,28 @@ def test_test_out_finishes_the_current_unit(client):
                                                     "checks_total": 1}, headers=h).status_code == 404
 
 
+def test_simple_mode_keeps_its_own_progress(client):
+    """Simple mode (owner, 2026-10-20): the same lessons with progress of
+    their own. Finishing there frees no ghost in Story mode, it has no
+    prologue, and a lesson earns XP once across both modes."""
+    h = _learner(client)
+    simple = client.get("/learn/state", params={"track": "simple"}, headers=h).json()
+    assert simple["current"]["lesson_id"] == "vowels.short"  # no prologue in Simple mode
+    first = client.post("/progress/card-lesson", json={"lesson_id": "vowels.short", "track": "simple"}, headers=h).json()
+    assert first["xp"] == 10
+    story = client.get("/learn/state", headers=h).json()
+    assert story["current"]["lesson_id"] == "prologue" and "vowels.short" not in story["finished"]
+    again = client.post("/progress/card-lesson", json={"lesson_id": "vowels.short"}, headers=h).json()
+    assert again["xp"] == 0  # XP once per lesson, whichever mode finished it first
+    client.post("/progress/card-lesson", json={"lesson_id": "vowels.check", "track": "simple"}, headers=h)
+    r = client.post("/learn/test-out", json={"unit_id": "vowels", "checks_right": 9, "checks_total": 9,
+                                             "track": "simple"}, headers=h)
+    assert r.status_code == 200, r.text
+    assert client.get("/learn/state", params={"track": "simple"}, headers=h).json()["units"]["vowels"]["done"]
+    story = client.get("/learn/state", headers=h).json()
+    assert not story["units"]["vowels"]["done"] and story["ghosts_freed"] == []
+
+
 def _pack_index(client):
     return client.get("/learn/index").json()
 

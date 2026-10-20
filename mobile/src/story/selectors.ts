@@ -1,4 +1,5 @@
 import type { StoryIndex, StoryState, UnitSummary, Act, Part, LeafInfo, LessonSummary } from './types';
+import { courseOrder } from './state';
 export function unitContexts(index:StoryIndex) {
  return index.acts.flatMap(act=>act.parts.flatMap((part,partIndex)=>part.units.map((unit,unitIndex)=>({act,part,partIndex,unit,unitIndex,unitNumber:act.parts.flatMap(p=>p.units).findIndex(u=>u.id===unit.id)+1,unitTotal:act.parts.reduce((n,p)=>n+p.units.length,0)}))));
 }
@@ -15,3 +16,17 @@ export function recovered(index:StoryIndex,state:StoryState,id:string){const lea
 export function unitAvailable(state:StoryState,unit:UnitSummary){return unit.status==='ready'&&(state.units[unit.id]?.done||state.current?.unit_id===unit.id);}
 export function canTestOut(index:StoryIndex,state:StoryState,unit:UnitSummary){return unit.status==='ready'&&!!unit.check&&state.current?.unit_id===unit.id&&!state.units[unit.id]?.done;}
 export function gained(before:StoryState,after:StoryState){return {ghosts:after.ghosts_freed.filter(id=>!before.ghosts_freed.includes(id)),leaves:after.leaves.filter(l=>l.recovered&&!before.leaves.some(old=>old.id===l.id&&old.recovered)).map(l=>l.id)};}
+/**
+ * Simple mode (owner, 2026-10-20): what is finished stays open, and the road
+ * opens the next lesson plus the three after it (unit checks count; a
+ * revision opens with its unit). Nothing past a planned unit opens.
+ */
+export const SIMPLE_AHEAD=3;
+export function simpleOpen(index:StoryIndex,state:StoryState):Set<string>{
+ const open=new Set(state.finished),road:string[]=[];
+ for(const stop of courseOrder(index)){if(stop.role==='coming_soon')break;if(stop.role==='lesson'||stop.role==='check')road.push(stop.lesson_id!);}
+ const at=road.findIndex(id=>!open.has(id));
+ if(at>=0)road.slice(at,at+1+SIMPLE_AHEAD).forEach(id=>open.add(id));
+ for(const {unit} of unitContexts(index))if(unit.revision&&unitStops(unit).some(l=>open.has(l.id)))open.add(unit.revision.id);
+ return open;
+}

@@ -4,6 +4,7 @@
                                 ghosts, leaves, cast (ETag; 304 when unchanged)
     GET  /learn/lessons/{id}    one lesson's cards (ETag = the lesson's hash)
     GET  /learn/state           where this learner is in the story
+                                (?track=simple: in Simple mode)
     POST /learn/attempts        a lesson's graded answers → spaced review
     GET  /learn/review          practice cards due again, ready to render
     POST /learn/test-out        a passed unit check finishes the unit's lessons
@@ -36,6 +37,10 @@ router = APIRouter(prefix="/learn")
 
 REVIEW_KIND = "learn"
 CARD_LESSON_GAME = "card-lesson"  # the game name POST /progress/card-lesson writes
+# Simple mode (owner, 2026-10-20): the same lessons, no story, its own
+# progress. It has no prologue, so the prologue counts as read there.
+TRACK_GAMES = {"story": CARD_LESSON_GAME, "simple": "card-lesson-simple"}
+Track = Literal["story", "simple"]
 TEST_OUT_PASS = 0.8  # share of a unit check answered right to test out
 MAX_RESULTS = 60
 
@@ -65,16 +70,20 @@ def _parse_key(key: str) -> tuple[str, str] | None:
     return lesson_id, card_id
 
 
-def _finished(db: Session, learner_id: str, lesson_ids: set[str]) -> set[str]:
+def _finished(db: Session, learner_id: str, lesson_ids: set[str], track: str = "story") -> set[str]:
     from app.models import GameResult
 
     rows = (
         db.query(GameResult.mode)
-        .filter(GameResult.learner_id == learner_id, GameResult.game == CARD_LESSON_GAME)
+        .filter(GameResult.learner_id == learner_id, GameResult.game == TRACK_GAMES[track])
         .distinct()
         .all()
     )
-    return {m for (m,) in rows if m in lesson_ids}
+    done = {m for (m,) in rows if m in lesson_ids}
+    prologue = ((_pack().index.get("course") or {}).get("prologue") or {}).get("id")
+    if track == "simple" and prologue:
+        done.add(prologue)
+    return done
 
 
 @router.get("/index")
@@ -93,11 +102,12 @@ def read_lesson(lesson_id: str, request: Request):
 
 
 @router.get("/state")
-def read_state(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+def read_state(track: Track = Query("story"), learner: Learner = Depends(require_learner),
+               db: Session = Depends(get_db)):
     from app.curriculum.state import derive
 
     pack = _pack()
-    state = derive(pack.index, _finished(db, learner.id, set(pack.lessons)))
+    state = derive(pack.index, _finished(db, learner.id, set(pack.lessons), track))
     state["version"] = pack.version
     return state
 
@@ -169,6 +179,7 @@ class TestOutIn(BaseModel):
     unit_id: str = Field(min_length=1, max_length=64)
     checks_right: int = Field(ge=0)
     checks_total: int = Field(ge=1)
+    track: Track = "story"
 
 
 @router.post("/test-out")
@@ -188,7 +199,7 @@ def test_out(body: TestOutIn, learner: Learner = Depends(require_learner),
                  if u["id"] == body.unit_id), None)
     if unit is None or unit.get("status") != "ready" or not unit.get("check"):
         raise HTTPException(status_code=404, detail="No such unit.")
-    finished = _finished(db, learner.id, set(pack.lessons))
+    finished = _finished(db, learner.id, set(pack.lessons), body.track)
     if unit["check"]["id"] not in finished:
         raise HTTPException(status_code=409, detail="Finish the unit check first.")
     if body.checks_right > body.checks_total or body.checks_right / body.checks_total < TEST_OUT_PASS:
@@ -201,7 +212,7 @@ def test_out(body: TestOutIn, learner: Learner = Depends(require_learner),
     for lesson_id in lessons:
         if lesson_id in finished:
             continue
-        db.add(GameResult(learner_id=learner.id, date=learner_today(learner), game=CARD_LESSON_GAME,
+        db.add(GameResult(learner_id=learner.id, date=learner_today(learner), game=TRACK_GAMES[body.track],
                           mode=lesson_id, score=0, moves=0, goal_met=False, daily=False))
         added.append(lesson_id)
     db.commit()

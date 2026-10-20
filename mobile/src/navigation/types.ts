@@ -29,7 +29,8 @@ export type MainTabParamList = {
 export type RootStackParamList = {
   StoryMap: undefined;
   StoryLeaf: { leafId: string };
-  StoryLesson: { lessonId: string };
+  StoryLesson: { lessonId: string; track?: "story" | "simple" };
+  SimpleUnit: { unitId: string };
   StoryUnitEnd: { unitId: string; leafId?: string; lessonId?: string };
   StoryLeaves: undefined;
   StoryGhosts: undefined;

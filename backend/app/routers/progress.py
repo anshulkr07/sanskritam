@@ -2,6 +2,7 @@
 
 import logging
 from datetime import date, timedelta
+from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
@@ -96,12 +97,17 @@ def get_streak(
 
 CARD_LESSON_XP = 10
 CARD_LESSON_GAME = "card-lesson"
+# Learn's Simple mode (owner, 2026-10-20): the same lessons without the story,
+# with progress of its own. Its finishes are a separate game name, so a
+# lesson finished in Simple mode never frees a ghost in Story mode.
+CARD_LESSON_GAMES = {"story": CARD_LESSON_GAME, "simple": "card-lesson-simple"}
 
 
 class CardLessonIn(BaseModel):
     lesson_id: str
     checks_right: int = 0
     checks_total: int = 0
+    track: Literal["story", "simple"] = "story"
 
 
 @router.post("/card-lesson")
@@ -113,8 +119,8 @@ def finish_card_lesson(
     """A Learn card lesson read to its last card (owner decision 2026-10-13:
     card lessons count toward XP and the streak).
 
-    The first finish of a lesson earns CARD_LESSON_XP; finishing it again
-    earns nothing but still marks the day active. Finishes are kept as
+    The first finish of a lesson earns CARD_LESSON_XP; finishing it again,
+    in either Learn mode, earns nothing but still marks the day active. Finishes are kept as
     GameResult rows (game "card-lesson", mode = lesson id) so no migration
     is needed; score stays 0 and goal_met False, so the games' own point cap
     and daily-challenge streak never count them.
@@ -129,7 +135,7 @@ def finish_card_lesson(
         db.query(GameResult)
         .filter(
             GameResult.learner_id == learner.id,
-            GameResult.game == CARD_LESSON_GAME,
+            GameResult.game.in_(list(CARD_LESSON_GAMES.values())),
             GameResult.mode == lesson_id,
         )
         .first()
@@ -138,7 +144,7 @@ def finish_card_lesson(
     db.add(GameResult(
         learner_id=learner.id,
         date=learner_today(learner),
-        game=CARD_LESSON_GAME,
+        game=CARD_LESSON_GAMES[body.track],
         mode=lesson_id,
         score=0,
         moves=max(0, int(body.checks_right or 0)),

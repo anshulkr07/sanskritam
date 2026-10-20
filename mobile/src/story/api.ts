@@ -14,7 +14,7 @@ export async function getLesson(id: string, hash: string): Promise<StoryLesson> 
  if (lesson.hash !== hash) throw new Error('Lesson changed; refresh the course index');
  await saveLesson(lesson); return lesson;
 }
-export const getState = () => request<StoryState>('/learn/state', {}, true);
+export const getState = (track: 'story' | 'simple' = 'story') => request<StoryState>('/learn/state' + (track === 'simple' ? '?track=simple' : ''), {}, true);
 // Attempts and test-out are sent by finish.ts through the ordered offline
 // outbox. Keep a single write path so completion survives a lost connection.
 export const getReview = () => request<{due_count:number; items:{item_key:string; lesson_id:string; lesson_title:StoryLesson['title']; due_at:string; card:PracticeCard}[]}>('/learn/review?limit=12', {}, true);

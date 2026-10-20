@@ -20,8 +20,10 @@ export async function saveLesson(lesson: StoryLesson) {
 // Serialize all read-modify-write operations, including queue acknowledgements.
 let lock: Promise<unknown> = Promise.resolve();
 function serial<T>(fn: () => Promise<T>): Promise<T> { const next = lock.then(fn, fn); lock = next.catch(() => {}); return next; }
-export const localFinishes = async () => (await readJSON<string[]>(FINISHED_KEY)) ?? [];
-export function mergeFinishes(ids: string[]) { return serial(async () => { const merged = [...new Set([...(await localFinishes()), ...ids])]; await AsyncStorage.setItem(FINISHED_KEY, JSON.stringify(merged)); return merged; }); }
+// Simple mode keeps its own finished list (mode.ts).
+const finishedKey = (track: 'story' | 'simple' = 'story') => track === 'simple' ? 'story.finished.simple.v1' : FINISHED_KEY;
+export const localFinishes = async (track: 'story' | 'simple' = 'story') => (await readJSON<string[]>(finishedKey(track))) ?? [];
+export function mergeFinishes(ids: string[], track: 'story' | 'simple' = 'story') { return serial(async () => { const merged = [...new Set([...(await localFinishes(track)), ...ids])]; await AsyncStorage.setItem(finishedKey(track), JSON.stringify(merged)); return merged; }); }
 export interface LessonReceipt {xp?:number;first_time?:boolean;today_xp?:number;goal_xp?:number;goal_met?:boolean}
 const receiptListeners=new Set<()=>void>();
 export const receiptFor=async(id:string)=>(await readJSON<Record<string,LessonReceipt>>('story.receipts.v1'))?.[id]??null;
