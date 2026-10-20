@@ -228,7 +228,7 @@ console.log("Voice Lab startup: permission focus, cancellation, timeouts, retry,
 
 // Older installed native builds must explain that live PCM capture needs a build.
 {
-  const microphoneSource = fs.readFileSync(new URL("../src/voiceLab/microphone.ts", import.meta.url), "utf8");
+  const microphoneSource = fs.readFileSync(resolveVoice("../src/voiceLab/microphone.ts"), "utf8");
   const code = ts.transpileModule(microphoneSource, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
   const exports = {}; let permissionRequests = 0;
   const native = { AudioModule: {}, requestRecordingPermissionsAsync: async () => { permissionRequests++; return { granted: true }; } };

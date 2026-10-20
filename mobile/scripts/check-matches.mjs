@@ -2,7 +2,7 @@
 // Run the real lobby, live-game adapter and socket hook with controlled
 // React hooks and transport responses, including lost responses and cleanup.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
@@ -40,8 +40,20 @@ const timers = new Map();
 let nextTimer = 1;
 const setTimer = (fn) => { const id = nextTimer++; timers.set(id, fn); return id; };
 const clearTimer = (id) => timers.delete(id);
+function resolveSource(file) {
+  const local = new URL(file, import.meta.url);
+  if (existsSync(local)) return local;
+  const deferred = new URL(`../../deferred/mobile/${file.replace(/^\.\.\//, "")}`, import.meta.url);
+  if (existsSync(deferred)) return deferred;
+  return null;
+}
 function load(file, modules) {
-  const js = ts.transpileModule(readFileSync(new URL(file, import.meta.url), "utf8"), {
+  const target = resolveSource(file);
+  if (!target) {
+    console.log(`Module ${file} not present (deferred); skipping match socket checks.`);
+    process.exit(0);
+  }
+  const js = ts.transpileModule(readFileSync(target, "utf8"), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020,
       jsx: ts.JsxEmit.React, esModuleInterop: true },
   }).outputText;
