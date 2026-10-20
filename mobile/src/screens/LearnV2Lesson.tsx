@@ -7,6 +7,7 @@
 // earns XP, every finish marks the day for the streak.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { BottomTabBarHeightContext } from "@react-navigation/bottom-tabs";
 import type { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AccessibilityInfo, FlatList, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
@@ -260,13 +261,15 @@ function LegacyLessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; nav
   />;
 }
 
-/** Shared paging, progress and controls for every Learn deck. The story course passes `controls={false}`: swipe only, no Back/Continue bar, one Finish button on the last card. */
+/** Shared paging, progress and controls for every Learn deck. The story course passes `controls={false}`: swipe only, no Back/Continue bar, one Finish button at the end of the last card's content. */
 export interface PlayerPalette { paper:string; surface:string; ink:string; ink2:string; line:string; lineStrong:string; action:string; white:string }
 export function LessonPlayer({title,index,total,onIndexChange,onFinish,onClose,hi,palette:c,renderCard,canAdvance,header,busy=false,controls=true,firstNote} : {
  title:string; index:number; total:number; onIndexChange:(index:number)=>void; onFinish:()=>void; onClose:()=>void; hi:boolean;
  palette:PlayerPalette; renderCard:(index:number)=>React.ReactNode; canAdvance:(index:number)=>boolean; header?:React.ReactNode; busy?:boolean; controls?:boolean; firstNote?:string;
 }) {
  const {width}=useWindowDimensions(), {sized}=useTypeScale(), reduced=useReducedMotion();
+ // Inside the tab navigator (the story course) the tab bar already sits above the system bar; its inset again is dead space under the cards.
+ const inTabs=React.useContext(BottomTabBarHeightContext)!==undefined;
  const ref=useRef<FlatList<number>>(null), last=index>=total-1;
  const advance=canAdvance(index) && !busy;
  const indices=useMemo(()=>Array.from({length:total},(_,i)=>i),[total]);
@@ -277,7 +280,8 @@ export function LessonPlayer({title,index,total,onIndexChange,onFinish,onClose,h
  // Desktop browsers have no touch swipe: the arrow keys page the cards (never while typing).
  useEffect(()=>{ if(Platform.OS!=='web') return; const w=globalThis as any; const onKey=(e:any)=>{ if(/^(INPUT|TEXTAREA|SELECT)$/.test(e?.target?.tagName??'')) return; if(e.key==='ArrowRight') live.current.move(live.current.index+1); else if(e.key==='ArrowLeft') live.current.move(live.current.index-1); }; w.addEventListener?.('keydown',onKey); return ()=>w.removeEventListener?.('keydown',onKey); },[]);
  const note=last?(advance?null:(hi?'पूरा करने के लिए इस प्रश्न का उत्तर दें':'Answer this to finish')):!advance&&!busy?(hi?'आगे जाने के लिए इस प्रश्न का उत्तर दें':'Answer this to go on'):index===0?(firstNote??(hi?'अगले कार्ड के लिए बाईं ओर स्वाइप करें  ›':'Swipe left for the next card  ›')):null;
- return <SafeAreaView edges={['top','bottom']} style={{flex:1,backgroundColor:c.paper}}>
+ const finish=(i:number)=>{ const ok=canAdvance(i)&&!busy; return <Pressable accessibilityRole="button" accessibilityLabel={hi?'पाठ पूरा करें':'Finish lesson'} accessibilityState={{disabled:!ok}} disabled={!ok} onPress={()=>{if(ok)onFinish();}} style={{alignItems:'center',justifyContent:'center',padding:12,minHeight:48,marginTop:4,backgroundColor:c.action,opacity:ok?1:.45}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(17),color:c.white}}>{hi?'पाठ पूरा करें':'Finish lesson'}</Text></Pressable>; };
+ return <SafeAreaView edges={inTabs?['top']:['top','bottom']} style={{flex:1,backgroundColor:c.paper}}>
  <View style={{flexDirection:'row',alignItems:'center',paddingHorizontal:12,paddingVertical:2,gap:10}}>
  <Pressable accessibilityRole="button" accessibilityLabel={hi?'पाठ बंद करें':'Close lesson'} onPress={onClose} style={{minWidth:44,minHeight:44,justifyContent:'center'}}><Text style={{color:c.ink,fontSize:sized(24)}}>×</Text></Pressable>
  <View accessible accessibilityRole="progressbar" accessibilityLabel={hi?'पाठ की प्रगति':'Lesson progress'} accessibilityValue={{min:0,max:total,now:index+1}} accessibilityActions={[{name:'increment',label:hi?'अगला कार्ड':'Next card'},{name:'decrement',label:hi?'पिछला कार्ड':'Previous card'}]} onAccessibilityAction={e=>{ if(e.nativeEvent.actionName==='increment') move(index+1); else if(e.nativeEvent.actionName==='decrement') move(index-1); }} style={{flex:1,height:5,backgroundColor:c.line}}><View style={{width:(((index+1)/Math.max(total,1)*100)+'%') as `${number}%`,height:5,backgroundColor:c.action}}/></View>
@@ -285,7 +289,7 @@ export function LessonPlayer({title,index,total,onIndexChange,onFinish,onClose,h
  <View style={{paddingHorizontal:16,paddingBottom:6,flexDirection:'row',gap:8,alignItems:'center'}}><Text numberOfLines={1} style={{flex:1,color:c.ink2,fontFamily:'Mukta_600SemiBold',fontSize:sized(15)}}>{title}</Text>{header}</View>
  <FlatList ref={ref} data={controls||advance?indices:indices.slice(0,index+1)} extraData={{index,renderCard,advance}} horizontal scrollEnabled={controls?advance:!busy}
  snapToInterval={width} snapToAlignment="start" decelerationRate="fast" disableIntervalMomentum
- keyExtractor={i=>String(i)} renderItem={({item:i})=><View testID={'lesson-card-'+i} accessibilityElementsHidden={i!==index} importantForAccessibility={i===index?'auto':'no-hide-descendants'} style={{width}}><ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{paddingHorizontal:16,paddingTop:8,paddingBottom:controls?32:96,gap:14}} nestedScrollEnabled>{renderCard(i)}</ScrollView></View>}
+ keyExtractor={i=>String(i)} renderItem={({item:i})=><View testID={'lesson-card-'+i} accessibilityElementsHidden={i!==index} importantForAccessibility={i===index?'auto':'no-hide-descendants'} style={{width}}><ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{paddingHorizontal:16,paddingTop:8,paddingBottom:32,gap:14}} nestedScrollEnabled>{renderCard(i)}{!controls&&i===total-1?finish(i):null}</ScrollView></View>}
  onScroll={e=>{if(!canAdvance(index)&&e.nativeEvent.contentOffset.x>index*width+1)ref.current?.scrollToOffset({offset:index*width,animated:false});}} scrollEventThrottle={16}
  showsHorizontalScrollIndicator={false} initialNumToRender={3} windowSize={3}
  getItemLayout={(_,i)=>({length:width,offset:width*i,index:i})}
@@ -294,10 +298,7 @@ export function LessonPlayer({title,index,total,onIndexChange,onFinish,onClose,h
  {controls?<View style={{flexDirection:'row',gap:10,padding:12,borderTopWidth:1,borderTopColor:c.line}}>
  <Pressable accessibilityRole="button" accessibilityLabel={hi?'पिछला कार्ड':'Previous card'} accessibilityState={{disabled:index===0}} disabled={index===0} onPress={()=>move(index-1)} style={{padding:14,minHeight:52,borderWidth:1,borderColor:c.lineStrong,opacity:index===0?.4:1}}><Text style={{color:c.ink,fontFamily:'Mukta_600SemiBold'}}>{hi?'पीछे':'Back'}</Text></Pressable>
  <Pressable accessibilityRole="button" accessibilityLabel={last?(hi?'पाठ पूरा करें':'Finish lesson'):(hi?'आगे':'Continue')} accessibilityState={{disabled:!advance}} disabled={!advance} onPress={()=>{if(!advance)return;last?onFinish():move(index+1);}} style={{flex:1,alignItems:'center',justifyContent:'center',padding:14,minHeight:52,backgroundColor:c.action,opacity:advance?1:.45}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(17),color:c.white}}>{last?(hi?'पाठ पूरा करें':'Finish lesson'):(hi?'आगे':'Continue')}</Text></Pressable>
- </View>:<View style={{paddingHorizontal:16,paddingBottom:8,gap:6}}>
- {last?<Pressable accessibilityRole="button" accessibilityLabel={hi?'पाठ पूरा करें':'Finish lesson'} accessibilityState={{disabled:!advance}} disabled={!advance} onPress={()=>{if(advance)onFinish();}} style={{alignItems:'center',justifyContent:'center',padding:12,minHeight:48,backgroundColor:c.action,opacity:advance?1:.45}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(17),color:c.white}}>{hi?'पाठ पूरा करें':'Finish lesson'}</Text></Pressable>:null}
- {note?<Text accessibilityLiveRegion="polite" style={{textAlign:'center',color:c.ink2,fontFamily:'Mukta_400Regular',fontSize:sized(13)}}>{note}</Text>:null}
- </View>}</SafeAreaView>;
+ </View>:note?<Text accessibilityLiveRegion="polite" style={{textAlign:'center',color:c.ink2,fontFamily:'Mukta_400Regular',fontSize:sized(13),paddingHorizontal:16,paddingVertical:4}}>{note}</Text>:null}</SafeAreaView>;
 }
 
 function safeHost(url: string): string {

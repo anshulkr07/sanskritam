@@ -39,7 +39,7 @@ import LearningProgressSync from "./src/components/LearningProgressSync";
 import DailyReviewScreen from "./src/screens/DailyReview";
 import OfflineLibraryScreen from "./src/screens/OfflineLibrary";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, View, useWindowDimensions } from "react-native";
+import { ActivityIndicator, Image, Platform, StyleSheet, View, useWindowDimensions } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider, SafeAreaView, initialWindowMetrics } from "react-native-safe-area-context";
@@ -141,8 +141,14 @@ function PrefsLoader() {
   return null;
 }
 
+// Android 12+ shows only the centre of the splash icon (a 192dp circle of a
+// 288dp icon), so Android gets the logo padded into that circle, drawn here at
+// the native size and centre for a seamless hand-off from the native splash.
 function LaunchScreen() {
   const { width, height } = useWindowDimensions();
+  if (Platform.OS === "android") {
+    return <View style={styles.boot}><Image source={require("./assets/splash-icon-android.png")} resizeMode="contain" style={{ width: 288, height: 288 }} accessible={false} /><ActivityIndicator color={color.saffron} style={{ position: "absolute", top: "50%", marginTop: 100 }} /></View>;
+  }
   const size = Math.min(width - 24, height * .72, 460);
   return <View style={styles.boot}><Image source={require("./assets/splash-icon.png")} resizeMode="contain" style={{ width: size, height: size }} accessible={false} /><ActivityIndicator color={color.saffron} style={{ marginTop: 12 }} /></View>;
 }
