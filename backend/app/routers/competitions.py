@@ -293,7 +293,9 @@ async def post_attempt(
     file: UploadFile = File(...),
     verse_uid: str = Form(""),
     camera: str = Form("{}"),
-    hidden: bool = Form(True),
+    # Optional and read as text: newer FastAPI no longer applies a bool
+    # default to an absent form field, and the app does not send it.
+    hidden: str | None = Form(None),
     division: str = Form("standard"),
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
@@ -379,7 +381,7 @@ async def post_attempt(
         counted, why = False, "unclear"
     elif uses_v2(comp) and (v2 is None or not is_complete(v2)):
         counted, why = False, "no_timing"
-    elif not hidden:
+    elif (hidden or "true").strip().lower() in ("false", "0", "no", "off"):
         counted, why = False, "text_shown"
     elif face < settings.competition_min_face_ratio:
         counted, why = False, "no_face"
