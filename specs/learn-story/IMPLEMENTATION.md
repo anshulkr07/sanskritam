@@ -651,11 +651,15 @@ greedy, never demonic; "you" never shows a face.
     `sandhi_split` or `derive_next` (the app shows only random sūtra codes
     for it) until the generator is fixed. `reorder`, `grid_fill` and
     `scan_metre` were audited and hold.
-- The app builds `form_explorer`, `role_arrows` and `word_shuffle` (2026-10-20),
-  so the six Act II cards that used them now play. Five widgets are still
-  unbuilt (`time_slider`, `word_factory`, `sandhi_mixer`, `compound_unpacker`,
-  `derivation_stepper`); no written lesson uses them (run: count of widgets
-  across the content). `word_shuffle` takes an authored `not_first` list
+- All twelve explore widgets are built and every one is used by written
+  lessons (2026-10-20; run: count of widgets across the content: mark_words
+  123, sandhi_mixer 11, mouth_map 7, rhythm_tapper 6, compound_unpacker 6,
+  word_factory 5, letter_builder 3, form_explorer 3, role_arrows 2,
+  time_slider 2, derivation_stepper 2, word_shuffle 1). Before this pass
+  `mark_words` was 123 of 145 explore cards because the other widgets were
+  unbuilt and I avoided them; the handover had assigned them to units.
+  `compound_unpacker` kinds, parts and phrases are authored (the engine cannot
+  check compounds) and need the scholar. `word_shuffle` takes an authored `not_first` list
   (च in who.order) because the word-order engine accepts any permutation,
   including ones that open with च; that list is for the scholar to confirm.
 - Words the engine cannot derive were typed literally and wait for the

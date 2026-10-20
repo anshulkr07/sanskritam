@@ -239,6 +239,38 @@ cards:
     - वनेऽस्ति
     - हरेऽव
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.ayadi
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: नौ
+      second: इकः
+      joined: नाविकः
+      sutras:
+      - 6.1.78
+    - first: पौ
+      second: अकः
+      joined: पावकः
+      sutras:
+      - 6.1.78
+    - first: हरे
+      second: इह
+      joined: हर इह
+      sutras:
+      - 6.1.78
+    - first: वने
+      second: अस्ति
+      joined: वनेऽस्ति
+      sutras:
+      - 6.1.109
+  roman: show
 - id: p5
   kind: practice
   title:

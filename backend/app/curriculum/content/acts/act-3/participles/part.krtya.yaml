@@ -404,6 +404,48 @@ cards:
     - गन्तव्यम्
     - देयम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - krt.krtya
+  widget: word_factory
+  prompt:
+    en: Snap a suffix onto a root and see the word it makes.
+    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+  params:
+    roots:
+    - dhatu: कृ
+      gloss:
+        en: do
+        hi: करना
+    - dhatu: गम्
+      gloss:
+        en: go
+        hi: जाना
+    - dhatu: दा
+      gloss:
+        en: give
+        hi: देना
+    - dhatu: श्रु
+      gloss:
+        en: hear
+        hi: सुनना
+    - dhatu: पठ्
+      gloss:
+        en: read
+        hi: पढ़ना
+    suffixes:
+    - krt: tavya
+      label:
+        en: must be …d
+        hi: करना चाहिए (-तव्य)
+    - krt: anIyar
+      label:
+        en: fit to be …d
+        hi: करने योग्य (-अनीय)
+    linga: Napumsaka
+  roman: show
 - id: p4
   kind: practice
   depth: core

@@ -270,6 +270,41 @@ cards:
     - देवो
     - तपोवनम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: रामः
+      second: अस्ति
+      joined: रामोऽस्ति
+      sutras:
+      - 8.2.66
+      - 6.1.113
+    - first: सः
+      second: अपि
+      joined: सोऽपि
+      sutras:
+      - 6.1.113
+    - first: देवः
+      second: भवति
+      joined: देवो भवति
+      sutras:
+      - 8.2.66
+      - 6.1.114
+    - first: तपः
+      second: वनम्
+      joined: तपोवनम्
+      sutras:
+      - 8.2.66
+      - 6.1.114
+  roman: show
 - id: p5
   kind: practice
   title:

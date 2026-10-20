@@ -409,6 +409,7 @@ class WordFactoryParams(Strict):
 
     roots: list[FactoryRoot]
     suffixes: list[FactorySuffix]
+    linga: Literal["Pum", "Stri", "Napumsaka"] = "Pum"  # the gender the made words are shown in
 
 
 class MarkWordsParams(Strict):

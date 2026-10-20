@@ -446,6 +446,46 @@ cards:
     - अपठत्
     - अवदत्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - verb.lan
+  widget: time_slider
+  prompt:
+    en: Slide through time and watch the verb change.
+    hi: समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।
+  params:
+    forms:
+    - label:
+        en: yesterday
+        hi: कल
+      sa: सः अगच्छत्।
+      meaning:
+        en: He went.
+        hi: वह गया।
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+        form: अगच्छत्
+    - label:
+        en: now
+        hi: अब
+      sa: सः गच्छति।
+      meaning:
+        en: He goes.
+        hi: वह जाता है।
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        form: गच्छति
+  roman: show
 - id: p3
   kind: practice
   depth: core

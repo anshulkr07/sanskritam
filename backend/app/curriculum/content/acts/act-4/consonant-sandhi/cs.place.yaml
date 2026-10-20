@@ -267,6 +267,38 @@ cards:
     - तच्च
     - उच्चारणम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.place
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: सत्
+      second: जनः
+      joined: सज्जनः
+      sutras:
+      - 8.4.40
+    - first: तत्
+      second: च
+      joined: तच्च
+      sutras:
+      - 8.4.40
+    - first: उत्
+      second: चारणम्
+      joined: उच्चारणम्
+      sutras:
+      - 8.4.40
+    - first: तत्
+      second: लीनः
+      joined: तल्लीनः
+      sutras:
+      - 8.4.60
+  roman: show
 - id: p5
   kind: practice
   title:

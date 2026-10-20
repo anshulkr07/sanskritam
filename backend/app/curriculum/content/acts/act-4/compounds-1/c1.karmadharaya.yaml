@@ -250,6 +250,26 @@ cards:
     - पञ्चवटी
     - अष्टाध्यायी
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.karmadharaya
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: नीलोत्पलम्
+    parts:
+    - नील
+    - उत्पल
+    kind: karmadharaya
+    vigraha: नीलम् उत्पलम्
+    meaning:
+      en: a blue lotus
+      hi: एक नीला कमल
+  roman: show
 - id: p3
   kind: practice
   depth: core

@@ -145,7 +145,7 @@ def compute(card: ExploreCard) -> tuple[dict, list[str]]:
             for sf in p.suffixes:
                 kw: dict[str, Any] = {"dhatu": rt.dhatu, "krt": sf.krt, "gana": rt.gana}
                 if sf.krt not in AVYAYA_KRT:
-                    kw.update(linga="Pum", vibhakti="Prathama", vacana="Eka")
+                    kw.update(linga=p.linga, vibhakti="Prathama", vacana="Eka")
                 forms = prakriya.derive_forms(**kw)
                 if forms:
                     results[f"{rt.dhatu}|{sf.krt}"] = forms[0]

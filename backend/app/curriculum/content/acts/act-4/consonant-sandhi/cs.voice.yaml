@@ -264,6 +264,38 @@ cards:
     - जगदीशः
     - दिग्गजः
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.voice
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: तत्
+      second: अस्ति
+      joined: तदस्ति
+      sutras:
+      - 8.2.39
+    - first: जगत्
+      second: ईशः
+      joined: जगदीशः
+      sutras:
+      - 8.2.39
+    - first: दिक्
+      second: गजः
+      joined: दिग्गजः
+      sutras:
+      - 8.2.39
+    - first: अप्
+      second: जम्
+      joined: अब्जम्
+      sutras:
+      - 8.2.39
+  roman: show
 - id: p5
   kind: practice
   title:

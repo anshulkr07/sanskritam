@@ -442,6 +442,60 @@ cards:
     - पठिष्यति
     - भविष्यति
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - verb.lrt
+  widget: time_slider
+  prompt:
+    en: Slide through time and watch the verb change.
+    hi: समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।
+  params:
+    forms:
+    - label:
+        en: yesterday
+        hi: कल
+      sa: बालकः अपठत्।
+      meaning:
+        en: The boy read.
+        hi: बालक ने पढ़ा।
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+        form: अपठत्
+    - label:
+        en: now
+        hi: अब
+      sa: बालकः पठति।
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        form: पठति
+    - label:
+        en: tomorrow
+        hi: कल (आने वाला)
+      sa: बालकः पठिष्यति।
+      meaning:
+        en: The boy will read.
+        hi: बालक पढ़ेगा।
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+        form: पठिष्यति
+  roman: show
 - id: p4
   kind: practice
   depth: core

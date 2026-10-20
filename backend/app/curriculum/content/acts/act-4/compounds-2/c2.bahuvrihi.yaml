@@ -244,6 +244,26 @@ cards:
     - पीताम्बरः
     - दशाननः
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: नीलकण्ठः
+    parts:
+    - नील
+    - कण्ठ
+    kind: bahuvrihi
+    vigraha: नीलः कण्ठः यस्य सः
+    meaning:
+      en: the one whose throat is blue (Śiva)
+      hi: जिसका कण्ठ नीला है (शिव)
+  roman: show
 - id: p3
   kind: practice
   depth: core

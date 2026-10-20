@@ -254,6 +254,26 @@ cards:
     - प्रतिदिनम्
     - आमरणम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.avyayibhava
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: यथाशक्ति
+    parts:
+    - यथा
+    - शक्ति
+    kind: avyayibhava
+    vigraha: शक्तिम् अनतिक्रम्य
+    meaning:
+      en: as far as one can
+      hi: जितनी शक्ति हो उतना
+  roman: show
 - id: p3
   kind: practice
   depth: core

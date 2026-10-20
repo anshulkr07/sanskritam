@@ -341,6 +341,43 @@ cards:
     - कर्तुम्
     - द्रष्टुम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - krt.tumun
+  widget: word_factory
+  prompt:
+    en: Snap a suffix onto a root and see the word it makes.
+    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+  params:
+    roots:
+    - dhatu: पठ्
+      gloss:
+        en: read
+        hi: पढ़ना
+    - dhatu: गम्
+      gloss:
+        en: go
+        hi: जाना
+    - dhatu: कृ
+      gloss:
+        en: do
+        hi: करना
+    - dhatu: दृश्
+      gloss:
+        en: see
+        hi: देखना
+    suffixes:
+    - krt: tumun
+      label:
+        en: to …
+        hi: … के लिए
+    - krt: ktvA
+      label:
+        en: having …
+        hi: … करके
+  roman: show
 - id: p4
   kind: practice
   depth: core

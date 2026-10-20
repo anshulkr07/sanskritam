@@ -262,6 +262,41 @@ cards:
     - कविस्तत्र
     - पुनश्च
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: रामः
+      second: च
+      joined: रामश्च
+      sutras:
+      - 8.3.34
+      - 8.4.40
+    - first: कविः
+      second: च
+      joined: कविश्च
+      sutras:
+      - 8.3.34
+      - 8.4.40
+    - first: रामः
+      second: तत्र
+      joined: रामस्तत्र
+      sutras:
+      - 8.3.34
+    - first: रामः
+      second: टीकते
+      joined: रामष्टीकते
+      sutras:
+      - 8.3.34
+      - 8.4.41
+  roman: show
 - id: p5
   kind: practice
   title:

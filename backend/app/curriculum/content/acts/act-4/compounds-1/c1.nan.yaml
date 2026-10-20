@@ -250,6 +250,26 @@ cards:
     - अधर्मः
     - अज्ञानम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.nan-upapada
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: असत्यम्
+    parts:
+    - अ
+    - सत्य
+    kind: tatpurusha
+    vigraha: न सत्यम्
+    meaning:
+      en: untrue
+      hi: असत्य
+  roman: show
 - id: p3
   kind: practice
   depth: core

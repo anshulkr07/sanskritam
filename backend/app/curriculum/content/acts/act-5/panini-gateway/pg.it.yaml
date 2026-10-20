@@ -119,6 +119,24 @@ cards:
     - श्
     - प्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - panini.it
+  widget: derivation_stepper
+  prompt:
+    en: Build the word one rule at a time.
+    hi: शब्द को एक-एक नियम से बनाइए।
+  params:
+    target: रामः
+    spec:
+      type: subanta
+      stem: राम
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  roman: show
 - id: p1
   kind: practice
   depth: core

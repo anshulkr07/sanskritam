@@ -4272,6 +4272,16 @@
      },
      "title": "Suffixes",
      "type": "array"
+    },
+    "linga": {
+     "default": "Pum",
+     "enum": [
+      "Pum",
+      "Stri",
+      "Napumsaka"
+     ],
+     "title": "Linga",
+     "type": "string"
     }
    },
    "required": [

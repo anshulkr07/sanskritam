@@ -258,6 +258,38 @@ cards:
     - स्वागतम्
     - अत्यधिकम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.yan
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: इति
+      second: आदि
+      joined: इत्यादि
+      sutras:
+      - 6.1.77
+    - first: प्रति
+      second: एकम्
+      joined: प्रत्येकम्
+      sutras:
+      - 6.1.77
+    - first: सु
+      second: आगतम्
+      joined: स्वागतम्
+      sutras:
+      - 6.1.77
+    - first: पितृ
+      second: आज्ञा
+      joined: पित्राज्ञा
+      sutras:
+      - 6.1.77
+  roman: show
 - id: p5
   kind: practice
   title:

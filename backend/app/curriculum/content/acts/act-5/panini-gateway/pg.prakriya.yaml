@@ -149,6 +149,24 @@ cards:
   note:
     en: The engine's full list has twenty steps; these are the ones that change the word.
     hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - panini.prakriya
+  widget: derivation_stepper
+  prompt:
+    en: Build the word one rule at a time.
+    hi: शब्द को एक-एक नियम से बनाइए।
+  params:
+    target: भवति
+    spec:
+      type: tinanta
+      dhatu: भू
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+  roman: show
 - id: p1
   kind: practice
   depth: core

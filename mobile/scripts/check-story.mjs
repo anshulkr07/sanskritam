@@ -54,7 +54,7 @@ assert.equal(grade(engine('grid_fill',grid),{cells:[grid[0]]}),'unsure');
 assert.equal(grade(engine('contrast',{pick:'a'},{abstained:true}),{pick:'b'}),'unsure');
 console.log(practiced+' fixture practice cards and all seven engine grading kinds passed');
 
-const {markResult,joinLetter,heldWeight,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled}=load('widgets/logic.ts');
+const {markResult,joinLetter,heldWeight,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled,clampIndex,factoryResult,nextStage,kindResult,stepChanged,clampSteps}=load('widgets/logic.ts');
 for(const lesson of Object.values(lessons))for(const card of lesson.cards.filter(c=>c.kind==='explore')){
  if(card.widget==='mark_words'){const selected=card.params.passage.flatMap((w,i)=>card.params.targets.includes(w)?[i]:[]);assert.ok(markResult(card.params,selected).every(s=>s==='found'||s==='neutral'));assert.equal(markResult(card.params,[]).filter(s=>s==='missed').length,selected.length);}
  if(card.widget==='letter_builder')for(const target of card.params.targets){const possible=card.params.bases.flatMap(base=>[...card.params.signs,...card.params.halves].map(chip=>joinLetter(base,chip,card.params.halves)));assert.ok(possible.includes(target));assert.ok(card.params.iast[target]);}
@@ -72,6 +72,13 @@ assert.equal(allOrders(['a','b','c','d']).length,24);assert.equal(new Set(allOrd
 assert.equal(naturalOrders(['a','b','c','च'],['च']).length,18);assert.equal(naturalOrder(['च','a'],['च']),false);assert.equal(naturalOrder(['a','च'],['च']),true);
 assert.deepEqual(swapWords(['a','b','c'],0,2),['c','b','a']);
 assert.notDeepEqual(shuffled(['a','b','c'],()=>0),['a','b','c']);assert.deepEqual(shuffled(['a'],()=>0),['a']);
+// time_slider, word_factory, compound_unpacker, derivation_stepper logic
+assert.equal(clampIndex(-1,3),0);assert.equal(clampIndex(5,3),2);assert.equal(clampIndex(1,3),1);
+assert.equal(factoryResult({'गम्|ktvA':'गत्वा'},'गम्','ktvA'),'गत्वा');assert.equal(factoryResult({},'गम्','ktvA'),null);
+assert.equal(nextStage(0),1);assert.equal(nextStage(1),2);assert.equal(nextStage(2),2);
+assert.equal(kindResult('dvandva',null),'unset');assert.equal(kindResult('dvandva','dvandva'),'correct');assert.equal(kindResult('dvandva','tatpurusha'),'wrong');
+const derived=[{result:'भू'},{result:'भू + ल्'},{result:'भू + ल्'}];assert.equal(stepChanged(derived,0),true);assert.equal(stepChanged(derived,1),true);assert.equal(stepChanged(derived,2),false);
+assert.equal(clampSteps(0,20),1);assert.equal(clampSteps(25,20),20);
 console.log('Four widget fixture cases passed');
 
 const memory=new Map();const storage={getItem:async key=>memory.get(key)??null,setItem:async(key,value)=>{memory.set(key,value);},getAllKeys:async()=>[...memory.keys()],multiRemove:async keys=>keys.forEach(k=>memory.delete(k))};

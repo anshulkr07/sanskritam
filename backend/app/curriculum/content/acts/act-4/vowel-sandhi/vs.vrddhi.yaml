@@ -246,6 +246,38 @@ cards:
     - जलौघः
     - वनौषधिः
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: सदा
+      second: एव
+      joined: सदैव
+      sutras:
+      - 6.1.88
+    - first: जल
+      second: ओघः
+      joined: जलौघः
+      sutras:
+      - 6.1.88
+    - first: वन
+      second: औषधिः
+      joined: वनौषधिः
+      sutras:
+      - 6.1.88
+    - first: महा
+      second: ऐश्वर्यम्
+      joined: महैश्वर्यम्
+      sutras:
+      - 6.1.88
+  roman: show
 - id: p5
   kind: practice
   title:

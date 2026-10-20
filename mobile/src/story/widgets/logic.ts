@@ -34,3 +34,21 @@ export function shuffled(order:string[],random:()=>number){
  const others=allOrders(order).filter(candidate=>candidate.join('|')!==order.join('|'));
  return others.length?others[Math.floor(random()*others.length)%others.length]:order;
 }
+
+// ─── time_slider ───
+export function clampIndex(i:number,length:number){return Math.max(0,Math.min(length-1,i));}
+
+// ─── word_factory ───
+export function factoryKey(dhatu:string,krt:string){return dhatu+'|'+krt;}
+/** The word the engine made from a root and a suffix, or null when it made none. */
+export function factoryResult(results:Record<string,string>,dhatu:string,krt:string){return results[factoryKey(dhatu,krt)]??null;}
+
+// ─── compound_unpacker ───
+export type UnpackStage=0|1|2;
+export function nextStage(stage:UnpackStage):UnpackStage{return stage>=2?2:(stage+1) as UnpackStage;}
+export function kindResult(kind:string,picked:string|null){return picked===null?'unset':picked===kind?'correct':'wrong';}
+
+// ─── derivation_stepper ───
+/** True when the step changes the form (a step like 1.3.2 only names a marker). */
+export function stepChanged(steps:{result:string}[],i:number){return i===0||steps[i].result!==steps[i-1].result;}
+export function clampSteps(n:number,total:number){return Math.max(1,Math.min(total,n));}

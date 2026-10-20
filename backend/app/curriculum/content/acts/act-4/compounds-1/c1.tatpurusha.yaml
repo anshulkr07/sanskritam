@@ -226,6 +226,26 @@ cards:
     - वृक्षमूलम्
     - विद्यालयः
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.tatpurusha
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: राजपुरुषः
+    parts:
+    - राज
+    - पुरुष
+    kind: tatpurusha
+    vigraha: राज्ञः पुरुषः
+    meaning:
+      en: the king's man
+      hi: राजा का पुरुष
+  roman: show
 - id: p3
   kind: practice
   depth: core

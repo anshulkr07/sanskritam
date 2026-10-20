@@ -252,6 +252,26 @@ cards:
     - मातापितरौ
     - गुरुशिष्यौ
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sam.dvandva
+  widget: compound_unpacker
+  prompt:
+    en: Unpack the compound, then name its kind.
+    hi: समास को खोलिए, फिर उसका प्रकार बताइए।
+  params:
+    compound: रामलक्ष्मणौ
+    parts:
+    - राम
+    - लक्ष्मण
+    kind: dvandva
+    vigraha: रामः च लक्ष्मणः च
+    meaning:
+      en: Rāma and Lakṣmaṇa
+      hi: राम और लक्ष्मण
+  roman: show
 - id: p4
   kind: practice
   title:

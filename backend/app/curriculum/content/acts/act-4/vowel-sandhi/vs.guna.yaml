@@ -249,6 +249,38 @@ cards:
     - महोत्सवः
     - सप्तर्षयः
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.guna
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: उप
+      second: इन्द्रः
+      joined: उपेन्द्रः
+      sutras:
+      - 6.1.87
+    - first: महा
+      second: ईश्वरः
+      joined: महेश्वरः
+      sutras:
+      - 6.1.87
+    - first: सूर्य
+      second: उदयः
+      joined: सूर्योदयः
+      sutras:
+      - 6.1.87
+    - first: देव
+      second: ऋषिः
+      joined: देवर्षिः
+      sutras:
+      - 6.1.87
+  roman: show
 - id: p5
   kind: practice
   title:

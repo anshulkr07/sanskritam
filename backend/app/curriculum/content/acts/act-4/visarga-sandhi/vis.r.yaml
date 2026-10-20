@@ -280,6 +280,42 @@ cards:
     - गुरुर्ददाति
     - मुनिर्गच्छति
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: कविः
+      second: अस्ति
+      joined: कविरस्ति
+      sutras:
+      - 8.2.66
+      - 8.3.15
+    - first: गुरुः
+      second: अपि
+      joined: गुरुरपि
+      sutras:
+      - 8.2.66
+      - 8.3.15
+    - first: मुनिः
+      second: गच्छति
+      joined: मुनिर्गच्छति
+      sutras:
+      - 8.2.66
+      - 8.3.15
+    - first: रामः
+      second: इह
+      joined: राम इह
+      sutras:
+      - 8.3.17
+      - 8.3.19
+  roman: show
 - id: p5
   kind: practice
   title:

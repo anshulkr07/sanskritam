@@ -261,6 +261,43 @@ cards:
     - महात्मा
     - सूक्तम्
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.savarna
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: विद्या
+      second: आलयः
+      joined: विद्यालयः
+      sutras:
+      - 6.1.101
+    - first: हिम
+      second: आलयः
+      joined: हिमालयः
+      sutras:
+      - 6.1.101
+    - first: महा
+      second: आत्मा
+      joined: महात्मा
+      sutras:
+      - 6.1.101
+    - first: कवि
+      second: इन्द्रः
+      joined: कवीन्द्रः
+      sutras:
+      - 6.1.101
+    - first: सु
+      second: उक्तम्
+      joined: सूक्तम्
+      sutras:
+      - 6.1.101
+  roman: show
 - id: p5
   kind: practice
   title:

@@ -267,6 +267,38 @@ cards:
     - संस्कृतम्
     - वृक्षं
   roman: show
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.nasal
+  widget: sandhi_mixer
+  prompt:
+    en: 'Pick a pair and join it: see the word and the rule.'
+    hi: 'एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।'
+  params:
+    pairs:
+    - first: तत्
+      second: मात्रम्
+      joined: तन्मात्रम्
+      sutras:
+      - 8.4.45
+    - first: सत्
+      second: मार्गः
+      joined: सन्मार्गः
+      sutras:
+      - 8.4.45
+    - first: वाक्
+      second: मयम्
+      joined: वाङ्मयम्
+      sutras:
+      - 8.4.45
+    - first: सम्
+      second: सारः
+      joined: संसारः
+      sutras:
+      - 8.3.23
+  roman: show
 - id: p5
   kind: practice
   title:

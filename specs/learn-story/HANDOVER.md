@@ -205,11 +205,12 @@ vowels check on fixtures shows Dhūmaka freed.
   server) and offline queueing does not lose them.
 
 ### A13 · The other eight widgets (Sonnet; one per task)
-Build each when the first unit that uses it is written: time_slider,
-word_factory, sandhi_mixer, compound_unpacker, derivation_stepper. Same
-done-criteria as A8. **Built 2026-10-20:** form_explorer, role_arrows and
-word_shuffle (`mobile/src/story/widgets/`); no written lesson uses the other
-five, so no card shows "coming soon" today.
+Same done-criteria as A8. **All twelve widgets are built (2026-10-20)** in
+`mobile/src/story/widgets/` and used by written lessons: form_explorer,
+role_arrows, word_shuffle, time_slider (past.augment, future.sya),
+word_factory (the five participle lessons), sandhi_mixer (the eleven sandhi
+lessons), compound_unpacker (six compound lessons) and derivation_stepper
+(pg.it, pg.prakriya). No card shows "coming soon".
 
 ---
 
